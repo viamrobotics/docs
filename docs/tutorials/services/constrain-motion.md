@@ -56,7 +56,7 @@ The motion service is one of the "built-in" services, so you don't need to do an
 If you completed the previous tutorial, your robot's configuration should match the following.
 You can view your robot configuration in [the Viam app](https://app.viam.com/) under the **Config** tab by clicking **Raw JSON**.
 
-If instead you are creating a new robot for this tutorial, copy the following configuration into the Raw JSON field:
+If instead you are creating a new machine for this tutorial, copy the following configuration into the Raw JSON field:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

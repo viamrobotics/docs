@@ -206,7 +206,7 @@ Next, install `viam-server` on your machine, if you have not done so already:
 
 ## Generate your machine configuration
 
-When you built the C++ SDK, the build process also built the `example_audio_classification_client` binary, which includes a `--generate` function that determines and creates the necessary robot configuration to support this example.
+When you built the C++ SDK, the build process also built the `example_audio_classification_client` binary, which includes a `--generate` function that determines and creates the necessary machine configuration to support this example.
 
 To generate your machine's configuration using `example_audio_classification_client`:
 
@@ -247,7 +247,7 @@ This generated configuration features the minimum required configuration to supp
 With everything configured and running, you can now run the inference client that connects to `viam-server` and uses the `example_mlmodelservice_tflite` module.
 
 1. First, determine your machine address and API key and API key ID. To do so, navigate to [the Viam app](https://app.viam.com), select the **Code sample** tab, and toggle **Include API Key**.
-   The API key resembles `abcdef1g23hi45jklm6nopqrstu7vwx8`, the API key ID resembles `a1234b5c-678d-9012-3e45-67fabc8d9efa` and the robot address resembles `my-robot-main.abcdefg123.viam.cloud`.
+   The API key resembles `abcdef1g23hi45jklm6nopqrstu7vwx8`, the API key ID resembles `a1234b5c-678d-9012-3e45-67fabc8d9efa` and the machine address resembles `my-machine-main.abcdefg123.viam.cloud`.
 
    {{%  snippet "secret-share.md" %}}
 
@@ -270,7 +270,7 @@ With everything configured and running, you can now run the inference client tha
 
    ```sh { class="command-line" data-prompt="$"}
    cd ~/example_workspace/opt/bin
-   ./example_audio_classification_client --model-label-path ~/example_workspace/yamnet_label_list.txt --robot-host my-robot-main.abcdefg123.viam.cloud --robot-api-key abcdef1g23hi45jklm6nopqrstu7vwx8 --robot-api-key-id a1234b5c-678d-9012-3e45-67fabc8d9efa
+   ./example_audio_classification_client --model-label-path ~/example_workspace/yamnet_label_list.txt --robot-host my-machine-main.abcdefg123.viam.cloud --robot-api-key abcdef1g23hi45jklm6nopqrstu7vwx8 --robot-api-key-id a1234b5c-678d-9012-3e45-67fabc8d9efa
    ```
 
    The command should return output similar to:
@@ -305,7 +305,7 @@ What follows is a high-level overview of the steps it takes when executed:
 
 1. The client then populates an input tensor named `sample` as a `tensor_view` over the provided sample data.
    The tensor must be named according to the configured value under `tensor_name_remappings` in your machine configuration.
-   If you followed the instructions above to [generate your machine configuration](#generate-your-machine-configuration), the value `sample` was pre-populated for you in your generated robot configuration.
+   If you followed the instructions above to [generate your machine configuration](#generate-your-machine-configuration), the value `sample` was pre-populated for you in your generated machine configuration.
 
 1. The client invokes the `infer` method provided by the `example_mlmodelservice_tflite` module, providing it with the `sample` input tensor data it generated earlier.
 
@@ -313,7 +313,7 @@ What follows is a high-level overview of the steps it takes when executed:
 
 1. The client validates the result, including its expected type: a vector of `float` values.
    The expected output must be defined under `tensor_name_remappings` in your machine configuration for validation to succeed.
-   If you followed the instructions above to [generate your machine configuration](#generate-your-machine-configuration), the value `categories` was pre-populated for you in your generated robot configuration.
+   If you followed the instructions above to [generate your machine configuration](#generate-your-machine-configuration), the value `categories` was pre-populated for you in your generated machine configuration.
 
 1. If a labels file was provided, labels are read in as a vector of `string` values and the top 5 scores are associated with their labels.
 

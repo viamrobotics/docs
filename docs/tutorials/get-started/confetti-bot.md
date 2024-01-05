@@ -95,7 +95,7 @@ Now wire all of the components according to the wiring diagram:
 3. Connect your button to the Raspberry Pi.
    One of the connections goes to a 3.3V pin on the Raspberry Pi, and the other needs to be connected to a GPIO pin.
    We used Pin 1 for 3.3V (blue wire in wiring diagram).
-   Make sure to record which GPIO pin you connect to since you will be using this in your robot configuration.
+   Make sure to record which GPIO pin you connect to since you will be using this in your machine configuration.
    We used Pin 37 (white wire in wiring diagram).
 
 4. Now you can connect the button to your 12V battery, use a black alligator clip to connect the ground of the button switch to the ground of the battery.

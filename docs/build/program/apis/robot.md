@@ -183,7 +183,7 @@ Pass these options to [`AtAddress`](#ataddress).
 
 **Parameters:**
 
-- `api_key` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): [An API key](/fleet/cli/#authenticate) with access to the robot.
+- `api_key` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): [An API key](/fleet/cli/#authenticate) with access to the machine.
 - `api_key_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Your API key ID.
   Must be a valid UUID.
 
@@ -210,14 +210,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### AtAddress
 
-Create a robot client that is connected to the robot at the provided address.
+Create a robot client that is connected to the machine at the provided address.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `address` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Address of the robot. For example, IP address or URL.
+- `address` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Address of the machine. For example, IP address or URL.
 - `options` [(Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options): Options for connecting and refreshing.
 
 **Returns:**
@@ -248,8 +248,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### WithChannel
 
-Create a robot that is connected to a machine over the given channel.
-Any robots created using this method will NOT automatically close the channel upon exit.
+Create a machine that is connected to a machine over the given channel.
+Any machines created using this method will NOT automatically close the channel upon exit.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -366,7 +366,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ### GetOperations
 
-Get the list of operations currently running on the robot.
+Get the list of operations currently running on the machine.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -584,7 +584,7 @@ Get the configuration of the frame system of a given machine.
 
 **Returns:**
 
-- `frame_system` [(List[FrameSystemConfig])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.FrameSystemConfig): The configuration of a given robot’s frame system.
+- `frame_system` [(List[FrameSystemConfig])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.FrameSystemConfig): The configuration of a given machine’s frame system.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get a list of each of the reference frames configured on the machine.
@@ -604,7 +604,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-- [(framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given robot’s frame system.
+- [(framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given machine’s frame system.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
@@ -639,7 +639,7 @@ console.log("FrameSytemConfig:", await robot.frameSystemConfig());
 
 Get the status of the resources on the machine.
 You can provide a list of ResourceNames for which you want statuses.
-If no names are passed in, the status of every resource configured on the robot is returned.
+If no names are passed in, the status of every resource configured on the machine is returned.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -765,7 +765,7 @@ await robot.disconnect();
 
 ### StopAll
 
-Cancel all current and outstanding operations for the robot and stop all actuators and movement.
+Cancel all current and outstanding operations for the machine and stop all actuators and movement.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -801,7 +801,7 @@ await robot.stop_all()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Cancel all current and outstanding operations for the robot and stop all actuators and movement.
+// Cancel all current and outstanding operations for the machine and stop all actuators and movement.
 err := robot.StopAll(ctx.Background())
 ```
 
@@ -819,7 +819,7 @@ err := robot.StopAll(ctx.Background())
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#stopAll).
 
 ```typescript {class="line-numbers linkable-line-numbers"}
-// Cancel all current and outstanding operations for the robot and stop all actuators and movement.
+// Cancel all current and outstanding operations for the machine and stop all actuators and movement.
 await robot.stopAll();
 ```
 

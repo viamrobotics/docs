@@ -12,7 +12,7 @@ aliases:
 # SMEs: Peter L, Gautham, Bijan
 ---
 
-Any robot configured in Viam comes with the frame system service: an internally managed and mostly static system for storing the "reference frame" of each component of a machine within a coordinate system configured by the user.
+Any machine configured in Viam comes with the frame system service: an internally managed and mostly static system for storing the "reference frame" of each component of a machine within a coordinate system configured by the user.
 
 ![Visualization of a wheeled base configured with motors and a mounted camera in the frame system tab of the Viam app UI](/mobility/frame-system/frame_system_wheeled_base.png)
 

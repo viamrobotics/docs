@@ -111,7 +111,7 @@ Run the following on the command line to start `viam-server`, providing the path
 viam-server -config /path/to/my/config.json
 ```
 
-If you followed the [Installation Guide](/get-started/installation/#install-viam-server), your machine's configuration file is available in your <file>~/Downloads/</file> directory, named similarly to <file>viam-robotname-main.json</file>.
+If you followed the [Installation Guide](/get-started/installation/#install-viam-server), your machine's configuration file is available in your <file>~/Downloads/</file> directory, named similarly to <file>viam-machinename-main.json</file>.
 You can provide this path in the above command, or move the configuration file to a desired location and change the path in this command accordingly.
 If you don't yet have a configuration file, you can use the example configuration file provided at <file>/opt/homebrew/etc/viam.json</file> or you can [build a new configuration file](/internals/local-configuration-file/).
 

@@ -10,7 +10,7 @@ You can use the data management service to capture tabular data from a connected
 Once you have synced that data, you can query it using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} to obtain actionable insights.
 
 For example, you might configure data capture for several sensors on your machine, or across sensors on multiple machines, to report the ambient operating temperature.
-You can then run queries against that data to search for outliers or edge cases, to analyze how the ambient temperature affects your robots' operation.
+You can then run queries against that data to search for outliers or edge cases, to analyze how the ambient temperature affects your machines' operation.
 
 <table>
   <tr>

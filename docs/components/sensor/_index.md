@@ -28,7 +28,7 @@ Viam has three additional component types defined separately from _sensor_ that 
 
 {{% /alert %}}
 
-Most robots with a sensor need at least the following hardware:
+Most machines with a sensor need at least the following hardware:
 
 - A [board](/components/board/)
 - Depending on your sensor's output type (analog or digital), an analog-to-digital converter (ADC) may be necessary to allow the sensor to communicate with the board

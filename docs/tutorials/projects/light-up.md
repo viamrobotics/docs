@@ -171,7 +171,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ## Write Python code to control your object detection robot
 
-Now that you have your robot configured and your Kasa plug set up, you are ready to set up the code for the logic of the robot.
+Now that you have your machine configured and your Kasa plug set up, you are ready to set up the code for the logic of the robot.
 The files used in this section can all be found in [the GitHub repo for this project](https://github.com/viam-labs/devrel-demos/tree/main/Light%20up%20bot).
 
 ### Create the main script file

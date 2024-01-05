@@ -59,7 +59,7 @@ To establish a connection between a part of one machine and a part of a second m
 
    {{% snippet "show-secret.md" %}}
 
-4. Go to the Viam app machine page of the machinene part from which you want to establish a remote connection.
+4. Go to the Viam app machine page of the machine part from which you want to establish a remote connection.
    This is the machine part that will be able to access the resources of the other machine part.
 5. Click the **Config** tab, click the **Remotes** subtab, and select **JSON** mode.
 

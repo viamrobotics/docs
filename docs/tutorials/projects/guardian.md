@@ -116,7 +116,7 @@ To be able to test the components, you need to install `viam-server` and configu
 
 ### Install `viam-server` and connect to your robot
 
-Go to the [Viam app](https://app.viam.com) and create a new robot called `guardian`.
+Go to the [Viam app](https://app.viam.com) and create a new machine called `guardian`.
 
 Go to the **Setup** tab of your new machine's page and follow the steps [to install `viam-server` on your computer](/get-started/installation/).
 

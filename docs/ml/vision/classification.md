@@ -25,7 +25,7 @@ The returned classifications consist of the image's class label and confidence s
 
 The types of classifiers supported are:
 
-- **Object classification (`mlmodel`)**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
+- **Object classification (`mlmodel`)**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the machine’s hard drive.
 
 ## Configure an `mlmodel` classifier
 
@@ -161,7 +161,7 @@ If you intend to use the classifier with a camera that is part of your machine, 
 
    ![Model recognizes a star on camera feed](/services/model-on-camera.png)
 
-5. The following code gets the robot’s vision service and then runs a classifier vision model on an image from the machine's camera `"cam1"`.
+5. The following code gets the machine’s vision service and then runs a classifier vision model on an image from the machine's camera `"cam1"`.
 
    {{% alert title="Tip" color="tip" %}}
 
@@ -178,7 +178,7 @@ from viam.services.vision import VisionClient
 
 robot = await connect()
 camera_name = "cam1"
-# Grab camera from the robot
+# Grab camera from the machine
 cam1 = Camera.from_robot(robot, camera_name)
 # Grab Viam's vision service for the classifier
 my_classifier = VisionClient.from_robot(robot, "my_classifier")
@@ -208,7 +208,7 @@ import (
   "go.viam.com/rdk/components/camera"
 )
 
-// Grab the camera from the robot
+// Grab the camera from the machine
 cameraName := "cam1" // make sure to use the same component name that you have in your machine configuration
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {

@@ -103,7 +103,7 @@ The base remote control service supports the following methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with a [base](/components/base/) named `"my_base"`, [input controller](/components/input-controller/) named `"my_controller"`, and base remote control service named `"my_base_rc_service"`.
+The following code examples assume that you have a machine configured with a [base](/components/base/) named `"my_base"`, [input controller](/components/input-controller/) named `"my_controller"`, and base remote control service named `"my_base_rc_service"`.
 Make sure to add the required code to connect to your machine and import any required packages at the top of your code file.
 Go to your machine's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 

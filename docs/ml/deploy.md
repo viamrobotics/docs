@@ -63,7 +63,7 @@ You can choose to configure your service with an existing model on the machine o
 {{< tabs >}}
 {{% tab name="Existing Model" %}}
 
-To configure your service with an existing model on the robot, select **Path to Existing Model On Robot** for the **Deployment** field.
+To configure your service with an existing model on the machine, select **Path to Existing Model On Robot** for the **Deployment** field.
 
 Then specify the absolute **Model Path** and any **Optional Settings** such as the absolute **Label Path** and the **Number of threads**.
 
@@ -137,7 +137,7 @@ Save the configuration.
 ### Versioning for deployed models
 
 If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the machine.
-If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON robot configuration](/build/configure/#the-config-tab).
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON machine configuration](/build/configure/#the-config-tab).
 
 You can get the version number from a specific model version by clicking on **COPY** on the model on the models tab of the **DATA** page.
 The model package config looks like this:
@@ -173,7 +173,7 @@ The MLModel service supports the following methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with an `MLModel` service, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
+The following code examples assume that you have a machine configured with an `MLModel` service, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
 Go to your machine's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}

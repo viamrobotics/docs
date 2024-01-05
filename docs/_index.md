@@ -172,7 +172,7 @@ sitemap:
           </p>
         </div>
         <div class="hover-card-img">
-          {{<imgproc src="/general/code.png" alt="Robot code" resize="400x" >}}
+          {{<imgproc src="/general/code.png" alt="machine code" resize="400x" >}}
         </div>
       </div>
       <div class="col hover-card landing pink">

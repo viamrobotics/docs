@@ -435,7 +435,7 @@ import (
 
 cameraName := "cam1" // Use the same component name that you have in your machine configuration
 
-// Get the vision service you configured with name "my_segmenter" from the robot
+// Get the vision service you configured with name "my_segmenter" from the machine
 mySegmenter, err := vision.from_robot(robot, "my_segmenter")
 if err != nil {
     logger.Fatalf("Cannot get vision service: %v", err)

@@ -18,7 +18,7 @@ Electric motors are machines that convert electricity into rotary motion.
 They are the most common form of [actuator](https://en.wikipedia.org/wiki/Actuator) in robotics.
 The _motor_ component type natively supports brushed DC motors, brushless DC motors, and stepper motors controlled by a variety of [motor drivers](https://www.wellpcb.com/what-is-motor-driver.html).
 
-Most robots with a motor need at least the following hardware:
+Most machines with a motor need at least the following hardware:
 
 - The motor itself.
 - A compatible motor driver.

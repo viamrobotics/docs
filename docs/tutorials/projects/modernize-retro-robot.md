@@ -262,7 +262,7 @@ Merging 40-year-old tech with modern tech to light up LEDs is exciting, but we n
 For now, turn the power switch to the off position.
 In just a few minutes, you'll have it back on.
 
-Go to the [Viam app](https://app.viam.com) and create a new robot called `MAIV`.
+Go to the [Viam app](https://app.viam.com) and create a new machine called `MAIV`.
 
 Go to the **Setup** tab of your new machine's page and follow the steps [to install `viam-server` on your Raspberry Pi](/get-started/installation/).
 

@@ -42,7 +42,7 @@ You can access your machine page, write code to control it, and modify its confi
 When you next rent a rover you can choose to configure it with a previous rover configuration from your account or create a new rover with the standard starting config.
 
 {{< alert title="Tip" color="tip" >}}
-You can also reuse your code for the rover for other robots that you configure with Viam in the future.
+You can also reuse your code for the rover for other machines that you configure with Viam in the future.
 {{< /alert >}}
 
 ## What happens to my rented rover after the rental session?
@@ -52,7 +52,7 @@ You can also reuse your code for the rover for other robots that you configure w
 3. The Rover Rental Location and the final config of all previous rental rovers remain visible to your organization.
    You can continue modifying the configurations as desired.
 
-## I accidentally deleted my robot
+## I accidentally deleted my machine
 
 Unfortunately, there is no recovery path for a deleted machine.
 If you delete your machine and have a current reservation, click **Cancel Reservation** and then request a new reservation.

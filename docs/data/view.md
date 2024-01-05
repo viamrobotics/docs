@@ -37,7 +37,7 @@ If you click on an image or a file, a **Details** panel appears on the right wit
 On the [**DATA** page in the Viam app](https://app.viam.com/data/view), you can filter data in the left **Filtering** panel.
 You can filter by several categories including machine name, location, or timestamp range.
 
-For example, if you specify `Rover Rental` for location and click **SEARCH**, you can see all data captured on robots that belong to your `Rover Rental` location.
+For example, if you specify `Rover Rental` for location and click **SEARCH**, you can see all data captured on machines that belong to your `Rover Rental` location.
 
 You can also filter data using the [Viam Python SDK](https://python.viam.dev/).
 For example, you could use the [`BinaryDataByFilter`](/build/program/apis/data-client/#binarydatabyfilter) or [`TabularDataByFilter`](/build/program/apis/data-client/#tabulardatabyfilter) methods to filter binary data or tabular data respectively.

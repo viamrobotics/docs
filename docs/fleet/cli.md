@@ -14,8 +14,8 @@ The Viam CLI (command line interface) tool enables you to manage your machines a
 The CLI lets you:
 
 - Retrieve [organization](/fleet/organizations/) and location information
-- Manage [robot fleet](/fleet/) data and logs
-- Control robots by issuing component and service commands
+- Manage [machine fleet](/fleet/) data and logs
+- Control machines by issuing component and service commands
 - Upload and manage [modular resources](/registry/) in the Viam registry
 
 For example, this CLI command moves a servo to the 75 degree position:
@@ -633,7 +633,7 @@ The Viam registry page for your module displays the platforms your module suppor
 The `--version` argument accepts a valid [semver 2.0](https://semver.org/) version (example: `1.0.0`).
 You set an initial version for your custom module with your first `viam module upload` command for that module, and can later increment the version with subsequent `viam module upload` commands.
 
-Once your module is uploaded, users can select which version of your module to use on their robot from your module's page on the Viam registry.
+Once your module is uploaded, users can select which version of your module to use on their machine from your module's page on the Viam registry.
 Users can choose to pin to a specific patch version, permit upgrades within major release families or only within minor releases, or permit continuous updates.
 
 When you `update` a module configuration and then `upload` it, the `entrypoint` for that module defined in the [`meta.json` file](#the-metajson-file) is associated with the specific `--version` for that `upload`.
@@ -772,37 +772,37 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 The `robots` command allows you to manage your machine fleet.
 This includes:
 
-- Listing all robots that you have access to, filtered by organization and location.
-- Creating API keys to grant access to a specific robot
-- Retrieving robot and robot part status
-- Retrieving robot and robot part logs
-- Controlling a robot by issuing component and service commands
+- Listing all machines that you have access to, filtered by organization and location.
+- Creating API keys to grant access to a specific machine
+- Retrieving machine and machine part status
+- Retrieving machine and machine part logs
+- Controlling a machine by issuing component and service commands
 - Accessing your machine with a secure shell (when this feature is enabled)
 
 ```sh {class="command-line" data-prompt="$"}
 viam robots list
-viam robots status --organization=<org name> --location=<location name> --robot=<robot id>
-viam robots logs --organization=<org name> --location=<location name> --robot=<robot id> [...named args]
-viam robots part status --organization=<org name> --location=<location name> --robot=<robot id>
-viam robots part run --organization=<org name> --location=<location name> --robot=<robot id> [--stream] --data <meth>
-viam robots part shell --organization=<org name> --location=<location name> --robot=<robot id>
+viam robots status --organization=<org name> --location=<location name> --robot=<machine id>
+viam robots logs --organization=<org name> --location=<location name> --robot=<machine id> [...named args]
+viam robots part status --organization=<org name> --location=<location name> --robot=<machine id>
+viam robots part run --organization=<org name> --location=<location name> --robot=<machine id> [--stream] --data <meth>
+viam robots part shell --organization=<org name> --location=<location name> --robot=<machine id>
 ```
 
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
 
-# list all robots you have access to
+# list all machines you have access to
 viam robots list
 
-# get robot status
+# get machine status
 viam robots status  --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Robot's Org" --location myLoc
 
-# stream error level logs from a robot part
+# stream error level logs from a machine part
 viam robots part logs --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
 --organization "Robot's Org" --location myLoc --part "myrover-main" --tail true
 
-# stream classifications from a robot part every 500 milliseconds from the Viam Vision Service with classifier "stuff_detector"
+# stream classifications from a machine part every 500 milliseconds from the Viam Vision Service with classifier "stuff_detector"
 viam robots part run --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
 --organization "Robot's Org" --location myLoc --part "myrover-main" --stream 500ms \
 --data '{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_detector", "n":1}' \
@@ -814,11 +814,11 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 <!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| `list`      | list all robots that the authenticated session has access to, filtered by organization and location.  | - |
+| `list`      | list all machines that the authenticated session has access to, filtered by organization and location.  | - |
 | `api-key`   |  work with an api-key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
-| `status`      | retrieve robot status for a specified robot  | - |
-| `logs`      | retrieve logs for a specified robot | - |
-| `part`      | manage a specified robot part  | `status`, `run`, `logs`, `shell` (see [positional arguments: part](#positional-arguments-part)) |
+| `status`      | retrieve machine status for a specified machine  | - |
+| `logs`      | retrieve logs for a specified machine | - |
+| `part`      | manage a specified machine part  | `status`, `run`, `logs`, `shell` (see [positional arguments: part](#positional-arguments-part)) |
 | `--help`      | return help      | - |
 
 ##### Positional arguments: `api-key`
@@ -826,7 +826,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 <!-- prettier-ignore -->
 | argument | description |
 | ----------- | ----------- | ----------- |
-| `create`     | create an API key for a specific robot |
+| `create`     | create an API key for a specific machine |
 | `--help`      | return help |
 
 ##### Positional arguments: `part`
@@ -834,10 +834,10 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 <!-- prettier-ignore -->
 |        argument     |       description |
 | ----------- | ----------- | ----------- |
-| `status`     | retrieve robot status for a specified robot part |
+| `status`     | retrieve machine status for a specified machine part |
 | `run`     |  run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. |
-| `logs`     |  get logs for the specified robot part |
-| `shell`     |  access a robot part securely using a secure shell. This feature must be enabled. |
+| `logs`     |  get logs for the specified machine part |
+| `shell`     |  access a machine part securely using a secure shell. This feature must be enabled. |
 | `--help`      | return help |
 
 ##### Named arguments
@@ -845,21 +845,21 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 <!-- prettier-ignore -->
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| `--organization`      | organization name that the robot belongs to       |`list`, `status`, `logs`, `part`|true |
-| `--location`     |  location name that the robot belongs to    |`list`, `status`, `logs`, `part`|true |
-| `--robot`      |  robot id for which the command is being issued   |`status`, `logs`, `part`|true |
+| `--organization`      | organization name that the machine belongs to       |`list`, `status`, `logs`, `part`|true |
+| `--location`     |  location name that the machine belongs to    |`list`, `status`, `logs`, `part`|true |
+| `--robot`      |  machine id for which the command is being issued   |`status`, `logs`, `part`|true |
 | `--errors`      |  boolean, return only errors (default: false)   |`logs`|false |
 | `--part`      |  part name for which the command is being issued    |`logs`|false |
 | `--tail`     |  tail (stream) logs, boolean(default false)    |`part logs`|false |
 | `--stream`      |  if specified, the interval in which to stream the specified data, for example, 100ms or 1s    |`part run`|false |
 | `--data`      |  command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments))   |`part run`|true |
-| `--robot-id`      | the robot to create an API key for |`api-key` | true |
+| `--robot-id`      | the machine to create an API key for |`api-key` | true |
 | `--name`     |  the optional name of the API key    |`api-key` | false |
 | `--org-id`      |  the optional organization ID to attach the key to  |`api-key` | false |
 
 ##### Using the `--stream` and `--data` arguments
 
-Issuing the `part` command with the `run` positional argument allows you to run component and service (resource) commands for a selected robot part.
+Issuing the `part` command with the `run` positional argument allows you to run component and service (resource) commands for a selected machine part.
 
 The `--data` parameter is required and you must specify both:
 

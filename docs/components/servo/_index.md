@@ -25,7 +25,7 @@ The following shows an example wiring diagram for a hobby servo wired to a [`pi`
 The colors of the servo wires in this diagram may not match your servo.
 Refer to your servo's data sheet for wiring specifications.
 
-Most robots with a servo need at least the following hardware:
+Most machines with a servo need at least the following hardware:
 
 - A [board component](/components/board/) that can run `viam-server`
 - A servo

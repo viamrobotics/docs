@@ -44,7 +44,7 @@ Viam supports devices running **any** 64-bit Linux OS or macOS.
 
 The Viam platform provides a user interface for connecting to and managing machines, the [Viam app](https://app.viam.com/).
 
-To use the Viam platform with your machine, log in to [the app](https://app.viam.com/), create a new robot, and [install](/get-started/installation/) the [`viam-server`](https://github.com/viamrobotics/rdk) binary which:
+To use the Viam platform with your machine, log in to [the app](https://app.viam.com/), create a new machine, and [install](/get-started/installation/) the [`viam-server`](https://github.com/viamrobotics/rdk) binary which:
 
 - Creates, configures, and maintains the machine.
 - Securely handles all communications.
@@ -58,7 +58,7 @@ Everything Viam runs on your machine is [open-source](https://github.com/viamrob
 
 ## Configure your machine
 
-Robots can be small and simple or very complex.
+Machines can be small and simple or very complex.
 A machine can be a single-board computer with a single sensor or LED wired to it, or a machine can consist of multiple computers with many physical components connected, acting as one unit.
 
 The term {{% glossary_tooltip term_id="component" text="_component_" %}} describes a piece of hardware that a computer controls, like an arm or a motor.

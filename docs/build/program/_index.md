@@ -172,7 +172,7 @@ The TypeScript SDK currently only supports building web browser apps.
 import * as VIAM from "@viamrobotics/sdk";
 
 async function main() {
-  // Replace with the host of your actual robot running Viam.
+  // Replace with the host of your actual machine running Viam.
   const host = "ADDRESS FROM THE VIAM APP";
 
   const robot = await VIAM.createRobotClient({

@@ -468,7 +468,7 @@ Get a {{< glossary_tooltip term_id="machine" text="machine" >}} by its ID.
 
 **Parameters:**
 
-- `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot to get.
+- `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine to get.
 
 **Raises:**
 
@@ -476,7 +476,7 @@ Get a {{< glossary_tooltip term_id="machine" text="machine" >}} by its ID.
 
 **Returns:**
 
-- [(viam.proto.app.Robot)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot): The robot.
+- [(viam.proto.app.Robot)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot): The machine.
 
 ```python {class="line-numbers linkable-line-numbers"}
 robot = await cloud.get_robot(robot_id="1a123456-x1yz-0ab0-a12xyzabc")
@@ -496,7 +496,7 @@ Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under
 
 **Parameters:**
 
-- `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot to get parts from.
+- `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine to get parts from.
 
 **Raises:**
 
@@ -504,7 +504,7 @@ Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under
 
 **Returns:**
 
-- (List[[viam.app.app_client.RobotPart]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The list of robot parts.
+- (List[[viam.app.app_client.RobotPart]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The list of machine parts.
 
 ```python {class="line-numbers linkable-line-numbers"}
 list_of_parts = await cloud.get_robot_parts(
@@ -518,21 +518,21 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### GetRobotPart
 
-Get a specific robot {{< glossary_tooltip term_id="part" text="part" >}}.
+Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to get.
-- `dest` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional filepath to write the robot part’s config in JSON format to.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to get.
+- `dest` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional filepath to write the machine part’s config in JSON format to.
 - `indent` [(int)](https://docs.python.org/3/library/functions.html#int): Size (in number of spaces) of indent when writing the JSON config to `dest`.
   Defaults to `4`.
 
 **Returns:**
 
-- [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The robot {{< glossary_tooltip term_id="part" text="part" >}}.
+- [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_robot_part = await cloud.get_robot_part(
@@ -546,14 +546,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### GetRobotPartLogs
 
-Get the logs associated with a specific robot {{< glossary_tooltip term_id="part" text="part" >}}.
+Get the logs associated with a specific machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to get logs from.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to get logs from.
 - `filter` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Only include logs with messages that contain the string `filter`.
   Defaults to empty string `""`, meaning no filter.
 - `dest` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional filepath to write the log entries to.
@@ -584,14 +584,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### TailRobotPartLogs
 
-Get an asynchronous iterator that receives live robot part logs.
+Get an asynchronous iterator that receives live machine part logs.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to retrieve logs from.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to retrieve logs from.
 - `errors_only` [(bool)](https://docs.python.org/3/library/functions.html#bool): (Optional) Specifies whether to limit returned log messages to error logs only.
   Defaults to `True`, including only error-level messages by default.
 - `filter` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Only include logs with messages that contain the string `filter`.
@@ -599,7 +599,7 @@ Get an asynchronous iterator that receives live robot part logs.
 
 **Returns:**
 
-- (\_LogsStream[[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live robot part logs.
+- (\_LogsStream[[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live machine part logs.
 
 ```python {class="line-numbers linkable-line-numbers"}
 logs_stream = await cloud.tail_robot_part_logs(
@@ -620,15 +620,15 @@ Get a list containing the history of a machine {{< glossary_tooltip term_id="par
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to retrieve history from.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to retrieve history from.
 
 **Raises:**
 
-- `GRPCError`: This error is raised if an invalid robot part ID is passed.
+- `GRPCError`: This error is raised if an invalid machine part ID is passed.
 
 **Returns:**
 
-- (List[[viam.app.app_client.RobotPartHistoryEntry](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPartHistoryEntry)]): The list of the robot part’s history.
+- (List[[viam.app.app_client.RobotPartHistoryEntry](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPartHistoryEntry)]): The list of the machine part’s history.
 
 ```python {class="line-numbers linkable-line-numbers"}
 part_history = await cloud.get_robot_part_history(
@@ -649,18 +649,18 @@ Change the name of and assign an optional new configuration to a machine {{< glo
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to update.
-- `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): New name to be updated on the robot part.
-- `robot_config` (Mapping[str, Any]): Optional new config represented as a dictionary to be updated on the robot part.
-  The robot part's config remains unchanged if a new `robot_config` is not passed.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to update.
+- `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): New name to be updated on the machine part.
+- `robot_config` (Mapping[str, Any]): Optional new config represented as a dictionary to be updated on the machine part.
+  The machine part's config remains unchanged if a new `robot_config` is not passed.
 
 **Raises:**
 
-- `GRPCError`: This error is raised if an invalid robot part ID, name, or config is passed.
+- `GRPCError`: This error is raised if an invalid machine part ID, name, or config is passed.
 
 **Returns:**
 
-- [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The newly updated robot part.
+- [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The newly updated machine part.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_robot_part = await cloud.update_robot_part(
@@ -681,16 +681,16 @@ Create a new machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 **Parameters:**
 
-- `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot to create a new part for.
+- `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine to create a new part for.
 - `part_name` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the new part.
 
 **Raises:**
 
-- `GRPCError`: This error is raised if an invalid robot ID is passed.
+- `GRPCError`: This error is raised if an invalid machine ID is passed.
 
 **Returns:**
 
-- [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The new robot part’s ID.
+- [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The new machine part’s ID.
 
 ```python {class="line-numbers linkable-line-numbers"}
 new_part_id = await cloud.new_robot_part(
@@ -704,18 +704,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### DeleteRobotPart
 
-Delete the specified robot {{< glossary_tooltip term_id="part" text="part" >}}.
+Delete the specified machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to delete.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to delete.
 
 **Raises:**
 
-- `GRPCError`: This error is raised if an invalid robot part ID is passed.
+- `GRPCError`: This error is raised if an invalid machine part ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.delete_robot_part(
@@ -736,11 +736,11 @@ Mark a machine part as the [_main_ part](/build/configure/parts-and-remotes/#mac
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to mark as main.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to mark as main.
 
 **Raises:**
 
-- `GRPCError`: This error is raised if an invalid robot part ID is passed.
+- `GRPCError`: This error is raised if an invalid machine part ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.mark_part_as_main(
@@ -754,18 +754,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### MarkPartForRestart
 
-Mark a specified robot part for restart.
+Mark a specified machine part for restart.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to mark for restart.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to mark for restart.
 
 **Raises:**
 
-- `GRPCError`: This error is raised if an invalid robot part ID is passed.
+- `GRPCError`: This error is raised if an invalid machine part ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.mark_part_for_restart(
@@ -786,15 +786,15 @@ Create a machine {{< glossary_tooltip term_id="part" text="part" >}} secret.
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to create a secret for.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to create a secret for.
 
 **Raises:**
 
-- `GRPCError`: This error is raised if an invalid robot part ID is passed.
+- `GRPCError`: This error is raised if an invalid machine part ID is passed.
 
 **Returns:**
 
-- [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The robot part the new secret was generated for.
+- [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The machine part the new secret was generated for.
 
 ```python {class="line-numbers linkable-line-numbers"}
 part_with_new_secret = await cloud.create_robot_part_secret(
@@ -815,12 +815,12 @@ Delete a machine part secret.
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to delete the secret from.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to delete the secret from.
 - `secret_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the secret to delete.
 
 **Raises:**
 
-- `GRPCError`: This error is raised if an invalid robot part ID or secret ID is passed.
+- `GRPCError`: This error is raised if an invalid machine part ID or secret ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.delete_robot_part_secret(
@@ -835,14 +835,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### ListRobots
 
-Get a list of all robots in a specified location.
+Get a list of all machines in a specified location.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `location_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to retrieve the robots from.
+- `location_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to retrieve the machines from.
 
 **Raises:**
 
@@ -850,10 +850,10 @@ Get a list of all robots in a specified location.
 
 **Returns:**
 
-- (List[[viam.proto.app.Robot](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)]): The list of robots.
+- (List[[viam.proto.app.Robot](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)]): The list of machines.
 
 ```python {class="line-numbers linkable-line-numbers"}
-list_of_robots = await cloud.list_robots(location_id="123ab12345")
+list_of_machines = await cloud.list_robots(location_id="123ab12345")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_robots).
@@ -870,8 +870,8 @@ Create a new {{< glossary_tooltip term_id="machine" text="machine" >}}.
 
 **Parameters:**
 
-- `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the new robot.
-- `location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to create the new robot in.
+- `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the new machine.
+- `location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to create the new machine in.
   Defaults to the current authorized location.
 
 **Raises:**
@@ -883,7 +883,7 @@ Create a new {{< glossary_tooltip term_id="machine" text="machine" >}}.
 - [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The new machine's ID.
 
 ```python {class="line-numbers linkable-line-numbers"}
-new_robot_id = await cloud.new_robot(name="beepboop")
+new_machine_id = await cloud.new_robot(name="beepboop")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.new_robot).
@@ -893,24 +893,24 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### UpdateRobot
 
-Change the name of an existing robot.
+Change the name of an existing machine.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot to update.
-- `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): New name for the robot.
-- `location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location in which the robot exists.
+- `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine to update.
+- `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): New name for the machine.
+- `location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location in which the machine exists.
   Defaults to the location ID provided at `AppClient` instantiation.
 
 **Raises:**
 
-- `GRPCError`: This error is raised if an invalid robot ID, name, or location ID is passed, or if one isn't passed and no location ID was provided at `AppClient` instantiation.
+- `GRPCError`: This error is raised if an invalid machine ID, name, or location ID is passed, or if one isn't passed and no location ID was provided at `AppClient` instantiation.
   **Returns:**
 
-- [(viam.proto.app.Robot)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot): The newly updated robot.
+- [(viam.proto.app.Robot)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot): The newly updated machine.
 
 ```python {class="line-numbers linkable-line-numbers"}
 updated_robot = await cloud.update_robot(
@@ -932,11 +932,11 @@ Delete a specified machine.
 
 **Parameters:**
 
-- `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot to delete.
+- `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine to delete.
 
 **Raises:**
 
-- `GRPCError`: This error is raised if an invalid robot ID is passed.
+- `GRPCError`: This error is raised if an invalid machine ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.delete_robot(robot_id="1a123456-x1yz-0ab0-a12xyzabc")
@@ -1318,7 +1318,7 @@ List the {{< glossary_tooltip term_id="module" text="modules" >}} under the orga
 
 **Raises:**
 
-- `GRPCError`: This error is raised if an invalid robot ID is passed.
+- `GRPCError`: This error is raised if an invalid machine ID is passed.
 
 **Returns:**
 

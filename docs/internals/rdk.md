@@ -3,7 +3,7 @@ title: "Robot Development Kit"
 linkTitle: "Robot Development Kit"
 weight: 1
 type: "docs"
-description: "The RDK is the open-source, on-robot portion of the Viam platform, that provides viam-server and the Go SDK."
+description: "The RDK is the open-source, on-machine portion of the Viam platform, that provides viam-server and the Go SDK."
 tags: ["server", "rdk"]
 aliases:
   - "/product-overviews/rdk"
@@ -14,7 +14,7 @@ aliases:
 For an overview of the Viam platform, see [Viam in 3 minutes](/get-started/viam/).
 {{< /alert >}}
 
-Viam’s Robot Development Kit (RDK) is the [open-source](https://github.com/viamrobotics/rdk), on-robot portion of the Viam platform, that provides `viam-server` and the Go SDK.
+Viam’s Robot Development Kit (RDK) is the [open-source](https://github.com/viamrobotics/rdk), on-machine portion of the Viam platform, that provides `viam-server` and the Go SDK.
 
 ## `viam-server`
 
@@ -22,7 +22,7 @@ _viam-server_ manages the following:
 
 ### Communication
 
-`viam-server` handles all {{< glossary_tooltip term_id="grpc" text="gRPC" >}} and {{< glossary_tooltip term_id="webrtc" >}} communication for connecting robots to the cloud or for connecting to other parts of your machine.
+`viam-server` handles all {{< glossary_tooltip term_id="grpc" text="gRPC" >}} and {{< glossary_tooltip term_id="webrtc" >}} communication for connecting machines to the cloud or for connecting to other parts of your machine.
 
 ### Dependency Management
 
@@ -58,7 +58,7 @@ Data capture for individual components is supported on [certain component subtyp
 
 ### Shutdown
 
-During robot shutdown, the RDK handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
+During machine shutdown, the RDK handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
 
 ## Next Steps
 

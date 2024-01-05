@@ -91,7 +91,7 @@ The STL files for the smart feeder robot are available on [GitHub](https://githu
 Now that you've set up your robot, you can start configuring and testing it.
 
 1. If you haven’t already, set up the Raspberry Pi by following our [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/).
-1. Go to [the Viam app](https://app.viam.com) and create a new robot instance in your preferred organization.
+1. Go to [the Viam app](https://app.viam.com) and create a new machine instance in your preferred organization.
 1. Then follow the instructions on the **Setup** tab.
 
 {{< tabs >}}

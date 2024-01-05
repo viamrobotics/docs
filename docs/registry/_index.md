@@ -86,7 +86,7 @@ You can write modules in a variety of programming languages, such as, Go, Python
 To create a new module:
 
 1. [Create a module](/registry/create/) with one or more modular resources by implementing all methods for the component's or service's standardized API.
-1. [Upload the module to the Viam registry](/registry/upload/) to make it available for deployment to robots or add it as a [local module](/registry/configure/#local-modules).
+1. [Upload the module to the Viam registry](/registry/upload/) to make it available for deployment to machines or add it as a [local module](/registry/configure/#local-modules).
    You can upload _private_ modules for your {{< glossary_tooltip term_id="organization" text="organization" >}} or _public_ modules.
 1. Once you have uploaded your module to the registry, [deploy and configure the module](/registry/configure/) from the Viam app.
    Then, you can test your added resource using the [**Control** tab](/fleet/#remote-control) and [program](/build/program/) it with Viam's Go or Python SDKs.

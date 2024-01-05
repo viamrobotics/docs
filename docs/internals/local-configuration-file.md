@@ -6,7 +6,7 @@ no_list: true
 type: docs
 icon: "/get-started/installation/thumbnails/manage.png"
 images: ["/get-started/installation/thumbnails/manage.png"]
-description: "Building a local robot configuration file for use with viam-server."
+description: "Building a local machine configuration file for use with viam-server."
 ---
 
 The `viam-server` binary uses a JSON-formatted configuration file to define all resources (hardware [components](/components/) and software [services](/services/)) it has access to, as well as any relevant parameters for those resources.
@@ -47,7 +47,7 @@ If your machine temporarily disconnects from the internet, its configuration is 
 ## Build a local configuration file manually
 
 If your machine will never connect to the internet, you can create a local configuration file yourself without using the Viam app.
-A locally-configured robot will not be able to access Viam's cloud features.
+A locally-configured machine will not be able to access Viam's cloud features.
 For most users, we recommend [using the Viam app to create the configuration file](#build-a-local-configuration-file-in-the-viam-app) as it is less error-prone.
 
 If you followed the instructions to [install `viam-server`](/get-started/installation/), the installation process provides an example configuration file in the following location:

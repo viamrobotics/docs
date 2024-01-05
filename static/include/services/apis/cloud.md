@@ -13,23 +13,23 @@ Method Name | Description
 [`LocationAuth`](/build/program/apis/cloud/#locationauth ) | Get a location's authorization (location secrets).
 [`CreateLocationSecret`](/build/program/apis/cloud/#createlocationsecret ) | Create a new location secret. *Deprecated*.
 [`DeleteLocationSecret`](/build/program/apis/cloud/#deletelocationsecret ) | Delete a location secret. *Deprecated*.
-[`GetRobot`](/build/program/apis/cloud/#getrobot ) | Get a {{< glossary_tooltip term_id="machine" text="machine" >}} by robot ID.
-[`GetRobotParts`](/build/program/apis/cloud/#getrobotparts ) | Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under a specific robot.
-[`GetRobotPart`](/build/program/apis/cloud/#getrobotpart ) | Get a robot {{< glossary_tooltip term_id="part" text="part" >}}.
-[`GetRobotPartLogs`](/build/program/apis/cloud/#getrobotpartlogs ) | Get the logs associated with a robot part.
-[`TailRobotPartLogs`](/build/program/apis/cloud/#tailrobotpartlogs ) | Get an asynchronous iterator that receives live robot part logs.
-[`GetRobotPartHistory`](/build/program/apis/cloud/#getrobotparthistory ) | Get a list containing the history of a robot part.
-[`UpdateRobotPart`](/build/program/apis/cloud/#updaterobotpart ) | Update the name or configuration of a robot part.
-[`NewRobotPart`](/build/program/apis/cloud/#newrobotpart ) | Create a new robot part.
-[`DeleteRobotPart`](/build/program/apis/cloud/#deleterobotpart ) | Delete a robot part.
-[`MarkPartAsMain`](/build/program/apis/cloud/#markpartasmain ) | Mark a part as the [_main_ part](/build/configure/parts-and-remotes/#machine-parts) of a robot.
-[`MarkPartForRestart`](/build/program/apis/cloud/#markpartforrestart ) | Mark a robot part for restart.
-[`CreateRobotPartSecret`](/build/program/apis/cloud/#createrobotpartsecret ) | Create a robot part secret. *Deprecated*.
-[`DeleteRobotPartSecret`](/build/program/apis/cloud/#deleterobotpartsecret ) | Delete a robot part secret. *Deprecated*.
-[`ListRobots`](/build/program/apis/cloud/#listrobots ) | Get a list of all robots in a location.
-[`NewRobot`](/build/program/apis/cloud/#newrobot ) | Create a new robot.
-[`UpdateRobot`](/build/program/apis/cloud/#updaterobot ) | Change the name of an existing robot.
-[`DeleteRobot`](/build/program/apis/cloud/#deleterobot ) | Delete a robot.
+[`GetRobot`](/build/program/apis/cloud/#getrobot ) | Get a {{< glossary_tooltip term_id="machine" text="machine" >}} by machine ID.
+[`GetRobotParts`](/build/program/apis/cloud/#getrobotparts ) | Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under a specific machine.
+[`GetRobotPart`](/build/program/apis/cloud/#getrobotpart ) | Get a machine {{< glossary_tooltip term_id="part" text="part" >}}.
+[`GetRobotPartLogs`](/build/program/apis/cloud/#getrobotpartlogs ) | Get the logs associated with a machine part.
+[`TailRobotPartLogs`](/build/program/apis/cloud/#tailrobotpartlogs ) | Get an asynchronous iterator that receives live machine part logs.
+[`GetRobotPartHistory`](/build/program/apis/cloud/#getrobotparthistory ) | Get a list containing the history of a machine part.
+[`UpdateRobotPart`](/build/program/apis/cloud/#updaterobotpart ) | Update the name or configuration of a machine part.
+[`NewRobotPart`](/build/program/apis/cloud/#newrobotpart ) | Create a new machine part.
+[`DeleteRobotPart`](/build/program/apis/cloud/#deleterobotpart ) | Delete a machine part.
+[`MarkPartAsMain`](/build/program/apis/cloud/#markpartasmain ) | Mark a part as the [_main_ part](/build/configure/parts-and-remotes/#machine-parts) of a machine.
+[`MarkPartForRestart`](/build/program/apis/cloud/#markpartforrestart ) | Mark a machine part for restart.
+[`CreateRobotPartSecret`](/build/program/apis/cloud/#createrobotpartsecret ) | Create a machine part secret. *Deprecated*.
+[`DeleteRobotPartSecret`](/build/program/apis/cloud/#deleterobotpartsecret ) | Delete a machine part secret. *Deprecated*.
+[`ListRobots`](/build/program/apis/cloud/#listrobots ) | Get a list of all machines in a location.
+[`NewRobot`](/build/program/apis/cloud/#newrobot ) | Create a new machine.
+[`UpdateRobot`](/build/program/apis/cloud/#updaterobot ) | Change the name of an existing machine.
+[`DeleteRobot`](/build/program/apis/cloud/#deleterobot ) | Delete a machine.
 [`ListFragments`](/build/program/apis/cloud/#listfragments ) | Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}}.
 [`GetFragment`](/build/program/apis/cloud/#getfragment ) | Get a fragment by its ID.
 [`CreateFragment`](/build/program/apis/cloud/#createfragment ) | Create a new private fragment.

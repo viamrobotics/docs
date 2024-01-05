@@ -24,7 +24,7 @@ Use cases (optional):
 - A brief description of one sample use case.
 - ...
 
-Most robots with a COMPONENT need at least the following hardware (optional):
+Most machines with a COMPONENT need at least the following hardware (optional):
 
 - Board
 - ...

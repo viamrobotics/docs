@@ -34,7 +34,7 @@ The returned detections consist of the bounding box around the identified object
 You can use the following types of detectors:
 
 - [**Color detection (`color_detector`)**](#configure-a-color_detector): A heuristic detector that draws boxes around objects according to their hue (does not detect black, gray, and white).
-- [**Object detection (`mlmodel`)**](#configure-an-mlmodel-detector): A detector that draws bounding boxes according to an [ML model](/ml/) available on the robot’s hard drive.
+- [**Object detection (`mlmodel`)**](#configure-an-mlmodel-detector): A detector that draws bounding boxes according to an [ML model](/ml/) available on the machine’s hard drive.
 
 ## Configure a `color_detector`
 
@@ -166,7 +166,7 @@ To make use of ML models with your machine, use the built-in [ML model service](
 
 <br>
 
-A machine learning detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
+A machine learning detector that draws bounding boxes according to the specified tensorflow-lite model file available on the machine’s hard drive.
 To create a `mlmodel` classifier, you need an [ML model service with a suitable model](/ml/).
 
 {{< tabs >}}
@@ -262,7 +262,7 @@ If you intend to use the detector with a camera that is part of your machine, yo
    ![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/ml/vision/chair-detector.png)
 
 5. To access detections with code, use the Vision Service methods on the camera you configured in step 1.
-   The following code gets the robot’s vision service and then runs a color detector vision model on output from the machine's camera `"cam1"`:
+   The following code gets the machine’s vision service and then runs a color detector vision model on output from the machine's camera `"cam1"`:
 
    {{% alert title="Tip" color="tip" %}}
 
@@ -280,7 +280,7 @@ from viam.services.vision import VisionClient
 robot = await connect()
 camera_name = "cam1"
 
-# Grab camera from the robot
+# Grab camera from the machine
 cam1 = Camera.from_robot(robot, camera_name)
 # Grab Viam's vision service for the detector
 my_detector = VisionClient.from_robot(robot, "my_detector")
@@ -307,7 +307,7 @@ import (
   "go.viam.com/rdk/components/camera"
 )
 
-// Grab the camera from the robot
+// Grab the camera from the machine
 cameraName := "cam1" // make sure to use the same component name that you have in your machine configuration
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {

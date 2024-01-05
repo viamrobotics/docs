@@ -70,7 +70,7 @@ Click the trash can icon to delete the API key.
 
 Click **Generate key** to generate a new key.
 Optionally, give the key a name of your choice.
-Click on the **Resource** menu and choose what organization, location, or robot you want the key to grant access to.
+Click on the **Resource** menu and choose what organization, location, or machine you want the key to grant access to.
 For **Role**, assign either an **Owner** or **Operator** role.
 See [Permissions](#permissions) for information about the privilege each role entails at each resource level.
 
@@ -88,14 +88,14 @@ To edit the role, click on the dropdown menu next to the role and select **Owner
 See [Permissions](#permissions) for information about the privilege each role entails at each resource level.
 
 To change the entities it is able to access, click **+ Grant additional access**.
-Select which organization, location, or robot you want the key to grant access to.
+Select which organization, location, or machine you want the key to grant access to.
 Click **Choose** to confirm your selection.
 
 ## Permissions
 
 The following sections describe the permissions for each user role when it comes to managing machines, locations, organizations, fragments, and data.
 
-### Robots
+### Machines
 
 Permissions for managing {{< glossary_tooltip term_id="machine" text="machines" >}} are as follows:
 

@@ -45,7 +45,7 @@ Different vision service models support different methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with a [camera](/components/camera/) and a vision service [detector](/ml/vision/detection/), [classifier](/ml/vision/classification/) or [segmenter](/ml/vision/segmentation/), as applicable, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
+The following code examples assume that you have a machine configured with a [camera](/components/camera/) and a vision service [detector](/ml/vision/detection/), [classifier](/ml/vision/classification/) or [segmenter](/ml/vision/segmentation/), as applicable, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
 Go to your machine's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}
@@ -69,7 +69,7 @@ Get a list of detections from a given image using a configured [detector](./dete
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_detections).
 
 ```python {class="line-numbers linkable-line-numbers" data-line="11"}
-# Grab camera from the robot
+# Grab camera from the machine
 cam1 = Camera.from_robot(robot, "cam1")
 
 # Get the detector you configured on your machine
@@ -99,7 +99,7 @@ detections = await my_detector.get_detections(img)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="22"}
-// Grab the camera from the robot
+// Grab the camera from the machine
 cameraName := "cam1"
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
@@ -177,7 +177,7 @@ detections = await my_detector.get_detections_from_camera(camera_name)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
-// Grab the camera from the robot
+// Grab the camera from the machine
 cameraName := "cam1"
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
@@ -224,7 +224,7 @@ Get a list of classifications from a given image using a configured [classifier]
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_classifications).
 
 ```python {class="line-numbers linkable-line-numbers" data-line="11"}
-# Grab camera from the robot
+# Grab camera from the machine
 cam1 = Camera.from_robot(robot, "cam1")
 
 # Get the classifier you configured on your machine
@@ -256,7 +256,7 @@ classifications = await my_classifier.get_classifications(img, 2)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="22"}
-// Grab the camera from the robot
+// Grab the camera from the machine
 cameraName := "cam1"
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
@@ -340,7 +340,7 @@ classifications = await my_classifier.get_classifications_from_camera(
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
-// Grab the camera from the robot
+// Grab the camera from the machine
 cameraName := "cam1"
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
@@ -385,7 +385,7 @@ Get a list of 3D point cloud objects and associated metadata in the latest pictu
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_object_point_clouds).
 
 ```python {class="line-numbers linkable-line-numbers" data-line="8"}
-# Grab the 3D camera from the robot
+# Grab the 3D camera from the machine
 cam1 = Camera.from_robot(robot, "cam1")
 
 # Grab the object segmenter you configured on your machine
@@ -412,7 +412,7 @@ objects = await my_segmenter.get_object_point_clouds(cam1)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
-// Grab the camera from the robot
+// Grab the camera from the machine
 cameraName := "cam1"
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
