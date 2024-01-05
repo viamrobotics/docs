@@ -48,7 +48,7 @@ Method Name | Description
 [`DeleteOrganizationInvite`](/build/program/apis/cloud/#deleteorganizationinvite) | Delete a pending organization invite.
 [`ResendOrganizationInvite`](/build/program/apis/cloud/#resendorganizationinvite) | Resend a pending organization invite email.
 [`GetRoverRentalRobots`](/build/program/apis/cloud/#getroverrentalrobots) | Return a list of rover rental robots within an org.
-[`CheckPermissions`](/build/program/apis/cloud/#checkpermissions) | Check validity of a list of permissions.
+[`CheckPermissions`](/build/program/apis/cloud/#checkpermissions) | Check if the entity you're currently authenticated to is permitted to perform some action or set of actions on the resource you pass to the method.
 [`CreateKey`](/build/program/apis/cloud/#createkey) | Create a new API key.
 [`CreateKeyFromExistingKeyAuthorizations`](/build/program/apis/cloud/#createkeyfromexistingkeyauthorizations) | Create a new API key with an existing key’s authorizations.
 [`ListKeys`](/build/program/apis/cloud/#listkeys) | List all keys for an organization.

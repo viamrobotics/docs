@@ -1475,12 +1475,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Check validity of a list of permissions.
+Check if the organization, location, or robot your `ViamClient` is authenticated to is permitted to perform some action or set of actions on the resource you pass to the method.
 
 **Parameters:**
 
 - `permissions` [(List[viam.proto.app.AuthorizedPermissions])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions): A list containing the resource type and ID, followed by the resource permissions to check.
-  See [GitHub](https://github.com/viamrobotics/app/blob/main/auth/models/models.go#L190) for the full list of permissions.
 
 **Returns:**
 
@@ -1493,7 +1492,7 @@ Check validity of a list of permissions.
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app import AuthorizedPermissions
 
-# Check whether the entity you're currently authenticated to has permission to control and/or read logs from robots in the organization-identifier123 org
+# Check whether the entity you're currently authenticated to has permission to control and/or read logs from robots in the "organization-identifier123" org
 permissions = [AuthorizedPermissions(resource_type="organization",
                                      resource_id="organization-identifier123",
                                      permissions=["control_robot", "read_robot_logs"])]
@@ -1505,6 +1504,64 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+
+Valid arguments for permissions are as follows:
+
+{{% expand "Click to see permissions strings available" %}}
+
+```python
+"read_organization"
+"write_organization"
+
+"read_fragment"
+"write_fragment"
+
+"read_location"
+"write_location"
+
+"read_location_secret"
+"read_robot_secret"
+
+"read_robot"
+"read_robot_config"
+"read_robot_logs"
+"write_robot"
+"control_robot"
+
+"read_organization_data_management"
+"read_location_data_management"
+"read_robot_data_management"
+"write_organization_data_management"
+"write_location_data_management"
+"write_robot_data_management"
+
+"read_robot_history"
+
+"read_mapping_sessions"
+"create_maps"
+
+"write_private_registry_item"
+"write_public_registry_item"
+"read_private_registry_item"
+
+"train_models"
+
+"read_packages"
+"write_packages"
+"delete_packages"
+
+"configure_database_user"
+"get_database_connection"
+
+"create_dataset"
+"list_dataset"
+"rename_dataset"
+"delete_dataset"
+```
+
+{{% /expand %}}
+
+For more information about managing permissions, see [Role-Based Access Control](/fleet/rbac/#permissions).
 
 ### CreateKey
 
