@@ -1,5 +1,5 @@
 ---
-title: "Configure an MPU-6050 Gyroscope/Accelerometer (Micro-RDK)"
+title: "Configure an MPU-6050 (Micro-RDK)"
 linkTitle: "gyro-mpu6050"
 weight: 40
 type: "docs"
