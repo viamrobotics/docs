@@ -1572,7 +1572,7 @@ For more information about managing permissions, see [Role-Based Access Control]
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Create a new API key.
+Create a new [API key](/fleet/rbac/#api-keys).
 
 **Parameters:**
 
