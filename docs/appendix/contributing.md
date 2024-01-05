@@ -311,6 +311,8 @@ For regular videos that should use the video shortcode as follows:
 
 {{<video webm_src="/heart.webm" mp4_src="/heart.mp4" alt="A robot drawing a heart" poster="/general/heart.jpg">}}
 
+Make sure your `webm` and `mp4` files are less than 1MB.
+
 We use `webm` and `mp4` source files for videos because they are generally smaller.
 The poster is an image that gets loaded as a preview.
 
