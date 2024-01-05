@@ -9,9 +9,9 @@ tags: ["data management", "cloud", "app", "fleet management"]
 ---
 
 Role-Based Access Control (RBAC) is a way to enforce security in the [Viam app](https://app.viam.com) by assigning organization members roles that confer permissions.
-Users can have access to different fleet management capabilities depending on whether they are an owner or an operator of a given {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="robot" text="robot" >}}.
+Users can have access to different fleet management capabilities depending on whether they are an owner or an operator of a given {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="machine" text="machine" >}}.
 
-- **Owner**: Can see and edit [every tab on the robot page](/fleet/machines/#navigating-the-robot-page).
+- **Owner**: Can see and edit [every tab on the machine page](/fleet/machines/#navigating-the-machine-page).
   Can manage users in the app.
 - **Operator**: Can see and use only the [**Control** tab](/fleet/machines/#control).
   Cannot see or edit the [**Setup**](/fleet/machines/#setup), [**Config**](/fleet/machines/#configuration), [**History**](/fleet/machines/#history), [**Logs**](/fleet/machines/#logs), [**Code sample**](/fleet/machines/#code-sample), or [**Security**](/fleet/machines/#security) tabs.
@@ -20,7 +20,7 @@ For more detailed information on the permissions each role confers for different
 
 ## Change a user's access
 
-If you have the **Owner** role, you can [invite new users](/fleet/organizations/#invite-users-to-your-organization) and change the roles assigned to an organization member on a per robot, location, or organization level.
+If you have the **Owner** role, you can [invite new users](/fleet/organizations/#invite-users-to-your-organization) and change the roles assigned to an organization member on a per machine, location, or organization level.
 
 To view the roles each organization member has, click on the organization dropdown in the top navigation bar and click on **Settings**.
 
@@ -52,22 +52,22 @@ The option to grant additional access is only visible if you can grant the user 
 
 ## Permissions
 
-The following sections describe the permissions for each user role when it comes to managing robots, locations, organizations, fragments, and data.
+The following sections describe the permissions for each user role when it comes to managing machines, locations, organizations, fragments, and data.
 
 ### Robots
 
-Permissions for managing {{< glossary_tooltip term_id="robot" text="robots" >}} are as follows:
+Permissions for managing {{< glossary_tooltip term_id="machine" text="machines" >}} are as follows:
 
 | Permissions                                                   | Org owner | Org operator | Location owner | Location operator | Robot owner | Robot operator |
 | ------------------------------------------------------------- | --------- | ------------ | -------------- | ----------------- | ----------- | -------------- |
-| Control the robot from the **Control** tab                    | **Yes**   | **Yes**      | **Yes**        | **Yes**           | **Yes**     | **Yes**        |
+| Control the machine from the **Control** tab                  | **Yes**   | **Yes**      | **Yes**        | **Yes**           | **Yes**     | **Yes**        |
 | See all tabs (such as **Config** and **Logs**)                | **Yes**   | No           | **Yes**        | No                | **Yes**     | No             |
-| Edit robot name                                               | **Yes**   | No           | **Yes**        | No                | **Yes**     | No             |
-| Delete the robot                                              | **Yes**   | No           | **Yes**        | No                | **Yes**     | No             |
+| Edit machine name                                             | **Yes**   | No           | **Yes**        | No                | **Yes**     | No             |
+| Delete the machine                                            | **Yes**   | No           | **Yes**        | No                | **Yes**     | No             |
 | Add a new {{< glossary_tooltip term_id="part" text="part" >}} | **Yes**   | No           | **Yes**        | No                | **Yes**     | No             |
 | Edit {{< glossary_tooltip term_id="part" text="part" >}} name | **Yes**   | No           | **Yes**        | No                | **Yes**     | No             |
-| Restart the robot                                             | **Yes**   | No           | **Yes**        | No                | **Yes**     | No             |
-| Edit a robot config (including data capture and sync)         | **Yes**   | No           | **Yes**        | No                | **Yes**     | No             |
+| Restart the machine                                           | **Yes**   | No           | **Yes**        | No                | **Yes**     | No             |
+| Edit a machine config (including data capture and sync)       | **Yes**   | No           | **Yes**        | No                | **Yes**     | No             |
 
 ### Locations
 
@@ -76,7 +76,7 @@ Permissions for managing {{< glossary_tooltip term_id="location" text="locations
 | Permissions                                  | Org owner                                                      | Org operator | Location owner                                                 | Location operator | Robot owner | Robot operator |
 | -------------------------------------------- | -------------------------------------------------------------- | ------------ | -------------------------------------------------------------- | ----------------- | ----------- | -------------- |
 | Edit location info (rename, delete location) | **Yes**                                                        | No           | **Yes** for this and any child locations                       | No                | No          | No             |
-| Create a new robot                           | **Yes**                                                        | No           | **Yes** in this and any child locations                        | No                | No          | No             |
+| Create a new machine                         | **Yes**                                                        | No           | **Yes** in this and any child locations                        | No                | No          | No             |
 | Move the location (to new parent location)   | **Yes**                                                        | No           | **Yes**, to other locations they have access to                | No                | No          | No             |
 | Create a new location in the organization    | **Yes**                                                        | No           | No                                                             | No                | No          | No             |
 | Delete location                              | **Yes**                                                        | No           | **Yes**                                                        | No                | No          | No             |
@@ -85,7 +85,7 @@ Permissions for managing {{< glossary_tooltip term_id="location" text="locations
 | Remove a shared location                     | **Yes**                                                        | No           | **Yes**                                                        | No                | No          | No             |
 | Use Try Viam from within the org\*           | **Yes**                                                        | No           | No                                                             | No                | No          | No             |
 
-If a user has access to a child location but not its parent location, the user cannot see robots in the parent location.
+If a user has access to a child location but not its parent location, the user cannot see machines in the parent location.
 
 \*Users can only use Try Viam from within an organization they own because doing so creates a new location in the org.
 
@@ -109,7 +109,7 @@ Permissions for managing {{< glossary_tooltip term_id="organization" text="organ
 | Change someone else's role                            | **Yes**   | No           | **Yes\***      | No                | **Yes\***   | No             |
 | Create a new organization                             | **Yes**   | **Yes**      | **Yes**        | **Yes**           | **Yes**     | **Yes**        |
 
-\*For locations/robots they have access to
+\*For locations/machines they have access to
 
 ### Fragments
 
@@ -147,4 +147,4 @@ Permissions for [data management](/data/) and [machine learning](/ml/) are as fo
 
 \*For data from the location
 
-\*\*For data from the robot
+\*\*For data from the machine

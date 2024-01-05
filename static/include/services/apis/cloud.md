@@ -13,7 +13,7 @@ Method Name | Description
 [`LocationAuth`](/build/program/apis/cloud/#locationauth ) | Get a location's authorization (location secrets).
 [`CreateLocationSecret`](/build/program/apis/cloud/#createlocationsecret ) | Create a new location secret. *Deprecated*.
 [`DeleteLocationSecret`](/build/program/apis/cloud/#deletelocationsecret ) | Delete a location secret. *Deprecated*.
-[`GetRobot`](/build/program/apis/cloud/#getrobot ) | Get a {{< glossary_tooltip term_id="robot" text="robot" >}} by robot ID.
+[`GetRobot`](/build/program/apis/cloud/#getrobot ) | Get a {{< glossary_tooltip term_id="machine" text="machine" >}} by robot ID.
 [`GetRobotParts`](/build/program/apis/cloud/#getrobotparts ) | Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under a specific robot.
 [`GetRobotPart`](/build/program/apis/cloud/#getrobotpart ) | Get a robot {{< glossary_tooltip term_id="part" text="part" >}}.
 [`GetRobotPartLogs`](/build/program/apis/cloud/#getrobotpartlogs ) | Get the logs associated with a robot part.

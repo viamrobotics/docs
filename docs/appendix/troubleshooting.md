@@ -99,7 +99,7 @@ To support a `viam-server` installation, you must install `libfuse2`.
 
 **Additional Error:** `jack server is not running or cannot be started`
 
-**Description**: When configuring a Linux {{< glossary_tooltip term_id="board" text="board" >}}, Linux installations with broken or misconfigured sound libraries may experience one or both of these errors, even if not using audio components in the robot configuration.
+**Description**: When configuring a Linux {{< glossary_tooltip term_id="board" text="board" >}}, Linux installations with broken or misconfigured sound libraries may experience one or both of these errors, even if not using audio components in the machine configuration.
 
 **Solution:** Consult the documentation for your Linux OS and chosen sound library for guidance on installing any missing software dependencies.
 For example, if you are using `jackd` and `PulseAudio` on a Raspberry Pi, you can run the following to install any missing dependencies:
@@ -108,16 +108,16 @@ For example, if you are using `jackd` and `PulseAudio` on a Raspberry Pi, you ca
 sudo apt install jackd qjackctl libpulse-dev pulseaudio
 ```
 
-This error can be safely ignored if you do not intend to use audio on your robot.
+This error can be safely ignored if you do not intend to use audio on your machine.
 
 ## Common Viam App Errors
 
 ### Failed to connect; retrying
 
-**Description:** The [Viam app](https://app.viam.com) is unable to communicate with your robot, and will attempt to reconnect every few seconds until it is able to do so.
-When a robot is disconnected, it will continue to run with its locally-cached current configuration, but will not be accessible for remote control or configuration through the Viam app.
+**Description:** The [Viam app](https://app.viam.com) is unable to communicate with your machine, and will attempt to reconnect every few seconds until it is able to do so.
+When a machine is disconnected, it will continue to run with its locally-cached current configuration, but will not be accessible for remote control or configuration through the Viam app.
 
-**Solution:** Check the following to ensure your robot is accessible to the Viam app:
+**Solution:** Check the following to ensure your machine is accessible to the Viam app:
 
 - Is the {{< glossary_tooltip term_id="board" text="board" >}} component connected to the internet?
 - Is the `ssh` service configured and running locally on the board?
@@ -140,7 +140,7 @@ When a robot is disconnected, it will continue to run with its locally-cached cu
 
 **Description:** A [frame](/mobility/frame-system/) attribute may be malformed, and is preventing the parsing of the component's configuration.
 
-**Solution:** Check the **Config** tab for your robot in the [Viam app](https://app.viam.com) and look for a frame attribute, either in **Builder** mode, under the **Frame System** tab or in **Raw JSON** mode.
+**Solution:** Check the **Config** tab for your machine in the [Viam app](https://app.viam.com) and look for a frame attribute, either in **Builder** mode, under the **Frame System** tab or in **Raw JSON** mode.
 If you see a `frame` attribute that you didn't create yourself, delete the whole `frame` object from the JSON config.
 It will resemble the following:
 

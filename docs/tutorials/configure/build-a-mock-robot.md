@@ -20,7 +20,7 @@ date: "2022-10-11"
 cost: "0"
 ---
 
-In this tutorial you will build a mock robot to learn how to configure robots with Viam.
+In this tutorial you will build a mock robot to learn how to configure {{< glossary_tooltip term_id="machine" text="smart machines" >}} with Viam.
 You do not need any hardware to do this tutorial.
 
 Follow this tutorial to set up and control a robot with a `fake` [arm](/components/arm/fake/), [board](/components/board/), and [motor](/components/motor/), and an additional mock {{< glossary_tooltip term_id="part" text="sub-part" >}} with a [motor](/components/motor/).
@@ -34,8 +34,8 @@ You'll need the following hardware and software for this tutorial:
 - [Go](https://go.dev/doc/install) or [Python 3.9+](https://www.python.org/downloads/)
 
 If you don't already have a Viam account, sign up for one on [the Viam app](https://app.viam.com).
-Create a new robot in the organization and location of your choice.
-Go to this robot's **Setup** tab.
+Create a new machine in the organization and location of your choice.
+Go to this machine's **Setup** tab.
 
 ### Install and start `viam-server` on your computer
 
@@ -90,7 +90,7 @@ You will need to reference the component names later when you connect to your mo
 
 ## Control your mock robot using the Viam app
 
-When you add components to your robot, the Viam app automatically generates a UI for them under the [**Control** tab](/fleet/machines/#control):
+When you add components to your machine, the Viam app automatically generates a UI for them under the [**Control** tab](/fleet/machines/#control):
 
 {{< imgproc src="/tutorials/build-a-mock-robot/control-tab.png" alt="The Control tab with the fake arm, and motor components." resize="400x" >}}
 
@@ -317,7 +317,7 @@ Imagine for the purpose of this tutorial that the `fake` motor we are adding con
 
 ### What is a sub-part?
 
-Usually, when building a {{< glossary_tooltip term_id="robot" text="robot" >}}, you pick out a [single-board computer](/components/board/) like the [Jetson Nano](/components/board/jetson/) or [Raspberry Pi](/components/board/pi/).
+Usually, when building a {{< glossary_tooltip term_id="machine" text="machine" >}}, you pick out a [single-board computer](/components/board/) like the [Jetson Nano](/components/board/jetson/) or [Raspberry Pi](/components/board/pi/).
 You follow the instructions in the **Setup** tab to install `viam-server` on your [board](/components/board/), and you start operating your robot with that computer, adding the [components](/components/) and [services](/services/) you want to use to that `viam-server` instance.
 
 By utilizing {{< glossary_tooltip term_id="part" text="parts" >}}, you can expand upon this, chaining multiple computers together to build a complex robot with Viam:

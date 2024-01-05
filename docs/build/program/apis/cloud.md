@@ -51,10 +51,10 @@ async def connect() -> ViamClient:
     dial_options = DialOptions(
       credentials=Credentials(
         type="api-key",
-        # Replace "<API-KEY>" (including brackets) with your robot's API key
+        # Replace "<API-KEY>" (including brackets) with your API key
         payload='<API-KEY>',
       ),
-      # Replace "<API-KEY-ID>" (including brackets) with your robot's API key
+      # Replace "<API-KEY-ID>" (including brackets) with your API key
       # ID
       auth_entity='<API-KEY-ID>'
     )
@@ -461,7 +461,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### GetRobot
 
-Get a {{< glossary_tooltip term_id="robot" text="robot" >}} by its ID.
+Get a {{< glossary_tooltip term_id="machine" text="machine" >}} by its ID.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -489,7 +489,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### GetRobotParts
 
-Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under a specific {{< glossary_tooltip term_id="robot" text="robot" >}}.
+Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under a specific {{< glossary_tooltip term_id="machine" text="machine" >}}.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -863,7 +863,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### NewRobot
 
-Create a new {{< glossary_tooltip term_id="robot" text="robot" >}}.
+Create a new {{< glossary_tooltip term_id="machine" text="machine" >}}.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1108,7 +1108,7 @@ Add a role under the organization you are currently authenticated to.
 - `role` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The role to add (either `"owner"` or `"operator"`).
 - `resource_type` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The type of the resource to add the role to (either `"organization"`, `"location"`, or `"robot"`).
   Must match the type of the `resource_id`'s resource.
-- `resource_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the resource the role applies to (the ID of either an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="robot" text="robot" >}}.)
+- `resource_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the resource the role applies to (the ID of either an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="machine" text="machine" >}}.)
 
 **Raises:**
 
@@ -1140,7 +1140,7 @@ Remove a role under the organization you are currently authenticated to.
 - `role` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The role to remove (either `"owner"` or `"operator"`).
 - `resource_type` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The type of the resource to remove the role from (either `"organization"`, `"location"`, or `"robot"`).
   Must match the type of the `resource_id`'s resource.
-- `resource_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the resource the role applies to (the ID of either an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="robot" text="robot" >}}.)
+- `resource_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the resource the role applies to (the ID of either an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="machine" text="machine" >}}.)
 
 **Raises:**
 
