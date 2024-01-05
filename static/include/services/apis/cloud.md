@@ -22,7 +22,7 @@ Method Name | Description
 [`UpdateRobotPart`](/build/program/apis/cloud/#updaterobotpart ) | Update the name or configuration of a robot part.
 [`NewRobotPart`](/build/program/apis/cloud/#newrobotpart ) | Create a new robot part.
 [`DeleteRobotPart`](/build/program/apis/cloud/#deleterobotpart ) | Delete a robot part.
-[`MarkPartAsMain`](/build/program/apis/cloud/#markpartasmain ) | Mark a robot part as the [_main_ part](/build/configure/parts-and-remotes/#robot-parts) of a robot.
+[`MarkPartAsMain`](/build/program/apis/cloud/#markpartasmain ) | Mark a part as the [_main_ part](/build/configure/parts-and-remotes/#machine-parts) of a robot.
 [`MarkPartForRestart`](/build/program/apis/cloud/#markpartforrestart ) | Mark a robot part for restart.
 [`CreateRobotPartSecret`](/build/program/apis/cloud/#createrobotpartsecret ) | Create a robot part secret. *Deprecated*.
 [`DeleteRobotPartSecret`](/build/program/apis/cloud/#deleterobotpartsecret ) | Delete a robot part secret. *Deprecated*.

@@ -729,7 +729,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### MarkPartAsMain
 
-Mark a machine part as the [_main_ part](/build/configure/parts-and-remotes/#robot-parts) of a machine.
+Mark a machine part as the [_main_ part](/build/configure/parts-and-remotes/#machine-parts) of a machine.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -251,7 +251,7 @@ cargo generate --git https://github.com/viamrobotics/micro-rdk-robot-template.gi
 You will be prompted to paste your machine's JSON configuration into the terminal.
 To obtain this:
 
-- Navigate to [your new machine's](#create-a-new-robot) page on [the Viam app](https://app.viam.com).
+- Navigate to [your new machine's](#create-a-new-machine) page on [the Viam app](https://app.viam.com).
 - Click on the **Setup** tab.
   Keep your `Mode` and `Architecture` selections at default.
 - Click the **Copy viam-server config** button on the right side of the **Setup** tab.

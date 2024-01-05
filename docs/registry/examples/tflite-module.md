@@ -305,7 +305,7 @@ What follows is a high-level overview of the steps it takes when executed:
 
 1. The client then populates an input tensor named `sample` as a `tensor_view` over the provided sample data.
    The tensor must be named according to the configured value under `tensor_name_remappings` in your machine configuration.
-   If you followed the instructions above to [generate your machine configuration](#generate-your-robot-configuration), the value `sample` was pre-populated for you in your generated robot configuration.
+   If you followed the instructions above to [generate your machine configuration](#generate-your-machine-configuration), the value `sample` was pre-populated for you in your generated robot configuration.
 
 1. The client invokes the `infer` method provided by the `example_mlmodelservice_tflite` module, providing it with the `sample` input tensor data it generated earlier.
 
@@ -313,7 +313,7 @@ What follows is a high-level overview of the steps it takes when executed:
 
 1. The client validates the result, including its expected type: a vector of `float` values.
    The expected output must be defined under `tensor_name_remappings` in your machine configuration for validation to succeed.
-   If you followed the instructions above to [generate your machine configuration](#generate-your-robot-configuration), the value `categories` was pre-populated for you in your generated robot configuration.
+   If you followed the instructions above to [generate your machine configuration](#generate-your-machine-configuration), the value `categories` was pre-populated for you in your generated robot configuration.
 
 1. If a labels file was provided, labels are read in as a vector of `string` values and the top 5 scores are associated with their labels.
 
