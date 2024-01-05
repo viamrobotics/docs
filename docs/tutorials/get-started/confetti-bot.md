@@ -121,7 +121,7 @@ We named ours ConfettiBot.
 
 ![A machine page header in the Viam app, its under the location work, and named ConfettiBot.](/tutorials/confetti-bot/app-name-confettibot.png)
 
-Then navigate to the robot’s **Config** tab to start configuring your components.
+Then navigate to the machine’s **Config** tab to start configuring your components.
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
@@ -260,7 +260,7 @@ The final design, fully wired and put together looks like this:
 
 The following section explains the code for the confetti bot.
 The completed code for this project is available on [GitHub](https://github.com/viam-labs/devrel-demos/tree/main/confetti_bot).
-If you copy the code from this link, don’t forget to change your robot address and secret so it connects to your own confetti robot.
+If you copy the code from this link, don’t forget to change your machine address and secret so it connects to your own confetti robot.
 
 Navigate to the **Code sample** tab on the Viam app, select **Python** as the language, and click the **Copy** button.
 

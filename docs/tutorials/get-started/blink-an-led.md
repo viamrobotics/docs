@@ -83,7 +83,7 @@ That is board pin numbering, corresponding to the pin's physical location on the
 Then there's numbering them by function or GPIO connection.
 For example, "GPIO 22".
 **When working with the GPIO pins with Viam, you will use the board pin numbers.**
-For example, board pin 38 is the same pin as GPIO pin 20, but when configuring your robot with Viam, you should refer to it as pin `38`.
+For example, board pin 38 is the same pin as GPIO pin 20, but when configuring your machine with Viam, you should refer to it as pin `38`.
 
 {{< alert title="Tip" color="tip" >}}
 To make it easier for you to see which pin is which, you can print out [this Raspberry Pi Leaf](/get-started/try-viam/viam-raspberry-leaf-8.5x11.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
@@ -223,7 +223,7 @@ On your local computer, create a file called <file>blink.py</file> or <file>blin
 Paste the boilerplate code from the **Code sample** tab of the Viam app into the file in your code editor, and save the file.
 
 You can now run the code.
-Doing so will ensure that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
+Doing so will ensure that the Viam SDK is properly installed and that the `viam-server` instance on your machine is live.
 
 Run your code:
 
@@ -236,8 +236,8 @@ Run the code by typing the following command into the terminal, with the correct
 python3 <INSERT PATH TO YOUR FILE>/blink.py
 ```
 
-If you successfully configured your robot and it is able to connect to the Viam app, you should see something like the following printed to the terminal after running your program.
-What you see here is a list of the various {{< glossary_tooltip term_id="resource" text="resources" >}} that have been configured on your robot in the Viam app (the board, as well as various built-in services).
+If you successfully configured your machine and it is able to connect to the Viam app, you should see something like the following printed to the terminal after running your program.
+What you see here is a list of the various {{< glossary_tooltip term_id="resource" text="resources" >}} that have been configured on your machine in the Viam app (the board, as well as various built-in services).
 
 ```sh {class="command-line" data-prompt="$" data-output="2-25"}
 python3 my-project-folder/blink.py
@@ -280,8 +280,8 @@ Then, run your code:
 go run blink.go
 ```
 
-If you successfully configured your robot and it is able to connect to the Viam app, you should see something like the following printed to the terminal after running your program.
-What you see here is a list of the various {{< glossary_tooltip term_id="resource" text="resources" >}} that have been configured on your robot in the Viam app (the board, as well as various built-in services).
+If you successfully configured your machine and it is able to connect to the Viam app, you should see something like the following printed to the terminal after running your program.
+What you see here is a list of the various {{< glossary_tooltip term_id="resource" text="resources" >}} that have been configured on your machine in the Viam app (the board, as well as various built-in services).
 
 ```sh {class="command-line" data-prompt="$" data-output="2-25"}
 go run blink.go
@@ -362,7 +362,7 @@ if err != nil {
 
 Now that the board and LED are initialized, let's create an infinite loop that will blink the LED on and off.
 Within the `main` function, add the following code to create an infinite loop.
-You can remove the line to close out the connection to your robot, since the infinite loop will never hit that line.
+You can remove the line to close out the connection to your machine, since the infinite loop will never hit that line.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -492,8 +492,8 @@ If you get an error, you can check your code against the complete code here:
 In this tutorial, you learned to:
 
 - Set up a circuit
-- Use the Viam app to configure and control a robot
-- Control your robot using the Viam SDK by writing a short program in either Go or Python to make an LED on your Raspberry Pi blink on and off!
+- Use the Viam app to configure and control a machine
+- Control your machine using the Viam SDK by writing a short program in either Go or Python to make an LED on your Raspberry Pi blink on and off!
 
 Now that you have completed this robotics project, check out some of our other [tutorials](/tutorials/).
 
