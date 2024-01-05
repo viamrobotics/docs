@@ -50,6 +50,47 @@ For more information on the permissions the roles assign for each resource, see 
 The option to grant additional access is only visible if you can grant the user additional access.
 {{< /alert >}}
 
+## API keys
+
+API keys grant access to organizations, locations, and machines.
+If at the organization level, they grant access to all locations and machines contained within that organization.
+If at the location level, they grant access to all of the machines contained within that location.
+
+To view all API keys in use for your organization and the locations and machines inside it, click on the organization dropdown in the top navigation bar and click on **Settings**.
+
+View a table with each key, ID, name (if assigned), time created, and entities it provides access to:
+
+{{<imgproc src="/fleet/api-keys.png" resize="700x" declaredimensions=true alt="API Keys table">}}
+
+In each row, click the copy icon to copy the API key and key ID.
+Click the duplicate icon to duplicate the API key.
+Click the trash can icon to delete the API key.
+
+### Add an API key
+
+Click **Generate key** to generate a new key.
+Optionally, give the key a name of your choice.
+Click on the **Resource** menu and choose what organization, location, or robot you want the key to grant access to.
+For **Role**, assign either an **Owner** or **Operator** role.
+See [Permissions](#permissions) for information about the privilege each role entails at each resource level.
+
+### View an API key's details
+
+To view the role of an API key and what it grants access to, click on **Show details** in the key's row of the key table's **Resources** column:
+
+{{<imgproc src="/fleet/additional-details.png" resize="700x" declaredimensions=true alt="Additional details for a key">}}
+
+### Change an API key's access
+
+To edit an API key, click on **Show details** in the key's row of the key table's **Resources** column.
+
+To edit the role, click on the dropdown menu next to the role and select **Owner** or **Operator**.
+See [Permissions](#permissions) for information about the privilege each role entails at each resource level.
+
+To change the entities it is able to access, click **+ Grant additional access**.
+Select which organization, location, or robot you want the key to grant access to.
+Click **Choose** to confirm your selection.
+
 ## Permissions
 
 The following sections describe the permissions for each user role when it comes to managing robots, locations, organizations, fragments, and data.
