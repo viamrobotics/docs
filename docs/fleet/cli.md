@@ -211,9 +211,9 @@ To switch to using a location API key for authentication right away, [logout](#l
 
 A location can have multiple API keys.
 
-### Create a machine API key
+### Create a robot API key
 
-To use a machine API key to authenticate your CLI session, you must first create one:
+To use a robot API key to authenticate your CLI session, you must first create one:
 
 1. First, [authenticate](#authenticate) your CLI session.
    If you don't already have a robot API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [location API key](#create-a-location-api-key).
@@ -240,11 +240,11 @@ You will need both to authenticate.
 
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
-Authenticating using a machine API key gives the authenticated CLI session full read and write access to your machine.
+Authenticating using a robot API key gives the authenticated CLI session full read and write access to your machine.
 {{% /alert %}}
 
-Once created, you can use the machine API key to authenticate future CLI sessions or to [connect to your machine with the SDK](/build/program/#authenticate).
-To switch to using a machine API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
+Once created, you can use the robot API key to authenticate future CLI sessions or to [connect to your machine with the SDK](/build/program/#authenticate).
+To switch to using a robot API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
 
 A location can have multiple API keys.
 
