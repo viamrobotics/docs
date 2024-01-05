@@ -33,7 +33,8 @@ from viam.robot.client import RobotClient
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your machine's API key
+        # Replace "<API-KEY>" (including brackets) with your machine's
+        # API key
         api_key='<API-KEY>',
         # Replace "<API-KEY-ID>" (including brackets) with your machine's
         # API key ID
