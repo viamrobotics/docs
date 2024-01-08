@@ -13,7 +13,7 @@
    When it is your turn to take over a Viam Rover, the page will show that it is configuring your rover.
    Once that is complete, you can click **TRY MY ROVER** to access your rented Viam Rover.
 
-   {{< alert title="Info" color="info" >}}a machine
+   {{< alert title="Info" color="info" >}}
    Viam creates a location called "Rover Rental" in your account's organization, and adds a Viam Rover with a basic config and a random name (like "wispy-shape") as a machine in this location.
    {{< /alert >}}
 

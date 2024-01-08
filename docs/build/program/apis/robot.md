@@ -210,7 +210,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### AtAddress
 
-Create a robot client that is connected to the machine at the provided address.
+Create a RobotClient that is connected to the machine at the provided address.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -248,7 +248,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### WithChannel
 
-Create a machine that is connected to a machine over the given channel.
+Create a RobotClient that is connected to a machine over the given channel.
 Any machines created using this method will NOT automatically close the channel upon exit.
 
 {{< tabs >}}
