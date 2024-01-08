@@ -593,7 +593,7 @@ Links should always have descriptive text. Never write "Click here" with `here` 
 When linking to an image or another page within the docs please use relative links (`appendix/contributing/`) or (`/appendix/contributing/`).
 
 {{< alert title="Note" color="note" >}}
-You **must** add a training slack on links.\*\*
+You **must** add a trailing slash on links.\*\*
 This is enforced with `htmltest`.
 {{< /alert >}}
 
