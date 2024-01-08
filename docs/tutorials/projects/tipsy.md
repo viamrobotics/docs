@@ -610,7 +610,7 @@ from viam.services.sensors import SensorsClient
 ```
 
 Then it connects to our robot using a machine part API key and address.
-Replace these values with your robot’s own location secret and address, which you can obtain from the **Code sample** tab:
+Replace these values with your machine’s own location secret and address, which you can obtain from the **Code sample** tab:
 
 ```python {class="line-numbers linkable-line-numbers"}
 robot_api_key = os.getenv('ROBOT_API_KEY') or ''
