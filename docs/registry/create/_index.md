@@ -145,7 +145,7 @@ For more information see [Naming your model](/registry/upload/#naming-your-model
 
 {{% /alert %}}
 
-{{% alert title="Note: pin numbers" color="note" %}}
+{{% alert title="Note: Pin numbers" color="note" %}}
 
 If your module references {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}, please use physical board pin numbers, _not_ GPIO (BCM) numbers, to maintain consistency across {{< glossary_tooltip term_id="resource" text="resources" >}} from different sources.
 
