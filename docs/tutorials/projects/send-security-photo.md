@@ -234,7 +234,7 @@ from viam.services.vision import VisionClient
 from viam.components.camera import Camera
 import yagmail
 
-# These must be set. You can get them from your robot's 'Code sample' tab
+# These must be set. You can get them from your machine's 'Code sample' tab
 robot_api_key = os.getenv('ROBOT_API_KEY') or ''
 robot_api_key_id = os.getenv('ROBOT_API_KEY_ID') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''

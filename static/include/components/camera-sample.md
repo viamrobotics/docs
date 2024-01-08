@@ -21,7 +21,7 @@ import (
 "go.viam.com/rdk/components/camera"
 )
 
-// grab the camera from the robot
+// grab the camera from the machine
 cameraName := "camera0" // make sure to use the same component name that you have in your machine configuration
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {

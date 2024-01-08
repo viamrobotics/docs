@@ -30,10 +30,10 @@ Support for taking **3D LiDAR** and **odometry** data as input may be added in t
 
 Cartographer can operate:
 
-- _online_ [using a live robot](#use-a-live-robot) for creating and updating maps or for localization
+- _online_ [using a live machine](#use-a-live-machine) for creating and updating maps or for localization
 - _offline_ [using previously captured data](#use-previously-captured-data) for creating and updating maps
 
-## Use a live robot
+## Use a live machine
 
 The `cartographer` module supports three modes of operation:
 
@@ -200,7 +200,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
    {{< alert title="Tip" color="tip" >}}
    Be aware that data is not only captured when a slam session is running.
-   [Data Capture](/data/capture/) continuously monitors and captures your machine's sensor data while the robot is running.
+   [Data Capture](/data/capture/) continuously monitors and captures your machine's sensor data while the machine is running.
    To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/).
    {{< /alert >}}
 
@@ -357,7 +357,7 @@ Updating an existing map uses an instance of the `cartographer` module running i
 
    {{< alert title="Tip" color="tip" >}}
    Be aware that data is not only captured when a slam session is running.
-   [Data Capture](/data/capture/) continuously monitors and captures your machine's sensor data while the robot is running.
+   [Data Capture](/data/capture/) continuously monitors and captures your machine's sensor data while the machine is running.
    To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/).
    {{< /alert >}}
 
@@ -473,7 +473,7 @@ This example JSON configuration:
     {{< alert title="Tip" color="tip" >}}
 
 Be aware that data is not only captured when a slam session is running.
-[Data Capture](/data/capture/) continuously monitors and captures your machine's sensor data while the robot is running.
+[Data Capture](/data/capture/) continuously monitors and captures your machine's sensor data while the machine is running.
 To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/).
 
     {{< /alert >}}
@@ -526,7 +526,7 @@ You can browse your previously captured data from the **Data** page under the **
 To create a map, you must have already captured LiDAR data in the location in which you would like to create the map.
 
 The following example shows the previously-captured LiDAR data under the **Point clouds** tab for a machine named `test`.
-Selecting a row opens a pane to the right that contains more information, such as the `Robot ID` of the robot the component belongs to:
+Selecting a row opens a pane to the right that contains more information, such as the `Machine ID` of the machine the component belongs to:
 
 {{<imgproc src="/mobility/slam/offline-mapping-pointcloud-data.png" resize="1200x" declaredimensions=true alt="UI showing captured point clouds">}}
 
@@ -538,8 +538,8 @@ Example of previously captured IMU data:
 
 Navigate to the **SLAM library** tab on your location page, and click **Make new map** on the top right and specify a map name or click **Update map** next to an existing map.
 
-1. Enter the **Robot name**, **Camera name**, and optionally the **Movement Sensor name** of the components whose previously captured data you want to use to create or update a map.
-   If your machine has been deleted, you can alternatively specify the **robot ID**.
+1. Enter the **Machine name**, **Camera name**, and optionally the **Movement Sensor name** of the components whose previously captured data you want to use to create or update a map.
+   If your machine has been deleted, you can alternatively specify the **machine ID**.
 1. Adjust the configuration parameters as needed.
    See [`config_params`](#config_params) for details.
 1. Select the timeframe of the data you'd like to use.
@@ -564,7 +564,7 @@ The best way to improve map quality is by taking extra care when creating the in
 While in a slam session, you should:
 
 - turn gently and gradually, completely avoiding sudden quick turns
-- make frequent loop closures, arriving back at a previously mapped area so the robot can correct for errors in the map layout
+- make frequent loop closures, arriving back at a previously mapped area so the machine can correct for errors in the map layout
 - stay relatively (but not extremely) close to walls
 - use a robot that can go smoothly over bumps and transitions between flooring areas
 - drive at a moderate speed

@@ -95,7 +95,7 @@ Now wire all of the components according to the wiring diagram:
 3. Connect your button to the Raspberry Pi.
    One of the connections goes to a 3.3V pin on the Raspberry Pi, and the other needs to be connected to a GPIO pin.
    We used Pin 1 for 3.3V (blue wire in wiring diagram).
-   Make sure to record which GPIO pin you connect to since you will be using this in your robot configuration.
+   Make sure to record which GPIO pin you connect to since you will be using this in your machine configuration.
    We used Pin 37 (white wire in wiring diagram).
 
 4. Now you can connect the button to your 12V battery, use a black alligator clip to connect the ground of the button switch to the ground of the battery.
@@ -121,7 +121,7 @@ We named ours ConfettiBot.
 
 ![A machine page header in the Viam app, its under the location work, and named ConfettiBot.](/tutorials/confetti-bot/app-name-confettibot.png)
 
-Then navigate to the robot’s **Config** tab to start configuring your components.
+Then navigate to the machine’s **Config** tab to start configuring your components.
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
@@ -260,7 +260,7 @@ The final design, fully wired and put together looks like this:
 
 The following section explains the code for the confetti bot.
 The completed code for this project is available on [GitHub](https://github.com/viam-labs/devrel-demos/tree/main/confetti_bot).
-If you copy the code from this link, don’t forget to change your robot address and secret so it connects to your own confetti robot.
+If you copy the code from this link, don’t forget to change your machine address and secret so it connects to your own confetti robot.
 
 Navigate to the **Code sample** tab on the Viam app, select **Python** as the language, and click the **Copy** button.
 

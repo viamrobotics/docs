@@ -16,7 +16,7 @@ Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} exposes a
 You can think of this as a description of how you can interact with that resource.
 Different models of resources implement the same API, which [Viam SDKs expose](/internals/machine-to-machine-comms/), allowing you to control different models of resource types with a consistent interface.
 
-The API methods provided by the SDKs for each of these resource APIs wrap gRPC client requests to the robot when you execute your program, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/build/configure/) on your machine.
+The API methods provided by the SDKs for each of these resource APIs wrap gRPC client requests to the machine when you execute your program, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/build/configure/) on your machine.
 
 ## Robot Management APIs
 
@@ -219,7 +219,7 @@ Get a resource configured on a machine by `"name"`.
 
 **Parameters:**
 
-- `robot` [(RobotClient)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient): The robot.
+- `robot` [(RobotClient)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient): The machine.
 - `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The `name` of the resource.
 
 **Returns:**
@@ -238,7 +238,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `r` [(RobotClient)](https://pkg.go.dev/go.viam.com/rdk/robot#Robot): The robot.
+- `r` [(RobotClient)](https://pkg.go.dev/go.viam.com/rdk/robot#Robot): The machine.
 - `name` [(string)](https://pkg.go.dev/builtin#string): The "name" of the resource.
 
 **Returns:**
@@ -261,7 +261,7 @@ For example, a component with [type `arm`](https://ts.viam.dev/classes/ArmClient
 
 **Parameters:**
 
-- `client` [(RobotClient)](https://ts.viam.dev/classes/RobotClient.html): The robot.
+- `client` [(RobotClient)](https://ts.viam.dev/classes/RobotClient.html): The machine.
 - `name` [(string)](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html): The `name` of the resource.
 
 **Returns:**

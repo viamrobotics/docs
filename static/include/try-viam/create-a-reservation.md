@@ -2,6 +2,7 @@
 
    Log in to Viam and click on the **[TRY VIAM](https://app.viam.com/try)** button in the top navigation bar.
    If you don't have an account, it only takes a minute to sign up.
+
 2. **Click "TRY NOW" or "RESERVE ROVER" to reserve your slot.**
 
    The Try Viam landing page displays the **Next time slot** or **Estimated Time to Start** and other status information.
@@ -13,7 +14,7 @@
    Once that is complete, you can click **TRY MY ROVER** to access your rented Viam Rover.
 
    {{< alert title="Info" color="info" >}}
-   Viam creates a location called "Rover Rental" in your account's organization, and adds a Viam Rover with a basic config and a random name (like "wispy-shape") as a robot in this location.
+   Viam creates a location called "Rover Rental" in your account's organization, and adds a Viam Rover with a basic config and a random name (like "wispy-shape") as a machine in this location.
    {{< /alert >}}
 
 3. **Click "TRY MY ROVER" to use your Viam Rover.**

@@ -20,7 +20,7 @@ Viam does not impose a lower or upper limit on the frequency of data collection.
 However, in practice, your hardware may impose limits on the frequency of data collection.
 
 You can change the frequency of data capture at any time for individual components.
-If you use {{< glossary_tooltip term_id="fragment" text="fragments" >}}, you can change the frequency of data capture in real time for some or all robots in a fleet at the component or machine level.
+If you use {{< glossary_tooltip term_id="fragment" text="fragments" >}}, you can change the frequency of data capture in real time for some or all machines in a fleet at the component or machine level.
 
 For example, consider a tomato picking robot with a 3D camera and an arm.
 When you configure the robot, you may set the camera to capture point cloud data at a frequency of 30Hz.

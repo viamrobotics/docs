@@ -451,7 +451,7 @@ Click **Save Config** at the bottom of the window.
 
 {{% alert title="Tip" color="tip" %}}
 
-If you prefer not to start the Freenove server every time the robot boots, you can instead start it manually from your command line.
+If you prefer not to start the Freenove server every time the machine boots, you can instead start it manually from your command line.
 
 SSH into the Pi.
 From the <file>home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/</file> directory, start the Freenove robot dog server:

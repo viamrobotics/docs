@@ -28,7 +28,7 @@ The encoder component supports:
 - Single phase or single pin "pulse output" encoders, which measure the position relative to the starting position but not the direction.
 - Absolute encoders, which provide the absolute position of a rotating shaft, without requiring a reference point.
 
-Most robots with an encoder need at least the following hardware:
+Most machines with an encoder need at least the following hardware:
 
 - A [board component](/components/board/) that can run a `viam-server` instance.
   For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.

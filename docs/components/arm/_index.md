@@ -42,7 +42,7 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 
 - When you configure a supported arm model to connect to `viam-server`, the Arm driver will load and parse the kinematics file for the Viam RDK's [frame system](/mobility/frame-system/) service to use.
 
-- The [frame system](/mobility/frame-system/) will allow you to easily calculate where any part of your machine is relative to any other part, other robot, or piece of the environment.
+- The [frame system](/mobility/frame-system/) will allow you to easily calculate where any part of your machine is relative to any other part, other machine, or piece of the environment.
 
 - All arms have a `Home` position, which corresponds to setting all joint angles to 0.
 

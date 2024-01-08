@@ -21,7 +21,7 @@ menuindent: true
 Viam's built-in data management service allows you to capture, sync, [view](view/), [label](dataset/), and [export](export/) data from your machines, as well as use [Machine Learning](/ml/) features to enhance your machine's capabilities.
 The service is designed for flexibility and efficiency while preventing data loss, data duplication, and other data management issues.
 
-![Data is captured on the robot, uploaded to the cloud, and then deleted off local storage.](/data/data_management.png)
+![Data is captured on the machine, uploaded to the cloud, and then deleted off local storage.](/data/data_management.png)
 
 The service has two parts: [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/).
 

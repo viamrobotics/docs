@@ -23,7 +23,7 @@ To use the controller's inputs, you must [register callback functions](#register
 The callback functions can then handle the [Events](#getevents) that are sent when the Control is activated or moved.
 For example, when a specific button is pushed, the callback function registered to it can move another component, or print a specific output.
 
-Most robots with an input controller need at least the following hardware:
+Most machines with an input controller need at least the following hardware:
 
 - A computer capable of running `viam-server`.
 - A power supply cable or batteries for the input device and the machine.

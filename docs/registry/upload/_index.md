@@ -329,7 +329,7 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
 
    1. Follow the instructions to [create an organization API key](/fleet/cli/#create-an-organization-api-key).
       These steps will return a `key id` and a `key value` which together comprise your organization API key.
-      By default, a new organization API key is created with **Owner** permissions, giving the key full read and write access to all robots within your organization.
+      By default, a new organization API key is created with **Owner** permissions, giving the key full read and write access to all machines within your organization.
       You can change an API key's permissions from the Viam app on the [organizations page](/fleet/organizations/) by clicking the **Show details** link next to your API key.
 
       If you have already created an organization API key, you can skip this step.

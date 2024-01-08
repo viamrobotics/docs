@@ -36,7 +36,7 @@ To make it easier to iterate while training machine learning models from image d
 
 {{% changelog color="improved" title="Role-based access control" %}}
 
-You can now manage users access to robots, locations, and organizations.
+You can now manage users access to machines, locations, and organizations.
 For more information, see [Access Control](/fleet/rbac/)
 
 {{% /changelog %}}
@@ -170,15 +170,15 @@ Arm models now support the [`GetKinematics` method](/components/arm/#getkinemati
 {{% changelog color="added" title="View sensor data within Viam" %}}
 
 You can now [view your sensor data](https://app.viam.com/data/view?view=sensors) directly in the Viam app to verify data creation and accuracy.
-If you depend on sensor data to plan and control robot operations, this feature increases access to data and supports a more efficient workflow.
+If you depend on sensor data to plan and control machine operations, this feature increases access to data and supports a more efficient workflow.
 
 {{% /changelog %}}
 
 {{% changelog color="added" title="Session management in the Python SDK" %}}
 
-The Python SDK now includes sessions, a safety feature that automatically cancels operations if the client loses connection to your robot.
+The Python SDK now includes sessions, a safety feature that automatically cancels operations if the client loses connection to your machine.
 
-[Session management](/build/program/apis/sessions/) helps you to ensure safer operation of your robot when dealing with actuating controls.
+[Session management](/build/program/apis/sessions/) helps you to ensure safer operation of your machine when dealing with actuating controls.
 Sessions are enabled by default, with the option to [disable sessions](/build/program/apis/sessions/#disable-default-session-management).
 
 {{% /changelog %}}
@@ -240,7 +240,7 @@ This update for object detection models [trained with the machine learning servi
 
 {{% changelog color="added" title="TypeScript SDK beta release" %}}
 
-The beta release of the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/) allows you to create a web interface to work with your robot, as well as create custom components and services.
+The beta release of the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/) allows you to create a web interface to work with your machine, as well as create custom components and services.
 
 {{% /changelog %}}
 
@@ -259,11 +259,11 @@ This update allows you to:
 
 Now when you invite collaborators to join your organization, you can assign permissions to members by setting one of these roles:
 
-- **Owner**: These members can see and edit [every tab on the robot page](/fleet/machines/#navigating-the-machine-page), as well as manage users in the app.
-  This role is best for those on your team who are actively engineering and building robots.
+- **Owner**: These members can see and edit [every tab on the machine page](/fleet/machines/#navigating-the-machine-page), as well as manage users in the app.
+  This role is best for those on your team who are actively engineering and building machines.
 
 - **Operator**: These members can only see and use the [remote control tab](/fleet/machines/#control).
-  This role is best for those on your team who are teleoperating or remotely controlling robots.
+  This role is best for those on your team who are teleoperating or remotely controlling machines.
 
 For more information about assigning permissions and collaborating with others on Viam, see [Fleet Management](/fleet/).
 
@@ -279,7 +279,7 @@ For example, in the Viam app, you can now set **Go For** values for these motors
 
 {{% changelog color="improved" title="Camera webcam names and setting framerates" %}}
 
-The updates to the camera component have improved the process of connecting to and using cameras with your robots.
+The updates to the camera component have improved the process of connecting to and using cameras with your machines.
 
 The latest updates enable you to:
 
@@ -293,9 +293,9 @@ The latest updates enable you to:
 The updated code samples now includes:
 
 - Options for C++ and TypeScript
-- The ability to hide or display your robots' [secrets](/build/program/apis/)
+- The ability to hide or display your machines' [secrets](/build/program/apis/)
 
-Access these samples in the **Code sample** tab on your robot's page to connect to your robot in various languages.
+Access these samples in the **Code sample** tab on your machine's page to connect to your machine in various languages.
 
 {{% /changelog %}}
 
@@ -355,7 +355,7 @@ detections = await vision.get_detections(img, "find_objects")
 
 #### Color detector configurations
 
-You can replace existing color detectors by [configuring new ones in the UI](/ml/vision/detection/#configure-a-color_detector) or you can update the [Raw JSON configuration of your robots](/build/configure/#the-config-tab):
+You can replace existing color detectors by [configuring new ones in the UI](/ml/vision/detection/#configure-a-color_detector) or you can update the [Raw JSON configuration of your machines](/build/configure/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -430,7 +430,7 @@ You can replace existing color detectors by [configuring new ones in the UI](/ml
 
 #### TFLite detector configurations
 
-You can replace existing TFLite detectors by [configuring new ones in the UI](/ml/vision/detection/#configure-an-mlmodel-detector) or you can update the [Raw JSON configuration of your robots](/build/configure/#the-config-tab):
+You can replace existing TFLite detectors by [configuring new ones in the UI](/ml/vision/detection/#configure-an-mlmodel-detector) or you can update the [Raw JSON configuration of your machines](/build/configure/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -490,7 +490,7 @@ You can replace existing TFLite detectors by [configuring new ones in the UI](/m
 
 #### TFLite Classifier configurations
 
-You can replace existing TFLite classifiers by [configuring new ones in the UI](/ml/vision/classification/#configure-an-mlmodel-classifier) or you can update the [Raw JSON configuration of your robots](/build/configure/#the-config-tab):
+You can replace existing TFLite classifiers by [configuring new ones in the UI](/ml/vision/classification/#configure-an-mlmodel-classifier) or you can update the [Raw JSON configuration of your machines](/build/configure/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -550,7 +550,7 @@ You can replace existing TFLite classifiers by [configuring new ones in the UI](
 
 #### Radius Clustering 3D segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/segmentation/#configure-an-obstacles_pointcloud-segmenter) or you can update the [Raw JSON configuration of your robots](/build/configure/#the-config-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/segmentation/#configure-an-obstacles_pointcloud-segmenter) or you can update the [Raw JSON configuration of your machines](/build/configure/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -604,7 +604,7 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
 
 #### Detector to 3D segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/segmentation/#configure-a-detector_3d_segmenter) or you can update the [Raw JSON configuration of your robots](/build/configure/#the-config-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/segmentation/#configure-a-detector_3d_segmenter) or you can update the [Raw JSON configuration of your machines](/build/configure/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -657,9 +657,9 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
 {{< /tabs >}}
 {{% /expand%}}
 
-#### Add and remove models using the robot config
+#### Add and remove models using the machine config
 
-You must add and remove models using the [robot config](/build/configure/).
+You must add and remove models using the [machine config](/build/configure/).
 You will no longer be able to add or remove models using the SDKs.
 
 #### Add machine learning vision models to a vision service
@@ -673,24 +673,24 @@ You will need to first register the machine learning model file with the [ML mod
 
 {{% changelog color="added" title="Machine learning for image classification models" %}}
 
-You can now [train](/ml/train-model/) and [deploy](/ml/deploy/#create-an-ml-model-service) image classification models with the [data management service](/data/) and use your robot's image data directly within Viaml
-Additionally, you can [upload and use](/ml/upload-model/) existing machine learning models with your robots.
+You can now [train](/ml/train-model/) and [deploy](/ml/deploy/#create-an-ml-model-service) image classification models with the [data management service](/data/) and use your machine's image data directly within Viaml
+Additionally, you can [upload and use](/ml/upload-model/) existing machine learning models with your machines.
 For more information on using data synced to the cloud to train machine learning models, read [Train a model](/ml/train-model/).
 
 {{% /changelog %}}
 
 {{% changelog color="added" title="Motion planning with new `constraint` parameter" %}}
 
-A new parameter, [`constraint`](/mobility/motion/constraints/), has been added to the [Motion service API](/mobility/motion/#api), allowing you to define restrictions on the robot's movement.
-The constraint system also provides flexibility to specify that obstacles should only impact specific frames of a robot.
+A new parameter, [`constraint`](/mobility/motion/constraints/), has been added to the [Motion service API](/mobility/motion/#api), allowing you to define restrictions on the machine's movement.
+The constraint system also provides flexibility to specify that obstacles should only impact specific frames of a machine.
 
 {{% /changelog %}}
 
-{{% changelog color="added" title="Fragments in robot configuration" %}}
+{{% changelog color="added" title="Fragments in machine configuration" %}}
 
-You can now access {{< glossary_tooltip term_id="fragment" text="fragments" >}} in your robot setup.
+You can now access {{< glossary_tooltip term_id="fragment" text="fragments" >}} in your machine setup.
 The configurations you added will now show up automatically in the **Components** or **Services** subtabs in the **Builder** view.
-This makes it easier to monitor what fragments you've added to your robot and how they're configured.
+This makes it easier to monitor what fragments you've added to your machine and how they're configured.
 
 For more information, see [Fragments](/build/configure/#fragments).
 
@@ -725,13 +725,13 @@ The latest UI updates enable you to:
 
 {{% changelog color="added" title="Rover reuse in Try Viam" %}}
 
-You now have the option to reuse a robot config from a previous Try Viam session.
+You now have the option to reuse a machine config from a previous Try Viam session.
 
 {{% /changelog %}}
 
 {{% changelog color="added" title="Dynamic code samples" %}}
 
-The Viam app **Code sample** tab now dynamically updates as you add resources to your robot's config.
+The Viam app **Code sample** tab now dynamically updates as you add resources to your machine's config.
 The code samples instantiate each resource and include examples of how to call a `Get` method on it.
 
 {{% /changelog %}}
@@ -744,7 +744,7 @@ Find more information in the [TypeScript SDK docs](https://ts.viam.dev/).
 
 {{% changelog color="added" title="Frame system visualizer" %}}
 
-When adding [frames](/mobility/frame-system/) to your robot's config in the Viam app, you can now use the **Frame System** subtab of the **Config** tab to more easily visualize the relative positions of frames.
+When adding [frames](/mobility/frame-system/) to your machine's config in the Viam app, you can now use the **Frame System** subtab of the **Config** tab to more easily visualize the relative positions of frames.
 
 {{% /changelog %}}
 
@@ -759,7 +759,7 @@ Find more information in the [micro-RDK documentation](/get-started/installation
 
 {{% changelog color="added" title="Remote control power input" %}}
 
-On your robot's **Control** tab on the [Viam app](https://app.viam.com/), you can now set the power of a [base](/components/base/).
+On your machine's **Control** tab on the [Viam app](https://app.viam.com/), you can now set the power of a [base](/components/base/).
 The base control UI previously always sent 100% power to the base's motors.
 
 {{% /changelog %}}
@@ -792,7 +792,7 @@ You can now implement your own custom {{< glossary_tooltip term_id="resource" te
 
 {{% alert title="Important: Breaking Change" color="note" %}}
 
-All users need to update to the latest version of the RDK (V3.0.0) to access robots using the Viam app.
+All users need to update to the latest version of the RDK (V3.0.0) to access machines using the Viam app.
 
 {{% /alert %}}
 
@@ -824,12 +824,12 @@ There are two new movement sensor {{< glossary_tooltip term_id="model" text="mod
 
 {{% changelog color="improved" title="Motion planning with remote components" %}}
 
-The [motion service](/mobility/motion/) is now agnostic to the networking topology of a robot.
+The [motion service](/mobility/motion/) is now agnostic to the networking topology of a machine.
 
 - Kinematic information is now transferred over the robot API.
-  This means that the motion service is able to get kinematic information for every component on the robot, regardless of whether it is on a main or remote viam-server.
+  This means that the motion service is able to get kinematic information for every component on the machine, regardless of whether it is on a main or remote viam-server.
 - Arms are now an input to the motion service.
-  This means that the motion service can plan for a robot that has an arm component regardless of whether the arm is connected to a main or {{< glossary_tooltip term_id="remote" text="remote" >}} instance of `viam-server`.
+  This means that the motion service can plan for a machine that has an arm component regardless of whether the arm is connected to a main or {{< glossary_tooltip term_id="remote" text="remote" >}} instance of `viam-server`.
 
 {{% /changelog %}}
 
@@ -876,8 +876,8 @@ A new [servo model called `gpio`](/components/servo/gpio/) supports servos conne
 
 {{% changelog color="added" title="RTT indicator in the app" %}}
 
-A badge in the Viam app now displays RTT (round trip time) of a request from your client to the robot.
-Find this indicator of the time to complete one request/response cycle on your robot's **Control** tab, in the **Operations & Sessions** card.
+A badge in the Viam app now displays RTT (round trip time) of a request from your client to the machine.
+Find this indicator of the time to complete one request/response cycle on your machine's **Control** tab, in the **Operations & Sessions** card.
 
 {{% /changelog %}}
 

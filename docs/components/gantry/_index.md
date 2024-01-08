@@ -28,7 +28,7 @@ This component abstracts the hardware of a gantry to give you an easy interface 
 Gantry components can only be controlled in terms of linear motion (you cannot rotate them).
 Each gantry can only move in one axis within the limits of the length of the linear rail.
 
-Most robots with a gantry need at least the following hardware:
+Most machines with a gantry need at least the following hardware:
 
 - A [board](/components/board/) or [controller](/components/input-controller/) component that can detect changes in voltage on GPIO pins
 - A [motor](/components/motor/) that can move linear rails

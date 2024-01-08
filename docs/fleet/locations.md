@@ -4,19 +4,19 @@ linkTitle: "Locations"
 weight: 30
 type: "docs"
 no_list: true
-description: A location is a virtual grouping of robots that allows you to organize robots and manage access to your fleets.
+description: A location is a virtual grouping of machines that allows you to organize machines and manage access to your fleets.
 tags: ["fleet management", "cloud", "app"]
 aliases:
   - /manage/fleet/locations/
 ---
 
 In Viam, every machine belongs to a location.
-A location is a virtual grouping of robots that allows you to organize robots and manage access.
-Generally, a location defines a group of robots that are geographically close to each other.
+A location is a virtual grouping of machines that allows you to organize machines and manage access.
+Generally, a location defines a group of machines that are geographically close to each other.
 If you are familiar with Google Drive, you can think of a location as similar to a folder within a shared drive.
 
 For example, an organization called Good Robots Inc has two warehouses across New York and Oregon.
-Good Robots Inc can organize its robots into two locations based on their physical presence in a warehouse.
+Good Robots Inc can organize its machines into two locations based on their physical presence in a warehouse.
 
 You can also use locations as proxies for environments such as "Production" and "Testing" or other groupings.
 Locations do not have to correspond with physical locations.
@@ -35,7 +35,7 @@ You can create up to 500 locations.
 When you create a new organization, Viam automatically creates a new location for you.
 You can create additional locations by typing a new location name in the **New Location** field in the left side navigation bar on the [**FLEET** page](https://app.viam.com/robots) and clicking **Add**.
 
-Click a location's name to display the list of robots associated with that location.
+Click a location's name to display the list of machines associated with that location.
 
 ### Create a sub-location
 
@@ -101,5 +101,5 @@ Once you have received support, you can remove Viam Support from your location b
 
 ### Delete a location
 
-You can delete a location that is _empty of robots_ by clicking the trash can icon next to the location name at the top of the page for that location.
-The icon will not appear if there are any robots in the location.
+You can delete a location that is _empty of machines_ by clicking the trash can icon next to the location name at the top of the page for that location.
+The icon will not appear if there are any machines in the location.

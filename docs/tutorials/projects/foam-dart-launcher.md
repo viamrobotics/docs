@@ -172,7 +172,7 @@ For example, by using a common off-the-shelf 15A light switch to actuate a relay
 
 ## Configure Your Foam Dart Launcher Robot with the Viam App
 
-Create a new robot in the Viam app and give it a name.
+Create a new machine in the Viam app and give it a name.
 Navigate to your new machine's **Config** tab and click the **Components** subtab.
 
 ### Board Configuration (Raspberry Pi)

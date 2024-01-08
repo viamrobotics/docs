@@ -96,7 +96,7 @@ While you can view the camera streams [from the base component panel](#camera-vi
 
 - Set the refresh frequency
 - Export screenshots
-- View point cloud data (for robots with depth cameras)
+- View point cloud data (for machines with depth cameras)
 
 **cam Stream**:
 
@@ -138,7 +138,7 @@ The [web gamepad component](/components/input-controller/webgamepad/) is disable
 ## Learn about machine configuration
 
 On the Viam app, navigate to the **Components** subtab, under **Config**.
-There you can view the configuration for each component in the robot: attributes, component dependencies, pin assignments, and more.
+There you can view the configuration for each component in the machine: attributes, component dependencies, pin assignments, and more.
 
 ![The CONFIG tab in Builder mode (as opposed to Raw JSON). The board component panel and right motor panel are visible.](get-started/try-viam/try-viam/config-builder.png)
 
@@ -199,7 +199,7 @@ The [web gamepad](/components/input-controller/webgamepad/) component has the **
 
 If you connect a generic gamepad controller to your computer, you can use it to control your machine.
 
-If you are configuring your own robot, be aware that using the gamepad requires a service.
+If you are configuring your own machine, be aware that using the gamepad requires a service.
 To see how the service is configured, navigate to the **Services** section under the **Config** tab.
 The **Services** subtab contains the "Base Remote Control" service which uses three attributes:
 

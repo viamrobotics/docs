@@ -32,7 +32,7 @@ Instead of controlling individual motors, the base component allows you to [issu
 
 Many robotic rovers can be controlled out-of-the-box with the Viam "wheeled" base model - simply by specifying how your motorized wheels are configured.
 If you want to control a rover or other mobile robot that does not expose direct motor control, this tutorial shows you how to create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} (custom component).
-Creating a modular resouce for your robot allows you to issue commands using the same interface as you would with native Viam components. Once you have created the custom component, you can control both the Viam components and the modular resources using the [Viam SDK](/build/program/apis/) of your choice.
+Creating a modular resource for your robot allows you to issue commands using the same interface as you would with native Viam components. Once you have created the custom component, you can control both the Viam components and the modular resources using the [Viam SDK](/build/program/apis/) of your choice.
 
 <div class="td-max-width-on-larger-screens">
 {{<imgproc src="/tutorials/intermode/rover_outside.png" resize="400x" declaredimensions=true alt="Intermode rover pictured outdoors." class="alignright" style="max-width:300px">}}
@@ -63,7 +63,7 @@ The tutorial uses the following hardware:
 
 ### Raspberry Pi software setup
 
-Before proceeding, [set up `viam-server` on your Raspberry Pi](/get-started/installation/prepare/rpi-setup/) and configure a (for now) empty robot configuration.
+Before proceeding, [set up `viam-server` on your Raspberry Pi](/get-started/installation/prepare/rpi-setup/) and create a (for now) empty machine configuration.
 
 Next, install the PiCAN 2 driver software [following these instructions](https://copperhilltech.com/blog/pican2-pican3-and-picanm-driver-installation-for-raspberry-pi/).
 
@@ -275,13 +275,13 @@ sudo apt install git
 
 ### Configure the Intermode base resource
 
-If you have not already, first create a new machine in the [Viam app](https://app.viam.com/) and follow the instructions in the **Setup** tab to connect the robot to the cloud.
+If you have not already, first create a new machine in the [Viam app](https://app.viam.com/) and follow the instructions in the **Setup** tab to connect the machine to the cloud.
 
-In order to drive the Intermode base with Viam, you need to add it to the robot configuration.
+In order to drive the Intermode base with Viam, you need to add it to the machine configuration.
 You will specify where `viam-server` can find the module, and then configure a modular component instance for the Intermode base.
 
 In this example, we've cloned the git tutorial repo to `/home/me/tutorial-intermode/`.
-Change this to the correct location in `executable_path` when adding the module to your robot configuration.
+Change this to the correct location in `executable_path` when adding the module to your machine configuration.
 
 ```json
 {

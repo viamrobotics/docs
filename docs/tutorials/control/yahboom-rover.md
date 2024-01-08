@@ -23,7 +23,8 @@ cost: 260
 - A Raspberry Pi 4 running an instance of `viam-server`.
   See our [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/) for instructions.
 - A [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot)
-- A Bluetooth gamepad controller. For this tutorial we used an 8BitDo controller.
+- A Bluetooth gamepad controller.
+  For this tutorial we used an 8BitDo controller.
 
 ## Configuring the Board
 
@@ -73,7 +74,8 @@ Having configured these two components, you should now be able to actuate your m
 Click **Control** at the top of the page to navigate to the Control tab.
 There, you should see a panel for the right motor: you can use this panel to set the motor's power level.
 
-Please be careful when activating your robot! Start with the power level set to 10% and increase it incrementally (about 10% each time), activating the motor at each step until the wheels are rotating at a reasonable rate.
+Please be careful when activating your robot!
+Start with the power level set to 10% and increase it incrementally (about 10% each time), activating the motor at each step until the wheels are rotating at a reasonable rate.
 Ensure the rover has sufficient space to drive around without hitting anyone or anything.
 Consider possibly holding your robot off the ground so it cannot run away or collide with anything unexpected.
 
@@ -129,9 +131,11 @@ Try playing around with these and get a sense of how the base moves.
 
 ![A screenshot of the CONTROL tab UI with buttons to make the base move.](/tutorials/yahboom-rover/baseui.png)
 
-Awesome! Now you have a rover which you can drive using a webUI.
+Awesome!
+Now you have a rover which you can drive using a webUI.
 In the next step, we'll try to make it more fun to drive around like an RC car by attaching a Bluetooth controller and using that to control the rover.
-If you’ve ever connected a Bluetooth device using the Linux command line, great! If not, strap in, it’s going to be a bit of a ride.
+If you’ve ever connected a Bluetooth device using the Linux command line, great!
+If not, strap in, it’s going to be a bit of a ride.
 If you would like to skip adding a Bluetooth controller, [jump ahead to the Configuring the Camera Component section](#configuring-the-camera-component) of the tutorial.
 
 ## Connecting a Bluetooth Controller
@@ -231,7 +235,8 @@ If you click on your webUI, you will be able to see your camera streaming.
 
 You may have noticed that the camera is mounted on a pair of [servos](/components/servo/) which control the pan and tilt of the camera.
 Go to the **Create Component** section at the bottom of **Config**.
-Set the `Name` to `pan`, the `Type` to `servo`, the `Model` to `pi`, and click **Create Component**. Set `Depends On` to `local`, and `pin` to `23`, which is the pin the servo is wired to.
+Set the `Name` to `pan`, the `Type` to `servo`, the `Model` to `pi`, and click **Create Component**.
+Set `Depends On` to `local`, and `pin` to `23`, which is the pin the servo is wired to.
 
 ![A screenshot fron the CONFIG tab of the pan servo configuration showing pin set to 23.](/tutorials/yahboom-rover/panservo.png)
 
