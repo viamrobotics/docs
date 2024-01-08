@@ -43,7 +43,7 @@ For example, you can send the same commands to any kind of motor, using any of t
 
 2. Then pull together the Viam resources you want to use by [configuring your smart machine](/build/configure/).
 
-3. Finally, [program your smart machine](/build/program) with an SDK in your preferred coding language.
+3. Finally, [program your smart machine](/build/program/) with an SDK in your preferred coding language.
 
 {{< cards >}}
 {{% card link="/build/configure/" %}}
