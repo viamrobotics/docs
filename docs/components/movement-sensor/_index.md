@@ -29,6 +29,7 @@ Viam also supports generic [sensors](/components/sensor/) and [encoders](/compon
 {{< cards >}}
 {{< relatedcard link="/mobility/motion/" >}}
 {{< relatedcard link="/mobility/navigation/" >}}
+{{< relatedcard link="/mobility/slam/" >}}
 {{< /cards >}}
 
 ## Supported Models
