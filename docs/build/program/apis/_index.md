@@ -153,7 +153,7 @@ The [data management service](/data/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/data.md" >}}
 
-### MLModel
+### ML Model
 
 The [ML model service](/ml/) supports the following methods:
 
@@ -173,7 +173,7 @@ The [navigation service](/mobility/navigation/) supports the following methods:
 
 ### SLAM
 
-The [{{< glossary_tooltip term_id="slam" text="Simultaneous Localization And Mapping (SLAM) service" >}}](/mobility/slam/) supports the following methods:
+The  [{{< glossary_tooltip term_id="slam" text="Simultaneous Localization And Mapping (SLAM) service " >}}](/mobility/slam) supports the following methods:
 
 {{< readfile "/static/include/services/apis/slam.md" >}}
 
