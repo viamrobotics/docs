@@ -47,7 +47,7 @@ In this tutorial, the camera is configured to identify and filter images with th
 If your pet already has a distinct color that is different from their environment, you can also configure your camera to use that color to identify pictures of your pet.
 {{< /alert >}}
 
-## Set up
+## Setup
 
 Follow the steps below to set up your smart machine:
 
