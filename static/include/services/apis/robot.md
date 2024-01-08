@@ -1,8 +1,8 @@
 <!-- prettier-ignore -->
 | Method Name                                                     | Description                                                                  |
 | --------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| [`Options.with_api_key`](/build/program/apis/robot/#optionswith_api_key) | Create Robot client connection options with an API key as credentials. |
-| [`AtAddress`](/build/program/apis/robot/#ataddress) | Create a robot client that is connected to the machine at the provided address. |
+| [`Options.with_api_key`](/build/program/apis/robot/#optionswith_api_key) | Create RobotClient connection options with an API key as credentials. |
+| [`AtAddress`](/build/program/apis/robot/#ataddress) | Create a RobotClient that is connected to the machine at the provided address. |
 | [`WithChannel`](/build/program/apis/robot/#withchannel) | Create a RobotClient that is connected to a machine over the given channel. |
 | [`Refresh`](/build/program/apis/robot/#refresh) | Manually refesh the underlying parts of the machine. |
 | [`Status`](/build/program/apis/robot/#status) | Get the status of the machine's components. |
