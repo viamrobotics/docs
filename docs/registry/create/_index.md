@@ -1157,6 +1157,14 @@ from viam.logging import getLogger
 
 # Before your first class or function, define the LOGGER variable:
 LOGGER = getLogger(__name__)
+
+# in some method, log information
+LOGGER.debug("debug info")
+LOGGER.info("info info")
+LOGGER.warn("warn info")
+LOGGER.error("error info")
+LOGGER.exception("error info", exc_info=True)
+LOGGER.critical("critical info")
 ```
 
 {{% /tab %}}
