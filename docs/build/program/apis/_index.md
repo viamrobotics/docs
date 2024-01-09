@@ -34,7 +34,7 @@ The [cloud API](/build/program/apis/cloud/) supports the following methods:
 
 ### Data Client API
 
-The data client API supports the following methods to upload and retrieve data directly to the [Viam app](https://app.viam.com) (among [others](https://python.viam.dev/autoapi/viam/app/data_client/index.html)):
+The data client API supports the following methods to upload and retrieve data like images or sensor readings directly to the [Viam app](https://app.viam.com) (among [others](https://python.viam.dev/autoapi/viam/app/data_client/index.html)):
 
 {{< readfile "/static/include/services/apis/data-client.md" >}}
 
