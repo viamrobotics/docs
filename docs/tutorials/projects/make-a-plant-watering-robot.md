@@ -105,7 +105,7 @@ Reference this diagram of the blue module part of the sensor:
 ![Pinout diagram for the resistive soil moisture sensor.](/tutorials/plant-watering-pi/moisture-sensor-pinout.png)
 
 Start by connecting the female jumper wires at the end of the sensor prongs to the blue module where the diagram shown above is labeled "Connect with Probe."
-Be careful of the positive and negative sides, and make sure to match it correctly. 
+Be careful of the positive and negative sides, and make sure to match it correctly.
 
 Then, wire the rest of the pins on the module to the Pi and ADC as follows:
 
