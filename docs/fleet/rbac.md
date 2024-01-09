@@ -114,28 +114,17 @@ Permissions for managing {{< glossary_tooltip term_id="machine" text="machines" 
 
 Permissions for managing {{< glossary_tooltip term_id="location" text="locations" >}} are as follows:
 
-| Permissions                                  | Org owner                                                      | Org operator | Location owner                                                 | Location operator | Robot owner   | Robot operator   |
-| -------------------------------------------- | -------------------------------------------------------------- | ------------ | -------------------------------------------------------------- | ----------------- | ------------- | ---------------- |
-| Edit location info (rename, delete location) | **Yes**                                                        | No           | **Yes** for this and any child locations                       | No                | No            | No               |
-| Create a new robot                           | **Yes**                                                        | No           | **Yes** in this and any child locations                        | No                | No            | No               |
-| Move the location (to new parent location)   | **Yes**                                                        | No           | **Yes**, to other locations they have access to                | No                | No            | No               |
-| Create a new location in the organization    | **Yes**                                                        | No           | No                                                             | No                | No            | No               |
-| Delete location                              | **Yes**                                                        | No           | **Yes**                                                        | No                | No            | No               |
-| Add/remove Viam support team permissions     | **Yes**                                                        | No           | **Yes**                                                        | No                | No            | No               |
-| Share a location                             | **Yes**                                                        | No           | **Yes**                                                        | No                | No            | No               |
-| Un-share a location                          | **Yes**                                                        | No           | **Yes**                                                        | No                | No            | No               |
-| Use Try Viam from within the org\*           | **Yes**                                                        | No           | No                                                             | No                | No            | No               |
-| Permissions                                  | Org owner                                                      | Org operator | Location owner                                                 | Location operator | Machine owner | Machine operator |
-| -------------------------------------------- | -------------------------------------------------------------- | ------------ | -------------------------------------------------------------- | ----------------- | ------------- | ---------------- |
-| Edit location info (rename, delete location) | **Yes**                                                        | No           | **Yes** for this and any child locations                       | No                | No            | No               |
-| Create a new machine                         | **Yes**                                                        | No           | **Yes** in this and any child locations                        | No                | No            | No               |
-| Move the location (to new parent location)   | **Yes**                                                        | No           | **Yes**, to other locations they have access to                | No                | No            | No               |
-| Create a new location in the organization    | **Yes**                                                        | No           | No                                                             | No                | No            | No               |
-| Delete location                              | **Yes**                                                        | No           | **Yes**                                                        | No                | No            | No               |
-| Add/remove Viam support team permissions     | **Yes**                                                        | No           | **Yes**                                                        | No                | No            | No               |
-| Add a shared location                        | **Yes**, if they are an owner in the org they are sharing with | No           | **Yes**, if they are an owner in the org they are sharing with | No                | No            | No               |
-| Remove a shared location                     | **Yes**                                                        | No           | **Yes**                                                        | No                | No            | No               |
-| Use Try Viam from within the org\*           | **Yes**                                                        | No           | No                                                             | No                | No            | No               |
+| Permissions                                  | Org owner | Org operator | Location owner                                  | Location operator | Machine owner | Machine operator |
+| -------------------------------------------- | --------- | ------------ | ----------------------------------------------- | ----------------- | ------------- | ---------------- |
+| Edit location info (rename, delete location) | **Yes**   | No           | **Yes** for this and any child locations        | No                | No            | No               |
+| Create a new machine                         | **Yes**   | No           | **Yes** in this and any child locations         | No                | No            | No               |
+| Move the location (to new parent location)   | **Yes**   | No           | **Yes**, to other locations they have access to | No                | No            | No               |
+| Create a new location in the organization    | **Yes**   | No           | No                                              | No                | No            | No               |
+| Delete location                              | **Yes**   | No           | **Yes**                                         | No                | No            | No               |
+| Add/remove Viam support team permissions     | **Yes**   | No           | **Yes**                                         | No                | No            | No               |
+| Add a shared location                        | **Yes**   | No           | **Yes**                                         | No                | No            | No               |
+| Remove a shared location                     | **Yes**   | No           | **Yes**                                         | No                | No            | No               |
+| Use Try Viam from within the org\*           | **Yes**   | No           | No                                              | No                | No            | No               |
 
 If a user has access to a child location but not its parent location, the user cannot see machines in the parent location.
 

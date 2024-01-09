@@ -60,11 +60,16 @@ You can share a location beyond its organization by sharing a location with an a
 
 Share your location with another organization you belong to by selecting the organization from the **Add Organization** dropdown menu and clicking **Share**.
 
+To share your location with an organization you are not a member of, enter the organization ID (a string like `1ab2c3d1-1234-123a-abcd-abcdef123456`) and click **Share**.
+Members of the other org can find the org ID on their org settings page.
+
 ![The Add Organization dropdown in the Viam app displays all organizations the user is a member of.](/fleet/app-usage/add-org-drop-down.png)
 
 The location's page lists the newly added organization, along with the organization identified as the _primary owner_:
 
 ![After adding another org, the Viam app lists it under the orgs that share this location list.](/fleet/app-usage/after-add-org.png)
+
+The list of organizations includes the names of organizations to which you belong, and the org IDs of organizations to which you do not belong.
 
 {{% alert title="Info" color="info" %}}
 
