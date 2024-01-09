@@ -97,9 +97,9 @@ to later update the Viam CLI tool on macOS, run `brew upgrade viam`.
 
 Once you have [installed the Viam CLI](#install), you must authenticate your CLI session with Viam in order to run CLI commands.
 
-You can authenticate your CLI session using either a personal access token, or an organization, location, or robot API key.
+You can authenticate your CLI session using either a personal access token, or an organization, location, or machine part API key.
 To use an organization API key to authenticate, you must first [create an organization API key](#create-an-organization-api-key).
-Similarly, to authenticate using a location or robot API key, you must first create a [location](#create-a-location-api-key) or [robot API key](#create-a-robot-api-key).
+Similarly, to authenticate using a location or machine part API key, you must first create a [location](#create-a-location-api-key) or [machine part API key](#create-a-machine-part-api-key).
 
 - To authenticate your CLI session using a personal access token:
 
@@ -127,13 +127,13 @@ Similarly, to authenticate using a location or robot API key, you must first cre
 
   If you haven't already, [create a location API key](#create-a-location-api-key) to use this authentication method.
 
-- To authenticate your CLI session using a robot API key:
+- To authenticate your CLI session using a machine part API key:
 
   ```sh {class="command-line" data-prompt="$"}
-  viam login api-key --key-id <robot-api-key-uuid> --key <robot-api-key-secret-value>
+  viam login api-key --key-id <machine-part-api-key-uuid> --key <machine-part-api-key-secret-value>
   ```
 
-  If you haven't already, [create a robot API key](#create-a-robot-api-key) to use this authentication method.
+  If you haven't already, [create a machine part API key](#create-a-machine-part-api-key) to use this authentication method.
 
 An authenticated session is valid for 24 hours, unless you explicitly [log out](#logout).
 
@@ -144,7 +144,7 @@ After the session expires or you log out, you must re-authenticate to use the CL
 To use an organization API key to authenticate your CLI session, you must first create one:
 
 1. First, [authenticate](#authenticate) your CLI session.
-   If your organization does not already have an organization API key created, authenticate using a personal access token or either a [location API key](#create-a-location-api-key) or [robot API key](#create-a-robot-api-key).
+   If your organization does not already have an organization API key created, authenticate using a personal access token or either a [location API key](#create-a-location-api-key) or [machine part API key](#create-a-machine-part-api-key).
 
 1. Then, run the following command to create a new organization API key:
 
@@ -177,7 +177,7 @@ An organization can have multiple API keys.
 To use an location API key to authenticate your CLI session, you must first create one:
 
 1. First, [authenticate](#authenticate) your CLI session.
-   If you don't already have a location API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [robot API key](#create-a-robot-api-key).
+   If you don't already have a location API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [machine part API key](#create-a-machine-part-api-key).
 
 1. Then, run the following command to create a new location API key:
 
@@ -211,14 +211,14 @@ To switch to using a location API key for authentication right away, [logout](#l
 
 A location can have multiple API keys.
 
-### Create a robot API key
+### Create a machine part API key
 
-To use a robot API key to authenticate your CLI session, you must first create one:
+To use a machine part API key to authenticate your CLI session, you must first create one:
 
 1. First, [authenticate](#authenticate) your CLI session.
-   If you don't already have a robot API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [location API key](#create-a-location-api-key).
+   If you don't already have a machine part API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [location API key](#create-a-location-api-key).
 
-1. Then, run the following command to create a new robot API key:
+1. Then, run the following command to create a new machine part API key:
 
    ```sh {class="command-line" data-prompt="$"}
    viam robots api-key create --robot-id <robot-id> --org-id <org-id> --name <key-name>
@@ -240,11 +240,11 @@ You will need both to authenticate.
 
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
-Authenticating using a robot API key gives the authenticated CLI session full read and write access to your machine.
+Authenticating using a machine part API key gives the authenticated CLI session full read and write access to your machine.
 {{% /alert %}}
 
-Once created, you can use the robot API key to authenticate future CLI sessions or to [connect to your machine with the SDK](/build/program/#authenticate).
-To switch to using a robot API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
+Once created, you can use the machine part API key to authenticate future CLI sessions or to [connect to your machine with the SDK](/build/program/#authenticate).
+To switch to using a machine part API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
 
 A location can have multiple API keys.
 
@@ -509,7 +509,7 @@ If you haven't already, you must [create an organization API key](#create-an-org
 <!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| `api-key`      | authenticate to Viam using an organization, location, or robot API key      | create |
+| `api-key`      | authenticate to Viam using an organization, location, or machine part API key      | create |
 | `print-access-token`      | prints the access token used to authenticate the current CLI session      | - |
 | `--help`      | return help      | - |
 | `--disable-browser-open` | authenticate in a headless environment by preventing the opening of the default browser during login (default: false) | - |

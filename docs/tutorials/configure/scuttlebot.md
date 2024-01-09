@@ -29,7 +29,7 @@ cost: 540
 ## Start configuring your robot
 
 1. Go to [the Viam app](https://app.viam.com).
-1. Create a _robot_ and follow the setup instructions until the robot successfully connects to the Viam app.
+1. Create a _{{< glossary_tooltip term_id="machine" text="machine" >}}_ and follow the setup instructions until the robot successfully connects to the Viam app.
 1. Navigate to the machine's **Config** tab.
 
 ![A SCUTTLE robot on a carpeted floor.](/tutorials/scuttlebot/scuttle-on-floor.png)
