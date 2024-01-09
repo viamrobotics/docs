@@ -200,8 +200,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### GetImages
 
+{{% alert title="Usage" color="note" %}}
+Intended specifically for use with cameras with both depth and color image streams, like the [Intel RealSense](https://app.viam.com/module/viam/realsense) camera.
+If your camera does not have multiple imagers, this method will work without capturing multiple images simultaneously.
+{{% /alert %}}
+
 Get simultaneous images from different imagers, along with associated metadata.
-The multiple images returned from GetImages do not represent a time series of images.
+The multiple images returned from `GetImages()` do not represent a time series of images.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
