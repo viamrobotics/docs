@@ -32,6 +32,7 @@ You can conduct SLAM with data collected live by a [RPlidar](https://github.com/
 
 {{< cards >}}
 {{< relatedcard link="/components/camera/" alt_title="RPlidar" alt_link="https://github.com/viamrobotics/rplidar" required="yes">}}
+{{< relatedcard link="/components/movement-sensor/" required="no" >}}
 {{< /cards >}}
 
 {{% snippet "required-legend.md" %}}

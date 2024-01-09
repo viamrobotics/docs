@@ -57,6 +57,9 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) for more information.
 
   Be sure to position the RPlidar so that it **faces forward in the direction of travel**. For example, if you are using a Viam Rover and the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to the Rover so that the **pointed** end of the RPlidar mount housing is facing in the same direction as the webcam.
 
+  Furthermore, ensure that the center of the RPlidar is mounted at the center of your machine's [base](/components/base/).
+  In the case of the Viam Rover the center is in the middle between the wheels.
+
   If you need a **mount plate** for your RPlidar A1 or A3 model, you can 3D print an adapter plate using the following:
 
   - [RPlidar A1 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA1_adapter.STL)
