@@ -94,7 +94,7 @@ Then, use the rows on the side of your MCP3008's pins and the GPIO pins on your 
 | DIN | MOSI |
 | CS/SHDN | 24GPIO8 |
 
-The 5V Raspberry Pi pins go into the power rail of the breadboard (the red plus sign column). This will be used to share the 5v output from the Raspberry Pi Pin 4 which is 5V power. Thus one additional wiring from the top of the power rail of the breadboard to the Raspberry Pi [Pin 4 (5V)](https://pinout.xyz/pinout/5v_power) is necessary.
+The 5V Raspberry Pi pins go into the power rail of the breadboard (the red plus sign column). This will be used to share the 5V output from the Raspberry Pi Pin 4 which is 5V power. Thus one additional wiring from the top of the power rail of the breadboard to the Raspberry Pi [Pin 4 (5V)](https://pinout.xyz/pinout/5v_power) is necessary.
 
 ### Wire your resistive soil moisture sensor
 
