@@ -12,7 +12,7 @@ on:
 jobs:
   pr-deploy-and-comment:
     if: ${{ contains(github.event.*.labels.*.name, 'safe to build') }}
-    runs-on: [self-hosted, x64, linux]
+    runs-on: ubuntu-latest
     container:
        image: ghcr.io/viamrobotics/canon:amd64
     steps:
