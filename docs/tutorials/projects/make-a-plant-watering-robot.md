@@ -32,7 +32,7 @@ Follow this tutorial to learn how to set up an automatic plant watering system:
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/Q6UuUKJpDn0?start=877">}}
 
-You can also follow a simplified version of this tutorial in this video: it eliminates the need for the ADC and the breadboard, instead uses the digital pin of the moisture sensor to get “high” and “low” readings and to turn a relay on and off.
+You can also follow a simplified version of this tutorial in this video: it eliminates the need for the ADC and the breadboard, instead using the digital pin of the moisture sensor to get “high” and “low” readings and to turn a relay on and off.
 You can start with this simple version and then add the ADC to make your machine more accurate!
 
 The tutorial uses the following hardware, but you can adjust it as needed:
@@ -55,7 +55,7 @@ Make sure your Pi is flashed with a Viam-compatible operating system, and that y
 ## Set up your plant watering robot
 
 Before programming the Pi to make the plant watering robot functional, you need to physically set up the plant watering robot by wiring the different components together.
-You will set up the robot to receive signals from the resistive soil moisture sensor and signal to the 5V pump when it is time to pump water from the water's container to the plant's container.
+You will set up the robot to receive signals from the resistive soil moisture sensor and signal to the pump when it is time to pump water from the water's container to the plant's container.
 
 ### Full wiring diagram
 
@@ -94,7 +94,8 @@ Then, use the rows on the side of your MCP3008's pins and the GPIO pins on your 
 | DIN | MOSI |
 | CS/SHDN | 24GPIO8 |
 
-The 5V Raspberry Pi pins go into the power rail of the breadboard (the red plus sign column). This will be used to share the 5V output from the Raspberry Pi Pin 4 which is 5V power. Thus one additional wiring from the top of the power rail of the breadboard to the Raspberry Pi [Pin 4 (5V)](https://pinout.xyz/pinout/5v_power) is necessary.
+Use an additional wire to wire Raspberry Pi [pin 4 (a 5 volt power pin)](https://pinout.xyz/pinout/5v_power) to the power rail of the breadboard (the red plus sign column).
+This brings the 5V power output from the Raspberry Pi to the ADC and the sensor.
 
 ### Wire your resistive soil moisture sensor
 
@@ -105,7 +106,7 @@ Reference this diagram of the blue module part of the sensor:
 ![Pinout diagram for the resistive soil moisture sensor.](/tutorials/plant-watering-pi/moisture-sensor-pinout.png)
 
 Start by connecting the female jumper wires at the end of the sensor prongs to the blue module where the diagram shown above is labeled "Connect with Probe."
-Be careful of the positive and negative sides, and make sure to match it correctly.
+Be careful of the positive and negative sides, and make sure to match them correctly.
 
 Then, wire the rest of the pins on the module to the Pi and ADC as follows:
 
@@ -118,18 +119,19 @@ Put the soil moisture sensor inside of the container holding your plant.
 
 ### Wire your pump
 
-Now, wire and power your pump [motor](/components/motor/), and relay module to complete your hardware setup.
+Now, wire and power your pump [motor](/components/motor/) and relay module to complete your hardware setup:
 
-1. Attach an [alligator wire clip](https://www.amazon.com/Goupchn-Alligator-Breadboard-Flexible-Electrical/dp/B08M5P6LHR/) to your 5V pump motor's positive wire, and connect it to the NO pin on relay module. NO stands for normally open, which will keep the circuit open unless the pin is triggered.
-2. Attach another [alligator wire clip](https://www.amazon.com/Goupchn-Alligator-Breadboard-Flexible-Electrical/dp/B08M5P6LHR/) to your 5V pump motor's negative wire, and connect it to [Pin 39 (Ground)](https://pinout.xyz/pinout/ground) on the Raspberry Pi.
-3. Connect the COM (Common) pin on the relay to [Pin 1 (3.3V)](https://pinout.xyz/pinout/3v3_power) on the Pi.
-4. Connect the 5V pin on the relay to [Pin 2 (5V)](https://pinout.xyz/pinout/5v_power) on the Pi.
-5. Connect the GND pin on the relay to [Pin 14 (Ground)](https://pinout.xyz/pinout/ground) on the Pi.
-6. Connect the IN pin on the relay to the [Pin 8 (GPIO 14)](https://pinout.xyz/pinout/pin8_gpio14) on the Pi.
+1. Attach an [alligator wire clip](https://www.amazon.com/Goupchn-Alligator-Breadboard-Flexible-Electrical/dp/B08M5P6LHR/) to your 5V pump motor's positive wire, and connect it to the NO pin on relay module.
+   NO stands for normally open, which will keep the circuit open unless the pin is triggered.
+2. Attach another [alligator wire clip](https://www.amazon.com/Goupchn-Alligator-Breadboard-Flexible-Electrical/dp/B08M5P6LHR/) to your 5V pump motor's negative wire, and connect it to [pin 39 (ground)](https://pinout.xyz/pinout/ground) on the Raspberry Pi.
+3. Connect the COM (common) pin on the relay to [pin 1 (3.3V)](https://pinout.xyz/pinout/3v3_power) on the Pi.
+4. Connect the 5V pin on the relay to [pin 2 (5V)](https://pinout.xyz/pinout/5v_power) on the Pi.
+5. Connect the GND pin on the relay to [pin 14 (ground)](https://pinout.xyz/pinout/ground) on the Pi.
+6. Connect the IN pin on the relay to the [pin 8 (GPIO 14)](https://pinout.xyz/pinout/pin8_gpio14) on the Pi.
 
 {{% alert title="Tip" color="tip" %}}
 
-To complete the steps, you must insert the end of the jumper wires into the pin gates on the relay module and tighten the screws on these gates with your screwdriver to close the wires inside.
+To complete the steps, insert the ends of the jumper wires into the pin gates on the relay module and tighten the screws on these gates with your screwdriver to close the wires inside.
 
 {{% /alert %}}
 
