@@ -1,19 +1,24 @@
 ---
-title: "Unbox and Set Up your Viam Rover"
-linkTitle: "Unbox and Set Up your Viam Rover"
-weight: 10
+title: "Unbox and Set Up your Viam Rover 1"
+linkTitle: "Unbox and Set Up your Viam Rover 1"
+weight: 15
 type: "docs"
 tags: ["rover", "tutorial"]
 image: "/get-started/try-viam/rover-resources/viam-rover/box-contents.jpg"
-imageAlt: "A Viam Rover in a box"
+imageAlt: "A Viam Rover 1 in a box"
 images: ["/get-started/try-viam/rover-resources/viam-rover/box-contents.jpg"]
-description: "A list of the contents of the Viam Rover kit, instructions for wiring your rover, and links for additional hardware."
+description: "A list of the contents of the Viam Rover 1 kit, instructions for wiring your rover, and links for additional hardware."
 aliases:
   - "/rover-resources/rover-tutorial/"
   - "/try-viam/rover-resources/rover-tutorial/"
 ---
 
-The [Viam Rover](https://www.viam.com/resources/rover) arrives preassembled with two encoded motors with suspension, a webcam with a microphone unit, and a 3D accelerometer module.
+{{% alert title="Tip" color="tip" %}}
+A new version of the Viam Rover is now available, the [Viam Rover 2](https://www.viam.com/resources/rover).
+If you have purchased a Viam Rover 2, follow [these instructions](/get-started/try-viam/rover-resources/rover-tutorial-2/) instead.
+{{% /alert %}}
+
+The [Viam Rover 1](https://www.viam.com/resources/rover) arrives preassembled with two encoded motors with suspension, a webcam with a microphone unit, and a 3D accelerometer module.
 
 {{< alert title="Important" color="note" >}}
 You must purchase the following hardware separately:
@@ -23,15 +28,15 @@ You must purchase the following hardware separately:
 - A MicroSD card and an adapter/reader
   {{< /alert >}}
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover/rover-front.jpg" resize="400x" declaredimensions=true alt="The front of the assembled Viam Rover">}}
+{{<imgproc src="get-started/try-viam/rover-resources/viam-rover/rover-front.jpg" resize="400x" declaredimensions=true alt="The front of the assembled Viam Rover 1">}}
 
 This guide covers what's inside the kit, describes each component, provides instructions for wiring your rover, and includes links for additional hardware.
 
 ## What's inside the kit
 
-1. One assembled Viam Rover.
+1. One assembled Viam Rover 1.
 
-   {{<imgproc src="get-started/try-viam/rover-resources/viam-rover/rover-side.jpg" resize="400x" declaredimensions=true alt="The side of the assembled Viam Rover">}}
+   {{<imgproc src="get-started/try-viam/rover-resources/viam-rover/rover-side.jpg" resize="400x" declaredimensions=true alt="The side of the assembled Viam Rover 1">}}
 
 1. Four M2.5 screws for mounting your Raspberry Pi.
 
@@ -54,7 +59,7 @@ This guide covers what's inside the kit, describes each component, provides inst
 
 All together, your kit looks like this:
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover/box-contents.jpg" resize="400x" declaredimensions=true alt="A Viam Rover shipping box contents" >}}
+{{<imgproc src="get-started/try-viam/rover-resources/viam-rover/box-contents.jpg" resize="400x" declaredimensions=true alt="A Viam Rover 1 shipping box contents" >}}
 
 ## Rover components
 
@@ -134,12 +139,12 @@ Switch the rover off when not in use.
 {{< alert title="Warning" color="warning" >}}
 Lithium-ion batteries may pose a flammable hazard.
 This product requires four 18650 lithium-ion batteries.
-Refer to the battery manufacturer’s operating instructions to ensure safe operation of the Viam Rover.
+Refer to the battery manufacturer’s operating instructions to ensure safe operation of the Viam Rover 1.
 Dispose of lithium-ion batteries per manufacturer instructions.
 {{< /alert >}}
 
 {{< alert title="Caution" color="caution" >}}
-Damage may occur to the Raspberry Pi and/or Viam Rover if wired incorrectly.
+Damage may occur to the Raspberry Pi and/or Viam Rover 1 if wired incorrectly.
 Refer to the manufacturer’s instructions for correct wiring.
 {{< /alert >}}
 
@@ -168,7 +173,7 @@ To be able to attach the Raspberry Pi, unscrew the top of the rover with the big
 Then use the smallest Allen key and the provided M2.5 screws to attach the Raspberry Pi to your rover in the designated spots.
 The following image shows the four mounting holes for the Pi, circled in red:
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover/topless-rover.jpg" resize="500x" alt="The Viam Rover base with the top removed. The motors, chips and wires are exposed." >}}
+{{<imgproc src="get-started/try-viam/rover-resources/viam-rover/topless-rover.jpg" resize="500x" alt="The Viam Rover 1 base with the top removed. The motors, chips and wires are exposed." >}}
 
 {{< alert title="Tip" color="tip" >}}
 The rover's design allows you to reach the SD card slot at all times, so you can remove or reinsert the SD card without removing the top of the rover.
@@ -214,7 +219,7 @@ The following pinout corresponds to the diagram:
 {{< alert title="Tip" color="tip" >}}
 En A and En B pins have little plastic jumpers that you need to remove before wiring.
 
-The motor driver on the Viam Rover has 8 pins and 6 wires.
+The motor driver on the Viam Rover 1 has 8 pins and 6 wires.
 You must wire it with the outside row pins:
 
 {{<imgproc src="get-started/try-viam/rover-resources/viam-rover/wiring-closeup.jpg" resize="400x" declaredimensions=true alt="closeup of the motor driver wiring" >}}
@@ -255,7 +260,7 @@ If you want to learn more about the rover, you can find the CAD files and bill-o
 
 ### Extensibility
 
-Due to the aluminum chassis and its expandable mounting features, you can extend the Viam Rover.
+Due to the aluminum chassis and its expandable mounting features, you can extend the Viam Rover 1.
 With it, you can customize your rover by mounting additional sensors, lidar, robot arms, or other components.
 The following are just a few ideas, but you can expand or modify the rover kit with any components you want:
 
