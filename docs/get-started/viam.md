@@ -82,7 +82,7 @@ After configuring your machine's hardware, you can configure [high level functio
 - **Simultaneous Localization And Mapping (SLAM)** enables your machine to map its surroundings and find its position on a map.
 
 <div>
-{{< imgproc src="/viam/robot-components.png" alt="Machine components" resize="600x" class="aligncenter" >}}
+{{< imgproc src="/viam/machine-components.png" alt="Machine components" resize="600x" class="aligncenter" >}}
 </div>
 
 ## Control your machine
