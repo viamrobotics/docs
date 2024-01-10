@@ -48,11 +48,11 @@ This guide covers what's inside the kit and provides instructions for [setting u
 
    {{<imgproc src="get-started/try-viam/rover-resources/viam-rover/allen-wrenches.png" resize="180x" alt="Three allen wrenches" >}}
 
-2. Four extenders to increase the height of the rover to house larger internal single board computers (such as a Jetson Nano Orin).
+1. Four extenders to increase the height of the rover to house larger internal single board computers (such as a Jetson Nano Orin).
 
    {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/extenders.png" resize="400x" declaredimensions=true alt="Four extenders" >}}
 
-3. Ribbon cable for connecting the Raspberry Pi 4 to the Viam Rover 2 printed circuit board.
+1. Ribbon cable for connecting the Raspberry Pi 4 to the Viam Rover 2 printed circuit board.
 
    {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/ribbon-cable.png" resize="400x" declaredimensions=true alt="Ribbon cable" >}}
 
@@ -110,7 +110,7 @@ See [Alternative Board Configurations](#alternative-board-configurations) for a 
 {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/mpu6050.png" resize="400x" declaredimensions=true alt="An MPU6050 gyroscope" >}}
 
 The MPU6050 sensor is a digital 6-axis accelerometer or gyroscope that can read acceleration and angular velocity.
-You can access it via the I2C digital interface.
+You can access it through the I2C digital interface.
 You configure it with Viam on your machine as a [movement sensor](/components/movement-sensor/mpu6050/).
 
 ### INA219 power monitoring unit
@@ -119,7 +119,7 @@ You configure it with Viam on your machine as a [movement sensor](/components/mo
 
 The INA219 unit measures the voltage and current from the power supply.
 You can use it to measure battery life status and power consumption.
-It connects to the Raspberry Pi 4 via the I2C bus.
+It connects to the Raspberry Pi 4 through the I2C bus.
 You configure it with Viam on your machine as a [power sensor](/components/power-sensor/ina219/).
 
 ### DC-DC 5V converter
@@ -221,7 +221,7 @@ The Viam Rover 2 arrives with the 18650 battery pack wired into the power input 
 The battery pack works with batteries 67.5 mm in length, but the battery housing includes a spring to accommodate most batteries of that approximate length.
 
 - Turn the rover over so that you can see the battery housing.
-- Place four 18650 batteries (taking care to ensure correct polarity orientation) inside the battery pack to provide power to the rover, which can be turned on and off via the power switch.
+- Place four 18650 batteries (taking care to ensure correct polarity orientation) inside the battery pack to provide power to the rover, which can be turned on and off through the power switch.
 
 {{% alert title="Tip" color="tip" %}}
 Ensure that the batteries are making contact with the terminals inside the battery pack.
@@ -241,20 +241,20 @@ We make no recommendations regarding specific RC battery brands.
 
 To change the rover's power supply configuration for a RC-battery:
 
-   1. Ensure the 18650 battery holder contains no batteries
-   2. Unscrew the 18650 battery leads from the power input terminal.
-   Move these wires out of the way.
-   3. Screw in a power lead that matches that of the selected battery.
-   Common options include: EC-type connectors, XT-connectors or T-plugs.
-   Ensure lead is long enough to reach the battery.
-   4. Ensure that the polarity is correct (the polarity is marked on the PCB).
-   **Failure to do so may result in permanent damage to your Viam Rover 2 when powered on.**
-   5. Ensure that there is no short between the terminals (for example, due to a stray strand of wire). Use a multimeter to check continuity across the terminal to verify this.
-   Failure to do so may result in damage to the battery and may pose a fire hazard.
-   6. Place the battery in the receptacle between the two caster wheels:
-      {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/RC-mount.png" resize="400x" declaredimensions=true alt="RC battery mount" >}}
-      Connect the battery to the lead that is wired into the power input terminal.
-      Although not necessary, slots in the bottom plate of the rover allow a velcro strap to be placed around the battery to secure it.
+1.  Ensure the 18650 battery holder contains no batteries
+2.  Unscrew the 18650 battery leads from the power input terminal.
+    Move these wires out of the way.
+3.  Screw in a power lead that matches that of the selected battery.
+    Common options include: EC-type connectors, XT-connectors or T-plugs.
+    Ensure lead is long enough to reach the battery.
+4.  Ensure that the polarity is correct (the polarity is marked on the PCB).
+    **Failure to do so may result in permanent damage to your Viam Rover 2 when powered on.**
+5.  Ensure that there is no short between the terminals (for example, due to a stray strand of wire). Use a multimeter to check continuity across the terminal to verify this.
+    Failure to do so may result in damage to the battery and may pose a fire hazard.
+6.  Place the battery in the receptacle between the two caster wheels:
+    {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/RC-mount.png" resize="400x" declaredimensions=true alt="RC battery mount" >}}
+    Connect the battery to the lead that is wired into the power input terminal.
+    Although not necessary, slots in the bottom plate of the rover allow a velcro strap to be placed around the battery to secure it.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -270,8 +270,8 @@ Connecting multiple batteries together may result in damage to the batteries and
 Now that you have connected your power supply to your rover, you need to configure the [low voltage cutoff circuit](#switch-and-low-voltage-cutoff-circuit).
 You must configure two settings:
 
-   1. The low voltage cutoff
-   2. The reconnect voltage
+1.  The low voltage cutoff
+2.  The reconnect voltage
 
 The reconnect voltage is the voltage increment above the cutoff point that is needed for the power to reconnect.
 For both 18650 and RC-type battery inputs, the nominal voltage is 14.8V, so you should set the low voltage threshold to 14.7.
@@ -279,17 +279,18 @@ You can adjust this value if using a battery that has an alternative nominal vol
 
 To set the low voltage cutoff and reconnect voltage:
 
-   1. Turn on the circuit using the switch.
-   The LED indicater should indicate a current voltage level of 14.8-16V depending on the battery charge status:
+1.  Turn on the circuit using the switch.
+    The LED indicater should indicate a current voltage level of 14.8-16V depending on the battery charge status:
 
-      {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/circuit-led.png" resize="300x" declaredimensions=true alt="LED with voltage level displayed on low voltage cutoff circuit" >}}
-   2. Hold down the left button until the LED display starts flashing with the low cutoff value.
-   The factory default low cutoff value is 12V.
-   3. Use the left (+) and right (-) buttons to set the voltage to 14.7V (or whatever you want the cutoff to be).
-   4. Wait for the indicator to stop flashing.
-   5. Hold down the right button until the LED display starts flashing with the reconnect voltage value. The factory default reconnect voltage is 2.0V.
-   6. Use the left (+) and right (-) buttons to set the reconnect voltage to 0.2V.
-   7. Wait for the indicator to stop flashing.
+    {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/circuit-led.png" resize="300x" declaredimensions=true alt="LED with voltage level displayed on low voltage cutoff circuit" >}}
+
+2.  Hold down the left button until the LED display starts flashing with the low cutoff value.
+    The factory default low cutoff value is 12V.
+3.  Use the left (+) and right (-) buttons to set the voltage to 14.7V (or whatever you want the cutoff to be).
+4.  Wait for the indicator to stop flashing.
+5.  Hold down the right button until the LED display starts flashing with the reconnect voltage value. The factory default reconnect voltage is 2.0V.
+6.  Use the left (+) and right (-) buttons to set the reconnect voltage to 0.2V.
+7.  Wait for the indicator to stop flashing.
 
 Your voltage cutoff circuit is now configured.
 When the voltage drops below 14.8V (or reaches the cutoff point you chose), a relay will disconnect the motherboard.
