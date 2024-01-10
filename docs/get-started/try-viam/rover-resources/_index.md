@@ -27,7 +27,8 @@ If you want a convenient mobile {{% glossary_tooltip term_id="base" text="base"%
     </div>
     <div class="col" style= "min-width:300px;">
         <p>
-            The <a href="https://www.viam.com/resources/rover" target="_blank">Viam Rover</a> arrives preassembled with two encoded motors with suspension, a webcam with a microphone unit, and a 3D accelerometer module.
+            The <a href="https://www.viam.com/resources/rover" target="_blank">Viam Rover 2</a> arrives preassembled with two encoded motors with suspension, a webcam with a microphone unit, a 6 axis IMU, power management and more.
+            It is primarily designed for use with a Raspberry Pi 4.
             Featuring an anodized aluminum chassis with expandable mounting features, the rover can comfortably navigate indoor environments with a 20 lb payload.
             You can customize your rover by mounting <a href="/components/sensor/">sensors</a>, <a href="/components/camera/">LiDAR</a>, and <a href="/components/arm/">arms</a>.
         </p>
@@ -39,7 +40,7 @@ If you want a convenient mobile {{% glossary_tooltip term_id="base" text="base"%
 You must purchase the following hardware separately:
 
 - A Raspberry Pi 4
-- Four 18650 batteries (with charger)
+- Four 18650 batteries or RC-type battery (with charger)
 - A MicroSD card and an adapter/reader
 
 {{< /alert >}}
