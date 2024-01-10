@@ -359,10 +359,6 @@ After adding the appropriate fragment, follow one of these tutorials with your b
 {{% card link="/tutorials/services/try-viam-color-detection/" %}}
 {{< /cards >}}
 
-### Rover Build
-
-If you want to learn more about the rover, you can find the CAD files and bill-of-materials (BOM) on [GitHub](https://github.com/viamrobotics/Rover-VR1).
-
 ### Extensibility
 
 Due to the aluminum chassis and its expandable mounting features, you can extend the Viam Rover.
