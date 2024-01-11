@@ -323,7 +323,7 @@ Also, connect the webcam's USB lead to any USB port on your Pi.
 
 Assuming you are using a Raspberry Pi 4, you can skip the following section and move to [Screw the top plate back on and switch the rover on](#screw-the-top-plate-back-on-and-switch-the-rover-on).
 
-#### Alternative board configurations
+### Alternative board configurations
 
 This guide assumes you are using a Raspberry Pi 4, but you can use [different boards](#motherboard) with your Viam Rover 2 with some modifications while attaching the boards.
 
@@ -331,17 +331,17 @@ This guide assumes you are using a Raspberry Pi 4, but you can use [different bo
 If you are using a Jetson board, you should be following [this guide](./jetson-rover-setup/).
 {{% /alert %}}
 
-Reference the appropriate alternative hole patterning provided on the motherboard:
+Reference the appropriate alternative hole pattern provided on the motherboard:
 
 {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/hole-patterning.png" resize="400x" declaredimensions=true alt="Viam rover 2 motherboard hole patterns" >}}
 
-Disattach the motherboard, unscrew the standoffs, and move them to the correct holes.
+Detach the motherboard, unscrew the standoffs, and move them to the correct holes.
 Then, use the smallest Allen key and the provided M2.5 screws to attach your board to your rover through these standoffs.
 
 If you are using a Raspberry Pi Zero 2W, you should be able to connect your ribbon cable straight to the board.
 If not, you will have to take off the ribbon cable and use [dupont connectors](https://www.amazon.com/IWISS-1550PCS-Connector-Headers-Balancer/dp/B08X6C7PZM/) to wire a connection from the motherboard to the single-board computer's GPIO pins.
 
-Also, connect the webcam's USB lead to any USB port on your board.
+Then connect the webcam's USB lead to any USB port on your board.
 
 If you need to increase the height of your rover to accommodate your board being larger than a Raspberry Pi 4, place the [height extender standoffs](#whats-inside-the-kit) now.
 
