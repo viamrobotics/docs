@@ -100,7 +100,7 @@ To add the [data management service](/data/) and configure data capture:
    Here you can view the images captured so far from the camera on your machine.
    You should see new images appearing steadily as cloud sync uploads them from your machine.
 
-For more information, see [configure data capture for individual components](/data/capture/#configure-data-capture-for-individual-components)
+For more information, see [configure data capture for individual components](/data/capture/#configure-data-capture-for-individual-components).
 
 {{% alert title="Tip" color="tip" %}}
 If you are using a different model of camera, you may need to use a different **Type** of method in your data capture configuration.
@@ -131,7 +131,7 @@ Then, create a new dataset using your uploaded images and train a new model usin
    Give it the name `"persondetect"`, and select **Object Detection** as the **Model Type**.
 4. [Deploy the model](/ml/deploy/) to your machine so it can be used by other services, such as the vision service.
 
-Finally, configure an `mlmodel` detector to use your new `persondetect` ML model:
+Finally, configure an `mlmodel` detector to use your new `"persondetect"` ML model:
 
 1. Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/Machines).
 2. Click the **Services** subtab and click **Create service** in the lower-left corner.
@@ -177,7 +177,7 @@ This is a [modular](/registry/) vision service that uses the DeepFace library to
    Edit the attributes as applicable according to the configuration information on [GitHub](https://github.com/viam-labs/facial-detection):
 
    - `"face_labels"`: Label a photo of the face of each person you want your security system to recognize with the name you want for the label paired with the image path on your machine running `viam-server`.
-     You can [use `scp`](https://www.warp.dev/terminus/scp-from-remote-to-local) to transfer your pictures from your development machine to that machine.
+     You can [use `scp` to transfer your pictures](https://www.warp.dev/terminus/scp-from-remote-to-local) from your development machine to that machine.
    - `"recognition_model"`: The model to use for facial recognition.
      `"ArcFace"` is chosen as the default for a good balance of speed and accuracy.
    - `"detection_framework"`: The detection framework to use for facial detection.
@@ -191,7 +191,7 @@ Now that you have configured both the coarser `people-detect` object detector an
 For this, add and configure the `verification-system` module from the Viam registry following the steps below:
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
-1. Click the **Create services** button at the bottom of the page, select `vision`, then select the `[filtered-camera](classifier:verification-system)` model.
+1. Click the **Create services** button at the bottom of the page, select `vision`, then select the `classifier:verification-system` model.
    You can also search for `verification-system` directly.
 1. Name your modular vision service `security`, then click **Create**.
 1. On the panel that appears, enter the following configuration into the **Attributes** field:
@@ -285,6 +285,8 @@ To add a transform camera to your machine:
 {{% alert title="Note" color="note" %}}
 The various states do not cause anything to happen on their own besides appearing as overlays on the transform cam.
 To trigger an audio alarm or otherwise have your machine take an action based on the reported state, you can write your own logic using one of the [Viam SDKs](https://docs.viam.com/build/program/) to [poll the classifications](/ml/vision/#getclassificationsfromcamera).
+
+See [2D Image Classification](/ml/vision/classification/) for information about working with classifiers in Viam, and [Vision API](/ml/vision/#api) for usage of the Computer Vision API this module implements.
 {{% /alert %}}
 
 With everything configured, you are now ready to see your facial recognition machine in action by watching the transform camera as a person passes in front of the camera.
