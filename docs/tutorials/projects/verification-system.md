@@ -81,10 +81,10 @@ To add the [data management service](/data/) and configure data capture:
 2. Click the **Services** subtab and click **Create service** in the lower-left corner.
 3. Choose `Data Management` as the type and specify a name for your data management service, such as `data-manager`.
    Click **Create**.
-1. On the panel that appears, you can manage the capturing and syncing functions individually.
+4. On the panel that appears, you can manage the capturing and syncing functions individually.
    By default, the data management service captures data to the <file>~/.viam/capture</file> directory, and syncs captured data files to the Viam app every 6 seconds (`0.1` minutes in the configuration).
    Leave the default settings as they are, and click **Save Config** at the bottom of the screen to save your changes.
-4. Navigate to the **Components** subtab.
+5. Navigate to the **Components** subtab.
    Scroll to the panel of the camera you just configured.
    Find the **Data Capture Configuration** section.
    Click **Add Method**.
@@ -92,11 +92,11 @@ To add the [data management service](/data/) and configure data capture:
    Set the **Frequency** to `0.333`.
    This will capture an image from the camera roughly once every 3 seconds.
    Click **Save config.**
-5. Toggle the **Data capture configuration** on.
+6. Toggle the **Data capture configuration** on.
    Now, your camera is taking pictures.
    Walk in front of it a number of times, perhaps with a friend or two, letting the camera capture many images of you.
    For optimal performance, try capturing a variety of angles and use different lighting.
-6. Select the [**DATA** page](https://app.viam.com/data/view) from the top of the screen.
+7. Select the [**DATA** page](https://app.viam.com/data/view) from the top of the screen.
    Here you can view the images captured so far from the camera on your machine.
    You should see new images appearing steadily as cloud sync uploads them from your machine.
 
@@ -128,7 +128,7 @@ Then, create a new dataset using your uploaded images and train a new model usin
    Remember that you must add at least 10 images that contain people, as well as a few (but no more than 20% of the total images) that _do not_ contain people.
 2. Label the images that contain people with [bounding boxes](/data/dataset/#bounding-boxes), and add the label `person`. You only want this model to be able to distinguish between what is and isn't a person, so you can conduct this training step with anyone, not necessarily the specific people you intend to approve later.
 3. [Train a model on your dataset](/ml/train-model/).
-   Give it the name `"persondetect"`, and  select  **Object Detection** as the **Model Type**.
+   Give it the name `"persondetect"`, and select **Object Detection** as the **Model Type**.
 4. [Deploy the model](/ml/deploy/) to your machine so it can be used by other services, such as the vision service.
 
 Finally, configure an `mlmodel` detector to use your new `persondetect` ML model:
@@ -177,11 +177,11 @@ This is a [modular](/registry/) vision service that uses the DeepFace library to
    Edit the attributes as applicable according to the configuration information on [GitHub](https://github.com/viam-labs/facial-detection):
 
    - `"face_labels"`: Label a photo of the face of each person you want your security system to recognize with the name you want for the label paired with the image path on your machine running `viam-server`.
-   You can [use `scp`](https://www.warp.dev/terminus/scp-from-remote-to-local) to transfer your pictures from your development machine to that machine.
+     You can [use `scp`](https://www.warp.dev/terminus/scp-from-remote-to-local) to transfer your pictures from your development machine to that machine.
    - `"recognition_model"`: The model to use for facial recognition.
-   `"ArcFace"` is chosen as the default for a good balance of speed and accuracy.
+     `"ArcFace"` is chosen as the default for a good balance of speed and accuracy.
    - `"detection_framework"`: The detection framework to use for facial detection.
-   `"ssd"` is chosen as the default for a good balance of speed and accuracy.
+     `"ssd"` is chosen as the default for a good balance of speed and accuracy.
 
 See the [`facial-detector` module documentation](https://github.com/viam-labs/facial-detection) for more information on the available attributes.
 
@@ -216,13 +216,13 @@ For this, add and configure the `verification-system` module from the Viam regis
    In the configuration above:
 
    - `"trigger_1_detector"` and `"trigger_2_detector"` both use the `people-detect` ML model you created to determine if a person is present in the camera frame.
-      For this tutorial, you are configuring both of these triggers identically to use the person detection ML model.
+     For this tutorial, you are configuring both of these triggers identically to use the person detection ML model.
    - `"trigger_1_labels"` and `"trigger_2_labels"` similarly both use the `"person"` label you added to images when training the `people-detect` model.
-      For this tutorial, you are configuring both of these labels identically to use the person detection ML model.
+     For this tutorial, you are configuring both of these labels identically to use the person detection ML model.
    - `"verification_detector"` uses the `face-detect` ML model you configured when you added images of faces to approved and labelled them in the configuration.
    - `"verification_labels"` contains an array of approved names that match each name you assigned to an image in the `facial-detector` modules' `"face_labels"` configuration attribute.
    - `"camera_name"` is the name of the camera to use to detect people and faces.
-      If you used a different name for your camera, update this parameter with your camera's name.
+     If you used a different name for your camera, update this parameter with your camera's name.
    - Edit the other attributes to reflect your desired confidence thresholds and times between states.
 
 See the [`verification-system` module documentation](https://github.com/viam-labs/verification-system) for more information about the trigger states and their various configuration options.
@@ -304,9 +304,9 @@ Now that you've got the verification aspect of your system working, you can use 
 For example:
 
 - Write a program using one of the [Viam SDK](/sdks/) to poll the `facial-verification` module for its current state, and take action when a particular state is reached.
-   For example, you could use [`GetClassificationsFromCamera()`](/ml/vision/#getclassificationsfromcamera) to capture when a transition into the `ALARM` state occurs, and then send you an Email with the captured image of the trespasser!
+  For example, you could use [`GetClassificationsFromCamera()`](/ml/vision/#getclassificationsfromcamera) to capture when a transition into the `ALARM` state occurs, and then send you an Email with the captured image of the trespasser!
 - Try changing the type of [detectors](/ml/vision/detection/), using different detectors for the `TRIGGER_1` and `TRIGGER_2` states.
 - Add the [filtered camera module](/tutorials/projects/filtered-camera/) to your machine, and use it as the source camera in your verification system in order to save images to the Viam cloud only when the system enters into specific states.
-   This way, you could limit the images captured and synced to only those you are interested in reviewing later, for example.
+  This way, you could limit the images captured and synced to only those you are interested in reviewing later, for example.
 - If you don't want the `ALARM` capabilities, and would like to just use it as a notification system when a detector gets triggered, set `disable_alarm: true` in the config, which prevents `TRIGGER_2` from entering into the `COUNTDOWN` state, meaning the system will only cycle between the states of `TRIGGER_1` and `TRIGGER_2`.
 - Use entering into the state `TRIGGER_2` as a way to send notifications.
