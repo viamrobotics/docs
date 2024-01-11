@@ -338,13 +338,13 @@ If you need to increase the height of your rover to accommodate your board being
 
 ### Screw the top plate back on and switch the rover on
 
-Screw the top plate back on and use the power switch to turn the rover on.
+Screw the top plate back on with the biggest Allen key and use the power switch to turn the rover on.
 Wait a second for the low voltage cutoff relay to trip and provide power to the rover motherboard.
 If the Pi has power, the lights on the Raspberry Pi will light up.
 
 ### Control your rover on the Viam app
 
-If you followed the instructions in the [Pi installation guide](/get-started/installation/prepare/rpi-setup/), you should have already installed `viam-server` on the board and added a new machine.
+If you followed the instructions in the [Pi installation guide](/get-started/installation/prepare/rpi-setup/), you should have already made an account on the [Viam app](https://app.viam.com), installed `viam-server` on the board, and added a new machine.
 
 If not, make sure to [prepare your device and install `viam-server`](/get-started/installation/), and then [add a new machine](/fleet/machines/#add-a-new-machine).
 
