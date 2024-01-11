@@ -7,7 +7,7 @@ tags: ["rover", "tutorial"]
 image: "/get-started/try-viam/rover-resources/viam-rover-2/box-contents.png"
 imageAlt: "A Viam Rover 2 in a box"
 images: ["/get-started/try-viam/rover-resources/viam-rover-2/box-contents.png"]
-description: "Instructions for setting up a Viam Rover 2 with a Jetson Nano or Jetson Nano Orin."
+description: "Instructions for setting up a Viam Rover 2 with a Jetson Nano or Jetson Orin Nano."
 ---
 
 The [Viam Rover 2](https://www.viam.com/resources/rover) arrives preassembled with two encoded motors with suspension, a webcam with a microphone unit, a 6 axis IMU, power management and more.
@@ -89,7 +89,7 @@ You must purchase the following hardware separately:
 - A longer ribbon cable: female-female (ensure that the contacts are correct)
 - 25 mm female-female standoff
 - WiFi board: either [a board that directly interfaces with the Nano](https://www.amazon.com/Wireless-AC8265-Wireless-Developer-Support-Bluetooth/dp/B07V9B5C6M/) or [a USB based device](https://www.amazon.com/wireless-USB-WiFi-Adapter-PC/dp/B07P5PRK7J/)
-- A wired DC jack connector with the same polarity as the Jetson Nano Orin power input
+- A wired DC jack connector with the same polarity as the Jetson Orin Nano power input
 - Electrical tape
 
 The ribbon cable you purchase must meet these requirements:
@@ -118,7 +118,7 @@ Dispose of lithium-ion batteries per manufacturer instructions.
 {{< /alert >}}
 
 {{< alert title="Caution" color="caution" >}}
-Damage may occur to the Jetson Nano Orin and/or Viam Rover if wired incorrectly.
+Damage may occur to the Jetson Orin Nano and/or Viam Rover if wired incorrectly.
 Refer to the manufacturer’s instructions for correct wiring.
 {{< /alert >}}
 

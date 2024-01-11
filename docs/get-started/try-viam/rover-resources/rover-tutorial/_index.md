@@ -49,7 +49,7 @@ This guide covers what's inside the kit and provides instructions for [setting u
 
    {{<imgproc src="get-started/try-viam/rover-resources/viam-rover/allen-wrenches.png" resize="180x" alt="Three allen wrenches" >}}
 
-1. Four extenders to increase the height of the rover to house larger internal single board computers (such as a Jetson Nano Orin).
+1. Four extenders to increase the height of the rover to house larger internal single board computers (such as a Jetson Orin Nano).
 
    {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/extenders.png" resize="400x" declaredimensions=true alt="Four extenders" >}}
 
@@ -98,7 +98,7 @@ This board includes an auxiliary Raspberry Pi 4 pinout that dupont connectors ca
 
 The motherboard also incorporates hole patterns for the following alternative single board computers:
 
-- Jetson Nano and Nano Orin
+- Jetson Nano and Orin Nano
 - Rock Pi S
 - Raspberry Pi Zero 2W
 - Raspberry Pi 4
@@ -200,7 +200,7 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 ## Setup
 
 {{% alert title="Important" color="tip" %}}
-If you wish to use a Jetson Nano or Jetson Nano Orin, follow [this guide](./jetson-rover-setup/) instead.
+If you wish to use a Jetson Nano or Jetson Orin Nano, follow [this guide](./jetson-rover-setup/) instead.
 {{% /alert %}}
 
 ### Install Raspberry Pi OS
