@@ -47,7 +47,7 @@ Before following this tutorial, you should:
 1. [Create a new machine](/fleet/machines/#add-a-new-machine) in the Viam app.
 1. [Install `viam-server`](/get-started/installation/) on your new machine.
 
-Your machine must have a [camera](/components/camera/) component, such as a [webcam](/components/camera/webcam/) 
+Your machine must have a [camera](/components/camera/) component, such as a [webcam](/components/camera/webcam/).
 
 ## Configure a camera
 
@@ -122,7 +122,6 @@ For best results:
 
 {{< /alert >}}
 
-
 Then, create a new dataset using your uploaded images and train a new model using that model:
 
 1. [Create a new dataset and add the images you captured](/data/dataset/#create-a-dataset-and-add-data).
@@ -150,7 +149,6 @@ Finally, configure an `mlmodel` detector to use your new `persondetect` ML model
 
 For more information, see [Configure an `mlmodel` detector](/ml/vision/detection/#configure-an-mlmodel-detector)
 
-
 Now you are ready to configure the more "fine-grained" layer of the detectors: the facial recognition detector.
 
 ## Configure a facial detector
@@ -160,33 +158,37 @@ To do this, you will configure a second detector: a facial recognition detector.
 To create a detector that can recognize individual faces, use Viam Lab's `facial-detector` module, available from the [Viam registry](https://app.viam.com/module/viam-labs/facial-detector).
 This is a [modular](/registry/) vision service that uses the DeepFace library to perform facial detections.
 
-Navigate to the **Config** tab of your Machine’s page in [the Viam app](https://app.viam.com/).
-Click on the **Services** subtab and click **Create service**.
-Select the `vision` type, then select the `detector:facial-detector` model.
-Give your vision service the name `"face-detect"` and click **Create**.
+1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
+1. Click the **Create service** button at the bottom of the page, select `vision`, then select the `detector:facial-detector` model.
+   You can also search for `facial-detector` directly.
+1. Name your modular vision service `face-detect`, then click **Create**.
+1. On the panel that appears, enter the following configuration into the **Attributes** field:
 
-Edit the attributes as applicable according to the configuration information on [GitHub](https://github.com/viam-labs/facial-detection):
+   ```json {class="line-numbers linkable-line-numbers"}
+   {
+     "face_labels": {
+       "my_name": "/home/me/my-photo.jpg"
+     },
+     "recognition_model": "ArcFace",
+     "detection_framework": "ssd"
+   }
+   ```
 
-- `"face_labels"`: Label a photo of the face of each person you want your security system to recognize with the name you want for the label paired with the image path.
-- `"recognition_model"`: The model to use for facial recognition. `"ArcFace"` is chosen as the default for a good balance of speed and accuracy. See [GitHub](https://github.com/viam-labs/facial-detection) for more options.
-- `"detection_framework"`: The detection framework to use for facial detection. `"ssd"` is chosen as the default for a good balance of speed and accuracy.
+   Edit the attributes as applicable according to the configuration information on [GitHub](https://github.com/viam-labs/facial-detection):
 
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "face_labels": {
-    "my_name": "/home/me/my-photo.jpg"
-  },
-  "recognition_model": "ArcFace",
-  "detection_framework": "ssd"
-}
-```
+   - `"face_labels"`: Label a photo of the face of each person you want your security system to recognize with the name you want for the label paired with the image path on your machine running `viam-server`.
+   You can [use `scp`](https://www.warp.dev/terminus/scp-from-remote-to-local) to transfer your pictures from your development machine to that machine.
+   - `"recognition_model"`: The model to use for facial recognition.
+   `"ArcFace"` is chosen as the default for a good balance of speed and accuracy.
+   - `"detection_framework"`: The detection framework to use for facial detection.
+   `"ssd"` is chosen as the default for a good balance of speed and accuracy.
 
-Make sure to name this detector `"face-detect"`.
+See the [`facial-detector` module documentation](https://github.com/viam-labs/facial-detection) for more information on the available attributes.
 
 ## Configure a verification system
 
 Now that you have configured both the coarser `people-detect` object detector and the more fine-grained `face-detect` facial detector, you are ready to add the alarm logic that uses these detectors to either trigger an alarm or disarm, based on the detected person.
-For this, you will add and configure the `verification-system` module from the Viam registry following the steps below:
+For this, add and configure the `verification-system` module from the Viam registry following the steps below:
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create services** button at the bottom of the page, select `vision`, then select the `[filtered-camera](classifier:verification-system)` model.
@@ -214,9 +216,9 @@ For this, you will add and configure the `verification-system` module from the V
    In the configuration above:
 
    - `"trigger_1_detector"` and `"trigger_2_detector"` both use the `people-detect` ML model you created to determine if a person is present in the camera frame.
-      For this tutorial, you are configuring both of these triggers identically to use the person detection ML model. 
+      For this tutorial, you are configuring both of these triggers identically to use the person detection ML model.
    - `"trigger_1_labels"` and `"trigger_2_labels"` similarly both use the `"person"` label you added to images when training the `people-detect` model.
-      For this tutorial, you are configuring both of these labels identically to use the person detection ML model. 
+      For this tutorial, you are configuring both of these labels identically to use the person detection ML model.
    - `"verification_detector"` uses the `face-detect` ML model you configured when you added images of faces to approved and labelled them in the configuration.
    - `"verification_labels"` contains an array of approved names that match each name you assigned to an image in the `facial-detector` modules' `"face_labels"` configuration attribute.
    - `"camera_name"` is the name of the camera to use to detect people and faces.
@@ -244,8 +246,6 @@ The following attributes are available for the `viam-labs:classifier:verificatio
 | `alarm_time_s` | int | Optional | The time in seconds the system will remain in  state `ALARM` before transitioning to state `TRIGGER_1`. <br> Default: `10` |
 | `disarmed_time_s` | int | Optional | The time in seconds the system will remain in  state `DISARMED` before transitioning to state `TRIGGER_1`. <br> Default: `10` |
 | `disable_alarm` | bool | Optional | Disables the `COUNTDOWN` and `ALARM` states. The system will always remain in the `TRIGGER_1` and `TRIGGER_2` states. <br> Default: `false` |
-
-Note that `ALARM` is by default silent and only a label overlay, but you can [poll the classifications](/ml/vision/#getclassificationsfromcamera) to set up a physical alarm trigger.
 
 ## Configure a transform camera
 
@@ -282,14 +282,19 @@ To add a transform camera to your machine:
 
 ## View your verification system in action
 
+{{% alert title="Note" color="note" %}}
+The various states do not cause anything to happen on their own besides appearing as overlays on the transform cam.
+To trigger an audio alarm or otherwise have your machine take an action based on the reported state, you can write your own logic using one of the [Viam SDKs](https://docs.viam.com/build/program/) to [poll the classifications](/ml/vision/#getclassificationsfromcamera).
+{{% /alert %}}
+
 With everything configured, you are now ready to see your facial recognition machine in action by watching the transform camera as a person passes in front of the camera.
 
 To view your machine's transform camera overlay:
 
 1. On your machine's **Control** page in the [Viam app](https://app.viam.com), select the transform camera pane, which is listed by the name you gave it in the previous session, such as `my-transform-camera`.
-1. Enable the view toggle to see a live camera feed from your camera, overlayed by the current state of the `verification-system` module, which should be `TRIGGER_1` if no people are present in-frame.
-1. Have one or more people walk in front of the camera and look directly into it.
-   Watch the state change to `COUNTDOWN` and then `DISARMED` when an approved person is detected, or to `ALARM` if no approved person appears within 10 seconds! 
+2. Enable the view toggle to see a live camera feed from your camera, overlayed by the current state of the `verification-system` module, which should be `TRIGGER_1` if no people are present in-frame.
+3. Have one or more people walk in front of the camera and look directly into it.
+   Watch the state change to `COUNTDOWN` and then `DISARMED` when an approved person is detected, or to `ALARM` if no approved person appears within 10 seconds!
 
    ![Verification camera feed](/tutorials/verification-system/disarmed.png)
 
