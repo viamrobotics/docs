@@ -8,11 +8,12 @@ image: "/get-started/try-viam/rover-resources/viam-rover-2/box-contents.png"
 imageAlt: "A Viam Rover 2 in a box"
 images: ["/get-started/try-viam/rover-resources/viam-rover-2/box-contents.png"]
 description: "A list of the contents of the Viam Rover 2 kit, instructions for wiring your rover, and links for additional hardware."
+no_list: true
 ---
 
 {{% alert title="Tip" color="tip" %}}
 Another version of the Viam Rover was sold until January 2023.
-If you have purchased a Viam Rover 1, follow [these instructions](/get-started/try-viam/rover-resources/rover-tutorial/) instead.
+If you have purchased a Viam Rover 1, follow [these instructions](/get-started/try-viam/rover-resources/rover-tutorial-1) instead.
 {{% /alert %}}
 
 The [Viam Rover 2](https://www.viam.com/resources/rover) arrives preassembled with two encoded motors with suspension, a webcam with a microphone unit, a 6 axis IMU, power management and more.
@@ -101,9 +102,10 @@ The motherboard also incorporates hole patterns for the following alternative si
 - Rock Pi S
 - Raspberry Pi Zero 2W
 - Raspberry Pi 4
-- Orange Pi
+- Orange Pi Zero 2
 
 See [Alternative Board Configurations](#alternative-board-configurations) for a diagram of this.
+Note that these boards require additional parts to be purchased and will not work out of the box with the Viam Rover 2.
 
 ### 6DOF IMU
 
@@ -196,6 +198,10 @@ Viam does not make any promise or warranty that the product will meet your requi
 Some states do not allow the exclusion or disclaimer of implied warranties, so the above exclusions may not apply to you.
 
 ## Setup
+
+{{% alert title="Important" color="tip" %}}
+If you wish to use a Jetson Nano or Jetson Nano Orin, follow [this guide](./jetson-rover-setup/) instead.
+{{% /alert %}}
 
 ### Install Raspberry Pi OS
 
@@ -319,15 +325,18 @@ Assuming you are using a Raspberry Pi 4, you can skip the following section and 
 
 #### Alternative board configurations
 
-This guide assumes you are using a Raspberry Pi 4, but you can use different [boards](/components/board/) with your Viam Rover 2 with some modifications while attaching the board.
+This guide assumes you are using a Raspberry Pi 4, but you can use [different boards](#motherboard) with your Viam Rover 2 with some modifications while attaching the boards.
 
-If you are using one of these boards, reference the appropriate alternative hole patterning provided on the motherboard:
+{{% alert title="Tip" color="tip" %}}
+If you are using a Jetson board, you should be following [this guide](./jetson-rover-setup).
+{{% /alert %}}
+
+Reference the appropriate alternative hole patterning provided on the motherboard:
 
 {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/hole-patterning.png" resize="400x" declaredimensions=true alt="Viam rover 2 motherboard hole patterns" >}}
 
 Disattach the motherboard, unscrew the standoffs, and move them to the correct holes.
 Then, use the smallest Allen key and the provided M2.5 screws to attach your board to your rover through these standoffs.
-If you are using a Jetson board, you will have to purchase appropriately sized standoffs.
 
 If you are using a Raspberry Pi Zero 2W, you should be able to connect your ribbon cable straight to the board.
 If not, you will have to take off the ribbon cable and use [dupont connectors](https://www.amazon.com/IWISS-1550PCS-Connector-Headers-Balancer/dp/B08X6C7PZM/) to wire a connection from the motherboard to the single-board computer's GPIO pins.

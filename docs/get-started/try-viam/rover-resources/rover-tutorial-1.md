@@ -15,7 +15,7 @@ aliases:
 
 {{% alert title="Tip" color="tip" %}}
 A new version of the Viam Rover is now available, the [Viam Rover 2](https://www.viam.com/resources/rover).
-If you have purchased a Viam Rover 2, follow [these instructions](/get-started/try-viam/rover-resources/rover-tutorial-2/) instead.
+If you have purchased a Viam Rover 2, follow [these instructions](/get-started/try-viam/rover-resources/rover-tutorial/) instead.
 {{% /alert %}}
 
 The [Viam Rover 1](https://www.viam.com/resources/rover) arrives preassembled with two encoded motors with suspension, a webcam with a microphone unit, and a 3D accelerometer module.
