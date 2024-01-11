@@ -213,7 +213,7 @@ Install a 64-bit Raspberry Pi OS onto your Pi following our [Raspberry Pi instal
 Follow all steps as listed, including the final step, [Enable communication protocols](/get-started/installation/prepare/rpi-setup/#enable-communication-protocols), which is required to enable [the accelerometer](#6dof-imu) on your rover.
 Once you have installed Raspberry Pi OS and `viam-server`, put your SD card in the slot on your Pi.
 
-### Configure the power supply
+### Add the power supply
 
 You can power the Viam Rover 2 using 18650 batteries or RC-type batteries.
 18650 batteries are the nominal power supply recommended for use with the rover, but RC-type batteries are higher capacity.

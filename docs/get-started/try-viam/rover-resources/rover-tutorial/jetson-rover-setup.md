@@ -67,7 +67,7 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 1. Install the WiFi board/device on the Nano. Follow the manufacturer's instructions to do so.
 2. Power the Jetson Nano with a power supply and [prepare the device and install `viam-server`](/get-started/installation/prepare/jetson-nano-setup/).
 3. Switch back to the main guide and complete these two steps:
-   [Configure the power supply](/get-started/try-viam/rover-resources/rover-tutorial/#configure-the-power-supply) and [Configure the low-voltage cutoff circuit](/get-started/try-viam/rover-resources/rover-tutorial/#configure-the-low-voltage-cutoff-circuit).
+   [Add the power supply](/get-started/try-viam/rover-resources/rover-tutorial/#add-the-power-supply) and [Configure the low-voltage cutoff circuit](/get-started/try-viam/rover-resources/rover-tutorial/#configure-the-low-voltage-cutoff-circuit).
 4. Unscrew the top of the rover with the biggest Allen key.
 5. Take the [height extenders](/get-started/try-viam/rover-resources/rover-tutorial/#whats-inside-the-kit) provided in your kit.
    Apply them to the rover chassis posts.
@@ -130,7 +130,7 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 
 1. Power the Jetson Orin Nano with a power supply and [prepare the device and install `viam-server`](/get-started/installation/prepare/jetson-nano-setup/).
 2. Switch back to the main guide and complete these two steps:
-   [Configure the power supply](/get-started/try-viam/rover-resources/rover-tutorial/#configure-the-power-supply) and [Configure the low-voltage cutoff circuit](/get-started/try-viam/rover-resources/rover-tutorial/#configure-the-low-voltage-cutoff-circuit).
+   [Add the power supply](/get-started/try-viam/rover-resources/rover-tutorial/#add-the-power-supply) and [Configure the low-voltage cutoff circuit](/get-started/try-viam/rover-resources/rover-tutorial/#configure-the-low-voltage-cutoff-circuit).
 3. Unscrew the top of the rover with the biggest Allen key.
 4. Take the [height extenders](/get-started/try-viam/rover-resources/rover-tutorial/#whats-inside-the-kit) provided in your kit.
    Apply them to the rover chassis posts.
