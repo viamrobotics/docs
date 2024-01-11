@@ -13,7 +13,7 @@ no_list: true
 
 {{% alert title="Tip" color="tip" %}}
 Another version of the Viam Rover was sold until January 2023.
-If you have purchased a Viam Rover 1, follow [these instructions](/get-started/try-viam/rover-resources/rover-tutorial-1) instead.
+If you have purchased a Viam Rover 1, follow [these instructions](/get-started/try-viam/rover-resources/rover-tutorial-1/) instead.
 {{% /alert %}}
 
 The [Viam Rover 2](https://www.viam.com/resources/rover) arrives preassembled with two encoded motors with suspension, a webcam with a microphone unit, a 6 axis IMU, power management and more.
@@ -328,7 +328,7 @@ Assuming you are using a Raspberry Pi 4, you can skip the following section and 
 This guide assumes you are using a Raspberry Pi 4, but you can use [different boards](#motherboard) with your Viam Rover 2 with some modifications while attaching the boards.
 
 {{% alert title="Tip" color="tip" %}}
-If you are using a Jetson board, you should be following [this guide](./jetson-rover-setup).
+If you are using a Jetson board, you should be following [this guide](./jetson-rover-setup/).
 {{% /alert %}}
 
 Reference the appropriate alternative hole patterning provided on the motherboard:

@@ -17,7 +17,7 @@ Viam provides a reusable {{% glossary_tooltip term_id="fragment" text="*fragment
 - An assembled Viam Rover with a Raspberry Pi.
   For assembly instructions, see [Unbox and Set Up your Viam Rover](../rover-tutorial/)
 - The Pi is connected to [the Viam app](https://app.viam.com).
-  To add your Pi to the Viam app, refer to [the rover setup guide](/get-started/try-viam/rover-resources/rover-tutorial/#connect-to-the-viam-app).
+  To add your Pi to the Viam app, refer to [the rover setup guide](/get-started/try-viam/rover-resources/rover-tutorial/#control-your-rover-on-the-viam-app).
 
 ## Add the fragment
 
