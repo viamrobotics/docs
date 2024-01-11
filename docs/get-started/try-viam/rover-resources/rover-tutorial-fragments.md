@@ -21,56 +21,37 @@ Viam provides reusable {{% glossary_tooltip term_id="fragment" text="*fragments*
 
 ## Add the fragment
 
-There are 4 available fragments for the rovers:
-
-- Viam Rover 2: Pi board and Viam Rover 2
-- Viam Rover 1: Pi board and Viam Rover 1
-- Viam Rover 2 (Jetson Nano): Jetson Nano board and Viam Rover 2
-- Viam Rover 2 (Jetson Nano Orin): Jetson Nano Orin board and Viam Rover 2
-
 Follow the appropriate instructions for the model of rover and board you have:
 
 {{< tabs >}}
-{{% tab name="Viam Rover 2" %}}
+{{% tab name="Viam Rover 2 (Pi)" %}}
 
 Navigate to your machine in [the Viam app](https://app.viam.com/robots).
 On the **Config** tab, click on the **Fragments** subtab.
 
 On the **Fragments** tab, you can see the available fragments to add.
-Find `ViamRover2-2024-a` and click `Add` to add the fragment to your machine configuration:
+Find `ViamRover2-2024-rpi4-a` and click `Add` to add the fragment to your machine configuration:
 
 {{<imgproc src="get-started/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" alt="List of available fragments">}}
 
 Click **Save Config** to save the new configuration.
 
-{{<imgproc src="get-started/try-viam/rover-resources/fragments/fragment_configuration.png" resize="400x" alt="Fragment configuration">}}
-
 The fragment adds the following components to your machine's JSON configuration:
 
-- A [board component](/components/board/pi/) named `local` representing the Raspberry Pi
-  - An I<sup>2</sup>C bus for connection to the accelerometer.
+- A [board component](/components/board/pi/) named `local` representing the Raspberry Pi.
 - Two [motors](/components/motor/gpio/) (`right` and `left`)
   - The configured pin numbers correspond to where the motor drivers are connected to the board.
 - Two [encoders](/components/encoder/single/), one for each motor
 - A wheeled [base](/components/base/), an abstraction that coordinates the movement of the right and left motors
-  - Width between the wheel centers: 260 mm
-  - Wheel circumference: 217 mm
-  - Spin slip factor: 1
 - A webcam [camera](/components/camera/webcam/)
-- An [accelerometer](/components/movement-sensor/adxl345/)
-
-{{% alert title="Info" color="info" %}}
-
-This particular motor driver has pins labeled "ENA" and "ENB."
-Typically, this would suggest that they should be configured as enable pins, but on this specific driver these function as PWM pins, so we configure them as such.
-
-{{% /alert %}}
+- An [accelerometer](/components/movement-sensor/mpu6050/)
+- A [power sensor](/components/power-sensor/ina219/)
 
 For information about how you would configure a component yourself if you weren't using the fragment, click the links on each component above.
 To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=7c413f24-691d-4ae6-a759-df3654cfe4c8).
 
 {{% /tab %}}
-{{% tab name="Viam Rover 1" %}}
+{{% tab name="Viam Rover 1 (Pi)" %}}
 
 Navigate to your machine in [the Viam app](https://app.viam.com/robots).
 On the **Config** tab, click on the **Fragments** subtab.
@@ -109,82 +90,29 @@ For information about how you would configure a component yourself if you weren'
 To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=3e8e0e1c-f515-4eac-8307-b6c9de7cfb84).
 
 {{% /tab %}}
-{{% tab name="Viam Rover 2 (Jetson Nano)" %}}
+{{% tab name="Viam Rover 2 (Jetson Nano and Orin Nano)" %}}
 
 Navigate to your machine in [the Viam app](https://app.viam.com/robots).
 On the **Config** tab, click on the **Fragments** subtab.
 
 On the **Fragments** tab, you can see the available fragments to add.
-Find `ViamRover202210b` and click `Add` to add the fragment to your machine configuration:
-
-{{<imgproc src="get-started/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" alt="List of available fragments">}}
+Find `ViamRover2-2024-jetson-a` and click `Add` to add the fragment to your machine configuration.
 
 Click **Save Config** to save the new configuration.
 
-{{<imgproc src="get-started/try-viam/rover-resources/fragments/fragment_configuration.png" resize="400x" alt="Fragment configuration">}}
-
 The fragment adds the following components to your machine's JSON configuration:
 
-- A [board component](/components/board/pi/) named `local` representing the Raspberry Pi
-  - An I<sup>2</sup>C bus for connection to the accelerometer.
+- A [board component](/components/board/pi/) named `local` representing the Jetson.
 - Two [motors](/components/motor/gpio/) (`right` and `left`)
   - The configured pin numbers correspond to where the motor drivers are connected to the board.
 - Two [encoders](/components/encoder/single/), one for each motor
 - A wheeled [base](/components/base/), an abstraction that coordinates the movement of the right and left motors
-  - Width between the wheel centers: 260 mm
-  - Wheel circumference: 217 mm
-  - Spin slip factor: 1
 - A webcam [camera](/components/camera/webcam/)
-- An [accelerometer](/components/movement-sensor/adxl345/)
-
-{{% alert title="Info" color="info" %}}
-
-This particular motor driver has pins labeled "ENA" and "ENB."
-Typically, this would suggest that they should be configured as enable pins, but on this specific driver these function as PWM pins, so we configure them as such.
-
-{{% /alert %}}
+- An [accelerometer](/components/movement-sensor/mpu6050/)
+- A [power sensor](/components/power-sensor/ina219/)
 
 For information about how you would configure a component yourself if you weren't using the fragment, click the links on each component above.
-To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=3e8e0e1c-f515-4eac-8307-b6c9de7cfb84).
-
-{{% /tab %}}
-{{% tab name="Viam Rover 2 (Jetson Nano Orin)" %}}
-
-Navigate to your machine in [the Viam app](https://app.viam.com/robots).
-On the **Config** tab, click on the **Fragments** subtab.
-
-On the **Fragments** tab, you can see the available fragments to add.
-Find `ViamRover202210b` and click `Add` to add the fragment to your machine configuration:
-
-{{<imgproc src="get-started/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" alt="List of available fragments">}}
-
-Click **Save Config** to save the new configuration.
-
-{{<imgproc src="get-started/try-viam/rover-resources/fragments/fragment_configuration.png" resize="400x" alt="Fragment configuration">}}
-
-The fragment adds the following components to your machine's JSON configuration:
-
-- A [board component](/components/board/pi/) named `local` representing the Raspberry Pi
-  - An I<sup>2</sup>C bus for connection to the accelerometer.
-- Two [motors](/components/motor/gpio/) (`right` and `left`)
-  - The configured pin numbers correspond to where the motor drivers are connected to the board.
-- Two [encoders](/components/encoder/single/), one for each motor
-- A wheeled [base](/components/base/), an abstraction that coordinates the movement of the right and left motors
-  - Width between the wheel centers: 260 mm
-  - Wheel circumference: 217 mm
-  - Spin slip factor: 1
-- A webcam [camera](/components/camera/webcam/)
-- An [accelerometer](/components/movement-sensor/adxl345/)
-
-{{% alert title="Info" color="info" %}}
-
-This particular motor driver has pins labeled "ENA" and "ENB."
-Typically, this would suggest that they should be configured as enable pins, but on this specific driver these function as PWM pins, so we configure them as such.
-
-{{% /alert %}}
-
-For information about how you would configure a component yourself if you weren't using the fragment, click the links on each component above.
-To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=3e8e0e1c-f515-4eac-8307-b6c9de7cfb84).
+To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=747e1f43-309b-4311-b1d9-1dfca45bd097).
 
 {{% /tab %}}
 {{< /tabs >}}
