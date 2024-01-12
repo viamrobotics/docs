@@ -149,7 +149,7 @@ Finally, configure an `mlmodel` detector to use your new `"persondetect"` ML mod
 
 For more information, see [Configure an `mlmodel` detector](/ml/vision/detection/#configure-an-mlmodel-detector)
 
-Now you are ready to configure the more "fine-grained" layer of the detectors: the facial recognition detector.
+Now you are ready to configure the more fine-grained layer: the facial recognition detector.
 
 ## Configure a facial detector
 
