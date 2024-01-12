@@ -421,11 +421,11 @@ Fill out the config panel as follows:
 - **Arguments**: Type in `main.py` and click **Add argument**.
   Then type `-tn` and click **Add argument** again.
   This flag starts the Freenove server without launching Freenove's GUI (which you don't need for this use case).
-- **Working Directory**: `/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server` (changing "/home/fido" to the name of your home directory where you downloaded the Freenove code).
+- **Working directory**: `/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server` (changing "/home/fido" to the name of your home directory where you downloaded the Freenove code).
 - **Logging**: Toggle to the **on** position so you can view logs for this server process.
 - **Execute once**: Leave this **off** so that the Freenove server will continue to run, and will restart if it crashes.
 
-Click **Save Config** at the bottom of the window.
+Click **Save config** at the bottom of the window.
 
 ![Screenshot of the Processes subtab of the Config tab, showing a process configured as detailed above.](/tutorials/custom-base-dog/process-config.png)
 

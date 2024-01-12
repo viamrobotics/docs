@@ -227,17 +227,18 @@ Find more information in our [remotes documentation](/build/configure/parts-and-
 
 To automatically run a specified script when the machine boots, configure a _process_.
 
-Start by giving the process a **Name** (`id` in raw JSON) (an identifier of your choice) and clicking **Create Process**.
+Start by giving the process a **Name** (`id` in raw JSON) (an identifier of your choice) and clicking **Create process**.
 
 Then fill in the following fields:
 
-- **Executable** (`name`): The command you want to execute when your machine connects to the server.
-- **Arguments** (`args`): Optional arguments to follow the command.
-- **Working Directory** (`cwd`): Where you want the process to execute.
-  An optional setting that defaults to the directory where `viam-server` executes.
-
-You can also toggle whether you want errors and other messages to be logged, and whether to execute the command just once or keep running the process indefinitely.
-In raw JSON, these options are represented by `log` (bool) and `one_shot` (bool), respectively.
+<!-- prettier-ignore -->
+| Attribute (Builder Mode) | Attribute (Raw JSON) | Type    | Inclusion    | Description |
+| ------------------------ | -------------------- | ------- | ------------ | ----------- |
+| Executable               | `name`               | string  | **Required** | The command you want to execute when your machine connects to the server. |
+| Arguments                | `args`               | string  | Optional     | Arguments to follow the command. |
+| Working directory        | `cwd`                | string  | Optional     | Where you want the process to execute. Defaults to the directory where `viam-server` executes. |
+| Logging                  | `log`                | boolean | Optional     | Toggle logging of errors and other messages on or off. Default: `false`. |
+| Execute once             | `one_shot`           | boolean | Optional     | Toggle whether to execute the command just once or keep running the process indefinitely.<ul><li>If true, the process executes once at `viam-server` startup. Until the process completes, `viam-server` startup is blocked and the robot appears offline in the [Viam app](https://app.viam.com), so this should only be used for quick processes.</li><li>If false, the process continues to run. If the process crashes, it automatically restarts. It does not block `viam-server`. Default: `false`.</li></ul> |
 
 {{% expand "Click to see an example of a configured process." %}}
 
