@@ -157,7 +157,7 @@ We now have a machine capable of detecting people in its camera feed, but we als
 First, select a profile picture of at least one face that you want your detector to be able to identify.
 A good profile picture clearly shows the face of the person in good lighting, with all facial features visible.
 Continue this process for each additional person you want your detector to be able to identify.
-Remember that a person who walks in front of your machine's camera who is _not_  able to be identified will trigger the `ALARM` state!
+Remember that a person who walks in front of your machine's camera who is _not_ able to be identified will trigger the `ALARM` state!
 
 Once you have one or more pictures selected, copy them to your machine's filesystem in your preferred fashion.
 For example, you could use the `scp` command to transfer an image to your machine like so:
