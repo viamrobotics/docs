@@ -241,26 +241,6 @@ For this, add and configure the `verification-system` module from the Viam regis
 
 See the [`verification-system` module documentation](https://github.com/viam-labs/verification-system) for more information about the trigger states and their various configuration options.
 
-The following attributes are available for the `viam-labs:classifier:verification-system` model:
-
-<!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
-| ---- | ---- | --------- | ----------- |
-| `camera_name` | string | **Required** | The name of the camera component to use for source images. |
-| `trigger_1_detector` | string | Optional | The name of the [vision service detector](/ml/vision/detection/) that will be used as the first stage to trigger the system to enter verification mode. If left blank, the system will immediately transition to state `TRIGGER_2`. |
-| `trigger_1_labels` | array | Optional | The class names from `trigger_1_detector` that count as valid. Required if `trigger_1_detector` is specified. |
-| `trigger_1_confidence` | float | Optional | The detection confidence needed in order to move into the `TRIGGER_2` state. <br> Default: `0.2` |
-| `trigger_2_detector` | string | **Required** | The name of the vision service detector that will detect the thing that needs to be verified. |
-| `trigger_2_labels` | array | **Required** | The class names from `trigger_2_detector` that count as valid. |
-| `trigger_2_confidence` | float | Optional | The detection confidence needed in order to move into the `COUNTDOWN` state. <br> Default: `0.5` |
-| `verification_detector` | string | **Required** | The name of the vision service detector that you want to use to verify the object. |
-| `verification_labels` | array | **Required** | The class names from `verification_detector` that count as valid. |
-| `verification_confidence` | float | Optional | The detection confidence needed in order to move into the `DISARMED` state. <br> Default: `0.8` |
-| `countdown_time_s` | int | Optional | The time in seconds the system will remain in state `COUNTDOWN` before transitioning to state `ALARM`. <br> Default: `20` |
-| `alarm_time_s` | int | Optional | The time in seconds the system will remain in  state `ALARM` before transitioning to state `TRIGGER_1`. <br> Default: `10` |
-| `disarmed_time_s` | int | Optional | The time in seconds the system will remain in  state `DISARMED` before transitioning to state `TRIGGER_1`. <br> Default: `10` |
-| `disable_alarm` | bool | Optional | Disables the `COUNTDOWN` and `ALARM` states. The system will always remain in the `TRIGGER_1` and `TRIGGER_2` states. <br> Default: `false` |
-
 ## Configure a transform camera
 
 At this point, your machine is fully capable of detecting people in its camera feed, and of identifying whether a specific detected person is "approved" (defined under `"face_labels"`) or not.
