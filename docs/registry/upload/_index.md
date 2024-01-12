@@ -337,7 +337,7 @@ You can test this build configuration by running the following command on your d
 viam module build local
 ```
 
-The command will run your build instructions without running a cloud build job.
+The command will run your build instructions locally without running a cloud build job.
 
 For more details, see the [`build-action` GitHub Action documentation](https://github.com/viamrobotics/build-action), or take a look through one of the following example repositories that show how to package and deploy modules using the Viam SDKs:
 
