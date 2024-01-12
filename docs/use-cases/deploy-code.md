@@ -34,20 +34,7 @@ When you deploy a module, whether its one you've written yourself or added from 
     <th>{{<imgproc src="/ml/deploy.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="ml deploy icon">}}
       <b>3. Deploy your module</b>
       <br><br>
-      <p>Once you have created your new module, you can <a href="/registry/upload/">deploy</a> it to your machine in one of two ways:</p><br><br>
-      <ul>
-        <li>
-            You can <a href="/registry/upload/">upload your module</a> to the Viam registry using the Viam CLI. Modules available from the Viam registry can be deployed directly to a machine or fleet of machines from the Viam app. When you upload your module to the registry, you can choose to make it:
-        </li>
-        <ul>
-            <li>
-                <b>Public:</b> your module is available to all Viam users.
-            </li>
-            <li>
-                <b>Private:</b> your module is only visible to members of your <a href="/fleet/organizations/">organization</a>. This is the default state of new modules.
-            </li>
-        </ul>
-       </ul>
+       <p>Once you have created your new module, you can deploy it to your machine in one of two ways:</p><br><br>
         <ul>
             <li>
             You can <a href="/registry/upload/">upload your module</a> to the Viam registry using the Viam CLI. Modules available from the Viam registry can be deployed directly to a machine or fleet of machines from the Viam app. When you upload your module to the registry, you can choose to make it:
