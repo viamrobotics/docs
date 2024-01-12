@@ -331,7 +331,7 @@ At the end of your <file>meta.json</file>, add the build configuration:
 }
 ```
 
-You can test this command by running the following command on your development machine:
+You can test this build configuration by running the following command on your development machine:
 
 ```sh {class="command-line" data-prompt="$"}
 viam module build local
