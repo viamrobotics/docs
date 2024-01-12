@@ -237,7 +237,7 @@ Then fill in the following fields:
 | Executable               | `name`               | string  | **Required** | The command you want to execute when your machine connects to the server. |
 | Arguments                | `args`               | string  | Optional     | Arguments to follow the command. |
 | Working directory        | `cwd`                | string  | Optional     | Where you want the process to execute. Defaults to the directory where `viam-server` executes. |
-| Logging                  | `log`                | boolean | Optional     | Toggle logging of errors and other messages on or off. Default: `true`. |
+| Logging                  | `log`                | boolean | Optional     | Toggle logging of errors and other messages on or off. Default: `false`. |
 | Execute once             | `one_shot`           | boolean | Optional     | Toggle whether to execute the command just once or keep running the process indefinitely.<ul><li>If true, the process executes once at `viam-server` startup. Until the process completes, `viam-server` startup is blocked and the robot appears offline in the [Viam app](https://app.viam.com), so this should only be used for quick processes.</li><li>If false, the process continues to run. If the process crashes, it automatically restarts. It does not block `viam-server`. Default: `false`.</li></ul> |
 
 {{% expand "Click to see an example of a configured process." %}}
