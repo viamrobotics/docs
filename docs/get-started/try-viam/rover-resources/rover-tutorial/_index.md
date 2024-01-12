@@ -82,7 +82,7 @@ In contrast, a soft suspension allows the wheels to move up and down to absorb s
 The kit comes with an L298N driver dual H-Bridge DC motor driver.
 L298 is a high voltage and high current motor drive chip, and H-Bridge is typically used to control the rotating direction and speed of DC motors.
 
-### 720p webcam, with integrated microphone
+### 720p webcam with integrated microphone
 
 {{<imgproc src="get-started/try-viam/rover-resources/viam-rover/webcam.jpg" resize="400x" declaredimensions=true alt="Webcam with cables" >}}
 
