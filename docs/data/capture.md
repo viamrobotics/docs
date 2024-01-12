@@ -10,17 +10,17 @@ aliases:
 # SME: Alexa Greenberg
 ---
 
-The data management service captures data from one or more components locally on the robot's storage.
+The data management service captures data from one or more components locally on the machine's storage.
 The process runs in the background and, by default, stores data in the `~/.viam/capture` directory.
 
-If a robot restarts for any reason, capture automatically resumes.
+If a machine restarts for any reason, capture automatically resumes.
 
 The service can capture data from multiple components at the same or different frequencies.
 Viam does not impose a lower or upper limit on the frequency of data collection.
 However, in practice, your hardware may impose limits on the frequency of data collection.
 
 You can change the frequency of data capture at any time for individual components.
-If you use {{< glossary_tooltip term_id="fragment" text="fragments" >}}, you can change the frequency of data capture in real time for some or all robots in a fleet at the component or robot level.
+If you use {{< glossary_tooltip term_id="fragment" text="fragments" >}}, you can change the frequency of data capture in real time for some or all machines in a fleet at the component or machine level.
 
 For example, consider a tomato picking robot with a 3D camera and an arm.
 When you configure the robot, you may set the camera to capture point cloud data at a frequency of 30Hz.
@@ -28,13 +28,13 @@ For the arm, you may want to capture joint positions at 1Hz.
 If your requirements change and you want to capture data from both components at 10Hz, you can change the configurations at any time by changing the number.
 
 Data capture is frequently used with [Cloud Sync](/data/cloud-sync/).
-However, if you want to manage your robot's captured data yourself, you can enable only data capture without cloud sync.
+However, if you want to manage your machine's captured data yourself, you can enable only data capture without cloud sync.
 
 ## Add the data management service
 
 To capture data from one or more machines, you must first add the [data management service](../):
 
-1. From your robot's **Config** tab, navigate to the **Services** subtab.
+1. From your machine's **Config** tab, navigate to the **Services** subtab.
 2. Click **Create service** in the lower-left corner of the page.
    Choose `Data Management` as the type and specify a name for your data management service, for example `data-manager`.
 3. Click **Create**.
@@ -87,7 +87,7 @@ The following components support data capture:
 - Sensor
 - Servo
 
-To add data capture for a component, navigate to the **Config** tab of your robot's page in the Viam app.
+To add data capture for a component, navigate to the **Config** tab of your machine's page in the Viam app.
 
 For each component you can capture data for, there is a `Data Capture Configuration` section in its panel.
 Click `Add Method` and then select the method type and the capture frequency.
@@ -372,7 +372,7 @@ If you are capturing camera data, it can happen that the camera captures and syn
 
 To sync your captured data with the cloud, [configure cloud sync](/data/cloud-sync/).
 
-If you have synced tabular data, such as [sensor](/build/configure/components/sensor/) readings, you can [query that data with SQL or MQL](/data/query/) from the Viam app or a MQL-compatible client.
+If you have synced tabular data, such as [sensor](/components/sensor/) readings, you can [query that data with SQL or MQL](/data/query/) from the Viam app or a MQL-compatible client.
 If you have synced images, you can use those images to [train machine learning models](/ml/train-model/) within the Viam app.
 
 For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).

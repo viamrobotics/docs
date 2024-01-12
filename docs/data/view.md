@@ -5,6 +5,9 @@ description: "View and filter data on the DATA page in the Viam Cloud."
 weight: 38
 type: "docs"
 tags: ["data management", "cloud", "sync"]
+image: "/ml/collect.svg"
+imageAlt: "View images"
+images: ["/ml/collect.svg"]
 aliases:
   - /manage/data/view/
 # SME: Alexa Greenberg
@@ -34,7 +37,7 @@ If you click on an image or a file, a **Details** panel appears on the right wit
 On the [**DATA** page in the Viam app](https://app.viam.com/data/view), you can filter data in the left **Filtering** panel.
 You can filter by several categories including machine name, location, or timestamp range.
 
-For example, if you specify `Rover Rental` for location and click **SEARCH**, you can see all data captured on robots that belong to your `Rover Rental` location.
+For example, if you specify `Rover Rental` for location and click **SEARCH**, you can see all data captured on machines that belong to your `Rover Rental` location.
 
 You can also filter data using the [Viam Python SDK](https://python.viam.dev/).
 For example, you could use the [`BinaryDataByFilter`](/build/program/apis/data-client/#binarydatabyfilter) or [`TabularDataByFilter`](/build/program/apis/data-client/#tabulardatabyfilter) methods to filter binary data or tabular data respectively.
@@ -57,7 +60,7 @@ You can also delete data using the [Viam CLI](/fleet/cli/).
 
 To export your captured data from the cloud, see [Export Data](../export/).
 
-If you have synced tabular data, such as [sensor](/build/configure/components/sensor/) readings, you can [query that data with SQL or MQL](../query/) from the Viam app or a MQL-compatible client.
+If you have synced tabular data, such as [sensor](/components/sensor/) readings, you can [query that data with SQL or MQL](../query/) from the Viam app or a MQL-compatible client.
 If you have synced images, you can use those images to [train machine learning models](/ml/train-model/) within the Viam app.
 
 For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).

@@ -207,17 +207,17 @@ Use the template and example below to populate the JSON file with a single key, 
 
 ## Configure a `customlinux` board
 
-Configure your board as a [`customlinux`](/build/configure/components/board/customlinux/) board to use your board definitions file:
+Configure your board as a [`customlinux`](/components/board/customlinux/) board to use your board definitions file:
 
 {{< tabs name="Configure a customlinux board" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `board` type, then select the `customlinux` model.
 Enter a name for your `customlinux` board and click **Create**.
 
-![An example configuration for a customlinux board in the Viam app Config Builder.](/build/configure/components/board/customlinux-ui-config.png)
+![An example configuration for a customlinux board in the Viam app Config Builder.](/components/board/customlinux-ui-config.png)
 
 Copy and paste the following json object into your board's **Attributes** box.
 

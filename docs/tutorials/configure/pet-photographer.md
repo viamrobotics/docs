@@ -18,13 +18,12 @@ date: "2023-09-17"
 # updated: ""
 cost: "0"
 no_list: true
-weight: 3
 ---
 
 If your smart machine [captures](/data/capture/) a lot of data, you might want to filter captured data to selectively store only the data you are interested in.
 For example, you might want to use your smart machine's camera to capture images based on specific criteria, such as the presence of a certain color, and omit captured images that don't meet that criteria.
 
-In this tutorial, you will use a custom {{< glossary_tooltip term_id="module" text="module" >}} to function as a color filter, and use it with a [camera](/build/configure/components/camera/) to only capture images where your pet is in the frame in the following way:
+In this tutorial, you will use a custom {{< glossary_tooltip term_id="module" text="module" >}} to function as a color filter, and use it with a [camera](/components/camera/) to only capture images where your pet is in the frame in the following way:
 
 1. Attach a colored object, such as a blue collar, to your pet.
 1. Set up a camera in an area where your pet is likely to appear in the frame, and configure the data management service to capture and sync images from that camera.
@@ -33,14 +32,14 @@ In this tutorial, you will use a custom {{< glossary_tooltip term_id="module" te
    {{<imgproc src="/tutorials/pet-photographer/data-example.png" resize="550x" declaredimensions=true alt="Dog in blue collar in the camera's live feed">}}
 
 The source code for this module is available on the [`modular-filter-examples` GitHub repository](https://github.com/viam-labs/modular-filter-examples) .
-In addition to the `colorfilter` module used in this tutorial, the example repository also includes a [sensor reading filter](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter) which you could use to control and filter the data recorded by a [sensor component](/build/configure/components/sensor/).
+In addition to the `colorfilter` module used in this tutorial, the example repository also includes a [sensor reading filter](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter) which you could use to control and filter the data recorded by a [sensor component](/components/sensor/).
 
 ## Hardware requirements
 
 To create your own filtering pet photographer robot, you'll need the following hardware:
 
 - A computer
-- A [webcam](/build/configure/components/camera/webcam/) or other type of [camera](/build/configure/components/camera/)
+- A [webcam](/components/camera/webcam/) or other type of [camera](/components/camera/)
 - A colored object, such as a blue collar for enhanced accuracy _(optional)_
 
 {{< alert title="Tip" color="tip" >}}
@@ -48,18 +47,18 @@ In this tutorial, the camera is configured to identify and filter images with th
 If your pet already has a distinct color that is different from their environment, you can also configure your camera to use that color to identify pictures of your pet.
 {{< /alert >}}
 
-## Set up
+## Setup
 
 Follow the steps below to set up your smart machine:
 
-1. Install [Go](https://go.dev/dl/) or [Python](https://www.python.org/downloads/) on both your local development computer and on your robot's board if they are not the same device.
-1. [Create a robot](/fleet/machines/#add-a-new-robot).
+1. Install [Go](https://go.dev/dl/) or [Python](https://www.python.org/downloads/) on both your local development computer and on your machine's board if they are not the same device.
+1. [Create a machine](/fleet/machines/#add-a-new-machine).
 1. [Install](/get-started/installation/#install-viam-server) or [update](/get-started/installation/manage/#update-viam-server) `viam-server`.
    Your `viam-server` must be [version 0.8.0](https://github.com/viamrobotics/rdk/releases/tag/v0.8.0-rc0) or newer, as filtering capabilities were introduced in the RDK starting from that version.
 
 ## Add the custom module
 
-In this tutorial, you can choose to add custom data filtering to your robot in one of two ways:
+In this tutorial, you can choose to add custom data filtering to your machine in one of two ways:
 
 1. [Download the `colorfilter` module](#download-the-colorfilter-module) from Viam and get started quickly.
 1. [Code your own color filtering module](#code-your-own-module), exploring the process of building a module from scratch.
@@ -84,7 +83,7 @@ Follow the instructions below to download the `colorfilter` module in your prefe
 {{% /tab %}}
 {{% tab name="Go"%}}
 
-1. Clone the [`colorfilter` module](https://github.com/viam-labs/modular-filter-examples) from GitHub onto your robot's computer:
+1. Clone the [`colorfilter` module](https://github.com/viam-labs/modular-filter-examples) from GitHub onto your machine's computer:
 
    ```{class="command-line" data-prompt="$"}
    git clone https://github.com/viam-labs/modular-filter-examples.git
@@ -338,7 +337,7 @@ After you have implemented your resource subtype's required methods and written 
 {{< tabs >}}
 {{% tab name="Python"%}}
 
-<file>color_filter.py</file> implements "colorfilter", a custom model of the [camera component API](/build/configure/components/camera/#api).
+<file>color_filter.py</file> implements "colorfilter", a custom model of the [camera component API](/components/camera/#api).
 
 <details>
   <summary>Click to view sample code from <file>color_filter.py</file></summary>
@@ -502,7 +501,7 @@ In this code:
 {{% /tab %}}
 {{% tab name="Go"%}}
 
-<file>color_filter.go</file> implements "colorfilter", a custom model of the [camera component API](/build/configure/components/camera/#api).
+<file>color_filter.go</file> implements "colorfilter", a custom model of the [camera component API](/components/camera/#api).
 
 <details>
   <summary>Click to view sample code from <file>color_filter.go</file></summary>
@@ -808,7 +807,7 @@ Note the absolute path to your module’s executable for use in the next section
 
 Whether you've downloaded the `colorfilter` module, or written your own color filtering module, the next step is to add the module to your smart machine as a local module:
 
-1. Navigate to the **Config** tab of your robot's page in the [Viam app](https://app.viam.com/robots).
+1. Navigate to the **Config** tab of your machine's page in the [Viam app](https://app.viam.com/robots).
 1. Select the **Modules** subtab and scroll to the **Add local module** section.
 1. Enter a name for your local module, enter the [module's executable path](/registry/create/#prepare-the-module-for-execution), then click **Add module**.
    - The name must use only lowercase characters.
@@ -823,11 +822,9 @@ Next, add the following services to your smart machine to support the color filt
 - The [data management service](/data/) enables your smart machine to capture data and sync it to the cloud.
 - The [vision service](/ml/vision/detection/) enables your smart machine to perform color detection on objects in a camera stream.
 
-If you are filtering data from other components, such as [sensors](/build/configure/components/sensor/), you may need to add different services, such as the [sensors service](/mobility/sensors/) which provides a central interface to all of your robot’s sensors.
-
 ### Add the data management service
 
-To enable data capture on your robot, add and configure the [data management service](/data/) to capture and store data on your robot's computer:
+To enable data capture on your machine, add and configure the [data management service](/data/) to capture and store data on your machine's computer:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -920,17 +917,17 @@ With the vision and data management services configured, you can now configure y
 
 ### Configure your camera
 
-If you haven't already, add a [camera](/build/configure/components/camera/) component to your smart machine:
+If you haven't already, add a [camera](/components/camera/) component to your smart machine:
 
-1. Navigate to your robot's page on the [Viam app](https://app.viam.com/robots) and select the **Config** tab.
+1. Navigate to your machine's page on the [Viam app](https://app.viam.com/robots) and select the **Config** tab.
 1. Click the **Components** subtab and click **Create component** in the lower-left corner.
 1. Select the `camera` and then select `webcam`.
    1.Enter 'cam' as the name for your camera, then click **Create**.
 
-Your robot's configuration page now includes a panel for your camera.
+Your machine's configuration page now includes a panel for your camera.
 
 - To choose the camera the robot will use, click the **video path** field.
-  - If your robot is connected to the Viam app, you'll see a list of available cameras.
+  - If your machine is connected to the Viam app, you'll see a list of available cameras.
   - Select the `camera` you want to use, then click **Save config**.
 
 ![An instance of the webcam component named 'cam'](/tutorials/pet-photographer/webcam-component.png)
@@ -971,7 +968,7 @@ Then, click **Save config**.
 
 ## Test your color filter camera
 
-To test that your color filter camera is capturing and filtering images properly, navigate to the **Control** tab on your robot's page.
+To test that your color filter camera is capturing and filtering images properly, navigate to the **Control** tab on your machine's page.
 
 On the **colorfiltercam** panel, toggle **view colorfiltercam** to view your camera's live feed.
 Test the filter by positioning your smart machine so that it captures an image of your pet wearing its collar.

@@ -1,7 +1,6 @@
 ---
 title: "A Guardian that Tracks Pets using a Pi, Camera, and Servo"
 linkTitle: "Pet Guardian"
-weight: 6
 type: "docs"
 description: "Make a functional guardian with a servo motor, some LEDs, a camera, and the ML Model and vision service to detect people and pets."
 webmSrc: "/tutorials/guardian/preview.webm"
@@ -23,7 +22,7 @@ In the run up to the new Zelda release, I realized you can build a stationary gu
 Adding a bit of [machine learning](/ml/), you can then make the guardian detect objects or people or pets and follow them around by rotating its head.
 Luckily, I am not the first one to have the idea to build a guardian and there was already a [brilliant guardian 3D model](https://www.thingiverse.com/thing:2391826) on Thingiverse with space for LEDs and a servo.
 
-In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/build/configure/components/servo/), a [camera](/build/configure/components/camera/), some LEDs and the [ML Model service](/ml/) and [vision service](/ml/vision/).
+In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/components/servo/), a [camera](/components/camera/), some LEDs and the [ML Model service](/ml/) and [vision service](/ml/vision/).
 Here's a video of the finished guardian detecting me:
 
 {{<video webm_src="/tutorials/guardian/guardian-detection.webm" mp4_src="/tutorials/guardian/guardian-detection.mp4" poster="/tutorials/guardian/guardian-detection.jpg" alt="Guardian robot detects person and rotates head to follow them around">}}
@@ -117,27 +116,27 @@ To be able to test the components, you need to install `viam-server` and configu
 
 ### Install `viam-server` and connect to your robot
 
-Go to the [Viam app](https://app.viam.com) and create a new robot called `guardian`.
+Go to the [Viam app](https://app.viam.com) and create a new machine called `guardian`.
 
-Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/get-started/installation/).
+Go to the **Setup** tab of your new machine's page and follow the steps [to install `viam-server` on your computer](/get-started/installation/).
 
 ### Configure the components
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab.
 
 1. **Add the board.**
 
    Click **Create component** in the lower-left corner of the page.
    Select `board` for the type, then select `pi` for the model.
-   Enter `local` as the name for your [board component](/build/configure/components/board/), then click **Create**.
+   Enter `local` as the name for your [board component](/components/board/), then click **Create**.
 
 2. **Add the camera.**
 
-   Click **Create Component** to add the [camera](/build/configure/components/camera/).
+   Click **Create Component** to add the [camera](/components/camera/).
    Select `camera` for the type, then select `webcam` for the model.
    Enter `cam` as the name for the camera, then click **Create**.
    In the new camera panel, click the **Video Path** field to reveal a dropdown populated with camera paths that have been identified on your machine.
@@ -147,7 +146,7 @@ Click on the **Components** subtab.
 
    Click **Create component** in the lower-left corner of the page.
    Select `servo` for the type, then select `pi` for the model.
-   Enter `servo` as the name for your [servo component](/build/configure/components/servo/), then click **Create**.
+   Enter `servo` as the name for your [servo component](/components/servo/), then click **Create**.
    Configure the attributes by adding the name of your board, `local`, and the {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin on `local` that you connected your servo PWM wire to, `12`:
 
    ```json
@@ -207,7 +206,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ### Test the components
 
-Navigate to your [robot's Control tab](/fleet/machines/#control) to test your components.
+Navigate to your [machine's Control tab](/fleet/machines/#control) to test your components.
 
 {{<imgproc src="/tutorials/guardian/test.png" resize="600x" declaredimensions=true alt="the control tab">}}
 
@@ -242,7 +241,7 @@ Use a suitable base with a hole, like a box with a hole cut into the top, to pla
 
 At this point also connect the speaker to your Raspberry Pi.
 
-Then test the components on the [robot's Control tab](/fleet/machines/#control) again to ensure everything still works.
+Then test the components on the [machine's Control tab](/fleet/machines/#control) again to ensure everything still works.
 
 ## Detect persons and pets
 
@@ -261,7 +260,7 @@ scp labels.txt pi@guardian.local:/home/pi/labels.txt
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Next, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Next, navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **Services** subtab.
 
 1. **Add an ML model service.**
@@ -296,7 +295,7 @@ Navigate to the **Components** subtab of the **Config** tab.
 Click **Create component** in the lower-left corner of the page.
 
 Select `camera` for the type, then select `transform` for the model.
-Enter `transform_cam` as the name for your [transform camera](/build/configure/components/camera/transform/), then click **Create**.
+Enter `transform_cam` as the name for your [transform camera](/components/camera/transform/), then click **Create**.
 
 Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
 
@@ -321,7 +320,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 {{% tab name="Raw JSON" %}}
 
-Next, on the [**Raw JSON** tab](/build/configure/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/ml/), the [vision service](/ml/vision/), and a [transform camera](/build/configure/components/camera/transform/):
+Next, on the [**Raw JSON** tab](/build/configure/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/ml/), the [vision service](/ml/vision/), and a [transform camera](/components/camera/transform/):
 
 ```json {class="line-numbers linkable-line-numbers" data-line="31-48,50-69"}
 {
@@ -403,7 +402,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{< /tabs >}}
 
-Navigate to your [robot's Control tab](/fleet/machines/#control) to test the transform camera.
+Navigate to your [machine's Control tab](/fleet/machines/#control) to test the transform camera.
 Click on the transform camera panel and toggle the camera on, then point your camera at a person or pet to test if the vision service detects them.
 You should see bounding boxes with labels around different objects.
 
@@ -436,7 +435,7 @@ The `mlmodel` extra includes additional dependency support for the [ML (machine 
 
 ### Connect
 
-Next, go to the **Code sample** tab on your robot page and select **Python**, then click **Copy**.
+Next, go to the **Code sample** tab on your machine page and select **Python**, then click **Copy**.
 
 {{% snippet "show-secret.md" %}}
 
@@ -473,10 +472,10 @@ from viam.services.vision import VisionClient
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      # Replace "<API-KEY>" (including brackets) with your machine's API key
       api_key='<API-KEY>',
-      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-      # id
+      # Replace "<API-KEY-ID>" (including brackets) with your machine's API key
+      # ID
       api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
@@ -718,7 +717,7 @@ Also copy your music file over:
 scp guardian.mp3 pi@guardian.local:/home/pi/guardian/guardian.mp3
 ```
 
-Now navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Now navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Processes** subtab and navigate to the **Create process** menu.
 
 Enter `main` as the process name and click **Create process**.
@@ -764,10 +763,10 @@ LIVING_OBJECTS = ["Person", "Dog", "Cat", "Teddy bear"]
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-        # id
+        # Replace "<API-KEY-ID>" (including brackets) with your machine's
+        # API key ID
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)

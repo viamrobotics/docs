@@ -3,14 +3,14 @@ title: "Run SDK Code"
 linkTitle: "Run Code"
 weight: 50
 type: "docs"
-description: "Execute the logic you've written to control your robot or fleet."
-images: ["/build/configure/services/icons/sdk.svg"]
+description: "Execute the logic you've written to control your machine or fleet."
+images: ["/services/icons/sdk.svg"]
 tags: ["client", "sdk", "application", "sdk", "fleet", "program"]
 aliases:
   - /program/run/
 ---
 
-After saving your [code sample](/build/program/#hello-world-the-code-sample-tab) and adding control logic with [Viam's SDKs](/build/program/apis/), run your program to control your Viam-connected robot.
+After saving your [code sample](/build/program/#hello-world-the-code-sample-tab) and adding control logic with [Viam's SDKs](/build/program/apis/), run your program to control your Viam-connected machine.
 
 ### Authentication
 
@@ -18,15 +18,15 @@ After saving your [code sample](/build/program/#hello-world-the-code-sample-tab)
 
 ## Run Code Remotely
 
-Most of the time, as long as both you and your robot are connected to the internet, you will want to run code to control your robot remotely.
+Most of the time, as long as both you and your machine are connected to the internet, you will want to run code to control your machine remotely.
 
-{{<imgproc src="/build/program/remotely.png" resize="800x" declaredimensions=true alt="A client connecting remotely to a robot">}}
+{{<imgproc src="/build/program/remotely.png" resize="800x" declaredimensions=true alt="A client connecting remotely to a machine">}}
 
-The advantage of this method is that your robot and your computer do not have to be connected to the same WAN/LAN to issue control commands.
-You can remotely control your robot with any application you implement from anywhere in the world.
-For example, you can run code on your personal computer, creating a client [session](/build/program/apis/sessions/), where the code running on that computer sends instructions to your robot's `viam-server` instance over the internet.
+The advantage of this method is that your machine and your personal computer do not have to be connected to the same WAN/LAN to issue control commands.
+You can remotely control your machine with any application you implement from anywhere in the world.
+For example, you can run code on your personal computer, creating a client [session](/build/program/apis/sessions/), where the code running on that computer sends instructions to your machine's `viam-server` instance over the internet.
 
-After editing your code to include your robot's [authentication credentials](#authentication), run a command to execute the program in the terminal of a machine with the appropriate programming language and Viam SDK installed:
+After editing your code to include your machine's [authentication credentials](#authentication), run a command to execute the program in the terminal of a machine with the appropriate programming language and Viam SDK installed:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -62,19 +62,19 @@ flutter run <DART_FILE>
 {{% /tab %}}
 {{< /tabs >}}
 
-This is useful because as long as that computer is able to establish a network connection with the robot's computer, your control logic will be executed on the robot.
+This is useful because as long as that computer is able to establish a network connection with the machine's computer, your control logic will be executed on the machine.
 
-## Run Code On-Robot
+## Run Code On-Machine
 
-In case you run [PID control loops](https://en.wikipedia.org/wiki/PID_controller) or your robots have intermittent network connectivity, you can ensure this does not interfere with the code's execution, by running the control code on the same board that is running `viam-server`.
+In case you run [PID control loops](https://en.wikipedia.org/wiki/PID_controller) or your machines have intermittent network connectivity, you can ensure this does not interfere with the code's execution, by running the control code on the same board that is running `viam-server`.
 
-{{<imgproc src="/build/program/on-robot.png" resize="800x" declaredimensions=true alt="A client running on a robot">}}
+{{<imgproc src="/build/program/on-robot.png" resize="800x" declaredimensions=true alt="A client running on a machine">}}
 
-When connecting to a robot using the connection code from the [code sample tab](/build/program/#hello-world-the-code-sample-tab), a [client session](/build/program/apis/sessions/) automatically uses the [most efficient route](/build/program/connectivity/) to connect to your robot, which means the favored route for commands will be over localhost.
+When connecting to a machine using the connection code from the [code sample tab](/build/program/#hello-world-the-code-sample-tab), a [client session](/build/program/apis/sessions/) automatically uses the [most efficient route](/build/program/connectivity/) to connect to your machine, which means the favored route for commands will be over localhost.
 
 ## Run code automatically
 
-If you want to run your code automatically when your robot boots, you can configure Viam to run your code as a [process](/build/configure/#processes).
+If you want to run your code automatically when your machine boots, you can configure Viam to run your code as a [process](/build/configure/#processes).
 
 To be able to run your code from your board, you need to install the relevant SDK as well as other required dependencies:
 
@@ -108,7 +108,7 @@ To be able to run your code from your board, you need to install the relevant SD
 {{% /tab %}}
 {{< /tabs >}}
 
-Now navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Now navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Processes** subtab and navigate to the **Create process** menu.
 
 Enter `main` as the process name and click **Create process**.
@@ -124,4 +124,4 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{< /tabs >}}
 
-Now your robot will start its code automatically once booted.
+Now your machine will start its code automatically once booted.

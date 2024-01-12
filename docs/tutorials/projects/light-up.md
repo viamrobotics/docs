@@ -52,13 +52,13 @@ You will use the following software in this tutorial:
 
 ## Install `viam-server` and connect to your robot
 
-Go to the [Viam app](https://app.viam.com) and create a new robot.
+Go to the [Viam app](https://app.viam.com) and create a new machine.
 
-Go to the **Setup** tab of your new robot's page and follow the steps to install `viam-server` on your computer.
+Go to the **Setup** tab of your new machine's page and follow the steps to install `viam-server` on your computer.
 
 ## Configure the camera component
 
-On your new robot's page, go to the **Config** tab.
+On your new machine's page, go to the **Config** tab.
 
 Navigate to the **Components** subtab and click **Create component** in the lower-left corner.
 
@@ -83,7 +83,7 @@ If you want to train your own, you can [train a model](/ml/train-model/).
 
 To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your project directory.
 
-Navigate to the **Services** subtab of your robot's **Config** tab.
+Navigate to the **Services** subtab of your machine's **Config** tab.
 
 ### Configure the ML model service
 
@@ -113,7 +113,7 @@ From the **Select model** dropdown, select the name of the TFLite model (`people
 To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
 
 Click the **Components** subtab and click the **Create component** button in the lower-left corner.
-Create a [transform camera](/build/configure/components/camera/transform/) by selecting type `camera` and model `transform`.
+Create a [transform camera](/components/camera/transform/) by selecting type `camera` and model `transform`.
 Name it `detectionCam` and click **Create**.
 
 ![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)
@@ -171,14 +171,14 @@ Click **Save config** in the bottom left corner of the screen.
 
 ## Write Python code to control your object detection robot
 
-Now that you have your robot configured and your Kasa plug set up, you are ready to set up the code for the logic of the robot.
+Now that you have your machine configured and your Kasa plug set up, you are ready to set up the code for the logic of the robot.
 The files used in this section can all be found in [the GitHub repo for this project](https://github.com/viam-labs/devrel-demos/tree/main/Light%20up%20bot).
 
 ### Create the main script file
 
 On your computer, navigate to the directory where you want to put the code for this project.
 Create a file there called <file>lightupbot.py</file>.
-This will be the main script for the robot.
+This will be the main script for the machine.
 Copy the entirety of [this file](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/lightupbot.py) and paste it into your <file>lightupbot.py</file> file.
 Save <file>lightupbot.py</file>.
 

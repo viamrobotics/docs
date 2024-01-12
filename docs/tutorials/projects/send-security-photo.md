@@ -58,19 +58,19 @@ You will use the following software in this tutorial:
 
 ## Configure your robot on the Viam app
 
-If you followed the [Use Object Detection to Turn Your Lights On](/tutorials/projects/light-up/) tutorial, you already have a robot set up on the [Viam app](https://app.viam.com), connected and live, with a [webcam configured](/build/configure/components/camera/webcam/).
+If you followed the [Use Object Detection to Turn Your Lights On](/tutorials/projects/light-up/) tutorial, you already have a robot set up on the [Viam app](https://app.viam.com), connected and live, with a [webcam configured](/components/camera/webcam/).
 
 {{% expand "If you're starting with this tutorial, click here for instructions." %}}
 
 ### Install `viam-server` and connect to your robot
 
-Go to the [Viam app](https://app.viam.com) and create a new robot.
+Go to the [Viam app](https://app.viam.com) and create a new machine.
 
-Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/get-started/installation/).
+Go to the **Setup** tab of your new machine's page and follow the steps [to install `viam-server` on your computer](/get-started/installation/).
 
 ### Configure the camera component
 
-On your new robot's page, go to the **Config** tab and create a [camera component](/build/configure/components/camera/):
+On your new machine's page, go to the **Config** tab and create a [camera component](/components/camera/):
 
 Click **Create component** in the lower-left corner of the screen.
 
@@ -129,7 +129,7 @@ Click the **Services** subtab.
 To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
 
 Click on the **Components** subtab and click **Create component** in the lower-left corner.
-Create a [transform camera](/build/configure/components/camera/transform/) with type `camera` and model `transform`.
+Create a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
 Name it `detectionCam` and click **Create**.
 
 ![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)
@@ -201,7 +201,7 @@ This allows you to route the email to your phone as a text message.
 
 If you followed the [Use Object Detection to Turn Your Lights On](/tutorials/projects/light-up/) tutorial, you already set up a folder with some Python code that connects to your robot and gets detections from your camera.
 
-If you are starting with this tutorial, follow [these steps](/tutorials/projects/light-up/#write-python-code-to-control-your-object-detection-robot) to create the main script file and connect the code to the robot.
+If you are starting with this tutorial, follow [these steps](/tutorials/projects/light-up/#write-python-code-to-control-your-object-detection-robot) to create the main script file and connect the code to the machine.
 Ignore the step about the Kasa smart plug host address.
 
 Instead of using this person detector to activate a smart plug, you will send yourself a text message.
@@ -234,7 +234,7 @@ from viam.services.vision import VisionClient
 from viam.components.camera import Camera
 import yagmail
 
-# These must be set. You can get them from your robot's 'Code sample' tab
+# These must be set. You can get them from your machine's 'Code sample' tab
 robot_api_key = os.getenv('ROBOT_API_KEY') or ''
 robot_api_key_id = os.getenv('ROBOT_API_KEY_ID') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
@@ -262,7 +262,7 @@ async def main():
 
         found = False
         for d in detections:
-            if d.confidence > 0.8 and d.class_name.lower == "person":
+            if d.confidence > 0.8 and d.class_name.lower() == "person":
                 print("This is a person!")
                 found = True
         if found:

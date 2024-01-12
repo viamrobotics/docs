@@ -42,7 +42,7 @@ sudo chmod a+rx /usr/local/bin/orb_grpc_server
 
 ### Configuration
 
-How you configure `orbslamv3` depends on whether you want the SLAM service to build your map with data collected live by a [webcam](/build/configure/components/camera/) or with data provided in a dataset at runtime.
+How you configure `orbslamv3` depends on whether you want the SLAM service to build your map with data collected live by a [webcam](/components/camera/) or with data provided in a dataset at runtime.
 
 Select from the following modes to obtain the correct instructions to configure the service:
 
@@ -51,23 +51,23 @@ Select from the following modes to obtain the correct instructions to configure 
 
 {{% alert title="REQUIREMENTS" color="note" %}}
 
-Running `orbslamv3` in Live Data mode requires a [webcam](/build/configure/components/camera/).
+Running `orbslamv3` in Live Data mode requires a [webcam](/components/camera/).
 The webcam can be installed on a robot, or just held in your hand.
 
 {{% /alert %}}
 
-First, follow these instructions to connect and calibrate your webcam as a component of your robot:
+First, follow these instructions to connect and calibrate your webcam as a component of your machine:
 
-1. [Connect and configure a webcam](/build/configure/components/camera/webca/)
-2. [Calibrate a camera](/build/configure/components/camera/calibrate/)
+1. [Connect and configure a webcam](/components/camera/webca/)
+2. [Calibrate a camera](/components/camera/calibrate/)
 
 Now, add the `orbslamv3` service:
 
 {{< tabs name="Add the ORBSLAM3 Service Live">}}
 {{% tab name="Config Builder" %}}
 
-Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **Config** tab on your robot's page, and click on the **Services** subtab.
+Go to your machine's page on the [Viam app](https://app.viam.com/).
+Navigate to the **Config** tab on your machine's page, and click on the **Services** subtab.
 
 Add a service with type `slam`, model `orbslamv3`, and a name of your choice.
 
@@ -92,7 +92,7 @@ Paste the following into the **Attributes** field of your new service:
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Go to your robot's page on the [Viam app](https://app.viam.com/).
+Go to your machine's page on the [Viam app](https://app.viam.com/).
 Navigate to the **Config** tab .
 Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing camera configuration:
 
@@ -175,8 +175,8 @@ If this directory structure is not present at runtime, the SLAM service creates 
 {{< tabs name="Add the ORBSLAM3 Service with Dataset">}}
 {{% tab name="Config Builder" %}}
 
-Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **Config** tab on your robot's page, and click on the **Services** subtab.
+Go to your machine's page on the [Viam app](https://app.viam.com/).
+Navigate to the **Config** tab on your machine's page, and click on the **Services** subtab.
 
 Add a service with type `slam`, model `orbslamv3`, and a name of your choice:
 
@@ -200,7 +200,7 @@ Paste the following into the **Attributes** field of your new service:
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Go to your robot's page on the [Viam app](https://app.viam.com/).
+Go to your machine's page on the [Viam app](https://app.viam.com/).
 Navigate to the **Config** tab .
 Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing camera configuration:
 
@@ -299,7 +299,7 @@ These are generated at runtime, so there is no need to adjust this folder.
 | Name | Data Type | Inclusion | Description |
 | ---- | --------- | --------- | ----------- |
 | `data_dir` | string | **Required** | Path to the directory used for saving input <file>/data</file> and output <file>/map</file> visualizations. |
-| `sensors` | string[] | **Required** | Names of any configured [webcams](/build/configure/components/camera/) providing data to the SLAM service. |
+| `sensors` | string[] | **Required** | Names of any configured [webcams](/components/camera/) providing data to the SLAM service. |
 | `use_live_data` | bool | **Required** | <p>Whether to run in Live Data Collection mode.</p> <ul> `true`: Use data collected live by `sensors`to generate <file>/map</file>. </ul><ul>`false`: Use a dataset provided in <file>data_dir/data</file> to generate <file>/map</file>. </ul> |
 | `map_rate_sec` | int | Optional | Map generation rate for saving current state *(seconds)*. <ul> Default: `60`. </ul> |
 | `data_rate_msec` | int | Optional | Data generation rate for collecting sensor data to feed to SLAM *(milliseconds)*. <ul>Default: `200`.</ul> |

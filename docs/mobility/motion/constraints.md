@@ -8,7 +8,7 @@ aliases:
   - "/services/motion/constraints/"
 ---
 
-You can constrain the motion of your robot using the motion service's built-in constraint options.
+You can constrain the motion of your machine using the motion service's built-in constraint options.
 Constraints are passed as arguments to the [`Move`](../#move) method.
 
 The following constraints are available:

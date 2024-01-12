@@ -4,18 +4,18 @@ linkTitle: "CLI"
 weight: 99
 type: "docs"
 no_list: true
-description: "Manage and control your robots from the command line."
+description: "Manage and control your machines from the command line."
 aliases:
   - "/build/program/cli"
   - /manage/cli/
 ---
 
-The Viam CLI (command line interface) tool enables you to manage your robots and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} across organizations and locations from the command line.
+The Viam CLI (command line interface) tool enables you to manage your machines and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} across organizations and locations from the command line.
 The CLI lets you:
 
 - Retrieve [organization](/fleet/organizations/) and location information
-- Manage [robot fleet](/fleet/) data and logs
-- Control robots by issuing component and service commands
+- Manage [machine fleet](/fleet/) data and logs
+- Control machines by issuing component and service commands
 - Upload and manage [modular resources](/registry/) in the Viam registry
 
 For example, this CLI command moves a servo to the 75 degree position:
@@ -97,9 +97,9 @@ to later update the Viam CLI tool on macOS, run `brew upgrade viam`.
 
 Once you have [installed the Viam CLI](#install), you must authenticate your CLI session with Viam in order to run CLI commands.
 
-You can authenticate your CLI session using either a personal access token, or an organization, location, or robot API key.
+You can authenticate your CLI session using either a personal access token, or an organization, location, or machine part API key.
 To use an organization API key to authenticate, you must first [create an organization API key](#create-an-organization-api-key).
-Similarly, to authenticate using a location or robot API key, you must first create a [location](#create-a-location-api-key) or [robot API key](#create-a-robot-api-key).
+Similarly, to authenticate using a location or machine part API key, you must first create a [location](#create-a-location-api-key) or [machine part API key](#create-a-machine-part-api-key).
 
 - To authenticate your CLI session using a personal access token:
 
@@ -127,13 +127,13 @@ Similarly, to authenticate using a location or robot API key, you must first cre
 
   If you haven't already, [create a location API key](#create-a-location-api-key) to use this authentication method.
 
-- To authenticate your CLI session using a robot API key:
+- To authenticate your CLI session using a machine part API key:
 
   ```sh {class="command-line" data-prompt="$"}
-  viam login api-key --key-id <robot-api-key-uuid> --key <robot-api-key-secret-value>
+  viam login api-key --key-id <machine-part-api-key-uuid> --key <machine-part-api-key-secret-value>
   ```
 
-  If you haven't already, [create a robot API key](#create-a-robot-api-key) to use this authentication method.
+  If you haven't already, [create a machine part API key](#create-a-machine-part-api-key) to use this authentication method.
 
 An authenticated session is valid for 24 hours, unless you explicitly [log out](#logout).
 
@@ -144,7 +144,7 @@ After the session expires or you log out, you must re-authenticate to use the CL
 To use an organization API key to authenticate your CLI session, you must first create one:
 
 1. First, [authenticate](#authenticate) your CLI session.
-   If your organization does not already have an organization API key created, authenticate using a personal access token or either a [location API key](#create-a-location-api-key) or [robot API key](#create-a-robot-api-key).
+   If your organization does not already have an organization API key created, authenticate using a personal access token or either a [location API key](#create-a-location-api-key) or [machine part API key](#create-a-machine-part-api-key).
 
 1. Then, run the following command to create a new organization API key:
 
@@ -163,7 +163,8 @@ You will need both to authenticate.
 
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
-Authenticating using an organization API key gives the authenticated CLI session full read and write access to all robots within your organization.
+By default, new organization API keys are created with **Owner** permissions, giving the key full read and write access to all robots within your organization.
+You can change an API key's permissions from the Viam app on the [organizations page](/fleet/organizations/) by clicking the **Show details** link next to your API key.
 {{% /alert %}}
 
 Once created, you can use the organization API key to authenticate future CLI sessions or to [connect to robots with the SDK](/build/program/#authenticate)..
@@ -176,7 +177,7 @@ An organization can have multiple API keys.
 To use an location API key to authenticate your CLI session, you must first create one:
 
 1. First, [authenticate](#authenticate) your CLI session.
-   If you don't already have a location API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [robot API key](#create-a-robot-api-key).
+   If you don't already have a location API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [machine part API key](#create-a-machine-part-api-key).
 
 1. Then, run the following command to create a new location API key:
 
@@ -201,7 +202,8 @@ You will need both to authenticate.
 
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
-Authenticating using a location API key gives the authenticated CLI session full read and write access to all robots in that location.
+By default, new location API keys are created with **Owner** permissions, giving the key full read and write access to all robots within your location.
+You can change an API key's permissions from the Viam app on the [organizations page](/fleet/organizations/) by clicking the **Show details** link next to your API key.
 {{% /alert %}}
 
 Once created, you can use the location API key to authenticate future CLI sessions or to [connect to robots with the SDK](/build/program/#authenticate).
@@ -209,14 +211,14 @@ To switch to using a location API key for authentication right away, [logout](#l
 
 A location can have multiple API keys.
 
-### Create a robot API key
+### Create a machine part API key
 
-To use a robot API key to authenticate your CLI session, you must first create one:
+To use a machine part API key to authenticate your CLI session, you must first create one:
 
 1. First, [authenticate](#authenticate) your CLI session.
-   If you don't already have a robot API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [location API key](#create-a-location-api-key).
+   If you don't already have a machine part API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [location API key](#create-a-location-api-key).
 
-1. Then, run the following command to create a new robot API key:
+1. Then, run the following command to create a new machine part API key:
 
    ```sh {class="command-line" data-prompt="$"}
    viam robots api-key create --robot-id <robot-id> --org-id <org-id> --name <key-name>
@@ -224,8 +226,8 @@ To use a robot API key to authenticate your CLI session, you must first create o
 
    Where:
 
-   - `robot-id` is your robot's ID.
-     You can find your robot ID by running `viam robots list`.
+   - `robot-id` is your machine's ID.
+     You can find your machine ID by running `viam robots list`.
    - `org-id` is an optional organization ID to attach the key to.
      You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
      If only one organization owns the robot, you can omit the parameter.
@@ -238,17 +240,17 @@ You will need both to authenticate.
 
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
-Authenticating using a robot API key gives the authenticated CLI session full read and write access to your robot.
+Authenticating using a machine part API key gives the authenticated CLI session full read and write access to your machine.
 {{% /alert %}}
 
-Once created, you can use the robot API key to authenticate future CLI sessions or to [connect to your robot with the SDK](/build/program/#authenticate).
-To switch to using a robot API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
+Once created, you can use the machine part API key to authenticate future CLI sessions or to [connect to your machine with the SDK](/build/program/#authenticate).
+To switch to using a machine part API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
 
 A location can have multiple API keys.
 
-## Manage your robots with the Viam CLI
+## Manage your machines with the Viam CLI
 
-With the Viam CLI [installed](#install) and [authenticated](#authenticate), you can use it to issue commands to your robot fleet or manage custom modules.
+With the Viam CLI [installed](#install) and [authenticated](#authenticate), you can use it to issue commands to your machine fleet or manage custom modules.
 All Viam CLI commands use the following format:
 
 ```sh {class="command-line" data-prompt="$"}
@@ -287,7 +289,7 @@ viam organizations --help
 The `board` command allows you to manage your board definition files.
 With it, you can upload new board definition files to the Viam app, download your existing board definition files, and list the files already uploaded.
 
-You can use board definition files to configure pin mappings for [`customlinux` boards](/build/configure/components/board/customlinux/).
+You can use board definition files to configure pin mappings for [`customlinux` boards](/components/board/customlinux/).
 
 ```sh {class="command-line" data-prompt="$"}
 viam board upload --name=<board name> --organization=<org name> --version=<definition file version> file.json
@@ -329,13 +331,16 @@ viam board list --organization=my-org
 
 ### data
 
-The `data` command allows you to manage robot data.
-With it, you can export data in the format of your choice, delete specified data, or configure a database user to enable querying synced tabular data directly in the cloud.
+The `data` command allows you to manage machine data.
+With it, you can export data in a variety of formats, delete specified data, add or remove images from a dataset and filter a dataset by tags, or configure a database user to enable querying synced tabular data directly in the cloud.
 
 ```sh {class="command-line" data-prompt="$"}
 viam data export --destination=<output path> --data-type=<output data type> [...named args]
 viam data delete [...named args]
+viam data dataset add --dataset-id=<dataset-id> --file-ids=<file-id-or-ids> --location-id=<location-id> --org-id=<org-id> [...named args]
+viam data dataset remove --dataset-id=<dataset-id> --file-ids=<file-id-or-ids> --location-id=<location-id> --org-id=<org-id> [...named args]
 viam data database configure --org-id=<org-id> --password=<db-user-password>
+viam data database hostname --org-id=<org-id>
 ```
 
 Examples:
@@ -348,6 +353,9 @@ viam data export --destination=/home/robot/data --data_type=tabular \
 # export binary data from all orgs and locations, component name myComponent
 viam data export --destination=/home/robot/data --data-type=binary \
 --component-name myComponent
+
+# add images tagged with the "example" tag between January and October of 2023 to dataset abc
+viam data dataset add filter --dataset-id=abc --location-id=123 --org-id=123 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
 
 # configure a database user for the Viam organization's MongoDB Atlas Data
 # Federation instance, in order to query tabular data
@@ -363,9 +371,20 @@ viam data database hostname --org-id=abc
 | `export`      | export data in a specified format to a specified location  | - |
 | `database configure`      | create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data/query/#configure-data-query)  | - |
 | `database hostname`      | get the MongoDB Atlas Data Federation instance hostname and database name. See [Configure data query](/data/query/#configure-data-query)  | - |
+| `dataset add`      | add a new image to an existing dataset by its file id, or add a group of images by specifying a filter | `filter` |
+| `dataset remove`      | remove an existing image from a dataset by its file id, or remove a group of images by specifying a filter | `filter` |
 | `delete binary`      | delete binary data  | - |
 | `delete tabular`      | delete tabular data  | - |
 | `--help`      | return help      | - |
+
+##### Positional arguments: `dataset`
+
+<!-- prettier-ignore -->
+| argument | description |
+| ----------- | ----------- | ----------- |
+| `filter`     | `add` or `delete` images from a dataset using a filter. See [Using the `filter` argument)](#using-the-filter-argument).|
+| `ids`     | `add` or `delete` images from a dataset by specifying one or more file ids as a comma-separated list. See [Using the `ids` argument)](#using-the-ids-argument).|
+| `--help`      | return help |
 
 ##### Named arguments
 
@@ -377,21 +396,65 @@ viam data database hostname --org-id=abc
 | `--component-name`      | filter by specified component name  |`export`, `delete`| false |
 | `--component-type`     | filter by specified component type       |`export`, `delete`| false |
 | `--component-model`   | filter by specified component model       |`export`, `delete`| false |
+| `--dataset-id`   | dataset to add or remove images from     |`dataset`| true |
 | `--delete-older-than-days` | number of days, 0 means all data will be deleted | `delete` | false |
-| `--start`      | ISO-8601 timestamp indicating the start of the interval       |`export`, `delete`| false |
-| `--end`      | ISO-8601 timestamp indicating the end of the interval       |`export`, `delete`| false |
+| `--start`      | ISO-8601 timestamp indicating the start of the interval       |`export`, `delete`, `dataset`| false |
+| `--end`      | ISO-8601 timestamp indicating the end of the interval       |`export`, `delete`, `dataset`| false |
+| `--file-ids` | file-ids to add or remove from a dataset       |`dataset`| true |
+| `--location-id`      | location id for the file ids being added or removed from the specified dataset (only accepts one location id)       |`dataset`| true |
 | `--location-ids`      | filter by specified location id (accepts comma-separated list)       |`export`, `delete`| false |
 | `--method`       | filter by specified method       |`export`, `delete`| false |
 | `--mime-types`      | filter by specified MIME type (accepts comma-separated list)       |`export`, `delete`|false |
+| `--org-id` | org ID for the database user being configured (with `database`), or for the file ids being added or removed from the specified dataset (with `dataset`) | `database configure`, `database hostname`, `dataset` | true |
 | `--org-ids`     | filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`| false |
 | `--parallel`      | number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|false |
 | `--part-id`      | filter by specified part id      |`export`, `delete`| false |
 | `--part-name`     | filter by specified part name       |`export`, `delete`| false |
 | `--robot-id`     | filter by specified robot id       |`export`, `delete`| false |
 | `--robot-name`      | filter by specified robot name       |`export`, `delete`| false |
-| `--tags`      | filter by specified tag (accepts comma-separated list)       |`export`, `delete`| false |
-| `--org-id` | org ID for the database user | `database configure`, `database hostname` | true |
+| `--tags`      | filter by specified tag (accepts comma-separated list)       |`export`, `delete`, `dataset`| false |
 | `--password` | password for the database user being configured | `database configure` | true |
+
+##### Using the `ids` argument
+
+When you use the `viam dataset add` and `viam dataset remove` commands, you can specify the image to add or remove using its file id.
+To work with multiple images at once, you can specify multiple file ids as a comma-separated list.
+For example, the following adds three images specified by their file ids to the specified dataset:
+
+```sh {class="command-line" data-prompt="$"}
+viam data dataset add ids --dataset-id=abc --location-id=123 --org-id=123 --file-ids=abc,123,def
+```
+
+To find the dataset id of a given dataset, go to the [**Datasets** subtab](https://app.viam.com/data/datasets) under the **Data** tab on the Viam app and select a dataset.
+The dataset id can be found in the URL of the Viam app window when viewing a given dataset, following the `?id=` portion of the URL, resembling `abcdef1234567890abcdef12`.
+
+To find the file id of a given image, navigate to the [**Data** tab in the Viam app](https://app.viam.com/data/view) and select your image.
+Its **File ID** is shown under the **Details** subtab that appears on the right.
+
+You cannot use filter arguments, such as `--start` or `--end` when using `ids`.
+
+See [Datasets](/data/dataset/#datasets) for more information.
+
+##### Using the `filter` argument
+
+When you use the `viam dataset add` and `viam dataset remove` commands, you can optionally `filter` by common search criteria to `add` or `remove` a specific subset of images based on a search filter.
+For example, the following adds all images captured between January 1 and October 1, 2023, that have the `example` tag applied, to the specified dataset:
+
+```sh {class="command-line" data-prompt="$"}
+viam data dataset add filter --dataset-id=abc --org-ids=123 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
+```
+
+To find the dataset id of a given dataset, go to the [**Datasets** subtab](https://app.viam.com/data/datasets) under the **Data** tab on the Viam app and select a dataset.
+The dataset id can be found in the URL of the Viam app window when viewing a given dataset, following the `?id=` portion of the URL, resembling `abcdef1234567890abcdef12`.
+
+You can also have the filter parameters generated for you using the **Filtering** pane of the **Data** tab.
+Navigate to the [**Data** tab in the Viam app](https://app.viam.com/data/view), make your selections from the search parameters under the **Filtering** pane (such as robot name, start and end time, or tags), and click the **Copy export command** button.
+A `viam data export` command string will be copied to your clipboard that includes the search parameters you selected.
+You can use the same filter parameters (such as `--start`, `--end`, etc) with your `viam data database add filter` or `viam data database remove filter` commands, except you would exclude the `--data-type` and `--destination` flags, which are specific to `viam data export`.
+
+You cannot use the `--file-ids` argument when using `filter`.
+
+See [Datasets](/data/dataset/#datasets) for more information.
 
 ### locations
 
@@ -446,7 +509,7 @@ If you haven't already, you must [create an organization API key](#create-an-org
 <!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| `api-key`      | authenticate to Viam using an organization, location, or robot API key      | create |
+| `api-key`      | authenticate to Viam using an organization, location, or machine part API key      | create |
 | `print-access-token`      | prints the access token used to authenticate the current CLI session      | - |
 | `--help`      | return help      | - |
 | `--disable-browser-open` | authenticate in a headless environment by preventing the opening of the default browser during login (default: false) | - |
@@ -570,7 +633,7 @@ The Viam registry page for your module displays the platforms your module suppor
 The `--version` argument accepts a valid [semver 2.0](https://semver.org/) version (example: `1.0.0`).
 You set an initial version for your custom module with your first `viam module upload` command for that module, and can later increment the version with subsequent `viam module upload` commands.
 
-Once your module is uploaded, users can select which version of your module to use on their robot from your module's page on the Viam registry.
+Once your module is uploaded, users can select which version of your module to use on their machine from your module's page on the Viam registry.
 Users can choose to pin to a specific patch version, permit upgrades within major release families or only within minor releases, or permit continuous updates.
 
 When you `update` a module configuration and then `upload` it, the `entrypoint` for that module defined in the [`meta.json` file](#the-metajson-file) is associated with the specific `--version` for that `upload`.
@@ -706,40 +769,40 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 
 ### robots
 
-The `robots` command allows you to manage your robot fleet.
+The `robots` command allows you to manage your machine fleet.
 This includes:
 
-- Listing all robots that you have access to, filtered by organization and location.
-- Creating API keys to grant access to a specific robot
-- Retrieving robot and robot part status
-- Retrieving robot and robot part logs
-- Controlling a robot by issuing component and service commands
-- Accessing your robot with a secure shell (when this feature is enabled)
+- Listing all machines that you have access to, filtered by organization and location.
+- Creating API keys to grant access to a specific machine
+- Retrieving machine and machine part status
+- Retrieving machine and machine part logs
+- Controlling a machine by issuing component and service commands
+- Accessing your machine with a secure shell (when this feature is enabled)
 
 ```sh {class="command-line" data-prompt="$"}
 viam robots list
-viam robots status --organization=<org name> --location=<location name> --robot=<robot id>
-viam robots logs --organization=<org name> --location=<location name> --robot=<robot id> [...named args]
-viam robots part status --organization=<org name> --location=<location name> --robot=<robot id>
-viam robots part run --organization=<org name> --location=<location name> --robot=<robot id> [--stream] --data <meth>
-viam robots part shell --organization=<org name> --location=<location name> --robot=<robot id>
+viam robots status --organization=<org name> --location=<location name> --robot=<machine id>
+viam robots logs --organization=<org name> --location=<location name> --robot=<machine id> [...named args]
+viam robots part status --organization=<org name> --location=<location name> --robot=<machine id>
+viam robots part run --organization=<org name> --location=<location name> --robot=<machine id> [--stream] --data <meth>
+viam robots part shell --organization=<org name> --location=<location name> --robot=<machine id>
 ```
 
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
 
-# list all robots you have access to
+# list all machines you have access to
 viam robots list
 
-# get robot status
+# get machine status
 viam robots status  --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Robot's Org" --location myLoc
 
-# stream error level logs from a robot part
+# stream error level logs from a machine part
 viam robots part logs --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
 --organization "Robot's Org" --location myLoc --part "myrover-main" --tail true
 
-# stream classifications from a robot part every 500 milliseconds from the Viam Vision Service with classifier "stuff_detector"
+# stream classifications from a machine part every 500 milliseconds from the Viam Vision Service with classifier "stuff_detector"
 viam robots part run --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
 --organization "Robot's Org" --location myLoc --part "myrover-main" --stream 500ms \
 --data '{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_detector", "n":1}' \
@@ -751,11 +814,11 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 <!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| `list`      | list all robots that the authenticated session has access to, filtered by organization and location.  | - |
-| `api-key`   |  work with an api-key for your robot | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
-| `status`      | retrieve robot status for a specified robot  | - |
-| `logs`      | retrieve logs for a specified robot | - |
-| `part`      | manage a specified robot part  | `status`, `run`, `logs`, `shell` (see [positional arguments: part](#positional-arguments-part)) |
+| `list`      | list all machines that the authenticated session has access to, filtered by organization and location.  | - |
+| `api-key`   |  work with an api-key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
+| `status`      | retrieve machine status for a specified machine  | - |
+| `logs`      | retrieve logs for a specified machine | - |
+| `part`      | manage a specified machine part  | `status`, `run`, `logs`, `shell` (see [positional arguments: part](#positional-arguments-part)) |
 | `--help`      | return help      | - |
 
 ##### Positional arguments: `api-key`
@@ -763,7 +826,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 <!-- prettier-ignore -->
 | argument | description |
 | ----------- | ----------- | ----------- |
-| `create`     | create an API key for a specific robot |
+| `create`     | create an API key for a specific machine |
 | `--help`      | return help |
 
 ##### Positional arguments: `part`
@@ -771,10 +834,10 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 <!-- prettier-ignore -->
 |        argument     |       description |
 | ----------- | ----------- | ----------- |
-| `status`     | retrieve robot status for a specified robot part |
+| `status`     | retrieve machine status for a specified machine part |
 | `run`     |  run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. |
-| `logs`     |  get logs for the specified robot part |
-| `shell`     |  access a robot part securely using a secure shell. This feature must be enabled. |
+| `logs`     |  get logs for the specified machine part |
+| `shell`     |  access a machine part securely using a secure shell. This feature must be enabled. |
 | `--help`      | return help |
 
 ##### Named arguments
@@ -782,21 +845,21 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 <!-- prettier-ignore -->
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| `--organization`      | organization name that the robot belongs to       |`list`, `status`, `logs`, `part`|true |
-| `--location`     |  location name that the robot belongs to    |`list`, `status`, `logs`, `part`|true |
-| `--robot`      |  robot id for which the command is being issued   |`status`, `logs`, `part`|true |
+| `--organization`      | organization name that the machine belongs to       |`list`, `status`, `logs`, `part`|true |
+| `--location`     |  location name that the machine belongs to    |`list`, `status`, `logs`, `part`|true |
+| `--robot`      |  machine id for which the command is being issued   |`status`, `logs`, `part`|true |
 | `--errors`      |  boolean, return only errors (default: false)   |`logs`|false |
 | `--part`      |  part name for which the command is being issued    |`logs`|false |
 | `--tail`     |  tail (stream) logs, boolean(default false)    |`part logs`|false |
 | `--stream`      |  if specified, the interval in which to stream the specified data, for example, 100ms or 1s    |`part run`|false |
 | `--data`      |  command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments))   |`part run`|true |
-| `--robot-id`      | the robot to create an API key for |`api-key` | true |
+| `--robot-id`      | the machine to create an API key for |`api-key` | true |
 | `--name`     |  the optional name of the API key    |`api-key` | false |
 | `--org-id`      |  the optional organization ID to attach the key to  |`api-key` | false |
 
 ##### Using the `--stream` and `--data` arguments
 
-Issuing the `part` command with the `run` positional argument allows you to run component and service (resource) commands for a selected robot part.
+Issuing the `part` command with the `run` positional argument allows you to run component and service (resource) commands for a selected machine part.
 
 The `--data` parameter is required and you must specify both:
 

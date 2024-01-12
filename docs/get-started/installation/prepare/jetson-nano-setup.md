@@ -24,7 +24,7 @@ Follow this guide to set up the [Jetson Nano Developer Kit](https://developer.nv
 {{% alert title="Important" color="note" %}}
 
 This guide assumes that you have a Jetson Nano Developer Kit or a Jetson Orin Nano Developer Kit with a Jetson module and reference carrier board.
-If you want to use a different carrier board to incorporate your Nano into your robot, the type of carrier board you use will affect your hardware requirements.
+If you want to use a different carrier board to incorporate your Nano into your machine, the type of carrier board you use will affect your hardware requirements.
 
 {{% /alert %}}
 
@@ -109,7 +109,7 @@ See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https:/
 
 ## Troubleshooting
 
-Make sure the polarity on your barrel jack power supply is matched when powering your robot.
+Make sure the polarity on your barrel jack power supply is matched when powering your machine.
 See the last step of your appropriate [initial setup guide](#hardware-requirements) for instructions on choosing the correct power supply for your Nano board.
 
 If you do not see an interactive menu after launching <file>jetson-io.py</file>, try resizing your window to a large size.

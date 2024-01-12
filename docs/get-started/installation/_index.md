@@ -2,7 +2,7 @@
 title: "Installation Guide"
 linkTitle: "Installation Guide"
 childTitleEndOverwrite: "Try Viam"
-weight: 20
+weight: 100
 no_list: true
 type: docs
 image: "/get-started/installation/thumbnails/install.png"
@@ -23,7 +23,7 @@ aliases:
 ---
 
 To use Viam software with your machine, install and run the `viam-server` binary on the single board computer (SBC) or other computer that will run your machine and is connected to your hardware.
-Installing on a laptop or desktop computer is useful if you don't have an SBC available, or if you want to run a Viam [service](/build/configure/services/) with your robot that requires more computing resources than are otherwise available on an SBC.
+Installing on a laptop or desktop computer is useful if you don't have an SBC available, or if you want to run a Viam [service](/services/) with your machine that requires more computing resources than are otherwise available on an SBC.
 
 {{< alert title="Compatibility" color="note" >}}
 
@@ -79,10 +79,10 @@ To install `viam-server` on a macOS computer:
 
 1. If not installed already, install [Homebrew](https://brew.sh/).
 
-1. Go to the [Viam app](https://app.viam.com) and add a new robot by providing a name in the **New Robot** field and clicking **Add robot**.
+1. Go to the [Viam app](https://app.viam.com) and add a new machine by providing a name in the **New machine** field and clicking **Add machine**.
    If this is your first time using the Viam app, you must create an account first.
 
-   ![The 'First Location' page on the Viam app with a new robot name in the New Robot field and the Add robot button next to the field highlighted.](/fleet/app-usage/create-robot.png)
+   ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
 
 1. On the **Setup** tab, select `Mac` as the **Architecture**.
 

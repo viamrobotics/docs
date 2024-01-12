@@ -1,6 +1,6 @@
 ---
-title: "Manage Robots with Viam's Robot API"
-linkTitle: "Robot Management"
+title: "Manage Machines with Viam's Robot API"
+linkTitle: "Machine Management"
 weight: 20
 type: "docs"
 description: "How to use the Robot API to monitor and manage your machines."
@@ -18,8 +18,8 @@ The robot API is supported for use with the [Viam Python SDK](https://python.via
 
 To interact with the robot API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
 
-To find the api key, api key id, and robot address, go to [Viam app](https://app.viam.com/), select the robot you wish to connect to, and go to the [**Code sample**](/fleet/machines/#code-sample) tab.
-Toggle **Include api key**, and then copy and paste the API key id and the API key into your environment variables or directly into the code:
+To find the API key, API key ID, and machine address, go to [Viam app](https://app.viam.com/), select the machine you wish to connect to, and go to the [**Code sample**](/fleet/machines/#code-sample) tab.
+Toggle **Include API key**, and then copy and paste the API key ID and the API key into your environment variables or directly into the code:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -33,10 +33,11 @@ from viam.robot.client import RobotClient
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your machine's
+        # API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-        # id
+        # Replace "<API-KEY-ID>" (including brackets) with your machine's
+        # API key ID
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
@@ -44,10 +45,10 @@ async def connect():
 
 async def main():
     # Make a RobotClient
-    robot_client = await connect()
+    robot = await connect()
     print('Resources:')
     print(robot.resource_names)
-    await robot_client.close()
+    await robot.close()
 
 if __name__ == '__main__':
     asyncio.run(main())
@@ -79,11 +80,12 @@ func main() {
       "ADDRESS FROM THE VIAM APP",
       logger,
       client.WithDialOptions(rpc.WithEntityCredentials(
-      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      // Replace "<API-KEY-ID>" (including brackets) with your machine's
+      // API Key ID
       "<API-KEY-ID>",
       rpc.Credentials{
           Type:    rpc.CredentialsTypeAPIKey,
-        // Replace "<API-KEY>" (including brackets) with your robot's api key
+        // Replace "<API-KEY>" (including brackets) with your machine's API key
         Payload: "<API-KEY>",
     })),
   )
@@ -147,11 +149,12 @@ func main() {
       "ADDRESS FROM THE VIAM APP",
       logger,
       client.WithDialOptions(rpc.WithEntityCredentials(
-      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      // Replace "<API-KEY-ID>" (including brackets) with your machine's
+      // API key ID
       "<API-KEY-ID>",
       rpc.Credentials{
           Type:    rpc.CredentialsTypeAPIKey,
-        // Replace "<API-KEY>" (including brackets) with your robot's api key
+        // Replace "<API-KEY>" (including brackets) with your machine's API key
         Payload: "<API-KEY>",
     })),
   )
@@ -169,6 +172,322 @@ The robot API support the following selected methods.
 For the full list of methods, see the [Viam Python SDK documentation](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient) or the [Viam Go SDK documentation](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient).
 
 {{< readfile "/static/include/services/apis/robot.md" >}}
+
+### Options.with_api_key
+
+Create a `RobotClient.Options` using an API key as credentials.
+Pass these options to [`AtAddress`](#ataddress).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `api_key` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): [An API key](/fleet/cli/#authenticate) with access to the machine.
+- `api_key_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Your API key ID.
+  Must be a valid UUID.
+
+**Returns:**
+
+- [(RobotClient.Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options): Options for connecting the `RobotClient`.
+
+```python
+# Replace "<API-KEY>" (including brackets) with your machine's API key
+api_key = '<API-KEY>'
+# Replace "<API-KEY-ID>" (including brackets) with your machine's API key
+# ID
+api_key_id = '<API-KEY-ID>'
+
+opts = RobotClient.Options.with_api_key(api_key, api_key_id)
+
+robot = await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options.with_api_key).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### AtAddress
+
+Create a RobotClient that is connected to the machine at the provided address.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `address` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Address of the machine. For example, IP address or URL.
+- `options` [(Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options): Options for connecting and refreshing.
+
+**Returns:**
+
+- `RobotClient`: The robot client.
+
+```python {class="line-numbers linkable-line-numbers"}
+async def connect():
+    opts = RobotClient.Options.with_api_key(
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
+        api_key='<API-KEY>',
+        # Replace "<API-KEY-ID>" (including brackets) with your machine's
+        # API key ID
+        api_key_id='<API-KEY-ID>'
+    )
+    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+
+
+async def main():
+    # Make a RobotClient
+    robot = await connect()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.at_address).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### WithChannel
+
+Create a RobotClient that is connected to a machine over the given channel.
+Any machines created using this method will NOT automatically close the channel upon exit.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `channel` [(ViamChannel)](https://python.viam.dev/autoapi/viam/rpc/dial/index.html#viam.rpc.dial.ViamChannel): The channel that is connected to a machine, obtained by [`viam.rpc.dial`](https://python.viam.dev/_modules/viam/rpc/dial.html#dial).
+- `options` [(Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options): Options for refreshing. Any connection options will be ignored.
+
+**Returns:**
+
+- `RobotClient`: The robot client.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.robot.client import RobotClient
+from viam.rpc.dial import DialOptions, dial
+
+
+async def connect_with_channel() -> RobotClient:
+    async with await dial('ADDRESS', DialOptions()) as channel:
+        return await RobotClient.with_channel(channel, RobotClient.Options())
+
+robot = await connect_with_channel()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.with_channel).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Refresh
+
+Manually refresh the underlying parts of this machine.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+await robot.refresh()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.refresh).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+```go
+err := robot.Refresh(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient.Refresh).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Status
+
+Get the status of the machine's components. You can optionally provide a list of each `ResourceName` you want the status of.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `components` [(Optional[List[viam.proto.common.ResourceName]])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): Optional list of `ResourceName` for each component you want the status of.
+
+**Returns:**
+
+- List[status]: The status of each of the machine's components you've specified.
+
+```python {class="line-numbers linkable-line-numbers"}
+statuses = await robot.get_status()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_status).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `resourceNames` [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk@v0.15.1/resource#Name): Optional list of resource names for each component you want the status of.
+
+**Returns:**
+
+- [([]robot.Status)](https://pkg.go.dev/go.viam.com/rdk/robot#Status): The status of each of the machine's components you've specified.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+```go
+statuses, err := robot.Status(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient.Refresh).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetOperations
+
+Get the list of operations currently running on the machine.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- [(List[viam.proto.robot.Operation])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Operation): The list of operations currently running on a given machine.
+
+```python {class="line-numbers linkable-line-numbers"}
+operations = await robot.get_operations()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_operations).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### CancelOperation
+
+Cancel the specified operation on the machine.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of operation to kill. Find this with [`GetOperations()`](#getoperations).
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+await robot.cancel_operation("INSERT OPERATION ID")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.cancel_operation).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### BlockForOperation
+
+Blocks on the specified operation on the machine.
+This function will only return when the specific operation has finished or has been cancelled.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of operation to block on. Find this with [`GetOperations()`](#getoperations)
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+await robot.block_for_operation("INSERT OPERATION ID")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.block_for_operation).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### TransformPose
+
+Transform a given source Pose from the original reference frame to a new destination reference frame.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `query` [(viam.proto.common.PoseInFrame)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame): The pose that should be transformed.
+- `destination` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The name of the reference frame to transform the given pose to.
+
+**Returns:**
+
+- [(PoseInFrame)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame): Transformed pose in frame.
+
+```python {class="line-numbers linkable-line-numbers"}
+pose = await robot.transform_pose(PoseInFrame(), "origin")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.transform_pose).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `query` [(\*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
+- `destination` [(string)](https://pkg.go.dev/builtin#string): The name of the reference page to transform the given pose to.
+- `additionalTransforms` [([]\*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.15.1/referenceframe#LinkInFrame): Any additional transforms.
+
+**Returns:**
+
+- [(\*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.15.1/referenceframe#PoseInFrame): Transformed pose in frame.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+```go
+import (
+  "go.viam.com/rdk/referenceframe"
+  "go.viam.com/rdk/spatialmath"
+)
+
+baseOrigin := referenceframe.NewPoseInFrame("test-base", spatialmath.NewZeroPose())
+movementSensorToBase, err := robot.TransformPose(ctx, baseOrigin, "my-movement-sensor", nil)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient.TransformPose).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### DiscoverComponents
 
@@ -254,7 +573,7 @@ For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/
 
 ### FrameSystemConfig
 
-Get the configuration of the frame system of a given robot.
+Get the configuration of the frame system of a given machine.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -265,10 +584,10 @@ Get the configuration of the frame system of a given robot.
 
 **Returns:**
 
-- `frame_system` [(List[FrameSystemConfig])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.FrameSystemConfig): The configuration of a given robot’s frame system.
+- `frame_system` [(List[FrameSystemConfig])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.FrameSystemConfig): The configuration of a given machine’s frame system.
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Get a list of each of the reference frames configured on the robot.
+# Get a list of each of the reference frames configured on the machine.
 frame_system = await robot.get_frame_system_config()
 print(f"frame system configuration: {frame_system}")
 ```
@@ -285,7 +604,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-- [(framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given robot’s frame system.
+- [(framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given machine’s frame system.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
@@ -304,12 +623,12 @@ fmt.Println(frameSystem)
 
 **Returns:**
 
-- [(FrameSystemConfig[])](https://ts.viam.dev/classes/robotApi.FrameSystemConfig.html): An array of individual parts that make up a robot's frame system.
+- [(FrameSystemConfig[])](https://ts.viam.dev/classes/robotApi.FrameSystemConfig.html): An array of individual parts that make up a machine's frame system.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#frameSystemConfig).
 
 ```typescript {class="line-numbers linkable-line-numbers"}
-// Get the frame system configuration.
+// Get the frame system configuration
 console.log("FrameSytemConfig:", await robot.frameSystemConfig());
 ```
 
@@ -318,9 +637,9 @@ console.log("FrameSytemConfig:", await robot.frameSystemConfig());
 
 ### Status
 
-Get the status of the resources on the robot.
+Get the status of the resources on the machine.
 You can provide a list of ResourceNames for which you want statuses.
-If no names are passed in, the status of every resource configured on the robot is returned.
+If no names are passed in, the status of every resource configured on the machine is returned.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -337,7 +656,7 @@ If no names are passed in, the status of every resource configured on the robot 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_status).
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Get the status of the resources on the robot.
+# Get the status of the resources on the machine.
 statuses = await robot.get_status()
 ```
 
@@ -358,7 +677,7 @@ statuses = await robot.get_status()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get the status of the resources on the robot.
+// Get the status of the resources on the machine.
 status, err = robot.Status(ctx.Background())
 ```
 
@@ -377,7 +696,7 @@ status, err = robot.Status(ctx.Background())
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformPCD).
 
 ```typescript {class="line-numbers linkable-line-numbers"}
-// Get the status of the resources on the robot.
+// Get the status of the resources on the machine.
 const status = await robot.getStatus();
 ```
 
@@ -386,7 +705,7 @@ const status = await robot.getStatus();
 
 ### Close
 
-Close the underlying connections and stop any periodic tasks across all constituent parts of the robot.
+Close the underlying connections and stop any periodic tasks across all constituent parts of the machine.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -446,7 +765,7 @@ await robot.disconnect();
 
 ### StopAll
 
-Cancel all current and outstanding operations for the robot and stop all actuators and movement.
+Cancel all current and outstanding operations for the machine and stop all actuators and movement.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -482,7 +801,7 @@ await robot.stop_all()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Cancel all current and outstanding operations for the robot and stop all actuators and movement.
+// Cancel all current and outstanding operations for the machine and stop all actuators and movement.
 err := robot.StopAll(ctx.Background())
 ```
 
@@ -500,7 +819,7 @@ err := robot.StopAll(ctx.Background())
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#stopAll).
 
 ```typescript {class="line-numbers linkable-line-numbers"}
-// Cancel all current and outstanding operations for the robot and stop all actuators and movement.
+// Cancel all current and outstanding operations for the machine and stop all actuators and movement.
 await robot.stopAll();
 ```
 
@@ -509,7 +828,7 @@ await robot.stopAll();
 
 ### ResourceNames
 
-Get a list of all known resource names connected to this robot.
+Get a list of all known resource names connected to this machine.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -521,6 +840,8 @@ Get a list of all known resource names connected to this robot.
 **Returns:**
 
 - [(List[viam.proto.common.ResourceName])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): List of all known resource names. A property of a [RobotClient](https://python.viam.dev/autoapi/viam/robot/client/index.html)
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.resource_names)
 
 ```python
 resource_names = robot.resource_names
@@ -555,40 +876,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 - [(ResourceName.AsObject[])](https://ts.viam.dev/modules/commonApi.ResourceName-1.html): List of all known resource names.
 
 ```typescript
-// Get a list of all resources on the robot.
+// Get a list of all resources on the machine.
 const resource_names = await robot.resourceNames();
 ```
 
 For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/RobotClient.html).
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### WithAPIKey
-
-Create a client to interact with your robot using an API key as credentials.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `api_key` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): [An API key](/fleet/cli/#authenticate) with access to the robot.
-
-- `api_key_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Your API key ID.
-  Must be a valid UUID.
-
-**Returns:**
-
-- [(RobotClient.Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient): A gRPC client for interacting with your robot.
-
-- [(List[viam.proto.common.ResourceName])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): List of all known resource names. A property of a [RobotClient](https://python.viam.dev/autoapi/viam/robot/client/index.html)
-
-```python
-api_key = "your_api_key"
-api_key_id = "valid_uuid"
-robot_client = RobotClient.with_api_key(api_key, api_key_id)
-```
 
 {{% /tab %}}
 {{< /tabs >}}

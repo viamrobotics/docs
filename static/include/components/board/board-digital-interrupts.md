@@ -1,10 +1,10 @@
 [Interrupts](https://en.wikipedia.org/wiki/Interrupt) are a method of signaling precise state changes.
 Configuring digital interrupts to monitor GPIO pins on your board is useful when your application needs to know precisely when there is a change in GPIO value between high and low.
 
-- When an interrupt configured on your board processes a change in the state of the GPIO pin it is configured to monitor, it calls [`Tick()`](/build/configure/components/board/#tick) to record the state change and notify any interested [callbacks](/build/configure/components/board/#addcallback) to "interrupt" the program.
-- Calling [`Get()`](/build/configure/components/board/#get) on a GPIO pin, which you can do without configuring interrupts, is useful when you want to know a pin's value at specific points in your program, but is less precise and convenient than using an interrupt.
+- When an interrupt configured on your board processes a change in the state of the GPIO pin it is configured to monitor, it calls [`Tick()`](/components/board/#tick) to record the state change and notify any interested [callbacks](/components/board/#addcallback) to "interrupt" the program.
+- Calling [`Get()`](/components/board/#get) on a GPIO pin, which you can do without configuring interrupts, is useful when you want to know a pin's value at specific points in your program, but is less precise and convenient than using an interrupt.
 
-Integrate `digital_interrupts` into your robot in the `attributes` of your board by adding the following to your board's JSON configuration:
+Integrate `digital_interrupts` into your machine in the `attributes` of your board by adding the following to your board's JSON configuration:
 
 {{< tabs name="Configure a Digital Interrupt" >}}
 {{% tab name="JSON Template" %}}
@@ -56,4 +56,4 @@ The following properties are available for `digital_interrupts`:
 | ---- | ---- | --------- | ----------- |
 |`name` | string | **Required** | Your name for the digital interrupt. |
 |`pin`| string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board's GPIO pin that you wish to configure the digital interrupt for. |
-|`type`| string | Optional | _Only applies to `pi` model boards._ <ul><li>`basic`: Recommended. Tracks interrupt count. </li> <li>`servo`: For interrupts configured for a pin controlling a [servo](/build/configure/components/servo/). Tracks pulse width value. </li></ul> |
+|`type`| string | Optional | _Only applies to `pi` model boards._ <ul><li>`basic`: Recommended. Tracks interrupt count. </li> <li>`servo`: For interrupts configured for a pin controlling a [servo](/components/servo/). Tracks pulse width value. </li></ul> |

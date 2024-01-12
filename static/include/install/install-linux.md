@@ -29,10 +29,10 @@ To install `viam-server` on a Linux computer:
    **Do not** install the `fuse` package (that is, without a version number).
    `viam-server` requires FUSE version 2 specifically (`libfuse2`).
 
-1. Go to the [Viam app](https://app.viam.com) and add a new robot by providing a name in the **New Robot** field and clicking **Add robot**.
+1. Go to the [Viam app](https://app.viam.com) and add a new machine by providing a name in the **New machine** field and clicking **Add machine**.
    If this is your first time using the Viam app, you must create an account first.
 
-   ![The 'First Location' page on the Viam app with a new robot name in the New Robot field and the Add robot button next to the field highlighted.](/fleet/app-usage/create-robot.png)
+   ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
 
 1. On the **Setup** tab, select `Linux (Aarch64)` or `Linux (x86_64)` for the appropriate **Architecture** for your computer.
    On most Linux operating systems, you can run `uname -m` to confirm your computer's architecture.
