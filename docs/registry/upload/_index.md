@@ -317,7 +317,7 @@ jobs:
           key-value: ${{ secrets.viam_key_value }}
 ```
 
-The `build-action` relies on a build command that you need to specify in the <file>meta.json</file> file that you created for your module when you first [uploaded it](/registry/upload/#upload-a-custom-module).
+The `build-action` GitHub action relies on a build command that you need to specify in the <file>meta.json</file> file that you created for your module when you first [uploaded it](/registry/upload/#upload-a-custom-module).
 At the end of your <file>meta.json</file>, add the build configuration:
 
 ```json {class="line-numbers linkable-line-numbers" data-line="4-7"}
