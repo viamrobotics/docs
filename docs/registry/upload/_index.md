@@ -296,7 +296,7 @@ However, if you already have your own CI with access to arm runners or only inte
    {{% tab name="CI with build-action" %}}
 
 ```yaml {class="line-numbers linkable-line-numbers"}
-# see https://github.com/viamrobotics/upload-module for help
+# see https://github.com/viamrobotics/build-action for help
 on:
   push:
     tags:
