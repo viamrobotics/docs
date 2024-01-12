@@ -63,7 +63,7 @@ When you deploy a module, whether its one you've written yourself or added from 
     </th>
   </tr>
   <tr>
-    <th>{{<imgproc src="/build/configure/services/icons/navigation.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="controller icon">}}
+    <th>{{<imgproc src="/services/icons/navigation.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="controller icon">}}
       <b>5. Update your module</b>
       <br><br>
       <p>When you make code changes to your module, you can <a href="/registry/upload/#update-an-existing-module">update your module</a> with those changes using the Viam CLI. You can also use a <a href="/registry/upload/#update-an-existing-module-using-a-github-action">GitHub action to automate module releases</a> as part of a continuous integration (CI) workflow.</p>
