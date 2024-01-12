@@ -44,7 +44,7 @@ Viam supports devices running **any** 64-bit Linux OS or macOS.
 
 The Viam platform provides a user interface for connecting to and managing machines, the [Viam app](https://app.viam.com/).
 
-To use the Viam platform with your machine, log in to [the app](https://app.viam.com/), create a new robot, and [install](/get-started/installation/) the [`viam-server`](https://github.com/viamrobotics/rdk) binary which:
+To use the Viam platform with your machine, log in to [the app](https://app.viam.com/), create a new machine, and [install](/get-started/installation/) the [`viam-server`](https://github.com/viamrobotics/rdk) binary which:
 
 - Creates, configures, and maintains the machine.
 - Securely handles all communications.
@@ -58,7 +58,7 @@ Everything Viam runs on your machine is [open-source](https://github.com/viamrob
 
 ## Configure your machine
 
-Robots can be small and simple or very complex.
+Machines can be small and simple or very complex.
 A machine can be a single-board computer with a single sensor or LED wired to it, or a machine can consist of multiple computers with many physical components connected, acting as one unit.
 
 The term {{% glossary_tooltip term_id="component" text="_component_" %}} describes a piece of hardware that a computer controls, like an arm or a motor.
@@ -69,11 +69,11 @@ For each component that makes up your machine:
 {{< imgproc src="/viam/test_components.png" alt="Multiple components being tested in the Viam app." resize="320x" style="max-width:320px" class="alignright" >}}
 </p>
 
-1. Add it to your robot by [choosing the component type](/build/configure/#components) (example: `camera`) and model (example: `webcam`).
+1. Add it to your machine by [choosing the component type](/build/configure/#components) (example: `camera`) and model (example: `webcam`).
 2. Test it with the visual [control tab](/fleet/machines/#control).
 3. See any problems with in-app [logs](/fleet/machines/#logs), review or roll back configuration [history](/fleet/machines/#history).
 
-After configuring your machine's hardware, you can configure [high level functionality](/build/configure/services/) the same way:
+After configuring your machine's hardware, you can configure [high level functionality](/services/) the same way:
 
 - **Data Management** enables you to capture and sync data from one or more machines, and use that data for machine learning and beyond.
 - **Fleet management** enables you to configure, control, debug, and manage entire fleets of machines.
@@ -82,7 +82,7 @@ After configuring your machine's hardware, you can configure [high level functio
 - **Simultaneous Localization And Mapping (SLAM)** enables your machine to map its surroundings and find its position on a map.
 
 <div>
-{{< imgproc src="/viam/robot-components.png" alt="Robot components" resize="600x" class="aligncenter" >}}
+{{< imgproc src="/viam/machine-components.png" alt="Machine components" resize="600x" class="aligncenter" >}}
 </div>
 
 ## Control your machine
@@ -102,9 +102,9 @@ This provides flexibility and security whether you are building tight control lo
 
 There are four categories of APIs:
 
-- [Robot](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) provides high level robot commands
-- [Components](/build/configure/components/) like motors, arms, GPS
-- [Services](/build/configure/services/) like computer vision, motion planning, Simultaneous Localization And Mapping (SLAM)
+- [Robot](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) provides high level machine commands
+- [Components](/components/) like motors, arms, GPS
+- [Services](/services/) like computer vision, motion planning, Simultaneous Localization And Mapping (SLAM)
 - Cloud applications like [Fleet Management](/fleet/), [Data Management](/data/)
 
 You can see the Viam API specification on [GitHub](https://github.com/viamrobotics/api).

@@ -27,12 +27,12 @@ no_list: true
 # SME: Matt Vella, Matt Dannenberg, James Otting
 ---
 
-The Viam platform comes with a component called [base](/build/configure/components/base/), which adds useful abstractions for simplified control of mobile robots.
+The Viam platform comes with a component called [base](/components/base/), which adds useful abstractions for simplified control of mobile robots.
 Instead of controlling individual motors, the base component allows you to [issue commands](https://python.viam.dev/autoapi/viam/components/base/index.html#package-contents) like "move_straight", "spin", "set_velocity" and "stop".
 
 Many robotic rovers can be controlled out-of-the-box with the Viam "wheeled" base model - simply by specifying how your motorized wheels are configured.
 If you want to control a rover or other mobile robot that does not expose direct motor control, this tutorial shows you how to create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} (custom component).
-Creating a modular resouce for your robot allows you to issue commands using the same interface as you would with native Viam components. Once you have created the custom component, you can control both the Viam components and the modular resources using the [Viam SDK](/build/program/apis/) of your choice.
+Creating a modular resource for your robot allows you to issue commands using the same interface as you would with native Viam components. Once you have created the custom component, you can control both the Viam components and the modular resources using the [Viam SDK](/build/program/apis/) of your choice.
 
 <div class="td-max-width-on-larger-screens">
 {{<imgproc src="/tutorials/intermode/rover_outside.png" resize="400x" declaredimensions=true alt="Intermode rover pictured outdoors." class="alignright" style="max-width:300px">}}
@@ -48,7 +48,7 @@ This tutorial will show how we can both leverage this protocol and abstract it i
 
 {{% alert title="Tip" color="tip"%}}
 Even if you don't have an Intermode rover, many of the other concepts presented here are still relevant to other robotic projects.
-While this tutorial can be followed verbatim for the Intermode rover, much of it can be applied to other [base](/build/configure/components/base/), **CAN bus**, or [modular resource](/registry/)-based projects.
+While this tutorial can be followed verbatim for the Intermode rover, much of it can be applied to other [base](/components/base/), **CAN bus**, or [modular resource](/registry/)-based projects.
 {{% /alert %}}
 
 The tutorial uses the following hardware:
@@ -63,7 +63,7 @@ The tutorial uses the following hardware:
 
 ### Raspberry Pi software setup
 
-Before proceeding, [set up `viam-server` on your Raspberry Pi](/get-started/installation/prepare/rpi-setup/) and configure a (for now) empty robot configuration.
+Before proceeding, [set up `viam-server` on your Raspberry Pi](/get-started/installation/prepare/rpi-setup/) and create a (for now) empty machine configuration.
 
 Next, install the PiCAN 2 driver software [following these instructions](https://copperhilltech.com/blog/pican2-pican3-and-picanm-driver-installation-for-raspberry-pi/).
 
@@ -105,18 +105,18 @@ Check out this [GitHub repository](https://github.com/viam-labs/tutorial-intermo
 ## A modular resource for the Intermode base
 
 Viam includes [APIs](/build/program/apis/) for common component types within `viam-server`.
-The Viam component that exposes the interfaces for controlling a mobile robot's movements is the [base component](/build/configure/components/base/).
+The Viam component that exposes the interfaces for controlling a mobile robot's movements is the [base component](/components/base/).
 
 If you want to learn how to leverage this API to create a custom modular resource using code found in the [tutorial repository](https://github.com/viam-labs/tutorial-intermode), continue reading.
 If you want to directly configure this modular resource code with your robot, skip to [using the intermode base resource](#use-the-intermode-base-modular-resource)
 
 ### Create a custom model using the Viam RDK base API
 
-The [base](/build/configure/components/base/) component exposes an API for controlling a mobile robot’s movements.
+The [base](/components/base/) component exposes an API for controlling a mobile robot’s movements.
 To use it for the Intermode rover, you must create a new {{< glossary_tooltip term_id="model" text="model" >}} with its own implementation of each method.
 
 Both the **API** and **model** of any Viam resource are represented as colon-separated triplets where the first element is a namespace.
-Since you will conform to an existing Viam API for [base](/build/configure/components/base/), the [API](/registry/create/#valid-apis-to-implement-in-your-model) you will use is:
+Since you will conform to an existing Viam API for [base](/components/base/), the [API](/registry/create/#valid-apis-to-implement-in-your-model) you will use is:
 **rdk:component:base**
 
 This base model is being created for tutorial purposes only, and will implement only partial functionality for demonstration purposes.
@@ -275,13 +275,13 @@ sudo apt install git
 
 ### Configure the Intermode base resource
 
-If you have not already, first create a new robot in the [Viam app](https://app.viam.com/) and follow the instructions in the **Setup** tab to connect the robot to the cloud.
+If you have not already, first create a new machine in the [Viam app](https://app.viam.com/) and follow the instructions in the **Setup** tab to connect the machine to the cloud.
 
-In order to drive the Intermode base with Viam, you need to add it to the robot configuration.
+In order to drive the Intermode base with Viam, you need to add it to the machine configuration.
 You will specify where `viam-server` can find the module, and then configure a modular component instance for the Intermode base.
 
 In this example, we've cloned the git tutorial repo to `/home/me/tutorial-intermode/`.
-Change this to the correct location in `executable_path` when adding the module to your robot configuration.
+Change this to the correct location in `executable_path` when adding the module to your machine configuration.
 
 ```json
 {
@@ -308,7 +308,7 @@ More details about modules and how they work can be found in the [modular resour
 
 ### Control the rover
 
-Once you save this configuration, you see a _base_ card in the robot's **Control** tab and can drive the rover from there.
+Once you save this configuration, you see a _base_ card in the machine's **Control** tab and can drive the rover from there.
 Be careful, the Intermode is a large and powerful rover - make sure you have the shutoff key in hand for emergencies and make sure you have enough space for the rover to move.
 
 If you do not see the base card in the **Control** tab, check the **Logs** tab for possible setup or configuration errors.

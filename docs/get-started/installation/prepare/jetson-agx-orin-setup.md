@@ -25,7 +25,7 @@ Follow this guide to set up the [Jetson AGX Orin Developer Kit](https://develope
 {{< alert title="Important" color="note" >}}
 
 This guide assumes that you have a Jetson AGX Orin Developer Kit with a Jetson AGX Orin module and reference carrier board.
-If you want to use a different carrier board to incorporate your Orin into your robot, the type of carrier board you use will affect your hardware requirements.
+If you want to use a different carrier board to incorporate your Orin into your machine, the type of carrier board you use will affect your hardware requirements.
 
 {{% /alert %}}
 
@@ -87,7 +87,7 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
    Consult the instructions you received when purchasing your device for more information.
 2. Ensure the driver has successfully installed by running `sudo dmesg | grep ar0234`. The output should include `ar0234 Detected Ar0234 sensor`.
 3. Connect the AR0234 camera module and daughterboard to the J509 port located at the bottom of the Developer Kit.
-4. Configure the camera as a [webcam](/build/configure/components/camera/webcam/).
+4. Configure the camera as a [webcam](/components/camera/webcam/).
 
 ## Serial Communication Protocol Tips
 

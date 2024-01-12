@@ -8,7 +8,7 @@ tags: ["fleet management", "cloud", "app"]
 no_list: true
 ---
 
-The [Viam app](https://app.viam.com/) is a web UI for managing and building robots.
+The [Viam app](https://app.viam.com/) is a web UI for managing and building machines.
 
 ## Create Account and Log In
 
@@ -30,4 +30,4 @@ Accounts created from separate authentication sources are unique to each other.
 ## Sign Out
 
 To log out or sign out of the [Viam app](https://app.viam.com/), click on your profile icon in the upper right corner of your browser window.
-Click **Sign out** to sign out of accessing all organizations, locations, and robots your credentials manage.
+Click **Sign out** to sign out of accessing all organizations, locations, and machines your credentials manage.

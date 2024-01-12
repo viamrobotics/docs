@@ -11,7 +11,7 @@ parser.add_argument('--local', action='store_true', required=False)
 
 args = parser.parse_args()
 
-services = ["motion", "navigation", "sensors", "slam", "vision", "mlmodel"]
+services = ["motion", "navigation", "slam", "vision", "mlmodel"]
 components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic", "gripper",
               "input", "movement_sensor", "power_sensor", "sensor"]
 app_apis = ["data_client", "app_client"]
@@ -29,7 +29,6 @@ ignore_apis = [
 services_page_mapping = {
     "motion": "mobility/motion",
     "navigation": "mobility/navigation",
-    "sensors": "mobility/sensors",
     "slam": "mobility/slam",
     "vision": "ml/vision",
     "ml": "ml/deploy"
@@ -232,7 +231,7 @@ def parse(type, names):
                     with open(f"dist/{services_page_mapping[service]}/index.html") as fp:
                         soup2 = BeautifulSoup(fp, 'html.parser')
                 else:
-                    with open(f"dist/build/configure/{type}/{service}/index.html") as fp:
+                    with open(f"dist/{type}/{service}/index.html") as fp:
                         soup2 = BeautifulSoup(fp, 'html.parser')
         else:
             if type == "app" or type == "robot":
@@ -273,7 +272,9 @@ def parse(type, names):
 
             if not found and id != "viam.components.board.client.DigitalInterruptClient.add_callback" \
             and id != "viam.components.board.client.DigitalInterruptClient.add_post_processor" \
-            and id != "viam.components.input.client.ControllerClient.reset_channel":
+            and id != "viam.components.input.client.ControllerClient.reset_channel" \
+            and id != "viam.robot.client.RobotClient.get_component" \
+            and id != "viam.robot.client.RobotClient.get_service":
                 sdk_methods_missing.append(id)
 
 

@@ -4,7 +4,7 @@ linkTitle: "Virtualenv for Python SDK"
 weight: 10
 type: "docs"
 description: "Prepare your Python Virtual Environment to program machines with the Python SDK."
-images: ["/build/configure/services/icons/sdk.svg"]
+images: ["/services/icons/sdk.svg"]
 tags:
   ["client", "sdk", "application", "sdk", "fleet", "program", "python", "venv"]
 aliases:

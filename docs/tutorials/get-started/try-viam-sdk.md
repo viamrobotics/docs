@@ -24,7 +24,7 @@ cost: "0"
 
 The Viam {{< glossary_tooltip term_id="sdk" text="SDKs" >}} allow you to write code in Python, Go, or TypeScript to control a Viam-connected machine.
 In this tutorial you will learn how to use the Viam SDKS as you write code to make a robot drive in a square.
-You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try), [your own Viam Rover](/get-started/try-viam/rover-resources/), or another [mobile robot](/build/configure/components/base/).
+You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try), [your own Viam Rover](/get-started/try-viam/rover-resources/), or another [mobile robot](/components/base/).
 
 <div class="td-max-width-on-larger-screens">
 {{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square." max-width="400px">}}
@@ -39,7 +39,7 @@ You can also directly see the [complete code for the tutorial](#complete-code).
 You don't need any hardware to complete this tutorial!
 You can rent a rover to drive remotely at no cost with [Try Viam](https://app.viam.com/try).
 
-If you have your own rover on hand, whether it's a [Viam rover](https://www.viam.com/resources/rover) or not, this tutorial works for any wheeled robot that can be configured as a [base component](/build/configure/components/base/wheeled/).
+If you have your own rover on hand, whether it's a [Viam rover](https://www.viam.com/resources/rover) or not, this tutorial works for any wheeled robot that can be configured as a [base component](/components/base/wheeled/).
 
 {{% alert title="Important" color="note" %}}
 If you are using your own robot for this tutorial instead of [renting one](https://app.viam.com/try), be sure to [install `viam-server`](/get-started/installation/#install-viam-server) on it and [configure](/build/configure/) its hardware before proceeding with this tutorial.
@@ -61,7 +61,7 @@ If you are running out of time during your rental, you can [extend your rover re
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to your [robot's page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **Python** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to your [machine's page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **Python** and copy the boilerplate code.
 
 {{% snippet "show-secret.md" %}}
 
@@ -100,7 +100,7 @@ name: "cam"
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **Go** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **Go** and copy the boilerplate code.
 
 {{% snippet "show-secret.md" %}}
 
@@ -131,7 +131,7 @@ go run square.go
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **TypeScript** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **TypeScript** and copy the boilerplate code.
 
 {{% snippet "show-secret.md" %}}
 
@@ -299,11 +299,11 @@ func main() {
         "ADDRESS FROM THE VIAM APP",
         logger,
         client.WithDialOptions(rpc.WithEntityCredentials(
-        // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+        // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
         "<API-KEY-ID>",
         rpc.Credentials{
             Type:    rpc.CredentialsTypeAPIKey,
-            // Replace "<API-KEY>" (including brackets) with your robot's api key
+            // Replace "<API-KEY>" (including brackets) with your machine's API key
             Payload: "<API-KEY>",
         })),
     )
@@ -368,10 +368,10 @@ async function main() {
     host,
     credential: {
       type: "api-key",
-      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      // Replace "<API-KEY>" (including brackets) with your machine's API key
       payload: "<API-KEY>",
     },
-    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
     authEntity: "<API-KEY-ID>",
     signalingAddress: "https://app.viam.com:443",
   });
@@ -417,7 +417,7 @@ If you have a different base name, update the name in your code.
 ```ts {class="line-numbers linkable-line-numbers"}
 // This function moves a base component in a square.
 async function moveInSquare(client: VIAM.RobotClient) {
-  // Replace with the name of a motor on your robot.
+  // Replace with the name of a motor on your machine.
   const name = "viam_base";
   const baseClient = new VIAM.BaseClient(client, name);
 
@@ -458,10 +458,10 @@ async function main() {
     host,
     credential: {
       type: "api-key",
-      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      // Replace "<API-KEY>" (including brackets) with your machine's API key
       payload: "<API-KEY>",
     },
-    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
     authEntity: "<API-KEY-ID>",
     signalingAddress: "https://app.viam.com:443",
   });
@@ -503,10 +503,10 @@ from viam.rpc.dial import Credentials, DialOptions
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-        # id
+        # Replace "<API-KEY-ID>" (including brackets) with your machine's
+        # API key ID
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
@@ -573,11 +573,11 @@ func main() {
       "ADDRESS FROM THE VIAM APP",
       logger,
       client.WithDialOptions(rpc.WithEntityCredentials(
-      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
       "<API-KEY-ID>",
       rpc.Credentials{
           Type:    rpc.CredentialsTypeAPIKey,
-          // Replace "<API-KEY>" (including brackets) with your robot's api key
+          // Replace "<API-KEY>" (including brackets) with your machine's API key
           Payload: "<API-KEY>",
       })),
     )
@@ -654,10 +654,10 @@ async function main() {
     host,
     credential: {
       type: "api-key",
-      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      // Replace "<API-KEY>" (including brackets) with your machine's API key
       payload: "<API-KEY>",
     },
-    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
     authEntity: "<API-KEY-ID>",
     signalingAddress: "https://app.viam.com:443",
   });
@@ -670,7 +670,7 @@ async function main() {
 
 // This function moves a base component in a square.
 async function moveInSquare(client: VIAM.RobotClient) {
-  // Replace with the name of a motor on your robot.
+  // Replace with the name of a motor on your machine.
   const name = "viam_base";
   const baseClient = new VIAM.BaseClient(client, name);
 
@@ -704,6 +704,6 @@ main().catch((error) => {
 If you're ready for more, try making your rover move in different ways.
 Can you make it move in a circle?
 A figure-eight?
-You could also write some code to control the other components on the robot, like the [camera](/build/configure/components/camera/), or the rover's [motors](/build/configure/components/motor/).
+You could also write some code to control the other components on the robot, like the [camera](/components/camera/), or the rover's [motors](/components/motor/).
 
 You could also control Viam's services, by adding [data management](/data/) to collect data in real time or [vision services](/ml/vision/) to [add color detection to your rover](/tutorials/services/try-viam-color-detection/).

@@ -1,10 +1,10 @@
 ---
-title: "Interact with Resources with Viam's client SDKs"
+title: "Interact with Resources with Viam's Client SDKs"
 linkTitle: "APIs"
 weight: 20
 type: "docs"
-description: "Access and control your robot or fleet with the SDKs' client libraries for the resource and robot APIs."
-icon: "/build/configure/services/icons/sdk.svg"
+description: "Access and control your machine or fleet with the SDKs' client libraries for the resource and robot APIs."
+icon: "/services/icons/sdk.svg"
 tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api"]
 aliases:
   - /program/sdks/
@@ -14,15 +14,15 @@ no_list: true
 
 Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} exposes an [Application Programming Interface (API)](https://en.wikipedia.org/wiki/API) described through [protocol buffers](https://developers.google.com/protocol-buffers).
 You can think of this as a description of how you can interact with that resource.
-Different models of resources implement the same API, which [Viam SDKs expose](/internals/robot-to-robot-comms/), allowing you to control different models of resource types with a consistent interface.
+Different models of resources implement the same API, which [Viam SDKs expose](/internals/machine-to-machine-comms/), allowing you to control different models of resource types with a consistent interface.
 
-The API methods provided by the SDKs for each of these resource APIs wrap gRPC client requests to the robot when you execute your program, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/build/configure/) on your robot.
+The API methods provided by the SDKs for each of these resource APIs wrap gRPC client requests to the machine when you execute your program, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/build/configure/) on your machine.
 
 ## Robot Management APIs
 
 ### Robot API
 
-All robots support the following methods through the [robot API](/build/program/apis/robot/):
+All machines support the following methods through the [robot API](/build/program/apis/robot/):
 
 {{< readfile "/static/include/services/apis/robot.md" >}}
 
@@ -34,7 +34,7 @@ The [cloud API](/build/program/apis/cloud/) supports the following methods:
 
 ### Data Client API
 
-The data client API supports the following methods to upload and retrieve data directly to the [Viam app](https://app.viam.com) (among [others](https://python.viam.dev/autoapi/viam/app/data_client/index.html)):
+The data client API supports the following methods to upload and retrieve data like images or sensor readings directly to the [Viam app](https://app.viam.com) (among [others](https://python.viam.dev/autoapi/viam/app/data_client/index.html)):
 
 {{< readfile "/static/include/services/apis/data-client.md" >}}
 
@@ -46,100 +46,100 @@ The ML training API allows you to get information about and cancel ML training j
 
 ## Component APIs
 
-These APIs provide interfaces for controlling and getting information from various components of a robot.
+These APIs provide interfaces for controlling and getting information from various components of a machine.
 Built-in API methods are defined for every model of each component type.
-Documentation on using these methods in your SDK code is found on each [component page](/build/configure/components/) as follows:
+Documentation on using these methods in your SDK code is found on each [component page](/components/) as follows:
 
 ### Arm
 
-The [arm component](/build/configure/components/arm/) supports the following methods:
+The [arm component](/components/arm/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/arm.md" >}}
 
 ### Base
 
-The [base component](/build/configure/components/base/) supports the following methods:
+The [base component](/components/base/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/base.md" >}}
 
 ### Board
 
-The [board component](/build/configure/components/board/) supports the following methods:
+The [board component](/components/board/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/board.md" >}}
 
 ### Camera
 
-The [camera component](/build/configure/components/camera/) supports the following methods:
+The [camera component](/components/camera/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/camera.md" >}}
 
 ### Encoder
 
-The [encoder component](/build/configure/components/encoder/) supports the following methods:
+The [encoder component](/components/encoder/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/encoder.md" >}}
 
 ### Gantry
 
-The [gantry component](/build/configure/components/gantry/) supports the following methods:
+The [gantry component](/components/gantry/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/gantry.md" >}}
 
 ### Generic
 
-The [generic component](/build/configure/components/generic/) supports the following methods:
+The [generic component](/components/generic/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generic.md" >}}
 
 ### Gripper
 
-The [gripper component](/build/configure/components/gripper/) supports the following methods:
+The [gripper component](/components/gripper/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/gripper.md" >}}
 
 ### Input Controller
 
-The [input controller component](/build/configure/components/input-controller/) supports the following methods:
+The [input controller component](/components/input-controller/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/input-controller.md" >}}
 
 ### Motor
 
-The [motor component](/build/configure/components/motor/) supports the following methods:
+The [motor component](/components/motor/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/motor.md" >}}
 
 ### Movement Sensor
 
-The [movement sensor component](/build/configure/components/movement-sensor/) supports the following methods.
+The [movement sensor component](/components/movement-sensor/) supports the following methods.
 Some methods are only supported by certain models:
 
 {{< readfile "/static/include/components/apis/movement-sensor.md" >}}
 
 ### Power Sensor
 
-The [power sensor component](/build/configure/components/power-sensor/) supports the following methods:
+The [power sensor component](/components/power-sensor/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/power-sensor.md" >}}
 
 ### Sensor
 
-The [sensor component](/build/configure/components/sensor/) supports the following methods:
+The [sensor component](/components/sensor/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/sensor.md" >}}
 
 ### Servo
 
-The [servo component](/build/configure/components/servo/) supports the following methods:
+The [servo component](/components/servo/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/servo.md" >}}
 
 ## Service APIs
 
-These APIs provide interfaces for controlling and getting information from the services you configured on a robot.
+These APIs provide interfaces for controlling and getting information from the services you configured on a machine.
 Built-in API methods are defined for each service implementation.
-Documentation on using these methods in your SDK code is found on [service pages](/build/configure/services/) as follows:
+Documentation on using these methods in your SDK code is found on [service pages](/services/) as follows:
 
 ### Base Remote Control
 
@@ -153,7 +153,7 @@ The [data management service](/data/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/data.md" >}}
 
-### MLModel
+### ML Model
 
 The [ML model service](/ml/) supports the following methods:
 
@@ -171,15 +171,9 @@ The [navigation service](/mobility/navigation/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/navigation.md" >}}
 
-### Sensors
-
-The [sensors service](/mobility/sensors/) supports the following methods:
-
-{{< readfile "/static/include/services/apis/sensors.md" >}}
-
 ### SLAM
 
-The {{< glossary_tooltip term_id="slam" text="Simultaneous Localization And Mapping (SLAM) service" >}} supports the following methods:
+The [Simultaneous Localization And Mapping (SLAM) service](/mobility/slam/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/slam.md" >}}
 
@@ -193,19 +187,19 @@ Different [vision service](/ml/vision/) models support different methods:
 
 ### GPIO Pins
 
-In addition to the [board API](#board), the [board component](/build/configure/components/board/) supports the following methods for interfacing with GPIO pins on a board:
+In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with GPIO pins on a board:
 
 {{< readfile "/static/include/components/apis/gpiopin.md" >}}
 
 ### Analog-to-Digital Converters (ADCs)
 
-In addition to the [board API](#board), the [board component](/build/configure/components/board/) supports the following methods for interfacing with [ADCs](/build/configure/components/board/#analogs) on a board:
+In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [ADCs](/components/board/#analogs) on a board:
 
 {{< readfile "/static/include/components/apis/analogreader.md" >}}
 
 ### Digital Interrupts
 
-In addition to the [board API](#board), the [board component](/build/configure/components/board/) supports the following methods for interfacing with [digital interrupts](/build/configure/components/board/#digital_interrupts) on a board:
+In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [digital interrupts](/components/board/#digital_interrupts) on a board:
 
 {{< readfile "/static/include/components/apis/digitalinterrupt.md" >}}
 
@@ -218,19 +212,19 @@ In the other SDKs, resource APIs implement but do not inherit these base require
 
 ### FromRobot
 
-Get a resource configured on a robot by `"name"`.
+Get a resource configured on a machine by `"name"`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `robot` [(RobotClient)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient): The robot.
+- `robot` [(RobotClient)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient): The machine.
 - `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The `name` of the resource.
 
 **Returns:**
 
-- [(Resource)](https://python.viam.dev/autoapi/viam/resource/base/index.html): The named resource if it exists on your robot.
+- [(Resource)](https://python.viam.dev/autoapi/viam/resource/base/index.html): The named resource if it exists on your machine.
   For example, an [arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ```python
@@ -244,12 +238,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `r` [(RobotClient)](https://pkg.go.dev/go.viam.com/rdk/robot#Robot): The robot.
+- `r` [(RobotClient)](https://pkg.go.dev/go.viam.com/rdk/robot#Robot): The machine.
 - `name` [(string)](https://pkg.go.dev/builtin#string): The "name" of the resource.
 
 **Returns:**
 
-- [(Resource)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The named resource if it exists on your robot.
+- [(Resource)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The named resource if it exists on your machine.
   For example, an [arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ```go
@@ -263,16 +257,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 In the TypeScript SDK, the equivalent of the `FromRobot` is defined in each resource API's client constructor.
 
-For example, a component with [type `arm`](https://ts.viam.dev/classes/ArmClient.html) and name `my_arm` belonging to a robot `robot` is instantiated as follows:
+For example, a component with [type `arm`](https://ts.viam.dev/classes/ArmClient.html) and name `my_arm` belonging to a machine `robot` is instantiated as follows:
 
 **Parameters:**
 
-- `client` [(RobotClient)](https://ts.viam.dev/classes/RobotClient.html): The robot.
+- `client` [(RobotClient)](https://ts.viam.dev/classes/RobotClient.html): The machine.
 - `name` [(string)](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html): The `name` of the resource.
 
 **Returns:**
 
-- [(Resource)](https://ts.viam.dev/interfaces/Resource.html): The named resource if it exists on your robot.
+- [(Resource)](https://ts.viam.dev/interfaces/Resource.html): The named resource if it exists on your machine.
   For example, an [ArmClient](https://ts.viam.dev/classes/ArmClient.html).
 
 ```typescript

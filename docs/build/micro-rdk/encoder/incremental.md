@@ -1,8 +1,8 @@
 ---
-title: "Configure an incremental encoder"
+title: "Configure an Incremental Encoder (Micro-RDK)"
 linkTitle: "incremental"
 type: "docs"
-description: "Configure an incremental encoder."
+description: "Configure an incremental encoder with a microcontroller."
 images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 aliases:
@@ -18,12 +18,12 @@ These two pins provide the phase outputs used to measure the speed and direction
 {{< tabs name="Configure an incremental encoder" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `encoder` type, then select the `incremental` model.
 Enter a name for your encoder and click **Create**.
 
-![Configuration of an incremental encoder in the Viam app config builder.](/build/configure/components/encoder/configure-incremental.png)
+![Configuration of an incremental encoder in the Viam app config builder.](/components/encoder/configure-incremental.png)
 
 Fill in and edit the attributes as applicable.
 

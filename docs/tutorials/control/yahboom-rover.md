@@ -23,7 +23,8 @@ cost: 260
 - A Raspberry Pi 4 running an instance of `viam-server`.
   See our [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/) for instructions.
 - A [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot)
-- A Bluetooth gamepad controller. For this tutorial we used an 8BitDo controller.
+- A Bluetooth gamepad controller.
+  For this tutorial we used an 8BitDo controller.
 
 ## Configuring the Board
 
@@ -32,7 +33,7 @@ To create a new component you'll be working within the **Create Component** sect
 
 ![A screenshot of the config builder UI on app.viam.com showing the Create Component box filled out with name=local, type=board and model=pi.](/tutorials/yahboom-rover/config.png)
 
-The first component you will add is the [board](/build/configure/components/board/) which represents the Raspberry Pi to which the other components are wired.
+The first component you will add is the [board](/components/board/) which represents the Raspberry Pi to which the other components are wired.
 For component `Type`, select `board`.
 Then you can name the `board` whatever you like as long as you are consistent when referring to it later; `local` is a good name since it is the `board` you will communicate with directly.
 For `Model`, select `pi`.
@@ -43,7 +44,7 @@ You don't need to add any attributes for this one, so your configured board will
 
 ## Configuring the Motors and Wheels
 
-Since both right side motors of the Yahboom rover are wired together to a single motor driver, the right side motors are configured as a single [motor component](/build/configure/components/motor/) in the Viam config file.
+Since both right side motors of the Yahboom rover are wired together to a single motor driver, the right side motors are configured as a single [motor component](/components/motor/) in the Viam config file.
 Later we will configure both left side motors as another motor.
 
 As with all other components, find the **Create Component** box at the bottom of the **Config** tab.
@@ -73,7 +74,8 @@ Having configured these two components, you should now be able to actuate your m
 Click **Control** at the top of the page to navigate to the Control tab.
 There, you should see a panel for the right motor: you can use this panel to set the motor's power level.
 
-Please be careful when activating your robot! Start with the power level set to 10% and increase it incrementally (about 10% each time), activating the motor at each step until the wheels are rotating at a reasonable rate.
+Please be careful when activating your robot!
+Start with the power level set to 10% and increase it incrementally (about 10% each time), activating the motor at each step until the wheels are rotating at a reasonable rate.
 Ensure the rover has sufficient space to drive around without hitting anyone or anything.
 Consider possibly holding your robot off the ground so it cannot run away or collide with anything unexpected.
 
@@ -96,7 +98,7 @@ You should now see two motors and be able to make each set of wheels spin.
 
 ## Configuring the Base
 
-Unite these wheel sets with a [base component](/build/configure/components/base/), which is used to describe the physical structure onto which your components are mounted.
+Unite these wheel sets with a [base component](/components/base/), which is used to describe the physical structure onto which your components are mounted.
 Configuring a {{% glossary_tooltip term_id="base" text="base"%}} will also give you a nice UI for moving the rover around.
 
 In the **Create Component** box, name the component `yahboom-base`.
@@ -129,9 +131,11 @@ Try playing around with these and get a sense of how the base moves.
 
 ![A screenshot of the CONTROL tab UI with buttons to make the base move.](/tutorials/yahboom-rover/baseui.png)
 
-Awesome! Now you have a rover which you can drive using a webUI.
+Awesome!
+Now you have a rover which you can drive using a webUI.
 In the next step, we'll try to make it more fun to drive around like an RC car by attaching a Bluetooth controller and using that to control the rover.
-If you’ve ever connected a Bluetooth device using the Linux command line, great! If not, strap in, it’s going to be a bit of a ride.
+If you’ve ever connected a Bluetooth device using the Linux command line, great!
+If not, strap in, it’s going to be a bit of a ride.
 If you would like to skip adding a Bluetooth controller, [jump ahead to the Configuring the Camera Component section](#configuring-the-camera-component) of the tutorial.
 
 ## Connecting a Bluetooth Controller
@@ -217,7 +221,7 @@ At this point moving the left analogue stick should result in movement of the ro
 Before we can do that: this rover has a camera on it which we need to configure.
 
 Once again, find the **Create Component** section at the bottom of the **Config** tab.
-Follow [these instructions on how to connect and configure a camera](/build/configure/components/camera/webcam/).
+Follow [these instructions on how to connect and configure a camera](/components/camera/webcam/).
 Don't worry about calibrating the camera; it is not necessary for this tutorial.
 That should be enough to get the `camera` streaming to the webUI.
 
@@ -229,9 +233,10 @@ If you click on your webUI, you will be able to see your camera streaming.
 
 ## Configuring the Servo Components
 
-You may have noticed that the camera is mounted on a pair of [servos](/build/configure/components/servo/) which control the pan and tilt of the camera.
+You may have noticed that the camera is mounted on a pair of [servos](/components/servo/) which control the pan and tilt of the camera.
 Go to the **Create Component** section at the bottom of **Config**.
-Set the `Name` to `pan`, the `Type` to `servo`, the `Model` to `pi`, and click **Create Component**. Set `Depends On` to `local`, and `pin` to `23`, which is the pin the servo is wired to.
+Set the `Name` to `pan`, the `Type` to `servo`, the `Model` to `pi`, and click **Create Component**.
+Set `Depends On` to `local`, and `pin` to `23`, which is the pin the servo is wired to.
 
 ![A screenshot fron the CONFIG tab of the pan servo configuration showing pin set to 23.](/tutorials/yahboom-rover/panservo.png)
 

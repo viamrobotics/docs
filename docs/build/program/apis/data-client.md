@@ -34,7 +34,7 @@ See the following example for reference.
 
 <!-- After sveltekit migration we should also be able to get a key from the UI-->
 
-Use the Viam CLI [to generate an api key to authenticate](/fleet/cli/#authenticate).
+Use the Viam CLI [to generate an API key to authenticate](/fleet/cli/#authenticate).
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -47,11 +47,11 @@ async def connect() -> ViamClient:
     dial_options = DialOptions(
       credentials=Credentials(
         type="api-key",
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
         payload='<API-KEY>',
       ),
-      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-      # id
+      # Replace "<API-KEY-ID>" (including brackets) with your machine's
+      # API key ID
       auth_entity='<API-KEY-ID>'
     )
     return await ViamClient.create_from_dial_options(dial_options)
@@ -73,7 +73,7 @@ Once you have instantiated a `DataClient`, you can run the following [API method
 
 ## Find Part ID
 
-To find the ID of your robot part, navigate to its **Setup** tab in the [Viam app](https://app.viam.com).
+To find the ID of your machine part, navigate to its **Setup** tab in the [Viam app](https://app.viam.com).
 Keep architecture selection at default.
 In Step 1, grab the part id from the second string of the generated command as the token following `id=`.
 For example:
@@ -594,7 +594,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### TabularDataCaptureUpload
 
-Upload tabular data collected on your machine through a specific [component](/build/configure/components/) to the [Viam app](https://app.viam.com).
+Upload tabular data collected on your machine through a specific [component](/components/) to the [Viam app](https://app.viam.com).
 Uploaded tabular data can be found under the **Sensors** subtab of the app's [**Data** tab](https://app.viam.com/data).
 
 {{< tabs >}}

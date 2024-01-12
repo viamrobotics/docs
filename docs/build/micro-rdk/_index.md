@@ -1,6 +1,6 @@
 ---
-title: "Use the Micro-RDK for microcontrollers"
-linkTitle: "Use microcontrollers"
+title: "Use the Micro-RDK for Microcontrollers"
+linkTitle: "Use Microcontrollers"
 weight: 60
 type: "docs"
 description: "The micro-RDK is a lightweight version of the Robot Development Kit which can run on resource-limited embedded systems."

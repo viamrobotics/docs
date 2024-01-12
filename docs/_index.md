@@ -20,9 +20,15 @@ sitemap:
 
 <div id="board-carousel" class="carousel max-page">
   <ul tabindex="0">
+  <li id="c1_slide0">
+      <a href="get-started/installation/prepare/rpi-setup/">
+        {{<imgproc src="get-started/installation/thumbnails/raspberry-pi-5-8gb.png" resize="148x120" declaredimensions=true alt="Raspberry Pi 5">}}
+        <p>Raspberry Pi 5</p>
+      </a>
+    </li>
     <li id="c1_slide1">
       <a href="get-started/installation/prepare/rpi-setup/">
-        {{<imgproc src="get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="148x120" declaredimensions=true alt="Raspberry Pi">}}
+        {{<imgproc src="get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="148x120" declaredimensions=true alt="Raspberry Pi 4b">}}
         <p>Raspberry Pi 4</p>
       </a>
     </li>
@@ -33,7 +39,7 @@ sitemap:
       </a>
     </li>
     <li id="c1_slide3">
-      <a href="build/configure/components/board/upboard/">
+      <a href="components/board/upboard/">
         {{<imgproc src="get-started/installation/thumbnails/up_4000.png" resize="148x120" declaredimensions=true alt="Intel Up board 4000">}}
         <p>Intel UP4000</p>
       </a>
@@ -69,7 +75,7 @@ sitemap:
       </a>
     </li>
     <li id="c1_slide9">
-      <a href="build/configure/components/board/jetson/">
+      <a href="components/board/jetson/">
         {{<imgproc src="get-started/installation/thumbnails/jetson-xavier.png" alt="Jetson Xavier NX Dev Kit" resize="148x120" declaredimensions=true >}}
         <p>NVIDIA Jetson Xavier NX</p>
       </a>
@@ -83,7 +89,7 @@ sitemap:
     <li id="c1_slide11">
       <a href="get-started/installation/prepare/rpi-setup/">
         {{<imgproc src="get-started/installation/thumbnails/raspberry-pi-zero-2w.png" alt="Raspberry Pi" resize="148x120" declaredimensions=true >}}
-        <p>Raspberry Pi Zero 2W</p>
+        <p>Raspberry Pi Zero 2 W</p>
       </a>
     </li>
     <li id="c1_slide12">
@@ -93,19 +99,20 @@ sitemap:
       </a>
     </li>
     <li id="c1_slide13">
-      <a href="build/configure/components/board/numato/">
+      <a href="components/board/numato/">
         {{<imgproc src="get-started/installation/thumbnails/numato.png" alt="Numato GPIO Modules" resize="148x120" declaredimensions=true >}}
         <p>Numato GPIO Modules</p>
       </a>
     </li>
     <li id="c1_slide14">
-      <a href="build/configure/components/board/pca9685/">
+      <a href="components/board/pca9685/">
         {{<imgproc src="get-started/installation/thumbnails/pca9685.png" alt="P C A 9685 I 2 C Interface" resize="148x120" declaredimensions=true >}}
         <p>PCA9686 I<sup>2</sup>C Interface</p>
       </a>
     </li>
   </ul>
   <ol style="visibility: hidden" aria-hidden="true">
+    <li><a href="#c1_slide0">Raspberry Pi 5</a></li>
     <li><a href="#c1_slide1">Raspberry Pi 4</a></li>
     <li><a href="#c1_slide2">NVIDIA Jetson Orin Nano</a></li>
     <li><a href="#c1_slide3">Intel UP4000</a></li>
@@ -116,7 +123,7 @@ sitemap:
     <li><a href="#c1_slide8">NVIDIA Jetson AGX Orin</a></li>
     <li><a href="#c1_slide9">NVIDIA Jetson Xavier NX</a></li>
     <li><a href="#c1_slide10">Raspberry Pi 3</a></li>
-    <li><a href="#c1_slide11">Raspberry Pi Zero 2W</a></li>
+    <li><a href="#c1_slide11">Raspberry Pi Zero 2 W</a></li>
     <li><a href="#c1_slide12">BeagleBone AI-64</a></li>
     <li><a href="#c1_slide13">Numato GPIO Modules</a></li>
     <li><a href="#c1_slide14">PCA9686 I<sup>2</sup>C Interface</a></li>
@@ -150,7 +157,7 @@ sitemap:
             <ol style="padding-inline-start: 1.1rem">
               <li>Configure a <a href="build/configure/"> machine</a> or a <a href="fleet/">fleet</a></li>
               <li><a href="get-started/installation/">Install Viam on your machine</a></li>
-              <li>Configure <a href="build/configure/components/">components</a> and <a href="build/configure/services/">add services</a></li>
+              <li>Configure <a href="components/">components</a> and <a href="services/">add services</a></li>
               <li><a href="fleet/machines/#control">Control and test your machine</a></li>
             </ol>
           </div>
@@ -165,7 +172,7 @@ sitemap:
           </p>
         </div>
         <div class="hover-card-img">
-          {{<imgproc src="/general/code.png" alt="Robot code" resize="400x" >}}
+          {{<imgproc src="/general/code.png" alt="machine code" resize="400x" >}}
         </div>
       </div>
       <div class="col hover-card landing pink">
@@ -185,11 +192,11 @@ sitemap:
     <div class="col sectionlist">
         <div>
         <div>Components</div>
-        {{<sectionlist section="/build/configure/components/">}}
+        {{<sectionlist section="/components/">}}
         </div>
     </div>
     <div class="col sectionlist">
-<div><div>Services</div><ul class="sectionlist"><li><a href="data/" title="Data Management Service"><div><picture><img src="build/configure/services/icons/data-capture.svg" width="/services/icons/data-capture" height="/services/icons/data-capture" alt="Data Management" loading="lazy"></picture><p>Data Management</p></div></a></li></ul><ul class="sectionlist"><li><a href="mobility/motion/" title="Motion Service"><div><picture><img src="build/configure/services/icons/motion.svg" width="/services/icons/motion" height="/services/icons/motion" alt="Motion" loading="lazy"></picture><p>Motion</p></div></a></li></ul><ul class="sectionlist"><li><a href="mobility/frame-system/" title="The Robot Frame System"><div><picture><img src="build/configure/services/icons/frame-system.svg" width="/services/icons/frame-system" height="/services/icons/frame-system" alt="Frame System" loading="lazy"></picture><p>Frame System</p></div></a></li></ul><ul class="sectionlist"><li><a href="mobility/base-rc/" title="Base Remote Control Service"><div><picture><img src="build/configure/services/icons/base-rc.svg" width="/services/icons/base-rc" height="/services/icons/base-rc" alt="Base Remote Control" loading="lazy"></picture><p>Base Remote Control</p></div></a></li></ul><ul class="sectionlist"><li><a href="ml/" title="ML Model Service"><div><picture><img src="build/configure/services/icons/ml.svg" width="/services/icons/ml" height="/services/icons/ml" alt="ML Model" loading="lazy"></picture><p>ML Model</p></div></a></li></ul><ul class="sectionlist"><li><a href="mobility/navigation/" title="The Navigation Service"><div><picture><img src="build/configure/services/icons/navigation.svg" width="/services/icons/navigation" height="/services/icons/navigation" alt="Navigation" loading="lazy"></picture><p>Navigation</p></div></a></li></ul><ul class="sectionlist"><li><a href="mobility/slam/" title="SLAM Service"><div><picture><img src="build/configure/services/icons/slam.svg" width="/services/icons/slam" height="/services/icons/slam" alt="SLAM" loading="lazy"></picture><p>SLAM</p></div></a></li></ul><ul class="sectionlist"><li><a href="ml/vision/" title="Vision Service"><div><picture><img src="build/configure/services/icons/vision.svg" width="/services/icons/vision" height="/services/icons/vision" alt="Vision" loading="lazy"></picture><p>Vision</p></div></a></li></ul><ul class="sectionlist"><li><a href="mobility/sensors/" title="Sensors Service"><div><picture><img src="build/configure/services/icons/sensor.svg" width="/services/icons/sensor" height="/services/icons/sensor" alt="Sensors" loading="lazy"></picture><p>Sensors</p></div></a></li></ul></div>
+<div><div>Services</div><ul class="sectionlist"><li><a href="data/" title="Data Management Service"><div><picture><img src="services/icons/data-capture.svg" width="/services/icons/data-capture" height="/services/icons/data-capture" alt="Data Management" loading="lazy"></picture><p>Data Management</p></div></a></li></ul><ul class="sectionlist"><li><a href="mobility/motion/" title="Motion Service"><div><picture><img src="services/icons/motion.svg" width="/services/icons/motion" height="/services/icons/motion" alt="Motion" loading="lazy"></picture><p>Motion</p></div></a></li></ul><ul class="sectionlist"><li><a href="mobility/frame-system/" title="The Robot Frame System"><div><picture><img src="services/icons/frame-system.svg" width="/services/icons/frame-system" height="/services/icons/frame-system" alt="Frame System" loading="lazy"></picture><p>Frame System</p></div></a></li></ul><ul class="sectionlist"><li><a href="mobility/base-rc/" title="Base Remote Control Service"><div><picture><img src="services/icons/base-rc.svg" width="/services/icons/base-rc" height="/services/icons/base-rc" alt="Base Remote Control" loading="lazy"></picture><p>Base Remote Control</p></div></a></li></ul><ul class="sectionlist"><li><a href="ml/" title="ML Model Service"><div><picture><img src="services/icons/ml.svg" width="/services/icons/ml" height="/services/icons/ml" alt="ML Model" loading="lazy"></picture><p>ML Model</p></div></a></li></ul><ul class="sectionlist"><li><a href="mobility/navigation/" title="The Navigation Service"><div><picture><img src="services/icons/navigation.svg" width="/services/icons/navigation" height="/services/icons/navigation" alt="Navigation" loading="lazy"></picture><p>Navigation</p></div></a></li></ul><ul class="sectionlist"><li><a href="mobility/slam/" title="SLAM Service"><div><picture><img src="services/icons/slam.svg" width="/services/icons/slam" height="/services/icons/slam" alt="SLAM" loading="lazy"></picture><p>SLAM</p></div></a></li></ul><ul class="sectionlist"><li><a href="ml/vision/" title="Vision Service"><div><picture><img src="services/icons/vision.svg" width="/services/icons/vision" height="/services/icons/vision" alt="Vision" loading="lazy"></picture><p>Vision</p></div></a></li></ul></div>
     </div>
     <div class="col sectionlist">
         <div>

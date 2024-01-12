@@ -1,7 +1,6 @@
 ---
 title: "Plant Watering Robot with a Raspberry Pi"
 linkTitle: "Plant Watering Robot"
-weight: 7
 type: "docs"
 description: "Create a plant watering robot with a Raspberry Pi."
 tags: ["raspberry pi", "app", "board", "motor"]
@@ -27,25 +26,23 @@ With a Raspberry Pi and some cheap, basic hardware, you can keep your plants hea
 Follow this tutorial to learn how to set up an automatic plant watering system:
 
 1. [Complete the physical assembly and wiring](#set-up-your-plant-watering-robot).
-2. [Create and connect to the robot](#configure-the-components-of-your-robot-in-the-viam-app).
-3. [Configure your robot's components](#configure-the-components-of-your-robot-in-the-viam-app).
-4. [Configure the ADC as a module from the registry](#configure-the-adc-as-a-module-from-the-registry).
-5. [Write code utilizing the Viam Python SDK to control the plant watering robot](#add-python-control-code).
+2. [Create and connect to the robot, and configure your robot's components](#configure-the-components-of-your-robot-in-the-viam-app).
+3. [Configure the ADC as a module from the registry](#configure-the-adc-as-a-module-from-the-registry).
+4. [Write code utilizing the Viam Python SDK to control the plant watering robot](#add-python-control-code).
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/Q6UuUKJpDn0?start=877">}}
 
-You can also follow a simplified version of this tutorial in this video: it eliminates the need for the ADC, the breadboard, and the motor speed controller, and uses the digital pin of the moisture sensor to get “high” and “low” readings and to turn a relay on and off. You can start with this simple version and then add the ADC to make your machine more accurate!
+You can also follow a simplified version of this tutorial in this video: it eliminates the need for the ADC and the breadboard, instead using the digital pin of the moisture sensor to get “high” and “low” readings and to turn a relay on and off.
+You can start with this simple version and then add the ADC to make your machine more accurate!
 
 The tutorial uses the following hardware, but you can adjust it as needed:
 
 - A Raspberry Pi 3B or 4B with SD card and [5V USB power supply](https://www.amazon.com/CanaKit-Raspberry-Supply-Adapter-Listed/dp/B00MARDJZ4)
 - A [resistive soil moisture sensor](https://www.amazon.com/KeeYees-Sensitivity-Moisture-Watering-Manager/dp/B07QXZC8TQ)
-- A [peristaltic pump](https://www.amazon.com/Gikfun-Peristaltic-Connector-Aquarium-Analytic/dp/B01IUVHB8E) motor and [tubing](https://www.amazon.com/dp/B08H1ZD5VZ?psc=1&)
-- An [Adafruit MCP3008 ADC](https://a.co/d/csRaIHE)
-- A [motor speed controller](https://www.amazon.com/High-Power-Transistor-Controller-MELIFE-Electronic/dp/B09XKCD8HS)
+- A [5V mini water pump](https://www.amazon.com/gp/product/B09TGK9N5Q/) with clear vinyl tube
+- A [MCP3008 ADC](https://a.co/d/csRaIHE)
+- A [one channel relay switch](https://www.amazon.com/HiLetgo-Channel-optocoupler-Support-Trigger/dp/B00LW15A4W/)
 - A [breadboard](https://www.amazon.com/SunFounder-Raspberry-Breadboard-solderless-Circuit/dp/B07ZYR7R8X)
-- A [9V battery](https://www.amazon.com/dp/B08BRJQQSL/)
-  - Optional: [wire leads](https://www.amazon.com/Battery-Hard-Shell-Connector-Insulated-Wires/dp/B07WTYS1PM/) in place of alligator clips for wiring the battery
 - Assorted [breadboard jumper wires](https://www.amazon.com/EDGELEC-Breadboard-Optional-Assorted-Multicolored/dp/B07GD2BWPY/), including wires with [alligator clips](https://www.amazon.com/Goupchn-Alligator-Breadboard-Flexible-Electrical/dp/B08M5P6LHR/)
 - A planter box or flower pot
 - A water container
@@ -58,7 +55,7 @@ Make sure your Pi is flashed with a Viam-compatible operating system, and that y
 ## Set up your plant watering robot
 
 Before programming the Pi to make the plant watering robot functional, you need to physically set up the plant watering robot by wiring the different components together.
-You will set up the robot to receive signals from the resistive soil moisture sensor and signal to the peristaltic pump when it is time to pump water from the water's container to the plant's container.
+You will set up the robot to receive signals from the resistive soil moisture sensor and signal to the pump when it is time to pump water from the water's container to the plant's container.
 
 ### Full wiring diagram
 
@@ -83,19 +80,22 @@ Use this to orient the ADC to determine the location to insert your wires.
 {{% /alert %}}
 
 Insert the MCP3008 into your breadboard so that it bridges both sides of the divide.
-Then, use the rows on the side of your MCP3008's pins and the GPIO pins on your PI to connect the pins with wires as follows:
+Then, use the rows on the side of your MCP3008's pins and the GPIO pins on your Pi to connect the pins with wires as follows:
 
 <!-- prettier-ignore -->
 | MCP3008 ADC Pin | Raspberry Pi Pin |
 | ----------- | ---------------- |
-| VDD | 3.3V |
-| VREF | 3.3V |
+| VDD | 5V |
+| VREF | 5V |
 | AGND | GND |
 | DGND | GND |
 | CLK | SCLK |
 | DOUT | MISO |
 | DIN | MOSI |
-| CS/SHDN | GPIO8 |
+| CS/SHDN | 24GPIO8 |
+
+Use an additional wire to wire Raspberry Pi [pin 4 (a 5 volt power pin)](https://pinout.xyz/pinout/5v_power) to the power rail of the breadboard (the red plus sign column).
+This brings the 5V power output from the Raspberry Pi to the ADC and the sensor.
 
 ### Wire your resistive soil moisture sensor
 
@@ -106,37 +106,32 @@ Reference this diagram of the blue module part of the sensor:
 ![Pinout diagram for the resistive soil moisture sensor.](/tutorials/plant-watering-pi/moisture-sensor-pinout.png)
 
 Start by connecting the female jumper wires at the end of the sensor prongs to the blue module where the diagram shown above is labeled "Connect with Probe."
+Be careful of the positive and negative sides, and make sure to match them correctly.
 
 Then, wire the rest of the pins on the module to the Pi and ADC as follows:
 
 <!-- prettier-ignore -->
 | Pi | ADC |
 |--|--|
-|<table> <tr><th>Moisture Sensor Pin</th><th>Raspberry Pi Pin</th></tr><tr><td>VCC</td><td>3.3V</td></tr><tr><td>GND</td><td>GND</td></tr> </table>| <table> <tr><th>Moisture Sensor Pin</th><th>MCP3008 ADC Pin</th></tr><tr><td>A0 (Analog Signal Output)</td><td>CH0</td></tr> </table>|
+|<table> <tr><th>Moisture Sensor Pin</th><th>Raspberry Pi Pin</th></tr><tr><td>VCC</td><td>5V on the power rail</td></tr><tr><td>GND</td><td>GND</td></tr> </table>| <table> <tr><th>Moisture Sensor Pin</th><th>MCP3008 ADC Pin</th></tr><tr><td>A0 (Analog Signal Output)</td><td>CH0</td></tr> </table>|
 
 Put the soil moisture sensor inside of the container holding your plant.
 
 ### Wire your pump
 
-Now, wire and power your Peristaltic Pump [motor](/build/configure/components/motor/) and [motor speed controller](https://www.amazon.com/High-Power-Transistor-Controller-MELIFE-Electronic/dp/B09XKCD8HS) to complete your hardware setup.
+Now, wire and power your pump [motor](/components/motor/) and relay module to complete your hardware setup:
 
-Reference this diagram of the motor speed controller:
-
-![Pinout diagram for the motor speed controller.](/tutorials/plant-watering-pi/motor-speed-controller-diagram.png)
-
-1. Attach [alligator wire clips](https://www.amazon.com/Goupchn-Alligator-Breadboard-Flexible-Electrical/dp/B08M5P6LHR/) to your battery to connect it to the DC power pins on your motor speed controller.
-   Match the **+** notation on the battery to the **+** DC power pin.
-2. Attach [alligator wire clips](https://www.amazon.com/Goupchn-Alligator-Breadboard-Flexible-Electrical/dp/B08M5P6LHR/) to the pump to connect the output pins on your motor speed controller to the pump.
-3. Connect the GND pin hole on the controller to GND on the Pi.
-4. Connect the PWM pin hole on the pump to [Pin 12 (GPIO 18)](https://pinout.xyz/pinout/pin12_gpio18) of the Pi.
-   Note that the controller does not come with header pins.
+1. Attach an [alligator wire clip](https://www.amazon.com/Goupchn-Alligator-Breadboard-Flexible-Electrical/dp/B08M5P6LHR/) to your 5V pump motor's positive wire, and connect it to the NO pin on relay module.
+   NO stands for normally open, which will keep the circuit open unless the pin is triggered.
+2. Attach another [alligator wire clip](https://www.amazon.com/Goupchn-Alligator-Breadboard-Flexible-Electrical/dp/B08M5P6LHR/) to your 5V pump motor's negative wire, and connect it to [pin 39 (ground)](https://pinout.xyz/pinout/ground) on the Raspberry Pi.
+3. Connect the COM (common) pin on the relay to [pin 1 (3.3V)](https://pinout.xyz/pinout/3v3_power) on the Pi.
+4. Connect the 5V pin on the relay to [pin 2 (5V)](https://pinout.xyz/pinout/5v_power) on the Pi.
+5. Connect the GND pin on the relay to [pin 14 (ground)](https://pinout.xyz/pinout/ground) on the Pi.
+6. Connect the IN pin on the relay to the [pin 8 (GPIO 14)](https://pinout.xyz/pinout/pin8_gpio14) on the Pi.
 
 {{% alert title="Tip" color="tip" %}}
 
-To complete steps 2 and 3, you must insert the end of the jumper wires into the DC and output pin gates on the motor speed controller and tighten the screws on these gates with your screwdriver to close the wires inside.
-
-For steps 3 and 4, note that the motor speed controller linked does not come with header pins.
-You can either bend or soldier the jumper wire here to make the connection between the jumper wire and the PWM hole of the controller.
+To complete the steps, insert the ends of the jumper wires into the pin gates on the relay module and tighten the screws on these gates with your screwdriver to close the wires inside.
 
 {{% /alert %}}
 
@@ -267,11 +262,11 @@ Test your sensor by putting it in air, water, and different soils to see how the
 
 ### Configure the components of your robot in the Viam app
 
-Follow [this guide](/get-started/installation/#install-viam-server) to install `viam-server` on your Pi, create a new robot, and connect to it on [the Viam app](https://app.viam.com).
+Follow [this guide](/get-started/installation/#install-viam-server) to install `viam-server` on your Pi, create a new machine, and connect to it on [the Viam app](https://app.viam.com).
 
-Then, navigate to your new robot's page in the app and click on the **Config** tab.
+Then, navigate to your new machine's page in the app and click on the **Config** tab.
 
-First, add your Pi as a [board component](/build/configure/components/board/) by creating a new component with **type** `board` and **model** `pi`:
+First, add your Pi as a [board component](/components/board/) by creating a new component with **type** `board` and **model** `pi`:
 
 {{< tabs name="Configure an Pi Board" >}}
 {{% tab name="Config Builder" %}}
@@ -279,7 +274,7 @@ First, add your Pi as a [board component](/build/configure/components/board/) by
 ![Creation of a pi board in the Viam app config builder.](/tutorials/plant-watering-pi/pi-board-config-builder.png)
 
 {{% /tab %}}
-{{% tab name="JSON Template" %}}
+{{% tab name="Raw JSON" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -299,9 +294,9 @@ First, add your Pi as a [board component](/build/configure/components/board/) by
 {{% /tab %}}
 {{< /tabs >}}
 
-Then, add your pump as a [motor component](/build/configure/components/motor/) by adding a new component with **type** `motor` and **model** `gpio`.
+Then, add your pump as a [motor component](/components/motor/) by adding a new component with **type** `motor` and **model** `gpio`.
 
-Set the motor's attributes **Max RPM** to `1000` and **PWM** to `12 GPIO 18` (the board and GPIO pin that you wired the pump's PWM to).
+Set the motor's attributes **Max RPM** to `1000` and **PWM** to `8 GPIO 14` (the board and GPIO pin that you wired the relay's IN to).
 
 {{< tabs name="Configure an Pump Motor" >}}
 {{% tab name="Config Builder" %}}
@@ -309,7 +304,7 @@ Set the motor's attributes **Max RPM** to `1000` and **PWM** to `12 GPIO 18` (th
 ![Creation of a pump motor in the Viam app config builder.](/tutorials/plant-watering-pi/pump-motor-config-builder.png)
 
 {{% /tab %}}
-{{% tab name="JSON Template" %}}
+{{% tab name="Raw JSON" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 // Board JSON ... },
@@ -323,7 +318,7 @@ Set the motor's attributes **Max RPM** to `1000` and **PWM** to `12 GPIO 18` (th
       "a": "",
       "b": "",
       "dir": "",
-      "pwm": "12"
+      "pwm": "8"
     },
     "board": "local",
     "max_rpm": 1000
@@ -337,19 +332,20 @@ Set the motor's attributes **Max RPM** to `1000` and **PWM** to `12 GPIO 18` (th
 
 Click **Save config**.
 
-Now, if you navigate to your robot's **Control** tab, you should be able to control the motor by setting the power and direction of rotation and clicking the **RUN** button:
+Now, if you navigate to your machine's **Control** tab, you should be able to control the motor by setting the power and direction of rotation and clicking the **RUN** button:
 
 ![Creation of a pump motor in the Viam app config builder.](/tutorials/plant-watering-pi/pump-motor-control.png)
 
 #### Configure the ADC as a module from the registry
 
-_Resources_ refer to the different [components](/build/configure/components/) and [services](/build/configure/services/) Viam provides for robots to use.
+_Resources_ refer to the different [components](/components/) and [services](/services/) Viam provides for robots to use.
 _Components_ refer to types of hardware, and each component's built-in `models` support the most common models of this hardware.
-For example, the [sensor component](/build/configure/components/sensor/) has an `ultrasonic` model built in for the ubiquitous [ultrasonic sensor](https://www.sparkfun.com/products/15569).
+For example, the [sensor component](/components/sensor/) has an `ultrasonic` model built in for the ubiquitous [ultrasonic sensor](https://www.sparkfun.com/products/15569).
 
-However, there are many different types of sensors used for sensing different things across the [Internet of Things](https://medium.com/@siddharth.parakh/the-complete-list-of-types-of-sensors-used-in-iot-63b4003ab6b3). Although the resistive soil moisture sensor is not currently one of Viam's built-in models, you can add an analog-to-digital-converter (ADC) as a module and use it to get readings from the moisture sensor.
+However, there are many different types of sensors used for sensing different things across the [Internet of Things](https://medium.com/@siddharth.parakh/the-complete-list-of-types-of-sensors-used-in-iot-63b4003ab6b3).
+Although the resistive soil moisture sensor is not currently one of Viam's built-in models, you can add an analog-to-digital-converter (ADC) as a module and use it to get readings from the moisture sensor.
 
-A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which add resource types ([components](/build/configure/components/) and [services](/build/configure/services/)) or models that are not built into Viam.
+A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which add resource types ([components](/components/) and [services](/services/)) or models that are not built into Viam.
 A module can be added to your robot from the Viam registry.
 
 The [Viam registry](https://app.viam.com/registry) allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other.
@@ -357,10 +353,13 @@ You can add a module from the Viam registry directly from your robot’s Configu
 
 Add the mcp300x-adc-sensor module to your robot in 3 steps:
 
-1. Go to your robot's **Config** tab. Select **Create component**.
-2. Search mcp300x. Click **Add module**.
-3. Give your module a name of your choice, and click **Create** to add this module to your robot.
-4. Find your module's card on the **Config** page. In **Attributes**, add the necessary attributes as `"channel_map"` and `"sensor_pin"`.
+1. Go to your machine's **Config** tab.
+   Select **Create component**.
+2. Search mcp300x.
+   Click **Add module**.
+3. Give your module a name of your choice, and click **Create** to add this module to your machine.
+4. Find your module's card on the **Config** page.
+   In **Attributes**, add the necessary attributes as `"channel_map"` and `"sensor_pin"`.
    For example, if you have a moisture sensor on channel 0, and your `sensor_pin` is 8, your configuration should look like this:
 
    ```json
@@ -387,7 +386,7 @@ Now that you have set up your robot and are able to control your motor, you can 
 
 Follow these instructions to start working on your Python control code:
 
-1. Navigate to your robot's page in [the Viam app](https://app.viam.com), and click on the **Code sample** tab.
+1. Navigate to your machine's page in [the Viam app](https://app.viam.com), and click on the **Code sample** tab.
 2. Select **Python** as the language.
 3. Click **Copy** to copy the generated code sample, which establishes a connection with your robot when run.
 
@@ -407,7 +406,7 @@ nano plant-watering-robot.py
 Now, you can add code into <file>plant-watering-robot.py</file> to write the logic that defines your plant watering system.
 
 To start, add your system logic code into the `main()` function of the program.
-Use the Viam [motor](/build/configure/components/motor/#api) and [sensor](/build/configure/components/sensor/#control-your-sensor-with-viams-client-sdk-libraries) API methods.
+Use the Viam [motor](/components/motor/#api) and [sensor](/components/sensor/#control-your-sensor-with-viams-client-sdk-libraries) API methods.
 
 You can get your components from the robot like this:
 
@@ -449,7 +448,7 @@ Make sure to import `time` at the beginning of your version of <file>plant-water
 Also, make sure to import `viam.components.sensor`.
 {{% /alert %}}
 
-See the motor component's [API documentation](/build/configure/components/motor/#gofor) for more information about `water_pump.go_for()`.
+See the motor component's [API documentation](/components/motor/#gofor) for more information about `water_pump.go_for()`.
 
 Save your <file>plant-watering-robot.py</file> program with this logic added in, and then run it on your Pi like this:
 

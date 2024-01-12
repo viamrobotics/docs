@@ -95,7 +95,7 @@ Now wire all of the components according to the wiring diagram:
 3. Connect your button to the Raspberry Pi.
    One of the connections goes to a 3.3V pin on the Raspberry Pi, and the other needs to be connected to a GPIO pin.
    We used Pin 1 for 3.3V (blue wire in wiring diagram).
-   Make sure to record which GPIO pin you connect to since you will be using this in your robot configuration.
+   Make sure to record which GPIO pin you connect to since you will be using this in your machine configuration.
    We used Pin 37 (white wire in wiring diagram).
 
 4. Now you can connect the button to your 12V battery, use a black alligator clip to connect the ground of the button switch to the ground of the battery.
@@ -116,12 +116,12 @@ Now wire all of the components according to the wiring diagram:
 
 Now that your robot is wired, you need to configure it on the Viam app before you can program it.
 
-In the Viam app, create a new robot and give it a name.
+In the Viam app, create a new machine and give it a name.
 We named ours ConfettiBot.
 
-![A robot page header in the Viam app, its under the location work, and named ConfettiBot.](/tutorials/confetti-bot/app-name-confettibot.png)
+![A machine page header in the Viam app, its under the location work, and named ConfettiBot.](/tutorials/confetti-bot/app-name-confettibot.png)
 
-Then navigate to the robot’s **Config** tab to start configuring your components.
+Then navigate to the machine’s **Config** tab to start configuring your components.
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
@@ -131,7 +131,7 @@ Then navigate to the robot’s **Config** tab to start configuring your componen
 Click on the **Components** subtab and click **Create component** in the lower-left corner of the page.
 
 Add your {{< glossary_tooltip term_id="board" text="board" >}} with type `board` and model `pi`.
-Enter `party` for the name of your [board component](/build/configure/components/board/), then click **Create**.
+Enter `party` for the name of your [board component](/components/board/), then click **Create**.
 
 You can name your board whatever you want as long as you refer to it the same way in your code; we picked `party` for fun.
 Your board configuration should now look like this:
@@ -142,7 +142,7 @@ Your board configuration should now look like this:
 
 Click on the **Components** subtab and click **Create component** in the lower-left corner of the page.
 Select `motor` for the type and `gpio` for the model.
-Enter `start` for the name of your [motor component](/build/configure/components/motor/), then click **Create**.
+Enter `start` for the name of your [motor component](/components/motor/), then click **Create**.
 Again, we named it “start” to refer to the button being pressed, but this name is up to you as long as you remember the name and use the same name in the code later.
 
 After clicking **Create**, there is a pin assignment type toggle.
@@ -260,13 +260,13 @@ The final design, fully wired and put together looks like this:
 
 The following section explains the code for the confetti bot.
 The completed code for this project is available on [GitHub](https://github.com/viam-labs/devrel-demos/tree/main/confetti_bot).
-If you copy the code from this link, don’t forget to change your robot address and secret so it connects to your own confetti robot.
+If you copy the code from this link, don’t forget to change your machine address and secret so it connects to your own confetti robot.
 
 Navigate to the **Code sample** tab on the Viam app, select **Python** as the language, and click the **Copy** button.
 
 {{% snippet "show-secret.md" %}}
 
-Paste this into a new Python file in your favorite code editor to connect to your robot.
+Paste this into a new Python file in your favorite code editor to connect to your machine.
 
 At the top of the code, your board and motor components are imported:
 

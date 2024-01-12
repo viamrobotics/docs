@@ -1,13 +1,13 @@
 ---
 title: Board
 id: board
-full_link: /build/configure/components/board/
-short_description: A board is the signal wire hub of a machine that provides access to GPIO pins, SPI or I2C.
+full_link: /components/board/
+short_description: A board is the signal wire hub of a machine that provides access to GPIO pins.
 aka:
 ---
 
-A board is the signal wire hub of a machine that provides access to GPIO pins, SPI or I2C.
+A board is the signal wire hub of a machine that provides access to GPIO pins.
 
 Examples of boards include Jetson, Raspberry Pi, Numato, or Arduino.
 
-For more information see [Board Component](/build/configure/components/board/).
+For more information see [Board Component](/components/board/).

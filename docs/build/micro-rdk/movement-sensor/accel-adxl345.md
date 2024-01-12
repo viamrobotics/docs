@@ -1,9 +1,9 @@
 ---
-title: "Configure an ADXL345 Accelerometer"
+title: "Configure an ADXL345 Accelerometer (Micro-RDK)"
 linkTitle: "accel-adxl345"
 weight: 20
 type: "docs"
-description: "Configure an ADXL345 digital accelerometer."
+description: "Configure an ADXL345 digital accelerometer with a microcontroller."
 images: ["/icons/components/imu.svg"]
 aliases:
   - /micro-rdk/movement-sensor/accel-adxl345/
@@ -18,12 +18,12 @@ If you are using a [Viam Rover](/get-started/try-viam/), this is the acceleromet
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `movement-sensor` type, then select the `accel-adxl345` model.
 Enter a name for your movement sensor and click **Create**.
 
-{{< imgproc src="/build/configure/components/movement-sensor/adxl345-builder.png" alt="Creation of an `accel-adxl345` movement sensor in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/components/movement-sensor/adxl345-builder.png" alt="Creation of an `accel-adxl345` movement sensor in the Viam app config builder." resize="600x" >}}
 
 Copy and paste the following attribute template into your movement sensor's **Attributes** box.
 Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
@@ -128,4 +128,4 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 After you configure your movement sensor, navigate to the [Control tab](/fleet/machines/#control) and select the dedicated movement sensor dropdown panel.
 This panel presents the data collected by the movement sensor.
 
-{{<imgproc src="/build/configure/components/movement-sensor/movement-sensor-control-tab-adxl345.png" resize="400x" declaredimensions=true alt="The movement sensor component in the control tab">}}
+{{<imgproc src="/components/movement-sensor/movement-sensor-control-tab-adxl345.png" resize="400x" declaredimensions=true alt="The movement sensor component in the control tab">}}

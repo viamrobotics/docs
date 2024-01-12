@@ -22,7 +22,7 @@ weight: 3
 # SMEs: Hazal
 ---
 
-In this tutorial you will learn how to configure a color detector with the vision service and leverage that detector with a [transform camera](/build/configure/components/camera/transform/) to detect the color red.
+In this tutorial you will learn how to configure a color detector with the vision service and leverage that detector with a [transform camera](/components/camera/transform/) to detect the color red.
 
 The [vision service](/ml/vision/) enables a robot to use its cameras to see and interpret the world around it.
 The service also allows you to create different types of detectors with which the robot can recognize objects, scan QR codes, perform optical quality inspections, sort different colored objects, take measurements, and more.
@@ -55,7 +55,7 @@ This tutorial uses the color `#7a4f5c` or `rgb(122, 79, 92)` (a reddish color).
 
 **Hex color #7a4f5c**: {{<imgproc src="/tutorials/try-viam-color-detection/7a4f5c.png" resize="150x" declaredimensions=true alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color.">}}
 
-Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots) and configure your [vision service color detector](/ml/vision/detection/):
+Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots) and configure your [vision service color detector](/ml/vision/detection/):
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
@@ -119,8 +119,8 @@ Note that the detector does not detect black, perfect greys (greys where the red
 
 ## Configure a transform camera to use the color detector
 
-Viam [camera](/build/configure/components/camera/) components can be physical like the one already configured on the rover, or virtual.
-A virtual [_transform camera_](/build/configure/components/camera/transform/) transforms the output from a physical camera.
+Viam [camera](/components/camera/) components can be physical like the one already configured on the rover, or virtual.
+A virtual [_transform camera_](/components/camera/transform/) transforms the output from a physical camera.
 
 To view output from the color detector overlaid on images from a physical camera, configure a transform camera:
 

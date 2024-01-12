@@ -10,7 +10,7 @@ aliases:
 # SMEs: Peter L, Gautham, Bijan
 ---
 
-Imagine a robotic [arm](/build/configure/components/arm/) is attached to the actuator (moving part) of a [gantry](/build/configure/components/gantry/).
+Imagine a robotic [arm](/components/arm/) is attached to the actuator (moving part) of a [gantry](/components/gantry/).
 
 Consider the point that the gantry itself is fixed to as the center of the `world`, making the gantry's origin the same as the `world` origin: `(0, 0, 0)`.
 
@@ -25,7 +25,7 @@ Now, as the gantry moves its actuator, the Frame System will translate both the 
 {{< tabs name="Example Frame Configuration of Component attached to Dynamic Component" >}}
 {{% tab name="Config Builder" %}}
 
-To complete the frame configuration for your robot following this example, navigate to the **Config** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to `myGantry`'s card, and click **Add Frame**:
+To complete the frame configuration for your machine following this example, navigate to the **Config** tab on your machine's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to `myGantry`'s card, and click **Add Frame**:
 
 ![gantry frame card example for this configuration](/mobility/frame-system/frame_card_dyn_gantry.png)
 
@@ -108,13 +108,13 @@ Select the `parent` frame as `myGantry` and fill in the coordinates for `transla
 | `Parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
 | `Translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: _mm_. |
 | `Orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: `Orientation Vector Degrees`, `Orientation Vector Radians`, and `Quaternion`. |
-| `Geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the robot. <br> Types: `Sphere`, `Box`, and `Capsule`. |
+| `Geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the machine. <br> Types: `Sphere`, `Box`, and `Capsule`. |
 
 {{% alert title="Tip" color="tip" %}}
 
 Note: `myGantry` uses the default translation and orientation from the `world` origin, and `myArm` uses the default orientation.
 
-You do not have to explicitly configure this on your robot, as it is the default.
+You do not have to explicitly configure this on your machine, as it is the default.
 It is included as part of this example for illustrative purposes.
 
 {{% /alert %}}

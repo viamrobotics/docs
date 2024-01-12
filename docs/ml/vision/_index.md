@@ -4,7 +4,7 @@ linkTitle: "Computer Vision"
 weight: 90
 type: "docs"
 description: "The vision service enables your machine to use its on-board cameras to intelligently see and interpret the world around it."
-icon: "/build/configure/services/icons/vision.svg"
+icon: "/services/icons/vision.svg"
 tags: ["vision", "computer vision", "CV", "services"]
 no_list: true
 modulescript: false
@@ -13,7 +13,7 @@ aliases:
 # SMEs: Bijan, Khari
 ---
 
-The vision service enables your machine to use its on-board [cameras](/build/configure/components/camera/) to intelligently see and interpret the world around it.
+The vision service enables your machine to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
 While the camera component lets you access what your machine's camera sees, the vision service allows you to interpret your image data.
 
 Currently, the vision service supports the following kinds of operations:
@@ -45,8 +45,8 @@ Different vision service models support different methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with a [camera](/build/configure/components/camera/) and a vision service [detector](/ml/vision/detection/), [classifier](/ml/vision/classification/) or [segmenter](/ml/vision/segmentation/), as applicable, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
-Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
+The following code examples assume that you have a machine configured with a [camera](/components/camera/) and a vision service [detector](/ml/vision/detection/), [classifier](/ml/vision/classification/) or [segmenter](/ml/vision/segmentation/), as applicable, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
+Go to your machine's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 
@@ -69,10 +69,10 @@ Get a list of detections from a given image using a configured [detector](./dete
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_detections).
 
 ```python {class="line-numbers linkable-line-numbers" data-line="11"}
-# Grab camera from the robot
+# Grab camera from the machine
 cam1 = Camera.from_robot(robot, "cam1")
 
-# Get the detector you configured on your robot
+# Get the detector you configured on your machine
 my_detector = VisionClient.from_robot(robot, "my_detector")
 
 # Get an image from the camera
@@ -99,14 +99,14 @@ detections = await my_detector.get_detections(img)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="22"}
-// Grab the camera from the robot
+// Grab the camera from the machine
 cameraName := "cam1"
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }
 
-// Grab the detector you configured on your robot
+// Grab the detector you configured on your machine
 visService, err := vision.from_robot(robot=robot, name='my_detector')
 if err != nil {
     logger.Fatalf("Cannot get vision service: %v", err)
@@ -153,7 +153,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers" data-line="8"}
 camera_name = "cam1"
 
-# Grab the detector you configured on your robot
+# Grab the detector you configured on your machine
 my_detector = VisionClient.from_robot(robot, "my_detector")
 
 # Get detections from the next image from the camera
@@ -177,14 +177,14 @@ detections = await my_detector.get_detections_from_camera(camera_name)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
-// Grab the camera from the robot
+// Grab the camera from the machine
 cameraName := "cam1"
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }
 
-// Grab the detector you configured on your robot
+// Grab the detector you configured on your machine
 visService, err := vision.from_robot(robot=robot, name='my_detector')
 if err != nil {
     logger.Fatalf("Cannot get vision service: %v", err)
@@ -224,10 +224,10 @@ Get a list of classifications from a given image using a configured [classifier]
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_classifications).
 
 ```python {class="line-numbers linkable-line-numbers" data-line="11"}
-# Grab camera from the robot
+# Grab camera from the machine
 cam1 = Camera.from_robot(robot, "cam1")
 
-# Get the classifier you configured on your robot
+# Get the classifier you configured on your machine
 my_classifier = VisionClient.from_robot(robot, "my_classifier")
 
 # Get an image from the camera
@@ -256,14 +256,14 @@ classifications = await my_classifier.get_classifications(img, 2)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="22"}
-// Grab the camera from the robot
+// Grab the camera from the machine
 cameraName := "cam1"
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }
 
-// Grab the classifier you configured on your robot
+// Grab the classifier you configured on your machine
 visService, err := vision.from_robot(robot=robot, name='my_classifier')
 if err != nil {
     logger.Fatalf("Cannot get vision service: %v", err)
@@ -312,7 +312,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers" data-line="8"}
 camera_name = "cam1"
 
-# Grab the classifier you configured on your robot
+# Grab the classifier you configured on your machine
 my_classifier = VisionClient.from_robot(robot, "my_classifier")
 
 # Get the 2 classifications with the highest confidence scores from the next
@@ -340,14 +340,14 @@ classifications = await my_classifier.get_classifications_from_camera(
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
-// Grab the camera from the robot
+// Grab the camera from the machine
 cameraName := "cam1"
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }
 
-// Grab the classifier you configured on your robot
+// Grab the classifier you configured on your machine
 visService, err := vision.from_robot(robot=robot, name='my_classifier')
 if err != nil {
     logger.Fatalf("Cannot get vision service: %v", err)
@@ -385,10 +385,10 @@ Get a list of 3D point cloud objects and associated metadata in the latest pictu
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_object_point_clouds).
 
 ```python {class="line-numbers linkable-line-numbers" data-line="8"}
-# Grab the 3D camera from the robot
+# Grab the 3D camera from the machine
 cam1 = Camera.from_robot(robot, "cam1")
 
-# Grab the object segmenter you configured on your robot
+# Grab the object segmenter you configured on your machine
 my_segmenter = VisionClient.from_robot(robot, "my_segmenter")
 
 # Get the objects from the camera output
@@ -412,14 +412,14 @@ objects = await my_segmenter.get_object_point_clouds(cam1)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
-// Grab the camera from the robot
+// Grab the camera from the machine
 cameraName := "cam1"
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }
 
-// Grab the segmenter you configured on your robot
+// Grab the segmenter you configured on your machine
 visService, err := vision.from_robot(robot=robot, name='my_segmenter')
 if err != nil {
     logger.Fatalf("Cannot get vision service: %v", err)

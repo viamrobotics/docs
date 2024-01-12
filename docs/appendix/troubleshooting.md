@@ -3,7 +3,7 @@ title: "Troubleshooting"
 linkTitle: "Troubleshooting"
 weight: 40
 type: "docs"
-description: "A guide to basic troubleshooting of a Viam-based robotic system, with easy fixes to common problems."
+description: "A guide to troubleshooting a Viam-based machine or system of machines with fixes to common problems."
 ---
 
 This document lists common errors encountered when working with `viam-server` and the [Viam app](https://app.viam.com), and provides simple steps to resolve them.
@@ -99,7 +99,7 @@ To support a `viam-server` installation, you must install `libfuse2`.
 
 **Additional Error:** `jack server is not running or cannot be started`
 
-**Description**: When configuring a Linux {{< glossary_tooltip term_id="board" text="board" >}}, Linux installations with broken or misconfigured sound libraries may experience one or both of these errors, even if not using audio components in the robot configuration.
+**Description**: When configuring a Linux {{< glossary_tooltip term_id="board" text="board" >}}, Linux installations with broken or misconfigured sound libraries may experience one or both of these errors, even if not using audio components in the machine configuration.
 
 **Solution:** Consult the documentation for your Linux OS and chosen sound library for guidance on installing any missing software dependencies.
 For example, if you are using `jackd` and `PulseAudio` on a Raspberry Pi, you can run the following to install any missing dependencies:
@@ -108,16 +108,16 @@ For example, if you are using `jackd` and `PulseAudio` on a Raspberry Pi, you ca
 sudo apt install jackd qjackctl libpulse-dev pulseaudio
 ```
 
-This error can be safely ignored if you do not intend to use audio on your robot.
+This error can be safely ignored if you do not intend to use audio on your machine.
 
 ## Common Viam App Errors
 
 ### Failed to connect; retrying
 
-**Description:** The [Viam app](https://app.viam.com) is unable to communicate with your robot, and will attempt to reconnect every few seconds until it is able to do so.
-When a robot is disconnected, it will continue to run with its locally-cached current configuration, but will not be accessible for remote control or configuration through the Viam app.
+**Description:** The [Viam app](https://app.viam.com) is unable to communicate with your machine, and will attempt to reconnect every few seconds until it is able to do so.
+When a machine is disconnected, it will continue to run with its locally-cached current configuration, but will not be accessible for remote control or configuration through the Viam app.
 
-**Solution:** Check the following to ensure your robot is accessible to the Viam app:
+**Solution:** Check the following to ensure your machine is accessible to the Viam app:
 
 - Is the {{< glossary_tooltip term_id="board" text="board" >}} component connected to the internet?
 - Is the `ssh` service configured and running locally on the board?
@@ -140,7 +140,7 @@ When a robot is disconnected, it will continue to run with its locally-cached cu
 
 **Description:** A [frame](/mobility/frame-system/) attribute may be malformed, and is preventing the parsing of the component's configuration.
 
-**Solution:** Check the **Config** tab for your robot in the [Viam app](https://app.viam.com) and look for a frame attribute, either in **Builder** mode, under the **Frame System** tab or in **Raw JSON** mode.
+**Solution:** Check the **Config** tab for your machine in the [Viam app](https://app.viam.com) and look for a frame attribute, either in **Builder** mode, under the **Frame System** tab or in **Raw JSON** mode.
 If you see a `frame` attribute that you didn't create yourself, delete the whole `frame` object from the JSON config.
 It will resemble the following:
 
@@ -162,7 +162,7 @@ It will resemble the following:
 
 **Additional Errors:** `cannot open webcam`, and `found no webcams`.
 
-**Description:** When working with a [camera](/build/configure/components/camera/) component on the Linux platform, your Linux OS must be able to access the camera properly, and the camera must be configured to use a pixel format that Viam supports.
+**Description:** When working with a [camera](/components/camera/) component on the Linux platform, your Linux OS must be able to access the camera properly, and the camera must be configured to use a pixel format that Viam supports.
 
 **Solution:** On your Linux system, verify each of the following:
 
@@ -209,8 +209,8 @@ It will resemble the following:
 
       Replace `/dev/video0` in the above command with the video path you determined for your video device above, if different.
 
-      The command will return a list of pixel formats your camera supports, such as `MJPG` or `YUYV`.
-      In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/build/configure/components/camera/webcam/#using-format).
+      The command will return a list of pixel formats your camera supports, such as `MJPG` (also notated as `MJPEG`) or `YUYV` (also notated as `YUY2`).
+      In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/components/camera/webcam/#using-format).
       If your camera does not support any of these formats, it cannot be used with Viam.
 
 If you are still having issues with your camera component on the Linux platform, and would like to [file an issue](https://github.com/viamrobotics/rdk), include your machine's camera debug file contained in the <file>/root/.viam/debug/components/camera</file> directory.
@@ -219,7 +219,7 @@ This file contains basic diagnostic and configuration information about your cam
 
 ### Error: failed to find the best driver that fits the constraints
 
-**Description:** When working with a [camera](/build/configure/components/camera/) component, depending on the camera, you may need to explicitly provide some camera-specific configuration parameters.
+**Description:** When working with a [camera](/components/camera/) component, depending on the camera, you may need to explicitly provide some camera-specific configuration parameters.
 
 **Solution:** Check the specifications for your camera, and manually provide configuration parameters such as width and height to the camera component configuration page on the [Viam app](https://app.viam.com).
 Under **Config > Components**, find your camera, then fill in your camera's specific configuration either using the **Show more** button to show the relevant configuration options, or the **Go to advanced** link in the component panel's upper-right to enter these attributes manually.

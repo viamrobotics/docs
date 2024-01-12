@@ -99,11 +99,15 @@ Click **Create dataset**, enter a name for your dataset and click **Create datas
 
 ![Create dataset UI](/data/create-dataset.png)
 
+Alternatively, you can use the [`viam data dataset add` command](/fleet/cli/#data) to add an image or group of images matching a specific filter to a dataset using the Viam CLI.
+
 ### Remove an image from a dataset
 
 To remove an image from a dataset click on the delete button next to the dataset name.
 
 {{<gif webm_src="/data/delete-from-dataset.webm" mp4_src="/data/delete-from-dataset.mp4" alt="Remove from dataset">}}
+
+Alternatively, you can use the [`viam data dataset remove` command](/fleet/cli/#data) to remove an image or group of images matching a specific filter using the Viam CLI.
 
 ### View the data in a dataset
 

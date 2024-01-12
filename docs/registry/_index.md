@@ -1,7 +1,7 @@
 ---
 title: "Extend Viam with Modules from the Viam Registry"
 linkTitle: "Registry"
-weight: 33
+weight: 420
 type: "docs"
 tags:
   [
@@ -13,6 +13,8 @@ tags:
     "services",
   ]
 description: "Support additional hardware components or services by adding them from the Viam Registry or by creating new modular resources."
+image: "/services/icons/modular-registry.svg"
+imageAlt: "Integrate other capabilities."
 no_list: true
 modulescript: true
 aliases:
@@ -58,9 +60,9 @@ You can integrate modules into any Viam-powered machine.
 
 ## Use modules
 
-To use a modular resource from the registry, add it from your robot's **Config** tab in the Viam app, using the **Create component** button.
+To use a modular resource from the registry, add it from your machine's **Config** tab in the Viam app, using the **Create component** button.
 
-After adding a module to your robot, you can choose to [configure](/registry/configure/) it for automatic version updates from the Viam registry, or update your module manually.
+After adding a module to your machine, you can choose to [configure](/registry/configure/) it for automatic version updates from the Viam registry, or update your module manually.
 By default, newly added modules will remain at the version they were when you installed them, and will not update automatically.
 
 Once you have added and configured the module you would like to use in the Viam app, you can test your added resource using the [**Control** tab](/fleet/#remote-control) and program it using [standardized APIs](/build/program/apis/).
@@ -86,7 +88,7 @@ You can write modules in a variety of programming languages, such as, Go, Python
 To create a new module:
 
 1. [Create a module](/registry/create/) with one or more modular resources by implementing all methods for the component's or service's standardized API.
-1. [Upload the module to the Viam registry](/registry/upload/) to make it available for deployment to robots or add it as a [local module](/registry/configure/#local-modules).
+1. [Upload the module to the Viam registry](/registry/upload/) to make it available for deployment to machines or add it as a [local module](/registry/configure/#local-modules).
    You can upload _private_ modules for your {{< glossary_tooltip term_id="organization" text="organization" >}} or _public_ modules.
 1. Once you have uploaded your module to the registry, [deploy and configure the module](/registry/configure/) from the Viam app.
    Then, you can test your added resource using the [**Control** tab](/fleet/#remote-control) and [program](/build/program/) it with Viam's Go or Python SDKs.

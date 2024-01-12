@@ -54,9 +54,9 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 
     {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS (Other) is selected." src="/get-started/installation/rpi-setup/select-other-custom-os.png" resize="800x" declaredimensions=true >}}
 
-    Select `Raspberry Pi OS Lite (64-bit)` from the menu.
+    Select `Raspberry Pi OS (Legacy, 64-bit) Full` from the menu.
 
-    {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS Lite (64-bit) is selected." src="/get-started/installation/rpi-setup/select-other-rpi.png" resize="800x" declaredimensions=true >}}
+    {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS (Legacy, 64-bit) Full is selected." src="/get-started/installation/rpi-setup/select-other-rpi.png" resize="800x" declaredimensions=true >}}
 
     You should be brought back to the initial launch screen.
 
@@ -142,7 +142,7 @@ In the past, malware infected thousands of Raspberry Pi devices that were using 
 
    Remove the microSD card from your computer when it is complete:
 
-   {{< imgproc alt="You will be notified with a dialogue box informing you that Raspberry Pi OS Lite has been written successfully." src="/get-started/installation/rpi-setup/imager-done.png" resize="800x" declaredimensions=true >}}
+   {{< imgproc alt="You will be notified with a dialogue box informing you that Raspberry Pi OS (Legacy, 64-bit) Full has been written successfully." src="/get-started/installation/rpi-setup/imager-done.png" resize="800x" declaredimensions=true >}}
 
 6. Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an outlet.
    A red LED will turn on to indicate that the Pi is connected to power.
@@ -235,7 +235,7 @@ Follow the instructions to [enable communication protocols](#enable-communicatio
 
 ### Add additional WiFi credentials
 
-If you move your robot to a different WiFi network, you will have to update the WiFi credentials.
+If you move your machine to a different WiFi network, you will have to update the WiFi credentials.
 
 You can update the WiFi configuration by creating a new `wpa_supplicant.conf` file on the "boot" partition.
 

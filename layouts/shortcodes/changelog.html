@@ -1,0 +1,17 @@
+{{ $color := .Get "color" }}
+{{ $title := .Get "title" }}
+<div class="filterable changelog-{{ $color }}">
+<div class="changelog changelog-outer">
+  <div>
+    <span class="colorbox">{{ $color }}</span>
+  </div>
+  <div>
+    <h3 id="{{ anchorize $title }}">{{ $title }}</h3>
+  </div>
+</div>
+{{ if eq $.Page.File.Ext "md" }}
+  {{ $.Inner | markdownify }}
+{{ else }}
+  {{ $.Inner | htmlUnescape | safeHTML }}
+{{ end }}
+</div>

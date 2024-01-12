@@ -37,11 +37,11 @@ async def connect() -> ViamClient:
     dial_options = DialOptions(
       credentials=Credentials(
         type="api-key",
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
         payload='<API-KEY>',
       ),
-      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-      # id
+      # Replace "<API-KEY-ID>" (including brackets) with your machine's
+      # API key ID
       auth_entity='<API-KEY-ID>'
     )
     return await ViamClient.create_from_dial_options(dial_options)

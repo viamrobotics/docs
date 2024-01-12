@@ -1,9 +1,9 @@
 ---
-title: "Configure a gpio motor"
+title: "Configure a GPIO Motor (Micro-RDK)"
 linkTitle: "gpio"
 weight: 10
 type: "docs"
-description: "Configure brushed or brushless DC motors."
+description: "Configure brushed or brushless DC motors with a microcontroller."
 images: ["/icons/components/motor.svg"]
 aliases:
   - /micro-rdk/motor/gpio/
@@ -13,20 +13,20 @@ aliases:
 The `gpio` model supports [DC motors](https://en.wikipedia.org/wiki/DC_motor) (both brushed and brushless).
 
 You can configure [encoders](/build/micro-rdk/encoder/) to work with `gpio` motors.
-Find more information in the [encoded motor documentation](/build/configure/components/motor/gpio/encoded-motor/).
+Find more information in the [encoded motor documentation](/components/motor/gpio/encoded-motor/).
 
-To configure a DC motor as a component of your robot, first configure the [board](/build/micro-rdk/board/) to which the motor driver is wired.
+To configure a DC motor as a component of your machine, first configure the [board](/build/micro-rdk/board/) to which the motor driver is wired.
 Then add your motor:
 
 {{< tabs name="gpio-config">}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `motor` type, then select the `gpio` model.
 Enter a name for your motor and click **Create**.
 
-![G P I O motor config in the builder UI with the In1 and In2 pins configured and the PWM pin field left blank.](/build/configure/components/motor/gpio-config-ui.png)
+![G P I O motor config in the builder UI with the In1 and In2 pins configured and the PWM pin field left blank.](/components/motor/gpio-config-ui.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -114,7 +114,7 @@ The following attributes are available for `gpio` motors:
 | `max_power_pct` | number | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
 | `pwm_freq` | int | Optional | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range. <br> Default: `800` |
 | `dir_flip` | bool | Optional | Flips the direction of "forward" versus "backward" rotation. Default: `false` |
-| `encoder` | string | Optional | The name of an encoder attached to this motor. See [encoded motor](/build/configure/components/motor/gpio/encoded-motor/). |
+| `encoder` | string | Optional | The name of an encoder attached to this motor. See [encoded motor](/components/motor/gpio/encoded-motor/). |
 
 Refer to your motor and motor driver data sheets for specifics.
 

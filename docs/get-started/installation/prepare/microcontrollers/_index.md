@@ -20,16 +20,16 @@ aliases:
 
 ## Install the Micro-RDK
 
-The Micro-RDK Installer is a CLI that allows you to flash a build of Micro-RDK, along with your robot's credentials and your wifi information, directly to your ESP32.
+The Micro-RDK Installer is a CLI that allows you to flash a build of Micro-RDK, along with your machine's credentials and your wifi information, directly to your ESP32.
 
 With this installation, you can use your ESP32 with all supported resource APIs, but you cannot write your own code directly interacting with the chip.
 If you want to program the chip directly, follow the setup instructions in [the Micro-RDK Development Setup](/get-started/installation/prepare/microcontrollers/development-setup/) instead.
 
 ### Flash your ESP32 with the Micro-RDK Installer
 
-Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/fleet/machines/#add-a-new-robot) in your desired location.
+Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/fleet/machines/#add-a-new-machine) in your desired location.
 
-1. Click on the name of the robot to go to the robot's page.
+1. Click on the name of the machine to go to its page.
 2. Click on the **Setup** tab.
 3. Select your computer's architecture as **Architecture** and select **Micro-RDK** as **RDK type**.
 4. Follow the instructions to flash the micro-RDK directly to an ESP32 connected to your computer through a data cable.
@@ -37,12 +37,12 @@ Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/fleet/ma
    To see the micro-RDK server logs through the serial connection, add `--monitor` to the command in step 3.
    If the program cannot auto-detect the serial port to which your ESP32 is connected, you may be prompted to select the correct one among a list.
 
-Go back to your new robot's page on [the Viam app](https://app.viam.com).
-If successful, your robot will show that it's **Live**.
+Go back to your new machine's page on [the Viam app](https://app.viam.com).
+If successful, your machine will show that it's **Live**.
 
 For more `micro-rdk-installer` CLI usage options, see [GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/micro-rdk-installer).
 
-### Configure your robot
+### Configure your machine
 
 The micro-RDK provides different component models than the fully featured RDK.
 See [Micro-RDK](/build/micro-rdk/) to get a list of supported models and instructions on how to configure them.
@@ -54,7 +54,7 @@ See [Micro-RDK](/build/micro-rdk/) to get a list of supported models and instruc
 
 <h4>Configure your board </h4>
 
-Configure your `esp32` board for your robot.
+Configure your `esp32` board for your machine.
 
 {{% /manualcard %}}
 {{% card link="/build/configure/" %}}

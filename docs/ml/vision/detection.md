@@ -34,7 +34,7 @@ The returned detections consist of the bounding box around the identified object
 You can use the following types of detectors:
 
 - [**Color detection (`color_detector`)**](#configure-a-color_detector): A heuristic detector that draws boxes around objects according to their hue (does not detect black, gray, and white).
-- [**Object detection (`mlmodel`)**](#configure-an-mlmodel-detector): A detector that draws bounding boxes according to an [ML model](/ml/) available on the robot’s hard drive.
+- [**Object detection (`mlmodel`)**](#configure-an-mlmodel-detector): A detector that draws bounding boxes according to an [ML model](/ml/) available on the machine’s hard drive.
 
 ## Configure a `color_detector`
 
@@ -53,7 +53,7 @@ If the color is not reliably detected, increase the `hue_tolerance_pct`.
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
 Click the **Services** subtab and click **Create service** in the lower-left corner.
 Select the `ML Model` type, then select the `Color Detector` model.
 Enter a name for your service and click **Create**.
@@ -166,13 +166,13 @@ To make use of ML models with your machine, use the built-in [ML model service](
 
 <br>
 
-A machine learning detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
+A machine learning detector that draws bounding boxes according to the specified tensorflow-lite model file available on the machine’s hard drive.
 To create a `mlmodel` classifier, you need an [ML model service with a suitable model](/ml/).
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
 Click the **Services** subtab and click **Create service** in the lower-left corner.
 Select the `Vision` type, then select the `ML Model` model.
 Enter a name for your service and click **Create**.
@@ -181,7 +181,7 @@ In your vision service's panel, fill in the **Attributes** field.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "mlmodel_name": "<detector_name>"
+  "mlmodel_name": "<mlmodel-service-name>"
 }
 ```
 
@@ -197,7 +197,7 @@ Add the vision service object to the services array in your raw JSON configurati
     "type": "vision",
     "model": "mlmodel",
     "attributes": {
-      "mlmodel_name": "<detector_name>"
+      "mlmodel_name": "<mlmodel-service-name>"
     }
   }
 ]
@@ -213,7 +213,7 @@ Add the vision service object to the services array in your raw JSON configurati
     "type": "vision",
     "model": "mlmodel",
     "attributes": {
-      "mlmodel_name": "person_detector"
+      "mlmodel_name": "my_mlmodel_service"
     }
   }
 ]
@@ -231,9 +231,9 @@ You can test your detector with [live camera footage](#live-camera-footage) or [
 
 ### Live camera footage
 
-If you intend to use the detector with a camera that is part of your robot, you can test your detector from the [**Control tab**](/fleet/machines/#control) or with code:
+If you intend to use the detector with a camera that is part of your machine, you can test your detector from the [**Control tab**](/fleet/machines/#control) or with code:
 
-1. Configure a [camera component](/build/configure/components/camera/).
+1. Configure a [camera component](/components/camera/).
    {{< alert title="Tip" color="tip" >}}
    This is the camera whose name you need to pass to vision service methods.
    {{< /alert >}}
@@ -247,7 +247,7 @@ If you intend to use the detector with a camera that is part of your robot, you 
          "type": "detections",
          "attributes": {
            "confidence_threshold": 0.5,
-           "detector_name": "my_detector"
+           "detector_name": "<vision-service-name>"
          }
        }
      ],
@@ -262,7 +262,7 @@ If you intend to use the detector with a camera that is part of your robot, you 
    ![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/ml/vision/chair-detector.png)
 
 5. To access detections with code, use the Vision Service methods on the camera you configured in step 1.
-   The following code gets the robot’s vision service and then runs a color detector vision model on output from the robot's camera `"cam1"`:
+   The following code gets the machine’s vision service and then runs a color detector vision model on output from the machine's camera `"cam1"`:
 
    {{% alert title="Tip" color="tip" %}}
 
@@ -280,7 +280,7 @@ from viam.services.vision import VisionClient
 robot = await connect()
 camera_name = "cam1"
 
-# Grab camera from the robot
+# Grab camera from the machine
 cam1 = Camera.from_robot(robot, camera_name)
 # Grab Viam's vision service for the detector
 my_detector = VisionClient.from_robot(robot, "my_detector")
@@ -307,8 +307,8 @@ import (
   "go.viam.com/rdk/components/camera"
 )
 
-// Grab the camera from the robot
-cameraName := "cam1" // make sure to use the same component name that you have in your robot configuration
+// Grab the camera from the machine
+cameraName := "cam1" // make sure to use the same component name that you have in your machine configuration
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)

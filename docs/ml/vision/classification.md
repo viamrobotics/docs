@@ -25,7 +25,7 @@ The returned classifications consist of the image's class label and confidence s
 
 The types of classifiers supported are:
 
-- **Object classification (`mlmodel`)**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
+- **Object classification (`mlmodel`)**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the machine’s hard drive.
 
 ## Configure an `mlmodel` classifier
 
@@ -56,7 +56,7 @@ Once you have deployed your ML model, configure your `mlmodel` classifier:
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
 Click the **Services** subtab and click **Create service** in the lower-left corner.
 Select the `Vision` type, then select the `ML Model` model.
 Enter a name for your service and click **Create**.
@@ -135,10 +135,10 @@ If the classifier's results exceed the confidence threshold, the **Run model** s
 
 ### Live camera footage
 
-If you intend to use the classifier with a camera that is part of your robot, you can test your classifier from the [**Control tab**](/fleet/machines/#control) or with code:
+If you intend to use the classifier with a camera that is part of your machine, you can test your classifier from the [**Control tab**](/fleet/machines/#control) or with code:
 
-1. Configure a [camera component](/build/configure/components/camera/).
-2. (Optional) If you would like to see classifications from the **Control tab**, configure a [transform camera](/build/configure/components/camera/transform/) with the following attributes :
+1. Configure a [camera component](/components/camera/).
+2. (Optional) If you would like to see classifications from the **Control tab**, configure a [transform camera](/components/camera/transform/) with the following attributes :
 
    ```json
    {
@@ -159,9 +159,9 @@ If you intend to use the classifier with a camera that is part of your robot, yo
 4. Navigate to the **Control** tab, click on your transform camera and toggle it on.
    The transform camera will now show classifications on the image.
 
-   ![Model recognizes a star on camera feed](/build/configure/services/model-on-camera.png)
+   ![Model recognizes a star on camera feed](/services/model-on-camera.png)
 
-5. The following code gets the robot’s vision service and then runs a classifier vision model on an image from the robot's camera `"cam1"`.
+5. The following code gets the machine’s vision service and then runs a classifier vision model on an image from the machine's camera `"cam1"`.
 
    {{% alert title="Tip" color="tip" %}}
 
@@ -178,7 +178,7 @@ from viam.services.vision import VisionClient
 
 robot = await connect()
 camera_name = "cam1"
-# Grab camera from the robot
+# Grab camera from the machine
 cam1 = Camera.from_robot(robot, camera_name)
 # Grab Viam's vision service for the classifier
 my_classifier = VisionClient.from_robot(robot, "my_classifier")
@@ -208,8 +208,8 @@ import (
   "go.viam.com/rdk/components/camera"
 )
 
-// Grab the camera from the robot
-cameraName := "cam1" // make sure to use the same component name that you have in your robot configuration
+// Grab the camera from the machine
+cameraName := "cam1" // make sure to use the same component name that you have in your machine configuration
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)

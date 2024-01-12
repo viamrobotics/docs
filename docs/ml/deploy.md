@@ -9,7 +9,7 @@ aliases:
   - /services/ml/
 description: "Deploy Machine Learning models to a machine and use the vision service to detect or classify images or to create point clouds of identified objects."
 modulescript: true
-icon: "/build/configure/services/icons/ml.svg"
+icon: "/services/icons/ml.svg"
 # SME: Aaron Casas
 ---
 
@@ -18,7 +18,7 @@ Once you have [trained](/ml/train-model/) or [uploaded](/ml/upload-model/) your 
 You can use the following built-in model:
 
 {{< alert title="Note" color="note" >}}
-For some models, like the [Triton MLModel](/registry/examples/triton/) for Jetson boards, you can configure the service to use the available CPU or GPU.
+For some models, like the [Triton MLModel](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use the available CPU or GPU.
 {{< /alert >}}
 
 <!-- prettier-ignore -->
@@ -30,9 +30,12 @@ For some models, like the [Triton MLModel](/registry/examples/triton/) for Jetso
 
 {{< cards >}}
 {{< relatedcard link="/ml/vision/">}}
-{{< relatedcard link="/build/configure/components/board/">}}
-{{< relatedcard link="/build/configure/components/camera/">}}
+{{< relatedcard link="/components/board/">}}
+{{< relatedcard link="/components/camera/">}}
 {{< /cards >}}
+
+After deploying your model, you need to configure an additional service to use the deployed model.
+For example, you can configure an [`mlmodel` vision service](/ml/vision/) and a [`transform` camera](/components/camera/transform/) to visualize the predictions your model makes.
 
 ### Modular Resources
 
@@ -50,7 +53,7 @@ Follow [these instructions](/registry/advanced/mlmodel-design/) to design your m
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
 Click the **Services** subtab and click **Create service** in the lower-left corner.
 Select the `ML Model` type, then select the `TFLite CPU` model.
 Enter a name for your service and click **Create**.
@@ -60,20 +63,20 @@ You can choose to configure your service with an existing model on the machine o
 {{< tabs >}}
 {{% tab name="Existing Model" %}}
 
-To configure your service with an existing model on the robot, select **Path to Existing Model On Robot** for the **Deployment** field.
+To configure your service with an existing model on the machine, select **Path to Existing Model On Robot** for the **Deployment** field.
 
 Then specify the absolute **Model Path** and any **Optional Settings** such as the absolute **Label Path** and the **Number of threads**.
 
-![Create a machine learning models service with an existing model](/build/configure/services/available-models.png)
+![Create a machine learning models service with an existing model](/services/available-models.png)
 
 {{% /tab %}}
 {{% tab name="Deploy Model" %}}
 
-To configure your service and deploy a model onto your robot, select **Deploy Model On Robot** for the **Deployment** field.
+To configure your service and deploy a model onto your machine, select **Deploy Model On Robot** for the **Deployment** field.
 
 Then select the **Models** and any **Optional Settings** such as the **Number of threads**.
 
-![Create a machine learning models service with a model to be deployed](/build/configure/services/deploy-model.png)
+![Create a machine learning models service with a model to be deployed](/services/deploy-model.png)
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -133,8 +136,8 @@ Save the configuration.
 
 ### Versioning for deployed models
 
-If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the robot.
-If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON robot configuration](/build/configure/#the-config-tab).
+If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the machine.
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON machine configuration](/build/configure/#the-config-tab).
 
 You can get the version number from a specific model version by clicking on **COPY** on the model on the models tab of the **DATA** page.
 The model package config looks like this:
@@ -150,9 +153,9 @@ The model package config looks like this:
 
 ### `tflite_cpu` Limitations
 
-We strongly recommend that you package your `.tflite_cpu` model with metadata in [the standard form](https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs).
+We strongly recommend that you package your `tflite_cpu` model with metadata in [the standard form](https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs).
 
-In the absence of metadata, your `.tflite_cpu` model must satisfy the following requirements:
+In the absence of metadata, your `tflite_cpu` model must satisfy the following requirements:
 
 - A single input tensor representing the image of type UInt8 (expecting values from 0 to 255) or Float 32 (values from -1 to 1).
 - At least 3 output tensors (the rest won’t be read) containing the bounding boxes, class labels, and confidence scores (in that order).
@@ -170,8 +173,8 @@ The MLModel service supports the following methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with an `MLModel` service, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
-Go to your robot's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
+The following code examples assume that you have a machine configured with an `MLModel` service, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
+Go to your machine's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 
