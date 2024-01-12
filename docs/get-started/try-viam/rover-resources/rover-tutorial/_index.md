@@ -12,7 +12,7 @@ no_list: true
 ---
 
 {{% alert title="Tip" color="tip" %}}
-Another version of the Viam Rover was sold until January 2023.
+Another version of the Viam Rover was sold until January 2024.
 If you have purchased a Viam Rover 1, follow [these instructions](/get-started/try-viam/rover-resources/rover-tutorial-1/) instead.
 {{% /alert %}}
 
