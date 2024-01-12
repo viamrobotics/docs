@@ -290,7 +290,7 @@ However, if you already have your own CI with access to arm runners or only inte
    If you have not yet created any GitHub actions, click the **Set up a workflow yourself** link.
    See the [GitHub actions documentation](https://docs.github.com/en/actions/creating-actions) for more information.
 
-1. Paste the following action template YAML into the edit window, depending on whether you are using the `build-action` or `upload-module` action:
+1. Paste one of the following action templates into the edit window, depending on whether you are using the `build-action` or `upload-module` action:
 
    {{< tabs >}}
    {{% tab name="CI with build-action" %}}
