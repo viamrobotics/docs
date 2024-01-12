@@ -375,7 +375,7 @@ jobs:
 Edit the copied code to include the configuration specific to your module.
 Each item marked with a `<--` comment requires that you edit the configuration values accordingly.
 
-Set `run` to the command you use to build and package your module.
+Set `run` to the command you use to build and package your module, such as invoking a makefile or running a shell script.
 When you are ready to test the action, uncomment `if: github.event_name == 'release'` to enable the action to trigger a run when you [issue a release](https://docs.github.com/en/repositories/releasing-projects-on-github).
 
 For guidance on configuring the other parameters, see the documentation for each:
