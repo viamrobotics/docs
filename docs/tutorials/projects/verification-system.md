@@ -68,7 +68,7 @@ Position your camera somewhere where it can easily see the people it will be con
 
 {{<imgproc src="/tutorials/verification-system/camera.jpeg" resize="500x" declaredimensions=true alt="Camera hanging up in office.">}}
 
-Next, configure the person detector, or, the "coarser" layer of the security system that verifies that there's a person moving.
+Next, configure the person detector, or, the coarser layer of the security system that verifies that there's a person moving.
 
 ## Configure an `mlmodel` person detector
 
@@ -95,7 +95,7 @@ To add the [data management service](/data/) and configure data capture:
 6. Toggle the **Data capture configuration** on.
    Now, your camera is taking pictures.
    Walk in front of it a number of times, perhaps with a friend or two, letting the camera capture many images of you.
-   For optimal performance, try capturing a variety of angles and use different lighting.
+   For best results, try capturing a variety of angles and use different lighting.
 7. Select the [**DATA** page](https://app.viam.com/data/view) from the top of the screen.
    Here you can view the images captured so far from the camera on your machine.
    You should see new images appearing steadily as cloud sync uploads them from your machine.
@@ -154,9 +154,23 @@ Now you are ready to configure the more fine-grained layer: the facial recogniti
 ## Configure a facial detector
 
 We now have a machine capable of detecting people in its camera feed, but we also want to be able to identify _specific_ people in order to decide to either trigger an alarm if the specific person is not an approved person, or to disarm entirely if the detected person is allowed.
-To do this, you will configure a second detector: a facial recognition detector.
-To create a detector that can recognize individual faces, use Viam Lab's `facial-detector` module, available from the [Viam registry](https://app.viam.com/module/viam-labs/facial-detector).
-This is a [modular](/registry/) vision service that uses the DeepFace library to perform facial detections.
+First, select a profile picture of at least one face that you want your detector to be able to identify.
+A good profile picture clearly shows the face of the person in good lighting, with all facial features visible.
+Continue this process for each additional person you want your detector to be able to identify.
+Remember that a person who walks in front of your machine's camera who is _not_  able to be identified will trigger the `ALARM` state!
+
+Once you have one or more pictures selected, copy them to your machine's filesystem in your preferred fashion.
+For example, you could use the `scp` command to transfer an image to your machine like so:
+
+```sh { class="command-line"}
+scp /path/to/my-photo.jpg username@my-machine.local:/home/me/my-photo.jpg
+```
+
+After you have copied at least one image of a person to your machine, you are ready to configure the second detection layer: the facial recognition detector.
+For this tutorial, you will use Viam Labs's `facial-detector` module, available from the [Viam registry](https://app.viam.com/module/viam-labs/facial-detector).
+The `facial-detector` module provides a [modular](/registry/) vision service that uses Facebook's DeepFace library to perform facial detections.
+
+To add the `facial-detector` module to your machine:
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, select `vision`, then select the `detector:facial-detector` model.
