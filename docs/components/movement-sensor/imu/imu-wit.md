@@ -15,9 +15,9 @@ Acceleration and magnetometer data are available by using the [sensor](/componen
 
 The `imu-wit` movement sensor model supports the following IMUs manufactured by [WitMotion](https://www.wit-motion.com/):
 
-- [BWT61CL](https://www.wit-motion.com/6-axis/witmotion-bluetooth-2-0.html)
-- [BWT901CL](https://www.wit-motion.com/9-axis/witmotion-bluetooth-2-0-mult.html)
-- [HWT901B TTL](https://www.wit-motion.com/10-axis/witmotion-hwt901b-ttl-10.html)
+- BWT61CL
+- BWT901CL
+- HWT901B TTL
 
 {{% alert title="Info" color="info" %}}
 
