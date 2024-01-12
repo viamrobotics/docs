@@ -31,8 +31,6 @@ The credentials look like this:
 }
 ```
 
-{{% snippet "show-secret.md" %}}
-
 When you turn on your machine, `viam-server` starts up and, by default, it uses the credentials in its local <file>/etc/viam.json</file> to fetch its full config from the [Viam app](https://app.viam.com).
 Once the machine has a configuration, it caches it locally and can use the configuration for up to 60 days.
 The machine checks for new configurations every 15 seconds and changes its configuration automatically when a new configuration is available.
@@ -64,7 +62,7 @@ You can use the mode selector to switch between **Builder** and **Raw JSON**:
 
 Regardless of the mode you choose, Viam stores the configuration file in [JSON (JavaScript Object Notation)](https://en.wikipedia.org/wiki/JSON).
 
-{{< alert title="Simultaneous config edits" color="caution" >}}
+{{< alert title="Caution: Simultaneous config edits" color="caution" >}}
 If you edit a config while someone else edits the same config, the person who saves last will overwrite any prior changes that aren't reflected in the new config.
 
 Before editing a config, we recommend you refresh the page to ensure you have all the latest changes.
@@ -152,6 +150,8 @@ The **Config** tab has subtabs for each section of your machine's config:
 
 Simple machines often use only a few components (and perhaps services).
 Depending on your machine, you may not need to configure any modules, remotes, processes, fragments or frames.
+
+See [Build a simple smart machine](/use-cases/configure/) for a quick overview.
 
 {{% /alert %}}
 
