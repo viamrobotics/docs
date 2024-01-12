@@ -280,7 +280,7 @@ For more information, see the [`viam module` command](/fleet/cli/#module)
 ### Update an existing module using a GitHub action
 
 To update an existing module in the [Viam registry](https://app.viam.com/registry) using continuous integration (CI), you can use one of two Github actions.
-For most use cases, we recommend the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup.
+For most use cases, we recommend the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86, ARM Linux, and MacOS.
 However, if you already have your own CI with access to arm runners or only inted to build on `x86` or `mac`, you may also use the [`upload-module` GitHub action](https://github.com/viamrobotics/upload-module) instead which allows you to define the exact build steps.
 
 1. Edit your custom module with the changes you'd like to make.
@@ -300,7 +300,7 @@ However, if you already have your own CI with access to arm runners or only inte
 on:
   push:
     tags:
-      - "[0-9]+.[0-9]+.[0-9]+"
+      - "[0-9]+.[0-9]+.[0-9]+" # the build-action will trigger on tags with the format 1.0.0
 
 jobs:
   publish:
@@ -312,6 +312,7 @@ jobs:
           # note: you can replace this line with 'version: ""' if
           # you want to test the build process without deploying
           version: ${{ github.ref_name }}
+          ref: ${{ github.sha }}
           key-id: ${{ secrets.viam_key_id }}
           key-value: ${{ secrets.viam_key_value }}
 ```
@@ -416,7 +417,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 
    For more information on GitHub secrets, see the GitHub documentation for [creating secrets for a repository](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository).
 
-1. Push a commit to your module or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
+1. Push a tag to your repo or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
    The specific step to take to release your software depends on your CI workflow, your GitHub configuration, and the `run` step you defined earlier.
    Once complete, your module will upload to the [Viam registry](https://app.viam.com/registry) with the appropriate version automatically.
 
