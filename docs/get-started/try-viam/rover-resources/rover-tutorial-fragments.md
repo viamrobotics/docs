@@ -30,7 +30,7 @@ Navigate to your machine in [the Viam app](https://app.viam.com/robots).
 On the **Config** tab, click on the **Fragments** subtab.
 
 On the **Fragments** tab, you can see the available fragments to add.
-Find `ViamRover2-2024-rpi4-a` and click `Add` to add the fragment to your machine configuration:
+Find `ViamRover2-2024-rpi4-a` and click **Add** to add the fragment to your machine configuration:
 
 {{<imgproc src="get-started/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" alt="List of available fragments">}}
 
@@ -47,7 +47,7 @@ The fragment adds the following components to your machine's JSON configuration:
 - An [accelerometer](/components/movement-sensor/mpu6050/)
 - A [power sensor](/components/power-sensor/ina219/)
 
-For information about how you would configure a component yourself if you weren't using the fragment, click the links on each component above.
+For information about how to configure components yourself when you are not using the fragment, click the links on each component above.
 To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=7c413f24-691d-4ae6-a759-df3654cfe4c8).
 
 {{% /tab %}}
@@ -111,7 +111,7 @@ The fragment adds the following components to your machine's JSON configuration:
 - An [accelerometer](/components/movement-sensor/mpu6050/)
 - A [power sensor](/components/power-sensor/ina219/)
 
-For information about how you would configure a component yourself if you weren't using the fragment, click the links on each component above.
+For information about how to configure components yourself when you are not using the fragment, click the links on each component above.
 To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=747e1f43-309b-4311-b1d9-1dfca45bd097).
 
 {{% /tab %}}
