@@ -267,7 +267,7 @@ myGantry.Home(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### Lengths
+### GetLengths
 
 Get the lengths of the axes of the gantry (mm).
 

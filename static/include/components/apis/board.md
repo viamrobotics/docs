@@ -1,13 +1,14 @@
 <!-- prettier-ignore -->
 Method Name | Description
 ----------- | -----------
-[`AnalogReaderByName`](/components/board/#analogreaderbyname) | Get an [`AnalogReader`](/components/board/#analogs) by `name`.
-[`DigitalInterruptByName`](/components/board/#digitalinterruptbyname) | Get a [`DigitalInterrupt`](/components/board/#digital_interrupts) by `name`.
-[`GPIOPinByName`](/components/board/#gpiopinbyname) | Get a `GPIOPin` by its {{< glossary_tooltip term_id="pin-number" text="pin number" >}}.
+[`ReadAnalogReader`](/components/board/#readanalogreader) | Get an [`AnalogReader`](/components/board/#analogs) by `name`.
+[`GetDigitalInterruptValue`](/components/board/#getdigitalinterruptvalue) | Get a [`DigitalInterrupt`](/components/board/#digital_interrupts) by `name`.
+[`GetGPIO`](/components/board/#getgpio) | Get a `GPIOPin` by its {{< glossary_tooltip term_id="pin-number" text="pin number" >}}.
+[`SetGPIO`](/components/board/#setgpio) | Set a `GPIOPin` by its {{< glossary_tooltip term_id="pin-number" text="pin number" >}}.
 [`AnalogReaderNames`](/components/board/#analogreadernames) | Get the `name` of every [`AnalogReader`](/components/board/#analogs).
 [`DigitalInterruptNames`](/components/board/#digitalinterruptnames) | Get the `name` of every [`DigitalInterrupt`](/components/board/#digital_interrupts).
 [`Status`](/components/board/#status) | Get the current status of this board.
-[`SetPowerMode`](/components/board/#setpowermode) | Set the board to the indicated power mode.
+[`SetPWM`](/components/board/#setpwm) | Set the board to the indicated power mode.
 [`WriteAnalog`](/components/board/#writeanalog) | Write an analog value to a pin on the board.
 [`GetGeometries`](/components/board/#getgeometries) | Get all the geometries associated with the board in its current configuration, in the [frame](/mobility/frame-system/) of the board.
 [`DoCommand`](/components/board/#docommand) | Send or receive model-specific commands.
