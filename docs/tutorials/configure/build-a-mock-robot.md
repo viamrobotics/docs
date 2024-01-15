@@ -304,7 +304,7 @@ func main() {
 Now when you run this code, you should see the new mock arm positions listed in the command line.
 
 Verify that your mock robotic arm is working in the **Control** tab of the [Viam app](https://app.viam.com).
-Watch the robotic arm's [`JointPositions()`](/components/arm/#jointpositions) changing in real-time along with the code on your development machine.
+Watch the robotic arm's [`JointPositions()`](/components/arm/#getjointpositions) changing in real-time along with the code on your development machine.
 
 <div class="td-max-width-on-larger-screens">
   {{<gif webm_src="/tutorials/build-a-mock-robot/joint-changes.webm" mp4_src="/tutorials/build-a-mock-robot/joint-changes.mp4" alt="A terminal window with 'python3 index.py' being run, then a list of four values is printed each second to the terminal. On the left side is the mock arm from the Control tab of the Viam app. As the joint positions are updated in the terminal from the left, you can see that the joint positions are updated in realtime on the Viam app.">}}

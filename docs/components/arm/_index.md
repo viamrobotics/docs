@@ -326,7 +326,7 @@ err := myArm.MoveToJointPositions(context.Background(), jointPos, nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### JointPositions
+### GetJointPositions
 
 Get the current position of each joint on the arm.
 

@@ -129,7 +129,7 @@ Additionally, the nested `GPIOPin`, `AnalogReader`, and `DigitalInterrupt` inter
 
 {{< readfile "/static/include/components/apis/digitalinterrupt.md" >}}
 
-### AnalogReaderByName
+### ReadAnalogReader
 
 Get an [`AnalogReader`](#analogs) by `name`.
 
@@ -177,7 +177,7 @@ reader, err := myBoard.AnalogReaderByName("my_example_analog_reader")
 {{% /tab %}}
 {{< /tabs >}}
 
-### DigitalInterruptByName
+### GetDigitalInterruptValue
 
 Get an [`DigitalInterrupt`](#digital_interrupts) by `name`.
 
@@ -420,7 +420,7 @@ err := myBoard.Status(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### SetPowerMode
+### SetPWM
 
 Set the board to the indicated `PowerMode`.
 
@@ -696,7 +696,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ## `GPIOPin` API
 
-### Set
+### SetGPIO
 
 Set the digital signal output of this pin to low (0V) or high (active, >0V).
 
@@ -755,7 +755,7 @@ err := pin.Set(context.Background(), "true", nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### Get
+### GetGPIO
 
 Get if the digital signal output of this pin is high (active, >0V).
 
