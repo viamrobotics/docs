@@ -13,6 +13,10 @@ aliases:
 Use an [encoder](/components/encoder/) with a motor to create a closed feedback loop for better control of your machine.
 Instead of sending speed or position commands without a way to verify the motor's behavior, the encoder lets the computer know how the motor is actually rotating in the real world, so adjustments can be made to achieve the desired motor movement.
 
+For example, a [Viam Rover](https://docs.viam.com/get-started/try-viam/rover-resources/) with encoded motors following both an [angular](/components/base/#spin) and [linear](/components/base/#movestraight) velocity command:
+
+{{<video webm_src="/components/encoded-motor/base_moving.webm" mp4_src="/components/encoded-motor/base-moving.mp4" alt="A Viam rover turning in a half circle" poster="components/motor/encoded-motor-preview.jpg">}}
+
 Some motors come with encoders integrated with or attached to them.
 You can also add an encoder to a motor.
 See the [encoder component documentation](/components/encoder/) for more information on encoders.
