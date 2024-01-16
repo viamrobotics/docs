@@ -24,7 +24,7 @@ You must purchase the following hardware separately:
 - Four 18650 batteries (with charger) or a RC type battery with dimensions no greater than 142mm x 47mm x 60mm (LxWxH) (with charger)
 - A MicroSD card and an adapter/reader
 - A longer 40 pin ribbon cable: female-female
-- 25 mm female-female standoff
+- 4 25 mm female-female standoffs
 - WiFi board: either [a board that directly interfaces with the Nano](https://www.amazon.com/Wireless-AC8265-Wireless-Developer-Support-Bluetooth/dp/B07V9B5C6M/) or [a USB based device](https://www.amazon.com/wireless-USB-WiFi-Adapter-PC/dp/B07P5PRK7J/)
 - Electrical tape
 
@@ -87,7 +87,7 @@ You must purchase the following hardware separately:
 - A 4S RC type battery with dimensions no greater than 142mm x 47mm x 60mm (LxWxH) (with charger)
 - A MicroSD card and an adapter/reader
 - A longer ribbon cable: female-female (ensure that the contacts are correct)
-- 25 mm female-female standoff
+- 4 25 mm female-female standoffs
 - WiFi board: either [a board that directly interfaces with the Nano](https://www.amazon.com/Wireless-AC8265-Wireless-Developer-Support-Bluetooth/dp/B07V9B5C6M/) or [a USB based device](https://www.amazon.com/wireless-USB-WiFi-Adapter-PC/dp/B07P5PRK7J/)
 - A wired DC jack connector with the same polarity as the Jetson Orin Nano power input
 - Electrical tape
