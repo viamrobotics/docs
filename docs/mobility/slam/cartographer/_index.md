@@ -103,7 +103,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
    7. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
    8. Click on the **Services** subtab and click **Create service** in the lower-left corner.
-   9.  Select **SLAM**, then select `cartographer`.
+   9. Select **SLAM**, then select `cartographer`.
       You can also search for "cartographer".
    10. Click **Add module**, give your service a name of your choice, then click **Create**.
    11. In the resulting `SLAM` service configuration pane, first choose `Create new map` as the **Mapping mode**, then configure the rest of the **Attributes** for that mapping mode:
