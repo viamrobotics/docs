@@ -96,7 +96,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
    Enable data capture for your camera and/or movement sensor:
 
    5. Find the component's card on your machine's **Config** tab.
-   6. Click `Add Method` and then select the method type and the capture frequency. For an RPlidar, choose the method [`NextPointCloud`](http://localhost:1313/components/camera/#getpointcloud).
+   6. Click `Add Method` and then select the method type and the capture frequency. For an RPlidar, choose the method [`NextPointCloud`](/components/camera/#getpointcloud).
       We recommend a capture frequency of `5` Hz for RPlidar cameras and `20` Hz for movement sensors.
 
    Set up the `cartographer` module on your machine:
