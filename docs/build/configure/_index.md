@@ -273,6 +273,7 @@ There is no webhooks tab in the Viam app config builder; use **Raw JSON** mode t
 
 1. Paste the following JSON template into your raw JSON config.
    `"webhooks"` is a top-level section like `"components"`, `"services"`, or any of the other config sections.
+
    {{< tabs >}}
    {{% tab name="JSON Template" %}}
 
