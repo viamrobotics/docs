@@ -78,29 +78,40 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) for more information.
 To create a new map, follow the instructions below.
 Creating a new map uses an instance of the cartographer module running in the cloud.
 
-1. Configure your `cartographer` SLAM service
+1. Enable data capture and configure your `cartographer` SLAM service
 
-   After installing your physical RPlidar and adding the `rplidar` module as outlined in the [requirements](#requirements) section, follow the steps below to add the `cartographer` module to your machine:
+   After installing your physical RPlidar and adding the `rplidar` module as outlined in the [requirements](#requirements) section, follow the steps below to enable data capture and add the `cartographer` module to your machine:
 
    {{< tabs name="Create new map">}}
    {{% tab name="Config Builder" %}}
-   Follow the instructions below to set up the `cartographer` module on your machine:
 
-   1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-   1. Click on the **Services** subtab and click **Create service** in the lower-left corner.
-   1. Select **SLAM**, then select `cartographer`.
+   Add the data management service:
+  
+   1. From your machine's **Config** tab, navigate to the **Services** subtab.
+   2. Click **Create service** in the lower-left corner of the page.
+   Choose `Data Management` as the type and specify a name for your data management service, for example `Data-Management-Service`.
+   3. Click **Create**.
+   4. On the panel that appears, you can manage the capturing and syncing functions and specify the **directory**, the sync **interval** and any **tags** to apply to captured data. See the [data management service](/data/) for more information.
+  
+   Enable data capture for your camera and/or movement sensor:
+
+   5. Find the component's card on your machine's **Config** tab.
+   6. Click `Add Method` and then select the method type and the capture frequency. For an RPlidar, choose the method [`NextPointCloud`](http://localhost:1313/components/camera/#getpointcloud).
+   We recommend a capture frequency of `5` Hz for RPlidar cameras and `20` Hz for movement sensors.
+
+   Set up the `cartographer` module on your machine:
+
+   7. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
+   8. Click on the **Services** subtab and click **Create service** in the lower-left corner.
+   9.  Select **SLAM**, then select `cartographer`.
       You can also search for "cartographer".
-   1. Click **Add module**, give your service a name of your choice, then click **Create**.
-   1. In the resulting `SLAM` service configuration pane, first choose `Create new map` as the **Mapping mode**, then configure the rest of the **Attributes** for that mapping mode:
+   10. Click **Add module**, give your service a name of your choice, then click **Create**.
+   11. In the resulting `SLAM` service configuration pane, first choose `Create new map` as the **Mapping mode**, then configure the rest of the **Attributes** for that mapping mode:
 
       - **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your machine](https://github.com/viamrobotics/rplidar).
         Example: "my-rplidar"
-        - Then set a **Data capture rate (Hz)** for it.
-          Example: "5"
       - **Movement Sensor (Optional)**: Select the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API.
         Example: "my-imu"
-        - Then set a **Data capture rate (Hz)** for it.
-          Example: "20"
       - **Minimum range (meters)**: Set the minimum range of your `rplidar`.
         See [config params](#config_params) for suggested values for RPLidar A1 and A3.
       - **Maximum range (meters)**: Set the maximum range of your `rplidar`.
@@ -120,7 +131,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
    - adds the `viam:rplidar` and the `viam:cartographer` modules
    - configures the `viam:slam:cartographer` service and the [data management service](/data/)
-   - adds an `viam:lidar:rplidar` camera with data management configured
+   - adds an `viam:lidar:rplidar` camera with data capture configured
 
    <br>
 
@@ -396,7 +407,7 @@ In this mode, the `cartographer` module on your machine executes the Cartographe
     {{< tabs name="Localize only">}}
     {{% tab name="Config Builder" %}}
 
-The configuration is similar to the configuration for [updating an existing map](#update-an-existing-map), except instead of configuring a `Data capture rate (Hz)` on the camera and movement sensor, set a `Data polling rate (Hz)` on both.
+The configuration is similar to the configuration for [updating an existing map](#update-an-existing-map), except instead of adding a data management service and configuring data capture on the camera and movement sensor, set a `Data polling rate (Hz)` on both.
 The `cartographer` module on your machine polls the live LiDAR and IMU directly at these rates, whereas the capture rate is only used when data is being sent to the cloud.
 
     {{% /tab %}}
@@ -406,7 +417,7 @@ This example JSON configuration:
 
 - adds the `viam:rplidar` and the `viam:cartographer` modules
 - configures the `viam:slam:cartographer` service
-- adds an `viam:lidar:rplidar` camera
+- adds an `viam:lidar:rplidar` camera with a `Data polling rate (Hz)` of `5`
 - specifies the `slam_map` for localization in the `packages`
 
 <br>
@@ -483,7 +494,7 @@ To avoid incurring charges while not in use, [turn off data capture for your sen
 
     For more information about the configuration attributes, see [Attributes](#attributes).
 
-2.  Start a mapping session
+1.  Start a mapping session
 
     Navigate to the **Control** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
 
