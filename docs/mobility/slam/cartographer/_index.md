@@ -80,7 +80,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
 1. Enable data capture and configure your `cartographer` SLAM service
 
-   After installing your physical RPlidar and adding the `rplidar` module as outlined in the [requirements](#requirements) section, follow the steps below to enable data capture and add the `cartographer` module to your machine:
+   Follow the steps below to enable data capture and add the `cartographer` module to your machine:
 
    {{< tabs name="Create new map">}}
    {{% tab name="Config Builder" %}}
@@ -93,10 +93,10 @@ Creating a new map uses an instance of the cartographer module running in the cl
    3. Click **Create**.
    4. On the panel that appears, you can manage the capturing and syncing functions and specify the **directory**, the sync **interval** and any **tags** to apply to captured data. See the [data management service](/data/) for more information.
 
-   Enable data capture for your camera and/or movement sensor:
+   Enable data capture for your camera, and for your movement sensor if you would like to use a movement sensor to provide IMU input:
 
    5. Find the component's card on your machine's **Config** tab.
-   6. Click `Add Method` and then select the method type and the capture frequency. For an RPlidar, choose the method [`NextPointCloud`](/components/camera/#getpointcloud).
+   6. Click `Add Method` and then select the method type and the capture frequency. For the camera, choose the [`NextPointCloud`](/components/camera/#getpointcloud) method. For a movement sensor, choose the [`AngularVelocity`](/components/movement-sensor/#getangularvelocity) and [`LinearAcceleration`](/components/movement-sensor/#getlinearacceleration) methods.
       We recommend a capture frequency of `5` Hz for RPlidar cameras and `20` Hz for movement sensors.
 
    Set up the `cartographer` module on your machine:
@@ -408,7 +408,7 @@ In this mode, the `cartographer` module on your machine executes the Cartographe
     {{% tab name="Config Builder" %}}
 
 The configuration is similar to the configuration for [updating an existing map](#update-an-existing-map), except instead of adding a data management service and configuring data capture on the camera and movement sensor, set a `Data polling rate (Hz)` on both.
-The `cartographer` module on your machine polls the live LiDAR and IMU directly at these rates, whereas the capture rate is only used when data is being sent to the cloud.
+The `cartographer` module on your machine polls the live LiDAR and IMU directly at these rates, whereas data capture is only used when data is being sent to the cloud.
 
     {{% /tab %}}
     {{% tab name="JSON Example" %}}
