@@ -98,7 +98,13 @@ Creating a new map uses an instance of the cartographer module running in the cl
    5. Find the component's card on your machine's **Config** tab.
    6. Click `Add Method` and then select the method type and the capture frequency. For the camera, choose the [`NextPointCloud`](/components/camera/#getpointcloud) method. For a movement sensor, choose the [`AngularVelocity`](/components/movement-sensor/#getangularvelocity) and [`LinearAcceleration`](/components/movement-sensor/#getlinearacceleration) methods.
       We recommend a capture frequency of `5` Hz for RPlidar cameras and `20` Hz for movement sensors.
-
+   
+   {{< alert title="Tip" color="tip" >}}
+   Be aware that data is not only captured when a slam session is running.
+   [Data Capture](/data/capture/) continuously monitors and captures your machine's sensor data while the machine is running.
+   To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/).
+   {{< /alert >}}
+   
    Set up the `cartographer` module on your machine:
 
    7. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
@@ -212,15 +218,9 @@ Creating a new map uses an instance of the cartographer module running in the cl
    {{% /tab %}}
    {{< /tabs >}}
 
-   {{< alert title="Tip" color="tip" >}}
-   Be aware that data is not only captured when a slam session is running.
-   [Data Capture](/data/capture/) continuously monitors and captures your machine's sensor data while the machine is running.
-   To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/).
-   {{< /alert >}}
-
    For more information about the configuration attributes, see [Attributes](#attributes).
 
-2. Start a mapping session
+1. Start a mapping session
 
    Navigate to the **Control** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.
@@ -278,7 +278,7 @@ Updating an existing map uses an instance of the `cartographer` module running i
 
    - adds the `viam:rplidar` and the `viam:cartographer` modules
    - configures the `viam:slam:cartographer` service and the [data management service](/data/)
-   - adds an `viam:lidar:rplidar` camera with data management configured
+   - adds an `viam:lidar:rplidar` camera with data capture configured
    - specifies the `slam_map` to be updated in the `packages`
 
    <br>
