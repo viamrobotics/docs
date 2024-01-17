@@ -369,12 +369,6 @@ Updating an existing map uses an instance of the `cartographer` module running i
    {{% /tab %}}
    {{< /tabs >}}
 
-   {{< alert title="Tip" color="tip" >}}
-   Be aware that data is not only captured when a slam session is running.
-   [Data Capture](/data/capture/) continuously monitors and captures your machine's sensor data while the machine is running.
-   To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/).
-   {{< /alert >}}
-
    For more information about the configuration attributes, see [Attributes](#attributes).
 
 2. Start a mapping session
@@ -483,14 +477,6 @@ This example JSON configuration:
 
     {{% /tab %}}
     {{< /tabs >}}
-
-    {{< alert title="Tip" color="tip" >}}
-
-Be aware that data is not only captured when a slam session is running.
-[Data Capture](/data/capture/) continuously monitors and captures your machine's sensor data while the machine is running.
-To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/).
-
-    {{< /alert >}}
 
     For more information about the configuration attributes, see [Attributes](#attributes).
 
