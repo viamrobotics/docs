@@ -11,7 +11,7 @@ authors: ["Sierra G."]
 languages: []
 viamresources: ["mlmodel", "vision", "camera"]
 level: "Intermediate"
-date: "17 January 2024"
+date: "2024-01-17"
 cost: "0"
 no_list: true
 # SMEs: Bijan Haney
