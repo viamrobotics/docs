@@ -104,7 +104,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
    [Data Capture](/data/capture/) continuously monitors and captures your machine's sensor data while the machine is running.
    To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/).
    {{< /alert >}}
-   
+
    Set up the `cartographer` module on your machine:
 
    7. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
