@@ -160,6 +160,55 @@ pcd_map, err := slam_svc.GetPointCloudMap(context.Background())
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetProperties
+
+Get information regarding the current SLAM session.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- Tuple[[bool](https://docs.python.org/3/library/functions.html#bool), [MappingMode.ValueType](https://python.viam.dev/autoapi/viam/proto/service/slam/index.html#viam.proto.service.slam.MappingMode)]: A tuple containing a boolean which indicates whether the session is being run in the cloud, as well as the current session's mode.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_properties).
+
+```python {class="line-numbers linkable-line-numbers"}
+slam_svc = SLAMClient.from_robot(robot=robot, name="my_slam_service")
+
+# Get the properties of your current SLAM session.
+slam_properties = await slam_svc.get_properties()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [Properties](https://pkg.go.dev/go.viam.com/services/slam#Properties): Information regarding the current SLAM session.
+  This includes whether the SLAM process is running in the cloud, as well as its mapping mode.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties).
+
+```go {class="line-numbers linkable-line-numbers"}
+slam_svc, err := slam.FromRobot(robot, "my_slam_service")
+
+// Get the properties of your current SLAM session
+properties, err := slam_svc.Properties(context.Background())
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetInternalState
 
 Get the internal state of the SLAM algorithm required to continue mapping/localization.
