@@ -72,7 +72,7 @@ The following steps guide you through this process in more detail:
 ## Next steps
 
 {{< cards >}}
-{{% manualcard link="/registry/create/#code-a-new-resource-model"%}}
+{{% manualcard link="/registry/create/#define-a-new-resource-model"%}}
 
 <h4>Implement your API</h4>
 
