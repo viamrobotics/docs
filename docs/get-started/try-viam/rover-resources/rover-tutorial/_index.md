@@ -362,7 +362,8 @@ Enable the I<sup>2</sup>C protocol on your Pi to get readings from the power sen
    sudo raspi-config
    ```
 
-2. Use your keyboard to select "Interface Options", and press return. Select **I2C** enabled.
+2. Use your keyboard to select "Interface Options", and press return.
+   Select **I2C** enabled.
 
 3. Then, to apply the changes, restart your Raspberry Pi if it hasn't already prompted you to do so.
 
