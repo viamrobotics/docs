@@ -7,7 +7,6 @@ image: "/tutorials/filtered-camera-module/viam-figure-preview.png"
 images: ["/tutorials/filtered-camera-module/viam-figure-preview.png"]
 imageAlt: "The wooden Viam figure being detected by a transform camera"
 tags: ["camera", "vision", "detector", "mlmodel", "data"]
-no_list: true
 viamresources: ["camera", "vision", "mlmodel", "data_manager"]
 languages: []
 level: "Intermediate"
