@@ -436,7 +436,7 @@ waypoints, err := myNav.Waypoints(context.Background(), nil)
 
 ### GetProperties
 
-Get information regarding the current navigation service.
+Get information about the navigation service.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -447,7 +447,7 @@ Get information regarding the current navigation service.
 
 **Returns:**
 
-- [`MapType.ValueType`](https://python.viam.dev/autoapi/viam/proto/service/navigation/index.html#viam.proto.service.navigation.GetPropertiesResponse): Information regarding the current navigation service.
+- [`MapType.ValueType`](https://python.viam.dev/autoapi/viam/proto/service/navigation/index.html#viam.proto.service.navigation.GetPropertiesResponse): Information about the type of map the current navigation services is using (GPS).
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
@@ -466,7 +466,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Properties](https://pkg.go.dev/go.viam.com/services/navigation#Properties): Information regarding the current navigation service.
+- [Properties](https://pkg.go.dev/go.viam.com/services/navigation#Properties): Information about the current navigation service.
   This includes the map type being ingested and used by the navigation service.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 

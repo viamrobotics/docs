@@ -162,7 +162,7 @@ pcd_map, err := slam_svc.GetPointCloudMap(context.Background())
 
 ### GetProperties
 
-Get information regarding the current SLAM session.
+Get information about the current SLAM session.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -193,7 +193,7 @@ slam_properties = await slam_svc.get_properties()
 
 **Returns:**
 
-- [Properties](https://pkg.go.dev/go.viam.com/services/slam#Properties): Information regarding the current SLAM session.
+- [Properties](https://pkg.go.dev/go.viam.com/services/slam#Properties): Information about the current SLAM session.
   This includes whether the SLAM process is running in the cloud, as well as its mapping mode.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 

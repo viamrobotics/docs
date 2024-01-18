@@ -5,7 +5,7 @@ Method Name | Description
 [`SetMode`](/mobility/navigation/#setmode) | Set the mode the service is operating in.
 [`Location`](/mobility/navigation/#location) | Get the current location of the robot.
 [`Waypoints`](/mobility/navigation/#waypoints) | Get the waypoints currently in the service's data storage.
-[`GetProperties`](/mobility/navigation/#getproperties) | Get information regarding the current service.
+[`GetProperties`](/mobility/navigation/#getproperties) | Get information regarding the service.
 [`AddWaypoint`](/mobility/navigation/#addwaypoint) | Add a waypoint to the service's data storage.
 [`RemoveWaypoint`](/mobility/navigation/#removewaypoint) | Remove a waypoint from the service's data storage.
 [`Paths`](/mobility/navigation/#paths) | Get each path, the series of geo points the robot plans to travel through to get to a destination waypoint, in the robot's motion planning.
