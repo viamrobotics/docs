@@ -447,7 +447,7 @@ Get information about the navigation service.
 
 **Returns:**
 
-- [`MapType.ValueType`](https://python.viam.dev/autoapi/viam/proto/service/navigation/index.html#viam.proto.service.navigation.GetPropertiesResponse): Information about the type of map the service is using (GPS).
+- [`MapType.ValueType`](https://python.viam.dev/autoapi/viam/proto/service/navigation/index.html#viam.proto.service.navigation.GetPropertiesResponse): Information about the type of map the service is using.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
