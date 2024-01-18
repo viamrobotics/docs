@@ -21,7 +21,7 @@ Check out [this tutorial](/tutorials/projects/filtered-camera/) for more informa
 
 {{% /changelog %}}
 
-{{% changelog color="added" title="Raspberry Pi 5 added" %}}
+{{% changelog color="added" title="Raspberry Pi 5" %}}
 
 You can now run `viam-server` on a [Raspberry Pi 5](/components/board/pi5/) with the new board model [`pi5`](/components/board/pi5/).
 
