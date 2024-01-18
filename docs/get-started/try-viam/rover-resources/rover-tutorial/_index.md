@@ -351,6 +351,24 @@ Screw the top plate back on with the biggest Allen key and use the power switch 
 Wait a second for the low voltage cutoff relay to trip and provide power to the rover motherboard.
 If the Pi has power, the lights on the Raspberry Pi will light up.
 
+### Enable I<sup>2</sup>C on your Pi
+
+Enable the I<sup>2</sup>C protocol on your Pi to get readings from the power sensor when controlling your rover.
+
+1. SSH into your Pi.
+   Launch the configuration tool by running the following command:
+
+   ```sh {class="command-line" data-prompt="$"}
+   sudo raspi-config
+   ```
+
+2. Use your keyboard to select "Interface Options", and press return. Select **I2C** enabled.
+
+3. Then, to apply the changes, restart your Raspberry Pi if it hasn't already prompted you to do so.
+
+   ```sh {class="command-line" data-prompt="$"}
+   sudo reboot
+   ```
 ### Control your rover on the Viam app
 
 If you followed the instructions in the [Pi installation guide](/get-started/installation/prepare/rpi-setup/), you should have already made an account on the [Viam app](https://app.viam.com), installed `viam-server` on the board, and added a new machine.
