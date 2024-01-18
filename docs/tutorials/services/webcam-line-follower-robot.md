@@ -100,7 +100,7 @@ Click on the **Components** subtab.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your board, your motors, your base, and your camera:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your board, your motors, your base, and your camera:
 
 {{< alert title="Note" color="note" >}}
 Your `"video_path"` value may be different.
@@ -266,7 +266,7 @@ Replace the attributes JSON object with the following object which specifies the
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration which adds the configuration for the vision service and the transform camera:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration which adds the configuration for the vision service and the transform camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

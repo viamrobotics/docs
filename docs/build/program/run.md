@@ -74,7 +74,7 @@ When connecting to a machine using the connection code from the [code sample tab
 
 ## Run code automatically
 
-If you want to run your code automatically when your machine boots, you can configure Viam to run your code as a [process](/build/configure/#processes).
+If you want to run your code automatically when your machine boots, you can configure Viam to run your code as a [process](/build/configure/#add-a-process).
 
 To be able to run your code from your board, you need to install the relevant SDK as well as other required dependencies:
 

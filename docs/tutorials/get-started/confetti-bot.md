@@ -159,7 +159,7 @@ Click **Save Config** at the bottom of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [**Raw JSON** tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your board and your motor:
+On the [**Raw JSON** tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your board and your motor:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

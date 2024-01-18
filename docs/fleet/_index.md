@@ -86,7 +86,7 @@ You can also revert to an earlier configuration from the History tab.
 
 ### Package deployment
 
-You and your collaborators can deploy control logic, {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, sidecar [processes](/build/configure/#processes), or [machine learning models](/ml/) to your fleet of machines without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
+You and your collaborators can deploy control logic, {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, sidecar [processes](/build/configure/#add-a-process), or [machine learning models](/ml/) to your fleet of machines without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
 
 ### Remote control
 
@@ -114,7 +114,7 @@ If you are collaborating on a machine and controlling it using the [**Control** 
 
 ### Deployment
 
-You and your collaborators can deploy [control logic](/build/program/apis/), [modular resources](/registry/), sidecar [processes](/build/configure/#processes), or [machine learning models](/ml/) to your fleet of machines without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
+You and your collaborators can deploy [control logic](/build/program/apis/), [modular resources](/registry/), sidecar [processes](/build/configure/#add-a-process), or [machine learning models](/ml/) to your fleet of machines without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
 
 ## The Viam mobile app
 

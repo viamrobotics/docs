@@ -51,7 +51,7 @@ The machine checks for new configurations every 15 seconds and changes its confi
 
 After connecting your machine, go to the **Config** tab, and start adding {{< glossary_tooltip term_id="component" text="components" >}}, {{< glossary_tooltip term_id="service" text="services" >}}, and other {{< glossary_tooltip term_id="resource" text="resources" >}}.
 
-For more information, see the [configuration documentation](/build/configure/#the-config-tab).
+For more information, see the [configuration documentation](/build/configure/#the-configure-tab).
 
 {{< alert title="Tip" color="tip" >}}
 If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your machine](/build/configure/).

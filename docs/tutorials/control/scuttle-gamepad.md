@@ -67,7 +67,7 @@ Configure a [gamepad](/components/input-controller/gamepad/):
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-If instead of using the config builder, you prefer to write raw JSON, switch to [**Raw JSON** mode](/build/configure/#the-config-tab) on the **Config** tab.
+If instead of using the config builder, you prefer to write raw JSON, switch to [**Raw JSON** mode](/build/configure/#the-configure-tab) on the **Config** tab.
 Inside the `components` array of your config, add the following configuration for your [gamepad](/components/input-controller/gamepad/):
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -117,7 +117,7 @@ Copy and paste the following into the empty **Attributes** field, replacing `<yo
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-If instead of using the config builder, you prefer to write raw JSON, switch to [**Raw JSON** mode](/build/configure/#the-config-tab) on the **Config** tab.
+If instead of using the config builder, you prefer to write raw JSON, switch to [**Raw JSON** mode](/build/configure/#the-configure-tab) on the **Config** tab.
 Add the following configuration for your base remote control service, replacing `<your-base-name>` with your base's name:
 
 ```json {class="line-numbers linkable-line-numbers"}

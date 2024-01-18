@@ -137,7 +137,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your {{< glossary_tooltip term_id="board" text="board" >}}, your [webcam](/components/camera/webcam/), and your [stepper motor](/components/motor/gpiostepper/):
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your {{< glossary_tooltip term_id="board" text="board" >}}, your [webcam](/components/camera/webcam/), and your [stepper motor](/components/motor/gpiostepper/):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -451,7 +451,7 @@ python3 main.py
 
 One more thing.
 Right now, you need to run the code manually every time you want your robot to work.
-However, you can configure Viam to automatically run your code as a [process](/build/configure/#processes).
+However, you can configure Viam to automatically run your code as a [process](/build/configure/#add-a-process).
 
 Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Processes** subtab and navigate to the **Create process** menu.

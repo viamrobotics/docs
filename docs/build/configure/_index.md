@@ -162,9 +162,11 @@ You must configure each component with a type, a model, a name, attributes, and 
 
 If you are configuring several similar components, you can use the **Duplicate component** button in the upper-right of a component's configuration pane to create a new identical component beneath your existing one.
 Be sure to edit the duplicated component to change any parameters that are unique to the new component, such as its name and pins.
+
 <!-- TODO: R2D2 need to update this section: is there parity for this? -->
 
 To delete a component, click the trash can icon in the upper-right of the component configuration pane.
+
 <!-- TODO: R2D2 need to update this section -->
 
 For specific information on how to configure each supported component type, see the [components documentation](/components/).
@@ -177,6 +179,7 @@ Meanwhile the **Code sample** tab will also update to include code for some basi
 {{<gif webm_src="/manage/control.webm" mp4_src="/manage/control.mp4" alt="Using the control tab">}}
 
 {{% /alert %}}
+
 <!-- TODO: R2D2 need to update this section with updated control tab view-->
 
 ### Add a service
@@ -189,7 +192,7 @@ You must configure a service with a `name` and a `type`:
 
 - `type`: specifies which of the Viam services you want to use on your machine, such as the vision service or the motion service.
 - `name`: serves as an identifier when accessing the resource from your code, as well as when configuring other resources that are dependent on that resource.
-You can choose any unique name for a service.
+  You can choose any unique name for a service.
 
 The other aspects of configuring a service are highly specific to the type of service.
 See the [services documentation](/services/) for more information.
@@ -197,6 +200,7 @@ See the [services documentation](/services/) for more information.
 ### Insert fragment
 
 <!-- TODO: this entire section needs to be updated once this is actually ready-->
+
 Fragments are a way of sharing and managing identical {{< glossary_tooltip term_id="resource" text="resource" >}} configuration files across multiple machines.
 For example, if you have multiple machines with the same hardware, wired the same way, you can create and share a fragment and add it to any number of machines.
 When changes are made to the fragment, those changes are automatically carried to all machines that include the fragment in their config.
