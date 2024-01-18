@@ -447,7 +447,7 @@ Get information regarding the current navigation service.
 
 **Returns:**
 
-- [`MapType.ValueType`](https://python.viam.dev/autoapi/viam/proto/service/navigation/index.html#viam.proto.service.navigation.GetPropertiesResponse): Property information for the named navigation service.
+- [`MapType.ValueType`](https://python.viam.dev/autoapi/viam/proto/service/navigation/index.html#viam.proto.service.navigation.GetPropertiesResponse): Information regarding the current navigation service.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
@@ -466,18 +466,17 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Properties](https://pkg.go.dev/go.viam.com/rdk@v0.18.0/services/navigation#Properties): Information regarding the current navigation service.
+- [Properties](https://pkg.go.dev/go.viam.com/services/navigation#Properties): Information regarding the current navigation service.
   This includes the map type being ingested and used by the navigation service.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
-ctx := context.Background()
 myNav, err := navigation.FromRobot(robot, "my_nav_service")
 
 // Get the properties of your current service
-navProperties, err := myNav.Properties(ctx)
+navProperties, err := myNav.Properties(context.Background())
 ```
 
 {{% /tab %}}

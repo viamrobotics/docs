@@ -173,7 +173,7 @@ Get information regarding the current SLAM session.
 
 **Returns:**
 
-- Tuple[[bool](https://docs.python.org/3/library/functions.html#bool), [MappingMode.ValueType](https://python.viam.dev/autoapi/viam/proto/service/slam/index.html#viam.proto.service.slam.MappingMode)]: A tuple containing a boolean which indicates whether the session is being run in the cloud, as well as the current session's mode.
+- Tuple[[bool](https://docs.python.org/3/library/functions.html#bool), [MappingMode.ValueType](https://python.viam.dev/autoapi/viam/proto/service/slam/index.html#viam.proto.service.slam.MappingMode)]: A tuple containing two objects: a boolean which indicates whether the session is being run in the cloud, and `MappingMode`, which represents the [various forms of mapping and localizing the current session can perform](/mobility/slam/cartographer/#use-a-live-machine).
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_properties).
 
