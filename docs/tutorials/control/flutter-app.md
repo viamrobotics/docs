@@ -59,7 +59,7 @@ The instructions on the Flutter website cover not only the installation of the S
 For this walkthrough, you only need to install the following:
 
 - Flutter SDK
-- Visual Studio Code with the Flutter plugin
+- Visual Studio Code with the Flutter extension
 - The software required by your chosen development target.
   For example:
   - [Xcode](https://developer.apple.com/xcode/) to target macOS
@@ -170,7 +170,7 @@ Now you'll update some configurations in the iOS or Android-specific code to sup
 
    ```{class="line-numbers linkable-line-numbers"}
    # Uncomment this line to define a global platform for your project
-   # platform :ios, '13.0'
+   platform :ios, '13.0'
    ```
 
 2. Open <file>ios/Runner/Info.plist</file>.
