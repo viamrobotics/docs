@@ -16,7 +16,7 @@ After saving your [code sample](/build/program/#hello-world-the-code-sample-tab)
 
 {{< readfile "/static/include/program/authenticate.md" >}}
 
-## Run Code Remotely
+## Run code remotely
 
 Most of the time, as long as both you and your machine are connected to the internet, you will want to run code to control your machine remotely.
 
@@ -64,9 +64,17 @@ flutter run <DART_FILE>
 
 This is useful because as long as that computer is able to establish a network connection with the machine's computer, your control logic will be executed on the machine.
 
-## Run Code On-Machine
+## Run code on local network
 
-In case you run [PID control loops](https://en.wikipedia.org/wiki/PID_controller) or your machines have intermittent network connectivity, you can ensure this does not interfere with the code's execution, by running the control code on the same board that is running `viam-server`.
+Your machines do not need to be connected to the Internet for you to be able to run code.
+As long as your machine is connected to the same LAN or WAN network as the device running the code, you can connect to it and are run code. 
+
+When connecting to a machine using the connection code from the [code sample tab](/build/program/#hello-world-the-code-sample-tab), a [client session](/build/program/apis/sessions/) automatically uses the [most efficient route](/build/program/connectivity/) to connect to your machine, which means the favored route for commands will be used.
+If this connection is over LAN or WAN and you lose internet connectivity, the connection will thus remain.
+
+## Run code on-machine
+
+In case you run [PID control loops](https://en.wikipedia.org/wiki/PID_controller) or your machines have intermittent or no network connectivity, you can ensure this does not interfere with the code's execution, by running the control code on the same board that is running `viam-server`.
 
 {{<imgproc src="/build/program/on-robot.png" resize="800x" declaredimensions=true alt="A client running on a machine">}}
 
