@@ -475,7 +475,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 ```go {class="line-numbers linkable-line-numbers"}
 myNav, err := navigation.FromRobot(robot, "my_nav_service")
 
-// Get the properties of your current service
+// Get the properties of the current navigation service
 navProperties, err := myNav.Properties(context.Background())
 ```
 
