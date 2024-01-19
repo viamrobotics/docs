@@ -351,7 +351,7 @@ Switch to **Raw JSON** mode to configure webhooks as follows:
    For example, if you want to trigger a webhook on temperature readings, configure data capture and sync on your temperature sensor.
    Be aware that the component must return the type of data you configured in `data_types`.
 5. Write your cloud/lambda function to process the request from `viam-server`.
-   The following example function sends a Slack message with a machine's details, such as robot and location IDs,  when it receives a request:
+   The following example function sends a Slack message with a machine's details, such as robot and location IDs, when it receives a request:
 
    ```python {class="line-numbers linkable-line-numbers"}
    import functions_framework
