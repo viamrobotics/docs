@@ -267,7 +267,7 @@ The corresponding raw JSON looks like this:
 ## Webhooks
 
 Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud.
-For example, you can configure a webhook to send you a phone notification when your robot's battery drops below 10%.
+For example, you can configure a webhook to send you a notification when your robot's sensor collects a new reading.
 
 Switch to **Raw JSON** mode to configure webhooks as follows:
 
