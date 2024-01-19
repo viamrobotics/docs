@@ -276,4 +276,10 @@ This section of the tutorial adds a new screen to your app, and makes it so that
 
    A window should open up, displaying a rendering of your smart machine app:
 
-   {{<imgproc src="/tutorials/flutter-app/render1.png" resize="1200x" style="max-width:300px" declared-dimensions="true" alt="Rendering of an iPhone with the app open on the screen. The screen is white with the words 'Smart Machine App' in the middle, above a greyed-out login button.">}}
+   {{<imgproc src="/tutorials/flutter-app/render1.png" resize="1200x" style="max-width:300px" declared-dimensions="true" alt="Rendering of an iPhone with the app open on the screen. The screen is white with the words 'Smart Machine App' in the middle, above a grayed-out login button.">}}
+
+## Add a new screen
+
+Great work so far!
+You have your app running, with a single screen and an inactive button.
+Next you will add a new screen that pulls in some information from your {{< glossary_tooltip term_id="organization" text="organization" >}} in Viam, and then navigate to that screen from the login button.
