@@ -451,12 +451,13 @@ The code you are using has several functions:
       center of the robot.
       """
       frame = await camera.get_image(mime_type="image/jpeg")
+      raw_frame = RawImage(data=frame.data, mime_type=frame.mime_type)
 
-      x, y = frame.size[0], frame.size[1]
+      x, y = raw_frame.size[0], raw_frame.size[1]
 
       # Crop the image to get only the middle fifth of the top third of the
       # original image
-      cropped_frame = frame.crop((x / 2.5, 0, x / 1.25, y / 3))
+      cropped_frame = raw_frame.crop((x / 2.5, 0, x / 1.25, y / 3))
 
       detections = await detector.get_detections(cropped_frame)
 
@@ -474,11 +475,12 @@ The code you are using has several functions:
       of the robot's front.
       """
       frame = await camera.get_image(mime_type="image/jpeg")
-      x, y = frame.size[0], frame.size[1]
+      raw_frame = RawImage(data=frame.data, mime_type=frame.mime_type)
+      x, y = raw_frame.size[0], raw_frame.size[1]
 
       if location == "left":
           # Crop image to get only the left two fifths of the original image
-          cropped_frame = frame.crop((0, 0, x / 2.5, y))
+          cropped_frame = raw_frame.crop((0, 0, x / 2.5, y))
 
           detections = await detector.get_detections(cropped_frame)
 
