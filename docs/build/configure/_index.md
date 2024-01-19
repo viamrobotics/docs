@@ -269,7 +269,7 @@ The corresponding raw JSON looks like this:
 Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud.
 For example, you can configure a webhook to send you a phone notification when your robot's battery drops below 10%.
 
-There is no webhooks tab in the Viam app config builder; use **Raw JSON** mode to configure webhooks as follows:
+Switch to **Raw JSON** mode to configure webhooks as follows:
 
 1. Paste the following JSON template into your raw JSON config.
    `"webhooks"` is a top-level section like `"components"`, `"services"`, or any of the other config sections.
@@ -330,7 +330,7 @@ There is no webhooks tab in the Viam app config builder; use **Raw JSON** mode t
   ],
   "webhooks": [
     {
-      "url": "https://examplecloudfuntionURL-besuretochangethis.net/12345",
+      "url": "https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws",
       "event": {
         "attributes": {
           "data_types": ["binary", "tabular"]
@@ -350,8 +350,8 @@ There is no webhooks tab in the Viam app config builder; use **Raw JSON** mode t
 4. Configure [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/) for the relevant components.
    For example, if you want to trigger a webhook on temperature readings, configure data capture and sync on your temperature sensor.
    Be aware that the component must return the type of data you configured in `data_types`.
-5. Write your lambda function to process the request from `viam-server`.
-   The following example function sends a Slack message with the machine details when it receives a request:
+5. Write your cloud/lambda function to process the request from `viam-server`.
+   The following example function sends a Slack message with a machine details when it receives a request:
 
    ```python {class="line-numbers linkable-line-numbers"}
    import functions_framework
@@ -378,8 +378,6 @@ There is no webhooks tab in the Viam app config builder; use **Raw JSON** mode t
      return 'Sent request to {}'.format(slack_url)
 
    ```
-
-   You may find this tutorial from Ordergroove Engineering on [Posting Slack notifications using Google Cloud Function](https://medium.com/ordergroove-engineering/posting-slack-notifications-using-google-cloud-function-900ed2f1e3ec) helpful.
 
 ## Fragments
 
