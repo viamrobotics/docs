@@ -434,6 +434,54 @@ waypoints, err := myNav.Waypoints(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetProperties
+
+Get information about the navigation service.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [`MapType.ValueType`](https://python.viam.dev/autoapi/viam/proto/service/navigation/index.html#viam.proto.service.navigation.GetPropertiesResponse): Information about the type of map the service is using.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+
+# Get the properties of the current navigation service.
+nav_properties = await my_nav.get_properties()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.get_properties).
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [Properties](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Properties): Information about the current navigation service.
+  This includes the map type being ingested and used by the navigation service.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
+
+```go {class="line-numbers linkable-line-numbers"}
+myNav, err := navigation.FromRobot(robot, "my_nav_service")
+
+// Get the properties of the current navigation service
+navProperties, err := myNav.Properties(context.Background())
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### AddWaypoint
 
 Add a waypoint to the service's data storage.
