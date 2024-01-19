@@ -13,15 +13,14 @@ tags:
     "services",
     "registry",
   ]
-description: "Create a module to provide a new modular resource to your Viam machine."
+description: "Create a module to provide a new modular resource to your machine."
 aliases:
   - "/extend/modular-resources/create/"
   - "/modular-resources/create/"
 no_list: true
 ---
 
-Viam provides built-in support for a variety of different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} -- collectively called {{< glossary_tooltip term_id="resource" text="resources" >}} -- but you might want to use Viam with a new component type or service model that isn't currently supported.
-To extend support to these resources, you can create a {{< glossary_tooltip term_id="module" text="module" >}}.
+Viam provides built-in support for a variety of different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}, but you can add support for your own custom {{< glossary_tooltip term_id="resource" text="resources" >}} by creating a {{< glossary_tooltip term_id="module" text="module" >}}.
 
 A module provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, and is packaged in a manner that streamlines deployment to a Viam machine.
 Modules run alongside [`viam-server`](/get-started/installation/) as separate processes, communicating with `viam-server` over UNIX sockets.
@@ -46,7 +45,7 @@ Most modules extend an existing [component API](/build/program/apis/#component-a
 For example, you could extend the [camera component API](/components/camera/#api) to support new image formats or a new type of camera, or extend the [ML model service API](/build/program/apis/#ml-model) to support a new machine learning (ML) model type beyond `tflite`.
 
 {{% alert title=Note color="note" %}}
-If you want to write a module to extend support to a new type of component that is relatively unique, and doesn't readily correspond to an existing [built-in component API](/build/program/apis/#component-apis), you may want to consider using the [generic API](/components/generic/) with your module instead of extending an existing API.
+If you want to write a module to extend support to a new type of component that is relatively unique, and doesn't readily correspond to an existing [built-in component API](/build/program/apis/#component-apis), consider using the [generic API](/components/generic/) with your module instead of extending an existing API.
 Most module use cases, however, benefit from extending an existing API, as covered below.
 {{% /alert %}}
 
@@ -83,7 +82,7 @@ If your module references {{< glossary_tooltip term_id="pin-number" text="pin nu
 
 First, inspect the built-in class provided by the resource API that you are extending.
 
-For example, if you want to add support for a new [base component](/components/base/) to Viam, you would start by looking at the built-in base component class.
+For example, if you wanted to add support for a new [base component](/components/base/) to Viam, you would start by looking at the built-in base component class.
 The built-in `Base` class is defined in the [Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk) in the following file:
 
 <!-- prettier-ignore -->
@@ -302,7 +301,7 @@ You can find additional Python example modules in the [Python SDK `examples` dir
 
 First, inspect the built-in package provided by the resource API that you are extending.
 
-For example, if you want to add support for a new [base component](/components/base/) to Viam, you would start by looking at the built-in base component package.
+For example, if you wanted to add support for a new [base component](/components/base/) to Viam, you would start by looking at the built-in base component package.
 The built-in `base` package is defined in the [Viam Go SDK](https://github.com/viamrobotics/rdk/) in the following file:
 
 <!-- prettier-ignore -->
@@ -545,7 +544,7 @@ You can find additional Go example modules in the [Go SDK `examples` directory](
 
 First, inspect the built-in class provided by the resource API that you are extending.
 
-For example, if you want to add support for a new [base component](/components/base/) to Viam, you would start by looking at the built-in base component class.
+For example, if you wanted to add support for a new [base component](/components/base/) to Viam, you would start by looking at the built-in base component class.
 The built-in `Base` class is defined in the [Viam C++ SDK](https://cpp.viam.dev/) in the following files:
 
 <!-- prettier-ignore -->

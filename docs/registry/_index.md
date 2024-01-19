@@ -107,7 +107,7 @@ Ideally, your `repo-name` should describe the common functionality provided acro
 
 For example:
 
-- The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model uses the repository name [yahboom](https://github.com/viam-labs/yahboom).
+- The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model use the repository name [yahboom](https://github.com/viam-labs/yahboom).
   The models implement the `rdk:component:arm` and the `rdk:component:gripper` API to support the Yahboom DOFBOT arm and gripper, respectively:
 
   ```json
@@ -121,7 +121,7 @@ For example:
   }
   ```
 
-- The `viam-labs:audioout:pygame` model uses the repository name [audioout](https://github.com/viam-labs/audioout)
+- The `viam-labs:audioout:pygame` model uses the repository name [audioout](https://github.com/viam-labs/audioout).
   It implements the custom API `viam-labs:service:audioout`:
 
   ```json
