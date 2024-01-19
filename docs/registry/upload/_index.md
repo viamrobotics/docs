@@ -394,21 +394,22 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 {{% /tab %}}
 {{< /tabs >}}
 
-1. Create an organization API key and configure your GitHub repository to use it to authenticate during GitHub action runs, following the steps below:
+1. Create an [organization API key](/fleet/cli/#create-an-organization-api-key) with the [owner](/fleet/#permissions) role, which the GitHub action will use to authenticate to the Viam platform, using one of the following methods:
 
-   1. Use the CLI to create an organization API key:
+   - Use the Viam CLI to create an organization API key, which includes the owner role by default:
 
-      ```sh {class="command-line" data-prompt="$"}
-      viam organizations api-key create --org-id <org-id> --name <key-name>
-      ```
+     ```sh {class="command-line" data-prompt="$"}
+     viam organizations api-key create --org-id <org-id> --name <key-name>
+     ```
 
-      For more information, see [create an organization API key](/fleet/cli/#create-an-organization-api-key).
+   - Use the [organizations page](/fleet/organizations/) on the Viam app to generate a new organization API key.
+     Make sure your organization API key is set to **Role: Owner**, or the GitHub action will not be able to successfully authenticate during runs.
+     If you are using an existing organization API key which is not set to **Role: Owner**, you can change an API key's permissions from the Viam app on the [organizations page](/fleet/organizations/) by clicking the **Show details** link next to your API key.
+     The operator role cannot be used to authenticate GitHub action runs.
 
-      The command returns a `key id` and a `key value` which together comprise your organization API key.
-      By default, a new organization API key is created with **Owner** permissions, giving the key full read and write access to all machines within your organization.
-      You can change an API key's permissions from the Viam app on the [organizations page](/fleet/organizations/) by clicking the **Show details** link next to your API key.
+   Both methods return a `key id` and a `key value` which together comprise your organization API key.
 
-      If you have already created an organization API key, you can skip this step.
+1. Then, configure your GitHub repository to use your organization API key to authenticate during GitHub action runs, following the steps below:
 
    1. In the GitHub repository for your project, select **Settings**, then **Secrets and variables**, then **Actions**.
 
