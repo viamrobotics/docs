@@ -370,6 +370,7 @@ Enable the I<sup>2</sup>C protocol on your Pi to get readings from the power sen
    ```sh {class="command-line" data-prompt="$"}
    sudo reboot
    ```
+
 ### Control your rover on the Viam app
 
 If you followed the instructions in the [Pi installation guide](/get-started/installation/prepare/rpi-setup/), you should have already made an account on the [Viam app](https://app.viam.com), installed `viam-server` on the board, and added a new machine.
