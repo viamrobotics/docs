@@ -128,6 +128,8 @@ Permissions for managing {{< glossary_tooltip term_id="location" text="locations
 
 If a user has access to a child location but not its parent location, the user cannot see machines in the parent location.
 
+If a user is an owner of an organization with which a location was shared (that is, a _secondary_ organization owner), that user _can_ share the location with other organizations.
+
 \*Users can only use Try Viam from within an organization they own because doing so creates a new location in the org.
 
 ### Organization settings and roles

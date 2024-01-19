@@ -54,6 +54,8 @@ To move a sub-location to the top level of locations, select **Root** from the *
 A location always belongs to the organization it was created in.
 Members of the organization have access to all locations in the organization by default.
 
+For more information on the permissions the roles assign for each resource, see [Permissions](/fleet/rbac/#locations).
+
 You can share a location beyond its organization by sharing a location with an additional organization:
 
 #### Share a location with an additional organization
@@ -71,10 +73,9 @@ The location's page lists the newly added organization, along with the organizat
 
 The list of organizations includes the names of organizations to which you belong, and the org IDs of organizations to which you do not belong.
 
-{{% alert title="Info" color="info" %}}
+{{% alert title="Note" color="info" %}}
 
-Owners of the organization, and owners of the location, can share the location.
-If the location has been shared with additional organizations, owners of those secondary organizations can also share the location.
+Once you share a _nested_ location (sub-location), its parent location cannot be changed.
 
 {{% /alert %}}
 
