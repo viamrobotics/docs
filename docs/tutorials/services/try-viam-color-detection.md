@@ -18,7 +18,6 @@ date: "2022-12-16"
 # updated: ""
 cost: "0"
 no_list: true
-weight: 3
 # SMEs: Hazal
 ---
 
