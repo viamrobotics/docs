@@ -466,7 +466,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Properties](https://pkg.go.dev/go.viam.com/services/navigation#Properties): Information about the current navigation service.
+- [Properties](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Properties): Information about the current navigation service.
   This includes the map type being ingested and used by the navigation service.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 

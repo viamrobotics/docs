@@ -193,7 +193,7 @@ slam_properties = await slam_svc.get_properties()
 
 **Returns:**
 
-- [Properties](https://pkg.go.dev/go.viam.com/services/slam#Properties): Information about the current SLAM session.
+- [Properties](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties): Information about the current SLAM session.
   This includes whether the SLAM process is running in the cloud, as well as its mapping mode.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
