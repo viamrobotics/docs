@@ -73,8 +73,8 @@ The list of organizations includes the names of organizations to which you belon
 
 {{% alert title="Info" color="info" %}}
 
-Only members of the _primary owner_ organization can share the location.
-If the location has been shared with additional organizations, members of those secondary organizations cannot share the location.
+Owners of the organization, and owners of the location, can share the location.
+If the location has been shared with additional organizations, owners of those secondary organizations can also share the location.
 
 {{% /alert %}}
 
