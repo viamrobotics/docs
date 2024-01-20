@@ -70,7 +70,7 @@ Your machines do not need to be connected to the Internet for you to be able to 
 As long as your machine is connected to the same LAN or WAN network as the device running the code, you can connect to it and run code. 
 
 When you use the connection code from the [code sample tab](/build/program/#hello-world-the-code-sample-tab), that code establishes a [client session](/build/program/apis/sessions/) that automatically uses the [most efficient route](/build/program/connectivity/) to send commands to your machine.
-That means when your the device your code runs on is on the same network as your machine, even if internet is available, the connection will choose the most efficient route and connect over LAN or WAN.
+That means that when the device your code runs on is on the same network as your machine, even if internet is available, the connection will choose the most efficient route and connect over LAN or WAN.
 If you subsequently lose internet connectivity, but stay connected to LAN or WAN, the connection will thus remain.
 
 ## Run code on-machine
