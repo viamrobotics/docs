@@ -413,4 +413,4 @@ This ensures that the generated {{< glossary_tooltip term_id="slam" text="SLAM" 
 
 If you need a mount plate for your RPlidar A1 model, you can 3D print an adapter plate using the following:
 
-- [RPlidar A1 adapter STL](ttps://github.com/viamrobotics/Viam-Rover-2/blob/main/CAD/RPIidar_adapter_v2.STL)
+- [RPlidar A1 adapter STL](https://github.com/viamrobotics/Viam-Rover-2/blob/main/CAD/RPIidar_adapter_v2.STL)
