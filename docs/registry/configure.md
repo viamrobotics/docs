@@ -78,7 +78,7 @@ To add a modular [component](/components/) from the Viam registry to your machin
 
    {{<imgproc src="registry/configure/add-component-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module when searching by the name 'realsense'">}}
 
-4. After selecting the modular component, click the **Add module** button, enter a name for your modular component, and click **Create** to add it to your machine's component configuration.
+4. After selecting the modular component, enter a name for your modular component and click **Create** to add it to your machine's component configuration.
 
    {{<imgproc src="registry/configure/add-component-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing the intel realsense module pane, with the 'Add module' button shown">}}
 
@@ -107,7 +107,7 @@ To add a modular [service](/services/) from the Viam registry to your machine:
 
    {{<imgproc src="registry/configure/add-service-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the mlmodelservice triton module when searching by the name 'triton'">}}
 
-4. After selecting the modular service, click the **Add module** button, enter a name for your modular service, and click **Create** to add it to your machine's service configuration.
+4. After selecting the modular service, enter a name for your modular service and click **Create** to add it to your machine's service configuration.
 
    {{<imgproc src="registry/configure/add-service-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing the mlmodelservice triton module pane, with the 'Add module' button shown">}}
 
