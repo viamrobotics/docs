@@ -102,7 +102,7 @@ Permissions for managing {{< glossary_tooltip term_id="machine" text="machines" 
 | Permissions                                                   | Org owner | Org operator | Location owner | Location operator | Machine owner | Machine operator |
 | ------------------------------------------------------------- | --------- | ------------ | -------------- | ----------------- | ------------- | ---------------- |
 | Control the machine from the **CONTROL** tab                  | **Yes**   | **Yes**      | **Yes**        | **Yes**           | **Yes**       | **Yes**          |
-| See all tabs (such as **CONFIGURE** and **LOGS**)                | **Yes**   | No           | **Yes**        | No                | **Yes**       | No               |
+| See all tabs (such as **CONFIGURE** and **LOGS**)             | **Yes**   | No           | **Yes**        | No                | **Yes**       | No               |
 | Edit machine name                                             | **Yes**   | No           | **Yes**        | No                | **Yes**       | No               |
 | Delete the machine                                            | **Yes**   | No           | **Yes**        | No                | **Yes**       | No               |
 | Add a new {{< glossary_tooltip term_id="part" text="part" >}} | **Yes**   | No           | **Yes**        | No                | **Yes**       | No               |
