@@ -19,23 +19,33 @@ menuindent: true
 # SME: Alexa Greenberg
 ---
 
-Viam's built-in data management service allows you to capture, sync, [view](view/), [label](dataset/), and [export](export/) data from your machines, as well as use [Machine Learning](/ml/) features to enhance your machine's capabilities.
-The service is designed for flexibility and efficiency while preventing data loss, data duplication, and other data management issues.
+The data management service is a robust solution for smart machine data handling, [data capture](/data/capture/), and [cloud synchronization](/data/cloud-sync/).
+Using the data management service, you can collect data from different parts of a robot, IoT device, or any other machine.
+Then, you can configure which data to sync to the cloud, and view, sort, or manage it directly in the cloud without needing to manually gather data from each machine.
+The data management service also keeps your data secure during transfer.
+
+## Overview
 
 ![Data is captured on the machine, uploaded to the cloud, and then deleted off local storage.](/data/data_management.png)
 
-The service has two parts: [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/).
+Viam's data management features can be broken down into on-device and cloud data capabilities:
 
-Once you have captured and synced data, you can:
+- **On-Device Data Management:** Manage data directly on your robot, with configurable data capture from various components, automated recovery after interruptions, and secure cloud synchronization for efficient data storage and management.
+  - **[Data Capture](/data/capture/):** Configurable for various robot components like cameras, sensors, and motors; set capture frequency, with automatic resumption after robot restarts.
+  - **[Cloud Sync](/data/cloud-sync/):** Securely transfers data to cloud at user-defined frequency, resilient to interruptions, and deletes local data post-sync for space management.
+- **Cloud Data Management**: Streamlines data handling with advanced querying, viewing, and filtering capabilities, along with efficient data labeling and exporting tools.
+  - **[Data Querying](/data/query/):** Supports SQL or MQL queries on synced sensor data, accessible through the Viam app and MQL-compatible clients.
+  - **[Viewing and Filtering Data](/data/view/):** Enables viewing and filtering of different data types in the cloud, with options to delete data on the Viam app.
+  - **[Creating Datasets](/data/dataset/):** Facilitates labeling of data for management and machine learning, with dynamic datasets that change with underlying data modifications.
+  - **[Exporting Data](/data/export/):** Offers data export functionality with the Viam CLI, allowing data download for offline access.
 
-{{< cards >}}
-{{% card link="/data/view/" %}}
-{{% card link="/data/dataset/" %}}
-{{% card link="/data/export/" %}}
-{{% card link="/data/query/" %}}
-{{< /cards >}}
+## Get started
 
-## Used with
+### Collect your data and send to the Viam platform
+
+You must [configure data capture](/data/capture/) and [cloud sync](/data/cloud-sync/) with the data management service to be able to view, label, and export data.
+
+You can configure the frequency of data capture individually for each supported component:
 
 {{< cards >}}
 {{< relatedcard link="/components/arm/">}}
@@ -49,11 +59,15 @@ Once you have captured and synced data, you can:
 {{< relatedcard link="/components/servo/">}}
 {{< /cards >}}
 
-You can configure capture frequency individually for each component.
+### Query your data
 
-## Requirements
+You can query the data you've collected in multiple ways, including through our [data client API](/build/program/apis/data-client/) or [inside the Viam app](/data/query/).
+Once you have [synced](/data/cloud-sync/) tabular sensor data to the Viam app, you can run {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries against your synced data from the [Query subtab](https://app.viam.com/data/query) of the **Data** tab in the Viam app.
 
-You must configure data capture and cloud synchronization with the [Data Management Service](/data/) to be able to view, label, and export data.
+### Permissions
+
+Data management permissions vary between owners and operators.
+For more information about who can do what with data, see [Data Permissions](/fleet/rbac/#data-and-machine-learning).
 
 ## API
 
@@ -102,46 +116,9 @@ err := data.Sync(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-## Use the data management service
-
-To use the data management service, [add the data management service](/data/capture/#add-the-data-management-service) to your machine.
-Then, [configure data capture](/data/capture/) and [configure cloud sync](/data/cloud-sync/) as needed.
-
-For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).
-
-### View, filter, and export data
-
-Once you have configured data capture and cloud sync, you can [view your data](/data/view/) in the Viam app from the **Data** tab.
-
-You can [filter your data](/data/view/#filter-data) by several categories, including by machine name, location, or timestamp range.
-You can filter your data from the **Data** tab in the Viam app or using the Viam Python SDK.
-
-You can also [export](/data/export/) your data as needed.
-
-### Query data
-
-If you have synced tabular data to the Viam app, you can perform {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries against that data.
-You can chose to:
-
-- Run SQL or MQL queries from the **Query** subtab under the **Data** tab in the Viam app.
-- Directly query tabular data from a MQL-compatible client, such as `mongosh`.
-
-See [Query Data](/data/query/) for instructions on using each of these approaches.
-
-Only tabular data, such as [sensor](/components/sensor/) readings, can be queried in this fashion.
-To search other types of data, such as images, see [Filter Data](/data/view/#filter-data).
-
-### Train and deploy machine learning
+## Next steps: train and deploy machine learning
 
 You can use data synced to the cloud to [train machine learning models](/ml/train-model/) and then [deploy these models to your machines](/ml/) from the Viam app.
-You can also [upload and use existing models](/ml/upload-model/).
-
-### Permissions
-
-Data management permissions vary between owners and operators.
-For more information about who can do what with data, see [Data Permissions](/fleet/rbac/#data-and-machine-learning).
-
-## Next steps
 
 For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see:
 
