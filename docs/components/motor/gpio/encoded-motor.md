@@ -13,10 +13,6 @@ aliases:
 Use an [encoder](/components/encoder/) with a motor to create a closed feedback loop for better control of your machine.
 Instead of sending speed or position commands without a way to verify the motor's behavior, the encoder lets the computer know how the motor is actually rotating in the real world, so adjustments can be made to achieve the desired motor movement.
 
-For example, a [Viam Rover](https://docs.viam.com/get-started/try-viam/rover-resources/) with encoded motors following both an [angular](/components/base/#spin) and [linear](/components/base/#movestraight) velocity command:
-
-{{<video webm_src="/components/encoded-motor/base_moving.webm" mp4_src="/components/encoded-motor/base-moving.mp4" alt="A Viam rover turning in a half circle" poster="components/motor/encoded-motor-preview.jpg">}}
-
 Some motors come with encoders integrated with or attached to them.
 You can also add an encoder to a motor.
 See the [encoder component documentation](/components/encoder/) for more information on encoders.
@@ -163,3 +159,7 @@ This wiring example corresponds to the [example config above](#encoder-config).
 ![Example wiring diagram with a Raspberry Pi, brushed DC motor, 12V power supply, and Pololu MAX14870 motor driver. The DIR pin of the driver is wired to pin 18 on the Pi. PWM goes to pin 16. The motor's encoder signal wires (out a and out b) go to pins 11 and 13 on the Pi. The motor's main power wires are connected to the motor driver while its encoder logic power wires are connected to the Pi.](/components/motor/motor-encoded-dc-wiring.png)
 
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}
+
+For example, a [Viam Rover](https://docs.viam.com/get-started/try-viam/rover-resources/) with encoded motors following both an [angular](/components/base/#spin) and [linear](/components/base/#movestraight) velocity command:
+
+{{<video webm_src="/components/encoded-motor/base_moving.webm" mp4_src="/components/encoded-motor/base-moving.mp4" alt="A Viam rover turning in a half circle" poster="components/motor/encoded-motor-preview.jpg">}}
