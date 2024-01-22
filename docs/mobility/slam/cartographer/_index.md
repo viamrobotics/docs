@@ -86,12 +86,11 @@ Creating a new map uses an instance of the cartographer module running in the cl
    {{% tab name="Config Builder" %}}
    Follow the instructions below to set up the `cartographer` module on your machine:
 
-   1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-   1. Click on the **Services** subtab and click **Create service** in the lower-left corner.
-   1. Select **SLAM**, then select `cartographer`.
-      You can also search for "cartographer".
-   1. Click **Add module**, give your service a name of your choice, then click **Create**.
-   1. In the resulting `SLAM` service configuration pane, first choose `Create new map` as the **Mapping mode**, then configure the rest of the **Attributes** for that mapping mode:
+   1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+   2. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+   3. Select the `SLAM` type, then the `cartographer` model.
+   4. Enter a name for your service and click **Create**.
+   5. In the resulting `SLAM` service configuration pane, first choose `Create new map` as the **Mapping mode**, then configure the rest of the **Attributes** for that mapping mode:
 
       - **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your machine](https://github.com/viamrobotics/rplidar).
         Example: "my-rplidar"

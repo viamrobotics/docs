@@ -22,8 +22,8 @@ Configure a `beaglebone` board to integrate [BeagleBoard's BeagleBone AI 64](htt
 {{< tabs name="Configure an beaglebone Board" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `board` type, then select the `beaglebone` model.
 Enter a name for your board and click **Create**.
 
