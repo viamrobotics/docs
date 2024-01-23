@@ -402,10 +402,11 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
      viam organizations api-key create --org-id <org-id> --name <key-name>
      ```
 
-   - Use the [organizations page](/fleet/organizations/) on the Viam app to generate a new organization API key.
+   - Use the organizations page on the [Viam app](https://app.viam.com/) to generate a new organization API key.
      Make sure your organization API key is set to **Role: Owner**, or the GitHub action will not be able to successfully authenticate during runs.
-     If you are using an existing organization API key which is not set to **Role: Owner**, you can change an API key's permissions from the Viam app on the [organizations page](/fleet/organizations/) by clicking the **Show details** link next to your API key.
+     If you are using an existing organization API key which is not set to **Role: Owner**, you can change an API key's permissions from the Viam app on the organizations page by clicking the **Show details** link next to your API key.
      The operator role cannot be used to authenticate GitHub action runs.
+     For more information see the [Manage organizations](/fleet/organizations/).
 
    Both methods return a `key id` and a `key value` which together comprise your organization API key.
 
