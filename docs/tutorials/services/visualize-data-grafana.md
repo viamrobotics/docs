@@ -171,7 +171,7 @@ With your machine capturing data and syncing it to Viam, and direct query of tha
 1. Click the **Save & test** button to save your settings.
    Grafana will perform a health check on your configuration settings to verify that everything looks good.
 
-This connection allows Grafana to access all synced tabular data under your [organization](/fleet/organization/), from any machine.
+This connection allows Grafana to access all synced tabular data under your [organization](/fleet/organizations/), from any machine.
 
 ## Visualize your data
 
@@ -223,7 +223,7 @@ sensorData.readings.aggregate([
 ```
 
 This query uses the Grafana global variable `$__from`, which is populated by the value set from the `From` dropdown menu on your dashboard, allowing for visualizations based on this query to be dynamically updated when you change your desired time range from that dropdown menu.
-See the Grafana's [Global variables documentation](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#global-variables) for more information.
+See Grafana's [Global variables documentation](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#global-variables) for more information.
 
 {{<imgproc src="/tutorials/visualize-data-grafana/grafana-dashboard-query.png" resize="1000x" declaredimensions=true alt="A Grafana dashboard configuration screen, showing an MQL query entered to limit the visualization to the specific moisture-sensor component, and using the $__from variable to allow for use of a UI dropdown to control the time range.">}}
 
@@ -232,7 +232,7 @@ See the Grafana's [Global variables documentation](https://grafana.com/docs/graf
 In this tutorial, you learned:
 
 - how to use the [data management](/data/) service to capture images from your machine's camera and sync them to the Viam app
-- how to [enable data query access](/data/query/#configure-data-query) to your synced data.
+- how to [enable data query access](/data/query/#configure-data-query) to your synced data
 - how to connect Grafana to your data
 - how to build a dashboard visualizing that data
 - how to use query language to dynamically update those visualization based on UI selections

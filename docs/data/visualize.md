@@ -5,7 +5,7 @@ weight: 40
 no_list: true
 type: "docs"
 tags: ["data management", "data", "services", "visualize"]
-description: "Visualize tabular data that you have synced to the Viam app using popular tools like Grafana."
+description: "Visualize tabular data from the Viam app using popular tools like Grafana."
 # SME: Devin Hilly
 ---
 
