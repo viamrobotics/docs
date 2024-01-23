@@ -11,7 +11,7 @@ authors: []
 languages: []
 viamresources: ["data_manager"]
 level: "Intermediate"
-date: 2024-01-19"
+date: "2024-01-19"
 cost: "0"
 no_list: true
 # SMEs: Alexa Greenberg, Natalia Jacobowitz
