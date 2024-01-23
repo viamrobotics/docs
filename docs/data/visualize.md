@@ -1,5 +1,5 @@
 ---
-title: "Visualize Data"
+title: "Visualize Data with Dashboards"
 linkTitle: "Visualize Data"
 weight: 40
 no_list: true
