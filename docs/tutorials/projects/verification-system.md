@@ -3,8 +3,9 @@ title: "Create a Facial Verification System"
 linkTitle: "Verification System"
 type: "docs"
 description: "Create an alarm system that can detect people and can recognize faces, allowing it to smartly trigger alarms."
-image: "/tutorials/verification-system/disarmed.png"
-imageAlt: "Bijan disarming the facial verification system."
+webmSrc: "/tutorials/verification-system/demo.webm"
+mp4Src: "/tutorials/verification-system/demo.mp4"
+videoAlt: "Bijan disarming the facial verification system."
 images: ["/tutorials/verification-system/demo.gif"]
 tags: ["mlmodel", "vision", "services", "security", "camera"]
 authors: ["Sierra G."]
