@@ -406,7 +406,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
      Make sure your organization API key is set to **Role: Owner**, or the GitHub action will not be able to successfully authenticate during runs.
      If you are using an existing organization API key which is not set to **Role: Owner**, you can change an API key's permissions from the Viam app on the organizations page by clicking the **Show details** link next to your API key.
      The operator role cannot be used to authenticate GitHub action runs.
-     For more information see the [Manage organizations](/fleet/organizations/).
+     For more information see [Manage organizations](/fleet/organizations/).
 
    Both methods return a `key id` and a `key value` which together comprise your organization API key.
 
