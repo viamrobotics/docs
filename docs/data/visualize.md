@@ -12,7 +12,7 @@ description: "Visualize tabular data from the Viam app using popular tools like 
 Once you have [configured data query](/data/query/#configure-data-query) for your organization's data store, you can visualize your data from a variety of third-party tools, including Grafana, Tableau, Google's Looker Studio, and more.
 You can choose to visualize data from a component on one machine, from multiple components together, or from many components across a fleet of machines, all from a single pane of glass.
 
-You can visualize both the captured tabular data itself as well as its metadata, including machine ID, organization ID, and [tags](/data/dataset/#image-tags).
+You can visualize both the captured data itself as well as its metadata, including machine ID, organization ID, and [tags](/data/dataset/#image-tags).
 
 Only components that capture tabular data, such as [sensor](/components/sensor/) readings or other time-series data, support data visualization.
 
