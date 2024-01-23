@@ -169,4 +169,8 @@ For example, a [Viam Rover](https://docs.viam.com/get-started/try-viam/rover-res
 
 {{<video webm_src="/components/encoded-motor/base_moving.webm" mp4_src="/components/encoded-motor/base-moving.mp4" alt="A Viam rover turning in a half circle" poster="components/motor/encoded-motor-preview.jpg">}}
 
+The position, orientation, and linear and angular velocity of the rover changing as it moves, as measured by a [movement sensor](/components/movement-sensor/):
+
+{{<video webm_src="/components/encoded-motor/controls_change.webm" mp4_src="/components/encoded-motor/controls_change.mp4" alt="The control tab of a movement sensor on a base with encoded motors as it turns" poster="components/motor/controls-preview.jpg">}}
+
 If the motor does not appear on the **Control** tab, or if you notice unexpected behavior, check your machine's [**Logs** tab](/fleet/machines/#logs) for errors, and review the configuration.
