@@ -34,7 +34,7 @@ Currently, the vision service supports the following kinds of operations:
 ## Used With
 
 {{< cards >}}
-{{< relatedcard link="/ml/" >}}
+{{< relatedcard link="/ml/deploy/" >}}
 {{< /cards >}}
 
 ## API

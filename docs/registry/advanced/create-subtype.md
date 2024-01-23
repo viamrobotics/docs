@@ -49,11 +49,11 @@ The following steps guide you through this process in more detail:
    - [Write the proto](https://protobuf.dev/programming-guides/proto3/) methods in a `<subtype name>.proto` file inside your <file>src/proto</file> directory.
      For reference:
      - [Example modular component proto file](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/complex_module/src/proto/gizmo.proto)
-     - [Example modular service proto file](https://github.com/viam-labs/speech/blob/main/src/speech/proto/speech.proto)
+     - [Example modular service proto file](https://github.com/viam-labs/speech-service-api/blob/main/src/proto/speech.proto)
      - [Built-in Viam resource proto files](https://github.com/viamrobotics/api/tree/main/proto/viam)
    - And define the proto methods in a protobuf-supported language such as Python or Go in a file called `api.py` or `api.go`, respectively.
      - [Example component in Python](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/complex_module/src/gizmo/api.py)
-     - [Example service in Python](https://github.com/viam-labs/speech/blob/main/src/speech/api.py)
+     - [Example service in Python](https://github.com/viam-labs/speech-service-api/blob/main/src/speech_service_api/api.py)
 
 1. In the root directory of your module, you need to generate some boilerplate files.
    You will typically need the following three files for most modules, though different files are required for some advanced use cases.
@@ -65,7 +65,7 @@ The following steps guide you through this process in more detail:
 
 1. In the <file>/src/</file> directory of your module, use the protobuf compiler to [generate](https://buf.build/docs/tutorials/getting-started-with-buf-cli/#generate-code) all other necessary protocol buffer code, based on the `<subtype name>.proto` file you wrote.
 
-   - [Example generated files for a Python-based service](https://github.com/viam-labs/speech/tree/main/src/speech/proto).
+   - [Example generated files for a Python-based service](https://github.com/viam-labs/speech-service-api/tree/main/src/proto).
      The `buf.` files were generated.
      The <file>speech.proto</file> was manually written.
 

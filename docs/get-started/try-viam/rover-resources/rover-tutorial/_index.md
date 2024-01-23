@@ -30,6 +30,11 @@ You must purchase the following hardware separately:
 
 This guide covers what's inside the kit and provides instructions for [setting up your rover](#setup).
 
+{{< alert title="Note" color="note" >}}
+The design for this rover is open source.
+Find the details on [GitHub](https://github.com/viamrobotics/Viam-Rover-2).
+{{< /alert >}}
+
 ## What's inside the kit
 
 1. One assembled Viam Rover.
@@ -406,7 +411,6 @@ If you are mounting an RPlidar to your rover, be sure to position the RPlidar so
 For example, if you are using the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to the Rover so that the pointed end of the RPlidar mount housing points in the direction of the front of the Rover.
 This ensures that the generated {{< glossary_tooltip term_id="slam" text="SLAM" >}} map is oriented in the expected direction relative to the Rover, with the top of the generated map corresponding to the direction the RPlidar is facing when you initiate mapping.
 
-If you need a mount plate for your RPlidar A1 or A3 model, you can 3D print an adapter plate using the following:
+If you need a mount plate for your RPlidar A1 model, you can 3D print an adapter plate using the following:
 
-- [RPlidar A1 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA1_adapter.STL)
-- [RPlidar A3 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA3_adapter.STL)
+- [RPlidar A1 adapter STL](https://github.com/viamrobotics/Viam-Rover-2/blob/main/CAD/RPIidar_adapter_v2.STL)
