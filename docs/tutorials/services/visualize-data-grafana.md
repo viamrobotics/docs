@@ -239,8 +239,8 @@ In this tutorial, you learned:
 
 From here you could:
 
-- include data from additional sensors, or from more machines in your fleet, to be able to view everything together from one pane of glass
-- experiment with your query language syntax to give more flexibility to the operator, by allowing for more UI-based customization of the visualization using Grafana global variables.
+- include data from additional sensors, or from more machines in your fleet, to be able to view everything together from a single pane of glass
+- experiment with your query language syntax to give more flexibility to the operator, by allowing for more UI-based customization of the visualization using Grafana global variables
 
 For more ideas, check out our other [tutorials](/tutorials/).
 
