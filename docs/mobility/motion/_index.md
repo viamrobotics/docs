@@ -357,7 +357,7 @@ logger.Info("Orientation of myArm from the motion service:", myArmMotionPose.Pos
 ### MoveOnMap
 
 Move a [base](/components/base/) component to a destination [`Pose`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) on a {{< glossary_tooltip term_id="slam" text="SLAM" >}} map.
-Use the robot's position reported by the {{< glossary_tooltip term_id="slam" text="SLAM" >}} service to check the location of the machine.
+Use the machine's position reported by the {{< glossary_tooltip term_id="slam" text="SLAM" >}} service to check the location of the machine.
 
 {{< alert title="Usage" color="tip" >}}
 
@@ -369,9 +369,9 @@ You can monitor the progress of the `MoveOnMap()` call by querying `GetPlan()` a
 
 `MoveOnMap()` is intended for use with the [navigation service](/mobility/navigation/), providing autonomous indoor navigation for rover [bases](/components/base/).
 
-To use `MoveOnMap()`, your SLAM service must implement `GetPointCloudMap()` and `GetPosition()`
+To use `MoveOnMap()`, your [SLAM service](/mobility/slam/) must implement `GetPointCloudMap()` and `GetPosition()`
 
-Make sure the [slam service](/mobility/slam/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [slam service API](/mobility/slam/#api).
+Make sure the [SLAM service](/mobility/slam/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [SLAM service API](/mobility/slam/#api).
 
 - It must support `GetPointCloudMap()` to report the SLAM map as a pointcloud.
 - It must support `GetPosition()` to report the machine's current location on the SLAM map.
@@ -385,7 +385,7 @@ Make sure the [slam service](/mobility/slam/) you use supports usage of the foll
 
 - `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The `ResourceName` of the base to move.
 - `destination` ([Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose)): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
-- `slam_service_name` ([ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The `ResourceName` of the {{< glossary_tooltip term_id="slam" text="SLAM service" >}} from which the SLAM map is requested.
+- `slam_service_name` ([ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The `ResourceName` of the [SLAM service](/mobility/slam/) from which the SLAM map is requested.
 - `configuration` [(Optional[MotionConfiguration])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.MotionConfiguration): The configuration you want to set across this machine for this motion service. This parameter and each of its fields are optional.
   - `obstacle_detectors` [(Iterable[ObstacleDetector])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ObstacleDetector): The names of each [vision service](/ml/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.
   - `position_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the position of the machine.
@@ -429,7 +429,7 @@ execution_id = await motion.move_on_map(component_name=my_base_resource_name,
 - `req` [MoveOnMapReq](https://pkg.go.dev/go.viam.com/rdk/services/motion#MoveOnMapReq): A `MoveOnMapReq` which contains the following values:
   - `ComponentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the base to move.
   - `Destination` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
-  - `SlamName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the {{< glossary_tooltip term_id="slam" text="SLAM service" >}} from which the SLAM map is requested.
+  - `SlamName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the [SLAM service](/mobility/slam/) from which the SLAM map is requested.
   - `MotionConfig` [(\*MotionConfiguration)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MotionConfiguration): The configuration you want to set across this machine for this motion service. This parameter and each of its fields are optional.
     - `ObstacleDetectors` [([]ObstacleDetectorName)](https://pkg.go.dev/go.viam.com/rdk/services/motion#ObstacleDetectorName): The names of each [vision service](/ml/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.
     - `PositionPollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the position of the machine.
