@@ -356,7 +356,27 @@ logger.Info("Orientation of myArm from the motion service:", myArmMotionPose.Pos
 
 ### MoveOnMap
 
-Move a [base](/components/base/) component to a [`Pose`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) in respect to the origin of a {{< glossary_tooltip term_id="slam" text="SLAM" >}} map.
+Move a [base](/components/base/) component to a destination [`Pose`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) on a {{< glossary_tooltip term_id="slam" text="SLAM" >}} map.
+Use the robot's position reported by the {{< glossary_tooltip term_id="slam" text="SLAM" >}} service to check the location of the machine.
+
+{{< alert title="Usage" color="tip" >}}
+
+`MoveOnMap()` is non blocking, meaning the motion service will move the component to the destination [`Pose`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) after `MoveOnMap()` returns.
+
+Each successful `MoveOnMap()` call retuns a unique `ExecutionID` which you can use to identify all plans generated during the `MoveOnMap()` call.
+
+You can monitor the progress of the `MoveOnMap()` call by querying `GetPlan()` and `ListPlanStatuses()`.
+
+`MoveOnMap()` is intended for use with the [navigation service](/mobility/navigation/), providing autonomous indoor navigation for rover [bases](/components/base/).
+
+To use `MoveOnMap()`, your SLAM service must implement `GetPointCloudMap()` and `GetPosition()`
+
+Make sure the [slam service](/mobility/slam/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [slam service API](/mobility/slam/#api).
+
+- It must support `GetPointCloudMap()` to report the SLAM map as a pointcloud.
+- It must support `GetPosition()` to report the machine's current location on the SLAM map.
+
+{{< /alert >}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -366,12 +386,19 @@ Move a [base](/components/base/) component to a [`Pose`](https://python.viam.dev
 - `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The `ResourceName` of the base to move.
 - `destination` ([Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose)): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
 - `slam_service_name` ([ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The `ResourceName` of the {{< glossary_tooltip term_id="slam" text="SLAM service" >}} from which the SLAM map is requested.
+- `configuration` [(Optional[MotionConfiguration])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.MotionConfiguration): The configuration you want to set across this machine for this motion service. This parameter and each of its fields are optional.
+  - `obstacle_detectors` [(Iterable[ObstacleDetector])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ObstacleDetector): The names of each [vision service](/ml/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.
+  - `position_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the position of the machine.
+  - `obstacle_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the vision service for new obstacles.
+  - `plan_deviation_m` [(float)](https://docs.python.org/3/library/functions.html#float): The distance in meters that the machine can deviate from the motion plan.
+  - `linear_m_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Linear velocity this machine should target when moving.
+  - `angular_degs_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Angular velocity this machine should target when turning.
 - `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): Whether the request to `MoveOnMap` was successful.
+- [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ExecutionID of the `MoveOnMap` call.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move_on_map).
 
@@ -388,7 +415,7 @@ my_pose = Pose(y=10)
 
 # Move the base component to the destination pose of Y=10, a location of
 # (0, 10, 0) in respect to the origin of the map
-success = await motion.move_on_map(component_name=my_base_resource_name,
+execution_id = await motion.move_on_map(component_name=my_base_resource_name,
                                    destination=my_pose,
                                    slam_service_name=my_slam_resource_name)
 ```
@@ -402,11 +429,18 @@ success = await motion.move_on_map(component_name=my_base_resource_name,
 - `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the base to move.
 - `destination` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.2.50/spatialmath#Pose): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
 - `slamName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the {{< glossary_tooltip term_id="slam" text="SLAM service" >}} from which the SLAM map is requested.
-- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `motionConfig` [(\*MotionConfiguration)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MotionConfiguration): The configuration you want to set across this machine for this motion service. This parameter and each of its fields are optional.
+  - `ObstacleDetectors` [([]ObstacleDetectorName)](https://pkg.go.dev/go.viam.com/rdk/services/motion#ObstacleDetectorName): The names of each [vision service](/ml/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.
+  - `PositionPollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the position of the machine.
+  - `ObstaclePollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the vision service for new obstacles.
+  - `PlanDeviationM` [(float64)](https://pkg.go.dev/builtin#float64): The distance in meters that the machine can deviate from the motion plan.
+  - `LinearMPerSec` [(float64)](https://pkg.go.dev/builtin#float64): Linear velocity this machine should target when moving.
+  - `AngularDegsPerSec` [(float64)](https://pkg.go.dev/builtin#float64): Angular velocity this machine should target when turning.
+ - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [(bool)](https://pkg.go.dev/builtin#bool): Whether the request to `MoveOnMap` was successful.
+- [(ExecutionID)](https://pkg.go.dev/go.viam.com/rdk/services/motion@v0.15.1#ExecutionID): ExecutionID of the `MoveOnGlobe` call.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v0.2.50/services/motion#Service).
@@ -421,7 +455,7 @@ mySLAMServiceResourceName := slam.Named("my_slam_service")
 myPose := spatialmath.NewPoseFromPoint(r3.Vector{Y: 10})
 
 // Move the base component to the destination pose of Y=10, a location of (0, 10, 0) in respect to the origin of the map
-success, err := motionService.MoveOnMap(context.Background(), myBaseResourceName, myPose, mySLAMServiceResourceName, nil)
+executionID, err := motionService.MoveOnMap(context.Background(), myBaseResourceName, myPose, mySLAMServiceResourceName, nil)
 ```
 
 {{% /tab %}}
@@ -476,7 +510,7 @@ Translation in obstacles is not supported by the [navigation service](/mobility/
   - `obstacle_detectors` [(Iterable[ObstacleDetector])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ObstacleDetector): The names of each [vision service](/ml/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.
   - `position_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the position of the machine.
   - `obstacle_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the vision service for new obstacles.
-  - `plan_deviation_m` [(float)](https://docs.python.org/3/library/functions.html#float): The distance in millimeters that the machine can deviate from the motion plan.
+  - `plan_deviation_m` [(float)](https://docs.python.org/3/library/functions.html#float): The distance in meters that the machine can deviate from the motion plan.
   - `linear_m_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Linear velocity this machine should target when moving.
   - `angular_degs_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Angular velocity this machine should target when turning.
 - `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
@@ -522,7 +556,7 @@ execution_id = await motion.move_on_globe(
     - `ObstacleDetectors` [([]ObstacleDetectorName)](https://pkg.go.dev/go.viam.com/rdk/services/motion#ObstacleDetectorName): The names of each [vision service](/ml/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.
     - `PositionPollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the position of the machine.
     - `ObstaclePollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the vision service for new obstacles.
-    - `PlanDeviationMM` [(float64)](https://pkg.go.dev/builtin#float64): The distance in millimeters that the machine can deviate from the motion plan.
+    - `PlanDeviationM` [(float64)](https://pkg.go.dev/builtin#float64): The distance in meters that the machine can deviate from the motion plan.
     - `LinearMPerSec` [(float64)](https://pkg.go.dev/builtin#float64): Linear velocity this machine should target when moving.
     - `AngularDegsPerSec` [(float64)](https://pkg.go.dev/builtin#float64): Angular velocity this machine should target when turning.
   - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
@@ -557,7 +591,7 @@ executionID, err := motionService.MoveOnGlobe(ctx, motion.MoveOnGlobeReq{
 
 ### StopPlan
 
-Stop a [base](/components/base/) component being moved by an in progress [`MoveOnGlobe`](/mobility/motion/#moveonglobe) call.
+Stop a [base](/components/base/) component being moved by an in progress [`MoveOnGlobe`](/mobility/motion/#moveonglobe) or [`MoveOnMap`](/mobility/motion/#moveonmap) call.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -586,7 +620,7 @@ my_base_resource_name = Base.get_resource_name("my_base")
 #    destination=my_destination,
 #    movement_sensor_name=mvmnt_sensor_resource_name)
 
-# Stop the base component which was instructed to move by `MoveOnGlobe()`
+# Stop the base component which was instructed to move by `MoveOnGlobe()` or `MoveOnMap()`
 my_base_resource_name = Base.get_resource_name("my_base")
 await motion.stop_plan(component_name=mvmnt_sensor)
 ```
@@ -621,7 +655,7 @@ ctx := context.Background()
 //     MovementSensorName: myMvmntSensorResourceName,
 // })
 
-// Stop the base component which was instructed to move by `MoveOnGlobe()`
+// Stop the base component which was instructed to move by `MoveOnGlobe()` or `MoveOnMap()`
 err := motionService.StopPlan(context.Background(), motion.StopPlanReq{
     ComponentName: s.req.ComponentName,
 })
@@ -632,13 +666,13 @@ err := motionService.StopPlan(context.Background(), motion.StopPlanReq{
 
 ### GetPlan
 
-By default, returns the plan history of the most recent [`MoveOnGlobe`](/mobility/motion/#moveonglobe) call to move a [base](/components/base/) component.
+By default, returns the plan history of the most recent [`MoveOnGlobe`](/mobility/motion/#moveonglobe) or [`MoveOnMap`](/mobility/motion/#moveonmap) call to move a [base](/components/base/) component.
 
 The plan history for executions before the most recent can be requested by providing an `ExecutionID` in the request.
 
 Returns a result if both of the following conditions are met:
 
-- the execution (call to `MoveOnGlobe`) is still executing **or** changed state within the last 24 hours
+- the execution (call to `MoveOnGlobe` or `MoveOnMap`) is still executing **or** changed state within the last 24 hours
 - the machine has not reinitialized
 
 Plans never change.
@@ -672,7 +706,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 motion = MotionClient.from_robot(robot=robot, name="builtin")
 my_base_resource_name = Base.get_resource_name("my_base")
 # Get the plan(s) of the base component which was instructed
-# to move by `MoveOnGlobe()`
+# to move by `MoveOnGlobe()` or `MoveOnMap()`
 resp = await motion.get_plan(component_name=my_base_resource_name)
 ```
 
@@ -697,7 +731,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ```go {class="line-numbers linkable-line-numbers"}
 motionService, err := motion.FromRobot(robot, "builtin")
-// Get the plan(s) of the base component's most recent execution i.e. `MoveOnGlobe()` call.
+// Get the plan(s) of the base component's most recent execution i.e. `MoveOnGlobe()` or `MoveOnMap()` call.
 ctx := context.Background()
 planHistory, err := motionService.PlanHistory(ctx, motion.PlanHistoryReq{
     ComponentName: s.req.ComponentName,
@@ -709,7 +743,7 @@ planHistory, err := motionService.PlanHistory(ctx, motion.PlanHistoryReq{
 
 ### ListPlanStatuses
 
-Returns the statuses of plans created by [`MoveOnGlobe`](/mobility/motion/#moveonglobe) calls that meet at least one of the following conditions since the motion service initialized:
+Returns the statuses of plans created by [`MoveOnGlobe`](/mobility/motion/#moveonglobe) or [`MoveOnMap`](/mobility/motion/#moveonmap) calls that meet at least one of the following conditions since the motion service initialized:
 
 - the plan's status is in progress
 - the plan's status changed state within the last 24 hours
@@ -757,7 +791,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ```go {class="line-numbers linkable-line-numbers"}
 motionService, err := motion.FromRobot(robot, "builtin")
-// Get the plan(s) of the base component's most recent execution i.e. `MoveOnGlobe()` call.
+// Get the plan(s) of the base component's most recent execution i.e. `MoveOnGlobe()` or `MoveOnMap()` call.
 ctx := context.Background()
 planStatuses, err := motionService.ListPlanStatuses(ctx, motion.ListPlanStatusesReq{})
 ```
