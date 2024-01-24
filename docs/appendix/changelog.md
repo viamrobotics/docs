@@ -10,6 +10,29 @@ aliases:
 layout: "changelog"
 ---
 
+## December 2023
+
+{{% changelog color="added" title="Filtered camera module" %}}
+
+Viam has added a [`filtered-camera` module](https://app.viam.com/module/erh/filtered-camera) that selectively captures and syncs only the images that match the detections of an ML model.
+For example, you could train an ML model that is focused on sports cars, and only capture images from the camera feed when a sports car is detected in the frame.
+
+Check out [this tutorial](/tutorials/projects/filtered-camera/) for more information.
+
+{{% /changelog %}}
+
+{{% changelog color="added" title="Raspberry Pi 5 Support" %}}
+
+You can now run `viam-server` on a [Raspberry Pi 5](/components/board/pi5/) with the new board model [`pi5`](/components/board/pi5/).
+
+{{% /changelog %}}
+
+{{% changelog color="added" title="Role-based access control" %}}
+
+Users can now have [access to different fleet management capabilities](/fleet/rbac/) depending on whether they are an owner or an operator of a given organization, location, or machine.
+
+{{% /changelog %}}
+
 ## November 2023
 
 {{% changelog color="added" title="Authenticate with location API key" %}}

@@ -62,7 +62,7 @@ Import the power sensor package for the SDK you are using:
 {{% tab name="Python" %}}
 
 ```python
-from viam.components.powersensor import powersensor
+from viam.components.power_sensor import PowerSensor
 ```
 
 {{% /tab %}}
