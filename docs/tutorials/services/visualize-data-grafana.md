@@ -1,7 +1,6 @@
 ---
 title: "Visualize Data With Grafana"
 linkTitle: "Visualize Data With Grafana"
-weight: 4
 type: "docs"
 description: "Collect data from your machine or fleet and visualize it in Grafana."
 image: "/tutorials/visualize-data-grafana/grafana-dashboard-preview.png"
@@ -12,7 +11,7 @@ authors: []
 languages: []
 viamresources: ["data_manager"]
 level: "Intermediate"
-date: "19 January 2024"
+date: "2024-01-19"
 cost: "0"
 no_list: true
 # SMEs: Alexa Greenberg, Natalia Jacobowitz
