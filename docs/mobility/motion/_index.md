@@ -687,7 +687,7 @@ Replans always create new plans.
 
 Replans share the `ExecutionID` of the previously executing plan.
 
-All repeated fields are in time ascending order.
+All repeated fields are in chronological order.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
