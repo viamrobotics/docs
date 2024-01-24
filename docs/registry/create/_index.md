@@ -86,8 +86,8 @@ For example, if you wanted to add support for a new [base component](/components
 The built-in `Base` class is defined in the [Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk) in the following file:
 
 <!-- prettier-ignore -->
-| Function | Description |
-| ---- | ----------- |
+| Resource Model File | Description |
+| ------------------- | ----------- |
 | [src/viam/components/base/base.py](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/base/base.py) | Defines the built-in `Base` class, which includes several built-in methods such as `move_straight()`. |
 
 {{% alert title="Tip" color="tip" %}}
@@ -305,8 +305,8 @@ For example, if you wanted to add support for a new [base component](/components
 The built-in `base` package is defined in the [Viam Go SDK](https://github.com/viamrobotics/rdk/) in the following file:
 
 <!-- prettier-ignore -->
-| Function | Description |
-| ---- | ----------- |
+| Resource Model File | Description |
+| ------------------- | ----------- |
 | [components/base/base.go](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go) | Defines the built-in `base` package, which includes several built-in methods such as `MoveStraight()`. |
 
 {{% alert title="Tip" color="tip" %}}
@@ -437,7 +437,7 @@ type Config struct {
 // this Validate checks if the left and right motors exist for the module's base model.
 func (cfg *Config) Validate(path string) ([]string, error) {
     // check if the attribute fields for the right and left motors are non-empty
-    // this makes them reuqired for the model to successfully build
+    // this makes them required for the model to successfully build
     if cfg.LeftMotor == "" {
         return nil, fmt.Errorf(`expected "motorL" attribute for mybase %q`, path)
     }
@@ -548,8 +548,8 @@ For example, if you wanted to add support for a new [base component](/components
 The built-in `Base` class is defined in the [Viam C++ SDK](https://cpp.viam.dev/) in the following files:
 
 <!-- prettier-ignore -->
-| Function | Description |
-| ---- | ----------- |
+| Resource Model File | Description |
+| ------------------- | ----------- |
 | [components/base/base.cpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.cpp) | Defines the specific functionality of the built-in `Base` class. |
 | [components/base/base.hpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.hpp) | Defines the implementation of functionality defined in `base.cpp`, which includes the declaration of several built-in functions such as `move_straight()`. |
 
