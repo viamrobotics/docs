@@ -407,7 +407,7 @@ motion = MotionClient.from_robot(robot=robot, name="builtin")
 
 # Get the ResourceNames of the base and SLAM service
 my_base_resource_name = Base.get_resource_name("my_base")
-my_slam_resource_name = SLAMClient.get_resource_name("my_slam_service")
+my_slam_service_name = SLAMClient.get_resource_name("my_slam_service")
 
 # Define a destination pose with respect to the origin of the map from the SLAM
 # service "my_slam_service"
@@ -416,8 +416,8 @@ my_pose = Pose(y=10)
 # Move the base component to the destination pose of Y=10, a location of
 # (0, 10, 0) in respect to the origin of the map
 execution_id = await motion.move_on_map(component_name=my_base_resource_name,
-                                   destination=my_pose,
-                                   slam_service_name=my_slam_resource_name)
+                                        destination=my_pose,
+                                        slam_service_name=my_slam_service_name)
 ```
 
 {{% /tab %}}
@@ -620,7 +620,8 @@ my_base_resource_name = Base.get_resource_name("my_base")
 #    destination=my_destination,
 #    movement_sensor_name=mvmnt_sensor_resource_name)
 
-# Stop the base component which was instructed to move by `MoveOnGlobe()` or `MoveOnMap()`
+# Stop the base component which was instructed to move by `MoveOnGlobe()`
+# or `MoveOnMap()`
 my_base_resource_name = Base.get_resource_name("my_base")
 await motion.stop_plan(component_name=mvmnt_sensor)
 ```
