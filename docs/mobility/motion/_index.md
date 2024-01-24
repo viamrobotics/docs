@@ -441,7 +441,7 @@ execution_id = await motion.move_on_map(component_name=my_base_resource_name,
 
 **Returns:**
 
-- [(ExecutionID)](https://pkg.go.dev/go.viam.com/rdk/services/motion#ExecutionID): ExecutionID of the `MoveOnGlobe` call.
+- [(ExecutionID)](https://pkg.go.dev/go.viam.com/rdk/services/motion#ExecutionID): ExecutionID of the `MoveOnMap` call.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
