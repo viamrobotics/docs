@@ -20,7 +20,7 @@ A `sensor-controlled` base supports a robotic base with feedback control from a 
 - Orientation feedback, used by the base's [Spin()](/components/base/#spin) endpoint
   {{% /alert %}}
 
-To configure a `sensor-controlled` base as a component of your machine, first configure the [model of base](/components/base/) you want to wrap with feedback control and each required [movement sensor(s)](/components/movement-sensor/).
+To configure a `sensor-controlled` base as a component of your machine, first configure the [model of base](/components/base/) you want to wrap with feedback control and each required [movement sensor](/components/movement-sensor/).
 To see what models of movement sensor report which feedback, reference the appropriate column in [Movement Sensor API](/components/movement-sensor/#api).
 
 Configure a `sensor-controlled` base as follows:
