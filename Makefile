@@ -57,5 +57,5 @@ serve-dev-draft: setup
 serve-dev-future: setup
 	hugo server -F $(DEV_OPTIONS) $(SERVE_OPTIONS)
 
-fix: setup
+prettierfix: setup
 	./node_modules/prettier/bin/prettier.cjs --check docs/**/*.md --fix --write
