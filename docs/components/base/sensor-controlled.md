@@ -14,7 +14,7 @@ aliases:
 A `sensor-controlled` base supports a robotic base with feedback control from a movement sensor.
 
 {{% alert title="Requirements" color="note" %}}
-1 or more [movement sensors](/components/movement-sensor) providing:
+1 or more [movement sensors](/components/movement-sensor/) providing:
 
 - Linear and angular velocity feedback, used by the base's [SetVelocity()](/components/base/#setvelocity) endpoint
 - Orientation feedback, used by the base's [Spin()](/components/base/#spin) endpoint
