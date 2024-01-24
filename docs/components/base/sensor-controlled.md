@@ -1,9 +1,9 @@
 ---
 title: "Configure a Sensor-Controlled Base"
 linkTitle: "sensor-controlled"
-weight: 30
+weight: 40
 type: "docs"
-description: "Configure a sensor-controlled base."
+description: "Configure a sensor-controlled base, a robotic base with feedback control from a movement sensor."
 images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:
@@ -11,16 +11,16 @@ aliases:
 # SMEs: Rand H., Martha J.
 ---
 
-A `sensor-controlled` base supports a wheeled robotic base with feedback control from a movement sensor.
+A `sensor-controlled` base supports a robotic base with feedback control from a movement sensor.
 
 {{% alert title="Requirements" color="note" %}}
 1 or more [movement sensors](/components/movement-sensor) providing:
 
-- Linear and angular velocity feedback, used by the bases' [SetVelocity()](/components/base/#setvelocity) endpoint
-- Orientation feedback, used by the bases' [Spin()](/components/base/#spin) endpoint
-{{% /alert %}}
+- Linear and angular velocity feedback, used by the base's [SetVelocity()](/components/base/#setvelocity) endpoint
+- Orientation feedback, used by the base's [Spin()](/components/base/#spin) endpoint
+  {{% /alert %}}
 
-To configure a `sensor-controlled` base as a component of your machine, first configure the base and required [movement sensor(s)](/components/movement-sensor/).
+To configure a `sensor-controlled` base as a component of your machine, first configure the [model of base](/components/base/) you want to wrap with feedback control and each required [movement sensor(s)](/components/movement-sensor/).
 To see what models of movement sensor report which feedback, reference the appropriate column in [Movement Sensor API](/components/movement-sensor/#api).
 
 Configure a `sensor-controlled` base as follows:
@@ -41,7 +41,26 @@ Edit and fill in the attributes as applicable.
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
-
+{
+  "components": [
+    { ... INSERT MOVEMENT SENSOR CONFIGURATION },
+    { ... INSERT BASE CONFIGURATION },
+    {
+      "name": "my-sensor-controlled-base",
+      "model": "sensor-controlled",
+      "type": "base",
+      "namespace": "rdk",
+      "attributes": {
+        "movement_sensor": [
+          "<your-orientation-or-velocity-movement-sensor-1>",
+          "<your-orientation-or-velocity-movement-sensor-2>"
+        ],
+        "base": "<your-base>"
+      },
+      "depends_on": []
+    }
+  ]
+}
 ```
 
 {{% /tab %}}
@@ -52,12 +71,14 @@ The following attributes are available for `sensor-controlled` bases:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `left` | array | **Required** | Array with the `name` of any drive motors on the left side of the base. |
-| `right` | array | **Required** | Array with the `name` of any drive motors on the right side of the base. |
-| `wheel_circumference_mm` | int | **Required** | The outermost circumference of the drive wheels in millimeters. Used for odometry. Can be an approximation. |
-| `width_mm` | int | **Required** | Width of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels. Can be an approximation. |
-| `spin_slip_factor` | float | Optional | Can be used in steering calculations to correct for slippage between the wheels and the floor. If utilized, calibrated by the user. |
+| `movement-sensor` | array | **Required** | Array with the `name` of any movement sensors on your base you want to gather feedback from. |
+| `base` | string | **Required** | String with the `name` of the base you want to wrap with sensor control. |
 
 ## Test the base
 
 {{< readfile "/static/include/components/test-control/base-control.md" >}}
+
+The following motor control API methods are available with feedback control on a `sensor-controlled` base:
+
+- [SetVelocity()](/components/base/#setvelocity): available if base is configured to receive angular and linear velocity feedback.
+- [Spin()](/components/base/#spin): available if base is configured to receive orientation feedback.
