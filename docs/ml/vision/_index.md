@@ -109,14 +109,14 @@ Different vision service models support different methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a machine configured with a [camera](/components/camera/) and a vision service [detector](/ml/vision/detection/), [classifier](/ml/vision/classification/) or [segmenter](/ml/vision/segmentation/), as applicable, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
+The following code examples assume that you have a machine configured with a [camera](/components/camera/) and a vision service [detector](/ml/vision/#detections), [classifier](/ml/vision/#classifications) or [segmenter](/ml/vision/#segmentations), as applicable, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
 Go to your machine's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 
 ### GetDetections
 
-Get a list of detections from a given image using a configured [detector](./detection/).
+Get a list of detections from a given image using a configured [detector](#detections).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -198,7 +198,7 @@ if len(detections) > 0 {
 
 ### GetDetectionsFromCamera
 
-Get a list of detections from the next image from a specified camera using a configured [detector](./detection/).
+Get a list of detections from the next image from a specified camera using a configured [detector](./#detections).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -269,7 +269,7 @@ if len(detections) > 0 {
 
 ### GetClassifications
 
-Get a list of classifications from a given image using a configured [classifier](./classification/).
+Get a list of classifications from a given image using a configured [classifier](#classifications).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -355,7 +355,7 @@ if len(classifications) > 0 {
 
 ### GetClassificationsFromCamera
 
-Get a list of classifications from the next image from a specified camera using a configured [classifier](./classification/).
+Get a list of classifications from the next image from a specified camera using a configured [classifier](#classifications).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -432,7 +432,7 @@ if len(classifications) > 0 {
 
 ### GetObjectPointClouds
 
-Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using a specified [segmenter](./segmentation/)).
+Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using a specified [segmenter](#segmentations)).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

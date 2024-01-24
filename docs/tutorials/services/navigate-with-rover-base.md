@@ -600,8 +600,8 @@ Attribute information for an `ultrasonic` [camera](/components/camera/) is the s
 
 {{< /alert >}}
 
-If you want the robot to be able to automatically detect obstacles in front of it, [configure a Vision service segmenter](/ml/vision/segmentation/).
-For example, [configure](/ml/vision/segmentation/#configure-an-obstacles_depth-segmenter) the Vision service model [`obstacles_depth`](/ml/vision/segmentation/#configure-an-obstacles_depth-segmenter) to detect obstacles in front of the robot.
+If you want the robot to be able to automatically detect obstacles in front of it, [configure a Vision service segmenter](/ml/vision/#segmentation).
+For example, [configure](/ml/vision/obstacles_depth/) the Vision service model [`obstacles_depth`](/ml/vision/obstacles_depth/) to detect obstacles in front of the robot.
 Then, use one of [Viam's client SDKs](/build/program/) to automate obstacle avoidance with the navigation service like in the following Python program:
 
 {{%expand "Click to view full example of automated obstacle avoidance with the Python SDK" %}}
