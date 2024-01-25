@@ -68,9 +68,9 @@ If you are using a [rented Viam rover](/get-started/try-viam/), adding modules i
 
 To add a modular [component](/components/) from the Viam registry to your machine:
 
-1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-1. Click on the **Components** subtab and click the **Create component** button.
-1. Browse the list of available component types, and select the specific modular component you'd like to add.
+1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+2. Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+3. Browse the list of available component types, and select the specific modular component you'd like to add.
 
    {{<imgproc src="registry/configure/add-component-by-category.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module when searching by the category 'camera'">}}
 
@@ -78,7 +78,7 @@ To add a modular [component](/components/) from the Viam registry to your machin
 
    {{<imgproc src="registry/configure/add-component-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module when searching by the name 'realsense'">}}
 
-1. After selecting the modular component, click the **Add module** button, enter a name for your modular component, and click **Create** to add it to your machine's component configuration.
+4. After selecting the modular component, enter a name for your modular component and click **Create** to add it to your machine's component configuration.
 
    {{<imgproc src="registry/configure/add-component-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing the intel realsense module pane, with the 'Add module' button shown">}}
 
@@ -97,9 +97,9 @@ Deleting a module _does not_ delete any configured modular resources it provides
 
 To add a modular [service](/services/) from the Viam registry to your machine:
 
-1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-1. Click on the **Services** subtab and click the **Create service** button.
-1. Browse the list of available service types and select the specific modular service you'd like to add.
+1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+2. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+3. Browse the list of available service types and select the specific modular service you'd like to add.
 
    {{<imgproc src="registry/configure/add-service-by-category.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the mlmodelservice triton module when searching by the category 'ML Model'">}}
 
@@ -107,7 +107,7 @@ To add a modular [service](/services/) from the Viam registry to your machine:
 
    {{<imgproc src="registry/configure/add-service-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the mlmodelservice triton module when searching by the name 'triton'">}}
 
-1. After selecting the modular service, click the **Add module** button, enter a name for your modular service, and click **Create** to add it to your machine's service configuration.
+4. After selecting the modular service, enter a name for your modular service and click **Create** to add it to your machine's service configuration.
 
    {{<imgproc src="registry/configure/add-service-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing the mlmodelservice triton module pane, with the 'Add module' button shown">}}
 

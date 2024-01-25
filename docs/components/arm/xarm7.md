@@ -16,8 +16,8 @@ Configure an `xArm7` arm to integrate a [UFACTORY xArm 7](https://www.ufactory.c
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `arm` type, then select the `xArm7` model.
 Enter a name for your arm and click **Create**.
 
