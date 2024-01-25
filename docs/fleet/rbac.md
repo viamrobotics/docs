@@ -13,8 +13,8 @@ Users can have access to different fleet management capabilities depending on wh
 
 - **Owner**: Can see and edit [every tab on the machine page](/fleet/machines/#navigating-the-machine-page).
   Can manage users in the app.
-- **Operator**: Can see and use only the [**Control** tab](/fleet/machines/#control).
-  Cannot see or edit the [**Setup**](/fleet/machines/#setup), [**Config**](/fleet/machines/#configuration), [**History**](/fleet/machines/#history), [**Logs**](/fleet/machines/#logs), [**Code sample**](/fleet/machines/#code-sample), or [**Security**](/fleet/machines/#security) tabs.
+- **Operator**: Can see and use only the [**CONTROL**](/fleet/machines/#control) tab.
+  Cannot see or edit the [**CONFIGURE**](/fleet/machines/#configuration), [**LOGS**](/fleet/machines/#logs), or **CONNECT** tabs.
 
 For more detailed information on the permissions each role confers for different resources, see [Permissions](/fleet/rbac/#permissions).
 
@@ -107,8 +107,8 @@ Permissions for managing {{< glossary_tooltip term_id="machine" text="machines" 
 
 | Permissions                                                   | Org owner | Org operator | Location owner | Location operator | Machine owner | Machine operator |
 | ------------------------------------------------------------- | --------- | ------------ | -------------- | ----------------- | ------------- | ---------------- |
-| Control the machine from the **Control** tab                  | **Yes**   | **Yes**      | **Yes**        | **Yes**           | **Yes**       | **Yes**          |
-| See all tabs (such as **Config** and **Logs**)                | **Yes**   | No           | **Yes**        | No                | **Yes**       | No               |
+| Control the machine from the **CONTROL** tab                  | **Yes**   | **Yes**      | **Yes**        | **Yes**           | **Yes**       | **Yes**          |
+| See all tabs (such as **CONFIGURE** and **LOGS**)             | **Yes**   | No           | **Yes**        | No                | **Yes**       | No               |
 | Edit machine name                                             | **Yes**   | No           | **Yes**        | No                | **Yes**       | No               |
 | Delete the machine                                            | **Yes**   | No           | **Yes**        | No                | **Yes**       | No               |
 | Add a new {{< glossary_tooltip term_id="part" text="part" >}} | **Yes**   | No           | **Yes**        | No                | **Yes**       | No               |
