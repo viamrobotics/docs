@@ -375,12 +375,12 @@ You need to get the API keys from the Viam app and store them in an environmenta
 
 2. Go to the [Viam app](https://app.viam.com) and log in.
 
-3. Click the organization drop-down menu on the right side of the top banner.
+3. Click the organization dropdown menu on the right side of the top banner.
    If you're not already in the organization you want to connect to, click the correct organization name to navigate to it.
 
-   {{<imgproc src="/tutorials/flutter-app/org-drop-down.png" resize="1200x" style="max-width:800px" declared-dimensions="true" alt="The Viam web app with the organization drop-down labeled 'Clint's Org' highlighted.">}}
+   {{<imgproc src="/tutorials/flutter-app/org-dropdown.png" resize="1200x" style="max-width:800px" declared-dimensions="true" alt="The Viam web app with the organization dropdown labeled 'Clint's Org' highlighted.">}}
 
-4. Click the organization drop-down menu again and click **Settings**.
+4. Click the organization dropdown menu again and click **Settings**.
 
 5. Scroll to the **API Keys** section.
    You can find and use an existing API key for your smart machine, or you can create a new one for this application.
@@ -388,7 +388,7 @@ You need to get the API keys from the Viam app and store them in an environmenta
 
    1. Click **Generate key**.
    2. Give the key a name like "flutter-app-my-org-name."
-   3. Click the **Resource** drop-down and select your organization.
+   3. Click the **Resource** dropdown and select your organization.
    4. Set **Role** to **Owner**.
    5. Click **Generate key**.
    6. The new key populates at the bottom of the list.
