@@ -82,8 +82,7 @@ If your module references {{< glossary_tooltip term_id="pin-number" text="pin nu
 
 First, inspect the built-in class provided by the resource API that you are extending.
 
-For example, if you wanted to add support for a new [base component](/components/base/) to Viam, you would start by looking at the built-in base component class.
-The built-in `Base` class is defined in the [Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk) in the following file:
+For example, if you wanted to add support for a new [base component](/components/base/) to Viam (the component that represents the central physical platform of your machine, to which all other components are connected), you would start by looking at the built-in `Base` component class, which is defined in the [Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk) in the following file:
 
 <!-- prettier-ignore -->
 | Resource Model File | Description |
@@ -301,8 +300,7 @@ You can find additional Python example modules in the [Python SDK `examples` dir
 
 First, inspect the built-in package provided by the resource API that you are extending.
 
-For example, if you wanted to add support for a new [base component](/components/base/) to Viam, you would start by looking at the built-in base component package.
-The built-in `base` package is defined in the [Viam Go SDK](https://github.com/viamrobotics/rdk/) in the following file:
+For example, if you wanted to add support for a new [base component](/components/base/) to Viam (the component that represents the central physical platform of your machine, to which all other components are connected), you would start by looking at the built-in `base` component package, which is defined in the [Viam Go SDK](https://github.com/viamrobotics/rdk/) in the following file:
 
 <!-- prettier-ignore -->
 | Resource Model File | Description |
@@ -543,21 +541,21 @@ You can find additional Go example modules in the [Go SDK `examples` directory](
 {{% tab name="C++" %}}
 
 First, inspect the built-in class provided by the resource API that you are extending.
+In the C++ SDK, all built-in classes are abstract classes.
 
-For example, if you wanted to add support for a new [base component](/components/base/) to Viam, you would start by looking at the built-in base component class.
-The built-in `Base` class is defined in the [Viam C++ SDK](https://cpp.viam.dev/) in the following files:
+For example, if you wanted to add support for a new [base component](/components/base/) to Viam (the component that represents the central physical platform of your machine, to which all other components are connected), you would start by looking at the built-in `Base` component class, which is defined in the [Viam C++ SDK](https://cpp.viam.dev/) in the following files:
 
 <!-- prettier-ignore -->
 | Resource Model File | Description |
 | ------------------- | ----------- |
-| [components/base/base.cpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.cpp) | Defines the specific functionality of the built-in `Base` class. |
-| [components/base/base.hpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.hpp) | Defines the implementation of functionality defined in `base.cpp`, which includes the declaration of several built-in functions such as `move_straight()`. |
+| [components/base/base.hpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.hpp) | Defines the API of the built-in `Base` class, which includes the declaration of several purely virtual built-in functions such as `move_straight()`. |
+| [components/base/base.cpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.cpp) | Provides implementations of the non-purely virtual functionality defined in `base.hpp`. |
 
 {{% alert title="Tip" color="tip" %}}
 You can view the other built-in component classes in similar fashion.
-For example, the `Camera` class is defined in [camera.cpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/camera/camera.cpp) and its functions declared in [camera.hpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/camera/camera.hpp), while the `Sensor` class is defined in [sensor.cpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/sensor/sensor.cpp) and its functions declared in [sensor.hpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/sensor/sensor.hpp).
+For example, the API of the built-in `Camera` class is defined in [camera.hpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/camera/camera.hpp) and its non-purely virtual functions are declared in [camera.cpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/camera/camera.cpp), while the API of the built-in `Sensor` class is defined in [sensor.hpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/sensor/sensor.hpp) and its non-purely virtual functions are declared in [sensor.cpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/sensor/sensor.cpp).
 The same applies to service APIs.
-For example, the `MLModelService` class for the ML Model service is defined in [mlmodel.cpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/services/mlmodel/mlmodel.cpp) and its functions declared in [mlmodel.hpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/services/mlmodel/mlmodel.hpp).
+For example, the API of the built-in `MLModelService` class for the ML Model service is defined in [mlmodel.hpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/services/mlmodel/mlmodel.hpp) and its non-purely virtual functions declared in [mlmodel.cpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/services/mlmodel/mlmodel.cpp).
 {{% /alert %}}
 
 Take note of the functions defined as part of the class API, such as `move_straight()` for the `Base` class.
@@ -570,18 +568,73 @@ Otherwise, your new class will not instantiate.
 For example, if your model implements the `base` class, you would either need to implement the [`move_straight()` virtual method](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.hpp#L72), or `throw` a `runtime_error` in the body of that function.
 However, you would _not_ need to implement the [`resource_registration()`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.hpp#L56) function, as it is not a virtual method.
 
-Next, create your source file (`.cpp`) and your header file (`.hpp`), which together define your new resource model.
-The source file includes function and object definitions for your class, while the header file includes the specific declarations of the functions provided by your class.
+Next, create your header file (`.hpp`) and source file (`.cpp`), which together define your new resource model.
+The header file defines the API of your class, and includes the declaration of any purely virtual functions, while the source file includes implementations of the functionality of your class.
 
 For example, the files below define the new `MyBase` class and its constituent functions:
 
-- The `my_base.cpp` source file contains the function and object definitions used by the `MyBase` class.
-- The `my_base.hpp` header file defines the `MyBase` class, which inherits from the built-in `Base` class.
+- The `my_base.hpp` header file defines the API of the `MyBase` class, which inherits from the built-in `Base` class.
   It defines a new method `validate()`, but does not implement several built-in functions, including `move_straight()` and `set_velocity()`, instead it raises a `runtime_error` in the body of those functions.
   This prevents these functions from being used by new base components that use this modular resource, but meets the requirement that all built-in functions either be defined or `throw` a `runtime_error` error, to ensure that the new `MyBase` class successfully instantiates.
+- The `my_base.cpp` source file contains the function and object definitions used by the `MyBase` class.
 
-Note that the model triplet itself, `acme:my-custom-base-repo:mybase` in this example, is defined in the `main.cpp` file, which is described in the next section.
+Note that the model triplet itself, `acme:my-custom-base-repo:mybase` in this example, is defined in the entry point (main program) file `main.cpp`, which is described in the next section.
 
+<details>
+  <summary>Click to view sample code for the <file>my_base.hpp</file> header file</summary>
+
+```cpp {class="line-numbers linkable-line-numbers"}
+#pragma once
+
+#include <viam/sdk/components/base/base.hpp>
+#include <viam/sdk/components/component.hpp>
+#include <viam/sdk/components/motor/motor.hpp>
+#include <viam/sdk/config/resource.hpp>
+#include <viam/sdk/resource/resource.hpp>
+
+using namespace viam::sdk;
+
+// `MyBase` inherits from the `Base` class defined in the Viam C++ SDK and
+// implements some of the relevant methods along with `reconfigure`. It also
+// specifies a static `validate` method that checks configuration validity.
+class MyBase : public Base {
+   public:
+    MyBase(Dependencies deps, ResourceConfig cfg) : Base(cfg.name()) {
+        this->reconfigure(deps, cfg);
+    };
+    void reconfigure(Dependencies deps, ResourceConfig cfg) override;
+    static std::vector<std::string> validate(ResourceConfig cfg);
+
+    bool is_moving() override;
+    void stop(const AttributeMap& extra) override;
+    void set_power(const Vector3& linear,
+                   const Vector3& angular,
+                   const AttributeMap& extra) override;
+
+    AttributeMap do_command(const AttributeMap& command) override;
+    std::vector<GeometryConfig> get_geometries(const AttributeMap& extra) override;
+    Base::properties get_properties(const AttributeMap& extra) override;
+
+    void move_straight(int64_t distance_mm, double mm_per_sec, const AttributeMap& extra) override {
+        throw std::runtime_error("move_straight unimplemented");
+    }
+    void spin(double angle_deg, double degs_per_sec, const AttributeMap& extra) override {
+        throw std::runtime_error("spin unimplemented");
+    }
+    void set_velocity(const Vector3& linear,
+                      const Vector3& angular,
+                      const AttributeMap& extra) override {
+        throw std::runtime_error("set_velocity unimplemented");
+    }
+
+   private:
+    std::shared_ptr<Motor> left_;
+    std::shared_ptr<Motor> right_;
+};
+```
+
+</details>
+<br>
 <details>
   <summary>Click to view sample code for <file>my_base.cpp</file></summary>
 
@@ -709,61 +762,6 @@ Base::properties MyBase::get_properties(const AttributeMap& extra) {
     // Return fake properties.
     return {2, 4, 8};
 }
-```
-
-</details>
-<br>
-<details>
-  <summary>Click to view sample code for the <file>my_base.hpp</file> header file</summary>
-
-```cpp {class="line-numbers linkable-line-numbers"}
-#pragma once
-
-#include <viam/sdk/components/base/base.hpp>
-#include <viam/sdk/components/component.hpp>
-#include <viam/sdk/components/motor/motor.hpp>
-#include <viam/sdk/config/resource.hpp>
-#include <viam/sdk/resource/resource.hpp>
-
-using namespace viam::sdk;
-
-// `MyBase` inherits from the `Base` class defined in the Viam C++ SDK and
-// implements some of the relevant methods along with `reconfigure`. It also
-// specifies a static `validate` method that checks configuration validity.
-class MyBase : public Base {
-   public:
-    MyBase(Dependencies deps, ResourceConfig cfg) : Base(cfg.name()) {
-        this->reconfigure(deps, cfg);
-    };
-    void reconfigure(Dependencies deps, ResourceConfig cfg) override;
-    static std::vector<std::string> validate(ResourceConfig cfg);
-
-    bool is_moving() override;
-    void stop(const AttributeMap& extra) override;
-    void set_power(const Vector3& linear,
-                   const Vector3& angular,
-                   const AttributeMap& extra) override;
-
-    AttributeMap do_command(const AttributeMap& command) override;
-    std::vector<GeometryConfig> get_geometries(const AttributeMap& extra) override;
-    Base::properties get_properties(const AttributeMap& extra) override;
-
-    void move_straight(int64_t distance_mm, double mm_per_sec, const AttributeMap& extra) override {
-        throw std::runtime_error("move_straight unimplemented");
-    }
-    void spin(double angle_deg, double degs_per_sec, const AttributeMap& extra) override {
-        throw std::runtime_error("spin unimplemented");
-    }
-    void set_velocity(const Vector3& linear,
-                      const Vector3& angular,
-                      const AttributeMap& extra) override {
-        throw std::runtime_error("set_velocity unimplemented");
-    }
-
-   private:
-    std::shared_ptr<Motor> left_;
-    std::shared_ptr<Motor> right_;
-};
 ```
 
 </details>
