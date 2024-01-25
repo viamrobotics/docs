@@ -112,7 +112,7 @@ If you mark your module as public, you cannot change it back to private.
         <td><code>models</code></td>
         <td>object</td>
         <td><strong>Required</strong></td>
-        <td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/fleet/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p><p>For more information, see <a href="#naming-your-model-namespacerepo-namename">naming your model</a>.</p></td>
+        <td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/fleet/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p><p>For more information, see <a href="/registry/#naming-your-model-namespacerepo-namename">naming your model</a>.</p></td>
       </tr>
       <tr>
         <td><code>entrypoint</code></td>
@@ -146,7 +146,7 @@ If you mark your module as public, you cannot change it back to private.
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 
-For more information, see [naming your model](#naming-your-model-namespacerepo-namename).
+For more information, see [Naming your model](/registry/#naming-your-model-namespacerepo-namename).
 
     {{% /alert %}}
 
@@ -169,7 +169,7 @@ For more information, see [naming your model](#naming-your-model-namespacerepo-n
    tar -czf module.tar.gz run.sh requirements.txt src
    ```
 
-   Where `run.sh` is your [entrypoint file](/registry/create/#prepare-the-module-for-execution), `requirements.txt` is your [pip dependency list file](/registry/create/#prepare-the-module-for-execution), and `src` is the source directory of your module.
+   Where `run.sh` is your [entrypoint file](/registry/create/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/registry/create/#compile-or-package-your-module), and `src` is the source directory of your module.
 
    Supply the path to the resulting archive file in the next step.
 
@@ -257,7 +257,7 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
    tar -czf module.tar.gz run.sh requirements.txt src
    ```
 
-   Where `run.sh` is your [entrypoint file](/registry/create/#prepare-the-module-for-execution), `requirements.txt` is your [pip dependency list file](/registry/create/#prepare-the-module-for-execution), and `src` is the source directory of your module.
+   Where `run.sh` is your [entrypoint file](/registry/create/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/registry/create/#compile-or-package-your-module), and `src` is the source directory of your module.
 
    Supply the path to the resulting archive file in the next step.
 
@@ -282,7 +282,7 @@ For more information, see the [`viam module` command](/fleet/cli/#module)
 To update an existing module in the [Viam registry](https://app.viam.com/registry) using continuous integration (CI), you can use one of two Github actions.
 You can only use these GitHub actions if you have already created the module by running `viam module create` and `viam module update`.
 For most use cases, we recommend the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86, ARM Linux, and MacOS.
-However, if you already have your own CI with access to arm runners or only inted to build on `x86` or `mac`, you may also use the [`upload-module` GitHub action](https://github.com/viamrobotics/upload-module) instead which allows you to define the exact build steps.
+However, if you already have your own CI with access to arm runners or only intend to build on `x86` or `mac`, you may also use the [`upload-module` GitHub action](https://github.com/viamrobotics/upload-module) instead which allows you to define the exact build steps.
 
 1. Edit your custom module with the changes you'd like to make.
 
@@ -424,45 +424,12 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
    The specific step to take to release your software depends on your CI workflow, your GitHub configuration, and the `run` step you defined earlier.
    Once complete, your module will upload to the [Viam registry](https://app.viam.com/registry) with the appropriate version automatically.
 
-## Naming your model: namespace:repo-name:name
+For more details, see the [`upload-module` GitHub Action documentation](https://github.com/viamrobotics/upload-module), or take a look through one of the following example repositories that show how to package and deploy modules using the Viam SDKs:
 
-If you are [creating a custom module](/registry/create/) and want to [upload that module](/registry/upload/) to the Viam registry, ensure your model name meets the following requirements:
-
-- The namespace of your model **must** match the [namespace of your organization](/fleet/organizations/#create-a-namespace-for-your-organization).
-  For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:demo:mybase`.
-- Your model triplet must be all-lowercase.
-- Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
-
-For the middle segment of your model triplet `repo-name`, use the name of the git repository where you store your module's code.
-The `repo-name` should describe the common functionality provided across the model or models of that module.
-
-For example:
-
-- The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model uses the repository name [yahboom](https://github.com/viam-labs/yahboom).
-  The models implement the `rdk:component:arm` and the `rdk:component:gripper` API to support the Yahboom DOFBOT arm and gripper, respectively:
-
-  ```json
-  {
-      "api": "rdk:component:arm",
-      "model": "rand:yahboom:arm"
-  },
-  {
-      "api": "rdk:component:gripper",
-      "model": "rand:yahboom:gripper"
-  }
-  ```
-
-- The `viam-labs:audioout:pygame` model uses the repository name [audioout](https://github.com/viam-labs/audioout)
-  It implements the custom API `viam-labs:service:audioout`:
-
-  ```json
-  {
-    "api": "viam-labs:service:audioout",
-    "model": "viam-labs:audioout:pygame"
-  }
-  ```
-
-The `viam` namespace is reserved for models provided by Viam.
+- [Python with virtualenv](https://github.com/viam-labs/python-example-module)
+- [Python with docker](https://github.com/viamrobotics/python-container-module)
+- [Golang](https://github.com/viam-labs/wifi-sensor)
+- [C++](https://github.com/viamrobotics/module-example-cpp)
 
 ## Next Steps
 
