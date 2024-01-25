@@ -17,8 +17,8 @@ Configure a `fake` gripper to test implementing a gripper on your machine withou
 {{< tabs name="Configure a Fake Gripper" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `gripper` type, then select the `fake` model.
 Enter a name for your gripper and click **Create**.
 

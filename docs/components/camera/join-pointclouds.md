@@ -16,8 +16,8 @@ The `join_pointclouds` model combines the point clouds from multiple camera sour
 {{< tabs name="Configure a Join Point Clouds View" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `camera` type, then select the `join_pointclouds` model.
 Enter a name for your camera and click **Create**.
 
