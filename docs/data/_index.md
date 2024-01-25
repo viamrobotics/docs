@@ -33,6 +33,7 @@ Once you have captured and synced data, you can:
 {{% card link="/data/dataset/" %}}
 {{% card link="/data/export/" %}}
 {{% card link="/data/query/" %}}
+{{% card link="/data/visualize/" %}}
 {{< /cards >}}
 
 ## Used with
