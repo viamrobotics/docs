@@ -55,7 +55,7 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) for more information.
 
 - You must have an RPlidar, such as the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) or [RPlidar A3](https://www.slamtec.com/en/Lidar/A3), physically connected to your machine.
 
-  Be sure to position the RPlidar so that it **faces forward in the direction of travel**. For example, if you are using a Viam Rover and the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to the Rover so that the **pointed** end of the RPlidar mount housing is facing in the same direction as the webcam.
+  Be sure to position the RPlidar so that it **faces forward in the direction of travel**. For example, if you are using a [Viam Rover](https://www.viam.com/resources/rover) and the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to the Rover so that the **pointed** end of the RPlidar mount housing is facing in the same direction as the webcam.
 
   Furthermore, ensure that the center of the RPlidar is mounted at the center of your machine's [base](/components/base/).
   In the case of the Viam Rover the center is in the middle between the wheels.
@@ -69,7 +69,7 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) for more information.
 
   {{< alert title="SUPPORT" color="note" >}}
 
-  Currently, the `rplidar` and `cartographer` modules support the Linux platform only.
+  Currently, the `rplidar` and `cartographer` modules only support the Linux platform.
 
   {{< /alert >}}
 
@@ -91,18 +91,16 @@ Creating a new map uses an instance of the cartographer module running in the cl
    2. Click **Create service** in the lower-left corner of the page.
       Choose `Data Management` as the type and specify a name for your data management service, for example `Data-Management-Service`.
    3. Click **Create**.
-   4. On the panel that appears, you can manage the capturing and syncing functions and specify the **directory**, the sync **interval** and any **tags** to apply to captured data. See the [data management service](/data/) for more information.
+   4. On the panel that appears, you can manage the capturing and syncing functions. You can also specify the **directory**, the sync **interval**, and any **tags** to apply to captured data. See the [data management service](/data/) for more information.
 
    Enable data capture for your camera, and for your movement sensor if you would like to use a movement sensor to provide IMU input:
 
    5. Find the component's card on your machine's **Config** tab.
-   6. Click `Add Method` and then select the method type and the capture frequency. For the camera, choose the [`NextPointCloud`](/components/camera/#getpointcloud) method. For a movement sensor, choose the [`AngularVelocity`](/components/movement-sensor/#getangularvelocity) and [`LinearAcceleration`](/components/movement-sensor/#getlinearacceleration) methods.
+   6. Click `Add Method`, the specify the method type and the capture frequency. For the camera, choose the [`NextPointCloud`](/components/camera/#getpointcloud) method. For a movement sensor, choose the [`AngularVelocity`](/components/movement-sensor/#getangularvelocity) and [`LinearAcceleration`](/components/movement-sensor/#getlinearacceleration) methods.
       We recommend a capture frequency of `5` Hz for RPlidar cameras and `20` Hz for movement sensors.
 
    {{< alert title="Tip" color="tip" >}}
-   Be aware that data is not only captured when a slam session is running.
-   [Data Capture](/data/capture/) continuously monitors and captures your machine's sensor data while the machine is running.
-   To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/).
+   Note that [Data Capture](/data/capture/) continuously monitors and captures your machine’s sensor data while the machine is running. To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/) once you have finished your SLAM session.
    {{< /alert >}}
 
    Set up the `cartographer` module on your machine:
@@ -112,7 +110,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
    9. Select **SLAM**, then select `cartographer`.
       You can also search for "cartographer".
    10. Click **Add module**, give your service a name of your choice, then click **Create**.
-   11. In the resulting `SLAM` service configuration pane, first choose `Create new map` as the **Mapping mode**, then configure the rest of the **Attributes** for that mapping mode:
+   11. In the resulting `SLAM` service configuration pane, choose `Create new map` as the **Mapping mode**, then configure the rest of the **Attributes** for that mapping mode:
 
    - **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your machine](https://github.com/viamrobotics/rplidar).
      Example: "my-rplidar"
