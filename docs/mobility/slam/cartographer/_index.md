@@ -85,138 +85,137 @@ Creating a new map uses an instance of the cartographer module running in the cl
    {{< tabs name="Create new map">}}
    {{% tab name="Config Builder" %}}
 
-   Add the data management service:
+Add the data management service:
 
-   1. Navigate to the **Services** subtab on your machine's **Config** tab.
-   2. Click **Create service** in the lower-left corner of the page.
-      Choose `Data Management` as the type and specify a name for your data management service, for example `Data-Management-Service`.
-   3. Click **Create**.
-   4. On the panel that appears, you can manage the capturing and syncing functions. You can also specify the **directory**, the sync **interval**, and any **tags** to apply to captured data. See the [data management service](/data/) for more information.
+1.  Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+2.  Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+    Choose `Data Management` as the type and specify a name for your data management service, for example `Data-Management-Service`.
+3.  Click **Create**.
+4.  On the panel that appears, you can manage the capturing and syncing functions. You can also specify the **directory**, the sync **interval**, and any **tags** to apply to captured data. See the [data management service](/data/) for more information.
 
-   Enable data capture for your camera, and for your movement sensor if you would like to use a movement sensor to provide IMU input:
+Enable data capture for your camera, and for your movement sensor if you would like to use a movement sensor to provide IMU input:
 
-   5. Find the component's card on your machine's **Config** tab.
-   6. Click `Add Method`, the specify the method type and the capture frequency. For the camera, choose the [`NextPointCloud`](/components/camera/#getpointcloud) method. For a movement sensor, choose the [`AngularVelocity`](/components/movement-sensor/#getangularvelocity) and [`LinearAcceleration`](/components/movement-sensor/#getlinearacceleration) methods.
-      We recommend a capture frequency of `5` Hz for RPlidar cameras and `20` Hz for movement sensors.
+1.  Find the component's card on your machine's **Config** tab.
+1.  Click `Add Method`, the specify the method type and the capture frequency. For the camera, choose the [`NextPointCloud`](/components/camera/#getpointcloud) method. For a movement sensor, choose the [`AngularVelocity`](/components/movement-sensor/#getangularvelocity) and [`LinearAcceleration`](/components/movement-sensor/#getlinearacceleration) methods.
+    We recommend a capture frequency of `5` Hz for RPlidar cameras and `20` Hz for movement sensors.
 
-   {{< alert title="Tip" color="tip" >}}
-   Note that [Data Capture](/data/capture/) continuously monitors and captures your machine’s sensor data while the machine is running. To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/) once you have finished your SLAM session.
-   {{< /alert >}}
+{{< alert title="Tip" color="tip" >}}
+Note that [Data Capture](/data/capture/) continuously monitors and captures your machine’s sensor data while the machine is running. To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/) once you have finished your SLAM session.
+{{< /alert >}}
 
-   Set up the `cartographer` module on your machine:
+Set up the `cartographer` module on your machine:
 
-   7. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-   8. Click on the **Services** subtab and click **Create service** in the lower-left corner.
-   9. Select **SLAM**, then select `cartographer`.
-      You can also search for "cartographer".
-   10. Click **Add module**, give your service a name of your choice, then click **Create**.
-   11. In the resulting `SLAM` service configuration pane, choose `Create new map` as the **Mapping mode**, then configure the rest of the **Attributes** for that mapping mode:
+1.  Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+1.  Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+1.  Select the `SLAM` type, then the `cartographer` model.
+1.  Enter a name for your service and click **Create**.
+1.  In the resulting `SLAM` service configuration pane, first choose `Create new map` as the **Mapping mode**, then configure the rest of the **Attributes** for that mapping mode:
 
-   - **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your machine](https://github.com/viamrobotics/rplidar).
-     Example: "my-rplidar"
-   - **Movement Sensor (Optional)**: Select the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API.
-     Example: "my-imu"
-   - **Minimum range (meters)**: Set the minimum range of your `rplidar`.
-     See [config params](#config_params) for suggested values for RPLidar A1 and A3.
-   - **Maximum range (meters)**: Set the maximum range of your `rplidar`.
-     See [config params](#config_params) for suggested values for RPLidar A1 and A3.
+- **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your machine](https://github.com/viamrobotics/rplidar).
+  Example: "my-rplidar"
+- **Movement Sensor (Optional)**: Select the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API.
+  Example: "my-imu"
+- **Minimum range (meters)**: Set the minimum range of your `rplidar`.
+  See [config params](#config_params) for suggested values for RPLidar A1 and A3.
+- **Maximum range (meters)**: Set the maximum range of your `rplidar`.
+  See [config params](#config_params) for suggested values for RPLidar A1 and A3.
 
-   If you would like to tune additional Cartographer parameters, you can expand **Show additional parameters**.
-   See the [`config_params`](#config_params) section for more information on the other parameters.
+If you would like to tune additional Cartographer parameters, you can expand **Show additional parameters**.
+See the [`config_params`](#config_params) section for more information on the other parameters.
 
-   To save your changes, click **Save config** at the bottom of the page.
+To save your changes, click **Save config** at the bottom of the page.
 
-   Check the **Logs** tab of your machine in the Viam app to make sure your RPlidar has connected and no errors are being raised.
+Check the **Logs** tab of your machine in the Viam app to make sure your RPlidar has connected and no errors are being raised.
 
-   {{%/tab %}}
-   {{% tab name="JSON Example" %}}
+{{%/tab %}}
+{{% tab name="JSON Example" %}}
 
-   This example JSON configuration:
+This example JSON configuration:
 
-   - adds the `viam:rplidar` and the `viam:cartographer` modules
-   - configures the `viam:slam:cartographer` service and the [data management service](/data/)
-   - adds an `viam:lidar:rplidar` camera with data capture configured
+- adds the `viam:rplidar` and the `viam:cartographer` modules
+- configures the `viam:slam:cartographer` service and the [data management service](/data/)
+- adds an `viam:lidar:rplidar` camera with data capture configured
 
    <br>
 
-   ```json {class="line-numbers linkable-line-numbers"}
-   {
-     "modules": [
-       {
-         "type": "registry",
-         "name": "viam_rplidar",
-         "module_id": "viam:rplidar",
-         "version": "0.1.14"
-       },
-       {
-         "type": "registry",
-         "name": "viam_cartographer",
-         "module_id": "viam:cartographer",
-         "version": "0.3.36"
-       }
-     ],
-     "services": [
-       {
-         "attributes": {
-           "config_params": {
-             "max_range_meters": "25",
-             "mode": "2d",
-             "min_range_meters": "0.2"
-           },
-           "camera": {
-             "name": "rplidar",
-             "data_frequency_hz": "5"
-           },
-           "enable_mapping": true,
-           "use_cloud_slam": true
-         },
-         "name": "slam",
-         "type": "slam",
-         "namespace": "rdk",
-         "model": "viam:slam:cartographer"
-       },
-       {
-         "name": "Data-Management-Service",
-         "type": "data_manager",
-         "attributes": {
-           "tags": [],
-           "additional_sync_paths": [],
-           "sync_interval_mins": 0.1,
-           "capture_dir": ""
-         }
-       }
-     ],
-     "components": [
-       {
-         "namespace": "rdk",
-         "attributes": {},
-         "depends_on": [],
-         "service_configs": [
-           {
-             "attributes": {
-               "capture_methods": [
-                 {
-                   "disabled": false,
-                   "method": "NextPointCloud",
-                   "capture_frequency_hz": 5
-                 }
-               ]
-             },
-             "type": "data_manager"
-           }
-         ],
-         "name": "rplidar",
-         "model": "viam:lidar:rplidar",
-         "type": "camera"
-       }
-     ]
-   }
-   ```
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_rplidar",
+      "module_id": "viam:rplidar",
+      "version": "0.1.14"
+    },
+    {
+      "type": "registry",
+      "name": "viam_cartographer",
+      "module_id": "viam:cartographer",
+      "version": "0.3.36"
+    }
+  ],
+  "services": [
+    {
+      "attributes": {
+        "config_params": {
+          "max_range_meters": "25",
+          "mode": "2d",
+          "min_range_meters": "0.2"
+        },
+        "camera": {
+          "name": "rplidar",
+          "data_frequency_hz": "5"
+        },
+        "enable_mapping": true,
+        "use_cloud_slam": true
+      },
+      "name": "slam",
+      "type": "slam",
+      "namespace": "rdk",
+      "model": "viam:slam:cartographer"
+    },
+    {
+      "name": "Data-Management-Service",
+      "type": "data_manager",
+      "attributes": {
+        "tags": [],
+        "additional_sync_paths": [],
+        "sync_interval_mins": 0.1,
+        "capture_dir": ""
+      }
+    }
+  ],
+  "components": [
+    {
+      "namespace": "rdk",
+      "attributes": {},
+      "depends_on": [],
+      "service_configs": [
+        {
+          "attributes": {
+            "capture_methods": [
+              {
+                "disabled": false,
+                "method": "NextPointCloud",
+                "capture_frequency_hz": 5
+              }
+            ]
+          },
+          "type": "data_manager"
+        }
+      ],
+      "name": "rplidar",
+      "model": "viam:lidar:rplidar",
+      "type": "camera"
+    }
+  ]
+}
+```
 
-   {{% /tab %}}
-   {{< /tabs >}}
+{{% /tab %}}
+{{< /tabs >}}
 
-   For more information about the configuration attributes, see [Attributes](#attributes).
+For more information about the configuration attributes, see [Attributes](#attributes).
 
 1. Start a mapping session
 

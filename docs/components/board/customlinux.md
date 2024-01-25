@@ -342,8 +342,8 @@ Try looking at your board's data sheet and cross-referencing with the output fro
 
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `board` type, then select the `customlinux` model.
 Enter a name for your `customlinux` board and click **Create**.
 
