@@ -15,13 +15,13 @@ aliases:
 [The Cartographer Project](https://github.com/cartographer-project) contains a C++ library that performs dense Simultaneous Localization And Mapping (SLAM).
 
 To use Cartographer with the Viam {{< glossary_tooltip term_id="slam" text="SLAM" >}} service, you can use the [`cartographer`](https://app.viam.com/module/viam/cartographer) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
-See [Modular resources](/registry/#the-viam-registry) for instructions on using a module from the Viam registry on your machine.
+See the [Use Modules](/registry/#use-modules) section for instructions on using a module from the Viam registry on your machine.
 
 The source code for this module is available on the [`viam-cartographer` GitHub repository](https://github.com/viamrobotics/viam-cartographer).
 
 {{% alert title="Info" color="info" %}}
 
-Cartographer supports taking **2D LiDAR** or **3D LiDAR** data and optionally **inertial measurement unit (IMU)** and/or **odometry** data as input.
+Cartographer supports taking **2D LiDAR** or **3D LiDAR** data and optionally **Inertial Measurement Unit (IMU)** and/or **odometry** data as input.
 
 However, currently, the `cartographer` modular resource only supports taking **2D LiDAR** and optionally **IMU** data as input.
 Support for taking **3D LiDAR** and **odometry** data as input may be added in the future.
