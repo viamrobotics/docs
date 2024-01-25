@@ -65,7 +65,7 @@ In your vision service's panel, select the color your vision service will be det
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Add the vision service object to the services array in your raw JSON configuration:
+Add the vision service object to the services array in your JSON configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "services": [
@@ -188,7 +188,7 @@ In your vision service's panel, fill in the **Attributes** field.
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Add the vision service object to the services array in your raw JSON configuration:
+Add the vision service object to the services array in your JSON configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "services": [

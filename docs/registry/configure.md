@@ -129,7 +129,7 @@ Once you have [added a module](#add-a-modular-resource-from-the-viam-registry) f
 Follow the same steps as when you added the first modular resource, clicking **Create component** or **Create service** as applicable.
 You will be prompted to click **Add module** again while configuring the resource, though no duplicate module will be added to the `modules` section of the configuration.
 
-If you prefer to use raw JSON, the following properties are available for modular resources:
+If you prefer to use JSON, the following properties are available for modular resources:
 
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
@@ -289,7 +289,7 @@ This configures a module environment variable `PATH` that uses your system's `PA
 The notation `${environment.<ENV-VAR-NAME>}"` can be used to access any system environment variable that `viam-server` has access to, where `<ENV-VAR-NAME>` represents a system environment variable, like `PATH`, `USER`, or `PWD`.
 For example, you can use `${environment.HOME}"` to access the `HOME` environment variable for the user running `viam-server`.
 
-To configure a modular resource with an environment variable, navigate to the **Config** tab on your machine's page in the Viam app, toggle **Raw JSON** mode, and add the following `env` configuration to the `modules` section:
+To configure a modular resource with an environment variable, navigate to the **Config** tab on your machine's page in the Viam app, toggle **JSON** mode, and add the following `env` configuration to the `modules` section:
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
