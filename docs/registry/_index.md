@@ -93,6 +93,60 @@ To create a new module:
 1. Once you have uploaded your module to the registry, [deploy and configure the module](/registry/configure/) from the Viam app.
    Then, you can test your added resource using the [**Control** tab](/fleet/#remote-control) and [program](/build/program/) it with Viam's Go or Python SDKs.
 
+## Naming your model: namespace:repo-name:name
+
+If you are [creating a custom module](/registry/create/) and want to [upload that module](/registry/upload/) to the Viam registry, ensure your model name meets the following requirements:
+
+- The namespace of your model **must** match the [namespace of your organization](/fleet/organizations/#create-a-namespace-for-your-organization).
+  For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:repo-name:mybase`.
+- Your model triplet must be all-lowercase.
+- Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
+
+For the middle segment of your model triplet `repo-name`, use the name of the Git repository where you store your module's code.
+Ideally, your `repo-name` should describe the common functionality provided across the model or models of that module.
+
+For example:
+
+- The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model use the repository name [yahboom](https://github.com/viam-labs/yahboom).
+  The models implement the `rdk:component:arm` and the `rdk:component:gripper` API to support the Yahboom DOFBOT arm and gripper, respectively:
+
+  ```json
+  {
+      "api": "rdk:component:arm",
+      "model": "rand:yahboom:arm"
+  },
+  {
+      "api": "rdk:component:gripper",
+      "model": "rand:yahboom:gripper"
+  }
+  ```
+
+- The `viam-labs:audioout:pygame` model uses the repository name [audioout](https://github.com/viam-labs/audioout).
+  It implements the custom API `viam-labs:service:audioout`:
+
+  ```json
+  {
+    "api": "viam-labs:service:audioout",
+    "model": "viam-labs:audioout:pygame"
+  }
+  ```
+
+The `viam` namespace is reserved for models provided by Viam.
+
+### Valid APIs to implement in your model
+
+When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing {{< glossary_tooltip term_id="component" text="component" >}}, valid [APIs](/build/program/apis/) always have the following parameters:
+
+- `namespace`: `rdk`
+- `type`: `component`
+- `subtype`: any one of [these component proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/component), for example `motor`
+
+When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing [service](/services/), valid [APIs](/build/program/apis/) always have the following parameters:
+
+- `namespace`: `rdk`
+- `type`: `service`
+- `subtype`: any one of [these service proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/service), for example `navigation`
+
 ### Tutorials creating modules
 
 {{< cards >}}

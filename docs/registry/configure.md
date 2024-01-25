@@ -134,8 +134,8 @@ If you prefer to use raw JSON, the following properties are available for modula
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/create/#valid-apis-to-implement-in-your-model) |
-| `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/create/#valid-apis-to-implement-in-your-model). |
+| `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/#valid-apis-to-implement-in-your-model) |
+| `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/#valid-apis-to-implement-in-your-model). |
 | `name` | string | **Required** | What you want to name this instance of your modular resource. |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
 | `depends_on` | array | Optional | The `name` of components you want to confirm are available on your machine alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/internals/rdk/#dependency-management). |
@@ -359,7 +359,7 @@ You can add your own custom modules as local modules, or you can add pre-built m
 First determine the module you wish to add as a local module:
 
 - If you are adding your own custom module, be sure that you have followed the steps to [create your own module](/registry/create/) to code and compile your module and generate an executable.
-- If you are using a pre-built module, make sure you have installed the module and determined the filename of [the module's executable](/registry/create/#prepare-the-module-for-execution).
+- If you are using a pre-built module, make sure you have installed the module and determined the filename of [the module's executable](/registry/create/#compile-or-package-your-module).
 
 Then, ensure that `viam-server` is able to find and run the executable:
 
@@ -371,7 +371,7 @@ Then, ensure that `viam-server` is able to find and run the executable:
   sudo chmod a+rx <path-to-your-module-executable>
   ```
 
-See the instructions to [compile your module into an executable](/registry/create/#prepare-the-module-for-execution) for more information.
+See the instructions to [compile your module into an executable](/registry/create/#compile-or-package-your-module) for more information.
 
 ### Add a local module
 
@@ -404,7 +404,7 @@ You can also add the module directly, without first adding its modular component
 1. Click on the **Modules** subtab.
 1. Scroll to the **Add local module** section.
 1. Enter a **Name** for this instance of your modular resource.
-1. Enter the [module's executable path](/registry/create/#prepare-the-module-for-execution).
+1. Enter the [module's executable path](/registry/create/#compile-or-package-your-module).
    This path must be the absolute path to the executable on your machine's filesystem.
 1. Then, click the **Add module** button, and click **Save config**.
 
@@ -463,8 +463,8 @@ The following properties are available for modular resources:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/create/#valid-apis-to-implement-in-your-model). |
-| `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/create/#valid-apis-to-implement-in-your-model). |
+| `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/#valid-apis-to-implement-in-your-model). |
+| `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/#valid-apis-to-implement-in-your-model). |
 | `name` | string | **Required** | A custom name for this instance of your modular resource. |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
 | `depends_on` | array | Optional | The `name` of components you want to confirm are available on your machine alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/internals/rdk/#dependency-management). |
