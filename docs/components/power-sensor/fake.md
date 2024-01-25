@@ -22,7 +22,7 @@ Configure a `fake` power sensor to integrate into your machine:
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `power_sensor` type, then select the `fake` model.
-Enter a name for your sensor and click **Create**.
+Enter a name for your power sensor and click **Create**.
 
 ![Fake power sensor configuration panel in the Viam app. No attributes are configured.](/components/power-sensor/fake-config-builder.png)
 
