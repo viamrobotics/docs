@@ -1,6 +1,7 @@
 ---
 title: "Capture Data and Train a Model"
 linkTitle: "Capture Data and Train a Model"
+weight: 4
 type: "docs"
 description: "Configure data capture and cloud sync, filter and tag captured data, and train an ML model."
 image: "/ml/training.png"
