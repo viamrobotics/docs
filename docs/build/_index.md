@@ -10,7 +10,7 @@ no_list: true
 menuindent: true
 ---
 
-Viam uses a composable system of open source building blocks called {{< glossary_tooltip term_id="resource" text="resources" >}} which you can combine according to your specific needs.
+Viam uses a composable system of building blocks called {{< glossary_tooltip term_id="resource" text="resources" >}} which you can combine according to your specific needs.
 Components drive your hardware, and services provide high-level software functionality.
 
 Viam's APIs are standardized across all models of a given component or service.
