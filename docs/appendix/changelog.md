@@ -307,7 +307,7 @@ The updates to the camera component have improved the process of connecting to a
 The latest updates enable you to:
 
 - View readable webcam names in the **video path** of your camera component.
-- Specify your preferred framerate by selecting the desired value in the newly added **framerate field** on the **Config** tab.
+- Specify your preferred framerate by selecting the desired value in the newly added **framerate field** on the **CONFIGURE** tab.
 
 {{% /changelog %}}
 
@@ -767,7 +767,7 @@ Find more information in the [TypeScript SDK docs](https://ts.viam.dev/).
 
 {{% changelog color="added" title="Frame system visualizer" %}}
 
-When adding [frames](/mobility/frame-system/) to your machine's config in the Viam app, you can now use the **Frame System** subtab of the **Config** tab to more easily visualize the relative positions of frames.
+When adding [frames](/mobility/frame-system/) to your machine's config in the Viam app, you can now use the **Frame System** subtab of the **CONFIGURE** tab to more easily visualize the relative positions of frames.
 
 {{% /changelog %}}
 
