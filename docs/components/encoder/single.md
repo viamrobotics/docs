@@ -16,7 +16,7 @@ The direction of spin is dictated by the [motor](/components/motor/) that has th
 {{< tabs name="Configure an single encoder" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `encoder` type, then select the `single` model.
 Enter a name for your encoder and click **Create**.

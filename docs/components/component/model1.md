@@ -16,7 +16,7 @@ Optional additional description/information.
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `arm` type, then select the `model1` model.
 Enter a name for your arm and click **Create**.
@@ -25,7 +25,7 @@ Enter a name for your arm and click **Create**.
 
 Edit and fill in the attributes as applicable.
 
-<!-- If the model does not have a fancy config UI available, such that the user needs to write JSON attributes, refer to one of the other component models as an example. You should include easily copy-pastable attribute templates on the configure tab. For example, replace "Edit and fill in the attributes as applicable." with the following:
+<!-- If the model does not have a fancy config UI available, such that the user needs to write JSON attributes, refer to one of the other component models as an example. You should include easily copy-pastable attribute templates on the config tab. For example, replace "Edit and fill in the attributes as applicable." with the following:
 
 Copy and paste the following attribute template into your COMPONENT's **Attributes** box.
 Then remove and fill in the attributes as applicable to your COMPONENT, according to the table below.

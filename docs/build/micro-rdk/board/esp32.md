@@ -26,7 +26,7 @@ Your microcontroller should have the following resources available to work with 
 
 {{% /alert %}}
 
-To add an `esp32` board, navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com) and select **JSON** mode.
+To add an `esp32` board, navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com) and select **JSON** mode.
 
 {{< alert title="Info" color="info" >}}
 

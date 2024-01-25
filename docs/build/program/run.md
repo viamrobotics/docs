@@ -117,7 +117,7 @@ To be able to run your code from your board, you need to install the relevant SD
 {{% /tab %}}
 {{< /tabs >}}
 
-Now navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Now navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Processes** subtab and navigate to the **Create process** menu.
 
 Enter `main` as the process name and click **Create process**.

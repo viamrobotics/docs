@@ -22,7 +22,7 @@ Measure from that point to the base of the arm to get the `translation` coordina
 {{< tabs name="Example Frame Configuration of Component attached to Static Surface" >}}
 {{% tab name="Config Builder" %}}
 
-To complete the frame configuration for your machine following this example, navigate to the **CONFIGURE** tab on your machine's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to `myArm`'s card, and click **Add Frame**:
+To complete the frame configuration for your machine following this example, navigate to the **Config** tab on your machine's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to `myArm`'s card, and click **Add Frame**:
 
 ![frame card example for this configuration](/mobility/frame-system/frame_card_static.png)
 

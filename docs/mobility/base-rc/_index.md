@@ -44,7 +44,7 @@ You must configure a [base](/components/base/) with a [movement sensor](/compone
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **Services** subtab, then click **Create service** in the lower-left corner.
 Select the type `Base Remote Control`.
 Enter a name for your service, then click **Create**.

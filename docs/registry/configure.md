@@ -68,7 +68,7 @@ If you are using a [rented Viam rover](/get-started/try-viam/), adding modules i
 
 To add a modular [component](/components/) from the Viam registry to your machine:
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 1. Click on the **Components** subtab and click the **Create component** button.
 1. Browse the list of available component types, and select the specific modular component you'd like to add.
 
@@ -90,14 +90,14 @@ You can also find [the underlying module](#edit-the-configuration-of-a-module-fr
 
 If the module requires you to configure specific **Attributes**, click the **URL** link in the [module's configuration pane](#edit-the-configuration-of-a-module-from-the-viam-registry) to view the specific attribute requirements on the module's GitHub page.
 
-To delete a module added from the Viam registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Modules** subtab of the machine's **CONFIGURE** tab.
+To delete a module added from the Viam registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Modules** subtab of the machine's **Config** tab.
 Deleting a module _does not_ delete any configured modular resources it provides.
 
 ### Add a modular service from the Viam registry
 
 To add a modular [service](/services/) from the Viam registry to your machine:
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 1. Click on the **Services** subtab and click the **Create service** button.
 1. Browse the list of available service types and select the specific modular service you'd like to add.
 
@@ -207,7 +207,7 @@ The custom model is configured as a component with the name "my-realsense".
 
 Once you have added a modular resource to your machine, you can view and edit the configuration of the underlying module from the **Modules** subtab:
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 1. Click on the **Modules** subtab.
    All modules you have added to your machine appear under the **Deployed** section.
 
@@ -289,7 +289,7 @@ This configures a module environment variable `PATH` that uses your system's `PA
 The notation `${environment.<ENV-VAR-NAME>}"` can be used to access any system environment variable that `viam-server` has access to, where `<ENV-VAR-NAME>` represents a system environment variable, like `PATH`, `USER`, or `PWD`.
 For example, you can use `${environment.HOME}"` to access the `HOME` environment variable for the user running `viam-server`.
 
-To configure a modular resource with an environment variable, navigate to the **CONFIGURE** tab on your machine's page in the Viam app, toggle **JSON** mode, and add the following `env` configuration to the `modules` section:
+To configure a modular resource with an environment variable, navigate to the **Config** tab on your machine's page in the Viam app, toggle **JSON** mode, and add the following `env` configuration to the `modules` section:
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
@@ -377,7 +377,7 @@ See the instructions to [compile your module into an executable](/registry/creat
 
 To add a local module on your machine:
 
-1. Navigate to the **CONFIGURE** tab of your machine's page on [the Viam app](https://app.viam.com).
+1. Navigate to the **Config** tab of your machine's page on [the Viam app](https://app.viam.com).
 
    - If you are adding a modular [component](/components/), click the **Components** subtab and click **Create component**.
    - If you are adding a modular [service](/services/), click the **Services** subtab and click **Create service**.
@@ -400,7 +400,7 @@ To add a local module on your machine:
 
 You can also add the module directly, without first adding its modular component or service:
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 1. Click on the **Modules** subtab.
 1. Scroll to the **Add local module** section.
 1. Enter a **Name** for this instance of your modular resource.
@@ -416,7 +416,7 @@ You can also add the module directly, without first adding its modular component
 
 Once you have added a modular resource to your machine, you can view and edit the underlying module from the **Modules** subtab:
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 1. Click on the **Modules** subtab.
    Local modules you have added to your machine appear under the **Local** section.
 

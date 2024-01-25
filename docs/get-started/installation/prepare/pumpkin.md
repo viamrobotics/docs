@@ -212,7 +212,7 @@ Configure your board as a [`customlinux`](/components/board/customlinux/) board 
 {{< tabs name="Configure a customlinux board" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `board` type, then select the `customlinux` model.
 Enter a name for your `customlinux` board and click **Create**.

@@ -18,7 +18,7 @@ When used with a streaming camera, the `ffmpeg` camera model supports any stream
 {{< tabs name="Configure a ffmpeg camera" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `camera` type, then select the `ffmpeg` model.
 Enter a name for your camera and click **Create**.

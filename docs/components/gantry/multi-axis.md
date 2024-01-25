@@ -17,7 +17,7 @@ Configure a `multi-axis` gantry to integrate a gantry made up of multiple [`sing
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `gantry` type, then select the `multi-axis` model.
 Enter a name for your gantry and click **Create**.

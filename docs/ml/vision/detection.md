@@ -53,7 +53,7 @@ If the color is not reliably detected, increase the `hue_tolerance_pct`.
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
 Click the **Services** subtab and click **Create service** in the lower-left corner.
 Select the `ML Model` type, then select the `Color Detector` model.
 Enter a name for your service and click **Create**.
@@ -172,7 +172,7 @@ To create a `mlmodel` classifier, you need an [ML model service with a suitable 
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
 Click the **Services** subtab and click **Create service** in the lower-left corner.
 Select the `Vision` type, then select the `ML Model` model.
 Enter a name for your service and click **Create**.

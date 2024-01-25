@@ -50,7 +50,7 @@ See [navigation concepts](#navigation-concepts) for more info on how to implemen
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **Services** subtab, then click **Create service** in the lower-left corner.
 Select the type `Navigation`.
 Enter a name for your service, then click **Create**.
@@ -173,7 +173,7 @@ It stores the required contextual information for Viam's services like [Motion](
 To make sure your rover base's autonomous GPS navigation with the navigation service is accurate, configure and calibrate the frame system service for the components of your machine.
 To start, add the frame system service to your rover [base](/components/base/) and [movement sensor](/components/movement-sensor/).
 
-- Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+- Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
   Scroll to the card with the name of your base:
 
   {{< imgproc src="/mobility/navigation/click-add-frame-ui.png" alt="The button to add a frame selected with the cursor on the Viam app config builder." resize="500x" >}}
@@ -205,7 +205,7 @@ Then, to calibrate your frame system for the most accurate autonomous GPS naviga
 - After configuring your machine, navigate to the **Control** page and select the card matching the name of your movement sensor.
 - Monitor the readings displayed on the card, and verify that the compass or orientation readings from the movement sensor report `0` when the base is facing north.
 - If you cannot verify this:
-  - Navigate back to your machine's **CONFIGURE** page.
+  - Navigate back to your machine's **Config** page.
     Scroll to the card with the name of your movement sensor.
     Adjust the **Orientation** of the frame to compensate for the mismatch.
   - Navigate back to the Navigation card on your **Control** page, and confirm that the compass or orientation readings from the movement sensor now report `0` when the base is facing north, confirming that you've successfully calibrated your machine to be oriented accurately within the frame system.

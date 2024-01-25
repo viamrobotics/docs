@@ -53,7 +53,7 @@ Follow [these instructions](/registry/advanced/mlmodel-design/) to design your m
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
 Click the **Services** subtab and click **Create service** in the lower-left corner.
 Select the `ML Model` type, then select the `TFLite CPU` model.
 Enter a name for your service and click **Create**.

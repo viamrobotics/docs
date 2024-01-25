@@ -230,7 +230,7 @@ To generate your machine's configuration using `example_audio_classification_cli
    ```
 
 1. Copy the contents of this file.
-   Then return to your machine's page on [the Viam app](https://app.viam.com), select the **CONFIGURE** tab, select **JSON**, and add the configuration into the text area.
+   Then return to your machine's page on [the Viam app](https://app.viam.com), select the **Config** tab, select **JSON**, and add the configuration into the text area.
 
    {{< alert title="Important" color="note" >}}
    If you already have other configured components, you will need to add each generated JSON object to the respective `modules` or `services` array.

@@ -20,7 +20,7 @@ Any [motor](/components/motor/) using the `AMS-AS5048` encoder must have its `ti
 {{< tabs name="Configure an AMS-AS5048 Encoder" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `encoder` type, then select the `AMS-AS5048` model.
 Enter a name for your encoder and click **Create**.
