@@ -87,7 +87,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
    Add the data management service:
 
-   1. From your machine's **Config** tab, navigate to the **Services** subtab.
+   1. Navigate to the **Services** subtab on your machine's **Config** tab.
    2. Click **Create service** in the lower-left corner of the page.
       Choose `Data Management` as the type and specify a name for your data management service, for example `Data-Management-Service`.
    3. Click **Create**.
