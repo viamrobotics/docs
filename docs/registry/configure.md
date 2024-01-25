@@ -214,7 +214,7 @@ Once you have added a modular resource to your machine, you can view and edit th
 This pane lists the models provided by the module, and any [components](/components/) or [services](/services/) on your machine that are currently using the module.
 You can also configure [how the module updates](#configure-version-update-management-for-a-registry-module) when a new version is available from the Viam registry, or [configure environment variables](#use-environment-variables-with-a-registry-module) for your module.
 
-{{<imgproc src="registry/configure/deployed-module-with-component.png" resize="1000x" declaredimensions=true alt="The module subtab of the config tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
+{{<imgproc src="registry/configure/deployed-module-with-component.png" resize="1000x" declaredimensions=true alt="The module subtab of the configure tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
 
 ### Configure version update management for a registry module
 

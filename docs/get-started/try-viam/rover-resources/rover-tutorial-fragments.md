@@ -27,7 +27,7 @@ Follow the appropriate instructions for the model of rover and board you have:
 {{% tab name="Viam Rover 2 (Pi)" %}}
 
 Navigate to your machine in [the Viam app](https://app.viam.com/robots).
-On the **Config** tab, click on the **Fragments** subtab.
+On the **CONFIGURE** tab, click on the **Fragments** subtab.
 
 On the **Fragments** tab, you can see the available fragments to add.
 Find `ViamRover2-2024-rpi4-a` and click **Add** to add the fragment to your machine configuration:
@@ -54,7 +54,7 @@ To see the configured pin numbers and other values specific to this fragment, [v
 {{% tab name="Viam Rover 1 (Pi)" %}}
 
 Navigate to your machine in [the Viam app](https://app.viam.com/robots).
-On the **Config** tab, click on the **Fragments** subtab.
+On the **CONFIGURE** tab, click on the **Fragments** subtab.
 
 On the **Fragments** tab, you can see the available fragments to add.
 Find `ViamRover202210b` and click `Add` to add the fragment to your machine configuration:
@@ -93,7 +93,7 @@ To see the configured pin numbers and other values specific to this fragment, [v
 {{% tab name="Viam Rover 2 (Jetson Nano)" %}}
 
 Navigate to your machine in [the Viam app](https://app.viam.com/robots).
-On the **Config** tab, click on the **Fragments** subtab.
+On the **CONFIGURE** tab, click on the **Fragments** subtab.
 
 On the **Fragments** tab, you can see the available fragments to add.
 Find `ViamRover2-2024-jetson-nano-a` and click `Add` to add the fragment to your machine configuration.
@@ -118,7 +118,7 @@ To see the configured pin numbers and other values specific to this fragment, [v
 {{% tab name="Viam Rover 2 (Jetson Orin Nano)" %}}
 
 Navigate to your machine in [the Viam app](https://app.viam.com/robots).
-On the **Config** tab, click on the **Fragments** subtab.
+On the **CONFIGURE** tab, click on the **Fragments** subtab.
 
 On the **Fragments** tab, you can see the available fragments to add.
 Find `ViamRover2-2024-nano-orin-a` and click `Add` to add the fragment to your machine configuration.
@@ -151,7 +151,7 @@ The components and services included in the fragment appear inside a read-only f
 
 The fragment you added is read-only, but if you need to modify your rover's config you can do the following:
 
-1. Go to the **Fragments** subtab of the **Config** tab.
+1. Go to the **Fragments** subtab of the **CONFIGURE** tab.
 2. Click **Remove** next to the fragment.
 3. Select and copy the contents of the fragment in the box on the right side of the **Fragments** subtab.
 4. Toggle to [**Raw JSON** mode](/get-started/try-viam/try-viam-tutorial/#raw-json).

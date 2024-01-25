@@ -40,7 +40,7 @@ All communication happens securely over HTTPS using secret tokens that are in a 
 You can also store your config file in a custom location if desired. See [Run `viam-server`](/get-started/installation/manage/#run-viam-server) for more information.
 {{< /alert >}}
 
-After you have completed the setup steps and successfully connected to your machine, go to the **Config** tab to start adding to the configuration.
+After you have completed the setup steps and successfully connected to your machine, go to the **CONFIGURE** tab to start adding to the configuration.
 
 {{% alert title="Info" color="info" %}}
 
@@ -51,7 +51,7 @@ If your machine will never connect to the internet, you can also create a [local
 
 ## The Config tab
 
-The **Config** tab on the [Viam app](https://app.viam.com) is the place to configure everything about your machine.
+The **CONFIGURE** tab on the [Viam app](https://app.viam.com) is the place to configure everything about your machine.
 
 You can use the mode selector to switch between **Builder** and **Raw JSON**:
 
@@ -135,7 +135,7 @@ See [Example JSON configuration file](/internals/local-configuration-file/#examp
 
 {{% /expand %}}
 
-The **Config** tab has subtabs for each section of your machine's config:
+The **CONFIGURE** tab has subtabs for each section of your machine's config:
 
 - [Components](#components): Components are the hardware of your machine.
 - [Services](#services): Services are the software that runs on your machine.
@@ -193,7 +193,7 @@ For specific information on how to configure each supported component type, see 
 
 {{% alert title="Tip" color="tip" %}}
 
-When you configure a component on the **Config** tab, it will also appear on the **Control** tab which gives you an interface to test and interact with it.
+When you configure a component on the **CONFIGURE** tab, it will also appear on the **Control** tab which gives you an interface to test and interact with it.
 Meanwhile the **Code sample** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/build/program/apis/).
 
 {{<gif webm_src="/manage/control.webm" mp4_src="/manage/control.mp4" alt="Using the control tab">}}
@@ -402,7 +402,7 @@ For example, if you have multiple identical rovers but one has an arm attached, 
 
 To add a fragment to a machine:
 
-- Go to the **Fragments** subtab of your machine's **Config** tab on the [Viam app](https://app.viam.com).
+- Go to the **Fragments** subtab of your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com).
 - Look through the list of available fragments and click **Add** next to any fragments you want to add to your machine.
 - Click **Save Config** at the bottom of the screen.
 
@@ -428,7 +428,7 @@ For an example of adding a fragment to a machine, see the [Viam Rover fragment t
 When you modify a fragment, those changes are pushed to all machines that use that fragment.
 If you need to modify the config of just one machine that uses a fragment you can do the following:
 
-1. Go to the **Fragments** subtab of the **Config** tab.
+1. Go to the **Fragments** subtab of the **CONFIGURE** tab.
 2. Click **Remove** next to the fragment.
 3. Select and copy the contents of the fragment in the box on the right side of the **Fragments** subtab.
 4. Toggle to **Raw JSON** mode.
