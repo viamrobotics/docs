@@ -50,10 +50,10 @@ See [navigation concepts](#navigation-concepts) for more info on how to implemen
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click the **Services** subtab, then click **Create service** in the lower-left corner.
-Select the type `Navigation`.
-Enter a name for your service, then click **Create**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+Select the `Navigation` type.
+Enter a name for your service and click **Create**.
 
 ![An example configuration for a navigation service in the Viam app Config Builder.](/mobility/navigation/navigation-ui-config.png)
 

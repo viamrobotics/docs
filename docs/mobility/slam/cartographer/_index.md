@@ -87,15 +87,15 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
    Add the data management service:
 
-   1. Navigate to the **Services** subtab on your machine's **Config** tab.
-   2. Click **Create service** in the lower-left corner of the page.
+   1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+   2. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
       Choose `Data Management` as the type and specify a name for your data management service, for example `Data-Management-Service`.
    3. Click **Create**.
    4. On the panel that appears, you can manage the capturing and syncing functions. You can also specify the **directory**, the sync **interval**, and any **tags** to apply to captured data. See the [data management service](/data/) for more information.
 
    Enable data capture for your camera, and for your movement sensor if you would like to use a movement sensor to provide IMU input:
 
-   5. Find the component's card on your machine's **Config** tab.
+   5. Find the component's card on your machine's **CONFIGURE** tab.
    6. Click `Add Method`, the specify the method type and the capture frequency. For the camera, choose the [`NextPointCloud`](/components/camera/#getpointcloud) method. For a movement sensor, choose the [`AngularVelocity`](/components/movement-sensor/#getangularvelocity) and [`LinearAcceleration`](/components/movement-sensor/#getlinearacceleration) methods.
       We recommend a capture frequency of `5` Hz for RPlidar cameras and `20` Hz for movement sensors.
 
@@ -105,8 +105,8 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
    Set up the `cartographer` module on your machine:
 
-   7. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-   8. Click on the **Services** subtab and click **Create service** in the lower-left corner.
+   7. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+   8. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
    9. Select **SLAM**, then select `cartographer`.
       You can also search for "cartographer".
    10. Click **Add module**, give your service a name of your choice, then click **Create**.
@@ -126,7 +126,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
    To save your changes, click **Save config** at the bottom of the page.
 
-   Check the **Logs** tab of your machine in the Viam app to make sure your RPlidar has connected and no errors are being raised.
+   Check the **LOGS** tab of your machine in the Viam app to make sure your RPlidar has connected and no errors are being raised.
 
    {{%/tab %}}
    {{% tab name="JSON Example" %}}
@@ -218,7 +218,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
    For more information about the configuration attributes, see [Attributes](#attributes).
 
-1. Start a mapping session
+2. Start a mapping session
 
    Navigate to the **Control** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.

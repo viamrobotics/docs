@@ -17,10 +17,10 @@ Configure a `renogy` sensor to integrate a [Renogy battery temperature sensor](h
 {{< tabs name="Configure a Renogy Sensor" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component** in the lower-left corner.
-Select the type `power_sensor`, then select the `renogy` model.
-Name your sensor, and click **Create**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+Select the `power_sensor` type, then select the `renogy` model.
+Enter a name for your sensor and click **Create**.
 
 {{<imgproc src="/components/power-sensor/renogy-config-builder.png" resize="800x" declaredimensions=true alt="Renogy power sensor configuration tab ">}}
 
