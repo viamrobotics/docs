@@ -59,7 +59,7 @@ The instructions on the Flutter website cover not only the installation of the S
 For this walkthrough, you only need to install the following:
 
 - Flutter SDK
-- Visual Studio Code with the Flutter extension
+- Visual Studio Code with the [Flutter extension](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter)
 - The software required by your chosen development target.
   For example:
   - [Xcode](https://developer.apple.com/xcode/) to target macOS
@@ -71,16 +71,16 @@ For this walkthrough, you only need to install the following:
 
 ### Create your first Flutter project
 
-1. Launch VS Code and open the command palette (with `F1` or `Ctrl+Shift+P` or `Shift+Cmd+P`).
+1. Launch VS Code and open the [command palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette) (with `F1` or `Ctrl+Shift+P` or `Shift+Cmd+P`).
 
 2. Start typing "flutter new."
    Select the **Flutter: New Project** command.
 
 {{<imgproc src="/tutorials/flutter-app/flutter-new-project.png" resize="1200x" style="max-width:800px" declared-dimensions="true" alt="Creating a new project in VS Code.">}}
 
-3. Next, select **Application** and then a folder in which to create your project.
-   This could be your home directory, or something like <file>C:\src\</file>.
-4. Finally, name your project something like <file>smart_machine_app</file> or <file>my_awesome_smart_machine</file>.
+3. Next, select **Application** and then choose a folder in which to create your project.
+   This could be your home directory, or something like <file>C:\\src\\</file>.
+4. Finally, name your project something like <file>smart_machine_app</file>.
 
 {{<imgproc src="/tutorials/flutter-app/project-name.png" resize="1200x" style="max-width:800px" declared-dimensions="true" alt="Entering the name for the project in VS Code: 'smart_machine_app'.">}}
 
@@ -130,13 +130,12 @@ In the next steps, you'll overwrite the contents of three files with a basic sca
 
    {{% /alert %}}
 
-   3. Next, open another configuration file in the project, <file>analysis_options.yaml</file>.
+   3. Next, open the <file>analysis_options.yaml</file> configuration file.
       This file determines how strict Flutter should be when analyzing your code.
-      Since this is your first foray into Flutter, you're telling the analyzer to take it easy.
-      You can always tune this later.
-      In fact, as you get closer to publishing an actual production app, you will almost certainly want to make the analyzer stricter than this.
+      For this tutorial, you will use a less strict analyzer configuration to start, but you can always tune this later.
+      As you get closer to publishing an actual production app, you will likely want to increase the strictness of the analyzer, especially before publishing and sharing your app with others.
 
-   4. Replace its contents with the following:
+   4. Replace the contents of this file with the following:
 
    ```yaml {class="line-numbers linkable-line-numbers"}
    include: package:flutter_lints/flutter.yaml
@@ -166,7 +165,7 @@ Now you'll update some configurations in the iOS-specific code to support the [V
    # platform :ios, '11.0'
    ```
 
-   Change that to this:
+   Update that code to match the following:
 
    ```{class="line-numbers linkable-line-numbers"}
    # Uncomment this line to define a global platform for your project
@@ -191,13 +190,13 @@ Now you'll update some configurations in the iOS-specific code to support the [V
 
    {{<imgproc src="/tutorials/flutter-app/info-plist-insert.png" resize="1200x" style="max-width:900px" declared-dimensions="true" alt="The info.plist file open in VS Code. An arrow labeled 'insert here' indicates that you should insert the code right after the fourth line in the file.">}}
 
-   It should look like this:
+   The file should now look like the following:
 
    {{<imgproc src="/tutorials/flutter-app/info-plist-pasted.png" resize="1200x" style="max-width:900px" declared-dimensions="true" alt="The resulting file. After the non-indented <dict> tag on the fourth line, the pasted key, string, key, and array (containing an indented string) are indented inside the dict tag, spanning lines five through ten. The pasted content is at the same level of indentation as the rest of the keys and strings below it.">}}
 
 ### Create the main file
 
-1. Open the <file>main.dart</file> file under the <file>lib/</file> directory.
+1. Open the <file>lib/main.dart</file> file.
 
 2. Replace the contents of this file with the following code to make up the login screen for your app:
 
@@ -246,21 +245,21 @@ Now you'll update some configurations in the iOS-specific code to support the [V
 
    ```
 
-   If you chose a name other than `Smart Machine App`, edit lines 13 and 30 with your own app title.
+   If you chose a name other than `Smart Machine App` for your project, edit lines 13 and 30 with your own app title.
 
 ### Launch the app
 
 In this section of the tutorial we'll build the app and see what it looks like so far.
 
 1. Open <file>lib/main.dart</file>.
-   In the bottom right corner of VS Code, you'll find a button that shows the current target device.
+   In the bottom right corner of VS Code, find the button that shows the current target device.
    Click the button to change your target device.
    Make sure that you have your target device selected before you continue.
 
    {{<imgproc src="/tutorials/flutter-app/target-device-button.png" resize="1200x" style="max-width:900px" declared-dimensions="true" alt="A VS Code window with main.dart open. In the bottom right corner, there is a target device button labeled 'iPhone 14 (ios simulator)'.">}}
 
 2. With <file>lib/main.dart</file> still open, find the "Start Debugging" button in the upper right corner of the VS Code window.
-   Click it.
+   Click the button to build and render your app
 
    {{<imgproc src="/tutorials/flutter-app/main-play.png" resize="1200x" style="max-width:900px" declared-dimensions="true" alt="A VS Code window with main.dart open. In the top right corner, there is a button labeled 'Start Debugging' with an icon of a bug and a 'play' symbol.">}}
 
@@ -273,12 +272,12 @@ In this section of the tutorial we'll build the app and see what it looks like s
 ### Add a new screen
 
 Great work so far!
-You have your app running, with a single screen and an inactive button.
+Your app is successfully running, with a single screen and an inactive button.
 Next you will add a new screen that pulls in some information from your {{< glossary_tooltip term_id="organization" text="organization" >}} in Viam, and then navigate to that screen from the login button.
 
-In the VS Code file explorer, right click <file>lib/</file> and click **New File** - let’s name this new file <file>home_screen.dart</file>.
+In the VS Code file explorer on the left-hand side, right click <file>lib/</file> and click **New File**, then name the new file <file>home_screen.dart</file>.
 
-Paste the contents of this code block into that new file:
+Paste the following code into the <file>home_screen.dart</file> file you just created:
 
 ```{class="line-numbers linkable-line-numbers"}
 import 'package:flutter/material.dart';
@@ -362,7 +361,9 @@ Notice in the file the following line:
 _viam = await Viam.withApiKey(dotenv.env['API_KEY_ID']?? '', dotenv.env['API_KEY']?? '');
 ```
 
-You need to get the API keys from the Viam app and store them in an environmental variables file to so your mobile app can access your smart machine:
+This line in the code defines how your Flutter app authenticates to the Viam platform, by referencing two environment variables that together comprise your Viam API key.
+
+Follow the steps below to get your API key and create an environment variables file to store them in:
 
 1. In your project folder, create a file to store your API keys.
    Name it <file>.env</file>.
@@ -391,7 +392,7 @@ You need to get the API keys from the Viam app and store them in an environmenta
    3. Click the **Resource** dropdown and select your organization.
    4. Set **Role** to **Owner**.
    5. Click **Generate key**.
-   6. The new key populates at the bottom of the list.
+   6. Find your new key at the bottom of the list.
 
 6. Use the copy buttons next to the API key ID and API key to copy each of them and paste them into your <file>.env</file> file.
 
@@ -426,6 +427,9 @@ It displays the names of the locations on a new screen:
 ## Add more screens
 
 ### Add a location screen
+
+So far, you have an app that displays a list of {{< glossary_tooltip term_id="location" text="locations" >}}, but nothing happens when you tap a location name.
+In this step you will add functionality so that tapping a location name brings you to the list of {{< glossary_tooltip term_id="smart machine" text="smart machines" >}} in that location.
 
 In VS Code create a new file in the same folder as <file>main.dart</file> and <file>home_screen.dart</file>.
 Name it <file>location_screen.dart</file>.
@@ -610,7 +614,7 @@ class _RobotScreenState extends State<RobotScreen> {
 
 ### Connect the screens together
 
-Now that you have the code for the screens in place, it's time to enable navigation between them.
+Now that you have the code for the screens in place, you can enable navigation between them.
 
 Connect the home screen to the locations screen by un-commenting the following two lines in <file>home_screen.dart</file>:
 
