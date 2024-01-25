@@ -63,9 +63,9 @@ pip3 install opencv-python
    }
    ```
 
-5. Copy the output which contains the `intrinsic_parameters` and `distortion_parameters` into the JSON config on your machine's **Config** tab.
+5. Copy the output which contains the `intrinsic_parameters` and `distortion_parameters` into the JSON config on your machine's **CONFIGURE** tab.
 
-{{<imgproc src="/components/camera/camera_tutorial_copy_paste.png" resize="800x" declaredimensions=true alt="Config tab with configuration snippet highlighted">}}
+{{<imgproc src="/components/camera/camera_tutorial_copy_paste.png" resize="800x" declaredimensions=true alt="Configure tab with configuration snippet highlighted">}}
 
 The following is a full example config:
 

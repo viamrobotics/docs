@@ -36,7 +36,7 @@ If you do not enable hardware PWM, these pins will have no function.
 {{< tabs name="Configure a pi5 Board" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `board` type, then select the `pi5` model.
 Enter a name for your board and click **Create**.

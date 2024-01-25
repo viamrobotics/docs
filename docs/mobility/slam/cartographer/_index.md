@@ -86,7 +86,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
    {{% tab name="Config Builder" %}}
    Follow the instructions below to set up the `cartographer` module on your machine:
 
-   1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
+   1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
    1. Click on the **Services** subtab and click **Create service** in the lower-left corner.
    1. Select **SLAM**, then select `cartographer`.
       You can also search for "cartographer".

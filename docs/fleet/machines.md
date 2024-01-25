@@ -49,7 +49,7 @@ When a machine or a {{< glossary_tooltip term_id="part" text="machine part" >}} 
 Once the machine has a configuration, it caches it locally and can use the configuration for up to 60 days.
 The machine checks for new configurations every 15 seconds and changes its configuration automatically when a new configuration is available.
 
-After connecting your machine, go to the **Config** tab, and start adding {{< glossary_tooltip term_id="component" text="components" >}}, {{< glossary_tooltip term_id="service" text="services" >}}, and other {{< glossary_tooltip term_id="resource" text="resources" >}}.
+After connecting your machine, go to the **CONFIGURE** tab, and start adding {{< glossary_tooltip term_id="component" text="components" >}}, {{< glossary_tooltip term_id="service" text="services" >}}, and other {{< glossary_tooltip term_id="resource" text="resources" >}}.
 
 For more information, see the [configuration documentation](/build/configure/#the-config-tab).
 

@@ -35,7 +35,7 @@ It first identifies the biggest plane in the scene, eliminates that plane, and c
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/robots).
 Click the **Services** subtab and click **Create service** in the lower-left corner.
 Select the `Vision` type, then select the `Radius Clustering Segmenter` model.
 Enter a name for your service and click **Create**.
@@ -138,7 +138,7 @@ The label and the pixels associated with the 2D detections become the label and 
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/robots).
 Click the **Services** subtab and click **Create service** in the lower-left corner.
 Select the `Vision` type, then select the `Detector to 3D Segmenter` model.
 Enter a name for your service and click **Create**.
@@ -222,7 +222,7 @@ Configure an `obstacles_depth` segmenter:
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/robots).
 Click the **Services** subtab and click **Create service** in the lower-left corner.
 Select the `Vision` type, then select the `Obstacles Depth` model.
 Enter a name for your service and click **Create**.
@@ -341,7 +341,7 @@ For example, if you have an ultrasonic distance sensor as an [`ultrasonic` camer
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/robots).
 Click the **Services** subtab and click **Create service** in the lower-left corner.
 Select the `Vision` type, then select the `Obstacles Distance` model.
 Enter a name for your service and click **Create**.

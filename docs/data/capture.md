@@ -34,7 +34,7 @@ However, if you want to manage your machine's captured data yourself, you can en
 
 To capture data from one or more machines, you must first add the [data management service](../):
 
-1. From your machine's **Config** tab, navigate to the **Services** subtab.
+1. From your machine's **CONFIGURE** tab, navigate to the **Services** subtab.
 2. Click **Create service** in the lower-left corner of the page.
    Choose `Data Management` as the type and specify a name for your data management service, for example `data-manager`.
 3. Click **Create**.
@@ -87,7 +87,7 @@ The following components support data capture:
 - Sensor
 - Servo
 
-To add data capture for a component, navigate to the **Config** tab of your machine's page in the Viam app.
+To add data capture for a component, navigate to the **CONFIGURE** tab of your machine's page in the Viam app.
 
 For each component you can capture data for, there is a `Data Capture Configuration` section in its panel.
 Click `Add Method` and then select the method type and the capture frequency.

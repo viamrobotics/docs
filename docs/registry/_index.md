@@ -60,7 +60,7 @@ You can integrate modules into any Viam-powered machine.
 
 ## Use modules
 
-To use a modular resource from the registry, add it from your machine's **Config** tab in the Viam app, using the **Create component** button.
+To use a modular resource from the registry, add it from your machine's **CONFIGURE** tab in the Viam app, using the **Create component** button.
 
 After adding a module to your machine, you can choose to [configure](/registry/configure/) it for automatic version updates from the Viam registry, or update your module manually.
 By default, newly added modules will remain at the version they were when you installed them, and will not update automatically.

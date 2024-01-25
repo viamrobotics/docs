@@ -32,7 +32,7 @@ It stores the required contextual information to use the position and orientatio
 
 ## Configuration
 
-To enable the default frame for a given [component](/components/) on a machine, navigate to the **Config** tab of the machine's page in [the Viam app](https://app.viam.com) and click **Components**.
+To enable the default frame for a given [component](/components/) on a machine, navigate to the **CONFIGURE** tab of the machine's page in [the Viam app](https://app.viam.com) and click **Components**.
 With **mode** as **Builder**, click **Add Frame** on the component's card and **Save Config**.
 
 To adjust the frame from its default configuration, change the parameters as needed for your machine before saving.
@@ -40,7 +40,7 @@ To adjust the frame from its default configuration, change the parameters as nee
 {{< tabs name="Frame Configuration Instructions" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab on your machine's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to a component's panel, and click **Add Frame**:
+Navigate to the **CONFIGURE** tab on your machine's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to a component's panel, and click **Add Frame**:
 
 ![add reference frame pane](/mobility/frame-system/frame_card.png)
 
@@ -117,7 +117,7 @@ For more information about determining the appropriate values for these paramete
 ### Visualize the Frame System
 
 You can visualize how your machine is oriented in the frame system in [the Viam app](https://app.viam.com).
-Navigate to the **Config** tab on your machine's page, select **mode** as **Builder**, and click on **Frame System**.
+Navigate to the **CONFIGURE** tab on your machine's page, select **mode** as **Builder**, and click on **Frame System**.
 
 The Viam app shows you a 3D visualization of the spatial configuration of the reference frames of components configured on your machine:
 
@@ -129,7 +129,7 @@ For example:
 
 Consider a machine configured with a [`jetson` board](/components/board/), wired to a [`webcam` camera](/components/camera/webcam/) and a [`wheeled` base](/components/base/wheeled/) with two [motors](/components/motor/) driving its wheels.
 
-No reference frame configuration has been specified, so on the **Frame System** subtab of the **Config** tab, the components are shown to all be located on the default `world` origin point as follows:
+No reference frame configuration has been specified, so on the **Frame System** subtab of the **CONFIGURE** tab, the components are shown to all be located on the default `world` origin point as follows:
 
 ![Example machine's default frame configuration shown in the Frame System Editor. All components are stuck on top of each other](/mobility/frame-system/demo_base_unedited.png)
 
@@ -177,7 +177,7 @@ Click the video camera icon below and to the right of the **Frame System** butto
 
 ### Bounding Geometries
 
-To visualize a component's spatial constraints, add `Geometry` properties by selecting a component and selecting a **Geometry** type in the **Frame System** subtab of the **Config** tab of a machine's page on [the Viam app](https://app.viam.com).
+To visualize a component's spatial constraints, add `Geometry` properties by selecting a component and selecting a **Geometry** type in the **Frame System** subtab of the **CONFIGURE** tab of a machine's page on [the Viam app](https://app.viam.com).
 
 By default, a **Geometry** is shown surrounding the origin point of a component:
 

@@ -17,7 +17,7 @@ One camera server streams a color stream and the other camera server streams a d
 {{< tabs name="Configure a Dual Stream Camera" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `camera` type, then select the `dual_stream` model.
 Enter a name for your camera and click **Create**.
