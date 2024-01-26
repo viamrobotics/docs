@@ -371,7 +371,7 @@ You can monitor the progress of the `MoveOnMap()` call by querying `GetPlan()` a
 
 To use `MoveOnMap()`, your [SLAM service](/mobility/slam/) must implement `GetPointCloudMap()` and `GetPosition()`
 
-Make sure the [SLAM service](/mobility/slam/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [SLAM service API](/mobility/slam/#api).
+Make sure the [SLAM service](/mobility/slam/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [SLAM service API](/mobility/slam/#api):
 
 - It must support `GetPointCloudMap()` to report the SLAM map as a pointcloud.
 - It must support `GetPosition()` to report the machine's current location on the SLAM map.
