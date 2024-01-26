@@ -71,7 +71,7 @@ The following attributes are available for `sensor-controlled` bases:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `movement-sensor` | array | **Required** | Array with the `name` of any movement sensors on your base you want to gather feedback from. |
+| `movement-sensor` | array | **Required** | Array with the `name` of any movement sensors on your base you want to gather feedback from. The driver will select the first movement sensor providing appropriate feedback for either the `SetVelocity()` or the `Spin()` endpoint. |
 | `base` | string | **Required** | String with the `name` of the base you want to wrap with sensor control. |
 
 ## Test the base
