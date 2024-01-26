@@ -63,6 +63,10 @@ The returned classifications consist of the image's class label and confidence s
 - `confidence` (float): specifies the confidence of the assigned label.
   Between `0.0` and `1.0`, inclusive.
 
+**Supported API methods:**
+
+  - [GetClassifications()](#getclassifications)
+  - [GetClassificationsFromCamera()](#getclassificationsfromcamera)
 ## Segmentations
 
 _3D Object Segmentation_ is the process of separating and returning a list of the identified "objects" from a 3D scene.
