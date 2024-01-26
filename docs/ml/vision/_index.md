@@ -23,7 +23,7 @@ While the camera component lets you access what your machine's camera sees, the 
 Currently, the vision service supports the following kinds of operations:
 
 - [Detections](#detections)
-- [Classificaitons](#classifications)
+- [Classifications](#classifications)
 - [Segmentations](#segmentations)
 
 ## Detections
