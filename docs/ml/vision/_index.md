@@ -37,7 +37,7 @@ Currently, the vision service supports the following kinds of operations:
 _2D Object Detection_ is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct "objects" of interest in the scene.
 Any camera that can return 2D images can use 2D object detection.
 
-The service provides different types of detectors, both based on heuristics and machine learning, so that you can create, register, and use detectors for any object you may need to identify.
+You can use different types of detectors, both based on heuristics and machine learning, for any object you may need to identify.
 
 The returned detections consist of the bounding box around the identified object, as well as its label and confidence score:
 
