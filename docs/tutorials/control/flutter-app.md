@@ -36,7 +36,7 @@ As you work through this project you will learn the following:
 
 You do not need any hardware for this tutorial other than a computer running macOS or a 64-bit Linux operating system.
 
-This tutorial assumes you already have a smart machine [configured](/build/configure/) on the [Viam web app](https://app.viam.com).
+This tutorial assumes you already have a smart machine [configured](/build/configure/) on the [Viam app](https://app.viam.com).
 
 ## Set up your Flutter environment
 
@@ -428,7 +428,7 @@ It displays the names of the locations on a new screen:
 
 ### Add a location screen
 
-So far, you have an app that displays a list of {{< glossary_tooltip term_id="location" text="locations" >}}, but nothing happens when you tap a location name.
+At this point, you have an app that displays a list of {{< glossary_tooltip term_id="location" text="locations" >}}, but nothing happens when you tap a location name.
 In this step you will add functionality so that tapping a location name brings you to the list of {{< glossary_tooltip term_id="machine" text="smart machines" >}} in that location.
 
 In VS Code create a new file in the same folder as <file>main.dart</file> and <file>home_screen.dart</file>.
