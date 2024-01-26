@@ -69,6 +69,10 @@ See our guide [Navigate with a Rover Base](/tutorials/services/navigate-with-rov
 
 Any camera that can return 3D pointclouds can use 3D object segmentation.
 
+**Supported API methods:**
+
+  - [GetObjectPointClouds()](#getobjectpointclouds)
+
 ## Supported Models
 
 To use your motor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your motor.
