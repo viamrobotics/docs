@@ -48,7 +48,7 @@ Turn on the power to the rover.
 
 This tutorial uses the color `#a13b4c` or `rgb(161,59,76)` (a reddish color).
 
-To create a [color detector vision service](/ml/vision/detection/):
+To create a [color detector vision service](/ml/vision/#detections):
 
 {{< tabs >}}
 {{% tab name="Builder" %}}

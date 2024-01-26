@@ -820,7 +820,7 @@ Whether you've downloaded the `colorfilter` module, or written your own color fi
 Next, add the following services to your smart machine to support the color filter module:
 
 - The [data management service](/data/) enables your smart machine to capture data and sync it to the cloud.
-- The [vision service](/ml/vision/detection/) enables your smart machine to perform color detection on objects in a camera stream.
+- The [vision service](/ml/vision/#detections) enables your smart machine to perform color detection on objects in a camera stream.
 
 ### Add the data management service
 
@@ -866,7 +866,7 @@ Click **Save Config** when done.
 
 ### Add the vision service
 
-To enable your smart machine to detect a specific color in its camera stream, add a [vision service color detector](/ml/vision/detection/).
+To enable your smart machine to detect a specific color in its camera stream, add a [vision service color detector](/ml/vision/color_detector/).
 For this tutorial, we will configure the vision service to recognize a blue dog collar using `#43A1D0` or `rgb(67, 161, 208)`.
 If you have a different item you want to use, or want to match to a color that matches your pet closely, you can use a different color.
 
@@ -886,7 +886,7 @@ Your configuration should look like the following:
 
 ![The vision service configuration panel showing the color set to blue, the hue tolerance set to 0.06, and the segment size set to 100.](/tutorials/pet-photographer/vision-service.png)
 
-For more detailed information, refer to [Configure a color detector](/ml/vision/detection/#configure-a-color_detector).
+For more detailed information, refer to [Configure a color detector](/ml/vision/color_detector/).
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

@@ -325,7 +325,7 @@ From here, you could do anything! Try one of the following:
   For example, you might train it to stop or start based on your hand gesture, to turn in a specific direction, or adjust its speed.
 - Teach your machine to [recognize specific pets](/tutorials/projects/pet-treat-dispenser/), and dispense treats appropriately.
 - Teach your machine to [recognize specific toys](/tutorials/projects/bedtime-songs-bot/), and to sing a specific song about each.
-- Try creating an [object detection model](/ml/vision/detection/) to be able to identify parts of an image specifically with a bounding box.
+- Try creating an [object detection model](/ml/vision/#detections) to be able to identify parts of an image specifically with a bounding box.
 
 For more ideas, check out our other [tutorials](/tutorials/).
 

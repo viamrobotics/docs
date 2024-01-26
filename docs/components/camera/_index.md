@@ -40,7 +40,7 @@ You can use different models to:
 {{< relatedcard link="/ml/vision/" >}}
 {{< relatedcard link="/mobility/frame-system/" >}}
 {{< relatedcard link="/mobility/slam/" >}}
-{{< relatedcard link="/ml/deploy/" >}}
+{{< relatedcard link="/ml/deploy/" alt_title="Machine Learning" >}}
 {{< /cards >}}
 
 ## Supported Models

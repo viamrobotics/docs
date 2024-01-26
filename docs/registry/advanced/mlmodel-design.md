@@ -10,7 +10,7 @@ icon: "/services/icons/ml.svg"
 ---
 
 The [Machine Learning (ML) model service](/ml/) allow you to deploy machine learning models to your smart machine.
-Vision services, like [an `"mlmodel"` detector](/ml/vision/detection/#configure-an-mlmodel-detector) or [classifier](/ml/vision/classification/#configure-an-mlmodel-classifier), enable your machines to identify and classify objects in images with the deployed models' predictions.
+Vision services, like [an `"mlmodel"` detector](/ml/vision/mlmodel/) or [classifier](/ml/vision/mlmodel/), enable your machines to identify and classify objects in images with the deployed models' predictions.
 
 The two services work closely together, with the vision service relying on the deployed ML model to make inferences.
 If you are [designing your own ML Model service](/registry/), you must try to make your ML models' shapes match the input and output tensors the `mlmodel` vision service expects to work with if you want the two services to coordinate in classification or detection.
@@ -20,7 +20,7 @@ For an example of this, see [Example Metadata](#example-metadata).
 
 ## Input tensor: `input_info` in metadata
 
-For both [classification](/ml/vision/classification/) and [detection](/ml/vision/detection/) models, the vision service sends a single input tensor to the ML Model with the following structure:
+For both [classification](/ml/vision/mlmodel/) and [detection](/ml/vision/mlmodel/) models, the vision service sends a single input tensor to the ML Model with the following structure:
 
 - One input tensor called `"image"` with type `uint8` or `float32` and shape `(1, height, width, 3)`, with the last channel `3` being the RGB bytes of the pixel.
 - If image `height` and `width` are unknown or variable, then `height` and/or `width` `= -1`. During inference runtime the image will have a known height and width.
@@ -31,13 +31,13 @@ Data can be returned by the ML model in many ways, due to the variety of machine
 The vision service will try to take into account many different forms of models as specified by the metadata of the model.
 If the model does not provide metadata, the vision service will make the following assumptions:
 
-For [classifications](/ml/vision/classification/):
+For [classifications](/ml/vision/#classifications):
 
 - The model returns 1 tensor, called `"probability"` with shape `(1, n_classifications)`
 - The data is floating point numbers representing probability, between `0` and `1`.
 - If the data is not between `0` and `1`, the vision service computes a softmax over the data, resulting in floating point numbers between `0` and `1` representing probability.
 
-For [detections](/ml/vision/detection/):
+For [detections](/ml/vision/#detections):
 
 - The model returns 3 tensors
   1. `"Location"`: the bounding boxes
