@@ -9,7 +9,6 @@ tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 ---
 
 _Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#april-2023)_
-
 ## Configure an `obstacles_depth` segmenter
 
 This segmenter model is for depth cameras, and is best for motion planning with transient obstacles.
