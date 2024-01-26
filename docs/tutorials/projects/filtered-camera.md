@@ -112,8 +112,8 @@ Alternatively, if you want to use a provided pre-trained model that is capable o
 
 The `filtered-camera` module supports two modes of filtering:
 
-- [Detection](/ml/vision/detection/), where you train an ML model by drawing bounding boxes around distinct objects within captured images, to enable your machine to be able to detect those objects on its own.
-- [Classification](/ml/vision/classification/), where you train an ML model by tagging images with a class label that best describes it, to enable your machine to be able to classify similar images on its own.
+- [Detection](/ml/vision/#detections), where you train an ML model by drawing bounding boxes around distinct objects within captured images, to enable your machine to be able to detect those objects on its own.
+- [Classification](/ml/vision/#classifications), where you train an ML model by tagging images with a class label that best describes it, to enable your machine to be able to classify similar images on its own.
 
 In this tutorial, you will learn to configure a _detection_ model.
 
@@ -190,7 +190,8 @@ If you want to use a pre-trained model instead of training your own, or already 
 If you trained your own model in the previous sections, skip to [Configure the ML model and vision services](#configure-the-ml-model-and-vision-services).
 {{% /alert %}}
 
-For example, you could use the object detection model we used for the [Turn on Lights with Object Detection tutorial](/tutorials/projects/light-up/), which was trained on many common objects, including animals, vehicles, household items, and sports gear. You can download that model here:
+For example, you could use the object detection model we used for the [Turn on Lights with Object Detection tutorial](/tutorials/projects/light-up/), which was trained on many common objects, including animals, vehicles, household items, and sports gear.
+You can download that model here:
 
 - <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/effdet0.tflite)</file>: The TFLite model file containing the trained model.
 - <file>[labels.txt](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/labels.txt)</file>: The corresponding labels file containing the labels to assign to matching detected objects.
@@ -249,7 +250,7 @@ Add the vision service to your machine to be able to use the deployed ML model w
 
    {{< imgproc src="/tutorials/filtered-camera-module/configure-vision-service.png" alt="The vision service configuration pane with my-mlmodel-service selected as the ML model" resize="500x" >}}
 
-For more information, see [Configure an `mlmodel` detector](/ml/vision/detection/#configure-an-mlmodel-detector).
+For more information, see [Configure an `mlmodel` detector](/ml/vision/mlmodel/).
 
 ## Test your ML model with a transform camera
 
@@ -400,7 +401,7 @@ You can also refine your existing ML model by adding and labelling new images th
 
 If you trained a new model as part of this tutorial, try using the provided [pre-trained model files](#upload-an-existing-ml-model) instead, and then aiming your machine's camera at objects listed in the <file>labels.txt</file> file to see how accurately it is able to detect those objects.
 
-In this tutorial, you learned how to use the `filtered-camera` module with [object detection](/ml/vision/detection/), but you can also use it to perform [object classification](/ml/vision/classification/).
+In this tutorial, you learned how to use the `filtered-camera` module with [object detection](/ml/vision/#detections), but you can also use it to perform [object classification](/ml/vision/#classifications).
 See the [`filtered-camera` module repository](https://github.com/erh/filtered_camera) for the attributes to use to configure object classification.
 
 ## Troubleshooting
