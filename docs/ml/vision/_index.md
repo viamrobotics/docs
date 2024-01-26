@@ -81,7 +81,7 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 **Supported API methods:**
 
-  - [GetObjectPointClouds()](#getobjectpointclouds)
+- [GetObjectPointClouds()](#getobjectpointclouds)
 
 ## Supported Models
 
