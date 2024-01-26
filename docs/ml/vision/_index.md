@@ -67,6 +67,7 @@ The returned classifications consist of the image's class label and confidence s
 
   - [GetClassifications()](#getclassifications)
   - [GetClassificationsFromCamera()](#getclassificationsfromcamera)
+
 ## Segmentations
 
 _3D Object Segmentation_ is the process of separating and returning a list of the identified "objects" from a 3D scene.
