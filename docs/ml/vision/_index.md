@@ -67,7 +67,7 @@ The returned classifications consist of the image's class label and confidence s
 **Supported API methods:**
 
 - [GetClassifications()](#getclassifications)
-  - [GetClassificationsFromCamera()](#getclassificationsfromcamera)
+- [GetClassificationsFromCamera()](#getclassificationsfromcamera)
 
 ## Segmentations
 
