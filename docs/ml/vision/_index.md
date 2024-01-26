@@ -50,6 +50,7 @@ The returned detections consist of the bounding box around the identified object
 
   - [GetDetections()](#getdetections)
   - [GetDetectionsFromCamera()](#getdetectionsfromcamera)
+
 ## Classifications
 
 _2D Image Classification_ is the process of taking a 2D image from a camera and deciding which class label, out of many, best describes the given image.
