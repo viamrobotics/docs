@@ -76,13 +76,13 @@ For this walkthrough, you only need to install the following:
 2. Start typing "flutter new."
    Select the **Flutter: New Project** command.
 
-{{<imgproc src="/tutorials/flutter-app/flutter-new-project.png" resize="1200x" style="max-width:800px" declared-dimensions="true" alt="Creating a new project in VS Code.">}}
+{{<imgproc src="/tutorials/flutter-app/flutter-new-project.png" resize="1000x" declared-dimensions="true" alt="Creating a new project in VS Code.">}}
 
 3. Next, select **Application** and then choose a folder in which to create your project.
    This could be your home directory, or something like <file>C:\\src\\</file>.
 4. Finally, name your project something like <file>smart_machine_app</file>.
 
-{{<imgproc src="/tutorials/flutter-app/project-name.png" resize="1200x" style="max-width:800px" declared-dimensions="true" alt="Entering the name for the project in VS Code: 'smart_machine_app'.">}}
+{{<imgproc src="/tutorials/flutter-app/project-name.png" resize="1000x" declared-dimensions="true" alt="Entering the name for the project in VS Code: 'smart_machine_app'.">}}
 
 Flutter now creates your project folder for you and VS Code opens it.
 
@@ -175,7 +175,7 @@ Now you'll update some configurations in the iOS-specific code to support the [V
 2. Open <file>ios/Runner/Info.plist</file>.
    It will look something like this:
 
-   {{<imgproc src="/tutorials/flutter-app/info-plist.png" resize="1200x" style="max-width:900px" declared-dimensions="true" alt="The info.plist file open in VS Code. The second line includes 'doctype plist public' and an Apple URL. The fourth line is a dict tag. The fifth line is a key, and subsequent lines contain keys, strings and arrays.">}}
+   {{<imgproc src="/tutorials/flutter-app/info-plist.png" resize="1200x" declared-dimensions="true" alt="The info.plist file open in VS Code. The second line includes 'doctype plist public' and an Apple URL. The fourth line is a dict tag. The fifth line is a key, and subsequent lines contain keys, strings and arrays.">}}
 
 3. Insert this code into the first line after the `<dict>`:
 
@@ -188,11 +188,11 @@ Now you'll update some configurations in the iOS-specific code to support the [V
      </array>
    ```
 
-   {{<imgproc src="/tutorials/flutter-app/info-plist-insert.png" resize="1200x" style="max-width:900px" declared-dimensions="true" alt="The info.plist file open in VS Code. An arrow labeled 'insert here' indicates that you should insert the code right after the fourth line in the file.">}}
+   {{<imgproc src="/tutorials/flutter-app/info-plist-insert.png" resize="1200x" declared-dimensions="true" alt="The info.plist file open in VS Code. An arrow labeled 'insert here' indicates that you should insert the code right after the fourth line in the file.">}}
 
    The file should now look like the following:
 
-   {{<imgproc src="/tutorials/flutter-app/info-plist-pasted.png" resize="1200x" style="max-width:900px" declared-dimensions="true" alt="The resulting file. After the non-indented <dict> tag on the fourth line, the pasted key, string, key, and array (containing an indented string) are indented inside the dict tag, spanning lines five through ten. The pasted content is at the same level of indentation as the rest of the keys and strings below it.">}}
+   {{<imgproc src="/tutorials/flutter-app/info-plist-pasted.png" resize="1200x" declared-dimensions="true" alt="The resulting file. After the non-indented <dict> tag on the fourth line, the pasted key, string, key, and array (containing an indented string) are indented inside the dict tag, spanning lines five through ten. The pasted content is at the same level of indentation as the rest of the keys and strings below it.">}}
 
 ### Create the main file
 
@@ -256,16 +256,16 @@ In this section of the tutorial we'll build the app and see what it looks like s
    Click the button to change your target device.
    Make sure that you have your target device selected before you continue.
 
-   {{<imgproc src="/tutorials/flutter-app/target-device-button.png" resize="1200x" style="max-width:900px" declared-dimensions="true" alt="A VS Code window with main.dart open. In the bottom right corner, there is a target device button labeled 'iPhone 14 (ios simulator)'.">}}
+   {{<imgproc src="/tutorials/flutter-app/target-device-button.png" resize="1000x" declared-dimensions="true" alt="A VS Code window with main.dart open. In the bottom right corner, there is a target device button labeled 'iPhone 14 (ios simulator)'.">}}
 
 2. With <file>lib/main.dart</file> still open, find the "Start Debugging" button in the upper right corner of the VS Code window.
-   Click the button to build and render your app
+   Click the button to build and render your app.
 
-   {{<imgproc src="/tutorials/flutter-app/main-play.png" resize="1200x" style="max-width:900px" declared-dimensions="true" alt="A VS Code window with main.dart open. In the top right corner, there is a button labeled 'Start Debugging' with an icon of a bug and a 'play' symbol.">}}
+   {{<imgproc src="/tutorials/flutter-app/main-play.png" resize="1000x" declared-dimensions="true" alt="A VS Code window with main.dart open. In the top right corner, there is a button labeled 'Start Debugging' with an icon of a bug and a 'play' symbol.">}}
 
    A window should open up, displaying a rendering of your smart machine app:
 
-   {{<imgproc src="/tutorials/flutter-app/render1.png" resize="1200x" style="max-width:300px" declared-dimensions="true" alt="Rendering of an iPhone with the app open on the screen. The screen is white with the words 'Smart Machine App' in the middle, above a grayed-out login button.">}}
+   {{<imgproc src="/tutorials/flutter-app/render1.png" resize="1000x" style="max-width:300px" declared-dimensions="true" alt="Rendering of an iPhone with the app open on the screen. The screen is white with the words 'Smart Machine App' in the middle, above a grayed-out login button.">}}
 
 ## Add app navigation
 
@@ -379,7 +379,7 @@ Follow the steps below to get your API key and create an environment variables f
 3. Click the organization dropdown menu on the right side of the top banner.
    If you're not already in the organization you want to connect to, click the correct organization name to navigate to it.
 
-   {{<imgproc src="/tutorials/flutter-app/org-dropdown.png" resize="1200x" style="max-width:800px" declared-dimensions="true" alt="The Viam web app with the organization dropdown labeled 'Clint's Org' highlighted.">}}
+   {{<imgproc src="/tutorials/flutter-app/org-dropdown.png" resize="1000x" declared-dimensions="true" alt="The Viam web app with the organization dropdown labeled 'Clint's Org' highlighted.">}}
 
 4. Click the organization dropdown menu again and click **Settings**.
 
@@ -429,7 +429,7 @@ It displays the names of the locations on a new screen:
 ### Add a location screen
 
 So far, you have an app that displays a list of {{< glossary_tooltip term_id="location" text="locations" >}}, but nothing happens when you tap a location name.
-In this step you will add functionality so that tapping a location name brings you to the list of {{< glossary_tooltip term_id="smart machine" text="smart machines" >}} in that location.
+In this step you will add functionality so that tapping a location name brings you to the list of {{< glossary_tooltip term_id="machine" text="smart machines" >}} in that location.
 
 In VS Code create a new file in the same folder as <file>main.dart</file> and <file>home_screen.dart</file>.
 Name it <file>location_screen.dart</file>.
