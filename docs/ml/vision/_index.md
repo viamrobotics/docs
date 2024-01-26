@@ -99,7 +99,7 @@ Model | Description <a name="model-table"></a>
 [`mlmodel`](./mlmodel/) | A detector or classifier that uses a `tensorflow-lite` model available on the machine’s hard drive to draw bounding boxes around objects or returns a class label and confidence score.
 [`color_detector`](./color_detector/) | A heuristic detector that draws boxes around objects according to their hue (does not detect black, gray, and white).
 [`obstacles_pointcloud`](./obstacles_pointcloud/) | A segmenter that identifies well-separated objects above a flat plane.
-[`detector_3d_segmenter`](./detector_3d_segmenter/) | This model takes 2D bounding boxes from an object detector and projects the pixels in the bounding box to points in 3D space.
+[`detector_3d_segmenter`](./detector_3d_segmenter/) | A segmenter that takes 2D bounding boxes from an object detector and projects the pixels in the bounding box to points in 3D space.
 [`obstacles_depth`](./obstacles_depth/) | A segmenter for depth cameras that returns the perceived obstacles as a set of 3-dimensional bounding boxes, each with a Pose as a vector.
 [`obstacles_distance`](./obstacles_distance/) | A segmenter that takes point clouds from a camera input and returns the average single closest point to the camera as a perceived obstacle.
 
