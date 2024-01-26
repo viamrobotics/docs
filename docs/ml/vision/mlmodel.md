@@ -389,6 +389,9 @@ To learn more about how to use classification, see the [Go SDK docs](https://pkg
 {{% /tab %}}
 {{< /tabs >}}
 
+{{% /tab %}}
+{{< /tabs >}}
+
 ### Existing images on your machine
 
 If you would like to test your detector or classifier with existing images, load the images and pass them to the detector or classifier:
