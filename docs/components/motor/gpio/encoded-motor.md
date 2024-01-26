@@ -158,4 +158,19 @@ This wiring example corresponds to the [example config above](#encoder-config).
 
 ![Example wiring diagram with a Raspberry Pi, brushed DC motor, 12V power supply, and Pololu MAX14870 motor driver. The DIR pin of the driver is wired to pin 18 on the Pi. PWM goes to pin 16. The motor's encoder signal wires (out a and out b) go to pins 11 and 13 on the Pi. The motor's main power wires are connected to the motor driver while its encoder logic power wires are connected to the Pi.](/components/motor/motor-encoded-dc-wiring.png)
 
-{{< readfile "/static/include/components/test-control/motor-control.md" >}}
+## Test the motor
+
+Once your motor is configured and connected, go to the [**Control** tab](/fleet/machines/#control) and click on the motor's dropdown panel.
+Use the buttons to try turning your motor forwards or backwards at different power levels and check whether it moves as expected.
+
+![Motor control panel.](/components/motor/control.png)
+
+For example, a [Viam Rover](https://docs.viam.com/get-started/try-viam/rover-resources/) with encoded motors following both an [angular](/components/base/#spin) and [linear](/components/base/#movestraight) velocity command:
+
+{{<gif webm_src="/components/encoded-motor/base_moving.webm" mp4_src="/components/encoded-motor/base-moving.mp4" alt="A Viam rover turning in a half circle" max-width="400px" >}}
+
+The position, orientation, and linear and angular velocity of the rover changing as it moves, as measured by a [movement sensor](/components/movement-sensor/):
+
+{{<gif webm_src="/components/encoded-motor/controls_change.webm" mp4_src="/components/encoded-motor/controls_change.mp4" alt="The control tab of a movement sensor on a base with encoded motors as it turns">}}
+
+If the motor does not appear on the **Control** tab, or if you notice unexpected behavior, check your machine's [**Logs** tab](/fleet/machines/#logs) for errors, and review the configuration.
