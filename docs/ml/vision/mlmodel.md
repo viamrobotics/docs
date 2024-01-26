@@ -536,7 +536,7 @@ To learn more about how to use classification, see the [Go SDK docs](https://pkg
 {{< /tabs >}}
 
 {{% alert title="Tip" color="tip" %}}
-To see more code examples of how to use Viam's Vision Service, see [our example repo](https://github.com/viamrobotics/vision-service-examples).
+To see more code examples of how to use Viam's vision service, see [our example repo](https://github.com/viamrobotics/vision-service-examples).
 {{% /alert %}}
 
 ## Next Steps
