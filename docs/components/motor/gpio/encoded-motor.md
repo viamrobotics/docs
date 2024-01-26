@@ -167,10 +167,10 @@ Use the buttons to try turning your motor forwards or backwards at different pow
 
 For example, a [Viam Rover](https://docs.viam.com/get-started/try-viam/rover-resources/) with encoded motors following both an [angular](/components/base/#spin) and [linear](/components/base/#movestraight) velocity command:
 
-{{<video webm_src="/components/encoded-motor/base_moving.webm" mp4_src="/components/encoded-motor/base-moving.mp4" alt="A Viam rover turning in a half circle" poster="components/motor/encoded-motor-preview.jpg">}}
+{{<gif webm_src="/components/encoded-motor/base_moving.webm" mp4_src="/components/encoded-motor/base-moving.mp4" alt="A Viam rover turning in a half circle" max-width="300px" >}}
 
 The position, orientation, and linear and angular velocity of the rover changing as it moves, as measured by a [movement sensor](/components/movement-sensor/):
 
-{{<video webm_src="/components/encoded-motor/controls_change.webm" mp4_src="/components/encoded-motor/controls_change.mp4" alt="The control tab of a movement sensor on a base with encoded motors as it turns" poster="components/motor/controls-preview.jpg">}}
+{{<gif webm_src="/components/encoded-motor/controls_change.webm" mp4_src="/components/encoded-motor/controls_change.mp4" alt="The control tab of a movement sensor on a base with encoded motors as it turns">}}
 
 If the motor does not appear on the **Control** tab, or if you notice unexpected behavior, check your machine's [**Logs** tab](/fleet/machines/#logs) for errors, and review the configuration.
