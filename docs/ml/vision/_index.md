@@ -49,7 +49,7 @@ The returned detections consist of the bounding box around the identified object
 **Supported API methods:**
 
 - [GetDetections()](#getdetections)
-  - [GetDetectionsFromCamera()](#getdetectionsfromcamera)
+- [GetDetectionsFromCamera()](#getdetectionsfromcamera)
 
 ## Classifications
 
