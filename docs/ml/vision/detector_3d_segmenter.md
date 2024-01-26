@@ -19,8 +19,8 @@ The label and the pixels associated with the 2D detections become the label and 
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
-Click the **Services** subtab and click **Create service** in the lower-left corner.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 Select the `Vision` type, then select the `Detector to 3D Segmenter` model.
 Enter a name for your service and click **Create**.
 
