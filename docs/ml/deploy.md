@@ -84,7 +84,7 @@ Then select the **Models** and any **Optional Settings** such as the **Number of
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Add the `tflite_cpu` ML model object to the services array in your raw JSON configuration:
+Add the `tflite_cpu` ML model object to the services array in your JSON configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "services": [
@@ -137,7 +137,7 @@ Save the configuration.
 ### Versioning for deployed models
 
 If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the machine.
-If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON machine configuration](/build/configure/#the-config-tab).
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [JSON machine configuration](/build/configure/#the-config-tab).
 
 You can get the version number from a specific model version by clicking on **COPY** on the model on the models tab of the **DATA** page.
 The model package config looks like this:
