@@ -132,7 +132,7 @@ Once you have [added a module](#add-a-modular-resource-from-the-viam-registry) f
 Follow the same steps as when you added the first modular resource, clicking **Create component** or **Create service** as applicable.
 You will be prompted to click **Add module** again while configuring the resource, though no duplicate module will be added to the `modules` section of the configuration.
 
-If you prefer to use raw JSON, the following properties are available for modular resources:
+If you prefer to use JSON, the following properties are available for modular resources:
 
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
@@ -219,7 +219,7 @@ Once you have added a modular resource to your machine, you can view and edit th
 This pane lists the models provided by the module, and any [components](/components/) or [services](/services/) on your machine that are currently using the module.
 You can also configure [how the module updates](#configure-version-update-management-for-a-registry-module) when a new version is available from the Viam registry, or [configure environment variables](#use-environment-variables-with-a-registry-module) for your module.
 
-{{<imgproc src="registry/configure/deployed-module-with-component.png" resize="1000x" declaredimensions=true alt="The module subtab of the config tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
+{{<imgproc src="registry/configure/deployed-module-with-component.png" resize="1000x" declaredimensions=true alt="The module subtab of the configure tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
 
 ### Configure version update management for a registry module
 
@@ -294,7 +294,7 @@ This configures a module environment variable `PATH` that uses your system's `PA
 The notation `${environment.<ENV-VAR-NAME>}"` can be used to access any system environment variable that `viam-server` has access to, where `<ENV-VAR-NAME>` represents a system environment variable, like `PATH`, `USER`, or `PWD`.
 For example, you can use `${environment.HOME}"` to access the `HOME` environment variable for the user running `viam-server`.
 
-To configure a modular resource with an environment variable, navigate to the **Config** tab on your machine's page in the Viam app, toggle **Raw JSON** mode, and add the following `env` configuration to the `modules` section:
+To configure a modular resource with an environment variable, navigate to the **Config** tab on your machine's page in the Viam app, toggle **JSON** mode, and add the following `env` configuration to the `modules` section:
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
