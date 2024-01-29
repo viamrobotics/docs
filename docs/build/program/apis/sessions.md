@@ -75,7 +75,7 @@ On your **Auth/Network** tab, set the **Heartbeat Window**:
 ![Heartbeat window configuration screen](/build/program/sessions/heartbeatwindow.png)
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON" %}}
 
 Add the following `heartbeat_window` configuration to your `network.sessions` object:
 

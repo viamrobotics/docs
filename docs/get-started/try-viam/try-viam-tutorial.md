@@ -136,7 +136,7 @@ The [web gamepad component](/components/input-controller/webgamepad/) is disable
 
 ## Learn about machine configuration
 
-On the Viam app, navigate to the **Components** subtab, under **Config**.
+On the Viam app, navigate to the **Components** subtab, under **CONFIGURE**.
 There you can view the configuration for each component in the machine: attributes, component dependencies, pin assignments, and more.
 
 ![The CONFIG tab in Builder mode (as opposed to Raw JSON). The board component panel and right motor panel are visible.](get-started/try-viam/try-viam/config-builder.png)
@@ -199,7 +199,7 @@ The [web gamepad](/components/input-controller/webgamepad/) component has the **
 If you connect a generic gamepad controller to your computer, you can use it to control your machine.
 
 If you are configuring your own machine, be aware that using the gamepad requires a service.
-To see how the service is configured, navigate to the **Services** section under the **Config** tab.
+To see how the service is configured, navigate to the **Services** section under the **CONFIGURE** tab.
 The **Services** subtab contains the "Base Remote Control" service which uses three attributes:
 
 - **base**: `viam_base`
@@ -214,7 +214,7 @@ The names for **base** and **input_controller** correspond to the naming scheme 
 
 The 'Builder' configuration mode provides a user-friendly, guided experience for you.
 In the background, the Viam app translates the Viam machine configuration into JSON.
-You can view the complete JSON for your rover by clicking on **Raw JSON** at the top left of the **Config** tab.
+You can view the complete JSON for your rover by clicking on **Raw JSON** at the top left of the **CONFIGURE** tab.
 
 ![The CONFIG tab with the mode toggled to Raw JSON. A section of the full raw JSON config is displayed but one would have to scroll to see all of it.](get-started/try-viam/try-viam/raw-json.png)
 

@@ -72,7 +72,7 @@ Your model is now updated.
 If you [deploy a model](/ml/) to a machine, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the machine.
 If you upload a new version of that model, Viam will automatically deploy the new version to the machine and replace the old version.
 
-If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON machine configuration](/build/configure/#the-config-tab).
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [JSON machine configuration](/build/configure/#the-config-tab).
 
 You can get the version number from a specific model version by navigating to the **MODELS** subtab of the Viam app's **DATA** tab, finding the model's row, clicking on the right-side menu marked with **_..._** and selecting **Copy package JSON**.
 The model package config looks like this:
