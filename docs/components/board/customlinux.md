@@ -339,6 +339,7 @@ Try looking at your board's data sheet and cross-referencing with the output fro
 ## Configure your board
 
 {{< tabs name="Configure a customlinux board" >}}
+
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
@@ -351,7 +352,7 @@ Enter a name for your `customlinux` board and click **Create**.
 Copy and paste the following attribute template into your board's **Attributes** box.
 Then edit the file path to use your [board definitions file](#create-a-board-definitions-file).
 
-{{< tabs >}}
+{{< tabs name="Configure attributes" >}}
 {{% tab name="Attributes template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
