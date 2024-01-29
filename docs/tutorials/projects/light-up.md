@@ -139,7 +139,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ![detectionCam component panel with type camera and model transform, Attributes section filled with source and pipeline information.](/tutorials/tipsy/app-detection-after.png)
 
-## Set up the Kasa Smart Plug
+## Set up the Kasa smart plug
 
 1. Plug your smart plug into any power outlet and turn it on by pressing the white button on the smart plug.
    To connect the plug to your wifi, download the Kasa Smart app from the [App Store](https://apps.apple.com/us/app/kasa-smart/id1034035493) or [Google Play](https://play.google.com/store/apps/details?id=com.tplink.kasa_android) to your mobile phone.

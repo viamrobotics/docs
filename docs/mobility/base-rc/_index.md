@@ -27,7 +27,7 @@ Control mode is determined by the configuration attribute `"mode"`, for which th
 
 You can monitor the input from these controls in the **Control** tab of the [Viam app](https://app.viam.com).
 
-## Used With
+## Used with
 
 {{< cards >}}
 {{< relatedcard link="/components/base/" required="yes" >}}

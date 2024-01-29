@@ -26,7 +26,7 @@ cost: 260
 - A Bluetooth gamepad controller.
   For this tutorial we used an 8BitDo controller.
 
-## Configuring the Board
+## Configuring the board
 
 Go to the Viam app ([app.viam.com](https://app.viam.com)) in a web browser, and navigate to the **Config** tab of the robot associated with your Raspberry Pi.
 To create a new component you'll be working within the **Create Component** section of the **Components** subtab.
@@ -42,7 +42,7 @@ You don't need to add any attributes for this one, so your configured board will
 
 ![A screenshot of the board's configuration card on app.viam.com.](/tutorials/yahboom-rover/board.png)
 
-## Configuring the Motors and Wheels
+## Configuring the motors and wheels
 
 Since both right side motors of the Yahboom rover are wired together to a single motor driver, the right side motors are configured as a single [motor component](/components/motor/) in the Viam config file.
 Later we will configure both left side motors as another motor.
@@ -96,7 +96,7 @@ You should now see two motors and be able to make each set of wheels spin.
 
 ![A screenshot of the CONTROL tab UI with buttons to control both sets of motors.](/tutorials/yahboom-rover/motors.png)
 
-## Configuring the Base
+## Configuring the base
 
 Unite these wheel sets with a [base component](/components/base/), which is used to describe the physical structure onto which your components are mounted.
 Configuring a {{% glossary_tooltip term_id="base" text="base"%}} will also give you a nice UI for moving the rover around.
@@ -138,7 +138,7 @@ If you’ve ever connected a Bluetooth device using the Linux command line, grea
 If not, strap in, it’s going to be a bit of a ride.
 If you would like to skip adding a Bluetooth controller, [jump ahead to the Configuring the Camera Component section](#configuring-the-camera-component) of the tutorial.
 
-## Connecting a Bluetooth Controller
+## Connecting a bluetooth controller
 
 Make sure the 8bitdo controller mode switch is set to S, hold down Start for a few seconds, and when the LED underneath the controller changes to green, press the pair button for 3 seconds.
 For more information about the controller buttons and Bluetooth modes, consult the manual included with the controller.
@@ -216,7 +216,7 @@ Save the config and visit the **Control** tab.
 You should have a panel for the controller which indicates whether or not it is connected.
 At this point moving the left analogue stick should result in movement of the rover!
 
-## Configuring the Camera Component
+## Configuring the camera component
 
 Before we can do that: this rover has a camera on it which we need to configure.
 
@@ -231,7 +231,7 @@ If you click on your webUI, you will be able to see your camera streaming.
 
 ![A screenshot of the camera output in the CONTROL tab. The camera feed displays the view out the window of one building, consisting of an apartment building wall across the street.](/tutorials/yahboom-rover/camerastream.png)
 
-## Configuring the Servo Components
+## Configuring the servo components
 
 You may have noticed that the camera is mounted on a pair of [servos](/components/servo/) which control the pan and tilt of the camera.
 Go to the **Create Component** section at the bottom of **Config**.

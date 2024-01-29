@@ -486,7 +486,7 @@ When you run your code, your robot moves in a square.
 {{<gif webm_src="/tutorials/try-viam-sdk/image2.webm" mp4_src="../../try-viam-sdk/image2.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square on the left, and on the right, a terminal window shows the output of running the square function as the rover moves in a square.">}}
 </div>
 
-## Complete Code
+## Complete code
 
 This is the complete code for the tutorial:
 

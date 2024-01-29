@@ -1,5 +1,5 @@
 ---
-title: "obstacles_distance"
+title: "Configure an obstacles_distance Segmenter"
 linkTitle: "obstacles_distance"
 weight: 20
 type: "docs"

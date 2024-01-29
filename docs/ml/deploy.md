@@ -26,7 +26,7 @@ You can use the following built-in model:
 For some models, like the [Triton MLModel](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use the available CPU or GPU.
 {{< /alert >}}
 
-## Used With
+## Used with
 
 {{< cards >}}
 {{< relatedcard link="/ml/vision/">}}
@@ -151,7 +151,7 @@ The model package config looks like this:
 }
 ```
 
-### `tflite_cpu` Limitations
+### `tflite_cpu` limitations
 
 We strongly recommend that you package your `tflite_cpu` model with metadata in [the standard form](https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs).
 

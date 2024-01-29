@@ -1,5 +1,5 @@
 ---
-title: "color_detector"
+title: "Configure a Color Detector"
 linkTitle: "color_detector"
 weight: 10
 type: "docs"

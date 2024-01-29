@@ -1,5 +1,5 @@
 ---
-title: "Upload your own modules to the Viam registry"
+title: "Upload your own Modules to the Viam Registry"
 linkTitle: "Upload"
 weight: 20
 type: "docs"

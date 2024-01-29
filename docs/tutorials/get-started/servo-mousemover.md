@@ -43,7 +43,7 @@ This project is a good place to begin if you're new to robotics and would like t
 - [Jumper wires](https://www.amazon.com/EDGELEC-Breadboard-Optional-Assorted-Multicolored/dp/B07GD2BWPY)
 - Optical mouse - corded or uncorded
 
-### Tools and Consumables
+### Tools and consumables
 
 - Suitable sized box (box should allow servo with wheel/arm with circle cut out on top of wheel/arm to sit flush with the top of the box)
 - Double sided tape
@@ -131,7 +131,7 @@ python3 anyname.py
 
 There are no errors in the resources above, so we have confirmed a good software connection between the Python SDK and your Viam robot!
 
-## Connect the Servo
+## Connect the servo
 
 First, **turn off your Raspberry Pi**.
 This will help prevent any accidents when connecting the hardware.

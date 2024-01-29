@@ -1,5 +1,5 @@
 ---
-title: "Find a module for your machine"
+title: "Find a Module for your Machine"
 linkTitle: "Find modules"
 weight: 10
 type: "docs"
