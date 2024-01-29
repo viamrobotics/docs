@@ -28,7 +28,7 @@ Configure a `sensor-controlled` base as follows:
 {{< tabs name="Configure a Sensor-Controlled Base" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `base` type, then select the `sensor-controlled` model.
 Enter a name for your base and click **Create**.
@@ -71,14 +71,14 @@ The following attributes are available for `sensor-controlled` bases:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `movement-sensor` | array | **Required** | Array with the `name` of any movement sensors on your base you want to gather feedback from. The driver will select the first movement sensor providing appropriate feedback for either the `SetVelocity()` or the `Spin()` endpoint. |
+| `movement-sensor` | array | **Required** | Array with the `name`s of any movement sensors on your base you want to gather feedback from. The driver will select the first movement sensor providing appropriate feedback for either the `SetVelocity()` or the `Spin()` endpoint. |
 | `base` | string | **Required** | String with the `name` of the base you want to wrap with sensor control. |
 
 ## Test the base
 
 {{< readfile "/static/include/components/test-control/base-control.md" >}}
 
-The following motor control API methods are available with feedback control on a `sensor-controlled` base:
+The following base control API methods are available with feedback control on a `sensor-controlled` base:
 
 - [SetVelocity()](/components/base/#setvelocity): available if base is configured to receive angular and linear velocity feedback.
 - [Spin()](/components/base/#spin): available if base is configured to receive orientation feedback.
