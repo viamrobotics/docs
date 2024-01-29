@@ -16,13 +16,14 @@ cost: "0"
 ---
 
 <div class="td-max-width-on-larger-screens">
- <div class="alignleft" style="max-width:250px; margin-right:40px">
+ <div class="alignleft center-if-small" style="max-width:250px; margin-right:40px">
   {{<gif webm_src="/tutorials/flutter-app/demo.webm" mp4_src="/tutorials/flutter-app/demo.mp4" alt="Rendering of the mobile app. Log in is clicked, then all Clint's locations are shown, Clint's Desk it clicked, all its smart machines are listed, and then desk-robot is clicked, showing a list of components and services belonging to that smart machine.">}}
   </div>
 </div>
 
 Flutter is Google's user interface toolkit for building applications for mobile, web, and desktop from a single codebase.
-If the existing [Viam mobile app](/fleet/#the-viam-mobile-app) doesn't fit your needs, you can use Viam's [Flutter SDK](https://flutter.viam.dev/) to build a custom app to interact with your smart machines that run on Viam.
+If you're looking to monitor and control individual machines with the same functionality you have on the [**Control** tab](/fleet/machines/#control), you can use the general-purpose [Viam mobile app](/fleet/#the-viam-mobile-app) rather than creating your own.
+If you need custom functionality or a custom interface, you can use Viam's [Flutter SDK](https://flutter.viam.dev/) to build a custom app to interact with your machines that run on Viam.
 
 This tutorial guides you through creating a mobile app that shows your machines and their components.
 As you work through this project you will learn the following:
@@ -36,11 +37,11 @@ As you work through this project you will learn the following:
 
 You do not need any hardware for this tutorial other than a computer running macOS or a 64-bit Linux operating system.
 
-This tutorial assumes you already have a smart machine [configured](/build/configure/) on the [Viam app](https://app.viam.com).
+This tutorial assumes you already have a machine [configured](/build/configure/) on the [Viam app](https://app.viam.com).
 
 ## Set up your Flutter environment
 
-To make this documentation as straightforward as possible, this tutorial assumes you are using [Visual Studio Code](https://code.visualstudio.com/download) (VS Code) as your development environment (IDE).
+This tutorial uses [Visual Studio Code](https://code.visualstudio.com/download) (VS Code) as the development environment (IDE), and uses the VS Code [Flutter extension](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) to generate necessary boilerplate code.
 It's free, works on all major platforms, and has great integrations with Flutter.
 You can use a different editor, but it will be easier to follow along using VS Code.
 
@@ -198,7 +199,7 @@ Now you'll update some configurations in the iOS-specific code to support the [V
 
 1. Open the <file>lib/main.dart</file> file.
 
-2. Replace the contents of this file with the following code to make up the login screen for your app:
+2. Replace the contents of this file with the following code, which creates the scaffold of your app's login screen:
 
    ```{class="line-numbers linkable-line-numbers"}
    import 'package:flutter/material.dart';
@@ -249,7 +250,9 @@ Now you'll update some configurations in the iOS-specific code to support the [V
 
 ### Launch the app
 
-In this section of the tutorial we'll build the app and see what it looks like so far.
+You now have enough of your new app coded to be able to build and test a rendering of it.
+
+Follow the steps below to build and preview the current state of your app.
 
 1. Open <file>lib/main.dart</file>.
    In the bottom right corner of VS Code, find the button that shows the current target device.
@@ -273,7 +276,8 @@ In this section of the tutorial we'll build the app and see what it looks like s
 
 Great work so far!
 Your app is successfully running, with a single screen and an inactive button.
-Next you will add a new screen that pulls in some information from your {{< glossary_tooltip term_id="organization" text="organization" >}} in Viam, and then navigate to that screen from the login button.
+Next, you will add a new screen that pulls in some information from your {{< glossary_tooltip term_id="organization" text="organization" >}} in the Viam app.
+This new screen will be accessed from the login button.
 
 In the VS Code file explorer on the left-hand side, right click <file>lib/</file> and click **New File**, then name the new file <file>home_screen.dart</file>.
 
@@ -385,7 +389,7 @@ Follow the steps below to get your API key and create an environment variables f
 
 5. Scroll to the **API Keys** section.
    You can find and use an existing API key for your smart machine, or you can create a new one for this application.
-   For this tutorial we will create a new one:
+   To create a new one:
 
    1. Click **Generate key**.
    2. Give the key a name like "flutter-app-my-org-name."
@@ -721,10 +725,9 @@ Congratulations!
 You have successfully made a Flutter app integrated with Viam!
 
 At this point you could customize the robot screen to have more functionality to control the machine or to show data from the robot in neat ways.
-The Viam GitHub repo contains [more example apps](https://github.com/viamrobotics/viam-flutter-sdk/tree/main/example) for your reference.
+The Viam Flutter SDK GitHub repo contains [more example apps](https://github.com/viamrobotics/viam-flutter-sdk/tree/main/example) for your reference.
 
-Flutter is a very powerful tool for building user interfaces.
-You can stylize the look and feel of your app to match your brand.
+You can also stylize the look and feel of your app to match your brand.
 Look around [the Flutter documentation](https://docs.flutter.dev/) to learn how.
 
 Before releasing your app to the app stores you’ll need to add an authentication flow to your app instead of adding API keys as environment variables.
