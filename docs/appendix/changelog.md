@@ -332,6 +332,7 @@ The latest updates enable you to:
 
 - View readable webcam names in the **video path** of your camera component.
 - Specify your preferred framerate by selecting the desired value in the newly added **framerate field** on the **CONFIGURE** tab.
+- Specify your preferred framerate by selecting the desired value in the newly added **framerate field** on the **CONFIGURE** tab.
 
 {{% /changelog %}}
 
@@ -400,7 +401,7 @@ detections = await vision.get_detections(img, "find_objects")
 
 #### Color detector configurations
 
-You can replace existing color detectors by [configuring new ones in the UI](/ml/vision/detection/#configure-a-color_detector) or you can update the [JSON configuration of your machines](/build/configure/#the-config-tab):
+You can replace existing color detectors by [configuring new ones in the UI](/ml/vision/detection/color_detector) or you can update the [JSON configuration of your machines](/build/configure/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
