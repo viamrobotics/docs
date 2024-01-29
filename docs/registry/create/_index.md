@@ -636,7 +636,7 @@ class MyBase : public Base {
 </details>
 <br>
 <details>
-  <summary>Click to view sample code for <file>my_base.cpp</file> source file</summary>
+  <summary>Click to view sample code for the <file>my_base.cpp</file> source file</summary>
 
 ```cpp {class="line-numbers linkable-line-numbers"}
 #include "my_base.hpp"
