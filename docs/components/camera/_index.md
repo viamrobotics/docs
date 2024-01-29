@@ -33,7 +33,7 @@ You can use different models to:
 - Combine streams from multiple cameras into one.
 - Transform and process images.
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/data/" >}}
@@ -43,7 +43,7 @@ You can use different models to:
 {{< relatedcard link="/ml/deploy/" alt_title="Machine Learning" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your camera with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your camera.
 
@@ -71,7 +71,7 @@ For configuration information, click on the model name:
 | [`transform`](transform/) | A pipeline for applying transformations to an input image source. |
 | [`ultrasonic`](ultrasonic/) | The [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor. |
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:camera" type="camera">}}
 
@@ -517,7 +517,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 {{% /tab %}}
 {{< /tabs >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/ml/vision" %}}

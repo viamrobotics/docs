@@ -78,7 +78,7 @@ flutter pub add viam_sdk
 {{% /tab %}}
 {{< /tabs >}}
 
-## Hello World: The Code Sample Tab
+## Hello world: the Code Sample tab
 
 Create a program in the language of your choice to connect to your machine and use methods built into the SDK's client API libraries to [interact with and control](/build/program/apis/) the {{< glossary_tooltip term_id="resource" text="resources" >}} on the machine.
 

@@ -543,7 +543,7 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
-## Next Steps
+## Next steps
 
 Take your smart pet feeder to the next level!
 You could try one of the following:

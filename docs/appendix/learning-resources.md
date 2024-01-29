@@ -10,9 +10,9 @@ draft: true
 
 The following sections contain links that we think you will find useful during your journey into robotics.
 
-## Basic Electronics
+## Basic electronics
 
-### Hobby Servos
+### Hobby servos
 
 Hobby servos are a type of actuator comprising a small motor with built-in closed-loop control.
 They are useful for precise positioning, usually limited to a 180 degree range of angles.
@@ -27,7 +27,7 @@ A typical servo will take PWM pulses ranging from 1ms to 2ms long, and map this 
 A 1.5ms signal will hold the servo in the middle or "neutral" position, 1ms will move it to 90 degrees from there in one direction, and 2ms will move it 90 degrees from neutral in the opposite direction.
 Note that some servos have a different PWM range, mapping to a different set of angles.
 
-#### Hardware Requirements
+#### Hardware requirements
 
 Unlike [motors](/components/motor/), servos do not require a motor driver chip.
 
@@ -53,7 +53,7 @@ Here's an example of how a servo might be wired to a Raspberry Pi:
 
 [Online Resistor Color Code Calculator](https://goodcalculators.com/resistor-color-code-calculator/) - Enter the desired resistor value in Ohms, kOhms, or MOhms, and press enter and this site displays the color bands for that resistor value.
 
-#### Resistor Value Chart
+#### Resistor value chart
 
 ![Chart of standard colors to values for electronic components. An example resistor with green, red, and orange bands is shown. The value is 52 times 10 to the third power, or 52,000 Ohms.](/internals/vector/resistor.png)
 
@@ -74,7 +74,7 @@ And their values on a resistor:
 - On five-band resistors, band 3 becomes an additional significant digit, band 4 becomes the multiplier, and band 5 becomes the tolerance band.
 - Six-band resistors are read identically to five-band resistors, their difference being that the sixth band indicates the resistor's temperature coefficient.
 
-### LEDs (Light-Emitting Diodes)
+### LEDs (light-emitting diodes)
 
 Light-emitting diodes come in a variety of form factors:
 ![Image of various Light Emitting Diode form factors.](/internals/vector/verschiedene-leds.jpg)

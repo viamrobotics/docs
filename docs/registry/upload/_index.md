@@ -431,7 +431,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 - [Golang](https://github.com/viam-labs/wifi-sensor)
 - [C++](https://github.com/viamrobotics/module-example-cpp)
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/registry/configure/" %}}

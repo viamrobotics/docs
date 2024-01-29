@@ -295,7 +295,7 @@ To view your machine's transform camera overlay:
 
    ![Verification camera feed](/tutorials/verification-system/disarmed.png)
 
-## Next Steps
+## Next steps
 
 Now that you've got the verification aspect of your system working, you can use this as a launch point for customizing your own DIY home security system.
 For example:

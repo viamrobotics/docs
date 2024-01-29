@@ -59,7 +59,7 @@ The following attributes are available for `beaglebone` boards:
 | ---- | ---- | --------- | ----------- |
 | `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](#digital_interrupts). |
 
-## Attribute Configuration
+## Attribute configuration
 
 Configuring these attributes on your board allows you to integrate [digital interrupts](#digital_interrupts) into your machine.
 

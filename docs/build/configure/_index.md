@@ -465,7 +465,7 @@ If you run into issues, here are some things to try:
 - See [Troubleshooting](/appendix/troubleshooting/) for additional troubleshooting steps.
 - {{< snippet "social.md" >}}
 
-## Local Setup
+## Local setup
 
 Configuring `viam-server` with the Viam app allows you to make use of the cloud features of Viam:
 
@@ -476,7 +476,7 @@ Configuring `viam-server` with the Viam app allows you to make use of the cloud 
 However, if you are configuring a machine that can never connect to the internet, you can create a [local configuration file](/internals/local-configuration-file/) on your machine.
 A locally-configured machine will not be able to access Viam's cloud features.
 
-## Next Steps
+## Next steps
 
 After configuring your machine, you can use the [Viam SDKs](/build/program/apis/) to program and control your machine.
 

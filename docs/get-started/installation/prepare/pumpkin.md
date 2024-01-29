@@ -250,7 +250,7 @@ Copy and paste the following json object into your board's **Attributes** box.
 {{% /tab %}}
 {{< /tabs >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/build/configure/" %}}

@@ -67,7 +67,7 @@ The following attributes are available for `gamepad` input controllers:
 
 {{< readfile "/static/include/components/test-control/input-controller-control.md" >}}
 
-### Work in Progress Models
+### Work in progress models
 
 Mappings are currently available for a wired XBox 360 controller, and wireless XBox Series X|S, along with the 8bitdo Pro 2 bluetooth gamepad (which works great with the Raspberry Pi).
 

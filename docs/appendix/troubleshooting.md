@@ -12,7 +12,7 @@ While many common issues and their possible resolutions are presented here, this
 If you have encountered an error that is not listed here, we'd love to hear from you on our [Community Discord](https://discord.gg/viam)!
 Please post the error message you received along with how you were able to trigger it and we'll see if we can help.
 
-## Common Installation Errors
+## Common installation errors
 
 ### The authenticity of host 'hostname.local' can't be established
 
@@ -225,21 +225,21 @@ This file contains basic diagnostic and configuration information about your cam
 Under **Config > Components**, find your camera, then fill in your camera's specific configuration either using the **Show more** button to show the relevant configuration options, or the **Go to advanced** link in the component panel's upper-right to enter these attributes manually.
 Provide at least the width and height values to start.
 
-## Known Application and Plugin Conflicts
+## Known application and plugin conflicts
 
-### macOS Applications
-
-None at this time.
-
-### Windows Applications
+### macOS applications
 
 None at this time.
 
-### Linux Applications
+### Windows applications
 
 None at this time.
 
-### Browser Plugins
+### Linux applications
 
-**Chrome Plugin: Allow right click** - This Chrome plugin interferes with the [Viam app](https://app.viam.com)'s ability to configure a service.
+None at this time.
+
+### Browser plugins
+
+**Chrome plugin: allow right click** - This Chrome plugin interferes with the [Viam app](https://app.viam.com)'s ability to configure a service.
 If you are experiencing issues with the **Create Service** pane in the Viam app, temporarily disable this plugin until you have saved your configuration in the Viam app.

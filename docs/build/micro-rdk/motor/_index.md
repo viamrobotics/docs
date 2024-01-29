@@ -15,7 +15,7 @@ aliases:
 A motor is a rotating machine that transforms electrical energy into mechanical energy.
 For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Motor Component](/components/motor/).
 
-## Supported Models
+## Supported models
 
 For configuration information, click on the supported motor model name:
 

@@ -699,7 +699,7 @@ main().catch((error) => {
 {{% /tab %}}
 {{< /tabs >}}
 
-## Next Steps
+## Next steps
 
 If you're ready for more, try making your rover move in different ways.
 Can you make it move in a circle?

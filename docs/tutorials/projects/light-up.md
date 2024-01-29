@@ -237,7 +237,7 @@ if d.class_name.lower() == "person":
 
 {{% /alert %}}
 
-## Next Steps
+## Next steps
 
 In this tutorial, you learned how to build an object detection robot that turns your lights on using Viam.
 You could use this same concept to build a smart fan that only turns on if you are sitting at your desk working, turn on the lights in your bathroom mirror only when you are in front of the sink, or activate a pet feeder every time your cat looks at the camera.

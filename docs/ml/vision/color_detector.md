@@ -319,7 +319,7 @@ To learn more about how to use detection, see the [Go SDK docs](https://pkg.go.d
 To see more code examples of how to use Viam's Vision Service, see [our example repo](https://github.com/viamrobotics/vision-service-examples).
 {{% /alert %}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/tutorials/services/try-viam-color-detection/" %}}

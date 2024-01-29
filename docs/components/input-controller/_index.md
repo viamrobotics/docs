@@ -29,14 +29,14 @@ Most machines with an input controller need at least the following hardware:
 - A power supply cable or batteries for the input device and the machine.
 - A component that you can direct the input to control, like an [arm](/components/arm/) or [motor](/components/motor/).
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/mobility/base-rc/" >}}
 {{< relatedcard link="/mobility/frame-system/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your input controller with Viam, check whether one of the following [built-in models](#built-in-models) supports your input controller.
 
@@ -56,7 +56,7 @@ For configuration information, click on the model name:
 | [`fake`](fake/) | A model for testing, with [no physical hardware - see GitHub.](https://github.com/viamrobotics/rdk/tree/main/components/input/fake) |
 
 <!-- No modular resources yet -->
-<!-- ### Modular Resources
+<!-- ### Modular resources
 
 {{<modular-resources api="rdk:component:input_controller" type="input_controller">}}
 
@@ -590,11 +590,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 {{% /tab %}}
 {{< /tabs >}}
 
-## API Types
+## API types
 
 The `input` API defines the following types:
 
-### Event Object
+### Event object
 
 Each `Event` object represents a singular event from the input device, and has four fields:
 
@@ -603,7 +603,7 @@ Each `Event` object represents a singular event from the input device, and has f
 3. `Control`: `Control` indicating which [Axis](#axis-controls), [Button](#button-controls), or Pedal on the controller has been changed.
 4. `Value`: `float64` indicating the position of an [Axis](#axis-controls) or the state of a [Button](#button-controls) on the specified control.
 
-#### EventType Field
+#### EventType field
 
 A string-like type indicating the specific type of input event, such as a button press or axis movement.
 
@@ -704,7 +704,7 @@ See [the Viam RDK](https://github.com/viamrobotics/rdk/blob/main/components/inpu
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Control Field
+#### Control field
 
 A string representing the physical input location, like a specific axis or button, of your `Controller` that the [Event Object](#event-object) is coming from.
 
@@ -791,7 +791,7 @@ See [Github](https://github.com/viamrobotics/rdk/blob/main/components/input/inpu
 {{% /tab %}}
 {{< /tabs >}}
 
-### Axis Controls
+### Axis controls
 
 {{% alert title="Support Notice" color="note" %}}
 Currently, only `Absolute` axes are supported.
@@ -809,7 +809,7 @@ These controls report a `PositionChangeAbs` [EventType](#eventtype-field).
 - `0.0`: Center, neutral position.
 - `-1.0`: Maximum position in the negative direction.
 
-#### AbsoluteXY Axes
+#### AbsoluteXY axes
 
 If your input controller has an analog stick, this is what the stick's controls report as.
 
@@ -820,7 +820,7 @@ Alternatively, if your input controller has _two_ analog sticks, this is what th
 | `AbsoluteX` | Stick Left    | Neutral | Stick Right     |
 | `AbsoluteY` | Stick Forward | Neutral | Stick Backwards |
 
-#### AbsoluteR-XY Axes
+#### AbsoluteR-XY axes
 
 If your input controller has _two_ analog sticks, this is what the right joystick's controls report as.
 
@@ -831,7 +831,7 @@ If your input controller has _two_ analog sticks, this is what the right joystic
 
 - For `Y` axes, the positive direction is "nose up," and indicates _pulling_ back on the joystick.
 
-#### Hat/D-Pad Axes
+#### Hat/D-Pad axes
 
 If your input controller has a directional pad with analog buttons on the pad, this is what those controls report as.
 
@@ -841,7 +841,7 @@ If your input controller has a directional pad with analog buttons on the pad, t
 | `AbsoluteHat0X` | Left DPAD Button Press | Neutral | Right DPAD Button Press |
 | `AbsoluteHat0Y` | Up DPAD Button Press | Neutral | Down DPAD Button Press |
 
-#### Z Axes (Analog Trigger Sticks)
+#### Z axes (analog trigger sticks)
 
 {{% alert title="Info" color="info" %}}
 Devices like analog triggers and gas or brake pedals use `Absolute` axes, but they only report position change in the positive direction.
@@ -867,7 +867,7 @@ This is not common.
 | `AbsoluteZ`  | Stick Left Yaw | Neutral | Stick Right Yaw |
 | `AbsoluteRZ` | Stick Left Yaw | Neutral | Stick Right Yaw |
 
-### Button Controls
+### Button controls
 
 Button Controls report either `ButtonPress` or `ButtonRelease` as their [EventType](#eventtype-field).
 
@@ -876,7 +876,7 @@ Button Controls report either `ButtonPress` or `ButtonRelease` as their [EventTy
 - `0`: released
 - `1`: pressed
 
-#### Action Buttons (ABXY)
+#### Action buttons (ABXY)
 
 If your input controller is a gamepad with digital action buttons, this is what the controls for these buttons report as.
 
@@ -902,7 +902,7 @@ As different systems label the actual buttons differently, we use compass direct
 | - | - | - |
 | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Right</td></tr><tr><td>`ButtonSouth`</td><td>Left</td></tr><tr> </table> | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Bottom</td></tr> </table> |
 
-#### Trigger Buttons (Bumper)
+#### Trigger buttons (bumper)
 
 If your input controller is a gamepad with digital trigger buttons, this is what the controls for those buttons report as.
 
@@ -911,7 +911,7 @@ If your input controller is a gamepad with digital trigger buttons, this is what
 | - | - | - |
 | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Left</td></tr><tr><td>`ButtonRT`</td><td>Right</td></tr> </table> | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Top-left</td></tr><tr><td>`ButtonRT`</td><td>Top-right</td></tr><tr><td>`ButtonLT2`</td><td>Bottom-left</td></tr><tr><td>`ButtonRT2`</td><td>Bottom-right</td></tr> </table> |
 
-#### Digital Buttons for Sticks
+#### Digital buttons for sticks
 
 If your input controller is a gamepad with "clickable" thumbsticks, this is what thumbstick presses report as.
 
@@ -920,7 +920,7 @@ If your input controller is a gamepad with "clickable" thumbsticks, this is what
 | `ButtonLThumb` | Left or upper button for stick  |
 | `ButtonRThumb` | Right or lower button for stick |
 
-#### Miscellaneous Buttons
+#### Miscellaneous buttons
 
 Many devices have additional buttons.
 If your input controller is a gamepad with these common buttons, this is what the controls for those buttons report as.
@@ -933,9 +933,9 @@ If your input controller is a gamepad with these common buttons, this is what th
 | `ButtonRecord` | Recording                                           |
 | `ButtonEStop`  | Emergency Stop (on some industrial controllers)     |
 
-## Usage Examples
+## Usage examples
 
-### Control a Wheeled Base with a Logitech G920 Steering Wheel Controller
+### Control a wheeled base with a Logitech G920 steering wheel controller
 
 The following Python code is an example of controlling a wheeled {{% glossary_tooltip term_id="base" text="base"%}} with a Logitech G920 steering wheel controller, configured as a `gamepad` input controller.
 
@@ -1071,7 +1071,7 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
-### Drive a robot with Four Wheels & a Skid Steer Platform
+### Drive a robot with four wheels & a skid steer platform
 
 The following Go code is part of an example of using an input controller to drive a robot with four wheels & a skid steer platform.
 
@@ -1115,7 +1115,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< snippet "social.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/tutorials/control/yahboom-rover" %}}

@@ -18,7 +18,7 @@ Different models of resources implement the same API, which [Viam SDKs expose](/
 
 The API methods provided by the SDKs for each of these resource APIs wrap gRPC client requests to the machine when you execute your program, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/build/configure/) on your machine.
 
-## Robot Management APIs
+## Robot management APIs
 
 ### Robot API
 
@@ -32,13 +32,13 @@ The [cloud API](/build/program/apis/cloud/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/cloud.md" >}}
 
-### Data Client API
+### Data client API
 
 The [data client API](/build/program/apis/data-client/) supports the following methods to upload and retrieve data like images or sensor readings directly to the [Viam app](https://app.viam.com) (among [others](https://python.viam.dev/autoapi/viam/app/data_client/index.html)):
 
 {{< readfile "/static/include/services/apis/data-client.md" >}}
 
-### ML Training API
+### ML training API
 
 The ML training API allows you to get information about and cancel ML training jobs taking place on the [Viam app](https://app.viam.com):
 
@@ -185,25 +185,25 @@ Different [vision service](/ml/vision/) models support different methods:
 
 ## Signaling APIs
 
-### GPIO Pins
+### GPIO pins
 
 In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with GPIO pins on a board:
 
 {{< readfile "/static/include/components/apis/gpiopin.md" >}}
 
-### Analog-to-Digital Converters (ADCs)
+### Analog-to-Digital converters (ADCs)
 
 In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [ADCs](/components/board/#analogs) on a board:
 
 {{< readfile "/static/include/components/apis/analogreader.md" >}}
 
-### Digital Interrupts
+### Digital interrupts
 
 In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [digital interrupts](/components/board/#digital_interrupts) on a board:
 
 {{< readfile "/static/include/components/apis/digitalinterrupt.md" >}}
 
-## ResourceBase Methods
+## ResourceBase methods
 
 In the Python SDK, the [`ResourceBase`](https://python.viam.dev/autoapi/viam/resource/base/index.html) class defines a basic set of API methods that all child resources should provide for users.
 In the other SDKs, resource APIs implement but do not inherit these base requirements.

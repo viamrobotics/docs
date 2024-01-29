@@ -109,7 +109,7 @@ Model | Description <a name="model-table"></a>
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
-## Used With
+## Used with
 
 {{< cards >}}
 {{< relatedcard link="/ml/deploy/" alt_title="Machine Learning" >}}

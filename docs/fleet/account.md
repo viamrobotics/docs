@@ -10,7 +10,7 @@ no_list: true
 
 The [Viam app](https://app.viam.com/) is a web UI for managing and building machines.
 
-## Create Account and Log In
+## Create account and log In
 
 To get started on the Viam app, you must log in as an authorized user.
 Viam support sign up using Google, GitHub, Apple, and email.
@@ -27,7 +27,7 @@ Accounts created from separate authentication sources are unique to each other.
 
 <br>
 
-## Sign Out
+## Sign out
 
 To log out or sign out of the [Viam app](https://app.viam.com/), click on your profile icon in the upper right corner of your browser window.
 Click **Sign out** to sign out of accessing all organizations, locations, and machines your credentials manage.

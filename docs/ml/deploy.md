@@ -37,7 +37,7 @@ For some models, like the [Triton MLModel](https://github.com/viamrobotics/viam-
 After deploying your model, you need to configure an additional service to use the deployed model.
 For example, you can configure an [`mlmodel` vision service](/ml/vision/) and a [`transform` camera](/components/camera/transform/) to visualize the predictions your model makes.
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:service:mlmodel" type="mlmodel">}}
 
@@ -397,7 +397,7 @@ See the [Python documentation](https://python.viam.dev/autoapi/viam/services/mlm
 
 See [Program a machine](/build/program/) for more information about using an SDK to control your machine.
 
-## Next Steps
+## Next steps
 
 To make use of your model with your machine, add a [vision service](/ml/vision/) or a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}:
 

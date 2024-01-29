@@ -138,7 +138,7 @@ In the example pictured here, the data management service syncs the configured c
 
   {{< /alert >}}
 
-## Next Steps
+## Next steps
 
 To view your captured data in the cloud, see [View Data](/data/view/).
 

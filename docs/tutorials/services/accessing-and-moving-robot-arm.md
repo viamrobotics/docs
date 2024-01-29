@@ -310,7 +310,7 @@ Using this code you can quickly adjust one or more elements of position AND orie
 For all motion actions taken in this tutorial, there may be joint positions or poses that are unreachable for particular reasons (potential collisions, a pose in space is unreachable because the arm is too short).
 Regularly check your client script's feedback and the `viam-server` logs for any issues that may arise.
 
-## Next Steps and References
+## Next steps and References
 
 If you would like to continue onto working with Viam's motion service, check out one of these tutorials:
 

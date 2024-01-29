@@ -14,7 +14,7 @@ The _generic_ component {{< glossary_tooltip term_id="subtype" text="subtype" >}
 For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Generic Component](/components/generic/).
 
 <!--
-## Supported Models
+## Supported models
 
 For configuration information, click on the supported generic model name:
 Model | Description

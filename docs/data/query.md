@@ -200,7 +200,7 @@ See the [MongoDB Atlas Documentation](https://www.mongodb.com/docs/atlas/data-fe
 
 For information on connecting to your Atlas instance from other MQL clients, see the MongoDB Atlas [Connect to your Cluster Tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
 
-## Next Steps
+## Next steps
 
 With data query enabled, you can now visualize your machine's uploaded tabular data using many popular data visualization services, such as Grafana.
 See [Visualize Data](/data/visualize/) for instructions on setting up and using these data visualization services with Viam, or the [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) tutorial for a detailed walkthrough specific to Grafana.

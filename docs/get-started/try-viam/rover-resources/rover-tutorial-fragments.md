@@ -159,7 +159,7 @@ The fragment you added is read-only, but if you need to modify your rover's conf
 6. Click **Save config**.
 7. Now, you can edit the config either in **Raw JSON** mode or in **Builder** mode.
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/tutorials/get-started/try-viam-sdk" %}}
