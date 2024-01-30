@@ -8,46 +8,81 @@ aliases:
   - /manage/data/upload-model/
   - /manage/ml/upload-model/
 description: "Upload a Machine Learning model to Viam to use it with the ML Model service."
-# SME: Aaron Casas
+# SME: Steven B.
 ---
 
-On the [**DATA** tab](https://app.viam.com/data/view) in the Viam app, navigate to the **Models** subtab.
+## Upload an existing model to the registry
 
-![Add new model](/ml/add-new-model.png)
+Trained ML models are available in the [Viam registry](https://app.viam.com/registry) for public access.
+To add a model that you've trained to the [Viam registry](https://app.viam.com/registry) so that other users can deploy it onto their robots:
 
-To add a new model:
+1. On the [**DATA** tab](https://app.viam.com/data/view) in the Viam app, navigate to the **MODELS** subtab. 
+A list of all of your ML models is displayed.
+2. Open the menu on the right side of an ML model's row.
 
-1. Specify a **Name** for the model.
-2. Add a `.tflite` model file.
-3. Add a `.txt` label file.
-4. Click **CREATE MODEL**.
+{{<imgproc src="/ml/model-list.png" resize="1000x" alt="List of models displayed on MODELS subtab of DATA tab.">}}
 
-The model is now added and becomes visible in the **Models** section of the page.
+3. Then, click **Make public in Registry**.
 
-![The trained model](/ml/stars-model.png)
+{{<imgproc src="/ml/publish-model.png" resize="600x" alt="Publish model to registry action card.">}}
 
-### Upload a new version of a model
+4. Add a short description.
+This will help other users to understand how to use your model.
+5. Then, click **Publish model**.
+Your model should be publicly visible in the [Viam registry](https://app.viam.com/registry).
 
-If you [deploy a model](/ml/) to a machine, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the machine.
-If you upload a new version of that model, Viam will automatically deploy the new version to the machine and replace the old version.
+## Upload a new model or new version
 
-If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON machine configuration](/build/configure/#the-config-tab).
+On the [**DATA** tab](https://app.viam.com/data/view) in the Viam app, navigate to the **MODELS** subtab.
+Click **Upload model**.
 
-You can get the version number from a specific model version by clicking on **COPY** on the model on the model page.
-The model package config looks like this:
+{{<imgproc src="/ml/add-new-model.png" resize="400x" alt="Upload model menu on the DATA tab of the Viam app.">}}
 
-```json
-{
-  "package": "<model_id>/allblack",
-  "version": "YYYYMMDDHHMMSS",
-  "name": "<model_name>"
-}
-```
+Select if you want to upload a **New model** or a **New version** of a previously published model.
 
-## Next Steps
+{{< tabs >}}
+{{% tab name="New model" %}}
+
+Select **Public** to upload the model publicly to the [Viam registry](https://app.viam.com/registry).
+This makes the model usable by any external organization.
+See [ML models in the registry](/registry/#ml-models) for more information.
+
+Select **Private** to only publish the model for internal use within this {{< glossary_tooltip term_id="organization" text="organization" >}}.
+Select **Next steps** to continue.
+
+{{<imgproc src="/ml/upload-model.png" resize="600x" alt="Upload model menu on the DATA tab of the Viam app.">}}
+
+1. Specify a name for the model.
+2. Specify the **Model type**.
+3. Add a `.tflite` model file.
+4. Add a `.txt` label file.
+5. Add a short description.
+This will help other users to understand how to use your model.
+
+Select **Upload model**.
+The model should now be visible on the **MODELS** subtab of the **DATA** tab in the [Viam app](https://app.viam.com) and available to [deploy on your machine](/ml/deploy/).
+Also, if you selected **Public**, it should be publicly visible in the [Viam registry](https://app.viam.com/registry).
+
+{{% /tab %}}
+{{% tab name="New version" %}}
+
+{{<imgproc src="/ml/select-existing-model.png" resize="400x" alt="Select from your existing models.">}}
+
+1. Select the model you would like to update from your existing models.
+2. Select **Next steps** to continue.
+3. Add an updated `.tflite` model file.
+4. Add an updated `.txt` label file.
+5. Click **Upload model**.
+
+Your model is now replaced with the updated version.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Next steps
 
 {{< cards >}}
-{{% manualcard link="/ml/" %}}
+{{% manualcard link="/ml/deploy/" %}}
 
 <h4>Deploy your model</h4>
 

@@ -1,5 +1,5 @@
 ---
-title: "Extend Viam with Modules from the Viam Registry"
+title: "Extend Viam with Models from the Viam Registry"
 linkTitle: "Registry"
 weight: 420
 type: "docs"
@@ -12,7 +12,7 @@ tags:
     "components",
     "services",
   ]
-description: "Support additional hardware components or services by adding them from the Viam Registry or by creating new modular resources."
+description: "Add additional models of components and services or ML Models from the Viam Registry, or extend Viam by creating new modular resources."
 image: "/services/icons/modular-registry.svg"
 imageAlt: "Integrate other capabilities."
 no_list: true
@@ -27,18 +27,33 @@ aliases:
 menuindent: true
 ---
 
+The [Viam registry](https://app.viam.com/registry) is the central place where you can browse [ML models](/ml) to deploy with machine applications like [computer vision](/ml/vision/), or {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} that add capabilities to your machine beyond what is built-in to `viam-server`.
+
+### ML models
+
+Viam provides the ability to train, upload, and deploy ML models within the platform.
+See [Machine Learning](/ml/) for more information.
+
+You can use these ML models to make detections or classifications on-machine with an [`mlmodel` vision service](/ml/vision/mlmodel/).
+
+The Viam registry hosts pretrained ML models that users have made public, so that you can save time spent training complicated models and quickly deploy functional classifiers or detectors for your use case onto your robot.
+You can also upload your own model to the registry.
+
+- You can deploy a model to your robot through an [MLModel service like `tflite_cpu`](/ml/deploy/).
+Select **Builder** and **Deploy Model** tabs and follow [these instructions](/ml/deploy/#create-an-ml-model-service) to deploy the model to your robot.
+- To add an ML model to the registry, [upload the model publicly](/ml/upload-model/).
+
+### Modular resources
+
 Viam provides built-in support for a variety of {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
 - Various types of hardware {{< glossary_tooltip term_id="component" text="components" >}}.
 - High-level functionality exposed as {{< glossary_tooltip term_id="service" text="services" >}}.
 
-If the component or service you want to use for your project is not natively supported, you can use _{{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}_ from [the Viam Registry](#the-viam-registry) or [create your own](#create-your-own-modules).
+If the model of component or service you want to use for your project is not built-in to `viam-server` and available for configuration by default, you can use a {{< glossary_tooltip term_id="model" text="model" >}} from a {{< glossary_tooltip term_id="module" text="module" >}}.
 
-## The Viam Registry
+To configure a modular resource on your robot, [add new models that others have created](/registry/configure/#add-a-modular-resource-from-the-viam-registry) from the [Viam registry](https://app.viam.com/registry) or [create your own](#create-your-own-modules).
 
-The [Viam registry](https://app.viam.com/registry) is the central place where you can browse {{< glossary_tooltip term_id="module" text="modules" >}} that add capabilities to your machine beyond what is built-in to `viam-server`.
-
-A module provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}.
 You can search the available modular resources from the Viam Registry here:
 
 <div id="searchbox"></div>
@@ -57,6 +72,9 @@ You can search the available modular resources from the Viam Registry here:
 
 You can see details about each module in the [Viam registry](https://app.viam.com/registry) on its dedicated module page.
 You can integrate modules into any Viam-powered machine.
+
+Be aware that unlike natively supported models, modular resources are not documented on the Viam Documentation.
+Documentation for each modular resource is available on its GitHub page, which is linked from the models' page on [the registry](https://app.viam.com/registry).
 
 ## Use modules
 
