@@ -50,8 +50,7 @@ You can use a different editor, but it will be easier to follow along using VS C
 Flutter can compile and run on many different platforms.
 For the purpose of this tutorial, we will be developing for iOS.
 
-You can always run your app on another platform later.
-It's just easier to have a clear development target in mind; it makes the next step smoother.
+You can always run your app on another platform later by developing with a different target.
 
 ### Install Flutter
 
@@ -178,7 +177,8 @@ Now you'll update some configurations in the iOS-specific code to support the [V
 
    {{<imgproc src="/tutorials/flutter-app/info-plist.png" resize="1200x" declared-dimensions="true" alt="The info.plist file open in VS Code. The second line includes 'doctype plist public' and an Apple URL. The fourth line is a dict tag. The fifth line is a key, and subsequent lines contain keys, strings and arrays.">}}
 
-3. Insert this code into the first line after the `<dict>`:
+3. Insert the following code into the first line after the `<dict>`.
+   These lines are [required to establish WebRTC and local  device mDNS connections](https://github.com/viamrobotics/viam-flutter-sdk?tab=readme-ov-file#update-infoplist).
 
    ```{class="line-numbers linkable-line-numbers"}
      <key>NSLocalNetworkUsageDescription</key>
