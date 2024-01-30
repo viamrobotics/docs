@@ -30,31 +30,61 @@ The data management service also keeps your data secure during transfer.
 
 Viam's data management features can be broken down into on-device and cloud data capabilities:
 
-### On-Device Data Management
+### On-device data management
 
 Manage data directly on your robot, with configurable data capture from various components, automated recovery after interruptions, and secure cloud synchronization for efficient data storage and management.
 
 {{< cards >}}
 {{% manualcard link="/data/capture/" %}}
 
-#### Data Capture
+#### Data capture
 
 Configurable for various robot components like cameras, sensors, and motors; set capture frequency, with automatic resumption after robot restarts.
 
 {{% /manualcard %}}
 {{% manualcard link="/data/cloud-sync/" %}}
 
-#### Cloud Sync
+#### Cloud sync
 
-Securely transfers data to cloud at user-defined frequency, resilient to interruptions, and deletes local data post-sync for space management.
+Securely transfer data to cloud at the frequency you define, resilient to interruptions, and delete local data post-sync for space management.
 
 {{% /manualcard %}}
 {{< /cards >}}
-- **Cloud Data Management**: Streamlines data handling with advanced querying, viewing, and filtering capabilities, along with efficient data labeling and exporting tools.
-  - **[Data Querying](/data/query/):** Supports SQL or MQL queries on synced sensor data, accessible through the Viam app and MQL-compatible clients.
-  - **[Viewing and Filtering Data](/data/view/):** Enables viewing and filtering of different data types in the cloud, with options to delete data on the Viam app.
-  - **[Creating Datasets](/data/dataset/):** Facilitates labeling of data for management and machine learning, with dynamic datasets that change with underlying data modifications.
-  - **[Exporting Data](/data/export/):** Offers data export functionality with the Viam CLI, allowing data download for offline access.
+
+### Cloud data management
+
+Streamlined data handling with advanced querying, viewing, and filtering capabilities, along with efficient data labeling and exporting tools.
+
+{{< cards >}}
+{{% manualcard link="/data/query/" %}}
+
+#### Data querying
+
+Make SQL or MQL queries on synced sensor data, accessible through the Viam app and MQL-compatible clients.
+
+{{% /manualcard %}}
+{{% manualcard link="/data/view/" %}}
+
+#### Viewing and filtering data
+
+View and filter different data types in the cloud, with the option to delete data on the Viam app.
+
+{{% /manualcard %}}
+{{% manualcard link="/data/dataset/" %}}
+
+#### Creating datasets
+
+Label data for management and machine learning, with dynamic datasets that change with underlying data modifications.
+
+{{% /manualcard %}}
+{{% manualcard link="/data/export/" %}}
+
+#### Exporting data
+
+Export data with the Viam CLI and download your data for offline access.
+
+{{% /manualcard %}}
+{{< /cards >}}
 
 ## Get started
 
