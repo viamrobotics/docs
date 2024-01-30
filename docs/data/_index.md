@@ -30,9 +30,26 @@ The data management service also keeps your data secure during transfer.
 
 Viam's data management features can be broken down into on-device and cloud data capabilities:
 
-- **On-Device Data Management:** Manage data directly on your robot, with configurable data capture from various components, automated recovery after interruptions, and secure cloud synchronization for efficient data storage and management.
-  - **[Data Capture](/data/capture/):** Configurable for various robot components like cameras, sensors, and motors; set capture frequency, with automatic resumption after robot restarts.
-  - **[Cloud Sync](/data/cloud-sync/):** Securely transfers data to cloud at user-defined frequency, resilient to interruptions, and deletes local data post-sync for space management.
+### On-Device Data Management
+
+Manage data directly on your robot, with configurable data capture from various components, automated recovery after interruptions, and secure cloud synchronization for efficient data storage and management.
+
+{{< cards >}}
+{{% manualcard link="/data/capture/" %}}
+
+#### Data Capture
+
+Configurable for various robot components like cameras, sensors, and motors; set capture frequency, with automatic resumption after robot restarts.
+
+{{% /manualcard %}}
+{{% manualcard link="/data/cloud-sync/" %}}
+
+#### Cloud Sync
+
+Securely transfers data to cloud at user-defined frequency, resilient to interruptions, and deletes local data post-sync for space management.
+
+{{% /manualcard %}}
+{{< /cards >}}
 - **Cloud Data Management**: Streamlines data handling with advanced querying, viewing, and filtering capabilities, along with efficient data labeling and exporting tools.
   - **[Data Querying](/data/query/):** Supports SQL or MQL queries on synced sensor data, accessible through the Viam app and MQL-compatible clients.
   - **[Viewing and Filtering Data](/data/view/):** Enables viewing and filtering of different data types in the cloud, with options to delete data on the Viam app.
