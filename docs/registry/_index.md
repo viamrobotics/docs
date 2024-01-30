@@ -36,7 +36,7 @@ See [Machine Learning](/ml/) for more information.
 
 You can use these ML models to make detections or classifications on-machine with an [`mlmodel` vision service](/ml/vision/mlmodel/).
 
-The Viam registry hosts pretrained ML models that users have made public, so that you can save time spent training complicated models and quickly deploy functional classifiers or detectors for your use case onto your robot.
+The Viam registry hosts pretrained ML models that users have made public, so that you can save time spent training complicated models and quickly deploy classifiers or detectors for your use case onto your robot.
 You can also upload your own model to the registry.
 
 - You can deploy a model to your robot through an [MLModel service like `tflite_cpu`](/ml/deploy/).
