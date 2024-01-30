@@ -65,10 +65,10 @@ You can choose to configure your service with an existing model on the machine o
 
 1. To configure your service and deploy a model onto your machine, select **Deploy Model On Robot** for the **Deployment** field.
 
-2. Click on **Models** to open a drop-down with all of the ML models available to you privately, as well as all of the ML models available in [the registry](https://app.viam.com), which are shared by users.
-You can select from any of these models to deploy on your robot.
+2. Click on **Models** to open a dropdown with all of the ML models available to you privately, as well as all of the ML models available in [the registry](https://app.viam.com), which are shared by users.
+   You can select from any of these models to deploy on your robot.
 
-{{<imgproc src="/services/deploy-model-menu.png" resize="700x" alt="Models drop-down menu with models from the registry.">}}
+{{<imgproc src="/services/deploy-model-menu.png" resize="700x" alt="Models dropdown menu with models from the registry.">}}
 
 {{% alert title="Tip" color="tip" %}}
 To see more details about a model, open its page in [the registry](https://app.viam.com).

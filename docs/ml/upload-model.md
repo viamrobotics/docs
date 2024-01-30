@@ -16,8 +16,8 @@ description: "Upload a Machine Learning model to Viam to use it with the ML Mode
 Trained ML models are available in the [Viam registry](https://app.viam.com/registry) for public access.
 To add a model that you've trained to the [Viam registry](https://app.viam.com/registry) so that other users can deploy it onto their robots:
 
-1. On the [**DATA** tab](https://app.viam.com/data/view) in the Viam app, navigate to the **MODELS** subtab. 
-A list of all of your ML models is displayed.
+1. On the [**DATA** tab](https://app.viam.com/data/view) in the Viam app, navigate to the **MODELS** subtab.
+   A list of all of your ML models is displayed.
 2. Open the menu on the right side of an ML model's row.
 
 {{<imgproc src="/ml/model-list.png" resize="1000x" alt="List of models displayed on MODELS subtab of DATA tab.">}}
@@ -27,9 +27,9 @@ A list of all of your ML models is displayed.
 {{<imgproc src="/ml/publish-model.png" resize="600x" alt="Publish model to registry action card.">}}
 
 4. Add a short description.
-This will help other users to understand how to use your model.
+   This will help other users to understand how to use your model.
 5. Then, click **Publish model**.
-Your model should be publicly visible in the [Viam registry](https://app.viam.com/registry).
+   Your model should be publicly visible in the [Viam registry](https://app.viam.com/registry).
 
 ## Upload a new model or new version
 
@@ -57,7 +57,7 @@ Select **Next steps** to continue.
 3. Add a `.tflite` model file.
 4. Add a `.txt` label file.
 5. Add a short description.
-This will help other users to understand how to use your model.
+   This will help other users to understand how to use your model.
 
 Select **Upload model**.
 The model should now be visible on the **MODELS** subtab of the **DATA** tab in the [Viam app](https://app.viam.com) and available to [deploy on your machine](/ml/deploy/).

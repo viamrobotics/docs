@@ -40,7 +40,7 @@ The Viam registry hosts pretrained ML models that users have made public, so tha
 You can also upload your own model to the registry.
 
 - You can deploy a model to your robot through an [MLModel service like `tflite_cpu`](/ml/deploy/).
-Select **Builder** and **Deploy Model** tabs and follow [these instructions](/ml/deploy/#create-an-ml-model-service) to deploy the model to your robot.
+  Select **Builder** and **Deploy Model** tabs and follow [these instructions](/ml/deploy/#create-an-ml-model-service) to deploy the model to your robot.
 - To add an ML model to the registry, [upload the model publicly](/ml/upload-model/).
 
 ### Modular resources

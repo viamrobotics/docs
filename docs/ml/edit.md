@@ -7,7 +7,7 @@ tags: ["data management", "ml", "model training", "registry"]
 description: "Edit a machine learning model previously published to the registry."
 modulescript: true
 icon: "/services/icons/ml.svg"
-# SME: Steven B. 
+# SME: Steven B.
 ---
 
 To edit a model you've previously published to [the registry](https://app.viam.com/registry), navigate to its page by clicking on its name.
@@ -15,7 +15,7 @@ The details of the model will be displayed like the following:
 
 {{<imgproc src="/ml/model-details.png" resize="800x" alt="ML model details card.">}}
 
-Click on the ***...*** in the upper-right corner to open the menu.
+Click on the **_..._** in the upper-right corner to open the menu.
 Click **Delete** to delete the model.
 Click **Edit details** to edit the details of the model:
 
