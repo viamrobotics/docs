@@ -1,5 +1,6 @@
 extends: capitalization
 message: "'%s' should be in sentence case."
+link: 'https://docs.mongodb.com/meta/style-guide/style/titles-and-headings/'
 level: warning
 scope: heading
 match: $sentence
