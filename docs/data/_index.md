@@ -45,6 +45,8 @@ Viam's data management features can be broken down into on-device and cloud data
 
 You must [configure data capture](/data/capture/) and [cloud sync](/data/cloud-sync/) with the data management service to be able to view, label, and export data.
 
+#### Used with
+
 You can configure the frequency of data capture individually for each supported component:
 
 {{< cards >}}
@@ -61,8 +63,8 @@ You can configure the frequency of data capture individually for each supported 
 
 ### Query your data
 
-You can query the data you've collected in multiple ways, including through our [data client API](/build/program/apis/data-client/) or [inside the Viam app](/data/query/).
-Once you have [synced](/data/cloud-sync/) tabular sensor data to the Viam app, you can run {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries against your synced data from the [Query subtab](https://app.viam.com/data/query) of the **Data** tab in the Viam app.
+Once you have [synced](/data/cloud-sync/), you can query the data you've collected in multiple ways, including through the [data client API](/build/program/apis/data-client/) or [inside the Viam app](/data/query/).
+For _tabular_ sensor data, you can run {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries against your synced data from the [Query subtab](https://app.viam.com/data/query) of the **Data** tab in the Viam app.
 
 ### Permissions
 
