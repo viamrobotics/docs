@@ -28,9 +28,8 @@ If you need custom functionality or a custom interface, you can use Viam's [Flut
 This tutorial guides you through creating a mobile app that shows your machines and their components.
 As you work through this project you will learn the following:
 
-- The basics of how Flutter works
-- How to create _layouts_ in Flutter
-- How to connect user interactions (such as button presses) to app behavior
+- Flutter development basics
+- How to trigger app behavior when a user presses a button
 - The basics of using Viam's Flutter SDK
 
 ## Requirements
@@ -39,65 +38,65 @@ You do not need any hardware for this tutorial other than a computer running mac
 
 This tutorial assumes you already have a machine [configured](/build/configure/) on the [Viam app](https://app.viam.com).
 
-## Set up your Flutter environment
+## Set up your Flutter development environment
 
 This tutorial uses [Visual Studio Code](https://code.visualstudio.com/download) (VS Code) as the development environment (IDE), and uses the VS Code [Flutter extension](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) to generate necessary boilerplate code.
-It's free, works on all major platforms, and has great integrations with Flutter.
-You can use a different editor, but it will be easier to follow along using VS Code.
+You can use a different editor, but it will be much easier to follow along using VS Code.
 
-### Choose a development target
+### Platform compatibility
 
-Flutter can compile and run on many different platforms.
-For the purpose of this tutorial, we will be developing for iOS.
+Flutter can compile and run on many different operating systems.
+For this tutorial, you will be developing for iOS.
+In other words, iOS is your development _target_.
 
-You can always run your app on another platform later by developing with a different target.
+You can always run your app on another platform later by configuring the code specific to that target.
 
 ### Install Flutter
 
 Install Flutter according to [the Flutter documentation](https://docs.flutter.dev/get-started/install).
-The instructions on the Flutter website cover not only the installation of the SDK itself, but also the development target-related tools and the editor plugins.
+Those instructions include installation of various tools and extensions for different development targets.
 For this walkthrough, you only need to install the following:
 
 - Flutter SDK
 - Visual Studio Code with the [Flutter extension](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter)
-- The software required by your chosen development target.
-  For example:
-  - [Xcode](https://developer.apple.com/xcode/) to target macOS
-    - When prompted, do install Cocoapods.
-      You need it to support the iOS simulator.
-  - [Visual Studio](https://visualstudio.microsoft.com/) to target Windows
+- [Xcode](https://developer.apple.com/xcode/), which is required for developing for iOS
+  - When prompted, do install Cocoapods.
+    You need it to support the iOS simulator.
 
-## Create a project
+## Start creating code
 
-### Create your first Flutter project
+### Create your Flutter project
 
-1. Launch VS Code and open the [command palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette) (with `F1` or `Ctrl+Shift+P` or `Shift+Cmd+P`).
+1. Launch VS Code.
+   Open the [command palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette) by pressing `Ctrl+Shift+P` or `Shift+Cmd+P`, depending on your system.
 
 2. Start typing "flutter new."
-   Select the **Flutter: New Project** command.
+   Click the **Flutter: New Project** command when it populates.
 
 {{<imgproc src="/tutorials/flutter-app/flutter-new-project.png" resize="1000x" declared-dimensions="true" alt="Creating a new project in VS Code.">}}
 
-3. Next, select **Application** and then choose a folder in which to create your project.
-   This could be your home directory, or something like <file>C:\\src\\</file>.
-4. Finally, name your project something like <file>smart_machine_app</file>.
+3. Click **Application**, then choose a folder in which to create your project.
+4. Give your project a name, for example, <file>smart_machine_app</file>.
+   Naming it <file>smart_machine_app</file> will make it slightly easier to follow long in later steps.
 
 {{<imgproc src="/tutorials/flutter-app/project-name.png" resize="1000x" declared-dimensions="true" alt="Entering the name for the project in VS Code: 'smart_machine_app'.">}}
 
-Flutter now creates your project folder for you and VS Code opens it.
+When you hit **Enter**, Flutter auto-generates a project folder with lots of useful boilerplate code.
+VS Code automatically opens it.
 
-In the next steps, you'll overwrite the contents of three files with a basic scaffold of the app.
+If you don't change any of the boilerplate files, you'll have a counter app with a button that adds one to the total each time you press it.
+That's not going to be very helpful for interacting your fleet of machines, so in the next steps, you'll edit three of these automatically-created files to start building out a Viam-integrated app.
 
-### Copy and paste the initial app
+### Edit the YAML configuration files
 
-1. In the left pane of VS Code, make sure that **Explorer** is selected, and open the <file>pubspec.yaml</file> file.
-   This file specifies basic information about your app, such as its current version, its dependencies, and the assets with which it will ship.
+1. In the VS Code file explorer, find and open the <file>pubspec.yaml</file> file.
+   This file specifies your app's metadata including its current version and dependencies.
 
-2. Replace the contents of your <file>pubspec.yaml</file> with the following:
+2. Delete the contents of your <file>pubspec.yaml</file> file and replace them with the following:
 
    ```yaml {class="line-numbers linkable-line-numbers"}
    name: smart_machine_app
-   description: "A new Flutter project."
+   description: "A Flutter app that integrates with Viam."
 
    publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
@@ -126,16 +125,16 @@ In the next steps, you'll overwrite the contents of three files with a basic sca
 
    {{% alert title="Note" color="note" %}}
 
-   If you named your app something other than `smart_machine_app`, you need to change the `name` value in the first line of the <file>pubspec.yaml</file> file to the name you gave your app during setup.
+   If you named your app something other than `smart_machine_app`, change the `name` value in the first line of the <file>pubspec.yaml</file> file to the name you gave your app during setup.
 
    {{% /alert %}}
 
    3. Next, open the <file>analysis_options.yaml</file> configuration file.
-      This file determines how strict Flutter should be when analyzing your code.
+      This file specifies how strictly Flutter should enforce best practices in your code when it checks for things like syntax errors.
       For this tutorial, you will use a less strict analyzer configuration to start, but you can always tune this later.
-      As you get closer to publishing an actual production app, you will likely want to increase the strictness of the analyzer, especially before publishing and sharing your app with others.
+      If you later publish an actual production app, you will likely want to increase the strictness of the analyzer, especially before publishing and sharing your app with others.
 
-   4. Replace the contents of this file with the following:
+   4. Replace the contents of the <file>analysis_options.yaml</file> file with the following:
 
    ```yaml {class="line-numbers linkable-line-numbers"}
    include: package:flutter_lints/flutter.yaml
@@ -178,7 +177,7 @@ Now you'll update some configurations in the iOS-specific code to support the [V
    {{<imgproc src="/tutorials/flutter-app/info-plist.png" resize="1200x" declared-dimensions="true" alt="The info.plist file open in VS Code. The second line includes 'doctype plist public' and an Apple URL. The fourth line is a dict tag. The fifth line is a key, and subsequent lines contain keys, strings and arrays.">}}
 
 3. Insert the following code into the first line after the `<dict>`.
-   These lines are [required to establish WebRTC and local  device mDNS connections](https://github.com/viamrobotics/viam-flutter-sdk?tab=readme-ov-file#update-infoplist).
+   These lines are [required to establish WebRTC and local device mDNS connections](https://github.com/viamrobotics/viam-flutter-sdk?tab=readme-ov-file#update-infoplist).
 
    ```{class="line-numbers linkable-line-numbers"}
      <key>NSLocalNetworkUsageDescription</key>
@@ -315,7 +314,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _locations = await _viam.appClient.listLocations(_organization);
 
       // in Flutter setState tells the UI to rebuild the widgets whose state has changed,
-      // this is how we change from showing a loading screen to a list of values
+      // this is how you change from showing a loading screen to a list of values
       setState(() {
         _loading = false;
       });
@@ -334,7 +333,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Locations')),
-      // If we are loading, show a loading indicator.
+      // If the list is loading, show a loading indicator.
       // Otherwise, show a list of [Locations]s.
       body: _loading
           ? Center(
@@ -479,10 +478,10 @@ class _LocationScreenState extends State<LocationScreen> {
   /// It exists outside the overridden [initState] function since it's async.
   Future<void> _initState() async {
     // Using the authenticated [Viam] client received as a parameter,
-    // we can obtain a list of smart machines (robots) within this location.
+    // you can obtain a list of smart machines (robots) within this location.
     final robots = await widget._viam.appClient.listRobots(widget.location);
     setState(() {
-      // Once we have the list of robots, we can set the state.
+      // Once you have the list of robots, you can set the state.
       this.robots = robots;
       _isLoading = false;
     });
@@ -499,7 +498,7 @@ class _LocationScreenState extends State<LocationScreen> {
       appBar: AppBar(
         title: Text(widget.location.name),
       ),
-      // If we are loading, show a loading indicator.
+      // If the list is loading, show a loading indicator.
       // Otherwise, show a list of [Robot]s.
       body: _isLoading
           ? const CircularProgressIndicator.adaptive()
@@ -528,7 +527,7 @@ Create a new file named <file>robot_screen.dart</file> and paste the following i
 /// This is the screen that shows the resources available on a robot (or smart machine).
 /// It takes in a Viam app client instance, as well as a robot client.
 /// It then uses the Viam client instance to create a connection to that robot client.
-/// Once the connection is established, we can view the resources available
+/// Once the connection is established, you can view the resources available
 /// and send commands to them.
 
 import 'package:flutter/material.dart';
@@ -580,7 +579,7 @@ class _RobotScreenState extends State<RobotScreen> {
   /// It exists outside the overridden [initState] function since it's async.
   Future<void> _initState() async {
     // Using the authenticated [Viam] the received as a parameter,
-    // we can obtain a connection to the Robot.
+    // the app can obtain a connection to the Robot.
     // There is a helpful convenience method on the [Viam] instance for this.
     final robotClient = await widget._viam.getRobotClient(widget.robot);
     setState(() {
@@ -673,7 +672,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _locations = await _viam.appClient.listLocations(_organization);
 
       // in Flutter setState tells the UI to rebuild the widgets whos state has changed,
-      // this is how we change from showing a loading screen to a list of values
+      // this is how you change from showing a loading screen to a list of values
       setState(() {
         _loading = false;
       });
@@ -692,7 +691,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: const Text('Locations')),
-        // If we are loading, show a loading indicator.
+        // If the list is loading, show a loading indicator.
         // Otherwise, show a list of [Locations]s.
         body: _loading
             ? Center(
@@ -721,7 +720,7 @@ When you tap one of them, you'll see a list of that machine's {{< glossary_toolt
 
 ## Next steps
 
-Congratulations!
+Nice work!
 You have successfully made a Flutter app integrated with Viam!
 
 At this point you could customize the robot screen to have more functionality to control the machine or to show data from the robot in neat ways.
