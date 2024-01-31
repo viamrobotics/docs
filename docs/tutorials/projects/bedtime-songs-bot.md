@@ -253,7 +253,7 @@ Read through our guide to [training a new model](/ml/train-model/) for more info
 
 ### Configure your webcam to act as a shape classifier
 
-[Deploy the model](/ml/) to the robot and [configure a vision service classifier of model `mlmodel`](/ml/vision/classification/#configure-an-mlmodel-classifier) to use the model you've trained to classify objects in your robot's field of vision.
+[Deploy the model](/ml/) to the robot and [configure a vision service classifier of model `mlmodel`](/ml/vision/mlmodel/) to use the model you've trained to classify objects in your robot's field of vision.
 
 Name your `mlmodel` vision service `"shape-classifier"`.
 If you use a different name, adapt the code in the later steps of this tutorial to use the name you give your service.
@@ -406,7 +406,7 @@ Make sure you import the necessary packages by adding the following to the `impo
 Also, make sure that you add `initSpeaker(logger)`, a line that initializes the speaker, to the `main` function of your program.
 
 Now, create the logic for the classifiers.
-Use the vision service's [classification](/ml/vision/classification/) API method `ClassificationsFromCamera` to do this.
+Use the vision service's [classification](/ml/vision/#classifications) API method `ClassificationsFromCamera` to do this.
 
 You can get your components from the robot like this:
 

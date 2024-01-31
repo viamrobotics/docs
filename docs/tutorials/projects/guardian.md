@@ -277,7 +277,7 @@ Then specify the absolute **Model path** as `/home/pi/effdet0.tflite` and the **
 
 2. **Add a vision service.**
 
-Next, add a [detector](/ml/vision/detection/) as a vision service to be able to make use of the ML model.
+Next, add a [detector](/ml/vision/#detections) as a vision service to be able to make use of the ML model.
 
 Click **Create service** in the lower-left corner of the page.
 Select type `Vision`, then select model `ML Model`.

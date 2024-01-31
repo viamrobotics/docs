@@ -28,11 +28,11 @@ no_list: true
 Many line-following robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background.
 This tutorial uses a standard webcam in place of these sensors, and allows a robot to follow a line of any color that is at least somewhat different from the background.
 
-**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/ml/vision/detection/">vision service color detector</a>.
+**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/ml/vision/#detections">vision service color detector</a>.
 
 **What you will learn**:
 
-- How to use the [vision service](/ml/vision/)'s [color detectors](/ml/vision/detection/#configure-a-color_detector)
+- How to use the [vision service](/ml/vision/)'s [color detectors](/ml/vision/color_detector/)
 - How to use the [Python SDK](https://python.viam.dev/), including:
   - How to establish communication between the code you write and your robot
   - How to send commands to components of your robot
@@ -201,7 +201,7 @@ Verify that it’s connected by refreshing the page and ensuring that **Last Onl
 
 ## Configuring a color detector for the color of your tape line
 
-You'll use the [vision service color detector](/ml/vision/detection/#configure-a-color_detector) to programmatically identify the line to follow.
+You'll use the [vision service color detector](/ml/vision/color_detector/) to programmatically identify the line to follow.
 Before you can start on that, you need to get creative though and use your colored tape to make a path for your robot to follow.
 Perhaps a circle or other shape, or perhaps a path from one point of interest to another.
 Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.
@@ -223,7 +223,7 @@ Click on the **Services** subtab.
 
 1. **Add a vision service.**
 
-Next, add a vision service [detector](/ml/vision/detection/):
+Next, add a vision service [detector](/ml/vision/#detections):
 
 Click the **Create service** button in the lower-left corner of the **Services** subtab.
 Select type `Vision` and model `Color Detector`.
@@ -609,7 +609,7 @@ If your rover keeps driving off the line so fast that the color detector can’t
 
 Things to try:
 
-- Add a [`saturation_cutoff_pct` or a `value_cutoff_percent`](/ml/vision/detection/#configure-a-color_detector) to your vision service parameters.
+- Add a [`saturation_cutoff_pct` or a `value_cutoff_percent`](/ml/vision/color_detector/) to your vision service parameters.
 - Try to achieve more consistent lighting on and around the line.
 - Try a different color of line, or a different background.
   Be sure to update your `detect_color` parameter accordingly.

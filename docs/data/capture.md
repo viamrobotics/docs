@@ -34,11 +34,11 @@ However, if you want to manage your machine's captured data yourself, you can en
 
 To capture data from one or more machines, you must first add the [data management service](../):
 
-1. From your machine's **Config** tab, navigate to the **Services** subtab.
-2. Click **Create service** in the lower-left corner of the page.
-   Choose `Data Management` as the type and specify a name for your data management service, for example `data-manager`.
-3. Click **Create**.
-4. On the panel that appears, you can manage the capturing and syncing functions and specify the **directory**, the sync **interval** and any **tags** to apply to captured data.
+1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+2. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+3. Select the `Data Management` type, then specify a name for your data management service, for example `data-manager`.
+4. Click **Create**.
+5. On the panel that appears, you can manage the capturing and syncing functions and specify the **directory**, the sync **interval** and any **tags** to apply to captured data.
 
    If the sync **interval** or the **directory** is not specified, the data management service captures data at the default frequency every 0.1 minutes (after every 6 second interval) in the default `~/.viam/capture` directory.
 
@@ -47,7 +47,7 @@ To capture data from one or more machines, you must first add the [data manageme
    Existing data remains in the directory where it was stored.
    {{< /alert >}}
 
-5. Click **Save Config**.
+6. Click **Save Config**.
 
 ![data capture configuration](/tutorials/data-management/data-management-conf.png)
 
@@ -182,7 +182,7 @@ If you want to remove a capture method from the configuration, click the `delete
 Viam supports data capture from {{< glossary_tooltip term_id="resource" text="resources" >}} on {{< glossary_tooltip term_id="remote" text="remote" >}} parts.
 For example, if you use a {{< glossary_tooltip term_id="part" text="part" >}} that does not have a Linux operating system or that does not have enough storage or processing power, you can still process and capture the data from that part's components by adding it as a remote part.
 
-Currently, you can only configure data capture from remote components in your raw JSON configuration.
+Currently, you can only configure data capture from remote components in your JSON configuration.
 To add them to your JSON configuration you must explicitly add the remote component's `type`, `model`, `name`, and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
 
 <!-- prettier-ignore -->

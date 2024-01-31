@@ -47,7 +47,7 @@ For configuration information, click on the model name:
 
 ## Control your power sensor with Viam’s client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
@@ -62,7 +62,7 @@ Import the power sensor package for the SDK you are using:
 {{% tab name="Python" %}}
 
 ```python
-from viam.components.powersensor import powersensor
+from viam.components.power_sensor import PowerSensor
 ```
 
 {{% /tab %}}

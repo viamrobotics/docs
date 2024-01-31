@@ -10,6 +10,29 @@ aliases:
 layout: "changelog"
 ---
 
+## December 2023
+
+{{% changelog color="added" title="Filtered camera module" %}}
+
+Viam has added a [`filtered-camera` module](https://app.viam.com/module/erh/filtered-camera) that selectively captures and syncs only the images that match the detections of an ML model.
+For example, you could train an ML model that is focused on sports cars, and only capture images from the camera feed when a sports car is detected in the frame.
+
+Check out [this tutorial](/tutorials/projects/filtered-camera/) for more information.
+
+{{% /changelog %}}
+
+{{% changelog color="added" title="Raspberry Pi 5 Support" %}}
+
+You can now run `viam-server` on a [Raspberry Pi 5](/components/board/pi5/) with the new board model [`pi5`](/components/board/pi5/).
+
+{{% /changelog %}}
+
+{{% changelog color="added" title="Role-based access control" %}}
+
+Users can now have [access to different fleet management capabilities](/fleet/rbac/) depending on whether they are an owner or an operator of a given organization, location, or machine.
+
+{{% /changelog %}}
+
 ## November 2023
 
 {{% changelog color="added" title="Authenticate with location API key" %}}
@@ -49,7 +72,7 @@ After you upload and train a machine learning model, you can test its results in
 
 This allows you to refine models by iteratively tagging more images for training based on observed performance.
 
-For more information, see [Test classification models with existing images in the cloud](/ml/vision/classification/#existing-images-in-the-cloud).
+For more information, see [Test classification models with existing images in the cloud](/ml/vision/mlmodel/#existing-images-in-the-cloud).
 
 To use this update, the classifier must have been trained or uploaded after September 19, 2023.
 The current version of this feature exclusively supports classification models.
@@ -284,7 +307,7 @@ The updates to the camera component have improved the process of connecting to a
 The latest updates enable you to:
 
 - View readable webcam names in the **video path** of your camera component.
-- Specify your preferred framerate by selecting the desired value in the newly added **framerate field** on the **Config** tab.
+- Specify your preferred framerate by selecting the desired value in the newly added **framerate field** on the **CONFIGURE** tab.
 
 {{% /changelog %}}
 
@@ -355,7 +378,7 @@ detections = await vision.get_detections(img, "find_objects")
 
 #### Color detector configurations
 
-You can replace existing color detectors by [configuring new ones in the UI](/ml/vision/detection/#configure-a-color_detector) or you can update the [Raw JSON configuration of your machines](/build/configure/#the-configure-tab):
+You can replace existing color detectors by [configuring new ones in the UI](/ml/vision/color_detector/) or you can update the [JSON configuration of your machines](/build/configure/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -430,7 +453,7 @@ You can replace existing color detectors by [configuring new ones in the UI](/ml
 
 #### TFLite detector configurations
 
-You can replace existing TFLite detectors by [configuring new ones in the UI](/ml/vision/detection/#configure-an-mlmodel-detector) or you can update the [Raw JSON configuration of your machines](/build/configure/#the-configure-tab):
+You can replace existing TFLite detectors by [configuring new ones in the UI](/ml/vision/mlmodel/) or you can update the [JSON configuration of your machines](/build/configure/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -490,7 +513,7 @@ You can replace existing TFLite detectors by [configuring new ones in the UI](/m
 
 #### TFLite Classifier configurations
 
-You can replace existing TFLite classifiers by [configuring new ones in the UI](/ml/vision/classification/#configure-an-mlmodel-classifier) or you can update the [Raw JSON configuration of your machines](/build/configure/#the-configure-tab):
+You can replace existing TFLite classifiers by [configuring new ones in the UI](/ml/vision/mlmodel/) or you can update the [JSON configuration of your machines](/build/configure/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -550,7 +573,7 @@ You can replace existing TFLite classifiers by [configuring new ones in the UI](
 
 #### Radius Clustering 3D segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/segmentation/#configure-an-obstacles_pointcloud-segmenter) or you can update the [Raw JSON configuration of your machines](/build/configure/#the-configure-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/obstacles_pointcloud/) or you can update the [JSON configuration of your machines](/build/configure/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -604,7 +627,7 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
 
 #### Detector to 3D segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/segmentation/#configure-a-detector_3d_segmenter) or you can update the [Raw JSON configuration of your machines](/build/configure/#the-configure-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/detector_3d_segmenter/) or you can update the [JSON configuration of your machines](/build/configure/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -744,7 +767,7 @@ Find more information in the [TypeScript SDK docs](https://ts.viam.dev/).
 
 {{% changelog color="added" title="Frame system visualizer" %}}
 
-When adding [frames](/mobility/frame-system/) to your machine's config in the Viam app, you can now use the **Frame System** subtab of the **Config** tab to more easily visualize the relative positions of frames.
+When adding [frames](/mobility/frame-system/) to your machine's config in the Viam app, you can now use the **Frame System** subtab of the **CONFIGURE** tab to more easily visualize the relative positions of frames.
 
 {{% /changelog %}}
 

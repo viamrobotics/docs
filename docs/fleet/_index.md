@@ -97,13 +97,14 @@ You can also control a machine using the [Viam mobile app](#the-viam-mobile-app)
 
 ### Control with the SDKs
 
-Everyone who has access to the machine's location can obtain the machine's remote address and API key from the app's **Code sample** tab, which are both needed to send API calls to the machine from the [Viam SDKs](/build/program/apis/).
+Everyone who has access to the machine's location can obtain the machine's remote address and API key from the app's **CONNECT** tab's **Code sample** page.
+You need to include both of these values in your code to send API calls to the machine from the [Viam SDKs](/build/program/apis/).
 You can share the machine's remote address and API key without granting location access in the app.
 
 As long as each collaborator has access to these tokens for a machine, members of your team can write code, use tools like GitHub, and execute code to control the machine from anywhere in the world.
 
-Toggle **Include API Key** above the code on the **Code Sample** tab of your machine's page to display or hide the machine's API key.
-The machine's remote address is displayed on both the **Control** and **Code sample** tabs of your machine's page in the app, ending with `viam.cloud`.
+Toggle **Include secret** above the code on your machine's **CONNECT** tab's **Code sample** page to display or hide the machine's API key.
+The machine's remote address is displayed on both the **CONTROL** tab and **Code sample** page of your machine's page in the app, ending with `viam.cloud`.
 
 {{% snippet "secret-share.md" %}}
 

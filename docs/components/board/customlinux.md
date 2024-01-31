@@ -336,35 +336,14 @@ For example, if the <file>npwm</file> contains `"4"`, then the valid `pwm_id` va
 Determining which specific chip and line are attached to each pin depends on the board.
 Try looking at your board's data sheet and cross-referencing with the output from the commands above.
 
-### Upload your board definitions file
-
-Once you have created your board definitions file, you can choose to upload it to the Viam app using the [Viam CLI](/fleet/cli/).
-
-Uploading your definitions file allows you to store it centrally on the Viam app, and to deploy it your machines without needing to create it again for each one.
-
-For example:
-
-- The following command uploads a board definitions file named `my-board-def-file.json` that contains pin mappings for a configured [board](/components/board/) named `my-board`:
-
-  ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-  viam board upload --name='my-board' --organization='abcdef12-abcd-abcd-abcd-abcdef123456' --version=1.0.0 my-board-def-file.json
-  ```
-
-- The following command downloads a previously-uploaded board definitions file stored as `my-board` from the Viam app:
-
-  ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-  viam board download --name='my-board' --organization='abcdef12-abcd-abcd-abcd-abcdef123456' --version=1.0.0
-  ```
-
-For more information, see the [`viam board` CLI command](/fleet/cli/#board).
-
 ## Configure your board
 
 {{< tabs name="Configure a customlinux board" >}}
+
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `board` type, then select the `customlinux` model.
 Enter a name for your `customlinux` board and click **Create**.
 
@@ -373,7 +352,7 @@ Enter a name for your `customlinux` board and click **Create**.
 Copy and paste the following attribute template into your board's **Attributes** box.
 Then edit the file path to use your [board definitions file](#create-a-board-definitions-file).
 
-{{< tabs >}}
+{{< tabs name="Configure attributes" >}}
 {{% tab name="Attributes template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}

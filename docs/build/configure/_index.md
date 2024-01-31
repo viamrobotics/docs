@@ -174,7 +174,7 @@ For specific information on how to configure each supported component type, see 
 {{% alert title="Tip" color="tip" %}}
 
 When you configure a component on the **CONFIGURE** tab, it will also appear on the **Control** tab which gives you an interface to test and interact with it.
-Meanwhile the **Code sample** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/build/program/apis/).
+The **Code sample** page on the **CONNECT** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/build/program/apis/).
 
 {{<gif webm_src="/manage/control.webm" mp4_src="/manage/control.mp4" alt="Using the control tab">}}
 
@@ -197,9 +197,124 @@ You must configure a service with a `name` and a `type`:
 The other aspects of configuring a service are highly specific to the type of service.
 See the [services documentation](/services/) for more information.
 
-### Insert fragment
+## Webhooks
 
+Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud.
+For example, you can configure a webhook to send you a notification when your robot's sensor collects a new reading.
+
+Switch to **Raw JSON** mode to configure webhooks as follows:
+
+1. Paste the following JSON template into your raw JSON config.
+   `"webhooks"` is a top-level section like `"components"`, `"services"`, or any of the other config sections.
+
+   {{< tabs >}}
+   {{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+  "webhooks": [
+    {
+      "url": "<Insert your own cloud function or lambda URL for sending the event>",
+      "event": {
+        "attributes": {
+          "data_types": ["binary", "tabular", "file"]
+        },
+        "type": "part_data_ingested"
+      }
+    }
+  ]
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [
+    {
+      "name": "local",
+      "model": "rdk:builtin:pi",
+      "type": "board",
+      "namespace": "rdk",
+      "attributes": {},
+      "depends_on": []
+    },
+    {
+      "name": "my_temp_sensor",
+      "model": "rdk:builtin:bme280",
+      "type": "sensor",
+      "namespace": "rdk",
+      "attributes": {},
+      "depends_on": [],
+      "service_configs": [
+        {
+          "type": "data_manager",
+          "attributes": {
+            "capture_methods": [
+              {
+                "method": "Readings",
+                "additional_params": {},
+                "capture_frequency_hz": 0.017
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "webhooks": [
+    {
+      "url": "https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws",
+      "event": {
+        "attributes": {
+          "data_types": ["binary", "tabular"]
+        },
+        "type": "part_data_ingested"
+      }
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+2. Replace the URL value with the URL of your cloud/lambda function.
+3. Edit the `data_types` list to include only the types of data you want to trigger on.
+4. Configure [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/) for the relevant components.
+   For example, if you want to trigger a webhook on temperature readings, configure data capture and sync on your temperature sensor.
+   Be aware that the component must return the type of data you configured in `data_types`.
+5. Write your cloud/lambda function to process the request from `viam-server`.
+   The following example function sends a Slack message with a machine's details, such as robot and location IDs, when it receives a request:
+
+   ```python {class="line-numbers linkable-line-numbers"}
+   import functions_framework
+   import requests
+   import time
+
+   @functions_framework.http
+   def hello_http(request):
+     payload = {
+       "Org-ID": request.headers['org-id'] if 'org-id' in request.headers else 'no value',
+       "Location-ID": request.headers['location-id'] if 'location-id' in request.headers else 'no value',
+       "Part-ID": request.headers['part-id'] if 'part-id' in request.headers else 'no value',
+       "Robot-ID": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value'
+     }
+
+     slack_url = "<paste in your own Slack URL"
+     headers = {}
+
+     response = requests.post(slack_url, json=payload, headers=headers)
+
+     request_json = request.get_json(silent=True)
+     request_args = request.args
+
+     return 'Sent request to {}'.format(slack_url)
+
+   ```
+       
 <!-- TODO: this entire section needs to be updated once this is actually ready-->
+
+## Fragments
 
 Fragments are a way of sharing and managing identical {{< glossary_tooltip term_id="resource" text="resource" >}} configuration files across multiple machines.
 For example, if you have multiple machines with the same hardware, wired the same way, you can create and share a fragment and add it to any number of machines.
@@ -248,7 +363,6 @@ For an example of adding a fragment to a machine, see the [Viam Rover fragment t
 #### Modify the config of a machine that uses a fragment
 
 When you modify a fragment, those changes are pushed to all machines that use that fragment.
-
 If you need to modify the config of **just one** machine that uses a fragment you can do the following:
 
 1. Go to the **Fragments** subtab of the **CONFIGURE** tab.

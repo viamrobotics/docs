@@ -13,14 +13,14 @@ Users can have access to different fleet management capabilities depending on wh
 
 - **Owner**: Can see and edit [every tab on the machine page](/fleet/machines/#navigating-the-machine-page).
   Can manage users in the app.
-- **Operator**: Can see and use only the [**Control** tab](/fleet/machines/#control).
-  Cannot see or edit the [**Setup**](/fleet/machines/#setup), [**Config**](/fleet/machines/#configuration), [**History**](/fleet/machines/#history), [**Logs**](/fleet/machines/#logs), [**Code sample**](/fleet/machines/#code-sample), or [**Security**](/fleet/machines/#security) tabs.
+- **Operator**: Can see and use only the [**CONTROL**](/fleet/machines/#control) tab.
+  Cannot see or edit the [**CONFIGURE**](/fleet/machines/#configuration), [**LOGS**](/fleet/machines/#logs), or **CONNECT** tabs.
 
 For more detailed information on the permissions each role confers for different resources, see [Permissions](/fleet/rbac/#permissions).
 
 ## Change a user's access
 
-If you have the **Owner** role, you can [invite new users](/fleet/organizations/#invite-users-to-your-organization) and change the roles assigned to an organization member on a per machine, location, or organization level.
+If you have the **Owner** role, you can [invite new users](/fleet/organizations/#share-an-organization) and change the roles assigned to an organization member on a per machine, location, or organization level.
 
 To view the roles each organization member has, click on the organization dropdown in the top navigation bar and click on **Settings**.
 
@@ -101,8 +101,8 @@ Permissions for managing {{< glossary_tooltip term_id="machine" text="machines" 
 
 | Permissions                                                   | Org owner | Org operator | Location owner | Location operator | Machine owner | Machine operator |
 | ------------------------------------------------------------- | --------- | ------------ | -------------- | ----------------- | ------------- | ---------------- |
-| Control the machine from the **Control** tab                  | **Yes**   | **Yes**      | **Yes**        | **Yes**           | **Yes**       | **Yes**          |
-| See all tabs (such as **Config** and **Logs**)                | **Yes**   | No           | **Yes**        | No                | **Yes**       | No               |
+| Control the machine from the **CONTROL** tab                  | **Yes**   | **Yes**      | **Yes**        | **Yes**           | **Yes**       | **Yes**          |
+| See all tabs (such as **CONFIGURE** and **LOGS**)             | **Yes**   | No           | **Yes**        | No                | **Yes**       | No               |
 | Edit machine name                                             | **Yes**   | No           | **Yes**        | No                | **Yes**       | No               |
 | Delete the machine                                            | **Yes**   | No           | **Yes**        | No                | **Yes**       | No               |
 | Add a new {{< glossary_tooltip term_id="part" text="part" >}} | **Yes**   | No           | **Yes**        | No                | **Yes**       | No               |
@@ -114,19 +114,21 @@ Permissions for managing {{< glossary_tooltip term_id="machine" text="machines" 
 
 Permissions for managing {{< glossary_tooltip term_id="location" text="locations" >}} are as follows:
 
-| Permissions                                  | Org owner                                                      | Org operator | Location owner                                                 | Location operator | Machine owner | Machine operator |
-| -------------------------------------------- | -------------------------------------------------------------- | ------------ | -------------------------------------------------------------- | ----------------- | ------------- | ---------------- |
-| Edit location info (rename, delete location) | **Yes**                                                        | No           | **Yes** for this and any child locations                       | No                | No            | No               |
-| Create a new machine                         | **Yes**                                                        | No           | **Yes** in this and any child locations                        | No                | No            | No               |
-| Move the location (to new parent location)   | **Yes**                                                        | No           | **Yes**, to other locations they have access to                | No                | No            | No               |
-| Create a new location in the organization    | **Yes**                                                        | No           | No                                                             | No                | No            | No               |
-| Delete location                              | **Yes**                                                        | No           | **Yes**                                                        | No                | No            | No               |
-| Add/remove Viam support team permissions     | **Yes**                                                        | No           | **Yes**                                                        | No                | No            | No               |
-| Add a shared location                        | **Yes**, if they are an owner in the org they are sharing with | No           | **Yes**, if they are an owner in the org they are sharing with | No                | No            | No               |
-| Remove a shared location                     | **Yes**                                                        | No           | **Yes**                                                        | No                | No            | No               |
-| Use Try Viam from within the org\*           | **Yes**                                                        | No           | No                                                             | No                | No            | No               |
+| Permissions                                  | Org owner | Org operator | Location owner                                  | Location operator | Machine owner | Machine operator |
+| -------------------------------------------- | --------- | ------------ | ----------------------------------------------- | ----------------- | ------------- | ---------------- |
+| Edit location info (rename, delete location) | **Yes**   | No           | **Yes** for this and any child locations        | No                | No            | No               |
+| Create a new machine                         | **Yes**   | No           | **Yes** in this and any child locations         | No                | No            | No               |
+| Move the location (to new parent location)   | **Yes**   | No           | **Yes**, to other locations they have access to | No                | No            | No               |
+| Create a new location in the organization    | **Yes**   | No           | No                                              | No                | No            | No               |
+| Delete location                              | **Yes**   | No           | **Yes**                                         | No                | No            | No               |
+| Add/remove Viam support team permissions     | **Yes**   | No           | **Yes**                                         | No                | No            | No               |
+| Add a shared location                        | **Yes**   | No           | **Yes**                                         | No                | No            | No               |
+| Remove a shared location                     | **Yes**   | No           | **Yes**                                         | No                | No            | No               |
+| Use Try Viam from within the org\*           | **Yes**   | No           | No                                              | No                | No            | No               |
 
 If a user has access to a child location but not its parent location, the user cannot see machines in the parent location.
+
+If a user is an owner of an organization with which a location was shared (that is, a _secondary_ organization owner), that user _can_ share the location with other organizations.
 
 \*Users can only use Try Viam from within an organization they own because doing so creates a new location in the org.
 

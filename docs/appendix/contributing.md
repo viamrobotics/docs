@@ -323,7 +323,7 @@ To create the `webm` and mp4 files use these commands:
 
 ```sh {id="video-conversion-macos" class="command-line" data-prompt="$"}
 ffmpeg -i PATH_TO_GIF_OR_VID -vcodec libx264 -vf "format=yuv420p,scale=720:-2" -b:v 300k PATH_TO_GIF_OR_VID.mp4
-ffmpeg -i PATH_TO_GIF_OR_VID -c vp9 -b:v 0 -crf 41 my-animation.webm
+ffmpeg -i PATH_TO_GIF_OR_VID -c:v libvpx-vp9 -b:v 0 -crf 41 my-animation.webm
 ```
 
 {{% /tab %}}
@@ -346,7 +346,7 @@ The first command:
 
 The second command:
 
-- uses the `vp9` codec
+- uses the `libvpx-vp9` codec
 - `-crf 41` sets the quality level.
   Valid values are 0-63.
   Lower numbers are higher quality
@@ -410,7 +410,7 @@ Once you have a gif that is reasonably small, run these commands:
 
 ```sh {class="command-line" data-prompt="$"}
 ffmpeg -i PATH_TO_GIF_OR_VID -vcodec libx264 -vf "format=yuv420p,scale=400:-2" -b:v 300k -an PATH_TO_GIF_OR_VID.mp4
-ffmpeg -i PATH_TO_GIF_OR_VID -c vp9 -b:v 0 -crf 41 my-animation.webm
+ffmpeg -i PATH_TO_GIF_OR_VID -c:v libvpx-vp9 -b:v 0 -crf 41 my-animation.webm
 ```
 
 {{% /tab %}}
@@ -434,7 +434,7 @@ The first command:
 
 The second command:
 
-- uses the `vp9` codec
+- uses the `libvpx-vp9` codec
 - `-crf 41` sets the quality level.
   Valid values are 0-63.
   Lower numbers are higher quality

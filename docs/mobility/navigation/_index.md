@@ -50,10 +50,10 @@ See [navigation concepts](#navigation-concepts) for more info on how to implemen
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click the **Services** subtab, then click **Create service** in the lower-left corner.
-Select the type `Navigation`.
-Enter a name for your service, then click **Create**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+Select the `Navigation` type.
+Enter a name for your service and click **Create**.
 
 ![An example configuration for a navigation service in the Viam app Config Builder.](/mobility/navigation/navigation-ui-config.png)
 
@@ -220,7 +220,7 @@ The navigation service supports the following methods:
 {{% alert title="Tip" color="tip" %}}
 
 The following code examples assume that you have a machine configured with a `Navigation` service, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
-Go to your machine's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
+Go to your machine's **CONNECT** tab's **Code sample** page on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 
@@ -429,6 +429,54 @@ myNav, err := navigation.FromRobot(robot, "my_nav_service")
 
 // Get an array containing each waypoint stored by the navigation service
 waypoints, err := myNav.Waypoints(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetProperties
+
+Get information about the navigation service.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [`MapType.ValueType`](https://python.viam.dev/autoapi/viam/proto/service/navigation/index.html#viam.proto.service.navigation.GetPropertiesResponse): Information about the type of map the service is using.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+
+# Get the properties of the current navigation service.
+nav_properties = await my_nav.get_properties()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.get_properties).
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [Properties](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Properties): Information about the current navigation service.
+  This includes the map type being ingested and used by the navigation service.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
+
+```go {class="line-numbers linkable-line-numbers"}
+myNav, err := navigation.FromRobot(robot, "my_nav_service")
+
+// Get the properties of the current navigation service
+navProperties, err := myNav.Properties(context.Background())
 ```
 
 {{% /tab %}}

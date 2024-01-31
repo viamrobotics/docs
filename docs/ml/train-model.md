@@ -64,7 +64,7 @@ The previous model remains unchanged when you are training a new version of a mo
 If you are training a new model, you need to again go to your dataset's page and click on the **Train Model** button.
 {{< /alert >}}
 
-If you do not want Viam to automatically deploy the `latest` version of the model, you can change `packages` configuration in the [Raw JSON machine configuration](/build/configure/#the-configure-tab).
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change `packages` configuration in the [JSON machine configuration](/build/configure/#the-configure-tab).
 
 You can get the version number from a specific model version by clicking on **COPY** on the model on the model page.
 The model package config looks like this:
@@ -87,14 +87,14 @@ The model package config looks like this:
 Create an ML model service to deploy your machine learning model to your machine.
 
 {{% /manualcard %}}
-{{% manualcard link="/ml/vision/detection/#configure-an-mlmodel-detector"%}}
+{{% manualcard link="/ml/vision/mlmodel/"%}}
 
 <h4>Create a detector with your model</h4>
 
 Configure an `mlmodel detector`.
 
 {{% /manualcard %}}
-{{% manualcard link="/ml/vision/classification/#configure-an-mlmodel-classifier"%}}
+{{% manualcard link="/ml/vision/mlmodel/"%}}
 
 <h4>Create a classifier with your model</h4>
 

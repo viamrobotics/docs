@@ -90,13 +90,13 @@ For information about how you would configure a component yourself if you weren'
 To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=3e8e0e1c-f515-4eac-8307-b6c9de7cfb84).
 
 {{% /tab %}}
-{{% tab name="Viam Rover 2 (Jetson Nano and Orin Nano)" %}}
+{{% tab name="Viam Rover 2 (Jetson Nano)" %}}
 
 Navigate to your machine in [the Viam app](https://app.viam.com/robots).
 On the **Config** tab, click on the **Fragments** subtab.
 
 On the **Fragments** tab, you can see the available fragments to add.
-Find `ViamRover2-2024-jetson-a` and click `Add` to add the fragment to your machine configuration.
+Find `ViamRover2-2024-jetson-nano-a` and click `Add` to add the fragment to your machine configuration.
 
 Click **Save Config** to save the new configuration.
 
@@ -113,6 +113,31 @@ The fragment adds the following components to your machine's JSON configuration:
 
 For information about how to configure components yourself when you are not using the fragment, click the links on each component above.
 To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=747e1f43-309b-4311-b1d9-1dfca45bd097).
+
+{{% /tab %}}
+{{% tab name="Viam Rover 2 (Jetson Orin Nano)" %}}
+
+Navigate to your machine in [the Viam app](https://app.viam.com/robots).
+On the **Config** tab, click on the **Fragments** subtab.
+
+On the **Fragments** tab, you can see the available fragments to add.
+Find `ViamRover2-2024-nano-orin-a` and click `Add` to add the fragment to your machine configuration.
+
+Click **Save Config** to save the new configuration.
+
+The fragment adds the following components to your machine's JSON configuration:
+
+- A [board component](/components/board/pi/) named `local` representing the Jetson.
+- Two [motors](/components/motor/gpio/) (`right` and `left`)
+  - The configured pin numbers correspond to where the motor drivers are connected to the board.
+- Two [encoders](/components/encoder/single/), one for each motor
+- A wheeled [base](/components/base/), an abstraction that coordinates the movement of the right and left motors
+- A webcam [camera](/components/camera/webcam/)
+- An [accelerometer](/components/movement-sensor/mpu6050/)
+- A [power sensor](/components/power-sensor/ina219/)
+
+For information about how to configure components yourself when you are not using the fragment, click the links on each component above.
+To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=6208e890-8400-4197-bf0f-e8ddeca4e157).
 
 {{% /tab %}}
 {{< /tabs >}}

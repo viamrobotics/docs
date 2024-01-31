@@ -31,7 +31,7 @@ The model is now added and becomes visible in the **Models** section of the page
 If you [deploy a model](/ml/) to a machine, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the machine.
 If you upload a new version of that model, Viam will automatically deploy the new version to the machine and replace the old version.
 
-If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON machine configuration](/build/configure/#the-configure-tab).
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [JSON machine configuration](/build/configure/#the-configure-tab).
 
 You can get the version number from a specific model version by clicking on **COPY** on the model on the model page.
 The model package config looks like this:
@@ -54,14 +54,14 @@ The model package config looks like this:
 Create an ML model service to deploy your machine learning model to your machine.
 
 {{% /manualcard %}}
-{{% manualcard link="/ml/vision/detection/#configure-an-mlmodel-detector"%}}
+{{% manualcard link="/ml/vision/mlmodel/"%}}
 
 <h4>Create a detector with your model</h4>
 
 Configure your `mlmodel detector`.
 
 {{% /manualcard %}}
-{{% manualcard link="/ml/vision/classification/#configure-an-mlmodel-classifier"%}}
+{{% manualcard link="/ml/vision/mlmodel/"%}}
 
 <h4>Create a classifier with your model</h4>
 

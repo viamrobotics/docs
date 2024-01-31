@@ -56,14 +56,14 @@ Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML mod
   <tr>
     <td>{{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Configure a service">}}
       <b>5. Configure a service</b>
-      <p>For object detection and classification, you can use the <a href="/ml/vision/">vision service</a>, which provides an <a href="/ml/vision/detection/#configure-an-mlmodel-detector">ml model detector</a> and an <a href="/ml/vision/classification/#configure-an-mlmodel-classifier">ml model classifier</a> model.</p>
+      <p>For object detection and classification, you can use the <a href="/ml/vision/">vision service</a>, which provides an <a href="/ml/vision/mlmodel/">ml model detector</a> and an <a href="/ml/vision/mlmodel/">ml model classifier</a> model.</p>
       <p>For other usage, you can use a <a href="/registry/">modular resource</a> to integrate it with your machine.</p>
 </td>
   </tr>
   <tr>
     <td>{{<imgproc src="ml/deploy.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Deploy your model">}}
       <b>6. Test your detector or classifier</b>
-      <p>Test your <a href="/ml/vision/detection/#test-your-detector">mlmodel detector</a> or <a href="/ml/vision/classification/#test-your-classifier">mlmodel classifier</a>.</p>
+      <p>Test your <a href="/ml/vision/mlmodel/#test-your-detector-or-classifier">mlmodel detector or classifier</a>.</p>
     </td>
   </tr>
 </table>

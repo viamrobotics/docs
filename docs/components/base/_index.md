@@ -51,6 +51,7 @@ For configuration information, click on the model name:
 | Model | Description |
 | ----- | ----------- |
 | [`wheeled`](wheeled/) | Mobile wheeled robot |
+| [`sensor-controlled`](sensor-controlled/) | A model that wraps other base models with feedback control from a movement sensor |
 | [`fake`](fake/) | A model used for testing, with no physical hardware |
 
 ### Modular Resources
@@ -63,7 +64,7 @@ If you are using the micro-RDK, navigate to [Micro-RDK Base](/build/micro-rdk/ba
 
 ## Control your base with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 

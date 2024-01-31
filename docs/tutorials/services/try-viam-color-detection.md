@@ -18,7 +18,6 @@ date: "2022-12-16"
 # updated: ""
 cost: "0"
 no_list: true
-weight: 3
 # SMEs: Hazal
 ---
 
@@ -55,7 +54,7 @@ This tutorial uses the color `#7a4f5c` or `rgb(122, 79, 92)` (a reddish color).
 
 **Hex color #7a4f5c**: {{<imgproc src="/tutorials/try-viam-color-detection/7a4f5c.png" resize="150x" declaredimensions=true alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color.">}}
 
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots) and configure your [vision service color detector](/ml/vision/detection/):
+Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots) and configure your [vision service color detector](/ml/vision/#detections):
 
 {{< tabs >}}
 {{% tab name="Builder" %}}

@@ -1,42 +1,16 @@
 ---
-title: "Detection (or 2D object detection)"
-linkTitle: "Detection"
+title: "color_detector"
+linkTitle: "color_detector"
 weight: 10
 type: "docs"
-description: "Select an algorithm that identifies objects in a 2D image and adds bounding boxes around identified objects."
+description: "A heuristic detector that draws boxes around objects according to their hue (does not detect black, gray, and white)."
 tags: ["vision", "computer vision", "CV", "services", "detection"]
 images: ["/ml/vision/dog-detector.png"]
 aliases:
   - "/services/vision/detection/"
+  - "/services/vision/classification/"
 # SMEs: Bijan, Khari
 ---
-
-_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#april-2023)_
-
-<div class="td-max-width-on-larger-screens">
-  <div class="alignright" >
-    {{< imgproc alt="A white dog with a bounding box around it labeled 'Dog: 0.71'" src="/ml/vision/dog-detector.png" resize="300x" declaredimensions=true >}}
-  </div>
-</div>
-
-_2D Object Detection_ is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct "objects" of interest in the scene.
-Any camera that can return 2D images can use 2D object detection.
-
-The service provides different types of detectors, both based on heuristics and machine learning, so that you can create, register, and use detectors for any object you may need to identify.
-
-The returned detections consist of the bounding box around the identified object, as well as its label and confidence score:
-
-- `x_min`, `y_min`, `x_max`, `y_max` (int): specify the bounding box around the object.
-- `class_name` (string): specifies the label of the found object.
-- `confidence` (float): specifies the confidence of the assigned label.
-  Between `0.0` and `1.0`, inclusive.
-
-You can use the following types of detectors:
-
-- [**Color detection (`color_detector`)**](#configure-a-color_detector): A heuristic detector that draws boxes around objects according to their hue (does not detect black, gray, and white).
-- [**Object detection (`mlmodel`)**](#configure-an-mlmodel-detector): A detector that draws bounding boxes according to an [ML model](/ml/) available on the machine’s hard drive.
-
-## Configure a `color_detector`
 
 A heuristic detector that draws boxes around objects according to their hue.
 Color detectors do not detect black, perfect grays (grays where the red, green, and blue color component values are equal), or white.
@@ -53,8 +27,8 @@ If the color is not reliably detected, increase the `hue_tolerance_pct`.
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
-Click the **Services** subtab and click **Create service** in the lower-left corner.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 Select the `ML Model` type, then select the `Color Detector` model.
 Enter a name for your service and click **Create**.
 
@@ -138,89 +112,6 @@ The following parameters are available for a `color_detector`.
 The optional **saturation_cutoff_pct** and **value_cutoff_pct** attributes specify cutoff thresholds levels for saturation and brightness, rather than specifying color saturation and brightness as they do in the standard HSV Color Model.
 
 {{% /alert %}}
-
-Click **Save config**.
-Proceed to [test your detector](#test-your-detector).
-
-## Configure an `mlmodel` detector
-
-To create an `mlmodel` detector, you need to first:
-
-{{< cards >}}
-{{% manualcard %}}
-
-<h4>Train or upload an ML model</h4>
-
-You can [add an existing model](/ml/upload-model/) or [train your own models](/ml/train-model/) for object detection and classification using data from the [data management service](/data/).
-
-{{% /manualcard %}}
-{{% manualcard %}}
-
-<h4>Deploy your model</h4>
-
-To make use of ML models with your machine, use the built-in [ML model service](/ml/) to deploy and run the model.
-
-{{% /manualcard %}}
-
-{{< /cards >}}
-
-<br>
-
-A machine learning detector that draws bounding boxes according to the specified tensorflow-lite model file available on the machine’s hard drive.
-To create a `mlmodel` classifier, you need an [ML model service with a suitable model](/ml/).
-
-{{< tabs >}}
-{{% tab name="Builder" %}}
-
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
-Click the **Services** subtab and click **Create service** in the lower-left corner.
-Select the `Vision` type, then select the `ML Model` model.
-Enter a name for your service and click **Create**.
-
-In your vision service's panel, fill in the **Attributes** field.
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "mlmodel_name": "<mlmodel-service-name>"
-}
-```
-
-{{% /tab %}}
-{{% tab name="JSON Template" %}}
-
-Add the vision service object to the services array in your raw JSON configuration:
-
-```json {class="line-numbers linkable-line-numbers"}
-"services": [
-  {
-    "name": "<service_name>",
-    "type": "vision",
-    "model": "mlmodel",
-    "attributes": {
-      "mlmodel_name": "<mlmodel-service-name>"
-    }
-  }
-]
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-"services": [
-  {
-    "name": "person_detector",
-    "type": "vision",
-    "model": "mlmodel",
-    "attributes": {
-      "mlmodel_name": "my_mlmodel_service"
-    }
-  }
-]
-```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 Click **Save config**.
 Proceed to [test your detector](#test-your-detector).

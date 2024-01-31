@@ -30,6 +30,11 @@ You must purchase the following hardware separately:
 
 This guide covers what's inside the kit and provides instructions for [setting up your rover](#setup).
 
+{{< alert title="Note" color="note" >}}
+The design for this rover is open source.
+Find the details on [GitHub](https://github.com/viamrobotics/Viam-Rover-2).
+{{< /alert >}}
+
 ## What's inside the kit
 
 1. One assembled Viam Rover.
@@ -351,6 +356,26 @@ Screw the top plate back on with the biggest Allen key and use the power switch 
 Wait a second for the low voltage cutoff relay to trip and provide power to the rover motherboard.
 If the Pi has power, the lights on the Raspberry Pi will light up.
 
+### Enable I<sup>2</sup>C on your Pi
+
+Enable the I<sup>2</sup>C protocol on your Pi to get readings from the power sensor when controlling your rover.
+
+1. SSH into your Pi.
+   Launch the configuration tool by running the following command:
+
+   ```sh {class="command-line" data-prompt="$"}
+   sudo raspi-config
+   ```
+
+2. Use your keyboard to select **Interface Options**, and press return.
+   Select **I2C** enabled.
+
+3. Then, to apply the changes, restart your Raspberry Pi if it hasn't already prompted you to do so.
+
+   ```sh {class="command-line" data-prompt="$"}
+   sudo reboot
+   ```
+
 ### Control your rover on the Viam app
 
 If you followed the instructions in the [Pi installation guide](/get-started/installation/prepare/rpi-setup/), you should have already made an account on the [Viam app](https://app.viam.com), installed `viam-server` on the board, and added a new machine.
@@ -386,7 +411,6 @@ If you are mounting an RPlidar to your rover, be sure to position the RPlidar so
 For example, if you are using the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to the Rover so that the pointed end of the RPlidar mount housing points in the direction of the front of the Rover.
 This ensures that the generated {{< glossary_tooltip term_id="slam" text="SLAM" >}} map is oriented in the expected direction relative to the Rover, with the top of the generated map corresponding to the direction the RPlidar is facing when you initiate mapping.
 
-If you need a mount plate for your RPlidar A1 or A3 model, you can 3D print an adapter plate using the following:
+If you need a mount plate for your RPlidar A1 model, you can 3D print an adapter plate using the following:
 
-- [RPlidar A1 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA1_adapter.STL)
-- [RPlidar A3 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA3_adapter.STL)
+- [RPlidar A1 adapter STL](https://github.com/viamrobotics/Viam-Rover-2/blob/main/CAD/RPIidar_adapter_v2.STL)

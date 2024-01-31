@@ -17,14 +17,14 @@ Once you have [trained](/ml/train-model/) or [uploaded](/ml/upload-model/) your 
 
 You can use the following built-in model:
 
-{{< alert title="Note" color="note" >}}
-For some models, like the [Triton MLModel](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use the available CPU or GPU.
-{{< /alert >}}
-
 <!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`"tflite_cpu"` model](#create-an-ml-model-service) | Runs a tensorflow lite model that you have [trained](/ml/train-model/) or [uploaded](/ml/upload-model/). |
+
+{{< alert title="Note" color="note" >}}
+For some models, like the [Triton MLModel](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use the available CPU or GPU.
+{{< /alert >}}
 
 ## Used With
 
@@ -44,7 +44,7 @@ For example, you can configure an [`mlmodel` vision service](/ml/vision/) and a 
 {{< alert title="Add support for other models" color="tip" >}}
 If none of the existing models fit your use case, you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it.
 
-ML Models must be designed in particular shapes to work with the `mlmodel` [classification](/ml/vision/classification/#configure-an-mlmodel-classifier) or [detection](/ml/vision/detection/#configure-an-mlmodel-detector) model of Viam's [vision service](/ml/vision/).
+ML Models must be designed in particular shapes to work with the `mlmodel` [classification](/ml/vision/mlmodel/) or [detection](/ml/vision/mlmodel/) model of Viam's [vision service](/ml/vision/).
 Follow [these instructions](/registry/advanced/mlmodel-design/) to design your modular ML Model service with models that work with vision.
 {{< /alert >}}
 
@@ -53,8 +53,8 @@ Follow [these instructions](/registry/advanced/mlmodel-design/) to design your m
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
-Click the **Services** subtab and click **Create service** in the lower-left corner.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 Select the `ML Model` type, then select the `TFLite CPU` model.
 Enter a name for your service and click **Create**.
 
@@ -84,7 +84,7 @@ Then select the **Models** and any **Optional Settings** such as the **Number of
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Add the `tflite_cpu` ML model object to the services array in your raw JSON configuration:
+Add the `tflite_cpu` ML model object to the services array in your JSON configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "services": [
@@ -137,7 +137,7 @@ Save the configuration.
 ### Versioning for deployed models
 
 If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the machine.
-If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON machine configuration](/build/configure/#the-configure-tab).
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [JSON machine configuration](/build/configure/#the-configure-tab).
 
 You can get the version number from a specific model version by clicking on **COPY** on the model on the models tab of the **DATA** page.
 The model package config looks like this:
@@ -174,7 +174,7 @@ The MLModel service supports the following methods:
 {{% alert title="Tip" color="tip" %}}
 
 The following code examples assume that you have a machine configured with an `MLModel` service, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
-Go to your machine's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
+Go to your machine's **CONNECT** tab's **Code sample** page on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 
@@ -403,14 +403,14 @@ To make use of your model with your machine, add a [vision service](/ml/vision/)
 
 {{< cards >}}
 
-{{% manualcard link="/ml/vision/detection/#configure-an-mlmodel-detector"%}}
+{{% manualcard link="/ml/vision/mlmodel/"%}}
 
 <h4>Create a detector with your model</h4>
 
 Configure an `mlmodel detector`.
 
 {{% /manualcard %}}
-{{% manualcard link="/ml/vision/classification/#configure-an-mlmodel-classifier"%}}
+{{% manualcard link="/ml/vision/mlmodel/"%}}
 
 <h4>Create a classifier with your model</h4>
 

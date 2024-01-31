@@ -43,13 +43,13 @@ Then, test if your model works for classifying objects in a camera stream or exi
   <tr>
     <td>{{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Configure a service">}}
       <b>5. Configure an <code>mlmodel</code> vision service</b>
-      <p>For object classification, you can use the <a href="/ml/vision/">vision service</a>, which provides an <a href="/ml/vision/classification/#configure-an-mlmodel-classifier">ml model classifier</a> model.</p>
+      <p>For object classification, you can use the <a href="/ml/vision/">vision service</a>, which provides an <a href="/ml/vision/mlmodel/">ml model classifier</a> model.</p>
 </td>
   </tr>
   <tr>
     <td>{{<imgproc src="ml/deploy.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Deploy your model">}}
       <b>6. Test your classifier</b>
-      <p>Test your <a href="/ml/vision/classification/#test-your-classifier">mlmodel classifier</a> with <a href="/ml/vision/classification/#existing-images-in-the-cloud">existing images in the Viam app</a>, <a href="/ml/vision/classification/#live-camera-footage">live camera footage,</a> or <a href="/ml/vision/classification/#existing-images-on-your-machine">existing images on a computer</a>.</p>
+      <p>Test your <a href="/ml/vision/mlmodel/#test-your-detector-or-classifier">mlmodel classifier</a> with <a href="/ml/vision/mlmodel/#existing-images-in-the-cloud">existing images in the Viam app</a>, <a href="/ml/vision/mlmodel/#live-camera-footage">live camera footage,</a> or <a href="/ml/vision/mlmodel/#existing-images-on-your-machine">existing images on a computer</a>.</p>
     </td>
   </tr>
 </table>
@@ -59,7 +59,7 @@ Then, test if your model works for classifying objects in a camera stream or exi
 After testing your classifier, see the following to further explore Viam's data management and computer vision capabilities:
 
 - [Export Data Using the Viam CLI](/data/export/): Export your synced data from the Viam cloud.
-- [2D Object Detection](/ml/vision/detection/): Configure your machine's camera to draw a bounding box around detected objects, based on a machine learning model.
+- [2D Object Detection](/ml/vision/#detections): Configure your machine's camera to draw a bounding box around detected objects, based on a machine learning model.
 - [Update an existing ML model](/ml/train-model/#train-a-new-version-of-a-model): Refine an existing ML model you have trained, and select which model version to deploy.
 
 You can also explore our [tutorials](/tutorials/) for more ideas.

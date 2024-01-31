@@ -284,51 +284,6 @@ viam organizations --help
 
 ## Commands
 
-### board
-
-The `board` command allows you to manage your board definition files.
-With it, you can upload new board definition files to the Viam app, download your existing board definition files, and list the files already uploaded.
-
-You can use board definition files to configure pin mappings for [`customlinux` boards](/components/board/customlinux/).
-
-```sh {class="command-line" data-prompt="$"}
-viam board upload --name=<board name> --organization=<org name> --version=<definition file version> file.json
-viam board download --name=<board name> --organization=<org name> --version=<definition file version>
-viam board list --organization=<org name>
-```
-
-Examples:
-
-```sh {class="command-line" data-prompt="$"}
-# upload a new board definition file named 'my-board' with version '1.0.0' for org 'my-org'
-viam board upload --name=my-board --organization=my-org --version=1.0.0 my-board.json
-
-# download an existing board definition file named 'my-board' at version '1.0.0' for org 'my-org'
-viam board download --name=my-board --organization=my-org --version=1.0.0
-
-# list all available board definition files for org 'my-org'
-viam board list --organization=my-org
-```
-
-#### Command options
-
-<!-- prettier-ignore -->
-|        command option     |       description      | positional arguments
-| ----------- | ----------- | ----------- |
-| `upload`      | upload a new board definition file to the Viam app | **board definition file** : provide the board definition file to upload, in JSON form. |
-| `download`      | download an existing board definition file | - |
-| `list`      | list available board definition files | - |
-| `--help`      | return help      | - |
-
-##### Named arguments
-
-<!-- prettier-ignore -->
-|        argument     |       description | applicable commands | required
-| ----------- | ----------- | ----------- | ----------- |
-| `--name`      | output directory for downloaded data       | `upload`, `download` | true |
-| `--organization`      | organization name to upload, download, or list board definition files from      | `upload`, `download`, `list` | true |
-| `--version`      | version of the board definition file to tag the upload with, or to specifically download. Defaults to latest if not set.    | `upload`, `download` | true |
-
 ### data
 
 The `data` command allows you to manage machine data.
@@ -722,7 +677,7 @@ For example, the following represents the configuration of an example `my-module
 ```
 
 {{% alert title="Important" color="note" %}}
-If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/registry/upload/#naming-your-model-namespacerepo-namename) must match the [namespace of your organization](/fleet/organizations/#create-a-namespace-for-your-organization).
+If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/registry/#naming-your-model-namespacerepo-namename) must match the [namespace of your organization](/fleet/organizations/#create-a-namespace-for-your-organization).
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 {{% /alert %}}
