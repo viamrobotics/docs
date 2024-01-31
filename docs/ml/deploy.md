@@ -74,9 +74,9 @@ You can choose to configure your service with an existing model on the machine o
 To see more details about a model, open its page in [the registry](https://app.viam.com).
 {{% /alert %}}
 
-{{<imgproc src="/services/deploy-model.png" resize="700x" alt="Create a machine learning models service with a model to be deployed">}}
-
 3. Also, optionally select the **Number of threads**.
+
+{{<imgproc src="/services/deploy-model.png" resize="700x" alt="Create a machine learning models service with a model to be deployed">}}
 
 {{% /tab %}}
 {{% tab name="Existing Model" %}}

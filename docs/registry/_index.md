@@ -27,21 +27,21 @@ aliases:
 menuindent: true
 ---
 
-The [Viam registry](https://app.viam.com/registry) is the central place where you can browse [ML models](/ml) to deploy with machine applications like [computer vision](/ml/vision/), or {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} that add capabilities to your machine beyond what is built-in to `viam-server`.
+The [Viam registry](https://app.viam.com/registry) is the central place where you can browse:
+
+ - [ML models](/ml) to deploy with machine applications like [computer vision](/ml/vision/)
+ - {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} that add capabilities to your machine beyond what is built-in to `viam-server`
 
 ### ML models
 
 Viam provides the ability to train, upload, and deploy ML models within the platform.
 See [Machine Learning](/ml/) for more information.
 
-You can use these ML models to make detections or classifications on-machine with an [`mlmodel` vision service](/ml/vision/mlmodel/).
 
-The Viam registry hosts pretrained ML models that users have made public, so that you can save time spent training complicated models and quickly deploy classifiers or detectors for your use case onto your robot.
-You can also upload your own model to the registry.
+The Viam registry hosts pretrained ML models that users have made public, which you can use to deploy classifiers or detectors for your use case onto your robot instead of training your own.
+You can also [upload your own model to the registry](/ml/upload-model/).
 
-- You can deploy a model to your robot through an [MLModel service like `tflite_cpu`](/ml/deploy/).
-  Select **Builder** and **Deploy Model** tabs and follow [these instructions](/ml/deploy/#create-an-ml-model-service) to deploy the model to your robot.
-- To add an ML model to the registry, [upload the model publicly](/ml/upload-model/).
+To use an existing model from the registry, [deploy the ML model to your robot](/ml/deploy//#create-an-ml-model-service) and use a [vision service](/ml/vision/) to make detections or classifications on-machine.
 
 ### Modular resources
 
@@ -74,7 +74,7 @@ You can see details about each module in the [Viam registry](https://app.viam.co
 You can integrate modules into any Viam-powered machine.
 
 Be aware that unlike natively supported models, modular resources are not documented on the Viam Documentation.
-Documentation for each modular resource is available on its GitHub page, which is linked from the models' page on [the registry](https://app.viam.com/registry).
+Documentation for each modular resource is available on its GitHub page, which is linked from the models' page on [the registry](https://app.viam.com/registry) or by clicking on the model name in the above search.
 
 ## Use modules
 

@@ -17,7 +17,7 @@ Trained ML models are available in the [Viam registry](https://app.viam.com/regi
 To add a model that you've trained to the [Viam registry](https://app.viam.com/registry) so that other users can deploy it onto their robots:
 
 1. On the [**DATA** tab](https://app.viam.com/data/view) in the Viam app, navigate to the **MODELS** subtab.
-   A list of all of your ML models is displayed.
+   You'll see a list of all ML models you have access to.
 2. Open the menu on the right side of an ML model's row.
 
 {{<imgproc src="/ml/model-list.png" resize="1000x" alt="List of models displayed on MODELS subtab of DATA tab.">}}
@@ -29,7 +29,7 @@ To add a model that you've trained to the [Viam registry](https://app.viam.com/r
 4. Add a short description.
    This will help other users to understand how to use your model.
 5. Then, click **Publish model**.
-   Your model should be publicly visible in the [Viam registry](https://app.viam.com/registry).
+   Your model is now publicly visible in the [Viam registry](https://app.viam.com/registry).
 
 ## Upload a new model or new version
 
