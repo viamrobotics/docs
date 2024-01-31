@@ -7,7 +7,7 @@ webmSrc: "/tutorials/verification-system/demo.webm"
 mp4Src: "/tutorials/verification-system/demo.mp4"
 videoAlt: "Bijan disarming the facial verification system."
 images: ["/tutorials/verification-system/demo.gif"]
-tags: ["mlmodel", "vision", "services", "security", "camera"]
+tags: ["mlmodel", "vision", "services", "security", "camera", "data management"]
 authors: ["Sierra G."]
 languages: []
 viamresources: ["mlmodel", "vision", "camera"]
@@ -20,10 +20,14 @@ no_list: true
 
 With the machine learning (ML) service, a Viam machine can use an ML model together with its vision service to detect the presence of certain objects or patterns in the world around it.
 In this tutorial, you will learn how to build a facial verification system using Viam which can detect when a person appears in view of a camera, and either enter an alarm state if the detected person is not a valid approved person, or enter a disarm state if the detected person is approved.
-To accomplish this, you will use two vision detectors, each powered by its own ML model:
+While the verification system itself is a classifier vision service, to accomplish this you configure it with dependencies on a variety of resources:
+
+![Diagram of the components and services used in the verification system.](/tutorials/verification-system/resource-diagram.png)
+
+You will use two vision detectors, each powered by its own ML model:
 
 1. A `people-detect` ML model detector, which can identify whether an object detected in your camera feed is a person or not.
-   You will train this model by capturing images of a variety of people using your camera, and classifying matching pictures with labels when a person is present in the frame.
+   You will train this model by capturing images of a variety of people using your camera and the data management service, and classifying matching pictures with labels when a person is present in the frame.
 2. A `face-detect` ML model detector, which can identify the face of a specific person.
    You will use a pre-existing facial recognition model that uses the DeepFace library, and provide photos of each person you want your security system to recognize.
 
