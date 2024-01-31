@@ -10,7 +10,7 @@ aliases:
   - /program/run/
 ---
 
-After saving your [code sample](/build/program/#hello-world-the-code-sample-tab) and adding control logic with [Viam's SDKs](/build/program/apis/), run your program to control your Viam-connected machine.
+After saving your [code sample](/build/program/#hello-world-the-connect-tab) and adding control logic with [Viam's SDKs](/build/program/apis/), run your program to control your Viam-connected machine.
 
 ### Authentication
 
@@ -69,7 +69,7 @@ This is useful because as long as that computer is able to establish a network c
 Your machines do not need to be connected to the Internet for you to be able to run code.
 As long as your machine is connected to the same LAN or WAN network as the device running the code, you can connect to it and run code.
 
-When you use the connection code from the [code sample tab](/build/program/#hello-world-the-code-sample-tab), that code establishes a [client session](/build/program/apis/sessions/) that automatically uses the [most efficient route](/build/program/connectivity/) to send commands to your machine.
+When you use the connection code from the [code sample tab](/build/program/#hello-world-the-connect-tab), that code establishes a [client session](/build/program/apis/sessions/) that automatically uses the [most efficient route](/build/program/connectivity/) to send commands to your machine.
 That means that when the device your code runs on is on the same network as your machine, even if internet is available, the connection will choose the most efficient route and connect over LAN or WAN.
 If you subsequently lose internet connectivity, but stay connected to LAN or WAN, the connection will thus remain.
 
@@ -79,7 +79,7 @@ If you run [PID control loops](https://en.wikipedia.org/wiki/PID_controller) or 
 
 {{<imgproc src="/build/program/on-robot.png" resize="800x" declaredimensions=true alt="A client running on a machine">}}
 
-When connecting to a machine using the connection code from the [code sample tab](/build/program/#hello-world-the-code-sample-tab), a [client session](/build/program/apis/sessions/) automatically uses the [most efficient route](/build/program/connectivity/) to connect to your machine, which means the favored route for commands will be over localhost.
+When connecting to a machine using the connection code from the [code sample tab](/build/program/#hello-world-the-connect-tab), a [client session](/build/program/apis/sessions/) automatically uses the [most efficient route](/build/program/connectivity/) to connect to your machine, which means the favored route for commands will be over localhost.
 
 ## Run code automatically
 
