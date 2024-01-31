@@ -320,6 +320,8 @@ Fragments are a way of sharing and managing identical {{< glossary_tooltip term_
 For example, if you have multiple machines with the same hardware, wired the same way, you can create and share a fragment and add it to any number of machines.
 When changes are made to the fragment, those changes are automatically carried to all machines that include the fragment in their config.
 
+#### Insert fragment
+
 To insert a fragment into your robot's configuration, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Insert Fragment**.
 
 #### Create a fragment
