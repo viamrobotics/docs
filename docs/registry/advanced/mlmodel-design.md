@@ -62,7 +62,7 @@ For labels:
   label_path = ml_model_metadata.output_info.extra["labels"]
   ```
 
-### Example Metadata
+### Example metadata
 
 For example, a TF lite detector model that works with the vision service is structured with the following [metadata](/ml/deploy/#metadata):
 

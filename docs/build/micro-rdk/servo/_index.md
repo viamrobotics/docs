@@ -16,7 +16,7 @@ The servo component supports ["RC" or "hobby" servo motors](https://learn.adafru
 These are small motors with built-in potentiometer position sensors, enabling you to control the angular position of the servo precisely.
 For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Servo Component](/components/servo/).
 
-## Supported Models
+## Supported models
 
 For configuration information, click on the supported servo model name:
 

@@ -44,7 +44,7 @@ The model package config looks like this:
 }
 ```
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% manualcard link="/ml/" %}}

@@ -407,7 +407,7 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 
 {{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/ml/vision" %}}

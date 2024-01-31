@@ -1,5 +1,5 @@
 ---
-title: "detector_3d_segmenter"
+title: "Configure a detector_3d_segmenter"
 linkTitle: "detector_3d_segmenter"
 weight: 20
 type: "docs"

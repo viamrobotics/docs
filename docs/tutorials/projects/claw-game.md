@@ -1,5 +1,5 @@
 ---
-title: "Build a robotic claw game with a Raspberry Pi"
+title: "Build a Robotic Claw Game with a Raspberry Pi"
 linkTitle: "Claw Game"
 type: "docs"
 description: "Create your own version of the famous arcade claw machine using a robotic arm and a claw grabber."

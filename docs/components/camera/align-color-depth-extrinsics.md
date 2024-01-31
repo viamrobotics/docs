@@ -151,6 +151,6 @@ The following attributes are available for `align_color_depth_extrinsics` views:
 
 {{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< readfile "/static/include/components/camera-model-next-steps.md" >}}

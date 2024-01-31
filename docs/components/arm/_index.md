@@ -50,7 +50,7 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 
 - If there is no way for the arm to move to the desired location in a straight line, or if it would self-collide or collide with an obstacle that was passed in as something to avoid, then the `move_to_position` call will fail.
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/mobility/motion/" >}}
@@ -58,7 +58,7 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 {{< relatedcard link="/data/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your arm with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your arm.
 
@@ -83,7 +83,7 @@ For configuration information, click on the model name:
 | [`xArmLite`](xarmlite/) | [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6) |
 | [`ur5e`](ur5e/) | [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) |
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:arm" type="arm">}}
 
@@ -679,7 +679,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 You can also ask questions on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/tutorials/services/accessing-and-moving-robot-arm" %}}

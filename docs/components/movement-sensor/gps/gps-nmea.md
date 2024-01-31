@@ -174,7 +174,7 @@ The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB
 | `connection_type` | string  | **Required** | `"I2C"` or `"serial"`. See [Connection Attributes](#connection-attributes) below. |
 | `disable_nmea`    | boolean | Optional     | If set to `true`, changes the NMEA message protocol to RTCM when using a chip as a base station. <br> Default: `false` |
 
-### Connection Attributes
+### Connection attributes
 
 You need to configure attributes to specify how the GPS connects to your computer.
 You can use either serial communication (over USB) or I<sup>2</sup>C communication (through pins to a [board](/components/board/)).
@@ -186,7 +186,7 @@ See examples of this struct in the example tabs above.
 {{< tabs >}}
 {{% tab name="Serial" %}}
 
-### Serial Config Attributes
+### Serial config attributes
 
 For a movement sensor communicating over serial, you'll need to include a `serial_attributes` struct containing:
 
@@ -199,7 +199,7 @@ For a movement sensor communicating over serial, you'll need to include a `seria
 {{% /tab %}}
 {{% tab name="I2C" %}}
 
-### I2C Config Attributes
+### I2C config attributes
 
 For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attributes` struct containing:
 

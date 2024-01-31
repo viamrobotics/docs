@@ -46,7 +46,7 @@ Before starting this tutorial, make sure you have the [Viam Python SDK](https://
 
 If you are connecting to a real robotic arm during this tutorial, make sure your computer can communicate with the controller before continuing.
 
-## Configure a Robot
+## Configure a robot
 
 1. Navigate to the [machine page on the Viam app](https://app.viam.com/robots).
 2. Create a new machine.
@@ -81,7 +81,7 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
    Throughout this tutorial you will replace and amend this code.
    The [full tutorial code](#full-tutorial-code) is available at the bottom of this tutorial for reference.
 
-## Access the Arm
+## Access the arm
 
 The `arm` component library has several methods to simplify accessing and working with robotic arms.
 In this step, you'll fetch data about the robotic arm's current position.
@@ -205,12 +205,12 @@ Other times you may need to describe the position of another object with respect
 There is a mathematical relationship that allows you to convert between these two representations, known as the **forward and inverse kinematics**, which is foundational to complex robotic motion.
 We will not cover forward and inverse kinematics in this tutorial, but resources for further reading on these topics are linked in the [**Next Steps**](#next-steps-and-references) section.
 
-## Move the Arm
+## Move the arm
 
 The two main options for specifying arm movement are through **joint position commands** and through **pose commands**.
 Let's start with joint position commands, as their formulation is a little simpler.
 
-### Joint Position Commands
+### Joint position commands
 
 First, you can initiate motion with a joint position command.
 A final note:
@@ -259,7 +259,7 @@ Feel free to experiment further with joint position commands by changing the val
 
 When you are ready to move on, the next section will show you how to use **pose commands**.
 
-### Pose Commands
+### Pose commands
 
 When you [got the end position of the arm](#access-the-arm), this data was returned in the format of a `Pose`.
 The returned `Pose` is a combination of position and orientation data that indicates the end of the arm's full 6-dimensional configuration in space.
@@ -310,7 +310,7 @@ Using this code you can quickly adjust one or more elements of position AND orie
 For all motion actions taken in this tutorial, there may be joint positions or poses that are unreachable for particular reasons (potential collisions, a pose in space is unreachable because the arm is too short).
 Regularly check your client script's feedback and the `viam-server` logs for any issues that may arise.
 
-## Next Steps and References
+## Next steps and references
 
 If you would like to continue onto working with Viam's motion service, check out one of these tutorials:
 
@@ -323,7 +323,7 @@ If you would like to continue onto working with Viam's motion service, check out
 
 For more resources on robot kinematics, read through the Wikipedia pages for [Forward kinematics](https://en.wikipedia.org/wiki/Forward_kinematics) and [Inverse kinematics](https://en.wikipedia.org/wiki/Inverse_kinematics).
 
-## Full Tutorial Code
+## Full tutorial code
 
 {{< tabs >}}
 {{% tab name="Python" %}}

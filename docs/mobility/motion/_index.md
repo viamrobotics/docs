@@ -23,7 +23,7 @@ The motion service can:
 - use motion [planning algorithms](algorithms/) locally on your machine to plan coordinated motion across many components.
 - pass movement requests through to individual components which have implemented their own motion planning.
 
-## Used With
+## Used with
 
 {{< cards >}}
 {{< relatedcard link="/mobility/frame-system/" >}}

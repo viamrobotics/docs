@@ -175,7 +175,7 @@ sudo apt update
 sudo apt upgrade
 ```
 
-## Enable Communication Protocols
+## Enable communication protocols
 
 Certain hardware, such as analog-to-digital converters (ADCs), accelerometers, and sensors, communicates with your Pi using specialized communications protocols, including I2C, SPI, serial, or one-wire protocols.
 If you are using hardware that requires these protocols, you must enable support for them on your Pi using `raspi-config`:
@@ -209,7 +209,7 @@ If you are using hardware that requires these protocols, you must enable support
 
 {{< readfile "/static/include/install/install-linux.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/build/configure/" %}}

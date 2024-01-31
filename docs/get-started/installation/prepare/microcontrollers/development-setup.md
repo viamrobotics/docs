@@ -15,7 +15,7 @@ aliases:
 
 {{% readfile "/static/include/micro-rdk.md" %}}
 
-## Get Started
+## Get started
 
 Follow these steps to install and build the micro-rdk on your ESP32 for development:
 
@@ -25,12 +25,12 @@ Follow these steps to install and build the micro-rdk on your ESP32 for developm
 
 {{% readfile "/static/include/micro-rdk-hardware.md" %}}
 
-### Software Requirements
+### Software requirements
 
 The micro-RDK is written in Rust.
 To be able to develop the micro-RDK on macOS and Linux systems, you must install the following software on your development machine:
 
-#### Install Dependencies
+#### Install dependencies
 
 {{< tabs >}}
 {{% tab name="Linux" %}}
@@ -149,7 +149,7 @@ brew install cmake ninja dfu-util
 {{% /tab %}}
 {{% /tabs %}}
 
-#### Install and Activate the ESP-IDF
+#### Install and activate the ESP-IDF
 
 Clone Viam's fork of the ESP-IDF, the development framework for Espressif SoCs (System-on-Chips) supported on Windows, Linux and macOS:
 
@@ -177,7 +177,7 @@ To avoid conflicts with other toolchains, adding this command to your `.bashrc` 
 Instead, save this command to run in any future terminal session where you need to activate the ESP-IDF development framework.
 {{< /alert >}}
 
-#### Install the Rust ESP Toolchain and Activate the ESP-RS Virtual Environment
+#### Install the Rust ESP toolchain and activate the ESP-RS virtual environment
 
 First, install the following tools with `cargo`:
 
@@ -215,9 +215,9 @@ Instead, save this command to run in any future terminal session where you need 
 {{% /tab %}}
 {{% /tabs %}}
 
-## Install the Micro-RDK
+## Install the micro-RDK
 
-### Create a New Machine
+### Create a new machine
 
 Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/fleet/machines/#add-a-new-machine) in your desired location.
 
@@ -237,7 +237,7 @@ Then, navigate to the **Config** tab.
 See [micro-RDK](/build/micro-rdk/) to get a list of supported models and instructions on how to configure them.
 Follow [this guide](/build/micro-rdk/board/esp32/) to configure an `esp32` board on your machine.
 
-### Generate a New Project from the Micro-RDK Template
+### Generate a new project from the micro-RDK template
 
 [Start Docker](https://docs.docker.com/config/daemon/start/) on your development machine.
 If you haven't already, complete Docker's [Linux post installation steps](https://docs.docker.com/engine/install/linux-postinstall/) to set up Docker to run whenever your system boots up.
@@ -260,7 +260,7 @@ To obtain this:
 
 {{% snippet "secret-share.md" %}}
 
-### Upload the Micro-RDK to your ESP32
+### Upload the micro-RDK to your ESP32
 
 Now, upload the project to connect to your ESP32 and remotely control it live on [the Viam app](https://app.viam.com):
 

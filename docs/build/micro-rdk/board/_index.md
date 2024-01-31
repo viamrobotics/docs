@@ -15,7 +15,7 @@ aliases:
 A board is the signal wire hub of a {{< glossary_tooltip term_id="machine" text="smart machine" >}}, with GPIO pins for transmitting signals between the machine's computer and its other components.
 For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Board Component](/components/board/).
 
-## Supported Models
+## Supported models
 
 For configuration information, click on the supported board model name:
 

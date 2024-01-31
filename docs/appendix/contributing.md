@@ -1,5 +1,5 @@
 ---
-title: "Contributing to the docs"
+title: "Contributing to the Docs"
 linkTitle: "Contributing to the docs"
 weight: 99
 type: "docs"
@@ -47,12 +47,12 @@ Where needed, we will link to supporting documentation but not provide supportin
 Use your judgment to determine when we need to explain more and when we need to link to supporting content.
 When in doubt, ask during review.
 
-## Project Structure
+## Project structure
 
 All documentation is in the [docs folder](https://github.com/viamrobotics/docs/tree/main/docs).
 For information about Hugo and how to develop locally, see the [README](https://github.com/viamrobotics/docs/blob/main/README.md).
 
-## Content Types
+## Content types
 
 When creating a new piece of content, decide which one of the four content types the content should be.
 Note this in a comment in the frontmatter of the file.
@@ -84,7 +84,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
 
   Information on potential ways to apply the concept (possibly linking to how-tos or containing how-tos).
 
-  ## Next Steps
+  ## Next steps
 
   Links to related content.
   ```
@@ -98,7 +98,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   {{% expand "Click to view template" %}}
 
   ```md
-  # Do this task
+  # Do This Task
 
   Description of task and considerations. Possibly containing further subsections.
 
@@ -183,7 +183,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
 
   {{% /expand %}}
 
-## Style Guide
+## Style guide
 
 All docs are written in [Hugo Markdown](https://www.markdownguide.org/tools/hugo/).
 Most Markdown formatting is supported.
@@ -192,7 +192,7 @@ Some additional formatting options are supported with [Hugo Shortcodes](https://
 
 We follow the [Rackspace Style Guide](https://web.archive.org/web/20200829151826/https://developer.rackspace.com/docs/style-guide/) with many rules encoded in Vale rules.
 
-### Vale Linting
+### Vale linting
 
 {{< alert title="Tip" color="tip" >}}
 We recommend you work in Visual Studio Code and install the [Vale extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server) to make use of the vale linter.
@@ -205,7 +205,7 @@ To run this check locally, follow the instructions in the [Vale Readme](https://
 
 We recommend you work in Visual Studio Code and install the [markdownlint extension](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint).
 
-### UI Elements
+### UI elements
 
 Use **bold** text for UI elements, such as tabs and buttons.
 
@@ -215,7 +215,7 @@ Use examples that resemble real data. For emails this could be `amanda@viam.com`
 
 When using placeholders in code examples, follow the [Google developer documentation style guide's rules for formatting placeholders](https://developers.google.com/style/placeholders).
 
-### Images and Screenshots
+### Images and screenshots
 
 Use screenshots in introductory materials and where the surrounding text is not enough to direct the reader. Be aware that screenshots tend to get outdated quickly and come with a maintenance burden.
 
@@ -291,7 +291,7 @@ You cannot directly use the `<img>` html tag for images in the assets folder bec
 If you really need to use html directly, place the image in the `static` folder.
 {{< /alert >}}
 
-### GIFs and Videos
+### GIFs and videos
 
 We encourage the use of GIFs and Videos.
 Our docs have two kinds of videos:
@@ -299,7 +299,7 @@ Our docs have two kinds of videos:
 - Regular videos with video controls and audio
 - GIF-like videos that do not have video controls or audio and function like GIFs
 
-#### Regular Videos
+#### Regular videos
 
 For regular videos that should use the video shortcode as follows:
 
@@ -545,9 +545,9 @@ The `2gif` commands only turn the first 5 seconds of a video into a low res gif.
 
 {{% /expand%}}
 
-## Formatting Guide
+## Formatting guide
 
-### Front Matter
+### Front matter
 
 Each file that generates a page in Hugo starts with front matter that looks like this:
 
@@ -565,7 +565,7 @@ description: "Instructions for building a line-following robot that uses a webca
 - The `description` gets used for previews.
 - The `weight` determines the ordering of pages in the side navigation bar.
 
-#### Prod/Draft/Future Pages
+#### Prod/Draft/Future pages
 
 Add `draft: true` to the Front Matter to set a page to Draft.
 You can commit and push the page and it won’t display in production.
@@ -608,7 +608,7 @@ This text will have additional information on hover for the
 word { {< glossary_tooltip term_id="smart-machine" text="smart machine" >} }.
 ```
 
-### Reusable Text Snippets
+### Reusable text snippets
 
 If you need to use the same text in multiple locations, for example when cautioning users to disconnect power before changing connections or providing a commonly used instruction set or procedure, you can use reusable snippets.
 
@@ -639,12 +639,12 @@ Section content before this line is contained in an included file: <file>/static
 - "codelang" highlighting (add codelang="language" to tab element).
   It's very ugly, needs css work, and is not recommended at this time.
 
-### Not Supported
+### Not supported
 
 - Footnotes
 - Expanders
 
-### Example Usage
+### Example usage
 
 ```md
 # remove spaces
@@ -673,7 +673,7 @@ Section content before this line is contained in an included file: <file>/static
 {{% /tab %}}
 {{< /tabs >}}
 
-### Code with Syntax Highlighting
+### Code with syntax highlighting
 
 Line numbering is off by default.
 
@@ -718,13 +718,13 @@ while (True):
     await asyncio.sleep(1)
 ```
 
-### Alert Shortcodes
+### Alert shortcodes
 
 {{< alert title="Important" color="note" >}}
 This is an alert.
 {{< /alert >}}
 
-#### How to use Notes, Cautions, and Warnings
+#### How to use notes, cautions, and warnings
 
 **Info/Tip**: Use to convey helpful information or clarification.
 They both use the same color.
@@ -769,7 +769,7 @@ This provides notices that a certain action or event could damage hardware or ca
 Use to notify the reader of information to avoid loss of life, personal injury, and health hazards.
 {{< /alert >}}
 
-### Using Expanders
+### Using expanders
 
 Expanders allow to you add long sections of code to your topic and hide them until the reader decides to view it.
 

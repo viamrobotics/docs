@@ -18,13 +18,13 @@ aliases:
 A power sensor is a device that reports measurements of the voltage, current, and power consumption in your machine's system.
 Integrate this component to monitor your power levels.
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/data/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your power sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your power sensor.
 
@@ -41,7 +41,7 @@ For configuration information, click on the model name:
 | [`ina226`](./ina226/) | INA226 power sensor; current and power monitor |
 | [`renogy`](./renogy/) | solar charge controller                        |
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:power_sensor" type="power_sensor">}}
 

@@ -1,5 +1,5 @@
 ---
-title: "Modernize a 1980s robot"
+title: "Modernize a 1980s Robot"
 linkTitle: "Modernize a 1980s Robot"
 type: "docs"
 webmSrc: "/tutorials/maiv/maiv_front.webm"

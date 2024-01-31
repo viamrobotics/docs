@@ -71,7 +71,7 @@ if __name__ == '__main__':
 
 Once you have instantiated a `DataClient`, you can run the following [API methods](#api) against the `DataClient` object (named `data_client` in the examples).
 
-## Find Part ID
+## Find part ID
 
 To find the ID of your machine part, navigate to its **Setup** tab in the [Viam app](https://app.viam.com).
 Keep architecture selection at default.

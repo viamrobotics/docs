@@ -105,7 +105,7 @@ From the SSH session on the TDA4VM board:
 
 {{< readfile "/static/include/install/install-linux.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/build/configure/" %}}

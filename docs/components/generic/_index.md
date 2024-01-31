@@ -34,7 +34,7 @@ If you want to use most of an existing API but need just a few other functions, 
 
 {{% /alert %}}
 
-## Supported Models
+## Supported models
 
 Before creating a new generic component, check whether one of the following [modular resources](#modular-resources) supports your component.
 
@@ -49,7 +49,7 @@ Model | Description
 ----- | -----------
 [`fake`](fake/) | A model used for testing, with no physical hardware.
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:generic" type="generic">}}
 

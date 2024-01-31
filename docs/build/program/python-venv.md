@@ -43,7 +43,7 @@ mkdir viam-python
 cd viam-python
 ```
 
-## Create and Activate a Virtual Environment
+## Create and activate a virtual environment
 
 In the project directory, create and activate a virtual environment for Python to run in.
 

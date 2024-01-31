@@ -1,5 +1,5 @@
 ---
-title: "Build a bedtime songs bot with a custom ML model"
+title: "Build a Bedtime Songs Bot with a Custom ML Model"
 linkTitle: "Bedtime Songs Bot"
 type: "docs"
 tags:

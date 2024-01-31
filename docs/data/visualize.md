@@ -87,7 +87,7 @@ While every third-party tool is different, you would generally query your data u
 
 See [Query your data](/data/query/#query) for examples.
 
-## Next Steps
+## Next steps
 
 For a detailed walkthrough of setting up a Grafana instance to visualize your machine's data, see the following tutorial:
 

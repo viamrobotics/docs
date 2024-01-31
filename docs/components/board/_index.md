@@ -29,7 +29,7 @@ Signaling is overseen by a computer running `viam-server` which allows you to co
 
 {{% figure src="/components/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
 
-## Supported Models
+## Supported models
 
 To use your board with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your board.
 
@@ -52,7 +52,7 @@ For configuration information, click on the model name:
 | [`customlinux`](customlinux/) | A model for other Linux boards. |
 | [`fake`](fake/) | A model used for testing, with no physical hardware |
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:board" type="board">}}
 
@@ -60,7 +60,7 @@ For configuration information, click on the model name:
 
 If you are using the micro-RDK, navigate to [Micro-RDK Board](/build/micro-rdk/board/) for supported model information.
 
-## Attribute Configuration
+## Attribute configuration
 
 Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) and [digital interrupts](#digital_interrupts) into your machine.
 
@@ -1657,7 +1657,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< snippet "social.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/tutorials/get-started/blink-an-led" %}}

@@ -46,7 +46,7 @@ You will need the following hardware components:
 1. Assorted jumper wires
 1. [Four 16mm or 20mm M3 screws](https://www.amazon.com/Cicidorai-M3-0-5-Button-Machine-Quantity/dp/B09TKP6C6B/ref=sr_1_9)
 
-### Tools and Other Materials
+### Tools and other materials
 
 You will also need the following tools and materials:
 
@@ -465,7 +465,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 Now your robot starts looking for your pet automatically once booted!
 
-## Full Code
+## Full code
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -543,7 +543,7 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
-## Next Steps
+## Next steps
 
 Take your smart pet feeder to the next level!
 You could try one of the following:
