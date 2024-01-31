@@ -10,7 +10,7 @@ aliases:
   - /program/run/
 ---
 
-After saving your [code sample](/build/program/#hello-world-the-code-sample-tab) and adding control logic with [Viam's SDKs](/build/program/apis/), run your program to control your Viam-connected machine.
+After saving your [code sample](/build/program/#hello-world-the-connect-tab) and adding control logic with [Viam's SDKs](/build/program/apis/), run your program to control your Viam-connected machine.
 
 ### Authentication
 
@@ -71,7 +71,7 @@ If the internet becomes unavailable to the machine or to your computer but a loc
 Your machines do not need to be connected to the Internet for you to be able to run code.
 As long as your machine is connected to the same LAN or WAN network as the device running the code, you can connect to it and run code.
 
-When you use the connection code from the [code sample tab](/build/program/#hello-world-the-code-sample-tab), that code establishes a [client session](/build/program/apis/sessions/) that automatically uses the [most efficient route](/build/program/connectivity/) to send commands to your machine.
+When you use the connection code from the [code sample tab](/build/program/#hello-world-the-connect-tab), that code establishes a [client session](/build/program/apis/sessions/) that automatically uses the [most efficient route](/build/program/connectivity/) to send commands to your machine.
 That means that when the device your code runs on is on the same network as your machine, even if internet is available, the connection will choose the most efficient route and connect over LAN or WAN.
 If you subsequently lose internet connectivity, but stay connected to LAN or WAN, the connection will thus remain.
 
@@ -84,7 +84,7 @@ Running everything on one machine is also convenient if you have a machine (for 
 {{<imgproc src="/build/program/on-robot.png" resize="800x" declaredimensions=true alt="A client running on a machine">}}
 
 The script you run on-machine is the same as the script you [run remotely](#run-code-remotely) or on a local network.
-When the connection code from the [code sample tab](/build/program/#hello-world-the-code-sample-tab) executes, it creates a [client session](/build/program/apis/sessions/) connected to your machine using the [most efficient route](/build/program/connectivity/).
+When the connection code from the [code sample tab](/build/program/#hello-world-the-connect-tab) executes, it creates a [client session](/build/program/apis/sessions/) connected to your machine using the [most efficient route](/build/program/connectivity/).
 Because the code is running on the same machine as `viam-server`, the favored route for commands is automatically over localhost.
 
 Install the appropriate programming language and [Viam SDK](/sdks/) on your machine and run a command to execute the program in the terminal of that machine instead of from a separate computer:

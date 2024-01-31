@@ -77,17 +77,16 @@ flutter pub add viam_sdk
 {{% /tab %}}
 {{< /tabs >}}
 
-## Hello world: the Code Sample tab
+## Hello world: the CONNECT tab
 
 Create a program in the language of your choice to connect to your machine and use methods built into the SDK's client API libraries to [interact with and control](/build/program/apis/) the {{< glossary_tooltip term_id="resource" text="resources" >}} on the machine.
 
 Start by navigating to your machine's page on [the Viam app](https://app.viam.com/robots).
-Select the **Code Sample** tab, select your preferred SDK, and copy the code generated for you.
-This code snippet imports all the necessary libraries to set up a connection with your machine and interface with its configured components and services.
+Select the **CONNECT** tab and **Code sample** page, select your preferred programming language, and copy the code generated for you from the corresponding SDK.
 
 Your boilerplate code sample should look similar to this:
 
-{{%expand "Click this to see example boilerplate code from the Code Sample tab" %}}
+{{%expand "Click this to see example boilerplate code from the CONNECT tab" %}}
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -276,8 +275,8 @@ Future<void> connectToViam() async {
 
 Save this file on your development machine with the file type of your preferred SDK.
 
-The sample code contains the required imports as well as the connect logic which establishes a connection for your client application to [communicate with](/internals/machine-to-machine-comms/) the machine's `viam-server` instance.
-This section of the boilerplate code contains your machine's address and a placeholder for the API key.
+This code sample contains the required imports and logic to establish a connection between your client application and your machine's `viam-server` instance and interface with its configured components and services.
+The connection section of the boilerplate code contains your machine's address and a placeholder for the API key.
 
 ### Authenticate
 
