@@ -16,10 +16,15 @@ The details of the model will be displayed like the following:
 {{<imgproc src="/ml/model-details.png" resize="800x" alt="ML model details card.">}}
 
 Click on the **_..._** in the upper-right corner to open the menu.
-Click **Delete** to delete the model.
 Click **Edit details** to edit the details of the model:
 
 {{<imgproc src="/ml/edit-model-details.png" resize="800x" alt="ML model details card editing menu.">}}
 
 Here, you can edit the **Description** of the model.
 Click **Update** to publish your changes.
+
+## Delete model
+
+Navigate to the model details page.
+Click on the **_..._** in the upper-right corner to open the menu.
+Click **Delete** to delete the model.

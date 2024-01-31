@@ -11,25 +11,10 @@ description: "Upload a Machine Learning model to Viam to use it with the ML Mode
 # SME: Steven B.
 ---
 
-## Upload an existing model to the registry
+Upload a new model to your organization with the option to share it in the [Viam registry](https://app.viam.com/registry).
+Or, upload a new version of a published model.
 
-Trained ML models are available in the [Viam registry](https://app.viam.com/registry) for public access.
-To add a model that you've trained to the [Viam registry](https://app.viam.com/registry) so that other users can deploy it onto their robots:
-
-1. On the [**DATA** tab](https://app.viam.com/data/view) in the Viam app, navigate to the **MODELS** subtab.
-   You'll see a list of all ML models you have access to.
-2. Open the menu on the right side of an ML model's row.
-
-{{<imgproc src="/ml/model-list.png" resize="1000x" alt="List of models displayed on MODELS subtab of DATA tab.">}}
-
-3. Then, click **Make public in Registry**.
-
-{{<imgproc src="/ml/publish-model.png" resize="600x" alt="Publish model to registry action card.">}}
-
-4. Add a short description.
-   This will help other users to understand how to use your model.
-5. Then, click **Publish model**.
-   Your model is now publicly visible in the [Viam registry](https://app.viam.com/registry).
+Also, [share a model from your organization](#make-an-existing-model-public-in-the-registry) with other users in the registry.
 
 ## Upload a new model or new version
 
@@ -60,7 +45,7 @@ Select **Next steps** to continue.
    This will help other users to understand how to use your model.
 
 Select **Upload model**.
-The model should now be visible on the **MODELS** subtab of the **DATA** tab in the [Viam app](https://app.viam.com) and available to [deploy on your machine](/ml/deploy/).
+The model is now visible on the **MODELS** subtab of the **DATA** tab in the [Viam app](https://app.viam.com) and available to [deploy on your machine](/ml/deploy/).
 Also, if you selected **Public**, it should be publicly visible in the [Viam registry](https://app.viam.com/registry).
 
 {{% /tab %}}
@@ -74,10 +59,49 @@ Also, if you selected **Public**, it should be publicly visible in the [Viam reg
 4. Add an updated `.txt` label file.
 5. Click **Upload model**.
 
-Your model is now replaced with the updated version.
+Your model is now updated.
+
+{{% alert title="Note" color="note" %}}
+
+If you [deploy a model](/ml/) to a machine, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the machine.
+If you upload a new version of that model, Viam will automatically deploy the new version to the machine and replace the old version.
+
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON machine configuration](/build/configure/#the-config-tab).
+
+You can get the version number from a specific model version by clicking on **COPY** on the model on the model page.
+The model package config looks like this:
+
+```json
+{
+  "package": "<model_id>/allblack",
+  "version": "YYYYMMDDHHMMSS",
+  "name": "<model_name>"
+}
+```
+
+{{% /alert %}}
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Make an existing model public in the registry
+
+To add a model that you've trained to the [Viam registry](https://app.viam.com/registry) so that other users can deploy it onto their robots:
+
+1. On the [**DATA** tab](https://app.viam.com/data/view) in the Viam app, navigate to the **MODELS** subtab.
+   You'll see a list of all ML models you have access to.
+2. Open the menu on the right side of an ML model's row.
+
+{{<imgproc src="/ml/model-list.png" resize="1000x" alt="List of models displayed on MODELS subtab of DATA tab.">}}
+
+3. Then, click **Make public in Registry**.
+
+{{<imgproc src="/ml/publish-model.png" resize="600x" alt="Publish model to registry action card.">}}
+
+4. Add a short description.
+   This will help other users to understand how to use your model.
+5. Then, click **Publish model**.
+   Your model is now publicly visible in the [Viam registry](https://app.viam.com/registry).
 
 ## Next steps
 
