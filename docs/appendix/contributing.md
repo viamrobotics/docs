@@ -98,7 +98,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   {{% expand "Click to view template" %}}
 
   ```md
-  # Do this task
+  # Do This Task
 
   Description of task and considerations. Possibly containing further subsections.
 
