@@ -16,7 +16,7 @@ cost: "0"
 ---
 
 <div class="td-max-width-on-larger-screens">
- <div class="alignleft center-if-small" style="max-width:250px; margin-right:40px">
+ <div class="alignleft center-if-small" style="max-width:250px">
   {{<gif webm_src="/tutorials/flutter-app/demo.webm" mp4_src="/tutorials/flutter-app/demo.mp4" alt="Rendering of the mobile app. Log in is clicked, then all Clint's locations are shown, Clint's Desk it clicked, all its smart machines are listed, and then desk-robot is clicked, showing a list of components and services belonging to that smart machine.">}}
   </div>
 </div>
