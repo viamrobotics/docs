@@ -51,6 +51,7 @@ For configuration information, click on the model name:
 | Model | Description |
 | ----- | ----------- |
 | [`wheeled`](wheeled/) | Mobile wheeled robot |
+| [`sensor-controlled`](sensor-controlled/) | A model that wraps other base models with feedback control from a movement sensor |
 | [`fake`](fake/) | A model used for testing, with no physical hardware |
 
 ### Modular Resources
