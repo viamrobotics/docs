@@ -1,5 +1,5 @@
 ---
-title: "Code your own modules to create modular resources"
+title: "Create a new module"
 linkTitle: "Create"
 weight: 20
 type: "docs"
@@ -11,154 +11,108 @@ tags:
     "modular resources",
     "components",
     "services",
+    "registry",
   ]
-description: "Use the Viam module system to implement modular resources that can be included in any Viam-powered machine."
+description: "Create a module to provide a new modular resource to your machine."
 aliases:
   - "/extend/modular-resources/create/"
   - "/modular-resources/create/"
 no_list: true
 ---
 
-Viam provides built-in support for a variety of different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}, but you can also add support for unsupported resources by creating a module.
-A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which add support for {{< glossary_tooltip term_id="resource" text="resource" >}} {{< glossary_tooltip term_id="type" text="types" >}} or {{< glossary_tooltip term_id="model" text="models" >}} that are not built into Viam.
+Viam provides built-in support for a variety of different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}, but you can add support for your own custom {{< glossary_tooltip term_id="resource" text="resources" >}} by creating a {{< glossary_tooltip term_id="module" text="module" >}}.
 
-You can browse existing modules in the [Viam Registry](/registry/#the-viam-registry) to find one that supports your custom hardware or software, or you can write your own module.
+A module provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, and is packaged in a manner that streamlines deployment to a Viam machine.
+Modules run alongside [`viam-server`](/get-started/installation/) as separate processes, communicating with `viam-server` over UNIX sockets.
+When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/build/program/apis/) with `viam-server`, making the new model available for use.
 
-Modules run alongside `viam-server` as separate processes, communicating with `viam-server` over UNIX sockets.
-When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and the associated [APIs](/build/program/apis/) with `viam-server`, making the new model available for use.
+You can search the [Viam Registry](https://app.viam.com/registry) and [deploy an existing module to your machine](/registry/configure/) in a few clicks if you find one that meets your needs.
+Or you can write your own module to address your specific use case, and either upload it to the Viam registry to share with others, or deploy it to your machine as a local module without uploading to the registry.
 
-In most cases, the {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} you create should be a new {{< glossary_tooltip term_id="model" text="model" >}} that implements an existing Viam [API](/build/program/apis/).
-For example, if you have a custom base, you can create a new base model that implements the `rdk:component:base` API.
+Follow the instructions below to learn how to write a new module using your preferred language and its corresponding [Viam SDK](/sdks/).
 
-## Find your reference files
+## Overview of a module
 
-Before you start coding a new resource model, follow these steps to find the appropriate source code as a reference for the methods you need to implement:
+Generally, to write a module, you:
 
-1. **Understand your model's client interface:**
+1. [Define a new resource model](#define-a-new-resource-model) to define all the capabilities of your model.
+1. [Write an entry point (main program) file](#write-an-entry-point-main-program-file) to serve as the central interface to those new capabilities.
+1. [Compile or package](#compile-or-package-your-module) the model definition file or files, main program file, and any supporting files into a single executable file (a module) that can be run by `viam-server`.
 
-   {{< tabs >}}
-   {{% tab name="Python" %}}
+While you can certainly combine the resource model definition and the main program code into a single file if desired (for example, a single `main.py` program that includes both the model definition and the `main()` program that uses it), this guide will use separate files for each.
 
-To create a new resource model, you need to implement your model's **client** interface in a file called `my_modular_resource.py`.
+Most modules extend an existing [component API](/build/program/apis/#component-apis) or [service API](/build/program/apis/#service-apis) to add support for a new type of that resource.
+For example, you could extend the [camera component API](/components/camera/#api) to support new image formats or a new type of camera, or extend the [ML model service API](/build/program/apis/#ml-model) to support a new machine learning (ML) model type beyond `tflite`.
 
-This interface defines how your model's server responds to API requests.
-
-To ensure the client interface you create returns the expected results, use the appropriate client interface defined in <file>components/\<resource-name\>/client.py</file> or <file>services/\<resource-name\>/client.py</file> in the [Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/) as a reference.
-
-For example, the `base` component client is defined in the [<file>components/base/client.py</file>](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/base/client.py) file.
-
-See [Valid APIs to implement in your model](#valid-apis-to-implement-in-your-model) for more information.
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-To create a new resource model, you need to implement your model's **client** interface in a file called `my_modular_resource.go`.
-
-This interface defines how your model's server responds to API requests.
-
-To ensure the client interface you create returns the expected results, use the appropriate client interface defined in <file>components/\<resource-name\>/client.go</file> or <file>services/\<resource-name\>/client.go</file> in the [Viam RDK](https://github.com/viamrobotics/rdk/blob/main/) as a reference.
-
-For example, the `base` component client is defined in the [<file>components/base/client.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go) file.
-
-See [Valid APIs to implement in your model](#valid-apis-to-implement-in-your-model) for more information.
-
-{{% /tab %}}
-{{% tab name="C++" %}}
-
-To create a new resource model, start by referencing the corresponding built-in resource's implementation in the [Viam C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/sdk).
-
-For example, if you are implementing a new custom `base` component model, reference the [<file>components/base/base.hpp</file>](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.hpp) implementation file to learn how the `BaseClient` class is implemented.
-
-You can create your own derivative class in a <file>.cpp</file>, such as <file>my_modular_resource.cpp</file>, and optionally define the implementation of that class in a <file>.hpp</file> header file, such as <file>my_modular_resource.hpp</file>.
-The example code in the following sections demonstrates an implementation using both files.
-
-See [Valid APIs to implement in your model](#valid-apis-to-implement-in-your-model) for more information.
-
-{{% /tab %}}
-{{< /tabs >}}
-
-1. **Prepare to Import Your Custom Model and Subtype's API:**
-
-   To prepare to import your custom model and chosen resource subtype's API into your main program and register them with your preferred SDK:
-
-   {{< tabs >}}
-   {{% tab name="Python" %}}
-
-Find the subtype API as defined in the relevant <file>components/\<resource-name\>/\<resource-name>\.py</file> or <file>services/\<resource-name\>/<resource-name>.py</file> file in the [Python SDK](https://github.com/viamrobotics/viam-python-sdk).
-
-For example, the `base` component API is defined in [<file>components/base/base.py</file>](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/base/base.py#L11).
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-Find the subtype API as defined in the relevant <file>components/\<resource-name\>/\<resource-name\>.go</file> or <file>services/\<resource-name\>/\<resource-name\>.go</file> file in the [RDK](https://github.com/viamrobotics/rdk).
-
-For example, the `base` component API is defined in [<file>components/base/base.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go#L37).
-
-{{% /tab %}}
-{{% tab name="C++" %}}
-
-Find the subtype API as defined in the relevant <file>components/\<resource-name\>/\<resource-name>\.hpp</file> or <file>services/\<resource-name\>/<resource-name>.hpp</file> implementation (header) file in the [C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk/).
-
-For example, the `base` component API is defined in [<file>components/base/base.hpp</file>](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.hpp).
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### Valid APIs to implement in your model
-
-When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing {{< glossary_tooltip term_id="component" text="component" >}}, valid [APIs](/build/program/apis/) always have the following parameters:
-
-- `namespace`: `rdk`
-- `type`: `component`
-- `subtype`: any one of [these component proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/component), for example `motor`
-
-When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing [service](/services/), valid [APIs](/build/program/apis/) always have the following parameters:
-
-- `namespace`: `rdk`
-- `type`: `service`
-- `subtype`: any one of [these service proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/service), for example `navigation`
-
-#### Unique cases
-
-If you are using unique hardware that does not already have an [appropriate API](/build/program/apis/#component-apis) defined to support it, you can use the [generic API](/components/generic/) to add support for that unique hardware type to your machine.
-
-Some use cases may require you to define a new API, or to deploy custom components using a server on a remote part.
-For more information, see [Advanced Modular Resources](/registry/advanced/).
-
-## Create a custom module
-
-A custom module wraps one or more {{< glossary_tooltip term_id="model" text="models" >}}.
-To create a custom module, follow these steps:
-
-1. [Code a new resource model](#code-a-new-resource-model) server.
-2. [Code a main program](#code-a-main-entry-point-program).
-3. [Compile or package](#prepare-the-module-for-execution) the module into a single executable.
-
-### Code a new resource model
-
-{{% alert title="Naming your model" color="tip" %}}
-
-Use the naming schema: `namespace:repo-name:name`.
-
-For more information see [Naming your model](/registry/upload/#naming-your-model-namespacerepo-namename).
-
+{{% alert title=Note color="note" %}}
+If you want to write a module to extend support to a new type of component that is relatively unique, and doesn't readily correspond to an existing [built-in component API](/build/program/apis/#component-apis), consider using the [generic API](/components/generic/) with your module instead of extending an existing API.
+Most module use cases, however, benefit from extending an existing API, as covered below.
 {{% /alert %}}
+
+## Define a new resource model
+
+### Name your new resource model
+
+A resource model is identified by a unique name, often called the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, using the format: `namespace:repo-name:model-name`, where:
+
+- `namespace` is the [namespace of your organization](/fleet/organizations/#create-a-namespace-for-your-organization).
+- `repo-name` is the code repository (GitHub repo) that houses your module code.
+- `model-name` is the name of the new resource model that your module will provide.
+
+For example, if your organization namespace is `acme`, and you have written a new base implementation named `mybase` which you have pushed to a repository named `my-custom-base-repo`, you would use the namespace `acme:my-custom-base-repo:mybase` for your model.
+
+Determine the model name you want to use based on these requirements, then proceed to the next section.
+
+If you do not intend to [upload your module](/registry/upload/) to the [Viam registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
+
+See [Naming your model](/registry/#naming-your-model-namespacerepo-namename) for more information.
+
+### Write your new resource model definition
+
+Follow the instructions below to define the capabilities provided by your model, for the language you are using to write your module code:
 
 {{% alert title="Note: Pin numbers" color="note" %}}
 
-If your module references {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}, please use physical board pin numbers, _not_ GPIO (BCM) numbers, to maintain consistency across {{< glossary_tooltip term_id="resource" text="resources" >}} from different sources.
+If your module references {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}, you should use physical board pin numbers, _not_ GPIO (BCM) numbers, to maintain consistency across {{< glossary_tooltip term_id="resource" text="resources" >}} from different sources.
 
 {{% /alert %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Your new resource model must implement all the methods that the Viam RDK requires, and should match the built-in {{< glossary_tooltip term_id="subtype" text="subtype" >}} API, like [`rdk:component:base`](https://python.viam.dev/autoapi/viam/components/base/index.html).
+First, inspect the built-in class provided by the resource API that you are extending.
 
-Create a folder for your module and save your code as a file named <file>my_modular_resource.py</file> inside.
+For example, if you wanted to add support for a new [base component](/components/base/) to Viam (the component that represents the central physical platform of your machine, to which all other components are connected), you would start by looking at the built-in `Base` component class, which is defined in the [Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk) in the following file:
 
-The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) (`rdk:components:base`) as a new model, `"mybase"`, using the model family `acme:demo:mybase`.
+<!-- prettier-ignore -->
+| Resource Model File | Description |
+| ------------------- | ----------- |
+| [src/viam/components/base/base.py](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/base/base.py) | Defines the built-in `Base` class, which includes several built-in methods such as `move_straight()`. |
+
+{{% alert title="Tip" color="tip" %}}
+You can view the other built-in component classes in similar fashion.
+For example, the `Camera` class is defined in [camera.py](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/camera/camera.py) and the `Sensor` class is defined in [sensor.py](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/sensor/sensor.py).
+The same applies to service APIs.
+For example, the `MLModel` class for the ML Model service is defined in [mlmodel.py](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/services/mlmodel/mlmodel.py).
+{{% /alert %}}
+
+Take note of the methods defined as part of the class API, such as `move_straight()` for the `Base` class.
+Your new resource model must either:
+
+- implement all of the methods that the corresponding resource API provides, or
+- explicitly raise a `NotImplementedError()` in the body of functions you do not want to implement or put `pass`.
+
+Otherwise, your new class will not instantiate.
+
+Next, create a file that will define your new resource model.
+This file will inherit from the existing class for your resource type, implement - or raise a `NotImplementedError()` for - each built-in method for that class, and define any new functionality you want to include as part of your model.
+
+For example, the following file, `my_base.py`:
+
+- defines a new model `acme:my-custom-base-repo:mybase` by implementing a new `MyBase` class, which inherits from the built-in class `Base`.
+- defines a new constructor `new_base()` and a new method `validate_config()`.
+- does not implement several built-in methods, including `get_properties()` and `set_velocity()`, but instead raises a `NotImplementedError` error in the body of those functions.
+  This prevents these methods from being used by new base components that use this modular resource, but meets the requirement that all built-in methods either be defined or raise a `NotImplementedError()` error, to ensure that the new `MyBase` class successfully instantiates.
 
 <details>
   <summary>Click to view sample code for <file>my_base.py</file></summary>
@@ -196,10 +150,11 @@ class MyBase(Base, Reconfigurable):
     ``resource.types.ResourceCreator`` type required for all models.
     """
 
-    # Here is where we define our new model's colon-delimited-triplet
-    # (acme:demo:mybase) acme = namespace, demo = repo-name,
-    # mybase = model name.
-    MODEL: ClassVar[Model] = Model(ModelFamily("acme", "demo"), "mybase")
+    # Here is where we define our new model's colon-delimited-triplet:
+    # acme:my-custom-base-repo:mybase
+    # acme = namespace, my-custom-base-repo = repo-name, mybase = model name.
+    MODEL: ClassVar[Model] = Model(
+        ModelFamily("acme", "my-custom-base-repo"), "mybase")
 
     def __init__(self, name: str, left: str, right: str):
         super().__init__(name, left, right)
@@ -330,16 +285,52 @@ class MyBase(Base, Reconfigurable):
 </details>
 <br>
 
-Additional example modules are available in the [Python SDK GitHub repository](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples).
+When implementing built-in methods from the Viam Python SDK in your model, be sure your implementation of those methods returns any values designated in the built-in function's return signature, typed correctly.
+For example, the `is_moving()` implementation in the example code above returns a `bool` value, which matches the return value of the built-in `is_moving()` function as defined in the Viam Python SDK in the file [`base.py`](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/base/base.py).
+
+For more information on the base component API methods used in this example, see the following resources:
+
+- [Python SDK documentation for the `Base` class](https://python.viam.dev/autoapi/viam/components/base/index.html)
+- [Base API methods](https://docs.viam.com/components/base/#api)
+
+You can find additional Python example modules in the [Python SDK `examples` directory](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples).
 
 {{% /tab %}}
 {{% tab name="Go"%}}
 
-Your new resource model must implement all the methods that the Viam RDK requires, and should match the built-in {{< glossary_tooltip term_id="subtype" text="subtype" >}} API, like [`rdk:component:base`](https://pkg.go.dev/go.viam.com/rdk/components/base#pkg-functions).
+First, inspect the built-in package provided by the resource API that you are extending.
 
-Create a folder for your module and save your code as a file named <file>my_modular_resource.go</file> inside.
+For example, if you wanted to add support for a new [base component](/components/base/) to Viam (the component that represents the central physical platform of your machine, to which all other components are connected), you would start by looking at the built-in `base` component package, which is defined in the [Viam Go SDK](https://github.com/viamrobotics/rdk/) in the following file:
 
-The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) (`rdk:components:base`) as a new {{< glossary_tooltip term_id="model" text="model" >}}, `"mybase"`, using the model family `acme:demo:mybase`.
+<!-- prettier-ignore -->
+| Resource Model File | Description |
+| ------------------- | ----------- |
+| [components/base/base.go](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go) | Defines the built-in `base` package, which includes several built-in methods such as `MoveStraight()`. |
+
+{{% alert title="Tip" color="tip" %}}
+You can view the other built-in component packages in similar fashion.
+For example, the `camera` package is defined in [camera.go](https://github.com/viamrobotics/rdk/blob/main/components/camera/camera.go) and the `sensor` package is defined in [sensor.go](https://github.com/viamrobotics/rdk/blob/main/components/sensor/sensor.go).
+The same applies to service APIs.
+For example, the `mlmodel` package for the ML Model service is defined in [mlmodel.go](https://github.com/viamrobotics/rdk/blob/main/services/mlmodel/mlmodel.go).
+{{% /alert %}}
+
+Take note of the methods defined as part of the package API, such as `MoveStraight()` for the `base` package.
+Your new resource model must either:
+
+- implement all of the methods that the corresponding resource API provides, or
+- explicitly return an `errUnimplemented` error in the body of functions you do not want to implement.
+
+Otherwise, your new package will not instantiate.
+
+Next, create a file that will define your new resource model.
+This file will inherit from the existing package for your resource type, implement - or return an `errUnimplemented` error for - each built-in method for that package, and define any new functionality you want to include as part of your model.
+
+For example, the following file, `mybase.go`:
+
+- defines a new model `acme:my-custom-base-repo:mybase` by implementing a new `mybase` package, which inherits from the built-in package `base`.
+- defines a new constructor `newBase()` and a new method `Validate()`.
+- does not implement several built-in methods, including `MoveStraight()` and `SetVelocity()`, but instead returns an `errUnimplemented` error in the body of those methods.
+  This prevents these methods from being used by new base components that use this modular resource, but meets the requirement that all built-in methods either be defined or return an `errUnimplemented` error, to ensure that the new `mybase` package successfully instantiates.
 
 <details>
   <summary>Click to view sample code for <file>mybase.go</file></summary>
@@ -367,10 +358,10 @@ import (
     "go.viam.com/rdk/spatialmath"
 )
 
-// Here is where we define your new model's colon-delimited-triplet (acme:demo:mybase)
-// acme = namespace, demo = repo-name, mybase = model name.
+// Here is where we define your new model's colon-delimited-triplet (acme:my-custom-base-repo:mybase)
+// acme = namespace, my-custom-base-repo = repo-name, mybase = model name.
 var (
-    Model            = resource.NewModel("acme", "demo", "mybase")
+    Model            = resource.NewModel("acme", "my-custom-base-repo", "mybase")
     errUnimplemented = errors.New("unimplemented")
 )
 
@@ -444,7 +435,7 @@ type Config struct {
 // this Validate checks if the left and right motors exist for the module's base model.
 func (cfg *Config) Validate(path string) ([]string, error) {
     // check if the attribute fields for the right and left motors are non-empty
-    // this makes them reuqired for the model to successfully build
+    // this makes them required for the model to successfully build
     if cfg.LeftMotor == "" {
         return nil, fmt.Errorf(`expected "motorL" attribute for mybase %q`, path)
     }
@@ -535,21 +526,117 @@ func (b *myBase) Close(ctx context.Context) error {
 </details>
 <br>
 
-The code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available in the [in the RDK](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
-Additional examples are available in the [examples directory of the RDK](https://github.com/viamrobotics/rdk/blob/main/examples/).
+When implementing built-in methods from the Viam Go SDK in your model, be sure your implementation of those methods returns any values designated in the built-in method's return signature, typed correctly.
+For example, the `SetPower()` implementation in the example code above returns a `multierr` value (as provided by the [`multierr` package](https://pkg.go.dev/go.uber.org/multierr)), which allows for transparently combining multiple Go `error` return values together.
+This matches the `error` return type of the built-in `SetPower()` method as defined in the Viam Go SDK in the file [`base.go`](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go).
+
+For more information on the base component API methods used in this example, see the following resources:
+
+- [Go SDK documentation for the `base` package](https://pkg.go.dev/go.viam.com/rdk/components/base#pkg-functions)
+- [Base API methods](https://docs.viam.com/components/base/#api)
+
+You can find additional Go example modules in the [Go SDK `examples` directory](https://github.com/viamrobotics/rdk/blob/main/examples/).
 
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-Your new resource model must implement all the methods that the Viam RDK requires, and should match the built-in {{< glossary_tooltip term_id="subtype" text="subtype" >}} API, like [`rdk:component:base`](https://cpp.viam.dev/classviam_1_1sdk_1_1Base.html).
+First, inspect the built-in class provided by the resource API that you are extending.
+In the C++ SDK, all built-in classes are abstract classes.
 
-Create a folder for your module and save your code as a file named <file>my_modular_resource.cpp</file> inside.
+For example, if you wanted to add support for a new [base component](/components/base/) to Viam (the component that represents the central physical platform of your machine, to which all other components are connected), you would start by looking at the built-in `Base` component class, which is defined in the [Viam C++ SDK](https://cpp.viam.dev/) in the following files:
 
-The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) (`rdk:component:base`) as a new model, `"MyBase"`.
-The `my_base.cpp` file defines the specific functionality of the module, while the `my_base.hpp` file defines the implementation of that functionality.
+<!-- prettier-ignore -->
+| Resource Model File | Description |
+| ------------------- | ----------- |
+| [components/base/base.hpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.hpp) | Defines the API of the built-in `Base` class, which includes the declaration of several purely virtual built-in functions such as `move_straight()`. |
+| [components/base/base.cpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.cpp) | Provides implementations of the non-purely virtual functionality defined in `base.hpp`. |
+
+{{% alert title="Tip" color="tip" %}}
+You can view the other built-in component classes in similar fashion.
+For example, the API of the built-in `Camera` class is defined in [camera.hpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/camera/camera.hpp) and its non-purely virtual functions are declared in [camera.cpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/camera/camera.cpp), while the API of the built-in `Sensor` class is defined in [sensor.hpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/sensor/sensor.hpp) and its non-purely virtual functions are declared in [sensor.cpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/sensor/sensor.cpp).
+The same applies to service APIs.
+For example, the API of the built-in `MLModelService` class for the ML Model service is defined in [mlmodel.hpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/services/mlmodel/mlmodel.hpp) and its non-purely virtual functions declared in [mlmodel.cpp](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/services/mlmodel/mlmodel.cpp).
+{{% /alert %}}
+
+Take note of the functions defined as part of the class API, such as `move_straight()` for the `Base` class.
+Your new resource model must either:
+
+- define all _pure virtual methods_ that the corresponding resource API provides, or
+- explicitly `throw` a `runtime_error` in the body of functions you do not want to implement.
+
+Otherwise, your new class will not instantiate.
+For example, if your model implements the `base` class, you would either need to implement the [`move_straight()` virtual method](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.hpp#L72), or `throw` a `runtime_error` in the body of that function.
+However, you would _not_ need to implement the [`resource_registration()`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.hpp#L56) function, as it is not a virtual method.
+
+Next, create your header file (`.hpp`) and source file (`.cpp`), which together define your new resource model.
+The header file defines the API of your class, and includes the declaration of any purely virtual functions, while the source file includes implementations of the functionality of your class.
+
+For example, the files below define the new `MyBase` class and its constituent functions:
+
+- The `my_base.hpp` header file defines the API of the `MyBase` class, which inherits from the built-in `Base` class.
+  It defines a new method `validate()`, but does not implement several built-in functions, including `move_straight()` and `set_velocity()`, instead it raises a `runtime_error` in the body of those functions.
+  This prevents these functions from being used by new base components that use this modular resource, but meets the requirement that all built-in functions either be defined or `throw` a `runtime_error` error, to ensure that the new `MyBase` class successfully instantiates.
+- The `my_base.cpp` source file contains the function and object definitions used by the `MyBase` class.
+
+Note that the model triplet itself, `acme:my-custom-base-repo:mybase` in this example, is defined in the entry point (main program) file `main.cpp`, which is described in the next section.
 
 <details>
-  <summary>Click to view sample code for <file>my_base.cpp</file></summary>
+  <summary>Click to view sample code for the <file>my_base.hpp</file> header file</summary>
+
+```cpp {class="line-numbers linkable-line-numbers"}
+#pragma once
+
+#include <viam/sdk/components/base/base.hpp>
+#include <viam/sdk/components/component.hpp>
+#include <viam/sdk/components/motor/motor.hpp>
+#include <viam/sdk/config/resource.hpp>
+#include <viam/sdk/resource/resource.hpp>
+
+using namespace viam::sdk;
+
+// `MyBase` inherits from the `Base` class defined in the Viam C++ SDK and
+// implements some of the relevant methods along with `reconfigure`. It also
+// specifies a static `validate` method that checks configuration validity.
+class MyBase : public Base {
+   public:
+    MyBase(Dependencies deps, ResourceConfig cfg) : Base(cfg.name()) {
+        this->reconfigure(deps, cfg);
+    };
+    void reconfigure(Dependencies deps, ResourceConfig cfg) override;
+    static std::vector<std::string> validate(ResourceConfig cfg);
+
+    bool is_moving() override;
+    void stop(const AttributeMap& extra) override;
+    void set_power(const Vector3& linear,
+                   const Vector3& angular,
+                   const AttributeMap& extra) override;
+
+    AttributeMap do_command(const AttributeMap& command) override;
+    std::vector<GeometryConfig> get_geometries(const AttributeMap& extra) override;
+    Base::properties get_properties(const AttributeMap& extra) override;
+
+    void move_straight(int64_t distance_mm, double mm_per_sec, const AttributeMap& extra) override {
+        throw std::runtime_error("move_straight unimplemented");
+    }
+    void spin(double angle_deg, double degs_per_sec, const AttributeMap& extra) override {
+        throw std::runtime_error("spin unimplemented");
+    }
+    void set_velocity(const Vector3& linear,
+                      const Vector3& angular,
+                      const AttributeMap& extra) override {
+        throw std::runtime_error("set_velocity unimplemented");
+    }
+
+   private:
+    std::shared_ptr<Motor> left_;
+    std::shared_ptr<Motor> right_;
+};
+```
+
+</details>
+<br>
+<details>
+  <summary>Click to view sample code for the <file>my_base.cpp</file> source file</summary>
 
 ```cpp {class="line-numbers linkable-line-numbers"}
 #include "my_base.hpp"
@@ -679,77 +766,37 @@ Base::properties MyBase::get_properties(const AttributeMap& extra) {
 
 </details>
 <br>
-<details>
-  <summary>Click to view sample code for the <file>my_base.hpp</file> header file</summary>
 
-```cpp {class="line-numbers linkable-line-numbers"}
-#pragma once
+When implementing built-in functions from the Viam C++ SDK in your model, be sure your implementation of those functions returns any values designated in the built-in function's return signature, typed correctly.
+For example, the `set_power()` implementation in the example code above returns three values of type `Vector3`, `Vector3`, `AttributeMap`, which matches the return values of the built-in `set_power()` function as defined in the Viam C++ SDK in the file [`base.hpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.hpp).
 
-#include <viam/sdk/components/base/base.hpp>
-#include <viam/sdk/components/component.hpp>
-#include <viam/sdk/components/motor/motor.hpp>
-#include <viam/sdk/config/resource.hpp>
-#include <viam/sdk/resource/resource.hpp>
+For more information on the base component API methods used in these examples, see the following resources:
 
-using namespace viam::sdk;
+- [C++ SDK documentation for the `Base` class](https://cpp.viam.dev/classviam_1_1sdk_1_1Base.html)
+- [Base API methods](https://docs.viam.com/components/base/#api)
 
-// `MyBase` inherits from the `Base` class defined in the viam C++ SDK and
-// implements some of the relevant methods along with `reconfigure`. It also
-// specifies a static `validate` method that checks config validity.
-class MyBase : public Base {
-   public:
-    MyBase(Dependencies deps, ResourceConfig cfg) : Base(cfg.name()) {
-        this->reconfigure(deps, cfg);
-    };
-    void reconfigure(Dependencies deps, ResourceConfig cfg) override;
-    static std::vector<std::string> validate(ResourceConfig cfg);
-
-    bool is_moving() override;
-    void stop(const AttributeMap& extra) override;
-    void set_power(const Vector3& linear,
-                   const Vector3& angular,
-                   const AttributeMap& extra) override;
-
-    AttributeMap do_command(const AttributeMap& command) override;
-    std::vector<GeometryConfig> get_geometries(const AttributeMap& extra) override;
-    Base::properties get_properties(const AttributeMap& extra) override;
-
-    void move_straight(int64_t distance_mm, double mm_per_sec, const AttributeMap& extra) override {
-        throw std::runtime_error("move_straight unimplemented");
-    }
-    void spin(double angle_deg, double degs_per_sec, const AttributeMap& extra) override {
-        throw std::runtime_error("spin unimplemented");
-    }
-    void set_velocity(const Vector3& linear,
-                      const Vector3& angular,
-                      const AttributeMap& extra) override {
-        throw std::runtime_error("set_velocity unimplemented");
-    }
-
-   private:
-    std::shared_ptr<Motor> left_;
-    std::shared_ptr<Motor> right_;
-};
-```
-
-</details>
-<br>
-
-Additional example modules are available in the [C++ SDK GitHub repository](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/modules/).
+You can find additional C++ example modules in the [C++ SDK `examples` directory](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/modules/).
 
 {{% /tab %}}
 {{< /tabs >}}
 
-### Code a main entry point program
+## Write an entry point (main program) file
+
+A main entry point file starts the module, and adds the resource model.
+
+Follow the instructions below for the language you are using to write your module code:
 
 {{< tabs name="Sample SDK Main Program Code">}}
 {{% tab name="Python"%}}
 
-The main program starts the module.
-<file>main.py</file> is the module's entry point file.
+Create a <file>main.py</file> file to serve as the module's entry point file, which:
 
-Import your custom model and API into the main program and register them with the Python SDK.
-When executed, the main program registers the `mybase` custom model and API helper functions with the Python SDK and creates and starts the new module.
+- imports the custom model
+- defines a `main()` function that registers the model with the Python SDK
+- creates and starts the module
+
+For example, the following `main.py` file serves as the entry point file for the `MyBase` custom model.
+It imports the `MyBase` model from the `my_base.py` file that provides it, and defines a `main()` function that registers it.
 
 <details>
   <summary>Click to view sample code for <file>main.py</file></summary>
@@ -784,25 +831,17 @@ if __name__ == "__main__":
 
 </details>
 
-{{% alert title="Important" color="note" %}}
-
-You must define all functions belonging to a built-in resource subtype's API if defining a new model.
-Otherwise, the class will not instantiate.
-
-If you do not wish to implement all methods, raise a `NotImplementedError()` in the body of functions you do not want to implement or put `pass`.
-
-Additionally, return any values designated in the function's return signature, typed correctly.
-
-{{% /alert %}}
-
 {{% /tab %}}
 {{% tab name="Go"%}}
 
-The main program starts the module.
-<file>main.go</file> is the module's entry point file.
+Create a <file>main.go</file> file to serve as the module's entry point file, which:
 
-Import your custom model and API into the main program and register them with the RDK.
-When executed, the main program registers the `mybase` custom model and API helper functions with the Python SDK and creates and starts the new module.
+- imports the custom model
+- defines a `main()` function that registers the model with the Viam Go SDK
+- creates and starts the module
+
+For example, the following `main.go` file serves as the entry point file for the `mybase` custom model.
+It imports the `mybase` model from the `my_base.go` file that provides it, and defines a `main()` function that registers it.
 
 <details>
   <summary>Click to view sample code for <file>main.go</file></summary>
@@ -819,14 +858,16 @@ import (
     "go.viam.com/rdk/module"
     "go.viam.com/utils"
 
-    // NOTE: You must update the following line to import your local package "mybase"
+    // Import your local package "mybase"
+    // NOTE: Update this path if your custom resource is in a different location,
+    // or has a different name:
     "go.viam.com/rdk/examples/customresources/models/mybase"
 )
 
 func main() {
     // NewLoggerFromArgs will create a logging.Logger at "DebugLevel" if
     // "--log-level=debug" is an argument in os.Args and at "InfoLevel" otherwise.
-    utils.ContextualMain(mainWithArgs, module.NewLoggerFromArgs("yourmodule"))
+    utils.ContextualMain(mainWithArgs, module.NewLoggerFromArgs("mybase"))
 }
 
 func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (err error) {
@@ -854,25 +895,17 @@ func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (er
 
 </details>
 
-{{% alert title="Important" color="note" %}}
-
-You must define all functions belonging to a built-in resource subtype's API if defining a new model.
-Otherwise, the class will not instantiate.
-
-If you do not wish to implement all methods, raise an `errUnimplemented` error for the functions you do not want to implement.
-
-Additionally, return any values designated in the function's return signature, typed correctly.
-
-{{% /alert %}}
-
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-The main program starts the module.
-<file>main.cpp</file> is the module's entry point file.
+Create a <file>main.cpp</file> file to serve as the module's entry point file, which:
 
-Import your custom model and API into the main program and register them with the C++ SDK.
-When executed, the main program registers the `MyBase` custom model custom model and API helper functions with the C++ SDK, using the model family `acme:demo:mybase`, and creates and starts the new module.
+- imports the custom model implementation and definitions
+- includes a `main()` function that registers the model with the Viam C++ SDK
+- creates and starts the module
+
+For example, the following `main.cpp` file serves as the entry point file for the `mybase` custom model.
+It imports the `mybase` model implementation from the `my_base.hpp` file that provides it, declares the model triplet `acme:my-custom-base-repo:mybase`, and defines a `main()` function that registers it.
 
 <details>
   <summary>Click to view sample code for <file>main.cpp</file></summary>
@@ -905,7 +938,7 @@ using namespace viam::sdk;
 
 int main(int argc, char** argv) {
     API base_api = Base::static_api();
-    Model mybase_model("acme", "demo", "mybase");
+    Model mybase_model("acme", "my-custom-base-repo", "mybase");
 
     std::shared_ptr<ModelRegistration> mybase_mr = std::make_shared<ModelRegistration>(
         base_api,
@@ -923,228 +956,21 @@ int main(int argc, char** argv) {
 
 </details>
 
-{{% alert title="Important" color="note" %}}
-
-You must define all _pure virtual methods_ belonging to a built-in resource subtype's API if defining a new model.
-Otherwise, the class will not instantiate.
-For example, you would need to implement the [`move_straight()` virtual method](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.hpp#L72) for the `base` component, but you would not need to implement [`resource_registration()`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.hpp#L56).
-
-If you do not wish to implement all methods, `throw` a `runtime_error` in the body of functions you do not want to implement.
-
-Additionally, return any values designated in the function's return signature, typed correctly.
-
-{{% /alert %}}
-
 {{% /tab %}}
 {{< /tabs >}}
 
-### Prepare the module for execution
-
-To [add a module](/registry/configure/) to the configuration of your machine, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that:
-
-- runs your module when executed,
-- takes a local socket as a command line argument, and
-- exits cleanly when sent a termination signal.
-
-Your options for completing this step are flexible, as this file does not need to be in raw binary format.
-
-{{% tabs %}}
-{{% tab name="Python: venv (recommended)" %}}
-
-Create and save a new shell script (<file>.sh</file>) that runs your module at your entry point (main program) file.
-
-Make sure to [prepare a Python virtual environment](/build/program/python-venv/) in the directory your module is in to ensure your module has access to any required libraries:
-
-1. Create a `requirements.txt` file containing a list of all the dependencies your module relies on.
-   For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) is installed:
-
-   ```sh { class="command-line" data-prompt="$"}
-   viam-sdk
-   ```
-
-   Add additional dependencies as needed.
-   See the [pip `requirements.txt` file documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more information.
-
-2. Add a shell script that creates a new virtual environment, installs the dependencies listed in `requirements.txt`, and runs the module entry point file `main.py`:
-
-   ```sh { class="command-line" data-prompt="$"}
-   #!/bin/sh
-   cd `dirname $0`
-
-   # Create a virtual environment to run our code
-   VENV_NAME="venv"
-   PYTHON="$VENV_NAME/bin/python"
-
-   python3 -m venv $VENV_NAME
-   $PYTHON -m pip install -r requirements.txt -U # remove -U if viam-sdk should not be upgraded whenever possible
-
-   # Be sure to use `exec` so that termination signals reach the python process,
-   # or handle forwarding termination signals manually
-   exec $PYTHON <your-src-dir-if-inside>/main.py $@
-   ```
-
-   To make your shell script executable, run the following command in your terminal:
-
-   ```sh { class="command-line" data-prompt="$"}
-   sudo chmod +x <your-file-path-to>/<run.sh>
-   ```
-
-{{% /tab %}}
-{{% tab name="Python: nuitka" %}}
-
-Install a [supported C compiler](https://github.com/Nuitka/Nuitka#c-compiler) on your machine.
-Make sure to [prepare a Python virtual environment](/build/program/python-venv/) in the directory your module is in to ensure your module has access to any required libraries.
-Compile your module as follows:
-
-1. Create a `requirements.txt` file containing a list of all the dependencies your module relies on.
-   For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) and Nuitka (`nuitka`) are installed:
-
-   ```sh { class="command-line" data-prompt="$"}
-   viam-sdk
-   nuitka
-   ```
-
-   Add additional dependencies as needed.
-
-2. After installing dependencies in your virtual environment, compile your module with the following command:
-
-   ```sh { class="command-line" data-prompt="$"}
-   python -m nuitka --onefile src/main.py
-   ```
-
-   Any data files you want to include you must specify through a CLI option as follows:
-
-   ```sh { class="command-line" data-prompt="$"}
-   python -m nuitka --onefile --include-data-files=src/arm/my_arm_kinematics.json=src/arm/my_arm_kinematics.json src/main.py
-   ```
-
-   No relative imports (imports starting with `.`) will work with this option.
-   In addition, no cross compiling is allowed.
-   You have to compile on your target architecture.
-
-{{% /tab %}}
-{{% tab name="Python: pyinstaller" %}}
-
-Make sure to [prepare a Python virtual environment](/build/program/python-venv/) in the directory your module is so your module has access to any required libraries.
-Compile your module as follows:
-
-1. Create a `requirements.txt` file containing a list of all the dependencies your module relies on.
-   For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`), PyInstaller (`pyinstaller`), and the Google API Python client (`google-api-python-client`) are installed:
-
-   ```sh { class="command-line" data-prompt="$"}
-   viam-sdk
-   pyinstaller
-   google-api-python-client
-   ```
-
-   Add additional dependencies as needed.
-
-2. Add the Google API python client as a hidden import when compiling your module.
-   After installing the required dependencies in your virtual environment, compile your module as follows:
-
-   ```sh { class="command-line" data-prompt="$"}
-   python -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-   ```
-
-   Any data files you want to include you must specify through a CLI option as follows:
-
-   ```sh { class="command-line" data-prompt="$"}
-   python -m PyInstaller --onefile --hidden-import="googleapiclient" --add-data src/arm/my_arm_kinematics.json:src/arm/ src/main.py
-   ```
-
-   No relative imports (imports starting with `.`) will work with this option.
-   In addition, no cross compiling is allowed.
-   You have to compile on your target architecture.
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-Use Go to [compile](https://pkg.go.dev/cmd/go#hdr-Compile_packages_and_dependencies) and obtain a single executable for your module:
-
-- Navigate to your module directory in your terminal.
-- Run `go build` to compile your entry point (main program) file <file>main.go</file> and all other <file>.go</file> files in the directory, building your module and all dependencies into a single executable file.
-- Run `ls` in your module directory to find the executable, which should have the same name as the module directory.
-
-<file>main.go</file> adds the custom model <file>mybase.go</file> from the resource registry, while <file>mybase.go</file> defines and registers the module.
-Expand the [Go module code](#code-a-main-entry-point-program) to view <file>main.go</file> for an example of this.
-
-{{% /tab %}}
-{{% tab name="C++" %}}
-
-To compile your C++ module's executable, you must create a <file>CMakeLists.txt</file> file to handle compilation configuration, a <file>run.sh</file> file to wrap your executable, and then compile the executable using the C++ SDK build steps.
-
-1. Create a <file>CMakeLists.txt</file> file in your module directory to instruct the compiler how to compile your module.
-
-   The following example shows a basic configuration that automatically downloads the C++ SDK and handles compile-time linking for a module named `my-module`:
-
-   ```sh {class="line-numbers linkable-line-numbers"}
-   cmake_minimum_required(VERSION 3.7 FATAL_ERROR)
-
-   project(my-module LANGUAGES CXX)
-
-   set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
-
-   include(FetchContent)
-   FetchContent_Declare(
-     viam-cpp-sdk
-     GIT_REPOSITORY https://github.com/viamrobotics/viam-cpp-sdk.git
-     GIT_TAG main
-     # SOURCE_DIR ${CMAKE_SOURCE_DIR}/../viam-cpp-sdk
-     CMAKE_ARGS -DVIAMCPPSDK_USE_DYNAMIC_PROTOS=ON
-     FIND_PACKAGE_ARGS
-   )
-   FetchContent_MakeAvailable(viam-cpp-sdk)
-
-   FILE(GLOB sources *.cpp)
-   add_executable(my-module ${sources})
-   target_link_libraries(my-module PRIVATE viam-cpp-sdk::viamsdk)
-   ```
-
-2. Create a <file>run.sh</file> file in your module directory to wrap the executable and perform basic sanity checks at runtime.
-
-   The following example shows a simple configuration that runs a module named `my-module`:
-
-   ```sh {class="line-numbers linkable-line-numbers"}
-   #!/usr/bin/env bash
-
-   # bash safe mode
-   set -euo pipefail
-
-   cd $(dirname $0)
-   exec ./my-module $@
-   ```
-
-3. Use C++ to compile and obtain a single executable for your module:
-
-   1. Create a new <file>build</file> directory within your module directory:
-
-      ```sh { class="command-line"}
-      mkdir build
-      cd build
-      ```
-
-   2. Build and compile your module:
-
-      ```sh { class="command-line"}
-      cmake .. -G Ninja
-      ninja all
-      ninja install
-      ```
-
-   3. Run `ls` in your module's <file>build</file> directory to find the compiled executable, which should have the same name as the module directory (`my-module` in these examples):
-
-For more information on building a module in C++, see the [C++ SDK Build Documentation](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
-
-<file>main.cpp</file> adds the custom model <file>my_base.cpp</file> from the resource registry, while <file>my_base.cpp</file> defines and registers the module.
-Expand the [C++ module code](#code-a-main-entry-point-program) to view <file>main.cpp</file> for an example of this.
-
-{{% /tab %}}
-{{% /tabs %}}
-
 ### Configure logging
 
-To enable your module to write logs to the [Viam app](https://app.viam.com/), ensure that you have added the following lines of code to your respective module code.
-Log messages are sent to the Viam app and appear under the [**Logs** tab](/fleet/machines/#logs) for your machine.
+If desired, you can configure your module to output log messages to the [Viam app](https://app.viam.com/).
+Log messages sent to the Viam app appear under the [**Logs** tab](/fleet/machines/#logs) for your machine in an easily-parsable and searchable manner.
+
+Log messages generated when your machine is offline are queued, and sent together when your machine connects to the internet once more.
+
+Add the following code to your module code to enable logging to the Viam app, depending on the language you using to code your module. You can log in this fashion from the model definition file or files, the entry point (main program) file, or both, depending on your logging needs:
+
+{{% alert title="Tip" color="tip" %}}
+The example code shown above under [Define a new resource model](#define-a-new-resource-model) includes the requisite logging code already.
+{{% /alert %}}
 
 {{< tabs name="Configure logging">}}
 {{% tab name="Python"%}}
@@ -1212,7 +1038,7 @@ fn (c *component) someFunction(a int) {
 
 `viam-server` automatically gathers all output sent to the standard output (`STDOUT`) in your C++ code and forwards it to the Viam app when a network connection is available.
 
-We recommend that you use a C++ logging library to assist with log message format and creation, such as the Boost trivial logger:
+We recommend that you use a C++ logging library to assist with log message format and creation, such as the [Boost trivial logger](https://www.boost.org/doc/libs/1_84_0/libs/log/doc/html/log/tutorial/trivial_filtering.html):
 
 ```cpp {class="line-numbers linkable-line-numbers"}
 #include <boost/log/trivial.hpp>
@@ -1221,31 +1047,299 @@ We recommend that you use a C++ logging library to assist with log message forma
 {{% /tab %}}
 {{< /tabs >}}
 
-The examples from [Code a new resource model](#code-a-new-resource-model) include this logging setup.
+## Compile or package your module
+
+The final step to creating a new module is to create an executable file that `viam-server` can use to run your module on demand.
+
+This executable file:
+
+- runs your module when executed
+- takes a local UNIX socket as a command line argument
+- exits cleanly when sent a termination signal
+
+Depending on the language you are using to code your module, you may have options for how you create your executable file:
+
+{{% tabs %}}
+{{% tab name="Python: venv (recommended)" %}}
+
+Create a `run.sh` shell script that creates a new Python virtual environment, ensures that the package dependencies your module requires are installed, and runs your module.
+This is recommended approach for modules written in Python:
+
+1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
+   For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) is installed:
+
+   ```sh { class="command-line" data-prompt="$"}
+   viam-sdk
+   ```
+
+   Add additional dependencies for your module as needed.
+   See the [pip `requirements.txt` file documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more information.
+
+1. Add a shell script that creates a new virtual environment, installs the dependencies listed in `requirements.txt`, and runs the module entry point file `main.py`:
+
+   ```sh { class="command-line" data-prompt="$"}
+   #!/bin/sh
+   cd `dirname $0`
+
+   # Create a virtual environment to run our code
+   VENV_NAME="venv"
+   PYTHON="$VENV_NAME/bin/python"
+
+   python3 -m venv $VENV_NAME
+   $PYTHON -m pip install -r requirements.txt -U # remove -U if viam-sdk should not be upgraded whenever possible
+
+   # Be sure to use `exec` so that termination signals reach the python process,
+   # or handle forwarding termination signals manually
+   exec $PYTHON <your-src-dir-if-inside>/main.py $@
+   ```
+
+1. Make your shell script executable by running the following command in your terminal:
+
+   ```sh { class="command-line" data-prompt="$"}
+   sudo chmod +x <your-file-path-to>/run.sh
+   ```
+
+Using a virtual environment together with a `requirements.txt` file and a `run.sh` file that references it ensures that your module has access to any packages it requires during runtime.
+If you intend to share your module with other users, or to deploy it to a fleet of machines, this approach handles dependency resolution for each deployment automatically, meaning that there is no need to explicitly determine and install the Python packages your module requires to run on each machine that installs your module.
+See [prepare a Python virtual environment](/build/program/python-venv/) for more information.
+
+{{% /tab %}}
+{{% tab name="Python: nuitka" %}}
+
+Use the [`nutika` Python compiler](https://pypi.org/project/Nuitka/) to compile your module into a single executable file:
+
+1. In order to use Nutika, you must install a [supported C compiler](https://github.com/Nuitka/Nuitka#c-compiler) on your machine.
+
+1. Then, [create a Python virtual environment](/build/program/python-venv/) in your module's directory to ensure your module has access to any required libraries.
+   Be sure you are within your Python virtual environment for the rest of these steps: your terminal prompt should include the name of your virtual environment in parenthesis.
+
+1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
+   For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) and Nuitka (`nuitka`) are installed:
+
+   ```sh { class="command-line" data-prompt="$"}
+   viam-sdk
+   nuitka
+   ```
+
+   Add additional dependencies for your module as needed.
+   See the [pip `requirements.txt` file documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more information.
+
+1. Install the dependencies listed in your `requirements.txt` file within your Python virtual environment using the following command:
+
+   ```sh { class="command-line" data-prompt="$"}
+   python -m pip install -r requirements.txt -U
+   ```
+
+1. Then, compile your module using Nutika with the following command:
+
+   ```sh { class="command-line" data-prompt="$"}
+   python -m nuitka --onefile src/main.py
+   ```
+
+   If you need to include any additional data files to support your module, specify them using the `--include-data-files` flag:
+
+   ```sh { class="command-line" data-prompt="$"}
+   python -m nuitka --onefile --include-data-files=src/arm/my_arm_kinematics.json src/main.py
+   ```
+
+Compiling your Python module in this fashion ensures that your module has access to any packages it requires during runtime.
+If you intend to share your module with other users, or to deploy it to a fleet of machines, this approach "bundles" your module code together with its required dependencies, making your module highly-portable across like architectures.
+
+However, used in this manner, Nutika does not support relative imports (imports starting with `.`).
+In addition, Nutika does not support cross-compiling: you must compile your module on the target architecture you wish to support.
+For example, you cannot run a module on a Linux `arm64` system if you compiled it using Nutika on a Linux `amd64` system.
+
+{{% /tab %}}
+{{% tab name="Python: pyinstaller" %}}
+
+Use the [`PyInstaller` package](https://pypi.org/project/pyinstaller/) to compile your module into a single executable file:
+
+1. First, [create a Python virtual environment](/build/program/python-venv/) in your module's directory to ensure your module has access to any required libraries.
+   Be sure you are within your Python virtual environment for the rest of these steps: your terminal prompt should include the name of your virtual environment in parenthesis.
+
+1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
+   For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`), PyInstaller (`pyinstaller`), and the Google API Python client (`google-api-python-client`) are installed:
+
+   ```sh { class="command-line" data-prompt="$"}
+   viam-sdk
+   pyinstaller
+   google-api-python-client
+   ```
+
+   Add additional dependencies for your module as needed.
+   See the [pip `requirements.txt` file documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more information.
+
+1. Install the dependencies listed in your `requirements.txt` file within your Python virtual environment using the following command:
+
+   ```sh { class="command-line" data-prompt="$"}
+   python -m pip install -r requirements.txt -U
+   ```
+
+1. Then compile your module, adding the Google API python client as a hidden import:
+
+   ```sh { class="command-line" data-prompt="$"}
+   python -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+   ```
+
+   If you need to include any additional data files to support your module, specify them using the `--add-data` flag:
+
+   ```sh { class="command-line" data-prompt="$"}
+   python -m PyInstaller --onefile --hidden-import="googleapiclient" --add-data src/arm/my_arm_kinematics.json:src/arm/ src/main.py
+   ```
+
+Compiling your Python module in this fashion ensures that your module has access to any packages it requires during runtime.
+If you intend to share your module with other users, or to deploy it to a fleet of machines, this approach "bundles" your module code together with its required dependencies, making your module highly-portable across like architectures.
+
+However, used in this manner, PyInstaller does not support relative imports (imports starting with `.`).
+In addition, PyInstaller does not support cross-compiling: you must compile your module on the target architecture you wish to support.
+For example, you cannot run a module on a Linux `arm64` system if you compiled it using PyInstaller on a Linux `amd64` system.
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+Use Go to compile your module into a single executable:
+
+- Navigate to your module directory in your terminal.
+- Run `go build` to compile your entry point (main program) file <file>main.go</file> and all other <file>.go</file> files in the directory, building your module and all dependencies into a single executable file.
+- Run `ls` in your module directory to find the executable, which should have the same name as the module directory.
+
+Compiling your Go module also generates the `go.mod` and `go.sum` files that define dependency resolution in Go.
+
+See the [Go compilation documentation](https://pkg.go.dev/cmd/go#hdr-Compile_packages_and_dependencies) for more information.
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+Create a <file>CMakeLists.txt</file> file to define how to compile your module and a <file>run.sh</file> file to wrap your executable, and then use C++ to compile your source files into a single executable:
+
+1. Create a <file>CMakeLists.txt</file> file in your module directory to instruct the compiler how to compile your module.
+   For example, the following basic configuration downloads the C++ SDK and handles compile-time linking for a module named `my-base`:
+
+   ```sh {class="line-numbers linkable-line-numbers"}
+   cmake_minimum_required(VERSION 3.7 FATAL_ERROR)
+
+   project(my-base LANGUAGES CXX)
+
+   set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+
+   include(FetchContent)
+   FetchContent_Declare(
+     viam-cpp-sdk
+     GIT_REPOSITORY https://github.com/viamrobotics/viam-cpp-sdk.git
+     GIT_TAG main
+     # SOURCE_DIR ${CMAKE_SOURCE_DIR}/../viam-cpp-sdk
+     CMAKE_ARGS -DVIAMCPPSDK_USE_DYNAMIC_PROTOS=ON
+     FIND_PACKAGE_ARGS
+   )
+   FetchContent_MakeAvailable(viam-cpp-sdk)
+
+   FILE(GLOB sources *.cpp)
+   add_executable(my-base ${sources})
+   target_link_libraries(my-base PRIVATE viam-cpp-sdk::viamsdk)
+   ```
+
+1. Create a <file>run.sh</file> file in your module directory to wrap the executable and perform basic sanity checks at runtime.
+
+   The following example shows a simple configuration that runs a module named `my-base`:
+
+   ```sh {class="line-numbers linkable-line-numbers"}
+   #!/usr/bin/env bash
+
+   # bash safe mode
+   set -euo pipefail
+
+   cd $(dirname $0)
+   exec ./my-base $@
+   ```
+
+1. Use C++ to compile and obtain a single executable for your module:
+
+   1. Create a new <file>build</file> directory within your module directory:
+
+      ```sh { class="command-line"}
+      mkdir build
+      cd build
+      ```
+
+   1. Build and compile your module:
+
+      ```sh { class="command-line"}
+      cmake .. -G Ninja
+      ninja all
+      ninja install
+      ```
+
+   1. Run `ls` in your module's <file>build</file> directory to find the compiled executable, which should have the same name as the module directory (`my-base` in these examples):
+
+For more information on building a module in C++, see the [C++ SDK Build Documentation](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
+
+{{% /tab %}}
+{{% /tabs %}}
+
+## Deploy your module
+
+You have now created a module, and are ready to deploy it to a machine or a fleet of machines.
+There are two ways to deploy a module:
+
+- Through the Viam registry: [Upload your new module to the Viam registry](/registry/upload/), then [add the module to one or more machines in the Viam app](/registry/configure/).
+  You can also choose to configure [automated uploads for new module versions](/registry/upload/#update-an-existing-module-using-a-github-action) through a continuous integration (CI) workflow, using a GitHub Action if desired, greatly simplifying how you push changes to your module to the registry as you make them.
+- As a local module: [Deploy your module to a single machine as a local module](/registry/configure/#local-modules), without uploading to the Viam app.
+
+Often, developers first test their new module by deploying it as a local module to a test machine.
+With a local installation, you can test your module in a controlled environment to confirm that it functions as expected, and make changes to your module as needed.
+
+Then, once you are satisfied with the state of your module, you can upload your module to the Viam registry to:
+
+- share your module with other Viam users
+- deploy your module to a fleet of machines from a central interface
+
+See [Using the Viam registry](/registry/) for a high-level overview of the modular resource ecosystem at Viam.
+
+## Additional example modules
+
+Browse additional example modules by language:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+<!-- prettier-ignore -->
+| Module | Repository | Description |
+| ------ | ---------- | ----------- |
+| [monocular-visual-odometry](https://app.viam.com/module/viam/monocular-visual-odometry) | [viamrobotics/viam-visual-odometry](https://github.com/viamrobotics/viam-visual-odometry) | Extends the built-in [movement sensor API](https://docs.viam.com/components/movement-sensor/#api) to support using monocular visual odometry to enable any calibrated camera to function as a movement sensor. |
+| [oak-d](https://app.viam.com/module/viam/oak-d) | [viamrobotics/viam-camera-oak-d](https://github.com/viamrobotics/viam-camera-oak-d) | Extends the built-in [camera API](https://docs.viam.com/components/camera/#api) to support the OAK-D camera. |
+| [odrive](https://app.viam.com/module/viam/odrive) | [viamrobotics/odrive](https://github.com/viamrobotics/odrive) | Extends the built-in [motor API](https://docs.viam.com/components/motor/#api) to support the ODrive motor. This module provides two models, one for a `canbus`-connected ODrive motor, and one for a `serial`-connected ODrive motor. |
+| [yahboom](https://app.viam.com/module/rand/yahboom) | [viamlabs/yahboom](https://github.com/viam-labs/yahboom) | Extends the built-in [arm API](https://docs.viam.com/components/arm/#api) and [gripper API](https://docs.viam.com/components/gripper/#api) to support the Yahboom Dofbot robotic arm. |
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+<!-- prettier-ignore -->
+| Module | Repository | Description |
+| ------ | ---------- | ----------- |
+| [agilex-limo](https://app.viam.com/module/viam/agilex-limo) | [viamlabs/agilex](https://github.com/viam-labs/agilex/) | Extends the built-in [base API](https://docs.viam.com/components/base/#api) to support the Agilex Limo base. |
+| [rplidar](https://app.viam.com/module/viam/rplidar) | [viamrobotics/rplidar](https://github.com/viamrobotics/rplidar) | Extends the built-in [camera API](https://docs.viam.com/components/camera/#api) to support several models of the SLAMTEC RPlidar. |
+| [filtered-camera](https://app.viam.com/module/erh/filtered-camera) | [erh/filtered_camera](https://github.com/erh/filtered_camera) | Extends the built-in [camera API](https://docs.viam.com/components/camera/#api) to enable filtering captured images by comparing to a defined ML model, and only syncing matching images to the Viam app. See the [filtered-camera tutorial](/tutorials/projects/filtered-camera/) for more information. |
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+<!-- prettier-ignore -->
+| Module | Repository | Description |
+| ------ | ---------- | ----------- |
+| [csi-cam](https://app.viam.com/module/viam/csi-cam) | [viamrobotics/csi-camera](https://github.com/viamrobotics/csi-camera/) | Extends the built-in [camera API](https://docs.viam.com/components/camera/#api) to support the Intel CSI camera. |
+| [module-example-cpp](https://app.viam.com/module/viam/module-example-cpp) | [viamrobotics/module-example-cpp](https://github.com/viamrobotics/module-example-cpp) | Extends the built-in [sensor API](https://docs.viam.com/components/sensor/#api) to report wifi statistics. |
+
+{{% /tab %}}
+{{% /tabs %}}
+
+Explore the full list of available modules in the [Viam registry](https://app.viam.com/registry).
 
 ## Next steps
 
-Once you have created your module, you can use the [Viam CLI](/fleet/cli/) to [upload your module](/registry/upload/) to the [Viam registry](https://app.viam.com/registry) to share it with other Viam users or just to other users in your organization.
-For added convenience, you can configure [automated uploads for new module versions](/registry/upload/#update-an-existing-module-using-a-github-action) through a continuous integration (CI) workflow, using a GitHub Action.
-
-You can also add your module to your machine as a [local module](/registry/configure/#local-modules), without uploading it to the Viam registry.
-
-{{< cards >}}
-{{% card link="/registry/upload/" %}}
-{{% manualcard link="/registry/configure/#local-modules" %}}
-
-<h4>Local module</h4>
-
-Add a module to your machine as a local module.
-
-{{% /manualcard %}}
-{{< /cards >}}
-
-<br>
-
-You can also check out these tutorials that create modules:
+If you'd like to read more about module development at Viam, check out these tutorials that create modules:
 
 {{< cards >}}
 {{% card link="/tutorials/custom/custom-base-dog/" %}}
 {{% card link="/registry/examples/custom-arm/" %}}
+{{% card link="/tutorials/configure/pet-photographer/" %}}
 {{< /cards >}}

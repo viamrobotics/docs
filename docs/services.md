@@ -19,7 +19,7 @@ You can also add support for additional service types using {{< glossary_tooltip
 {{% card link="/mobility/motion/" %}}
 {{% card link="/mobility/frame-system/" %}}
 {{% card link="/mobility/base-rc/" %}}
-{{% card link="/ml/deploy/" %}}
+{{% card link="/ml/deploy/" customTitle="Machine Learning" %}}
 {{% card link="/mobility/navigation/" %}}
 {{% card link="/mobility/slam/" %}}
 {{% card link="/ml/vision/" %}}

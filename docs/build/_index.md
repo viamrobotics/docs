@@ -1,5 +1,5 @@
 ---
-title: "Build"
+title: "Build Your Machine with Flexible Building Blocks"
 linkTitle: "Build"
 description: "Configure and program your smart machine with Viam."
 image: "/services/icons/sdk.svg"
@@ -12,6 +12,20 @@ menuindent: true
 
 Viam uses a composable system of building blocks called {{< glossary_tooltip term_id="resource" text="resources" >}} which you can combine according to your specific needs.
 Components drive your hardware, and services provide high-level software functionality.
+
+Viam's APIs are standardized across all models of a given component or service.
+This means you can test and change hardware without changing code.
+
+{{% alert title="Start building" color="tip" %}}
+
+1. To get started, first [install `viam-server`](/get-started/installation/) on your smart machine's computer.
+   If you are using a microcontroller instead of a 64-bit computer, you can install a [lightweight version of `viam-server`](/build/micro-rdk/).
+
+2. Then pull together the Viam resources you want to use by [configuring your smart machine](/build/configure/).
+
+3. Finally, [program your smart machine](/build/program/) with an SDK in your preferred coding language.
+
+{{% /alert %}}
 
 <div class="cards max-page">
   <div class="row">
@@ -35,15 +49,6 @@ Each category of resource has a standardized API that you can access with an SDK
 For example, you can send the same commands to any kind of motor, using any of the following programming languages:
 
 {{<sectionlist section="/sdks">}}
-
-## Start building
-
-1. To get started, first [install `viam-server`](/get-started/installation/) on your smart machine's computer.
-   If you are using a microcontroller instead of a 64-bit computer, you can install a [lightweight version of `viam-server`](/build/micro-rdk/).
-
-2. Then pull together the Viam resources you want to use by [configuring your smart machine](/build/configure/).
-
-3. Finally, [program your smart machine](/build/program/) with an SDK in your preferred coding language.
 
 {{< cards >}}
 {{% card link="/build/configure/" %}}

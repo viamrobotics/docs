@@ -17,14 +17,14 @@ Once you have [trained](/ml/train-model/) or [uploaded](/ml/upload-model/) your 
 
 You can use the following built-in model:
 
-{{< alert title="Note" color="note" >}}
-For some models, like the [Triton MLModel](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use the available CPU or GPU.
-{{< /alert >}}
-
 <!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`"tflite_cpu"` model](#create-an-ml-model-service) | Runs a tensorflow lite model that you have [trained](/ml/train-model/) or [uploaded](/ml/upload-model/). |
+
+{{< alert title="Note" color="note" >}}
+For some models, like the [Triton MLModel](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use the available CPU or GPU.
+{{< /alert >}}
 
 ## Used With
 
@@ -44,7 +44,7 @@ For example, you can configure an [`mlmodel` vision service](/ml/vision/) and a 
 {{< alert title="Add support for other models" color="tip" >}}
 If none of the existing models fit your use case, you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it.
 
-ML Models must be designed in particular shapes to work with the `mlmodel` [classification](/ml/vision/classification/#configure-an-mlmodel-classifier) or [detection](/ml/vision/detection/#configure-an-mlmodel-detector) model of Viam's [vision service](/ml/vision/).
+ML Models must be designed in particular shapes to work with the `mlmodel` [classification](/ml/vision/mlmodel/) or [detection](/ml/vision/mlmodel/) model of Viam's [vision service](/ml/vision/).
 Follow [these instructions](/registry/advanced/mlmodel-design/) to design your modular ML Model service with models that work with vision.
 {{< /alert >}}
 
@@ -403,14 +403,14 @@ To make use of your model with your machine, add a [vision service](/ml/vision/)
 
 {{< cards >}}
 
-{{% manualcard link="/ml/vision/detection/#configure-an-mlmodel-detector"%}}
+{{% manualcard link="/ml/vision/mlmodel/"%}}
 
 <h4>Create a detector with your model</h4>
 
 Configure an `mlmodel detector`.
 
 {{% /manualcard %}}
-{{% manualcard link="/ml/vision/classification/#configure-an-mlmodel-classifier"%}}
+{{% manualcard link="/ml/vision/mlmodel/"%}}
 
 <h4>Create a classifier with your model</h4>
 

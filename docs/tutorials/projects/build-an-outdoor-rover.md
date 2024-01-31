@@ -298,7 +298,7 @@ You can measure your wheel's circumference and width between wheels, which will 
 
 You can now have some real fun.
 Try driving your rover by keyboard.
-Drive your [robot programmatically](/tutorials/get-started/try-viam-sdk/), use a [color detector](/tutorials/services/try-viam-color-detection/) or a [machine learning object detector](/ml/vision/detection/) to interact with the environment.
+Drive your [robot programmatically](/tutorials/get-started/try-viam-sdk/), use a [color detector](/tutorials/services/try-viam-color-detection/) or a [machine learning object detector](/ml/vision/#detections) to interact with the environment.
 Check out our [Python SDK documentation](https://python.viam.dev/) (or another SDK in the language of your choice) and start planning how you'll use your sturdy outdoor rover to do real things!
 Or, expand what your outdoor rover can do by adding a [camera](/components/camera/), [movement sensor](/components/movement-sensor/), or other [component](/components/).
 

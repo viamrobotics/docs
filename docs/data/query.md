@@ -95,6 +95,7 @@ You do not need to perform any additional configuration when [querying data in t
 
 1. Configure a new database user for the Viam organization's MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance, which is where your machine's synced data is stored.
    Provide your organization's `org-id` from step 2, and a desired new password for your database user.
+   Your password must be at least 8 characters long, and include at least one uppercase, one number, and one special character (such as `$` or `%`):
 
    ```sh {class="line-numbers linkable-line-numbers"}
    viam data database configure --org-id=<YOUR-ORGANIZATION-ID> --password=<NEW-DBUSER-PASSWORD>
@@ -200,6 +201,9 @@ See the [MongoDB Atlas Documentation](https://www.mongodb.com/docs/atlas/data-fe
 For information on connecting to your Atlas instance from other MQL clients, see the MongoDB Atlas [Connect to your Cluster Tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
 
 ## Next Steps
+
+With data query enabled, you can now visualize your machine's uploaded tabular data using many popular data visualization services, such as Grafana.
+See [Visualize Data](/data/visualize/) for instructions on setting up and using these data visualization services with Viam, or the [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) tutorial for a detailed walkthrough specific to Grafana.
 
 To export your captured data from the cloud, see [Export Data](../export/).
 

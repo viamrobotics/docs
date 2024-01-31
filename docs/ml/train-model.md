@@ -87,14 +87,14 @@ The model package config looks like this:
 Create an ML model service to deploy your machine learning model to your machine.
 
 {{% /manualcard %}}
-{{% manualcard link="/ml/vision/detection/#configure-an-mlmodel-detector"%}}
+{{% manualcard link="/ml/vision/mlmodel/"%}}
 
 <h4>Create a detector with your model</h4>
 
 Configure an `mlmodel detector`.
 
 {{% /manualcard %}}
-{{% manualcard link="/ml/vision/classification/#configure-an-mlmodel-classifier"%}}
+{{% manualcard link="/ml/vision/mlmodel/"%}}
 
 <h4>Create a classifier with your model</h4>
 
