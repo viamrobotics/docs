@@ -130,9 +130,9 @@ That's not going to be very helpful for interacting with your fleet of machines,
    {{% /alert %}}
 
 3. Next, open the <file>analysis_options.yaml</file> configuration file.
-      This file specifies how strictly Flutter should enforce best practices in your code when it checks for things like syntax errors.
-      For this tutorial, you will use a less strict analyzer configuration to start, but you can always tune this later.
-      If you later publish an actual production app, you will likely want to increase the strictness of the analyzer before sharing your app with others.
+   This file specifies how strictly Flutter should enforce best practices in your code when it checks for things like syntax errors.
+   For this tutorial, you will use a less strict analyzer configuration to start, but you can always tune this later.
+   If you later publish an actual production app, you will likely want to increase the strictness of the analyzer before sharing your app with others.
 
 4. Replace the contents of the <file>analysis_options.yaml</file> file with the following:
 
