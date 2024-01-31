@@ -29,7 +29,7 @@ menuindent: true
 
 The [Viam registry](https://app.viam.com/registry) is the central place where you can browse:
 
-- [ML models](/ml) to deploy with machine applications like [computer vision](/ml/vision/)
+- [ML models](/ml/) to deploy with machine applications like [computer vision](/ml/vision/)
 - {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} that add capabilities to your machine beyond what is built-in to `viam-server`
 
 ### ML models
