@@ -237,7 +237,7 @@ Then, navigate to the **Config** tab.
 See [micro-RDK](/build/micro-rdk/) to get a list of supported models and instructions on how to configure them.
 Follow [this guide](/build/micro-rdk/board/esp32/) to configure an `esp32` board on your machine.
 
-### Generate a new Project from the micro-RDK template
+### Generate a new project from the micro-RDK template
 
 [Start Docker](https://docs.docker.com/config/daemon/start/) on your development machine.
 If you haven't already, complete Docker's [Linux post installation steps](https://docs.docker.com/engine/install/linux-postinstall/) to set up Docker to run whenever your system boots up.

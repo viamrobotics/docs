@@ -191,7 +191,7 @@ In addition to the [board API](#board), the [board component](/components/board/
 
 {{< readfile "/static/include/components/apis/gpiopin.md" >}}
 
-### Analog-to-Digital converters (ADCs)
+### Analog-to-digital converters (ADCs)
 
 In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [ADCs](/components/board/#analogs) on a board:
 

@@ -138,7 +138,7 @@ If you’ve ever connected a Bluetooth device using the Linux command line, grea
 If not, strap in, it’s going to be a bit of a ride.
 If you would like to skip adding a Bluetooth controller, [jump ahead to the Configuring the Camera Component section](#configuring-the-camera-component) of the tutorial.
 
-## Connecting a bluetooth controller
+## Connecting a Bluetooth controller
 
 Make sure the 8bitdo controller mode switch is set to S, hold down Start for a few seconds, and when the LED underneath the controller changes to green, press the pair button for 3 seconds.
 For more information about the controller buttons and Bluetooth modes, consult the manual included with the controller.

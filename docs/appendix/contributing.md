@@ -165,7 +165,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   {{% expand "Click to view template" %}}
 
   ```md
-  # Product, feature or API name
+  # Product, Feature or API Name
 
   Description or introduction.
   Possibly containing further subsections.

@@ -902,7 +902,7 @@ As different systems label the actual buttons differently, we use compass direct
 | - | - | - |
 | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Right</td></tr><tr><td>`ButtonSouth`</td><td>Left</td></tr><tr> </table> | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Bottom</td></tr> </table> |
 
-#### Trigger buttons (bumper)
+#### Trigger buttons (bumpers)
 
 If your input controller is a gamepad with digital trigger buttons, this is what the controls for those buttons report as.
 
@@ -1071,7 +1071,7 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
-### Drive a robot with four wheels & a skid steer platform
+### Drive a robot with four wheels and a skid steer platform
 
 The following Go code is part of an example of using an input controller to drive a robot with four wheels & a skid steer platform.
 
