@@ -77,7 +77,7 @@ For this walkthrough, you only need to install the following:
 
 3. Click **Application**, then choose a folder in which to create your project.
 4. Give your project a name, for example, <file>smart_machine_app</file>.
-   Naming it <file>smart_machine_app</file> will make it slightly easier to follow long in later steps.
+   Naming it <file>smart_machine_app</file> will make it slightly easier to follow along in later steps.
 
 {{<imgproc src="/tutorials/flutter-app/project-name.png" resize="1000x" declared-dimensions="true" alt="Entering the name for the project in VS Code: 'smart_machine_app'.">}}
 
@@ -85,14 +85,14 @@ When you hit **Enter**, Flutter auto-generates a project folder with lots of use
 VS Code automatically opens it.
 
 If you don't change any of the boilerplate files, you'll have a counter app with a button that adds one to the total each time you press it.
-That's not going to be very helpful for interacting your fleet of machines, so in the next steps, you'll edit three of these automatically-created files to start building out a Viam-integrated app.
+That's not going to be very helpful for interacting with your fleet of machines, so in the next steps, you'll edit three of these automatically-created files to start building out a Viam-integrated app.
 
 ### Edit the YAML configuration files
 
 1. In the VS Code file explorer, find and open the <file>pubspec.yaml</file> file.
    This file specifies your app's metadata including its current version and dependencies.
 
-2. Delete the contents of your <file>pubspec.yaml</file> file and replace them with the following:
+2. Delete the contents of your <file>pubspec.yaml</file> file and replace them with the following configuration which, among others, specifies the `viam_sdk` as a dependency for your project:
 
    ```yaml {class="line-numbers linkable-line-numbers"}
    name: smart_machine_app
@@ -129,12 +129,12 @@ That's not going to be very helpful for interacting your fleet of machines, so i
 
    {{% /alert %}}
 
-   3. Next, open the <file>analysis_options.yaml</file> configuration file.
+3. Next, open the <file>analysis_options.yaml</file> configuration file.
       This file specifies how strictly Flutter should enforce best practices in your code when it checks for things like syntax errors.
       For this tutorial, you will use a less strict analyzer configuration to start, but you can always tune this later.
       If you later publish an actual production app, you will likely want to increase the strictness of the analyzer before sharing your app with others.
 
-   4. Replace the contents of the <file>analysis_options.yaml</file> file with the following:
+4. Replace the contents of the <file>analysis_options.yaml</file> file with the following:
 
    ```yaml {class="line-numbers linkable-line-numbers"}
    include: package:flutter_lints/flutter.yaml
@@ -155,7 +155,8 @@ That's not going to be very helpful for interacting your fleet of machines, so i
 Now you'll update some configurations in the iOS-specific code to support the [Viam Flutter SDK](https://flutter.viam.dev/).
 
 1. Open <file>ios/Podfile</file>.
-   If Podfile does not exist in that directory, you can generate it by running `flutter pub get` in the root directory of your app.
+   If Podfile does not exist in that directory, generate it by running `flutter pub get` in the root directory of your app.
+   If the `flutter pub get` command returns an error, you may need to [upgrade the Flutter SDK](https://docs.flutter.dev/release/upgrade).
 
    At the top of the file you will see the following lines:
 
@@ -164,7 +165,7 @@ Now you'll update some configurations in the iOS-specific code to support the [V
    # platform :ios, '11.0'
    ```
 
-   Update that code to match the following:
+   Uncomment the line and change it to use version 13.0:
 
    ```{class="line-numbers linkable-line-numbers"}
    # Uncomment this line to define a global platform for your project
@@ -194,7 +195,7 @@ Now you'll update some configurations in the iOS-specific code to support the [V
 
    {{<imgproc src="/tutorials/flutter-app/info-plist-pasted.png" resize="1200x" declared-dimensions="true" alt="The resulting file. After the non-indented <dict> tag on the fourth line, the pasted key, string, key, and array (containing an indented string) are indented inside the dict tag, spanning lines five through ten. The pasted content is at the same level of indentation as the rest of the keys and strings below it.">}}
 
-### Create the main file
+### Edit the main file
 
 1. Open the <file>lib/main.dart</file> file.
 
@@ -206,7 +207,7 @@ Now you'll update some configurations in the iOS-specific code to support the [V
 
    void main() async {
       await dotenv.load();
-     runApp(MyApp());
+      runApp(MyApp());
    }
 
    class MyApp extends StatelessWidget {
@@ -425,7 +426,7 @@ Run the mobile application simulator again to see how your changes have taken ef
 Now, when you tap the login button, the app uses the API key to get the list of locations in your organization.
 It displays the names of the locations on a new screen:
 
-{{<gif webm_src="/tutorials/flutter-app/locations-list.webm" mp4_src="/tutorials/flutter-app/locations-list.mp4" alt="Rendering of a mobile app. Log in is clicked, and then all the locations in Clint's organization are shown. One of them is clicked, but nothing changes because there is no screen associated with that button yet." max-width="300px">}}
+{{<gif webm_src="/tutorials/flutter-app/locations-list.webm" mp4_src="/tutorials/flutter-app/locations-list.mp4" alt="Rendering of a mobile app. Log in is clicked, and then all the locations in Clint's organization are shown. One of them is clicked, but nothing changes because there is no screen associated with that button yet." max-width="300px" class="aligncenter">}}
 
 ## Add more screens
 
@@ -716,7 +717,7 @@ Try running your app.
 Now, when you tap a location, you'll see a list of the smart machines in that location.
 When you tap one of them, you'll see a list of that machine's {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
-{{<gif webm_src="/tutorials/flutter-app/demo.webm" mp4_src="/tutorials/flutter-app/demo.mp4" alt="Rendering of the mobile app. Log in is clicked, then all Clint's locations are shown, Clint's Desk it clicked, all its smart machines are listed, and then desk-robot is clicked, showing a list of components and services belonging to that smart machine." max-width="300px">}}
+{{<gif webm_src="/tutorials/flutter-app/demo.webm" mp4_src="/tutorials/flutter-app/demo.mp4" alt="Rendering of the mobile app. Log in is clicked, then all Clint's locations are shown, Clint's Desk it clicked, all its smart machines are listed, and then desk-robot is clicked, showing a list of components and services belonging to that smart machine." max-width="300px" class="aligncenter">}}
 
 ## Next steps
 
@@ -729,8 +730,8 @@ The Viam Flutter SDK GitHub repo contains [more example apps](https://github.com
 You can also stylize the look and feel of your app to match your brand.
 Look around [the Flutter documentation](https://docs.flutter.dev/) to learn how.
 
-Before releasing your app to the app stores you’ll need to add an authentication flow to your app instead of adding API keys as environment variables.
-If you need assistance with this, reach out to us on our Discord and we’ll be happy to help.
+If you're planning to release your app for general use, you will need to add an authentication flow to your app instead of adding API keys as environment variables.
+If you need assistance with this, reach out to us on our [Discord](https://discord.gg/viam) and we’ll be happy to help.
 
 When you’re ready to publish your app to the app stores you can follow these articles from Flutter on the subject:
 
