@@ -29,14 +29,13 @@ menuindent: true
 
 The [Viam registry](https://app.viam.com/registry) is the central place where you can browse:
 
- - [ML models](/ml) to deploy with machine applications like [computer vision](/ml/vision/)
- - {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} that add capabilities to your machine beyond what is built-in to `viam-server`
+- [ML models](/ml) to deploy with machine applications like [computer vision](/ml/vision/)
+- {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} that add capabilities to your machine beyond what is built-in to `viam-server`
 
 ### ML models
 
 Viam provides the ability to train, upload, and deploy ML models within the platform.
 See [Machine Learning](/ml/) for more information.
-
 
 The Viam registry hosts pretrained ML models that users have made public, which you can use to deploy classifiers or detectors for your use case onto your robot instead of training your own.
 You can also [upload your own model to the registry](/ml/upload-model/).
