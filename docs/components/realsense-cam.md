@@ -101,7 +101,7 @@ Enter the necessary JSON configuration for your camera:
 }
 ```
 
-In the **Control** tab, you can now see both the individual 2D camera streams, as well as the point cloud camera of the combined color and depth image that you created with `join_color_depth`.
+In the **CONTROL** tab, you can now see both the individual 2D camera streams, as well as the point cloud camera of the combined color and depth image that you created with `join_color_depth`.
 
 ## Using the HTTP server
 

@@ -50,7 +50,7 @@ You can also revert to an earlier configuration from the History tab.
 
 ### Logging
 
-Log messages written appear under the [**Logs** tab](/fleet/machines/#logs) for the machine running the module.
+Log messages written appear under the [**LOGS** tab](/fleet/machines/#logs) for the machine running the module.
 
 ### Data management
 

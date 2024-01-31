@@ -25,7 +25,7 @@ Control mode is determined by the configuration attribute `"mode"`, for which th
 4. `"joyStickControl"`: One joystick controls speed and angle
 5. `"droneControl"`: Two joysticks control speed and angle
 
-You can monitor the input from these controls in the **Control** tab of the [Viam app](https://app.viam.com).
+You can monitor the input from these controls in the **CONTROL** tab of the [Viam app](https://app.viam.com).
 
 ## Used With
 

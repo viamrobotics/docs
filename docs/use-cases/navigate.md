@@ -12,7 +12,7 @@ images: ["/services/icons/navigation.svg"]
 ---
 
 If you have a rover base, you can use Viam to teleoperate it and to navigate autonomously.
-Once you have configured your machine, you can remotely control your machine on the app's **Control** tab, and set up autonomous navigation with the [navigation service](/mobility/navigation/).
+Once you have configured your machine, you can remotely control your machine on the app's **CONTROL** tab, and set up autonomous navigation with the [navigation service](/mobility/navigation/).
 
 <table>
   <tr>
