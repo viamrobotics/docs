@@ -53,7 +53,7 @@ Securely transfer data to cloud at the frequency you define, resilient to interr
 
 ### Cloud data management
 
-Streamlined data handling with advanced querying, viewing, and filtering capabilities, along with efficient data labeling and exporting tools.
+Experience streamlined data handling with advanced querying, viewing, and filtering capabilities, along with efficient data labeling and exporting tools.
 
 {{< cards >}}
 {{% manualcard link="/data/query/" %}}
