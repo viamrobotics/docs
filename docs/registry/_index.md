@@ -37,7 +37,7 @@ The [Viam registry](https://app.viam.com/registry) is the central place where yo
 Viam provides the ability to train, upload, and deploy ML models within the platform.
 See [Machine Learning](/ml/) for more information.
 
-The Viam registry hosts pretrained ML models that users have made public, which you can use to deploy classifiers or detectors for your use case onto your robot instead of training your own.
+The Viam registry hosts trained ML models that users have made public, which you can use to deploy classifiers or detectors for your use case onto your robot instead of training your own.
 You can also [upload your own model to the registry](/ml/upload-model/).
 
 To use an existing model from the registry, [deploy the ML model to your robot](/ml/deploy//#create-an-ml-model-service) and use a [Vision service](/ml/vision/) to make detections or classifications on-machine.

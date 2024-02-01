@@ -11,8 +11,11 @@ description: "Upload a Machine Learning model to Viam to use it with the ML Mode
 # SME: Steven B.
 ---
 
-Upload a new model to your organization with the option to share it in the [Viam registry](https://app.viam.com/registry).
-Or, upload a new version of a published model.
+The ML model service works with models trained inside and outside the Viam app.
+To use a model that you have trained yourself outside the Viam app, [upload it as a new model privately or share it in the Viam registry](#upload-a-new-model-or-new-version).
+If you need to update a previously uploaded model, you can also [upload a new version](#upload-a-new-model-or-new-version).
+
+If you have [trained](/ml/train-model/) or uploaded an ML model privately and now want to make it available for reuse, you can at any point [make the existing model public in the registry](/#make-an-existing-model-public-in-the-registry).
 
 Also, [share a model from your organization](#make-an-existing-model-public-in-the-registry) with other users in the registry.
 
