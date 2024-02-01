@@ -248,7 +248,7 @@ Use [the Micro-RDK template](https://github.com/viamrobotics/micro-rdk/tree/main
 cargo generate --git https://github.com/viamrobotics/micro-rdk.git
 ```
 
-And select `templates/project` when prompted.
+Select `templates/project` when prompted.
 
 You will be prompted to paste your machine's JSON configuration into the terminal.
 To obtain this:
