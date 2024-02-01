@@ -13,18 +13,14 @@ icon: "/services/icons/ml.svg"
 # SME: Aaron Casas
 ---
 
-Once you have [trained](/ml/train-model/) or [uploaded](/ml/upload-model/) your model, the Machine Learning (ML) model service allows you to deploy machine learning models to your machine.
+The Machine Learning (ML) model service allows you to deploy machine learning models to your machine.
 
-You can use the following built-in model:
+You can use the following built-in model of the service:
 
 <!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`"tflite_cpu"` model](#create-an-ml-model-service) | Runs a tensorflow lite model that you have [trained](/ml/train-model/) or [uploaded](/ml/upload-model/). |
-
-{{< alert title="Note" color="note" >}}
-For some models, like the [Triton MLModel](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use the available CPU or GPU.
-{{< /alert >}}
 
 ## Used With
 
@@ -42,10 +38,14 @@ For example, you can configure an [`mlmodel` vision service](/ml/vision/) and a 
 {{<modular-resources api="rdk:service:mlmodel" type="mlmodel">}}
 
 {{< alert title="Add support for other models" color="tip" >}}
-If none of the existing models fit your use case, you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it.
+If none of the existing models of the ML model service fit your use case, you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it.
 
-ML Models must be designed in particular shapes to work with the `mlmodel` [classification](/ml/vision/mlmodel/) or [detection](/ml/vision/mlmodel/) model of Viam's [vision service](/ml/vision/).
+ML models must be designed in particular shapes to work with the `mlmodel` [classification](/ml/vision/mlmodel/) or [detection](/ml/vision/mlmodel/) model of Viam's [vision service](/ml/vision/).
 Follow [these instructions](/registry/advanced/mlmodel-design/) to design your modular ML Model service with models that work with vision.
+{{< /alert >}}
+
+{{< alert title="Note" color="note" >}}
+For some models of the ML model service, like the [Triton MLModel](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use the available CPU or GPU.
 {{< /alert >}}
 
 ## Create an ML model service
