@@ -45,7 +45,7 @@ Follow [these instructions](/registry/advanced/mlmodel-design/) to design your m
 {{< /alert >}}
 
 {{< alert title="Note" color="note" >}}
-For some models of the ML model service, like the [Triton MLModel](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use the available CPU or GPU.
+For some models of the ML model service, like the [Triton ML model service](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use the available CPU or GPU.
 {{< /alert >}}
 
 ## Create an ML model service
