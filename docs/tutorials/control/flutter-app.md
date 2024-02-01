@@ -10,6 +10,7 @@ tags: ["sdk", "flutter"]
 authors: ["Clint Purser"]
 languages: ["flutter"]
 viamresources: ["base"]
+images: ["/tutorials/flutter-app/preview.gif"]
 level: "Intermediate"
 date: "2024-01-17"
 cost: "0"
