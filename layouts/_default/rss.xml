@@ -72,7 +72,7 @@
       <description>{{ .Description | transform.XMLEscape | safeHTML }}</description>
       <media:content 
         xmlns:media="http://search.yahoo.com/mrss/" 
-        url="https://docs.viam.com{{ index ( .Params.images ) 0 }}" 
+        url={{ if .Params.Images}}{{ (index (.Params.Images) 0) | absURL }}{{ else}}""{{ end }} 
         medium="image" 
         type="image/jpeg" 
         />
