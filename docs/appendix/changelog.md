@@ -782,7 +782,7 @@ Find more information in the [micro-RDK documentation](/get-started/installation
 
 {{% changelog color="added" title="Remote control power input" %}}
 
-On your machine's **Control** tab on the [Viam app](https://app.viam.com/), you can now set the power of a [base](/components/base/).
+On your machine's **CONTROL** tab on the [Viam app](https://app.viam.com/), you can now set the power of a [base](/components/base/).
 The base control UI previously always sent 100% power to the base's motors.
 
 {{% /changelog %}}
@@ -900,7 +900,7 @@ A new [servo model called `gpio`](/components/servo/gpio/) supports servos conne
 {{% changelog color="added" title="RTT indicator in the app" %}}
 
 A badge in the Viam app now displays RTT (round trip time) of a request from your client to the machine.
-Find this indicator of the time to complete one request/response cycle on your machine's **Control** tab, in the **Operations & Sessions** card.
+Find this indicator of the time to complete one request/response cycle on your machine's **CONTROL** tab, in the **Operations & Sessions** card.
 
 {{% /changelog %}}
 

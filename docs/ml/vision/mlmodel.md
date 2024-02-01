@@ -145,14 +145,14 @@ If the classifier's results exceed the confidence threshold, the **Run model** s
 
 ### Live camera footage
 
-If you intend to use the detector or classifier with a camera that is part of your machine, you can test your detector or classifier from the [**Control tab**](/fleet/machines/#control) or with code:
+If you intend to use the detector or classifier with a camera that is part of your machine, you can test your detector or classifier from the [**CONTROL** tab](/fleet/machines/#control) or with code:
 
 1. Configure a [camera component](/components/camera/).
    {{< alert title="Tip" color="tip" >}}
    This is the camera whose name you need to pass to vision service methods.
    {{< /alert >}}
 
-2. (Optional) If you would like to see detections or classifications from the **Control tab**, configure a [transform camera](/components/camera/transform/) with the following attributes:
+2. (Optional) If you would like to see detections or classifications from the **CONTROL** tab, configure a [transform camera](/components/camera/transform/) with the following attributes:
 
 {{< tabs >}}
 {{% tab name="Detections" %}}
@@ -194,7 +194,7 @@ If you intend to use the detector or classifier with a camera that is part of yo
 {{< /tabs >}}
 
 3. After adding the components and their attributes, click **Save config**.
-4. Navigate to the **Control** tab, click on your transform camera and toggle it on.
+4. Navigate to the **CONTROL** tab, click on your transform camera and toggle it on.
    If you've configured a detector, the transform camera will now show detections with bounding boxes around the object.
 
    ![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/ml/vision/chair-detector.png)

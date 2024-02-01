@@ -15,7 +15,7 @@ Read and filter a machine's logs to view updates from your machine's `viam-serve
 {{< tabs >}}
 {{% tab name="App UI" %}}
 
-Navigate to the **Logs** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **LOGS** tab of your machine's page in [the Viam app](https://app.viam.com).
 
 Use the **Filter** input to filter the logs by key terms, and select from the **Levels** dropdown menu to filter the logs by warning level:
 

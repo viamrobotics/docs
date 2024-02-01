@@ -193,7 +193,7 @@ For specific information on how to configure each supported component type, see 
 
 {{% alert title="Tip" color="tip" %}}
 
-When you configure a component on the **CONFIGURE** tab, it will also appear on the **Control** tab which gives you an interface to test and interact with it.
+When you configure a component on the **CONFIGURE** tab, it will also appear on the **CONTROL** tab which gives you an interface to test and interact with it.
 The **Code sample** page on the **CONNECT** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/build/program/apis/).
 
 {{<gif webm_src="/manage/control.webm" mp4_src="/manage/control.mp4" alt="Using the control tab">}}
@@ -454,7 +454,7 @@ Find more information in the [frame system documentation](/mobility/frame-system
 
 If you run into issues, here are some things to try:
 
-- Check the [**Logs** tab](/fleet/machines/#logs) to view log messages and errors from `viam-server`.
+- Check the [**LOGS** tab](/fleet/machines/#logs) to view log messages and errors from `viam-server`.
   You can also [access the local log file](/get-started/installation/manage/#view-viam-server-logs) on your machine if needed.
 - Make sure all configured components are actually saved to your config.
   If they aren't, you will see an **Unsaved Changes** note next to the **Save Config** button at the bottom of the config screen.

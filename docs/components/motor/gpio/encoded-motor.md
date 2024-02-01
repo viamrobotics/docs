@@ -160,7 +160,7 @@ This wiring example corresponds to the [example config above](#encoder-config).
 
 ## Test the motor
 
-Once your motor is configured and connected, go to the [**Control** tab](/fleet/machines/#control) and click on the motor's dropdown panel.
+Once your motor is configured and connected, go to the [**CONTROL** tab](/fleet/machines/#control) and click on the motor's dropdown panel.
 Use the buttons to try turning your motor forwards or backwards at different power levels and check whether it moves as expected.
 
 ![Motor control panel.](/components/motor/control.png)
@@ -173,4 +173,4 @@ The position, orientation, and linear and angular velocity of the rover changing
 
 {{<gif webm_src="/components/encoded-motor/controls_change.webm" mp4_src="/components/encoded-motor/controls_change.mp4" alt="The control tab of a movement sensor on a base with encoded motors as it turns">}}
 
-If the motor does not appear on the **Control** tab, or if you notice unexpected behavior, check your machine's [**Logs** tab](/fleet/machines/#logs) for errors, and review the configuration.
+If the motor does not appear on the **CONTROL** tab, or if you notice unexpected behavior, check your machine's [**LOGS** tab](/fleet/machines/#logs) for errors, and review the configuration.

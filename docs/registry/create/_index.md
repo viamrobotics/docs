@@ -962,7 +962,7 @@ int main(int argc, char** argv) {
 ### Configure logging
 
 If desired, you can configure your module to output log messages to the [Viam app](https://app.viam.com/).
-Log messages sent to the Viam app appear under the [**Logs** tab](/fleet/machines/#logs) for your machine in an easily-parsable and searchable manner.
+Log messages sent to the Viam app appear under the [**LOGS** tab](/fleet/machines/#logs) for your machine in an easily-parsable and searchable manner.
 
 Log messages generated when your machine is offline are queued, and sent together when your machine connects to the internet once more.
 

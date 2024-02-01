@@ -90,7 +90,7 @@ You and your collaborators can deploy control logic, {{< glossary_tooltip term_i
 
 ### Remote control
 
-Everyone who has access to the machine can remotely control it in the app's [**Control** tab](machines/#control).
+Everyone who has access to the machine can remotely control it in the app's [**CONTROL** tab](machines/#control).
 This allows you to visually test and remotely operate machine components and services.
 
 You can also control a machine using the [Viam mobile app](#the-viam-mobile-app).
@@ -110,8 +110,8 @@ The machine's remote address is displayed on both the **CONTROL** tab and **Code
 
 ### Logging
 
-Each machine automatically sends logs to the cloud where you can view them from the [**Logs** tab](machines/#logs).
-If you are collaborating on a machine and controlling it using the [**Control** tab](machines/#control) or [SDK code](#control-with-the-sdks), everyone who has access to the location the machine is in can see the machine's logs.
+Each machine automatically sends logs to the cloud where you can view them from the [**LOGS** tab](machines/#logs).
+If you are collaborating on a machine and controlling it using the [**CONTROL** tab](machines/#control) or [SDK code](#control-with-the-sdks), everyone who has access to the location the machine is in can see the machine's logs.
 
 ### Deployment
 

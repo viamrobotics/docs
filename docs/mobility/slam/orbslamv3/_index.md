@@ -339,7 +339,7 @@ Adjust these parameters to fine-tune the algorithm `orbslamv3` utilizes:
 
 ## View the Map
 
-After saving your config, head over to the **Control** tab and click on the dropdown menu matching the `name` of the service you created.
+After saving your config, head over to the **CONTROL** tab and click on the dropdown menu matching the `name` of the service you created.
 
 Change the **Refresh frequency** to your desired frequency.
 If in Live Data mode, move your webcam around slowly.

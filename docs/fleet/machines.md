@@ -71,7 +71,7 @@ You can also change your timestamp format to ISO or Local depending on your pref
 ### Logs
 
 To make debugging issues with your machines easier, each machine automatically sends its logs to the cloud.
-You can access your logs from the **Logs** tab in the [Viam app](https://app.viam.com) and filter your logs for specific keywords or log levels:
+You can access your logs from the **LOGS** tab in the [Viam app](https://app.viam.com) and filter your logs for specific keywords or log levels:
 
 {{<gif webm_src="/manage/log-filtering.webm" mp4_src="/manage/log-filtering.mp4" alt="Filter logs by term of log level in the UI" max-width="800px">}}
 
@@ -79,9 +79,9 @@ You can also change your timestamp format to ISO or Local depending on your pref
 
 ### Control
 
-Once you have configured components and services for your machine, you can visually test and remotely operate them from the **Control** tab in the [Viam app](https://app.viam.com).
+Once you have configured components and services for your machine, you can visually test and remotely operate them from the **CONTROL** tab in the [Viam app](https://app.viam.com).
 For example, if you have configured a base with wheels, you can control your machine's movement with an arrow pad and fields to change base’s speed.
-If you have configured a camera component, a window in the **Control** tab displays the camera output.
+If you have configured a camera component, a window in the **CONTROL** tab displays the camera output.
 
 If you use remote control in the [Viam app](https://app.viam.com) UI, all communication to the machine uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
 For local communication between [parts](/build/configure/parts-and-remotes/#machine-parts) Viam uses gRPC or WebRTC.
