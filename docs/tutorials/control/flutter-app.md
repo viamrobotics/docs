@@ -161,14 +161,14 @@ Now you'll update some configurations in the iOS-specific code to support the [V
 
    At the top of the file you will see the following lines:
 
-   ```{class="line-numbers linkable-line-numbers"}
+   ```dart {class="line-numbers linkable-line-numbers"}
    # Uncomment this line to define a global platform for your project
    # platform :ios, '11.0'
    ```
 
    Uncomment the line and change it to use version 13.0:
 
-   ```{class="line-numbers linkable-line-numbers"}
+   ```dart {class="line-numbers linkable-line-numbers"}
    # Uncomment this line to define a global platform for your project
    platform :ios, '13.0'
    ```
@@ -181,7 +181,7 @@ Now you'll update some configurations in the iOS-specific code to support the [V
 3. Insert the following code into the first line after the `<dict>`.
    These lines are [required to establish WebRTC and local device mDNS connections](https://github.com/viamrobotics/viam-flutter-sdk?tab=readme-ov-file#update-infoplist).
 
-   ```{class="line-numbers linkable-line-numbers"}
+   ```xml {class="line-numbers linkable-line-numbers"}
      <key>NSLocalNetworkUsageDescription</key>
      <string>Smart Machine App requires access to your device's local network to connect to your devices.</string>
      <key>NSBonjourServices</key>
@@ -202,7 +202,7 @@ Now you'll update some configurations in the iOS-specific code to support the [V
 
 2. Replace the contents of this file with the following code, which creates the scaffold of your app's login screen:
 
-   ```{class="line-numbers linkable-line-numbers"}
+   ```dart {class="line-numbers linkable-line-numbers"}
    import 'package:flutter/material.dart';
    import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -284,7 +284,7 @@ In the VS Code file explorer on the left-hand side, right click <file>lib/</file
 
 Paste the following code into the <file>home_screen.dart</file> file you just created:
 
-```{class="line-numbers linkable-line-numbers"}
+```dart {class="line-numbers linkable-line-numbers"}
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:viam_sdk/protos/app/app.dart';
@@ -362,7 +362,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 Notice in the file the following line:
 
-```{class="line-numbers linkable-line-numbers"}
+```dart {class="line-numbers linkable-line-numbers"}
 _viam = await Viam.withApiKey(dotenv.env['API_KEY_ID']?? '', dotenv.env['API_KEY']?? '');
 ```
 
@@ -374,7 +374,7 @@ Follow the steps below to get your API key and create an environment variables f
    Name it <file>.env</file>.
    Copy and paste these two lines into the file:
 
-   ```{class="line-numbers linkable-line-numbers"}
+   ```sh {class="line-numbers linkable-line-numbers"}
    API_KEY_ID="PASTE YOUR API KEY ID HERE"
    API_KEY="PASTE YOUR API KEY HERE"
    ```
@@ -409,13 +409,13 @@ In VS Code, reopen <file>main.dart</file>.
 
 Add the following line to the imports at the top of the file:
 
-```{class="line-numbers linkable-line-numbers"}
+```dart {class="line-numbers linkable-line-numbers"}
 import 'home_screen.dart';
 ```
 
 Change `ElevatedButton` in the `Column` to the following:
 
-```{class="line-numbers linkable-line-numbers"}
+```dart {class="line-numbers linkable-line-numbers"}
             ElevatedButton(
                 onPressed: () => Navigator.of(context)
                     .push(MaterialPageRoute(builder: (_) => HomeScreen())),
@@ -441,7 +441,7 @@ Name it <file>location_screen.dart</file>.
 
 Paste the following code into the file:
 
-```{class="line-numbers linkable-line-numbers"}
+```dart {class="line-numbers linkable-line-numbers"}
 import 'package:flutter/material.dart';
 import 'package:viam_sdk/protos/app/app.dart';
 import 'package:viam_sdk/viam_sdk.dart';
@@ -525,7 +525,7 @@ class _LocationScreenState extends State<LocationScreen> {
 
 Create a new file named <file>robot_screen.dart</file> and paste the following into the file:
 
-```{class="line-numbers linkable-line-numbers"}
+```dart {class="line-numbers linkable-line-numbers"}
 /// This is the screen that shows the resources available on a robot (or smart machine).
 /// It takes in a Viam app client instance, as well as a robot client.
 /// It then uses the Viam client instance to create a connection to that robot client.
@@ -623,7 +623,7 @@ Now that you have the code for the screens in place, you can enable navigation b
 
 Connect the home screen to the locations screen by un-commenting the following two lines in <file>home_screen.dart</file>:
 
-```{class="line-numbers linkable-line-numbers" data-line="3-4"}
+```dart {class="line-numbers linkable-line-numbers" data-line="3-4"}
  /// This method will navigate to a specific [Location]. <-- Leave this commented!
  void _navigateToLocation(Location location) {
     Navigator.of(context)                              <-- Un-comment this
@@ -633,13 +633,13 @@ Connect the home screen to the locations screen by un-commenting the following t
 
 Add the following import to the top of the file:
 
-```{class="line-numbers linkable-line-numbers"}
+```dart {class="line-numbers linkable-line-numbers"}
 import 'location_screen.dart';
 ```
 
 The whole <file>home_screen.dart</file> should now look like this:
 
-```{class="line-numbers linkable-line-numbers"}
+```dart {class="line-numbers linkable-line-numbers"}
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:viam_sdk/protos/app/app.dart';
