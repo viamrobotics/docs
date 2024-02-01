@@ -141,5 +141,5 @@ For instance, in the **JSON Example** above, if both `"imu-wit"` and `"mpu6050"`
 
 ## Test the movement sensor
 
-After you configure your movement sensor, navigate to the [CONTROL tab](/fleet/machines/#control) and select the dedicated movement sensor dropdown panel.
+After you configure your movement sensor, navigate to the [**CONTROL** tab](/fleet/machines/#control) and select the dedicated movement sensor dropdown panel.
 This panel presents the data collected by the movement sensor.
