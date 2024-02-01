@@ -55,10 +55,10 @@
     <description>Recent content {{ if ne .Title .Site.Title }}{{ with .Title }}in {{ . }} {{ end }}{{ end }}on {{ .Site.Title }}</description>
     <generator>Hugo -- gohugo.io</generator>
     <image>
-        <url>https://docs.viam.com/favicons/apple-touch-icon.png</url>
-	      <title>Viam</title>
-			  <link>https://www.viam.com</link>
-		</image>
+      <url>https://docs.viam.com/favicons/apple-touch-icon.png</url>
+      <title>Viam</title>
+      <link>https://www.viam.com</link>
+    </image>
     <language>{{ site.Language.LanguageCode }}</language>{{ with $authorEmail }}
     <managingEditor>{{.}}{{ with $authorName }} ({{ . }}){{ end }}</managingEditor>{{ end }}{{ with $authorEmail }}
     <webMaster>{{ . }}{{ with $authorName }} ({{ . }}){{ end }}</webMaster>{{ end }}{{ with .Site.Copyright }}
@@ -77,7 +77,7 @@
       <description>{{ .Description | transform.XMLEscape | safeHTML }}</description>
       <media:content 
         xmlns:media="http://search.yahoo.com/mrss/" 
-        url={{ if .Params.Images}}{{ (index (.Params.Images) 0) | absURL }}{{ else}}""{{ end }} 
+        url={{ if .Params.Images }}{{ (index (.Params.Images) 0) | absURL }}{{ else }}""{{ end }} 
         medium="image" 
         type="image/jpeg" 
         />
