@@ -21,8 +21,7 @@ menuindent: true
 
 The data management service is a robust solution for smart machine data handling, [data capture](/data/capture/), and [cloud synchronization](/data/cloud-sync/).
 Using the data management service, you can collect data from different parts of a robot, IoT device, or any other machine.
-Then, you can configure which data to sync to the cloud, and view, sort, or manage it directly in the cloud without needing to manually gather data from each machine.
-The data management service also keeps your data secure during transfer.
+Once collected, you can configure which data to securely sync to the cloud, and view, sort, or manage it directly in the cloud without needing to manually gather data from each machine.
 
 ## Overview
 
