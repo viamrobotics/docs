@@ -70,6 +70,12 @@
       {{- with $authorEmail }}<author>{{ . }}{{ with $authorName }} ({{ . }}){{ end }}</author>{{ end }}
       <guid>{{ .Permalink }}</guid>
       <description>{{ .Description | transform.XMLEscape | safeHTML }}</description>
+      <media:content 
+        xmlns:media="http://search.yahoo.com/mrss/" 
+        url="https://docs.viam.com{{ index ( .Params.images ) 0 }}" 
+        medium="image" 
+        type="image/jpeg" 
+        />
     </item>
     {{- end }}
   </channel>
