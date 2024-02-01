@@ -242,11 +242,13 @@ Follow [this guide](/build/micro-rdk/board/esp32/) to configure an `esp32` board
 [Start Docker](https://docs.docker.com/config/daemon/start/) on your development machine.
 If you haven't already, complete Docker's [Linux post installation steps](https://docs.docker.com/engine/install/linux-postinstall/) to set up Docker to run whenever your system boots up.
 
-Use [the Micro-RDK template](https://github.com/viamrobotics/micro-rdk-robot-template.git) to create a new Micro-RDK project to upload to your ESP32 by running:
+Use [the Micro-RDK template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project) to create a new Micro-RDK project to upload to your ESP32 by running:
 
 ```sh { class="command-line" data-prompt="$"}
-cargo generate --git https://github.com/viamrobotics/micro-rdk-robot-template.git
+cargo generate --git https://github.com/viamrobotics/micro-rdk.git
 ```
+
+Select `templates/project` when prompted.
 
 You will be prompted to paste your machine's JSON configuration into the terminal.
 To obtain this:
