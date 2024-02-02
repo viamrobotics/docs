@@ -294,6 +294,67 @@ While the serial connection is live, you can also restart the currently flashed 
 Navigate to your new machine's page on [the Viam app](https://app.viam.com).
 If successful, **Live** should be displayed underneath **Last online**.
 
+### Recommendations when using an SDK
+
+In some cases connection the ESP32 using an SDK can fail be unstable or slow, this is usually caused by the SDK background task use to monitor the connection to RDK.
+We recommend the following changes to the default settings when connecting to an ESP32 if you run into similar issues.
+
+{{< tabs >}}
+{{% tab name="Python SDK" %}}
+
+```python
+# Replace the connect function found in the cod sample tab with the following
+async def connect():
+    opts = RobotClient.Options(
+        # Micro-RDK configures once at boot, so we don't need to check if the components have changed
+        refresh_interval=0,
+        # Checking the connection can safely be disabled
+        check_connection_interval=0,
+        # Same for Attempting to reconnect
+        attempt_reconnect_interval=0,
+        disable_sessions=True,
+        # Micro-RDK doesn't support sessions so it is safe to disable them
+        dial_options=DialOptions.with_api_key(
+            # Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
+            api_key_id='<API-KEY-ID>',
+            # Replace "<API-KEY>" (including brackets) with your machine's api key
+            api_key='<API-KEY>')
+    )
+    # Replace "<ROBOT-URL>" (including brackets) with your machine's url
+    return await RobotClient.at_address('<ROBOT-URL>', opts)
+```
+
+{{% /tab %}}
+{{% tab name="Golang SDK" %}}
+
+```go
+// Replace the call to client.New with the following block
+robot, err := client.New(
+    context.Background(),
+    "<ROBOT-URL>", // Replace "<ROBOT-URL>" (including brackets) with your machine's url
+    logger,
+    client.WithDisableSessions(), // Micro-RDK doesn't support sessions so it is safe to disable them
+    client.WithCheckConnectedEvery(0), // Checking the connection can safely be disabled
+    client.WithReconnectEvery(0), // Same for Attempting to reconnect
+    client.WithRefreshEvery(0), // Micro-RDK configures once at boot, so we don't need to check if the components have changed
+    client.WithDialOptions(rpc.WithEntityCredentials(
+        // Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
+        "<API-KEY-ID>",
+        rpc.Credentials{
+            Type: rpc.CredentialsTypeAPIKey,
+            // Replace "<API-KEY>" (including brackets) with your machine's api key
+            Payload: "<API-KEY>",
+        })),
+    )
+if err != nil {
+    logger.Fatal(err)
+}
+
+```
+
+{{% /tab %}}
+{{% /tabs %}}
+
 ### Troubleshooting
 
 If you run into the error `Failed to open serial port` when flashing your ESP32 with Linux, make sure the user is added to the group `dialout` with `sudo gpasswd -a $USER dialout`
