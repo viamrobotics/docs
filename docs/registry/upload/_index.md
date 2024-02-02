@@ -394,7 +394,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 {{% /tab %}}
 {{< /tabs >}}
 
-1. Create an [organization API key](/fleet/cli/#create-an-organization-api-key) with the [owner](/fleet/#permissions) role, which the GitHub action will use to authenticate to the Viam platform, using one of the following methods:
+1. Create an [organization API key](/fleet/cli/#create-an-organization-api-key) with the [owner](/fleet/rbac/#permissions) role, which the GitHub action will use to authenticate to the Viam platform, using one of the following methods:
 
    - Use the Viam CLI to create an organization API key, which includes the owner role by default:
 

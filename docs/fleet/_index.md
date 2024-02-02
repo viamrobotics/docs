@@ -19,27 +19,29 @@ menuindent: true
 ---
 
 Viam fleet management allows you to organize, manage, and control any number of machines alone or in collaboration with others.
-You can manage and control your fleet of  {{< glossary_tooltip term_id="machine" text="smart machines" >}} from the Viam app, using the [CLI](/fleet/cli/), or using the [cloud API](/build/program/apis/cloud/).
+You can manage and control your fleet of {{< glossary_tooltip term_id="machine" text="smart machines" >}} from the Viam app, using the [CLI](/fleet/cli/), or using the [cloud API](/build/program/apis/cloud/).
 
 ## Work with groups of machines
 
 To organize your fleet you use
 
 - {{< glossary_tooltip term_id="organization" text="organizations" >}}: the highest level grouping, generally used for different companies.
-- {{< glossary_tooltip term_id="location" text="locations" >}}: virtual groupings of devices up with up to three levels of nesting that can represent a grouping of machines that are co-located in a building, like a factory, or a grouping of machines that are thousands of miles apart and are grouped together by function or as an organizational unit. 
+- {{< glossary_tooltip term_id="location" text="locations" >}}: virtual groupings of devices up with up to three levels of nesting that can represent a grouping of machines that are co-located in a building, like a factory, or a grouping of machines that are thousands of miles apart and are grouped together by function or as an organizational unit.
 
 Each machine resides in a location.
 
-![TODO](TODO)
+<!-- TODO: Add topology based on Jon's draft -->
+
+![An image of two locations, New York, and Chicago, in one organization, Good Robots](/fleet/locations.png)
 
 The organization structure enables you to:
 
 - [configure groups of machines](/build/configure/) with reusable {{< glossary_tooltip term_id="fragment" text="fragments" >}} that configure, among other things:
-    -  hardware {{< glossary_tooltip term_id="component" text="components" >}}
-    -  higher level {{< glossary_tooltip term_id="service" text="services" >}}
-    -  [control logic](/build/program/apis/)
-    -  sidecar [processes](/build/configure/#processes)
-    -  network configuration
+  - hardware {{< glossary_tooltip term_id="component" text="components" >}}
+  - higher level {{< glossary_tooltip term_id="service" text="services" >}}
+  - [control logic](/build/program/apis/)
+  - sidecar [processes](/build/configure/#processes)
+  - network configuration
 - deploy [code packages](/registry/) or [machine learning models](/ml/), without manually copying files by uploading it to Viam's cloud and deploying it to your fleet
 - control a machine with code, the app's [**Control** tab](machines/#control), or the [Viam mobile app](#the-viam-mobile-app)
 - obtain health metrics, such as status, uptime, version, or [logs](machines/#logs)
@@ -53,11 +55,8 @@ When you create a Viam account, Viam automatically creates an organization for y
 You can use this organization as your collaboration hub by inviting collaborators to your organization.
 You can also add additional organizations as desired at any time.
 
-To facilitate collaboration, you can grant individual collaborators or entire organizations access for individual machines or entire locations.
-
-### Permissions
-
-You can assign users different fleet management capabilities by making them an owner or an operator of a given {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="machine" text="machine" >}}.
+To facilitate collaboration, you can grant individual collaborators or entire organizations granular permissions for individual machines or entire locations.
+This allows you flexibility to manage internal machines, sell devices to external customers and keep managing them, and collaborate with different partners or companies on groups of machines.
 For more information, see [Permissions](/fleet/rbac/#permissions).
 
 ### Configuration
