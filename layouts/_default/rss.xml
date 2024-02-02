@@ -55,9 +55,9 @@
     <description>Recent content {{ if ne .Title .Site.Title }}{{ with .Title }}in {{ . }} {{ end }}{{ end }}on {{ .Site.Title }}</description>
     <generator>Hugo -- gohugo.io</generator>
     <image>
-      <url>https://docs.viam.com/favicons/apple-touch-icon.png</url>
+      <url>https://docs.viam.com/tutorials/videos/scuttle-gamepad-preview.gif</url>
       <title>Viam</title>
-      <link>https://www.viam.com</link>
+      <link>https://docs.viam.com/tutorials</link>
     </image>
     <language>{{ site.Language.LanguageCode }}</language>{{ with $authorEmail }}
     <managingEditor>{{.}}{{ with $authorName }} ({{ . }}){{ end }}</managingEditor>{{ end }}{{ with $authorEmail }}
