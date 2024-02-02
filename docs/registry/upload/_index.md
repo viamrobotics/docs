@@ -233,7 +233,7 @@ Updating your module automatically using CI is better suited for larger, ongoing
 
 {{% alert title="Tip" color="tip" %}}
 
-If you would like to test your module against its intended target platform before uploading it, you can follow the steps for [Iterative module development](/registry/create/#iterative-module-development) to verify that any code changes you have made work as expected on your target platform.
+If you would like to test your module locally against its intended target platform before uploading it, you can follow the steps for [Iterative module development](/registry/advanced/iterative-development/) to verify that any code changes you have made work as expected on your target platform.
 
 {{% /alert %}}
 
