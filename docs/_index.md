@@ -13,7 +13,7 @@ sitemap:
 
 <div class="max-page">
   <p>
-    Welcome to the Viam Documentation! test
+    Welcome to the Viam Documentation! test 2
     Viam is a complete software platform for {{< glossary_tooltip term_id="smart-machine" text="smart machines">}} that runs on Linux and macOS and supports a wide variety of popular systems, including:
   </p>
 </div>
