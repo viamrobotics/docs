@@ -12,12 +12,10 @@ Once you have [created the first version of your module](/registry/create/), you
 
 Generally, when developing a module, you have two options for iterative development, depending on the specific [platform](/fleet/cli/#using-the---platform-argument) you want your module to support:
 
-- If you want your module to support the same platform as your development workstation, you can test your module locally.
+- **Test Locally:** If you want your module to support the same platform as your development workstation, you can test your module locally.
   For example, if you are developing a module on a macOS computer with an M2 processor (the `arm64` architecture), and want your module to support only macOS computers running the `arm64` architecture, you can perform your module development and testing workflow entirely on your macOS workstation.
-- If you want your module to support a different architecture than your development workstation, you can sync your module code to a machine running your desired target architecture and test remotely.
+- **Sync Code and Test Remotely:** If you want your module to support a different architecture than your development workstation, you can sync your module code to a machine running your desired target architecture and test remotely.
   For example, if you are developing a module on a macOS computer, but want your module to support a Raspberry Pi running Linux on the `arm64` architecture, you can set up syncing for your module code to be able to continue development on your macOS workstation, but test on your remote Raspberry Pi.
-  This solution is also appropriate for testing within a Docker container running a different operating system, with the limitation that the system architectures still must machine between guest and host OS.
-  For example, you could use an Ubuntu Docker image on your macOS development workstation to test your module on Linux, but the architecture of the Ubuntu Docker image must match the architecture of your macOS workstation (likely `arm64`).
 
 Both of these options involve deploying your module to the target test system as a [local module](/registry/configure/#local-modules), without uploading it to the Viam registry.
 Even if you have already published a version of your module to the registry, you might still find it useful to follow the steps in this section to verify that changes you make as part of releasing a new version work as expected on your target platform.
@@ -59,15 +57,15 @@ If you are developing a module for the same target architecture as your developm
 
    - On macOS, using `brew`:
 
-   ```sh { class="command-line"}
-   brew services restart viam-server
-   ```
+     ```sh { class="command-line"}
+     brew services restart viam-server
+     ```
 
    - On Linux, using `systemctl`:
 
-   ```sh { class="command-line"}
-   sudo systemctl restart viam-server
-   ```
+     ```sh { class="command-line"}
+     sudo systemctl restart viam-server
+     ```
 
 1. Once `viam-server` has restarted, check the **Logs** tab for your machine in the Viam app again to ensure that `viam-server` properly started your module.
 
@@ -77,8 +75,6 @@ If you are developing a module for the same target architecture as your developm
    Remember to check the **Logs** tab each time to verify that the module registered successfully, and to troubleshoot any error or warning messages.
    If you haven't already, you can [add custom log messages to your code](/registry/create/#configure-logging), which appear under the **Logs** tab to assist with troubleshooting.
 
-When you are satisfied that your module is ready for release, follow the steps to [upload your module](/registry/upload/) to the Viam registry, to facilitate streamlined deployment to other machines or to make it available to the Viam community.
-
 {{% /tab %}}
 {{% tab name="Sync Code and Test Remotely" %}}
 
@@ -86,7 +82,7 @@ If you are developing a module for a different target architecture than your dev
 
 1. Navigate to the [Viam app](https://app.viam.com/robots) and [add a new machine](/fleet/machines/#add-a-new-machine) to serve as your development machine.
    Be sure to follow the steps shown in the Viam app to install `viam-server` on the target machine you want to test and build on.
-   For example, to test and build your module on your Raspberry Pi, be sure to install `viam-server` on the Pi, not your macOS workstation.
+   For example, to test and build your module on your Raspberry Pi, be sure to install `viam-server` on the Pi itself, not your macOS workstation.
 
 1. Set up file sync between your development workstation and the machine running your target platform that you want to build and test on, using your favorite file sync utility.
    For example, you could use [mutagen.io](https://mutagen.io/) to sync your files using the following steps:
@@ -128,12 +124,14 @@ If you are developing a module for a different target architecture than your dev
 
          For example, on macOS, you should see files similar to `/Users/username/.ssh/id_ed25519` and `/Users/username/.ssh/id_ed25519.pub`.
 
-      1. Copy the `.pub` file only to your target remote system using `ssh`.
+      1. Copy the `.pub` file only to your target remote system using `scp`.
          For example, to transfer a `id_ed25519.pub` file from a macOS machine to a remote Linux system named `my-pi.local` for the user `username`, you could use the following commands:
 
          ```sh { class="command-line"}
          scp ~/.ssh/id_ed25519.pub username@my-pi.local:/home/username/.ssh/
          ```
+
+         Do not copy the private key file, which does not have a file extension.
 
       1. Then, start an `ssh` session to your remote system, and verify that the following are in place:
 
@@ -141,16 +139,14 @@ If you are developing a module for a different target architecture than your dev
 
            - First, check the current permissions:
 
-             ```sh
+             ```sh { class="command-line"}
              ls -l ~/.ssh/id_ed25519.pub
-
-             -rw-r--r-- 1 user user 108 Feb  2 20:15 /home/user/.ssh/id_ed25519.pub
              ```
 
-           - If the permissions shown (above as `-rw-r--r--`) differ, use the following command to set them appropriately:
+           - If the permissions shown are not exactly `-rw-r--r--`, use the following command to set them appropriately:
 
-             ```sh
-             chmod 700 ~/.ssh/id_ed25519.pub
+             ```sh { class="command-line"}
+             chmod 644 ~/.ssh/id_ed25519.pub
              ```
 
          - Make sure that the `sshd` configuration for your remote system includes the following settings:
@@ -165,11 +161,11 @@ If you are developing a module for a different target architecture than your dev
            grep -i pubkey /etc/ssh/sshd_config
            ```
 
-           If this value is set to `no`, change this value to `yes`
-           If this value is prepended by `#` character, remove it so that the line reads exactly: `PubkeyAuthentication yes`
+           - If this value is set to `no`, change this value to `yes`.
+           - If this value is prepended by `#` character, remove it so that the line reads exactly: `PubkeyAuthentication yes`.
 
-           If you needed to change this value in either way listed, restart the `sshd` service from your `ssh` session to your remove system.
-           For example, if your remote system is Linux, you would run the following:
+           If you needed to change this value in either way listed, restart the `sshd` service from your `ssh` session to your remote system.
+           For example, if your remote system is Linux, you would run the following on the remote system:
 
            ```sh { class="command-line"}
            sudo systemctl restart sshd
@@ -191,7 +187,7 @@ If you are developing a module for a different target architecture than your dev
 1. Set up a new Mutagen sync from this directory to sync to your remote system, providing the local path to your module and the target path on the remote system to sync your module files:
 
    ```sh { class="command-line"}
-   mutagen sync create /path/to/module username@my-pi.local:/path/to/sync-target
+   mutagen sync create /path/to/local/module username@remote-hostname.local:/path/to/remote/sync-target
    ```
 
    For example, you could use the following to transfer the example module from earlier to the same location on the remote system, if desired:
@@ -244,7 +240,7 @@ If you are developing a module for a different target architecture than your dev
    Remember to check the **Logs** tab each time to verify that the module registered successfully, and to troubleshoot any error or warning messages.
    If you haven't already, you can [add custom log messages to your code](/registry/create/#configure-logging), which appear under the **Logs** tab to assist with troubleshooting.
 
-When you are satisfied that your module is ready for release, follow the steps to [upload your module](/registry/upload/) to the Viam registry, to facilitate streamlined deployment to other machines or to make it available to the Viam community.
-
 {{% /tab %}}
 {{% /tabs %}}
+
+When you are satisfied that your module is ready for release, follow the steps to [upload your module](/registry/upload/) to the Viam registry, to facilitate streamlined deployment to other machines or to make it available to the Viam community.
