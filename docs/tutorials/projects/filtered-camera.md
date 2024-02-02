@@ -3,7 +3,6 @@ title: "Selectively Capture Data using filtered-camera"
 linkTitle: "Filtered Camera"
 type: "docs"
 description: "Use the filtered-camera module to selectively capture images."
-image: "/tutorials/filtered-camera-module/viam-figure-preview.png"
 images: ["/tutorials/filtered-camera-module/viam-figure-preview.png"]
 imageAlt: "The wooden Viam figure being detected by a transform camera"
 tags: ["camera", "vision", "detector", "mlmodel", "data"]

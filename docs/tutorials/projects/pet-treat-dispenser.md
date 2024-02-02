@@ -4,7 +4,6 @@ linkTitle: "Smart Pet Treat Dispenser"
 type: "docs"
 description: "Use a Raspberry Pi, a motor, and machine learning to build a smart pet feeder."
 tags: ["raspberry pi", "app", "board", "motor"]
-image: "/tutorials/pet-treat-dispenser/preview.png"
 imageAlt: "Image of a dog interacting with the smart pet feeder."
 images: ["/tutorials/pet-treat-dispenser/preview.png"]
 authors: ["Arielle Mella", "Jessamy Taylor", "Hazal Mestci"]

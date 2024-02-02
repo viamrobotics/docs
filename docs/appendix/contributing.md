@@ -55,7 +55,7 @@ For information about Hugo and how to develop locally, see the [README](https://
 ## Content types
 
 When creating a new piece of content, decide which one of the four content types the content should be.
-Note this in a comment in the frontmatter of the file.
+Note this in a comment in the front matter of the file.
 
 The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of the content structure with the following four content types:
 
@@ -377,7 +377,7 @@ The command takes a screenshot at `00:00:05`.
 #### GIF-like videos
 
 GIF-like videos on our pages are generally used to show robot actions.
-We do not use the GIF file format because it uses a lot of bandwidth - more than videos - and the [best practice](https://developer.chrome.com/en/docs/lighthouse/performance/efficient-animated-content/) is to not use them.
+We do not use the GIF file format within our docs because it uses a lot of bandwidth - more than videos - and the [best practice](https://developer.chrome.com/en/docs/lighthouse/performance/efficient-animated-content/) is to not use them.
 
 Instead, we use a video div with two sources:
 
@@ -544,6 +544,13 @@ The `2gif` commands only turn the first 5 seconds of a video into a low res gif.
 {{< /alert >}}
 
 {{% /expand%}}
+
+{{% alert title="Note" color="note" %}}
+
+We _do_ include <file>.gif</file> file types in front matter of some docs (such as tutorials) when we want to display a GIF as the link preview image on external sites like social media.
+In the front matter we include an MP4, WebM and GIF of the same video because the GIF is compatible with external sites while the lower-bandwidth formats are displayed on our docs site.
+
+{{% /alert %}}
 
 ## Formatting guide
 

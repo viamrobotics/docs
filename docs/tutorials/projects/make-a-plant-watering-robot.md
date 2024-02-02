@@ -4,7 +4,6 @@ linkTitle: "Plant Watering Robot"
 type: "docs"
 description: "Create a plant watering robot with a Raspberry Pi."
 tags: ["raspberry pi", "app", "board", "motor"]
-image: "/tutorials/plant-watering-pi/preview.png"
 imageAlt: "Picture of the plant watering robot"
 images: ["/tutorials/plant-watering-pi/preview.png"]
 authors: ["Sierra Guequierre"]
