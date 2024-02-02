@@ -24,10 +24,11 @@ jobs:
             if (orgResp.status === 204) {
               await github.rest.issues.addLabels({owner: "viamrobotics", repo: "docs", issue_number: prNumber, labels: ["safe to build"]});
             } else {
+              console.log("here");
               await github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
+                issue_number: prNumber,
+                owner: "viamrobotics",
+                repo: "docs",
                 body: '👋 Thanks for contributing! A reviewer will look at it on the next working day!'
               })
             }
