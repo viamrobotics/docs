@@ -306,7 +306,8 @@ We recommend the following changes to the default settings when connecting to an
 # Replace the connect function found in the cod sample tab with the following
 async def connect():
     opts = RobotClient.Options(
-        # Micro-RDK configures once at boot, so we don't need to check if the components have changed
+        # Micro-RDK configures once at boot,
+        # so we don't need to check if the components have changed
         refresh_interval=0,
         # Checking the connection can safely be disabled
         check_connection_interval=0,
@@ -315,9 +316,11 @@ async def connect():
         disable_sessions=True,
         # Micro-RDK doesn't support sessions so it is safe to disable them
         dial_options=DialOptions.with_api_key(
-            # Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
+            # Replace "<API-KEY-ID>" (including brackets)
+            # with your machine's api key id
             api_key_id='<API-KEY-ID>',
-            # Replace "<API-KEY>" (including brackets) with your machine's api key
+            # Replace "<API-KEY>" (including brackets)
+            # with your machine's api key
             api_key='<API-KEY>')
     )
     # Replace "<ROBOT-URL>" (including brackets) with your machine's url
