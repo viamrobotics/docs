@@ -77,7 +77,7 @@
       <description>{{ .Description | transform.XMLEscape | safeHTML }}</description>
       {{ if .Params.Images }}<media:content 
         xmlns:media="http://search.yahoo.com/mrss/" 
-        url="{{ (index (.Params.Images) 0) | absURL | safeHTML }}
+        url="{{ (index (.Params.Images) 0) | absURL | safeHTML }}"
         medium="image" 
         type="image/jpeg" 
         />{{ end }}
