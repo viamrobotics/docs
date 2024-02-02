@@ -36,9 +36,9 @@
 
 {{- if or $.IsHome $.IsSection }}
 {{- if eq .Title "Tutorials" }}
-{{- $pages = (where (where $pctx.Pages ".Section" "tutorials") "Kind" "page")  -}}
+{{- $pages = (where (where $pctx.RegularPages ".Section" "tutorials") "Kind" "page")  -}}
 {{- else }}
-{{- $pages = $pctx.Pages  -}}
+{{- $pages = (where (where $pctx.RegularPages ".Section" "tutorials") "Kind" "page")  -}}
 {{- end}}
 {{- else }}
 {{- $pages = $pctx.RegularPages }}
@@ -55,9 +55,9 @@
     <description>Recent content {{ if ne .Title .Site.Title }}{{ with .Title }}in {{ . }} {{ end }}{{ end }}on {{ .Site.Title }}</description>
     <generator>Hugo -- gohugo.io</generator>
     <image>
-      <url>https://docs.viam.com/tutorials/videos/scuttle-gamepad-preview.gif</url>
+      <url>https://docs.viam.com/favicons/apple-icon-144x144.png</url>
       <title>Viam</title>
-      <link>https://docs.viam.com/tutorials</link>
+      <link>https://docs.viam.com/tutorials/</link>
     </image>
     <language>{{ site.Language.LanguageCode }}</language>{{ with $authorEmail }}
     <managingEditor>{{.}}{{ with $authorName }} ({{ . }}){{ end }}</managingEditor>{{ end }}{{ with $authorEmail }}
@@ -75,11 +75,11 @@
       {{- with $authorEmail }}<author>{{ . }}{{ with $authorName }} ({{ . }}){{ end }}</author>{{ end }}
       <guid>{{ .Permalink }}</guid>
       <description>{{ .Description | transform.XMLEscape | safeHTML }}</description>
-      {{ if .Params.Images }}<media:content 
-        xmlns:media="http://search.yahoo.com/mrss/" 
+      {{ if .Params.Images }}<media:content
+        xmlns:media="http://search.yahoo.com/mrss/"
         url="{{ (index (.Params.Images) 0) | absURL | safeHTML }}"
-        medium="image" 
-        type="image/jpeg" 
+        medium="image"
+        type="image/jpeg"
         />{{ end }}
     </item>
     {{- end }}
