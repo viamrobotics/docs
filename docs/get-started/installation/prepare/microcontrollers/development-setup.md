@@ -296,7 +296,7 @@ If successful, **Live** should be displayed underneath **Last online**.
 
 ### Recommendations when using an SDK
 
-In some cases connection the ESP32 using an SDK can fail be unstable or slow, this is usually caused by the SDK background task use to monitor the connection to RDK.
+In some cases connection the ESP32 using an SDK can fail, be unstable or be slow, this is usually caused by the SDK background task use to monitor the connection to Micro-RDK.
 We recommend the following changes to the default settings when connecting to an ESP32 if you run into similar issues.
 
 {{< tabs >}}
