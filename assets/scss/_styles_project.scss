@@ -1551,14 +1551,13 @@ input[type=search]::-webkit-search-cancel-button {
   padding-right: 4px;
 }
 
-.changelog .colorbox {
+.changelog .colorbox, .changelog .datebox {
   text-transform: uppercase;
   padding: 0.1rem 0.25rem;
   border: 1px solid black;
   font-size: 1rem;
   font-weight: 500;
-  line-height: 1.3;
-  vertical-align: top;
+  line-height: 1.0;
   margin-right: 0.5em;
 }
 
@@ -1568,16 +1567,6 @@ input[type=search]::-webkit-search-cancel-button {
 
 .date-fit {
   min-width: fit-content;
-}
-
-.changelog .datebox {
-  text-transform: uppercase;
-  padding: 0.1rem 0.25rem;
-  border: 1px solid black;
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.3;
-  vertical-align: top;
 }
 
 .changelog-added .colorbox {
