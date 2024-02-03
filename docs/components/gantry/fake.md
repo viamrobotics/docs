@@ -12,9 +12,7 @@ aliases:
 # SME: Rand
 ---
 
-You can use a `fake` gantry to test implementing a gantry component on your machine without any physical hardware.
-
-Configure a `fake` gantry as follows:
+Configure a `fake` gantry to test implementing a gantry component on your machine without any physical hardware.
 
 {{< tabs name="Configure a Fake Gantry" >}}
 {{% tab name="Config Builder" %}}

@@ -12,9 +12,7 @@ aliases:
 # SME: #team-bucket
 ---
 
-Use a `fake` power sensor to test implementing a power sensor component on your machine without any physical hardware.
-
-Configure a `fake` power sensor to integrate into your machine:
+Configure a `fake` power sensor to test implementing a power sensor component on your machine without any physical hardware.
 
 {{< tabs name="Configure a Fake Power Sensor" >}}
 {{% tab name="Config Builder" %}}

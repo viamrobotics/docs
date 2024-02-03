@@ -11,7 +11,7 @@ aliases:
 # SMEs: Bijan, vision team
 ---
 
-Combine the streams of a color and depth camera already registered in your config to create a view that outputs the combined and aligned image.
+The `join_color_depth` model combines the streams of a color and depth camera already registered in your config to create a view that outputs the combined and aligned image.
 
 This specific model is good if you don’t need to align the streams.
 If you need to adjust the alignment between the depth and color frames, use the [`align_color_depth_extrinsics`](../align-color-depth-extrinsics/) model or the[`align_color_depth_homography`](../align-color-depth-homography/) model.

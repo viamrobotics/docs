@@ -11,9 +11,7 @@ aliases:
 # SME: Rand
 ---
 
-You can use a `fake` servo to test implementing a servo component on your machine without any physical hardware.
-
-Configure a `fake` servo as follows:
+Configure a `fake` servo to test implementing a servo component on your machine without any physical hardware.
 
 {{< tabs name="Configure a Fake Servo" >}}
 {{% tab name="Config Builder" %}}
