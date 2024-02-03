@@ -815,7 +815,7 @@ td > ul, td > ol {
   border-radius: 0;
 }
 
-#edit-on-github {
+#edit-on-github, #rss-feed {
   float: right;
   a {
     color: #515151;
@@ -1544,6 +1544,7 @@ input[type=search]::-webkit-search-cancel-button {
 
 .changelog-outer {
   display: flex;
+  justify-content: space-between;
 }
 
 .changelog div {
@@ -1551,6 +1552,25 @@ input[type=search]::-webkit-search-cancel-button {
 }
 
 .changelog .colorbox {
+  text-transform: uppercase;
+  padding: 0.1rem 0.25rem;
+  border: 1px solid black;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.3;
+  vertical-align: top;
+  margin-right: 0.5em;
+}
+
+.box-fit {
+  display: flex;
+}
+
+.date-fit {
+  min-width: fit-content;
+}
+
+.changelog .datebox {
   text-transform: uppercase;
   padding: 0.1rem 0.25rem;
   border: 1px solid black;
@@ -1582,6 +1602,7 @@ input[type=search]::-webkit-search-cancel-button {
   display: flex;
   flex-direction: column;
   max-width: 600px;
+  position: relative;
 }
 
 #changelog-filters button {
@@ -1614,6 +1635,12 @@ input[type=search]::-webkit-search-cancel-button {
 
 .filterable {
   display: none;
+  margin: 1em 0em;
+}
+
+div .filterable > p {
+  position: relative;
+  z-index: 1;
 }
 
 // Display only the elements that currently have show class
