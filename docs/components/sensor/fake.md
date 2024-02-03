@@ -12,7 +12,7 @@ aliases:
 # SME: #team-bucket
 ---
 
-Configure a `fake` sensor to test implementing a sensor component on your machine without any physical hardware.
+Configure a `fake` sensor to test implementing a sensor component on your machine without any physical hardware:
 
 {{< tabs name="Configure a Fake Sensor" >}}
 {{% tab name="Config Builder" %}}
