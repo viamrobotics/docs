@@ -8,7 +8,7 @@ tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 # SMEs: Bijan, Khari
 ---
 
-_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#april-2023)_
+_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#vision-service)_
 
 This segmenter model is for depth cameras, and is best for motion planning with transient obstacles.
 Use the segmenter to identify well separated objects above a flat plane.

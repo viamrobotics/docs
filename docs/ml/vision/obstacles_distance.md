@@ -8,7 +8,7 @@ tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 # SMEs: Bijan, Khari
 ---
 
-_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#april-2023)_
+_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#vision-service)_
 
 `obstacles_distance` is a vision service model that takes point clouds from a camera input and returns the average single closest point to the camera as a perceived obstacle.
 It is best for transient obstacle avoidance.
