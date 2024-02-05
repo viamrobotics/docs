@@ -384,7 +384,7 @@ If not, make sure to [prepare your device and install `viam-server`](/get-starte
 
 To configure your rover so you can start driving it, [add a Viam Rover 2 Fragment to your machine](/get-started/try-viam/rover-resources/rover-tutorial-fragments/).
 
-## Next Steps
+## Next steps
 
 After adding the appropriate fragment, follow one of these tutorials with your borrowed or owned rover:
 

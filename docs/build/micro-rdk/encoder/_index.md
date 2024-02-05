@@ -15,7 +15,7 @@ aliases:
 An encoder is a special type of sensor that measures rotation of a motor or joint.
 For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Encoder Component](/components/encoder/).
 
-## Supported Models
+## Supported models
 
 For configuration information, click on one of the supported encoder model names:
 

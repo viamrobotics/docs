@@ -36,11 +36,11 @@ For details, see your boards specification.
 
 {{% /alert %}}
 
-## Hardware Requirements
+## Hardware requirements
 
 You need the following hardware, tools, and software to install `viam-server` on a Jetson AGX Orin with the Jetson AGX Orin Developer Kit:
 
-**Initial Setup with Display Attached:**
+**Initial setup with display attached:**
 
 1. A [Jetson AGX Orin Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-agx-orin-devkit)
 2. A PC monitor (HDMI or DisplayPort)
@@ -49,7 +49,7 @@ You need the following hardware, tools, and software to install `viam-server` on
 5. USB Type-C power supply, to power the Orin (included with the AGX Orin Developer Kit)
 6. (Optional) Ethernet cable, to connect the Orin to the internet without Wifi access
 
-**Initial Setup in Headless Mode:**
+**Initial setup in headless mode:**
 
 1. A [Jetson AGX Orin Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-agx-orin-devkit)
 2. An internet-connected Windows, Linux, or macOS computer
@@ -60,7 +60,7 @@ You need the following hardware, tools, and software to install `viam-server` on
 4. USB Type-C power supply, to power the Orin (included with the AGX Orin Developer Kit)
 5. (Optional) Ethernet cable, to connect the Orin to the internet without Wifi access
 
-## Jetson Orin Setup Guide
+## Jetson Orin setup guide
 
 Follow the instructions in [Getting Started with Jetson AGX Orin Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-agx-orin-devkit) to boot up your Orin for the first time.
 
@@ -81,7 +81,7 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 
 {{< readfile "/static/include/install/install-linux-aarch.md" >}}
 
-## Camera Setup
+## Camera setup
 
 1. Install E-Con Systems [e-CAM20_CUOAGX](https://www.e-consystems.com/nvidia-cameras/jetson-agx-orin-cameras/full-hd-ar0234-color-global-shutter-camera.asp) AR0234 driver.
    Consult the instructions you received when purchasing your device for more information.
@@ -89,7 +89,7 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 3. Connect the AR0234 camera module and daughterboard to the J509 port located at the bottom of the Developer Kit.
 4. Configure the camera as a [webcam](/components/camera/webcam/).
 
-## Serial Communication Protocol Tips
+## Serial communication protocol tips
 
 To change the pins that are in use for modes of serial communication, launch <file>jetson-io.py</file> with the following commands:
 
@@ -111,7 +111,7 @@ For a Jetson AGX Orin, reference the following:
 Note that I2C buses do not need to be configured through <file>jetson-io.py</file>.
 See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/ConfiguringTheJetsonExpansionHeaders.html) for more information.
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/build/configure/" %}}

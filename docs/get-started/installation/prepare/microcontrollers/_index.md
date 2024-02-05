@@ -18,14 +18,14 @@ aliases:
 
 {{% readfile "/static/include/micro-rdk-hardware.md" %}}
 
-## Install the Micro-RDK
+## Install the micro-RDK
 
-The Micro-RDK Installer is a CLI that allows you to flash a build of Micro-RDK, along with your machine's credentials and your wifi information, directly to your ESP32.
+The micro-RDK installer is a CLI that allows you to flash a build of micro-RDK, along with your machine's credentials and your wifi information, directly to your ESP32.
 
 With this installation, you can use your ESP32 with all supported resource APIs, but you cannot write your own code directly interacting with the chip.
 If you want to program the chip directly, follow the setup instructions in [the Micro-RDK Development Setup](/get-started/installation/prepare/microcontrollers/development-setup/) instead.
 
-### Flash your ESP32 with the Micro-RDK Installer
+### Flash your ESP32 with the micro-RDK installer
 
 Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/fleet/machines/#add-a-new-machine) in your desired location.
 

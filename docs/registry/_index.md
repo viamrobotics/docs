@@ -34,7 +34,7 @@ Viam provides built-in support for a variety of {{< glossary_tooltip term_id="re
 
 If the component or service you want to use for your project is not natively supported, you can use _{{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}_ from [the Viam Registry](#the-viam-registry) or [create your own](#create-your-own-modules).
 
-## The Viam Registry
+## The Viam registry
 
 The [Viam registry](https://app.viam.com/registry) is the central place where you can browse {{< glossary_tooltip term_id="module" text="modules" >}} that add capabilities to your machine beyond what is built-in to `viam-server`.
 

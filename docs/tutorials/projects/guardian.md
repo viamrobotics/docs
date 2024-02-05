@@ -744,7 +744,7 @@ For more robotics projects, check out our [other tutorials](/tutorials/).
 
 {{< snippet "social.md" >}}
 
-## Full Code
+## Full code
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio

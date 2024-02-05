@@ -105,6 +105,6 @@ The following attributes are available for `join_color_depth` views:
 
 {{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< readfile "/static/include/components/camera-model-next-steps.md" >}}

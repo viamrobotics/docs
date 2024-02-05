@@ -410,7 +410,7 @@ In the **Raw JSON** mode in your machine's **Config** tab, add the following JSO
 {{% /tab %}}
 {{< /tabs >}}
 
-## Configure a Navigation service
+## Configure a navigation service
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -482,7 +482,7 @@ Click **Save Config** at the bottom of the window.
 {{% /tab %}}
 {{< /tabs >}}
 
-## Start navigating with the Navigation service
+## Start navigating with the navigation service
 
 Now that you have configured your navigation service, add waypoints to your navigation service.
 You can add waypoints from the [Control tab](#control-tab-method) or [programmatically](#programmatic-method).

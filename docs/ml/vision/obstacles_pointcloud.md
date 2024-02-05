@@ -1,5 +1,5 @@
 ---
-title: "obstacles_pointcloud"
+title: "Configure an obstacles_pointcloud Segmenter"
 linkTitle: "obstacles_pointcloud"
 weight: 20
 type: "docs"

@@ -89,6 +89,6 @@ You can change the refresh frequency as needed to change bandwidth.
 
 {{< imgproc src="/components/camera/fake-view.png" alt="Fake Camera View" resize="600x" >}}
 
-## Next Steps
+## Next steps
 
 {{< readfile "/static/include/components/camera-model-next-steps.md" >}}

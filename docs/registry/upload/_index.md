@@ -1,5 +1,5 @@
 ---
-title: "Upload your own modules to the Viam registry"
+title: "Upload your own Modules to the Viam Registry"
 linkTitle: "Upload"
 weight: 20
 type: "docs"
@@ -431,7 +431,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 - [Golang](https://github.com/viam-labs/wifi-sensor)
 - [C++](https://github.com/viamrobotics/module-example-cpp)
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/registry/configure/" %}}

@@ -17,7 +17,7 @@ The navigation service is the stateful definition of Viam's [motion service](/mo
 It uses GPS to autonomously navigate a rover [base](/components/base/) to user defined endpoints called waypoints.
 Configure your base with a navigation service, add waypoints, and set the mode of the service to [**Waypoint**](#setmode) to move your rover along a defined path at your desired motion configuration.
 
-## Used With
+## Used with
 
 {{< cards >}}
 {{< relatedcard link="/components/base/" required="yes" >}}
@@ -795,7 +795,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 {{% /tab %}}
 {{< /tabs >}}
 
-## Control Tab Usage
+## Control tab usage
 
 After configuring the navigation service for your machine, navigate to the **Control** tab of the machine's page in the [Viam app](https://app.viam.com) and expand the card matching the name of your service to use an interface for rover navigation.
 
@@ -803,7 +803,7 @@ Here, you can toggle the mode of the service between **Manual** and **Waypoint**
 
 ![An example control interface for a navigation service in the Viam app Control Tab.](/mobility/navigation/navigation-control-card.png)
 
-## Navigation Concepts
+## Navigation concepts
 
 The following concepts are important to understand when utilizing the navigation service.
 Each concept is a type of relative or absolute measurement, taken by a [movement sensor](/components/movement-sensor/), which can then be utilized by your machine to navigate across space.
@@ -817,7 +817,7 @@ Here's how to make use of the following types of measurements:
 - [Linear Acceleration](/mobility/navigation/#linear-acceleration)
 - [Linear Velocity](/mobility/navigation/#linear-velocity)
 
-### Compass Heading
+### Compass heading
 
 The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/) take compass heading measurements:
 
@@ -860,7 +860,7 @@ To read orientation, first [configure a capable movement sensor](/components/mov
 Additionally, follow [these instructions](/mobility/frame-system/#configuration) to configure the geometries of each component of your machine within the [frame system](/mobility/frame-system/).
 Then use the movement sensor API's [`GetOrientation()`](/components/movement-sensor/#getorientation) method to get orientation readings.
 
-### Angular Velocity
+### Angular velocity
 
 The following {{< glossary_tooltip term_id="model" text="models" >}} of the [movement sensor](/components/movement-sensor/) component take angular velocity measurements:
 
@@ -901,7 +901,7 @@ These position readings reflect the _absolute_ position of components.
 To get a position, [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your machine.
 Then use the movement sensor API's [`GetPosition()`](/components/movement-sensor/#getposition) method to get position readings from the sensor.
 
-### Linear Velocity
+### Linear velocity
 
 The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/) take linear velocity measurements:
 
@@ -922,7 +922,7 @@ Use linear velocity readings to determine the speed at which your machine is mov
 To get linear velocity, [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your machine.
 Then use the movement sensor API's [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity) method to get linear velocity readings from the sensor.
 
-### Linear Acceleration
+### Linear acceleration
 
 The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/) take linear acceleration measurements:
 

@@ -15,12 +15,12 @@ You can either use a {{< glossary_tooltip term_id="grpc" text="gRPC" >}} server 
 
 You can find the source code for these servers in the [Viam Robotics repo](https://github.com/viamrobotics/camera-servers).
 
-## Using the gRPC Server
+## Using the gRPC server
 
 Use the gRPC server if you want 2D image streams and also want the 3D point clouds from the Intel RealSense camera.
 They will show up as 3 separate cameras.
 
-### Download the Intel RealSense gRPC Camera Server
+### Download the Intel RealSense gRPC camera server
 
 On your Raspberry Pi, download the following server for your intel camera
 
@@ -29,7 +29,7 @@ sudo curl -o /usr/local/bin/intelgrpcserver https://storage.googleapis.com/packa
 sudo chmod a+rx /usr/local/bin/intelgrpcserver
 ```
 
-### Configure the Server to Run on Machine Start-Up
+### Configure the server to run on machine start-up
 
 On the [Viam app](https://app.viam.com), click **Config** and then access the **Processes** tab. Add the following configuration:
 
@@ -60,7 +60,7 @@ On the **Config** tab, click **Remotes**, and then add the following configurati
 This adds the two cameras to your machine.
 They will have the names `intel:color` and `intel:depth`.
 
-### Create a Camera to Display Point Clouds
+### Create a camera to display point clouds
 
 Click **Components** on the **Config** tab.
 Now, add the `align_color_depth` camera model.
@@ -116,7 +116,7 @@ sudo curl -o /usr/local/bin/intelrealserver https://storage.googleapis.com/packa
 sudo chmod a+rx /usr/local/bin/intelrealserver
 ```
 
-### Configure the Server to Run on Machine Start-Up
+### Configure the server to run on machine start-up
 
 On the [Viam app](https://app.viam.com), click **Config** and then click **Processes**.
 Enter the following configuration:
@@ -139,7 +139,7 @@ The endpoints that it creates are:
 - [http://your-raspi-address:8181/pic.png](http://your-raspi-address:8181/pic.png) - a png image from the color camera
 - [http://your-raspi-address:8181/depth.png](http://your-raspi-address:8181/depth.png) - a png image from the depth camera
 
-## Create a Camera to Display Point Clouds
+## Create a camera to display point clouds
 
 Click **Config** and then click **Components**.
 Enter the following camera model: "dual_stream"

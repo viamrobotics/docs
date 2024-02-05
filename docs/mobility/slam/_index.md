@@ -26,7 +26,7 @@ You can conduct SLAM with data collected live by a [RPlidar](https://github.com/
 
 ![Completed SLAM maps in the SLAM library tab](/mobility/slam/view-map-page.png)
 
-## Used With
+## Used with
 
 <!-- markdownlint-disable MD034 -->
 

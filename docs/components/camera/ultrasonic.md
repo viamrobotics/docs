@@ -112,6 +112,6 @@ The following attributes are available for `ultrasonic` cameras:
 
 {{< readfile "/static/include/components/ultrasonic-attributes.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< readfile "/static/include/components/camera-model-next-steps.md" >}}

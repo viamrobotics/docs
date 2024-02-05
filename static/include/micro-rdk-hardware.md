@@ -1,4 +1,4 @@
-### Hardware Requirements
+### Hardware requirements
 
 You need an Espressif ESP32 microcontroller to use the micro-RDK.
 Viam recommends purchasing the ESP32 with a [development board](https://www.espressif.com/en/products/devkits).

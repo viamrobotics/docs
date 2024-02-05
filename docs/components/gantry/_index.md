@@ -37,14 +37,14 @@ Most machines with a gantry need at least the following hardware:
     Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
 - Limit switches, to attach to the ends of the gantry's axis
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/mobility/frame-system/" >}}
 {{< relatedcard link="/mobility/motion/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your gantry with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your gantry.
 
@@ -61,7 +61,7 @@ For configuration information, click on the model name:
 | [`single-axis`](single-axis/) | A gantry with a singular linear rail. |
 | [`multi-axis`](multi-axis/) | A gantry with multiple linear rails. Composed of multiple `single-axis` gantries. |
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:gantry" type="gantry">}}
 

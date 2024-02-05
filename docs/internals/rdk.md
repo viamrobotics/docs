@@ -24,7 +24,7 @@ _viam-server_ manages the following:
 
 `viam-server` handles all {{< glossary_tooltip term_id="grpc" text="gRPC" >}} and {{< glossary_tooltip term_id="webrtc" >}} communication for connecting machines to the cloud or for connecting to other parts of your machine.
 
-### Dependency Management
+### Dependency management
 
 Modular resources may depend on other built-in resources or other modular resources, and vice versa.
 The Viam RDK handles dependency management.
@@ -60,7 +60,7 @@ Data capture for individual components is supported on [certain component subtyp
 
 During machine shutdown, the RDK handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/build/program/apis/" %}}

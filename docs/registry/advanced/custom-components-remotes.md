@@ -1,5 +1,5 @@
 ---
-title: "Add Custom Components as Remotes of your machine"
+title: "Add Custom Components as Remotes of your Machine"
 linkTitle: "Custom Components as Remotes"
 weight: 99
 type: "docs"
