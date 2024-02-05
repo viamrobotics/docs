@@ -66,7 +66,7 @@ Configure your `esp32` board for your machine.
 
 In some cases your connection to the ESP32 with an SDK can fail, be unstable or be slow.
 This is usually caused by the SDK background task that monitors the connection to the micro-RDK.
-We recommend the following changes to the default settings when connecting to an ESP32 if you run into similar issues:
+We recommend the following changes to the default settings in your SDK code when connecting to an ESP32 if you run into similar issues:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
