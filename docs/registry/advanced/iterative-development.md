@@ -136,7 +136,7 @@ If you are developing a module for a different target architecture than your dev
 
    1. Then, start a new `ssh` session to your remote system, and verify that you are able to connect without being prompted for a password.
       Mutagen requires a working, passwordless `ssh` configuration in order to be able to sync files.
-      If you receive a `connection refused` error, or are still prompted for a password, see the [Troubleshooting section](#troubleshooting) for further guidance.
+      If you receive a `connection refused` error, or are still prompted for a password, see the [Troubleshooting `ssh` section](#troubleshooting-ssh) for further guidance.
 
 1. Return to your local development system, and navigate to your module's directory. For example, if you are developing a module named `my-module` in the home directory:
 
@@ -205,7 +205,7 @@ If you are developing a module for a different target architecture than your dev
 
 When you are satisfied that your module is ready for release, follow the steps to [upload your module](/registry/upload/) to the Viam registry, to facilitate streamlined deployment to other machines or to make it available to the Viam community.
 
-## Troubleshooting
+## Troubleshooting `ssh`
 
 ### Connection refused
 
