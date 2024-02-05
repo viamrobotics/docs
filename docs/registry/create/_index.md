@@ -67,6 +67,10 @@ If you do not intend to [upload your module](/registry/upload/) to the [Viam reg
 
 See [Naming your model](/registry/#naming-your-model-namespacerepo-namename) for more information.
 
+### (Optional) generate your Python module scaffolding
+
+If you are writing in Python, you can use this [Viam module generator](https://github.com/viam-labs/generator-viam-module/tree/main) to generate the scaffolding for a module with one resource model.
+
 ### Write your new resource model definition
 
 Follow the instructions below to define the capabilities provided by your model, for the language you are using to write your module code:
@@ -1275,6 +1279,11 @@ For more information on building a module in C++, see the [C++ SDK Build Documen
 
 {{% /tab %}}
 {{% /tabs %}}
+
+## (Optional) create a README
+
+To provide usage instructions for any modular resources in your module, you should create a <file>README.md</file> file following this [template](https://github.com/viam-labs/generator-viam-module/blob/main/generators/app/templates/python/README.md).
+If you followed [the instructions to generate module scaffolding for a Python module](#optional-generate-your-python-module-scaffolding), the template file was generated for you with the environment variables filled in.
 
 ## Deploy your module
 
