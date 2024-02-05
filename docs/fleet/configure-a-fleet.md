@@ -9,22 +9,23 @@ tags: ["fleet management", "cloud", "app"]
 
 If you have multiple identical or similar machines, use a _fragment_ to configure all of the machines at the same time.
 
-Fragments are a way of sharing and managing identical [configuration](/build/configure/) files across multiple machines.
-When changes are made to the fragment, those changes are automatically carried to all machines that include the fragment in their config.
+Fragments are a way of sharing and managing [machine configurations](/build/configure) across multiple machines.
+When changes are made to the fragment, the Viam app automatically applies the changes to all machines that include the fragment in their config.
 
 If there are differences between your machines, you can use a fragment to quickly configure the {{< glossary_tooltip term_id="resource" text="resources" >}} that are the same between machines.
-You can configure the differing resources separately, outside of the fragment.
+You can then configure the differing resources separately, outside of the fragment.
+For example, if you have multiple identical rovers but one has an arm attached, you can add the rover configuration fragment (including the motors and base components), and then configure the arm on just that one rover.
 
 ## Create a fragment
 
-Before you create a fragment, you'll need a configuration file.
+Before you create a fragment, you'll need a JSON configuration file.
 Start by [configuring](/build/configure/) one of your identical machines on its **CONFIG** tab in the [Viam app](https://app.viam.com).
 Now you're ready to share that config by creating a fragment.
 
 To create your own private fragment, go to [app.viam.com/fragments](https://app.viam.com/fragments) or click on **Fragments** in the left navigation bar on the [FLEET page](https://app.viam.com/robots).
 
 1. Enter a name for your new fragment and click **Add fragment**.
-2. Add the JSON configuration in the config field.
+2. Paste the copied JSON configuration in the config field.
    You can get the JSON configuration from the [**CONFIG** tab](/build/configure/#the-config-tab) of your first machine by switching to **Raw JSON** mode.
 3. Click **SAVE FRAGMENT**.
 
@@ -32,8 +33,6 @@ To create your own private fragment, go to [app.viam.com/fragments](https://app.
 
 ## Add a fragment to a machine
 
-You can add a fragment to a machine's config and also add other configuration outside the fragment.
-For example, if you have multiple identical rovers but one has an arm attached, you can add the rover configuration fragment (including the motors and base components), and then configure the arm on just that one rover.
 
 To add a fragment to a machine:
 
@@ -56,7 +55,7 @@ In the `Raw JSON` configuration, you will see the fragment ID in the `fragments`
 }
 ```
 
-For an example of adding a fragment to a machine, see the [Viam Rover fragment tutorial](/get-started/try-viam/rover-resources/rover-tutorial-fragments/).
+For an example of adding a fragment to a machine, see the [Add a Rover Fragment to your Machine](/get-started/try-viam/rover-resources/rover-tutorial-fragments/).
 
 ## Modify the config of a machine that uses a fragment
 
