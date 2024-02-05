@@ -33,7 +33,6 @@ To create your own private fragment, go to [app.viam.com/fragments](https://app.
 
 ## Add a fragment to a machine
 
-
 To add a fragment to a machine:
 
 - Go to the **Fragments** subtab of your machine's **Config** tab on the [Viam app](https://app.viam.com).
