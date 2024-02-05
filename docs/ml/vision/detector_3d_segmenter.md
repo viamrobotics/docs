@@ -46,7 +46,7 @@ Add the vision service object to the services array in your raw JSON configurati
         "name": "<segmenter_name>",
         "type": "vision",
         "namespace": "rdk",
-        "model": "detector_3d_segmenter"
+        "model": "detector_3d_segmenter",
         "attributes": {
             "detector_name": "my_detector",
             "confidence_threshold_pct": 0.5,
@@ -67,7 +67,7 @@ Add the vision service object to the services array in your raw JSON configurati
         "name": "my_segmenter",
         "type": "vision",
         "namespace": "rdk",
-        "model": "detector_3d_segmenter"
+        "model": "detector_3d_segmenter",
         "attributes": {
             "detector_name": "my_detector",
             "confidence_threshold_pct": 0.5,
