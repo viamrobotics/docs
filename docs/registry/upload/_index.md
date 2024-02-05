@@ -1,6 +1,6 @@
 ---
-title: "Upload your own Modules to the Viam Registry"
-linkTitle: "Upload"
+title: "Upload your Own Modules to the Viam Registry"
+linkTitle: "Upload your module"
 weight: 20
 type: "docs"
 tags:
