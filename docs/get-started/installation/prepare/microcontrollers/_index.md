@@ -64,11 +64,12 @@ Configure your `esp32` board for your machine.
 
 ## Recommendations when using an SDK
 
-In some cases connection the ESP32 using an SDK can fail, be unstable or be slow, this is usually caused by the SDK background task use to monitor the connection to Micro-RDK.
-We recommend the following changes to the default settings when connecting to an ESP32 if you run into similar issues.
+In some cases your connection to the ESP32 with an SDK can fail, be unstable or be slow.
+This is usually caused by the SDK background task that monitors the connection to the micro-RDK.
+We recommend the following changes to the default settings when connecting to an ESP32 if you run into similar issues:
 
 {{< tabs >}}
-{{% tab name="Python SDK" %}}
+{{% tab name="Python" %}}
 
 ```python
 # Replace the connect function found in the cod sample tab with the following
@@ -96,7 +97,7 @@ async def connect():
 ```
 
 {{% /tab %}}
-{{% tab name="Golang SDK" %}}
+{{% tab name="Go" %}}
 
 ```go
 // Replace the call to client.New with the following block
@@ -125,7 +126,6 @@ if err != nil {
 
 {{% /tab %}}
 {{% /tabs %}}
-
 
 ## Troubleshooting
 
