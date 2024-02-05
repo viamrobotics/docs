@@ -1,5 +1,5 @@
 ---
-title: "Changelog 2"
+title: "Changelog"
 linkTitle: "Changelog"
 weight: 20
 draft: false
@@ -7,13 +7,11 @@ type: "docs"
 description: "A log of added features, improvements, and changes over time."
 aliases:
   - "/appendix/release-notes/"
-layout: "changelog2"
+layout: "changelog"
 outputs:
   - rss
   - html
 ---
-
-## December 2023
 
 {{% changelog date="2023-12-01" color="added" title="Filtered camera module" %}}
 
@@ -35,8 +33,6 @@ You can now run `viam-server` on a [Raspberry Pi 5](/components/board/pi5/) with
 Users can now have [access to different fleet management capabilities](/fleet/rbac/) depending on whether they are an owner or an operator of a given organization, location, or machine.
 
 {{% /changelog %}}
-
-## November 2023
 
 {{% changelog date="2023-11-01" color="added" title="Authenticate with location API key" %}}
 
@@ -60,14 +56,12 @@ To make it easier to iterate while training machine learning models from image d
 
 {{% /changelog %}}
 
-{{% changelog date="2023-11-01" color="improved" title="Role-based access control" %}}
+{{% changelog date="2023-11-01" color="improved" title="Manage users access" %}}
 
 You can now manage users access to machines, locations, and organizations.
 For more information, see [Access Control](/fleet/rbac/)
 
 {{% /changelog %}}
-
-## October 2023
 
 {{% changelog date="2023-10-01" color="added" title="Test an ML model in browser" %}}
 
@@ -103,8 +97,6 @@ This enhancement allows you to:
 - Deploy maps to machines
 
 {{% /changelog %}}
-
-## September 2023
 
 {{% changelog date="2023-09-01" color="added" title="Modular registry" %}}
 
@@ -142,8 +134,6 @@ To learn more, see [this tutorial](/tutorials/configure/pet-photographer/) on cr
 
 {{% /changelog %}}
 
-## August 2023
-
 {{% changelog date="2023-08-01" color="added" title="Configure a custom Linux board" %}}
 
 You can now use boards like the [Mediatek Genio 500 Pumpkin](https://ologicinc.com/portfolio/mediateki500/) that run Linux operating systems with the [`customlinux` board model](/components/board/customlinux/).
@@ -175,8 +165,6 @@ To use this feature:
 
 {{% /changelog %}}
 
-## July 2023
-
 {{% changelog date="2023-07-01" color="added" title="Apple SSO authentication" %}}
 
 Viam now supports sign-up/log-in through Apple Single Sign-On.
@@ -190,8 +178,6 @@ Note that currently, accounts from different SSO providers are treated separatel
 Arm models now support the [`GetKinematics` method](/components/arm/#getkinematics) in the arm API, allowing you to request and receive kinematic information.
 
 {{% /changelog %}}
-
-## June 2023
 
 {{% changelog date="2023-06-01" color="added" title="View sensor data within Viam" %}}
 
@@ -262,8 +248,6 @@ This update for object detection models [trained with the machine learning servi
 
 {{% /changelog %}}
 
-## May 2023
-
 {{% changelog date="2023-05-01" color="added" title="TypeScript SDK beta release" %}}
 
 The beta release of the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/) allows you to create a web interface to work with your machine, as well as create custom components and services.
@@ -330,8 +314,6 @@ Access these samples in the **Code sample** tab on your machine's page to connec
 You can manage the data synced to Viam's cloud with the new capability for bulk data deletion on the **Data** tab.
 
 {{% /changelog %}}
-
-## April 2023
 
 {{% changelog date="2023-04-01" color="changed" title="Vision service" %}}
 
@@ -695,8 +677,6 @@ You will need to first register the machine learning model file with the [ML mod
 
 {{% /changelog %}}
 
-## March 2023
-
 {{% changelog date="2023-03-01" color="added" title="Machine learning for image classification models" %}}
 
 You can now [train](/ml/train-model/) and [deploy](/ml/deploy/#create-an-ml-model-service) image classification models with the [data management service](/data/) and use your machine's image data directly within Viaml
@@ -747,8 +727,6 @@ The latest UI updates enable you to:
 
 {{% /changelog %}}
 
-## February 2023
-
 {{% changelog date="2023-02-01" color="added" title="Rover reuse in Try Viam" %}}
 
 You now have the option to reuse a machine config from a previous Try Viam session.
@@ -781,8 +759,6 @@ Find more information in the [micro-RDK documentation](/get-started/installation
 
 {{% /changelog %}}
 
-## January 2023
-
 {{% changelog date="2023-01-01" color="added" title="Remote control power input" %}}
 
 On your machine's **Control** tab on the [Viam app](https://app.viam.com/), you can now set the power of a [base](/components/base/).
@@ -809,8 +785,6 @@ The [motion service](/mobility/motion/) now supports capsule geometries.
 The UR5 arm model has been improved using this new geometry type.
 
 {{% /changelog %}}
-
-## December 2022
 
 {{% changelog date="2022-12-01" color="added" title="Modular resources" %}}
 
@@ -872,8 +846,6 @@ Previously, data synchronization used bidirectional streaming.
 Now is uses a simpler unary approach that is more performant on batched unary calls, is easier to load balance, and maintains ordered captures.
 
 {{% /changelog %}}
-
-## November 2022
 
 {{% changelog date="2022-11-01" color="changed" title="Camera configuration" %}}
 

@@ -2,7 +2,6 @@
   <title>{{ .Get "title" }}</title>
   <link>https://docs.viam.com/appendix/#{{ .Get "title" | anchorize }}</link>
   <pubDate>{{ .Get "date" | time.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
-  <author>Viam Documentation Team</author>
   <guid>https://docs.viam.com/appendix/#{{ .Get "title" | anchorize }}</guid>
   <description>{{ .Inner | transform.XMLEscape }}</description>
 </item>

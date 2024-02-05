@@ -3,10 +3,10 @@
   <head>
     {{ partial "head.html" . }}
   </head>
-  <body class="td-{{ .Kind }}{{ with .Page.Params.body_class }} {{ . }}{{ end }}">
-    <header>
-      {{ partial "navbar.html" . }}
-    </header>
+  <body
+    class="td-{{ .Kind }}{{ with .Page.Params.body_class }} {{ . }}{{ end }}"
+  >
+    <header>{{ partial "navbar.html" . }}</header>
     <div class="container-fluid td-outer">
       <div class="td-main">
         <div class="row flex-xl-nowrap">
@@ -14,65 +14,75 @@
             {{ partial "sidebar.html" . }}
           </aside>
           <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
-            {{ partial "page-meta-links.html" . }}
-            {{ partial "toc.html" . }}
+            {{ partial "page-meta-links.html" . }} {{ partial "toc.html" . }}
           </aside>
           <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
             <div id="rss-feed">
               <a target="_blank" title="Open RSS feed" aria-label="Open RSS feed" href="{{ .Permalink }}feed.xml">
-                <p><i class="fas fa-rss"></i> RSS Feed</p>
+                  <p><i class="fas fa-rss"></i> RSS Feed</p>
               </a>
             </div>
-            {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
+            {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial
+            "breadcrumb.html" . }}{{ end }}
             <div class="td-content">
               <h1>{{ .Title }}</h1>
-              <p>Use the following buttons to filter by change type:</p>
+              <p>
+                Use the menu on the right to browse changes by month, or use the
+                following buttons to filter by change type:
+              </p>
               <div id="changelog-menu">
                 <div id="changelog-filters">
-                  <button class="filter-button" onclick="filterSelection('changelog-improved')" id="improved-button">Improvements</button>
-                  <button class="filter-button" onclick="filterSelection('changelog-added')" id="added-button">Additions</button>
-                  <button class="filter-button" onclick="filterSelection('changelog-changed')" id="changed-button">Changes</button>
-                  <button class="filter-button" onclick="filterSelection('changelog-removed')" id="removed-button">Removals</button>
-                  <button class="filter-button active" onclick="filterSelection('all')" id="all-button">Show All</button>
+                  <button
+                    class="filter-button"
+                    onclick="filterSelection('changelog-improved')"
+                    id="improved-button"
+                  >
+                    Improvements
+                  </button>
+                  <button
+                    class="filter-button"
+                    onclick="filterSelection('changelog-added')"
+                    id="added-button"
+                  >
+                    Additions
+                  </button>
+                  <button
+                    class="filter-button"
+                    onclick="filterSelection('changelog-changed')"
+                    id="changed-button"
+                  >
+                    Changes
+                  </button>
+                  <button
+                    class="filter-button"
+                    onclick="filterSelection('changelog-removed')"
+                    id="removed-button"
+                  >
+                    Removals
+                  </button>
+                  <button
+                    class="filter-button active"
+                    onclick="filterSelection('all')"
+                    id="all-button"
+                  >
+                    Show All
+                  </button>
                 </div>
               </div>
-              <div style="clear:both;"><br /></div>
-              {{ $changelogItems := site.GetPage "page" "appendix/changelog" }}
-
-                {{ $pages := $changelogItems.Resources.ByType "page" }}
-                {{ with $pages }}
-                    {{ range $pages }}
-                            {{ $color := .Params.color }}
-                            {{ $title := .Title }}
-                <div class="filterable changelog-{{ $color }}">
-                  <div class="changelog changelog-outer">
-                    <div class="box-fit">
-                      <div>
-                        <span class="colorbox">{{ $color }}</span>
-                      </div>
-                      <div>
-                        <h3 id="{{ anchorize $title }}">{{ $title }}</h3>
-                      </div>
-                    </div>
-                      <div class="date-fit">
-                      <span class="datebox">{{ time.Format "Jan 2006" .Date }}</span>
-                      </div>
-                  </div>
-                	{{ .Content }}
-                  </div>
-                  {{ end }}
-              {{ end }}
-            <!-- <button onclick="toTop()" class="docsbutton" id="scrollButton" title="Go to top" style="visibility: hidden;">
-                <i style="font-size:large;" class="fas fa-chevron-up"></i>
-            </button> -->
-        </main>
+              {{ .Content }}
+            </div>
+          </main>
         </div>
       </div>
       {{ partial "footer.html" . }}
     </div>
-    {{ $jsChangelog := resources.Get "js/changelog.js" }}
-    {{ $jsChangelog := $jsChangelog | minify }}
-    <script type="text/javascript" src="{{ $jsChangelog.RelPermalink }}" crossorigin="anonymous"></script>
+    {{ $jsChangelog := resources.Get "js/changelog.js" }} {{ $jsChangelog :=
+    $jsChangelog | minify }}
+    <script
+      type="text/javascript"
+      src="{{ $jsChangelog.RelPermalink }}"
+      crossorigin="anonymous"
+    ></script>
     {{ partial "scripts.html" . }}
   </body>
 </html>

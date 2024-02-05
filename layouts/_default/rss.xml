@@ -39,7 +39,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <image>
       <url>https://docs.viam.com/favicons/apple-icon-144x144.png</url>
-      <title>Viam</title>
+      <title>{{ if eq .Title .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ .Site.Title }}{{ end }}</title>
       <link>https://docs.viam.com/{{- if eq .Title "Tutorials" }}tutorials/{{else}}{{if eq .Title "Changelog"}}appendix/changelog/{{end}}{{end}}</link>
     </image>
     <language>{{ site.Language.LanguageCode }}</language>{{ with $authorEmail }}
@@ -69,18 +69,6 @@
       </item>{{- end }}
     {{- end }}
     {{- if eq .Title "Changelog" }}
-      {{- $changelogItems := site.GetPage "page" "appendix/changelog" -}}
-      {{- $pages := $changelogItems.Resources.ByType "page" -}}
-      {{- range $pages }}<item>
-            <title>{{ .Title }}</title>
-            <link>https://docs.viam.com/appendix/#{{ anchorize .Title }}</link>
-            <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
-            {{- with $authorEmail }}<author>{{ . }}{{ with $authorName }} ({{ . }}){{ end }}</author>{{ end }}
-            <guid>https://docs.viam.com/appendix/#{{ anchorize .Title }}</guid>
-            <description>{{ .Summary | transform.XMLEscape | safeHTML }}</description>
-          </item>{{- end }}
-    {{- end}}
-    {{- if eq .Title "Changelog 2" }}
         {{- .Content | safeHTML -}}
     {{- end}}
   </channel>
