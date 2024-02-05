@@ -248,18 +248,14 @@ The following parameters are available for each pin object:
 | `pwm_chip_sysfs_dir` | string | Optional | Uniquely specifies which PWM device within [sysfs](https://en.wikipedia.org/wiki/Sysfs) this pin is connected to. See [PWM info tips](#tips-for-finding-pwm-information) below. <br> Example: `3290000.pwm`. |
 | `pwm_id` | integer | Optional | The line number on the PWM chip. See [PWM info tips](#tips-for-finding-pwm-information) below. <br> Example: `0`. |
 
-{{% alert title="Tip" color="tip" %}}
+{{% alert title="Note" color="note" %}}
 
 `pwm_chip_sysfs_dir` and `pwm_id` only apply to pins with hardware PWM supported and enabled.
 If your board supports hardware PWM, you will need to enable it if it is not enabled by default.
 This process depends on your specific board.
 
-{{% /alert %}}
-
-{{% alert title="Info" color="info" %}}
-
-The current version of `viam-server` creates PWM functionality with software.
-The implementation of hardware-based PWM for custom Linux boards is planned for release in the future, so we recommend that you add PWM information to your board now so that you do not need to update your config later.
+In current version of `viam-server`, each pin is dedicated to either GPIO or hardware PWM.
+If a pin is designated as a hardware PWM pin, you cannot use it as a GPIO pin.
 
 {{% /alert %}}
 

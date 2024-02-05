@@ -11,7 +11,7 @@ aliases:
 # SMEs: Bijan, vision team
 ---
 
-Combine the point clouds from multiple camera sources and project them to be from the point of view of target_frame:
+The `join_pointclouds` model combines the point clouds from multiple camera sources and projects them to be from the point of view of target_frame.
 
 {{< tabs name="Configure a Join Point Clouds View" >}}
 {{% tab name="Config Builder" %}}

@@ -11,9 +11,7 @@ aliases:
 # SMEs: Steve B
 ---
 
-You can use a `fake` base to test implementing a base component on your machine without any physical hardware.
-
-Configure a `fake` base as follows:
+Configure a `fake` base to test implementing a base component on your machine without any physical hardware:
 
 {{< tabs name="Configure a Fake Base" >}}
 {{% tab name="Config Builder" %}}
