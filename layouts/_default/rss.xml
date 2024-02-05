@@ -80,5 +80,8 @@
             <description>{{ .Summary | transform.XMLEscape | safeHTML }}</description>
           </item>{{- end }}
     {{- end}}
+    {{- if eq .Title "Changelog 2" }}
+        {{- .Content | safeHTML -}}
+    {{- end}}
   </channel>
 </rss>

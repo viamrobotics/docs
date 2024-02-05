@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}" class="no-js">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body
+    class="td-{{ .Kind }}{{ with .Page.Params.body_class }} {{ . }}{{ end }}"
+  >
+    <header>{{ partial "navbar.html" . }}</header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            {{ partial "sidebar.html" . }}
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            {{ partial "page-meta-links.html" . }} {{ partial "toc.html" . }}
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial
+            "breadcrumb.html" . }}{{ end }}
+            <div class="td-content">
+              <h1>{{ .Title }}</h1>
+              <p>
+                Use the menu on the right to browse changes by month, or use the
+                following buttons to filter by change type:
+              </p>
+              <div id="changelog-menu">
+                <div id="changelog-filters">
+                  <button
+                    class="filter-button"
+                    onclick="filterSelection('changelog-improved')"
+                    id="improved-button"
+                  >
+                    Improvements
+                  </button>
+                  <button
+                    class="filter-button"
+                    onclick="filterSelection('changelog-added')"
+                    id="added-button"
+                  >
+                    Additions
+                  </button>
+                  <button
+                    class="filter-button"
+                    onclick="filterSelection('changelog-changed')"
+                    id="changed-button"
+                  >
+                    Changes
+                  </button>
+                  <button
+                    class="filter-button"
+                    onclick="filterSelection('changelog-removed')"
+                    id="removed-button"
+                  >
+                    Removals
+                  </button>
+                  <button
+                    class="filter-button active"
+                    onclick="filterSelection('all')"
+                    id="all-button"
+                  >
+                    Show All
+                  </button>
+                </div>
+              </div>
+              {{ .Content }}
+            </div>
+          </main>
+        </div>
+      </div>
+      {{ partial "footer.html" . }}
+    </div>
+    {{ $jsChangelog := resources.Get "js/changelog.js" }} {{ $jsChangelog :=
+    $jsChangelog | minify }}
+    <script
+      type="text/javascript"
+      src="{{ $jsChangelog.RelPermalink }}"
+      crossorigin="anonymous"
+    ></script>
+    {{ partial "scripts.html" . }}
+  </body>
+</html>
