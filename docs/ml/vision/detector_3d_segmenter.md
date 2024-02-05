@@ -91,7 +91,7 @@ The following parameters are available for a `detector_3d_segmenter`.
 | `mean_k` | **Required** | An integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the minimum segment size. Start with 5% and go up if objects are still too noisy. If you don’t want to use the filtering, set the number to 0 or less. |
 | `sigma` | **Required** | A floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should usually be set between 1.0 and 2.0. 1.25 is usually a good default. If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower. |
 
-Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
+Press **Command+S** to save your config and proceed to [test your segmenter](#test-your-segmenter).
 
 ## Test your segmenter
 

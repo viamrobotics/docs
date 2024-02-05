@@ -113,7 +113,7 @@ The optional **saturation_cutoff_pct** and **value_cutoff_pct** attributes speci
 
 {{% /alert %}}
 
-Click **Save config**.
+Press **Command+S** to save your config.
 Proceed to [test your detector](#test-your-detector).
 
 ## Test your detector
@@ -146,7 +146,7 @@ If you intend to use the detector with a camera that is part of your machine, yo
    }
    ```
 
-3. After adding the components and their attributes, click **Save config**.
+3. After adding the components and their attributes, press **Command+S** to save your config.
 4. Navigate to the **CONTROL** tab, click on your transform camera and toggle it on.
    The transform camera will now show detections with bounding boxes around the object.
 

@@ -128,7 +128,7 @@ Enter `main` as the process name and click **Create process**.
 In the new process panel, enter `python3` as the executable, `main.py` as the argument, and the working directory of your board Pi as `/home/myboard/robot`.
 Click on **Add argument**.
 
-Click **Save config** in the bottom left corner of the screen.
+Press **Command+S** to save your config.
 
 {{% /tab %}}
 {{< /tabs >}}

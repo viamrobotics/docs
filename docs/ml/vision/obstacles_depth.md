@@ -125,7 +125,7 @@ If you want to identify multiple boxes over the flat plane with your segmenter:
   - You can get those parameters from your camera through the [camera API](/components/camera/#getproperties).
 - The segmenter now returns multiple boxes within the `GeometryInFrame` object it captures.
 
-Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
+Press **Command+S** to save your config and proceed to [test your segmenter](#test-your-segmenter).
 
 ## Test your segmenter
 

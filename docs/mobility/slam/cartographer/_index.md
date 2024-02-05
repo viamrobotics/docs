@@ -123,7 +123,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
    If you would like to tune additional Cartographer parameters, you can expand **Show additional parameters**.
    See the [`config_params`](#config_params) section for more information on the other parameters.
 
-   To save your changes, click **Save config** at the bottom of the page.
+   To save your changes, press **Command+S**.
 
    Check the **LOGS** tab of your machine in the Viam app to make sure your RPlidar has connected and no errors are being raised.
 

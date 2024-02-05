@@ -85,13 +85,14 @@ To add a modular [component](/components/) from the Viam registry to your machin
    Be sure the modular component you select supports the [platform](/fleet/cli/#using-the---platform-argument) you intend to use it with, such as `linux arm64`.
    You can see which platforms the module supports at bottom of the module information screen before you add it.
 
-When you add a module from the Viam registry, the custom modular component it provides appears under the **Components** subtab like any other component.
-You can also find [the underlying module](#edit-the-configuration-of-a-module-from-the-viam-registry) listed as **Deployed** under the **Modules** subtab.
+When you add a modular component from the registry, it appears on the **CONFIGURE** tab like any other component.
 
-If the module requires you to configure specific **Attributes**, click the **URL** link in the [module's configuration pane](#edit-the-configuration-of-a-module-from-the-viam-registry) to view the specific attribute requirements on the module's GitHub page.
+If the component requires you to configure specific **Attributes**, navigate to the **CONFIGURE** tab and hover over the component in the machine {{< glossary_tooltip term_id="part" text="part" >}} tree in the upper left-hand corner.
+Click on the **...** menu and select **Go to homepage** to view the specific attribute requirements on the module's GitHub page.
 
-To delete a module added from the Viam registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Modules** subtab of the machine's **Config** tab.
-Deleting a module _does not_ delete any configured modular resources it provides.
+To delete a modular component, navigate to the component's card on the **CONFIGURE** tab.
+Click on the **...** and click **Delete**.
+Confirm your selection.
 
 ### Add a modular service from the Viam registry
 
@@ -114,13 +115,14 @@ To add a modular [service](/services/) from the Viam registry to your machine:
    Be sure the modular service you select supports the [platform](/fleet/cli/#using-the---platform-argument) you intend to use it with, such as `linux arm64`.
    You can see which platforms the module supports at bottom of the module information screen before you add it.
 
-When you add a module from the Viam registry, the custom modular service it provides appears under the **Services** subtab like any other service.
-You can also find [the module itself](#edit-the-configuration-of-a-module-from-the-viam-registry) listed as **Deployed** under the **Modules** subtab.
+When you add a modular service from the registry, it appears on the **CONFIGURE** tab like any other service.
 
-If the module requires you to configure specific **Attributes**, click the **URL** link in the [module's configuration pane](#edit-the-configuration-of-a-module-from-the-viam-registry) to view the specific attribute requirements on the module's GitHub page.
+If the component requires you to configure specific **Attributes**, navigate to the **CONFIGURE** tab and hover over the service in the machine {{< glossary_tooltip term_id="part" text="part" >}} tree in the upper left-hand corner.
+Click on the **...** menu and select **Go to homepage** to view the specific attribute requirements on the module's GitHub page.
 
-To delete a module added from the Viam registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Services** tab.
-Deleting a module _does not_ delete any configured modular resources it provides.
+To delete a modular service, navigate to the service's card on the **CONFIGURE** tab.
+Click on the **...** and click **Delete**.
+Confirm your selection.
 
 ### Add additional modular resources from a registry module
 
@@ -202,6 +204,8 @@ The custom model is configured as a component with the name "my-realsense".
 
 {{% /tab %}}
 {{% /tabs %}}
+
+<!-- TODO R2D2: this section must be updated once modules subtab parity is achieved (DOCS-1782) -->
 
 ## Edit the configuration of a module from the Viam registry
 
@@ -406,7 +410,7 @@ You can also add the module directly, without first adding its modular component
 1. Enter a **Name** for this instance of your modular resource.
 1. Enter the [module's executable path](/registry/create/#compile-or-package-your-module).
    This path must be the absolute path to the executable on your machine's filesystem.
-1. Then, click the **Add module** button, and click **Save config**.
+1. Then, click the **Add module** button, and press **Command+S** to save your config.
 
    {{<imgproc src="registry/configure/add-local-module-csi-cam.png" resize="600x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
 
