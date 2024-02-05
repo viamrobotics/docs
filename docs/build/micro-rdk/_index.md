@@ -4,6 +4,7 @@ linkTitle: "Use Microcontrollers"
 weight: 60
 type: "docs"
 description: "The micro-RDK is a lightweight version of the Robot Development Kit which can run on resource-limited embedded systems."
+images: ["/get-started/installation/thumbnails/esp32-espressif.png"]
 tags: ["server", "rdk"]
 no_list: true
 aliases:
