@@ -139,7 +139,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ![detectionCam component panel with type camera and model transform, Attributes section filled with source and pipeline information.](/tutorials/tipsy/app-detection-after.png)
 
-## Set up the Kasa Smart Plug
+## Set up the Kasa smart plug
 
 1. Plug your smart plug into any power outlet and turn it on by pressing the white button on the smart plug.
    To connect the plug to your wifi, download the Kasa Smart app from the [App Store](https://apps.apple.com/us/app/kasa-smart/id1034035493) or [Google Play](https://play.google.com/store/apps/details?id=com.tplink.kasa_android) to your mobile phone.
@@ -237,7 +237,7 @@ if d.class_name.lower() == "person":
 
 {{% /alert %}}
 
-## Next Steps
+## Next steps
 
 In this tutorial, you learned how to build an object detection robot that turns your lights on using Viam.
 You could use this same concept to build a smart fan that only turns on if you are sitting at your desk working, turn on the lights in your bathroom mirror only when you are in front of the sink, or activate a pet feeder every time your cat looks at the camera.

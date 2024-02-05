@@ -751,7 +751,7 @@ END MARKETING CSS
 /* START CSS to ensure lists within columns of markdown aren't indented */
 
 td > ul, td > ol {
-  padding-inline-start: 0;
+  padding-inline-start: 1.5em;
 }
 
 /* END CSS to ensure lists within columns of markdown aren't indented */

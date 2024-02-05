@@ -105,7 +105,7 @@ If you ever need to rotate this key, click on the **Generate Key** button to gen
 Viam supports flexible key rotation with up to two keys in use at one time.
 After generating a new secret key, update all references to the key in your code as soon as possible and then remove the old key.
 
-#### Share a location with Viam Support
+#### Share a location with Viam support
 
 If you request support, you must share your location with the Viam Support team.
 To do so, navigate to the location you need support with and click, **Add Viam support**.

@@ -15,7 +15,7 @@ This SDK-based application is typically run on either the main part of the machi
 
 Below, we describe the flow of information through a Viam-based multipart machine and then get into the specifics of what backs these connections and communications APIs.
 
-## High-Level Inter-Robot/SDK Communication
+## High-level inter-robot/SDK communication
 
 To begin, let's define our machine's topology:
 
@@ -97,7 +97,7 @@ RDK Part 2 will be unaware of the actual plan and instead will only receive dist
 <li>RDK Part 1 returns an acknowledgement of the Motion Move request to the SDK application.</li>
 </ol>
 
-## Low-Level Inter-Robot/SDK Communication
+## Low-level inter-robot/SDK communication
 
 All component and service types in the RDK, and the Viam API for that matter, are represented as [Protocol Buffers (protobuf)](https://developers.google.com/protocol-buffers) services.
 protobuf is a battle tested Interface Description Language (IDL) that allows for specifying services, their methods, and the messages that comprise those methods.

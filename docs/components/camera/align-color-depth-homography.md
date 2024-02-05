@@ -11,7 +11,8 @@ aliases:
 # SMEs: Bijan, vision team
 ---
 
-When you have a depth image and you need it to overlay on top of a color image exactly, a homography matrix can apply the necessary distortions to the depth image for it to overlap.
+When you have a depth image and you need it to overlay on top of a color image exactly, a homography matrix can apply the necessary distortions to the depth image to make it align with the color image.
+Use the `align_color_depth_homography` camera model to do this alignment.
 
 {{< tabs name="Configure an Align Color Depth Homography Camera" >}}
 {{% tab name="Config Builder" %}}
@@ -117,6 +118,6 @@ The following attributes are available for `align_color_depth_homography` views:
 
 {{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< readfile "/static/include/components/camera-model-next-steps.md" >}}

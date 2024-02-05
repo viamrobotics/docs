@@ -1,5 +1,5 @@
 ---
-title: "Integrate Viam with ChatGPT to create a companion robot"
+title: "Integrate Viam with ChatGPT to Create a Companion Robot"
 linkTitle: "AI Companion Robot"
 type: "docs"
 tags:
@@ -313,7 +313,7 @@ For example:
 
 This opens up some really interesting possibilities, like having your robot talk to you in a voice that sounds like your favorite celebrity, or having your robot tell your cat to "Get off of the table!" in an AI version of your own voice.
 
-## Alternative Option: Configure Viam Labs speech module
+## Alternative option: configure Viam Labs speech module
 
 As an alternate option for adding an AI speech integration to your robot, [the Viam Registry](https://app.viam.com/registry) provides [the `speech` module](https://app.viam.com/module/viam-labs/speech), a modular [service](/services/) providing text-to-speech (TTS) and speech-to-text (STT) capabilities for robots running on the Viam platform.
 Usage is documented on [Viam Labs' GitHub](https://github.com/viam-labs/speech).

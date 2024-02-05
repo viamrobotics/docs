@@ -1,5 +1,5 @@
 ---
-title: "Label data and create datasets"
+title: "Label Data and Create Datasets"
 linkTitle: "Create Datasets"
 description: "Label data and create datasets for managing data and creating machine learning models."
 weight: 39
@@ -57,7 +57,7 @@ To see all the images that have bounding boxes, you can filter your dataset by s
 
 To delete a bounding box, click the cross next to the corresponding label.
 
-### Image Tags
+### Image tags
 
 You can use tags to [create classification models](/ml/train-model/#train-a-model) for images.
 For example, if you would like to create a model that identifies an image of a star in a set of images, tag each image containing a star with a `star` tag.
@@ -130,7 +130,7 @@ Alternatively, you can also click on the dataset and rename it from the three-do
 To delete a dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets), right click on the dataset and click on **Delete** in the menu that appears.
 Alternatively, you can also click on the dataset and delete it from the three-dot icon next to the dataset name.
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/ml/train-model/" %}}

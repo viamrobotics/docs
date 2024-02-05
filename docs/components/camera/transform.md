@@ -11,7 +11,7 @@ aliases:
 # SMEs: Bijan, vision team
 ---
 
-Use the transform model to apply transformations to input source images.
+Use the `transform` model to apply transformations to input source images.
 The transformations are applied in the order they are written in the `pipeline`.
 
 {{< tabs name="Example transform view" >}}
@@ -407,7 +407,7 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 
 {{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/ml/vision" %}}

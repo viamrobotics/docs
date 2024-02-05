@@ -106,7 +106,7 @@ The following is a full example config:
 }
 ```
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/components/camera/transform/" %}}

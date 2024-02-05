@@ -32,7 +32,7 @@ If you click on an image or a file, a **Details** panel appears on the right wit
 
 ![Data view with an image selected](/data/data_view.png)
 
-## Filter Data
+## Filter data
 
 On the [**DATA** page in the Viam app](https://app.viam.com/data/view), you can filter data in the left **Filtering** panel.
 You can filter by several categories including machine name, location, or timestamp range.
@@ -44,7 +44,7 @@ For example, you could use the [`BinaryDataByFilter`](/build/program/apis/data-c
 
 To query your data using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} instead, see [Query Data using SQL / MQL](/data/query/).
 
-## Delete Data
+## Delete data
 
 You can delete image or file data from the [Viam app](https://app.viam.com).
 To delete image data, click on an image in the **Images** subtab and click on **DELETE SELECTED**.
@@ -56,7 +56,7 @@ To delete all image, file, or sensor data respectively, click on **DELETE ALL** 
 
 You can also delete data using the [Viam CLI](/fleet/cli/).
 
-## Next Steps
+## Next steps
 
 To export your captured data from the cloud, see [Export Data](../export/).
 

@@ -37,6 +37,6 @@ Then, to export data from the data management service in the cloud:
 
 You can see more information about exporting data in the [Viam CLI documentation](/fleet/cli/#data).
 
-## Next Steps
+## Next steps
 
 For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).

@@ -224,7 +224,7 @@ Sum blocks sum a number of Signals following a set sum_string.
 }
 ```
 
-### Trapezoidal Velocity Profile Generator
+### Trapezoidal velocity profile generator
 
 Position control of a motor can be achieved using the Trapezoidal Velocity Profile generator.
 

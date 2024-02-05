@@ -22,7 +22,7 @@ You can use the following built-in model of the service:
 | ----- | ----------- |
 | [`"tflite_cpu"` model](#create-an-ml-model-service) | Runs a tensorflow lite model that you have [trained](/ml/train-model/) or [uploaded](/ml/upload-model/). |
 
-## Used With
+## Used with
 
 {{< cards >}}
 {{< relatedcard link="/ml/vision/">}}
@@ -33,7 +33,7 @@ You can use the following built-in model of the service:
 After deploying your model, you need to configure an additional service to use the deployed model.
 For example, you can configure an [`mlmodel` vision service](/ml/vision/) and a [`transform` camera](/components/camera/transform/) to visualize the predictions your model makes.
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:service:mlmodel" type="mlmodel">}}
 
@@ -159,7 +159,7 @@ The model package config looks like this:
 }
 ```
 
-### `tflite_cpu` Limitations
+### `tflite_cpu` limitations
 
 We strongly recommend that you package your `tflite_cpu` model with metadata in [the standard form](https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs).
 
@@ -405,7 +405,7 @@ See the [Python documentation](https://python.viam.dev/autoapi/viam/services/mlm
 
 See [Program a machine](/build/program/) for more information about using an SDK to control your machine.
 
-## Next Steps
+## Next steps
 
 To make use of your model with your machine, add a [vision service](/ml/vision/) or a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}:
 

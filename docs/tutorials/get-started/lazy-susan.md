@@ -55,7 +55,7 @@ You will also need the following tools:
 - Double-sided tape (optional, but recommended)
 - Wire cutters/scissors
 
-## Hardware Setup
+## Hardware setup
 
 A brushed DC motor is a motor that converts electrical current into mechanical energy.
 In a brushed DC motor, the rotor spins 180-degrees when an electric current is applied.
@@ -86,7 +86,7 @@ The Raspberry Pi is powered by its own 5V power cable.
 Connect the flange coupler to your motor, and use the M3 screws and screwdriver to fix the flange coupler to your circular board or plate.
 Turn on the Raspberry Pi and move on to setting up your software.
 
-### Software Setup
+### Software setup
 
 If you have not already done so, follow the [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/) to prepare your Pi to connect your robot to the Viam app.
 Once your Pi is ready, `ssh` into it from your computer.

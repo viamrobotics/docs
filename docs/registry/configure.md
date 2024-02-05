@@ -1,5 +1,5 @@
 ---
-title: "Find a module for your machine"
+title: "Find a Module for your Machine"
 linkTitle: "Find modules"
 weight: 10
 type: "docs"
@@ -528,7 +528,7 @@ You can send commands to the base according to the Viam [base API](/components/b
 {{% /tab %}}
 {{% /tabs %}}
 
-## Next Steps
+## Next steps
 
 Now that you've configured a modular resource, test it with the [Control tab](/fleet/#remote-control) and program it with the [Viam SDKs](/build/program/apis/).
 

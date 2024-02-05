@@ -180,7 +180,7 @@ Each time the camera detects the color, you will see a red rectangle around the 
 
 Scroll down in the **Control** tab and select the dedicated section for detectionCam to access its live stream.
 
-## Next Steps
+## Next steps
 
 If you're ready for more, try making your rover detect other colors.
 You could also write some code with a Viam SDK to [make your Viam Rover move in a square](/tutorials/get-started/try-viam-sdk/).
