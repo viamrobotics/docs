@@ -124,59 +124,19 @@ If you are developing a module for a different target architecture than your dev
 
          For example, on macOS, you should see files similar to `/Users/username/.ssh/id_ed25519` and `/Users/username/.ssh/id_ed25519.pub`.
 
-      1. Copy the `.pub` file only to your target remote system using `scp`.
+      1. Copy the `.pub` file only to your target remote system using the `ssh-copy-id` command.
          For example, to transfer a `id_ed25519.pub` file from a macOS machine to a remote Linux system named `my-pi.local` for the user `username`, you could use the following commands:
 
          ```sh { class="command-line"}
-         scp ~/.ssh/id_ed25519.pub username@my-pi.local:/home/username/.ssh/
+         ssh-copy-id -i ~/.ssh/id_ed25519.pub username@my-pi.local
          ```
 
+         Provide the `ssh` password for your user account when prompted.
          Do not copy the private key file, which does not have a file extension.
 
-      1. Then, start an `ssh` session to your remote system, and verify that the following are in place:
-
-         - Make sure that the public key you just transferred has the correct file permissions:
-
-           - First, check the current permissions:
-
-             ```sh { class="command-line"}
-             ls -l ~/.ssh/id_ed25519.pub
-             ```
-
-           - If the permissions shown are not exactly `-rw-r--r--`, use the following command to set them appropriately:
-
-             ```sh { class="command-line"}
-             chmod 644 ~/.ssh/id_ed25519.pub
-             ```
-
-         - Make sure that the `sshd` configuration for your remote system includes the following settings:
-
-           ```sh
-           PubkeyAuthentication yes
-           ```
-
-           For example, on Ubuntu, you can check your `sshd` configuration with the following command:
-
-           ```sh { class="command-line"}
-           grep -i pubkey /etc/ssh/sshd_config
-           ```
-
-           - If this value is set to `no`, change this value to `yes`.
-           - If this value is prepended by `#` character, remove it so that the line reads exactly: `PubkeyAuthentication yes`.
-
-           If you needed to change this value in either way listed, restart the `sshd` service from your `ssh` session to your remote system.
-           For example, if your remote system is Linux, you would run the following on the remote system:
-
-           ```sh { class="command-line"}
-           sudo systemctl restart sshd
-           ```
-
-           Note that restarting the `sshd` service in this manner will disconnect your current `ssh` session to the remote system.
-           For more information on the `sshd` service and related service management, please consult the documentation for your specific operating system.
-
-   1. Verify that you can now make a new `ssh` connection to remote system without having to enter a password.
-      If you are prompted for a password again, ensure you have performed the steps above correctly.
+   1. Then, start a new `ssh` session to your remote system, and verify that you are able to connect without being prompted for a password.
       Mutagen requires a working, passwordless `ssh` configuration in order to be able to sync files.
+      If you receive a `connection refused` error, or are still prompted for a password, see the [Troubleshooting section](#troubleshooting) for further guidance.
 
 1. Return to your local development system, and navigate to your module's directory. For example, if you are developing a module named `my-module` in the home directory:
 
@@ -244,3 +204,76 @@ If you are developing a module for a different target architecture than your dev
 {{% /tabs %}}
 
 When you are satisfied that your module is ready for release, follow the steps to [upload your module](/registry/upload/) to the Viam registry, to facilitate streamlined deployment to other machines or to make it available to the Viam community.
+
+## Troubleshooting
+
+### Connection refused
+
+If you receive `connection refused` or similar messages when attempting to connect to the remote system using your `ssh` key, ensure the permissions of the key are correct:
+
+- Start an `ssh` session to your remote system using your password.
+
+- Make sure that the public key you created with `ssh-keygen` and copied with `ssh-copy-id` has the correct file permissions on the remote filesystem:
+
+  ```sh { class="command-line"}
+  ls -l ~/.ssh/id_ed25519.pub
+  ```
+
+- If the permissions shown are not exactly `-rw-r--r--`, use the following command to set them appropriately:
+
+  ```sh { class="command-line"}
+  chmod 644 ~/.ssh/id_ed25519.pub
+  ```
+
+Then test your `ssh` connection once more to ensure that you are connected without being prompted for a password.
+
+### Prompted for `ssh` account password
+
+If you are able to `ssh` to the remote system, but are still prompted for your password each time you attempt to connect with a message similar to `username@amy-pi.local's password:`, check your remote system's `sshd` configuration:
+
+- Start an `ssh` session to your remote system using your password.
+
+- Make sure that the `sshd` configuration for your remote system includes the following settings:
+
+  ```sh
+  PubkeyAuthentication yes
+  ```
+
+  For example, on Ubuntu, you can check your `sshd` configuration with the following command:
+
+  ```sh { class="command-line"}
+  grep -i pubkey /etc/ssh/sshd_config
+  ```
+
+  - If this value is set to `no`, change this value to `yes`.
+  - If this value is prepended by `#` character, remove it so that the line reads exactly: `PubkeyAuthentication yes`.
+
+- If you needed to change this value in either way listed, restart the `sshd` service from your `ssh` session to your remote system.
+  For example, if your remote system is Linux, you would run the following on the remote system:
+
+  ```sh { class="command-line"}
+  sudo systemctl restart sshd
+  ```
+
+  Note that restarting the `sshd` service in this manner will disconnect your current `ssh` session to the remote system.
+  For more information on the `sshd` service and related service management, please consult the documentation for your specific operating system.
+
+Then test your `ssh` connection once more to ensure that you are connected without being prompted for a password.
+
+### Prompted for `ssh` key passphrase
+
+If you are prompted with a message similar to `Enter passphrase for key '/Users/username/.ssh/id_ed25519'`, add your `ssh` key passphrase to your local macOS keychain:
+
+- For macOS 12.0 or later, run the following on your local macOS system:
+
+  ```sh { class="command-line"}
+  ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+  ```
+
+- For macOS 11.0 or previous, run the following on your local macOS system:
+
+  ```sh { class="command-line"}
+  ssh-add -K ~/.ssh/id_ed25519
+  ```
+
+Then test your `ssh` connection once more to ensure that you are connected without being prompted for a password.
