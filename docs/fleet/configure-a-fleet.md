@@ -9,7 +9,7 @@ tags: ["fleet management", "cloud", "app"]
 
 If you have multiple identical or similar machines, use a _fragment_ to configure all of the machines at the same time.
 
-Fragments are a way of sharing and managing [machine configurations](/build/configure) across multiple machines.
+Fragments are a way of sharing and managing [machine configurations](/build/configure/) across multiple machines.
 When changes are made to the fragment, the Viam app automatically applies the changes to all machines that include the fragment in their config.
 
 If there are differences between your machines, you can use a fragment to quickly configure the {{< glossary_tooltip term_id="resource" text="resources" >}} that are the same between machines.
