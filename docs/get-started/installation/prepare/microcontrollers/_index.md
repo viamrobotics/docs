@@ -72,7 +72,7 @@ We recommend the following changes to the default settings when connecting to an
 {{% tab name="Python" %}}
 
 ```python
-# Replace the connect function found in the cod sample tab with the following
+# Replace the connect function found in the code sample tab with the following
 async def connect():
     opts = RobotClient.Options(
         # Micro-RDK configures once at boot,
