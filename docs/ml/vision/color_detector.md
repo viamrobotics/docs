@@ -1,5 +1,5 @@
 ---
-title: "Configure a Color Detector"
+title: "Configure a color_detector"
 linkTitle: "color_detector"
 weight: 10
 type: "docs"
@@ -12,7 +12,7 @@ aliases:
 # SMEs: Bijan, Khari
 ---
 
-A heuristic detector that draws boxes around objects according to their hue.
+The `color_detector` vision service model is a heuristic detector that draws boxes around objects according to their hue.
 Color detectors do not detect black, perfect grays (grays where the red, green, and blue color component values are equal), or white.
 It only detects hues found on the color wheel.
 

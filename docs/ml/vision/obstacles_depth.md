@@ -10,8 +10,8 @@ tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 
 _Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#april-2023)_
 
-This segmenter model is for depth cameras, and is best for motion planning with transient obstacles.
-Use the segmenter to identify well separated objects above a flat plane.
+The `obstacles_depth` vision service model is for depth cameras, and is best for motion planning with transient obstacles.
+Use this segmenter to identify well separated objects above a flat plane.
 
 Configure an `obstacles_depth` segmenter:
 
