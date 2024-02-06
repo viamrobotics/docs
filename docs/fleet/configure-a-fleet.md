@@ -10,7 +10,7 @@ tags: ["fleet management", "cloud", "app"]
 If you have multiple identical or similar machines, use a _fragment_ to configure all of the machines at the same time.
 
 Fragments are a way of sharing and managing [machine configurations](/build/configure/) across multiple machines.
-When changes are made to the fragment, the Viam app automatically applies the changes to all machines that include the fragment in their config.
+When you or one of your collaborators changes the fragment, the Viam app automatically applies the changes to all machines that include the fragment in their config.
 
 If there are differences between your machines, you can use a fragment to quickly configure the {{< glossary_tooltip term_id="resource" text="resources" >}} that are the same between machines.
 You can then configure the differing resources separately, outside of the fragment.
@@ -19,14 +19,16 @@ For example, if you have multiple identical rovers but one has an arm attached, 
 ## Create a fragment
 
 Before you create a fragment, you'll need a JSON configuration file.
-Start by [configuring](/build/configure/) one of your identical machines on its **CONFIG** tab in the [Viam app](https://app.viam.com).
+The easiest way to create a config file is to [configure](/build/configure/) one of your  machines on its **CONFIG** tab in the [Viam app](https://app.viam.com).
+Configure all resources that you want to have for all your machines.
+If there are any additional resources that you do not want to share with all machines, do not configure them until after you've created the fragment.
+When you've finished configuring the resources, go to the **JSON** tab and copy the entire JSON config.
 Now you're ready to share that config by creating a fragment.
 
 To create your own private fragment, go to [app.viam.com/fragments](https://app.viam.com/fragments) or click on **Fragments** in the left navigation bar on the [FLEET page](https://app.viam.com/robots).
 
 1. Enter a name for your new fragment and click **Add fragment**.
 2. Paste the copied JSON configuration in the config field.
-   You can get the JSON configuration from the [**CONFIG** tab](/build/configure/#the-config-tab) of your first machine by switching to **Raw JSON** mode.
 3. Click **SAVE FRAGMENT**.
 
 ![Fragment creation view](/fleet/fragment-view.png)
