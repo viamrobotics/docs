@@ -13,7 +13,9 @@ outputs:
   - html
 ---
 
-{{% changelog date="2023-12-01" color="added" title="Filtered camera module" %}}
+<!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
+
+{{% changelog date="2023-12-31" color="added" title="Filtered camera module" %}}
 
 Viam has added a [`filtered-camera` module](https://app.viam.com/module/erh/filtered-camera) that selectively captures and syncs only the images that match the detections of an ML model.
 For example, you could train an ML model that is focused on sports cars, and only capture images from the camera feed when a sports car is detected in the frame.
@@ -22,19 +24,19 @@ Check out [this tutorial](/tutorials/projects/filtered-camera/) for more informa
 
 {{% /changelog %}}
 
-{{% changelog date="2023-12-01" color="added" title="Raspberry Pi 5 Support" %}}
+{{% changelog date="2023-12-31" color="added" title="Raspberry Pi 5 Support" %}}
 
 You can now run `viam-server` on a [Raspberry Pi 5](/components/board/pi5/) with the new board model [`pi5`](/components/board/pi5/).
 
 {{% /changelog %}}
 
-{{% changelog date="2023-12-01" color="added" title="Role-based access control" %}}
+{{% changelog date="2023-12-31" color="added" title="Role-based access control" %}}
 
 Users can now have [access to different fleet management capabilities](/fleet/rbac/) depending on whether they are an owner or an operator of a given organization, location, or machine.
 
 {{% /changelog %}}
 
-{{% changelog date="2023-11-01" color="added" title="Authenticate with location API key" %}}
+{{% changelog date="2023-11-30" color="added" title="Authenticate with location API key" %}}
 
 You can now use [API keys for authentication](/build/program/#authenticate).
 API keys allow you to assign the minimum required permissions for usage.
@@ -42,7 +44,7 @@ Location secrets, the previous method of authentication, is deprecated and will 
 
 {{% /changelog %}}
 
-{{% changelog date="2023-11-01" color="added" title="Queryable sensor data" %}}
+{{% changelog date="2023-11-30" color="added" title="Queryable sensor data" %}}
 
 Once you have added the data management service and synced tabular data, such as sensor readings, to the Viam app, you can now run queries against both captured tabular data as well as its metadata using either SQL or MQL.
 
@@ -50,20 +52,20 @@ For more information, see [Query Data with SQL or MQL](/data/query/).
 
 {{% /changelog %}}
 
-{{% changelog date="2023-11-01" color="changed" title="Model training from datasets" %}}
+{{% changelog date="2023-11-30" color="changed" title="Model training from datasets" %}}
 
 To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/data/dataset/).
 
 {{% /changelog %}}
 
-{{% changelog date="2023-11-01" color="improved" title="Manage users access" %}}
+{{% changelog date="2023-11-30" color="improved" title="Manage users access" %}}
 
 You can now manage users access to machines, locations, and organizations.
 For more information, see [Access Control](/fleet/rbac/)
 
 {{% /changelog %}}
 
-{{% changelog date="2023-10-01" color="added" title="Test an ML model in browser" %}}
+{{% changelog date="2023-10-31" color="added" title="Test an ML model in browser" %}}
 
 After you upload and train a machine learning model, you can test its results in the **Data** tab.
 
@@ -76,7 +78,7 @@ The current version of this feature exclusively supports classification models.
 
 {{% /changelog %}}
 
-{{% changelog date="2023-10-01" color="added" title="PLC support" %}}
+{{% changelog date="2023-10-31" color="added" title="PLC support" %}}
 
 The Viam platform now supports the [Revolution Pi line of PLCs](https://revolutionpi.com/) from KUNBUS in the form of a [module](https://app.viam.com/module/viam-labs/viam-revolution-pi).
 This collaboration allows you to leverage the Raspberry Pi-based Revolution Pi, which runs on Linux and has a [specially designed I/O modules](https://www.raspberrypi.com/products/compute-module-4/?variant=raspberry-pi-cm4001000) for streamlined interaction with industrial controls, eliminating the need for additional components.
@@ -85,7 +87,7 @@ Read the [Viam PLC Support](https://www.viam.com/post/viam-plc-support-democrati
 
 {{% /changelog %}}
 
-{{% changelog date="2023-10-01" color="improved" title="SLAM map creation" %}}
+{{% changelog date="2023-10-31" color="improved" title="SLAM map creation" %}}
 
 The [Cartographer-module](/mobility/slam/cartographer/) now runs in Viam's cloud for creating or updating maps.
 This enhancement allows you to:
@@ -98,7 +100,7 @@ This enhancement allows you to:
 
 {{% /changelog %}}
 
-{{% changelog date="2023-09-01" color="added" title="Modular registry" %}}
+{{% changelog date="2023-09-30" color="added" title="Modular registry" %}}
 
 The [Modular Registry](/registry/) enables you to use, create, and share custom modules, extending the capabilities of Viam beyond the components and services that are natively supported.
 
@@ -110,19 +112,19 @@ You can:
 
 {{% /changelog %}}
 
-{{% changelog date="2023-09-01" color="added" title="Mobile app" %}}
+{{% changelog date="2023-09-30" color="added" title="Mobile app" %}}
 
 You can use a [mobile application](/fleet/#the-viam-mobile-app), available for download now in the [Apple](https://apps.apple.com/us/app/viam-robotics/id6451424162) and [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US) app stores, to connect to and control your Viam-powered machines directly from your mobile device.
 
 {{% /changelog %}}
 
-{{% changelog date="2023-09-01" color="added" title="Power sensor component" %}}
+{{% changelog date="2023-09-30" color="added" title="Power sensor component" %}}
 
 You now have the capability to use a [power sensor component](/components/power-sensor/) to monitor the voltage, current, and power consumption within your machine's system.
 
 {{% /changelog %}}
 
-{{% changelog date="2023-09-01" color="added" title="Filter component’s data before the cloud" %}}
+{{% changelog date="2023-09-30" color="added" title="Filter component’s data before the cloud" %}}
 Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/data/cloud-sync/).
 It equips machines to:
 
@@ -134,13 +136,13 @@ To learn more, see [this tutorial](/tutorials/configure/pet-photographer/) on cr
 
 {{% /changelog %}}
 
-{{% changelog date="2023-08-01" color="added" title="Configure a custom Linux board" %}}
+{{% changelog date="2023-08-31" color="added" title="Configure a custom Linux board" %}}
 
 You can now use boards like the [Mediatek Genio 500 Pumpkin](https://ologicinc.com/portfolio/mediateki500/) that run Linux operating systems with the [`customlinux` board model](/components/board/customlinux/).
 
 {{% /changelog %}}
 
-{{% changelog date="2023-08-01" color="added" title="Image inspection for ML training" %}}
+{{% changelog date="2023-08-31" color="added" title="Image inspection for ML training" %}}
 
 This update enables you to get a closer examination of your image and streamline your image annotation experience by making it easier to add bounding boxes and labels in the **Data** tab.
 
@@ -153,7 +155,7 @@ With the latest improvements, you can now:
 
 {{% /changelog %}}
 
-{{% changelog date="2023-08-01" color="added" title="Duplicate component button" %}}
+{{% changelog date="2023-08-31" color="added" title="Duplicate component button" %}}
 
 You now have the ability to duplicate any config component, service, module, remote, or process.
 
@@ -165,7 +167,7 @@ To use this feature:
 
 {{% /changelog %}}
 
-{{% changelog date="2023-07-01" color="added" title="Apple SSO authentication" %}}
+{{% changelog date="2023-07-31" color="added" title="Apple SSO authentication" %}}
 
 Viam now supports sign-up/log-in through Apple Single Sign-On.
 
@@ -173,20 +175,20 @@ Note that currently, accounts from different SSO providers are treated separatel
 
 {{% /changelog %}}
 
-{{% changelog date="2023-07-01" color="improved" title="Arm component API" %}}
+{{% changelog date="2023-07-31" color="improved" title="Arm component API" %}}
 
 Arm models now support the [`GetKinematics` method](/components/arm/#getkinematics) in the arm API, allowing you to request and receive kinematic information.
 
 {{% /changelog %}}
 
-{{% changelog date="2023-06-01" color="added" title="View sensor data within Viam" %}}
+{{% changelog date="2023-06-30" color="added" title="View sensor data within Viam" %}}
 
 You can now [view your sensor data](https://app.viam.com/data/view?view=sensors) directly in the Viam app to verify data creation and accuracy.
 If you depend on sensor data to plan and control machine operations, this feature increases access to data and supports a more efficient workflow.
 
 {{% /changelog %}}
 
-{{% changelog date="2023-06-01" color="added" title="Session management in the Python SDK" %}}
+{{% changelog date="2023-06-30" color="added" title="Session management in the Python SDK" %}}
 
 The Python SDK now includes sessions, a safety feature that automatically cancels operations if the client loses connection to your machine.
 
@@ -195,7 +197,7 @@ Sessions are enabled by default, with the option to [disable sessions](/build/pr
 
 {{% /changelog %}}
 
-{{% changelog date="2023-06-01" color="added" title="Connect an ODrive motor controller as a Viam module" %}}
+{{% changelog date="2023-06-30" color="added" title="Connect an ODrive motor controller as a Viam module" %}}
 
 You can integrate and control ODrive motor controllers with Viam using the [`odrive` module from the Viam registry](https://github.com/viamrobotics/odrive).
 
@@ -203,7 +205,7 @@ See the [Odrive module readme](https://github.com/viamrobotics/odrive) to learn 
 
 {{% /changelog %}}
 
-{{% changelog date="2023-06-01" color="added" title="Implement custom robotic arms as Viam modules" %}}
+{{% changelog date="2023-06-30" color="added" title="Implement custom robotic arms as Viam modules" %}}
 
 When prototyping a robotic arm, you can now facilitate movement without creating your own motion planning.
 This update enables you to implement custom models of an arm component as a [modular resource](/registry/) by coding three endpoints of the [Arm API](/components/arm/#api):
@@ -218,7 +220,7 @@ For more information, see this [tutorial on creating a custom arm](/registry/exa
 
 {{% /changelog %}}
 
-{{% changelog date="2023-06-01" color="added" title="Apply a crop transform to camera views" %}}
+{{% changelog date="2023-06-30" color="added" title="Apply a crop transform to camera views" %}}
 
 You can now apply a [crop transform](/components/camera/transform/) to the views of your connected cameras in the Viam app.
 
@@ -228,7 +230,7 @@ For example, crop a video stream of a busy street to just the sidewalk.
 
 {{% /changelog %}}
 
-{{% changelog date="2023-06-01" color="improved" title="Gantry component" %}}
+{{% changelog date="2023-06-30" color="improved" title="Gantry component" %}}
 
 To better control gantries with Viam, you can now:
 
@@ -238,7 +240,7 @@ To better control gantries with Viam, you can now:
 
 {{% /changelog %}}
 
-{{% changelog date="2023-06-01" color="improved" title="Optimized Viam-trained object detection models" %}}
+{{% changelog date="2023-06-30" color="improved" title="Optimized Viam-trained object detection models" %}}
 
 This update for object detection models [trained with the machine learning service](/ml/train-model/) brings significant improvements, including:
 
@@ -248,13 +250,13 @@ This update for object detection models [trained with the machine learning servi
 
 {{% /changelog %}}
 
-{{% changelog date="2023-05-01" color="added" title="TypeScript SDK beta release" %}}
+{{% changelog date="2023-05-31" color="added" title="TypeScript SDK beta release" %}}
 
 The beta release of the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/) allows you to create a web interface to work with your machine, as well as create custom components and services.
 
 {{% /changelog %}}
 
-{{% changelog date="2023-05-01" color="added" title="Train object detection ML models" %}}
+{{% changelog date="2023-05-31" color="added" title="Train object detection ML models" %}}
 
 You now have the capability to directly [train object detection models](/ml/train-model/) in addition to image classification models from within the Viam app.
 
@@ -265,7 +267,7 @@ This update allows you to:
 
 {{% /changelog %}}
 
-{{% changelog date="2023-05-01" color="added" title="Permissions for organizations in Viam" %}}
+{{% changelog date="2023-05-31" color="added" title="Permissions for organizations in Viam" %}}
 
 Now when you invite collaborators to join your organization, you can assign permissions to members by setting one of these roles:
 
@@ -279,7 +281,7 @@ For more information about assigning permissions and collaborating with others o
 
 {{% /changelog %}}
 
-{{% changelog date="2023-05-01" color="improved" title="Control RoboClaw motor controllers with the driver" %}}
+{{% changelog date="2023-05-31" color="improved" title="Control RoboClaw motor controllers with the driver" %}}
 
 When using a RoboClaw motor controller without encoders connected to your motors, you now have more direct control over the RoboClaw’s functionality within Viam or through the motor API.
 
@@ -287,7 +289,7 @@ For example, in the Viam app, you can now set **Go For** values for these motors
 
 {{% /changelog %}}
 
-{{% changelog date="2023-05-01" color="improved" title="Camera webcam names and setting framerates" %}}
+{{% changelog date="2023-05-31" color="improved" title="Camera webcam names and setting framerates" %}}
 
 The updates to the camera component have improved the process of connecting to and using cameras with your machines.
 
@@ -298,7 +300,7 @@ The latest updates enable you to:
 
 {{% /changelog %}}
 
-{{% changelog date="2023-05-01" color="improved" title="Additions to code samples in the Viam app" %}}
+{{% changelog date="2023-05-31" color="improved" title="Additions to code samples in the Viam app" %}}
 
 The updated code samples now includes:
 
@@ -309,13 +311,13 @@ Access these samples in the **Code sample** tab on your machine's page to connec
 
 {{% /changelog %}}
 
-{{% changelog date="2023-05-01" color="improved" title="Delete data in bulk in the Viam app" %}}
+{{% changelog date="2023-05-31" color="improved" title="Delete data in bulk in the Viam app" %}}
 
 You can manage the data synced to Viam's cloud with the new capability for bulk data deletion on the **Data** tab.
 
 {{% /changelog %}}
 
-{{% changelog date="2023-04-01" color="changed" title="Vision service" %}}
+{{% changelog date="2023-04-25" color="changed" title="Vision service" %}}
 
 {{% alert title="Important: Breaking Change" color="note" %}}
 
@@ -677,7 +679,7 @@ You will need to first register the machine learning model file with the [ML mod
 
 {{% /changelog %}}
 
-{{% changelog date="2023-03-01" color="added" title="Machine learning for image classification models" %}}
+{{% changelog date="2023-03-31" color="added" title="Machine learning for image classification models" %}}
 
 You can now [train](/ml/train-model/) and [deploy](/ml/deploy/#create-an-ml-model-service) image classification models with the [data management service](/data/) and use your machine's image data directly within Viaml
 Additionally, you can [upload and use](/ml/upload-model/) existing machine learning models with your machines.
@@ -685,14 +687,14 @@ For more information on using data synced to the cloud to train machine learning
 
 {{% /changelog %}}
 
-{{% changelog date="2023-03-01" color="added" title="Motion planning with new `constraint` parameter" %}}
+{{% changelog date="2023-03-31" color="added" title="Motion planning with new `constraint` parameter" %}}
 
 A new parameter, [`constraint`](/mobility/motion/constraints/), has been added to the [Motion service API](/mobility/motion/#api), allowing you to define restrictions on the machine's movement.
 The constraint system also provides flexibility to specify that obstacles should only impact specific frames of a machine.
 
 {{% /changelog %}}
 
-{{% changelog date="2023-03-01" color="added" title="Fragments in machine configuration" %}}
+{{% changelog date="2023-03-31" color="added" title="Fragments in machine configuration" %}}
 
 You can now access {{< glossary_tooltip term_id="fragment" text="fragments" >}} in your machine setup.
 The configurations you added will now show up automatically in the **Components** or **Services** subtabs in the **Builder** view.
@@ -702,14 +704,14 @@ For more information, see [Fragments](/build/configure/#fragments).
 
 {{% /changelog %}}
 
-{{% changelog date="2023-03-01" color="improved" title="Sticky GPS keys" %}}
+{{% changelog date="2023-03-31" color="improved" title="Sticky GPS keys" %}}
 
 GPS keys you enter are now saved in your local storage.
 This ensures that when you reload the page, your GPS keys remain accessible.
 
 {{% /changelog %}}
 
-{{% changelog date="2023-03-01" color="improved" title="More reliable camera streams" %}}
+{{% changelog date="2023-03-31" color="improved" title="More reliable camera streams" %}}
 
 The camera component's streams are smoother and more reliable with recent improvements.
 
@@ -717,7 +719,7 @@ Additionally, camera streams automatically restart if you momentarily lose inter
 
 {{% /changelog %}}
 
-{{% changelog date="2023-03-01" color="improved" title="UI updates to Logs and History" %}}
+{{% changelog date="2023-03-31" color="improved" title="UI updates to Logs and History" %}}
 
 The latest UI updates enable you to:
 
@@ -727,58 +729,58 @@ The latest UI updates enable you to:
 
 {{% /changelog %}}
 
-{{% changelog date="2023-02-01" color="added" title="Rover reuse in Try Viam" %}}
+{{% changelog date="2023-02-28" color="added" title="Rover reuse in Try Viam" %}}
 
 You now have the option to reuse a machine config from a previous Try Viam session.
 
 {{% /changelog %}}
 
-{{% changelog date="2023-02-01" color="added" title="Dynamic code samples" %}}
+{{% changelog date="2023-02-28" color="added" title="Dynamic code samples" %}}
 
 The Viam app **Code sample** tab now dynamically updates as you add resources to your machine's config.
 The code samples instantiate each resource and include examples of how to call a `Get` method on it.
 
 {{% /changelog %}}
 
-{{% changelog date="2023-02-01" color="added" title="TypeScript SDK" %}}
+{{% changelog date="2023-02-28" color="added" title="TypeScript SDK" %}}
 
 Find more information in the [TypeScript SDK docs](https://ts.viam.dev/).
 
 {{% /changelog %}}
 
-{{% changelog date="2023-02-01" color="added" title="Frame system visualizer" %}}
+{{% changelog date="2023-02-28" color="added" title="Frame system visualizer" %}}
 
 When adding [frames](/mobility/frame-system/) to your machine's config in the Viam app, you can now use the **Frame System** subtab of the **Config** tab to more easily visualize the relative positions of frames.
 
 {{% /changelog %}}
 
-{{% changelog date="2023-02-01" color="added" title="Support for microcontrollers" %}}
+{{% changelog date="2023-02-28" color="added" title="Support for microcontrollers" %}}
 
 Micro-RDK is a lightweight version of the RDK that can run on an ESP32.
 Find more information in the [micro-RDK documentation](/get-started/installation/prepare/microcontrollers/).
 
 {{% /changelog %}}
 
-{{% changelog date="2023-01-01" color="added" title="Remote control power input" %}}
+{{% changelog date="2023-01-31" color="added" title="Remote control power input" %}}
 
 On your machine's **Control** tab on the [Viam app](https://app.viam.com/), you can now set the power of a [base](/components/base/).
 The base control UI previously always sent 100% power to the base's motors.
 
 {{% /changelog %}}
 
-{{% changelog date="2023-01-01" color="added" title="New encoder model: AMS AS5048" %}}
+{{% changelog date="2023-01-31" color="added" title="New encoder model: AMS AS5048" %}}
 
 The [AMS AS5048](/components/encoder/ams-as5048/) is now supported.
 
 {{% /changelog %}}
 
-{{% changelog date="2023-01-01" color="added" title="GetLinearAcceleration method" %}}
+{{% changelog date="2023-01-31" color="added" title="GetLinearAcceleration method" %}}
 
 The movement sensor API now includes a [GetLinearAcceleration](/components/movement-sensor/#getlinearacceleration) method.
 
 {{% /changelog %}}
 
-{{% changelog date="2023-01-01" color="added" title="Support for capsule geometry" %}}
+{{% changelog date="2023-01-31" color="added" title="Support for capsule geometry" %}}
 
 The [motion service](/mobility/motion/) now supports capsule geometries.
 
@@ -786,7 +788,7 @@ The UR5 arm model has been improved using this new geometry type.
 
 {{% /changelog %}}
 
-{{% changelog date="2022-12-01" color="added" title="Modular resources" %}}
+{{% changelog date="2022-12-28" color="added" title="Modular resources" %}}
 
 You can now implement your own custom {{< glossary_tooltip term_id="resource" text="resources" >}} as [_modular resources_](/registry/).
 
@@ -798,13 +800,13 @@ All users need to update to the latest version of the RDK (V3.0.0) to access mac
 
 {{% /changelog %}}
 
-{{% changelog date="2022-12-01" color="added" title="URDF kinematic file support" %}}
+{{% changelog date="2022-12-28" color="added" title="URDF kinematic file support" %}}
 
 You can now supply kinematic information using URDF files when implementing your own arm models.
 
 {{% /changelog %}}
 
-{{% changelog date="2022-12-01" color="added" title="New movement sensor models" %}}
+{{% changelog date="2022-12-28" color="added" title="New movement sensor models" %}}
 
 There are two new movement sensor {{< glossary_tooltip term_id="model" text="models" >}}:
 
@@ -813,7 +815,7 @@ There are two new movement sensor {{< glossary_tooltip term_id="model" text="mod
 
 {{% /changelog %}}
 
-{{% changelog date="2022-12-01" color="improved" title="Camera performance and reliability" %}}
+{{% changelog date="2022-12-28" color="improved" title="Camera performance and reliability" %}}
 
 - Improved server-side logic to choose a mime type based on the camera image type, unless a specified mime type is supplied in the request.
   **The default mime type for color cameras is now JPEG**, which improves the streaming rate across every SDK.
@@ -822,7 +824,7 @@ There are two new movement sensor {{< glossary_tooltip term_id="model" text="mod
 
 {{% /changelog %}}
 
-{{% changelog date="2022-12-01" color="improved" title="Motion planning with remote components" %}}
+{{% changelog date="2022-12-28" color="improved" title="Motion planning with remote components" %}}
 
 The [motion service](/mobility/motion/) is now agnostic to the networking topology of a machine.
 
@@ -833,21 +835,21 @@ The [motion service](/mobility/motion/) is now agnostic to the networking topolo
 
 {{% /changelog %}}
 
-{{% changelog date="2022-12-01" color="improved" title="Motion planning path smoothing" %}}
+{{% changelog date="2022-12-28" color="improved" title="Motion planning path smoothing" %}}
 
 - RRT\* paths now undergo rudimentary smoothing, resulting in improvements to path quality with negligible change to planning performance.
 - Plan manager now performs direct interpolation for any solution within some factor of the best score, instead of only in the case where the best inverse kinematics solution could be interpolated.
 
 {{% /changelog %}}
 
-{{% changelog date="2022-12-01" color="improved" title="Data synchronization reliability" %}}
+{{% changelog date="2022-12-28" color="improved" title="Data synchronization reliability" %}}
 
 Previously, data synchronization used bidirectional streaming.
 Now is uses a simpler unary approach that is more performant on batched unary calls, is easier to load balance, and maintains ordered captures.
 
 {{% /changelog %}}
 
-{{% changelog date="2022-11-01" color="changed" title="Camera configuration" %}}
+{{% changelog date="2022-11-28" color="changed" title="Camera configuration" %}}
 
 **Changed** the configuration schemes for the following camera models:
 
@@ -860,32 +862,32 @@ For information on configuring any camera model, see [Camera Component](/compone
 
 {{% /changelog %}}
 
-{{% changelog date="2022-11-01" color="changed" title="App code sample tab name update" %}}
+{{% changelog date="2022-11-28" color="changed" title="App code sample tab name update" %}}
 
 Changed the name of the **Connect** tab to **Code sample** based on user feedback.
 
 {{% /changelog %}}
 
-{{% changelog date="2022-11-01" color="added" title="New servo model" %}}
+{{% changelog date="2022-11-15" color="added" title="New servo model" %}}
 
 A new [servo model called `gpio`](/components/servo/gpio/) supports servos connected to non-Raspberry Pi boards.
 
 {{% /changelog %}}
 
-{{% changelog date="2022-11-01" color="added" title="RTT indicator in the app" %}}
+{{% changelog date="2022-11-15" color="added" title="RTT indicator in the app" %}}
 
 A badge in the Viam app now displays RTT (round trip time) of a request from your client to the machine.
 Find this indicator of the time to complete one request/response cycle on your machine's **Control** tab, in the **Operations & Sessions** card.
 
 {{% /changelog %}}
 
-{{% changelog date="2022-11-01" color="added" title="Python 3.8 support" %}}
+{{% changelog date="2022-11-15" color="added" title="Python 3.8 support" %}}
 
 The Python SDK now supports Python 3.8, in addition to 3.9 and 3.10.
 
 {{% /changelog %}}
 
-{{% changelog date="2022-11-01" color="added" title="New parameter: `extra`" %}}
+{{% changelog date="2022-11-15" color="added" title="New parameter: `extra`" %}}
 
 A new API method parameter, `extra`, allows you to extend {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} functionality by implementing the new field according to whatever logic you choose.
 `extra` has been added to the following APIs: arm, data management, gripper, input controller, motion, movement sensor, navigation, pose tracker, sensor, SLAM, vision.
@@ -900,7 +902,7 @@ Users of the Go SDK _must_ update code to specify `extra` in the arguments that 
 
 {{% /changelog %}}
 
-{{% changelog date="2022-11-01" color="added" title="Service dependencies" %}}
+{{% changelog date="2022-11-15" color="added" title="Service dependencies" %}}
 
 `viam-server` now initializes and configures resources in the correct order.
 For example, if the SLAM service depends on a LiDAR, it will always initialize the LiDAR before the SLAM service.
@@ -914,7 +916,7 @@ Other service configurations are not affected.
 
 {{% /changelog %}}
 
-{{% changelog date="2022-11-01" color="removed" title="Width and height fields from camera API" %}}
+{{% changelog date="2022-11-15" color="removed" title="Width and height fields from camera API" %}}
 
 Removed `width` and `height` from the response of the [`GetImage`](/components/camera/#getimage) method in the camera API.
 This does not impact any existing camera models.
