@@ -19,7 +19,7 @@ For example, if you have multiple identical rovers but one has an arm attached, 
 ## Create a fragment
 
 Before you create a fragment, you'll need a JSON configuration file.
-The easiest way to create a config file is to [configure](/build/configure/) one of your  machines on its **CONFIG** tab in the [Viam app](https://app.viam.com).
+The easiest way to create a config file is to [configure](/build/configure/) one of your machines on its **CONFIG** tab in the [Viam app](https://app.viam.com).
 Configure all resources that you want to have for all your machines.
 If there are any additional resources that you do not want to share with all machines, do not configure them until after you've created the fragment.
 When you've finished configuring the resources, go to the **JSON** tab and copy the entire JSON config.
