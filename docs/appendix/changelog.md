@@ -15,6 +15,13 @@ outputs:
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
+
+{{% changelog date="2024-01-31" color="added" title="second test for Arielle" %}}
+
+Does this show up too?
+
+{{% /changelog %}}
+
 {{% changelog date="2023-12-31" color="added" title="Testing for Arielle" %}}
 
 Does this show up?
