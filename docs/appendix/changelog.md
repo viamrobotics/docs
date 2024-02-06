@@ -15,6 +15,12 @@ outputs:
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
+{{% changelog date="2023-12-31" color="added" title="Testing for Arielle" %}}
+
+Does this show up?
+
+{{% /changelog %}}
+
 {{% changelog date="2023-12-31" color="added" title="Filtered camera module" %}}
 
 Viam has added a [`filtered-camera` module](https://app.viam.com/module/erh/filtered-camera) that selectively captures and syncs only the images that match the detections of an ML model.
