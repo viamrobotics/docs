@@ -140,7 +140,7 @@ When a machine is disconnected, it will continue to run with its locally-cached 
 
 **Description:** A [frame](/mobility/frame-system/) attribute may be malformed, and is preventing the parsing of the component's configuration.
 
-**Solution:** Check the **Config** tab for your machine in the [Viam app](https://app.viam.com) and look for a frame attribute, either in **Builder** mode, under the **Frame System** tab or in **JSON** mode.
+**Solution:** Check the **Config** tab for your machine in the [Viam app](https://app.viam.com) and look for a frame attribute, either on the **CONFIGURE** tab with **Frame** mode selected or in **JSON** mode.
 If you see a `frame` attribute that you didn't create yourself, delete the whole `frame` object from the JSON config.
 It will resemble the following:
 

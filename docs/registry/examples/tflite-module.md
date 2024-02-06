@@ -237,8 +237,8 @@ To generate your machine's configuration using `example_audio_classification_cli
    If you do not already have configured components, you can replace the contents in **JSON** with the generated contents.
    {{< /alert >}}
 
-1. Click the **Save config** button at the bottom of the page.
-   Now, when you switch back to **Builder** mode, you can see the new configuration settings under the **Services** and **Modules** subtabs.
+1. Click **Save** in the upper right corner of the page to save your config.
+   Now, when you switch back to **Builder** mode on the **CONFIGURE** tab, you can see the new configuration settings.
 
 This generated configuration features the minimum required configuration to support this tutorial: `services` parameters for the [ML model](/ml/) service and `modules` parameters for the `example_mlmodelservice_tflite` module.
 
