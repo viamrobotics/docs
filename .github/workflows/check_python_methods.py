@@ -308,4 +308,4 @@ if total_sdk_methods_missing:
     print_method_information(missing_components, components_dict)
     print_method_information(missing_app_apis, app_apis_dict)
     print_method_information(missing_robot_apis, robot_apis_dict)
-    # sys.exit(1)
+    sys.exit(1)
