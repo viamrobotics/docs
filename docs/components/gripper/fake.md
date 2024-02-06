@@ -12,9 +12,7 @@ aliases:
 # SME: Rand
 ---
 
-You can use a `fake` gripper to test implementing a gripper on your machine without any physical hardware.
-
-Configure a `fake` gripper as follows:
+Configure a `fake` gripper to test implementing a gripper on your machine without any physical hardware:
 
 {{< tabs name="Configure a Fake Gripper" >}}
 {{% tab name="Config Builder" %}}
