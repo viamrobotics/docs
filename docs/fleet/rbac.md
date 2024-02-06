@@ -52,7 +52,7 @@ The option to grant additional access is only visible if you can grant the user 
 
 ### Use the mobile app
 
-You can also use the Viam mobile app to grant or revoke org owner or operator access to users on the go.
+You can also use the [Viam mobile app](/fleet/#the-viam-mobile-app) to grant or revoke org owner or operator access to users on the go.
 Navigate to **Home** on the mobile app, and select your organization.
 Click the gear icon in the upper right corner to access the mobile org settings page.
 
