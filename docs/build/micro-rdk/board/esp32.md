@@ -86,7 +86,7 @@ Copy the following JSON template and paste it into your configuration inside the
 {{< /tabs >}}
 
 Edit and fill in the attributes as applicable.
-Press **Command+S** to save your config.
+Click **Save** in the upper right corner of the page to save your config.
 
 The following attributes are available for `esp32` boards:
 

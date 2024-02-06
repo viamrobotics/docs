@@ -29,7 +29,7 @@ If you change your mind and want your machine to sync less frequently, you can c
 Before you can configure [cloud sync](/data/cloud-sync/), you must [add the data management service](/data/capture/#add-the-data-management-service).
 
 To enable cloud sync, navigate to the **CONFIGURE** tab and enable **Syncing** for your [data management service](../).
-Press **Command+S** to save your config.
+Click **Save** in the upper right corner of the page to save your config.
 
 Now the data that you capture will sync automatically with the Viam app in the cloud.
 

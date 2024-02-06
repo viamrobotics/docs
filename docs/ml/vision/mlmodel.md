@@ -116,7 +116,7 @@ Add the vision service object to the services array in your JSON configuration:
 {{% /tab %}}
 {{< /tabs >}}
 
-Press **Command+S** to save your config.
+Click **Save** in the upper right corner of the page to save your config.
 Proceed to [test your detector or classifier](#test-your-detector-or-classifier).
 
 ## Test your detector or classifier
@@ -193,7 +193,7 @@ If you intend to use the detector or classifier with a camera that is part of yo
 {{% /tab %}}
 {{< /tabs >}}
 
-1. After adding the components and their attributes, press **Command+S** to save your config.
+1. After adding the components and their attributes, click **Save** in the upper right corner of the page to save your config.
 2. Navigate to the **CONTROL** tab, click on your transform camera and toggle it on.
    If you've configured a detector, the transform camera will now show detections with bounding boxes around the object.
 
