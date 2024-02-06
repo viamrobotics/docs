@@ -681,7 +681,7 @@ You will need to first register the machine learning model file with the [ML mod
 
 {{% changelog date="2023-03-31" color="added" title="Machine learning for image classification models" %}}
 
-You can now [train](/ml/train-model/) and [deploy](/ml/deploy/#create-an-ml-model-service) image classification models with the [data management service](/data/) and use your machine's image data directly within Viaml
+You can now [train](/ml/train-model/) and [deploy](/ml/deploy/#create-an-ml-model-service) image classification models with the [data management service](/data/) and use your machine's image data directly within Viam.
 Additionally, you can [upload and use](/ml/upload-model/) existing machine learning models with your machines.
 For more information on using data synced to the cloud to train machine learning models, read [Train a model](/ml/train-model/).
 
