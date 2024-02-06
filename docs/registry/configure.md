@@ -530,7 +530,7 @@ You can send commands to the base according to the Viam [base API](/components/b
 
 ## Next steps
 
-Now that you've configured a modular resource, test it with the [Control tab](/fleet/#remote-control) and program it with the [Viam SDKs](/build/program/apis/).
+Now that you've configured a modular resource, test it with the [Control tab](/fleet/machines/#control) and program it with the [Viam SDKs](/build/program/apis/).
 
 You can also check out these tutorials that configure and use modular resources:
 
