@@ -123,6 +123,6 @@ You and your collaborators can deploy [control logic](/build/program/apis/), [mo
 <br>
 
 In addition to the [Viam app](https://app.viam.com), the fully featured web application where you can access all fleet management tools, there is a Viam mobile app.
-The mobile app is a convenient way to see if your machine is online, access the [control interface](/fleet/machines/#control), and check machine [logs](/fleet/machines/#logs).
+The mobile app is a convenient way to see if your machine is online, access the [control interface](/fleet/machines/#control), modify [org access](/fleet/rbac/), and check machine [logs](/fleet/machines/#logs).
 
 You can find the mobile app on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).

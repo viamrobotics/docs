@@ -50,6 +50,12 @@ For more information on the permissions the roles assign for each resource, see 
 The option to grant additional access is only visible if you can grant the user additional access.
 {{< /alert >}}
 
+### Use the mobile app
+
+You can also use the Viam mobile app to grant or revoke org owner or operator access to users on the go.
+Navigate to **Home** on the mobile app, and select your organization.
+Click the gear icon in the upper right corner to access the mobile org settings page.
+
 ## API keys
 
 API keys grant access to organizations, locations, and machines.
@@ -136,7 +142,7 @@ If a user is an owner of an organization with which a location was shared (that 
 
 Only {{< glossary_tooltip term_id="organization" text="organization" >}} owners can edit or delete an organization, or see and edit the organization billing page.
 
-Permissions for managing {{< glossary_tooltip term_id="organization" text="organization" >}} settings and user roles are as follows:
+Permissions for managing org settings and user roles are as follows:
 
 | Permissions                                           | Org owner | Org operator | Location owner | Location operator | Machine owner | Machine operator |
 | ----------------------------------------------------- | --------- | ------------ | -------------- | ----------------- | ------------- | ---------------- |
