@@ -30,23 +30,6 @@
   {{- end }}
 {{- end }}
 
-{{- $pctx := . }}
-{{- if or $.IsHome $.IsSection }}{{ $pctx = .Site }}{{ end }}
-{{- $pages := slice }}
-
-{{- if or $.IsHome $.IsSection }}
-{{- if eq .Title "Tutorials" }}
-{{- $pages = (where (where $pctx.RegularPages ".Section" "tutorials") "Kind" "page")  -}}
-{{- else }}
-{{- $pages = (where (where $pctx.RegularPages ".Section" "tutorials") "Kind" "page")  -}}
-{{- end}}
-{{- else }}
-{{- $pages = $pctx.RegularPages }}
-{{- end }}
-{{- $limit := .Site.Config.Services.RSS.Limit }}
-{{- if ge $limit 1 }}
-{{- $pages = $pages | first $limit }}
-{{- end }}
 {{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
@@ -56,32 +39,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <image>
       <url>https://docs.viam.com/favicons/apple-icon-144x144.png</url>
-      <title>Viam</title>
-      <link>https://docs.viam.com/tutorials/</link>
+      <title>{{ if eq .Title .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ .Site.Title }}{{ end }}</title>
+      <link>https://docs.viam.com/{{- if eq .Title "Tutorials" }}tutorials/{{else}}{{if eq .Title "Changelog"}}appendix/changelog/{{end}}{{end}}</link>
     </image>
     <language>{{ site.Language.LanguageCode }}</language>{{ with $authorEmail }}
     <managingEditor>{{.}}{{ with $authorName }} ({{ . }}){{ end }}</managingEditor>{{ end }}{{ with $authorEmail }}
     <webMaster>{{ . }}{{ with $authorName }} ({{ . }}){{ end }}</webMaster>{{ end }}{{ with .Site.Copyright }}
-    <copyright>{{ . }}</copyright>{{ end }}{{ if not .Date.IsZero }}
-    <lastBuildDate>{{ (index $pages.ByLastmod.Reverse 0).Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>{{ end }}
+    <copyright>{{ . }}</copyright>{{ end }}
     {{- with .OutputFormats.Get "RSS" }}
     {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{- end }}
-    {{- range $pages }}
-    <item>
-      <title>{{ .Title }}</title>
-      <link>{{ .Permalink }}</link>
-      <pubDate>{{ .Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
-      {{- with $authorEmail }}<author>{{ . }}{{ with $authorName }} ({{ . }}){{ end }}</author>{{ end }}
-      <guid>{{ .Permalink }}</guid>
-      <description>{{ .Description | transform.XMLEscape | safeHTML }}</description>
-      {{ if .Params.Images }}<media:content
-        xmlns:media="http://search.yahoo.com/mrss/"
-        url="{{ (index (.Params.Images) 0) | absURL | safeHTML }}"
-        medium="image"
-        type="image/jpeg"
-        />{{ end }}
-    </item>
+    {{- if eq .Title "Tutorials" }}
+      {{ $pctx := .Site }}
+      {{- $pages := slice }}
+      {{- $pages = (where (where $pctx.RegularPages ".Section" "tutorials") "Kind" "page")  -}}
+      {{- range $pages }}<item>
+        <title>{{ .Title }}</title>
+        <link>{{ .Permalink }}</link>
+        <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+        {{- with $authorEmail }}<author>{{ . }}{{ with $authorName }} ({{ . }}){{ end }}</author>{{ end }}
+        <guid>{{ .Permalink }}</guid>
+        <description>{{ .Description | transform.XMLEscape | safeHTML }}</description>
+        {{ if .Params.Images }}<media:content
+          xmlns:media="http://search.yahoo.com/mrss/"
+          url="{{ (index (.Params.Images) 0) | absURL | safeHTML }}"
+          medium="image"
+          type="image/jpeg"
+          />{{ end }}
+      </item>{{- end }}
     {{- end }}
+    {{- if eq .Title "Changelog" }}
+        {{- .Content | safeHTML -}}
+    {{- end}}
   </channel>
 </rss>

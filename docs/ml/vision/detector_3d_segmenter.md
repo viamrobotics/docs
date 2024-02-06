@@ -10,7 +10,7 @@ aliases:
 # SMEs: Bijan, Khari
 ---
 
-_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#april-2023)_
+_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#vision-service)_
 
 The `detector_3d_segmenter` vision service model takes 2D bounding boxes from an [object detector](../#detections), and, using the intrinsic parameters of the chosen camera, projects the pixels in the bounding box to points in 3D space.
 If the chosen camera is not equipped to do projections from 2D to 3D, then this vision model will fail.
