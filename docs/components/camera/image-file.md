@@ -122,6 +122,6 @@ If you then also configure a `pointcloud_file_path` on your camera, Viam will tr
 
 {{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< readfile "/static/include/components/camera-model-next-steps.md" >}}

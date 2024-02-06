@@ -100,7 +100,7 @@ To install `viam-server` on a macOS computer:
 
 To learn how to run, update, or uninstall `viam-server`, see [Manage `viam-server`](/get-started/installation/manage/).
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/build/configure/" %}}

@@ -29,7 +29,7 @@ Most machines with a motor need at least the following hardware:
 
 [^dmcboard]: The `DMC4000` model does not require a board.
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/mobility/frame-system/" >}}
@@ -38,7 +38,7 @@ Most machines with a motor need at least the following hardware:
 {{< relatedcard link="/mobility/slam/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your motor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your motor.
 
@@ -59,7 +59,7 @@ Model | Description <a name="model-table"></a>
 [`roboclaw`](./roboclaw/) | [Standard brushed DC motor](https://en.wikipedia.org/wiki/DC_motor) driven by [Basicmicro's](https://www.basicmicro.com/) [RoboClaw](https://www.basicmicro.com/RoboClaw-2x30A-Motor-Controller_p_9.html) motor controller
 [`fake`](./fake/) | Used to test code without hardware
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:motor" type="motor">}}
 
@@ -748,7 +748,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/tutorials/get-started/confetti-bot/" %}}

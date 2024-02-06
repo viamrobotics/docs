@@ -16,7 +16,7 @@ If you want to implement a component with a complex kinematic chain that is not 
 
 This file can be a <file>.json</file> file in the [same format as Viam's built-in arm drivers](https://github.com/viamrobotics/rdk/blob/main/components/arm/xarm/xarm6_kinematics.json), or an [<file>.URDF</file> file](https://industrial-training-master.readthedocs.io/en/melodic/_source/session3/Intro-to-URDF.html).
 
-## Kinematic Parameters
+## Kinematic parameters
 
 Viam supports two formats for supplying kinematic parameters to configure intermediate reference frames for a kinematic chain, defined as `"kinematic_param_type"`:
 

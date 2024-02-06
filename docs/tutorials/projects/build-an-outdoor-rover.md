@@ -1,5 +1,5 @@
 ---
-title: "Build an outdoor rover: simple, useful and affordable"
+title: "Build an Outdoor Rover: Simple, Useful and Affordable"
 linkTitle: "Outdoor Rover"
 type: "docs"
 tags: ["base", "outdoor", "solar", "rover"]

@@ -117,7 +117,7 @@ The following attributes are available for `gpiostepper` motors:
 
 Refer to your motor and motor driver data sheets for specifics.
 
-### Wiring Example
+### Wiring example
 
 Typically, a stepper motor will have an even number of wires.
 Each pair of wires forms a loop through a coil of the motor.

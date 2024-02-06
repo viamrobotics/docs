@@ -3,7 +3,7 @@ name: PR Test Label Manager
 on:
   pull_request_target:
     branches: [ 'main' ]
-    types: [ opened, synchronize, reopened ]
+    types: [ opened ]
 
 jobs:
   pr_test_label_manager:
@@ -20,7 +20,17 @@ jobs:
           github-token: ${{ secrets.PR_TOKEN }}
           script: |
             let prNumber = context.payload.pull_request && context.payload.pull_request.number;
-            let orgResp = await github.rest.orgs.checkMembershipForUser({org: "viamrobotics", username: context.payload.sender.login});
-            if (orgResp.status === 204) {
-              await github.rest.issues.addLabels({owner: "viamrobotics", repo: "docs", issue_number: prNumber, labels: ["safe to build"]});
-            }
+            try {
+              let orgResp = await github.rest.orgs.checkMembershipForUser({org: "viamrobotics", username: context.payload.sender.login});
+              if (orgResp.status === 204) {
+                await github.rest.issues.addLabels({owner: "viamrobotics", repo: "docs", issue_number: prNumber, labels: ["safe to build"]});
+              }
+            } catch (error) {
+              console.log("here");
+              await github.rest.issues.createComment({
+                issue_number: prNumber,
+                owner: "viamrobotics",
+                repo: "docs",
+                body: '👋 Thanks for contributing! A reviewer will look at it on the next working day!'
+              })
+            }              

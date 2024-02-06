@@ -32,7 +32,7 @@ Most machines with a servo need at least the following hardware:
 - A power supply for the board
 - A power supply for the servo
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/mobility/frame-system/" >}}
@@ -48,7 +48,7 @@ Check your device's data sheet and configure that type of servo as an [encoded m
 
 {{% /alert %}}
 
-## Supported Models
+## Supported models
 
 To use your servo with Viam, check whether one of the following [built-in models](#built-in-models) supports your servo.
 
@@ -65,7 +65,7 @@ For configuration information, click on the model name:
 | [`gpio`](gpio/) | A hobby servo wired to any model of [board](/components/board/#supported-models) besides `pi`. |
 | [`pi`](pi/) | A hobby servo wired to a [Raspberry Pi board](/components/board/pi/). |
 
-<!-- ### Modular Resources
+<!-- ### Modular resources
 
 {{<modular-resources api="rdk:component:servo" type="servo">}}
 -->
@@ -466,7 +466,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< snippet "social.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/tutorials/projects/guardian" %}}

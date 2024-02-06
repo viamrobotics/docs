@@ -33,13 +33,13 @@ Most machines with a sensor need at least the following hardware:
 - A [board](/components/board/)
 - Depending on your sensor's output type (analog or digital), an analog-to-digital converter (ADC) may be necessary to allow the sensor to communicate with the board
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/data/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your sensor.
 
@@ -58,7 +58,7 @@ For configuration information, click on the model name:
 | [`ds18b20`](ds18b20/) | [DallasTemperature DS18B20 digital temperature sensor](https://www.adafruit.com/product/381) |
 | [`sensirion-sht3xd`](sensirion-sht3xd/) | [Sensirion SHT3x-DIS temperature and humidity sensor](https://www.adafruit.com/product/2857) |
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:sensor" type="sensor">}}
 
@@ -315,7 +315,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< snippet "social.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/tutorials/projects/make-a-plant-watering-robot/" %}}

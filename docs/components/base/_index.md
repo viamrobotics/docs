@@ -29,7 +29,7 @@ Most mobile robots with a base need at least the following hardware:
 - A power supply for the actuators.
 - Some sort of chassis to hold everything together.
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/mobility/base-rc/" >}}
@@ -37,7 +37,7 @@ Most mobile robots with a base need at least the following hardware:
 {{< relatedcard link="/mobility/navigation/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your base with Viam, check whether one of the following [built-in models](#built-in-models) or {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} supports your base.
 
@@ -54,7 +54,7 @@ For configuration information, click on the model name:
 | [`sensor-controlled`](sensor-controlled/) | A model that wraps other base models with feedback control from a movement sensor |
 | [`fake`](fake/) | A model used for testing, with no physical hardware |
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:base" type="base">}}
 
@@ -712,7 +712,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< snippet "social.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/tutorials/control/yahboom-rover" %}}

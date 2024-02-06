@@ -80,7 +80,7 @@ The following attributes are available for `numato` boards:
 | `pins` | int | **Required** | Number of GPIO pins available on the module. |
 | `analogs` | object | Optional | Attributes of any pins that can be used as Analog-to-Digital Converter (ADC) inputs. See [configuration info](#analogs). |
 
-## Attribute Configuration
+## Attribute configuration
 
 Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) into your machine.
 

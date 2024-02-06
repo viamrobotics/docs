@@ -18,4 +18,7 @@ sitemap:
   priority: 1.0
 aliases:
   - /build/
+outputs:
+  - rss
+  - html
 ---

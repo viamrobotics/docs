@@ -24,7 +24,7 @@ Viam also supports generic [sensors](/components/sensor/) and [encoders](/compon
 
 {{% /alert %}}
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/mobility/motion/" >}}
@@ -32,7 +32,7 @@ Viam also supports generic [sensors](/components/sensor/) and [encoders](/compon
 {{< relatedcard link="/mobility/slam/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your GPS, IMU, accelerometer, or other movement sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your movement sensor.
 
@@ -57,7 +57,7 @@ Model | Description <a name="model-table"></a>
 [`wheeled-odometry`](./wheeled-odometry/) | A model that uses [encoders](/components/encoder/) to get an odometry estimate from a wheeled base
 [`fake`](./fake/) | Used to test code without hardware
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:movement_sensor" type="movement_sensor">}}
 
@@ -771,7 +771,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
 
-## Next Steps
+## Next steps
 
 Try adding a movement sensor to your [mobile robot](/components/base/) and writing some code with our [SDKs](/build/program/apis/) to implement closed-loop movement control for your machine.
 

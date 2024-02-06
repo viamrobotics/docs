@@ -166,7 +166,7 @@ The automatic update behavior of `viam-server` should meet the needs of most dep
 sudo viam-server --aix-update
 ```
 
-### Disable Service-based Updates
+### Disable service-based updates
 
 If you want to disable `viam-server` from automatically checking for updates each time you launch it, comment out the `ExecStartPre` line from your <file>/etc/systemd/system/viam-server.service</file> service file (by prepending with a `#` character), so that it matches the following:
 

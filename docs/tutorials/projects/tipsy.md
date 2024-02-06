@@ -703,7 +703,7 @@ async def main():
     base = Base.from_robot(robot, base_name)
     sensors = [Sensor.from_robot(robot, sensor_name)
                for sensor_name in sensor_names]
-    detector = VisionServiceClient.from_robot(robot, "myPeopleDetector")
+    detector = VisionClient.from_robot(robot, name=detector_name)
 
     # create a background task that looks for obstacles and stops the base if
     # it's moving

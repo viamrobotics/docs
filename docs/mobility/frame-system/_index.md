@@ -19,7 +19,7 @@ Any machine configured in Viam comes with the frame system service: an internall
 The frame system is the basis for many of Viam's other services, like [Motion](/mobility/motion/) and [Vision](/ml/vision/).
 It stores the required contextual information to use the position and orientation readings returned by some components.
 
-## Used With
+## Used with
 
 {{< cards >}}
 {{< relatedcard link="/services/arm/">}}
@@ -114,7 +114,7 @@ For more information about determining the appropriate values for these paramete
 - [A Reference Frame:](/mobility/frame-system/frame-config/) A component attached to a static surface
 - [Nested Reference Frames:](/mobility/frame-system/nested-frame-config/) A component attached to another, dynamic, component
 
-### Visualize the Frame System
+### Visualize the frame system
 
 You can visualize how your machine is oriented in the frame system in [the Viam app](https://app.viam.com).
 Navigate to the **CONFIGURE** tab of your machine's page and select the **Frame** mode.
@@ -154,7 +154,7 @@ Adjust the [orientation vector](/internals/orientation-vector/) to 0.5 degrees i
 
 Now that the frame system is accurately configured with the machine's spatial orientation, [motion service](/mobility/motion/) methods that take in reference frame information can be utilized.
 
-### Display Options
+### Display options
 
 Click and drag on the **Frame System** visualization to view the display from different angles, and pinch to zoom in and out:
 
@@ -175,7 +175,7 @@ Click the video camera icon below and to the right of the **Frame System** butto
 {{% /tab %}}
 {{< /tabs >}}
 
-### Bounding Geometries
+### Bounding geometries
 
 To visualize a component's spatial constraints, add `Geometry` properties by selecting a component and selecting a **Geometry** type in the **Frame** mode of the **CONFIGURE** tab of a machine's page on [the Viam app](https://app.viam.com).
 
@@ -204,7 +204,7 @@ For example:
 {{% /tab %}}
 {{< /tabs >}}
 
-## How the Frame System Works
+## How the frame system works
 
 `viam-server` builds a tree of reference frames for your machine with the `world` as the root node and regenerates this tree following reconfiguration.
 
@@ -223,7 +223,7 @@ The resulting tree of reference frames looks like:
 1. One with the name of the component, representing the actuator or final link in the component's kinematic chain: like `"A"` as the end of an arm.
 2. Another representing the origin of the component, defined with the component's name and the suffix _"\_origin"_.
 
-## Access the Frame System
+## Access the frame system
 
 The [Robot API](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) supplies the following method to interact with the frame system:
 
@@ -349,9 +349,9 @@ fmt.Println("Transformed Orientation:", transformedPoseInFrame.Pose().Orientatio
 {{% /tab %}}
 {{< /tabs >}}
 
-## Additional Transforms
+## Additional transforms
 
-_Additional Transforms_ exist to help the frame system determine the location of and relationships between objects not initially known to the machine.
+_Additional transforms_ exist to help the frame system determine the location of and relationships between objects not initially known to the machine.
 
 For example:
 

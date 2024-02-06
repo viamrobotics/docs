@@ -151,7 +151,7 @@ If `encoder` is model [`AM5-AS5048`](/components/encoder/ams-as5048/),`ticks_per
 
 {{% /alert %}}
 
-## Wiring Example
+## Wiring example
 
 Here's an example of an encoded DC motor wired with [the MAX14870 Single Brushed DC Motor Driver Carrier](https://www.pololu.com/product/2961).
 This wiring example corresponds to the [example config above](#encoder-config).

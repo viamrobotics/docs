@@ -22,7 +22,7 @@ Follow this guide to set up your BeagleBone AI-64 and prepare it for `viam-serve
 {{< imgproc alt="The front of a BeagleBone AI-64 single-board computer at a 45° angle." src="/get-started/installation/beaglebone-setup/image4.png" resize="400x" declaredimensions=true >}}
 </div>
 
-## Hardware Requirements
+## Hardware requirements
 
 You need the following hardware, tools, and software to install `viam-server` on a BeagleBone AI-64:
 
@@ -88,7 +88,7 @@ If you experience any issues getting Viam working on your BeagleBone, consult th
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/build/configure/" %}}

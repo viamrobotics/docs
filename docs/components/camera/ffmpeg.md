@@ -134,6 +134,6 @@ The following attributes are available for `ffmpeg` cameras:
 
 {{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< readfile "/static/include/components/camera-model-next-steps.md" >}}

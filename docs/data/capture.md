@@ -72,7 +72,7 @@ To capture data from one or more machines, you must first add the [data manageme
 
 {{% /expand%}}
 
-## Configure Data Capture for Individual Components
+## Configure data capture for individual components
 
 Once you have added the data capture service, you can specify the data you want to capture at a component level.
 The following components support data capture:
@@ -177,7 +177,7 @@ After adding configuration for the methods, click **Save Config**.
 
 If you want to remove a capture method from the configuration, click the `delete` icon.
 
-## Configure Data Capture for Remote Parts
+## Configure data capture for remote parts
 
 Viam supports data capture from {{< glossary_tooltip term_id="resource" text="resources" >}} on {{< glossary_tooltip term_id="remote" text="remote" >}} parts.
 For example, if you use a {{< glossary_tooltip term_id="part" text="part" >}} that does not have a Linux operating system or that does not have enough storage or processing power, you can still process and capture the data from that part's components by adding it as a remote part.
@@ -368,7 +368,7 @@ The following example captures data from the `ReadImage` method of a camera:
 
 If you are capturing camera data, it can happen that the camera captures and syncs miscolored or dark images upon start up.
 
-## Next Steps
+## Next steps
 
 To sync your captured data with the cloud, [configure cloud sync](/data/cloud-sync/).
 

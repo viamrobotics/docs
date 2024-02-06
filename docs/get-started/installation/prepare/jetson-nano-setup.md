@@ -34,11 +34,11 @@ The GPIO pins on Jetson boards are rated 3.3V signals. 5V signals from encoders 
 
 {{% /alert %}}
 
-## Hardware Requirements
+## Hardware requirements
 
 You need the following hardware, tools, and software to install `viam-server` on a Jetson Nano or Jetson Orin Nano:
 
-**Initial Setup with Display Attached:**
+**Initial setup with display attached:**
 
 1. A [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) or [Jetson Orin Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-agx-orin-developer-kit)
 2. A microSD card (32GB UHS-1 minimum recommended)
@@ -47,7 +47,7 @@ You need the following hardware, tools, and software to install `viam-server` on
 5. Ethernet cable and/or Wifi dongle, to establish network connection on the Nano
 6. 5V-2A (Nano) or 9-19V (Orin Nano) DC power supply with barrel jack connector
 
-**Initial Setup in Headless Mode:**
+**Initial setup in headless mode:**
 
 1. A [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) or [Jetson Orin Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-agx-orin-developer-kit)
 2. A microSD card (32GB UHS-1 minimum recommended)
@@ -57,7 +57,7 @@ You need the following hardware, tools, and software to install `viam-server` on
 6. Ethernet cable and/or Wifi dongle, to establish network connection on the Nano
 7. 5V-2A (Nano) or 9-19V (Orin Nano) DC power supply with barrel jack connector
 
-## Nano Setup Guide
+## Nano setup guide
 
 Follow the instructions in [Getting Started with Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit) or [Getting Started with Jetson Orin Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-orin-nano-devkit).
 Once you have reached _Next Steps_, return to the Viam docs.
@@ -74,7 +74,7 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 
 {{< readfile "/static/include/install/install-linux-aarch.md" >}}
 
-## Serial Communication Protocol Tips
+## Serial communication protocol tips
 
 To change the pins that are in use for modes of serial communication, launch <file>jetson-io.py</file> with the following commands:
 
@@ -99,7 +99,7 @@ For a Jetson Orin Nano, reference the following:
 Note that I2C buses do not need to be configured through <file>jetson-io.py</file>.
 See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/ConfiguringTheJetsonExpansionHeaders.html) for more information.
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/build/configure/" %}}

@@ -9,9 +9,7 @@ aliases:
   - "/components/generic/fake/"
 ---
 
-You can use a `fake` generic component to test implementing a generic component on your machine without any physical hardware.
-
-Configure a `fake` component as follows:
+Configure a `fake` generic component to test implementing a generic component on your machine without any physical hardware:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

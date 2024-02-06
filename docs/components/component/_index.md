@@ -29,7 +29,7 @@ Most machines with a COMPONENT need at least the following hardware (optional):
 - Board
 - ...
 
-## Related Services
+## Related services
 
 Add services commonly used with the component.
 
@@ -38,7 +38,7 @@ Add services commonly used with the component.
 {{< relatedcard link="/mobility/frame-system/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your COMPONENT with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your COMPONENT.
 
@@ -54,7 +54,7 @@ For configuration information, click on the model name:
 | [`model1`](model1/) | An XYZ unit made by Some Company(INSERT LINK AS APPLICABLE)         |
 | [`model2`](model2/) | An ABCDE unit made by Some Other Company(INSERT LINK AS APPLICABLE) |
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:component" type="component">}}
 
@@ -211,7 +211,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< snippet "social.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{< /cards >}}

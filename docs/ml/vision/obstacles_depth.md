@@ -1,5 +1,5 @@
 ---
-title: "obstacles_depth"
+title: "Configure an obstacles_depth Segmenter"
 linkTitle: "obstacles_depth"
 weight: 20
 type: "docs"

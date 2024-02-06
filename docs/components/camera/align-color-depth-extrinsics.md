@@ -11,7 +11,7 @@ aliases:
 # SMEs: Bijan, vision team
 ---
 
-Use the intrinsics of the color and depth camera, as well as the extrinsic pose between them, to align two images.
+The `align_color_depth_extrinsics` model uses the intrinsics of the color and depth camera, as well as the extrinsic pose between them, to align two images.
 
 {{< tabs name="Configure an Align Color Depth Extrinsics View" >}}
 {{% tab name="Config Builder" %}}
@@ -151,6 +151,6 @@ The following attributes are available for `align_color_depth_extrinsics` views:
 
 {{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< readfile "/static/include/components/camera-model-next-steps.md" >}}

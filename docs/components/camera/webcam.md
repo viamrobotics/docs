@@ -198,6 +198,6 @@ Then, select: **Interface Options -> Camera -> Enable Camera**.
 
 Restart the Pi to complete the configuration.
 
-## Next Steps
+## Next steps
 
 {{< readfile "/static/include/components/camera-model-next-steps.md" >}}

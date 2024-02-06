@@ -34,7 +34,7 @@ Most machines with an encoder need at least the following hardware:
   For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
 - Some sort of rotary machine part (like a motor, joint or dial) for which you want to measure movement.
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/mobility/motion/" >}}
@@ -43,7 +43,7 @@ Most machines with an encoder need at least the following hardware:
 {{< relatedcard link="/mobility/frame-system/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your encoder with Viam, check whether one of the following [built-in models](#built-in-models) supports your encoder.
 
@@ -62,7 +62,7 @@ For configuration information, click on the model name:
 | [`single`](single/) | A single pin "pulse output" encoder which returns its relative position but no direction. |
 
 <!-- No encoders yet -->
-<!-- ### Modular Resources
+<!-- ### Modular resources
 
 {{<modular-resources api="rdk:component:encoder" type="encoder">}} -->
 
@@ -434,7 +434,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/tutorials/configure/scuttlebot" %}}

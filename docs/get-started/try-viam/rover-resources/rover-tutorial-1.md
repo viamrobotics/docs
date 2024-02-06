@@ -245,7 +245,7 @@ On the machine's **Setup** tab, select `Linux (Aarch64)`.
 
 To configure your rover so you can start driving it, [add the Viam Fragment to your Machine](/get-started/try-viam/rover-resources/rover-tutorial-fragments/).
 
-## Next Steps
+## Next steps
 
 Follow one of these tutorials with your borrowed or owned rover:
 

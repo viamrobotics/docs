@@ -59,7 +59,7 @@ The tutorial uses the following hardware:
 - [12V to 5V Buck Converter](https://www.amazon.com/dp/B01M03288J)
 - [USB-C Male Plug to Pigtail Cable](https://www.amazon.com/Type-C-Cable-10inch-22AWG-Pigtail/dp/B09C7SLHFP)
 
-## Initial Setup
+## Initial setup
 
 ### Raspberry Pi software setup
 

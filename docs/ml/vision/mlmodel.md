@@ -1,5 +1,5 @@
 ---
-title: "mlmodel"
+title: "Configure an mlmodel Detector or Classifier"
 linkTitle: "mlmodel"
 weight: 10
 type: "docs"

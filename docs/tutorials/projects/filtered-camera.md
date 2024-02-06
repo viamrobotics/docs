@@ -1,5 +1,5 @@
 ---
-title: "Selectively capture data using filtered-camera"
+title: "Selectively Capture Data using filtered-camera"
 linkTitle: "Filtered Camera"
 type: "docs"
 description: "Use the filtered-camera module to selectively capture images."
@@ -7,7 +7,6 @@ image: "/tutorials/filtered-camera-module/viam-figure-preview.png"
 images: ["/tutorials/filtered-camera-module/viam-figure-preview.png"]
 imageAlt: "The wooden Viam figure being detected by a transform camera"
 tags: ["camera", "vision", "detector", "mlmodel", "data"]
-no_list: true
 viamresources: ["camera", "vision", "mlmodel", "data_manager"]
 languages: []
 level: "Intermediate"
@@ -397,7 +396,7 @@ For example, you can:
 - Train an ML model on various common forms of delivery packaging, so that your machine can send you an image of a new delivery, but not clutter your inbox with images of other things, such as cars driving by.
 - Train an ML model on a variety of domestic farm animals, so that your machine can alert you if a different kind of animal is detected in the vicinity, without capturing images of every animal.
 
-You can also refine your existing ML model by adding and labelling new images that help the ML model better identify matching objects, and then [upload the new version of your model](/ml/upload-model/#upload-a-new-version-of-a-model) using the ML model service.
+You can also refine your existing ML model by adding and labelling new images that help the ML model better identify matching objects, and then [upload the new version of your model](/ml/upload-model/#upload-a-new-model-or-new-version) using the ML model service.
 
 If you trained a new model as part of this tutorial, try using the provided [pre-trained model files](#upload-an-existing-ml-model) instead, and then aiming your machine's camera at objects listed in the <file>labels.txt</file> file to see how accurately it is able to detect those objects.
 

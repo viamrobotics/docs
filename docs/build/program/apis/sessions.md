@@ -111,7 +111,7 @@ If you are looking to implement session management yourself only to increase the
 
 To manage your session with the session management API:
 
-1. [Disable the default session management](#disable-default-session-management)
+1. [Disable default session management](#disable-default-session-management)
 1. [Use the session management API to manually manage sessions](#use-the-session-management-api-to-manually-manage-sessions)
 
 ### Disable default session management

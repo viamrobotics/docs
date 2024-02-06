@@ -13,20 +13,16 @@ icon: "/services/icons/ml.svg"
 # SME: Aaron Casas
 ---
 
-Once you have [trained](/ml/train-model/) or [uploaded](/ml/upload-model/) your model, the Machine Learning (ML) model service allows you to deploy machine learning models to your machine.
+The Machine Learning (ML) model service allows you to deploy machine learning models to your machine.
 
-You can use the following built-in model:
+You can use the following built-in model of the service:
 
 <!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`"tflite_cpu"` model](#create-an-ml-model-service) | Runs a tensorflow lite model that you have [trained](/ml/train-model/) or [uploaded](/ml/upload-model/). |
 
-{{< alert title="Note" color="note" >}}
-For some models, like the [Triton MLModel](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use the available CPU or GPU.
-{{< /alert >}}
-
-## Used With
+## Used with
 
 {{< cards >}}
 {{< relatedcard link="/ml/vision/">}}
@@ -37,15 +33,19 @@ For some models, like the [Triton MLModel](https://github.com/viamrobotics/viam-
 After deploying your model, you need to configure an additional service to use the deployed model.
 For example, you can configure an [`mlmodel` vision service](/ml/vision/) and a [`transform` camera](/components/camera/transform/) to visualize the predictions your model makes.
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:service:mlmodel" type="mlmodel">}}
 
 {{< alert title="Add support for other models" color="tip" >}}
-If none of the existing models fit your use case, you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it.
+If none of the existing models of the ML model service fit your use case, you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it.
 
-ML Models must be designed in particular shapes to work with the `mlmodel` [classification](/ml/vision/mlmodel/) or [detection](/ml/vision/mlmodel/) model of Viam's [vision service](/ml/vision/).
+ML models must be designed in particular shapes to work with the `mlmodel` [classification](/ml/vision/mlmodel/) or [detection](/ml/vision/mlmodel/) model of Viam's [vision service](/ml/vision/).
 Follow [these instructions](/registry/advanced/mlmodel-design/) to design your modular ML Model service with models that work with vision.
+{{< /alert >}}
+
+{{< alert title="Note" color="note" >}}
+For some models of the ML model service, like the [Triton ML model service](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use the available CPU or GPU.
 {{< /alert >}}
 
 ## Create an ML model service
@@ -61,22 +61,30 @@ Enter a name for your service and click **Create**.
 You can choose to configure your service with an existing model on the machine or deploy a model onto your machine:
 
 {{< tabs >}}
-{{% tab name="Existing Model" %}}
-
-To configure your service with an existing model on the machine, select **Path to Existing Model On Robot** for the **Deployment** field.
-
-Then specify the absolute **Model Path** and any **Optional Settings** such as the absolute **Label Path** and the **Number of threads**.
-
-![Create a machine learning models service with an existing model](/services/available-models.png)
-
-{{% /tab %}}
 {{% tab name="Deploy Model" %}}
 
-To configure your service and deploy a model onto your machine, select **Deploy Model On Robot** for the **Deployment** field.
+1. To configure your service and deploy a model onto your machine, select **Deploy Model On Robot** for the **Deployment** field.
 
-Then select the **Models** and any **Optional Settings** such as the **Number of threads**.
+2. Click on **Models** to open a dropdown with all of the ML models available to you privately, as well as all of the ML models available in [the registry](https://app.viam.com), which are shared by users.
+   You can select from any of these models to deploy on your robot.
 
-![Create a machine learning models service with a model to be deployed](/services/deploy-model.png)
+{{<imgproc src="/services/deploy-model-menu.png" resize="700x" alt="Models dropdown menu with models from the registry.">}}
+
+{{% alert title="Tip" color="tip" %}}
+To see more details about a model, open its page in [the registry](https://app.viam.com).
+{{% /alert %}}
+
+3. Also, optionally select the **Number of threads**.
+
+{{<imgproc src="/services/deploy-model.png" resize="700x" alt="Create a machine learning models service with a model to be deployed">}}
+
+{{% /tab %}}
+{{% tab name="Existing Model" %}}
+
+1. To configure your service with an existing model on the machine, select **Path to Existing Model On Robot** for the **Deployment** field.
+2. Then specify the absolute **Model Path** and any **Optional Settings** such as the absolute **Label Path** and the **Number of threads**.
+
+![Create a machine learning models service with an existing model](/services/available-models.png)
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -151,7 +159,7 @@ The model package config looks like this:
 }
 ```
 
-### `tflite_cpu` Limitations
+### `tflite_cpu` limitations
 
 We strongly recommend that you package your `tflite_cpu` model with metadata in [the standard form](https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs).
 
@@ -397,7 +405,7 @@ See the [Python documentation](https://python.viam.dev/autoapi/viam/services/mlm
 
 See [Program a machine](/build/program/) for more information about using an SDK to control your machine.
 
-## Next Steps
+## Next steps
 
 To make use of your model with your machine, add a [vision service](/ml/vision/) or a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}:
 

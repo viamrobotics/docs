@@ -45,4 +45,4 @@ You must purchase the following hardware separately:
 
 {{< /alert >}}
 
-### Next Steps
+### Next steps
