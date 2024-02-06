@@ -27,8 +27,8 @@ To organize your fleet you use
 
 - {{< glossary_tooltip term_id="organization" text="organizations" >}}: the highest level grouping, generally used for different companies.
 - {{< glossary_tooltip term_id="location" text="locations" >}}: virtual groupings of devices up with up to three levels of nesting that can represent a grouping of machines that are co-located in a building, like a factory, or a grouping of machines that are thousands of miles apart and are grouped together by function or as an organizational unit.
-
-Each machine resides in a location.
+- {{< glossary_tooltip term_id="machine" text="smart machines" >}}: a grouping of {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} across one {{< glossary_tooltip term_id="part" text="part" >}}, or multiple parts working closely together to complete tasks.
+  Each machine resides in a location.
 
 <!-- TODO: Add topology based on Jon's draft -->
 
@@ -36,12 +36,7 @@ Each machine resides in a location.
 
 The organization structure enables you to:
 
-- [configure groups of machines](/build/configure/) with reusable {{< glossary_tooltip term_id="fragment" text="fragments" >}} that configure, among other things:
-  - hardware {{< glossary_tooltip term_id="component" text="components" >}}
-  - higher level {{< glossary_tooltip term_id="service" text="services" >}}
-  - [control logic](/build/program/apis/)
-  - sidecar [processes](/build/configure/#processes)
-  - network configuration
+- configure groups of machines with reusable {{< glossary_tooltip term_id="fragment" text="fragments" >}} that [configure](/build/configure) a set of resources for each machine that uses the fragment.
 - deploy [code packages](/registry/) or [machine learning models](/ml/), without manually copying files by uploading it to Viam's cloud and deploying it to your fleet
 - control a machine with code, the app's [**Control** tab](machines/#control), or the [Viam mobile app](#the-viam-mobile-app)
 - obtain health metrics, such as status, uptime, version, or [logs](machines/#logs)
