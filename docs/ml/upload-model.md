@@ -43,7 +43,7 @@ Select **Next steps** to continue.
 1. Specify a name for the model.
 2. Specify the **Model type**.
 3. Add a `.tflite` model file.
-4. Add a `.txt` label file.
+4. (Optional) Add a `.txt` label file.
 5. Add a short description.
    This will help other users to understand how to use your model.
 
@@ -59,7 +59,7 @@ Also, if you selected **Public**, it should be publicly visible in the [Viam reg
 1. Select the model you would like to update from your existing models.
 2. Select **Next steps** to continue.
 3. Add an updated `.tflite` model file.
-4. Add an updated `.txt` label file.
+4. (Optional) Add an updated `.txt` label file.
 5. Click **Upload model**.
 
 Your model is now updated.
