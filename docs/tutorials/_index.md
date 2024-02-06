@@ -21,4 +21,5 @@ aliases:
 outputs:
   - rss
   - html
+  - typesense
 ---
