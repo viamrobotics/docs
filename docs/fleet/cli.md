@@ -697,11 +697,12 @@ See [Modular resources](/registry/) for a conceptual overview of modules and the
 
 ##### Using the `build` subcommand
 
-You can use the `module build start` or `module build local` commands to build your custom module according to the build steps you specify in your <file>meta.json</file> file.
+You can use the `module build start` or `module build local` commands to build your custom module according to the build steps you specify in your <file>meta.json</file> file:
 
-You could use `build start` to build or compile your module on a cloud build host that might offer additional platform support than you have access to locally, or you could use `build local` to quickly test that your module builds or compiles as expected on your local hardware.
+- Use `build start` to build or compile your module on a cloud build host that might offer additional platform support than you have access to locally.
+- Use `build local` to quickly test that your module builds or compiles as expected on your local hardware.
 
-To configure your module's build steps, add a `build` object to your [`meta.json` file](#the-metajson-file), resembling the following:
+To configure your module's build steps, add a `build` object to your [`meta.json` file](#the-metajson-file), including the following:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "build": {
@@ -738,12 +739,18 @@ For example, the following extends the `my-module` <file>meta.json</file> file f
 ```
 
 When you initiate a build job using either `start` or `local`, the command returns the build ID of your job.
-You can then provide that build ID to the `module build logs` command to show the relevant build logs for that build.
+Provide that build ID to the `module build logs` command to show the relevant build logs for that build.
 
-For example, you might use the following to initiate a build, and return the build logs as soon as it completes:
+For example, use the following to initiate a build, and return the build logs as soon as it completes:
 
 ```sh {class="command-line" data-prompt="$"}
 viam module build logs --wait --id $(viam module build start --version "0.1.2")
+```
+
+To list all in-progress builds and their build status, use the following command:
+
+```sh {class="command-line" data-prompt="$"}
+viam module build list
 ```
 
 ### organizations
