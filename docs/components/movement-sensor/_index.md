@@ -497,7 +497,7 @@ properties, err := myMovementSensor.Properties(context.Background(), nil)
 
 ### GetAccuracy
 
-Get the accuracy of the sensor (and/or precision, depending on the sensor model).
+Get the precision and reliability metrics of the movement sensor, including various parameters to assess the sensor's accuracy in different dimensions.
 
 Supported by GPS models.
 
@@ -510,10 +510,16 @@ Supported by GPS models.
 
 **Returns:**
 
-- [(Dict[str, float])](https://docs.python.org/3/library/stdtypes.html#str): The accuracy and/or precision of the sensor, if supported.
-  Contents depend on sensor model.
+- (MovementSensor.Accuracy): The precision and reliability metrics of the movement sensor, which vary depending on model.
+This type contains the following fields:
+  - `accuracy` (map<string, float>): A mapping of specific measurement parameters to their accuracy values.
+  The keys are string identifiers for each measurement (for example, "Hdop", "Vdop"), and the values are their corresponding accuracy levels as float32.
+  - `position_hdop` (optional float): Horizontal Dilution of Precision (HDOP) value. It indicates the level of accuracy of horizontal measurements. Lower values represent higher precision.
+  - `position_vdop` (optional float): Vertical Dilution of Precision (VDOP) value. Similar to HDOP, it denotes the accuracy level of vertical measurements. Lower VDOP values signify better precision.
+  - `position_nmea_gga_fix` (optional NmeaGGAFix): An integer value representing the quality of the NMEA fix. See [Novatel documentation](https://docs.novatel.com/OEM7/Content/Logs/GPGGA.htm#GPSQualityIndicators) for the meaning of each fix value.
+  - `compass_degrees_error` (optional float): The estimated error in compass readings, measured in degrees. It signifies the deviation or uncertainty in the sensor's compass measurements. A lower value implies a more accurate compass direction.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_accuracy).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_accuracy).
 
 ```python
 my_movement_sensor = MovementSensor.from_robot(
@@ -533,8 +539,15 @@ accuracy = await my_movement_sensor.get_accuracy()
 
 **Returns:**
 
-- [(map\[string\]float32)](https://go.dev/blog/maps): The accuracy and/or precision of the sensor, if supported.
-  Contents depend on sensor model.
+- [(Accuracy)](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#Accuracy): The precision and reliability metrics of the movement sensor, which vary depending on model.
+This type contains the following fields:
+  - `AccuracyMap` [(map[string]float32)](https://pkg.go.dev/builtin#string): A mapping of specific measurement parameters to their accuracy values.
+  The keys are string identifiers for each measurement (for example, "Hdop", "Vdop"), and the values are their corresponding accuracy levels as float32.
+  - `Hdop` [(float32)](https://pkg.go.dev/builtin#float32): Horizontal Dilution of Precision (HDOP) value. It indicates the level of accuracy of horizontal measurements. Lower values represent higher precision.
+  - `Vdop` [(float32)](https://pkg.go.dev/builtin#float32): Vertical Dilution of Precision (VDOP) value. Similar to HDOP, it denotes the accuracy level of vertical measurements. Lower VDOP values signify better precision.
+  - `NmeaFix` [(int32)](https://pkg.go.dev/builtin#int32): An integer value representing the quality of the NMEA fix. See [Novatel documentation](https://docs.novatel.com/OEM7/Content/Logs/GPGGA.htm#GPSQualityIndicators) for the meaning of each fix value.
+  - `CompassDegreeError` [(float32)](https://pkg.go.dev/builtin#float32): The estimated error in compass readings, measured in degrees. It signifies the deviation or uncertainty in the sensor's compass measurements. A lower value implies a more accurate compass direction.
+
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
