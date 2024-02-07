@@ -77,6 +77,6 @@ Machine [configuration](machines/#configuration) and machine [code](/build/progr
 <br>
 
 In addition to the [Viam app](https://app.viam.com), the fully featured web application where you can access all fleet management tools, there is a Viam mobile app.
-The mobile app is a convenient way to see if your machine is online, access the [control interface](/fleet/machines/#control), check machine [logs](/fleet/machines/#logs), and [upload images to the cloud]().
+The mobile app is a convenient way to see if your machine is online, access the [control interface](/fleet/machines/#control), check machine [logs](/fleet/machines/#logs), and [upload images to the cloud](/data/export/#upload-images-with-the-viam-mobile-app).
 
 You can find the mobile app on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
