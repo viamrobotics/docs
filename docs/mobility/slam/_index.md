@@ -258,53 +258,6 @@ internal_state, err := slam_svc.GetInternalState(context.Background())
 {{% /tab %}}
 {{< /tabs >}}
 
-### GetLatestMapInfo
-
-Get the timestamp of the last update to the point cloud SLAM map.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- [(`datetime`)](https://docs.python.org/3/library/datetime.html): The timestamp of the last update.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_latest_map_info).
-
-```python {class="line-numbers linkable-line-numbers"}
-slam = SLAMClient.from_robot(robot=robot, name="my_slam_service")
-
-timestamp = slam.get_latest_map_info()
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-
-**Returns:**
-
-- [(time.Time)](https://pkg.go.dev/time#Time): The timestamp of the last update to the point cloud SLAM map.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
-
-```go {class="line-numbers linkable-line-numbers"}
-slam_svc, err := slam.FromRobot(robot, "my_slam_service")
-
-// Get the timestamp of the last update to the point cloud SLAM map.
-timestamp, err := slam_svc.GetLatestMapInfo(context.Background())
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ## DoCommand
 
 Execute model-specific commands that are not otherwise defined by the service API.
