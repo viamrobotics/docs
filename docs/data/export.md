@@ -58,9 +58,9 @@ Upload images as machine data straight from your phone, skipping the normal data
 This is useful if you want to capture images for training machine learning models on the go.
 
 1. Select **Home** on the mobile app, choose your organization, and select a location and machine.
-2. Then, click the menu button **...** in the upper right corner.
+2. Click the menu button marked "**...**" in the upper right corner.
 3. Click **Upload Images**.
-4. Then, select each image you want to upload, and click **Add**.
+4. Select each image you want to upload, and click **Add**.
 
 As for metadata, these images are associated with this machine part you selected, and aren't associated with a component or method.
 
