@@ -114,6 +114,8 @@ To avoid connection issues, start using API keys.
 
 {{< /alert >}}
 
-2. the machine's remote address: Include the address, which resembles `12345.somemachine-main.viam.cloud`.
+2. The machine's remote address:
+
+   Include the address, which resembles `12345.somemachine-main.viam.cloud`.
    The machine address is a public address to connect to your machine.
    You can find this address at the top of the machine's **Control** tab or in the **Code sample** tab.

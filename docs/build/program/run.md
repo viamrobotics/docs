@@ -18,15 +18,15 @@ After saving your [code sample](/build/program/#hello-world-the-code-sample-tab)
 
 ## Run code remotely
 
-Most of the time, as long as both you and your machine are connected to the internet, you will want to run code to control your machine remotely.
+You can remotely control your machine from anywhere in the world.
+If your machine and your personal computer are both connected to the Internet, you can run code to control your machine remotely from your personal computer.
 
 {{<imgproc src="/build/program/remotely.png" resize="800x" declaredimensions=true alt="A client connecting remotely to a machine">}}
 
-The advantage of this method is that your machine and your personal computer do not have to be connected to the same WAN/LAN to issue control commands.
-You can remotely control your machine with any application you implement from anywhere in the world.
-For example, you can run code on your personal computer, creating a client [session](/build/program/apis/sessions/), where the code running on that computer sends instructions to your machine's `viam-server` instance over the internet.
+This method is convenient for most use cases because your machine and your personal computer do not have to be connected to the same WAN/LAN to issue control commands.
+When you run code on one computer, creating a client [session](/build/program/apis/sessions/), the code running on that computer sends instructions to your machine's `viam-server` instance over the Internet.
 
-After editing your code to include your machine's [authentication credentials](#authentication), run a command to execute the program in the terminal of a machine with the appropriate programming language and Viam SDK installed:
+After editing your code to include your machine's [authentication credentials](#authentication), run a command to execute the program in the terminal of a machine with the appropriate programming language and [Viam SDK](/sdks/) installed:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -62,7 +62,9 @@ flutter run <DART_FILE>
 {{% /tab %}}
 {{< /tabs >}}
 
-This is useful because as long as that computer is able to establish a network connection with the machine's computer, your control logic will be executed on the machine.
+As long as that computer is able to establish a network connection with the machine's computer, your control logic will be executed on the machine.
+
+If the internet becomes unavailable to the machine or to your computer but a local network is available, your code will continue to run as described in the next section:
 
 ## Run code on local network
 
@@ -83,7 +85,7 @@ When connecting to a machine using the connection code from the [code sample tab
 
 ## Run code automatically
 
-If you want to run your code automatically when your machine boots, you can configure Viam to run your code as a [process](/build/configure/#processes).
+If you want to run your code on-machine automatically when your machine boots, you can configure Viam to run your code as a [process](/build/configure/#processes).
 
 To be able to run your code from your board, you need to install the relevant SDK as well as other required dependencies:
 
