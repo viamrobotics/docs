@@ -155,7 +155,7 @@ Create another file named <file>package.json</file> with the following contents:
   "author": "Viam Docs Team",
   "license": "ISC",
   "devDependencies": {
-    "esbuild": "0.16.12"
+    "esbuild": "*"
   },
   "dependencies": {
     "@viamrobotics/sdk": "*"
@@ -613,10 +613,10 @@ func main() {
   "author": "Viam Docs Team",
   "license": "ISC",
   "devDependencies": {
-    "esbuild": "0.16.12"
+    "esbuild": "*"
   },
   "dependencies": {
-    "@viamrobotics/sdk": "^0.0.28"
+    "@viamrobotics/sdk": "*"
   }
 }
 ```
