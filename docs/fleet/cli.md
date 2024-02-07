@@ -529,6 +529,10 @@ If you update and release your module as part of a continuous integration (CI) w
 | `create`    | generate new metadata for a custom module on your local filesystem  | - |
 | `update`    | update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file) | - |
 | `upload`    | validate and upload a new or existing custom module on your local filesystem to the Viam registry. See [Upload validation](#upload-validation) for more information | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code |
+| `build start`    | start a module build in a cloud runner using the build step in your [`meta.json` file](#the-metajson-file). See [Using the `build` subcommand](#using-the-build-subcommand) | - |
+| `build local`    | start a module build locally using the build step in your [`meta.json` file](#the-metajson-file). See [Using the `build` subcommand](#using-the-build-subcommand) | - |
+| `build list`    | list the status of your cloud module builds. See [Using the `build` subcommand](#using-the-build-subcommand) | - |
+| `build logs`    | show the logs from a specific cloud module build. See [Using the `build` subcommand](#using-the-build-subcommand) | - |
 | `--help`      | return help      | - |
 
 ##### Named arguments
@@ -536,13 +540,16 @@ If you update and release your module as part of a continuous integration (CI) w
 <!-- prettier-ignore -->
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
+| `--count`    | number of cloud builds to list, defaults to displaying all builds | `build list` | false |
 | `--force`    | skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | false |
-| `--module`     |  the path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload` | false |
+| `--id`    | the build ID to list or show logs for, as returned from `build start` | `build list`, `build logs` | false |
+| `--module`     |  the path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload`, `build` | false |
 | `--name`     |  the name of the custom module to be created | `create` | true |
 | `--org-id`      | the organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | true |
 | `--public-namespace`      | the [namespace](/fleet/organizations/#create-a-namespace-for-your-organization) to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | true |
-| `--platform`      |  the architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument) | `upload` | true |
+| `--platform`      |  the architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument) | `upload`, `build logs` | true |
 | `--version`      |  the version of your module to set for this upload. See [Using the `--version` argument](#using-the---version-argument)  | `upload` | true |
+| `--wait`      |  wait for the build to finish before outputting any logs  | `build logs` | false |
 
 ##### Using the `--org-id` and `--public-namespace` arguments
 
@@ -582,6 +589,8 @@ If you specify a platform that includes `any` (such as `any`, `any/amd64`, or `l
 For example, if you upload your module with support for `any/amd64` and then also upload with support for `linux/amd64`, a machine running the `linux/amd64` architecture deploys the `linux/amd64` version, while a machine running the `darwin/amd64` architecture deploys the `any/amd64` version.
 
 The Viam registry page for your module displays the platforms your module supports for each version you have uploaded.
+
+If you are using the `build logs` command, the `--platform` argument instead restricts the logs returned by the command to only those build jobs that match the specified platform.
 
 ##### Using the `--version` argument
 
@@ -685,6 +694,64 @@ If the two namespaces do not match, the command will return an error.
 See [Upload a custom module](/registry/upload/#upload-a-custom-module) and [Update an existing module](/registry/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
 
 See [Modular resources](/registry/) for a conceptual overview of modules and the modular resource system at Viam.
+
+##### Using the `build` subcommand
+
+You can use the `module build start` or `module build local` commands to build your custom module according to the build steps you specify in your <file>meta.json</file> file:
+
+- Use `build start` to build or compile your module on a cloud build host that might offer additional platform support than you have access to locally.
+- Use `build local` to quickly test that your module builds or compiles as expected on your local hardware.
+
+To configure your module's build steps, add a `build` object to your [`meta.json` file](#the-metajson-file), including the following:
+
+```json {class="line-numbers linkable-line-numbers"}
+"build": {
+  "setup": "setup.sh",                    // optional - command to install your build dependencies
+  "build": "make module.tar.gz",          // command that will build your module
+  "path" : "module.tar.gz",               // optional - path to your built module
+                                          // (passed to the 'viam module upload' command)
+  "arch" : ["linux/amd64", "linux/arm64"] // architecture(s) to build for
+}
+```
+
+For example, the following extends the `my-module` <file>meta.json</file> file from the previous section with a new `build` object to control its build parameters when used with `module build start` or `module build local`:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "module_id": "acme:my-module",
+  "visibility": "public",
+  "url": "https://github.com/acme-co-example/my-module",
+  "description": "An example custom module.",
+  "models": [
+    {
+      "api": "rdk:component:generic",
+      "model": "acme:demo:my-model"
+    }
+  ],
+  "build": {
+    "setup": "setup.sh",
+    "build": "make module.tar.gz",
+    "path": "module.tar.gz",
+    "arch": ["linux/amd64", "linux/arm64"]
+  },
+  "entrypoint": "run.sh"
+}
+```
+
+When you initiate a build job using either `start` or `local`, the command returns the build ID of your job.
+Provide that build ID to the `module build logs` command to show the relevant build logs for that build.
+
+For example, use the following to initiate a build, and return the build logs as soon as it completes:
+
+```sh {class="command-line" data-prompt="$"}
+viam module build logs --wait --id $(viam module build start --version "0.1.2")
+```
+
+To list all in-progress builds and their build status, use the following command:
+
+```sh {class="command-line" data-prompt="$"}
+viam module build list
+```
 
 ### organizations
 
