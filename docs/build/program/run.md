@@ -64,6 +64,8 @@ flutter run <DART_FILE>
 
 As long as that computer is able to establish a network connection with the machine's computer, your control logic will be executed on the machine.
 
+If the internet becomes unavailable to the machine or to your computer but a local network is available, your code will continue to run as described in the next section:
+
 ## Run code on local network
 
 Your machines do not need to be connected to the Internet for you to be able to run code.
