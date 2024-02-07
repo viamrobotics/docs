@@ -514,9 +514,11 @@ Supported by GPS models.
   This type contains the following fields:
   - `accuracy` [(map<string, float>)](https://docs.python.org/3/glossary.html#term-mapping): A mapping of specific measurement parameters to their accuracy values.
     The keys are string identifiers for each measurement (for example, "Hdop", "Vdop"), and the values are their corresponding accuracy levels as floats.
-  - `position_hdop` [(optional float)](https://docs.python.org/3/library/functions.html#float): Horizontal Dilution of Precision (HDOP) value. It indicates the level of accuracy of horizontal measurements.
+  - `position_hdop` [(optional float)](https://docs.python.org/3/library/functions.html#float): Horizontal Dilution of Precision (HDOP) value.
+    It indicates the level of accuracy of horizontal measurements.
     Lower values represent higher precision.
-  - `position_vdop` [(optional float)](https://docs.python.org/3/library/functions.html#float): Vertical Dilution of Precision (VDOP) value. Similar to HDOP, it denotes the accuracy level of vertical measurements.
+  - `position_vdop` [(optional float)](https://docs.python.org/3/library/functions.html#float): Vertical Dilution of Precision (VDOP) value.
+    Similar to HDOP, it denotes the accuracy level of vertical measurements.
     Lower VDOP values signify better precision.
   - `position_nmea_gga_fix` (optional NmeaGGAFix): An integer value representing the quality of the NMEA fix.
     See [Novatel documentation](https://docs.novatel.com/OEM7/Content/Logs/GPGGA.htm#GPSQualityIndicators) for the meaning of each fix value.
