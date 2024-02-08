@@ -213,11 +213,11 @@ For more information, see the [Go SDK Code](https://github.com/viamrobotics/api/
 
 **Parameters:**
 
-- `command` [(string)](https://cplusplus.com/reference/string/string/): The command to execute.
+- `command` [(AttributeMap)](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/common/proto_type.hpp#L13): The command to execute.
 
 **Returns:**
 
-- [(string)](https://cplusplus.com/reference/string/string/): Result of the executed command.
+- [(AttributeMap)](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/common/proto_type.hpp#L13): Result of the executed command.
 
 ```cpp {class="line-numbers linkable-line-numbers"}
 auto my_generic = robot->resource_by_name<GenericComponent>("my_generic_component");
