@@ -33,7 +33,6 @@ You can [add an existing model](/ml/upload-model/) or [train your own models](/m
 To make use of ML models with your machine, use the built-in [ML model service](/ml/) to deploy and run the model.
 
 {{% /manualcard %}}
-
 {{< /cards >}}
 
 <br>
@@ -148,6 +147,7 @@ If the classifier's results exceed the confidence threshold, the **Run model** s
 If you intend to use the detector or classifier with a camera that is part of your machine, you can test your detector or classifier from the [**Control tab**](/fleet/machines/#control) or with code:
 
 1. Configure a [camera component](/components/camera/).
+
    {{< alert title="Tip" color="tip" >}}
    This is the camera whose name you need to pass to vision service methods.
    {{< /alert >}}
@@ -295,14 +295,14 @@ if len(detectionsFromImage) > 0 {
 
 To learn more about how to use detection, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).
 
-    {{% /tab %}}
-    {{< /tabs >}}
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="Classifications" %}}
 
-    {{< tabs >}}
-    {{% tab name="Python" %}}
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.services.vision import VisionClient
@@ -383,8 +383,8 @@ if len(classificationsFromImage) > 0 {
 
 To learn more about how to use classification, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).
 
-    {{% /tab %}}
-    {{< /tabs >}}
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -539,7 +539,7 @@ To learn more about how to use classification, see the [Go SDK docs](https://pkg
 To see more code examples of how to use Viam's vision service, see [our example repo](https://github.com/viamrobotics/vision-service-examples).
 {{% /alert %}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/tutorials/services/try-viam-color-detection/" %}}
