@@ -14,6 +14,7 @@ description: "Upload a Machine Learning model to Viam to use it with the ML Mode
 The ML model service works with models trained inside and outside the Viam app.
 To use a model that you have trained yourself outside the Viam app, [upload it as a new model privately or share it in the Viam registry](#upload-a-new-model-or-new-version).
 If you need to update a previously uploaded model, you can also [upload a new version](#upload-a-new-model-or-new-version).
+To work with the `tflite_cpu` ML model service, an ML model is comprised of a <file>.tflite</file> model file which defines the model, and optionally a <file>.txt</file> labels file which provides the text labels for your model.
 
 If you have [trained](/ml/train-model/) or uploaded an ML model privately and now want to make it available for reuse, you can at any point [make the existing model public in the registry](#make-an-existing-model-public-in-the-registry).
 
@@ -43,7 +44,8 @@ Select **Next steps** to continue.
 1. Specify a name for the model.
 2. Specify the **Model type**.
 3. Add a `.tflite` model file.
-4. Add a `.txt` label file.
+4. (Optional) Add a `.txt` label file.
+   This should include the label names as you provided them in training, with one name per line.
 5. Add a short description.
    This will help other users to understand how to use your model.
 
@@ -59,7 +61,8 @@ Also, if you selected **Public**, it should be publicly visible in the [Viam reg
 1. Select the model you would like to update from your existing models.
 2. Select **Next steps** to continue.
 3. Add an updated `.tflite` model file.
-4. Add an updated `.txt` label file.
+4. (Optional) Add an updated `.txt` label file.
+   This should include the label names as you provided them in training, with one name per line.
 5. Click **Upload model**.
 
 Your model is now updated.
