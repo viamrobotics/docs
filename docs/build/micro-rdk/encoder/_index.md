@@ -25,7 +25,7 @@ For configuration information, click on one of the supported encoder model names
 | [`incremental`](incremental/) | A two phase encoder, which can measure the speed and direction of rotation in relation to a given reference point |
 | [`single`](single/) | A single pin "pulse output" encoder which returns its relative position but no direction |
 
-Click on the model names above for configuration information.
+{{% readfile "/static/include/micro-create-your-own.md" %}}
 
 ## API
 

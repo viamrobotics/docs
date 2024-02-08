@@ -25,6 +25,8 @@ For configuration information, click a supported movement sensor model name:
 | [`accel-adxl345`](accel-adxl345/) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer |
 | [`gyro-mpu6050`](gyro-mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense |
 
+{{% readfile "/static/include/micro-create-your-own.md" %}}
+
 ## API
 
 The micro-RDK [movement sensor API](/components/movement-sensor/#api) supports only the following client SDK API methods, which operate the same as in the full-featured RDK:

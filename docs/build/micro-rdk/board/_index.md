@@ -24,6 +24,8 @@ For configuration information, click on the supported board model name:
 | ----------------- | ------------------------ |
 | [`esp32`](esp32/) | An ESP32 microcontroller |
 
+{{% readfile "/static/include/micro-create-your-own.md" %}}
+
 ## API
 
 The micro-RDK [board API](/components/board/#api) supports only the following client SDK API methods, which operate the same as in the full-featured RDK:
