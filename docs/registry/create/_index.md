@@ -1282,8 +1282,85 @@ For more information on building a module in C++, see the [C++ SDK Build Documen
 
 ## (Optional) create a README
 
-To provide usage instructions for any modular resources in your module, you should create a <file>README.md</file> file following this [template](https://github.com/viam-labs/generator-viam-module/blob/main/generators/app/templates/python/README.md).
-If you followed [the instructions to generate module scaffolding for a Python module](#optional-generate-your-python-module-scaffolding), the template file was generated for you with the environment variables filled in.
+To provide usage instructions for any modular resources in your module, you should create a <file>README.md</file> file following this template:
+
+{{% expand "Click to view template" %}}
+
+Strings surrounded by `<%= %>` indicate variables that you should replace with the appropriate values.
+If you follow [the instructions to generate module scaffolding for a Python module](#optional-generate-your-python-module-scaffolding), the template file is generated for you with the environment variables filled in.
+
+````md
+# <%= name %> modular service
+
+This module implements the [<%= api_namespace %> <%= api_name_lower %> API](https://github.com/<%= api_namespace %>/<%= api_name_lower %>-api) in a <%= model %> model.
+With this model, you can...
+
+## Requirements
+
+_Add instructions here for any requirements._
+
+```bash
+
+```
+````
+
+## Build and Run
+
+To use this module, follow these instructions to [add a module from the Viam Registry](https://docs.viam.com/registry/configure/#add-a-modular-resource-from-the-viam-registry) and select the `<%= api_namespace %>:<%= api_name_lower %>:<%= model %>` model from the [`<%= model %>` module](https://app.viam.com/module/<%= api_namespace %>/<%= model %>).
+
+## Configure your <%= api_name_lower %>
+
+> [!NOTE]  
+> Before configuring your <%= api_name_lower %>, you must [create a machine](https://docs.viam.com/manage/fleet/machines/#add-a-new-machine).
+
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com/).
+Click on the **Components** subtab and click **Create component**.
+Select the `<%= api_name_lower %>` type, then select the `<%= model %>` model.
+Enter a name for your <%= api_name_lower %> and click **Create**.
+
+On the new component panel, copy and paste the following attribute template into your <%= api_name_lower %>’s **Attributes** box:
+
+```json
+{
+  TODO: INSERT SAMPLE ATTRIBUTES
+}
+```
+
+> [!NOTE]  
+> For more information, see [Configure a Machine](https://docs.viam.com/manage/configuration/).
+
+### Attributes
+
+The following attributes are available for `<%= api_namespace %>:<%= api_name_lower %>:<%= model %>` <%= api_name_lower %>s:
+
+| Name    | Type   | Inclusion    | Description |
+| ------- | ------ | ------------ | ----------- |
+| `todo1` | string | **Required** | TODO        |
+| `todo2` | string | Optional     | TODO        |
+
+### Example Configuration
+
+```json
+{
+  TODO: INSERT SAMPLE CONFIGURATION(S)
+}
+```
+
+### Next Steps
+
+_Add any additional information you want readers to know and direct them towards what to do next with this module._
+_For example:_
+
+- To test your...
+- To write code against your...
+
+## Troubleshooting
+
+_Add troubleshooting notes here._
+
+```
+
+{{% /expand %}}
 
 ## Deploy your module
 
@@ -1291,7 +1368,7 @@ You have now created a module, and are ready to deploy it to a machine or a flee
 There are two ways to deploy a module:
 
 - Through the Viam registry: [Upload your new module to the Viam registry](/registry/upload/), then [add the module to one or more machines in the Viam app](/registry/configure/).
-  You can also choose to configure [automated uploads for new module versions](/registry/upload/#update-an-existing-module-using-a-github-action) through a continuous integration (CI) workflow, using a GitHub Action if desired, greatly simplifying how you push changes to your module to the registry as you make them.
+You can also choose to configure [automated uploads for new module versions](/registry/upload/#update-an-existing-module-using-a-github-action) through a continuous integration (CI) workflow, using a GitHub Action if desired, greatly simplifying how you push changes to your module to the registry as you make them.
 - As a local module: [Deploy your module to a single machine as a local module](/registry/configure/#local-modules), without uploading to the Viam app.
 
 Often, developers first test their new module by deploying it as a local module to a test machine.
@@ -1352,3 +1429,4 @@ If you'd like to read more about module development at Viam, check out these tut
 {{% card link="/registry/examples/custom-arm/" %}}
 {{% card link="/tutorials/configure/pet-photographer/" %}}
 {{< /cards >}}
+```
