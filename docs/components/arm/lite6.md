@@ -1,6 +1,6 @@
 ---
-title: "Configure an xArmLite Arm"
-linkTitle: "xArmLite"
+title: "Configure an lite6 Arm"
+linkTitle: "lite6"
 weight: 34
 type: "docs"
 description: "Configure a UFACTORY Lite 6 arm for your machine."
@@ -10,17 +10,17 @@ aliases:
 # SMEs: Bucket, Motion
 ---
 
-Configure an `xArmLite` arm to add a [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) to your machine:
+Configure an `lite6` arm to add a [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) to your machine:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
-Select the `arm` type, then select the `xArmLite` model.
+Select the `arm` type, then select the `lite6` model.
 Enter a name for your arm and click **Create**.
 
-![Web UI configuration panel for an arm of model xArmLite in the Viam app, with Attributes & Depends On dropdowns and the option to add a frame.](/components/arm/xArmLite-ui-config.png)
+![Web UI configuration panel for an arm of model lite6 in the Viam app, with Attributes & Depends On dropdowns and the option to add a frame.](/components/arm/lite6-ui-config.png)
 
 Copy and paste the following attribute template into your arm's **Attributes** box.
 Then remove and fill in the attributes as applicable to your arm, according to the table below.
@@ -57,7 +57,7 @@ Then remove and fill in the attributes as applicable to your arm, according to t
   "components": [
     {
       "name": "<your-arm-name>",
-      "model": "xArmLite",
+      "model": "lite6",
       "type": "arm",
       "namespace": "rdk",
       "attributes": {
@@ -80,7 +80,7 @@ Then remove and fill in the attributes as applicable to your arm, according to t
   "components": [
     {
       "name": "my_arm",
-      "model": "xArmLite",
+      "model": "lite6",
       "type": "arm",
       "namespace": "rdk",
       "attributes": {
@@ -112,7 +112,7 @@ Then remove and fill in the attributes as applicable to your arm, according to t
 {{% /tab %}}
 {{% /tabs %}}
 
-The following attributes are available for `xArmLite` arms:
+The following attributes are available for `lite6` arms:
 
 <!-- prettier-ignore -->
 | Attribute | Type | Inclusion | Description |
