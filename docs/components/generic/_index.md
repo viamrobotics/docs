@@ -278,7 +278,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-There is no need to explicitly close a resource in C++, as resource destruction is handled automatically by the generic component's class destructor.
+There is no need to explicitly close a generic component's resource in C++, as resource destruction is handled automatically by the generic component's class destructor when variables exit scope.
 
 {{% /tab %}}
 {{< /tabs >}}
