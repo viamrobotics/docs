@@ -1,5 +1,5 @@
 ---
-title: "Configure an lite6 Arm"
+title: "Configure a lite6 Arm"
 linkTitle: "lite6"
 weight: 34
 type: "docs"
@@ -10,7 +10,7 @@ aliases:
 # SMEs: Bucket, Motion
 ---
 
-Configure an `lite6` arm to add a [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) to your machine:
+Configure a `lite6` arm to add a [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) to your machine:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
