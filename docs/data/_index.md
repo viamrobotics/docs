@@ -13,7 +13,7 @@ aliases:
   - "/data-management/"
   - "/data-management/"
   - "/services/data/"
-icon: "/services/icons/data-capture.svg"
+icon: "/platform/data.svg"
 imageAlt: "Saving to a folder."
 menuindent: true
 # SME: Alexa Greenberg
