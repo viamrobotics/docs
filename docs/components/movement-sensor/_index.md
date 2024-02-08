@@ -497,7 +497,7 @@ properties, err := myMovementSensor.Properties(context.Background(), nil)
 
 ### GetAccuracy
 
-Get the precision and reliability metrics of the movement sensor, including various parameters to assess the sensor's accuracy in different dimensions.
+Get the reliability metrics of the movement sensor, including various parameters to assess the sensor's accuracy and precision in different dimensions.
 
 Supported by GPS models.
 
@@ -510,20 +510,20 @@ Supported by GPS models.
 
 **Returns:**
 
-- (MovementSensor.Accuracy): The precision and reliability metrics of the movement sensor, which vary depending on model.
+- (MovementSensor.Accuracy): The reliability metrics of the movement sensor, which vary depending on model.
   This type contains the following fields:
-  - `accuracy` [(map<string, float>)](https://docs.python.org/3/glossary.html#term-mapping): A mapping of specific measurement parameters to their accuracy values.
+  - `accuracy` [(Mapping[string, float])](https://docs.python.org/3/glossary.html#term-mapping): A mapping of specific measurement parameters to their accuracy values.
     The keys are string identifiers for each measurement (for example, "Hdop", "Vdop"), and the values are their corresponding accuracy levels as floats.
-  - `position_hdop` [(optional float)](https://docs.python.org/3/library/functions.html#float): Horizontal Dilution of Precision (HDOP) value.
+  - `position_hdop` [(Optional[float])](https://docs.python.org/3/library/functions.html#float): Horizontal Dilution of Precision (HDOP) value.
     It indicates the level of accuracy of horizontal measurements.
     Lower values represent higher precision.
-  - `position_vdop` [(optional float)](https://docs.python.org/3/library/functions.html#float): Vertical Dilution of Precision (VDOP) value.
+  - `position_vdop` [(Optional[float])](https://docs.python.org/3/library/functions.html#float): Vertical Dilution of Precision (VDOP) value.
     Similar to HDOP, it denotes the accuracy level of vertical measurements.
     Lower VDOP values signify better precision.
-  - `position_nmea_gga_fix` (optional NmeaGGAFix): An integer value representing the quality of the NMEA fix.
+  - `position_nmea_gga_fix` (Optional[NmeaGGAFix]): An integer value representing the quality of the NMEA fix.
     See [Novatel documentation](https://docs.novatel.com/OEM7/Content/Logs/GPGGA.htm#GPSQualityIndicators) for the meaning of each fix value.
-  - `compass_degrees_error` [(optional float)](https://docs.python.org/3/library/functions.html#float): The estimated error in compass readings, measured in degrees.
-    It signifies the deviation or uncertainty in the sensor's compass measurements.
+  - `compass_degrees_error` [(Optional[float])](https://docs.python.org/3/library/functions.html#float): The estimated error in compass readings, measured in degrees.
+    This signifies the deviation or uncertainty in the sensor's compass measurements.
     A lower value implies a more accurate compass direction.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_accuracy).
@@ -560,7 +560,7 @@ accuracy = await my_movement_sensor.get_accuracy()
   - `NmeaFix` [(int32)](https://pkg.go.dev/builtin#int32): An integer value representing the quality of the NMEA fix.
     See [Novatel documentation](https://docs.novatel.com/OEM7/Content/Logs/GPGGA.htm#GPSQualityIndicators) for the meaning of each fix value.
   - `CompassDegreeError` [(float32)](https://pkg.go.dev/builtin#float32): The estimated error in compass readings, measured in degrees.
-    It signifies the deviation or uncertainty in the sensor's compass measurements.
+    This signifies the deviation or uncertainty in the sensor's compass measurements.
     A lower value implies a more accurate compass direction.
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
