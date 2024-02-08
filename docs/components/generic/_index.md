@@ -87,7 +87,7 @@ import (
 {{% tab name="C++" %}}
 
 ```cpp
-#include <viam/sdk/services/generic/generic.hpp>
+#include <viam/sdk/components/generic/generic.hpp>
 ```
 
 {{% /tab %}}
@@ -209,6 +209,28 @@ resp, err := myGeneric.DoCommand(ctx, map[string]interface{}{"command": "example
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/api/blob/main/component/generic/v1/generic_grpc.pb.go).
 
 {{% /tab %}}
+{{% tab name="C++" %}}
+
+**Parameters:**
+
+- `command` [(string)](https://cplusplus.com/reference/string/string/): The command to execute.
+
+**Returns:**
+
+- [(string)](https://cplusplus.com/reference/string/string/): Result of the executed command.
+
+```cpp {class="line-numbers linkable-line-numbers"}
+auto my_generic = robot->resource_by_name<GenericComponent>("my_generic_component");
+auto example = std::make_shared<ProtoType>(std::string("example"));
+AttributeMap command =
+    std::make_shared<std::unordered_map<std::string, std::shared_ptr<ProtoType>>>();
+command->insert({{std::string("command"), example}});
+auto resp = my_generic->do_command(command);
+```
+
+For more information, see the [C++ SDK Docs](https://cpp.viam.dev/classviam_1_1sdk_1_1GenericComponent.html)
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### Close
@@ -252,6 +274,11 @@ err := myGeneric.Close(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#TriviallyCloseable).
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+There is no need to explicitly close a resource in C++, as resource destruction is handled automatically by the generic component's class destructor.
 
 {{% /tab %}}
 {{< /tabs >}}

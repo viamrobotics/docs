@@ -34,10 +34,6 @@ If you want to use most of an existing API but need just a few other functions, 
 
 ## Supported models
 
-Before creating a new generic service, check whether one of the following [modular resources](#modular-resources) supports your use case.
-
-{{< readfile "/static/include/create-your-own-mr.md" >}}
-
 ### Built-in models
 
 For configuration information, click on the model name:
@@ -46,10 +42,6 @@ For configuration information, click on the model name:
 Model | Description
 ----- | -----------
 [`fake`](fake/) | A model used for testing a generic service.
-
-### Modular resources
-
-{{<modular-resources api="rdk:service:generic" type="generic">}}
 
 ## Control your machine with Viam's client SDK libraries
 
@@ -155,7 +147,12 @@ For more information, see the [Go SDK Code](https://github.com/viamrobotics/api/
 - [(string)](https://cplusplus.com/reference/string/string/): Result of the executed command.
 
 ```cpp {class="line-numbers linkable-line-numbers"}
-result_map = client.do_command(command);
+auto my_generic = robot->resource_by_name<GenericService>("my_generic_service");
+auto example = std::make_shared<ProtoType>(std::string("example"));
+AttributeMap command =
+    std::make_shared<std::unordered_map<std::string, std::shared_ptr<ProtoType>>>();
+command->insert({{std::string("command"), example}});
+auto resp = my_generic->do_command(command);
 ```
 
 For more information, see the [C++ SDK Docs](https://cpp.viam.dev/classviam_1_1sdk_1_1GenericService.html)
@@ -204,6 +201,11 @@ err := myGeneric.Close(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#TriviallyCloseable).
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+There is no need to explicitly close a resource in C++, as resource destruction is handled automatically by the generic service's class destructor.
 
 {{% /tab %}}
 {{< /tabs >}}
