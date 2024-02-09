@@ -1358,6 +1358,8 @@ _For example:_
 _Add troubleshooting notes here._
 
 ```
+
+```
 ````
 
 {{% /expand %}}
@@ -1368,7 +1370,7 @@ You have now created a module, and are ready to deploy it to a machine or a flee
 There are two ways to deploy a module:
 
 - Through the Viam registry: [Upload your new module to the Viam registry](/registry/upload/), then [add the module to one or more machines in the Viam app](/registry/configure/).
-You can also choose to configure [automated uploads for new module versions](/registry/upload/#update-an-existing-module-using-a-github-action) through a continuous integration (CI) workflow, using a GitHub Action if desired, greatly simplifying how you push changes to your module to the registry as you make them.
+  You can also choose to configure [automated uploads for new module versions](/registry/upload/#update-an-existing-module-using-a-github-action) through a continuous integration (CI) workflow, using a GitHub Action if desired, greatly simplifying how you push changes to your module to the registry as you make them.
 - As a local module: [Deploy your module to a single machine as a local module](/registry/configure/#local-modules), without uploading to the Viam app.
 
 Often, developers first test their new module by deploying it as a local module to a test machine.
@@ -1429,4 +1431,7 @@ If you'd like to read more about module development at Viam, check out these tut
 {{% card link="/registry/examples/custom-arm/" %}}
 {{% card link="/tutorials/configure/pet-photographer/" %}}
 {{< /cards >}}
+
+```
+
 ```
