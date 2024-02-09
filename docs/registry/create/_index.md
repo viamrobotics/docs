@@ -1431,7 +1431,3 @@ If you'd like to read more about module development at Viam, check out these tut
 {{% card link="/registry/examples/custom-arm/" %}}
 {{% card link="/tutorials/configure/pet-photographer/" %}}
 {{< /cards >}}
-
-```
-
-```
