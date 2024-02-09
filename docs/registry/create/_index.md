@@ -51,7 +51,11 @@ Most modules extend an existing [component API](/build/program/apis/#component-a
 For example, you could extend the [camera component API](/components/camera/#api) to support new image formats or a new type of camera, or extend the [ML model service API](/build/program/apis/#ml-model) to support a new machine learning (ML) model type beyond `tflite`.
 
 {{% alert title=Note color="note" %}}
-If you want to write a module to extend support to a new type of component that is relatively unique, and doesn't readily correspond to an existing [built-in component API](/build/program/apis/#component-apis), consider using the [generic API](/components/generic/) with your module instead of extending an existing API.
+If you want to write a module to extend support to a new type of component or service that is relatively unique, consider using the generic API for your resource type to build your own API:
+
+- If you are working with a component that doesn't fit into any of the existing [component APIs](/build/program/apis/#component-apis), you can use the [generic component](/components/generic/) to build your own component API.
+- If you are designing a service that doesn't fit into any of the existing [service APIs](/build/program/apis/#component-apis), you can use the [generic service](/components/generic/) to build your own service API.
+
 Most module use cases, however, benefit from extending an existing API, as covered below.
 {{% /alert %}}
 

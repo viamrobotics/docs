@@ -18,7 +18,7 @@ aliases:
 The _generic_ component {{< glossary_tooltip term_id="subtype" text="subtype" >}} enables you to add support for unique types of hardware that do not already have an [appropriate API](/build/program/apis/#component-apis) defined for them.
 
 For example, when using an [arm component](/components/arm/), it makes sense to use the [arm API](/components/arm/#api), which provides specific functionality an arm component needs, such as moving to position or stopping movement.
-If you want to use an LED display, you need very different functionality that isn't currently exposed in any API.
+However, if you want to use an LED display for example, you need very different functionality that isn't currently exposed in any API.
 Instead, you can use the generic component API to add support for your unique type of hardware, like LED displays, to your machine.
 
 There are no built-in generic component models (other than `fake`).
@@ -30,13 +30,13 @@ The generic component API only supports the `DoCommand` method.
 If you use the generic subtype, your module needs to define any and all component functionality and pass it through `DoCommand`.
 
 Whenever possible, it is best to use an [existing component API](/components/) instead of generic so that you do not have to replicate code.
-If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and extra parameters to add custom functionality to an [existing subtype](/components/), instead of using generic.
+If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and extra parameters to add custom functionality to an [existing subtype](/components/), instead of using the generic component.
 
 {{% /alert %}}
 
 ## Supported models
 
-Before creating a new generic component, check whether one of the following [modular resources](#modular-resources) supports your component.
+Before creating a new generic component, check whether one of the following [modular resources](#modular-resources) supports your use case.
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
@@ -65,7 +65,7 @@ Then control your machine programmatically by getting your `generic` component f
 These examples assume you have a board called "my_board" configured as a component of your machine.
 If your board has a different name, change the `name` in the code.
 
-Be sure to import the generic package for the SDK you are using:
+Be sure to import the generic component package for the SDK you are using:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -81,6 +81,13 @@ from viam.components.generic import Generic
 import (
   "go.viam.com/rdk/components/generic"
 )
+```
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+```cpp
+#include <viam/sdk/components/generic/generic.hpp>
 ```
 
 {{% /tab %}}
@@ -202,6 +209,28 @@ resp, err := myGeneric.DoCommand(ctx, map[string]interface{}{"command": "example
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/api/blob/main/component/generic/v1/generic_grpc.pb.go).
 
 {{% /tab %}}
+{{% tab name="C++" %}}
+
+**Parameters:**
+
+- `command` [(AttributeMap)](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/common/proto_type.hpp#L13): The command to execute.
+
+**Returns:**
+
+- [(AttributeMap)](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/common/proto_type.hpp#L13): Result of the executed command.
+
+```cpp {class="line-numbers linkable-line-numbers"}
+auto my_generic = robot->resource_by_name<GenericComponent>("my_generic_component");
+auto example = std::make_shared<ProtoType>(std::string("example"));
+AttributeMap command =
+    std::make_shared<std::unordered_map<std::string, std::shared_ptr<ProtoType>>>();
+command->insert({{std::string("command"), example}});
+auto resp = my_generic->do_command(command);
+```
+
+For more information, see the [C++ SDK Docs](https://cpp.viam.dev/classviam_1_1sdk_1_1GenericComponent.html)
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### Close
@@ -245,6 +274,11 @@ err := myGeneric.Close(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#TriviallyCloseable).
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+There is no need to explicitly close a generic component's resource in C++, as resource destruction is handled automatically by the generic component's class destructor when variables exit scope.
 
 {{% /tab %}}
 {{< /tabs >}}
