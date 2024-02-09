@@ -33,7 +33,7 @@ If you want to use most of an existing API but need just a few other functions, 
 Or, if your resource does not fit into an existing resource subtype, you can use one of the following:
 
 - If you are working with a component that doesn't fit into any of the existing [component APIs](/build/program/apis/#component-apis), you can use the [generic component](/components/generic/) to build your own component API.
-- If you are designing a service that doesn't fit into any of the existing [service APIs](/build/program/apis/#component-apis), you can use the [generic service](/components/generic/) to build your own service API.
+- If you are designing a service that doesn't fit into any of the existing [service APIs](/build/program/apis/#component-apis), you can use the [generic service](/internals/generic/) to build your own service API.
 
 Both generic resources use the [`DoCommand`](/build/program/apis/#docommand) endpoint to enable you to make arbitrary calls as needed for your resource.
 
