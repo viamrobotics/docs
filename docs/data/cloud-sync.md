@@ -86,7 +86,7 @@ Currently, if the internet becomes unavailable and the sync is interrupted mid-f
 This is only applicable for files in a directory added as an additional sync path.
 {{< /alert >}}
 
-In the example pictured here, the data management service syncs the configured component data from `/tmp/capture` as well as all files in `/logs` every 5 minutes.
+In the example pictured here, the data management service syncs the configured component data from `/.viam/capture` as well as all files in `/logs` every 5 minutes.
 
 ![service config example](/data/data-service-config.png)
 
@@ -112,7 +112,7 @@ In the example pictured here, the data management service syncs the configured c
 
 {{% /expand%}}
 
-### Considerations
+## Considerations
 
 - **Security**: The data management service uses {{< glossary_tooltip term_id="grpc" text="gRPC" >}} calls to send and receive data, so your data is encrypted while in flight.
   When data is stored in the cloud, it is encrypted at rest by the cloud storage provider.
