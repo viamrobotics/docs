@@ -24,6 +24,8 @@ For configuration information, click on the supported base model name:
 | ----- | ----------- |
 | [`two_wheeled_base`](two_wheeled_base/) | Mobile robot with two wheels |
 
+{{% readfile "/static/include/micro-create-your-own.md" %}}
+
 ## API
 
 The micro-RDK [base API](/components/base/#api) is limited to the following supported client SDK API methods, which operate the same as in the full-featured RDK:
