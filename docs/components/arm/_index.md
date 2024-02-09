@@ -62,14 +62,6 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 
 To use your arm with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your arm.
 
-{{< alert title="Add support for other models" color="tip" >}}
-
-If none of the existing models fit your use case, you can [create a modular resource](/registry/) to add support for it.
-
-You can follow [this guide](/registry/examples/custom-arm/) to implement your custom arm as a [modular resource](/registry/).
-
-{{< /alert >}}
-
 ### Built-in models
 
 For configuration information, click on the model name:
@@ -86,6 +78,14 @@ For configuration information, click on the model name:
 ### Modular resources
 
 {{<modular-resources api="rdk:component:arm" type="arm">}}
+
+{{< alert title="Add support for other models" color="tip" >}}
+
+If none of the existing models fit your use case, you can [create a modular resource](/registry/) to add support for it.
+
+You can follow [this guide](/registry/examples/custom-arm/) to implement your custom arm as a [modular resource](/registry/).
+
+{{< /alert >}}
 
 ## Control your arm with Viam's client SDK libraries
 
