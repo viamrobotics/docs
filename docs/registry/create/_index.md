@@ -299,7 +299,10 @@ For more information on the base component API methods used in this example, see
 - [Python SDK documentation for the `Base` class](https://python.viam.dev/autoapi/viam/components/base/index.html)
 - [Base API methods](https://docs.viam.com/components/base/#api)
 
-You can find additional Python example modules in the [Python SDK `examples` directory](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples).
+For more Python module examples:
+
+- See the [Python SDK `examples` directory](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples) for sample module code of varying complexity.
+- See the [Additional example modules](#additional-example-modules) section below for a selection of published Python modules from the Viam registry.
 
 {{% /tab %}}
 {{% tab name="Go"%}}
@@ -541,7 +544,10 @@ For more information on the base component API methods used in this example, see
 - [Go SDK documentation for the `base` package](https://pkg.go.dev/go.viam.com/rdk/components/base#pkg-functions)
 - [Base API methods](https://docs.viam.com/components/base/#api)
 
-You can find additional Go example modules in the [Go SDK `examples` directory](https://github.com/viamrobotics/rdk/blob/main/examples/).
+For more Go module examples:
+
+- See the [Go SDK `examples` directory](https://github.com/viamrobotics/rdk/blob/main/examples/) for sample module code of varying complexity.
+- See the [Additional example modules](#additional-example-modules) section below for a selection of published Go modules from the Viam registry.
 
 {{% /tab %}}
 {{% tab name="C++" %}}
@@ -781,7 +787,10 @@ For more information on the base component API methods used in these examples, s
 - [C++ SDK documentation for the `Base` class](https://cpp.viam.dev/classviam_1_1sdk_1_1Base.html)
 - [Base API methods](https://docs.viam.com/components/base/#api)
 
-You can find additional C++ example modules in the [C++ SDK `examples` directory](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/modules/).
+For more C++ module examples:
+
+- See the [C++ SDK `examples` directory](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/modules/) for sample module code of varying complexity.
+- See the [Additional example modules](#additional-example-modules) section below for a selection of published C++ modules from the Viam registry.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1300,6 +1309,12 @@ Then, once you are satisfied with the state of your module, you can upload your 
 - deploy your module to a fleet of machines from a central interface
 
 See [Using the Viam registry](/registry/) for a high-level overview of the modular resource ecosystem at Viam.
+
+{{% alert title="Tip" color="tip" %}}
+
+If you would like to test your module locally against its intended target platform before uploading it, you can follow the steps for [Iterative module development](/registry/advanced/iterative-development/) to verify that any code changes you have made work as expected on your target platform.
+
+{{% /alert %}}
 
 ## Additional example modules
 
