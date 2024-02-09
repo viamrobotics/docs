@@ -153,6 +153,12 @@ The [data management service](/data/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/data.md" >}}
 
+### Generic
+
+The [generic service](/registry/advanced/generic/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/generic.md" >}}
+
 ### ML Model
 
 The [ML model service](/ml/) supports the following methods:
