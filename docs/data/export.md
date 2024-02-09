@@ -62,7 +62,7 @@ This is useful if you want to capture images for training machine learning model
 3. Click **Upload Images**.
 4. Select each image you want to upload, and click **Add**.
 
-As for metadata, these images are associated with this machine part you selected, and aren't associated with a component or method.
+As for metadata, these images are associated with the machine part you selected, and aren't associated with a component or method.
 
 ## Next steps
 
