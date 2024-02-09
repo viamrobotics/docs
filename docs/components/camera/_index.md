@@ -47,8 +47,6 @@ You can use different models to:
 
 To use your camera with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your camera.
 
-{{< readfile "/static/include/create-your-own-mr.md" >}}
-
 ### Built-in models
 
 For configuration information, click on the model name:
@@ -74,6 +72,8 @@ For configuration information, click on the model name:
 ### Modular resources
 
 {{<modular-resources api="rdk:component:camera" type="camera">}}
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ## Control your camera with Viam's client SDK libraries
 

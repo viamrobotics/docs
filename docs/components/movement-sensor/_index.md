@@ -36,8 +36,6 @@ Viam also supports generic [sensors](/components/sensor/) and [encoders](/compon
 
 To use your GPS, IMU, accelerometer, or other movement sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your movement sensor.
 
-{{< readfile "/static/include/create-your-own-mr.md" >}}
-
 ### Built-in models
 
 Viam supports several different models of movement sensor.
@@ -60,6 +58,8 @@ Model | Description <a name="model-table"></a>
 ### Modular resources
 
 {{<modular-resources api="rdk:component:movement_sensor" type="movement_sensor">}}
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Micro-RDK
 

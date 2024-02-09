@@ -52,8 +52,6 @@ Check your device's data sheet and configure that type of servo as an [encoded m
 
 To use your servo with Viam, check whether one of the following [built-in models](#built-in-models) supports your servo.
 
-{{< readfile "/static/include/create-your-own-mr.md" >}}
-
 ### Built-in models
 
 For configuration information, click on the model name:
@@ -70,7 +68,7 @@ For configuration information, click on the model name:
 {{<modular-resources api="rdk:component:servo" type="servo">}}
 -->
 
-If none of these models fit your use case, you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it.
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ## Control your servo with Viam's client SDK libraries
 

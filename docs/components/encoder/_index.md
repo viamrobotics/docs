@@ -47,8 +47,6 @@ Most machines with an encoder need at least the following hardware:
 
 To use your encoder with Viam, check whether one of the following [built-in models](#built-in-models) supports your encoder.
 
-{{< readfile "/static/include/create-your-own-mr.md" >}}
-
 ### Built-in models
 
 For configuration information, click on the model name:
@@ -65,6 +63,8 @@ For configuration information, click on the model name:
 <!-- ### Modular resources
 
 {{<modular-resources api="rdk:component:encoder" type="encoder">}} -->
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Micro-RDK
 
