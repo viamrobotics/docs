@@ -488,6 +488,38 @@ END MARKETING CSS
   margin-bottom: 0.5rem;
 }
 
+.hover-card > a > div > p {
+  margin-bottom: 0rem;
+}
+
+// adjust for cards that only have a link and an icon
+
+.hover-card.link-with-icon > a {
+  width: 100%;
+}
+
+.hover-card.link-with-icon > a > div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.hover-card.link-with-icon * picture {
+  width: 45px;
+  height: 45px;
+  margin-right: 1em;
+}
+
+.hover-card.link-with-icon * img {
+  aspect-ratio: unset;
+  margin: unset;
+  object-fit: fill;
+  min-width: 45px;
+  width: 45px;
+  height: 45px;
+  border: unset;
+}
+
 // For some reason video elements don't calculate the height correctly. This adjusts for that.
 .hover-card-video {
   border: 1px solid white;

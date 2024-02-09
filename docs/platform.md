@@ -129,7 +129,7 @@ Explore the elements of the Viam platform:
 {{% card link="/build" class="fit-contain" %}}
 {{% card link="/registry" class="fit-contain" %}}
 {{% card link="/fleet" class="fit-contain" %}}
-{{% card link="/data" class="fit-contain" %}}
+{{% card link="/data" class="fit-contain" imageOverwrite="/platform/data.svg" %}}
 {{% card link="/ml" class="fit-contain" %}}
 {{% card link="/mobility" class="fit-contain" %}}
 {{< /cards >}}
