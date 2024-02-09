@@ -1,6 +1,6 @@
 ---
 title: "Generic Service"
-linkTitle: "Generic"
+linkTitle: "Generic Service"
 childTitleEndOverwrite: "Generic Service"
 weight: 55
 type: "docs"
