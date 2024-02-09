@@ -24,7 +24,7 @@ Enter a name for your generic service and click **Create**.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "name": "<your-fake-generic-component-name>",
+  "name": "<your-fake-generic-service-name>",
   "model": "fake",
   "type": "generic",
   "namespace": "rdk",
