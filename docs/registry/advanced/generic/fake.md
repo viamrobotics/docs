@@ -35,5 +35,5 @@ Enter a name for your generic service and click **Create**.
 {{% /tab %}}
 {{< /tabs >}}
 
-No attributes are available for fake generic service.
+No attributes are available for the `fake` generic service.
 See [GitHub](https://github.com/viamrobotics/rdk/blob/main/services/generic/fake/generic.go) for API call return specifications.
