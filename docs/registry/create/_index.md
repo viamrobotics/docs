@@ -1051,6 +1051,90 @@ We recommend that you use a C++ logging library to assist with log message forma
 {{% /tab %}}
 {{< /tabs >}}
 
+## (Optional) create a README
+
+To provide usage instructions for any modular resources in your module, you should create a <file>README.md</file> file following this template:
+
+{{% expand "Click to view template" %}}
+
+Strings surrounded by `<%= %>` indicate variables that you should replace with the appropriate values.
+If you follow [the instructions to generate module scaffolding for a Python module](#optional-generate-your-python-module-scaffolding), the template file is generated for you with the environment variables filled in.
+
+````md
+# <INSERT NAME> modular resource
+
+This module implements the [<INSERT API NAMESPACE> <INSERT API NAME> API](https://github.com/<INSERT API NAMESPACE>/<INSERT API NAME>-api) in a <INSERT MODEL> model.
+With this model, you can...
+
+## Requirements
+
+_Add instructions here for any requirements._
+
+```bash
+
+```
+
+## Build and run
+
+To use this module, follow these instructions to [add a module from the Viam Registry](https://docs.viam.com/registry/configure/#add-a-modular-resource-from-the-viam-registry) and select the `<INSERT API NAMESPACE>:<INSERT API NAME>:<INSERT MODEL>` model from the [`<INSERT MODEL>` module](https://app.viam.com/module/<INSERT API NAMESPACE>/<INSERT MODEL>).
+
+## Configure your <INSERT API NAME>
+
+> [!NOTE]  
+> Before configuring your <INSERT API NAME>, you must [create a machine](https://docs.viam.com/manage/fleet/machines/#add-a-new-machine).
+
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com/).
+Click on the **Components** subtab and click **Create component**.
+Select the `<INSERT API NAME>` type, then select the `<INSERT MODEL>` model.
+Enter a name for your <INSERT API NAME> and click **Create**.
+
+On the new component panel, copy and paste the following attribute template into your <INSERT API NAME>’s **Attributes** box:
+
+```json
+{
+  TODO: INSERT SAMPLE ATTRIBUTES
+}
+```
+
+> [!NOTE]  
+> For more information, see [Configure a Machine](https://docs.viam.com/manage/configuration/).
+
+### Attributes
+
+The following attributes are available for `<INSERT API NAMESPACE>:<INSERT API NAME>:<INSERT MODEL>` <INSERT API NAME>s:
+
+| Name    | Type   | Inclusion    | Description |
+| ------- | ------ | ------------ | ----------- |
+| `todo1` | string | **Required** | TODO        |
+| `todo2` | string | Optional     | TODO        |
+
+### Example configuration
+
+```json
+{
+  TODO: INSERT SAMPLE CONFIGURATION(S)
+}
+```
+
+### Next steps
+
+_Add any additional information you want readers to know and direct them towards what to do next with this module._
+_For example:_
+
+- To test your...
+- To write code against your...
+
+## Troubleshooting
+
+_Add troubleshooting notes here._
+
+```
+
+```
+````
+
+{{% /expand %}}
+
 ## Compile or package your module
 
 The final step to creating a new module is to create an executable file that `viam-server` can use to run your module on demand.
@@ -1279,90 +1363,6 @@ For more information on building a module in C++, see the [C++ SDK Build Documen
 
 {{% /tab %}}
 {{% /tabs %}}
-
-## (Optional) create a README
-
-To provide usage instructions for any modular resources in your module, you should create a <file>README.md</file> file following this template:
-
-{{% expand "Click to view template" %}}
-
-Strings surrounded by `<%= %>` indicate variables that you should replace with the appropriate values.
-If you follow [the instructions to generate module scaffolding for a Python module](#optional-generate-your-python-module-scaffolding), the template file is generated for you with the environment variables filled in.
-
-````md
-# <INSERT NAME> modular resource
-
-This module implements the [<INSERT API NAMESPACE> <INSERT API NAME> API](https://github.com/<INSERT API NAMESPACE>/<INSERT API NAME>-api) in a <INSERT MODEL> model.
-With this model, you can...
-
-## Requirements
-
-_Add instructions here for any requirements._
-
-```bash
-
-```
-
-## Build and run
-
-To use this module, follow these instructions to [add a module from the Viam Registry](https://docs.viam.com/registry/configure/#add-a-modular-resource-from-the-viam-registry) and select the `<INSERT API NAMESPACE>:<INSERT API NAME>:<INSERT MODEL>` model from the [`<INSERT MODEL>` module](https://app.viam.com/module/<INSERT API NAMESPACE>/<INSERT MODEL>).
-
-## Configure your <INSERT API NAME>
-
-> [!NOTE]  
-> Before configuring your <INSERT API NAME>, you must [create a machine](https://docs.viam.com/manage/fleet/machines/#add-a-new-machine).
-
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com/).
-Click on the **Components** subtab and click **Create component**.
-Select the `<INSERT API NAME>` type, then select the `<INSERT MODEL>` model.
-Enter a name for your <INSERT API NAME> and click **Create**.
-
-On the new component panel, copy and paste the following attribute template into your <INSERT API NAME>’s **Attributes** box:
-
-```json
-{
-  TODO: INSERT SAMPLE ATTRIBUTES
-}
-```
-
-> [!NOTE]  
-> For more information, see [Configure a Machine](https://docs.viam.com/manage/configuration/).
-
-### Attributes
-
-The following attributes are available for `<INSERT API NAMESPACE>:<INSERT API NAME>:<INSERT MODEL>` <INSERT API NAME>s:
-
-| Name    | Type   | Inclusion    | Description |
-| ------- | ------ | ------------ | ----------- |
-| `todo1` | string | **Required** | TODO        |
-| `todo2` | string | Optional     | TODO        |
-
-### Example configuration
-
-```json
-{
-  TODO: INSERT SAMPLE CONFIGURATION(S)
-}
-```
-
-### Next steps
-
-_Add any additional information you want readers to know and direct them towards what to do next with this module._
-_For example:_
-
-- To test your...
-- To write code against your...
-
-## Troubleshooting
-
-_Add troubleshooting notes here._
-
-```
-
-```
-````
-
-{{% /expand %}}
 
 ## Deploy your module
 
