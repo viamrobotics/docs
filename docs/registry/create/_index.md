@@ -1290,7 +1290,7 @@ Strings surrounded by `<%= %>` indicate variables that you should replace with t
 If you follow [the instructions to generate module scaffolding for a Python module](#optional-generate-your-python-module-scaffolding), the template file is generated for you with the environment variables filled in.
 
 ````md
-# <INSERT NAME> modular service
+# <INSERT NAME> modular resource
 
 This module implements the [<INSERT API NAMESPACE> <INSERT API NAME> API](https://github.com/<INSERT API NAMESPACE>/<INSERT API NAME>-api) in a <INSERT MODEL> model.
 With this model, you can...
