@@ -86,7 +86,7 @@ Currently, if the internet becomes unavailable and the sync is interrupted mid-f
 This is only applicable for files in a directory added as an additional sync path.
 {{< /alert >}}
 
-In the example pictured here, the data management service syncs the configured component data from `/tmp/capture` as well as all files in `/logs` every 5 minutes.
+In the example pictured here, the data management service syncs the configured component data from `/.viam/capture` as well as all files in `/logs` every 5 minutes.
 
 ![service config example](/data/data-service-config.png)
 
