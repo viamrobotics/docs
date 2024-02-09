@@ -185,7 +185,9 @@ The custom model is configured as a component with the name "my-realsense".
       "model": "viam:camera:realsense",
       "type": "camera",
       "namespace": "rdk",
-      "attributes": {},
+      "attributes": {
+        "sensors": ["color", "depth"]
+      },
       "depends_on": []
     }
   ],

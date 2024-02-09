@@ -201,7 +201,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ### GetImages
 
 {{% alert title="Usage" color="note" %}}
-Intended specifically for use with cameras with both depth and color image streams, like the [Intel RealSense](https://app.viam.com/module/viam/realsense) camera.
+Intended specifically for use with cameras that support simultaneous depth and color image streams, like the [Intel RealSense](https://app.viam.com/module/viam/realsense) or the [Luxonis OAK-D](https://app.viam.com/module/viam/oak-d).
 If your camera does not have multiple imagers, this method will work without capturing multiple images simultaneously.
 {{% /alert %}}
 
