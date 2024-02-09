@@ -516,10 +516,10 @@ Supported by GPS models.
     The keys are string identifiers for each measurement (for example, "Hdop", "Vdop"), and the values are their corresponding accuracy levels as floats.
   - `position_hdop` [(Optional[float])](https://docs.python.org/3/library/functions.html#float): Horizontal Dilution of Precision (HDOP) value.
     It indicates the level of accuracy of horizontal measurements.
-    Lower values represent higher precision.
+    Lower values indicate improved reliability of positional measurements.
   - `position_vdop` [(Optional[float])](https://docs.python.org/3/library/functions.html#float): Vertical Dilution of Precision (VDOP) value.
     Similar to HDOP, it denotes the accuracy level of vertical measurements.
-    Lower VDOP values signify better precision.
+    Lower values indicate improved reliability of positional measurements.
   - `position_nmea_gga_fix` (Optional[NmeaGGAFix]): An integer value representing the quality of the NMEA fix.
     See [Novatel documentation](https://docs.novatel.com/OEM7/Content/Logs/GPGGA.htm#GPSQualityIndicators) for the meaning of each fix value.
   - `compass_degrees_error` [(Optional[float])](https://docs.python.org/3/library/functions.html#float): The estimated error in compass readings, measured in degrees.
@@ -553,10 +553,10 @@ accuracy = await my_movement_sensor.get_accuracy()
     The keys are string identifiers for each measurement (for example, "Hdop", "Vdop"), and the values are their corresponding accuracy levels as float32.
   - `Hdop` [(float32)](https://pkg.go.dev/builtin#float32): Horizontal Dilution of Precision (HDOP) value.
     It indicates the level of accuracy of horizontal measurements.
-    Lower values represent higher precision.
+    Lower values indicate improved reliability of positional measurements.
   - `Vdop` [(float32)](https://pkg.go.dev/builtin#float32): Vertical Dilution of Precision (VDOP) value.
     Similar to HDOP, it denotes the accuracy level of vertical measurements.
-    Lower VDOP values signify better precision.
+    Lower values indicate improved reliability of positional measurements.
   - `NmeaFix` [(int32)](https://pkg.go.dev/builtin#int32): An integer value representing the quality of the NMEA fix.
     See [Novatel documentation](https://docs.novatel.com/OEM7/Content/Logs/GPGGA.htm#GPSQualityIndicators) for the meaning of each fix value.
   - `CompassDegreeError` [(float32)](https://pkg.go.dev/builtin#float32): The estimated error in compass readings, measured in degrees.
