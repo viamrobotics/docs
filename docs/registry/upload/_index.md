@@ -231,6 +231,12 @@ You can update an existing module in the [Viam registry](https://app.viam.com/re
 Updating your module manually is appropriate for smaller projects, especially those with only one contributor.
 Updating your module automatically using CI is better suited for larger, ongoing projects, especially those with multiple contributors.
 
+{{% alert title="Tip" color="tip" %}}
+
+If you would like to test your module locally against its intended target platform before uploading it, you can follow the steps for [Iterative module development](/registry/advanced/iterative-development/) to verify that any code changes you have made work as expected on your target platform.
+
+{{% /alert %}}
+
 ### Update an existing module using the Viam CLI
 
 To update an existing module in the [Viam registry](https://app.viam.com/registry) manually, use the [Viam CLI](/fleet/cli/):

@@ -62,4 +62,10 @@ After testing your classifier, see the following to further explore Viam's data 
 - [2D Object Detection](/ml/vision/#detections): Configure your machine's camera to draw a bounding box around detected objects, based on a machine learning model.
 - [Update an existing ML model](/ml/train-model/#train-a-new-version-of-a-model): Refine an existing ML model you have trained, and select which model version to deploy.
 
-You can also explore our [tutorials](/tutorials/) for more ideas.
+You can also explore our [tutorials](/tutorials/) for more machine learning ideas:
+
+{{< cards >}}
+{{% card link="/tutorials/projects/pet-treat-dispenser/" customTitle="Smart Pet Feeder" %}}
+{{% card link="/registry/examples/tflite-module/" %}}
+{{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
+{{< /cards >}}
