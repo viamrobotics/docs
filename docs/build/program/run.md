@@ -26,7 +26,7 @@ If your machine and your personal computer are both connected to the Internet, y
 This method is convenient for most use cases because your machine and your personal computer do not have to be connected to the same WAN/LAN to issue control commands.
 When you run code on one computer, creating a client [session](/build/program/apis/sessions/), the code running on that computer sends instructions to your machine's `viam-server` instance over the Internet.
 
-After editing your code to include your machine's [authentication credentials](#authentication), run a command to execute the program in the terminal of a machine with the appropriate programming language and [Viam SDK](/sdks/) installed:
+After editing your code to include your machine's [authentication credentials](#authentication), run a command to execute the program in the terminal of a computer with the appropriate programming language and [Viam SDK](/sdks/) installed:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -77,62 +77,53 @@ If you subsequently lose internet connectivity, but stay connected to LAN or WAN
 
 ## Run code on-machine
 
-If you run [PID control loops](https://en.wikipedia.org/wiki/PID_controller) or your machines have intermittent or no network connectivity, you can ensure this does not interfere with the code's execution by running the control code on the same board that is running `viam-server`.
+You can run SDK code directly on your machine.
+If you run [PID control loops](https://en.wikipedia.org/wiki/PID_controller) or your machines have intermittent or no network connectivity, you can ensure lags in communication do not interfere with the machine's performance by running the control code on the same board that is running `viam-server`.
+Running everything on one machine is also convenient if you have a machine (for example, an air quality sensor) that runs all the time, and you don't want to have to connect to it from a separate computer constantly.
 
-{{<imgproc src="/build/program/on-robot.png" resize="800x" declaredimensions=true alt="A client running on a machine">}}
+The script you run on-machine is the same as the script you [run remotely](#run-code-remotely) or on a local network.
+When the connection code from the [code sample tab](/build/program/#hello-world-the-code-sample-tab) executes, it creates a [client session](/build/program/apis/sessions/) connected to your machine using the [most efficient route](/build/program/connectivity/).
+Because the code is running on the same machine as `viam-server`, the favored route for commands is automatically over localhost.
 
-When connecting to a machine using the connection code from the [code sample tab](/build/program/#hello-world-the-code-sample-tab), a [client session](/build/program/apis/sessions/) automatically uses the [most efficient route](/build/program/connectivity/) to connect to your machine, which means the favored route for commands will be over localhost.
-
-## Run code automatically
-
-If you want to run your code on-machine automatically when your machine boots, you can configure Viam to run your code as a [process](/build/configure/#processes).
-
-To be able to run your code from your board, you need to install the relevant SDK as well as other required dependencies:
+Install the appropriate programming language and [Viam SDK](/sdks/) on your machine and run a command to execute the program in the terminal of that machine instead of from a separate computer:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-1. [`ssh` into your board](/get-started/installation/prepare/rpi-setup/#connect-with-ssh) and install `pip`:
+```sh {class="command-line" data-prompt="$"}
+python3 ~/myCode/myViamFile.py
+```
 
-   ```sh {class="command-line" data-prompt="$"}
-   sudo apt install python3-pip
-   ```
+{{% /tab %}}
+{{% tab name="Go" %}}
 
-2. Create a folder `robot` inside your home directory:
+```sh {class="command-line" data-prompt="$"}
+go run ~/myCode/myViamFile.go
+```
 
-   ```sh {class="command-line" data-prompt="$"}
-   mkdir robot
-   ```
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
 
-3. Then install the Viam Python SDK (and other dependencies if required) **into that folder**:
+For an example, see [this execution demo.](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/vanilla)
 
-   ```sh {class="command-line" data-prompt="$"}
-   pip3 install --target=robot viam-sdk <other-required-dependencies>
-   ```
+{{% /tab %}}
+{{% tab name="C++" %}}
 
-4. Add your code to your new folder:
+For information on running C++ code see [the instructions on GitHub](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
 
-   ```sh {class="command-line" data-prompt="$"}
-   scp main.py user@host.local:/home/myboard/robot/main.py
-   ```
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+```sh {class="command-line" data-prompt="$"}
+flutter run <DART_FILE>
+```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-Now navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Processes** subtab and navigate to the **Create process** menu.
+### Run code automatically as a process
 
-Enter `main` as the process name and click **Create process**.
+If you want to run your code on-machine automatically when your machine boots, you can configure your machine to run your code as a _{{< glossary_tooltip term_id="process" text="process" >}}_.
+You can configure the process to run once on boot, or continuously.
 
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-In the new process panel, enter `python3` as the executable, `main.py` as the argument, and the working directory of your board Pi as `/home/myboard/robot`.
-Click on **Add argument**.
-
-Click **Save config** in the bottom left corner of the screen.
-
-{{% /tab %}}
-{{< /tabs >}}
-
-Now your machine will start its code automatically once booted.
+Find information on how to configure a process in [Processes](/build/configure/#processes).
