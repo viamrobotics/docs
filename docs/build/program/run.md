@@ -126,4 +126,4 @@ flutter run <DART_FILE>
 If you want to run your code on-machine automatically when your machine boots, you can configure your machine to run your code as a _{{< glossary_tooltip term_id="process" text="process" >}}_.
 You can configure the process to run once on boot, or continuously.
 
-Find information on how to configure a process in [Processes](/build/configure/#processes).
+Find information on how to configure a process in [Processes](/build/configure/processes).
