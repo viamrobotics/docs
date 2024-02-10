@@ -409,7 +409,7 @@ If yours doesn't resemble the following, go back to the raw JSON and double-chec
 
 To operate the dog, you need to start the Freenove robot dog server (which you saved as <file>/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/main.py</file>).
 
-You can configure a [_process_](/build/configure/processes) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
+You can configure a [_process_](/build/configure/processes/) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
 
 Navigate to the **Processes** subtab of your machine's **Config** tab.
 
