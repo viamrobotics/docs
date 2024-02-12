@@ -14,10 +14,14 @@
                 {{ partial "sidebar.html" . }}
             </aside>
             <main class="col-12 col-md-9 col-xl-10 pl-md-5" role="main">
+                <div id="rss-feed">
+                <a target="_blank" title="Open RSS feed" aria-label="Open RSS feed" href="{{ .Permalink }}feed.xml">
+                    <p><i class="fas fa-rss"></i> RSS Feed</p>
+                </a>
+                </div>
+                {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
                 <div class="td-content">
-                    {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
                     <h1>{{ .Title }}</h1>
-
                     <p>Select a language, component, or service that you're interested in and browse relevant tutorials. If you don't know where to start, start by selecting the beginner level for introductory tutorials.
                     </p>
                         <div id="tutorial-menu" class="lozad">

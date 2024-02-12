@@ -247,7 +247,7 @@ Now you'll update some configurations in the iOS-specific code to support the [V
 
    ```
 
-   If you chose a name other than `Smart Machine App` for your project, edit lines 13 and 30 with your own app title.
+   If you chose a name other than `Smart Machine App` for your project, edit lines 15 and 32 with your own app title.
 
 ### Launch the app
 

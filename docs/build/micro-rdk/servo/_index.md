@@ -25,6 +25,8 @@ For configuration information, click on the supported servo model name:
 | ----- | ----------- |
 | [`gpio`](gpio/) | A hobby servo. |
 
+{{% readfile "/static/include/micro-create-your-own.md" %}}
+
 ## API
 
 The micro-RDK [servo API](/components/servo/#api) supports the following client SDK API methods, which operate the same as in the full-featured RDK:

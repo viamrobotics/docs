@@ -43,8 +43,6 @@ Most machines with a sensor need at least the following hardware:
 
 To use your sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your sensor.
 
-{{< readfile "/static/include/create-your-own-mr.md" >}}
-
 ### Built-in models
 
 For configuration information, click on the model name:
@@ -61,6 +59,8 @@ For configuration information, click on the model name:
 ### Modular resources
 
 {{<modular-resources api="rdk:component:sensor" type="sensor">}}
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ## Control your sensor with Viam's client SDK libraries
 

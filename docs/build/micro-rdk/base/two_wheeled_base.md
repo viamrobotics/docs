@@ -13,7 +13,7 @@ aliases:
 ---
 
 A `two_wheeled_base` base supports mobile robotic bases with drive motors on both sides (differential steering).
-Only two-wheeled bases are supported by this micro-RDK model.
+Only bases with two drive wheels are supported by this micro-RDK model.
 
 {{< alert title="Info" color="info" >}}
 

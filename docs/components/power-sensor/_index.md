@@ -28,8 +28,6 @@ Integrate this component to monitor your power levels.
 
 To use your power sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your power sensor.
 
-{{< readfile "/static/include/create-your-own-mr.md" >}}
-
 ### Built-in models
 
 For configuration information, click on the model name:
@@ -44,6 +42,8 @@ For configuration information, click on the model name:
 ### Modular resources
 
 {{<modular-resources api="rdk:component:power_sensor" type="power_sensor">}}
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ## Control your power sensor with Viam’s client SDK libraries
 

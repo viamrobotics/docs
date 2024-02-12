@@ -40,8 +40,6 @@ Most machines with an input controller need at least the following hardware:
 
 To use your input controller with Viam, check whether one of the following [built-in models](#built-in-models) supports your input controller.
 
-{{< readfile "/static/include/create-your-own-mr.md" >}}
-
 ### Built-in models
 
 For configuration information, click on the model name:
@@ -61,6 +59,8 @@ For configuration information, click on the model name:
 {{<modular-resources api="rdk:component:input_controller" type="input_controller">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}-->
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ## Control your machine with an input controller with Viam's client SDK libraries
 

@@ -42,8 +42,6 @@ Most machines with a motor need at least the following hardware:
 
 To use your motor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your motor.
 
-{{< readfile "/static/include/create-your-own-mr.md" >}}
-
 ### Built-in models
 
 For configuration information, click on the model name:
@@ -62,6 +60,8 @@ Model | Description <a name="model-table"></a>
 ### Modular resources
 
 {{<modular-resources api="rdk:component:motor" type="motor">}}
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Micro-RDK
 

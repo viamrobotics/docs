@@ -41,8 +41,6 @@ Most mobile robots with a base need at least the following hardware:
 
 To use your base with Viam, check whether one of the following [built-in models](#built-in-models) or {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} supports your base.
 
-{{< readfile "/static/include/create-your-own-mr.md" >}}
-
 ### Built-in models
 
 For configuration information, click on the model name:
@@ -57,6 +55,8 @@ For configuration information, click on the model name:
 ### Modular resources
 
 {{<modular-resources api="rdk:component:base" type="base">}}
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Micro-RDK
 

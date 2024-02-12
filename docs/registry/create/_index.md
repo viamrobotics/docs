@@ -31,6 +31,12 @@ Or you can write your own module to address your specific use case, and either u
 
 Follow the instructions below to learn how to write a new module using your preferred language and its corresponding [Viam SDK](/sdks/).
 
+{{< alert title="Note: Micro-RDK modules" color="note" >}}
+The [micro-RDK](/build/micro-rdk/) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
+Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) for information on how to create custom resources for your micro-RDK machine.
+You will need to [recompile and flash your ESP32 yourself](/get-started/installation/prepare/microcontrollers/development-setup/) instead of using Viam's prebuilt binary and installer.
+{{< /alert >}}
+
 ## Overview of a module
 
 Generally, to write a module, you:
@@ -45,7 +51,11 @@ Most modules extend an existing [component API](/build/program/apis/#component-a
 For example, you could extend the [camera component API](/components/camera/#api) to support new image formats or a new type of camera, or extend the [ML model service API](/build/program/apis/#ml-model) to support a new machine learning (ML) model type beyond `tflite`.
 
 {{% alert title=Note color="note" %}}
-If you want to write a module to extend support to a new type of component that is relatively unique, and doesn't readily correspond to an existing [built-in component API](/build/program/apis/#component-apis), consider using the [generic API](/components/generic/) with your module instead of extending an existing API.
+If you want to write a module to extend support to a new type of component or service that is relatively unique, consider using the generic API for your resource type to build your own API:
+
+- If you are working with a component that doesn't fit into any of the existing [component APIs](/build/program/apis/#component-apis), you can use the [generic component](/components/generic/) to build your own component API.
+- If you are designing a service that doesn't fit into any of the existing [service APIs](/build/program/apis/#service-apis), you can use the [generic service](/registry/advanced/generic/) to build your own service API.
+
 Most module use cases, however, benefit from extending an existing API, as covered below.
 {{% /alert %}}
 
@@ -293,7 +303,10 @@ For more information on the base component API methods used in this example, see
 - [Python SDK documentation for the `Base` class](https://python.viam.dev/autoapi/viam/components/base/index.html)
 - [Base API methods](https://docs.viam.com/components/base/#api)
 
-You can find additional Python example modules in the [Python SDK `examples` directory](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples).
+For more Python module examples:
+
+- See the [Python SDK `examples` directory](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples) for sample module code of varying complexity.
+- See the [Additional example modules](#additional-example-modules) section below for a selection of published Python modules from the Viam registry.
 
 {{% /tab %}}
 {{% tab name="Go"%}}
@@ -535,7 +548,10 @@ For more information on the base component API methods used in this example, see
 - [Go SDK documentation for the `base` package](https://pkg.go.dev/go.viam.com/rdk/components/base#pkg-functions)
 - [Base API methods](https://docs.viam.com/components/base/#api)
 
-You can find additional Go example modules in the [Go SDK `examples` directory](https://github.com/viamrobotics/rdk/blob/main/examples/).
+For more Go module examples:
+
+- See the [Go SDK `examples` directory](https://github.com/viamrobotics/rdk/blob/main/examples/) for sample module code of varying complexity.
+- See the [Additional example modules](#additional-example-modules) section below for a selection of published Go modules from the Viam registry.
 
 {{% /tab %}}
 {{% tab name="C++" %}}
@@ -775,7 +791,10 @@ For more information on the base component API methods used in these examples, s
 - [C++ SDK documentation for the `Base` class](https://cpp.viam.dev/classviam_1_1sdk_1_1Base.html)
 - [Base API methods](https://docs.viam.com/components/base/#api)
 
-You can find additional C++ example modules in the [C++ SDK `examples` directory](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/modules/).
+For more C++ module examples:
+
+- See the [C++ SDK `examples` directory](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/modules/) for sample module code of varying complexity.
+- See the [Additional example modules](#additional-example-modules) section below for a selection of published C++ modules from the Viam registry.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1294,6 +1313,12 @@ Then, once you are satisfied with the state of your module, you can upload your 
 - deploy your module to a fleet of machines from a central interface
 
 See [Using the Viam registry](/registry/) for a high-level overview of the modular resource ecosystem at Viam.
+
+{{% alert title="Tip" color="tip" %}}
+
+If you would like to test your module locally against its intended target platform before uploading it, you can follow the steps for [Iterative module development](/registry/advanced/iterative-development/) to verify that any code changes you have made work as expected on your target platform.
+
+{{% /alert %}}
 
 ## Additional example modules
 

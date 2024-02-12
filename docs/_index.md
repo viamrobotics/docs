@@ -9,6 +9,8 @@ noToc: true
 hide_feedback: true
 sitemap:
   priority: 1.0
+outputs:
+  - html
 ---
 
 <div class="max-page">

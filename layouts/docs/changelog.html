@@ -14,14 +14,19 @@
             {{ partial "sidebar.html" . }}
           </aside>
           <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
-            {{ partial "page-meta-links.html" . }}
-            {{ partial "toc.html" . }}
+            {{ partial "page-meta-links.html" . }} {{ partial "toc.html" . }}
           </aside>
           <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
-            {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
+            <div id="rss-feed">
+              <a target="_blank" title="Open RSS feed" aria-label="Open RSS feed" href="{{ .Permalink }}feed.xml">
+                  <p><i class="fas fa-rss"></i> RSS Feed</p>
+              </a>
+            </div>
+            {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial
+            "breadcrumb.html" . }}{{ end }}
             <div class="td-content">
               <h1>{{ .Title }}</h1>
-              <p>Use the menu on the right to browse changes by month, or use the following buttons to filter by change type:</p>
+              <p>Use the following buttons to filter by change type:</p>
               <div id="changelog-menu">
                 <div id="changelog-filters">
                   <button class="filter-button" onclick="filterSelection('changelog-improved')" id="improved-button">Improvements</button>
