@@ -24,6 +24,8 @@ Instead, you can use the generic component API to add support for your unique ty
 There are no built-in generic component models (other than `fake`).
 Use generic for a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} model that represents a unique type of hardware.
 
+If your use case calls for adding new high-level software functionality, rather than supporting new hardware components, consider using the [generic service](/components/generic/) instead.
+
 {{% alert title="Important" color="note" %}}
 
 The generic component API only supports the `DoCommand` method.
