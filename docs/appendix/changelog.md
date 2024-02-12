@@ -17,7 +17,7 @@ outputs:
 
 {{% changelog date="2024-02-12" color="added" title="Generic service" %}}
 
-You can now use the [generic service](/registry/advanced/generic/) to define a new custom service that doesn't otherwise fit one of the [built-in service API](/services/).
+You can now use the [generic service](/registry/advanced/generic/) to define new, unique types of services that do not already have an [appropriate API](/build/program/apis/#service-apis) defined for them.
 
 {{% /changelog %}}
 
