@@ -21,7 +21,7 @@ You can now use the [generic service](/registry/advanced/generic/) to define new
 
 {{% /changelog %}}
 
-{{% changelog date="2024-02-12" color="added" title="Upload ML model" %}}
+{{% changelog date="2024-02-12" color="added" title="ML models in the registry" %}}
 
 You can now [upload machine learning (ML) models](/ml/upload-model/) to the Viam registry, in addition to modules.
 You may upload models you have trained yourself using the Viam app, or models you have trained outside of the App.
