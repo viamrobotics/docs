@@ -13,7 +13,7 @@ tags:
     "services",
   ]
 description: "Add additional models of components and services or ML Models from the Viam Registry, or extend Viam by creating new modular resources."
-image: "/services/icons/modular-registry.svg"
+image: "/platform/registry.svg"
 imageAlt: "Integrate other capabilities."
 no_list: true
 modulescript: true
