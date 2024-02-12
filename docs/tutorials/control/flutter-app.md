@@ -315,7 +315,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _organization = (await _viam.appClient.listOrganizations()).first;
       _locations = await _viam.appClient.listLocations(_organization);
 
-      // in Flutter setState tells the UI to rebuild the widgets whose state has changed,
+      // in Flutter, setState tells the UI to rebuild the widgets whose state has changed,
       // this is how you change from showing a loading screen to a list of values
       setState(() {
         _loading = false;
@@ -692,7 +692,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _organization = (await _viam.appClient.listOrganizations()).first;
       _locations = await _viam.appClient.listLocations(_organization);
 
-      // In Flutter setState tells the UI to rebuild the widgets whose state has changed,
+      // In Flutter, setState tells the UI to rebuild the widgets whose state has changed,
       // this is how you change from showing a loading screen to a list of values
       setState(() {
         _loading = false;
