@@ -25,6 +25,7 @@ You can now use the [generic service](/registry/advanced/generic/) to define new
 
 You can now [upload machine learning (ML) models](/ml/upload-model/) to the Viam registry, in addition to modules.
 You may upload models you have trained yourself using the Viam app, or models you have trained outside of the App.
+When uploading, you have the option to make your model available to the general public for reuse.
 
 {{% /changelog %}}
 
