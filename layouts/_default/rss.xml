@@ -37,11 +37,6 @@
     <link>https://docs.viam.com/{{- if eq .Title "Tutorials" }}tutorials/{{else}}{{if eq .Title "Changelog"}}appendix/changelog/{{end}}{{end}}</link>
     <description>Recent content {{ if ne .Title .Site.Title }}{{ with .Title }}in {{ . }} {{ end }}{{ end }}on {{ .Site.Title }}</description>
     <generator>Hugo -- gohugo.io</generator>
-    <image>
-      <url>https://docs.viam.com/favicons/apple-icon-144x144.png</url>
-      <title>{{ if eq .Title .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ .Site.Title }}{{ end }}</title>
-      <link>https://docs.viam.com/{{- if eq .Title "Tutorials" }}tutorials/{{else}}{{if eq .Title "Changelog"}}appendix/changelog/{{end}}{{end}}</link>
-    </image>
     <language>{{ site.Language.LanguageCode }}</language>{{ with $authorEmail }}
     <managingEditor>{{.}}{{ with $authorName }} ({{ . }}){{ end }}</managingEditor>{{ end }}{{ with $authorEmail }}
     <webMaster>{{ . }}{{ with $authorName }} ({{ . }}){{ end }}</webMaster>{{ end }}{{ with .Site.Copyright }}
