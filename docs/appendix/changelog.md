@@ -15,6 +15,41 @@ outputs:
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
+{{% changelog date="2024-02-12" color="added" title="Generic service" %}}
+
+You can now use the [generic service](/registry/advanced/generic/) to define new, unique types of services that do not already have an [appropriate API](/build/program/apis/#service-apis) defined for them.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-02-12" color="added" title="ML models in the registry" %}}
+
+You can now [upload machine learning (ML) models](/ml/upload-model/) to the Viam registry, in addition to modules.
+You may upload models you have trained yourself using the Viam app, or models you have trained outside of the App.
+When uploading, you have the option to make your model available to the general public for reuse.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-01-31" color="added" title="Sensor-controlled base" %}}
+
+Viam has added a [sensor-controlled base](/components/base/sensor-controlled/) component model, which supports a robotic base that receives feedback control from a movement sensor.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-01-31" color="added" title="Visualize captured data" %}}
+
+You can now [visualize your data](/data/visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
+You can visualize any tabular data, such as sensor readings, that you have [synced](/data/cloud-sync/) to the Viam app from your machine.
+
+See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) for a full walkthrough focused on Grafana specifically.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-01-31" color="added" title="Use webhooks to trigger actions" %}}
+
+You can now configure [webhooks](/build/configure/#webhooks) to trigger actions when certain types of data are sent from your machine to the cloud.
+
+{{% /changelog %}}
+
 {{% changelog date="2023-12-31" color="added" title="Filtered camera module" %}}
 
 Viam has added a [`filtered-camera` module](https://app.viam.com/module/erh/filtered-camera) that selectively captures and syncs only the images that match the detections of an ML model.
