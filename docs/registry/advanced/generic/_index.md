@@ -20,7 +20,7 @@ However, if you want to create a new service to monitor your machine's CPU and R
 Instead, you can use the generic service API to add support for your unique type of service, like local system monitoring, to your machine.
 
 Use generic for a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} model that represents a unique type of service.
-If your use case calls for adding support to unique or proprietary hardware, rather than adding new high-level software functionality, consider using the [generic component](/components/generic/) instead.
+If you are adding support for unique or proprietary hardware, rather than adding new high-level software functionality, use the [generic component](/components/generic/) instead.
 
 There are no built-in generic service models (other than `fake`).
 
