@@ -57,7 +57,7 @@ For more information, see [Permissions](/fleet/rbac/#permissions).
 ### Configuration
 
 When you or your collaborators change the configuration of a machine or a group of machines in the Viam app, `viam-server` automatically synchronizes the configuration and updates the running resources within 15 seconds.
-This means has access, can change a fleet's [configuration](machines/#configuration), even while your machines are running.
+This means everyone who has access can change a fleet's [configuration](machines/#configuration), even while your machines are running.
 
 You can see configuration changes made by yourself or by your collaborators on the [History tab](machines/#history).
 You can also revert to an earlier configuration from the History tab.
