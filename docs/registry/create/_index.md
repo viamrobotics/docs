@@ -1057,7 +1057,7 @@ To provide usage instructions for any modular resources in your module, you shou
 
 {{% expand "Click to view template" %}}
 
-Strings surrounded by `<%= %>` indicate variables that you should replace with the appropriate values.
+Strings of the form `<INSERT X>` indicate variables that you should replace with the appropriate values.
 If you follow [the instructions to generate module scaffolding for a Python module](#optional-generate-your-python-module-scaffolding), the template file is generated for you with the environment variables filled in.
 
 ````md
