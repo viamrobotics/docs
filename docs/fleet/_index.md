@@ -80,3 +80,11 @@ In addition to the [Viam app](https://app.viam.com), the fully featured web appl
 The mobile app is a convenient way to see if your machine is online, access the [control interface](/fleet/machines/#control), modify [organization access](/fleet/rbac/#use-the-mobile-app), and check machine [logs](/fleet/machines/#logs).
 
 You can find the mobile app on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
+
+<a href="https://apps.apple.com/vn/app/viam-robotics/id6451424162" target="_blank">
+  <img src="https://github.com/viamrobotics/docs/assets/90707162/a470b65d-1b97-412f-9f97-daf902f2f053" width="200px" alt="apple store icon">
+</a>
+
+<a href="https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US" target="_blank">
+  <img src="https://github.com/viamrobotics/docs/assets/90707162/6ebd6960-08c5-41d4-81f9-42293fbfdfd4" width="200px" alt="google play store icon">
+</a>
