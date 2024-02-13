@@ -22,7 +22,7 @@ outputs:
 <div class="cards max-page use-cases">
   <div class="row">
 <div class="col hover-card link-with-icon">
-  <a href="use-cases/configure/" class="noanchor"><div>
+  <a href="get-started/try-viam/" class="noanchor"><div>
     <picture><img src="icons/rover.svg" alt="Rover" loading="lazy"></picture>
     <p>Try Viam</p></div>
   </a>
