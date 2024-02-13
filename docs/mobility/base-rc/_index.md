@@ -13,7 +13,7 @@ aliases:
 ---
 
 The base remote control service implements an [input controller](/components/input-controller/) as a remote control for a [base](/components/base/).
-This uses the [`input` api](/components/input-controller/#api) to make it easy to add remote drive controls for your rover or other mobile robot with a controller like a gamepad.
+This uses the [`input` API](/components/input-controller/#api) to make it easy to add remote drive controls for your rover or other mobile robot with a controller like a gamepad.
 
 Add the base remote control service after configuring your machine with a base and input controller to control the linear and angular velocity of the base with the controller's button or joystick controls.
 
