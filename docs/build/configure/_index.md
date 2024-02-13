@@ -226,9 +226,9 @@ Find more information in our [remotes documentation](/build/configure/parts-and-
 ## Processes
 
 To automatically run a specified command when the machine boots, configure a _{{< glossary_tooltip term_id="process" text="process" >}}_.
-A process can be any command, for example one that executes a binary or a script.
+You can configure any command, for example one that executes a binary or a script, to run as a process.
 
-Find more information in our [processes documentation](/build/configure/processes/).
+Find more information in the [processes documentation](/build/configure/processes/).
 
 ## Webhooks
 
