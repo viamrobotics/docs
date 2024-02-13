@@ -78,9 +78,9 @@ If you choose to install the full Raspberry Pi OS (64 bit) including the desktop
 4.  Navigate to the directory on the Pi where you'd like to install the Freenove robot dog code (for example `/home/fido/`).
     Get the code by running the following command:
 
-        ```sh {class="command-line" data-prompt="$"}
-        git clone https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi
-        ```
+    ```sh {class="command-line" data-prompt="$"}
+    git clone https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi
+    ```
 
 {{% alert title="Important" color="note" %}}
 
