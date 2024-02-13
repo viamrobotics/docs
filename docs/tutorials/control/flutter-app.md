@@ -207,7 +207,7 @@ Now you'll update some configurations in the iOS-specific code to support the [V
    import 'package:flutter_dotenv/flutter_dotenv.dart';
 
    void main() async {
-      await dotenv.load();
+      // await dotenv.load(); // <-- This loads your API key; will un-comment later
       runApp(MyApp());
    }
 
@@ -315,7 +315,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _organization = (await _viam.appClient.listOrganizations()).first;
       _locations = await _viam.appClient.listLocations(_organization);
 
-      // in Flutter setState tells the UI to rebuild the widgets whose state has changed,
+      // in Flutter, setState tells the UI to rebuild the widgets whose state has changed,
       // this is how you change from showing a loading screen to a list of values
       setState(() {
         _loading = false;
@@ -402,6 +402,25 @@ Follow the steps below to get your API key and create an environment variables f
 6. Use the copy buttons next to the API key ID and API key to copy each of them and paste them into your <file>.env</file> file.
 
 {{< readfile "/static/include/snippet/secret-share.md" >}}
+
+7. In your <file>lib/main.dart</file>, find line 5:
+
+   ```dart
+     void main() async {
+         // await dotenv.load(); // <-- This loads your API key; will un-comment later
+         runApp(MyApp());
+     }
+   ```
+
+   Now that you have a <file>.env</file> file to load, un-comment that line so it loads the file.
+   Your `main()` function should look like this:
+
+   ```dart
+     void main() async {
+         await dotenv.load(); // <-- This loads your API key
+         runApp(MyApp());
+     }
+   ```
 
 ### Connect the login button to the home screen
 
@@ -626,8 +645,8 @@ Connect the home screen to the locations screen by un-commenting the following t
 ```dart {class="line-numbers linkable-line-numbers" data-line="3-4"}
  /// This method will navigate to a specific [Location]. <-- Leave this commented!
  void _navigateToLocation(Location location) {
-    Navigator.of(context)                              <-- Un-comment this
-        .push(MaterialPageRoute(builder: (_) => LocationScreen(_viam, location))); <-- And un-comment this
+    Navigator.of(context)                             // <-- Un-comment this
+        .push(MaterialPageRoute(builder: (_) => LocationScreen(_viam, location))); // <-- And un-comment this
  }
 ```
 
@@ -673,7 +692,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _organization = (await _viam.appClient.listOrganizations()).first;
       _locations = await _viam.appClient.listLocations(_organization);
 
-      // in Flutter setState tells the UI to rebuild the widgets whos state has changed,
+      // In Flutter, setState tells the UI to rebuild the widgets whose state has changed,
       // this is how you change from showing a loading screen to a list of values
       setState(() {
         _loading = false;
