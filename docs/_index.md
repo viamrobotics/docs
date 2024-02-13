@@ -28,7 +28,7 @@ outputs:
   </a>
 </div>
 <div class="col hover-card link-with-icon">
-  <a href="/use-cases/configure/" class="noanchor"><div>
+  <a href="use-cases/configure/" class="noanchor"><div>
     <picture><img src="icons/build.svg" alt="Build" loading="lazy"></picture>
     <p>Build simple smart machines</p></div>
       </a>
