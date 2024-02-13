@@ -78,7 +78,7 @@ Once you save the configuration, the data management service begins syncing the 
 To avoid syncing files that are still being written to, the data management service only syncs files that haven't been modified in the previous 10 seconds.
 
 {{< alert title="Caution" color="caution" >}}
-If a machine does not write to a file for 10 seconds, the data management service syncs the file and deletes it.
+If a machine does not write to a file for 10 seconds, the data management service syncs the file and deletes it from the machine.
 {{< /alert >}}
 
 {{< alert title="Info" color="tip" >}}
