@@ -28,6 +28,7 @@ IgnoreURLs:
   - "electronics-tutorials.ws"
   - "marketplace.visualstudio.com"
   - "chrome.google.com"
+  - "raspberrypi.com"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"
