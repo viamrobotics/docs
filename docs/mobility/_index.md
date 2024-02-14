@@ -16,7 +16,7 @@ The following services work together to coordinate your robot's movement:
 
 ## Frame system
 
-{{<imgproc src="/services/icons/frame-system.svg" class="fill alignleft" style="max-width: 190px" declaredimensions=true alt="Frame system icon">}}
+{{<imgproc src="/mobility/frame-system/demo_bound_box.png" class="fill alignright" style="max-width: 400px" resize="x1000" declaredimensions=true alt="Bounding boxes displayed in the Viam app frame system tab" >}}
 
 The [frame system service](/mobility/frame-system/):
 
@@ -27,23 +27,27 @@ The [frame system service](/mobility/frame-system/):
 
 ## Motion and navigation
 
-{{<imgproc src="/services/icons/motion.svg" class="fill alignleft" style="max-width: 170px" declaredimensions=true alt="Motion path icon">}}
+{{<gif webm_src="/tutorials/videos/motion_constraints.webm" mp4_src="/tutorials/videos/motion_constraints.mp4" alt="An arm moving a cup from one side of a tissue box to the other, across a table. The cup stays upright." class="alignright" max-width="250px">}}
 
 - The [motion service](/mobility/motion/) allows you to:
+
   - Create and execute plans to move components to goal positions in the components' own coordinate systems, as well as to move an entire robot on a GPS map or SLAM map.
   - Set constraints on the motion plans, such as requiring a component to maintain its orientation throughout the move (for example, an arm holding a cup upright as it moves).
+
+{{<imgproc src="/use-cases/navigation-card.png" class="fill alignleft" style="max-width: 200px" resize="x900" declaredimensions=true alt="A map of part of a city displayed in the Viam app with user-defined waypoints and the location of a robot shown on the map.">}}
+
 - The [navigation service](/mobility/navigation/) lets you specify a list of waypoints that a robot should travel through on a GPS map, and delegates to the motion service to create and execute the corresponding sequence of motion plans.
 
 ## Simultaneous localization and mapping (SLAM)
 
-{{<imgproc src="/services/icons/slam.svg" class="fill alignleft" style="max-width: 170px" declaredimensions=true alt="SLAM icon">}}
-The [SLAM service](/mobility/slam/):
+{{<gif webm_src="/mobility/slam-map-office.webm" mp4_src="/tutorials/mobility/slam-map-office.mp4" alt="A 2D SLAM map being created in the Viam app. As a red dot representing a rover with a Lidar camera moves around, a map of an office building floor grows." class="alignright" max-width="320px">}}
 
-- Defines [an API](/mobility/slam/#api) for returning a map of a robot's environment as a _point cloud_, or set of points that represent the occupied space in the environment.
-- Includes a {{< glossary_tooltip term_id="module" text="module" >}} that wraps the Cartographer SLAM algorithm.
-- Supports using the Cartographer module to create, update, or do pure localization on maps created either using a live robot or data that was previously captured on a robot using [data capture](/data/capture/).
-- Allows you to view all maps you have created in your **SLAM Library** on the [Viam app](https://app.viam.com).
-- Allows you to deploy a map from your **SLAM Library** onto a robot to use the map with the motion service.
+- The [SLAM service](/mobility/slam/) defines [an API](/mobility/slam/#api) for returning a map of a robot's environment as a _point cloud_, or set of points that represent the occupied space in the environment.
+- The platform includes a {{< glossary_tooltip term_id="module" text="module" >}} that wraps the Cartographer SLAM algorithm.
+- Viam's SLAM tools allow you to:
+  - Use the Cartographer module to create, update, or do pure localization on maps created either using a live robot or data that was previously captured on a robot using [data capture](/data/capture/).
+  - View all maps you have created in your **SLAM library** tab on the [Viam app](https://app.viam.com).
+  - Deploy a map from your **SLAM library** onto a robot to use the map with the motion service.
 
 ## Get started
 
