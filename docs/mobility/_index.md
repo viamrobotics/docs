@@ -53,7 +53,7 @@ The [frame system service](/mobility/frame-system/):
 
 To get acquainted with the frame system, [configure the frame system](/mobility/frame-system/frame-config/) for an arm attached to a table.
 
-To create a SLAM map of your home or office, use a mobile [{{< glossary_tooltip term_id="base" text="base" >}}](/components/base/) of your choice along with an RPLIDAR A1 or A3 and the [Cartographer module](/mobility/slam/cartographer).
+To create a SLAM map of your home or office, use a mobile [{{< glossary_tooltip term_id="base" text="base" >}}](/components/base/) of your choice along with an RPLIDAR A1 or A3 and the [Cartographer module](/mobility/slam/cartographer/).
 
 Or, get started with one of our tutorials:
 
