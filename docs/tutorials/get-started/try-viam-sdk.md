@@ -198,7 +198,8 @@ These are the components and services that the robot is configured with in the V
 {{% /tab %}}
 {{% tab name="Flutter" %}}
 
-Flutter code must be launched from inside a running Flutter application, so to get started programming your rover with Flutter you should follow the instructions to [Build a Flutter App that Integrates with Viam](/tutorials/control/flutter-app/).
+Flutter code must be launched from inside a running Flutter application.
+To get started programming your rover with Flutter, follow the instructions to [Build a Flutter App that Integrates with Viam](/tutorials/control/flutter-app/).
 
 {{% /tab %}}
 {{< /tabs >}}
