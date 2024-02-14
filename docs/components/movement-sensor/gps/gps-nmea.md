@@ -46,8 +46,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
     "i2c_bus": "<index-of-bus-on-board>",
     "i2c_addr": <int>,
     "i2c_baud_rate": <int>
-  },
-  "disable_nmea": <boolean>
+  }
 }
 ```
 
@@ -102,8 +101,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
             "i2c_bus": "<index-of-bus-on-board>",
             "i2c_addr": <int>,
             "i2c_baud_rate": <int>
-        },
-        "disable_nmea": <boolean>
+        }
       },
       "depends_on": [],
     }
@@ -172,7 +170,6 @@ The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB
 | Name              | Type    | Inclusion    | Description  |
 | ----------------- | ------- | ------------ | ---------------- |
 | `connection_type` | string  | **Required** | `"I2C"` or `"serial"`. See [Connection Attributes](#connection-attributes) below. |
-| `disable_nmea`    | boolean | Optional     | If set to `true`, changes the NMEA message protocol to RTCM when using a chip as a base station. <br> Default: `false` |
 
 ### Connection attributes
 
