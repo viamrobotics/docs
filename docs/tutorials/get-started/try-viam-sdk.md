@@ -8,11 +8,11 @@ webmSrc: "/tutorials/try-viam-sdk/image1.webm"
 mp4Src: "/tutorials/try-viam-sdk/image1.mp4"
 videoAlt: "A Viam Rover driving in a square"
 images: ["/tutorials/try-viam-sdk/image1.gif"]
-tags: ["base", "viam rover", "try viam", "sdk", "python"]
+tags: ["base", "viam rover", "try viam", "sdk", "python", "flutter"]
 aliases:
   - /tutorials/get-started/try-viam-sdk
 authors: []
-languages: ["python", "go", "typescript"]
+languages: ["python", "go", "typescript", "flutter"]
 viamresources: ["base"]
 level: "Beginner"
 date: "2022-12-08"
