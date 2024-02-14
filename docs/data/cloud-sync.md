@@ -5,6 +5,9 @@ description: "Configure cloud sync to automatically capture data in the Viam app
 weight: 35
 type: "docs"
 tags: ["data management", "cloud", "sync"]
+image: "/services/icons/data-cloud-sync.svg"
+imageAlt: "Sync captured data to the cloud"
+images: ["/services/icons/data-cloud-sync.svg"]
 aliases:
   - "/services/data/cloud-sync/"
 # SME: Alexa Greenberg

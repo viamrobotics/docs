@@ -5,6 +5,9 @@ description: "Export data from the Viam app to your local computer using the Via
 weight: 40
 type: "docs"
 tags: ["data management", "cloud", "sync"]
+image: "/services/icons/data-capture.svg"
+imageAlt: "Export data from the Viam app"
+images: ["/services/icons/data-capture.svg"]
 aliases:
   - /manage/data/export/
 # SME: Alexa Greenberg
