@@ -19,8 +19,10 @@ For example, when writing code to manage [simultaneous localization and mapping 
 However, if you want to create a new service to monitor your machine's CPU and RAM usage for example, you need very different functionality that isn't currently exposed in any API.
 Instead, you can use the generic service API to add support for your unique type of service, like local system monitoring, to your machine.
 
-There are no built-in generic service models (other than `fake`).
 Use generic for a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} model that represents a unique type of service.
+If you are adding support for unique or proprietary hardware, rather than adding new high-level software functionality, use the [generic component](/components/generic/) instead.
+
+There are no built-in generic service models (other than `fake`).
 
 {{% alert title="Important" color="note" %}}
 

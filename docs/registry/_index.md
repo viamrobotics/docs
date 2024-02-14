@@ -12,8 +12,8 @@ tags:
     "components",
     "services",
   ]
-description: "Add additional models of components and services or ML Models from the Viam Registry, or extend Viam by creating new modular resources."
-image: "/services/icons/modular-registry.svg"
+description: "Add additional models of components and services or ML models from the Viam Registry, or extend Viam by creating new modular resources."
+image: "/platform/registry.svg"
 imageAlt: "Integrate other capabilities."
 no_list: true
 modulescript: true
@@ -34,7 +34,7 @@ The [Viam registry](https://app.viam.com/registry) is the central place where yo
 
 ### ML models
 
-Viam provides the ability to train, upload, and deploy ML models within the platform.
+Viam provides the ability to train, upload, and deploy machine learning models within the platform.
 See [Machine Learning](/ml/) for more information.
 
 The Viam registry hosts trained ML models that users have made public, which you can use to deploy classifiers or detectors for your use case onto your robot instead of training your own.

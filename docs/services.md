@@ -23,5 +23,5 @@ You can also add support for additional service types using {{< glossary_tooltip
 {{% card link="/mobility/navigation/" %}}
 {{% card link="/mobility/slam/" %}}
 {{% card link="/ml/vision/" %}}
-{{% card link="/internals/generic/" %}}
+{{% card link="/registry/advanced/generic/" %}}
 {{< /cards >}}

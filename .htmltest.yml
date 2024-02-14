@@ -27,6 +27,7 @@ IgnoreURLs:
   - "radxa.com"
   - "electronics-tutorials.ws"
   - "marketplace.visualstudio.com"
+  - "chrome.google.com"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"

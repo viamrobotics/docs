@@ -85,7 +85,7 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 ## Supported models
 
-To use your motor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your motor.
+To use a vision service with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your use case.
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 

@@ -2,6 +2,7 @@
 {{ $customTitle := .customTitle }}
 {{ $customDescription := .customDescription }}
 {{ $customCanonicalLink := .customCanonicalLink }}
+{{ $imageOverwrite := .imageOverwrite }}
 {{ $link := (path.Clean (.link)) }}
 {{ $baseurl := .Site.BaseURL }}
 {{ if (eq (substr .Site.BaseURL -1 1) "/" ) }}
@@ -20,21 +21,27 @@
 					{{ partial "gif.html" (dict "webm_src" .Params.webmSrc "mp4_src" .Params.mp4Src "alt" .Params.videoAlt "maxWidth" "100%" "class" "" ) }}
         </div>
         {{ end }}
-        {{ if .Params.image }}
-          <div class="hover-card-img">
-            {{ $img := resources.GetMatch .Params.image }}
-            {{if $img }}
-              {{ partial "imgproc.html" (dict "src" (.Params.image) "resize" "400x" "alt" (.Params.imageAlt) "style" "") }}
-            {{ else }}
-              {{ errorf "Couldn't get image %s" .Params.image }}
-            {{ end }}
+        {{ if $imageOverwrite }}
+          <div class="hover-card-icon">
+            {{ partial "imgproc.html" (dict "src" ($imageOverwrite) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
           </div>
+        {{ else }}
+          {{ if .Params.image }}
+            <div class="hover-card-img">
+              {{ $img := resources.GetMatch .Params.image }}
+              {{if $img }}
+                {{ partial "imgproc.html" (dict "src" (.Params.image) "resize" "400x" "alt" (.Params.imageAlt) "style" "") }}
+              {{ else }}
+                {{ errorf "Couldn't get image %s" .Params.image }}
+              {{ end }}
+            </div>
+          {{ end }}
+          {{ if .Params.icon }}
+          <div class="hover-card-icon">
+            {{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
+          </div>
+          {{ end }}
         {{ end }}
-				{{ if .Params.icon }}
-				<div class="hover-card-icon">
-					{{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
-				</div>
-				{{ end }}
         <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
           {{ if $customTitle }}
             <div>{{ $customTitle }}</div>

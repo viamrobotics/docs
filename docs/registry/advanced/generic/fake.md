@@ -3,7 +3,7 @@ title: "Configure a Fake Generic Service"
 linkTitle: "fake"
 weight: 10
 type: "docs"
-description: "Configure a fake generic service."
+description: "Configure a fake generic service using the generic service API."
 tags: ["generic", "services"]
 ---
 
@@ -24,7 +24,7 @@ Enter a name for your generic service and click **Create**.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "name": "<your-fake-generic-component-name>",
+  "name": "<your-fake-generic-service-name>",
   "model": "fake",
   "type": "generic",
   "namespace": "rdk",
@@ -35,5 +35,5 @@ Enter a name for your generic service and click **Create**.
 {{% /tab %}}
 {{< /tabs >}}
 
-No attributes are available for fake generic service.
+No attributes are available for the `fake` generic service.
 See [GitHub](https://github.com/viamrobotics/rdk/blob/main/services/generic/fake/generic.go) for API call return specifications.

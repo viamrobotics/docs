@@ -21,8 +21,10 @@ For example, when using an [arm component](/components/arm/), it makes sense to 
 However, if you want to use an LED display for example, you need very different functionality that isn't currently exposed in any API.
 Instead, you can use the generic component API to add support for your unique type of hardware, like LED displays, to your machine.
 
-There are no built-in generic component models (other than `fake`).
 Use generic for a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} model that represents a unique type of hardware.
+If you are adding new high-level software functionality, rather than supporting new hardware components, use the [generic service](/registry/advanced/generic/) instead.
+
+There are no built-in generic component models (other than `fake`).
 
 {{% alert title="Important" color="note" %}}
 
