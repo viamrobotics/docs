@@ -20,25 +20,42 @@
         <div class="hover-card-video">
 					{{ partial "gif.html" (dict "webm_src" .Params.webmSrc "mp4_src" .Params.mp4Src "alt" .Params.videoAlt "maxWidth" "100%" "class" "" ) }}
         </div>
-      {{ else if .Params.images }}
-        <div class="hover-card-img">
-          {{ $img := resources.GetMatch (index .Params.images 0) }}
-          {{ if $img }}
-            {{ if .Params.imageAlt }}
-              {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "400x" "alt" (.Params.imageAlt) "style" "") }}
-            {{ else }}
-              {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
-              {{ warnf "using linktitle for %s" (index .Params.images 0)}}
-            {{ end }}
-            {{ else }}
+        {{ end }}
+        {{ if $imageOverwrite }}
+          <div class="hover-card-icon">
+            {{ partial "imgproc.html" (dict "src" ($imageOverwrite) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
+          </div>
+        {{ else }}
+          {{ if .Params.image }}
+            <div class="hover-card-img">
+              {{ $img := resources.GetMatch (index .Params.images 0) }}
+              {{ if $img }}
+                {{ if .Params.imageAlt }}
+                  {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "400x" "alt" (.Params.imageAlt) "style" "") }}
+                {{ else }}
+                  {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
+                  {{ warnf "using linktitle for %s" (index .Params.images 0)}}
+                {{ end }}
+              {{ end }}
+            </div>
+          {{ end }}
+          {{ if .Params.icon }}
+          <div class="hover-card-icon">
+            {{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
+          </div>
+          {{ end }}
+        {{ end }}
+        <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
+          {{ if $customTitle }}
+            <div>{{ $customTitle }}</div>
           {{ else }}
             {{ errorf "Couldn't get images %s" .Params.images }}
           {{ end }}
         </div>
-      {{ else if .Params.icon }}
-				<div class="hover-card-icon">
-					{{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
-				</div>
+        {{ if .Params.icon }}
+          <div class="hover-card-icon">
+            {{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
+          </div>
       {{ end }}
       <div {{ if (index .Params.images 0) }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
         {{ if $customTitle }}
