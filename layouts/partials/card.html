@@ -24,7 +24,13 @@
         <div class="hover-card-img">
           {{ $img := resources.GetMatch (index .Params.images 0) }}
           {{ if $img }}
-            {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "400x" "alt" (.Params.imageAlt) "style" "") }}
+            {{ if .Params.imageAlt }}
+              {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "400x" "alt" (.Params.imageAlt) "style" "") }}
+            {{ else }}
+              {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
+              {{ warnf "using linktitle for %s" (index .Params.images 0)}}
+            {{ end }}
+            {{ else }}
           {{ else }}
             {{ errorf "Couldn't get images %s" .Params.images }}
           {{ end }}
