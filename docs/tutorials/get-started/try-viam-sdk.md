@@ -507,10 +507,10 @@ class BaseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(base.name)),
-      body: Center( 
+      body: Center(
         child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [ 
+        children: [
           ElevatedButton(
               onPressed: moveSquare,
               child: const Text('Move Base in Square'),
@@ -895,10 +895,10 @@ class BaseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(base.name)),
-      body: Center( 
+      body: Center(
         child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [ 
+        children: [
           ElevatedButton(
               onPressed: moveSquare,
               child: const Text('Move Base in Square'),
