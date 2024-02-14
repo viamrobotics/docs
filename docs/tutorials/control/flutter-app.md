@@ -166,11 +166,11 @@ Now you'll update some configurations in the iOS-specific code to support the [V
    # platform :ios, '11.0'
    ```
 
-   Uncomment the line and change it to use version 13.0:
+   Uncomment the line and change it to use version 17.0:
 
    ```dart {class="line-numbers linkable-line-numbers"}
    # Uncomment this line to define a global platform for your project
-   platform :ios, '13.0'
+   platform :ios, '17.0'
    ```
 
 2. Open <file>ios/Runner/Info.plist</file>.
@@ -526,8 +526,8 @@ class _LocationScreenState extends State<LocationScreen> {
   }
 
   void _navigateToRobot(Robot robot) {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (_) => LocationScreen(_viam, location)));
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (_) => RobotScreen(widget._viam, robot)));
   }
 
   @override
