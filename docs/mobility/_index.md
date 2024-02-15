@@ -16,7 +16,9 @@ The following services work together to coordinate your robot's movement:
 
 ## Frame system
 
+<p>
 {{<imgproc src="/mobility/frame-system/demo_bound_box.png" class="fill alignright" style="max-width: 400px" resize="x1000" declaredimensions=true alt="Bounding boxes displayed in the Viam app frame system tab" >}}
+</p>
 
 The [frame system service](/mobility/frame-system/):
 
