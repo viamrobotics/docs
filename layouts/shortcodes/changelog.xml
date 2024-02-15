@@ -3,5 +3,5 @@
   <link>https://docs.viam.com/appendix/changelog/#{{ .Get "title" | anchorize }}</link>
   <pubDate>{{ .Get "date" | time.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
   <guid>https://docs.viam.com/appendix/changelog/#{{ .Get "title" | anchorize }}</guid>
-  <description>{{ .Inner | markdownify | plainify | transform.XMLEscape }}</description>
+  <description>{{ .Inner | markdownify | transform.XMLEscape | safeHTML }}</description>
 </item>
