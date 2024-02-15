@@ -532,9 +532,10 @@ Then, replace the contents of <file>robot_screen.dart</file> with the following 
 /// and send commands to them.
 
 import 'package:flutter/material.dart';
-import 'base_screen.dart';
 import 'package:viam_sdk/protos/app/app.dart';
 import 'package:viam_sdk/viam_sdk.dart';
+
+import 'base_screen.dart';
 
 class RobotScreen extends StatefulWidget {
   final Viam _viam;
@@ -640,7 +641,8 @@ Navigate to the robot screen of a (live) machine with a base resource configured
 
 {{<imgproc src="/tutorials/try-viam-sdk/resource-menu.png" resize="300x" declaredimensions=true alt="Machine resources listed in an example Flutter app">}}
 
-Then, click on the base to display <file>base_screen.dart</file>:
+Then, click on the base to display the base screen.
+You may need to scroll to the bottom of the list of resources.
 
 {{<imgproc src="/tutorials/try-viam-sdk/button.png" resize="300x" declaredimensions=true alt="Button to drive a rover in a square in an example Flutter app">}}
 
