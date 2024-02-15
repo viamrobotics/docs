@@ -93,8 +93,6 @@ Navigate to the **Control** tab where you can see your camera working.
 This tutorial uses pre-trained ML packages.
 If you want to train your own, you can [train a model](/ml/train-model/).
 
-To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your project directory.
-
 Click the **Services** subtab.
 
 1. **Configure the ML model service**
@@ -110,8 +108,8 @@ Click the **Services** subtab.
 
    ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
 
-   Select the **Path to Existing Model On Robot** for the **Deployment** field.
-   Then specify the absolute **Model Path** as where your tflite file lives and any **Optional Settings** such as the absolute **Label Path** as where your labels.txt file lives and the **Number of threads** as 1.
+   Select the **Deploy model on robot** for the **Deployment** field.
+   Then select the `bill:effdet0` model from the **Models** dropdown.
 
 1. **Configure an mlmodel detector**
 
@@ -154,6 +152,16 @@ In the new transform camera panel, replace the attributes JSON object with the f
 Click **Save config** in the lower-left corner of the screen.
 
 ![detectionCam component panel with type camera and model transform, Attributes section filled with source and pipeline information.](/tutorials/tipsy/app-detection-after.png)
+
+### Test the model
+
+{{<imgproc src="/tutorials/send-security-photo/control-view.png" class="alignright" resize="300x" declaredimensions=true alt="the control tab">}}
+
+At this point, you can test that the model is detecting people.
+Navigate to your [machine's Control tab](/fleet/machines/#control).
+
+Click on the `detectionCam` panel and toggle **View detectionCam** on.
+If the camera sees a person, you will see a red box around the detection along with the confidence score.
 
 ## How to use yagmail
 
