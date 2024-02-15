@@ -35,22 +35,22 @@ Then, test if your model works for classifying objects in a camera stream or exi
     </th>
   </tr>
   <tr>
-    <td>
+    <th>{{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="max-width: 200px" declaredimensions=true alt="Train models">}}
       <b>4. Deploy your ML model</b>
       <p>To make use of ML models with your machine, use the built-in <a href="/ml/">ML model service</a> to deploy and run the model.</p>
-    </td>
+    </th>
   </tr>
   <tr>
-    <td>{{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Configure a service">}}
+    <th>{{<imgproc src="/ml/configure.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Configure a service">}}
       <b>5. Configure an <code>mlmodel</code> vision service</b>
       <p>For object classification, you can use the <a href="/ml/vision/">vision service</a>, which provides an <a href="/ml/vision/mlmodel/">ml model classifier</a> model.</p>
-</td>
+    </th>
   </tr>
   <tr>
-    <td>{{<imgproc src="ml/deploy.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Deploy your model">}}
+    <th>{{<imgproc src="ml/deploy.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Deploy your model">}}
       <b>6. Test your classifier</b>
       <p>Test your <a href="/ml/vision/mlmodel/#test-your-detector-or-classifier">mlmodel classifier</a> with <a href="/ml/vision/mlmodel/#existing-images-in-the-cloud">existing images in the Viam app</a>, <a href="/ml/vision/mlmodel/#live-camera-footage">live camera footage,</a> or <a href="/ml/vision/mlmodel/#existing-images-on-your-machine">existing images on a computer</a>.</p>
-    </td>
+    </th>
   </tr>
 </table>
 

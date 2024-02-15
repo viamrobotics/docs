@@ -14,6 +14,9 @@ tags:
   ]
 description: "Use the Viam CLI to upload a custom module to the Viam registry as a public module or as a private module that is shared only within your organization."
 no_list: true
+image: "/registry/upload-module.svg"
+imageAlt: "Upload your module to the Viam registry"
+images: ["/registry/upload-module.svg"]
 aliases:
   - "/extend/modular-resources/upload/"
   - "/modular-resources/upload/"

@@ -17,24 +17,24 @@ When you deploy a module, whether its one you've written yourself or added from 
 
 <table>
   <tr>
-    <th>{{<imgproc src="/ml/collect.svg" class="fill alignleft" style="max-width: 150px" alt="ml collect icon">}}
+    <th>{{<imgproc src="/registry/module-icon.svg" class="fill alignleft" style="max-width: 150px" alt="Search modules">}}
       <b>1. Search modules</b>
       <br><br>
       <p>Once you <a href="/fleet/machines/#add-a-new-machine">have created a machine in the Viam app</a>, <a href="/registry/configure/">search for modules in the Viam registry</a> that fit your machine's requirements, and then <a href="/registry/configure/#add-a-modular-resource-from-the-viam-registry">add a module</a> from your machine's configuration page in the Viam app.</p>
     </th>
   </tr>
   <tr>
-    <th>{{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="ml configure icon">}}
+    <th>{{<imgproc src="/registry/create-module.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Create your own module">}}
       <b>2. Create your own module</b>
       <br><br>
       <p>Or, you can <a href="/registry/create/">create your own module</a> to add support for new hardware, or to extend an existing software service.</p>
     </th>
   </tr>
   <tr>
-    <th>{{<imgproc src="/ml/deploy.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="ml deploy icon">}}
+    <th>{{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Deploy your module">}}
       <b>3. Deploy your module</b>
       <br><br>
-       <p>Once you have created your new module, you can deploy it to your machine in one of two ways:</p><br><br><br>
+       <p>Once you have created your new module, you can deploy it to your machine in one of two ways:</p><br><br>
         <ul>
             <li>
             You can <a href="/registry/upload/">upload your module</a> to the Viam registry using the Viam CLI. Modules available from the Viam registry can be deployed directly to a machine or fleet of machines from the Viam app. When you upload your module to the registry, you can choose to make it:
@@ -55,7 +55,7 @@ When you deploy a module, whether its one you've written yourself or added from 
     </th>
   </tr>
   <tr>
-    <th>{{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="ml deploy icon">}}
+    <th>{{<imgproc src="/registry/create-module.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Configure your module">}}
       <b>4. Configure your module
       <br><br>
       <p>Once you've deployed a module to your machine or fleet, <a href="/registry/configure/#edit-the-configuration-of-a-module-from-the-viam-registry">configure the module</a> to set any necessary attributes it may require.</p>
@@ -63,7 +63,7 @@ When you deploy a module, whether its one you've written yourself or added from 
     </th>
   </tr>
   <tr>
-    <th>{{<imgproc src="/services/icons/navigation.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="controller icon">}}
+    <th>{{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Update your module">}}
       <b>5. Update your module</b>
       <br><br>
       <p>When you make code changes to your module, you can <a href="/registry/upload/#update-an-existing-module">update your module</a> with those changes using the Viam CLI. You can also use a <a href="/registry/upload/#update-an-existing-module-using-a-github-action">GitHub action to automate module releases</a> as part of a continuous integration (CI) workflow.</p>
