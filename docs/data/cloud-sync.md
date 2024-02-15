@@ -62,6 +62,11 @@ If `capture_dir` is unspecified, `viam-server` will use the default directory at
 
 {{% /expand%}}
 
+### Trigger sync conditionally
+
+If you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
+To set up triggers for syncing see [Trigger Sync](/data/trigger-sync/).
+
 ### Pause sync
 
 You can pause Cloud Sync at any time by navigating to the **Services** tab on your machine's **Config** tab and disabling **Syncing** for your [data management service](../).
