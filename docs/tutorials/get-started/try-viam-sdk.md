@@ -522,9 +522,9 @@ class BaseScreen extends StatelessWidget {
 
 This code creates a screen with a singular centered button that, when pressed, calls on the `moveSquare()` method to drive the base in a square.
 
-Then, replace the contents of <file>robot_screen.dart</file> with the following code:
+Then, replace the contents of <file>robot_screen.dart</file> with the following file, or add the highlighted lines of code to your program in the locations indicated:
 
-```dart {class="line-numbers linkable-line-numbers"}
+```dart {class="line-numbers linkable-line-numbers" data-line="11, 73-85, 101-102"}
 /// This is the screen that shows the resources available on a robot (or smart machine).
 /// It takes in a Viam app client instance, as well as a robot client.
 /// It then uses the Viam client instance to create a connection to that robot client.
@@ -646,7 +646,9 @@ You may need to scroll to the bottom of the list of resources.
 
 {{<imgproc src="/tutorials/try-viam-sdk/button.png" resize="300x" declaredimensions=true alt="Button to drive a rover in a square in an example Flutter app">}}
 
-Click on the button to move your robot in a square.
+Click on the button to move your robot in a square:
+
+{{<video webm_src="/tutorials/try-viam-sdk/square-test-rover.webm" mp4_src="/tutorials/try-viam-sdk/square-test-rover.mp4" alt="An example flutter app moving a Try Viam rental rover in a square" poster="/tutorials/try-viam-sdk/square-test-rover.jpg">}}
 
 {{% /tab %}}
 {{< /tabs >}}
