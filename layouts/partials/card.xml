@@ -1,0 +1,7 @@
+{{ $customTitle := .customTitle }}
+{{ $customDescription := .customDescription }}
+{{ $customCanonicalLink := .customCanonicalLink }}
+{{ $link := (path.Clean (.link)) }}
+{{ with site.GetPage $link }}
+<li>{{if $customCanonicalLink }}<a href="{{ $customCanonicalLink }}">{{ else }} <a href="{{.RelPermalink}}"> {{ end }}{{ if $customTitle }} {{ $customTitle }} {{ else }} {{ .Title }} {{ end }}</a>: {{ if $customDescription }} {{ $customDescription }} {{ else }} {{ .Description }} {{ end }}</li>
+{{ end }}
