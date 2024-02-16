@@ -90,7 +90,7 @@ Navigate to the **Control** tab where you can see your camera working.
 
 ### Configure your services
 
-This tutorial uses a pre-trained Machine Learning model from the Viam Registry.
+This tutorial uses a pre-trained Machine Learning model from the Viam Registry called [`effdet0`](https://app.viam.com/ml-model/bill/effdet0).
 The model can detect a variety of things, including `Persons`.
 You can see a full list of what the model can detect in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
