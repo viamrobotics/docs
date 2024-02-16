@@ -307,7 +307,7 @@ On the control tab, you will see panels for each of your configured components.
 ## Configure your services
 
 This tutorial uses a pre-trained machine learning (ML) model from the Viam registry named [`effdet0`](https://app.viam.com/ml-model/bill/effdet0).
-The model can detect a variety of things which you can see in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
+This model can detect a variety of objects, which you can find in the provided <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
 If you want to train your own model instead, follow the instructions to [train a model](/ml/train-model/).
 
