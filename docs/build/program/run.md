@@ -81,6 +81,8 @@ You can run SDK code directly on your machine.
 If you run [PID control loops](https://en.wikipedia.org/wiki/PID_controller) or your machines have intermittent or no network connectivity, you can ensure lags in communication do not interfere with the machine's performance by running the control code on the same board that is running `viam-server`.
 Running everything on one machine is also convenient if you have a machine (for example, an air quality sensor) that runs all the time, and you don't want to have to connect to it from a separate computer constantly.
 
+{{<imgproc src="/build/program/on-robot.png" resize="800x" declaredimensions=true alt="A client running on a machine">}}
+
 The script you run on-machine is the same as the script you [run remotely](#run-code-remotely) or on a local network.
 When the connection code from the [code sample tab](/build/program/#hello-world-the-code-sample-tab) executes, it creates a [client session](/build/program/apis/sessions/) connected to your machine using the [most efficient route](/build/program/connectivity/).
 Because the code is running on the same machine as `viam-server`, the favored route for commands is automatically over localhost.
