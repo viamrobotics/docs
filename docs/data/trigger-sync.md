@@ -148,7 +148,7 @@ On your machine's **Config** tab, switch to **JSON** mode and add a `selective_s
 
 {{% expand "Click to view a full configuration example" %}}
 
-```json
+```json {class="line-numbers linkable-line-numbers" data-line="29-40,43-55,80-85"}
 {
   "components": [
     {
