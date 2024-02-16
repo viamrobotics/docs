@@ -1,5 +1,5 @@
----
 title: "Selectively Capture Data using filtered-camera"
+---
 linkTitle: "Filtered Camera"
 type: "docs"
 description: "Use the filtered-camera module to selectively capture images."
@@ -206,7 +206,7 @@ You can download that model here:
 - <file>[labels.txt](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/labels.txt)</file>: The corresponding labels file containing the labels to assign to matching detected objects.
   You can look through this file to see the full list of trained objects in the model.
 
-To use an existing ML model:
+To upload and use an existing ML model:
 
 1. Navigate to the [**Models** page](https://app.viam.com/data/models) in the Viam app and click the **Upload model** button.
 1. Select **New model** and configure visibility for your model: public models are available to all Viam users while private models are only available to users in your [organization](/fleet/organizations/).
