@@ -6,9 +6,8 @@ type: "docs"
 tags: ["data management", "data", "services"]
 no_list: true
 description: "Use Viam's machine learning capabilities to train image classification models and deploy these models to your machines."
-image: "/ml/training.png"
-imageAlt: "Machine Learning"
 images: ["/ml/training.png"]
+imageAlt: "Machine Learning"
 ---
 
 You can create and deploy an image classification model onto your machine with Viam's machine learning (ML) capabilities.

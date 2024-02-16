@@ -11,7 +11,6 @@ description:
 # images: ["path to preview GIF if available and less than 1MB in size - otherwise path to preview image"]
 # webmSrc: "path to preview video - ideally in 4:3 format"
 # mp4Src: "path to preview video - ideally in 4:3 format"
-# image: UNNECESSARY; REDUNDANT WITH "images"! "path to preview image - ideally in 4:3 format"
 # imageAlt: "ALT text for the image"
 # videoAlt: "ALT text for the video" (omit either imageAlt or videoAlt depending on preview type)
 tags: ["tutorial"]

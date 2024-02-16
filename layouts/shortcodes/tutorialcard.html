@@ -14,9 +14,9 @@
             {{ partial "gif.html" (dict "webm_src" .Params.webmSrc "mp4_src" .Params.mp4Src "alt" .Params.videoAlt "maxWidth" "100%" "class" "lozad" ) }}
           </div>
           {{ end }}
-          {{ if .Params.image }}
+          {{ if .Params.images }}
           <div class="hover-card-img">
-            {{ partial "imgproc.html" (dict "src" .Params.image "resize" "300x" "alt" .Params.imageAlt "style" "" "class" "" "declaredimensions" false ) }}
+            {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "300x" "alt" .Params.imageAlt "style" "" "class" "" "declaredimensions" false ) }}
           </div>
           {{ end }}
           {{ if .Params.icon }}
@@ -24,7 +24,7 @@
             {{ partial "imgproc.html" (dict "src" .Params.icon "resize" "300x" "alt" .Params.linkTitle "style" "" "class" (.Get "class") "declaredimensions" false ) }}
           </div>
           {{ end }}
-          <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
+          <div {{ if (index .Params.images 0) }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
             <div>
             {{ if $customTitle }}<span>{{ $customTitle }}</span>{{ else }}<span>{{ .LinkTitle }}</span>{{ end }}
             <div class="pills">

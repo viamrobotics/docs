@@ -5,7 +5,7 @@ weight: 80
 simple_list: true
 type: docs
 tags: ["rover", "viam rover"]
-image: "/get-started/try-viam/rover-resources/viam-rover/box-contents.jpg"
+images: ["/get-started/try-viam/rover-resources/viam-rover/box-contents.jpg"]
 imageAlt: "A Viam Rover in a box"
 aliases:
   - "/viam-rover-resources/"

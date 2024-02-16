@@ -3,9 +3,8 @@ title: "NVIDIA Jetson Nano and Orin Nano Setup Guide"
 linkTitle: "Jetson Nano and Orin Nano Setup"
 weight: 20
 type: "docs"
-image: "/get-started/installation/thumbnails/jetson-nano-dev-kit.png"
-imageAlt: "Jetson Nano"
 images: ["/get-started/installation/thumbnails/jetson-nano-dev-kit.png"]
+imageAlt: "Jetson Nano"
 description: "Prepare your Jetson Nano or Jetson Orin Nano for viam-server installation."
 no_list: true
 aliases:

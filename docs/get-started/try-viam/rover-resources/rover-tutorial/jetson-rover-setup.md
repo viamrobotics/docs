@@ -4,9 +4,8 @@ linkTitle: "Set Up your Rover 2 with a Jetson"
 weight: 10
 type: "docs"
 tags: ["rover", "tutorial"]
-image: "/get-started/try-viam/rover-resources/viam-rover-2/box-contents.png"
-imageAlt: "A Viam Rover 2 in a box"
 images: ["/get-started/try-viam/rover-resources/viam-rover-2/box-contents.png"]
+imageAlt: "A Viam Rover 2 in a box"
 description: "Instructions for setting up a Viam Rover 2 with a Jetson Nano or Jetson Orin Nano."
 ---
 

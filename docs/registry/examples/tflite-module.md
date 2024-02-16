@@ -5,7 +5,7 @@ weight: 70
 type: "docs"
 description: "Add an ML model modular-resource-based service which uses TensorFlow Lite to classify audio samples."
 tags: ["ml", "model training", "services"]
-image: "/registry/module-icon.svg"
+icon: "/registry/module-icon.svg"
 imageAlt: "Add a TensorFlow Lite modular service"
 images: ["/registry/module-icon.svg"]
 aliases:
