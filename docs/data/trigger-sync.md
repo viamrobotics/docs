@@ -1,5 +1,5 @@
 ---
-title: "Trigger Cloud Sync conditionally"
+title: "Trigger Cloud Sync Conditionally"
 linkTitle: "Trigger Sync"
 description: "Configure cloud sync to automatically capture data in the Viam app."
 weight: 36
@@ -32,11 +32,11 @@ Additional examples are available in this [GitHub Repo](https://github.com/viam-
 
 To use [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time):
 
-1. Go to your machine's **Config** page and click **Add Component**.
+1. Go to your machine's **Config** page and click **Create component**.
 2. Then select the `sync-at-time:timesyncsensor` model from the [`sync-at-time` module](https://app.viam.com/module/naomi/sync-at-time).
 3. Click **Add module**, then enter a name for your sensor and click **Create**.
    The sensor will return true and enable sync when in a specified time frame.
-4. To configure your timeframe, go to the new component panel and copy and paste the following attribute template into your sensor’s **Attributes** box:
+4. To configure your time frame, go to the new component panel and copy and paste the following attribute template into your sensor’s **Attributes** box:
 
    {{< tabs >}}
    {{% tab name="Config builder" %}}
@@ -93,8 +93,8 @@ The following attributes are available for the `naomi:sync-at-time:timesyncsenso
 <!-- prettier-ignore -->
 | Name    | Type   | Inclusion    | Description |
 | ------- | ------ | ------------ | ----------- |
-| `start` | string | **Required** | The start time for the time frame during which you want to sync, example: `"14:10:00"`.  |
-| `end`   | string | **Required** | The start time for the time frame during which you want to sync, example: `"15:35:00"`. |
+| `start` | string | **Required** | The start time for the time frame during which you want to sync. Example: `"14:10:00"`.  |
+| `end`   | string | **Required** | The end of the sync time frame, for example: `"15:35:00"`. |
 | `zone`  | string | **Required** | The time zone for the `start` and `end` time, for example: `"CET"`. |
 
 In the next step you will configure the data manager to take the sensor into account when syncing.
