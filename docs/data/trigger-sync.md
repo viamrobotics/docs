@@ -19,7 +19,7 @@ To set up conditional syncing you need to:
 
 ## Requirements
 
-Before configuring your sensor, you must [create a machine](https://docs.viam.com/manage/fleet/machines/#add-a-new-machine) and you also need to:
+Before configuring your sensor, you must [create a machine](https://docs.viam.com/fleet/machines/#add-a-new-machine) and you also need to:
 
 1. Enable [data capture](https://docs.viam.com/data/capture/).
 2. Enable [cloud sync](https://docs.viam.com/data/cloud-sync/).
