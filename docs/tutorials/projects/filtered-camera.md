@@ -109,7 +109,7 @@ The `filtered-camera` module that you will use in this tutorial supports two mod
 - [Classification](/ml/vision/#classifications), where you use an ML model trained by tagging images with a class label that best describes it, which enables your machine to classify similar images on its own.
 
 In this tutorial, you will use filtering with a _detection_ model.
-To get a deteciton model you can train a machine learning (ML) model on images from your camera.
+To create a detection model, you can train a machine learning (ML) model on images captured by your camera.
 
 {{% alert title="Info" color="info" %}}
 Alternatively, if you want to use a pre-trained model that is capable of identifying many basic objects, or if you already have a trained model that you want to use, skip to [Use an existing ML model](#use-an-existing-ml-model).
