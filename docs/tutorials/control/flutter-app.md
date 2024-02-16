@@ -166,11 +166,11 @@ Now you'll update some configurations in the iOS-specific code to support the [V
    # platform :ios, '11.0'
    ```
 
-   Uncomment the line and change it to use version 13.0:
+   Uncomment the line and change it to use version 17.0:
 
    ```dart {class="line-numbers linkable-line-numbers"}
    # Uncomment this line to define a global platform for your project
-   platform :ios, '13.0'
+   platform :ios, '17.0'
    ```
 
 2. Open <file>ios/Runner/Info.plist</file>.
@@ -420,6 +420,23 @@ Follow the steps below to get your API key and create an environment variables f
          await dotenv.load(); // <-- This loads your API key
          runApp(MyApp());
      }
+   ```
+
+8. Reopen your <file>pubspec.yaml</file> file and paste the following two lines at the end of it, inside the `flutter:` section.
+   Listing the <file>.env</file> among your app's assets lets the app access the file.
+
+   ```yaml
+   assets:
+     - .env
+   ```
+
+   The last few lines of your <file>pubspec.yaml</file> file should now look like this:
+
+   ```yaml
+   flutter:
+     uses-material-design: true
+     assets:
+       - .env
    ```
 
 ### Connect the login button to the home screen
@@ -735,7 +752,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 Try running your app.
 Now, when you tap a location, you'll see a list of the smart machines in that location.
-When you tap one of them, you'll see a list of that machine's {{< glossary_tooltip term_id="resource" text="resources" >}}:
+When you tap one of them (if it is currently live), you'll see a list of that machine's {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
 {{<gif webm_src="/tutorials/flutter-app/demo.webm" mp4_src="/tutorials/flutter-app/demo.mp4" alt="Rendering of the mobile app. Log in is clicked, then all Clint's locations are shown, Clint's Desk it clicked, all its smart machines are listed, and then desk-robot is clicked, showing a list of components and services belonging to that smart machine." max-width="300px" class="aligncenter">}}
 
