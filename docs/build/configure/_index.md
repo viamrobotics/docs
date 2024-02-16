@@ -4,7 +4,6 @@ linkTitle: "Configure a Machine"
 weight: 30
 type: "docs"
 description: "Before you can program a machine, you must configure its components and services as well as any modules, remotes, processes and frames."
-image: "/get-started/installation/thumbnails/configure.svg"
 imageAlt: "Configure a Machine"
 images: ["/get-started/installation/thumbnails/configure.svg"]
 tags: ["manage", "components"]
