@@ -451,7 +451,7 @@ python3 main.py
 
 One more thing.
 Right now, you need to run the code manually every time you want your robot to work.
-However, you can configure Viam to automatically run your code as a [process](/build/configure/#processes).
+However, you can configure Viam to automatically run your code as a [process](/build/configure/processes/).
 
 Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Processes** subtab and navigate to the **Create process** menu.
