@@ -10,7 +10,7 @@ tags: ["data management", "cloud", "sync"]
 
 If you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
 
-This module allows you to configure Cloud Sync to occur only at a specific time frame by implementing a sensor, `naomi:sync-at-time:timesyncsensor`, that enables sync when within a specified timeframe and disables sync when outside that timeframe.
+This module allows you to configure Cloud Sync to occur only at a specific time frame by implementing a sensor, `naomi:sync-at-time:timesyncsensor`, that enables sync within a specified time frame and disables sync outside that time frame.
 
 To set up conditional syncing you need to:
 
