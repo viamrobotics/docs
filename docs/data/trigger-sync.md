@@ -101,13 +101,16 @@ In the next step you will configure the data manager to take the sensor into acc
 
 ### Configure data manager to sync based on sensor
 
-On your machine's **Config** tab, switch to **JSON** mode and add a `selective_syncer_name` with the name for the sensor you configured:
+On your machine's **Config** tab, switch to **JSON** mode and add a `selective_syncer_name` with the name for the sensor you configured and add the sensor to the `depends_on` field:
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
 
-```json {class="line-numbers linkable-line-numbers" data-line="6"}
+```json {class="line-numbers linkable-line-numbers" data-line="9,14"}
 {
+  "name": "Data-Management-Service",
+  "type": "data_manager",
+  "namespace": "rdk",
   "attributes": {
     "additional_sync_paths": [],
     "capture_dir": "",
@@ -117,27 +120,26 @@ On your machine's **Config** tab, switch to **JSON** mode and add a `selective_s
     "sync_interval_mins": 0.1,
     "tags": []
   },
-  "name": "Data-Management-Service",
-  "type": "data_manager"
+  "depends_on": ["<SENSOR-NAME>"]
 }
 ```
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
 
-```json {class="line-numbers linkable-line-numbers" data-line="6"}
+```json {class="line-numbers linkable-line-numbers" data-line="7,12"}
 {
+  "name": "datamanager",
+  "type": "data_manager",
+  "namespace": "rdk",
   "attributes": {
     "additional_sync_paths": [],
-    "capture_dir": "",
-    "capture_disabled": false,
     "selective_syncer_name": "timesensor",
-    "sync_disabled": false,
-    "sync_interval_mins": 0.1,
+    "sync_interval_mins": 0.2,
+    "capture_dir": "",
     "tags": []
   },
-  "name": "Data-Management-Service",
-  "type": "data_manager"
+  "depends_on": ["timesensor"]
 }
 ```
 
@@ -190,16 +192,17 @@ On your machine's **Config** tab, switch to **JSON** mode and add a `selective_s
   ],
   "services": [
     {
+      "namespace": "rdk",
+      "depends_on": ["timesensor"],
       "attributes": {
+        "additional_sync_paths": [],
         "selective_syncer_name": "timesensor",
         "sync_interval_mins": 0.2,
         "capture_dir": "",
-        "tags": [],
-        "additional_sync_paths": []
+        "tags": []
       },
       "name": "datamanager",
-      "type": "data_manager",
-      "namespace": "rdk"
+      "type": "data_manager"
     }
   ],
   "agent_config": {
