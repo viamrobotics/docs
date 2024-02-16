@@ -16,7 +16,9 @@ The following services work together to coordinate your robot's movement:
 
 ## Frame system
 
+<p>
 {{<imgproc src="/mobility/frame-system/demo_bound_box.png" class="fill alignright" style="max-width: 400px" resize="x1000" declaredimensions=true alt="Bounding boxes displayed in the Viam app frame system tab" >}}
+</p>
 
 The [frame system service](/mobility/frame-system/):
 
@@ -29,14 +31,14 @@ The [frame system service](/mobility/frame-system/):
 
 {{<gif webm_src="/tutorials/videos/motion_constraints.webm" mp4_src="/tutorials/videos/motion_constraints.mp4" alt="An arm moving a cup from one side of a tissue box to the other, across a table. The cup stays upright." class="alignright" max-width="250px">}}
 
-- The [motion service](/mobility/motion/) allows you to:
+The [motion service](/mobility/motion/) allows you to:
 
-  - Create and execute plans to move components to goal positions in the components' own coordinate systems, as well as to move an entire robot on a GPS map or SLAM map.
-  - Set constraints on the motion plans, such as requiring a component to maintain its orientation throughout the move (for example, an arm holding a cup upright as it moves).
+- Create and execute plans to move components to goal positions in the components' own coordinate systems, as well as to move an entire robot on a GPS map or SLAM map.
+- Set constraints on the motion plans, such as requiring a component to maintain its orientation throughout the move (for example, an arm holding a cup upright as it moves).
 
 {{<imgproc src="/use-cases/navigation-card.png" class="fill alignleft" style="max-width: 200px" resize="x900" declaredimensions=true alt="A map of part of a city displayed in the Viam app with user-defined waypoints and the location of a robot shown on the map.">}}
 
-- The [navigation service](/mobility/navigation/) lets you specify a list of waypoints that a robot should travel through on a GPS map, and delegates to the motion service to create and execute the corresponding sequence of motion plans.
+The [navigation service](/mobility/navigation/) lets you specify a list of waypoints that a robot should travel through on a GPS map, and delegates to the motion service to create and execute the corresponding sequence of motion plans.
 
 ## Simultaneous localization and mapping (SLAM)
 
