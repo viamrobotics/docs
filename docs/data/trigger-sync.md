@@ -1,7 +1,7 @@
 ---
 title: "Trigger Cloud Sync Conditionally"
 linkTitle: "Trigger Sync"
-description: "Configure cloud sync to automatically capture data in the Viam app."
+description: "Trigger cloud sync to sync captured data conditionally."
 weight: 36
 type: "docs"
 tags: ["data management", "cloud", "sync"]
