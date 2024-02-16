@@ -312,9 +312,9 @@ Click **Save config** in the bottom left corner of the screen.
 
 {{% tab name="Raw JSON" %}}
 
-Next, on the [**Raw JSON** tab](/build/configure/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/ml/), the [vision service](/ml/vision/), and a [transform camera](/components/camera/transform/):
+On the [**Raw JSON** tab](/build/configure/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/ml/), the [vision service](/ml/vision/), and a [transform camera](/components/camera/transform/):
 
-```json {class="line-numbers linkable-line-numbers" data-line="31-48,50-69"}
+```json {class="line-numbers linkable-line-numbers" data-line="32-80"}
 {
   "components": [
     {
