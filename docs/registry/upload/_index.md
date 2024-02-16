@@ -352,9 +352,9 @@ The command will run your build instructions locally without running a cloud bui
 For more details, see the [`build-action` GitHub Action documentation](https://github.com/viamrobotics/build-action), or take a look through one of the following example repositories that show how to package and deploy modules using the Viam SDKs:
 
 - [Golang CI yaml](https://github.com/viam-labs/wifi-sensor/blob/main/.github/workflows/build.yml)
-- [Golang Example CI meta.json](https://github.com/viam-labs/wifi-sensor/blob/main/.github/workflows/build.yml)
+- [Golang Example CI meta.json](https://github.com/viam-labs/wifi-sensor/blob/main/meta.json)
 - [C++ Example CI yaml](https://github.com/viamrobotics/module-example-cpp/blob/main/.github/workflows/build2.yml)
-- [C++ Example CI meta.json](https://github.com/viamrobotics/module-example-cpp/blob/main/.github/workflows/build2.yml)
+- [C++ Example CI meta.json](https://github.com/viamrobotics/module-example-cpp/blob/main/meta.json)
 
 {{% /tab %}}
 {{% tab name="CI with upload-action" %}}
