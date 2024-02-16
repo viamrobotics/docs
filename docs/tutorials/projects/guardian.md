@@ -245,7 +245,7 @@ Then test the components on the [machine's Control tab](/fleet/machines/#control
 
 ## Detect persons and pets
 
-For the guardian to be able to detect living beings, you will use a Machine Learning model from the Viam Registry.
+For the guardian to be able to detect living beings, you will use a Machine Learning model from the Viam Registry called [`effdet0`](https://app.viam.com/ml-model/bill/effdet0).
 The model can detect a variety of things which you can see in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
 You can also [train your own custom model](/ml/train-model/) based on images from your robot but the provided Machine Learning model is a good one to start with.
