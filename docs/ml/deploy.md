@@ -52,8 +52,8 @@ For some models of the ML model service, like the [Triton ML model service](http
 
 You can use the ML model service to deploy:
 
-- [an existing model from the registry](#select-an-existing-model-from-the-registry)
-- a model trained outside the Viam platform that you have [uploaded](#upload-an-existing-ml-model)
+- [an existing model from the registry](https://app.viam.com/registry)
+- a model trained outside the Viam platform that you have [uploaded](/ml/upload-model/)
 - a model available on your machine
 
 {{< tabs >}}
