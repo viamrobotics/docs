@@ -78,14 +78,16 @@ Navigate to the **Control** tab where you can see your camera working.
 
 ## Configure your services
 
-This tutorial uses pre-trained ML packages.
-If you want to train your own, you can [train a model](/ml/train-model/).
+This tutorial uses a pre-trained Machine Learning model from the Viam Registry called [`effdet0`](https://app.viam.com/ml-model/bill/effdet0).
+The model can detect a variety of things which you can see in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
-To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your project directory.
+If you want to train your own model instead, follow the instructions to [train a model](/ml/train-model/).
 
 Navigate to the **Services** subtab of your machine's **Config** tab.
 
 ### Configure the ML model service
+
+The [ML model service](/ml/) allows you to deploy a machine learning model to your robot.
 
 Click **Create service** in the lower-left corner of the page.
 Select `ML Model` for the type, then select `TFLite CPU` for the model.
@@ -95,8 +97,8 @@ In the new ML Model service panel, configure your service.
 
 ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
 
-Select the **Path to existing model on robot** for the **Deployment** field.
-Then specify the absolute **Model path** as where your tflite file lives and any **Optional settings** such as the absolute **Label path** as where your labels.txt file lives and the **Number of threads** as `1`.
+Select the **Deploy model on robot** for the **Deployment** field.
+Then select the `bill:effdet0` model from the **Models** dropdown.
 
 ### Configure an mlmodel detector
 
