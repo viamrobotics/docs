@@ -1,7 +1,7 @@
 ---
 title: "Trigger Cloud Sync Conditionally"
 linkTitle: "Trigger Sync"
-description: "Trigger cloud sync to sync captured data conditionally."
+description: "Trigger Cloud Sync to sync captured data conditionally."
 weight: 36
 type: "docs"
 tags: ["data management", "cloud", "sync"]
@@ -14,7 +14,8 @@ This module allows you to configure Cloud Sync to occur only at a specific time 
 
 To set up conditional syncing you need to:
 
-1. Create or use an exisitng module that implements a `sensor` component that uses your custom logic to determine when to enable and disable sync.
+1. Create or use an existing module that implements a `sensor` component that uses your custom logic to determine when to enable and disable sync.
+   While this sensor is not sensing the time it _senses_ whether the data manager should sync or not.
 2. Change the configuration of the data manager to enable selective sync.
 
 ## Requirements
