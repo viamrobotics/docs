@@ -50,10 +50,10 @@ For some models of the ML model service, like the [Triton ML model service](http
 
 ## Create an ML model service
 
-The Viam registry hosts trained ML models that users have made public, which you can use to deploy classifiers or detectors for your use case onto your machine instead of training your own.
-You can see all publicly available ML models as well as all ML models you've uploaded yourself in the [Viam Registry](https://app.viam.com/registry).
-
-Once you've decided on a model to use, copy the name of the ML model.
+You can use the ML model service to deploy:
+- [an existing model from the registry](#select-an-existing-model-from-the-registry)
+- a model trained outside the Viam platform that you have [uploaded](#upload-an-existing-ml-model)
+- a model available on your machine
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
