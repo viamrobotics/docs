@@ -10,10 +10,10 @@ from viam.proto.app import ListRegistryItemsRequest, ListRegistryItemsResponse
 
 async def connect() -> ViamClient:
     dial_options = DialOptions(
-        auth_entity='b82783ad-b306-4512-98d2-5b23cc6b73da',
+        auth_entity='744b0c18-f6fd-4c8d-a707-d3f261b353cc',
         credentials=Credentials(
             type='api-key',
-            payload='owbj8gznshr3u9va57hqttsim3uotep3'
+            payload=os.environ['VIAM_API_KEY']
         )
     )
     return await ViamClient.create_from_dial_options(dial_options)
@@ -21,8 +21,7 @@ async def connect() -> ViamClient:
 async def main():
 
     typesense_client = typesense.Client({
-        # 'api_key': os.environ['TYPESENSE_API_KEY_MR'],
-        'api_key': 'p2oTlVFR7xQgcs9lTqquIiXe35716Veu',
+        'api_key': os.environ['TYPESENSE_API_KEY_MR'],
         'nodes': [{
             'host': 'cgnvrk0xwyj9576lp-1.a1.typesense.net',
             'port': '443',
