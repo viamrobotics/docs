@@ -252,9 +252,9 @@ Click on `GetReadings`.
 
 {{<imgproc src="/data/timesensor.png" resize="800x" declaredimensions=true alt="Control tab with sensor panel">}}
 
-If you are in the time frame for sync, the sensor will return true.
+If you are in the time frame for sync, the time sync sensor will return true.
 You can confirm that no data is currently syncing by going to the [**Data** tab](https://app.viam.com/data/view).
-If you are not in the time frame for sync, adjust the configuration of your sensor.
+If you are not in the time frame for sync, adjust the configuration of your time sync sensor.
 Then check again on the **Control** and **Data** tab to confirm data is syncing.
 
 ## Next steps
