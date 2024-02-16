@@ -17,6 +17,18 @@
 <script type="text/javascript" src="{{ $jsModels.RelPermalink }}" crossorigin="anonymous"></script>
 {{ end }}
 
+<!-- JS for listing ml models -->
+{{ if .Page.Params.modelscript }}
+
+<script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.46.0"></script>
+
+{{ $jsModels := resources.Get "js/mlmodels.js" }}
+{{ $jsModels := $jsModels | minify }}
+<script type="text/javascript" src="{{ $jsModels.RelPermalink }}" crossorigin="anonymous"></script>
+{{ end }}
+
 <!-- START script for lazy loading -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 {{ $jsLozad := resources.Get "js/lozad.js" }}

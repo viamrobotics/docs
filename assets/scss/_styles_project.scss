@@ -1494,9 +1494,13 @@ a.ais-Pagination-link:hover {
   display: none;
 }
 
-// styling for model list from modular resources
+// styling for model list from registry
 
 .mr-component {
+  margin-bottom: 1rem;
+}
+
+.mr-model {
   margin-bottom: 1rem;
 }
 
