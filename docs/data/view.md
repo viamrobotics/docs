@@ -52,6 +52,10 @@ To delete a file, click on the file in the **Files** subtab and click the **Dele
 
 To delete all image, file, or sensor data respectively, click on **DELETE ALL** in the top right corner.
 
+{{< alert title="Tip" color="tip" >}}
+If you need to delete many images that are from a specific time frame or machine, you can apply a [filter](#filter-data) and then click **DELETE ALL**.
+{{< /alert >}}
+
 ![Data view with no image selected showing the Delete all button](/data/delete_all.png)
 
 You can also delete data using the [Viam CLI](/fleet/cli/).
