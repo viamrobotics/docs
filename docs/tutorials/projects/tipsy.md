@@ -306,15 +306,10 @@ On the control tab, you will see panels for each of your configured components.
 
 ## Configure your services
 
-This tutorial uses pre-trained ML packages.
-If you want to train your own, you can [train a model](/ml/train-model/).
+This tutorial uses a pre-trained Machine Learning model from the Viam Registry called [`effdet0`](https://app.viam.com/ml-model/bill/effdet0).
+The model can detect a variety of things which you can see in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
-To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your Raspberry Pi:
-
-```sh {class="command-line" data-prompt="$"}
-scp effdet0.tflite tipsy@tipsy.local:/home/tipsy/effdet0.tflite
-scp labels.txt tipsy@tipsy.local:/home/tipsy/labels.txt
-```
+If you want to train your own model instead, follow the instructions to [train a model](/ml/train-model/).
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
@@ -323,6 +318,7 @@ Click on the **Services** subtab.
 
 1. **Configure the ML model service**
 
+   The [ML model service](/ml/) allows you to deploy a machine learning model to your robot.
    Add an [mlmodel](/ml/) service:
 
    Click **Create service** in the lower-left corner of the page.
@@ -333,10 +329,8 @@ Click on the **Services** subtab.
 
    ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
 
-   Select the **Path to existing model on robot** for the **Deployment** field.
-   Then specify the absolute **Model path** as <file>/home/tipsy/effdet0.tflite</file> and any **Optional settings** such as the absolute **Label path** as <file>/home/tipsy/labels.txt</file> and the **Number of threads** as 1.
-
-   ![mlmodel service panel, Deployment selected as Path to Existing Model On Robot, Model Path filled as /home/tipsy/effdet0.tflite and Label Path filled as /home/tipsy/labels.txt, Number of threads is 1.](/tutorials/tipsy/app-service-ml-after.png)
+   Select the **Deploy model on robot** for the **Deployment** field.
+   Then select the `bill:effdet0` model from the **Models** dropdown.
 
 1. **Configure an ML model detector**
 
