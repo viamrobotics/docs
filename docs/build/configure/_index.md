@@ -381,11 +381,42 @@ Switch to **Raw JSON** mode to configure webhooks as follows:
 
 ## Fragments
 
-Fragments are a way of sharing and managing identical {{< glossary_tooltip term_id="resource" text="resource" >}} configuration files across multiple machines.
-For example, if you have multiple machines with the same hardware, wired the same way, you can create and share a fragment and add it to any number of machines.
-When changes are made to the fragment, those changes are automatically carried to all machines that include the fragment in their config.
+You can use fragments to share identical {{< glossary_tooltip term_id="resource" text="resource" >}} configuration files across multiple machines in your fleet.
+For example, if you have multiple machines with the same camera hardware, wired the same way, you can create a fragment to configure that camera and share it easily across all of your machines, without needing to individually configure the camera component for each machine.
 
-See [Configure a Fleet](/fleet/configure-a-fleet/) for instructions on how to use fragments.
+A fragment can define one, several, or all resources on a machine.
+You can add multiple fragments to a single machine, if needed, or can add additional resources to a machine that has already been configured with a fragment.
+
+When you edit a fragment that you've already deployed to one or more machines, the Viam app updates the configuration on each deployed machine that uses that fragment.
+
+{{< alert title="Alert" color="alert" >}}
+Be cautious when making changes to fragments that have been deployed to production machines.
+We recommend that you create a duplicate fragment, make your desired change to that second fragment, and then deploy that fragment to a test machine that is configured identically to your production machines.
+
+Once you are confidant that your configuration change works as expected, you can safely make the same change to the fragment in use on your production fleet, and the Viam app will deploy that change to all machines using that fragment.
+{{< /alert >}}
+
+If you attempt to delete a fragment that is currently deployed to a machine, you will receive an error message advising that the fragment is in use, but you can still delete the fragment if desired.
+You can see the number of machines using your fragment from the [fragments page](https://app.viam.com/fragments) in the Viam app.
+
+Fragments are private to each organization by default (except for the `viam-dev` organization).
+If you would like to make your fragment available to users outside your organization, please reach out to us to request that we make your fragment public.
+
+You must be an [organization owner](/fleet/rbac/#permissions) in order to create fragments.
+
+### Using fragments
+
+To use a fragment with your fleet, see the following:
+
+- [Create a fragment](/fleet/configure-a-fleet/#create-a-fragment)
+- [Add a fragment to a machine](/fleet/configure-a-fleet/#add-a-fragment-to-a-machine)
+- [Modify the configuration of a machine that uses a fragment](/fleet/configure-a-fleet/#modify-the-config-of-a-machine-that-uses-a-fragment)
+
+Viam provides several [pre-made fragments](https://app.viam.com/fragments) you can use as a template as well.
+
+For an example of a fragment that configures multiple components and services, see the [Viam Rover fragment](https://app.viam.com/fragment?id=3e8e0e1c-f515-4eac-8307-b6c9de7cfb84).
+
+See [Configure a Fleet](/fleet/configure-a-fleet/) for further details on how to use fragments.
 
 ## Auth/network
 

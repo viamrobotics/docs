@@ -16,6 +16,8 @@ If there are differences between your machines, you can use a fragment to quickl
 You can then configure the differing resources separately, outside of the fragment.
 For example, if you have multiple identical rovers but one has an arm attached, you can add the rover configuration fragment (including the motors and base components), and then configure the arm on just that one rover.
 
+See [Fragments](/build/configure/#fragments) for more information.
+
 ## Create a fragment
 
 Before you create a fragment, you'll need a JSON configuration file.
