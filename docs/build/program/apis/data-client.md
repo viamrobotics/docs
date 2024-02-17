@@ -29,12 +29,13 @@ Data client API methods are only available in the Python SDK.
 
 ## Establish a connection
 
-To use the Viam data client API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`DataClient`](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient).
+To use the Viam data client API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate a [`DataClient`](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient).
 See the following example for reference.
 
-<!-- After sveltekit migration we should also be able to get a key from the UI-->
+To get an API key and API key ID to authenticate, you have two options:
 
-Use the Viam CLI [to generate an API key to authenticate](/fleet/cli/#authenticate).
+- [Get an API key](/fleet/rbac/#add-an-api-key) from the [Viam app](https://app.viam.com), or
+- use the Viam CLI [to generate an API key](/fleet/cli/#authenticate).
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
