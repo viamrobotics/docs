@@ -108,7 +108,7 @@ The `filtered-camera` module that you will use in this tutorial supports two mod
 - [Detection](/ml/vision/#detections), where you use an ML model trained by drawing bounding boxes around distinct objects within captured images, which enables your machine to be able to detect those objects on its own.
 - [Classification](/ml/vision/#classifications), where you use an ML model trained by tagging images with a class label that best describes it, which enables your machine to classify similar images on its own.
 
-In this tutorial, you will use filtering with a _detection_ model.
+In this tutorial, you will use filtering with a _detection_ model to be able to detect certain objects in the camera feed and filter on the detected objects.
 To create a detection model, you can train a machine learning (ML) model on images captured by your camera.
 
 {{% alert title="Info" color="info" %}}
