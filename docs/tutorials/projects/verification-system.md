@@ -77,8 +77,44 @@ Next, configure the person detector, or, the coarser layer of the security syste
 
 ## Configure an `mlmodel` person detector
 
-In order for your machine's camera to be able to detect the presence of a person in its field of vision, you first need to train a model capable of detecting people.
-For that, you will need to capture images of a variety of people using your camera, and upload them to the Viam app using the [data management service](/data/).
+In order for your machine's camera to be able to detect the presence of a person in its field of vision, you can either use an existing ML Model from the registry capable of detecting people or train your own.
+
+### Use an existing ML model
+
+The [ML model service](/ml/) allows you to deploy a machine learning model to your robot.
+For your machine to be able to detect people, you will use a Machine Learning model from the Viam Registry called [`effdet0`](https://app.viam.com/ml-model/bill/effdet0).
+The model can detect a variety of things which you can see in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file including `person`s.
+
+1. Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/Machines).
+2. Click **Create service** in the lower-left corner of the page.
+3. Select type `ML Model`, then select model `TFLite CPU`.
+4. Enter `persondetect` as the name for your ML model service, then click **Create**.
+5. Select the **Deploy model on robot** for the **Deployment** field.
+6. Then select the [`bill:effdet0` model]() from the **Models** dropdown.
+
+Finally, configure an `mlmodel` detector vision service to use your new `"persondetect"` ML model:
+
+1. Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/Machines).
+2. Click the **Services** subtab and click **Create service** in the lower-left corner.
+3. Select the `Vision` type, then select the `ML Model` model.
+4. Give the detector the name `people-detect` and click **Create**.
+5. In your vision service's panel, fill in the **Attributes** field:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "mlmodel_name": "persondetect"
+}
+```
+
+6. Click **Save config**.
+
+For more information, see [Configure an `mlmodel` detector](/ml/vision/mlmodel/)
+
+Continue to [Configure a facial detector](#configure-a-facial-detector).
+
+### Train your own model
+
+To train your own model, you will need to capture images of a variety of people using your camera, and upload them to the Viam app using the [data management service](/data/).
 
 To add the [data management service](/data/) and configure data capture:
 
