@@ -103,18 +103,17 @@ For more information see [Configure data capture](/data/capture/#configure-data-
 
 ## The machine learning (ML) model for filtering
 
-Now that your camera component is steadily capturing images to the Viam app, you can train a machine learning (ML) model on those images to be able to detect certain objects in the camera feed.
+The `filtered-camera` module that you will use in this tutorial supports two modes of filtering:
+
+- [Detection](/ml/vision/#detections), where you use an ML model trained by drawing bounding boxes around distinct objects within captured images, which enables your machine to be able to detect those objects on its own.
+- [Classification](/ml/vision/#classifications), where you use an ML model trained by tagging images with a class label that best describes it, which enables your machine to classify similar images on its own.
+
+In this tutorial, you will use filtering with a _detection_ model to be able to detect certain objects in the camera feed and filter on the detected objects.
+To create a detection model, you can train a machine learning (ML) model on images captured by your camera.
 
 {{% alert title="Info" color="info" %}}
-Alternatively, if you want to use a provided pre-trained model that is capable of identifying many basic objects, or if you already have a trained model that you want to use, skip to [Upload an existing ML model](#upload-an-existing-ml-model).
+Alternatively, if you want to use a pre-trained model that is capable of identifying many basic objects, or if you already have a trained model that you want to use, skip to [Use an existing ML model](#use-an-existing-ml-model).
 {{% /alert %}}
-
-The `filtered-camera` module supports two modes of filtering:
-
-- [Detection](/ml/vision/#detections), where you train an ML model by drawing bounding boxes around distinct objects within captured images, to enable your machine to be able to detect those objects on its own.
-- [Classification](/ml/vision/#classifications), where you train an ML model by tagging images with a class label that best describes it, to enable your machine to be able to classify similar images on its own.
-
-In this tutorial, you will learn to configure a _detection_ model.
 
 ### Capture images and create a dataset
 
@@ -181,7 +180,18 @@ Once your dataset is ready, train a new ML model on that dataset.
 
 For more information, see [Train a model](/ml/train-model/).
 
-### Upload an existing ML model
+### Use an existing ML model
+
+You can either [use an existing model from the registry](#select-an-existing-model-from-the-registry) or [upload an ML model](#upload-an-existing-ml-model) trained outside the Viam platform.
+
+#### Select an existing model from the Registry
+
+The Viam registry hosts trained ML models that users have made public, which you can use to deploy classifiers or detectors for your use case onto your robot instead of training your own.
+You can see all available ML models in the [Viam Registry](https://app.viam.com/registry).
+
+Once you've decided on a model to use, continue to [Add the ML model service](#add-the-ml-model-service).
+
+#### Upload an existing ML model
 
 If you want to use a pre-trained model instead of training your own, or already have a model you want to use, you can upload an existing model instead.
 
@@ -196,7 +206,7 @@ You can download that model here:
 - <file>[labels.txt](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/labels.txt)</file>: The corresponding labels file containing the labels to assign to matching detected objects.
   You can look through this file to see the full list of trained objects in the model.
 
-To use an existing ML model:
+To upload and use an existing ML model:
 
 1. Navigate to the [**Models** page](https://app.viam.com/data/models) in the Viam app and click the **Upload model** button.
 1. Select **New model** and configure visibility for your model: public models are available to all Viam users while private models are only available to users in your [organization](/fleet/organizations/).
