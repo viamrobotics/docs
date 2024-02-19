@@ -88,6 +88,7 @@ However, if you would like to mock up a virtual placeholder for a real, physical
 | `ticks_per_rotation` | int | Optional | *Becomes required for calculations if an encoder is configured (unlike on a real motor).* For a stepper motor, the number of steps in one full rotation (200 is common). For an encoded motor, how many encoder ticks in one full rotation. See data sheet (for a real motor). |
 | `dir_flip` | bool | Optional | Flips the direction of "forward" versus "backward" rotation. <br> Default: `false` |
 | `pins` | object | Optional | A struct that holds pin configuration information. |
+| `control_parameters` | object | Optional | A JSON object containing the coefficients for the proportional, integrative, and derivative terms. If you use `{ "p": 0, "i": 0, "d": 0 }`, `viam-server` auto-tunes the values and logs the values. To avoid retuning the control parameters constantly, copy the values from the log and add them to the configuration once tuned. For more information see [Control motor velocity with a sensor](#control-motor-velocity-with-a-sensor). |
 
 Nested within `pins`:
 
@@ -114,3 +115,7 @@ Once your motor is configured and your machine is connected, go to the [**Contro
 Use the buttons to try turning your motor forwards or backwards at different power levels and notice how the **Position** number changes.
 
 ![Motor control panel.](/components/motor/control.png)
+
+## Control motor velocity with a sensor
+
+{{< readfile "/static/include/components/motor-sensor.md" >}}

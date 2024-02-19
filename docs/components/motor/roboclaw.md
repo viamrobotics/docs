@@ -49,7 +49,12 @@ Edit and fill in the attributes as applicable.
       "attributes": {
         "serial_path": "<your-serial-path>",
         "motor_channel": <int>,
-        "serial_baud_rate": <int>
+        "serial_baud_rate": <int>,
+        "control_parameters": {
+            "p": <int>,
+            "i": <int>,
+            "d": <int>
+        }
       },
       "depends_on": []
     }
@@ -73,7 +78,12 @@ Example configuration for a `roboclaw` DC brushed motor:
       "attributes": {
         "serial_path": "/dev/serial/by-path/usb-0:1.1:1.0",
         "motor_channel": 1,
-        "serial_baud_rate": 38400
+        "serial_baud_rate": 38400,
+        "control_parameters": {
+          "p": 1,
+          "i": 2,
+          "d": 3
+        }
       },
       "depends_on": []
     }
@@ -97,7 +107,14 @@ The following attributes are available for `roboclaw` motors:
 | `motor_channel` | int | **Required** | Channel the motor is connected to on the controller. Must be `1` or `2`. |
 | `address` | int | Optional | Serial address of the controller. <br> Default: `128`  |
 | `ticks_per_rotation` | int | Optional | Number of full steps in a rotation. Update this if you connect [encoders](/components/encoder/) to your controller through its EN1 and EN2 pins. <br> Default: `0` |
+| `control_parameters` | object | Optional | A JSON object containing the coefficients for the proportional, integrative, and derivative terms. If you use `{ "p": 0, "i": 0, "d": 0 }`, `viam-server` auto-tunes the values and logs the values. To avoid retuning the control parameters constantly, copy the values from the log and add them to the configuration once tuned. For more information see [Control motor velocity with a sensor](#control-motor-velocity-with-a-sensor). |
 
 Refer to your motor and motor driver data sheets for specifics.
 
+## Test the motor
+
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}
+
+## Control motor velocity with a sensor
+
+{{< readfile "/static/include/components/motor-sensor.md" >}}

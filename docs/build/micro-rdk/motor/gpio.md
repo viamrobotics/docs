@@ -150,4 +150,6 @@ This leaves you with three remaining PWM frequencies for use on an `esp32`.
 If the frequency of another PWM signal is unimportant, it can also be set to 10000 Hz.
 See [PWM signals on `esp32` pins](/build/micro-rdk/board/esp32/#pwm-signals-on-esp32-pins) for more information.
 
+## Test the motor
+
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}

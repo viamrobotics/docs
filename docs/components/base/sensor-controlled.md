@@ -73,6 +73,7 @@ The following attributes are available for `sensor-controlled` bases:
 | ---- | ---- | --------- | ----------- |
 | `movement-sensor` | array | **Required** | Array with the `name`s of any movement sensors on your base you want to gather feedback from. The driver will select the first movement sensor providing appropriate feedback for either the `SetVelocity()` or the `Spin()` endpoint. |
 | `base` | string | **Required** | String with the `name` of the base you want to wrap with sensor control. |
+| `control_parameters` | object | Optional | A JSON object containing the coefficients for the proportional, integrative, and derivative terms for linear and angular velocity. If you use `[ { "type": "linear_velocity", "p": 0, "i": 0, "d": 0 }, { "type": "angular_velocity", "p": 0, "i": 0, "d": 0 } ]`, `viam-server` auto-tunes the values and logs the values. To avoid retuning the control parameters constantly, copy the values from the log and add them to the configuration once tuned. For more information see [Control base velocity with a sensor](#control-base-velocity-with-a-sensor). |
 
 ## Test the base
 
@@ -82,3 +83,7 @@ The following base control API methods are available with feedback control on a 
 
 - [SetVelocity()](/components/base/#setvelocity): available if base is configured to receive angular and linear velocity feedback.
 - [Spin()](/components/base/#spin): available if base is configured to receive orientation feedback.
+
+## Control base velocity with a sensor
+
+{{< readfile "/static/include/components/base-sensor.md" >}}

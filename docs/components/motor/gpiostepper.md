@@ -57,7 +57,12 @@ Edit and fill in the attributes as applicable.
           "dir": "<pin-number>"
         },
         "ticks_per_rotation": <int>,
-        "stepper_delay": <int>
+        "stepper_delay": <int>,
+        "control_parameters": {
+            "p": <int>,
+            "i": <int>,
+            "d": <int>
+        }
       },
       "depends_on": []
     }
@@ -90,7 +95,12 @@ Here’s an example of a basic stepper driver config:
           "step": "13",
           "dir": "15"
         },
-        "ticks_per_rotation": 200
+        "ticks_per_rotation": 200,
+        "control_parameters": {
+          "p": 1,
+          "i": 2,
+          "d": 3
+        }
       }
     }
   ]
@@ -114,10 +124,11 @@ The following attributes are available for `gpiostepper` motors:
 | `pins` | object | **Required** |  A struct containing the [board](/components/board/) {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}} that the `step` and `dir` pins of the motor driver are wired to. |
 | `ticks_per_rotation` | int | **Required** | Number of full steps in a rotation. 200 (equivalent to 1.8 degrees per step) is very common. If your data sheet specifies this in terms of degrees per step, divide 360 by that number to get ticks per rotation. |
 | `stepper_delay` | int | Optional | Time in microseconds to remain high for each step. |
+| `control_parameters` | object | Optional | A JSON object containing the coefficients for the proportional, integrative, and derivative terms. If you use `{ "p": 0, "i": 0, "d": 0 }`, `viam-server` auto-tunes the values and logs the values. To avoid retuning the control parameters constantly, copy the values from the log and add them to the configuration once tuned. For more information see [Control motor velocity with a sensor](#control-motor-velocity-with-a-sensor). |
 
 Refer to your motor and motor driver data sheets for specifics.
 
-### Wiring example
+## Wiring example
 
 Typically, a stepper motor will have an even number of wires.
 Each pair of wires forms a loop through a coil of the motor.
@@ -131,4 +142,10 @@ The following example uses a Big Tree Tech breakout board with a [TMC2209 integr
 In this particular example the enable pin on the upper left corner of the driver is connected to ground to pull it low.
 See the data sheet of your stepper motor and stepper motor driver for information on how to wire your specific hardware.
 
+## Test the motor
+
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}
+
+## Control motor velocity with a sensor
+
+{{< readfile "/static/include/components/motor-sensor.md" >}}

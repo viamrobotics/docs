@@ -71,4 +71,4 @@ Each [motor](/components/motor/) inside of `Motors` has the following attributes
 
 ## Test the base
 
-{{< readfile "/static/include/components/test-control/base-control.md" >}}
+{{< readfile "/static/include/components/test-control/base-control.md" >}}as

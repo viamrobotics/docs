@@ -7,6 +7,7 @@ description: "Configure brushed or brushless DC motors."
 images: ["/icons/components/motor.svg"]
 aliases:
   - "/components/motor/gpio/"
+no_list: true
 # SMEs: Rand, James
 ---
 
@@ -60,7 +61,12 @@ Edit and fill in the attributes as applicable.
         "min_power_pct": <float>,
         "max_power_pct": <float>,
         "pwm_freq": <float>,
-        "dir_flip": <float>
+        "dir_flip": <float>,
+        "control_parameters": {
+            "p": <int>,
+            "i": <int>,
+            "d": <int>
+        }
       },
       "depends_on": []
     }
@@ -95,7 +101,12 @@ An example configuration for a `gpio` motor:
           "pwm": "32"
         },
         "board": "local",
-        "max_rpm": 500
+        "max_rpm": 500,
+        "control_parameters": {
+          "p": 1,
+          "i": 2,
+          "d": 3
+        }
       },
       "depends_on": []
     }
@@ -124,6 +135,7 @@ The following attributes are available for `gpio` motors:
 | `pwm_freq` | int | Optional | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range. <br> Default: `800` |
 | `dir_flip` | bool | Optional | Flips the direction of "forward" versus "backward" rotation. Default: `false` |
 | `encoder` | string | Optional | The name of an encoder attached to this motor. See [encoded motor](/components/motor/gpio/encoded-motor/). |
+| `control_parameters` | object | Optional | A JSON object containing the coefficients for the proportional, integrative, and derivative terms. If you use `{ "p": 0, "i": 0, "d": 0 }`, `viam-server` auto-tunes the values and logs the values. To avoid retuning the control parameters constantly, copy the values from the log and add them to the configuration once tuned. For more information see [Control motor velocity with a sensor](#control-motor-velocity-with-a-sensor). |
 
 Refer to your motor and motor driver data sheets for specifics.
 
@@ -190,6 +202,10 @@ Only the output side of the driver board is different in that more wires connect
 
 ![An example wiring diagram showing a Raspberry Pi, 12V power supply, RioRand 400W brushless DC motor controller, and 3 phase 12V brushless DC motor. The motor has three power wires (one for each phase) and five sensor wires (two to power the sensor and one for each of the three Hall effect sensors).](/components/motor/motor-brushless-dc-wiring.png)
 
+## Test the motor
+
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}
 
-## Next steps
+## Control motor velocity with a sensor
+
+{{< readfile "/static/include/components/motor-sensor.md" >}}
