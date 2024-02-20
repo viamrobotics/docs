@@ -90,7 +90,7 @@ The model can detect a variety of things which you can see in <file>[labels.txt]
 3. Select type `ML Model`, then select model `TFLite CPU`.
 4. Enter `persondetect` as the name for your ML model service, then click **Create**.
 5. Select the **Deploy model on robot** for the **Deployment** field.
-6. Then select the [`bill:effdet0` model]() from the **Models** dropdown.
+6. Then select the `bill:effdet0` model from the **Models** dropdown.
 
 Finally, configure an `mlmodel` detector vision service to use your new `"persondetect"` ML model:
 
