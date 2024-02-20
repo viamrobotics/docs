@@ -18,7 +18,7 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   //  So you can pass any parameters supported by the search endpoint below.
   //  query_by is required.
   additionalSearchParameters: {
-    query_by: "model-id,description",
+    query_by: "model_id,description",
     sort_by: "total_organization_usage:desc,total_robot_usage:desc",
     infix: "always"
   },
