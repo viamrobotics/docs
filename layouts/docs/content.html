@@ -52,7 +52,7 @@
 		<div class="row-no-margin">
 		  {{ range sort $pages ".Weight"}}
 			{{ warnf "what %s" .RelPermalink }}
-			{{ partial "card.html" (dict "link" (.Permalink) "class" "" "customTitle" "" "customDescription" "" "customCanonicalLink" (.Page.Params.canonical) ) }}
+			{{ partial "card.html" (dict "link" (.File) "class" "" "customTitle" "" "customDescription" "" "customCanonicalLink" (.Page.Params.canonical) ) }}
 		{{ end }}
 		</div>
 	  </div>
