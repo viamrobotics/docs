@@ -47,12 +47,12 @@
 	{{ .Content }}
 
 	{{ if ne .Params.no_list true}}
-
 	{{ $pages := union .Sections .Pages }}
 	  <div id="archive" class="card-container">
 		<div class="row-no-margin">
 		  {{ range sort $pages ".Weight"}}
-			{{ partial "card.html" (dict "link" (.Page.File) "class" "" "customTitle" "" "customDescription" "" "customCanonicalLink" (.Page.Params.canonical) ) }}
+			{{ warnf "what %s" .RelPermalink }}
+			{{ partial "card.html" (dict "link" (.RelPermalink) "class" "" "customTitle" "" "customDescription" "" "customCanonicalLink" (.Page.Params.canonical) ) }}
 		{{ end }}
 		</div>
 	  </div>
