@@ -61,12 +61,7 @@ Edit and fill in the attributes as applicable.
         "min_power_pct": <float>,
         "max_power_pct": <float>,
         "pwm_freq": <float>,
-        "dir_flip": <float>,
-        "control_parameters": {
-            "p": <int>,
-            "i": <int>,
-            "d": <int>
-        }
+        "dir_flip": <float>
       },
       "depends_on": []
     }
@@ -101,12 +96,7 @@ An example configuration for a `gpio` motor:
           "pwm": "32"
         },
         "board": "local",
-        "max_rpm": 500,
-        "control_parameters": {
-          "p": 1,
-          "i": 2,
-          "d": 3
-        }
+        "max_rpm": 500
       },
       "depends_on": []
     }
@@ -135,7 +125,6 @@ The following attributes are available for `gpio` motors:
 | `pwm_freq` | int | Optional | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range. <br> Default: `800` |
 | `dir_flip` | bool | Optional | Flips the direction of "forward" versus "backward" rotation. Default: `false` |
 | `encoder` | string | Optional | The name of an encoder attached to this motor. See [encoded motor](/components/motor/gpio/encoded-motor/). |
-| `control_parameters` | object | Optional | A JSON object containing the coefficients for the proportional, integral, and derivative terms. If you want these values to be auto-tuned, you can set all values to 0: `{ "p": 0, "i": 0, "d": 0 }`, and `viam-server` will auto-tune and logs the calculated values. Tuning takes several seconds and spins the motors. To avoid tuning every time the robot starts up, copy the values from the log and add them to the configuration once tuned. For more information see [Control motor velocity with a sensor](#control-motor-velocity-with-a-sensor). |
 
 Refer to your motor and motor driver data sheets for specifics.
 
@@ -206,6 +195,3 @@ Only the output side of the driver board is different in that more wires connect
 
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}
 
-## Control motor velocity with a sensor
-
-{{< readfile "/static/include/components/motor-sensor.md" >}}
