@@ -8,4 +8,6 @@ One way to adjust velocity based on a sensor's measurements, is using a PID cont
 
 By tuning the coefficients on each of these terms, you can adjust how your base converges towards the target value, how quickly the system reaches the target value, and how much the system overshoots when approaching the target value.
 
-If you use `[ { "type": "linear_velocity", "p": 0, "i": 0, "d": 0 }, { "type": "angular_velocity", "p": 0, "i": 0, "d": 0 } ]`, `viam-server` auto-tunes the values and logs the tuned values. To avoid retuning the control parameters constantly, copy the values from the log and add them to the configuration once tuned.
+If you use `[ { "type": "linear_velocity", "p": 0, "i": 0, "d": 0 }, { "type": "angular_velocity", "p": 0, "i": 0, "d": 0 } ]`, `viam-server` auto-tunes the values and logs the tuned values.
+Tuning takes several seconds and spins the motors.
+To avoid tuning every time the robot starts up, copy the values from the log and add them to the configuration once tuned.
