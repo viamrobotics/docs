@@ -114,5 +114,3 @@ Once your motor is configured and your machine is connected, go to the [**Contro
 Use the buttons to try turning your motor forwards or backwards at different power levels and notice how the **Position** number changes.
 
 ![Motor control panel.](/components/motor/control.png)
-
-``
