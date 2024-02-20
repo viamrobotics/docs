@@ -11,8 +11,8 @@ aliases:
 # SMEs: Rand
 ---
 
-An [inertial measurement unit (IMU)](https://en.wikipedia.org/wiki/Inertial_measurement_unit) provides data for the `AngularVelocity`, `Orientation`, `CompassHeading`, and `LinearAcceleration` methods.
-Acceleration and magnetometer data are available by using the [sensor](/components/sensor/) `GetReadings` method, which IMUs wrap.
+An [inertial measurement unit (IMU)](https://en.wikipedia.org/wiki/Inertial_measurement_unit) provides data for the [`AngularVelocity`](/components/movement-sensor/#angularvelocity), [`Orientation`](/components/movement-sensor/#orientation), [`CompassHeading`](/components/movement-sensor/#compassheading), and [`LinearAcceleration`](/components/movement-sensor/#linearacceleration) methods.
+Acceleration and magnetometer data are available by using the [sensor](/components/sensor/) [`GetReadings`](/components/sensor/#getreadings) method, which IMUs wrap.
 
 The `imu-vectornav` movement sensor model supports IMUs manufactured by [VectorNav](https://www.vectornav.com/products) that support SPI connection.
 
