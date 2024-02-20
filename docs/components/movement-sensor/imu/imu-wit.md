@@ -10,7 +10,7 @@ aliases:
 # SMEs: Rand
 ---
 
-An [inertial measurement unit (IMU)](https://en.wikipedia.org/wiki/Inertial_measurement_unit) provides data for the [`AngularVelocity`](/components/movement-sensor/#angularvelocity), [`Orientation`](/components/movement-sensor/#orientation), [`CompassHeading`](/components/movement-sensor/#compassheading), and [`LinearAcceleration`](/components/movement-sensor/#linearacceleration) methods.
+An [inertial measurement unit (IMU)](https://en.wikipedia.org/wiki/Inertial_measurement_unit) provides data for the [`AngularVelocity`](/components/movement-sensor/#angularvelocity), [`Orientation`](/components/movement-sensor/#orientation), [`CompassHeading`](/components/movement-sensor/#compassheading), [`LinearAcceleration`](/components/movement-sensor/#linearacceleration), and [`GetAccuracy`](/components/movement-sensor/#getaccuracy) methods.
 Acceleration and magnetometer data are available by using the [sensor](/components/sensor/) [`GetReadings`](/components/sensor/#getreadings) method, which IMUs wrap.
 
 The `imu-wit` movement sensor model supports the following IMUs manufactured by [WitMotion](https://www.wit-motion.com/):

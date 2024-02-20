@@ -19,8 +19,8 @@ Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
 A global positioning system (GPS) receives signals from satellites in the earth’s orbit to determine where it is and how fast it is going.
-All supported GPS models provide data for the [`Position`](/components/movement-sensor/#position), [`CompassHeading`](/components/movement-sensor/#compassheading), and [`LinearVelocity`](/components/movement-sensor/#linearvelocity) methods.
-You can obtain fix and correction data by using the sensor `GetReadings` method, which is available because GPSes wrap the [sensor component](/components/sensor/).
+All supported GPS models provide data for the [`Position`](/components/movement-sensor/#position), [`CompassHeading`](/components/movement-sensor/#compassheading), [`LinearVelocity`](/components/movement-sensor/#linearvelocity), and [`GetAccuracy`](/components/movement-sensor/#getaccuracy) methods.
+You can obtain fix and correction data by using the sensor [`GetReadings`](/components/sensor/#getreadings) method, which is available because GPSes wrap the [sensor component](/components/sensor/).
 
 The `gps-nmea-rtk-pmtk` and [`gps-nmea-rtk-serial`](../gps-nmea-rtk-serial/) movement sensor models support [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [real time kinematic positioning (RTK)](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS units ([such as these](https://www.sparkfun.com/rtk)).
 
