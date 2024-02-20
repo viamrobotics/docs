@@ -14,9 +14,6 @@ tags:
   ]
 description: "Add a modular resource to your machine by configuring it."
 no_list: true
-image: "/registry/create-module.svg"
-imageAlt: "Find a module for your machine"
-images: ["/registry/create-module.svg"]
 aliases:
   - "program/extend/modular-resources/configure/"
   - "/extend/modular-resources/configure/"
@@ -88,13 +85,14 @@ To add a modular [component](/components/) from the Viam registry to your machin
    Be sure the modular component you select supports the [platform](/fleet/cli/#using-the---platform-argument) you intend to use it with, such as `linux arm64`.
    You can see which platforms the module supports at bottom of the module information screen before you add it.
 
-When you add a module from the Viam registry, the custom modular component it provides appears under the **Components** subtab like any other component.
-You can also find [the underlying module](#edit-the-configuration-of-a-module-from-the-viam-registry) listed as **Deployed** under the **Modules** subtab.
+When you add a modular component from the registry, it appears on the **CONFIGURE** tab like any other component.
 
-If the module requires you to configure specific **Attributes**, click the **URL** link in the [module's configuration pane](#edit-the-configuration-of-a-module-from-the-viam-registry) to view the specific attribute requirements on the module's GitHub page.
+If the component requires you to configure specific **Attributes**, navigate to the **CONFIGURE** tab and hover over the component in the machine {{< glossary_tooltip term_id="part" text="part" >}} tree in the upper left-hand corner.
+Click on the **...** menu and select **Go to homepage** to view the specific attribute requirements on the module's GitHub page.
 
-To delete a module added from the Viam registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Modules** subtab of the machine's **Config** tab.
-Deleting a module _does not_ delete any configured modular resources it provides.
+To delete a modular component, navigate to the component's card on the **CONFIGURE** tab.
+Click on the **...** and click **Delete**.
+Confirm your selection.
 
 ### Add a modular service from the Viam registry
 
@@ -117,19 +115,20 @@ To add a modular [service](/services/) from the Viam registry to your machine:
    Be sure the modular service you select supports the [platform](/fleet/cli/#using-the---platform-argument) you intend to use it with, such as `linux arm64`.
    You can see which platforms the module supports at bottom of the module information screen before you add it.
 
-When you add a module from the Viam registry, the custom modular service it provides appears under the **Services** subtab like any other service.
-You can also find [the module itself](#edit-the-configuration-of-a-module-from-the-viam-registry) listed as **Deployed** under the **Modules** subtab.
+When you add a modular service from the registry, it appears on the **CONFIGURE** tab like any other service.
 
-If the module requires you to configure specific **Attributes**, click the **URL** link in the [module's configuration pane](#edit-the-configuration-of-a-module-from-the-viam-registry) to view the specific attribute requirements on the module's GitHub page.
+If the component requires you to configure specific **Attributes**, navigate to the **CONFIGURE** tab and hover over the service in the machine {{< glossary_tooltip term_id="part" text="part" >}} tree in the upper left-hand corner.
+Click on the **...** menu and select **Go to homepage** to view the specific attribute requirements on the module's GitHub page.
 
-To delete a module added from the Viam registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Services** tab.
-Deleting a module _does not_ delete any configured modular resources it provides.
+To delete a modular service, navigate to the service's card on the **CONFIGURE** tab.
+Click on the **...** and click **Delete**.
+Confirm your selection.
 
 ### Add additional modular resources from a registry module
 
 Once you have [added a module](#add-a-modular-resource-from-the-viam-registry) from the Viam registry, you can add any number of the modular resources it provides to your machine by adding new components or services configured with your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
 
-Follow the same steps as when you added the first modular resource, clicking **Create component** or **Create service** as applicable.
+Follow the same steps as when you added the first modular resource, clicking **Create** and **Component** or **Service** as applicable.
 You will be prompted to click **Add module** again while configuring the resource, though no duplicate module will be added to the `modules` section of the configuration.
 
 If you prefer to use JSON, the following properties are available for modular resources:
@@ -145,7 +144,7 @@ If you prefer to use JSON, the following properties are available for modular re
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.
-If the module requires you to configure specific **Attributes**, click the **URL** link in the module's configuration pane to view the specific attribute requirements on the module's GitHub page.
+If the module requires you to configure specific **Attributes**, click the **Registry** link in the module's configuration card to view the specific attribute requirements on the module's GitHub page.
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
@@ -188,9 +187,7 @@ The custom model is configured as a component with the name "my-realsense".
       "model": "viam:camera:realsense",
       "type": "camera",
       "namespace": "rdk",
-      "attributes": {
-        "sensors": ["color", "depth"]
-      },
+      "attributes": {},
       "depends_on": []
     }
   ],
@@ -210,24 +207,25 @@ The custom model is configured as a component with the name "my-realsense".
 
 ## Edit the configuration of a module from the Viam registry
 
-Once you have added a modular resource to your machine, you can view and edit the configuration of the underlying module from the **Modules** subtab:
+Once you have added a modular resource to your machine, you can view and edit the configuration of the underlying module from the **CONFIGURE** tab:
 
-1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-1. Click on the **Modules** subtab.
-   All modules you have added to your machine appear under the **Deployed** section.
+1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+2. Scroll to the card with the `namespace` of the organization that published the module and the `:name` of the module, as indicated by its page in the [registry](https://app.viam.com/registry).
 
-This pane lists the models provided by the module, and any [components](/components/) or [services](/services/) on your machine that are currently using the module.
-You can also configure [how the module updates](#configure-version-update-management-for-a-registry-module) when a new version is available from the Viam registry, or [configure environment variables](#use-environment-variables-with-a-registry-module) for your module.
+This is the **Registry module** card.
+This pane lists the deployed version of the module and the latest version available.
+Here, [configure how a module updates](#configure-version-update-management-for-a-registry-module).
 
-{{<imgproc src="registry/configure/deployed-module-with-component.png" resize="1000x" declaredimensions=true alt="The module subtab of the configure tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
+{{<imgproc src="registry/configure/deployed-module-with-component.png" resize="400x" declaredimensions=true alt="The module card">}}
+
+You can also use JSON mode to [configure environment variables](#use-environment-variables-with-a-registry-module) for your module.
 
 ### Configure version update management for a registry module
 
 When you add a module to your machine, you can also configure how that module updates itself when a newer version becomes available from the Viam registry.
 By default, a newly-added module is set to pin to the specific patch release (**Patch (X.Y.Z)**) of the version you added, meaning that the module will _never automatically update itself_.
 
-If you wish to allow automatic module updates when a new version of the module becomes available in the Viam registry, you can set the **Version type** for your module in the **Modules** subtab.
-Updating to a newer version of a module brings new functionality and bug fixes, but requires restarting the module to apply the update.
+To allow automatic module updates when a new version of the module becomes available in the Viam registry, set the **Pinned version type** for your module in its module card on the **CONFIGURE** tab.
 The following update options are available:
 
 - **Patch (X.Y.Z)**: Do not update to any other version.
@@ -242,7 +240,7 @@ The following update options are available:
 
 When using the **Patch (X.Y.Z)** version type, you may select any patch version of the module from the **Version** dropdown menu, including past versions if desired.
 
-The current deployed version of your module and the latest version of that module available from the Viam registry are shown on this pane for your reference.
+The current deployed version of your module and the latest version of that module available from the Viam registry are shown on this module card for your reference.
 
 {{% alert title="Caution" color="caution" %}}
 For any version type other than **Patch (X.Y.Z)**, the module will upgrade as soon as an update that matches that specified version type is available, which will **restart the module**.
@@ -252,7 +250,7 @@ If, for example, the module provides a motor component, and the motor is running
 ### Use environment variables with a registry module
 
 Some modules require that you set specific environment variables as part of configuration.
-You can click the **URL** link in the upper-right corner of the module configuration pane to view any specific requirements on the module's GitHub page.
+You can click the **Homepage** link in the upper-right corner of the module configuration card to view any specific requirements on the module's GitHub page.
 
 Module environment variables can be either:
 
@@ -294,7 +292,7 @@ This configures a module environment variable `PATH` that uses your system's `PA
 The notation `${environment.<ENV-VAR-NAME>}"` can be used to access any system environment variable that `viam-server` has access to, where `<ENV-VAR-NAME>` represents a system environment variable, like `PATH`, `USER`, or `PWD`.
 For example, you can use `${environment.HOME}"` to access the `HOME` environment variable for the user running `viam-server`.
 
-To configure a modular resource with an environment variable, navigate to the **Config** tab on your machine's page in the Viam app, toggle **JSON** mode, and add the following `env` configuration to the `modules` section:
+To configure a modular resource with an environment variable, navigate to the **CONFIGURE** tab on your machine's page in the Viam app, select **JSON** mode, and add the following `env` configuration to the `modules` section:
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
@@ -380,19 +378,7 @@ See the instructions to [compile your module into an executable](/registry/creat
 
 ### Add a local module
 
-To add a local module on your machine, first add its module, then the component or service it implements:
-
-1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-1. Click on the **Modules** subtab.
-1. Scroll to the **Add local module** section.
-1. Enter a **Name** for this instance of your modular resource.
-1. Enter the [module's executable path](/registry/create/#compile-or-package-your-module).
-   This path must be the absolute path to the executable on your machine's filesystem.
-1. Then, click the **Add module** button, and click **Save config**.
-
-   {{<imgproc src="registry/configure/add-local-module-csi-cam.png" resize="600x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
-
-   This example shows the configuration for adding a [CSI camera](https://github.com/viamrobotics/csi-camera/) as a local module.
+To add a local module on your machine:
 
 1. Navigate to the **Config** tab of your machine's page on [the Viam app](https://app.viam.com).
 
@@ -415,7 +401,19 @@ To add a local module on your machine, first add its module, then the component 
 
 1. Click **Create** to create the modular resource provided by the local module.
 
-Once you've added your local module using steps 1-6, you can repeat steps 7-10 to add as many additional instances of your modular resource as you need.
+You can also add the module directly, without first adding its modular component or service:
+
+1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
+1. Click on the **Modules** subtab.
+1. Scroll to the **Add local module** section.
+1. Enter a **Name** for this instance of your modular resource.
+1. Enter the [module's executable path](/registry/create/#compile-or-package-your-module).
+   This path must be the absolute path to the executable on your machine's filesystem.
+1. Then, click the **Add module** button, and press **Command+S** to save your config.
+
+   {{<imgproc src="registry/configure/add-local-module-csi-cam.png" resize="600x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
+
+   This example shows the configuration for adding a [CSI camera](https://github.com/viamrobotics/csi-camera/) as a local module.
 
 ### Edit the configuration of a local module
 
@@ -535,7 +533,7 @@ You can send commands to the base according to the Viam [base API](/components/b
 
 ## Next steps
 
-Now that you've configured a modular resource, test it with the [Control tab](/fleet/machines/#control) and program it with the [Viam SDKs](/build/program/apis/).
+Now that you've configured a modular resource, test it with the [**CONTROL** tab](/fleet/#remote-control) and program it with the [Viam SDKs](/build/program/apis/).
 
 You can also check out these tutorials that configure and use modular resources:
 
