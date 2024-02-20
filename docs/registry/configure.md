@@ -415,6 +415,7 @@ To add a local module on your machine, first add its module, then the component 
 
 1. Click **Create** to create the modular resource provided by the local module.
 
+Once you've added your local module using steps 1-6, you can repeat steps 7-10 to add as many additional instances of your modular resource as you need.
 ### Edit the configuration of a local module
 
 Once you have added a modular resource to your machine, you can view and edit the underlying module from the **Modules** subtab:
