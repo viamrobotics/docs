@@ -1,4 +1,4 @@
-If you want to control your base by specifying the velocity in terms of distance/time, for example 5 m/s and you have a sensor, for example a wheel encoder, that measures the actual value, you can make use of the sensor to adjust the velocity.
+If you want to control your base by specifying a desired velocity in terms of distance/time, for example 5 m/s and you have a sensor, for example a wheel encoder, that measures the actual velocity, you can make use of the sensor to adjust the velocity.
 
 One way to adjust velocity based on a sensor's measurements, is using a PID control loop that measures the velocity of movement and determines the difference or error from the desired velocity to compute a correction for the base based on three terms:
 
@@ -10,4 +10,4 @@ By tuning the coefficients on each of these terms, you can adjust how your base 
 
 If you use `[ { "type": "linear_velocity", "p": 0, "i": 0, "d": 0 }, { "type": "angular_velocity", "p": 0, "i": 0, "d": 0 } ]`, `viam-server` auto-tunes the values and logs the tuned values.
 Tuning takes several seconds and spins the motors.
-To avoid tuning every time the robot starts up, copy the values from the log and add them to the configuration once tuned.
+To avoid tuning every time the robot starts up, copy the values from the logs and add them to the configuration once tuned.
