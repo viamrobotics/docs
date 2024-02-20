@@ -57,21 +57,7 @@ Edit and fill in the attributes as applicable.
           "<your-right-motor-name>" // <INSERT ANY ADDITIONAL RIGHT MOTOR NAMES>
         ],
         "wheel_circumference_mm": <int>,
-        "width_mm": <int>,
-        "control_parameters": [
-          {
-            "type": "linear_velocity",
-            "p": <int>,
-            "i": <int>,
-            "d": <int>
-          },
-          {
-            "type": "angular_velocity",
-            "p": <int>,
-            "i": <int>,
-            "d": <int>
-          }
-        ]
+        "width_mm": <int>
       },
       "depends_on": []
     }
@@ -156,7 +142,6 @@ The following attributes are available for `wheeled` bases:
 | `wheel_circumference_mm` | int | **Required** | The outermost circumference of the drive wheels in millimeters. Used for odometry. Can be an approximation. |
 | `width_mm` | int | **Required** | Width of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels. Can be an approximation. |
 | `spin_slip_factor` | float | Optional | Can be used in steering calculations to correct for slippage between the wheels and the floor. If utilized, calibrated by the user. |
-| `control_parameters` | object | Optional | A JSON object containing the coefficients for the proportional, integral, and derivative terms for linear and angular velocity. If you want these values to be auto-tuned, you can set all values to 0: `[ { "type": "linear_velocity", "p": 0, "i": 0, "d": 0 }, { "type": "angular_velocity", "p": 0, "i": 0, "d": 0 } ]`, and `viam-server` will auto-tune and logs the calculated values. Tuning takes several seconds and spins the motors. To avoid tuning every time the robot starts up, copy the values from the log and add them to the configuration once tuned. For more information see [Control base velocity with a sensor](#control-base-velocity-with-a-sensor). |
 
 ## Wire a `wheeled` base
 
@@ -169,7 +154,3 @@ Note that your base's wiring will vary depending on your choice of board, motors
 ## Test the base
 
 {{< readfile "/static/include/components/test-control/base-control.md" >}}
-
-## Control base velocity with a sensor
-
-{{< readfile "/static/include/components/base-sensor.md" >}}
