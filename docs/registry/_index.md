@@ -48,7 +48,6 @@ You can search the available ML models from the Viam registry here:
 <div id="searchstats2"></div></p>
 <div class="mr-model" id="">
   <div class="modellistheader">
-    <div class="type">API</div>
     <div class="name">Model</div>
     <div>Description</div>
   </div>

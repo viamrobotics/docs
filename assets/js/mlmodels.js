@@ -25,38 +25,26 @@ const searchClient2 = typesenseInstantsearchAdapter2.searchClient;
 
 const search2 = instantsearch({
   indexName: "mlmodels",
-  searchClient2,
+  searchClient: searchClient2,
 });
 
-let filters;
-let itemtemplate;
+let filters2;
+let itemtemplate2;
 
-if (mlmodel == "") {
-  filters = {
-    hitsPerPage: 5,
-  };
-  itemtemplate = `
-  <div class="type"><p><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></p></div>
-  <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
-  <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
-  `;
-} else {
-  filters = {
-    facetFilters: ["model: " + mlmodel],
-    hitsPerPage: 5,
-  };
-  itemtemplate = `
-  <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
-  <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
-  `;
-}
+filters2 = {
+  hitsPerPage: 5,
+};
+itemtemplate2 = `
+<div class="name"><p><code>{{#helpers.highlight}}{ "attribute": "model_id" }{{/helpers.highlight}}</code></p></div>
+<div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
+`;
 
 
 search2.addWidgets([
   instantsearch.widgets.hits({
     container: "#hits2",
     templates: {
-      item: itemtemplate,
+      item: itemtemplate2,
     },
   }),
   instantsearch.widgets.searchBox({
@@ -72,21 +60,21 @@ search2.addWidgets([
     container: '#searchstats2',
     templates: {
       text(data, { html }) {
-        let results = '';
+        let results2 = '';
 
         if (data.hasManyResults) {
-          results += `${data.nbHits} results:`;
+          results2 += `${data.nbHits} results:`;
         } else if (data.hasOneResult) {
-          results += `1 result:`;
+          results2 += `1 result:`;
         } else {
-          results += ``;
+          results2 += ``;
         }
 
-        return `<span>${results}</span>`;
+        return `<span>${results2}</span>`;
       },
     },
   }),
-  instantsearch.widgets.configure(filters),
+  instantsearch.widgets.configure(filters2),
   instantsearch.widgets.pagination({
     container: "#pagination2",
     scrollTo: false
