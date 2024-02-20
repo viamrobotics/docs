@@ -547,8 +547,14 @@ The `2gif` commands only turn the first 5 seconds of a video into a low res gif.
 
 {{% alert title="Note" color="note" %}}
 
-We _do_ include <file>.gif</file> file types in front matter of some docs (such as tutorials) when we want to display a GIF as the link preview image on external sites like social media.
-In the front matter we include an MP4, WebM and GIF of the same video because the GIF is compatible with external sites while the lower-bandwidth formats are displayed on our docs site.
+If you use `webmSrc` and `mp4Src` to add a card video for a page (such as to a tutorial), you should also add a <file>.gif</file> version of the video to the front matter.
+Hugo uses the GIF as a link preview image that gets displayed on external sites when someone shares the link, for example on Slack or Twitter.
+
+Why?
+
+- GIFs take more bandwidth than MP4 and WEBM videos, so on our page, we prefer to use MP4 and WEBM.
+- Link previews using `og:image` only support GIFs
+- Automatic conversion between the formats is possible but we also need to make sure that the resulting GIFs are presentable and under 1MB.
 
 {{% /alert %}}
 
