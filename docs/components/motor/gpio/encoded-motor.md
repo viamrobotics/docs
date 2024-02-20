@@ -149,7 +149,7 @@ In addition to the [attributes for a non-encoded motor](/components/motor/gpio/)
 | `encoder` | string | **Required** | `name` of the encoder. |
 | `ticks_per_rotation` | int | **Required** | Number of ticks in a full rotation of the encoder and motor shaft. |
 | `ramp_rate` | float | Optional | Rate to increase the motor's input voltage (power supply) per second when increasing the speed the motor rotates (RPM). <br> Range = (`0.0`, `1.0`] <br> Default: `0.2` |
-| `control_parameters` | object | Optional | A JSON object containing the coefficients for the proportional, integrative, and derivative terms. If you use `{ "p": 0, "i": 0, "d": 0 }`, `viam-server` auto-tunes the values and logs the values. Tuning takes several seconds and spins the motors. To avoid tuning every time the robot starts up, copy the values from the log and add them to the configuration once tuned. For more information see [Control motor velocity with a sensor](#control-motor-velocity-with-a-sensor). |
+| `control_parameters` | object | Optional | A JSON object containing the coefficients for the proportional, integral, and derivative terms. If you want these values to be auto-tuned, you can set all values to 0: `{ "p": 0, "i": 0, "d": 0 }`, and `viam-server` will auto-tune and logs the calculated values. Tuning takes several seconds and spins the motors. To avoid tuning every time the robot starts up, copy the values from the log and add them to the configuration once tuned. For more information see [Control motor velocity with a sensor](#control-motor-velocity-with-a-sensor). |
 
 {{% alert title="Info" color="info" %}}
 
