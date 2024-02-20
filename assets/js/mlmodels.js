@@ -1,8 +1,6 @@
-const { TypesenseInstantSearchAdapter, instantsearch } = window;
-
-const model = document.getElementsByClassName("mr-model")[0].id;
-console.log(model)
-const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
+const mlmodel = document.getElementsByClassName("mr-model")[0].id;
+console.log(mlmodel)
+const typesenseInstantsearchAdapter2 = new TypesenseInstantSearchAdapter({
   server: {
     apiKey: "Qhooem9HCRuFMVZPNQOhABAdEWJaSnlY", // Be sure to use an API key that only allows search operations
     nodes: [
@@ -23,17 +21,17 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
     infix: "always"
   },
 });
-const searchClient = typesenseInstantsearchAdapter.searchClient;
+const searchClient2 = typesenseInstantsearchAdapter2.searchClient;
 
-const search = instantsearch({
+const search2 = instantsearch({
   indexName: "mlmodels",
-  searchClient,
+  searchClient2,
 });
 
 let filters;
 let itemtemplate;
 
-if (model == "") {
+if (mlmodel == "") {
   filters = {
     hitsPerPage: 5,
   };
@@ -44,7 +42,7 @@ if (model == "") {
   `;
 } else {
   filters = {
-    facetFilters: ["model: " + model],
+    facetFilters: ["model: " + mlmodel],
     hitsPerPage: 5,
   };
   itemtemplate = `
@@ -54,15 +52,15 @@ if (model == "") {
 }
 
 
-search.addWidgets([
+search2.addWidgets([
   instantsearch.widgets.hits({
-    container: "#hits",
+    container: "#hits2",
     templates: {
       item: itemtemplate,
     },
   }),
   instantsearch.widgets.searchBox({
-    container: '#searchbox',
+    container: '#searchbox2',
     placeholder: 'Search for a model...',
     poweredBy: false,
     wrapInput: true,
@@ -71,7 +69,7 @@ search.addWidgets([
     showLoadingIndicator: false
   }),
   instantsearch.widgets.stats({
-    container: '#searchstats',
+    container: '#searchstats2',
     templates: {
       text(data, { html }) {
         let results = '';
@@ -90,9 +88,9 @@ search.addWidgets([
   }),
   instantsearch.widgets.configure(filters),
   instantsearch.widgets.pagination({
-    container: "#pagination",
+    container: "#pagination2",
     scrollTo: false
   }),
 ]);
 
-search.start();
+search2.start();
