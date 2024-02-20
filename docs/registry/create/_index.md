@@ -1171,7 +1171,7 @@ To use this module, follow these instructions to [add a module from the Viam Reg
 > [!NOTE]  
 > Before configuring your base, you must [create a robot](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot).
 
-Navigate to the **Config** tab of your robot’s page in [the Viam app](https://app.viam.com/). Click on the **Components** subtab and click **Create component**. Select the `base` type, then select the `agilex-limo` model. Enter a name for your base and click **Create**.
+Navigate to the **Config** tab of your robot’s page in [the Viam app](https://app.viam.com/). Click on the **Components** subtab and click **Create component**. Select the `base` type, then select the `agilex-limo` model. Click **Add module**, then enter a name for your base and click **Create**.
 
 On the new component panel, copy and paste the following attribute template into your base’s **Attributes** box.
 
