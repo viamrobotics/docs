@@ -12,7 +12,7 @@ images: ["/services/icons/data-capture.svg"]
 ---
 
 If you configured [data capture](/data/capture/) on your machine, data is automatically uploaded to the Viam cloud from the directory and at the interval you specified.
-However, if you want to upload a batch of data manually from somewhere else either on your machine or on your personal computer or mobile device, you have several options:
+However, if you want to upload a batch of data manually from somewhere else either on your machine, or from your personal computer or mobile device, you have several options:
 
 - Run a Python script to upload files from a folder using the data client API `file_upload_from_path` method.
 - Run a Golang script calling the data management service `sync` method.
@@ -30,9 +30,33 @@ You can use the Viam Python SDK's data client API [`file_upload_from_path`](/bui
 
 2. Create a Python script file in a directory of your choice and [add code to establish a connection](/build/program/apis/data-client/#establish-a-connection) from your computer to your [Viam app](https://app.viam.com) {{< glossary_tooltip term_id="location" text="location" >}} or individual {{< glossary_tooltip term_id="part" text="machine part" >}}.
 
-3. If you want to upload just one file:
+3. To upload just one file, use the `file_upload_from_path` method according to [the data client API documentation](/build/program/apis/data-client/#fileuploadfrompath).
+   Here is an example using this method:
 
-   If you want to upload all the files in a folder:
+   ```python {class="line-numbers linkable-line-numbers"}
+   await data_client.file_upload_from_path(
+     part_id="abcdefg-1234-abcd-5678-987654321xyzabc",
+     tags=["cat", "animals", "brown"],
+     filepath="/Users/Artoo/my_cat_photos/brown-cat-on-a-couch.jpeg"
+   )
+   ```
+
+   To upload all the files in a directory, you can use the same [`file_upload_from_path`](/build/program/apis/data-client/#fileuploadfrompath) method inside a `for` loop, for example:
+
+   ```python {class="line-numbers linkable-line-numbers"}
+   import os
+
+   my_data_directory = "/Users/Artoo/my_cat_photos"
+
+   for file_name in os.listdir(my_data_directory):
+     await data_client.file_upload_from_path(
+       part_id="abcdefg-1234-abcd-5678-987654321xyzabc",
+       tags=["cat", "animals", "brown"],
+       filepath=os.path.join(my_data_directory, file_name)
+     )
+   ```
+
+4. Save and run your code.
 
 ## Sync data with the `sync` method
 
