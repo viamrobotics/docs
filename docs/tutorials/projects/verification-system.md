@@ -100,11 +100,11 @@ Finally, configure an `mlmodel` detector vision service to use your new `"person
 4. Give the detector the name `people-detect` and click **Create**.
 5. In your vision service's panel, fill in the **Attributes** field:
 
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "mlmodel_name": "persondetect"
-}
-```
+   ```json {class="line-numbers linkable-line-numbers"}
+   {
+     "mlmodel_name": "persondetect"
+   }
+   ```
 
 6. Click **Save config**.
 
