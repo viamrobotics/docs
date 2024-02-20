@@ -386,22 +386,22 @@ To add a local module on your machine, first add its module, then the component 
 1. Enter a **Name** for this instance of your modular resource.
 1. Enter the [module's executable path](/registry/create/#compile-or-package-your-module).
    This path must be the absolute path to the executable on your machine's filesystem.
-2. Then, click the **Add module** button, and press **Command+S** to save your config..
+1. Then, click the **Add module** button, and press **Command+S** to save your config..
 
    {{<imgproc src="registry/configure/add-local-module-csi-cam.png" resize="600x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
 
    This example shows the configuration for adding a [CSI camera](https://github.com/viamrobotics/csi-camera/) as a local module.
 
-3. Navigate to the **Config** tab of your machine's page on [the Viam app](https://app.viam.com).
+1. Navigate to the **Config** tab of your machine's page on [the Viam app](https://app.viam.com).
 
    - If you are adding a modular [component](/components/), click the **Components** subtab and click **Create component**.
    - If you are adding a modular [service](/services/), click the **Services** subtab and click **Create service**.
 
-4. Then, select the `local component` or `local service` type from the list.
+1. Then, select the `local component` or `local service` type from the list.
 
    {{<imgproc src="registry/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local component' shown at the bottom">}}
 
-5. On the next screen:
+1. On the next screen:
 
    - Select the type of modular resource provided by your module, such as a [camera](/components/camera/), from the dropdown menu.
    - Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
@@ -411,7 +411,7 @@ To add a local module on your machine, first add its module, then the component 
 
    {{<imgproc src="registry/configure/add-local-module-create.png" resize="400x" declaredimensions=true alt="The add a component modal showing the create a module step for an intel realsense module">}}
 
-6. Click **Create** to create the modular resource provided by the local module.
+. Click **Create** to create the modular resource provided by the local module.
 
 Once you've added your local module using steps 1-6, you can repeat steps 7-10 to add as many additional instances of your modular resource as you need.
 
@@ -486,7 +486,9 @@ The `attributes` available vary depending on your implementation.
       "type": "<your-resource-subtype>",
       "model": "<namespace>:<repo-name>:<name>",
       "name": "<your-model-instance-name>",
-      "attributes": {},
+      "attributes": {
+        "sensors": ["color", "depth"]
+      },
       "depends_on": []
     }
   ],
