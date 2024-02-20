@@ -69,7 +69,6 @@ Here’s an example configuration:
             "i": <int>,
             "d": <int>
         }
-
       },
       "depends_on": []
     }
