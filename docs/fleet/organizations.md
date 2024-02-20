@@ -59,6 +59,9 @@ You can grant a user access to the following resources:
 
 For more information on the permissions the roles assign for each resource, see [Permissions](/fleet/rbac/#permissions).
 
+#### Use the mobile app
+You can also use the [Viam mobile app](/fleet/#the-viam-mobile-app) to invite users to your organization, on the go. Navigate to Home on the mobile app, and select your organization. Click the gear icon in the upper right corner to access the mobile organization settings page. On the settings page enter an email address, select a role, and tap **Grant Access**.
+
 ### Create a namespace for your organization
 
 When uploading [custom modules](/registry/) to the Viam registry, you must set a namespace for your organization to associate your module with.
