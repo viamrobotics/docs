@@ -82,7 +82,7 @@ In order for your machine's camera to be able to detect the presence of a person
 ### Use an existing ML model
 
 The [ML model service](/ml/) allows you to deploy a machine learning model to your robot.
-For your machine to be able to detect people, you will use a Machine Learning model from the Viam Registry called [`effdet0`](https://app.viam.com/ml-model/bill/effdet0).
+For your machine to be able to detect people, you will use a Machine Learning model from the Viam registry called [`effdet0`](https://app.viam.com/ml-model/bill/effdet0).
 The model can detect a variety of things which you can see in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file including `person`s.
 
 1. Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/Machines).
