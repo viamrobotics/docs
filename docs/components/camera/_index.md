@@ -47,8 +47,6 @@ You can use different models to:
 
 To use your camera with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your camera.
 
-{{< readfile "/static/include/create-your-own-mr.md" >}}
-
 ### Built-in models
 
 For configuration information, click on the model name:
@@ -74,6 +72,8 @@ For configuration information, click on the model name:
 ### Modular resources
 
 {{<modular-resources api="rdk:component:camera" type="camera">}}
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ## Control your camera with Viam's client SDK libraries
 
@@ -201,7 +201,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ### GetImages
 
 {{% alert title="Usage" color="note" %}}
-Intended specifically for use with cameras with both depth and color image streams, like the [Intel RealSense](https://app.viam.com/module/viam/realsense) camera.
+Intended specifically for use with cameras that support simultaneous depth and color image streams, like the [Intel RealSense](https://app.viam.com/module/viam/realsense) or the [Luxonis OAK-D](https://app.viam.com/module/viam/oak-d).
 If your camera does not have multiple imagers, this method will work without capturing multiple images simultaneously.
 {{% /alert %}}
 

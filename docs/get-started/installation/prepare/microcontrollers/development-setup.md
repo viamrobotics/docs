@@ -4,9 +4,8 @@ linkTitle: "Microcontroller Development Setup"
 weight: 50
 no_list: true
 type: docs
-image: "get-started/installation/thumbnails/esp32-espressif.png"
-imageAlt: "E S P 32 - espressif"
 images: ["/get-started/installation/thumbnails/esp32-espressif.png"]
+imageAlt: "E S P 32 - espressif"
 description: "Set up the Espressif ESP32 for development with the micro-RDK."
 # SMEs: Nicolas M., Gautham V., Andrew M.
 aliases:
@@ -17,7 +16,7 @@ aliases:
 
 ## Get started
 
-Follow these steps to install and build the micro-rdk on your ESP32 for development:
+Follow these steps to install and build the micro-RDK on your ESP32 for development:
 
 1. Install the [required software](#software-requirements)
 2. [Set up your development environment](#set-up-your-development-environment) manually or with Viam's Canon CLI utility _(recommended)_

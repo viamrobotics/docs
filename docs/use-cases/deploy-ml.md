@@ -6,9 +6,8 @@ type: "docs"
 tags: ["data management", "data", "services"]
 no_list: true
 description: "Use Viam's machine learning capabilities to train image classification models and deploy these models to your machines."
-image: "/ml/training.png"
-imageAlt: "Machine Learning"
 images: ["/ml/training.png"]
+imageAlt: "Machine Learning"
 ---
 
 You can create and deploy an image classification model onto your machine with Viam's machine learning (ML) capabilities.
@@ -35,22 +34,22 @@ Then, test if your model works for classifying objects in a camera stream or exi
     </th>
   </tr>
   <tr>
-    <td>
+    <th>{{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="max-width: 200px" declaredimensions=true alt="Train models">}}
       <b>4. Deploy your ML model</b>
       <p>To make use of ML models with your machine, use the built-in <a href="/ml/">ML model service</a> to deploy and run the model.</p>
-    </td>
+    </th>
   </tr>
   <tr>
-    <td>{{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Configure a service">}}
+    <th>{{<imgproc src="/ml/configure.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Configure a service">}}
       <b>5. Configure an <code>mlmodel</code> vision service</b>
       <p>For object classification, you can use the <a href="/ml/vision/">vision service</a>, which provides an <a href="/ml/vision/mlmodel/">ml model classifier</a> model.</p>
-</td>
+    </th>
   </tr>
   <tr>
-    <td>{{<imgproc src="ml/deploy.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Deploy your model">}}
+    <th>{{<imgproc src="ml/deploy.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Deploy your model">}}
       <b>6. Test your classifier</b>
       <p>Test your <a href="/ml/vision/mlmodel/#test-your-detector-or-classifier">mlmodel classifier</a> with <a href="/ml/vision/mlmodel/#existing-images-in-the-cloud">existing images in the Viam app</a>, <a href="/ml/vision/mlmodel/#live-camera-footage">live camera footage,</a> or <a href="/ml/vision/mlmodel/#existing-images-on-your-machine">existing images on a computer</a>.</p>
-    </td>
+    </th>
   </tr>
 </table>
 
@@ -62,4 +61,10 @@ After testing your classifier, see the following to further explore Viam's data 
 - [2D Object Detection](/ml/vision/#detections): Configure your machine's camera to draw a bounding box around detected objects, based on a machine learning model.
 - [Update an existing ML model](/ml/train-model/#train-a-new-version-of-a-model): Refine an existing ML model you have trained, and select which model version to deploy.
 
-You can also explore our [tutorials](/tutorials/) for more ideas.
+You can also explore our [tutorials](/tutorials/) for more machine learning ideas:
+
+{{< cards >}}
+{{% card link="/tutorials/projects/pet-treat-dispenser/" customTitle="Smart Pet Feeder" %}}
+{{% card link="/registry/examples/tflite-module/" %}}
+{{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
+{{< /cards >}}

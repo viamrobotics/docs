@@ -38,7 +38,7 @@ Before starting this tutorial, make sure you have the [Viam Python SDK](https://
 
 If you are connecting to a real robotic arm during this tutorial, make sure your computer can communicate with the controller before continuing.
 
-Make sure you have mastery of the concepts outlined in the first Motion tutorial, [Access and Move a Robot Arm](../accessing-and-moving-robot-arm/), before continuing.
+Make sure you have mastery of the concepts outlined in the first motion tutorial, [Access and Move a Robot Arm](../accessing-and-moving-robot-arm/), before continuing.
 This tutorial picks up right where **Access and Move a Robot Arm** stops, so further examples depend on having a connected robot, client and service access, and other infrastructure in place.
 This also helps simplify and shorten the code examples presented below.
 

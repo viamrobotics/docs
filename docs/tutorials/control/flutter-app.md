@@ -9,7 +9,7 @@ videoAlt: "An example Viam-integrated Flutter app."
 tags: ["sdk", "flutter"]
 authors: ["Clint Purser"]
 languages: ["flutter"]
-viamresources: ["base"]
+viamresources: []
 images: ["/tutorials/flutter-app/preview.gif"]
 level: "Intermediate"
 date: "2024-01-17"
@@ -166,11 +166,11 @@ Now you'll update some configurations in the iOS-specific code to support the [V
    # platform :ios, '11.0'
    ```
 
-   Uncomment the line and change it to use version 13.0:
+   Uncomment the line and change it to use version 17.0:
 
    ```dart {class="line-numbers linkable-line-numbers"}
    # Uncomment this line to define a global platform for your project
-   platform :ios, '13.0'
+   platform :ios, '17.0'
    ```
 
 2. Open <file>ios/Runner/Info.plist</file>.
@@ -207,7 +207,7 @@ Now you'll update some configurations in the iOS-specific code to support the [V
    import 'package:flutter_dotenv/flutter_dotenv.dart';
 
    void main() async {
-      await dotenv.load();
+      // await dotenv.load(); // <-- This loads your API key; will un-comment later
       runApp(MyApp());
    }
 
@@ -247,7 +247,7 @@ Now you'll update some configurations in the iOS-specific code to support the [V
 
    ```
 
-   If you chose a name other than `Smart Machine App` for your project, edit lines 13 and 30 with your own app title.
+   If you chose a name other than `Smart Machine App` for your project, edit lines 15 and 32 with your own app title.
 
 ### Launch the app
 
@@ -315,7 +315,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _organization = (await _viam.appClient.listOrganizations()).first;
       _locations = await _viam.appClient.listLocations(_organization);
 
-      // in Flutter setState tells the UI to rebuild the widgets whose state has changed,
+      // in Flutter, setState tells the UI to rebuild the widgets whose state has changed,
       // this is how you change from showing a loading screen to a list of values
       setState(() {
         _loading = false;
@@ -402,6 +402,42 @@ Follow the steps below to get your API key and create an environment variables f
 6. Use the copy buttons next to the API key ID and API key to copy each of them and paste them into your <file>.env</file> file.
 
 {{< readfile "/static/include/snippet/secret-share.md" >}}
+
+7. In your <file>lib/main.dart</file>, find line 5:
+
+   ```dart
+     void main() async {
+         // await dotenv.load(); // <-- This loads your API key; will un-comment later
+         runApp(MyApp());
+     }
+   ```
+
+   Now that you have a <file>.env</file> file to load, un-comment that line so it loads the file.
+   Your `main()` function should look like this:
+
+   ```dart
+     void main() async {
+         await dotenv.load(); // <-- This loads your API key
+         runApp(MyApp());
+     }
+   ```
+
+8. Reopen your <file>pubspec.yaml</file> file and paste the following two lines at the end of it, inside the `flutter:` section.
+   Listing the <file>.env</file> among your app's assets lets the app access the file.
+
+   ```yaml
+   assets:
+     - .env
+   ```
+
+   The last few lines of your <file>pubspec.yaml</file> file should now look like this:
+
+   ```yaml
+   flutter:
+     uses-material-design: true
+     assets:
+       - .env
+   ```
 
 ### Connect the login button to the home screen
 
@@ -626,8 +662,8 @@ Connect the home screen to the locations screen by un-commenting the following t
 ```dart {class="line-numbers linkable-line-numbers" data-line="3-4"}
  /// This method will navigate to a specific [Location]. <-- Leave this commented!
  void _navigateToLocation(Location location) {
-    Navigator.of(context)                              <-- Un-comment this
-        .push(MaterialPageRoute(builder: (_) => LocationScreen(_viam, location))); <-- And un-comment this
+    Navigator.of(context)                             // <-- Un-comment this
+        .push(MaterialPageRoute(builder: (_) => LocationScreen(_viam, location))); // <-- And un-comment this
  }
 ```
 
@@ -673,7 +709,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _organization = (await _viam.appClient.listOrganizations()).first;
       _locations = await _viam.appClient.listLocations(_organization);
 
-      // in Flutter setState tells the UI to rebuild the widgets whos state has changed,
+      // In Flutter, setState tells the UI to rebuild the widgets whose state has changed,
       // this is how you change from showing a loading screen to a list of values
       setState(() {
         _loading = false;
@@ -716,7 +752,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 Try running your app.
 Now, when you tap a location, you'll see a list of the smart machines in that location.
-When you tap one of them, you'll see a list of that machine's {{< glossary_tooltip term_id="resource" text="resources" >}}:
+When you tap one of them (if it is currently live), you'll see a list of that machine's {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
 {{<gif webm_src="/tutorials/flutter-app/demo.webm" mp4_src="/tutorials/flutter-app/demo.mp4" alt="Rendering of the mobile app. Log in is clicked, then all Clint's locations are shown, Clint's Desk it clicked, all its smart machines are listed, and then desk-robot is clicked, showing a list of components and services belonging to that smart machine." max-width="300px" class="aligncenter">}}
 

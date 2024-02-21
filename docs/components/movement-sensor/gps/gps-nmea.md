@@ -11,7 +11,7 @@ aliases:
 ---
 
 A global positioning system (GPS) receives signals from satellites in the earth’s orbit to determine where it is and how fast it is going.
-All supported GPS models provide data for the `Position`, `CompassHeading` and `LinearVelocity` methods.
+All supported GPS models provide data for the `Position`, `CompassHeading`, `LinearVelocity`, and `GetAccuracy` methods.
 You can obtain fix and correction data by using the sensor `GetReadings` method, which is available because GPSes wrap the [sensor component](/components/sensor/).
 
 The `gps-nmea` movement sensor model supports [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS units.
@@ -46,8 +46,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
     "i2c_bus": "<index-of-bus-on-board>",
     "i2c_addr": <int>,
     "i2c_baud_rate": <int>
-  },
-  "disable_nmea": <boolean>
+  }
 }
 ```
 
@@ -102,8 +101,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
             "i2c_bus": "<index-of-bus-on-board>",
             "i2c_addr": <int>,
             "i2c_baud_rate": <int>
-        },
-        "disable_nmea": <boolean>
+        }
       },
       "depends_on": [],
     }
@@ -172,7 +170,6 @@ The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB
 | Name              | Type    | Inclusion    | Description  |
 | ----------------- | ------- | ------------ | ---------------- |
 | `connection_type` | string  | **Required** | `"I2C"` or `"serial"`. See [Connection Attributes](#connection-attributes) below. |
-| `disable_nmea`    | boolean | Optional     | If set to `true`, changes the NMEA message protocol to RTCM when using a chip as a base station. <br> Default: `false` |
 
 ### Connection attributes
 

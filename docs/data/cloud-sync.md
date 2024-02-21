@@ -5,6 +5,9 @@ description: "Configure cloud sync to automatically capture data in the Viam app
 weight: 35
 type: "docs"
 tags: ["data management", "cloud", "sync"]
+icon: "/services/icons/data-cloud-sync.svg"
+imageAlt: "Sync captured data to the cloud"
+images: ["/services/icons/data-cloud-sync.svg"]
 aliases:
   - "/services/data/cloud-sync/"
 # SME: Alexa Greenberg
@@ -62,6 +65,11 @@ If `capture_dir` is unspecified, `viam-server` will use the default directory at
 
 {{% /expand%}}
 
+### Trigger sync conditionally
+
+If you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
+To set up triggers for syncing see [Trigger Sync](/data/trigger-sync/).
+
 ### Pause sync
 
 You can pause Cloud Sync at any time by navigating to the **Services** tab on your machine's **Config** tab and disabling **Syncing** for your [data management service](../).
@@ -78,7 +86,7 @@ Once you save the configuration, the data management service begins syncing the 
 To avoid syncing files that are still being written to, the data management service only syncs files that haven't been modified in the previous 10 seconds.
 
 {{< alert title="Caution" color="caution" >}}
-If a machine does not write to a file for 10 seconds, the data management service syncs the file and deletes it.
+If a machine does not write to a file for 10 seconds, the data management service syncs the file and deletes it from the machine.
 {{< /alert >}}
 
 {{< alert title="Info" color="tip" >}}
@@ -86,7 +94,7 @@ Currently, if the internet becomes unavailable and the sync is interrupted mid-f
 This is only applicable for files in a directory added as an additional sync path.
 {{< /alert >}}
 
-In the example pictured here, the data management service syncs the configured component data from `/tmp/capture` as well as all files in `/logs` every 5 minutes.
+In the example pictured here, the data management service syncs the configured component data from `/.viam/capture` as well as all files in `/logs` every 5 minutes.
 
 ![service config example](/data/data-service-config.png)
 
@@ -112,7 +120,7 @@ In the example pictured here, the data management service syncs the configured c
 
 {{% /expand%}}
 
-### Considerations
+## Considerations
 
 - **Security**: The data management service uses {{< glossary_tooltip term_id="grpc" text="gRPC" >}} calls to send and receive data, so your data is encrypted while in flight.
   When data is stored in the cloud, it is encrypted at rest by the cloud storage provider.

@@ -245,35 +245,27 @@ Then test the components on the [machine's Control tab](/fleet/machines/#control
 
 ## Detect persons and pets
 
-For the guardian to be able to detect living beings, you can use [this Machine Learning model](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite).
-The model can detect a variety of things which you can see in the associated <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
+For the guardian to be able to detect living beings, you will use a Machine Learning model from the Viam Registry called [`effdet0`](https://app.viam.com/ml-model/bill/effdet0).
+The model can detect a variety of things which you can see in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
 You can also [train your own custom model](/ml/train-model/) based on images from your robot but the provided Machine Learning model is a good one to start with.
-
-To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your Raspberry Pi:
-
-```sh {class="command-line" data-prompt="$"}
-scp effdet0.tflite pi@guardian.local:/home/pi/effdet0.tflite
-scp labels.txt pi@guardian.local:/home/pi/labels.txt
-```
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Next, navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **Services** subtab.
 
 1. **Add an ML model service.**
 
-The [ML model service](/ml/) allows you to deploy the provided machine learning model to your robot.
+The [ML model service](/ml/) allows you to deploy a machine learning model to your robot.
 
 Click **Create service** in the lower-left corner of the page.
 Select type `ML Model`, then select model `TFLite CPU`.
 Enter `mlmodel` as the name for your ML model service, then click **Create**.
 
-In the new ML Model panel, select **Path to existing model on robot** for the **Deployment**.
-
-Then specify the absolute **Model path** as `/home/pi/effdet0.tflite` and the **Label path** as `/home/pi/labels.txt`.
+Select the **Deploy model on robot** for the **Deployment** field.
+Then select the `bill:effdet0` model from the **Models** dropdown.
 
 2. **Add a vision service.**
 
@@ -320,9 +312,9 @@ Click **Save config** in the bottom left corner of the screen.
 
 {{% tab name="Raw JSON" %}}
 
-Next, on the [**Raw JSON** tab](/build/configure/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/ml/), the [vision service](/ml/vision/), and a [transform camera](/components/camera/transform/):
+On the [**Raw JSON** tab](/build/configure/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/ml/), the [vision service](/ml/vision/), and a [transform camera](/components/camera/transform/):
 
-```json {class="line-numbers linkable-line-numbers" data-line="31-48,50-69"}
+```json {class="line-numbers linkable-line-numbers" data-line="32-80"}
 {
   "components": [
     {
@@ -380,8 +372,8 @@ Next, on the [**Raw JSON** tab](/build/configure/#the-config-tab), replace the c
       "type": "mlmodel",
       "model": "tflite_cpu",
       "attributes": {
-        "model_path": "/home/pi/effdet0.tflite",
-        "label_path": "/home/pi/labels.txt",
+        "model_path": "${packages.effdet0}/efficientdet0.tflite",
+        "label_path": "${packages.effdet0}/effdetlabels.txt",
         "num_threads": 1
       }
     },
@@ -392,6 +384,14 @@ Next, on the [**Raw JSON** tab](/build/configure/#the-config-tab), replace the c
       "attributes": {
         "mlmodel_name": "mlmodel"
       }
+    }
+  ],
+  "packages": [
+    {
+      "name": "effdet0",
+      "type": "ml_model",
+      "version": "latest",
+      "package": "bill/effdet0"
     }
   ]
 }
@@ -682,7 +682,7 @@ If everything works, your guardian should now start to idle and when it detects 
 
 One more thing.
 Right now, you have to run the code manually every time you want your Guardian to work.
-You can also configure Viam to automatically run your code as a [process](/build/configure/#processes).
+You can also configure Viam to automatically run your code as a [process](/build/configure/processes/).
 
 To be able to run the Python script from your Raspberry Pi, you need to install the Python SDK on your Raspberry Pi and copy your code onto the Raspberry Pi.
 

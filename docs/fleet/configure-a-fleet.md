@@ -7,14 +7,31 @@ description: Use fragments to configure many machines at the same time.
 tags: ["fleet management", "cloud", "app"]
 ---
 
-If you have multiple identical or similar machines, use a _fragment_ to configure all of the machines at the same time.
-
+If you have multiple machines with similar configurations, you can use a _fragment_ to configure all of the machines at the same time.
 Fragments are a way of sharing and managing [machine configurations](/build/configure/) across multiple machines.
-When you or one of your collaborators changes the fragment, the Viam app automatically applies the changes to all machines that include the fragment in their config.
 
 If there are differences between your machines, you can use a fragment to quickly configure the {{< glossary_tooltip term_id="resource" text="resources" >}} that are the same between machines.
 You can then configure the differing resources separately, outside of the fragment.
-For example, if you have multiple identical rovers but one has an arm attached, you can add the rover configuration fragment (including the motors and base components), and then configure the arm on just that one rover.
+For example, if you have multiple similar rovers but one has an arm attached, you can add the rover configuration fragment (including the motors and base components), and then configure the arm on just that one rover.
+
+When you or one of your collaborators edit a fragment that you've already deployed to one or more machines, the Viam app updates the configuration on each deployed machine that uses that fragment.
+
+{{< alert title="Alert" color="alert" >}}
+Be cautious when making changes to fragments that have been deployed to production machines.
+We recommend that you create a duplicate fragment, make your desired change to that second fragment, and then deploy that fragment to a test machine that is configured identically to your production machines.
+
+Once you are confident that your configuration change works as expected, you can safely make the same change to the fragment in use on your production fleet, and the Viam app will deploy that change to all machines using that fragment.
+{{< /alert >}}
+
+If you attempt to delete a fragment that is currently deployed to a machine, you will receive an error message advising that the fragment is in use, but you can still delete the fragment if desired.
+You can see the number of machines using your fragment from the [fragments page](https://app.viam.com/fragments) in the Viam app.
+
+Fragments are private to each organization by default (except for the `viam-dev` organization).
+If you would like to make your fragment available to users outside your organization, please reach out to us to request that we make your fragment public.
+You must be an [organization owner](/fleet/rbac/#permissions) in order to create fragments.
+
+A fragment can define one, several, or all resources on a machine.
+You can add multiple fragments to a single machine, or can add additional resources to a machine that has already been configured with a fragment.
 
 ## Create a fragment
 
@@ -70,3 +87,9 @@ If you need to modify the config of just one machine that uses a fragment you ca
 5. Paste the raw fragment contents into the **Raw JSON** config field.
 6. Click **Save config**.
 7. Now, you can edit the config either in **Raw JSON** mode or in **Builder** mode.
+
+## Next steps
+
+Viam provides several [pre-made fragments](https://app.viam.com/fragments) which you can use as templates for writing your own fragments.
+
+For an example of a fragment that configures multiple components and services, see the [Viam Rover fragment](https://app.viam.com/fragment?id=3e8e0e1c-f515-4eac-8307-b6c9de7cfb84).

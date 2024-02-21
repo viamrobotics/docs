@@ -3,7 +3,6 @@ title: "Visualize Data With Grafana"
 linkTitle: "Visualize Data With Grafana"
 type: "docs"
 description: "Collect data from your machine or fleet and visualize it in Grafana."
-image: "/tutorials/visualize-data-grafana/grafana-dashboard-preview.png"
 imageAlt: "Grafana visualization showing collected temperature readings from a fleet of machines."
 images: ["/tutorials/visualize-data-grafana/grafana-dashboard-preview.png"]
 tags: ["data management", "data", "services", "visualize"]

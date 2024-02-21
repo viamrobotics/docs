@@ -6,7 +6,7 @@ weight: 10
 type: "docs"
 description: "A NAME is a ... description of what the component is."
 tags: ["camera", "components"]
-image: "/icons/components.png"
+icon: "/icons/components.png"
 # icon: "path/to/svg/file"
 images: ["/icons/components.png"]
 draft: true
@@ -42,8 +42,6 @@ Add services commonly used with the component.
 
 To use your COMPONENT with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your COMPONENT.
 
-{{< readfile "/static/include/create-your-own-mr.md" >}}
-
 ### Built-in models
 
 For configuration information, click on the model name:
@@ -57,6 +55,8 @@ For configuration information, click on the model name:
 ### Modular resources
 
 {{<modular-resources api="rdk:component:component" type="component">}}
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ## Control your board with Viam's client SDK libraries
 

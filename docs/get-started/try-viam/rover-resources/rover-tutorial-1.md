@@ -4,9 +4,8 @@ linkTitle: "Unbox and Set Up your Viam Rover 1"
 weight: 15
 type: "docs"
 tags: ["rover", "tutorial"]
-image: "/get-started/try-viam/rover-resources/viam-rover/box-contents.jpg"
-imageAlt: "A Viam Rover 1 in a box"
 images: ["/get-started/try-viam/rover-resources/viam-rover/box-contents.jpg"]
+imageAlt: "A Viam Rover 1 in a box"
 description: "A list of the contents of the Viam Rover 1 kit, instructions for wiring your rover, and links for additional hardware."
 aliases:
   - "/rover-resources/rover-tutorial/"

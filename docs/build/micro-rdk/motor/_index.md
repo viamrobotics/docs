@@ -24,6 +24,8 @@ For configuration information, click on the supported motor model name:
 | ----- | ----------- |
 | [`gpio`](./gpio/) | [Standard brushed or brushless DC motor](https://en.wikipedia.org/wiki/DC_motor) |
 
+{{% readfile "/static/include/micro-create-your-own.md" %}}
+
 ## API
 
 The micro-RDK [motor API](/components/motor/#api) supports only the following client SDK API methods, which operate the same as in the full-featured RDK:

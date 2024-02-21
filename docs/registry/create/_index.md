@@ -14,6 +14,9 @@ tags:
     "registry",
   ]
 description: "Create a module to provide a new modular resource to your machine."
+icon: "/registry/create-module.svg"
+imageAlt: "Find a module for your machine"
+images: ["/registry/create-module.svg"]
 aliases:
   - "/extend/modular-resources/create/"
   - "/modular-resources/create/"
@@ -31,6 +34,12 @@ Or you can write your own module to address your specific use case, and either u
 
 Follow the instructions below to learn how to write a new module using your preferred language and its corresponding [Viam SDK](/sdks/).
 
+{{< alert title="Note: Micro-RDK modules" color="note" >}}
+The [micro-RDK](/build/micro-rdk/) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
+Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) for information on how to create custom resources for your micro-RDK machine.
+You will need to [recompile and flash your ESP32 yourself](/get-started/installation/prepare/microcontrollers/development-setup/) instead of using Viam's prebuilt binary and installer.
+{{< /alert >}}
+
 ## Overview of a module
 
 Generally, to write a module, you:
@@ -45,7 +54,11 @@ Most modules extend an existing [component API](/build/program/apis/#component-a
 For example, you could extend the [camera component API](/components/camera/#api) to support new image formats or a new type of camera, or extend the [ML model service API](/build/program/apis/#ml-model) to support a new machine learning (ML) model type beyond `tflite`.
 
 {{% alert title=Note color="note" %}}
-If you want to write a module to extend support to a new type of component that is relatively unique, and doesn't readily correspond to an existing [built-in component API](/build/program/apis/#component-apis), consider using the [generic API](/components/generic/) with your module instead of extending an existing API.
+If you want to write a module to extend support to a new type of component or service that is relatively unique, consider using the generic API for your resource type to build your own API:
+
+- If you are working with a component that doesn't fit into any of the existing [component APIs](/build/program/apis/#component-apis), you can use the [generic component](/components/generic/) to build your own component API.
+- If you are designing a service that doesn't fit into any of the existing [service APIs](/build/program/apis/#service-apis), you can use the [generic service](/registry/advanced/generic/) to build your own service API.
+
 Most module use cases, however, benefit from extending an existing API, as covered below.
 {{% /alert %}}
 
@@ -66,6 +79,10 @@ Determine the model name you want to use based on these requirements, then proce
 If you do not intend to [upload your module](/registry/upload/) to the [Viam registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
 
 See [Naming your model](/registry/#naming-your-model-namespacerepo-namename) for more information.
+
+### (Optional) Generate your Python module scaffolding
+
+If you are writing in Python, you can use this [Viam module generator](https://github.com/viam-labs/generator-viam-module/tree/main) to generate the scaffolding for a module with one resource model.
 
 ### Write your new resource model definition
 
@@ -293,7 +310,10 @@ For more information on the base component API methods used in this example, see
 - [Python SDK documentation for the `Base` class](https://python.viam.dev/autoapi/viam/components/base/index.html)
 - [Base API methods](https://docs.viam.com/components/base/#api)
 
-You can find additional Python example modules in the [Python SDK `examples` directory](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples).
+For more Python module examples:
+
+- See the [Python SDK `examples` directory](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples) for sample module code of varying complexity.
+- See the [Additional example modules](#additional-example-modules) section below for a selection of published Python modules from the Viam registry.
 
 {{% /tab %}}
 {{% tab name="Go"%}}
@@ -535,7 +555,10 @@ For more information on the base component API methods used in this example, see
 - [Go SDK documentation for the `base` package](https://pkg.go.dev/go.viam.com/rdk/components/base#pkg-functions)
 - [Base API methods](https://docs.viam.com/components/base/#api)
 
-You can find additional Go example modules in the [Go SDK `examples` directory](https://github.com/viamrobotics/rdk/blob/main/examples/).
+For more Go module examples:
+
+- See the [Go SDK `examples` directory](https://github.com/viamrobotics/rdk/blob/main/examples/) for sample module code of varying complexity.
+- See the [Additional example modules](#additional-example-modules) section below for a selection of published Go modules from the Viam registry.
 
 {{% /tab %}}
 {{% tab name="C++" %}}
@@ -775,7 +798,10 @@ For more information on the base component API methods used in these examples, s
 - [C++ SDK documentation for the `Base` class](https://cpp.viam.dev/classviam_1_1sdk_1_1Base.html)
 - [Base API methods](https://docs.viam.com/components/base/#api)
 
-You can find additional C++ example modules in the [C++ SDK `examples` directory](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/modules/).
+For more C++ module examples:
+
+- See the [C++ SDK `examples` directory](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/modules/) for sample module code of varying complexity.
+- See the [Additional example modules](#additional-example-modules) section below for a selection of published C++ modules from the Viam registry.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1047,6 +1073,90 @@ We recommend that you use a C++ logging library to assist with log message forma
 {{% /tab %}}
 {{< /tabs >}}
 
+## (Optional) create a README
+
+To provide usage instructions for any modular resources in your module, you should create a <file>README.md</file> file following this template:
+
+{{% expand "Click to view template" %}}
+
+Strings of the form `<INSERT X>` indicate variables that you should replace with the appropriate values.
+If you follow [the instructions to generate module scaffolding for a Python module](#optional-generate-your-python-module-scaffolding), the template file is generated for you with the environment variables filled in.
+
+````md
+# <INSERT NAME> modular resource
+
+This module implements the [<INSERT API NAMESPACE> <INSERT API NAME> API](https://github.com/<INSERT API NAMESPACE>/<INSERT API NAME>-api) in a <INSERT MODEL> model.
+With this model, you can...
+
+## Requirements
+
+_Add instructions here for any requirements._
+
+```bash
+
+```
+
+## Build and run
+
+To use this module, follow these instructions to [add a module from the Viam Registry](https://docs.viam.com/registry/configure/#add-a-modular-resource-from-the-viam-registry) and select the `<INSERT API NAMESPACE>:<INSERT API NAME>:<INSERT MODEL>` model from the [`<INSERT MODEL>` module](https://app.viam.com/module/<INSERT API NAMESPACE>/<INSERT MODEL>).
+
+## Configure your <INSERT API NAME>
+
+> [!NOTE]  
+> Before configuring your <INSERT API NAME>, you must [create a machine](https://docs.viam.com/manage/fleet/machines/#add-a-new-machine).
+
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com/).
+Click on the **Components** subtab and click **Create component**.
+Select the `<INSERT API NAME>` type, then select the `<INSERT MODEL>` model.
+Enter a name for your <INSERT API NAME> and click **Create**.
+
+On the new component panel, copy and paste the following attribute template into your <INSERT API NAME>’s **Attributes** box:
+
+```json
+{
+  TODO: INSERT SAMPLE ATTRIBUTES
+}
+```
+
+> [!NOTE]  
+> For more information, see [Configure a Machine](https://docs.viam.com/manage/configuration/).
+
+### Attributes
+
+The following attributes are available for `<INSERT API NAMESPACE>:<INSERT API NAME>:<INSERT MODEL>` <INSERT API NAME>s:
+
+| Name    | Type   | Inclusion    | Description |
+| ------- | ------ | ------------ | ----------- |
+| `todo1` | string | **Required** | TODO        |
+| `todo2` | string | Optional     | TODO        |
+
+### Example configuration
+
+```json
+{
+  TODO: INSERT SAMPLE CONFIGURATION(S)
+}
+```
+
+### Next steps
+
+_Add any additional information you want readers to know and direct them towards what to do next with this module._
+_For example:_
+
+- To test your...
+- To write code against your...
+
+## Troubleshooting
+
+_Add troubleshooting notes here._
+
+```
+
+```
+````
+
+{{% /expand %}}
+
 ## Compile or package your module
 
 The final step to creating a new module is to create an executable file that `viam-server` can use to run your module on demand.
@@ -1294,6 +1404,12 @@ Then, once you are satisfied with the state of your module, you can upload your 
 - deploy your module to a fleet of machines from a central interface
 
 See [Using the Viam registry](/registry/) for a high-level overview of the modular resource ecosystem at Viam.
+
+{{% alert title="Tip" color="tip" %}}
+
+If you would like to test your module locally against its intended target platform before uploading it, you can follow the steps for [Iterative module development](/registry/advanced/iterative-development/) to verify that any code changes you have made work as expected on your target platform.
+
+{{% /alert %}}
 
 ## Additional example modules
 

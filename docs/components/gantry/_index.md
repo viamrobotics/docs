@@ -48,8 +48,6 @@ Most machines with a gantry need at least the following hardware:
 
 To use your gantry with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your gantry.
 
-{{< readfile "/static/include/create-your-own-mr.md" >}}
-
 ### Built-in models
 
 For configuration information, click on the model name:
@@ -64,6 +62,8 @@ For configuration information, click on the model name:
 ### Modular resources
 
 {{<modular-resources api="rdk:component:gantry" type="gantry">}}
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ## Control your gantry with Viam's client SDK libraries
 
