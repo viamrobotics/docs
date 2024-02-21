@@ -5,7 +5,7 @@ weight: 10
 type: "docs"
 description: "Configure a fake gripper."
 tags: ["gripper", "components"]
-icon: "/icons/components/gripper.svg"
+icon: true
 images: ["/icons/components/gripper.svg"]
 aliases:
   - "/components/gripper/fake/"

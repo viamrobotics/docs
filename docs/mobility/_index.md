@@ -4,7 +4,8 @@ linkTitle: "Mobility"
 weight: 460
 type: "docs"
 description: "Plan and control your robot's motion with Viam's integrated tools."
-icon: "/platform/mobility.svg"
+icon: true
+images: ["/platform/mobility.svg"]
 menuindent: true
 no_list: true
 ---

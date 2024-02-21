@@ -4,6 +4,7 @@ linkTitle: "TypeScript"
 weight: 30
 type: "docs"
 layout: "empty"
-icon: "/logos/typescript.svg"
+icon: true
+images: ["/logos/typescript.svg"]
 canonical: "https://ts.viam.dev/"
 ---

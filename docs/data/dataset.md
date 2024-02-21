@@ -5,7 +5,6 @@ description: "Label data and create datasets for managing data and creating mach
 weight: 39
 type: "docs"
 tags: ["data management", "cloud", "sync"]
-icon: "/services/icons/data-query.svg"
 imageAlt: "Label data and create datasets"
 images: ["/data/label-dog.gif"]
 webmSrc: "/data/label-dog.webm"

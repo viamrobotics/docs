@@ -9,7 +9,7 @@
     <div class="relatedcard">
       <a href="{{ with $alt_link }}{{ $alt_link }}{{ else }}{{ $linkWithSlash }}{{ end }}" target="_blank" title="{{ with $alt_title }}{{ $alt_title }}{{ else }}{{ .LinkTitle }}{{ end }}">
           {{ if .Params.icon }}
-            {{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "10x10" "alt" (.Params.linkTitle) "declaredimensions" "true" "style" "") }}
+            {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "10x10" "alt" (.Params.linkTitle) "declaredimensions" "true" "style" "") }}
           {{ end }}
           <p>
             {{ if eq $required "yes" }}

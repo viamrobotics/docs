@@ -6,7 +6,8 @@ type: "docs"
 tags: ["data management", "ml", "model training", "registry"]
 description: "Edit a machine learning model previously published to the registry."
 modulescript: true
-icon: "/services/icons/ml.svg"
+icon: true
+images: ["/services/icons/ml.svg"]
 # SME: Steven B.
 ---
 

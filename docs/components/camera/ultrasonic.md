@@ -5,7 +5,7 @@ weight: 60
 type: "docs"
 description: "Configure an ultrasonic model camera."
 tags: ["camera", "components", "ultrasonic"]
-icon: "/icons/components/camera.svg"
+icon: true
 images: ["/icons/components/camera.svg"]
 aliases:
   - "/components/camera/ultrasonic/"

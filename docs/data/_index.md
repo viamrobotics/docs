@@ -13,7 +13,8 @@ aliases:
   - "/data-management/"
   - "/data-management/"
   - "/services/data/"
-icon: "/services/icons/data-management.svg"
+icon: true
+images: ["/services/icons/data-management.svg"]
 imageAlt: "The data management service."
 menuindent: true
 # SME: Alexa Greenberg

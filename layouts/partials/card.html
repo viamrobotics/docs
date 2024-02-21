@@ -40,7 +40,7 @@
         </div>
       {{ else if .Params.icon }}
         <div class="hover-card-icon">
-          {{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
+          {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
         </div>
       {{ end }}
     {{ end }}

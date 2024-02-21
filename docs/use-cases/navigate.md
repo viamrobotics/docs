@@ -6,7 +6,7 @@ type: "docs"
 tags: ["navigation", "motion", "services", "base", "base remote control"]
 no_list: true
 description: "Use Viam to teleoperate and navigate rover bases."
-icon: "/services/icons/navigation.svg"
+icon: true
 images: ["/services/icons/navigation.svg"]
 imageAlt: "Navigation"
 ---

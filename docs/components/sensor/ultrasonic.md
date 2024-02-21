@@ -5,7 +5,7 @@ weight: 60
 type: "docs"
 description: "Configure an ultrasonic model sensor."
 tags: ["sensor", "components", "ultrasonic"]
-icon: "/icons/components/sensor.svg"
+icon: true
 images: ["/icons/components/sensor.svg"]
 aliases:
   - "/components/sensor/ultrasonic/"

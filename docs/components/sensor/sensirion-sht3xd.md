@@ -5,7 +5,7 @@ weight: 70
 type: "docs"
 description: "Configure a sensirion-sht3xd model sensor."
 tags: ["sensor", "components"]
-icon: "/icons/components/sensor.svg"
+icon: true
 images: ["/icons/components/sensor.svg"]
 aliases:
   - "/components/sensor/sensirion-sht3xd/"

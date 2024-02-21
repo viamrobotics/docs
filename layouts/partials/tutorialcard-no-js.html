@@ -23,7 +23,7 @@
           </div>
           {{ else if .Params.icon }}
           <div class="hover-card-icon">
-            {{ partial "imgproc.html" (dict "src" .Params.icon "resize" "300x" "alt" .Params.linkTitle "style" "" "class" (.class) "declaredimensions" false ) }}
+            {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "300x" "alt" .Params.linkTitle "style" "" "class" (.class) "declaredimensions" false ) }}
           </div>
           {{ end }}
           <div {{ if (index .Params.images 0) }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>

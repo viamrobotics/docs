@@ -4,6 +4,7 @@ linkTitle: "Go"
 weight: 20
 type: "docs"
 layout: "empty"
-icon: "/logos/golang.svg"
+icon: true
+images: ["/logos/golang.svg"]
 canonical: "https://pkg.go.dev/go.viam.com/rdk"
 ---

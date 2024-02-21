@@ -4,7 +4,7 @@ linkTitle: "Local Configuration File"
 weight: 2
 no_list: true
 type: docs
-icon: "/get-started/installation/thumbnails/manage.png"
+icon: true
 images: ["/get-started/installation/thumbnails/manage.png"]
 description: "Building a local machine configuration file for use with viam-server."
 ---

@@ -7,7 +7,7 @@ type: "docs"
 description: "A camera captures 2D or 3D images and sends them to the computer controlling the machine."
 no_list: true
 tags: ["camera", "components"]
-icon: "/icons/components/camera.svg"
+icon: true
 images: ["/icons/components/camera.svg"]
 modulescript: true
 aliases:

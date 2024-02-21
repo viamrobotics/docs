@@ -14,7 +14,7 @@ tags:
     "registry",
   ]
 description: "Create a module to provide a new modular resource to your machine."
-icon: "/registry/create-module.svg"
+icon: true
 imageAlt: "Find a module for your machine"
 images: ["/registry/create-module.svg"]
 aliases:
@@ -1105,7 +1105,7 @@ To use this module, follow the instructions to [add a module from the Viam Regis
 
 ## Configure your <INSERT API NAME>
 
-> [!NOTE]  
+> [!NOTE]
 > Before configuring your <INSERT API NAME>, you must [create a machine](https://docs.viam.com/manage/fleet/machines/#add-a-new-machine).
 
 Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com/).
@@ -1121,7 +1121,7 @@ On the new component panel, copy and paste the following attribute template into
 }
 ```
 
-> [!NOTE]  
+> [!NOTE]
 > For more information, see [Configure a Machine](https://docs.viam.com/manage/configuration/).
 
 ### Attributes
@@ -1168,7 +1168,7 @@ To use this module, follow these instructions to [add a module from the Viam Reg
 
 ## Configure your AgileX LIMO base
 
-> [!NOTE]  
+> [!NOTE]
 > Before configuring your base, you must [create a machine](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot).
 
 Navigate to the **Config** tab of your machine’s page in [the Viam app](https://app.viam.com/). Click on the **Components** subtab and click **Create component**. Select the `base` type, then select the `agilex-limo` model. Click **Add module**, then enter a name for your base and click **Create**.
@@ -1182,7 +1182,7 @@ On the new component panel, copy and paste the following attribute template into
 }
 ```
 
-> [!NOTE]  
+> [!NOTE]
 > For more information, see [Configure a Machine](https://docs.viam.com/manage/configuration/).
 
 ### Attributes

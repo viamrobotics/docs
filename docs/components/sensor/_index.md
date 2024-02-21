@@ -7,7 +7,7 @@ no_list: true
 type: "docs"
 description: "A device that sends information about the outside world to the computer controlling a machine."
 tags: ["sensor", "components"]
-icon: "/icons/components/sensor.svg"
+icon: true
 images: ["/icons/components/sensor.svg"]
 modulescript: true
 aliases:

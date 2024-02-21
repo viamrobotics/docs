@@ -5,7 +5,7 @@ weight: 10
 type: "docs"
 description: "Configure a fake gantry."
 tags: ["gantry", "components"]
-icon: "/icons/components/gantry.svg"
+icon: true
 images: ["/icons/components/gantry.svg"]
 aliases:
   - "/components/gantry/fake/"
