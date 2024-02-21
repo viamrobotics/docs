@@ -25,7 +25,7 @@ You can use the Viam Python SDK's data client API [`file_upload_from_path`](/bui
 1. Install the [Viam Python SDK](https://python.viam.dev/) by running the following command on the computer from which you want to upload data:
 
    ```sh {class="command-line" data-prompt="$"}
-   pip-install viam-sdk
+   pip install viam-sdk
    ```
 
 2. Create a Python script file in a directory of your choice and [add code to establish a connection](/build/program/apis/data-client/#establish-a-connection) from your computer to your [Viam app](https://app.viam.com) {{< glossary_tooltip term_id="location" text="location" >}} or individual {{< glossary_tooltip term_id="part" text="machine part" >}}.
