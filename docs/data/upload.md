@@ -35,9 +35,12 @@ You can use the Viam Python SDK's data client API [`file_upload_from_path`](/bui
 
    ```python {class="line-numbers linkable-line-numbers"}
    await data_client.file_upload_from_path(
+     # The ID of the machine part the file should be associated with
      part_id="abcdefg-1234-abcd-5678-987654321xyzabc",
+     # Any tags you want to apply to this file
      tags=["cat", "animals", "brown"],
-     filepath="/Users/Artoo/my_cat_photos/brown-cat-on-a-couch.jpeg"
+     # Path to the file
+     filepath="/Users/Artoo/my_cat_photos/brown-cat-on-a-couch.png"
    )
    ```
 
@@ -56,7 +59,8 @@ You can use the Viam Python SDK's data client API [`file_upload_from_path`](/bui
      )
    ```
 
-4. Save and run your code.
+4. Save and run your code once.
+   Running your code more than once will duplicate the data.
    View your uploaded data in your [**DATA** page in the Viam app](https://app.viam.com/data/view).
 
 ## Sync data with the `sync` method
