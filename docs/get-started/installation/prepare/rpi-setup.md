@@ -49,9 +49,9 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 
     {{< imgproc alt="Raspberry Pi Imager launcher window showing a 'Choose OS' and 'Choose Storage' buttons." src="/get-started/installation/rpi-setup/imager-launch-screen.png" resize="800x" declaredimensions=true >}}
 
-1. Select `CHOOSE DEVICE`. Choose your model of Pi.
+1.  Select `CHOOSE DEVICE`. Choose your model of Pi.
 
-   {{< imgproc alt="Raspberry Pi Imager window showing available pi models." src="/get-started/installation/rpi-setup/select-pi-models.png" resize="800x" declaredimensions=true >}}
+    {{< imgproc alt="Raspberry Pi Imager window showing available pi models." src="/get-started/installation/rpi-setup/select-pi-models.png" resize="800x" declaredimensions=true >}}
 
 1.  Select `CHOOSE OS`.
     Click on `Raspberry Pi OS (other)`.
@@ -64,25 +64,25 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 
     You should be brought back to the initial launch screen.
 
-1. Now, pick your storage medium.
-   Click `CHOOSE STORAGE`:
+1.  Now, pick your storage medium.
+    Click `CHOOSE STORAGE`:
 
-   {{< imgproc alt="Raspberry Pi Imager window showing the main page, and the 'Choose Storage' button is selected." src="/get-started/installation/rpi-setup/imager-selected-os.png" resize="800x" declaredimensions=true >}}
+    {{< imgproc alt="Raspberry Pi Imager window showing the main page, and the 'Choose Storage' button is selected." src="/get-started/installation/rpi-setup/imager-selected-os.png" resize="800x" declaredimensions=true >}}
 
-   You may have many devices listed, select the microSD card you intend to use in your Raspberry Pi.
-   If this page is blank and you do not have any listed, make sure your microSD card is connected to your computer correctly:
+    You may have many devices listed, select the microSD card you intend to use in your Raspberry Pi.
+    If this page is blank and you do not have any listed, make sure your microSD card is connected to your computer correctly:
 
-   {{< imgproc alt="The storage screen is shown with a generic SD card available as an option." src="/get-started/installation/rpi-setup/imager-select-storage.png" resize="800x" declaredimensions=true >}}
+    {{< imgproc alt="The storage screen is shown with a generic SD card available as an option." src="/get-started/installation/rpi-setup/imager-select-storage.png" resize="800x" declaredimensions=true >}}
 
-1. Now, configure your Raspberry Pi for remote access.
-   Click **Next**.
-   When prompted to apply OS customization settings, select **EDIT SETTINGS**.
+1.  Now, configure your Raspberry Pi for remote access.
+    Click **Next**.
+    When prompted to apply OS customization settings, select **EDIT SETTINGS**.
 
     {{< imgproc alt="Raspberry Pi Imager window showing gear-shaped settings icon is selected." src="/get-started/installation/rpi-setup/advanced-options.png" resize="800x" declaredimensions=true >}}
 
     {{% alert title="Important" color="note" %}}
 
-   If you are using a non-Raspberry Pi OS, altering the OS customization settings will cause the initial boot to fail.
+    If you are using a non-Raspberry Pi OS, altering the OS customization settings will cause the initial boot to fail.
 
     {{% /alert %}}
 
@@ -92,52 +92,52 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 
     There are two ways you can secure your Raspberry Pi: with an SSH key or with password authentication.
     Using SSH Keys for authentication is a great way of securing your Raspberry Pi as only someone with the private SSH key will be able to authenticate to your system.
-    
-   To set up SSH authentication:
-   
-   1. Click on **SERVICES**.
-   1. Check **Enable SSH**.
 
-   1. {{< tabs >}}
-      {{% tab name="SSH" %}}
+    To set up SSH authentication:
 
-   To use the SSH key method, select **Allow public-key authentication only**.
+    1.  Click on **SERVICES**.
+    1.  Check **Enable SSH**.
 
-   If you select **Allow public-key authentication only**, and the section **Set authorized_ keys for ''** is pre-populated, that means you have a public SSH key that is ready to use.
-   In that case, you do not have to change this section.
-   If this section is empty, you can either generate a new SSH key using [these instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), or you can use password authentication instead.
+    1.  {{< tabs >}}
+        {{% tab name="SSH" %}}
 
-   {{< imgproc alt="Raspberry Pi Imager window showing 'Set Hostname' and 'Enable SSH' both selected." src="/get-started/installation/rpi-setup/imager-set-ssh.png" resize="400x" declaredimensions=true >}}
+    To use the SSH key method, select **Allow public-key authentication only**.
 
-   {{% /tab %}}
-   {{% tab name="Password" %}}
+    If you select **Allow public-key authentication only**, and the section **Set authorized\_ keys for ''** is pre-populated, that means you have a public SSH key that is ready to use.
+    In that case, you do not have to change this section.
+    If this section is empty, you can either generate a new SSH key using [these instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), or you can use password authentication instead.
 
-   To use the password method, select **Use password authentication**.
-   Then, return to the **GENERAL** tab of the OS Customization window.
-   There, select **Set username and password** and set a username and a password:
+    {{< imgproc alt="Raspberry Pi Imager window showing 'Set Hostname' and 'Enable SSH' both selected." src="/get-started/installation/rpi-setup/imager-set-ssh.png" resize="400x" declaredimensions=true >}}
 
-   {{< imgproc alt="Raspberry Pi Imager window showing the 'Set username and password' option is selected." src="/get-started/installation/rpi-setup/imager-set-passwordauthentication.png" resize="400x" declaredimensions=true >}}
+    {{% /tab %}}
+    {{% tab name="Password" %}}
 
-      {{% alert title="Tip" color="tip" %}}
+    To use the password method, select **Use password authentication**.
+    Then, return to the **GENERAL** tab of the OS Customization window.
+    There, select **Set username and password** and set a username and a password:
 
-   Be sure that you remember the `hostname`, `username`, and `password` you use, as you will need this when you SSH into your Pi.
+    {{< imgproc alt="Raspberry Pi Imager window showing the 'Set username and password' option is selected." src="/get-started/installation/rpi-setup/imager-set-passwordauthentication.png" resize="400x" declaredimensions=true >}}
 
-      {{% /alert  %}}
+    {{% alert title="Tip" color="tip" %}}
 
-      {{< alert title="Caution" color="caution" >}}
+    Be sure that you remember the `hostname`, `username`, and `password` you use, as you will need this when you SSH into your Pi.
 
-   The default username and password on Raspberry Pis are
+    {{% /alert  %}}
 
-   - username: pi
-   - password: raspberry
+    {{< alert title="Caution" color="caution" >}}
 
-   However, it's [bad practice](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/) to keep the default username and password on a Raspberry Pi since doing so makes it easy for hackers to get access to your Pi.
-   In the past, malware infected thousands of Raspberry Pi devices that were using the default username and password.
+    The default username and password on Raspberry Pis are
 
-      {{< /alert >}}
+    - username: pi
+    - password: raspberry
 
-      {{% /tab %}}
-      {{< /tabs >}}
+    However, it's [bad practice](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/) to keep the default username and password on a Raspberry Pi since doing so makes it easy for hackers to get access to your Pi.
+    In the past, malware infected thousands of Raspberry Pi devices that were using the default username and password.
+
+    {{< /alert >}}
+
+    {{% /tab %}}
+    {{< /tabs >}}
 
     Lastly, connect your Pi to Wi-Fi so that you can run `viam-server` wirelessly.
     Check **Configure wireless LAN** and enter your wireless network credentials.
@@ -148,28 +148,28 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 
     Click **SAVE**.
 
-2. Double check your OS and Storage settings and then click `YES`:
+1.  Double check your OS and Storage settings and then click `YES`:
 
-   {{< imgproc alt="Edit image customization options window" src="/get-started/installation/rpi-setup/apply-settings-yes.png" resize="800x" declaredimensions=true >}}
+    {{< imgproc alt="Edit image customization options window" src="/get-started/installation/rpi-setup/apply-settings-yes.png" resize="800x" declaredimensions=true >}}
 
-   You will be prompted to confirm erasing your microSD card: select `YES`.
+    You will be prompted to confirm erasing your microSD card: select `YES`.
 
-   {{< imgproc alt="Edit image customization options window" src="/get-started/installation/rpi-setup/imager-write-confirm.png" resize="800x" declaredimensions=true >}}
+    {{< imgproc alt="Edit image customization options window" src="/get-started/installation/rpi-setup/imager-write-confirm.png" resize="800x" declaredimensions=true >}}
 
-   You may also be prompted by your operating system to enter an Administrator password:
+    You may also be prompted by your operating system to enter an Administrator password:
 
-   {{< imgproc alt="macOS admin password confirmation screen." src="/get-started/installation/rpi-setup/imager-permission.png" resize="800x" declaredimensions=true >}}
+    {{< imgproc alt="macOS admin password confirmation screen." src="/get-started/installation/rpi-setup/imager-permission.png" resize="800x" declaredimensions=true >}}
 
-   After granting permissions to the Imager, it will begin writing and then verifying the Linux installation to the MicroSD card:
+    After granting permissions to the Imager, it will begin writing and then verifying the Linux installation to the MicroSD card:
 
-   {{< imgproc alt="The Raspberry Pi Imager will display information on the status of the write." src="/get-started/installation/rpi-setup/imager-writing.png" resize="800x" declaredimensions=true >}}
+    {{< imgproc alt="The Raspberry Pi Imager will display information on the status of the write." src="/get-started/installation/rpi-setup/imager-writing.png" resize="800x" declaredimensions=true >}}
 
-   Remove the microSD card from your computer when it is complete:
+    Remove the microSD card from your computer when it is complete:
 
-   {{< imgproc alt="You will be notified with a dialogue box informing you that Raspberry Pi OS (Legacy, 64-bit) Full has been written successfully." src="/get-started/installation/rpi-setup/imager-done.png" resize="800x" declaredimensions=true >}}
+    {{< imgproc alt="You will be notified with a dialogue box informing you that Raspberry Pi OS (Legacy, 64-bit) Full has been written successfully." src="/get-started/installation/rpi-setup/imager-done.png" resize="800x" declaredimensions=true >}}
 
-3. Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an outlet.
-   A red LED will turn on to indicate that the Pi is connected to power.
+1.  Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an outlet.
+    A red LED will turn on to indicate that the Pi is connected to power.
 
 ## Connect with SSH
 
