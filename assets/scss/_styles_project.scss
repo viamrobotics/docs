@@ -1404,6 +1404,10 @@ ul.sectionlist > li:hover {
   margin: 2rem auto;
 }
 
+#pagination2 {
+  margin: 2rem auto;
+}
+
 .ais-Pagination-item {
   display: inline-block;
   margin: 0.2rem;
@@ -1503,6 +1507,10 @@ a.ais-Pagination-link:hover {
 .modellist > div {
   display: flex;
   border-bottom: 1px solid #dee2e6;
+}
+
+.modellist * .ais-Hits-list {
+  flex-direction: column;
 }
 
 .modellist * .ais-Hits.ais-Hits--empty {

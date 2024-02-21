@@ -9,6 +9,7 @@ aliases:
   - /services/ml/
 description: "Deploy Machine Learning models to a machine and use the vision service to detect or classify images or to create point clouds of identified objects."
 modulescript: true
+modelscript: true
 icon: "/services/icons/ml.svg"
 # SME: Aaron Casas
 ---
@@ -35,13 +36,13 @@ For example, you can configure an [`mlmodel` vision service](/ml/vision/) and a 
 
 ### Modular resources
 
-{{<modular-resources api="rdk:service:mlmodel" type="mlmodel">}}
+{{<modular-resources api="rdk:service:mlmodel" type="ML model">}}
 
 {{< alert title="Add support for other models" color="tip" >}}
 If none of the existing models of the ML model service fit your use case, you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it.
 
 ML models must be designed in particular shapes to work with the `mlmodel` [classification](/ml/vision/mlmodel/) or [detection](/ml/vision/mlmodel/) model of Viam's [vision service](/ml/vision/).
-Follow [these instructions](/registry/advanced/mlmodel-design/) to design your modular ML Model service with models that work with vision.
+Follow [these instructions](/registry/advanced/mlmodel-design/) to design your modular ML model service with models that work with vision.
 {{< /alert >}}
 
 {{< alert title="Note" color="note" >}}
@@ -52,7 +53,7 @@ For some models of the ML model service, like the [Triton ML model service](http
 
 You can use the ML model service to deploy:
 
-- [an existing model from the registry](https://app.viam.com/registry)
+- [a model from the registry](https://app.viam.com/registry)
 - a model trained outside the Viam platform that you have [uploaded](/ml/upload-model/)
 - a model available on your machine
 
@@ -67,7 +68,7 @@ Enter a name for your service and click **Create**.
 You can choose to configure your service with an existing model on the machine or deploy a model onto your machine:
 
 {{< tabs >}}
-{{% tab name="Deploy Model" %}}
+{{% tab name="Deploy Model on Robot" %}}
 
 1. To configure your service and deploy a model onto your machine, select **Deploy Model On Robot** for the **Deployment** field.
 
@@ -85,7 +86,7 @@ To see more details about a model, open its page in [the registry](https://app.v
 {{<imgproc src="/services/deploy-model.png" resize="700x" alt="Create a machine learning models service with a model to be deployed">}}
 
 {{% /tab %}}
-{{% tab name="Existing Model" %}}
+{{% tab name="Path to Existing Model On Robot" %}}
 
 1. To configure your service with an existing model on the machine, select **Path to Existing Model On Robot** for the **Deployment** field.
 2. Then specify the absolute **Model Path** and any **Optional Settings** such as the absolute **Label Path** and the **Number of threads**.
@@ -147,6 +148,23 @@ The following parameters are available for a `"tflite_cpu"` model:
 | `num_threads` | Optional | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
 
 Save the configuration.
+
+### Models from registry
+
+You can search the machine learning models that are available to deploy on this service from the registry here:
+
+<div id="searchbox2"></div>
+<p>
+<div id="searchstats2"></div></p>
+<div class="mr-model" id="">
+  <div class="modellistheader">
+    <div class="name">Model</div>
+    <div>Description</div>
+  </div>
+<div id="hits2" class="modellist">
+</div>
+<div id="pagination2"></div>
+</div>
 
 ### Versioning for deployed models
 
