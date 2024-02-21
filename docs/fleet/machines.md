@@ -25,31 +25,38 @@ Click the name of a machine to go to that machine's page, where you'll find a va
 
 ## Navigating the machine page
 
-The banner at the top of the machine page displays the machine's location, name, and a dropdown list of all {{< glossary_tooltip term_id="part" text="parts" >}} of that machine.
+Click on the **parts live** display at the top left corner of the page to open a menu with information about each {{< glossary_tooltip term_id="part" text="part" >}} of this machine.
+Once you connect to the `viam-server` instance on a part, this display includes its OS, Host, `viam-server` version, IP addresses, and what time it was last online:
 
-If you've connected your physical machine running `viam-server` to its instance in the Viam app, the banner also displays when the machine was last online, which version of `viam-server` it is running, the host name, the IP address or addresses, and its operating system.
+![The machine page with part menu expanded](/fleet/app-usage/machine-page.png)
 
-![The machine page with menu tabs](/fleet/app-usage/machine-page.png)
+### Set up a new machine
 
-For each machine in your fleet, you start by setting up the machine on the **Setup** tab:
+<!-- TODO R2D2: might need screenshot and needs to be revisited once setup construction is finished -->
+To connect to the `viam-server` instance on a part, follow the setup instructions.
+Click **View setup instructions** on the part drop-down menu.
 
-### Setup
-
-The **Setup** tab contains information for starting an instance of `viam-server` on your machine's computer.
-
-Once you select the correct **Architecture** for your system in the upper left of the tab, follow the instructions on the page to connect and set up your machine.
+Select your system's architecture and select the version of the {{< glossary_tooltip term_id="RDK" text="RDK" >}} to use.
+Then, follow the instructions on the page to connect and set up your machine.
 
 {{% alert title="Tip" color="tip" %}}
+The **Micro-RDK** is for [microcontrollers](/get-started/installation/prepare/microcontrollers/).
+
 More in-depth information on installing `viam-server` can be found in our [Install Guide](/get-started/installation/#install-viam-server).
 {{% /alert %}}
 
-### Configuration
+Once all parts of your machine are set up and connected to the app, the **parts live** display at the top left corner of the page turns green.
+Now, you can manage your machine with one of four tabs: **CONFIGURE**, **CONTROL**, **LOGS**, and **CONNECT**:
 
-When a machine or a {{< glossary_tooltip term_id="part" text="machine part" >}} that is managed with the Viam app first comes online, it requests its configuration from the [Viam app](https://app.viam.com).
+{{<imgproc src="/fleet/app-usage/parts-live.png" resize="400x" declaredimensions=true alt="The machine page with all parts live">}}
+
+### CONFIGURE
+
+When a {{< glossary_tooltip term_id="part" text="machine part" >}} that is managed with the Viam app first comes online, it requests its configuration from the [Viam app](https://app.viam.com).
 Once the machine has a configuration, it caches it locally and can use the configuration for up to 60 days.
 The machine checks for new configurations every 15 seconds and changes its configuration automatically when a new configuration is available.
 
-After connecting your machine, go to the **Config** tab, and start adding {{< glossary_tooltip term_id="component" text="components" >}}, {{< glossary_tooltip term_id="service" text="services" >}}, and other {{< glossary_tooltip term_id="resource" text="resources" >}}.
+After connecting your machine, go to the **CONFIGURE** tab, and start adding {{< glossary_tooltip term_id="component" text="components" >}}, {{< glossary_tooltip term_id="service" text="services" >}}, and other {{< glossary_tooltip term_id="resource" text="resources" >}}.
 
 For more information, see the [configuration documentation](/build/configure/#the-config-tab).
 
@@ -57,27 +64,7 @@ For more information, see the [configuration documentation](/build/configure/#th
 If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your machine](/build/configure/).
 {{< /alert >}}
 
-### History
-
-The configuration of your machine and the code it runs are kept separate to make debugging easier.
-The **History** tab shows timestamped changes to your machine's configuration.
-
-If you want to revert changes that you made, you can load a previous configuration by clicking the **Load config** button next to the respective configuration.
-
-{{<gif webm_src="/manage/load-prev-config.webm" mp4_src="/manage/load-prev-config.mp4" alt="Load a previous config from the UI" max-width="800px">}}
-
-You can also change your timestamp format to ISO or Local depending on your preference.
-
-### Logs
-
-To make debugging issues with your machines easier, each machine automatically sends its logs to the cloud.
-You can access your logs from the **Logs** tab in the [Viam app](https://app.viam.com) and filter your logs for specific keywords or log levels:
-
-{{<gif webm_src="/manage/log-filtering.webm" mp4_src="/manage/log-filtering.mp4" alt="Filter logs by term of log level in the UI" max-width="800px">}}
-
-You can also change your timestamp format to ISO or Local depending on your preference.
-
-### Control
+### CONTROL
 
 Once you have configured components and services for your machine, you can visually test and remotely operate them from the **Control** tab in the [Viam app](https://app.viam.com).
 For example, if you have configured a base with wheels, you can control your machine's movement with an arrow pad and fields to change base’s speed.
@@ -92,7 +79,18 @@ For local communication between [parts](/build/configure/parts-and-remotes/#mach
 
 You can also access the control interface using the [Viam mobile app](/fleet/#the-viam-mobile-app), which you can find on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
 
-### Code Sample
+### LOGS
+
+To make debugging issues with your machines easier, each machine automatically sends its logs to the cloud.
+You can access your logs from the **Logs** tab in the [Viam app](https://app.viam.com) and filter your logs for specific keywords or log levels:
+
+{{<gif webm_src="/manage/log-filtering.webm" mp4_src="/manage/log-filtering.mp4" alt="Filter logs by term of log level in the UI" max-width="800px">}}
+
+You can also change your timestamp format to ISO or Local depending on your preference.
+
+### CONNECT
+
+#### Code Sample
 
 To start programming your machine, go to the **Code sample** tab which contains boilerplate code snippets you can copy and paste into your SDK code to connect to your machine.
 
@@ -102,7 +100,7 @@ For more information on the SDKs, see [Program your Machine with Viam's SDKs](/b
 
 There is also a JSON stub you can copy if you wish to have your machine communicate with another machine as a [remote](/build/configure/parts-and-remotes/).
 
-### Security
+#### Security
 
 Your machine and the Viam app communicate securely using [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection) with unique secrets.
 
