@@ -18,7 +18,7 @@ However, if you want to upload a batch of data manually from somewhere else, eit
 - Run a Golang script calling the data management service `sync` method.
 - Upload images from your mobile device using the Viam mobile app.
 
-## Upload data with a Python script
+## Upload data with Python
 
 You can use the Viam Python SDK's data client API [`file_upload_from_path`](/build/program/apis/data-client/#fileuploadfrompath) method to upload one or more files from your computer to the Viam cloud.
 
@@ -31,6 +31,7 @@ You can use the Viam Python SDK's data client API [`file_upload_from_path`](/bui
 2. Create a Python script file in a directory of your choice and [add code to establish a connection](/build/program/apis/data-client/#establish-a-connection) from your computer to your [Viam app](https://app.viam.com) {{< glossary_tooltip term_id="location" text="location" >}} or individual {{< glossary_tooltip term_id="part" text="machine part" >}}.
 
 3. Use the `file_upload_from_path` method to upload your data, depending on whether you are uploading one or multiple files:
+
    - To upload just one file, make a call to `file_upload_from_path` according to [the data client API documentation](/build/program/apis/data-client/#fileuploadfrompath).
      The following example code could be placed inside the `main()` function (or a function called from `main()`):
 
@@ -65,7 +66,7 @@ You can use the Viam Python SDK's data client API [`file_upload_from_path`](/bui
    Running your code more than once will duplicate the data.
    View your uploaded data in your [**DATA** page in the Viam app](https://app.viam.com/data/view).
 
-## Sync data with a Golang script
+## Sync data with Golang
 
 The Viam Golang SDK includes a data service API with a [`sync`](/data/#sync) method that syncs all the data from your machine to the cloud.
 The [cloud sync tools](/data/cloud-sync/) sync data automatically according to how you configure cloud sync, but if you prefer to sync programatically, you can instead run a script that calls the `sync` method.
