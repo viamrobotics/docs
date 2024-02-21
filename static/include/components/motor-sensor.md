@@ -1,6 +1,10 @@
 If you want to control your motor by specifying the distance and velocity in terms of distance and distance/time, for example 2 rotations at 5 m/s and you have an encoder, you can make use of the position of your encoder to adjust the distance and velocity.
 
-One way to adjust distance and velocity based on an encoder's measurements, is using a PID control loop that measures the current position and change in position and determines the difference or error from the desired distance and velocity to compute a correction for the motor based on three terms:
+You can do this in two ways.
+
+The first just uses the movement sensor feedback to increase or decrease the power being set on the motors in increments of 10%.
+
+The second requires setting the `control_parameters` attribute and uses a PID control loop that measures the current position and change in position and determines the difference or error from the desired distance and velocity to compute a correction for the motor based on three terms:
 
 - A _proportional_ term that is the current error
 - An _integral_ term that is the total cumulative error

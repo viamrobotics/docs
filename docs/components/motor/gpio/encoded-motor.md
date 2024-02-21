@@ -120,9 +120,9 @@ Here’s an example configuration:
         "encoder": "myEncoder",
         "ticks_per_rotation": 9600,
         "control_parameters": {
-          "p": 1,
-          "i": 2,
-          "d": 3
+          "p": 0.2,
+          "i": 0.5,
+          "d": 0.0
         }
       },
       "depends_on": []
