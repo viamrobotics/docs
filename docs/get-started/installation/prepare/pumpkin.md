@@ -3,9 +3,8 @@ title: "Pumpkin Board Setup Guide"
 linkTitle: "Pumpkin Board Setup"
 weight: 25
 type: "docs"
-image: "/get-started/installation/thumbnails/pumpkin.png"
-imageAlt: "Pumpkin board"
 images: ["/get-started/installation/thumbnails/pumpkin.png"]
+imageAlt: "Pumpkin board"
 description: "Configure the pin mappings to use a pumpkin board."
 no_list: true
 aliases:

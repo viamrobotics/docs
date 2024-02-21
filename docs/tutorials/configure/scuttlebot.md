@@ -3,7 +3,6 @@ title: "Configure a SCUTTLE Robot"
 linkTitle: "Configure a SCUTTLE Robot"
 type: "docs"
 description: "Configure a SCUTTLE robot on the Viam platform."
-image: "/tutorials/scuttlebot/scuttle-on-floor-cropped.png"
 images: ["/tutorials/scuttlebot/scuttle-on-floor-cropped.png"]
 imageAlt: "A SCUTTLE robot on a carpeted floor."
 tags: ["base", "camera", "raspberry pi", "scuttle"]

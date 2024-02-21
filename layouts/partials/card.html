@@ -9,52 +9,54 @@
   {{ $baseurl := (substr .Site.BaseURL 0 -1) }}
 {{ end }}
 <div class="col hover-card {{ if $class }}{{ $class }}{{ end }}">
-  {{ if site.GetPage ($link | string) }}
-    {{ with site.GetPage ($link | string) }}
-    {{if $customCanonicalLink }}
+{{ if site.GetPage ($link | string) }}
+  {{ with site.GetPage ($link | string) }}
+    {{ if $customCanonicalLink }}
     <a href="{{$customCanonicalLink}}">
     {{ else }}
     <a href="{{.RelPermalink}}">
     {{ end }}
+    {{ if $imageOverwrite }}
+      <div class="hover-card-img">
+        {{ partial "imgproc.html" (dict "src" ($imageOverwrite) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
+      </div>
+    {{ else }}
       {{ if .Params.webmSrc }}
         <div class="hover-card-video">
-					{{ partial "gif.html" (dict "webm_src" .Params.webmSrc "mp4_src" .Params.mp4Src "alt" .Params.videoAlt "maxWidth" "100%" "class" "" ) }}
+          {{ partial "gif.html" (dict "webm_src" .Params.webmSrc "mp4_src" .Params.mp4Src "alt" .Params.videoAlt "maxWidth" "100%" "class" "" ) }}
         </div>
-        {{ end }}
-        {{ if $imageOverwrite }}
-          <div class="hover-card-icon">
-            {{ partial "imgproc.html" (dict "src" ($imageOverwrite) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
-          </div>
-        {{ else }}
-          {{ if .Params.image }}
-            <div class="hover-card-img">
-              {{ $img := resources.GetMatch .Params.image }}
-              {{if $img }}
-                {{ partial "imgproc.html" (dict "src" (.Params.image) "resize" "400x" "alt" (.Params.imageAlt) "style" "") }}
-              {{ else }}
-                {{ errorf "Couldn't get image %s" .Params.image }}
-              {{ end }}
-            </div>
-          {{ end }}
-          {{ if .Params.icon }}
-          <div class="hover-card-icon">
-            {{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
-          </div>
-          {{ end }}
-        {{ end }}
-        <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
-          {{ if $customTitle }}
-            <div>{{ $customTitle }}</div>
+      {{ else if .Params.images }}
+        <div class="hover-card-img">
+          {{ $img := resources.GetMatch (index .Params.images 0) }}
+          {{ if $img }}
+            {{ if .Params.imageAlt }}
+              {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "400x" "alt" (.Params.imageAlt) "style" "") }}
+            {{ else }}
+              {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
+            {{ end }}
           {{ else }}
-            <div>{{ .LinkTitle }}</div>
-          {{ end }}
-          {{ if ne $class "small" }}
-          <p> {{ if $customDescription }} {{ $customDescription }} {{ else }} {{ .Description }} {{ end }} </p>
+            {{ errorf "Couldn't get image %s" (index .Params.images 0) }}
           {{ end }}
         </div>
-      </a>
+      {{ else if .Params.icon }}
+        <div class="hover-card-icon">
+          {{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
+        </div>
       {{ end }}
-  {{ else }}
-  {{ errorf "Card has a bad link: %s" $link }}
+    {{ end }}
+    <div {{ if (index .Params.images 0) }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
+    {{ if $customTitle }}
+      <div>{{ $customTitle }}</div>
+    {{ else }}
+      <div>{{ .LinkTitle }}</div>
+    {{ end }}
+    {{ if ne $class "small" }}
+    <p> {{ if $customDescription }} {{ $customDescription }} {{ else }} {{ .Description }} {{ end }} </p>
+    {{ end }}
+    </div>
+    </a>
   {{ end }}
+{{ else }}
+{{ errorf "Card has a bad link: %s" $link }}
+{{ end }}
 </div>

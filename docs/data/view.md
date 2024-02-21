@@ -5,7 +5,7 @@ description: "View and filter data on the DATA page in the Viam Cloud."
 weight: 38
 type: "docs"
 tags: ["data management", "cloud", "sync"]
-image: "/ml/collect.svg"
+icon: "/ml/collect.svg"
 imageAlt: "View images"
 images: ["/ml/collect.svg"]
 aliases:
@@ -51,6 +51,10 @@ To delete image data, click on an image in the **Images** subtab and click on **
 To delete a file, click on the file in the **Files** subtab and click the **Delete** icon.
 
 To delete all image, file, or sensor data respectively, click on **DELETE ALL** in the top right corner.
+
+{{< alert title="Tip" color="tip" >}}
+If you need to delete many images that are from a specific time frame or machine, you can apply a [filter](#filter-data) and then click **DELETE ALL**.
+{{< /alert >}}
 
 ![Data view with no image selected showing the Delete all button](/data/delete_all.png)
 

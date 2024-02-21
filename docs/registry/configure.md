@@ -14,6 +14,9 @@ tags:
   ]
 description: "Add a modular resource to your machine by configuring it."
 no_list: true
+icon: "/registry/create-module.svg"
+imageAlt: "Find a module for your machine"
+images: ["/registry/create-module.svg"]
 aliases:
   - "program/extend/modular-resources/configure/"
   - "/extend/modular-resources/configure/"
@@ -377,7 +380,19 @@ See the instructions to [compile your module into an executable](/registry/creat
 
 ### Add a local module
 
-To add a local module on your machine:
+To add a local module on your machine, first add its module, then the component or service it implements:
+
+1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
+1. Click on the **Modules** subtab.
+1. Scroll to the **Add local module** section.
+1. Enter a **Name** for this instance of your modular resource.
+1. Enter the [module's executable path](/registry/create/#compile-or-package-your-module).
+   This path must be the absolute path to the executable on your machine's filesystem.
+1. Then, click the **Add module** button, and click **Save config**.
+
+   {{<imgproc src="registry/configure/add-local-module-csi-cam.png" resize="600x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
+
+   This example shows the configuration for adding a [CSI camera](https://github.com/viamrobotics/csi-camera/) as a local module.
 
 1. Navigate to the **Config** tab of your machine's page on [the Viam app](https://app.viam.com).
 
@@ -400,19 +415,7 @@ To add a local module on your machine:
 
 1. Click **Create** to create the modular resource provided by the local module.
 
-You can also add the module directly, without first adding its modular component or service:
-
-1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-1. Click on the **Modules** subtab.
-1. Scroll to the **Add local module** section.
-1. Enter a **Name** for this instance of your modular resource.
-1. Enter the [module's executable path](/registry/create/#compile-or-package-your-module).
-   This path must be the absolute path to the executable on your machine's filesystem.
-1. Then, click the **Add module** button, and click **Save config**.
-
-   {{<imgproc src="registry/configure/add-local-module-csi-cam.png" resize="600x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
-
-   This example shows the configuration for adding a [CSI camera](https://github.com/viamrobotics/csi-camera/) as a local module.
+Once you've added your local module using steps 1-6, you can repeat steps 7-10 to add as many additional instances of your modular resource as you need.
 
 ### Edit the configuration of a local module
 

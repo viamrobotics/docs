@@ -4,7 +4,6 @@ linkTitle: "Smart Pet Treat Dispenser"
 type: "docs"
 description: "Use a Raspberry Pi, a motor, and machine learning to build a smart pet feeder."
 tags: ["raspberry pi", "app", "board", "motor"]
-image: "/tutorials/pet-treat-dispenser/preview.png"
 imageAlt: "Image of a dog interacting with the smart pet feeder."
 images: ["/tutorials/pet-treat-dispenser/preview.png"]
 authors: ["Arielle Mella", "Jessamy Taylor", "Hazal Mestci"]
@@ -451,7 +450,7 @@ python3 main.py
 
 One more thing.
 Right now, you need to run the code manually every time you want your robot to work.
-However, you can configure Viam to automatically run your code as a [process](/build/configure/#processes).
+However, you can configure Viam to automatically run your code as a [process](/build/configure/processes/).
 
 Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Processes** subtab and navigate to the **Create process** menu.

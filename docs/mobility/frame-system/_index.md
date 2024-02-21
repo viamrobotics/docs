@@ -16,18 +16,18 @@ Any machine configured in Viam comes with the frame system service: an internall
 
 ![Visualization of a wheeled base configured with motors and a mounted camera in the frame system tab of the Viam app UI](/mobility/frame-system/frame_system_wheeled_base.png)
 
-The frame system is the basis for many of Viam's other services, like [Motion](/mobility/motion/) and [Vision](/ml/vision/).
+The frame system is the basis for some of Viam's other services, like [motion](/mobility/motion/) and [vision](/ml/vision/).
 It stores the required contextual information to use the position and orientation readings returned by some components.
 
 ## Used with
 
 {{< cards >}}
-{{< relatedcard link="/services/arm/">}}
+{{< relatedcard link="/components/arm/">}}
 {{< relatedcard link="/components/base/">}}
 {{< relatedcard link="/components/board/">}}
-{{< relatedcard link="/services/camera/">}}
-{{< relatedcard link="/services/gantry/">}}
-{{< relatedcard link="/services/motor/">}}
+{{< relatedcard link="/components/camera/">}}
+{{< relatedcard link="/components/gantry/">}}
+{{< relatedcard link="/components/motor/">}}
 {{< /cards >}}
 
 ## Configuration

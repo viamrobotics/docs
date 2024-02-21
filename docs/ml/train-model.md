@@ -77,6 +77,18 @@ The model package config looks like this:
 }
 ```
 
+## Delete a model
+
+You can delete a model from the [models page](https://app.viam.com/data/models) in the Viam app:
+
+- To delete a trained model, click the **_..._** icon to the right of the model name under the **Models** section of the page, and select **Delete**.
+
+  ![Delete a trained model](/ml/delete-trained-model.png)
+
+- To delete a model that has failed training, click the trash can icon to the right of the model name under the **Training** section of the page.
+
+  ![Delete a failed model](/ml/delete-failed-model.png)
+
 ## Next steps
 
 {{< cards >}}

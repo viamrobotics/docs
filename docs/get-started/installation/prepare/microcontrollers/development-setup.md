@@ -4,9 +4,8 @@ linkTitle: "Microcontroller Development Setup"
 weight: 50
 no_list: true
 type: docs
-image: "get-started/installation/thumbnails/esp32-espressif.png"
-imageAlt: "E S P 32 - espressif"
 images: ["/get-started/installation/thumbnails/esp32-espressif.png"]
+imageAlt: "E S P 32 - espressif"
 description: "Set up the Espressif ESP32 for development with the micro-RDK."
 # SMEs: Nicolas M., Gautham V., Andrew M.
 aliases:

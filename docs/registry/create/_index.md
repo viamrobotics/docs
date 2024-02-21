@@ -14,6 +14,9 @@ tags:
     "registry",
   ]
 description: "Create a module to provide a new modular resource to your machine."
+icon: "/registry/create-module.svg"
+imageAlt: "Find a module for your machine"
+images: ["/registry/create-module.svg"]
 aliases:
   - "/extend/modular-resources/create/"
   - "/modular-resources/create/"
@@ -77,7 +80,7 @@ If you do not intend to [upload your module](/registry/upload/) to the [Viam reg
 
 See [Naming your model](/registry/#naming-your-model-namespacerepo-namename) for more information.
 
-### (Optional) generate your Python module scaffolding
+### (Optional) Generate your Python module scaffolding
 
 If you are writing in Python, you can use this [Viam module generator](https://github.com/viam-labs/generator-viam-module/tree/main) to generate the scaffolding for a module with one resource model.
 

@@ -5,6 +5,9 @@ description: "Configure cloud sync to automatically capture data in the Viam app
 weight: 35
 type: "docs"
 tags: ["data management", "cloud", "sync"]
+icon: "/services/icons/data-cloud-sync.svg"
+imageAlt: "Sync captured data to the cloud"
+images: ["/services/icons/data-cloud-sync.svg"]
 aliases:
   - "/services/data/cloud-sync/"
 # SME: Alexa Greenberg
@@ -61,6 +64,11 @@ If `capture_dir` is unspecified, `viam-server` will use the default directory at
 {{< /alert >}}
 
 {{% /expand%}}
+
+### Trigger sync conditionally
+
+If you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
+To set up triggers for syncing see [Trigger Sync](/data/trigger-sync/).
 
 ### Pause sync
 

@@ -20,14 +20,14 @@ For example, you might add the data management service to multiple machines to b
     </th>
   </tr>
   <tr>
-    <th>{{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
+    <th>{{<imgproc src="/services/icons/data-management.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
       <b>2. Configure the data management service</b><br><br>
       <p>Next, <a href="/data/">add the data management service</a> to be able to configure how your camera captures and stores images.</p>
       <p>Then configure <a href="/data/capture/">data capture</a> and <a href="/data/cloud-sync/">cloud sync</a>.</p>
     </th>
   </tr>
   <tr>
-    <th>{{<imgproc src="/icons/components/camera.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
+    <th>{{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
       <b>3. Capture data</b><br><br>
       <p>With data management configured, <a href="/data/capture/#configure-data-capture-for-individual-components">capture image data from a camera on your machine</a>. Captured data is automatically synced to the cloud after a short delay.</p>
     </th>
@@ -47,7 +47,7 @@ For example, you might add the data management service to multiple machines to b
   <tr>
     <th>{{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
       <b>6. Export data</b><br><br>
-      <p>You can also <a href ="/data/export/">export your data from the Viam app to a deployed machine, or to any computer.</p>
+      <p>You can also <a href ="/data/export/">export your data from the Viam app</a> to a deployed machine, or to any computer.</p>
     </th>
   </tr>
 </table>
