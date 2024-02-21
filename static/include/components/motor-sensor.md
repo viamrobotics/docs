@@ -14,4 +14,4 @@ By tuning the coefficients on each of these terms, you can adjust how your motor
 
 If you want these values to be auto-tuned, you can set all values to 0: `{ "p": 0, "i": 0, "d": 0 }`, and `viam-server` will auto-tune and log the calculated values.
 Tuning takes several seconds and spins the motor.
-To avoid tuning every time the robot starts up, copy the values from the logs and add them to the configuration once tuned.
+Copy the values from the logs and add them to the configuration once tuned for the values to take effect.

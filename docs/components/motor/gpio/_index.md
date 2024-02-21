@@ -194,4 +194,3 @@ Only the output side of the driver board is different in that more wires connect
 ## Test the motor
 
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}
-
