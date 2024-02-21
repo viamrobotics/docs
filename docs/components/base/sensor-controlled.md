@@ -14,7 +14,7 @@ aliases:
 A `sensor-controlled` base supports a robotic base with feedback control from a movement sensor.
 
 {{% alert title="Requirements" color="note" %}}
-In order to use feedback control for [SetVelocity()](/components/base/#setvelocity), you must provide a movement sensor that implements [AngularVelocity()](/components/base/#getangularvelocity) and [LinearVelocity()](/components/base/#getlinearvelocity).
+In order to use feedback control for [SetVelocity()](/components/movement-sensor/#setvelocity), you must provide a movement sensor that implements [AngularVelocity()](/components/movement-sensor/#getangularvelocity) and [LinearVelocity()](/components/movement-sensor/#getlinearvelocity).
 
 In order to use feedback control for [Spin()](/components/base/#spin), you must provide a movement sensor that implements [Orientation()](/components/base/#getorientation).
 {{% /alert %}}
