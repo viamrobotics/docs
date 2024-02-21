@@ -74,7 +74,7 @@ Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.
 Find the card belonging to the main {{< glossary_tooltip term_id="part" text="part" >}} of your machine at the top of the nested resource tree.
 Click the card to expand it, then click **Set heartbeat window** to adjust the **Heartbeat Window**:
 
-{{<imgproc src="/build/program/sessions/heartbeatwindow.png" alt="Heartbeat window configuration screen" resize="400x" declaredimensions=true >}}
+{{<imgproc src="/build/program/sessions/heartbeatwindow.png" alt="Heartbeat window configuration pane in Viam app" resize="400x" declaredimensions=true >}}
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
