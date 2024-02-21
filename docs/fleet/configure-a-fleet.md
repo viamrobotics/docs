@@ -8,15 +8,11 @@ tags: ["fleet management", "cloud", "app"]
 ---
 
 If you have multiple machines with similar configurations, you can use a _fragment_ to configure all of the machines at the same time.
-
 Fragments are a way of sharing and managing [machine configurations](/build/configure/) across multiple machines.
-
-A fragment can define one, several, or all resources on a machine.
-You can add multiple fragments to a single machine, if needed, or can add additional resources to a machine that has already been configured with a fragment.
 
 If there are differences between your machines, you can use a fragment to quickly configure the {{< glossary_tooltip term_id="resource" text="resources" >}} that are the same between machines.
 You can then configure the differing resources separately, outside of the fragment.
-For example, if you have multiple identical rovers but one has an arm attached, you can add the rover configuration fragment (including the motors and base components), and then configure the arm on just that one rover.
+For example, if you have multiple similar rovers but one has an arm attached, you can add the rover configuration fragment (including the motors and base components), and then configure the arm on just that one rover.
 
 When you or one of your collaborators edit a fragment that you've already deployed to one or more machines, the Viam app updates the configuration on each deployed machine that uses that fragment.
 
@@ -32,8 +28,10 @@ You can see the number of machines using your fragment from the [fragments page]
 
 Fragments are private to each organization by default (except for the `viam-dev` organization).
 If you would like to make your fragment available to users outside your organization, please reach out to us to request that we make your fragment public.
-
 You must be an [organization owner](/fleet/rbac/#permissions) in order to create fragments.
+
+A fragment can define one, several, or all resources on a machine.
+You can add multiple fragments to a single machine, or can add additional resources to a machine that has already been configured with a fragment.
 
 ## Create a fragment
 
