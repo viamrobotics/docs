@@ -4,9 +4,8 @@ linkTitle: "Reserve a Viam Rover"
 weight: 10
 type: "docs"
 description: "Reserve a Viam Rover located on-site at Viam in NYC."
-image: "/get-started/try-viam/try-viam-reserve-preview.png"
-imageAlt: "Rover reservation page"
 images: ["/get-started/try-viam/try-viam-reserve-preview.png"]
+imageAlt: "Rover reservation page"
 tags: ["try viam", "app"]
 aliases:
   - "/try-viam/reserve-a-rover/"

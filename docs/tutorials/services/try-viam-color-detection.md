@@ -3,7 +3,6 @@ title: "Detect color with a Viam Rover"
 linkTitle: "Detect Color"
 type: "docs"
 description: "Use the vision service in the Viam app to detect a color with the Viam Rover."
-image: "/tutorials/try-viam-color-detection/detectioncam-comp-stream.png"
 imageAlt: "detectionCam stream displaying a color detection"
 images: ["/tutorials/try-viam-color-detection/detectioncam-comp-stream.png"]
 tags: ["vision", "detector", "camera", "viam rover", "try viam", "services"]

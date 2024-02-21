@@ -11,7 +11,6 @@ aliases:
   - "/product-overviews/"
   - "/viam/"
   - "/viam/app.viam.com/"
-image: "/general/understand.png"
 imageAlt: "/general/understand.png"
 images: ["/general/understand.png"]
 ---

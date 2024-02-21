@@ -14,7 +14,7 @@ tags:
     "registry",
   ]
 description: "Create a module to provide a new modular resource to your machine."
-image: "/registry/create-module.svg"
+icon: "/registry/create-module.svg"
 imageAlt: "Find a module for your machine"
 images: ["/registry/create-module.svg"]
 aliases:

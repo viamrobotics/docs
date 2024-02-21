@@ -3,7 +3,6 @@ title: "Access and Move a Robot Arm"
 linkTitle: "Move a Robot Arm"
 type: "docs"
 description: "Access and control one of the most fundamental systems in robotics: A robotic arm."
-image: "/tutorials/motion/preview.jpg"
 imageAlt: "A robotic arm"
 images: ["/tutorials/motion/preview.jpg"]
 tags: ["arm", "motion", "services"]

@@ -6,9 +6,8 @@ type: "docs"
 tags: ["fleet management", "app", "services"]
 no_list: true
 description: "Use Viam's fleet management capabilities to share and manage access to your machines."
-image: "/fleet/locations.png"
-imageAlt: "Fleet management"
 images: ["/fleet/locations.png"]
+imageAlt: "Fleet management"
 ---
 
 You can use Viam's cloud-based fleet management tools to monitor and manage access to your fleet of {{< glossary_tooltip term_id="smart-machine" text="smart machines" >}}.

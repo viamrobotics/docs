@@ -6,7 +6,6 @@ description: "Use the SDK of your preferred language to write code to control yo
 weight: 45
 no_list: true
 type: docs
-image: "/general/code.png"
 imageAlt: "Program a machine"
 images: ["/general/code.png"]
 aliases:

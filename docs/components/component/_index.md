@@ -6,7 +6,7 @@ weight: 10
 type: "docs"
 description: "A NAME is a ... description of what the component is."
 tags: ["camera", "components"]
-image: "/icons/components.png"
+icon: "/icons/components.png"
 # icon: "path/to/svg/file"
 images: ["/icons/components.png"]
 draft: true

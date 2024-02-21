@@ -55,7 +55,7 @@ For information about Hugo and how to develop locally, see the [README](https://
 ## Content types
 
 When creating a new piece of content, decide which one of the four content types the content should be.
-Note this in a comment in the frontmatter of the file.
+Note this in a comment in the front matter of the file.
 
 The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of the content structure with the following four content types:
 
@@ -377,7 +377,7 @@ The command takes a screenshot at `00:00:05`.
 #### GIF-like videos
 
 GIF-like videos on our pages are generally used to show robot actions.
-We do not use the GIF file format because it uses a lot of bandwidth - more than videos - and the [best practice](https://developer.chrome.com/en/docs/lighthouse/performance/efficient-animated-content/) is to not use them.
+We do not use the GIF file format within our docs because it uses a lot of bandwidth - more than videos - and the [best practice](https://developer.chrome.com/en/docs/lighthouse/performance/efficient-animated-content/) is to not use them.
 
 Instead, we use a video div with two sources:
 
@@ -544,6 +544,19 @@ The `2gif` commands only turn the first 5 seconds of a video into a low res gif.
 {{< /alert >}}
 
 {{% /expand%}}
+
+{{% alert title="Note" color="note" %}}
+
+If you use `webmSrc` and `mp4Src` to add a card video for a page (such as to a tutorial), you should also add a <file>.gif</file> version of the video to the front matter.
+Hugo uses the GIF as a link preview image that gets displayed on external sites when someone shares the link, for example on Slack or Twitter.
+
+Why?
+
+- GIFs take more bandwidth than MP4 and WEBM videos, so on our page, we prefer to use MP4 and WEBM.
+- Link previews using `og:image` only support GIFs
+- Automatic conversion between the formats is possible but we also need to make sure that the resulting GIFs are presentable and under 1MB.
+
+{{% /alert %}}
 
 ## Formatting guide
 

@@ -9,7 +9,7 @@ videoAlt: "An example Viam-integrated Flutter app."
 tags: ["sdk", "flutter"]
 authors: ["Clint Purser"]
 languages: ["flutter"]
-viamresources: ["base"]
+viamresources: []
 images: ["/tutorials/flutter-app/preview.gif"]
 level: "Intermediate"
 date: "2024-01-17"

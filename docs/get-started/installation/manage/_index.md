@@ -5,9 +5,8 @@ weight: 30
 no_list: true
 type: docs
 draft: false
-image: "/get-started/installation/thumbnails/manage.png"
-imageAlt: "Manage viam-server"
 images: ["/get-started/installation/thumbnails/manage.png"]
+imageAlt: "Manage viam-server"
 description: "Control and troubleshoot viam-server."
 aliases:
   - /installation/update/
