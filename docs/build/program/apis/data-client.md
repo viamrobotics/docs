@@ -30,12 +30,15 @@ Data client API methods are only available in the Python SDK.
 ## Establish a connection
 
 To use the Viam data client API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate a [`DataClient`](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient).
+
+You will also need an API key and API key ID to authenticate your session.
+To get an API key (and corresponding ID), you have two options:
 See the following example for reference.
 
 To get an API key and API key ID to authenticate, you have two options:
 
-- [Get an API key](/fleet/rbac/#add-an-api-key) from the [Viam app](https://app.viam.com), or
-- use the Viam CLI [to generate an API key](/fleet/cli/#authenticate).
+- [Create an API key using the Viam app](/fleet/rbac/#add-an-api-key)
+- [Create an API key using the Viam CLI](/fleet/cli/#create-an-organization-api-key)
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio

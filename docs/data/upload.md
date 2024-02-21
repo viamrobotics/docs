@@ -12,7 +12,7 @@ images: ["/services/icons/data-capture.svg"]
 ---
 
 If you configured [data capture](/data/capture/) on your machine, data is automatically uploaded to the Viam cloud from the directory and at the interval you specified.
-However, if you want to upload a batch of data manually from somewhere else either on your machine, or from your personal computer or mobile device, you have several options:
+However, if you want to upload a batch of data manually from somewhere else, either on your machine or from your personal computer or mobile device, you have several options:
 
 - Run a Python script to upload files from a folder using the data client API `file_upload_from_path` method.
 - Run a Golang script calling the data management service `sync` method.
@@ -20,7 +20,7 @@ However, if you want to upload a batch of data manually from somewhere else eith
 
 ## Upload data with a Python script
 
-You can use the Viam Python SDK's data client API [`file_upload_from_path`](/build/program/apis/data-client/#fileuploadfrompath) method to upload each file you'd like to upload from your computer to the Viam cloud.
+You can use the Viam Python SDK's data client API [`file_upload_from_path`](/build/program/apis/data-client/#fileuploadfrompath) method to upload one or more files from your computer to the Viam cloud.
 
 1. Install the [Viam Python SDK](https://python.viam.dev/) by running the following command on the computer from which you want to upload data:
 
@@ -30,51 +30,53 @@ You can use the Viam Python SDK's data client API [`file_upload_from_path`](/bui
 
 2. Create a Python script file in a directory of your choice and [add code to establish a connection](/build/program/apis/data-client/#establish-a-connection) from your computer to your [Viam app](https://app.viam.com) {{< glossary_tooltip term_id="location" text="location" >}} or individual {{< glossary_tooltip term_id="part" text="machine part" >}}.
 
-3. To upload just one file, make a call to the `file_upload_from_path` method according to [the data client API documentation](/build/program/apis/data-client/#fileuploadfrompath).
-   The following example code could be placed inside the `main()` function (or a function called from `main()`):
+3. Use the `file_upload_from_path` method to upload your data, depending on whether you are uploading one or multiple files:
+   - To upload just one file, make a call to `file_upload_from_path` according to [the data client API documentation](/build/program/apis/data-client/#fileuploadfrompath).
+     The following example code could be placed inside the `main()` function (or a function called from `main()`):
 
-   ```python {class="line-numbers linkable-line-numbers"}
-   await data_client.file_upload_from_path(
-     # The ID of the machine part the file should be associated with
-     part_id="abcdefg-1234-abcd-5678-987654321xyzabc",
-     # Any tags you want to apply to this file
-     tags=["cat", "animals", "brown"],
-     # Path to the file
-     filepath="/Users/Artoo/my_cat_photos/brown-cat-on-a-couch.png"
-   )
-   ```
-
-   To upload all the files in a directory, you can use the same [`file_upload_from_path`](/build/program/apis/data-client/#fileuploadfrompath) method inside a `for` loop, for example:
-
-   ```python {class="line-numbers linkable-line-numbers"}
-   import os # Add this package up at the top with your other imports
-
-   my_data_directory = "/Users/Artoo/my_cat_photos"
-
-   for file_name in os.listdir(my_data_directory):
+     ```python {class="line-numbers linkable-line-numbers"}
      await data_client.file_upload_from_path(
+       # The ID of the machine part the file should be associated with
        part_id="abcdefg-1234-abcd-5678-987654321xyzabc",
+       # Any tags you want to apply to this file
        tags=["cat", "animals", "brown"],
-       filepath=os.path.join(my_data_directory, file_name)
+       # Path to the file
+       filepath="/Users/Artoo/my_cat_photos/brown-cat-on-a-couch.png"
      )
-   ```
+     ```
+
+   - To upload all the files in a directory, you can use the same [`file_upload_from_path`](/build/program/apis/data-client/#fileuploadfrompath) method inside a `for` loop, for example:
+
+     ```python {class="line-numbers linkable-line-numbers"}
+     import os # Add this package at the top of your program
+                      # with your other imports
+
+     my_data_directory = "/Users/Artoo/my_cat_photos"
+
+     for file_name in os.listdir(my_data_directory):
+       await data_client.file_upload_from_path(
+         part_id="abcdefg-1234-abcd-5678-987654321xyzabc",
+         tags=["cat", "animals", "brown"],
+         filepath=os.path.join(my_data_directory, file_name)
+       )
+     ```
 
 4. Save and run your code once.
    Running your code more than once will duplicate the data.
    View your uploaded data in your [**DATA** page in the Viam app](https://app.viam.com/data/view).
 
-## Sync data with the `sync` method
+## Sync data with a Golang script
 
 The Viam Golang SDK includes a data service API with a [`sync`](/data/#sync) method that syncs all the data from your machine to the cloud.
 The [cloud sync tools](/data/cloud-sync/) sync data automatically according to how you configure cloud sync, but if you prefer to sync programatically, you can instead run a script that calls the `sync` method.
 
 The following steps assume you already have a [data capture service configured](/data/capture/#add-the-data-management-service).
-If you want to use the `sync` API method as the only way to sync data, you should toggle sync off in your data service config (`"sync_disabled": true` in raw JSON).
+If you want to use the `sync` API method as the only way to sync data, you should toggle cloud sync off in your data service configuration (`"sync_disabled": true` in **Raw JSON** mode).
 
 1. Install the [Viam Go SDK](https://github.com/viamrobotics/rdk/tree/main/robot/client).
 
 2. Create a Go script file in a directory of your choice.
-   Go to your machine's **Code sample** tab in the [Viam app](https://app.viam.com) and click **Golang**.
+   Navigate to your machine's **Code sample** tab in the [Viam app](https://app.viam.com) and click **Golang**.
    Copy the code from that tab into your script file to establish a connection from your computer to your machine's instance in the Viam app.
 
 3. Add the required import to the list of imports at the top of your script:
@@ -85,7 +87,7 @@ If you want to use the `sync` API method as the only way to sync data, you shoul
    )
    ```
 
-4. In your `main()` function (or in a function called from `main`), call [the `sync` method as documented](/data/#sync).
+4. In your `main()` function (or in a function called from `main()`), call the [`sync` method](/data/#sync).
    For example:
 
    ```go {class="line-numbers linkable-line-numbers"}
