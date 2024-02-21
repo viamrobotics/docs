@@ -347,11 +347,10 @@ Switch to **Raw JSON** mode to configure webhooks as follows:
 
 ## Fragments
 
-Fragments are a way of sharing and managing identical {{< glossary_tooltip term_id="resource" text="resource" >}} configuration files across multiple machines.
-For example, if you have multiple machines with the same hardware, wired the same way, you can create and share a fragment and add it to any number of machines.
-When changes are made to the fragment, those changes are automatically carried to all machines that include the fragment in their config.
+You can use fragments to share similar {{< glossary_tooltip term_id="resource" text="resource" >}} configuration files across multiple machines in your fleet.
+For example, if you have multiple machines with the same motor hardware, wired the same way, you can create a fragment to configure that motor and share it easily across all of your machines, without needing to individually configure the motor component for each machine.
 
-See [Configure a Fleet](/fleet/configure-a-fleet/) for instructions on how to use fragments.
+See [Use Fragments to Configure a Fleet](/fleet/configure-a-fleet/) for more information on creating and deploying fragments.
 
 ## Auth/network
 
