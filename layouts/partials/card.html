@@ -17,27 +17,27 @@
     <a href="{{.RelPermalink}}">
     {{ end }}
     {{ if $imageOverwrite }}
-        <div class="hover-card-img">
-          {{ partial "imgproc.html" (dict "src" ($imageOverwrite) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
-        </div>
+      <div class="hover-card-img">
+        {{ partial "imgproc.html" (dict "src" ($imageOverwrite) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
+      </div>
     {{ else }}
       {{ if .Params.webmSrc }}
         <div class="hover-card-video">
           {{ partial "gif.html" (dict "webm_src" .Params.webmSrc "mp4_src" .Params.mp4Src "alt" .Params.videoAlt "maxWidth" "100%" "class" "" ) }}
         </div>
       {{ else if .Params.images }}
-          <div class="hover-card-img">
-            {{ $img := resources.GetMatch (index .Params.images 0) }}
-            {{ if $img }}
-              {{ if .Params.imageAlt }}
-                {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "400x" "alt" (.Params.imageAlt) "style" "") }}
-              {{ else }}
-                {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
-              {{ end }}
+        <div class="hover-card-img">
+          {{ $img := resources.GetMatch (index .Params.images 0) }}
+          {{ if $img }}
+            {{ if .Params.imageAlt }}
+              {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "400x" "alt" (.Params.imageAlt) "style" "") }}
             {{ else }}
-              {{ errorf "Couldn't get image %s" (index .Params.images 0) }}
+              {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
             {{ end }}
-          </div>
+          {{ else }}
+            {{ errorf "Couldn't get image %s" (index .Params.images 0) }}
+          {{ end }}
+        </div>
       {{ else if .Params.icon }}
         <div class="hover-card-icon">
           {{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
