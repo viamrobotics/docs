@@ -90,6 +90,6 @@ If you need to modify the config of just one machine that uses a fragment you ca
 
 ## Next steps
 
-Viam provides several [pre-made fragments](https://app.viam.com/fragments) you can use as a template for writing your own fragments.
+Viam provides several [pre-made fragments](https://app.viam.com/fragments) which you can use as templates for writing your own fragments.
 
 For an example of a fragment that configures multiple components and services, see the [Viam Rover fragment](https://app.viam.com/fragment?id=3e8e0e1c-f515-4eac-8307-b6c9de7cfb84).
