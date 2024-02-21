@@ -1,6 +1,6 @@
 If you want to control your motor by specifying the distance and velocity in terms of distance and distance/time, for example 2 rotations at 5 m/s and you have an encoder, you can make use of the position of your encoder to adjust the distance and velocity.
 
-You can do this in two ways.
+You can do this in two ways:
 
 The first just uses the movement sensor feedback to increase or decrease the power being set on the motors in increments of 10%.
 
