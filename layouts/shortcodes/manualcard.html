@@ -7,7 +7,7 @@
           {{if $img }}
             {{ partial "imgproc.html" (dict "src" (.Get "img") "resize" "400x" "alt" (.Params.imageAlt) "style" "") }}
           {{ else }}
-            {{ errorf "Couldn't get image %s" .Params.images }}
+            {{ errorf "Couldn't get image %s" (.Get "img") }}
           {{ end }}
         </div>
         {{ end }}
