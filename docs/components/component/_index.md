@@ -6,7 +6,7 @@ weight: 10
 type: "docs"
 description: "A NAME is a ... description of what the component is."
 tags: ["camera", "components"]
-icon: true
+# icon: true
 images: ["/icons/components.svg"]
 draft: true
 no_list: true
