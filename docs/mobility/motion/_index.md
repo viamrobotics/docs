@@ -176,7 +176,7 @@ moved = await motion.move(component_name=gripper_name,
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
     - The motion service assumes that obstacles are static.
       If a worldstate obstacle is physically attached to a part of the robot such that it will move with the robot, specify it with _transforms_.
-    - Obstacles are defined by a pose and a [geometry](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry) with dimensions.
+    - Obstacles are defined by a [(pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose) and a [(geometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry) with dimensions.
       The pose location is the point at the center of the geometry.
     - Obstacle locations are defined with respect to the _origin_ of the specified frame.
       Their poses are relative to the _origin_ of the specified frame.
