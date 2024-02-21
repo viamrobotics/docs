@@ -70,9 +70,11 @@ You can adjust the heartbeat window in the configuration of your machine:
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-On your **Auth/Network** tab, set the **Heartbeat Window**:
+Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
+Find the card belonging to the main {{< glossary_tooltip term_id="part" text="part" >}} of your machine at the top of the nested resource tree.
+Click the card to expand it, then click **Set heartbeat window** to adjust the **Heartbeat Window**:
 
-![Heartbeat window configuration screen](/build/program/sessions/heartbeatwindow.png)
+{{<imgproc src="/build/program/sessions/heartbeatwindow.png" alt="Heartbeat window configuration screen" resize="400x" declaredimensions=true >}}
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
@@ -111,8 +113,9 @@ If you are looking to implement session management yourself only to increase the
 
 To manage your session with the session management API:
 
-1. [Disable default session management](#disable-default-session-management)
-1. [Use the session management API to manually manage sessions](#use-the-session-management-api-to-manually-manage-sessions)
+- [Manage sessions with the session management API](#manage-sessions-with-the-session-management-api)
+  - [Disable default session management](#disable-default-session-management)
+  - [Use the session management API to manually manage sessions](#use-the-session-management-api-to-manually-manage-sessions)
 
 ### Disable default session management
 
