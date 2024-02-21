@@ -233,26 +233,18 @@ We found that if set up this way, the following positions accurately show the co
 
 ### 2. Configure the ML Model and vision services to use the detector
 
+The [ML model service](/ml/) allows you to deploy a machine learning model to your robot.
+This tutorial uses a pre-trained machine learning (ML) model from the Viam registry named [`effdet0`](https://app.viam.com/ml-model/bill/effdet0).
+This model can detect a variety of objects, which you can find in the provided <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
+
 Click the **Config** tab and then the **Services** subtab.
 From there, scroll to the bottom and create a new service of **type** `ML Models`, **model** `tflite_cpu` named 'stuff_detector'.
 Your robot will register this as a machine learning model and make it available for use.
 
 {{<imgproc src="/tutorials/ai-integration/mlmodels_service_add.png" resize="500x" declaredimensions=true alt="Adding the ML Models Service." style="border:1px solid #000">}}
 
-Make sure `Path to Existing Model on Robot` is selected.
-
-Update the **Model Path** and **Label Path** to match where you [copied the tutorial software](#5-set-up-tutorial-software).
-For example, the model path would would be similar to:
-
-```sh {class="command-line" data-prompt="$"}
-/home/<username>/tutorial-openai-integration/detector/effdet0.tflite
-```
-
-and the label path similar to:
-
-```sh {class="command-line" data-prompt="$"}
-/home/<username>/tutorial-openai-integration/detector/labels.txt
-```
+Select the **Deploy model on robot** for the **Deployment** field.
+Then select the `bill:effdet0` model from the **Models** dropdown.
 
 Now, create a new service of **type** `vision`, **model** `ML Model` named 'vis-stuff-detector'.
 Your companion robot will use this to interface with the machine learning model allowing you to - well, detect stuff!
