@@ -17,7 +17,7 @@
     <a href="{{.RelPermalink}}">
     {{ end }}
     {{ if $imageOverwrite }}
-        <div class="hover-card-icon">
+        <div class="hover-card-img">
           {{ partial "imgproc.html" (dict "src" ($imageOverwrite) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
         </div>
     {{ else }}
