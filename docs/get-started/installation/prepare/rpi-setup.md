@@ -63,7 +63,7 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 
     You should be brought back to the initial launch screen.
 
-1.  Now, pick your storage medium.
+1.  Pick your storage medium.
     Click `CHOOSE STORAGE`:
 
     {{< imgproc alt="Raspberry Pi Imager window showing the main page, and the 'Choose Storage' button is selected." src="/get-started/installation/rpi-setup/imager-selected-os.png" resize="800x" declaredimensions=true >}}
@@ -73,7 +73,7 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 
     {{< imgproc alt="The storage screen is shown with a generic SD card available as an option." src="/get-started/installation/rpi-setup/imager-select-storage.png" resize="800x" declaredimensions=true >}}
 
-1.  Now, configure your Raspberry Pi for remote access.
+1.  Configure your Raspberry Pi for remote access.
     Click **Next**.
     When prompted to apply OS customization settings, select **EDIT SETTINGS**.
 
@@ -81,7 +81,7 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 
     {{% alert title="Important" color="note" %}}
 
-    If you are using a non-Raspberry Pi OS, altering the OS customization settings will cause the initial boot to fail.
+If you are using a non-Raspberry Pi OS, altering the OS customization settings will cause the initial boot to fail.
 
     {{% /alert %}}
 
