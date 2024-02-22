@@ -5,7 +5,7 @@ weight: 10
 type: "docs"
 description: "Configure a renogy model power sensor to return battery voltage and load current, power, and various other readings."
 tags: ["power sensor", "components", "renogy"]
-icon: "/icons/components/sensor.svg"
+icon: true
 images: ["/icons/components/sensor.svg"]
 aliases:
   - "/components/power-sensor/renogy/"

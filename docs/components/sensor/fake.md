@@ -5,7 +5,7 @@ weight: 10
 type: "docs"
 description: "Configure a fake sensor to use for testing."
 tags: ["sensor", "components"]
-icon: "/icons/components/sensor.svg"
+icon: true
 images: ["/icons/components/sensor.svg"]
 aliases:
   - "/components/sensor/fake/"

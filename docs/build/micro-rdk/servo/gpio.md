@@ -5,7 +5,8 @@ weight: 90
 type: "docs"
 description: "Configure a gpio servo with a microcontroller."
 tags: ["servo", "components"]
-icon: "/icons/components/servo.svg"
+icon: true
+images: ["/icons/components/servo.svg"]
 aliases:
   - /micro-rdk/servo/gpio/
 # SME: Gautham

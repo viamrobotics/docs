@@ -5,7 +5,7 @@ description: "The navigation service uses GPS to autonomously navigate a rover t
 type: docs
 weight: 40
 no_list: true
-icon: "/services/icons/navigation.svg"
+icon: true
 images: ["/services/icons/navigation.svg"]
 tags: ["navigation", "services", "base", "rover"]
 aliases:

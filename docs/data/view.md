@@ -5,8 +5,7 @@ description: "View and filter data on the DATA page in the Viam Cloud."
 weight: 38
 type: "docs"
 tags: ["data management", "cloud", "sync"]
-icon: "/ml/collect.svg"
-imageAlt: "View images"
+icon: true
 images: ["/ml/collect.svg"]
 aliases:
   - /manage/data/view/

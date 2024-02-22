@@ -16,8 +16,7 @@ tags:
     "python SDK",
     "CAN",
   ]
-icon: "/registry/module-icon.svg"
-imageAlt: "Create a custom modular arm component"
+icon: true
 images: ["/registry/module-icon.svg"]
 aliases:
   - "/extend/modular-resources/examples/custom-arm/"

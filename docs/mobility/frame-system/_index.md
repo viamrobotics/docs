@@ -5,7 +5,8 @@ description: "The frame system holds reference frame information for the relativ
 type: docs
 weight: 10
 no_list: true
-icon: "/services/icons/frame-system.svg"
+icon: true
+images: ["/services/icons/frame-system.svg"]
 tags: ["frame system", "services"]
 aliases:
   - /services/frame-system/

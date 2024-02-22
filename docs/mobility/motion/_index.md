@@ -5,7 +5,8 @@ weight: 20
 type: "docs"
 description: "The motion service enables your machine to plan and move its components relative to itself, other machines, and the world."
 tags: ["motion", "motion planning", "services"]
-icon: "/services/icons/motion.svg"
+icon: true
+images: ["/services/icons/motion.svg"]
 no_list: true
 aliases:
   - "/services/motion/"

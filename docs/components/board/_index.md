@@ -7,7 +7,7 @@ type: "docs"
 no_list: true
 description: "The signal wire hub of a machine, with GPIO pins for transmitting signals between the machine's computer and its other components."
 tags: ["board", "components"]
-icon: "/icons/components/board.svg"
+icon: true
 images: ["/icons/components/board.svg"]
 modulescript: true
 aliases:

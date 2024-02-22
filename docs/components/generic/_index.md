@@ -6,7 +6,7 @@ weight: 55
 type: "docs"
 description: "A component that does not fit any of the other APIs."
 tags: ["generic", "components"]
-icon: "/icons/components/generic.svg"
+icon: true
 images: ["/icons/components/generic.svg"]
 no_list: true
 modulescript: true

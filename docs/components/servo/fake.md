@@ -5,7 +5,8 @@ weight: 10
 type: "docs"
 description: "Configure a fake servo."
 tags: ["servo", "components"]
-icon: "/icons/components/servo.svg"
+icon: true
+images: ["/icons/components/servo.svg"]
 aliases:
   - "/components/servo/fake/"
 # SME: Rand

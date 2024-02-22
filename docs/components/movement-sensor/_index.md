@@ -6,7 +6,7 @@ weight: 70
 type: "docs"
 description: "A sensor that measures location, kinematic data, or both."
 tags: ["movement sensor", "gps", "imu", "sensor", "components"]
-icon: "/icons/components/imu.svg"
+icon: true
 images: ["/icons/components/imu.svg"]
 no_list: true
 modulescript: true

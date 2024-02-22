@@ -5,7 +5,8 @@ weight: 60
 type: "docs"
 tags: ["data management", "ml", "model training", "vision"]
 description: "Design your ML Model service to work with Viam's vision services."
-icon: "/services/icons/ml.svg"
+icon: true
+images: ["/services/icons/ml.svg"]
 # SME: Bijan Haney
 ---
 

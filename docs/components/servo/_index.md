@@ -6,7 +6,8 @@ weight: 80
 type: "docs"
 description: "A hobby servo is a special type of small motor whose position you can precisely control."
 tags: ["servo", "components"]
-icon: "/icons/components/servo.svg"
+icon: true
+images: ["/icons/components/servo.svg"]
 no_list: true
 modulescript: false
 aliases:

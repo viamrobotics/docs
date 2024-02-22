@@ -6,7 +6,7 @@ type: "docs"
 no_list: true
 description: "The moving platform that the other parts of a mobile robot attach to."
 tags: ["base", "components"]
-icon: "/icons/components/base.svg"
+icon: true
 images: ["/icons/components/base.svg"]
 modulescript: true
 aliases:

@@ -2,7 +2,6 @@
 title: "Build Your Machine with Flexible Building Blocks"
 linkTitle: "Build"
 description: "Configure and program your smart machine with Viam."
-icon: "/platform/build.svg"
 images: ["/platform/build.svg"]
 imageAlt: "Tools and building blocks."
 weight: 410

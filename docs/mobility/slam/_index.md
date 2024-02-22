@@ -5,7 +5,8 @@ weight: 30
 type: "docs"
 description: "Simultaneous Localization And Mapping (SLAM) allows your machine to create a map of its surroundings and find its location within that map."
 tags: ["slam", "services"]
-icon: "/services/icons/slam.svg"
+icon: true
+images: ["/services/icons/slam.svg"]
 no_list: true
 aliases:
   - "/services/slam/"

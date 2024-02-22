@@ -5,7 +5,7 @@ weight: 10
 type: "docs"
 description: "Configure a fake power sensor to test software without the physical hardware."
 tags: ["sensor", "power sensor"]
-icon: "/icons/components/sensor.svg"
+icon: true
 images: ["/icons/components/sensor.svg"]
 aliases:
   - "/components/power-sensor/fake/"

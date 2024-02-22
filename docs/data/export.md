@@ -5,8 +5,7 @@ description: "Download data from and upload data to the Viam app from your local
 weight: 40
 type: "docs"
 tags: ["data management", "cloud", "sync"]
-icon: "/services/icons/data-capture.svg"
-imageAlt: "Export data from the Viam app"
+icon: true
 images: ["/services/icons/data-capture.svg"]
 aliases:
   - /manage/data/export/

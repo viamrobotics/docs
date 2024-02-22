@@ -5,7 +5,8 @@ weight: 40
 type: "docs"
 tags: ["modules", "modular resources", "registry"]
 description: "Iterate on and test your modules locally before uploading to the Viam registry."
-icon: "/services/icons/ml.svg"
+icon: true
+images: ["/services/icons/ml.svg"]
 ---
 
 Once you have [created the first version of your module](/registry/create/), you can use the procedure outlined on this page to iterate on your design, and test changes quickly.

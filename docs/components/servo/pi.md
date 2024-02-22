@@ -5,7 +5,8 @@ weight: 90
 type: "docs"
 description: "Configure a pi servo to integrate a hobby servo controlled by GPIO pins on a Raspberry Pi board."
 tags: ["servo", "components"]
-icon: "/icons/components/servo.svg"
+icon: true
+images: ["/icons/components/servo.svg"]
 aliases:
   - "/components/servo/pi/"
 # SME: Rand
