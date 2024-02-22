@@ -17,7 +17,6 @@ image: "/platform/registry.svg"
 imageAlt: "Integrate other capabilities."
 no_list: true
 modulescript: true
-modelscript: true
 aliases:
   - "/build/program/extend/modular-resources/"
   - "/extend/modular-resources/"
