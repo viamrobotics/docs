@@ -910,7 +910,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 - [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/)
 - [wheeled-odometry](/components/movement-sensor/wheeled-odometry/) (provides a relative estimate only based on where the base component has started)
 
-An example of a `Linear Velocity` reading:
+An example of a `LinearVelocity` reading:
 
 ```go
 // linearVelocity is an r3.Vector with X, Y, and Z magnitudes
@@ -930,7 +930,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
 - [gyro-mpu6050](/components/movement-sensor/mpu6050/)
 
-An example of a `Linear Acceleration` reading:
+An example of a `LinearAcceleration` reading:
 
 ```go
 // linearAcceleration is an r3.Vector with X, Y, and Z magnitudes
