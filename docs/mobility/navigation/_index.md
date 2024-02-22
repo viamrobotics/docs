@@ -843,6 +843,7 @@ Then use the movement sensor API's [`GetCompassHeading()`](/components/movement-
 The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/) take orientation measurements:
 
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
+- [wheeled-odometry](/components/movement-sensor/wheeled-odometry/)
 
 An example of an `Orientation` reading:
 
@@ -887,6 +888,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of the [mov
 - [gps-nmea](/components/movement-sensor/gps/gps-nmea/)
 - [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
 - [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/)
+- [wheeled-odometry](/components/movement-sensor/wheeled-odometry/)
 
 An example of a `Position` reading:
 
