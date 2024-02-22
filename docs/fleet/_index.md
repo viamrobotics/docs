@@ -5,7 +5,6 @@ weight: 430
 type: "docs"
 description: "Configure, control, debug, and manage your machines from the cloud at app.viam.com on your own or with a team."
 tags: ["fleet management", "cloud", "app"]
-icon: true
 images: ["/platform/fleet.svg"]
 no_list: true
 aliases:
