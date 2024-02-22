@@ -18,13 +18,14 @@
             </video>
           </div>
           {{ else if .Params.images }}
-          <div class="hover-card-img">
-            {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "300x" "alt" .Params.imageAlt "style" "" "class" "" "declaredimensions" false ) }}
-          </div>
-          {{ else if .Params.icon }}
-          <div class="hover-card-icon">
-            {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "300x" "alt" .Params.linkTitle "style" "" "class" (.class) "declaredimensions" false ) }}
-          </div>
+          {{- if .Params.icon -}}<div class="hover-card-icon"> {{- else -}}
+            <div class="hover-card-img"> {{- end -}}
+              {{- if .Params.imageAlt -}}
+              {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "300x" "alt" .Params.imageAlt "style" "" "class" "" "declaredimensions" false ) }}
+              {{- else -}}
+              {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "300x" "alt" .Params.linkTitle "style" "" "class" "" "declaredimensions" false ) }}
+              {{- end -}}
+            </div>
           {{ end }}
           <div {{ if (index .Params.images 0) }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
             <div>
