@@ -81,7 +81,7 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 
     {{% alert title="Important" color="note" %}}
 
-If you are using a non-Raspberry Pi OS, altering the OS customization settings will cause the initial boot to fail.
+   If you are using a non-Raspberry Pi OS, altering the OS customization settings will cause the initial boot to fail.
 
     {{% /alert %}}
 
@@ -97,46 +97,46 @@ If you are using a non-Raspberry Pi OS, altering the OS customization settings w
     1.  Click on **SERVICES**.
     1.  Check **Enable SSH**.
 
-    1.  {{< tabs >}}
-        {{% tab name="SSH" %}}
+    1. {{< tabs >}}
+       {{% tab name="SSH" %}}
 
-    To use the SSH key method, select **Allow public-key authentication only**.
+   To use the SSH key method, select **Allow public-key authentication only**.
 
-    If you select **Allow public-key authentication only**, and the section **Set authorized\_ keys for ''** is pre-populated, that means you have a public SSH key that is ready to use.
-    In that case, you do not have to change this section.
-    If this section is empty, you can either generate a new SSH key using [these instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), or you can use password authentication instead.
+   If you select **Allow public-key authentication only**, and the section **Set authorized\_ keys for ''** is pre-populated, that means you have a public SSH key that is ready to use.
+   In that case, you do not have to change this section.
+   If this section is empty, you can either generate a new SSH key using [these instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), or you can use password authentication instead.
 
-    {{< imgproc alt="Raspberry Pi Imager window showing 'Set Hostname' and 'Enable SSH' both selected." src="/get-started/installation/rpi-setup/imager-set-ssh.png" resize="400x" declaredimensions=true >}}
+   {{< imgproc alt="Raspberry Pi Imager window showing 'Set Hostname' and 'Enable SSH' both selected." src="/get-started/installation/rpi-setup/imager-set-ssh.png" resize="400x" declaredimensions=true >}}
 
-    {{% /tab %}}
-    {{% tab name="Password" %}}
+   {{% /tab %}}
+   {{% tab name="Password" %}}
 
-    To use the password method, select **Use password authentication**.
-    Then, return to the **GENERAL** tab of the OS Customization window.
-    There, select **Set username and password** and set a username and a password:
+   To use the password method, select **Use password authentication**.
+   Then, return to the **GENERAL** tab of the OS Customization window.
+   There, select **Set username and password** and set a username and a password:
 
-    {{< imgproc alt="Raspberry Pi Imager window showing the 'Set username and password' option is selected." src="/get-started/installation/rpi-setup/imager-set-passwordauthentication.png" resize="400x" declaredimensions=true >}}
+   {{< imgproc alt="Raspberry Pi Imager window showing the 'Set username and password' option is selected." src="/get-started/installation/rpi-setup/imager-set-passwordauthentication.png" resize="400x" declaredimensions=true >}}
 
-    {{% alert title="Tip" color="tip" %}}
+   {{% alert title="Tip" color="tip" %}}
 
-    Be sure that you remember the `hostname`, `username`, and `password` you use, as you will need this when you SSH into your Pi.
+   Be sure that you remember the `hostname`, `username`, and `password` you use, as you will need this when you SSH into your Pi.
 
-    {{% /alert  %}}
+   {{% /alert  %}}
 
-    {{< alert title="Caution" color="caution" >}}
+   {{< alert title="Caution" color="caution" >}}
 
-    The default username and password on Raspberry Pis are
+   The default username and password on Raspberry Pis are
 
-    - username: pi
-    - password: raspberry
+   - username: pi
+   - password: raspberry
 
-    However, it's [bad practice](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/) to keep the default username and password on a Raspberry Pi since doing so makes it easy for hackers to get access to your Pi.
-    In the past, malware infected thousands of Raspberry Pi devices that were using the default username and password.
+   However, it's [bad practice](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/) to keep the default username and password on a Raspberry Pi since doing so makes it easy for hackers to get access to your Pi.
+   In the past, malware infected thousands of Raspberry Pi devices that were using the default username and password.
 
-    {{< /alert >}}
+   {{< /alert >}}
 
-    {{% /tab %}}
-    {{< /tabs >}}
+   {{% /tab %}}
+   {{< /tabs >}}
 
     Lastly, connect your Pi to Wi-Fi so that you can run `viam-server` wirelessly.
     Check **Configure wireless LAN** and enter your wireless network credentials.
@@ -167,7 +167,7 @@ If you are using a non-Raspberry Pi OS, altering the OS customization settings w
 
     {{< imgproc alt="You will be notified with a dialogue box informing you that Raspberry Pi OS (Legacy, 64-bit) Full has been written successfully." src="/get-started/installation/rpi-setup/imager-done.png" resize="800x" declaredimensions=true >}}
 
-1.  Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an outlet.
+3.  Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an outlet.
     A red LED will turn on to indicate that the Pi is connected to power.
 
 ## Connect with SSH
