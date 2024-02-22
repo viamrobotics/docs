@@ -56,8 +56,8 @@ Edit and fill in the attributes as applicable.
         "right": [
           "<your-right-motor-name>" // <INSERT ANY ADDITIONAL RIGHT MOTOR NAMES>
         ],
-        "wheel_circumference_mm": <#>,
-        "width_mm": <#>
+        "wheel_circumference_mm": <int>,
+        "width_mm": <int>
       },
       "depends_on": []
     }

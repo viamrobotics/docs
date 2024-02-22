@@ -100,4 +100,6 @@ The following attributes are available for `roboclaw` motors:
 
 Refer to your motor and motor driver data sheets for specifics.
 
+## Test the motor
+
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}

@@ -63,7 +63,12 @@ Here’s an example configuration:
           <...> // insert pins struct
         },
         "encoder": "<your-encoder-name>",
-        "ticks_per_rotation": <#>
+        "ticks_per_rotation": <int>,
+        "control_parameters": {
+          "p": <int>,
+          "i": <int>,
+          "d": <int>
+        }
       },
       "depends_on": []
     }
@@ -113,7 +118,12 @@ Here’s an example configuration:
           "dir": "18"
         },
         "encoder": "myEncoder",
-        "ticks_per_rotation": 9600
+        "ticks_per_rotation": 9600,
+        "control_parameters": {
+          "p": 0.2,
+          "i": 0.5,
+          "d": 0.0
+        }
       },
       "depends_on": []
     }
@@ -138,6 +148,7 @@ In addition to the [attributes for a non-encoded motor](/components/motor/gpio/)
 | `encoder` | string | **Required** | `name` of the encoder. |
 | `ticks_per_rotation` | int | **Required** | Number of ticks in a full rotation of the encoder and motor shaft. |
 | `ramp_rate` | float | Optional | Rate to increase the motor's input voltage (power supply) per second when increasing the speed the motor rotates (RPM). <br> Range = (`0.0`, `1.0`] <br> Default: `0.2` |
+| `control_parameters` | object | Optional | A JSON object containing the coefficients for the proportional, integral, and derivative terms. If you want these values to be auto-tuned, you can set all values to 0: `{ "p": 0, "i": 0, "d": 0 }`, and `viam-server` will auto-tune and log the calculated values. Tuning takes several seconds and spins the motors. Copy the values from the logs and add them to the configuration once tuned for the values to take effect. For more information see [Control motor velocity with a sensor](#control-motor-velocity-with-a-sensor). |
 
 {{% alert title="Info" color="info" %}}
 
@@ -174,3 +185,7 @@ The position, orientation, and linear and angular velocity of the rover changing
 {{<gif webm_src="/components/encoded-motor/controls_change.webm" mp4_src="/components/encoded-motor/controls_change.mp4" alt="The control tab of a movement sensor on a base with encoded motors as it turns">}}
 
 If the motor does not appear on the **Control** tab, or if you notice unexpected behavior, check your machine's [**Logs** tab](/fleet/machines/#logs) for errors, and review the configuration.
+
+## Control motor velocity with a sensor
+
+{{< readfile "/static/include/components/motor-sensor.md" >}}
