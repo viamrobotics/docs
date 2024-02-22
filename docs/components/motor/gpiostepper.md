@@ -117,7 +117,7 @@ The following attributes are available for `gpiostepper` motors:
 
 Refer to your motor and motor driver data sheets for specifics.
 
-### Wiring example
+## Wiring example
 
 Typically, a stepper motor will have an even number of wires.
 Each pair of wires forms a loop through a coil of the motor.
@@ -130,5 +130,7 @@ The following example uses a Big Tree Tech breakout board with a [TMC2209 integr
 
 In this particular example the enable pin on the upper left corner of the driver is connected to ground to pull it low.
 See the data sheet of your stepper motor and stepper motor driver for information on how to wire your specific hardware.
+
+## Test the motor
 
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}

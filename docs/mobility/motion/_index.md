@@ -176,7 +176,7 @@ moved = await motion.move(component_name=gripper_name,
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
     - The motion service assumes that obstacles are static.
       If a worldstate obstacle is physically attached to a part of the robot such that it will move with the robot, specify it with _transforms_.
-    - Obstacles are defined by a pose and a [geometry](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry) with dimensions.
+    - Obstacles are defined by a [(pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose) and a [(geometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry) with dimensions.
       The pose location is the point at the center of the geometry.
     - Obstacle locations are defined with respect to the _origin_ of the specified frame.
       Their poses are relative to the _origin_ of the specified frame.
@@ -393,6 +393,7 @@ Make sure the [SLAM service](/mobility/slam/) you use supports usage of the foll
   - `plan_deviation_m` [(float)](https://docs.python.org/3/library/functions.html#float): The distance in meters that the machine can deviate from the motion plan.
   - `linear_m_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Linear velocity this machine should target when moving.
   - `angular_degs_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Angular velocity this machine should target when turning.
+- `obstacles` [Optional\[Iterable\[Geometry\]\]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry): Obstacles, specified in the SLAM frame coordinate system, to be considered when planning the motion of the component.
 - `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -437,6 +438,7 @@ execution_id = await motion.move_on_map(component_name=my_base_resource_name,
     - `PlanDeviationM` [(float64)](https://pkg.go.dev/builtin#float64): The distance in meters that the machine can deviate from the motion plan.
     - `LinearMPerSec` [(float64)](https://pkg.go.dev/builtin#float64): Linear velocity this machine should target when moving.
     - `AngularDegsPerSec` [(float64)](https://pkg.go.dev/builtin#float64): Angular velocity this machine should target when turning.
+  - `Obstacles` [(\[\]spatialmath.Geometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry): Obstacles, specified in the SLAM frame coordinate system, to be considered when planning the motion of the component.
   - `Extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
