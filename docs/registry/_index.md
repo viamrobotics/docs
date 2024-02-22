@@ -39,6 +39,21 @@ See [Machine Learning](/ml/) for more information.
 The Viam registry hosts trained ML models that users have made public, which you can use to deploy classifiers or detectors for your use case onto your robot instead of training your own.
 You can also [upload your own model to the registry](/ml/upload-model/).
 
+You can search the available ML models from the Viam registry here:
+
+<div id="searchbox2"></div>
+<p>
+<div id="searchstats2"></div></p>
+<div class="mr-model" id="">
+  <div class="modellistheader">
+    <div class="name">Model</div>
+    <div>Description</div>
+  </div>
+<div id="hits2" class="modellist">
+</div>
+<div id="pagination2"></div>
+</div>
+
 To use an existing model from the registry, [deploy the ML model to your robot](/ml/deploy//#create-an-ml-model-service) and use a [Vision service](/ml/vision/) to make detections or classifications on-machine.
 
 ### Modular resources
@@ -52,7 +67,7 @@ If the model of component or service you want to use for your project is not bui
 
 To configure a modular resource on your robot, [add new models that others have created](/registry/configure/#add-a-modular-resource-from-the-viam-registry) from the [Viam registry](https://app.viam.com/registry) or [create your own](#create-your-own-modules).
 
-You can search the available modular resources from the Viam Registry here:
+You can search the available modular resources from the Viam registry here:
 
 <div id="searchbox"></div>
 <p>

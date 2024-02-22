@@ -1401,7 +1401,7 @@ ul.sectionlist > li:hover {
 
 // Pagination CSS start
 
-#pagination {
+#pagination, #pagination2 {
   margin: 2rem auto;
 }
 
@@ -1495,15 +1495,19 @@ a.ais-Pagination-link:hover {
   display: none;
 }
 
-// styling for model list from modular resources
+// styling for model list from registry
 
-.mr-component {
+.mr-component, mr-model {
   margin-bottom: 1rem;
 }
 
 .modellist > div {
   display: flex;
   border-bottom: 1px solid #dee2e6;
+}
+
+.modellist * .ais-Hits-list {
+  flex-direction: column;
 }
 
 .modellist * .ais-Hits.ais-Hits--empty {
