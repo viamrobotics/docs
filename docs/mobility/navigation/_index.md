@@ -826,7 +826,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 - [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/) - some GPS hardware only report heading while moving.
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
 
-An example of a `Compass Heading` reading:
+An example of a `CompassHeading` reading:
 
 ```go
 // heading is a float64 between 0-360
