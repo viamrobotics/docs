@@ -102,7 +102,6 @@ const mlmodels = document.getElementsByClassName("mr-model")
 if (mlmodels.length !== 0) {
 
   const mlmodel = document.getElementsByClassName("mr-model")[0].id;
-  console.log(mlmodel)
   const typesenseInstantsearchAdapter2 = new TypesenseInstantSearchAdapter({
     server: {
       apiKey: "Qhooem9HCRuFMVZPNQOhABAdEWJaSnlY", // Be sure to use an API key that only allows search operations
