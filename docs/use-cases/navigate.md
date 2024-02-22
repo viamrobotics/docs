@@ -8,7 +8,6 @@ no_list: true
 description: "Use Viam to teleoperate and navigate rover bases."
 icon: true
 images: ["/services/icons/navigation.svg"]
-imageAlt: "Navigation"
 ---
 
 If you have a rover base, you can use Viam to teleoperate it and to navigate autonomously.

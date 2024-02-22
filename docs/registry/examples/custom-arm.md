@@ -17,7 +17,6 @@ tags:
     "CAN",
   ]
 icon: true
-imageAlt: "Create a custom modular arm component"
 images: ["/registry/module-icon.svg"]
 aliases:
   - "/extend/modular-resources/examples/custom-arm/"

@@ -1,12 +1,11 @@
 ---
-title: "Configure Cloud Sync"
+title: "Sync captured data to the cloud with cloud sync"
 linkTitle: "Cloud Sync"
 description: "Configure cloud sync to automatically capture data in the Viam app."
 weight: 35
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 icon: true
-imageAlt: "Sync captured data to the cloud"
 images: ["/services/icons/data-cloud-sync.svg"]
 aliases:
   - "/services/data/cloud-sync/"

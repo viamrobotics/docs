@@ -6,7 +6,6 @@ weight: 38
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 icon: true
-imageAlt: "View images"
 images: ["/ml/collect.svg"]
 aliases:
   - /manage/data/view/

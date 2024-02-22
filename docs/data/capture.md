@@ -6,7 +6,6 @@ weight: 30
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 icon: true
-imageAlt: "Capture data from components"
 images: ["/services/icons/data-capture.svg"]
 aliases:
   - "/services/data/capture/"

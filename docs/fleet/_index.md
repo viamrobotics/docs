@@ -7,7 +7,6 @@ description: "Configure, control, debug, and manage your machines from the cloud
 tags: ["fleet management", "cloud", "app"]
 icon: true
 images: ["/platform/fleet.svg"]
-imageAlt: "Several smart machines."
 no_list: true
 aliases:
   - "/manage/fleet-management"

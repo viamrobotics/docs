@@ -7,7 +7,6 @@ type: "docs"
 tags: ["data management", "data", "services"]
 description: "Query tabular data that you have synced to the Viam app using the data management service with SQL or MQL."
 icon: true
-imageAlt: "Query data with SQL or MQL"
 images: ["/services/icons/data-query.svg"]
 aliases:
   - /manage/data/query/

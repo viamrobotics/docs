@@ -6,7 +6,6 @@ weight: 40
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 icon: true
-imageAlt: "Export data from the Viam app"
 images: ["/services/icons/data-capture.svg"]
 aliases:
   - /manage/data/export/

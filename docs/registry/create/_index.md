@@ -15,7 +15,6 @@ tags:
   ]
 description: "Create a module to provide a new modular resource to your machine."
 icon: true
-imageAlt: "Find a module for your machine"
 images: ["/registry/create-module.svg"]
 aliases:
   - "/extend/modular-resources/create/"

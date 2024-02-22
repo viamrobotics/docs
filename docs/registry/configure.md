@@ -15,7 +15,6 @@ tags:
 description: "Add a modular resource to your machine by configuring it."
 no_list: true
 icon: true
-imageAlt: "Find a module for your machine"
 images: ["/registry/create-module.svg"]
 aliases:
   - "program/extend/modular-resources/configure/"
