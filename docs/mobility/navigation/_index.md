@@ -826,7 +826,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 - [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/) - some GPS hardware only report heading while moving.
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
 
-An example of a `Compass Heading` reading:
+An example of a `CompassHeading` reading:
 
 ```go
 // heading is a float64 between 0-360
@@ -843,6 +843,7 @@ Then use the movement sensor API's [`GetCompassHeading()`](/components/movement-
 The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/) take orientation measurements:
 
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
+- [wheeled-odometry](/components/movement-sensor/wheeled-odometry/)
 
 An example of an `Orientation` reading:
 
@@ -887,6 +888,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of the [mov
 - [gps-nmea](/components/movement-sensor/gps/gps-nmea/)
 - [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
 - [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/)
+- [wheeled-odometry](/components/movement-sensor/wheeled-odometry/)
 
 An example of a `Position` reading:
 
@@ -910,7 +912,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 - [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/)
 - [wheeled-odometry](/components/movement-sensor/wheeled-odometry/) (provides a relative estimate only based on where the base component has started)
 
-An example of a `Linear Velocity` reading:
+An example of a `LinearVelocity` reading:
 
 ```go
 // linearVelocity is an r3.Vector with X, Y, and Z magnitudes
@@ -930,7 +932,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
 - [gyro-mpu6050](/components/movement-sensor/mpu6050/)
 
-An example of a `Linear Acceleration` reading:
+An example of a `LinearAcceleration` reading:
 
 ```go
 // linearAcceleration is an r3.Vector with X, Y, and Z magnitudes
