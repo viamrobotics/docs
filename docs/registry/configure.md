@@ -391,7 +391,7 @@ To add a local module on your machine, first add its module, then the component 
 1. Enter a **Name** for this instance of your modular resource.
 1. Enter the [module's executable path](/registry/create/#compile-or-package-your-module).
    This path must be the absolute path to the executable on your machine's filesystem.
-1. Then, click the **Add module** button, and press **Command+S** to save your config..
+1. Then, click the **Add module** button, and click **Save** in the upper right corner to save your config.
 
    {{<imgproc src="registry/configure/add-local-module-csi-cam.png" resize="600x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
 
