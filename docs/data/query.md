@@ -1,7 +1,7 @@
 ---
 title: "Query Data with SQL or MQL"
 linkTitle: "Query Data"
-weight: 40
+weight: 35
 no_list: true
 type: "docs"
 tags: ["data management", "data", "services"]

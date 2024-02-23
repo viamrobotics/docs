@@ -1,8 +1,8 @@
 ---
-title: "Upload and Export Data"
-linkTitle: "Upload and Export Data"
-description: "Download data from and upload data to the Viam app from your local computer using the data client API, Viam CLI, or Viam mobile app."
-weight: 40
+title: "Export Data"
+linkTitle: "Export Data"
+description: "Download data from the Viam app to your local computer using the data client API or the Viam CLI."
+weight: 45
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 icon: true
@@ -12,8 +12,7 @@ aliases:
 # SME: Alexa Greenberg
 ---
 
-Download machine data to or upload data from your computer with the Viam CLI or data client API.
-Also, upload images to the cloud directly through the Viam mobile app.
+Download machine data to your computer with the Viam CLI or data client API.
 
 ## Export data with the Viam CLI
 
@@ -53,18 +52,6 @@ The following methods are supported by the data client API:
 {{< readfile "/static/include/services/apis/data-client.md" >}}
 
 Click on the method name for more information.
-
-## Upload images with the Viam mobile app
-
-Upload images as machine data straight from your phone, skipping the normal data capture and cloud synchronization process, through the [Viam mobile app](/fleet/#the-viam-mobile-app).
-This is useful if you want to capture images for training machine learning models on the go.
-
-1. Select **Home** on the mobile app, choose your organization, and select a location and machine.
-2. Click the menu button marked "**...**" in the upper right corner.
-3. Click **Upload Images**.
-4. Select each image you want to upload, and click **Add**.
-
-As for metadata, these images are associated with the machine part you selected, and aren't associated with a component or method.
 
 ## Next steps
 
