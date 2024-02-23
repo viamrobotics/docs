@@ -69,7 +69,7 @@ async def main():
         if model.visibility == 2:
             json_m = {
                 "id": model.item_id,
-                "model_id": module.item_id,
+                "model_id": model.item_id,
                 "total_organization_usage": model.total_organization_usage,
                 "total_robot_usage": model.total_robot_usage,
                 "description": model.description,
