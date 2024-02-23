@@ -41,18 +41,24 @@ You can also [upload your own model to the registry](/ml/upload-model/).
 
 You can search the available ML models from the Viam registry here:
 
-<div id="searchbox2"></div>
+<div id="searchboxML"></div>
 <p>
-<div id="searchstats2"></div></p>
+<div id="searchstatsML"></div></p>
 <div class="mr-model" id="">
   <div class="modellistheader">
     <div class="name">Model</div>
     <div>Description</div>
   </div>
-<div id="hits2" class="modellist">
+<div id="hitsML" class="modellist">
 </div>
-<div id="pagination2"></div>
+<div id="paginationML"></div>
 </div>
+<noscript>
+    <div class="alert alert-caution" role="alert">
+        <h4 class="alert-heading">Javascript</h4>
+        <p>Please enable javascript to see and search ML models.</p>
+    </div>
+</noscript>
 
 To use an existing model from the registry, [deploy the ML model to your robot](/ml/deploy//#create-an-ml-model-service) and use a [Vision service](/ml/vision/) to make detections or classifications on-machine.
 
@@ -82,6 +88,12 @@ You can search the available modular resources from the Viam registry here:
 </div>
 <div id="pagination"></div>
 </div>
+<noscript>
+    <div class="alert alert-caution" role="alert">
+        <h4 class="alert-heading">Javascript</h4>
+        <p>Please enable javascript to see and search models.</p>
+    </div>
+</noscript>
 
 You can see details about each module in the [Viam registry](https://app.viam.com/registry) on its dedicated module page.
 You can integrate modules into any Viam-powered machine.

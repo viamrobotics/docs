@@ -102,7 +102,7 @@ const mlmodels = document.getElementsByClassName("mr-model")
 if (mlmodels.length !== 0) {
 
   const mlmodel = document.getElementsByClassName("mr-model")[0].id;
-  const typesenseInstantsearchAdapter2 = new TypesenseInstantSearchAdapter({
+  const typesenseInstantsearchAdapterML = new TypesenseInstantSearchAdapter({
     server: {
       apiKey: "Qhooem9HCRuFMVZPNQOhABAdEWJaSnlY", // Be sure to use an API key that only allows search operations
       nodes: [
@@ -123,34 +123,34 @@ if (mlmodels.length !== 0) {
       infix: "always"
     },
   });
-  const searchClient2 = typesenseInstantsearchAdapter2.searchClient;
+  const searchClientML = typesenseInstantsearchAdapterML.searchClient;
 
-  const search2 = instantsearch({
+  const searchML = instantsearch({
     indexName: "mlmodels",
-    searchClient: searchClient2,
+    searchClient: searchClientML,
   });
 
-  let filters2;
-  let itemtemplate2;
+  let filtersML;
+  let itemtemplateML;
 
-  filters2 = {
+  filtersML = {
     hitsPerPage: 5,
   };
-  itemtemplate2 = `
+  itemtemplateML = `
   <div class="name"><p><code>{{#helpers.highlight}}{ "attribute": "model_id" }{{/helpers.highlight}}</code></p></div>
   <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
   `;
 
 
-  search2.addWidgets([
+  searchML.addWidgets([
     instantsearch.widgets.hits({
-      container: "#hits2",
+      container: "#hitsML",
       templates: {
-        item: itemtemplate2,
+        item: itemtemplateML,
       },
     }),
     instantsearch.widgets.searchBox({
-      container: '#searchbox2',
+      container: '#searchboxML',
       placeholder: 'Search for a model...',
       poweredBy: false,
       wrapInput: true,
@@ -159,30 +159,30 @@ if (mlmodels.length !== 0) {
       showLoadingIndicator: false
     }),
     instantsearch.widgets.stats({
-      container: '#searchstats2',
+      container: '#searchstatsML',
       templates: {
         text(data, { html }) {
-          let results2 = '';
+          let resultsML = '';
 
           if (data.hasManyResults) {
-            results2 += `${data.nbHits} results:`;
+            resultsML += `${data.nbHits} results:`;
           } else if (data.hasOneResult) {
-            results2 += `1 result:`;
+            resultsML += `1 result:`;
           } else {
-            results2 += ``;
+            resultsML += ``;
           }
 
-          return `<span>${results2}</span>`;
+          return `<span>${resultsML}</span>`;
         },
       },
     }),
-    instantsearch.widgets.configure(filters2),
+    instantsearch.widgets.configure(filtersML),
     instantsearch.widgets.pagination({
-      container: "#pagination2",
+      container: "#paginationML",
       scrollTo: false
     }),
   ]);
 
-  search2.start();
+  searchML.start();
 
 }

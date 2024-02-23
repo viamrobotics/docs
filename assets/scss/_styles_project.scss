@@ -1401,7 +1401,7 @@ ul.sectionlist > li:hover {
 
 // Pagination CSS start
 
-#pagination, #pagination2 {
+#pagination, #paginationML {
   margin: 2rem auto;
 }
 
@@ -1557,6 +1557,7 @@ a.ais-Pagination-link:hover {
 }
 
 .modellistheader > .description, .modellist * .description {
+  overflow-wrap: anywhere;
 }
 
 #searchbox {

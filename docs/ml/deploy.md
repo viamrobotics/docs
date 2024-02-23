@@ -153,17 +153,17 @@ Save the configuration.
 
 You can search the machine learning models that are available to deploy on this service from the registry here:
 
-<div id="searchbox2"></div>
+<div id="searchboxML"></div>
 <p>
-<div id="searchstats2"></div></p>
+<div id="searchstatsML"></div></p>
 <div class="mr-model" id="">
   <div class="modellistheader">
     <div class="name">Model</div>
     <div>Description</div>
   </div>
-<div id="hits2" class="modellist">
+<div id="hitsML" class="modellist">
 </div>
-<div id="pagination2"></div>
+<div id="paginationML"></div>
 </div>
 
 ### Versioning for deployed models
