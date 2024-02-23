@@ -39,10 +39,10 @@ The following steps assume you already have a machine with [`viam-server` instal
 2. If you haven't already, [add the data management service to your machine's config.](/data/capture/#add-the-data-management-service)
 3. Navigate to your data management card within the **Services** subtab of your machine's **Config** tab in the [Viam app](https://app.viam.com).
 4. Next to **Additional paths**, click **Add pathway**.
-   Enter the full path to the directory where the data you want to upload is stored, for example, `/Users/Artoo/my_cat_photos`
+   Enter the full path to the directory where the data you want to upload is stored, for example, `/Users/Artoo/my_cat_photos`.
 5. Toggle **Syncing** to on (green).
 
-   {{<imgproc src="/data/data-sync-temp.png" resize="x900" declaredimensions=true alt="Data service configured in the Viam app as described." >}}
+   {{<imgproc src="/data/data-sync-temp.png" resize="x1100" declaredimensions=true alt="Data service configured in the Viam app as described." >}}
 
 6. Click **Save config**.
 7. Navigate to your [**DATA** page in the Viam app](https://app.viam.com/data/view) and confirm that your data appears there.
