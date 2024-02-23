@@ -1,5 +1,5 @@
 ---
-title: "Upload Data"
+title: "Upload a Batch of Data"
 linkTitle: "Upload Data"
 description: "Upload data to the Viam app from your local computer or mobile device using the data client API, Viam CLI, or Viam mobile app."
 weight: 40
@@ -12,15 +12,57 @@ images: ["/services/icons/data-capture.svg"]
 ---
 
 If you configured [data capture](/data/capture/) on your machine, data is automatically uploaded to the Viam cloud from the directory and at the interval you specified.
-However, if you want to upload a batch of data manually from somewhere else, either on your machine or from your personal computer or mobile device, you have several options:
+However, if you want to upload a batch of data once from somewhere else, either from a different place on your machine or from your personal computer or mobile device, you have several options:
 
+- Configure the path to your directory in the Viam app, wait for the files to sync, then delete the path.
+  This option requires that you have `viam-server` installed on the machine.
 - Run a Python script to upload files from a folder using the data client API `file_upload_from_path` method.
-- Run a Golang script calling the data management service `sync` method.
+  You can do this on a computer that doesn't have `viam-server` installed on it.
 - Upload images from your mobile device using the Viam mobile app.
+
+## Sync a batch of data from another directory
+
+{{% alert title="Note" color="note" %}}
+
+This method of uploading data will delete the data from your machine once it is uploaded to the cloud.
+
+If you do not want the data deleted from your machine, copy the data to a new folder and sync that folder instead so that your local copy remains.
+
+{{% /alert %}}
+
+Typically, you configure the data service to sync data from your machine at regular intervals indefinitely.
+However, if you already have a cache of data you'd like to use with Viam, you can temporarily modify your configuration to sync a batch of data and then revert your config changes after the data is uploaded.
+The following steps assume you already have a machine with [`viam-server` installed and connected to the Viam app](/get-started/installation/):
+
+1. Put the data you want to sync in a directory on your machine.
+   All of the data in the folder will be synced, so be sure that you want to upload all of the contents of the folder.
+2. If you haven't already, [add the data management service to your machine's config.](/data/capture/#add-the-data-management-service)
+3. Navigate to your data management card within the **Services** subtab of your machine's **Config** tab in the [Viam app](https://app.viam.com).
+4. Next to **Additional paths**, click **Add pathway**.
+   Enter the full path to the directory where the data you want to upload is stored, for example, `/Users/Artoo/my_cat_photos`
+5. Toggle **Syncing** to on (green).
+
+   {{<imgproc src="/data/data-sync-temp.png" resize="x900" declaredimensions=true alt="Data service configured in the Viam app as described." >}}
+
+6. Click **Save config**.
+7. Navigate to your [**DATA** page in the Viam app](https://app.viam.com/data/view) and confirm that your data appears there.
+   If you don't see your files yet, wait a few moments and refresh the page.
+8. Once the data has uploaded, navigate back to your data service config.
+   You can now delete the additional path you added.
+   You can also turn off **Syncing** unless you have other directories you'd like to continue to sync from.
 
 ## Upload data with Python
 
 You can use the Viam Python SDK's data client API [`file_upload_from_path`](/build/program/apis/data-client/#fileuploadfrompath) method to upload one or more files from your computer to the Viam cloud.
+
+{{% alert title="Note" color="note" %}}
+
+Unlike data sync, using the `file_upload_from_path` API method uploads all the data even if that data already exists in the cloud.
+In other words, it duplicates data if you run it multiple times.
+
+Also unlike data sync, this method _does not_ delete data from your device.
+
+{{% /alert %}}
 
 1. Install the [Viam Python SDK](https://python.viam.dev/) by running the following command on the computer from which you want to upload data:
 
@@ -64,43 +106,6 @@ You can use the Viam Python SDK's data client API [`file_upload_from_path`](/bui
 
 4. Save and run your code once.
    Running your code more than once will duplicate the data.
-   View your uploaded data in your [**DATA** page in the Viam app](https://app.viam.com/data/view).
-
-## Sync data with Golang
-
-The Viam Golang SDK includes a data service API with a [`sync`](/data/#sync) method that syncs all the data from your machine to the cloud.
-The [cloud sync tools](/data/cloud-sync/) sync data automatically according to how you configure cloud sync, but if you prefer to sync programatically, you can instead run a script that calls the `sync` method.
-
-The following steps assume you already have a [data capture service configured](/data/capture/#add-the-data-management-service).
-If you want to use the `sync` API method as the only way to sync data, you should toggle cloud sync off in your data service configuration (`"sync_disabled": true` in **Raw JSON** mode).
-
-1. Install the [Viam Go SDK](https://github.com/viamrobotics/rdk/tree/main/robot/client).
-
-2. Create a Go script file in a directory of your choice.
-   Navigate to your machine's **Code sample** tab in the [Viam app](https://app.viam.com) and click **Golang**.
-   Copy the code from that tab into your script file to establish a connection from your computer to your machine's instance in the Viam app.
-
-3. Add the required import to the list of imports at the top of your script:
-
-   ```go {class="line-numbers linkable-line-numbers"}
-   import (
-     "go.viam.com/rdk/services/datamanager"
-   )
-   ```
-
-4. In your `main()` function (or in a function called from `main()`), call the [`sync` method](/data/#sync).
-   For example:
-
-   ```go {class="line-numbers linkable-line-numbers"}
-   // Get the data management service from your machine
-   // Use the name of the data service you configured on your machine in place of "my_data_service"
-   data, err := datamanager.FromRobot(robot, "my_data_service")
-
-   // Sync data stored on the machine to the cloud.
-   err := data.Sync(context.Background(), nil)
-   ```
-
-5. Save, compile, and run your code.
    View your uploaded data in your [**DATA** page in the Viam app](https://app.viam.com/data/view).
 
 ## Upload images with the Viam mobile app
