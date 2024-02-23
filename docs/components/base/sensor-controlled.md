@@ -80,7 +80,7 @@ The following attributes are available for `sensor-controlled` bases:
 
 {{< readfile "/static/include/components/base-sensor.md" >}}
 
-## Spin
+### Spin
 
 Spin implements a basic form of feedback control that, for a spin of less than 360 degrees, monitors how far the base has spun and stops once it has reached the goal position.
 
