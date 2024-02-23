@@ -137,7 +137,7 @@ if (mlmodels.length !== 0) {
     hitsPerPage: 5,
   };
   itemtemplateML = `
-  <div class="name"><p><code>{{#helpers.highlight}}{ "attribute": "model_id" }{{/helpers.highlight}}</code></p></div>
+  <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model_id" }{{/helpers.highlight}}</code></a></p></div>
   <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
   `;
 

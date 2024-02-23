@@ -38,15 +38,6 @@ async def main():
     cloud = viam_client.app_client
     module_list = await cloud.list_modules()
 
-    # Create a request to list registry items and get the response from the app 
-    request = ListRegistryItemsRequest(organization_id=cloud._organization_id)
-    response : ListRegistryItemsResponse = await cloud._app_client.ListRegistryItems(request)
-
-    ml_models_list = []
-    for item in response.items:
-        if item.type == 2:
-            ml_models_list.append(item)
-
     for module in module_list:
         if module.visibility == 2:
             for model in module.models:
@@ -65,15 +56,25 @@ async def main():
         json_m)
                 print(insert_resp)
 
+    # Create a request to list registry items and get the response from the app
+    request = ListRegistryItemsRequest(organization_id=cloud._organization_id)
+    response : ListRegistryItemsResponse = await cloud._app_client.ListRegistryItems(request)
+
+    ml_models_list = []
+    for item in response.items:
+        if item.type == 2:
+            ml_models_list.append(item)
+
     for model in ml_models_list:
-        print(model.visibility)
         if model.visibility == 2:
             json_m = {
-                "model_id": model.item_id,
+                "id": model.item_id,
+                "model_id": module.item_id,
                 "total_organization_usage": model.total_organization_usage,
                 "total_robot_usage": model.total_robot_usage,
                 "description": model.description,
-                "last_updated": time_now
+                "last_updated": time_now,
+                "url": "https://app.viam.com/ml-model/" + model.public_namespace + "/" + model.name + "/"
             }
             insert_resp = typesense_client.collections['mlmodels'].documents.upsert(
         json_m)
