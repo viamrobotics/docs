@@ -164,7 +164,8 @@ If you intend to use the detector or classifier with a camera that is part of yo
       "type": "detections",
       "attributes": {
         "confidence_threshold": 0.5,
-        "detector_name": "<vision-service-name>"
+        "detector_name": "<vision-service-name>",
+        "valid_labels": ["<label>"]
       }
     }
   ],
@@ -182,7 +183,9 @@ If you intend to use the detector or classifier with a camera that is part of yo
       "type": "classifications",
       "attributes": {
         "confidence_threshold": 0.5,
-        "classifier_name": "<vision-service-name>"
+        "classifier_name": "<vision-service-name>",
+        "max_classifications": <int>,
+        "valid_labels": [ "<label>" ]
       }
     }
   ],
