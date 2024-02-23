@@ -70,9 +70,11 @@ You can adjust the heartbeat window in the configuration of your machine:
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-On your **Auth/Network** tab, set the **Heartbeat Window**:
+Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
+Find the card belonging to the appropriate {{< glossary_tooltip term_id="part" text="part" >}} of your machine in the nested resource tree.
+Click the card to expand it, then click **Set heartbeat window** to adjust the **Heartbeat window**:
 
-![Heartbeat window configuration screen](/build/program/sessions/heartbeatwindow.png)
+{{<imgproc src="/build/program/sessions/heartbeatwindow.png" alt="Heartbeat window configuration pane in Viam app" resize="400x" declaredimensions=true >}}
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
