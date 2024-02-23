@@ -33,6 +33,7 @@ Once you connect to the `viam-server` instance on a part, this display includes 
 ### Set up a new machine
 
 <!-- TODO R2D2: might need screenshot and needs to be revisited once setup construction is finished -->
+
 To connect to the `viam-server` instance on a part, follow the setup instructions.
 Click **View setup instructions** on the part drop-down menu.
 
@@ -58,6 +59,10 @@ Once the machine has a configuration, it caches it locally and can use the confi
 The machine checks for new configurations every 15 seconds and changes its configuration automatically when a new configuration is available.
 
 After connecting your machine, go to the **CONFIGURE** tab, and start adding {{< glossary_tooltip term_id="component" text="components" >}}, {{< glossary_tooltip term_id="service" text="services" >}}, and other {{< glossary_tooltip term_id="resource" text="resources" >}}.
+
+<!-- TODO R2D2: need to check that this works once page is set up -->
+
+To see the history of the configuration of a machine part, click on **History** on the right side of its card on the **CONFIGURE** tab.
 
 For more information, see the [configuration documentation](/build/configure/#the-config-tab).
 
