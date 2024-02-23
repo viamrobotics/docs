@@ -35,7 +35,7 @@ Once you connect to the `viam-server` instance on a part, this display includes 
 <!-- TODO R2D2: might need screenshot and needs to be revisited once setup construction is finished -->
 
 To connect to the `viam-server` instance on a part, follow the setup instructions.
-Click **View setup instructions** on the part drop-down menu.
+Click **View setup instructions** on the part dropdown menu.
 
 Select your system's architecture and select the version of the {{< glossary_tooltip term_id="RDK" text="RDK" >}} to use.
 Then, follow the instructions on the page to connect and set up your machine.
