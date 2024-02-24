@@ -80,11 +80,11 @@ However, if you would like to mock up a virtual placeholder for a real, physical
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | Optional | `name` of the [board](/components/board/) to which the motor driver is wired. |
-| `min_power_pct` | float64 | Optional | Sets a limit on minimum power percentage sent to the motor. <br> Default: `0.0` |
-| `max_power_pct` | float64 | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
+| `min_power_pct` | float | Optional | Sets a limit on minimum power percentage sent to the motor. <br> Default: `0.0` |
+| `max_power_pct` | float | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
 | `pwm_freq` | int | Optional | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range. <br> Default: `800` |
 | `encoder` | string | Optional | The name of an encoder attached to this motor. See [encoded motor](/components/motor/gpio/encoded-motor/). *If an encoder is configured on a `fake` motor, `ticks_per_rotation` becomes required.* |
-| `max_rpm` | float64 | Optional | An estimate of the max revolutions per minute (RPM) the motor will run at with full power under no load. The [`GoFor`](/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed. *For non-encoded fake motors, this is required or a default is assigned.* <br> Default: `100` |
+| `max_rpm` | float | Optional | An estimate of the max revolutions per minute (RPM) the motor will run at with full power under no load. The [`GoFor`](/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed. *For non-encoded fake motors, this is required or a default is assigned.* <br> Default: `100` |
 | `ticks_per_rotation` | int | Optional* | **Required for calculations if an encoder is configured.* For a stepper motor, the number of steps in one full rotation (200 is common). For an encoded motor, how many encoder ticks in one full rotation. See data sheet (for a real motor). |
 | `dir_flip` | bool | Optional | Flips the direction of "forward" versus "backward" rotation. <br> Default: `false` |
 | `pins` | object | Optional | A struct that holds pin configuration information. |
