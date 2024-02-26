@@ -254,7 +254,7 @@ The following parameters are available for each pin object:
 If your board supports hardware PWM, you will need to enable it if it is not enabled by default.
 This process depends on your specific board.
 
-In current version of `viam-server`, each pin is dedicated to either GPIO or hardware PWM.
+In the current version of `viam-server`, each pin is dedicated to either GPIO or hardware PWM.
 If a pin is designated as a hardware PWM pin, you cannot use it as a GPIO pin.
 
 {{% /alert %}}

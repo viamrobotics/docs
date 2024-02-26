@@ -21,11 +21,15 @@ aliases:
   - "/modular-resources/upload/"
 ---
 
-Once you have [created a custom module](/registry/create/), use the [Viam CLI](/fleet/cli/) to upload it to the Viam registry as a public module that is shared with other Viam users, or as a private module that is shared only within your [organization](/fleet/organizations/).
+Once you have [created a custom module](/registry/create/), use the instructions on this page to upload it to the Viam registry as a public module that is shared with other Viam users, or as a private module that is shared only within your [organization](/fleet/organizations/).
 
-Once uploaded, you can also [update your modules](/registry/upload/#update-an-existing-module).
+You can upload your module in one of two ways:
 
-## Upload a custom module
+- You can [upload your module using the Viam CLI](#upload-a-custom-module-using-the-cli), ideal for testing or on-demand releases.
+  You can also [update your module using the CLI](#update-an-existing-module) to push code changes as needed.
+- You can [use a GitHub Action to automatically upload your module when you make a new GitHub release](#update-an-existing-module-using-a-github-action), ideal for continuous integration (CI) pipelines.
+
+## Upload a custom module using the CLI
 
 To upload your custom module to the [Viam registry](https://app.viam.com/registry), either as a public or private module, use the Viam CLI commands `create`, `upload`, and `update` following these instructions:
 
@@ -234,14 +238,16 @@ Updating your module manually is appropriate for smaller projects, especially th
 Updating your module automatically using CI is better suited for larger, ongoing projects, especially those with multiple contributors.
 
 {{% alert title="Tip" color="tip" %}}
-
 If you would like to test your module locally against its intended target platform before uploading it, you can follow the steps for [Iterative module development](/registry/advanced/iterative-development/) to verify that any code changes you have made work as expected on your target platform.
-
 {{% /alert %}}
 
 ### Update an existing module using the Viam CLI
 
-To update an existing module in the [Viam registry](https://app.viam.com/registry) manually, use the [Viam CLI](/fleet/cli/):
+To update an existing module in the [Viam registry](https://app.viam.com/registry) manually, you can use the [Viam CLI](/fleet/cli/).
+
+{{% alert title="Tip" color="tip" %}}
+If you intend to make frequent code changes to your module, want to support a variety of platforms, or otherwise want to streamline your module development workflow, consider [using a GitHub action to update your module](#update-an-existing-module-using-a-github-action) instead.
+{{% /alert %}}
 
 1. Edit your custom module with the changes you'd like to make.
 
@@ -326,7 +332,7 @@ jobs:
           key-value: ${{ secrets.viam_key_value }}
 ```
 
-The `build-action` GitHub action relies on a build command that you need to specify in the <file>meta.json</file> file that you created for your module when you first [uploaded it](/registry/upload/#upload-a-custom-module).
+The `build-action` GitHub action relies on a build command that you need to specify in the <file>meta.json</file> file that you created for your module when you first [uploaded it](/registry/upload/#upload-a-custom-module-using-the-cli).
 At the end of your <file>meta.json</file>, add the build configuration:
 
 ```json {class="line-numbers linkable-line-numbers" data-line="4-7"}
