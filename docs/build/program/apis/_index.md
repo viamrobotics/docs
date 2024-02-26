@@ -29,7 +29,7 @@ All machines support the following methods through the [robot API](/build/progra
 
 ### Fleet management API
 
-The [fleet management API](/build/program/apis/cloud/) supports the following methods:
+The [fleet management API](/build/program/apis/fleet/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/fleet.md" >}}
 
