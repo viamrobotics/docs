@@ -202,6 +202,31 @@ See the [MongoDB Atlas Documentation](https://www.mongodb.com/docs/atlas/data-fe
 
 For information on connecting to your Atlas instance from other MQL clients, see the MongoDB Atlas [Connect to your Cluster Tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
 
+#### Query by date
+
+When using MQL to query your data by date or time range, you can optimize query performance by avoiding the MongoDB `$toDate` expression, using the [BSON `date` type](https://www.mongodb.com/docs/manual/reference/bson-types/#date) instead.
+
+For example, you could use the following to query a dataset over a date range, specifying a target start timestamp in BSON date format, and using the `Date()` constructor to use the current time as the end timestamp:
+
+```mongodb {class="command-line" data-prompt=">"}
+// Switch to sensorData database:
+use sensorData
+
+// Set desired start and end times:
+const startTime = 'Mon Feb 10 2024 14:45:07 GMT-0500 (Eastern Standard Time)'
+const endTime = new Date()
+
+// Run query using $match:
+db.readings.aggregate(
+    [
+        { $match: {
+            time_received: {
+                $gte: startTime,
+                $lte: endTime }
+        } }
+    ] )
+```
+
 ## Next steps
 
 With data query enabled, you can now visualize your machine's uploaded tabular data using many popular data visualization services, such as Grafana.
