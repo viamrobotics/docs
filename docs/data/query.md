@@ -206,14 +206,14 @@ For information on connecting to your Atlas instance from other MQL clients, see
 
 When using MQL to query your data by date or time range, you can optimize query performance by avoiding the MongoDB `$toDate` expression, using the [BSON `date` type](https://www.mongodb.com/docs/manual/reference/bson-types/#date) instead.
 
-For example, you could use the following to query a dataset over a date range, specifying a target start timestamp in BSON date format, and using the `Date()` constructor to use the current time as the end timestamp:
+For example, you could use the following query to search by a date range in the `mongosh` shell, using the JavaScript `Date()` constructor to specify an explicit start timestamp, and use the current time as the end timestamp:
 
 ```mongodb {class="command-line" data-prompt=">"}
 // Switch to sensorData database:
 use sensorData
 
 // Set desired start and end times:
-const startTime = 'Mon Feb 10 2024 14:45:07 GMT-0500 (Eastern Standard Time)'
+const startTime = new Date('2024-02-10T19:45:07.000Z')
 const endTime = new Date()
 
 // Run query using $match:
