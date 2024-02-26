@@ -116,7 +116,66 @@ Add the vision service object to the services array in your raw JSON configurati
 {{< /tabs >}}
 
 Click **Save config**.
-Proceed to [test your detector or classifier](#test-your-detector-or-classifier).
+
+## Tensor names
+
+Both the `mlmodel` detector and classifier require that the input and output tensors defined by your ML model are named according to the following:
+
+- For an `mlmodel` detector:
+  - The _input tensor_ must be named `image`
+  - The _output tensors_ must be named `location`, `category`, and `score`,
+- For an `mlmodel` classifier:
+  - The _input tensor_ must be named `image`
+  - The _output tensor_ must be named `probability`
+
+If you [trained your ML model using the Viam app](/ml/train-model/), your `mlmodel` tensors should already be named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
+However, if you [uploaded your own ML model](/ml/upload-model/), or are using one from the [Viam registry](https://app.viam.com/registry), you may need to remap your tensor names to meet this requirement, and should follow the instructions to [remap tensor names](#remap-tensor-names).
+
+### Remap tensor names
+
+If you need to remap the tensor names defined by your ML model to meet the tensor name requirements of the `mlmodel` detector or classifier, you can use the `remap_input_names` and `remap_output_names` attributes:
+
+- To remap your model's tensor names to work with an `mlmodel` detector, add the following to your `mlmodel` vision service configuration, replacing the `my_model` input and output tensor names with the names from your model:
+
+  ```json {class="line-numbers linkable-line-numbers"}
+  {
+    "type": "vision",
+    "model": "mlmodel",
+    "attributes": {
+      "mlmodel_name": "my_model",
+      "remap_output_names": {
+        "my_model_output_tensor1": "category",
+        "my_model_output_tensor2": "location",
+        "my_model_output_tensor3": "score"
+      },
+      "remap_input_names": {
+        "my_model_input_tensor1": "image"
+      }
+    },
+    "name": "my-vision-service"
+  }
+  ```
+
+- To remap your model's tensor names to work with an `mlmodel` classifier, add the following to your `mlmodel` vision service configuration, replacing the `my_model` input and output tensor names with the names from your model:
+
+  ```json {class="line-numbers linkable-line-numbers"}
+  {
+    "type": "vision",
+    "model": "mlmodel",
+    "attributes": {
+      "mlmodel_name": "my_model",
+      "remap_output_names": {
+        "my_model_output_tensor1": "probability"
+      },
+      "remap_input_names": {
+        "my_model_input_tensor1": "image"
+      }
+    },
+    "name": "my-vision-service"
+  }
+  ```
+
+When done, click **Save config**, then proceed to [test your detector or classifier](#test-your-detector-or-classifier).
 
 ## Test your detector or classifier
 
