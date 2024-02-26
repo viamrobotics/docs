@@ -47,7 +47,13 @@ If you are using your own robot for this tutorial instead of [renting one](https
 
 ## Install a Viam SDK
 
-Install either the [Viam Python SDK](https://python.viam.dev/), the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme), the [Viam Flutter SDK](https://flutter.viam.dev/) or the [TypeScript SDK](https://ts.viam.dev/) on your local computer.
+Install one of the following SDKs on your local computer:
+
+- the [Viam Python SDK](https://python.viam.dev/)
+- the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
+- the [Viam Flutter SDK](https://flutter.viam.dev/)
+- the [TypeScript SDK](https://ts.viam.dev/)
+- the [C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk/#readme)
 
 {{< alert title="Tip" color="tip" >}}
 If you are [renting your rover](https://app.viam.com/try), we recommend that you get the Viam SDK set up before your reservation starts.
@@ -202,11 +208,55 @@ Flutter code must be launched from inside a running Flutter application.
 To get started programming your rover with Flutter, follow the instructions to [Build a Flutter App that Integrates with Viam](/tutorials/control/flutter-app/).
 
 {{% /tab %}}
+{{% tab name="C++" %}}
+
+The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **C++** and copy the boilerplate code.
+
+{{% snippet "show-secret.md" %}}
+
+This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
+
+Next, create a file named <file>drive_in_square.cpp</file> and paste the boilerplate code from the **Code sample** tab of the Viam app into your file.
+Then, save your file.
+
+Compile your code, and then run the program to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live:
+
+```sh {class="command-line" data-prompt="$"}
+cmake . -G Ninja
+ninja all
+./drive_in_square
+```
+
+The program prints an array of resources.
+These are the components and services that the robot is configured with in the Viam app.
+
+```sh {class="command-line" data-prompt="$" data-output="2-20"}
+./src/viam/examples/camera/example_camera
+Resources of the robot:
+ - cam (camera)
+ - Lenc (encoder)
+ - overhead-cam:builtin (sensors)
+ - overhead-cam:builtin (motion)
+ - builtin (sensors)
+ - right (motor)
+ - Renc (encoder)
+ - overhead-cam:overheadcam (camera)
+ - builtin (motion)
+ - builtin (data_manager)
+ - viam_base (base)
+ - local (board)
+ - left (motor)
+ - overhead-cam:builtin (data_manager)
+ ...
+```
+
+{{% /tab %}}
+
 {{< /tabs >}}
 
 {{% alert title="Tip" color="tip" %}}
 
-If you are [renting your rover](https://app.viam.com/try), and your reservation ends before you have completed this tutorial, change the connection information (the robot address and the payload) to connect to your new rover and continue.
+If you are [renting your rover](https://app.viam.com/try), and your reservation ends before you have completed this tutorial, you can start a new session with the same rover configuration so you do not need to change the connection information (the robot address and the payload).
 
 {{% /alert %}}
 
@@ -291,13 +341,13 @@ import (
 
 Next, you need to initialize your rover base.
 
-In the main function, after you connect, paste the code from lines 19-22.
+In the main function, after you connect, paste the code from lines 22-26.
 On the Try Viam rental rovers, the default base name is `viam_base`.
 If you have a different base name, update the name in your code.
 
 Your main function should look like this:
 
-```go {class="line-numbers linkable-line-numbers" data-line="19-22"}
+```go {class="line-numbers linkable-line-numbers" data-line="22-26"}
 func main() {
     logger := logging.NewLogger("client")
     robot, err := client.New(
@@ -649,6 +699,138 @@ You may need to scroll to the bottom of the list of resources.
 Click on the button to move your robot in a square:
 
 {{<video webm_src="/tutorials/try-viam-sdk/square-test-rover.webm" mp4_src="/tutorials/try-viam-sdk/square-test-rover.mp4" alt="An example flutter app moving a Try Viam rental rover in a square" poster="/tutorials/try-viam-sdk/square-test-rover.jpg">}}
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+The first thing you need to do is import the [base component](https://cpp.viam.dev/classviam_1_1sdk_1_1Base.html). The base is responsible for controlling the motors attached to the base of the rover. Add the following line of code to your imports:
+
+```cpp {class="line-numbers linkable-line-numbers"}
+#include <viam/sdk/components/base/client.hpp>
+```
+
+Additionally, add the following namespaces under your imports:
+
+```cpp {class="line-numbers linkable-line-numbers"}
+using namespace viam::sdk;
+using std::cerr;
+using std::cout;
+using std::endl;
+```
+
+Next, you need to initialize your rover base.
+
+In the main function, after you connect, paste the code from lines 19-22. On the Try Viam rental rovers, the default base name is `viam_base`. If you have a different base name, update the name in your code.
+
+Your main function should look like this:
+
+```cpp {class="line-numbers linkable-line-numbers" data-line="21,23-30"}
+int main() {
+    namespace vs = ::viam::sdk;
+    try {
+        const char* uri = "ADDRESS FROM THE VIAM APP";
+        DialOptions dial_options;
+        std::string type = "api-key";
+        // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+        std::string entity = "<API-KEY-ID>";
+        // Replace "<API-KEY>" (including brackets) with your machine's API key
+        std::string payload = "<API-KEY>";
+        dial_options.set_entity(entity);
+        Credentials credentials(type, payload);
+        dial_options.set_credentials(credentials);
+        boost::optional<DialOptions> opts(dial_options);
+        std::string address(uri);
+        Options options(0, opts);
+
+        // connect to robot, ensure we can refresh it
+        std::shared_ptr<RobotClient> robot = RobotClient::at_address(address, options);
+
+        std::string base_name("viam_base");
+
+        cout << "Getting base: " << base_name << endl;
+        std::shared_ptr<Base> base;
+        try {
+            base = robot->resource_by_name<Base>(base_name);
+        } catch (const std::exception& e) {
+            cerr << "Failed to find " << base_name << ". Exiting." << endl;
+            throw;
+        }
+
+    } catch (const std::exception& ex) {
+        cerr << "Program failed. Exception: " << std::string(ex.what()) << endl;
+        return EXIT_FAILURE;
+    } catch (...) {
+        cerr << "Program failed without exception message." << endl;
+        return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
+}
+```
+
+Now that your rover base has been initialized, you can write code to drive it in a square. Paste this snippet above your `main()` function:
+
+```cpp {class="line-numbers linkable-line-numbers"}
+void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
+  for (int i = 0; i < 4; ++i) {
+    cout << "Move straight" << endl;
+    // Move the base forward 600mm at 500mm/s
+    base->move_straight(500, 500);
+    cout << "Spin" << endl;
+    // Spin the base by 90 degree at 100 degrees per second
+    base->spin(90, 100);
+  }
+}
+```
+
+Invoke the move_in_square() function in your main function after initializing your base.
+
+Your main function should now look like this:
+
+```cpp {class="line-numbers linkable-line-numbers" data-line="21,23-33"}
+int main() {
+    namespace vs = ::viam::sdk;
+    try {
+        const char* uri = "ADDRESS FROM THE VIAM APP";
+        DialOptions dial_options;
+        std::string type = "api-key";
+        // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+        std::string entity = "<API-KEY-ID>";
+        // Replace "<API-KEY>" (including brackets) with your machine's API key
+        std::string payload = "<API-KEY>";
+        dial_options.set_entity(entity);
+        Credentials credentials(type, payload);
+        dial_options.set_credentials(credentials);
+        boost::optional<DialOptions> opts(dial_options);
+        std::string address(uri);
+        Options options(0, opts);
+
+        // connect to robot, ensure we can refresh it
+        std::shared_ptr<RobotClient> robot = RobotClient::at_address(address, options);
+
+        std::string base_name("viam_base");
+
+        cout << "Getting base: " << base_name << endl;
+        std::shared_ptr<Base> base;
+        try {
+            base = robot->resource_by_name<Base>(base_name);
+
+            move_in_square(base);
+
+        } catch (const std::exception& e) {
+            cerr << "Failed to find " << base_name << ". Exiting." << endl;
+            throw;
+        }
+
+    } catch (const std::exception& ex) {
+        cerr << "Program failed. Exception: " << std::string(ex.what()) << endl;
+        return EXIT_FAILURE;
+    } catch (...) {
+        cerr << "Program failed without exception message." << endl;
+        return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
+}
+```
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1023,6 +1205,74 @@ class _RobotScreenState extends State<RobotScreen> {
 ```
 
 {{% /tab %}}
+{{% tab name="C++" %}}
+
+```cpp {class="line-numbers linkable-line-numbers"}
+#include <viam/sdk/components/base/client.hpp>
+
+using namespace viam::sdk;
+using std::cerr;
+using std::cout;
+using std::endl;
+
+void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
+    for (int i = 0; i < 4; ++i) {
+        cout << "Move straight" << endl;
+        // Move the base forward 600mm at 500mm/s
+        base->move_straight(500, 500);
+        cout << "Spin" << endl;
+        // Spin the base by 90 degree at 100 degrees per second
+        base->spin(90, 100);
+    }
+}
+
+int main() {
+    namespace vs = ::viam::sdk;
+    try {
+        const char* uri = "ADDRESS FROM THE VIAM APP";
+        DialOptions dial_options;
+        std::string type = "api-key";
+        // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+        std::string entity = "<API-KEY-ID>";
+        // Replace "<API-KEY>" (including brackets) with your machine's API key
+        std::string payload = "<API-KEY>";
+        dial_options.set_entity(entity);
+        Credentials credentials(type, payload);
+        dial_options.set_credentials(credentials);
+        boost::optional<DialOptions> opts(dial_options);
+        std::string address(uri);
+        Options options(0, opts);
+
+        // connect to robot, ensure we can refresh it
+        std::shared_ptr<RobotClient> robot = RobotClient::at_address(address, options);
+
+        std::string base_name("viam_base");
+
+        cout << "Getting base: " << base_name << endl;
+        std::shared_ptr<Base> base;
+        try {
+            base = robot->resource_by_name<Base>(base_name);
+
+            move_in_square(base);
+
+        } catch (const std::exception& e) {
+            cerr << "Failed to find " << base_name << ". Exiting." << endl;
+            throw;
+        }
+
+    } catch (const std::exception& ex) {
+        cerr << "Program failed. Exception: " << std::string(ex.what()) << endl;
+        return EXIT_FAILURE;
+    } catch (...) {
+        cerr << "Program failed without exception message." << endl;
+        return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
+}
+```
+
+{{% /tab %}}
+
 {{< /tabs >}}
 
 ## Next steps
