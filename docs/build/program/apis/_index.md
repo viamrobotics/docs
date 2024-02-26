@@ -27,11 +27,11 @@ All machines support the following methods through the [robot API](/build/progra
 
 {{< readfile "/static/include/services/apis/robot.md" >}}
 
-### Cloud API
+### Fleet management API
 
-The [cloud API](/build/program/apis/cloud/) supports the following methods:
+The [fleet management API](/build/program/apis/cloud/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/cloud.md" >}}
+{{< readfile "/static/include/services/apis/fleet.md" >}}
 
 ### Data client API
 
