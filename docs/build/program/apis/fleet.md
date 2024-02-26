@@ -13,7 +13,7 @@ tags:
     "apis",
     "robot api",
     "cloud management",
-    "fleet management"
+    "fleet management",
   ]
 aliases:
   - /program/apis/cloud/
@@ -67,7 +67,8 @@ async def main():
 
     # Make a ViamClient
     viam_client = await connect()
-    # Instantiate an AppClient called "cloud" to run fleet management API methods on
+    # Instantiate an AppClient called "cloud"
+    # to run fleet management API methods on
     fleet = viam_client.app_client
 
     viam_client.close()
