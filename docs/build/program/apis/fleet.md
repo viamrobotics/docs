@@ -16,8 +16,8 @@ tags:
     "fleet management",
   ]
 aliases:
-  - /program/apis/cloud/
-  - /build/program/apis/cloud/
+  - /program/apis/fleet/
+  - /build/program/apis/fleet/
 ---
 
 The fleet management API allows you to [manage your machine fleet](/fleet/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
