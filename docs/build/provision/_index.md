@@ -3,7 +3,8 @@ title: "Provision Machines Using the Viam Agent"
 linkTitle: "Provision Machines"
 weight: 70
 type: "docs"
-description: "Flexibly provision new machines using the Viam Agent"
+description: "Flexibly provision new machines using the Viam Agent."
+videos: ["/platform/provisioning-demo.webm", "/platform/provisioning-demo.mp4"]
 tags: ["fleet management", "viam-server", "viam-agent"]
 # SME: James Otting
 ---
@@ -16,19 +17,17 @@ You can install the Viam Agent on your machines as part of your build process, a
 
 The Viam Agent:
 
-- Automatically connects to a pre-configured WiFi signal, or creates its own wireless hotspot if no pre-configured WiFi signal is detected.
+- Automatically connects to a pre-configured WiFi network, or creates its own wireless hotspot if no pre-configured WiFi network is detected.
 - Installs `viam-server` as a static binary, removing the need to perform any library linking or dependency installation during first-time setup.
   You can also use a custom build of `viam-server`, if needed.
 - Provides automatic updates for `viam-server`, the agent itself, and any configured subsystems (such as the Agent Provisioning subsystem).
 - Allows control of deployed software versions through the Viam app.
 
-Consider a company that sells machines that monitor weather conditions on maritime craft and provide navigation advice based on those readings.
+Consider a company that sells machines that monitor weather conditions on a maritime craft and provide navigation advice based on those readings.
 Such a machine might use Viam to interface between a [sensor component](/components/sensor/) that takes weather measurements, and the [data management service](/data/) to regularly upload a stream of readings, for example.
 However, to then parse the readings and provide tailored guidance to a ship's captain, the company has written their own proprietary application which includes live analytics and speech generation for conveying advice to the captain.
 
 Using the Viam Agent, this company could ship their machines directly to customers and have each machine provision `viam-server` as it comes online for each user, eliminating factory setup time and allowing for tailored configurations per customer as needed.
-
-The Viam Agent is [open source](https://github.com/viamrobotics/agent), and is available for Linux machines running the `x86_64` and `arm64` architectures.
 
 The example video shows using the [Viam mobile application](/fleet/#the-viam-mobile-app) to connect to the Viam Agent on a newly-deployed machine and completing network setup.
 
@@ -36,7 +35,7 @@ The example video shows using the [Viam mobile application](/fleet/#the-viam-mob
 
 You can install the Viam Agent using either an existing machine's part ID and API key, or using an existing <file>/etc/viam.json</file> configuration file.
 
-{{< alert title="Important" color="important" >}}
+{{< alert title="Important" color="note" >}}
 The Viam Agent supports the Linux `x86_64` and `arm64` architectures only.
 Your machine must have `curl` available in order to install the Viam Agent.
 {{< /alert >}}
@@ -77,14 +76,12 @@ If you want to install the Viam Agent on a machine that you have not yet created
 {{% /tab %}}
 {{< /tabs >}}
 
-For more details, see the [Viam Agent Readme](https://github.com/viamrobotics/agent#installation).
-
 ### Update the Viam Agent and `viam-server`
 
 The Viam Agent automatically updates both itself and `viam-server` as new updates are released.
-You can also configure update behavior for the Agent, `viam-server`, or a configured subsystem using the [Viam app](https://app.viam.com/).
+You can also configure update behavior for the Agent and `viam-server` using the [Viam app](https://app.viam.com/).
 
-{{< alert title="Important" color="important" >}}
+{{< alert title="Important" color="note" >}}
 When the Viam Agent updates either itself or `viam-server`, you must restart these services in order to use the new version.
 When you stop or restart the Viam Agent, the agent will stop or restart `viam-server` as well.
 {{< /alert >}}
@@ -101,7 +98,7 @@ The Viam Agent is installed as a `systemd` service named `viam-agent`.
 
 - To stop the Viam Agent:
 
-  {{< alert title="Alert" color="alert" >}}
+  {{< alert title="Alert" color="note" >}}
   When you stop the Viam Agent, the agent will stop `viam-server` as well.
   {{< /alert >}}
 
@@ -111,7 +108,7 @@ The Viam Agent is installed as a `systemd` service named `viam-agent`.
 
 - To restart the Viam Agent:
 
-  {{< alert title="Alert" color="alert" >}}
+  {{< alert title="Alert" color="note" >}}
   When you restart the Viam Agent, the agent will restart `viam-server` as well.
   {{< /alert >}}
 
@@ -133,8 +130,6 @@ With the Viam Agent installed, your machine will either connect to a local WiFi 
 
 - If you include a `viam-server` configuration file on your machine, located at <file>/etc/viam.json</file>, which includes a WiFi network and password to connect to, the Viam Agent will connect to the network automatically when in range.
 - If you did not include this file, or the configured WiFi network is not available when your machine comes online, the Viam agent will create its own WiFi hotspot.
-
-This functionality is provided by the [Agent Provisioning](https://github.com/viamrobotics/agent-provisioning) subsystem, which is included with the Viam Agent installation by default.
 
 ### Connect to an existing network
 
@@ -212,12 +207,9 @@ When you install the Viam Agent, either manually using the commands above or aut
 For example, you could use the pre-install script to configure and deploy to an SD card or other image file, which you can then use as part of your fleet deployment process.
 You can also use this method to generate a local tarball containing the configured deployment, which you could then deploy later, or through a different medium (such as automation, or as the basis for further customer-specific customization).
 
-See [Pre-install Details](https://github.com/viamrobotics/agent-provisioning#short-version-for-raspberry-pi) for detailed instructions.
-
 ## Use a provisioning configuration file
 
 When you install the Viam Agent, either manually using the commands above or automatically as part of your fleet's build and deploy process, you can provide a provisioning configuration file to pre-configure how your machine behaves when it first comes online.
-This functionality is provided by the [Agent Provisioning](https://github.com/viamrobotics/agent-provisioning) subsystem, which is included with the Viam Agent installation by default.
 
 To provision your machine, create a <file>/etc/viam-provisioning.json</file> configuration file, resembling the following:
 
@@ -232,20 +224,10 @@ To provision your machine, create a <file>/etc/viam-provisioning.json</file> con
 }
 ```
 
-This file configures some basic metadata, specifies a [fragment](/fleet/configure-a-fleet/) to use to configure the machine, and provides the WiFi signal name and password to allow your machine to connect automatically on startup.
-
-For more information, see the [Agent Provisioning Readme](https://github.com/viamrobotics/agent-provisioning#preinstall-details).
+This file configures some basic metadata, specifies a [fragment](/fleet/configure-a-fleet/) to use to configure the machine, and provides the WiFi network name and password to allow your machine to connect automatically on startup.
 
 ## Use the Viam mobile app
 
 You can also use the [Viam mobile application](/fleet/#the-viam-mobile-app), available for download from the [Apple](https://apps.apple.com/us/app/viam-robotics/id6451424162) and [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US) app stores, to connect to the Viam Agent on deployed machines.
 
-See [Mobile App Provisioning](https://github.com/viamrobotics/agent-provisioning#mobile-app-provisioning) for more information.
-
-## Use a subsystem
-
-The Viam Agent support modular plugins known as _subsystems_ to allow you to extend the functionality of the Viam Agent to meet your needs.
-You can use existing subsystems written by Viam, or write your own.
-
-The Viam Agent includes the [Agent Provisioning](https://github.com/viamrobotics/agent-provisioning) subsystem by default, which provides network discovery and management, as well as other headless provisioning service.
-For example, if you are provisioning a fleet of machines that use Raspberry Pi boards, you could use the Agent Provisioning subsystem to [simplify the Raspberry Pi OS deployment and configuration steps](https://github.com/viamrobotics/agent-provisioning#preinstall-details), including automatically joining a pre-defined WiFi network.
+Once you are logged in using the Viam mobile app, select your organization, then location, then tap **Add new smart machine** and follow the instructions in the mobile app.
