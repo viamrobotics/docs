@@ -479,7 +479,7 @@ Use a [movement sensor](/components/movement-sensor/) to check the location of t
 
 `MoveOnGlobe()` is non blocking, meaning the motion service will move the component to the destination GPS point after `MoveOnGlobe()` returns.
 
-Each successful `MoveOnGlobe()` call retuns a unique `ExecutionID` which you can use to identify all plans generated during the `MoveOnGlobe()`.
+Each successful `MoveOnGlobe()` call returns a unique `ExecutionID` which you can use to identify all plans generated during the `MoveOnGlobe()`.
 
 {{< alert title="Info" color="info" >}}
 If you specify a goal pose or orientation and the robot's current position is already at the goal post or orientation, `MoveonMap` returns an error.
