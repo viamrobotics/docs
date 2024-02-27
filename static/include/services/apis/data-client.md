@@ -21,3 +21,10 @@ Method Name | Description
 [`FileUploadFromPath`](/build/program/apis/data-client/#fileuploadfrompath) | Upload file data stored on your machine from the specified filepath and the relevant metadata to the Viam app.
 [`AddBoundingBoxToImageById`](/build/program/apis/data-client/#addboundingboxtoimagebyid) | Add a bounding box to an image specified by its BinaryID.
 [`RemoveBoundingBoxFromImageById`](/build/program/apis/data-client/#removeboundingboxfromimagebyid) | Removes a bounding box from an image specified by its BinaryID.
+[`CreateDataset`](/build/program/apis/data-client/#createdataset) |
+[`ListDatasetByIds`](/build/program/apis/data-client/#listdatasetbyids) |
+[`ListDatasetByOrganizationId`](/build/program/apis/data-client/#listdatasetbyorganizationid) |
+[`RenameDataset`](/build/program/apis/data-client/#renamedataset) |
+[`DeleteDataset`](/build/program/apis/data-client/#deletedataset) |
+[`AddBinaryDataToDatasetByIds`](/build/program/apis/data-client/#addbinarydatatodatasetbyids) |
+[`RemoveBinaryDataFromDatasetByIds`](/build/program/apis/data-client/#removebinarydatafromdatasetbyids) |
