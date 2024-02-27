@@ -482,7 +482,7 @@ Use a [movement sensor](/components/movement-sensor/) to check the location of t
 Each successful `MoveOnGlobe()` call returns a unique `ExecutionID` which you can use to identify all plans generated during the `MoveOnGlobe()`.
 
 {{< alert title="Info" color="info" >}}
-If you specify a goal pose or orientation and the robot's current position is already at the goal post or orientation, `MoveonMap` returns an error.
+If you specify a goal pose or orientation and the robot's current position is already within the set `PlanDeviationM` or orientation, `MoveOnGlobe` returns an error.
 {{< /alert >}}
 
 You can monitor the progress of the `MoveOnGlobe()` call by querying `GetPlan()` and `ListPlanStatuses()`.
