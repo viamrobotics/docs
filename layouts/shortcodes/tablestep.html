@@ -1,0 +1,11 @@
+<tr>
+    <th>
+        {{ with $.Inner }}
+          {{ if eq $.Page.File.Ext "md" }}
+            {{ $.Inner | markdownify }}
+          {{ else }}
+            {{ $.Inner | htmlUnescape | safeHTML }}
+          {{ end }}
+        {{ end }}
+    </th>
+</tr>
