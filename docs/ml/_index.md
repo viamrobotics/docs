@@ -55,7 +55,7 @@ Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML mod
   <tr>
     <td>{{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Configure a service">}}
       <b>5. Configure a vision service</b>
-      <p>For object detection and classification, use the <a href="/ml/vision/mlmodel/">ml model detector</a> or the <a href="/ml/vision/mlmodel/">ml model classifier</a> from the <a href="/ml/vision/">vision service</a>. The ML model vision service uses the ML model that you deployed with the ML model service in step 4.</p>
+      <p>For object detection and classification, use the <a href="/ml/vision/mlmodel/">ML model detector</a> or the <a href="/ml/vision/mlmodel/">ML model classifier</a> from the <a href="/ml/vision/">vision service</a>. The ML model vision service uses the ML model that you deployed with the ML model service in step 4.</p>
       <p>If you have another use case, you can use a <a href="/registry/">modular resource</a> to create a custom ML model service or a customr vision services for your machine.</p>
 </td>
   </tr>
