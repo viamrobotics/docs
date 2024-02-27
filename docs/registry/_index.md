@@ -31,14 +31,14 @@ The [Viam registry](https://app.viam.com/registry) is the central place where yo
 {{< cards >}}
 {{% manualcard link="#ml-models" %}}
 
-#### ML models
+**ML models**
 
 ML models to deploy with machine applications like computer vision.
 
 {{% /manualcard %}}
 {{% manualcard link="#modular-resources" %}}
 
-#### Modular resources
+**Modular resources**
 
 {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} that add capabilities to your machine beyond what is built-in to `viam-server`.
 
