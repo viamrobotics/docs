@@ -43,26 +43,26 @@ Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML mod
   <tr>
     <th>{{<imgproc src="/ml/train.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Train models">}}
       <b>3. Train or upload an ML model</b>
-      <p>Use your labeled data to <a href="/ml/train-model/">train your own models</a> for object detection and classification using data from the <a href="/data/">data management service</a> or <a href="/ml/upload-model/">add an existing model</a>.</p>
+      <p>Use your labeled data to <a href="/ml/train-model/">train your own models</a> for object detection and classification</a>. If you don't want to train your own model, you can also <a href="/registry/">use an ML model from the registry</a> or <a href="/ml/upload-model/">upload an existing model</a>.</p>
     </th>
   </tr>
   <tr>
     <td>
       <b>4. Deploy your ML model</b>
-      <p>To make use of ML models with your machine, use the built-in <a href="/ml/">ML model service</a> to deploy and run the model.</p>
+      <p>To make use of ML models with your machine, you must first deploy the model using the built-in <a href="/ml/deploy/">ML model service</a>. The ML Model service will run the model and allow the vision service to use it.</p>
     </td>
   </tr>
   <tr>
     <td>{{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Configure a service">}}
-      <b>5. Configure a service</b>
-      <p>For object detection and classification, you can use the <a href="/ml/vision/">vision service</a>, which provides an <a href="/ml/vision/mlmodel/">ml model detector</a> and an <a href="/ml/vision/mlmodel/">ml model classifier</a> model.</p>
-      <p>For other usage, you can use a <a href="/registry/">modular resource</a> to integrate it with your machine.</p>
+      <b>5. Configure a vision service</b>
+      <p>For object detection and classification, use the <a href="/ml/vision/mlmodel/">ml model detector</a> or the <a href="/ml/vision/mlmodel/">ml model classifier</a> from the <a href="/ml/vision/">vision service</a>. The ML model vision service uses the ML model that you deployed with the ML model service in step 4.</p>
+      <p>If you have another use case, you can use a <a href="/registry/">modular resource</a> to create a custom ML model service or a customr vision services for your machine.</p>
 </td>
   </tr>
   <tr>
     <td>{{<imgproc src="ml/deploy.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Deploy your model">}}
       <b>6. Test your detector or classifier</b>
-      <p>Test your <a href="/ml/vision/mlmodel/#test-your-detector-or-classifier">mlmodel detector or classifier</a>.</p>
+      <p>Follow the <a href="/ml/vision/mlmodel/#test-your-detector-or-classifier">instructions to test your mlmodel detector or classifier</a>.</p>
     </td>
   </tr>
 </table>
