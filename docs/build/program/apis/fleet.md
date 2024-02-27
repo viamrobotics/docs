@@ -1,9 +1,9 @@
 ---
-title: "Manage Your Fleet with Viam's Cloud API"
-linkTitle: "Cloud Management"
+title: "Manage Your Fleet with Viam's Fleet Management API"
+linkTitle: "Fleet Management"
 weight: 20
 type: "docs"
-description: "Use the cloud app API with Viam's client SDKs to manage your machine fleet with code."
+description: "Use the fleet management API with Viam's client SDKs to manage your machine fleet with code."
 tags:
   [
     "cloud",
@@ -13,12 +13,14 @@ tags:
     "apis",
     "robot api",
     "cloud management",
+    "fleet management",
   ]
 aliases:
-  - /program/apis/cloud/
+  - /program/apis/fleet/
+  - /build/program/apis/fleet/
 ---
 
-The cloud app API allows you to [manage your machine fleet](/fleet/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The fleet management API allows you to [manage your machine fleet](/fleet/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
 With it you can
 
 - create and manage organizations, locations, and individual machines
@@ -27,13 +29,13 @@ With it you can
 
 {{% alert title="Support Notice" color="note" %}}
 
-Cloud app API methods are only available in the Python SDK.
+Fleet management API methods are only available in the Python SDK.
 
 {{% /alert %}}
 
 ## Establish a connection
 
-To use the Viam cloud app API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`AppClient`](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient).
+To use the Viam fleet management API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`AppClient`](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient).
 See the following example for reference.
 
 <!-- After sveltekit migration we should also be able to get a key from the UI-->
@@ -65,8 +67,9 @@ async def main():
 
     # Make a ViamClient
     viam_client = await connect()
-    # Instantiate an AppClient called "cloud" to run cloud app API methods on
-    cloud = viam_client.app_client
+    # Instantiate an AppClient called "fleet"
+    # to run fleet management API methods on
+    fleet = viam_client.app_client
 
     viam_client.close()
 
@@ -74,13 +77,13 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
-Once you have instantiated an `AppClient`, you can run the following [API methods](#api) against the `AppClient` object (named `cloud` in the examples).
+Once you have instantiated an `AppClient`, you can run the following [API methods](#api) against the `AppClient` object (named `fleet` in the examples).
 
 ## API
 
-The cloud API supports the following methods (among [others](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient)):
+The fleet management API supports the following methods (among [others](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient)):
 
-{{< readfile "/static/include/services/apis/cloud.md" >}}
+{{< readfile "/static/include/services/apis/fleet.md" >}}
 
 ### ListOrganizations
 
@@ -98,7 +101,7 @@ List the {{< glossary_tooltip term_id="organization" text="organizations" >}} th
 - [(List[viam.proto.app.Organization])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Organization): A list of the organization or organizations of which the user is an authorized owner.
 
 ```python {class="line-numbers linkable-line-numbers"}
-org_list = await cloud.list_organizations()
+org_list = await fleet.list_organizations()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_organizations).
@@ -124,7 +127,7 @@ List the members and invites of the {{< glossary_tooltip term_id="organization" 
   - The second (`[1]`) is a list of organization invites.
 
 ```python {class="line-numbers linkable-line-numbers"}
-member_list, invite_list = await cloud.list_organization_members()
+member_list, invite_list = await fleet.list_organization_members()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_organization_members).
@@ -153,7 +156,7 @@ Check the availability of an {{< glossary_tooltip term_id="organization" text="o
 - [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): `True` if the provided namespace is available.
 
 ```python {class="line-numbers linkable-line-numbers"}
-available = await cloud.get_organization_namespace_availability(
+available = await fleet.get_organization_namespace_availability(
     public_namespace="my-cool-organization")
 ```
 
@@ -196,7 +199,7 @@ authorization_to_add = Authorization(
     organization_id="org_id_123"
 )
 
-update_invite = await cloud.update_organization_invite_authorizations(
+update_invite = await fleet.update_organization_invite_authorizations(
     email="notarealemail@viam.com",
     remove_authorizations=[authorization_to_add]
 )
@@ -230,7 +233,7 @@ Optionally, put the new location under a specified parent location.
 - [(viam.proto.app.Location)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location): The newly created location.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_new_location = await cloud.create_location(name="Robotville",
+my_new_location = await fleet.create_location(name="Robotville",
                                               parent_location_id="111ab12345")
 ```
 
@@ -260,7 +263,7 @@ Get a {{< glossary_tooltip term_id="location" text="location" >}} by its locatio
 - [(viam.proto.app.Location)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location): The location corresponding to the provided ID.
 
 ```python {class="line-numbers linkable-line-numbers"}
-location = await cloud.get_location(location_id="123ab12345")
+location = await fleet.get_location(location_id="123ab12345")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_location).
@@ -295,7 +298,7 @@ Change the name of a {{< glossary_tooltip term_id="location" text="parent locati
 ```python {class="line-numbers linkable-line-numbers"}
 # The following line takes the location with ID "abc12abcde" and moves it
 # to be a sub-location of the location with ID "xyz34xxxxx"
-my_updated_location = await cloud.update_location(
+my_updated_location = await fleet.update_location(
     location_id="abc12abcde",
     name="",
     parent_location_id="xyz34xxxxx",
@@ -303,14 +306,14 @@ my_updated_location = await cloud.update_location(
 
 # The following line changes the name of the location without changing its
 # parent location
-my_updated_location = await cloud.update_location(
+my_updated_location = await fleet.update_location(
     location_id="abc12abcde",
     name="Land Before Robots"
 )
 
 # The following line moves the location back up to be a top level location
 # without changing its name
-my_updated_location = await cloud.update_location(
+my_updated_location = await fleet.update_location(
     location_id="abc12abcde",
     name="",
     parent_location_id=""
@@ -342,7 +345,7 @@ Delete a {{< glossary_tooltip term_id="location" text="location" >}}.
 - None
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.delete_location(location_id="abc12abcde")
+await fleet.delete_location(location_id="abc12abcde")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_location).
@@ -366,7 +369,7 @@ Get a list of all {{< glossary_tooltip term_id="location" text="locations" >}} u
 - (List[[viam.proto.app.Location](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location)]): The list of locations.
 
 ```python {class="line-numbers linkable-line-numbers"}
-locations = await cloud.list_locations()
+locations = await fleet.list_locations()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_locations).
@@ -395,7 +398,7 @@ Get a location’s `LocationAuth` (location secret or secrets).
 - [(viam.proto.app.LocationAuth)](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.LocationAuth): The `LocationAuth` containing location secrets and secret IDs.
 
 ```python {class="line-numbers linkable-line-numbers"}
-loc_auth = await cloud.location_auth(location_id="123xy12345")
+loc_auth = await fleet.location_auth(location_id="123xy12345")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.location_auth).
@@ -424,7 +427,7 @@ Create a new location secret.
 - [(viam.proto.app.LocationAuth)](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.LocationAuth): The specified location's `LocationAuth` containing the newly created secret.
 
 ```python {class="line-numbers linkable-line-numbers"}
-new_loc_auth = await cloud.create_location_secret()
+new_loc_auth = await fleet.create_location_secret()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_location_secret).
@@ -450,7 +453,7 @@ Delete a location secret.
 - `GRPCError`: This error is raised if an invalid location ID is passed, or if one isn't passed and no location ID was provided at `AppClient` instantiation.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.delete_location_secret(
+await fleet.delete_location_secret(
     secret_id="abcd123-456-7890ab-cxyz98-989898xyzxyz")
 ```
 
@@ -479,7 +482,7 @@ Get a {{< glossary_tooltip term_id="machine" text="machine" >}} by its ID.
 - [(viam.proto.app.Robot)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot): The machine.
 
 ```python {class="line-numbers linkable-line-numbers"}
-robot = await cloud.get_robot(robot_id="1a123456-x1yz-0ab0-a12xyzabc")
+robot = await fleet.get_robot(robot_id="1a123456-x1yz-0ab0-a12xyzabc")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot).
@@ -507,7 +510,7 @@ Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under
 - (List[[viam.app.app_client.RobotPart]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The list of machine parts.
 
 ```python {class="line-numbers linkable-line-numbers"}
-list_of_parts = await cloud.get_robot_parts(
+list_of_parts = await fleet.get_robot_parts(
     robot_id="1a123456-x1yz-0ab0-a12xyzabc")
 ```
 
@@ -535,7 +538,7 @@ Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}}.
 - [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_robot_part = await cloud.get_robot_part(
+my_robot_part = await fleet.get_robot_part(
     robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
 ```
 
@@ -573,7 +576,7 @@ Get the logs associated with a specific machine {{< glossary_tooltip term_id="pa
 - [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The list of log entries.
 
 ```python {class="line-numbers linkable-line-numbers"}
-part_logs = await cloud.get_robot_part_logs(
+part_logs = await fleet.get_robot_part_logs(
     robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22", num_log_entries=20)
 ```
 
@@ -602,7 +605,7 @@ Get an asynchronous iterator that receives live machine part logs.
 - (\_LogsStream[[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live machine part logs.
 
 ```python {class="line-numbers linkable-line-numbers"}
-logs_stream = await cloud.tail_robot_part_logs(
+logs_stream = await fleet.tail_robot_part_logs(
     robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
 ```
 
@@ -631,7 +634,7 @@ Get a list containing the history of a machine {{< glossary_tooltip term_id="par
 - (List[[viam.app.app_client.RobotPartHistoryEntry](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPartHistoryEntry)]): The list of the machine part’s history.
 
 ```python {class="line-numbers linkable-line-numbers"}
-part_history = await cloud.get_robot_part_history(
+part_history = await fleet.get_robot_part_history(
     robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
 ```
 
@@ -663,7 +666,7 @@ Change the name of and assign an optional new configuration to a machine {{< glo
 - [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The newly updated machine part.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_robot_part = await cloud.update_robot_part(
+my_robot_part = await fleet.update_robot_part(
     robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
 ```
 
@@ -693,7 +696,7 @@ Create a new machine {{< glossary_tooltip term_id="part" text="part" >}}.
 - [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The new machine part’s ID.
 
 ```python {class="line-numbers linkable-line-numbers"}
-new_part_id = await cloud.new_robot_part(
+new_part_id = await fleet.new_robot_part(
     robot_id="1a123456-x1yz-0ab0-a12xyzabc", part_name="myNewSubPart")
 ```
 
@@ -718,7 +721,7 @@ Delete the specified machine {{< glossary_tooltip term_id="part" text="part" >}}
 - `GRPCError`: This error is raised if an invalid machine part ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.delete_robot_part(
+await fleet.delete_robot_part(
     robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
 ```
 
@@ -743,7 +746,7 @@ Mark a machine part as the [_main_ part](/build/configure/parts-and-remotes/#mac
 - `GRPCError`: This error is raised if an invalid machine part ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.mark_part_as_main(
+await fleet.mark_part_as_main(
   robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
 ```
 
@@ -768,7 +771,7 @@ Mark a specified machine part for restart.
 - `GRPCError`: This error is raised if an invalid machine part ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.mark_part_for_restart(
+await fleet.mark_part_for_restart(
   robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
 ```
 
@@ -797,7 +800,7 @@ Create a machine {{< glossary_tooltip term_id="part" text="part" >}} secret.
 - [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The machine part the new secret was generated for.
 
 ```python {class="line-numbers linkable-line-numbers"}
-part_with_new_secret = await cloud.create_robot_part_secret(
+part_with_new_secret = await fleet.create_robot_part_secret(
   robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
 ```
 
@@ -823,7 +826,7 @@ Delete a machine part secret.
 - `GRPCError`: This error is raised if an invalid machine part ID or secret ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.delete_robot_part_secret(
+await fleet.delete_robot_part_secret(
   robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22",
   secret_id="123xyz12-abcd-4321-12ab-12xy1xyz12xy")
 ```
@@ -853,7 +856,7 @@ Get a list of all machines in a specified location.
 - (List[[viam.proto.app.Robot](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)]): The list of machines.
 
 ```python {class="line-numbers linkable-line-numbers"}
-list_of_machines = await cloud.list_robots(location_id="123ab12345")
+list_of_machines = await fleet.list_robots(location_id="123ab12345")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_robots).
@@ -883,7 +886,7 @@ Create a new {{< glossary_tooltip term_id="machine" text="machine" >}}.
 - [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The new machine's ID.
 
 ```python {class="line-numbers linkable-line-numbers"}
-new_machine_id = await cloud.new_robot(name="beepboop")
+new_machine_id = await fleet.new_robot(name="beepboop")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.new_robot).
@@ -913,7 +916,7 @@ Change the name of an existing machine.
 - [(viam.proto.app.Robot)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot): The newly updated machine.
 
 ```python {class="line-numbers linkable-line-numbers"}
-updated_robot = await cloud.update_robot(
+updated_robot = await fleet.update_robot(
   robot_id="1a123456-x1yz-0ab0-a12xyzabc",
   name="Orange-Robot")
 ```
@@ -939,7 +942,7 @@ Delete a specified machine.
 - `GRPCError`: This error is raised if an invalid machine ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.delete_robot(robot_id="1a123456-x1yz-0ab0-a12xyzabc")
+await fleet.delete_robot(robot_id="1a123456-x1yz-0ab0-a12xyzabc")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_robot).
@@ -965,7 +968,7 @@ Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}} in th
 - (List[[viam.app.app_client.Fragment]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The list of fragments.
 
 ```python {class="line-numbers linkable-line-numbers"}
-fragments_list = await cloud.list_fragments(show_public=False)
+fragments_list = await fleet.list_fragments(show_public=False)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_fragments).
@@ -994,7 +997,7 @@ Get a {{< glossary_tooltip term_id="fragment" text="fragment" >}} by ID.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get a fragment and print its name and when it was created.
-the_fragment = await cloud.get_fragment(
+the_fragment = await fleet.get_fragment(
   fragment_id="12a12ab1-1234-5678-abcd-abcd01234567")
 print("Name: ", the_fragment.name, "\nCreated on: ", the_fragment.created_on)
 ```
@@ -1026,7 +1029,7 @@ Create a new private {{< glossary_tooltip term_id="fragment" text="fragment" >}}
 - [(viam.app.app_client.Fragment)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment): The newly created fragment.
 
 ```python {class="line-numbers linkable-line-numbers"}
-new_fragment = await cloud.create_fragment(
+new_fragment = await fleet.create_fragment(
   name="cool_smart_machine_to_configure_several_of")
 ```
 
@@ -1060,7 +1063,7 @@ Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and it
 - [(viam.app.app_client.Fragment)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment): The newly updated fragment.
 
 ```python {class="line-numbers linkable-line-numbers"}
-updated_fragment = await cloud.update_fragment(
+updated_fragment = await fleet.update_fragment(
   fragment_id="12a12ab1-1234-5678-abcd-abcd01234567",
   name="better_name")
 ```
@@ -1086,7 +1089,7 @@ Delete a {{< glossary_tooltip term_id="fragment" text="fragment" >}}.
 - `GRPCError`: This error is raised if an invalid fragment ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.delete_fragment(
+await fleet.delete_fragment(
   fragment_id="12a12ab1-1234-5678-abcd-abcd01234567")
 ```
 
@@ -1115,7 +1118,7 @@ Add a role under the organization you are currently authenticated to.
 - `GRPCError`: This error is raised if an invalid identity ID, role, resource type, or resource ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.add_role(
+await fleet.add_role(
   identity_id="abc01234-0123-4567-ab12-a11a00a2aa22",
   role="owner",
   resource_type="location",
@@ -1147,7 +1150,7 @@ Remove a role under the organization you are currently authenticated to.
 - `GRPCError`: This error is raised if an invalid identity ID, role, resource type, or resource ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.remove_role(
+await fleet.remove_role(
   identity_id="abc01234-0123-4567-ab12-a11a00a2aa22",
   role="owner",
   resource_type="location",
@@ -1180,7 +1183,7 @@ If no resource IDs are provided, all resource authorizations within the organiza
 - (List[[Authorization](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.Authorization)]): The list of authorizations.
 
 ```python {class="line-numbers linkable-line-numbers"}
-list_of_auths = await cloud.list_authorizations(
+list_of_auths = await fleet.list_authorizations(
   resource_ids=["1a123456-x1yz-0ab0-a12xyzabc"])
 ```
 
@@ -1209,7 +1212,7 @@ Create a {{< glossary_tooltip term_id="module" text="module" >}} under the organ
 - (Tuple[[string, string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing the ID [0] of the new module and its URL [1].
 
 ```python {class="line-numbers linkable-line-numbers"}
-new_module = await cloud.create_module(name="cool_new_hoverboard_module")
+new_module = await fleet.create_module(name="cool_new_hoverboard_module")
 print("Module ID:", new_module[0])
 ```
 
@@ -1244,7 +1247,7 @@ Update the documentation URL, description, models, entrypoint, and/or the visibi
 - [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The URL of the newly updated module.
 
 ```python {class="line-numbers linkable-line-numbers"}
-url_of_my_module = await cloud.update_module(
+url_of_my_module = await fleet.update_module(
   module_id="my-group:cool_new_hoverboard_module",
   url="https://docsformymodule.viam.com",
   description="A base to support hoverboards.",
@@ -1273,7 +1276,7 @@ Upload a {{< glossary_tooltip term_id="module" text="module" >}} file.
 - [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the uploaded file.
 
 ```python {class="line-numbers linkable-line-numbers"}
-file_id = await cloud.upload_module_file(file=b"<file>")
+file_id = await fleet.upload_module_file(file=b"<file>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.upload_module_file).
@@ -1301,7 +1304,7 @@ Get a {{< glossary_tooltip term_id="module" text="module" >}} by its ID.
 - [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The module.
 
 ```python {class="line-numbers linkable-line-numbers"}
-the_module = await cloud.get_module(module_id="my-cool-modular-base")
+the_module = await fleet.get_module(module_id="my-cool-modular-base")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_module).
@@ -1325,7 +1328,7 @@ List the {{< glossary_tooltip term_id="module" text="modules" >}} under the orga
 - [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The list of modules.
 
 ```python {class="line-numbers linkable-line-numbers"}
-modules_list = await cloud.list_modules()
+modules_list = await fleet.list_modules()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_modules).
@@ -1355,7 +1358,7 @@ Create an {{< glossary_tooltip term_id="organization" text="organization" >}} in
 - `GRPCError`: This error is raised if an invalid email is provided, or if the user is already a member of the org.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.create_organization_invite("youremail@email.com")
+await fleet.create_organization_invite("youremail@email.com")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_organization_invite).
@@ -1379,10 +1382,10 @@ Remove a member from the {{< glossary_tooltip term_id="organization" text="organ
 - None.
 
 ```python {class="line-numbers linkable-line-numbers"}
-member_list, invite_list = await cloud.list_organization_members()
+member_list, invite_list = await fleet.list_organization_members()
 first_user_id = member_list[0].user_id
 
-await cloud.delete_organization_member(first_user_id)
+await fleet.delete_organization_member(first_user_id)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_organization_member).
@@ -1410,7 +1413,7 @@ Delete a pending organization invite to the organization you are currently authe
 - `GRPCError`: This error is raised if no pending invite is associated with the provided email address.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.delete_organization_invite("youremail@email.com")
+await fleet.delete_organization_invite("youremail@email.com")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_organization_invite).
@@ -1438,7 +1441,7 @@ Resend a pending organization invite email.
 - `GRPCError`: This error is raised if no pending invite is associated with the provided email address.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.resend_organization_invite("youremail@email.com")
+await fleet.resend_organization_invite("youremail@email.com")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.resend_organization_invite).
@@ -1462,7 +1465,7 @@ Return a list of rover rental robots within an {{< glossary_tooltip term_id="org
 - [(List[viam.proto.app.RoverRentalRobot])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.RoverRentalRobot): The list of rover rental robots.
 
 ```python {class="line-numbers linkable-line-numbers"}
-rental_robots = await cloud.get_rover_rental_robots()
+rental_robots = await fleet.get_rover_rental_robots()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_rover_rental_robots).
@@ -1501,7 +1504,7 @@ permissions = [AuthorizedPermissions(resource_type="organization",
                                      permissions=["control_robot",
                                                   "read_robot_logs"])]
 
-filtered_permissions = await cloud.check_permissions(permissions)
+filtered_permissions = await fleet.check_permissions(permissions)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.check_permissions).
@@ -1596,7 +1599,7 @@ auth = APIKeyAuthorization(
   resource_id="your-robot-id123"
 )
 
-api_key, api_key_id = cloud.create_key([auth], "my_key")
+api_key, api_key_id = fleet.create_key([auth], "my_key")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_key).
@@ -1620,7 +1623,7 @@ Create a new API key with an existing key’s authorizations.
 - [(Tuple[str, str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The new API key and API key ID.
 
 ```python {class="line-numbers linkable-line-numbers"}
-api_key, api_key_id = cloud.create_key_from_existing_key_authorizations(
+api_key, api_key_id = fleet.create_key_from_existing_key_authorizations(
   id="INSERT YOUR API KEY ID")
 ```
 
@@ -1645,7 +1648,7 @@ List all keys for the {{< glossary_tooltip term_id="organization" text="organiza
 - [(List[viam.proto.app.APIKeyWithAuthorizations])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.APIKeyWithAuthorizations): The existing API keys and authorizations.
 
 ```python {class="line-numbers linkable-line-numbers"}
-keys = cloud.list_keys()
+keys = fleet.list_keys()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_keys).
