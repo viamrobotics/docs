@@ -55,9 +55,11 @@ You can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} to stre
 **5. Monitor your fleet**
 
 Using the [Viam app](https://app.viam.com), you can:
+
 - Monitor the status of each machine from its [**Logs** tab](/fleet/machines/#logs).
 - View any data captured by your fleet from the [**Data** tab](/data/).
 - Operate machines remotely from the [**Control** tab](/fleet/machines/#control).
+
 Use [modules](/registry/) to deploy code to your fleet and manage versioning.
 
 {{< /tablestep >}}
