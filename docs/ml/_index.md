@@ -49,7 +49,7 @@ Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML mod
   <tr>
     <td>
       <b>4. Deploy your ML model</b>
-      <p>To make use of ML models with your machine, you must first deploy the model using the built-in <a href="/ml/deploy/">ML model service</a>. The ML Model service will run the model and allow the vision service to use it.</p>
+      <p>To make use of ML models with your machine, you must first deploy the model using the built-in <a href="/ml/deploy/">ML model service</a>. The ML model service will run the model and allow the vision service to use it.</p>
     </td>
   </tr>
   <tr>
