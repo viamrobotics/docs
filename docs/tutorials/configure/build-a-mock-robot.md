@@ -3,8 +3,11 @@ title: "Build a Mock Robot"
 linkTitle: "Mock Robot"
 type: "docs"
 description: "Create a mock robot using just your personal computer to try using Viam without any robotic hardware."
-webmSrc: "/tutorials/build-a-mock-robot/mock-robot.webm"
-mp4Src: "/tutorials/build-a-mock-robot/mock-robot.mp4"
+videos:
+  [
+    "/tutorials/build-a-mock-robot/mock-robot.webm",
+    "/tutorials/build-a-mock-robot/mock-robot.mp4",
+  ]
 images: ["/tutorials/build-a-mock-robot/mock-robot.gif"]
 videoAlt: "A mock arm's joint positions from the control tab of the Viam app."
 aliases:

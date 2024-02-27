@@ -3,8 +3,11 @@ title: "Drive a Rover (like SCUTTLE) Using a Gamepad with a Dongle"
 linkTitle: "Drive a Rover with a Dongle Gamepad"
 type: "docs"
 description: "Drive a wheeled rover with a Bluetooth gamepad that has a dongle."
-webmSrc: "/tutorials/videos/scuttle-gamepad-preview.webm"
-mp4Src: "/tutorials/videos/scuttle-gamepad-preview.mp4"
+videos:
+  [
+    "/tutorials/videos/scuttle-gamepad-preview.webm",
+    "/tutorials/videos/scuttle-gamepad-preview.mp4",
+  ]
 videoAlt: "Drive a Scuttle Robot with a Bluetooth gamepad."
 images: ["/tutorials/videos/scuttle-gamepad-preview.gif"]
 aliases:

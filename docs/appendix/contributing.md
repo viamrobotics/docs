@@ -547,7 +547,7 @@ The `2gif` commands only turn the first 5 seconds of a video into a low res gif.
 
 {{% alert title="Note" color="note" %}}
 
-If you use `webmSrc` and `mp4Src` to add a card video for a page (such as to a tutorial), you should also add a <file>.gif</file> version of the video to the front matter.
+If you use `videos` to add a video preview for a page (such as to a tutorial), you should also add a <file>.gif</file> version of the video to the front matter.
 Hugo uses the GIF as a link preview image that gets displayed on external sites when someone shares the link, for example on Slack or Twitter.
 
 Why?

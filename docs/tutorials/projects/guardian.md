@@ -3,8 +3,7 @@ title: "A Guardian that Tracks Pets using a Pi, Camera, and Servo"
 linkTitle: "Pet Guardian"
 type: "docs"
 description: "Make a functional guardian with a servo motor, some LEDs, a camera, and the ML Model and vision service to detect people and pets."
-webmSrc: "/tutorials/guardian/preview.webm"
-mp4Src: "/tutorials/guardian/preview.mp4"
+videos: ["/tutorials/guardian/preview.webm", "/tutorials/guardian/preview.mp4"]
 videoAlt: "A guardian detecting a person or pet."
 images: ["/tutorials/guardian/preview.gif"]
 tags: ["camera", "vision", "detector", "python"]

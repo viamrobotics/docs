@@ -3,8 +3,11 @@ title: "Follow a Colored Object with a Rover (like SCUTTLE)"
 linkTitle: "Colored Object Follower"
 type: "docs"
 description: "Instructions for detecting and following a colored object with a rover, like a SCUTTLE robot."
-webmSrc: "/tutorials/videos/scuttle-colordetection-preview.webm"
-mp4Src: "/tutorials/videos/scuttle-colordetection-preview.mp4"
+videos:
+  [
+    "/tutorials/videos/scuttle-colordetection-preview.webm",
+    "/tutorials/videos/scuttle-colordetection-preview.mp4",
+  ]
 videoAlt: "Detecting color with a Scuttle Robot"
 images: ["/tutorials/videos/scuttle-colordetection-preview.gif"]
 aliases:
