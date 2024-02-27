@@ -201,7 +201,7 @@ authorization_to_add = Authorization(
 
 update_invite = await fleet.update_organization_invite_authorizations(
     email="notarealemail@viam.com",
-    remove_authorizations=[authorization_to_add]
+    add_authorizations=[authorization_to_add]
 )
 ```
 
