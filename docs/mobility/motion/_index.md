@@ -364,7 +364,7 @@ Move a [base](/components/base/) component to a destination [`Pose`](https://pyt
 Each successful `MoveOnMap()` call returns a unique `ExecutionID` which you can use to identify all plans generated during the `MoveOnMap()` call.
 
 {{< alert title="Info" color="info" >}}
-If you specify a goal pose or orientation and the robot's current position is already at the goal post or orientation, `MoveonMap` returns an error.
+If you specify a goal pose and the robot's current position is already within the set `PlanDeviationM`, then `MoveOnMap` returns an error.
 {{< /alert >}}
 
 You can monitor the progress of the `MoveOnMap()` call by querying `GetPlan()` and `ListPlanStatuses()`.
