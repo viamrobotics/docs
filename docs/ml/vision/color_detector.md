@@ -138,7 +138,8 @@ If you intend to use the detector with a camera that is part of your machine, yo
          "type": "detections",
          "attributes": {
            "confidence_threshold": 0.5,
-           "detector_name": "<vision-service-name>"
+           "detector_name": "<vision-service-name>",
+           "valid_labels": ["<label>"]
          }
        }
      ],

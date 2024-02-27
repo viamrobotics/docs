@@ -28,7 +28,7 @@ Installing on a laptop or desktop computer is useful if you don't have an SBC av
 
 `viam-server` supports:
 
-- Linux 64-bit operating systems running on the `aarch64` or `x86_64` architectures
+- Linux 64-bit operating systems running on the `aarch64` or `x86_64` architectures, including Windows Subsystem for Linux (WSL)
 - macOS
 
 {{< /alert >}}
@@ -64,6 +64,10 @@ Other SBCs such as the [RockPi S](https://wiki.radxa.com/RockpiS) and [Orange Pi
 ## Install `viam-server`
 
 If you have a [compatible operating system](/get-started/installation/), follow along with the steps outlined below or with the video beneath it to install `viam-server`:
+
+{{< alert title="Windows Support" color="note" >}}
+If you want to install `viam-server` on a Windows computer, you can [install Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install), then install `viam-server` using the instructions under the **Linux computer** tab below.
+{{< /alert >}}
 
 {{< tabs name="Install on computer" >}}
 {{% tab name="Linux computer" %}}
