@@ -15,7 +15,7 @@ menuindent: true
 
 {{<imgproc src="/ml/training.png" class="alignright" resize="400x" declaredimensions=true alt="ML training">}}
 
-Viam includes a built-in [machine learning (ML) service](/ml/) which provides your machine with the ability to learn from data and adjust its behavior based on insights gathered from that data.
+Viam includes a built-in [machine learning (ML) model service](/ml/) which provides your machine with the ability to learn from data and adjust its behavior based on insights gathered from that data.
 Common use cases include:
 
 - Object detection and classification which enable machines to detect people, animals, plants, or other objects with bounding boxes, and to perform actions when they are detected.
@@ -36,33 +36,33 @@ Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML mod
   </tr>
   <tr>
     <th>{{<imgproc src="/ml/label.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Label data">}}
-      <b>2. Create a Dataset and Label</b>
+      <b>2. Create a dataset and label</b>
       <p>Once you have collected data, <a href="/data/dataset/">label your data and create a dataset</a> in preparation for training machine learning models.</p>
     </th>
   </tr>
   <tr>
     <th>{{<imgproc src="/ml/train.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Train models">}}
       <b>3. Train or upload an ML model</b>
-      <p>Use your labeled data to <a href="/ml/train-model/">train your own models</a> for object detection and classification using data from the <a href="/data/">data management service</a> or <a href="/ml/upload-model/">add an existing model</a>.</p>
+      <p>Use your labeled data to <a href="/ml/train-model/">train your own model</a> for object detection or classification</a>. If you don't want to train your own model, you can also <a href="/registry/">use an ML model from the registry</a> or <a href="/ml/upload-model/">upload an existing model</a>.</p>
     </th>
   </tr>
   <tr>
     <td>
       <b>4. Deploy your ML model</b>
-      <p>To make use of ML models with your machine, use the built-in <a href="/ml/">ML model service</a> to deploy and run the model.</p>
+      <p>To use ML models with your machine, you must first deploy the model using the built-in <a href="/ml/deploy/">ML model service</a>. The ML model service will run the model and allow the vision service to use it.</p>
     </td>
   </tr>
   <tr>
     <td>{{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Configure a service">}}
-      <b>5. Configure a service</b>
-      <p>For object detection and classification, you can use the <a href="/ml/vision/">vision service</a>, which provides an <a href="/ml/vision/mlmodel/">ml model detector</a> and an <a href="/ml/vision/mlmodel/">ml model classifier</a> model.</p>
-      <p>For other usage, you can use a <a href="/registry/">modular resource</a> to integrate it with your machine.</p>
+      <b>5. Configure a vision service</b>
+      <p>For object detection and classification, use the <a href="/ml/vision/mlmodel/"><code>mlmodel</code> detector or the <code>mlmodel</code> classifier</a> from the <a href="/ml/vision/">vision service</a>. The <code>mlmodel</code> vision service uses the ML model that you deployed with the ML model service in step 4.</p>
+      <p>If you have another use case, you can use a <a href="/registry/">modular resource</a> to create a custom ML model service or a custom vision service for your machine.</p>
 </td>
   </tr>
   <tr>
     <td>{{<imgproc src="ml/deploy.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Deploy your model">}}
       <b>6. Test your detector or classifier</b>
-      <p>Test your <a href="/ml/vision/mlmodel/#test-your-detector-or-classifier">mlmodel detector or classifier</a>.</p>
+      <p>Follow the <a href="/ml/vision/mlmodel/#test-your-detector-or-classifier">instructions to test your <code>mlmodel</code> detector or classifier</a>.</p>
     </td>
   </tr>
 </table>
