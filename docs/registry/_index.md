@@ -28,10 +28,24 @@ menuindent: true
 
 The [Viam registry](https://app.viam.com/registry) is the central place where you can browse:
 
-- [ML models](/ml/) to deploy with machine applications like [computer vision](/ml/vision/)
-- {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} that add capabilities to your machine beyond what is built-in to `viam-server`
+{{< cards >}}
+{{% manualcard link="#ml-models" %}}
 
-### ML models
+#### ML models
+
+ML models to deploy with machine applications like computer vision.
+
+{{% /manualcard %}}
+{{% manualcard link="#modular-resources" %}}
+
+#### Modular resources
+
+{{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} that add capabilities to your machine beyond what is built-in to `viam-server`.
+
+{{% /manualcard %}}
+{{< /cards >}}
+
+## ML models
 
 Viam provides the ability to train, upload, and deploy machine learning models within the platform.
 See [Machine Learning](/ml/) for more information.
@@ -62,7 +76,7 @@ You can search the available ML models from the Viam registry here:
 
 To use an existing model from the registry, [deploy the ML model to your robot](/ml/deploy//#create-an-ml-model-service) and use a [Vision service](/ml/vision/) to make detections or classifications on-machine.
 
-### Modular resources
+## Modular resources
 
 Viam provides built-in support for a variety of {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
