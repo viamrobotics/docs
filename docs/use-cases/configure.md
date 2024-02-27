@@ -19,7 +19,7 @@ Viam's modular system of {{< glossary_tooltip term_id="component" text="componen
 
 First, [create a Viam account](https://app.viam.com/) if you haven't already. Log in.
 
-Then create a machine by typing in a name and clicking **Add machine**</strong>.
+Then create a machine by typing in a name and clicking **Add machine**.
 
 {{<imgproc src="/use-cases/new-machine.png" class="fill aligncenter" resize="400x" style="max-width: 250px" declaredimensions=true alt="Viam app login screen.">}}
 

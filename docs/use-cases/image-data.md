@@ -27,7 +27,7 @@ Then [add a camera component](/components/camera/), such as a [webcam](/componen
 
 Next, [add the data management service](/data/) to be able to configure how your camera captures and stores images.
 
-Then configure [data capture](/data/capture/)and [cloud sync](/data/cloud-sync/).
+Then configure [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/).
 
 {{< /tablestep >}}
 {{< tablestep >}}
@@ -41,7 +41,7 @@ With data management configured, [capture image data from a camera on your machi
 {{<imgproc src="/ml/collect.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **4. View data in the Viam app**
 
-Once you have synced images, you can [view those images in the Viam app](/data/view/)from the **Data** tab.
+Once you have synced images, you can [view those images in the Viam app](/data/view/) from the **Data** tab.
 
 {{< /tablestep >}}
 {{< tablestep >}}

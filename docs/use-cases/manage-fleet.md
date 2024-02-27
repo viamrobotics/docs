@@ -22,7 +22,7 @@ You can grant users different levels of access to individual machines or to grou
 {{<imgproc src="/use-cases/signup.png" class="fill alignright" resize="600x" style="max-width: 350px" declaredimensions=true alt="Viam app signup screen">}}
 **1. Create an account**
 
-Go to the [https://app.viam.com](Viam app) and sign up with Google, GitHub, Apple, or an email address.
+Go to the [Viam app](https://app.viam.com) and sign up with Google, GitHub, Apple, or an email address.
 
 {{< /tablestep >}}
 {{< tablestep >}}
@@ -54,7 +54,10 @@ You can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} to stre
 {{<imgproc src="/use-cases/last-online.png" class="fill alignright" resize="600x" style="max-width: 100px" declaredimensions=true alt="Machine last online status indicator in the Viam app.">}}
 **5. Monitor your fleet**
 
-View the status and logs from each machine in the [https://app.viam.com](Viam app), gather machine sensor [data](/data/), and operate machines remotely from the [**Control** tab](/fleet/machines/#control).
+Using the [Viam app](https://app.viam.com), you can:
+- Monitor the status of each machine from its [**Logs** tab](/fleet/machines/#logs).
+- View any data captured by your fleet from the [**Data** tab](/data/).
+- Operate machines remotely from the [**Control** tab](/fleet/machines/#control).
 Use [modules](/registry/) to deploy code to your fleet and manage versioning.
 
 {{< /tablestep >}}
