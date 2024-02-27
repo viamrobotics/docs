@@ -52,8 +52,8 @@ Install one of the following SDKs on your local computer:
 - the [Viam Python SDK](https://python.viam.dev/)
 - the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
 - the [Viam Flutter SDK](https://flutter.viam.dev/)
-- the [TypeScript SDK](https://ts.viam.dev/)
-- the [C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk/#readme)
+- the [Viam TypeScript SDK](https://ts.viam.dev/)
+- the [Viam C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk/#readme)
 
 {{< alert title="Tip" color="tip" >}}
 If you are [renting your rover](https://app.viam.com/try), we recommend that you get the Viam SDK set up before your reservation starts.
@@ -720,7 +720,7 @@ using std::endl;
 
 Next, you need to initialize your rover base.
 
-In the main function, after you connect, paste the code from lines 19-22. On the Try Viam rental rovers, the default base name is `viam_base`. If you have a different base name, update the name in your code.
+In the main function, after you connect, paste the code from lines 21-30. On the Try Viam rental rovers, the default base name is `viam_base`. If you have a different base name, update the name in your code.
 
 Your main function should look like this:
 
