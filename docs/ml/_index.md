@@ -62,7 +62,7 @@ Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML mod
   <tr>
     <td>{{<imgproc src="ml/deploy.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Deploy your model">}}
       <b>6. Test your detector or classifier</b>
-      <p>Follow the <a href="/ml/vision/mlmodel/#test-your-detector-or-classifier">instructions to test your mlmodel detector or classifier</a>.</p>
+      <p>Follow the <a href="/ml/vision/mlmodel/#test-your-detector-or-classifier">instructions to test your <code>mlmodel</code> detector or classifier</a>.</p>
     </td>
   </tr>
 </table>
