@@ -43,7 +43,7 @@ Click an organization's name to navigate to its list of locations.
 To create a new organization, click on the Org's **Settings** in the top right of the navigation bar.
 Then enter the name for your new organization in the **New Organization** field in the upper left of the page.
 
-### Share an organization
+### Invite someone to an organization
 
 To invite a user to your organization, click on the Org's **Settings** in the top right of the navigation bar.
 In the members section of the page, click on **Grant access** and enter their email address.
