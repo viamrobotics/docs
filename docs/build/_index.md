@@ -54,4 +54,5 @@ For example, you can send the same commands to any kind of motor, using any of t
 {{% card link="/build/configure/" %}}
 {{% card link="/build/program/" %}}
 {{% card link="/build/micro-rdk/" %}}
+{{% card link="/build/provision/" %}}
 {{< /cards >}}
