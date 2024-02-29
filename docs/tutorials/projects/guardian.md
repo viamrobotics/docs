@@ -245,7 +245,7 @@ Then test the components on the [machine's Control tab](/fleet/machines/#control
 
 ## Detect persons and pets
 
-For the guardian to be able to detect living beings, you will use a Machine Learning model from the Viam Registry called [`effdet0`](https://app.viam.com/ml-model/bill/effdet0).
+For the guardian to be able to detect living beings, you will use a Machine Learning model from the Viam Registry called [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
 The model can detect a variety of things which you can see in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
 You can also [train your own custom model](/ml/train-model/) based on images from your robot but the provided Machine Learning model is a good one to start with.
@@ -265,7 +265,7 @@ Select type `ML Model`, then select model `TFLite CPU`.
 Enter `mlmodel` as the name for your ML model service, then click **Create**.
 
 Select the **Deploy model on robot** for the **Deployment** field.
-Then select the `bill:effdet0` model from the **Models** dropdown.
+Then select the `viam-labs:EfficientDet-COCO` model from the **Models** dropdown.
 
 2. **Add a vision service.**
 
