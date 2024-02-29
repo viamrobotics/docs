@@ -856,12 +856,12 @@ Create a new dataset.
 
 **Parameters:**
 
-- name (str): The name of the dataset being created.
-- organization_id (str): The ID of the organization where the dataset is being created.
+- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The name of the dataset being created.
+- `organization_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the organization where the dataset is being created.
 
 **Returns:**
 
-- (`str`): The dataset ID of the created dataset.
+- [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The dataset ID of the created dataset.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.create_dataset).
 
@@ -885,7 +885,7 @@ Get a list of datasets using their IDs.
 
 **Parameters:**
 
-- ids (List[str]): The IDs of the datasets being called for.
+- `ids` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): The IDs of the datasets being called for.
 
 **Returns:**
 
@@ -912,7 +912,7 @@ Get the datasets in an organization.
 
 **Parameters:**
 
-- organization_id (str): The ID of the organization.
+- `organization_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the organization.
 
 **Returns:**
 
@@ -939,8 +939,8 @@ Rename a dataset specified by the dataset ID.
 
 **Parameters:**
 
-- id (str): The ID of the dataset.
-- name (str): The new name of the dataset.
+- `id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the dataset.
+- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The new name of the dataset.
 
 **Returns:**
 
@@ -967,7 +967,7 @@ Delete a dataset.
 
 **Parameters:**
 
-- id (str): The ID of the dataset.
+- `id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the dataset.
 
 **Returns:**
 
@@ -986,7 +986,7 @@ await data_client.delete_dataset(
 
 ### AddBinaryDataToDatasetByIds
 
-Add the BinaryData to the provided dataset.
+Add the [BinaryData](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryData) to the provided dataset.
 This BinaryData will be tagged with the VIAM_DATASET\_{id} label.
 
 {{< tabs >}}
@@ -994,8 +994,8 @@ This BinaryData will be tagged with the VIAM_DATASET\_{id} label.
 
 **Parameters:**
 
-- binary_ids (List[[BinaryID](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID "viam.gen.app.data.v1.data_pb2.BinaryID")]): The IDs of binary data to add to dataset.
-- dataset_id (str): The ID of the dataset to be added to.
+- `binary_ids` (List[[BinaryID](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID "viam.gen.app.data.v1.data_pb2.BinaryID")]): The IDs of binary data to add to dataset.
+- `dataset_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the dataset to be added to.
 
 **Returns:**
 
@@ -1040,8 +1040,8 @@ This BinaryData will lose the VIAM_DATASET\_{id} tag.
 
 **Parameters:**
 
-- binary_ids (List[[BinaryID](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID "viam.gen.app.data.v1.data_pb2.BinaryID")]): The IDs of binary data to remove from dataset.
-- dataset_id (str): The ID of the dataset to be removed from.
+- `binary_ids` (List[[BinaryID](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID "viam.gen.app.data.v1.data_pb2.BinaryID")]): The IDs of binary data to remove from dataset.
+- `dataset_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the dataset to be removed from.
 
 **Returns:**
 
