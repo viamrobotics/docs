@@ -171,13 +171,13 @@ You can search the machine learning models that are available to deploy on this 
 If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the machine.
 If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON machine configuration](/build/configure/#the-config-tab).
 
-You can get the version number from a specific model version by clicking on **COPY** on the model on the models tab of the **DATA** page.
+You can get the version number from a specific model version by navigating to the [models page](https://app.viam.com/data/models) finding the model's row, clicking on the right-side menu marked with **_..._** and selecting **Copy package JSON**. For example: `2024-02-28T13-36-51`.
 The model package config looks like this:
 
 ```json
 {
-  "package": "<model_id>/allblack",
-  "version": "YYYYMMDDHHMMSS",
+  "package": "<model_id>/<model_name>",
+  "version": "YYYY-MM-DDThh-mm-ss",
   "name": "<model_name>",
   "type": "ml_model"
 }
