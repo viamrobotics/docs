@@ -321,49 +321,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 {{% /tab %}}
 {{< /tabs >}}
 
-### Status
-
-Get the status of the machine's components. You can optionally provide a list of each `ResourceName` you want the status of.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `components` [(Optional[List[viam.proto.common.ResourceName]])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): Optional list of `ResourceName` for each component you want the status of.
-
-**Returns:**
-
-- List[status]: The status of each of the machine's components you've specified.
-
-```python {class="line-numbers linkable-line-numbers"}
-statuses = await robot.get_status()
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_status).
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `resourceNames` [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk@v0.15.1/resource#Name): Optional list of resource names for each component you want the status of.
-
-**Returns:**
-
-- [([]robot.Status)](https://pkg.go.dev/go.viam.com/rdk/robot#Status): The status of each of the machine's components you've specified.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-```go
-statuses, err := robot.Status(ctx)
-```
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient.Refresh).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### GetOperations
 
 Get the list of operations currently running on the machine.
