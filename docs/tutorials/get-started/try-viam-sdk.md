@@ -139,6 +139,10 @@ go run square.go
 
 The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **TypeScript** and copy the boilerplate code.
 
+{{< alert title="Info" color="info" >}}
+The TypeScript SDK currently only supports building web browser apps.
+{{< /alert >}}
+
 {{% snippet "show-secret.md" %}}
 
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
