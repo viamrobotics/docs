@@ -895,7 +895,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```python {class="line-numbers linkable-line-numbers"}
 datasets = await data_client.list_dataset_by_ids(
-  ids=["<dataset-id>"]
+  ids=["abcd-1234xyz-8765z-123abc"]
 )
 print(datasets)
 ```
@@ -950,7 +950,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```python {class="line-numbers linkable-line-numbers"}
 await data_client.rename_dataset(
-    id="<dataset-id>",
+    id="abcd-1234xyz-8765z-123abc",
     name="<dataset-name>"
 )
 ```
@@ -977,7 +977,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```python {class="line-numbers linkable-line-numbers"}
 await data_client.delete_dataset(
-  id="<dataset-id>"
+  id="abcd-1234xyz-8765z-123abc"
 )
 ```
 
@@ -1023,7 +1023,7 @@ for obj in binary_metadata:
 
 await data_client.add_binary_data_to_dataset_by_ids(
     binary_ids=my_binary_ids,
-    dataset_id="<dataset-id>"
+    dataset_id="abcd-1234xyz-8765z-123abc"
 )
 ```
 
@@ -1069,7 +1069,7 @@ for obj in binary_metadata:
 
 await data_client.remove_binary_data_from_dataset_by_ids(
     binary_ids=my_binary_ids,
-    dataset_id="<dataset-id>"
+    dataset_id="abcd-1234xyz-8765z-123abc"
 )
 ```
 
