@@ -3,8 +3,11 @@ title: "Navigate with a Rover Base"
 linkTitle: "Navigate with a Rover"
 type: "docs"
 description: "Introduction to using a rover base with the navigation service."
-webmSrc: "/tutorials/navigate-with-rover-base/preview.webm"
-mp4Src: "/tutorials/navigate-with-rover-base/preview.mp4"
+videos:
+  [
+    "/tutorials/navigate-with-rover-base/preview.webm",
+    "/tutorials/navigate-with-rover-base/preview.mp4",
+  ]
 videoAlt: "The agilex LIMO rover navigating in the grass outside."
 images: ["/tutorials/navigate-with-rover-base/preview.gif"]
 tags:

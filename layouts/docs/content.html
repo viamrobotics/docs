@@ -2,9 +2,8 @@
 	<!-- Check size of preview images -->
 	{{ if .Params.Images }}
 		{{ range .Params.Images}}
-			{{ $image_type_arr := split . "." }}
-			{{ $image_ext := index $image_type_arr 1 }}
-			{{if eq $image_ext "gif" }}
+			{{ $image_ext := path.Ext . }}
+			{{if eq $image_ext ".gif" }}
 				<!-- GIF -->
 				{{if os.FileExists (printf "/static%s" .) }}
 					{{ $f := os.Stat (printf "/static%s" .) }}

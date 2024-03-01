@@ -89,7 +89,7 @@ Navigate to the **Control** tab where you can see your camera working.
 
 ### Configure your services
 
-This tutorial uses a pre-trained Machine Learning model from the Viam Registry called [`effdet0`](https://app.viam.com/ml-model/bill/effdet0).
+This tutorial uses a pre-trained Machine Learning model from the Viam Registry called [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
 The model can detect a variety of things, including `Persons`.
 You can see a full list of what the model can detect in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
@@ -111,7 +111,7 @@ Click the **Services** subtab.
    ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
 
    Select the **Deploy model on robot** for the **Deployment** field.
-   Then select the `bill:effdet0` model from the **Models** dropdown.
+   Then select the `viam-labs:EfficientDet-COCO` model from the **Models** dropdown.
 
 1. **Configure an mlmodel detector**
 

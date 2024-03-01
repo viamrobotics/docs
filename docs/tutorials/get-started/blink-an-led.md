@@ -3,8 +3,8 @@ title: "Make an LED Blink With Buttons And With Code"
 linkTitle: "Blink an LED"
 type: "docs"
 description: "Use the Viam app and the SDKs to make an LED turn on and off with a Raspberry Pi."
-webmSrc: "/tutorials/blink-an-led/blink.webm"
-mp4Src: "/tutorials/blink-an-led/blink.mp4"
+videos:
+  ["/tutorials/blink-an-led/blink.webm", "/tutorials/blink-an-led/blink.mp4"]
 videoAlt: "A blinking L.E.D. connected to a Raspberry Pi"
 images: ["/tutorials/blink-an-led/blink.gif"]
 aliases:

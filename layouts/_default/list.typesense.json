@@ -17,24 +17,39 @@
                               {{- $.Scratch.Set "featured" 9999 -}}
                         {{- end -}}
 
-                        {{- if .Params.webmSrc -}}
-                              {{- if eq (.Params.webmSrc | printf "%.1s") "/" -}}
-                                    {{- $.Scratch.Set "webm" (printf "..%s" .Params.webmSrc) -}}
-                              {{- else -}}
-                                    {{- $.Scratch.Set "webm" (printf "%s" .Params.webmSrc) -}}
+                        {{- if (index .Params.videos 0) -}}
+                              {{- if and (eq (path.Ext (index .Params.videos 0)) ".webm") (eq (path.Ext (index .Params.videos 1)) ".mp4") -}}
+
+                                    {{- if eq ((index .Params.videos 0) | printf "%.1s") "/" -}}
+                                          {{- $.Scratch.Set "webm" (printf "..%s" (index .Params.videos 0)) -}}
+                                    {{- else -}}
+                                          {{- $.Scratch.Set "webm" (printf "%s" (index .Params.videos 0)) -}}
+                                    {{- end -}}
+                                    {{- if eq ((index .Params.videos 1) | printf "%.1s") "/" -}}
+                                          {{- $.Scratch.Set "mp4" (printf "..%s" (index .Params.videos 1)) -}}
+                                    {{- else -}}
+                                          {{- $.Scratch.Set "mp4" (printf "%s" (index .Params.videos 1)) -}}
+                                    {{- end -}}
+
+                              {{- else if and (eq (path.Ext (index .Params.videos 1)) ".webm") (eq (path.Ext (index .Params.videos 0)) ".mp4") -}}
+
+                                    {{- if eq ((index .Params.videos 1) | printf "%.1s") "/" -}}
+                                          {{- $.Scratch.Set "webm" (printf "..%s" (index .Params.videos 1)) -}}
+                                    {{- else -}}
+                                          {{- $.Scratch.Set "webm" (printf "%s" (index .Params.videos 1)) -}}
+                                    {{- end -}}
+                                    {{- if eq ((index .Params.videos 0) | printf "%.1s") "/" -}}
+                                          {{- $.Scratch.Set "mp4" (printf "..%s" (index .Params.videos 0)) -}}
+                                    {{- else -}}
+                                          {{- $.Scratch.Set "mp4" (printf "%s" (index .Params.videos 0)) -}}
+                                    {{- end -}}
+
                               {{- end -}}
                         {{- else -}}
                               {{- $.Scratch.Set "webm" "" -}}
-                        {{- end -}}
-                        {{- if .Params.mp4Src -}}
-                              {{- if eq (.Params.mp4Src | printf "%.1s") "/" -}}
-                                    {{- $.Scratch.Set "mp4" (printf "..%s" .Params.mp4Src) -}}
-                              {{- else -}}
-                                    {{- $.Scratch.Set "mp4" (printf "%s" .Params.mp4Src) -}}
-                              {{- end -}}
-                        {{- else -}}
                               {{- $.Scratch.Set "mp4" "" -}}
                         {{- end -}}
+
                         {{- if (index .Params.images 0) -}}
                               {{- $image_ext := path.Ext (index .Params.images 0) -}}
                               {{- $image_extensions := slice ".png" ".jpg" ".jpeg" ".svg" -}}

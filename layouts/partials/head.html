@@ -30,8 +30,8 @@ hugo.IsProduction (ne $outputFormat "print") -}}
 </title>
 <script>document.documentElement.classList.remove("no-js")</script>
 <link rel="canonical" href="{{ .Permalink }}" />
-<meta name="description" content="{{ template "partials/page-description.html" .
-}}"> {{ template "_internal/opengraph.html" . -}} {{ template
+<meta name="description" content="{{- template "partials/page-description.html" .
+-}}"> {{ template "_internal/opengraph.html" . -}} {{ template
 "_internal/schema.html" . -}} {{ template "_internal/twitter_cards.html" . -}}
 {{ partialCached "head-css.html" . "asdf" -}}
 <!-- START script for cookie dialogue -->

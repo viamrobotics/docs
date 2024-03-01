@@ -4,8 +4,8 @@ linkTitle: "Drive with the SDK"
 weight: 2
 type: "docs"
 description: "Use a Viam SDK to program a rover to move in a square."
-webmSrc: "/tutorials/try-viam-sdk/image1.webm"
-mp4Src: "/tutorials/try-viam-sdk/image1.mp4"
+videos:
+  ["/tutorials/try-viam-sdk/image1.webm", "/tutorials/try-viam-sdk/image1.mp4"]
 videoAlt: "A Viam Rover driving in a square"
 images: ["/tutorials/try-viam-sdk/image1.gif"]
 tags: ["base", "viam rover", "try viam", "sdk", "python", "flutter"]
@@ -138,6 +138,10 @@ go run square.go
 {{% tab name="TypeScript" %}}
 
 The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **TypeScript** and copy the boilerplate code.
+
+{{< alert title="Info" color="info" >}}
+The TypeScript SDK currently only supports building web browser apps.
+{{< /alert >}}
 
 {{% snippet "show-secret.md" %}}
 

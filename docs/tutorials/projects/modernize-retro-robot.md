@@ -2,8 +2,7 @@
 title: "Modernize a 1980s Robot"
 linkTitle: "Modernize a 1980s Robot"
 type: "docs"
-webmSrc: "/tutorials/maiv/maiv_front.webm"
-mp4Src: "/tutorials/maiv/maiv_front.mp4"
+videos: ["/tutorials/maiv/maiv_front.webm", "/tutorials/maiv/maiv_front.mp4"]
 images: ["/tutorials/maiv/maiv_front.gif"]
 tags:
   ["base", "retro", "vision", "computer vision", "camera", "motor", "python"]

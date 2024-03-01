@@ -3,8 +3,7 @@ title: "Build a Flutter App that Integrates with Viam"
 linkTitle: "Build a Flutter App"
 type: "docs"
 description: "Use Viam's Flutter SDK to build a custom mobile app to show your machines and their components."
-webmSrc: "/tutorials/flutter-app/demo.webm"
-mp4Src: "/tutorials/flutter-app/demo.mp4"
+videos: ["/tutorials/flutter-app/demo.webm", "/tutorials/flutter-app/demo.mp4"]
 videoAlt: "An example Viam-integrated Flutter app."
 tags: ["sdk", "flutter"]
 authors: ["Clint Purser"]

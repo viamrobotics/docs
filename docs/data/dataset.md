@@ -7,8 +7,7 @@ type: "docs"
 tags: ["data management", "cloud", "sync"]
 imageAlt: "Label data and create datasets"
 images: ["/data/label-dog.gif"]
-webmSrc: "/data/label-dog.webm"
-mp4Src: "/data/label-dog.mp4"
+videos: ["/data/label-dog.webm", "/data/label-dog.mp4"]
 videoAlt: "Add a bounding box around the dog in an image."
 aliases:
   - /manage/data/label/

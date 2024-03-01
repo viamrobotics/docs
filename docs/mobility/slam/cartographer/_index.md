@@ -18,6 +18,9 @@ aliases:
 To use Cartographer with the Viam {{< glossary_tooltip term_id="slam" text="SLAM" >}} service, you can use the [`cartographer`](https://app.viam.com/module/viam/cartographer) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 See the [Use Modules](/registry/#use-modules) section for instructions on using a module from the Viam registry on your machine.
 
+This module utilizes the Cartographer SLAM algorithm to provide tools for generating SLAM maps.
+If you want to use a SLAM algorithm outside of Cartographer, you can create a new module to suit your needs.
+
 The source code for this module is available on the [`viam-cartographer` GitHub repository](https://github.com/viamrobotics/viam-cartographer).
 
 {{% alert title="Info" color="info" %}}
