@@ -17,8 +17,8 @@ You can capture and monitor the following metrics about the performance of indiv
 - **Wireless Signal Strength and Quality**: signal level, link quality, and noise level
 - **Memory Usage**: memory statistics, including total available memory, used percentage, and specifics on various types of memory (cached, free, slab, etc.)
 - **CPU Utilization**: CPU usage across different states (user, system, idle, etc.)
-- **Disk I/O**: Metrics on read and write operations, including bytes transferred and operation times
-- **Network Traffic**: Detailed network statistics, including bytes sent and received, packet information, and error counts, provide a deep dive into a device's network performance.
+- **Disk I/O**: metrics on read and write operations, including bytes transferred and operation times
+- **Network Traffic**: detailed network statistics, including bytes sent and received, packet information, and error counts, provide a deep dive into a device's network performance
 
 ## Requirements
 
