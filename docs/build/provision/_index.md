@@ -4,6 +4,7 @@ linkTitle: "Provision Machines"
 weight: 70
 type: "docs"
 description: "Flexibly provision new machines using the Viam Agent."
+images: ["/platform/provisioning-demo.gif"]
 videos: ["/platform/provisioning-demo.webm", "/platform/provisioning-demo.mp4"]
 tags: ["fleet management", "viam-server", "viam-agent"]
 # SME: James Otting
