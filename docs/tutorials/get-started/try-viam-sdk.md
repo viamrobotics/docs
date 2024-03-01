@@ -4,8 +4,8 @@ linkTitle: "Drive with the SDK"
 weight: 2
 type: "docs"
 description: "Use a Viam SDK to program a rover to move in a square."
-webmSrc: "/tutorials/try-viam-sdk/image1.webm"
-mp4Src: "/tutorials/try-viam-sdk/image1.mp4"
+videos:
+  ["/tutorials/try-viam-sdk/image1.webm", "/tutorials/try-viam-sdk/image1.mp4"]
 videoAlt: "A Viam Rover driving in a square"
 images: ["/tutorials/try-viam-sdk/image1.gif"]
 tags: ["base", "viam rover", "try viam", "sdk", "python", "flutter"]

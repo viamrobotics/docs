@@ -3,8 +3,11 @@ title: "Add Constraints and Transforms to a Motion Plan"
 linkTitle: "Add Motion Constraints"
 type: "docs"
 description: "Use constraints and transforms with the motion service."
-webmSrc: "/tutorials/videos/motion_constraints.webm"
-mp4Src: "/tutorials/videos/motion_constraints.mp4"
+videos:
+  [
+    "/tutorials/videos/motion_constraints.webm",
+    "/tutorials/videos/motion_constraints.mp4",
+  ]
 images: ["/tutorials/videos/motion_constraints.gif"]
 videoAlt: "An arm moving a cup from one side of a tissue box to the other, across a table. The cup stays upright."
 tags: ["arm", "gripper", "motion", "services"]

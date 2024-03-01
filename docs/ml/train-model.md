@@ -5,8 +5,7 @@ weight: 40
 type: "docs"
 tags: ["data management", "ml", "model training"]
 images: ["/ml/train-model.gif"]
-webmSrc: "/ml/train-model.webm"
-mp4Src: "/ml/train-model.mp4"
+videos: ["/ml/train-model.webm","/ml/train-model.mp4"]
 videoAlt: "Add a bounding box around the dog in an image."
 aliases:
   - /data/train-model/
