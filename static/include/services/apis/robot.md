@@ -5,7 +5,6 @@
 | [`AtAddress`](/build/program/apis/robot/#ataddress) | Create a RobotClient that is connected to the machine at the provided address. |
 | [`WithChannel`](/build/program/apis/robot/#withchannel) | Create a RobotClient that is connected to a machine over the given channel. |
 | [`Refresh`](/build/program/apis/robot/#refresh) | Manually refesh the underlying parts of the machine. |
-| [`Status`](/build/program/apis/robot/#status) | Get the status of the machine's components. |
 | [`GetOperations`](/build/program/apis/robot/#getoperations) | Get the list of operations currently running on the machine. |
 | [`CancelOperation`](/build/program/apis/robot/#canceloperation) | Cancel the specified operation on the machine. |
 | [`BlockForOperation`](/build/program/apis/robot/#blockforoperation) | Blocks on the specified operation on the machine. |
