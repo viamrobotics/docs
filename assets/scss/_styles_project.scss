@@ -200,6 +200,9 @@ a > code {
 p, li {
   color: #515151;
   a {
+    text-decoration: none;
+  }
+  a:hover {
     text-decoration: underline;
   }
 }
@@ -370,11 +373,11 @@ END MARKETING CSS
 }
 
 .alert a {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .alert a:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 
