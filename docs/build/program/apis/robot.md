@@ -907,6 +907,41 @@ metadata = robot.get_cloud_metadata()
 ```
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+```go
+metadata := robot.GetCloudMetadata()
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/RobotClient.html).
+
+```typescript
+// Get the metadata of the machine.
+const metadata = await robot.getCloudMetadata();
+```
+
+{{% /tab %}}
 {{< /tabs >}}
 
 For the full list of robot API methods, see the [Viam Python SDK documentation](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient) or the [RDK (the Viam Go SDK) documentation](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient).
