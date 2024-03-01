@@ -98,7 +98,7 @@ def parse(type, names):
             service = "data-client"
 
         if service == "app_client":
-            service = "cloud"
+            service = "fleet"
 
         # Find all python methods objects on Python docs site soup
         py_methods_sdk_docs = soup.find_all("dl", class_="py method")
