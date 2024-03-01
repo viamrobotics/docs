@@ -885,4 +885,28 @@ For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetCloudMetadata
+
+Returns app-related information about the robot.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_cloud_metadata).
+
+```python
+metadata = robot.get_cloud_metadata()
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 For the full list of robot API methods, see the [Viam Python SDK documentation](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient) or the [RDK (the Viam Go SDK) documentation](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient).
