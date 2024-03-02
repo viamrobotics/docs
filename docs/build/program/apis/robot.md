@@ -898,12 +898,15 @@ Returns app-related information about the robot.
 
 **Returns:**
 
-- [viam.proto.robot.GetCloudMetadataResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetCloudMetadataResponse): App-related metadata.
+- [viam.proto.robot.GetCloudMetadataResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetCloudMetadataResponse): App-related metadata containing the primary org id, location id, and robot part id for a robot running on the Viam app.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_cloud_metadata).
 
 ```python
 metadata = robot.get_cloud_metadata()
+print(metadata.robot_part_id)
+print(metadata.primary_org_id)
+print(metadata.location_id)
 ```
 
 {{% /tab %}}
@@ -915,12 +918,15 @@ metadata = robot.get_cloud_metadata()
 
 **Returns:**
 
-- None.
+- [cloud.Metadata](https://pkg.go.dev/go.viam.com/rdk/cloud): App-related metadata containing the primary org id, location id, and robot part id for a robot running on the Viam app.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 ```go
 metadata := robot.GetCloudMetadata()
+fmt.Println(metadata.RobotPartID)
+fmt.Println(metadata.PrimaryOrgID)
+fmt.Println(metadata.LocationID)
 ```
 
 {{% /tab %}}
