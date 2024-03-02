@@ -938,13 +938,14 @@ fmt.Println(metadata.LocationID)
 
 **Returns:**
 
-- None.
+- [CloudMetadata](https://ts.viam.dev/types/CloudMetadata.html): App-related metadata containing the primary org id, location id, and robot part id for a robot running on the Viam app.
 
 For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/RobotClient.html).
 
 ```typescript
 // Get the metadata of the machine.
 const metadata = await robot.getCloudMetadata();
+console.log(metadata);
 ```
 
 {{% /tab %}}
