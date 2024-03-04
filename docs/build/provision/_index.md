@@ -229,6 +229,13 @@ This file configures some basic metadata, specifies a [fragment](/fleet/configur
 
 ## Use the Viam mobile app
 
-You can also use the [Viam mobile application](/fleet/#the-viam-mobile-app), available for download from the [Apple](https://apps.apple.com/us/app/viam-robotics/id6451424162) and [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US) app stores, to connect to the Viam Agent on deployed machines.
+You can use the [Viam mobile application](/fleet/#the-viam-mobile-app), available for download from the [Apple](https://apps.apple.com/us/app/viam-robotics/id6451424162) and [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US) app stores, to connect to the Viam Agent on deployed machines.
 
 Once you are logged in using the Viam mobile app, select your organization, then location, then tap **Add new smart machine** and follow the instructions in the mobile app.
+
+## Write your own mobile app
+
+You can also write your own mobile application using the [Viam Flutter SDK](https://flutter.viam.dev/) that can connect to the Viam Agent and provision your machines.
+For example, you can fetch local networks available to your deployed machine with `getNetworkList()`, or assign network credentials for a specific network with `setNetworkCredentials()`.
+
+For more information, see the [Flutter SDK Documentation](https://flutter.viam.dev/viam_protos.provisioning.provisioning/ProvisioningServiceClient-class.html).
