@@ -6,7 +6,8 @@ weight: 12
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 icon: true
-images: ["/services/icons/data-capture.svg"]
+images: ["/data/monitor.gif"]
+videos: ["/data/monitor.webm", "/data/monitor.mp4"]
 aliases:
   - "/services/data/capture/"
 # SME: Alexa Greenberg
@@ -23,6 +24,10 @@ You can capture and monitor the following metrics about the performance of indiv
 ## Requirements
 
 To capture data from a machine, you need to [create a machine in Viam](https://docs.viam.com/manage/fleet/machines/#add-a-new-machine) and follow the setup instruction to install `viam-server` and connect it to the Viam app.
+
+{{< alert title="Note" color="note" >}}
+You must run `viam-server` with `sudo` to monitor machine performance metrics.
+{{< /alert >}}
 
 ## Add sensor to measure performance metrics
 
@@ -41,6 +46,8 @@ For more information, see [add a module from the Viam Registry](https://docs.via
 
 After you configure your sensor, navigate to the [Control tab](/fleet/machines/#control) and select the **Sensors** dropdown panel.
 To access detailed readings from your sensor, click on the **Get Readings** button.
+
+{{<gif webm_src="/data/monitor.webm" mp4_src="/data/monitor.mp4" alt="sensor control tab">}}
 
 ## Configure data manager to capture and sync sensor data
 
