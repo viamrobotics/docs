@@ -37,7 +37,7 @@ The example video shows using the [Viam mobile application](/fleet/#the-viam-mob
 You can install the Viam Agent using either an existing machine's part ID and API key, or using an existing <file>/etc/viam.json</file> configuration file.
 
 {{< alert title="Important" color="note" >}}
-The Viam Agent supports the Linux `x86_64` and `arm64` architectures only.
+The Viam Agent supports the Linux `x86_64` and `aarch64` architectures only.
 Your machine must have `curl` available in order to install the Viam Agent.
 {{< /alert >}}
 
