@@ -8,13 +8,14 @@ The micro-RDK is a lightweight version of the {{% glossary_tooltip term_id="rdk"
 
 The only microcontroller the micro-RDK currently supports is the [ESP32](https://www.espressif.com/en/products/socs/esp32).
 
-[Client API](/build/program/apis/) usage with the micro-RDK currently supports only the following {{< glossary_tooltip term_id="resource" text="resources" >}}:
+[Client API](/build/program/apis/) usage with the micro-RDK currently supports the following {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
 - [Base](/build/micro-rdk/base/)
 - [Board](/build/micro-rdk/board/)
 - [Encoder](/build/micro-rdk/encoder/)
 - [Movement Sensor](/build/micro-rdk/movement-sensor/)
 - [Motor](/build/micro-rdk/motor/)
+- [Sensor](/build/micro-rdk/sensor)
 - [Servo](/build/micro-rdk/servo/)
 - [Generic](/build/micro-rdk/generic/)
 
