@@ -918,7 +918,7 @@ print(metadata.location_id)
 
 **Returns:**
 
-- [cloud.Metadata](https://pkg.go.dev/go.viam.com/rdk/cloud): App-related metadata containing the primary org id, location id, and robot part id for a robot running on the Viam app.
+- [cloud.Metadata](https://pkg.go.dev/go.viam.com/rdk/internal/cloud#Metadata): App-related metadata containing the primary org id, location id, and robot part id for a robot running on the Viam app.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
