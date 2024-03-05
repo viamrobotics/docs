@@ -17,8 +17,7 @@ cost: 120
 
 {{<imgproc src="/tutorials/helmet/ppe-hooks.png" resize="x300" declaredimensions=true alt="Hard hats and neon reflective vests on hooks." class="alignright" style="max-width: 350px">}}
 
-We all know personal protective equipment (PPE) helps keep us safe.
-But, sometimes we need a reminder to use it consistently.
+We all know personal protective equipment (PPE) helps keep us safe, but sometimes we need a reminder to use it consistently.
 Luckily, you can address this problem using Viam's integrated [data capture](/data/capture/), [computer vision](/ml/vision/), and [webhooks](/build/configure/#webhooks), along with a hard hat detection model.
 
 Through this tutorial you will build a system to look out for you and your team, sending an email notification when someone isn't wearing a hard hat.
@@ -52,7 +51,7 @@ Note that your machine must be connected to the internet for data sync and email
 - [`viam-server`](/get-started/installation/)
 - [Ultralytics YOLOv8](https://docs.ultralytics.com/), integrated with Viam using the [YOLOv8 modular service](https://github.com/viam-labs/YOLOv8)
 - [YOLOv8 Hard Hat Detection model](https://huggingface.co/keremberke/yolov8s-hard-hat-detection)
-- [`objectfilter-camera`](https://github.com/felixreichenbach/objectfilter-camera) {{< glossary_tooltip term_id="modular resource" text="modular resource" >}}
+- [`objectfilter-camera`](https://github.com/felixreichenbach/objectfilter-camera) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}
 - [Google Cloud Functions](https://cloud.google.com/functions)
 - Python 3.8
 - [SendGrid](https://sendgrid.com/en-us)
@@ -222,7 +221,7 @@ To make sure the detector camera is capturing and syncing labeled images:
 
 ### Modify the detector config to sync only images without hard hats
 
-So far you've been identifying people without hard hats as well as people with hard hats.
+Until now, you've been identifying people without hard hats as well as people with hard hats.
 Now that you have verified that the detector and data sync are working, modify your config so that only images with people _without_ hard hats are captured:
 
 1. Navigate to your `objectfilter-cam` card on the **Config** tab.
@@ -251,13 +250,13 @@ If you are new to cloud functions, you may find [this getting started guide](htt
 1. Create a Google Cloud (GCP) account.
 2. Create a project, then search for **Cloud Functions** in the Google Cloud console search bar.
 3. Click **CREATE FUNCTION**.
-4. Choose **1st gen** as the **Environment**.
+4. Choose `1st gen` as the **Environment**.
 5. Give your function a name.
    We called ours "hat-email."
 6. Choose your region.
-7. For trigger type, choose **HTTP**.
+7. For trigger type, choose `HTTP`.
 8. Click **NEXT**.
-9. For **Runtime**, choose Python 3.8.
+9. For **Runtime**, choose `Python 3.8`.
 10. Click **Deploy**.
     The demo function won't do anything exciting yet; keep going through the next few sections before testing it.
 
@@ -325,7 +324,7 @@ The following code is adapted from that example.
 
 #### Register an HTTP function
 
-The webhook you will configure with Viam invokes the function via an HTTP request.
+The webhook you will configure with Viam invokes the function with an HTTP request.
 You can learn more about HTTP functions in [Google's Write HTTP functions guide](https://cloud.google.com/functions/docs/writing/write-http-functions).
 
 You need to add `@functions_framework.http` at the top of your function to register the HTTP function, and you need to add a `return` statement at the bottom to return an HTTP response.
