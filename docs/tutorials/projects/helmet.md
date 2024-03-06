@@ -296,13 +296,17 @@ The following code is adapted from that example.
        sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('EMAIL_API_KEY'))
 
        message = Mail(
-           from_email='youremailaddresstosendfrom@example.com', # Change to the email you created the API key for
-           to_emails='youremailaddresstosendto@example.com', # Change to whichever email should receive the notification
-           subject='Put on a helmet!',
-           html_content='Hello!<br><br>Please remember to keep hard hats on where required. \
-           Thank you!<br><br>You can view captured images in \
-           <a href="https://app.viam.com/data/view?view=images">the DATA tab</a of the Viam app>.'
-       )
+        # Change to the email you created the API key for
+        from_email='youremailaddresstosendfrom@example.com',
+        # Change to whichever email should receive the notification
+        to_emails='youremailaddresstosendto@example.com',
+        subject='Put on a helmet!',
+        html_content='Hello!<br><br>Please remember to keep \
+        hard hats on where required. Thank you! \
+        <br><br>You can view captured images in \
+        <a href="https://app.viam.com/data/view?view=images">\
+        the DATA tab</a of the Viam app>.'
+    )
 
        # Get a JSON-ready representation of the Mail object
        mail_json = message.get()
@@ -330,7 +334,7 @@ You can learn more about HTTP functions in [Google's Write HTTP functions guide]
 You need to add `@functions_framework.http` at the top of your function to register the HTTP function, and you need to add a `return` statement at the bottom to return an HTTP response.
 Your final code should look like this:
 
-```python {class="line-numbers linkable-line-numbers" data-line="8,28"}
+```python {class="line-numbers linkable-line-numbers" data-line="9,33"}
 import functions_framework
 import os
 import sendgrid
@@ -338,18 +342,23 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail, Email, To, Content
 from python_http_client.exceptions import HTTPError
 
+
 @functions_framework.http
 def email(request):
 
     sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('EMAIL_API_KEY'))
 
     message = Mail(
-        from_email='youremailaddresstosendfrom@example.com', # Change to the email you created the API key for
-        to_emails='youremailaddresstosendto@example.com', # Change to whichever email should receive the notification
+        # Change to the email you created the API key for
+        from_email='youremailaddresstosendfrom@example.com',
+        # Change to whichever email should receive the notification
+        to_emails='youremailaddresstosendto@example.com',
         subject='Put on a helmet!',
-        html_content='Hello!<br><br>Please remember to keep hard hats on where required. \
-        Thank you!<br><br>You can view captured images in \
-        <a href="https://app.viam.com/data/view?view=images">the DATA tab</a of the Viam app>.'
+        html_content='Hello!<br><br>Please remember to keep \
+        hard hats on where required. Thank you! \
+        <br><br>You can view captured images in \
+        <a href="https://app.viam.com/data/view?view=images">\
+        the DATA tab</a of the Viam app>.'
     )
 
     # Get a JSON-ready representation of the Mail object
