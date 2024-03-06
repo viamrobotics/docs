@@ -63,7 +63,7 @@ Then remove and fill in the attributes as applicable to your sensor, according t
       "namespace": "rdk",
       "attributes": {
         "trigger_pin": "<pin-number>",
-        "echo_interrupt_pin": "<pin-number>"
+        "echo_interrupt_pin": "<pin-number>",
         "timeout_ms": <int>
       },
       "depends_on": []
@@ -102,8 +102,8 @@ The following attributes are available for `ultrasonic` sensors:
 <!-- prettier-ignore -->
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | --------- | ----------- |
-| `trigger_pin` | string | **Required** | The GPIO number of the [board's](/build/micro-rdk/board/) GPIO pin that you have wired the ultrasonic's trigger pin to. |
-| `echo_interrupt_pin` | string | **Required** | The GPIO number of the pin you wired the ultrasonic's echo pin to on your board. |
-| `timeout_ms`  | int | Optional | Time to wait in milliseconds before timing out of requesting to get ultrasonic distance readings. <br> Default: `1000`. |
+| `trigger_pin` | string | **Required** | The GPIO number of the [board's](/build/micro-rdk/board/) GPIO pin that you have wired to the trigger pin of your ultrasonic sensor. |
+| `echo_interrupt_pin` | string | **Required** | The GPIO number of the board's GPIO pin that you have wired to the echo pin of your ultrasonic sensor. |
+| `timeout_ms`  | int | Optional | Time to wait in milliseconds before initiating a timeout when requesting readings from your ultrasonic sensor. <br> Default: `1000`. |
 
 {{< readfile "/static/include/components/test-control/sensor-control.md" >}}
