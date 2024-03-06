@@ -408,9 +408,9 @@ To add a local module on your machine, first add its module, then the component 
    - Enter a name for this instance of your modular resource.
      This name must be different from the module name.
 
-      {{<imgproc src="registry/configure/add-local-module-create.png" resize="250x" declaredimensions=true alt="The add a component modal showing the create a module step for an intel realsense module">}}
+     {{<imgproc src="registry/configure/add-local-module-create.png" resize="250x" declaredimensions=true alt="The add a component modal showing the create a module step for an intel realsense module">}}
 
-8.  Click **Create** to create the modular resource provided by the local module.
+8. Click **Create** to create the modular resource provided by the local module.
 
 Once you've added your local module using steps 1-5, you can repeat steps 6-8 to add as many additional instances of your modular resource as you need.
 
