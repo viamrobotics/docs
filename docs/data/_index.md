@@ -38,14 +38,16 @@ Manage data directly on your robot, with configurable data capture from various 
 
 #### Data capture
 
-Configurable for various robot components like cameras, sensors, and motors; set capture frequency, with automatic resumption after robot restarts.
+Configurable for various robot components like cameras, sensors, and motors, with configurable capture frequency.
+Automatically resumes after robot restarts.
 
 {{% /manualcard %}}
 {{% manualcard link="/data/cloud-sync/" %}}
 
 #### Cloud sync
 
-Securely transfer data to cloud at the frequency you define, resilient to interruptions, and delete local data post-sync for space management.
+Securely transfer data to the cloud at the frequency you define.
+Resilient to interruptions, and deletes local data post-sync for space management.
 
 {{% /manualcard %}}
 {{< /cards >}}
@@ -57,28 +59,28 @@ Experience streamlined data handling with advanced querying, viewing, and filter
 {{< cards >}}
 {{% manualcard link="/data/query/" %}}
 
-#### Data querying
+#### Query data
 
 Make SQL or MQL queries on synced sensor data, accessible through the Viam app and MQL-compatible clients.
 
 {{% /manualcard %}}
 {{% manualcard link="/data/view/" %}}
 
-#### Viewing and filtering data
+#### View and filter data
 
 View and filter different data types in the cloud, with the option to delete data on the Viam app.
 
 {{% /manualcard %}}
 {{% manualcard link="/data/dataset/" %}}
 
-#### Creating datasets
+#### Create datasets
 
 Label data for management and machine learning, with dynamic datasets that change with underlying data modifications.
 
 {{% /manualcard %}}
 {{% manualcard link="/data/export/" %}}
 
-#### Exporting data
+#### Export data
 
 Export data with the Viam CLI and download your data for offline access.
 
@@ -122,6 +124,9 @@ For more information about who can do what with data, see [Data Permissions](/fl
 The data management service supports the following methods:
 
 {{< readfile "/static/include/services/apis/data.md" >}}
+
+The data client API supports a separate set of methods that allow you to upload and export data to and from the Viam app.
+For information about that API, see [Data Client API](/build/program/apis/data-client/).
 
 {{% alert title="Tip" color="tip" %}}
 

@@ -3,8 +3,7 @@ title: "Foam Dart Launcher Robot Tutorial"
 linkTitle: "Dart Launcher Robot"
 type: "docs"
 description: "Build a foam dart launcher with a wheeled rover and a Raspberry Pi."
-webmSrc: "/tutorials/videos/foam-dart.webm"
-mp4Src: "/tutorials/videos/foam-dart.mp4"
+videos: ["/tutorials/videos/foam-dart.webm", "/tutorials/videos/foam-dart.mp4"]
 videoAlt: "Robot launching a dart."
 images: ["/tutorials/videos/foam-dart.gif"]
 aliases:

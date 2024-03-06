@@ -110,8 +110,8 @@ The following attributes are available for `gpio` motors:
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | `name` of the [board](/build/micro-rdk/board/) to which the motor driver is wired. |
 | `pins` | object | **Required** | A structure that holds pin configuration information; [see below](#pins). |
-| `min_power_pct` | number | Optional | Sets a limit on minimum power percentage sent to the motor. <br> Default: `0.0` |
-| `max_power_pct` | number | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
+| `min_power_pct` | float | Optional | Sets a limit on minimum power percentage sent to the motor. <br> Default: `0.0` |
+| `max_power_pct` | float | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
 | `pwm_freq` | int | Optional | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range. <br> Default: `800` |
 | `dir_flip` | bool | Optional | Flips the direction of "forward" versus "backward" rotation. Default: `false` |
 | `encoder` | string | Optional | The name of an encoder attached to this motor. See [encoded motor](/components/motor/gpio/encoded-motor/). |

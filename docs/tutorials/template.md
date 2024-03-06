@@ -4,13 +4,12 @@ linkTitle: "Menu title of the tutorial"
 type: "docs"
 description:
   "Short description of your tutorial (1 sentence)."
-  # If GIF+video is available use those - otherwise use an image and omit webmSrc and mp4Src.
+  # If GIF+video is available use those - otherwise use an image and omit videos.
   # The GIF or image in "images" will show up in links on social media/in Slack messages etc.
-  # The webmSrc and mp4Src will show up on the tutorials page and should be the the same GIF as above,
+  # The videos will show up on the tutorials page and should be the same GIF as above,
   # but in these formats which use less bandwidth than GIF when a user is loading our site.
 # images: ["path to preview GIF if available and less than 1MB in size - otherwise path to preview image"]
-# webmSrc: "path to preview video - ideally in 4:3 format"
-# mp4Src: "path to preview video - ideally in 4:3 format"
+# videos: [ "path to preview video in mp4format - ideally in 4:3 format", "path to preview video - ideally in 4:3 format"]
 # imageAlt: "ALT text for the image"
 # videoAlt: "ALT text for the video" (omit either imageAlt or videoAlt depending on preview type)
 tags: ["tutorial"]

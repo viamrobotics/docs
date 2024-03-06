@@ -3,8 +3,8 @@ title: "Use Object Detection to Turn Your Lights On"
 linkTitle: "Turn on Lights with Object Detection"
 type: "docs"
 description: "How to turn a light on when your webcam sees a person."
-webmSrc: "/tutorials/light-up/light-up.webm"
-mp4Src: "/tutorials/light-up/light-up.mp4"
+videos:
+  ["/tutorials/light-up/light-up.webm", "/tutorials/light-up/light-up.mp4"]
 images: ["/tutorials/light-up/light-up.gif"]
 videoAlt: "A person sitting at a desk with a computer and light bulb set up in front of her. As she leaves the light turns off, and as she enters the frame, the light turns back on."
 tags: ["camera", "vision", "detector", "python"]
@@ -78,7 +78,7 @@ Navigate to the **Control** tab where you can see your camera working.
 
 ## Configure your services
 
-This tutorial uses a pre-trained machine learning (ML) model from the Viam registry named [`effdet0`](https://app.viam.com/ml-model/bill/effdet0).
+This tutorial uses a pre-trained machine learning (ML) model from the Viam registry named [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
 This model can detect a variety of objects, which you can find in the provided <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
 If you want to train your own model instead, follow the instructions to [train a model](/ml/train-model/).
@@ -98,7 +98,7 @@ In the new ML Model service panel, configure your service.
 ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
 
 Select the **Deploy model on robot** for the **Deployment** field.
-Then select the `bill:effdet0` model from the **Models** dropdown.
+Then select the `viam-labs:EfficientDet-COCO` model from the **Models** dropdown.
 
 ### Configure an mlmodel detector
 

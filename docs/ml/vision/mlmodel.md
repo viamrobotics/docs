@@ -14,7 +14,7 @@ aliases:
 
 _Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#vision-service)_
 
-The `mlmodel` vision service model is a machine learning detector that draws bounding boxes or returns class labels according to the specified tensorflow-lite model file available on the machine’s hard drive.
+The `mlmodel` vision service model is a machine learning detector that draws bounding boxes or returns class labels according to the specified TensorFlow Lite model file available on the machine’s hard drive.
 To create a `mlmodel` classifier, you need an [ML model service with a suitable model](/ml/).
 Before configuring your `mlmodel` detector or classifier, you need to:
 
@@ -116,7 +116,66 @@ Add the vision service object to the services array in your JSON configuration:
 {{< /tabs >}}
 
 Click **Save config**.
-Proceed to [test your detector or classifier](#test-your-detector-or-classifier).
+
+## Tensor names
+
+Both the `mlmodel` detector and classifier require that the input and output tensors defined by your ML model are named according to the following:
+
+- For an `mlmodel` detector:
+  - The _input tensor_ must be named `image`
+  - The _output tensors_ must be named `location`, `category`, and `score`,
+- For an `mlmodel` classifier:
+  - The _input tensor_ must be named `image`
+  - The _output tensor_ must be named `probability`
+
+If you [trained your ML model using the Viam app](/ml/train-model/), your `mlmodel` tensors is already named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
+However, if you [uploaded your own ML model](/ml/upload-model/), or are using one from the [Viam registry](https://app.viam.com/registry), you may need to remap your tensor names to meet this requirement, and should follow the instructions to [remap tensor names](#remap-tensor-names).
+
+### Remap tensor names
+
+If you need to remap the tensor names defined by your ML model to meet the tensor name requirements of the `mlmodel` detector or classifier, you can use the `remap_input_names` and `remap_output_names` attributes:
+
+- To remap your model's tensor names to work with an `mlmodel` detector, add the following to your `mlmodel` vision service configuration, replacing the `my_model` input and output tensor names with the names from your model:
+
+  ```json {class="line-numbers linkable-line-numbers"}
+  {
+    "type": "vision",
+    "model": "mlmodel",
+    "attributes": {
+      "mlmodel_name": "my_model",
+      "remap_output_names": {
+        "my_model_output_tensor1": "category",
+        "my_model_output_tensor2": "location",
+        "my_model_output_tensor3": "score"
+      },
+      "remap_input_names": {
+        "my_model_input_tensor1": "image"
+      }
+    },
+    "name": "my-vision-service"
+  }
+  ```
+
+- To remap your model's tensor names to work with an `mlmodel` classifier, add the following to your `mlmodel` vision service configuration, replacing the `my_model` input and output tensor names with the names from your model:
+
+  ```json {class="line-numbers linkable-line-numbers"}
+  {
+    "type": "vision",
+    "model": "mlmodel",
+    "attributes": {
+      "mlmodel_name": "my_model",
+      "remap_output_names": {
+        "my_model_output_tensor1": "probability"
+      },
+      "remap_input_names": {
+        "my_model_input_tensor1": "image"
+      }
+    },
+    "name": "my-vision-service"
+  }
+  ```
+
+When done, click **Save config**, then proceed to [test your detector or classifier](#test-your-detector-or-classifier).
 
 ## Test your detector or classifier
 
@@ -164,7 +223,8 @@ If you intend to use the detector or classifier with a camera that is part of yo
       "type": "detections",
       "attributes": {
         "confidence_threshold": 0.5,
-        "detector_name": "<vision-service-name>"
+        "detector_name": "<vision-service-name>",
+        "valid_labels": ["<label>"]
       }
     }
   ],
@@ -182,7 +242,9 @@ If you intend to use the detector or classifier with a camera that is part of yo
       "type": "classifications",
       "attributes": {
         "confidence_threshold": 0.5,
-        "classifier_name": "<vision-service-name>"
+        "classifier_name": "<vision-service-name>",
+        "max_classifications": <int>,
+        "valid_labels": [ "<label>" ]
       }
     }
   ],

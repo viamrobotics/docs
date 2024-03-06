@@ -595,8 +595,9 @@ err := myNav.RemoveWaypoint(context.Background(), waypoint_id, nil)
 
 ### Obstacles
 
-Get an array or list of obstacles currently in the service's data storage.
-These are locations designated for the robot to avoid when navigating.
+Get an array or list of the obstacles currently in the service's data storage.
+These are objects designated for the robot to avoid when navigating.
+These include all transient obstacles which are discovered by the vision services configured for the navigation service, in addition to the obstacles that are configured as a part of the service.
 See the [motion service](/mobility/motion/) for more information.
 
 {{< tabs >}}
@@ -609,7 +610,7 @@ See the [motion service](/mobility/motion/) for more information.
 **Returns:**
 
 - [(List[navigation.GeoObstacle])](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoObstacle): A list comprised of each `GeoObstacle` in the service's data storage.
-  These are locations designated for the robot to avoid when navigating.
+  These are objects designated for the robot to avoid when navigating.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.get_obstacles).
 
@@ -631,7 +632,7 @@ obstacles = await my_nav.get_obstacles()
 **Returns:**
 
 - [([]\*spatialmath.GeoObstacle)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#GeoObstacle): An array comprised of each `GeoObstacle` in the service's data storage.
-  These are locations designated for the robot to avoid when navigating.
+  These are objects designated for the robot to avoid when navigating.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).

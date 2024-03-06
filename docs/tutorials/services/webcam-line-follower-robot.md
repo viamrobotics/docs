@@ -4,8 +4,11 @@ linkTitle: "RGB Line Follower"
 type: "docs"
 description: "Build a line-following robot that relies on a webcam and color detection."
 tags: ["base", "vision", "detector", "camera", "services", "python"]
-webmSrc: "/tutorials/webcam-line-follower/lf-tape-follow3.webm"
-mp4Src: "/tutorials/webcam-line-follower/lf-tape-follow3.mp4"
+videos:
+  [
+    "/tutorials/webcam-line-follower/lf-tape-follow3.webm",
+    "/tutorials/webcam-line-follower/lf-tape-follow3.mp4",
+  ]
 videoAlt: "The green line the camera sees as the rover moves along it."
 aliases:
   - "/tutorials/webcam-line-follower-robot/"

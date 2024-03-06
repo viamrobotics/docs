@@ -2,7 +2,7 @@
 title: "View and Filter Data"
 linkTitle: "View Data"
 description: "View and filter data on the DATA page in the Viam Cloud."
-weight: 38
+weight: 25
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 icon: true

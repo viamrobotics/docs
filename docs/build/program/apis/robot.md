@@ -321,49 +321,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 {{% /tab %}}
 {{< /tabs >}}
 
-### Status
-
-Get the status of the machine's components. You can optionally provide a list of each `ResourceName` you want the status of.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `components` [(Optional[List[viam.proto.common.ResourceName]])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): Optional list of `ResourceName` for each component you want the status of.
-
-**Returns:**
-
-- List[status]: The status of each of the machine's components you've specified.
-
-```python {class="line-numbers linkable-line-numbers"}
-statuses = await robot.get_status()
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_status).
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `resourceNames` [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk@v0.15.1/resource#Name): Optional list of resource names for each component you want the status of.
-
-**Returns:**
-
-- [([]robot.Status)](https://pkg.go.dev/go.viam.com/rdk/robot#Status): The status of each of the machine's components you've specified.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-```go
-statuses, err := robot.Status(ctx)
-```
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient.Refresh).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### GetOperations
 
 Get the list of operations currently running on the machine.
@@ -881,6 +838,72 @@ const resource_names = await robot.resourceNames();
 ```
 
 For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/RobotClient.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetCloudMetadata
+
+Returns app-related information about the robot.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [viam.proto.robot.GetCloudMetadataResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetCloudMetadataResponse): App-related metadata containing the primary org id, location id, and robot part id for a robot running on the Viam app.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_cloud_metadata).
+
+```python
+metadata = robot.get_cloud_metadata()
+print(metadata.robot_part_id)
+print(metadata.primary_org_id)
+print(metadata.location_id)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [cloud.Metadata](https://pkg.go.dev/go.viam.com/rdk/internal/cloud#Metadata): App-related metadata containing the primary org id, location id, and robot part id for a robot running on the Viam app.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+```go
+metadata := robot.GetCloudMetadata()
+fmt.Println(metadata.RobotPartID)
+fmt.Println(metadata.PrimaryOrgID)
+fmt.Println(metadata.LocationID)
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [CloudMetadata](https://ts.viam.dev/types/CloudMetadata.html): App-related metadata containing the primary org id, location id, and robot part id for a robot running on the Viam app.
+
+For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/RobotClient.html).
+
+```typescript
+// Get the metadata of the machine.
+const metadata = await robot.getCloudMetadata();
+console.log(metadata);
+```
 
 {{% /tab %}}
 {{< /tabs >}}
