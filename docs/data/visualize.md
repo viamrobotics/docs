@@ -1,7 +1,7 @@
 ---
 title: "Visualize Data with Dashboards"
 linkTitle: "Visualize Data"
-weight: 40
+weight: 50
 no_list: true
 type: "docs"
 tags: ["data management", "data", "services", "visualize"]

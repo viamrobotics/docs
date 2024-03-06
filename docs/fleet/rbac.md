@@ -20,7 +20,7 @@ For more detailed information on the permissions each role confers for different
 
 ## Change a user's access
 
-If you have the **Owner** role, you can [invite new users](/fleet/organizations/#share-an-organization) and change the roles assigned to an organization member on a per machine, location, or organization level.
+If you have the **Owner** role, you can [invite new users](/fleet/organizations/#invite-someone-to-an-organization) and change the roles assigned to an organization member on a per machine, location, or organization level.
 
 To view the roles each organization member has, click on the organization dropdown in the top navigation bar and click on **Settings**.
 

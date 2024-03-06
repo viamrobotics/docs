@@ -2,7 +2,7 @@
 title: "Configure Data Capture"
 linkTitle: "Data Capture"
 description: "Configure data capture to save data from components remote parts."
-weight: 30
+weight: 10
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 icon: true

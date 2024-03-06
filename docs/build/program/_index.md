@@ -62,6 +62,10 @@ go get go.viam.com/rdk/robot/client
 npm install --save @viamrobotics/sdk
 ```
 
+{{< alert title="Info" color="info" >}}
+The TypeScript SDK currently only supports building web browser apps.
+{{< /alert >}}
+
 {{% /tab %}}
 {{% tab name="C++" %}}
 

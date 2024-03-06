@@ -2,7 +2,7 @@
 title: "Trigger Cloud Sync Conditionally"
 linkTitle: "Trigger Sync"
 description: "Trigger Cloud Sync to sync captured data conditionally."
-weight: 36
+weight: 20
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 # SME: Alexa Greenberg

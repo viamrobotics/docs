@@ -2,13 +2,12 @@
 title: "Label Data and Create Datasets"
 linkTitle: "Create Datasets"
 description: "Label data and create datasets for managing data and creating machine learning models."
-weight: 39
+weight: 30
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 imageAlt: "Label data and create datasets"
 images: ["/data/label-dog.gif"]
-webmSrc: "/data/label-dog.webm"
-mp4Src: "/data/label-dog.mp4"
+videos: ["/data/label-dog.webm", "/data/label-dog.mp4"]
 videoAlt: "Add a bounding box around the dog in an image."
 aliases:
   - /manage/data/label/

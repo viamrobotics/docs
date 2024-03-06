@@ -3,8 +3,11 @@ title: "How to Create a Mouse Mover Using a Servo"
 linkTitle: "Mouse Mover"
 type: "docs"
 description: "Use the Python SDK to move a continuous servo to keep a computer screen from sleeping."
-webmSrc: "/tutorials/single-component-tutorials-servo-mousemover/pi-hole.webm"
-mp4Src: "/tutorials/single-component-tutorials-servo-mousemover/pi-hole.mp4"
+videos:
+  [
+    "/tutorials/single-component-tutorials-servo-mousemover/pi-hole.webm",
+    "/tutorials/single-component-tutorials-servo-mousemover/pi-hole.mp4",
+  ]
 videoAlt: "A mouse mover controlled with a servo and Raspberry Pi."
 images: ["/tutorials/single-component-tutorials-servo-mousemover/pi-hole.gif"]
 tags: ["servo", "single component tutorial", "raspberry pi", "sdk", "python"]

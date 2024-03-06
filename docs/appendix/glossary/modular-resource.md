@@ -2,7 +2,7 @@
 title: Modular Resource
 id: modular-resource
 full_link: /registry/
-short_description: A modular resource is a custom model of a component or service that implements the standadized API methods for that resource.
+short_description: A modular resource is a custom model of a component or service that implements the standardized API methods for that resource.
 aka:
 ---
 

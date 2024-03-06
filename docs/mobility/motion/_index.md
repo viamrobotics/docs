@@ -358,26 +358,29 @@ logger.Info("Orientation of myArm from the motion service:", myArmMotionPose.Pos
 ### MoveOnMap
 
 Move a [base](/components/base/) component to a destination [`Pose`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) on a {{< glossary_tooltip term_id="slam" text="SLAM" >}} map.
-Use the machine's position reported by the {{< glossary_tooltip term_id="slam" text="SLAM" >}} service to check the location of the machine.
-
-{{< alert title="Usage" color="tip" >}}
 
 `MoveOnMap()` is non blocking, meaning the motion service will move the component to the destination [`Pose`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) after `MoveOnMap()` returns.
 
-Each successful `MoveOnMap()` call retuns a unique `ExecutionID` which you can use to identify all plans generated during the `MoveOnMap()` call.
+Each successful `MoveOnMap()` call returns a unique `ExecutionID` which you can use to identify all plans generated during the `MoveOnMap()` call.
+
+{{< alert title="Info" color="info" >}}
+If you specify a goal pose and the robot's current position is already within the set `PlanDeviationM`, then `MoveOnMap` returns an error.
+{{< /alert >}}
 
 You can monitor the progress of the `MoveOnMap()` call by querying `GetPlan()` and `ListPlanStatuses()`.
 
+Use the machine's position reported by the {{< glossary_tooltip term_id="slam" text="SLAM" >}} service to check the location of the machine.
+
 `MoveOnMap()` is intended for use with the [navigation service](/mobility/navigation/), providing autonomous indoor navigation for rover [bases](/components/base/).
 
+{{< alert title="Requirements" color="info" >}}
 To use `MoveOnMap()`, your [SLAM service](/mobility/slam/) must implement `GetPointCloudMap()` and `GetPosition()`
 
-Make sure the [SLAM service](/mobility/slam/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [SLAM service API](/mobility/slam/#api):
+Make sure the [SLAM service](/mobility/slam/) you use alongside the this motion service supports the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [SLAM service API](/mobility/slam/#api):
 
 - It must support `GetPointCloudMap()` to report the SLAM map as a pointcloud.
 - It must support `GetPosition()` to report the machine's current location on the SLAM map.
-
-{{< /alert >}}
+  {{< /alert >}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -391,7 +394,7 @@ Make sure the [SLAM service](/mobility/slam/) you use supports usage of the foll
   - `obstacle_detectors` [(Iterable[ObstacleDetector])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ObstacleDetector): The names of each [vision service](/ml/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.
   - `position_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the position of the machine.
   - `obstacle_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the vision service for new obstacles.
-  - `plan_deviation_m` [(float)](https://docs.python.org/3/library/functions.html#float): The distance in meters that the machine can deviate from the motion plan.
+  - `plan_deviation_m` [(float)](https://docs.python.org/3/library/functions.html#float): The distance in meters that the machine can deviate from the motion plan. By default this is set to 2.6 m which is an appropriate value for outdoor usage. When you use the `MoveOnMap()` method from the **Control** tab, the default is overwritten to 0.5 m for testing.
   - `linear_m_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Linear velocity this machine should target when moving.
   - `angular_degs_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Angular velocity this machine should target when turning.
 - `obstacles` [Optional\[Iterable\[Geometry\]\]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry): Obstacles, specified in the SLAM frame coordinate system, to be considered when planning the motion of the component.
@@ -436,7 +439,7 @@ execution_id = await motion.move_on_map(component_name=my_base_resource_name,
     - `ObstacleDetectors` [([]ObstacleDetectorName)](https://pkg.go.dev/go.viam.com/rdk/services/motion#ObstacleDetectorName): The names of each [vision service](/ml/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.
     - `PositionPollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the position of the machine.
     - `ObstaclePollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the vision service for new obstacles.
-    - `PlanDeviationM` [(float64)](https://pkg.go.dev/builtin#float64): The distance in meters that the machine can deviate from the motion plan.
+    - `PlanDeviationM` [(float64)](https://pkg.go.dev/builtin#float64): The distance in meters that the machine can deviate from the motion plan. By default this is set to 2.6 m which is an appropriate value for outdoor usage. When you use the the **Control** tab, the underlying calls to `MoveOnMap()` use 0.5 m instead.
     - `LinearMPerSec` [(float64)](https://pkg.go.dev/builtin#float64): Linear velocity this machine should target when moving.
     - `AngularDegsPerSec` [(float64)](https://pkg.go.dev/builtin#float64): Angular velocity this machine should target when turning.
   - `Obstacles` [(\[\]spatialmath.Geometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry): Obstacles, specified in the SLAM frame coordinate system, to be considered when planning the motion of the component.
@@ -474,16 +477,19 @@ executionID, err := motionService.MoveOnMap(context.Background(), motion.MoveOnM
 Move a [base](/components/base/) component to a destination GPS point, represented in geographic notation _(latitude, longitude)_.
 Use a [movement sensor](/components/movement-sensor/) to check the location of the machine.
 
-{{< alert title="Usage" color="tip" >}}
-
 `MoveOnGlobe()` is non blocking, meaning the motion service will move the component to the destination GPS point after `MoveOnGlobe()` returns.
 
-Each successful `MoveOnGlobe()` call retuns a unique `ExecutionID` which you can use to identify all plans generated during the `MoveOnGlobe()`.
+Each successful `MoveOnGlobe()` call returns a unique `ExecutionID` which you can use to identify all plans generated during the `MoveOnGlobe()`.
+
+{{< alert title="Info" color="info" >}}
+If you specify a goal pose and the robot's current position is already within the set `PlanDeviationM`, `MoveOnGlobe` returns an error.
+{{< /alert >}}
 
 You can monitor the progress of the `MoveOnGlobe()` call by querying `GetPlan()` and `ListPlanStatuses()`.
 
 `MoveOnGlobe()` is intended for use with the [navigation service](/mobility/navigation/), providing autonomous GPS navigation for rover [bases](/components/base/).
 
+{{< alert title="Requirements" color="info" >}}
 To use `MoveOnGlobe()`, your movement sensor must be able to measure the GPS location and orientation of the machine.
 
 Make sure the [movement sensor](/components/movement-sensor/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [movement sensor API](/components/movement-sensor/#api).
@@ -491,8 +497,7 @@ Make sure the [movement sensor](/components/movement-sensor/) you use supports u
 - It must support `GetPosition()` to report the machine's current GPS location.
 - It must **also** support **either** `GetCompassHeading()` or `GetOrientation()` to report which way the machine is facing.
 - If your movement sensor provides multiple methods, your machine will default to using the values returned by `GetCompassHeading()`.
-
-{{< /alert >}}
+  {{< /alert >}}
 
 {{< alert title="Stability Notice" color="alert" >}}
 
@@ -909,6 +914,20 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Test the motion service
+
+You can test motion on your machine from the [**Control** tab](/fleet/machines/#control).
+
+![Motion card on the Control tab](/mobility/motion/motion-rc-card.png)
+
+Click on the **Move** button to issue `MoveOnMap()` requests.
+
+{{< alert title="Info" color="info" >}}
+
+The `plan_deviation_m` for `MoveOnMap()` on calls issues from the **Control** tab is 0.5 m.
+
+{{< /alert >}}
 
 ## Next steps
 

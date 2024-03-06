@@ -14,44 +14,51 @@ You can create and deploy an image classification model onto your machine with V
 Manage the classification model fully on one platform: collect data, create a dataset and label it, and train the model for **Single** or **Multi Label Classification**.
 Then, test if your model works for classifying objects in a camera stream or existing images with the `mlmodel` classification model of vision service.
 
-<table>
-  <tr>
-    <th>{{<imgproc src="/ml/collect.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Collect data">}}
-      <b>1. Collect</b>
-      <p>Start by collecting images from your cameras with the <a href="/data/">data management service</a>. You can <a href="/data/view/">view the data</a> on the <b>Data tab</b>.</p>
-    </th>
-  </tr>
-  <tr>
-    <th>{{<imgproc src="/ml/label.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Label data">}}
-      <b>2. Create a dataset and label</b>
-      <p>Once you have enough images of the objects you'd like to classify, <a href="/data/dataset/">label your data and create a dataset</a> in preparation for training classification models.</p>
-    </th>
-  </tr>
-  <tr>
-    <th>{{<imgproc src="/ml/train.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Train models">}}
-      <b>3. Train an ML model</b>
-      <p>Use your labeled data to <a href="/ml/train-model/">train your own models</a> for object classification using data from the <a href="/data/">data management service</a>.</p>
-    </th>
-  </tr>
-  <tr>
-    <th>{{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="max-width: 200px" declaredimensions=true alt="Train models">}}
-      <b>4. Deploy your ML model</b>
-      <p>To make use of ML models with your machine, use the built-in <a href="/ml/">ML model service</a> to deploy and run the model.</p>
-    </th>
-  </tr>
-  <tr>
-    <th>{{<imgproc src="/ml/configure.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Configure a service">}}
-      <b>5. Configure an <code>mlmodel</code> vision service</b>
-      <p>For object classification, you can use the <a href="/ml/vision/">vision service</a>, which provides an <a href="/ml/vision/mlmodel/">ml model classifier</a> model.</p>
-    </th>
-  </tr>
-  <tr>
-    <th>{{<imgproc src="ml/deploy.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Deploy your model">}}
-      <b>6. Test your classifier</b>
-      <p>Test your <a href="/ml/vision/mlmodel/#test-your-detector-or-classifier">mlmodel classifier</a> with <a href="/ml/vision/mlmodel/#existing-images-in-the-cloud">existing images in the Viam app</a>, <a href="/ml/vision/mlmodel/#live-camera-footage">live camera footage,</a> or <a href="/ml/vision/mlmodel/#existing-images-on-your-machine">existing images on a computer</a>.</p>
-    </th>
-  </tr>
-</table>
+{{< table >}}
+{{< tablestep >}}
+{{<imgproc src="/ml/collect.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Collect data">}}
+**1. Collect**
+
+Start by collecting images from your cameras with the [data management service](/data/).
+You can [view the data](/data/view/) on the **Data tab**.
+
+{{< /tablestep >}}
+{{< tablestep >}}
+{{<imgproc src="/ml/label.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Label data">}}
+**2. Create a dataset and label**
+
+Once you have enough images of the objects you'd like to classify, [label your data and create a dataset](/data/dataset/) in preparation for training classification models.
+
+{{< /tablestep >}}
+{{< tablestep >}}
+{{<imgproc src="/ml/train.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Train models">}}
+**3. Train an ML model**
+
+Use your labeled data to [train your own models](/ml/train-model/) for object classification using data from the [data management service](/data/).
+
+{{< /tablestep >}}
+{{< tablestep >}}
+{{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="max-width: 200px" declaredimensions=true alt="Train models">}}
+**4. Deploy your ML model**
+
+To make use of ML models with your machine, use the built-in [ML model service](/ml/) to deploy and run the model.
+
+{{< /tablestep >}}
+{{< tablestep >}}
+{{<imgproc src="/ml/configure.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Configure a service">}}
+**5. Configure an <code>mlmodel</code> vision service**
+
+For object classification, you can use the [vision service](/ml/vision/), which provides an [ml model classifier](/ml/vision/mlmodel/) model.
+
+{{< /tablestep >}}
+{{< tablestep >}}
+{{<imgproc src="ml/deploy.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Deploy your model">}}
+**6. Test your classifier**
+
+Test your [mlmodel classifier](/ml/vision/mlmodel/#test-your-detector-or-classifier) with [existing images in the Viam app](/ml/vision/mlmodel/#existing-images-in-the-cloud), [live camera footage,](/ml/vision/mlmodel/#live-camera-footage) or [existing images on a computer](/ml/vision/mlmodel/#existing-images-on-your-machine).
+
+{{< /tablestep >}}
+{{< /table >}}
 
 ## Next steps
 

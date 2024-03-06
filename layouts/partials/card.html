@@ -21,9 +21,19 @@
         {{- partial "imgproc.html" (dict "src" ($imageOverwrite) "resize" "400x" "alt" (.Params.linkTitle) "style" "") -}}
       </div>
     {{- else -}}
-      {{- if .Params.webmSrc -}}
+      {{- if .Params.videos -}}
         <div class="hover-card-video">
-          {{- partial "gif.html" (dict "webm_src" .Params.webmSrc "mp4_src" .Params.mp4Src "alt" .Params.videoAlt "maxWidth" "100%" "class" "" ) -}}
+          <!-- First two videos are used for previews -->
+          {{ $extension_first_file := path.Ext (index .Params.videos 0) }}
+          {{ $extension_second_file := path.Ext (index .Params.videos 1) }}
+          <!-- check video extension -->
+          {{- if and (eq $extension_first_file ".webm") (eq $extension_second_file ".mp4") -}}
+            {{- partial "gif.html" (dict "webm_src" (index .Params.videos 0) "mp4_src" (index .Params.videos 1) "alt" .Params.videoAlt "maxWidth" "100%" "class" "" ) -}}
+          {{- else if and (eq $extension_second_file ".webm") (eq $extension_first_file ".mp4") -}}
+            {{- partial "gif.html" (dict "webm_src" (index .Params.videos 1) "mp4_src" (index .Params.videos 0) "alt" .Params.videoAlt "maxWidth" "100%" "class" "" ) -}}
+          {{- else -}}
+            {{ warnf "The first two videos specified in the frontmatter must be of type mp4 and webm: %s" .Params.videos }}
+          {{- end -}}
         </div>
       {{- else if .Params.images -}}
          {{- if .Params.icon -}}<div class="hover-card-icon"> {{- else -}}<div class="hover-card-img"> {{- end -}}
@@ -40,7 +50,7 @@
         </div>
        {{- end -}}
      {{- end -}}
-    <div {{ if (index .Params.images 0) }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
+    <div {{ if (index .Params.images 0) }}class="small-hover-card-div"{{ end }}{{ if .Params.videos }}class="small-hover-card-div"{{ end }}>
      {{- if $customTitle -}}
       <div> {{- $customTitle -}}</div>
      {{- else -}}

@@ -15,8 +15,11 @@ tags:
   ]
 description: "Create a robot babysitter with a webcam and machine learning."
 images: ["/tutorials/img/bedtime-songs-bot/robot_babysitter.gif"]
-webmSrc: "/tutorials/img/bedtime-songs-bot/robot_babysitter.webm"
-mp4Src: "/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4"
+videos:
+  [
+    "/tutorials/img/bedtime-songs-bot/robot_babysitter.webm",
+    "/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4",
+  ]
 videoAlt: "A demonstration of the bedtime songs bot is taking place in an office. Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer."
 authors: ["Tess Avitabile", "Sierra Guequierre"]
 languages: ["python"]
