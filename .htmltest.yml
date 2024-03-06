@@ -29,6 +29,7 @@ IgnoreURLs:
   - "marketplace.visualstudio.com"
   - "chrome.google.com"
   - "raspberrypi.com"
+  - "grabcad.com"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"
