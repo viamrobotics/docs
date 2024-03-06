@@ -384,28 +384,23 @@ See the instructions to [compile your module into an executable](/registry/creat
 
 To add a local module on your machine, first add its module, then the component or service it implements:
 
-1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-1. Click on the **Modules** subtab.
-1. Scroll to the **Add local module** section.
-1. Enter a **Name** for this instance of your modular resource.
-1. Enter the [module's executable path](/registry/create/#compile-or-package-your-module).
+1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+2. Click the **+** icon next to your machine part in the left-hand menu and select **Local module**, then **Local module**.
+3. Enter a **Name** for this instance of your modular resource.
+4. Enter the [module's executable path](/registry/create/#compile-or-package-your-module).
    This path must be the absolute path to the executable on your machine's filesystem.
-1. Then, click the **Add module** button, and click **Save** in the upper right corner to save your config.
+5. Then, click the **Create** button, and click **Save** in the upper right corner to save your config.
 
-   {{<imgproc src="registry/configure/add-local-module-csi-cam.png" resize="600x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
+   {{<imgproc src="registry/configure/add-local-module-csi-cam.png" resize="300x" declaredimensions=true alt="The add a local module pane with name 'my-csi-cam' and executable path '/usr/local/bin/viam-csi'">}}
 
    This example shows the configuration for adding a [CSI camera](https://github.com/viamrobotics/csi-camera/) as a local module.
 
-1. Navigate to the **Config** tab of your machine's page on [the Viam app](https://app.viam.com).
+6. Now, stay on the **CONFIGURE** tab of your machine's page on [the Viam app](https://app.viam.com).
 
-   - If you are adding a modular [component](/components/), click the **Components** subtab and click **Create component**.
-   - If you are adding a modular [service](/services/), click the **Services** subtab and click **Create service**.
+   - Click the **+** icon next to your machine part in the left-hand menu and select **Local module**.
+   - Then, select **Local component** or **Local service**.
 
-1. Then, select the `local component` or `local service` type from the list.
-
-   {{<imgproc src="registry/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local component' shown at the bottom">}}
-
-1. On the next screen:
+7. On the **Create** menu for a **Local component** or **Local service**:
 
    - Select the type of modular resource provided by your module, such as a [camera](/components/camera/), from the dropdown menu.
    - Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
@@ -413,19 +408,19 @@ To add a local module on your machine, first add its module, then the component 
    - Enter a name for this instance of your modular resource.
      This name must be different from the module name.
 
-   {{<imgproc src="registry/configure/add-local-module-create.png" resize="400x" declaredimensions=true alt="The add a component modal showing the create a module step for an intel realsense module">}}
+      {{<imgproc src="registry/configure/add-local-module-create.png" resize="250x" declaredimensions=true alt="The add a component modal showing the create a module step for an intel realsense module">}}
 
-1. Click **Create** to create the modular resource provided by the local module.
+8.  Click **Create** to create the modular resource provided by the local module.
 
-Once you've added your local module using steps 1-6, you can repeat steps 7-10 to add as many additional instances of your modular resource as you need.
+Once you've added your local module using steps 1-5, you can repeat steps 6-8 to add as many additional instances of your modular resource as you need.
 
 ### Edit the configuration of a local module
 
-Once you have added a modular resource to your machine, you can view and edit the underlying module from the **Modules** subtab:
+Once you have added a modular resource to your machine, you can view and edit the underlying module.
 
-1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-1. Click on the **Modules** subtab.
-   Local modules you have added to your machine appear under the **Local** section.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Local modules you have added to your machine are identifiable by name.
+Locate a module's card in the part-resource hierarchy and click on it to expand.
 
 The following properties are available for modules:
 
@@ -436,12 +431,12 @@ The following properties are available for modules:
 `executable_path` | string | **Required**| The absolute path to the executable on your machine's filesystem. |
 `type` | string | **Required**| Either `registry` or `local`. |
 
-Add these properties to your module's configuration:
+Edit these properties in your module's JSON configuration:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-{{<imgproc src="registry/configure/add-local-module-config-builder.png" resize="600x" declaredimensions=true alt="The add a local module pane with an example name and executable path">}}
+{{<imgproc src="registry/configure/edit-local-module.png" resize="600x" declaredimensions=true alt="The edit a local module pane with an example name and executable path">}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
