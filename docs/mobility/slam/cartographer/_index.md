@@ -18,6 +18,9 @@ aliases:
 To use Cartographer with the Viam {{< glossary_tooltip term_id="slam" text="SLAM" >}} service, you can use the [`cartographer`](https://app.viam.com/module/viam/cartographer) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 See the [Use Modules](/registry/#use-modules) section for instructions on using a module from the Viam registry on your machine.
 
+This module utilizes the Cartographer SLAM algorithm to provide tools for generating SLAM maps.
+If you want to use a SLAM algorithm outside of Cartographer, you can create a new module to suit your needs.
+
 The source code for this module is available on the [`viam-cartographer` GitHub repository](https://github.com/viamrobotics/viam-cartographer).
 
 {{% alert title="Info" color="info" %}}
@@ -93,6 +96,8 @@ If you choose to use movement sensor data for SLAM, you can:
 
 To create a new map, follow the instructions below.
 Creating a new map uses an instance of the cartographer module running in the cloud.
+
+1. Enable data capture and configure your `cartographer` SLAM service:
 
 {{< tabs name="Create new map">}}
 {{% tab name="Config Builder" %}}
@@ -273,7 +278,7 @@ This example JSON configuration:
 
 For more information about the configuration attributes, see [Attributes](#attributes).
 
-2. Start a mapping session
+2. Start a mapping session:
 
    Navigate to the **Control** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.
@@ -315,7 +320,7 @@ For more information about the configuration attributes, see [Attributes](#attri
 To update an existing map with new pointcloud data from a new SLAM session, follow the instructions below.
 Updating an existing map uses an instance of the `cartographer` module running in the cloud, and _does not_ overwrite the existing map.
 
-1. Configure your `cartographer` SLAM service
+1. Configure your `cartographer` SLAM service:
 
    {{< tabs name="Update existing map">}}
    {{% tab name="Config Builder" %}}
@@ -424,7 +429,7 @@ Updating an existing map uses an instance of the `cartographer` module running i
 
    For more information about the configuration attributes, see [Attributes](#attributes).
 
-2. Start a mapping session
+2. Start a mapping session:
 
    Navigate to the **Control** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.
@@ -449,7 +454,7 @@ In the meantime, your machine will show up at the map's origin (with the `(x,y)`
 
 In this mode, the `cartographer` module on your machine executes the Cartographer algorithm itself locally to find its position on a map.
 
-1.  Configure your `cartographer` SLAM service
+1.  Configure your `cartographer` SLAM service:
 
     {{< tabs name="Localize only">}}
     {{% tab name="Config Builder" %}}
@@ -533,7 +538,7 @@ This example JSON configuration:
 
     For more information about the configuration attributes, see [Attributes](#attributes).
 
-1.  Start a mapping session
+1.  Start a mapping session:
 
     Navigate to the **Control** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
 

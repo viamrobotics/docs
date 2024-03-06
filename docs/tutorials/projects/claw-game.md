@@ -4,8 +4,8 @@ linkTitle: "Claw Game"
 type: "docs"
 description: "Create your own version of the famous arcade claw machine using a robotic arm and a claw grabber."
 tags: ["app", "board", "motor", "gripper"]
-webmSrc: "/tutorials/claw-game/preview.webm"
-mp4Src: "/tutorials/claw-game/preview.mp4"
+videos:
+  ["/tutorials/claw-game/preview.webm", "/tutorials/claw-game/preview.mp4"]
 videoAlt: "GIF of the claw game in action at a party."
 images: ["/tutorials/claw-game/preview.gif"]
 authors: ["Arielle Mella", "Hazal Mestci", "Matt Vella"]

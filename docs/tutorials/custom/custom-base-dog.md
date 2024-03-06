@@ -5,8 +5,11 @@ type: "docs"
 tags:
   ["sdk", "extending viam", "components", "base", "python", "modular resources"]
 description: "Integrate a custom base component with the Viam Python SDK."
-webmSrc: "/tutorials/custom-base-dog/base-control-dog.webm"
-mp4Src: "/tutorials/custom-base-dog/base-control-dog.mp4"
+videos:
+  [
+    "/tutorials/custom-base-dog/base-control-dog.webm",
+    "/tutorials/custom-base-dog/base-control-dog.mp4",
+  ]
 videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the machine's Control tab on the Viam app open in a browser window."
 images: ["/tutorials/custom-base-dog/base-control-dog.gif"]
 aliases:

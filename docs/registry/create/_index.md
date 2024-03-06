@@ -301,6 +301,12 @@ class MyBase(Base, Reconfigurable):
 </details>
 <br>
 
+{{< alert title="Note" color="note" >}}
+For an example featuring a sensor, see [MCP300x](https://github.com/viam-labs/mcp300x-adc-sensor).
+
+For additional examples use the [modular resources search](https://docs.viam.com/registry/#modular-resources) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
+{{< /alert >}}
+
 When implementing built-in methods from the Viam Python SDK in your model, be sure your implementation of those methods returns any values designated in the built-in function's return signature, typed correctly.
 For example, the `is_moving()` implementation in the example code above returns a `bool` value, which matches the return value of the built-in `is_moving()` function as defined in the Viam Python SDK in the file [`base.py`](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/base/base.py).
 
@@ -544,6 +550,12 @@ func (b *myBase) Close(ctx context.Context) error {
 
 </details>
 <br>
+
+{{< alert title="Note" color="note" >}}
+For an example featuring a sensor, see [MCP3004-8](https://github.com/mestcihazal/mcp3004-8-go).
+
+For additional examples use the [modular resources search](https://docs.viam.com/registry/#modular-resources) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
+{{< /alert >}}
 
 When implementing built-in methods from the Viam Go SDK in your model, be sure your implementation of those methods returns any values designated in the built-in method's return signature, typed correctly.
 For example, the `SetPower()` implementation in the example code above returns a `multierr` value (as provided by the [`multierr` package](https://pkg.go.dev/go.uber.org/multierr)), which allows for transparently combining multiple Go `error` return values together.

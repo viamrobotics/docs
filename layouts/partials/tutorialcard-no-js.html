@@ -9,13 +9,27 @@
   {{- if site.GetPage ($link | string) -}}
     {{- with site.GetPage ($link | string) -}}
       <a href="{{.RelPermalink}}">
-          {{- if .Params.webmSrc -}}
+          {{- if .Params.videos -}}
           <div class="hover-card-video">
-            <video autoplay loop muted playsinline alt="{{ .Params.videoAlt }}" width="100%" style="max-width: 100% " class="">
-              <source src="{{relURL (substr (.Params.webmSrc) 1) }}" type="video/webm">
-              <source src="{{relURL (substr (.Params.mp4Src) 1) }}" type="video/mp4">
-              There should have been a video here but your browser does not seem to support it.
-            </video>
+          <!-- First two videos are used for previews -->
+          {{- $extension_first_file := path.Ext (index .Params.videos 0) -}}
+          {{- $extension_second_file := path.Ext (index .Params.videos 1) -}}
+          <!-- check video extension -->
+          {{- if and (eq $extension_first_file ".webm") (eq $extension_second_file ".mp4") -}}
+          <video autoplay loop muted playsinline alt="{{ .Params.videoAlt }}" width="100%" style="max-width: 100% " class="">
+            <source src="{{relURL (substr (index .Params.videos 0) 1) }}" type="video/webm">
+            <source src="{{relURL (substr (index .Params.videos 1) 1) }}" type="video/mp4">
+            There should have been a video here but your browser does not seem to support it.
+          </video>
+          {{- else if and (eq $extension_second_file ".webm") (eq $extension_first_file ".mp4") -}}
+          <video autoplay loop muted playsinline alt="{{ .Params.videoAlt }}" width="100%" style="max-width: 100% " class="">
+            <source src="{{relURL (substr (index .Params.videos 1) 1) }}" type="video/webm">
+            <source src="{{relURL (substr (index .Params.videos 0) 1) }}" type="video/mp4">
+            There should have been a video here but your browser does not seem to support it.
+          </video>
+          {{- else -}}
+            {{ warnf "The first two videos specified in the frontmatter must be of type mp4 and webm: %s" .Params.videos }}
+          {{- end -}}
           </div>
           {{- else if .Params.images -}}
           {{- if .Params.icon -}}<div class="hover-card-icon"> {{- else -}}
@@ -27,7 +41,7 @@
               {{- end -}}
             </div>
           {{- end -}}
-          <div {{ if (index .Params.images 0) }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
+          <div {{ if (index .Params.images 0) }}class="small-hover-card-div"{{ end }}{{ if .Params.videos }}class="small-hover-card-div"{{ end }}>
             <div>
             {{- if $customTitle -}}<span>{{- $customTitle -}}</span>{{- else -}}<span>{{- .LinkTitle -}}</span>{{- end -}}
             <div class="pills">

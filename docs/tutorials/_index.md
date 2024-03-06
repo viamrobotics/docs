@@ -4,8 +4,11 @@ linkTitle: "Tutorials"
 weight: 300
 type: docs
 layout: "tutorials"
-webmSrc: "/tutorials/videos/scuttle-gamepad-preview.webm"
-mp4Src: "/tutorials/videos/scuttle-gamepad-preview.mp4"
+videos:
+  [
+    "/tutorials/videos/scuttle-gamepad-preview.webm",
+    "/tutorials/videos/scuttle-gamepad-preview.mp4",
+  ]
 videoAlt: "Drive a Scuttle robot with a Bluetooth gamepad."
 images:
   [

@@ -28,7 +28,8 @@ Installing on a laptop or desktop computer is useful if you don't have an SBC av
 
 `viam-server` supports:
 
-- Linux 64-bit operating systems running on the `aarch64` or `x86_64` architectures, including Windows Subsystem for Linux (WSL)
+- Linux 64-bit operating systems running on the `aarch64` or `x86_64` architectures
+- Windows Subsystem for Linux (WSL)
 - macOS
 
 {{< /alert >}}
@@ -65,10 +66,6 @@ Other SBCs such as the [RockPi S](https://wiki.radxa.com/RockpiS) and [Orange Pi
 
 If you have a [compatible operating system](/get-started/installation/), follow along with the steps outlined below or with the video beneath it to install `viam-server`:
 
-{{< alert title="Windows Support" color="note" >}}
-If you want to install `viam-server` on a Windows computer, you can [install Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install), then install `viam-server` using the instructions under the **Linux computer** tab below.
-{{< /alert >}}
-
 {{< tabs name="Install on computer" >}}
 {{% tab name="Linux computer" %}}
 
@@ -90,6 +87,21 @@ To install `viam-server` on a macOS computer:
 1. On the **Setup** tab, select `Mac` as the **Architecture**.
 
 1. Follow the steps shown on the **Setup** tab to install `viam-server` on your macOS computer.
+
+1. Once you have followed the steps on the **Setup** tab, `viam-server` is installed and running.
+   Return to the **Setup** page on the Viam app and wait for confirmation that your computer has successfully connected.
+
+{{% /tab %}}
+{{% tab name="Windows" %}}
+
+1. Go to the [Viam app](https://app.viam.com) and add a new machine by providing a name in the **New machine** field and clicking **Add machine**.
+   If this is your first time using the Viam app, you must create an account first.
+
+   ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
+
+1. On the **Setup** tab, select `Windows` as the **Architecture**.
+
+1. Follow the steps shown on the **Setup** tab to install `viam-server` on your Windows machine.
 
 1. Once you have followed the steps on the **Setup** tab, `viam-server` is installed and running.
    Return to the **Setup** page on the Viam app and wait for confirmation that your computer has successfully connected.

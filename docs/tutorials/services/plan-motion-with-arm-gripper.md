@@ -3,8 +3,11 @@ title: "Plan Motion with an Arm and a Gripper"
 linkTitle: "Plan Motion with an Arm"
 type: "docs"
 description: "Use the motion service to move robot arms and other components."
-webmSrc: "/tutorials/videos/motion_armmoving.webm"
-mp4Src: "/tutorials/videos/motion_armmoving.mp4"
+videos:
+  [
+    "/tutorials/videos/motion_armmoving.webm",
+    "/tutorials/videos/motion_armmoving.mp4",
+  ]
 videoAlt: "An arm moving with the motion service"
 tags: ["arm", "gripper", "motion", "services"]
 authors: []

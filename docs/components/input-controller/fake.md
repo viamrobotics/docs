@@ -60,8 +60,8 @@ The following attributes are available for `fake` input controllers:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `callback_delay_sec` | float64 | **Required** | The number of seconds between callbacks getting triggered. Random between 1 and 2 if not specified. `0` is not valid and will be overwritten by a random delay. |
-| `event_value` | float64 | Optional | Sets the value of events returned. Random between -1 and 1 if not specified. |
+| `callback_delay_sec` | float | **Required** | The number of seconds between callbacks getting triggered. Random between 1 and 2 if not specified. `0` is not valid and will be overwritten by a random delay. |
+| `event_value` | float | Optional | Sets the value of events returned. Random between -1 and 1 if not specified. |
 
 {{< readfile "/static/include/components/test-control/input-controller-control.md" >}}
 

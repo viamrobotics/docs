@@ -332,7 +332,7 @@ Switch to **Raw JSON** mode to configure webhooks as follows:
        "Robot-ID": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value'
      }
 
-     slack_url = "<paste in your own Slack URL"
+     slack_url = "<paste in your own Slack URL>"
      headers = {}
 
      response = requests.post(slack_url, json=payload, headers=headers)

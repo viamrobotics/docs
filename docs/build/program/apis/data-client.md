@@ -846,3 +846,232 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### CreateDataset
+
+Create a new dataset.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The name of the dataset being created.
+- `organization_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the organization where the dataset is being created.
+
+**Returns:**
+
+- [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The dataset ID of the created dataset.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.create_dataset).
+
+```python {class="line-numbers linkable-line-numbers"}
+name = await data_client.create_dataset(
+  name="<dataset-name>",
+  organization_id="<your-org-id>"
+)
+print(name)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListDatasetByIds
+
+Get a list of datasets using their IDs.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `ids` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): The IDs of the datasets being called for.
+
+**Returns:**
+
+- (Sequence[[Dataset](https://python.viam.dev/autoapi/viam/gen/app/dataset/v1/dataset_pb2/index.html#viam.gen.app.dataset.v1.dataset_pb2.Dataset)]): The list of datasets.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.list_dataset_by_ids).
+
+```python {class="line-numbers linkable-line-numbers"}
+datasets = await data_client.list_dataset_by_ids(
+  ids=["abcd-1234xyz-8765z-123abc"]
+)
+print(datasets)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListDatasetByOrganizationId
+
+Get the datasets in an organization.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `organization_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the organization.
+
+**Returns:**
+
+- (Sequence[[Dataset](https://python.viam.dev/autoapi/viam/gen/app/dataset/v1/dataset_pb2/index.html#viam.gen.app.dataset.v1.dataset_pb2.Dataset)]): The list of datasets in the organization.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.list_datasets_by_organization_id).
+
+```python {class="line-numbers linkable-line-numbers"}
+datasets = await data_client.list_datasets_by_organization_id(
+  organization_id="<your-org-id>"
+)
+print(datasets)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### RenameDataset
+
+Rename a dataset specified by the dataset ID.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the dataset.
+- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The new name of the dataset.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.rename_dataset).
+
+```python {class="line-numbers linkable-line-numbers"}
+await data_client.rename_dataset(
+    id="abcd-1234xyz-8765z-123abc",
+    name="<dataset-name>"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteDataset
+
+Delete a dataset.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the dataset.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_dataset).
+
+```python {class="line-numbers linkable-line-numbers"}
+await data_client.delete_dataset(
+  id="abcd-1234xyz-8765z-123abc"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### AddBinaryDataToDatasetByIds
+
+Add the [BinaryData](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryData) to the provided dataset.
+This BinaryData will be tagged with the VIAM_DATASET\_{id} label.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `binary_ids` (List[[BinaryID](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID "viam.gen.app.data.v1.data_pb2.BinaryID")]): The IDs of binary data to add to dataset.
+- `dataset_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the dataset to be added to.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_binary_data_to_dataset_by_ids).
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import BinaryID
+
+binary_metadata = await data_client.binary_data_by_filter(
+    include_file_data=False
+)
+
+my_binary_ids = []
+
+for obj in binary_metadata:
+    my_binary_ids.append(
+        BinaryID(
+            file_id=obj.metadata.id,
+            organization_id=obj.metadata.capture_metadata.organization_id,
+            location_id=obj.metadata.capture_metadata.location_id
+            )
+        )
+
+await data_client.add_binary_data_to_dataset_by_ids(
+    binary_ids=my_binary_ids,
+    dataset_id="abcd-1234xyz-8765z-123abc"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### RemoveBinaryDataFromDatasetByIds
+
+Remove the BinaryData from the provided dataset.
+This BinaryData will lose the VIAM_DATASET\_{id} tag.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `binary_ids` (List[[BinaryID](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID "viam.gen.app.data.v1.data_pb2.BinaryID")]): The IDs of binary data to remove from dataset.
+- `dataset_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the dataset to be removed from.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_binary_data_from_dataset_by_ids).
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import BinaryID
+
+binary_metadata = await data_client.binary_data_by_filter(
+    include_file_data=False
+)
+
+my_binary_ids = []
+
+for obj in binary_metadata:
+    my_binary_ids.append(
+        BinaryID(
+            file_id=obj.metadata.id,
+            organization_id=obj.metadata.capture_metadata.organization_id,
+            location_id=obj.metadata.capture_metadata.location_id
+        )
+    )
+
+await data_client.remove_binary_data_from_dataset_by_ids(
+    binary_ids=my_binary_ids,
+    dataset_id="abcd-1234xyz-8765z-123abc"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
