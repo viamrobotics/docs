@@ -47,7 +47,7 @@ The **Micro-RDK** is for [microcontrollers](/get-started/installation/prepare/mi
 More in-depth information on installing `viam-server` can be found in our [Install Guide](/get-started/installation/#install-viam-server).
 {{% /alert %}}
 
-Once all parts of your machine are set up and connected to the app, the **parts live** display at the top left corner of the page turns green.
+Once all parts of your machine are set up and connected to the app, the part status display at the top left corner of the page turns green.
 Now, you can manage your machine with one of four tabs: **CONFIGURE**, **CONTROL**, **LOGS**, and **CONNECT**:
 
 {{<imgproc src="/fleet/app-usage/parts-live.png" resize="400x" declaredimensions=true alt="The machine page with all parts live">}}
