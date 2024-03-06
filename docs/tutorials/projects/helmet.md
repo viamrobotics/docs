@@ -20,12 +20,12 @@ cost: 120
 We all know personal protective equipment (PPE) helps keep us safe, but sometimes we need a reminder to use it consistently.
 Luckily, you can address this problem using Viam's integrated [data capture](/data/capture/), [computer vision](/ml/vision/), and [webhooks](/build/configure/#webhooks), along with a hard hat detection model.
 
-Through this tutorial you will build a system to look out for you and your team, sending an email notification when someone isn't wearing a hard hat.
+By following this tutorial you will build a system to look out for you and your team, sending an email notification when someone isn't wearing a hard hat.
 
 {{<gif webm_src="/tutorials/helmet/hardhat.webm" mp4_src="/tutorials/helmet/hardhat.mp4" alt="A man without a hard hat is detected and labeled as No-Hardhat. Then he puts on a hard hat and a bounding box labeled Hardhat appears. He gives a thumbs-up to the camera." class="alignleft" max-width="250px">}}
 
-First, you'll set up and test the computer vision functionality.
-Next, you'll set up data capture to pull images of people without hard hats into the cloud.
+First, you'll set up and test the computer vision functionality that can detect people wearing a hard hat and wearing no hard hat.
+Next, you'll set up data capture and sync to record images of people without hard hats and upload them to the cloud.
 Then, you'll write a serverless function capable of sending email notifications.
 Finally, you'll configure a webhook to trigger the serverless function when someone isn't wearing a hard hat.
 
@@ -127,7 +127,7 @@ The physical camera is working and the vision service is set up.
 Now you will pull them together with the [`objectfilter`](https://app.viam.com/module/felixreichenbach/object-filter) {{< glossary_tooltip term_id="module" text="module" >}}.
 This module takes a vision service (in this case, your hard hat detector) and applies it to your webcam feed.
 It outputs a stream with bounding boxes around the hard hats (and people without hard hats) in your camera's view so that you can see the detector working.
-This module also filters the output so that later, when you configure data management, you can save only the images that contain people without hard hats.
+This module also filters the output so that later, when you configure data management, you can save only the images that contain people without hard hats rather than all images the camera captures.
 
 1. Navigate to the **Components** subtab of your machine's **Config** tab.
 
@@ -149,11 +149,13 @@ This module also filters the output so that later, when you configure data manag
    }
    ```
 
-   If you named your detector something other than "yolo," edit the `detector_name` line accordingly.
+   If you named your detector something other than "yolo," edit the `vision_services` value accordingly.
    You can also edit the confidence threshold.
    If you change it to `0.2` for example, you will see detections of over 20% confidence.
 
-   Setting the `filter_data` attribute to `true` means that later, when you configure data capture on this camera, only images that contain one or more of the labels will be captured.
+   Setting the `filter_data` attribute to `true` means that later, when you configure data capture on this camera, only images that have one or more of the labels will be captured and sent to the cloud.
+   For testing purposes, leave both labels in the array for now.
+   We will remove the `"Hardhat"` label from the configuration later so that the camera only captures and saves images when someone **isn't** wearing a hard hat.
 
    Your `objectfilter` camera configuration should now resemble the following:
 
@@ -207,7 +209,7 @@ Configure data capture on the `objectfilter` camera to capture images of people 
 
 To make sure the detector camera is capturing and syncing labeled images:
 
-1. Position yourself in front of your webcam for 30 seconds or so to let it capture a few images of a person without a hard hat on.
+1. Position yourself in front of your webcam for approximately 30 seconds to let it capture a few images of a person without a hard hat on.
 
 2. Navigate to your [**DATA** page](https://app.viam.com/data/view?view=images) in the Viam app.
    You should see some images with bounding boxes on them.
@@ -432,8 +434,8 @@ Now it's time to test the whole thing.
 
 Make sure `viam-server` is running on your machine.
 Position yourself, without a hard hat, in front of your camera.
-Wait a couple of minutes for the email to arrive in your inbox, then celebrate your success when it does!
-Great work!
+Wait a couple of minutes for the email to arrive in your inbox.
+Congratulations, you've successfully built your hard hat monitor!
 
 ## Next steps
 
@@ -445,11 +447,10 @@ Here are some ways you could expand on this project:
 - Change your cloud function to send a different kind of notification, or trigger some other action.
   For an example demonstrating how to configure text notifications, see the [Detect a Person and Send a Photo tutorial](/tutorials/projects/send-security-photo/).
 
-- Use a different existing model or [train your own](/ml/train-model/), to detect and send notifications about something else such as [forklifts](https://huggingface.co/keremberke/yolov8m-forklift-detection).
+- Use a different existing model or [train your own](/ml/train-model/), to detect and send notifications about something else such as [forklifts](https://huggingface.co/keremberke/yolov8m-forklift-detection) appearing in your camera stream.
 
 {{< cards >}}
 {{% card link="/tutorials/projects/send-security-photo/" %}}
 {{% card link="/ml/train-model/" %}}
-{{% card link="/tutorials/configure/scuttlebot/" %}}
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}
