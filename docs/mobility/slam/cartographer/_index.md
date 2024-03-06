@@ -105,7 +105,6 @@ Creating a new map uses an instance of the cartographer module running in the cl
 1. Add the data management service to your machine:
 
    Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
-   
    Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
    Choose `Data Management` as the type and specify a name for your data management service, for example `Data-Management-Service`.
    Click **Create**.
