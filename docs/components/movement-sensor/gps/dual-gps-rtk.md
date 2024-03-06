@@ -19,7 +19,7 @@ Click on the **Components** subtab and click **Create component**.
 Select the `movement-sensor` type, then select the `dual-gps-rtk` model.
 Enter a name for your movement sensor and click **Create**.
 
-{{< imgproc src="/components/movement-sensor/dual-gps-rtk-builder.png" alt="Creation of a `dual-gps-rtk` movement sensor in the Viam app config builder." resize="600x" >}}
+![Creation of a `dual-gps-rtk` movement sensor in the Viam app config builder.](/components/movement-sensor/dual-gps-rtk-builder.png)
 
 Copy and paste the following attribute template into your movement sensor's **Attributes** box.
 Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
