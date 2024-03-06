@@ -27,7 +27,7 @@ Click the name of a machine to go to that machine's page, where you'll find a va
 
 Next to the machine name, there is an indicator of the machine's status.
 Click on the **status** dropdown to open a menu with information about each {{< glossary_tooltip term_id="part" text="part" >}} of your machine.
-Once you connect to the `viam-server` instance on a part, this display includes its OS, Host, `viam-server` version, IP addresses, and what time it was last online:
+Once you connect to the `viam-server` instance on a part, this display includes its OS, Host, `viam-server` version, IP addresses, and what time it was last online or remote address (if live):
 
 ![The machine page with part menu expanded](/fleet/app-usage/machine-page.png)
 
