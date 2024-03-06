@@ -175,7 +175,7 @@ Now that the detector is configured, it's time to test it!
 4. The detector can recognize humans with and without hard hats on.
    Try positioning yourself in front of the camera without anything on your head, and then with a helmet on, and watch the bounding boxes appear.
 
-   {{<imgproc src="/tutorials/helmet/no-hard-hat1.png" resize="x1100" declaredimensions=true alt="" >}}
+   {{<imgproc src="/tutorials/helmet/no-hard-hat1.png" resize="x1100" declaredimensions=true alt="A person with no hard hat on, with a bounding box labeled No-Hardhat around her head." >}}
 
 ## Configure data capture and sync
 
