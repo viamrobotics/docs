@@ -25,7 +25,8 @@ Click the name of a machine to go to that machine's page, where you'll find a va
 
 ## Navigating the machine page
 
-Click on the **parts live** display at the top left corner of the page to open a menu with information about each {{< glossary_tooltip term_id="part" text="part" >}} of this machine.
+Next to the machine name, there is an indicator of the machine's status.
+Click on the **status** dropdown to open a menu with information about each {{< glossary_tooltip term_id="part" text="part" >}} of your machine.
 Once you connect to the `viam-server` instance on a part, this display includes its OS, Host, `viam-server` version, IP addresses, and what time it was last online:
 
 ![The machine page with part menu expanded](/fleet/app-usage/machine-page.png)
@@ -35,7 +36,7 @@ Once you connect to the `viam-server` instance on a part, this display includes 
 <!-- TODO R2D2: might need screenshot and needs to be revisited once setup construction is finished -->
 
 To connect to the `viam-server` instance on a part, follow the setup instructions.
-Click **View setup instructions** on the part dropdown menu.
+Click **View setup instructions** on the part status dropdown menu in the top left corner.
 
 Select your system's architecture and select the version of the {{< glossary_tooltip term_id="RDK" text="RDK" >}} to use.
 Then, follow the instructions on the page to connect and set up your machine.
