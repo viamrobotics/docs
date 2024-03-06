@@ -105,4 +105,10 @@ The following attributes are available for a `dual-gps-rtk` movement sensor:
 | `second_gps` | string | **Required** | The name you have configured for the second movement sensor you want to combine the measurements from. Must be a `GPS` model. |
 | `offset_degrees` | int | Optional | Value to offset the compass heading calculation between the two GPS devices based on their positions on the base. Calculate this as the degrees between the vector from `first_gps` to `second_gps` and the vector from the vehicle's back to the vehicle's front, counterclockwise. {{< imgproc src="/components/movement-sensor/offset_degrees.png" alt="Rand's diagram of 3 offset degree calculations." resize="600x" >}} <br> Default: `90` |
 
-<!-- TODO: add control -->
+## Test the movement sensor
+
+After you configure your movement sensor, navigate to the [Control tab](/fleet/machines/#control) and select the dedicated movement sensor dropdown panel.
+This panel presents the data collected by the movement sensor.
+The sections in the panel include the position, compass heading, and accuracy.
+
+{{<imgproc src="/components/movement-sensor/movement-sensor-control-tab-dual.png" resize="800x" declaredimensions=true alt="The dual GPS movement sensor component in the control tab">}}
