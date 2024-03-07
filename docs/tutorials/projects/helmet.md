@@ -58,17 +58,19 @@ Note that your machine must be connected to the internet for data sync and email
 
 ## Set up your helmet monitor
 
-Plug your webcam into your computer.
+Get your hardware ready and connected to the Viam platform:
 
-Make sure your computer (whether it's a personal computer or an SBC) is connected to adequate power, and turn it on.
+1. Plug your webcam into your computer.
 
-If you haven't already, [install `viam-server`](/get-started/installation/) on the computer you're using for this project, and set up the connection between your machine and the [Viam app](https://app.viam.com).
+2. Make sure your computer (whether it's a personal computer or an SBC) is connected to adequate power, and turn it on.
+
+3. If you haven't already, [create a new machine](/fleet/machines/#add-a-new-machine) in the [Viam app](https://app.viam.com) and follow the instructions to [install `viam-server`](/get-started/installation/) on the computer you're using for this project.
 
 ## Configure the camera and computer vision
 
 ### Configure your physical camera
 
-Configure your [webcam](/components/camera/webcam/) so that your machine knows where to pull images from:
+Configure your [webcam](/components/camera/webcam/) so that your machine can get the video stream from the camera:
 
 1. On the [Viam app](https://app.viam.com), navigate to your machine's page.
    Check that the **Last online** indicator reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with the Viam app.
@@ -94,14 +96,14 @@ If it doesn't, double-check that your config is saved correctly, and check the *
 ### Configure the vision service
 
 Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/ml/vision/) on your machine.
-Viam's built-in [`mlmodel` vision service](/ml/vision/mlmodel/) works with Tensor Flow Lite models, but since this tutorial uses a YOLOv8 model, we will use a {{< glossary_tooltip term_id="module" text="module" >}} from the [modular resource registry](/registry/) that augments Viam with YOLOv8 integration:
+Viam's built-in [`mlmodel` vision service](/ml/vision/mlmodel/) works with Tensor Flow Lite models, but since this tutorial uses a YOLOv8 model, we will use a {{< glossary_tooltip term_id="module" text="module" >}} from the [modular resource registry](/registry/) that augments Viam with YOLOv8 integration.
+The [YOLOv8 module](https://github.com/viam-labs/YOLOv8) enables you to use any [YOLOv8 model](https://huggingface.co/models?other=yolov8) with your Viam machines.
 
 1. Navigate to the **Services** subtab of your machine's **Config** tab.
 
 2. Click **Create service**.
    Start typing `yolo` and select **vision / yolov8** from the registry options.
    Click **Add module**.
-   You can find more details about this module in [its readme](https://github.com/viam-labs/YOLOv8).
 
 3. Give your vision service a name, for example `yolo`, and click **Create**.
 
@@ -151,7 +153,7 @@ This module also filters the output so that later, when you configure data manag
 
    If you named your detector something other than "yolo," edit the `vision_services` value accordingly.
    You can also edit the confidence threshold.
-   If you change it to `0.2` for example, you will see detections of over 20% confidence.
+   If you change it to `0.6` for example, the `objectfilter` camera will only return labeled bounding boxes when the vision model indicates at least 60% confidence that the object is a hard hat or a person without a hard hat.
 
    Setting the `filter_data` attribute to `true` means that later, when you configure data capture on this camera, only images that have one or more of the labels will be captured and sent to the cloud.
    For testing purposes, leave both labels in the array for now.
