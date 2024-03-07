@@ -41,11 +41,10 @@ Select **Next steps** to continue.
 
 {{<imgproc src="/ml/upload-model.png" resize="600x" alt="Upload model menu on the DATA tab of the Viam app.">}}
 
-1. Specify a name for the model.
-2. Specify the **Model type**.
-3. Add a `.tflite` model file.
-4. (Optional) Add a `.txt` label file.
-   This should include the label names as you provided them in training, with one name per line.
+1. Select the **Model framework**, or, type of model. TensorFlow Lite, TensorFlow, PyTorch and ONNX model frameworks are currently supported.
+2. Upload the files required for your model framework.
+3. Specify a name for the model.
+4. Specify the **Task type**.
 5. Add a short description.
    This will help other users to understand how to use your model.
 
@@ -53,19 +52,28 @@ Select **Upload model**.
 The model is now visible on the **MODELS** subtab of the **DATA** tab in the [Viam app](https://app.viam.com) and available to [deploy on your machine](/ml/deploy/).
 Also, if you selected **Public**, it should be publicly visible in the [Viam registry](https://app.viam.com/registry).
 
+{{% alert title="TFLite label files" color="tip" %}}
+During Step 2, if you chose a TensorFlow Lite model framework, you add a `.txt` label file.
+This should include the label names as you provided them in training, with one name per line.
+{{% /alert %}}
+
 {{% /tab %}}
 {{% tab name="New version" %}}
 
 {{<imgproc src="/ml/select-existing-model.png" resize="400x" alt="Select from your existing models.">}}
 
 1. Select the model you would like to update from your existing models.
-2. Select **Next steps** to continue.
-3. Add an updated `.tflite` model file.
-4. (Optional) Add an updated `.txt` label file.
-   This should include the label names as you provided them in training, with one name per line.
-5. Click **Upload model**.
+1. Select **Next steps** to continue.
+1. Select the **Model framework**, or, type of model. TensorFlow Lite, TensorFlow, PyTorch and ONNX model frameworks are currently supported.
+1. Upload the files required for your model framework.
+1. Click **Upload model**.
 
 Your model is now updated.
+
+{{% alert title="TFLite label files" color="tip" %}}
+During Step 4, if you chose a TensorFlow Lite model framework, you add a `.txt` label file.
+This should include the label names as you provided them in training, with one name per line.
+{{% /alert %}}
 
 {{% alert title="Note" color="note" %}}
 
