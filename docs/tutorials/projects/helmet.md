@@ -234,8 +234,8 @@ Now that you have verified that the detector and data sync are working, modify y
 
 ## Set up email notifications
 
-[Webhooks](https://en.wikipedia.org/wiki/Webhook) are a way to trigger a custom function to run when a certain event happens.
-For the purposes of this project, you will use a webhook to run a function that sends you an email when an image of someone without a hard hat is uploaded to the cloud.
+[Webhooks](/build/configure/#webhooks) allow you to trigger actions by sending an HTML request when a certain event happens.
+In this case, you're going to set up a webhook to trigger a serverless function that sends you an email when an image of someone without a hard hat is uploaded to the cloud.
 
 Before you configure a webhook on your machine, you need to create a serverless function for the webhook to call.
 
@@ -264,8 +264,9 @@ If you are new to cloud functions, you may find [this getting started guide](htt
 
 #### Configure email credentials
 
-To write a function that sends an email, you need to configure credentials to authenticate to the sending email account.
-For this project we used [SendGrid](https://sendgrid.com) (which has a free tier) to make configuration of your email notifications simpler:
+To write a function that sends an email, you need a service that can send emails.
+For this project we used [SendGrid](https://sendgrid.com) (which has a free tier) to make configuration of your email notifications simpler.
+Follow these instructions to create a SendGrid account and configure the SendGrid API credentials for your Google Cloud Function:
 
 1. [Enable SendGrid Email API](https://console.cloud.google.com/marketplace/details/sendgrid-app/sendgrid-email) through the Google Cloud Marketplace.
 1. Create a SendGrid account and confirm your email.
@@ -283,7 +284,7 @@ For this project we used [SendGrid](https://sendgrid.com) (which has a free tier
 SendGrid's [Email API Quickstart](https://docs.sendgrid.com/for-developers/sending-email/quickstart-python) contains more information about the functionality of the SendGrid API.
 The following code is adapted from that example.
 
-1. Copy and paste the following code into your cloud function source code `main.py` file:
+1. Copy and paste the following code into your cloud function source code `main.py` file and change the email address parameters `from_email` and `to_emails`:
 
    ```python {class="line-numbers linkable-line-numbers"}
    import functions_framework
@@ -298,9 +299,9 @@ The following code is adapted from that example.
        sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('EMAIL_API_KEY'))
 
        message = Mail(
-        # Change to the email you created the API key for
+        # TODO: Change to the email you created the API key for
         from_email='youremailaddresstosendfrom@example.com',
-        # Change to whichever email should receive the notification
+        # TODO: Change to whichever email should receive the notification
         to_emails='youremailaddresstosendto@example.com',
         subject='Put on a helmet!',
         html_content='Hello!<br><br>Please remember to keep \
