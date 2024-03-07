@@ -122,16 +122,8 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
       "mods": [
         {
           "$set": {
-            "components.motor1.attributes.max_rpm": 1818
-          }
-        },
-        {
-          "$set": {
-            "components.motor1.attributes.pins.a": 30
-          }
-        },
-        {
-          "$set": {
+            "components.motor1.attributes.max_rpm": 1818,
+            "components.motor1.attributes.pins.a": 30,
             "components.motor1.attributes.board": "local"
           }
         },
@@ -170,21 +162,9 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
       "mods": [
         {
           "$set": {
-            "components.motor1.attributes.max_rpm": 1818
-          }
-        },
-        {
-          "$set": {
-            "components.motor1.name": "my_motor"
-          }
-        },
-        {
-          "$set": {
-            "components.motor1.attributes.pins.a": 30
-          }
-        },
-        {
-          "$set": {
+            "components.motor1.attributes.max_rpm": 1818,
+            "components.motor1.name": "my_motor",
+            "components.motor1.attributes.pins.a": 30,
             "components.motor1.attributes.board": "local"
           }
         }
@@ -251,11 +231,7 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
       "mods": [
         {
           "$rename": {
-            "components.motor1.attributes.pins.a": "components.motor1.attributes.pins.pwm"
-          }
-        },
-        {
-          "$rename": {
+            "components.motor1.attributes.pins.a": "components.motor1.attributes.pins.pwm",
             "components.motor1.attributes.pins.b": "components.motor1.attributes.pins.dir"
           }
         }
