@@ -184,6 +184,7 @@ Now that the detector is configured, it's time to test it!
 ## Configure data capture and sync
 
 Viam's built-in [data management service](/data/) allows you to, among other things, capture images and sync them to the cloud.
+For this project, you will capture images of people without hard hats so that you can see who wasn't wearing one, and so that you can trigger notifications when these images are captured and synced.
 Configure data capture on the `objectfilter` camera to capture images of people without hard hats:
 
 1. First, you need to add the data service to your machine to make it available to capture data on your camera.
@@ -426,7 +427,7 @@ Configure a webhook as follows:
 
 3. Replace the `url` value with your cloud function URL.
    You can get this URL by copying it from the **TRIGGER** tab in the cloud function console.
-   Once you've done this, the `url` line should resemble, for example, `"url": "https://us-east1-blah-blah-123456.cloudfunctions.net/hat-email"`.
+   Once you've done this, the `url` line should resemble, for example, `"url": "https://us-east1-example-string-123456.cloudfunctions.net/hat-email"`.
 
 4. Click **Save config**.
 
