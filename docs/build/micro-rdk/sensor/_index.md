@@ -3,7 +3,7 @@ title: "Micro-RDK Sensor Models"
 linkTitle: "Sensor"
 weight: 30
 type: "docs"
-description: "Support in the micro-RDK for sensors, devices that measur information about the outside world."
+description: "Support in the micro-RDK for sensors, devices that measure information about the outside world."
 images: ["/icons/components/sensor.svg"]
 tags: ["sensor", "components", "micro-rdk"]
 no_list: true
