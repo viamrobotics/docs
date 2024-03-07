@@ -31,7 +31,7 @@ If you would like to make your fragment available to users outside your organiza
 You must be an [organization owner](/fleet/rbac/#permissions) in order to create fragments.
 
 A fragment can define one, several, or all resources on a machine.
-You can add multiple fragments to a single machine, or you can add additional resources to a machine that has already been configured with a fragment.
+You can add multiple fragments to a single machine, and you can add additional resources to a machine that has already been configured with a fragment.
 
 ## Create a fragment
 
