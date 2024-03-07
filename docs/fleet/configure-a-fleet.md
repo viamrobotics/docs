@@ -289,7 +289,7 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
        "mods": [
          {
            "$set": {
-             "modules.custom-sensor.attributes.version": "1.8.0"
+             "modules.custom-sensor.version": "1.8.0"
            }
          }
        ]
