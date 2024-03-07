@@ -151,7 +151,7 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
 {{< /tabs >}}
 
 4. Edit the `fragment_id` value to match the ID of the fragment you want to modify, for example `"12345678-1a2b-9b8a-abcd987654321"`.
-5. Add any mods you'd like to apply.
+5. Add any update operators you'd like to apply to the fragment to the `mods` section.
    Click to view each example:
 
    {{%expand "Change the name and attributes of a component" %}}
@@ -195,7 +195,7 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
 
    {{% /expand%}}
    {{%expand "Remove an attribute" %}}
-   This example uses [`$unset`](https://www.mongodb.com/docs/manual/reference/operator/update/unset/#mongodb-update-up.-unset) to remove whatever pin number was set for the `pwm` pin, so the motor no longer has a PWM pin set.
+   This example uses [`$unset`](https://www.mongodb.com/docs/manual/reference/operator/update/unset/#mongodb-update-up.-unset) to remove the pin number set for the `pwm` pin, so the motor no longer has a PWM pin set.
    In other words, it deletes the `pwm` pin field.
 
    ```json {class="line-numbers linkable-line-numbers"}
@@ -236,13 +236,13 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
    {{%expand "Change motor pins from A and B to PWM and DIR" %}}
    This example uses [`$rename`](https://www.mongodb.com/docs/manual/reference/operator/update/rename/) to make the following changes to the attributes of a motor named `motor1` in the fragment:
 
-   - Takes whatever the pin number for pin `a` was and assigns that value to the PWM pin.
+   - Retrieves the pin number for pin `a` and assigns that value to the PWM pin.
      Deletes the `pins.a` field.
-   - Takes whatever the pin number for pin `b` was and assigns that value to the DIR pin.
+   - Retrieves the pin number for pin `b` and assigns that value to the DIR pin.
      Deletes the `pins.b` field.
 
-   _If you want to change the `name` of a component (for example, `motor1`), use `$set`, as shown in the change the name of a component example.
-   `$rename` is for changing the key, not the value._
+   _`$rename` is for changing an attribute's key, not its value.
+   If you want to change the `name` of a component (for example, `motor1`), use `$set`, as shown in the change the name of a component example._
 
    ```json {class="line-numbers linkable-line-numbers"}
    "fragment_mods": [
