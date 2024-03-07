@@ -31,8 +31,7 @@ Then remove and fill in the attributes as applicable to your sensor, according t
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "trigger_pin": "<pin-number>",
-  "echo_interrupt_pin": "<pin-number>",
-  "timeout_ms": <int>
+  "echo_interrupt_pin": "<pin-number>"
 }
 ```
 
@@ -42,8 +41,7 @@ Then remove and fill in the attributes as applicable to your sensor, according t
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "trigger_pin": "15",
-  "echo_interrupt_pin": "18",
-  "timeout_ms": "200"
+  "echo_interrupt_pin": "18"
 }
 ```
 
@@ -63,8 +61,7 @@ Then remove and fill in the attributes as applicable to your sensor, according t
       "namespace": "rdk",
       "attributes": {
         "trigger_pin": "<pin-number>",
-        "echo_interrupt_pin": "<pin-number>",
-        "timeout_ms": <int>
+        "echo_interrupt_pin": "<pin-number>"
       },
       "depends_on": []
     }
@@ -85,8 +82,7 @@ Then remove and fill in the attributes as applicable to your sensor, according t
       "namespace": "rdk",
       "attributes": {
         "trigger_pin": "15",
-        "echo_interrupt_pin": "18",
-        "timeout_ms": "200"
+        "echo_interrupt_pin": "18"
       },
       "depends_on": []
     }
