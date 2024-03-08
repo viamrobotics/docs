@@ -62,7 +62,7 @@ You can switch between **Builder**, **JSON**, and **Frame** modes by clicking on
 - **Builder** mode provides a graphical interface for configuring your machine resources.
 - **JSON** mode provides a text editing field where you can write and edit the config manually.
 - **Frame** mode provides a graphical interface for configuring and visualizing the relative position of components in space.
-For more information, see the [Frame System documentation](/mobility/frame-system/).
+  For more information, see the [Frame System documentation](/mobility/frame-system/).
 
 Regardless of the editing mode you choose, Viam stores the configuration file in [JSON (JavaScript Object Notation)](https://en.wikipedia.org/wiki/JSON).
 
@@ -167,10 +167,10 @@ You must configure each component with a type, a model, a name, attributes, and 
   Many built-in components have convenient implicit dependencies, in which case `depends_on` can be left blank.
   For example, a [`gpio` motor](/components/motor/gpio/) depends on the `board` to which it is wired, but it has a dedicated `board` attribute and `viam-server` will automatically initialize that board before it looks for the motor.
 
-If you are configuring several similar components, you can click **...**  in the upper-right of a component's configuration pane, then select the **Duplicate** button to create a new identical component beneath your existing one.
+If you are configuring several similar components, you can click **...** in the upper-right of a component's configuration pane, then select the **Duplicate** button to create a new identical component beneath your existing one.
 Be sure to edit the duplicated component to change any parameters that are unique to the new component, such as its name and pins.
 
-To delete a component, click **...**  in the upper-right of the component's configuration pane, then select the trash can icon.
+To delete a component, click **...** in the upper-right of the component's configuration pane, then select the trash can icon.
 Confirm that you are sure.
 
 For specific information on how to configure each supported component type, see the [components documentation](/components/).
@@ -237,6 +237,16 @@ You can use fragments to share similar {{< glossary_tooltip term_id="resource" t
 For example, if you have multiple machines with the same motor hardware, wired the same way, you can create a fragment to configure that motor and share it easily across all of your machines, without needing to individually configure the motor component for each machine.
 
 See [Use Fragments to Configure a Fleet](/fleet/configure-a-fleet/) for more information on creating and deploying fragments.
+
+## Network
+
+Expand a part's configuration card to open its network configuration interface:
+
+{{<imgproc src="/build/configure/network.png" resize="x400" style="max-width: 300px" declaredimensions=true alt="The network configuration interface on a part card of a machine.">}}
+
+You can configure the address `viam-server` binds to for accepting connections.
+By default, `viam-server` binds to `0.0.0.0:8080` when managed by the Viam app or when authentication and TLS are enabled.
+You can also set the [heartbeat](/build/program/apis/sessions/#heartbeats) window.
 
 ## Webhooks
 
