@@ -437,7 +437,7 @@ func (b *myBase) Reconfigure(ctx context.Context, deps resource.Dependencies, co
 
     geometries, err := kinematicbase.CollisionGeometry(conf.Frame)
     if err != nil {
-        b.logger.CWarnw(ctx, "base %v %s", b.Name(), err.Error())
+        b.logger.CWarnf(ctx, "base %v %s", b.Name(), err.Error())
     }
     b.geometries = geometries
 
@@ -497,7 +497,7 @@ func (b *myBase) SetVelocity(ctx context.Context, linear, angular r3.Vector, ext
 
 // SetPower computes relative power between the wheels and sets power for both motors.
 func (b *myBase) SetPower(ctx context.Context, linear, angular r3.Vector, extra map[string]interface{}) error {
-    b.logger.CDebugw(ctx, "SetPower Linear: %.2f Angular: %.2f", linear.Y, angular.Z)
+    b.logger.CDebugf(ctx, "SetPower Linear: %.2f Angular: %.2f", linear.Y, angular.Z)
     if math.Abs(linear.Y) < 0.01 && math.Abs(angular.Z) < 0.01 {
         return b.Stop(ctx, extra)
     }
@@ -509,7 +509,7 @@ func (b *myBase) SetPower(ctx context.Context, linear, angular r3.Vector, extra 
 
 // Stop halts motion.
 func (b *myBase) Stop(ctx context.Context, extra map[string]interface{}) error {
-    b.logger.CDebugw(ctx, "Stop")
+    b.logger.CDebug(ctx, "Stop")
     err1 := b.left.Stop(ctx, extra)
     err2 := b.right.Stop(ctx, extra)
     return multierr.Combine(err1, err2)
@@ -1062,13 +1062,13 @@ func init() {
 // Finally, when you need to log, use the functions on your component's logger:
 fn (c *component) someFunction(ctx context.Context, a int) {
   // Log with severity info:
-  c.logger.CInfow(ctx, "performing some function with a=%v", a)
+  c.logger.CInfof(ctx, "performing some function with a=%v", a)
   // Log with severity debug (using value wrapping):
   c.logger.CDebugw(ctx, "performing some function", "a" ,a)
   // Log with severity warn:
-  c.logger.CWarnw(ctx, "encountered warning for component: %v ", c.Name())
+  c.logger.CWarnw(ctx, "encountered warning for component", "name", c.Name())
   // Log with severity error without a parameter:
-  c.logger.CErrorw(ctx, "encountered an error")
+  c.logger.CError(ctx, "encountered an error")
 }
 ```
 
