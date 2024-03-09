@@ -8,7 +8,7 @@ type: docs
 
 Viam is a complete software platform for {{< glossary_tooltip term_id="smart-machine" text="smart machines">}} that runs on Linux and macOS and supports a wide variety of popular systems, including:
 
-{{< carousel >}}
+{{< board-carousel >}}
 <br>
 
 Explore the elements of the Viam platform:
