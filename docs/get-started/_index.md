@@ -19,6 +19,7 @@ If you need any help along the way, join our community:
 
 {{< cards >}}
 {{% card link="/get-started/installation/" %}}
+<!-- markdownlint-disable-next-line MD034 -->
 {{% manualcard link="https://discord.gg/viam" %}}
 
 {{<gif webm_src="/heart.webm" mp4_src="/heart.mp4" alt="A robot drawing a heart">}}
