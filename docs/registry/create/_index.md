@@ -1112,7 +1112,7 @@ _Add instructions here for any requirements._
 
 ## Build and run
 
-To use this module, follow the instructions to [add a module from the Viam Registry](https://docs.viam.com/registry/configure/#add-a-modular-resource-from-the-viam-registry) and select the `<INSERT API NAMESPACE>:<INSERT API NAME>:<INSERT MODEL>` model from the [`<INSERT MODEL>` module](https://app.viam.com/module/<INSERT API NAMESPACE>/<INSERT MODEL>).
+To use this module, follow the instructions to [add a module from the Viam Registry](https://docs.viam.com/registry/configure/#add-a-modular-resource-from-the-viam-registry) and select the `<INSERT API NAMESPACE>:<INSERT API NAME>:<INSERT MODEL>` model from the [`<INSERT MODULE>` module](https://app.viam.com/module/<INSERT API NAMESPACE>/<INSERT MODULE>).
 
 ## Configure your <INSERT API NAME>
 
