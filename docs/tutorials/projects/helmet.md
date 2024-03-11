@@ -4,7 +4,7 @@ linkTitle: "Helmet Monitor"
 type: "docs"
 description: "Get a text or email if people are not wearing hard hats, and track data over time."
 videos: ["/tutorials/helmet/hardhat.webm", "/tutorials/helmet/hardhat.mp4"]
-# images: ["/tutorials/helmet/hardhat-data.png"]
+images: ["/tutorials/helmet/hardhat.gif"]
 videoAlt: "A man without a hard hat is detected and labeled as No-Hardhat. Then he puts on a hard hat and a bounding box labeled Hardhat appears. He gives a thumbs-up to the camera."
 tags: ["tutorial"]
 authors: [Jessamy Taylor]

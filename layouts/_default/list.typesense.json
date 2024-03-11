@@ -45,25 +45,25 @@
                                     {{- end -}}
 
                               {{- end -}}
+                              {{- $.Scratch.Set "image" "" -}}
                         {{- else -}}
                               {{- $.Scratch.Set "webm" "" -}}
                               {{- $.Scratch.Set "mp4" "" -}}
-                        {{- end -}}
-
-                        {{- if (index .Params.images 0) -}}
-                              {{- $image_ext := path.Ext (index .Params.images 0) -}}
-                              {{- $image_extensions := slice ".png" ".jpg" ".jpeg" ".svg" -}}
-                              {{- if in $image_extensions $image_ext -}}
-                                    {{- if eq ((index .Params.images 0) | printf "%.1s") "/" -}}
-                                          {{- $.Scratch.Set "image" (printf "..%s" (index .Params.images 0)) -}}
+                              {{- if (index .Params.images 0) -}}
+                                    {{- $image_ext := path.Ext (index .Params.images 0) -}}
+                                    {{- $image_extensions := slice ".png" ".jpg" ".jpeg" ".svg" -}}
+                                    {{- if in $image_extensions $image_ext -}}
+                                          {{- if eq ((index .Params.images 0) | printf "%.1s") "/" -}}
+                                                {{- $.Scratch.Set "image" (printf "..%s" (index .Params.images 0)) -}}
+                                          {{- else -}}
+                                                {{- $.Scratch.Set "image" (printf "%s" (index .Params.images 0)) -}}
+                                          {{- end -}}
                                     {{- else -}}
-                                          {{- $.Scratch.Set "image" (printf "%s" (index .Params.images 0)) -}}
+                                          {{- $.Scratch.Set "image" "" -}}
                                     {{- end -}}
                               {{- else -}}
-                                    {{- $.Scratch.Set "image" "" -}}
-                              {{- end -}}
-                        {{- else -}}
                               {{- $.Scratch.Set "image" "" -}}
+                              {{- end -}}
                         {{- end -}}
 
                         {{- if .Params.canonical -}}
