@@ -43,7 +43,7 @@ Select the Viam {{< glossary_tooltip term_id="resource" text="resources" >}} you
   </div>
 </div>
 
-If a component or service you want to use for your project is not natively supported, see whether it is supported as a {{< glossary_tooltip term_id="modular resource" text="modular-resource" >}} in the [registry](/registry/) or build your own modular resource.
+If a component or service you want to use for your project is not natively supported, see whether it is supported as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} in the [registry](/registry/) or build your own modular resource.
 
 ## Step 3: Program
 
