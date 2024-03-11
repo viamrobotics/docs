@@ -27,7 +27,7 @@ You can install `viam-server` on your personal computer, or on a single-board co
 
 ## Step 2: Configure
 
-Pull together the Viam {{< glossary_tooltip term_id="resource" text="resources" >}} you want to use by [configuring your smart machine](/build/configure/).
+Select the Viam {{< glossary_tooltip term_id="resource" text="resources" >}} you want to use and integrate them by [configuring your smart machine](/build/configure/).
 
 <div class="cards max-page">
   <div class="row">
@@ -43,7 +43,7 @@ Pull together the Viam {{< glossary_tooltip term_id="resource" text="resources" 
   </div>
 </div>
 
-If a component or service you want to use for your project is not natively supported, see the [modular resource registry](/registry/).
+If a component or service you want to use for your project is not natively supported, see whether it is supported as a {{< glossary_tooltip term_id="modular resource" text="modular-resource" >}} in the [registry](/registry/) or build your own modular resource.
 
 ## Step 3: Program
 
