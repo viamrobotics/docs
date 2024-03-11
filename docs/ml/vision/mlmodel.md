@@ -122,7 +122,7 @@ The following attributes are available for an `mlmodel` detector or classifier:
 <!-- prettier-ignore -->
 | Parameter | Type | Inclusion | Description |
 | --------- | ---- | --------- | ----------- |
-| `mlmodel_name` | string | **Required** | The name of the [ML model service](/ml/deploy) you want to use the model from. |
+| `mlmodel_name` | string | **Required** | The name of the [ML model service](/ml/deploy/) you want to use the model from. |
 | `remap_output_names` | object | Optional | The names of your output tensors, mapped to the service requirements. See [Tensor names](#tensor-names) for more information. |
 | `remap_input_names` | object | Optional | The name of your input tensor, mapped to the service requirements. See [Tensor names](#tensor-names) for more information. |
 | `input_image_bgr` | bool | Optional | Set this to `true` if the ML model service expect the input image to have BGR pixels, rather than RGB pixels. |
