@@ -33,7 +33,7 @@ Follow this guide to set up a fresh virtual environment on your working computer
    python3 -m pip install --user virtualenv
    ```
 
-## Setup your project
+## Set up your project
 
 First, create a directory for your project.
 For example, name your directory `viam-python`:
@@ -78,7 +78,7 @@ You can also run this command on an existing Python SDK install to add support f
 If you need to install your own requirements, also install them in this virtual environment.
 To make your required packages easier to install in the future, you can also [create a](https://openclassrooms.com/en/courses/6900846-set-up-a-python-environment/6990546-manage-virtual-environments-using-requirements-files) <file>requirements.txt</file> file with a list of all the packages you need and then install the requirements for your client application by running `pip3 install -r requirements.txt`.
 
-## Setup your IDE
+## Set up your IDE
 
 If you would like to be able to use the environment you created with your IDE, point your IDE to use the python interpreter of your new environment, rather than the default interpreter, likely the global python interpreter.
 
