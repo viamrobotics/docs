@@ -211,7 +211,7 @@ You can also test classifiers with [existing images on a computer](#existing-ima
 
 {{< alert title="Note" color="note" >}}
 
-The feature is only available for classifiers that are uploaded after September 19, 2023.
+The feature is only available for classifiers that were uploaded after September 19, 2023.
 
 {{< /alert >}}
 
