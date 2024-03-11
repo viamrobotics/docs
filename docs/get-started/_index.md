@@ -17,9 +17,10 @@ Learn about the Viam platform by reading our Viam in 3 minutes guide or try it o
 If you're ready to try it on your own machine, start by installing `viam-server`.
 If you need any help along the way, join our community:
 
+<!-- markdownlint-disable-file MD034 -->
+
 {{< cards >}}
 {{% card link="/get-started/installation/" %}}
-<!-- markdownlint-disable-next-line MD034 -->
 {{% manualcard link="https://discord.gg/viam" %}}
 
 {{<gif webm_src="/heart.webm" mp4_src="/heart.mp4" alt="A robot drawing a heart">}}
