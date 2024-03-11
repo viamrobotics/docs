@@ -6,7 +6,7 @@ type: "docs"
 no_list: true
 ---
 
-Explore more about the Viam platform by reading our Viam in 3 minutes guide or try it out for yourself:
+Learn about the Viam platform by reading our Viam in 3 minutes guide or try it out for yourself:
 
 {{< cards >}}
 {{% card link="/get-started/viam/" %}}
