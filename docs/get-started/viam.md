@@ -38,6 +38,10 @@ Join the [**Viam community**](https://discord.gg/viam) to collaborate during pla
 
 A _smart machine_ in Viam consists of at least one computer, typically a [single-board computer](/get-started/installation/), running `viam-server` and communicating with any hardware connected to it by signaling through digital data pins.
 Viam supports devices running **any** 64-bit Linux OS or macOS.
+Here are some of the boards Viam supports:
+
+{{< board-carousel >}}
+<br>
 
 {{< imgproc src="/viam/board-viam-server.png" alt="A diagram of a single-board computer running viam-server." resize="270x" class="alignleft" style="max-width:270px" >}}
 
