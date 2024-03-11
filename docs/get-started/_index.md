@@ -14,6 +14,7 @@ Learn about the Viam platform by reading our Viam in 3 minutes guide or try it o
 {{< /cards >}}
 
 <br>
+
 If you're ready to try it on your own machine, start by installing `viam-server`.
 If you need any help along the way, join our community:
 
