@@ -710,7 +710,7 @@ Click on the button to move your robot in a square:
 The first thing you need to do is import the [base component](https://cpp.viam.dev/classviam_1_1sdk_1_1Base.html). The base is responsible for controlling the motors attached to the base of the rover. Add the following line of code to your imports:
 
 ```cpp {class="line-numbers linkable-line-numbers"}
-#include <viam/sdk/components/base/client.hpp>
+#include <viam/sdk/components/base.hpp>
 ```
 
 Additionally, add the following namespaces under your imports:
@@ -732,22 +732,22 @@ Your main function should look like this:
 int main() {
     namespace vs = ::viam::sdk;
     try {
-        const char* uri = "ADDRESS FROM THE VIAM APP";
-        DialOptions dial_options;
-        std::string type = "api-key";
-        // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
-        std::string entity = "<API-KEY-ID>";
-        // Replace "<API-KEY>" (including brackets) with your machine's API key
-        std::string payload = "<API-KEY>";
-        dial_options.set_entity(entity);
-        Credentials credentials(type, payload);
-        dial_options.set_credentials(credentials);
-        boost::optional<DialOptions> opts(dial_options);
-        std::string address(uri);
+        std::string host("ADDRESS FROM THE VIAM APP");
+        DialOptions dial_opts;
+        // Replace "<API-KEY-ID>" with your machine's api key ID
+        dial_opts.set_entity(std::string("<API-KEY-ID>"));
+        // Replace "<API-KEY>" with your machine's api key
+        Credentials credentials("api-key", "<API-KEY>");
+        dial_opts.set_credentials(credentials);
+        boost::optional<DialOptions> opts(dial_opts);
         Options options(0, opts);
 
-        // connect to robot, ensure we can refresh it
-        std::shared_ptr<RobotClient> robot = RobotClient::at_address(address, options);
+        auto robot = RobotClient::at_address(host, options);
+
+        std::cout << "Resources:\n";
+        for (const Name& resource: robot->resource_names()) {
+          std::cout << "\t" << resource << "\n" << std::endl;
+        }
 
         std::string base_name("viam_base");
 
@@ -794,22 +794,22 @@ Your main function should now look like this:
 int main() {
     namespace vs = ::viam::sdk;
     try {
-        const char* uri = "ADDRESS FROM THE VIAM APP";
-        DialOptions dial_options;
-        std::string type = "api-key";
-        // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
-        std::string entity = "<API-KEY-ID>";
-        // Replace "<API-KEY>" (including brackets) with your machine's API key
-        std::string payload = "<API-KEY>";
-        dial_options.set_entity(entity);
-        Credentials credentials(type, payload);
-        dial_options.set_credentials(credentials);
-        boost::optional<DialOptions> opts(dial_options);
-        std::string address(uri);
+        std::string host("ADDRESS FROM THE VIAM APP");
+        DialOptions dial_opts;
+        // Replace "<API-KEY-ID>" with your machine's api key ID
+        dial_opts.set_entity(std::string("<API-KEY-ID>"));
+        // Replace "<API-KEY>" with your machine's api key
+        Credentials credentials("api-key", "<API-KEY>");
+        dial_opts.set_credentials(credentials);
+        boost::optional<DialOptions> opts(dial_opts);
         Options options(0, opts);
 
-        // connect to robot, ensure we can refresh it
-        std::shared_ptr<RobotClient> robot = RobotClient::at_address(address, options);
+        auto robot = RobotClient::at_address(host, options);
+
+        std::cout << "Resources:\n";
+        for (const Name& resource: robot->resource_names()) {
+          std::cout << "\t" << resource << "\n" << std::endl;
+        }
 
         std::string base_name("viam_base");
 
@@ -1212,7 +1212,13 @@ class _RobotScreenState extends State<RobotScreen> {
 {{% tab name="C++" %}}
 
 ```cpp {class="line-numbers linkable-line-numbers"}
-#include <viam/sdk/components/base/client.hpp>
+#include <string>
+#include <vector>
+
+#include <boost/optional.hpp>
+
+#include <viam/sdk/robot/client.hpp>
+#include <viam/sdk/components/base.hpp>
 
 using namespace viam::sdk;
 using std::cerr;
@@ -1233,22 +1239,22 @@ void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
 int main() {
     namespace vs = ::viam::sdk;
     try {
-        const char* uri = "ADDRESS FROM THE VIAM APP";
-        DialOptions dial_options;
-        std::string type = "api-key";
-        // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
-        std::string entity = "<API-KEY-ID>";
-        // Replace "<API-KEY>" (including brackets) with your machine's API key
-        std::string payload = "<API-KEY>";
-        dial_options.set_entity(entity);
-        Credentials credentials(type, payload);
-        dial_options.set_credentials(credentials);
-        boost::optional<DialOptions> opts(dial_options);
-        std::string address(uri);
+        std::string host("ADDRESS FROM THE VIAM APP");
+        DialOptions dial_opts;
+        // Replace "<API-KEY-ID>" with your machine's api key ID
+        dial_opts.set_entity(std::string("<API-KEY-ID>"));
+        // Replace "<API-KEY>" with your machine's api key
+        Credentials credentials("api-key", "<API-KEY>");
+        dial_opts.set_credentials(credentials);
+        boost::optional<DialOptions> opts(dial_opts);
         Options options(0, opts);
 
-        // connect to robot, ensure we can refresh it
-        std::shared_ptr<RobotClient> robot = RobotClient::at_address(address, options);
+        auto robot = RobotClient::at_address(host, options);
+
+        std::cout << "Resources:\n";
+        for (const Name& resource: robot->resource_names()) {
+          std::cout << "\t" << resource << "\n" << std::endl;
+        }
 
         std::string base_name("viam_base");
 

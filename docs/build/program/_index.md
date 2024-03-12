@@ -69,7 +69,9 @@ The TypeScript SDK currently only supports building web browser apps.
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-Follow the [instructions on the GitHub repository](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
+```sh {class="command-line" data-prompt="$"}
+brew install viam-cpp-sdk
+```
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -207,40 +209,34 @@ The C++ SDK is currently in beta.
 {{< /alert >}}
 
 ```cpp {class="line-numbers linkable-line-numbers"}
-# include <string>
-# include <vector>
+#include <string>
+#include <vector>
 
-# include <boost/optional.hpp>
+#include <boost/optional.hpp>
 
-# include <viam/api/common/v1/common.pb.h>
-# include <viam/api/robot/v1/robot.grpc.pb.h>
-
-# include <viam/sdk/robot/client.hpp>
-# include <viam/sdk/components/camera/client.hpp>
+#include <viam/sdk/robot/client.hpp>
 
 using namespace viam::sdk;
 
 int main() {
-  std::string host("ADDRESS FROM THE VIAM APP");
-  DialOptions dial_opts;
-  dial_opts.set_type("api-key");
-  // Replace "<API-KEY-ID>" with your machine's API key ID
-  dial_opts.set_entity("<API-KEY-ID>");
-  // Replace "<API-KEY>" with your machine's API key
-  Credentials credentials("<API-KEY>");
-  dial_opts.set_credentials(credentials);
-  boost::optional<DialOptions> opts(dial_opts);
-  Options options(0, opts);
+    std::string host("ADDRESS FROM THE VIAM APP");
+    DialOptions dial_opts;
+    // Replace "<API-KEY-ID>" with your machine's api key ID
+    dial_opts.set_entity(std::string("<API-KEY-ID>"));
+    // Replace "<API-KEY>" with your machine's api key
+    Credentials credentials("api-key", "<API-KEY>");
+    dial_opts.set_credentials(credentials);
+    boost::optional<DialOptions> opts(dial_opts);
+    Options options(0, opts);
 
-  auto robot = RobotClient::at_address(host, options);
+    auto robot = RobotClient::at_address(host, options);
 
-  std::cout << "Resources:\n";
-  for (const ResourceName& resource: *robot->resource_names()) {
-    std::cout << resource.namespace_() << ":" << resource.type() << ":"
-              << resource.subtype() << ":" << resource.name() << "\n";
-  }
+    std::cout << "Resources:\n";
+    for (const Name& resource: robot->resource_names()) {
+      std::cout << "\t" << resource << "\n" << std::endl;
+    }
 
-  return 0;
+    return EXIT_SUCCESS;
 }
 ```
 
