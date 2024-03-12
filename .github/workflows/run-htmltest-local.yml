@@ -4,11 +4,11 @@
 # Run htmltest link checker on generated HTML output in dist/
 # https://github.com/wjdp/htmltest
 #
-name: run-htmltest-external
-on:
-  schedule:
-    # weekly
-    - cron: '0 14 * * 1'
+name: run-htmltest
+concurrency:
+  group: pullrequest-untrusted-htmltest-${{ github.event.number }}
+  cancel-in-progress: true
+on: pull_request
 jobs:
   htmltest:
     runs-on: ubuntu-large
@@ -29,14 +29,14 @@ jobs:
       - name: Build
         run: make build-dist
 
-      - name: Test HTML
+      - name: Test HTML for local pages
         # https://github.com/wjdp/htmltest-action/
         # Don't fail the build on broken links
         continue-on-error: false
         uses: wjdp/htmltest-action@master
         with:
           # For consistency, use the same config file as for local builds
-          config: .htmltest.yml
+          config: .htmltest-local.yml
       - name: Archive htmltest results
         uses: actions/upload-artifact@v3
         # Note: Set ACTIONS_RUNTIME_TOKEN env variable to test with nektos/act
@@ -44,10 +44,3 @@ jobs:
           name: htmltest-report
           path: tmp/.htmltest/htmltest.log
           retention-days: 7 # Default is 90 days
-      - name: Create issue about failure
-        if: failure()
-        uses: JasonEtco/create-an-issue@v2.5.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          filename: .github/failed-action-issue-template.md
