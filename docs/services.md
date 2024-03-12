@@ -11,7 +11,12 @@ aliases:
 
 Services are built-in software packages that make it easier to add complex capabilities such as motion planning or object detection to your machine.
 
-{{< imgproc src="/viam/machine-components.png" alt="Machine components" resize="1000x" style="max-width:650px" >}}
+In the following diagram, the machine is comprised of various hardware components including a GPS and a camera, and software (`viam-server`) running on a single-board computer.
+Some of that software is the low-level code that communicates directly with the hardware [components](/components/), while some pieces of that software (the _services_) add higher-level functionality.
+In this case, the vision service is configured to run computer vision models on output from the camera component.
+The navigation service can take the raw output from the GPS component output and determine geographical location, and the data service captures data from any or all of the components, for example storing images from the camera.
+
+{{< imgproc src="/viam/machine-components.png" alt="Machine components" resize="1000x" style="max-width:650px" class="aligncenter" >}}
 <br>
 
 Even though many services run locally within `viam-server`, you can think of them as discrete building blocks; you can run your machine using none, some, or all of them, depending on your use case.

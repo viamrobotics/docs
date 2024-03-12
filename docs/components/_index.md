@@ -12,12 +12,12 @@ aliases:
 Viam provides support for a wide variety of hardware.
 A _component_ represents a physical piece of hardware in your {{< glossary_tooltip term_id="machine" text="machine" >}}, and the software that directly supports that hardware.
 
-{{< imgproc src="/viam/machine-components.png" alt="Diagram with various components and services on a smart machine. This machine employs the vision, navigation, and data capture services, which run within viam-server on the machine's single board computer." resize="1000x" style="max-width:650px" >}}
+{{< imgproc src="/viam/machine-components.png" alt="Diagram with various components and services on a smart machine. This machine employs the vision, navigation, and data capture services, which run within viam-server on the machine's single board computer." resize="1000x" style="max-width:650px" class="aligncenter" >}}
 <br>
 
 For each category (or _{{< glossary_tooltip term_id="subtype" text="subtype" >}}_) of hardware, such as robotic arms, Viam has a [standardized API](/build/program/apis/#component-apis).
 Within each category, there are different _{{< glossary_tooltip term_id="model" text="models" >}}_ that provide software drivers to support different hardware.
-For example, [`xarm7`](/components/arm/xarm7/) and [`ur5e`](/components/arm/ur5e) are different models of arm.
+For example, [`xarm7`](/components/arm/xarm7/) and [`ur5e`](/components/arm/ur5e) are different arm models.
 These models provide software support for xArm7 arms and UR5e arms, respectively.
 Though the hardware is different, you use the same Viam SDK commands to control both models, for example [`MoveToPosition`](/components/arm/#movetoposition).
 
