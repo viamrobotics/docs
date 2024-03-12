@@ -167,7 +167,7 @@ You must configure each component with a type, a model, a name, attributes, and 
   Components of the same model are supported using the same low-level code.
 
 - `name`: Serves as an identifier when accessing the resource from your code, as well as when configuring other resources that are dependent on that resource.
-  You can choose any unique name for a component.
+  You can choose any unique name for a component that starts with a letter or number and only contains letters, numbers, dashes, and underscores with a max length of 60.
 
 - `attributes`: A struct to define things like how the component is wired to the machine, its dimensions, and other specifications; attributes vary widely between models.
   See the [component documentation](/components/) for a given component type and model for more details.
@@ -206,7 +206,7 @@ Meanwhile the **Code sample** tab will also update to include code for some basi
 For services, the `type` specifies which of the Viam services you want to use on your machine, such as the vision service or the motion service.
 
 The `name` serves as an identifier when accessing the resource from your code, as well as when configuring other resources that are dependent on that resource.
-You can choose any unique name for a service.
+You can choose any unique name for a service that starts with a letter or number and only contains letters, numbers, dashes, and underscores with a max length of 60.
 
 The other aspects of configuring a service are highly specific to the type of service.
 See the [services documentation](/services/) for more information.
