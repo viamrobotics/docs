@@ -55,7 +55,7 @@ If your machine will never connect to the internet, you can also create a [local
 
 The **CONFIGURE** tab on the [Viam app](https://app.viam.com) is the place to configure everything about your machine.
 
-You can switch between **Builder**, **JSON**, and **Frame** modes by clicking on the icon in the upper left-hand corner:
+You can switch between **Builder**, **JSON**, and **Frame** mode by clicking on the icon in the upper left-hand corner:
 
 ![Mode selector on CONFIGURE tab.](/build/configure/mode-selector.png)
 
