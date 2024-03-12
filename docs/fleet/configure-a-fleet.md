@@ -89,6 +89,14 @@ If you need to modify the config of just one machine that uses a fragment you ha
 You can modify fragment fields in your machine's raw JSON config by using [update operators](https://www.mongodb.com/docs/manual/reference/operator/update/positional/#---update-).
 Viam supports all update operators except for `$setOnInsert`, `$`, `$[]`, and `$[<identifier>]`.
 
+{{% alert title="Note" color="note" %}}
+
+`fragment_mods` are _not_ supported for the modification of [Viam Agent](/build/provision/) configuration or [webhook](/build/configure/#webhooks) configuration.
+
+{{% /alert %}}
+
+To configure fragment mods:
+
 1. Navigate to your machine's **Config** tab.
 2. Switch to **Raw JSON** mode.
 3. Add a top-level section called `"fragment_mods"` (alongside the other top-level sections like `"components"` and `"fragments"`):
