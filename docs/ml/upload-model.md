@@ -39,7 +39,7 @@ See [ML models in the registry](/registry/#ml-models) for more information.
 Select **Private** to only publish the model for internal use within this {{< glossary_tooltip term_id="organization" text="organization" >}}.
 Select **Next steps** to continue.
 
-{{<imgproc src="/ml/upload-model.png" resize="600x" alt="Upload model menu on the DATA tab of the Viam app.">}}
+{{<imgproc src="/ml/upload-model.png" resize="900x" alt="Upload model menu on the DATA tab of the Viam app." style="max-width: 700px">}}
 
 1. Select the **Model framework** or the type of model.
    TensorFlow Lite, TensorFlow, PyTorch and ONNX model frameworks are currently supported.
@@ -55,7 +55,7 @@ Also, if you selected **Public**, it should be publicly visible in the [Viam reg
 
 {{% alert title="TFLite label files" color="tip" %}}
 During Step 2, if you chose a TensorFlow Lite model framework, you add a `.txt` label file.
-This should include the label names as you provided in training, with one name per line.
+This should include the label names you provided in training, with one name per line.
 {{% /alert %}}
 
 {{% /tab %}}
@@ -74,7 +74,7 @@ Your model is now updated.
 
 {{% alert title="TFLite label files" color="tip" %}}
 During Step 4, if you chose a TensorFlow Lite model framework, you add a `.txt` label file.
-This should include the label names as you provided them in training, with one name per line.
+This should include the label names you provided in training, with one name per line.
 {{% /alert %}}
 
 {{% alert title="Note" color="note" %}}
