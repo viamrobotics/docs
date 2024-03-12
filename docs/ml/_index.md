@@ -23,7 +23,7 @@ Common use cases include:
 
 However, your machine can make use of machine learning with nearly any kind of data.
 
-Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML models as long as your models adhere to the [model requirements](/ml/deploy/#tflite_cpu-limitations).
+Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML models as long as your models adhere to the [model requirements](/ml/deploy/#tflite_cpu-limitations), along with TensorFlow, PyTorch, and ONNX.
 
 ## Use machine learning with your machine
 
@@ -49,7 +49,7 @@ Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML mod
   <tr>
     <td>
       <b>4. Deploy your ML model</b>
-      <p>To use ML models with your machine, you must first deploy the model using the built-in <a href="/ml/deploy/">ML model service</a>. The ML model service will run the model and allow the vision service to use it.</p>
+      <p>To use ML models with your machine, you must first deploy the model using an <a href="/ml/deploy/">ML model service</a>. The ML model service will run the model and allow the vision service to use it.</p>
     </td>
   </tr>
   <tr>
