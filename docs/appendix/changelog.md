@@ -400,7 +400,7 @@ detections = await vision.get_detections(img, "find_objects")
 
 #### Color detector configurations
 
-You can replace existing color detectors by [configuring new ones in the UI](/ml/vision/color_detector/) or you can update the [JSON configuration of your machines](/build/configure/#the-config-tab):
+You can replace existing color detectors by [configuring new ones in the UI](/ml/vision/color_detector/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -475,7 +475,7 @@ You can replace existing color detectors by [configuring new ones in the UI](/ml
 
 #### TFLite detector configurations
 
-You can replace existing TFLite detectors by [configuring new ones in the UI](/ml/vision/mlmodel/) or you can update the [JSON configuration of your machines](/build/configure/#the-config-tab):
+You can replace existing TFLite detectors by [configuring new ones in the UI](/ml/vision/mlmodel/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -535,7 +535,7 @@ You can replace existing TFLite detectors by [configuring new ones in the UI](/m
 
 #### TFLite Classifier configurations
 
-You can replace existing TFLite classifiers by [configuring new ones in the UI](/ml/vision/mlmodel/) or you can update the [JSON configuration of your machines](/build/configure/#the-config-tab):
+You can replace existing TFLite classifiers by [configuring new ones in the UI](/ml/vision/mlmodel/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -595,7 +595,7 @@ You can replace existing TFLite classifiers by [configuring new ones in the UI](
 
 #### Radius Clustering 3D segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/obstacles_pointcloud/) or you can update the [JSON configuration of your machines](/build/configure/#the-config-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/obstacles_pointcloud/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -649,7 +649,7 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
 
 #### Detector to 3D segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/detector_3d_segmenter/) or you can update the [JSON configuration of your machines](/build/configure/#the-config-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/detector_3d_segmenter/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}

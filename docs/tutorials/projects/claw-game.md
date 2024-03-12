@@ -180,7 +180,7 @@ Click **Save config** in the lower-left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your board:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your board:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -228,7 +228,7 @@ Click **Save config** in the lower-left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your arm:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your arm:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -293,7 +293,7 @@ Click **Save config** in the lower-left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your arm and gripper:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your arm and gripper:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
