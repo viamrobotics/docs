@@ -69,9 +69,7 @@ The TypeScript SDK currently only supports building web browser apps.
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-```sh {class="command-line" data-prompt="$"}
 Follow the [instructions on the GitHub repository](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
-```
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
