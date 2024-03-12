@@ -17,7 +17,7 @@ A _component_ represents a physical piece of hardware in your {{< glossary_toolt
 
 For each category (or _{{< glossary_tooltip term_id="subtype" text="subtype" >}}_) of hardware, such as robotic arms, Viam has a [standardized API](/build/program/apis/#component-apis).
 Within each category, there are different _{{< glossary_tooltip term_id="model" text="models" >}}_ that provide software drivers to support different hardware.
-For example, [`xarm7`](/components/arm/xarm7/) and [`ur5e`](/components/arm/ur5e) are different arm models.
+For example, [`xarm7`](/components/arm/xarm7/) and [`ur5e`](/components/arm/ur5e/) are different arm models.
 These models provide software support for xArm7 arms and UR5e arms, respectively.
 Though the hardware is different, you use the same Viam SDK commands to control both models, for example [`MoveToPosition`](/components/arm/#movetoposition).
 
