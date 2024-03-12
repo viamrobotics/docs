@@ -45,6 +45,12 @@ The ML training API allows you to get information about and cancel ML training j
 
 {{< readfile "/static/include/services/apis/ml-training-client.md" >}}
 
+### Billing client API
+
+The [billing client API](/build/program/apis/billing-client/) supports the following methods to retrieve billing information from the [Viam app](https://app.viam.com):
+
+{{< readfile "/static/include/services/apis/billing-client.md" >}}
+
 ## Component APIs
 
 These APIs provide interfaces for controlling and getting information from various components of a machine.
