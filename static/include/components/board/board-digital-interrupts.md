@@ -4,7 +4,7 @@ Configuring digital interrupts to monitor GPIO pins on your board is useful when
 - When an interrupt configured on your board processes a change in the state of the GPIO pin it is configured to monitor, it calls [`Tick()`](/components/board/#tick) to record the state change and notify any interested [callbacks](/components/board/#addcallback) to "interrupt" the program.
 - Calling [`GetGPIO()`](/components/board/#getgpio) on a GPIO pin, which you can do without configuring interrupts, is useful when you want to know a pin's value at specific points in your program, but is less precise and convenient than using an interrupt.
 
-Integrate `digital_interrupts` into your machine in the `attributes` of your board by following the **Config Builder** instructions or by adding the following to your board's JSON configuration:
+Integrate `digital_interrupts` into your machine in the `attributes` of your board by following the **Config Builder** instructions, or by adding the following to your board's JSON configuration:
 
 {{< tabs name="Configure a Digital Interrupt" >}}
 {{% tab name="Config Builder" %}}
