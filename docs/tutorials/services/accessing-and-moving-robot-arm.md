@@ -68,7 +68,7 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 
    - You do not need to change the default values that populate the new frame card
 
-   {{<imgproc src="/tutorials/motion/access_02_arm_config.png" resize="700x" declaredimensions=true alt="Sample robot arm configuration with several fields filled out." class="alignright" style="max-width: 400px" >}}
+   {{<imgproc src="/tutorials/motion/access_02_arm_config.png" resize="1000x" declaredimensions=true alt="Sample robot arm configuration with several fields filled out." style="max-width: 600px" >}}
 
 8. Save this robot configuration.
 
