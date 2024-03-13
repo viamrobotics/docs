@@ -31,7 +31,7 @@ You can upload your module in one of two ways:
 
 ## Upload a custom module using the CLI
 
-To upload your custom module to the [Viam registry](https://app.viam.com/registry), either as a public or private module, use the Viam CLI commands `create`, `upload`, and `update` following these instructions:
+To upload your custom module to the [Viam registry](https://app.viam.com/registry), either as a public or private module, use the Viam CLI commands `create` and `upload` following these instructions:
 
 1. First, [install the Viam CLI](/fleet/cli/#install) and [authenticate](/fleet/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
 
@@ -158,16 +158,7 @@ For more information, see [Naming your model](/registry/#naming-your-model-names
 
     See [`meta.json` file](/fleet/cli/#the-metajson-file) for more information.
 
-4. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam registry.
-   Run this command from within the same directory as your `meta.json` file:
-
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   viam module update
-   ```
-
-   On a successful update, the command will return a link to the updated module in the Viam registry.
-
-5. For modules written in Python, you should package your module files as an archive first, before uploading.
+4. For modules written in Python, you should package your module files as an archive first, before uploading.
    Other languages can proceed to the next step to upload their module directly.
    To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
@@ -179,7 +170,7 @@ For more information, see [Naming your model](/registry/#naming-your-model-names
 
    Supply the path to the resulting archive file in the next step.
 
-6. Run `viam module upload` to upload your custom module to the Viam registry.
+5. Run `viam module upload` to upload your custom module to the Viam registry.
    Specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
@@ -249,19 +240,10 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
 If you intend to make frequent code changes to your module, want to support a variety of platforms, or otherwise want to streamline your module development workflow, consider [using a GitHub action to update your module](#update-an-existing-module-using-a-github-action) instead.
 {{% /alert %}}
 
-1. Edit your custom module with the changes you'd like to make.
+1. Edit your custom module code with the changes you'd like to make.
 
 1. Update your custom module's `meta.json` file with any needed changes.
-   For example, if you have altered your model's name, or adjusted the endpoint name, you'll need to update `meta.json` with these changes.
-
-1. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam registry.
-   Run this command from within the same directory as your `meta.json` file:
-
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   viam module update
-   ```
-
-   On a successful update, the command will return a link to the updated module in the Viam registry.
+   For example, if you have altered your model's description, or adjusted the endpoint name, you'll need to update `meta.json` with these changes.
 
 1. For modules written in Python, you should package your module files as an archive first, before uploading.
    Other languages can proceed to the next step to upload their module directly.

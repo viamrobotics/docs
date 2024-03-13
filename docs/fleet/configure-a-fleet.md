@@ -31,7 +31,7 @@ If you would like to make your fragment available to users outside your organiza
 You must be an [organization owner](/fleet/rbac/#permissions) in order to create fragments.
 
 A fragment can define one, several, or all resources on a machine.
-You can add multiple fragments to a single machine, or can add additional resources to a machine that has already been configured with a fragment.
+You can add multiple fragments to a single machine, and you can add additional resources to a machine that has already been configured with a fragment.
 
 ## Create a fragment
 
@@ -78,7 +78,246 @@ For an example of adding a fragment to a machine, see the [Add a Rover Fragment 
 ## Modify the config of a machine that uses a fragment
 
 When you modify a fragment, those changes are pushed to all machines that use that fragment.
-If you need to modify the config of just one machine that uses a fragment you can do the following:
+If you need to modify the config of just one machine that uses a fragment you have two options:
+
+- Use `fragment_mods` in your machine's config to overwrite certain fields of the fragment.
+- Copy and paste the contents of the fragment, remove the link to the fragment itself, then modify the config as needed.
+  - If you use this method, future updates to the fragment _will not_ be automatically pushed to your machine.
+
+### Use `fragment_mods`
+
+You can modify fragment fields in your machine's raw JSON config by using [update operators](https://www.mongodb.com/docs/manual/reference/operator/update/positional/#---update-).
+Viam supports all update operators except for `$setOnInsert`, `$`, `$[]`, and `$[<identifier>]`.
+
+{{% alert title="Note" color="note" %}}
+
+`fragment_mods` are _not_ supported for the modification of [Viam Agent](/build/provision/) configuration or [webhook](/build/configure/#webhooks) configuration.
+
+{{% /alert %}}
+
+To configure fragment mods:
+
+1. Navigate to your machine's **Config** tab.
+2. Switch to **Raw JSON** mode.
+3. Add a top-level section called `"fragment_mods"` (alongside the other top-level sections like `"components"` and `"fragments"`):
+
+{{< tabs >}}
+{{% tab name="Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+  "fragment_mods": [
+    {
+      "fragment_id": "<YOUR FRAGMENT ID>",
+      "mods": [
+        {
+          <INSERT YOUR MODS HERE>
+        }
+      ]
+    }
+  ],
+```
+
+{{% /tab %}}
+{{% tab name="Full example" %}}
+This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa` contains a motor configured with `"name": "motor1"`.
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [],
+  "fragment_mods": [
+    {
+      "fragment_id": "abcd7ef8-fa88-1234-b9a1-123z987e55aa",
+      "mods": [
+        {
+          "$set": {
+            "components.motor1.attributes.max_rpm": 1818,
+            "components.motor1.attributes.pins.a": 30,
+            "components.motor1.attributes.board": "local"
+          }
+        },
+        {
+          "$unset": {
+            "components.motor1.attributes.pins.pwm": 0
+          }
+        }
+      ]
+    }
+  ],
+  "fragments": ["abcd7ef8-fa88-1234-b9a1-123z987e55aa"]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+4. Edit the `fragment_id` value to match the ID of the fragment you want to modify, for example `"12345678-1a2b-9b8a-abcd987654321"`.
+5. Add any update operators you'd like to apply to the fragment to the `mods` section.
+   Click to view each example:
+
+   {{%expand "Change the name and attributes of a component" %}}
+   This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to make the following changes to the attributes of a motor named `motor1`:
+
+   - Sets the `max_rpm` to `1818`.
+   - Changes the name of `motor1` to `my_motor`.
+     Note that this does not affect the other mods; you still use `motor1` for them.
+   - Sets the pin number for pin `a` to `30`.
+   - Sets the name of the board associated with this motor to `local`.
+
+   ```json {class="line-numbers linkable-line-numbers"}
+   "fragment_mods": [
+    {
+      "fragment_id": "abcd7ef8-fa88-1234-b9a1-123z987e55aa",
+      "mods": [
+        {
+          "$set": {
+            "components.motor1.attributes.max_rpm": 1818,
+            "components.motor1.name": "my_motor",
+            "components.motor1.attributes.pins.a": 30,
+            "components.motor1.attributes.board": "local"
+          }
+        }
+      ]
+    }
+   ],
+   ```
+
+   {{% /expand%}}
+   {{%expand "Remove an attribute" %}}
+   This example uses [`$unset`](https://www.mongodb.com/docs/manual/reference/operator/update/unset/#mongodb-update-up.-unset) to remove the pin number set for the `pwm` pin, so the motor no longer has a PWM pin set.
+   In other words, it deletes the `pwm` pin field.
+
+   ```json {class="line-numbers linkable-line-numbers"}
+   "fragment_mods": [
+     {
+       "fragment_id": "abcd7ef8-fa88-1234-b9a1-123z987e55aa",
+       "mods": [
+         {
+          "$unset": {
+            "components.motor1.attributes.pins.pwm": 0
+          }
+         }
+       ]
+     }
+   ],
+   ```
+
+   {{% /expand%}}
+   {{%expand "Modify dependencies" %}}
+   This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to assign a new list of dependencies to a component named `rover_base2`.
+
+   ```json {class="line-numbers linkable-line-numbers"}
+   "fragment_mods": [
+     {
+       "fragment_id": "abcd7ef8-fa88-1234-b9a1-123z987e55aa",
+       "mods": [
+         {
+          "$set": {
+            "components.rover_base2.attributes.depends_on": ["local", "motor1"]
+          }
+         }
+       ]
+     }
+   ],
+   ```
+
+   {{% /expand%}}
+   {{%expand "Change motor pins from A and B to PWM and DIR" %}}
+   This example uses [`$rename`](https://www.mongodb.com/docs/manual/reference/operator/update/rename/) to make the following changes to the attributes of a motor named `motor1` in the fragment:
+
+   - Retrieves the pin number for pin `a` and assigns that value to the PWM pin.
+     Deletes the `pins.a` field.
+   - Retrieves the pin number for pin `b` and assigns that value to the DIR pin.
+     Deletes the `pins.b` field.
+
+   _`$rename` is for changing an attribute's key, not its value.
+   If you want to change the `name` of a component (for example, `motor1`), use `$set`, as shown in the change the name of a component example._
+
+   ```json {class="line-numbers linkable-line-numbers"}
+   "fragment_mods": [
+    {
+      "fragment_id": "abcd7ef8-fa88-1234-b9a1-123z987e55aa",
+      "mods": [
+        {
+          "$rename": {
+            "components.motor1.attributes.pins.a": "components.motor1.attributes.pins.pwm",
+            "components.motor1.attributes.pins.b": "components.motor1.attributes.pins.dir"
+          }
+        }
+      ]
+    }
+   ],
+   ```
+
+   {{% /expand%}}
+   {{%expand "Change a camera path" %}}
+   This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to change the video path for a camera named `camera-one` in the fragment:
+
+   ```json {class="line-numbers linkable-line-numbers"}
+   "fragment_mods": [
+     {
+       "fragment_id": "abcd7ef8-fa88-1234-b9a1-123z987e55aa",
+       "mods": [
+         {
+           "$set": {
+             "components.camera-one.attributes.video_path": "0x11100004a12345"
+           }
+         }
+       ]
+     }
+   ],
+   ```
+
+   {{% /expand%}}
+   {{%expand "Modify data sync settings" %}}
+   This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to change the sync interval for a [data management service](/data/) named `data-management` in the fragment:
+
+   ```json {class="line-numbers linkable-line-numbers"}
+   "fragment_mods": [
+     {
+       "fragment_id": "abcd7ef8-fa88-1234-b9a1-123z987e55aa",
+       "mods": [
+         {
+           "$set": {
+             "services.data-management.attributes.sync_interval_mins": "0.5"
+           }
+         }
+       ]
+     }
+   ],
+   ```
+
+   {{% /expand%}}
+   {{%expand "Pin a module version" %}}
+   This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to set [version update settings for a module](/registry/configure/#edit-the-configuration-of-a-module-from-the-viam-registry) named `custom-sensor` in the fragment:
+
+   ```json {class="line-numbers linkable-line-numbers"}
+   "fragment_mods": [
+     {
+       "fragment_id": "abcd7ef8-fa88-1234-b9a1-123z987e55aa",
+       "mods": [
+         {
+           "$set": {
+             "modules.custom-sensor.version": "1.8.0"
+           }
+         }
+       ]
+     }
+   ],
+   ```
+
+   Here are the version options:
+
+   - To update with new minor releases of the same major release branch, use `"^<major version number>"`, for example `"^1"`
+   - To update with new patch releases of the same minor release branch, use `"~<minor version number>"`, for example `"~1.8"`
+   - To always update with the latest release, use `"latest"`
+   - To pin to a specific release, use `"<version number>"`, for example `"1.8.3"`
+
+   {{% /expand%}}
+
+6. Click **Save config**.
+7. To check that your mods are working, click the **See full config** link found under the **Raw JSON** mode selector.
+
+### Copy and paste method
 
 1. Go to the **Fragments** subtab of the **Config** tab.
 2. Click **Remove** next to the fragment.

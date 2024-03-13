@@ -16,7 +16,7 @@ aliases:
 tags: ["base", "scuttle", "gamepad"]
 authors: []
 languages: []
-viamresources: ["base", "input_controller"]
+viamresources: ["base", "input_controller", "base_remote_control"]
 level: "Intermediate"
 date: "2022-08-10"
 # updated: ""

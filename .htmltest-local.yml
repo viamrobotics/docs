@@ -1,0 +1,37 @@
+DirectoryPath: "dist"
+EnforceHTTPS: true
+IgnoreEmptyHref: true
+IgnoreInternalEmptyHash: true
+IgnoreDirectoryMissingTrailingSlash: false
+IgnoreURLs:
+  - "example.com"
+  - "^/misc/js/script.js$"
+  - "linkedin.com"
+  - "app.viam.com"
+  - "beaglebone.local"
+  - "instagram.com"
+  - "twitter.com"
+  - "github.com/viamrobotics/docs"
+  - "openai.com"
+  - "espressif.com"
+  - "pinout.xyz"
+  - "play.google.com"
+  - "scuttlerobot.org"
+  - "numato.com"
+  - "nvidia.com"
+  - "slamtec.com"
+  - "universal-robots.com"
+  - "digikey.com"
+  - "ufactory.cc"
+  - "medium.com"
+  - "radxa.com"
+  - "electronics-tutorials.ws"
+  - "marketplace.visualstudio.com"
+  - "chrome.google.com"
+  - "raspberrypi.com"
+  - "grabcad.com"
+IgnoreDirs:
+  - "lib"
+CacheExpires: "6h"
+# IgnoreDirs: - if we need to ever ignore files
+IgnoreExternalBrokenLinks: true

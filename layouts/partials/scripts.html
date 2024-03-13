@@ -1,7 +1,7 @@
 
 {{ $jsCarousel := resources.Get "js/carousel.js" }}
 {{ $jsCarousel := $jsCarousel | minify }}
-{{ if or (eq .Page.Title "Viam Documentation") (eq .Page.Title "Platform") }}
+{{ if or (eq .Page.Title "Viam Documentation") (eq .Page.Title "Platform") (eq .Page.Title "Viam in 3 minutes") (eq .Page.Title "Build Your Machine with Flexible Building Blocks") (eq .Page.Title "Get Started") }}
 <script type="text/javascript" src="{{$jsCarousel.RelPermalink}}" crossorigin="anonymous"></script>
 {{ end }}
 
@@ -80,6 +80,7 @@ window.markmap = {
 <script src="https://cdn.jsdelivr.net/npm/typesense-docsearch.js@1/dist/cdn/docsearch.min.js"></script>
 
 {{ $jsIndex := resources.Get "js/index.js" }}
+{{ $jsUserflow := resources.Get "js/userflow.js" }}
 {{ $jsPrismViam := resources.Get "js/prism.js" }}
 {{ $jsBase := resources.Get "js/base.js" }}
 {{ $jsAnchor := resources.Get "js/anchor.js" }}
@@ -94,10 +95,11 @@ window.markmap = {
 {{ if .Site.Params.offlineSearch }}
 {{ $jsSearch = resources.Get "js/offline-search.js" }}
 {{ end }}
-{{ $js := (slice $jsIndex $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam) | resources.Concat "js/main.js" }}
 {{ if not hugo.IsProduction }}
+{{ $js := (slice $jsIndex $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam) | resources.Concat "js/main.js" }}
 <script src="{{ $js.RelPermalink }}"></script>
 {{ else }}
+{{ $js := (slice $jsUserflow $jsIndex $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam) | resources.Concat "js/main.js" }}
 {{ $js := $js | minify | fingerprint }}
 {{ $jsSentry := $jsSentry | minify }}
 <script async src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>

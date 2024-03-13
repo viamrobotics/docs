@@ -77,8 +77,8 @@ The following attributes are available for `fake` cameras:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `width` | int | Optional | The width of the image in pixels. The default width is 1280. |
-| `height` | int | Optional | The height of the image in pixels. The default height is 720. |
+| `width` | int | Optional | The width of the image in pixels. The default width is 1280. The maximum width is 10000. |
+| `height` | int | Optional | The height of the image in pixels. The default height is 720. The maximum height is 10000. |
 
 ## View the camera stream
 

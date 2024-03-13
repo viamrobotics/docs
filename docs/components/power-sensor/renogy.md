@@ -12,7 +12,7 @@ aliases:
 # SME: #team-bucket
 ---
 
-Configure a `renogy` sensor to integrate a [Renogy battery temperature sensor](https://www.renogy.com/wanderer-10a-pwm-charge-controller/) into your machine:
+Configure a `renogy` sensor to integrate a [Renogy charge controller](https://www.renogy.com/wanderer-10a-pwm-charge-controller/) into your machine:
 
 {{< tabs name="Configure a Renogy Sensor" >}}
 {{% tab name="Config Builder" %}}
