@@ -39,10 +39,10 @@ See [ML models in the registry](/registry/#ml-models) for more information.
 Select **Private** to only publish the model for internal use within this {{< glossary_tooltip term_id="organization" text="organization" >}}.
 Select **Next steps** to continue.
 
-{{<imgproc src="/ml/upload-model.png" resize="900x" alt="Upload model menu on the DATA tab of the Viam app." style="max-width: 700px">}}
+{{<imgproc src="/ml/upload-model.png" resize="900x" alt="Upload model menu on the DATA tab of the Viam app." style="max-width: 600px">}}
 
 1. Select the **Model framework** or the type of model.
-   TensorFlow Lite, TensorFlow, PyTorch and ONNX model frameworks are currently supported.
+   TensorFlow Lite, TensorFlow, PyTorch, and ONNX model frameworks are currently supported.
 2. Upload the files required for your model framework.
 3. Specify a name for the model.
 4. Specify the **Task type**.
@@ -66,7 +66,7 @@ This should include the label names you provided in training, with one name per 
 1. Select the model you would like to update from your existing models.
 1. Click **Next steps** to continue.
 1. Select the **Model framework** or the type of model.
-   TensorFlow Lite, TensorFlow, PyTorch and ONNX model frameworks are currently supported.
+   TensorFlow Lite, TensorFlow, PyTorch, and ONNX model frameworks are currently supported.
 1. Upload the files required for your model framework.
 1. Click **Upload model**.
 
