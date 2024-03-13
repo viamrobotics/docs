@@ -48,9 +48,10 @@ Select **Next steps** to continue.
    This should include the label names you provided in training, with one name per line.
 
    If you choose a TensorFlow model framework, you should upload it in the [SavedModel format](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/README.md#the-savedmodel-format).
-4. Specify a name for the model.
-5. Specify the **Task type**.
-6. Add a short description.
+
+3. Specify a name for the model.
+4. Specify the **Task type**.
+5. Add a short description.
    This will help other users to understand how to use your model.
 
 Select **Upload model**.
@@ -70,6 +71,7 @@ Also, if you selected **Public**, it should be publicly visible in the [Viam reg
    This should include the label names you provided in training, with one name per line.
 
    If you choose a TensorFlow model framework, you should upload it in the [SavedModel format](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/README.md#the-savedmodel-format).
+
 1. Upload the files required for your model framework.
 1. Click **Upload model**.
 
