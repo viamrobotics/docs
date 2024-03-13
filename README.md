@@ -1,3 +1,6 @@
+[![published](https://github.com/viamrobotics/docs/actions/workflows/docs.yml/badge.svg)](https://github.com/viamrobotics/docs/actions/workflows/docs.yml)
+[![external link check](https://github.com/viamrobotics/docs/actions/workflows/run-htmltest.yml/badge.svg)](https://github.com/viamrobotics/docs/actions/workflows/run-htmltest.yml)
+
 # Welcome to the Viam Documentation
 
 > **Note**
