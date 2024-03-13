@@ -24,6 +24,7 @@ Common use cases include:
 However, your machine can make use of machine learning with nearly any kind of data.
 
 Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML models as long as your models adhere to the [model requirements](/ml/deploy/#tflite_cpu-limitations), along with TensorFlow, PyTorch, and ONNX.
+For more information, see [Model framework support](/ml/upload-model/#model-framework-support).
 
 ## Use machine learning with your machine
 
