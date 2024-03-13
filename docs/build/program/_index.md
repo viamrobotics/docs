@@ -59,7 +59,7 @@ go get go.viam.com/rdk/robot/client
 {{% tab name="TypeScript" %}}
 
 ```sh {class="command-line" data-prompt="$"}
-npm install --save @viamrobotics/sdk
+npm install @viamrobotics/sdk
 ```
 
 {{< alert title="Info" color="info" >}}
