@@ -56,12 +56,12 @@ jobs:
         id: create
         uses: atlassian/gajira-create@v3
         env:
-          GITHUB_RUN_ID: $GITHUB_RUN_ID
+          GITHUB_RUN_ID: ${{ github.run_id }}
         with:
           project: DOCS
           issuetype: Bug
           summary: Broken link detected
-          description: "For more info see https://github.com/viamrobotics/docs/actions/runs/${{ env.GITHUB_RUN_ID }}. ${env.GITHUB_RUN_ID} $GITHUB_RUN_ID ${GITHUB_RUN_ID}"
+          description: "For more info see https://github.com/viamrobotics/docs/actions/runs/${{ env.GITHUB_RUN_ID }}. ${{ github.run_id }}"
       - name: Log created Jira issue
         if: failure()
         run: echo "Issue ${{ steps.create.outputs.issue }} was created"
