@@ -43,9 +43,9 @@ To build your own claw game machine, you need the following hardware:
 - An iPad or other tablet
 - 1 x 4’x4’ fiberboard
 - 10 x 2”x4”x8’ lumber
-- 4 x [5/16 2 inch lag screws](https://www.homedepot.com/p/Everbilt-5-16-in-x-2-in-Zinc-Plated-Hex-Drive-Hex-Head-Lag-Screw-801446/204645617)
+- 4 x 5/16 2 inch lag screws
 - A box of 3” deck screws
-- 8 x [⅜” 4 inch hex bolts](https://www.homedepot.com/p/Everbilt-3-8-in-24-TPI-x-4-in-Zinc-Plated-Grade-5-Fine-Thread-Hex-Bolt-851928/205029373) with nuts and washers
+- 8 x ⅜” 4 inch hex bolts with nuts and washers
 - [Velcro cable ties](https://www.amazon.com/Fastening-Adjustable-Organization-Microfiber-Management/dp/B08KH6WTJZ)
 - 3 x 4’x2.5’ sheets of plexiglass
 - A box of small wood screws for mounting the plexiglass
