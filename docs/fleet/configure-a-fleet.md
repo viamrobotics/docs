@@ -33,6 +33,13 @@ You must be an [organization owner](/fleet/rbac/#permissions) in order to create
 A fragment can define one, several, or all resources on a machine.
 You can add multiple fragments to a single machine, and you can add additional resources to a machine that has already been configured with a fragment.
 
+{{% alert title="Support Notice" color="note" %}}
+
+You cannot configure the [Viam Agent](/build/provision/) within a fragment.
+(You can, however, add a fragment inside of your Viam Agent config.)
+
+{{% /alert %}}
+
 ## Create a fragment
 
 Before you create a fragment, you'll need a JSON configuration file.
@@ -89,9 +96,10 @@ If you need to modify the config of just one machine that uses a fragment you ha
 You can modify fragment fields in your machine's raw JSON config by using [update operators](https://www.mongodb.com/docs/manual/reference/operator/update/positional/#---update-).
 Viam supports all update operators except for `$setOnInsert`, `$`, `$[]`, and `$[<identifier>]`.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Support Notice" color="note" %}}
 
-`fragment_mods` are _not_ supported for the modification of [Viam Agent](/build/provision/) configuration or [webhook](/build/configure/#webhooks) configuration.
+`fragment_mods` are _not_ supported for the modification of [webhook](/build/configure/#webhooks) configuration.
+You can create a webhook with a fragment but you cannot modify it with `fragment_mods`.
 
 {{% /alert %}}
 
