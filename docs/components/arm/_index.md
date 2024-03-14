@@ -170,7 +170,8 @@ pos = await my_arm.get_end_position()
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-  **Returns:**
+
+**Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 - [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
