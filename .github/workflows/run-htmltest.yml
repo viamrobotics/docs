@@ -6,9 +6,13 @@
 #
 name: run-htmltest-external
 on:
-  schedule:
-    # 10am UTC on weekdays
-    - cron: '0 10 * * 1,2,3,4,5'
+  pull_request_target:
+    branches: [ main ]
+    types: [ labeled, synchronize ]
+# on:
+  # schedule:
+  #   # 10am UTC on weekdays
+  #   - cron: '0 10 * * 1,2,3,4,5'
 jobs:
   htmltest:
     runs-on: ubuntu-large
@@ -60,13 +64,6 @@ jobs:
           issuetype: Bug
           summary: Broken link detected
           description: For more info see https://github.com/viamrobotics/docs/actions/runs/{{ env.GITHUB_RUN_ID }}.
-      - name: Log created issue
+      - name: Log created Jira issue
+        if: failure()
         run: echo "Issue ${{ steps.create.outputs.issue }} was created"
-
-            - name: Create issue about failure
-              if: failure()
-              uses: JasonEtco/create-an-issue@v2.5.0
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              with:
-                filename: .github/failed-action-issue-template.md
