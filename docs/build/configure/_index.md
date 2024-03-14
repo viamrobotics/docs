@@ -219,17 +219,17 @@ Follow the instructions in our [registry documentation](/registry/configure/#add
 
 ### Add a remote part
 
-Configuring a remote is a way to connect two separate machines so one can access the resources of the other.
+Configuring a remote part is a way to connect two separate machines so one can access the resources of the other.
 
 To configure a remote part, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Remote part**.
-Find more information in our [machine parts documentation](/build/configure/parts-and-remotes/).
+Find more information in our [machine parts documentation](/build/configure/parts/).
 
 ### Add a sub-part
 
 Configure a sub-part to connect two computers inside the same machine.
 
 To configure a sub-part, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Sub-part**.
-Find more information in our [machine parts documentation](/build/configure/parts-and-remotes/).
+Find more information in our [machine parts documentation](/build/configure/parts/).
 
 ## Fragments
 

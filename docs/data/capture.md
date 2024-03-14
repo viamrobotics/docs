@@ -181,7 +181,7 @@ If you want to remove a capture method from the configuration, click the `delete
 
 ## Configure data capture for remote parts
 
-Viam supports data capture from {{< glossary_tooltip term_id="resource" text="resources" >}} on {{< glossary_tooltip term_id="remote" text="remote" >}} parts.
+Viam supports data capture from {{< glossary_tooltip term_id="resource" text="resources" >}} on {{< glossary_tooltip term_id="remote-part" text="remote parts" >}}.
 For example, if you use a {{< glossary_tooltip term_id="part" text="part" >}} that does not have a Linux operating system or that does not have enough storage or processing power, you can still process and capture the data from that part's components by adding it as a remote part.
 
 Currently, you can only configure data capture from remote components in your JSON configuration.
