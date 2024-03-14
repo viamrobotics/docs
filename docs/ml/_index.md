@@ -15,7 +15,7 @@ menuindent: true
 
 {{<imgproc src="/ml/training.png" class="alignright" resize="400x" declaredimensions=true alt="ML training">}}
 
-Machine Learning (ML) provides your machines with the ability to adjust its behavior based on models that recognize patterns or make predictions. 
+Machine Learning (ML) provides your machines with the ability to adjust its behavior based on models that recognize patterns or make predictions.
 Common use cases include:
 
 - Object detection and classification which enable machines to detect people, animals, plants, or other objects with bounding boxes, and to perform actions when they are detected.
