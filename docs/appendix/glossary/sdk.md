@@ -3,7 +3,6 @@ title: SDK (Software Development Kit)
 id: sdk
 full_link: /build/program/apis/
 short_description: Viam provides software development kits (SDKs) to help you write client applications and create support for custom component types.
-aka:
 ---
 
 Viam provides software development kits (SDKs) to help you write client applications and create support for custom {{< glossary_tooltip term_id="component" text="component" >}} types.

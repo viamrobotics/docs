@@ -3,7 +3,6 @@ title: SQL
 id: sql
 full_link:
 short_description: SQL (structured query language) is the widely-used, industry-standard query language popular with relational databases.
-aka:
 ---
 
 [SQL (structured query language)](https://en.wikipedia.org/wiki/SQL) is the widely-used, industry-standard query language popular with [relational databases](https://en.wikipedia.org/wiki/Relational_database).
