@@ -702,17 +702,68 @@ You can use the `module build start` or `module build local` commands to build y
 - Use `build start` to build or compile your module on a cloud build host that might offer additional platform support than you have access to locally.
 - Use `build local` to quickly test that your module builds or compiles as expected on your local hardware.
 
-To configure your module's build steps, add a `build` object to your [`meta.json` file](#the-metajson-file), including the following:
+To configure your module's build steps, add a `build` object to your [`meta.json` file](#the-metajson-file).
+Developers can either have a single build file for all platforms, or platform specific files:
+
+{{< tabs >}}
+{{% tab name="Single Build File" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 "build": {
   "setup": "./setup.sh",                  // optional - command to install your build dependencies
-  "build": "make module.tar.gz",          // command that will build your module
-  "path" : "module.tar.gz",               // optional - path to your built module
+  "build": "sh build.sh",          // command that will build your module
+  "path" : "dist/archive.tar.gz",               // optional - path to your built module
                                           // (passed to the 'viam module upload' command)
   "arch" : ["linux/amd64", "linux/arm64"] // architecture(s) to build for
 }
 ```
+
+{{% /tab %}}
+{{% tab name="Platform Specific" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+"build": {
+  "path" : "dist/archive.tar.gz",               // optional - path to your built module
+                                          // (passed to the 'viam module upload' command)
+  "arch": {
+        "linux/arm64": {
+          "build": "sh build-linux-arm64.sh" // command that will build your module
+        },
+        "darwin/arm64": {
+          "build": "sh build-darwin-arm64.sh" // command that will build your module
+        }
+      } // architecture(s) to build for
+}
+```
+
+{{%expand "Click to view example build-linux-arm64.sh" %}}
+
+```sh { class="command-line"}
+sudo apt-get install -y python3.11-venv
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main ##create archive from entrypoint
+```
+
+{{% /expand%}}
+
+{{%expand "Click to view example build-darwin-arm64.sh" %}}
+
+```sh { class="command-line"}
+brew install python3.11-venv
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main ##create archive from entrypoint
+```
+
+{{% /expand%}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 For example, the following extends the `my-module` <file>meta.json</file> file from the previous section with a new `build` object to control its build parameters when used with `module build start` or `module build local`:
 
