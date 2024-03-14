@@ -32,6 +32,7 @@ jobs:
       - name: Test HTML
         # https://github.com/wjdp/htmltest-action/
         # Don't fail the build on broken links
+        id: test-html
         continue-on-error: false
         uses: wjdp/htmltest-action@master
         with:
@@ -57,11 +58,12 @@ jobs:
         uses: atlassian/gajira-create@v3
         env:
           GITHUB_RUN_ID: ${{ github.run_id }}
+          HTMLTEST_JOB_ID: ${{ steps.test-html.outputs.job-id }}
         with:
           project: DOCS
           issuetype: Bug
           summary: Broken link detected
-          description: "For more info see https://github.com/viamrobotics/docs/actions/runs/${{ env.GITHUB_RUN_ID }}. ${{ github.run_id }}"
+          description: "For more info see https://github.com/viamrobotics/docs/actions/runs/${{ env.GITHUB_RUN_ID }}/job/${{ env.HTMLTEST_JOB_ID }}."
       - name: Log created Jira issue
         if: failure()
         run: echo "Issue ${{ steps.create.outputs.issue }} was created"
