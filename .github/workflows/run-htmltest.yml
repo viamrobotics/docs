@@ -8,7 +8,7 @@ name: run-htmltest-external
 on:
   schedule:
     # 10am UTC on weekdays
-    - cron: '0 10,13,14,15 * * 1,2,3,4,5'
+    - cron: '30 10,14 * * 1,2,3,4,5'
 jobs:
   htmltest:
     runs-on: ubuntu-large
@@ -59,7 +59,7 @@ jobs:
           project: DOCS
           issuetype: Bug
           summary: Broken link detected
-          description: For more info see https://github.com/viamrobotics/docs/actions/runs/{{ env.GITHUB_RUN_ID }}.
+          description: "For more info see https://github.com/viamrobotics/docs/actions/runs/${{ env.GITHUB_RUN_ID }}."
       - name: Log created Jira issue
         if: failure()
         run: echo "Issue ${{ steps.create.outputs.issue }} was created"
