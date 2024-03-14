@@ -8,7 +8,7 @@ name: run-htmltest-external
 on:
   schedule:
     # 10am UTC on weekdays
-    - cron: '15 10,16,17 * * 1,2,3,4,5'
+    - cron: '15,30,45 10,16,17 * * 1,2,3,4,5'
 jobs:
   htmltest:
     runs-on: ubuntu-large
@@ -57,7 +57,7 @@ jobs:
         id: create
         uses: atlassian/gajira-create@v3
         env:
-          GITHUB_RUN_ID: ${GITHUB_RUN_ID}
+          GITHUB_RUN_ID: ${{GITHUB_RUN_ID}}
         with:
           project: DOCS
           issuetype: Bug
