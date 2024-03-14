@@ -6,13 +6,9 @@
 #
 name: run-htmltest-external
 on:
-  pull_request_target:
-    branches: [ main ]
-    types: [ labeled, synchronize ]
-# on:
-  # schedule:
-  #   # 10am UTC on weekdays
-  #   - cron: '0 10 * * 1,2,3,4,5'
+  schedule:
+    # 10am UTC on weekdays
+    - cron: '0 10 * * 1,2,3,4,5'
 jobs:
   htmltest:
     runs-on: ubuntu-large
