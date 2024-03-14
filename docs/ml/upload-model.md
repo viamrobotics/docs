@@ -43,12 +43,9 @@ Select **Next steps** to continue.
 
 1. Select the **Model framework** or the type of model.
    TensorFlow Lite, TensorFlow, PyTorch, and ONNX model frameworks are currently supported.
-2. Upload the files required for your model framework.
-   If you choose a TensorFlow Lite or ONNX model framework, you add a `.txt` label file.
-   This should include the label names you provided in training, with one name per line.
-
-   If you choose a TensorFlow model framework, you should upload it in the [SavedModel format](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/README.md#the-savedmodel-format).
-
+2. Upload the files required for your model framework:
+   - For a TensorFlow Lite or ONNX model framework,  upload a `.txt` label file containing the label names you provided in training, with one name per line.
+   - For a TensorFlow model framework, upload the model in the [SavedModel format](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/README.md#the-savedmodel-format).
 3. Specify a name for the model.
 4. Specify the **Task type**.
 5. Add a short description.
@@ -67,12 +64,9 @@ Also, if you selected **Public**, it should be publicly visible in the [Viam reg
 1. Click **Next steps** to continue.
 1. Select the **Model framework** or the type of model.
    TensorFlow Lite, TensorFlow, PyTorch, and ONNX model frameworks are currently supported.
-   If you choose a TensorFlow Lite or ONNX model framework, you add a `.txt` label file.
-   This should include the label names you provided in training, with one name per line.
-
-   If you choose a TensorFlow model framework, you should upload it in the [SavedModel format](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/README.md#the-savedmodel-format).
-
-1. Upload the files required for your model framework.
+1. Upload the files required for your model framework:
+   - For a TensorFlow Lite or ONNX model framework,  upload a `.txt` label file containing the label names you provided in training, with one name per line.
+   - For a TensorFlow model framework, upload the model in the [SavedModel format](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/README.md#the-savedmodel-format).
 1. Click **Upload model**.
 
 Your model is now updated.
