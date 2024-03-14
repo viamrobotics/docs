@@ -15,7 +15,7 @@ menuindent: true
 
 {{<imgproc src="/ml/training.png" class="alignright" resize="400x" declaredimensions=true alt="ML training">}}
 
-Viam includes a built-in [machine learning (ML) model service](//ml/deploy/) which provides your machine with the ability to learn from data and adjust its behavior based on insights gathered from that data.
+Machine Learning (ML) provides your machines with the ability to adjust its behavior based on models that recognize patterns or make predictions. 
 Common use cases include:
 
 - Object detection and classification which enable machines to detect people, animals, plants, or other objects with bounding boxes, and to perform actions when they are detected.
