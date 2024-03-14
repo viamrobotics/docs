@@ -14,7 +14,7 @@ args = parser.parse_args()
 services = ["motion", "navigation", "slam", "vision", "mlmodel"]
 components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic", "gripper",
               "input", "movement_sensor", "power_sensor", "sensor"]
-app_apis = ["data_client", "app_client"]
+app_apis = ["data_client", "app_client", "billing_client"]
 robot_apis = ["robot"]
 
 ignore_apis = [
@@ -96,6 +96,9 @@ def parse(type, names):
 
         if service == "data_client":
             service = "data-client"
+
+        if service == "billing_client":
+            service = "billing-client"
 
         if service == "app_client":
             service = "fleet"

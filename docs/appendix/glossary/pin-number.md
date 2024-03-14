@@ -3,7 +3,6 @@ title: Pin Number
 id: pin-number
 full_link:
 short_description: A pin number is the index of the pin on the board. Not the same as a pin's GPIO number.
-aka:
 ---
 
 A pin number is the physical index of a pin on a {{< glossary_tooltip term_id="board" text="board" >}}.

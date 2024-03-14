@@ -3,7 +3,6 @@ title: Viam Agent
 id: viam-agent
 full_link:
 short_description: The Viam provisioning application for deploying viam-server.
-aka:
 ---
 
 The Viam Agent is a provisioning application for deploying and managing `viam-server` across a fleet of machines.

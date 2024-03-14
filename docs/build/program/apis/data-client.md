@@ -72,7 +72,7 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
-Once you have instantiated a `DataClient`, you can run the following [API methods](#api) against the `DataClient` object (named `data_client` in the examples).
+Once you have instantiated a `DataClient`, you can run [API methods](#api) against the `DataClient` object (named `data_client` in the examples).
 
 ## Find part ID
 
