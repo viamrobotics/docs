@@ -35,8 +35,8 @@ You can add multiple fragments to a single machine, and you can add additional r
 
 {{% alert title="Support Notice" color="note" %}}
 
-You cannot configure the [Viam Agent](/build/provision/) within a fragment.
-(You can, however, add a fragment inside of your Viam Agent config.)
+While you can [use the Viam Agent to deploy a fragment](/build/provision/#use-a-provisioning-configuration-file) to your machine or fleet, you cannot configure the Viam Agent itself using fragments.
+For more information, see [Viam Agent](/build/provision/).
 
 {{% /alert %}}
 

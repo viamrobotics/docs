@@ -229,8 +229,7 @@ This file configures some basic metadata, specifies a [fragment](/fleet/configur
 
 {{% alert title="Support Notice" color="note" %}}
 
-You can add a fragment to your machine using Viam Agent.
-However, you cannot configure the agent itself inside of a fragment.
+You cannot configure the Viam Agent itself using fragments.
 
 {{% /alert %}}
 
