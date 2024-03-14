@@ -8,7 +8,7 @@ name: run-htmltest-external
 on:
   schedule:
     # 10am UTC on weekdays
-    - cron: '0,10,20,30,45 * * * 1,2,3,4,5'
+    - cron: '0 10 * * 1,2,3,4,5'
 jobs:
   htmltest:
     runs-on: ubuntu-large
@@ -58,12 +58,11 @@ jobs:
         uses: atlassian/gajira-create@v3
         env:
           GITHUB_RUN_ID: ${{ github.run_id }}
-          HTMLTEST_JOB_ID: ${{ steps.test-html.outputs.job_id }}
         with:
           project: DOCS
           issuetype: Bug
           summary: Broken link detected
-          description: "For more info see https://github.com/viamrobotics/docs/actions/runs/${{ env.GITHUB_RUN_ID }}/job/${{ env.HTMLTEST_JOB_ID }}."
+          description: "For more info see https://github.com/viamrobotics/docs/actions/runs/${{ env.GITHUB_RUN_ID }}."
       - name: Log created Jira issue
         if: failure()
         run: echo "Issue ${{ steps.create.outputs.issue }} was created"
