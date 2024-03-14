@@ -8,7 +8,7 @@ name: run-htmltest-external
 on:
   schedule:
     # 10am UTC on weekdays
-    - cron: '30 10,14 * * 1,2,3,4,5'
+    - cron: '5 10,16 * * 1,2,3,4,5'
 jobs:
   htmltest:
     runs-on: ubuntu-large
@@ -51,10 +51,13 @@ jobs:
           JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
           JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          
       - name: Create Jira ticket
         if: failure()
         id: create
         uses: atlassian/gajira-create@v3
+        env:
+          GITHUB_RUN_ID: ${GITHUB_RUN_ID}
         with:
           project: DOCS
           issuetype: Bug
