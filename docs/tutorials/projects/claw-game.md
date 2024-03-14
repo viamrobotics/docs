@@ -139,7 +139,8 @@ Machines are organized into {{< glossary_tooltip term_id="part" text="parts" >}}
 Every machine has a main part which is automatically created when you create the machine.
 Since you just created a new machine, your machine's main part is already defined.
 Multi-part machines also have one or more sub-parts representing additional computers running `viam-server`.
-If you have two computers within the _same machine_, you can use one as the main part and [connect the other to it as a sub-part](/build/configure/parts/#configure-a-sub-part). This is the approach this tutorial follows: you'll run the [motion planning service](/mobility/motion/) on a laptop and connect that laptop as a sub-part to your machine.
+If you have two computers within the _same machine_, you can use one as the main part and [connect the other to it as a sub-part](/build/configure/parts/#configure-a-sub-part).
+This is the approach this tutorial follows: you'll run the [motion planning service](/mobility/motion/) on a laptop and connect that laptop as a sub-part to your machine.
 
 {{< alert title="Tip" color="tip" >}}
 Technically you could configure all the components within one part, but motion planning is more performant when running on a computer like a macOS or Linux laptop running `viam-server`.

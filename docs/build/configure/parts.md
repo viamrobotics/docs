@@ -73,8 +73,8 @@ To establish a connection between a part of one machine and a part of a second m
 
 7. Click **Remote part**.
 8. Find the newly-created remote part in the left hand menu.
-   Click it to find its section of the configuration.
-9. Delete and auto-populated JSON from the new remote's config area and replace it by pasting the remote config you copied in step 4 into the empty field.
+   Click it to navigate to its configuration card.
+9. Delete the auto-populated JSON from the new remote's config area and replace it by pasting the remote config you copied in step 4 into the empty field.
 
    {{<imgproc src="/build/configure/parts/remote-config.png" resize="x1100" declaredimensions=true alt="The configured remote." style="max-width:700px" >}}
 
