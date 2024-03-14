@@ -58,7 +58,7 @@ jobs:
         uses: atlassian/gajira-create@v3
         env:
           GITHUB_RUN_ID: ${{ github.run_id }}
-          HTMLTEST_JOB_ID: ${{ steps.test-html.outputs.job-id }}
+          HTMLTEST_JOB_ID: ${{ steps.test-html.outputs.job_id }}
         with:
           project: DOCS
           issuetype: Bug
