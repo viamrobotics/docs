@@ -116,6 +116,10 @@ Save the configuration.
 
 ## Model requirements
 
+{{% alert title="Tip" color="tip" %}}
+Models [trained](/ml/train-model/) in the Viam app meet these requirements by design.
+{{% /alert %}}
+
 We strongly recommend that you package your TensorFlow Lite model with metadata in [the standard form](https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs).
 
 In the absence of metadata, your `tflite_cpu` model must satisfy the following requirements:

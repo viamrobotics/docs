@@ -219,7 +219,7 @@ Your uploaded model is immediately available for use after upload.
 
 {{< imgproc src="/tutorials/filtered-camera-module/upload-model-complete.png" alt="The models subtab under the data tab in the Viam app, showing a model that has been uploaded and is ready for use" resize="1200x" >}}
 
-If you are designing your own model, see [`tflite_cpu` limitations](/ml/deploy/#tflite_cpu-limitations) for guidance on structuring your own model.
+If you are designing your own TensorFlow Lite model, see [model requirements](/ml/deploy/tflite_cpu/#model-requirements) for guidance on structuring your own model.
 
 For more information, see [Upload an existing model](/ml/upload-model/).
 
