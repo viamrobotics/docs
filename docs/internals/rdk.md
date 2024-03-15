@@ -52,10 +52,6 @@ You can also revert to an earlier configuration from the History tab.
 
 Log messages written appear under the [**Logs** tab](/fleet/machines/#logs) for the machine running the module.
 
-### Data management
-
-Data capture for individual components is supported on [certain component subtypes](/data/capture/#configure-data-capture-for-individual-components).
-
 ### Shutdown
 
 During machine shutdown, the RDK handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
