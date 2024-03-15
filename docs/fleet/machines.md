@@ -80,7 +80,7 @@ For example, if you have configured a base with wheels, you can control your mac
 If you have configured a camera component, a window in the **CONTROL** tab displays the camera output.
 
 If you use remote control in the [Viam app](https://app.viam.com) UI, all communication to the machine uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
-For local communication between [parts](/build/configure/parts-and-remotes/#machine-parts) Viam uses gRPC or WebRTC.
+For local communication between [parts](/build/configure/parts/#machine-parts) Viam uses gRPC or WebRTC.
 
 {{<gif webm_src="/manage/control.webm" mp4_src="/manage/control.mp4" alt="Using the control tab" max-width="800px">}}
 
@@ -111,7 +111,7 @@ For more information on the SDKs, see [Program your Machine with Viam's SDKs](/b
 #### Configure as remote part
 
 On the **CONNECT** tab, there is also a page called **Configure as remote part**.
-This page has instructions for how to configure a {{< glossary_tooltip term_id="part" text="part" >}} of your machine as a [remote part](/build/configure/parts-and-remotes/) of another machine.
+This page has instructions for how to configure a {{< glossary_tooltip term_id="part" text="part" >}} of your machine as a [remote part](/build/configure/parts/) of another machine.
 
 #### API keys
 
