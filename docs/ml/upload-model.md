@@ -39,13 +39,15 @@ See [ML models in the registry](/registry/#ml-models) for more information.
 Select **Private** to only publish the model for internal use within this {{< glossary_tooltip term_id="organization" text="organization" >}}.
 Select **Next steps** to continue.
 
-{{<imgproc src="/ml/upload-model.png" resize="600x" alt="Upload model menu on the DATA tab of the Viam app.">}}
+{{<imgproc src="/ml/upload-model.png" resize="900x" alt="Upload model menu on the DATA tab of the Viam app." style="max-width: 600px">}}
 
-1. Specify a name for the model.
-2. Specify the **Model type**.
-3. Add a `.tflite` model file.
-4. (Optional) Add a `.txt` label file.
-   This should include the label names as you provided them in training, with one name per line.
+1. Select the **Model framework** or the type of model.
+   TensorFlow Lite, TensorFlow, PyTorch, and ONNX model frameworks are currently supported.
+2. Upload the files required for your model framework:
+   - For a TensorFlow Lite or ONNX model framework, upload a `.txt` label file containing the label names you provided in training, with one name per line.
+   - For a TensorFlow model framework, upload the model in the [SavedModel format](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/README.md#the-savedmodel-format).
+3. Specify a name for the model.
+4. Specify the **Task type**.
 5. Add a short description.
    This will help other users to understand how to use your model.
 
@@ -59,11 +61,13 @@ Also, if you selected **Public**, it should be publicly visible in the [Viam reg
 {{<imgproc src="/ml/select-existing-model.png" resize="400x" alt="Select from your existing models.">}}
 
 1. Select the model you would like to update from your existing models.
-2. Select **Next steps** to continue.
-3. Add an updated `.tflite` model file.
-4. (Optional) Add an updated `.txt` label file.
-   This should include the label names as you provided them in training, with one name per line.
-5. Click **Upload model**.
+1. Click **Next steps** to continue.
+1. Select the **Model framework** or the type of model.
+   TensorFlow Lite, TensorFlow, PyTorch, and ONNX model frameworks are currently supported.
+1. Upload the files required for your model framework:
+   - For a TensorFlow Lite or ONNX model framework, upload a `.txt` label file containing the label names you provided in training, with one name per line.
+   - For a TensorFlow model framework, upload the model in the [SavedModel format](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/README.md#the-savedmodel-format).
+1. Click **Upload model**.
 
 Your model is now updated.
 
@@ -74,7 +78,7 @@ If you upload a new version of that model, Viam will automatically deploy the ne
 
 If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON machine configuration](/build/configure/#the-config-tab).
 
-You can get the version number from a specific model version by navigating to the [models page](https://app.viam.com/data/models) finding the model's row, clicking on the right-side menu marked with **_..._** and selecting **Copy package JSON**. For example: `2024-02-28T13-36-51`.
+You can get the version number from a specific model version by navigating to the [models page](https://app.viam.com/data/models), finding the model's row, clicking on the right-side menu marked with **_..._** and selecting **Copy package JSON**. For example: `2024-02-28T13-36-51`.
 The model package config looks like this:
 
 ```json
