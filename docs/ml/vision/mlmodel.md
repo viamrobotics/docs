@@ -143,8 +143,6 @@ Both the `mlmodel` detector and classifier require that the input and output ten
 If you [trained your ML model using the Viam app](/ml/train-model/), your `mlmodel` tensors are already named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
 However, if you [uploaded your own ML model](/ml/upload-model/), or are using one from the [Viam registry](https://app.viam.com/registry), you may need to remap your tensor names to meet this requirement, and should follow the instructions to [remap tensor names](#remap-tensor-names).
 
-{{%expand "Click for details on how to remap tensor names." %}}
-
 ### Remap tensor names
 
 If you need to remap the tensor names defined by your ML model to meet the tensor name requirements of the `mlmodel` detector or classifier, you can use the `remap_input_names` and `remap_output_names` attributes:
@@ -199,8 +197,6 @@ To remap your model's tensor names to work with an `mlmodel` classifier, add the
 {{< /tabs >}}
 
 When done, click **Save config**, then proceed to [test your detector or classifier](#test-your-detector-or-classifier).
-
-{{% /expand%}}
 
 ## Test your detector or classifier
 
