@@ -274,7 +274,7 @@ If you intend to make frequent code changes to your module, want to support a va
 
    Supply the path to the resulting archive file in the next step.
 
-2. Run `viam module upload` to upload your custom module to the Viam registry:
+1. Run `viam module upload` to upload your custom module to the Viam registry:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version <version> --platform <platform> <module-path>
