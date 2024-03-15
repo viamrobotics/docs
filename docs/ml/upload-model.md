@@ -27,7 +27,7 @@ Model framework support is currently as follows:
 <!-- prettier-ignore -->
 | Model Framework | Hardware Support | System Architecture | Description |
 | --------------- | ---------------- | ------------------- | ----------- |
-| [TensorFlow Lite](https://www.tensorflow.org/lite) | Any CPU <br> Nvidia GPU | Linux, Raspbian | Quantized version of TensorFlow that has reduced compatibility for models but supports more hardware. |
+| [TensorFlow Lite](https://www.tensorflow.org/lite) | Any CPU <br> Nvidia GPU | Linux, Raspbian, MacOS, Android | Quantized version of TensorFlow that has reduced compatibility for models but supports more hardware. |
 | [ONNX](https://onnx.ai/) | Any CPU <br> Nvidia GPU | Android, MacOS, Linux arm-64 | Universal format that is not optimized for hardware inference but runs on a wide variety of machines. |
 | [TensorFlow](https://www.tensorflow.org/) | Nvidia GPU | Linux (Jetson) | A full framework that is made for more production-ready systems. |
 | [PyTorch](https://pytorch.org/) | Nvidia GPU | Linux (Jetson) | A full framework that was built primarily for research. Because of this, it is much faster to do iterative development with (model doesn’t have to be predefined) but it is not as “production ready” as TensorFlow. It is the most common framework for OSS models because it is the go-to framework for ML researchers. |
