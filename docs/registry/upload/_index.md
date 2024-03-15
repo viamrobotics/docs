@@ -369,7 +369,7 @@ At the end of your <file>meta.json</file>, add the build configuration:
 }
 ```
 
-{{%expand "Click to view example build-linux-arm64.sh" %}}
+{{% expand "Click to view example build-linux-arm64.sh" %}}
 
 ```sh { class="command-line"}
 sudo apt-get install -y python3.11-venv
@@ -380,9 +380,9 @@ python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz dist/main ##create archive from entrypoint
 ```
 
-{{% /expand%}}
+{{% /expand %}}
 
-{{%expand "Click to view example build-darwin-arm64.sh" %}}
+{{% expand "Click to view example build-darwin-arm64.sh" %}}
 
 ```sh { class="command-line"}
 brew install python3.11-venv
@@ -393,7 +393,7 @@ python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz dist/main ##create archive from entrypoint
 ```
 
-{{% /expand%}}
+{{% /expand %}}
 
 {{% /tab %}}
 {{< /tabs >}}
