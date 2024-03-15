@@ -16,23 +16,16 @@ images: ["/services/icons/ml.svg"]
 
 The Machine Learning (ML) model service allows you to deploy machine learning models to your machine.
 
+## Supported models
+
+### Built-in models
+
 You can use the following built-in model of the service:
 
 <!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
-| [`"tflite_cpu"` model](#create-an-ml-model-service) | Runs a tensorflow lite model that you have [trained](/ml/train-model/) or [uploaded](/ml/upload-model/). |
-
-## Used with
-
-{{< cards >}}
-{{< relatedcard link="/ml/vision/">}}
-{{< relatedcard link="/components/board/">}}
-{{< relatedcard link="/components/camera/">}}
-{{< /cards >}}
-
-After deploying your model, you need to configure an additional service to use the deployed model.
-For example, you can configure an [`mlmodel` vision service](/ml/vision/) and a [`transform` camera](/components/camera/transform/) to visualize the predictions your model makes.
+| [`tflite_cpu`](./tflite_cpu/) | Runs a tensorflow lite model that you have [trained](/ml/train-model/) or [uploaded](/ml/upload-model/). |
 
 ### Modular resources
 
@@ -46,127 +39,27 @@ Follow [these instructions](/registry/advanced/mlmodel-design/) to design your m
 {{< /alert >}}
 
 {{< alert title="Note" color="note" >}}
-For some models of the ML model service, like the [Triton ML model service](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use the available CPU or GPU.
+For some models of the ML model service, like the [Triton ML model service](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use either the available CPU or a dedicated GPU.
 {{< /alert >}}
 
-## Create an ML model service
+You can use an ML model service to deploy:
 
-You can use the ML model service to deploy:
-
-- [a model from the registry](https://app.viam.com/registry)
-- a model trained outside the Viam platform that you have [uploaded](/ml/upload-model/)
+- a model from [the registry](https://app.viam.com/registry)
+- a model trained outside the Viam platform that you have uploaded
 - a model available on your machine
 
-{{< tabs >}}
-{{% tab name="Builder" %}}
+## Used with
 
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
-Click the **Services** subtab and click **Create service** in the lower-left corner.
-Select the `ML Model` type, then select the `TFLite CPU` model.
-Enter a name for your service and click **Create**.
+{{< cards >}}
+{{< relatedcard link="/ml/vision/">}}
+{{< relatedcard link="/components/board/">}}
+{{< relatedcard link="/components/camera/">}}
+{{< /cards >}}
 
-You can choose to configure your service with an existing model on the machine or deploy a model onto your machine:
+After deploying your model, you need to configure an additional service to use the deployed model.
+For example, you can configure an [`mlmodel` vision service](/ml/vision/) and a [`transform` camera](/components/camera/transform/) to visualize the predictions your model makes.
 
-{{< tabs >}}
-{{% tab name="Deploy Model on Robot" %}}
-
-1. To configure your service and deploy a model onto your machine, select **Deploy Model On Robot** for the **Deployment** field.
-
-2. Click on **Models** to open a dropdown with all of the ML models available to you privately, as well as all of the ML models available in [the registry](https://app.viam.com), which are shared by users.
-   You can select from any of these models to deploy on your robot.
-
-{{<imgproc src="/services/deploy-model-menu.png" resize="700x" alt="Models dropdown menu with models from the registry.">}}
-
-{{% alert title="Tip" color="tip" %}}
-To see more details about a model, open its page in [the registry](https://app.viam.com).
-{{% /alert %}}
-
-3. Also, optionally select the **Number of threads**.
-
-{{<imgproc src="/services/deploy-model.png" resize="700x" alt="Create a machine learning models service with a model to be deployed">}}
-
-{{% /tab %}}
-{{% tab name="Path to Existing Model On Robot" %}}
-
-1. To configure your service with an existing model on the machine, select **Path to Existing Model On Robot** for the **Deployment** field.
-2. Then specify the absolute **Model Path** and any **Optional Settings** such as the absolute **Label Path** and the **Number of threads**.
-
-![Create a machine learning models service with an existing model](/services/available-models.png)
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{% /tab %}}
-{{% tab name="JSON Template" %}}
-
-Add the `tflite_cpu` ML model object to the services array in your raw JSON configuration:
-
-```json {class="line-numbers linkable-line-numbers"}
-"services": [
-  {
-    "name": "<mlmodel_name>",
-    "type": "mlmodel",
-    "model": "tflite_cpu",
-    "attributes": {
-      "model_path": "${packages.ml_model.<model_name>}/<model-name>.tflite",
-      "label_path": "${packages.ml_model.<model_name>}/labels.txt",
-      "num_threads": <number>
-    }
-  },
-  ... // Other services
-]
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-"services": [
-  {
-    "name": "fruit_classifier",
-    "type": "mlmodel",
-    "model": "tflite_cpu",
-    "attributes": {
-      "model_path": "${packages.ml_model.my_fruit_model}/my_fruit_model.tflite",
-      "label_path": "${packages.ml_model.my_fruit_model}/labels.txt",
-      "num_threads": 1
-    }
-  }
-]
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-The following parameters are available for a `"tflite_cpu"` model:
-
-<!-- prettier-ignore -->
-| Parameter | Inclusion | Description |
-| --------- | --------- | ----------- |
-| `model_path` | **Required** | The absolute path to the `.tflite model` file, as a `string`. |
-| `label_path` | Optional | The absolute path to a `.txt` file that holds class labels for your TFLite model, as a `string`. This text file should contain an ordered listing of class labels. Without this file, classes will read as "1", "2", and so on. |
-| `num_threads` | Optional | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
-
-Save the configuration.
-
-### Models from registry
-
-You can search the machine learning models that are available to deploy on this service from the registry here:
-
-<div id="searchboxML"></div>
-<p>
-<div id="searchstatsML"></div></p>
-<div class="mr-model" id="">
-  <div class="modellistheader">
-    <div class="name">Model</div>
-    <div>Description</div>
-  </div>
-<div id="hitsML" class="modellist">
-</div>
-<div id="paginationML"></div>
-</div>
-
-### Versioning for deployed models
+## Versioning for deployed models
 
 If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the machine.
 If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON machine configuration](/build/configure/#the-config-tab).
@@ -183,19 +76,22 @@ The model package config looks like this:
 }
 ```
 
-### `tflite_cpu` limitations
+## Models from registry
 
-We strongly recommend that you package your `tflite_cpu` model with metadata in [the standard form](https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs).
+You can search the machine learning models that are available to deploy on this service from the registry here:
 
-In the absence of metadata, your `tflite_cpu` model must satisfy the following requirements:
-
-- A single input tensor representing the image of type UInt8 (expecting values from 0 to 255) or Float 32 (values from -1 to 1).
-- At least 3 output tensors (the rest won’t be read) containing the bounding boxes, class labels, and confidence scores (in that order).
-- Bounding box output tensor must be ordered [x x y y], where x is an x-boundary (xmin or xmax) of the bounding box and the same is true for y.
-  Each value should be between 0 and 1, designating the percentage of the image at which the boundary can be found.
-
-These requirements are satisfied by a few publicly available model architectures including EfficientDet, MobileNet, and SSD MobileNet V1.
-You can use one of these architectures or build your own.
+<div id="searchboxML"></div>
+<p>
+<div id="searchstatsML"></div></p>
+<div class="mr-model" id="">
+  <div class="modellistheader">
+    <div class="name">Model</div>
+    <div>Description</div>
+  </div>
+<div id="hitsML" class="modellist">
+</div>
+<div id="paginationML"></div>
+</div>
 
 ## API
 

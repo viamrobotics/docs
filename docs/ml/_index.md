@@ -25,7 +25,7 @@ However, your machine can make use of machine learning with nearly any kind of d
 
 To use machine learning (ML), you must deploy an [ML model service](/ml/deploy/) which runs a specified ML model.
 
-Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML models with the `tflite_cpu` ML model service, as long as your models adhere to the [model requirements](/ml/deploy/#tflite_cpu-limitations).
+Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML models with the `tflite_cpu` ML model service, as long as your models adhere to the [model requirements](/ml/deploy/tflite_cpu/#models-from-registry).
 Other model frameworks are supported with [modular resources](/ml/deploy/#modular-resources).
 
 Once you have deployed a model with the ML model service you can use it with the [vision service](/ml/vision/) or other modular resources from the [registry](/registry/) that make use of the ML model service.

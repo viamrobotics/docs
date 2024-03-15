@@ -244,7 +244,7 @@ Add the ML model service to your machine to be able to deploy and update ML mode
 
    {{< imgproc src="/tutorials/filtered-camera-module/configure-mlmodel-service.png" alt="The ML model service configuration pane with deploy model on robot selected, and the my-viam-figure-model added" resize="600x" >}}
 
-For more information, see [Create an ML model service](/ml/deploy/#create-an-ml-model-service).
+For more information, see [Create an ML model service](/ml/deploy/).
 
 ### Add the vision service
 

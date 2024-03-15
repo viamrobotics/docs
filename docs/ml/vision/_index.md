@@ -104,7 +104,7 @@ Model | Description <a name="model-table"></a>
 [`obstacles_depth`](./obstacles_depth/) | A segmenter for depth cameras that returns the perceived obstacles as a set of 3-dimensional bounding boxes, each with a Pose as a vector.
 [`obstacles_distance`](./obstacles_distance/) | A segmenter that takes point clouds from a camera input and returns the average single closest point to the camera as a perceived obstacle.
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:service:vision" type="vision">}}
 
