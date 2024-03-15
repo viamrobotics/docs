@@ -1254,104 +1254,17 @@ This executable file:
 Depending on the language you are using to code your module, you may have options for how you create your executable file:
 
 {{% tabs %}}
-{{% tab name="Python: venv (recommended)" %}}
+{{% tab name="Python" %}}
 
-Create a `run.sh` shell script that creates a new Python virtual environment, ensures that the package dependencies your module requires are installed, and runs your module.
-This is recommended approach for modules written in Python:
+The recommended approach for Python is to use [`PyInstaller`](https://pypi.org/project/pyinstaller/) to compile your module into a packaged executable: a standalone file containing your program, the Python interpreter, and all of its dependencies.
+This approach allows it to be run on a target system without needing to install additional software or manage dependencies manually.
 
-1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
-   For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) is installed:
-
-   ```sh { class="command-line" data-prompt="$"}
-   viam-sdk
-   ```
-
-   Add additional dependencies for your module as needed.
-   See the [pip `requirements.txt` file documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more information.
-
-1. Add a shell script that creates a new virtual environment, installs the dependencies listed in `requirements.txt`, and runs the module entry point file `main.py`:
-
-   ```sh { class="command-line" data-prompt="$"}
-   #!/bin/sh
-   cd `dirname $0`
-
-   # Create a virtual environment to run our code
-   VENV_NAME="venv"
-   PYTHON="$VENV_NAME/bin/python"
-
-   python3 -m venv $VENV_NAME
-   $PYTHON -m pip install -r requirements.txt -U # remove -U if viam-sdk should not be upgraded whenever possible
-
-   # Be sure to use `exec` so that termination signals reach the python process,
-   # or handle forwarding termination signals manually
-   exec $PYTHON <your-src-dir-if-inside>/main.py $@
-   ```
-
-1. Make your shell script executable by running the following command in your terminal:
-
-   ```sh { class="command-line" data-prompt="$"}
-   sudo chmod +x <your-file-path-to>/run.sh
-   ```
-
-Using a virtual environment together with a `requirements.txt` file and a `run.sh` file that references it ensures that your module has access to any packages it requires during runtime.
-If you intend to share your module with other users, or to deploy it to a fleet of machines, this approach handles dependency resolution for each deployment automatically, meaning that there is no need to explicitly determine and install the Python packages your module requires to run on each machine that installs your module.
-See [prepare a Python virtual environment](/build/program/python-venv/) for more information.
-
-{{% /tab %}}
-{{% tab name="Python: nuitka" %}}
-
-Use the [`nutika` Python compiler](https://pypi.org/project/Nuitka/) to compile your module into a single executable file:
-
-1. In order to use Nutika, you must install a [supported C compiler](https://github.com/Nuitka/Nuitka#c-compiler) on your machine.
-
-1. Then, [create a Python virtual environment](/build/program/python-venv/) in your module's directory to ensure your module has access to any required libraries.
-   Be sure you are within your Python virtual environment for the rest of these steps: your terminal prompt should include the name of your virtual environment in parenthesis.
-
-1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
-   For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) and Nuitka (`nuitka`) are installed:
-
-   ```sh { class="command-line" data-prompt="$"}
-   viam-sdk
-   nuitka
-   ```
-
-   Add additional dependencies for your module as needed.
-   See the [pip `requirements.txt` file documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more information.
-
-1. Install the dependencies listed in your `requirements.txt` file within your Python virtual environment using the following command:
-
-   ```sh { class="command-line" data-prompt="$"}
-   python -m pip install -r requirements.txt -U
-   ```
-
-1. Then, compile your module using Nutika with the following command:
-
-   ```sh { class="command-line" data-prompt="$"}
-   python -m nuitka --onefile src/main.py
-   ```
-
-   If you need to include any additional data files to support your module, specify them using the `--include-data-files` flag:
-
-   ```sh { class="command-line" data-prompt="$"}
-   python -m nuitka --onefile --include-data-files=src/arm/my_arm_kinematics.json src/main.py
-   ```
-
-Compiling your Python module in this fashion ensures that your module has access to any packages it requires during runtime.
-If you intend to share your module with other users, or to deploy it to a fleet of machines, this approach "bundles" your module code together with its required dependencies, making your module highly-portable across like architectures.
-
-However, used in this manner, Nutika does not support relative imports (imports starting with `.`).
-In addition, Nutika does not support cross-compiling: you must compile your module on the target architecture you wish to support.
-For example, you cannot run a module on a Linux `arm64` system if you compiled it using Nutika on a Linux `amd64` system.
-
-{{% /tab %}}
-{{% tab name="Python: pyinstaller" %}}
-
-Use the [`PyInstaller` package](https://pypi.org/project/pyinstaller/) to compile your module into a single executable file:
+To create a packaged executable:
 
 1. First, [create a Python virtual environment](/build/program/python-venv/) in your module's directory to ensure your module has access to any required libraries.
    Be sure you are within your Python virtual environment for the rest of these steps: your terminal prompt should include the name of your virtual environment in parenthesis.
 
-1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
+2. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
    For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`), PyInstaller (`pyinstaller`), and the Google API Python client (`google-api-python-client`) are installed:
 
    ```sh { class="command-line" data-prompt="$"}
@@ -1363,13 +1276,13 @@ Use the [`PyInstaller` package](https://pypi.org/project/pyinstaller/) to compil
    Add additional dependencies for your module as needed.
    See the [pip `requirements.txt` file documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more information.
 
-1. Install the dependencies listed in your `requirements.txt` file within your Python virtual environment using the following command:
+3. Install the dependencies listed in your `requirements.txt` file within your Python virtual environment using the following command:
 
    ```sh { class="command-line" data-prompt="$"}
    python -m pip install -r requirements.txt -U
    ```
 
-1. Then compile your module, adding the Google API python client as a hidden import:
+4. Then compile your module, adding the Google API python client as a hidden import:
 
    ```sh { class="command-line" data-prompt="$"}
    python -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py

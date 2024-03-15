@@ -267,14 +267,14 @@ If you intend to make frequent code changes to your module, want to support a va
    To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   tar -czf module.tar.gz run.sh requirements.txt src
+   tar -czf module.tar.gz dist/main
    ```
 
-   Where `run.sh` is your [entrypoint file](/registry/create/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/registry/create/#compile-or-package-your-module), and `src` is the source directory of your module.
+   Where `dist/main` is your [packaged executable](/registry/create/#compile-or-package-your-module).
 
    Supply the path to the resulting archive file in the next step.
 
-1. Run `viam module upload` to upload your custom module to the Viam registry:
+2. Run `viam module upload` to upload your custom module to the Viam registry:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version <version> --platform <platform> <module-path>
@@ -377,7 +377,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz dist/main ##create archive from entrypoint
+tar -czvf dist/archive.tar.gz dist/main
 ```
 
 {{% /expand %}}
@@ -390,7 +390,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz dist/main ##create archive from entrypoint
+tar -czvf dist/archive.tar.gz dist/main
 ```
 
 {{% /expand %}}
