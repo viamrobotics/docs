@@ -57,7 +57,7 @@ You can exit this environment by running `deactivate`.
 
 ## Install Viam
 
-Inside the activated `.venv Python environment, you can now install the Viam Python SDK:
+Inside the activated `.venv` Python environment, you can now install the Viam Python SDK:
 
 ```sh {class="command-line" data-prompt="$"}
 pip3 install viam-sdk
