@@ -125,9 +125,9 @@ The following attributes are available for an `mlmodel` detector or classifier:
 | `mlmodel_name` | string | **Required** | The name of the [ML model service](/ml/deploy/) you want to use the model from. |
 | `remap_output_names` | object | Optional | The names of your output tensors, mapped to the service requirements. See [Tensor names](#tensor-names) for more information. |
 | `remap_input_names` | object | Optional | The name of your input tensor, mapped to the service requirements. See [Tensor names](#tensor-names) for more information. |
-| `input_image_bgr` | bool | Optional | Set this to `true` if the ML model service expect the input image to have BGR pixels, rather than RGB pixels. |
-| `input_image_mean_value` | array | Optional | The standard deviation of the RGB (or BGR) values. Only required if the ML model service expects the input image to be normalized. |
-| `input_image_std_dev` | array | Optional | The standard deviation of the RGB (or BGR) values. Only required if the ML model service expects the input image to be normalized. |
+| `input_image_bgr` | bool | Optional | Set this to `true` if the ML model service expects the input image to have BGR pixels, rather than RGB pixels. <br> Default: `false` |
+| `input_image_mean_value` | array | Optional | The standard deviation of the RGB (or BGR) values. Only required if the ML model service expects the input image to be normalized. <br> Default: `[0.5, 0.5, 0.5]` |
+| `input_image_std_dev` | array | Optional | The standard deviation of the RGB (or BGR) values. Only required if the ML model service expects the input image to be normalized. <br> Default: `[0.5, 0.5, 0.5]` |
 
 ## Tensor names
 
