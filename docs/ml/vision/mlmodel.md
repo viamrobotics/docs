@@ -3,7 +3,7 @@ title: "Configure an mlmodel Detector or Classifier"
 linkTitle: "mlmodel"
 weight: 10
 type: "docs"
-description: "A detector or classifier that uses a tflite model available on the machine to draw bounding boxes around objects or return a class label."
+description: "A detector or classifier that uses an ML model available on the machine to draw bounding boxes around objects or return a class label."
 tags: ["vision", "computer vision", "CV", "services", "detection"]
 images: ["/ml/vision/dog-detector.png"]
 aliases:
@@ -14,7 +14,7 @@ aliases:
 
 _Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#vision-service)_
 
-The `mlmodel` vision service model is a machine learning detector that draws bounding boxes or returns class labels according to the specified TensorFlow Lite model file available on the machine’s hard drive.
+The `mlmodel` vision service model is a machine learning detector that draws bounding boxes or returns class labels according to the specified TensorFlow Lite, TensorFlow, PyTorch, or ONNX model file available on the machine’s hard drive.
 To create a `mlmodel` classifier, you need an [ML model service with a suitable model](/ml/).
 Before configuring your `mlmodel` detector or classifier, you need to:
 
@@ -30,7 +30,7 @@ You can [add an existing model](/ml/upload-model/) or [train your own models](/m
 
 <h4>Deploy your model</h4>
 
-To make use of ML models with your machine, use the built-in [ML model service](/ml/) to deploy and run the model.
+To make use of ML models with your machine, use a suitable [ML model service](/ml/) to deploy and run the model.
 
 {{% /manualcard %}}
 {{< /cards >}}

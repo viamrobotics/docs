@@ -23,12 +23,14 @@ Common use cases include:
 
 However, your machine can make use of machine learning with nearly any kind of data.
 
-To use machine learning (ML), you must deploy an [ML model service](/ml/deploy/) which runs a specified ML model.
+Viam supports:
 
-Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML models with the `tflite_cpu` ML model service, as long as your models adhere to the [model requirements](/ml/deploy/#tflite_cpu-limitations).
-Other model frameworks are supported with [modular resources](/ml/deploy/#modular-resources).
+- [TensorFlow Lite](https://www.tensorflow.org/lite) ML models as long as your models adhere to the [model requirements](/ml/deploy/#tflite_cpu-limitations)
+- TensorFlow
+- PyTorch
+- ONNX
 
-Once you have deployed a model with the ML model service you can use it with the [vision service](/ml/vision/) or other modular resources from the [registry](/registry/) that make use of the ML model service.
+For more information, see [Model framework support](/ml/upload-model/#model-framework-support).
 
 ## Use machine learning with your machine
 
@@ -54,7 +56,7 @@ Once you have deployed a model with the ML model service you can use it with the
   <tr>
     <td>
       <b>4. Deploy your ML model</b>
-      <p>To use ML models with your machine, you must first deploy the model using the built-in <a href="/ml/deploy/">ML model service</a>. The ML model service will run the model and allow the vision service to use it.</p>
+      <p>To use ML models with your machine, you must first deploy the model using an <a href="/ml/deploy/">ML model service</a>. The ML model service will run the model and allow the vision service to use it.</p>
     </td>
   </tr>
   <tr>
