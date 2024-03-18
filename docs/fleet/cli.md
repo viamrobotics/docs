@@ -1,7 +1,7 @@
 ---
 title: "Viam CLI"
 linkTitle: "CLI"
-weight: 99
+weight: 80
 type: "docs"
 no_list: true
 description: "Manage and control your machines from the command line."

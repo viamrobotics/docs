@@ -15,7 +15,7 @@ menuindent: true
 
 {{<imgproc src="/ml/training.png" class="alignright" resize="400x" declaredimensions=true alt="ML training">}}
 
-Viam includes a built-in machine learning (ML) model service which provides your machine with the ability to learn from data and adjust its behavior based on insights gathered from that data.
+Machine Learning (ML) provides your machines with the ability to adjust its behavior based on models that recognize patterns or make predictions.
 Common use cases include:
 
 - Object detection and classification which enable machines to detect people, animals, plants, or other objects with bounding boxes, and to perform actions when they are detected.
@@ -23,7 +23,7 @@ Common use cases include:
 
 However, your machine can make use of machine learning with nearly any kind of data.
 
-Viam natively supports:
+Viam supports:
 
  - [TensorFlow Lite](https://www.tensorflow.org/lite) ML models as long as your models adhere to the [model requirements](/ml/deploy/#tflite_cpu-limitations)
  - TensorFlow

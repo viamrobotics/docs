@@ -3,7 +3,6 @@ title: Process
 id: process
 full_link:
 short_description: You can configure instances of programs or scripts to run on your machine part.
-aka:
 ---
 
 Processes are instances of programs, invoked by commands running binaries or scripts on a {{< glossary_tooltip term_id="part" text="part" >}}.
