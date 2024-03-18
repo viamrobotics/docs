@@ -15,6 +15,14 @@ images: ["/services/icons/ml.svg"]
 ---
 
 The Machine Learning (ML) model service allows you to deploy machine learning models to your machine.
+This can mean deploying:
+
+- a model from [the registry](https://app.viam.com/registry)
+- a model trained outside the Viam platform that you have [uploaded](/ml/upload-model/)
+- a model that's already available on your machine
+
+After deploying your model, you need to configure an additional service to use the deployed model.
+For example, you can configure an [`mlmodel` vision service](/ml/vision/) and a [`transform` camera](/components/camera/transform/) to visualize the predictions your model makes.
 
 ## Supported models
 
@@ -25,7 +33,7 @@ You can use the following built-in model of the service:
 <!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
-| [`tflite_cpu`](./tflite_cpu/) | Runs a tensorflow lite model that you have [trained](/ml/train-model/) or [uploaded](/ml/upload-model/). |
+| [`tflite_cpu`](./tflite_cpu/) | Runs a TensorFlow Lite model that you have [trained](/ml/train-model/) or [uploaded](/ml/upload-model/) on the CPU of your machine. |
 
 ### Modular resources
 
@@ -55,9 +63,6 @@ You can use an ML model service to deploy:
 {{< relatedcard link="/components/board/">}}
 {{< relatedcard link="/components/camera/">}}
 {{< /cards >}}
-
-After deploying your model, you need to configure an additional service to use the deployed model.
-For example, you can configure an [`mlmodel` vision service](/ml/vision/) and a [`transform` camera](/components/camera/transform/) to visualize the predictions your model makes.
 
 ## Versioning for deployed models
 
