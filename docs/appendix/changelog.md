@@ -331,7 +331,7 @@ The updates to the camera component have improved the process of connecting to a
 The latest updates enable you to:
 
 - View readable webcam names in the **video path** of your camera component.
-- Specify your preferred framerate by selecting the desired value in the newly added **framerate field** on the **Config** tab.
+- Specify your preferred framerate by selecting the desired value in the newly added **framerate field** on the **CONFIGURE** tab.
 
 {{% /changelog %}}
 
@@ -400,7 +400,7 @@ detections = await vision.get_detections(img, "find_objects")
 
 #### Color detector configurations
 
-You can replace existing color detectors by [configuring new ones in the UI](/ml/vision/mlmodel/) or you can update the [Raw JSON configuration of your machines](/build/configure/#the-config-tab):
+You can replace existing color detectors by [configuring new ones in the UI](/ml/vision/color_detector/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -475,7 +475,7 @@ You can replace existing color detectors by [configuring new ones in the UI](/ml
 
 #### TFLite detector configurations
 
-You can replace existing TFLite detectors by [configuring new ones in the UI](/ml/vision/mlmodel/) or you can update the [Raw JSON configuration of your machines](/build/configure/#the-config-tab):
+You can replace existing TFLite detectors by [configuring new ones in the UI](/ml/vision/mlmodel/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -535,7 +535,7 @@ You can replace existing TFLite detectors by [configuring new ones in the UI](/m
 
 #### TFLite Classifier configurations
 
-You can replace existing TFLite classifiers by [configuring new ones in the UI](/ml/vision/mlmodel/) or you can update the [Raw JSON configuration of your machines](/build/configure/#the-config-tab):
+You can replace existing TFLite classifiers by [configuring new ones in the UI](/ml/vision/mlmodel/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -595,7 +595,7 @@ You can replace existing TFLite classifiers by [configuring new ones in the UI](
 
 #### Radius Clustering 3D segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/obstacles_pointcloud/) or you can update the [Raw JSON configuration of your machines](/build/configure/#the-config-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/obstacles_pointcloud/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -649,7 +649,7 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
 
 #### Detector to 3D segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/detector_3d_segmenter/) or you can update the [Raw JSON configuration of your machines](/build/configure/#the-config-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/detector_3d_segmenter/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -785,7 +785,7 @@ Find more information in the [TypeScript SDK docs](https://ts.viam.dev/).
 
 {{% changelog date="2023-02-28" color="added" title="Frame system visualizer" %}}
 
-When adding [frames](/mobility/frame-system/) to your machine's config in the Viam app, you can now use the **Frame System** subtab of the **Config** tab to more easily visualize the relative positions of frames.
+When adding [frames](/mobility/frame-system/) to your machine's config in the Viam app, you can now use the **Frame System** subtab of the **CONFIGURE** tab to more easily visualize the relative positions of frames.
 
 {{% /changelog %}}
 
@@ -866,7 +866,7 @@ The [motion service](/mobility/motion/) is now agnostic to the networking topolo
 - Kinematic information is now transferred over the robot API.
   This means that the motion service is able to get kinematic information for every component on the machine, regardless of whether it is on a main or remote viam-server.
 - Arms are now an input to the motion service.
-  This means that the motion service can plan for a machine that has an arm component regardless of whether the arm is connected to a main or {{< glossary_tooltip term_id="remote" text="remote" >}} instance of `viam-server`.
+  This means that the motion service can plan for a machine that has an arm component regardless of whether the arm is connected to a main or {{< glossary_tooltip term_id="remote-part" text="remote-part" >}} instance of `viam-server`.
 
 {{% /changelog %}}
 

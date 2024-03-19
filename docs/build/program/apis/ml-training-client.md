@@ -24,7 +24,7 @@ See the following example for reference.
 
 <!-- After sveltekit migration we should also be able to get a key from the UI-->
 
-Select **Include API Key** on the **Code sample** page of the [Viam app](https://app.viam.com) to obtain your API key and API key ID values.
+Select **Include secret** on the **Code sample** page of the **CONNECT** tab of the [Viam app](https://app.viam.com) to obtain your API key and API key ID values.
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio

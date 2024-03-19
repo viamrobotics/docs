@@ -16,8 +16,8 @@ Configure a `gpio` input controller to use a GPIO- or ADC-based device to commun
 {{< tabs name="Configure a `gpio` input controller" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `input_controller` type, then select the `gpio` model.
 Enter a name for your input controller and click **Create**.
 

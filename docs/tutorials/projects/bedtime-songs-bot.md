@@ -89,7 +89,7 @@ Optionally, select a fixed filepath for the camera from the automated options in
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your camera:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

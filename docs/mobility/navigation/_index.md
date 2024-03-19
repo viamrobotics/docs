@@ -50,10 +50,10 @@ See [navigation concepts](#navigation-concepts) for more info on how to implemen
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click the **Services** subtab, then click **Create service** in the lower-left corner.
-Select the type `Navigation`.
-Enter a name for your service, then click **Create**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+Select the `Navigation` type.
+Enter a name for your service and click **Create**.
 
 ![An example configuration for a navigation service in the Viam app Config Builder.](/mobility/navigation/navigation-ui-config.png)
 
@@ -220,7 +220,7 @@ The navigation service supports the following methods:
 {{% alert title="Tip" color="tip" %}}
 
 The following code examples assume that you have a machine configured with a `Navigation` service, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
-Go to your machine's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
+Go to your machine's **CONNECT** tab's **Code sample** page on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 

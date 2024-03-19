@@ -172,7 +172,7 @@ Click on the **Components** subtab.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your [board](/components/board/), your [motors](/components/motor/), your [base](/components/base/), your [camera](/components/camera/), and your [ultrasonic sensors](/components/sensor/ultrasonic/):
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your [board](/components/board/), your [motors](/components/motor/), your [base](/components/base/), your [camera](/components/camera/), and your [ultrasonic sensors](/components/sensor/ultrasonic/):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -382,7 +382,7 @@ Click on the **Services** subtab.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following complete JSON configuration which adds the configuration for the ML model service, the vision service, and a transform camera:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following complete JSON configuration which adds the configuration for the ML model service, the vision service, and a transform camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

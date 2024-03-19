@@ -60,8 +60,8 @@ You can use the ML model service to deploy:
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
-Click the **Services** subtab and click **Create service** in the lower-left corner.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 Select the `ML Model` type, then select the `TFLite CPU` model.
 Enter a name for your service and click **Create**.
 
@@ -99,7 +99,7 @@ To see more details about a model, open its page in [the registry](https://app.v
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Add the `tflite_cpu` ML model object to the services array in your raw JSON configuration:
+Add the `tflite_cpu` ML model object to the services array in your JSON configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "services": [
@@ -169,7 +169,7 @@ You can search the machine learning models that are available to deploy on this 
 ### Versioning for deployed models
 
 If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the machine.
-If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON machine configuration](/build/configure/#the-config-tab).
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [JSON machine configuration](/build/configure/#the-configure-tab).
 
 You can get the version number from a specific model version by navigating to the [models page](https://app.viam.com/data/models) finding the model's row, clicking on the right-side menu marked with **_..._** and selecting **Copy package JSON**. For example: `2024-02-28T13-36-51`.
 The model package config looks like this:
@@ -206,7 +206,7 @@ The MLModel service supports the following methods:
 {{% alert title="Tip" color="tip" %}}
 
 The following code examples assume that you have a machine configured with an `MLModel` service, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
-Go to your machine's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
+Go to your machine's **CONNECT** tab's **Code sample** page on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 

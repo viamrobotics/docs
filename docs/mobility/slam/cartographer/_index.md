@@ -104,9 +104,8 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
 1. Add the data management service to your machine:
 
-   Navigate to the **Services** subtab on your machine's **Config** tab.
-
-   Click **Create service** in the lower-left corner of the page.
+   Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+   Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
    Choose `Data Management` as the type and specify a name for your data management service, for example `Data-Management-Service`.
    Click **Create**.
 
@@ -116,7 +115,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
 2. Enable data capture for your camera, and for your movement sensor if you would like to use IMU data, odometry data, or both:
 
-   Find the component's card on your machine's **Config** tab.
+   Find the component's card on your machine's **CONFIGURE** tab.
    Click `Add Method`, then specify the method type and the capture frequency.
 
    - For the required LiDAR camera, choose the `NextPointCloud` method.
@@ -161,9 +160,9 @@ Note that [Data Capture](/data/capture/) continuously monitors and captures your
 
 3. Set up the `cartographer` module on your machine:
 
-   Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
+   Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 
-   Click on the **Services** subtab and click **Create service** in the lower-left corner.
+   Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
    Select **SLAM**, then select `cartographer`.
    You can also search for "cartographer".
 
@@ -186,7 +185,7 @@ Note that [Data Capture](/data/capture/) continuously monitors and captures your
 
    To save your changes, click **Save config** at the bottom of the page.
 
-   Check the **Logs** tab of your machine in the Viam app to make sure your RPlidar has connected and no errors are being raised.
+   Check the **LOGS** tab of your machine in the Viam app to make sure your RPlidar has connected and no errors are being raised.
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}

@@ -15,8 +15,8 @@ The `gyro-mpu6050` movement sensor model supports a combination [gyroscope and a
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `movement-sensor` type, then select the `gyro-mpu6050` model.
 Enter a name for your movement sensor and click **Create**.
 

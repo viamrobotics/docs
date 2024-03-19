@@ -94,7 +94,7 @@ Paste the following into the **Attributes** field of your new service:
 
 Go to your machine's page on the [Viam app](https://app.viam.com/).
 Navigate to the **Config** tab .
-Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing camera configuration:
+Select the **JSON** mode, then copy/paste the following `"services"` JSON to add to your existing camera configuration:
 
 ```json
 // "components": [ ...], YOUR CAMERA COMPONENT
@@ -202,7 +202,7 @@ Paste the following into the **Attributes** field of your new service:
 
 Go to your machine's page on the [Viam app](https://app.viam.com/).
 Navigate to the **Config** tab .
-Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing camera configuration:
+Select the **JSON** mode, then copy/paste the following `"services"` JSON to add to your existing camera configuration:
 
 ```json
 // "components": [ ...], YOUR CAMERA COMPONENT
