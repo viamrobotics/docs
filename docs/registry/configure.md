@@ -217,7 +217,7 @@ The custom model is configured as a component with the name "my-realsense".
 
 ### Edit the module
 
-You can also view and edit the configuration of their underlying module from the **CONFIGURE** tab:
+You can also view and edit the configuration of a modular resource's underlying module from the **CONFIGURE** tab:
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 2. Scroll to the card with the name of the module, as indicated by its page in the [registry](https://app.viam.com/registry).
