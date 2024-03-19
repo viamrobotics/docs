@@ -681,7 +681,7 @@ For example, the following represents the configuration of an example `my-module
       "model": "acme:demo:my-model"
     }
   ],
-  "entrypoint": "run.sh"
+  "entrypoint": "dist/main"
 }
 ```
 
@@ -718,6 +718,33 @@ Developers can either have a single build file for all platforms, or platform sp
 }
 ```
 
+{{%expand "Click to view example build.sh" %}}
+
+``` sh { class="command-line"}
+#!/bin/bash
+set -e
+UNAME=$(uname -s)
+
+if [ "$UNAME" = "Linux" ]
+then
+    echo "Installing venv on Linux"
+    sudo apt-get install -y python3-venv
+fi
+if [ "$UNAME" = "Darwin" ]
+then
+    echo "Installing venv on Darwin"
+    brew install python3-venv
+fi
+
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main
+```
+
+{{% /expand%}}
+
 {{% /tab %}}
 {{% tab name="Platform Specific" %}}
 
@@ -739,7 +766,10 @@ Developers can either have a single build file for all platforms, or platform sp
 {{%expand "Click to view example build-linux-arm64.sh" %}}
 
 ```sh { class="command-line"}
-sudo apt-get install -y python3.11-venv
+#!/bin/bash
+set -e
+
+sudo apt-get install -y python3-venv
 python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
@@ -752,7 +782,10 @@ tar -czvf dist/archive.tar.gz dist/main
 {{%expand "Click to view example build-darwin-arm64.sh" %}}
 
 ```sh { class="command-line"}
-brew install python3.11-venv
+#!/bin/bash
+set -e
+
+brew install python3-venv
 python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt

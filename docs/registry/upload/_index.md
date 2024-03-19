@@ -342,11 +342,39 @@ At the end of your <file>meta.json</file>, add the build configuration:
   "module_id": "example-module",
   ...
   "build": {
-    "build": "make module.tar.gz",          // command that will build your module
+    "build": "sh build.sh",          // command that will build your module
+    "path" : "dist/archive.tar.gz",         // optional - path to your built module
     "arch" : ["linux/amd64", "linux/arm64"] // architecture(s) to build for
   }
 }
 ```
+
+{{%expand "Click to view example build.sh" %}}
+
+``` sh { class="command-line"}
+#!/bin/bash
+set -e
+UNAME=$(uname -s)
+
+if [ "$UNAME" = "Linux" ]
+then
+    echo "Installing venv on Linux"
+    sudo apt-get install -y python3-venv
+fi
+if [ "$UNAME" = "Darwin" ]
+then
+    echo "Installing venv on Darwin"
+    brew install python3-venv
+fi
+
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main
+```
+
+{{% /expand%}}
 
 {{% /tab %}}
 {{% tab name="Platform Specific" %}}
@@ -369,10 +397,13 @@ At the end of your <file>meta.json</file>, add the build configuration:
 }
 ```
 
-{{% expand "Click to view example build-linux-arm64.sh" %}}
+{{%expand "Click to view example build-linux-arm64.sh" %}}
 
 ```sh { class="command-line"}
-sudo apt-get install -y python3.11-venv
+#!/bin/bash
+set -e
+
+sudo apt-get install -y python3-venv
 python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
@@ -380,20 +411,21 @@ python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz dist/main
 ```
 
-{{% /expand %}}
+{{% /expand%}}
 
-{{% expand "Click to view example build-darwin-arm64.sh" %}}
+{{%expand "Click to view example build-darwin-arm64.sh" %}}
 
 ```sh { class="command-line"}
-brew install python3.11-venv
+#!/bin/bash
+set -e
+
+brew install python3-venv
 python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz dist/main
 ```
-
-{{% /expand %}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -476,17 +508,17 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 
    Both methods return a `key id` and a `key value` which together comprise your organization API key.
 
-1. Then, configure your GitHub repository to use your organization API key to authenticate during GitHub action runs, following the steps below:
+2. Then, configure your GitHub repository to use your organization API key to authenticate during GitHub action runs, following the steps below:
 
    1. In the GitHub repository for your project, select **Settings**, then **Secrets and variables**, then **Actions**.
 
-   1. Click the green **New repository secret** button, enter `viam_key_id` as the **NAME**, paste the value for `key id` from above into the **Secret** text field, then click **Add secret**.
+   2. Click the green **New repository secret** button, enter `viam_key_id` as the **NAME**, paste the value for `key id` from above into the **Secret** text field, then click **Add secret**.
 
-   1. Then, click the green **New repository secret** button, enter `viam_key_value` as the **NAME**, paste the value for `key value` from above into the **Secret** text field, then click **Add secret**.
+   3. Then, click the green **New repository secret** button, enter `viam_key_value` as the **NAME**, paste the value for `key value` from above into the **Secret** text field, then click **Add secret**.
 
    For more information on GitHub secrets, see the GitHub documentation for [creating secrets for a repository](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository).
 
-1. Push a tag to your repo or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
+3. Push a tag to your repo or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
    The specific step to take to release your software depends on your CI workflow, your GitHub configuration, and the `run` step you defined earlier.
    Once complete, your module will upload to the [Viam registry](https://app.viam.com/registry) with the appropriate version automatically.
 

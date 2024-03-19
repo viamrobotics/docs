@@ -1257,7 +1257,7 @@ Depending on the language you are using to code your module, you may have option
 {{% tab name="Python" %}}
 
 The recommended approach for Python is to use [`PyInstaller`](https://pypi.org/project/pyinstaller/) to compile your module into a packaged executable: a standalone file containing your program, the Python interpreter, and all of its dependencies.
-When packaged in this fashion, you can run the resulting executable on your desired target platform or platforms without needing to install additional software or manage dependencies manually.
+When packaged in this fashion, you can run the resulting executable on your desired target platform or platforms without needing to install additional software or manage dependencies manually. 
 
 To create a packaged executable:
 
@@ -1282,7 +1282,7 @@ To create a packaged executable:
    python -m pip install -r requirements.txt -U
    ```
 
-4. Then compile your module, adding the Google API python client as a hidden import:
+4. Then compile your module, adding the Google API Python client as a hidden import:
 
    ```sh { class="command-line" data-prompt="$"}
    python -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
@@ -1294,12 +1294,35 @@ To create a packaged executable:
    python -m PyInstaller --onefile --hidden-import="googleapiclient" --add-data src/arm/my_arm_kinematics.json:src/arm/ src/main.py
    ```
 
-Compiling your Python module in this fashion ensures that your module has access to any packages it requires during runtime.
-If you intend to share your module with other users, or to deploy it to a fleet of machines, this approach "bundles" your module code together with its required dependencies, making your module highly-portable across like architectures.
+   By default, the output directory for the packaged executable is <file>dist</file>, and the name of the executable is derived from the base name of the input script (in this case, main).
 
-However, used in this manner, PyInstaller does not support relative imports (imports starting with `.`).
+We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86, ARM Linux, and MacOS.
+Follow the instructions to [Update an existing module using a GitHub action](/registry/upload/#update-an-existing-module-using-a-github-action) to add the build configuration to your machine.
+
+With this approach, you can make a build script like the following to
+build your module, and configure the resulting executable (<file>dist/main</file>) as your module `"entrypoint"`:
+
+```sh { class="command-line"}
+#!/bin/bash
+set -e
+
+sudo apt-get install -y python3-venv
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main
+```
+
+This script automates the process of setting up a Python virtual environment, installing dependencies, packaging the Python module into a standalone executable using PyInstaller, and then compressing the resulting executable into a tarball.
+
+{{% alert title="Note" color="note" %}}
+
+Used in this manner, PyInstaller does not support relative imports (imports starting with `.`).
 In addition, PyInstaller does not support cross-compiling: you must compile your module on the target architecture you wish to support.
 For example, you cannot run a module on a Linux `arm64` system if you compiled it using PyInstaller on a Linux `amd64` system.
+
+{{% /alert %}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -1345,7 +1368,7 @@ Create a <file>CMakeLists.txt</file> file to define how to compile your module a
    target_link_libraries(my-base PRIVATE viam-cpp-sdk::viamsdk)
    ```
 
-1. Create a <file>run.sh</file> file in your module directory to wrap the executable and perform basic sanity checks at runtime.
+2. Create a <file>run.sh</file> file in your module directory to wrap the executable and perform basic sanity checks at runtime.
 
    The following example shows a simple configuration that runs a module named `my-base`:
 
@@ -1359,7 +1382,7 @@ Create a <file>CMakeLists.txt</file> file to define how to compile your module a
    exec ./my-base $@
    ```
 
-1. Use C++ to compile and obtain a single executable for your module:
+3. Use C++ to compile and obtain a single executable for your module:
 
    1. Create a new <file>build</file> directory within your module directory:
 
@@ -1368,7 +1391,7 @@ Create a <file>CMakeLists.txt</file> file to define how to compile your module a
       cd build
       ```
 
-   1. Build and compile your module:
+   2. Build and compile your module:
 
       ```sh { class="command-line"}
       cmake .. -G Ninja
@@ -1376,7 +1399,7 @@ Create a <file>CMakeLists.txt</file> file to define how to compile your module a
       ninja install
       ```
 
-   1. Run `ls` in your module's <file>build</file> directory to find the compiled executable, which should have the same name as the module directory (`my-base` in these examples):
+   3. Run `ls` in your module's <file>build</file> directory to find the compiled executable, which should have the same name as the module directory (`my-base` in these examples):
 
 For more information on building a module in C++, see the [C++ SDK Build Documentation](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
 
