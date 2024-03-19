@@ -73,12 +73,14 @@ You can get the version number from a specific model version by navigating to th
 The model package config looks like this:
 
 ```json
+"packages": [
 {
   "package": "<model_id>/<model_name>",
   "version": "YYYY-MM-DDThh-mm-ss",
   "name": "<model_name>",
   "type": "ml_model"
 }
+]
 ```
 
 ## Models from registry
