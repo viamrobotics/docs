@@ -86,6 +86,15 @@ Add the `tflite_cpu` ML model object to the services array in your raw JSON conf
 {{% tab name="JSON Example" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
+{
+"packages": [
+  {
+    "package": "39c34811-9999-4fff-bd91-26a0e4e90644/my_fruit_model",
+    "version": "YYYY-MM-DDThh-mm-ss",
+    "name": "my_fruit_model",
+    "type": "ml_model"
+  }
+], ... // < Insert "components", "modules" etc. >
 "services": [
   {
     "name": "fruit_classifier",
@@ -98,7 +107,11 @@ Add the `tflite_cpu` ML model object to the services array in your raw JSON conf
     }
   }
 ]
+}
 ```
+
+The `"packages"` array shown above is automatically created when you deploy the model.
+You do not need to edit the configuration yourself, expect if you wish to change the [Versioning for deployed models](/ml/deploy/#versioning-for-deployed-models).
 
 {{% /tab %}}
 {{< /tabs >}}
