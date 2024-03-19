@@ -1257,7 +1257,7 @@ Depending on the language you are using to code your module, you may have option
 {{% tab name="Python" %}}
 
 The recommended approach for Python is to use [`PyInstaller`](https://pypi.org/project/pyinstaller/) to compile your module into a packaged executable: a standalone file containing your program, the Python interpreter, and all of its dependencies.
-When packaged in this fashion, you can run the resulting executable on your desired target platform or platforms without needing to install additional software or manage dependencies manually. 
+When packaged in this fashion, you can run the resulting executable on your desired target platform or platforms without needing to install additional software or manage dependencies manually.
 
 To create a packaged executable:
 

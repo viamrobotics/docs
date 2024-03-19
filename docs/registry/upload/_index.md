@@ -180,10 +180,10 @@ For more information, see [Naming your model](/registry/#naming-your-model-names
    To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   tar -czf module.tar.gz run.sh requirements.txt src
+   tar -czvf dist/archive.tar.gz dist/main
    ```
 
-   Where `run.sh` is your [entrypoint file](/registry/create/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/registry/create/#compile-or-package-your-module), and `src` is the source directory of your module.
+   Where `dist/main` is your [entrypoint file](/registry/create/#compile-or-package-your-module).
 
    Supply the path to the resulting archive file in the next step.
 
@@ -306,8 +306,8 @@ However, if you already have your own CI with access to arm runners or only inte
 
 1. Paste one of the following action templates into the edit window, depending on whether you are using the `build-action` or `upload-module` action:
 
-   {{< tabs >}}
-   {{% tab name="CI with build-action" %}}
+{{< tabs >}}
+{{% tab name="CI with build-action" %}}
 
 ```yaml {class="line-numbers linkable-line-numbers"}
 # see https://github.com/viamrobotics/build-action for help
@@ -351,7 +351,7 @@ At the end of your <file>meta.json</file>, add the build configuration:
 
 {{%expand "Click to view example build.sh" %}}
 
-``` sh { class="command-line"}
+```sh { class="command-line"}
 #!/bin/bash
 set -e
 UNAME=$(uname -s)
@@ -508,17 +508,17 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 
    Both methods return a `key id` and a `key value` which together comprise your organization API key.
 
-1. Then, configure your GitHub repository to use your organization API key to authenticate during GitHub action runs, following the steps below:
+2. Then, configure your GitHub repository to use your organization API key to authenticate during GitHub action runs, following the steps below:
 
    1. In the GitHub repository for your project, select **Settings**, then **Secrets and variables**, then **Actions**.
 
-   1. Click the green **New repository secret** button, enter `viam_key_id` as the **NAME**, paste the value for `key id` from above into the **Secret** text field, then click **Add secret**.
+   2. Click the green **New repository secret** button, enter `viam_key_id` as the **NAME**, paste the value for `key id` from above into the **Secret** text field, then click **Add secret**.
 
-   1. Then, click the green **New repository secret** button, enter `viam_key_value` as the **NAME**, paste the value for `key value` from above into the **Secret** text field, then click **Add secret**.
+   3. Then, click the green **New repository secret** button, enter `viam_key_value` as the **NAME**, paste the value for `key value` from above into the **Secret** text field, then click **Add secret**.
 
    For more information on GitHub secrets, see the GitHub documentation for [creating secrets for a repository](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository).
 
-1. Push a tag to your repo or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
+3. Push a tag to your repo or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
    The specific step to take to release your software depends on your CI workflow, your GitHub configuration, and the `run` step you defined earlier.
    Once complete, your module will upload to the [Viam registry](https://app.viam.com/registry) with the appropriate version automatically.
 
