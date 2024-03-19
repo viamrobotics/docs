@@ -251,8 +251,8 @@ def get_proto_apis():
         api_html = api_page.read().decode("utf-8")
 
         ## protos are presented in plaintext, so we must match by expected raw text:
-        my_regex = 'type ' + regex.escape(api_name) + '[^{]*\{([^}]+)\}'
-        search = regex.search(my_regex, api_html)
+        proto_regex = 'type ' + regex.escape(api_name) + '[^{]*\{([^}]+)\}'
+        search = regex.search(proto_regex, api_html)
         match_output = search.group()
         split = match_output.splitlines()
 
@@ -396,7 +396,7 @@ def parse(type, names):
                         ## Determine method name, but don't save to dictionary as value; we use it as a key instead:
                         method_name = id.rsplit('.',1)[1]
 
-                        ## Experimental attempt to match to proto. ~33% accurate so far, needs more work:
+                        ## Experimental attempt to match to proto. ~66% accurate so far, needs more work:
                         #method_proto_raw = method_name.split("_")
                         #method_proto=""
                         #for method_part in method_proto_raw:
@@ -410,6 +410,12 @@ def parse(type, names):
 
                         #    if try_method_proto not in proto_map[resource]["methods"]:
                         #        print("WARNING: " + method_proto + " NOT FOUND!!!")
+
+                        ## Also experimenting with, __mapping__ object, example:
+                        ## https://python.viam.dev/_modules/viam/gen/component/arm/v1/arm_grpc.html#ArmServiceBase.__mapping__
+
+                        ## Determine method proto, placeholder for now:
+                        this_method_dict["proto"] = ""
 
                         ## Determine method description, stripping newlines:
                         this_method_dict["description"] = tag.find('dd').p.text.replace("\n", " ")
@@ -475,6 +481,7 @@ def parse(type, names):
                                     this_method_parameters_dict["param_description"] = regex.split(r" – ", strong_tag.parent.text)[1]
                                     ## ALTERNATIVE: Get full desc, including type info.
                                     ## Might be useful for alternate approach to markdownification, if desired!
+                                    ## Not currently used:
                                     param_desc_raw = strong_tag.parent.text
 
                                 ## Unable to determine parameter description. Usually timeout or extra:
@@ -503,6 +510,7 @@ def parse(type, names):
 
                             ## ALTERNATIVE: Get full return, including type info and html links if present.
                             ## Might be useful for alternate approach to markdownification, if desired!
+                            ## Not currently used:
                             return_type_raw = return_tag.find('span', class_="sig-return-typehint")
 
                             ## Add return_type to this_method_dict by explicit key name:
@@ -544,6 +552,7 @@ def parse(type, names):
 
                                      ## ALTERNATIVE: Get full error raised, including type info and html links if present.
                                      ## Might be useful for alternate approach to markdownification, if desired!
+                                     ## Not currently used:
                                     raises_desc_raw = strong_tag.parent.text
 
                                     ## Determine error raised description, and append to this_method_raises_dict by explicit key name:
@@ -585,6 +594,10 @@ def parse(type, names):
                     this_method_dict = {}
 
                     method_name = tag.get('id')
+
+                    ## Temporary placeholder for mapping to proto:
+                    this_method_dict["proto"] = ""
+
                     this_method_dict["method_link"] = tag.find("span", class_="name").a['href'].replace("..", sdk_url)
 
                     ## Flutter SDK puts all parameter detail on a separate params page that we must additionally make_soup on:
