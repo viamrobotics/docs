@@ -92,7 +92,7 @@ Add the vision service object to the services array in your raw JSON configurati
 {{% /tab %}}
 {{< /tabs >}}
 
-The following parameters are available for a `color_detector`.
+The following parameters are available for a `color_detector`:
 
 <!-- prettier-ignore -->
 | Parameter | Inclusion | Description |

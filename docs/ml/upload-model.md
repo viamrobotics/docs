@@ -14,11 +14,23 @@ description: "Upload a Machine Learning model to Viam to use it with the ML Mode
 The ML model service works with models trained inside and outside the Viam app.
 To use a model that you have trained yourself outside the Viam app, [upload it as a new model privately or share it in the Viam registry](#upload-a-new-model-or-new-version).
 If you need to update a previously uploaded model, you can also [upload a new version](#upload-a-new-model-or-new-version).
-To work with the `tflite_cpu` ML model service, an ML model is comprised of a <file>.tflite</file> model file which defines the model, and optionally a <file>.txt</file> labels file which provides the text labels for your model.
 
 If you have [trained](/ml/train-model/) or uploaded an ML model privately and now want to make it available for reuse, you can at any point [make the existing model public in the registry](#make-an-existing-model-public-in-the-registry).
 
 Also, [share a model from your organization](#make-an-existing-model-public-in-the-registry) with other users in the registry.
+
+## Model framework support
+
+Before uploading your model to the cloud, check and see if you will be able to deploy it to your machine.
+Model framework support is currently as follows:
+
+<!-- prettier-ignore -->
+| Model Framework | Hardware Support | System Architecture | Description |
+| --------------- | ---------------- | ------------------- | ----------- |
+| [TensorFlow Lite](https://www.tensorflow.org/lite) | Any CPU <br> Nvidia GPU | Linux, Raspbian, MacOS, Android | Quantized version of TensorFlow that has reduced compatibility for models but supports more hardware. |
+| [ONNX](https://onnx.ai/) | Any CPU <br> Nvidia GPU | Android, MacOS, Linux arm-64 | Universal format that is not optimized for hardware inference but runs on a wide variety of machines. |
+| [TensorFlow](https://www.tensorflow.org/) | Nvidia GPU | Linux (Jetson) | A full framework that is made for more production-ready systems. |
+| [PyTorch](https://pytorch.org/) | Nvidia GPU | Linux (Jetson) | A full framework that was built primarily for research. Because of this, it is much faster to do iterative development with (model doesn’t have to be predefined) but it is not as “production ready” as TensorFlow. It is the most common framework for OSS models because it is the go-to framework for ML researchers. |
 
 ## Upload a new model or new version
 
