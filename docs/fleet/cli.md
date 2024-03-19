@@ -711,8 +711,8 @@ Developers can either have a single build file for all platforms, or platform sp
 ```json {class="line-numbers linkable-line-numbers"}
 "build": {
   "setup": "./setup.sh",                  // optional - command to install your build dependencies
-  "build": "sh build.sh",          // command that will build your module
-  "path" : "dist/archive.tar.gz",               // optional - path to your built module
+  "build": "sh build.sh",                 // command that will build your module
+  "path" : "dist/archive.tar.gz",         // optional - path to your built module
                                           // (passed to the 'viam module upload' command)
   "arch" : ["linux/amd64", "linux/arm64"] // architecture(s) to build for
 }
@@ -724,7 +724,7 @@ Developers can either have a single build file for all platforms, or platform sp
 ```json {class="line-numbers linkable-line-numbers"}
 "build": {
   "path" : "dist/archive.tar.gz",               // optional - path to your built module
-                                          // (passed to the 'viam module upload' command)
+                                                // (passed to the 'viam module upload' command)
   "arch": {
         "linux/arm64": {
           "build": "sh build-linux-arm64.sh" // command that will build your module
@@ -765,7 +765,7 @@ tar -czvf dist/archive.tar.gz dist/main
 {{% /tab %}}
 {{< /tabs >}}
 
-For example, the following extends the `my-module` <file>meta.json</file> file from the previous section with a new `build` object to control its build parameters when used with `module build start` or `module build local`:
+For example, the following extends the `my-module` <file>meta.json</file> file from the previous section using the single build file approach, adding a new `build` object to control its build parameters when used with `module build start` or `module build local`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

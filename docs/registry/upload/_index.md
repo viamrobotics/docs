@@ -130,7 +130,7 @@ If you mark your module as public, you cannot change it back to private.
         <td><code>build</code></td>
         <td>object</td>
         <td><strong>Optional</strong></td>
-        <td>The commands to install your build dependencies and build your module, as well as the architectures to build for and, optionally, the path to your built module. Use this with the <a href="/fleet/cli/#using-the-build-subcommand">Viam CLI's build subcommand</a>. </td>
+        <td>An object containing the command to run to build your module, as well as optional fields for the path to your dependency setup script, the target architectures to build for, and the path to your built module. Use this with the <a href="/fleet/cli/#using-the-build-subcommand">Viam CLI's build subcommand</a>. </td>
       </tr>
 
     </table>
