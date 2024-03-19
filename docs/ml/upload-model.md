@@ -14,11 +14,23 @@ description: "Upload a Machine Learning model to Viam to use it with the ML Mode
 The ML model service works with models trained inside and outside the Viam app.
 To use a model that you have trained yourself outside the Viam app, [upload it as a new model privately or share it in the Viam registry](#upload-a-new-model-or-new-version).
 If you need to update a previously uploaded model, you can also [upload a new version](#upload-a-new-model-or-new-version).
-To work with the `tflite_cpu` ML model service, an ML model is comprised of a <file>.tflite</file> model file which defines the model, and optionally a <file>.txt</file> labels file which provides the text labels for your model.
 
 If you have [trained](/ml/train-model/) or uploaded an ML model privately and now want to make it available for reuse, you can at any point [make the existing model public in the registry](#make-an-existing-model-public-in-the-registry).
 
 Also, [share a model from your organization](#make-an-existing-model-public-in-the-registry) with other users in the registry.
+
+## Model framework support
+
+Before uploading your model to the cloud, check and see if you will be able to deploy it to your machine.
+Model framework support is currently as follows:
+
+<!-- prettier-ignore -->
+| Model Framework | Hardware Support | System Architecture | Description |
+| --------------- | ---------------- | ------------------- | ----------- |
+| [TensorFlow Lite](https://www.tensorflow.org/lite) | Any CPU <br> Nvidia GPU | Linux, Raspbian, MacOS, Android | Quantized version of TensorFlow that has reduced compatibility for models but supports more hardware. |
+| [ONNX](https://onnx.ai/) | Any CPU <br> Nvidia GPU | Android, MacOS, Linux arm-64 | Universal format that is not optimized for hardware inference but runs on a wide variety of machines. |
+| [TensorFlow](https://www.tensorflow.org/) | Nvidia GPU | Linux (Jetson) | A full framework that is made for more production-ready systems. |
+| [PyTorch](https://pytorch.org/) | Nvidia GPU | Linux (Jetson) | A full framework that was built primarily for research. Because of this, it is much faster to do iterative development with (model doesn’t have to be predefined) but it is not as “production ready” as TensorFlow. It is the most common framework for OSS models because it is the go-to framework for ML researchers. |
 
 ## Upload a new model or new version
 
@@ -39,13 +51,15 @@ See [ML models in the registry](/registry/#ml-models) for more information.
 Select **Private** to only publish the model for internal use within this {{< glossary_tooltip term_id="organization" text="organization" >}}.
 Select **Next steps** to continue.
 
-{{<imgproc src="/ml/upload-model.png" resize="600x" alt="Upload model menu on the DATA tab of the Viam app.">}}
+{{<imgproc src="/ml/upload-model.png" resize="900x" alt="Upload model menu on the DATA tab of the Viam app." style="max-width: 600px">}}
 
-1. Specify a name for the model.
-2. Specify the **Model type**.
-3. Add a `.tflite` model file.
-4. (Optional) Add a `.txt` label file.
-   This should include the label names as you provided them in training, with one name per line.
+1. Select the **Model framework** or the type of model.
+   TensorFlow Lite, TensorFlow, PyTorch, and ONNX model frameworks are currently supported.
+2. Upload the files required for your model framework:
+   - For a TensorFlow Lite or ONNX model framework, upload a `.txt` label file containing the label names you provided in training, with one name per line.
+   - For a TensorFlow model framework, upload the model in the [SavedModel format](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/README.md#the-savedmodel-format).
+3. Specify a name for the model.
+4. Specify the **Task type**.
 5. Add a short description.
    This will help other users to understand how to use your model.
 
@@ -59,11 +73,13 @@ Also, if you selected **Public**, it should be publicly visible in the [Viam reg
 {{<imgproc src="/ml/select-existing-model.png" resize="400x" alt="Select from your existing models.">}}
 
 1. Select the model you would like to update from your existing models.
-2. Select **Next steps** to continue.
-3. Add an updated `.tflite` model file.
-4. (Optional) Add an updated `.txt` label file.
-   This should include the label names as you provided them in training, with one name per line.
-5. Click **Upload model**.
+1. Click **Next steps** to continue.
+1. Select the **Model framework** or the type of model.
+   TensorFlow Lite, TensorFlow, PyTorch, and ONNX model frameworks are currently supported.
+1. Upload the files required for your model framework:
+   - For a TensorFlow Lite or ONNX model framework, upload a `.txt` label file containing the label names you provided in training, with one name per line.
+   - For a TensorFlow model framework, upload the model in the [SavedModel format](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/saved_model/README.md#the-savedmodel-format).
+1. Click **Upload model**.
 
 Your model is now updated.
 
@@ -74,7 +90,7 @@ If you upload a new version of that model, Viam will automatically deploy the ne
 
 If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [JSON machine configuration](/build/configure/#the-configure-tab).
 
-You can get the version number from a specific model version by navigating to the [models page](https://app.viam.com/data/models) finding the model's row, clicking on the right-side menu marked with **_..._** and selecting **Copy package JSON**. For example: `2024-02-28T13-36-51`.
+You can get the version number from a specific model version by navigating to the [models page](https://app.viam.com/data/models), finding the model's row, clicking on the right-side menu marked with **_..._** and selecting **Copy package JSON**. For example: `2024-02-28T13-36-51`.
 The model package config looks like this:
 
 ```json

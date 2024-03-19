@@ -39,6 +39,8 @@ Next, to install your preferred Viam SDK on your Linux or macOS development mach
 If you are using the Python SDK, [set up a virtual environment](/build/program/python-venv/) to package the SDK inside before running your code, avoiding conflicts with other projects or your system.
 
 ```sh {class="command-line" data-prompt="$"}
+python3 -m venv .venv
+source .venv/bin/activate
 pip install viam-sdk
 ```
 
@@ -59,7 +61,7 @@ go get go.viam.com/rdk/robot/client
 {{% tab name="TypeScript" %}}
 
 ```sh {class="command-line" data-prompt="$"}
-npm install --save @viamrobotics/sdk
+npm install @viamrobotics/sdk
 ```
 
 {{< alert title="Info" color="info" >}}

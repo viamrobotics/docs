@@ -4,7 +4,7 @@ linkTitle: "Base"
 weight: 10
 type: "docs"
 no_list: true
-description: "The moving platform that the other parts of a mobile robot attach to."
+description: "A moving platform that the other parts of a mobile robot attach to."
 tags: ["base", "components"]
 icon: true
 images: ["/icons/components/base.svg"]

@@ -3,7 +3,7 @@ title: "Configure an mlmodel Detector or Classifier"
 linkTitle: "mlmodel"
 weight: 10
 type: "docs"
-description: "A detector or classifier that uses a tflite model available on the machine to draw bounding boxes around objects or return a class label."
+description: "A detector or classifier that uses an ML model available on the machine to draw bounding boxes around objects or return a class label."
 tags: ["vision", "computer vision", "CV", "services", "detection"]
 images: ["/ml/vision/dog-detector.png"]
 aliases:
@@ -14,7 +14,7 @@ aliases:
 
 _Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#vision-service)_
 
-The `mlmodel` vision service model is a machine learning detector that draws bounding boxes or returns class labels according to the specified TensorFlow Lite model file available on the machine’s hard drive.
+The `mlmodel` vision service model is a machine learning detector that draws bounding boxes or returns class labels according to the specified TensorFlow Lite, TensorFlow, PyTorch, or ONNX model file available on the machine’s hard drive.
 To create a `mlmodel` classifier, you need an [ML model service with a suitable model](/ml/).
 Before configuring your `mlmodel` detector or classifier, you need to:
 
@@ -30,7 +30,7 @@ You can [add an existing model](/ml/upload-model/) or [train your own models](/m
 
 <h4>Deploy your model</h4>
 
-To make use of ML models with your machine, use the built-in [ML model service](/ml/) to deploy and run the model.
+To make use of ML models with your machine, use a suitable [ML model service](/ml/) to deploy and run the model.
 
 {{% /manualcard %}}
 {{< /cards >}}
@@ -117,6 +117,18 @@ Add the vision service object to the services array in your JSON configuration:
 
 Click **Save config**.
 
+The following attributes are available for an `mlmodel` detector or classifier:
+
+<!-- prettier-ignore -->
+| Parameter | Type | Inclusion | Description |
+| --------- | ---- | --------- | ----------- |
+| `mlmodel_name` | string | **Required** | The name of the [ML model service](/ml/deploy/) you want to use the model from. |
+| `remap_output_names` | object | Optional | The names of your output tensors, mapped to the service requirements. See [Tensor names](#tensor-names) for more information. |
+| `remap_input_names` | object | Optional | The name of your input tensor, mapped to the service requirements. See [Tensor names](#tensor-names) for more information. |
+| `input_image_bgr` | bool | Optional | Set this to `true` if the ML model service expects the input image to have BGR pixels, rather than RGB pixels. <br> Default: `false` |
+| `input_image_mean_value` | array | Optional | The standard deviation of the RGB (or BGR) values. Only required if the ML model service expects the input image to be normalized. <br> Default: `[0.5, 0.5, 0.5]` |
+| `input_image_std_dev` | array | Optional | The standard deviation of the RGB (or BGR) values. Only required if the ML model service expects the input image to be normalized. <br> Default: `[0.5, 0.5, 0.5]` |
+
 ## Tensor names
 
 Both the `mlmodel` detector and classifier require that the input and output tensors defined by your ML model are named according to the following:
@@ -128,52 +140,61 @@ Both the `mlmodel` detector and classifier require that the input and output ten
   - The _input tensor_ must be named `image`
   - The _output tensor_ must be named `probability`
 
-If you [trained your ML model using the Viam app](/ml/train-model/), your `mlmodel` tensors is already named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
+If you [trained your ML model using the Viam app](/ml/train-model/), your `mlmodel` tensors are already named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
 However, if you [uploaded your own ML model](/ml/upload-model/), or are using one from the [Viam registry](https://app.viam.com/registry), you may need to remap your tensor names to meet this requirement, and should follow the instructions to [remap tensor names](#remap-tensor-names).
 
 ### Remap tensor names
 
 If you need to remap the tensor names defined by your ML model to meet the tensor name requirements of the `mlmodel` detector or classifier, you can use the `remap_input_names` and `remap_output_names` attributes:
 
-- To remap your model's tensor names to work with an `mlmodel` detector, add the following to your `mlmodel` vision service configuration, replacing the `my_model` input and output tensor names with the names from your model:
+{{< tabs >}}
+{{% tab name="Detector" %}}
 
-  ```json {class="line-numbers linkable-line-numbers"}
-  {
-    "type": "vision",
-    "model": "mlmodel",
-    "attributes": {
-      "mlmodel_name": "my_model",
-      "remap_output_names": {
-        "my_model_output_tensor1": "category",
-        "my_model_output_tensor2": "location",
-        "my_model_output_tensor3": "score"
-      },
-      "remap_input_names": {
-        "my_model_input_tensor1": "image"
-      }
+To remap your model's tensor names to work with an `mlmodel` detector, add the following to your `mlmodel` vision service configuration, replacing the `my_model` input and output tensor names with the names from your model:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "type": "vision",
+  "model": "mlmodel",
+  "attributes": {
+    "mlmodel_name": "my_model",
+    "remap_output_names": {
+      "my_model_output_tensor1": "category",
+      "my_model_output_tensor2": "location",
+      "my_model_output_tensor3": "score"
     },
-    "name": "my-vision-service"
-  }
-  ```
+    "remap_input_names": {
+      "my_model_input_tensor1": "image"
+    }
+  },
+  "name": "my-vision-service"
+}
+```
 
-- To remap your model's tensor names to work with an `mlmodel` classifier, add the following to your `mlmodel` vision service configuration, replacing the `my_model` input and output tensor names with the names from your model:
+{{% /tab %}}
+{{% tab name="Classifier" %}}
 
-  ```json {class="line-numbers linkable-line-numbers"}
-  {
-    "type": "vision",
-    "model": "mlmodel",
-    "attributes": {
-      "mlmodel_name": "my_model",
-      "remap_output_names": {
-        "my_model_output_tensor1": "probability"
-      },
-      "remap_input_names": {
-        "my_model_input_tensor1": "image"
-      }
+To remap your model's tensor names to work with an `mlmodel` classifier, add the following to your `mlmodel` vision service configuration, replacing the `my_model` input and output tensor names with the names from your model:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "type": "vision",
+  "model": "mlmodel",
+  "attributes": {
+    "mlmodel_name": "my_model",
+    "remap_output_names": {
+      "my_model_output_tensor1": "probability"
     },
-    "name": "my-vision-service"
-  }
-  ```
+    "remap_input_names": {
+      "my_model_input_tensor1": "image"
+    }
+  },
+  "name": "my-vision-service"
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 When done, click **Save config**, then proceed to [test your detector or classifier](#test-your-detector-or-classifier).
 

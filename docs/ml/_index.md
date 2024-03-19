@@ -15,7 +15,7 @@ menuindent: true
 
 {{<imgproc src="/ml/training.png" class="alignright" resize="400x" declaredimensions=true alt="ML training">}}
 
-Viam includes a built-in machine learning (ML) model service which provides your machine with the ability to learn from data and adjust its behavior based on insights gathered from that data.
+Machine Learning (ML) provides your machines with the ability to adjust its behavior based on models that recognize patterns or make predictions.
 Common use cases include:
 
 - Object detection and classification which enable machines to detect people, animals, plants, or other objects with bounding boxes, and to perform actions when they are detected.
@@ -23,7 +23,14 @@ Common use cases include:
 
 However, your machine can make use of machine learning with nearly any kind of data.
 
-Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML models as long as your models adhere to the [model requirements](/ml/deploy/#tflite_cpu-limitations).
+Viam supports:
+
+- [TensorFlow Lite](https://www.tensorflow.org/lite) ML models as long as your models adhere to the [model requirements](/ml/deploy/#tflite_cpu-limitations)
+- TensorFlow
+- PyTorch
+- ONNX
+
+For more information, see [Model framework support](/ml/upload-model/#model-framework-support).
 
 ## Use machine learning with your machine
 
@@ -49,7 +56,7 @@ Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML mod
   <tr>
     <td>
       <b>4. Deploy your ML model</b>
-      <p>To use ML models with your machine, you must first deploy the model using the built-in <a href="/ml/deploy/">ML model service</a>. The ML model service will run the model and allow the vision service to use it.</p>
+      <p>To use ML models with your machine, you must first deploy the model using an <a href="/ml/deploy/">ML model service</a>. The ML model service will run the model and allow the vision service to use it.</p>
     </td>
   </tr>
   <tr>
