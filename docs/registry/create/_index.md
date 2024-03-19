@@ -1294,7 +1294,7 @@ To create a packaged executable:
    python -m PyInstaller --onefile --hidden-import="googleapiclient" --add-data src/arm/my_arm_kinematics.json:src/arm/ src/main.py
    ```
 
-   By default, the output directory for the packaged executable is <file>dist</file>, and the name of the executable is derived from the base name of the input script (in this case, main).
+   By default, the output directory for the packaged executable is <file>dist</file>, and the name of the executable is derived from the name of the input script (in this case, main).
 
 We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86, ARM Linux, and MacOS.
 Follow the instructions to [Update an existing module using a GitHub action](/registry/upload/#update-an-existing-module-using-a-github-action) to add the build configuration to your machine.
