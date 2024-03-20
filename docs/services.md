@@ -16,7 +16,7 @@ Some of that software is the low-level code that communicates directly with the 
 In this case, the vision service is configured to run computer vision models on output from the camera component.
 The navigation service can take the raw output from the GPS component output and determine geographical location, and the data service captures data from any or all of the components, for example storing images from the camera.
 
-{{< imgproc src="/viam/machine-services.png" alt="Machine components" resize="1000x" style="max-width:650px" class="aligncenter" >}}
+{{< imgproc src="/viam/machine-services.png" alt="Machine components" resize="650x" class="aligncenter" >}}
 <br>
 
 Many built-in services run locally within `viam-server`, but you can think of them as discrete building blocks that you can mix and match however you want; you can run your machine using none, some, or all of them, depending on your use case.
