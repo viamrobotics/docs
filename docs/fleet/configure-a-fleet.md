@@ -26,7 +26,7 @@ Once you are confident that your configuration change works as expected, you can
 If you attempt to delete a fragment that is currently deployed to a machine, you will receive an error message advising that the fragment is in use, but you can still delete the fragment if desired.
 You can see the number of machines using your fragment from the [fragments page](https://app.viam.com/fragments) in the Viam app.
 
-Fragments are private to each organization by default (except for the `viam-dev` organization).
+Fragments are private to each organization by default.
 If you would like to make your fragment available to users outside your organization, please reach out to us to request that we make your fragment public.
 You must be an [organization owner](/fleet/rbac/#permissions) in order to create fragments.
 
@@ -42,17 +42,17 @@ While you can [use the Viam Agent to deploy a fragment](/build/provision/#use-a-
 ## Create a fragment
 
 Before you create a fragment, you'll need a JSON configuration file.
-The easiest way to create a config file is to [configure](/build/configure/) one of your machines on its **CONFIG** tab in the [Viam app](https://app.viam.com).
+The easiest way to create a config file is to [configure](/build/configure/) one of your machines on its **CONFIGURE** tab in the [Viam app](https://app.viam.com).
 Configure all resources that you want to have for all your machines.
 If there are any additional resources that you do not want to share with all machines, do not configure them until after you've created the fragment.
-When you've finished configuring the resources, go to the **JSON** tab and copy the entire JSON config.
+When you've finished configuring the resources, select **JSON** mode and copy the entire JSON config.
 Now you're ready to share that config by creating a fragment.
 
-To create your own private fragment, go to [app.viam.com/fragments](https://app.viam.com/fragments) or click on **Fragments** in the left navigation bar on the [FLEET page](https://app.viam.com/robots).
+To create your own private fragment, go to [app.viam.com/fragments](https://app.viam.com/fragments) or click on **Fragments** in the left navigation bar on the [**FLEET** page](https://app.viam.com/robots).
 
 1. Enter a name for your new fragment and click **Add fragment**.
 2. Paste the copied JSON configuration in the config field.
-3. Click **SAVE FRAGMENT**.
+3. Click **Save fragment**.
 
 ![Fragment creation view](/fleet/fragment-view.png)
 
@@ -60,17 +60,23 @@ To create your own private fragment, go to [app.viam.com/fragments](https://app.
 
 To add a fragment to a machine:
 
-- Go to the **Fragments** subtab of your machine's **Config** tab on the [Viam app](https://app.viam.com).
-- Look through the list of available fragments and click **Add** next to any fragments you want to add to your machine.
-- Click **Save Config** at the bottom of the screen.
+- Navigate to your machine in [the Viam app](https://app.viam.com/robots).
+- Go to the **CONFIGURE** tab. In the left-hand menu, click the **+** (Create) icon next to the machine {{< glossary_tooltip term_id="part" text="part" >}} you want to add the fragment to.
+- Select **Insert fragment**.
+  Now, you can see the available fragments to add:
 
-![The fragments subtab](/fleet/fragments-tab.png)
+  {{<imgproc src="get-started/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
 
-The components and services included in the fragment appear inside a read-only fragment section in the **Components** and **Services** subtabs.
+- Look through the list of available fragments.
+  Click on a fragment to open its menu.
+  Click **View JSON** to view the JSON configuration the fragment contains, and click **Insert fragment** to insert the fragment into your machine's configuration.
+- Click **Save** in the upper right corner of the page to save your new configuration.
 
-![A fragment in the components subtab](/fleet/fragment-components.png)
+The components and services included in the fragment will now appear as _read-only_ cards on the **CONFIGURE** tab, along with a card for your fragment:
 
-In the `Raw JSON` configuration, you will see the fragment ID in the `fragments` section:
+{{<imgproc src="get-started/try-viam/rover-resources/fragments/fragments_cards.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
+
+In the `JSON` configuration, you will see the fragment ID in the `fragments` section:
 
 ```json
 {
@@ -83,8 +89,11 @@ For an example of adding a fragment to a machine, see the [Add a Rover Fragment 
 
 ## Modify the config of a machine that uses a fragment
 
-When you modify a fragment, those changes are pushed to all machines that use that fragment.
-If you need to modify the config of just one machine that uses a fragment you have two options:
+The configuration cards of components and services included in the fragment are _read-only_, meaning they cannot be modified from the fragment specification.
+
+Likewise, when you modify the fragment itself, those changes are pushed to all machines that use that fragment.
+
+If you need to modify the config of just one machine that uses a fragment, you have two options:
 
 - Use `fragment_mods` in your machine's config to overwrite certain fields of the fragment.
 - Copy and paste the contents of the fragment, remove the link to the fragment itself, then modify the config as needed.
@@ -104,8 +113,8 @@ You can create a webhook with a fragment but you cannot modify it with `fragment
 
 To configure fragment mods:
 
-1. Navigate to your machine's **Config** tab.
-2. Switch to **Raw JSON** mode.
+1. Navigate to your machine's **CONFIGURE** tab.
+2. Switch to **JSON** mode.
 3. Add a top-level section called `"fragment_mods"` (alongside the other top-level sections like `"components"` and `"fragments"`):
 
 {{< tabs >}}
@@ -321,18 +330,19 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
 
    {{% /expand%}}
 
-6. Click **Save config**.
-7. To check that your mods are working, click the **See full config** link found under the **Raw JSON** mode selector.
+6. Click **Save** in the upper right corner of the page to save your new configuration.
+7. To check that your mods are working, click the **See full config** link found under the **JSON** mode selector.
 
 ### Copy and paste method
 
-1. Go to the **Fragments** subtab of the **Config** tab.
-2. Click **Remove** next to the fragment.
-3. Select and copy the contents of the fragment in the box on the right side of the **Fragments** subtab.
-4. Toggle to **Raw JSON** mode.
-5. Paste the raw fragment contents into the **Raw JSON** config field.
-6. Click **Save config**.
-7. Now, you can edit the config either in **Raw JSON** mode or in **Builder** mode.
+1. Navigate to the card belonging to your fragment on the **CONFIGURE** tab.
+2. Click the **View JSON** button in the upper right corner of the card.
+   Copy all of the JSON.
+3. Return to the fragment card.
+   Click the **...** (Actions) button in the upper right corner of the card. Click **Delete** and confirm your choice.
+4. In the left-hand menu of the **CONFIGURE** tab, click **JSON** to switch to JSON mode.
+5. Paste the raw fragment contents into the editor and click **Save** in the upper-right corner of the screen to save your config.
+6. Now, you can edit the config in either **JSON** or **Builder** mode.
 
 ## Next steps
 
