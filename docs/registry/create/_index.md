@@ -1314,7 +1314,8 @@ python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz dist/main
 ```
 
-This script automates the process of setting up a Python virtual environment, installing dependencies, packaging the Python module into a standalone executable using PyInstaller, and then compressing the resulting executable into a tarball.
+This script automates the process of setting up a Python virtual environment on a Linux arm64 machine, installing dependencies, packaging the Python module into a standalone executable using PyInstaller, and then compressing the resulting executable into a tarball.
+For more examples of build scripts see [Update an existing module using a GitHub action](/registry/upload/#update-an-existing-module-using-a-github-action).
 
 {{% alert title="Note" color="note" %}}
 
