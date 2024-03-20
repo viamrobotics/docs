@@ -8,6 +8,8 @@ images: ["/platform/provisioning-demo.gif"]
 videos: ["/platform/provisioning-demo.webm", "/platform/provisioning-demo.mp4"]
 tags: ["fleet management", "viam-server", "viam-agent"]
 # SME: James Otting
+aliases:
+  - "/build/provision/"
 ---
 
 {{<gif webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with the Viam Agent." class="alignright" max-width="400px">}}
