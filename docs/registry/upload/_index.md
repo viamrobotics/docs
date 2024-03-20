@@ -183,7 +183,7 @@ For more information, see [Naming your model](/registry/#naming-your-model-names
    tar -czvf dist/archive.tar.gz dist/main
    ```
 
-  Where `dist/main` is the [packaged executable](/registry/create/#compile-or-package-your-module) that runs the module at the [entry point](/registry/create/#write-an-entry-point-main-program-file).
+Where `dist/main` is the [packaged executable](/registry/create/#compile-or-package-your-module) that runs the module at the [entry point](/registry/create/#write-an-entry-point-main-program-file).
 
 Supply the path to the resulting archive file in the next step.
 
