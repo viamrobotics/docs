@@ -185,7 +185,7 @@ For more information, see [Naming your model](/registry/#naming-your-model-names
 
   Where `dist/main` is the [packaged executable](/registry/create/#compile-or-package-your-module) that runs the module at the [entry point](/registry/create/#write-an-entry-point-main-program-file).
 
-   Supply the path to the resulting archive file in the next step.
+Supply the path to the resulting archive file in the next step.
 
 2. Run `viam module upload` to upload your custom module to the Viam registry.
    Specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code:
