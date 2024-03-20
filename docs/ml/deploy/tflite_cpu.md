@@ -73,8 +73,8 @@ Add the `tflite_cpu` ML model object to the services array in your raw JSON conf
     "type": "mlmodel",
     "model": "tflite_cpu",
     "attributes": {
-      "model_path": "${packages.ml_model.<model_name>}/<model-name>.tflite",
-      "label_path": "${packages.ml_model.<model_name>}/labels.txt",
+      "model_path": "${packages.<model_name>}/<model-name>.tflite",
+      "label_path": "${packages.<model_name>}/labels.txt",
       "num_threads": <number>
     }
   },
@@ -101,8 +101,8 @@ Add the `tflite_cpu` ML model object to the services array in your raw JSON conf
     "type": "mlmodel",
     "model": "tflite_cpu",
     "attributes": {
-      "model_path": "${packages.ml_model.my_fruit_model}/my_fruit_model.tflite",
-      "label_path": "${packages.ml_model.my_fruit_model}/labels.txt",
+      "model_path": "${packages.my_fruit_model}/my_fruit_model.tflite",
+      "label_path": "${packages.my_fruit_model}/labels.txt",
       "num_threads": 1
     }
   }
@@ -124,6 +124,13 @@ The following parameters are available for a `"tflite_cpu"` model:
 | `model_path` | **Required** | The absolute path to the `.tflite model` file, as a `string`. |
 | `label_path` | Optional | The absolute path to a `.txt` file that holds class labels for your TFLite model, as a `string`. This text file should contain an ordered listing of class labels. Without this file, classes will read as "1", "2", and so on. |
 | `num_threads` | Optional | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
+
+{{% alert title="Note" color="note" %}}
+If you **Deploy Model on Robot**, `model_path` and `label_path` will be automatically configured in the format `"${packages.<model_name>}/<model-name>.tflite"`.
+
+If you take the **Path to existing model on robot** approach, your model and label paths do not have to be in the same format.
+They can look like `home/models/fruit/my_fruit_model.tflite`.
+{{% /alert %}}
 
 Save the configuration.
 
