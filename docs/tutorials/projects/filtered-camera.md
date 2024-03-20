@@ -219,7 +219,7 @@ Your uploaded model is immediately available for use after upload.
 
 {{< imgproc src="/tutorials/filtered-camera-module/upload-model-complete.png" alt="The models subtab under the data tab in the Viam app, showing a model that has been uploaded and is ready for use" resize="1200x" >}}
 
-If you are designing your own model, see [`tflite_cpu` limitations](/ml/deploy/#tflite_cpu-limitations) for guidance on structuring your own model.
+If you are designing your own TensorFlow Lite model, see [model requirements](/ml/deploy/tflite_cpu/#model-requirements) for guidance on structuring your own model.
 
 For more information, see [Upload an existing model](/ml/upload-model/).
 
@@ -244,7 +244,7 @@ Add the ML model service to your machine to be able to deploy and update ML mode
 
    {{< imgproc src="/tutorials/filtered-camera-module/configure-mlmodel-service.png" alt="The ML model service configuration pane with deploy model on robot selected, and the my-viam-figure-model added" resize="600x" >}}
 
-For more information, see [Create an ML model service](/ml/deploy/#create-an-ml-model-service).
+For more information, see [Create an ML model service](/ml/deploy/).
 
 ### Add the vision service
 
