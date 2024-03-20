@@ -8,11 +8,13 @@ images: ["/platform/provisioning-demo.gif"]
 videos: ["/platform/provisioning-demo.webm", "/platform/provisioning-demo.mp4"]
 tags: ["fleet management", "viam-server", "viam-agent"]
 # SME: James Otting
+aliases:
+  - "/build/provision/"
 ---
 
-{{<gif webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with the Viam Agent" class="alignright" max-width="400px">}}
+{{<gif webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with the Viam Agent." class="alignright" max-width="400px">}}
 
-You can use the _Viam Agent_ to provision a machine as it first comes online with a pre-defined configuration.
+You can use Viam's software provisioning manager, the _Viam Agent_, to provision a machine as it first comes online with a pre-defined configuration.
 This is useful when deploying a fleet of machines directly from the factory to a customer, or when bundling proprietary software on your Viam machine.
 You can install the Viam Agent on your machines as part of your build process, and then have the Viam Agent perform the rest of the first-time setup for your machine once deployed to a customer, or to the field.
 
