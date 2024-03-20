@@ -96,7 +96,7 @@ which you can find on the [App Store](https://apps.apple.com/vn/app/viam-robotic
 Extend this control to your team by granting them access to your organization.
 Additionally, you can search for machines in your fleet, as well as securely upload images from your phone to individual machines for later use.
 
-{{<gif webm_src="/manage/mobile_app_search.webm" mp4_src="/manage/mobile_app_search.mp4" alt="Using the control interface under the locations tab on the Viam mobile app" max-width="200px">}}
+{{<gif webm_src="/manage/mobile-app-search.webm" mp4_src="/manage/mobile-app-search.mp4" alt="Using the control interface under the locations tab on the Viam mobile app" max-width="200px">}}
 
 ### Code Sample
 
