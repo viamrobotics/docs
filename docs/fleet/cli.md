@@ -720,7 +720,7 @@ Developers can either have a single build file for all platforms, or platform sp
 
 {{%expand "Click to view example build.sh" %}}
 
-``` sh { class="command-line"}
+```sh { class="command-line"}
 #!/bin/bash
 set -e
 UNAME=$(uname -s)

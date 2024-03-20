@@ -183,7 +183,7 @@ For more information, see [Naming your model](/registry/#naming-your-model-names
    tar -czvf dist/archive.tar.gz dist/main
    ```
 
-   Where `dist/main` is your [entrypoint file](/registry/create/#compile-or-package-your-module).
+  In this case, `dist/main` is the [packaged executable](/registry/create/#compile-or-package-your-module) that runs the module at the [entry point](/registry/create/#write-an-entry-point-main-program-file).
 
    Supply the path to the resulting archive file in the next step.
 
@@ -426,6 +426,8 @@ pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz dist/main
 ```
+
+{{% /expand%}}
 
 {{% /tab %}}
 {{< /tabs >}}
