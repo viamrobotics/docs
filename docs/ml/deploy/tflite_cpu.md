@@ -126,10 +126,10 @@ The following parameters are available for a `"tflite_cpu"` model:
 | `num_threads` | Optional | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
 
 {{% alert title="Note" color="note" %}}
-If you **Deploy Model on Robot**, `model_path` and `label_path` will be automatically configured in the format `"${packages.<model_name>}/<model-name>.tflite"`.
+If you **Deploy Model on Robot**, `model_path` and `label_path` will be automatically configured in the format `"${packages.<model_name>}/<model-name>.tflite"` and `"${packages.<model_name>}/labels.txt"` respectively..
 
 If you take the **Path to existing model on robot** approach, your model and label paths do not have to be in the same format.
-They can look like `home/models/fruit/my_fruit_model.tflite`.
+For example, they might resemble `home/models/fruit/my_fruit_model.tflite`.
 {{% /alert %}}
 
 Save the configuration.
