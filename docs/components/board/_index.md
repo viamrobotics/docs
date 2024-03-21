@@ -158,7 +158,7 @@ reader = await my_board.analog_reader_by_name(name="my_example_analog_reader")
 
 **Parameters:**
 
-- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the analog reader you want to retrieve. Set as the `"name"` property [in configuration](/components/board/#digital_interrupts).
+- `name` [(string)](https://pkg.go.dev/builtin#string): Name of the analog reader you want to retrieve. Set as the `"name"` property [in configuration](/components/board/#digital_interrupts).
 
 **Returns:**
 
