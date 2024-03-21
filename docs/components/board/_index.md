@@ -420,7 +420,7 @@ err := myBoard.Status(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### SetPWM
+### SetPowerMode
 
 Set the board to the indicated `PowerMode`.
 
