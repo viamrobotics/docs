@@ -16,19 +16,42 @@ menuindent: true
 {{<imgproc src="/ml/training.png" class="alignright" resize="400x" declaredimensions=true alt="ML training">}}
 
 Machine Learning (ML) provides your machines with the ability to adjust its behavior based on models that recognize patterns or make predictions.
+
 Common use cases include:
 
-- Object detection and classification which enable machines to detect people, animals, plants, or other objects with bounding boxes, and to perform actions when they are detected.
+- Object detection, which enables machines to detect people, animals, plants, or other objects with bounding boxes, and to perform actions when they are detected.
+- Object classification, which enables machines to separate people, animals, plants, or other objects into predefined categories based on their characteristics.
 - Speech recognition, natural language processing, and speech synthesis, which enable machines to verbally communicate with us.
 
 However, your machine can make use of machine learning with nearly any kind of data.
 
-Viam supports:
+{{% alert title="Note" color="note" %}}
+See [Integrate Viam with ChatGPT to Create a Companion Robot](/tutorials/projects/integrating-viam-with-openai/) for an example of using Viam to add object detection, speech recognition, natural language processing, and speech synthesis capabilities to a machine.
+{{% /alert %}}
 
-- [TensorFlow Lite](https://www.tensorflow.org/lite) ML models as long as your models adhere to the [model requirements](/ml/deploy/tflite_cpu/#model-requirements)
-- TensorFlow
-- PyTorch
-- ONNX
+Viam provides models of [ML model](/ml/deploy/) and [Computer Vision](/ml/vision/) services to facilitate model deployment and object detection and classification.
+
+The ML model service runs the model on your machine so that the [Computer Vision](/ml/vision) `mlmodel` service can use it as a detector or classifier, interpreting image data from images on your computer or a [camera](/components/camera/) to draw bounding boxes around objects (detection) or return a class label and confidence score (classification) based off the [inferences](/ml/deploy/#infer) the underlying ML model makes.
+
+See [Use machine learning with your machine](#use-machine-learning-with-your-machine) for a full guide to this workflow.
+
+The ML model service works with models trained inside and outside the Viam app, and with models that are private to an organization or shared on the registry.
+Thus, you have four options when choosing a model to deploy onto an [ML model](/ml/deploy/) deployment service.
+You can:
+
+- [train a model on the Viam app](ml/train-model/) and deploy it
+- deploy a pre-trained model another user has published from [the registry](https://app.viam.com/registry)
+- [upload](/ml/upload-model/) a model trained outside the Viam platform to the registry privately or publicly and deploy it
+- deploy a model trained outside the Viam platform that's already available on your machine
+
+The model you use must be supported on the Viam platform.
+
+Viam supports the following model frameworks:
+
+- [TensorFlow Lite](https://www.tensorflow.org/lite) (as long as your models adhere to the [model requirements](/ml/deploy/tflite_cpu/#model-requirements)): with the [`tflite_cpu` ML model service](/ml/deploy/)
+- [TensorFlow](https://www.tensorflow.org/): with the [`triton` ML model service](https://github.com/viamrobotics/viam-mlmodelservice-triton)
+- [PyTorch](https://pytorch.org/): with the [`triton` ML model service](https://github.com/viamrobotics/viam-mlmodelservice-triton)
+- [ONNX](https://onnx.ai/): with the [`onnx_cpu` ML model service](https://github.com/viam-labs/onnx-cpu)
 
 For more information, see [Model framework support](/ml/upload-model/#model-framework-support).
 
@@ -77,6 +100,8 @@ For more information, see [Model framework support](/ml/upload-model/#model-fram
 ## Tutorials
 
 {{< cards >}}
+{{% card link="/tutorials/projects/helmet/" %}}
+{{% card link="/tutorials/projects/filtered-camera/" %}}
 {{% card link="/tutorials/projects/pet-treat-dispenser/" customTitle="Smart Pet Feeder" %}}
 {{% card link="/registry/examples/tflite-module/" %}}
 {{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}

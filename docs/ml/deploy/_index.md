@@ -17,9 +17,10 @@ images: ["/services/icons/ml.svg"]
 The Machine Learning (ML) model service allows you to deploy machine learning models to your machine.
 This can mean deploying:
 
-- a model from [the registry](https://app.viam.com/registry)
-- a model trained outside the Viam platform that you have [uploaded](/ml/upload-model/)
-- a model that's already available on your machine
+- a model you [trained](ml/train-model/)
+- a model from [the registry](https://app.viam.com/registry) that another user has shared publicly
+- a model trained outside the Viam platform that you have [uploaded](/ml/upload-model/) to the registry privately or publicly
+- a model trained outside the Viam platform that's already available on your machine
 
 After deploying your model, you need to configure an additional service to use the deployed model.
 For example, you can configure an [`mlmodel` vision service](/ml/vision/) and a [`transform` camera](/components/camera/transform/) to visualize the predictions your model makes.
@@ -49,12 +50,6 @@ Follow [these instructions](/registry/advanced/mlmodel-design/) to design your m
 {{< alert title="Note" color="note" >}}
 For some models of the ML model service, like the [Triton ML model service](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use either the available CPU or a dedicated GPU.
 {{< /alert >}}
-
-You can use an ML model service to deploy:
-
-- a model from [the registry](https://app.viam.com/registry)
-- a model trained outside the Viam platform that you have uploaded
-- a model available on your machine
 
 ## Used with
 
