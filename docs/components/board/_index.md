@@ -1230,7 +1230,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 ### Value
 
 Get the current value of this interrupt.
-If a post processor function has been added with [`AddPostProcessor()`](#addpostprocessor), it will be applied to this value before it is returned.
 
 Calculation of value differs between the `"type"` of interrupt [configured](#digital_interrupts):
 
@@ -1533,69 +1532,6 @@ interrupt.AddCallback(ch)
 
 {{% /tab %}}
 {{< /tabs >}}
-
-### AddPostProcessor
-
-Add a [PostProcessor](https://pkg.go.dev/go.viam.com/rdk/components/board#PostProcessor) function that takes an integer input and transforms it into a new integer value.
-Functions added to an interrupt will be used to modify values before they are returned by [Value()](#value).
-
-{{% alert title="Support Notice" color="note" %}}
-This method is not yet fully implemented with the Viam Python SDK.
-{{% /alert %}}
-
-{{< tabs >}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `processor` [(PostProcessor)](https://pkg.go.dev/go.viam.com/rdk/components/board#PostProcessor): The post processor function to add.
-
-**Returns:**
-
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt).
-
-```go
-myBoard, err := board.FromRobot(robot, "my_board")
-
-// Get the GPIOPin with pin number 15.
-pin, err := myBoard.GPIOPinByName("15")
-
-// Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
-
-// Create a simple post processing function calculating absolute value of integers.
-MySimplePP := int64(math.Abs)
-
-// Add "MySimplePP" as a post processor to "my_example_digital_interrupt".
-interrupt.AddPostProcessor(MySimplePP)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-<!-- NOT IMPLEMENTED: see https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/board/client.py#L66
-
-**Parameters:**
-
-- `processor` [(Callable[[int], int])](https://docs.python.org/3/library/typing.html#callable): The post processor function to add.
-
-**Returns:**
-
-- None
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.DigitalInterrupt.add_post_processor).
-
-```python
-"""from collections.abc import Callable"""
-my_board = Board.from_robot(robot=robot, name="my_board")
-
-# Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt = await my_board.digital_interrupt_by_name(
-    name="my_example_digital_interrupt")
-```
-``` -->
 
 ### Close
 
