@@ -136,7 +136,7 @@ The Viam Agent is installed as a `systemd` service named `viam-agent`.
 With the Viam Agent installed, your machine will either connect to a local WiFi network or will create its own WiFi hotspot, depending on your configuration.
 
 - If you include a `viam-server` configuration file on your machine, located at <file>/etc/viam.json</file>, which includes a WiFi network and password to connect to, the Viam Agent will connect to the network automatically when in range.
-- If you did not include this file, or the configured WiFi network is not available when your machine comes online, the Viam agent will create its own WiFi hotspot.
+- If you did not include this file, or the configured WiFi network is not available when your machine comes online, the Viam Agent will create its own WiFi hotspot.
 
 This provisioning functionality uses the [Viam Agent provisioning subsystem](https://github.com/viamrobotics/agent-provisioning).
 
