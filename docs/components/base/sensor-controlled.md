@@ -18,7 +18,7 @@ In order to use feedback control, you must provide a movement sensor that implem
 
 In order to use feedback control for [Spin()](/components/base/#spin), you must also provide a movement sensor that implements [Orientation()](/components/movement-sensor/#getorientation).
 
-In order to use feedback control for [MoveStraight()](/components/base/#spin), you must also provide a movement sensor that implements [Position()](/components/movement-sensor/#getposition). Additionally, heading feedback control can be used by providing a movement sensor that implements [Orientation()](/components/movement-sensor/#getorientation) or [CompassHeading()](/components/movement-sensor/#getcompassheading)
+In order to use feedback control for [MoveStraight()](/components/base/#spin), you must also provide a movement sensor that implements [Position()](/components/movement-sensor/#getposition). Additionally, heading feedback control while moving straight can be used by providing a movement sensor that implements [Orientation()](/components/movement-sensor/#getorientation) or [CompassHeading()](/components/movement-sensor/#getcompassheading)
 {{% /alert %}}
 
 To configure a `sensor-controlled` base as a component of your machine, first configure the [model of base](/components/base/) you want to wrap with feedback control and each required [movement sensor](/components/movement-sensor/).
