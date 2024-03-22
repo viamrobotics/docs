@@ -14,9 +14,11 @@ aliases:
 A `sensor-controlled` base supports a robotic base with feedback control from a movement sensor.
 
 {{% alert title="Requirements" color="note" %}}
-In order to use feedback control for [SetVelocity()](/components/base/#setvelocity), you must provide a movement sensor that implements [AngularVelocity()](/components/movement-sensor/#getangularvelocity) and [LinearVelocity()](/components/movement-sensor/#getlinearvelocity).
+In order to use feedback control, you must provide a movement sensor that implements [AngularVelocity()](/components/movement-sensor/#getangularvelocity) and [LinearVelocity()](/components/movement-sensor/#getlinearvelocity). This will enable feedback control for [SetVelocity()](/components/base/#setvelocity).
 
-In order to use feedback control for [Spin()](/components/base/#spin), you must provide a movement sensor that implements [Orientation()](/components/movement-sensor/#getorientation).
+In order to use feedback control for [Spin()](/components/base/#spin), you must also provide a movement sensor that implements [Orientation()](/components/movement-sensor/#getorientation).
+
+In order to use feedback control for [MoveStraight()](/components/base/#spin), you must also provide a movement sensor that implements [Position()](/components/movement-sensor/#getposition). Additionally, heading feedback control can be used by providing a movement sensor that implements [Orientation()](/components/movement-sensor/#getorientation) or [CompassHeading()](/components/movement-sensor/#getcompassheading)
 {{% /alert %}}
 
 To configure a `sensor-controlled` base as a component of your machine, first configure the [model of base](/components/base/) you want to wrap with feedback control and each required [movement sensor](/components/movement-sensor/).
@@ -70,9 +72,9 @@ The following attributes are available for `sensor-controlled` bases:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `movement_sensor` | array | **Required** | Array with the `name`s of any movement sensors on your base you want to gather feedback from. The driver will select the first movement sensor providing appropriate feedback for either the `SetVelocity()` or the `Spin()` endpoint. <br> If your sensor has an adjustable frequency or period, set the frequency to something greater than or equal to the default base control loop frequency of 20Hz, or set the period to something less than or equal to the corresponding period of 50msecs. |
+| `movement_sensor` | array | **Required** | Array with the `name`s of any movement sensors on your base you want to gather feedback from. The driver will select the first movement sensor providing appropriate feedback for either the `SetVelocity()` or the `Spin()` endpoint. <br> If your sensor has an adjustable frequency or period, set the frequency to something greater than or equal to the default base control loop frequency of 10Hz, or set the period to something less than or equal to the corresponding period of 100msecs. |
 | `base` | string | **Required** | String with the `name` of the base you want to wrap with sensor control. |
-| `control_parameters` | object | Optional | A JSON object containing the coefficients for the proportional, integral, and derivative terms for linear and angular velocity. If you want these values to be auto-tuned, you can set all values to 0: `[ { "type": "linear_velocity", "p": 0, "i": 0, "d": 0 }, { "type": "angular_velocity", "p": 0, "i": 0, "d": 0 } ]`, and `viam-server` will auto-tune and log the calculated values. Tuning takes several seconds and spins the motors. Copy the values from the logs and add them to the configuration once tuned for the values to take effect. If you need to auto-tune multiple controlled components that depend on the same hardware, such as a sensor controlled base and one of the motors on the base, run the auto-tuning process one component at a time. For more information see [Feedback contrel](#feedback-control). |
+| `control_parameters` | object | Optional | A JSON object containing the coefficients for the proportional, integral, and derivative terms for linear and angular velocity. If you want these values to be auto-tuned, you can set all values to 0: `[ { "type": "linear_velocity", "p": 0, "i": 0, "d": 0 }, { "type": "angular_velocity", "p": 0, "i": 0, "d": 0 } ]`, and `viam-server` will auto-tune and log the calculated values. Tuning takes several seconds and spins the motors. Copy the values from the logs and add them to the configuration once tuned for the values to take effect. If you need to auto-tune multiple controlled components that depend on the same hardware, such as a sensor controlled base and one of the motors on the base, run the auto-tuning process one component at a time. For more information see [Feedback control](#feedback-control). |
 
 ## Feedback control
 
