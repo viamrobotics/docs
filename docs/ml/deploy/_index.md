@@ -17,7 +17,7 @@ images: ["/services/icons/ml.svg"]
 The Machine Learning (ML) model service allows you to deploy machine learning models to your machine.
 This can mean deploying:
 
-- a model you [trained](ml/train-model/)
+- a model you [trained](/ml/train-model/)
 - a model from [the registry](https://app.viam.com/registry) that another user has shared publicly
 - a model trained outside the Viam platform that you have [uploaded](/ml/upload-model/) to the registry privately or publicly
 - a model trained outside the Viam platform that's already available on your machine

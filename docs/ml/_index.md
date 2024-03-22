@@ -31,7 +31,7 @@ See [Integrate Viam with ChatGPT to Create a Companion Robot](/tutorials/project
 
 Viam provides models of [ML model](/ml/deploy/) and [Computer Vision](/ml/vision/) services to facilitate model deployment and object detection and classification.
 
-The ML model service runs the model on your machine so that the [Computer Vision](/ml/vision) `mlmodel` service can use it as a detector or classifier, interpreting image data from images on your computer or a [camera](/components/camera/) to draw bounding boxes around objects (detection) or return a class label and confidence score (classification) based off the [inferences](/ml/deploy/#infer) the underlying ML model makes.
+The ML model service runs the model on your machine so that the [Computer Vision](/ml/vision/) `mlmodel` service can use it as a detector or classifier, interpreting image data from images on your computer or a [camera](/components/camera/) to draw bounding boxes around objects (detection) or return a class label and confidence score (classification) based off the [inferences](/ml/deploy/#infer) the underlying ML model makes.
 
 See [Use machine learning with your machine](#use-machine-learning-with-your-machine) for a full guide to this workflow.
 
@@ -39,7 +39,7 @@ The ML model service works with models trained inside and outside the Viam app, 
 Thus, you have four options when choosing a model to deploy onto an [ML model](/ml/deploy/) deployment service.
 You can:
 
-- [train a model on the Viam app](ml/train-model/) and deploy it
+- [train a model on the Viam app](/ml/train-model/) and deploy it
 - deploy a pre-trained model another user has published from [the registry](https://app.viam.com/registry)
 - [upload](/ml/upload-model/) a model trained outside the Viam platform to the registry privately or publicly and deploy it
 - deploy a model trained outside the Viam platform that's already available on your machine
