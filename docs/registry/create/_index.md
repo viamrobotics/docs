@@ -304,7 +304,7 @@ class MyBase(Base, Reconfigurable):
 {{< alert title="Note" color="note" >}}
 For an example featuring a sensor, see [MCP300x](https://github.com/viam-labs/mcp300x-adc-sensor).
 
-For additional examples use the [modular resources search](https://docs.viam.com/registry/#modular-resources) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
+For additional examples use the [modular resources search](https://docs.viam.com/registry/#modular-resources) to  examples of the model you are implementing, and click on the model's link to be able to browse its code.
 {{< /alert >}}
 
 When implementing built-in methods from the Viam Python SDK in your model, be sure your implementation of those methods returns any values designated in the built-in function's return signature, typed correctly.
@@ -554,7 +554,7 @@ func (b *myBase) Close(ctx context.Context) error {
 {{< alert title="Note" color="note" >}}
 For an example featuring a sensor, see [MCP3004-8](https://github.com/mestcihazal/mcp3004-8-go).
 
-For additional examples use the [modular resources search](https://docs.viam.com/registry/#modular-resources) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
+For additional examples use the [modular resources search](https://docs.viam.com/registry/#modular-resources) to  examples of the model you are implementing, and click on the model's link to be able to browse its code.
 {{< /alert >}}
 
 When implementing built-in methods from the Viam Go SDK in your model, be sure your implementation of those methods returns any values designated in the built-in method's return signature, typed correctly.
@@ -1101,7 +1101,7 @@ If you follow [the instructions to generate module scaffolding for a Python modu
 ````md
 # [<INSERT MODULE NAME> module](<INSERT LINK TO MODULE REPO>)
 
-This module implements the <INSERT API TRIPLET> API in a <INSERT MODEL> model.
+This module implements the [<INSERT API TRIPLET> API]<INSERT LINK TO DOCS (if applicable)> in an <INSERT MODEL> model.
 With this model, you can...
 
 > [!NOTE]
@@ -1172,12 +1172,12 @@ _Add troubleshooting notes here._
 ````md
 # [`agilex-limo` module](https://app.viam.com/module/viam/agilex-limo)
 
-This module implements the base driver for the [AgileX LIMO](https://global.agilex.ai/education/4) base to be used with [`viam-server`](https://docs.viam.com/). This driver supports differential, ackermann, and omni directional steering modes over the serial port.
+This module implements the ["rdk:component:base" API](https://docs.viam.com/components/base/#api) in an `agilex` model for the [AgileX LIMO](https://global.agilex.ai/education/4) base to be used with [`viam-server`](https://docs.viam.com/). This driver supports differential, ackermann, and omni directional steering modes over the serial port.
 
 > [!NOTE]
 > For more information, see [Modular Resources](https://docs.viam.com/registry/#modular-resources).
 
-## Configure your AgileX LIMO base
+## Configure your `agilex` base
 
 > [!NOTE]
 > Before configuring your base, you must [create a machine](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot).
