@@ -1105,7 +1105,7 @@ This module implements the <INSERT API TRIPLET> API in a <INSERT MODEL> model.
 With this model, you can...
 
 > [!NOTE]
-> For more information, see [Modular Resources].
+> For more information, see [Modular Resources](https://docs.viam.com/registry/#modular-resources).
 
 ## Requirements
 
@@ -1175,7 +1175,7 @@ _Add troubleshooting notes here._
 This module implements the base driver for the [AgileX LIMO](https://global.agilex.ai/education/4) base to be used with [`viam-server`](https://docs.viam.com/). This driver supports differential, ackermann, and omni directional steering modes over the serial port.
 
 > [!NOTE]
-> For more information, see [Modular Resources].
+> For more information, see [Modular Resources](https://docs.viam.com/registry/#modular-resources).
 
 ## Configure your AgileX LIMO base
 
