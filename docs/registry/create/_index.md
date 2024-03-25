@@ -1099,10 +1099,13 @@ If you follow [the instructions to generate module scaffolding for a Python modu
 {{% tab name="Template" %}}
 
 ````md
-# <INSERT NAME> modular resource
+# [<INSERT MODULE NAME> module](<INSERT LINK TO MODULE REPO>)
 
-This module implements the <INSERT API NAMESPACE> <INSERT API NAME> API in a <INSERT MODEL> model.
+This module implements the [<INSERT API TRIPLET> API]<INSERT LINK TO DOCS (if applicable)> in an <INSERT MODEL> model.
 With this model, you can...
+
+> [!NOTE]
+> For more information, see [Modular Resources](https://docs.viam.com/registry/#modular-resources).
 
 ## Requirements
 
@@ -1112,11 +1115,7 @@ _Add instructions here for any requirements._
 
 ```
 
-## Build and run
-
-To use this module, follow the instructions to [add a module from the Viam Registry](https://docs.viam.com/registry/configure/#add-a-modular-resource-from-the-viam-registry) and select the `<INSERT API NAMESPACE>:<INSERT API NAME>:<INSERT MODEL>` model from the [`<INSERT MODULE>` module](https://app.viam.com/module/<INSERT API NAMESPACE>/<INSERT MODULE>).
-
-## Configure your <INSERT API NAME>
+## Configure your <INSERT MODEL NAME> <INSERT API NAME>
 
 > [!NOTE]
 > Before configuring your <INSERT API NAME>, you must [create a machine](https://docs.viam.com/manage/fleet/machines/#add-a-new-machine).
@@ -1139,7 +1138,7 @@ On the new component panel, copy and paste the following attribute template into
 
 ### Attributes
 
-The following attributes are available for `<INSERT API NAMESPACE>:<INSERT API NAME>:<INSERT MODEL>` <INSERT API NAME>s:
+The following attributes are available for `<INSERT MODEL TRIPLET>` <INSERT API NAME>s:
 
 | Name    | Type   | Inclusion    | Description |
 | ------- | ------ | ------------ | ----------- |
@@ -1171,20 +1170,19 @@ _Add troubleshooting notes here._
 {{% tab name="Example" %}}
 
 ````md
-# AgileX LIMO Driver
+# [`agilex-limo` module](https://app.viam.com/module/viam/agilex-limo)
 
-This module implements the base driver for the [AgileX LIMO](https://global.agilex.ai/education/4) base to be used with [`viam-server`](https://docs.viam.com/). This driver supports differential, ackermann, and omni directional steering modes over the serial port.
+This module implements the ["rdk:component:base" API](https://docs.viam.com/components/base/#api) in an `agilex` model for the [AgileX LIMO](https://global.agilex.ai/education/4) base to be used with [`viam-server`](https://docs.viam.com/). This driver supports differential, ackermann, and omni directional steering modes over the serial port.
 
-## Build and run
+> [!NOTE]
+> For more information, see [Modular Resources](https://docs.viam.com/registry/#modular-resources).
 
-To use this module, follow these instructions to [add a module from the Viam Registry](https://docs.viam.com/registry/configure/#add-a-modular-resource-from-the-viam-registry) and select the `viam:base:agilex-limo` model from the [`agilex-limo` module](https://app.viam.com/module/viam/agilex-limo).
-
-## Configure your AgileX LIMO base
+## Configure your `agilex` base
 
 > [!NOTE]
 > Before configuring your base, you must [create a machine](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot).
 
-Navigate to the **Config** tab of your machine’s page in [the Viam app](https://app.viam.com/). Click on the **Components** subtab and click **Create component**. Select the `base` type, then select the `agilex-limo` model. Click **Add module**, then enter a name for your base and click **Create**.
+Navigate to the **Config** tab of your machine’s page in [the Viam app](https://app.viam.com/). Click on the **Components** subtab and click **Create component**. Select the `base` type, then search for and select the `agilex-limo` model. Click **Add module**, then enter a name for your base and click **Create**.
 
 On the new component panel, copy and paste the following attribute template into your base’s **Attributes** box.
 
