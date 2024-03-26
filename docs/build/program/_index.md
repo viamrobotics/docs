@@ -285,7 +285,7 @@ This section of the boilerplate code contains your machine's address and a place
 
 #### Apps with authentication
 
-If you need to build with custom login flows, [contact us](mailto:support@viam.com).
+If you need to build apps with custom login flows, [contact us](mailto:support@viam.com).
 
 ### Run the sample code
 
