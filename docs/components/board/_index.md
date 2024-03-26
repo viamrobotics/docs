@@ -33,6 +33,16 @@ Signaling is overseen by a computer running `viam-server` which allows you to co
 
 To use your board with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your board.
 
+{{< alert title="Running viam-server" color="note" >}}
+
+The board component allows you to use the pins on your board.
+If there is no board model for your board:
+
+- you can still run `viam-server` if your board supports it
+- you can still access USB ports
+
+{{< /alert >}}
+
 ### Built-in models
 
 For configuration information, click on the model name:
