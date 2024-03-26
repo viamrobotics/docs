@@ -25,7 +25,7 @@ Before uploading your model to the cloud, check and see if you will be able to d
 Model framework support is currently as follows:
 
 <!-- prettier-ignore -->
-| Model Framework | Deploy Service | Hardware Support | System Architecture | Description |
+| Model Framework | ML Model Service | Hardware Support | System Architecture | Description |
 | --------------- | --------------- | ---------------- | ------------------- | ----------- |
 | [TensorFlow Lite](https://www.tensorflow.org/lite) | [`tflite_cpu`](/ml/deploy/) | Any CPU <br> Nvidia GPU | Linux, Raspbian, MacOS, Android | Quantized version of TensorFlow that has reduced compatibility for models but supports more hardware. Uploaded models must adhere to the [model requirements](/ml/deploy/tflite_cpu/#model-requirements). |
 | [ONNX](https://onnx.ai/) | [`onnx_cpu`](https://github.com/viam-labs/onnx-cpu) | Any CPU <br> Nvidia GPU | Android, MacOS, Linux arm-64 | Universal format that is not optimized for hardware inference but runs on a wide variety of machines. |

@@ -20,18 +20,21 @@ Machine Learning (ML) provides your machines with the ability to adjust its beha
 Common use cases include:
 
 - Object detection, which enables machines to detect people, animals, plants, or other objects with bounding boxes, and to perform actions when they are detected.
-- Object classification, which enables machines to separate people, animals, plants, or other objects into predefined categories based on their characteristics.
+- Object classification, which enables machines to separate people, animals, plants, or other objects into predefined categories based on their characteristics, and to perform different actions based on the classes of objects.
 - Speech recognition, natural language processing, and speech synthesis, which enable machines to verbally communicate with us.
 
-However, your machine can make use of machine learning with nearly any kind of data.
+For other use cases, consider [creating custom functionality with a module](/registry/create/).
 
 {{% alert title="Note" color="note" %}}
 See [Integrate Viam with ChatGPT to Create a Companion Robot](/tutorials/projects/integrating-viam-with-openai/) for an example of using Viam to add object detection, speech recognition, natural language processing, and speech synthesis capabilities to a machine.
 {{% /alert %}}
 
-Viam provides models of [ML model](/ml/deploy/) and [Computer Vision](/ml/vision/) services to facilitate model deployment and object detection and classification.
+Viam provides two services that enable machine learning capabilities: the [ML model](/ml/deploy/) service and the [Computer Vision](/ml/vision/) service.
 
-The ML model service runs the model on your machine so that the [Computer Vision](/ml/vision/) `mlmodel` service can use it as a detector or classifier, interpreting image data from images on your computer or a [camera](/components/camera/) to draw bounding boxes around objects (detection) or return a class label and confidence score (classification) based off the [inferences](/ml/deploy/#infer) the underlying ML model makes.
+The ML model service deploys and runs a machine learning model, such as a TensorFlow or ONNX model, on your machine and makes its output accessible to other services.
+One service that is built on top of the ML model service is the [Computer Vision](/ml/vision/mlmodel/) `mlmodel` service which can detect or classify objects.
+As a detector, the service interprets image data from images on your computer or a [camera](/components/camera/) and draws bounding boxes around objects.
+As a classifier, the service returns class labels and confidence score based off the [inferences](/ml/deploy/#infer) the underlying ML model makes from image data.
 
 See [Use machine learning with your machine](#use-machine-learning-with-your-machine) for a full guide to this workflow.
 
