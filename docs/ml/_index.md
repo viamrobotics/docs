@@ -104,8 +104,6 @@ For more information, see [Model framework support](/ml/upload-model/#model-fram
 
 {{< cards >}}
 {{% card link="/tutorials/projects/helmet/" %}}
-{{% card link="/tutorials/projects/filtered-camera/" %}}
 {{% card link="/tutorials/projects/pet-treat-dispenser/" customTitle="Smart Pet Feeder" %}}
-{{% card link="/registry/examples/tflite-module/" %}}
 {{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
 {{< /cards >}}
