@@ -8,32 +8,38 @@ import re as regex
 import argparse
 
 
-## Parse arguments passed to update_sdk_methods.py, if any:
-## TODO: not used yet, just comment/uncomment 'sdks' array below.
-parser = argparse.ArgumentParser()
-parser.add_argument('--local', action='store_true', required=False)
-parser.add_argument('-p', '--python',
-                    action='store_true',
-                    help="Run against Python SDK only.")
-parser.add_argument('-f', '--flutter',
-                    action='store_true',
-                    help="Run against Flutter SDK only.")
-parser.add_argument("-v", "--verbose", help="Run with increased output verbosity.",
-                    action="store_true", required=False)
-                    
-args = parser.parse_args()
+## Set the full list of SDK langauges we scrape here:
+sdks_supported = ["go", "python", "flutter"]
 
-## SDK languages to parse.
-## TODO: Only python and flutter work presently.
-#sdks = ["go"]
-#sdks = ["python"]
-#sdks = ["flutter"]
-#sdks = ["go", "python", "flutter"]
-sdks = ["python", "flutter"]
+## Parse arguments passed to update_sdk_methods.py.
+## You can either provide the specific sdk languages to run against
+## as a comma-separated list, or omit entirely to run againt all sdks_supported:
+parser = argparse.ArgumentParser()
+
+parser.add_argument('sdk_language', type=str, nargs='?', help="A comma-separated list of the sdks to run against. \
+                     Can be one of: go, python, flutter. Omit to run against all sdks.")
+
+## Quick sanity check of provided sdk languages. If all is well,
+## assemble sdks array to iterate through:
+args = parser.parse_args()
+if args.sdk_language is not None:
+    sdk_langs = [s.strip() for s in args.sdk_language.split(",")]
+
+    sdks = []
+    for sdk_lang in sdk_langs:
+    
+        if sdk_lang not in sdks_supported:
+            print("ERROR: Unsupported SDK language: " + sdk_lang)
+            print("Exiting ...")
+            exit(1)
+        else:
+            sdks.append(sdk_lang)
+else:
+    sdks = sdks_supported
 
 ## Array mapping language to its root URL:
 sdk_url_mapping = {
-    "go": "https://pkg.go.dev/",
+    "go": "https://pkg.go.dev",
     "python": "https://python.viam.dev",
     "cpp": "https://cpp.viam.dev",
     "typescript": "https://ts.viam.dev",
@@ -183,10 +189,23 @@ go_resource_overrides = {
 ## Ignore these specific APIs if they error, are deprecated, etc:
 go_ignore_apis = []
 
-## Use these URLs for data types that are built-in to the language:
+## Use these URLs for data types (for params, returns, and errors raised) that are
+## built-in to the language or provided by a non-Viam third-party package:
 ## TODO: Not currently using these in parse(), but could do a simple replace()
 ##       or could handle in markdownification instead. TBD.
-go_datatype_links = {}
+go_datatype_links = {
+    "context": "https://pkg.go.dev/context",
+    "map": "https://go.dev/blog/maps",
+    "bool": "https://pkg.go.dev/builtin#bool",
+    "int": "https://pkg.go.dev/builtin#int",
+    "float64": "https://pkg.go.dev/builtin#float64",
+    "image": "https://pkg.go.dev/image#Image",
+    "r3.vector": "https://pkg.go.dev/github.com/golang/geo/r3#Vector",
+    "string": "https://pkg.go.dev/builtin#string",
+    "*geo.Point": "https://pkg.go.dev/github.com/kellydunn/golang-geo#Point",
+    "primitive.ObjectID": "https://pkg.go.dev/go.mongodb.org/mongo-driver/bson/primitive#ObjectID",
+    "error": "https://pkg.go.dev/builtin#error"
+}
 
 ## Language-specific resource name overrides:
 python_resource_overrides = {
@@ -225,6 +244,15 @@ python_datatype_links = {
     "datetime": "https://docs.python.org/3/library/datetime.html"
 }
 
+## Inject these URLs, relative to 'docs', into param descriptions that contain exact matching key text:
+## This is an example, for https://docs.viam.com/mobility/frame-system/#transformpose, that the
+## markdownification step could use to linkify matching text when it goes to write param_desc markdown.
+## Otherwise we have to overwrite param_desc with verbatim upstream copy, which would overwrite
+## any docs-site-only links presently in our copy.
+python_param_description_links = {
+    "additional transforms": "/mobility/frame-system/#additional-transforms"
+}
+
 ## Language-specific resource name overrides:
 flutter_resource_overrides = {
     "generic_component": "generic",
@@ -241,7 +269,7 @@ flutter_ignore_apis = []
 flutter_datatype_links = {}
 
 ## Fetch canonical Proto method names.
-## Required by Flutter parsing, not used by Python parsing yet (see comments in parse())
+## Required by Flutter parsing, not used by Python or Go parsing yet (see comments in parse())
 def get_proto_apis():
     for api in proto_map.keys():
         api_url = proto_map[api]["url"]
@@ -279,19 +307,12 @@ def make_soup(url):
 def parse(type, names):
 
 ## TODO:
-## - Finish Go scraping, not included in this version
-## - Not sure what to do with extra, timeout params for Python. Currently including without description.
-##   - Investigate boilerplate text insertion, if set of params without descriptions is deterministic.
-## - Make actual argument switches for each language, all. Currently just comment in / out sdks array.
-## - Fix mismatched data structure output between python and flutter:
-##   - Return data types are presented all together for Python, broken up by subtype with Flutter.
-##     Probably will unify on Py approach, more flexible, then we just replace text string with matching HTML link.
-##   - Method linking also different, and need to finish extrapolating URLs from matched elements
-##     - Example: Replace on '../../' but I think there are also '../../../../' instances that I miss or mismatch. Must fix.
-## - Flutter returns are determined by presence of 'a' tags, but I found a more deterministic way with Python returns.
-##   Investigate if conversion is possible.
-## - Flutter SDK is missing a lot on parent page and parameter page both. Experiment with getting this from protos, elsewhere.
-##   - Otherwise we can deliver only what we can access.
+## - Unify returned method object form. Currently returning raw method usage for Go, and by-param, by-return (and by-raise)
+##   breakdown for each method for Python and Flutter. Let's chat about which is useful, and which I should throw away.
+##   Raw usage is I think how check_python_methods.py currently does it. Happy to convert Flutter and Py to dump raw usage,
+##   if you don't need the per-param,per-return,per-raise stuff.
+## - Currently manually adding param details for 'extra' and 'timeout' params for Python. There might be more like this,
+##   that need this same manual treatment, that I haven't found yet.
 ## - Edge cases (like bad sdk language, or Go App API DNE) just print for now, need to make into errors.
 
     ## This parent dictionary will contain all dictionaries:
@@ -332,6 +353,7 @@ def parse(type, names):
                     url = f"{sdk_url}/go.viam.com/rdk/{type}"
                 elif type == "app":
                     print("GO SDK has no APP API!")
+                go_methods[type][resource] = {}
 
             ## Determine URL form for Python depending on type (like 'component'):
             elif sdk == "python":
@@ -360,16 +382,78 @@ def parse(type, names):
 
             ## Scrape each parent method tag and all contained child tags for Go by resource:
             if sdk == "go" and type != "app":
+
                 soup = make_soup(url)
+
+                ## Get a raw dump of all go methods by interface for each resource:
                 go_methods_raw = soup.find_all(
-                    lambda tag: tag.name == 'div'
+                    lambda tag: tag.name=='div'
                     and tag.get('class') == ['Documentation-declaration']
-                    and regex.search(r"type [a-zA-Z0-9].* interface {", tag.text))
+                    and "type" in tag.pre.text
+                    and "interface {" in tag.pre.text)
 
-                ## For now you can see the raw dump that I'm working through parsing:
-                #print(go_methods_raw)
+                # some resources have more than one interface:
+                for resource_interface in go_methods_raw:
 
-                ## TODO: This is where the go parser goes, when finished.
+                    ## Determine the interface name, which we need for the method_link:
+                    interface_name = resource_interface.find('pre').text.splitlines()[0].removeprefix('type ').removesuffix(' interface {')
+                    #print(interface_name)
+
+                    ## Loop through each method found for this interface:
+                    for tag in resource_interface.find_all('span', attrs={"data-kind" : "method"}):
+
+                        ## Create new empty dictionary for this specific method, to be appended to ongoing go_methods dictionary,
+                        ## in form: go_methods[type][resource][method_name] = this_method_dict
+                        this_method_dict = {}
+
+                        tag_id = tag.get('id')
+                        method_name = tag.get('id').split('.')[1]
+
+                        ## Determine method proto, placeholder for now:
+                        this_method_dict["proto"] = ""
+
+                        ## Extract the raw text from resource_interface matching method_name.
+                        ## Split by method span, throwing out remainder of span tag, catching cases where
+                        ## id is first attr or data-kind is first attr, and slicing to omit the first match,
+                        ## which is the opening of the method span tag, not needed:
+                        this_method_raw1 = regex.split(r'id="' + tag_id + '"', str(resource_interface))[1].removeprefix('>').removeprefix(' data-kind="method">').lstrip()
+
+                        ## Then, omit all text that begins a new method span, and additionally remove trailing
+                        ## element closers for earlier tags we spliced into (pre and span):
+                        this_method_raw2 = regex.split(r'<span .*data-kind="method".*>', this_method_raw1)[0].removesuffix('}</pre>\n</div>').removesuffix('</span>').rstrip()
+
+                        method_description = ""
+
+                        ## Get method description, if any comment spans are found:
+                        if tag.find('span', class_='comment'):
+
+                            ## Iterate through all comment spans, splitting by opening comment tag, and
+                            ## omitting the first string, which is either the opening comment tag itself,
+                            ## or the usage of this method, if the comment is appended to the end of usage line:
+                            for comment in regex.split(r'<span class="comment">', this_method_raw2)[1:]:
+                             
+                                comment_raw = regex.split(r'</span>.*', comment.removeprefix('//'))[0].lstrip()
+                                method_description = method_description + comment_raw
+
+                        ## Write comment field as appended comments if found, or empty string if none.
+                        this_method_dict["description"] = method_description
+
+                        ## Get full method usage string, by omitting all comment spans:
+                        method_usage_raw = regex.sub(r'<span class="comment">.*</span>', '', this_method_raw2)
+                        this_method_dict["usage"] = regex.sub(r'</span>', '', method_usage_raw).lstrip().rstrip()
+
+                        ## Not possible to link to the specific functions, so we link to the parent resource instead:
+                        this_method_dict["link"] = url + '#' + interface_name
+
+                        ## We have finished collecting all data for this method. Write the this_method_dict dictionary
+                        ## in its entirety to the go_methods dictionary by type (like 'component'), by resource (like 'arm'),
+                        ## using the method_name as key:
+                        go_methods[type][resource][method_name] = this_method_dict
+                
+                ## We have finished looping through all scraped Go methods. Write the go_methods dictionary
+                ## in its entirety to the all_methods dictionary using "go" as the key:
+                all_methods["go"] = go_methods
+
 
             elif sdk == "go" and type == "app":
                print("Go has no APP API!")
@@ -484,11 +568,19 @@ def parse(type, names):
                                     ## Not currently used:
                                     param_desc_raw = strong_tag.parent.text
 
-                                ## Unable to determine parameter description. Usually timeout or extra:
-                                ## TODO: Determine if we can insert our own description, if params-without-descriptions are fully deterministic.
+                                ## 'Extra' params do not appear in "Parameters" section, adding manually:
+                                elif strong_tag.text == "extra":
+                                    this_method_parameters_dict["param_description"] = "Extra options to pass to the underlying RPC call."
+
+                                ## 'Timeout' params do not appear in "Parameters" section, adding manually:
+                                elif strong_tag.text == "timeout":
+                                    this_method_parameters_dict["param_description"] = "An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call."
+
+                                ## Unable to determine parameter description, not timeout or extra.
+                                ## Usually a non-param, but if we are missing expected param descriptions, expand this section to catch them.
                                 else:
-                                    ## Effectively omits desc from results, since the ongoing dict is not appended to here:
-                                    parameter_description = "EXTRA OR TIMEOUT"
+                                    ## No-op:
+                                    pass
 
                             ## Add all values for this parameter to this_method_dict by param_name:
                             this_method_dict["parameters"][param_name] = this_method_parameters_dict
@@ -678,6 +770,7 @@ def parse(type, names):
 
 ## TODO:
 ## This is where we define our markdownify function.
+## TODO TODO: Better mock up of this function from andf!!!!
 ## - Separated from `parse()`, with goal of being as language-agnostic as possible: parse per-language (for now) with markdownify universal.
 ## - Accepts a dict-of-dicts object as param, writes resulting markdown, returns nothing (besides maybe debug status)
 ##
@@ -736,9 +829,9 @@ def run():
     ## Here's where we would markdownify(service_methods)
     print(service_methods)
 
-    app_methods = parse("app", app_apis)
+    #app_methods = parse("app", app_apis)
     ## Here's where we would markdownify(app_methods)
-    print(app_methods)
+    #print(app_methods)
 
     robot_methods = parse("robot", robot_apis)
     ## Here's where we would markdownify(robot_methods)
