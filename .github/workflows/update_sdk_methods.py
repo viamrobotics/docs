@@ -387,7 +387,7 @@ def parse(type, names):
 
                 ## Get a raw dump of all go methods by interface for each resource:
                 go_methods_raw = soup.find_all(
-                    lambda tag: tag.name=='div'
+                    lambda tag: tag.name == 'div'
                     and tag.get('class') == ['Documentation-declaration']
                     and "type" in tag.pre.text
                     and "interface {" in tag.pre.text)
@@ -829,9 +829,9 @@ def run():
     ## Here's where we would markdownify(service_methods)
     print(service_methods)
 
-    #app_methods = parse("app", app_apis)
+    app_methods = parse("app", app_apis)
     ## Here's where we would markdownify(app_methods)
-    #print(app_methods)
+    print(app_methods)
 
     robot_methods = parse("robot", robot_apis)
     ## Here's where we would markdownify(robot_methods)
