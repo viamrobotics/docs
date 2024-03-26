@@ -38,9 +38,9 @@ The module provides a [sensor](/components/sensor/) that allows you to obtain re
 2. Then select the `viam:viam-sensor:telegrafsensor` model from the [`viam-telegraf-sensor` module](https://app.viam.com/module/viam/viam-telegraf-sensor).
 3. Click **Add module**, then enter a name for your sensor, for example `my-telegrafsensor`, and click **Create**.
 
-In the next step you will configure the data manager to capture and sync the performance metrics from your configured sensor.
-
 For more information, see [add a module from the Viam Registry](https://docs.viam.com/registry/configure/#add-a-modular-resource-from-the-viam-registry).
+
+In the next step you will configure the data management service to capture and sync the performance metrics from your configured sensor.
 
 ### Test sensor data
 
@@ -49,7 +49,7 @@ To access detailed readings from your sensor, click on the **Get Readings** butt
 
 {{<gif webm_src="/data/monitor.webm" mp4_src="/data/monitor.mp4" alt="sensor control tab">}}
 
-## Configure data manager to capture and sync sensor data
+## Configure data management service to capture and sync sensor data
 
 To capture the data from your configured sensor, you need to add the [data management service](https://docs.viam.com/data/) and configure it to capture and sync the sensor data:
 
