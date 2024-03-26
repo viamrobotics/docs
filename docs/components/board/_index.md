@@ -38,7 +38,7 @@ To use your board with Viam, check whether one of the following [built-in models
 The board component allows you to use the pins on your board.
 If there is no board model for your board:
 
-- you can still run `viam-server` if your board supports it
+- you can still run `viam-server` if your board [supports it](/get-started/installation/#prepare-your-board)
 - you can still access USB ports
 
 {{< /alert >}}
