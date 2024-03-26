@@ -55,7 +55,7 @@ To capture the data from your configured sensor, you need to add the [data manag
 
 1. On your machine's **Config** page, go to the **Services** subtab and click **Create service**.
 2. Select the **data management** service and give it a name.
-   For example `data_manager`.
+   For example, `data_manager`.
 3. Click **Create**.
 4. Go to the **Components** subtab and find your `telegrafsensor`'s configuration card.
    In the **Data capture configuration** section of the sensor's config, click **Add method**, select the `Readings` **Type** and set the **Frequency** to 0.2Hz.
