@@ -1177,14 +1177,14 @@ This module implements the ["rdk:component:base" API](https://docs.viam.com/comp
 > [!NOTE]
 > For more information, see [Modular Resources](https://docs.viam.com/registry/#modular-resources).
 
-## Configure your `agilex` base
+## Configure your `agilex-limo` base
 
 > [!NOTE]
 > Before configuring your base, you must [create a machine](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot).
 
 Navigate to the **Config** tab of your machine’s page in [the Viam app](https://app.viam.com/). Click on the **Components** subtab and click **Create component**. Select the `base` type, then search for and select the `agilex-limo` model. Click **Add module**, then enter a name for your base and click **Create**.
 
-On the new component panel, copy and paste the following attribute template into your base’s **Attributes** box.
+On the new component panel, copy and paste the following attribute template into your base’s **Attributes** box:
 
 ```json
 {
