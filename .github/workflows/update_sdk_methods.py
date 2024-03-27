@@ -1,7 +1,10 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
+from pathlib import Path
 import sys
+import os
 import markdownify
+import subprocess
 import urllib.parse
 import urllib.error
 import re as regex
@@ -36,6 +39,21 @@ if args.sdk_language is not None:
             sdks.append(sdk_lang)
 else:
     sdks = sdks_supported
+
+## This script must be run within the 'docs' git repo. Here we check
+## to make sure this is the case, and get the root of our git-managed
+## repo to use later in write_markdown():
+process = subprocess.Popen(['git', 'rev-parse', '--show-toplevel'], \
+                     stdout=subprocess.PIPE, \
+                     stderr=subprocess.PIPE)
+stdout, stderr = process.communicate()
+
+if process.returncode == 0:
+    gitroot = stdout.decode().rstrip()
+else:
+    print("ERROR: You must run this script within a cloned copy of the 'docs' git repo!")
+    print("Exiting ...")
+    exit(1)
 
 ## Array mapping language to its root URL:
 sdk_url_mapping = {
@@ -443,7 +461,7 @@ def parse(type, names):
                         this_method_dict["usage"] = regex.sub(r'</span>', '', method_usage_raw).lstrip().rstrip()
 
                         ## Not possible to link to the specific functions, so we link to the parent resource instead:
-                        this_method_dict["link"] = url + '#' + interface_name
+                        this_method_dict["method_link"] = url + '#' + interface_name
 
                         ## We have finished collecting all data for this method. Write the this_method_dict dictionary
                         ## in its entirety to the go_methods dictionary by type (like 'component'), by resource (like 'arm'),
@@ -768,6 +786,74 @@ def parse(type, names):
 
     return all_methods
 
+
+## write_markdown() takes the data object returned from parse(), and writes out the markdown
+## for each method in that object. Here's an example of how I envision the data object being used.
+## Of course, feel free to adapt and change as you like!
+def write_markdown(type, methods):
+
+    ## You can either loop by SDK language or by proto method name:
+    ## - For SDK language:
+    for sdk in methods.keys():
+        #print(sdk)
+
+        ## Generate special version of type var that matches how we refer to it in MD filepaths.
+        ## This means pluralizing components and services, and taking no action for app and robot:
+        if type in ['component', 'service']:
+            type_filepath_name = type + 's'
+        else:
+            type_filepath_name - type
+
+        ## Determine where to write the file for this loop. Suggesting:
+        ## docs/static/include/{type}/apis/generated/{sdk}.md
+        relative_path = 'static/include/' + type_filepath_name + '/apis/generated/'
+        print(relative_path)
+        filename = sdk + '.md'
+        file_path = os.path.join(gitroot, relative_path)
+
+        Path(file_path).mkdir(parents=True, exist_ok=True)
+
+        #if not os.path.exists(file_path):
+         #   os.makedirs(file_path)
+
+        print(file_path)
+
+        file_name = os.path.join(file_path, filename)
+        output_file = open('%s' % file_name, "w") 
+
+
+        ## Get which resource type we are working with:
+        #resource_type = list(methods[sdk].keys())[0]
+        #print(resource_type)
+        for resource in methods[sdk][type].keys():
+            print(resource)
+
+            for method in methods[sdk][type][resource].keys():
+
+                output_file.write('METHOD NAME: ')
+                output_file.write(method + '\n')
+
+                output_file.write('METHOD PROTO: ')
+                output_file.write(methods[sdk][type][resource][method]['proto'] + '\n')
+
+                if methods[sdk][type][resource][method]['description']:
+                    output_file.write('METHOD DESCRIPTION: ')
+                    output_file.write(methods[sdk][type][resource][method]['description'] + '\n')        
+
+                if methods[sdk][type][resource][method]['usage']:
+                    output_file.write('METHOD USAGE: ')
+                    output_file.write(methods[sdk][type][resource][method]['usage'] + '\n')  
+
+                output_file.write('METHOD LINK: ')
+                output_file.write(methods[sdk][type][resource][method]['method_link'] + '\n')                 
+
+
+    ## - For proto method, I don't have automated mapping working yet (and it might not be possible for all languages).
+    ##   Barring automated determination, we can always manually map all ~250 methods per language, joy.
+    ##   Here's how I envision that loop looking if/when:
+
+
+
 ## TODO:
 ## This is where we define our markdownify function.
 ## TODO TODO: Better mock up of this function from andf!!!!
@@ -819,23 +905,24 @@ def parse(type, names):
 ## - Simple print for each dict during script development
 def run():
 
-    proto_map = get_proto_apis()
+    #proto_map = get_proto_apis()
 
     component_methods = parse("component", components)
     ## Here's where we would markdownify(component_methods)
-    print(component_methods)
+    write_markdown("component", component_methods)
+    #print(component_methods)
 
-    service_methods = parse("service", services)
+    #service_methods = parse("service", services)
     ## Here's where we would markdownify(service_methods)
-    print(service_methods)
+    #print(service_methods)
 
-    app_methods = parse("app", app_apis)
+    #app_methods = parse("app", app_apis)
     ## Here's where we would markdownify(app_methods)
-    print(app_methods)
+    #print(app_methods)
 
-    robot_methods = parse("robot", robot_apis)
+    #robot_methods = parse("robot", robot_apis)
     ## Here's where we would markdownify(robot_methods)
-    print(robot_methods)
+    #print(robot_methods)
 
 run()
 
