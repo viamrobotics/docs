@@ -331,7 +331,6 @@ def parse(type, names):
 ##   if you don't need the per-param,per-return,per-raise stuff.
 ## - Currently manually adding param details for 'extra' and 'timeout' params for Python. There might be more like this,
 ##   that need this same manual treatment, that I haven't found yet.
-## - Edge cases (like bad sdk language, or Go App API DNE) just print for now, need to make into errors.
 
     ## This parent dictionary will contain all dictionaries:
     ## all_methods[sdk][type][resource]
@@ -370,7 +369,8 @@ def parse(type, names):
                 elif type == "robot":
                     url = f"{sdk_url}/go.viam.com/rdk/{type}"
                 elif type == "app":
-                    print("GO SDK has no APP API!")
+                    ## GO SDK has no APP API!
+                    pass
                 go_methods[type][resource] = {}
 
             ## Determine URL form for Python depending on type (like 'component'):
@@ -474,7 +474,8 @@ def parse(type, names):
 
 
             elif sdk == "go" and type == "app":
-               print("Go has no APP API!")
+               ##Go SDK has no APP API!
+               pass
 
             ## Scrape each parent method tag and all contained child tags for Python by resource:
             elif sdk == "python":
@@ -792,8 +793,8 @@ def parse(type, names):
 ## Of course, feel free to adapt and change as you like!
 def write_markdown(type, methods):
 
-    ## You can either loop by SDK language or by proto method name:
-    ## - For SDK language:
+    ## We can either loop by SDK, or by method proto name.
+    ## Here is by SDK:
     for sdk in methods.keys():
         #print(sdk)
 
@@ -802,33 +803,35 @@ def write_markdown(type, methods):
         if type in ['component', 'service']:
             type_filepath_name = type + 's'
         else:
-            type_filepath_name - type
+            type_filepath_name = type
 
         ## Determine where to write the file for this loop. Suggesting:
         ## docs/static/include/{type}/apis/generated/{sdk}.md
         relative_path = 'static/include/' + type_filepath_name + '/apis/generated/'
-        print(relative_path)
+        #print(relative_path)
         filename = sdk + '.md'
+
+        ## Combine with gitroot from top of this script:
         file_path = os.path.join(gitroot, relative_path)
+        #print(file_path)
 
+        ## Create parent directory structure if it doesn't exist already:
         Path(file_path).mkdir(parents=True, exist_ok=True)
-
-        #if not os.path.exists(file_path):
-         #   os.makedirs(file_path)
-
-        print(file_path)
 
         file_name = os.path.join(file_path, filename)
         output_file = open('%s' % file_name, "w") 
 
-
-        ## Get which resource type we are working with:
-        #resource_type = list(methods[sdk].keys())[0]
-        #print(resource_type)
+        ## Loop through each resource, such as 'arm'. run() already calls parse() in
+        ## scope limited to 'type', so we don't have to loop by type:
         for resource in methods[sdk][type].keys():
-            print(resource)
+            #print(resource)
+            ## I've included some dumb plaintext output like this to help during scripting. Feel free to remove:
+            output_file.write('\n\n############ ' + resource + ' #######################################\n\n')
 
+            ## Loop for each method in resource object:
             for method in methods[sdk][type][resource].keys():
+
+                output_file.write('\n\n############ ' + method + ' #######################################\n\n')
 
                 output_file.write('METHOD NAME: ')
                 output_file.write(method + '\n')
@@ -836,92 +839,114 @@ def write_markdown(type, methods):
                 output_file.write('METHOD PROTO: ')
                 output_file.write(methods[sdk][type][resource][method]['proto'] + '\n')
 
-                if methods[sdk][type][resource][method]['description']:
+                ## In the event we want to structure our method object such that omitted keys are permissable,
+                ## we can use if logic to take action only if present:
+                ## ALTERNATE: I dump empty strings to missing method object keys instead, and always write
+                ## the keys themselves. I will happily change the method object to whichever you prefer,
+                ## I think the object is currently a mix of both, which is the only non-acceptable option lol.
+                ## I will be correcting so the data object is identical between sdk langs. For now, you can
+                ## work on python only using 'update_sdk_methods.py python':
+                ## EXAMPLE: Go methods do not have descriptions, so I wrote an empty string "" to this key in
+                ## the passed data object. This means we can access this field outside of this if statement (i.e.
+                ## regardless of sdk), but also that if we blindly just output its contents, it will result in
+                ## blank output for this field. Up to us to decide how to handle missing data upstream:
+                if 'description' in methods[sdk][type][resource][method]:
                     output_file.write('METHOD DESCRIPTION: ')
-                    output_file.write(methods[sdk][type][resource][method]['description'] + '\n')        
-
-                if methods[sdk][type][resource][method]['usage']:
-                    output_file.write('METHOD USAGE: ')
-                    output_file.write(methods[sdk][type][resource][method]['usage'] + '\n')  
+                    output_file.write(methods[sdk][type][resource][method]['description'] + '\n')
 
                 output_file.write('METHOD LINK: ')
-                output_file.write(methods[sdk][type][resource][method]['method_link'] + '\n')                 
+                output_file.write(methods[sdk][type][resource][method]['method_link'] + '\n')
 
 
-    ## - For proto method, I don't have automated mapping working yet (and it might not be possible for all languages).
+                ## CHOICE: Do we want to fetch the raw usage or do we want to iterate through each param, return, error?
+                ##         Here is an example of raw usage, which I am fetching for the GO SDK:
+                if 'usage' in methods[sdk][type][resource][method]:
+                    output_file.write('METHOD USAGE: ')
+                    output_file.write(methods[sdk][type][resource][method]['usage'] + '\n')
+
+                ## CHOICE: Do we want to fetch the raw usage or do we want to iterate through each param, return, error?
+                ##         Here is an example of a dict of parameters, which I am fetching for the Python and Flutter SDKs:
+                if 'parameters' in methods[sdk][type][resource][method]:
+
+                    for parameter in methods[sdk][type][resource][method]['parameters'].keys():
+                        output_file.write('PARAMETER: ')
+                        output_file.write(parameter + '\n')
+                        output_file.write('    PARAMETER TYPE: ')
+                        output_file.write(methods[sdk][type][resource][method]['parameters'][parameter]['param_type'] + '\n')
+                        ## The 'optional' field is a boolean, so we must also convert to string here:
+                        if 'optional' in methods[sdk][type][resource][method]['parameters'][parameter]:
+                            output_file.write('    PARAMETER OPTIONAL: ')
+                            output_file.write(str(methods[sdk][type][resource][method]['parameters'][parameter]['optional']) + '\n')
+                        if 'param_type_link' in methods[sdk][type][resource][method]['parameters'][parameter]:
+                            output_file.write('    PARAMETER TYPE LINK: ')
+                            output_file.write(methods[sdk][type][resource][method]['parameters'][parameter]['param_type_link'] + '\n')
+                        if 'param_subtype' in methods[sdk][type][resource][method]['parameters'][parameter]:
+                            output_file.write('    PARAMETER SUBTYPE: ')
+                            output_file.write(methods[sdk][type][resource][method]['parameters'][parameter]['param_subtype'] + '\n')
+                        if 'param_subtype_link' in methods[sdk][type][resource][method]['parameters'][parameter]:
+                            output_file.write('    PARAMETER SUBTYPE LINK: ')
+                            output_file.write(methods[sdk][type][resource][method]['parameters'][parameter]['param_subtype_link'] + '\n')
+
+                ## Not fetching returns for Go (only 'usage'), only fetching one return for Python, and fetching all returns for Flutter.
+                ## I must standardize this approach first to be able to reliably output return data per method, but here's what should work
+                ## for the Python data object, I think.
+                ## As you explore options between the three approaches, I will standardize all languages to use the one you decide on.
+                ## EXAMPLE: if we go with raw usage, as presently returned for Go, I will do away with return looping for Python and
+                ## Flutter, and convert those to return raw usage as well.
+#                if 'return' in methods[sdk][type][resource][method]:
+#                    output_file.write('METHOD RETURN: ')
+#
+#                    output_file.write(methods[sdk][type][resource][method]['return']['return_type'] + '\n')
+#
+#                    if 'return_description' in methods[sdk][type][resource][method]['return']:
+#                        output_file.write('    RETURN DESCRIPTION: ')
+#                        output_file.write(methods[sdk][type][resource][method]['return']['return_description'] + '\n')
+#                    if 'return_link' in methods[sdk][type][resource][method]['return']:
+#                        output_file.write('    RETURN LINK: ')
+#                        output_file.write(methods[sdk][type][resource][method]['return']['return_link'] + '\n')
+#                    if 'return_type_link' in methods[sdk][type][resource][method]['return']:
+#                        output_file.write('    RETURN TYPE LINK: ')
+#                        output_file.write(methods[sdk][type][resource][method]['return']['return_type_link'] + '\n')
+#                    if 'param_subtype' in methods[sdk][type][resource][method]['return']:
+#                        output_file.write('    RETURN SUBTYPE: ')
+#                        output_file.write(methods[sdk][type][resource][method]['return']['return_subtype'] + '\n')
+#                    if 'param_subtype_link' in methods[sdk][type][resource][method]['return']:
+#                        output_file.write('    RETURN SUBTYPE LINK: ')
+#                        output_file.write(methods[sdk][type][resource][method]['return']['return_subtype_link'] + '\n')
+
+
+                ## Same thing with errors raised ('raises') here.
+
+    ## - For looping by proto method: I don't have automated mapping working yet (and it might not be possible for all languages).
     ##   Barring automated determination, we can always manually map all ~250 methods per language, joy.
-    ##   Here's how I envision that loop looking if/when:
+    ##   This approach would use a different loop structure, I can help create!
 
-
-
-## TODO:
-## This is where we define our markdownify function.
-## TODO TODO: Better mock up of this function from andf!!!!
-## - Separated from `parse()`, with goal of being as language-agnostic as possible: parse per-language (for now) with markdownify universal.
-## - Accepts a dict-of-dicts object as param, writes resulting markdown, returns nothing (besides maybe debug status)
-##
-## Fun pseudocode (i.e. you don't have to map dict[index] to var explicitly, you can just use them inline in the markdownification steps directly):
-##
-## ## Iterate by types, like 'component':
-## for type in passed_methods.keys():
-##     ## Iterate by resource, like 'arm':
-##     for resource in type.keys():
-##         ## Iterate by method, like 'doCommand'
-##         for method in resource.keys()
-##             method_link = method[1]
-##             ## Iterate by parameter, like 'command':
-##             for parameter in method[parameters].keys()
-##                 parameter_name = parameter
-##                 parameter_link = parameter[param_link]
-##                 parameter_type_link = parameter[param_type_link]
-##                 ## Determine if this param type has subtypes, like map(string):
-##                 if param-has-subtypes:
-##                     param_subtype = parameter[param_subtype]
-##                     param_subtype_link = parameter[param_subtype_link]
-##             if method-has-returns:
-##                 for return in method[returns].keys()
-##                     return_name = return
-##                     return_link = return[return_link]
-##                     return_type = return[return_type]
-##                     return_type_link = return[return_type_link]
-##                     if param-has-subtypes:
-##                         return_subtype = return[return_subtype]
-##                         return_subtype_link = return[return_subtype_link]
-
-
-
-## TODO:
-## Consider restructuring existing `docs` repo to support easier inline-replace of content.
-## ANDF investigating
-## Requirements:
-## - Must support arbitrary manual copy in addition to automated content, example:
-##   https://docs.viam.com/components/camera/#getimages
-
-
-
-## Temporary holding main function to:
-## - Fetch canonical proto methods from upstream, used for mapping in `parse()`
-## - Get methods for each defined type & resource
-## - Simple print for each dict during script development
+## Main run function:
+## - proto_map()        Fetch canonical proto methods from upstream, used for mapping in `parse()`
+## - parse()            Get methods for each defined type & resource, return data object for each
+## - write_markdown()   Write out salient fields from passed data object to specific MD files
 def run():
 
-    #proto_map = get_proto_apis()
+    proto_map = get_proto_apis()
 
     component_methods = parse("component", components)
-    ## Here's where we would markdownify(component_methods)
+    ## Example:
     write_markdown("component", component_methods)
     #print(component_methods)
 
-    #service_methods = parse("service", services)
-    ## Here's where we would markdownify(service_methods)
+    service_methods = parse("service", services)
+    ## Example:
+    write_markdown("service", service_methods)
     #print(service_methods)
 
-    #app_methods = parse("app", app_apis)
-    ## Here's where we would markdownify(app_methods)
+    app_methods = parse("app", app_apis)
+    ## Example:
+    write_markdown("app", app_methods)
     #print(app_methods)
 
-    #robot_methods = parse("robot", robot_apis)
-    ## Here's where we would markdownify(robot_methods)
+    robot_methods = parse("robot", robot_apis)
+    ## Example:
+    write_markdown("robot", robot_methods)
     #print(robot_methods)
 
 run()
