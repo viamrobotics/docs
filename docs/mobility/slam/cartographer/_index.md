@@ -48,6 +48,12 @@ The `cartographer` module supports three modes of operation:
 Creating and updating SLAM maps with Cartographer is especially CPU-intensive, so the `cartographer` modular resource runs in the cloud for these two tasks.
 For doing pure localization on an existing map, the `cartographer` modular resource runs locally on your machine.
 
+{{% alert title="Info" color="tip" %}}
+
+Running `cartographer` in the cloud is temporarily disabled.
+
+{{% /alert %}}
+
 {{% alert title="Info" color="info" %}}
 
 Running `cartographer` in the cloud incurs cost for Data Management, Cloud Data Upload, and Cloud Data Egress. Currently, you incur no cost for compute.
