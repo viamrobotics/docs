@@ -198,7 +198,7 @@ slam_properties = await slam_svc.get_properties()
 
 **Returns:**
 
-- [Properties](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties): Information about the current SLAM session.
+- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties): Information about the current SLAM session.
   An object containing four fields:
   - `SensorInfo` [(SensorInfo[])](https://pkg.go.dev/go.viam.com/api/service/slam/v1#SensorInfo): Information about the sensors (camera and movement sensor) configured for your SLAM service, including the name and type of sensor.
   - `CloudSlam` [(bool)](https://pkg.go.dev/builtin#bool): A boolean which indicates whether the session is being run in the cloud.
