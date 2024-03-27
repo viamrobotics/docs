@@ -92,11 +92,9 @@ For local communication between [parts](/build/configure/parts-and-remotes/#mach
 <br>
 
 You can also access the control interface using the [Viam mobile app](/fleet/#the-viam-mobile-app), which you can find on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
-The remote control on the mobile app is organized by location and organization, simplifying the process of managing your fleet of machines.
-Extend this control to your team by granting them access to your organization.
-Additionally, you can search for machines in your fleet, as well as securely upload images from your phone to the Cloud, which you can view on the Viam app's [**DATA** tab](https://app.viam.com/data/) for later use.
+The mobile app is a convenient way to control your machines when you're not at your desk.
 
-{{<gif webm_src="/manage/mobile-app-search.webm" mp4_src="/manage/mobile-app-search.mp4" alt="Using the control interface under the locations tab on the Viam mobile app" max-width="200px">}}
+{{<gif webm_src="/manage/mobile-app-control.webm" mp4_src="/manage/mobile-app-control.mp4" alt="Using the control interface under the locations tab on the Viam mobile app" max-width="320px">}}
 
 ### Code Sample
 
