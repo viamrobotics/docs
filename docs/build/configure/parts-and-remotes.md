@@ -52,6 +52,9 @@ To delete a sub-part or make it the main part, use the buttons in the top right 
 
 To establish a connection between a part of one machine and a part of a second machine, configure a `remote` on the first machine's part.
 
+{{< tabs >}}
+{{% tab name="JSON" %}}
+
 1. Go to the Viam app machine page of the smart machine part to which you wish to establish the remote connection.
    This is the machine part whose resources will be accessible to the other machine part.
 2. Click the **Code sample** tab.
@@ -68,6 +71,18 @@ To establish a connection between a part of one machine and a part of a second m
 6. Click **Create Remote**.
 7. Paste the remote config you copied in step 4 into the empty field.
 8. Click **Save Config** in the bottom left of the screen.
+
+{{% /tab %}}
+{{% tab name="SELECT" %}}
+
+1. Go to the Viam app machine page of the machine part from which you want to establish a remote connection.
+   This is the machine part that will be able to access the resources of the other machine part.
+1. Click the **Config** tab, click the **Remotes** subtab, and select **SELECT** mode.
+1. Give your remote a name and click **Create remote**, then add the address for your part to the **Address** field.
+1. Click **Save config**
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Using remote parts and sub-parts with the Viam SDKs
 
