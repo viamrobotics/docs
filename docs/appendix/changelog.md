@@ -20,25 +20,35 @@ outputs:
 Viam has added support for the TensorFlow, PyTorch, and ONNX ML model frameworks to the ML model service, expanding upon the existing support for TensorFlow Lite models.
 You can now [upload your own ML model](/ml/upload) using any of these frameworks for use with the Vision service.
 
+{{% /changelog %}}
+
 {{% changelog date="2024-03-01" color="added" title="Payment and billing" %}}
 
 The Viam app now provides an enhanced [Payment & Billing page](/fleet/billing/) for your organization, giving you a central place to monitor expenses and manage payments.
 
 The Viam Python SDK has also been extended with a new [Billing API](/build/program/apis/billing-client/), which you can use to programmatically fetch billing information for your organization, including downloading invoices and checking the current month's expenditures.
 
+{{% /changelog %}}
+
 {{% changelog date="2024-03-01" color="added" title="Ultrasonic sensor for Micro-RDK" %}}
 
 You can now use the [ultrasonic sensor component](/build/micro-rdk/sensor/ultrasonic/) with the [Micro-RDK](/build/micro-rdk/) to integrate a [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running the Micro-RDK.
+
+{{% /changelog %}}
 
 {{% changelog date="2024-03-01" color="added" title="Edit a machine configuration that uses a fragment" %}}
 
 You can now edit the configuration of an existing machine that has been configured with a fragment by using [the `fragment_mods` object](/fleet/configure-a-fleet/#modify-the-config-of-a-machine-that-uses-a-fragment) in your configuration.
 You can use the `fragment_mods` objects to be able to deploy a fragment to a fleet of machines, but still be able to make additional per-machine edits as needed.
 
+{{% /changelog %}}
+
 {{% changelog date="2024-03-01" color="added" title="Dual GPS movement sensor" %}}
 
 You can now use the [dual GPS movement sensor component](/components/movement-sensor/gps/dual-gps-rtk/) to integrate a movement sensor that employs two GPS sensors into your machine.
 The dual GPS movement sensor calculates a compass heading from both GPS sensors, and returns the midpoint position between the two sensors as its position.
+
+{{% /changelog %}}
 
 {{% changelog date="2024-03-01" color="added" title="Viam Agent" %}}
 
