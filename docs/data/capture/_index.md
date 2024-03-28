@@ -383,7 +383,7 @@ For a comprehensive tutorial on using data capture and synchronization together 
 To learn how to capture Performance Metrics for machines, see [Performance Monitoring Data Capture](/data/capture/performance-metrics/).
 
 {{< cards >}}
-  {{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
-  {{% card link="/data/capture/performance-metrics/" %}}
-  {{% card link="/tutorials/projects/filtered-camera/" %}}
+{{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
+{{% card link="/data/capture/performance-metrics/" %}}
+{{% card link="/tutorials/projects/filtered-camera/" %}}
 {{< /cards >}}
