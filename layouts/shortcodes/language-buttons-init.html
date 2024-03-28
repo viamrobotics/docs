@@ -1,0 +1,23 @@
+{{/* layouts/shortcodes/language-buttons-init.html */}}
+<div id="language-buttons-init" class="language-buttons">
+    {{ $pythonLink := "python" }}
+    {{ $goLink := "go" }}
+
+    <button data-language="{{ $pythonLink }}" class="language-button">Python</button>
+    <button data-language="{{ $goLink }}" class="language-button">Go</button>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll(".language-button").forEach(button => {
+        button.addEventListener("click", function() {
+            var language = this.getAttribute("data-language");
+            // hypotehtical function to handle language change
+            setLanguage(language);
+        });
+    });
+});
+
+function setLanguage(language) {
+    console.log("language set to:", language); // fake implementation
+}
+</script>

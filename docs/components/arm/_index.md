@@ -101,8 +101,7 @@ If your arm has a different name, change the `name` in the code.
 
 Be sure to import the arm package for the SDK you are using:
 
-{{< tabs >}}
-{{% tab name="Python" %}}
+{{< language-buttons-init >}}
 
 ```python
 from viam.components.arm import Arm
@@ -111,9 +110,6 @@ from viam.proto.common import Pose
 # To use move_to_joint_positions:
 from viam.proto.component.arm import JointPositions
 ```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
 
 ```go
 import (
@@ -125,9 +121,6 @@ import (
   armapi "go.viam.com/api/component/arm/v1"
 )
 ```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 ## API
 

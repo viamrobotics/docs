@@ -1719,3 +1719,17 @@ div .filterable > p {
 .usecase:hover {
   background-color: whitesmoke;
 }
+
+.language-buttons {
+  padding: 1rem;
+}
+
+// language selection buttons begin
+.language-button[data-language="python"] {
+  background-color: #4CAF50; // green
+}
+
+.language-button[data-language="go"] {
+  background-color: #007bff; // blue
+}
+
