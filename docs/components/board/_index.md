@@ -502,7 +502,6 @@ Write an analog value to a pin on the board.
 
 - `pin` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the pin ({{< glossary_tooltip term_id="pin-number" text="pin number" >}}).
 - `value` [(int)](https://docs.python.org/3/library/functions.html#int): Value to write to the pin.
-- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
@@ -516,7 +515,7 @@ my_board = Board.from_robot(robot=robot, name="my_board")
 await my_board.write_analog(pin="11", value=48)
 ```
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.write_analog).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.write_analog).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
