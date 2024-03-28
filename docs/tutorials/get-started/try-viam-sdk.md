@@ -12,7 +12,7 @@ tags: ["base", "viam rover", "try viam", "sdk", "python", "flutter"]
 aliases:
   - /tutorials/get-started/try-viam-sdk
 authors: []
-languages: ["python", "go", "typescript", "flutter"]
+languages: ["python", "go", "typescript", "flutter", "c++"]
 viamresources: ["base"]
 level: "Beginner"
 date: "2022-12-08"
