@@ -7,6 +7,7 @@ type: "docs"
 tags: ["data management", "cloud", "sync"]
 icon: true
 images: ["/services/icons/data-capture.svg"]
+no_list: true
 aliases:
   - "/services/data/capture/"
 # SME: Alexa Greenberg
@@ -378,3 +379,11 @@ If you have synced tabular data, such as [sensor](/components/sensor/) readings,
 If you have synced images, you can use those images to [train machine learning models](/ml/train-model/) within the Viam app.
 
 For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).
+
+To learn how to capture Performance Metrics for machines, see [Performance Monitoring Data Capture](/data/capture/performance-metrics/).
+
+{{< cards >}}
+  {{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
+  {{% card link="/data/capture/performance-metrics/" %}}
+  {{% card link="/tutorials/projects/filtered-camera/" %}}
+{{< /cards >}}
