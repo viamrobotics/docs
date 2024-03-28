@@ -92,9 +92,8 @@ For local communication between [parts](/build/configure/parts-and-remotes/#mach
 <br>
 
 You can also access the control interface using the [Viam mobile app](/fleet/#the-viam-mobile-app), which you can find on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
-The mobile app's control interface includes functionality to access your machine logs, as well as upload images directly from your phone.
-You can access uploaded images on the Viam app's [**DATA** tab](https://app.viam.com/data/) for later use.
-See [Upload images with the Viam mobile app](https://docs.viam.com/data/upload/#upload-images-with-the-viam-mobile-app) for more information.
+The Viam mobile app gives you the ability to search through the machines in your fleet, ordered by location, and control the specific machine or machine component that you need.
+You can watch the live camera feed, adjust the component or machine's runtime parameters, and switch between controllable components just as you would in the Viam app. 
 
 {{<gif webm_src="/manage/mobile-app-control.webm" mp4_src="/manage/mobile-app-control.mp4" alt="Using the control interface under the locations tab on the Viam mobile app" max-width="320px">}}
 
