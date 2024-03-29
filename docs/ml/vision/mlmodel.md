@@ -14,8 +14,8 @@ aliases:
 
 _Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#vision-service)_
 
-The `mlmodel` vision service model is a machine learning detector that draws bounding boxes or returns class labels according to the specified TensorFlow Lite, TensorFlow, PyTorch, or ONNX model file available on the machine’s hard drive.
-To create a `mlmodel` classifier, you need an [ML model service with a suitable model](/ml/).
+The `mlmodel` vision service model is a machine learning detector or classifier that draws bounding boxes or returns class labels according to the specified TensorFlow Lite, TensorFlow, PyTorch, or ONNX model file available on the machine’s hard drive.
+To create a `mlmodel` detector or classifier, you need an [ML model service with a suitable model](/ml/).
 Before configuring your `mlmodel` detector or classifier, you need to:
 
 {{< cards >}}

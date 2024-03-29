@@ -25,7 +25,7 @@ However, your machine can make use of machine learning with nearly any kind of d
 
 Viam supports:
 
-- [TensorFlow Lite](https://www.tensorflow.org/lite) ML models as long as your models adhere to the [model requirements](/ml/deploy/#tflite_cpu-limitations)
+- [TensorFlow Lite](https://www.tensorflow.org/lite) ML models as long as your models adhere to the [model requirements](/ml/deploy/tflite_cpu/#model-requirements)
 - TensorFlow
 - PyTorch
 - ONNX

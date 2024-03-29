@@ -24,17 +24,15 @@ aliases:
 To use Viam software with your machine, install and run the `viam-server` binary on the single board computer (SBC) or other computer that will run your machine and is connected to your hardware.
 Installing on a laptop or desktop computer is useful if you don't have an SBC available, or if you want to run a Viam [service](/services/) with your machine that requires more computing resources than are otherwise available on an SBC.
 
-{{< alert title="Compatibility" color="note" >}}
+For an overview of the Viam software platform, see [Viam in 3 minutes](/get-started/viam/).
+
+## Compatibility
 
 `viam-server` supports:
 
 - Linux 64-bit operating systems running on the `aarch64` or `x86_64` architectures
 - Windows Subsystem for Linux (WSL)
 - macOS
-
-{{< /alert >}}
-
-For an overview of the Viam software platform, see [Viam in 3 minutes](/get-started/viam/).
 
 ## Prepare your board
 
