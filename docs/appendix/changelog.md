@@ -15,6 +15,13 @@ outputs:
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
+{{% changelog date="2024-03-01" color="added" title="Viam Agent" %}}
+
+You can now use the [Viam Agent](/fleet/provision/) to provision your machine or fleet of machines during deployment.
+The Viam agent is a software provisioning manager that you can install on your machine which manages your `viam-server` installation, including installation and ongoing updates, as well as providing flexible deployment configuration options, such as pre-configured WiFi network credentials.
+
+{{% /changelog %}}
+
 {{% changelog date="2024-02-12" color="added" title="Generic service" %}}
 
 You can now use the [generic service](/registry/advanced/generic/) to define new, unique types of services that do not already have an [appropriate API](/build/program/apis/#service-apis) defined for them.
@@ -716,7 +723,7 @@ You will need to first register the machine learning model file with the [ML mod
 
 {{% changelog date="2023-03-31" color="added" title="Machine learning for image classification models" %}}
 
-You can now [train](/ml/train-model/) and [deploy](/ml/deploy/#create-an-ml-model-service) image classification models with the [data management service](/data/) and use your machine's image data directly within Viam.
+You can now [train](/ml/train-model/) and [deploy](/ml/deploy/) image classification models with the [data management service](/data/) and use your machine's image data directly within Viam.
 Additionally, you can [upload and use](/ml/upload-model/) existing machine learning models with your machines.
 For more information on using data synced to the cloud to train machine learning models, read [Train a model](/ml/train-model/).
 

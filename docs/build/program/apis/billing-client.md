@@ -68,7 +68,7 @@ Once you have instantiated a `BillingClient`, you can run [API methods](#api) ag
 
 ## API
 
-The data client API supports the following methods:
+The billing client API supports the following methods:
 
 {{< readfile "/static/include/services/apis/billing-client.md" >}}
 
