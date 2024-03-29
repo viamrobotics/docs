@@ -28,7 +28,7 @@ Then create a machine by typing in a name and clicking **Add machine**.
 {{<imgproc src="/services/icons/data-capture.svg" class="fill alignright" style="max-width: 150px" declaredimensions=true alt="Installation icon">}}
 **2. Install Viam on your machine**
 
-All of the software that runs your smart machine is packaged into a binary called `viam-server`. Install it on the computer controlling your smart machine by following the steps on your machine's **Setup** tab in the [Viam app](https://app.viam.com/).
+All of the software that runs your smart machine is packaged into a binary called `viam-server`. Install it on the computer controlling your smart machine by following the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} in the [Viam app](https://app.viam.com/).
 
 {{< /tablestep >}}
 {{< tablestep >}}
@@ -47,7 +47,7 @@ For example, if you have a DC motor, follow the [corresponding configuration ins
 {{<gif webm_src="/manage/control.webm" mp4_src="/manage/control.mp4" alt="The Viam app Control tab with a control panel for each component. The panel for a DC motor is clicked, expanding to show power controls." max-width="400px" class="fill alignleft">}}
 **4. Test your components**
 
-When you configure a component, a remote control panel is generated for it in the **Control** tab of the Viam app.
+When you configure a component, a remote control panel is generated for it in the **CONTROL** tab of the Viam app.
 With the panels, you can drive motors at different speeds, view your camera feeds, see sensor readings, and generally test the basic functionality of your machine before you've even written any code.
 
 {{< /tablestep >}}
@@ -69,7 +69,7 @@ If you are making a simple machine that doesn't use services, you can skip this 
 Write a program to control your smart machine using the programming language of your choice.
 Viam has [SDKs](/sdks/) for Python, Golang, C++, TypeScript and Flutter.
 
-The easiest way to get started is to copy the auto-generated boilerplate code from your machine's **Code sample** tab in the Viam app.
+The easiest way to get started is to copy the auto-generated boilerplate code from the **Code sample** page of the **CONNECT** tab on your machine's page in the Viam app.
 You can run this code directly on the machine or from a separate computer; it then connects to the machine using API keys.
 
 {{< /tablestep >}}

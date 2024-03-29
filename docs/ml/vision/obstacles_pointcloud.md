@@ -108,7 +108,7 @@ The following parameters are available for a `"obstacles_pointcloud"`.
 | `ground_plane_normal_vec` | Optional | A `(x,y,z)` vector that represents the normal vector of the ground plane. Different cameras have different coordinate systems. For example, a lidar's ground plane will point in the `+z` direction `(0, 0, 1)`. On the other hand, the intel realsense `+z` direction points out of the camera lens, and its ground plane is in the negative y direction `(0, -1, 0)`. <br> Default: `(0, 0, 1)` </br> |
 | `ground_angle_tolerance_degs` | Optional | An integer that determines how strictly the found ground plane should match the `ground_plane_normal_vec`. For example, even if the ideal ground plane is purely flat, a rover may encounter slopes and hills. The algorithm should find a ground plane even if the found plane is at a slant, up to a certain point. <br> Default: `30` </br> |
 
-Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
+Click the **Save** button in the top right corner of the page and proceed to [test your segmenter](#test-your-segmenter).
 
 ## Test your segmenter
 

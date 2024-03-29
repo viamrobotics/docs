@@ -50,7 +50,7 @@ To capture data from one or more machines, you must first add the [data manageme
    Existing data remains in the directory where it was stored.
    {{< /alert >}}
 
-6. Click **Save Config**.
+6. Click the **Save** button in the top right corner of the page.
 
 ![data capture configuration](/tutorials/data-management/data-management-conf.png)
 
@@ -90,7 +90,7 @@ The following components support data capture:
 - Sensor
 - Servo
 
-To add data capture for a component, navigate to the **Config** tab of your machine's page in the Viam app.
+To add data capture for a component, navigate to the **CONFIGURE** tab of your machine's page in the Viam app.
 
 For each component you can capture data for, there is a `Data Capture Configuration` section in its panel.
 Click `Add Method` and then select the method type and the capture frequency.
@@ -101,7 +101,7 @@ Avoid configuring data capture to higher rates than your hardware can handle, as
 
 {{< /alert >}}
 
-Click **Save Config** at the bottom of the window.
+Click the **Save** button in the top right corner of the page..
 
 Now your data will be saved locally on your machine to the directory specified in the data management service.
 
@@ -176,7 +176,7 @@ You may capture data from one or more component methods:
 - To enable or disable data capture for a configured component or method, use the `on/off` toggle.
 - To change the frequency of data capture for a method, enter the number of measurements you wish to capture per second in the frequency field.
 
-After adding configuration for the methods, click **Save Config**.
+After adding configuration for the methods, click the **Save** button in the top right corner of the page.
 
 If you want to remove a capture method from the configuration, click the `delete` icon.
 

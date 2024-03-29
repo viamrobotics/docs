@@ -173,7 +173,7 @@ It stores the required contextual information for Viam's services like [Motion](
 To make sure your rover base's autonomous GPS navigation with the navigation service is accurate, configure and calibrate the frame system service for the components of your machine.
 To start, add the frame system service to your rover [base](/components/base/) and [movement sensor](/components/movement-sensor/).
 
-- Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
+- Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
   Scroll to the card with the name of your base:
 
   {{< imgproc src="/mobility/navigation/click-add-frame-ui.png" alt="The button to add a frame selected with the cursor on the Viam app config builder." resize="500x" >}}
@@ -202,13 +202,13 @@ To start, add the frame system service to your rover [base](/components/base/) a
 
 Then, to calibrate your frame system for the most accurate autonomous GPS navigation with the navigation service:
 
-- After configuring your machine, navigate to the **Control** page and select the card matching the name of your movement sensor.
+- After configuring your machine, navigate to the **CONTROL** page and select the card matching the name of your movement sensor.
 - Monitor the readings displayed on the card, and verify that the compass or orientation readings from the movement sensor report `0` when the base is facing north.
 - If you cannot verify this:
-  - Navigate back to your machine's **Config** page.
+  - Navigate back to your machine's **CONFIGURE** page.
     Scroll to the card with the name of your movement sensor.
     Adjust the **Orientation** of the frame to compensate for the mismatch.
-  - Navigate back to the Navigation card on your **Control** page, and confirm that the compass or orientation readings from the movement sensor now report `0` when the base is facing north, confirming that you've successfully calibrated your machine to be oriented accurately within the frame system.
+  - Navigate back to the Navigation card on your **CONTROL** page, and confirm that the compass or orientation readings from the movement sensor now report `0` when the base is facing north, confirming that you've successfully calibrated your machine to be oriented accurately within the frame system.
   - If you cannot verify this, repeat as necessary.
 
 ## API
@@ -798,7 +798,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ## Control tab usage
 
-After configuring the navigation service for your machine, navigate to the **Control** tab of the machine's page in the [Viam app](https://app.viam.com) and expand the card matching the name of your service to use an interface for rover navigation.
+After configuring the navigation service for your machine, navigate to the **CONTROL** tab of the machine's page in the [Viam app](https://app.viam.com) and expand the card matching the name of your service to use an interface for rover navigation.
 
 Here, you can toggle the mode of the service between **Manual** and **Waypoint** to start and stop navigation, add waypoints and obstacles, and view the position of your rover base on a map:
 
