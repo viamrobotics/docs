@@ -35,7 +35,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
 
 1. First, [install the Viam CLI](/fleet/cli/#install) and [authenticate](/fleet/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
 
-2. Next, run the `viam module create` command to choose a custom module name and generate the required metadata for your module.
+1. Next, run the `viam module create` command to choose a custom module name and generate the required metadata for your module.
    By default, a new module is created as _private_, meaning that it is only accessible to members of your [organization](/fleet/organizations/), but you can choose to set the `visibility` of your module to _public_ to make it accessible to all Viam users.
 
    Select the private or public tab for instructions to upload your module with the respective `visibility` setting:
@@ -61,7 +61,7 @@ If you mark your module as public, you cannot change it back to private.
 1.  If you haven't already, [create a new namespace](/fleet/organizations/#create-a-namespace-for-your-organization) for your organization.
     If you have already created a namespace, you can find it on your organization's **Settings** page in [the Viam App](https://app.viam.com/), or by running the [`viam organizations list`](/fleet/cli/#organizations) command.
 
-2.  To generate metadata for your module using your public namespace, run the following command from the same directory as your custom module:
+1.  To generate metadata for your module using your public namespace, run the following command from the same directory as your custom module:
 
     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
     viam module create --name <your-module-name> --public-namespace <your-unique-namespace>
@@ -72,7 +72,7 @@ If you mark your module as public, you cannot change it back to private.
 
     This command creates a new `meta.json` metadata file in your current working directory, which serves as a template.
 
-3.  Edit the newly-created `meta.json` file, and provide the required configuration information for your custom module by filling in the following fields.
+1.  Edit the newly-created `meta.json` file, and provide the required configuration information for your custom module by filling in the following fields.
 
     <table class="table table-striped">
       <tr>
@@ -187,7 +187,7 @@ Where `dist/main` is the [packaged executable](/registry/create/#compile-or-pack
 
 Supply the path to the resulting archive file in the next step.
 
-2. Run `viam module upload` to upload your custom module to the Viam registry.
+1. Run `viam module upload` to upload your custom module to the Viam registry.
    Specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
@@ -510,17 +510,17 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 
    Both methods return a `key id` and a `key value` which together comprise your organization API key.
 
-2. Then, configure your GitHub repository to use your organization API key to authenticate during GitHub action runs, following the steps below:
+1. Then, configure your GitHub repository to use your organization API key to authenticate during GitHub action runs, following the steps below:
 
    1. In the GitHub repository for your project, select **Settings**, then **Secrets and variables**, then **Actions**.
 
-   2. Click the green **New repository secret** button, enter `viam_key_id` as the **NAME**, paste the value for `key id` from above into the **Secret** text field, then click **Add secret**.
+   1. Click the green **New repository secret** button, enter `viam_key_id` as the **NAME**, paste the value for `key id` from above into the **Secret** text field, then click **Add secret**.
 
-   3. Then, click the green **New repository secret** button, enter `viam_key_value` as the **NAME**, paste the value for `key value` from above into the **Secret** text field, then click **Add secret**.
+   1. Then, click the green **New repository secret** button, enter `viam_key_value` as the **NAME**, paste the value for `key value` from above into the **Secret** text field, then click **Add secret**.
 
    For more information on GitHub secrets, see the GitHub documentation for [creating secrets for a repository](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository).
 
-3. Push a tag to your repo or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
+1. Push a tag to your repo or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
    The specific step to take to release your software depends on your CI workflow, your GitHub configuration, and the `run` step you defined earlier.
    Once complete, your module will upload to the [Viam registry](https://app.viam.com/registry) with the appropriate version automatically.
 
