@@ -25,7 +25,7 @@ For information on the individual configuration options available, see [Configur
 If your machine will never connect to the internet, and you want to create a local configuration file manually, you can still use the Viam app to build the configuration file even without connecting your machine to it.
 Follow the steps below to build and then download your configuration file:
 
-1. Navigate to [the Viam app](https://app.viam.com) and select the **Config** tab.
+1. Navigate to [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
 1. Use **Builder** mode to add components and services, configure attributes, and map pin assignments.
 1. Then, switch to **JSON** mode to be shown the equivalent JSON configuration to the settings you made in **Builder** mode.
 1. Download the JSON configuration to the board or computer you intend to run `viam-server` on.
@@ -33,7 +33,7 @@ Follow the steps below to build and then download your configuration file:
 
 If you later need to make changes to your machine's configuration:
 
-1. Make your edits under the **Config** tab in **Builder** mode
+1. Make your edits under the **CONFIGURE** tab in **Builder** mode
 1. Switch to **JSON** mode to view your full configuration in JSON format
 1. Download the code to your machine, overwriting your local configuration file with the new one.
    If it is currently running, `viam-server` will detect the updated configuration and apply it automatically -- there is no need to restart `viam-server` to apply changes.

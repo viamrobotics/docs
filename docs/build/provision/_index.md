@@ -167,7 +167,7 @@ For example, to configure SSIDs and passwords for two WiFi networks named `prima
 }
 ```
 
-You can add this configuration to the <file>/etc/viam.json</file> configuration file you deploy to your machine, or from the **Config** tab in the [Viam app](https://app.viam.com/) for your machine, using **Raw JSON** mode.
+You can add this configuration to the <file>/etc/viam.json</file> configuration file you deploy to your machine, or from the **CONFIGURE** tab in the [Viam app](https://app.viam.com/) for your machine, using **Raw JSON** mode.
 The Viam Agent will attempt to connect to the `ssid` with the highest `priority` first.
 If the highest-priority network is not available, it will then attempt to connect to the next-highest `priority` network, and so on until all configured networks have been tried.
 If no configured WiFi network could be connected to, the Viam Agent will instead create its own WiFI hotspot, as described in the next section.
@@ -197,10 +197,10 @@ For example, to set the hotspot password to `acme123`, you can use the following
 }
 ```
 
-You can add this configuration to the <file>/etc/viam.json</file> configuration file you deploy to your machine, or from the **Config** tab in the [Viam app](https://app.viam.com/) for your machine, using **Raw JSON** mode.
+You can add this configuration to the <file>/etc/viam.json</file> configuration file you deploy to your machine, or from the **CONFIGURE** tab in the [Viam app](https://app.viam.com/) for your machine, using **Raw JSON** mode.
 
 If you did not initially provide a full `viam-server` configuration in either of these methods, you will be prompted to paste one in when you connect to the WiFi hotspot.
-You can copy a configured machine's configuration by navigating to the [Viam app](https://app.viam.com/), selecting the **Setup** tab for your machine, and clicking the **Copy viam-server config** button.
+You can copy a configured machine's configuration by navigating to the [Viam app](https://app.viam.com/), viewing the part's {{< glossary_tooltip term_id="setup" text="setup instructions" >}}, and clicking the **Copy viam-server config** button.
 
 ## Use a pre-install script
 

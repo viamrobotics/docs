@@ -118,4 +118,4 @@ To avoid connection issues, start using API keys.
 
    Include the address, which resembles `12345.somemachine-main.viam.cloud`.
    The machine address is a public address to connect to your machine.
-   You can find this address at the top of the machine's **Control** tab or in the **Code sample** tab.
+   You can find this address at the top of the machine's **CONTROL** tab or on the **CONNECT** tab's **Code sample** page.
