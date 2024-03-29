@@ -38,8 +38,7 @@ As a classifier, the service returns class labels and confidence score based off
 
 See [Use machine learning with your machine](#use-machine-learning-with-your-machine) for a full guide to this workflow.
 
-The ML model service works with models trained inside and outside the Viam app, and with models that are private to an organization or shared on the registry.
-Thus, you have four options when choosing a model to deploy onto an [ML model](/ml/deploy/) deployment service.
+You have four options when choosing a model to deploy onto an [ML model](/ml/deploy/) deployment service.
 You can:
 
 - [train a model on the Viam app](/ml/train-model/) and deploy it
