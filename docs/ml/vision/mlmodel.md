@@ -276,8 +276,8 @@ If you intend to use the detector or classifier with a camera that is part of yo
 {{% /tab %}}
 {{< /tabs >}}
 
-1. After adding the components and their attributes, click the **Save** button in the top right corner of the page.
-2. Navigate to the **CONTROL** tab, click on your transform camera and toggle it on.
+3. After adding the components and their attributes, click the **Save** button in the top right corner of the page.
+4. Navigate to the **CONTROL** tab, click on your transform camera and toggle it on.
    If you've configured a detector, the transform camera will now show detections with bounding boxes around the object.
 
    ![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/ml/vision/chair-detector.png)
@@ -286,7 +286,7 @@ If you intend to use the detector or classifier with a camera that is part of yo
 
    ![Model recognizes a star on camera feed](/services/model-on-camera.png)
 
-3. The following code gets the machine’s vision service and then runs a detector or classifier vision model on an image from the machine's camera `"cam1"`.
+5. The following code gets the machine’s vision service and then runs a detector or classifier vision model on an image from the machine's camera `"cam1"`.
 
    {{% alert title="Tip" color="tip" %}}
 
