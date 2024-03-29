@@ -51,7 +51,7 @@ For doing pure localization on an existing map, the `cartographer` modular resou
 {{% alert title="Info" color="tip" %}}
 
 Running `cartographer` in the cloud is temporarily disabled, and the attribute `use_cloud_slam` defaults to `false`.
-If you set `use_cloud_slam` to true, cloud SLAM will run in the cloud, but it won't be possible to see the results in the remote control card.
+If you set `use_cloud_slam` to true, it will not be possible to see the results in the remote control card.
 
 {{% /alert %}}
 
