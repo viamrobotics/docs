@@ -1182,7 +1182,7 @@ This module implements the [`rdk:component:base` API](https://docs.viam.com/comp
 > [!NOTE]
 > Before configuring your base, you must [create a machine](https://docs.viam.com/fleet/machines/#add-a-new-machine).
 
-Navigate to the **CONFIGURE** tab of your machine’s page in [the Viam app](https://app.viam.com/). Click on the **Components** subtab and click **Create component**. Select the `base` type, then select the `agilex-limo` model. Click **Add module**, then enter a name for your base and click **Create**.
+Navigate to the **CONFIGURE** tab of your machine’s page in [the Viam app](https://app.viam.com/). Click on the **Components** subtab and click **Create component**. Select the `base` type, then search for and select the `agilex-limo` model. Click **Add module**, then enter a name for your base and click **Create**.
 
 On the new component panel, copy and paste the following attribute template into your base’s **Attributes** box:
 
