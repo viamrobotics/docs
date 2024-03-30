@@ -728,6 +728,14 @@ Click **Save config** in the bottom left corner of the screen.
 
 Now your guardian starts behaving like a guardian automatically once booted!
 
+## Use the Viam mobile app
+
+If you want to access your or control your machine on the go, you can use the [Viam mobile app](/fleet/#the-viam-mobile-app).
+
+{{<video webm_src="/tutorials/guardian/app.webm" mp4_src="/tutorials/guardian/app.mp4"
+poster="/tutorials/guardian/app.jpg"
+alt="Viam mobile app controlling machine" max-width="300px">}}
+
 ## Next steps
 
 You now have a functioning guardian robot which you can use to monitor your pets or people.
@@ -735,7 +743,7 @@ Or simply use to greet you when you get back to your desk.
 
 Here is a video of how I set up my guardian to follow my dog around my living room:
 
-{{<video webm_src="/tutorials/guardian/ernieandtheguardian.webm" mp4_src="/tutorials/guardian/ernieandtheguardian.mp4" poster="/tutorials/guardian/ernieandtheguardian.jpg" alt="Guardian robot rotates head to follow dog around a room">}}
+{{<video webm_src="/tutorials/guardian/ernieandtheguardian.webm" mp4_src="/tutorials/guardian/ernieandtheguardian.mp4" poster="/tutorials/guardian/ernieandtheguardian.jpg" alt="Guardian robot rotates head to follow dog around a room" >}}
 
 Of course, you're free to adapt the code to make it do something else, add more LEDs, or even [train your own custom model](/ml/train-model/) to use.
 
