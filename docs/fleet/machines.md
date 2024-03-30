@@ -95,8 +95,6 @@ You can also access the control interface using the [Viam mobile app](/fleet/#th
 The Viam mobile app gives you the ability to search through the machines in your fleet, ordered by location, and control the specific machine or machine component that you need.
 You can watch the live camera feed, adjust the component or machine's runtime parameters, and switch between controllable components just as you would in the Viam app. 
 
-<br>
-
 {{<gif webm_src="/manage/mobile-app-control.webm" mp4_src="/manage/mobile-app-control.mp4" alt="Using the control interface under the locations tab on the Viam mobile app" max-width="300px">}}
 
 ### Code Sample
