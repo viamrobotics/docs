@@ -20,13 +20,18 @@ Measure from that point to the base of the arm to get the `translation` coordina
 - Leave `parent` and `orientation` at their default values.
 
 {{< tabs name="Example Frame Configuration of Component attached to Static Surface" >}}
-{{% tab name="Config Builder" %}}
+{{% tab name="Frame Editor" %}}
 
-To complete the frame configuration for your machine following this example, navigate to the **Config** tab on your machine's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to `myArm`'s card, and click **Add Frame**:
+To configure your machine following this example:
 
-![frame card example for this configuration](/mobility/frame-system/frame_card_static.png)
-
-Select the `parent` frame as `world` and fill in the coordinates for `translation` (_mm_) and `orientation` (_deg_) according to the position and orientation of the arm in relation to the `world` frame's origin.
+- Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+- Select **Builder** mode and [configure your arm](/components/arm/#supported-models).
+  If you don't have a physical arm, you can use a `fake` model.
+- Select the **Frame** mode.
+- From the left-hand menu, select your arm:
+  {{<imgproc src="/mobility/frame-system/arm_default_frame.png" resize="300x" style="max-width: 500px" alt="Frame card for a base with the default reference frame settings">}}
+- Keep the **Parent** frame as `world` and fill in the coordinates for **Translation** (_mm_) and **Orientation** (_deg_) according to the position and orientation of the arm in relation to the `world` frame's origin:
+  {{<imgproc src="/mobility/frame-system/arm_frame.png" resize="300x" style="max-width: 500px" alt="Frame card for an arm with a translation of 100 mm configured">}}
 
 {{< /tab >}}
 {{% tab name="JSON Example" %}}
@@ -71,16 +76,7 @@ Select the `parent` frame as `world` and fill in the coordinates for `translatio
 <!-- prettier-ignore -->
 | Parameter | Inclusion | Required |
 | --------- | ----------- | ----- |
-| `Parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
-| `Translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: _mm_. |
-| `Orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: `Orientation Vector Degrees`, `Orientation Vector Radians`, and `Quaternion`. |
-| `Geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the machine. <br> Types: `Sphere`, `Box`, and `Capsule`. |
-
-{{% alert title="Tip" color="tip" %}}
-
-Note: `myArm` uses the default `orientation` from the `world` origin.
-
-You do not have to explicitly configure this on your machine, as it is the default.
-It is included as part of this example for illustrative purposes.
-
-{{% /alert %}}
+| `parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
+| `translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: *mm*. |
+| `orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> **Types**: **Orientation Vector Degrees** (`ov_degrees`), **Orientation Vector Radians** (`ov_radians`), **Euler Angles** (`euler_angles`), and **Quaternion** (`quaternion`). |
+| `geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the machine. <br> Units: *mm* <br> **Types**: **Sphere** (`sphere`), **Box** (`box`), and **Capsule** (`capsule`). |

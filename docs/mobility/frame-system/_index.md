@@ -33,22 +33,32 @@ It stores the required contextual information to use the position and orientatio
 
 ## Configuration
 
-To enable the default frame for a given [component](/components/) on a machine, navigate to the **Config** tab of the machine's page in [the Viam app](https://app.viam.com) and click **Components**.
-With **mode** as **Builder**, click **Add Frame** on the component's card and **Save Config**.
-
-To adjust the frame from its default configuration, change the parameters as needed for your machine before saving.
+You can configure a reference frame within the frame system for each of your machine's components on the **Frame** subtab of the **CONFIGURE** tab or in the raw **JSON** configuration.
 
 {{< tabs name="Frame Configuration Instructions" >}}
-{{% tab name="Config Builder" %}}
+{{% tab name="Frame Editor" %}}
 
-Navigate to the **Config** tab on your machine's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to a component's panel, and click **Add Frame**:
+1. Navigate to the **CONFIGURE** tab of the machine's page in [the Viam app](https://app.viam.com) and select the **Frame** mode.
+2. From the left-hand menu, select your component.
+   If you haven't adjusted any parameters yet, the default reference frame will be shown for the component:
 
-![add reference frame pane](/mobility/frame-system/frame_card.png)
+   {{<imgproc src="/mobility/frame-system/frame_card.png" resize="300x" style="max-width: 500px" alt="Frame card for a camera with the default reference frame settings">}}
 
-Select a `parent` frame and fill in the coordinates for `translation` (_mm_) and `orientation` (_deg_, _rad_, or _q_), according to the position and orientation of your component in relation to the `parent` frame.
+3. To adjust the frame from its default configuration, change the parameters as needed for your machine before saving.
+   Select a **Parent** frame and fill in the coordinates for **Translation** (_mm_) and **Orientation** (_deg_, _rad_, or _q_), according to the position and orientation of your component in relation to the **Parent** frame.
+
+4. Select **Save** in the top right corner of the page to save your config.
 
 {{% /tab %}}
+{{% tab name="JSON Editor" %}}
+
+1. Navigate to the **CONFIGURE** tab of the machine's page in [the Viam app](https://app.viam.com) and select the **JSON** mode.
+2. Edit the JSON inside your component object to add a `"frame"` configuration.
+
+{{< tabs >}}
 {{% tab name="JSON Template" %}}
+
+You can add a reference frame to your component with the following template:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -60,20 +70,68 @@ Select a `parent` frame and fill in the coordinates for `translation` (_mm_) and
       "attributes": { ... },
       "depends_on": [],
       "frame": {
-        "parent": "<world>",
+        "parent": "<world_or_parent_component_name>",
         "translation": {
           "y": <int>,
           "z": <int>,
           "x": <int>
         },
         "orientation": {
-          "type": "<ov_degrees>",
+          "type": "<type>",
           "value": {
             "x": <int>,
             "y": <int>,
             "z": <int>,
-            "th": <int>
+            "th": <int> // "w": <int> if "type": "quaternion"
           }
+        },
+        "geometry": {
+          "type": "<type>",
+          "x": <int>,
+          "y": <int>,
+          "z": <int>
+        }
+      }
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [
+    {
+      "name": "cam",
+      "namespace": "rdk",
+      "type": "camera",
+      "model": "webcam",
+      "attributes": {
+        "video_path": "FDF90FEC-59E5-4FCF-AABD-DA03C4E19BFB"
+      },
+      "frame": {
+        "parent": "world",
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "orientation": {
+          "type": "quaternion",
+          "value": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          }
+        },
+        "geometry": {
+          "type": "box",
+          "x": 100,
+          "y": 100,
+          "z": 100
         }
       }
     }
@@ -84,20 +142,23 @@ Select a `parent` frame and fill in the coordinates for `translation` (_mm_) and
 {{% /tab %}}
 {{< /tabs >}}
 
+{{% /tab %}}
+{{< /tabs >}}
+
 Configure the reference frame as follows:
 
 <!-- prettier-ignore -->
 | Parameter | Inclusion | Required |
 | --------- | ----------- | ----- |
-| `Parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
-| `Translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: _mm_. |
-| `Orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: `Orientation Vector Degrees`, `Orientation Vector Radians`, and `Quaternion`. |
-| `Geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the machine. <br> Types: `Sphere`, `Box`, and `Capsule`. |
+| `parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
+| `translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: *mm*. |
+| `orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: **Orientation Vector Degrees** (`ov_degrees`), **Orientation Vector Radians** (`ov_radians`), **Euler Angles** (`euler_angles`), and **Quaternion** (`quaternion`). |
+| `geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the machine. <br> Units: *mm* <br> Types: **Sphere** (`sphere`), **Box** (`box`), and **Capsule** (`capsule`). |
 
 {{% alert title="Info" color="info" %}}
 
-The `Orientation` parameter offers `Types` for ease of configuration, but the frame system always stores and returns [orientation vectors](/internals/orientation-vector/) in `Orientation Vector Radians`.
-`Degrees` and `Quaternion` will be converted to `Radians`.
+The `orientation` parameter offers types for ease of configuration, but the frame system always stores and returns [orientation vectors](/internals/orientation-vector/) in `Orientation Vector Radians`.
+Other types will be converted to `ov_radian`.
 
 {{% /alert %}}
 
@@ -106,7 +167,7 @@ The `Orientation` parameter offers `Types` for ease of configuration, but the fr
 For [base components](/components/base/), Viam considers `+X` to be to the right, `+Y` to be forwards, and `+Z` to be up.
 You can use [the right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule) to understand rotation about any of these axes.
 
-For non-base components, there is no inherent concept of "forward," so it is up to the user to define frames that make sense in their application.
+For non base components, there is no inherent concept of "forward," so it is up to the user to define frames that make sense in their application.
 
 {{% /alert %}}
 
@@ -118,19 +179,19 @@ For more information about determining the appropriate values for these paramete
 ### Visualize the frame system
 
 You can visualize how your machine is oriented in the frame system in [the Viam app](https://app.viam.com).
-Navigate to the **Config** tab on your machine's page, select **mode** as **Builder**, and click on **Frame System**.
+Navigate to the **CONFIGURE** tab on your machine's page and select the **Frame** mode.
 
 The Viam app shows you a 3D visualization of the spatial configuration of the reference frames of components configured on your machine:
 
 ![Default frame system configuration grid visualization for a single component, shown in the Frame System Editor](/mobility/frame-system/frame_system_basic.png)
 
-This tab provides a simple interface for simultaneously viewing and editing the position, orientation, and geometries of a machine's components in the frame system.
+On this tab, you can simultaneously view and edit the position, orientation, and geometries of your machine's components in the frame system.
 
 For example:
 
 Consider a machine configured with a [`jetson` board](/components/board/), wired to a [`webcam` camera](/components/camera/webcam/) and a [`wheeled` base](/components/base/wheeled/) with two [motors](/components/motor/) driving its wheels.
 
-No reference frame configuration has been specified, so on the **Frame System** subtab of the **Config** tab, the components are shown to all be located on the default `world` origin point as follows:
+No reference frame configuration has been specified, so on the **Frame** subtab of the **CONFIGURE** tab, the components are shown to all be located on the default `world` origin point as follows:
 
 ![Example machine's default frame configuration shown in the Frame System Editor. All components are stuck on top of each other](/mobility/frame-system/demo_base_unedited.png)
 
@@ -157,37 +218,38 @@ Now that the frame system is accurately configured with the machine's spatial or
 
 ### Display options
 
-Click and drag on the **Frame System** visualization to view the display from different angles, and pinch to zoom in and out:
+Click and drag on the **Frame** visualization to view the display from different angles, and pinch to zoom in and out:
 
 {{<gif webm_src="/mobility/frame-system/frame_system_demo.webm" mp4_src="/mobility/frame-system/frame_system_demo.mp4" alt="The frame system visualization zooming in and out around the example robot with a camera, board, and wheeled base.">}}
 
-Click the video camera icon below and to the right of the **Frame System** button to switch beween the default **Perspective Camera** and the **Orthographic Camera** view:
+Click the grid icons below and to the right of the **Frame** button or press the **C** key to switch beween the default **perspective** and the **orthographic** view:
 
 {{< tabs name="Toggle Camera Views" >}}
-{{% tab name="Perspective Camera" %}}
+{{% tab name="Perspective" %}}
 
 ![Default Perspective Camera view shown in the Frame System Editor](/mobility/frame-system/demo_perspective.png)
 
 {{% /tab %}}
-{{% tab name="Orthographic Camera" %}}
+{{% tab name="Orthographic" %}}
 
-![Non-default Orthographic Camera view shown in the Frame System Editor](/mobility/frame-system/demo_orthographic.png)
+![Orthographic Camera view shown in the Frame System Editor](/mobility/frame-system/demo_orthographic.png)
 
 {{% /tab %}}
 {{< /tabs >}}
 
 ### Bounding geometries
 
-To visualize a component's spatial constraints, add `Geometry` properties by selecting a component and selecting a **Geometry** type in the **Frame System** subtab of the **Config** tab of a machine's page on [the Viam app](https://app.viam.com).
+To visualize a component's spatial constraints, add `geometry` properties by selecting a component and selecting a **Geometry** type in the **Frame** subtab of the **CONFIGURE** tab of a machine's page on [the Viam app](https://app.viam.com).
 
-By default, a **Geometry** is shown surrounding the origin point of a component:
+By default, a **Geometry** is shown surrounding the origin point of a component.
+You can adjust the parameters of a **Geometry** to change its size.
+Parameters vary between **Geometry** types, but units are in _mm_.
 
 {{< tabs name="Visualize Adding Geometry Bounds" >}}
 {{% tab name="Box" %}}
 
 ![Demo robot with default box bounds added to the wheeled base, shown in the Frame System Editor](/mobility/frame-system/demo_bound_box.png)
 
-You can adjust the **Size** and **Translation** of a **Geometry** to change these bounds.
 For example:
 
 ![Demo robot with translated box bounds added to the wheeled base, shown in the Frame System Editor](/mobility/frame-system/demo_bound_box_translation.png)
