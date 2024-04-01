@@ -17,16 +17,8 @@ outputs:
 
 {{% changelog date="2024-03-01" color="added" title="Additional ML models" %}}
 
-Viam has added support for the TensorFlow, PyTorch, and ONNX ML model frameworks to the ML model service, expanding upon the existing support for TensorFlow Lite models.
+Viam has added support for the TensorFlow, PyTorch, and ONNX ML model frameworks, expanding upon the existing support for TensorFlow Lite models.
 You can now [upload your own ML model](/ml/upload-model/) using any of these frameworks for use with the Vision service.
-
-{{% /changelog %}}
-
-{{% changelog date="2024-03-01" color="added" title="Payment and billing" %}}
-
-The Viam app now provides an enhanced [Payment & Billing page](/fleet/billing/) for your organization, giving you a central place to monitor expenses and manage payments.
-
-The Viam Python SDK has also been extended with a new [Billing API](/build/program/apis/billing-client/), which you can use to programmatically fetch billing information for your organization, including downloading invoices and checking the current month's expenditures.
 
 {{% /changelog %}}
 
