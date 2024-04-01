@@ -103,7 +103,7 @@ To install `viam-server` on a macOS computer:
 {{% tab name="Windows" %}}
 
 1. Go to the [Viam app](https://app.viam.com).
-    Create an account if you haven't already.
+   Create an account if you haven't already.
 
 1. Add a new machine by providing a name in the **New machine** field and clicking **Add machine**:
 
