@@ -730,7 +730,7 @@ Now your guardian starts behaving like a guardian automatically once booted!
 
 ## Use the Viam mobile app
 
-If you want to access your or control your machine on the go, you can use the [Viam mobile app](/fleet/#the-viam-mobile-app).
+If you want to access or control your machine on the go, you can use the [Viam mobile app](/fleet/#the-viam-mobile-app).
 
 {{<video webm_src="/tutorials/guardian/app.webm" mp4_src="/tutorials/guardian/app.mp4"
 poster="/tutorials/guardian/app.jpg"
