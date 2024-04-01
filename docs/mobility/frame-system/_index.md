@@ -151,9 +151,9 @@ Configure the reference frame as follows:
 | Parameter | Inclusion | Required |
 | --------- | ----------- | ----- |
 | `parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
-| `translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: *mm*. |
+| `translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: _mm_. |
 | `orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: **Orientation Vector Degrees** (`ov_degrees`), **Orientation Vector Radians** (`ov_radians`), **Euler Angles** (`euler_angles`), and **Quaternion** (`quaternion`). |
-| `geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the machine. <br> Units: *mm* <br> Types: **Sphere** (`sphere`), **Box** (`box`), and **Capsule** (`capsule`). |
+| `geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the machine. <br> Units: _mm_ <br> Types: **Sphere** (`sphere`), **Box** (`box`), and **Capsule** (`capsule`). |
 
 {{% alert title="Info" color="info" %}}
 
@@ -197,20 +197,20 @@ No reference frame configuration has been specified, so on the **Frame** subtab 
 
 The distance on the floor from the wheeled base to the board and camera setup is 200 millimeters.
 
-Add this value to `"X"` in the base's reference frame `Translation` attribute, and the frame system readjusts to show the base's translation:
+Add this value to `"x"` in the base's reference frame `Translation` attribute, and the frame system readjusts to show the base's translation:
 
 ![Base translated 200mm forwards shown in the Frame System Editor](/mobility/frame-system/demo_base_edited.png)
 
 The distance from the board to the camera mounted overhead is 50 millimeters.
 
-Add this value to `"Z"` in the camera's reference frame `Translation` attribute, and the frame system readjusts to show the camera's translation:
+Add this value to `"z"` in the camera's reference frame `Translation` attribute, and the frame system readjusts to show the camera's translation:
 
 ![Camera translated 50 mm overhead shown in the Frame System Editor](/mobility/frame-system/demo_camera_edited_1.png)
 
 Now the distance between these components is accurately reflected in the visualization.
 However, the camera doesn't yet display as oriented towards the base.
 
-Adjust the [orientation vector](/internals/orientation-vector/) to 0.5 degrees in `"OX"` in the camera's reference frame `Orientation` attribute, and the frame system readjusts to show the camera's orientation:
+Adjust the [orientation vector](/internals/orientation-vector/) to 0.5 degrees in `"ox"` in the camera's reference frame `Orientation` attribute, and the frame system readjusts to show the camera's orientation:
 
 ![Camera oriented .5 degrees OX shown in the Frame System Editor](/mobility/frame-system/demo_camera_edited_2.png)
 
