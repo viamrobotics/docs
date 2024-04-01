@@ -101,7 +101,7 @@ Avoid configuring data capture to higher rates than your hardware can handle, as
 
 {{< /alert >}}
 
-Click the **Save** button in the top right corner of the page..
+Click the **Save** button in the top right corner of the page.
 
 Now your data will be saved locally on your machine to the directory specified in the data management service.
 
