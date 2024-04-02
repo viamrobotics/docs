@@ -152,8 +152,8 @@ If you mark your module as public, you cannot change it back to private.
       "build": {
         "path": "dist/archive.tar.gz", // optional - path to your built module
         "build": "./build.sh", // command that will build your module
-        "arch" : ["linux/amd64", "linux/arm64"]  // architecture(s) to build for
-        },
+        "arch": ["linux/amd64", "linux/arm64"] // architecture(s) to build for
+      },
       "entrypoint": "dist/main"
     }
     ```
