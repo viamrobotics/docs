@@ -25,10 +25,6 @@ Common use cases include:
 
 For other use cases, consider [creating custom functionality with a module](/registry/create/).
 
-{{% alert title="Note" color="note" %}}
-See [Integrate Viam with ChatGPT to Create a Companion Robot](/tutorials/projects/integrating-viam-with-openai/) for an example of using Viam to add object detection, speech recognition, natural language processing, and speech synthesis capabilities to a machine.
-{{% /alert %}}
-
 Viam provides two services that enable machine learning capabilities: the [ML model](/ml/deploy/) service and the [Computer Vision](/ml/vision/) service.
 
 The ML model service deploys and runs a machine learning model, such as a TensorFlow or ONNX model, on your machine and makes its output accessible to other services.
@@ -36,7 +32,23 @@ One service that is built on top of the ML model service is the [Computer Vision
 As a detector, the service interprets image data from images on your computer or a [camera](/components/camera/) and draws bounding boxes around objects.
 As a classifier, the service returns class labels and confidence score based off the [inferences](/ml/deploy/#infer) the underlying ML model makes from image data.
 
-See [Use machine learning with your machine](#use-machine-learning-with-your-machine) for a full guide to this workflow.
+See [Use machine learning with your machine](#use-machine-learning-with-your-machine) for step by step instructions.
+
+## Example tutorials
+
+{{< cards >}}
+{{% manualcard link="/tutorials/projects/integrating-viam-with-openai/" %}}
+
+<h4>Integrate Viam with ChatGPT to Create a Companion Robot</h4>
+Add object detection, speech recognition, natural language processing, and speech synthesis capabilities to a machine.
+
+{{% /manualcard %}}
+{{% card link="/tutorials/projects/helmet/" %}}
+{{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
+{{% card link="/tutorials/projects/pet-treat-dispenser/" customTitle="Smart Pet Feeder" %}}
+{{< /cards >}}
+
+## Model support
 
 You have four options when choosing a model to deploy onto an [ML model](/ml/deploy/) deployment service.
 You can:
@@ -47,7 +59,6 @@ You can:
 - deploy a model trained outside the Viam platform that's already available on your machine
 
 The model you use must be supported on the Viam platform.
-
 Viam supports the following model frameworks:
 
 - [TensorFlow Lite](https://www.tensorflow.org/lite) (as long as your models adhere to the [model requirements](/ml/deploy/tflite_cpu/#model-requirements)): with the [`tflite_cpu` ML model service](/ml/deploy/)
@@ -98,11 +109,3 @@ For more information, see [Model framework support](/ml/upload-model/#model-fram
     </td>
   </tr>
 </table>
-
-## Tutorials
-
-{{< cards >}}
-{{% card link="/tutorials/projects/helmet/" %}}
-{{% card link="/tutorials/projects/pet-treat-dispenser/" customTitle="Smart Pet Feeder" %}}
-{{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
-{{< /cards >}}
