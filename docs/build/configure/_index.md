@@ -231,9 +231,9 @@ Find more information in the [processes documentation](/build/configure/processe
 
 ## Webhooks
 
-Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud.
+Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when your machines come online.
 
-Viam offers different types of webhooks depending on the type of data you want to serve as a trigger.
+Viam provides two webhook types depending on the event you want to trigger an action on.
 For example, you can use the `"part_data_ingested"` type to configure a webhook to send you a notification when your robot's sensor collects a new reading, or use the `"part_online"` type to notify you when your machine part comes online.
 
 To configure a webhook:
@@ -361,8 +361,8 @@ To configure a webhook:
 1. Paste the following JSON template into your raw JSON config.
    `"webhooks"` is a top-level section like `"components"`, `"services"`, or any of the other config sections.
 
-   {{< tabs >}}
-   {{% tab name="JSON Template" %}}
+{{< tabs >}}
+{{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
   "webhooks": [
@@ -419,7 +419,8 @@ To configure a webhook:
 {{< /tabs >}}
 
 2. Replace the URL value with the URL of your cloud/lambda function.
-3. Adjust the `seconds_between_notifications` attribute to your desired duration between actions being triggered when the `part_online` condition is met.
+3. While your part is online, the webhook action triggers at a specified interval.
+   Edit the `seconds_between_notifications` attribute to set this interval according to your preferences.
 4. Write your cloud/lambda function to process the request from `viam-server`.
    The following example function sends a Slack message with a machine's details, such as robot and location IDs, when it receives a request:
 
