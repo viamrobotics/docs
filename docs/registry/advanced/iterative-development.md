@@ -38,9 +38,9 @@ If you are developing a module for the same target architecture as your developm
    Provide the **Executable path** in the configuration, pointing to the compiled or built binary, or the executable script, depending on your language.
    If you have previously added your module as a _registry module_, you will need to first remove the registry version of your module before then adding the local version.
 
-1. Click **Save config**.
+1. Click the **Save** button in the top right corner of the page.
 
-1. Check the **Logs** tab for your machine in the Viam app to ensure that `viam-server` properly started your module.
+1. Check the **LOGS** tab for your machine in the Viam app to ensure that `viam-server` properly started your module.
    For example, the following log message indicates that `viam-server` was able to find and start the local module named `my-module` successfully:
 
    ```sh
@@ -68,13 +68,13 @@ If you are developing a module for the same target architecture as your developm
      sudo systemctl restart viam-server
      ```
 
-1. Once `viam-server` has restarted, check the **Logs** tab for your machine in the Viam app again to ensure that `viam-server` properly started your module.
+1. Once `viam-server` has restarted, check the **LOGS** tab for your machine in the Viam app again to ensure that `viam-server` properly started your module.
 
 1. Then test your module to verify that your code changes work as expected.
 
 1. Repeat steps 6 - 10 to continue developing your module, as needed.
-   Remember to check the **Logs** tab each time to verify that the module registered successfully, and to troubleshoot any error or warning messages.
-   If you haven't already, you can [add custom log messages to your code](/registry/create/#configure-logging), which appear under the **Logs** tab to assist with troubleshooting.
+   Remember to check the **LOGS** tab each time to verify that the module registered successfully, and to troubleshoot any error or warning messages.
+   If you haven't already, you can [add custom log messages to your code](/registry/create/#configure-logging), which appear under the **LOGS** tab to assist with troubleshooting.
 
 {{% /tab %}}
 {{% tab name="Sync Code and Test Remotely" %}}
@@ -171,9 +171,9 @@ If you are developing a module for a different target architecture than your dev
    With the Mutagen sync in place, Mutagen transfers the binary or executable automatically when you created it in the previous step.
    If you have previously added your module as a _registry module_, you will need to first remove the registry version of your module before then adding the local version.
 
-1. Click **Save config**.
+1. Click the **Save** button in the top right corner of the page.
 
-1. Check the **Logs** tab for your machine in the Viam app to ensure that `viam-server` properly started your module.
+1. Check the **LOGS** tab for your machine in the Viam app to ensure that `viam-server` properly started your module.
    For example, the following log message indicates that `viam-server` was able to find and start the local module named `my-module` successfully:
 
    ```sh
@@ -193,13 +193,13 @@ If you are developing a module for a different target architecture than your dev
    sudo systemctl restart viam-server
    ```
 
-1. Once `viam-server` has restarted, check the **Logs** tab for your machine in the Viam app again to ensure that `viam-server` properly started your module.
+1. Once `viam-server` has restarted, check the **LOGS** tab for your machine in the Viam app again to ensure that `viam-server` properly started your module.
 
 1. Then test your module to verify that your code changes work as expected.
 
 1. Repeat steps 11 - 15 to continue developing your module, as needed.
-   Remember to check the **Logs** tab each time to verify that the module registered successfully, and to troubleshoot any error or warning messages.
-   If you haven't already, you can [add custom log messages to your code](/registry/create/#configure-logging), which appear under the **Logs** tab to assist with troubleshooting.
+   Remember to check the **LOGS** tab each time to verify that the module registered successfully, and to troubleshoot any error or warning messages.
+   If you haven't already, you can [add custom log messages to your code](/registry/create/#configure-logging), which appear under the **LOGS** tab to assist with troubleshooting.
 
 {{% /tab %}}
 {{% /tabs %}}

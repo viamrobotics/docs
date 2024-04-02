@@ -82,7 +82,7 @@ The following attributes are available for `fake` cameras:
 
 ## View the camera stream
 
-Once your camera is configured, go to the **Control** tab, and click on the camera's dropdown menu.
+Once your camera is configured, go to the **CONTROL** tab, and click on the camera's dropdown menu.
 Then toggle the camera or the Point Cloud Data view to ON.
 You will see the live video feed from your camera.
 You can change the refresh frequency as needed to change bandwidth.

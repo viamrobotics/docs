@@ -76,10 +76,12 @@ Once you have instantiated a `DataClient`, you can run [API methods](#api) again
 
 ## Find part ID
 
-To find the ID of your machine part, navigate to its **Setup** tab in the [Viam app](https://app.viam.com).
+To find the ID of your machine part, navigate to its {{< glossary_tooltip term_id="setup" text="setup instructions" >}} in the [Viam app](https://app.viam.com).
 Select any of the Linux architecture tabs.
-In Step 1, grab the part ID from the second string of the generated command as the token following `id=`.
+In Step 1, grab the part ID from the URL in the generated command as the token following `config?id=`.
 For example:
+
+<!-- TODO R2D2: this image will need to be replaced once selecting the linux setup instructions is working -->
 
 ![Part ID displayed in the Viam app.](/build/program/data-client/grab-part-id.png)
 

@@ -221,7 +221,7 @@ Instead, save this command to run in any future terminal session where you need 
 Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/fleet/machines/#add-a-new-machine) in your desired location.
 
 Click on the name of the machine to go to the machine's page.
-Then, navigate to the **Config** tab.
+Then, navigate to the **CONFIGURE** tab.
 
 ### Configure your machine with an ESP32
 
@@ -253,11 +253,15 @@ You will be prompted to paste your machine's JSON configuration into the termina
 To obtain this:
 
 - Navigate to [your new machine's](#create-a-new-machine) page on [the Viam app](https://app.viam.com).
-- Click on the **Setup** tab.
+- Navigate to the **CONFIGURE** tab and find your machine's card.
+  An alert will be present directing you to **Set up your machine part**.
+  Click **View setup instructions** to open the setup instructions.
   Keep your `Mode` and `Architecture` selections at default.
-- Click the **Copy viam-server config** button on the right side of the **Setup** tab.
+- Follow the instructions to **Download Viam app config**.
   The micro-RDK needs this JSON file, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
-- Paste the `viam-server` config into your terminal when prompted.
+  <!-- TODO R2D2: needs to be updated when **Copy viam-server config** button is replicated -->
+  <!-- - Click the **Copy viam-server config** button on the right side of the **Setup** tab. -->
+- Copy and paste the `viam-server` config into your terminal when prompted.
 
 {{% snippet "secret-share.md" %}}
 
