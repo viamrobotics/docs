@@ -171,44 +171,49 @@ It stores the required contextual information for Viam's services like [Motion](
 {{% /alert %}}
 
 To make sure your rover base's autonomous GPS navigation with the navigation service is accurate, configure and calibrate the frame system service for the components of your machine.
-To start, add the frame system service to your rover [base](/components/base/) and [movement sensor](/components/movement-sensor/).
 
-- Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
-  Scroll to the card with the name of your base:
+#### Configure
 
-  {{< imgproc src="/mobility/navigation/click-add-frame-ui.png" alt="The button to add a frame selected with the cursor on the Viam app config builder." resize="500x" >}}
+Add a [nested reference frame](/mobility/frame-system/nested-frame-config/) configuration to your rover [base](/components/base/) and [movement sensor](/components/movement-sensor/):
 
-- Click **Add Frame**.
+- Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com) and select the **Frame** mode.
+- From the left-hand menu, select your base.
+- Since you haven't adjusted any parameters yet, the default reference frame will be shown for your base:
 
-  - Keep the `parent` frame as `world`.
-    Select the **Geometry** dropdown menu.
-  - Configure a **Geometry** for the base that reflects its physical dimensions.
-    Reference [these instructions](/mobility/frame-system/#bounding-geometries) to configure your geometry and measure the physical dimensions of your base.
+  {{<imgproc src="/mobility/navigation/select-base-frame.png" resize="300x" style="max-width: 500px" alt="Frame card for a base with the default reference frame settings">}}
 
-    ![The frame card for the base in the Viam app config builder.](/mobility/navigation/full-frame-base-ui.png)
+- Keep the `parent` frame as `world`.
+  Select the **Geometry** dropdown menu.
+- Configure a **Geometry** for the base that reflects its physical dimensions.
+  Measure the physical dimensions of your base and use them to configure the size of your geometry.
+  Units are in _mm_.
 
-- Scroll to the card with the name of your movement sensor.
-  Click **Add Frame** and select the **Parent** box.
+  For example, you would configure a box-shaped base with dimensions of 100mm x 100mm x 100mm (l x h x w) as follows:
 
-  - Type in the `name` of your base to specify this component as the `parent` of the sensor in the reference frame coordinate system, and click **Save Config** to save your configuration.
-    See [how to configure nested reference frames](/mobility/frame-system/nested-frame-config/) for an explanation of this configuration process.
-    ![The frame card for the base in the Viam app config builder.](/mobility/navigation/full-frame-movement-sensor-ui.png)
+  {{<imgproc src="/mobility/navigation/configure-base-geometry.png" resize="300x" style="max-width: 500px" alt="The frame card for the base in the Viam app config builder.">}}
 
-  - Give the movement sensor a **Translation** that reflects where it is mounted on your base, measuring the coordinates with respect to the origin of the base.
+- Next, select your movement sensor from the left-hand menu. Click on the **Parent** menu and select your base component.
+- Give the movement sensor a **Translation** that reflects where it is mounted on your base, measuring the coordinates with respect to the origin of the base.
+  In other words, designate the base origin as `(0,0,0)` and measure the distance between that and the origin of the sensor to obtain the coordinates.
 
-    In other words, designate the origin of the base as `(0,0,0)`, and measure the distance between the origin of the base and the origin of the sensor to obtain the coordinates of the **Translation**.
+  For example, you would configure a movement sensor mounted 200mm on top of your base as follows:
 
-    See [the frame system service](/mobility/frame-system/#configuration) for more information, and [the Viam Internals](/internals/orientation-vector/) for a detailed guide on conducting this measurement.
+  {{<imgproc src="/mobility/navigation/full-frame-movement-sensor-ui.png" resize="300x" style="max-width: 500px" alt="The frame card for the movement sensor in the Viam app config builder.">}}
+
+You can also adjust the **Orientation** and **Geometry** of your movement sensor or base, if necessary.
+See [the frame system service](/mobility/frame-system/#configuration) for instructions.
+
+#### Calibrate
 
 Then, to calibrate your frame system for the most accurate autonomous GPS navigation with the navigation service:
 
-- After configuring your machine, navigate to the **CONTROL** page and select the card matching the name of your movement sensor.
+- After configuring your machine, navigate to the **CONTROL** tab and select the card matching the name of your movement sensor.
 - Monitor the readings displayed on the card, and verify that the compass or orientation readings from the movement sensor report `0` when the base is facing north.
 - If you cannot verify this:
-  - Navigate back to your machine's **CONFIGURE** page.
+  - Navigate back to your machine's **CONFIGURE** tab and **Frame** subtab.
     Scroll to the card with the name of your movement sensor.
     Adjust the **Orientation** of the frame to compensate for the mismatch.
-  - Navigate back to the Navigation card on your **CONTROL** page, and confirm that the compass or orientation readings from the movement sensor now report `0` when the base is facing north, confirming that you've successfully calibrated your machine to be oriented accurately within the frame system.
+  - Navigate back to the movement sensor card on your **CONTROL** page, and confirm that the compass or orientation readings from the movement sensor now report `0` when the base is facing north, confirming that you've successfully calibrated your machine to be oriented accurately within the frame system.
   - If you cannot verify this, repeat as necessary.
 
 ## API
