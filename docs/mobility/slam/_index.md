@@ -57,7 +57,7 @@ The SLAM service supports the following methods:
 {{% alert title="Tip" color="tip" %}}
 
 The following code examples assume that you have a machine configured with a SLAM service called `"my_slam_service"`, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
-Go to your machine's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
+Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and select the **Code sample** page for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 

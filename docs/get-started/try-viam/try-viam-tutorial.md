@@ -22,15 +22,15 @@ Watch this tutorial video for a walkthrough of Try Viam, including [how to reser
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/YYpZ9CVDwMU">}}
 
-## **Control** tab
+## **CONTROL** tab
 
-Click on the rover name at the top to go to the rental rover's **Control** tab where you can drive the machine and interact with each of the machine's components.
+Click on the rover name at the top to go to the rental rover's **CONTROL** tab where you can drive the machine and interact with each of the machine's components.
 
 At the top of the page you can see the randomly assigned name of the rover, the host, and the IP address.
 
 ![The top banner of a Try Viam rover machine page. The randomly generated name for this rover is 'silent-forest'](get-started/try-viam/try-viam/bannerinfo.png)
 
-The **Control** tab contains panels for each of the rover's components:
+The **CONTROL** tab contains panels for each of the rover's components:
 
 - the base,
 - the left and right motors,

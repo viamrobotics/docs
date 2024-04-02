@@ -370,7 +370,7 @@ If you run into issues, here are some things to try:
 - Check the [**LOGS** tab](/fleet/machines/#logs) to view log messages and errors from `viam-server`.
   You can also [access the local log file](/get-started/installation/manage/#view-viam-server-logs) on your machine if needed.
 - Make sure all configured components are actually saved to your config.
-  If they aren't, you will see an **Unsaved Changes** note next to the **Save Config** button at the bottom of the config screen.
+  If they aren't, you will see an **Unsaved changes** note next to the **Save** button in the top right corner of the page.
 - Try restarting `viam-server` by clicking **Restart** in the upper right corner of the app.
   It takes a few minutes for the server to shut down and restart.
 - Make sure the issue is not hardware related.

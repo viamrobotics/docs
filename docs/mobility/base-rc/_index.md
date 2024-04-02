@@ -25,7 +25,7 @@ Control mode is determined by the configuration attribute `"mode"`, for which th
 4. `"joyStickControl"`: One joystick controls speed and angle
 5. `"droneControl"`: Two joysticks control speed and angle
 
-You can monitor the input from these controls in the **Control** tab of the [Viam app](https://app.viam.com).
+You can monitor the input from these controls in the **CONTROL** tab of the [Viam app](https://app.viam.com).
 
 ## Used with
 
@@ -105,7 +105,7 @@ The base remote control service supports the following methods:
 
 The following code examples assume that you have a machine configured with a [base](/components/base/) named `"my_base"`, [input controller](/components/input-controller/) named `"my_controller"`, and base remote control service named `"my_base_rc_service"`.
 Make sure to add the required code to connect to your machine and import any required packages at the top of your code file.
-Go to your machine's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
+Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and select the **Code sample** page for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 

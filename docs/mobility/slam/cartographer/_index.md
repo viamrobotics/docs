@@ -190,7 +190,7 @@ Note that [Data Capture](/data/capture/) continuously monitors and captures your
    If you would like to tune additional Cartographer parameters, you can expand **Show additional parameters**.
    See the [`config_params`](#config_params) section for more information on the other parameters.
 
-   To save your changes, click **Save config** at the bottom of the page.
+   To save your changes, click the **Save** button in the top right corner of the page.
 
    Check the **LOGS** tab of your machine in the Viam app to make sure your RPlidar has connected and no errors are being raised.
 
@@ -284,9 +284,9 @@ This example JSON configuration:
 
 For more information about the configuration attributes, see [Attributes](#attributes).
 
-2. Start a mapping session:
+1. Start a mapping session:
 
-   Navigate to the **Control** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
+   Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.
 
    When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
@@ -310,7 +310,7 @@ For more information about the configuration attributes, see [Attributes](#attri
 
    ![offline mapping maps computing table](/mobility/slam/offline-mapping-maps-computing-table.png)
 
-   When you are ready to end the slam session, return to your machine's **Control** tab and click **End session**.
+   When you are ready to end the slam session, return to your machine's **CONTROL** tab and click **End session**.
    If you do not click **End session**, the slam session will automatically end after 45 minutes.
 
    Once the session has ended, the map is saved to your **Location** page's **SLAM library** tab.
@@ -437,7 +437,7 @@ Updating an existing map uses an instance of the `cartographer` module running i
 
 2. Start a mapping session:
 
-   Navigate to the **Control** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
+   Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.
 
    When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
@@ -546,7 +546,7 @@ This example JSON configuration:
 
 1.  Start a mapping session:
 
-    Navigate to the **Control** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
+    Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
 
     Unlike when creating or updating a map, you do not need to start and end a slam session.
     The pointcloud for the existing map will appear **immediately** and Cartographer will try to find your machine's position on it.
