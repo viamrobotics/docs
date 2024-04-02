@@ -3,7 +3,6 @@ title: "Use Cases"
 linkTitle: "Use Cases"
 weight: 200
 type: "docs"
-# layout: "empty"
 ---
 
 The Viam platform supports a wide variety of IoT and robotics applications.
