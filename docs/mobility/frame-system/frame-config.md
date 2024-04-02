@@ -77,6 +77,6 @@ To configure your machine following this example:
 | Parameter | Inclusion | Required |
 | --------- | ----------- | ----- |
 | `parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
-| `translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: *mm*. |
+| `translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: _mm_. |
 | `orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> **Types**: **Orientation Vector Degrees** (`ov_degrees`), **Orientation Vector Radians** (`ov_radians`), **Euler Angles** (`euler_angles`), and **Quaternion** (`quaternion`). |
 | `geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the machine. <br> Units: _mm_ <br> **Types**: **Sphere** (`sphere`), **Box** (`box`), and **Capsule** (`capsule`). |
