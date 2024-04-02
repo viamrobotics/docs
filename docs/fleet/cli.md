@@ -711,7 +711,7 @@ Developers can either have a single build file for all platforms, or platform sp
 ```json {class="line-numbers linkable-line-numbers"}
 "build": {
   "setup": "./setup.sh",                  // optional - command to install your build dependencies
-  "build": "sh build.sh",                 // command that will build your module
+  "build": "./build.sh",                 // command that will build your module
   "path" : "dist/archive.tar.gz",         // optional - path to your built module
                                           // (passed to the 'viam module upload' command)
   "arch" : ["linux/amd64", "linux/arm64"] // architecture(s) to build for

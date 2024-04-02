@@ -1319,7 +1319,8 @@ For more examples of build scripts see [Update an existing module using a GitHub
 
 {{% alert title="Note" color="note" %}}
 
-Used in this manner, PyInstaller does not support relative imports (imports starting with `.`).
+Note that PyInstaller does not support relative imports in entrypoints (imports starting with `.`).
+If you get 'ImportError: attempted relative import with no known parent package', set up a stub entrypoint as described [here](https://github.com/pyinstaller/pyinstaller/issues/2560).
 In addition, PyInstaller does not support cross-compiling: you must compile your module on the target architecture you wish to support.
 For example, you cannot run a module on a Linux `arm64` system if you compiled it using PyInstaller on a Linux `amd64` system.
 

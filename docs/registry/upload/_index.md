@@ -387,10 +387,10 @@ tar -czvf dist/archive.tar.gz dist/main
     "arch": {
           "linux/arm64": {
             "path" : "dist/archive.tar.gz",               // optional - path to your built module
-            "build": "sh build-linux-arm64.sh" // command that will build your module
+            "build": "./build-linux-arm64.sh" // command that will build your module
           },
           "darwin/arm64": {
-            "build": "sh build-darwin-arm64.sh" // command that will build your module
+            "build": "./build-darwin-arm64.sh" // command that will build your module
           }
         } // architecture(s) to build for
   }
