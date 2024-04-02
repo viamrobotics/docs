@@ -309,7 +309,7 @@ To configure a webhook:
       "url": "https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws",
       "event": {
         "attributes": {
-          "data_types": ["binary", "tabular", "file"]
+          "data_types": ["binary", "tabular"]
         },
         "type": "part_data_ingested"
       }
