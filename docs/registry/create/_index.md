@@ -1264,7 +1264,7 @@ To create a packaged executable:
 1. First, [create a Python virtual environment](/build/program/python-venv/) in your module's directory to ensure your module has access to any required libraries.
    Be sure you are within your Python virtual environment for the rest of these steps: your terminal prompt should include the name of your virtual environment in parenthesis.
 
-2. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
+1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
    For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`), PyInstaller (`pyinstaller`), and the Google API Python client (`google-api-python-client`) are installed:
 
    ```sh { class="command-line" data-prompt="$"}
@@ -1276,13 +1276,13 @@ To create a packaged executable:
    Add additional dependencies for your module as needed.
    See the [pip `requirements.txt` file documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more information.
 
-3. Install the dependencies listed in your `requirements.txt` file within your Python virtual environment using the following command:
+1. Install the dependencies listed in your `requirements.txt` file within your Python virtual environment using the following command:
 
    ```sh { class="command-line" data-prompt="$"}
    python -m pip install -r requirements.txt -U
    ```
 
-4. Then compile your module, adding the Google API Python client as a hidden import:
+1. Then compile your module, adding the Google API Python client as a hidden import:
 
    ```sh { class="command-line" data-prompt="$"}
    python -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
@@ -1296,7 +1296,7 @@ To create a packaged executable:
 
    By default, the output directory for the packaged executable is <file>dist</file>, and the name of the executable is derived from the name of the input script (in this case, main).
 
-We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86, ARM Linux, and MacOS.
+We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86 and Arm Linux distributions, and MacOS.
 Follow the instructions to [Update an existing module using a GitHub action](/registry/upload/#update-an-existing-module-using-a-github-action) to add the build configuration to your machine.
 
 With this approach, you can make a build script like the following to
@@ -1319,10 +1319,13 @@ For more examples of build scripts see [Update an existing module using a GitHub
 
 {{% alert title="Note" color="note" %}}
 
-Note that PyInstaller does not support relative imports in entrypoints (imports starting with `.`).
-If you get 'ImportError: attempted relative import with no known parent package', set up a stub entrypoint as described on [GitHub](https://github.com/pyinstaller/pyinstaller/issues/2560).
+PyInstaller does not support relative imports in entrypoints (imports starting with `.`).
+If you get `"ImportError: attempted relative import with no known parent package"`, set up a stub entrypoint as described on [GitHub](https://github.com/pyinstaller/pyinstaller/issues/2560).
+
 In addition, PyInstaller does not support cross-compiling: you must compile your module on the target architecture you wish to support.
 For example, you cannot run a module on a Linux `arm64` system if you compiled it using PyInstaller on a Linux `amd64` system.
+Viam makes this easy to manage by providing a build system for modules.
+Follow [these instructions](/fleet/cli/#using-the-build-subcommand) to automatically build for each system your module can support using Viam's [CLI](/fleet/cli/).
 
 {{% /alert %}}
 
@@ -1370,7 +1373,7 @@ Create a <file>CMakeLists.txt</file> file to define how to compile your module a
    target_link_libraries(my-base PRIVATE viam-cpp-sdk::viamsdk)
    ```
 
-2. Create a <file>run.sh</file> file in your module directory to wrap the executable and perform basic sanity checks at runtime.
+1. Create a <file>run.sh</file> file in your module directory to wrap the executable and perform basic sanity checks at runtime.
 
    The following example shows a simple configuration that runs a module named `my-base`:
 
@@ -1384,7 +1387,7 @@ Create a <file>CMakeLists.txt</file> file to define how to compile your module a
    exec ./my-base $@
    ```
 
-3. Use C++ to compile and obtain a single executable for your module:
+1. Use C++ to compile and obtain a single executable for your module:
 
    1. Create a new <file>build</file> directory within your module directory:
 
@@ -1393,7 +1396,7 @@ Create a <file>CMakeLists.txt</file> file to define how to compile your module a
       cd build
       ```
 
-   2. Build and compile your module:
+   1. Build and compile your module:
 
       ```sh { class="command-line"}
       cmake .. -G Ninja
@@ -1401,7 +1404,7 @@ Create a <file>CMakeLists.txt</file> file to define how to compile your module a
       ninja install
       ```
 
-   3. Run `ls` in your module's <file>build</file> directory to find the compiled executable, which should have the same name as the module directory (`my-base` in these examples):
+   1. Run `ls` in your module's <file>build</file> directory to find the compiled executable, which should have the same name as the module directory (`my-base` in these examples):
 
 For more information on building a module in C++, see the [C++ SDK Build Documentation](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
 

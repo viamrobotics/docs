@@ -35,7 +35,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
 
 1. First, [install the Viam CLI](/fleet/cli/#install) and [authenticate](/fleet/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
 
-1. Next, run the `viam module create` command to choose a custom module name and generate the required metadata for your module.
+2. Next, run the `viam module create` command to choose a custom module name and generate the required metadata for your module.
    By default, a new module is created as _private_, meaning that it is only accessible to members of your [organization](/fleet/organizations/), but you can choose to set the `visibility` of your module to _public_ to make it accessible to all Viam users.
 
    Select the private or public tab for instructions to upload your module with the respective `visibility` setting:
@@ -61,7 +61,7 @@ If you mark your module as public, you cannot change it back to private.
 1.  If you haven't already, [create a new namespace](/fleet/organizations/#create-a-namespace-for-your-organization) for your organization.
     If you have already created a namespace, you can find it on your organization's **Settings** page in [the Viam App](https://app.viam.com/), or by running the [`viam organizations list`](/fleet/cli/#organizations) command.
 
-1.  To generate metadata for your module using your public namespace, run the following command from the same directory as your custom module:
+2.  To generate metadata for your module using your public namespace, run the following command from the same directory as your custom module:
 
     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
     viam module create --name <your-module-name> --public-namespace <your-unique-namespace>
@@ -72,7 +72,7 @@ If you mark your module as public, you cannot change it back to private.
 
     This command creates a new `meta.json` metadata file in your current working directory, which serves as a template.
 
-1.  Edit the newly-created `meta.json` file, and provide the required configuration information for your custom module by filling in the following fields.
+3.  Edit the newly-created `meta.json` file, and provide the required configuration information for your custom module by filling in the following fields.
 
     <table class="table table-striped">
       <tr>
@@ -150,16 +150,10 @@ If you mark your module as public, you cannot change it back to private.
         }
       ],
       "build": {
-        "path": "dist/archive.tar.gz",
-        "arch": {
-          "linux/arm64": {
-            "build": "sh build-linux-arm64.sh" // command that will build your module
-          },
-          "darwin/arm64": {
-            "build": "sh build-darwin-arm64.sh" // command that will build your module
-          }
-        } // architecture(s) to build for
-      },
+        "path": "dist/archive.tar.gz", // optional - path to your built module
+        "build": "./build.sh", // command that will build your module
+        "arch" : ["linux/amd64", "linux/arm64"]  // architecture(s) to build for
+        },
       "entrypoint": "dist/main"
     }
     ```
@@ -334,22 +328,59 @@ jobs:
 The `build-action` GitHub action relies on a build command that you need to specify in the <file>meta.json</file> file that you created for your module when you first [uploaded it](/registry/upload/#upload-a-custom-module-using-the-cli).
 At the end of your <file>meta.json</file>, add the build configuration:
 
-{{< tabs >}}
-{{% tab name="Single Build File" %}}
+<!-- { {< tabs >}}
+{ {% tab name="Single Build File" %}} -->
 
 ```json {class="line-numbers linkable-line-numbers" data-line="4-7"}
 {
   "module_id": "example-module",
   ...
   "build": {
-    "build": "sh build.sh",          // command that will build your module
-    "path" : "dist/archive.tar.gz",         // optional - path to your built module
+    "setup": "./setup.sh", // optional - command to install your build dependencies
+    "build": "./build.sh", // command that will build your module
+    "path" : "dist/archive.tar.gz", // optional - path to your built module
     "arch" : ["linux/amd64", "linux/arm64"] // architecture(s) to build for
   }
 }
 ```
 
-{{%expand "Click to view example build.sh" %}}
+{{%expand "Click to view example setup.sh" %}}
+
+```sh { class="command-line"}
+#!/bin/bash
+set -e
+UNAME=$(uname -s)
+
+if [ "$UNAME" = "Linux" ]
+then
+    echo "Installing venv on Linux"
+    sudo apt-get install -y python3-venv
+fi
+if [ "$UNAME" = "Darwin" ]
+then
+    echo "Installing venv on Darwin"
+    brew install python3-venv
+fi
+
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+```
+
+{{% /expand%}}
+
+{{%expand "Click to view example build.sh (with setup.sh)" %}}
+
+```sh { class="command-line"}
+#!/bin/bash
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main
+```
+
+{{% /expand%}}
+
+{{%expand "Click to view example build.sh (without setup.sh)" %}}
 
 ```sh { class="command-line"}
 #!/bin/bash
@@ -376,8 +407,8 @@ tar -czvf dist/archive.tar.gz dist/main
 
 {{% /expand%}}
 
-{{% /tab %}}
-{{% tab name="Platform Specific" %}}
+<!-- { {% /tab %}}
+{ {% tab name="Platform Specific" %}}
 
 ```json {class="line-numbers linkable-line-numbers" data-line="4-13"}
 {
@@ -397,7 +428,7 @@ tar -czvf dist/archive.tar.gz dist/main
 }
 ```
 
-{{%expand "Click to view example build-linux-arm64.sh" %}}
+{ {%expand "Click to view example build-linux-arm64.sh" %}}
 
 ```sh { class="command-line"}
 #!/bin/bash
@@ -411,9 +442,9 @@ python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz dist/main
 ```
 
-{{% /expand%}}
+{ {% /expand%}}
 
-{{%expand "Click to view example build-darwin-arm64.sh" %}}
+{{ %expand "Click to view example build-darwin-arm64.sh" %}}
 
 ```sh { class="command-line"}
 #!/bin/bash
@@ -427,12 +458,12 @@ python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz dist/main
 ```
 
-{{% /expand%}}
+{ {% /expand%}}
 
-{{% /tab %}}
-{{< /tabs >}}
+{ {% /tab %}}
+{ {< /tabs >}} -->
 
-You can test this build configuration by running [the Viam CLI's `build local` command](/fleet/cli/#using-the-build-subcommand) on your development machine:
+You can test this build configuration by running the Viam CLI's [`build local` command](/fleet/cli/#using-the-build-subcommand) on your development machine:
 
 ```sh {class="command-line" data-prompt="$"}
 viam module build local

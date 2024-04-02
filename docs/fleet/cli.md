@@ -284,7 +284,7 @@ viam organizations --help
 
 ## Commands
 
-### data
+### `data`
 
 The `data` command allows you to manage machine data.
 With it, you can export data in a variety of formats, delete specified data, add or remove images from a dataset and filter a dataset by tags, or configure a database user to enable querying synced tabular data directly in the cloud.
@@ -411,7 +411,7 @@ You cannot use the `--file-ids` argument when using `filter`.
 
 See [Datasets](/data/dataset/#datasets) for more information.
 
-### locations
+### `locations`
 
 The `locations` command allows you to manage the [locations](/fleet/locations/) that you have access to.
 With it, you can list available locations, filter locations by organization, or create a new location API key.
@@ -477,7 +477,7 @@ If you haven't already, you must [create an organization API key](#create-an-org
 | `--key-id`    | the `key id` (UUID) of the API key | `api-key` | true |
 | `--key`    | the `key value` of the API key | `api-key` | true |
 
-### logout
+### `logout`
 
 The `logout` command ends an authenticated CLI session.
 
@@ -485,7 +485,7 @@ The `logout` command ends an authenticated CLI session.
 viam logout
 ```
 
-### module
+### `module`
 
 The `module` command allows to you to manage custom {{< glossary_tooltip term_id="module" text="modules" >}}
 This includes:
@@ -702,23 +702,60 @@ You can use the `module build start` or `module build local` commands to build y
 - Use `build start` to build or compile your module on a cloud build host that might offer additional platform support than you have access to locally.
 - Use `build local` to quickly test that your module builds or compiles as expected on your local hardware.
 
-To configure your module's build steps, add a `build` object to your [`meta.json` file](#the-metajson-file).
-Developers can either have a single build file for all platforms, or platform specific files:
+To configure your module's build steps, add a `build` object to your [`meta.json` file](#the-metajson-file) like the following:
 
-{{< tabs >}}
-{{% tab name="Single Build File" %}}
+<!-- Developers can either have a single build file for all platforms, or platform specific files: -->
+
+<!-- { {< tabs >}}
+{ {% tab name="Single Build File" %}} -->
 
 ```json {class="line-numbers linkable-line-numbers"}
 "build": {
   "setup": "./setup.sh",                  // optional - command to install your build dependencies
-  "build": "./build.sh",                 // command that will build your module
+  "build": "./build.sh",                  // command that will build your module
   "path" : "dist/archive.tar.gz",         // optional - path to your built module
                                           // (passed to the 'viam module upload' command)
   "arch" : ["linux/amd64", "linux/arm64"] // architecture(s) to build for
 }
 ```
 
-{{%expand "Click to view example build.sh" %}}
+{{%expand "Click to view example setup.sh" %}}
+
+```sh { class="command-line"}
+#!/bin/bash
+set -e
+UNAME=$(uname -s)
+
+if [ "$UNAME" = "Linux" ]
+then
+    echo "Installing venv on Linux"
+    sudo apt-get install -y python3-venv
+fi
+if [ "$UNAME" = "Darwin" ]
+then
+    echo "Installing venv on Darwin"
+    brew install python3-venv
+fi
+
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+```
+
+{{% /expand%}}
+
+{{%expand "Click to view example build.sh (with setup.sh)" %}}
+
+```sh { class="command-line"}
+#!/bin/bash
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main
+```
+
+{{% /expand%}}
+
+{{%expand "Click to view example build.sh (without setup.sh)" %}}
 
 ```sh { class="command-line"}
 #!/bin/bash
@@ -745,8 +782,8 @@ tar -czvf dist/archive.tar.gz dist/main
 
 {{% /expand%}}
 
-{{% /tab %}}
-{{% tab name="Platform Specific" %}}
+<!-- { {% /tab %}} -->
+<!-- { {% tab name="Platform Specific" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 "build": {
@@ -754,16 +791,16 @@ tar -czvf dist/archive.tar.gz dist/main
                                                 // (passed to the 'viam module upload' command)
   "arch": {
         "linux/arm64": {
-          "build": "sh build-linux-arm64.sh" // command that will build your module
+          "build": "./build-linux-arm64.sh" // command that will build your module
         },
         "darwin/arm64": {
-          "build": "sh build-darwin-arm64.sh" // command that will build your module
+          "build": "./build-darwin-arm64.sh" // command that will build your module
         }
       } // architecture(s) to build for
 }
 ```
 
-{{%expand "Click to view example build-linux-arm64.sh" %}}
+{ {%expand "Click to view example build-linux-arm64.sh" %}}
 
 ```sh { class="command-line"}
 #!/bin/bash
@@ -777,9 +814,9 @@ python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz dist/main
 ```
 
-{{% /expand%}}
+{ {% /expand%}}
 
-{{%expand "Click to view example build-darwin-arm64.sh" %}}
+{ {%expand "Click to view example build-darwin-arm64.sh" %}}
 
 ```sh { class="command-line"}
 #!/bin/bash
@@ -793,10 +830,10 @@ python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz dist/main
 ```
 
-{{% /expand%}}
+{ {% /expand%}}
 
-{{% /tab %}}
-{{< /tabs >}}
+{{ % /tab %}}
+{ {< /tabs >}} -->
 
 For example, the following extends the `my-module` <file>meta.json</file> file from the previous section using the single build file approach, adding a new `build` object to control its build parameters when used with `module build start` or `module build local`:
 
@@ -813,12 +850,12 @@ For example, the following extends the `my-module` <file>meta.json</file> file f
     }
   ],
   "build": {
-    "setup": "setup.sh",
-    "build": "make module.tar.gz",
-    "path": "module.tar.gz",
+    "setup": "./setup.sh",
+    "build": "./build.sh",
+    "path": "dist/archive.tar.gz",
     "arch": ["linux/amd64", "linux/arm64"]
   },
-  "entrypoint": "run.sh"
+  "entrypoint": "dist/main"
 }
 ```
 
@@ -837,7 +874,7 @@ To list all in-progress builds and their build status, use the following command
 viam module build list
 ```
 
-### organizations
+### `organizations`
 
 The `organizations` command allows you to list the organizations your authenticated session belongs to, and to create a new organization API key.
 
@@ -873,7 +910,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 | `--org-id`      | the organization to create an API key for |`api-key` | true |
 | `--name`     |  the optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time   |`api-key` | false |
 
-### robots
+### `robots`
 
 The `robots` command allows you to manage your machine fleet.
 This includes:
@@ -989,7 +1026,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 
 The `--stream` argument, when included in the CLI command prior to the `--data` command, will stream data back at the specified interval.
 
-### version
+### `version`
 
 The `version` command returns the version of the Viam CLI.
 To update to the latest version of the CLI, run the [installation steps](#install) again to download and install the latest version.
@@ -998,7 +1035,7 @@ To update to the latest version of the CLI, run the [installation steps](#instal
 viam version
 ```
 
-### whoami
+### `whoami`
 
 The `whoami` command returns the Viam user for an authenticated CLI session, or "Not logged in" if there is no authenticated session.
 
