@@ -1525,7 +1525,7 @@ Browse additional example modules by language:
 | Module | Repository | Description |
 | ------ | ---------- | ----------- |
 | [csi-cam](https://app.viam.com/module/viam/csi-cam) | [viamrobotics/csi-camera](https://github.com/viamrobotics/csi-camera/) | Extends the built-in [camera API](https://docs.viam.com/components/camera/#api) to support the Intel CSI camera. |
-| [module-example-cpp](https://app.viam.com/module/viam/module-example-cpp) | [viamrobotics/module-example-cpp](https://github.com/viamrobotics/module-example-cpp) | Extends the built-in [sensor API](https://docs.viam.com/components/sensor/#api) to report wifi statistics. |
+<!-- | [module-example-cpp](https://app.viam.com/module/viam/module-example-cpp) | [viamrobotics/module-example-cpp](https://github.com/viamrobotics/module-example-cpp) | Extends the built-in [sensor API](https://docs.viam.com/components/sensor/#api) to report wifi statistics. | -->
 
 {{% /tab %}}
 {{% /tabs %}}
