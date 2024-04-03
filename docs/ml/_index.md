@@ -39,8 +39,8 @@ See [Use machine learning with your machine](#use-machine-learning-with-your-mac
 {{< cards >}}
 {{% manualcard link="/tutorials/projects/integrating-viam-with-openai/" %}}
 
-<h4>Integrate Viam with ChatGPT</h4>
 {{<imgproc src="/tutorials/ai-integration/rosey_robot.jpg" resize="150x" declaredimensions=true alt="Rosey the robot from the ChatGPT tutorial">}}
+<h4>Integrate Viam with ChatGPT</h4>
 
 Add object detection, speech recognition, natural language processing, and speech synthesis capabilities to a machine.
 
