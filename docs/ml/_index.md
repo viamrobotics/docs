@@ -28,7 +28,7 @@ For other use cases, consider [creating custom functionality with a module](/reg
 Viam provides two services that enable machine learning capabilities: the [ML model](/ml/deploy/) service and the [Computer Vision](/ml/vision/) service.
 
 The ML model service deploys and runs a machine learning model, such as a TensorFlow or ONNX model, on your machine and makes its output accessible to other services.
-One service that is built on top of the ML model service is the [Computer Vision](/ml/vision/mlmodel/) `mlmodel` service which can detect or classify objects.
+For example, the [Computer Vision](/ml/vision/mlmodel/) `mlmodel` service, which can detect or classify objects, is built to work with the inferences from an ML model service.
 As a detector, the service uses these inferences to interpret image data from images on your computer or a [camera](/components/camera/), drawing bounding boxes around objects.
 As a classifier, the service returns class labels and confidence score based off the [inferences](/ml/deploy/#infer) the underlying ML model makes from image data.
 
