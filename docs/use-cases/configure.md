@@ -45,6 +45,9 @@ For example, if you have a DC motor, follow the [corresponding configuration ins
 {{< /tablestep >}}
 {{< tablestep >}}
 {{<gif webm_src="/manage/control.webm" mp4_src="/manage/control.mp4" alt="The Viam app Control tab with a control panel for each component. The panel for a DC motor is clicked, expanding to show power controls." max-width="400px" class="fill alignleft">}}
+
+<!-- markdownlint-disable MD036 -->
+
 **4. Test your components**
 
 When you configure a component, a remote control panel is generated for it in the **Control** tab of the Viam app.
