@@ -8,7 +8,7 @@ images: ["/icons/components/imu.svg"]
 # SMEs: Rand
 ---
 
-The `dual-gps-rtk` model of movement sensor calculates compass heading from two GPS movement sensors, and returns the midpoint position between the first and second GPS devices as its position.
+The `dual-gps-rtk` model of movement sensor calculates a compass heading from two GPS movement sensors, and returns the midpoint position between the first and second GPS devices as its position.
 In addition to [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading), this model provides data for [`GetPosition()`](/components/movement-sensor/#getposition) and [`GetAccuracy()`](/components/movement-sensor/#getaccuracy).
 
 {{< tabs >}}
