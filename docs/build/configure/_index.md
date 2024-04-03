@@ -232,13 +232,12 @@ Find more information in the [processes documentation](/build/configure/processe
 ## Webhooks
 
 Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
+For example, you can configure a webhook to send you a notification when your robot's sensor collects a new reading.
 Viam provides two webhook types depending on the event you want to trigger on:
 
 - `"part_data_ingested"`: trigger when a sensor on the machine part collects a new reading
 - `"part_online"`: trigger when the machine part is online
 
-One action you can trigger is sending a notification.
-For example, you can use the `"part_data_ingested"` type to configure a webhook to send you a notification when your robot's sensor collects a new reading, or use the `"part_online"` type to notify you when your machine part comes online.
 
 To configure a webhook:
 
