@@ -238,7 +238,6 @@ Viam provides two webhook types depending on the event you want to trigger on:
 - `"part_data_ingested"`: trigger when a sensor on the machine part collects a new reading
 - `"part_online"`: trigger when the machine part is online
 
-
 To configure a webhook:
 
 {{< tabs name="Types of Webhooks" >}}
