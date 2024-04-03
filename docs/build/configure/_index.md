@@ -371,7 +371,7 @@ If you run into issues, here are some things to try:
   You can also [access the local log file](/get-started/installation/manage/#view-viam-server-logs) on your machine if needed.
 - Make sure all configured components are actually saved to your config.
   If they aren't, you will see an **Unsaved changes** note next to the **Save** button in the top right corner of the page.
-- Try restarting `viam-server` by clicking **Restart** in the upper right corner of the app.
+- Try restarting `viam-server` by navigating to the app's **CONFIGURE** tab in **Builder** mode, clicking the **...** menu on the right side of the machine part's card, and selecting **Restart part**.
   It takes a few minutes for the server to shut down and restart.
 - Make sure the issue is not hardware related.
   Some things to check are that the machine has adequate power, all wires are properly connected, and no chips or other hardware components are shorted or overheated.
