@@ -11,12 +11,12 @@ import re as regex
 import argparse
 
 
-## Set the full list of SDK langauges we scrape here:
+## Set the full list of SDK languages we scrape here:
 sdks_supported = ["go", "python", "flutter"]
 
 ## Parse arguments passed to update_sdk_methods.py.
 ## You can either provide the specific sdk languages to run against
-## as a comma-separated list, or omit entirely to run againt all sdks_supported:
+## as a comma-separated list, or omit entirely to run against all sdks_supported:
 parser = argparse.ArgumentParser()
 
 parser.add_argument('sdk_language', type=str, nargs='?', help="A comma-separated list of the sdks to run against. \
@@ -247,7 +247,8 @@ python_ignore_apis = [
     'viam.app.data_client.DataClient.configure_database_user',
     'viam.app.data_client.DataClient.create_filter',
     'viam.app.ml_training_client.MLTrainingClient.submit_training_job',
-    'viam.robot.client.RobotClient.transform_point_cloud'
+    'viam.robot.client.RobotClient.transform_point_cloud',
+    'viam.app.app_client.AppClient.create_organization_invite' # Currently borked: https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_organization_invite
 ]
 
 ## Use these URLs for data types that are built-in to the language:
@@ -262,13 +263,28 @@ python_datatype_links = {
     "datetime": "https://docs.python.org/3/library/datetime.html"
 }
 
-## Inject these URLs, relative to 'docs', into param descriptions that contain exact matching key text:
-## This is an example, for https://docs.viam.com/mobility/frame-system/#transformpose, that the
-## markdownification step could use to linkify matching text when it goes to write param_desc markdown.
-## Otherwise we have to overwrite param_desc with verbatim upstream copy, which would overwrite
-## any docs-site-only links presently in our copy.
-python_param_description_links = {
-    "additional transforms": "/mobility/frame-system/#additional-transforms"
+## Inject these URLs, relative to 'docs', into param/return/raises descriptions that contain exact matching key text.
+## write_markdown() uses override_description_links via link_description() when it goes to write out descriptions.
+## Currently only used for method descriptions, but see commented-out code for usage as optional consideration.
+## NOTE: I am assuming we want to link matching text across all SDKs and methods. If not, this array
+## will need additional field(s): ( method | sdk ) to narrow match.
+## NOTE 2: I omitted links to the SDKs (like for 'datetime', and 'dataclass' since these can be
+## separately handled uniformly (perhaps with the {sdk}_datatype_links array for example).
+## EXAMPLES: The first two items in this dict correspond to these docs examples:
+## EXAMPLE 1: https://docs.viam.com/mobility/frame-system/#transformpose
+## EXAMPLE 2: https://docs.viam.com/mobility/motion/#moveonmap
+override_description_links = {
+    "additional transforms": "/mobility/frame-system/#additional-transforms",
+    "SLAM service": "/mobility/slam/",
+    "frame": "/mobility/frame-system/",
+    "Viam app": "https://app.viam.com/",
+    "organization settings page": "/fleet/organizations/",
+    "image tags": "/data/dataset/#image-tags",
+    "API key": "/fleet/cli/#authenticate",
+    "in configuration": "/components/board/#digital_interrupts",
+    "board model": "/components/board/#supported-models",
+    "AnalogReaders": "/components/board/#analogs",
+    "DigitalInterrupts": "/components/board/#digital_interrupts"
 }
 
 ## Language-specific resource name overrides:
@@ -312,7 +328,7 @@ def get_proto_apis():
    
     return proto_map
 
-## bs4 scraper wrapper used frequently in parse():
+## Fetch URL content via BS4, used in parse():
 def make_soup(url):
    try:
        page = urlopen(url)
@@ -320,6 +336,22 @@ def make_soup(url):
        return BeautifulSoup(html, "html.parser")
    except urllib.error.HTTPError as err:
        print(f'An HTTPError was thrown: {err.code} {err.reason} for URL: {url}')
+
+## Link matching text, used in write_markdown():
+## NOTE: Currently does not support formatting for link titles
+## (EXAMPLE: bolded DATA tab here: https://docs.viam.com/build/program/apis/data-client/#binarydatabyfilter)
+def link_description(format_type, full_description, link_text, link_url):
+
+    ## Supports 'md' link styling or 'html' link styling.
+    ## The latter in case you want to link raw method usage:
+    if format_type == 'md':
+        new_linked_text = '[' + link_text + '](' + link_url + ')'
+        linked_description = regex.sub(link_text, new_linked_text, full_description)
+    elif format_type == 'html':
+        new_linked_text = '<a href="' + link_url + '">' + link_text + '</a>'
+        linked_description = regex.sub(link_text, new_linked_text, full_description)
+
+    return linked_description
 
 ## Fetch sdk documentations for each language in sdks array, by language, by type, by resource, by method.
 def parse(type, names):
@@ -394,9 +426,10 @@ def parse(type, names):
                 else:
                     url = f"{sdk_url}/viam_protos.{type}.{resource}/{proto_map[resource]['name']}-class.html"
                 flutter_methods[type][resource] = {}
-            ## If an invalid langauge was provided:
+            ## If an invalid language was provided:
             else:
-                print("unsupported language!")
+                pass
+                #print("unsupported language!")
 
             ## Scrape each parent method tag and all contained child tags for Go by resource:
             if sdk == "go" and type != "app":
@@ -499,26 +532,22 @@ def parse(type, names):
                         ## Determine method name, but don't save to dictionary as value; we use it as a key instead:
                         method_name = id.rsplit('.',1)[1]
 
+                        #print(type + ' / ' + resource + ': METHOD: ' + method_name)
+
                         ## Experimental attempt to match to proto. ~66% accurate so far, needs more work:
-                        #method_proto_raw = method_name.split("_")
-                        #method_proto=""
-                        #for method_part in method_proto_raw:
-                        #    method_part = method_part[0].upper() + method_part[1:]
-                        #    method_proto += method_part
+                        ## Including this is present version of script so that we can test proto overrides:
+                        method_proto_raw = method_name.split("_")
+                        method_proto=""
+                        for method_part in method_proto_raw:
+                            method_part = method_part[0].upper() + method_part[1:]
+                            method_proto += method_part
                         #print(method_proto)
 
-                        #if method_proto not in proto_map[resource]["methods"]:
-                        #    try_method_proto = method_proto[3:]
-                        #    print(try_method_proto)
-
-                        #    if try_method_proto not in proto_map[resource]["methods"]:
-                        #        print("WARNING: " + method_proto + " NOT FOUND!!!")
-
-                        ## Also experimenting with, __mapping__ object, example:
-                        ## https://python.viam.dev/_modules/viam/gen/component/arm/v1/arm_grpc.html#ArmServiceBase.__mapping__
-
-                        ## Determine method proto, placeholder for now:
-                        this_method_dict["proto"] = ""
+                        if method_proto in proto_map[resource]["methods"]:
+                            this_method_dict["proto"] = method_proto
+                            #print("FOUND PROTO MATCH: " + method_proto)
+                        else:
+                            this_method_dict["proto"] = ""
 
                         ## Determine method description, stripping newlines:
                         this_method_dict["description"] = tag.find('dd').p.text.replace("\n", " ")
@@ -652,7 +681,7 @@ def parse(type, names):
 
                             ## Iterate through all <strong> tags in method tag:
                             for strong_tag in tag.find_all('strong'):
-                                ## Determine if this <strong> tag is preceeded by a <dt> tag containing the text "Raises". Otherwise omit.
+                                ## Determine if this <strong> tag is preceded by a <dt> tag containing the text "Raises". Otherwise omit.
                                 ## METHODOLOGY: Find previous <dt> tag before matching <strong>param_name</strong> tag which contains this data.
                                 ##   Determining by <strong> tags allows matching parameters regardless whether they are
                                 ##   presented in <p> tags (single error raised) or <li> tags (multiple errors raised):
@@ -793,51 +822,147 @@ def parse(type, names):
 ## Of course, feel free to adapt and change as you like!
 def write_markdown(type, methods):
 
+    ## Generate special version of type var that matches how we refer to it in MD filepaths.
+    ## This means pluralizing components and services, and taking no action for app and robot:
+    if type in ['component', 'service']:
+        type_filepath_name = type + 's'
+    else:
+        type_filepath_name = type
+
+    ## Determine the necessary directory structure to support automated file writes:
+    relative_generated_path = 'static/include/' + type_filepath_name + '/apis/generated/'
+    full_generated_path = os.path.join(gitroot, relative_generated_path)
+    overrides_path = os.path.join(full_generated_path, 'overrides')
+
+    ## .../overrides/protos
+    protos_override_path = os.path.join(overrides_path, 'protos')
+    ## .../overrides/methods
+    methods_override_path = os.path.join(overrides_path, 'methods')
+    
+    ## Create any of the above that don't presently exist
+    ## (with parents=True, we only have to create final dirs in the
+    ## path, and all earlier dirs will be created):
+    ## CHOICE: Do we auto-create these dirs? Or require the user to do so as-needed?
+    ## Up to us. I prefer to create everything for the user, much easier for all to use.
+    ## - If auto: user doesn't need to know about folder structure at all, and can
+    ##   just dump overrides in the dir already ready for them, easy to infer.
+    ## - If not: no giant nested folder structure of empty dirs, to be committed to
+    ##   our repo as empty. However, if not, we must instruct users of this script:
+    ##   - To override a proto with custom leading MD content, place a file here:
+    ##     docs/static/include/{type}/apis/generated/overrides/protos/{protoname}.md
+    ##   - To override a method with custom leading MD content, place a file here:
+    ##     docs/static/include/{type}/apis/generated/overrides/methods/{resource}/{sdk}/{methodname}.before.md
+    ##     OR JUST:
+    ##     docs/static/include/{type}/apis/generated/overrides/methods/{resource}/{sdk}/{methodname}.md
+    ##   - To override a proto with custom trailing MD content, place a file here:
+    ##     docs/static/include/{type}/apis/generated/overrides/methods/{resource}/{sdk}/{methodname}.after.md
+    Path(protos_override_path).mkdir(parents=True, exist_ok=True)
+    Path(methods_override_path).mkdir(parents=True, exist_ok=True)
+
     ## We can either loop by SDK, or by method proto name.
     ## Here is by SDK:
     for sdk in methods.keys():
         #print(sdk)
 
-        ## Generate special version of type var that matches how we refer to it in MD filepaths.
-        ## This means pluralizing components and services, and taking no action for app and robot:
-        if type in ['component', 'service']:
-            type_filepath_name = type + 's'
-        else:
-            type_filepath_name = type
-
         ## Determine where to write the file for this loop. Suggesting:
         ## docs/static/include/{type}/apis/generated/{sdk}.md
-        relative_path = 'static/include/' + type_filepath_name + '/apis/generated/'
+        #relative_path = 'static/include/' + type_filepath_name + '/apis/generated/'
         #print(relative_path)
         filename = sdk + '.md'
 
-        ## Combine with gitroot from top of this script:
-        file_path = os.path.join(gitroot, relative_path)
-        #print(file_path)
-
-        ## Create parent directory structure if it doesn't exist already:
-        Path(file_path).mkdir(parents=True, exist_ok=True)
-
-        file_name = os.path.join(file_path, filename)
-        output_file = open('%s' % file_name, "w") 
+        full_path_to_file = os.path.join(full_generated_path, filename)
+        output_file = open('%s' % full_path_to_file, "w") 
 
         ## Loop through each resource, such as 'arm'. run() already calls parse() in
         ## scope limited to 'type', so we don't have to loop by type:
         for resource in methods[sdk][type].keys():
             #print(resource)
+
+            ## Create any missing method override subdirectories for this sdk/resource pass
+            ## if not already present:
+            resource_sdk_override_path = os.path.join(methods_override_path, resource, sdk)
+            Path(resource_sdk_override_path).mkdir(parents=True, exist_ok=True)
+
             ## I've included some dumb plaintext output like this to help during scripting. Feel free to remove:
-            output_file.write('\n\n############ ' + resource + ' #######################################\n\n')
+            output_file.write('\n\n#!#!#!#!#!#!#!#!#!#!#!# RESOURCE: ' + resource + ' #!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#\n\n')
 
             ## Loop for each method in resource object:
             for method in methods[sdk][type][resource].keys():
 
-                output_file.write('\n\n############ ' + method + ' #######################################\n\n')
+                output_file.write('\n\n################# METHOD: ' + method + ' ##################################\n\n')
 
                 output_file.write('METHOD NAME: ')
                 output_file.write(method + '\n')
 
                 output_file.write('METHOD PROTO: ')
-                output_file.write(methods[sdk][type][resource][method]['proto'] + '\n')
+                ## Get proto and save to variable; we also need it later:
+                proto = methods[sdk][type][resource][method]['proto']
+
+                output_file.write(proto + '\n')
+
+                ## Here are some options for adding DOCS-side content on top of the scraped data.
+                ## It gets tricky, and we are greatly limited in our ability to edit _within_ scraped
+                ## content data, but some of the following options may solve some near-term problems
+                ## with upstream SDK quality until we have a chance to submit PRs to improve it.
+
+                ## Add additional MD content as an include, to be included directly under the proto header
+                ## This data is applicable to all language implementations of this proto (i.e. _not_ 
+                ## SDK-specific). Example: The `Usage` alert here: https://docs.viam.com/components/camera/#getimages
+               
+                ## Check for proto overrides.
+                ## Not sure how to handle this yet, but we currently check for this override
+                ## once per sdk per resource, but we only need to check once really.
+ 
+                proto_override_filename = proto + '.md'
+
+                ## .../overrides/protos/{proto}
+                proto_override_filepath = os.path.join(protos_override_path, proto_override_filename)
+                if os.path.isfile(proto_override_filepath):
+                    output_file.write('PROTO OVERRIDE: ')
+                    output_file.write(method + '\n')
+
+                    for line in open(proto_override_filepath, 'r', encoding='utf-8'):
+                       output_file.write(line)
+
+                ## Check for method overrides.
+                ## This check supports additional filename switches, to control whether this
+                ## override is to be placed either before the auto-gen stuff, or after.
+                ## Appending filename with .before (or omitting) places MD content before
+                ## the auto-gen content for this method (i.e. before params,returns, etc).
+                ## Appending filename with .after places MD content after the auto-gen content
+                ## for this method (i.e. after params and code samples).
+                ## EXAMPLE (before): https://docs.viam.com/components/camera/#getimage (Go tab)
+                ## EXAMPLE (after): https://docs.viam.com/mobility/motion/#getpose (Py tab)
+
+                has_after_override = 0
+
+                ## .../overrides/methods/{resource}/{sdk}/{method}.before|after.md
+                for method_override_filename in os.listdir(resource_sdk_override_path):
+                    if method in method_override_filename:
+                        method_override_file_path = os.path.join(resource_sdk_override_path, method_override_filename)
+                        if method_override_filename.endswith('.after.md'):
+
+                            ## Because we are writing out MD content in the same general loop as we are getting it
+                            ## from the passed data object, we have to delay this 'after' write until later.
+                            ## If you wanted to fetch all data first, and then afterwards loop through it all
+                            ## separately, you could do this all together. For this implementation of this mock writer
+                            ## function, I'm just noting in has_after_override that I need to come back
+                            ## to this later in the writer loop:
+                            has_after_override = 1
+                        
+                        ## Just being painfully explicit that we accept 'before' or nothing to control injecting
+                        ## before the auto-gen content (such as params, returns, etc).
+                        ## Also, we must use two discrete if statements (not if .. elif), so that we can
+                        ## support both overrides if present (I didn't see any existing examples, but we might
+                        ## want to!):
+                        if not method_override_filename.endswith('.after.md') and \
+                            (method_override_filename.endswith('.before.md') or \
+                            method_override_filename.endswith('.md')):
+
+                           output_file.write('METHOD OVERRIDE BEFORE: ')
+
+                           for line in open(method_override_file_path, 'r', encoding='utf-8'):
+                               output_file.write(line)
 
                 ## In the event we want to structure our method object such that omitted keys are permissable,
                 ## we can use if logic to take action only if present:
@@ -848,21 +973,48 @@ def write_markdown(type, methods):
                 ## work on python only using 'update_sdk_methods.py python':
                 ## EXAMPLE: Go methods do not have descriptions, so I wrote an empty string "" to this key in
                 ## the passed data object. This means we can access this field outside of this if statement (i.e.
-                ## regardless of sdk), but also that if we blindly just output its contents, it will result in
-                ## blank output for this field. Up to us to decide how to handle missing data upstream:
+                ## regardless of sdk), but also that if we blindly just output its contents to the markdown,
+                ## it will result in blank output for this field. Up to us to decide how to handle missing
+                ## data upstream:
                 if 'description' in methods[sdk][type][resource][method]:
+                
+                    ## Check if method description contains any matching string in override_description_links.
+                    ## If match, add link to text in description:
+
+                    method_description = methods[sdk][type][resource][method]['description']
+
+                    for override_text in override_description_links.keys():
+
+                        if override_text in methods[sdk][type][resource][method]['description']:
+                            output_file.write('METHOD DESCRIPTION WITH LINK OVERRIDE: ')
+                            method_description = link_description('md', methods[sdk][type][resource][method]['description'], override_text, override_description_links[override_text])
+
                     output_file.write('METHOD DESCRIPTION: ')
-                    output_file.write(methods[sdk][type][resource][method]['description'] + '\n')
+                    output_file.write(method_description + '\n')
 
                 output_file.write('METHOD LINK: ')
                 output_file.write(methods[sdk][type][resource][method]['method_link'] + '\n')
 
-
                 ## CHOICE: Do we want to fetch the raw usage or do we want to iterate through each param, return, error?
                 ##         Here is an example of raw usage, which I am fetching for the GO SDK:
                 if 'usage' in methods[sdk][type][resource][method]:
+
+                    method_usage = methods[sdk][type][resource][method]['usage']
+
+
+                    ## OPTION: If we need to link within usage, which includes HTML tags, we can also use link_description(),
+                    ## passing the 'html' argument. However, it will happily link matching text within existing HTML
+                    ## tags, like a tag link targets, so I am commenting out for current usage, which is Go-only, and
+                    ## doesn't really need it. An option if we standardize on usage, in which case I will augment
+                    ## link_description() to ignore a tag links and similar:
+                    #for override_text in override_description_links.keys():
+
+                    #    if override_text in methods[sdk][type][resource][method]['usage']:
+                    #        output_file.write('METHOD USAGE WITH LINK OVERRIDE: ')
+                    #        method_usage = link_description('html', methods[sdk][type][resource][method]['usage'], override_text, override_description_links[override_text])
+
                     output_file.write('METHOD USAGE: ')
-                    output_file.write(methods[sdk][type][resource][method]['usage'] + '\n')
+                    output_file.write(method_usage + '\n')
 
                 ## CHOICE: Do we want to fetch the raw usage or do we want to iterate through each param, return, error?
                 ##         Here is an example of a dict of parameters, which I am fetching for the Python and Flutter SDKs:
@@ -917,6 +1069,13 @@ def write_markdown(type, methods):
 
                 ## Same thing with errors raised ('raises') here.
 
+                ## If we detected an 'after' method override file earlier, write it out here:
+                if has_after_override:
+                    output_file.write('METHOD OVERRIDE AFTER: ')
+
+                    for line in open(method_override_file_path, 'r', encoding='utf-8'):
+                        output_file.write(line)
+
     ## - For looping by proto method: I don't have automated mapping working yet (and it might not be possible for all languages).
     ##   Barring automated determination, we can always manually map all ~250 methods per language, joy.
     ##   This approach would use a different loop structure, I can help create!
@@ -930,22 +1089,18 @@ def run():
     proto_map = get_proto_apis()
 
     component_methods = parse("component", components)
-    ## Example:
     write_markdown("component", component_methods)
     #print(component_methods)
 
     service_methods = parse("service", services)
-    ## Example:
     write_markdown("service", service_methods)
     #print(service_methods)
 
     app_methods = parse("app", app_apis)
-    ## Example:
     write_markdown("app", app_methods)
     #print(app_methods)
 
     robot_methods = parse("robot", robot_apis)
-    ## Example:
     write_markdown("robot", robot_methods)
     #print(robot_methods)
 
