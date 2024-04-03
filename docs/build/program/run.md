@@ -21,7 +21,7 @@ After saving your [code sample](/build/program/#hello-world-the-code-sample-tab)
 You can remotely control your machine from anywhere in the world.
 If your machine and your personal computer are both connected to the Internet, you can run code to control your machine remotely from your personal computer.
 
-{{<imgproc src="/build/program/remotely.png" resize="800x" declaredimensions=true alt="A client connecting remotely to a machine">}}
+{{<imgproc src="/build/program/remotely.png" resize="900x" declaredimensions=true alt="A client connecting remotely to a machine">}}
 
 This method is convenient for most use cases because your machine and your personal computer do not have to be connected to the same WAN/LAN to issue control commands.
 When you run code on one computer, creating a client [session](/build/program/apis/sessions/), the code running on that computer sends instructions to your machine's `viam-server` instance over the Internet.
@@ -81,7 +81,7 @@ You can run SDK code directly on your machine.
 If you run [PID control loops](https://en.wikipedia.org/wiki/PID_controller) or your machines have intermittent or no network connectivity, you can ensure lags in communication do not interfere with the machine's performance by running the control code on the same board that is running `viam-server`.
 Running everything on one machine is also convenient if you have a machine (for example, an air quality sensor) that runs all the time, and you don't want to have to connect to it from a separate computer constantly.
 
-{{<imgproc src="/build/program/on-robot.png" resize="800x" declaredimensions=true alt="A client running on a machine">}}
+{{<imgproc src="/build/program/on-robot.png" resize="900x" declaredimensions=true alt="A client running on a machine">}}
 
 The script you run on-machine is the same as the script you [run remotely](#run-code-remotely) or on a local network.
 When the connection code from the [code sample tab](/build/program/#hello-world-the-code-sample-tab) executes, it creates a [client session](/build/program/apis/sessions/) connected to your machine using the [most efficient route](/build/program/connectivity/).
