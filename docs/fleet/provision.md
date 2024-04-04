@@ -205,10 +205,17 @@ For example, to set the hotspot password to `acme123`, you can use the following
 }
 ```
 
-You can add this configuration to the <file>/etc/viam.json</file> configuration file you deploy to your machine, or from the **CONFIGURE** tab in the [Viam app](https://app.viam.com/) for your machine, using **Raw JSON** mode.
+You can add this configuration to your machine's configuration in the **CONFIGURE** tab in the [Viam app](https://app.viam.com/), using **JSON** mode, or directly to the <file>/etc/viam.json</file> configuration file you deploy to your machine.
 
-If you did not initially provide a full `viam-server` configuration in either of these methods, you will be prompted to paste one in when you connect to the WiFi hotspot.
-You can copy a configured machine's configuration by navigating to the [Viam app](https://app.viam.com/), viewing the part's {{< glossary_tooltip term_id="setup" text="setup instructions" >}}, and clicking the **Copy viam-server config** button.
+If you did not initially provide a `viam-server` app configuration in either of these methods, you will be prompted to paste one in when you connect to the WiFi hotspot.
+This is the part of the machine configuration JSON which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to the Viam app.
+
+To copy a machine's `viam-server` app configuration:
+
+- Navigate to your machine's page on [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
+- Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="/build/micro-rdk/part-dropdown.png" resize="x600" style="max-width: 500px" declaredimensions=true alt="The part status dropdown of an offline machine.">}}
+- Click the copy icon underneath **Viam server configuration** to copy the `viam-server` app JSON configuration.
+- Paste the `viam-server` app config into your terminal when prompted.
 
 ## Use a pre-install script
 

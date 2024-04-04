@@ -249,19 +249,14 @@ cargo generate --git https://github.com/viamrobotics/micro-rdk.git
 
 Select `templates/project` when prompted.
 
-You will be prompted to paste your machine's JSON configuration into the terminal.
+You will be prompted to paste your machine's `viam-server` app JSON configuration into the terminal.
 To obtain this:
 
-- Navigate to [your new machine's](#create-a-new-machine) page on [the Viam app](https://app.viam.com).
-- Navigate to the **CONFIGURE** tab and find your machine's card.
-  An alert will be present directing you to **Set up your machine part**.
-  Click **View setup instructions** to open the setup instructions.
-  Keep your `Mode` and `Architecture` selections at default.
-- Follow the instructions to **Download Viam app config**.
-  The micro-RDK needs this JSON file, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
-  <!-- TODO R2D2: needs to be updated when **Copy viam-server config** button is replicated -->
-  <!-- - Click the **Copy viam-server config** button on the right side of the **Setup** tab. -->
-- Copy and paste the `viam-server` config into your terminal when prompted.
+- Navigate to [your new machine's](#create-a-new-machine) page on [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
+- Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="/build/micro-rdk/part-dropdown.png" resize="x600" style="max-width: 500px" declaredimensions=true alt="The part status dropdown of an offline machine.">}}
+- Click the copy icon underneath **Viam server configuration** to copy the `viam-server` app JSON configuration.
+  The micro-RDK needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+- Paste the `viam-server` app config into your terminal when prompted.
 
 {{% snippet "secret-share.md" %}}
 
