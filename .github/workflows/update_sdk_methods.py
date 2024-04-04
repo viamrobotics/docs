@@ -1069,6 +1069,12 @@ def write_markdown(type, methods):
 
                 ## Same thing with errors raised ('raises') here.
 
+                ## If the method has a code sample, print it here:
+                if 'code_sample' in methods[sdk][type][resource][method]:
+
+                    output_file.write('CODE SAMPLE: \n')
+                    output_file.write(methods[sdk][type][resource][method]['code_sample'] + '\n')
+
                 ## If we detected an 'after' method override file earlier, write it out here:
                 if has_after_override:
                     output_file.write('METHOD OVERRIDE AFTER: ')
