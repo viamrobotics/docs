@@ -13,21 +13,24 @@ aliases:
 # SMEs: Kat, Jeremy
 ---
 
+{{% alert title="Warning" color="warning" %}}
+
+Running `cartographer` in the cloud is temporarily disabled, and the attribute `use_cloud_slam` defaults to `false`.
+If you set `use_cloud_slam` to `true`, it will not be possible to see the results in the remote control card.
+
+{{% /alert %}}
+
 [The Cartographer Project](https://github.com/cartographer-project) contains a C++ library that performs dense Simultaneous Localization And Mapping (SLAM).
 
 To use Cartographer with the Viam {{< glossary_tooltip term_id="slam" text="SLAM" >}} service, you can use the [`cartographer`](https://app.viam.com/module/viam/cartographer) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 See the [Use Modules](/registry/#use-modules) section for instructions on using a module from the Viam registry on your machine.
 
-This module utilizes the Cartographer SLAM algorithm to provide tools for generating SLAM maps.
-If you want to use a SLAM algorithm outside of Cartographer, you can create a new module to suit your needs.
-
 The source code for this module is available on the [`viam-cartographer` GitHub repository](https://github.com/viamrobotics/viam-cartographer).
 
 {{% alert title="Info" color="info" %}}
 
-Cartographer supports taking 2D LiDAR or 3D LiDAR data, and optionally inertial measurement unit (IMU) and/or odometry data, as input.
+Currently, the `cartographer` modular resource supports taking 2D LiDAR and optionally IMU and/or odometry data as input.
 
-However, currently, the `cartographer` modular resource only supports taking 2D LiDAR and optionally IMU and/or odometry data as input.
 Support for taking 3D LiDAR data as input may be added in the future.
 
 {{% /alert %}}
@@ -47,13 +50,6 @@ The `cartographer` module supports three modes of operation:
 
 Creating and updating SLAM maps with Cartographer is especially CPU-intensive, so the `cartographer` modular resource runs in the cloud for these two tasks.
 For doing pure localization on an existing map, the `cartographer` modular resource runs locally on your machine.
-
-{{% alert title="Info" color="tip" %}}
-
-Running `cartographer` in the cloud is temporarily disabled, and the attribute `use_cloud_slam` defaults to `false`.
-If you set `use_cloud_slam` to `true`, it will not be possible to see the results in the remote control card.
-
-{{% /alert %}}
 
 {{% alert title="Info" color="info" %}}
 
