@@ -151,6 +151,7 @@ brew services restart viam-server
 
 ## Update `viam-server`
 
+To update to the newest RDK version, you need to update your `viam-server`.
 Select the tab for your platform:
 
 {{< tabs name="Updating viam-server" >}}

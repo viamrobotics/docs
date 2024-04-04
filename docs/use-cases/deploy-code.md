@@ -3,6 +3,7 @@ title: "Manage and deploy code versions"
 linkTitle: "Manage and deploy code versions"
 type: "docs"
 weight: 30
+images: ["/platform/registry.svg"]
 description: "Deploy and manage module versions as public or private resources with the Viam CLI."
 ---
 
@@ -34,8 +35,9 @@ Or, you can [create your own module](/registry/create/) to add support for new h
 {{< tablestep >}}
 
 {{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Deploy your module">}}
+**3. Deploy your module**
 
-If your machine is offline when you deploy a module, it will deploy once your machine comes back online.
+Once you have created your new module, you can deploy it to your machine in one of two ways:
 
 - You can [upload your module](/registry/upload/) to the Viam registry using the Viam CLI. Modules available from the Viam registry can be deployed directly to a machine or fleet of machines from the Viam app. When you upload your module to the registry, you can choose to make it **public** to make your module available to all or **private** to make your module only visible to members of your [organization](/fleet/organizations/).
 - You can deploy your module directly to your machine as a [local module](/registry/configure/#local-modules). Local modules are not uploaded to the Viam registry, and must be manually added to your machine.

@@ -21,7 +21,9 @@ aliases:
   - /installation/
 ---
 
-To use Viam software with your machine, install and run the `viam-server` binary on the single board computer (SBC) or other computer that will run your machine and is connected to your hardware.
+`viam-server` is the binary built from [Robot Development Kit](https://github.com/viamrobotics/rdk) that contains and manages communications between all Viam's built-in hardware drivers ({{< glossary_tooltip term_id="component" text="components" >}}) and software {{< glossary_tooltip term_id="service" text="services" >}}, connects your machine to the cloud, manages machine configuration, and manages dependencies including {{< glossary_tooltip term_id="module" text="modules" >}}.
+
+To use Viam software with your machine, install and run `viam-server` on the single board computer (SBC) or other computer that will run your machine and is connected to your hardware.
 Installing on a laptop or desktop computer is useful if you don't have an SBC available, or if you want to run a Viam [service](/services/) with your machine that requires more computing resources than are otherwise available on an SBC.
 
 For an overview of the Viam software platform, see [Viam in 3 minutes](/get-started/viam/).

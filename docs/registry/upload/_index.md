@@ -340,8 +340,8 @@ For more details, see the [`build-action` GitHub Action documentation](https://g
 
 - [Golang CI yaml](https://github.com/viam-labs/wifi-sensor/blob/main/.github/workflows/build.yml)
 - [Golang Example CI meta.json](https://github.com/viam-labs/wifi-sensor/blob/main/meta.json)
-- [C++ Example CI yaml](https://github.com/viamrobotics/module-example-cpp/blob/main/.github/workflows/build2.yml)
-- [C++ Example CI meta.json](https://github.com/viamrobotics/module-example-cpp/blob/main/meta.json)
+<!-- - [C++ Example CI yaml](https://github.com/viamrobotics/module-example-cpp/blob/main/.github/workflows/build2.yml)
+- [C++ Example CI meta.json](https://github.com/viamrobotics/module-example-cpp/blob/main/meta.json) -->
 
 {{% /tab %}}
 {{% tab name="CI with upload-action" %}}

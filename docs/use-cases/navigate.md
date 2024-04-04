@@ -6,8 +6,7 @@ type: "docs"
 tags: ["navigation", "motion", "services", "base", "base remote control"]
 no_list: true
 description: "Use Viam to teleoperate and navigate rover bases."
-icon: true
-images: ["/services/icons/navigation.svg"]
+images: ["/platform/mobility.svg", "/use-cases/base-control.png"]
 ---
 
 If you have a rover base, you can use Viam to teleoperate it and to navigate autonomously.
