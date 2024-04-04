@@ -39,6 +39,10 @@ Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamroboti
 You will need to [recompile and flash your ESP32 yourself](/get-started/installation/prepare/microcontrollers/development-setup/) instead of using Viam's prebuilt binary and installer.
 {{< /alert >}}
 
+You can also watch this guide to creating a vision service module:
+
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/Yz6E07To9Mc">}}
+
 ## Overview of a module
 
 Generally, to write a module, you:
