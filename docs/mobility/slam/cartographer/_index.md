@@ -13,7 +13,7 @@ aliases:
 # SMEs: Kat, Jeremy
 ---
 
-{{% alert title="Warning" color="warning" %}}
+{{% alert title="Temporarily not available in the cloud" color="caution" %}}
 
 Running `cartographer` in the cloud is temporarily disabled, and the attribute `use_cloud_slam` defaults to `false`.
 If you set `use_cloud_slam` to `true`, it will not be possible to see the results in the remote control card.
