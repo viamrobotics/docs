@@ -66,7 +66,8 @@ If `capture_dir` is unspecified, `viam-server` will use the default directory at
 
 ### Trigger sync conditionally
 
-If you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
+You can use a {{< glossary_tooltip term_id="module" text="module" >}} to sync data only when a certain logic condition is met, instead of at a regular time interval.
+For example, if you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
 To set up triggers for syncing see [Trigger Sync](/data/trigger-sync/).
 
 ### Pause sync
