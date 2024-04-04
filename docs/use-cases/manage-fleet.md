@@ -6,7 +6,7 @@ type: "docs"
 tags: ["fleet management", "app", "services"]
 no_list: true
 description: "Use Viam's fleet management capabilities to share and manage access to your machines."
-images: ["/fleet/locations.png"]
+images: ["/platform/fleet.svg"]
 imageAlt: "Fleet management"
 ---
 
