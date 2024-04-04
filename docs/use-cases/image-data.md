@@ -3,6 +3,7 @@ title: "Capture and sync image data"
 linkTitle: "Capture and sync image data"
 weight: 20
 type: "docs"
+images: ["/ml/collect.svg"]
 description: "Capture image data from a camera on your machine and sync that data to the cloud."
 ---
 

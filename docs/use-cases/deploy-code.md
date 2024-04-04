@@ -3,6 +3,7 @@ title: "Manage and deploy code versions"
 linkTitle: "Manage and deploy code versions"
 type: "docs"
 weight: 30
+images: ["/platform/registry.svg"]
 description: "Deploy and manage module versions as public or private resources with the Viam CLI."
 ---
 
