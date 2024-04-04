@@ -124,7 +124,7 @@ search.addWidgets([
     attribute: "languages",
     operator: "or",
     sortBy: ["name:asc"],
-    items: [{label: "flutter"}, { label: "go" }, { label: "python" }, { label: "typescript" }],
+    items: [{label: "flutter"}, { label: "go" }, { label: "python" }, { label: "typescript" }, { label: "c++" }],
   }),
   customRefinementList({
     container: "components-list",
