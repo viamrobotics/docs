@@ -858,7 +858,7 @@ td > ul, td > ol {
   color: black;
   border-radius: 0;
   background-color: whitesmoke;
-  margin: 0;
+  margin: 0.5rem;
   padding: 1rem 1.25rem;
   i {
     color: black;
@@ -874,10 +874,16 @@ td > ul, td > ol {
   width: 60px;
   opacity: 1;
   transition: opacity 0.5s;
+  background-color: #000000;
+  color: white;
+}
+
+#scrollButton > i {
+  color: white;
 }
 
 #scrollButton {
-  margin-right: 64px;
+  margin-right: 76px;
 }
 
 #chatButton {
@@ -1509,7 +1515,7 @@ a.ais-Pagination-link:hover {
 // ensure tutorials page is 100% of height
 
 .row.flex-xl-nowrap {
-  min-height: 100%;
+  min-height: 90%;
 }
 
 // Helper to allow search to link to tabs
