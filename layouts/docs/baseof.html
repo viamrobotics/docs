@@ -31,14 +31,11 @@
       </div>
       {{ $img := resources.GetMatch "/icons/learn-viam-robot-icon-ai.svg" }}
       <button onclick="initAndClick()" class="docsbutton" id="chatButton" title="Chatbot and support">
-        <svg width="48" height="48">
-          <image xlink:href="{{ $img.RelPermalink }}" src="{{ $img.RelPermalink }}" width="48" height="48"/>
-        </svg>
+        <i style="font-size:x-large;" class="fas fa-comments"></i>
       </button>
       <button onclick="toTop()" class="docsbutton" id="scrollButton" title="Go to top" style="visibility: hidden;">
-          <i style="font-size:large;" class="fas fa-chevron-up"></i>
+        <i style="font-size:x-large;" class="fas fa-chevron-up"></i>
       </button>
-
     </div>
       {{ partial "footer.html" . }}
     </div>
