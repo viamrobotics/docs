@@ -67,6 +67,10 @@ h2, .h2 {
   clear: both;
 }
 
+.td-content {
+  min-height: 92%;
+}
+
 .td-content > h2.frontpage-headers {
   margin-top: 1.5rem;
 }
@@ -854,18 +858,36 @@ td > ul, td > ol {
   color: black;
   border-radius: 0;
   background-color: whitesmoke;
-  margin: 0;
+  margin: 0.5rem;
   padding: 1rem 1.25rem;
   i {
     color: black;
   }
 }
 
-#scrollButton {
+#scrollButton, #chatButton {
   position: sticky;
   left: 100%;
   bottom: 1rem;
   border-radius: 0;
+  height: 60px;
+  width: 60px;
+  opacity: 1;
+  transition: opacity 0.5s;
+  background-color: #000000;
+  color: white;
+}
+
+#scrollButton > i, #chatButton > i {
+  color: white;
+}
+
+#scrollButton {
+  margin-right: 76px;
+}
+
+#chatButton {
+  padding: 6px;
 }
 
 #edit-on-github, #rss-feed {
@@ -1493,7 +1515,7 @@ a.ais-Pagination-link:hover {
 // ensure tutorials page is 100% of height
 
 .row.flex-xl-nowrap {
-  min-height: 100%;
+  min-height: 90%;
 }
 
 // Helper to allow search to link to tabs

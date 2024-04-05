@@ -157,7 +157,7 @@ At this point, the full **Raw JSON** configuration of your robot should look lik
       "model": "webcam",
       "attributes": {},
       "depends_on": [],
-      "service_config": [
+      "service_configs": [
         {
           "attributes": {
             "capture_methods": [
@@ -192,7 +192,7 @@ At this point, the full **Raw JSON** configuration of your robot should look lik
 }
 ```
 
-Make sure that you have added a `service_config` to the JSON configuration of your webcam with type `data_manager`, as well as a new service with type `data_manager`, as shown above.
+Make sure that you have added a `service_configs` entry to the JSON configuration of your webcam with type `data_manager`, as well as a new service with type `data_manager`, as shown above.
 
 {{% /tab %}}
 {{< /tabs >}}

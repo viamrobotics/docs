@@ -80,7 +80,11 @@
                 <p>Find more examples of how Viam is being used in the world by reviewing <a href="https://www.viam.com/customers" target="_blank">Customer Stories</a>, <a href="/tutorials/">tutorials</a>, or <a href="https://www.viam.com/blog?categories=Tutorials" target="_blank">blog posts</a>.</p>
             </main>
         </div>
-      </div>
+        {{ $img := resources.GetMatch "/icons/learn-viam-robot-icon-ai.svg" }}
+        <button onclick="initAndClick()" class="docsbutton" id="chatButton" title="Chatbot and support">
+            <i style="font-size:x-large;" class="fas fa-comments"></i>
+        </button>
+    </div>
       {{ partial "footer.html" . }}
     </div>
 
