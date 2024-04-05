@@ -1,0 +1,210 @@
+---
+title: "Monitor Air Quality with a Fleet of Sensors"
+linkTitle: "Air Quality Fleet"
+type: "docs"
+description:
+  "Use a fleet of machines with air quality sensors to monitor PM 2.5 levels in different indoor and outdoor locations."
+  # If GIF+video is available use those - otherwise use an image and omit videos.
+  # The GIF or image in "images" will show up in links on social media/in Slack messages etc.
+  # The videos will show up on the tutorials page and should be the same GIF as above,
+  # but in these formats which use less bandwidth than GIF when a user is loading our site.
+# images: ["path to preview GIF if available and less than 1MB in size - otherwise path to preview image"]
+# videos: [ "path to preview video in mp4format - ideally in 4:3 format", "path to preview video - ideally in 4:3 format"]
+# imageAlt: "ALT text for the image"
+# videoAlt: "ALT text for the video" (omit either imageAlt or videoAlt depending on preview type)
+tags: ["tutorial"]
+authors: [] # Jessamy Taylor
+languages: [] # Viam SDK programming languages used, if any
+viamresources: ["sensor", "data_manager"] # Specific components or services used in this tutorial
+level: "Intermediate"
+# Beginner means: high level of explanation and guidance
+# Intermediate means: commands/concepts you can assume the reader knows do not need to be explained, instead link.
+# Advanced means: intricate tutorial that may require the reader to have knowledge to adapt
+date: "2024-04-03" # When the tutorial was created or last entirely checked
+# updated: ""  # When the tutorial was last entirely checked
+cost: 200
+---
+
+_Outline the why.
+Tell the story of the machine.
+Should the opening sentence focus on fleets or on air quality as the driving issue? How to or project?_
+
+As wildfire smoke, car exhaust, and cooking oils pollute our air, we can become more aware of the pollution levels in the spaces we spend time by collecting data.
+Then, when we take steps to mitigate the problem, we can track whether our interventions are effective.
+
+In this tutorial you will use a fleet of devices to collect data from different places and sync it all to a custom viewing dashboard.
+By completing this project, you will learn about:
+
+- Configuring a fleet of identical machines
+- Managing a fleet of dispersed devices remotely
+- Data collection and sync
+- Using the Viam TypeScript SDK to create a custom dashboard
+
+## Requirements
+
+_What does the reader need to already know.
+What will you be using (hardware/software)._
+
+You can complete this tutorial using as many air quality sensing machines as you like.
+Your {{< glossary_tooltip term_id="machine" text="machines" >}} can be in different {{< glossary_tooltip term_id="location" text="locations" >}} or even different {{< glossary_tooltip term_id="organization" text="organizations" >}}; Viam's fleet management system allows you to pull data from any machines you can authenticate to.
+For each machine, you will need the following:
+
+- [SDS011 Nova PM sensor](https://docs.google.com/document/d/1e6BCYhekPLfnTjXpR2hMw1ard6zfdKCZobl7smOnEp0/edit)
+  - If you choose to use a different air quality sensor, you may need to [create your own module](/registry/create/) implementing the [sensor API](/components/sensor/#api) for your specific hardware.
+- A single-board computer (SBC) with [`viam-server` installed](https://docs.viam.com/get-started/installation/) and connected to the [Viam app](https://app.viam.com)
+- An appropriate power supply
+
+In addition to `viam-server`, this tutorial uses the following software:
+
+- [`sds0011` sensor module](https://github.com/zaporter/viam-sds011)
+- The [Viam TypeScript SDK](https://ts.viam.dev/)
+
+## Set up your hardware
+
+For each sensing machine, connect the PM sensor to a USB port on the machine's SBC.
+Position your sensing machines in strategic locations, and connect them to power.
+Here are some ideas for where to place sensing machines:
+
+- At home:
+  - In an outdoor location protected from weather, such as under the eaves of your home
+  - In the kitchen, where cooking can produce pollutants
+  - Anywhere you spend lots of time indoors and want to measure exposure to pollutants
+- At work:
+  - At your desk to check your exposure throughout the day
+  - Near a door or window to see whether pollutants are leaking in
+
+## Configure your air quality sensors
+
+You need to [configure](/build/configure/) your hardware so that each of your machines can communicate with its attached air quality [sensor](/components/sensor/).
+
+No matter how many sensing machines you use, you can configure them all very quickly using [fragments](/fleet/configure-a-fleet/).
+You'll start by configuring one machine and creating a fragment based on that machine's configuration.
+Then, you'll add the fragment to each of your other machines.
+This way, if you need to update the config in the future, you just update the fragment and the change is pushed to all the machines at once.
+
+### Configure your first machine
+
+#### Configure the sensor
+
+1. Navigate to the **CONFIGURE** tab of the machine details page in the [Viam app](https://app.viam.com) for your first machine.
+2. Click the **+** (Create) button and click **Component** from the drop-down.
+   Click **sensor**, then search for `sds011` and click **sds001:v1** from the results.
+3. Click **Add module**.
+   This adds the {{< glossary_tooltip term_id="module" text="module" >}} that provides the sensor model that supports the specific hardware we are using for this tutorial.
+
+   {{<imgproc src="/tutorials/air-quality-fleet/add-sensor-module.png" resize="x1100" declaredimensions=true alt="The Add Module button that appears after you click the model name." style="max-width:600px" >}}
+
+4. Give the sensor a name like `PM_sensor` and click **Create**.
+5. In the newly created **PM_sensor** card, replace the contents of the attributes box (the empty curly braces `{}`) with the following:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "usb_interface": "/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0"
+}
+```
+
+6. Save the config.
+   Your machine config should now resemble the following:
+
+   {{<imgproc src="/tutorials/air-quality-fleet/configured-sensor.png" resize="x1100" declaredimensions=true alt="insert alt text" style="max-width:600px" >}}
+
+#### Configure data capture
+
+Now it's time to enable [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/) so that data from your air quality sensor will be first stored on the machine and then pushed up to the cloud where you can access all the data from your sensors remotely.
+
+1. Click the **+** (Create) button and click **Service** from the drop-down.
+2. Click **data management**.
+3. Give your data manager a name such as the auto-populated name `data_manager-1` and click **Create**.
+   Now the data management service is available to any components on your machine, and you can set up data capture on the sensor:
+4. On your **PM_sensor** card, click **Add method**.
+5. From the **Type** drop-down, select **Readings**.
+6. Set the **Frequency** to `0.1` readings per second.
+   This will capture air quality data once every ten seconds.
+   It is useful to capture data frequently for testing purposes, but you can always change this frequency later since you probably don't need to capture data this frequently all day forever.
+7. Save the config.
+
+### Create a fragment
+
+Whilst you clicked around the builder UI configuring your machine, the Viam app generated a JSON configuration file with all your parameters.
+This is the file that tells `viam-server` what resources are available to it and how everything is connected.
+Click **JSON** in the upper-left corner of the **CONFIGURE** tab to view the generated JSON file.
+You can manually edit this file instead of using the builder UI if you are familiar with JSON.
+
+In any case, now that the JSON is generated, you are ready to create a {{< glossary_tooltip term_id="fragment" text="fragment" >}}:
+
+1. Select and copy the entire contents of the JSON config.
+2. Navigate to the **FLEET** page and click [**Fragments**](https://app.viam.com/fragments) at the bottom of the left nav.
+3. Type in a name for your fragment, such as `air-sensing-machine` and click **Add fragment**.
+4. Replace the empty curly braces `{}` with the config you copied from your machine.
+5. Because the [Viam Agent](/fleet/provision/) config auto-populates into every machine's config, and configuring the agent using a fragment isn't supported, you do not need to include it in the fragment.
+
+   Delete the entire `agent_config` section including the comma just above it:
+
+   {{<imgproc src="/tutorials/air-quality-fleet/delete-agent-config.png" resize="x1100" declaredimensions=true alt="The section of the raw JSON that you should delete: the entire agent section." style="max-width:600px" >}}
+
+6. Click **Save fragment**.
+7. Now, you can actually delete the entire config from your machine!
+   In the next section, you will replace it with the fragment you just created so that it gets updated alongside all your other machines when you update the fragment in the future.
+
+   Navigate back to your machine's **CONFIGURE** tab, select **JSON** mode, and delete the entire contents of the config.
+   When you try to save, you'll get an invalid JSON error because it can't be empty.
+   Put in a set of curly braces `{}` and then save the config successfully.
+
+### Add the fragment to all your machines
+
+Add the fragment you just created to each of your machines including the first one:
+
+1. Click the **+** button, then click **Insert fragment** in the drop-down menu.
+2. Search for and click the name of your fragment, for example `air-sensing-machine`.
+
+   {{<imgproc src="/tutorials/air-quality-fleet/add-fragment.png" resize="x1100" declaredimensions=true alt="The insert fragment UI." style="max-width:600px" >}}
+
+3. Click **Insert fragment**.
+   The module, sensor, and data manager will appear in your config.
+4. Save the config.
+5. Repeat these steps on the machine details page for each of your air quality sensing machines.
+
+## Test your sensors
+
+Now that all your hardware is configured, it's a good idea to make sure readings are being gathered by the sensors and sent to the cloud before proceeding with the tutorial.
+For each machine:
+
+1. Go to the machine details page in the [Viam app](https://app.viam.com.) and navigate to the **CONTROL** tab.
+2. Within the **Sensors** section, click **Get Readings** for the **PM_sensor**.
+   If the sensor software and hardware is working, you should see values populate the **Readings** column.
+
+   {{<imgproc src="/tutorials/air-quality-fleet/get-readings.png" resize="x1100" declaredimensions=true alt="The sensor readings on the control tab." style="max-width:600px" >}}
+
+   If you do not see readings, check the **LOGS** tab for errors.
+
+3. Next, check that data is being synced.
+   Open your [**DATA** page](https://app.viam.com/data).
+4. Click the **Sensors** tab within the data page.
+   If you have sensor data coming from machines unrelated to this project, use the filters on the left side of the page to view data from only your air quality sensors.
+
+   {{<imgproc src="/tutorials/air-quality-fleet/synced-data.png" resize="x1100" declaredimensions=true alt="The sensor readings that have synced to the DATA page." style="max-width:600px" >}}
+
+Once you've confirmed that data is being collected correctly, you're ready to start building a dashboard to display the data.
+If you'd like to view your data using a Grafana dashboard, try our [Visualize Data with Grafana tutorial](/tutorials/services/visualize-data-grafana/).
+If you'd like to make a dashboard that you can customize however you like, continue with this tutorial and learn to use the Viam TypeScript SDK.
+
+## Code your custom TypeScript dashboard
+
+The [Viam TypeScript SDK](https://ts.viam.dev/) allows you to build custom web interfaces to interact with your machines.
+For this project, you'll use it to build an interface to view your air quality sensor data.
+You'll host the website locally on your Linux or MacOS computer, and view the interface in a web browser on that computer.
+
+### Add some color to your dashboard
+
+In this section you will add color-coded backgrounds to the widgets for each of your sensors so you can see at a glance how the air quality is at each sensor.
+
+## Next steps
+
+Link to other tutorials with cards or text.
+
+You might try putting an air filter in your home or office and comparing the air quality data before and after your intervention.
+Or, try sealing gaps around doors and check whether it worked by looking at your dashboard.
+
+{{< cards >}}
+{{% card link="/tutorials/get-started/blink-an-led" %}}
+{{< /cards >}}
