@@ -172,11 +172,8 @@ userflow.setResourceCenterLauncherHidden(true);
 
 async function initAndClick() {
     // unclear why it needs to be called twice but otherwise you need to click the button twice.
-    console.log(userflow.isIdentified())
     await userflow.identifyAnonymous({});
-    console.log(userflow.isIdentified())
     await userflow.identifyAnonymous({});
-    console.log(userflow.isIdentified())
     userflow.openResourceCenter()
 }
 
