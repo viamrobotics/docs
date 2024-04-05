@@ -67,6 +67,10 @@ h2, .h2 {
   clear: both;
 }
 
+.td-content {
+  min-height: 92%;
+}
+
 .td-content > h2.frontpage-headers {
   margin-top: 1.5rem;
 }
@@ -861,11 +865,23 @@ td > ul, td > ol {
   }
 }
 
-#scrollButton {
+#scrollButton, #chatButton {
   position: sticky;
   left: 100%;
   bottom: 1rem;
   border-radius: 0;
+  height: 60px;
+  width: 60px;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+#scrollButton {
+  margin-right: 64px;
+}
+
+#chatButton {
+  padding: 6px;
 }
 
 #edit-on-github, #rss-feed {
