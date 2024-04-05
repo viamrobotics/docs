@@ -21,37 +21,7 @@ Enter a name for your gripper and click **Create**.
 
 ![Creation of a softrobotics gripper component in the Viam app config builder.](/components/gripper/softrobotics-ui-config.png)
 
-Copy and paste the following attribute template into your gripper's **Attributes** box.
-Then remove and fill in the attributes as applicable to your gripper, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "board": "<your-board-name>",
-  "open": "<pin-number-on-board>",
-  "close": "<pin-number-on-board>",
-  "power": "<pin-number-on-board>",
-  "analog_reader": "psi"
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "board": "local",
-  "open": "11",
-  "close": "13",
-  "power": "15",
-  "analog_reader": "psi"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Fill in the attributes as applicable to your gripper, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
