@@ -105,6 +105,7 @@ Configure an array of the `name` of each movement sensor you want to add to your
 | `linear_velocity`     | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads linear velocity.          |
 | `angular_velocity`    | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads angular velocity.         |
 | `linear_acceleration` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads linear acceleration       |
+
 Note that only one sensor from each array can be used to retrieve each type of reading.
 Your machine uses the first sensor in the array that has implemented the relevant API method in its model and does not raise an error at runtime.
 For instance, in the **JSON Example** above, if both `"imu-wit"` and `"mpu6050"` support returning `angular_velocity`, `"mpu6050"` is only used to read angular velocity on the machine if `"imu-wit"` returns an error at runtime.
