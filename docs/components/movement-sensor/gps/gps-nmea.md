@@ -27,7 +27,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `movement-sensor` type, then select the `gps-nmea` model.
 Enter a name for your movement sensor and click **Create**.
 
-{{< imgproc src="/components/movement-sensor/gps-nmea-builder.png" alt="Creation of a `gps-nmea` movement sensor in the Viam app config builder." resize="1200x" style="max-width:750px" >}}
+{{< imgproc src="/components/movement-sensor/gps-nmea-builder.png" alt="Creation of a `gps-nmea` movement sensor in the Viam app config builder." resize="1200x" style="max-width:650px" >}}
 
 Fill in the attributes as applicable to your movement sensor, according to the table below.
 
