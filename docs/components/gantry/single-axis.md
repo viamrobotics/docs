@@ -25,33 +25,7 @@ Enter a name for your sensor and click **Create**.
 
 ![Creation of a single-axis gantry component in the Viam app config builder.](/components/gantry/single-axis-ui-config.png)
 
-Copy and paste the following attribute template into your gantry's **Attributes** box.
-Then remove and fill in the attributes as applicable to your gantry, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "motor": "<your-motor-name>",
-  "length_mm": <int>,
-  "mm_per_rev": <int>
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "motor": "my-motor",
-  "length_mm": 98,
-  "mm_per_rev": 20
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Fill in the attributes as applicable to your gantry, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

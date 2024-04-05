@@ -30,41 +30,12 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `movement-sensor` type, then select the `merged` model.
 Enter a name for your movement sensor and click **Create**.
 
-{{< imgproc src="/components/movement-sensor/merged-config-builder.png" alt="Creation of an `merged` movement sensor in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/components/movement-sensor/merged-config-builder.png" alt="Creation of an `merged` movement sensor in the Viam app config builder." resize="1200x" style="max-width:750px" >}}
 
-Copy and paste the following attribute template into your movement sensor's **Attributes** box.
-Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
+Fill in the attributes as applicable to your movement sensor, according to the table below.
+For example:
 
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "position": ["<your-gps-sensor-name-1>", "<your-gps-sensor-name-2>"],
-  "orientation": ["<your-imu-sensor-name-1>"],
-  "compass_heading": ["<your-gps-sensor-name-1>"],
-  "angular_velocity": ["<your-imu-sensor-name-1>"],
-  "linear_velocity": ["<your-gps-sensor-name-1>"],
-  "linear_acceleration": ["<your-accelerometer-sensor-name-1>"]
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "position": ["gps1"],
-  "orientation": ["imu-wit"],
-  "compass_heading": ["gps1"],
-  "angular_velocity": ["imu-wit", "mpu6050"],
-  "linear_velocity": ["gps1"],
-  "linear_acceleration": ["adxl345"]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+{{< imgproc src="/components/movement-sensor/merged-config-builder-attributes.png" alt="Creation of an `merged` movement sensor with attributes filled in in the Viam app config builder." resize="1200x" style="max-width:750px" >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -134,7 +105,6 @@ Configure an array of the `name` of each movement sensor you want to add to your
 | `linear_velocity`     | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads linear velocity.          |
 | `angular_velocity`    | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads angular velocity.         |
 | `linear_acceleration` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads linear acceleration       |
-
 Note that only one sensor from each array can be used to retrieve each type of reading.
 Your machine uses the first sensor in the array that has implemented the relevant API method in its model and does not raise an error at runtime.
 For instance, in the **JSON Example** above, if both `"imu-wit"` and `"mpu6050"` support returning `angular_velocity`, `"mpu6050"` is only used to read angular velocity on the machine if `"imu-wit"` returns an error at runtime.

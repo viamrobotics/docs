@@ -41,45 +41,9 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `movement-sensor` type, then select the `gps-nmea-rtk-pmtk` model.
 Enter a name for your movement sensor and click **Create**.
 
-{{< imgproc src="/components/movement-sensor/gps-nmea-rtk-pmtk-builder.png" alt="Creation of a `gps-nmea-rtk-pmtk` movement sensor in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/components/movement-sensor/gps-nmea-rtk-pmtk-builder.png" alt="Creation of a `gps-nmea-rtk-pmtk` movement sensor in the Viam app config builder." resize="1200x" style="max-width:750px" >}}
 
-Copy and paste the following attribute template into your movement sensor's **Attributes** box.
-Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "i2c_addr": <int>,
-  "i2c_bus": "<index-of-bus-on-board>",
-  "i2c_baud_rate": <int>,
-  "ntrip_connect_attempts": <int>,
-  "ntrip_mountpoint": "<identifier>",
-  "ntrip_password": "<password for NTRIP server>",
-  "ntrip_url": "<URL of NTRIP server>",
-  "ntrip_username": "<username for NTRIP server>"
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "i2c_addr": 66,
-  "i2c_bus": "1",
-  "i2c_baud_rate": 115200,
-  "ntrip_connect_attempts": 12,
-  "ntrip_mountpoint": "MNTPT",
-  "ntrip_password": "pass",
-  "ntrip_url": "http://ntrip/url",
-  "ntrip_username": "usr"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Fill in the attributes as applicable to your movement sensor, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

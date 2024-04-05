@@ -24,39 +24,9 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `movement-sensor` type, then select the `imu-vectornav` model.
 Enter a name for your movement sensor and click **Create**.
 
-{{< imgproc src="/components/movement-sensor/imu-vectornav-builder.png" alt="Creation of an `imu-vectornav` movement sensor in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/components/movement-sensor/imu-vectornav-builder.png" alt="Creation of an `imu-vectornav` movement sensor in the Viam app config builder." resize="1200x" style="max-width:750px" >}}
 
-Copy and paste the following attribute template into your movement sensor's **Attributes** box.
-Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "board": "<your-board-name>",
-  "spi": "<your-spi-bus-name-on-board>",
-  "spi_baud_rate": <int>,
-  "polling_freq_hz": <int>,
-  "chip_select_pin": "<pin-number-on-board>"
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "board": "local",
-  "spi": "1",
-  "spi_baud_rate": 3800,
-  "polling_freq_hz": 80,
-  "chip_select_pin": "36"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Fill in the attributes as applicable to your movement sensor, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -71,7 +41,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
       "namespace": "rdk",
       "attributes": {
         "board": "<your-board-name>",
-        "spi": "<your-spi-bus-name-on-board>",
+        "spi_bus": "<your-spi-bus-name-on-board>",
         "spi_baud_rate": <int>,
         "polling_freq_hz": <int>,
         "chip_select_pin": "<pin-number-on-board>"
@@ -95,7 +65,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
       "namespace": "rdk",
       "attributes": {
         "board": "local",
-        "spi": "1",
+        "spi_bus": "1",
         "spi_baud_rate": 3800,
         "polling_freq_hz": 80,
         "chip_select_pin": "36"
@@ -111,12 +81,13 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 
 ## Attributes
 
-| Name                   | Type   | Inclusion    | Description                                                                                                                                                                                                                                         |
-| ---------------------- | ------ | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `board`                | string | **Required** | The `name` of the [board](/components/board/) to which the device is wired.                                                                                                                                                                         |
-| `spi`                  | string |              | The index of the SPI bus over which the device communicates with the board.                                                                                                                                                                         |
-| `chip_select_pin`      | string | **Required** | The ({{< glossary_tooltip term_id="pin-number" text="pin number" >}}) of the pin on the board (other than the SPI bus pins) connected to the IMU chip. Used to tell the chip whether the current SPI message is meant for it or for another device. |
-| `spi_baud_rate`        | int    | **Required** | The rate at which data is sent from the IMU. <br> Default: `115200`                                                                                                                                                                                 |
-| `polling_frequency_hz` | int    | **Required** | How many times per second the sensor is polled.                                                                                                                                                                                                     |
+<!-- prettier-ignore -->
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `board` | string | **Required** | The `name` of the [board](/components/board/) to which the device is wired. |
+| `spi_bus` | string | **Required** | The index of the SPI bus over which the device communicates with the board. |
+| `chip_select_pin` | string | **Required** | The ({{< glossary_tooltip term_id="pin-number" text="pin number" >}}) of the pin on the board (other than the SPI bus pins) connected to the IMU chip. Used to tell the chip whether the current SPI message is meant for it or for another device. |
+| `spi_baud_rate` | int | **Required** | The rate at which data is sent from the IMU. <br> Default: `115200` |
+| `polling_frequency_hz` | int | **Required** | How many times per second the sensor is polled. |
 
 {{< readfile "/static/include/components/test-control/movement-sensor-imu-control.md" >}}

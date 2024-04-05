@@ -33,33 +33,9 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `movement-sensor` type, then select the `imu-wit` model.
 Enter a name for your movement sensor and click **Create**.
 
-{{< imgproc src="/components/movement-sensor/imu-wit-builder.png" alt="Creation of an `imu-wit` movement sensor in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/components/movement-sensor/imu-wit-builder.png" alt="Creation of an `imu-wit` movement sensor in the Viam app config builder." resize="1200x" style="max-width:750px" >}}
 
-Copy and paste the following attribute template into your movement sensor's **Attributes** box.
-Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "serial_path": "<your-port>",
-  "serial_baud_rate": <int>
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "serial_path": "/dev/serial/by-path/<device_ID>",
-  "serial_baud_rate": 9600
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Then fill in the attributes as applicable to your movement sensor, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -112,9 +88,9 @@ The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB
 ## Attributes
 
 <!-- prettier-ignore -->
-| Name               | Type   | Inclusion    | Description |
+| Name  | Type   | Inclusion    | Description |
 | -------------- | ------ | ----------- | ----------- |
-| `serial_path`      | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. To find your serial device path, first connect the serial device to your machine, then:<ul><li>On Linux, run <code>ls /dev/serial/by-path/\*</code> to show connected serial devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/serial/by-path/usb-0:1.1:1.0"</code>.</li><li>On macOS, run <code>ls /dev/tty\* \| grep -i usb</code> to show connected USB serial devices, <code>ls /dev/tty\*</code> to browse all devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/ttyS0"</code>.</li></ul> |
-| `serial_baud_rate` | int    | Optional     | The rate at which data is sent from the sensor over the serial connection. Valid rates are `9600` and `115200`. The default rate will work for all models. _Only the HWT901B can have a different serial baud rate._ Refer to your model's data sheet. <br>Default: `115200`                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `serial_path` | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. To find your serial device path, first connect the serial device to your machine, then:<ul><li>On Linux, run <code>ls /dev/serial/by-path/\*</code> to show connected serial devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/serial/by-path/usb-0:1.1:1.0"</code>.</li><li>On macOS, run <code>ls /dev/tty\* \| grep -i usb</code> to show connected USB serial devices, <code>ls /dev/tty\*</code> to browse all devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/ttyS0"</code>.</li></ul> |
+| `serial_baud_rate` | int | Optional | The rate at which data is sent from the sensor over the serial connection. Valid rates are `9600` and `115200`. The default rate will work for all models. _Only the HWT901B can have a different serial baud rate._ Refer to your model's data sheet. <br>Default: `115200` |
 
 {{< readfile "/static/include/components/test-control/movement-sensor-imu-control.md" >}}
