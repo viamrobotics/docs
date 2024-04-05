@@ -24,38 +24,7 @@ Enter a name for your servo and click **Create**.
 
 ![An example configuration for a gpio servo in the Viam app Config Builder.](/components/servo/gpio-servo-ui-config.png)
 
-Copy and paste the following attribute template into your servo's **Attributes** box.
-Then remove and fill in the attributes as applicable to your servo, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "pin": "<your-pin-number>",
-  "board": "<your-board-name>",
-  "min_angle_deg": <float>,
-  "max_angle_deg": <float>,
-  "starting_position_deg": <float>,
-  "frequency_hz": <int>,
-  "pwm_resolution": <int>,
-  "min_width_us": <int>,
-  "max_width_us": <int>
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "pin": "16",
-  "board": "local"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Fill in the attributes as applicable to your servo, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
