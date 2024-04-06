@@ -103,6 +103,8 @@ This way, if you need to update the config in the future, you just update the fr
 }
 ```
 
+<!-- TODO: Instruct users as to how to find the correct usb_interface path. See whether or not this needs to be different for each machine, in which case could actually show fragment mods! -->
+
 6. Save the config.
    Your machine config should now resemble the following:
 
@@ -181,6 +183,7 @@ For each machine:
    Open your [**DATA** page](https://app.viam.com/data).
 4. Click the **Sensors** tab within the data page.
    If you have sensor data coming from machines unrelated to this project, use the filters on the left side of the page to view data from only your air quality sensors.
+   You can also use these filters to show the data from one of your air quality sensors at a time by typing a machine name into the **Machine name** box and clicking **Apply** in the lower-left corner.
 
    {{<imgproc src="/tutorials/air-quality-fleet/synced-data.png" resize="x1100" declaredimensions=true alt="The sensor readings that have synced to the DATA page." style="max-width:600px" >}}
 
