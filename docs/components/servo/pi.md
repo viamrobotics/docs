@@ -28,7 +28,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `servo` type, then select the `pi` model.
 Enter a name for your servo and click **Create**.
 
-![An example configuration for a pi servo in the Viam app Config Builder.](/components/servo/pi-servo-ui-config.png)
+{{< imgproc src="/components/servo/pi-servo-ui-config.png" alt="An example configuration for a pi servo in the Viam app Config Builder." resize="1200x" style="width:650px" >}}
 
 Fill in the attributes as applicable to your servo, according to the table below.
 
