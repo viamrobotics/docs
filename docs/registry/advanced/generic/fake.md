@@ -17,7 +17,7 @@ Click on the **Services** subtab and click **Create service**.
 Select the `generic` type, then select the `fake` model.
 Enter a name for your generic service and click **Create**.
 
-![An example configuration for a fake generic service in the Viam app Config Builder.](/components/generic/fake-generic-ui-config.png)
+![An example configuration for a fake generic service in the Viam app Config Builder.](/services/fake-generic-service-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
