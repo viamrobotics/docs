@@ -19,7 +19,7 @@ In this representation, the control loop is broken down into successive "blocks"
 
 ## Creating and Using a PID Control Loop
 
-A PID control loop is commonly used method of controls. A PID control loop computes a correction for the error value between SP and PV using three terms: 
+A PID control loop is commonly used method of controls. A PID control loop computes a correction for the error value between SP and PV using three terms:
 
 - A _proportional_ term that is the current error
 - An _integral_ term that is the total cumulative error
@@ -235,7 +235,7 @@ type Controllable interface {
 
 ### Options
 
-`Options` is a struct that contains all of the optional parameters that can be used to customize a control loop during the setup. Since they are all optional, the only options that need to be set are those that you wish to change from the default. 
+`Options` is a struct that contains all of the optional parameters that can be used to customize a control loop during the setup. Since they are all optional, the only options that need to be set are those that you wish to change from the default.
 
 <!-- prettier-ignore -->
 | Name | Type | Description |
