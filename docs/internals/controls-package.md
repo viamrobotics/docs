@@ -196,11 +196,11 @@ err := control.UpdateTrapzBlock(context.Background(), "set_point", 10.0, []strin
 ```go
 type PIDLoop struct {
   BlockNames   map[string][]string
-	PIDVals      []PIDConfig
-	ControlConf  Config
-	ControlLoop  *Loop
-	Options      Options
-	Controllable Controllable
+  PIDVals      []PIDConfig
+  ControlConf  Config
+  ControlLoop  *Loop
+  Options      Options
+  Controllable Controllable
 }
 ```
 
@@ -210,10 +210,10 @@ type PIDLoop struct {
 
 ```go
 type PIDConfig struct {
-	Type string
-	P    float64
-	I    float64
-	D    float64
+  Type string
+  P    float64
+  I    float64
+  D    float64
 }
 ```
 
@@ -228,8 +228,8 @@ For example, in an encoded motor, `State()` measures the current position of the
 
 ```go
 type Controllable interface {
-	SetState(ctx context.Context, state []*Signal) error
-	State(ctx context.Context) ([]float64, error)
+  SetState(ctx context.Context, state []*Signal) error
+  State(ctx context.Context) ([]float64, error)
 }
 ```
 
@@ -240,7 +240,7 @@ type Controllable interface {
 <!-- prettier-ignore -->
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `PositionControlUsingTrapz` | bool | Adds a trapezoidalVelocityProfile block to the control config to allow for position control of a component. <br> Default: false | 
+| `PositionControlUsingTrapz` | bool | Adds a trapezoidalVelocityProfile block to the control config to allow for position control of a component. <br> Default: false |
 | `SensorFeedback2DVelocityControl` | bool | Adds linear and angular blocks to a control config in order to use the sensorcontrolled base component for velocity control. <br> Default: false |
 | `DerivativeType` | string | The type of derivative to be used for the derivative block of a control config. <br> Default: `"backward1st1"` |
 | `UseCustomConfig` | bool | Used if the necessary config cannot be created using the control loop setup functions. <br> Default: false |
@@ -251,14 +251,14 @@ type Controllable interface {
 
 ```go
 type Options struct {
-	PositionControlUsingTrapz bool
-	SensorFeedback2DVelocityControl bool
-	DerivativeType string
-	UseCustomConfig bool
-	CompleteCustomConfig Config
-	NeedsAutoTuning bool
-	LoopFrequency float64
-	ControllableType string
+  PositionControlUsingTrapz bool
+  SensorFeedback2DVelocityControl bool
+  DerivativeType string
+  UseCustomConfig bool
+  CompleteCustomConfig Config
+  NeedsAutoTuning bool
+  LoopFrequency float64
+  ControllableType string
 }
 ```
 
@@ -270,10 +270,10 @@ The built in control loop setup is only structured to work with an encoded motor
 
 ```go
 type BlockConfig struct {
-	Name      string
-	Type      controlBlockType
-	Attribute utils.AttributeMap
-	DependsOn []string
+  Name      string
+  Type      controlBlockType
+  Attribute utils.AttributeMap
+  DependsOn []string
 }
 ```
 
