@@ -80,11 +80,13 @@ The following attributes are available for `sensor-controlled` bases:
 
 ### SetVelocity
 
+If you want to control your base by specifying a desired velocity in terms of distance/time, for example 5 m/s, and you have a movement sensor that measures the actual velocity, you can make use of the sensor to adjust the velocity. Alternatively, if your base has position reporting motors, you can utilize the [wheeled odometry](/components/movement-sensor/wheeled-odometry/) movement sensor to get an estimate of the necessary velocities.
+
 {{< readfile "/static/include/components/base-sensor.md" >}}
 
 ### Spin
 
-Spin implements a basic form of feedback control that, for a spin of less than 360 degrees, monitors how far the base has spun and stops once it has reached the goal position.
+When the `control_parameters` attribute is set, `Spin` implements a form of feedback control that polls the provided movement sensor and corrects any error between the desired angular velocity and the actual angular velocity using a PID control loop. `Spin` also monitors the angular distance traveled and stops the base when the goal angle is reached.
 
 ## Test the base
 
@@ -94,3 +96,11 @@ The following base control API methods are available on a `sensor-controlled` ba
 
 - [SetVelocity()](/components/base/#setvelocity): available if base is configured to receive angular and linear velocity feedback.
 - [Spin()](/components/base/#spin): available if base is configured to receive orientation feedback.
+
+For example, a [Viam Rover](https://docs.viam.com/get-started/try-viam/rover-resources/) using `sensor-controlled` base following both an [angular](/components/base/#spin) and [linear](/components/base/#movestraight) velocity command:
+
+{{<gif webm_src="/components/encoded-motor/base_moving.webm" mp4_src="/components/encoded-motor/base-moving.mp4" alt="A Viam rover turning in a half circle" max-width="400px" >}}
+
+The position, orientation, and linear and angular velocity of the rover changing as it moves, as measured by a [movement sensor](/components/movement-sensor/):
+
+{{<gif webm_src="/components/encoded-motor/controls_change.webm" mp4_src="/components/encoded-motor/controls_change.mp4" alt="The control tab of a movement sensor on a base with encoded motors as it turns">}}
