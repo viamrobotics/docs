@@ -80,13 +80,15 @@ The following attributes are available for `sensor-controlled` bases:
 
 ### SetVelocity
 
-If you want to control your base by specifying a desired velocity in terms of distance/time, for example 5 m/s, and you have a movement sensor that measures the actual velocity, you can make use of the sensor to adjust the velocity. Alternatively, if your base has position reporting motors, you can utilize the [wheeled odometry](/components/movement-sensor/wheeled-odometry/) movement sensor to get an estimate of the necessary velocities.
-
 {{< readfile "/static/include/components/base-sensor.md" >}}
 
 ### Spin
 
 When the `control_parameters` attribute is set, `Spin` implements a form of feedback control that polls the provided movement sensor and corrects any error between the desired angular velocity and the actual angular velocity using a PID control loop. `Spin` also monitors the angular distance traveled and stops the base when the goal angle is reached.
+
+### MoveStraight
+
+When `control_parameters` is set, `MoveStraight` calculates the required velocity to reach the desired velocity and distance. It then polls the provided velocity movement sensor and corrects any error between this calculated velocity and the actual velocity using a PID control loop. `MoveStraight` also monitors the position and stops the base when the goal distance is reached. If a compass heading movement sensor is provided, `MoveStraight` will attempt to keep the heading of the base fixed in the original direction it was faced at the beginning of the `MoveStraight` call.
 
 ## Test the base
 
@@ -96,6 +98,7 @@ The following base control API methods are available on a `sensor-controlled` ba
 
 - [SetVelocity()](/components/base/#setvelocity): available if base is configured to receive angular and linear velocity feedback.
 - [Spin()](/components/base/#spin): available if base is configured to receive orientation feedback.
+- [MoveStraight()](/components/base/#movestraight): available if base is configured to receive position feedback.
 
 For example, a [Viam Rover](https://docs.viam.com/get-started/try-viam/rover-resources/) using `sensor-controlled` base following both an [angular](/components/base/#spin) and [linear](/components/base/#movestraight) velocity command:
 
