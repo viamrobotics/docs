@@ -136,6 +136,7 @@ Add a [_board component_](/components/board/) to represent your single-board com
 To create the new component, click the **+** icon next to your machine {{< glossary_tooltip term_id="part" text="part" >}} in the left-hand menu and select **Component**.
 Select the `board` type, then select the `pi` model.
 Enter a name for your board and click **Create**.
+We used the name `"local"`.
 
 Your board component panel will look like this:
 
