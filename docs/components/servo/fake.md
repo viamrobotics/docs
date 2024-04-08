@@ -22,7 +22,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `servo` type, then select the `fake` model.
 Enter a name for your servo and click **Create**.
 
-![An example configuration for a fake servo in the Viam app Config Builder.](/components/servo/fake-servo-ui-config.png)
+{{< imgproc src="/components/servo/fake-servo-ui-config.png" alt="An example configuration for a fake servo in the Viam app Config Builder." resize="1200x" style="width:650px" >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
