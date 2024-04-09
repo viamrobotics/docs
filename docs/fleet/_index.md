@@ -24,14 +24,38 @@ You can manage and control your fleet of {{< glossary_tooltip term_id="machine" 
 
 To organize your fleet you use
 
-- {{< glossary_tooltip term_id="organization" text="organizations" >}}: the highest level grouping, generally used for different companies.
-- {{< glossary_tooltip term_id="location" text="locations" >}}: virtual groupings of devices up with up to three levels of nesting that can represent a grouping of machines that are co-located in a building, like a factory, or a grouping of machines that are thousands of miles apart and are grouped together by function or as an organizational unit.
-- {{< glossary_tooltip term_id="machine" text="smart machines" >}}: a grouping of {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} across one {{< glossary_tooltip term_id="part" text="part" >}}, or multiple parts working closely together to complete tasks.
-  Each machine resides in a location.
+<!-- markdownlint-disable MD001 -->
 
-<!-- TODO: Add topology based on Jon's draft -->
+{{< cards >}}
+{{% manualcard link="/fleet/organizations/" %}}
 
-![An image of two locations, New York, and Chicago, in one organization, Good Robots](/fleet/locations.png)
+#### Organizations
+
+The highest level grouping, generally used for different companies
+
+{{% /manualcard %}}
+{{% manualcard link="/fleet/locations/" %}}
+
+#### Locations
+
+Virtual groupings of devices up with up to three levels of nesting that can represent a grouping of machines that are co-located in a building, like a factory, or a grouping of machines that are thousands of miles apart and are grouped together by function or as an organizational unit.
+
+{{% /manualcard %}}
+{{% manualcard link="/fleet/machines/" %}}
+
+#### Machines
+
+A grouping of {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} across one {{< glossary_tooltip term_id="part" text="part" >}}, or multiple parts working closely together to complete tasks.
+Each machine resides in a location.
+
+{{% /manualcard %}}
+{{< /cards >}}
+
+<br><br>
+
+{{<imgproc src="/fleet/fleet.svg" resize="1400x" style="max-width: 1400px" declaredimensions=true alt="A diagram showing how organizations, locations, and machines are grouped by Viam's fleet management">}}
+
+<br><br>
 
 The organization structure enables you to:
 

@@ -26,7 +26,7 @@ Go to the [Viam app](https://app.viam.com) and sign up with Google, GitHub, Appl
 
 {{< /tablestep >}}
 {{< tablestep >}}
-{{<imgproc src="/fleet/locations.png" class="fill alignleft" resize="600x" style="max-width: 400px" declaredimensions=true alt="Two locations within an organization">}}
+{{<imgproc src="/fleet/fleet.svg" class="fill alignleft" resize="600x" style="max-width: 400px" declaredimensions=true alt="Two locations within an organization">}}
 **2. Create organizations and locations**
 
 Use [organizations](/fleet/organizations/), and [locations](/fleet/locations/) within them, to organize your machines into groups and manage user access.
