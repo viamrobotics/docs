@@ -31,7 +31,7 @@ To organize your fleet you use
 
 #### Organizations
 
-The highest level grouping, generally used for different companies
+The highest level grouping, generally used for different companies.
 
 {{% /manualcard %}}
 {{% manualcard link="/fleet/locations/" %}}
