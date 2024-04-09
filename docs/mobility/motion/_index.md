@@ -204,10 +204,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 motionService, err := motion.FromRobot(robot, "builtin")
 
 // Assumes a gripper configured with name "my_gripper" on the machine
-gripperName := Gripper.Named("my_gripper")
+gripperName := gripper.Named("my_gripper")
 myFrame := "my_gripper_offset"
 
-goalPose := PoseInFrame(0, 0, 300, 0, 0, 1, 0)
+goalPose := referenceframe.PoseInFrame(0, 0, 300, 0, 0, 1, 0)
 
 // Move the gripper
 moved, err := motionService.Move(context.Background(), gripperName, goalPose, worldState, nil, nil)
@@ -322,20 +322,11 @@ gripperPoseInObjectFrame = await motion.get_pose(
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
-import (
-  "context"
-
-  "go.viam.com/rdk/components/gripper"
-  "go.viam.com/rdk/logging"
-  "go.viam.com/rdk/referenceframe"
-  "go.viam.com/rdk/services/motion"
-)
-
 // Insert code to connect to your machine.
 // (see code sample tab of your machine's page in the Viam app)
 
 // Assumes a gripper configured with name "my_gripper" on the machine
-gripperName := Gripper.Named("my_gripper")
+gripperName := gripper.Named("my_gripper")
 myFrame := "my_gripper_offset"
 
  // Access the motion service
