@@ -46,7 +46,7 @@ An organization can have multiple locations.
 
 #### Machines
 
-A grouping of {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} across one {{< glossary_tooltip term_id="part" text="part" >}}, or multiple parts working closely together to complete tasks.
+A grouping of {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} across one {{< glossary_tooltip term_id="part" text="part" >}} or more parts working closely together to complete tasks.
 Each machine resides in a location.
 
 {{% /manualcard %}}
