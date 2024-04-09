@@ -38,7 +38,7 @@ Method Name | Description
 [`CreateConstantBlock`](/internals/controls-package/#createconstantblock) | Creates a control block of type `constant`, all control loops need at least one constant block representing the set point.
 [`UpdateConstantBlock`](/internals/controls-package/#updateconstantblock) | Updates the value of a constant block to the new set point.
 [`CreateTrapzBlock`](/internals/controls-package/#createtrapzblock) | Creates a control block of type `trapezoidalVelocityProfile`, control loops, such as for motors, that control position need a trapezoidal velocity profile block.
-[`UpdateTrapzBlock`](/internals/controls-package/#updatetrapsblock) | Updates the attributes of a trapezoidal velocity profile block to the new desired max velocity.
+[`UpdateTrapzBlock`](/internals/controls-package/#updatetrapzblock) | Updates the attributes of a trapezoidal velocity profile block to the new desired max velocity.
 
 ### SetupPIDControlConfig
 
@@ -282,7 +282,7 @@ type BlockConfig struct {
 The following example is a block diagram of a control loop defined to control the speed of a motor.
 The motor has an encoder that reports the position of the motor.
 
-Measuring the reported position and deriving it to get the speed introduces some error, so you must apply a filter to remove the noise.
+Measuring the reported position and deriving it to get the speed introduces some error, so you may apply a filter to remove the noise.
 
 Then, calculate the error (_SP-PV_) (in this particular case PV is the speed of the motor) and feed it into your PID.
 
@@ -396,8 +396,8 @@ The Constant block outputs a constant signal. S_out = Cte
 ### Endpoint
 
 The Endpoint is a special type of block that is used to represent a plant.
-For now, only DC motors with an encoder are supported as an endpoint in the control package.
-The _motor_name_ attribute is unused for now, and one should pass a Controllable interface when creating the loop.
+For now, only DC motors with an encoder, and a base with a linear and angular movement sensor are supported as an endpoint in the control package.
+The _motor_name_ attribute should be changed to _base_name_ when using a base.
 
 ```json
 {
@@ -432,7 +432,17 @@ There are two main approaches that one can use:
 
 The following implementation records the step response of the plant and uses the relay method to estimate the ultimate gain (_Ku_) and oscillation period (_Tu_) of the plant.
 
-Several methods to calculate Kp, Ki and Kd are implemented.
+Several methods to calculate Kp, Ki and Kd are implemented:
+
+- ziegerNicholsPI
+- ziegerNicholsPID
+- ziegerNicholsPD
+- ziegerNicholsSomeOvershoot
+- ziegerNicholsNoOvershoot
+- cohenCoonsPI
+- cohenCoonsPID
+- tyreusLuybenPI
+- tyreusLuybenPID
 
 ```json
 {
