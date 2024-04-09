@@ -124,10 +124,10 @@ Now that your circuit is wired, reconnect your Pi to power.
 
 ## Configure your robot
 
-Before proceeding, be sure that you have [connected your Pi to the Viam app](/get-started/installation/#install-viam-server).
+Before proceeding, be sure that you have [connected your Pi to the Viam app](#project-setup).
 
 Now it's time to configure your machine's components.
-First, go to the [Viam app](https://app.viam.com/) and navigate to your new machine's **CONFIGURE** tab.
+Go to the [Viam app](https://app.viam.com/) and navigate to your new machine's **CONFIGURE** tab.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -140,7 +140,7 @@ We used the name `"local"`.
 
 Your board component panel will look like this:
 
-{{<imgproc src="/tutorials/blink-an-led/board-config.png" resize="1200x" style="width: 650px" alt="Config tab of the Viam app showing the board configuration. The board is named 'local' and the attributes are shown as empty braces.">}}
+{{<imgproc src="/tutorials/blink-an-led/board-config.png" resize="1200x" style="width: 650px" alt="Config tab of the Viam app showing the board configuration. The board is named 'local' and no attributes are configured.">}}
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
