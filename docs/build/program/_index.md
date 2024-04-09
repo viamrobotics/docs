@@ -283,6 +283,10 @@ This section of the boilerplate code contains your machine's address and a place
 
 {{< readfile "/static/include/program/authenticate.md" >}}
 
+### Apps with authentication
+
+If you need to build apps with custom login flows, [contact us](mailto:support@viam.com).
+
 ### Run the sample code
 
 Once you have saved the sample code, [execute your program](/build/program/run/).

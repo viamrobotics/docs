@@ -4,6 +4,7 @@ linkTitle: "Build simple smart machines"
 weight: 10
 type: "docs"
 description: "Build a simple smart machine in a few steps using Viam's modular system of components and services without writing much or any code."
+images: ["/platform/build.svg", "/ml/configure.svg"]
 tags: ["components", "configuration"]
 ---
 
