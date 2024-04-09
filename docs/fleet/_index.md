@@ -22,7 +22,7 @@ You can manage and control your fleet of {{< glossary_tooltip term_id="machine" 
 
 ## Work with groups of machines
 
-To organize your fleet you use
+To organize your fleet you use:
 
 <!-- markdownlint-disable MD001 -->
 
