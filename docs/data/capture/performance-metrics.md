@@ -46,7 +46,7 @@ The module provides a [sensor](/components/sensor/) that allows you to obtain re
    }
    ```
 
-   For all the configuration options see [the module documentation](https://github.com/viamrobotics/viam-telegraf-sensor?tab=readme-ov-file#attributes).
+   See [the `telegrafsensor` module documentation](https://github.com/viamrobotics/viam-telegraf-sensor?tab=readme-ov-file#attributes) for the full list of attributes available.
 
 5. Save the configuration.
 
