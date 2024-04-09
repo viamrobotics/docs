@@ -21,33 +21,7 @@ Enter a name for your movement sensor and click **Create**.
 
 ![Creation of a `dual-gps-rtk` movement sensor in the Viam app config builder.](/components/movement-sensor/dual-gps-rtk-builder.png)
 
-Copy and paste the following attribute template into your movement sensor's **Attributes** box.
-Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "first_gps": "<name-of-your-first-gps-movement-sensor>",
-  "second_gps": "<name-of-your-second-gps-movement-sensor>",
-  "offset_degrees": <int>
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "first_gps": "nmea-1",
-  "second_gps": "nmea-2",
-  "offset_degrees": 90
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Fill in the attributes as applicable to your movement sensor, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

@@ -22,32 +22,7 @@ Enter a name for your arm and click **Create**.
 
 ![Web UI configuration panel for an arm of model lite6 in the Viam app, with Attributes & Depends On dropdowns and the option to add a frame.](/components/arm/lite6-ui-config.png)
 
-Copy and paste the following attribute template into your arm's **Attributes** box.
-Then remove and fill in the attributes as applicable to your arm, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "host": "<your-arms-ip-address-on-your-network>",
-  "port": <int>,
-  "speed_degs_per_sec": <float>,
-  "acceleration_degs_per_sec_per_sec": <float>
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "host": "10.0.0.23"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Fill in the attributes as applicable to your arm, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

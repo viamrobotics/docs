@@ -23,30 +23,7 @@ Enter a name for your arm and click **Create**.
 
 ![An example configuration for a fake ur5e arm in the Viam app Config Builder.](/components/arm/fake-arm-ui-config.png)
 
-Copy and paste the following attribute template into your arm's **Attributes** box.
-Then remove and fill in the attributes as applicable to your arm, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "arm-model": "<string>",
-  "model-path": "<string>"
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "arm-model": "ur5e"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Fill in the attributes as applicable to your arm, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
