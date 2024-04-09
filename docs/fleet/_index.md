@@ -40,6 +40,7 @@ The highest level grouping, generally used for different companies.
 
 Virtual groupings of devices up with up to three levels of nesting that can represent a grouping of machines that are co-located in a building, like a factory, or a grouping of machines that are thousands of miles apart and are grouped together by function or as an organizational unit.
 
+An organization can have multiple locations.
 {{% /manualcard %}}
 {{% manualcard link="/fleet/machines/" %}}
 
