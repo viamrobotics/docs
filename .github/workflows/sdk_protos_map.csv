@@ -32,25 +32,25 @@ board,SetPWM,set_pwm,SetPWM,setPWM
 board,PWMFrequency,get_pwm_frequency,PWMFreq,pWMFrequency
 board,SetPWMFrequency,set_pwm_frequency,SetPWMFreq,setPWMFrequency
 board,DoCommand,do_command,,doCommand
-board,ReadAnalogReader,read,,readAnalogReader
+board,ReadAnalogReader,analog_reader_by_name,AnalogReaderByName,readAnalogReader
 board,WriteAnalog,write_analog,WriteAnalog,writeAnalog
-board,GetDigitalInterruptValue,value,Value,getDigitalInterruptValue
+board,GetDigitalInterruptValue,digital_interrupt_by_name,DigitalInterruptByName,,
 board,StreamTicks,,StreamTicks,streamTicks
 board,SetPowerMode,set_power_mode,SetPowerMode,setPowerMode
 board,GetGeometries,get_geometries,,getGeometries
 ## HACK: Board (python, go) provides additional helper functions, adding 5 pseudo-entries:
-board,ReadAnalogReader,analog_reader_names,AnalogReaderNames,,
-board,AnalogReaderNames,analog_reader_by_name,AnalogReaderByName,,
-board,GetDigitalInterruptValue,digital_interrupt_names,DigitalInterruptNames,,
-board,DigitalInterruptNames,digital_interrupt_by_name,DigitalInterruptByName,,
-board,GPIOPinByName,gpio_pin_by_name,GPIOPinByName,,
+board,Read,read,Read,
+board,Value,value,Value,getDigitalInterruptValue
+board,AnalogReaderNames,analog_reader_names,AnalogReaderNames,
+board,DigitalInterruptNames,digital_interrupt_names,DigitalInterruptNames,
+board,GPIOPinByName,gpio_pin_by_name,GPIOPinByName,
 ## TODO: Better parse-by-interface to capture Go methods like Tick (DigitalInterrupt)
 ## UPSTREAM: Go SDK docs use informal(?) styling for some DigitalInterrupt methods
 
 ## Camera
 camera,GetImage,get_image,Stream,getImage
 camera,GetImages,get_images,Images,getImages
-camera,RenderFrame,,,renderFrame
+camera,RenderFrame,,renderFrame
 camera,GetPointCloud,get_point_cloud,NextPointCloud,getPointCloud
 camera,GetProperties,get_properties,Properties,getProperties
 camera,DoCommand,do_command,,doCommand
@@ -88,7 +88,7 @@ gripper,GetGeometries,get_geometries,,getGeometries
 ## Input Controller
 input_controller,GetControls,get_controls,Controls,getControls
 input_controller,GetEvents,get_events,Events,getEvents
-input_controller,StreamEvents,,streamEvents
+input_controller,StreamEvents,,,streamEvents
 input_controller,TriggerEvent,trigger_event,TriggerEvent,triggerEvent
 input_controller,DoCommand,do_command,,doCommand
 input_controller,GetGeometries,get_geometries,,getGeometries
@@ -282,13 +282,13 @@ dataset,ListDatasetsByIDs,list_dataset_by_ids,,listDatasetsByIDs
 
 ## Datasync
 datasync,DataCaptureUpload,,,dataCaptureUpload
-## HACK: DataCaptureUpload (instead) implemented in binary_data_capture_upload (python), adding pseudo-entry:
+## HACK: DataCaptureUpload instead implemented in binary_data_capture_upload (python), adding pseudo-entry:
 datasync,BinaryDataCaptureUpload,binary_data_capture_upload,,
-## HACK: DataCaptureUpload (instead) implemented in tabular_data_capture_upload (python), adding pseudo-entry:
+## HACK: DataCaptureUpload instead implemented in tabular_data_capture_upload (python), adding pseudo-entry:
 datasync,TabularDataCaptureUpload,tabular_data_capture_upload,,
 datasync,FileUpload,file_upload,,fileUpload
 ## HACK: FileUpload also implemented in file_upload_from_path (python), adding pseudo-entry:
-datasync,FileUploadFromPath,file_upload_from_path,,,
+datasync,FileUploadFromPath,file_upload_from_path,,
 datasync,StreamingDataCaptureUpload,streaming_data_capture_upload,,streamingDataCaptureUpload
 
 ## MLTraining
