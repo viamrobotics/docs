@@ -12,6 +12,6 @@ Your microcontroller should have the following resources available to work with 
 - 2 Cores + 384kB SRAM + 4MB Flash
 
 {{< alert title="Tip" color="tip" >}}
-The main difference between the WROOM and WROVER is that the WROVER has additional RAM via the SPIRAM chip.
+The main difference between the WROOM and WROVER is that the WROVER has additional RAM with the SPIRAM chip.
 If you would like to allow more than one concurrent connection to your device we recommend using the WROVER.
 {{< /alert >}}
