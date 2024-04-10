@@ -19,7 +19,8 @@ In this representation, the control loop is broken down into successive "blocks"
 
 ## Creating and Using a PID Control Loop
 
-A PID control loop is commonly used method of controls. A PID control loop computes a correction for the error value between SP and PV using three terms:
+A PID control loop is a commonly used method of controls.
+A PID control loop computes a correction for the error value between SP and PV using three terms:
 
 - A _proportional_ term that is the current error
 - An _integral_ term that is the total cumulative error
@@ -42,12 +43,12 @@ Method Name | Description
 
 ### SetupPIDControlConfig
 
-Creates a [PIDLoop](/internals/controls-package/#pidloop) object, which contains all the attributes related to a control loop that a controlled component would need, most importantly, the control config.
+Creates a [PIDLoop](/internals/controls-package/#pidloop) object, which contains all the attributes related to a control loop that a controlled component needs, including, most importantly, the control config.
 
 **Parameters:**
 
-- `pidVals` [([]PIDConfig)](/internals/controls-package/#pidconfig): The P, I, and D values for the control loop, if all are zero the loop will be auto-tuned and log the calculated PID values.
-- `componentName` [(string)](https://pkg.go.dev/builtin#string): The name of the component that the created PID loop will control.
+- `pidVals` [([]PIDConfig)](/internals/controls-package/#pidconfig): The P, I, and D values for the control loop, if all are zero the loop will auto-tune and log the calculated PID values.
+- `componentName` [(string)](https://pkg.go.dev/builtin#string): The name of the component that the PID loop controls.
 - `options` [(Options)](/internals/controls-package/#options): All the desired optional parameters to customize the control loop.
 - `c` [(Controllable)](/internals/controls-package/#controllable): An interface that contains the necessary functions to move the controlled component.
 - `logger` (Logger): The logger of the controlled component to log any issues with the control loop setup.
@@ -137,10 +138,10 @@ Creates a new control block of type `constant`, and then updates the control loo
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context): A context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `name` [(string)](https://pkg.go.dev/builtin#string): The desired name of the constant block.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `name` [(string)](https://pkg.go.dev/builtin#string): The name of the constant block.
 - `constVal` [(float64)](https://pkg.go.dev/builtin#float64): The value of the new set point.
-- `loop` (`*Loop`): The control loop that needs to be updated with the newly created constant block.
+- `loop` (`*Loop`): The control loop to be updated with the newly created constant block.
 
 **Returns:**
 
@@ -157,9 +158,9 @@ Creates a new control block of type `trapezoidalVelocityProfile`.
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `name` [(string)](https://pkg.go.dev/builtin#string): The desired name of the trapezoidal block.
+- `name` [(string)](https://pkg.go.dev/builtin#string): The name of the trapezoidal block.
 - `maxVel` [(float64)](https://pkg.go.dev/builtin#float64): The max velocity for the controlled component to move at.
-- `dependsOn` [([]string)](https://pkg.go.dev/builtin#string): A slice strings containing the names of the other control blocks that the new trapezoidal block depends on. Usually the set point and the end point.
+- `dependsOn` [([]string)](https://pkg.go.dev/builtin#string): An array of strings containing the names of the other control blocks that the new trapezoidal block depends on. Usually the set point and the end point.
 
 **Returns:**
 
@@ -175,11 +176,11 @@ Creates a new control block of type `trapezoidalVelocityProfile`, and then updat
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context): A context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `name` [(string)](https://pkg.go.dev/builtin#string): The desired name of the trapezoidal block.
 - `maxVel` [(float64)](https://pkg.go.dev/builtin#float64): The max velocity for the controlled component to move at.
-- `dependsOn` [([]string)](https://pkg.go.dev/builtin#string): A slice strings containing the names of the other control blocks that the new trapezoidal block depends on. Usually the set point and the end point.
-- `loop` (`*Loop`): The control loop that needs to be updated with the newly created trapezoidal block.
+- `dependsOn` [([]string)](https://pkg.go.dev/builtin#string): An array of strings containing the names of the other control blocks that the new trapezoidal block depends on. Usually the set point and the end point.
+- `loop` (`*Loop`): The control loop to be updated with the newly created trapezoidal block.
 
 **Returns:**
 
@@ -191,7 +192,7 @@ err := control.UpdateTrapzBlock(context.Background(), "set_point", 10.0, []strin
 
 ### PIDLoop
 
-`PIDLoop` is a struct containting all the attributes used for setting up a PID control loop. [`SetupPIDControlConfig`](/internals/controls-package/#setuppidcontrolconfig) will create this object for you.
+`PIDLoop` is a struct containting all the attributes for setting up a PID control loop. [`SetupPIDControlConfig`](/internals/controls-package/#setuppidcontrolconfig) will create this object for you.
 
 ```go
 type PIDLoop struct {
@@ -235,7 +236,7 @@ type Controllable interface {
 
 ### Options
 
-`Options` is a struct that contains all of the optional parameters that can be used to customize a control loop during the setup. Since they are all optional, the only options that need to be set are those that you wish to change from the default.
+`Options` is a struct that contains all of the optional parameters that you can use to customize a control loop during the setup. Since they are all optional, the only options you must set are those that you wish to change from the default.
 
 <!-- prettier-ignore -->
 | Name | Type | Description |
@@ -243,7 +244,7 @@ type Controllable interface {
 | `PositionControlUsingTrapz` | bool | Adds a trapezoidalVelocityProfile block to the control config to allow for position control of a component. <br> Default: false |
 | `SensorFeedback2DVelocityControl` | bool | Adds linear and angular blocks to a control config in order to use the sensorcontrolled base component for velocity control. <br> Default: false |
 | `DerivativeType` | string | The type of derivative to be used for the derivative block of a control config. <br> Default: `"backward1st1"` |
-| `UseCustomConfig` | bool | Used if the necessary config cannot be created using the control loop setup functions. <br> Default: false |
+| `UseCustomConfig` | bool | Use this if the necessary config cannot be created using the control loop setup functions. <br> Default: false |
 | `CompleteCustomConfig` | control.Config | The custom control config to be used instead of the config created by the control loop setup functions. <br> Default: control.Config{} |
 | `NeedsAutoTuning` | bool | True when the loop needs to be auto-tuned. This will be set to true automatically if all PID values are 0. <br> Default: false |
 | `LoopFrequency` | float64 | The frequency at which the control loop should run. <br> Default: 50 Hz |
@@ -262,11 +263,14 @@ type Options struct {
 }
 ```
 
-The built in control loop setup is only structured to work with an encoded motor or a sensor controlled base. If you wish to use a different setup, you can utilize the options by setting `UseCustomConfig` to `true` and `CompleteCustomConfig` to your custom control loop config of type `control.Config`. The [Control Blocks](/internals/controls-package/#controlblocks) section details the different options for control blocks and how to create a `control.Config`.
+The built in control loop setup is only structured to work with an encoded motor or a sensor controlled base. If you wish to use a different setup, you can use the options by setting `UseCustomConfig` to `true` and `CompleteCustomConfig` to your custom control loop config of type `control.Config`.
+The [Control Blocks](/internals/controls-package/#controlblocks) section details the different options for control blocks and how to create a `control.Config`.
 
 ### BlockConfig
 
-`BlockConfig` is struct of the configuration for an individual control block. You will have to build individual BlockConfigs if you utilize the `UseCustomConfig` option. Each block type requires different attributes, which are outlined in the [Control Blocks](/internals/controls-package/#controlblocks) section.
+`BlockConfig` is a struct for the configuration of an individual control block.
+You have to build individual BlockConfigs if you use the `UseCustomConfig` option.
+Each block type requires different attributes, which are outlined in the [Control Blocks](/internals/controls-package/#control-blocks) section.
 
 ```go
 type BlockConfig struct {
@@ -397,7 +401,7 @@ The Constant block outputs a constant signal. S_out = Cte
 
 The Endpoint is a special type of block that is used to represent a plant.
 For now, only DC motors with an encoder, and a base with a linear and angular movement sensor are supported as an endpoint in the control package.
-The _motor_name_ attribute should be changed to _base_name_ when using a base.
+You should change the _motor_name_ attribute to _base_name_ when using a base.
 
 ```json
 {
