@@ -62,7 +62,7 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 6. In the newly created `myArm` component panel, configure any attributes as needed.
    Refer to the documentation for the model for information about your arm's model.
 
-7. Switch to the **Frame** panel to see the default values for your arm.
+7. Switch to the **Frame** mode and select `myArm` in the left-hand menu to see the default values for your arm.
    You do not need to change the default values that populate the new frame card.
 
    <!-- TODO -->
