@@ -70,7 +70,7 @@ This tutorial will show you how to use the Viam platform to create an AI-integra
 This tutorial assumes that you have already set up your Viam Rover.
 If not, first follow the Viam Rover [setup instructions](/get-started/try-viam/rover-resources/rover-tutorial/).
 
-If you are not using a Viam Rover, [create a new machine and install `viam-server`](/get-started/installation/). 
+If you are not using a Viam Rover, [create a new machine and install `viam-server`](/get-started/installation/).
 Then configure your machine with the [appropriate components](/components/).
 If you are using a different rover, the [Viam Rover setup instructions](/get-started/try-viam/rover-resources/rover-tutorial-fragments/) may still help you configure your robot.
 
