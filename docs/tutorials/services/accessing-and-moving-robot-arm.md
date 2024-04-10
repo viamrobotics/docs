@@ -71,7 +71,7 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 
 8. Save your machine configuration.
 
-9. Go to the **CONNECT** tab and select the programming language you are working in.
+9. Go to the **Code sample** page of the **CONNECT** tab and select the programming language you are working in.
 
    {{% snippet "show-secret.md" %}}
 
