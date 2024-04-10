@@ -18,7 +18,7 @@ It first identifies the biggest plane in the scene, eliminates that plane, and c
 
 Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
 Click the **Services** subtab and click **Create service** in the lower-left corner.
-Select the `vision` type, then select the `obstacles distance` model.
+Select the `vision` type, then select the `obstacles pointcloud` model.
 Enter a name for your service and click **Create**.
 
 In your vision service's panel, fill in the **Attributes** field.
