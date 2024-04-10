@@ -70,7 +70,8 @@ This tutorial will show you how to use the Viam platform to create an AI-integra
 This tutorial assumes that you have already set up your Viam Rover.
 If not, first follow the Viam Rover [setup instructions](/get-started/try-viam/rover-resources/rover-tutorial/).
 
-If you are not using a Viam Rover, [create a new machine and install `viam-server`](/get-started/installation/) and configure your robot with the [appropriate components](/components/).
+If you are not using a Viam Rover, [create a new machine and install `viam-server`](/get-started/installation/). 
+Then configure your machine with the [appropriate components](/components/).
 If you are using a different rover, the [Viam Rover setup instructions](/get-started/try-viam/rover-resources/rover-tutorial-fragments/) may still help you configure your robot.
 
 ### 1. Connect the servo
@@ -168,7 +169,7 @@ Finally, you will need both Viam robot credentials and OpenAI API credentials in
 
 {{% snippet "show-secret.md" %}}
 
-You can find API key and API key id values for your robot by navigating to the **CONNECT** tab in the [Viam app](https://app.viam.com) and selecting the **API keys** page.
+You can find API key and API key ID values for your robot by navigating to the **CONNECT** tab in the [Viam app](https://app.viam.com) and selecting the **API keys** page.
 
 To acquire OpenAI credentials, [sign up for OpenAI](https://openai.com/api/) and [set up API keys](https://platform.openai.com/account/api-keys).
 
@@ -210,7 +211,7 @@ Now, in the panel for `servo1`, add the following attribute configuration:
 {{< imgproc src="/tutorials/ai-integration/servo_pane.png" alt="An example configuration for a pi servo with GPIO 8 and board 'local' in the Viam app Config Builder." resize="1200x" style="width:450px" >}}
 
 - Enter `8` for `pin`.
-- Select the name of your [board](/components/board/) as `board`: in this case, `local`.
+- Select the name of your [board](/components/board/) for the `board` attribute: in this case, `local`.
 
 This tells `viam-server` that the servo is attached to GPIO pin 8 on the board.
 
