@@ -11,6 +11,8 @@ arm,IsMoving,is_moving,,isMoving
 arm,DoCommand,do_command,,doCommand
 arm,GetKinematics,get_kinematics,,getKinematics
 arm,GetGeometries,get_geometries,,getGeometries
+## HACK: No proto for close, manually mapping:
+arm,Close,close,Close,
 
 ## Base
 base,MoveStraight,move_straight,MoveStraight,moveStraight
@@ -22,6 +24,8 @@ base,IsMoving,is_moving,,isMoving
 base,DoCommand,do_command,,doCommand
 base,GetGeometries,get_geometries,,getGeometries
 base,GetProperties,get_properties,Properties,getProperties
+## HACK: No proto for close, manually mapping:
+base,Close,close,Close,
 
 ## Board
 board,Status,status,Status,status
@@ -45,16 +49,24 @@ board,AnalogReaderNames,analog_reader_names,AnalogReaderNames,
 board,DigitalInterruptNames,digital_interrupt_names,DigitalInterruptNames,
 board,GPIOPinByName,gpio_pin_by_name,GPIOPinByName,
 ## TODO: Better parse-by-interface to capture Go methods like Tick (DigitalInterrupt)
-## UPSTREAM: Go SDK docs use informal(?) styling for some DigitalInterrupt methods
+## UPSTREAM: Go SDK docs use informal(?) styling for some DigitalInterrupt methods:
+board,Tick,,Tick,
+board,AddCallback,,AddCallback,
+board,RemoveCallback,,RemoveCallback,
+board,Reconfigure,,Reconfigure,
+## HACK: No proto for close, manually mapping:
+board,Close,close,Close,
 
 ## Camera
 camera,GetImage,get_image,Stream,getImage
 camera,GetImages,get_images,Images,getImages
-camera,RenderFrame,,renderFrame
+camera,RenderFrame,,,renderFrame
 camera,GetPointCloud,get_point_cloud,NextPointCloud,getPointCloud
 camera,GetProperties,get_properties,Properties,getProperties
 camera,DoCommand,do_command,,doCommand
 camera,GetGeometries,get_geometries,,getGeometries
+## HACK: No proto for close, manually mapping:
+camera,Close,close,Close,
 
 ## Encoder
 encoder,GetPosition,get_position,Position,getPosition
@@ -62,6 +74,8 @@ encoder,ResetPosition,reset_position,ResetPosition,resetPosition
 encoder,GetProperties,get_properties,Properties,getProperties
 encoder,DoCommand,do_command,,doCommand
 encoder,GetGeometries,get_geometries,,getGeometries
+## HACK: No proto for close, manually mapping:
+encoder,Close,close,Close,
 
 ## Gantry
 gantry,GetPosition,get_position,Position,getPosition
@@ -72,10 +86,14 @@ gantry,Stop,stop,,stop
 gantry,IsMoving,is_moving,,isMoving
 gantry,DoCommand,do_command,,doCommand
 gantry,GetGeometries,get_geometries,,getGeometries
+## HACK: No proto for close, manually mapping:
+gantry,Close,close,Close,
 
 ## Generic Component
 generic_component,DoCommand,do_command,,doCommand
 generic_component,GetGeometries,get_geometries,,getGeometries
+## HACK: No proto for close, manually mapping:
+generic_component,Close,close,Close,
 
 ## Gripper
 gripper,Open,open,Open,open
@@ -84,6 +102,8 @@ gripper,Stop,stop,,stop
 gripper,IsMoving,is_moving,,isMoving
 gripper,DoCommand,do_command,,doCommand
 gripper,GetGeometries,get_geometries,,getGeometries
+## HACK: No proto for close, manually mapping:
+gripper,Close,close,Close,
 
 ## Input Controller
 input_controller,GetControls,get_controls,Controls,getControls
@@ -94,6 +114,8 @@ input_controller,DoCommand,do_command,,doCommand
 input_controller,GetGeometries,get_geometries,,getGeometries
 ## HACK: Input (python, go) provides additional helper function, adding 1 pseudo-entries:
 input_controller,RegisterControlCallback,register_control_callback,RegisterControlCallback,
+## HACK: No proto for close, manually mapping:
+input_controller,Close,close,Close,
 
 ## Motor
 motor,SetPower,set_power,SetPower,setPower
@@ -107,6 +129,8 @@ motor,IsPowered,is_powered,IsPowered,isPowered
 motor,IsMoving,is_moving,,isMoving
 motor,DoCommand,do_command,,doCommand
 motor,GetGeometries,get_geometries,,getGeometries
+## HACK: No proto for close, manually mapping:
+motor,Close,close,Close,
 
 ## Movement Sensor
 movement_sensor,GetLinearVelocity,get_linear_velocity,LinearVelocity,getLinearVelocity
@@ -120,6 +144,8 @@ movement_sensor,GetLinearAcceleration,get_linear_acceleration,LinearAcceleration
 movement_sensor,DoCommand,do_command,,doCommand
 movement_sensor,GetGeometries,get_geometries,,getGeometries
 movement_sensor,GetReadings,get_readings,,getReadings
+## HACK: No proto for close, manually mapping:
+movement_sensor,Close,close,Close,
 
 ## Power Sensor
 power_sensor,GetVoltage,get_voltage,Voltage,getVoltage
@@ -127,19 +153,31 @@ power_sensor,GetCurrent,get_current,Current,getCurrent
 power_sensor,GetPower,get_power,Power,getPower
 power_sensor,GetReadings,get_readings,,getReadings
 power_sensor,DoCommand,do_command,,doCommand
+## HACK: No GetGeometries proto for power sensor component, adding 1 pseudo-entry:
+power_sensor,GetGeometries,get_geometries,,
+## HACK: No proto for close, manually mapping:
+power_sensor,Close,close,Close,
 
 ## Sensor
 ## UPSTREAM: Go SDK docs omit readings, but implement:
 sensor,GetReadings,get_readings,,getReadings
 sensor,DoCommand,do_command,,doCommand
 sensor,GetGeometries,get_geometries,,getGeometries
+## HACK: No proto for close, manually mapping:
+sensor,Close,close,Close,
 
 ## Generic Service
 generic_service,DoCommand,do_command,,doCommand
+## HACK: No proto for close, manually mapping:
+generic_service,Close,close,Close,
 
 ## MLModel
 mlmodel,Infer,infer,Infer,infer
 mlmodel,Metadata,metadata,Metadata,metadata
+## HACK: No proto for doCommand, manually mapping:
+mlmodel,DoCommand,do_command,,
+## HACK: No proto for close, manually mapping:
+mlmodel,Close,close,Close,
 
 ## Motion
 motion,Move,move,Move,move
@@ -150,6 +188,10 @@ motion,StopPlan,stop_plan,StopPlan,stopPlan
 motion,ListPlanStatuses,list_plan_statuses,ListPlanStatuses,listPlanStatuses
 motion,GetPlan,get_plan,PlanHistory,getPlan
 motion,DoCommand,do_command,,doCommand
+## HACK: Not sure what this is, for Localizer interface (go):
+motion,CurrentPosition,,CurrentPosition,
+## HACK: No proto for close, manually mapping:
+motion,Close,close,Close,
 
 ## Navigation
 navigation,GetMode,get_mode,Mode,getMode
@@ -162,6 +204,8 @@ navigation,GetObstacles,get_obstacles,Obstacles,getObstacles
 navigation,GetPaths,get_paths,Paths,getPaths
 navigation,GetProperties,get_properties,Properties,getProperties
 navigation,DoCommand,do_command,,doCommand
+## HACK: No proto for close, manually mapping:
+navigation,Close,close,Close,
 
 ## SLAM
 slam,GetPosition,get_position,Position,getPosition
@@ -169,6 +213,8 @@ slam,GetPointCloudMap,get_point_cloud_map,PointCloudMap,getPointCloudMap
 slam,GetInternalState,get_internal_state,InternalState,getInternalState
 slam,GetProperties,get_properties,Properties,getProperties
 slam,DoCommand,do_command,,doCommand
+## HACK: No proto for close, manually mapping:
+slam,Close,close,Close,
 
 ## Vision
 vision,GetDetectionsFromCamera,get_detections_from_camera,DetectionsFromCamera,getDetectionsFromCamera
@@ -177,6 +223,8 @@ vision,GetClassificationsFromCamera,get_classifications_from_camera,Classificati
 vision,GetClassifications,get_classifications,Classifications,getClassifications
 vision,GetObjectPointClouds,get_object_point_clouds,GetObjectPointClouds,getObjectPointClouds
 vision,DoCommand,do_command,,doCommand
+## HACK: No proto for close, manually mapping:
+vision,Close,close,Close,
 
 ## App
 app,GetUserIDByEmail,,,getUserIDByEmail
@@ -321,3 +369,5 @@ robot,Options.with_api_key,with_api_key,,
 robot,AtAddress,at_address,,
 robot,WithChannel,with_channel,,
 robot,Refresh,refresh,,
+## HACK: No proto for close, manually mapping:
+robot,Close,close,Close,
