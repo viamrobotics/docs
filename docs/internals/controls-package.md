@@ -529,7 +529,7 @@ If you want to configure a control loop outside of the standard encoded motor or
 
 ### Using SetupPIDControlConfig
 
-Below is an example of how to manually set up and tune a control loop using the function [`SetupPIDControlConfig`](/internals/controls-package/#setuppidcontrolconfig)
+Below is an example of how to manually set up and tune a control loop using the function [`SetupPIDControlConfig`](/internals/controls-package/#setuppidcontrolconfig).
 
 ```go
 // set the necessary options for a component
@@ -565,7 +565,7 @@ blockNames := pidLoop.BlockNames
 
 ### Using a Custom Control Config
 
-Below is an example of how to manually set up and tune a control loop using the `UseCustomConfig` and `CompleteCustomConfig` options
+Below is an example of how to manually set up and tune a control loop using the `UseCustomConfig` and `CompleteCustomConfig` options.
 
 ```go
 // create a custom control config
@@ -643,7 +643,7 @@ pidLoop = &control.PIDLoop{
   logger:       component.logger,
 }
 
-// assign BlockNames if the option PositionControlUsingTrapz is truee
+// assign BlockNames
 pidLoop.BlockNames = make(map[string][]string, len(pidLoop.ControlConf.Blocks))
 for _, b := range pidLoop.ControlConf.Blocks {
   pidLoop.BlockNames[string(b.Type)] = append(pidLoop.BlockNames[string(b.Type)], b.Name)
