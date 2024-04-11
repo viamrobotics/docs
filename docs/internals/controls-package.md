@@ -89,7 +89,7 @@ Tunes the provided loop to determine the best PID values.
 
 ```go
 // add necessary attributes to the PIDLoop struct
-pidLoop := &PIDLoop{}
+pidLoop := &control.PIDLoop{}
 
 cancelCtx, cancelFunc := context.WithCancel(context.Background())
 err := pidLoop.TunePIDLoop(cancelCtx, cancelFunc)
@@ -109,7 +109,7 @@ Starts running the PID control loop to monitor and adjust the inputs to the cont
 
 ```go
 // add necessary attributes to the PIDLoop struct
-pidLoop := &PIDLoop{}
+pidLoop := &control.PIDLoop{}
 
 err := pidLoop.StartControlLoop()
 ```
@@ -521,4 +521,140 @@ The block also works as a deadband controller when the target position is reache
               },
               "depends_on":["set_point","endpoint"]
 }
+```
+
+## Example
+
+If you want to configure a control loop outside of the standard encoded motor or sensor-controlled base setup, you can create a custom config and tune it manually.
+
+### Using SetupPIDControlConfig
+
+Below is an example of how to manually set up and tune a control loop using the function [`SetupPIDControlConfig`](/internals/controls-package/#setuppidcontrolconfig)
+
+```go
+// set the necessary options for a component
+options := control.Options{
+  LoopFrequency:             100.0,
+}
+
+// create the controlParams from the PID valules
+// in this example, all 0 PID values will result in auto-tuning
+controlParams := []control.PIDConfig{{
+  Type: "",
+  P:    0.0,
+  I:    0.0,
+  D:    0.0,
+}}
+
+// auto tune motor if all ControlParameters are 0
+if controlParams[0].NeedsAutoTuning() {
+  options.NeedsAutoTuning = true
+}
+
+// use SetupPIDControlConfig to create the control config and tune the component if necessary
+pidLoop, err := control.SetupPIDControlConfig(convertedControlParams, "comopnent", options, component, component.logger)
+if err != nil {
+  return err
+}
+
+// some attributes that may be of use after setup
+controlLoopConfig := pidLoop.ControlConf
+loop := pidLoop.ControlLoop
+blockNames := pidLoop.BlockNames
+```
+
+### Using a Custom Control Config
+
+Below is an example of how to manually set up and tune a control loop using the `UseCustomConfig` and `CompleteCustomConfig` options
+
+```go
+// create a custom control config
+controlConfig := control.Config {
+  Blocks: []BlockConfig{
+    {
+      Name: "set_point",
+      Type: blockConstant,
+      Attribute: rdkutils.AttributeMap{
+        "constant_val": 0.0,
+      },
+    },
+    {
+      Name: "sum",
+      Type: blockSum,
+      Attribute: rdkutils.AttributeMap{
+        "sum_string": "+-",
+      },
+      DependsOn: []string{"set_point", "endpoint"},
+    },
+    {
+      Name: "PID",
+      Type: blockPID,
+      Attribute: rdkutils.AttributeMap{
+        "int_sat_lim_lo": -255.0,
+        "int_sat_lim_up": 255.0,
+        "kD":             pidVals.D,
+        "kI":             pidVals.I,
+        "kP":             pidVals.P,
+        "limit_lo":       -255.0,
+        "limit_up":       255.0,
+        "tune_method":    "ziegerNicholsPI",
+        "tune_ssr_value": 2.0,
+        "tune_step_pct":  0.35,
+      },
+      DependsOn: []string{"sum"},
+    },
+    {
+      Name: "endpoint",
+      Type: blockEndpoint,
+      Attribute: rdkutils.AttributeMap{
+        controllableType: endpointName,
+      },
+      DependsOn: []string{"gain"},
+    },
+  },
+  Frequency: 100.0,
+}
+
+// set the necessary options for your component
+options := control.Options{
+  UseCustomConfig:           true,
+  CompleteCustomConfig:      controlConfig,
+}
+
+// create PID control parameters
+controlParams := []control.PIDConfig{{
+  Type: "",
+  P:    0.0,
+  I:    0.0,
+  D:    0.0,
+}}
+
+// auto tune motor if all ControlParameters are 0
+if controlParams[0].NeedsAutoTuning() {
+  options.NeedsAutoTuning = true
+}
+
+// create PIDLoop struct
+pidLoop = &control.PIDLoop{
+  PIDVals:      controlParams,
+  ControlConf:  controlConf,
+  Options:      options,
+  Controllable: component,
+  logger:       component.logger,
+}
+
+// assign BlockNames if the option PositionControlUsingTrapz is truee
+pidLoop.BlockNames = make(map[string][]string, len(pidLoop.ControlConf.Blocks))
+for _, b := range pidLoop.ControlConf.Blocks {
+  pidLoop.BlockNames[string(b.Type)] = append(pidLoop.BlockNames[string(b.Type)], b.Name)
+}
+
+// run tuning method on the component
+cancelCtx, cancelFunc := context.WithCancel(context.Background())
+err := pidLoop.TunePIDLoop(cancelCtx, cancelFunc)
+
+// some attributes that may be of use after setup
+controlLoopConfig := pidLoop.ControlConf
+loop := pidLoop.ControlLoop
+blockNames := pidLoop.BlockNames
 ```
