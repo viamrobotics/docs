@@ -20,6 +20,6 @@
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.31",
     "postcss-cli": "^9.1.0",
-    "prettier": "^3.0.3"
+    "prettier": "^3.2.5"
   }
 }
