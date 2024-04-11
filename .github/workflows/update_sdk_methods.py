@@ -16,16 +16,22 @@ sdks_supported = ["go", "python", "flutter"]
 
 ## Parse arguments passed to update_sdk_methods.py.
 ## You can either provide the specific sdk languages to run against
-## as a comma-separated list, or omit entirely to run against all sdks_supported:
+## as a comma-separated list, or omit entirely to run against all sdks_supported.
+## You can also use 'map' to generate a proto map template file:
 parser = argparse.ArgumentParser()
 
 parser.add_argument('sdk_language', type=str, nargs='?', help="A comma-separated list of the sdks to run against. \
                      Can be one of: go, python, flutter. Omit to run against all sdks.")
+parser.add_argument('-m', '--map', action='store_true', help="Generate initial mapping CSV file from upstream protos. \
+                     In this mode, only the initial mapping file is output, no markdown.")
 
 ## Quick sanity check of provided sdk languages. If all is well,
 ## assemble sdks array to iterate through:
 args = parser.parse_args()
-if args.sdk_language is not None:
+if args.map:
+    ## We check for args.map again in both proto_map() and run().
+    sdks = sdks_supported
+elif args.sdk_language is not None:
     sdk_langs = [s.strip() for s in args.sdk_language.split(",")]
 
     sdks = []
@@ -42,7 +48,7 @@ else:
 
 ## This script must be run within the 'docs' git repo. Here we check
 ## to make sure this is the case, and get the root of our git-managed
-## repo to use later in write_markdown():
+## repo to use later in parse() and write_markdown():
 process = subprocess.Popen(['git', 'rev-parse', '--show-toplevel'], \
                      stdout=subprocess.PIPE, \
                      stderr=subprocess.PIPE)
@@ -179,6 +185,16 @@ proto_map = {
         "name": "DataServiceClient",
         "methods": []
     },
+    "dataset": {
+        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/app/dataset/v1/dataset_grpc.pb.go",
+        "name": "DatasetServiceClient",
+        "methods": []
+    },
+    "datasync": {
+        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/app/datasync/v1/data_sync_grpc.pb.go",
+        "name": "DataSyncServiceClient",
+        "methods": []
+    },
     "robot": {
         "url": "https://raw.githubusercontent.com/viamrobotics/api/main/robot/v1/robot_grpc.pb.go",
         "name": "RobotServiceClient",
@@ -205,12 +221,28 @@ go_resource_overrides = {
 }
 
 ## Ignore these specific APIs if they error, are deprecated, etc:
-go_ignore_apis = []
+## {resource}.{methodname} to exclude a specific method, or
+## interface.{interfacename} to exclude an entire Go interface:
+go_ignore_apis = [
+    'interface.NavStore', # motion service interface
+    'interface.LocalRobot', # robot interface
+    'interface.RemoteRobot', # robot interface
+    'robot.RemoteByName', # robot method
+    'robot.ResourceByName', # robot method
+    'robot.RemoteNames', # robot method
+    'robot.ResourceNames', # robot method
+    'robot.ResourceRPCAPIs', # robot method
+    'robot.ProcessManager', # robot method
+    'robot.OperationManager', # robot method
+    'robot.SessionManager', # robot method
+    'robot.PackageManager', # robot method
+    'robot.Logger' # robot method
+]
 
 ## Use these URLs for data types (for params, returns, and errors raised) that are
 ## built-in to the language or provided by a non-Viam third-party package:
 ## TODO: Not currently using these in parse(), but could do a simple replace()
-##       or could handle in markdownification instead. TBD.
+##       or could handle in markdownification instead. TBD. Same with other SDK lang link arrays:
 go_datatype_links = {
     "context": "https://pkg.go.dev/context",
     "map": "https://go.dev/blog/maps",
@@ -238,16 +270,21 @@ python_resource_overrides = {
 
 ## Ignore these specific APIs if they error, are deprecated, etc:
 python_ignore_apis = [
-    'viam.app.app_client.AppClient.create_organization',
-    'viam.app.app_client.AppClient.delete_organization',
-    'viam.app.app_client.AppClient.list_organizations_by_user',
-    'viam.app.app_client.AppClient.get_rover_rental_parts',
-    'viam.app.app_client.AppClient.share_location',
-    'viam.app.app_client.AppClient.unshare_location',
-    'viam.app.data_client.DataClient.configure_database_user',
-    'viam.app.data_client.DataClient.create_filter',
-    'viam.app.ml_training_client.MLTrainingClient.submit_training_job',
-    'viam.robot.client.RobotClient.transform_point_cloud',
+    'viam.app.app_client.AppClient.create_organization', # unimplemented
+    'viam.app.app_client.AppClient.delete_organization', # unimplemented
+    'viam.app.app_client.AppClient.list_organizations_by_user', # unimplemented
+    'viam.app.app_client.AppClient.get_rover_rental_robots', # internal use
+    'viam.app.app_client.AppClient.get_rover_rental_parts', # internal use
+    'viam.app.app_client.AppClient.share_location', # unimplemented
+    'viam.app.app_client.AppClient.unshare_location', # unimplemented
+    'viam.app.data_client.DataClient.configure_database_user', # unimplemented
+    'viam.app.data_client.DataClient.create_filter', # deprecated
+    'viam.app.data_client.DataClient.delete_tabular_data_by_filter', # deprecated
+    'viam.app.ml_training_client.MLTrainingClient.submit_training_job', # unimplemented
+    'viam.components.input.client.ControllerClient.reset_channel', # GUESS ?
+    'viam.robot.client.RobotClient.transform_point_cloud', # unimplemented
+    'viam.robot.client.RobotClient.get_component', # GUESS ?
+    'viam.robot.client.RobotClient.get_service', # GUESS ?
     'viam.app.app_client.AppClient.create_organization_invite' # Currently borked: https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_organization_invite
 ]
 
@@ -297,7 +334,9 @@ flutter_resource_overrides = {
 }
 
 ## Ignore these specific APIs if they error, are deprecated, etc:
-flutter_ignore_apis = []
+flutter_ignore_apis = [
+    'getRoverRentalRobots' # internal use
+]
 
 ## Use these URLs for data types that are built-in to the language:
 flutter_datatype_links = {}
@@ -325,7 +364,24 @@ def get_proto_apis():
                 line = line.split(separator, 1)[0]
                 ## Append to proto_map for use later:
                 proto_map[api]["methods"].append(line)
-   
+
+    ## Only generate proto mapping template file if 'map' was passed as argument:
+    if args.map:
+
+        ## Writing template file with extra '.template' at the end to avoid accidentally clobbering
+        ## the prod file if we've already populated it. When ready, change the filename to exactly
+        ## sdk_protos_map.csv for this script to use it for proto mapping:
+        proto_map_file_template = os.path.join(gitroot, '.github/workflows/sdk_protos_map.csv.template')
+        output_file = open('%s' % proto_map_file_template, "w")
+
+        output_file.write('## RESOURCE, PROTO, PYTHON METHOD, GO METHOD, FLUTTER METHOD\n')
+
+        for api in proto_map.keys():
+            output_file.write('\n## ' + api.title() + '\n')
+            for proto in proto_map[api]['methods']:
+
+                output_file.write(api + ',' + proto + ',\n')
+
     return proto_map
 
 ## Fetch URL content via BS4, used in parse():
@@ -368,6 +424,9 @@ def parse(type, names):
     ## all_methods[sdk][type][resource]
     all_methods = {}
 
+    ## Build path to sdk_protos_map.csv file that contains proto-to-methods mapping, needed during per-sdk looping:
+    proto_map_file = os.path.join(gitroot, '.github/workflows/sdk_protos_map.csv')
+
     ## Iterate through each sdk (like 'python') in sdks array:
     for sdk in sdks:
 
@@ -401,7 +460,8 @@ def parse(type, names):
                 elif type == "robot":
                     url = f"{sdk_url}/go.viam.com/rdk/{type}"
                 elif type == "app":
-                    ## GO SDK has no APP API!
+                    ## TODO: Currently ignoring app client for go SDK, but GO does have app > data > Sync.
+                    ##       Need to fix this code so that we permit app type, but only if not app resource.
                     pass
                 go_methods[type][resource] = {}
 
@@ -450,56 +510,69 @@ def parse(type, names):
                     interface_name = resource_interface.find('pre').text.splitlines()[0].removeprefix('type ').removesuffix(' interface {')
                     #print(interface_name)
 
-                    ## Loop through each method found for this interface:
-                    for tag in resource_interface.find_all('span', attrs={"data-kind" : "method"}):
+                    ## Exclude unwanted Go interfaces:
+                    check_interface_name = 'interface.' + interface_name
+                    if not check_interface_name in go_ignore_apis:
 
-                        ## Create new empty dictionary for this specific method, to be appended to ongoing go_methods dictionary,
-                        ## in form: go_methods[type][resource][method_name] = this_method_dict
-                        this_method_dict = {}
+                        ## Loop through each method found for this interface:
+                        for tag in resource_interface.find_all('span', attrs={"data-kind" : "method"}):
 
-                        tag_id = tag.get('id')
-                        method_name = tag.get('id').split('.')[1]
+                            ## Create new empty dictionary for this specific method, to be appended to ongoing go_methods dictionary,
+                            ## in form: go_methods[type][resource][method_name] = this_method_dict
+                            this_method_dict = {}
 
-                        ## Determine method proto, placeholder for now:
-                        this_method_dict["proto"] = ""
+                            tag_id = tag.get('id')
+                            method_name = tag.get('id').split('.')[1]
 
-                        ## Extract the raw text from resource_interface matching method_name.
-                        ## Split by method span, throwing out remainder of span tag, catching cases where
-                        ## id is first attr or data-kind is first attr, and slicing to omit the first match,
-                        ## which is the opening of the method span tag, not needed:
-                        this_method_raw1 = regex.split(r'id="' + tag_id + '"', str(resource_interface))[1].removeprefix('>').removeprefix(' data-kind="method">').lstrip()
+                            ## Exclude unwanted Go methods:
+                            check_method_name = resource + '.' + method_name
+                            if not check_method_name in go_ignore_apis:
 
-                        ## Then, omit all text that begins a new method span, and additionally remove trailing
-                        ## element closers for earlier tags we spliced into (pre and span):
-                        this_method_raw2 = regex.split(r'<span .*data-kind="method".*>', this_method_raw1)[0].removesuffix('}</pre>\n</div>').removesuffix('</span>').rstrip()
+                                ## Look up method_name in proto_map file, and return matching proto:
+                                with open(proto_map_file, 'r') as f:
+                                    for row in f:
+                                        if not row.startswith('#') \
+                                        and row.startswith(resource) \
+                                        and row.split(',')[3] == method_name:
+                                            this_method_dict["proto"] = row.split(',')[1]
 
-                        method_description = ""
+                                ## Extract the raw text from resource_interface matching method_name.
+                                ## Split by method span, throwing out remainder of span tag, catching cases where
+                                ## id is first attr or data-kind is first attr, and slicing to omit the first match,
+                                ## which is the opening of the method span tag, not needed:
+                                this_method_raw1 = regex.split(r'id="' + tag_id + '"', str(resource_interface))[1].removeprefix('>').removeprefix(' data-kind="method">').lstrip()
 
-                        ## Get method description, if any comment spans are found:
-                        if tag.find('span', class_='comment'):
+                                ## Then, omit all text that begins a new method span, and additionally remove trailing
+                                ## element closers for earlier tags we spliced into (pre and span):
+                                this_method_raw2 = regex.split(r'<span .*data-kind="method".*>', this_method_raw1)[0].removesuffix('}</pre>\n</div>').removesuffix('</span>').rstrip()
 
-                            ## Iterate through all comment spans, splitting by opening comment tag, and
-                            ## omitting the first string, which is either the opening comment tag itself,
-                            ## or the usage of this method, if the comment is appended to the end of usage line:
-                            for comment in regex.split(r'<span class="comment">', this_method_raw2)[1:]:
-                             
-                                comment_raw = regex.split(r'</span>.*', comment.removeprefix('//'))[0].lstrip()
-                                method_description = method_description + comment_raw
+                                method_description = ""
 
-                        ## Write comment field as appended comments if found, or empty string if none.
-                        this_method_dict["description"] = method_description
+                                ## Get method description, if any comment spans are found:
+                                if tag.find('span', class_='comment'):
 
-                        ## Get full method usage string, by omitting all comment spans:
-                        method_usage_raw = regex.sub(r'<span class="comment">.*</span>', '', this_method_raw2)
-                        this_method_dict["usage"] = regex.sub(r'</span>', '', method_usage_raw).lstrip().rstrip()
+                                    ## Iterate through all comment spans, splitting by opening comment tag, and
+                                    ## omitting the first string, which is either the opening comment tag itself,
+                                    ## or the usage of this method, if the comment is appended to the end of usage line:
+                                    for comment in regex.split(r'<span class="comment">', this_method_raw2)[1:]:
+                                     
+                                        comment_raw = regex.split(r'</span>.*', comment.removeprefix('//'))[0].lstrip()
+                                        method_description = method_description + comment_raw
 
-                        ## Not possible to link to the specific functions, so we link to the parent resource instead:
-                        this_method_dict["method_link"] = url + '#' + interface_name
+                                ## Write comment field as appended comments if found, or empty string if none.
+                                this_method_dict["description"] = method_description
 
-                        ## We have finished collecting all data for this method. Write the this_method_dict dictionary
-                        ## in its entirety to the go_methods dictionary by type (like 'component'), by resource (like 'arm'),
-                        ## using the method_name as key:
-                        go_methods[type][resource][method_name] = this_method_dict
+                                ## Get full method usage string, by omitting all comment spans:
+                                method_usage_raw = regex.sub(r'<span class="comment">.*</span>', '', this_method_raw2)
+                                this_method_dict["usage"] = regex.sub(r'</span>', '', method_usage_raw).lstrip().rstrip()
+
+                                ## Not possible to link to the specific functions, so we link to the parent resource instead:
+                                this_method_dict["method_link"] = url + '#' + interface_name
+
+                                ## We have finished collecting all data for this method. Write the this_method_dict dictionary
+                                ## in its entirety to the go_methods dictionary by type (like 'component'), by resource (like 'arm'),
+                                ## using the method_name as key:
+                                go_methods[type][resource][method_name] = this_method_dict
                 
                 ## We have finished looping through all scraped Go methods. Write the go_methods dictionary
                 ## in its entirety to the all_methods dictionary using "go" as the key:
@@ -532,22 +605,14 @@ def parse(type, names):
                         ## Determine method name, but don't save to dictionary as value; we use it as a key instead:
                         method_name = id.rsplit('.',1)[1]
 
-                        #print(type + ' / ' + resource + ': METHOD: ' + method_name)
-
-                        ## Experimental attempt to match to proto. ~66% accurate so far, needs more work:
-                        ## Including this is present version of script so that we can test proto overrides:
-                        method_proto_raw = method_name.split("_")
-                        method_proto=""
-                        for method_part in method_proto_raw:
-                            method_part = method_part[0].upper() + method_part[1:]
-                            method_proto += method_part
-                        #print(method_proto)
-
-                        if method_proto in proto_map[resource]["methods"]:
-                            this_method_dict["proto"] = method_proto
-                            #print("FOUND PROTO MATCH: " + method_proto)
-                        else:
-                            this_method_dict["proto"] = ""
+                        ## Look up method_name in proto_map file, and return matching proto:
+                        with open(proto_map_file, 'r') as f:
+                            for row in f:
+                                #print(row)
+                                if not row.startswith('#') \
+                                and row.startswith(resource) \
+                                and row.split(',')[2] == method_name:
+                                    this_method_dict["proto"] = row.split(',')[1]
 
                         ## Determine method description, stripping newlines:
                         this_method_dict["description"] = tag.find('dd').p.text.replace("\n", " ")
@@ -734,80 +799,92 @@ def parse(type, names):
                     this_method_dict = {}
 
                     method_name = tag.get('id')
+                    #print('METHODNAME: ' + method_name)
 
-                    ## Temporary placeholder for mapping to proto:
-                    this_method_dict["proto"] = ""
+                    if not method_name in flutter_ignore_apis:
 
-                    this_method_dict["method_link"] = tag.find("span", class_="name").a['href'].replace("..", sdk_url)
+                        ## Look up method_name in proto_map file, and return matching proto:
+                        with open(proto_map_file, 'r') as f:
+                            for row in f:
+                                ## Because Flutter is the final entry in the mapping CSV, we must also rstrip() to
+                                ## strip the trailing newline (\n) off the row itself:
+                                row = row.rstrip()
 
-                    ## Flutter SDK puts all parameter detail on a separate params page that we must additionally make_soup on:
-                    parameters_link = tag.find("span", class_="type-annotation").a['href'].replace("..", sdk_url)
-                    parameters_soup_raw = make_soup(parameters_link)
-                    parameters_soup = parameters_soup_raw.find_all(
-                        lambda tag: tag.name == 'dt'
-                        and tag.get('class') == ['property']
-                        and not regex.search('info_', tag.text))
+                                if not row.startswith('#') \
+                                and row.startswith(resource) \
+                                and row.split(',')[4] == method_name:
+                                    this_method_dict["proto"] = row.split(',')[1]                
 
-                    this_method_dict["parameters"] = {}
-                    this_method_parameters_dict = {}
-                    this_method_dict["returns"] = {}
-                    this_method_returns_dict = {}
+                        this_method_dict["method_link"] = tag.find("span", class_="name").a['href'].replace("..", sdk_url)
 
-                    # Parse parameters:
-                    for parameter_tag in parameters_soup:
-
-                        param_name = parameter_tag.get('id')
-                        this_method_parameters_dict["param_link"] = parameter_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
-
-                        parameter_type_raw = parameter_tag.find("span", class_="signature")
-
-                        if not parameter_type_raw.find("a"):
-                            this_method_parameters_dict["param_type"] = parameter_type_raw.string[2:]
-                        elif len(parameter_type_raw.find_all("a")) == 1:
-                            this_method_parameters_dict["param_type"] = parameter_type_raw.find("a").text
-                            this_method_parameters_dict["param_type_link"] = parameter_type_raw.a['href'].replace("..", sdk_url)
-                        elif len(parameter_type_raw.find_all("a")) == 2:
-                            this_method_parameters_dict["param_type"] = parameter_type_raw.find("a").text
-                            this_method_parameters_dict["param_type_link"] = parameter_type_raw.a['href'].replace("..", sdk_url)
-                            this_method_parameters_dict["param_subtype"] = parameter_type_raw.find("span", class_="type-parameter").text
-                            this_method_parameters_dict["param_subtype_link"] = parameter_type_raw.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
-
-                        this_method_dict["parameters"][param_name] = this_method_parameters_dict
-
-                    # Parse returns:
-                    if tag.find("span", class_="type-parameter").a:
-
-                        returns_link = tag.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
-                        returns_soup_raw = make_soup(returns_link)
-                        returns_soup = returns_soup_raw.find_all(
+                        ## Flutter SDK puts all parameter detail on a separate params page that we must additionally make_soup on:
+                        parameters_link = tag.find("span", class_="type-annotation").a['href'].replace("..", sdk_url)
+                        parameters_soup_raw = make_soup(parameters_link)
+                        parameters_soup = parameters_soup_raw.find_all(
                             lambda tag: tag.name == 'dt'
                             and tag.get('class') == ['property']
                             and not regex.search('info_', tag.text))
 
-                        for return_tag in returns_soup:
+                        this_method_dict["parameters"] = {}
+                        this_method_parameters_dict = {}
+                        this_method_dict["returns"] = {}
+                        this_method_returns_dict = {}
+
+                        # Parse parameters:
+                        for parameter_tag in parameters_soup:
+
+                            param_name = parameter_tag.get('id')
+                            this_method_parameters_dict["param_link"] = parameter_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
+
+                            parameter_type_raw = parameter_tag.find("span", class_="signature")
+
+                            if not parameter_type_raw.find("a"):
+                                this_method_parameters_dict["param_type"] = parameter_type_raw.string[2:]
+                            elif len(parameter_type_raw.find_all("a")) == 1:
+                                this_method_parameters_dict["param_type"] = parameter_type_raw.find("a").text
+                                this_method_parameters_dict["param_type_link"] = parameter_type_raw.a['href'].replace("..", sdk_url)
+                            elif len(parameter_type_raw.find_all("a")) == 2:
+                                this_method_parameters_dict["param_type"] = parameter_type_raw.find("a").text
+                                this_method_parameters_dict["param_type_link"] = parameter_type_raw.a['href'].replace("..", sdk_url)
+                                this_method_parameters_dict["param_subtype"] = parameter_type_raw.find("span", class_="type-parameter").text
+                                this_method_parameters_dict["param_subtype_link"] = parameter_type_raw.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
+
+                            this_method_dict["parameters"][param_name] = this_method_parameters_dict
+
+                        # Parse returns:
+                        if tag.find("span", class_="type-parameter").a:
+
+                            returns_link = tag.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
+                            returns_soup_raw = make_soup(returns_link)
+                            returns_soup = returns_soup_raw.find_all(
+                                lambda tag: tag.name == 'dt'
+                                and tag.get('class') == ['property']
+                                and not regex.search('info_', tag.text))
+
+                            for return_tag in returns_soup:
+                                return_name = return_tag.get('id')
+                                this_method_returns_dict["return_link"] = return_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
+
+                                return_type_raw = return_tag.find("span", class_="signature")
+
+                                if not return_type_raw.find("a"):
+                                    this_method_returns_dict["return_type"] = return_type_raw.string[2:]
+                                elif len(return_type_raw.find_all("a")) == 1:
+                                    this_method_returns_dict["return_type"] = return_type_raw.find("a").text
+                                    this_method_returns_dict["return_type_link"] = return_type_raw.a['href'].replace("..", sdk_url)
+                                elif len(return_type_raw.find_all("a")) == 2:
+                                    this_method_returns_dict["return_type"] = return_type_raw.find("a").text
+                                    this_method_returns_dict["return_type_link"] = return_type_raw.a['href'].replace("..", sdk_url)
+                                    this_method_returns_dict["return_subtype"] = return_type_raw.find("span", class_="type-parameter").text
+                                    this_method_returns_dict["return_subtype_link"] = return_type_raw.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
+
+                                this_method_dict["returns"][return_name] = this_method_returns_dict
+
+                        else:
                             return_name = return_tag.get('id')
-                            this_method_returns_dict["return_link"] = return_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
+                            this_method_returns_dict["return_type"] = tag.find("span", class_="type-parameter").string
 
-                            return_type_raw = return_tag.find("span", class_="signature")
-
-                            if not return_type_raw.find("a"):
-                                this_method_returns_dict["return_type"] = return_type_raw.string[2:]
-                            elif len(return_type_raw.find_all("a")) == 1:
-                                this_method_returns_dict["return_type"] = return_type_raw.find("a").text
-                                this_method_returns_dict["return_type_link"] = return_type_raw.a['href'].replace("..", sdk_url)
-                            elif len(return_type_raw.find_all("a")) == 2:
-                                this_method_returns_dict["return_type"] = return_type_raw.find("a").text
-                                this_method_returns_dict["return_type_link"] = return_type_raw.a['href'].replace("..", sdk_url)
-                                this_method_returns_dict["return_subtype"] = return_type_raw.find("span", class_="type-parameter").text
-                                this_method_returns_dict["return_subtype_link"] = return_type_raw.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
-
-                            this_method_dict["returns"][return_name] = this_method_returns_dict
-
-                    else:
-                        return_name = return_tag.get('id')
-                        this_method_returns_dict["return_type"] = tag.find("span", class_="type-parameter").string
-
-                    flutter_methods[type][resource][method_name] = this_method_dict
+                        flutter_methods[type][resource][method_name] = this_method_dict
 
                 all_methods["flutter"] = flutter_methods
 
@@ -821,6 +898,10 @@ def parse(type, names):
 ## for each method in that object. Here's an example of how I envision the data object being used.
 ## Of course, feel free to adapt and change as you like!
 def write_markdown(type, methods):
+
+    ## Temporary loop approach switcher:
+    LOOP_BY = 'sdk'
+    #LOOP_BY = 'proto'
 
     ## Generate special version of type var that matches how we refer to it in MD filepaths.
     ## This means pluralizing components and services, and taking no action for app and robot:
@@ -861,226 +942,235 @@ def write_markdown(type, methods):
 
     ## We can either loop by SDK, or by method proto name.
     ## Here is by SDK:
-    for sdk in methods.keys():
-        #print(sdk)
+    if LOOP_BY == 'sdk':
 
-        ## Determine where to write the file for this loop. Suggesting:
-        ## docs/static/include/{type}/apis/generated/{sdk}.md
-        #relative_path = 'static/include/' + type_filepath_name + '/apis/generated/'
-        #print(relative_path)
-        filename = sdk + '.md'
+        for sdk in methods.keys():
+            #print(sdk)
 
-        full_path_to_file = os.path.join(full_generated_path, filename)
-        output_file = open('%s' % full_path_to_file, "w") 
+            ## Determine where to write the file for this loop. Suggesting:
+            ## docs/static/include/{type}/apis/generated/{sdk}.md
+            #relative_path = 'static/include/' + type_filepath_name + '/apis/generated/'
+            #print(relative_path)
+            filename = sdk + '.md'
 
-        ## Loop through each resource, such as 'arm'. run() already calls parse() in
-        ## scope limited to 'type', so we don't have to loop by type:
-        for resource in methods[sdk][type].keys():
-            #print(resource)
+            full_path_to_file = os.path.join(full_generated_path, filename)
+            output_file = open('%s' % full_path_to_file, "w") 
 
-            ## Create any missing method override subdirectories for this sdk/resource pass
-            ## if not already present:
-            resource_sdk_override_path = os.path.join(methods_override_path, resource, sdk)
-            Path(resource_sdk_override_path).mkdir(parents=True, exist_ok=True)
+            ## Loop through each resource, such as 'arm'. run() already calls parse() in
+            ## scope limited to 'type', so we don't have to loop by type:
+            for resource in methods[sdk][type].keys():
+                #print(resource)
 
-            ## I've included some dumb plaintext output like this to help during scripting. Feel free to remove:
-            output_file.write('\n\n#!#!#!#!#!#!#!#!#!#!#!# RESOURCE: ' + resource + ' #!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#\n\n')
+                ## Create any missing method override subdirectories for this sdk/resource pass
+                ## if not already present:
+                resource_sdk_override_path = os.path.join(methods_override_path, resource, sdk)
+                Path(resource_sdk_override_path).mkdir(parents=True, exist_ok=True)
 
-            ## Loop for each method in resource object:
-            for method in methods[sdk][type][resource].keys():
+                ## I've included some dumb plaintext output like this to help during scripting. Feel free to remove:
+                output_file.write('\n\n#!#!#!#!#!#!#!#!#!#!#!# RESOURCE: ' + resource + ' #!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#\n\n')
 
-                output_file.write('\n\n################# METHOD: ' + method + ' ##################################\n\n')
+                ## Loop for each method in resource object:
+                for method in methods[sdk][type][resource].keys():
 
-                output_file.write('METHOD NAME: ')
-                output_file.write(method + '\n')
+                    output_file.write('\n\n################# METHOD: ' + method + ' ##################################\n\n')
 
-                output_file.write('METHOD PROTO: ')
-                ## Get proto and save to variable; we also need it later:
-                proto = methods[sdk][type][resource][method]['proto']
-
-                output_file.write(proto + '\n')
-
-                ## Here are some options for adding DOCS-side content on top of the scraped data.
-                ## It gets tricky, and we are greatly limited in our ability to edit _within_ scraped
-                ## content data, but some of the following options may solve some near-term problems
-                ## with upstream SDK quality until we have a chance to submit PRs to improve it.
-
-                ## Add additional MD content as an include, to be included directly under the proto header
-                ## This data is applicable to all language implementations of this proto (i.e. _not_ 
-                ## SDK-specific). Example: The `Usage` alert here: https://docs.viam.com/components/camera/#getimages
-               
-                ## Check for proto overrides.
-                ## Not sure how to handle this yet, but we currently check for this override
-                ## once per sdk per resource, but we only need to check once really.
- 
-                proto_override_filename = proto + '.md'
-
-                ## .../overrides/protos/{proto}
-                proto_override_filepath = os.path.join(protos_override_path, proto_override_filename)
-                if os.path.isfile(proto_override_filepath):
-                    output_file.write('PROTO OVERRIDE: ')
+                    output_file.write('METHOD NAME: ')
                     output_file.write(method + '\n')
 
-                    for line in open(proto_override_filepath, 'r', encoding='utf-8'):
-                       output_file.write(line)
+                    output_file.write('METHOD PROTO: ')
+                    ## Get proto and save to variable; we also need it later:
+                    ## HACK: Allowing for empty strings (for Go SDK docs that include methods that
+                    ## TODO: Be better than this.
+                    proto = methods[sdk][type][resource][method]['proto']
 
-                ## Check for method overrides.
-                ## This check supports additional filename switches, to control whether this
-                ## override is to be placed either before the auto-gen stuff, or after.
-                ## Appending filename with .before (or omitting) places MD content before
-                ## the auto-gen content for this method (i.e. before params,returns, etc).
-                ## Appending filename with .after places MD content after the auto-gen content
-                ## for this method (i.e. after params and code samples).
-                ## EXAMPLE (before): https://docs.viam.com/components/camera/#getimage (Go tab)
-                ## EXAMPLE (after): https://docs.viam.com/mobility/motion/#getpose (Py tab)
+                    output_file.write(proto + '\n')
 
-                has_after_override = 0
+                    ## Here are some options for adding DOCS-side content on top of the scraped data.
+                    ## It gets tricky, and we are greatly limited in our ability to edit _within_ scraped
+                    ## content data, but some of the following options may solve some near-term problems
+                    ## with upstream SDK quality until we have a chance to submit PRs to improve it.
 
-                ## .../overrides/methods/{resource}/{sdk}/{method}.before|after.md
-                for method_override_filename in os.listdir(resource_sdk_override_path):
-                    if method in method_override_filename:
-                        method_override_file_path = os.path.join(resource_sdk_override_path, method_override_filename)
-                        if method_override_filename.endswith('.after.md'):
+                    ## Add additional MD content as an include, to be included directly under the proto header
+                    ## This data is applicable to all language implementations of this proto (i.e. _not_ 
+                    ## SDK-specific). Example: The `Usage` alert here: https://docs.viam.com/components/camera/#getimages
+                   
+                    ## Check for proto overrides.
+                    ## Not sure how to handle this yet, but we currently check for this override
+                    ## once per sdk per resource, but we only need to check once really.
+     
+                    proto_override_filename = proto + '.md'
 
-                            ## Because we are writing out MD content in the same general loop as we are getting it
-                            ## from the passed data object, we have to delay this 'after' write until later.
-                            ## If you wanted to fetch all data first, and then afterwards loop through it all
-                            ## separately, you could do this all together. For this implementation of this mock writer
-                            ## function, I'm just noting in has_after_override that I need to come back
-                            ## to this later in the writer loop:
-                            has_after_override = 1
-                        
-                        ## Just being painfully explicit that we accept 'before' or nothing to control injecting
-                        ## before the auto-gen content (such as params, returns, etc).
-                        ## Also, we must use two discrete if statements (not if .. elif), so that we can
-                        ## support both overrides if present (I didn't see any existing examples, but we might
-                        ## want to!):
-                        if not method_override_filename.endswith('.after.md') and \
-                            (method_override_filename.endswith('.before.md') or \
-                            method_override_filename.endswith('.md')):
+                    ## .../overrides/protos/{proto}
+                    proto_override_filepath = os.path.join(protos_override_path, proto_override_filename)
+                    if os.path.isfile(proto_override_filepath):
+                        output_file.write('PROTO OVERRIDE: ')
+                        output_file.write(method + '\n')
 
-                           output_file.write('METHOD OVERRIDE BEFORE: ')
+                        for line in open(proto_override_filepath, 'r', encoding='utf-8'):
+                           output_file.write(line)
 
-                           for line in open(method_override_file_path, 'r', encoding='utf-8'):
-                               output_file.write(line)
+                    ## Check for method overrides.
+                    ## This check supports additional filename switches, to control whether this
+                    ## override is to be placed either before the auto-gen stuff, or after.
+                    ## Appending filename with .before (or omitting) places MD content before
+                    ## the auto-gen content for this method (i.e. before params,returns, etc).
+                    ## Appending filename with .after places MD content after the auto-gen content
+                    ## for this method (i.e. after params and code samples).
+                    ## EXAMPLE (before): https://docs.viam.com/components/camera/#getimage (Go tab)
+                    ## EXAMPLE (after): https://docs.viam.com/mobility/motion/#getpose (Py tab)
 
-                ## In the event we want to structure our method object such that omitted keys are permissable,
-                ## we can use if logic to take action only if present:
-                ## ALTERNATE: I dump empty strings to missing method object keys instead, and always write
-                ## the keys themselves. I will happily change the method object to whichever you prefer,
-                ## I think the object is currently a mix of both, which is the only non-acceptable option lol.
-                ## I will be correcting so the data object is identical between sdk langs. For now, you can
-                ## work on python only using 'update_sdk_methods.py python':
-                ## EXAMPLE: Go methods do not have descriptions, so I wrote an empty string "" to this key in
-                ## the passed data object. This means we can access this field outside of this if statement (i.e.
-                ## regardless of sdk), but also that if we blindly just output its contents to the markdown,
-                ## it will result in blank output for this field. Up to us to decide how to handle missing
-                ## data upstream:
-                if 'description' in methods[sdk][type][resource][method]:
-                
-                    ## Check if method description contains any matching string in override_description_links.
-                    ## If match, add link to text in description:
+                    has_after_override = 0
 
-                    method_description = methods[sdk][type][resource][method]['description']
+                    ## .../overrides/methods/{resource}/{sdk}/{method}.before|after.md
+                    for method_override_filename in os.listdir(resource_sdk_override_path):
+                        if method in method_override_filename:
+                            method_override_file_path = os.path.join(resource_sdk_override_path, method_override_filename)
+                            if method_override_filename.endswith('.after.md'):
 
-                    for override_text in override_description_links.keys():
+                                ## Because we are writing out MD content in the same general loop as we are getting it
+                                ## from the passed data object, we have to delay this 'after' write until later.
+                                ## If you wanted to fetch all data first, and then afterwards loop through it all
+                                ## separately, you could do this all together. For this implementation of this mock writer
+                                ## function, I'm just noting in has_after_override that I need to come back
+                                ## to this later in the writer loop:
+                                has_after_override = 1
+                            
+                            ## Just being painfully explicit that we accept 'before' or nothing to control injecting
+                            ## before the auto-gen content (such as params, returns, etc).
+                            ## Also, we must use two discrete if statements (not if .. elif), so that we can
+                            ## support both overrides if present (I didn't see any existing examples, but we might
+                            ## want to!):
+                            if not method_override_filename.endswith('.after.md') and \
+                                (method_override_filename.endswith('.before.md') or \
+                                method_override_filename.endswith('.md')):
 
-                        if override_text in methods[sdk][type][resource][method]['description']:
-                            output_file.write('METHOD DESCRIPTION WITH LINK OVERRIDE: ')
-                            method_description = link_description('md', methods[sdk][type][resource][method]['description'], override_text, override_description_links[override_text])
+                               output_file.write('METHOD OVERRIDE BEFORE: ')
 
-                    output_file.write('METHOD DESCRIPTION: ')
-                    output_file.write(method_description + '\n')
+                               for line in open(method_override_file_path, 'r', encoding='utf-8'):
+                                   output_file.write(line)
 
-                output_file.write('METHOD LINK: ')
-                output_file.write(methods[sdk][type][resource][method]['method_link'] + '\n')
+                    ## In the event we want to structure our method object such that omitted keys are permissable,
+                    ## we can use if logic to take action only if present:
+                    ## ALTERNATE: I dump empty strings to missing method object keys instead, and always write
+                    ## the keys themselves. I will happily change the method object to whichever you prefer,
+                    ## I think the object is currently a mix of both, which is the only non-acceptable option lol.
+                    ## I will be correcting so the data object is identical between sdk langs. For now, you can
+                    ## work on python only using 'update_sdk_methods.py python':
+                    ## EXAMPLE: Go methods do not have descriptions, so I wrote an empty string "" to this key in
+                    ## the passed data object. This means we can access this field outside of this if statement (i.e.
+                    ## regardless of sdk), but also that if we blindly just output its contents to the markdown,
+                    ## it will result in blank output for this field. Up to us to decide how to handle missing
+                    ## data upstream:
+                    if 'description' in methods[sdk][type][resource][method]:
+                    
+                        ## Check if method description contains any matching string in override_description_links.
+                        ## If match, add link to text in description:
 
-                ## CHOICE: Do we want to fetch the raw usage or do we want to iterate through each param, return, error?
-                ##         Here is an example of raw usage, which I am fetching for the GO SDK:
-                if 'usage' in methods[sdk][type][resource][method]:
+                        method_description = methods[sdk][type][resource][method]['description']
 
-                    method_usage = methods[sdk][type][resource][method]['usage']
+                        for override_text in override_description_links.keys():
 
+                            if override_text in methods[sdk][type][resource][method]['description']:
+                                output_file.write('METHOD DESCRIPTION WITH LINK OVERRIDE: ')
+                                method_description = link_description('md', methods[sdk][type][resource][method]['description'], override_text, override_description_links[override_text])
 
-                    ## OPTION: If we need to link within usage, which includes HTML tags, we can also use link_description(),
-                    ## passing the 'html' argument. However, it will happily link matching text within existing HTML
-                    ## tags, like a tag link targets, so I am commenting out for current usage, which is Go-only, and
-                    ## doesn't really need it. An option if we standardize on usage, in which case I will augment
-                    ## link_description() to ignore a tag links and similar:
-                    #for override_text in override_description_links.keys():
+                        output_file.write('METHOD DESCRIPTION: ')
+                        output_file.write(method_description + '\n')
 
-                    #    if override_text in methods[sdk][type][resource][method]['usage']:
-                    #        output_file.write('METHOD USAGE WITH LINK OVERRIDE: ')
-                    #        method_usage = link_description('html', methods[sdk][type][resource][method]['usage'], override_text, override_description_links[override_text])
+                    output_file.write('METHOD LINK: ')
+                    output_file.write(methods[sdk][type][resource][method]['method_link'] + '\n')
 
-                    output_file.write('METHOD USAGE: ')
-                    output_file.write(method_usage + '\n')
+                    ## CHOICE: Do we want to fetch the raw usage or do we want to iterate through each param, return, error?
+                    ##         Here is an example of raw usage, which I am fetching for the GO SDK:
+                    if 'usage' in methods[sdk][type][resource][method]:
 
-                ## CHOICE: Do we want to fetch the raw usage or do we want to iterate through each param, return, error?
-                ##         Here is an example of a dict of parameters, which I am fetching for the Python and Flutter SDKs:
-                if 'parameters' in methods[sdk][type][resource][method]:
-
-                    for parameter in methods[sdk][type][resource][method]['parameters'].keys():
-                        output_file.write('PARAMETER: ')
-                        output_file.write(parameter + '\n')
-                        output_file.write('    PARAMETER TYPE: ')
-                        output_file.write(methods[sdk][type][resource][method]['parameters'][parameter]['param_type'] + '\n')
-                        ## The 'optional' field is a boolean, so we must also convert to string here:
-                        if 'optional' in methods[sdk][type][resource][method]['parameters'][parameter]:
-                            output_file.write('    PARAMETER OPTIONAL: ')
-                            output_file.write(str(methods[sdk][type][resource][method]['parameters'][parameter]['optional']) + '\n')
-                        if 'param_type_link' in methods[sdk][type][resource][method]['parameters'][parameter]:
-                            output_file.write('    PARAMETER TYPE LINK: ')
-                            output_file.write(methods[sdk][type][resource][method]['parameters'][parameter]['param_type_link'] + '\n')
-                        if 'param_subtype' in methods[sdk][type][resource][method]['parameters'][parameter]:
-                            output_file.write('    PARAMETER SUBTYPE: ')
-                            output_file.write(methods[sdk][type][resource][method]['parameters'][parameter]['param_subtype'] + '\n')
-                        if 'param_subtype_link' in methods[sdk][type][resource][method]['parameters'][parameter]:
-                            output_file.write('    PARAMETER SUBTYPE LINK: ')
-                            output_file.write(methods[sdk][type][resource][method]['parameters'][parameter]['param_subtype_link'] + '\n')
-
-                ## Not fetching returns for Go (only 'usage'), only fetching one return for Python, and fetching all returns for Flutter.
-                ## I must standardize this approach first to be able to reliably output return data per method, but here's what should work
-                ## for the Python data object, I think.
-                ## As you explore options between the three approaches, I will standardize all languages to use the one you decide on.
-                ## EXAMPLE: if we go with raw usage, as presently returned for Go, I will do away with return looping for Python and
-                ## Flutter, and convert those to return raw usage as well.
-#                if 'return' in methods[sdk][type][resource][method]:
-#                    output_file.write('METHOD RETURN: ')
-#
-#                    output_file.write(methods[sdk][type][resource][method]['return']['return_type'] + '\n')
-#
-#                    if 'return_description' in methods[sdk][type][resource][method]['return']:
-#                        output_file.write('    RETURN DESCRIPTION: ')
-#                        output_file.write(methods[sdk][type][resource][method]['return']['return_description'] + '\n')
-#                    if 'return_link' in methods[sdk][type][resource][method]['return']:
-#                        output_file.write('    RETURN LINK: ')
-#                        output_file.write(methods[sdk][type][resource][method]['return']['return_link'] + '\n')
-#                    if 'return_type_link' in methods[sdk][type][resource][method]['return']:
-#                        output_file.write('    RETURN TYPE LINK: ')
-#                        output_file.write(methods[sdk][type][resource][method]['return']['return_type_link'] + '\n')
-#                    if 'param_subtype' in methods[sdk][type][resource][method]['return']:
-#                        output_file.write('    RETURN SUBTYPE: ')
-#                        output_file.write(methods[sdk][type][resource][method]['return']['return_subtype'] + '\n')
-#                    if 'param_subtype_link' in methods[sdk][type][resource][method]['return']:
-#                        output_file.write('    RETURN SUBTYPE LINK: ')
-#                        output_file.write(methods[sdk][type][resource][method]['return']['return_subtype_link'] + '\n')
+                        method_usage = methods[sdk][type][resource][method]['usage']
 
 
-                ## Same thing with errors raised ('raises') here.
+                        ## OPTION: If we need to link within usage, which includes HTML tags, we can also use link_description(),
+                        ## passing the 'html' argument. However, it will happily link matching text within existing HTML
+                        ## tags, like a tag link targets, so I am commenting out for current usage, which is Go-only, and
+                        ## doesn't really need it. An option if we standardize on usage, in which case I will augment
+                        ## link_description() to ignore a tag links and similar:
+                        #for override_text in override_description_links.keys():
 
-                ## If the method has a code sample, print it here:
-                if 'code_sample' in methods[sdk][type][resource][method]:
+                        #    if override_text in methods[sdk][type][resource][method]['usage']:
+                        #        output_file.write('METHOD USAGE WITH LINK OVERRIDE: ')
+                        #        method_usage = link_description('html', methods[sdk][type][resource][method]['usage'], override_text, override_description_links[override_text])
 
-                    output_file.write('CODE SAMPLE: \n')
-                    output_file.write(methods[sdk][type][resource][method]['code_sample'] + '\n')
+                        output_file.write('METHOD USAGE: ')
+                        output_file.write(method_usage + '\n')
 
-                ## If we detected an 'after' method override file earlier, write it out here:
-                if has_after_override:
-                    output_file.write('METHOD OVERRIDE AFTER: ')
+                    ## CHOICE: Do we want to fetch the raw usage or do we want to iterate through each param, return, error?
+                    ##         Here is an example of a dict of parameters, which I am fetching for the Python and Flutter SDKs:
+                    if 'parameters' in methods[sdk][type][resource][method]:
 
-                    for line in open(method_override_file_path, 'r', encoding='utf-8'):
-                        output_file.write(line)
+                        for parameter in methods[sdk][type][resource][method]['parameters'].keys():
+                            output_file.write('PARAMETER: ')
+                            output_file.write(parameter + '\n')
+                            output_file.write('    PARAMETER TYPE: ')
+                            output_file.write(methods[sdk][type][resource][method]['parameters'][parameter]['param_type'] + '\n')
+                            ## The 'optional' field is a boolean, so we must also convert to string here:
+                            if 'optional' in methods[sdk][type][resource][method]['parameters'][parameter]:
+                                output_file.write('    PARAMETER OPTIONAL: ')
+                                output_file.write(str(methods[sdk][type][resource][method]['parameters'][parameter]['optional']) + '\n')
+                            if 'param_type_link' in methods[sdk][type][resource][method]['parameters'][parameter]:
+                                output_file.write('    PARAMETER TYPE LINK: ')
+                                output_file.write(methods[sdk][type][resource][method]['parameters'][parameter]['param_type_link'] + '\n')
+                            if 'param_subtype' in methods[sdk][type][resource][method]['parameters'][parameter]:
+                                output_file.write('    PARAMETER SUBTYPE: ')
+                                output_file.write(methods[sdk][type][resource][method]['parameters'][parameter]['param_subtype'] + '\n')
+                            if 'param_subtype_link' in methods[sdk][type][resource][method]['parameters'][parameter]:
+                                output_file.write('    PARAMETER SUBTYPE LINK: ')
+                                output_file.write(methods[sdk][type][resource][method]['parameters'][parameter]['param_subtype_link'] + '\n')
+
+                    ## Not fetching returns for Go (only 'usage'), only fetching one return for Python, and fetching all returns for Flutter.
+                    ## I must standardize this approach first to be able to reliably output return data per method, but here's what should work
+                    ## for the Python data object, I think.
+                    ## As you explore options between the three approaches, I will standardize all languages to use the one you decide on.
+                    ## EXAMPLE: if we go with raw usage, as presently returned for Go, I will do away with return looping for Python and
+                    ## Flutter, and convert those to return raw usage as well.
+    #                if 'return' in methods[sdk][type][resource][method]:
+    #                    output_file.write('METHOD RETURN: ')
+    #
+    #                    output_file.write(methods[sdk][type][resource][method]['return']['return_type'] + '\n')
+    #
+    #                    if 'return_description' in methods[sdk][type][resource][method]['return']:
+    #                        output_file.write('    RETURN DESCRIPTION: ')
+    #                        output_file.write(methods[sdk][type][resource][method]['return']['return_description'] + '\n')
+    #                    if 'return_link' in methods[sdk][type][resource][method]['return']:
+    #                        output_file.write('    RETURN LINK: ')
+    #                        output_file.write(methods[sdk][type][resource][method]['return']['return_link'] + '\n')
+    #                    if 'return_type_link' in methods[sdk][type][resource][method]['return']:
+    #                        output_file.write('    RETURN TYPE LINK: ')
+    #                        output_file.write(methods[sdk][type][resource][method]['return']['return_type_link'] + '\n')
+    #                    if 'param_subtype' in methods[sdk][type][resource][method]['return']:
+    #                        output_file.write('    RETURN SUBTYPE: ')
+    #                        output_file.write(methods[sdk][type][resource][method]['return']['return_subtype'] + '\n')
+    #                    if 'param_subtype_link' in methods[sdk][type][resource][method]['return']:
+    #                        output_file.write('    RETURN SUBTYPE LINK: ')
+    #                        output_file.write(methods[sdk][type][resource][method]['return']['return_subtype_link'] + '\n')
+
+
+                    ## Same thing with errors raised ('raises') here.
+
+                    ## If the method has a code sample, print it here:
+                    if 'code_sample' in methods[sdk][type][resource][method]:
+
+                        output_file.write('CODE SAMPLE: \n')
+                        output_file.write(methods[sdk][type][resource][method]['code_sample'] + '\n')
+
+                    ## If we detected an 'after' method override file earlier, write it out here:
+                    if has_after_override:
+                        output_file.write('METHOD OVERRIDE AFTER: ')
+
+                        for line in open(method_override_file_path, 'r', encoding='utf-8'):
+                            output_file.write(line)
+
+
+    elif LOOP_BY == 'proto':
+        ## TODO: finish impl
+        pass
 
     ## - For looping by proto method: I don't have automated mapping working yet (and it might not be possible for all languages).
     ##   Barring automated determination, we can always manually map all ~250 methods per language, joy.
@@ -1094,21 +1184,24 @@ def run():
 
     proto_map = get_proto_apis()
 
-    component_methods = parse("component", components)
-    write_markdown("component", component_methods)
-    #print(component_methods)
+    # If generating the mapping template file, skip all other functionality:
+    if not args.map:
 
-    service_methods = parse("service", services)
-    write_markdown("service", service_methods)
-    #print(service_methods)
+        component_methods = parse("component", components)
+        write_markdown("component", component_methods)
+        #print(component_methods)
 
-    app_methods = parse("app", app_apis)
-    write_markdown("app", app_methods)
-    #print(app_methods)
+        service_methods = parse("service", services)
+        write_markdown("service", service_methods)
+        #print(service_methods)
 
-    robot_methods = parse("robot", robot_apis)
-    write_markdown("robot", robot_methods)
-    #print(robot_methods)
+        app_methods = parse("app", app_apis)
+        write_markdown("app", app_methods)
+        #print(app_methods)
+
+        robot_methods = parse("robot", robot_apis)
+        write_markdown("robot", robot_methods)
+        #print(robot_methods)
 
 run()
 
