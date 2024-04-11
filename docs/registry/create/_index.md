@@ -1449,7 +1449,7 @@ Browse additional example modules by language:
 | Module | Repository | Description |
 | ------ | ---------- | ----------- |
 | [monocular-visual-odometry](https://app.viam.com/module/viam/monocular-visual-odometry) | [viamrobotics/viam-visual-odometry](https://github.com/viamrobotics/viam-visual-odometry) | Extends the built-in [movement sensor API](https://docs.viam.com/components/movement-sensor/#api) to support using monocular visual odometry to enable any calibrated camera to function as a movement sensor. |
-| [oak-d](https://app.viam.com/module/viam/oak-d) | [viamrobotics/viam-camera-oak-d](https://github.com/viamrobotics/viam-camera-oak-d) | Extends the built-in [camera API](https://docs.viam.com/components/camera/#api) to support the OAK-D camera. |
+| [oak](https://app.viam.com/module/viam/oak) | [viamrobotics/viam-camera-oak](https://github.com/viamrobotics/viam-camera-oak) | Extends the built-in [camera API](https://docs.viam.com/components/camera/#api) to support OAK cameras. |
 | [odrive](https://app.viam.com/module/viam/odrive) | [viamrobotics/odrive](https://github.com/viamrobotics/odrive) | Extends the built-in [motor API](https://docs.viam.com/components/motor/#api) to support the ODrive motor. This module provides two models, one for a `canbus`-connected ODrive motor, and one for a `serial`-connected ODrive motor. |
 | [yahboom](https://app.viam.com/module/rand/yahboom) | [viamlabs/yahboom](https://github.com/viam-labs/yahboom) | Extends the built-in [arm API](https://docs.viam.com/components/arm/#api) and [gripper API](https://docs.viam.com/components/gripper/#api) to support the Yahboom Dofbot robotic arm. |
 
