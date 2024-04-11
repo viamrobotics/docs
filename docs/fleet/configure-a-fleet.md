@@ -331,7 +331,8 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
    {{% /expand%}}
 
 6. Click **Save** in the upper right corner of the page to save your new configuration.
-7. To check that your mods are working, click the **See full config** link found under the **JSON** mode selector.
+7. To check that your mods are working, view your machine's debug configuration.
+   In **Builder** mode on the **CONFIGURE** tab, select the **...** (Actions) menu to the right of your main part's name in the left-hand panel and click the **View debug configuration** option to view the full configuration file.
 
 ### Copy and paste method
 
