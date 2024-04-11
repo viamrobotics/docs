@@ -25,9 +25,9 @@ To configure a `tflite_cpu` ML model service:
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
-Click the **Services** subtab and click **Create service** in the lower-left corner.
-Select the `ML Model` type, then select the `TFLite CPU` model.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+Select the `ML model` type, then select the `TFLite CPU` model.
 Enter a name for your service and click **Create**.
 
 You can choose to configure your service with an existing model on the machine or deploy a model onto your machine:

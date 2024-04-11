@@ -42,11 +42,11 @@ You can monitor the input from these controls in the **CONTROL** tab of the [Via
 You must configure a [base](/components/base/) with a [movement sensor](/components/movement-sensor/) as part of your machine to be able to use a base remote control service.
 
 {{< tabs >}}
-{{% tab name="Config Builder" %}}
+{{% tab name="Builder" %}}
 
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
-Select the `Base Remote Control` type.
+Select the `base remote control` type.
 Enter a name for your service and click **Create**.
 
 ![An example configuration for a base remote control service in the Viam app Config Builder.](/mobility/base-rc/base-rc-ui-config.png)

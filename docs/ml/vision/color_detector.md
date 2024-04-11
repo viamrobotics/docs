@@ -29,7 +29,7 @@ If the color is not reliably detected, increase the `hue_tolerance_pct`.
 
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
-Select the `Vision` type, then select the `Color Detector` model.
+Select the `vision` type, then select the `color detector` model.
 Enter a name for your service and click **Create**.
 
 In your vision service's panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels):
