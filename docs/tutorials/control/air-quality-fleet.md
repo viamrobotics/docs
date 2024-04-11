@@ -30,20 +30,17 @@ Tell the story of the machine.
 Should the opening sentence focus on fleets or on air quality as the driving issue? How to or project?_
 
 As wildfire smoke, car exhaust, and cooking oils pollute our air, we can become more aware of the pollution levels in the spaces we spend time by collecting data.
-Then, when we take steps to mitigate the problem, we can track whether our interventions are effective.
+Then, when we take steps to mitigate the problem, the data allows us track whether our interventions are effective.
 
 In this tutorial you will use a fleet of devices to collect data from different places and sync it all to a custom viewing dashboard.
-By completing this project, you will learn about:
+By completing this project, you will learn to:
 
-- Configuring a fleet of identical machines
-- Managing a fleet of dispersed devices remotely
-- Data collection and sync
-- Using the Viam TypeScript SDK to create a custom dashboard
+- Configure a fleet of identical machines
+- Manage a fleet of dispersed devices remotely
+- Collect and sync data from multiple machines
+- Use the Viam TypeScript SDK to query sensor data and create a custom dashboard
 
 ## Requirements
-
-_What does the reader need to already know.
-What will you be using (hardware/software)._
 
 You can complete this tutorial using as many air quality sensing machines as you like.
 Your {{< glossary_tooltip term_id="machine" text="machines" >}} can be in different {{< glossary_tooltip term_id="location" text="locations" >}} or even different {{< glossary_tooltip term_id="organization" text="organizations" >}}; Viam's fleet management system allows you to pull data from any machines you can authenticate to.
@@ -209,7 +206,7 @@ If not, you can use [fragment mods](/fleet/configure-a-fleet/#use-fragment_mods)
 
 1. If you're not getting sensor readings from a given machine, check the path of the USB port using the same [process by which you found the first USB path](#usb-path).
 2. If the path to your sensor on one machine is different from the one you configured in the fragment, add a fragment mod to the config of that machine to change the path without needing to remove the entire fragment.
-   Follow the [instructions to add a fragment mod](/fleet/configure-a-fleet/#use-fragment_mods), using the following JSON template:
+   Follow the [instructions to add a fragment mod](/fleet/configure-a-fleet/#use-fragment_mods) to your machine's config, using the following JSON template:
 
    ```json {class="line-numbers linkable-line-numbers"}
    "fragment_mods": [
@@ -229,6 +226,10 @@ If not, you can use [fragment mods](/fleet/configure-a-fleet/#use-fragment_mods)
    Replace the values with your fragment ID and with the USB path you identify.
    If you named your sensor something other than `PM_sensor`, change the sensor name in the template above.
 
+3. Repeat this process for each machine that needs a different `usb_interface` value.
+   If you have lots of machines with one `usb_interface` value, and lots of machines with a second one, you might consider duplicating the fragment, editing that value, and using that second fragment instead of the first one for the applicable machines, rather than using a fragment mod for each of the machines.
+   You have options.
+
    {{% /expand%}}
 
 ## Test data sync
@@ -240,7 +241,9 @@ Next, check that data is being synced from your sensors to the cloud:
 3.  If you have sensor data coming from machines unrelated to this project, use the filters on the left side of the page to view data from only your air quality sensors.
     You can also use these filters to show the data from one of your air quality sensors at a time by typing a machine name into the **Machine name** box and clicking **Apply** in the lower-left corner.
 
-{{<imgproc src="/tutorials/air-quality-fleet/synced-data.png" resize="x1100" declaredimensions=true alt="The sensor readings that have synced to the DATA page." style="max-width:600px" >}}
+    {{<imgproc src="/tutorials/air-quality-fleet/synced-data.png" resize="x1100" declaredimensions=true alt="The sensor readings that have synced to the DATA page." style="max-width:600px" >}}
+
+4.  If you are using sensors in different {{< glossary_tooltip term_id="organization" text="organizations" >}}, use the drop-down menu in the upper-right corner of the page to switch organizations and view data from each of them.
 
 Once you've confirmed that data is being collected and synced correctly, you're ready to start building a dashboard to display the data.
 If you'd like to view your data using a Grafana dashboard, try our [Visualize Data with Grafana tutorial](/tutorials/services/visualize-data-grafana/).
@@ -252,17 +255,78 @@ The [Viam TypeScript SDK](https://ts.viam.dev/) allows you to build custom web i
 For this project, you'll use it to build an interface to view your air quality sensor data.
 You'll host the website locally on your Linux or MacOS computer, and view the interface in a web browser on that computer.
 
+1. Make sure you have the latest version of [Node.JS](https://nodejs.org/en) installed.
+1. Create a directory on your laptop or desktop for your project.
+   Name it <file>aqi-dashboard</file>.
+1. Create a file inside that folder and name it <file>main.ts</file>.
+1. Navigate to the **Code sample** tab of your first machine's page in the [Viam app](https://app.viam.com).
+   Select **TypeScript (Web)** from the language options.
+1. Copy the boilerplate code from the code sample page and paste it into <file>main.ts</file>.
+1. Open a terminal window and install the Viam TypeScript SDK on your computer by running the following command:
+
+   ```sh {class="command-line" data-prompt="$"}
+   npm install --save @viamrobotics/sdk
+   ```
+
+1. Create a file in your <file>aqi-dashboard</file> folder and name it <file>package.json</file>.
+   The <file>package.json</file> file holds necessary metadata about your project.
+   Paste the following contents into it:
+
+   ```json {class="line-numbers linkable-line-numbers"}
+   {
+     "name": "air-quality-dashboard",
+     "description": "A dashboard for visualizing data from air quality sensors.",
+     "scripts": {
+       "start": "esbuild ./main.ts --bundle --outfile=static/main.js --servedir=static",
+       "test": "echo \"Error: no test specified\" && exit 1"
+     },
+     "author": "Viam Docs Team",
+     "license": "ISC",
+     "devDependencies": {
+       "esbuild": "*"
+     },
+     "dependencies": {
+       "@viamrobotics/sdk": "*"
+     }
+   }
+   ```
+
+1. Create a folder called <file>static</file> inside your <file>aqi-dashboard</file> folder.
+   Inside the <file>static</file> folder, create a file called <file>index.html</file>.
+   This file specifies the contents of the webpage that you will see when you run your code.
+   Paste the following into <file>index.html</file>:
+
+   ```{class="line-numbers linkable-line-numbers"}
+   <!doctype html>
+   <html>
+     <head>
+       <title>Air Quality Data</title>
+       <link rel="icon" href="favicon.ico" />
+     </head>
+     <body>
+       <div id="main">
+         <button id="main-button" disabled="true">Get Readings</button>
+       </div>
+       <script type="module" src="main.js"></script>
+     </body>
+   </html>
+   ```
+
+---
+
 ### Add some color to your dashboard
 
 In this section you will add color-coded backgrounds to the widgets for each of your sensors so you can see at a glance how the air quality is at each sensor.
 
 ## Next steps
 
-Link to other tutorials with cards or text.
-
-You might try putting an air filter in your home or office and comparing the air quality data before and after your intervention.
-Or, try sealing gaps around doors and check whether it worked by looking at your dashboard.
+You might try putting an air filter in your home or office and comparing the air quality data before you start running the filter with air quality after you have run the filter for a while.
+Or, try sealing gaps around doors, and check whether your seal is working by looking at your dashboard.
 
 {{< cards >}}
 {{% card link="/tutorials/get-started/blink-an-led" %}}
 {{< /cards >}}
+
+```
+
+```
