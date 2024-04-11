@@ -64,7 +64,7 @@ Configure your `esp32` board for your machine.
 ## Recommendations when using an SDK
 
 If the connection to the ESP32 with an SDK is unstable we recommend the following changes to the default settings in your SDK code when connecting to an ESP32.
-The SDK background task that monitors the connection to the micro-RDK will be disabled saving bandwidth.
+This will disable the SDK background task that monitors the connection to the micro-RDK, saving bandwidth.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
