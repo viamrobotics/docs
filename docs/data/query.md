@@ -49,11 +49,11 @@ You must have the [owner](/fleet/rbac/) role in order to query data in the Viam 
 
    - The following shows a SQL query that filters by the component name `my-ultrasonic-sensor` and limits the returned results to 5:
 
-     {{< imgproc src="/data/query-ui-sql.png" alt="Viam App Data Query tab with a SQL query shown" resize="800x" >}}
+     {{< imgproc src="/data/query-ui-sql.png" alt="Viam App Data Query tab with a SQL query shown. The query is as follows: SELECT * FROM readings WHERE component_name = &apos;my-ultrasonic-sensor&apos; LIMIT 5" resize="800x" >}}
 
    - The following shows the same search using MQL syntax:
 
-     {{< imgproc src="/data/query-ui-mql.png" alt="Viam App Data Query tab with an MQL query shown" resize="800x" >}}
+     {{< imgproc src="/data/query-ui-mql.png" alt='Viam App Data Query tab with an MQL query shown. The query is as follows: [{&quot;$match&quot;:{&quot;component_name&quot;:&quot;my-ultrasonic-sensor&quot;}},{&quot;$limit&quot;:5}]" resize="800x" >}}
 
 1. Click **Run query** when ready to perform your query and get matching results.
    Query results are displayed as a [JSON array](https://json-schema.org/understanding-json-schema/reference/array) below your query.
