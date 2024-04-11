@@ -61,11 +61,11 @@ You must have the [owner](/fleet/rbac/) role in order to query data in the Viam 
 
    - The following shows a SQL query that filters by component name and specific column names, and its returned results:
 
-     {{< imgproc src="/data/query-ui-results.png" alt="Viam App Data Query tab with a SQL query shown and results shown below including two matching records" resize="800x" >}}
+     {{< imgproc src="/data/query-ui-results.png" alt="Viam App Data Query tab with a SQL query shown and results shown below including two matching records in JSON format." resize="800x" >}}
 
    - The following shows a SQL query that returns a count of records matching the search criteria:
 
-     {{< imgproc src="/data/query-ui-numreadings.png" alt="Viam App Data Query tab with a SQL query shown with the resulting count of matching records displayed below" resize="800x" >}}
+     {{< imgproc src="/data/query-ui-numreadings.png" alt="Viam App Data Query tab with a SQL query shown with the resulting count of matching records displayed below in JSON format." resize="800x" >}}
 
 For more information on MQL syntax, see the [MQL (MongoDB Query Language)](https://www.mongodb.com/docs/manual/tutorial/query-documents/) documentation.
 
