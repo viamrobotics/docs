@@ -148,7 +148,7 @@ For more information, see [configure data capture for individual components](/da
 
 {{% alert title="Tip" color="tip" %}}
 If you are using a different model of camera, you may need to use a different **Type** of method in your data capture configuration.
-For instance, depth camera modules on the [Viam Registry](https://app.viam.com/registry) such as the [Intel Realsense](https://app.viam.com/module/viam/realsense/) and the [Luxonis OAK-D](https://app.viam.com/module/viam/oak-d) use [`GetImages()`](/components/camera/#getimages).
+For instance, depth camera modules on the [Viam Registry](https://app.viam.com/registry) such as the [Intel Realsense](https://app.viam.com/module/viam/realsense/) and the [Luxonis OAK](https://app.viam.com/module/viam/oak) use [`GetImages()`](/components/camera/#getimages).
 {{% /alert %}}
 
 Next, position your camera to capture a variety of images of people.
