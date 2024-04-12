@@ -34,7 +34,8 @@ For general guidance appropriate for any third-party visualization tool, see [Vi
 
 Before following this tutorial, ensure you have:
 
-- A machine with [`viam-server` installed](/get-started/installation/).
+- A machine with [`viam-server` installed](/get-started/installation/) and connected to the [Viam app](https://app.viam.com).
+  `viam-server` is the open-source software binary that provides much of the functionality of your machine and connects it to the Viam app.
 
 - A configured [sensor component](/components/sensor/), such as the [ultrasonic](/components/sensor/ultrasonic/) sensor, that reports tabular data.
 
