@@ -42,9 +42,9 @@ You can also use your own Viam machine as long as you have followed the [prerequ
 
 Before following this tutorial, ensure you have:
 
-- A machine running Viam.
+- A machine running `viam-server`, the software that runs your machine and connects it to the Viam app.
 
-  - If you are using your own machine, make sure you have [installed `viam-server`](/get-started/installation/).
+  - If you are using your own machine, [install `viam-server`](/get-started/installation/) by following the setup instructions on your machine's page in the [Viam app](https://app.viam.com).
   - If you are using a Viam Rover through [Try Viam](https://app.viam.com/try), no further action is needed.
 
 - A configured camera component.
