@@ -24,20 +24,13 @@ Enter a name for your input controller and click **Create**.
 
 ![An example configuration for a linux-based gamepad input controller component in the Viam App config builder](/components/input-controller/gamepad-input-controller-ui-config.png)
 
-Copy and paste the following attribute template into your input controller's **Attributes** box.
-Then remove and fill in the attributes as applicable to your input controller, according to the table below.
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "dev_file": "<string>",
-  "auto_reconnect": <boolean>
-}
-```
+Edit the attributes as applicable to your input controller, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
+
 {
   "components": [
     {
