@@ -38,7 +38,7 @@ Method Name | Description
 [`StartControlLoop`](/internals/controls-package/#startcontrolloop) | Starts the control loop in a background thread.
 [`CreateConstantBlock`](/internals/controls-package/#createconstantblock) | Creates a control block of type `constant`, all control loops need at least one constant block representing the set point.
 [`UpdateConstantBlock`](/internals/controls-package/#updateconstantblock) | Updates the value of a constant block to the new set point.
-[`CreateTrapzBlock`](/internals/controls-package/#createtrapzblock) | Creates a control block of type `trapezoidalVelocityProfile`, control loops, such as for motors, that control position need a trapezoidal velocity profile block.
+[`CreateTrapzBlock`](/internals/controls-package/#createtrapzblock) | Creates a control block of type `trapezoidalVelocityProfile`. Control loops that control position (for example, control loops for encoded motors), need a trapezoidal velocity profile block.
 [`UpdateTrapzBlock`](/internals/controls-package/#updatetrapzblock) | Updates the attributes of a trapezoidal velocity profile block to the new desired max velocity.
 
 ### SetupPIDControlConfig
@@ -177,7 +177,7 @@ Creates a new control block of type `trapezoidalVelocityProfile`, and then updat
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `name` [(string)](https://pkg.go.dev/builtin#string): The desired name of the trapezoidal block.
+- `name` [(string)](https://pkg.go.dev/builtin#string): The name of the trapezoidal block.
 - `maxVel` [(float64)](https://pkg.go.dev/builtin#float64): The max velocity for the controlled component to move at.
 - `dependsOn` [([]string)](https://pkg.go.dev/builtin#string): An array of strings containing the names of the other control blocks that the new trapezoidal block depends on. Usually the set point and the end point.
 - `loop` (`*Loop`): The control loop to be updated with the newly created trapezoidal block.
