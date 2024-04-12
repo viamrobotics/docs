@@ -72,7 +72,7 @@ To capture data from your machine and sync to the Viam app, add the data managem
 First, add the data management service to your machine to be able capture and sync data:
 
 1. Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
-1. Click the **+** button in the left-hand menu and select **Service** from the drop-down create menu.
+1. Click the **+** button in the left-hand menu and select **Service** from the dropdown.
 1. Select **data management**.
 1. Give the service a name, like `viam-data-manager`, then click **Create**.
 1. On the panel that appears, you can manage the capturing and syncing functions individually.
