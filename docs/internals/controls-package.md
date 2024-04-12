@@ -9,6 +9,8 @@ description: "The Control Package implements feedback control on an endpoint."
 
 ## Introduction
 
+The easiest way to utilize the controls package is by configuring the `control_parameters` attribute for an [encoded motor](/docs/components/motor/gpio/encoded-motor/) and/or a [sensor-controlled base](/docs/components/base/sensor-controlled/). However, if you want to change or customize the control loops on these components, or you want to add a control loop to a different component, you can use the controls package to [build your own PID control loop](/internals/controls-package/#creating-and-using-a-pid-control-loop).
+
 The control package implements feedback control on an endpoint, which is usually the hardware you are trying to control.
 With the control package, users can design a control loop that monitors a process variable (PV) and compares it with a set point (SP).
 The control package will generate a control action to reduce the error value between the SP and PV (_SP-PV_) to zero.
