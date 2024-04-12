@@ -36,39 +36,7 @@ Enter a name for your board and click **Create**.
 
 ![An example configuration for a upboard board in the Viam app Config Builder.](/components/board/upboard-ui-config.png)
 
-Copy and paste the following attribute template into your board's **Attributes** box.
-Then remove and fill in the attributes as applicable to your board, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "digital_interrupts": [
-    {
-      "name": "<your-digital-interrupt-name>",
-      "pin": "<pin-number>"
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "digital_interrupts": [
-    {
-      "name": "your-interrupt",
-      "pin": "18"
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Edit the attributes as applicable to your board, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -82,11 +50,11 @@ Then remove and fill in the attributes as applicable to your board, according to
       "type": "board",
       "namespace": "rdk",
       "attributes": {
+        "analogs": [
+          <...See table below...>
+        ],
         "digital_interrupts": [
-          {
-            "name": "<your-digital-interrupt-name>",
-            "pin": "<pin-number>"
-          }
+          <...See table below...>
         ]
       },
       "depends_on": []
@@ -132,7 +100,11 @@ The following attributes are available for `upboard` boards:
 
 ## Attribute configuration
 
-Configuring these attributes on your board allows you to integrate [digital interrupts](#digital_interrupts) into your machine.
+Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) and [digital interrupts](#digital_interrupts) into your machine.
+
+### `analogs`
+
+{{< readfile "/static/include/components/board/board-analogs.md" >}}
 
 ### `digital_interrupts`
 

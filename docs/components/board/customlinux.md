@@ -345,29 +345,7 @@ Enter a name for your `customlinux` board and click **Create**.
 
 ![An example configuration for a customlinux board in the Viam app Config Builder.](/components/board/customlinux-ui-config.png)
 
-Copy and paste the following attribute template into your board's **Attributes** box.
-Then edit the file path to use your [board definitions file](#create-a-board-definitions-file).
-
-{{< tabs name="Configure attributes" >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "board_defs_file_path": "<file_path>"
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "board_defs_file_path": "/home/root/board.json"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Edit the file path to use your [board definitions file](#create-a-board-definitions-file).
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
