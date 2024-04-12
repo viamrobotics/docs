@@ -13,7 +13,7 @@ aliases:
 
 Configuring a `fake` input controller allows you to test an input controller communicating with your machine, without any physical hardware.
 
-This controller can have [Controls](../#control-field) defined in `attributes`, as seen in the`"JSON Template" tab below.
+This controller can have [Controls](../#control-field) defined in `attributes`, as seen in the "JSON Template" tab below.
 However, these Controls only ever return a single `PositionChangeAbs` event on the X axis, with the [Event.value](../#event-object) stuck at 0.7.
 
 {{< tabs >}}
