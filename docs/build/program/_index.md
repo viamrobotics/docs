@@ -38,7 +38,7 @@ Next, to install your preferred Viam SDK on your Linux or macOS development mach
 
 If you are using the Python SDK, [set up a virtual environment](/build/program/python-venv/) to package the SDK inside before running your code, avoiding conflicts with other projects or your system.
 
-For macOS (both Intel `x86_64` and Apple Silicon) or Linux (`x86`, `aarch64`, `armv6l`), use `pip` as detailed below.
+For macOS (both Intel `x86_64` and Apple Silicon) or Linux (`x86`, `aarch64`, `armv6l`), run the commands outlined below.
 
 ```sh {class="command-line" data-prompt="$"}
 python3 -m venv .venv
