@@ -9,7 +9,7 @@ Then, integrate `analogs` into the `attributes` of your board by following the *
 {{< tabs name="Configure an Analog Reader" >}}
 {{% tab name="Config Builder" %}}
 
-On your boards panel, click **Show more**, then select **Add analog**.
+On your board's panel, click **Show more**, then select **Add analog**.
 Assign a name to your analog and then fill in the required properties outlined below.
 
 ![An example configuration for analogs in the Viam app Config Builder.](/components/board/analogs-ui-config.png)
