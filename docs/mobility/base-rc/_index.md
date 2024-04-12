@@ -49,6 +49,19 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `base remote control` type.
 Enter a name for your service and click **Create**.
 
+In your base remote control service's configuration panel, fill in the attributes field with the following:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "base": "<your-base-name>",
+  "input_controller": "<your-controller-name>"
+}
+```
+
+Edit the attributes as applicable to your machine, according to the table below.
+
+For example:
+
 ![An example configuration for a base remote control service in the Viam app Config Builder.](/mobility/base-rc/base-rc-ui-config.png)
 
 {{% /tab %}}
