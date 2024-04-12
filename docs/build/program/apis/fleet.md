@@ -1658,7 +1658,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ## Find part ID
 
-To copy the ID of your machine part, select the part status dropdown to the right of your machine's location and name on the top of its page and select the copy icon next to **Part ID**.
+To copy the ID of your machine part, select the part status dropdown to the right of your machine's location and name on the top of its page and click the copy icon next to **Part ID**.
 
 For example:
 
