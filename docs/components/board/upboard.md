@@ -50,9 +50,6 @@ Edit the attributes as applicable to your board, according to the table below.
       "type": "board",
       "namespace": "rdk",
       "attributes": {
-        "analogs": [
-          <...See table below...>
-        ],
         "digital_interrupts": [
           <...See table below...>
         ]
@@ -100,11 +97,7 @@ The following attributes are available for `upboard` boards:
 
 ## Attribute configuration
 
-Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) and [digital interrupts](#digital_interrupts) into your machine.
-
-### `analogs`
-
-{{< readfile "/static/include/components/board/board-analogs.md" >}}
+Configuring these attributes on your board allows you to integrate [digital interrupts](#digital_interrupts) into your machine.
 
 ### `digital_interrupts`
 

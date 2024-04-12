@@ -59,16 +59,11 @@ The following attributes are available for `ti` boards:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](#analogs). |
 | `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](#digital_interrupts). |
 
 ## Attribute configuration
 
-Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) and [digital interrupts](#digital_interrupts) into your machine.
-
-### `analogs`
-
-{{< readfile "/static/include/components/board/board-analogs.md" >}}
+Configuring these attributes on your board allows you to integrate [digital interrupts](#digital_interrupts) into your machine.
 
 ### `digital_interrupts`
 
