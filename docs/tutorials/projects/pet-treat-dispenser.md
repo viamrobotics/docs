@@ -299,7 +299,7 @@ Once the model has finished training, deploy it by adding an [ML model service](
 1. Click **Create service** in the lower-left corner.
 1. Select `ML Model` as the type, and select `TFLite CPU` as the model.
 1. Enter `puppyclassifier` as the name, then click **Create**.
-1. To configure your service and deploy a model onto your robot, select **Deploy Model On Robot** for the **Deployment** field.
+1. To configure your service and deploy a model onto your robot, select **Deploy model on robot** for the **Deployment** field.
 1. Select your trained model (`petfeeder`) as your desired **Model**.
 
 ### Use the vision service to detect your pet

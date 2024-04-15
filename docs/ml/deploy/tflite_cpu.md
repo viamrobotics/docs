@@ -35,9 +35,9 @@ You can choose to configure your service with an existing model on the machine o
 {{< tabs >}}
 {{% tab name="Deploy Model on Robot" %}}
 
-1. To configure your service and deploy a model onto your machine, select **Deploy Model On Robot** for the **Deployment** field.
+1. To configure your service and deploy a model onto your machine, select **Deploy model on robot** for the **Deployment** field.
 
-2. Click on **Models** to open a dropdown with all of the ML models available to you privately, as well as all of the ML models available in [the registry](https://app.viam.com), which are shared by users.
+2. Click on **Select models** to open a dropdown with all of the ML models available to you privately, as well as all of the ML models available in [the registry](https://app.viam.com), which are shared by users.
    Models that your organization has trained that are not uploaded to the registry will appear first in the dropdown.
    You can select from any of these models to deploy on your robot.
    Only TensorFlow Lite models are shown.
@@ -55,8 +55,8 @@ To see more details about a model, open its page in [the registry](https://app.v
 {{% /tab %}}
 {{% tab name="Path to Existing Model On Robot" %}}
 
-1. To configure your service with an existing model on the machine, select **Path to Existing Model On Robot** for the **Deployment** field.
-2. Then specify the absolute **Model Path** and any **Optional Settings** such as the absolute **Label Path** and the **Number of threads**.
+1. To configure your service with an existing model on the machine, select **Path to existing model on robot** for the **Deployment** field.
+2. Then specify the absolute **Model path** and any **Optional settings** such as the absolute **Label path** and the **Number of threads**.
 
 ![Create a machine learning models service with an existing model](/services/available-models.png)
 
@@ -128,7 +128,7 @@ The following parameters are available for a `"tflite_cpu"` model:
 | `num_threads` | Optional | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
 
 {{% alert title="Note" color="note" %}}
-If you **Deploy Model on Robot**, `model_path` and `label_path` will be automatically configured in the format `"${packages.<model_name>}/<model-name>.tflite"` and `"${packages.<model_name>}/labels.txt"` respectively.
+If you **Deploy model on robot**, `model_path` and `label_path` will be automatically configured in the format `"${packages.<model_name>}/<model-name>.tflite"` and `"${packages.<model_name>}/labels.txt"` respectively.
 
 If you take the **Path to existing model on robot** approach, your model and label paths do not have to be in the same format.
 For example, they might resemble `home/models/fruit/my_fruit_model.tflite`.
