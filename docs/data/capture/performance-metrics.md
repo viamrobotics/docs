@@ -36,7 +36,19 @@ The module provides a [sensor](/components/sensor/) that allows you to obtain re
 
 1. Go to your machine's **Config** page and click **Create component**.
 2. Then select the `viam:viam-sensor:telegrafsensor` model from the [`viam-telegraf-sensor` module](https://app.viam.com/module/viam/viam-telegraf-sensor).
-3. Click **Add module**, then enter a name or use the suggested name for your sensor, for example `my-telegrafsensor`, and click **Create**.
+3. Click **Add module**, then enter a name for your sensor, for example `my-telegrafsensor`, and click **Create**.
+4. To enable or disable specific metrics, add them to the attributes configuration.
+   For example:
+
+   ```json
+   {
+     "disable_kernel": true
+   }
+   ```
+
+   See [the `telegrafsensor` module documentation](https://github.com/viamrobotics/viam-telegraf-sensor?tab=readme-ov-file#attributes) for the full list of attributes available.
+
+5. Save the configuration.
 
 For more information, see [add a module from the Viam Registry](https://docs.viam.com/registry/configure/#add-a-modular-resource-from-the-viam-registry).
 

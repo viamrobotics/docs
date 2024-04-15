@@ -22,7 +22,7 @@ aliases: /tutorials/integrating-viam-with-openai/
 imageAlt: "An AI powered companion robot called Rosey."
 authors: ["Matt Vella"]
 languages: ["python"]
-viamresources: ["custom", "servo", "board", "ml model", "vision", "speech"]
+viamresources: ["custom", "servo", "board", "mlmodel", "vision", "speech"]
 level: "Intermediate"
 date: "2023-02-15"
 # updated: ""

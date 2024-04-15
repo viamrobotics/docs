@@ -29,8 +29,8 @@ You can extend Viam by adding a module on your machine that provides one or more
    This makes the modular resource available to the machine.
 1. Then add the modular resource itself.
 
-When you add a modular resource from the registry, the underlying module that provides it is automatically added at the same time.
-To add a modular resource from a local module, you must add the module first.
+When you add a modular resource _from the registry_, the underlying module that provides it is automatically added at the same time.
+To add a modular resource from a _local_ module, you must add the module first.
 
 You can search the available modular resources from the Viam Registry here:
 

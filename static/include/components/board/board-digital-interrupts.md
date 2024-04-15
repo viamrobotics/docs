@@ -9,7 +9,7 @@ Integrate `digital_interrupts` into your machine in the `attributes` of your boa
 {{< tabs name="Configure a Digital Interrupt" >}}
 {{% tab name="Config Builder" %}}
 
-On your boards panel, click **Show more**, then select **Add digital interrupt**.
+On your board's panel, click **Show more**, then select **Add digital interrupt**.
 Assign a name to your digital interrupt and then enter a pin number.
 
 ![An example configuration for digital interrupts in the Viam app Config Builder.](/components/board/digital-interrupts-ui-config.png)
