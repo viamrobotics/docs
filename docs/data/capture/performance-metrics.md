@@ -36,7 +36,7 @@ The module provides a [sensor](/components/sensor/) that allows you to obtain re
 
 1. Go to your machine's **Config** page and click **Create component**.
 2. Then select the `viam:viam-sensor:telegrafsensor` model from the [`viam-telegraf-sensor` module](https://app.viam.com/module/viam/viam-telegraf-sensor).
-3. Click **Add module**, then enter a name for your sensor, for example `my-telegrafsensor`, and click **Create**.
+3. Click **Add module**, then Enter a name or use the automatically suggested name for your sensor, for example `my-telegrafsensor`, and click **Create**.
 
 For more information, see [add a module from the Viam Registry](https://docs.viam.com/registry/configure/#add-a-modular-resource-from-the-viam-registry).
 

@@ -25,7 +25,7 @@ Then add your motor:
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `motor` type, then select the `gpio` model.
-Enter a name for your motor and click **Create**.
+Enter a name or use the automatically suggested name for your motor and click **Create**.
 
 ![G P I O motor config in the builder UI with the In1 and In2 pins configured and the PWM pin field left blank.](/components/motor/gpio-config-ui.png)
 

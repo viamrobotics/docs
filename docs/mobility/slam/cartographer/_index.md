@@ -291,7 +291,7 @@ For more information about the configuration attributes, see [Attributes](#attri
 
    When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
 
-   Enter a name for your new map and click **Start session**.
+   Enter a name or use the automatically suggested name for your new map and click **Start session**.
    Wait for the slam session to finish starting up in the cloud, which **takes about 2 minutes**.
 
    Make sure to either **manually refresh**, or **change the refresh frequency** to something other than `Manual`.

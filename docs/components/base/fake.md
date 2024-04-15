@@ -19,7 +19,7 @@ Configure a `fake` base to test implementing a base component on your machine wi
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `base` type, then select the `fake` model.
-Enter a name for your base and click **Create**.
+Enter a name or use the automatically suggested name for your base and click **Create**.
 
 ![An example configuration for a fake base in the Viam app Config Builder.](/components/base/fake-base-ui-config.png)
 

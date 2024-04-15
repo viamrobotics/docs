@@ -17,7 +17,7 @@ In addition to [`GetCompassHeading()`](/components/movement-sensor/#getcompasshe
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `movement-sensor` type, then select the `dual-gps-rtk` model.
-Enter a name for your movement sensor and click **Create**.
+Enter a name or use the automatically suggested name for your movement sensor and click **Create**.
 
 ![Creation of a `dual-gps-rtk` movement sensor in the Viam app config builder.](/components/movement-sensor/dual-gps-rtk-builder.png)
 

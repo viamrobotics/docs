@@ -20,7 +20,7 @@ Configure a `sensirion-sht3xd` sensor to integrate a [Sensirion SHT3x-DIS temper
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `sensor` type, then select the `sensirion-sht3xd` model.
-Enter a name for your sensor and click **Create**.
+Enter a name or use the automatically suggested name for your sensor and click **Create**.
 
 ![Creation of a sensirion-sht3xd sensor in the Viam app config builder.](/components/sensor/sensirion-sht3xd-sensor-ui-config.png)
 

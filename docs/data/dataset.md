@@ -95,7 +95,7 @@ Once you have created a dataset, you can select the existing dataset from the dr
 {{<gif webm_src="/data/add-to-dataset.webm" mp4_src="/data/add-to-dataset.mp4" alt="Add image to dataset">}}
 
 You can also create a new dataset from the [**DATASETS** subtab](https://app.viam.com/data/datasets).
-Click **Create dataset**, enter a name for your dataset and click **Create dataset** again.
+Click **Create dataset**, Enter a name or use the automatically suggested name for your dataset and click **Create dataset** again.
 
 ![Create dataset UI](/data/create-dataset.png)
 

@@ -17,7 +17,7 @@ Configure a `fake` generic component to test implementing a generic component on
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `generic` type, then select the `fake` model.
-Enter a name for your generic component and click **Create**.
+Enter a name or use the automatically suggested name for your generic component and click **Create**.
 
 ![An example configuration for a fake generic component in the Viam app Config Builder.](/components/generic/fake-generic-ui-config.png)
 

@@ -135,7 +135,7 @@ Go to the [Viam app](https://app.viam.com/) and navigate to your new machine's *
 Add a [_board component_](/components/board/) to represent your single-board computer, which in this case is the Raspberry Pi.
 To create the new component, click the **+** icon next to your machine {{< glossary_tooltip term_id="part" text="part" >}} in the left-hand menu and select **Component**.
 Select the `board` type, then select the `pi` model.
-Enter a name for your board and click **Create**.
+Enter a name or use the automatically suggested name for your board and click **Create**.
 We used the name `"local"`.
 
 Your board component panel will look like this:

@@ -20,7 +20,7 @@ Linux supports most standard gamepads, such as PlayStation or Xbox type game con
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `input_controller` type, then select the `gamepad` model.
-Enter a name for your input controller and click **Create**.
+Enter a name or use the automatically suggested name for your input controller and click **Create**.
 
 ![An example configuration for a linux-based gamepad input controller component in the Viam App config builder](/components/input-controller/gamepad-input-controller-ui-config.png)
 
