@@ -18,7 +18,7 @@ Configure a `lite6` arm to add a [UFACTORY Lite 6](https://www.ufactory.cc/produ
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `arm` type, then select the `lite6` model.
-Enter a name or use the automatically suggested name for your arm and click **Create**.
+Enter a name or use the suggested name for your arm and click **Create**.
 
 ![Web UI configuration panel for an arm of model lite6 in the Viam app, with Attributes & Depends On dropdowns and the option to add a frame.](/components/arm/lite6-ui-config.png)
 

@@ -27,7 +27,7 @@ To configure a Raspberry Pi 5, see [Configure a Raspberry Pi 5 board](/component
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `board` type, then select the `pi` model.
-Enter a name or use the automatically suggested name for your board and click **Create**.
+Enter a name or use the suggested name for your board and click **Create**.
 
 ![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/components/board/pi-ui-config.png)
 

@@ -18,7 +18,7 @@ Configure an `ultrasonic` sensor to integrate the [HC-S204](https://www.sparkfun
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `sensor` type, then select the `ultrasonic` model.
-Enter a name or use the automatically suggested name for your sensor and click **Create**.
+Enter a name or use the suggested name for your sensor and click **Create**.
 
 ![Creation of a ultrasonic sensor in the Viam app config builder.](/build/micro-rdk/ultrasonic/ultrasonic-sensor-ui-config.png)
 

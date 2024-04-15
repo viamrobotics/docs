@@ -164,7 +164,7 @@ Once you have created a dataset containing the images you want to use, label and
 Once your dataset is ready, train a new ML model on that dataset.
 
 1. Click the **Train model** button in the upper-left corner of the [**Datasets**](https://app.viam.com/data/datasets) subtab view for your dataset.
-1. Select the **Object detection** model type, select the label or labels you added in the previous step, Enter a name or use the automatically suggested name for your new ML model, and click **Train model**.
+1. Select the **Object detection** model type, select the label or labels you added in the previous step, Enter a name or use the suggested name for your new ML model, and click **Train model**.
 
    {{< imgproc src="/tutorials/filtered-camera-module/train-a-new-model.png" alt="The models tab in the Viam app showing the configuration for training a new object detection model using the viam-figure dataset and viam-figure label" resize="1000x" >}}
 
@@ -210,7 +210,7 @@ To upload and use an existing ML model:
 1. Navigate to the [**Models** page](https://app.viam.com/data/models) in the Viam app and click the **Upload model** button.
 1. Select **New model** and configure visibility for your model: public models are available to all Viam users while private models are only available to users in your [organization](/fleet/organizations/).
 1. If you haven't already, you will be prompted to select an [organization namespace](/fleet/organizations/#create-a-namespace-for-your-organization).
-1. Then, in the resulting **Upload model** screen, Enter a name or use the automatically suggested name for your model, select **Object detection**, and upload both the <file>effdet0.tflite</file> and <file>labels.txt</file> files.
+1. Then, in the resulting **Upload model** screen, Enter a name or use the suggested name for your model, select **Object detection**, and upload both the <file>effdet0.tflite</file> and <file>labels.txt</file> files.
    Add a brief description of your model, then click **Upload model**.
 
    {{< imgproc src="/tutorials/filtered-camera-module/upload-existing-model.png" alt="The models subtab under the data tab in the Viam app showing an existing model upload for an object detection model, including the effdet0.tflite model file and the labels.txt labels file" resize="800x" >}}

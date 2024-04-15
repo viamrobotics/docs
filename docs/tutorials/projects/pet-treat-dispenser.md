@@ -308,7 +308,7 @@ To detect your pet with your machine learning model, you need to add a [vision s
 
 1. From the **Services** subtab, click **Create service** in the lower-left corner.
 1. Select `Vision` as the type and `ML Model` as the model.
-1. Enter a name or use the automatically suggested name for your ML model service and click **Create**.
+1. Enter a name or use the suggested name for your ML model service and click **Create**.
 1. Select the model you previously created in the dropdown menu.
 1. Navigate to the **Components** subtab and click **Create component** in the lower-left corner.
 1. Create a [transform camera](/components/camera/transform/) by selecting type `camera` and model `transform`.

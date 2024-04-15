@@ -227,7 +227,7 @@ Configuring a base component also provides you with a nice UI for moving the rov
 Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `base` type, then select the `wheeled` model.
-Enter a name or use the automatically suggested name for your base and click **Create**.
+Enter a name or use the suggested name for your base and click **Create**.
 
 {{< imgproc src="/components/base/wheeled-base-ui-config.png" alt="An example configuration for a wheeled base." resize="600x" >}}
 
@@ -319,7 +319,7 @@ Finally, add a camera to your SCUTTLE robot.
 Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `camera` type, then select the `webcam` model.
-Enter a name or use the automatically suggested name for your camera and click **Create**.
+Enter a name or use the suggested name for your camera and click **Create**.
 
 {{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="600x" >}}
 

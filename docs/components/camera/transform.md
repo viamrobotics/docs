@@ -20,7 +20,7 @@ The transformations are applied in the order they are written in the `pipeline`.
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `camera` type, then select the `transform` model.
-Enter a name or use the automatically suggested name for your camera and click **Create**.
+Enter a name or use the suggested name for your camera and click **Create**.
 
 ![Configuration of an transform view in the Viam app config builder.](/components/camera/configure-transform.png)
 

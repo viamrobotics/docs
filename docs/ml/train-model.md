@@ -28,7 +28,7 @@ Then click on the dataset you want to train a model from and click on the **Trai
 
 On the **Train a model** menu:
 
-1. Enter a name or use the automatically suggested name for your new model.
+1. Enter a name or use the suggested name for your new model.
 1. Select a **Model Type** and one or more labels to train on:
    - **Single Label Classification**: The resulting model predicts one of the selected labels or `UNKNOWN` per image.
      If you are only using one label, ensure that the dataset you are training on also contains unlabeled images.
