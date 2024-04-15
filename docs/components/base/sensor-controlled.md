@@ -32,7 +32,7 @@ Configure a `sensor-controlled` base as follows:
 Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `base` type, then select the `sensor-controlled` model.
-Enter a name for your base and click **Create**.
+Enter a name or use the suggested name for your base and click **Create**.
 
 {{< imgproc src="/components/base/sensor-controlled-base-ui-config.png" alt="An example configuration for a sensor-controlled base in the Viam app config builder" resize="600x" >}}
 

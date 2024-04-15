@@ -51,7 +51,7 @@ To prepare your machine, attach [encoders](/components/encoder/) to each of the 
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `movement-sensor` type, then select the `wheeled-odometry` model.
-Enter a name for your movement sensor and click **Create**.
+Enter a name or use the suggested name for your movement sensor and click **Create**.
 
 {{< imgproc src="/components/movement-sensor/wheeled-odometry-builder.png" alt="Creation of an `wheeled-odometry` movement sensor in the Viam app config builder." resize="1200x" style="width:650px" >}}
 

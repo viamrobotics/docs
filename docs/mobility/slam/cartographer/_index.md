@@ -109,7 +109,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
    Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
    Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
-   Choose `Data Management` as the type and specify a name for your data management service, for example `Data-Management-Service`.
+   Choose `Data Management` as the type and either use the suggested name or specify a name for your data management service, for example `Data-Management-Service`.
    Click **Create**.
 
    On the panel that appears, you can manage the capturing and syncing functions.
@@ -287,7 +287,7 @@ For more information about the configuration attributes, see [Attributes](#attri
 
    When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
 
-   Enter a name for your new map and click **Start session**.
+   Enter a name or use the suggested name for your new map and click **Start session**.
    Wait for the slam session to finish starting up in the cloud, which **takes about 2 minutes**.
 
    Make sure to either **manually refresh**, or **change the refresh frequency** to something other than `Manual`.

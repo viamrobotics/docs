@@ -25,7 +25,7 @@ Configure an `ultrasonic` camera to integrate the [HC-S204](https://www.sparkfun
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `camera` type, then select the `ultrasonic` model.
-Enter a name for your camera and click **Create**.
+Enter a name or use the suggested name for your camera and click **Create**.
 
 ![Creation of a ultrasonic camera in the Viam app config builder.](/components/camera/configure-ultrasonic.png)
 

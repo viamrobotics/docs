@@ -50,7 +50,7 @@ Now you're ready to share that config by creating a fragment.
 
 To create your own private fragment, go to [app.viam.com/fragments](https://app.viam.com/fragments) or click on **Fragments** in the left navigation bar on the [**FLEET** page](https://app.viam.com/robots).
 
-1. Enter a name for your new fragment and click **Add fragment**.
+1. Enter a name or use the suggested name for your new fragment and click **Add fragment**.
 2. Paste the copied JSON configuration in the config field.
 3. Click **Save fragment**.
 

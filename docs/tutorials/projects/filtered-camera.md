@@ -68,7 +68,7 @@ Next, add the data management service to your machine to be able to capture and 
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, and select **Data Management**.
-1. Give the service a name, like `my-data-management`, then click **Create**.
+1. Use the suggested name for your service or give it a name, like `my-data-management`, then click **Create**.
 1. On the panel that appears, you can manage the capturing and syncing functions individually.
    By default, the data management service captures data to the <file>~/.viam/capture</file> directory, and syncs captured data files to the Viam app every 6 seconds (`0.1` minutes in the configuration).
    Leave the default settings as they are, and click **Save Config** at the bottom of the screen to save your changes.
@@ -164,7 +164,7 @@ Once you have created a dataset containing the images you want to use, label and
 Once your dataset is ready, train a new ML model on that dataset.
 
 1. Click the **Train model** button in the upper-left corner of the [**Datasets**](https://app.viam.com/data/datasets) subtab view for your dataset.
-1. Select the **Object detection** model type, select the label or labels you added in the previous step, enter a name for your new ML model, and click **Train model**.
+1. Select the **Object detection** model type, select the label or labels you added in the previous step, enter a name or use the suggested name for your new ML model, and click **Train model**.
 
    {{< imgproc src="/tutorials/filtered-camera-module/train-a-new-model.png" alt="The models tab in the Viam app showing the configuration for training a new object detection model using the viam-figure dataset and viam-figure label" resize="1000x" >}}
 
@@ -210,7 +210,7 @@ To upload and use an existing ML model:
 1. Navigate to the [**Models** page](https://app.viam.com/data/models) in the Viam app and click the **Upload model** button.
 1. Select **New model** and configure visibility for your model: public models are available to all Viam users while private models are only available to users in your [organization](/fleet/organizations/).
 1. If you haven't already, you will be prompted to select an [organization namespace](/fleet/organizations/#create-a-namespace-for-your-organization).
-1. Then, in the resulting **Upload model** screen, enter a name for your model, select **Object detection**, and upload both the <file>effdet0.tflite</file> and <file>labels.txt</file> files.
+1. Then, in the resulting **Upload model** screen, enter a name or use the suggested name for your model, select **Object detection**, and upload both the <file>effdet0.tflite</file> and <file>labels.txt</file> files.
    Add a brief description of your model, then click **Upload model**.
 
    {{< imgproc src="/tutorials/filtered-camera-module/upload-existing-model.png" alt="The models subtab under the data tab in the Viam app showing an existing model upload for an object detection model, including the effdet0.tflite model file and the labels.txt labels file" resize="800x" >}}
@@ -236,7 +236,7 @@ Add the ML model service to your machine to be able to deploy and update ML mode
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, select **ML model**, then select the built-in `TFLite CPU` model.
-1. Give the service a name, like `my-mlmodel-service`, then click **Create**.
+1. Use the suggested name for your service or give it a name, like `my-mlmodel-service`, then click **Create**.
 1. On the panel that appears, select the **Deploy model on robot** toggle, then select your model from the **Models** dropdown.
    If you don't see your model name appear here, ensure that your model appears under the [**Models** subtab](https://app.viam.com/data/models) of the **Data** tab in the Viam app.
    If you trained your own model, ensure that the model has finished training and appears under the **Models** section of that page, and not the **Training** section.
@@ -252,7 +252,7 @@ Add the vision service to your machine to be able to use the deployed ML model w
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, select **Vision**, then select the built-in `ML model` model.
-1. Give the service a name, like `my-vision-service`, then click **Create**.
+1. Use the suggested name for your service or give it a name, like `my-vision-service`, then click **Create**.
 1. On the panel that appears, select your ML model from the **ML Model** dropdown.
 1. Click **Save Config** at the bottom of the window to save your changes.
 

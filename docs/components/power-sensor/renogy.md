@@ -20,7 +20,7 @@ Configure a `renogy` sensor to integrate a [Renogy charge controller](https://ww
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `power_sensor` type, then select the `renogy` model.
-Enter a name for your sensor and click **Create**.
+Enter a name or use the suggested name for your sensor and click **Create**.
 
 {{<imgproc src="/components/power-sensor/renogy-config-builder.png" resize="800x" declaredimensions=true alt="Renogy power sensor configuration tab ">}}
 
