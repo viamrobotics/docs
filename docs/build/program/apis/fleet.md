@@ -556,7 +556,7 @@ Get the logs associated with a specific machine {{< glossary_tooltip term_id="pa
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to get logs from.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to get logs from. See [Find part ID](#find-part-id) for instructions on retrieving this value.
 - `filter` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Only include logs with messages that contain the string `filter`.
   Defaults to empty string `""`, meaning no filter.
 - `dest` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional filepath to write the log entries to.
@@ -623,7 +623,7 @@ Get a list containing the history of a machine {{< glossary_tooltip term_id="par
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to retrieve history from.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to retrieve history from. See [Find part ID](#find-part-id) for instructions on retrieving this value.
 
 **Raises:**
 
@@ -652,7 +652,7 @@ Change the name of and assign an optional new configuration to a machine {{< glo
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to update.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to update. See [Find part ID](#find-part-id) for instructions on retrieving this value.
 - `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): New name to be updated on the machine part.
 - `robot_config` (Mapping[str, Any]): Optional new config represented as a dictionary to be updated on the machine part.
   The machine part's config remains unchanged if a new `robot_config` is not passed.
@@ -714,7 +714,7 @@ Delete the specified machine {{< glossary_tooltip term_id="part" text="part" >}}
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to delete.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to delete. See [Find part ID](#find-part-id) for instructions on retrieving this value.
 
 **Raises:**
 
@@ -739,7 +739,7 @@ Mark a machine part as the [_main_ part](/build/configure/parts/#machine-parts) 
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to mark as main.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to mark as main. See [Find part ID](#find-part-id) for instructions on retrieving this value.
 
 **Raises:**
 
@@ -764,7 +764,7 @@ Mark a specified machine part for restart.
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to mark for restart.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to mark for restart. See [Find part ID](#find-part-id) for instructions on retrieving this value.
 
 **Raises:**
 
@@ -789,7 +789,7 @@ Create a machine {{< glossary_tooltip term_id="part" text="part" >}} secret.
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to create a secret for.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to create a secret for. See [Find part ID](#find-part-id) for instructions on retrieving this value.
 
 **Raises:**
 
@@ -818,7 +818,7 @@ Delete a machine part secret.
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to delete the secret from.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to delete the secret from. See [Find part ID](#find-part-id) for instructions on retrieving this value.
 - `secret_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the secret to delete.
 
 **Raises:**
@@ -1655,3 +1655,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Find part ID
+
+To copy the ID of your machine part, select the part status dropdown to the right of your machine's location and name on the top of its page and click the copy icon next to **Part ID**.
+
+For example:
+
+![Part ID displayed in the Viam app.](/build/program/data-client/grab-part-id.png)
