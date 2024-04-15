@@ -66,6 +66,12 @@
                               {{- end -}}
                         {{- end -}}
 
+                        {{- if .Params.resource -}}
+                              {{- $.Scratch.Set "resource" .Params.resource -}}
+                        {{- else -}}
+                              {{- $.Scratch.Set "resource" "docs-tutorial" -}}
+                        {{- end -}}
+
                         {{- if .Params.canonical -}}
                               {{- $.Scratch.Set "permalink" (printf "%s" .Params.canonical) -}}
                               {{- $.Scratch.Set "relpermalink" (printf "%s" .Params.canonical) -}}
@@ -103,7 +109,7 @@
                               "level" .Params.level
                               "cost" (int (.Params.cost))
                               "featured" ($.Scratch.Get "featured")
-                              "resource" "docs-tutorial"
+                              "resource" ($.Scratch.Get "resource")
                         )}}
                   {{- end -}}
             {{- end -}}
