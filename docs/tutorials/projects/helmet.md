@@ -64,7 +64,7 @@ Get your hardware ready and connected to the Viam platform:
 
 2. Make sure your computer (whether it's a personal computer or an SBC) is connected to adequate power, and turn it on.
 
-3. If you haven't already, [create a new machine](/fleet/machines/#add-a-new-machine) in the [Viam app](https://app.viam.com) and follow the instructions to [install `viam-server`](/get-started/installation/) on the computer you're using for this project.
+3. If you haven't already, [create a new machine](/fleet/machines/#add-a-new-machine) in the [Viam app](https://app.viam.com) and follow the instructions to [install `viam-server`](/get-started/installation/), the software you will use to operate your machine, on the computer you're using for this project.
 
 ## Configure the camera and computer vision
 
@@ -73,9 +73,9 @@ Get your hardware ready and connected to the Viam platform:
 Configure your [webcam](/components/camera/webcam/) so that your machine can get the video stream from the camera:
 
 1. On the [Viam app](https://app.viam.com), navigate to your machine's page.
-   Check that the **Last online** indicator reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with the Viam app.
+   Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with the Viam app.
 
-2. Click **Create component** in the lower-left corner of the page.
+2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**.
    Start typing "webcam" and select **camera / webcam**.
    Give your camera a name.
    This tutorial uses the name `my_webcam` in all example code.
@@ -83,15 +83,15 @@ Configure your [webcam](/components/camera/webcam/) so that your machine can get
 
 3. Click the **video path** dropdown and select the webcam you'd like to use for this project from the list of suggestions.
 
-4. At the bottom of the screen, click **Save config**.
+4. Click **Save** in the top right corner of the screen to save your changes.
 
 ### Test your physical camera
 
-To test your camera, go to the **Control** tab and click to expand your camera's panel.
+To test your camera, go to the **CONTROL** tab and click to expand your camera's panel.
 
 Toggle **View `my_webcam`** to the "on" position.
 The video feed should display.
-If it doesn't, double-check that your config is saved correctly, and check the **Logs** tab for errors.
+If it doesn't, double-check that your config is saved correctly, and check the **LOGS** tab for errors.
 
 ### Configure the vision service
 
@@ -99,15 +99,15 @@ Now that you know the camera is properly connected to your machine, it is time t
 Viam's built-in [`mlmodel` vision service](/ml/vision/mlmodel/) works with Tensor Flow Lite models, but since this tutorial uses a YOLOv8 model, we will use a {{< glossary_tooltip term_id="module" text="module" >}} from the [modular resource registry](/registry/) that augments Viam with YOLOv8 integration.
 The [YOLOv8 module](https://github.com/viam-labs/YOLOv8) enables you to use any [YOLOv8 model](https://huggingface.co/models?other=yolov8) with your Viam machines.
 
-1. Navigate to the **Services** subtab of your machine's **Config** tab.
+1. Navigate to your machine's **CONFIGURE** tab.
 
-2. Click **Create service**.
+2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**.
    Start typing `yolo` and select **vision / yolov8** from the registry options.
    Click **Add module**.
 
 3. Give your vision service a name, for example `yolo`, and click **Create**.
 
-4. In the **Attributes** box of your new vision service, paste the following JSON:
+4. In the attributes box of your new vision service, paste the following JSON:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
@@ -121,7 +121,7 @@ The [YOLOv8 module](https://github.com/viam-labs/YOLOv8) enables you to use any 
 
    {{<imgproc src="/tutorials/helmet/model-location.png" resize="x1100" declaredimensions=true alt="The vision service configured in the Viam app per the instructions." >}}
 
-5. Click **Save config** at the bottom of the screen.
+5. Click **Save** in the top right corner of the screen to save your changes.
 
 ### Configure the `objectfilter` module
 
@@ -131,10 +131,11 @@ This module takes a vision service (in this case, your hard hat detector) and ap
 It outputs a stream with bounding boxes around the hard hats (and people without hard hats) in your camera's view so that you can see the detector working.
 This module also filters the output so that later, when you configure data management, you can save only the images that contain people without hard hats rather than all images the camera captures.
 
-1. Navigate to the **Components** subtab of your machine's **Config** tab.
+1. Navigate to your machine's **CONFIGURE** tab.
 
-2. Click **Create component**.
+2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**.
    Start typing `objectfilter` and select **camera / objectfilter** from the results.
+   Click **Add module**.
 
 3. Name your filtering camera something like `objectfilter-cam` and click **Create**.
 
@@ -163,13 +164,13 @@ This module also filters the output so that later, when you configure data manag
 
    {{<imgproc src="/tutorials/helmet/filtercam-config.png" resize="x1100" declaredimensions=true alt="The detector_cam config panel in the Viam app." >}}
 
-5. Click **Save config** at the bottom of the screen.
+5. Click **Save** in the top right corner of the screen to save your changes.
 
 ### Test the detector
 
 Now that the detector is configured, it's time to test it!
 
-1. Navigate to the **Control** tab.
+1. Navigate to the **CONTROL** tab.
 
 2. Click the **objectfilter_cam** panel to open your detector camera controls.
 
@@ -189,22 +190,22 @@ Configure data capture on the `objectfilter` camera to capture images of people 
 
 1. First, you need to add the data service to your machine to make it available to capture data on your camera.
 
-   Navigate to the **Services** subtab of your machine's **Config** tab.
+   Navigate to tyour machine's **CONFIGURE** tab.
 
-   Click **Create service**.
+   Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**.
    Type "data" and click **data management / RDK**.
    Name your data management service `data-manager` and click **Create**.
 
-   Leave all the default data service attributes as they are and click **Save config**.
+   Leave all the default data service attributes as they are and click **Save** in the top right corner of the screen to save your changes.
 
 2. Now you're ready to enable data capture on your detector camera.
-   Navigate to the **Components** subtab.
    Locate the `objectfilter-cam` panel.
 
 3. Click **Add method**.
    Click the **Type** dropdown and select **ReadImage**.
    Set the capture frequency to `0.2` images per second (equivalent to one image every 5 seconds).
    You can always change the frequency to suit your use case.
+   Leave **MIME type** at the default `image/jpeg`.
 
    {{<imgproc src="/tutorials/helmet/datacapture-config.png" resize="x1100" declaredimensions=true alt="The objectfilter cam configured with data capture set to read images at 0.2 hertz. Mime type is left at the default image/jpeg." >}}
 
@@ -229,11 +230,11 @@ To make sure the detector camera is capturing and syncing labeled images:
 Until now, you've been identifying people without hard hats as well as people with hard hats.
 Now that you have verified that the detector and data sync are working, modify your config so that only images with people _without_ hard hats are captured:
 
-1. Navigate to your `objectfilter-cam` card on the **Config** tab.
+1. Navigate to your `objectfilter-cam` card on the **CONFIGURE** tab.
 
 2. Delete the `"Hardhat",` line from the `"labels"` array.
 
-3. Click **Save config**.
+3. Click **Save** in the top right corner of the screen to save your changes.
 
 ## Set up email notifications
 
@@ -405,10 +406,10 @@ Since you configured data to sync only when an image of a person without a hard 
 
 Configure a webhook as follows:
 
-1. Navigate to the **Config** tab of your machine.
-   Toggle the **Mode** to **Raw JSON**.
+1. Navigate to the **CONFIGURE** tab of your machine.
+   Select **JSON** mode in the left-hand menu.
 
-2. Paste the following JSON template into your raw JSON config.
+2. Paste the following JSON template into your JSON config.
    `"webhooks"` is a top-level section like `"components"`, `"services"`, or any of the other config sections.
 
    ```json {class="line-numbers linkable-line-numbers"}
@@ -429,7 +430,7 @@ Configure a webhook as follows:
    You can get this URL by copying it from the **TRIGGER** tab in the cloud function console.
    Once you've done this, the `url` line should resemble, for example, `"url": "https://us-east1-example-string-123456.cloudfunctions.net/hat-email"`.
 
-4. Click **Save config**.
+4. Click **Save** in the top right corner of the screen to save your changes.
 
 ## Test the whole system
 
