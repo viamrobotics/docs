@@ -24,7 +24,7 @@ Enter a name for your camera and click **Create**.
 ![Configuration of an image file camera in the Viam app config builder.](/components/camera/configure-image-file.png)
 
 Edit the attributes as applicable to your camera, according to the table below.
-Note that you *must* specify at least one of `color_image_file_path`, `depth_image_file_path`, and `pointcloud_file_path`.
+Note that you _must_ specify at least one of `color_image_file_path`, `depth_image_file_path`, and `pointcloud_file_path`.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
