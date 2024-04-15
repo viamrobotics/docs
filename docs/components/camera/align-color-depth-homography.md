@@ -24,7 +24,8 @@ Enter a name for your camera and click **Create**.
 
 ![Configuration of an align color depth homography view in the Viam app config builder.](/components/camera/configure-align-color-depth-homography.png)
 
-Copy and paste the following attribute template into your camera's **Attributes** box.
+Click the **{}** (Switch to Advanced) button in the top right of the component panel to edit the component's attributes directly with JSON.
+Copy and paste the following attribute template into your camera's attributes field.
 Then remove and fill in the attributes as applicable to your camera, according to the table below.
 
 ```json {class="line-numbers linkable-line-numbers"}

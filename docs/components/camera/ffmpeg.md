@@ -25,54 +25,7 @@ Enter a name for your camera and click **Create**.
 
 ![Configuration of a ffmpeg camera in the Viam app config builder.](/components/camera/configure-ffmpeg.png)
 
-Copy and paste the following attribute template into your camera's **Attributes** box.
-Then remove and fill in the attributes as applicable to your camera, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "video_path": "<your-video-path>",
-  "intrinsic_parameters": {
-    "width_px": <int>,
-    "height_px": <int>,
-    "fx": <float>,
-    "fy": <float>,
-    "ppx": <float>,
-    "ppy": <float>
-  },
-  "distortion_parameters": {
-    "rk1": <float>,
-    "rk2": <float>,
-    "rk3": <float>,
-    "tp1": <float>,
-    "tp2": <float>
-  },
-  "debug": <boolean>,
-  "input_kw_args": { ... },
-  "filters": [
-    {
-      "name": <string>,
-      "args": [ "<first>", "<second>", ... ],
-      "kw_args": { ... }
-    }
-  ],
-  "output_kw_args": { ... },
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "video_path": "video0"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Edit the attributes as applicable to your camera, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

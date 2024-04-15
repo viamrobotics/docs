@@ -22,10 +22,10 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `camera` type, then select the `webcam` model.
 Enter a name for your camera and click **Create**.
 
-{{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="1200x" style="width=600x" >}}
 
 Edit and fill in the attributes as applicable.
-If you click on the **Video Path** field while your machine is live, a dropdown autopopulates with identified camera paths.
+If you click on **Show more**, then the **video_path** field while your machine is live, a dropdown autopopulates with identified camera paths.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
