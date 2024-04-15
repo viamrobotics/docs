@@ -98,7 +98,7 @@ We used a [`jetson` board](/components/board/jetson/), but you can use any model
 ![Configuration of a jetson board with digital interrupts in the Viam app config builder.](/tutorials/navigate-with-rover-base/board-config-builder.png)
 
 2. Configure [digital interrupts](/components/board/#digital_interrupts) on your board to signal precise GPIO state changes to the [encoders](/components/encoder/) on your rover base.
-   Copy and paste the following into your board's **Attributes** to add [digital interrupts](/components/board/#digital_interrupts) on pins `31`, `29`, `23`, and `21`:
+   Copy and paste the following into your board's attributes box to add [digital interrupts](/components/board/#digital_interrupts) on pins `31`, `29`, `23`, and `21`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -133,9 +133,9 @@ Start by configuring the [encoders](/components/encoder/) and [motors](/componen
 1. Follow [these instructions](/components/) to configure the left and right encoders of the wheeled base.
    We configured ours as [`incremental` encoders](/components/encoder/incremental/), as shown below:
 
-   {{<imgproc src="/tutorials/navigate-with-rover-base/right-encoder-config-builder.png" resize="400x" declaredimensions=true alt="Configuration of a right incremental encoder in the Viam app config builder." class="aligncenter" style="min-height:550px; max-height:600px">}}
+   {{<imgproc src="/tutorials/navigate-with-rover-base/right-encoder-config-builder.png" resize="1000x" declaredimensions=true alt="Configuration of a right incremental encoder in the Viam app config builder." class="aligncenter" style="min-height:550px; max-height:600px">}}
 
-   {{<imgproc src="/tutorials/navigate-with-rover-base/left-encoder-config-builder.png" resize="400x" declaredimensions=true alt="Configuration of a left incremental encoder in the Viam app config builder." class="aligncenter" style="min-height:550px; max-height:600px">}}
+   {{<imgproc src="/tutorials/navigate-with-rover-base/left-encoder-config-builder.png" resize="950x" declaredimensions=true alt="Configuration of a left incremental encoder in the Viam app config builder." class="aligncenter" style="min-height:550px; max-height:600px">}}
 
    Assign the pins as the [digital interrupts](/components/board/#digital_interrupts) you configured for the board, and wire the encoders accordingly to pins {{< glossary_tooltip term_id="pin-number" text="numbered" >}} `31`, `29`, `23`, and `21` on your `local` board.
    Refer to the [`incremental` encoder documentation](/components/encoder/incremental/) for attribute information.
@@ -143,19 +143,24 @@ Start by configuring the [encoders](/components/encoder/) and [motors](/componen
 2. Next, follow [these instructions](/components/motor/#supported-models) to configure the left and right [motors](/components/motor/) of the `wheeled` base.
    We [configured ours as `gpio` motors](/components/motor/gpio/), as shown below:
 
-   ![Configuration of a right gpio motor in the Viam app config builder.](/tutorials/navigate-with-rover-base/right-motor-config-builder.png)
+{{<imgproc src="/tutorials/navigate-with-rover-base/right-motor-config-builder.png" resize="1500x" declaredimensions=true alt="Configuration of a right gpio motor in the Viam app config builder." style="min-height:550px; max-height:600px">}}
 
-   ![Configuration of a left gpio motor in the Viam app config builder.](/tutorials/navigate-with-rover-base/left-motor-config-builder.png)
-   Wire the motors accordingly to the GPIO pins {{< glossary_tooltip term_id="pin-number" text="numbered" >}} `35`, `35`, `15`, `38`, `40`, and `33` on your `local` board.
-   Refer to the [`gpio` motor](/components/motor/gpio/) documentation for attribute information.
+{{<imgproc src="/tutorials/navigate-with-rover-base/left-motor-config-builder.png" resize="1500x" declaredimensions=true alt="Configuration of a left gpio motor in the Viam app config builder." style="min-height:550px; max-height:600px">}}
+
+Wire the motors accordingly to the GPIO pins {{< glossary_tooltip term_id="pin-number" text="numbered" >}} `35`, `35`, `15`, `38`, `40`, and `33` on your `local` board.
+Refer to the [`gpio` motor](/components/motor/gpio/) documentation for attribute information.
 
 3. Finally, configure whatever rover you have as a [`wheeled`](/components/base/wheeled/) model of base, bringing the motion produced by these motors together on one platform:
-   ![An example configuration for a wheeled base in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/wheeled-base-config-builder.png)
+   {{<imgproc src="/tutorials/navigate-with-rover-base/wheeled-base-config-builder.png" resize="800x" declaredimensions=true alt="An example configuration for a wheeled base in the Viam app Config Builder." style="min-height:550px; max-height:600px">}}
 
-   - Make sure to select each of your right and left motors as **Right Motors** and **Left Motors** and set the wheel circumference and width of each of the wheels the motors are attached to.
+   - Make sure to select each of your right and left motors as **right** and **left**, as well as set the **wheel_circumference_mm** and **width_mm** of each of the wheels the motors are attached to.
    - [Configure the frame system](/mobility/frame-system/#configuration) for this wheeled base so that the navigation service knows where it is in relation to the movement sensor.
-     - Click on **Add frame** on the **Config** tab, and, if your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s **Z** to `1` and **Th** to 90.
+
+     - Switch to **Frame** mode on the **CONFIGURE** tab and select your base.
+       If your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s third input field, Z, to `1` and its fourth input field, theta, to `90`.
      - Select the `world` as the parent frame.
+
+       {{<imgproc src="/tutorials/navigate-with-rover-base/wheeled-base-frame-sys.png" resize="500x" declaredimensions=true alt="An example configuration for a wheeled base in the Viam app Frame System." style="min-height:200px; max-height:250px">}}
 
    Refer to the [`wheeled` base configuration instructions](/components/base/wheeled/) for attribute information.
 
@@ -167,9 +172,9 @@ If you choose to wire your components differently, adjust your pin assignment co
 {{< /alert >}}
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON" %}}
 
-In the **Raw JSON** mode in your machine's **Config** tab, add the following JSON objects to the `"components"` array:
+In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON objects to the `"components"` array:
 
 ```json {class="line-numbers linkable-line-numbers"}
     {
@@ -331,13 +336,17 @@ In the **Raw JSON** mode in your machine's **Config** tab, add the following JSO
 
     - Make sure your `merged` movement sensor is configured to gather `"position"` readings from the `gps` movement sensor.
     - [Configure the frame system](/mobility/frame-system/#configuration) for this movement sensor so that the navigation service knows where it is in relation to the base.
-      Click on **Add frame** on the **Config** tab, and, if your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s **Z** to `1`.
-      Select the `base` as the parent frame.
+
+      - Switch to **Frame** mode on the **CONFIGURE** tab and select your movement sensor.
+        If your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s third input field, Z, to `1`.
+      - Select the `base` as the parent frame.
+
+        ![An example configuration for a merged movement sensor in the Viam app Frame System.](/tutorials/navigate-with-rover-base/merged-movement-sensor-frame-system.png)
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON" %}}
 
-In the **Raw JSON** mode in your machine's **Config** tab, add the following JSON objects to the `"components"` array:
+In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON objects to the `"components"` array:
 
 ```json {class="line-numbers linkable-line-numbers"}
     {
@@ -421,12 +430,13 @@ In the **Raw JSON** mode in your machine's **Config** tab, add the following JSO
 Add the navigation service so that your wheeled base can navigate between waypoints and avoid obstacles.
 To add the navigation service to your robot, do the following:
 
-1. On your machine's **Config** page, navigate to the **Services** tab.
-2. At the bottom of the page, create a service.
-   Choose `Navigation` as the type.
-3. Then click **Create Service**.
-4. Select **Raw JSON** mode.
-   Copy and paste the following into your new service's `"attributes"`:
+1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+1. Select the `Navigation` type.
+1. Enter a name or use the suggested name for your service and click **Create**.
+
+1. Select **JSON** mode.
+   Copy and paste the following into your new service's attributes box:
 
    ```json
    {
@@ -446,18 +456,18 @@ To add the navigation service to your robot, do the following:
    Edit the attributes as applicable.
    Attribute information is available in [the navigation service documentation](/mobility/navigation/#configuration).
 
-5. Click **Save Config** at the bottom of the window.
+1. Click **Save** in the top right corner of the screen to save your changes.
 
-Your navigation service should now appear in your machine's **Config** tab as a card with a map like the following:
+Your navigation service should now appear in your machine's **CONFIGURE** tab as a card with a map like the following:
 
 ![Navigation Card](/tutorials/navigate-with-rover-base/navigation-config-builder.png)
 
 For more detailed information see [the navigation service](/mobility/navigation/#configuration).
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON" %}}
 
-In the **Raw JSON** mode in your machine's **Config** tab, add the following JSON object to the `"services"` array:
+In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON object to the `"services"` array:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "services": [
@@ -488,11 +498,11 @@ Click **Save Config** at the bottom of the window.
 ## Start navigating with the navigation service
 
 Now that you have configured your navigation service, add waypoints to your navigation service.
-You can add waypoints from the [Control tab](#control-tab-method) or [programmatically](#programmatic-method).
+You can add waypoints from the [**CONTROL** tab](#control-tab-method) or [programmatically](#programmatic-method).
 
 ### Control tab method
 
-Go to the **Control** tab of your robot in the [Viam app](https://app.viam.com), and open the **navigation** card.
+Go to the **CONTROL** tab of your robot in the [Viam app](https://app.viam.com), and open the **navigation** card.
 From there, ensure that **Navigation mode** is selected as **Manual**, so your robot will not begin navigation while you add waypoints.
 
 #### Add waypoints
