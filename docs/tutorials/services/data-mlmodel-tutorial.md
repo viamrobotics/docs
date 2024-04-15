@@ -77,7 +77,7 @@ First, add the data management service to your machine to be able capture and sy
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, and select **Data Management**.
-1. Give the service a name, like `viam-data-manager`, then click **Create Service**.
+1. Use the suggested name for your service or give it a name, like `viam-data-manager`, then click **Create Service**.
 1. On the panel that appears, you can manage the capturing and syncing functions individually.
    By default, the data management service captures data locally to the <file>~/.viam/capture</file> directory, and syncs captured data files to the Viam app every 6 seconds (`0.1` minutes in the configuration).
    Leave the default settings as they are, and click **Save Config** at the bottom of the screen to save your changes.
@@ -221,7 +221,7 @@ To deploy a model to your machine:
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, and select **ML Model**, then select **TFLite CPU**.
-1. Give the service a name, like `my-mlmodel-service`, then click **Create**.
+1. Use the suggested name for your service or give it a name, like `my-mlmodel-service`, then click **Create**.
 1. In the resulting ML Model service configuration pane, select **Deploy model on robot**, then select the model you just trained from the **Models** dropdown menu.
 1. Click **Save Config** at the bottom of the window to save your changes.
 
@@ -238,7 +238,7 @@ You can then see the tagged objects on the **Control** tab.
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, and select **Vision**, then select **ML Model**.
-1. Give the service a name, like `my-vision-service`, then click **Create**.
+1. Use the suggested name for your service or give it a name, like `my-vision-service`, then click **Create**.
 1. In the resulting vision service configuration pane, select the ML model service you just added from the **ML Model** dropdown menu.
 
    {{< imgproc src="/tutorials/data-management/vision-service-conf.png" alt="The vision service configuration pane showing the ML model service my-mlmodel-service added" resize="500x" >}}

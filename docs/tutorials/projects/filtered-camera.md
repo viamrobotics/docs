@@ -68,7 +68,7 @@ Next, add the data management service to your machine to be able to capture and 
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, and select **Data Management**.
-1. Give the service a name, like `my-data-management`, then click **Create**.
+1. Use the suggested name for your service or give it a name, like `my-data-management`, then click **Create**.
 1. On the panel that appears, you can manage the capturing and syncing functions individually.
    By default, the data management service captures data to the <file>~/.viam/capture</file> directory, and syncs captured data files to the Viam app every 6 seconds (`0.1` minutes in the configuration).
    Leave the default settings as they are, and click **Save Config** at the bottom of the screen to save your changes.
@@ -236,7 +236,7 @@ Add the ML model service to your machine to be able to deploy and update ML mode
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, select **ML model**, then select the built-in `TFLite CPU` model.
-1. Give the service a name, like `my-mlmodel-service`, then click **Create**.
+1. Use the suggested name for your service or give it a name, like `my-mlmodel-service`, then click **Create**.
 1. On the panel that appears, select the **Deploy model on robot** toggle, then select your model from the **Models** dropdown.
    If you don't see your model name appear here, ensure that your model appears under the [**Models** subtab](https://app.viam.com/data/models) of the **Data** tab in the Viam app.
    If you trained your own model, ensure that the model has finished training and appears under the **Models** section of that page, and not the **Training** section.
@@ -252,7 +252,7 @@ Add the vision service to your machine to be able to use the deployed ML model w
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, select **Vision**, then select the built-in `ML model` model.
-1. Give the service a name, like `my-vision-service`, then click **Create**.
+1. Use the suggested name for your service or give it a name, like `my-vision-service`, then click **Create**.
 1. On the panel that appears, select your ML model from the **ML Model** dropdown.
 1. Click **Save Config** at the bottom of the window to save your changes.
 
