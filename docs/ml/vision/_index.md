@@ -517,7 +517,7 @@ if len(objects) > 0 {
 {{% /tab %}}
 {{< /tabs >}}
 
-## DoCommand
+### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the service API.
 For built-in service models, any model-specific commands available are covered with each model's documentation.

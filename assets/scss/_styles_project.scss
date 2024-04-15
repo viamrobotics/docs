@@ -1007,6 +1007,14 @@ img.frame {
   margin-top: 1rem;
 }
 
+// This ensures the gray sidebar covers the area where the sticky buttons are rendered.
+@media (min-width: 768px) {
+  .td-sidebar {
+    padding-bottom: 76px;
+    margin-bottom: -76px;
+  }
+}
+
 /* END Feedback container */
 
 .glossary-anchor {
