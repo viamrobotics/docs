@@ -39,7 +39,7 @@ To capture data from one or more machines, you must first add the [data manageme
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 2. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
-3. Select the `Data Management` type, then specify a name for your data management service, for example `data-manager`.
+3. Select the `Data Management` type, then either use the suggested name or specify a name for your data management service, for example `data-manager`.
 4. Click **Create**.
 5. On the panel that appears, you can manage the capturing and syncing functions and specify the **directory**, the sync **interval** and any **tags** to apply to captured data.
 

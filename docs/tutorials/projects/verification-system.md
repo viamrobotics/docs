@@ -123,7 +123,7 @@ To add the [data management service](/data/) and configure data capture:
 
 1. Navigate to your machine’s page on the [Viam app](https://app.viam.com/robots) and select the **Config** tab.
 2. Click the **Services** subtab and click **Create service** in the lower-left corner.
-3. Choose `Data Management` as the type and specify a name for your data management service, such as `data-manager`.
+3. Choose `Data Management` as the type and then either use the suggested name or specify a name for your data management service, such as `data-manager`.
    Click **Create**.
 4. On the panel that appears, you can manage the capturing and syncing functions individually.
    By default, the data management service captures data to the <file>~/.viam/capture</file> directory, and syncs captured data files to the Viam app every 6 seconds (`0.1` minutes in the configuration).
