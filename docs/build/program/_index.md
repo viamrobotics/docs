@@ -46,8 +46,7 @@ source .venv/bin/activate
 pip install viam-sdk
 ```
 
-Windows is not supported.
-If you are using Windows, use the [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) and install the Python SDK using the preceding instructions for Linux.
+Windows is not supported. If you are using Windows, use the [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) and install the Python SDK using the preceding instructions for Linux.
 For other unsupported systems, see [Installing from source](https://python.viam.dev/#installing-from-source).
 
 If you intend to use the [ML (machine learning) model service](/ml/), use the following command instead, which installs additional required dependencies along with the Python SDK:
