@@ -30,7 +30,6 @@ Edit the attributes as applicable to your input controller, according to the tab
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
-
 {
   "components": [
     {
