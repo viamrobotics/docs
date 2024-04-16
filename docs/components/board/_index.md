@@ -121,7 +121,7 @@ The board component supports the following methods:
 
 {{< readfile "/static/include/components/apis/board.md" >}}
 
-Additionally, the nested `GPIOPin`, `AnalogReader`, and `DigitalInterrupt` interfaces support the following methods:
+Additionally, the nested `GPIOPin`, `Analog`, and `DigitalInterrupt` interfaces support the following methods:
 
 [`GPIOPin`](#gpiopin-api) API:
 
@@ -129,7 +129,7 @@ Additionally, the nested `GPIOPin`, `AnalogReader`, and `DigitalInterrupt` inter
 
 <br>
 
-[`AnalogReader`](#analogreader-api) API:
+[`Analog`](#analogreader-api) API:
 
 {{< readfile "/static/include/components/apis/analogreader.md" >}}
 
@@ -141,26 +141,26 @@ Additionally, the nested `GPIOPin`, `AnalogReader`, and `DigitalInterrupt` inter
 
 ### ReadAnalogReader
 
-Get an [`AnalogReader`](#analogs) by `name`.
+Get an [`Analog`](#analogs) pin by `name`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the analog reader you want to retrieve.
+- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the analog pin you want to retrieve.
 
 **Returns:**
 
-- [(AnalogReader)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.AnalogReader): An interface representing an analog reader configured and residing on the board.
+- [(Analog)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.AnalogReader): An interface representing an analog pin configured and residing on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.analog_reader_by_name).
 
 ```python
 my_board = Board.from_robot(robot=robot, name="my_board")
 
-# Get the AnalogReader "my_example_analog_reader".
-reader = await my_board.analog_reader_by_name(name="my_example_analog_reader")
+# Get the Analog "my_example_analog_pin".
+analog = await my_board.analog_by_name(name="my_example_analog")
 ```
 
 {{% /tab %}}
@@ -168,20 +168,23 @@ reader = await my_board.analog_reader_by_name(name="my_example_analog_reader")
 
 **Parameters:**
 
-- `name` [(string)](https://pkg.go.dev/builtin#string): Name of the analog reader you want to retrieve. Set as the `"name"` property [in configuration](/components/board/#digital_interrupts).
+- `name` [(string)](https://pkg.go.dev/builtin#string): Name of the analog pin you want to retrieve. Set as the `"name"` property [in configuration](/components/board/#digital_interrupts).
 
 **Returns:**
 
-- [(AnalogReader)](https://pkg.go.dev/go.viam.com/rdk/components/board#AnalogReader): An interface representing an analog reader configured and residing on the board.
-- [(bool)](https://pkg.go.dev/builtin#bool): True if there was an analog reader of this `name` found on your board.
+- [(Analog)](https://pkg.go.dev/go.viam.com/rdk/components/board#AnalogReader): An interface representing an analog pin configured and residing on the board.
+- [(bool)](https://pkg.go.dev/builtin#bool): True if there was an analog pin of this `name` found on your board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
 ```go
 myBoard, err := board.FromRobot(robot, "my_board")
 
-// Get the AnalogReader "my_example_analog_reader".
-reader, err := myBoard.AnalogReaderByName("my_example_analog_reader")
+// Get the Analog pin "my_example_analog".
+analog, err := myBoard.AnalogByName("my_example_analog")
+
+// Read the value from the analog pin. 
+val, err := analog.Read(context.BackGround, map[string]interface{}) 
 ```
 
 {{% /tab %}}
@@ -286,9 +289,9 @@ pin, err := myBoard.GPIOPinByName("15")
 {{% /tab %}}
 {{< /tabs >}}
 
-### AnalogReaderNames
+### AnalogNames
 
-Get the name of every [`AnalogReader`](#analogs) configured and residing on the board.
+Get the name of every [`Analog`](#analogs) pin configured and residing on the board or implemented in the board driver.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -299,15 +302,15 @@ Get the name of every [`AnalogReader`](#analogs) configured and residing on the 
 
 **Returns:**
 
-- [(List\[str\])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): A list containing the `"name"` of every analog reader [configured](#supported-models) on the board.
+- [(List\[str\])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): A list containing the `"name"` of every analog pin [configured](#supported-models) on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.analog_reader_names).
 
 ```python
 my_board = Board.from_robot(robot=robot, name="my_board")
 
-# Get the name of every AnalogReader configured on the board.
-names = await my_board.analog_reader_names()
+# Get the name of every Analog configured on the board.
+names = await my_board.analog_names()
 ```
 
 {{% /tab %}}
@@ -319,15 +322,15 @@ names = await my_board.analog_reader_names()
 
 **Returns:**
 
-- [([]string)](https://go.dev/tour/moretypes/7): A slice containing the `"name"` of every analog reader [configured](#supported-models) on the board.
+- [([]string)](https://go.dev/tour/moretypes/7): A slice containing the `"name"` of every analog pin [configured](#supported-models) on the board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
 ```go
 myBoard, err := board.FromRobot(robot, "my_board")
 
-// Get the name of every AnalogReader configured on the board.
-names := myBoard.AnalogReaderNames()
+// Get the name of every Analog pin configured on the board.
+names := myBoard.AnalogNames()
 ```
 
 {{% /tab %}}
@@ -394,7 +397,7 @@ Get the current status of the board as a `BoardStatus`.
 
 **Returns:**
 
-- [(BoardStatus)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.BoardStatus): Mappings of the current status of the fields and values of any [AnalogReaders](#analogs) and [DigitalInterrupts](#digital_interrupts) configured on the board.
+- [(BoardStatus)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.BoardStatus): Mappings of the current status of the fields and values of any [Analog](#analogs) pins and [DigitalInterrupts](#digital_interrupts) configured on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.status).
 
@@ -1114,7 +1117,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 {{% /tab %}}
 {{< /tabs >}}
 
-## `AnalogReader` API
+## `Analog` API
 
 ### Read
 
@@ -1130,7 +1133,7 @@ Read the current integer value of the digital signal output by the [ADC](#analog
 
 **Returns:**
 
-- [(int)](https://docs.python.org/3/library/functions.html#int): The value of the digital signal output by the analog reader.
+- [(int)](https://docs.python.org/3/library/functions.html#int): The value of the digital signal output by the analog pin.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.AnalogReader.read).
 
@@ -1143,13 +1146,13 @@ pin = await my_board.gpio_pin_by_name(name="15")
 # Get if it is true or false that the pin is set to high.
 duty_cycle = await pin.get_pwm()
 
-# Get the AnalogReader "my_example_analog_reader".
-reader = await my_board.analog_reader_by_name(
-    name="my_example_analog_reader")
+# Get the Analog pin "my_example_analog".
+analog = await my_board.analog_by_name(
+    name="my_example_analog")
 
-# Get the value of the digital signal "my_example_analog_reader" has most
+# Get the value of the digital signal "my_example_analog" has most
 # recently measured.
-reading = reader.read()
+reading = analog.read()
 ```
 
 {{% /tab %}}
@@ -1162,7 +1165,7 @@ reading = reader.read()
 
 **Returns:**
 
-- [(int)](https://pkg.go.dev/builtin#int): The value of the digital signal output by the analog reader.
+- [(int)](https://pkg.go.dev/builtin#int): The value of the digital signal output by the analog pin.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
@@ -1170,11 +1173,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go
 myBoard, err := board.FromRobot(robot, "my_board")
 
-// Get the AnalogReader "my_example_analog_reader".
-reader, err := myBoard.AnalogReaderByName("my_example_analog_reader")
+// Get the Analog pin "my_example_analog".
+analog, err := myBoard.AnalogByName("my_example_analog")
 
-// Get the value of the digital signal "my_example_analog_reader" has most recently measured.
-reading := reader.Read(context.Background(), nil)
+// Get the value of the digital signal "my_example_analog" has most recently measured.
+reading := analog.Read(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -1198,12 +1201,9 @@ Safely shut down the resource and prevent further use.
 ```python {class="line-numbers linkable-line-numbers"}
 my_board = Board.from_robot(robot=robot, name="my_board")
 
-# Get the AnalogReader "my_example_analog_reader".
-reader = await my_board.analog_reader_by_name(
-    name="my_example_analog_reader")
-
-# Close the reader.
-await reader.close()
+# Get the Analog pin "my_example_analog".
+analog = await my_board.analog_by_name(
+    name="my_example_analog")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.AnalogReaderClient.close).
@@ -1222,11 +1222,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```go {class="line-numbers linkable-line-numbers"}
 myBoard, err := board.FromRobot(robot, "my_board")
 
-// Get the AnalogReader "my_example_analog_reader".
-reader, err := myBoard.AnalogReaderByName("my_example_analog_reader")
+// Get the Analog "my_example_analog".
+analog, err := myBoard.AnalogByName("my_example_analog")
 
-// Close the reader.
-err := reader.Close(ctx)
+// Read the current value from the analog pin.
+value, err := analog.Read(context.Background(), map[string]interface{})
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
