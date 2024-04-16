@@ -17,22 +17,14 @@ Linux supports most standard gamepads, such as PlayStation or Xbox type game con
 {{< tabs name="Configure a `gamepad` input controller" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `input_controller` type, then select the `gamepad` model.
-Enter a name for your input controller and click **Create**.
+Enter a name or use the suggested name for your input controller and click **Create**.
 
 ![An example configuration for a linux-based gamepad input controller component in the Viam App config builder](/components/input-controller/gamepad-input-controller-ui-config.png)
 
-Copy and paste the following attribute template into your input controller's **Attributes** box.
-Then remove and fill in the attributes as applicable to your input controller, according to the table below.
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "dev_file": "<string>",
-  "auto_reconnect": <boolean>
-}
-```
+Edit the attributes as applicable to your input controller, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -79,7 +71,7 @@ If you have another controller that you want to use to control your machine, fee
 
 ## Troubleshooting
 
-- If you are not able to see a dropdown menu with the name of your controller appear in the **Control** tab, try specifying the `dev_file` attribute to match the exact path to your device.
+- If you are not able to see a dropdown menu with the name of your controller appear in the **CONTROL** tab, try specifying the `dev_file` attribute to match the exact path to your device.
   You can also try setting `auto_reconnect` to `True`.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).

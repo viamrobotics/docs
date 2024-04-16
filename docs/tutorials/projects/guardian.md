@@ -160,7 +160,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your board, your camera, and your servo with its PWM wire wired to {{< glossary_tooltip term_id="pin-number" text="pin number" >}} `12`:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your board, your camera, and your servo with its PWM wire wired to {{< glossary_tooltip term_id="pin-number" text="pin number" >}} `12`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -311,7 +311,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 {{% tab name="Raw JSON" %}}
 
-On the [**Raw JSON** tab](/build/configure/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/ml/), the [vision service](/ml/vision/), and a [transform camera](/components/camera/transform/):
+On the [**Raw JSON** tab](/build/configure/#the-configure-tab), replace the configuration with the following configuration which configures the [ML model service](/ml/), the [vision service](/ml/vision/), and a [transform camera](/components/camera/transform/):
 
 ```json {class="line-numbers linkable-line-numbers" data-line="32-80"}
 {

@@ -189,9 +189,11 @@ Next, install `viam-server` on your machine, if you have not done so already:
 
 1. Navigate to [the Viam app](https://app.viam.com) in your browser and [add a new machine](/fleet/machines/#add-a-new-machine).
 
-1. Switch to the **Setup** tab, and select your platform from the **Architecture** selection at the top.
+1. Navigate to the **CONFIGURE** tab and find your machine's card.
+   An alert will be present directing you to **Set up your machine part**.
+   Click **View setup instructions** to open the setup instructions.
 
-1. Follow the steps listed under the **Setup** tab to install `viam-server` on your system.
+1. Select your system's OS and architecture. Keep the RDK type as **RDK**. Follow the steps listed to install `viam-server` on your system.
 
    {{< alert title="Important" color="note" >}}
    If you are installing `viam-server` within the `bullseye` Docker container provided with the C++ SDK, you will need to run the following command _instead_ of the command listed in step 2 **Download and install viam-server** in the Viam app:
@@ -202,7 +204,7 @@ Next, install `viam-server` on your machine, if you have not done so already:
 
    {{< /alert >}}
 
-1. Once complete, verify that step 3 on the **Setup** tab indicates that your machine has successfully connected.
+1. Once complete, verify that step 3 of the setup instructions indicates that your machine has successfully connected.
 
 1. Stop `viam-server` by pressing CTL-C on your keyboard from within the terminal window where you entered the commands from step 3 above.
 
@@ -232,15 +234,15 @@ To generate your machine's configuration using `example_audio_classification_cli
    ```
 
 1. Copy the contents of this file.
-   Then return to your machine's page on [the Viam app](https://app.viam.com), select the **Config** tab, select **Raw JSON**, and add the configuration into the text area.
+   Then return to your machine's page on [the Viam app](https://app.viam.com), select the **CONFIGURE** tab, select **JSON** mode, and add the configuration into the text area.
 
    {{< alert title="Important" color="note" >}}
    If you already have other configured components, you will need to add each generated JSON object to the respective `modules` or `services` array.
-   If you do not already have configured components, you can replace the contents in **Raw JSON** with the generated contents.
+   If you do not already have configured components, you can replace the contents in **JSON** with the generated contents.
    {{< /alert >}}
 
-1. Click the **Save config** button at the bottom of the page.
-   Now, when you switch back to **Builder** mode, you can see the new configuration settings under the **Services** and **Modules** subtabs.
+1. Click the **Save** button in the top right corner of the page.
+   Now, when you switch back to **Builder** mode, you can see the new configuration settings.
 
 This generated configuration features the minimum required configuration to support this tutorial: `services` parameters for the [ML model](/ml/) service and `modules` parameters for the `example_mlmodelservice_tflite` module.
 
@@ -248,7 +250,7 @@ This generated configuration features the minimum required configuration to supp
 
 With everything configured and running, you can now run the inference client that connects to `viam-server` and uses the `example_mlmodelservice_tflite` module.
 
-1. First, determine your machine address and API key and API key ID. To do so, navigate to [the Viam app](https://app.viam.com), select the **Code sample** tab, and toggle **Include API Key**.
+1. First, determine your machine address and API key and API key ID. To do so, navigate to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com), select the **Code sample** page, and toggle **Include API Key**.
    The API key resembles `abcdef1g23hi45jklm6nopqrstu7vwx8`, the API key ID resembles `a1234b5c-678d-9012-3e45-67fabc8d9efa` and the machine address resembles `my-machine-main.abcdefg123.viam.cloud`.
 
    {{%  snippet "secret-share.md" %}}

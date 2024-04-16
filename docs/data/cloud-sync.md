@@ -30,8 +30,8 @@ If you change your mind and want your machine to sync less frequently, you can c
 
 Before you can configure [cloud sync](/data/cloud-sync/), you must [add the data management service](/data/capture/#add-the-data-management-service).
 
-To enable cloud sync, navigate to the **Services** tab on your machine's **Config** tab and enable **Syncing** for your [data management service](../).
-Click **Save Config** at the bottom of the window.
+To enable cloud sync, navigate to the **Services** tab on your machine's **CONFIGURE** tab and enable **Syncing** for your [data management service](../).
+Click the **Save** button in the top right corner of the page.
 
 Now the data that you capture will sync automatically with the Viam app in the cloud.
 
@@ -72,7 +72,7 @@ To set up triggers for syncing see [Trigger Sync](/data/trigger-sync/).
 
 ### Pause sync
 
-You can pause Cloud Sync at any time by navigating to the **Services** tab on your machine's **Config** tab and disabling **Syncing** for your [data management service](../).
+You can pause Cloud Sync at any time by navigating to the **Services** tab on your machine's **CONFIGURE** tab and disabling **Syncing** for your [data management service](../).
 If you have captured data that you do not want to sync, delete the data on the machine before resuming Cloud Sync.
 To delete the data locally, `ssh` into your machine and delete the data in the directory where you capture data.
 

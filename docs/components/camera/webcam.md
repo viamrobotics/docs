@@ -17,15 +17,15 @@ If the camera drivers are among those in [this mediadevices repository](https://
 {{< tabs name="Configure a Webcam" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `camera` type, then select the `webcam` model.
-Enter a name for your camera and click **Create**.
+Enter a name or use the suggested name for your camera and click **Create**.
 
-{{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="1200x" style="width=600x" >}}
 
 Edit and fill in the attributes as applicable.
-If you click on the **Video Path** field while your machine is live, a dropdown autopopulates with identified camera paths.
+If you click on **Show more**, then the **video_path** field while your machine is live, a dropdown autopopulates with identified camera paths.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

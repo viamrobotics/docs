@@ -18,36 +18,14 @@ Configure a `numato` board to integrate [Numato GPIO Peripheral Modules](https:/
 {{< tabs name="Configure an numato Board" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `board` type, then select the `numato` model.
-Enter a name for your board and click **Create**.
+Enter a name or use the suggested name for your board and click **Create**.
 
 ![An example configuration for a numato board in the Viam app Config Builder.](/components/board/numato-ui-config.png)
 
-Copy and paste the following attribute template into your board's **Attributes** box.
-Then remove and fill in the attributes as applicable to your board, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "pins": <int>
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "pins": 32
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Edit the attributes as applicable to your board, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -61,7 +39,17 @@ Then remove and fill in the attributes as applicable to your board, according to
       "type": "board",
       "namespace": "rdk",
       "attributes": {
-        "pins": <number>
+        "pins": <number>,
+        "analogs": [
+          {
+            "name": "<your-analog-reader-name>",
+            "pin": "<pin-number-on-adc>",
+            "spi_bus": "<your-spi-bus-index>",
+            "chip_select": "<chip-select-index>",
+            "average_over_ms": <int>,
+            "samples_per_sec": <int>
+          }
+        ]
       },
       "depends_on": []
     }

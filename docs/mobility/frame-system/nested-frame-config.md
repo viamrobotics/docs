@@ -23,19 +23,23 @@ Measure from that point to the base of the arm to get the `translation` of the a
 Now, as the gantry moves its actuator, the Frame System will translate both the gantry and the arm's location according to that motion.
 
 {{< tabs name="Example Frame Configuration of Component attached to Dynamic Component" >}}
-{{% tab name="Config Builder" %}}
+{{% tab name="Frame Editor" %}}
 
-To complete the frame configuration for your machine following this example, navigate to the **Config** tab on your machine's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to `myGantry`'s card, and click **Add Frame**:
+To configure your machine following this example:
 
-![gantry frame card example for this configuration](/mobility/frame-system/frame_card_dyn_gantry.png)
+- Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+- Select **Builder** mode and [configure your gantry](/components/gantry/#supported-models), then [configure your arm](/components/arm/#supported-models).
+  If you don't have a physical gantry or arm, you can use their `fake` models.
+- Select the **Frame** mode.
+- From the left-hand menu, select your gantry.
+- Keep the **Parent** frame as `world` and fill in the coordinates for **Translation** (_mm_) and **Orientation** (_deg_) according to the position and orientation of the gantry in relation to the `world` frame's origin.
+  For example, considering the point that the gantry itself is fixed to as the center of the `world` you would leave the gantry's frame at the default configuration:
+  {{<imgproc src="/mobility/frame-system/frame_card_dyn_gantry.png" resize="300x" style="max-width: 500px" alt="Gantry frame card example for this configuration">}}
 
-Select the `parent` frame as `world` and fill in the coordinates for `translation` (_mm_) and `orientation` (_deg_) according to the position and orientation of the gantry in relation to the `world` frame's origin.
+- Next, select your arm from the left hand menu.
+- Select the **Parent** frame as the gantry, and fill in the coordinates for **Translation** (_mm_) and **Orientation** (_deg_) of the arm in relation to the gantry's origin:
 
-Navigate to `myArm`'s card and click **Add Frame**:
-
-![arm frame card example for this configuration](/mobility/frame-system/frame_card_dyn_arm.png)
-
-Select the `parent` frame as `myGantry` and fill in the coordinates for `translation` (_mm_) and `orientation` (_deg_) according to the position and orientation of the arm in relation to the `myGantry` frame's origin.
+  {{<imgproc src="/mobility/frame-system/frame_card_dyn_arm.png" resize="300x" style="max-width: 500px" alt="Arm frame card example for this configuration">}}
 
 {{< /tab >}}
 {{% tab name="JSON Example" %}}
@@ -105,16 +109,7 @@ Select the `parent` frame as `myGantry` and fill in the coordinates for `transla
 <!-- prettier-ignore -->
 | Parameter | Inclusion | Required |
 | --------- | ----------- | ----- |
-| `Parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
-| `Translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: _mm_. |
-| `Orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: `Orientation Vector Degrees`, `Orientation Vector Radians`, and `Quaternion`. |
-| `Geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the machine. <br> Types: `Sphere`, `Box`, and `Capsule`. |
-
-{{% alert title="Tip" color="tip" %}}
-
-Note: `myGantry` uses the default translation and orientation from the `world` origin, and `myArm` uses the default orientation.
-
-You do not have to explicitly configure this on your machine, as it is the default.
-It is included as part of this example for illustrative purposes.
-
-{{% /alert %}}
+| `parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
+| `translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: _mm_. |
+| `orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: **Orientation Vector Degrees** (`ov_degrees`), **Orientation Vector Radians** (`ov_radians`), **Euler Angles** (`euler_angles`), and **Quaternion** (`quaternion`). |
+| `geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the machine. <br> Units: _mm_ <br> Types: **Sphere** (`sphere`), **Box** (`box`), and **Capsule** (`capsule`). |

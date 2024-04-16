@@ -16,33 +16,14 @@ The `join_pointclouds` model combines the point clouds from multiple camera sour
 {{< tabs name="Configure a Join Point Clouds View" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `camera` type, then select the `join_pointclouds` model.
-Enter a name for your camera and click **Create**.
+Enter a name or use the suggested name for your camera and click **Create**.
 
 ![Configuration of a Join Point Clouds view in the Viam App config builder.](/components/camera/configure-join-pointclouds.png)
 
-Copy and paste the following attribute template into your camera's **Attributes** box.
-Then remove and fill in the attributes as applicable to your camera, according to the table below.
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "target_frame": "<target-frame-name>",
-  "source_cameras": ["<cam-name-1>", "<cam-name-2>", ... ],
-  "proximity_threshold_mm": <int>,
-  "merge_method": "<naive|icp>",
-  "intrinsic_parameters": {
-    "width_px": <int>,
-    "height_px": <int>,
-    "fx": <float>,
-    "fy": <float>,
-    "ppx": <float>,
-    "ppy": <float>
-  },
-  "debug": <boolean>
-}
-```
+Edit the attributes as applicable to your machine, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
