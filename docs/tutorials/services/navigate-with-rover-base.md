@@ -522,8 +522,8 @@ Hover over a waypoint in the left-hand menu and click the trash icon to delete a
 #### (Optional) Add obstacles
 
 If you want your robot to avoid certain obstacles in its path while navigating, you can also add obstacles.
-Select **Obstacles** on the upper-left corner menu of the navigation card.
-Zoom in on your current location and click on the map to add an obstacle.
+In the **CONFIGURE** tab, select the **Obstacles** subtab on the navigation card.
+Zoom in on your current location, then hold shift and drag on the map to draw an obstacle.
 Add as many obstacles as you desire.
 Hover over an obstacle in the left-hand menu and click the trash icon to delete an obstacle.
 
