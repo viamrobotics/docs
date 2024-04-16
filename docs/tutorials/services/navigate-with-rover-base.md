@@ -436,7 +436,6 @@ To add the navigation service to your robot, do the following:
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 1. Select the `navigation` type.
 1. Enter a name or use the suggested name for your service and click **Create**.
-
 1. Select **JSON** mode.
    Copy and paste the following into your new service's attributes field:
 
