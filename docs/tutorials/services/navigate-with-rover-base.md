@@ -467,7 +467,7 @@ For more detailed information see [the navigation service](/mobility/navigation/
 {{% /tab %}}
 {{% tab name="JSON" %}}
 
-In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON object to the `"services"` array:
+In **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON object to the `"services"` array:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "services": [
@@ -490,7 +490,7 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
 ]
 ```
 
-Click **Save Config** at the bottom of the window.
+Click **Save** in the top right corner of the screen to save your changes.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -502,8 +502,10 @@ You can add waypoints from the [**CONTROL** tab](#control-tab-method) or [progra
 
 ### Control tab method
 
-Go to the **CONTROL** tab of your robot in the [Viam app](https://app.viam.com), and open the **navigation** card.
-From there, ensure that **Navigation mode** is selected as **Manual**, so your robot will not begin navigation while you add waypoints.
+Go to the **CONTROL** tab of your robot in the [Viam app](https://app.viam.com), and open the navigation service card.
+
+- Is there anything in place of this they will need to do in order to ensure the robot will nto begin navigation while they add waypoints? Since there is no longer navigation mode?
+  From there, ensure that **Navigation mode** is selected as **Manual**, so your robot will not begin navigation while you add waypoints.
 
 #### Add waypoints
 
