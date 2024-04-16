@@ -34,7 +34,8 @@ For general guidance appropriate for any third-party visualization tool, see [Vi
 
 Before following this tutorial, ensure you have:
 
-- A machine with [`viam-server` installed](/get-started/installation/).
+- A machine with [`viam-server` installed](/get-started/installation/) and connected to the [Viam app](https://app.viam.com).
+  `viam-server` is the open-source software binary that provides much of the functionality of your machine and connects it to the Viam app.
 
 - A configured [sensor component](/components/sensor/), such as the [ultrasonic](/components/sensor/ultrasonic/) sensor, that reports tabular data.
 
@@ -71,14 +72,15 @@ To capture data from your machine and sync to the Viam app, add the data managem
 
 First, add the data management service to your machine to be able capture and sync data:
 
-1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
-1. Click the **Create service** button at the bottom of the page, and select **Data Management**.
-1. Use the suggested name for your service or give it a name, like `viam-data-manager`, then click **Create Service**.
+1. Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
+1. Click the **+** button in the left-hand menu and select **Service** from the dropdown.
+1. Select **data management**.
+1. Give the service a name, like `viam-data-manager`, then click **Create**.
 1. On the panel that appears, you can manage the capturing and syncing functions individually.
    By default, the data management service captures data locally to the <file>~/.viam/capture</file> directory, and syncs captured data files to the Viam app every 6 seconds (`0.1` minutes in the configuration).
-   Leave the default settings as they are, and click **Save Config** at the bottom of the screen to save your changes.
+   Leave the default settings as they are, and click **Save** in the upper-right corner of the screen to save your changes.
 
-   {{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="600x" >}}
+   {{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="900x" >}}
 
 For more information, see [Add the data management service](/data/capture/#add-the-data-management-service).
 
@@ -90,15 +92,15 @@ Only tabular data, such as sensor readings or other time-series data, can be vis
 
 To enable data capture for a sensor component:
 
-1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
+1. Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
 
-1. In the configuration pane for your [configured sensor component](#prerequisites), find the **Data capture configuration** section, and click the **Add method** button to enable data capture for this camera.
+1. In the configuration pane for your [configured sensor component](#prerequisites), find the **Data capture** section, and click the **Add method** button to enable data capture for this camera.
 
-   - Set the **Type** to `Readings` and the **Frequency** to `0.333`.
+   - Set the **Method** to `Readings` and the **Frequency** to `0.333`.
      This will capture readings from the sensor device roughly once every 3 seconds.
      You can adjust the capture frequency if you want the sensor to capture more or less data, but avoid configuring data capture to higher rates than your hardware can handle, as this could lead to performance degradation.
 
-     {{< imgproc src="/tutorials/visualize-data-grafana/sensor-data-capture.png" alt="The sensor component configuration pane with data capture configuration enabled using type Readings and a capture frequency of 0.333" resize="600x" >}}
+     {{< imgproc src="/tutorials/visualize-data-grafana/sensor-data-capture.png" alt="The sensor component configuration pane with data capture configuration enabled using type Readings and a capture frequency of 0.333" resize="900x" >}}
 
 1. Click **Save Config** at the bottom of the window to save your changes.
 
@@ -124,7 +126,7 @@ To enable data query:
 
 With your machine capturing data and syncing it to Viam, and direct query of that data configured, you can now configure Grafana to access and visualize that data:
 
-1. Navigate to your Grafana web UI, add the [Grafana MongoDB data source](https://grafana.com/grafana/plugins/grafana-mongodb-datasource/) plugin to your Grafana instance.
+1. Navigate to your Grafana web UI, and add the [Grafana MongoDB data source](https://grafana.com/grafana/plugins/grafana-mongodb-datasource/) plugin to your Grafana instance.
 
    {{<imgproc src="/tutorials/visualize-data-grafana/search-grafana-plugins.png" resize="800x" declaredimensions=true alt="The Grafana plugin search interface showing the results for a search for mongodb">}}
 
@@ -229,11 +231,11 @@ See Grafana's [Global variables documentation](https://grafana.com/docs/grafana/
 
 In this tutorial, you learned:
 
-- how to use the [data management](/data/) service to capture images from your machine's camera and sync them to the Viam app
+- how to use the [data management](/data/) service to capture data from your machine and sync it to the Viam app
 - how to [enable data query access](/data/query/#configure-data-query) to your synced data
 - how to connect Grafana to your data
 - how to build a dashboard visualizing that data
-- how to use query language to dynamically update those visualization based on UI selections
+- how to use query language to dynamically update the visualization based on UI selections
 
 From here you could:
 

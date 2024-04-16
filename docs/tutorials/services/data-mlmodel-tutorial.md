@@ -42,9 +42,9 @@ You can also use your own Viam machine as long as you have followed the [prerequ
 
 Before following this tutorial, ensure you have:
 
-- A machine running Viam.
+- A machine running `viam-server`, the software that runs your machine and connects it to the Viam app.
 
-  - If you are using your own machine, make sure you have [installed `viam-server`](/get-started/installation/).
+  - If you are using your own machine, [install `viam-server`](/get-started/installation/) by following the setup instructions on your machine's page in the [Viam app](https://app.viam.com).
   - If you are using a Viam Rover through [Try Viam](https://app.viam.com/try), no further action is needed.
 
 - A configured camera component.
@@ -82,7 +82,7 @@ First, add the data management service to your machine to be able capture and sy
    By default, the data management service captures data locally to the <file>~/.viam/capture</file> directory, and syncs captured data files to the Viam app every 6 seconds (`0.1` minutes in the configuration).
    Leave the default settings as they are, and click **Save Config** at the bottom of the screen to save your changes.
 
-   {{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="600x" >}}
+   {{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="900x" >}}
 
 For more information, see [Add the data management service](/data/capture/#add-the-data-management-service).
 
