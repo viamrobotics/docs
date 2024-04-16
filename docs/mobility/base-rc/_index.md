@@ -49,7 +49,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `base remote control` type.
 Enter a name for your service and click **Create**.
 
-In your base remote control service's configuration panel, fill in the attributes field with the following:
+In your base remote control service's configuration panel, copy and paste the following JSON object into the attributes field:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
