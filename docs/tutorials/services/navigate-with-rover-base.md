@@ -100,7 +100,7 @@ We used a [`jetson` board](/components/board/jetson/), but you can use any model
 2. Configure [digital interrupts](/components/board/#digital_interrupts) on your board to signal precise GPIO state changes to the [encoders](/components/encoder/) on your rover base.
    Find your board on the **CONFIGURE** tab in **Builder** mode.
    Click the **{}** (Switch to advanced) button on the right side of your board's card to switch to JSON attributes editing mode.
-   Copy and paste the following JSON into your board's attributes field to add [digital interrupts](/components/boards/#digital_interrupts) on pins `31`, `29`, `23`, and `21`:
+   Copy and paste the following JSON into your board's attributes field to add [digital interrupts](/components/board/#digital_interrupts) on pins `31`, `29`, `23`, and `21`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
