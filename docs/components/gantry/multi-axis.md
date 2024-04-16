@@ -17,37 +17,15 @@ Configure a `multi-axis` gantry to integrate a gantry made up of multiple [`sing
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `gantry` type, then select the `multi-axis` model.
-Enter a name for your gantry and click **Create**.
+Enter a name or use the suggested name for your gantry and click **Create**.
 
 ![Creation of a multi-axis gantry component in the Viam app config builder.](/components/gantry/multi-axis-ui-config.png)
 
-Copy and paste the following attribute template into your gantry's **Attributes** box.
-Then remove and fill in the attributes as applicable to your gantry, according to the table below.
+Fill in the attributes as applicable to your gantry, according to the table below.
 
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "subaxes_list": ["<xaxis-name>", "<yaxis-name>", "<zaxis-name>"],
-  "move_simultaneously": <boolean>
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "subaxes_list": ["single-axis1x", "single-axis2y", "single-axis3z"]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 

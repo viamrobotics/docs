@@ -89,7 +89,7 @@ Optionally, select a fixed filepath for the camera from the automated options in
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your camera:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -112,7 +112,7 @@ If you use a different name, adapt the code in the later steps of this tutorial 
 
 To view your webcam's image stream, navigate to the **Control** tab of your machine's page on [the Viam app](https://app.viam.com).
 Click on the dropdown menu labeled **camera** and toggle the feed on.
-If you want to test your webcam's image capture, you can click on **Export Screenshot** to capture an image, as shown below:
+If you want to test your webcam's image capture, you can click on **Export screenshot** to capture an image, as shown below:
 
 {{<imgproc src="../../tutorials/bedtime-songs-bot/export-screenshot.png" resize="400x" declaredimensions=true alt="The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on the screen." >}}
 

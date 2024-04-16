@@ -17,38 +17,14 @@ Configure a `renogy` sensor to integrate a [Renogy charge controller](https://ww
 {{< tabs name="Configure a Renogy Sensor" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component** in the lower-left corner.
-Select the type `power_sensor`, then select the `renogy` model.
-Name your sensor, and click **Create**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+Select the `power_sensor` type, then select the `renogy` model.
+Enter a name or use the suggested name for your sensor and click **Create**.
 
 {{<imgproc src="/components/power-sensor/renogy-config-builder.png" resize="800x" declaredimensions=true alt="Renogy power sensor configuration tab ">}}
 
-Copy and paste the following attribute template into your power sensor's **Attributes** box.
-Then remove and fill in the attributes as applicable to your power sensor, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "serial_path": "<string>",
-  "serial_baud_rate": <int>,
-  "modbus_id": <int>
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "serial_path": "/dev/serial/by-path/usb-0:1.1:1.0"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Edit the attributes as applicable to your power sensor, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

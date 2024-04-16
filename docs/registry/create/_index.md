@@ -1003,7 +1003,7 @@ int main(int argc, char** argv) {
 ### Configure logging
 
 If desired, you can configure your module to output log messages to the [Viam app](https://app.viam.com/).
-Log messages sent to the Viam app appear under the [**Logs** tab](/fleet/machines/#logs) for your machine in an easily-parsable and searchable manner.
+Log messages sent to the Viam app appear under the [**LOGS** tab](/fleet/machines/#logs) for your machine in an easily-parsable and searchable manner.
 
 Log messages generated when your machine is offline are queued, and sent together when your machine connects to the internet once more.
 
@@ -1124,10 +1124,10 @@ _Add instructions here for any requirements._
 > [!NOTE]
 > Before configuring your <INSERT API NAME>, you must [create a machine](https://docs.viam.com/manage/fleet/machines/#add-a-new-machine).
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com/).
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com/).
 Click on the **Components** subtab and click **Create component**.
 Select the `<INSERT API NAME>` type, then select the `<INSERT MODEL>` model.
-Click **Add module**, then enter a name for your <INSERT API NAME> and click **Create**.
+Click **Add module**, then enter a name or use the suggested name for your <INSERT API NAME> and click **Create**.
 
 On the new component panel, copy and paste the following attribute template into your <INSERT API NAME>’s **Attributes** box:
 
@@ -1186,7 +1186,7 @@ This module implements the [`rdk:component:base` API](https://docs.viam.com/comp
 > [!NOTE]
 > Before configuring your base, you must [create a machine](https://docs.viam.com/fleet/machines/#add-a-new-machine).
 
-Navigate to the **Config** tab of your machine’s page in [the Viam app](https://app.viam.com/). Click on the **Components** subtab and click **Create component**. Select the `base` type, then search for and select the `agilex-limo` model. Click **Add module**, then enter a name for your base and click **Create**.
+Navigate to the **CONFIGURE** tab of your machine’s page in [the Viam app](https://app.viam.com/). Click on the **Components** subtab and click **Create component**. Select the `base` type, then search for and select the `agilex-limo` model. Click **Add module**, then enter a name or use the suggested name for your base and click **Create**.
 
 On the new component panel, copy and paste the following attribute template into your base’s **Attributes** box:
 
@@ -1226,7 +1226,7 @@ The following attributes are available for `viam:base:agilex-limo` bases:
 
 ## Next steps
 
-- To test your base, go to the [**Control** tab](https://docs.viam.com/fleet/machines/#control).
+- To test your base, go to the [**CONTROL** tab](https://docs.viam.com/fleet/machines/#control).
 - To write code against your base, use one of the [available SDKs](https://docs.viam.com/program/).
 - To view examples using a base component, explore [these tutorials](https://docs.viam.com/tutorials/).
 

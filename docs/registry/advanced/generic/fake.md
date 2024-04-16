@@ -12,12 +12,12 @@ Configure a `fake` generic service to test implementing a generic service on you
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Services** subtab and click **Create service**.
 Select the `generic` type, then select the `fake` model.
-Enter a name for your generic service and click **Create**.
+Enter a name or use the suggested name for your generic service and click **Create**.
 
-![An example configuration for a fake generic service in the Viam app Config Builder.](/components/generic/fake-generic-ui-config.png)
+![An example configuration for a fake generic service in the Viam app Config Builder.](/services/fake-generic-service-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
