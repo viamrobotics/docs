@@ -64,7 +64,7 @@ Get your hardware ready and connected to the Viam platform:
 
 2. Make sure your computer (whether it's a personal computer or an SBC) is connected to adequate power, and turn it on.
 
-3. If you haven't already, [create a new machine](/fleet/machines/#add-a-new-machine) in the [Viam app](https://app.viam.com) and follow the instructions to [install `viam-server`](/get-started/installation/), the software you will use to operate your machine, on the computer you're using for this project.
+3. If you haven't already, [add a new machine](/fleet/machines/#add-a-new-machine) in the [Viam app](https://app.viam.com) and follow the setup instructions to install `viam-server` on the computer you're using for this project and connect to the Viam app.
 
 ## Configure the camera and computer vision
 
@@ -190,7 +190,7 @@ Configure data capture on the `objectfilter` camera to capture images of people 
 
 1. First, you need to add the data service to your machine to make it available to capture data on your camera.
 
-   Navigate to tyour machine's **CONFIGURE** tab.
+   Navigate to your machine's **CONFIGURE** tab.
 
    Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**.
    Type "data" and click **data management / RDK**.
