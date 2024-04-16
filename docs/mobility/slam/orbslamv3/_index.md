@@ -67,7 +67,7 @@ Now, add the `orbslamv3` service:
 {{% tab name="Config Builder" %}}
 
 Go to your machine's page on the [Viam app](https://app.viam.com/).
-Navigate to the **Config** tab on your machine's page, and click on the **Services** subtab.
+Navigate to the **CONFIGURE** tab on your machine's page, and click on the **Services** subtab.
 
 Add a service with type `slam`, model `orbslamv3`, and a name of your choice.
 
@@ -93,8 +93,8 @@ Paste the following into the **Attributes** field of your new service:
 {{% tab name="JSON Template" %}}
 
 Go to your machine's page on the [Viam app](https://app.viam.com/).
-Navigate to the **Config** tab .
-Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing camera configuration:
+Navigate to the **CONFIGURE** tab .
+Select the **JSON** mode, then copy/paste the following `"services"` JSON to add to your existing camera configuration:
 
 ```json
 // "components": [ ...], YOUR CAMERA COMPONENT
@@ -176,7 +176,7 @@ If this directory structure is not present at runtime, the SLAM service creates 
 {{% tab name="Config Builder" %}}
 
 Go to your machine's page on the [Viam app](https://app.viam.com/).
-Navigate to the **Config** tab on your machine's page, and click on the **Services** subtab.
+Navigate to the **CONFIGURE** tab on your machine's page, and click on the **Services** subtab.
 
 Add a service with type `slam`, model `orbslamv3`, and a name of your choice:
 
@@ -201,8 +201,8 @@ Paste the following into the **Attributes** field of your new service:
 {{% tab name="JSON Template" %}}
 
 Go to your machine's page on the [Viam app](https://app.viam.com/).
-Navigate to the **Config** tab .
-Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing camera configuration:
+Navigate to the **CONFIGURE** tab .
+Select the **JSON** mode, then copy/paste the following `"services"` JSON to add to your existing camera configuration:
 
 ```json
 // "components": [ ...], YOUR CAMERA COMPONENT
@@ -339,7 +339,7 @@ Adjust these parameters to fine-tune the algorithm `orbslamv3` utilizes:
 
 ## View the Map
 
-After saving your config, head over to the **Control** tab and click on the dropdown menu matching the `name` of the service you created.
+After saving your config, head over to the **CONTROL** tab and click on the dropdown menu matching the `name` of the service you created.
 
 Change the **Refresh frequency** to your desired frequency.
 If in Live Data mode, move your webcam around slowly.

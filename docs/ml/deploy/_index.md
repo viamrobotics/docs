@@ -80,8 +80,8 @@ You can search the machine learning models that are available to deploy on this 
 ## Versioning for deployed models
 
 If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the machine.
-If you do not want Viam to automatically deploy the `latest` version of the model, you can edit the `"packages"` array in the [JSON configuration](/build/configure/#the-config-tab) of your machine.
-This array is automatically created when you deploy the model and is not embedded your service configuration.
+If you do not want Viam to automatically deploy the `latest` version of the model, you can edit the `"packages"` array in the [JSON configuration](/build/configure/#the-configure-tab) of your machine.
+This array is automatically created when you deploy the model and is not embedded in your service configuration.
 
 You can get the version number from a specific model version by navigating to the [models page](https://app.viam.com/data/models) finding the model's row, clicking on the right-side menu marked with **_..._** and selecting **Copy package JSON**. For example: `2024-02-28T13-36-51`.
 The model package config looks like this:
@@ -106,7 +106,7 @@ The MLModel service supports the following methods:
 {{% alert title="Tip" color="tip" %}}
 
 The following code examples assume that you have a machine configured with an `MLModel` service, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
-Go to your machine's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
+Go to your machine's **CONNECT** tab's **Code sample** page on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 

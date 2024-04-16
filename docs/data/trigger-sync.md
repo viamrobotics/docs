@@ -45,9 +45,9 @@ Additional examples are available in this [GitHub Repo](https://github.com/viam-
 
 To use [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time):
 
-1. Go to your machine's **Config** page and click **Create component**.
+1. Go to your machine's **CONFIGURE** page and click **Create component**.
 2. Then select the `sync-at-time:timesyncsensor` model from the [`sync-at-time` module](https://app.viam.com/module/naomi/sync-at-time).
-3. Click **Add module**, then enter a name for your sensor and click **Create**.
+3. Click **Add module**, then enter a name or use the suggested name for your sensor and click **Create**.
    The sensor will return true and enable sync when in a specified time frame.
 4. To configure your time frame, go to the new component panel and copy and paste the following attribute template into your sensor’s **Attributes** box:
 
@@ -114,7 +114,7 @@ In the next step you will configure the data manager to take the sensor into acc
 
 #### Configure data manager to sync based on sensor
 
-On your machine's **Config** tab, switch to **JSON** mode and add a `selective_syncer_name` with the name for the sensor you configured and add the sensor to the `depends_on` field:
+On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selective_syncer_name` with the name for the sensor you configured and add the sensor to the `depends_on` field:
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
@@ -260,7 +260,7 @@ You have now configured sync to happen during a specific time slot.
 To test your setup, [configure a webcam](https://docs.viam.com/components/camera/webcam/) or another component and [enable data capture on the component](https://docs.viam.com/data/capture/#configure-data-capture-for-individual-components).
 For a camera component, use the `ReadImage` method.
 The data manager will now capture data.
-Go to the [**Control** tab](https://docs.viam.com/fleet/machines/#control).
+Go to the [**CONTROL** tab](https://docs.viam.com/fleet/machines/#control).
 You should see the sensor.
 Click on `GetReadings`.
 
@@ -269,7 +269,7 @@ Click on `GetReadings`.
 If you are in the time frame for sync, the time sync sensor will return true.
 You can confirm that no data is currently syncing by going to the [**Data** tab](https://app.viam.com/data/view).
 If you are not in the time frame for sync, adjust the configuration of your time sync sensor.
-Then check again on the **Control** and **Data** tab to confirm data is syncing.
+Then check again on the **CONTROL** and **Data** tab to confirm data is syncing.
 
 ## Next steps
 

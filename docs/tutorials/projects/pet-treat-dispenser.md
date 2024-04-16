@@ -136,7 +136,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your {{< glossary_tooltip term_id="board" text="board" >}}, your [webcam](/components/camera/webcam/), and your [stepper motor](/components/motor/gpiostepper/):
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your {{< glossary_tooltip term_id="board" text="board" >}}, your [webcam](/components/camera/webcam/), and your [stepper motor](/components/motor/gpiostepper/):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -299,7 +299,7 @@ Once the model has finished training, deploy it by adding an [ML model service](
 1. Click **Create service** in the lower-left corner.
 1. Select `ML Model` as the type, and select `TFLite CPU` as the model.
 1. Enter `puppyclassifier` as the name, then click **Create**.
-1. To configure your service and deploy a model onto your robot, select **Deploy Model On Robot** for the **Deployment** field.
+1. To configure your service and deploy a model onto your robot, select **Deploy model on robot** for the **Deployment** field.
 1. Select your trained model (`petfeeder`) as your desired **Model**.
 
 ### Use the vision service to detect your pet
@@ -308,7 +308,7 @@ To detect your pet with your machine learning model, you need to add a [vision s
 
 1. From the **Services** subtab, click **Create service** in the lower-left corner.
 1. Select `Vision` as the type and `ML Model` as the model.
-1. Enter a name for your ML model service and click **Create**.
+1. Enter a name or use the suggested name for your ML model service and click **Create**.
 1. Select the model you previously created in the dropdown menu.
 1. Navigate to the **Components** subtab and click **Create component** in the lower-left corner.
 1. Create a [transform camera](/components/camera/transform/) by selecting type `camera` and model `transform`.

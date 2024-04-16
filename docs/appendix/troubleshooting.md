@@ -126,7 +126,7 @@ When a machine is disconnected, it will continue to run with its locally-cached 
   It should be listed as `active (running)`.
 
   - If it is listed as `stopped` or `failed`, you can try restarting it with `sudo systemctl start viam-server`.
-  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](/get-started/installation/#prepare-your-board), and then followed the instructions on the **Setup** tab on the Viam app.
+  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](/get-started/installation/#prepare-your-board), and then followed the {{< glossary_tooltip term_id="setup" text="setup instructions" >}}.
   - If none of the above succeed in getting `viam-server` up and running, check the logs on your board for any pertinent error messages.
     Depending on your board's specific Linux OS, you might use a command similar to the following to show the 50 most recent log messages from `viam-server`. Run this command from within an `ssh` session to the board:
 
@@ -140,9 +140,9 @@ When a machine is disconnected, it will continue to run with its locally-cached 
 
 **Description:** A [frame](/mobility/frame-system/) attribute may be malformed, and is preventing the parsing of the component's configuration.
 
-**Solution:** Check the **Config** tab for your machine in the [Viam app](https://app.viam.com) and look for a frame attribute, either in **Builder** mode, under the **Frame System** tab or in **Raw JSON** mode.
+**Solution:** Check the **CONFIGURE** tab for your machine in the [Viam app](https://app.viam.com) and look for a `frame` attribute, either in **Frame** or **JSON** mode.
 If you see a `frame` attribute that you didn't create yourself, delete the whole `frame` object from the JSON config.
-It will resemble the following:
+In **JSON** mode, it will resemble the following:
 
 ```json
 "frame": {
@@ -222,7 +222,7 @@ This file contains basic diagnostic and configuration information about your cam
 **Description:** When working with a [camera](/components/camera/) component, depending on the camera, you may need to explicitly provide some camera-specific configuration parameters.
 
 **Solution:** Check the specifications for your camera, and manually provide configuration parameters such as width and height to the camera component configuration page on the [Viam app](https://app.viam.com).
-Under **Config > Components**, find your camera, then fill in your camera's specific configuration either using the **Show more** button to show the relevant configuration options, or the **Go to advanced** link in the component panel's upper-right to enter these attributes manually.
+On the **CONFIGURE** page, find your camera, then fill in your camera's specific configuration either using the **Show more** button to show the relevant configuration options, or the **{}** (Switch to Advanced) button in the top right of the component panel to enter these attributes manually.
 Provide at least the width and height values to start.
 
 ## Known application and plugin conflicts

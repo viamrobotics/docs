@@ -45,12 +45,12 @@ After start-up, `viam-server` manages:
 When you or your collaborators change the configuration of a machine in the Viam app, `viam-server` automatically synchronizes the configuration to your machine and updates the running resources within 15 seconds.
 This means you can add, modify, and remove a modular resource instance from a running machine.
 
-You can see configuration changes made by yourself or by your collaborators on the [History tab](/fleet/machines/#history).
+You can see configuration changes made by yourself or by your collaborators by selecting **History** on the right side of your machine part's card on the **CONFIGURE** tab.
 You can also revert to an earlier configuration from the History tab.
 
 ### Logging
 
-Log messages written appear under the [**Logs** tab](/fleet/machines/#logs) for the machine running the module.
+Log messages written appear under the [**LOGS** tab](/fleet/machines/#logs) for the machine running the module.
 
 ### Shutdown
 

@@ -67,13 +67,13 @@ If you are running out of time during your rental, you can [extend your rover re
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to your [machine's page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **Python** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to your [machine's page on the Viam app](https://app.viam.com/robots), select the **CONNECT** tab's **Code sample** page, then select **Python** and copy the boilerplate code.
 
 {{% snippet "show-secret.md" %}}
 
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
-Next, create a file named <file>square.py</file> and paste the boilerplate code from the **Code sample** tab of the Viam app into your file.
+Next, create a file named <file>square.py</file> and paste the boilerplate code from the **Code sample** page of the Viam app into your file.
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
@@ -106,13 +106,13 @@ name: "cam"
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **Go** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **CONNECT** tab's **Code sample** page, then select **Go** and copy the boilerplate code.
 
 {{% snippet "show-secret.md" %}}
 
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
-Next, create a file named <file>square.go</file> and paste the boilerplate code from the **Code sample** tab of the Viam app into your file.
+Next, create a file named <file>square.go</file> and paste the boilerplate code from the **Code sample** page of the Viam app into your file.
 Then, save your file.
 
 Initialize your project, and install the necessary libraries, and then run the program to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live:
@@ -137,7 +137,7 @@ go run square.go
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **TypeScript** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **CONNECT** tab's **Code sample** page, then select **TypeScript** and copy the boilerplate code.
 
 {{< alert title="Info" color="info" >}}
 The TypeScript SDK currently only supports building web browser apps.
@@ -147,7 +147,7 @@ The TypeScript SDK currently only supports building web browser apps.
 
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
-Next, create a file named <file>main.ts</file> and paste the boilerplate code from the **Code sample** tab of the Viam app into your file.
+Next, create a file named <file>main.ts</file> and paste the boilerplate code from the **Code sample** page of the Viam app into your file.
 Then, save your file.
 
 Create another file named <file>package.json</file> with the following contents:
@@ -214,13 +214,13 @@ To get started programming your rover with Flutter, follow the instructions to [
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **C++** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **CONNECT** tab's **Code sample** page, then select **C++** and copy the boilerplate code.
 
 {{% snippet "show-secret.md" %}}
 
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
-Next, create a file named <file>drive_in_square.cpp</file> and paste the boilerplate code from the **Code sample** tab of the Viam app into your file.
+Next, create a file named <file>drive_in_square.cpp</file> and paste the boilerplate code from the **Code sample** page of the Viam app into your file.
 Then, save your file.
 
 Compile your code, and then run the program to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live:
@@ -840,7 +840,7 @@ int main() {
 {{< /tabs >}}
 
 {{< alert title="Tip" color="tip" >}}
-If you are [renting your rover](https://app.viam.com/try), go to the **Control** tab, and make sure you can monitor the camera feed from your rover.
+If you are [renting your rover](https://app.viam.com/try), go to the **CONTROL** tab of the Viam app, and make sure you can monitor the camera feed from your rover.
 {{< /alert >}}
 
 When you run your code, your robot moves in a square.

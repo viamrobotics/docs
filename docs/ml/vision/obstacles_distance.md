@@ -18,10 +18,10 @@ For example, if you have an ultrasonic distance sensor as an [`ultrasonic` camer
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
-Click the **Services** subtab and click **Create service** in the lower-left corner.
-Select the `Vision` type, then select the `Obstacles Distance` model.
-Enter a name for your service and click **Create**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+Select the `vision` type, then select the `obstacles distance` model.
+Enter a name or use the suggested name for your service and click **Create**.
 
 In your vision service's configuration panel, fill in the **Attributes** field with the following:
 

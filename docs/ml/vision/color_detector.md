@@ -27,10 +27,10 @@ If the color is not reliably detected, increase the `hue_tolerance_pct`.
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
-Click the **Services** subtab and click **Create service** in the lower-left corner.
-Select the `ML Model` type, then select the `Color Detector` model.
-Enter a name for your service and click **Create**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+Select the `vision` type, then select the `color detector` model.
+Enter a name or use the suggested name for your service and click **Create**.
 
 In your vision service's panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels):
 
@@ -39,7 +39,7 @@ In your vision service's panel, select the color your vision service will be det
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Add the vision service object to the services array in your raw JSON configuration:
+Add the vision service object to the services array in your JSON configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "services": [
@@ -113,7 +113,7 @@ The optional **saturation_cutoff_pct** and **value_cutoff_pct** attributes speci
 
 {{% /alert %}}
 
-Click **Save config**.
+Click the **Save** button in the top right corner of the page.
 Proceed to [test your detector](#test-your-detector).
 
 ## Test your detector
@@ -147,8 +147,8 @@ If you intend to use the detector with a camera that is part of your machine, yo
    }
    ```
 
-3. After adding the components and their attributes, click **Save config**.
-4. Navigate to the **Control** tab, click on your transform camera and toggle it on.
+3. After adding the components and their attributes, click the **Save** button in the top right corner of the page.
+4. Navigate to the **CONTROL** tab, click on your transform camera and toggle it on.
    The transform camera will now show detections with bounding boxes around the object.
 
    ![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/ml/vision/chair-detector.png)

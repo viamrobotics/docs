@@ -107,10 +107,9 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
 1. Add the data management service to your machine:
 
-   Navigate to the **Services** subtab on your machine's **Config** tab.
-
-   Click **Create service** in the lower-left corner of the page.
-   Choose `Data Management` as the type and specify a name for your data management service, for example `Data-Management-Service`.
+   Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+   Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+   Choose `Data Management` as the type and either use the suggested name or specify a name for your data management service, for example `Data-Management-Service`.
    Click **Create**.
 
    On the panel that appears, you can manage the capturing and syncing functions.
@@ -119,7 +118,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
 2. Enable data capture for your camera, and for your movement sensor if you would like to use IMU data, odometry data, or both:
 
-   Find the component's card on your machine's **Config** tab.
+   Find the component's card on your machine's **CONFIGURE** tab.
    Click `Add Method`, then specify the method type and the capture frequency.
 
    - For the required LiDAR camera, choose the `NextPointCloud` method.
@@ -164,9 +163,9 @@ Note that [Data Capture](/data/capture/) continuously monitors and captures your
 
 3. Set up the `cartographer` module on your machine:
 
-   Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
+   Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 
-   Click on the **Services** subtab and click **Create service** in the lower-left corner.
+   Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
    Select **SLAM**, then select `cartographer`.
    You can also search for "cartographer".
 
@@ -187,9 +186,9 @@ Note that [Data Capture](/data/capture/) continuously monitors and captures your
    If you would like to tune additional Cartographer parameters, you can expand **Show additional parameters**.
    See the [`config_params`](#config_params) section for more information on the other parameters.
 
-   To save your changes, click **Save config** at the bottom of the page.
+   To save your changes, click the **Save** button in the top right corner of the page.
 
-   Check the **Logs** tab of your machine in the Viam app to make sure your RPlidar has connected and no errors are being raised.
+   Check the **LOGS** tab of your machine in the Viam app to make sure your RPlidar has connected and no errors are being raised.
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
@@ -281,14 +280,14 @@ This example JSON configuration:
 
 For more information about the configuration attributes, see [Attributes](#attributes).
 
-2. Start a mapping session:
+1. Start a mapping session:
 
-   Navigate to the **Control** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
+   Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.
 
    When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
 
-   Enter a name for your new map and click **Start session**.
+   Enter a name or use the suggested name for your new map and click **Start session**.
    Wait for the slam session to finish starting up in the cloud, which **takes about 2 minutes**.
 
    Make sure to either **manually refresh**, or **change the refresh frequency** to something other than `Manual`.
@@ -307,7 +306,7 @@ For more information about the configuration attributes, see [Attributes](#attri
 
    ![offline mapping maps computing table](/mobility/slam/offline-mapping-maps-computing-table.png)
 
-   When you are ready to end the slam session, return to your machine's **Control** tab and click **End session**.
+   When you are ready to end the slam session, return to your machine's **CONTROL** tab and click **End session**.
    If you do not click **End session**, the slam session will automatically end after 45 minutes.
 
    Once the session has ended, the map is saved to your **Location** page's **SLAM library** tab.
@@ -434,7 +433,7 @@ Updating an existing map uses an instance of the `cartographer` module running i
 
 2. Start a mapping session:
 
-   Navigate to the **Control** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
+   Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.
 
    When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
@@ -543,7 +542,7 @@ This example JSON configuration:
 
 1.  Start a mapping session:
 
-    Navigate to the **Control** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
+    Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
 
     Unlike when creating or updating a map, you do not need to start and end a slam session.
     The pointcloud for the existing map will appear **immediately** and Cartographer will try to find your machine's position on it.
