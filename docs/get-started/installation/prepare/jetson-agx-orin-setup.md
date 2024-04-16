@@ -31,7 +31,7 @@ If you want to use a different carrier board to incorporate your Orin into your 
 {{% alert title="CAUTION: Use 3.3V inputs and outputs" color="caution" %}}
 
 The GPIO pins on Jetson boards are rated 3.3V signals. 5V signals from encoders and sensors can cause damage to a pin. We recommend selecting hardware that can operate 3.3V signals or lower.
-For details, see your boards specification.
+For details, see your board's specification.
 
 {{% /alert %}}
 

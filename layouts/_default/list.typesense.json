@@ -66,6 +66,12 @@
                               {{- end -}}
                         {{- end -}}
 
+                        {{- if .Params.resource -}}
+                              {{- $.Scratch.Set "resource" .Params.resource -}}
+                        {{- else -}}
+                              {{- $.Scratch.Set "resource" "docs-tutorial" -}}
+                        {{- end -}}
+
                         {{- if .Params.canonical -}}
                               {{- $.Scratch.Set "permalink" (printf "%s" .Params.canonical) -}}
                               {{- $.Scratch.Set "relpermalink" (printf "%s" .Params.canonical) -}}
@@ -99,11 +105,11 @@
                               "videoAlt" .Params.videoAlt
                               "languages" .Params.languages
                               "viamservices" (intersect (.Params.viamresources) (slice "data_manager" "motion" "frame_system" "mlmodel" "navigation" "base_remote_control" "sensors" "slam" "vision"))
-                              "viamcomponents" (intersect (.Params.viamresources) (slice "arm" "base" "board" "camera" "encoder" "gantry" "gripper" "input_controller" "motor" "movement_sensor" "sensor" "servo"))
+                              "viamcomponents" (intersect (.Params.viamresources) (slice "arm" "base" "board" "camera" "encoder" "generic" "encoder" "gantry" "gripper" "input_controller" "motor" "movement_sensor" "power_sensor" "sensor" "servo"))
                               "level" .Params.level
                               "cost" (int (.Params.cost))
                               "featured" ($.Scratch.Get "featured")
-                              "resource" "docs-tutorial"
+                              "resource" ($.Scratch.Get "resource")
                         )}}
                   {{- end -}}
             {{- end -}}
