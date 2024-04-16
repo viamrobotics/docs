@@ -29,35 +29,7 @@ Enter a name or use the suggested name for your camera and click **Create**.
 
 ![Creation of a ultrasonic camera in the Viam app config builder.](/components/camera/configure-ultrasonic.png)
 
-Copy and paste the following attribute template into your camera's **Attributes** box.
-Then remove and fill in the attributes as applicable to your camera, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "trigger_pin": "<pin-number>",
-  "echo_interrupt_pin": "<pin-number>",
-  "board": "<your-board-name>",
-  "timeout_ms": <int>
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "trigger_pin": "5",
-  "echo_interrupt_pin": "15",
-  "board": "local",
-  "timeout_ms": "1200"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Edit the attributes as applicable to your camera, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

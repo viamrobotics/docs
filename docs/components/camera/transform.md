@@ -24,7 +24,8 @@ Enter a name or use the suggested name for your camera and click **Create**.
 
 ![Configuration of an transform view in the Viam app config builder.](/components/camera/configure-transform.png)
 
-Copy and paste the following attribute template into your camera's **Attributes** box.
+Click the **{}** (Switch to Advanced) button in the top right of the component panel to edit the component's attributes directly with JSON.
+Copy and paste the following attribute template into the attributes field.
 Then remove and fill in the attributes as applicable to your camera, according to the table below.
 
 {{< tabs >}}

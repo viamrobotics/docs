@@ -27,31 +27,7 @@ Enter a name or use the suggested name for your camera and click **Create**.
 
 ![Configuration of a fake camera in the Viam app config builder.](/components/camera/configure-fake.png)
 
-Copy and paste the following attribute template into your camera's **Attributes** box.
-Then remove and fill in the attributes as applicable to your camera, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "width": <int>,
-  "height": <int>
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "width": 640,
-  "height": 360
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Edit the attributes as applicable to your camera, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -77,8 +53,9 @@ The following attributes are available for `fake` cameras:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `width` | int | Optional | The width of the image in pixels. The default width is 1280. The maximum width is 10000. |
-| `height` | int | Optional | The height of the image in pixels. The default height is 720. The maximum height is 10000. |
+| `width` | int | Optional | The width of the image in pixels. The maximum width is 10000. <br> Default: `1280` |
+| `height` | int | Optional | The height of the image in pixels. The maximum height is 10000. <br> Default: `720` |
+| `animated` | bool | Optional | If you want the camera stream visible on the **CONTROL** tab to be animated. <br> Default: `False` |
 
 ## View the camera stream
 
