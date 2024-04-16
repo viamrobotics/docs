@@ -39,7 +39,17 @@ Edit the attributes as applicable to your board, according to the table below.
       "type": "board",
       "namespace": "rdk",
       "attributes": {
-        "pins": <number>
+        "pins": <number>,
+        "analogs": [
+          {
+            "name": "<your-analog-reader-name>",
+            "pin": "<pin-number-on-adc>",
+            "spi_bus": "<your-spi-bus-index>",
+            "chip_select": "<chip-select-index>",
+            "average_over_ms": <int>,
+            "samples_per_sec": <int>
+          }
+        ]
       },
       "depends_on": []
     }

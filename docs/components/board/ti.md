@@ -42,7 +42,10 @@ Enter a name for your board and click **Create**.
       "namespace": "rdk",
       "attributes": {
         "digital_interrupts": [
-          <...See table below...>
+          {
+            "name": "<your-digital-interrupt-name>",
+            "pin": "<pin-number>"
+          }
         ]
       },
       "depends_on": []

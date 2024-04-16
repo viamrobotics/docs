@@ -51,7 +51,10 @@ Edit the attributes as applicable to your board, according to the table below.
       "namespace": "rdk",
       "attributes": {
         "digital_interrupts": [
-          <...See table below...>
+          {
+            "name": "<your-digital-interrupt-name>",
+            "pin": "<pin-number>"
+          }
         ]
       },
       "depends_on": []
