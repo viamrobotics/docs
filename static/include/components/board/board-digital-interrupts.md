@@ -22,7 +22,7 @@ Assign a name to your digital interrupt and then enter a pin number.
 "digital_interrupts": [
   {
     "name": "<your-digital-interrupt-name>",
-    "pin": "<pin-number>",
+    "pin": "<pin-number>"
   }
 ]
 ```

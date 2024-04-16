@@ -36,39 +36,7 @@ Enter a name or use the suggested name for your board and click **Create**.
 
 ![An example configuration for a upboard board in the Viam app Config Builder.](/components/board/upboard-ui-config.png)
 
-Copy and paste the following attribute template into your board's **Attributes** box.
-Then remove and fill in the attributes as applicable to your board, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "digital_interrupts": [
-    {
-      "name": "<your-digital-interrupt-name>",
-      "pin": "<pin-number>"
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "digital_interrupts": [
-    {
-      "name": "your-interrupt",
-      "pin": "18"
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Edit the attributes as applicable to your board, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

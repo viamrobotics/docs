@@ -29,7 +29,7 @@ Enter a name or use the suggested name for your board and click **Create**.
 
 ![An example configuration for a beaglebone board in the Viam app Config Builder.](/components/board/beaglebone-ui-config.png)
 
-{{< readfile "/static/include/components/board-attr-config.md" >}}
+Edit the attributes as applicable to your board, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -42,7 +42,14 @@ Enter a name or use the suggested name for your board and click **Create**.
       "model": "beaglebone",
       "type": "board",
       "namespace": "rdk",
-      "attributes": {},
+      "attributes": {
+        "digital_interrupts": [
+          {
+            "name": "<your-digital-interrupt-name>",
+            "pin": "<pin-number>"
+          }
+        ]
+      },
       "depends_on": []
     }
   ]
