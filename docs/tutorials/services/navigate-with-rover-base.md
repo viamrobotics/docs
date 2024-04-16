@@ -98,7 +98,7 @@ We used a [`jetson` board](/components/board/jetson/), but you can use any model
 ![Configuration of a jetson board with digital interrupts in the Viam app config builder.](/tutorials/navigate-with-rover-base/board-config-builder.png)
 
 2. Configure [digital interrupts](/components/board/#digital_interrupts) on your board to signal precise GPIO state changes to the [encoders](/components/encoder/) on your rover base.
-   Copy and paste the following into your board's attributes box to add [digital interrupts](/components/board/#digital_interrupts) on pins `31`, `29`, `23`, and `21`:
+   Copy and paste the following into your board's attributes field to add [digital interrupts](/components/board/#digital_interrupts) on pins `31`, `29`, `23`, and `21`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -436,7 +436,7 @@ To add the navigation service to your robot, do the following:
 1. Enter a name or use the suggested name for your service and click **Create**.
 
 1. Select **JSON** mode.
-   Copy and paste the following into your new service's attributes box:
+   Copy and paste the following into your new service's attributes field:
 
    ```json
    {
