@@ -98,7 +98,9 @@ We used a [`jetson` board](/components/board/jetson/), but you can use any model
 ![Configuration of a jetson board with digital interrupts in the Viam app config builder.](/tutorials/navigate-with-rover-base/board-config-builder.png)
 
 2. Configure [digital interrupts](/components/board/#digital_interrupts) on your board to signal precise GPIO state changes to the [encoders](/components/encoder/) on your rover base.
-   Copy and paste the following into your board's attributes field to add [digital interrupts](/components/board/#digital_interrupts) on pins `31`, `29`, `23`, and `21`:
+   Find your board on the **CONFIGURE** tab in **Builder** mode.
+   Click the **{}** (Switch to advanced) button on the right side of your board's card to switch to JSON attributes editing mode.
+   Copy and paste the following JSON into your board's attributes field to add [digital interrupts](/components/boards/#digital_interrupts) on pins `31`, `29`, `23`, and `21`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -432,7 +434,7 @@ To add the navigation service to your robot, do the following:
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
-1. Select the `Navigation` type.
+1. Select the `navigation` type.
 1. Enter a name or use the suggested name for your service and click **Create**.
 
 1. Select **JSON** mode.
@@ -504,8 +506,7 @@ You can add waypoints from the [**CONTROL** tab](#control-tab-method) or [progra
 
 Go to the **CONTROL** tab of your robot in the [Viam app](https://app.viam.com), and open the navigation service card.
 
-- Is there anything in place of this they will need to do in order to ensure the robot will nto begin navigation while they add waypoints? Since there is no longer navigation mode?
-  From there, ensure that **Navigation mode** is selected as **Manual**, so your robot will not begin navigation while you add waypoints.
+From there, ensure that **Navigation mode** is selected as **Manual**, so your robot will not begin navigation while you add waypoints.
 
 #### Add waypoints
 
@@ -523,7 +524,7 @@ Hover over a waypoint in the left-hand menu and click the trash icon to delete a
 
 If you want your robot to avoid certain obstacles in its path while navigating, you can also add obstacles.
 In the **CONFIGURE** tab, select the **Obstacles** subtab on the navigation card.
-Zoom in on your current location, then hold shift and drag on the map to draw an obstacle.
+Zoom in on your current location, then hold **shift** and drag on the map to draw an obstacle.
 Add as many obstacles as you desire.
 Hover over an obstacle in the left-hand menu and click the trash icon to delete an obstacle.
 
