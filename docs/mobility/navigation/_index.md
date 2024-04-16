@@ -55,7 +55,9 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `navigation` type.
 Enter a name or use the suggested name for your service and click **Create**.
 
-![An example configuration for a navigation service in the Viam app Config Builder.](/mobility/navigation/navigation-ui-config.png)
+{{<imgproc src="/mobility/navigation/navigation-ui-config.png" resize="1200x" style="width: 900px" alt="An example configuration for a navigation service in the Viam app Config Builder.">}}
+
+Edit the attributes as applicable to your machine, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
