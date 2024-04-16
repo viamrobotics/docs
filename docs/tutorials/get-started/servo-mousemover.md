@@ -27,7 +27,7 @@ Maybe it was to clear your head, grab your lunch, answer the door, and you get i
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/JVtZ7aU4k68">}}
 
 This tutorial will show you how to build a mouse mover using Viam, a Raspberry Pi, a servo, and an optical mouse.
-This robot will turn the continuous servo that's secured inside the box, which will turn the circle under the optical mouse.
+This machine will turn the continuous servo that's secured inside the box, which will turn the circle under the optical mouse.
 This will keep your computer from falling asleep.
 
 This project is a good place to begin if you're new to robotics and would like to learn how to use a [servo component](/components/servo/) with the Viam app and Viam's [Python SDK](https://python.viam.dev/).
@@ -72,7 +72,8 @@ This project is a good place to begin if you're new to robotics and would like t
 ## Install Viam software
 
 First, prepare your Raspberry Pi according to our [setup guide](/get-started/installation/prepare/rpi-setup/).
-Follow the instructions to install the right OS, connect with SSH, add a new machine in the [the Viam app](https://app.viam.com), and install `viam-server`: the software that you will use to operate your machine.
+Follow the instructions to install the right OS and connect with SSH.
+Then add a new machine in the [the Viam app](https://app.viam.com) and follow the setup instructions to install `viam-server` on your Raspberry Pi and connect to the Viam app.
 
 Next, run this command in your Raspberry Pi terminal to install the pip package manager.
 Select "yes" when asked if you want to continue.
@@ -166,10 +167,10 @@ Go to the [Viam app](https://app.viam.com), and navigate to the **CONFIGURE** ta
 
 Create a [board component](/components/board/):
 
-- Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
-- Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
-- Select the `board` type, then select the `pi` model.
-- Enter the name `local` for your board and click **Create**.
+1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+1. Select the `board` type, then select the `pi` model.
+1. Enter the name `local` for your board and click **Create**.
 
 {{% alert title="Tip" color="tip" %}}
 You can name the board whatever you want, but if you change the name you must update the references to the board in the code we use later.
@@ -179,10 +180,10 @@ You can name the board whatever you want, but if you change the name you must up
 
 Create a [servo component](/components/servo/):
 
-- Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
-- Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
-- Select the `servo` type, then select the `pi` model.
-- Enter the name `fs90f` for your servo and click **Create**.
+1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+1. Select the `servo` type, then select the `pi` model.
+1. Enter the name `fs90f` for your servo and click **Create**.
 
 After clicking **Create**, you see where you can put in attributes for the servo.
 This is where you tell Viam which hardware pin to use to control the servo.
