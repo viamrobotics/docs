@@ -131,7 +131,7 @@ Additionally, the nested `GPIOPin`, `Analog`, and `DigitalInterrupt` interfaces 
 
 [`Analog`](#analog-api) API:
 
-{{< readfile "/static/include/components/apis/analog.md" >}}
+{{< readfile "/static/include/components/apis/analogreader.md" >}}
 
 <br>
 
