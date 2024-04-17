@@ -117,7 +117,7 @@ search.addWidgets([
   }),
   instantsearch.widgets.configure({
     hitsPerPage: 12,
-    filters: ["resource: docs-tutorial"],
+    // filters: ["resource: docs-tutorial"],
   }),
   customRefinementList({
     container: "languages-list",
@@ -174,6 +174,16 @@ search.addWidgets([
       { label: "Beginner" },
       { label: "Intermediate" },
       { label: "Advanced" },
+    ],
+  }),
+  customRefinementList({
+    container: "resources-list",
+    attribute: "resource",
+    operator: "and",
+    sortBy: ["name:asc"],
+    items: [
+      { label: "blog" },
+      { label: "docs" },
     ],
   }),
   instantsearch.widgets.pagination({

@@ -69,7 +69,7 @@
                         {{- if .Params.resource -}}
                               {{- $.Scratch.Set "resource" .Params.resource -}}
                         {{- else -}}
-                              {{- $.Scratch.Set "resource" "docs-tutorial" -}}
+                              {{- $.Scratch.Set "resource" "docs" -}}
                         {{- end -}}
 
                         {{- if .Params.canonical -}}
