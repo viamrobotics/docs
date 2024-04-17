@@ -9,14 +9,14 @@ You'll need to halt and restart the server to view the changes.
 
 ## Heading 2
 
-* bullet 1
-* bullet 2
+- bullet 1
+- bullet 2
 
 ### Heading 3
 
 This Markdown code:
 
-``` sh
+```sh
 Markdown Table
 | id | name    |
 |----|---------|
@@ -29,16 +29,16 @@ Markdown Table
 Renders like so:
 
 Markdown Table
-| id | name    |
+| id | name |
 |----|---------|
-| 1  | Roberta |
-| 2  | Oliver  |
-| 3  | Shayna  |
-| 4  | Fechin  |
+| 1 | Roberta |
+| 2 | Oliver |
+| 3 | Shayna |
+| 4 | Fechin |
 
 This HTML code:
 
-``` html
+```html
 <h3>HTML Table</h3>
 
 <table>

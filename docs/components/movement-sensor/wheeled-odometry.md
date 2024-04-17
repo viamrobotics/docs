@@ -48,41 +48,14 @@ To prepare your machine, attach [encoders](/components/encoder/) to each of the 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `movement-sensor` type, then select the `wheeled-odometry` model.
-Enter a name for your movement sensor and click **Create**.
+Enter a name or use the suggested name for your movement sensor and click **Create**.
 
-{{< imgproc src="/components/movement-sensor/wheeled-odometry-builder.png" alt="Creation of an `wheeled-odometry` movement sensor in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/components/movement-sensor/wheeled-odometry-builder.png" alt="Creation of an `wheeled-odometry` movement sensor in the Viam app config builder." resize="1200x" style="width:650px" >}}
 
-Copy and paste the following attribute template into your movement sensor's **Attributes** box.
-Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "base": "<your-base-name>",
-  "left_motors": ["<your-base-left-motor-name-1>", "<your-base-left-motor-name-2>"],
-  "right_motors": ["<your-base-right-motor-name-1", "your-base-right-motor-name-2>"],
-  "time-interval-msec": <number>
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "base": "my_wheeled_base",
-  "left_motors": ["leftm1", "leftm2"],
-  "right_motors": ["rightm1", "rightm2"]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Fill in the attributes as applicable to your movement sensor, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

@@ -47,7 +47,8 @@ Model | Description
 
 ## Control your machine with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, navigate to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and select the **Code sample** page.
+Select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 

@@ -50,7 +50,9 @@ Your machine must have `curl` available in order to install the Viam Agent.
 
 If you want to install the Viam Agent on a machine that you have already configured in the Viam app, follow these steps:
 
-1. Determine your machine's [Part ID](/build/program/apis/data-client/#find-part-id).
+1. Determine your machine {{< glossary_tooltip term_id="part" text="part's" >}} ID.
+   To copy the ID of your machine part, select the part status dropdown to the right of your machine's location and name on the top of its page and click the copy icon next to **Part ID**.
+   For an example, see [Find part ID](/build/program/apis/data-client/#find-part-id)
 1. Determine your machine's [API key and API key ID](/build/program/#authenticate).
    If you haven't already, you can [use the CLI to create a new API key and API key ID](/fleet/cli/#create-an-organization-api-key).
 1. Run the following command, replacing `<KEYID>`, `<KEY>`, and `<PARTID>` with your machine's values as determined from the steps above:
@@ -175,7 +177,7 @@ For example, to configure SSIDs and passwords for two WiFi networks named `prima
 }
 ```
 
-You can add this configuration to the <file>/etc/viam.json</file> configuration file you deploy to your machine, or from the **Config** tab in the [Viam app](https://app.viam.com/) for your machine, using **Raw JSON** mode.
+You can add this configuration to the <file>/etc/viam.json</file> configuration file you deploy to your machine, or from the **CONFIGURE** tab in the [Viam app](https://app.viam.com/) for your machine, using **Raw JSON** mode.
 The Viam Agent will attempt to connect to the `ssid` with the highest `priority` first.
 If the highest-priority network is not available, it will then attempt to connect to the next-highest `priority` network, and so on until all configured networks have been tried.
 If no configured WiFi network could be connected to, the Viam Agent will instead create its own WiFI hotspot, as described in the next section.
@@ -205,10 +207,17 @@ For example, to set the hotspot password to `acme123`, you can use the following
 }
 ```
 
-You can add this configuration to the <file>/etc/viam.json</file> configuration file you deploy to your machine, or from the **Config** tab in the [Viam app](https://app.viam.com/) for your machine, using **Raw JSON** mode.
+You can add this configuration to your machine's configuration in the **CONFIGURE** tab in the [Viam app](https://app.viam.com/), using **JSON** mode, or directly to the <file>/etc/viam.json</file> configuration file you deploy to your machine.
 
-If you did not initially provide a full `viam-server` configuration in either of these methods, you will be prompted to paste one in when you connect to the WiFi hotspot.
-You can copy a configured machine's configuration by navigating to the [Viam app](https://app.viam.com/), selecting the **Setup** tab for your machine, and clicking the **Copy viam-server config** button.
+If you did not initially provide a `viam-server` app configuration in either of these methods, you will be prompted to paste one in when you connect to the WiFi hotspot.
+This is the part of the machine configuration JSON which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to the Viam app.
+
+To copy a machine's `viam-server` app configuration:
+
+- Navigate to your machine's page on [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
+- Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="/build/micro-rdk/part-dropdown.png" resize="x600" style="max-width: 500px" declaredimensions=true alt="The part status dropdown of an offline machine.">}}
+- Click the copy icon underneath **Viam server configuration** to copy the `viam-server` app JSON configuration.
+- Paste the `viam-server` app config into your terminal when prompted.
 
 ## Use a pre-install script
 

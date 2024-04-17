@@ -36,60 +36,14 @@ If you do not enable hardware PWM, these pins will have no function.
 {{< tabs name="Configure a pi5 Board" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `board` type, then select the `pi5` model.
-Enter a name for your board and click **Create**.
+Enter a name or use the suggested name for your board and click **Create**.
 
 ![An example board configuration in the app builder UI. The name (local), type (board) and model (pi5) are shown. No other attributes are configured.](/components/board/pi5-ui-config.png)
 
-Copy and paste the following attribute template into your board's **Attributes** box.
-Then remove and fill in the attributes as applicable to your board, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "analogs": [
-    {
-      "name": "<your-analog-reader-name>",
-      "pin": "<pin-number-on-adc>",
-      "spi_bus": "<your-spi-bus-index>",
-      "chip_select": "<chip-select-pin-number-on-board>",
-      "average_over_ms": <int>,
-      "samples_per_sec": <int>
-    }
-  ],
-  "digital_interrupts": [
-    {
-      "name": "<your-digital-interrupt-name>",
-      "pin": "<pin-number>"
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "digital_interrupts": [
-    {
-      "name": "your-interrupt-1",
-      "pin": "15"
-    },
-    {
-      "name": "your-interrupt-2",
-      "pin": "16"
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Edit the attributes as applicable to your board, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -104,12 +58,21 @@ Then remove and fill in the attributes as applicable to your board, according to
       "namespace": "rdk",
       "attributes": {
         "analogs": [
-          <...See table below...>
+          {
+            "name": "<your-analog-reader-name>",
+            "pin": "<pin-number-on-adc>",
+            "spi_bus": "<your-spi-bus-index>",
+            "chip_select": "<chip-select-index>",
+            "average_over_ms": <int>,
+            "samples_per_sec": <int>
+          }
         ],
         "digital_interrupts": [
-          <...See table below...>
-        ]
-      },
+          {
+            "name": "<your-digital-interrupt-name>",
+            "pin": "<pin-number>"
+          }
+        ],
       "depends_on": []
     }
   ]

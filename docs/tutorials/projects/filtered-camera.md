@@ -52,13 +52,13 @@ The `filtered-camera` module filters image data captured by a camera component, 
 
 Add a [camera](/components/camera/) component to your machine:
 
-1. Navigate to your machine's page on the [Viam app](https://app.viam.com/robots) and select the **Config** tab.
-1. Click the **Components** subtab and click **Create component** in the lower-left corner.
+1. Navigate to your machine's page on the [Viam app](https://app.viam.com/robots) and select the **CONFIGURE** tab.
+1. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**.
 1. Select `camera` and then select `webcam`.
 1. Give the camera a name, such as `my-webcam`, and click **Create**.
 1. If your machine is online and connected to the Viam app, your camera's video path is automatically detected and configured.
    If your machine is not currently connected, you can manually select the video path for your camera, or bring your machine online to have this path automatically configured for you.
-1. Click **Save Config** at the bottom of the window to save your changes.
+1. Click **Save** in the top right corner of the page to save your changes.
 
    {{< imgproc src="/tutorials/filtered-camera-module/configure-webcam.png" alt="The camera component configuration pane in the Viam app showing a configured webcam with video path video0" resize="500x" >}}
 
@@ -66,12 +66,12 @@ Add a [camera](/components/camera/) component to your machine:
 
 Next, add the data management service to your machine to be able to capture and sync data:
 
-1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
-1. Click the **Create service** button at the bottom of the page, and select **Data Management**.
-1. Give the service a name, like `my-data-management`, then click **Create**.
+1. On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
+1. Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**. Select **data management**.
+1. Use the suggested name for your service or give it a name, like `my-data-management`, then click **Create**.
 1. On the panel that appears, you can manage the capturing and syncing functions individually.
    By default, the data management service captures data to the <file>~/.viam/capture</file> directory, and syncs captured data files to the Viam app every 6 seconds (`0.1` minutes in the configuration).
-   Leave the default settings as they are, and click **Save Config** at the bottom of the screen to save your changes.
+   Leave the default settings as they are, and click **Save** in the top right corner of the page to save your changes.
 
    {{< imgproc src="/tutorials/filtered-camera-module/configure-data-management.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="700x" >}}
 
@@ -81,7 +81,7 @@ For more information, see [Add the data management service](/data/capture/#add-t
 
 Once you have added the data management service, enable image data capture for your camera component:
 
-1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
+1. Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
 1. In the configuration pane for your configured camera component (named `my-webcam` in the above steps), find the **Data capture configuration** section, and click the **Add method** button to enable data capture for this camera.
 
    - Set the **Type** to `ReadImage` and the **Frequency** to `0.333`.
@@ -93,8 +93,8 @@ Once you have added the data management service, enable image data capture for y
 
      {{< imgproc src="/tutorials/filtered-camera-module/configure-webcam-data-capture.png" alt="The camera component configuration pane in the Viam app with data capture configured and enabled" resize="800x" >}}
 
-1. Click **Save Config** at the bottom of the window to save your changes.
-1. In the [Viam app](https://app.viam.com), navigate to the [**Data**](/data/view/) tab, where you should see images captured by your camera component appearing steadily.
+1. Click **Save** in the top right corner of the page to save your changes.
+1. In the [Viam app](https://app.viam.com), navigate to the [**DATA**](/data/view/) tab, where you should see images captured by your camera component appearing steadily.
    If you see images appear here, proceed to the next step.
    If you do not see images appear after a short time, see the [troubleshooting](#troubleshooting) section for further guidance.
 
@@ -133,7 +133,7 @@ For best results:
 Once you have enough images captured and synced to the Viam app, add those images to a new dataset.
 A [dataset](/data/dataset/) allows you to conveniently view, work with, and train an ML model on a collection of images.
 
-1. In the [Viam app](https://app.viam.com), navigate to the [**Data**](/data/view/) tab to view your captured images.
+1. In the [Viam app](https://app.viam.com), navigate to the [**DATA**](/data/view/) tab to view your captured images.
 1. Select an image you want to use in your ML model.
 1. In the **Actions** pane on the right-hand side, enter a new dataset name under **Datasets**, then press return.
 1. Repeat the steps above to add more images to your dataset, until you have enough to train an ML model on.
@@ -147,7 +147,7 @@ A [dataset](/data/dataset/) allows you to conveniently view, work with, and trai
 
 Once you have created a dataset containing the images you want to use, label and draw bounding boxes around the objects in those images you want your machine to be able to identify.
 
-1. In the [Viam app](https://app.viam.com), navigate to the [**Datasets**](https://app.viam.com/data/datasets) subtab and select the dataset you created.
+1. In the [Viam app](https://app.viam.com), navigate to the [**Datasets**](https://app.viam.com/data/datasets) subtab of the **DATA** page and select the dataset you created.
 1. Select an image you want to use in your ML model.
 1. In the **Actions** pane on the right-hand side, select the **Bounding box** mode, enter a new label that describes the object in the image you want to detect, then draw a bounding box over the image on the right-hand side.
    The example below shows adding the `viam-figure` label to an image, with a rectangular bounding box drawn around it.
@@ -164,7 +164,7 @@ Once you have created a dataset containing the images you want to use, label and
 Once your dataset is ready, train a new ML model on that dataset.
 
 1. Click the **Train model** button in the upper-left corner of the [**Datasets**](https://app.viam.com/data/datasets) subtab view for your dataset.
-1. Select the **Object detection** model type, select the label or labels you added in the previous step, enter a name for your new ML model, and click **Train model**.
+1. Select the **Object detection** model type, select the label or labels you added in the previous step, enter a name or use the suggested name for your new ML model, and click **Train model**.
 
    {{< imgproc src="/tutorials/filtered-camera-module/train-a-new-model.png" alt="The models tab in the Viam app showing the configuration for training a new object detection model using the viam-figure dataset and viam-figure label" resize="1000x" >}}
 
@@ -210,7 +210,7 @@ To upload and use an existing ML model:
 1. Navigate to the [**Models** page](https://app.viam.com/data/models) in the Viam app and click the **Upload model** button.
 1. Select **New model** and configure visibility for your model: public models are available to all Viam users while private models are only available to users in your [organization](/fleet/organizations/).
 1. If you haven't already, you will be prompted to select an [organization namespace](/fleet/organizations/#create-a-namespace-for-your-organization).
-1. Then, in the resulting **Upload model** screen, enter a name for your model, select **Object detection**, and upload both the <file>effdet0.tflite</file> and <file>labels.txt</file> files.
+1. Then, in the resulting **Upload model** screen, enter a name or use the suggested name for your model, select **Object detection**, and upload both the <file>effdet0.tflite</file> and <file>labels.txt</file> files.
    Add a brief description of your model, then click **Upload model**.
 
    {{< imgproc src="/tutorials/filtered-camera-module/upload-existing-model.png" alt="The models subtab under the data tab in the Viam app showing an existing model upload for an object detection model, including the effdet0.tflite model file and the labels.txt labels file" resize="800x" >}}
@@ -234,13 +234,13 @@ The `filtered-camera` module filters image data based on your ML model, and so r
 
 Add the ML model service to your machine to be able to deploy and update ML models:
 
-1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
-1. Click the **Create service** button at the bottom of the page, select **ML model**, then select the built-in `TFLite CPU` model.
-1. Give the service a name, like `my-mlmodel-service`, then click **Create**.
-1. On the panel that appears, select the **Deploy model on robot** toggle, then select your model from the **Models** dropdown.
-   If you don't see your model name appear here, ensure that your model appears under the [**Models** subtab](https://app.viam.com/data/models) of the **Data** tab in the Viam app.
+1. Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
+1. Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**, then select the built-in `TFLite CPU` model.
+1. Use the suggested name for your service or give it a name, like `my-mlmodel-service`, then click **Create**.
+1. On the panel that appears, select the **Deploy model on robot** toggle, then select your model from the **Select model** dropdown.
+   If you don't see your model name appear here, ensure that your model appears under the [**Models** subtab](https://app.viam.com/data/models) of the **DATA** tab in the Viam app.
    If you trained your own model, ensure that the model has finished training and appears under the **Models** section of that page, and not the **Training** section.
-1. Click **Save Config** at the bottom of the window to save your changes.
+1. Click **Save** in the top right corner of the page to save your changes.
 
    {{< imgproc src="/tutorials/filtered-camera-module/configure-mlmodel-service.png" alt="The ML model service configuration pane with deploy model on robot selected, and the my-viam-figure-model added" resize="600x" >}}
 
@@ -250,11 +250,11 @@ For more information, see [Create an ML model service](/ml/deploy/).
 
 Add the vision service to your machine to be able to use the deployed ML model with your camera, and with the `filtered-camera` module.
 
-1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
-1. Click the **Create service** button at the bottom of the page, select **Vision**, then select the built-in `ML model` model.
-1. Give the service a name, like `my-vision-service`, then click **Create**.
+1. Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
+1. Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**. Select **Vision**, then select the built-in `ML model` model.
+1. Use the suggested name for your service or give it a name, like `my-vision-service`, then click **Create**.
 1. On the panel that appears, select your ML model from the **ML Model** dropdown.
-1. Click **Save Config** at the bottom of the window to save your changes.
+1. Click **Save** in the top right corner of the page to save your changes.
 
    {{< imgproc src="/tutorials/filtered-camera-module/configure-vision-service.png" alt="The vision service configuration pane with my-mlmodel-service selected as the ML model" resize="500x" >}}
 
@@ -270,10 +270,11 @@ This step is optional, you can skip this step if you want to get right to filter
 
 To add a transform camera to your machine:
 
-1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
-1. Click the **Create component** button at the bottom of the page, select **Camera**, then select the built-in `transform` model.
+1. Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
+1. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**. Select **Camera**, then select the built-in `transform` model.
 1. Give the transform camera a name, like `my-transform-camera`, then click **Create**.
-1. On the panel that appears, enter the following configuration into the **Attributes** field:
+1. Find the card of the component you created on the **CONFIGURE** tab. Click the **{}** (Switch to advanced) button on the upper right of the card.
+   On the panel that appears, copy and paste the following configuration:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
@@ -297,13 +298,13 @@ To add a transform camera to your machine:
 
    {{< imgproc src="/tutorials/filtered-camera-module/configure-transform-camera.png" alt="The transform camera component configuration pane with required attributes configured" resize="800x" >}}
 
-1. Click **Save Config** at the bottom of the window to save your changes.
+1. Click **Save** in the top right corner of the page to save your changes.
 
 ### Test your ML model on a live camera feed
 
-Now that you've configured a transform camera, you can see your ML model in action from the **Control** tab:
+Now that you've configured a transform camera, you can see your ML model in action from the **CONTROL** tab:
 
-1. On your machine's **Control** page in the [Viam app](https://app.viam.com), enable the toggle for both your camera component (`my-webcam`) and your transform camera (`my-transform-camera`).
+1. On your machine's **CONTROL** tab in the [Viam app](https://app.viam.com), enable the toggle for both your camera component (`my-webcam`) and your transform camera (`my-transform-camera`).
    You can find these toggles under their respective component: click a control pane to expand it if it is collapsed.
    The screenshot below shows a machine with a configured `base` component, so the two toggles appear under the `base` control pane, but you can always find them under their own control pane as well.
 1. The camera component displays the raw camera feed, but the transform camera will additionally overlay a bounding box on the same feed if a matching object is detected.
@@ -321,11 +322,12 @@ Now that you've configured a transform camera, you can see your ML model in acti
 
 With all the prerequisites in place, you are ready to add the `filtered-camera` module to your machine.
 
-1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
-1. Click the **Create component** button at the bottom of the page, select **Camera**, then select the `filtered-camera` model.
-   You can also search for `filtered-camera` directly.
+Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
+
+1. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**. Select **camera**, then select the `filtered-camera` model.
+   You can also search for `filtered-camera` directly. Click **Add module**.
 1. Give the modular camera a name, like `my-filtered-camera`, then click **Create**.
-1. On the panel that appears, enter the following configuration into the **Attributes** field:
+1. On the panel that appears, copy and paste the following configuration into the attributes field:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
@@ -338,7 +340,7 @@ With all the prerequisites in place, you are ready to add the `filtered-camera` 
    }
    ```
 
-   This example configures the `filter-camera` module to require a 60% confidence (`0.6`) threshold match for the label `viam-figure`, meaning that it must be at least 60% confident based on your ML model that the image contains the labelled object in order to capture it.
+   This example configures the `filtered-camera` module to require a 60% confidence (`0.6`) threshold match for the label `viam-figure`, meaning that it must be at least 60% confident based on your ML model that the image contains the labelled object in order to capture it.
    Images that do not meet this threshold do not trigger a successful match.
 
    Additionally, the example configures a `window_seconds` value of `10` seconds, which controls the duration of a buffer of images captured _previous_ to a successful match.
@@ -373,7 +375,7 @@ With all the prerequisites in place, you are ready to add the `filtered-camera` 
    - Set the **Mime type** to `image/jpeg`.
    - Ensure that the toggle on the right-hand side is set to **On**.
 
-1. Click **Save Config** at the bottom of the window to save your changes.
+1. Click **Save** in the top right corner of the page to save your changes.
 
    {{< imgproc src="/tutorials/filtered-camera-module/configure-filtered-camera.png" alt="The filtered-camera modular component configuration pane with required attributes configured and data capture enabled" resize="800x" >}}
 
@@ -381,15 +383,15 @@ With all the prerequisites in place, you are ready to add the `filtered-camera` 
 
 With everything configured, the `filtered-camera` module is now ready to selectively capture only images that meet your ML model criteria.
 
-1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
+1. Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
 1. Find your camera component (`my-webcam`) and ensure that **Data capture** is _disabled_.
 
    {{< imgproc src="/tutorials/filtered-camera-module/data-capture-off.png" alt="The camera component configuration pane showing data capture disabled" resize="800x" >}}
 
    We want to use the `filtered-camera` module to capture data instead, so that it can selectively capture image based on your ML model.
 
-1. Position your machine's camera so that no detectible objects are visible, then ensure that no new images are being synced to the Viam app by watching the [**Data** tab](https://app.viam.com/data/view) in the Viam app.
-1. Then place an object that is part of your trained ML model within view of your camera, and watch images of that object begin to appear under the **Data** tab automatically.
+1. Position your machine's camera so that no detectible objects are visible, then ensure that no new images are being synced to the Viam app by watching the [**DATA** tab](https://app.viam.com/data/view) in the Viam app.
+1. Then place an object that is part of your trained ML model within view of your camera, and watch images of that object begin to appear under the **DATA** tab automatically.
 1. Remove the object from view of the camera, and images should stop being captured and synced.
 
 Congratulations, you now have a smart filtered camera on your machine, and can fine tune the kind of image capture it performs.
@@ -416,7 +418,7 @@ See the [`filtered-camera` module repository](https://github.com/erh/filtered_ca
 
 ### No images appearing in the Viam app
 
-Ensure that the camera component (`my-webcam` in this tutorial) has data capture enabled under the **Components** subtab, and that the data management service (`my-data-management` in this tutorial) has both **Capturing** and **Syncing** enabled under the **Services** subtab.
+Ensure that the camera component (`my-webcam` in this tutorial) has data capture enabled, and that the data management service (`my-data-management` in this tutorial) has both **Capturing** and **Syncing** enabled.
 Your machine can only sync images to the Viam app when it is online; if it is not presently online, it will sync captured images when next it connects to the internet.
 
 ### Cannot train ML model

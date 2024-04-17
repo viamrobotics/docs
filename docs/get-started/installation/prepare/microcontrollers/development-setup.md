@@ -221,7 +221,7 @@ Instead, save this command to run in any future terminal session where you need 
 Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/fleet/machines/#add-a-new-machine) in your desired location.
 
 Click on the name of the machine to go to the machine's page.
-Then, navigate to the **Config** tab.
+Then, navigate to the **CONFIGURE** tab.
 
 ### Configure your machine with an ESP32
 
@@ -249,15 +249,14 @@ cargo generate --git https://github.com/viamrobotics/micro-rdk.git
 
 Select `templates/project` when prompted.
 
-You will be prompted to paste your machine's JSON configuration into the terminal.
+You will be prompted to paste your machine's `viam-server` app JSON configuration into the terminal.
 To obtain this:
 
-- Navigate to [your new machine's](#create-a-new-machine) page on [the Viam app](https://app.viam.com).
-- Click on the **Setup** tab.
-  Keep your `Mode` and `Architecture` selections at default.
-- Click the **Copy viam-server config** button on the right side of the **Setup** tab.
-  The micro-RDK needs this JSON file, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
-- Paste the `viam-server` config into your terminal when prompted.
+- Navigate to [your new machine's](#create-a-new-machine) page on [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
+- Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="/build/micro-rdk/part-dropdown.png" resize="x600" style="max-width: 500px" declaredimensions=true alt="The part status dropdown of an offline machine.">}}
+- Click the copy icon underneath **Viam server configuration** to copy the `viam-server` app JSON configuration.
+  The micro-RDK needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+- Paste the `viam-server` app config into your terminal when prompted.
 
 {{% snippet "secret-share.md" %}}
 

@@ -17,56 +17,14 @@ One camera server streams a color stream and the other camera server streams a d
 {{< tabs name="Configure a Dual Stream Camera" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `camera` type, then select the `dual_stream` model.
-Enter a name for your camera and click **Create**.
+Enter a name or use the suggested name for your camera and click **Create**.
 
 ![Configuration of a dual stream camera in the Viam app config builder.](/components/camera/configure-dual-stream.png)
 
-Copy and paste the following attribute template into your camera's **Attributes** box.
-Then remove and fill in the attributes as applicable to your camera, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "stream": "<color|depth>",
-  "color_url": <string>,
-  "depth_url": <string>,
-  "intrinsic_parameters": {
-    "width_px": <int>,
-    "height_px": <int>,
-    "fx": <float>,
-    "fy": <float>,
-    "ppx": <float>,
-    "ppy": <float>
-  },
-  "distortion_parameters": {
-    "rk1": <float>,
-    "rk2": <float>,
-    "rk3": <float>,
-    "tp1": <float>,
-    "tp2": <float>
-  },
-  "debug": <boolean>
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "stream": "color",
-  "color_url": "http://urltogetstreamingcolordatafrom",
-  "depth_url": "http://urltogetstreamingdepthdatafrom"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Edit the attributes as applicable to your camera, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

@@ -62,7 +62,7 @@ The organization structure enables you to:
 
 - configure groups of machines with reusable {{< glossary_tooltip term_id="fragment" text="fragments" >}} that [configure](/build/configure/) a set of resources for each machine that uses the fragment.
 - deploy [code packages](/registry/) or [machine learning models](/ml/), without manually copying files by uploading it to Viam's cloud and deploying it to your fleet
-- control a machine with code, the app's [**Control** tab](machines/#control), or the [Viam mobile app](#the-viam-mobile-app)
+- control a machine with code, the app's [**CONTROL** tab](machines/#control), or the [Viam mobile app](#the-viam-mobile-app)
 - obtain health metrics, such as status, uptime, version, or [logs](machines/#logs)
 - perform debugging
 
@@ -81,9 +81,9 @@ For more information, see [Permissions](/fleet/rbac/#permissions).
 ### Configuration
 
 When you or your collaborators change the configuration of a machine or a group of machines in the Viam app, `viam-server` automatically synchronizes the configuration and updates the running resources within 15 seconds.
-This means everyone who has access can change a fleet's [configuration](machines/#configuration), even while your machines are running.
+This means everyone who has access can change a fleet's [configuration](machines/#configure), even while your machines are running.
 
-You can see configuration changes made by yourself or by your collaborators on the [History tab](machines/#history).
+You can see configuration changes made by yourself or by your collaborators by selecting **History** on the right side of your machine part's card on the **CONFIGURE** tab.
 You can also revert to an earlier configuration from the History tab.
 
 {{< alert title="Simultaneous config edits" color="caution" >}}
@@ -92,7 +92,7 @@ If you edit a config while someone else edits the same config, the person who sa
 Before editing a config, we recommend you refresh the page to ensure you have all the latest changes.
 {{< /alert >}}
 
-Machine [configuration](machines/#configuration) and machine [code](/build/program/) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
+Machine [configuration](machines/#configure) and machine [code](/build/program/) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
 
 ## The Viam mobile app
 

@@ -72,9 +72,9 @@ For each component that makes up your machine:
 {{< imgproc src="/viam/test_components.png" alt="Multiple components being tested in the Viam app." resize="320x" style="max-width:320px" class="alignright" >}}
 </p>
 
-1. Add it to your machine by [choosing the component type](/build/configure/#components) (example: `camera`) and model (example: `webcam`).
+1. Add it to your machine by [choosing the component type](/build/configure/#add-a-component) (example: `camera`) and model (example: `webcam`).
 2. Test it with the visual [control tab](/fleet/machines/#control).
-3. See any problems with in-app [logs](/fleet/machines/#logs), review or roll back configuration [history](/fleet/machines/#history).
+3. See any problems with in-app [logs](/fleet/machines/#logs), review or roll back [configuration history](/fleet/machines/#configure).
 
 After configuring your machine's hardware, you can configure [high level functionality](/services/) the same way:
 

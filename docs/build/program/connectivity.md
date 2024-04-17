@@ -10,7 +10,7 @@ aliases:
   - /program/connectivity/
 ---
 
-When connecting to a machine using the connection code from the [code sample tab](/build/program/#hello-world-the-code-sample-tab), a [client session](/build/program/apis/sessions/) automatically uses the most efficient route to connect to your machine either through local LAN or WAN or the internet.
+When connecting to a machine using the connection code from the [**CONNECT** tab](/build/program/#hello-world-the-connect-tab), a [client session](/build/program/apis/sessions/) automatically uses the most efficient route to connect to your machine either through local LAN or WAN or the internet.
 
 When a machine loses its connection to the internet but is still connected to a LAN or WAN:
 

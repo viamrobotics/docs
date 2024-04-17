@@ -22,7 +22,7 @@ Assign a name to your digital interrupt and then enter a pin number.
 "digital_interrupts": [
   {
     "name": "<your-digital-interrupt-name>",
-    "pin": "<pin-number>",
+    "pin": "<pin-number>"
   }
 ]
 ```
@@ -68,7 +68,7 @@ The following properties are available for `digital_interrupts`:
 
 #### Test `digital interrupts`
 
-Once you have configured your digital interrupts, navigate to the **Control** tab to monitor interrupt activity.
+Once you have configured your digital interrupts, navigate to the **CONTROL** tab to monitor interrupt activity.
 The value displayed next to each interrupt name represent the total count of interrupts triggered by the corresponding digital interrupt.
 
 ![Digital interrupts in the control tab.](/components/board/digital-interrupts-control-tab.png)

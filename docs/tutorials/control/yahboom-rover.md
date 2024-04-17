@@ -108,7 +108,7 @@ For **Left Motors** select `left`.
 For `width_mm`, use `150`, which is the approximate distance between the right and left wheels.
 For `wheel_circumference_mm` use `220`.
 
-If you click **Go to Advanced** you can see that the Attributes field now contains the following:
+If you click **{}** (Switch to Advanced) you can see that the attributes field now contains the following:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
