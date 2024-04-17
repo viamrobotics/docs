@@ -83,7 +83,7 @@ Go to your rover's **CONFIGURE** tab on the [Viam app](https://app.viam.com/).
 
 Configure a [gamepad](/components/input-controller/gamepad/):
 
-Click the + icon next to Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `input_controller` type, then select the `gamepad` model.
 Enter a name or use the suggested name for your input controller and click **Create**.
 
