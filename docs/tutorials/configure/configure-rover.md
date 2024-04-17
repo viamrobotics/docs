@@ -9,7 +9,8 @@ tags: ["base", "camera", "scuttle", "yahboom"]
 aliases:
   - "/tutorials/scuttlebot"
   - "/tutorials/scuttlebot/scuttlebot"
-  - /tutorials/yahboom-rover/
+  - "/tutorials/yahboom-rover/"
+  - "/tutorials/control/yahboom-rover/"
 authors: ["Hazal Mestci"]
 languages: ["python", "go"]
 viamresources: ["board", "motor", "camera", "base", "encoder"]
