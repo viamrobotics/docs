@@ -1,6 +1,6 @@
 ---
-title: "Drive a Rover (like SCUTTLE) Using a Gamepad with a Dongle"
-linkTitle: "Drive a Rover with a Dongle Gamepad"
+title: "Drive a Rover (like SCUTTLE) Using a Gamepad"
+linkTitle: "Drive a Rover with a Gamepad"
 type: "docs"
 description: "Drive a wheeled rover with a Bluetooth gamepad that has a dongle."
 videos:
@@ -23,54 +23,78 @@ date: "2022-08-10"
 cost: 575
 ---
 
-This tutorial teaches you how to add a Bluetooth dongle gamepad controller to your wheeled robot.
+This tutorial teaches you how to add a Bluetooth gamepad controller to your wheeled robot.
 By the end of this tutorial, you'll be able to drive your rover around like an RC car.
-
-{{% alert title="Tip" color="tip" %}}
-
-If your gamepad has a dongle, keep reading.
-If your gamepad does not have a dongle, check out [Drive a Yahboom Rover with a Gamepad](../yahboom-rover/#connecting-a-bluetooth-controller) for Bluetooth pairing instructions.
-
-{{% /alert %}}
 
 ## Requirements
 
 You will need the following hardware to complete this tutorial:
 
 - A wheeled rover, configured with a [base component](/components/base/) on the [Viam app](https://app.viam.com/).
-  This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a different rover.
-  - Regardless of the type of base you are using, [Setting up a SCUTTLE with Viam](/tutorials/configure/scuttlebot/) is a good place to start if you haven't already configured your base.
+  This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot) or an entirely different rover.
+  - For a tutorial on configuring your rover, see [Configure a Rover](/tutorials/configure/configure-rover/).
 - [EasySMX ESM-9101 Wireless Controller](https://www.amazon.com/Wireless-Controller-EasySMX-ESM-9101-Gamepad/dp/B07F1NLGW2?th=1) or a similar gamepad and dongle.
   This is the controller that comes with the SCUTTLE rover.
+  You can also use an 8BitDo controller with additional setup.
 
 {{<video webm_src="/tutorials/videos/scuttledemos_gamepad.webm" mp4_src="/tutorials/videos/scuttledemos_gamepad.mp4" alt="Controlling a Scuttle robot using a Bluetooth gamepad" poster="/tutorials/scuttlebot/scuttledemos_gamepad.jpg">}}
 
 ## Set up the hardware
 
-Plug the gamepad Bluetooth dongle into a USB port on the rover's [board](/components/board/).
-Turn on power to the rover.
+If your gamepad has a dongle, plug the gamepad Bluetooth dongle into a USB port on the rover's [board](/components/board/).
+Then turn on power to the rover.
+
+{{% expand "Click here if your gamepad does not have a dongle for bluetooth pairing instructions." %}}
+
+Make sure your bluetooth controller is in pairing mode.
+For an 8bitdo controller, set the mode switch to **S**, hold down **Start** for a few seconds, and when the LED underneath the controller changes to green, press the pair button for 3 seconds.
+For more information about the controller buttons and Bluetooth modes, consult the manual included with the controller.
+
+Run `sudo bluetoothctl scan on` to list all Bluetooth devices within reach of your machine.
+As you do this, make sure you run this command on the machine that runs `viam-server` which may be a different machine to your laptop.
+
+This command scans all bluetooth devices.
+Find your gamepad.
+For an 8bitdo controller, the MAC address begins with E4:17:D8.
+
+![A screenshot of a Raspberry Pi terminal with the following command: sudo bluetoothctl scan on. The results of the command are displayed: a list of device MAC addresses.](/tutorials/yahboom-rover/bluetooth-scan.png)
+
+Once you find your controller, pair with the controller by running the following command: `sudo bluetoothctl pair <8bitdo-mac-address>`.
+Do not forget to take the `<` and `>` symbols out as you paste your address.
+
+Then connect the controller: `sudo bluetoothctl connect <8bitdo-mac-address>`
+
+To make reconnecting easier in the future, trust the controller by running the following command: `sudo bluetoothctl trust <8bitdo-mac-address>`
+
+To confirm the connection, you can list connected devices with: `sudo bluetoothctl devices | cut -f2 -d| while read uuid; do sudo bluetoothctl info $uuid; done|grep -e "Device\|Connected\|Name"`
+
+![A screenshot of a Pi terminal showing the above bluetoothctl commands and their outputs.](/tutorials/yahboom-rover/bluetoothpair-connect.png)
+
+If you would like a stronger understanding of `bluetoothctl` and managing Bluetooth devices in Linux, we recommend [How to Manage Bluetooth Devices on Linux Using bluetoothctl](https://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/).
+
+{{% /expand%}}
 
 ## Add the controller to the rover's config
 
-Go to your rover's **Config** tab on the [Viam app](https://app.viam.com/).
+Go to your rover's **CONFIGURE** tab on the [Viam app](https://app.viam.com/).
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
 Configure a [gamepad](/components/input-controller/gamepad/):
 
-- Click **Create component**.
-- Select `input_controller` for the component **Type**.
-- Select `gamepad` for the **Model**.
-- Enter `my-gamepad` as the component **Name**.
-- Click **Create**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+Select the `input_controller` type, then select the `gamepad` model.
+Enter a name or use the suggested name for your input controller and click **Create**.
 
-![Blank configuration JSON](/tutorials/scuttle-gamepad/gamepad-config.png)
+![An example configuration for a linux-based gamepad input controller component in the Viam App config builder](/components/input-controller/gamepad-input-controller-ui-config.png)
+
+You can set the `auto_reconnect` attribute to `true`.
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON" %}}
 
-If instead of using the config builder, you prefer to write raw JSON, switch to [**Raw JSON** mode](/build/configure/#the-configure-tab) on the **Config** tab.
+If instead of using the config builder, you prefer to write raw JSON, switch to [**JSON** mode](/build/configure/#the-configure-tab) on the **CONFIGURE** tab.
 Inside the `components` array of your config, add the following configuration for your [gamepad](/components/input-controller/gamepad/):
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -79,7 +103,7 @@ Inside the `components` array of your config, add the following configuration fo
   "model": "gamepad",
   "type": "input_controller",
   "namespace": "rdk",
-  "attributes": {},
+  "attributes": { "auto_reconnect": true },
   "depends_on": []
 }
 ```
@@ -89,7 +113,7 @@ Inside the `components` array of your config, add the following configuration fo
 
 The controller config adds the gamepad controller to your machine.
 However, it is not functional yet.
-To make it functional, you need to add the base remote control service.
+To link the controller input to the base functionality, you need to add the base remote control service.
 
 ## Add the base remote control service
 
@@ -99,12 +123,11 @@ To link the controller's input to the base functionality, you need to configure 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-- Go to the **Services** subtab of your machine's **Config** tab.
-- In the **Create service** panel, click the **Type** dropdown and select `Base Remote Control`.
-- Enter `gamepad_service` for the **Service** **name**.
-- Click **Create service**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+Select the `base remote control` type.
+Enter a name or use the suggested name for your service and click **Create**.
 
-Copy and paste the following into the empty **Attributes** field, replacing `<your-base-name>` with your base's name.
+In your base remote control service's configuration panel, copy and paste the following JSON object into the attributes field:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -115,12 +138,13 @@ Copy and paste the following into the empty **Attributes** field, replacing `<yo
 
 <br>
 
-![Service configuration](/tutorials/scuttle-gamepad/gamepad-service-config.png)
+For example:
+
+![An example configuration for a base remote control service in the Viam app Config Builder.](/mobility/base-rc/base-rc-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-If instead of using the config builder, you prefer to write raw JSON, switch to [**Raw JSON** mode](/build/configure/#the-configure-tab) on the **Config** tab.
 Add the following configuration for your base remote control service, replacing `<your-base-name>` with your base's name:
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -140,7 +164,7 @@ If you already have a `"services"` array with other services configured, add jus
 {{% /tab %}}
 {{< /tabs >}}
 
-Click **Save config**, then go to the **Control** tab.
+Click **Save**, then go to the **CONTROL** tab.
 
 You should see the panel for the gamepad and its connection indicator:
 
@@ -192,3 +216,14 @@ Each red color arrangement allows you to control the gamepad in the Viam app:
 {{<imgproc src="/tutorials/scuttle-gamepad/pi-game-cont-1and2.jpg" resize="300x" declaredimensions=true alt="Led 1 and 4 are lit">}}</td><td>LED 1 and 4: Use the Joystick<BR>
 {{<imgproc src="/tutorials/scuttle-gamepad/pi-game-cont-1and4.jpg" resize="300x" declaredimensions=true alt="Led 1 and 4 are lit">}}</td></tr>
 </table>
+
+## Next steps
+
+You can now drive your rover with a wireless controller.
+If you'd like to do more with your rover, check out one of these tutorials:
+
+{{< cards >}}
+{{% card link="/tutorials/get-started/try-viam-sdk/" %}}
+{{% card link="/tutorials/services/try-viam-color-detection/" %}}
+{{% card link="/tutorials/services/navigate-with-rover-base/" %}}
+{{< /cards >}}

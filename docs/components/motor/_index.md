@@ -754,6 +754,5 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 {{< cards >}}
 {{% card link="/tutorials/get-started/confetti-bot/" %}}
 {{% card link="/tutorials/get-started/lazy-susan/" %}}
-{{% card link="/tutorials/control/yahboom-rover" %}}
-{{% card link="/tutorials/configure/scuttlebot" %}}
+{{% card link="/tutorials/configure/configure-rover" %}}
 {{< /cards >}}
