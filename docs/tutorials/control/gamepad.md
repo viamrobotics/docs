@@ -31,7 +31,7 @@ By the end of this tutorial, you'll be able to drive your rover around like an R
 You will need the following hardware to complete this tutorial:
 
 - A wheeled rover, configured with a [base component](/components/base/) on the [Viam app](https://app.viam.com/).
-  This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot) or an entirely different rover.
+  This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot) or an entirely different rover.
   - For a tutorial on configuring your rover, see [Configure a Rover](/tutorials/configure/configure-rover/).
 - [EasySMX ESM-9101 Wireless Controller](https://www.amazon.com/Wireless-Controller-EasySMX-ESM-9101-Gamepad/dp/B07F1NLGW2?th=1) or a similar gamepad and dongle.
   This is the controller that comes with the SCUTTLE rover.
