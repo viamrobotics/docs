@@ -1119,6 +1119,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next steps
 
 {{< cards >}}
-{{% card link="/tutorials/control/yahboom-rover" %}}
-{{% card link="/tutorials/control/scuttle-gamepad" %}}
+{{% card link="/tutorials/configure/configure-rover" %}}
+{{% card link="/tutorials/control/gamepad" %}}
 {{< /cards >}}

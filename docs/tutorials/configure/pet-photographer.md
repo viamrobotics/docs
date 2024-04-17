@@ -943,7 +943,7 @@ Your machine's configuration page now includes a panel for your camera.
       {{<imgproc src="/tutorials/pet-photographer/add-colorfilter-module-create.png" resize="400x" declaredimensions=true alt="The add a component model showing the create a module step for a local color filter module">}}
 
 1. Click **Create** to create the modular resource component.
-1. In the resulting module configuration pane, copy the following JSON configuration into the **Attributes** section:
+1. In the resulting module configuration pane, copy the following JSON configuration into the attributes field:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {

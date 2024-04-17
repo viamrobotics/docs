@@ -3,3 +3,14 @@ If your base makes use of a [camera](/components/camera/) component, the **CONTR
 This section contains buttons to toggle cameras on or off and to arrange how you view the camera feeds.
 
 {{< imgproc src="/components/base/base-control-tab.png" alt="The base component in control tab" resize="350x" >}}
+
+On the **Keyboard** tab, you can toggle the keyboard control to active.
+With the **Keyboard** toggle active, use **W** and **S** to go forward and back, and **A** and **D** to arc and spin.
+
+Try driving your base around using the WASD keyboard controls.
+
+{{% alert title="Caution" color="caution" %}}
+Ensure that your robot has sufficient space to drive around without hitting anyone or anything.
+{{% /alert %}}
+
+If you navigate to the **Discrete** tab, you can use movement modes such as `Straight` and `Spin` and different movement types such as `Continuous` and `Discrete` and directions such as `Forwards` and `Backwards`.

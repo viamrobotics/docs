@@ -250,7 +250,7 @@ You can then see the tagged objects on the **Control** tab.
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
 1. Click the **Create components** button at the bottom of the page, and select **Camera**, then select **Transform camera**.
 1. Give the camera a name, like `my-transform-cam`, then click **Create**.
-1. In the resulting camera components configuration pane, enter the following into the **Attributes** section for the transform camera:
+1. In the resulting camera components configuration pane, enter the following into the attributes field for the transform camera:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {

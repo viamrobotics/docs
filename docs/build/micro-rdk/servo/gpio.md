@@ -24,7 +24,7 @@ Enter a name or use the suggested name for your servo and click **Create**.
 
 ![An example configuration for a gpio servo in the Viam app Config Builder.](/components/servo/gpio-servo-ui-config.png)
 
-Copy and paste the following attribute template into your servo's **Attributes** box.
+Copy and paste the following attribute template into your servo's attributes field.
 Then remove and fill in the attributes as applicable to your servo, according to the table below.
 
 {{< tabs >}}

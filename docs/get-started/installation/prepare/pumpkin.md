@@ -218,7 +218,7 @@ Enter a name or use the suggested name for your `customlinux` board and click **
 
 ![An example configuration for a customlinux board in the Viam app Config Builder.](/components/board/customlinux-ui-config.png)
 
-Copy and paste the following json object into your board's **Attributes** box.
+Copy and paste the following json object into your board's attributes field.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
