@@ -47,7 +47,7 @@ Then turn on power to the rover.
 {{% expand "Click here if your gamepad does not have a dongle for bluetooth pairing instructions." %}}
 
 Make sure your bluetooth controller is in pairing mode.
-For an 8bitdo controller mode switch is set to S, hold down Start for a few seconds, and when the LED underneath the controller changes to green, press the pair button for 3 seconds.
+For an 8bitdo controller, set the mode switch to **S**, hold down **Start** for a few seconds, and when the LED underneath the controller changes to green, press the pair button for 3 seconds.
 For more information about the controller buttons and Bluetooth modes, consult the manual included with the controller.
 
 Run `sudo bluetoothctl scan on` to list all Bluetooth devices within reach of your machine.
