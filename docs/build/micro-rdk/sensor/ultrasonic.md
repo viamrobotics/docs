@@ -22,7 +22,7 @@ Enter a name or use the suggested name for your sensor and click **Create**.
 
 ![Creation of a ultrasonic sensor in the Viam app config builder.](/build/micro-rdk/ultrasonic/ultrasonic-sensor-ui-config.png)
 
-Copy and paste the following attribute template into your sensor's **Attributes** box.
+Copy and paste the following attribute template into your sensor's attributes field.
 Then remove and fill in the attributes as applicable to your sensor, according to the table below.
 
 {{< tabs >}}

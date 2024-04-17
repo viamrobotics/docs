@@ -219,7 +219,8 @@ Name it `myArm` and click **Create**.
 
 ![Create component panel, with the name attribute filled as myArm, type attribute filled as arm and model attribute filled as xArm6. In the Attributes section, host is filled 10.1.1.26 and in Frame section, there is a world frame.](/tutorials/claw-game/app-myarm.png)
 
-Configure the arm component with the arm's IP address in the `host` field under **Attributes**.
+Configure the arm component with the arm's IP address in the `host` field.
+Click the **{}** (Switch to Advanced) button in the top right of the component panel to edit the component's attributes directly with JSON.
 Our arm's address was `10.1.1.26`, but you should use the IP address for your arm.
 
 For more information on xArm6 configuration, see [Configure an xArm6 Arm](/components/arm/xarm6/).

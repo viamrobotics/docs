@@ -101,7 +101,7 @@ Finally, configure an `mlmodel` detector vision service to use your new `"person
 2. Click the **Services** subtab and click **Create service** in the lower-left corner.
 3. Select the `Vision` type, then select the `ML Model` model.
 4. Give the detector the name `people-detect` and click **Create**.
-5. In your vision service's panel, fill in the **Attributes** field:
+5. In your vision service's panel, fill in the attributes field:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
@@ -181,7 +181,7 @@ Finally, configure an `mlmodel` detector to use your new `"persondetect"` ML mod
 2. Click the **Services** subtab and click **Create service** in the lower-left corner.
 3. Select the `Vision` type, then select the `ML Model` model.
 4. Give the detector the name `people-detect` and click **Create**.
-5. In your vision service's panel, fill in the **Attributes** field:
+5. In your vision service's panel, fill in the attributes field:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -220,7 +220,7 @@ To add the `facial-detector` module to your machine:
 1. Click the **Create service** button at the bottom of the page, select `vision`, then select the `detector:facial-detector` model.
    You can also search for `facial-detector` directly.
 1. Name your modular vision service `face-detect`, then click **Create**.
-1. On the panel that appears, enter the following configuration into the **Attributes** field:
+1. On the panel that appears, enter the following configuration into the attributes field:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
@@ -252,7 +252,7 @@ For this, add and configure the `verification-system` module from the Viam regis
 1. Click the **Create services** button at the bottom of the page, select `vision`, then select the `classifier:verification-system` model.
    You can also search for `verification-system` directly.
 1. Name your modular vision service `security`, then click **Create**.
-1. On the panel that appears, enter the following configuration into the **Attributes** field:
+1. On the panel that appears, enter the following configuration into the attributes field:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
@@ -295,7 +295,7 @@ To add a transform camera to your machine:
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
 1. Click the **Create component** button at the bottom of the page, select `camera`, then select the built-in `transform` model.
 1. Give the transform camera a name, like `my-transform-camera`, then click **Create**.
-1. On the panel that appears, enter the following configuration into the **Attributes** field:
+1. On the panel that appears, enter the following configuration into the attributes field:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {

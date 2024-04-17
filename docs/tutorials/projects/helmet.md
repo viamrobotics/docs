@@ -107,7 +107,7 @@ The [YOLOv8 module](https://github.com/viam-labs/YOLOv8) enables you to use any 
 
 3. Give your vision service a name, for example `yolo`, and click **Create**.
 
-4. In the attributes box of your new vision service, paste the following JSON:
+4. In the attributes field of your new vision service, paste the following JSON:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
@@ -139,7 +139,7 @@ This module also filters the output so that later, when you configure data manag
 
 3. Name your filtering camera something like `objectfilter-cam` and click **Create**.
 
-4. Paste the following into the attributes box:
+4. Paste the following into the attributes field:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
