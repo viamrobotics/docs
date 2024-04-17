@@ -60,7 +60,7 @@ For an 8bitdo controller, the MAC address begins with E4:17:D8.
 ![A screenshot of a Raspberry Pi terminal with the following command: sudo bluetoothctl scan on. The results of the command are displayed: a list of device MAC addresses.](/tutorials/yahboom-rover/bluetooth-scan.png)
 
 Once you find your controller, pair with the controller by running the following command: `sudo bluetoothctl pair <8bitdo-mac-address>`.
-Do not forget to take the < and > symbols out as you paste your address.
+Do not forget to take the `<` and `>` symbols out as you paste your address.
 
 Then connect the controller: `sudo bluetoothctl connect <8bitdo-mac-address>`
 
