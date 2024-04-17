@@ -183,8 +183,8 @@ myBoard, err := board.FromRobot(robot, "my_board")
 // Get the Analog pin "my_example_analog".
 analog, err := myBoard.AnalogByName("my_example_analog")
 
-// Read the value from the analog pin. 
-val, err := analog.Read(context.BackGround, map[string]interface{}) 
+// Read the value from the analog pin.
+val, err := analog.Read(context.BackGround, map[string]interface{})
 ```
 
 {{% /tab %}}
