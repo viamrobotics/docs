@@ -39,11 +39,11 @@ To capture data from one or more machines, you must first add the [data manageme
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 2. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
-3. Select the `Data Management` type, then either use the suggested name or specify a name for your data management service, for example `data-manager`.
+3. Select the `data management` type, then either use the suggested name or specify a name for your data management service, for example `data-manager`.
 4. Click **Create**.
-5. On the panel that appears, you can manage the capturing and syncing functions and specify the **directory**, the sync **interval** and any **tags** to apply to captured data.
+5. On the panel that appears, you can manage the capturing and syncing functions and specify the **Directory**, the sync **Interval** and any **Tags** to apply to captured data.
 
-   If the sync **interval** or the **directory** is not specified, the data management service captures data at the default frequency every 0.1 minutes (after every 6 second interval) in the default `~/.viam/capture` directory.
+   If the sync **Interval** or the **Directory** is not specified, the data management service captures data at the default frequency every 0.1 minutes (after every 6 second interval) in the default `~/.viam/capture` directory.
 
    {{< alert title="Info" color="info" >}}
    If you change the directory for data capture only new data is stored in the new directory.
@@ -92,8 +92,8 @@ The following components support data capture:
 
 To add data capture for a component, navigate to the **CONFIGURE** tab of your machine's page in the Viam app.
 
-For each component you can capture data for, there is a `Data Capture Configuration` section in its panel.
-Click `Add Method` and then select the method type and the capture frequency.
+For each component you can capture data for, there is a `Data capture` section in its panel.
+Click `Add Method` and then select the **Method** type and the capture **Frequency**.
 
 {{< alert title="Caution" color="caution" >}}
 

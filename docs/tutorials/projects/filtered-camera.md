@@ -82,9 +82,9 @@ For more information, see [Add the data management service](/data/capture/#add-t
 Once you have added the data management service, enable image data capture for your camera component:
 
 1. Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
-1. In the configuration pane for your configured camera component (named `my-webcam` in the above steps), find the **Data capture configuration** section, and click the **Add method** button to enable data capture for this camera.
+1. In the configuration pane for your configured camera component (named `my-webcam` in the above steps), find the **Data capture** section, and click the **Add method** button to enable data capture for this camera.
 
-   - Set the **Type** to `ReadImage` and the **Frequency** to `0.333`.
+   - Set the **Method** to `ReadImage` and the **Frequency** to `0.333`.
      This will capture an image from the camera roughly once every 3 seconds.
      You can adjust the capture frequency if you want the camera to capture more or less image data, but avoid configuring data capture to higher rates than your hardware can handle, as this could lead to performance degradation.
 
@@ -366,9 +366,9 @@ Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.
    }
    ```
 
-1. Next, in the **Data capture configuration** section on the `filtered-camera` module configuration pane, click the **Add method** button to enable data capture for this camera.
+1. Next, in the **Data capture** section on the `filtered-camera` module configuration pane, click the **Add method** button to enable data capture for this camera.
 
-   - Set the **Type** to `ReadImage` and the **Frequency** to `0.333`.
+   - Set the **Method** to `ReadImage` and the **Frequency** to `0.333`.
      This will capture an image from the camera roughly once every 3 seconds.
      You can adjust the capture frequency if you want the camera to capture more or less image data, but avoid configuring data capture to higher rates than your hardware can handle, as this could lead to performance degradation.
 
