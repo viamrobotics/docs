@@ -16,14 +16,14 @@ Configure an `ultrasonic` sensor to integrate the [HC-S204](https://www.sparkfun
 {{% tab name="Config Builder" %}}
 
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `sensor` type, then select the `ultrasonic` model.
 Enter a name or use the suggested name for your sensor and click **Create**.
 
 ![Creation of a ultrasonic sensor in the Viam app config builder.](/build/micro-rdk/ultrasonic/ultrasonic-sensor-ui-config.png)
 
-Copy and paste the following attribute template into your sensor's attributes field.
-Then remove and fill in the attributes as applicable to your sensor, according to the table below.
+Edit and fill in the attributes as applicable to your sensor, according to the table below.
+Although `"board"` is marked as required in the RDK, it is not required for Micro-RDK usage.
 
 {{< tabs >}}
 {{% tab name="Attributes template" %}}
