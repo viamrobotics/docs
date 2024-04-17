@@ -469,6 +469,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< cards >}}
 {{% card link="/tutorials/projects/guardian" %}}
-{{% card link="/tutorials/control/yahboom-rover" %}}
+{{% card link="/tutorials/configure/configure-rover" %}}
 {{% card link="/tutorials/projects/integrating-viam-with-openai" %}}
 {{< /cards >}}

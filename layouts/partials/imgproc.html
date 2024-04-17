@@ -14,7 +14,7 @@
   {{ $imgbackup := $img.Resize .resize }}
   {{if .declaredimensions}}
 <source srcset="{{ $imgwebp.RelPermalink }}" type="image/webp" width="{{ $imgwebp.Width }}" height="{{ $imgwebp.Height }}">
-<img src="{{ $img.RelPermalink }}" width="{{ $imgwebp.Width }}" height="{{ $imgwebp.Height }}" alt="{{ .alt }}" class="{{ .class }}" style="{{ .style }}" loading="lazy">
+<img src="{{ $img.RelPermalink }}" width="{{ $imgwebp.Width }}" height="{{ $imgwebp.Height }}" alt="{{ .alt }}" class="{{ .class }}" style="width: {{.resize}}px; {{ .style }}" loading="lazy">
   {{ else }}
 <source srcset="{{ $imgwebp.RelPermalink }}" type="image/webp">
 <img src="{{ $img.RelPermalink }}" alt="{{ .alt }}" class="{{ .class }}" style="{{ .style }}" loading="lazy">
