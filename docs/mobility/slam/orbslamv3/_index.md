@@ -73,7 +73,7 @@ Add a service with type `slam`, model `orbslamv3`, and a name of your choice.
 
 ![adding orbslam3 slam service](/mobility/slam/add-orbslam-service-ui.png)
 
-Paste the following into the **Attributes** field of your new service:
+Paste the following into the attributes field of your new service:
 
 ```json
 {
@@ -87,7 +87,7 @@ Paste the following into the **Attributes** field of your new service:
 }
 ```
 
-![adding orbslam3 slam service attributes box](/mobility/slam/add-orbslam-service-attributes-live.png)
+![adding orbslam3 slam service attributes field](/mobility/slam/add-orbslam-service-attributes-live.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -182,7 +182,7 @@ Add a service with type `slam`, model `orbslamv3`, and a name of your choice:
 
 ![adding orbslam3 slam service](/mobility/slam/add-orbslam-service-ui.png)
 
-Paste the following into the **Attributes** field of your new service:
+Paste the following into the attributes field of your new service:
 
 ```json
 {
@@ -195,7 +195,7 @@ Paste the following into the **Attributes** field of your new service:
 }
 ```
 
-![adding orbslam3 slam service attributes box](/mobility/slam/add-orbslam-service-attributes-offline.png)
+![adding orbslam3 slam service attributes field](/mobility/slam/add-orbslam-service-attributes-offline.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

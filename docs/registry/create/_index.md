@@ -1188,7 +1188,7 @@ This module implements the [`rdk:component:base` API](https://docs.viam.com/comp
 
 Navigate to the **CONFIGURE** tab of your machine’s page in [the Viam app](https://app.viam.com/). Click the **+** icon next to your machine part in the left-hand menu and select **Component**. Select the `base` type, then search for and select the `agilex-limo` model. Click **Add module**, then enter a name or use the suggested name for your base and click **Create**.
 
-On the new component panel, copy and paste the following attribute template into your base’s **Attributes** box:
+On the new component panel, copy and paste the following attribute template into your base’s attributes field:
 
 ```json
 {

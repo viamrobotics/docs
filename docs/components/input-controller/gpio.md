@@ -23,7 +23,7 @@ Enter a name or use the suggested name for your input controller and click **Cre
 
 ![An example configuration for a GPIO input controller component in the Viam App config builder](/components/input-controller/gpio-input-controller-ui-config.png)
 
-Copy and paste the following attribute template into your input controller's **Attributes** box.
+Copy and paste the following attribute template into your input controller's attributes field.
 Then remove and fill in the attributes as applicable to your input controller, according to the table below.
 
 {{< tabs >}}

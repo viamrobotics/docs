@@ -49,7 +49,7 @@ To use [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at
 2. Then select the `sync-at-time:timesyncsensor` model from the [`sync-at-time` module](https://app.viam.com/module/naomi/sync-at-time).
 3. Click **Add module**, then enter a name or use the suggested name for your sensor and click **Create**.
    The sensor will return true and enable sync when in a specified time frame.
-4. To configure your time frame, go to the new component panel and copy and paste the following attribute template into your sensor’s **Attributes** box:
+4. To configure your time frame, go to the new component panel and copy and paste the following attribute template into your sensor’s attributes field:
 
    {{< tabs >}}
    {{% tab name="Config builder" %}}

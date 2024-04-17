@@ -23,7 +23,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `vision` type, then select the `obstacles distance` model.
 Enter a name or use the suggested name for your service and click **Create**.
 
-In your vision service's configuration panel, fill in the **Attributes** field with the following:
+In your vision service's configuration panel, fill in the attributes field with the following:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

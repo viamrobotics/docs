@@ -27,7 +27,7 @@ Edit and fill in the attributes as applicable.
 
 <!-- If the model does not have a fancy config UI available, such that the user needs to write JSON attributes, refer to one of the other component models as an example. You should include easily copy-pastable attribute templates on the config tab. For example, replace "Edit and fill in the attributes as applicable." with the following:
 
-Copy and paste the following attribute template into your COMPONENT's **Attributes** box.
+Copy and paste the following attribute template into your COMPONENT's attributes field.
 Then remove and fill in the attributes as applicable to your COMPONENT, according to the table below.
 
 {{< tabs >}}

@@ -329,7 +329,7 @@ Navigate to the **CONFIGURE** page of your rover robot in [the Viam app](https:/
 - Search `speech`.
 - Select the `speech/speechio` option and click **Add module**.
 - Give your new speech module a name of your choice.
-- In the pane that appears for the service, copy and paste the following JSON into the attributes box:
+- In the pane that appears for the service, copy and paste the following JSON into the attributes field:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

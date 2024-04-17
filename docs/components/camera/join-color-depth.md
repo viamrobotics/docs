@@ -26,7 +26,7 @@ Enter a name or use the suggested name for your camera and click **Create**.
 
 ![Configuration of a join color depth view in the Viam app config builder.](/components/camera/configure-join-color-depth.png)
 
-Copy and paste the following attribute template into your camera's **Attributes** box.
+Copy and paste the following attribute template into your camera's attributes field.
 Then remove and fill in the attributes as applicable to your camera, according to the table below.
 
 ```json {class="line-numbers linkable-line-numbers"}

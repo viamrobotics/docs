@@ -64,7 +64,7 @@ They will have the names `intel:color` and `intel:depth`.
 
 Click **Components** on the **CONFIGURE** tab.
 Now, add the `align_color_depth` camera model.
-The **Attributes** pane on the left allows you to enter the necessary attributes for your component.
+Click the **{}** (Switch to Advanced) button in the top right of the component panel to edit the component's attributes directly with JSON.
 
 Enter the necessary JSON configuration for your camera:
 

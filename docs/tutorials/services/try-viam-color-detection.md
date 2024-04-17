@@ -134,7 +134,7 @@ Viam generates an **Attributes** section for the detection camera's component pa
 
 ![The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. On the upper right there is a trash bin icon.](/tutorials/try-viam-color-detection/transform-camera-config.png)
 
-Copy the following JSON configuration into the **Attributes** section:
+Copy the following JSON configuration into the attributes field:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
