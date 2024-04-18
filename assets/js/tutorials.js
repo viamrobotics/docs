@@ -80,7 +80,7 @@ search.addWidgets([
     container: "#hits",
     templates: {
       item: `
-<div class="col tutorial hover-card">
+<div class="col tutorial hover-card {{resource}}">
     <a href="{{relpermalink}}">
     {{#webm}}
         <div class="hover-card-video">
@@ -117,7 +117,7 @@ search.addWidgets([
   }),
   instantsearch.widgets.configure({
     hitsPerPage: 12,
-    filters: ["resource: docs-tutorial"],
+    // filters: ["resource: docs-tutorial"],
   }),
   customRefinementList({
     container: "languages-list",
@@ -174,6 +174,16 @@ search.addWidgets([
       { label: "Beginner" },
       { label: "Intermediate" },
       { label: "Advanced" },
+    ],
+  }),
+  customRefinementList({
+    container: "resource-list",
+    attribute: "resource",
+    operator: "or",
+    sortBy: ["name:asc"],
+    items: [
+      { label: "blogpost" },
+      { label: "docs-tutorial" },
     ],
   }),
   instantsearch.widgets.pagination({
