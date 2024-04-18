@@ -1361,8 +1361,19 @@ ul.sectionlist > li:hover {
   display: flex;
 }
 
-.ais-Hits-item > .blogpost {
-  background-color: #e7e5e4;
+.ais-Hits-item > .blogpost .title:after {
+  content: "Blogpost";
+  background-color: #ffd400;
+}
+
+.ais-Hits-item .title:after {
+  content: "Tutorial";
+  padding: 0.1rem 0.2rem;
+  margin-left: 0.5rem;
+  background-color: #00ef83;
+  font-size: 0.833rem;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
 .ais-Hits-item .hover-card-video {
