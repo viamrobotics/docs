@@ -25,10 +25,6 @@ date: "2024-04-03" # When the tutorial was created or last entirely checked
 cost: 200
 ---
 
-_Outline the why.
-Tell the story of the machine.
-Should the opening sentence focus on fleets or on air quality as the driving issue? How to or project?_
-
 As wildfire smoke, car exhaust, and cooking oils pollute our air, we can become more aware of the pollution levels in the spaces we spend time by collecting data.
 Then, when we take steps to mitigate the problem, the data allows us track whether our interventions are effective.
 
@@ -43,7 +39,9 @@ By completing this project, you will learn to:
 ## Requirements
 
 You can complete this tutorial using as many air quality sensing machines as you like.
-Your {{< glossary_tooltip term_id="machine" text="machines" >}} can be in different {{< glossary_tooltip term_id="location" text="locations" >}} or even different {{< glossary_tooltip term_id="organization" text="organizations" >}}; Viam's fleet management system allows you to pull data from any machines you can authenticate to.
+Your {{< glossary_tooltip term_id="machine" text="machines" >}} can be in different {{< glossary_tooltip term_id="location" text="locations" >}} but you should keep them all in one {{< glossary_tooltip term_id="organization" text="organization" >}} for simplicity and so that you can follow along with this tutorial more easily.
+Viam's fleet management system allows you to pull data from any machines you can authenticate to; if you'd like to pull data from multiple organizations that is possible, but is not covered within this tutorial.
+
 For each machine, you will need the following:
 
 - [SDS011 Nova PM sensor](https://docs.google.com/document/d/1e6BCYhekPLfnTjXpR2hMw1ard6zfdKCZobl7smOnEp0/edit)
@@ -127,7 +125,7 @@ This way, if you need to update the config in the future, you just update the fr
 
    {{<imgproc src="/tutorials/air-quality-fleet/configured-sensor.png" resize="x1100" declaredimensions=true alt="insert alt text" style="max-width:600px" >}}
 
-#### Configure data capture
+#### Configure data capture and sync
 
 Now it's time to enable [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/) so that data from your air quality sensor will be first stored on the machine and then pushed up to the cloud where you can access all the data from your sensors remotely.
 
@@ -137,13 +135,16 @@ Now it's time to enable [data capture](/data/capture/) and [cloud sync](/data/cl
 4. Toggle **Syncing** to the on position.
    Set the sync interval to `0.05` minutes so that data syncs to the cloud every 3 seconds.
    You can change the interval if you like, just don't make it too long or you will have to wait a long time before you see your data!
-5. Now the data management service is available to any components on your machine, and you can set up data capture on the sensor:
-6. On your **PM_sensor** card, click **Add method**.
-7. From the **Type** drop-down, select **Readings**.
-8. Set the **Frequency** to `0.1` readings per second.
+5. Let's add a tag to all your data so that you can query data from all your air quality sensors more easily in later steps.
+   In the **Tags** field, type `air-quality` and click **+ Tag: air-quality** when it appears to create a new tag.
+   This tag will now automatically be applied to all data collected by this data manager.
+6. Now the data management service is available to any components on your machine, and you can set up data capture on the sensor:
+7. On your **PM_sensor** card, click **Add method**.
+8. From the **Type** drop-down, select **Readings**.
+9. Set the **Frequency** to `0.1` readings per second.
    This will capture air quality data once every ten seconds.
    It is useful to capture data frequently for testing purposes, but you can always change this frequency later since you probably don't need to capture data this frequently all day forever.
-9. Save the config.
+10. Save the config.
 
 ### Create a fragment
 
@@ -239,11 +240,10 @@ Next, check that data is being synced from your sensors to the cloud:
 1.  Open your [**DATA** page](https://app.viam.com/data).
 2.  Click the **Sensors** tab within the data page.
 3.  If you have sensor data coming from machines unrelated to this project, use the filters on the left side of the page to view data from only your air quality sensors.
+    Click the **Tags** drop-down and select the `air-quality` tag you applied to your data.
     You can also use these filters to show the data from one of your air quality sensors at a time by typing a machine name into the **Machine name** box and clicking **Apply** in the lower-left corner.
 
     {{<imgproc src="/tutorials/air-quality-fleet/synced-data.png" resize="x1100" declaredimensions=true alt="The sensor readings that have synced to the DATA page." style="max-width:600px" >}}
-
-4.  If you are using sensors in different {{< glossary_tooltip term_id="organization" text="organizations" >}}, use the drop-down menu in the upper-right corner of the page to switch organizations and view data from each of them.
 
 Once you've confirmed that data is being collected and synced correctly, you're ready to start building a dashboard to display the data.
 If you'd like to view your data using a Grafana dashboard, try our [Visualize Data with Grafana tutorial](/tutorials/services/visualize-data-grafana/).
