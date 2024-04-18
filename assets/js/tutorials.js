@@ -183,7 +183,7 @@ search.addWidgets([
     sortBy: ["name:asc"],
     items: [
       { label: "blogpost" },
-      { label: "docs-tutorial" },
+      { label: "tutorial" },
     ],
   }),
   instantsearch.widgets.pagination({
