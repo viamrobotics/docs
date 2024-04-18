@@ -1332,7 +1332,7 @@ ul.sectionlist > li:hover {
 #tutorial-menu {
   display: flex;
   flex-direction: column;
-  max-width: 600px;
+  max-width: 800px;
 }
 
 #tutorial-filters, #tutorial-filter-items {
@@ -1359,6 +1359,26 @@ ul.sectionlist > li:hover {
 
 .ais-Hits-item {
   display: flex;
+}
+
+.filterbutton {
+  text-decoration: none;
+  color: black;
+  padding: 0.2rem 1rem;
+  margin: 0.2rem;
+  border: 1px solid black;
+}
+
+.filterbutton.active {
+  background-color: #e7e5e4;
+}
+
+.ais-Hits-item > .blogpost {
+  background-color: #e7e5e4;
+}
+
+.ais-Hits-item .hover-card-video {
+  border: none;
 }
 
 #hits .ais-Hits-list {

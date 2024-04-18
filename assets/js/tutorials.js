@@ -75,12 +75,35 @@ const customRefinementList = instantsearch.connectors.connectRefinementList(
   },
 );
 
+const customToggleRefinementWithList = instantsearch.connectors.connectRefinementList(
+  ({ items, refine, widgetParams }, isFirstRender) => {
+    // Rendering logic
+    const container = document.getElementById(widgetParams.container);
+
+    if (isFirstRender) {
+      container.addEventListener("click", ({ target }) => {
+        if (container.classList.contains('active')) {
+          container.classList.remove('active')
+          search.helper.state.disjunctiveFacetsRefinements['resource'] = ['blogpost', 'docs-tutorial']
+          search.helper.search()
+        } else {
+          container.classList.add('active')
+          search.helper.state.disjunctiveFacetsRefinements['resource'] = ['docs-tutorial']
+          search.helper.search()
+        }
+      });
+
+      return;
+    }
+  },
+);
+
 search.addWidgets([
   instantsearch.widgets.hits({
     container: "#hits",
     templates: {
       item: `
-<div class="col tutorial hover-card">
+<div class="col tutorial hover-card {{resource}}">
     <a href="{{relpermalink}}">
     {{#webm}}
         <div class="hover-card-video">
@@ -176,14 +199,14 @@ search.addWidgets([
       { label: "Advanced" },
     ],
   }),
-  customRefinementList({
-    container: "resources-list",
+  customToggleRefinementWithList({
+    container: "filter-resources",
     attribute: "resource",
-    operator: "and",
+    operator: "or",
     sortBy: ["name:asc"],
     items: [
-      { label: "blog" },
-      { label: "docs" },
+      { label: "blogpost" },
+      { label: "docs-tutorial" },
     ],
   }),
   instantsearch.widgets.pagination({
