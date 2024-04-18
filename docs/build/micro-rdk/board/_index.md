@@ -44,7 +44,7 @@ For `GPIOPin`s:
 
 See [PWM signals on `esp32` pins](/build/micro-rdk/board/esp32/#pwm-signals-on-esp32-pins) for more information on setting PWM frequencies with `esp32` boards.
 
-For `AnalogReader`s:
+For `Analog`s:
 
 - [`Read()`](/components/board/#read)
 
