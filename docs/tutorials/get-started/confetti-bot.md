@@ -18,7 +18,7 @@ languages: ["python"]
 viamresources: ["board", "motor"]
 level: "Beginner"
 date: "2023-05-29"
-# updated: ""
+updated: "2024-04-16"
 cost: 145
 resource: "blogpost"
 ---
