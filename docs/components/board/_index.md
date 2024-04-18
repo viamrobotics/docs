@@ -139,7 +139,7 @@ Additionally, the nested `GPIOPin`, `Analog`, and `DigitalInterrupt` interfaces 
 
 {{< readfile "/static/include/components/apis/digitalinterrupt.md" >}}
 
-### ReadAnalogReader
+### ReadAnalog
 
 Get an [`Analog`](#analogs) pin by `name`.
 
