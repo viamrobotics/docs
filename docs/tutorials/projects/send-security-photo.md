@@ -64,7 +64,7 @@ Click **Create component** in the lower-left corner of the screen.
 
 Select type `camera` and model `webcam`.
 
-Enter `my-camera` as the name, then click **Create** to add the camera.
+Enter `cam` as the name, then click **Create** to add the camera.
 
 Click the **Video Path** field to reveal a dropdown populated with camera paths that have been identified on your machine.
 
@@ -125,7 +125,7 @@ In the new transform camera panel, replace the attributes JSON object with the f
 
 ```json
 {
-  "source": "my-camera",
+  "source": "cam",
   "pipeline": [
     {
       "type": "detections",
