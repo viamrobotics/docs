@@ -20,5 +20,5 @@ date: "2022-11-29"
 # updated: ""
 cost: 145
 no_list: true
-resource: "blog"
+resource: "blogpost"
 ---

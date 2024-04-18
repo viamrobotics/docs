@@ -18,5 +18,5 @@ level: "Intermediate"
 date: "2023-05-29"
 # updated: ""
 cost: 770
-resource: "blog"
+resource: "blogpost"
 ---

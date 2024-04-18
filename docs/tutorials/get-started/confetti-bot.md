@@ -20,5 +20,5 @@ level: "Beginner"
 date: "2023-05-29"
 # updated: ""
 cost: 145
-resource: "blog"
+resource: "blogpost"
 ---

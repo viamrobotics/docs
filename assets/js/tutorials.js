@@ -75,29 +75,6 @@ const customRefinementList = instantsearch.connectors.connectRefinementList(
   },
 );
 
-const customToggleRefinementWithList = instantsearch.connectors.connectRefinementList(
-  ({ items, refine, widgetParams }, isFirstRender) => {
-    // Rendering logic
-    const container = document.getElementById(widgetParams.container);
-
-    if (isFirstRender) {
-      container.addEventListener("click", ({ target }) => {
-        if (container.classList.contains('active')) {
-          container.classList.remove('active')
-          search.helper.state.disjunctiveFacetsRefinements['resource'] = ['blogpost', 'docs-tutorial']
-          search.helper.search()
-        } else {
-          container.classList.add('active')
-          search.helper.state.disjunctiveFacetsRefinements['resource'] = ['docs-tutorial']
-          search.helper.search()
-        }
-      });
-
-      return;
-    }
-  },
-);
-
 search.addWidgets([
   instantsearch.widgets.hits({
     container: "#hits",
@@ -199,8 +176,8 @@ search.addWidgets([
       { label: "Advanced" },
     ],
   }),
-  customToggleRefinementWithList({
-    container: "filter-resources",
+  customRefinementList({
+    container: "resource-list",
     attribute: "resource",
     operator: "or",
     sortBy: ["name:asc"],

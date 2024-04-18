@@ -17,5 +17,5 @@ viamresources: ["board", "motor", "base", "camera"]
 level: "Intermediate"
 date: "2023-03-29"
 cost: 420
-resource: "blog"
+resource: "blogpost"
 ---

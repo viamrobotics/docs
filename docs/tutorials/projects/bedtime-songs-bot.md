@@ -30,5 +30,5 @@ level: "Intermediate"
 date: "2023-08-18"
 # updated: ""
 cost: "0"
-resource: "blog"
+resource: "blogpost"
 ---
