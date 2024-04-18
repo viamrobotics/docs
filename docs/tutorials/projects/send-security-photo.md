@@ -16,13 +16,6 @@ cost: "0"
 no_list: true
 ---
 
-{{% alert title="Tip" color="tip" %}}
-
-This tutorial is part of our built-in webcam projects series.
-For a similar project that integrates a Kasa smart plug, see [Use Object Detection to Turn Your Lights On](/tutorials/projects/light-up/).
-
-{{% /alert %}}
-
 In this tutorial, you will create a desk security system with no hardware other than your laptop and the built-in webcam.
 
 Maybe you keep a box of chocolates on your desk to snack on when you are hungry.
@@ -57,10 +50,6 @@ You will use the following software in this tutorial:
 
 ## Configure your robot on the Viam app
 
-If you followed the [Use Object Detection to Turn Your Lights On](/tutorials/projects/light-up/) tutorial, you already have a robot set up on the [Viam app](https://app.viam.com), connected and live, with a [webcam configured](/components/camera/webcam/).
-
-{{% expand "If you're starting with this tutorial, click here for instructions." %}}
-
 ### Install `viam-server` and connect to your robot
 
 Go to the [Viam app](https://app.viam.com) and create a new machine.
@@ -84,8 +73,6 @@ Select the path to the camera you want to use.
 Click **Save config** in the lower-left corner of the screen.
 
 Navigate to the **Control** tab where you can see your camera working.
-
-{{% /expand %}}
 
 ### Configure your services
 
@@ -209,12 +196,9 @@ This allows you to route the email to your phone as a text message.
 
 ## Use the Viam Python SDK to control your security robot
 
-If you followed the [Use Object Detection to Turn Your Lights On](/tutorials/projects/light-up/) tutorial, you already set up a folder with some Python code that connects to your robot and gets detections from your camera.
+### Create the main script file
 
-If you are starting with this tutorial, follow [these steps](/tutorials/projects/light-up/#write-python-code-to-control-your-object-detection-robot) to create the main script file and connect the code to the machine.
-Ignore the step about the Kasa smart plug host address.
-
-Instead of using this person detector to activate a smart plug, you will send yourself a text message.
+On your computer, navigate to the directory where you want to put the code for this project. Create a file there called chocolate_security.py. This will be the main script for the machine.
 
 Make a copy of the [<file>lightupbot.py</file>](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/lightupbot.py) file in your project directory and save it as <file>chocolate_security.py</file>.
 You will use the same robot connection code and detector configuration code but edit some other parts of the file.
@@ -224,6 +208,15 @@ Delete the `from kasa import Discover, SmartPlug` line and replace it with the f
 ```python
 import yagmail
 ```
+
+### Connect the code to the robot
+
+You need to tell the code how to access your specific robot (which in this case represents your computer and its webcam).
+
+Navigate to the **CONNECT** tab on the Viam app. Make sure Python is selected in the Language selector.
+Get the robot address and API key from the code sample and set them as environment variables or add them at the top of <FILE>chocolate_security.py</FILE>.
+
+{{% snippet "show-secret.md" %}}
 
 Now you need to rewrite the if/else function.
 If a person is detected, your robot will print `sending a message`, take a photo, and save it to your computer as <file>foundyou.png</file> (or whatever name you want).
