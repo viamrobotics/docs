@@ -121,7 +121,7 @@ On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selectiv
 
 ```json {class="line-numbers linkable-line-numbers" data-line="9,14"}
 {
-  "name": "Data-Management-Service",
+  "name": "data_manager-1",
   "type": "data_manager",
   "namespace": "rdk",
   "attributes": {
