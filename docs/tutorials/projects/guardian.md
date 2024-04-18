@@ -14,7 +14,7 @@ authors: ["Naomi Pentrel"]
 languages: ["python"]
 viamresources: ["camera", "vision", "servo", "mlmodel"]
 level: "Intermediate"
-date: "2024-04-18"
+date: "2023-05-15"
 updated: "2024-04-15"
 cost: 90
 ---
