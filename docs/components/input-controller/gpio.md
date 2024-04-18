@@ -74,7 +74,7 @@ Then remove and fill in the attributes as applicable to your input controller, a
     }
   },
   "axes": {
-    "analogReader1": {
+    "analog1": {
       "control": "AbsoluteX",
       "min": 0,
       "max": 1023,
@@ -84,7 +84,7 @@ Then remove and fill in the attributes as applicable to your input controller, a
       "bidirectional": false,
       "invert": false
     },
-    "analogReader2": {
+    "analog2": {
       "control": "AbsoluteY",
       "min": 0,
       "max": 1023,
@@ -167,7 +167,7 @@ Then remove and fill in the attributes as applicable to your input controller, a
           }
         },
         "axes": {
-          "analogReader1": {
+          "analog1": {
             "control": "AbsoluteX",
             "min": 0,
             "max": 1023,
@@ -177,7 +177,7 @@ Then remove and fill in the attributes as applicable to your input controller, a
             "bidirectional": false,
             "invert": false
           },
-          "analogReader2": {
+          "analog2": {
             "control": "AbsoluteY",
             "min": 0,
             "max": 1023,
