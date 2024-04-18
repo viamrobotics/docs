@@ -19,7 +19,7 @@ languages: []
 viamresources: ["base", "input_controller", "base_remote_control"]
 level: "Intermediate"
 date: "2022-08-10"
-# updated: ""
+updated: "2024-04-17"
 cost: 575
 ---
 
