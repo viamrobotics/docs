@@ -108,7 +108,7 @@ In the example pictured here, the data management service syncs the configured c
       "name": "data_manager",
       "type": "data_manager",
       "attributes": {
-        "sync_interval_mins": .1,
+        "sync_interval_mins": 0.1,
         "capture_dir": "",
         "sync_disabled": false,
         "additional_sync_paths": ["/logs"]
