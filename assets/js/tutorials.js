@@ -81,7 +81,7 @@ search.addWidgets([
     templates: {
       item: `
 <div class="col tutorial hover-card {{resource}}">
-    <a href="{{relpermalink}}">
+    <a href="{{relpermalink}}" target="_blank">
     {{#webm}}
         <div class="hover-card-video">
             <div>
