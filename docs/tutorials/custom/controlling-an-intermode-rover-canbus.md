@@ -1,6 +1,6 @@
 ---
-title: "Control an Intermode Rover with CAN Bus and Viam"
-linkTitle: "Control an Intermode Rover with Viam"
+title: "Create a Modular Resource to Control a Rover like Intermode"
+linkTitle: "Create a Modular Resource for a Rover"
 type: "docs"
 tags:
   [
@@ -12,7 +12,7 @@ tags:
     "CAN bus",
     "Intermode",
   ]
-description: "Integrate an Intermode rover as a modular-resource-based component with CAN bus."
+description: "Integrate an Intermode rover as a modular resourcebase component with CAN bus."
 imageAlt: "Intermode rover pictured outdoors."
 images: ["/tutorials/intermode/rover_outside.png"]
 authors: ["Matt Vella"]
@@ -20,10 +20,10 @@ languages: ["go"]
 viamresources: ["base", "custom"]
 level: "Intermediate"
 date: "2023-01-22"
-# updated: ""
+updated: "2024-04-18"
 cost: 1500
 no_list: true
-# SME: Matt Vella, Matt Dannenberg, James Otting
+# SME: Matt Vella, James Otting
 ---
 
 The Viam platform comes with a component called [base](/components/base/), which adds useful abstractions for simplified control of mobile robots.
@@ -37,7 +37,7 @@ Creating a modular resource for your robot allows you to issue commands using th
 {{<imgproc src="/tutorials/intermode/rover_outside.png" resize="400x" declaredimensions=true alt="Intermode rover pictured outdoors." class="alignright" style="max-width:300px">}}
 </div>
 
-While the concepts covered here are applicable to other hardware, we’ll specifically show you an example of how you can get started using Viam to control the [Intermode rover](https://www.intermode.io/).
+While the concepts covered here are applicable to other hardware, it’ll specifically show you an example of how you can get started using Viam to control the [Intermode rover](https://www.intermode.io/).
 This is a powerful pairing: **Intermode** aims to make the hardware aspects of a mobile-robot-based business simple and worry-free, while Viam simplifies the software aspects of any robotics business.
 
 The Intermode rover uses the [CAN bus](https://en.wikipedia.org/wiki/CAN_bus) protocol, a robust and prevalent vehicle communication standard used in most modern vehicles.
@@ -47,7 +47,7 @@ This tutorial will show how we can both leverage this protocol and abstract it i
 
 {{% alert title="Tip" color="tip"%}}
 Even if you don't have an Intermode rover, many of the other concepts presented here are still relevant to other robotic projects.
-While this tutorial can be followed verbatim for the Intermode rover, much of it can be applied to other [base](/components/base/), **CAN bus**, or [modular resource](/registry/)-based projects.
+While this tutorial can be followed verbatim for the Intermode rover, much of it can be applied to other [base](/components/base/) or **CAN bus** projects.
 {{% /alert %}}
 
 The tutorial uses the following hardware:
@@ -307,9 +307,9 @@ More details about modules and how they work can be found in the [modular resour
 
 ### Control the rover
 
-Once you save this configuration, you see a _base_ card in the machine's **Control** tab and can drive the rover from there.
+Once you save this configuration, you see a _base_ card on the machine's **CONTROL** tab and can drive the rover from there.
 Be careful, the Intermode is a large and powerful rover - make sure you have the shutoff key in hand for emergencies and make sure you have enough space for the rover to move.
 
-If you do not see the base card in the **Control** tab, check the **Logs** tab for possible setup or configuration errors.
+If you do not see the base card in the **CONTROL** tab, check the **LOGS** tab for possible setup or configuration errors.
 
 {{< snippet "social.md" >}}
