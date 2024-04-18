@@ -198,7 +198,8 @@ If you want to use a pre-trained model instead of training your own, or already 
 If you trained your own model in the previous sections, skip to [Configure the ML model and vision services](#configure-the-ml-model-and-vision-services).
 {{% /alert %}}
 
-For example, you could use the object detection model we used for the [Turn on Lights with Object Detection tutorial](/tutorials/projects/light-up/), which was trained on many common objects, including animals, vehicles, household items, and sports gear.
+For example, you could use a pre-trained machine learning (ML) model from the Viam registry named [EfficientDet-COCO](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO). This model can detect a variety of objects, which you can find in the provided [labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt) file.
+
 You can download that model here:
 
 - <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/effdet0.tflite)</file>: The TFLite model file containing the trained model.
