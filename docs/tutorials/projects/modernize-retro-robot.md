@@ -15,7 +15,7 @@ languages: []
 viamresources: ["board", "motor", "base", "camera"]
 level: "Intermediate"
 date: "2023-05-04"
-# updated: ""
+updated: "2024-04-16"
 cost: 580
 resource: "blogpost"
 ---

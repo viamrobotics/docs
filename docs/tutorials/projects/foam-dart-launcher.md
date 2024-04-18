@@ -17,7 +17,7 @@ languages: ["python"]
 viamresources: ["base", "camera", "motor", "board"]
 level: "Intermediate"
 date: "2022-11-29"
-# updated: ""
+updated: "2024-04-17"
 cost: 145
 no_list: true
 resource: "blogpost"

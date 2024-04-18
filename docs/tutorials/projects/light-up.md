@@ -15,7 +15,7 @@ languages: ["python"]
 viamresources: ["camera", "mlmodel", "vision"]
 level: "Intermediate"
 date: "2023-03-30"
-# updated: ""
+updated: "2024-04-18"
 cost: 20
 resource: "blogpost"
 ---
