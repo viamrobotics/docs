@@ -38,11 +38,16 @@ Next, to install your preferred Viam SDK on your Linux or macOS development mach
 
 If you are using the Python SDK, [set up a virtual environment](/build/program/python-venv/) to package the SDK inside before running your code, avoiding conflicts with other projects or your system.
 
+For macOS (both Intel `x86_64` and Apple Silicon) or Linux (`x86`, `aarch64`, `armv6l`), run the following commands:
+
 ```sh {class="command-line" data-prompt="$"}
 python3 -m venv .venv
 source .venv/bin/activate
 pip install viam-sdk
 ```
+
+Windows is not supported. If you are using Windows, use the [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) and install the Python SDK using the preceding instructions for Linux.
+For other unsupported systems, see [Installing from source](https://python.viam.dev/#installing-from-source).
 
 If you intend to use the [ML (machine learning) model service](/ml/), use the following command instead, which installs additional required dependencies along with the Python SDK:
 
