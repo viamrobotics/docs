@@ -7,6 +7,10 @@ type: "docs"
 description: "A log of added features, improvements, and changes over time."
 aliases:
   - "/appendix/release-notes/"
+  - "/components/camera/single-stream/"
+  - "/components/camera/dual-stream/"
+  - "/components/camera/align-color-depth-extrinsics/"
+  - "/components/camera/align-color-depth-homography/"
 layout: "changelog"
 outputs:
   - rss
@@ -14,6 +18,20 @@ outputs:
 ---
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
+
+{{% changelog date="2024-04-19" color="removed" title="Removed and replaced camera models" %}}
+
+Viam has removed support for following builtin camera models: `single_stream`, `dual_stream`, `align_color_depth_extrinsics`, and `align_color_depth_homography`.
+
+<!-- Viam has replaced the following camera models with module model equivalents: -->
+
+<!-- - `velodyne` is now [`viam:camera:velodyne`]()
+- `join_color_depth` is now [`viam:camera:join_color_depth`]()
+- `join_pointclouds` is now [`viam:camera:join_point_clouds
+`]()
+- `ultrasonic` is now [`viam:camera:ultrasonic`]() and [`viam:sensor:ultrasonic`]() -->
+
+{{% /changelog %}}
 
 {{% changelog date="2024-03-01" color="added" title="Additional ML models" %}}
 
