@@ -404,8 +404,9 @@ while True:
         pwm_pin = await local.gpio_pin_by_name(name="8")
 
         # Run the water pump
-        # Set the duty cycle to .8, meaning that this pin will be in the high state for
-        # 80% of the duration of the PWM interval period.
+        # Set the duty cycle to .8, meaning that this pin will be in the
+        # high state, powering the motor, for 80% of the duration of the 
+        # PWM interval period
         await pwm_pin.set_pwm(duty=.8)
 
         # Wait for 15 seconds
