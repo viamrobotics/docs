@@ -21,7 +21,7 @@ cost: 540
 ---
 
 This tutorial will guide you through configuring a rover.
-If you are using a SCUTTLE or a Yahboom rover or a different rover, this tutorials will cover instructions for your rover model.
+If you are using a SCUTTLE, a Yahboom rover, or a different rover, this tutorial covers instructions for your rover model.
 
 {{< alert title="Viam Rover" color="note" >}}
 If you are using a Viam Rover, use the [Viam Rover tutorial fragment](/get-started/try-viam/rover-resources/rover-tutorial-fragments/) instead.
