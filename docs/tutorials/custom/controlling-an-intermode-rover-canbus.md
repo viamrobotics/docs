@@ -274,7 +274,7 @@ sudo apt install git
 
 ### Configure the Intermode base resource
 
-If you have not already, first create a new machine in the [Viam app](https://app.viam.com/) and follow the instructions in the **Setup** tab to connect the machine to the cloud.
+If you have not already, first add a new machine in the [Viam app](https://app.viam.com/) and follow the setup instructions to connect the machine to the cloud.
 
 In order to drive the Intermode base with Viam, you need to add it to the machine configuration.
 You will specify where `viam-server` can find the module, and then configure a modular component instance for the Intermode base.
