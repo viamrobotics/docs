@@ -278,7 +278,7 @@ This tutorial uses the name `local`.
 ![Creation of a pi board in the Viam app config builder.](/tutorials/plant-watering-pi/pi-board-config-builder.png)
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -297,48 +297,6 @@ This tutorial uses the name `local`.
 
 {{% /tab %}}
 {{< /tabs >}}
-
-<!-- Then, add your pump as a [motor component](/components/motor/) by adding a new component with **type** `motor` and **model** `gpio`.
-
-Set the motor's attributes **Max RPM** to `1000` and **PWM** to `8 GPIO 14` (the board and GPIO pin that you wired the relay's IN to).
-
-{ {< tabs name="Configure an Pump Motor" >}}
-{ {% tab name="Config Builder" %}}
-
-![Creation of a pump motor in the Viam app config builder.](/tutorials/plant-watering-pi/pump-motor-config-builder.png)
-
-{ {% /tab %}}
-{ {% tab name="Raw JSON" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-// Board JSON ... },
-{
-  "name": "water-pump",
-  "model": "gpio",
-  "type": "motor",
-  "namespace": "rdk",
-  "attributes": {
-    "pins": {
-      "a": "",
-      "b": "",
-      "dir": "",
-      "pwm": "8"
-    },
-    "board": "local",
-    "max_rpm": 1000
-  },
-  "depends_on": []
-}
-```
-
-{ {% /tab %}}
-{ {< /tabs >}}
-
-Click **Save config**.
-
-Now, if you navigate to your machine's **CONTROL** tab, you should be able to control the motor by setting the power and direction of rotation and clicking the **RUN** button:
-
-![Creation of a pump motor in the Viam app config builder.](/tutorials/plant-watering-pi/pump-motor-control.png) -->
 
 #### Configure the ADC as a module from the registry
 
@@ -445,21 +403,21 @@ while True:
         pwm_pin = await my_board.gpio_pin_by_name(name="8")
 
         # Run the water pump
-        # Set the duty cycle to .6, meaning that this pin will be in the high state for
-        # 60% of the duration of the PWM interval period.
-        await pwm_pin.set_pwm(duty=.6)
+        # Set the duty cycle to .8, meaning that this pin will be in the high state for
+        # 80% of the duration of the PWM interval period.
+        await pwm_pin.set_pwm(duty=.8)
 
-        # Wait for 30 seconds
+        # Wait for 15 seconds
         print('watering')
-        time.sleep(30)
+        time.sleep(15)
+
+        # Stop the pump by setting the duty cycle to 0%
+        await pwm_pin.set_pwm(duty=.0)
 
         # Wait 60 seconds so that the water can soak into the soil a bit before
         # trying to water again
         print('waiting a little bit for water to soak in')
         time.sleep(60)
-
-        # Stop the pump
-        await pwm_pin.set_pwm(duty=.6)
 
 ```
 
