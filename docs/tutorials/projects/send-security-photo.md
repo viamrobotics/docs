@@ -122,7 +122,7 @@ If you want to train your own model instead, follow the instructions in [train a
 To be able to test that the vision service is working, add a [transform camera](/components/camera/transform/) which will add bounding boxes and labels around the objects the service detects.
 
 Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**.
-Start typing "webcam" and select **camera / transform**.
+Start typing "transform" and select **camera / transform**.
 Give your transform camera the name `detectionCam` and click **Create**.
 
 ![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)
