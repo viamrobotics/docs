@@ -142,6 +142,9 @@ The endpoints that it creates are:
 ## Create a camera to display point clouds
 
 Click **CONFIGURE** and then click **Components**.
+
+<!-- dual_stream no longer exists -->
+
 Enter the following camera model: "dual_stream"
 
 ```json
