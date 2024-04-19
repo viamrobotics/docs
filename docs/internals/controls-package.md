@@ -8,7 +8,7 @@ description: "The Control Package implements feedback control on an endpoint."
 ---
 
 [Encoded motors](/components/motor/gpio/encoded-motor/) and [sensor controlled bases](/components/base/sensor-controlled/) use a control loop that is implemented by `viam-server`.
-You can configure the `control_parameters` attribute forn both components to adjust the control loop.
+You can configure the `control_parameters` attribute for both components to adjust the control loop.
 However, if you want to change or customize the control loops on these components beyond the configurable parameter, or you want to add a control loop to a different component, you can use the controls package to [build your own PID control loop](/internals/controls-package/#creating-and-using-a-pid-control-loop).
 
 The control package implements feedback control on an endpoint, which is usually the hardware you are trying to control.
@@ -531,7 +531,7 @@ If you want to configure a control loop outside of the standard encoded motor or
 
 ### Using SetupPIDControlConfig
 
-Below is an example of how to manually set up and tune a control loop using the function [`SetupPIDControlConfig`](/internals/controls-package/#setuppidcontrolconfig).
+The following is an example of how to manually set up and tune a control loop using the function [`SetupPIDControlConfig`](/internals/controls-package/#setuppidcontrolconfig):
 
 ```go
 // set the necessary options for a component
@@ -567,7 +567,7 @@ blockNames := pidLoop.BlockNames
 
 ### Using a Custom Control Config
 
-Below is an example of how to manually set up and tune a control loop using the `UseCustomConfig` and `CompleteCustomConfig` options.
+The following is an example of how to manually set up and tune a control loop using the `UseCustomConfig` and `CompleteCustomConfig` options:
 
 ```go
 // create a custom control config
