@@ -405,7 +405,7 @@ while True:
 
         # Run the water pump
         # Set the duty cycle to .8, meaning that this pin will be in the
-        # high state, powering the motor, for 80% of the duration of the 
+        # high state, powering the motor, for 80% of the duration of the
         # PWM interval period
         await pwm_pin.set_pwm(duty=.8)
 
