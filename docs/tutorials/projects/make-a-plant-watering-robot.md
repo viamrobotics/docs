@@ -11,7 +11,7 @@ languages: ["python"]
 viamresources: ["board", "motor", "sensor", "module"]
 level: "Intermediate"
 date: "2023-03-29"
-# updated: "2023-09-25"
+# updated: "2024-04-19"
 cost: 150
 no_list: true
 # SMES: Olivia Miller, Sierra Guequierre, Hazal Mestci
