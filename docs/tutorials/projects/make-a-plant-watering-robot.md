@@ -399,8 +399,8 @@ while True:
     if (avg_moisture > 60000):
         print('this plant is too thirsty! giving it more water')
 
-        # Get the GPIO pin the water pump's PWM wire is wired to on the board (pin number 8)
-        pwm_pin = await my_board.gpio_pin_by_name(name="8")
+        # Get the GPIO pin with PWM output the water pump is wired to on the board through the relay's IN wire (pin number 8)
+        pwm_pin = await local.gpio_pin_by_name(name="8")
 
         # Run the water pump
         # Set the duty cycle to .8, meaning that this pin will be in the high state for
