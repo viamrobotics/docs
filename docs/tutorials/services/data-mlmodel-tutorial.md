@@ -42,9 +42,10 @@ You can also use your own Viam machine as long as you have followed the [prerequ
 
 Before following this tutorial, ensure you have:
 
-- A machine running Viam.
+- A machine running `viam-server`, the software that runs your machine and connects it to the Viam app.
 
-  - If you are using your own machine, make sure you have [installed `viam-server`](/get-started/installation/).
+  - If you are using your own machine:
+    {{% snippet "setup.md" %}}
   - If you are using a Viam Rover through [Try Viam](https://app.viam.com/try), no further action is needed.
 
 - A configured camera component.
@@ -75,14 +76,14 @@ To capture data from your machine and sync to the Viam app, add the data managem
 
 First, add the data management service to your machine to be able capture and sync data:
 
-1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
+1. On your machine's **CONFIGURE** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, and select **Data Management**.
-1. Give the service a name, like `viam-data-manager`, then click **Create Service**.
+1. Use the suggested name for your service or give it a name, like `viam-data-manager`, then click **Create Service**.
 1. On the panel that appears, you can manage the capturing and syncing functions individually.
    By default, the data management service captures data locally to the <file>~/.viam/capture</file> directory, and syncs captured data files to the Viam app every 6 seconds (`0.1` minutes in the configuration).
    Leave the default settings as they are, and click **Save Config** at the bottom of the screen to save your changes.
 
-   {{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="600x" >}}
+   {{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="900x" >}}
 
 For more information, see [Add the data management service](/data/capture/#add-the-data-management-service).
 
@@ -93,11 +94,11 @@ For this tutorial, you will configure data capture for images from a [camera](/c
 
 To enable image data capture for a camera component:
 
-1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
+1. Navigate to your machine's **CONFIGURE** page in the [Viam app](https://app.viam.com).
 
-1. In the configuration pane for your [configured camera component](#prerequisites), find the **Data capture configuration** section, and click the **Add method** button to enable data capture for this camera.
+1. In the configuration pane for your [configured camera component](#prerequisites), find the **Data capture** section, and click the **Add method** button to enable data capture for this camera.
 
-   - Set the **Type** to `ReadImage` and the **Frequency** to `0.333`.
+   - Set the **Method** to `ReadImage` and the **Frequency** to `0.333`.
      This will capture an image from the camera roughly once every 3 seconds.
      You can adjust the capture frequency if you want the camera to capture more or less image data, but avoid configuring data capture to higher rates than your hardware can handle, as this could lead to performance degradation.
 
@@ -219,9 +220,9 @@ Once your model has finished training, add the [ML model](/ml/) service and depl
 
 To deploy a model to your machine:
 
-1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
+1. On your machine's **CONFIGURE** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, and select **ML Model**, then select **TFLite CPU**.
-1. Give the service a name, like `my-mlmodel-service`, then click **Create**.
+1. Use the suggested name for your service or give it a name, like `my-mlmodel-service`, then click **Create**.
 1. In the resulting ML Model service configuration pane, select **Deploy model on robot**, then select the model you just trained from the **Models** dropdown menu.
 1. Click **Save Config** at the bottom of the window to save your changes.
 
@@ -236,9 +237,9 @@ You can then see the tagged objects on the **Control** tab.
 
 ### Add the vision service
 
-1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
+1. On your machine's **CONFIGURE** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, and select **Vision**, then select **ML Model**.
-1. Give the service a name, like `my-vision-service`, then click **Create**.
+1. Use the suggested name for your service or give it a name, like `my-vision-service`, then click **Create**.
 1. In the resulting vision service configuration pane, select the ML model service you just added from the **ML Model** dropdown menu.
 
    {{< imgproc src="/tutorials/data-management/vision-service-conf.png" alt="The vision service configuration pane showing the ML model service my-mlmodel-service added" resize="500x" >}}
@@ -247,10 +248,10 @@ You can then see the tagged objects on the **Control** tab.
 
 ### Add a transform camera
 
-1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
+1. On your machine's **CONFIGURE** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
 1. Click the **Create components** button at the bottom of the page, and select **Camera**, then select **Transform camera**.
 1. Give the camera a name, like `my-transform-cam`, then click **Create**.
-1. In the resulting camera components configuration pane, enter the following into the **Attributes** section for the transform camera:
+1. In the resulting camera components configuration pane, enter the following into the attributes field for the transform camera:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
@@ -305,7 +306,7 @@ For an example see the following tutorial:
 If you are using [Try Viam](https://app.viam.com/try) and your session expires, you can [re-use a configuration from a previous session](/get-started/try-viam/faq/#how-can-i-reuse-my-rented-rover) to keep your configuration changes.
 You can also [extend your existing session](/get-started/try-viam/faq/#can-i-extend-my-time) while it's still running, if it hasn't expired yet.
 
-If your machine isn't capturing data and syncing it to the Viam app, ensure that both the data management service (named `viam-data-manager` in this tutorial) and the **Data capture configuration** for your camera (`cam` on the Try Viam rover) are enabled.
+If your machine isn't capturing data and syncing it to the Viam app, ensure that both the data management service (named `viam-data-manager` in this tutorial) and the **Data capture** configuration for your camera (`cam` on the Try Viam rover) are enabled.
 
 If your transform camera is not matching objects you have tagged, try lowering the `confidence_threshold`, or adding and tagging more images.
 

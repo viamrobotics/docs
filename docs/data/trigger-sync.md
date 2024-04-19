@@ -1,16 +1,28 @@
 ---
 title: "Trigger Cloud Sync Conditionally"
 linkTitle: "Trigger Sync"
-description: "Trigger Cloud Sync to sync captured data conditionally."
+description: "Trigger cloud sync to sync captured data conditionally."
 weight: 20
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 # SME: Alexa Greenberg
 ---
 
-If you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
+You can use a {{< glossary_tooltip term_id="module" text="module" >}} to sync data only when a certain logic condition is met, instead of at a regular time interval.
+For example, if you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
+Or, you may want to trigger sync only when your machine detects an object of a certain color.
+The code for both of these examples is provided by the [trigger-sync-examples module](https://github.com/viam-labs/trigger-sync-examples-v2), and you can [create your own module](/registry/create/) if you want to use different logic.
 
-This module allows you to configure Cloud Sync to occur only at a specific time frame by implementing a sensor, `naomi:sync-at-time:timesyncsensor`, that enables sync within a specified time frame and disables sync outside that time frame.
+{{% alert title="Note: How sync is triggered" color="note" %}}
+
+Regardless of the specifics of your trigger sync logic, to trigger sync you need to pass `true` to the [CreateShouldSyncReading function](https://pkg.go.dev/go.viam.com/rdk/services/datamanager#CreateShouldSyncReading) within the definition of your modular sensor's `Readings` function.
+See examples in the `Readings` function of the [time-interval-trigger code](https://github.com/viam-labs/trigger-sync-examples-v2/blob/main/time-interval-trigger/selective_sync/selective_sync.go) and the [color-trigger code](https://github.com/viam-labs/trigger-sync-examples-v2/blob/main/color-trigger/selective_sync/selective_sync.go).
+
+{{% /alert %}}
+
+## Example: `sync-at-time`
+
+This module allows you to configure cloud sync to occur only at a specific time frame by implementing a sensor, `naomi:sync-at-time:timesyncsensor`, that enables sync within a specified time frame and disables sync outside that time frame.
 
 To set up conditional syncing you need to:
 
@@ -18,14 +30,14 @@ To set up conditional syncing you need to:
    While this sensor is not sensing the time it _senses_ whether the data manager should sync or not.
 2. Change the configuration of the data manager to enable selective sync.
 
-## Requirements
+### Requirements
 
 Before configuring your sensor, you must [create a machine](https://docs.viam.com/fleet/machines/#add-a-new-machine) and you also need to:
 
 1. Enable [data capture](https://docs.viam.com/data/capture/).
 2. Enable [cloud sync](https://docs.viam.com/data/cloud-sync/).
 
-## Add sensor to determine when to sync
+### Add sensor to determine when to sync
 
 In this example, you will configure sync to only trigger during a specific time frame of the day using an existing module [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time).
 If you need to trigger sync based on a different condition, you need to create your own module and adjust the module logic accordingly.
@@ -33,11 +45,11 @@ Additional examples are available in this [GitHub Repo](https://github.com/viam-
 
 To use [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time):
 
-1. Go to your machine's **Config** page and click **Create component**.
+1. Go to your machine's **CONFIGURE** page and click **Create component**.
 2. Then select the `sync-at-time:timesyncsensor` model from the [`sync-at-time` module](https://app.viam.com/module/naomi/sync-at-time).
-3. Click **Add module**, then enter a name for your sensor and click **Create**.
+3. Click **Add module**, then enter a name or use the suggested name for your sensor and click **Create**.
    The sensor will return true and enable sync when in a specified time frame.
-4. To configure your time frame, go to the new component panel and copy and paste the following attribute template into your sensor’s **Attributes** box:
+4. To configure your time frame, go to the new component panel and copy and paste the following attribute template into your sensor’s attributes field:
 
    {{< tabs >}}
    {{% tab name="Config builder" %}}
@@ -100,16 +112,16 @@ The following attributes are available for the `naomi:sync-at-time:timesyncsenso
 
 In the next step you will configure the data manager to take the sensor into account when syncing.
 
-### Configure data manager to sync based on sensor
+#### Configure data manager to sync based on sensor
 
-On your machine's **Config** tab, switch to **JSON** mode and add a `selective_syncer_name` with the name for the sensor you configured and add the sensor to the `depends_on` field:
+On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selective_syncer_name` with the name for the sensor you configured and add the sensor to the `depends_on` field:
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers" data-line="9,14"}
 {
-  "name": "Data-Management-Service",
+  "name": "data_manager-1",
   "type": "data_manager",
   "namespace": "rdk",
   "attributes": {
@@ -243,12 +255,12 @@ On your machine's **Config** tab, switch to **JSON** mode and add a `selective_s
 
 You have now configured sync to happen during a specific time slot.
 
-## Test your sync configuration
+### Test your sync configuration
 
 To test your setup, [configure a webcam](https://docs.viam.com/components/camera/webcam/) or another component and [enable data capture on the component](https://docs.viam.com/data/capture/#configure-data-capture-for-individual-components).
 For a camera component, use the `ReadImage` method.
 The data manager will now capture data.
-Go to the [**Control** tab](https://docs.viam.com/fleet/machines/#control).
+Go to the [**CONTROL** tab](https://docs.viam.com/fleet/machines/#control).
 You should see the sensor.
 Click on `GetReadings`.
 
@@ -257,7 +269,7 @@ Click on `GetReadings`.
 If you are in the time frame for sync, the time sync sensor will return true.
 You can confirm that no data is currently syncing by going to the [**Data** tab](https://app.viam.com/data/view).
 If you are not in the time frame for sync, adjust the configuration of your time sync sensor.
-Then check again on the **Control** and **Data** tab to confirm data is syncing.
+Then check again on the **CONTROL** and **Data** tab to confirm data is syncing.
 
 ## Next steps
 

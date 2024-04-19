@@ -30,8 +30,8 @@ If you change your mind and want your machine to sync less frequently, you can c
 
 Before you can configure [cloud sync](/data/cloud-sync/), you must [add the data management service](/data/capture/#add-the-data-management-service).
 
-To enable cloud sync, navigate to the **Services** tab on your machine's **Config** tab and enable **Syncing** for your [data management service](../).
-Click **Save Config** at the bottom of the window.
+To enable cloud sync, navigate to your machine's **CONFIGURE** tab and enable **Syncing** for your [data management service](../).
+Click the **Save** button in the top right corner of the page.
 
 Now the data that you capture will sync automatically with the Viam app in the cloud.
 
@@ -66,12 +66,13 @@ If `capture_dir` is unspecified, `viam-server` will use the default directory at
 
 ### Trigger sync conditionally
 
-If you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
+You can use a {{< glossary_tooltip term_id="module" text="module" >}} to sync data only when a certain logic condition is met, instead of at a regular time interval.
+For example, if you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
 To set up triggers for syncing see [Trigger Sync](/data/trigger-sync/).
 
 ### Pause sync
 
-You can pause Cloud Sync at any time by navigating to the **Services** tab on your machine's **Config** tab and disabling **Syncing** for your [data management service](../).
+You can pause Cloud Sync at any time by navigating to your machine's **CONFIGURE** tab and disabling **Syncing** for your [data management service](../).
 If you have captured data that you do not want to sync, delete the data on the machine before resuming Cloud Sync.
 To delete the data locally, `ssh` into your machine and delete the data in the directory where you capture data.
 
@@ -93,7 +94,7 @@ Currently, if the internet becomes unavailable and the sync is interrupted mid-f
 This is only applicable for files in a directory added as an additional sync path.
 {{< /alert >}}
 
-In the example pictured here, the data management service syncs the configured component data from `/.viam/capture` as well as all files in `/logs` every 5 minutes.
+In the example pictured here, the data management service syncs the configured component data from `/.viam/capture` as well as all files in `/logs` every .1 minutes.
 
 ![service config example](/data/data-service-config.png)
 
@@ -107,7 +108,7 @@ In the example pictured here, the data management service syncs the configured c
       "name": "data_manager",
       "type": "data_manager",
       "attributes": {
-        "sync_interval_mins": 5,
+        "sync_interval_mins": 0.1,
         "capture_dir": "",
         "sync_disabled": false,
         "additional_sync_paths": ["/logs"]

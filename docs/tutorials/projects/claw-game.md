@@ -131,15 +131,16 @@ To finish the table construction, attach the supporting legs and mount the arm t
 ## Configure the robot
 
 Next, configure your newly-built robot.
-Go to [the Viam app](https://app.viam.com) and create a new machine to represent your robot.
-Follow the instructions on the **Setup** tab to install `viam-server` on your Raspberry Pi and connect to your machine.
+
+{{% snippet "setup.md" %}}
 
 Machines are organized into {{< glossary_tooltip term_id="part" text="parts" >}}, where each part represents a computer (a [single-board computer](/get-started/installation/), desktop, laptop, or other computer) running `viam-server`, the hardware {{< glossary_tooltip term_id="component" text="components" >}} attached to it, and any {{< glossary_tooltip term_id="service" text="services" >}} or other resources running on it.
 
 Every machine has a main part which is automatically created when you create the machine.
 Since you just created a new machine, your machine's main part is already defined.
 Multi-part machines also have one or more sub-parts representing additional computers running `viam-server`.
-If you have two computers within the _same machine_, you can use one as the main part and [connect the other to it as a sub-part](/build/configure/parts-and-remotes/#configure-a-sub-part). This is the approach this tutorial follows: you'll run the [motion planning service](/mobility/motion/) on a laptop and connect that laptop as a sub-part to your machine.
+If you have two computers within the _same machine_, you can use one as the main part and [connect the other to it as a sub-part](/build/configure/parts/#configure-a-sub-part).
+This is the approach this tutorial follows: you'll run the [motion planning service](/mobility/motion/) on a laptop and connect that laptop as a sub-part to your machine.
 
 {{< alert title="Tip" color="tip" >}}
 Technically you could configure all the components within one part, but motion planning is more performant when running on a computer like a macOS or Linux laptop running `viam-server`.
@@ -153,7 +154,7 @@ Use the parts dropdown menu in the top banner of your machine’s page on [the V
 
 Follow the instructions on the **Setup** tab to install `viam-server` on your development machine and connect to your robot's sub-part.
 
-For more information about parts, see [Machine Architecture: Parts, Sub-Parts and Remotes](/build/configure/parts-and-remotes/).
+For more information about parts, see [Machine Architecture: Parts](/build/configure/parts/).
 
 Now you are ready to configure the individual components in the [Viam app](https://app.viam.com).
 Navigate to the **Config** tab of your machine's page and select your main part from the parts dropdown.
@@ -180,7 +181,7 @@ Click **Save config** in the lower-left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your board:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your board:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -218,7 +219,8 @@ Name it `myArm` and click **Create**.
 
 ![Create component panel, with the name attribute filled as myArm, type attribute filled as arm and model attribute filled as xArm6. In the Attributes section, host is filled 10.1.1.26 and in Frame section, there is a world frame.](/tutorials/claw-game/app-myarm.png)
 
-Configure the arm component with the arm's IP address in the `host` field under **Attributes**.
+Configure the arm component with the arm's IP address in the `host` field.
+Click the **{}** (Switch to Advanced) button in the top right of the component panel to edit the component's attributes directly with JSON.
 Our arm's address was `10.1.1.26`, but you should use the IP address for your arm.
 
 For more information on xArm6 configuration, see [Configure an xArm6 Arm](/components/arm/xarm6/).
@@ -228,7 +230,7 @@ Click **Save config** in the lower-left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your arm:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your arm:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -293,7 +295,7 @@ Click **Save config** in the lower-left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your arm and gripper:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your arm and gripper:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

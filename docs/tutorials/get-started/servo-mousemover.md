@@ -27,12 +27,18 @@ Maybe it was to clear your head, grab your lunch, answer the door, and you get i
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/JVtZ7aU4k68">}}
 
 This tutorial will show you how to build a mouse mover using Viam, a Raspberry Pi, a servo, and an optical mouse.
-This robot will turn the continuous servo that's secured inside the box, which will turn the circle under the optical mouse. This will keep your computer from falling asleep.
+This machine will turn the continuous servo that's secured inside the box, which will turn the circle under the optical mouse.
+This will keep your computer from falling asleep.
 
 This project is a good place to begin if you're new to robotics and would like to learn how to use a [servo component](/components/servo/) with the Viam app and Viam's [Python SDK](https://python.viam.dev/).
 
-<div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/moving.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/moving.mp4" alt="Video of a mouse running erratically on the screen in a sweeping motion in front of the Viam app Control page with an overlaid video of a mouse on top of a cardboard box with a moving cardboard circle underneath it with red swirl lines on the circle.">}}
+<div style="display:flex;" class="aligncenter">
+<div style="border:1px solid gray;">
+{{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/moving-2.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/moving-2.mp4" alt="Video of a mouse running erratically on the screen in a sweeping motion in front of the Viam app Control page with an overlaid video of a mouse on top of a cardboard box with a moving cardboard circle underneath it with red swirl lines on the circle." max-width="600px" class="alignleft">}}
+</div>
+<div style="width: 250px;">
+{{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/moving-mouse.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/moving-mouse.webm" alt="The servo mouse mover in action." class="alignright">}}
+</div>
 </div>
 
 ## Requirements
@@ -64,7 +70,10 @@ This project is a good place to begin if you're new to robotics and would like t
 
 ## Install Viam software
 
-First, install `viam-server` according to our [installation guide](/get-started/installation/)
+First, prepare your Raspberry Pi according to our [setup guide](/get-started/installation/prepare/rpi-setup/).
+Then connect to your Raspberry Pi with SSH.
+
+{{% snippet "setup.md" %}}
 
 Next, run this command in your Raspberry Pi terminal to install the pip package manager.
 Select "yes" when asked if you want to continue.
@@ -80,7 +89,8 @@ To verify and get the version of the package, you can run the command:
 pip3 --version
 ```
 
-The [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) allows you to write programs in the Python programming language to operate robots using Viam. To get the Python SDK working on the Raspberry Pi, run the following command in your Raspberry Pi terminal:
+The [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) allows you to write programs in the Python programming language to operate robots using Viam.
+To get the Python SDK working on the Raspberry Pi, run the following command in your Raspberry Pi terminal:
 
 ```sh {class="command-line" data-prompt="$"}
 pip install viam-sdk
@@ -88,21 +98,19 @@ pip install viam-sdk
 
 ## Test the SDK with your robot
 
-On the [Viam app](https://app.viam.com), select the **Code sample** tab, then confirm that **Python** is set as the default language.
+On the [Viam app](https://app.viam.com), select the **CONNECT** tab, then select **Python** as your language.
 
 ![A screenshot of the word Language with four boxes below it with Python, Golang, Typescript (Web), and Remotes in each one. Python has a black background with white text and a checkmark, the other three have white backgrounds with black text.](/tutorials/single-component-tutorials-servo-mousemover/choose-python.png)
 
-Since we already installed the Python SDK, we can skip the first step.
-Copy the boilerplate Python code under the second step.
-
-![A screenshot of the Viam app showing the Code sample tab. On this tab it has Language: with four boxes, Python is a black background with white text and has a checkmark indicating it is selected, then there's Golang, Typescript (Web), and Remotes with white backgrounds and black text. The page next says Python SDK (Documentation) with a link to Documentation. Below that there's a place that says "pip install viam-SDK" this is how you install the Viam Python SDK. Below that instruction are the instructions to "Then copy and run the following code to connect to your robot:" with 7 lines of code seen (the screenshot is incomplete).](/tutorials/single-component-tutorials-servo-mousemover/copy-python-code-sample.png)
+Since you already installed the Python SDK, skip the first step.
+Copy the boilerplate Python code under step 2.
 
 {{% snippet "show-secret.md" %}}
 
 The copied code needs to go in a Python file on the Raspberry Pi.
 You can do so by creating a file on the Raspberry Pi and editing the file with nano.
 
-Inside the Raspberry Pi Terminal, run the following command to create a folder to put our files in (name this folder whatever you want).
+Inside the Raspberry Pi Terminal, run the following command to create a folder to put your files in (name this folder whatever you want).
 
 ```sh {class="command-line" data-prompt="$"}
 mkdir mousefolder
@@ -120,7 +128,7 @@ Create a file using nano with the .py which is the python file extension, (name 
 nano anyname.py
 ```
 
-Paste the code you got from the **Code sample** tab in the Viam app. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
+Paste the code you got from the **CONNECT** tab in the Viam app. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
 
 ![Raspberry Pi terminal showing the connect code from the previous example.](/tutorials/single-component-tutorials-servo-mousemover/sample-code.png)
 
@@ -153,50 +161,43 @@ Once you have the wires connected, attach the wheel/arm to servo and turn on the
 
 The servo is now physically connected to the Raspberry Pi, but the Viam app hasn't been told the details of which components/services it's using yet, so it's not able to control the servo.
 
-Go to the [Viam app](https://app.viam.com), and navigate to the **Config** tab.
+Go to the [Viam app](https://app.viam.com), and navigate to the **CONFIGURE** tab.
 
 ### Board component
 
 Create a [board component](/components/board/):
 
-Navigate to the **Components** subtab of your machine's **Config** tab.
+1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+1. Select the `board` type, then select the `pi` model.
+1. Enter the name `local` for your board and click **Create**.
 
-Click **Create component** in the lower-left corner.
-
-Select `board` for type and `pi` for model.
-
-Enter `local` as the name for your board, then click **Create**.
-
-You can name the board whatever you want.
-You will reference it later.
+{{% alert title="Tip" color="tip" %}}
+You can name the board whatever you want, but if you change the name you must update the references to the board in the code we use later.
+{{% /alert %}}
 
 ### Servo component
 
 Create a [servo component](/components/servo/):
 
-Click **Create component** in the lower-left corner.
+1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+1. Select the `servo` type, then select the `pi` model.
+1. Enter the name `fs90f` for your servo and click **Create**.
 
-Select `servo` for type and `pi` for model.
-
-Enter `fs90r` as the name for your servo, then click **Create**.
-
-After clicking **Create** you will see where you can put in attributes for the servo.
+After clicking **Create**, you see where you can put in attributes for the servo.
 This is where you tell Viam which hardware pin to use to control the servo.
 
 - For `"pin"` use `12` - this is the pin you attached the PWM (Pulse Width Modulation) jumper wire to.
-- For `"board"` use `"local"`.
+- For `"board"` select `"local"`.
 
 The attribute section will look like this:
 
-![This is a screenshot of the Viam app on the Config page. This shows the options that populate when you create a servo with the pi Model. It shows attributes to fill out, with a JSON coding area next to it. "Pin" is filled in with "12" and "Board" is filled in with "local". Pin and board are required fields.](/tutorials/single-component-tutorials-servo-mousemover/servo-config.png)
+{{<imgproc src="/tutorials/single-component-tutorials-servo-mousemover/servo-config.png" resize="1200x" style="width: 400px" declaredimensions=true alt="This is a screenshot of the Viam app on the Config page. This shows the options that populate when you create a servo with the pi Model. It shows attributes. 'Pin' is filled in with '12' and 'Board' is filled in with 'local'. Pin and board are required fields.">}}
 
-Click the **Save Config** button.
+Click the **Save** button in the upper right corner of the screen to save your config.
 
-<div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/save-config.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/save-config.mp4" alt="Square button that says Save Config with a graphic of an old floppy disk in the corner. A mouse in the shape of a extended finger clicks the button." max-width="200px">}}
-</div>
-
-## Control the servo in Viam app
+## Control the servo in the Viam app
 
 If everything went well, the servo started to move.
 
@@ -204,7 +205,7 @@ If everything went well, the servo started to move.
   {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/its-alive.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/its-alive.mp4" alt="Small square .gif of black and white frankenstein clip with man with brown hair in lab coat frantically looking around and yelling while text that says \"IT'S ALIVE! IT'S ALIVE!\" is on screen. There's a very tall man with something on his head on a table behind him and another man sitting on a chair behind the table." max-width="400px">}}
 </div>
 
-Navigate to the **Control** tab and press the **STOP** button on the servo card (matching what you named the servo) to stop the servo.
+Navigate to the **CONTROL** tab and press the **STOP** button on the servo card (matching what you named the servo) to stop the servo.
 
 <div class="td-max-width-on-larger-screens">
   {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/stop.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/stop.mp4" alt="Red square button with the word STOP on it with an animation of a finger mouse pointer clicking it." max-width="150px">}}
@@ -284,7 +285,7 @@ Experiment and have fun.
 
 ## Next steps
 
-If you want to build more robots, head over to our documentation site and take a look at our [tutorials](/tutorials/).
+If you want to build more robots, take a look at our other [tutorials](/tutorials/).
 And if you didn't like this tutorial and would like to speak to my manager, their name is
 {{<imgproc src="/tutorials/single-component-tutorials-servo-mousemover/censor.jpg" resize="70x" style="width:50px;" declaredimensions=true alt="Fuzzy box meant to censor text.">}} (Update: apparently that's a big no no.)
 

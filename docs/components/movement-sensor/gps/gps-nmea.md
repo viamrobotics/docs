@@ -22,63 +22,14 @@ The `gps-nmea` model can be connected using USB and send data through a serial c
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `movement-sensor` type, then select the `gps-nmea` model.
-Enter a name for your movement sensor and click **Create**.
+Enter a name or use the suggested name for your movement sensor and click **Create**.
 
-{{< imgproc src="/components/movement-sensor/gps-nmea-builder.png" alt="Creation of a `gps-nmea` movement sensor in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/components/movement-sensor/gps-nmea-builder.png" alt="Creation of a `gps-nmea` movement sensor in the Viam app config builder." resize="1200x" style="width:650px" >}}
 
-Copy and paste the following attribute template into your movement sensor's **Attributes** box.
-Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "connection_type": "<serial|I2C>",
-  "serial_attributes": {
-    "serial_path": "<your-device-path>",
-    "serial_baud_rate": <int>
-  },
-  "i2c_attributes": {
-    "i2c_bus": "<index-of-bus-on-board>",
-    "i2c_addr": <int>,
-    "i2c_baud_rate": <int>
-  }
-}
-```
-
-{{% /tab %}}
-{{% tab name="USB/serial attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "connection_type": "serial",
-  "serial_attributes": {
-    "serial_path": "/dev/serial/by-path/<device_ID>",
-    "serial_baud_rate": 38400
-  }
-}
-```
-
-{{% /tab %}}
-{{% tab name="I2c attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "connection_type": "I2C",
-  "i2c_attributes": {
-    "i2c_bus": "1",
-    "i2c_addr": 111,
-    "i2c_baud_rate": 38400
-  }
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Fill in the attributes as applicable to your movement sensor, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

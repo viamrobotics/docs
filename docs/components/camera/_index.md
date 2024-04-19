@@ -58,13 +58,8 @@ For configuration information, click on the model name:
 | [`image_file`](image-file/) | Gets color and depth images frames from a file path. |
 | [`velodyne`](velodyne/) | Uses velodyne lidar. |
 | [`webcam`](webcam/) | A standard camera that streams camera data. |
-| [`rtsp`](rtsp/) | A streaming camera with an MJPEG track. |
 | [`fake`](fake/) | A camera model for testing. |
-| [`single_stream`](single-stream/) | A HTTP client camera that streams image data from an HTTP endpoint. |
-| [`dual_stream`](dual-stream/) | A HTTP client camera that combines the streams of two camera servers to create colorful point clouds. |
 | [`join_color_depth`](join-color-depth/) | Joins the outputs of a color and depth camera already registered in your config to create a third "camera" that outputs the combined and aligned image. |
-| [`align_color_depth_extrinsics`](align-color-depth-extrinsics/) | Uses the intrinsics of the color and depth camera, as well as the extrinsic pose between them, to align two images. |
-| [`align_color_depth_homography`](align-color-depth-homography/) | Uses a homography matrix to align the color and depth images. |
 | [`join_pointclouds`](join-pointclouds/) | Combines the point clouds from multiple camera sources and projects them to be from the point of view of target_frame. |
 | [`transform`](transform/) | A pipeline for applying transformations to an input image source. |
 | [`ultrasonic`](ultrasonic/) | The [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor. |
@@ -77,7 +72,7 @@ For configuration information, click on the model name:
 
 ## Control your camera with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
@@ -201,7 +196,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ### GetImages
 
 {{% alert title="Usage" color="note" %}}
-Intended specifically for use with cameras that support simultaneous depth and color image streams, like the [Intel RealSense](https://app.viam.com/module/viam/realsense) or the [Luxonis OAK-D](https://app.viam.com/module/viam/oak-d).
+Intended specifically for use with cameras that support simultaneous depth and color image streams, like the [Intel RealSense](https://app.viam.com/module/viam/realsense) or [Luxonis OAK cameras](https://app.viam.com/module/viam/oak).
 If your camera does not have multiple imagers, this method will work without capturing multiple images simultaneously.
 
 You can use the [`rgb-d-overlay` module](https://app.viam.com/module/viam/rgb-d-overlay) to view and compare the camera streams returned by this method.

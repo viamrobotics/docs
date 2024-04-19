@@ -26,11 +26,15 @@
             {{ partial "edit-on-github.html" . }}
             {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
             {{ block "main" . }}{{ end }}
-            <!-- <button onclick="toTop()" class="docsbutton" id="scrollButton" title="Go to top" style="visibility: hidden;">
-                <i style="font-size:large;" class="fas fa-chevron-up"></i>
-            </button> -->
-        </main>
+          </main>
+          {{ $img := resources.GetMatch "/icons/learn-viam-robot-icon-ai.svg" }}
         </div>
+          <button onclick="initAndClick()" class="docsbutton" id="chatButton" title="Chatbot and support">
+            <i style="font-size:x-large;" class="fas fa-comments"></i>
+          </button>
+          <button onclick="toTop()" class="docsbutton" id="scrollButton" title="Go to top" style="visibility: hidden;">
+            <i style="font-size:x-large;" class="fas fa-chevron-up"></i>
+          </button>
       </div>
       {{ partial "footer.html" . }}
     </div>

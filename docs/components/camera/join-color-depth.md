@@ -14,19 +14,18 @@ aliases:
 The `join_color_depth` model combines the streams of a color and depth camera already registered in your config to create a view that outputs the combined and aligned image.
 
 This specific model is good if you don’t need to align the streams.
-If you need to adjust the alignment between the depth and color frames, use the [`align_color_depth_extrinsics`](../align-color-depth-extrinsics/) model or the[`align_color_depth_homography`](../align-color-depth-homography/) model.
 
 {{< tabs name="Configure a Join Color Depth View" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `camera` type, then select the `join_color_depth` model.
-Enter a name for your camera and click **Create**.
+Enter a name or use the suggested name for your camera and click **Create**.
 
 ![Configuration of a join color depth view in the Viam app config builder.](/components/camera/configure-join-color-depth.png)
 
-Copy and paste the following attribute template into your camera's **Attributes** box.
+Copy and paste the following attribute template into your camera's attributes field.
 Then remove and fill in the attributes as applicable to your camera, according to the table below.
 
 ```json {class="line-numbers linkable-line-numbers"}

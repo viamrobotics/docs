@@ -91,10 +91,7 @@ Turn on the Raspberry Pi and move on to setting up your software.
 If you have not already done so, follow the [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/) to prepare your Pi to connect your robot to the Viam app.
 Once your Pi is ready, `ssh` into it from your computer.
 
-In your web browser, go to [the Viam app](https://app.viam.com) and create a new machine instance.
-Name your robot whatever you like and head to the **Setup** tab.
-On your Pi, follow the steps there to download the Viam app config and download and install `viam-server`.
-Wait a moment until your robot connects to the Viam app.
+{{% snippet "setup.md" %}}
 
 ## Configure your robot
 
@@ -161,7 +158,7 @@ Click the **Save Config** button.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your board and motor:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your board and motor:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

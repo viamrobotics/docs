@@ -10,6 +10,7 @@ aliases:
 description: "Deploy Machine Learning models to a machine and use the vision service to detect or classify images or to create point clouds of identified objects."
 modulescript: true
 icon: true
+no_list: true
 images: ["/services/icons/ml.svg"]
 # SME: Aaron Casas
 ---
@@ -17,9 +18,10 @@ images: ["/services/icons/ml.svg"]
 The Machine Learning (ML) model service allows you to deploy machine learning models to your machine.
 This can mean deploying:
 
-- a model from [the registry](https://app.viam.com/registry)
-- a model trained outside the Viam platform that you have [uploaded](/ml/upload-model/)
-- a model that's already available on your machine
+- a model you [trained](/ml/train-model/)
+- a model from [the registry](https://app.viam.com/registry) that another user has shared publicly
+- a model trained outside the Viam platform that you have [uploaded](/ml/upload-model/) to the registry privately or publicly
+- a model trained outside the Viam platform that's already available on your machine
 
 After deploying your model, you need to configure an additional service to use the deployed model.
 For example, you can configure an [`mlmodel` vision service](/ml/vision/) and a [`transform` camera](/components/camera/transform/) to visualize the predictions your model makes.
@@ -50,12 +52,6 @@ Follow [these instructions](/registry/advanced/mlmodel-design/) to design your m
 For some models of the ML model service, like the [Triton ML model service](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use either the available CPU or a dedicated GPU.
 {{< /alert >}}
 
-You can use an ML model service to deploy:
-
-- a model from [the registry](https://app.viam.com/registry)
-- a model trained outside the Viam platform that you have uploaded
-- a model available on your machine
-
 ## Used with
 
 {{< cards >}}
@@ -84,8 +80,8 @@ You can search the machine learning models that are available to deploy on this 
 ## Versioning for deployed models
 
 If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the machine.
-If you do not want Viam to automatically deploy the `latest` version of the model, you can edit the `"packages"` array in the [JSON configuration](/build/configure/#the-config-tab) of your machine.
-This array is automatically created when you deploy the model and is not embedded your service configuration.
+If you do not want Viam to automatically deploy the `latest` version of the model, you can edit the `"packages"` array in the [JSON configuration](/build/configure/#the-configure-tab) of your machine.
+This array is automatically created when you deploy the model and is not embedded in your service configuration.
 
 You can get the version number from a specific model version by navigating to the [models page](https://app.viam.com/data/models) finding the model's row, clicking on the right-side menu marked with **_..._** and selecting **Copy package JSON**. For example: `2024-02-28T13-36-51`.
 The model package config looks like this:
@@ -110,7 +106,7 @@ The MLModel service supports the following methods:
 {{% alert title="Tip" color="tip" %}}
 
 The following code examples assume that you have a machine configured with an `MLModel` service, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
-Go to your machine's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
+Go to your machine's **CONNECT** tab's **Code sample** page on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 

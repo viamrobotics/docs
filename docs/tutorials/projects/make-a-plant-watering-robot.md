@@ -261,7 +261,7 @@ Test your sensor by putting it in air, water, and different soils to see how the
 
 ### Configure the components of your robot in the Viam app
 
-Follow [this guide](/get-started/installation/#install-viam-server) to install `viam-server` on your Pi, create a new machine, and connect to it on [the Viam app](https://app.viam.com).
+{{% snippet "setup.md" %}}
 
 Then, navigate to your new machine's page in the app and click on the **Config** tab.
 
@@ -358,7 +358,7 @@ Add the mcp300x-adc-sensor module to your robot in 3 steps:
    Click **Add module**.
 3. Give your module a name of your choice, and click **Create** to add this module to your machine.
 4. Find your module's card on the **Config** page.
-   In **Attributes**, add the necessary attributes as `"channel_map"` and `"sensor_pin"`.
+   In the attributes field, add the necessary attributes as `"channel_map"` and `"sensor_pin"`.
    For example, if you have a moisture sensor on channel 0, and your `sensor_pin` is 8, your configuration should look like this:
 
    ```json

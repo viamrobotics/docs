@@ -49,16 +49,15 @@ Due to the way processes are designed for stability, if you are configuring a pr
 
 ## Configure a process
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-
-Click on the **Processes** subtab and navigate to the **Create process** menu.
-
-Give the process a **Name** (`id` in raw JSON) (an identifier of your choice) and click **Create process**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine {{< glossary_tooltip term_id="part" text="part" >}} in the left-hand menu and select **Process**.
+Your process is automatically created with a name (`id` in JSON) like **process-1** and a card matching that name on the **CONFIGURE** tab.
+Navigate to that card.
 
 Then fill in the following fields:
 
 <!-- prettier-ignore -->
-| Attribute (Builder Mode) | Attribute (Raw JSON) | Type    | Inclusion    | Description |
+| Attribute (Builder Mode) | Attribute (JSON) | Type    | Inclusion    | Description |
 | ------------------------ | -------------------- | ------- | ------------ | ----------- |
 | Executable               | `name`               | string  | **Required** | The command you want to execute when your machine connects to the server. |
 | Arguments                | `args`               | string  | Optional     | Arguments to follow the command. |
@@ -66,15 +65,15 @@ Then fill in the following fields:
 | Logging                  | `log`                | boolean | Optional     | Toggle logging of errors and other messages on or off. Default: `false`. |
 | Execute once             | `one_shot`           | boolean | Optional     | Toggle whether to execute the command just once or keep running the process indefinitely.<ul><li>If true, the process executes once at `viam-server` startup. Until the process completes, `viam-server` startup is blocked and the robot appears offline in the [Viam app](https://app.viam.com), so this should only be used for quick processes.</li><li>If false, the process continues to run. If the process crashes, it automatically restarts. It does not block `viam-server`. Default: `false`.</li></ul> |
 
-Click **Save config** in the bottom left corner of the screen.
+Click **Save** in the upper right corner of the screen to save your config.
 
 ### Example
 
 The following example configuration executes the command `python3 my_cool_script.py` in your <file>/home/myName/project/</file> directory every time your machine boots, and keeps it executing indefinitely.
 
-![The PROCESSES subtab of the CONFIG tab with a process called run-my-code configured. The executable is python3, the argument is my_cool_script.py, and the working directory is /home/myName/project. Logging is turned on and execute once is turned off.](/build/configure/process-fancy.png)
+![The CONFIGURE tab with a process called run-my-code configured. The executable is python3, the argument is my_cool_script.py, and the working directory is /home/myName/project. Logging is turned on and execute once is turned off.](/build/configure/process-fancy.png)
 
-The corresponding raw JSON looks like this:
+The corresponding JSON looks like this:
 
 ```json
 "processes": [

@@ -19,12 +19,12 @@ The label and the pixels associated with the 2D detections become the label and 
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
-Click the **Services** subtab and click **Create service** in the lower-left corner.
-Select the `Vision` type, then select the `Detector to 3D Segmenter` model.
-Enter a name for your service and click **Create**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+Select the `vision` type, then select the `detector to 3D segmenter` model.
+Enter a name or use the suggested name for your service and click **Create**.
 
-In your vision service's panel, fill in the **Attributes** field.
+In your vision service's panel, fill in the attributes field.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -91,7 +91,7 @@ The following parameters are available for a `detector_3d_segmenter`.
 | `mean_k` | **Required** | An integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the minimum segment size. Start with 5% and go up if objects are still too noisy. If you don’t want to use the filtering, set the number to 0 or less. |
 | `sigma` | **Required** | A floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should usually be set between 1.0 and 2.0. 1.25 is usually a good default. If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower. |
 
-Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
+Click the **Save** button in the top right corner of the page and proceed to [test your segmenter](#test-your-segmenter).
 
 ## Test your segmenter
 

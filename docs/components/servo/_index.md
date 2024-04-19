@@ -73,7 +73,7 @@ For configuration information, click on the model name:
 
 ## Control your servo with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
@@ -469,6 +469,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< cards >}}
 {{% card link="/tutorials/projects/guardian" %}}
-{{% card link="/tutorials/control/yahboom-rover" %}}
+{{% card link="/tutorials/configure/configure-rover" %}}
 {{% card link="/tutorials/projects/integrating-viam-with-openai" %}}
 {{< /cards >}}

@@ -1,5 +1,5 @@
 ---
-title: "Upload a Model"
+title: "Upload a Model to the Registry"
 linkTitle: "Upload Model"
 weight: 50
 type: "docs"
@@ -7,7 +7,7 @@ tags: ["data management", "ml", "model training"]
 aliases:
   - /manage/data/upload-model/
   - /manage/ml/upload-model/
-description: "Upload a Machine Learning model to Viam to use it with the ML Model service."
+description: "Upload a Machine Learning model to the Viam registry to use it with the ML Model service."
 # SME: Steven B.
 ---
 
@@ -25,12 +25,12 @@ Before uploading your model to the cloud, check and see if you will be able to d
 Model framework support is currently as follows:
 
 <!-- prettier-ignore -->
-| Model Framework | Hardware Support | System Architecture | Description |
-| --------------- | ---------------- | ------------------- | ----------- |
-| [TensorFlow Lite](https://www.tensorflow.org/lite) | Any CPU <br> Nvidia GPU | Linux, Raspbian, MacOS, Android | Quantized version of TensorFlow that has reduced compatibility for models but supports more hardware. |
-| [ONNX](https://onnx.ai/) | Any CPU <br> Nvidia GPU | Android, MacOS, Linux arm-64 | Universal format that is not optimized for hardware inference but runs on a wide variety of machines. |
-| [TensorFlow](https://www.tensorflow.org/) | Nvidia GPU | Linux (Jetson) | A full framework that is made for more production-ready systems. |
-| [PyTorch](https://pytorch.org/) | Nvidia GPU | Linux (Jetson) | A full framework that was built primarily for research. Because of this, it is much faster to do iterative development with (model doesn’t have to be predefined) but it is not as “production ready” as TensorFlow. It is the most common framework for OSS models because it is the go-to framework for ML researchers. |
+| Model Framework | ML Model Service | Hardware Support | System Architecture | Description |
+| --------------- | --------------- | ---------------- | ------------------- | ----------- |
+| [TensorFlow Lite](https://www.tensorflow.org/lite) | [`tflite_cpu`](/ml/deploy/) | Any CPU <br> Nvidia GPU | Linux, Raspbian, MacOS, Android | Quantized version of TensorFlow that has reduced compatibility for models but supports more hardware. Uploaded models must adhere to the [model requirements](/ml/deploy/tflite_cpu/#model-requirements). |
+| [ONNX](https://onnx.ai/) | [`onnx_cpu`](https://github.com/viam-labs/onnx-cpu) | Any CPU <br> Nvidia GPU | Android, MacOS, Linux arm-64 | Universal format that is not optimized for hardware inference but runs on a wide variety of machines. |
+| [TensorFlow](https://www.tensorflow.org/) | [`triton`](https://github.com/viamrobotics/viam-mlmodelservice-triton) | Nvidia GPU | Linux (Jetson) | A full framework that is made for more production-ready systems. |
+| [PyTorch](https://pytorch.org/) | [`triton`](https://github.com/viamrobotics/viam-mlmodelservice-triton) | Nvidia GPU | Linux (Jetson) | A full framework that was built primarily for research. Because of this, it is much faster to do iterative development with (model doesn’t have to be predefined) but it is not as “production ready” as TensorFlow. It is the most common framework for OSS models because it is the go-to framework for ML researchers. |
 
 ## Upload a new model or new version
 
@@ -88,7 +88,7 @@ Your model is now updated.
 If you [deploy a model](/ml/) to a machine, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the machine.
 If you upload a new version of that model, Viam will automatically deploy the new version to the machine and replace the old version.
 
-If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON machine configuration](/build/configure/#the-config-tab).
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [JSON machine configuration](/build/configure/#the-configure-tab).
 
 You can get the version number from a specific model version by navigating to the [models page](https://app.viam.com/data/models), finding the model's row, clicking on the right-side menu marked with **_..._** and selecting **Copy package JSON**. For example: `2024-02-28T13-36-51`.
 The model package config looks like this:

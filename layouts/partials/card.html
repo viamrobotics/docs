@@ -63,6 +63,30 @@
     </a>
    {{- end -}}
  {{- else -}}
- {{- errorf "Card has a bad link: %s" $link -}}
+  {{- if strings.HasPrefix ($link | string) "http" -}}
+    <a href="{{.RelPermalink}}">
+    {{- if $imageOverwrite -}}
+      <div class="hover-card-img">
+        {{- partial "imgproc.html" (dict "src" ($imageOverwrite) "resize" "400x" "alt" (.alt) "style" "") -}}
+      </div>
+    {{- else -}}
+      {{- if .webm_src -}}
+        <div class="hover-card-video">
+            {{- partial "gif.html" (dict "webm_src" .webm_src "mp4_src" .mp4_src "alt" .alt "maxWidth" "100%" "class" "" ) -}}
+        </div>
+       {{- end -}}
+     {{- end -}}
+    <div {{ if .webm_src }}class="small-hover-card-div"{{ end }}>
+     {{- if $customTitle -}}
+      <div> {{- $customTitle -}}</div>
+     {{- end -}}
+     {{- if ne $class "small" -}}
+    <p>  {{- if $customDescription -}}  {{- $customDescription -}} {{- end -}} </p>
+     {{- end -}}
+    </div>
+    </a>
+  {{- else -}}
+    {{- errorf "Card has a bad link: %s" $link -}}
+  {{- end -}}
  {{- end -}}
 </div>

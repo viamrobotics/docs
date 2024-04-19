@@ -67,6 +67,10 @@ h2, .h2 {
   clear: both;
 }
 
+.td-content {
+  min-height: 92%;
+}
+
 .td-content > h2.frontpage-headers {
   margin-top: 1.5rem;
 }
@@ -854,18 +858,36 @@ td > ul, td > ol {
   color: black;
   border-radius: 0;
   background-color: whitesmoke;
-  margin: 0;
+  margin: 0.5rem;
   padding: 1rem 1.25rem;
   i {
     color: black;
   }
 }
 
-#scrollButton {
+#scrollButton, #chatButton {
   position: sticky;
   left: 100%;
   bottom: 1rem;
   border-radius: 0;
+  height: 60px;
+  width: 60px;
+  opacity: 1;
+  transition: opacity 0.5s;
+  background-color: #000000;
+  color: white;
+}
+
+#scrollButton > i, #chatButton > i {
+  color: white;
+}
+
+#scrollButton {
+  margin-right: 76px;
+}
+
+#chatButton {
+  padding: 6px;
 }
 
 #edit-on-github, #rss-feed {
@@ -983,6 +1005,14 @@ img.frame {
 
 .feedback-ty > p {
   margin-top: 1rem;
+}
+
+// This ensures the gray sidebar covers the area where the sticky buttons are rendered.
+@media (min-width: 768px) {
+  .td-sidebar {
+    padding-bottom: 76px;
+    margin-bottom: -76px;
+  }
 }
 
 /* END Feedback container */
@@ -1302,7 +1332,7 @@ ul.sectionlist > li:hover {
 #tutorial-menu {
   display: flex;
   flex-direction: column;
-  max-width: 600px;
+  max-width: 800px;
 }
 
 #tutorial-filters, #tutorial-filter-items {
@@ -1329,6 +1359,25 @@ ul.sectionlist > li:hover {
 
 .ais-Hits-item {
   display: flex;
+}
+
+.ais-Hits-item > .blogpost .title:after {
+  content: "Blogpost";
+  background-color: #ffd400;
+}
+
+.ais-Hits-item .title:after {
+  content: "Tutorial";
+  padding: 0.1rem 0.2rem;
+  margin-left: 0.5rem;
+  background-color: #00ef83;
+  font-size: 0.833rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.ais-Hits-item .hover-card-video {
+  border: none;
 }
 
 #hits .ais-Hits-list {
@@ -1493,7 +1542,7 @@ a.ais-Pagination-link:hover {
 // ensure tutorials page is 100% of height
 
 .row.flex-xl-nowrap {
-  min-height: 100%;
+  min-height: 90%;
 }
 
 // Helper to allow search to link to tabs

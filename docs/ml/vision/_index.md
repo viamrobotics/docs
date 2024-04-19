@@ -97,7 +97,7 @@ For configuration information, click on the model name:
 <!-- prettier-ignore -->
 Model | Description <a name="model-table"></a>
 ----- | -----------
-[`mlmodel`](./mlmodel/) | A detector or classifier that uses a `tensorflow-lite` model available on the machine’s hard drive to draw bounding boxes around objects or returns a class label and confidence score.
+[`mlmodel`](./mlmodel/) | A detector or classifier that uses a model available on the machine’s hard drive to draw bounding boxes around objects or returns a class label and confidence score.
 [`color_detector`](./color_detector/) | A heuristic detector that draws boxes around objects according to their hue (does not detect black, gray, and white).
 [`obstacles_pointcloud`](./obstacles_pointcloud/) | A segmenter that identifies well-separated objects above a flat plane.
 [`detector_3d_segmenter`](./detector_3d_segmenter/) | A segmenter that takes 2D bounding boxes from an object detector and projects the pixels in the bounding box to points in 3D space.
@@ -517,7 +517,7 @@ if len(objects) > 0 {
 {{% /tab %}}
 {{< /tabs >}}
 
-## DoCommand
+### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the service API.
 For built-in service models, any model-specific commands available are covered with each model's documentation.

@@ -57,7 +57,7 @@ The SLAM service supports the following methods:
 {{% alert title="Tip" color="tip" %}}
 
 The following code examples assume that you have a machine configured with a SLAM service called `"my_slam_service"`, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
-Go to your machine's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
+Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and select the **Code sample** page for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 
@@ -174,7 +174,11 @@ Get information about the current SLAM session.
 
 **Returns:**
 
-- Tuple[[bool](https://docs.python.org/3/library/functions.html#bool), [MappingMode.ValueType](https://python.viam.dev/autoapi/viam/proto/service/slam/index.html#viam.proto.service.slam.MappingMode)]: A tuple containing two objects: a boolean which indicates whether the session is being run in the cloud, and `MappingMode`, which represents the [form of mapping and localizing the current session is performing](/mobility/slam/cartographer/#use-a-live-machine).
+- [(Properties)](https://python.viam.dev/autoapi/viam/proto/service/slam/index.html#viam.proto.service.slam.GetPropertiesResponse): Information about the current SLAM session. An object containing four fields:
+  - `sensor_info` [(Iterable[SensorInfo])](https://python.viam.dev/autoapi/viam/proto/service/slam/index.html#viam.proto.service.slam.SensorInfo): Information about the sensors (camera and movement sensor) configured for your SLAM service, including the name and type of sensor.
+  - `cloud_slam` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): A boolean which indicates whether the session is being run in the cloud.
+  - `mapping_mode` [(MappingMode)](https://python.viam.dev/autoapi/viam/proto/service/slam/index.html#viam.proto.service.slam.MappingMode): Represents the [form of mapping and localizing the current session is performing](/mobility/slam/cartographer/#use-a-live-machine). This includes creating a new map, localizing on an existing map and updating an existing map.
+  - `internal_state_file_type` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The file type the service's internal state algorithm is stored in.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_properties).
 
@@ -194,8 +198,12 @@ slam_properties = await slam_svc.get_properties()
 
 **Returns:**
 
-- [Properties](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties): Information about the current SLAM session.
-  This includes whether the SLAM process is running in the cloud, as well as its mapping mode.
+- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties): Information about the current SLAM session.
+  An object containing four fields:
+  - `SensorInfo` [(SensorInfo[])](https://pkg.go.dev/go.viam.com/api/service/slam/v1#SensorInfo): Information about the sensors (camera and movement sensor) configured for your SLAM service, including the name and type of sensor.
+  - `CloudSlam` [(bool)](https://pkg.go.dev/builtin#bool): A boolean which indicates whether the session is being run in the cloud.
+  - `MappingMode` [(MappingMode)](https://pkg.go.dev/go.viam.com/rdk/services/slam#MappingMode): Represents the [form of mapping and localizing the current session is performing](/mobility/slam/cartographer/#use-a-live-machine). This includes creating a new map, localizing on an existing map and updating an existing map.
+  - `InternalStateFileType` [(string)](https://pkg.go.dev/builtin#string): The file type the service's internal state algorithm is stored in.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties).

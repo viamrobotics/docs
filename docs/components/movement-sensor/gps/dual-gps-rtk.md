@@ -8,46 +8,20 @@ images: ["/icons/components/imu.svg"]
 # SMEs: Rand
 ---
 
-The `dual-gps-rtk` model of movement sensor calculates compass heading from two GPS movement sensors, and returns the midpoint position between the first and second GPS devices as its position.
+The `dual-gps-rtk` model of movement sensor calculates a compass heading from two GPS movement sensors, and returns the midpoint position between the first and second GPS devices as its position.
 In addition to [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading), this model provides data for [`GetPosition()`](/components/movement-sensor/#getposition) and [`GetAccuracy()`](/components/movement-sensor/#getaccuracy).
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `movement-sensor` type, then select the `dual-gps-rtk` model.
-Enter a name for your movement sensor and click **Create**.
+Enter a name or use the suggested name for your movement sensor and click **Create**.
 
 ![Creation of a `dual-gps-rtk` movement sensor in the Viam app config builder.](/components/movement-sensor/dual-gps-rtk-builder.png)
 
-Copy and paste the following attribute template into your movement sensor's **Attributes** box.
-Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "first_gps": "<name-of-your-first-gps-movement-sensor>",
-  "second_gps": "<name-of-your-second-gps-movement-sensor>",
-  "offset_degrees": <int>
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "first_gps": "nmea-1",
-  "second_gps": "nmea-2",
-  "offset_degrees": 90
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Fill in the attributes as applicable to your movement sensor, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

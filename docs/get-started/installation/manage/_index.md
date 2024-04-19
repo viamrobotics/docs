@@ -151,6 +151,7 @@ brew services restart viam-server
 
 ## Update `viam-server`
 
+To update to the newest RDK version, you need to update your `viam-server`.
 Select the tab for your platform:
 
 {{< tabs name="Updating viam-server" >}}
@@ -203,7 +204,7 @@ Homebrew does not support automatic updates, so you will need to manually perfor
 Use the following commands to view these log messages locally on your system.
 
 {{< alert title="Tip" color="tip" >}}
-If your system is able to connect with the Viam app, you can also view logs in the **Logs** tab on [the Viam app](https://app.viam.com/).
+If your system is able to connect with the Viam app, you can also view logs in the **LOGS** tab on [the Viam app](https://app.viam.com/).
 {{< /alert >}}
 
 Select the tab below for your platform:

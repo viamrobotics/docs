@@ -30,12 +30,14 @@
                                 <div class="filter" id="filter-components" aria-expanded="false" data-toggle="collapse" data-target="#components-list">Components</div>
                                 <div class="filter" id="filter-services" aria-expanded="false" data-toggle="collapse" data-target="#services-list">Services</div>
                                 <div class="filter" id="filter-level" aria-expanded="false" data-toggle="collapse" data-target="#level-list">Level</div>
+                                <div class="filter" id="filter-resources" aria-expanded="false" data-toggle="collapse" data-target="#resource-list">Content Type</div>
                             </div>
                             <div class="accordion-group search-panel__filters show-on-wide lozad" id="tutorial-filter-items">
                                 <div id="languages-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
                                 <div id="components-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
                                 <div id="services-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
                                 <div id="level-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
+                                <div id="resource-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
                             </div>
                         </div>
 
@@ -64,7 +66,7 @@
                                 {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/get-started/blink-an-led/") }}
                                 {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/get-started/try-viam-sdk/") }}
                                 {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/get-started/servo-mousemover/") }}
-                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/get-started/confetti-bot/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/services/navigate-with-rover-base/") }}
                                 {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/get-started/lazy-susan/") }}
                                 {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/configure/build-a-mock-robot/") }}
                                 {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/services/accessing-and-moving-robot-arm/") }}
@@ -77,9 +79,14 @@
                         </div>
                     </noscript>
                 </div>
+                <p>Find more examples of how Viam is being used in the world by reviewing <a href="https://www.viam.com/customers" target="_blank">Customer Stories</a>, <a href="/tutorials/">tutorials</a>, or <a href="https://www.viam.com/blog?categories=Tutorials" target="_blank">blog posts</a>.</p>
             </main>
         </div>
-      </div>
+        {{ $img := resources.GetMatch "/icons/learn-viam-robot-icon-ai.svg" }}
+        <button onclick="initAndClick()" class="docsbutton" id="chatButton" title="Chatbot and support">
+            <i style="font-size:x-large;" class="fas fa-comments"></i>
+        </button>
+    </div>
       {{ partial "footer.html" . }}
     </div>
 

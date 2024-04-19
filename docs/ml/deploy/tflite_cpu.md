@@ -25,20 +25,22 @@ To configure a `tflite_cpu` ML model service:
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
-Click the **Services** subtab and click **Create service** in the lower-left corner.
-Select the `ML Model` type, then select the `TFLite CPU` model.
-Enter a name for your service and click **Create**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+Select the `ML model` type, then select the `TFLite CPU` model.
+Enter a name or use the suggested name for your service and click **Create**.
 
 You can choose to configure your service with an existing model on the machine or deploy a model onto your machine:
 
 {{< tabs >}}
 {{% tab name="Deploy Model on Robot" %}}
 
-1. To configure your service and deploy a model onto your machine, select **Deploy Model On Robot** for the **Deployment** field.
+1. To configure your service and deploy a model onto your machine, select **Deploy model on robot** for the **Deployment** field.
 
-2. Click on **Models** to open a dropdown with all of the ML models available to you privately, as well as all of the ML models available in [the registry](https://app.viam.com), which are shared by users.
+2. Click on **Select models** to open a dropdown with all of the ML models available to you privately, as well as all of the ML models available in [the registry](https://app.viam.com), which are shared by users.
+   Models that your organization has trained that are not uploaded to the registry will appear first in the dropdown.
    You can select from any of these models to deploy on your robot.
+   Only TensorFlow Lite models are shown.
 
 {{<imgproc src="/services/deploy-model-menu.png" resize="700x" alt="Models dropdown menu with models from the registry.">}}
 
@@ -53,8 +55,8 @@ To see more details about a model, open its page in [the registry](https://app.v
 {{% /tab %}}
 {{% tab name="Path to Existing Model On Robot" %}}
 
-1. To configure your service with an existing model on the machine, select **Path to Existing Model On Robot** for the **Deployment** field.
-2. Then specify the absolute **Model Path** and any **Optional Settings** such as the absolute **Label Path** and the **Number of threads**.
+1. To configure your service with an existing model on the machine, select **Path to existing model on robot** for the **Deployment** field.
+2. Then specify the absolute **Model path** and any **Optional settings** such as the absolute **Label path** and the **Number of threads**.
 
 ![Create a machine learning models service with an existing model](/services/available-models.png)
 
@@ -73,8 +75,8 @@ Add the `tflite_cpu` ML model object to the services array in your raw JSON conf
     "type": "mlmodel",
     "model": "tflite_cpu",
     "attributes": {
-      "model_path": "${packages.ml_model.<model_name>}/<model-name>.tflite",
-      "label_path": "${packages.ml_model.<model_name>}/labels.txt",
+      "model_path": "${packages.<model_name>}/<model-name>.tflite",
+      "label_path": "${packages.<model_name>}/labels.txt",
       "num_threads": <number>
     }
   },
@@ -101,8 +103,8 @@ Add the `tflite_cpu` ML model object to the services array in your raw JSON conf
     "type": "mlmodel",
     "model": "tflite_cpu",
     "attributes": {
-      "model_path": "${packages.ml_model.my_fruit_model}/my_fruit_model.tflite",
-      "label_path": "${packages.ml_model.my_fruit_model}/labels.txt",
+      "model_path": "${packages.my_fruit_model}/my_fruit_model.tflite",
+      "label_path": "${packages.my_fruit_model}/labels.txt",
       "num_threads": 1
     }
   }
@@ -124,6 +126,13 @@ The following parameters are available for a `"tflite_cpu"` model:
 | `model_path` | **Required** | The absolute path to the `.tflite model` file, as a `string`. |
 | `label_path` | Optional | The absolute path to a `.txt` file that holds class labels for your TFLite model, as a `string`. This text file should contain an ordered listing of class labels. Without this file, classes will read as "1", "2", and so on. |
 | `num_threads` | Optional | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
+
+{{% alert title="Note" color="note" %}}
+If you **Deploy model on robot**, `model_path` and `label_path` will be automatically configured in the format `"${packages.<model_name>}/<model-name>.tflite"` and `"${packages.<model_name>}/labels.txt"` respectively.
+
+If you take the **Path to existing model on robot** approach, your model and label paths do not have to be in the same format.
+For example, they might resemble `home/models/fruit/my_fruit_model.tflite`.
+{{% /alert %}}
 
 Save the configuration.
 

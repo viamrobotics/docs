@@ -3,6 +3,7 @@ title: "Capture and query sensor data"
 linkTitle: "Capture and query sensor data"
 weight: 30
 type: "docs"
+images: ["/tutorials/visualize-data-grafana/grafana-dashboard-preview.png"]
 description: "Query tabular data from your machine on the Viam app or from a compatible client."
 ---
 

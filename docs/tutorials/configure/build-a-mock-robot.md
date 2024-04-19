@@ -42,8 +42,7 @@ Go to this machine's **Setup** tab.
 
 ### Install and start `viam-server` on your computer
 
-Before you proceed with configuring and controlling your machine, install `viam-server`.
-Follow the steps outlined for your computer's architecture on the **Setup** tab of the [Viam app](https://app.viam.com) to [install `viam-server`](/get-started/installation/) on your computer as a system service.
+{{% snippet "setup.md" %}}
 
 ### Configure your mock robot
 

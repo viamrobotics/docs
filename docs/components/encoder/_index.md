@@ -72,7 +72,7 @@ If you are using the micro-RDK, navigate to [Micro-RDK Encoder](/build/micro-rdk
 
 ## Control your encoder with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
@@ -437,5 +437,5 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 ## Next steps
 
 {{< cards >}}
-{{% card link="/tutorials/configure/scuttlebot" %}}
+{{% card link="/tutorials/configure/configure-rover" %}}
 {{< /cards >}}

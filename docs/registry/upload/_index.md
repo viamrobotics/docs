@@ -126,6 +126,12 @@ If you mark your module as public, you cannot change it back to private.
         <td><strong>Required</strong></td>
         <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing your module as a single file to the <code>upload</code> command, provide the path to that single file. If you are providing a directory containing your module to the <code>upload</code> command, provide the path to the entry point file contained within that directory.</td>
       </tr>
+      <tr>
+        <td><code>build</code></td>
+        <td>object</td>
+        <td><strong>Optional</strong></td>
+        <td>An object containing the command to run to build your module, as well as optional fields for the path to your dependency setup script, the target architectures to build for, and the path to your built module. Use this with the <a href="/fleet/cli/#using-the-build-subcommand">Viam CLI's build subcommand</a>. </td>
+      </tr>
 
     </table>
 
@@ -143,7 +149,12 @@ If you mark your module as public, you cannot change it back to private.
           "model": "acme:demo:my-model"
         }
       ],
-      "entrypoint": "my-module.sh"
+      "build": {
+        "path": "dist/archive.tar.gz", // optional - path to your built module
+        "build": "./build.sh", // command that will build your module
+        "arch": ["linux/amd64", "linux/arm64"] // architecture(s) to build for
+      },
+      "entrypoint": "dist/main"
     }
     ```
 
@@ -158,19 +169,19 @@ For more information, see [Naming your model](/registry/#naming-your-model-names
 
     See [`meta.json` file](/fleet/cli/#the-metajson-file) for more information.
 
-4. For modules written in Python, you should package your module files as an archive first, before uploading.
+1. For modules written in Python, you should package your module files as an archive first, before uploading.
    Other languages can proceed to the next step to upload their module directly.
    To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   tar -czf module.tar.gz run.sh requirements.txt src
+   tar -czvf dist/archive.tar.gz dist/main
    ```
 
-   Where `run.sh` is your [entrypoint file](/registry/create/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/registry/create/#compile-or-package-your-module), and `src` is the source directory of your module.
+Where `dist/main` is the [packaged executable](/registry/create/#compile-or-package-your-module) that runs the module at the [entry point](/registry/create/#write-an-entry-point-main-program-file).
 
-   Supply the path to the resulting archive file in the next step.
+Supply the path to the resulting archive file in the next step.
 
-5. Run `viam module upload` to upload your custom module to the Viam registry.
+1. Run `viam module upload` to upload your custom module to the Viam registry.
    Specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
@@ -250,10 +261,10 @@ If you intend to make frequent code changes to your module, want to support a va
    To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   tar -czf module.tar.gz run.sh requirements.txt src
+   tar -czf module.tar.gz dist/main
    ```
 
-   Where `run.sh` is your [entrypoint file](/registry/create/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/registry/create/#compile-or-package-your-module), and `src` is the source directory of your module.
+   Where `dist/main` is your [packaged executable](/registry/create/#compile-or-package-your-module).
 
    Supply the path to the resulting archive file in the next step.
 
@@ -289,8 +300,8 @@ However, if you already have your own CI with access to arm runners or only inte
 
 1. Paste one of the following action templates into the edit window, depending on whether you are using the `build-action` or `upload-module` action:
 
-   {{< tabs >}}
-   {{% tab name="CI with build-action" %}}
+{{< tabs >}}
+{{% tab name="CI with build-action" %}}
 
 ```yaml {class="line-numbers linkable-line-numbers"}
 # see https://github.com/viamrobotics/build-action for help
@@ -317,18 +328,142 @@ jobs:
 The `build-action` GitHub action relies on a build command that you need to specify in the <file>meta.json</file> file that you created for your module when you first [uploaded it](/registry/upload/#upload-a-custom-module-using-the-cli).
 At the end of your <file>meta.json</file>, add the build configuration:
 
+<!-- { {< tabs >}}
+{ {% tab name="Single Build File" %}} -->
+
 ```json {class="line-numbers linkable-line-numbers" data-line="4-7"}
 {
   "module_id": "example-module",
   ...
   "build": {
-    "build": "make module.tar.gz",
-    "arch" : ["linux/amd64", "linux/arm64", "darwin/arm64"]
+    "setup": "./setup.sh", // optional - command to install your build dependencies
+    "build": "./build.sh", // command that will build your module
+    "path" : "dist/archive.tar.gz", // optional - path to your built module
+    "arch" : ["linux/amd64", "linux/arm64"] // architecture(s) to build for
   }
 }
 ```
 
-You can test this build configuration by running the following command on your development machine:
+{{%expand "Click to view example setup.sh" %}}
+
+```sh { class="command-line"}
+#!/bin/bash
+set -e
+UNAME=$(uname -s)
+
+if [ "$UNAME" = "Linux" ]
+then
+    echo "Installing venv on Linux"
+    sudo apt-get install -y python3-venv
+fi
+if [ "$UNAME" = "Darwin" ]
+then
+    echo "Installing venv on Darwin"
+    brew install python3-venv
+fi
+
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+```
+
+{{% /expand%}}
+
+{{%expand "Click to view example build.sh (with setup.sh)" %}}
+
+```sh { class="command-line"}
+#!/bin/bash
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main
+```
+
+{{% /expand%}}
+
+{{%expand "Click to view example build.sh (without setup.sh)" %}}
+
+```sh { class="command-line"}
+#!/bin/bash
+set -e
+UNAME=$(uname -s)
+
+if [ "$UNAME" = "Linux" ]
+then
+    echo "Installing venv on Linux"
+    sudo apt-get install -y python3-venv
+fi
+if [ "$UNAME" = "Darwin" ]
+then
+    echo "Installing venv on Darwin"
+    brew install python3-venv
+fi
+
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main
+```
+
+{{% /expand%}}
+
+<!-- { {% /tab %}}
+{ {% tab name="Platform Specific" %}}
+
+```json {class="line-numbers linkable-line-numbers" data-line="4-13"}
+{
+  "module_id": "example-module",
+  ...
+  "build": {
+    "arch": {
+          "linux/arm64": {
+            "path" : "dist/archive.tar.gz",               // optional - path to your built module
+            "build": "./build-linux-arm64.sh" // command that will build your module
+          },
+          "darwin/arm64": {
+            "build": "./build-darwin-arm64.sh" // command that will build your module
+          }
+        } // architecture(s) to build for
+  }
+}
+```
+
+{ {%expand "Click to view example build-linux-arm64.sh" %}}
+
+```sh { class="command-line"}
+#!/bin/bash
+set -e
+
+sudo apt-get install -y python3-venv
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main
+```
+
+{ {% /expand%}}
+
+{{ %expand "Click to view example build-darwin-arm64.sh" %}}
+
+```sh { class="command-line"}
+#!/bin/bash
+set -e
+
+brew install python3-venv
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main
+```
+
+{ {% /expand%}}
+
+{ {% /tab %}}
+{ {< /tabs >}} -->
+
+You can test this build configuration by running the Viam CLI's [`build local` command](/fleet/cli/#using-the-build-subcommand) on your development machine:
 
 ```sh {class="command-line" data-prompt="$"}
 viam module build local
@@ -340,8 +475,8 @@ For more details, see the [`build-action` GitHub Action documentation](https://g
 
 - [Golang CI yaml](https://github.com/viam-labs/wifi-sensor/blob/main/.github/workflows/build.yml)
 - [Golang Example CI meta.json](https://github.com/viam-labs/wifi-sensor/blob/main/meta.json)
-- [C++ Example CI yaml](https://github.com/viamrobotics/module-example-cpp/blob/main/.github/workflows/build2.yml)
-- [C++ Example CI meta.json](https://github.com/viamrobotics/module-example-cpp/blob/main/meta.json)
+<!-- - [C++ Example CI yaml](https://github.com/viamrobotics/module-example-cpp/blob/main/.github/workflows/build2.yml)
+- [C++ Example CI meta.json](https://github.com/viamrobotics/module-example-cpp/blob/main/meta.json) -->
 
 {{% /tab %}}
 {{% tab name="CI with upload-action" %}}
