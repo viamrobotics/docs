@@ -219,7 +219,7 @@ from viam.rpc.dial import Credentials, DialOptions
 from viam.services.vision import VisionClient, VisModelConfig, \
     VisModelType, Detection
 
-# Set environment variables. You can get them from your machine's 'Code sample' tab
+# Set environment variables. You can get them from your machine's CONNECT tab
 api_key= os.getenv('API_KEY') or ''
 api_key_id = os.getenv('API_KEY_ID') or ''
 address = os.getenv('ADDRESS') or ''
