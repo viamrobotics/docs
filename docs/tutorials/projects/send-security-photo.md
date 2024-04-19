@@ -216,14 +216,13 @@ import yagmail
 
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
-from viam.services.vision import
-    VisionClient, VisModelConfig, VisModelType, Detection
+from viam.services.vision import VisionClient, VisModelConfig, \
+    VisModelType, Detection
 
-# Replace "<API-KEY>" (including brackets) with your machine's api key
-api_key='<API-KEY>',
-# Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
-api_key_id='<API-KEY-ID>'
-address = os.getenv('ROBOT_ADDRESS') or ''
+# Set environment variables. You can get them from your machine's 'Code sample' tab
+api_key= os.getenv('API_KEY') or ''
+api_key_id = os.getenv('API_KEY_ID') or ''
+address = os.getenv('ADDRESS') or ''
 
 
 async def connect():
