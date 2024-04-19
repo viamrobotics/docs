@@ -79,32 +79,53 @@ To install `viam-server` on a macOS computer:
 
 1. If not installed already, install [Homebrew](https://brew.sh/).
 
-1. Go to the [Viam app](https://app.viam.com) and add a new machine by providing a name in the **New machine** field and clicking **Add machine**.
-   If this is your first time using the Viam app, you must create an account first.
+1. Go to the [Viam app](https://app.viam.com). Create an account if you haven't already.
 
-   ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
+1. Add a new machine by providing a name in the **New machine** field and clicking **Add machine**:
 
-1. On the **Setup** tab, select `Mac` as the **Architecture**.
+   {{<imgproc src="/fleet/app-usage/create-machine.png" resize="900x" style="max-width:700px" declaredimensions=true alt="The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.">}}
 
-1. Follow the steps shown on the **Setup** tab to install `viam-server` on your macOS computer.
+1. Navigate to the **CONFIGURE** tab and find your machine's card.
+   An alert will be present directing you to **Set up your machine part**:
 
-1. Once you have followed the steps on the **Setup** tab, `viam-server` is installed and running.
-   Return to the **Setup** page on the Viam app and wait for confirmation that your computer has successfully connected.
+   {{<imgproc src="/get-started/installation/setup-part.png" resize="900x" style="max-width:700px" declaredimensions=true alt="Machine setup alert in a newly created machine">}}
+
+   Click **View setup instructions** to open the setup instructions:
+
+   {{<imgproc src="/get-started/installation/macos-setup-instructions.png" resize="900x" style="max-width:700px" declaredimensions=true alt="Setup instructions">}}
+
+1. Select **Mac** as your system's OS and **RDK** as your RDK type.
+
+1. Follow the steps shown to install `viam-server` on your macOS computer.
+
+1. Once you have followed the steps on the setup instructions, `viam-server` is installed and running.
+   Wait for confirmation that your computer has successfully connected.
 
 {{% /tab %}}
 {{% tab name="Windows" %}}
 
-1. Go to the [Viam app](https://app.viam.com) and add a new machine by providing a name in the **New machine** field and clicking **Add machine**.
-   If this is your first time using the Viam app, you must create an account first.
+1. Go to the [Viam app](https://app.viam.com).
+   Create an account if you haven't already.
 
-   ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
+1. Add a new machine by providing a name in the **New machine** field and clicking **Add machine**:
 
-1. On the **Setup** tab, select `Windows` as the **Architecture**.
+   {{<imgproc src="/fleet/app-usage/create-machine.png" resize="900x" style="max-width:700px" declaredimensions=true alt="The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.">}}
 
-1. Follow the steps shown on the **Setup** tab to install `viam-server` on your Windows machine.
+1. Navigate to the **CONFIGURE** tab and find your machine's card.
+   An alert will be present directing you to **Set up your machine part**:
 
-1. Once you have followed the steps on the **Setup** tab, `viam-server` is installed and running.
-   Return to the **Setup** page on the Viam app and wait for confirmation that your computer has successfully connected.
+   {{<imgproc src="/get-started/installation/setup-part.png" resize="900x" style="max-width:700px" declaredimensions=true alt="Machine setup alert in a newly created machine">}}
+
+   Click **View setup instructions** to open the setup instructions:
+
+   {{<imgproc src="/get-started/installation/wsl-setup-instructions.png" resize="900x" style="max-width:700px" declaredimensions=true alt="Setup instructions">}}
+
+1. Select **Windows** as your system's OS and **RDK** as your RDK type.
+
+1. Follow the steps shown to install `viam-server` on your Windows machine.
+
+1. Once you have followed the steps on the setup instructions, `viam-server` is installed and running.
+   Wait for confirmation that your computer has successfully connected.
 
 {{% /tab %}}
 {{< /tabs >}}

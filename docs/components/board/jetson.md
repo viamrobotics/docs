@@ -34,14 +34,14 @@ Configure a `jetson` board to integrate an [NVIDIA Jetson Orin Module and Develo
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `board` type, then select the `jetson` model.
-Enter a name for your board and click **Create**.
+Enter a name or use the suggested name for your board and click **Create**.
 
 ![An example configuration for a Jetson board in the Viam app Config Builder.](/components/board/jetson-ui-config.png)
 
-{{< readfile "/static/include/components/board-attr-config.md" >}}
+Edit the attributes as applicable to your board, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -56,7 +56,10 @@ Enter a name for your board and click **Create**.
       "namespace": "rdk",
       "attributes": {
         "digital_interrupts": [
-          <...See table below...>
+          {
+            "name": "<your-digital-interrupt-name>",
+            "pin": "<pin-number>"
+          }
         ]
       },
       "depends_on": []

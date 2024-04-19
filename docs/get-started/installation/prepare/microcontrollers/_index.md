@@ -29,8 +29,8 @@ If you want to program the chip directly, follow the setup instructions in [the 
 Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/fleet/machines/#add-a-new-machine) in your desired location.
 
 1. Click on the name of the machine to go to its page.
-2. Click on the **Setup** tab.
-3. Select your computer's architecture as **Architecture** and select **Micro-RDK** as **RDK type**.
+2. Navigate to the **CONFIGURE** tab and find your machine's card. An alert will be present directing you to **Set up your machine part**. Click **View setup instructions** to open the setup instructions.
+3. Select your computer's architecture and operating system, and select **Micro-RDK** as **RDK type**.
 4. Follow the instructions to flash the micro-RDK directly to an ESP32 connected to your computer through a data cable.
 
    To see the micro-RDK server logs through the serial connection, add `--monitor` to the command in step 3.
@@ -63,15 +63,14 @@ Configure your `esp32` board for your machine.
 
 ## Recommendations when using an SDK
 
-In some cases your connection to the ESP32 with an SDK can fail, be unstable or be slow.
-This is usually caused by the SDK background task that monitors the connection to the micro-RDK.
-We recommend the following changes to the default settings in your SDK code when connecting to an ESP32 if you run into similar issues:
+If the connection to the ESP32 with an SDK is unstable we recommend the following changes to the default settings in your SDK code when connecting to an ESP32.
+This will disable the SDK background task that monitors the connection to the micro-RDK, saving bandwidth.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 ```python
-# Replace the connect function found in the code sample tab with the following
+# Replace the connect function found in the CONNECT tab with the following
 async def connect():
     opts = RobotClient.Options(
         # Micro-RDK configures once at boot,

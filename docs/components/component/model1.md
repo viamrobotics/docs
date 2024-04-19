@@ -16,10 +16,10 @@ Optional additional description/information.
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `arm` type, then select the `model1` model.
-Enter a name for your arm and click **Create**.
+Enter a name or use the suggested name for your arm and click **Create**.
 
 {{< imgproc src="/components/component/model1-builder.png" alt="Creation of a `model1` arm in the Viam app config builder." resize="600x" >}}
 
@@ -27,7 +27,7 @@ Edit and fill in the attributes as applicable.
 
 <!-- If the model does not have a fancy config UI available, such that the user needs to write JSON attributes, refer to one of the other component models as an example. You should include easily copy-pastable attribute templates on the config tab. For example, replace "Edit and fill in the attributes as applicable." with the following:
 
-Copy and paste the following attribute template into your COMPONENT's **Attributes** box.
+Copy and paste the following attribute template into your COMPONENT's attributes field.
 Then remove and fill in the attributes as applicable to your COMPONENT, according to the table below.
 
 {{< tabs >}}
@@ -131,7 +131,7 @@ The following attributes are available for `model1` arms:
 
 ## Test the component
 
-After you configure your compontent, navigate to the [**Control** tab](/fleet/machines/#control) and select the **Component** dropdown panel.
+After you configure your compontent, navigate to the [**CONTROL** tab](/fleet/machines/#control) and select the **Component** dropdown panel.
 
 Then _explain how to interact with the panel_.
 

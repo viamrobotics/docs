@@ -42,23 +42,20 @@ Once you have deployed your ML model, configure your `mlmodel` detector or class
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
-Click the **Services** subtab and click **Create service** in the lower-left corner.
-Select the `Vision` type, then select the `ML Model` model.
-Enter a name for your service and click **Create**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+Select the `vision` type, then select the `ML model` model.
+Enter a name or use the suggested name for your service and click **Create**.
 
-In your vision service's panel, fill in the **Attributes** field.
+Select the ML model service your model is deployed on from the **ML Model** dropdown to configure the required `"mlmodel_name"` attribute.
 
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "mlmodel_name": "<mlmodel-service-name>"
-}
-```
+Edit other attributes as applicable according to the table below.
+You can edit optional attributes in raw JSON by clicking **{}** (Switch to advanced) on the right side of your service panel.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Add the vision service object to the services array in your raw JSON configuration:
+Add the vision service object to the services array in your JSON configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "services": [
@@ -115,7 +112,7 @@ Add the vision service object to the services array in your raw JSON configurati
 {{% /tab %}}
 {{< /tabs >}}
 
-Click **Save config**.
+Click the **Save** button in the top right corner of the page.
 
 The following attributes are available for an `mlmodel` detector or classifier:
 
@@ -196,7 +193,7 @@ To remap your model's tensor names to work with an `mlmodel` classifier, add the
 {{% /tab %}}
 {{< /tabs >}}
 
-When done, click **Save config**, then proceed to [test your detector or classifier](#test-your-detector-or-classifier).
+When done, click the **Save** button in the top right corner of the page, then proceed to [test your detector or classifier](#test-your-detector-or-classifier).
 
 ## Test your detector or classifier
 
@@ -276,8 +273,8 @@ If you intend to use the detector or classifier with a camera that is part of yo
 {{% /tab %}}
 {{< /tabs >}}
 
-3. After adding the components and their attributes, click **Save config**.
-4. Navigate to the **Control** tab, click on your transform camera and toggle it on.
+3. After adding the components and their attributes, click the **Save** button in the top right corner of the page.
+4. Navigate to the **CONTROL** tab, click on your transform camera and toggle it on.
    If you've configured a detector, the transform camera will now show detections with bounding boxes around the object.
 
    ![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/ml/vision/chair-detector.png)

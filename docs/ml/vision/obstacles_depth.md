@@ -18,12 +18,12 @@ Configure an `obstacles_depth` segmenter:
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
-Click the **Services** subtab and click **Create service** in the lower-left corner.
-Select the `Vision` type, then select the `Obstacles Depth` model.
-Enter a name for your service and click **Create**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+Select the `vision` type, then select the `obstacles depth` model.
+Enter a name or use the suggested name for your service and click **Create**.
 
-In your vision service's panel, fill in the **Attributes** field.
+In your vision service's panel, fill in the attributes field.
 
 {{< tabs >}}
 {{% tab name="Attribute Template" %}}
@@ -125,7 +125,7 @@ If you want to identify multiple boxes over the flat plane with your segmenter:
   - You can get those parameters from your camera through the [camera API](/components/camera/#getproperties).
 - The segmenter now returns multiple boxes within the `GeometryInFrame` object it captures.
 
-Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
+Click the **Save** button in the top right corner of the page and proceed to [test your segmenter](#test-your-segmenter).
 
 ## Test your segmenter
 

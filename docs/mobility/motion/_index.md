@@ -59,7 +59,7 @@ The motion service supports the following methods:
 {{% alert title="Tip" color="tip" %}}
 
 The following code examples assume that you have a machine configured with a gripper, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
-Go to your machine's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
+Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and select the **Code sample** page for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 
@@ -204,10 +204,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 motionService, err := motion.FromRobot(robot, "builtin")
 
 // Assumes a gripper configured with name "my_gripper" on the machine
-gripperName := Gripper.Named("my_gripper")
+gripperName := gripper.Named("my_gripper")
 myFrame := "my_gripper_offset"
 
-goalPose := PoseInFrame(0, 0, 300, 0, 0, 1, 0)
+goalPose := referenceframe.PoseInFrame(0, 0, 300, 0, 0, 1, 0)
 
 // Move the gripper
 moved, err := motionService.Move(context.Background(), gripperName, goalPose, worldState, nil, nil)
@@ -322,20 +322,11 @@ gripperPoseInObjectFrame = await motion.get_pose(
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
-import (
-  "context"
-
-  "go.viam.com/rdk/components/gripper"
-  "go.viam.com/rdk/logging"
-  "go.viam.com/rdk/referenceframe"
-  "go.viam.com/rdk/services/motion"
-)
-
 // Insert code to connect to your machine.
-// (see code sample tab of your machine's page in the Viam app)
+// (see CONNECT tab of your machine's page in the Viam app)
 
 // Assumes a gripper configured with name "my_gripper" on the machine
-gripperName := Gripper.Named("my_gripper")
+gripperName := gripper.Named("my_gripper")
 myFrame := "my_gripper_offset"
 
  // Access the motion service
@@ -394,7 +385,7 @@ Make sure the [SLAM service](/mobility/slam/) you use alongside the this motion 
   - `obstacle_detectors` [(Iterable[ObstacleDetector])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ObstacleDetector): The names of each [vision service](/ml/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.
   - `position_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the position of the machine.
   - `obstacle_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the vision service for new obstacles.
-  - `plan_deviation_m` [(float)](https://docs.python.org/3/library/functions.html#float): The distance in meters that the machine can deviate from the motion plan. By default this is set to 2.6 m which is an appropriate value for outdoor usage. When you use the `MoveOnMap()` method from the **Control** tab, the default is overwritten to 0.5 m for testing.
+  - `plan_deviation_m` [(float)](https://docs.python.org/3/library/functions.html#float): The distance in meters that the machine can deviate from the motion plan. By default this is set to 2.6 m which is an appropriate value for outdoor usage. When you use the `MoveOnMap()` method from the **CONTROL** tab, the default is overwritten to 0.5 m for testing.
   - `linear_m_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Linear velocity this machine should target when moving.
   - `angular_degs_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Angular velocity this machine should target when turning.
 - `obstacles` [Optional\[Iterable\[Geometry\]\]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry): Obstacles, specified in the SLAM frame coordinate system, to be considered when planning the motion of the component.
@@ -439,7 +430,7 @@ execution_id = await motion.move_on_map(component_name=my_base_resource_name,
     - `ObstacleDetectors` [([]ObstacleDetectorName)](https://pkg.go.dev/go.viam.com/rdk/services/motion#ObstacleDetectorName): The names of each [vision service](/ml/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.
     - `PositionPollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the position of the machine.
     - `ObstaclePollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the vision service for new obstacles.
-    - `PlanDeviationM` [(float64)](https://pkg.go.dev/builtin#float64): The distance in meters that the machine can deviate from the motion plan. By default this is set to 2.6 m which is an appropriate value for outdoor usage. When you use the the **Control** tab, the underlying calls to `MoveOnMap()` use 0.5 m instead.
+    - `PlanDeviationM` [(float64)](https://pkg.go.dev/builtin#float64): The distance in meters that the machine can deviate from the motion plan. By default this is set to 2.6 m which is an appropriate value for outdoor usage. When you use the the **CONTROL** tab, the underlying calls to `MoveOnMap()` use 0.5 m instead.
     - `LinearMPerSec` [(float64)](https://pkg.go.dev/builtin#float64): Linear velocity this machine should target when moving.
     - `AngularDegsPerSec` [(float64)](https://pkg.go.dev/builtin#float64): Angular velocity this machine should target when turning.
   - `Obstacles` [(\[\]spatialmath.Geometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry): Obstacles, specified in the SLAM frame coordinate system, to be considered when planning the motion of the component.
@@ -917,7 +908,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ## Test the motion service
 
-You can test motion on your machine from the [**Control** tab](/fleet/machines/#control).
+You can test motion on your machine from the [**CONTROL** tab](/fleet/machines/#control).
 
 ![Motion card on the Control tab](/mobility/motion/motion-rc-card.png)
 
@@ -925,7 +916,7 @@ Click on the **Move** button to issue `MoveOnMap()` requests.
 
 {{< alert title="Info" color="info" >}}
 
-The `plan_deviation_m` for `MoveOnMap()` on calls issues from the **Control** tab is 0.5 m.
+The `plan_deviation_m` for `MoveOnMap()` on calls issues from the **CONTROL** tab is 0.5 m.
 
 {{< /alert >}}
 

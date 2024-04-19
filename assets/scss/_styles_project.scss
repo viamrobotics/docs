@@ -1007,6 +1007,14 @@ img.frame {
   margin-top: 1rem;
 }
 
+// This ensures the gray sidebar covers the area where the sticky buttons are rendered.
+@media (min-width: 768px) {
+  .td-sidebar {
+    padding-bottom: 76px;
+    margin-bottom: -76px;
+  }
+}
+
 /* END Feedback container */
 
 .glossary-anchor {
@@ -1324,7 +1332,7 @@ ul.sectionlist > li:hover {
 #tutorial-menu {
   display: flex;
   flex-direction: column;
-  max-width: 600px;
+  max-width: 800px;
 }
 
 #tutorial-filters, #tutorial-filter-items {
@@ -1351,6 +1359,25 @@ ul.sectionlist > li:hover {
 
 .ais-Hits-item {
   display: flex;
+}
+
+.ais-Hits-item > .blogpost .title:after {
+  content: "Blogpost";
+  background-color: #ffd400;
+}
+
+.ais-Hits-item .title:after {
+  content: "Tutorial";
+  padding: 0.1rem 0.2rem;
+  margin-left: 0.5rem;
+  background-color: #00ef83;
+  font-size: 0.833rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.ais-Hits-item .hover-card-video {
+  border: none;
 }
 
 #hits .ais-Hits-list {

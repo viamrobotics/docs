@@ -12,6 +12,6 @@ Your microcontroller should have the following resources available to work with 
 - 2 Cores + 384kB SRAM + 4MB Flash
 
 {{< alert title="Tip" color="tip" >}}
-The main difference between the WROOM and WROVER is that the WROVER has additional RAM.
-If you would like to send large messages to your device or use the Viam app control page on the device, we recommend using the WROVER.
+The main difference between the WROOM and WROVER is that the WROVER has additional RAM with the SPIRAM chip.
+If you would like to allow more than one concurrent connection to your device we recommend using the WROVER.
 {{< /alert >}}

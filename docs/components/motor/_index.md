@@ -70,7 +70,7 @@ If you are using the micro-RDK, navigate to [Micro-RDK Motor](/build/micro-rdk/m
 
 ## Control your motor with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
@@ -754,6 +754,5 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 {{< cards >}}
 {{% card link="/tutorials/get-started/confetti-bot/" %}}
 {{% card link="/tutorials/get-started/lazy-susan/" %}}
-{{% card link="/tutorials/control/yahboom-rover" %}}
-{{% card link="/tutorials/configure/scuttlebot" %}}
+{{% card link="/tutorials/configure/configure-rover" %}}
 {{< /cards >}}

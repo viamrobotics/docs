@@ -34,9 +34,21 @@ You must run `viam-server` with `sudo` to monitor machine performance metrics.
 To obtain performance metrics about your machine, use the [`viam-telegraf-sensor`](https://app.viam.com/module/viam/viam-telegraf-sensor) module from the [Viam registry](/registry/).
 The module provides a [sensor](/components/sensor/) that allows you to obtain readings containing your machine's performance metrics.
 
-1. Go to your machine's **Config** page and click **Create component**.
+1. Go to your machine's **CONFIGURE** page. Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 2. Then select the `viam:viam-sensor:telegrafsensor` model from the [`viam-telegraf-sensor` module](https://app.viam.com/module/viam/viam-telegraf-sensor).
 3. Click **Add module**, then enter a name for your sensor, for example `my-telegrafsensor`, and click **Create**.
+4. To enable or disable specific metrics, add them to the attributes configuration.
+   For example:
+
+   ```json
+   {
+     "disable_kernel": true
+   }
+   ```
+
+   See [the `telegrafsensor` module documentation](https://github.com/viamrobotics/viam-telegraf-sensor?tab=readme-ov-file#attributes) for the full list of attributes available.
+
+5. Save the configuration.
 
 For more information, see [add a module from the Viam Registry](https://docs.viam.com/registry/configure/#add-a-modular-resource-from-the-viam-registry).
 
@@ -44,7 +56,7 @@ In the next step you will configure the data management service to capture and s
 
 ### Test sensor data
 
-After you configure your sensor, navigate to the [Control tab](/fleet/machines/#control) and select the **Sensors** dropdown panel.
+After you configure your sensor, navigate to the [**CONTROL** tab](/fleet/machines/#control) and select the **Sensors** dropdown panel.
 To access detailed readings from your sensor, click on the **Get Readings** button.
 
 {{<gif webm_src="/data/monitor.webm" mp4_src="/data/monitor.mp4" alt="sensor control tab">}}
@@ -53,17 +65,17 @@ To access detailed readings from your sensor, click on the **Get Readings** butt
 
 To capture the data from your configured sensor, you need to add the [data management service](https://docs.viam.com/data/) and configure it to capture and sync the sensor data:
 
-1. On your machine's **Config** page, go to the **Services** subtab and click **Create service**.
+1. On your machine's **CONFIGURE** page, go to the **Services** subtab and click **Create service**.
 2. Select the **data management** service and give it a name.
    For example, `data_manager`.
 3. Click **Create**.
-4. Go to the **Components** subtab and find your `telegrafsensor`'s configuration card.
-   In the **Data capture configuration** section of the sensor's config, click **Add method**, select the `Readings` **Type** and set the **Frequency** to 0.2Hz.
-5. Click **Save config**.
+4. Find your `telegrafsensor`'s configuration card.
+   In the **Data capture** section of the sensor's config, click **Add method**, select the `Readings` **Method** type and set the **Frequency** to 0.2Hz.
+5. Click **Save**.
 
 ### View data
 
-View your sensor data on the [**Data** tab](https://app.viam.com/data/view?view=sensors).
+View your sensor data on the [**DATA** tab](https://app.viam.com/data/view?view=sensors).
 
 ![View of sensor data](/data/sensor-data.png)
 

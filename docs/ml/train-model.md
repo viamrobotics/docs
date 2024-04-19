@@ -28,7 +28,7 @@ Then click on the dataset you want to train a model from and click on the **Trai
 
 On the **Train a model** menu:
 
-1. Enter a name for your new model.
+1. Enter a name or use the suggested name for your new model.
 1. Select a **Model Type** and one or more labels to train on:
    - **Single Label Classification**: The resulting model predicts one of the selected labels or `UNKNOWN` per image.
      If you are only using one label, ensure that the dataset you are training on also contains unlabeled images.
@@ -63,7 +63,7 @@ The previous model remains unchanged when you are training a new version of a mo
 If you are training a new model, you need to again go to your dataset's page and click on the **Train Model** button.
 {{< /alert >}}
 
-If you do not want Viam to automatically deploy the `latest` version of the model, you can change `packages` configuration in the [Raw JSON machine configuration](/build/configure/#the-config-tab).
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change `packages` configuration in the [JSON machine configuration](/build/configure/#the-configure-tab).
 
 You can get the version number from a specific model version by navigating to the [models page](https://app.viam.com/data/models) finding the model's row, clicking on the right-side menu marked with **_..._** and selecting **Copy package JSON**. For example: `2024-02-28T13-36-51`.
 The model package config looks like this:

@@ -805,7 +805,7 @@ Whether you've downloaded the `colorfilter` module, or written your own color fi
 
 1. Navigate to the **Config** tab of your machine's page in the [Viam app](https://app.viam.com/robots).
 1. Select the **Modules** subtab and scroll to the **Add local module** section.
-1. Enter a name for your local module, enter the [module's executable path](/registry/create/#compile-or-package-your-module), then click **Add module**.
+1. Enter a name or use the suggested name for your local module, enter the [module's executable path](/registry/create/#compile-or-package-your-module), then click **Add module**.
    - The name must use only lowercase characters.
 1. Then, click **Save config**.
 
@@ -943,7 +943,7 @@ Your machine's configuration page now includes a panel for your camera.
       {{<imgproc src="/tutorials/pet-photographer/add-colorfilter-module-create.png" resize="400x" declaredimensions=true alt="The add a component model showing the create a module step for a local color filter module">}}
 
 1. Click **Create** to create the modular resource component.
-1. In the resulting module configuration pane, copy the following JSON configuration into the **Attributes** section:
+1. In the resulting module configuration pane, copy the following JSON configuration into the attributes field:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {

@@ -1003,7 +1003,7 @@ int main(int argc, char** argv) {
 ### Configure logging
 
 If desired, you can configure your module to output log messages to the [Viam app](https://app.viam.com/).
-Log messages sent to the Viam app appear under the [**Logs** tab](/fleet/machines/#logs) for your machine in an easily-parsable and searchable manner.
+Log messages sent to the Viam app appear under the [**LOGS** tab](/fleet/machines/#logs) for your machine in an easily-parsable and searchable manner.
 
 Log messages generated when your machine is offline are queued, and sent together when your machine connects to the internet once more.
 
@@ -1124,12 +1124,12 @@ _Add instructions here for any requirements._
 > [!NOTE]
 > Before configuring your <INSERT API NAME>, you must [create a machine](https://docs.viam.com/manage/fleet/machines/#add-a-new-machine).
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com/).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com/).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `<INSERT API NAME>` type, then select the `<INSERT MODEL>` model.
-Click **Add module**, then enter a name for your <INSERT API NAME> and click **Create**.
+Click **Add module**, then enter a name or use the suggested name for your <INSERT API NAME> and click **Create**.
 
-On the new component panel, copy and paste the following attribute template into your <INSERT API NAME>’s **Attributes** box:
+On the new component panel, copy and paste the following attribute template into your <INSERT API NAME>’s attributes field:
 
 ```json
 {
@@ -1186,9 +1186,9 @@ This module implements the [`rdk:component:base` API](https://docs.viam.com/comp
 > [!NOTE]
 > Before configuring your base, you must [create a machine](https://docs.viam.com/fleet/machines/#add-a-new-machine).
 
-Navigate to the **Config** tab of your machine’s page in [the Viam app](https://app.viam.com/). Click on the **Components** subtab and click **Create component**. Select the `base` type, then search for and select the `agilex-limo` model. Click **Add module**, then enter a name for your base and click **Create**.
+Navigate to the **CONFIGURE** tab of your machine’s page in [the Viam app](https://app.viam.com/). Click the **+** icon next to your machine part in the left-hand menu and select **Component**. Select the `base` type, then search for and select the `agilex-limo` model. Click **Add module**, then enter a name or use the suggested name for your base and click **Create**.
 
-On the new component panel, copy and paste the following attribute template into your base’s **Attributes** box:
+On the new component panel, copy and paste the following attribute template into your base’s attributes field:
 
 ```json
 {
@@ -1226,7 +1226,7 @@ The following attributes are available for `viam:base:agilex-limo` bases:
 
 ## Next steps
 
-- To test your base, go to the [**Control** tab](https://docs.viam.com/fleet/machines/#control).
+- To test your base, go to the [**CONTROL** tab](https://docs.viam.com/fleet/machines/#control).
 - To write code against your base, use one of the [available SDKs](https://docs.viam.com/program/).
 - To view examples using a base component, explore [these tutorials](https://docs.viam.com/tutorials/).
 
@@ -1256,99 +1256,12 @@ This executable file:
 Depending on the language you are using to code your module, you may have options for how you create your executable file:
 
 {{% tabs %}}
-{{% tab name="Python: venv (recommended)" %}}
+{{% tab name="Python" %}}
 
-Create a `run.sh` shell script that creates a new Python virtual environment, ensures that the package dependencies your module requires are installed, and runs your module.
-This is recommended approach for modules written in Python:
+The recommended approach for Python is to use [`PyInstaller`](https://pypi.org/project/pyinstaller/) to compile your module into a packaged executable: a standalone file containing your program, the Python interpreter, and all of its dependencies.
+When packaged in this fashion, you can run the resulting executable on your desired target platform or platforms without needing to install additional software or manage dependencies manually.
 
-1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
-   For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) is installed:
-
-   ```sh { class="command-line" data-prompt="$"}
-   viam-sdk
-   ```
-
-   Add additional dependencies for your module as needed.
-   See the [pip `requirements.txt` file documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more information.
-
-1. Add a shell script that creates a new virtual environment, installs the dependencies listed in `requirements.txt`, and runs the module entry point file `main.py`:
-
-   ```sh { class="command-line" data-prompt="$"}
-   #!/bin/sh
-   cd `dirname $0`
-
-   # Create a virtual environment to run our code
-   VENV_NAME="venv"
-   PYTHON="$VENV_NAME/bin/python"
-
-   python3 -m venv $VENV_NAME
-   $PYTHON -m pip install -r requirements.txt -U # remove -U if viam-sdk should not be upgraded whenever possible
-
-   # Be sure to use `exec` so that termination signals reach the python process,
-   # or handle forwarding termination signals manually
-   exec $PYTHON <your-src-dir-if-inside>/main.py $@
-   ```
-
-1. Make your shell script executable by running the following command in your terminal:
-
-   ```sh { class="command-line" data-prompt="$"}
-   sudo chmod +x <your-file-path-to>/run.sh
-   ```
-
-Using a virtual environment together with a `requirements.txt` file and a `run.sh` file that references it ensures that your module has access to any packages it requires during runtime.
-If you intend to share your module with other users, or to deploy it to a fleet of machines, this approach handles dependency resolution for each deployment automatically, meaning that there is no need to explicitly determine and install the Python packages your module requires to run on each machine that installs your module.
-See [prepare a Python virtual environment](/build/program/python-venv/) for more information.
-
-{{% /tab %}}
-{{% tab name="Python: nuitka" %}}
-
-Use the [`nutika` Python compiler](https://pypi.org/project/Nuitka/) to compile your module into a single executable file:
-
-1. In order to use Nutika, you must install a [supported C compiler](https://github.com/Nuitka/Nuitka#c-compiler) on your machine.
-
-1. Then, [create a Python virtual environment](/build/program/python-venv/) in your module's directory to ensure your module has access to any required libraries.
-   Be sure you are within your Python virtual environment for the rest of these steps: your terminal prompt should include the name of your virtual environment in parenthesis.
-
-1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
-   For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) and Nuitka (`nuitka`) are installed:
-
-   ```sh { class="command-line" data-prompt="$"}
-   viam-sdk
-   nuitka
-   ```
-
-   Add additional dependencies for your module as needed.
-   See the [pip `requirements.txt` file documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more information.
-
-1. Install the dependencies listed in your `requirements.txt` file within your Python virtual environment using the following command:
-
-   ```sh { class="command-line" data-prompt="$"}
-   python -m pip install -r requirements.txt -U
-   ```
-
-1. Then, compile your module using Nutika with the following command:
-
-   ```sh { class="command-line" data-prompt="$"}
-   python -m nuitka --onefile src/main.py
-   ```
-
-   If you need to include any additional data files to support your module, specify them using the `--include-data-files` flag:
-
-   ```sh { class="command-line" data-prompt="$"}
-   python -m nuitka --onefile --include-data-files=src/arm/my_arm_kinematics.json src/main.py
-   ```
-
-Compiling your Python module in this fashion ensures that your module has access to any packages it requires during runtime.
-If you intend to share your module with other users, or to deploy it to a fleet of machines, this approach "bundles" your module code together with its required dependencies, making your module highly-portable across like architectures.
-
-However, used in this manner, Nutika does not support relative imports (imports starting with `.`).
-In addition, Nutika does not support cross-compiling: you must compile your module on the target architecture you wish to support.
-For example, you cannot run a module on a Linux `arm64` system if you compiled it using Nutika on a Linux `amd64` system.
-
-{{% /tab %}}
-{{% tab name="Python: pyinstaller" %}}
-
-Use the [`PyInstaller` package](https://pypi.org/project/pyinstaller/) to compile your module into a single executable file:
+To create a packaged executable:
 
 1. First, [create a Python virtual environment](/build/program/python-venv/) in your module's directory to ensure your module has access to any required libraries.
    Be sure you are within your Python virtual environment for the rest of these steps: your terminal prompt should include the name of your virtual environment in parenthesis.
@@ -1371,7 +1284,7 @@ Use the [`PyInstaller` package](https://pypi.org/project/pyinstaller/) to compil
    python -m pip install -r requirements.txt -U
    ```
 
-1. Then compile your module, adding the Google API python client as a hidden import:
+1. Then compile your module, adding the Google API Python client as a hidden import:
 
    ```sh { class="command-line" data-prompt="$"}
    python -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
@@ -1383,12 +1296,40 @@ Use the [`PyInstaller` package](https://pypi.org/project/pyinstaller/) to compil
    python -m PyInstaller --onefile --hidden-import="googleapiclient" --add-data src/arm/my_arm_kinematics.json:src/arm/ src/main.py
    ```
 
-Compiling your Python module in this fashion ensures that your module has access to any packages it requires during runtime.
-If you intend to share your module with other users, or to deploy it to a fleet of machines, this approach "bundles" your module code together with its required dependencies, making your module highly-portable across like architectures.
+   By default, the output directory for the packaged executable is <file>dist</file>, and the name of the executable is derived from the name of the input script (in this case, main).
 
-However, used in this manner, PyInstaller does not support relative imports (imports starting with `.`).
+We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86 and Arm Linux distributions, and MacOS.
+Follow the instructions to [Update an existing module using a GitHub action](/registry/upload/#update-an-existing-module-using-a-github-action) to add the build configuration to your machine.
+
+With this approach, you can make a build script like the following to
+build your module, and configure the resulting executable (<file>dist/main</file>) as your module `"entrypoint"`:
+
+```sh { class="command-line"}
+#!/bin/bash
+set -e
+
+sudo apt-get install -y python3-venv
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main
+```
+
+This script automates the process of setting up a Python virtual environment on a Linux arm64 machine, installing dependencies, packaging the Python module into a standalone executable using PyInstaller, and then compressing the resulting executable into a tarball.
+For more examples of build scripts see [Update an existing module using a GitHub action](/registry/upload/#update-an-existing-module-using-a-github-action).
+
+{{% alert title="Note" color="note" %}}
+
+PyInstaller does not support relative imports in entrypoints (imports starting with `.`).
+If you get `"ImportError: attempted relative import with no known parent package"`, set up a stub entrypoint as described on [GitHub](https://github.com/pyinstaller/pyinstaller/issues/2560).
+
 In addition, PyInstaller does not support cross-compiling: you must compile your module on the target architecture you wish to support.
 For example, you cannot run a module on a Linux `arm64` system if you compiled it using PyInstaller on a Linux `amd64` system.
+Viam makes this easy to manage by providing a build system for modules.
+Follow [these instructions](/fleet/cli/#using-the-build-subcommand) to automatically build for each system your module can support using Viam's [CLI](/fleet/cli/).
+
+{{% /alert %}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -1508,7 +1449,7 @@ Browse additional example modules by language:
 | Module | Repository | Description |
 | ------ | ---------- | ----------- |
 | [monocular-visual-odometry](https://app.viam.com/module/viam/monocular-visual-odometry) | [viamrobotics/viam-visual-odometry](https://github.com/viamrobotics/viam-visual-odometry) | Extends the built-in [movement sensor API](https://docs.viam.com/components/movement-sensor/#api) to support using monocular visual odometry to enable any calibrated camera to function as a movement sensor. |
-| [oak-d](https://app.viam.com/module/viam/oak-d) | [viamrobotics/viam-camera-oak-d](https://github.com/viamrobotics/viam-camera-oak-d) | Extends the built-in [camera API](https://docs.viam.com/components/camera/#api) to support the OAK-D camera. |
+| [oak](https://app.viam.com/module/viam/oak) | [viamrobotics/viam-camera-oak](https://github.com/viamrobotics/viam-camera-oak) | Extends the built-in [camera API](https://docs.viam.com/components/camera/#api) to support OAK cameras. |
 | [odrive](https://app.viam.com/module/viam/odrive) | [viamrobotics/odrive](https://github.com/viamrobotics/odrive) | Extends the built-in [motor API](https://docs.viam.com/components/motor/#api) to support the ODrive motor. This module provides two models, one for a `canbus`-connected ODrive motor, and one for a `serial`-connected ODrive motor. |
 | [yahboom](https://app.viam.com/module/rand/yahboom) | [viamlabs/yahboom](https://github.com/viam-labs/yahboom) | Extends the built-in [arm API](https://docs.viam.com/components/arm/#api) and [gripper API](https://docs.viam.com/components/gripper/#api) to support the Yahboom Dofbot robotic arm. |
 

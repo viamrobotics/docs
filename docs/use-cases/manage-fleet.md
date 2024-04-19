@@ -26,7 +26,7 @@ Go to the [Viam app](https://app.viam.com) and sign up with Google, GitHub, Appl
 
 {{< /tablestep >}}
 {{< tablestep >}}
-{{<imgproc src="/fleet/locations.png" class="fill alignleft" resize="600x" style="max-width: 400px" declaredimensions=true alt="Two locations within an organization">}}
+{{<imgproc src="/fleet/fleet.svg" class="fill alignleft" resize="600x" style="max-width: 400px" declaredimensions=true alt="Two locations within an organization">}}
 **2. Create organizations and locations**
 
 Use [organizations](/fleet/organizations/), and [locations](/fleet/locations/) within them, to organize your machines into groups and manage user access.
@@ -56,9 +56,9 @@ You can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} to stre
 
 Using the [Viam app](https://app.viam.com), you can:
 
-- Monitor the status of each machine from its [**Logs** tab](/fleet/machines/#logs).
+- Monitor the status of each machine from its [**LOGS** tab](/fleet/machines/#logs).
 - View any data captured by your fleet from the [**Data** tab](/data/).
-- Operate machines remotely from the [**Control** tab](/fleet/machines/#control).
+- Operate machines remotely from the [**CONTROL** tab](/fleet/machines/#control).
 
 Use [modules](/registry/) to deploy code to your fleet and manage versioning.
 

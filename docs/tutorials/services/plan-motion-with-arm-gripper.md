@@ -49,7 +49,7 @@ For a helpful recap of the code we previously added, look at [the full code samp
 
 ## Configure a robot
 
-The [robot configuration from the prior tutorial](../accessing-and-moving-robot-arm/#configure-a-robot) should be used for this tutorial.
+The [robot configuration from the prior tutorial](../accessing-and-moving-robot-arm/#configure-a-machine) should be used for this tutorial.
 We will revisit that robot configuration and add new components during specific sections below.
 
 The motion service is one of the "built-in" services, which means that no initial configuration is required to start planning and executing complex motion.

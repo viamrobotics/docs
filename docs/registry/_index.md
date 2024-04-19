@@ -113,12 +113,12 @@ Documentation for each modular resource is available on its GitHub page, which i
 
 ## Use modules
 
-To use a modular resource from the registry, add it from your machine's **Config** tab in the Viam app, using the **Create component** button.
+To use a modular resource from the registry, add it from your machine's **CONFIGURE** tab in the Viam app, using the **Create component** button.
 
 After adding a module to your machine, you can choose to [configure](/registry/configure/) it for automatic version updates from the Viam registry, or update your module manually.
 By default, newly added modules will remain at the version they were when you installed them, and will not update automatically.
 
-Once you have added and configured the module you would like to use in the Viam app, you can test your added resource using the [**Control** tab](/fleet/machines/#control) and program it using [standardized APIs](/build/program/apis/).
+Once you have added and configured the module you would like to use in the Viam app, you can test your added resource using the [**CONTROL** tab](/fleet/machines/#control) and program it using [standardized APIs](/build/program/apis/).
 
 `viam-server` manages the [dependencies](/internals/rdk/#dependency-management), [start-up](/internals/rdk/#start-up), [reconfiguration](/internals/rdk/#reconfiguration), [data management](/data/capture/#configure-data-capture-for-individual-components), and [shutdown](/internals/rdk/#shutdown) behavior of your modular resource.
 
@@ -144,7 +144,7 @@ To create a new module:
 1. [Upload the module to the Viam registry](/registry/upload/) to make it available for deployment to machines or add it as a [local module](/registry/configure/#local-modules).
    You can upload _private_ modules for your {{< glossary_tooltip term_id="organization" text="organization" >}} or _public_ modules.
 1. Once you have uploaded your module to the registry, [deploy and configure the module](/registry/configure/) from the Viam app.
-   Then, you can test your added resource using the [**Control** tab](/fleet/machines/#control) and [program](/build/program/) it with Viam's Go or Python SDKs.
+   Then, you can test your added resource using the [**CONTROL** tab](/fleet/machines/#control) and [program](/build/program/) it with Viam's Go or Python SDKs.
 
 ## Naming your model: namespace:repo-name:name
 
