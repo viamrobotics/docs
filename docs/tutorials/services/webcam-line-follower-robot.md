@@ -57,12 +57,9 @@ To build your own line follower robot, you need the following hardware:
 | **Colored tape**: Any color is suitable as long as the color is suitably different from the floor color. For our tutorial, we used green electrical tape to stand out against our grey carpet. | $4 |
 | **Floor space**: Non-shiny floors tend to work best. | - |
 
-### Install `viam-server` and connect to your robot
+### Install `viam-server` and connect to your machine
 
-Go to the [Viam app](https://app.viam.com) and create a new machine called `follower`.
-
-Go to the **Setup** tab of your new machine's page and follow the steps [to install `viam-server` on your computer](/get-started/installation/#install-viam-server).
-Follow the instructions until the Viam app shows that your robot has successfully connected.
+{{% snippet "setup.md" %}}
 
 ## Configure your components
 

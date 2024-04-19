@@ -60,11 +60,10 @@ Note that your machine must be connected to the internet for data sync and email
 
 Get your hardware ready and connected to the Viam platform:
 
-1. Plug your webcam into your computer.
+Plug your webcam into your computer.
+Then, make sure your computer (whether it's a personal computer or an SBC) is connected to adequate power, and turn it on.
 
-2. Make sure your computer (whether it's a personal computer or an SBC) is connected to adequate power, and turn it on.
-
-3. If you haven't already, [add a new machine](/fleet/machines/#add-a-new-machine) in the [Viam app](https://app.viam.com) and follow the setup instructions to install `viam-server` on the computer you're using for this project and connect to the Viam app.
+{{% snippet "setup.md" %}}
 
 ## Configure the camera and computer vision
 
