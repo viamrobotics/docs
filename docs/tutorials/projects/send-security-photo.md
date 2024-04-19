@@ -216,7 +216,8 @@ import yagmail
 
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
-from viam.services.vision import VisionClient, VisModelConfig, VisModelType, Detection
+from viam.services.vision import
+    VisionClient, VisModelConfig, VisModelType, Detection
 
 # Replace "<API-KEY>" (including brackets) with your machine's api key
 api_key='<API-KEY>',
