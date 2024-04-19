@@ -131,8 +131,8 @@ To finish the table construction, attach the supporting legs and mount the arm t
 ## Configure the robot
 
 Next, configure your newly-built robot.
-Go to [the Viam app](https://app.viam.com) and create a new machine to represent your robot.
-Follow the instructions on the **Setup** tab to install `viam-server` on your Raspberry Pi and connect to your machine.
+
+{{% snippet "setup.md" %}}
 
 Machines are organized into {{< glossary_tooltip term_id="part" text="parts" >}}, where each part represents a computer (a [single-board computer](/get-started/installation/), desktop, laptop, or other computer) running `viam-server`, the hardware {{< glossary_tooltip term_id="component" text="components" >}} attached to it, and any {{< glossary_tooltip term_id="service" text="services" >}} or other resources running on it.
 

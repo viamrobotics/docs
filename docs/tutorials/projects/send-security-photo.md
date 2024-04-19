@@ -52,9 +52,7 @@ You will use the following software in this tutorial:
 
 ### Install `viam-server` and connect to your robot
 
-Go to the [Viam app](https://app.viam.com) and create a new machine.
-
-Go to the **Setup** tab of your new machine's page and follow the steps [to install `viam-server` on your computer](/get-started/installation/).
+{{% snippet "setup.md" %}}
 
 ### Configure the camera component
 

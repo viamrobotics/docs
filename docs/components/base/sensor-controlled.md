@@ -84,7 +84,11 @@ The following attributes are available for `sensor-controlled` bases:
 
 ### Spin
 
-Spin implements a basic form of feedback control that, for a spin of less than 360 degrees, monitors how far the base has spun and stops once it has reached the goal position.
+When the `control_parameters` attribute is set, `Spin` implements a form of feedback control that polls the provided movement sensor and corrects any error between the desired angular velocity and the actual angular velocity using a PID control loop. `Spin` also monitors the angular distance traveled and stops the base when the goal angle is reached.
+
+### MoveStraight
+
+When `control_parameters` is set, `MoveStraight` calculates the required velocity to reach the desired velocity and distance. It then polls the provided velocity movement sensor and corrects any error between this calculated velocity and the actual velocity using a PID control loop. `MoveStraight` also monitors the position and stops the base when the goal distance is reached. If a compass heading movement sensor is provided, `MoveStraight` will attempt to keep the heading of the base fixed in the original direction it was faced at the beginning of the `MoveStraight` call.
 
 ## Test the base
 
@@ -94,3 +98,12 @@ The following base control API methods are available on a `sensor-controlled` ba
 
 - [SetVelocity()](/components/base/#setvelocity): available if base is configured to receive angular and linear velocity feedback.
 - [Spin()](/components/base/#spin): available if base is configured to receive orientation feedback.
+- [MoveStraight()](/components/base/#movestraight): available if base is configured to receive position feedback.
+
+For example, a [Viam Rover](https://docs.viam.com/get-started/try-viam/rover-resources/) using `sensor-controlled` base following both an [angular](/components/base/#spin) and [linear](/components/base/#movestraight) velocity command:
+
+{{<gif webm_src="/components/encoded-motor/base_moving.webm" mp4_src="/components/encoded-motor/base-moving.mp4" alt="A Viam rover turning in a half circle" max-width="400px" >}}
+
+The position, orientation, and linear and angular velocity of the rover changing as it moves, as measured by a [movement sensor](/components/movement-sensor/):
+
+{{<gif webm_src="/components/encoded-motor/controls_change.webm" mp4_src="/components/encoded-motor/controls_change.mp4" alt="The control tab of a movement sensor on a base with encoded motors as it turns">}}

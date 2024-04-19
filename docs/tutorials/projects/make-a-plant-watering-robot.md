@@ -261,7 +261,7 @@ Test your sensor by putting it in air, water, and different soils to see how the
 
 ### Configure the components of your robot in the Viam app
 
-Follow [this guide](/get-started/installation/#install-viam-server) to install `viam-server` on your Pi, create a new machine, and connect to it on [the Viam app](https://app.viam.com).
+{{% snippet "setup.md" %}}
 
 Then, navigate to the the **CONFIGURE** tab of your new machine's page in the app.
 

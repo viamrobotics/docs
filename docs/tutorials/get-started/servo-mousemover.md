@@ -71,8 +71,9 @@ This project is a good place to begin if you're new to robotics and would like t
 ## Install Viam software
 
 First, prepare your Raspberry Pi according to our [setup guide](/get-started/installation/prepare/rpi-setup/).
-Follow the instructions to install the right OS and connect with SSH.
-Then add a new machine in the [the Viam app](https://app.viam.com) and follow the setup instructions to install `viam-server` on your Raspberry Pi and connect to the Viam app.
+Then connect to your Raspberry Pi with SSH.
+
+{{% snippet "setup.md" %}}
 
 Next, run this command in your Raspberry Pi terminal to install the pip package manager.
 Select "yes" when asked if you want to continue.

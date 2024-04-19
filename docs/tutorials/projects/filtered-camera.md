@@ -36,10 +36,7 @@ The `filtered-camera` module is available from the [Viam registry](https://app.v
 
 ## Prerequisites
 
-Before following this tutorial, you should:
-
-1. [Create a new machine](/fleet/machines/#add-a-new-machine) in the Viam app.
-1. [Install `viam-server`](/get-started/installation/) on your new machine.
+{{% snippet "setup.md" %}}
 
 ## Add a camera and configure data capture
 
