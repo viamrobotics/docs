@@ -32,14 +32,13 @@ This will keep your computer from falling asleep.
 
 This project is a good place to begin if you're new to robotics and would like to learn how to use a [servo component](/components/servo/) with the Viam app and Viam's [Python SDK](https://python.viam.dev/).
 
-<div class="row">
-  <div style="border:1px solid gray;">
+<div style="display:flex;" class="aligncenter">
+<div style="border:1px solid gray;">
 {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/moving-2.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/moving-2.mp4" alt="Video of a mouse running erratically on the screen in a sweeping motion in front of the Viam app Control page with an overlaid video of a mouse on top of a cardboard box with a moving cardboard circle underneath it with red swirl lines on the circle." max-width="600px" class="alignleft">}}
 </div>
-  <div class="column" style="width: 10px"></div>
-  <div style="width: 250px;">
-  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/moving-mouse.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/moving-mouse.webm" alt="The servo mouse mover in action." class="alignright">}}
-  </div>
+<div style="width: 250px;">
+{{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/moving-mouse.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/moving-mouse.webm" alt="The servo mouse mover in action." class="alignright">}}
+</div>
 </div>
 
 ## Requirements
@@ -98,7 +97,7 @@ pip install viam-sdk
 
 ## Test the SDK with your robot
 
-On the [Viam app](https://app.viam.com), select the **CONNECT** tab's **Code sample** page, then select **Python** as your language.
+On the [Viam app](https://app.viam.com), select the **CONNECT** tab, then select **Python** as your language.
 
 ![A screenshot of the word Language with four boxes below it with Python, Golang, Typescript (Web), and Remotes in each one. Python has a black background with white text and a checkmark, the other three have white backgrounds with black text.](/tutorials/single-component-tutorials-servo-mousemover/choose-python.png)
 
@@ -128,7 +127,7 @@ Create a file using nano with the .py which is the python file extension, (name 
 nano anyname.py
 ```
 
-Paste the code you got from the **Code sample** page in the Viam app. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
+Paste the code you got from the **CONNECT** tab in the Viam app. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
 
 ![Raspberry Pi terminal showing the connect code from the previous example.](/tutorials/single-component-tutorials-servo-mousemover/sample-code.png)
 
