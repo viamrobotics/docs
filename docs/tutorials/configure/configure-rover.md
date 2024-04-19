@@ -35,9 +35,9 @@ If you are using a Viam Rover, use the [Viam Rover tutorial fragment](/get-start
 
 ## Start configuring your robot
 
-1. Go to [the Viam app](https://app.viam.com).
-1. Add a _{{< glossary_tooltip term_id="machine" text="machine" >}}_ and follow the setup instructions until the machine successfully connects to the Viam app.
-1. Navigate to the machine's **CONFIGURE** tab.
+{{% snippet "setup.md" %}}
+
+Once connected, navigate to the machine's **CONFIGURE** tab.
 
 ![A SCUTTLE robot on a carpeted floor.](/tutorials/scuttlebot/scuttle-on-floor.png)
 
