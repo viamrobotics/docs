@@ -11,7 +11,7 @@ languages: ["python"]
 viamresources: ["camera", "mlmodel", "vision"]
 level: "Intermediate"
 date: "2023-03-30"
-# updated: ""
+updated: "2024-04-19"
 cost: "0"
 no_list: true
 ---
@@ -81,20 +81,19 @@ If it doesn't, double-check that your config is saved correctly, and check the *
 
 ### Configure your services
 
+Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/ml/vision/) on your machine.
 This tutorial uses a pre-trained Machine Learning model from the Viam Registry called [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
 The model can detect a variety of things, including `Persons`.
 You can see a full list of what the model can detect in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
 If you want to train your own model instead, follow the instructions in [train a model](/ml/train-model/).
 
-Click the **Services** subtab.
-
 1. **Configure the ML model service**
 
-   Add an [mlmodel](/ml/) service:
+   Navigate to your machine's **CONFIGURE** tab.
 
-   Click **Create service** in the lower-left corner of the **Services** subtab.
-   Select type `mlmodel`, then select model `tflite_cpu`.
+   Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**.
+   Start typing `ML model` and select **ML model / TFLite CPU** from the builtin options.
 
    Enter `people` as the name, then click **Create**.
 
@@ -102,13 +101,15 @@ Click the **Services** subtab.
 
    ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
 
-   Select the **Deploy model on machine** for the **Deployment** field.
+   Select **Deploy model on machine** for the **Deployment** field.
    Then select the `viam-labs:EfficientDet-COCO` model from the **Models** dropdown.
 
-1. **Configure an mlmodel detector**
+1. **Configure an mlmodel detector** [vision service](/ml/vision/)
 
-   Add a [vision service](/ml/vision/) with the name `myPeopleDetector`, type `vision` and model `mlmodel`.
-   Click **Create service**.
+   Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**.
+   Start typing `ML model` and select **vision / ML model** from the builtin options.
+
+   Enter `myPeopleDetector` as the name, then click **Create**.
 
    In the new vision service panel, configure your service.
 
@@ -118,15 +119,15 @@ Click the **Services** subtab.
 
 ### Configure the detection camera
 
-To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
+To be able to test that the vision service is working, add a [transform camera](/components/camera/transform/) which will add bounding boxes and labels around the objects the service detects.
 
-Click on the **Components** subtab and click **Create component** in the lower-left corner.
-Create a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
-Name it `detectionCam` and click **Create**.
+Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**.
+Start typing "webcam" and select **camera / transform**.
+Give your transform camera the name `detectionCam` and click **Create**.
 
 ![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)
 
-In the new transform camera panel, replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will use, and defines a pipeline that adds the defined `myPeopleDetector`:
+In the new transform camera panel, click on **{}** to go to advanced mode and replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will use, and defines a pipeline that adds the defined `myPeopleDetector`:
 
 ```json
 {
@@ -142,6 +143,8 @@ In the new transform camera panel, replace the attributes JSON object with the f
   ]
 }
 ```
+
+It is good practice to also add your camera `cam` as a dependency in the **Depends on** section, to ensure the components are loaded in the correct order.
 
 Click **Save** in the top right corner of the screen.
 
