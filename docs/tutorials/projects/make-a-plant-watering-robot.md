@@ -272,7 +272,7 @@ First, add your Pi as a [board component](/components/board/):
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `board` type, then select the `pi` model.
-Enter a name for your camera and click **Create**.
+Enter a name for your board and click **Create**.
 This tutorial uses the name `local`.
 
 ![Creation of a pi board in the Viam app config builder.](/tutorials/plant-watering-pi/pi-board-config-builder.png)
@@ -351,8 +351,8 @@ Follow these instructions to start working on your Python control code:
 
 1. Navigate to your machine's page in [the Viam app](https://app.viam.com), and click on the **CONNECT** tab and the **Code sample** page.
 2. Select **Python** as the language.
-3. Follow the instructions shown to install the SDK.
-4. Click the copy icon to copy the generated code sample, which establishes a connection with your robot when run.
+3. Follow the instructions shown under step 1 on that page to install the SDK.
+4. Then, under step 2 on that page, click the copy icon to copy the generated code sample, which establishes a connection with your robot when run.
 
    {{% snippet "show-secret.md" %}}
 
@@ -405,16 +405,16 @@ while True:
 
         # Run the water pump
         # Set the duty cycle to .8, meaning that this pin will be in the
-        # high state, powering the motor, for 80% of the duration of the
+        # high state, powering the pump motor, for 80% of the duration of the
         # PWM interval period
-        await pwm_pin.set_pwm(duty=.8)
+        await pwm_pin.set_pwm(duty=0.8)
 
         # Wait for 15 seconds
         print('watering')
         time.sleep(15)
 
         # Stop the pump by setting the duty cycle to 0%
-        await pwm_pin.set_pwm(duty=.0)
+        await pwm_pin.set_pwm(duty=0.0)
 
         # Wait 60 seconds so that the water can soak into the soil a bit before
         # trying to water again
