@@ -99,7 +99,7 @@ If you want to train your own model instead, follow the instructions in [train a
 
    In the new ML Model service panel, configure your service.
 
-   ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
+   ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/send-security-photo/app-service-ml-before.png)
 
    Select **Deploy model on machine** for the **Deployment** field.
    Then select the `viam-labs:EfficientDet-COCO` model from the **Models** dropdown.
@@ -115,7 +115,7 @@ If you want to train your own model instead, follow the instructions in [train a
 
    Select `people` from the **ML Model** dropdown.
 
-   ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/tipsy/app-service-vision.png)
+   ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/send-security-photo/app-service-vision.png)
 
 ### Configure the detection camera
 
@@ -125,7 +125,7 @@ Click the **+** (Create) button next to your main part in the left-hand menu and
 Start typing "transform" and select **camera / transform**.
 Give your transform camera the name `detectionCam` and click **Create**.
 
-![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)
+![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/send-security-photo/app-detection-before.png)
 
 In the new transform camera panel, click on **{}** to go to advanced mode and replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will use, and defines a pipeline that adds the defined `myPeopleDetector`:
 
@@ -148,7 +148,7 @@ It is good practice to also add your camera `cam` as a dependency in the **Depen
 
 Click **Save** in the top right corner of the screen.
 
-![detectionCam component panel with type camera and model transform, Attributes section filled with source and pipeline information.](/tutorials/tipsy/app-detection-after.png)
+![detectionCam component panel with type camera and model transform, Attributes section filled with source and pipeline information.](/tutorials/send-security-photo/app-detection-after.png)
 
 ### Test the model
 
