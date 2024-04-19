@@ -11,7 +11,6 @@ aliases:
   - "/components/camera/dual-stream/"
   - "/components/camera/align-color-depth-extrinsics/"
   - "/components/camera/align-color-depth-homography/"
-  - "/components/camera/join-color-depth/"
 layout: "changelog"
 outputs:
   - rss
@@ -22,7 +21,7 @@ outputs:
 
 {{% changelog date="2024-04-19" color="removed" title="Removed and replaced camera models" %}}
 
-Viam has removed support for following builtin camera models: `single_stream`, `dual_stream`, `align_color_depth_extrinsics`, `align_color_depth_homography`, and `join_color_depth`.
+Viam has removed support for following builtin camera models: `single_stream`, `dual_stream`, `align_color_depth_extrinsics`, and `align_color_depth_homography`.
 
 <!-- Viam has replaced the following camera models with module model equivalents: -->
 
