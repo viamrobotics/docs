@@ -65,6 +65,12 @@ If you want to write a module to extend support to a new type of component or se
 Most module use cases, however, benefit from extending an existing API, as covered below.
 {{% /alert %}}
 
+### (Optional) Use a module template
+
+If you are using Golang, use the [Golang Module templates](https://github.com/viam-labs/module-templates-golang) which contain detailed instructions for creating your module.
+
+If you are using Python, you can use the [Viam module generator](https://github.com/viam-labs/generator-viam-module/tree/main) to generate the scaffolding for a module with one resource model.
+
 ## Define a new resource model
 
 ### Name your new resource model
@@ -82,10 +88,6 @@ Determine the model name you want to use based on these requirements, then proce
 If you do not intend to [upload your module](/registry/upload/) to the [Viam registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
 
 See [Naming your model](/registry/#naming-your-model-namespacerepo-namename) for more information.
-
-### (Optional) Generate your Python module scaffolding
-
-If you are writing in Python, you can use this [Viam module generator](https://github.com/viam-labs/generator-viam-module/tree/main) to generate the scaffolding for a module with one resource model.
 
 ### Write your new resource model definition
 
@@ -1097,7 +1099,6 @@ To provide usage instructions for any modular resources in your module, you shou
 {{% expand "Click to view template" %}}
 
 Strings of the form `<INSERT X>` indicate placeholders that you need to replace with your values.
-If you follow [the instructions to generate module scaffolding for a Python module](#optional-generate-your-python-module-scaffolding), the template file is generated for you with the environment variables filled in.
 
 {{< tabs >}}
 {{% tab name="Template" %}}
