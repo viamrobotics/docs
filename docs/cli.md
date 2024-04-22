@@ -921,6 +921,32 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 | `--org-id`      | the organization to create an API key for |`api-key` | true |
 | `--name`     |  the optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time   |`api-key` | false |
 
+### `packages`
+
+The `packages` command allows you to export packages from the Viam cloud.
+
+```sh {class="command-line" data-prompt="$"}
+viam packages export --org-id=<org-id> --name=<package-name> --version=latest --type=ml_model --destination=.
+```
+
+#### Command options
+
+<!-- prettier-ignore -->
+|        command option     |       description      | positional arguments
+| ----------- | ----------- | ----------- |
+| `export`      | download a package from the Viam cloud  | - |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| argument | description | required |
+| ----------- | ----------- | ----------- | ----------- |
+| `--org-id`      | the organization ID of the requested package | true |
+| `--name`     |  the name of the requested package   | true |
+| `--version`     |  the version of the requested package or `latest`  | true |
+| `--type`     |  the type of the requested package: `ml_model`   | true |
+| `--destination`     |  the output directory for downloaded package   | true |
+
 ### `machines` (alias `robots`)
 
 The `machines` command allows you to manage your machine fleet.
