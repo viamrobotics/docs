@@ -237,7 +237,7 @@ Now that you have verified that the detector and data sync are working, modify y
 
 ## Set up email notifications
 
-[Webhooks](/build/configure/webhooks) allow you to trigger actions by sending an HTML request when a certain event happens.
+[Webhooks](/build/configure/webhooks/) allow you to trigger actions by sending an HTML request when a certain event happens.
 In this case, you're going to set up a webhook to trigger a serverless function that sends you an email when an image of someone without a hard hat is uploaded to the cloud.
 
 Before you configure a webhook on your machine, you need to create a serverless function for the webhook to call.
