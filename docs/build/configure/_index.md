@@ -23,7 +23,7 @@ You can configure the following resources:
 - [Remote parts](/build/configure/#add-a-remote-part): Remotes are a way to connect two separate machines so one can access the resources of the other.
 - [Sub-parts](/build/configure/#add-a-remote-part): Remotes are a way to connect two separate machines so one can access the resources of the other.
 - [Fragments](/build/configure/#add-a-fragment): Fragments are a way of sharing and managing identical configuration files (or parts of config files) across multiple machines.
-- [Frames](#frame-system): Frames hold reference frame information for the relative position of components in space.
+- [Frames](#configure-the-frame-system): Frames hold reference frame information for the relative position of components in space.
 - [Webhooks](/build/configure/#add-a-webhook): Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
 - [Network](/build/configure/#configure-networking-options): Networking options allow you to configure teh bind address for accepting connections.
 
@@ -239,6 +239,13 @@ For example, if you have multiple machines with the same motor hardware, wired t
 
 To configure a fragment, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Insert fragment**.
 See [Use Fragments to Configure a Fleet](/fleet/configure-a-fleet/) for more information on creating and deploying fragments.
+
+### Configure the frame system
+
+The frame system holds reference frame information for the relative position of components in space.
+
+Clicking on the **Frame** mode to visualize and configure the relative positions of components.
+Find more information in the [frame system documentation](/mobility/frame-system/).
 
 ### Add a webhook
 
