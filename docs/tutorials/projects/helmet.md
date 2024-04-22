@@ -18,7 +18,7 @@ cost: 120
 {{<imgproc src="/tutorials/helmet/ppe-hooks.png" resize="x300" declaredimensions=true alt="Hard hats and neon reflective vests on hooks." class="alignright" style="max-width: 350px">}}
 
 We all know personal protective equipment (PPE) helps keep us safe, but sometimes we need a reminder to use it consistently.
-Luckily, you can address this problem using Viam's integrated [data capture](/data/capture/), [computer vision](/ml/vision/), and [webhooks](/build/configure/webhooks), along with a hard hat detection model.
+Luckily, you can address this problem using Viam's integrated [data capture](/data/capture/), [computer vision](/ml/vision/), and [webhooks](/build/configure/webhooks/), along with a hard hat detection model.
 
 By following this tutorial you will build a system to look out for you and your team, sending an email notification when someone isn't wearing a hard hat.
 
