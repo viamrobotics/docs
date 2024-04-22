@@ -240,8 +240,6 @@ Add the ML model service to your machine to be able to deploy and update ML mode
    If you trained your own model, ensure that the model has finished training and appears under the **Models** section of that page, and not the **Training** section.
 1. Click **Save** in the top right corner of the page to save your changes.
 
-   {{< imgproc src="/tutorials/filtered-camera-module/configure-mlmodel-service.png" alt="The ML model service configuration pane with deploy model on machine selected, and the my-viam-figure-model added" resize="600x" >}}
-
 For more information, see [Create an ML model service](/ml/deploy/).
 
 ### Add the vision service
