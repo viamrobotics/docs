@@ -16,16 +16,16 @@ Before you can program a smart machine, you must configure it.
 A machine's configuration defines the _{{< glossary_tooltip term_id="resource" text="resources" >}}_ (hardware and software services) it has access to, as well as any relevant parameters for those resources.
 You can configure the following resources:
 
-- [Components](/build/configure/#add-a-component): _{{< glossary_tooltip term_id="component" text="Components" >}}_ are the hardware of your machine.
-- [Services](/build/configure/#add-a-service): _{{< glossary_tooltip term_id="service" text="Services" >}}_ are the software that runs on your machine.
-- [Processes](/build/configure/#add-a-process): Processes automatically run specified scripts when the machine boots.
-- [Local Modules](/build/configure/#add-a-local-module): {{< glossary_tooltip term_id="module" text="Modules" >}} provide {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which are a way to add resource types or models that are not built into Viam.
-- [Remote parts](/build/configure/#add-a-remote-part): Remotes are a way to connect two separate machines so one can access the resources of the other.
-- [Sub-parts](/build/configure/#add-a-remote-part): Remotes are a way to connect two separate machines so one can access the resources of the other.
-- [Fragments](/build/configure/#add-a-fragment): Fragments are a way of sharing and managing identical configuration files (or parts of config files) across multiple machines.
-- [Frames](#configure-the-frame-system): Frames hold reference frame information for the relative position of components in space.
-- [Webhooks](/build/configure/#add-a-webhook): Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
-- [Network](/build/configure/#configure-networking-options): Networking options allow you to configure teh bind address for accepting connections.
+- [Components](/build/configure/#components): _{{< glossary_tooltip term_id="component" text="Components" >}}_ are the hardware of your machine.
+- [Services](/build/configure/#services): _{{< glossary_tooltip term_id="service" text="Services" >}}_ are the software that runs on your machine.
+- [Processes](/build/configure/#processes): Processes automatically run specified scripts when the machine boots.
+- [Modules](/build/configure/#modules): {{< glossary_tooltip term_id="module" text="Modules" >}} provide {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which are a way to add resource types or models that are not built into Viam.
+- [Remote parts](/build/configure/#remote-parts): Remotes are a way to connect two separate machines so one can access the resources of the other.
+- [Sub-parts](/build/configure/#sub-parts): Sub-parts are a way to connect two computers inside the same machine.
+- [Fragments](/build/configure/#fragments): Fragments are a way of sharing and managing identical configuration files (or parts of config files) across multiple machines.
+- [Frames](#frames): Frames hold reference frame information for the relative position of components in space.
+- [Webhooks](/build/configure/#webhooks): Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
+- [Network](/build/configure/network): Networking options allow you to configure teh bind address for accepting connections.
 
 To start configuring, go to the [Viam app](https://app.viam.com) and create a new machine.
 Open the part status dropdown menu in the top left corner of the page, next to the machine's name.
@@ -145,7 +145,7 @@ See [Example JSON configuration file](/internals/local-configuration-file/#examp
 
 TODO R2D2 add image once "insert fragment" option is removed -->
 
-### Add a component
+### Components
 
 Components represent the pieces of hardware on your machine that you want to control with Viam.
 To add a new component, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Component** or hit **C**.
@@ -187,7 +187,7 @@ The **Code sample** page on the **CONNECT** tab will also update to include code
 
 {{% /alert %}}
 
-### Add a service
+### Services
 
 [Services](/services/) are built-in software packages that make it easier to add complex capabilities such as motion planning or object detection to your machine.
 To add a new service, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Service** or hit **S**.
@@ -203,7 +203,7 @@ You must configure a service with a `name` and a `type`:
 The other aspects of configuring a service are highly specific to the type of service.
 See the [services documentation](/services/) for more information.
 
-### Add a process
+### Processes
 
 To automatically run a specified command when the machine boots, configure a _{{< glossary_tooltip term_id="process" text="process" >}}_.
 You can configure any command, for example one that executes a binary or a script, to run as a process.
@@ -211,7 +211,7 @@ You can configure any command, for example one that executes a binary or a scrip
 To add a new process, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Process**.
 Find more information in the [processes documentation](/build/configure/processes/).
 
-### Add a local module
+### Modules
 
 [Modular resources](/registry/) are a way to add resource types or models that are not built into Viam.
 Many models are available in the [registry](https://app.viam.com/registry) and you are able to add them as components or services.
@@ -219,21 +219,21 @@ Many models are available in the [registry](https://app.viam.com/registry) and y
 To add a module that is not in the registry and is local to your machine, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Local module**.
 Follow the instructions in our [registry documentation](/registry/configure/#add-a-local-module) to configure the module.
 
-### Add a remote part
+### Remote parts
 
 Configuring a remote part is a way to connect two separate machines so one can access the resources of the other.
 
 To configure a remote part, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Remote part**.
 Find more information in our [machine parts documentation](/build/configure/parts/).
 
-### Add a sub-part
+### Sub-part
 
 Configure a sub-part to connect two computers inside the same machine.
 
 To configure a sub-part, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Sub-part**.
 Find more information in our [machine parts documentation](/build/configure/parts/).
 
-### Add a fragment
+### Fragments
 
 You can use fragments to share similar {{< glossary_tooltip term_id="resource" text="resource" >}} configuration files across multiple machines in your fleet.
 For example, if you have multiple machines with the same motor hardware, wired the same way, you can create a fragment to configure that motor and share it easily across all of your machines, without needing to individually configure the motor component for each machine.
@@ -241,7 +241,7 @@ For example, if you have multiple machines with the same motor hardware, wired t
 To configure a fragment, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Insert fragment**.
 See [Use Fragments to Configure a Fleet](/fleet/configure-a-fleet/) for more information on creating and deploying fragments.
 
-### Configure the frame system
+### Frames
 
 The frame system holds reference frame information for the relative position of components in space.
 
@@ -255,7 +255,7 @@ For example, you can configure a webhook to send you a notification when your ro
 
 See [Configure a Webhook](/build/configure/#add-a-webhook) for more information on webhooks.
 
-### Configure networking options
+### Network
 
 Expand a part's configuration card to open its network configuration interface:
 
