@@ -49,11 +49,6 @@ Before configuring color detection, enable the rover's camera to get a better se
 
 ## Add the vision service to detect a color
 
-{{% alert title="Tip" color="tip" %}}
-If you are using a rented Viam rover, you can skip this section.
-Your rover is already configured with a `#7a4f5c` color detector called `my_color_detector`.
-{{% /alert %}}
-
 This tutorial uses the color `#7a4f5c` or `rgb(122, 79, 92)` (a reddish color).
 
 **Hex color #7a4f5c**: {{<imgproc src="/tutorials/try-viam-color-detection/7a4f5c.png" resize="150x" declaredimensions=true alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color.">}}
@@ -118,11 +113,6 @@ Note that the detector does not detect black, perfect greys (greys where the red
 {{< /alert >}}
 
 ## Configure a transform camera to use the color detector
-
-{{% alert title="Tip" color="tip" %}}
-If you are using a rented Viam rover, you can skip this section.
-Your rover is already configured with a transform camera called `detectionCam`.
-{{% /alert %}}
 
 Viam [camera](/components/camera/) components can be physical like the one already configured on the rover, or virtual.
 A virtual [_transform camera_](/components/camera/transform/) transforms the output from a physical camera.
