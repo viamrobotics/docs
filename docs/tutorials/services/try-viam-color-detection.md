@@ -63,7 +63,7 @@ Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+1. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Service**.
 1. Select the `vision` type, then select the `color detector` model.
 1. Enter `my_color_detector` as the name for your detector and click **Create**.
 1. In the resulting vision service panel, click the color picker box to set the color to be detected.
@@ -130,7 +130,7 @@ A virtual [_transform camera_](/components/camera/transform/) transforms the out
 To view output from the color detector overlaid on images from a physical camera, configure a transform camera:
 
 1. Navigate to the **CONFIGURE** tab in the Viam app.
-2. Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+2. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
 3. Select `camera` as the type.
 4. Select `transform` as the model.
 5. Enter a name, for example `detectionCam`, and click **Create**.
