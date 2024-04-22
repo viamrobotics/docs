@@ -47,7 +47,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `vision` type, then select the `ML model` model.
 Enter a name or use the suggested name for your service and click **Create**.
 
-Select the ML model service your model is deployed on from the **ML Model** dropdown to configure the required `"mlmodel_name"` attribute.
+Select the ML model service your model is deployed on from the **ML Model** dropdown.
 
 Edit other attributes as applicable according to the table below.
 You can edit optional attributes in raw JSON by clicking **{}** (Switch to advanced) on the right side of your service panel.

@@ -246,7 +246,7 @@ To configure an ML model service:
 
 Your robot will register this as a machine learning model and make it available for use.
 
-Select **Deploy model on robot** for the **Deployment** field.
+Select **Deploy model on machine** for the **Deployment** field.
 Then select the `viam-labs:EfficientDet-COCO` model from the **Models** dropdown.
 
 Now, create a vision service to visualize your ML model:
@@ -254,13 +254,13 @@ Now, create a vision service to visualize your ML model:
 - Select the **CONFIGURE** tab.
 - Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 - Select the `vision` type, then select the `ML model` model.
-- Enter the name `vis-stuff-detector` for your service and click **Create**.
+- Enter the name `mlmodel` for your service and click **Create**.
 
 Your companion robot will use this to interface with the machine learning model allowing you to - well, detect stuff!
 
 Select the model that you added in the previous step in the **ML Model** field of your detector:
 
-{{< imgproc src="/tutorials/ai-integration/detector-panel.png" alt="Adding the ML model service to the detector panel." resize="1000x" style="width:450px" >}}
+{{<imgproc src="/services/deploy-model-menu.png" resize="700x" alt="Models dropdown menu with models from the registry.">}}
 
 Click **Save** in the top-right corner of the page to save your config.
 

@@ -235,12 +235,10 @@ Add the ML model service to your machine to be able to deploy and update ML mode
 1. Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
 1. Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**, then select the built-in `TFLite CPU` model.
 1. Use the suggested name for your service or give it a name, like `my-mlmodel-service`, then click **Create**.
-1. On the panel that appears, select the **Deploy model on robot** toggle, then select your model from the **Select model** dropdown.
+1. On the panel that appears, select the **Deploy model on machine** toggle, then select your model from the **Select model** dropdown.
    If you don't see your model name appear here, ensure that your model appears under the [**Models** subtab](https://app.viam.com/data/models) of the **DATA** tab in the Viam app.
    If you trained your own model, ensure that the model has finished training and appears under the **Models** section of that page, and not the **Training** section.
 1. Click **Save** in the top right corner of the page to save your changes.
-
-   {{< imgproc src="/tutorials/filtered-camera-module/configure-mlmodel-service.png" alt="The ML model service configuration pane with deploy model on robot selected, and the my-viam-figure-model added" resize="600x" >}}
 
 For more information, see [Create an ML model service](/ml/deploy/).
 
