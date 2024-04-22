@@ -17,12 +17,12 @@ Follow the [setup guide](/get-started/installation/prepare/microcontrollers/) to
 
 Viam recommends purchasing the ESP32 with a development board. The following ESP32 microcontrollers are supported:
 
-- ESP32-WROOM Series
+- ESP32-WROOM Series (until v0.1.7)
 - ESP-32-WROVER Series
 
-Your microcontroller should have the following resources available to work with the micro-RDK:
+Your microcontroller should have at least the following resources available to work with the micro-RDK:
 
-- 2 Cores + 384kB SRAM + 4MB Flash
+- 2 Cores + 384kB SRAM + 2MB PSRAM + 4MB Flash
 
 {{% /alert %}}
 
