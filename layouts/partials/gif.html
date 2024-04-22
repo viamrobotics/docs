@@ -8,6 +8,7 @@
     {{ if not hugo.IsProduction }}
     {{ warnf "Size of video file %s was %d kB - please reduce file size. This will be an error on PRs." $webmLink $sizeInBytes }}
     {{ else }}
+    {{ errorf "Size of video file %s was %d kB - please reduce file size" $mp4Link $sizeInBytes }}
     {{ end }}
   {{ end }}
 {{ else }}

@@ -131,6 +131,6 @@ Click **Show details** and **Access settings** to go to your organization settin
 
 ## Delete a machine
 
-Delete a machine by clicking on the **...** menu in the top right hand corner of its page, selecting **Delete machine**, and confirming that you're sure.
+To delete a machine, click on the **...** menu in the top right hand corner of its page, select **Delete machine**, and confirm that you're sure.
 
 {{< imgproc alt="The delete machine button and the confirmation checkbox (Sure?) next to it." src="/fleet/app-usage/delete.png" resize="300x" >}}
