@@ -944,7 +944,7 @@ viam packages export --org-id=<org-id> --name=<package-name> --version=latest --
 | `--org-id`      | the organization ID of the requested package | true |
 | `--name`     |  the name of the requested package   | true |
 | `--version`     |  the version of the requested package or `latest`  | true |
-| `--type`     |  the type of the requested package: `ml_model`   | true |
+| `--type`     |  the type of the requested package, options: `ml_model`   | true |
 | `--destination`     |  the output directory for downloaded package   | true |
 
 ### `machines` (alias `robots`)
