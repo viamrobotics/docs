@@ -98,7 +98,7 @@ See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) f
 
 {{% changelog date="2024-01-31" color="added" title="Use webhooks to trigger actions" %}}
 
-You can now configure [webhooks](/build/configure/#webhooks) to trigger actions when certain types of data are sent from your machine to the cloud.
+You can now configure [webhooks](/build/configure/#add-a-webhook) to trigger actions when certain types of data are sent from your machine to the cloud.
 
 {{% /changelog %}}
 

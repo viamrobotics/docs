@@ -106,7 +106,7 @@ Viam supports all update operators except for `$setOnInsert`, `$`, `$[]`, and `$
 
 {{% alert title="Support Notice" color="note" %}}
 
-`fragment_mods` are _not_ supported for the modification of [webhook](/build/configure/#webhooks) configuration.
+`fragment_mods` are _not_ supported for the modification of [webhook](/build/configure/#add-a-webhook) configuration.
 You can create a webhook with a fragment but you cannot modify it with `fragment_mods`.
 
 {{% /alert %}}

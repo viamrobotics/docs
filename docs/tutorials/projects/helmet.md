@@ -18,7 +18,7 @@ cost: 120
 {{<imgproc src="/tutorials/helmet/ppe-hooks.png" resize="x300" declaredimensions=true alt="Hard hats and neon reflective vests on hooks." class="alignright" style="max-width: 350px">}}
 
 We all know personal protective equipment (PPE) helps keep us safe, but sometimes we need a reminder to use it consistently.
-Luckily, you can address this problem using Viam's integrated [data capture](/data/capture/), [computer vision](/ml/vision/), and [webhooks](/build/configure/#webhooks), along with a hard hat detection model.
+Luckily, you can address this problem using Viam's integrated [data capture](/data/capture/), [computer vision](/ml/vision/), and [webhooks](/build/configure/#add-a-webhook), along with a hard hat detection model.
 
 By following this tutorial you will build a system to look out for you and your team, sending an email notification when someone isn't wearing a hard hat.
 
@@ -237,7 +237,7 @@ Now that you have verified that the detector and data sync are working, modify y
 
 ## Set up email notifications
 
-[Webhooks](/build/configure/#webhooks) allow you to trigger actions by sending an HTML request when a certain event happens.
+[Webhooks](/build/configure/#add-a-webhook) allow you to trigger actions by sending an HTML request when a certain event happens.
 In this case, you're going to set up a webhook to trigger a serverless function that sends you an email when an image of someone without a hard hat is uploaded to the cloud.
 
 Before you configure a webhook on your machine, you need to create a serverless function for the webhook to call.
@@ -400,7 +400,7 @@ Now you can test the script:
 
 ### Configure a webhook on your machine
 
-Now it's time to configure a [webhook](/build/configure/#webhooks) on your machine to trigger the email cloud function when a person is not wearing a hard hat.
+Now it's time to configure a [webhook](/build/configure/#add-a-webhook) on your machine to trigger the email cloud function when a person is not wearing a hard hat.
 Since you configured data to sync only when an image of a person without a hard hat is captured, configuring the webhook to trigger each time an image is synced to the cloud will produce the desired result.
 
 Configure a webhook as follows:
