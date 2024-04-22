@@ -400,7 +400,7 @@ Now you can test the script:
 
 ### Configure a webhook on your machine
 
-Now it's time to configure a [webhook](/build/configure/webhooks) on your machine to trigger the email cloud function when a person is not wearing a hard hat.
+Now it's time to configure a [webhook](/build/configure/webhooks/) on your machine to trigger the email cloud function when a person is not wearing a hard hat.
 Since you configured data to sync only when an image of a person without a hard hat is captured, configuring the webhook to trigger each time an image is synced to the cloud will produce the desired result.
 
 Configure a webhook as follows:
