@@ -254,7 +254,7 @@ Find more information in the [frame system documentation](/mobility/frame-system
 Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
 For example, you can configure a webhook to send you a notification when your robot's sensor collects a new reading.
 
-See [Configure a Webhook](/build/configure/#add-a-webhook) for more information on webhooks.
+See [Configure a Webhook](/build/configure/webhooks/) for more information on webhooks.
 
 ### Network
 
