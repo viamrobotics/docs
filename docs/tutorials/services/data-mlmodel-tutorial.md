@@ -244,7 +244,6 @@ You can then see the tagged objects on the **Control** tab.
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 1. Select the `vision` type, then select the `ML model` model.
 1. Enter a name, like `my-vision-service`, or use the suggested name for your service and click **Create**.
-1. Select the ML model service your model is deployed on from the **ML Model** dropdown.
 1. In the resulting vision service configuration pane, select the ML model service you just added from the **ML Model** dropdown menu.
 
    {{< imgproc src="/tutorials/data-management/vision-service-conf.png" alt="The vision service configuration pane showing the ML model service my-mlmodel-service added" resize="500x" >}}
