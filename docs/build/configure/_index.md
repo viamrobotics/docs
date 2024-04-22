@@ -41,7 +41,8 @@ All communication happens securely over HTTPS using secret tokens that are in a 
 {{< alert title="Tip" color="tip" >}}
 On Linux, the configuration is stored at <FILE>/etc/viam.json</FILE> by default and `viam-server` uses this configuration if no configuration is specified on startup.
 
-You can also store your config file in a custom location if desired. See [Run `viam-server`](/get-started/installation/manage/#run-viam-server) for more information.
+You can store your config file in a custom location if desired.
+See [Run `viam-server`](/get-started/installation/manage/#run-viam-server) for more information.
 {{< /alert >}}
 
 After you have completed the setup steps and successfully connected to your machine, go to the **CONFIGURE** tab to start adding to the configuration.
