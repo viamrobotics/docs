@@ -230,7 +230,7 @@ To deploy a model to your machine:
 
    {{< imgproc src="/tutorials/data-management/mlmodel-service-conf.png" alt="The ML model service configuration pane showing the required settings to deploy the my-classifier-model." resize="600x" >}}
 
-1. Click **Save Config** at the bottom of the window to save your changes.
+1. Click **Save** at the top right of the window to save your changes.
 
 ## The vision service
 
