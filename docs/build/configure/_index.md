@@ -39,7 +39,7 @@ The machine checks for new configurations every 15 seconds and changes its confi
 All communication happens securely over HTTPS using secret tokens that are in a machine's configuration.
 
 {{< alert title="Tip" color="tip" >}}
-On Linux, the configuration is stored at <FILE>/etc/viam.json</FILE> by default and `viam-server` uses this configuration if no configuration is provided on startup.
+On Linux, the configuration is stored at <FILE>/etc/viam.json</FILE> by default and `viam-server` uses this configuration if no configuration is specified on startup.
 
 You can also store your config file in a custom location if desired. See [Run `viam-server`](/get-started/installation/manage/#run-viam-server) for more information.
 {{< /alert >}}
