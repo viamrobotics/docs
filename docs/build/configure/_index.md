@@ -25,7 +25,7 @@ You can configure the following resources:
 - [Fragments](/build/configure/#fragments): Fragments are a way of sharing and managing identical configuration files (or parts of config files) across multiple machines.
 - [Frames](#frames): Frames hold reference frame information for the relative position of components in space.
 - [Webhooks](/build/configure/#webhooks): Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
-- [Network](/build/configure/network): Networking options allow you to configure the bind address for accepting connections.
+- [Network](/build/configure/#network): Networking options allow you to configure the bind address for accepting connections.
 
 To start configuring, go to the [Viam app](https://app.viam.com) and create a new machine.
 Open the part status dropdown menu in the top left corner of the page, next to the machine's name.
