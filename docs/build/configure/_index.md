@@ -32,7 +32,8 @@ Open the part status dropdown menu in the top left corner of the page, next to t
 Click **View setup instructions** to open the setup instructions.
 Follow the appropriate instructions for your machine's architecture.
 
-The setup steps copy your machine's credentials to your machine. When you turn on your machine, `viam-server` starts up and uses the provided credentials to fetch its full config from the [Viam app](https://app.viam.com).
+The setup steps copy your machine's credentials to your machine.
+When you turn on your machine, `viam-server` starts up and uses the provided credentials to fetch its full config from the [Viam app](https://app.viam.com).
 Once the machine has a configuration, it caches it locally and can use the configuration for up to 60 days.
 The machine checks for new configurations every 15 seconds and changes its configuration automatically when a new configuration is available.
 All communication happens securely over HTTPS using secret tokens that are in a machine's configuration.
@@ -247,7 +248,7 @@ The frame system holds reference frame information for the relative position of 
 Clicking on the **Frame** mode to visualize and configure the relative positions of components.
 Find more information in the [frame system documentation](/mobility/frame-system/).
 
-### Add a webhook
+### Webhooks
 
 Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
 For example, you can configure a webhook to send you a notification when your robot's sensor collects a new reading.
