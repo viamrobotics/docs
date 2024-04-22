@@ -246,7 +246,7 @@ To configure an ML model service:
 
 Your robot will register this as a machine learning model and make it available for use.
 
-Select **Deploy model on robot** for the **Deployment** field.
+Select **Deploy model on machine** for the **Deployment** field.
 Then select the `viam-labs:EfficientDet-COCO` model from the **Models** dropdown.
 
 Now, create a vision service to visualize your ML model:
