@@ -31,19 +31,14 @@ These `fake` components interact with Viam like real hardware but do not physica
 
 ## Set up a mock robot
 
+### Install and start `viam-server` on your computer
+
 You'll need the following hardware and software for this tutorial:
 
 - A computer running Linux or macOS
 - [Go](https://go.dev/doc/install) or [Python 3.9+](https://www.python.org/downloads/)
 
 If you don't already have a Viam account, sign up for one on [the Viam app](https://app.viam.com).
-Create a new machine in the organization and location of your choice.
-Go to this machine's **CONFIGURE** tab.
-An alert will be present directing you to **Set up your machine part**.
-Click **View setup instructions** to open the setup instructions.
-Follow the appropriate instructions for your computer's architecture.
-
-### Install and start `viam-server` on your computer
 
 {{% snippet "setup.md" %}}
 
