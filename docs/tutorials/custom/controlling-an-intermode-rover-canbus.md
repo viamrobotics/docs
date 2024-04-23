@@ -336,7 +336,7 @@ Check out this [GitHub repository](https://github.com/viam-labs/tutorial-intermo
 ## Next steps
 
 Now that you have integrated your rover or mobile base with Viam, you can use the [Viam SDKs](/sdks/) to operate your rover.
-If your rover has a `camera` or a `movement_sensor`, you can try the following tutorials:
+If your rover has a [`camera`](/components/camera/) or a [`movement_sensor`](/components/movement-sensor/), you can try the following tutorials:
 
 {{< cards >}}
 {{% card link="/tutorials/get-started/try-viam-sdk/" %}}
