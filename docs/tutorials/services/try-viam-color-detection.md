@@ -107,7 +107,8 @@ Object colors can vary dramatically based on the light source.
 We recommend you verify the desired color detection value under actual lighting conditions.
 To determine the color value from the actual cam component image, you can use a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia).
 
-If the color is not reliably detected, drag the **Hue Tolerance** slider to the right or switch to **JSON** mode to increase the `hue_tolerance_pct`.
+In the following steps you'll be able to test the color detector.
+If you notice the color is not reliably detected, drag the **Hue Tolerance** slider to the right or switch to **JSON** mode to increase the `hue_tolerance_pct`.
 
 Note that the detector does not detect black, perfect greys (greys where the red, green, and blue color component values are equal), or white.
 {{< /alert >}}
