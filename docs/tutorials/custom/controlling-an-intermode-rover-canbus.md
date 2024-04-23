@@ -41,7 +41,7 @@ For many robotic rovers you can use the [`wheeled`](/components/base/wheeled/) b
 Once you specify the circumference of the wheels and how far they are apart, you can then control your rover with the base component.
 
 However, some rovers or other mobile robots do not expose direct motor control.
-For these types of machiens, this tutorial shows you how to create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
+For these types of machines, this tutorial shows you how to create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 Creating a modular resource for your robot allows you to issue commands using the same [`base` interface](/components/base/#api) as you would with builtin Viam components.
 Once you have created the custom component, you can control both the Viam components and the modular resources using any of the [Viam SDKs](/build/program/apis/).
 Even if your modular resource is built in Golang, you can use the Python, C++, or any other Viam SDK.
