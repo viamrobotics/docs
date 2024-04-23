@@ -25,7 +25,8 @@ Each machine you add to Viam belongs to a location.
 Each location belongs to an organization.
 
 {{< alert title="Limit" color="note" >}}
-You can create up to 100 locations in an organization.
+By default, you can create up to 100 locations in an organization.
+If you need to create more locations, [contact support](mailto:support@viam.com).
 {{< /alert >}}
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/eb7v6dabCGQ">}}
