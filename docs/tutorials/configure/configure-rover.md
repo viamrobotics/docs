@@ -384,7 +384,7 @@ Next, configure the [base component](/components/base/), which describes the geo
 Configuring a {{% glossary_tooltip term_id="base" text="base"%}} component also provides you with a nice UI for moving the rover around.
 
 {{< alert title="Note" color="note" >}}
-Viam supports most rovers with builtin models.
+Viam supports most rovers with built-in models like the [`wheeled`](/components/base/wheeled) base.
 If your rover is not supported out of the box, follow the [Create a Modular Resource to Control a Rover](/controlling-an-intermode-rover-canbus) tutorial to create a model for your rover or mobile robot.
 {{< /alert >}}
 
