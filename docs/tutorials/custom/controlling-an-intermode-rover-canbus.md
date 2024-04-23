@@ -35,7 +35,7 @@ If your rover is not supported out of the box, this tutorial shows you how to ad
 
 To use a rover with the Viam platform, you have to [configure the rover's components](/tutorials/configure/configure-rover/).
 One of the components you need to configure is called a [base](/components/base/), which allows you to control a mobile robot using [commands](https://python.viam.dev/autoapi/viam/components/base/index.html#package-contents) like "move_straight", "spin", "set_velocity" and "stop".
-You can think of the base component as an abstraction that controls the motors of a base for you so you can think of the higher level object as a base.
+You can think of the base component as an abstraction that coordinates the movement of the motors of your base for you so you can control the higher level object as a base.
 
 For many robotic rovers you can use the [`wheeled`](/components/base/wheeled/) base model.
 Once you specify the circumference of the wheels and how far they are apart, you can then control your rover with the base component.
