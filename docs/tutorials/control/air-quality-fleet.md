@@ -36,9 +36,13 @@ By completing this project, you will learn to:
 - Collect and sync data from multiple machines
 - Use the Viam TypeScript SDK to query sensor data and create a custom dashboard
 
+<div class="aligncenter">
+  {{<imgproc src="/tutorials/air-quality-fleet/three-sensor-dash.png" resize="x900" declaredimensions=true alt="Air quality dashboard with PM2.5 readings from three different sensor machines displayed." style="max-width:400px" >}}
+</div>
+
 ## Requirements
 
-You can complete this tutorial using as many air quality sensing machines as you like.
+You can complete this tutorial using any number of air quality sensing machines.
 Your {{< glossary_tooltip term_id="machine" text="machines" >}} can be in different {{< glossary_tooltip term_id="location" text="locations" >}} but you should keep them all in one {{< glossary_tooltip term_id="organization" text="organization" >}} for simplicity and so that you can follow along with this tutorial more easily.
 Viam's fleet management system allows you to pull data from any machines you can authenticate to; if you'd like to pull data from multiple organizations that is possible, but is not covered within this tutorial.
 
@@ -246,71 +250,143 @@ Next, check that data is being synced from your sensors to the cloud:
     {{<imgproc src="/tutorials/air-quality-fleet/synced-data.png" resize="x1100" declaredimensions=true alt="The sensor readings that have synced to the DATA page." style="max-width:600px" >}}
 
 Once you've confirmed that data is being collected and synced correctly, you're ready to start building a dashboard to display the data.
-If you'd like to view your data using a Grafana dashboard, try our [Visualize Data with Grafana tutorial](/tutorials/services/visualize-data-grafana/).
-If you'd like to make a dashboard that you can customize however you like, continue with this tutorial and learn to use the Viam TypeScript SDK.
+If you'd like to graph your data using a Grafana dashboard, try our [Visualize Data with Grafana tutorial](/tutorials/services/visualize-data-grafana/).
+If you'd like to create your own customizable dashboard using the Viam TypeScript, continue with this tutorial.
 
 ## Code your custom TypeScript dashboard
 
+{{<imgproc class="alignright" src="/tutorials/air-quality-fleet/lower-aqi.png" resize="x900" declaredimensions=true alt="The air quality dashboard you'll build. This one has PM2.5 readings from two different sensor machines displayed, and a key with categories of air quality." style="max-width:300px" >}}
+
 The [Viam TypeScript SDK](https://ts.viam.dev/) allows you to build custom web interfaces to interact with your machines.
-For this project, you'll use it to build an interface to view your air quality sensor data.
+For this project, you'll use it to build a page that displays your air quality sensor data.
 You'll host the website locally on your Linux or MacOS computer, and view the interface in a web browser on that computer.
 
-1. Make sure you have the latest version of [Node.JS](https://nodejs.org/en) installed.
-1. Create a directory on your laptop or desktop for your project.
-   Name it <file>aqi-dashboard</file>.
-1. Create a file inside that folder and name it <file>main.ts</file>.
-1. Navigate to the **Code sample** tab of your first machine's page in the [Viam app](https://app.viam.com).
-   Select **TypeScript (Web)** from the language options.
-1. Copy the boilerplate code from the code sample page and paste it into <file>main.ts</file>.
-1. Open a terminal window and install the Viam TypeScript SDK on your computer by running the following command:
+### Set up your TypeScript project
 
-   ```sh {class="command-line" data-prompt="$"}
-   npm install --save @viamrobotics/sdk
-   ```
+Complete the following steps on your Linux or MacOS laptop or desktop.
+You don't need to install or edit anything else on your machine's single-board computer (aside from `viam-server` which you already did); you'll be running the TypeScript code from your personal computer.
 
-1. Create a file in your <file>aqi-dashboard</file> folder and name it <file>package.json</file>.
-   The <file>package.json</file> file holds necessary metadata about your project.
-   Paste the following contents into it:
+1.  Make sure you have the latest version of [Node.JS](https://nodejs.org/en) installed on your computer.
+1.  Install the Viam TypeScript SDK by running the following command in your terminal:
 
-   ```json {class="line-numbers linkable-line-numbers"}
-   {
-     "name": "air-quality-dashboard",
-     "description": "A dashboard for visualizing data from air quality sensors.",
-     "scripts": {
-       "start": "esbuild ./main.ts --bundle --outfile=static/main.js --servedir=static",
-       "test": "echo \"Error: no test specified\" && exit 1"
-     },
-     "author": "Viam Docs Team",
-     "license": "ISC",
-     "devDependencies": {
-       "esbuild": "*"
-     },
-     "dependencies": {
-       "@viamrobotics/sdk": "*"
-     }
-   }
-   ```
+    ```sh {class="command-line" data-prompt="$"}
+    npm install --save @viamrobotics/sdk
+    ```
+
+1.  Create a directory on your laptop or desktop for your project.
+    Name it <file>aqi-dashboard</file>.
+
+1.  Create a file in your <file>aqi-dashboard</file> folder and name it <file>package.json</file>.
+    The <file>package.json</file> file holds necessary metadata about your project.
+    Paste the following contents into it:
+
+    ```json {class="line-numbers linkable-line-numbers"}
+    {
+      "name": "air-quality-dashboard",
+      "description": "A dashboard for visualizing data from air quality sensors.",
+      "scripts": {
+        "start": "esbuild ./main.ts --bundle --outfile=static/main.js --servedir=static --format=esm",
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "author": "Viam Docs Team",
+      "license": "ISC",
+      "devDependencies": {
+        "esbuild": "*"
+      },
+      "dependencies": {
+        "@viamrobotics/sdk": "^0.13.0",
+        "bson": "^6.6.0"
+      }
+    }
+    ```
+
+    {{% alert title="Fun fact" color="info" %}}
+    The `--format=esm` flag in the `"start"` script is important because the ECMAScript module format is necessary to support the BSON dependency this project uses for data query formatting.
+    If you don't know what the proceeding sentence means, don't worry about it; just copy-paste the JSON above and it'll work.
+    {{% /alert %}}
+
+1.  Create another file inside the <file>aqi-dashboard</file> folder and name it <file>main.ts</file>.
+    Paste the following code into <file>main.ts</file>:
+
+    ```typescript {class="line-numbers linkable-line-numbers"}
+    // Air quality dashboard
+
+    import * as VIAM from "@viamrobotics/sdk";
+    import { BSON } from 'bson';
+
+    async function main() {
+      const opts: VIAM.ViamClientOptions = {
+        credential: {
+          type: "api-key",
+          // Key with location operator permissions
+          // Replace <API-KEY> (including angle brackets)
+          payload: "<API-KEY>",
+          // Replace <API-KEY-ID> (including angle brackets)
+          authEntity: "<API-KEY-ID>",
+        },
+      };
+
+      const orgID: string = "<ORGANIZATION ID>"; // Replace
+      const locationID: string = "<LOCATION ID>"; // Replace
+
+    main().catch((error) => {
+      console.error("encountered an error:", error);
+    });
+    ```
+
+1.  Now you need to get the API key and the {{< glossary_tooltip term_id="organization" text="organization" >}} and {{< glossary_tooltip term_id="location" text="location" >}} IDs to replace the placeholder strings in the code you just pasted.
+
+### Style your dashboard
 
 1. Create a folder called <file>static</file> inside your <file>aqi-dashboard</file> folder.
    Inside the <file>static</file> folder, create a file called <file>index.html</file>.
    This file specifies the contents of the webpage that you will see when you run your code.
    Paste the following into <file>index.html</file>:
 
-   ```{class="line-numbers linkable-line-numbers"}
+   ```{class="line-numbers linkable-line-numbers" data-line="11"}
    <!doctype html>
    <html>
-     <head>
-       <title>Air Quality Data</title>
-       <link rel="icon" href="favicon.ico" />
-     </head>
-     <body>
-       <div id="main">
-         <button id="main-button" disabled="true">Get Readings</button>
-       </div>
-       <script type="module" src="main.js"></script>
-     </body>
+   <head>
+    <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+    <div id="main">
+      <div>
+        <h1>Air Quality Dashboard</h1>
+      </div>
+      <script type="module" src="main.js"></script>
+      <div>
+        <h2>PM 2.5 readings</h2>
+        <p>The following are averages of the last few readings from each machine:</p>
+      </div>
+      <div id="insert-readings">
+        <p><i>Loading data...
+          It may take a few moments for the data to load.
+          Do not refresh page.</i></p>
+      </div>
+      <br>
+      <div class="key">
+        <h4 style="margin:5px 0px">Key:</h4>
+        <p class="good">Good air quality</p>
+        <p class="moderate">Moderate</p>
+        <p class="unhealthy-sensitive">Unhealthy for sensitive groups</p>
+        <p class="unhealthy">Unhealthy</p>
+        <p class="very-unhealthy">Very unhealthy</p>
+        <p class="hazardous">Hazardous</p>
+      </div>
+      <p>
+        After the data has loaded, you can refresh the page for the latest readings.
+      </p>
+    </div>
+   </body>
    </html>
    ```
+
+   {{% alert title="Fun fact" color="info" %}}
+   Line 11, highlighted above, is where the HTML output of the TypeScript file <file>main.ts</file> will get pulled in.
+   TypeScript is a superset of JavaScript with added functionality, and it transpiles to JavaScript, which is why your file is called <file>main.ts</file> even though line 11 indicates `src="main.js"`.
+   If you look at line 5 of <file>package.json</file>, you can see that `./main.ts` builds out to `static/main.js`.
+   {{% /alert %}}
 
 ---
 
@@ -323,10 +399,15 @@ In this section you will add color-coded backgrounds to the widgets for each of 
 You might try putting an air filter in your home or office and comparing the air quality data before you start running the filter with air quality after you have run the filter for a while.
 Or, try sealing gaps around doors, and check whether your seal is working by looking at your dashboard.
 
+You could set up a text or email alert when your air quality passes a certain threshold.
+For instructions on setting up an email alert, see the [Monitor Helmet Usage tutorial](/tutorials/projects/helmet/) as an example.
+For an example of setting up text alerts, see the [Detect a Person and Send a Photo tutorial](/tutorials/projects/send-security-photo/).
+
+For another example of a custom TypeScript interface, check out the [Claw Game tutorial](/tutorials/projects/claw-game/).
+Instead of displaying data, the claw game interface has buttons to control a robotic arm.
+
 {{< cards >}}
-{{% card link="/tutorials/get-started/blink-an-led" %}}
+{{% card link="/tutorials/services/visualize-data-grafana/" %}}
+{{% card link="/tutorials/projects/helmet/" %}}
+{{% card link="/tutorials/projects/claw-game/" %}}
 {{< /cards >}}
-
-```
-
-```
