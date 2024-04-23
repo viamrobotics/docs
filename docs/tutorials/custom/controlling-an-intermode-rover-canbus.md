@@ -44,7 +44,7 @@ However, some rovers or other mobile robots do not expose direct motor control.
 For these types of machines, this tutorial shows you how to create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 Creating a modular resource for your robot allows you to issue commands using the same [`base` interface](/components/base/#api) as you would with builtin Viam components.
 Once you have created the custom component, you can control both the Viam components and the modular resources using any of the [Viam SDKs](/build/program/apis/).
-Even if your modular resource is built in Golang, you can use the Python, C++, or any other Viam SDK.
+Even if your modular resource is built in Golang, you can use the Python, C++, or any other Viam SDK to issue commands.
 
 {{% alert title="Tip" color="tip"%}}
 You can follow the tutorial for any rover or mobile robot, but the tutorial will specifically use the [Intermode rover](https://www.intermode.io/) as an example for creating a modular resource to control your rover.
