@@ -184,9 +184,9 @@ import (
 {{% /tab %}}
 {{< /tabs >}}
 
-Next, you need to initialize your fake robotic arm.
+Next, initialize your fake robotic arm.
 In the main function, paste the following.
-Make sure that the name of your fake arm matches the arm name you configured.
+Make sure that the name of your fake arm matches the arm name you configured earlier.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -445,7 +445,7 @@ func toggleMotor (ctx context.Context, m motor.Motor) {
 {{< /tabs >}}
 
 Now, invoke your new function in `main()`.
-You can also comment out invoking `randomMovement()`.
+Comment out invoking `randomMovement()` to focus on testing the sub-part.
 Your main function should look similar to this snippet:
 
 {{< tabs >}}
