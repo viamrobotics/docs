@@ -295,7 +295,7 @@ To make your module accessible to `viam-server`, you must [add it as a local mod
 
 Now that `viam-server` can find the module, you can add the base component it provides for your Intermode base:
 
-1. Still on the **CONFIGURE** tab of your machine's page on [the Viam app](https://app.viam.com):
+1. On the **CONFIGURE** tab of your machine's page on [the Viam app](https://app.viam.com):
 
    - Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**.
    - Then, select **Local component**.
