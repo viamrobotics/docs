@@ -942,7 +942,7 @@ If you haven't already, add a [camera](/components/camera/) component to your sm
 
       {{<imgproc src="/tutorials/pet-photographer/add-colorfilter-module-create.png" resize="400x" declaredimensions=true alt="The add a component model showing the create a module step for a local color filter module">}}
 
-1. Click **Create** to create the modular resource provided by the local module.
+1. Click **Create** to create the modular resource.
 1. In the resulting module configuration pane, copy the following JSON configuration into the attributes field:
 
    ```json {class="line-numbers linkable-line-numbers"}
@@ -964,15 +964,15 @@ Then, click **Save**.
 
 ## Test your color filter camera
 
-To test that your color filter camera is capturing and filtering images properly, navigate to the **Control** tab on your machine's page.
+To test that your color filter camera is capturing and filtering images properly, navigate to the **CONTROL** tab on your machine's page.
 
-On the **colorfiltercam** panel, toggle **view colorfiltercam** to view your camera's live feed.
+On the **colorfiltercam** panel, toggle **View colorfiltercam** to view your camera's live feed.
 Test the filter by positioning your smart machine so that it captures an image of your pet wearing its collar.
-Then examine the **Data** tab to confirm that only pictures containing your pet wearing their collar are stored.
+Then examine the **DATA** tab to confirm that only pictures containing your pet wearing their collar are stored.
 
 For example, the following is the result of several dozen pictures of the same dog, but only those pictures where he is wearing the blue collar were captured and synced to the cloud:
 
-![Filtered data tab contents from colorfiltercam showing only photos of dog with blue collar](/tutorials/pet-photographer/data-capture.png)
+![Filtered data tab contents from the colorfiltercam component showing only photos of a dog with a blue collar](/tutorials/pet-photographer/data-capture.png)
 
 ## Next steps
 
