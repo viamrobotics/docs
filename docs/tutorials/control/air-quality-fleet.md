@@ -127,7 +127,7 @@ This way, if you need to update the config in the future, you just update the fr
 7. Save the config.
    Your machine config should now resemble the following:
 
-   {{<imgproc src="/tutorials/air-quality-fleet/configured-sensor.png" resize="x1100" declaredimensions=true alt="insert alt text" style="max-width:600px" >}}
+   {{<imgproc src="/tutorials/air-quality-fleet/configured-sensor.png" resize="x1100" declaredimensions=true alt="Configure tab showing PM sensor and the sensor module configured." style="max-width:600px" >}}
 
 #### Configure data capture and sync
 
@@ -255,11 +255,11 @@ If you'd like to create your own customizable dashboard using the Viam TypeScrip
 
 ## Code your custom TypeScript dashboard
 
-{{<imgproc class="alignright" src="/tutorials/air-quality-fleet/lower-aqi.png" resize="x900" declaredimensions=true alt="The air quality dashboard you'll build. This one has PM2.5 readings from two different sensor machines displayed, and a key with categories of air quality." style="max-width:300px" >}}
-
 The [Viam TypeScript SDK](https://ts.viam.dev/) allows you to build custom web interfaces to interact with your machines.
 For this project, you'll use it to build a page that displays your air quality sensor data.
 You'll host the website locally on your Linux or MacOS computer, and view the interface in a web browser on that computer.
+
+{{<imgproc class="aligncenter" src="/tutorials/air-quality-fleet/lower-aqi.png" resize="x900" declaredimensions=true alt="The air quality dashboard you'll build. This one has PM2.5 readings from two different sensor machines displayed, and a key with categories of air quality." style="max-width:300px" >}}
 
 ### Set up your TypeScript project
 
@@ -300,10 +300,12 @@ You don't need to install or edit anything else on your machine's single-board c
     }
     ```
 
-    {{% alert title="Fun fact" color="info" %}}
-    The `--format=esm` flag in the `"start"` script is important because the ECMAScript module format is necessary to support the BSON dependency this project uses for data query formatting.
-    If you don't know what the proceeding sentence means, don't worry about it; just copy-paste the JSON above and it'll work.
-    {{% /alert %}}
+{{% alert title="Fun fact" color="info" %}}
+The `--format=esm` flag in the `"start"` script is important because the ECMAScript module format is necessary to support the BSON dependency this project uses for data query formatting.
+If you don't know what the proceeding sentence means, don't worry about it; just copy-paste the JSON above and it'll work.
+{{% /alert %}}
+
+### Authenticate your code to your Viam app location
 
 1.  Create another file inside the <file>aqi-dashboard</file> folder and name it <file>main.ts</file>.
     Paste the following code into <file>main.ts</file>:
@@ -312,7 +314,7 @@ You don't need to install or edit anything else on your machine's single-board c
     // Air quality dashboard
 
     import * as VIAM from "@viamrobotics/sdk";
-    import { BSON } from 'bson';
+    import { BSON } from "bson";
 
     async function main() {
       const opts: VIAM.ViamClientOptions = {
@@ -329,6 +331,13 @@ You don't need to install or edit anything else on your machine's single-board c
       const orgID: string = "<ORGANIZATION ID>"; // Replace
       const locationID: string = "<LOCATION ID>"; // Replace
 
+      // <Insert data client and query code here in later steps>
+
+      // <Insert HTML block code here in later steps>
+    }
+
+    // <Insert getLastFewAv function definition here in later steps>
+
     main().catch((error) => {
       console.error("encountered an error:", error);
     });
@@ -336,7 +345,334 @@ You don't need to install or edit anything else on your machine's single-board c
 
 1.  Now you need to get the API key and the {{< glossary_tooltip term_id="organization" text="organization" >}} and {{< glossary_tooltip term_id="location" text="location" >}} IDs to replace the placeholder strings in the code you just pasted.
 
+    1. In the [Viam app](https://app.viam.com), navigate to the location page for the location containing all your air quality machines.
+
+       {{<imgproc src="/tutorials/air-quality-fleet/loc-secret-button.png" resize="x900" declaredimensions=true alt="" style="max-width:600px" >}}
+
+       Copy the **Location ID** and paste it into your code in place of `<LOCATION ID>`, so that that line resembles `const orgID: string = "abcde12345"`.
+
+    1. Use the dropdown menu in the upper-right corner of the page to navigate to your organization settings page.
+       Copy the **Organization ID** found under **Details** near the top of the page.
+       Paste it in place of `<ORGANIZATION ID>` in your code.
+
+    1. Under the **API Keys** heading, click **Generate Key**.
+
+    1. Name your key something such as `air-sensors-key`.
+
+    1. Select **Resource** and choose the location you have all your air quality sensing machines in.
+
+    1. Set the **Role** to **Owner**, then click **Generate key**.
+
+    1. Copy the ID and corresponding key you just created and paste them in place of `<API-KEY>` and `<API-KEY-ID>` in your code.
+       For example, you'll now have something of the form
+
+       ```json {class="line-numbers linkable-line-numbers"}
+       authEntity: '1234abcd-123a-987b-1234567890abc',
+       payload: 'abcdefg987654321abcdefghi'
+       ```
+
+       {{% snippet "secret-share.md" %}}
+
+### Add functionality to your code
+
+1. Now that you have the API key and org and location IDs, you are ready to add code that establishes a connection from the computer running the code to the Viam cloud where the air quality sensor data is stored.
+   You'll create a Viam `dataClient` instance which accesses all the data in your location, and then query this data to get only the data tagged with the `air-quality` tag you applied with your data service configuration.
+   The following code also queries the data for a list of the machines that have collected air quality data so that later, you can make a dashboard that has a place for the latest data from each of them.
+
+   Paste the following code into the main function of your <file>main.ts</file> script, directly after the `locationID` line, in place of `// <Insert data client and query code here in later steps>`:
+
+   ```typescript {class="line-numbers linkable-line-numbers"}
+   // Instantiate data_client and get all
+   // data tagged with "air-quality" from your location
+   const client = await VIAM.createViamClient(opts);
+   const myDataClient = client.dataClient;
+   const query = {
+     $match: {
+       tags: "air-quality",
+       location_id: locationID,
+       organization_id: orgID,
+     },
+   };
+   const match = { $group: { _id: "$robot_id" } };
+   // Get a list of all the IDs of machines that have collected air quality data
+   const BSONQueryForMachineIDList = [
+     BSON.serialize(query),
+     BSON.serialize(match),
+   ];
+   let machineIDs: any = await myDataClient?.tabularDataByMQL(
+     orgID,
+     BSONQueryForMachineIDList,
+   );
+   // Get all the air quality data
+   const BSONQueryForData = [BSON.serialize(query)];
+   let thedata: any = await myDataClient?.tabularDataByMQL(
+     orgID,
+     BSONQueryForData,
+   );
+   ```
+
+1. For this project, your dashboard will display the average of the last five readings from each air sensor.
+   You need a function to calculate that average.
+   The data returned by the query is not necessarily returned in order, so this function must put the data in order based on timestamps before averaging the last five readings.
+
+   Paste the following code into <file>main.ts</file> after the end of your main function, in place of `// <Insert getLastFewAv function definition here in later steps>`:
+
+   ```typescript {class="line-numbers linkable-line-numbers"}
+   // Get the average of the last few readings from a given sensor
+   async function getLastFewAv(alltheData: any[], machineID: string) {
+     // Get just the data from this machine
+     let thedata = new Array();
+     for (const entry of alltheData) {
+       if (entry.robot_id == machineID) {
+         thedata.push({
+           PM25: entry.data.readings["pm_2.5"],
+           time: entry.time_received,
+         });
+       }
+     }
+
+     // Sort the air quality data from this machine
+     // by timestamp
+     thedata = thedata.sort(function (a, b) {
+       let x = a.time.toString();
+       let y = b.time.toString();
+       if (x < y) {
+         return -1;
+       }
+       if (x > y) {
+         return 1;
+       }
+       return 0;
+     });
+
+     // Add up the last 5 readings collected.
+     // If there are fewer than 5 readings, add all of them.
+     let x = 5; // The number of readings to average over
+     if (x > thedata.length) {
+       x = thedata.length;
+     }
+     let total = 0;
+     for (let i = 1; i <= x; i++) {
+       const reading: number = thedata[thedata.length - i].PM25;
+       total += reading;
+     }
+     // Return the average of the last few readings
+     return total / x;
+   }
+   ```
+
+1. Now that you've defined the function to sort and average the data for each machine, you're done with all the `dataClient` code.
+   The final piece you need to add to this script is a way to create some HTML to display data from each machine in your dashboard.
+
+   Paste the following code into the main function of <file>main.ts</file>, in place of `// <Insert HTML block code here in later steps>`:
+
+   ```typescript {class="line-numbers linkable-line-numbers"}
+   // Instantiate the HTML block that will be returned
+   // once everything is appended to it
+   let htmlblock: HTMLElement = document.createElement("div");
+
+   // Display the relevant data from each machine to the dashboard
+   for (const mach of machineIDs) {
+     let insideDiv: HTMLElement = document.createElement("div");
+     let avgPM: number = await getLastFewAv(thedata, mach._id);
+     // Color-code the dashboard based on air quality category
+     let level: string = "blue";
+     switch (true) {
+       case avgPM < 12.1: {
+         level = "good";
+         break;
+       }
+       case avgPM < 35.5: {
+         level = "moderate";
+         break;
+       }
+       case avgPM < 55.5: {
+         level = "unhealthy-sensitive";
+         break;
+       }
+       case avgPM < 150.5: {
+         level = "unhealthy";
+         break;
+       }
+       case avgPM < 250.5: {
+         level = "very-unhealthy";
+         break;
+       }
+       case avgPM >= 250.5: {
+         level = "hazardous";
+         break;
+       }
+     }
+     // Create the HTML output for this machine
+     insideDiv.className = "inner-div " + level;
+     insideDiv.innerHTML =
+       "<p>" +
+       mach._id +
+       ": " +
+       avgPM.toFixed(2).toString() +
+       " &mu;g/m<sup>3</sup></p>";
+     htmlblock.appendChild(insideDiv);
+   }
+
+   // Output a block of HTML with color-coded boxes for each machine
+   return document.getElementById("insert-readings").replaceWith(htmlblock);
+   ```
+
+{{%expand "Click to see the full TypeScript code" %}}
+
+```typescript {class="line-numbers linkable-line-numbers"}
+// Air quality dashboard
+
+import * as VIAM from "@viamrobotics/sdk";
+import { BSON } from "bson";
+
+async function main() {
+  const opts: VIAM.ViamClientOptions = {
+    credential: {
+      type: "api-key",
+      // Key with location operator permissions
+      // Replace <API-KEY> (including angle brackets)
+      payload: "<API-KEY>",
+      // Replace <API-KEY-ID> (including angle brackets)
+      authEntity: "<API-KEY-ID>",
+    },
+  };
+
+  const orgID: string = "<ORGANIZATION ID>"; // Replace
+  const locationID: string = "<LOCATION ID>"; // Replace
+
+  // Instantiate data_client and get all
+  // data tagged with "air-quality" from your location
+  const client = await VIAM.createViamClient(opts);
+  const myDataClient = client.dataClient;
+  const query = {
+    $match: {
+      tags: "air-quality",
+      location_id: locationID,
+      organization_id: orgID,
+    },
+  };
+  const match = { $group: { _id: "$robot_id" } };
+  // Get a list of all the IDs of machines that have collected air quality data
+  const BSONQueryForMachineIDList = [
+    BSON.serialize(query),
+    BSON.serialize(match),
+  ];
+  let machineIDs: any = await myDataClient?.tabularDataByMQL(
+    orgID,
+    BSONQueryForMachineIDList,
+  );
+  // Get all the air quality data
+  const BSONQueryForData = [BSON.serialize(query)];
+  let thedata: any = await myDataClient?.tabularDataByMQL(
+    orgID,
+    BSONQueryForData,
+  );
+
+  // Instantiate the HTML block that will be returned
+  // once everything is appended to it
+  let htmlblock: HTMLElement = document.createElement("div");
+
+  // Display the relevant data from each machine to the dashboard
+  for (const mach of machineIDs) {
+    let insideDiv: HTMLElement = document.createElement("div");
+    let avgPM: number = await getLastFewAv(thedata, mach._id);
+    // Color-code the dashboard based on air quality category
+    let level: string = "blue";
+    switch (true) {
+      case avgPM < 12.1: {
+        level = "good";
+        break;
+      }
+      case avgPM < 35.5: {
+        level = "moderate";
+        break;
+      }
+      case avgPM < 55.5: {
+        level = "unhealthy-sensitive";
+        break;
+      }
+      case avgPM < 150.5: {
+        level = "unhealthy";
+        break;
+      }
+      case avgPM < 250.5: {
+        level = "very-unhealthy";
+        break;
+      }
+      case avgPM >= 250.5: {
+        level = "hazardous";
+        break;
+      }
+    }
+    // Create the HTML output for this machine
+    insideDiv.className = "inner-div " + level;
+    insideDiv.innerHTML =
+      "<p>" +
+      mach._id +
+      ": " +
+      avgPM.toFixed(2).toString() +
+      " &mu;g/m<sup>3</sup></p>";
+    htmlblock.appendChild(insideDiv);
+  }
+
+  // Output a block of HTML with color-coded boxes for each machine
+  return document.getElementById("insert-readings").replaceWith(htmlblock);
+}
+
+// Get the average of the last five readings from a given sensor
+async function getLastFewAv(alltheData: any[], machineID: string) {
+  // Get just the data from this machine
+  let thedata = new Array();
+  for (const entry of alltheData) {
+    if (entry.robot_id == machineID) {
+      thedata.push({
+        PM25: entry.data.readings["pm_2.5"],
+        time: entry.time_received,
+      });
+    }
+  }
+
+  // Sort the air quality data from this machine
+  // by timestamp
+  thedata = thedata.sort(function (a, b) {
+    let x = a.time.toString();
+    let y = b.time.toString();
+    if (x < y) {
+      return -1;
+    }
+    if (x > y) {
+      return 1;
+    }
+    return 0;
+  });
+
+  // Add up the last 5 readings collected.
+  // If there are fewer than 5 readings, add all of them.
+  let x = 5; // The number of readings to average over
+  if (x > thedata.length) {
+    x = thedata.length;
+  }
+  let total = 0;
+  for (let i = 1; i <= x; i++) {
+    const reading: number = thedata[thedata.length - i].PM25;
+    total += reading;
+  }
+  // Return the average of the last few readings
+  return total / x;
+}
+
+main().catch((error) => {
+  console.error("encountered an error:", error);
+});
+```
+
+{{% /expand%}}
+
 ### Style your dashboard
+
+You have completed the main TypeScript file that gathers and sorts the data.
+Now, you'll create a page to display the data.
 
 1. Create a folder called <file>static</file> inside your <file>aqi-dashboard</file> folder.
    Inside the <file>static</file> folder, create a file called <file>index.html</file>.
@@ -382,20 +718,108 @@ You don't need to install or edit anything else on your machine's single-board c
    </html>
    ```
 
-   {{% alert title="Fun fact" color="info" %}}
-   Line 11, highlighted above, is where the HTML output of the TypeScript file <file>main.ts</file> will get pulled in.
-   TypeScript is a superset of JavaScript with added functionality, and it transpiles to JavaScript, which is why your file is called <file>main.ts</file> even though line 11 indicates `src="main.js"`.
-   If you look at line 5 of <file>package.json</file>, you can see that `./main.ts` builds out to `static/main.js`.
-   {{% /alert %}}
+{{% alert title="Fun fact" color="info" %}}
+Line 11, highlighted above, is where the HTML output of the TypeScript file <file>main.ts</file> will get pulled in.
 
----
+TypeScript is a superset of JavaScript with added functionality, and it transpiles to JavaScript, which is why your file is called <file>main.ts</file> even though line 11 indicates `src="main.js"`.
+If you look at line 5 of <file>package.json</file>, you can see that `./main.ts` builds out to `static/main.js`.
+{{% /alert %}}
 
-### Add some color to your dashboard
+1. Now you'll create a style sheet to specify the fonts, colors, and spacing of your dashboard.
+   Create a new file inside your <file>static</file> folder and name it <file>style.css</file>.
+1. Paste the following into <file>style.css</file>:
 
-In this section you will add color-coded backgrounds to the widgets for each of your sensors so you can see at a glance how the air quality is at each sensor.
+   ```{class="line-numbers linkable-line-numbers"}
+   body {
+     font-family: Helvetica;
+     margin-left: 20px;
+   }
+
+   div {
+     background-color: whitesmoke;
+   }
+
+   h1 {
+     color: black;
+   }
+
+   h2 {
+     font-family: Helvetica;
+   }
+
+   .inner-div {
+     font-family: monospace;
+     border: .2px solid;
+     background-color: lightblue;
+     padding: 20px;
+     margin-top: 10px;
+     max-width: 320px;
+     font-size: large;
+   }
+
+   .key {
+     max-width: 200px;
+     padding: 0px 5px 5px;
+   }
+
+   .key p {
+     padding: 4px;
+     margin: 0px;
+   }
+
+   .good {
+     background-color: lightgreen;
+   }
+
+   .moderate {
+     background-color: yellow;
+   }
+
+   .unhealthy-sensitive {
+     background-color: orange;
+   }
+
+   .unhealthy {
+     background-color: red;
+   }
+
+   .very-unhealthy {
+     background-color: violet;
+   }
+
+   .hazardous {
+     color: white;
+     background-color: purple;
+   }
+
+   #main {
+     max-width:600px;
+     padding:10px 30px 10px;
+   }
+   ```
+
+   Feel free to adjust any of the colors, margins, fonts, and other specifications in <file>style.css</file> based on your preferences.
+
+## Run the code
+
+1. In a command prompt terminal, navigate to your <file>aqi-dashboard</file> directory.
+   Run the following command to start up your air quality dashboard:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   npm start
+   ```
+
+1. The terminal should output a line such as `Local:  http://127.0.0.1:8000/`.
+   Copy the URL the terminal displays and paste it into the address bar in your web browser.
+   The data may take up to approximately 5 seconds to load, then you should see air quality data from all of your sensors.
+   If the dashboard does not appear, right-click the page, select **Inspect**, and check for errors in the console.
+
+   Great work.
+   You've learned how to configure a fleet of machines, sync their data to one place, and pull that data into a custom dashboard using TypeScript.
 
 ## Next steps
 
+Now that you can monitor your air quality, you can try to improve it and see if your efforts are effective.
 You might try putting an air filter in your home or office and comparing the air quality data before you start running the filter with air quality after you have run the filter for a while.
 Or, try sealing gaps around doors, and check whether your seal is working by looking at your dashboard.
 
