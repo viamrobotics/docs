@@ -546,6 +546,71 @@ err := myBoard.WriteAnalog(context.Background(), "11", 48, nil)
 {{% /tab %}}
 {{< /tabs >}}
 
+### StreamTicks
+
+Start a stream of [`DigitalInterrupt`](/components/board/#digital_interrupts) ticks.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `interrupts` (List[[DigitalInterrupt](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.DigitalInterrupt)]): List of digital interrupts to receive ticks from.
+
+**Returns:**
+
+- [(`TickStream`)](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.TickStream): [Stream](https://python.viam.dev/autoapi/viam/streams/index.html#viam.streams.Stream) of [Ticks](https://python.viam.dev/autoapi/viam/proto/component/board/index.html#viam.proto.component.board.StreamTicksResponse), objects containing `pin_name`, `time`, and `high` fields.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_board = Board.from_robot(robot=robot, name="my_board")
+
+di8 = await my_board.digital_interrupt_by_name(name="8")
+di11 = await my_board.digital_interrupt_by_name(name="11")
+
+# Stream ticks from the listed digital interrupts on pins 8 and 11.
+ticks = await my_board.stream_ticks([di8, di11])
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.stream_ticks).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `interrupts` [([]DigitalInterrupt)](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt): Slice of digital interrupts to receive ticks from.
+- `ch` ([chan](https://go.dev/tour/concurrency/2) [Tick](https://pkg.go.dev/go.viam.com/rdk/components/board#Tick)): The channel to stream Ticks, structs containing `Name`, `High`, and `TimestampNanosec` fields.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Make a channel to stream ticks
+ticksChan := make(chan board.Tick)
+
+interrupts := []*DigitalInterrupt{}
+
+if di8, err := myBoard.DigitalInterruptByName("8"); err == nil {
+    interrupts = append(interrupts, di8)
+}
+if di11, err := myBoard.DigitalInterruptByName("11"); err == nil {
+    interrupts = append(interrupts, di11)
+}
+
+// Stream ticks on ticksChan from the listed digital interrupts on pins 8 and 11.
+err := myBoard.StreamTicks(context.Background(), interrupts, ticksChan, nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetGeometries
 
 Get all the geometries associated with the board in its current configuration, in the [frame](/mobility/frame-system/) of the board.
@@ -1518,7 +1583,7 @@ interrupt.add_callback(callback_queue)
 
 **Parameters:**
 
-- `callback` [(chan Tick)](https://go.dev/tour/concurrency/2): The channel to add as a listener for when the state of the GPIO pin this interrupt is [configured for](#digital_interrupts) changes between high and low.
+- `callback` ([chan](https://go.dev/tour/concurrency/2) [Tick](https://pkg.go.dev/go.viam.com/rdk/components/board#Tick)): The channel to add as a listener for when the state of the GPIO pin this interrupt is [configured for](#digital_interrupts) changes between high and low.
 
 **Returns:**
 
