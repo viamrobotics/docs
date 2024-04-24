@@ -38,7 +38,7 @@ Viam's fleet management system allows you to pull data from any machines you can
 
 For each machine, you will need the following:
 
-- [SDS011 Nova PM sensor](https://docs.google.com/document/d/1e6BCYhekPLfnTjXpR2hMw1ard6zfdKCZobl7smOnEp0/edit)
+- [SDS011 Nova PM sensor](https://www.amazon.com/SDS011-Quality-Detection-Conditioning-Monitor/dp/B07FSDMRR5)
   - If you choose to use a different air quality sensor, you may need to [create your own module](/registry/create/) implementing the [sensor API](/components/sensor/#api) for your specific hardware.
 - A single-board computer (SBC) with [`viam-server` installed](https://docs.viam.com/get-started/installation/) and connected to the [Viam app](https://app.viam.com)
 - An appropriate power supply
