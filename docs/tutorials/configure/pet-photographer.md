@@ -4,14 +4,14 @@ linkTitle: "Pet Photographer"
 type: "docs"
 description: "Use the filter modular component in the Viam app to photograph your pet in their collar."
 tags: ["vision", "filter", "camera", "detector", "services"]
-imageAlt: "Filtered data from the custom colorfiltercam in the Data tab showing only photos of a dog wearing a blue collar"
+imageAlt: "Filtered data from the custom colorfiltercam in the DATA tab showing only photos of a dog wearing a blue collar"
 images: ["/tutorials/pet-photographer/data-capture.png"]
 authors: ["Sky Leilani"]
 languages: ["go", "python"]
 viamresources: ["vision", "camera"]
 level: "Intermediate"
 date: "2023-09-17"
-# updated: ""
+# updated: "2024-04-19"
 cost: "0"
 no_list: true
 ---
@@ -803,11 +803,12 @@ Note the absolute path to your module’s executable for use in the next section
 
 Whether you've downloaded the `colorfilter` module, or written your own color filtering module, the next step is to add the module to your smart machine as a local module:
 
-1. Navigate to the **Config** tab of your machine's page in the [Viam app](https://app.viam.com/robots).
-1. Select the **Modules** subtab and scroll to the **Add local module** section.
-1. Enter a name or use the suggested name for your local module, enter the [module's executable path](/registry/create/#compile-or-package-your-module), then click **Add module**.
+1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com/robots).
+1. Click the **+** (Create) button next to your main part in the left-hand menu and select **Local module**, then **Local module**.
+
+1. Enter a name or use the suggested name for your local module, enter the [module's executable path](/registry/create/#compile-or-package-your-module), then click **Create**.
    - The name must use only lowercase characters.
-1. Then, click **Save config**.
+1. Then, click the **Save** button in the top right corner of the page to save your changes.
 
 ![A color filter module that has been added.](/tutorials/pet-photographer/add-colorfilter-module.png)
 
@@ -825,14 +826,15 @@ To enable data capture on your machine, add and configure the [data management s
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-1. On the **Config** page, click the **Services** subtab and click **Create service** in the lower-left corner.
-1. Choose `Data Management` as the type and name your instance of the data manager `dm`.
-1. Select **Create**.
-1. On the panel that appears, you can manage the capturing and syncing functions individually.
+1. On the **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+1. Choose `data management` as the type.
+1. Enter a name or use the suggested name for your instance of the data manager.
+   This tutorial uses the name 'dm' in all example code.
+1. Click **Create**.
+   On the panel that appears, you can manage the capturing and syncing functions individually.
    By default, the data management service captures data every 0.1 minutes to the <file>~/.viam/capture</file> directory.
-
    Leave the default settings as they are.
-   Click **Save config** at the bottom of the window.
+1. Click **Save** in the top right corner of the screen to save your changes.
 
    ![An instance of the data management service named "dm". The cloud sync and capturing options are toggled on and the directory is empty. The interval is set to 0.1](/tutorials/pet-photographer/data-management-services.png)
 
@@ -855,28 +857,29 @@ To enable data capture on your machine, add and configure the [data management s
 }
 ```
 
-Click **Save Config** when done.
-
 {{% /tab %}}
 {{< /tabs >}}
 
 ### Add the vision service
 
-To enable your smart machine to detect a specific color in its camera stream, add a [vision service color detector](/ml/vision/color_detector/).
+To enable your smart machine to detect a specific color in its camera stream, add a [`color_detector` vision service](/ml/vision/color_detector/).
 For this tutorial, we will configure the vision service to recognize a blue dog collar using `#43A1D0` or `rgb(67, 161, 208)`.
 If you have a different item you want to use, or want to match to a color that matches your pet closely, you can use a different color.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-1. On the **Config** page, click the **Services** subtab and click **Create service** in the lower-left corner.
-1. Select the `Vision` type, then select the `Color Detector` model.
-1. Enter `my_color_detector` as the name for your detector and click **Create**.
-1. In the vision service panel, click the color selection box to set the color to be detected.
+1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+1. Select the `vision` type, then select the `color detector` model.
+1. Enter a name or use the suggested name for your color detector.
+   This tutorial uses the name 'my_color_detector' in all example code.
+1. click **Create**.
+1. In the vision service's **Attributes** section, click the color selection box to set the color to be detected.
    For this tutorial, set the color to `#43A1D0` or `rgb(67, 161, 208)`.
    Alternatively, you can provide the color of your pet, or use a different brightly-colored collar or ribbon.
-1. Set **Hue Tolerance** to `0.06` and **Segment Size px** to `100`.
-1. Then, click **Save config**.
+1. Set **Hue Tolerance** to `0.06` and **Segment size px** to `100`.
+1. Click the **Save** button in the top right corner of the page.
 
 Your configuration should look like the following:
 
@@ -902,7 +905,7 @@ Add the vision service object to the services array in your rover’s raw JSON c
 }
 ```
 
-Click **Save Config** when done.
+Click the **Save** button in the top right corner of the page when done.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -915,34 +918,31 @@ With the vision and data management services configured, you can now configure y
 
 If you haven't already, add a [camera](/components/camera/) component to your smart machine:
 
-1. Navigate to your machine's page on the [Viam app](https://app.viam.com/robots) and select the **Config** tab.
-1. Click the **Components** subtab and click **Create component** in the lower-left corner.
-1. Select the `camera` and then select `webcam`.
-   1.Enter 'cam' as the name for your camera, then click **Create**.
+1. On the **CONFIGURE** tab, click the **+** (Create) button next to your main part in the left-hand menu and select **Component**.
+   Start typing "webcam" and select **camera / webcam**.
+   Enter a name or use the suggested name for your camera.
+   This tutorial uses the name 'cam' in all example code.
+   Click **Create**.
 
-Your machine's configuration page now includes a panel for your camera.
+1. Click the **video path** dropdown and select the webcam you'd like to use for this project from the list of suggestions.
 
-- To choose the camera the robot will use, click the **video path** field.
-  - If your machine is connected to the Viam app, you'll see a list of available cameras.
-  - Select the `camera` you want to use, then click **Save config**.
+1. Click **Save** in the top right corner of the screen to save your changes.
 
 ![An instance of the webcam component named 'cam'](/tutorials/pet-photographer/webcam-component.png)
 
 ### Add the color filter component
 
-1. Click the **Components** subtab and then click **Create component**.
-1. Next, select the `local modular resource` type from the list.
-   {{<imgproc src="/tutorials/pet-photographer/add-local-module-select.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
-1. On the following screen:
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Local module**, then **Local component**.
+1. On the **Create** menu:
 
-   1. Select the camera from the dropdown menu.
-   1. Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} for your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}, `example:camera:colorfilter`.
+   1. Select the `camera` type from the dropdown menu.
+   1. Enter `example:camera:colorfilter`, the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
    1. Provide a name for this instance of your modular resource.
       This name must be different from the module name.
 
       {{<imgproc src="/tutorials/pet-photographer/add-colorfilter-module-create.png" resize="400x" declaredimensions=true alt="The add a component model showing the create a module step for a local color filter module">}}
 
-1. Click **Create** to create the modular resource component.
+1. Click **Create** to create the modular resource provided by the local module.
 1. In the resulting module configuration pane, copy the following JSON configuration into the attributes field:
 
    ```json {class="line-numbers linkable-line-numbers"}
@@ -956,9 +956,9 @@ Your machine's configuration page now includes a panel for your camera.
 
 ### Configure data capture
 
-To add data capture for the color filter camera, click **Add Method** in the **Data Capture configuration** section of your color filter camera component.
-Toggle the **Type** dropdown menu, select **ReadImage**, and set the **Frequency** of the capture to `0.1`, which will configure the data management service to capture images from your camera about once every 10 seconds.
-Then, click **Save config**.
+To add data capture for the color filter camera, click **Add method** in the **Data capture** section of your color filter camera component.
+Toggle the **Method** dropdown menu, select **ReadImage**, and set the **Frequency** of the capture to `0.1`, which will configure the data management service to capture images from your camera about once every 10 seconds.
+Then, click **Save**.
 
 ![A component panel for a color filter modular resource with the attributes filled out for vision service and actual_cam as well as the data capture configuration capture set capture ReadImage at 0.1 frequency](/tutorials/pet-photographer/colorfiltercam-component.png)
 
