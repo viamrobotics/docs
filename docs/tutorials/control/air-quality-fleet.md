@@ -2,25 +2,15 @@
 title: "Monitor Air Quality with a Fleet of Sensors"
 linkTitle: "Air Quality Fleet"
 type: "docs"
-description:
-  "Use a fleet of machines with air quality sensors to monitor PM 2.5 levels in different indoor and outdoor locations."
-  # If GIF+video is available use those - otherwise use an image and omit videos.
-  # The GIF or image in "images" will show up in links on social media/in Slack messages etc.
-  # The videos will show up on the tutorials page and should be the same GIF as above,
-  # but in these formats which use less bandwidth than GIF when a user is loading our site.
-# images: ["path to preview GIF if available and less than 1MB in size - otherwise path to preview image"]
-# videos: [ "path to preview video in mp4format - ideally in 4:3 format", "path to preview video - ideally in 4:3 format"]
-# imageAlt: "ALT text for the image"
-# videoAlt: "ALT text for the video" (omit either imageAlt or videoAlt depending on preview type)
+description: "Use a fleet of machines with air quality sensors to monitor PM 2.5 levels in different indoor and outdoor locations."
+images: ["/tutorials/air-quality-fleet/lower-aqi.png"]
+imageAlt: "A web dashboard showing PM2.5 readings from two air quality sensors."
 tags: ["tutorial"]
-authors: [] # Jessamy Taylor
-languages: [] # Viam SDK programming languages used, if any
-viamresources: ["sensor", "data_manager"] # Specific components or services used in this tutorial
+authors: ["Jessamy Taylor"]
+languages: ["typescript"]
+viamresources: ["sensor", "data_manager"]
 level: "Intermediate"
-# Beginner means: high level of explanation and guidance
-# Intermediate means: commands/concepts you can assume the reader knows do not need to be explained, instead link.
-# Advanced means: intricate tutorial that may require the reader to have knowledge to adapt
-date: "2024-04-03" # When the tutorial was created or last entirely checked
+date: "2024-04-23"
 # updated: ""  # When the tutorial was last entirely checked
 cost: 200
 ---
