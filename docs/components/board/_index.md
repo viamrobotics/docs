@@ -605,7 +605,7 @@ if di11, err := myBoard.DigitalInterruptByName("11"); err == nil {
 }
 
 // Stream ticks on ticksChan from the listed digital interrupts on pins 8 and 11.
-err := myBoard.StreamTicks(context.Background(), interrupts, ticksChan, nil)
+err = myBoard.StreamTicks(context.Background(), interrupts, ticksChan, nil)
 ```
 
 {{% /tab %}}
