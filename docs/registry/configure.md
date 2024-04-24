@@ -392,7 +392,7 @@ To add a local module on your machine, first add its module, then the component 
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 2. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**, then **Local module**.
-3. Enter a **Name** for this instance of your modular resource.
+3. Enter a **Name** for this instance of your module.
 4. Enter the [module's executable path](/registry/create/#compile-or-package-your-module).
    This path must be the absolute path to the executable on your machine's filesystem.
 5. Then, click the **Create** button, and click **Save** in the upper right corner to save your config.

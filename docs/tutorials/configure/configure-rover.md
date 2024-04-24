@@ -383,6 +383,11 @@ Set `Depends On` to `local`, and `pin` to the pin the servo is wired to (`21` fo
 Next, configure the [base component](/components/base/), which describes the geometry of your chassis and wheels so that the software can calculate how to steer the rover in a coordinated way.
 Configuring a {{% glossary_tooltip term_id="base" text="base"%}} component also provides you with a nice UI for moving the rover around.
 
+{{< alert title="Note" color="note" >}}
+Viam supports most rovers with built-in models like the [`wheeled`](/components/base/wheeled/) base.
+If your rover is not supported out of the box, follow the [Create a Modular Resource to Control a Rover](/tutorials/custom/controlling-an-intermode-rover-canbus/) tutorial to create a model for your rover or mobile robot.
+{{< /alert >}}
+
 {{< tabs name="Configure a Wheeled Base" >}}
 {{% tab name="Config Builder" %}}
 
