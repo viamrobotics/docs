@@ -79,7 +79,7 @@ This way, if you need to update the config in the future, you just update the fr
 #### Configure the sensor
 
 1. Navigate to the **CONFIGURE** tab of the machine details page in the [Viam app](https://app.viam.com) for your first machine.
-2. Click the **+** (Create) button and click **Component** from the drop-down.
+2. Click the **+** (Create) button and click **Component** from the dropdown.
    Click **sensor**, then search for `sds011` and click **sds001:v1** from the results.
 3. Click **Add module**.
    This adds the {{< glossary_tooltip term_id="module" text="module" >}} that provides the sensor model that supports the specific hardware we are using for this tutorial.
@@ -104,7 +104,7 @@ This way, if you need to update the config in the future, you just update the fr
 
    This should output a list of one or more USB devices attached to your board, for example `usb-1a86_USB_Serial-if00-port0`.
    If the air quality sensor is the only device plugged into your board, you can be confident that the only device listed is the correct one.
-   If you have multiple devices plugged into different USB ports, you may need to do some trial and error or unplug something to figure out which path to use.
+   If you have multiple devices plugged into different USB ports, you may need to choose one path and test it, or unplug something, to figure out which path to use.
 
    Now that you have found the identifier, put the full path to the device into your config, for example:
 
@@ -123,7 +123,7 @@ This way, if you need to update the config in the future, you just update the fr
 
 Now it's time to enable [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/) so that data from your air quality sensor will be first stored on the machine and then pushed up to the cloud where you can access all the data from your sensors remotely.
 
-1. Click the **+** (Create) button and click **Service** from the drop-down.
+1. Click the **+** (Create) button and click **Service** from the dropdown.
 2. Click **data management**.
 3. Give your data manager a name such as the auto-populated name `data_manager-1` and click **Create**.
 4. Toggle **Syncing** to the on position.
@@ -134,7 +134,7 @@ Now it's time to enable [data capture](/data/capture/) and [cloud sync](/data/cl
    This tag will now automatically be applied to all data collected by this data manager.
 6. Now the data management service is available to any components on your machine, and you can set up data capture on the sensor:
 7. On your **PM_sensor** card, click **Add method**.
-8. From the **Type** drop-down, select **Readings**.
+8. From the **Type** dropdown, select **Readings**.
 9. Set the **Frequency** to `0.1` readings per second.
    This will capture air quality data once every ten seconds.
    It is useful to capture data frequently for testing purposes, but you can always change this frequency later since you probably don't need to capture data this frequently all day forever.
@@ -171,7 +171,7 @@ In any case, now that the JSON is generated, you are ready to create a {{< gloss
 
 Add the fragment you just created to each of your machines including the first one:
 
-1. Click the **+** button, then click **Insert fragment** in the drop-down menu.
+1. Click the **+** button, then click **Insert fragment** in the dropdown menu.
 2. Search for and click the name of your fragment, for example `air-sensing-machine`.
 
    {{<imgproc src="/tutorials/air-quality-fleet/add-fragment.png" resize="x1100" declaredimensions=true alt="The insert fragment UI." style="max-width:600px" >}}
@@ -196,7 +196,7 @@ For each machine:
 
    {{%expand "Click here for usb_interface troubleshooting help" %}}
 
-If you only have one USB device plugged into each of your boards, hopefully the `usb_interface` value you configured in the sensor config is the same for all of your machines.
+If you only have one USB device plugged into each of your boards, the `usb_interface` value you configured in the sensor config is likely (conveniently) the same for all of your machines.
 If not, you can use [fragment mods](/fleet/configure-a-fleet/#use-fragment_mods) to modify the value on any machine for which it is different:
 
 1. If you're not getting sensor readings from a given machine, check the path of the USB port using the same [process by which you found the first USB path](#usb-path).
@@ -234,7 +234,7 @@ Next, check that data is being synced from your sensors to the cloud:
 1.  Open your [**DATA** page](https://app.viam.com/data).
 2.  Click the **Sensors** tab within the data page.
 3.  If you have sensor data coming from machines unrelated to this project, use the filters on the left side of the page to view data from only your air quality sensors.
-    Click the **Tags** drop-down and select the `air-quality` tag you applied to your data.
+    Click the **Tags** dropdown and select the `air-quality` tag you applied to your data.
     You can also use these filters to show the data from one of your air quality sensors at a time by typing a machine name into the **Machine name** box and clicking **Apply** in the lower-left corner.
 
     {{<imgproc src="/tutorials/air-quality-fleet/synced-data.png" resize="x1100" declaredimensions=true alt="The sensor readings that have synced to the DATA page." style="max-width:600px" >}}
@@ -337,7 +337,7 @@ If you don't know what the proceeding sentence means, don't worry about it; just
 
     1. In the [Viam app](https://app.viam.com), navigate to the location page for the location containing all your air quality machines.
 
-       {{<imgproc src="/tutorials/air-quality-fleet/loc-secret-button.png" resize="x900" declaredimensions=true alt="" style="max-width:600px" >}}
+       {{<imgproc src="/tutorials/air-quality-fleet/loc-secret-button.png" resize="x900" declaredimensions=true alt="The location secret with a Copy button next to it." style="max-width:600px" >}}
 
        Copy the **Location ID** and paste it into your code in place of `<LOCATION ID>`, so that that line resembles `const orgID: string = "abcde12345"`.
 
