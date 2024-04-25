@@ -268,7 +268,7 @@ You can also set the [heartbeat](/build/program/apis/sessions/#heartbeats) windo
 
 ## Configuration History
 
-The Viam app keeps a record of your configuration changes, allowing you to revert to earlier configurations.
+The Viam app keeps a record of your configuration changes, allowing you to revert to earlier configurations if needed.
 
 To see the configuration history for a machine part, click on the **History** link at the top right corner of the machine part's card in the Viam app.
 
