@@ -250,11 +250,18 @@ To configure your rover so you can start driving it, [add the Viam Fragment to y
 
 ## Next steps
 
-Follow one of these tutorials with your borrowed or owned rover:
+Before you can use your Viam rover with the Viam platform you need to configure your rover:
+
+{{< cards >}}
+{{% card link="/get-started/try-viam/rover-resources/rover-tutorial-fragments/" %}}
+{{< /cards >}}
+
+After you have configured your rover, follow one of these tutorials:
 
 {{< cards >}}
 {{% card link="/tutorials/get-started/try-viam-sdk/" %}}
 {{% card link="/tutorials/services/try-viam-color-detection/" %}}
+{{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}
 
 ### Rover build

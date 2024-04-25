@@ -344,6 +344,4 @@ If your rover has a [`camera`](/components/camera/) or a [`movement_sensor`](/co
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}
 
-<br>
-
 {{< snippet "social.md" >}}

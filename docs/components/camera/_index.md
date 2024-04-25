@@ -523,6 +523,4 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 {{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}
 
-<br>
-
 {{< snippet "social.md" >}}

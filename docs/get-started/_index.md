@@ -13,8 +13,6 @@ Learn about the Viam platform by reading our Viam in 3 minutes guide or try it o
 {{% card link="/get-started/try-viam/" %}}
 {{< /cards >}}
 
-<br>
-
 If you're ready to try it on your own machine, start by installing `viam-server`.
 If you need any help along the way, join our community:
 
