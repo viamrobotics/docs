@@ -38,6 +38,14 @@ You can filter by several categories including machine name, location, or timest
 
 For example, if you specify `Rover Rental` for location and click **SEARCH**, you can see all data captured on machines that belong to your `Rover Rental` location.
 
+{{< alert title="Tip" color="tip" >}}
+
+To [view only data captured from one machine part or from one component or service](/data/capture/#view-captured-data), click on the menu on the respective resource on the configuration page and select **View captured data**.
+
+{{<imgproc src="/data/capture-data-menu.png" resize="500x" declaredimensions=true alt="Resource menu with the options Rename, Duplicate, View captured data, and Delete" class="aligncenter">}}
+
+{{< /alert >}}
+
 You can also filter data using the [Viam Python SDK](https://python.viam.dev/).
 For example, you could use the [`BinaryDataByFilter`](/build/program/apis/data-client/#binarydatabyfilter) or [`TabularDataByFilter`](/build/program/apis/data-client/#tabulardatabyfilter) methods to filter binary data or tabular data respectively.
 

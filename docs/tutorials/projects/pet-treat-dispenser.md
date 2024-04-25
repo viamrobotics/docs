@@ -235,7 +235,11 @@ Next, enable the Data Management service on the camera component on your robot:
 
 Now it’s time to start collecting images of your beloved pet.
 Set your feeder up near an area your pet likes to hang out like your couch or their bed or mount it temporarily over their food bowl, or even just hold it in front of them for a couple of minutes.
-You can check that data is being captured by heading over to the [**DATA** page](https://app.viam.com/data/view) and filtering your image data to show just images from the {{< glossary_tooltip term_id="location" text="location" >}} your pet feeder is in.
+
+You can check that data is being captured by clicking on the menu icon on the camera configuration pane under the **CONFIGURE** tab and selecting **View captured data**.
+
+{{<imgproc src="/data/capture-data-menu.png" resize="500x" declaredimensions=true alt="Resource menu with the options Rename, Duplicate, View captured data, and Delete" class="aligncenter">}}
+
 Capture as many images as you want.
 If possible, capture your pet from different angles and with different backgrounds.
 Disable Data Capture after you’re done capturing images of your pet.

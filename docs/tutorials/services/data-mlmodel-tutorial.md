@@ -116,17 +116,14 @@ For more information see [Configure data capture](/data/capture/#configure-data-
 
 Now that you have configured data capture on your camera component, you can view the resulting data files in the Viam app.
 
-1. First, in the [Viam app](https://app.viam.com), navigate to your machine's **Control** tab and enable the camera to verify that a live stream is returned.
-   If you do not see a functioning camera stream, verify that you have configured your [camera](/components/camera/) correctly.
+Click on the menu icon on the camera configuration pane and select **View captured data**.
 
-1. Then, select the [**DATA** page](https://app.viam.com/data/view) from the top of the screen.
+{{<imgproc src="/data/capture-data-menu.png" resize="500x" declaredimensions=true alt="Resource menu with the options Rename, Duplicate, View captured data, and Delete" class="aligncenter">}}
 
-   {{< imgproc src="/tutorials/data-management/data-captured-images.png" alt="The data page showing a variety of captured images with search options presented on the left" resize="1200x" >}}
+Here you can view the images captured so far from the camera on your machine.
+New images should appear roughly every six seconds as cloud sync uploads them from your machine.
 
-   Here you can view the images captured so far from the camera on your machine.
-   New images should appear roughly every six seconds as cloud sync uploads them from your machine.
-
-You can use the filters on the left side of the screen to filter your images by robot, component, date range, and more.
+You can use the filters on the left side of the screen to filter your images by machine, component, date range, and more.
 
 If you have a lot of images, filter them by limiting the displayed images to a specific date and time range:
 

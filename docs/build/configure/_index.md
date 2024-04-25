@@ -266,16 +266,27 @@ You can configure the address `viam-server` binds to for accepting connections.
 By default, `viam-server` binds to `0.0.0.0:8080` when managed by the Viam app or when authentication and TLS are enabled.
 You can also set the [heartbeat](/build/program/apis/sessions/#heartbeats) window.
 
+## Configuration History
+
+The Viam app keeps a record of your configuration changes, allowing you to revert to earlier configurations if needed.
+
+To see the configuration history for a machine part, click on the **History** link at the top right corner of the machine part's card in the Viam app.
+
+![Configuration history for a machine part](build/configure/history.png)
+
+To restore to an earlier version of your configuration, click the **Restore version** button next to the desired configuration.
+
 ## Troubleshooting
 
 If you run into issues, here are some things to try:
 
 - Check the [**LOGS** tab](/fleet/machines/#logs) to view log messages and errors from `viam-server`.
   You can also [access the local log file](/get-started/installation/manage/#view-viam-server-logs) on your machine if needed.
-- Make sure all configured components are actually saved to your config.
+- Make sure all configured components are saved to your config.
   If they aren't, you will see an **Unsaved changes** note next to the **Save** button in the top right corner of the page.
 - Try restarting `viam-server` by navigating to the app's **CONFIGURE** tab in **Builder** mode, clicking the **...** menu on the right side of the machine part's card, and selecting **Restart part**.
   It takes a few minutes for the server to shut down and restart.
+- If you need to revert to an earlier configuration, use the [Configuration History](#configuration-history) to restore to an earlier version.
 - Make sure the issue is not hardware related.
   Some things to check are that the machine has adequate power, all wires are properly connected, and no chips or other hardware components are shorted or overheated.
 - See [Troubleshooting](/appendix/troubleshooting/) for additional troubleshooting steps.
