@@ -20,7 +20,7 @@ Follow this guide to set up your Odroid C4.
 
 - An [Odroid C4 board](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/)
 - A 12V/2A power supply
-- A Micro HDMI to HDMI cable, for display
+- A Micro USB to HDMI cable, for display
 - An ethernet cable and/or USB Wi-Fi dongle, for network connectivity
 - A computer, for development
 - (Optional) A microSD card, if you plan to boot from SD instead of eMMC
@@ -40,21 +40,19 @@ Before you can use the Odroid C4, you need to install an operating system on a m
 
    {{<imgproc src="get-started/installation/odroidc4-setup/etcher-choose-os.png" alt="The etcher imager with a generic microSD card selected as the target" resize="700x" style="min-width: 600px" declaredimensions=true >}}
 
-1. Then click `Flash!` to begin
+1. Then click `Flash!` to begin.
 
 ## Power your Odroid C4
 
 Connect your power adapter to the Odroid C4's power jack.
 The red LED should light up, which indicates that the board is powered.
 
-## Connect to a display
-
-Connect the micro HDMI end of your cable to the Odroid and the other end to your monitor.
+To connect to a display, connect the micro HDMI end of your cable to the Odroid and the other end to your monitor.
 
 ## Establish a network connection
 
 - Plug the Ethernet cable into the Odroid C4 to connect to the internet through a wired network.
-- Alternatively, connect a USB Wi-Fi dongle and configure Wi-Fi using your operating system settings.
+- Alternatively, you can connect a USB Wi-Fi dongle and configure Wi-Fi using your operating system settings.
 
 ## Access and update your Odroid C4
 
