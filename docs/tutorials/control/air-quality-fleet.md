@@ -132,13 +132,8 @@ With your organizational structure in place, let's add some machines:
 
 1. If Antonia has more than one air sensing machine, add a new machine to her location and set it up in the same way.
 
-1. It's time to add some machines to the RobotsRUs location.
-   Connect one of the single-board computers you'll send to RobotsRUs' Oregon office to power.
-   Click **RobotsRUs** in the locations list.
-   Click the **Oregon Office** sub-location to navigate to its page.
-1. Add a new machine, naming it `air-sensor1` for example.
-1. Click **View setup instructions** and follow the steps on that page, just as you did with Antonia's machines.
-1. Repeat this process for each machine you're shipping to RobotsRUs' Oregon office, then navigate to the New York Office location and set up those machines.
+This is how you set up one machine.
+If you are following along for the RobotsRUs business from our example, create additional machines in each sub-location, that is, in the `Oregon Office` location and in the `New York Office` location.
 
 ## Set up your hardware
 
@@ -225,7 +220,11 @@ Once you understand how to configure machines and use fragments, you can use [Pr
 
 #### Configure data capture and sync
 
-Now it's time to enable [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/) so that data from your air quality sensor will be first stored on the machine and then pushed up to the cloud where you can access all the data from your sensors remotely.
+You have configured the sensor so the board can communicate with it, but sensor data is not yet being saved anywhere.
+Enable [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/) so that data from your air quality sensor will be first stored on the machine and then pushed up to the cloud where you can access all the data from your sensors remotely.
+You'll be able to access data from all sensors in all locations, and when you're ready, you can give customers [access](/fleet/rbac/) to the data from the sensors in their locations.
+
+Configure data capture and sync as follows:
 
 1. Click the **+** (Create) button and click **Service** from the dropdown.
 2. Click **data management**.
@@ -355,8 +354,10 @@ If you'd like to create your own customizable dashboard using the Viam TypeScrip
 ## Code your custom TypeScript dashboard
 
 The [Viam TypeScript SDK](https://ts.viam.dev/) allows you to build custom web interfaces to interact with your machines.
-For this project, you'll use it to build a page that displays your air quality sensor data.
+For this project, you'll use it to build a page that displays air quality sensor data for a given location.
 You'll host the website locally on your personal computer, and view the interface in a web browser on that computer.
+
+As you'll find out in the [authentication step](#authenticate-your-code-to-your-viam-app-location), you can set each customer up with credentials to access the data from only their location, or you can create a dashboard showing data from all sensors in your entire organization.
 
 {{<imgproc class="aligncenter" src="/tutorials/air-quality-fleet/two-sensors.png" resize="x1000" declaredimensions=true alt="The air quality dashboard you'll build. This one has PM2.5 readings from two different sensor machines displayed, and a key with categories of air quality." style="max-width:500px" >}}
 
@@ -444,33 +445,42 @@ If you don't know what the proceeding sentence means, don't worry about it; just
 
 1.  Now you need to get the API key and the {{< glossary_tooltip term_id="organization" text="organization" >}} and {{< glossary_tooltip term_id="location" text="location" >}} IDs to replace the placeholder strings in the code you just pasted.
 
-    1. In the [Viam app](https://app.viam.com), navigate to the location page for the location containing all your air quality machines.
+    {{% alert title="Info" color="info" %}}
 
-       {{<imgproc src="/tutorials/air-quality-fleet/loc-secret-button.png" resize="x900" declaredimensions=true alt="The location secret with a Copy button next to it." style="max-width:600px" >}}
+You can set up credentials to access data from all the sensors in your organization, or from just one location, so in our example you could provide Antonia with an API key to see the data from her location, and provide RobotsRUs with a different API key to access the data from their RobotsRUs location.
+If RobotsRUs wanted to separate their data viewing dashboards by sub-locations, you could set up API keys for RobotsRUs to access data for each of their sub-locations separately, or you could modify the example code to filter data by location name.
 
-       Copy the **Location ID** and paste it into your code in place of `<LOCATION ID>`, so that that line resembles `const orgID: string = "abcde12345"`.
+The instructions below describe how to set up an API key for one location.
 
-    1. Use the dropdown menu in the upper-right corner of the page to navigate to your organization settings page.
-       Copy the **Organization ID** found under **Details** near the top of the page.
-       Paste it in place of `<ORGANIZATION ID>` in your code.
+{{% /alert %}}
 
-    1. Under the **API Keys** heading, click **Generate Key**.
+    In the [Viam app](https://app.viam.com), navigate to the location page for the location containing your air quality machines.
 
-    1. Name your key something such as `air-sensors-key`.
+    {{<imgproc src="/tutorials/air-quality-fleet/loc-secret-button.png" resize="x900" declaredimensions=true alt="The location secret with a Copy button next to it." style="max-width:650px" >}}
 
-    1. Select **Resource** and choose the location you have all your air quality sensing machines in.
+    Copy the **Location ID** and paste it into your code in place of `<LOCATION ID>`, so that that line resembles `const orgID: string = "abcde12345"`.
 
-    1. Set the **Role** to **Owner**, then click **Generate key**.
+1. Use the dropdown menu in the upper-right corner of the page to navigate to your organization settings page.
+   Copy the **Organization ID** found under **Details** near the top of the page.
+   Paste it in place of `<ORGANIZATION ID>` in your code.
 
-    1. Copy the ID and corresponding key you just created and paste them in place of `<API-KEY>` and `<API-KEY-ID>` in your code.
-       For example, you'll now have something of the form
+1. Under the **API Keys** heading, click **Generate Key**.
 
-       ```json {class="line-numbers linkable-line-numbers"}
-       authEntity: '1234abcd-123a-987b-1234567890abc',
-       payload: 'abcdefg987654321abcdefghi'
-       ```
+1. Name your key something such as `air-sensors-key`.
 
-       {{% snippet "secret-share.md" %}}
+1. Select **Resource** and choose the location you have all your air quality sensing machines in.
+
+1. Set the **Role** to **Owner**, then click **Generate key**.
+
+1. Copy the ID and corresponding key you just created and paste them in place of `<API-KEY>` and `<API-KEY-ID>` in your code.
+   For example, you'll now have something of the form
+
+   ```json {class="line-numbers linkable-line-numbers"}
+   authEntity: '1234abcd-123a-987b-1234567890abc',
+   payload: 'abcdefg987654321abcdefghi'
+   ```
+
+   {{% snippet "secret-share.md" %}}
 
 ### Add functionality to your code
 
