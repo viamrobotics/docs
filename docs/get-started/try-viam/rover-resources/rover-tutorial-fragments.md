@@ -172,12 +172,6 @@ The fragment you added is read-only, but if you need to modify your rover's conf
 
 ## Next steps
 
-Before you can use your Viam rover with the Viam platform you need to configure your rover:
-
-{{< cards >}}
-{{% card link="/get-started/try-viam/rover-resources/rover-tutorial-fragments/" %}}
-{{< /cards >}}
-
 After you have configured your rover, follow one of these tutorials:
 
 {{< cards >}}
