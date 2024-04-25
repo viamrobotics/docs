@@ -116,7 +116,7 @@ For more information see [Configure data capture](/data/capture/#configure-data-
 
 Now that you have configured data capture on your camera component, you can view the resulting data files in the Viam app.
 
-Click on the menu on the camera and select **View captured data**.
+Click on the menu icon on the camera configuration pane and select **View captured data**.
 
 {{<imgproc src="/data/capture-data-menu.png" resize="500x" declaredimensions=true alt="Resource menu with the options Rename, Duplicate, View captured data, and Delete" class="aligncenter">}}
 
