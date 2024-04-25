@@ -251,7 +251,7 @@ If you are only using one air quality sensing machine for this tutorial, you do 
 You can skip to [Test your sensors](#test-your-sensors).
 {{% /alert %}}
 
-Whilst you clicked around the builder UI configuring your machine, the Viam app generated a JSON configuration file with all your parameters.
+While you configured your machine with the builder UI, the Viam app generated a JSON configuration file with all your parameters.
 This is the file that tells `viam-server` what resources are available to it and how everything is connected.
 Click **JSON** in the upper-left corner of the **CONFIGURE** tab to view the generated JSON file.
 You can manually edit this file instead of using the builder UI if you are familiar with JSON.
