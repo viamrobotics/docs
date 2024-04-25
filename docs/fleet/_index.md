@@ -52,7 +52,7 @@ Each machine resides in a location.
 {{% /manualcard %}}
 {{< /cards >}}
 
-<br><br>
+<br>
 
 {{<imgproc src="/fleet/fleet.svg" resize="1400x" style="max-width: 1400px" declaredimensions=true alt="A diagram showing how organizations, locations, and machines are grouped by Viam's fleet management">}}
 

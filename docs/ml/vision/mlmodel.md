@@ -35,8 +35,6 @@ To make use of ML models with your machine, use a suitable [ML model service](/m
 {{% /manualcard %}}
 {{< /cards >}}
 
-<br>
-
 Once you have deployed your ML model, configure your `mlmodel` detector or classifier:
 
 {{< tabs >}}
