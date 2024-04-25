@@ -407,6 +407,13 @@ If you don't know what the proceeding sentence means, don't worry about it; just
 
 ### Authenticate your code to your Viam app location
 
+Your TypeScript code requires an API key to establish a connection to your machines.
+
+You can set up credentials to access data from all the sensor machines in your organization, or from just one location, so in our example you could provide Antonia with an API key to see the data from her location, and provide RobotsRUs with a different API key to access the data from their RobotsRUs location.
+If RobotsRUs wanted to separate their data viewing dashboards by sub-locations, you could set up API keys for RobotsRUs to access data for each of their sub-locations separately, or you could modify the example code to filter data by location name.
+
+The following instructions describe how to set up an API key for one location.
+
 1.  Create another file inside the <file>aqi-dashboard</file> folder and name it <file>main.ts</file>.
     Paste the following code into <file>main.ts</file>:
 
@@ -445,42 +452,33 @@ If you don't know what the proceeding sentence means, don't worry about it; just
 
 1.  Now you need to get the API key and the {{< glossary_tooltip term_id="organization" text="organization" >}} and {{< glossary_tooltip term_id="location" text="location" >}} IDs to replace the placeholder strings in the code you just pasted.
 
-    {{% alert title="Info" color="info" %}}
-
-You can set up credentials to access data from all the sensors in your organization, or from just one location, so in our example you could provide Antonia with an API key to see the data from her location, and provide RobotsRUs with a different API key to access the data from their RobotsRUs location.
-If RobotsRUs wanted to separate their data viewing dashboards by sub-locations, you could set up API keys for RobotsRUs to access data for each of their sub-locations separately, or you could modify the example code to filter data by location name.
-
-The instructions below describe how to set up an API key for one location.
-
-{{% /alert %}}
-
     In the [Viam app](https://app.viam.com), navigate to the location page for the location containing your air quality machines.
 
     {{<imgproc src="/tutorials/air-quality-fleet/loc-secret-button.png" resize="x900" declaredimensions=true alt="The location secret with a Copy button next to it." style="max-width:650px" >}}
 
     Copy the **Location ID** and paste it into your code in place of `<LOCATION ID>`, so that that line resembles `const orgID: string = "abcde12345"`.
 
-1. Use the dropdown menu in the upper-right corner of the page to navigate to your organization settings page.
-   Copy the **Organization ID** found under **Details** near the top of the page.
-   Paste it in place of `<ORGANIZATION ID>` in your code.
+1.  Use the dropdown menu in the upper-right corner of the page to navigate to your organization settings page.
+    Copy the **Organization ID** found under **Details** near the top of the page.
+    Paste it in place of `<ORGANIZATION ID>` in your code.
 
-1. Under the **API Keys** heading, click **Generate Key**.
+1.  Under the **API Keys** heading, click **Generate Key**.
 
-1. Name your key something such as `air-sensors-key`.
+1.  Name your key something such as `air-sensors-key`.
 
-1. Select **Resource** and choose the location you have all your air quality sensing machines in.
+1.  Select **Resource** and choose the location you have all your air quality sensing machines in.
 
-1. Set the **Role** to **Owner**, then click **Generate key**.
+1.  Set the **Role** to **Owner**, then click **Generate key**.
 
-1. Copy the ID and corresponding key you just created and paste them in place of `<API-KEY>` and `<API-KEY-ID>` in your code.
-   For example, you'll now have something of the form
+1.  Copy the ID and corresponding key you just created and paste them in place of `<API-KEY>` and `<API-KEY-ID>` in your code.
+    For example, you'll now have something of the form
 
-   ```json {class="line-numbers linkable-line-numbers"}
-   authEntity: '1234abcd-123a-987b-1234567890abc',
-   payload: 'abcdefg987654321abcdefghi'
-   ```
+    ```json {class="line-numbers linkable-line-numbers"}
+    authEntity: '1234abcd-123a-987b-1234567890abc',
+    payload: 'abcdefg987654321abcdefghi'
+    ```
 
-   {{% snippet "secret-share.md" %}}
+    {{% snippet "secret-share.md" %}}
 
 ### Add functionality to your code
 
