@@ -21,7 +21,7 @@ cost: 540
 ---
 
 This tutorial will guide you through configuring a rover.
-If you are using a SCUTTLE or a Yahboom rover or a different rover, this tutorials will cover instructions for your rover model.
+If you are using a SCUTTLE, a Yahboom rover, or a different rover, this tutorial covers instructions for your rover model.
 
 {{< alert title="Viam Rover" color="note" >}}
 If you are using a Viam Rover, use the [Viam Rover tutorial fragment](/get-started/try-viam/rover-resources/rover-tutorial-fragments/) instead.
@@ -35,9 +35,9 @@ If you are using a Viam Rover, use the [Viam Rover tutorial fragment](/get-start
 
 ## Start configuring your robot
 
-1. Go to [the Viam app](https://app.viam.com).
-1. Add a _{{< glossary_tooltip term_id="machine" text="machine" >}}_ and follow the setup instructions until the machine successfully connects to the Viam app.
-1. Navigate to the machine's **CONFIGURE** tab.
+{{% snippet "setup.md" %}}
+
+Once connected, navigate to the machine's **CONFIGURE** tab.
 
 ![A SCUTTLE robot on a carpeted floor.](/tutorials/scuttlebot/scuttle-on-floor.png)
 
@@ -382,6 +382,11 @@ Set `Depends On` to `local`, and `pin` to the pin the servo is wired to (`21` fo
 
 Next, configure the [base component](/components/base/), which describes the geometry of your chassis and wheels so that the software can calculate how to steer the rover in a coordinated way.
 Configuring a {{% glossary_tooltip term_id="base" text="base"%}} component also provides you with a nice UI for moving the rover around.
+
+{{< alert title="Note" color="note" >}}
+Viam supports most rovers with built-in models like the [`wheeled`](/components/base/wheeled/) base.
+If your rover is not supported out of the box, follow the [Create a Modular Resource to Control a Rover](/tutorials/custom/controlling-an-intermode-rover-canbus/) tutorial to create a model for your rover or mobile robot.
+{{< /alert >}}
 
 {{< tabs name="Configure a Wheeled Base" >}}
 {{% tab name="Config Builder" %}}

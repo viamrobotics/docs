@@ -61,12 +61,14 @@ To capture data from one or more machines, you must first add the [data manageme
   "components": [],
   "services": [
     {
-      "name": "data_manager",
+      "name": "your-data-manager",
       "type": "data_manager",
       "attributes": {
         "sync_interval_mins": 1,
         "capture_dir": "",
-        "tags": []
+        "tags": [],
+        "capture_disabled": false,
+        "sync_disabled": true
       }
     }
   ]

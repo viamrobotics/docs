@@ -44,7 +44,8 @@ Before following this tutorial, ensure you have:
 
 - A machine running `viam-server`, the software that runs your machine and connects it to the Viam app.
 
-  - If you are using your own machine, [install `viam-server`](/get-started/installation/) by following the setup instructions on your machine's page in the [Viam app](https://app.viam.com).
+  - If you are using your own machine:
+    {{% snippet "setup.md" %}}
   - If you are using a Viam Rover through [Try Viam](https://app.viam.com/try), no further action is needed.
 
 - A configured camera component.
@@ -95,7 +96,7 @@ To enable image data capture for a camera component:
 
 1. Navigate to your machine's **CONFIGURE** page in the [Viam app](https://app.viam.com).
 
-1. In the configuration pane for your [configured camera component](#prerequisites), find the **Data capture** section, and click the **Add method** button to enable data capture for this camera.
+1. In the configuration pane for your [configured camera component](#prerequisites), find the **Data capture** section, and click the **Add method** button to configure data capture for this camera.
 
    - Set the **Method** to `ReadImage` and the **Frequency** to `0.333`.
      This will capture an image from the camera roughly once every 3 seconds.
@@ -105,7 +106,9 @@ To enable image data capture for a camera component:
 
      {{< imgproc src="/tutorials/data-management/camera-data-capture.png" alt="The camera component configuration pane with data capture configuration enabled using type ReadImage and a capture frequency of 0.333" resize="600x" >}}
 
-1. Click **Save Config** at the bottom of the window to save your changes.
+   - Toggle the **On/Off** switch to **On**.
+
+1. Click **Save** at the top right of the window to save your changes.
 
 For more information see [Configure data capture](/data/capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/data/cloud-sync/).
 
@@ -219,13 +222,15 @@ Once your model has finished training, add the [ML model](/ml/) service and depl
 
 To deploy a model to your machine:
 
-1. On your machine's **CONFIGURE** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
-1. Click the **Create service** button at the bottom of the page, and select **ML Model**, then select **TFLite CPU**.
-1. Use the suggested name for your service or give it a name, like `my-mlmodel-service`, then click **Create**.
-1. In the resulting ML Model service configuration pane, select **Deploy model on robot**, then select the model you just trained from the **Models** dropdown menu.
-1. Click **Save Config** at the bottom of the window to save your changes.
+1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+1. Select the `ML model` type, then select the `TFLite CPU` model.
+1. Enter a name or use the suggested name, like `my-mlmodel-service`, for your service and click **Create**.
+1. In the resulting ML Model service configuration pane, select **Deploy model on machine**, then select the model you just trained from the **Select model** dropdown menu.
 
    {{< imgproc src="/tutorials/data-management/mlmodel-service-conf.png" alt="The ML model service configuration pane showing the required settings to deploy the my-classifier-model." resize="600x" >}}
+
+1. Click **Save** at the top right of the window to save your changes.
 
 ## The vision service
 
@@ -236,9 +241,9 @@ You can then see the tagged objects on the **Control** tab.
 
 ### Add the vision service
 
-1. On your machine's **CONFIGURE** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
-1. Click the **Create service** button at the bottom of the page, and select **Vision**, then select **ML Model**.
-1. Use the suggested name for your service or give it a name, like `my-vision-service`, then click **Create**.
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+1. Select the `vision` type, then select the `ML model` model.
+1. Enter a name, like `my-vision-service`, or use the suggested name for your service and click **Create**.
 1. In the resulting vision service configuration pane, select the ML model service you just added from the **ML Model** dropdown menu.
 
    {{< imgproc src="/tutorials/data-management/vision-service-conf.png" alt="The vision service configuration pane showing the ML model service my-mlmodel-service added" resize="500x" >}}

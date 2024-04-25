@@ -87,6 +87,10 @@ For local communication between [parts](/build/configure/parts/#machine-parts) V
 <br>
 
 You can also access the control interface using the [Viam mobile app](/fleet/#the-viam-mobile-app), which you can find on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
+The Viam mobile app gives you the ability to monitor and operate machines in your fleet.
+You can control each machine component, watch any live camera feeds, adjust components' runtime parameters, and switch between controllable components just as you would in the Viam app.
+
+{{<gif webm_src="/manage/mobile-app-control.webm" mp4_src="/manage/mobile-app-control.mp4" alt="Using the control interface under the locations tab on the Viam mobile app" max-width="300px">}}
 
 ### LOGS
 
@@ -127,6 +131,6 @@ Click **Show details** and **Access settings** to go to your organization settin
 
 ## Delete a machine
 
-Delete a machine by clicking on the **...** menu in the top right hand corner of its page, selecting **Delete machine**, and confirming that you're sure.
+To delete a machine, click on the **...** menu in the top right hand corner of its page, select **Delete machine**, and confirm that you're sure.
 
 {{< imgproc alt="The delete machine button and the confirmation checkbox (Sure?) next to it." src="/fleet/app-usage/delete.png" resize="300x" >}}

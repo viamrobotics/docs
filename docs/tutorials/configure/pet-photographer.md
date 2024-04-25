@@ -45,12 +45,13 @@ If your pet already has a distinct color that is different from their environmen
 
 ## Setup
 
-Follow the steps below to set up your smart machine:
+{{% snippet "setup.md" %}}
 
-1. Install [Go](https://go.dev/dl/) or [Python](https://www.python.org/downloads/) on both your local development computer and on your machine's board if they are not the same device.
-1. [Create a machine](/fleet/machines/#add-a-new-machine).
-1. [Install](/get-started/installation/#install-viam-server) or [update](/get-started/installation/manage/#update-viam-server) `viam-server`.
-   Your `viam-server` must be [version 0.8.0](https://github.com/viamrobotics/rdk/releases/tag/v0.8.0-rc0) or newer, as filtering capabilities were introduced in the RDK starting from that version.
+{{< alert title="Note" color="note" >}}
+Your `viam-server` must be [version 0.8.0](https://github.com/viamrobotics/rdk/releases/tag/v0.8.0-rc0) or newer, as filtering capabilities were introduced in the RDK starting from that version.
+{{< /alert >}}
+
+Then, install [Go](https://go.dev/dl/) or [Python](https://www.python.org/downloads/) on both your local development computer and on your machine's board if they are not the same device.
 
 ## Add the custom module
 

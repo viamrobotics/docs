@@ -11,6 +11,7 @@ images: ["/tutorials/try-viam-sdk/image1.gif"]
 tags: ["base", "viam rover", "try viam", "sdk", "python", "flutter"]
 aliases:
   - /tutorials/get-started/try-viam-sdk
+  - /tutorials/viam-rover/try-viam-sdk
 authors: []
 languages: ["python", "go", "typescript", "flutter", "c++"]
 viamresources: ["base"]

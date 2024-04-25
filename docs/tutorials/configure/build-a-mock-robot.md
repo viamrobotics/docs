@@ -31,19 +31,16 @@ These `fake` components interact with Viam like real hardware but do not physica
 
 ## Set up a mock robot
 
+### Install and start `viam-server` on your computer
+
 You'll need the following hardware and software for this tutorial:
 
 - A computer running Linux or macOS
 - [Go](https://go.dev/doc/install) or [Python 3.9+](https://www.python.org/downloads/)
 
 If you don't already have a Viam account, sign up for one on [the Viam app](https://app.viam.com).
-Create a new machine in the organization and location of your choice.
-Go to this machine's **Setup** tab.
 
-### Install and start `viam-server` on your computer
-
-Before you proceed with configuring and controlling your machine, install `viam-server`.
-Follow the steps outlined for your computer's architecture on the **Setup** tab of the [Viam app](https://app.viam.com) to [install `viam-server`](/get-started/installation/) on your computer as a system service.
+{{% snippet "setup.md" %}}
 
 ### Configure your mock robot
 
@@ -52,52 +49,46 @@ Follow the steps outlined for your computer's architecture on the **Setup** tab 
 If you were using physical hardware, this process would provide `viam-server` with information about what hardware is attached to it and how to communicate with it.
 For this robot, you configure `viam-server` to use `fake` components that emulate physical hardware.
 
-1. Navigate to the **Config** tab of your mock machine's page in [the Viam app](https://app.viam.com).
+1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 2. Configure a [fake board component](/components/board/fake/):
 
-   - Click on the **Components** subtab and click **Create component**.
+   - Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
    - Select the `board` type, then select the `fake` model.
    - Enter the name `myBoard` for your board and click **Create**.
+   - Leave the attribute `fail_new` set to false.
 
 3. Configure a [fake arm component](/components/arm/fake/):
 
-   - Click **Create component**.
+   - Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
    - Select the `arm` type, then select the `fake` model.
-   - Enter the name `myArm` for your board and click **Create**.
-   - Make your fake arm act like a [UR5e](https://www.universal-robots.com/products/ur5-robot/) by adding the following attribute:
+   - Enter the name `myArm` for your arm and click **Create**.
+   - Make your fake arm act like a [UR5e](https://www.universal-robots.com/products/ur5-robot/) by setting the attribute **arm-model** to `ur5e`.
+     The config panel should look like this:
 
-   ```json
-   {
-     "arm-model": "ur5e"
-   }
-   ```
+     {{< imgproc src="/tutorials/build-a-mock-robot/create-arm.png" alt="A fake arm being configured in Builder mode in the Viam app CONFIGURE tab." resize="600x" >}}
 
-   The config panel should look like this:
-
-   ![A fake arm being configured in Builder mode in the Viam app config tab.](/tutorials/build-a-mock-robot/create-arm.png)
-
-   - Click **Save config**.
+   - Click **Save** in the top right of the window to save your config.
 
 4. Configure a [fake motor component](/components/motor/fake/):
 
-   - Click **Create component**.
+   - Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
    - Select the `motor` type, then select the `fake` model.
-   - Enter the name `myMotor` for your board and click **Create**.
+   - Enter the name `myMotor` for your motor and click **Create**.
    - Most motors are wired to a board which sends them signals.
      Even though your motor is fake, make it more realistic by assigning it a `board`.
      Select `myBoard` from the **board** dropdown.
 
-5. Click **Save config**.
+5. Click **Save**.
 
 You will need to reference the component names later when you connect to your mock robot with code.
 
 ## Control your mock robot using the Viam app
 
-When you add components to your machine, the Viam app automatically generates a UI for them under the [**Control** tab](/fleet/machines/#control):
+When you add components to your machine, the Viam app automatically generates a UI for them under the [**CONTROL** tab](/fleet/machines/#control):
 
-{{< imgproc src="/tutorials/build-a-mock-robot/control-tab.png" alt="The Control tab with the fake arm, and motor components." resize="400x" >}}
+{{< imgproc src="/tutorials/build-a-mock-robot/control-tab.png" alt="The Control tab with the fake arm, and motor components." resize="600x" >}}
 
-You can use the **Control** tab UI to send commands to your machine.
+You can use the **CONTROL** tab UI to send commands to your machine.
 
 For example, you can control the direction and speed of your motor, or change the joint positions of your machineic arm.
 You can also see the machine's reported positions and speeds change.
@@ -117,9 +108,9 @@ Refer to the appropriate SDK documentation for SDK installation instructions:
 
 ### Connect to your mock robot with your code
 
-The easiest way to get started writing an application with Viam's SDKs is to use the boilerplate code on the **Code sample** tab.
+The easiest way to get started writing an application with Viam's SDKs is to use the boilerplate code on the **CONNECT** tab.
 
-Navigate to your [machine's page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, select your SDK language (**Python** or **Golang**), and copy the boilerplate code.
+Navigate to your [machine's page on the Viam app](https://app.viam.com/robots), select the **Code sample** page on the **CONNECT** tab, select your SDK language (this tutorial uses Python or Go), and copy the boilerplate code.
 
 {{% snippet "show-secret.md" %}}
 
@@ -159,14 +150,13 @@ Now, write a program that moves the mock robotic arm to a new random position ev
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-First, import the [arm component](https://python.viam.dev/autoapi/viam/components/arm/client/index.html) from the Viam Python SDK, and the [random](https://docs.python.org/3/library/random.html) and [async.io](https://docs.python.org/3/library/asyncio.html) libraries.
+First, import the [arm component](https://python.viam.dev/autoapi/viam/components/arm/client/index.html) from the Viam Python SDK, and the [random](https://docs.python.org/3/library/random.html) library.
 
 At the top of your <file>index.py</file> file, paste the following:
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.components.arm import ArmClient, JointPositions
+from viam.components.arm import Arm, JointPositions
 import random
-import asyncio
 ```
 
 {{% /tab %}}
@@ -189,22 +179,22 @@ import (
 {{% /tab %}}
 {{< /tabs >}}
 
-Next, you need to initialize your fake robotic arm.
+Next, initialize your fake robotic arm.
 In the main function, paste the following.
-Make sure that the name of your fake arm matches the arm named in your config file.
+Make sure that the name of your fake arm matches the arm name you configured earlier.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-arm = ArmClient.from_robot(robot=robot, name='myArm')
+arm = Arm.from_robot(machine, name='myArm')
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
-myArm, err := arm.FromRobot(robot, "myArm")
+myArm, err := arm.FromRobot(machine, "myArm")
 if err != nil {
     logger.Fatalf("cannot get arm: %v", err)
 }
@@ -230,14 +220,13 @@ def getRandoms():
 
 
 # Moves the arm to a new random position every second
-async def randomMovement(arm: ArmClient):
+async def randomMovement(arm: Arm):
     while (True):
         randomPositions = getRandoms()
         newRandomArmJointPositions = JointPositions(values=randomPositions)
         await arm.move_to_joint_positions(newRandomArmJointPositions)
         print(await arm.get_joint_positions())
         await asyncio.sleep(1)
-    return
 ```
 
 {{% /tab %}}
@@ -268,7 +257,7 @@ func randomMovement (ctx context.Context, a arm.Arm ) {
 {{% /tab %}}
 {{< /tabs >}}
 
-You can run this code by invoking this function below your arm initialization in main.
+You can run this code by invoking this function below your arm initialization in `main`.
 Your main function should look like this:
 
 {{< tabs >}}
@@ -276,15 +265,15 @@ Your main function should look like this:
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def main():
-    robot = await connect()
+    machine = await connect()
 
     print('Resources:')
-    print(robot.resource_names)
+    print(machine.resource_names)
 
-    arm = ArmClient.from_robot(robot=robot, name='myArm')
+    arm = Arm.from_robot(machine, 'myArm')
     await randomMovement(arm)
 
-    await robot.close()
+    await machine.close()
 ```
 
 {{% /tab %}}
@@ -293,7 +282,7 @@ async def main():
 ```go {class="line-numbers linkable-line-numbers"}
 func main() {
   // Connect to the machine...
-  myArm, err := arm.FromRobot(robot, "myArm")
+  myArm, err := arm.FromRobot(machine, "myArm")
   if err != nil {
     logger.Fatalf("cannot get arm: %v", err)
   }
@@ -306,11 +295,11 @@ func main() {
 
 Now when you run this code, you should see the new mock arm positions listed in the command line.
 
-Verify that your mock robotic arm is working in the **Control** tab of the [Viam app](https://app.viam.com).
+Verify that your mock robotic arm is working in the **CONTROL** tab of the [Viam app](https://app.viam.com).
 Watch the robotic arm's [`JointPositions()`](/components/arm/#getjointpositions) changing in real-time along with the code on your development machine.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/build-a-mock-robot/joint-changes.webm" mp4_src="/tutorials/build-a-mock-robot/joint-changes.mp4" alt="A terminal window with 'python3 index.py' being run, then a list of four values is printed each second to the terminal. On the left side is the mock arm from the Control tab of the Viam app. As the joint positions are updated in the terminal from the left, you can see that the joint positions are updated in realtime on the Viam app.">}}
+  {{<gif webm_src="/tutorials/build-a-mock-robot/joint-changes.webm" mp4_src="/tutorials/build-a-mock-robot/joint-changes.mp4" alt="A terminal window with 'python3 index.py' being run, then a list of four values is printed each second to the terminal. On the left side is the mock arm from the CONTROL tab of the Viam app. As the joint positions are updated in the terminal from the left, you can see that the joint positions are updated in realtime on the Viam app.">}}
 </div>
 
 ## Configure your machine's mock sub-part
@@ -321,7 +310,7 @@ Imagine for the purpose of this tutorial that the `fake` motor we are adding con
 ### What is a sub-part?
 
 Usually, when building a {{< glossary_tooltip term_id="machine" text="machine" >}}, you pick out a [single-board computer](/components/board/) like the [Jetson Nano](/components/board/jetson/) or [Raspberry Pi](/components/board/pi/).
-You follow the instructions in the **Setup** tab to install `viam-server` on your [board](/components/board/), and you start operating your machine with that computer, adding the [components](/components/) and [services](/services/) you want to use to that `viam-server` instance.
+You follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on your [board](/components/board/), and you start operating your machine with that computer, adding the [components](/components/) and [services](/services/) you want to use to that `viam-server` instance.
 
 By utilizing {{< glossary_tooltip term_id="part" text="parts" >}}, you can expand upon this, chaining multiple computers together to build a complex robot with Viam:
 
@@ -333,19 +322,22 @@ By utilizing {{< glossary_tooltip term_id="part" text="parts" >}}, you can expan
 
 ### Add a new sub-part in the Viam app
 
-On your machine's page on the Viam app, click on the dropdown next to the main part, name your part and click **Add new**.
+Navigate to the **CONFIGURE** tab of your machine's page on the Viam app.
 
-![Screenshot of the Viam app with a dropdown below the main part. 'sub-part' is written in the textbox.](/tutorials/build-a-mock-robot/part-menu.png)
+Click the **+** (Create) icon next to your main machine part in the left-hand menu and select **Sub-part**.
+Your sub-part will automatically be created with a name like `your-machine-name-1`:
 
-Navigate to your new sub-part's **Config** tab and create a new motor:
+{{< imgproc src="/tutorials/build-a-mock-robot/machine-nesting.png" alt="The CONFIGURE tab of the mock machine including the sub-part, showing the nested configuration in the left hand menu." resize="1000x" style="width:500px" >}}
 
-Click **Create component** in the lower-left corner of the page.
-Select type `motor` and model `fake`.
-Enter `motor2` as the name and click **Create**.
+Configure your machine's new sub-part with a fake motor:
 
-{{< imgproc src="/tutorials/build-a-mock-robot/sub-part-motor.png" alt="The config tab of the sub-part. A new fake motor component called motor2 is being created." resize="400x" >}}
+1. Click the **+** (Create) icon next to your sub-part in the left-hand menu and select **Component**.
+1. Select the `motor` type, then select the `fake` model.
+1. Enter the name `motor2` for your motor and click **Create**:
 
-Click **Save config**.
+   {{< imgproc src="/tutorials/build-a-mock-robot/sub-part-motor.png" alt="The CONFIGURE tab. A new fake motor component called motor2 is being created under the sub-part." resize="400x" >}}
+
+1. Click **Save**.
 
 ### Start a new instance of `viam-server` for your mock sub-part
 
@@ -354,51 +346,54 @@ Since you are using only one computer, you need to bind the sub-part to a new po
 
 The following instructions use port `8081`, but you can use any open port you want.
 
-1. Go to the **Config** tab and then go to the **Auth/Network** subtab.
-2. Under **Network** click **Add bind address**.
-3. In the **Host** field type `localhost`.
-4. In the **Port** field type `8081`.
-5. Click **Save config**.
+1. Go to the **CONFIGURE** tab and find the sub-part's card.
+   Expand the card to view the **NETWORK** configuration section for the sub-part.
+1. Click **Set bind address**.
+1. In the **Host** field type `localhost`.
+1. In the **Port** field type `8081`.
+1. Click **Save**.
+
+Your **NETWORK** configuration appears as follows:
+
+{{< imgproc src="/tutorials/build-a-mock-robot/network-config.png" alt="The NETWORK configuration for the sub-part of the mock machine, with Host localhost and Port 8081." resize="1000x" style="width:500px" >}}
 
 ### Run a second instance of `viam-server` for your sub-part
 
-In the upper right corner of the **Setup** tab, click **Copy viam-server config**.
+Now, it's time to run `viam-server` on your sub-part.
+This instance of `viam-server` will work with the main part's instance of `viam-server` as two parts of one machine.
 
-![The Setup tab of the sub-part's machine page showing the 'Copy viam-server config' button highlighted by a red box.](/tutorials/build-a-mock-robot/copy-config.png)
+Stay on the **CONFIGURE** tab.
+Click the **...** (Actions) icon on the right side of the sub-part's card and select **View setup instructions** to open the sub-part's setup instructions.
+Select your system's OS and keep the RDK type as **RDK**.
+Follow the instructions and wait for confirmation that your sub-part has connected.
 
-On your local machine, create a new file called <file>viam-sub-part.json</file>, then paste the contents of your server config into that file and save.
-From a new terminal window, navigate to the directory where you saved the config file, and run the following command to create a new instance of `viam-server` using this configuration.
+Now that you have two instances of `viam-server` running on your local machine, you should be able to see both your main robot arm and your new mock sub motor listed on your main machine's **CONTROL** tab.
 
-```sh {class="command-line" data-prompt="$"}
-viam-server -config viam-sub-part.json
-```
-
-Now that you have two instances of `viam-server` running on your local machine, you should be able to see both your main robot arm and your new mock sub motor listed on your main machine's **Control** tab.
-
-![Screenshot of the Viam app's Control tab for the main part that lists the main arm, and the sub part motor component.](/tutorials/build-a-mock-robot/control-all.png)
+{{< imgproc src="/tutorials/build-a-mock-robot/control-all.png" alt="Screenshot of the Viam app's CONTROL tab for the main part that lists the main arm, and the sub part motor component." resize="800x" style="width:600px" >}}
 
 To test that your motor sub-part has been added to your machine, run your Python or Go script again.
-Review the output of your program that prints the machine's resources to see your sub-part's motor's `name` listed.
+Review the output of your program that prints the machine's resources to see your sub-part's motor's name listed.
 
 ## Control a sub-part using the Viam SDK
 
-Now that you have your mock sub-part connected as a remote to your main mock robot, you can control all of your sub-part's components and services with Viam's SDKs.
+Now that you have your mock sub-part connected to your main part under your mock robot, you can control all of your sub-part's components and services with Viam's SDKs.
 
 In your main function, you need to instantiate your mock sub motor.
-Make sure your motor's name matches the one that you configured for it.
+Make sure your sub-part's name and motor's name matches what you have configured.
+This code uses the name `SubPart` as a placeholder.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-motor = Motor.from_robot(robot=robot, name='SubPart:motor2')
+motor = Motor.from_robot(robot=machine, name='SubPart:motor2')
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMotor, err := motor.FromRobot(robot, "motor2")
+myMotor, err := motor.FromRobot(machine, "motor2")
 if err != nil {
   logger.Fatalf("cannot get motor: %v", err)
 }
@@ -414,7 +409,7 @@ Write a function that toggles your sub-part's motor on and off every second:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Toggles the motor on and off every second
-async def toggleMotor(motor: MotorClient):
+async def toggleMotor(motor: Motor):
     while (True):
         await motor.set_power(1)
         print("go")
@@ -422,7 +417,6 @@ async def toggleMotor(motor: MotorClient):
         await motor.stop()
         print("stop")
         await asyncio.sleep(1)
-    return
 ```
 
 {{% /tab %}}
@@ -446,6 +440,7 @@ func toggleMotor (ctx context.Context, m motor.Motor) {
 {{< /tabs >}}
 
 Now, invoke your new function in `main()`.
+Comment out invoking `randomMovement()` to focus on testing the sub-part.
 Your main function should look similar to this snippet:
 
 {{< tabs >}}
@@ -453,14 +448,14 @@ Your main function should look similar to this snippet:
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def main():
-    robot = await connect()
+    machine = await connect()
     print('Resources:')
-    print(robot.resource_names)
-    arm = Arm.from_robot(robot=robot, name='myArm')
-    motor = Motor.from_robot(robot=robot, name='SubPart:motor2')
+    print(machine.resource_names)
+    arm = Arm.from_robot(machine, name='myArm')
+    motor = Motor.from_robot(machine, name='SubPart:motor2')
     await toggleMotor(motor)
     # await randomMovement(arm)
-    await robot.close()
+    await machine.close()
 ```
 
 {{% /tab %}}
@@ -469,17 +464,17 @@ async def main():
 ```go {class="line-numbers linkable-line-numbers"}
 func main() {
   // Connect to the machine...
-  myMotor, err := motor.FromRobot(robot, "motor2")
+  myMotor, err := motor.FromRobot(machine, "motor2")
     if err != nil {
     logger.Fatalf("cannot get motor: %v", err)
   }
   toggleMotor(context.Background(), myMotor)
 
-  myArm, err := arm.FromRobot(robot, "myArm")
+  myArm, err := arm.FromRobot(machine, "myArm")
   if err != nil {
     logger.Fatalf("cannot get arm: %v", err)
   }
-  randomMovement(context.Background(), myArm)
+  // randomMovement(context.Background(), myArm)
 }
 ```
 

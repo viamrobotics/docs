@@ -89,9 +89,9 @@ The STL files for the smart feeder robot are available on [GitHub](https://githu
 
 Now that you've set up your robot, you can start configuring and testing it.
 
-1. If you haven’t already, set up the Raspberry Pi by following our [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/).
-1. Go to [the Viam app](https://app.viam.com) and create a new machine instance in your preferred organization.
-1. Then follow the instructions on the **Setup** tab.
+If you haven’t already, set up the Raspberry Pi by following our [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/).
+
+{{% snippet "setup.md" %}}
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
@@ -299,7 +299,7 @@ Once the model has finished training, deploy it by adding an [ML model service](
 1. Click **Create service** in the lower-left corner.
 1. Select `ML Model` as the type, and select `TFLite CPU` as the model.
 1. Enter `puppyclassifier` as the name, then click **Create**.
-1. To configure your service and deploy a model onto your robot, select **Deploy model on robot** for the **Deployment** field.
+1. To configure your service and deploy a model onto your robot, select **Deploy model on machine** for the **Deployment** field.
 1. Select your trained model (`petfeeder`) as your desired **Model**.
 
 ### Use the vision service to detect your pet

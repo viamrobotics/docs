@@ -98,7 +98,7 @@ See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) f
 
 {{% changelog date="2024-01-31" color="added" title="Use webhooks to trigger actions" %}}
 
-You can now configure [webhooks](/build/configure/#webhooks) to trigger actions when certain types of data are sent from your machine to the cloud.
+You can now configure [webhooks](/build/configure/webhooks/) to trigger actions when certain types of data are sent from your machine to the cloud.
 
 {{% /changelog %}}
 
@@ -787,7 +787,7 @@ You can now access {{< glossary_tooltip term_id="fragment" text="fragments" >}} 
 The configurations you added will now show up automatically in the **Components** or **Services** subtabs in the **Builder** view.
 This makes it easier to monitor what fragments you've added to your machine and how they're configured.
 
-For more information, see [Fragments](/build/configure/#add-a-fragment).
+For more information, see [Fragments](/build/configure/#fragments).
 
 {{% /changelog %}}
 

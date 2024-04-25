@@ -9,10 +9,10 @@
 					{{ $f := os.Stat (printf "/static%s" .) }}
 					{{ $sizeInBytes := div $f.Size 1000 }}
 					{{ if gt $sizeInBytes 1000 }}
-						{{ warnf "Size of preview file %s was %d kB - please reduce file size" . $sizeInBytes  }}
+						{{ errorf "Size of preview file %s was %d kB - please reduce file size" . $sizeInBytes  }}
 					{{ end }}
 				{{else}}
-					{{errorf "Preview file not found - did you use the absolute file path? %s" . }}
+					{{ errorf "Preview file not found - did you use the absolute file path? %s" . }}
 				{{end}}
 			{{ else }}
 			<!-- it's an image -->
@@ -20,10 +20,10 @@
 				{{ $f := os.Stat (printf "/assets%s" .) }}
 				{{ $sizeInBytes := div $f.Size 1000 }}
 				{{ if gt $sizeInBytes 1000 }}
-					{{ warnf "Size of preview file %s was %d kB - please reduce file size" . $sizeInBytes  }}
+					{{ errorf "Size of preview file %s was %d kB - please reduce file size" . $sizeInBytes  }}
 				{{ end }}
 				{{else}}
-					{{errorf "Preview file not found - did you use the absolute file path? %s" . }}
+					{{ errorf "Preview file not found - did you use the absolute file path? %s" . }}
 				{{end}}
 			{{ end }}
 		{{ end }}

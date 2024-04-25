@@ -14,3 +14,5 @@ Ensure that your robot has sufficient space to drive around without hitting anyo
 {{% /alert %}}
 
 If you navigate to the **Discrete** tab, you can use movement modes such as `Straight` and `Spin` and different movement types such as `Continuous` and `Discrete` and directions such as `Forwards` and `Backwards`.
+
+If you do not see the base card in the **CONTROL** tab, check the **LOGS** tab for possible setup or configuration errors.

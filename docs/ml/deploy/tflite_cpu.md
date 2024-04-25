@@ -33,9 +33,9 @@ Enter a name or use the suggested name for your service and click **Create**.
 You can choose to configure your service with an existing model on the machine or deploy a model onto your machine:
 
 {{< tabs >}}
-{{% tab name="Deploy Model on Robot" %}}
+{{% tab name="Deploy Model on Machine" %}}
 
-1. To configure your service and deploy a model onto your machine, select **Deploy model on robot** for the **Deployment** field.
+1. To configure your service and deploy a model onto your machine, select **Deploy model on machine** for the **Deployment** field in the resulting vision service configuration pane,.
 
 2. Click on **Select models** to open a dropdown with all of the ML models available to you privately, as well as all of the ML models available in [the registry](https://app.viam.com), which are shared by users.
    Models that your organization has trained that are not uploaded to the registry will appear first in the dropdown.
@@ -128,9 +128,9 @@ The following parameters are available for a `"tflite_cpu"` model:
 | `num_threads` | Optional | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
 
 {{% alert title="Note" color="note" %}}
-If you **Deploy model on robot**, `model_path` and `label_path` will be automatically configured in the format `"${packages.<model_name>}/<model-name>.tflite"` and `"${packages.<model_name>}/labels.txt"` respectively.
+If you **Deploy model on machine**, `model_path` and `label_path` will be automatically configured in the format `"${packages.<model_name>}/<model-name>.tflite"` and `"${packages.<model_name>}/labels.txt"` respectively.
 
-If you take the **Path to existing model on robot** approach, your model and label paths do not have to be in the same format.
+If you take the **Path to existing model on machine** approach, your model and label paths do not have to be in the same format.
 For example, they might resemble `home/models/fruit/my_fruit_model.tflite`.
 {{% /alert %}}
 

@@ -11,7 +11,7 @@ languages: ["python"]
 viamresources: ["board", "motor", "sensor", "module"]
 level: "Intermediate"
 date: "2023-03-29"
-# updated: "2023-09-25"
+# updated: "2024-04-19"
 cost: 150
 no_list: true
 # SMES: Olivia Miller, Sierra Guequierre, Hazal Mestci
@@ -118,7 +118,7 @@ Put the soil moisture sensor inside of the container holding your plant.
 
 ### Wire your pump
 
-Now, wire and power your pump [motor](/components/motor/) and relay module to complete your hardware setup:
+Now, wire and power your pump and relay module to complete your hardware setup:
 
 1. Attach an [alligator wire clip](https://www.amazon.com/Goupchn-Alligator-Breadboard-Flexible-Electrical/dp/B08M5P6LHR/) to your 5V pump motor's positive wire, and connect it to the NO pin on relay module.
    NO stands for normally open, which will keep the circuit open unless the pin is triggered.
@@ -261,19 +261,24 @@ Test your sensor by putting it in air, water, and different soils to see how the
 
 ### Configure the components of your robot in the Viam app
 
-Follow [this guide](/get-started/installation/#install-viam-server) to install `viam-server` on your Pi, create a new machine, and connect to it on [the Viam app](https://app.viam.com).
+{{% snippet "setup.md" %}}
 
-Then, navigate to your new machine's page in the app and click on the **Config** tab.
+Then, navigate to the the **CONFIGURE** tab of your new machine's page in the app.
 
-First, add your Pi as a [board component](/components/board/) by creating a new component with **type** `board` and **model** `pi`:
+First, add your Pi as a [board component](/components/board/):
 
 {{< tabs name="Configure an Pi Board" >}}
 {{% tab name="Config Builder" %}}
 
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+Select the `board` type, then select the `pi` model.
+Enter a name for your board and click **Create**.
+This tutorial uses the name `local`.
+
 ![Creation of a pi board in the Viam app config builder.](/tutorials/plant-watering-pi/pi-board-config-builder.png)
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -285,55 +290,13 @@ First, add your Pi as a [board component](/components/board/) by creating a new 
       "namespace": "rdk",
       "attributes": {},
       "depends_on": []
-    } // Motor JSON ...
+    }
   ]
 }
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
-
-Then, add your pump as a [motor component](/components/motor/) by adding a new component with **type** `motor` and **model** `gpio`.
-
-Set the motor's attributes **Max RPM** to `1000` and **PWM** to `8 GPIO 14` (the board and GPIO pin that you wired the relay's IN to).
-
-{{< tabs name="Configure an Pump Motor" >}}
-{{% tab name="Config Builder" %}}
-
-![Creation of a pump motor in the Viam app config builder.](/tutorials/plant-watering-pi/pump-motor-config-builder.png)
-
-{{% /tab %}}
-{{% tab name="Raw JSON" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-// Board JSON ... },
-{
-  "name": "water-pump",
-  "model": "gpio",
-  "type": "motor",
-  "namespace": "rdk",
-  "attributes": {
-    "pins": {
-      "a": "",
-      "b": "",
-      "dir": "",
-      "pwm": "8"
-    },
-    "board": "local",
-    "max_rpm": 1000
-  },
-  "depends_on": []
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-Click **Save config**.
-
-Now, if you navigate to your machine's **Control** tab, you should be able to control the motor by setting the power and direction of rotation and clicking the **RUN** button:
-
-![Creation of a pump motor in the Viam app config builder.](/tutorials/plant-watering-pi/pump-motor-control.png)
 
 #### Configure the ADC as a module from the registry
 
@@ -348,16 +311,17 @@ A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" 
 A module can be added to your robot from the Viam registry.
 
 The [Viam registry](https://app.viam.com/registry) allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other.
-You can add a module from the Viam registry directly from your robot’s Configuration tab in the Viam app, using the + Create component button.
+You can add a module from the Viam registry directly from your robot’s **CONFIGURE** tab in the Viam app, using the **+** (Create) button.
 
 Add the mcp300x-adc-sensor module to your robot in 3 steps:
 
-1. Go to your machine's **Config** tab.
-   Select **Create component**.
-2. Search mcp300x.
+1. Go to your machine's **CONFIGURE** tab.
+   Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+2. Search for `mcp300x` and select `sensor / mcp300x`.
    Click **Add module**.
-3. Give your module a name of your choice, and click **Create** to add this module to your machine.
-4. Find your module's card on the **Config** page.
+3. Give your module a name of your choice. We used the name `sensor`.
+4. Click **Create** to add this module to your machine.
+5. Find your module's card on the **CONFIGURE** page.
    In the attributes field, add the necessary attributes as `"channel_map"` and `"sensor_pin"`.
    For example, if you have a moisture sensor on channel 0, and your `sensor_pin` is 8, your configuration should look like this:
 
@@ -370,7 +334,7 @@ Add the mcp300x-adc-sensor module to your robot in 3 steps:
    }
    ```
 
-Save your config.
+Save your config by clicking **Save** in the top right corner of the page.
 
 This module allows you to get multiple readings at the same time from different channels of the ADC sensor.
 If you wire and configure another sensor, such as a temperature sensor on channel 1, you can add the sensor to the `"channel_map"` and get a reading from it.
@@ -379,20 +343,21 @@ If you wire and configure another sensor, such as a temperature sensor on channe
 If you would like to see how the module works, you can find its code on [GitHub](https://github.com/viam-labs/mcp300x-adc-sensor).
 {{< /alert >}}
 
-Now that you have set up your robot and are able to control your motor, you can put the suction tube of your pump into the water cup, and the output tube into the plant!
+Now that you have set up your robot, you can put the suction tube of your pump into the water cup, and the output tube into the plant!
 
 ### Add Python control code
 
 Follow these instructions to start working on your Python control code:
 
-1. Navigate to your machine's page in [the Viam app](https://app.viam.com), and click on the **Code sample** tab.
+1. Navigate to your machine's page in [the Viam app](https://app.viam.com), and click on the **CONNECT** tab and the **Code sample** page.
 2. Select **Python** as the language.
-3. Click **Copy** to copy the generated code sample, which establishes a connection with your robot when run.
+3. Follow the instructions shown under step 1 on that page to install the SDK.
+4. Then, under step 2 on that page, click the copy icon to copy the generated code sample, which establishes a connection with your robot when run.
 
    {{% snippet "show-secret.md" %}}
 
-4. Paste this code sample into a new file in the `plant-watering-robot` directory you created on your Pi.
-5. Name the file <file>plant-watering-robot.py</file>, and save it.
+5. Paste this code sample into a new file in the `plant-watering-robot` directory you created on your Pi.
+6. Name the file <file>plant-watering-robot.py</file>, and save it.
 
 For example, run the following commands on your Pi to create and open the file:
 
@@ -405,14 +370,15 @@ nano plant-watering-robot.py
 Now, you can add code into <file>plant-watering-robot.py</file> to write the logic that defines your plant watering system.
 
 To start, add your system logic code into the `main()` function of the program.
-Use the Viam [motor](/components/motor/#api) and [sensor](/components/sensor/#control-your-sensor-with-viams-client-sdk-libraries) API methods.
+Use the Viam [board](/components/board/#api) and [sensor](/components/sensor/#control-your-sensor-with-viams-client-sdk-libraries) API methods to read from the moisture sensor and control the pump's voltage with PWM as a GPIO pin.
 
 You can get your components from the robot like this:
 
 ```python
-# Note that this name, `sensor`, is defined when you add the module
+# Note that this name, `sensor`, is defined when you add the mcp300x module
 sensor = Sensor.from_robot(robot=robot, name='sensor')
-water_pump = Motor.from_robot(robot=robot, name='water-pump')
+# Note that this name, `local`, is defined when you add the board
+local = Board.from_robot(machine, "local")
 ```
 
 And you can add your system logic to run continuously like this:
@@ -433,8 +399,22 @@ while True:
     if (avg_moisture > 60000):
         print('this plant is too thirsty! giving it more water')
 
-        # Run the water pump for 100 rev. at 1000 rpm
-        await water_pump.go_for(rpm=1000, revolutions=100)
+        # Get the GPIO pin with PWM output (pin number 8) the water pump is
+        # wired to on the board through the relay's IN wire
+        pwm_pin = await local.gpio_pin_by_name(name="8")
+
+        # Run the water pump
+        # Set the duty cycle to .8, meaning that this pin will be in the
+        # high state, powering the pump motor, for 80% of the duration of the
+        # PWM interval period
+        await pwm_pin.set_pwm(duty=0.8)
+
+        # Wait for 15 seconds
+        print('watering')
+        time.sleep(15)
+
+        # Stop the pump by setting the duty cycle to 0%
+        await pwm_pin.set_pwm(duty=0.0)
 
         # Wait 60 seconds so that the water can soak into the soil a bit before
         # trying to water again
@@ -446,8 +426,6 @@ while True:
 Make sure to import `time` at the beginning of your version of <file>plant-watering-robot.py</file> to be able to use `sleep()`!
 Also, make sure to import `viam.components.sensor`.
 {{% /alert %}}
-
-See the motor component's [API documentation](/components/motor/#gofor) for more information about `water_pump.go_for()`.
 
 Save your <file>plant-watering-robot.py</file> program with this logic added in, and then run it on your Pi like this:
 

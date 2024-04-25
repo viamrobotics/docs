@@ -47,31 +47,29 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 
 ## Configure a machine
 
-1. Navigate to the [machine page on the Viam app](https://app.viam.com/robots).
-2. Add a new machine.
-3. Click on the machine and then click on **View setup instructions**.
-   Then follow the instructions to set up your machine part until your machine is connected successfully.
-4. Once your machine is live, select the **CONFIGURE** tab.
-5. Click on the **+** symbol next to your machine in the **Builder** panel and select **Component** in the menu that opens:
+{{% snippet "setup.md" %}}
+
+1. Once your machine is live, select the **CONFIGURE** tab.
+1. Click on the **+** symbol next to your machine in the **Builder** panel and select **Component** in the menu that opens:
 
    - Choose `arm` as the type.
    - Choose your desired model.
      - For example, if you're using an xArm 6, choose the `xArm6` model from the list.
    - Enter `myArm` as the **Name** for this component, then click **Create**.
 
-6. In the newly created `myArm` component panel, configure any attributes as needed.
+1. In the newly created `myArm` component panel, configure any attributes as needed.
    Refer to the documentation for the model for information about your arm's model.
 
-7. Switch to the **Frame** mode and select `myArm` in the left-hand menu to see the default values for your arm.
+1. Switch to the **Frame** mode and select `myArm` in the left-hand menu to see the default values for your arm.
    You do not need to change the default values that populate the new frame card.
 
    <!-- TODO -->
 
    {{<imgproc src="/tutorials/motion/access_02_arm_config.png" resize="1000x" declaredimensions=true alt="Sample machine arm configuration with several fields filled out." style="max-width: 600px" >}}
 
-8. Save your machine configuration.
+1. Save your machine configuration.
 
-9. Go to the **Code sample** page of the **CONNECT** tab and select the programming language you are working in.
+1. Go to the **Code sample** page of the **CONNECT** tab and select the programming language you are working in.
 
    {{% snippet "show-secret.md" %}}
 

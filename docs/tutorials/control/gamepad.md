@@ -13,6 +13,7 @@ images: ["/tutorials/videos/scuttle-gamepad-preview.gif"]
 aliases:
   - "/tutorials/scuttle-gamepad/"
   - "/tutorials/scuttlebot/scuttle-gamepad/"
+  - "/tutorials/control/scuttle-gamepad/"
 tags: ["base", "scuttle", "gamepad"]
 authors: []
 languages: []

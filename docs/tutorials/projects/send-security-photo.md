@@ -11,7 +11,7 @@ languages: ["python"]
 viamresources: ["camera", "mlmodel", "vision"]
 level: "Intermediate"
 date: "2023-03-30"
-# updated: ""
+updated: "2024-04-19"
 cost: "0"
 no_list: true
 ---
@@ -42,86 +42,92 @@ You will use the following software in this tutorial:
 - [Python 3.8 or newer](https://www.python.org/downloads/)
 - [`viam-server`](/get-started/installation/#install-viam-server)
 - [Viam Python SDK](https://python.viam.dev/)
-  - The Viam Python SDK (software development kit) lets you control your Viam-powered robot by writing custom scripts in the Python programming language.
+  - The Viam Python SDK (software development kit) lets you control your Viam-powered machine by writing custom scripts in the Python programming language.
     Install the Viam Python SDK by following [these instructions](https://python.viam.dev/).
 - [yagmail](https://github.com/kootenpv/yagmail)
 - A Gmail account to send emails.
   You can use an existing account, or create a new one.
 
-## Configure your robot on the Viam app
+## Configure your machine on the Viam app
 
-### Install `viam-server` and connect to your robot
+### Install `viam-server` and connect to your machine
 
-Go to the [Viam app](https://app.viam.com) and create a new machine.
-
-Go to the **Setup** tab of your new machine's page and follow the steps [to install `viam-server` on your computer](/get-started/installation/).
+{{% snippet "setup.md" %}}
 
 ### Configure the camera component
 
-On your new machine's page, go to the **Config** tab and create a [camera component](/components/camera/):
+Configure your [webcam](/components/camera/webcam/) so that your machine can get the video stream from your camera:
 
-Click **Create component** in the lower-left corner of the screen.
+1. On the [Viam app](https://app.viam.com), navigate to your machine's page.
+   Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with the Viam app.
 
-Select type `camera` and model `webcam`.
+2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**.
+   Start typing "webcam" and select **camera / webcam**.
+   Give your camera a name.
+   This tutorial uses the name `cam` in all example code.
+   Click **Create**.
 
-Enter `cam` as the name, then click **Create** to add the camera.
+3. Click the **video path** dropdown and select the webcam you'd like to use for this project from the list of suggestions.
 
-Click the **Video Path** field to reveal a dropdown populated with camera paths that have been identified on your machine.
+4. Click **Save** in the top right corner of the screen to save your changes.
 
-Select the path to the camera you want to use.
+### Test your physical camera
 
-Click **Save config** in the lower-left corner of the screen.
+To test your camera, go to the **CONTROL** tab and click to expand your camera's panel.
 
-Navigate to the **Control** tab where you can see your camera working.
+Toggle **View `cam`** to the "on" position.
+The video feed should display.
+If it doesn't, double-check that your config is saved correctly, and check the **LOGS** tab for errors.
 
 ### Configure your services
 
+Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/ml/vision/) on your machine.
 This tutorial uses a pre-trained Machine Learning model from the Viam Registry called [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
 The model can detect a variety of things, including `Persons`.
 You can see a full list of what the model can detect in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
 If you want to train your own model instead, follow the instructions in [train a model](/ml/train-model/).
 
-Click the **Services** subtab.
-
 1. **Configure the ML model service**
 
-   Add an [mlmodel](/ml/) service:
+   Navigate to your machine's **CONFIGURE** tab.
 
-   Click **Create service** in the lower-left corner of the **Services** subtab.
-   Select type `mlmodel`, then select model `tflite_cpu`.
+   Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**.
+   Start typing `ML model` and select **ML model / TFLite CPU** from the builtin options.
 
    Enter `people` as the name, then click **Create**.
 
    In the new ML Model service panel, configure your service.
 
-   ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
+   ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/send-security-photo/app-service-ml-before.png)
 
-   Select the **Deploy model on robot** for the **Deployment** field.
+   Select **Deploy model on machine** for the **Deployment** field.
    Then select the `viam-labs:EfficientDet-COCO` model from the **Models** dropdown.
 
-1. **Configure an mlmodel detector**
+1. **Configure an mlmodel detector** [vision service](/ml/vision/)
 
-   Add a [vision service](/ml/vision/) with the name `myPeopleDetector`, type `vision` and model `mlmodel`.
-   Click **Create service**.
+   Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**.
+   Start typing `ML model` and select **vision / ML model** from the builtin options.
+
+   Enter `myPeopleDetector` as the name, then click **Create**.
 
    In the new vision service panel, configure your service.
 
    Select `people` from the **ML Model** dropdown.
 
-   ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/tipsy/app-service-vision.png)
+   ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/send-security-photo/app-service-vision.png)
 
 ### Configure the detection camera
 
-To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
+To be able to test that the vision service is working, add a [transform camera](/components/camera/transform/) which will add bounding boxes and labels around the objects the service detects.
 
-Click on the **Components** subtab and click **Create component** in the lower-left corner.
-Create a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
-Name it `detectionCam` and click **Create**.
+Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**.
+Start typing "transform" and select **camera / transform**.
+Give your transform camera the name `detectionCam` and click **Create**.
 
-![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)
+![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/send-security-photo/app-detection-before.png)
 
-In the new transform camera panel, replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will use, and defines a pipeline that adds the defined `myPeopleDetector`:
+In the new transform camera panel, click on **{}** to go to advanced mode and replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will use, and defines a pipeline that adds the defined `myPeopleDetector`:
 
 ```json
 {
@@ -138,19 +144,21 @@ In the new transform camera panel, replace the attributes JSON object with the f
 }
 ```
 
-Click **Save config** in the lower-left corner of the screen.
+It is good practice to also add your camera `cam` as a dependency in the **Depends on** section, to ensure the components are loaded in the correct order.
 
-![detectionCam component panel with type camera and model transform, Attributes section filled with source and pipeline information.](/tutorials/tipsy/app-detection-after.png)
+Click **Save** in the top right corner of the screen.
+
+![detectionCam component panel with type camera and model transform, Attributes section filled with source and pipeline information.](/tutorials/send-security-photo/app-detection-after.png)
 
 ### Test the model
 
 {{<imgproc src="/tutorials/send-security-photo/control-view.png" class="alignright" resize="300x" declaredimensions=true alt="the control tab">}}
 
 At this point, you can test that the model is detecting people.
-Navigate to your [machine's Control tab](/fleet/machines/#control).
+Navigate to your [machine's CONTROL tab](/fleet/machines/#control).
 
 Click on the `detectionCam` panel and toggle **View detectionCam** on.
-If the camera sees a person, you will see a red box around the detection along with the confidence score.
+If the vision service detects a person on the configured camera, you will see a red box around the detection along with the confidence score of the detection.
 
 ## How to use yagmail
 
@@ -176,7 +184,6 @@ Example code below (though you don’t have to use it yet, this will get used in
 yag.send('phone_number@gatewayaddress.com', 'subject', contents)
 ```
 
-You will need access to your phone number through your carrier.
 For this tutorial, you are going to send the text to yourself.
 You will replace `to@someone.com` with your phone number and [SMS gateway address](https://en.wikipedia.org/wiki/SMS_gateway).
 You can find yours here: [Gateway Addresses for Mobile Phone Carrier Text Message](https://support-en.wd.com/app/answers/detailweb/a_id/44431/~/gateway-addresses-for-mobile-phone-carrier-text-message).
@@ -198,69 +205,43 @@ This allows you to route the email to your phone as a text message.
 
 ### Create the main script file
 
-On your computer, navigate to the directory where you want to put the code for this project. Create a file there called chocolate_security.py. This will be the main script for the machine.
+On your computer, navigate to the directory where you want to put the code for this project. Create a file there called <file>chocolate_security.py</file>. This will be the main script for the machine.
 
-Make a copy of the [<file>lightupbot.py</file>](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/lightupbot.py) file in your project directory and save it as <file>chocolate_security.py</file>.
-You will use the same robot connection code and detector configuration code but edit some other parts of the file.
-
-Delete the `from kasa import Discover, SmartPlug` line and replace it with the following to import the Yagmail Python library:
+Copy the following code and paste it into <file>chocolate_security.py</file>:
 
 ```python
-import yagmail
-```
-
-### Connect the code to the robot
-
-You need to tell the code how to access your specific robot (which in this case represents your computer and its webcam).
-
-Navigate to the **CONNECT** tab on the Viam app. Make sure Python is selected in the Language selector.
-Get the robot address and API key from the code sample and set them as environment variables or add them at the top of <FILE>chocolate_security.py</FILE>.
-
-{{% snippet "show-secret.md" %}}
-
-Now you need to rewrite the if/else function.
-If a person is detected, your robot will print `sending a message`, take a photo, and save it to your computer as <file>foundyou.png</file> (or whatever name you want).
-
-Then you will create a `yagmail.SMTP` instance to initialize the server connection.
-
-Refer to the code below and the [yagmail instructions](#how-to-use-yagmail) to edit your <file>chocolate_security.py</file> file as necessary.
-
-{{% expand "Click to show the full example code." %}}
-
-```python {class="line-numbers linkable-line-numbers" data-line="6"}
 import asyncio
 import os
+import yagmail
 
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
-from viam.services.vision import VisionClient
-from viam.components.camera import Camera
-import yagmail
+from viam.services.vision import VisionClient, VisModelConfig, \
+    VisModelType, Detection
 
-# These must be set. You can get them from your machine's 'Code sample' tab
-robot_api_key = os.getenv('ROBOT_API_KEY') or ''
-robot_api_key_id = os.getenv('ROBOT_API_KEY_ID') or ''
-robot_address = os.getenv('ROBOT_ADDRESS') or ''
+# Set environment variables. You can get them from your machine's CONNECT tab
+api_key = os.getenv('API_KEY') or ''
+api_key_id = os.getenv('API_KEY_ID') or ''
+address = os.getenv('ADDRESS') or ''
 
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-      api_key=robot_api_key,
-      api_key_id=robot_api_key_id
+      api_key=_api_key,
+      api_key_id=api_key_id
     )
-    return await RobotClient.at_address(robot_address, opts)
+    return await RobotClient.at_address(address, opts)
 
 
 async def main():
-    robot = await connect()
+    machine = await connect()
     # make sure that your detector name in the app matches "myPeopleDetector"
-    myPeopleDetector = VisionClient.from_robot(robot, "myPeopleDetector")
+    myPeopleDetector = VisionClient.from_robot(machine, "myPeopleDetector")
     # make sure that your camera name in the app matches "my-camera"
-    my_camera = Camera.from_robot(robot=robot, name="my_camera")
+    my_camera = Camera.from_robot(robot=machine, name="cam")
 
-    N = 100
-    for i in range(N):
-        img = await my_camera.get_image()
+    while True:
+        img = await my_camera.get_image(mime_type="image/jpeg")
         detections = await myPeopleDetector.get_detections(img)
 
         found = False
@@ -271,7 +252,7 @@ async def main():
         if found:
             print("sending a message")
             # Change this path to your own
-            img.save('/yourpath/foundyou.png')
+            img.save('/yourpath/foundyou.jpeg')
             # Yagmail section
             # Create a yagmail.SMTP instance
             # to initialize the server connection.
@@ -279,12 +260,12 @@ async def main():
             yag = yagmail.SMTP('mygmailusername', 'mygmailpassword')
             # Specify the message contents
             contents = ['There is someone at your desk - beware',
-                        '/yourpath/foundyou.png']
+                        '/yourpath/foundyou.jpeg']
             # Add phone number and gateway address
             # found in the SMS gateway step
             yag.send('xxx-xxx-xxxx@tmomail.net', 'subject', contents)
 
-            # If the robot detects a person and sends a text, we don't need
+            # If the machine detects a person and sends a text, we don't need
             # it to keep sending us more texts so we sleep it for 60
             # seconds before looking for a person again
             await asyncio.sleep(60)
@@ -292,13 +273,24 @@ async def main():
             print("There's nobody here, don't send a message")
             await asyncio.sleep(10)
     await asyncio.sleep(5)
-    await robot.close()
+    await machine.close()
 
 if __name__ == '__main__':
     asyncio.run(main())
 ```
 
-{{% /expand %}}
+After connecting to your machine, your machine will continuously check images for detections of people.
+If a person is detected, your robot will print `sending a message`, take a photo, and save it to your computer as <file>foundyou.png</file> (or whatever name you want).
+
+Then it will create a `yagmail.SMTP` instance to send the email and send the email.
+
+### Connect the code to the robot
+
+You need to tell the code how to access your specific machine (which in this case represents your computer and its webcam).
+
+Navigate to the **CONNECT** tab on the Viam app.
+Make sure Python is selected in the Language selector.
+Get the machine address and API key from the code sample and set them as environment variables or add them at the top of <FILE>chocolate_security.py</FILE>.
 
 {{% snippet "show-secret.md" %}}
 
@@ -306,7 +298,7 @@ Save your code file.
 
 ### Run the code
 
-You are ready to test your robot!
+You are ready to test your machine!
 
 From a command line on your computer, navigate to the project directory and run the code with this command:
 
@@ -342,7 +334,7 @@ There's nobody here, don't send a message
 There's nobody here, don't send a message
 ```
 
-## Summary and next steps
+## Next steps
 
 In this tutorial, you learned how to build a security robot using the vision service, the ML model service, your computer, and your mobile phone, and we all learned not to trust Steve.
 

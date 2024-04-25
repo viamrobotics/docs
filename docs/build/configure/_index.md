@@ -13,33 +13,36 @@ aliases:
 
 Before you can program a smart machine, you must configure it.
 
-A machine's configuration tells the code running the machine what _{{< glossary_tooltip term_id="resource" text="resources" >}}_ (hardware _{{< glossary_tooltip term_id="component" text="components" >}}_ and software _{{< glossary_tooltip term_id="service" text="services" >}}_) it has access to, as well as any relevant parameters for those resources.
+A machine's configuration defines the _{{< glossary_tooltip term_id="resource" text="resources" >}}_ (hardware and software services) it has access to, as well as any relevant parameters for those resources.
+You can configure the following resources:
+
+- [Components](/build/configure/#components): _{{< glossary_tooltip term_id="component" text="Components" >}}_ are the hardware of your machine.
+- [Services](/build/configure/#services): _{{< glossary_tooltip term_id="service" text="Services" >}}_ are the software that runs on your machine.
+- [Processes](/build/configure/#processes): Processes automatically run specified scripts when the machine boots.
+- [Modules](/build/configure/#modules): {{< glossary_tooltip term_id="module" text="Modules" >}} provide {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which are a way to add resource types or models that are not built into Viam.
+- [Remote parts](/build/configure/#remote-parts): Remotes are a way to connect two separate machines so one can access the resources of the other.
+- [Sub-parts](/build/configure/#sub-parts): Sub-parts are a way to connect two computers inside the same machine.
+- [Fragments](/build/configure/#fragments): Fragments are a way of sharing and managing identical configuration files (or parts of config files) across multiple machines.
+- [Frames](#frames): Frames hold reference frame information for the relative position of components in space.
+- [Webhooks](/build/configure/#webhooks): Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
+- [Network](/build/configure/#network): Networking options allow you to configure the bind address for accepting connections.
 
 To start configuring, go to the [Viam app](https://app.viam.com) and create a new machine.
 Open the part status dropdown menu in the top left corner of the page, next to the machine's name.
 Click **View setup instructions** to open the setup instructions.
 Follow the appropriate instructions for your machine's architecture.
 
-The setup steps copy your machine's credentials to your machine and store them at <file>/etc/viam.json</file>.
-The credentials look like this:
-
-```json
-{
-  "cloud": {
-    "app_address": "https://app.viam.com:123",
-    "id": "123456ab-a1b2-12a3-a123-1a2b345cdefg6",
-    "secret": "LOCATION SECRET FROM THE VIAM APP"
-  }
-}
-```
-
-When you turn on your machine, `viam-server` starts up and, by default, it uses the credentials in its local <file>/etc/viam.json</file> to fetch its full config from the [Viam app](https://app.viam.com).
+The setup steps copy your machine's credentials to your machine.
+When you turn on your machine, `viam-server` starts up and uses the provided credentials to fetch its full config from the [Viam app](https://app.viam.com).
 Once the machine has a configuration, it caches it locally and can use the configuration for up to 60 days.
 The machine checks for new configurations every 15 seconds and changes its configuration automatically when a new configuration is available.
 All communication happens securely over HTTPS using secret tokens that are in a machine's configuration.
 
 {{< alert title="Tip" color="tip" >}}
-You can also store your config file in a custom location if desired. See [Run `viam-server`](/get-started/installation/manage/#run-viam-server) for more information.
+On Linux, the configuration is stored at <FILE>/etc/viam.json</FILE> by default and `viam-server` uses this configuration if no configuration is specified on startup.
+
+You can store your config file in a custom location if desired.
+See [Run `viam-server`](/get-started/installation/manage/#run-viam-server) for more information.
 {{< /alert >}}
 
 After you have completed the setup steps and successfully connected to your machine, go to the **CONFIGURE** tab to start adding to the configuration.
@@ -143,7 +146,7 @@ See [Example JSON configuration file](/internals/local-configuration-file/#examp
 
 TODO R2D2 add image once "insert fragment" option is removed -->
 
-### Add a component
+### Components
 
 Components represent the pieces of hardware on your machine that you want to control with Viam.
 To add a new component, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Component** or hit **C**.
@@ -185,7 +188,7 @@ The **Code sample** page on the **CONNECT** tab will also update to include code
 
 {{% /alert %}}
 
-### Add a service
+### Services
 
 [Services](/services/) are built-in software packages that make it easier to add complex capabilities such as motion planning or object detection to your machine.
 To add a new service, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Service** or hit **S**.
@@ -201,7 +204,7 @@ You must configure a service with a `name` and a `type`:
 The other aspects of configuring a service are highly specific to the type of service.
 See the [services documentation](/services/) for more information.
 
-### Add a process
+### Processes
 
 To automatically run a specified command when the machine boots, configure a _{{< glossary_tooltip term_id="process" text="process" >}}_.
 You can configure any command, for example one that executes a binary or a script, to run as a process.
@@ -209,7 +212,7 @@ You can configure any command, for example one that executes a binary or a scrip
 To add a new process, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Process**.
 Find more information in the [processes documentation](/build/configure/processes/).
 
-### Add a local module
+### Modules
 
 [Modular resources](/registry/) are a way to add resource types or models that are not built into Viam.
 Many models are available in the [registry](https://app.viam.com/registry) and you are able to add them as components or services.
@@ -217,21 +220,21 @@ Many models are available in the [registry](https://app.viam.com/registry) and y
 To add a module that is not in the registry and is local to your machine, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Local module**.
 Follow the instructions in our [registry documentation](/registry/configure/#add-a-local-module) to configure the module.
 
-### Add a remote part
+### Remote parts
 
 Configuring a remote part is a way to connect two separate machines so one can access the resources of the other.
 
 To configure a remote part, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Remote part**.
 Find more information in our [machine parts documentation](/build/configure/parts/).
 
-### Add a sub-part
+### Sub-parts
 
 Configure a sub-part to connect two computers inside the same machine.
 
 To configure a sub-part, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Sub-part**.
 Find more information in our [machine parts documentation](/build/configure/parts/).
 
-### Add a fragment
+### Fragments
 
 You can use fragments to share similar {{< glossary_tooltip term_id="resource" text="resource" >}} configuration files across multiple machines in your fleet.
 For example, if you have multiple machines with the same motor hardware, wired the same way, you can create a fragment to configure that motor and share it easily across all of your machines, without needing to individually configure the motor component for each machine.
@@ -239,7 +242,21 @@ For example, if you have multiple machines with the same motor hardware, wired t
 To configure a fragment, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Insert fragment**.
 See [Use Fragments to Configure a Fleet](/fleet/configure-a-fleet/) for more information on creating and deploying fragments.
 
-## Network
+### Frames
+
+The frame system holds reference frame information for the relative position of components in space.
+
+Clicking on the **Frame** mode to visualize and configure the relative positions of components.
+Find more information in the [frame system documentation](/mobility/frame-system/).
+
+### Webhooks
+
+Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
+For example, you can configure a webhook to send you a notification when your robot's sensor collects a new reading.
+
+See [Configure a Webhook](/build/configure/webhooks/) for more information on webhooks.
+
+### Network
 
 Expand a part's configuration card to open its network configuration interface:
 
@@ -248,233 +265,6 @@ Expand a part's configuration card to open its network configuration interface:
 You can configure the address `viam-server` binds to for accepting connections.
 By default, `viam-server` binds to `0.0.0.0:8080` when managed by the Viam app or when authentication and TLS are enabled.
 You can also set the [heartbeat](/build/program/apis/sessions/#heartbeats) window.
-
-## Webhooks
-
-Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
-For example, you can configure a webhook to send you a notification when your robot's sensor collects a new reading.
-Viam provides two webhook types depending on the event you want to trigger on:
-
-- `"part_data_ingested"`: trigger when a sensor on the machine part collects a new reading
-- `"part_online"`: trigger when the machine part is online
-
-To configure a webhook:
-
-{{< tabs name="Types of Webhooks" >}}
-
-1. Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
-   Select **JSON** mode.
-
-2. Follow the instructions depending on the type of webhook you want to implement:
-
-{{% tab name="part_data_ingested" %}}
-
-1. Paste the following JSON template into your JSON config.
-   `"webhooks"` is a top-level section like `"components"`, `"services"`, or any of the other config sections.
-
-{{< tabs >}}
-{{% tab name="JSON Template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-  "webhooks": [
-    {
-      "url": "<Insert your own cloud function or lambda URL for sending the event>",
-      "event": {
-        "attributes": {
-          "data_types": ["binary", "tabular", "file"]
-        },
-        "type": "part_data_ingested"
-      }
-    }
-  ]
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "components": [
-    {
-      "name": "local",
-      "model": "pi",
-      "type": "board",
-      "namespace": "rdk",
-      "attributes": {},
-      "depends_on": []
-    },
-    {
-      "name": "my_temp_sensor",
-      "model": "bme280",
-      "type": "sensor",
-      "namespace": "rdk",
-      "attributes": {},
-      "depends_on": [],
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-              {
-                "method": "Readings",
-                "additional_params": {},
-                "capture_frequency_hz": 0.017
-              }
-            ]
-          }
-        }
-      ]
-    }
-  ],
-  "webhooks": [
-    {
-      "url": "https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws",
-      "event": {
-        "attributes": {
-          "data_types": ["binary", "tabular"]
-        },
-        "type": "part_data_ingested"
-      }
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-2. Replace the URL value with the URL of your cloud/lambda function.
-3. Edit the `data_types` list to include only the types of data you want to trigger on.
-4. Configure [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/) for the relevant components.
-   For example, if you want to trigger a webhook on temperature readings, configure data capture and sync on your temperature sensor.
-   Be aware that the component must return the type of data you configured in `data_types`.
-5. Write your cloud/lambda function to process the request from `viam-server`.
-   The following example function sends a Slack message with a machine's details, such as robot and location IDs, when it receives a request:
-
-   ```python {class="line-numbers linkable-line-numbers"}
-   import functions_framework
-   import requests
-   import time
-
-   @functions_framework.http
-   def hello_http(request):
-     payload = {
-       "Org-ID": request.headers['org-id'] if 'org-id' in request.headers else 'no value',
-       "Location-ID": request.headers['location-id'] if 'location-id' in request.headers else 'no value',
-       "Part-ID": request.headers['part-id'] if 'part-id' in request.headers else 'no value',
-       "Robot-ID": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value'
-     }
-
-     slack_url = "<paste in your own Slack URL>"
-     headers = {}
-
-     response = requests.post(slack_url, json=payload, headers=headers)
-
-     request_json = request.get_json(silent=True)
-     request_args = request.args
-
-     return 'Sent request to {}'.format(slack_url)
-
-   ```
-
-{{% /tab %}}
-{{% tab name="part_online" %}}
-
-1. Paste the following JSON template into your raw JSON config.
-   `"webhooks"` is a top-level section like `"components"`, `"services"`, or any of the other config sections.
-
-{{< tabs >}}
-{{% tab name="JSON Template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-  "webhooks": [
-    {
-      "url": "<Insert your own cloud function or lambda URL for sending the event>",
-      "event": {
-        "type": "part_online",
-        "attributes": {
-          "seconds_between_notifications": 10
-        }
-      }
-    }
-  ]
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "components": [
-    {
-      "name": "local",
-      "model": "pi",
-      "type": "board",
-      "namespace": "rdk",
-      "attributes": {},
-      "depends_on": []
-    },
-    {
-      "name": "my_temp_sensor",
-      "model": "bme280",
-      "type": "sensor",
-      "namespace": "rdk",
-      "attributes": {},
-      "depends_on": [],
-      "service_configs": []
-    }
-  ],
-  "webhooks": [
-    {
-      "url": "https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws",
-      "event": {
-        "type": "part_online",
-        "attributes": {
-          "seconds_between_notifications": 10
-        }
-      }
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-2. Replace the URL value with the URL of your cloud/lambda function.
-3. While your part is online, the webhook action triggers at a specified interval.
-   Edit the `seconds_between_notifications` attribute to set this interval according to your preferences.
-4. Write your cloud/lambda function to process the request from `viam-server`.
-   The following example function sends a Slack message with a machine's details, such as robot and location IDs, when it receives a request:
-
-   ```python {class="line-numbers linkable-line-numbers"}
-   import functions_framework
-   import requests
-   import time
-
-   @functions_framework.http
-   def hello_http(request):
-     payload = {
-       "Org-ID": request.headers['org-id'] if 'org-id' in request.headers else 'no value',
-       "Location-ID": request.headers['location-id'] if 'location-id' in request.headers else 'no value',
-       "Part-ID": request.headers['part-id'] if 'part-id' in request.headers else 'no value',
-       "Robot-ID": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value'
-     }
-
-     slack_url = "<paste in your own Slack URL>"
-     headers = {}
-
-     response = requests.post(slack_url, json=payload, headers=headers)
-
-     request_json = request.get_json(silent=True)
-     request_args = request.args
-
-     return 'Sent request to {}'.format(slack_url)
-
-   ```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 ## Troubleshooting
 
