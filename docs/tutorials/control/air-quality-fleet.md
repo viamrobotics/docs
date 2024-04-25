@@ -3,7 +3,7 @@ title: "Monitor Air Quality with a Fleet of Sensors"
 linkTitle: "Air Quality Fleet"
 type: "docs"
 description: "Use a fleet of machines with air quality sensors to monitor PM 2.5 levels in different indoor and outdoor locations."
-images: ["/tutorials/air-quality-fleet/lower-aqi.png"]
+images: ["/tutorials/air-quality-fleet/three-sensor-dash-wide.png"]
 imageAlt: "A web dashboard showing PM2.5 readings from two air quality sensors."
 tags: ["tutorial"]
 authors: ["Jessamy Taylor"]
@@ -13,34 +13,32 @@ level: "Intermediate"
 date: "2024-04-23"
 # updated: ""  # When the tutorial was last entirely checked
 cost: 200
+# Learning goals:
+# 1. The reader can distinguish the concepts of organizations and locations and can select the appropriate setup when creating their own projects for their business.
+# 2. The reader can identify when to use fragments and evaluate when it is worth using fragments.
+#    The reader can create their own fragments for their projects and knows what to include and exclude from them.
+# 3. The reader recognizes how permissions enable the management of data for a business across multiple customers while providing each customer access to their own data.
 ---
 
-As wildfire smoke, car exhaust, and cooking oils pollute our air, we can become more aware of the pollution levels in the spaces we spend time by collecting data.
-Then, when we take steps to mitigate the problem, the data allows us track whether our interventions are effective.
-
-In this tutorial you will use a fleet of devices to collect data from different places and sync it all to a custom viewing dashboard.
+In this tutorial you will use a fleet of devices to collect air quality data from different places and display the most recent readings from each device in a custom viewing dashboard.
 By completing this project, you will learn to:
 
 - Configure a fleet of identical machines
-- Manage a fleet of dispersed devices remotely
+- Organize your fleet using {{< glossary_tooltip term_id="location" text="locations" >}}
 - Collect and sync data from multiple machines
 - Use the Viam TypeScript SDK to query sensor data and create a custom dashboard
 
-<div class="aligncenter">
-  {{<imgproc src="/tutorials/air-quality-fleet/three-sensor-dash.png" resize="x900" declaredimensions=true alt="Air quality dashboard with PM2.5 readings from three different sensor machines displayed." style="max-width:400px" >}}
-</div>
+  {{<imgproc class="aligncenter" src="/tutorials/air-quality-fleet/three-sensor-dash-wide.png" resize="x900" declaredimensions=true alt="Air quality dashboard in a web browser with PM2.5 readings from three different sensor machines displayed." style="max-width:500px" >}}
 
 ## Requirements
 
 You can complete this tutorial using any number of air quality sensing machines.
-Your {{< glossary_tooltip term_id="machine" text="machines" >}} can be in different {{< glossary_tooltip term_id="location" text="locations" >}} but you should keep them all in one {{< glossary_tooltip term_id="organization" text="organization" >}} for simplicity and so that you can follow along with this tutorial more easily.
-Viam's fleet management system allows you to pull data from any machines you can authenticate to; if you'd like to pull data from multiple organizations that is possible, but is not covered within this tutorial.
 
-For each machine, you will need the following:
+For each machine, you will need the following hardware:
 
 - [SDS011 Nova PM sensor](https://www.amazon.com/SDS011-Quality-Detection-Conditioning-Monitor/dp/B07FSDMRR5)
   - If you choose to use a different air quality sensor, you may need to [create your own module](/registry/create/) implementing the [sensor API](/components/sensor/#api) for your specific hardware.
-- A single-board computer (SBC) with [`viam-server` installed](https://docs.viam.com/get-started/installation/) and connected to the [Viam app](https://app.viam.com)
+- A single-board computer (SBC) [capable of running `viam-server`](https://docs.viam.com/get-started/installation/)
 - An appropriate power supply
 
 In addition to `viam-server`, this tutorial uses the following software:
@@ -48,13 +46,112 @@ In addition to `viam-server`, this tutorial uses the following software:
 - [`sds0011` sensor module](https://github.com/zaporter/viam-sds011)
 - The [Viam TypeScript SDK](https://ts.viam.dev/)
 
-## Set up your hardware
+## Decide how you will organize your fleet
 
-1. For each sensing machine, connect the PM sensor to a USB port on the machine's SBC.
-2. Enable serial communication on each SBC.
+Before you start connecting your devices to the Viam app, you'll need to decide how you want to group your devices.
+
+In the Viam app, {{< glossary_tooltip term_id="machine" text="machines" >}} are grouped into [_locations_](/fleet/locations/), and locations are grouped into [_organizations_](/fleet/organizations/).
+Each location can represent either a physical location or some other conceptual grouping.
+An organization is the highest level grouping, and often contains all the locations (and machines) of an entire company.
+These groupings allow you to manage permissions; you can grant a user access to an individual machine, to all the machines in a location, or to everything in an entire organization.
+You choose how to group your machines.
+
+{{<imgproc class="aligncenter" src="/fleet/fleet.svg" declaredimensions=true alt="Tree diagram with three locations that belong to one organization. One location contains sub-location A containing two machines and sub-location B containing one machine. Each of the two other locations contains machines directly with no sub-locations." >}}
+
+### Example
+
+Imagine you create a PM2.5 monitoring company called Pollution Monitoring Made Simple.
+Anyone can sign up and order one of your sensing machines.
+When a new customer signs up, you assemble a new machine with a sensor, SBC, and power supply.
+
+Before shipping the sensor machine to your new client, you connect the machine to the Viam app and configure it.
+To manage all your company's air quality sensing machines together, you create one organization called Pollution Monitoring Made Simple.
+Inside that organization, you create a location for each customer.
+You have some individual customers, for example Antonia, who have a sensor machine in their home, or perhaps one inside and one outside.
+You have other customers who are businesses, for example RobotsRUs, who have two offices, one in New York and one in Oregon, with multiple sensor machines in each.
+RobotsRUs wants to separate their sensor data by physical location, so you create a location for RobotsRUs and then create sub-locations to group their New York sensor machines and their Oregon machines.
+
+When you grant Antonia access to her location, she will be able to view data from the air sensors at her home.
+When you grant RobotsRUs access to their location, they will be able to view data from all of their sub-locations, or they can choose to spin up a dashboard showing data from only one sub-location at a time.
+You, as the organization owner, will be able to manage any necessary configuration changes for all air sensing machines in all locations created within the Pollution Monitoring Made Simple organization.
+
+### Organize your fleet
+
+For this tutorial, we will walk through how to set up your fleet based on the example above.
+You can choose to manage your fleet of machines differently based on what makes sense for your use case; if you're only configuring one or two sensors for personal use, feel free to add all your machines to one location and skip to the [next section](#connect-your-machines-to-the-viam-app).
+
+1. Navigate to the [Viam app](https://app.viam.com) in a web browser.
+   Create an account and log in.
+1. Click the dropdown in the upper-right corner of the **FLEET** page and use the **+** button to create a new organization for your air quality machine company.
+   Name the organization and click **Create**.
+1. Click **FLEET** in the upper-left corner of the page.
+   A new location called `First Location` is automatically generated for you.
+   Rename it so you can use it for Antonia's machines:
+
+   Click the pencil icon next to the location name, change it to `Antonia's Home`, then click **Save**.
+
+1. Now, create a separate location for RobotsRUs:
+
+   On the left side of the **FLEET** page, find the **New location** interface.
+   Type in `RobotsRUs` and click **Add**.
+
+1. Add sub-locations to the RobotsRUs location to group the machines at each of their offices:
+
+   Add a new location called `Oregon Office` using the same **New location** interface.
+   Then, find the **New parent location** dropdown on the Oregon Office page.
+   Select **RobotsRUs** and click **Change**.
+
+   Repeat to add the New York office: Add a new location called `New York Office`, then change its parent location to **RobotsRUs**.
+
+   {{<imgproc class="aligncenter" src="/tutorials/air-quality-fleet/locations-done.png" resize="x900" declaredimensions=true alt="The New York Office fleet page. The left Locations navigation panel lists Antonia's Home and RobotsRUs, with New York Office and Oregon Office nested inside RobotsRUs." >}}
+
+   In the next section, you'll add machines to the locations.
+
+## Connect your machines to the Viam app
+
+With your organizational structure in place, let's add some machines:
+
+1. Connect the single-board computer you'll be shipping to Antonia to power.
+   If the computer does not already have a Viam-compatible operating system installed, follow the [Prepare your board steps in the Installation Guide](/get-started/installation/#prepare-your-board) to install a compatible operating system.
+   You _do not_ need to follow the "Install `viam-server`" section; you will do that in the next step!
+
+1. Enable serial communication so that the SBC can communicate with the air quality sensor.
    For example, if you are using a Raspberry Pi, SSH to it and [enable serial communication in `raspi-config`](/get-started/installation/prepare/rpi-setup/#enable-communication-protocols).
 
-3. Position your sensing machines in strategic locations, and connect them to power.
+1. Click **Antonia's Home** in the left navigation menu to navigate to that location's page.
+   In the **New machine** field near the top-right corner of the screen, type in a name for the machine, such as `Home Air Quality Sensor`, and click **Add machine**.
+
+1. You'll be taken to the machine details page and prompted to set up your machine part.
+   Click **View setup instructions**.
+   You can find these instructions later if you need them by clicking the part status indicator (which currently reads **Awaiting setup**).
+
+1. Follow the **Set up your machine part** instructions to install `viam-server` on the machine and connect it to the Viam app.
+   `viam-server` is the binary that runs on the single-board computer (SBC), providing functionality including sensor data collection and connection to the Viam app.
+
+   The setup page will indicate when the machine is successfully connected.
+
+1. If Antonia has more than one air sensing machine, add a new machine to her location and set it up in the same way.
+
+1. It's time to add some machines to the RobotsRUs location.
+   Connect one of the single-board computers you'll send to RobotsRUs' Oregon office to power.
+   Click **RobotsRUs** in the locations list.
+   Click the **Oregon Office** sub-location to navigate to its page.
+1. Add a new machine, naming it `air-sensor1` for example.
+1. Click **View setup instructions** and follow the steps on that page, just as you did with Antonia's machines.
+1. Repeat this process for each machine you're shipping to RobotsRUs' Oregon office, then navigate to the New York Office location and set up those machines.
+
+## Set up your hardware
+
+{{% alert title="Note" color="note" %}}
+If this were a real company and you were shipping air sensing machines to customers, you would have the customer plug in power to the machine wherever they are setting it up.
+Since you already installed `viam-server`, once a customer connects the machine to power and sets up wifi, the machine will automatically re-connect to the Viam app and pull any configuration updates.
+{{% /alert %}}
+
+For each sensing machine:
+
+1. Connect the PM sensor to a USB port on the machine's SBC.
+
+1. Position your sensing machines in strategic locations, and connect them to power.
    Here are some ideas for where to place sensing machines:
 
    - At home:
@@ -69,10 +166,17 @@ In addition to `viam-server`, this tutorial uses the following software:
 
 You need to [configure](/build/configure/) your hardware so that each of your machines can communicate with its attached air quality [sensor](/components/sensor/).
 
-No matter how many sensing machines you use, you can configure them all very quickly using [fragments](/fleet/configure-a-fleet/).
-You'll start by configuring one machine and creating a fragment based on that machine's configuration.
-Then, you'll add the fragment to each of your other machines.
-This way, if you need to update the config in the future, you just update the fragment and the change is pushed to all the machines at once.
+No matter how many sensing machines you use, you can configure them efficiently by using a reusable configuration block called a _{{< glossary_tooltip term_id="fragment" text="fragment" >}}_.
+Fragments are a way to share and manage identical machine configurations across multiple machines.
+Instead of going through all the configuration steps for each machine, you'll start by configuring just one machine and create a fragment based on that machine's configuration.
+Then, you'll add the fragment to each of your machines.
+With all your machines configured using the same fragment, if you need to update the config in the future, you can just update the fragment and all machines will automatically get the update.
+
+{{< alert title="Note" color="note" >}}
+If this was a real company, adding the fragment to each individual machine would quickly become tiring.
+We're showing you how to do this manually as a learning device.
+Once you understand how to configure machines and use fragments, you can use [Provisioning](/fleet/provision/) to automatically set up your devices.
+{{< /alert >}}
 
 ### Configure your first machine
 
@@ -141,6 +245,11 @@ Now it's time to enable [data capture](/data/capture/) and [cloud sync](/data/cl
 10. Save the config.
 
 ### Create a fragment
+
+{{% alert title="Note" color="note" %}}
+If you are only using one air quality sensing machine for this tutorial, you do not need to create or use fragments, since fragments are useful only when configuring multiple machines.
+You can skip to [Test your sensors](#test-your-sensors).
+{{% /alert %}}
 
 Whilst you clicked around the builder UI configuring your machine, the Viam app generated a JSON configuration file with all your parameters.
 This is the file that tells `viam-server` what resources are available to it and how everything is connected.
@@ -247,13 +356,13 @@ If you'd like to create your own customizable dashboard using the Viam TypeScrip
 
 The [Viam TypeScript SDK](https://ts.viam.dev/) allows you to build custom web interfaces to interact with your machines.
 For this project, you'll use it to build a page that displays your air quality sensor data.
-You'll host the website locally on your Linux or MacOS computer, and view the interface in a web browser on that computer.
+You'll host the website locally on your personal computer, and view the interface in a web browser on that computer.
 
-{{<imgproc class="aligncenter" src="/tutorials/air-quality-fleet/lower-aqi.png" resize="x900" declaredimensions=true alt="The air quality dashboard you'll build. This one has PM2.5 readings from two different sensor machines displayed, and a key with categories of air quality." style="max-width:300px" >}}
+{{<imgproc class="aligncenter" src="/tutorials/air-quality-fleet/two-sensors.png" resize="x1000" declaredimensions=true alt="The air quality dashboard you'll build. This one has PM2.5 readings from two different sensor machines displayed, and a key with categories of air quality." style="max-width:500px" >}}
 
 ### Set up your TypeScript project
 
-Complete the following steps on your Linux or MacOS laptop or desktop.
+Complete the following steps on your laptop or desktop.
 You don't need to install or edit anything else on your machine's single-board computer (aside from `viam-server` which you already did); you'll be running the TypeScript code from your personal computer.
 
 1.  Make sure you have the latest version of [Node.JS](https://nodejs.org/en) installed on your computer.
@@ -799,10 +908,14 @@ If you look at line 5 of <file>package.json</file>, you can see that `./main.ts`
    npm start
    ```
 
+   {{<imgproc src="/tutorials/air-quality-fleet/terminal-url.png" resize="x900" declaredimensions=true alt="Terminal window with the command 'npm start' run inside the aqi-dashboard folder. The output says 'start' and then 'esbuild' followed by the esbuild string from the package.json file you configured. Then there's 'Local:' followed by a URL and 'Network:' follwed by a different URL." style="max-width:700px" >}}
+
 1. The terminal should output a line such as `Local:  http://127.0.0.1:8000/`.
    Copy the URL the terminal displays and paste it into the address bar in your web browser.
    The data may take up to approximately 5 seconds to load, then you should see air quality data from all of your sensors.
    If the dashboard does not appear, right-click the page, select **Inspect**, and check for errors in the console.
+
+   {{<imgproc class="aligncenter" src="/tutorials/air-quality-fleet/three-sensor-dash.png" resize="x900" declaredimensions=true alt="Air quality dashboard in a web browser with PM2.5 readings from three different sensor machines displayed." style="max-width:500px" >}}
 
    Great work.
    You've learned how to configure a fleet of machines, sync their data to one place, and pull that data into a custom dashboard using TypeScript.
