@@ -91,7 +91,10 @@ Once you have added the data management service, enable image data capture for y
      {{< imgproc src="/tutorials/filtered-camera-module/configure-webcam-data-capture.png" alt="The camera component configuration pane in the Viam app with data capture configured and enabled" resize="800x" >}}
 
 1. Click **Save** in the top right corner of the page to save your changes.
-1. In the [Viam app](https://app.viam.com), navigate to the [**DATA**](/data/view/) tab, where you should see images captured by your camera component appearing steadily.
+1. You can check that data is being captured by, click on the menu on the camera and select **View captured data**.
+
+   {{<imgproc src="/data/capture-data-menu.png" resize="500x" declaredimensions=true alt="Resource menu with the options Rename, Duplicate, View captured data, and Delete" class="aligncenter">}}
+
    If you see images appear here, proceed to the next step.
    If you do not see images appear after a short time, see the [troubleshooting](#troubleshooting) section for further guidance.
 

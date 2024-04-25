@@ -367,6 +367,18 @@ The following example captures data from the `ReadImage` method of a camera:
 
 {{% /expand%}}
 
+## View captured data
+
+To view captured data for a {{< glossary_tooltip term_id="part" text="machine part" >}}, click on the menu in the top right of its card and select **View captured data**.
+
+{{<imgproc src="/data/part-menu.png" resize="300x" declaredimensions=true alt="Machine menu with the options Rename, Restart part, View captured data, View setup instructions, View history, View debug configuration, and Delete machine">}}
+
+To view captured data for a component or service, click on the menu in the top right of its card and select **View captured data**.
+
+![Resource menu with the options Rename, Duplicate, View captured data, and Delete](/data/resource-menu.png)
+
+To view all the captured data you have access to, see [View Data](/data/view/).
+
 ## Troubleshooting
 
 ### Images are dim on start up

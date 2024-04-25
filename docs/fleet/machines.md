@@ -65,6 +65,7 @@ After connecting your machine, go to the **CONFIGURE** tab, and start adding {{<
 
 <!-- TODO R2D2: need to check that this works once page is set up -->
 
+The Viam app keeps a record of your configuration changes, allowing you to revert to earlier configurations.
 To see the history of the configuration of a machine part, click on **History** on the right side of its card on the **CONFIGURE** tab.
 
 For more information, see the [configuration documentation](/build/configure/#the-configure-tab).
