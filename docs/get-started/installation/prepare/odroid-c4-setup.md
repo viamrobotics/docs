@@ -4,7 +4,10 @@ linkTitle: "Odroid C4 Setup"
 weight: 15
 type: "docs"
 description: "Image a Odroid C4 to prepare it for viam-server installation."
-images: ["/get-started/installation/thumbnails/odroid-C4.png"]
+images:
+  [
+    "/Users/skyleilani/docs/assets/get-started/installation/thumbnails/odroid-c4.png",
+  ]
 imageAlt: "Odroid C4"
 no_list: true
 # SME:
