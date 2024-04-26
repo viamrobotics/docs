@@ -59,8 +59,6 @@ The following attributes are available for `odroid` boards:
 | `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](#digital_interrupts).|
 | `analogs` | object | Optional | Attributes of any pins that can be used as Analog-to-Digital Converter (ADC) inputs. See [configuration info](#analogs).|
 
-Refer to [Attribute configuration](https://docs.viam.com/components/board/numato/#attribute-configuration) for more information.
-
 ### `digital_interrupts`
 
 {{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
