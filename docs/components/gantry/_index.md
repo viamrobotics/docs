@@ -570,7 +570,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```go {class="line-numbers linkable-line-numbers"}
 myGantry, err := gantry.FromRobot(machine, "my_gantry")
 
-err = myGantry.Close(ctx)
+err = myGantry.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
