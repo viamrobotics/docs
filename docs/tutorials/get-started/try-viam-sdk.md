@@ -202,7 +202,7 @@ npm start
 
 Open a web browser and visit `localhost:8000`.
 You should see a disabled button that says `Click me`.
-Open the developer console by right-clicking the page and selecting `Inspect`, then selecting the console tab.
+Open the developer console to see the console output.
 If you successfully configured your robot and it is able to connect to the Viam app, you will see some output including the names of your rover's resources.
 These are the components and services that the robot is configured with in the Viam app.
 
