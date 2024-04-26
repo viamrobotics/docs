@@ -154,13 +154,13 @@ await my_base.move_straight(distance=40, velocity=-90)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBase, err := base.FromRobot(robot, "my_base")
+myBase, err := base.FromRobot(machine, "my_base")
 
 // Move the base forward 40 mm at a velocity of 90 mm/s.
-myBase.MoveStraight(context.Background(), distanceMm: 40, mmPerSec: 90, nil)
+myBase.MoveStraight(context.Background(), 40, 90, nil)
 
 // Move the base backward 40 mm at a velocity of -90 mm/s.
-myBase.MoveStraight(context.Background(), distanceMm: 40, mmPerSec: -90, nil)
+myBase.MoveStraight(context.Background(), 40, -90, nil)
 ```
 
 {{% /tab %}}
@@ -212,10 +212,10 @@ await my_base.spin(angle=10, velocity=15)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBase, err := base.FromRobot(robot, "my_base")
+myBase, err := base.FromRobot(machine, "my_base")
 
 // Spin the base 10 degrees at an angular velocity of 15 deg/sec.
-myBase.Spin(context.Background(), angleDeg: 10, degsPerSec: 15, nil)
+myBase.Spin(context.Background(), 10, 15, nil)
 ```
 
 {{% /tab %}}
@@ -298,19 +298,19 @@ await my_base.set_power(
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBase, err := base.FromRobot(robot, "my_base")
+myBase, err := base.FromRobot(machine, "my_base")
 
 // Make your wheeled base move forward. Set linear power to 75%.
 logger.Info("move forward")
-err = myBase.SetPower(context.Background(), linear: r3.Vector{Y: .75}, angular: r3.Vector{}, nil)
+err = myBase.SetPower(context.Background(), r3.Vector{Y: .75}, r3.Vector{}, nil)
 
 // Make your wheeled base move backward. Set linear power to -100%.
 logger.Info("move backward")
-err = myBase.SetPower(context.Background(), linear: r3.Vector{Y: -1}, angular: r3.Vector{}, nil)
+err = myBase.SetPower(context.Background(), r3.Vector{Y: -1}, r3.Vector{}, nil)
 
 // Make your wheeled base spin left. Set angular power to 100%.
 logger.Info("spin left")
-err = myBase.SetPower(context.Background(), linear: r3.Vector{}, angular: r3.Vector{Z: 1}, nil)
+err = myBase.SetPower(context.Background(), r3.Vector{}, r3.Vector{Z: 1}, nil)
 
 // Make your wheeled base spin right. Set angular power to -75%.
 logger.Info("spin right")
@@ -370,10 +370,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go {class="line-numbers linkable-line-numbers"}
 // import "github.com/golang/geo/r3" ...
 
-myBase, err := base.FromRobot(robot, "my_base")
+myBase, err := base.FromRobot(machine, "my_base")
 
 // Set the linear velocity to 50 mm/sec and the angular velocity to 15 deg/sec.
-myBase.SetVelocity(context.Background(), linear: r3.Vector{Y: 50}, angular: r3.Vector{Z: 15}, nil)
+myBase.SetVelocity(context.Background(), r3.Vector{Y: 50}, r3.Vector{Z: 15}, nil)
 ```
 
 {{% /tab %}}
@@ -421,7 +421,7 @@ await my_base.stop()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBase, err := base.FromRobot(robot, "my_base")
+myBase, err := base.FromRobot(machine, "my_base")
 
 // Move the base forward 10 mm at a velocity of 50 mm/s.
 myBase.MoveStraight(context.Background(), 10, 50, nil)
@@ -473,7 +473,7 @@ print('Moving: ', moving)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#MovingCheckable).
 
 ```go
-myBase, err := base.FromRobot(robot, "my_base")
+myBase, err := base.FromRobot(machine, "my_base")
 
 // Check whether the base is currently moving.
 moving, err := myBase.IsMoving(context.Background())
@@ -534,7 +534,7 @@ print(f"Wheel circumference of base: {properties.wheel_circumference_meters}")
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBase, err := base.FromRobot(robot, "my_base")
+myBase, err := base.FromRobot(machine, "my_base")
 
 // Get the width and turning radius of the base
 properties, err := myBase.Properties(context.Background(), nil)
@@ -596,7 +596,7 @@ if geometries:
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBase, err := base.FromRobot(robot, "my_base")
+myBase, err := base.FromRobot(machine, "my_base")
 
 geometries, err := myBase.Geometries(context.Background(), nil)
 
@@ -650,7 +650,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBase, err := base.FromRobot(robot, "my_base")
+myBase, err := base.FromRobot(machine, "my_base")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myBase.DoCommand(context.Background(), command)
@@ -696,7 +696,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBase, err := base.FromRobot(robot, "my_base")
+myBase, err := base.FromRobot(machine, "my_base")
 
 err := myBase.Close(ctx)
 ```
