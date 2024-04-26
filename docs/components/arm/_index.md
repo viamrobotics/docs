@@ -425,7 +425,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 myArm, err := arm.FromRobot(machine, "my_arm")
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
-err := myArm.Stop(context.Background(), nil)
+err = myArm.Stop(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -669,7 +669,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```go {class="line-numbers linkable-line-numbers"}
 myArm, err := arm.FromRobot(machine, "my_arm")
 
-err := myArm.Close(ctx)
+err = myArm.Close(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

@@ -698,7 +698,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(machine, "my_base")
 
-err := myBase.Close(ctx)
+err = myBase.Close(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
