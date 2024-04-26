@@ -1,6 +1,5 @@
 ### BlockForOperation
 
-
 **Parameters:**
 
 - `id` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -8,7 +7,6 @@
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.robot.robot/RobotServiceClient/blockForOperation.html).
 
 ### CancelOperation
-
 
 **Parameters:**
 
@@ -18,7 +16,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DiscoverComponents
 
-
 **Parameters:**
 
 - `queries` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[DiscoveryQuery](https://flutter.viam.dev/viam_protos.robot.robot/DiscoveryQuery-class.html)>:
@@ -26,7 +23,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.robot.robot/RobotServiceClient/discoverComponents.html).
 
 ### FrameSystemConfig
-
 
 **Parameters:**
 
@@ -36,14 +32,12 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetCloudMetadata
 
-
 **Parameters:**
 
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.robot.robot/RobotServiceClient/getCloudMetadata.html).
 
 ### GetOperations
-
 
 **Parameters:**
 
@@ -52,14 +46,12 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetSessions
 
-
 **Parameters:**
 
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.robot.robot/RobotServiceClient/getSessions.html).
 
 ### GetStatus
-
 
 **Parameters:**
 
@@ -69,7 +61,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### Log
 
-
 **Parameters:**
 
 - `logs` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[LogEntry](https://flutter.viam.dev/viam_protos.common.common/LogEntry-class.html)>:
@@ -78,7 +69,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### ResourceNames
 
-
 **Parameters:**
 
 
@@ -86,14 +76,12 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### ResourceRPCSubtypes
 
-
 **Parameters:**
 
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.robot.robot/RobotServiceClient/resourceRPCSubtypes.html).
 
 ### SendSessionHeartbeat
-
 
 **Parameters:**
 
@@ -103,7 +91,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### StartSession
 
-
 **Parameters:**
 
 - `resume` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -112,7 +99,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### StopAll
 
-
 **Parameters:**
 
 - `extra` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[StopExtraParameters](https://flutter.viam.dev/viam_protos.robot.robot/StopExtraParameters-class.html)>:
@@ -120,7 +106,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.robot.robot/RobotServiceClient/stopAll.html).
 
 ### StreamStatus
-
 
 **Parameters:**
 
@@ -131,7 +116,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### TransformPCD
 
-
 **Parameters:**
 
 - `destination` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)>:
@@ -141,7 +125,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.robot.robot/RobotServiceClient/transformPCD.html).
 
 ### TransformPose
-
 
 **Parameters:**
 

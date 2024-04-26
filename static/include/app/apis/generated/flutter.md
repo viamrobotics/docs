@@ -1,6 +1,5 @@
 ### AddRole
 
-
 **Parameters:**
 
 - `authorization` [(Authorization)](https://flutter.viam.dev/viam_protos.app.app/Authorization-class.html):
@@ -8,7 +7,6 @@
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/addRole.html).
 
 ### ChangeRole
-
 
 **Parameters:**
 
@@ -19,7 +17,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### CheckPermissions
 
-
 **Parameters:**
 
 - `permissions` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[AuthorizedPermissions](https://flutter.viam.dev/viam_protos.app.app/AuthorizedPermissions-class.html)>:
@@ -27,7 +24,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/checkPermissions.html).
 
 ### CreateFragment
-
 
 **Parameters:**
 
@@ -39,7 +35,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### CreateKey
 
-
 **Parameters:**
 
 - `authorizations` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html)<[Authorization](https://flutter.viam.dev/viam_protos.app.app/Authorization-class.html)>:
@@ -49,7 +44,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### CreateKeyFromExistingKeyAuthorizations
 
-
 **Parameters:**
 
 - `id` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -57,7 +51,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/createKeyFromExistingKeyAuthorizations.html).
 
 ### CreateLocation
-
 
 **Parameters:**
 
@@ -69,7 +62,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### CreateLocationSecret
 
-
 **Parameters:**
 
 - `locationId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -77,7 +69,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/createLocationSecret.html).
 
 ### CreateModule
-
 
 **Parameters:**
 
@@ -88,7 +79,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### CreateOrganization
 
-
 **Parameters:**
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -96,7 +86,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/createOrganization.html).
 
 ### CreateOrganizationInvite
-
 
 **Parameters:**
 
@@ -109,7 +98,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### CreateRegistryItem
 
-
 **Parameters:**
 
 - `name` [(PackageType)](https://flutter.viam.dev/viam_protos.app.packages/PackageType-class.html):
@@ -120,7 +108,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### CreateRobotPartSecret
 
-
 **Parameters:**
 
 - `partId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -128,7 +115,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/createRobotPartSecret.html).
 
 ### DeleteFragment
-
 
 **Parameters:**
 
@@ -138,7 +124,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DeleteKey
 
-
 **Parameters:**
 
 - `id` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -147,7 +132,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DeleteLocation
 
-
 **Parameters:**
 
 - `locationId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -155,7 +139,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/deleteLocation.html).
 
 ### DeleteLocationSecret
-
 
 **Parameters:**
 
@@ -166,7 +149,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DeleteOrganization
 
-
 **Parameters:**
 
 - `organizationId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -174,7 +156,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/deleteOrganization.html).
 
 ### DeleteOrganizationInvite
-
 
 **Parameters:**
 
@@ -185,7 +166,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DeleteOrganizationMember
 
-
 **Parameters:**
 
 - `organizationId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -195,7 +175,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DeleteRegistryItem
 
-
 **Parameters:**
 
 - `itemId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -203,7 +182,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/deleteRegistryItem.html).
 
 ### DeleteRobot
-
 
 **Parameters:**
 
@@ -213,7 +191,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DeleteRobotPart
 
-
 **Parameters:**
 
 - `partId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -221,7 +198,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/deleteRobotPart.html).
 
 ### DeleteRobotPartSecret
-
 
 **Parameters:**
 
@@ -232,7 +208,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetFragment
 
-
 **Parameters:**
 
 - `id` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -240,7 +215,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/getFragment.html).
 
 ### GetLocation
-
 
 **Parameters:**
 
@@ -250,7 +224,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetModule
 
-
 **Parameters:**
 
 - `moduleId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -258,7 +231,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/getModule.html).
 
 ### GetOrganization
-
 
 **Parameters:**
 
@@ -268,7 +240,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetOrganizationNamespaceAvailability
 
-
 **Parameters:**
 
 - `publicNamespace` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -276,7 +247,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/getOrganizationNamespaceAvailability.html).
 
 ### GetOrganizationsWithAccessToLocation
-
 
 **Parameters:**
 
@@ -286,7 +256,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetRegistryItem
 
-
 **Parameters:**
 
 - `itemId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -294,7 +263,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/getRegistryItem.html).
 
 ### GetRobot
-
 
 **Parameters:**
 
@@ -304,7 +272,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetRobotAPIKeys
 
-
 **Parameters:**
 
 - `robotId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -312,7 +279,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/getRobotAPIKeys.html).
 
 ### GetRobotPart
-
 
 **Parameters:**
 
@@ -322,7 +288,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetRobotPartHistory
 
-
 **Parameters:**
 
 - `id` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -330,7 +295,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/getRobotPartHistory.html).
 
 ### GetRobotPartLogs
-
 
 **Parameters:**
 
@@ -344,7 +308,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetRobotParts
 
-
 **Parameters:**
 
 - `robotId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -353,7 +316,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetUserIDByEmail
 
-
 **Parameters:**
 
 - `email` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -361,7 +323,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/getUserIDByEmail.html).
 
 ### ListAuthorizations
-
 
 **Parameters:**
 
@@ -372,7 +333,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### ListFragments
 
-
 **Parameters:**
 
 - `organizationId` [(bool)](https://api.flutter.dev/flutter/dart-core/bool-class.html):
@@ -382,7 +342,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### ListKeys
 
-
 **Parameters:**
 
 - `orgId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -390,7 +349,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/listKeys.html).
 
 ### ListLocations
-
 
 **Parameters:**
 
@@ -400,7 +358,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### ListModules
 
-
 **Parameters:**
 
 - `organizationId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -408,7 +365,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/listModules.html).
 
 ### ListOrganizationMembers
-
 
 **Parameters:**
 
@@ -418,14 +374,12 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### ListOrganizations
 
-
 **Parameters:**
 
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/listOrganizations.html).
 
 ### ListOrganizationsByUser
-
 
 **Parameters:**
 
@@ -434,7 +388,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/listOrganizationsByUser.html).
 
 ### ListRegistryItems
-
 
 **Parameters:**
 
@@ -450,7 +403,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### ListRobots
 
-
 **Parameters:**
 
 - `locationId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -458,7 +410,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/listRobots.html).
 
 ### LocationAuth
-
 
 **Parameters:**
 
@@ -468,7 +419,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### MarkPartAsMain
 
-
 **Parameters:**
 
 - `partId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -477,7 +427,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### MarkPartForRestart
 
-
 **Parameters:**
 
 - `partId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -485,7 +434,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/markPartForRestart.html).
 
 ### NewRobot
-
 
 **Parameters:**
 
@@ -496,7 +444,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### NewRobotPart
 
-
 **Parameters:**
 
 - `partName` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -506,7 +453,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### RemoveRole
 
-
 **Parameters:**
 
 - `authorization` [(Authorization)](https://flutter.viam.dev/viam_protos.app.app/Authorization-class.html):
@@ -514,7 +460,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/removeRole.html).
 
 ### ResendOrganizationInvite
-
 
 **Parameters:**
 
@@ -525,7 +470,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### RotateKey
 
-
 **Parameters:**
 
 - `id` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -533,7 +477,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/rotateKey.html).
 
 ### ShareLocation
-
 
 **Parameters:**
 
@@ -543,7 +486,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/shareLocation.html).
 
 ### TailRobotPartLogs
-
 
 **Parameters:**
 
@@ -555,7 +497,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### UnshareLocation
 
-
 **Parameters:**
 
 - `locationId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -564,7 +505,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/unshareLocation.html).
 
 ### UpdateFragment
-
 
 **Parameters:**
 
@@ -577,7 +517,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### UpdateLocation
 
-
 **Parameters:**
 
 - `locationId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -588,7 +527,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/updateLocation.html).
 
 ### UpdateModule
-
 
 **Parameters:**
 
@@ -603,7 +541,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### UpdateOrganization
 
-
 **Parameters:**
 
 - `cid` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -616,7 +553,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### UpdateOrganizationInviteAuthorizations
 
-
 **Parameters:**
 
 - `addAuthorizations` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Authorization](https://flutter.viam.dev/viam_protos.app.app/Authorization-class.html)>:
@@ -627,7 +563,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/updateOrganizationInviteAuthorizations.html).
 
 ### UpdateRegistryItem
-
 
 **Parameters:**
 
@@ -640,7 +575,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### UpdateRobot
 
-
 **Parameters:**
 
 - `id` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -651,7 +585,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### UpdateRobotPart
 
-
 **Parameters:**
 
 - `id` [(Struct)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -661,7 +594,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/updateRobotPart.html).
 
 ### UploadModuleFile
-
 
 **Parameters:**
 
@@ -676,7 +608,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### AddBinaryDataToDatasetByIDs
 
-
 **Parameters:**
 
 - `binaryIds` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)>:
@@ -685,7 +616,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.data/DataServiceClient/addBinaryDataToDatasetByIDs.html).
 
 ### AddBoundingBoxToImageByID
-
 
 **Parameters:**
 
@@ -700,7 +630,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### AddTagsToBinaryDataByFilter
 
-
 **Parameters:**
 
 - `filter` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>:
@@ -710,7 +639,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### AddTagsToBinaryDataByIDs
 
-
 **Parameters:**
 
 - `binaryIds` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>:
@@ -719,7 +647,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.data/DataServiceClient/addTagsToBinaryDataByIDs.html).
 
 ### BinaryDataByFilter
-
 
 **Parameters:**
 
@@ -732,7 +659,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### BinaryDataByIDs
 
-
 **Parameters:**
 
 - `binaryIds` [(bool)](https://api.flutter.dev/flutter/dart-core/bool-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)>:
@@ -742,7 +668,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### BoundingBoxLabelsByFilter
 
-
 **Parameters:**
 
 - `filter` [(Filter)](https://flutter.viam.dev/viam_protos.app.data/Filter-class.html):
@@ -750,7 +675,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.data/DataServiceClient/boundingBoxLabelsByFilter.html).
 
 ### ConfigureDatabaseUser
-
 
 **Parameters:**
 
@@ -761,7 +685,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DeleteBinaryDataByFilter
 
-
 **Parameters:**
 
 - `filter` [(bool)](https://api.flutter.dev/flutter/dart-core/bool-class.html):
@@ -771,7 +694,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DeleteBinaryDataByIDs
 
-
 **Parameters:**
 
 - `binaryIds` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)>:
@@ -779,7 +701,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.data/DataServiceClient/deleteBinaryDataByIDs.html).
 
 ### DeleteTabularData
-
 
 **Parameters:**
 
@@ -790,7 +711,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetDatabaseConnection
 
-
 **Parameters:**
 
 - `organizationId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -798,7 +718,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.data/DataServiceClient/getDatabaseConnection.html).
 
 ### RemoveBinaryDataFromDatasetByIDs
-
 
 **Parameters:**
 
@@ -809,7 +728,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### RemoveBoundingBoxFromImageByID
 
-
 **Parameters:**
 
 - `bboxId` [(BinaryID)](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html):
@@ -818,7 +736,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.data/DataServiceClient/removeBoundingBoxFromImageByID.html).
 
 ### RemoveTagsFromBinaryDataByFilter
-
 
 **Parameters:**
 
@@ -829,7 +746,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### RemoveTagsFromBinaryDataByIDs
 
-
 **Parameters:**
 
 - `binaryIds` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>:
@@ -838,7 +754,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.data/DataServiceClient/removeTagsFromBinaryDataByIDs.html).
 
 ### TabularDataByFilter
-
 
 **Parameters:**
 
@@ -850,7 +765,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### TabularDataByMQL
 
-
 **Parameters:**
 
 - `mqlBinary` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -859,7 +773,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.data/DataServiceClient/tabularDataByMQL.html).
 
 ### TabularDataBySQL
-
 
 **Parameters:**
 
@@ -870,7 +783,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### TagsByFilter
 
-
 **Parameters:**
 
 - `filter` [(Filter)](https://flutter.viam.dev/viam_protos.app.data/Filter-class.html):
@@ -878,7 +790,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.data/DataServiceClient/tagsByFilter.html).
 
 ### CancelTrainingJob
-
 
 **Parameters:**
 
@@ -888,7 +799,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DeleteCompletedTrainingJob
 
-
 **Parameters:**
 
 - `id` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -896,7 +806,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.ml_training/MLTrainingServiceClient/deleteCompletedTrainingJob.html).
 
 ### GetTrainingJob
-
 
 **Parameters:**
 
@@ -906,7 +815,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### ListTrainingJobs
 
-
 **Parameters:**
 
 - `organizationId` [(TrainingStatus)](https://flutter.viam.dev/viam_protos.app.ml_training/TrainingStatus-class.html):
@@ -915,7 +823,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.ml_training/MLTrainingServiceClient/listTrainingJobs.html).
 
 ### SubmitTrainingJob
-
 
 **Parameters:**
 

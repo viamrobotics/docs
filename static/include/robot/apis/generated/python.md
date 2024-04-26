@@ -2,15 +2,15 @@
 
 Create RobotClient.Options with an [API key](/fleet/cli/#authenticate) for credentials and default values for other arguments.
 
-
 **Parameters:**
 
-- `api_key` [(str)](<INSERT PARAM TYPE LINK>):
-- `api_key_id` [(str)](<INSERT PARAM TYPE LINK>):
+- `api_key` [(str)](<INSERT PARAM TYPE LINK>): your API key ID. Must be a valid UUID
+- `api_key_id` [(str)](<INSERT PARAM TYPE LINK>): your API key ID. Must be a valid UUID
 
 **Returns:**
 
-([typing_extensions.Self](<INSERT RETURN TYPE LINK>)))
+- [(typing_extensions.Self)](INSERT RETURN TYPE LINK): the RobotClient.Options
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options.with_api_key).
 
 ```python
@@ -28,15 +28,15 @@ robot = await RobotClient.at_address('<ADDRESS-FROM-THE-VIAM-APP>', opts)
 
 Create a robot client that is connected to the robot at the provided address.
 
-
 **Parameters:**
 
-- `address` [(Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options):
-- `options` [(Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options):
+- `address` [(Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options): Options for connecting and refreshing
+- `options` [(Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options): Options for connecting and refreshing
 
 **Returns:**
 
-([typing_extensions.Self](<INSERT RETURN TYPE LINK>)))
+- [(typing_extensions.Self)](INSERT RETURN TYPE LINK): the RobotClient
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.at_address).
 
 ```python
@@ -60,15 +60,15 @@ async def main():
 
 Create a robot that is connected to a robot over the given channel.
 
-
 **Parameters:**
 
-- `channel` [(Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options):
-- `options` [(Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options):
+- `channel` [(Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options): Options for refreshing. Any connection options will be ignored.
+- `options` [(Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options): Options for refreshing. Any connection options will be ignored.
 
 **Returns:**
 
-([typing_extensions.Self](<INSERT RETURN TYPE LINK>)))
+- [(typing_extensions.Self)](INSERT RETURN TYPE LINK): the RobotClient
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.with_channel).
 
 ```python
@@ -87,12 +87,12 @@ robot = await connect_with_channel()
 
 Manually refresh the underlying parts of this robot
 
-
 **Parameters:**
 
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.refresh).
 
@@ -104,12 +104,12 @@ await robot.refresh()
 
 Cleanly close the underlying connections and stop any periodic tasks.
 
-
 **Parameters:**
 
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.close).
 
@@ -121,13 +121,14 @@ await robot.close()
 
 Get the status of the robot’s components. You can optionally provide a list of ResourceName for which you want statuses.
 
-
 **Parameters:**
 
-- `components` [(List[viam.proto.common.ResourceName])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): Optional.
+- `components` [(List[viam.proto.common.ResourceName])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): Optional. Optional list of
+ResourceName for components you want statuses.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_status).
 
@@ -140,13 +141,13 @@ statuses = await robot.get_status()
 
 Get the list of operations currently running on the robot.
 
-
 **Parameters:**
 
 
 **Returns:**
 
-([List[viam.proto.robot.Operation]](<INSERT RETURN TYPE LINK>)))
+- [(List[viam.proto.robot.Operation])](INSERT RETURN TYPE LINK): The list of operations currently running on a given robot.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_operations).
 
 ```python
@@ -157,13 +158,13 @@ operations = await robot.get_operations()
 
 Cancels the specified operation on the robot.
 
-
 **Parameters:**
 
-- `id` [(str)](<INSERT PARAM TYPE LINK>):
+- `id` [(str)](<INSERT PARAM TYPE LINK>): ID of operation to cancel.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.cancel_operation).
 
@@ -175,13 +176,13 @@ await robot.cancel_operation("INSERT OPERATION ID")
 
 Blocks on the specified operation on the robot. This function will only return when the specific operation has finished or has been cancelled.
 
-
 **Parameters:**
 
-- `id` [(str)](<INSERT PARAM TYPE LINK>):
+- `id` [(str)](<INSERT PARAM TYPE LINK>): ID of operation to block on.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.block_for_operation).
 
@@ -193,14 +194,14 @@ await robot.block_for_operation("INSERT OPERATION ID")
 
 Get the configuration of the [frame](/mobility/frame-system/) system of a given robot.
 
-
 **Parameters:**
 
 - `additional_transforms` [(List[viam.proto.common.Transform])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform): Optional.
 
 **Returns:**
 
-([List[viam.proto.robot.FrameSystemConfig]](<INSERT RETURN TYPE LINK>)))
+- [(List[viam.proto.robot.FrameSystemConfig])](INSERT RETURN TYPE LINK): The configuration of a given robot’s frame system.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_frame_system_config).
 
 ```python
@@ -213,16 +214,16 @@ print(f"frame system configuration: {frame_system}")
 
 Transform a given source Pose from the reference [frame](/mobility/frame-system/) to a new specified destination which is a reference [frame](/mobility/frame-system/).
 
-
 **Parameters:**
 
-- `query` [(List[viam.proto.common.Transform])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform): Optional.
-- `destination` [(List[viam.proto.common.Transform])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform): Optional.
-- `additional_transforms` [(List[viam.proto.common.Transform])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform): Optional.
+- `query` [(List[viam.proto.common.Transform])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform): Optional. The name of the reference frame to transform the given pose to.
+- `destination` [(List[viam.proto.common.Transform])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform): Optional. The name of the reference frame to transform the given pose to.
+- `additional_transforms` [(List[viam.proto.common.Transform])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform): Optional. The name of the reference frame to transform the given pose to.
 
 **Returns:**
 
-([viam.proto.common.PoseInFrame](<INSERT RETURN TYPE LINK>)))
+- [(viam.proto.common.PoseInFrame)](INSERT RETURN TYPE LINK): The pose and the reference frame for the new destination.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.transform_pose).
 
 ```python
@@ -233,14 +234,14 @@ pose = await robot.transform_pose(PoseInFrame(), "origin")
 
 Get the list of discovered component configurations.
 
-
 **Parameters:**
 
-- `queries` [(List[viam.proto.robot.DiscoveryQuery])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.DiscoveryQuery):
+- `queries` [(List[viam.proto.robot.DiscoveryQuery])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.DiscoveryQuery): The list of component models to lookup configurations for.
 
 **Returns:**
 
-([List[viam.proto.robot.Discovery]](<INSERT RETURN TYPE LINK>)))
+- [(List[viam.proto.robot.Discovery])](INSERT RETURN TYPE LINK): A list of discovered component configurations.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.discover_components).
 
 ```python
@@ -258,13 +259,14 @@ component_configs = await robot.discover_components(qs)
 
 Cancel all current and outstanding operations for the robot and stop all actuators and movement.
 
-
 **Parameters:**
 
-- `extra` [(Dict[viam.proto.common.ResourceName, Dict[str, Any]])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName):
+- `extra` [(Dict[viam.proto.common.ResourceName, Dict[str, Any]])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): Any extra parameters to pass to the resources’ stop methods,
+keyed on the resource’s ResourceName
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.stop_all).
 
@@ -277,17 +279,17 @@ await robot.stop_all()
 
 Send log from Python module over gRPC.
 
-
 **Parameters:**
 
-- `name` [(str)](<INSERT PARAM TYPE LINK>):
-- `level` [(str)](<INSERT PARAM TYPE LINK>):
-- `time` [(str)](<INSERT PARAM TYPE LINK>):
-- `log` [(str)](<INSERT PARAM TYPE LINK>):
-- `stack` [(str)](<INSERT PARAM TYPE LINK>):
+- `name` [(str)](<INSERT PARAM TYPE LINK>): The stack information of the log.
+- `level` [(str)](<INSERT PARAM TYPE LINK>): The stack information of the log.
+- `time` [(str)](<INSERT PARAM TYPE LINK>): The stack information of the log.
+- `log` [(str)](<INSERT PARAM TYPE LINK>): The stack information of the log.
+- `stack` [(str)](<INSERT PARAM TYPE LINK>): The stack information of the log.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.log).
 
@@ -295,12 +297,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 Get app-related information about the robot.
 
-
 **Parameters:**
 
 
 **Returns:**
 
-([viam.proto.robot.GetCloudMetadataResponse](<INSERT RETURN TYPE LINK>)))
+- [(viam.proto.robot.GetCloudMetadataResponse)](INSERT RETURN TYPE LINK): App-related metadata.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_cloud_metadata).
 

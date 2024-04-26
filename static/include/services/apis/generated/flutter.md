@@ -1,6 +1,5 @@
 ### DoCommand
 
-
 **Parameters:**
 
 - `command` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -9,7 +8,6 @@
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.generic/GenericServiceClient/doCommand.html).
 
 ### Infer
-
 
 **Parameters:**
 
@@ -21,7 +19,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### Metadata
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -31,7 +28,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DoCommand
 
-
 **Parameters:**
 
 - `command` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -40,7 +36,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.motion/MotionServiceClient/doCommand.html).
 
 ### GetPlan
-
 
 **Parameters:**
 
@@ -54,7 +49,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetPose
 
-
 **Parameters:**
 
 - `componentName` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Transform](https://flutter.viam.dev/viam_protos.common.common/Transform-class.html)>:
@@ -67,7 +61,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### ListPlanStatuses
 
-
 **Parameters:**
 
 - `extra` [(bool)](https://api.flutter.dev/flutter/dart-core/bool-class.html):
@@ -77,7 +70,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.motion/MotionServiceClient/listPlanStatuses.html).
 
 ### Move
-
 
 **Parameters:**
 
@@ -91,7 +83,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.motion/MotionServiceClient/move.html).
 
 ### MoveOnGlobe
-
 
 **Parameters:**
 
@@ -108,7 +99,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### MoveOnMap
 
-
 **Parameters:**
 
 - `componentName` [(ResourceName)](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)<[Geometry](https://flutter.viam.dev/viam_protos.common.common/Geometry-class.html)>:
@@ -123,7 +113,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### StopPlan
 
-
 **Parameters:**
 
 - `componentName` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -133,7 +122,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.motion/MotionServiceClient/stopPlan.html).
 
 ### AddWaypoint
-
 
 **Parameters:**
 
@@ -145,7 +133,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DoCommand
 
-
 **Parameters:**
 
 - `command` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -154,7 +141,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.navigation/NavigationServiceClient/doCommand.html).
 
 ### GetLocation
-
 
 **Parameters:**
 
@@ -165,7 +151,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetMode
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -174,7 +159,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.navigation/NavigationServiceClient/getMode.html).
 
 ### GetObstacles
-
 
 **Parameters:**
 
@@ -185,7 +169,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetPaths
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -195,7 +178,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetProperties
 
-
 **Parameters:**
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -203,7 +185,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.navigation/NavigationServiceClient/getProperties.html).
 
 ### GetWaypoints
-
 
 **Parameters:**
 
@@ -213,7 +194,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.navigation/NavigationServiceClient/getWaypoints.html).
 
 ### RemoveWaypoint
-
 
 **Parameters:**
 
@@ -225,7 +205,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### SetMode
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -236,7 +215,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DoCommand
 
-
 **Parameters:**
 
 - `command` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -246,7 +224,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetInternalState
 
-
 **Parameters:**
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -254,7 +231,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.slam/SLAMServiceClient/getInternalState.html).
 
 ### GetPointCloudMap
-
 
 **Parameters:**
 
@@ -265,7 +241,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetPosition
 
-
 **Parameters:**
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -273,7 +248,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.slam/SLAMServiceClient/getPosition.html).
 
 ### GetProperties
-
 
 **Parameters:**
 
@@ -283,7 +257,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DoCommand
 
-
 **Parameters:**
 
 - `command` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -292,7 +265,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.vision/VisionServiceClient/doCommand.html).
 
 ### GetClassifications
-
 
 **Parameters:**
 
@@ -308,7 +280,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetClassificationsFromCamera
 
-
 **Parameters:**
 
 - `cameraName` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -319,7 +290,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.vision/VisionServiceClient/getClassificationsFromCamera.html).
 
 ### GetDetections
-
 
 **Parameters:**
 
@@ -334,7 +304,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetDetectionsFromCamera
 
-
 **Parameters:**
 
 - `cameraName` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -344,7 +313,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.vision/VisionServiceClient/getDetectionsFromCamera.html).
 
 ### GetObjectPointClouds
-
 
 **Parameters:**
 

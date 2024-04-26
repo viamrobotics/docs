@@ -1247,33 +1247,53 @@ def write_markdown(type, methods):
                     ##         Here is an example of a dict of parameters, which I am fetching for the Python and Flutter SDKs:
                     if 'parameters' in methods[sdk][type][resource][method]:
 
-                        output_file.write('\n**Parameters:**\n\n')
+                        output_file.write('**Parameters:**\n\n')
+
+                        print("Parameters dict")
+                        print(methods[sdk][type][resource][method]['parameters'])
+                        print("KEYS")
+                        print(methods[sdk][type][resource][method]['parameters'].keys())
+
 
                         # sg: Is parameter type being overriden? Doesn't always look accurate (ex. extra for python SDK is marked float-- looks like it's all picking up as float)
                         for parameter in methods[sdk][type][resource][method]['parameters'].keys():
-                            output_file.write(f'- `{parameter}` [({methods[sdk][type][resource][method]["parameters"][parameter]["param_type"]})]')
+
+                            param_data = methods[sdk][type][resource][method]['parameters'][parameter]
+
+                            param_type = param_data.get("param_type")
+                            param_subtype = param_data.get("param_subtype")
+                            param_type_link = param_data.get("param_type_link")
+                            param_subtype_link = param_data.get("param_subtype_link")
+                            param_description = param_data.get("param_description")
+                            optional = param_data.get("optional")
+
+                            output_file.write(f'- `{parameter}` [({param_type})]')
                             
                             # Ideally we could update at least Python SDK with type links?
-                            if 'param_type_link' in methods[sdk][type][resource][method]['parameters'][parameter]:
+                            if param_type_link:
                                 # Check for subtype
-                                if 'param_subtype' in methods[sdk][type][resource][method]['parameters'][parameter]:
-                                    output_file.write(f"({methods[sdk][type][resource][method]['parameters'][parameter]['param_type_link']})")
-                                    if 'param_subtype_link' in methods[sdk][type][resource][method]['parameters'][parameter]:
-                                        output_file.write(f"<[{methods[sdk][type][resource][method]['parameters'][parameter]['param_subtype']}]")
-                                        output_file.write(f"({methods[sdk][type][resource][method]['parameters'][parameter]['param_subtype_link']})>")
+                                if param_subtype:
+                                    output_file.write(f"({param_type_link})")
+                                    if param_subtype_link:
+                                        output_file.write(f"<[{param_subtype}]")
+                                        output_file.write(f"({param_subtype_link})>")
                                     else:
-                                        output_file.write(f"<{methods[sdk][type][resource][method]['parameters'][parameter]['param_subtype']}>")
+                                        output_file.write(f"<{param_subtype}>")
                                 else:
-                                    output_file.write(f"({methods[sdk][type][resource][method]['parameters'][parameter]['param_type_link']})")
-                            # SG: Haven't found any sub-types without param type links-- they are all in flutter SDK-- could expand this logic if popped up or grabbing more subtypes?
+                                    output_file.write(f"({param_type_link})")
+                            # SG: Haven't found any sub-types without param type links-- they are all in flutter SDK-- 
+                            # could expand this logic if popped up or grabbing more subtypes?
                             else:
                                 output_file.write('(<INSERT PARAM TYPE LINK>)')
 
                             output_file.write(':')
 
-                            if 'optional' in methods[sdk][type][resource][method]['parameters'][parameter]:
-                                if str(methods[sdk][type][resource][method]['parameters'][parameter]['optional']) == "True":
+                            if optional:
+                                if str(optional) == "True":
                                     output_file.write(' Optional.')
+
+                            if param_description:
+                                output_file.write(f" {param_description}")
                                                       
                             # line break for parameters list
                             output_file.write('\n')
@@ -1287,75 +1307,47 @@ def write_markdown(type, methods):
                     if 'return' in methods[sdk][type][resource][method]:
                     
                         output_file.write('\n**Returns:**\n\n')
-                       
-                        print(methods[sdk][type][resource][method]["return"].keys())
-                        # output_file.write(f'- `{methods[sdk][type][resource][method]["return"]}` [({methods[sdk][type][resource][method]["return"]["return_type"]})]')
 
-                        ## TODO: Check for 'return' as name like in flutter SDK
+                        return_data = methods[sdk][type][resource][method]["return"]
 
-                        if "return_type" in methods[sdk][type][resource][method]["return"]:
-                            
-                            # Check for subtype
-                            if 'return_subtype' in methods[sdk][type][resource][method]["return"]:
+                        print("RETURN DICT")
+                        print(return_data)
+                        print("RETURN KEYS")
+                        print(return_data.keys())
 
-                                if 'return_subtype_link'in methods[sdk][type][resource][method]["return"]:
-                                    output_file.write(f"([{methods[sdk][type][resource][method]['return']['return_type']}]")
+                        return_type = return_data.get("return_type")
+                        return_subtype = return_data.get("return_subtype")
+                        return_type_link = return_data.get("return_type_link")
+                        return_subtype_link = return_data.get("return_subtype_link")
+                        return_description = return_data.get("return_description")
 
-                                    if 'return_type_link' in methods[sdk][type][resource][method]["return"]:
-                                        output_file.write(f"({methods[sdk][type][resource][method]['return']['return_type_link']}))")
-                                        output_file.write(f"<[{methods[sdk][type][resource][method]['return']['return_subtype']}]")
-                                        output_file.write(f"({methods[sdk][type][resource][method]['return']['return_subtype_link']})>")
-                                    else:
-                                        output_file.write(f"(<INSERT RETURN TYPE LINK>)))")
-                                        output_file.write(f"<[{methods[sdk][type][resource][method]['return']['return_subtype']}]")
-                                        output_file.write(f"({methods[sdk][type][resource][method]['return']['return_subtype_link']})>")
-                                else:
-                                    output_file.write(f"([{methods[sdk][type][resource][method]['return']['return_type']}]")
+                        if return_type:
+                            output_file.write(f"- [({return_type})]")
 
-                                    if 'return_type_link' in methods[sdk][type][resource][method]['return']:
-                                        output_file.write(f"({methods[sdk][type][resource][method]['return']['return_type_link']}))")
-                                        output_file.write(f"<[{methods[sdk][type][resource][method]['return']['return_subtype']}]")
-                                    else:
-                                        output_file.write(f"(<INSERT RETURN TYPE LINK>)))")
-                            
+                            if return_type_link:
+                                output_file.write(f"({return_type_link})")
                             else:
-                                output_file.write(f"([{methods[sdk][type][resource][method]['return']['return_type']}]")
-                                if 'return_type_link' in methods[sdk][type][resource][method]['return']:
-                                    output_file.write(f"({methods[sdk][type][resource][method]['return']['return_type_link']}))")
-                                else:
-                                    output_file.write(f"(<INSERT RETURN TYPE LINK>)))")
-                            
-                    #     # Check for subtype
-                    #     if 'return_subtype' in methods[sdk][type][resource][method]['parameters'][parameter]:
-                    #             output_file.write(f"({methods[sdk][type][resource][method]['parameters'][parameter]['param_type_link']})")
-                    #             if 'param_subtype_link' in methods[sdk][type][resource][method]['parameters'][parameter]:
-                    #                 output_file.write(f"<[{methods[sdk][type][resource][method]['parameters'][parameter]['param_subtype']}]")
-                    #                 output_file.write(f"({methods[sdk][type][resource][method]['parameters'][parameter]['param_subtype_link']})>")
-                    #             else:
-                    #                 output_file.write(f"<{methods[sdk][type][resource][method]['parameters'][parameter]['param_subtype']}>")
-                    #         else:
-                    #             output_file.write(f"({methods[sdk][type][resource][method]['parameters'][parameter]['param_type_link']})")
-                    #     # SG: Haven't found any sub-types without param type links-- they are all in flutter SDK-- could expand this logic if popped up or grabbing more subtypes?
-                    #     else:
-                    #         output_file.write('(<INSERT PARAM TYPE LINK>)')
+                                output_file.write("(INSERT RETURN TYPE LINK)")
 
-                    #     output_file.write(':')
-    
-                    #    if 'return_description' in methods[sdk][type][resource][method]['return']:
-                    #        output_file.write('    RETURN DESCRIPTION: ')
-                    #        output_file.write(methods[sdk][type][resource][method]['return']['return_description'] + '\n')
+                            if return_subtype:
+                                output_file.write(f"<[{return_subtype}]")
+                                if return_subtype_link:
+                                    output_file.write(f"({return_subtype_link})>")
+                                else:
+                                    output_file.write("(<INSERT RETURN SUBTYPE LINK>)")
+                            else:
+                                pass
+
+                            if return_description:
+                                output_file.write(f": {return_description}")
+
+                        else:
+                            output_file.write("None.")
+ 
+                        output_file.write("\n")
+
                     #    if 'return_link' in methods[sdk][type][resource][method]['return']:
                     #        output_file.write('    RETURN LINK: ')
-                    #        output_file.write(methods[sdk][type][resource][method]['return']['return_link'] + '\n')
-                    #    if 'return_type_link' in methods[sdk][type][resource][method]['return']:
-                    #        output_file.write('    RETURN TYPE LINK: ')
-                    #        output_file.write(methods[sdk][type][resource][method]['return']['return_type_link'] + '\n')
-                    #    if 'param_subtype' in methods[sdk][type][resource][method]['return']:
-                    #        output_file.write('    RETURN SUBTYPE: ')
-                    #        output_file.write(methods[sdk][type][resource][method]['return']['return_subtype'] + '\n')
-                    #    if 'param_subtype_link' in methods[sdk][type][resource][method]['return']:
-                    #        output_file.write('    RETURN SUBTYPE LINK: ')
-                    #        output_file.write(methods[sdk][type][resource][method]['return']['return_subtype_link'] + '\n')
 
 
                     # Output the method link

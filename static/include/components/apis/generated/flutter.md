@@ -1,6 +1,5 @@
 ### DoCommand
 
-
 **Parameters:**
 
 - `command` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -9,7 +8,6 @@
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.arm/ArmServiceClient/doCommand.html).
 
 ### GetEndPosition
-
 
 **Parameters:**
 
@@ -20,7 +18,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetGeometries
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -29,7 +26,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.arm/ArmServiceClient/getGeometries.html).
 
 ### GetJointPositions
-
 
 **Parameters:**
 
@@ -40,7 +36,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetKinematics
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -50,7 +45,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### IsMoving
 
-
 **Parameters:**
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -58,7 +52,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.arm/ArmServiceClient/isMoving.html).
 
 ### MoveToJointPositions
-
 
 **Parameters:**
 
@@ -70,7 +63,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### MoveToPosition
 
-
 **Parameters:**
 
 - `extra` [(Pose)](https://flutter.viam.dev/viam_sdk/Pose-class.html):
@@ -81,7 +73,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### Stop
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -90,7 +81,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.arm/ArmServiceClient/stop.html).
 
 ### DoCommand
-
 
 **Parameters:**
 
@@ -101,7 +91,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetGeometries
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -110,7 +99,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.base/BaseServiceClient/getGeometries.html).
 
 ### GetProperties
-
 
 **Parameters:**
 
@@ -121,7 +109,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### IsMoving
 
-
 **Parameters:**
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -129,7 +116,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.base/BaseServiceClient/isMoving.html).
 
 ### MoveStraight
-
 
 **Parameters:**
 
@@ -142,7 +128,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### SetPower
 
-
 **Parameters:**
 
 - `angular` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -153,7 +138,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.base/BaseServiceClient/setPower.html).
 
 ### SetVelocity
-
 
 **Parameters:**
 
@@ -166,7 +150,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### Spin
 
-
 **Parameters:**
 
 - `angleDeg` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -178,7 +161,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### Stop
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -188,7 +170,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DoCommand
 
-
 **Parameters:**
 
 - `command` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -197,7 +178,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.board/BoardServiceClient/doCommand.html).
 
 ### Value
-
 
 **Parameters:**
 
@@ -209,7 +189,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetGeometries
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -218,7 +197,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.board/BoardServiceClient/getGeometries.html).
 
 ### GetGPIO
-
 
 **Parameters:**
 
@@ -230,7 +208,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### PWM
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -240,7 +217,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.board/BoardServiceClient/pWM.html).
 
 ### PWMFrequency
-
 
 **Parameters:**
 
@@ -252,7 +228,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### ReadAnalogReader
 
-
 **Parameters:**
 
 - `analogReaderName` [(Struct)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -262,7 +237,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.board/BoardServiceClient/readAnalogReader.html).
 
 ### SetGPIO
-
 
 **Parameters:**
 
@@ -275,7 +249,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### SetPowerMode
 
-
 **Parameters:**
 
 - `duration` [(PowerMode)](https://flutter.viam.dev/viam_protos.component.board/PowerMode-class.html):
@@ -286,7 +259,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.board/BoardServiceClient/setPowerMode.html).
 
 ### SetPWM
-
 
 **Parameters:**
 
@@ -299,7 +271,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### SetPWMFrequency
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -311,7 +282,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### Status
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -320,7 +290,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.board/BoardServiceClient/status.html).
 
 ### StreamTicks
-
 
 **Parameters:**
 
@@ -331,7 +300,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.board/BoardServiceClient/streamTicks.html).
 
 ### WriteAnalog
-
 
 **Parameters:**
 
@@ -344,7 +312,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DoCommand
 
-
 **Parameters:**
 
 - `command` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -354,7 +321,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetGeometries
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -363,7 +329,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.camera/CameraServiceClient/getGeometries.html).
 
 ### GetImage
-
 
 **Parameters:**
 
@@ -375,7 +340,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetImages
 
-
 **Parameters:**
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -383,7 +347,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.camera/CameraServiceClient/getImages.html).
 
 ### GetPointCloud
-
 
 **Parameters:**
 
@@ -395,7 +358,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetProperties
 
-
 **Parameters:**
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -403,7 +365,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.camera/CameraServiceClient/getProperties.html).
 
 ### RenderFrame
-
 
 **Parameters:**
 
@@ -415,7 +376,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DoCommand
 
-
 **Parameters:**
 
 - `command` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -425,7 +385,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetGeometries
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -434,7 +393,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.encoder/EncoderServiceClient/getGeometries.html).
 
 ### GetPosition
-
 
 **Parameters:**
 
@@ -446,7 +404,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetProperties
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -455,7 +412,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.encoder/EncoderServiceClient/getProperties.html).
 
 ### ResetPosition
-
 
 **Parameters:**
 
@@ -466,7 +422,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DoCommand
 
-
 **Parameters:**
 
 - `command` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -475,7 +430,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.gantry/GantryServiceClient/doCommand.html).
 
 ### GetGeometries
-
 
 **Parameters:**
 
@@ -486,7 +440,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetLengths
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -495,7 +448,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.gantry/GantryServiceClient/getLengths.html).
 
 ### GetPosition
-
 
 **Parameters:**
 
@@ -506,7 +458,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### Home
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -516,7 +467,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### IsMoving
 
-
 **Parameters:**
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -524,7 +474,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.gantry/GantryServiceClient/isMoving.html).
 
 ### MoveToPosition
-
 
 **Parameters:**
 
@@ -537,7 +486,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### Stop
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -546,7 +494,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.gantry/GantryServiceClient/stop.html).
 
 ### DoCommand
-
 
 **Parameters:**
 
@@ -557,7 +504,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetGeometries
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -566,7 +512,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.generic/GenericServiceClient/getGeometries.html).
 
 ### DoCommand
-
 
 **Parameters:**
 
@@ -577,7 +522,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetGeometries
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -586,7 +530,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.gripper/GripperServiceClient/getGeometries.html).
 
 ### Grab
-
 
 **Parameters:**
 
@@ -597,7 +540,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### IsMoving
 
-
 **Parameters:**
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -605,7 +547,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.gripper/GripperServiceClient/isMoving.html).
 
 ### Open
-
 
 **Parameters:**
 
@@ -616,7 +557,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### Stop
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -625,7 +565,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.gripper/GripperServiceClient/stop.html).
 
 ### DoCommand
-
 
 **Parameters:**
 
@@ -636,7 +575,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetControls
 
-
 **Parameters:**
 
 - `controller` [(Struct)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -645,7 +583,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.input_controller/InputControllerServiceClient/getControls.html).
 
 ### GetEvents
-
 
 **Parameters:**
 
@@ -656,7 +593,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetGeometries
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -665,7 +601,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.input_controller/InputControllerServiceClient/getGeometries.html).
 
 ### StreamEvents
-
 
 **Parameters:**
 
@@ -677,7 +612,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### TriggerEvent
 
-
 **Parameters:**
 
 - `controller` [(Struct)](https://flutter.viam.dev/viam_protos.component.input_controller/Event-class.html):
@@ -688,7 +622,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DoCommand
 
-
 **Parameters:**
 
 - `command` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -697,7 +630,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.motor/MotorServiceClient/doCommand.html).
 
 ### GetGeometries
-
 
 **Parameters:**
 
@@ -708,7 +640,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetPosition
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -718,7 +649,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetProperties
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -727,7 +657,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.motor/MotorServiceClient/getProperties.html).
 
 ### GoFor
-
 
 **Parameters:**
 
@@ -740,7 +669,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GoTo
 
-
 **Parameters:**
 
 - `extra` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html):
@@ -752,7 +680,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### IsMoving
 
-
 **Parameters:**
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -760,7 +687,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.motor/MotorServiceClient/isMoving.html).
 
 ### IsPowered
-
 
 **Parameters:**
 
@@ -770,7 +696,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.motor/MotorServiceClient/isPowered.html).
 
 ### ResetZeroPosition
-
 
 **Parameters:**
 
@@ -782,7 +707,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### SetPower
 
-
 **Parameters:**
 
 - `extra` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html):
@@ -793,7 +717,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### Stop
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -802,7 +725,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.motor/MotorServiceClient/stop.html).
 
 ### DoCommand
-
 
 **Parameters:**
 
@@ -813,7 +735,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetAccuracy
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -822,7 +743,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.movementsensor/MovementSensorServiceClient/getAccuracy.html).
 
 ### GetAngularVelocity
-
 
 **Parameters:**
 
@@ -833,7 +753,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetCompassHeading
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -842,7 +761,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.movementsensor/MovementSensorServiceClient/getCompassHeading.html).
 
 ### GetGeometries
-
 
 **Parameters:**
 
@@ -853,7 +771,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetLinearAcceleration
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -862,7 +779,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.movementsensor/MovementSensorServiceClient/getLinearAcceleration.html).
 
 ### GetLinearVelocity
-
 
 **Parameters:**
 
@@ -873,7 +789,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetOrientation
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -882,7 +797,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.movementsensor/MovementSensorServiceClient/getOrientation.html).
 
 ### GetPosition
-
 
 **Parameters:**
 
@@ -893,7 +807,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetProperties
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -902,7 +815,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.movementsensor/MovementSensorServiceClient/getProperties.html).
 
 ### GetReadings
-
 
 **Parameters:**
 
@@ -913,7 +825,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### DoCommand
 
-
 **Parameters:**
 
 - `command` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -922,7 +833,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.powersensor/PowerSensorServiceClient/doCommand.html).
 
 ### GetCurrent
-
 
 **Parameters:**
 
@@ -933,7 +843,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetPower
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -942,7 +851,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.powersensor/PowerSensorServiceClient/getPower.html).
 
 ### GetReadings
-
 
 **Parameters:**
 
@@ -953,7 +861,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetVoltage
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -962,7 +869,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.powersensor/PowerSensorServiceClient/getVoltage.html).
 
 ### DoCommand
-
 
 **Parameters:**
 
@@ -973,7 +879,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### GetGeometries
 
-
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
@@ -982,7 +887,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.sensor/SensorServiceClient/getGeometries.html).
 
 ### GetReadings
-
 
 **Parameters:**
 

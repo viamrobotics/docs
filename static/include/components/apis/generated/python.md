@@ -2,7 +2,6 @@
 
 Get the current position of the end of the arm expressed as a Pose.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -10,7 +9,8 @@ Get the current position of the end of the arm expressed as a Pose.
 
 **Returns:**
 
-([viam.components.arm.Pose](<INSERT RETURN TYPE LINK>)))
+- [(viam.components.arm.Pose)](INSERT RETURN TYPE LINK): The location and orientation of the arm described as a Pose.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_end_position).
 
 ```python
@@ -24,15 +24,15 @@ pos = await my_arm.get_end_position()
 
 Move the end of the arm to the Pose specified in pose.
 
-
 **Parameters:**
 
-- `pose` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `pose` [(float)](<INSERT PARAM TYPE LINK>): Optional. The destination Pose for the arm.
+- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional. The destination Pose for the arm.
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The destination Pose for the arm.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.move_to_position).
 
@@ -50,7 +50,6 @@ await my_arm.move_to_position(pose=examplePose)
 
 Get the JointPositions representing the current position of the arm.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -58,7 +57,8 @@ Get the JointPositions representing the current position of the arm.
 
 **Returns:**
 
-([viam.proto.component.arm.JointPositions](<INSERT RETURN TYPE LINK>)))
+- [(viam.proto.component.arm.JointPositions)](INSERT RETURN TYPE LINK): The current JointPositions for the arm.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_joint_positions).
 
 ```python
@@ -72,15 +72,15 @@ pos = await my_arm.get_joint_positions()
 
 Move each joint on the arm to the corresponding angle specified in positions.
 
-
 **Parameters:**
 
-- `positions` [(float)](https://python.viam.dev/autoapi/viam/../proto/component/arm/index.html#viam.proto.component.arm.JointPositions): Optional.
-- `extra` [(float)](https://python.viam.dev/autoapi/viam/../proto/component/arm/index.html#viam.proto.component.arm.JointPositions): Optional.
-- `timeout` [(float)](https://python.viam.dev/autoapi/viam/../proto/component/arm/index.html#viam.proto.component.arm.JointPositions): Optional.
+- `positions` [(float)](https://python.viam.dev/autoapi/viam/../proto/component/arm/index.html#viam.proto.component.arm.JointPositions): Optional. The destination JointPositions for the arm.
+- `extra` [(float)](https://python.viam.dev/autoapi/viam/../proto/component/arm/index.html#viam.proto.component.arm.JointPositions): Optional. The destination JointPositions for the arm.
+- `timeout` [(float)](https://python.viam.dev/autoapi/viam/../proto/component/arm/index.html#viam.proto.component.arm.JointPositions): Optional. The destination JointPositions for the arm.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.move_to_joint_positions).
 
@@ -103,7 +103,6 @@ await my_arm.move_to_joint_positions(positions=jointPos)
 
 Stop all motion of the arm. It is assumed that the arm stops immediately.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -111,6 +110,7 @@ Stop all motion of the arm. It is assumed that the arm stops immediately.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.stop).
 
@@ -125,14 +125,14 @@ await my_arm.stop()
 
 Get if the arm is currently moving.
 
-
 **Parameters:**
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
 
 **Returns:**
 
-([bool](<INSERT RETURN TYPE LINK>)))
+- [(bool)](INSERT RETURN TYPE LINK): Whether the arm is moving.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.is_moving).
 
 ```python
@@ -149,15 +149,15 @@ print(my_arm.is_moving())
 
 Send/Receive arbitrary commands to the Resource
 
-
 **Parameters:**
 
-- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
 
 **Returns:**
 
-([Mapping[str, viam.utils.ValueTypes]](<INSERT RETURN TYPE LINK>)))
+- [(Mapping[str, viam.utils.ValueTypes])](INSERT RETURN TYPE LINK): Result of the executed command
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.do_command).
 
 ```python
@@ -169,7 +169,6 @@ result = component.do(command)
 
 Get the kinematics information associated with the arm.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -177,7 +176,9 @@ Get the kinematics information associated with the arm.
 
 **Returns:**
 
-([Tuple[viam.components.arm.KinematicsFileFormat.ValueType, bytes]](<INSERT RETURN TYPE LINK>)))
+- [(Tuple[viam.components.arm.KinematicsFileFormat.ValueType, bytes])](INSERT RETURN TYPE LINK): A tuple containing two values; the first [0] value represents the format of thefile, either in URDF format or Viam’s kinematic parameter format (spatial vector algebra), and the second [1] value
+represents the byte contents of the file.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_kinematics).
 
 ```python
@@ -197,7 +198,6 @@ k_bytes = kinematics[1]
 
 Get all geometries associated with the Component, in their current configuration, in the [frame](/mobility/frame-system/) of the Component.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -205,7 +205,8 @@ Get all geometries associated with the Component, in their current configuration
 
 **Returns:**
 
-([List[viam.proto.common.Geometry]](<INSERT RETURN TYPE LINK>)))
+- [(List[viam.proto.common.Geometry])](INSERT RETURN TYPE LINK): The geometries associated with the Component.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_geometries).
 
 ```python
@@ -220,12 +221,12 @@ if geometries:
 
 Safely shut down the resource and prevent further use.
 
-
 **Parameters:**
 
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.close).
 
@@ -237,16 +238,20 @@ await component.close()
 
 Move the base in a straight line the given distance, expressed in millimeters, at the given velocity, expressed in millimeters per second. When distance or velocity is 0, the base will stop. This method blocks until completed or cancelled.
 
-
 **Parameters:**
 
-- `distance` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `velocity` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `distance` [(float)](<INSERT PARAM TYPE LINK>): Optional. The velocity (in millimeters per second) to move.
+Negative implies backwards.
+- `velocity` [(float)](<INSERT PARAM TYPE LINK>): Optional. The velocity (in millimeters per second) to move.
+Negative implies backwards.
+- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional. The velocity (in millimeters per second) to move.
+Negative implies backwards.
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The velocity (in millimeters per second) to move.
+Negative implies backwards.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.move_straight).
 
@@ -264,16 +269,24 @@ await my_base.move_straight(distance=40, velocity=-90)
 
 Spin the base in place angle degrees, at the given angular velocity, expressed in degrees per second. When velocity is 0, the base will stop. This method blocks until completed or cancelled.
 
-
 **Parameters:**
 
-- `angle` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `velocity` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `angle` [(float)](<INSERT PARAM TYPE LINK>): Optional. The angular velocity (in degrees per second)
+to spin.
+Given a positive angle and a positive velocity, the base will turn to the left.
+- `velocity` [(float)](<INSERT PARAM TYPE LINK>): Optional. The angular velocity (in degrees per second)
+to spin.
+Given a positive angle and a positive velocity, the base will turn to the left.
+- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional. The angular velocity (in degrees per second)
+to spin.
+Given a positive angle and a positive velocity, the base will turn to the left.
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The angular velocity (in degrees per second)
+to spin.
+Given a positive angle and a positive velocity, the base will turn to the left.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.spin).
 
@@ -288,16 +301,20 @@ await my_base.spin(angle=10, velocity=15)
 
 Set the linear and angular velocity of the Base When linear is 0, the the base will spin. When angular is 0, the the base will move in a straight line. When both linear and angular are 0, the base will stop. When linear and angular are both nonzero, the base will move in an arc, with a tighter radius if angular power is greater than linear power.
 
-
 **Parameters:**
 
-- `linear` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `angular` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `linear` [(float)](<INSERT PARAM TYPE LINK>): Optional. The angular component. Only the Z component is used
+for wheeled base. Positive turns left; negative turns right.
+- `angular` [(float)](<INSERT PARAM TYPE LINK>): Optional. The angular component. Only the Z component is used
+for wheeled base. Positive turns left; negative turns right.
+- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional. The angular component. Only the Z component is used
+for wheeled base. Positive turns left; negative turns right.
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The angular component. Only the Z component is used
+for wheeled base. Positive turns left; negative turns right.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_power).
 
@@ -333,16 +350,16 @@ await my_base.set_power(
 
 Set the linear and angular velocities of the base.
 
-
 **Parameters:**
 
-- `linear` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `angular` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `linear` [(float)](<INSERT PARAM TYPE LINK>): Optional. Velocity in deg/sec
+- `angular` [(float)](<INSERT PARAM TYPE LINK>): Optional. Velocity in deg/sec
+- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional. Velocity in deg/sec
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. Velocity in deg/sec
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_velocity).
 
@@ -359,7 +376,6 @@ await my_base.set_velocity(
 
 Stop the base.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -367,6 +383,7 @@ Stop the base.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.stop).
 
@@ -384,14 +401,14 @@ await my_base.stop()
 
 Get if the base is currently moving.
 
-
 **Parameters:**
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
 
 **Returns:**
 
-([bool](<INSERT RETURN TYPE LINK>)))
+- [(bool)](INSERT RETURN TYPE LINK): Whether the base is moving.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.is_moving).
 
 ```python
@@ -406,7 +423,6 @@ print('Moving: ', moving)
 
 Get the base width and turning radius
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -414,7 +430,8 @@ Get the base width and turning radius
 
 **Returns:**
 
-([viam.components.base.Base.Properties](<INSERT RETURN TYPE LINK>)))
+- [(viam.components.base.Base.Properties)](INSERT RETURN TYPE LINK): The properties of the base
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.get_properties).
 
 ```python
@@ -437,15 +454,15 @@ print(f"Wheel circumference of base: {properties.wheel_circumference_meters}")
 
 Send/Receive arbitrary commands to the Resource
 
-
 **Parameters:**
 
-- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
 
 **Returns:**
 
-([Mapping[str, viam.utils.ValueTypes]](<INSERT RETURN TYPE LINK>)))
+- [(Mapping[str, viam.utils.ValueTypes])](INSERT RETURN TYPE LINK): Result of the executed command
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.do_command).
 
 ```python
@@ -457,7 +474,6 @@ result = component.do(command)
 
 Get all geometries associated with the Component, in their current configuration, in the [frame](/mobility/frame-system/) of the Component.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -465,7 +481,8 @@ Get all geometries associated with the Component, in their current configuration
 
 **Returns:**
 
-([List[viam.proto.common.Geometry]](<INSERT RETURN TYPE LINK>)))
+- [(List[viam.proto.common.Geometry])](INSERT RETURN TYPE LINK): The geometries associated with the Component.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.get_geometries).
 
 ```python
@@ -480,12 +497,12 @@ if geometries:
 
 Safely shut down the resource and prevent further use.
 
-
 **Parameters:**
 
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.close).
 
@@ -497,7 +514,6 @@ await component.close()
 
 Read the current value.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -505,7 +521,8 @@ Read the current value.
 
 **Returns:**
 
-([int](<INSERT RETURN TYPE LINK>)))
+- [(int)](INSERT RETURN TYPE LINK): The current value.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.AnalogReaderClient.read).
 
 ```python
@@ -530,7 +547,6 @@ reading = reader.read()
 
 Get the current value of the interrupt, which is based on the type of interrupt.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -538,7 +554,8 @@ Get the current value of the interrupt, which is based on the type of interrupt.
 
 **Returns:**
 
-([int](<INSERT RETURN TYPE LINK>)))
+- [(int)](INSERT RETURN TYPE LINK): The current value.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.DigitalInterruptClient.value).
 
 ```python
@@ -557,7 +574,6 @@ count = await interrupt.value()
 
 Get the high/low state of the pin.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -565,7 +581,8 @@ Get the high/low state of the pin.
 
 **Returns:**
 
-([bool](<INSERT RETURN TYPE LINK>)))
+- [(bool)](INSERT RETURN TYPE LINK): Indicates if the state of the pin is high.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.GPIOPinClient.get).
 
 ```python
@@ -582,15 +599,15 @@ high = await pin.get()
 
 Set the pin to either low or high.
 
-
 **Parameters:**
 
-- `high` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `high` [(float)](<INSERT PARAM TYPE LINK>): Optional. When true, sets the pin to high. When false, sets the pin to low.
+- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional. When true, sets the pin to high. When false, sets the pin to low.
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. When true, sets the pin to high. When false, sets the pin to low.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.GPIOPinClient.set).
 
@@ -608,7 +625,6 @@ await pin.set(high="true")
 
 Get the pin’s given duty cycle.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -616,7 +632,8 @@ Get the pin’s given duty cycle.
 
 **Returns:**
 
-([float](<INSERT RETURN TYPE LINK>)))
+- [(float)](INSERT RETURN TYPE LINK): The duty cycle.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.GPIOPinClient.get_pwm).
 
 ```python
@@ -633,15 +650,15 @@ duty_cycle = await pin.get_pwm()
 
 Set the pin to the given duty_cycle.
 
-
 **Parameters:**
 
-- `duty_cycle` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `duty_cycle` [(float)](<INSERT PARAM TYPE LINK>): Optional. The duty cycle.
+- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional. The duty cycle.
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The duty cycle.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.GPIOPinClient.set_pwm).
 
@@ -660,7 +677,6 @@ await pin.set_pwm(cycle=.6)
 
 Get the PWM frequency of the pin.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -668,7 +684,8 @@ Get the PWM frequency of the pin.
 
 **Returns:**
 
-([int](<INSERT RETURN TYPE LINK>)))
+- [(int)](INSERT RETURN TYPE LINK): The PWM frequency.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.GPIOPinClient.get_pwm_frequency).
 
 ```python
@@ -685,15 +702,15 @@ freq = await pin.get_pwm_frequency()
 
 Set the pin to the given PWM frequency (in Hz). When frequency is 0, it will use the board’s default PWM frequency.
 
-
 **Parameters:**
 
-- `frequency` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `frequency` [(float)](<INSERT PARAM TYPE LINK>): Optional. The frequency, in Hz.
+- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional. The frequency, in Hz.
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The frequency, in Hz.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.GPIOPinClient.set_pwm_frequency).
 
@@ -711,14 +728,14 @@ high = await pin.set_pwm_frequency(frequency=1600)
 
 Get an AnalogReader by name.
 
-
 **Parameters:**
 
-- `name` [(str)](<INSERT PARAM TYPE LINK>):
+- `name` [(str)](<INSERT PARAM TYPE LINK>): Name of the analog reader to be retrieved.
 
 **Returns:**
 
-([viam.components.board.board.Board.AnalogReader](<INSERT RETURN TYPE LINK>)))
+- [(viam.components.board.board.Board.AnalogReader)](INSERT RETURN TYPE LINK): The analog reader.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.analog_reader_by_name).
 
 ```python
@@ -732,14 +749,14 @@ reader = await my_board.analog_reader_by_name(name="my_example_analog_reader")
 
 Get a DigitalInterrupt by name.
 
-
 **Parameters:**
 
-- `name` [(str)](<INSERT PARAM TYPE LINK>):
+- `name` [(str)](<INSERT PARAM TYPE LINK>): Name of the digital interrupt.
 
 **Returns:**
 
-([viam.components.board.board.Board.DigitalInterrupt](<INSERT RETURN TYPE LINK>)))
+- [(viam.components.board.board.Board.DigitalInterrupt)](INSERT RETURN TYPE LINK): The digital interrupt.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.digital_interrupt_by_name).
 
 ```python
@@ -754,14 +771,14 @@ interrupt = await my_board.digital_interrupt_by_name(
 
 Get a GPIO Pin by name.
 
-
 **Parameters:**
 
-- `name` [(str)](<INSERT PARAM TYPE LINK>):
+- `name` [(str)](<INSERT PARAM TYPE LINK>): Name of the GPIO pin.
 
 **Returns:**
 
-([viam.components.board.board.Board.GPIOPin](<INSERT RETURN TYPE LINK>)))
+- [(viam.components.board.board.Board.GPIOPin)](INSERT RETURN TYPE LINK): The pin.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.gpio_pin_by_name).
 
 ```python
@@ -775,13 +792,13 @@ pin = await my_board.gpio_pin_by_name(name="15")
 
 Get the names of all known analog readers.
 
-
 **Parameters:**
 
 
 **Returns:**
 
-([List[str]](<INSERT RETURN TYPE LINK>)))
+- [(List[str])](INSERT RETURN TYPE LINK): The list of names of all known analog readers.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.analog_reader_names).
 
 ```python
@@ -795,13 +812,13 @@ names = await my_board.analog_reader_names()
 
 Get the names of all known digital interrupts.
 
-
 **Parameters:**
 
 
 **Returns:**
 
-([List[str]](<INSERT RETURN TYPE LINK>)))
+- [(List[str])](INSERT RETURN TYPE LINK): The names of the digital interrupts.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.digital_interrupt_names).
 
 ```python
@@ -815,15 +832,15 @@ names = await my_board.digital_interrupt_names()
 
 Send/Receive arbitrary commands to the Resource
 
-
 **Parameters:**
 
-- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
 
 **Returns:**
 
-([Mapping[str, viam.utils.ValueTypes]](<INSERT RETURN TYPE LINK>)))
+- [(Mapping[str, viam.utils.ValueTypes])](INSERT RETURN TYPE LINK): Result of the executed command
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.do_command).
 
 ```python
@@ -835,15 +852,15 @@ result = component.do(command)
 
 Set the board to the indicated power mode.
 
-
 **Parameters:**
 
-- `mode` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `duration` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `mode` [(float)](<INSERT PARAM TYPE LINK>): Optional. The desired power mode.
+- `duration` [(float)](<INSERT PARAM TYPE LINK>): Optional. The desired power mode.
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The desired power mode.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.set_power_mode).
 
@@ -858,7 +875,6 @@ status = await my_board.set_power_mode(mode=PowerMode.POWER_MODE_OFFLINE_DEEP)
 
 Get all geometries associated with the Component, in their current configuration, in the [frame](/mobility/frame-system/) of the Component.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -866,7 +882,8 @@ Get all geometries associated with the Component, in their current configuration
 
 **Returns:**
 
-([List[viam.proto.common.Geometry]](<INSERT RETURN TYPE LINK>)))
+- [(List[viam.proto.common.Geometry])](INSERT RETURN TYPE LINK): The geometries associated with the Component.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.get_geometries).
 
 ```python
@@ -881,16 +898,16 @@ if geometries:
 
 Write an analog value to a pin on the board.
 
-
 **Parameters:**
 
-- `pin` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `value` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `pin` [(float)](<INSERT PARAM TYPE LINK>): Optional. The value to write.
+- `value` [(float)](<INSERT PARAM TYPE LINK>): Optional. The value to write.
+- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional. The value to write.
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The value to write.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.write_analog).
 
@@ -905,15 +922,15 @@ await my_board.write_analog(pin="11", value=48)
 
 Stream digital interrupt ticks.
 
-
 **Parameters:**
 
-- `interrupts` [(Dict[str, Any])](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(Dict[str, Any])](<INSERT PARAM TYPE LINK>): Optional.
+- `interrupts` [(Dict[str, Any])](<INSERT PARAM TYPE LINK>): Optional. list of digital interrupts to recieve ticks from.
+- `extra` [(Dict[str, Any])](<INSERT PARAM TYPE LINK>): Optional. list of digital interrupts to recieve ticks from.
 
 **Returns:**
 
-([viam.components.board.board.TickStream](<INSERT RETURN TYPE LINK>)))
+- [(viam.components.board.board.TickStream)](INSERT RETURN TYPE LINK): stream of ticks.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.stream_ticks).
 
 ```python
@@ -929,12 +946,12 @@ ticks = my_board.stream_ticks([di8, di11])
 
 Safely shut down the resource and prevent further use.
 
-
 **Parameters:**
 
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.close).
 
@@ -946,16 +963,16 @@ await component.close()
 
 Get the next image from the camera as an Image or RawImage. Be sure to close the image when finished.
 
-
 **Parameters:**
 
-- `mime_type` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `mime_type` [(float)](<INSERT PARAM TYPE LINK>): Optional. The desired mime type of the image. This does not guarantee output type
+- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional. The desired mime type of the image. This does not guarantee output type
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The desired mime type of the image. This does not guarantee output type
 
 **Returns:**
 
-([PIL.Image.Image | viam.components.camera.RawImage](<INSERT RETURN TYPE LINK>)))
+- [(PIL.Image.Image | viam.components.camera.RawImage)](INSERT RETURN TYPE LINK): The frame
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.get_image).
 
 ```python
@@ -973,14 +990,14 @@ standard_frame = frame.bytes_to_depth_array()
 
 Get simultaneous images from different imagers, along with associated metadata. This should not be used for getting a time series of images from the same imager.
 
-
 **Parameters:**
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
 
 **Returns:**
 
-([Tuple[List[viam.media.video.NamedImage], viam.proto.common.ResponseMetadata]](<INSERT RETURN TYPE LINK>)))
+- [(Tuple[List[viam.media.video.NamedImage], viam.proto.common.ResponseMetadata])](INSERT RETURN TYPE LINK): A tuple containing two values; the first [0] a list of images returned from thecamera system, and the second [1] the metadata associated with this response.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.get_images).
 
 ```python
@@ -995,7 +1012,6 @@ timestamp = metadata.captured_at
 
 Get the next point cloud from the camera. This will be returned as bytes with a mimetype describing the structure of the data. The consumer of this call should encode the bytes into the formatted suggested by the mimetype.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1003,7 +1019,8 @@ Get the next point cloud from the camera. This will be returned as bytes with a 
 
 **Returns:**
 
-([Tuple[bytes, str]](<INSERT RETURN TYPE LINK>)))
+- [(Tuple[bytes, str])](INSERT RETURN TYPE LINK): A tuple containing two values; the first [0] the pointcloud data, and the second [1] the mimetype of thepointcloud (e.g. PCD).
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.get_point_cloud).
 
 ```python
@@ -1023,14 +1040,14 @@ points = np.asarray(pcd.points)
 
 Get the camera intrinsic parameters and camera distortion parameters
 
-
 **Parameters:**
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
 
 **Returns:**
 
-([viam.components.camera.Camera.Properties](<INSERT RETURN TYPE LINK>)))
+- [(viam.components.camera.Camera.Properties)](INSERT RETURN TYPE LINK): The properties of the camera
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.get_properties).
 
 ```python
@@ -1043,15 +1060,15 @@ properties = await my_camera.get_properties()
 
 Send/Receive arbitrary commands to the Resource
 
-
 **Parameters:**
 
-- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
 
 **Returns:**
 
-([Mapping[str, viam.utils.ValueTypes]](<INSERT RETURN TYPE LINK>)))
+- [(Mapping[str, viam.utils.ValueTypes])](INSERT RETURN TYPE LINK): Result of the executed command
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.do_command).
 
 ```python
@@ -1063,7 +1080,6 @@ result = component.do(command)
 
 Get all geometries associated with the Component, in their current configuration, in the [frame](/mobility/frame-system/) of the Component.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1071,7 +1087,8 @@ Get all geometries associated with the Component, in their current configuration
 
 **Returns:**
 
-([List[viam.proto.common.Geometry]](<INSERT RETURN TYPE LINK>)))
+- [(List[viam.proto.common.Geometry])](INSERT RETURN TYPE LINK): The geometries associated with the Component.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.get_geometries).
 
 ```python
@@ -1086,12 +1103,12 @@ if geometries:
 
 Safely shut down the resource and prevent further use.
 
-
 **Parameters:**
 
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.close).
 
@@ -1103,7 +1120,6 @@ await component.close()
 
 Set the current position to be the new zero (home) position.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1111,6 +1127,7 @@ Set the current position to be the new zero (home) position.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/encoder/client/index.html#viam.components.encoder.client.EncoderClient.reset_position).
 
@@ -1125,16 +1142,17 @@ await my_encoder.reset_position()
 
 Report the position of the encoder. The value returned is the current position in terms of it’s position_type. The position will be either in relative units (ticks away from a zero position) for PositionType.TICKS or absolute units (degrees along a circle) for PositionType.DEGREES.
 
-
 **Parameters:**
 
-- `position_type` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `position_type` [(float)](<INSERT PARAM TYPE LINK>): Optional. The desired output type of the position
+- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional. The desired output type of the position
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The desired output type of the position
 
 **Returns:**
 
-([Tuple[float, viam.proto.component.encoder.PositionType.ValueType]](<INSERT RETURN TYPE LINK>)))
+- [(Tuple[float, viam.proto.component.encoder.PositionType.ValueType])](INSERT RETURN TYPE LINK): A tuple containing two values; the first [0] the Position of the encoder which can either beticks since last zeroing for a relative encoder or degrees for an absolute encoder, and the second [1] the type of
+position the encoder returns (ticks or degrees).
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/encoder/client/index.html#viam.components.encoder.client.EncoderClient.get_position).
 
 ```python
@@ -1149,7 +1167,6 @@ print("The encoder position is currently ", position[0], position[1])
 
 Return a dictionary of the types of position reporting this encoder supports
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1157,7 +1174,8 @@ Return a dictionary of the types of position reporting this encoder supports
 
 **Returns:**
 
-([viam.components.encoder.encoder.Encoder.Properties](<INSERT RETURN TYPE LINK>)))
+- [(viam.components.encoder.encoder.Encoder.Properties)](INSERT RETURN TYPE LINK): Map of position types to supported status.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/encoder/client/index.html#viam.components.encoder.client.EncoderClient.get_properties).
 
 ```python
@@ -1171,15 +1189,15 @@ properties = await my_encoder.get_properties()
 
 Send/Receive arbitrary commands to the Resource
 
-
 **Parameters:**
 
-- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
 
 **Returns:**
 
-([Mapping[str, viam.utils.ValueTypes]](<INSERT RETURN TYPE LINK>)))
+- [(Mapping[str, viam.utils.ValueTypes])](INSERT RETURN TYPE LINK): Result of the executed command
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/encoder/client/index.html#viam.components.encoder.client.EncoderClient.do_command).
 
 ```python
@@ -1191,7 +1209,6 @@ result = component.do(command)
 
 Get all geometries associated with the Component, in their current configuration, in the [frame](/mobility/frame-system/) of the Component.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1199,7 +1216,8 @@ Get all geometries associated with the Component, in their current configuration
 
 **Returns:**
 
-([List[viam.proto.common.Geometry]](<INSERT RETURN TYPE LINK>)))
+- [(List[viam.proto.common.Geometry])](INSERT RETURN TYPE LINK): The geometries associated with the Component.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/encoder/client/index.html#viam.components.encoder.client.EncoderClient.get_geometries).
 
 ```python
@@ -1214,12 +1232,12 @@ if geometries:
 
 Safely shut down the resource and prevent further use.
 
-
 **Parameters:**
 
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/encoder/client/index.html#viam.components.encoder.client.EncoderClient.close).
 
@@ -1231,7 +1249,6 @@ await component.close()
 
 Get the position in millimeters.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1239,7 +1256,8 @@ Get the position in millimeters.
 
 **Returns:**
 
-([List[float]](<INSERT RETURN TYPE LINK>)))
+- [(List[float])](INSERT RETURN TYPE LINK): The position of the axes.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.get_position).
 
 ```python
@@ -1253,16 +1271,20 @@ positions = await my_gantry.get_position()
 
 Move the gantry to a new position at the requested speeds.
 
-
 **Parameters:**
 
-- `positions` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `speeds` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `positions` [(float)](<INSERT PARAM TYPE LINK>): Optional. List of positions for the axes to move to,
+in millimeters.
+- `speeds` [(float)](<INSERT PARAM TYPE LINK>): Optional. List of positions for the axes to move to,
+in millimeters.
+- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional. List of positions for the axes to move to,
+in millimeters.
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. List of positions for the axes to move to,
+in millimeters.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.move_to_position).
 
@@ -1284,7 +1306,6 @@ await my_gantry.move_to_position(
 
 Home the gantry to find it’s starting and ending positions
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1292,7 +1313,8 @@ Home the gantry to find it’s starting and ending positions
 
 **Returns:**
 
-([bool](<INSERT RETURN TYPE LINK>)))
+- [(bool)](INSERT RETURN TYPE LINK): whether the gantry has run the homing sequence successfully
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.home).
 
 ```python
@@ -1305,7 +1327,6 @@ await my_gantry.home()
 
 Get the lengths of the axes of the gantry in millimeters.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1313,7 +1334,8 @@ Get the lengths of the axes of the gantry in millimeters.
 
 **Returns:**
 
-([List[float]](<INSERT RETURN TYPE LINK>)))
+- [(List[float])](INSERT RETURN TYPE LINK): The lengths of the axes.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.get_lengths).
 
 ```python
@@ -1327,7 +1349,6 @@ lengths_mm = await my_gantry.get_lengths()
 
 Stop all motion of the gantry. It is assumed that the gantry stops immediately.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1335,6 +1356,7 @@ Stop all motion of the gantry. It is assumed that the gantry stops immediately.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.stop).
 
@@ -1350,14 +1372,14 @@ await my_gantry.stop()
 
 Get if the gantry is currently moving.
 
-
 **Parameters:**
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
 
 **Returns:**
 
-([bool](<INSERT RETURN TYPE LINK>)))
+- [(bool)](INSERT RETURN TYPE LINK): Whether the gantry is moving.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.is_moving).
 
 ```python
@@ -1375,15 +1397,15 @@ print(my_gantry.is_moving())
 
 Send/Receive arbitrary commands to the Resource
 
-
 **Parameters:**
 
-- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
 
 **Returns:**
 
-([Mapping[str, viam.utils.ValueTypes]](<INSERT RETURN TYPE LINK>)))
+- [(Mapping[str, viam.utils.ValueTypes])](INSERT RETURN TYPE LINK): Result of the executed command
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.do_command).
 
 ```python
@@ -1395,7 +1417,6 @@ result = component.do(command)
 
 Get all geometries associated with the Component, in their current configuration, in the [frame](/mobility/frame-system/) of the Component.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1403,7 +1424,8 @@ Get all geometries associated with the Component, in their current configuration
 
 **Returns:**
 
-([List[viam.proto.common.Geometry]](<INSERT RETURN TYPE LINK>)))
+- [(List[viam.proto.common.Geometry])](INSERT RETURN TYPE LINK): The geometries associated with the Component.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.get_geometries).
 
 ```python
@@ -1418,12 +1440,12 @@ if geometries:
 
 Safely shut down the resource and prevent further use.
 
-
 **Parameters:**
 
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.close).
 
@@ -1435,15 +1457,15 @@ await component.close()
 
 Send/Receive arbitrary commands to the Resource
 
-
 **Parameters:**
 
-- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
 
 **Returns:**
 
-([Mapping[str, Any]](<INSERT RETURN TYPE LINK>)))
+- [(Mapping[str, Any])](INSERT RETURN TYPE LINK): Result of the executed command
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/generic/client/index.html#viam.components.generic.client.GenericClient.do_command).
 
 ```python
@@ -1455,7 +1477,6 @@ result = component.do(command)
 
 Get all geometries associated with the Component, in their current configuration, in the [frame](/mobility/frame-system/) of the Component.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1463,7 +1484,8 @@ Get all geometries associated with the Component, in their current configuration
 
 **Returns:**
 
-([List[viam.proto.common.Geometry]](<INSERT RETURN TYPE LINK>)))
+- [(List[viam.proto.common.Geometry])](INSERT RETURN TYPE LINK): The geometries associated with the Component.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/generic/client/index.html#viam.components.generic.client.GenericClient.get_geometries).
 
 ```python
@@ -1478,12 +1500,12 @@ if geometries:
 
 Safely shut down the resource and prevent further use.
 
-
 **Parameters:**
 
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/generic/client/index.html#viam.components.generic.client.GenericClient.close).
 
@@ -1495,7 +1517,6 @@ await component.close()
 
 Open the gripper.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1503,6 +1524,7 @@ Open the gripper.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.open).
 
@@ -1517,7 +1539,6 @@ await my_gripper.open()
 
 Instruct the gripper to grab.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1525,7 +1546,8 @@ Instruct the gripper to grab.
 
 **Returns:**
 
-([bool](<INSERT RETURN TYPE LINK>)))
+- [(bool)](INSERT RETURN TYPE LINK): Indicates if the gripper grabbed something.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.grab).
 
 ```python
@@ -1539,7 +1561,6 @@ grabbed = await my_gripper.grab()
 
 Stop the gripper. It is assumed the gripper stops immediately.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1547,6 +1568,7 @@ Stop the gripper. It is assumed the gripper stops immediately.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.stop).
 
@@ -1561,14 +1583,14 @@ await my_gripper.stop()
 
 Get if the gripper is currently moving.
 
-
 **Parameters:**
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
 
 **Returns:**
 
-([bool](<INSERT RETURN TYPE LINK>)))
+- [(bool)](INSERT RETURN TYPE LINK): Whether the gripper is moving.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.is_moving).
 
 ```python
@@ -1583,15 +1605,15 @@ print('Moving:', moving)
 
 Send/Receive arbitrary commands to the Resource
 
-
 **Parameters:**
 
-- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
 
 **Returns:**
 
-([Mapping[str, viam.utils.ValueTypes]](<INSERT RETURN TYPE LINK>)))
+- [(Mapping[str, viam.utils.ValueTypes])](INSERT RETURN TYPE LINK): Result of the executed command
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.do_command).
 
 ```python
@@ -1603,7 +1625,6 @@ result = component.do(command)
 
 Get all geometries associated with the Component, in their current configuration, in the [frame](/mobility/frame-system/) of the Component.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1611,7 +1632,8 @@ Get all geometries associated with the Component, in their current configuration
 
 **Returns:**
 
-([List[viam.proto.common.Geometry]](<INSERT RETURN TYPE LINK>)))
+- [(List[viam.proto.common.Geometry])](INSERT RETURN TYPE LINK): The geometries associated with the Component.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.get_geometries).
 
 ```python
@@ -1626,12 +1648,12 @@ if geometries:
 
 Safely shut down the resource and prevent further use.
 
-
 **Parameters:**
 
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.close).
 
@@ -1643,7 +1665,6 @@ await component.close()
 
 Returns a list of Controls provided by the Controller
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1651,7 +1672,8 @@ Returns a list of Controls provided by the Controller
 
 **Returns:**
 
-([List[viam.components.input.input.Control]](<INSERT RETURN TYPE LINK>)))
+- [(List[viam.components.input.input.Control])](INSERT RETURN TYPE LINK): List of controls provided by the Controller
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.get_controls).
 
 ```python
@@ -1670,7 +1692,6 @@ print(f"Controls: {controls}")
 
 Returns the most recent Event for each input (which should be the current state)
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1678,7 +1699,8 @@ Returns the most recent Event for each input (which should be the current state)
 
 **Returns:**
 
-([Dict[viam.components.input.input.Control, viam.components.input.input.Event]](<INSERT RETURN TYPE LINK>)))
+- [(Dict[viam.components.input.input.Control, viam.components.input.input.Event])](INSERT RETURN TYPE LINK): The most recent event for each input
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.get_events).
 
 ```python
@@ -1697,16 +1719,20 @@ print(f"Recent Events: {recent_events}")
 
 Register a function that will fire on given EventTypes for a given Control
 
-
 **Parameters:**
 
-- `control` [(Dict[str, Any])](<INSERT PARAM TYPE LINK>): Optional.
-- `triggers` [(Dict[str, Any])](<INSERT PARAM TYPE LINK>): Optional.
-- `function` [(Dict[str, Any])](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(Dict[str, Any])](<INSERT PARAM TYPE LINK>): Optional.
+- `control` [(Dict[str, Any])](<INSERT PARAM TYPE LINK>): Optional. The function to run on
+specific triggers
+- `triggers` [(Dict[str, Any])](<INSERT PARAM TYPE LINK>): Optional. The function to run on
+specific triggers
+- `function` [(Dict[str, Any])](<INSERT PARAM TYPE LINK>): Optional. The function to run on
+specific triggers
+- `extra` [(Dict[str, Any])](<INSERT PARAM TYPE LINK>): Optional. The function to run on
+specific triggers
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.register_control_callback).
 
@@ -1754,15 +1780,15 @@ async def main():
 
 Directly send an Event (such as a button press) from external code
 
-
 **Parameters:**
 
-- `event` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `event` [(float)](<INSERT PARAM TYPE LINK>): Optional. The event to trigger
+- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional. The event to trigger
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The event to trigger
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.trigger_event).
 
@@ -1780,15 +1806,15 @@ await myController.trigger_event(event=my_event, timeout=7.0)
 
 Send/Receive arbitrary commands to the Resource
 
-
 **Parameters:**
 
-- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
 
 **Returns:**
 
-([Mapping[str, viam.utils.ValueTypes]](<INSERT RETURN TYPE LINK>)))
+- [(Mapping[str, viam.utils.ValueTypes])](INSERT RETURN TYPE LINK): Result of the executed command
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.do_command).
 
 ```python
@@ -1800,7 +1826,6 @@ result = component.do(command)
 
 Get all geometries associated with the Component, in their current configuration, in the [frame](/mobility/frame-system/) of the Component.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1808,7 +1833,8 @@ Get all geometries associated with the Component, in their current configuration
 
 **Returns:**
 
-([List[viam.proto.common.Geometry]](<INSERT RETURN TYPE LINK>)))
+- [(List[viam.proto.common.Geometry])](INSERT RETURN TYPE LINK): The geometries associated with the Component.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.get_geometries).
 
 ```python
@@ -1823,12 +1849,12 @@ if geometries:
 
 Safely shut down the resource and prevent further use.
 
-
 **Parameters:**
 
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.close).
 
@@ -1840,15 +1866,18 @@ await component.close()
 
 Sets the “percentage” of power the motor should employ between -1 and 1. When power is negative, the rotation will be in the backward direction.
 
-
 **Parameters:**
 
-- `power` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `power` [(float)](<INSERT PARAM TYPE LINK>): Optional. Power between -1 and 1
+(negative implies backwards).
+- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional. Power between -1 and 1
+(negative implies backwards).
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. Power between -1 and 1
+(negative implies backwards).
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/client/index.html#viam.components.motor.client.MotorClient.set_power).
 
@@ -1863,16 +1892,20 @@ await my_motor.set_power(power=0.4)
 
 Spin the motor the specified number of revolutions at specified rpm. When rpm or revolutions is a negative value, the rotation will be in the backward direction. Note: if both rpm and revolutions are negative, the motor will spin in the forward direction.
 
-
 **Parameters:**
 
-- `rpm` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `revolutions` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `rpm` [(float)](<INSERT PARAM TYPE LINK>): Optional. Number of revolutions the motor should run for
+(negative implies backwards).
+- `revolutions` [(float)](<INSERT PARAM TYPE LINK>): Optional. Number of revolutions the motor should run for
+(negative implies backwards).
+- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional. Number of revolutions the motor should run for
+(negative implies backwards).
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. Number of revolutions the motor should run for
+(negative implies backwards).
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/client/index.html#viam.components.motor.client.MotorClient.go_for).
 
@@ -1887,16 +1920,16 @@ await my_motor.go_for(rpm=60, revolutions=7.2)
 
 Spin the motor to the specified position (provided in revolutions from home/zero), at the specified speed, in revolutions per minute. Regardless of the directionality of the rpm this function will move the motor towards the specified position.
 
-
 **Parameters:**
 
-- `rpm` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `position_revolutions` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `rpm` [(float)](<INSERT PARAM TYPE LINK>): Optional. Target position relative to home/zero, in revolutions.
+- `position_revolutions` [(float)](<INSERT PARAM TYPE LINK>): Optional. Target position relative to home/zero, in revolutions.
+- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional. Target position relative to home/zero, in revolutions.
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. Target position relative to home/zero, in revolutions.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/client/index.html#viam.components.motor.client.MotorClient.go_to).
 
@@ -1911,15 +1944,15 @@ await my_motor.go_to(rpm=75, revolutions=8.3)
 
 Set the current position (modified by offset) to be the new zero (home) position.
 
-
 **Parameters:**
 
-- `offset` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `offset` [(float)](<INSERT PARAM TYPE LINK>): Optional. The offset from the current position to new home/zero position.
+- `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional. The offset from the current position to new home/zero position.
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The offset from the current position to new home/zero position.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/client/index.html#viam.components.motor.client.MotorClient.reset_zero_position).
 
@@ -1934,7 +1967,6 @@ await my_motor.reset_zero_position(offset=0.0)
 
 Report the position of the motor based on its encoder. The value returned is the number of revolutions relative to its zero position. This method will raise an exception if position reporting is not supported by the motor.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1942,7 +1974,8 @@ Report the position of the motor based on its encoder. The value returned is the
 
 **Returns:**
 
-([float](<INSERT RETURN TYPE LINK>)))
+- [(float)](INSERT RETURN TYPE LINK): Number of revolutions the motor is away from zero/home.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/client/index.html#viam.components.motor.client.MotorClient.get_position).
 
 ```python
@@ -1956,7 +1989,6 @@ position = await my_motor.get_position()
 
 Report a dictionary mapping optional properties to whether it is supported by this motor.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1964,7 +1996,8 @@ Report a dictionary mapping optional properties to whether it is supported by th
 
 **Returns:**
 
-([viam.components.motor.motor.Motor.Properties](<INSERT RETURN TYPE LINK>)))
+- [(viam.components.motor.motor.Motor.Properties)](INSERT RETURN TYPE LINK): Map of feature names to supported status.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/client/index.html#viam.components.motor.client.MotorClient.get_properties).
 
 ```python
@@ -1982,7 +2015,6 @@ print(f'Properties: {properties}')
 
 Stop the motor immediately, without any gradual step down.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -1990,6 +2022,7 @@ Stop the motor immediately, without any gradual step down.
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/client/index.html#viam.components.motor.client.MotorClient.stop).
 
@@ -2004,7 +2037,6 @@ await my_motor.stop()
 
 Returns whether or not the motor is currently running.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2012,7 +2044,8 @@ Returns whether or not the motor is currently running.
 
 **Returns:**
 
-([Tuple[bool, float]](<INSERT RETURN TYPE LINK>)))
+- [(Tuple[bool, float])](INSERT RETURN TYPE LINK): A tuple containing two values; the first [0] value indicates whether the motor is currently powered, andthe second [1] value indicates the current power percentage of the motor.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/client/index.html#viam.components.motor.client.MotorClient.is_powered).
 
 ```python
@@ -2028,14 +2061,14 @@ print('Powered: ', powered)
 
 Get if the motor is currently moving.
 
-
 **Parameters:**
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
 
 **Returns:**
 
-([bool](<INSERT RETURN TYPE LINK>)))
+- [(bool)](INSERT RETURN TYPE LINK): Whether the motor is moving.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/client/index.html#viam.components.motor.client.MotorClient.is_moving).
 
 ```python
@@ -2050,15 +2083,15 @@ print('Moving: ', moving)
 
 Send/Receive arbitrary commands to the Resource
 
-
 **Parameters:**
 
-- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
 
 **Returns:**
 
-([Mapping[str, viam.utils.ValueTypes]](<INSERT RETURN TYPE LINK>)))
+- [(Mapping[str, viam.utils.ValueTypes])](INSERT RETURN TYPE LINK): Result of the executed command
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/client/index.html#viam.components.motor.client.MotorClient.do_command).
 
 ```python
@@ -2070,7 +2103,6 @@ result = component.do(command)
 
 Get all geometries associated with the Component, in their current configuration, in the [frame](/mobility/frame-system/) of the Component.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2078,7 +2110,8 @@ Get all geometries associated with the Component, in their current configuration
 
 **Returns:**
 
-([List[viam.proto.common.Geometry]](<INSERT RETURN TYPE LINK>)))
+- [(List[viam.proto.common.Geometry])](INSERT RETURN TYPE LINK): The geometries associated with the Component.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/client/index.html#viam.components.motor.client.MotorClient.get_geometries).
 
 ```python
@@ -2093,12 +2126,12 @@ if geometries:
 
 Safely shut down the resource and prevent further use.
 
-
 **Parameters:**
 
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/client/index.html#viam.components.motor.client.MotorClient.close).
 
@@ -2110,7 +2143,6 @@ await component.close()
 
 Get the current GeoPoint (latitude, longitude) and altitude (m)
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2118,7 +2150,8 @@ Get the current GeoPoint (latitude, longitude) and altitude (m)
 
 **Returns:**
 
-([Tuple[viam.components.movement_sensor.GeoPoint, float]](<INSERT RETURN TYPE LINK>)))
+- [(Tuple[viam.components.movement_sensor.GeoPoint, float])](INSERT RETURN TYPE LINK): The current lat/long, along with the altitude in m
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_position).
 
 ```python
@@ -2134,7 +2167,6 @@ position = await my_movement_sensor.get_position()
 
 Get the current linear velocity as a Vector3 with x, y, and z axes represented in m/sec
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2142,7 +2174,8 @@ Get the current linear velocity as a Vector3 with x, y, and z axes represented i
 
 **Returns:**
 
-([viam.components.movement_sensor.Vector3](<INSERT RETURN TYPE LINK>)))
+- [(viam.components.movement_sensor.Vector3)](INSERT RETURN TYPE LINK): The linear velocity in m/sec
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_linear_velocity).
 
 ```python
@@ -2157,7 +2190,6 @@ lin_vel = await my_movement_sensor.get_linear_velocity()
 
 Get the current angular velocity as a Vector3 with x, y, and z axes represented in degrees/sec
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2165,7 +2197,8 @@ Get the current angular velocity as a Vector3 with x, y, and z axes represented 
 
 **Returns:**
 
-([viam.components.movement_sensor.Vector3](<INSERT RETURN TYPE LINK>)))
+- [(viam.components.movement_sensor.Vector3)](INSERT RETURN TYPE LINK): The angular velocity in degrees/sec
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_angular_velocity).
 
 ```python
@@ -2183,7 +2216,6 @@ y_ang_vel = ang_vel.y
 
 Get the current linear acceleration as a Vector3 with x, y, and z axes represented in m/sec^2
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2191,7 +2223,8 @@ Get the current linear acceleration as a Vector3 with x, y, and z axes represent
 
 **Returns:**
 
-([viam.components.movement_sensor.Vector3](<INSERT RETURN TYPE LINK>)))
+- [(viam.components.movement_sensor.Vector3)](INSERT RETURN TYPE LINK): The linear acceleration in m/sec^2
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_linear_acceleration).
 
 ```python
@@ -2209,7 +2242,6 @@ x_lin_accel = lin_accel.x
 
 Get the current compass heading in degrees
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2217,7 +2249,8 @@ Get the current compass heading in degrees
 
 **Returns:**
 
-([float](<INSERT RETURN TYPE LINK>)))
+- [(float)](INSERT RETURN TYPE LINK): The compass heading in degrees
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_compass_heading).
 
 ```python
@@ -2232,7 +2265,6 @@ heading = await my_movement_sensor.get_compass_heading()
 
 Get the current orientation
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2240,7 +2272,8 @@ Get the current orientation
 
 **Returns:**
 
-([viam.components.movement_sensor.Orientation](<INSERT RETURN TYPE LINK>)))
+- [(viam.components.movement_sensor.Orientation)](INSERT RETURN TYPE LINK): The orientation
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_orientation).
 
 ```python
@@ -2255,7 +2288,6 @@ orientation = await my_movement_sensor.get_orientation()
 
 Get the supported properties of this sensor
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2263,7 +2295,8 @@ Get the supported properties of this sensor
 
 **Returns:**
 
-([viam.components.movement_sensor.movement_sensor.MovementSensor.Properties](<INSERT RETURN TYPE LINK>)))
+- [(viam.components.movement_sensor.movement_sensor.MovementSensor.Properties)](INSERT RETURN TYPE LINK): The properties
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_properties).
 
 ```python
@@ -2278,7 +2311,6 @@ properties = await my_movement_sensor.get_properties()
 
 Get the accuracy of the various sensors
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2286,7 +2318,8 @@ Get the accuracy of the various sensors
 
 **Returns:**
 
-([viam.components.movement_sensor.movement_sensor.MovementSensor.Accuracy](<INSERT RETURN TYPE LINK>)))
+- [(viam.components.movement_sensor.movement_sensor.MovementSensor.Accuracy)](INSERT RETURN TYPE LINK): The accuracies of the movement sensor
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_accuracy).
 
 ```python
@@ -2301,7 +2334,6 @@ accuracy = await my_movement_sensor.get_accuracy()
 
 Obtain the measurements/data specific to this sensor. If a sensor is not configured to have a measurement or fails to read a piece of data, it will not appear in the readings dictionary.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2309,7 +2341,8 @@ Obtain the measurements/data specific to this sensor. If a sensor is not configu
 
 **Returns:**
 
-([Mapping[str, viam.utils.SensorReading]](<INSERT RETURN TYPE LINK>)))
+- [(Mapping[str, viam.utils.SensorReading])](INSERT RETURN TYPE LINK): The readings for the MovementSensor. Can be of any type.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_readings).
 
 ```python
@@ -2324,15 +2357,15 @@ readings = await my_movement_sensor.get_readings()
 
 Send/Receive arbitrary commands to the Resource
 
-
 **Parameters:**
 
-- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
 
 **Returns:**
 
-([Mapping[str, viam.utils.ValueTypes]](<INSERT RETURN TYPE LINK>)))
+- [(Mapping[str, viam.utils.ValueTypes])](INSERT RETURN TYPE LINK): Result of the executed command
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.do_command).
 
 ```python
@@ -2344,7 +2377,6 @@ result = component.do(command)
 
 Get all geometries associated with the Component, in their current configuration, in the [frame](/mobility/frame-system/) of the Component.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2352,7 +2384,8 @@ Get all geometries associated with the Component, in their current configuration
 
 **Returns:**
 
-([List[viam.proto.common.Geometry]](<INSERT RETURN TYPE LINK>)))
+- [(List[viam.proto.common.Geometry])](INSERT RETURN TYPE LINK): The geometries associated with the Component.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_geometries).
 
 ```python
@@ -2367,12 +2400,12 @@ if geometries:
 
 Safely shut down the resource and prevent further use.
 
-
 **Parameters:**
 
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.close).
 
@@ -2384,7 +2417,6 @@ await component.close()
 
 Get the voltage reading and bool IsAC
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2392,7 +2424,8 @@ Get the voltage reading and bool IsAC
 
 **Returns:**
 
-([Tuple[float, bool]](<INSERT RETURN TYPE LINK>)))
+- [(Tuple[float, bool])](INSERT RETURN TYPE LINK): voltage (volts) and bool IsAC
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.get_voltage).
 
 ```python
@@ -2407,7 +2440,6 @@ print("The voltage is", voltage, "V, Is AC:", is_ac)
 
 Get the current reading and bool IsAC
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2415,7 +2447,8 @@ Get the current reading and bool IsAC
 
 **Returns:**
 
-([Tuple[float, bool]](<INSERT RETURN TYPE LINK>)))
+- [(Tuple[float, bool])](INSERT RETURN TYPE LINK): current (amperes) and bool IsAC
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.get_current).
 
 ```python
@@ -2430,7 +2463,6 @@ print("The current is ", current, " A, Is AC: ", is_ac)
 
 Get the power reading in watts
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2438,7 +2470,8 @@ Get the power reading in watts
 
 **Returns:**
 
-([float](<INSERT RETURN TYPE LINK>)))
+- [(float)](INSERT RETURN TYPE LINK): power in watts
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.get_power).
 
 ```python
@@ -2453,7 +2486,6 @@ print("The power is", power, "Watts")
 
 Obtain the measurements/data specific to this sensor. If a sensor is not configured to have a measurement or fails to read a piece of data, it will not appear in the readings dictionary.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2461,7 +2493,8 @@ Obtain the measurements/data specific to this sensor. If a sensor is not configu
 
 **Returns:**
 
-([Mapping[str, viam.utils.SensorReading]](<INSERT RETURN TYPE LINK>)))
+- [(Mapping[str, viam.utils.SensorReading])](INSERT RETURN TYPE LINK): The readings for the PowerSensor. Can be of any type. Includes voltage in volts (float), current inamperes (float), is_ac (bool), and power in watts (float).
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.get_readings).
 
 ```python
@@ -2475,15 +2508,15 @@ readings = await my_power_sensor.get_readings()
 
 Send/Receive arbitrary commands to the Resource
 
-
 **Parameters:**
 
-- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
 
 **Returns:**
 
-([Mapping[str, viam.utils.ValueTypes]](<INSERT RETURN TYPE LINK>)))
+- [(Mapping[str, viam.utils.ValueTypes])](INSERT RETURN TYPE LINK): Result of the executed command
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.do_command).
 
 ```python
@@ -2495,7 +2528,6 @@ result = component.do(command)
 
 Get all geometries associated with the Component, in their current configuration, in the [frame](/mobility/frame-system/) of the Component.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2503,7 +2535,8 @@ Get all geometries associated with the Component, in their current configuration
 
 **Returns:**
 
-([List[viam.proto.common.Geometry]](<INSERT RETURN TYPE LINK>)))
+- [(List[viam.proto.common.Geometry])](INSERT RETURN TYPE LINK): The geometries associated with the Component.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.get_geometries).
 
 ```python
@@ -2518,12 +2551,12 @@ if geometries:
 
 Safely shut down the resource and prevent further use.
 
-
 **Parameters:**
 
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.close).
 
@@ -2535,7 +2568,6 @@ await component.close()
 
 Obtain the measurements/data specific to this sensor.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2543,7 +2575,8 @@ Obtain the measurements/data specific to this sensor.
 
 **Returns:**
 
-([Mapping[str, viam.utils.SensorReading]](<INSERT RETURN TYPE LINK>)))
+- [(Mapping[str, viam.utils.SensorReading])](INSERT RETURN TYPE LINK): The measurements. Can be of any type.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/client/index.html#viam.components.sensor.client.SensorClient.get_readings).
 
 ```python
@@ -2557,15 +2590,15 @@ readings = await my_sensor.get_readings()
 
 Send/Receive arbitrary commands to the Resource
 
-
 **Parameters:**
 
-- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional.
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional.
+- `command` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>): Optional. The command to execute
 
 **Returns:**
 
-([Mapping[str, viam.utils.ValueTypes]](<INSERT RETURN TYPE LINK>)))
+- [(Mapping[str, viam.utils.ValueTypes])](INSERT RETURN TYPE LINK): Result of the executed command
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/client/index.html#viam.components.sensor.client.SensorClient.do_command).
 
 ```python
@@ -2577,7 +2610,6 @@ result = component.do(command)
 
 Get all geometries associated with the Component, in their current configuration, in the [frame](/mobility/frame-system/) of the Component.
 
-
 **Parameters:**
 
 - `extra` [(float)](<INSERT PARAM TYPE LINK>): Optional.
@@ -2585,7 +2617,8 @@ Get all geometries associated with the Component, in their current configuration
 
 **Returns:**
 
-([List[viam.proto.common.Geometry]](<INSERT RETURN TYPE LINK>)))
+- [(List[viam.proto.common.Geometry])](INSERT RETURN TYPE LINK): The geometries associated with the Component.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/client/index.html#viam.components.sensor.client.SensorClient.get_geometries).
 
 ```python
@@ -2600,12 +2633,12 @@ if geometries:
 
 Safely shut down the resource and prevent further use.
 
-
 **Parameters:**
 
 
 **Returns:**
 
+None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/client/index.html#viam.components.sensor.client.SensorClient.close).
 
