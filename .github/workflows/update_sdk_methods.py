@@ -906,38 +906,37 @@ def parse_method_usage(usage_string):
     parsed_usage_string = []
 
     for param in parameters:
+        # HACKY: Hardcoding extra and error bc they are all the same and parsing from usage string
+        # has proven difficult
+
         # Splitting each parameter by space to separate parameter name and type
-        print("Param")
-        print(param)
         parts = param.split()
-        print(f"PARTS: {parts} for param {param}")
-        
-        type_name = parts[-1].strip('` ')  # Remove backticks and spaces
-        print(f"type_name: {type_name}")
 
-        param_type = ' '.join(parts[:-1]).strip('() ')  # Remove parentheses and spaces
-        print(f"param_type: {param_type}")
-
-        # Extracting the type link from the type string
-        type_link = regex.search(r'<a href="([^"]+)">', param_type)
-        print(f"type_link extracted: {type_link}")
-        if type_link:
-            param_type_link = type_link.group(1)
-            print(f"param type link DEBUG DEBUG {param_type_link}")
+        if 'extra' in param:
+            type_name = "extra"
+            param_type = "map[string]interface\{\}"
+            param_type_link = "https://go.dev/blog/maps"
+        elif param == '<a href="/builtin#error">error</a>':
+            type_name = ""
+            param_type = "error"
+            param_type_link = "https://pkg.go.dev/builtin#error"
         else:
-            param_type_link = None
+            type_name = parts[-1].strip('` ')  # Remove backticks and spaces
+            print(f"type_name: {type_name}")
 
-        # print("PARAM NAME")
-        # print(type_name)
-        # print("PARAM TYPE")
-        # print(param_type)
-        # print("PARAM TYPE LINK")
-        # print(param_type_link)
+            param_type = ' '.join(parts[:-1]).strip('() ')  # Remove parentheses and spaces
+            print(f"param_type: {param_type}")
+
+            # Extracting the type link from the type string
+            type_link = regex.search(r'<a href="([^"]+)">', param_type)
+            print(f"type_link extracted: {type_link}")
+            if type_link:
+                param_type_link = type_link.group(1)
+            else:
+                param_type_link = None
 
         parsed_usage_string.append((type_name, param_type, param_type_link))
 
-    # print("PARSED USAGE STRING:")
-    # print(parsed_usage_string)
     return parsed_usage_string
 
 # Format usage string
@@ -945,48 +944,50 @@ def format_method_usage(parsed_usage_string):
     formatted_output = []
     for type_name, param_type, param_type_link in parsed_usage_string:
 
-        print(f"Param name: {type_name}")
+        return_string = ""
 
-        # Extracting param name from html
-        matches = regex.findall(r'>(.*?)<', type_name)
-
-        if matches:
-            # Extracted content between ">" and "<"
-            type_name = matches[0]
-            print("Extracted param name:", type_name)
+        if type_name == "extra":
+            return_string += f"- `{type_name}` [({param_type})]({param_type_link}): Extra options to pass to the underlying RPC call."
+            formatted_output.append(return_string)
+        elif param_type == "error":
+            return_string += f"- [({param_type})]({param_type_link}): An error, if one occurred."
+            formatted_output.append(return_string)
         else:
-            # passing for now
-            pass 
+            # Extracting param name from html
+            matches = regex.findall(r'>(.*?)<', type_name)
 
-        # Extracting the parameter type from the param_type string
-        # print(f"Type name pre extraction: {param_type}")
-        param_name = regex.search(r'\w+(?=\s*<)', param_type)
-        if param_name:
-            param_name = param_name.group()
-            # print(f"Type name detected: {param_name}")
-        else:
-            param_name = param_type.strip('<>')
-            # print(f"Type name STRIPPED: {param_name}")
-        
-        # Creating the parameter type link based on the extracted type name
-        print(f"CREATING PARAMETER TYPE LINK from param type link {param_type_link}")
-        if param_type_link:
-            # type_link = regex.search(r'<a href="([^"]+)">', param_type_link)
-            # print(type_link)
-            # if type_link:
-                # param_type_link = type_link.group(1).replace('<a href="', "").replace('">', "").replace('>', "")
-            print(f"type_link stripped: {param_type_link}")
-            param_type_link = f"https://pkg.go.dev{param_type_link}#{param_name}"
-        else:
-            print("No param type link")
+            if matches:
+                # Extracted content between ">" and "<"
+                type_name = matches[0]
+                print("Extracted type name:", type_name)
+            else:
+                # passing for now
+                pass 
 
-        if param_type_link:
-            formatted_output.append(f"- `{param_name}` [({type_name})]({param_type_link}):")
-        else:
-            formatted_output.append(f"- `{param_name}` [({type_name})](<INSERT PARAM TYPE LINK>)")
+            return_string += f"- "
 
-    print("FORMATTED OUTPUT")
-    print(formatted_output)
+            # Extracting the parameter type from the param_type string
+            print(f"Type name pre extraction: {param_type}")
+            param_name = regex.search(r'\w+(?=\s*<)', param_type)
+            if param_name:
+                param_name = param_name.group()
+                print(f"Param name detected: {param_name}")
+                return_string += f"`{param_name}`"
+            else:
+                print(f"No param name detected, param type: {param_type}")
+            
+            # Creating the parameter type link based on the extracted type name
+            print(f"CREATING PARAMETER TYPE LINK from param type link {param_type_link}")
+            if param_type_link:
+                print(f"type_link stripped: {param_type_link}")
+                param_type_link = f"https://pkg.go.dev{param_type_link}#{param_name}"
+                return_string += f"[({type_name})]({param_type_link}):"
+            else:
+                print("No param type link")
+                return_string += f"[({type_name})](<INSERT PARAM TYPE LINK>)"
+
+            formatted_output.append(return_string)
+
     return formatted_output
 
 ## write_markdown() takes the data object returned from parse(), and writes out the markdown
@@ -1209,6 +1210,8 @@ def write_markdown(type, methods):
 
                         if parameters:
 
+                            print(f"Parameters: {parameters}")
+
                             # Parse and format parameters
                             output_file.write('**Parameters:**\n\n')
 
@@ -1219,6 +1222,8 @@ def write_markdown(type, methods):
                                 output_file.write(line + '\n')
 
                         if returns:
+
+                            print(f"Returns: {returns}")
 
                             # Parse and format returns
                             output_file.write('\n**Returns:**\n\n')
@@ -1249,10 +1254,10 @@ def write_markdown(type, methods):
 
                         output_file.write('**Parameters:**\n\n')
 
-                        print("Parameters dict")
-                        print(methods[sdk][type][resource][method]['parameters'])
-                        print("KEYS")
-                        print(methods[sdk][type][resource][method]['parameters'].keys())
+                        # print("Parameters dict")
+                        # print(methods[sdk][type][resource][method]['parameters'])
+                        # print("KEYS")
+                        # print(methods[sdk][type][resource][method]['parameters'].keys())
 
 
                         # sg: Is parameter type being overriden? Doesn't always look accurate (ex. extra for python SDK is marked float-- looks like it's all picking up as float)
@@ -1310,10 +1315,10 @@ def write_markdown(type, methods):
 
                         return_data = methods[sdk][type][resource][method]["return"]
 
-                        print("RETURN DICT")
-                        print(return_data)
-                        print("RETURN KEYS")
-                        print(return_data.keys())
+                        # print("RETURN DICT")
+                        # print(return_data)
+                        # print("RETURN KEYS")
+                        # print(return_data.keys())
 
                         return_type = return_data.get("return_type")
                         return_subtype = return_data.get("return_subtype")

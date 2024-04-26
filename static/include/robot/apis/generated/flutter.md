@@ -81,6 +81,15 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.robot.robot/RobotServiceClient/resourceRPCSubtypes.html).
 
+### <NO PROTO FOUND, USING METHOD NAME> restartModule
+
+**Parameters:**
+
+- `moduleId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
+- `moduleName` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.robot.robot/RobotServiceClient/restartModule.html).
+
 ### SendSessionHeartbeat
 
 **Parameters:**

@@ -822,6 +822,18 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.ml_training/MLTrainingServiceClient/listTrainingJobs.html).
 
+### <NO PROTO FOUND, USING METHOD NAME> submitCustomTrainingJob
+
+**Parameters:**
+
+- `datasetId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
+- `modelName` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
+- `modelVersion` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
+- `organizationId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
+- `registryItemId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.ml_training/MLTrainingServiceClient/submitCustomTrainingJob.html).
+
 ### SubmitTrainingJob
 
 **Parameters:**

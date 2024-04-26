@@ -280,15 +280,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.board/BoardServiceClient/setPWMFrequency.html).
 
-### Status
-
-**Parameters:**
-
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
-- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html):
-
-For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.board/BoardServiceClient/status.html).
-
 ### StreamTicks
 
 **Parameters:**

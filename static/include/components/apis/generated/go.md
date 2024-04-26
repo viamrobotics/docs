@@ -4,13 +4,13 @@ EndPosition returns the current position of the arm.
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `spatialmath` [(Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.25.0/spatialmath#spatialmath):
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- `spatialmath`[(Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.25.0/spatialmath#spatialmath):
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -20,13 +20,13 @@ MoveToPosition moves the arm to the given absolute position.This will block unti
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `pose` [(Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.25.0/spatialmath#pose):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `pose`[(Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.25.0/spatialmath#pose):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -36,13 +36,13 @@ MoveToJointPositions moves the arm's joints to the given positions.This will blo
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `pb` [(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#pb):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `pb`[(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#pb):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -52,13 +52,13 @@ JointPositions returns the current joint positions of the arm.
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `pb` [(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#pb):
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- `pb`[(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#pb):
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -68,14 +68,14 @@ MoveStraight moves the robot straight a given distance at a given speed.If a dis
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `distanceMm` [(int)](<INSERT PARAM TYPE LINK>)
-- `mmPerSec` [(float64)](<INSERT PARAM TYPE LINK>)
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `distanceMm`[(int)](<INSERT PARAM TYPE LINK>)
+- `mmPerSec`[(float64)](<INSERT PARAM TYPE LINK>)
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
@@ -85,14 +85,14 @@ Spin spins the robot by a given angle in degrees at a given speed.If a speed of 
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `` [(angleDeg)](<INSERT PARAM TYPE LINK>)
-- `degsPerSec` [(float64)](<INSERT PARAM TYPE LINK>)
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- [(angleDeg)](<INSERT PARAM TYPE LINK>)
+- `degsPerSec`[(float64)](<INSERT PARAM TYPE LINK>)
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
@@ -102,14 +102,14 @@ For linear power, positive Y moves forwards for built-in RDK driversFor angular 
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `` [(linear)](<INSERT PARAM TYPE LINK>)
-- `angular` [(Vector)](https://pkg.go.dev/github.com/golang/geo/r3#angular):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- [(linear)](<INSERT PARAM TYPE LINK>)
+- `angular`[(Vector)](https://pkg.go.dev/github.com/golang/geo/r3#angular):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
@@ -119,14 +119,14 @@ linear is in mmPerSec (positive Y moves forwards for built-in RDK drivers)angula
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `` [(linear)](<INSERT PARAM TYPE LINK>)
-- `angular` [(Vector)](https://pkg.go.dev/github.com/golang/geo/r3#angular):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- [(linear)](<INSERT PARAM TYPE LINK>)
+- `angular`[(Vector)](https://pkg.go.dev/github.com/golang/geo/r3#angular):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
@@ -136,13 +136,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(Properties)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(Properties)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
@@ -152,13 +152,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(int)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(int)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#AnalogReader).
 
@@ -168,11 +168,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt).
 
@@ -182,12 +182,12 @@ AnalogReaderByName returns an analog reader by name.
 
 **Parameters:**
 
-- `name` [(string)](<INSERT PARAM TYPE LINK>)
+- `name`[(string)](<INSERT PARAM TYPE LINK>)
 
 **Returns:**
 
-- `a` [(AnalogReader)](<INSERT PARAM TYPE LINK>)
-- `a` [(bool)](<INSERT PARAM TYPE LINK>)
+- [(AnalogReader)](<INSERT PARAM TYPE LINK>)
+- [(bool)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -197,12 +197,12 @@ DigitalInterruptByName returns a digital interrupt by name.
 
 **Parameters:**
 
-- `name` [(string)](<INSERT PARAM TYPE LINK>)
+- `name`[(string)](<INSERT PARAM TYPE LINK>)
 
 **Returns:**
 
-- `a` [(DigitalInterrupt)](<INSERT PARAM TYPE LINK>)
-- `a` [(bool)](<INSERT PARAM TYPE LINK>)
+- [(DigitalInterrupt)](<INSERT PARAM TYPE LINK>)
+- [(bool)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -212,12 +212,12 @@ GPIOPinByName returns a GPIOPin by name.
 
 **Parameters:**
 
-- `name` [(string)](<INSERT PARAM TYPE LINK>)
+- `name`[(string)](<INSERT PARAM TYPE LINK>)
 
 **Returns:**
 
-- `a` [(GPIOPin)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(GPIOPin)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -227,11 +227,11 @@ AnalogReaderNames returns the names of all known analog readers.
 
 **Parameters:**
 
-- `name` [(string)](<INSERT PARAM TYPE LINK>)
+- `name`[(string)](<INSERT PARAM TYPE LINK>)
 
 **Returns:**
 
-- `[]<a` [(string)](<INSERT PARAM TYPE LINK>)
+- [(string)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -241,11 +241,11 @@ DigitalInterruptNames returns the names of all known digital interrupts.
 
 **Parameters:**
 
-- `name` [(string)](<INSERT PARAM TYPE LINK>)
+- `name`[(string)](<INSERT PARAM TYPE LINK>)
 
 **Returns:**
 
-- `[]<a` [(string)](<INSERT PARAM TYPE LINK>)
+- [(string)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -255,13 +255,13 @@ Status returns the current status of the board. Usually youshould use the Create
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `commonpb` [(BoardStatus)](https://pkg.go.dev/go.viam.com/api/common/v1#commonpb):
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- `commonpb`[(BoardStatus)](https://pkg.go.dev/go.viam.com/api/common/v1#commonpb):
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -271,13 +271,13 @@ SetPowerMode sets the board to the given power mode. Ifprovided, the board will 
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `mode` [(PowerMode)](https://pkg.go.dev/go.viam.com/api/component/board/v1#mode):
-- `time` [(Duration)](https://pkg.go.dev/time#time):
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `mode`[(PowerMode)](https://pkg.go.dev/go.viam.com/api/component/board/v1#mode):
+- `time`[(Duration)](https://pkg.go.dev/time#time):
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -287,14 +287,14 @@ WriteAnalog writes an analog value to a pin on the board.
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `pin` [(string)](<INSERT PARAM TYPE LINK>)
-- `value` [(int32)](<INSERT PARAM TYPE LINK>)
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `pin`[(string)](<INSERT PARAM TYPE LINK>)
+- `value`[(int32)](<INSERT PARAM TYPE LINK>)
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -304,14 +304,14 @@ StreamTicks starts a stream of digital interrupt ticks.
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `interrupts []<a` [(string)](<INSERT PARAM TYPE LINK>)
-- `chan` [(Tick)](<INSERT PARAM TYPE LINK>)
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- [(string)](<INSERT PARAM TYPE LINK>)
+- `chan`[(Tick)](<INSERT PARAM TYPE LINK>)
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -321,13 +321,13 @@ Value returns the current value of the interrupt which isbased on the type of in
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(int64)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(int64)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt).
 
@@ -337,13 +337,13 @@ Tick is to be called either manually if the interrupt is a proxy to some realhar
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `high` [(bool)](<INSERT PARAM TYPE LINK>)
-- `nanoseconds` [(uint64)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `high`[(bool)](<INSERT PARAM TYPE LINK>)
+- `nanoseconds`[(uint64)](<INSERT PARAM TYPE LINK>)
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt).
 
@@ -353,11 +353,11 @@ AddCallback adds a callback to be sent a low/high value to when a tickhappens.
 
 **Parameters:**
 
-- `chan` [(Tick)](<INSERT PARAM TYPE LINK>)
+- `chan`[(Tick)](<INSERT PARAM TYPE LINK>)
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt).
 
@@ -367,11 +367,11 @@ RemoveCallback removes a listener for interrupts.
 
 **Parameters:**
 
-- `chan` [(Tick)](<INSERT PARAM TYPE LINK>)
+- `chan`[(Tick)](<INSERT PARAM TYPE LINK>)
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt).
 
@@ -381,13 +381,13 @@ Set sets the pin to either low or high.
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `high` [(bool)](<INSERT PARAM TYPE LINK>)
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `high`[(bool)](<INSERT PARAM TYPE LINK>)
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
@@ -397,13 +397,13 @@ Get gets the high/low state of the pin.
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(bool)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(bool)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
@@ -413,13 +413,13 @@ PWM gets the pin's given duty cycle.
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(float64)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(float64)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
@@ -429,13 +429,13 @@ SetPWM sets the pin to the given duty cycle.
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `dutyCyclePct` [(float64)](<INSERT PARAM TYPE LINK>)
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `dutyCyclePct`[(float64)](<INSERT PARAM TYPE LINK>)
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
@@ -445,13 +445,13 @@ PWMFreq gets the PWM frequency of the pin.
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(uint)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(uint)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
@@ -461,13 +461,13 @@ SetPWMFreq sets the given pin to the given PWM frequency. For Raspberry Pis,0 wi
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `freqHz` [(uint)](<INSERT PARAM TYPE LINK>)
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `freqHz`[(uint)](<INSERT PARAM TYPE LINK>)
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
@@ -477,11 +477,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `cfg` [(DigitalInterruptConfig)](<INSERT PARAM TYPE LINK>)
+- `cfg`[(DigitalInterruptConfig)](<INSERT PARAM TYPE LINK>)
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#ReconfigurableDigitalInterrupt).
 
@@ -491,13 +491,13 @@ Images is used for getting simultaneous images from different imagers,along with
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
 
 **Returns:**
 
-- `[]<a` [(NamedImage)](<INSERT PARAM TYPE LINK>)
-- `resource` [(ResponseMetadata)](https://pkg.go.dev/go.viam.com/rdk@v0.25.0/resource#resource):
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(NamedImage)](<INSERT PARAM TYPE LINK>)
+- `resource`[(ResponseMetadata)](https://pkg.go.dev/go.viam.com/rdk@v0.25.0/resource#resource):
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).
 
@@ -507,12 +507,12 @@ NextPointCloud returns the next immediately available point cloud, not necessari
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
 
 **Returns:**
 
-- `pointcloud` [(PointCloud)](https://pkg.go.dev/go.viam.com/rdk@v0.25.0/pointcloud#pointcloud):
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- `pointcloud`[(PointCloud)](https://pkg.go.dev/go.viam.com/rdk@v0.25.0/pointcloud#pointcloud):
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).
 
@@ -528,13 +528,13 @@ Stream returns a stream that makes a best effort to return consecutive imagestha
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `gostream` [(ErrorHandler)](https://pkg.go.dev/go.viam.com/rdk@v0.25.0/gostream#gostream):
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `gostream`[(ErrorHandler)](https://pkg.go.dev/go.viam.com/rdk@v0.25.0/gostream#gostream):
 
 **Returns:**
 
-- `gostream` [(VideoStream)](https://pkg.go.dev/go.viam.com/rdk@v0.25.0/gostream#gostream):
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- `gostream`[(VideoStream)](https://pkg.go.dev/go.viam.com/rdk@v0.25.0/gostream#gostream):
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).
 
@@ -544,12 +544,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
 
 **Returns:**
 
-- `a` [(Properties)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(Properties)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).
 
@@ -559,11 +559,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).
 
@@ -573,15 +573,15 @@ Position returns the current position in terms of ticks or degrees, and whether 
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `positionType` [(PositionType)](<INSERT PARAM TYPE LINK>)
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `positionType`[(PositionType)](<INSERT PARAM TYPE LINK>)
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(float64)](<INSERT PARAM TYPE LINK>)
-- `a` [(PositionType)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(float64)](<INSERT PARAM TYPE LINK>)
+- [(PositionType)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/encoder#Encoder).
 
@@ -591,12 +591,12 @@ ResetPosition sets the current position of the motor to be its new zero position
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/encoder#Encoder).
 
@@ -606,13 +606,13 @@ Properties returns a list of all the position types that are supported by a give
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(Properties)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(Properties)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/encoder#Encoder).
 
@@ -622,13 +622,13 @@ Position returns the position in meters
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `[]<a` [(float64)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(float64)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
 
@@ -638,14 +638,14 @@ MoveToPosition is in metersThis will block until done or a new operation cancels
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `` [(positionsMm)](<INSERT PARAM TYPE LINK>)
-- `speedsMmPerSec []<a` [(float64)](<INSERT PARAM TYPE LINK>)
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- [(positionsMm)](<INSERT PARAM TYPE LINK>)
+- [(float64)](<INSERT PARAM TYPE LINK>)
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
 
@@ -655,13 +655,13 @@ Lengths is the length of gantries in meters
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `[]<a` [(float64)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(float64)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
 
@@ -671,13 +671,13 @@ Home runs the homing sequence of the gantry and returns true once completed
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(bool)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(bool)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
 
@@ -687,12 +687,12 @@ Open opens the gripper.This will block until done or a new operation cancels thi
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gripper#Gripper).
 
@@ -702,13 +702,13 @@ Grab makes the gripper grab.returns true if we grabbed something.This will block
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(bool)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(bool)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gripper#Gripper).
 
@@ -718,13 +718,13 @@ Controls returns a list of Controls provided by the Controller
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `[]<a` [(Control)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(Control)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
@@ -734,13 +734,13 @@ Events returns most recent Event for each input (which should be the current sta
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `Control` [(Event)](https://pkg.go.dev#Control#Control):
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- `Control`[(Event)](https://pkg.go.dev#Control#Control):
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
@@ -750,15 +750,15 @@ RegisterCallback registers a callback that will fire on given EventTypes for a g
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `control` [(Control)](<INSERT PARAM TYPE LINK>)
-- `triggers []<a` [(EventType)](<INSERT PARAM TYPE LINK>)
-- `ctrlFunc` [(ControlFunction)](<INSERT PARAM TYPE LINK>)
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `control`[(Control)](<INSERT PARAM TYPE LINK>)
+- [(EventType)](<INSERT PARAM TYPE LINK>)
+- `ctrlFunc`[(ControlFunction)](<INSERT PARAM TYPE LINK>)
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
@@ -768,13 +768,13 @@ TriggerEvent allows directly sending an Event (such as a button press) from exte
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `event` [(Event)](<INSERT PARAM TYPE LINK>)
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `event`[(Event)](<INSERT PARAM TYPE LINK>)
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Triggerable).
 
@@ -784,13 +784,13 @@ SetPower sets the percentage of power the motor should employ between -1 and 1.N
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `powerPct` [(float64)](<INSERT PARAM TYPE LINK>)
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `powerPct`[(float64)](<INSERT PARAM TYPE LINK>)
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
@@ -800,14 +800,14 @@ GoFor instructs the motor to go in a specific direction for a specific amount of
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `` [(rpm)](<INSERT PARAM TYPE LINK>)
-- `revolutions` [(float64)](<INSERT PARAM TYPE LINK>)
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- [(rpm)](<INSERT PARAM TYPE LINK>)
+- `revolutions`[(float64)](<INSERT PARAM TYPE LINK>)
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
@@ -817,14 +817,14 @@ GoTo instructs the motor to go to a specific position (provided in revolutions f
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `` [(rpm)](<INSERT PARAM TYPE LINK>)
-- `positionRevolutions` [(float64)](<INSERT PARAM TYPE LINK>)
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- [(rpm)](<INSERT PARAM TYPE LINK>)
+- `positionRevolutions`[(float64)](<INSERT PARAM TYPE LINK>)
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
@@ -834,13 +834,13 @@ Set the current position (+/- offset) to be the new zero (home) position.
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `offset` [(float64)](<INSERT PARAM TYPE LINK>)
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `offset`[(float64)](<INSERT PARAM TYPE LINK>)
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
@@ -850,13 +850,13 @@ Position reports the position of the motor based on its encoder. If it's not sup
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(float64)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(float64)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
@@ -866,13 +866,13 @@ Properties returns whether or not the motor supports certain optional properties
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(Properties)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(Properties)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
@@ -882,14 +882,14 @@ IsPowered returns whether or not the motor is currently on, and the percent powe
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(bool)](<INSERT PARAM TYPE LINK>)
-- `a` [(float64)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(bool)](<INSERT PARAM TYPE LINK>)
+- [(float64)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
@@ -899,14 +899,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `geo` [(Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#geo):
-- `a` [(float64)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- `geo`[(Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#geo):
+- [(float64)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
@@ -916,13 +916,13 @@ m / sec
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `r3` [(Vector)](https://pkg.go.dev/github.com/golang/geo/r3#r3):
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- `r3`[(Vector)](https://pkg.go.dev/github.com/golang/geo/r3#r3):
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
@@ -932,13 +932,13 @@ deg / sec
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `spatialmath` [(AngularVelocity)](https://pkg.go.dev/go.viam.com/rdk@v0.25.0/spatialmath#spatialmath):
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- `spatialmath`[(AngularVelocity)](https://pkg.go.dev/go.viam.com/rdk@v0.25.0/spatialmath#spatialmath):
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
@@ -948,13 +948,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `r3` [(Vector)](https://pkg.go.dev/github.com/golang/geo/r3#r3):
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- `r3`[(Vector)](https://pkg.go.dev/github.com/golang/geo/r3#r3):
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
@@ -964,13 +964,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(float64)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(float64)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
@@ -980,13 +980,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `spatialmath` [(Orientation)](https://pkg.go.dev/go.viam.com/rdk@v0.25.0/spatialmath#spatialmath):
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- `spatialmath`[(Orientation)](https://pkg.go.dev/go.viam.com/rdk@v0.25.0/spatialmath#spatialmath):
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
@@ -996,13 +996,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `*<a` [(Properties)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(Properties)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
@@ -1012,13 +1012,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `*<a` [(Accuracy)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(Accuracy)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
@@ -1028,14 +1028,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(float64)](<INSERT PARAM TYPE LINK>)
-- `a` [(bool)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(float64)](<INSERT PARAM TYPE LINK>)
+- [(bool)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
 
@@ -1045,14 +1045,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(float64)](<INSERT PARAM TYPE LINK>)
-- `a` [(bool)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(float64)](<INSERT PARAM TYPE LINK>)
+- [(bool)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
 
@@ -1062,13 +1062,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context#ctx):
-- `extra map[<a` [(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `a` [(float64)](<INSERT PARAM TYPE LINK>)
-- `a` [(error)](<INSERT PARAM TYPE LINK>)
+- [(float64)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
 
