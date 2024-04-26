@@ -47,6 +47,7 @@ If you are using one of the following boards, click on the card to follow the gu
 {{% card link="/get-started/installation/prepare/jetson-nano-setup/" class="small" %}}
 {{% card link="/get-started/installation/prepare/jetson-agx-orin-setup/" class="small" %}}
 {{% card link="/get-started/installation/prepare/pumpkin/" class="small" %}}
+{{% card link="/get-started/installation/prepare/odroid-c4-setup/" class="small" %}}
 {{< /cards >}}
 
 <br>
