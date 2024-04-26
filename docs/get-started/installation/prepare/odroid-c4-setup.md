@@ -58,4 +58,4 @@ sudo apt update && sudo apt upgrade
 
 ## Troubleshooting
 
-Visit the [Odroid Forum](https://forum.odroid.com/viewforum.php?f=200) for troubleshooting tips and tricks specific to the Odroid C4.
+Visit the [Odroid Forum](https://forum.odroid.com/index.php) for troubleshooting tips and tricks specific to the Odroid C4.
