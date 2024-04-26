@@ -1319,7 +1319,7 @@ Calculation of value differs between the `"type"` of interrupt [configured](#dig
 
 **Returns:**
 
-- [(int)](https://docs.python.org/3/library/functions.html#int): The amount of [Ticks](#tick) that have occurred.
+- [(int)](https://docs.python.org/3/library/functions.html#int): The amount of ticks that have occurred.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.DigitalInterrupt.value).
 
@@ -1345,7 +1345,7 @@ count = await interrupt.value()
 
 **Returns:**
 
-- [(int64)](https://pkg.go.dev/builtin#int64): The amount of [Ticks](#tick) that have occurred.
+- [(int64)](https://pkg.go.dev/builtin#int64): The amount of ticks that have occurred.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#BasicDigitalInterrupt).
