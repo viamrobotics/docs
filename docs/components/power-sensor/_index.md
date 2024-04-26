@@ -128,7 +128,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 // Create a power sensor instance
-myPowerSensor, err := powersensor.FromRobot(robot, "my_power_sensor")
+myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
 if err != nil {
   logger.Fatalf("cannot get power sensor: %v", err)
 }
@@ -185,7 +185,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```Go
 // Create a power sensor instance
-myPowerSensor, err := powersensor.FromRobot(robot, "my_power_sensor")
+myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
 if err != nil {
   logger.Fatalf("cannot get power sensor: %v", err)
 }
@@ -241,7 +241,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```Go
 // Create a power sensor instance
-myPowerSensor, err := powersensor.FromRobot(robot, "my_power_sensor")
+myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
 if err != nil {
   logger.Fatalf("cannot get power sensor: %v", err)
 }
@@ -296,7 +296,7 @@ readings = await my_power_sensor.get_readings()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#Readings).
 
 ```go
-myPowerSensor, err := powersensor.FromRobot(robot, "my_power_sensor")
+myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
 
 // Get the readings provided by the sensor.
 readings, err := myPowerSensor.Readings(context.Background(), nil)
@@ -408,9 +408,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myPowerSensor, err := powersensor.FromRobot(robot, "my_power_sensor")
+myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
 
-resp, err := myPowerSensor.DoCommand(ctx, map[string]interface{}{"command": "reset", "example_param": 30})
+resp, err := myPowerSensor.DoCommand(context.Background(), map[string]interface{}{"command": "reset", "example_param": 30})
 ```
 
 For more information, see the [Go SDK Code](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
@@ -453,9 +453,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myPowerSensor, err := powersensor.FromRobot(robot, "my_power_sensor")
+myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
 
-err := myPowerSensor.Close(ctx)
+err = myPowerSensor.Close(context.Background)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
