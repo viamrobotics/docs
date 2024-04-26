@@ -10,7 +10,7 @@ no_list: true
 # SME: Olivia Miller
 ---
 
-The [Odroid-C4](https://wiki.odroid.com/start) is a single-board computer that features an Amlogic S905x3 CPU and runs a variety of Linux or Android distributions.
+The [Odroid-C4](https://wiki.odroid.com/odroid-c4/odroid-c4#odroid-c4) is a single-board computer that features an Amlogic S905x3 CPU and runs a variety of Linux or Android distributions.
 
 {{<imgproc src="get-started/installation/thumbnails/odroid-c4.png" alt="The Odroid-C4 single board computer." resize="350x" declaredimensions=true >}}
 
