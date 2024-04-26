@@ -236,7 +236,7 @@ Next, enable the Data Management service on the camera component on your robot:
 Now it’s time to start collecting images of your beloved pet.
 Set your feeder up near an area your pet likes to hang out like your couch or their bed or mount it temporarily over their food bowl, or even just hold it in front of them for a couple of minutes.
 
-You can check that data is being captured by clicking on the menu icon on the camera configuration pane under the **CONFIGURE** tab and selecting **View captured data**.
+You can check that data is being captured and synced by clicking on the menu icon on the camera configuration pane under the **CONFIGURE** tab and selecting **View captured data**.
 
 {{<imgproc src="/data/capture-data-menu.png" resize="500x" declaredimensions=true alt="Resource menu with the options Rename, Duplicate, View captured data, and Delete" class="aligncenter">}}
 
