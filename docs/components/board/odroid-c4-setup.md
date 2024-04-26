@@ -32,17 +32,17 @@ Click the **{}** (Switch to Advanced) button in the top right of the odroid boar
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
-{{
+{
   "analogs": [
     {
-        "name": "<your-analog-name>",
-        "pin": "<pin-number>"
+      "name": "<your-analog-name>",
+      "pin": "<pin-number>"
     }
   ],
   "digital_interrupts": [
     {
-        "name": "<your-digital-interrupt-name>",
-        "pin": "<pin-number>"
+      "name": "<your-digital-interrupt-name>",
+      "pin": "<pin-number>"
     }
   ]
 }
