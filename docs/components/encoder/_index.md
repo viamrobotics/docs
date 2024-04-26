@@ -158,7 +158,7 @@ print("The encoder position is currently ", position[0], position[1])
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/encoder#Encoder).
 
 ```go
-myEncoder, err := encoder.FromRobot(robot, "my_encoder")
+myEncoder, err := encoder.FromRobot(machine, "my_encoder")
 if err != nil {
   logger.Fatalf("cannot get encoder: %v", err)
 }
@@ -210,12 +210,12 @@ await my_encoder.reset_position()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/encoder#Encoder).
 
 ```go
-myEncoder, err := encoder.FromRobot(robot, "my_encoder")
+myEncoder, err := encoder.FromRobot(machine, "my_encoder")
 if err != nil {
   logger.Fatalf("cannot get encoder: %v", err)
 }
 
-err := myEncoder.ResetPosition(context.Background(), nil)
+err = myEncoder.ResetPosition(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -262,7 +262,7 @@ properties = await my_encoder.get_properties()
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/encoder#Encoder).
 
 ```go
-myEncoder, err := encoder.FromRobot(robot, "my_encoder")
+myEncoder, err := encoder.FromRobot(machine, "my_encoder")
 
 // Get whether the encoder returns position in ticks or degrees.
 properties, err := myEncoder.Properties(context.Background(), nil)
@@ -316,7 +316,7 @@ if geometries:
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myEncoder, err := encoder.FromRobot(robot, "my_encoder")
+myEncoder, err := encoder.FromRobot(machine, "my_encoder")
 
 geometries, err := myEncoder.Geometries(context.Background(), nil)
 
@@ -373,9 +373,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myEncoder, err := encoder.FromRobot(robot, "my_encoder")
+myEncoder, err := encoder.FromRobot(machine, "my_encoder")
 
-resp, err := myEncoder.DoCommand(ctx, map[string]interface{}{"command": "reset", "example_param": 30})
+resp, err := myEncoder.DoCommand(context.Background(), map[string]interface{}{"command": "reset", "example_param": 30})
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
@@ -418,9 +418,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myEncoder, err := encoder.FromRobot(robot, "my_encoder")
+myEncoder, err := encoder.FromRobot(machine, "my_encoder")
 
-err := myEncoder.Close(ctx)
+err = myEncoder.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
