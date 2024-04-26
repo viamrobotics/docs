@@ -46,9 +46,9 @@ To access your Odroid remotely, use an SSH client like [TeraTerm](https://terate
 You'll also need the IP address of your Odroid C4 board to connect remotely.
 Alternatively, connect a keyboard and mouse to interact with the board directly using a connected monitor.
 
-Once you're connected, open a terminal and run the following commands:
+Once you're connected, open a terminal and run the following commands
 
-```json
+```sh {class="command-line" data-prompt="$"}
 sudo apt update && sudo apt upgrade
 ```
 
