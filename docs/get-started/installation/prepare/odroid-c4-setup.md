@@ -10,7 +10,7 @@ no_list: true
 # SME:
 ---
 
-The [Odroid C4](https://wiki.odroid.com/start)is a single-board computer that features an Amlogic S905x3 CPU and runs a variety of Linux or Android distributions.
+The [Odroid C4](https://wiki.odroid.com/start) is a single-board computer that features an Amlogic S905x3 CPU and runs a variety of Linux or Android distributions.
 
 {{<imgproc src="get-started/installation/thumbnails/odroid-c4.png" alt="The Odroid C4 single board computer." resize="350x" declaredimensions=true >}}
 
@@ -18,49 +18,35 @@ Follow this guide to set up your Odroid C4.
 
 ## Hardware requirements
 
-- An [Odroid C4 board](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/)
+- An [Odroid C4 board](https://www.hardkernel.com/shop/odroid-c4/)
 - A 12V/2A power supply
-- A Micro USB to HDMI cable, for display
 - An ethernet cable and/or USB Wi-Fi dongle, for network connectivity
 - A computer, for development
-- (Optional) A microSD card, if you plan to boot from SD instead of eMMC
-
-## Prepare the microSD card
-
-Before you can use the Odroid C4, you need to install an operating system on a microSD card:
-
-1. Download the latest version of your preferred operating system from the [Odroid website](https://wiki.odroid.com/getting_started/os_installation_guide#downloads) or a trusted source.
-1. Download and install [Etcher](https://etcher.balena.io/a).
-1. Insert your microSD card into your computer and launch Etcher.
-1. Select the OS image file you downloaded.
-
-   {{<imgproc src="get-started/installation/odroidc4-setup/etcher-choose-os.png" alt="The etcher imager with an ubuntu OS image set as the first option." resize="700x" style="min-width: 600px" declaredimensions=true >}}
-
-1. Choose your microSD card as the target.
-
-   {{<imgproc src="get-started/installation/odroidc4-setup/etcher-choose-os.png" alt="The etcher imager with a generic microSD card selected as the target" resize="700x" style="min-width: 600px" declaredimensions=true >}}
-
-1. Then click `Flash!` to begin.
+- A microSD card, if you plan to boot from SD instead of eMMC
+- (Optional) An HDMI cable, for display
 
 ## Power your Odroid C4
 
-Connect your power adapter to the Odroid C4's power jack.
+Before you power the board, you need to install an operating system.
+Visit [Odroid's OS Installation Guide](https://wiki.odroid.com/getting_started/os_installation_guide#os_installation_guide) to choose the right OS for your needs and follow the instructions to flash the OS to your microSD card or eMMC.
+
+To power your Odroid C4, connect your power adapter to the Odroid C4's power jack.
 The red LED should light up, which indicates that the board is powered.
 
-To connect to a display, connect the micro HDMI end of your cable to the Odroid and the other end to your monitor.
+To connect to a display, connect one end of your HDMI cable to the Odroid and the other end to your monitor.
 
 ## Establish a network connection
 
-- Plug the Ethernet cable into the Odroid C4 to connect to the internet through a wired network.
-- Alternatively, you can connect a USB Wi-Fi dongle and configure Wi-Fi using your operating system settings.
+Plug the Ethernet cable into your Odroid C4for a wired internet connection.
+For a wireless connection, you can connect a USB Wi-Fi dongle and configure Wi-Fi settings through your operating system.
 
 ## Access and update your Odroid C4
 
-You can access your Odroid C4 using SSH if you know its IP address.
+To access your Odroid remotely, use an SSH client like [TeraTerm](https://teratermproject.github.io/index-en.html).
+You'll also need the IP address of your Odroid C4 board to connect remotely.
+Alternatively, connect a keyboard and mouse to interact with the board directly using a connected monitor.
 
-If not, connect a keyboard and a mouse to interact with it directly using a connected display.
-
-To update your system, open a terminal and run the following commands:
+Once you're connected, open a terminal and run the following commands:
 
 ```json
 sudo apt update && sudo apt upgrade
