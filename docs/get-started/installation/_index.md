@@ -86,9 +86,7 @@ To install `viam-server` on a macOS computer:
 
    {{<imgproc src="/get-started/installation/setup-part.png" resize="900x" style="max-width:700px" declaredimensions=true alt="Machine setup alert in a newly created machine">}}
 
-   Click **View setup instructions** to open the setup instructions:
-
-   {{<imgproc src="/get-started/installation/macos-setup-instructions.png" resize="900x" style="max-width:700px" declaredimensions=true alt="Setup instructions">}}
+   Click **View setup instructions** to open the setup instructions.
 
 1. Select **Mac** as your system's OS and **RDK** as your RDK type.
 

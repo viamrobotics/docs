@@ -40,9 +40,7 @@ To install `viam-server` on a Linux computer:
 
    {{<imgproc src="/get-started/installation/setup-part.png" resize="900x" style="max-width:700px" declaredimensions=true alt="Machine setup alert in a newly created machine">}}
 
-   Click **View setup instructions** to open the setup instructions:
-
-   {{<imgproc src="/get-started/installation/linux-setup-instructions.png" resize="900x" style="max-width:700px" declaredimensions=true alt="Setup instructions">}}
+   Click **View setup instructions** to open the setup instructions.
 
 1. Select the appropriate architecture for your machine: **Linux (Aarch64)**, **Linux (x86_64)**, or **Armv7l**.
    On most Linux operating systems, you can run `uname -m` to confirm your computer's architecture.
