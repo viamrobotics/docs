@@ -86,22 +86,27 @@ This means everyone who has access can change a fleet's [configuration](machines
 You can see configuration changes made by yourself or by your collaborators by selecting **History** on the right side of your machine part's card on the **CONFIGURE** tab.
 You can also revert to an earlier configuration from the History tab.
 
+Machine [configuration](machines/#configure) and machine [code](/build/program/) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
+
 {{< alert title="Simultaneous config edits" color="caution" >}}
 If you edit a config while someone else edits the same config, the person who saves last will overwrite any prior changes that aren't reflected in the new config.
 
 Before editing a config, we recommend you refresh the page to ensure you have all the latest changes.
 {{< /alert >}}
 
-Machine [configuration](machines/#configure) and machine [code](/build/program/) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
-
 ## The Viam mobile app
 
-{{<gif webm_src="/manage/mobile-app-octagon.webm" mp4_src="/manage/mobile-app-octagon.mp4" alt="GIF of red button being pressed and cannon of confetti bot spraying confetti" class="alignright" max-width="200px">}}
+{{<gif webm_src="/fleet/mobile-app-octagon.webm" mp4_src="/fleet/mobile-app-octagon.mp4" alt="GIF of red button being pressed and cannon of confetti bot spraying confetti" class="alignright" max-width="200px">}}
 
 <br>
 
-In addition to the [Viam app](https://app.viam.com), the fully featured web application where you can access all fleet management tools, there is a Viam mobile app.
-The mobile app is a convenient way to see if your machine is online, access the [control interface](/fleet/machines/#control), [invite people to collaborate with you and modify access](/fleet/rbac/#use-the-mobile-app), check machine [logs](/fleet/machines/#logs), and [upload images to the cloud](/data/upload/#upload-images-with-the-viam-mobile-app).
+The Viam mobile app allows you to:
+
+- see if your machines are online
+- access the [control interface](/fleet/machines/#control) for each machine
+- [invite people to collaborate with you and modify access](/fleet/rbac/#use-the-mobile-app)
+- check machine [logs](/fleet/machines/#logs)
+- [upload images from your phone to the cloud](/data/upload/#upload-images-with-the-viam-mobile-app)
 
 You can find the mobile app on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
 
