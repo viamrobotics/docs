@@ -15,7 +15,7 @@ aliases:
 _Try Viam_ is a way to try out the Viam platform without setting up any hardware yourself.
 You can take over a Viam Rover in our robotics lab to play around!
 
-The rental rover is made up of a chassis with a Raspberry Pi 4B single board computer, two motors, encoders, and a camera.
+The rental rover is made up of a chassis with a Raspberry Pi 4B single-board computer, two motors, encoders, and a camera.
 The Try Viam area also has an overhead camera to provide a view of the rental rover, allowing you to view its movements in real time.
 
 Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](/get-started/try-viam/reserve-a-rover/#using-the-reservation-system), [navigate the Viam platform](/fleet/), and [drive the rover](#control-tab):
