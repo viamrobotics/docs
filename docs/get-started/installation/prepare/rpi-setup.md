@@ -51,12 +51,12 @@ You need to install Raspberry Pi OS (formerly called Raspbian) on the microSD ca
 
    {{< imgproc alt="Raspberry Pi Imager launcher window showing a 'Choose OS' and 'Choose Storage' buttons." src="/get-started/installation/rpi-setup/imager-launch-screen.png" resize="800x" declaredimensions=true >}}
 
-1. Select **CHOOSE DEVICE**.
+1. Click **CHOOSE DEVICE**.
    Select your model of Pi.
 
    {{< imgproc alt="Raspberry Pi Imager window showing available pi models." src="/get-started/installation/rpi-setup/select-pi-models.png" resize="800x" declaredimensions=true >}}
 
-1. Select **CHOOSE OS**.
+1. Click **CHOOSE OS**.
    Select **Raspberry Pi OS (other)**.
 
    {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS (Other) is selected." src="/get-started/installation/rpi-setup/select-other-custom-os.png" resize="800x" declaredimensions=true >}}
@@ -93,7 +93,7 @@ You need to install Raspberry Pi OS (formerly called Raspbian) on the microSD ca
    There are two ways you can secure your Raspberry Pi: with an SSH key or with password authentication.
 
    - For a learning project or a fun hobby project, we recommend using password authentication because it is easiest to set up for first-time users.
-   - For a machine that will become a product, we recommend using SSH keys for more secure authentication; only someone with the private SSH key will be able to authenticate to your system.
+   - For production use, we recommend using SSH keys for more secure authentication; only someone with the private SSH key will be able to authenticate to your system.
 
    {{< tabs >}}
 
