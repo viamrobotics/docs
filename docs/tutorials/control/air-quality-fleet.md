@@ -907,6 +907,10 @@ If you look at line 5 of <file>package.json</file>, you can see that `./main.ts`
 
    Feel free to adjust any of the colors, margins, fonts, and other specifications in <file>style.css</file> based on your preferences.
 
+## Full tutorial code
+
+You can find all the code in the [GitHub repo for this tutorial](https://github.com/viam-labs/air-quality-fleet).
+
 ## Run the code
 
 1. In a command prompt terminal, navigate to your <file>aqi-dashboard</file> directory.
