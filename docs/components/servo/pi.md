@@ -5,7 +5,8 @@ weight: 90
 type: "docs"
 description: "Configure a pi servo to integrate a hobby servo controlled by GPIO pins on a Raspberry Pi board."
 tags: ["servo", "components"]
-icon: "/icons/components/servo.svg"
+icon: true
+images: ["/icons/components/servo.svg"]
 aliases:
   - "/components/servo/pi/"
 # SME: Rand
@@ -17,48 +18,19 @@ Unlike other servo models, `pi` servos are implemented as part of the [`pi` boar
 
 {{% /alert %}}
 
-Configure a `pi` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a [Raspberry Pi board](/components/board/pi/) into your robot:
+Configure a `pi` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a [Raspberry Pi board](/components/board/pi/) into your machine:
 
 {{< tabs name="Configure a pi Servo" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `servo` type, then select the `pi` model.
-Enter a name for your servo and click **Create**.
+Enter a name or use the suggested name for your servo and click **Create**.
 
-{{< imgproc src="/components/servo/pi-servo-ui-config.png" alt="An example configuration for a pi servo in the Viam app Config Builder." resize="600x" >}}
+{{< imgproc src="/components/servo/pi-servo-ui-config.png" alt="An example configuration for a pi servo in the Viam app Config Builder." resize="1200x" style="width:650px" >}}
 
-Copy and paste the following attribute template into your servo's **Attributes** box.
-Then remove and fill in the attributes as applicable to your servo, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "pin": "<your-pin-number>",
-  "board": "<your-board-name>",
-  "min": <float>,
-  "max": <float>,
-  "starting_position_deg": <float>,
-  "hold_position": <int>,
-  "max_rotation_deg": <int>
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "pin": "16",
-  "board": "local"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Fill in the attributes as applicable to your servo, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

@@ -5,7 +5,7 @@ weight: 60
 type: "docs"
 description: "The base remote control service allows you to remotely control a base with an input controller like a gamepad."
 tags: ["base", "services", "rover", "input controller", "remote control"]
-icon: "/services/icons/base-rc.svg"
+icon: true
 images: ["/services/icons/base-rc.svg"]
 aliases:
   - "/services/base-rc/"
@@ -13,9 +13,9 @@ aliases:
 ---
 
 The base remote control service implements an [input controller](/components/input-controller/) as a remote control for a [base](/components/base/).
-This uses the [`input` api](/components/input-controller/#api) to make it easy to add remote drive controls for your rover or other mobile robot with a controller like a gamepad.
+This uses the [`input` API](/components/input-controller/#api) to make it easy to add remote drive controls for your rover or other mobile robot with a controller like a gamepad.
 
-Add the base remote control service after configuring your robot with a base and input controller to control the linear and angular velocity of the base with the controller's button or joystick controls.
+Add the base remote control service after configuring your machine with a base and input controller to control the linear and angular velocity of the base with the controller's button or joystick controls.
 
 Control mode is determined by the configuration attribute `"mode"`, for which there are five options:
 
@@ -25,9 +25,9 @@ Control mode is determined by the configuration attribute `"mode"`, for which th
 4. `"joyStickControl"`: One joystick controls speed and angle
 5. `"droneControl"`: Two joysticks control speed and angle
 
-You can monitor the input from these controls in the **Control** tab of the [Viam app](https://app.viam.com).
+You can monitor the input from these controls in the **CONTROL** tab of the [Viam app](https://app.viam.com).
 
-## Used With
+## Used with
 
 {{< cards >}}
 {{< relatedcard link="/components/base/" required="yes" >}}
@@ -39,15 +39,28 @@ You can monitor the input from these controls in the **Control** tab of the [Via
 
 ## Configuration
 
-You must configure a [base](/components/base/) with a [movement sensor](/components/movement-sensor/) as part of your robot to be able to use a base remote control service.
+You must configure a [base](/components/base/) with a [movement sensor](/components/movement-sensor/) as part of your machine to be able to use a base remote control service.
 
 {{< tabs >}}
-{{% tab name="Config Builder" %}}
+{{% tab name="Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click the **Services** subtab, then click **Create service** in the lower-left corner.
-Select the type `Base Remote Control`.
-Enter a name for your service, then click **Create**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+Select the `base remote control` type.
+Enter a name or use the suggested name for your service and click **Create**.
+
+In your base remote control service's configuration panel, copy and paste the following JSON object into the attributes field:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "base": "<your-base-name>",
+  "input_controller": "<your-controller-name>"
+}
+```
+
+Edit the attributes as applicable to your machine, according to the table below.
+
+For example:
 
 ![An example configuration for a base remote control service in the Viam app Config Builder.](/mobility/base-rc/base-rc-ui-config.png)
 
@@ -103,9 +116,9 @@ The base remote control service supports the following methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with a [base](/components/base/) named `"my_base"`, [input controller](/components/input-controller/) named `"my_controller"`, and base remote control service named `"my_base_rc_service"`.
-Make sure to add the required code to connect to your robot and import any required packages at the top of your code file.
-Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
+The following code examples assume that you have a machine configured with a [base](/components/base/) named `"my_base"`, [input controller](/components/input-controller/) named `"my_controller"`, and base remote control service named `"my_base_rc_service"`.
+Make sure to add the required code to connect to your machine and import any required packages at the top of your code file.
+Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and select the **Code sample** page for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 

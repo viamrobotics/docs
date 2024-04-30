@@ -4,7 +4,6 @@ linkTitle: "Smart Pet Treat Dispenser"
 type: "docs"
 description: "Use a Raspberry Pi, a motor, and machine learning to build a smart pet feeder."
 tags: ["raspberry pi", "app", "board", "motor"]
-image: "/tutorials/pet-treat-dispenser/preview.png"
 imageAlt: "Image of a dog interacting with the smart pet feeder."
 images: ["/tutorials/pet-treat-dispenser/preview.png"]
 authors: ["Arielle Mella", "Jessamy Taylor", "Hazal Mestci"]
@@ -46,7 +45,7 @@ You will need the following hardware components:
 1. Assorted jumper wires
 1. [Four 16mm or 20mm M3 screws](https://www.amazon.com/Cicidorai-M3-0-5-Button-Machine-Quantity/dp/B09TKP6C6B/ref=sr_1_9)
 
-### Tools and Other Materials
+### Tools and other materials
 
 You will also need the following tools and materials:
 
@@ -90,16 +89,16 @@ The STL files for the smart feeder robot are available on [GitHub](https://githu
 
 Now that you've set up your robot, you can start configuring and testing it.
 
-1. If you haven’t already, set up the Raspberry Pi by following our [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/).
-1. Go to [the Viam app](https://app.viam.com) and create a new robot instance in your preferred organization.
-1. Then follow the instructions on the **Setup** tab.
+If you haven’t already, set up the Raspberry Pi by following our [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/).
+
+{{% snippet "setup.md" %}}
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
 ### Configure your {{< glossary_tooltip term_id="board" text="board" >}}
 
-Head to the **Config** tab on your robot's page.
+Head to the **Config** tab on your machine's page.
 Click on the **Components** subtab and click the **Create component** button in the lower-left corner.
 
 Select `board` as the type and `pi` as the model.
@@ -137,7 +136,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your {{< glossary_tooltip term_id="board" text="board" >}}, your [webcam](/components/camera/webcam/), and your [stepper motor](/components/motor/gpiostepper/):
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your {{< glossary_tooltip term_id="board" text="board" >}}, your [webcam](/components/camera/webcam/), and your [stepper motor](/components/motor/gpiostepper/):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -215,7 +214,7 @@ To enable the [data capture](/data/capture/) on your robot, do the following:
    Enabling data capture here will allow you to view the saved images in the Viam app and allow you to easily tag them and train your own machine learning model.
    You can leave the default directory as is.
    This is where your captured data is stored on-robot.
-   By default, it saves it to the <file>~/.viam/capture</file> directory on your robot.
+   By default, it saves it to the <file>~/.viam/capture</file> directory on your machine.
 
 ![The data management service configured with the name pet-data.](/tutorials/pet-treat-dispenser/app-service-data-management.png)
 
@@ -236,14 +235,18 @@ Next, enable the Data Management service on the camera component on your robot:
 
 Now it’s time to start collecting images of your beloved pet.
 Set your feeder up near an area your pet likes to hang out like your couch or their bed or mount it temporarily over their food bowl, or even just hold it in front of them for a couple of minutes.
-You can check that data is being captured by heading over to the [**DATA** page](https://app.viam.com/data/view) and filtering your image data to show just images from the {{< glossary_tooltip term_id="location" text="location" >}} your pet feeder is in.
+
+You can check that data is being captured by clicking on the menu icon on the camera configuration pane under the **CONFIGURE** tab and selecting **View captured data**.
+
+{{<imgproc src="/data/capture-data-menu.png" resize="500x" declaredimensions=true alt="Resource menu with the options Rename, Duplicate, View captured data, and Delete" class="aligncenter">}}
+
 Capture as many images as you want.
 If possible, capture your pet from different angles and with different backgrounds.
 Disable Data Capture after you’re done capturing images of your pet.
 
 ### Create a dataset and tag images
 
-Head over to the [**DATA** page](https://app.viam.com/data/view) and select an image captured from your robot.
+Head over to the [**DATA** page](https://app.viam.com/data/view) and select an image captured from your machine.
 After selecting the image, you can type a custom tag for some of the objects you see in the image and you add it to a dataset.
 The first thing you want to consider is what tags you are trying to create and how you want your custom model to function.
 
@@ -295,12 +298,12 @@ Go ahead and select all the tags you would like to include in your model and cli
 
 Once the model has finished training, deploy it by adding an [ML model service](/ml/) to your robot:
 
-1. Navigate to the robot page on the Viam app.
+1. Navigate to the machine page on the Viam app.
    Click to the **Config** tab, then select the **Services** subtab.
 1. Click **Create service** in the lower-left corner.
 1. Select `ML Model` as the type, and select `TFLite CPU` as the model.
 1. Enter `puppyclassifier` as the name, then click **Create**.
-1. To configure your service and deploy a model onto your robot, select **Deploy Model On Robot** for the **Deployment** field.
+1. To configure your service and deploy a model onto your robot, select **Deploy model on machine** for the **Deployment** field.
 1. Select your trained model (`petfeeder`) as your desired **Model**.
 
 ### Use the vision service to detect your pet
@@ -309,7 +312,7 @@ To detect your pet with your machine learning model, you need to add a [vision s
 
 1. From the **Services** subtab, click **Create service** in the lower-left corner.
 1. Select `Vision` as the type and `ML Model` as the model.
-1. Enter a name for your ML model service and click **Create**.
+1. Enter a name or use the suggested name for your ML model service and click **Create**.
 1. Select the model you previously created in the dropdown menu.
 1. Navigate to the **Components** subtab and click **Create component** in the lower-left corner.
 1. Create a [transform camera](/components/camera/transform/) by selecting type `camera` and model `transform`.
@@ -451,9 +454,9 @@ python3 main.py
 
 One more thing.
 Right now, you need to run the code manually every time you want your robot to work.
-However, you can configure Viam to automatically run your code as a [process](/build/configure/#processes).
+However, you can configure Viam to automatically run your code as a [process](/build/configure/processes/).
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Processes** subtab and navigate to the **Create process** menu.
 
 Enter `main` as the process name and click **Create process**.
@@ -465,7 +468,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 Now your robot starts looking for your pet automatically once booted!
 
-## Full Code
+## Full code
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -479,7 +482,7 @@ from viam.components.camera import Camera
 from viam.components.motor import Motor
 from viam.services.vision import VisionClient
 
-# these must be set, you can get them from your robot's 'Code sample' tab
+# these must be set, you can get them from your machine's 'Code sample' tab
 robot_api_key = os.getenv('ROBOT_API_KEY') or ''
 robot_api_key_id = os.getenv('ROBOT_API_KEY_ID') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
@@ -543,7 +546,7 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
-## Next Steps
+## Next steps
 
 Take your smart pet feeder to the next level!
 You could try one of the following:

@@ -5,9 +5,9 @@ childTitleEndOverwrite: "Power Sensor"
 weight: 70
 no_list: true
 type: "docs"
-description: "A device that provides information about a robot's power systems, including voltage, current, and power consumption."
+description: "A device that provides information about a machine's power systems, including voltage, current, and power consumption."
 tags: ["sensor", "components", "power sensor", "ina219", "ina226", "renogy"]
-icon: "/icons/components/power-sensor.svg"
+icon: true
 images: ["/icons/components/power-sensor.svg"]
 modulescript: true
 aliases:
@@ -15,20 +15,18 @@ aliases:
 # SME: #team-bucket
 ---
 
-A power sensor is a device that reports measurements of the voltage, current, and power consumption in your robot's system.
+A power sensor is a device that reports measurements of the voltage, current, and power consumption in your machine's system.
 Integrate this component to monitor your power levels.
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/data/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your power sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your power sensor.
-
-{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Built-in models
 
@@ -41,20 +39,22 @@ For configuration information, click on the model name:
 | [`ina226`](./ina226/) | INA226 power sensor; current and power monitor |
 | [`renogy`](./renogy/) | solar charge controller                        |
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:power_sensor" type="power_sensor">}}
 
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
 ## Control your power sensor with Viam’s client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Once connected, you can control your robot programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Once connected, you can control your machine programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have a power sensor called `"my_power_sensor"` configured as a component of your robot.
+These examples assume you have a power sensor called `"my_power_sensor"` configured as a component of your machine.
 If your power sensor has a different name, change the `name` in the code.
 
 Import the power sensor package for the SDK you are using:
@@ -62,7 +62,7 @@ Import the power sensor package for the SDK you are using:
 {{% tab name="Python" %}}
 
 ```python
-from viam.components.powersensor import powersensor
+from viam.components.power_sensor import PowerSensor
 ```
 
 {{% /tab %}}

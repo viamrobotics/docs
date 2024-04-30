@@ -11,7 +11,7 @@ aliases:
 # SMEs: Susmita
 ---
 
-Configure an `upboard` board to integrate an Intel-based board like the [UP 4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) into your robot.
+Configure an `upboard` board to integrate an Intel-based board like the [UP 4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) into your machine.
 
 Complete the following setup requirements, then move on to configuring your board in [the Viam app](https://app.viam.com):
 
@@ -29,46 +29,14 @@ You must flash your Intel-based board with:
 {{< tabs name="Configure an upboard Board" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `board` type, then select the `upboard` model.
-Enter a name for your board and click **Create**.
+Enter a name or use the suggested name for your board and click **Create**.
 
 ![An example configuration for a upboard board in the Viam app Config Builder.](/components/board/upboard-ui-config.png)
 
-Copy and paste the following attribute template into your board's **Attributes** box.
-Then remove and fill in the attributes as applicable to your board, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "digital_interrupts": [
-    {
-      "name": "<your-digital-interrupt-name>",
-      "pin": "<pin-number>"
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "digital_interrupts": [
-    {
-      "name": "your-interrupt",
-      "pin": "18"
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Edit the attributes as applicable to your board, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -130,9 +98,9 @@ The following attributes are available for `upboard` boards:
 | ---- | ---- | --------- | ----------- |
 | `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](/components/board/#digital_interrupts). |
 
-## Attribute Configuration
+## Attribute configuration
 
-Configuring these attributes on your board allows you to integrate [digital interrupts](#digital_interrupts) into your robot.
+Configuring these attributes on your board allows you to integrate [digital interrupts](#digital_interrupts) into your machine.
 
 ### `digital_interrupts`
 

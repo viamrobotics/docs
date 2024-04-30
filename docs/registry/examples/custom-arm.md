@@ -16,6 +16,8 @@ tags:
     "python SDK",
     "CAN",
   ]
+icon: true
+images: ["/registry/module-icon.svg"]
 aliases:
   - "/extend/modular-resources/examples/custom-arm/"
   - "/modular-resources/examples/custom-arm/"
@@ -82,7 +84,7 @@ To create a custom arm model, code a module in Python with the module support li
 {{% alert title="Info" color="info" %}}
 
 This guide uses Viam's Python SDK to implement a custom arm module, but if you want to use the Go Client SDK, you can.
-Follow [this guide](/registry/create/#code-a-new-resource-model) and select **Go** on the code samples to learn how to code a modular arm in Go.
+Follow [this guide](/registry/create/#define-a-new-resource-model) and select **Go** on the code samples to learn how to code a modular arm in Go.
 
 {{% /alert %}}
 
@@ -233,7 +235,7 @@ The best practice with the Python SDK is to put `pass` or raise an `NotImplement
 
 ### Prepare the module for execution
 
-To [add a module](/registry/configure/) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that:
+To [add a module](/registry/configure/) to the configuration of your machine, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that:
 
 - runs your module when executed,
 - takes a local socket as a command line argument, and
@@ -261,9 +263,9 @@ To make this shell script executable, run the following command in your terminal
 sudo chmod +x <FILEPATH>/<FILENAME>
 ```
 
-Ensure any dependencies for your module (including the [Python SDK](https://python.viam.dev/)) are installed on your robot's computer.
+Ensure any dependencies for your module (including the [Python SDK](https://python.viam.dev/)) are installed on your machine's computer.
 Your executable will be run by `viam-server` as root, so dependencies need to be available to the root user.
 
-## Configure the module and modular resource on your robot
+## Configure the module and modular resource on your machine
 
-Follow [these configuration instructions](/registry/configure/) to add your custom resource to your robot.
+Follow [these configuration instructions](/registry/configure/) to add your custom resource to your machine.

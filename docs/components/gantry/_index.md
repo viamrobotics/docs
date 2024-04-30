@@ -7,7 +7,7 @@ weight: 50
 type: "docs"
 description: "A mechanical system of linear rails that can precisely position an attached device."
 tags: ["gantry", "components"]
-icon: "/icons/components/gantry.svg"
+icon: true
 images: ["/icons/components/gantry.svg"]
 modulescript: true
 aliases:
@@ -28,7 +28,7 @@ This component abstracts the hardware of a gantry to give you an easy interface 
 Gantry components can only be controlled in terms of linear motion (you cannot rotate them).
 Each gantry can only move in one axis within the limits of the length of the linear rail.
 
-Most robots with a gantry need at least the following hardware:
+Most machines with a gantry need at least the following hardware:
 
 - A [board](/components/board/) or [controller](/components/input-controller/) component that can detect changes in voltage on GPIO pins
 - A [motor](/components/motor/) that can move linear rails
@@ -37,18 +37,16 @@ Most robots with a gantry need at least the following hardware:
     Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
 - Limit switches, to attach to the ends of the gantry's axis
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/mobility/frame-system/" >}}
 {{< relatedcard link="/mobility/motion/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your gantry with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your gantry.
-
-{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Built-in models
 
@@ -61,20 +59,22 @@ For configuration information, click on the model name:
 | [`single-axis`](single-axis/) | A gantry with a singular linear rail. |
 | [`multi-axis`](multi-axis/) | A gantry with multiple linear rails. Composed of multiple `single-axis` gantries. |
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:gantry" type="gantry">}}
 
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
 ## Control your gantry with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Then control your machine programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have a gantry called `"my_gantry"` configured as a component of your robot.
+These examples assume you have a gantry called `"my_gantry"` configured as a component of your machine.
 If your gantry has a different name, change the `name` in the code.
 
 Be sure to import the gantry package for the SDK you are using:
@@ -267,7 +267,7 @@ myGantry.Home(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### Lengths
+### GetLengths
 
 Get the lengths of the axes of the gantry (mm).
 

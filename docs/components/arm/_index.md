@@ -7,7 +7,7 @@ type: "docs"
 description: "A robotic arm is made up of a series of links and joints, ending with a device you can position."
 no_list: true
 tags: ["arm", "components"]
-icon: "/icons/components/arm.svg"
+icon: true
 images: ["/icons/components/arm.svg"]
 modulescript: true
 aliases:
@@ -42,7 +42,7 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 
 - When you configure a supported arm model to connect to `viam-server`, the Arm driver will load and parse the kinematics file for the Viam RDK's [frame system](/mobility/frame-system/) service to use.
 
-- The [frame system](/mobility/frame-system/) will allow you to easily calculate where any part of your robot is relative to any other part, other robot, or piece of the environment.
+- The [frame system](/mobility/frame-system/) will allow you to easily calculate where any part of your machine is relative to any other part, other machine, or piece of the environment.
 
 - All arms have a `Home` position, which corresponds to setting all joint angles to 0.
 
@@ -50,7 +50,7 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 
 - If there is no way for the arm to move to the desired location in a straight line, or if it would self-collide or collide with an obstacle that was passed in as something to avoid, then the `move_to_position` call will fail.
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/mobility/motion/" >}}
@@ -58,17 +58,9 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 {{< relatedcard link="/data/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your arm with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your arm.
-
-{{< alert title="Add support for other models" color="tip" >}}
-
-If none of the existing models fit your use case, you can [create a modular resource](/registry/) to add support for it.
-
-You can follow [this guide](/registry/examples/custom-arm/) to implement your custom arm as a [modular resource](/registry/).
-
-{{< /alert >}}
 
 ### Built-in models
 
@@ -80,23 +72,31 @@ For configuration information, click on the model name:
 | [`fake`](fake/) | A model used for testing, with no physical hardware. |
 | [`xArm6`](xarm6/) | [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) |
 | [`xArm7`](xarm7/) | [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) |
-| [`xArmLite`](xarmlite/) | [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6) |
+| [`lite6`](lite6/) | [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6) |
 | [`ur5e`](ur5e/) | [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) |
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:arm" type="arm">}}
 
+{{< alert title="Add support for other models" color="tip" >}}
+
+If none of the existing models fit your use case, you can [create a modular resource](/registry/) to add support for it.
+
+You can follow [this guide](/registry/examples/custom-arm/) to implement your custom arm as a [modular resource](/registry/).
+
+{{< /alert >}}
+
 ## Control your arm with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Then control your machine programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have an arm called `"my_arm"` configured as a component of your robot.
+These examples assume you have an arm called `"my_arm"` configured as a component of your machine.
 If your arm has a different name, change the `name` in the code.
 
 Be sure to import the arm package for the SDK you are using:
@@ -170,7 +170,8 @@ pos = await my_arm.get_end_position()
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-  **Returns:**
+
+**Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 - [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
@@ -326,7 +327,7 @@ err := myArm.MoveToJointPositions(context.Background(), jointPos, nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### JointPositions
+### GetJointPositions
 
 Get the current position of each joint on the arm.
 
@@ -679,7 +680,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 You can also ask questions on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/tutorials/services/accessing-and-moving-robot-arm" %}}

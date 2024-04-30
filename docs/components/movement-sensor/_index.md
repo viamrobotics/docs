@@ -6,7 +6,7 @@ weight: 70
 type: "docs"
 description: "A sensor that measures location, kinematic data, or both."
 tags: ["movement sensor", "gps", "imu", "sensor", "components"]
-icon: "/icons/components/imu.svg"
+icon: true
 images: ["/icons/components/imu.svg"]
 no_list: true
 modulescript: true
@@ -15,7 +15,7 @@ aliases:
 # SME: Rand
 ---
 
-A movement sensor component is a sensor that gives data on where a robot is and how fast it is moving.
+A movement sensor component is a sensor that gives data on where a machine is and how fast it is moving.
 Examples of movement sensors include global positioning systems (GPS), inertial measurement units (IMUs), accelerometers and gyroscopes.
 
 {{% alert title="Tip" color="tip" %}}
@@ -24,24 +24,22 @@ Viam also supports generic [sensors](/components/sensor/) and [encoders](/compon
 
 {{% /alert %}}
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/mobility/motion/" >}}
 {{< relatedcard link="/mobility/navigation/" >}}
+{{< relatedcard link="/mobility/slam/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your GPS, IMU, accelerometer, or other movement sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your movement sensor.
-
-{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Built-in models
 
 Viam supports several different models of movement sensor.
 For configuration information, click on the model name:
-Click the model names below for configuration information:
 
 <!-- prettier-ignore -->
 Model | Description <a name="model-table"></a>
@@ -49,6 +47,7 @@ Model | Description <a name="model-table"></a>
 [`gps-nmea`](./gps/gps-nmea/) | [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS models
 [`gps-nmea-rtk-pmtk`](./gps/gps-nmea-rtk-pmtk/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models using I<sup>2</sup>C (**experimental**)
 [`gps-nmea-rtk-serial`](./gps/gps-nmea-rtk-serial/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models using serial communication (**experimental**)
+[`dual-gps-rtk`](./gps/dual-gps-rtk/) | A movement sensor that calculates compass heading from two GPS movement sensors
 [`imu-wit`](./imu/imu-wit/) | IMUs manufactured by [WitMotion](https://www.wit-motion.com/)
 [`accel-adxl345`](./adxl345/) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer
 [`gyro-mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense
@@ -56,9 +55,11 @@ Model | Description <a name="model-table"></a>
 [`wheeled-odometry`](./wheeled-odometry/) | A model that uses [encoders](/components/encoder/) to get an odometry estimate from a wheeled base
 [`fake`](./fake/) | Used to test code without hardware
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:movement_sensor" type="movement_sensor">}}
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Micro-RDK
 
@@ -66,14 +67,14 @@ If you are using the micro-RDK, navigate to [Micro-RDK Movement Sensor](/build/m
 
 ## Control your movement sensor with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Then control your machine programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have a movement sensor called `"my_movement_sensor"` configured as a component of your robot.
+These examples assume you have a movement sensor called `"my_movement_sensor"` configured as a component of your machine.
 If your movement sensor has a different name, change the `name` in the code.
 
 Be sure to import the movement sensor package for the SDK you are using:
@@ -496,9 +497,9 @@ properties, err := myMovementSensor.Properties(context.Background(), nil)
 
 ### GetAccuracy
 
-Get the accuracy of the sensor (and/or precision, depending on the sensor model).
+Get the reliability metrics of the movement sensor, including various parameters to assess the sensor's accuracy and precision in different dimensions.
 
-Supported by GPS models.
+Supported by GPS models and `imu-wit`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -509,10 +510,23 @@ Supported by GPS models.
 
 **Returns:**
 
-- [(Dict[str, float])](https://docs.python.org/3/library/stdtypes.html#str): The accuracy and/or precision of the sensor, if supported.
-  Contents depend on sensor model.
+- (MovementSensor.Accuracy): The reliability metrics of the movement sensor, which vary depending on model.
+  This type contains the following fields:
+  - `accuracy` [(Mapping[string, float])](https://docs.python.org/3/glossary.html#term-mapping): A mapping of specific measurement parameters to their accuracy values.
+    The keys are string identifiers for each measurement (for example, "Hdop", "Vdop"), and the values are their corresponding accuracy levels as floats.
+  - `position_hdop` [(Optional[float])](https://docs.python.org/3/library/functions.html#float): Horizontal Dilution of Precision (HDOP) value.
+    It indicates the level of accuracy of horizontal measurements.
+    Lower values indicate improved reliability of positional measurements.
+  - `position_vdop` [(Optional[float])](https://docs.python.org/3/library/functions.html#float): Vertical Dilution of Precision (VDOP) value.
+    Similar to HDOP, it denotes the accuracy level of vertical measurements.
+    Lower values indicate improved reliability of positional measurements.
+  - `position_nmea_gga_fix` (Optional[NmeaGGAFix]): An integer value representing the quality of the NMEA fix.
+    See [Novatel documentation](https://docs.novatel.com/OEM7/Content/Logs/GPGGA.htm#GPSQualityIndicators) for the meaning of each fix value.
+  - `compass_degrees_error` [(Optional[float])](https://docs.python.org/3/library/functions.html#float): The estimated error in compass readings, measured in degrees.
+    This signifies the deviation or uncertainty in the sensor's compass measurements.
+    A lower value implies a more accurate compass direction.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_accuracy).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_accuracy).
 
 ```python
 my_movement_sensor = MovementSensor.from_robot(
@@ -532,8 +546,23 @@ accuracy = await my_movement_sensor.get_accuracy()
 
 **Returns:**
 
-- [(map\[string\]float32)](https://go.dev/blog/maps): The accuracy and/or precision of the sensor, if supported.
-  Contents depend on sensor model.
+- [(Accuracy)](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#Accuracy): The precision and reliability metrics of the movement sensor, which vary depending on model.
+  This type contains the following fields:
+
+  - `AccuracyMap` [(map[string]float32)](https://pkg.go.dev/builtin#string): A mapping of specific measurement parameters to their accuracy values.
+    The keys are string identifiers for each measurement (for example, "Hdop", "Vdop"), and the values are their corresponding accuracy levels as float32.
+  - `Hdop` [(float32)](https://pkg.go.dev/builtin#float32): Horizontal Dilution of Precision (HDOP) value.
+    It indicates the level of accuracy of horizontal measurements.
+    Lower values indicate improved reliability of positional measurements.
+  - `Vdop` [(float32)](https://pkg.go.dev/builtin#float32): Vertical Dilution of Precision (VDOP) value.
+    Similar to HDOP, it denotes the accuracy level of vertical measurements.
+    Lower values indicate improved reliability of positional measurements.
+  - `NmeaFix` [(int32)](https://pkg.go.dev/builtin#int32): An integer value representing the quality of the NMEA fix.
+    See [Novatel documentation](https://docs.novatel.com/OEM7/Content/Logs/GPGGA.htm#GPSQualityIndicators) for the meaning of each fix value.
+  - `CompassDegreeError` [(float32)](https://pkg.go.dev/builtin#float32): The estimated error in compass readings, measured in degrees.
+    This signifies the deviation or uncertainty in the sensor's compass measurements.
+    A lower value implies a more accurate compass direction.
+
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
@@ -770,9 +799,9 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
 
-## Next Steps
+## Next steps
 
-Try adding a movement sensor to your [mobile robot](/components/base/) and writing some code with our [SDKs](/build/program/apis/) to implement closed-loop movement control for your robot.
+Try adding a movement sensor to your [mobile robot](/components/base/) and writing some code with our [SDKs](/build/program/apis/) to implement closed-loop movement control for your machine.
 
 Or, try configuring [data capture](/data/) on your movement sensor.
 

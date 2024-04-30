@@ -1,9 +1,9 @@
 ---
-title: "Configure an ADXL345 Accelerometer"
+title: "Configure an ADXL345 Accelerometer (Micro-RDK)"
 linkTitle: "accel-adxl345"
 weight: 20
 type: "docs"
-description: "Configure an ADXL345 digital accelerometer."
+description: "Configure an ADXL345 digital accelerometer with a microcontroller."
 images: ["/icons/components/imu.svg"]
 aliases:
   - /micro-rdk/movement-sensor/accel-adxl345/
@@ -18,14 +18,14 @@ If you are using a [Viam Rover](/get-started/try-viam/), this is the acceleromet
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `movement-sensor` type, then select the `accel-adxl345` model.
-Enter a name for your movement sensor and click **Create**.
+Enter a name or use the suggested name for your movement sensor and click **Create**.
 
 {{< imgproc src="/components/movement-sensor/adxl345-builder.png" alt="Creation of an `accel-adxl345` movement sensor in the Viam app config builder." resize="600x" >}}
 
-Copy and paste the following attribute template into your movement sensor's **Attributes** box.
+Copy and paste the following attribute template into your movement sensor's attributes field.
 Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
 
 {{< tabs >}}

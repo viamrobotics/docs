@@ -5,9 +5,9 @@ childTitleEndOverwrite: "Sensor Component"
 weight: 70
 no_list: true
 type: "docs"
-description: "A device that sends information about the outside world to the computer controlling a robot."
+description: "A device that sends information about the outside world to the computer controlling a machine."
 tags: ["sensor", "components"]
-icon: "/icons/components/sensor.svg"
+icon: true
 images: ["/icons/components/sensor.svg"]
 modulescript: true
 aliases:
@@ -16,7 +16,7 @@ aliases:
 ---
 
 A _sensor_ is a device that can measure information about the outside world.
-Add a sensor component to your robot to send the information the sensor measures to the computer controlling the robot.
+Add a sensor component to your machine to send the information the sensor measures to the computer controlling the machine.
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -28,22 +28,20 @@ Viam has three additional component types defined separately from _sensor_ that 
 
 {{% /alert %}}
 
-Most robots with a sensor need at least the following hardware:
+Most machines with a sensor need at least the following hardware:
 
 - A [board](/components/board/)
 - Depending on your sensor's output type (analog or digital), an analog-to-digital converter (ADC) may be necessary to allow the sensor to communicate with the board
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/data/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your sensor.
-
-{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Built-in models
 
@@ -58,20 +56,22 @@ For configuration information, click on the model name:
 | [`ds18b20`](ds18b20/) | [DallasTemperature DS18B20 digital temperature sensor](https://www.adafruit.com/product/381) |
 | [`sensirion-sht3xd`](sensirion-sht3xd/) | [Sensirion SHT3x-DIS temperature and humidity sensor](https://www.adafruit.com/product/2857) |
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:sensor" type="sensor">}}
 
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
 ## Control your sensor with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Then control your machine programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have a sensor called `"my_sensor"` configured as a component of your robot.
+These examples assume you have a sensor called `"my_sensor"` configured as a component of your machine.
 If your sensor has a different name, change the `name` in the code.
 
 Be sure to import the sensor package for the SDK you are using:
@@ -315,7 +315,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< snippet "social.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/tutorials/projects/make-a-plant-watering-robot/" %}}

@@ -12,21 +12,21 @@ aliases:
 ---
 
 A `wheeled` base supports mobile robotic bases with drive motors on both sides (differential steering).
-To configure a `wheeled` base as a component of your robot, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base.
+To configure a `wheeled` base as a component of your machine, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base.
 
 Configure a `wheeled` base as follows:
 
 {{< tabs name="Configure a Wheeled Base" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `base` type, then select the `wheeled` model.
-Enter a name for your arm and click **Create**.
+Enter a name or use the suggested name for your base and click **Create**.
 
-{{< imgproc src="/components/base/wheeled-base-ui-config.png" alt="An example configuration for a wheeled base in the Viam app config builder, with Attributes & Depends On dropdowns and the option to add a frame." resize="600x" >}}
+{{< imgproc src="/components/base/wheeled-base-ui-config.png" alt="An example configuration for a wheeled base in the Viam app config builder, with Attributes & Depends On dropdowns and the option to add a frame." resize="1200x" style="width: 900px" >}}
 
-Select the motors attached to the base as your **Right Motors** and **Left Motors**.
+Select the motors attached to the base as your **right** and **left** motors.
 Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
@@ -56,8 +56,8 @@ Edit and fill in the attributes as applicable.
         "right": [
           "<your-right-motor-name>" // <INSERT ANY ADDITIONAL RIGHT MOTOR NAMES>
         ],
-        "wheel_circumference_mm": <#>,
-        "width_mm": <#>
+        "wheel_circumference_mm": <int>,
+        "width_mm": <int>
       },
       "depends_on": []
     }
@@ -143,7 +143,7 @@ The following attributes are available for `wheeled` bases:
 | `width_mm` | int | **Required** | Width of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels. Can be an approximation. |
 | `spin_slip_factor` | float | Optional | Can be used in steering calculations to correct for slippage between the wheels and the floor. If utilized, calibrated by the user. |
 
-## Wire a Wheeled Base
+## Wire a `wheeled` base
 
 An example wiring diagram for a base with one motor on each side:
 

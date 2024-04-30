@@ -3,6 +3,7 @@ title: "Capture and sync image data"
 linkTitle: "Capture and sync image data"
 weight: 20
 type: "docs"
+images: ["/ml/collect.svg"]
 description: "Capture image data from a camera on your machine and sync that data to the cloud."
 ---
 
@@ -11,46 +12,54 @@ Once you have synced your images, you can view them in the Viam app, filter your
 
 For example, you might add the data management service to multiple machines to be able to sync captured images from each of them to the Viam app so that you can search across all images from one interface.
 
-<table>
-  <tr>
-    <th>{{<imgproc src="/icons/components/camera.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="configure a camera component">}}
-      <b>1. Configure a camera</b><br><br>
-      <p>First, <a href="/fleet/machines/#add-a-new-robot">create a robot</a> if you haven't yet.</p>
-      <p>Then <a href="/components/camera/">add a camera component</a>, such as a <a href="/components/camera/webcam/">webcam</a>.</p>
-    </th>
-  </tr>
-  <tr>
-    <th>{{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
-      <b>2. Configure the data management service</b><br><br>
-      <p>Next, <a href="/data/">add the data management service</a> to be able to configure how your camera captures and stores images.</p>
-      <p>Then configure <a href="/data/capture/">data capture</a> and <a href="/data/cloud-sync/">cloud sync</a>.</p>
-    </th>
-  </tr>
-  <tr>
-    <th>{{<imgproc src="/icons/components/camera.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
-      <b>3. Capture data</b><br><br>
-      <p>With data management configured, <a href="/data/capture/#configure-data-capture-for-individual-components">capture image data from a camera on your machine</a>. Captured data is automatically synced to the cloud after a short delay.</p>
-    </th>
-  </tr>
-  <tr>
-    <th>{{<imgproc src="/ml/collect.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
-      <b>4. View data in the Viam app</b><br><br>
-      <p>Once you have synced images, you can <a href="/data/view/">view those images in the Viam app</a> from the <b>Data</b> tab.</p>
-    </th>
-  </tr>
-  <tr>
-    <th>{{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
-      <b>5. Filter data by common search criteria</b><br><br>
-      <p>You can <a href="/data/view/#filter-data">filter synced images in the Viam app</a> using the <b>Filtering</b> menu under the <b>Data</b> tab in the Viam app, using search criteria such as robot name, location, date range, or component name.</p>
-    </th>
-  </tr>
-  <tr>
-    <th>{{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
-      <b>6. Export data</b><br><br>
-      <p>You can also <a href ="/data/export/">export your data from the Viam app to a deployed machine, or to any computer.</p>
-    </th>
-  </tr>
-</table>
+{{< table >}}
+{{< tablestep >}}
+{{<imgproc src="/icons/components/camera.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="configure a camera component">}}
+**1. Configure a camera**
+
+First, [create a machine](/fleet/machines/#add-a-new-machine) if you haven't yet.
+
+Then [add a camera component](/components/camera/), such as a [webcam](/components/camera/webcam/).
+
+{{< /tablestep >}}
+{{< tablestep >}}
+{{<imgproc src="/services/icons/data-management.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
+**2. Configure the data management service**
+
+Next, [add the data management service](/data/) to be able to configure how your camera captures and stores images.
+
+Then configure [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/).
+
+{{< /tablestep >}}
+{{< tablestep >}}
+{{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
+**3. Capture data**
+
+With data management configured, [capture image data from a camera on your machine](/data/capture/#configure-data-capture-for-individual-components). Captured data is automatically synced to the cloud after a short delay.
+
+{{< /tablestep >}}
+{{< tablestep >}}
+{{<imgproc src="/ml/collect.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
+**4. View data in the Viam app**
+
+Once you have synced images, you can [view those images in the Viam app](/data/view/) from the **Data** tab.
+
+{{< /tablestep >}}
+{{< tablestep >}}
+{{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
+**5. Filter data by common search criteria**
+
+You can [filter synced images in the Viam app](/data/view/#filter-data) using the **Filtering** menu under the **Data** tab in the Viam app, using search criteria such as machine name, location, date range, or component name.
+
+{{< /tablestep >}}
+{{< tablestep >}}
+{{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
+**6. Export data**
+
+You can also [export your data from the Viam app](/data/export/) to a deployed machine, or to any computer.
+
+{{< /tablestep >}}
+{{< /table >}}
 
 ## Next steps
 

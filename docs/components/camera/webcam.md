@@ -17,15 +17,15 @@ If the camera drivers are among those in [this mediadevices repository](https://
 {{< tabs name="Configure a Webcam" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `camera` type, then select the `webcam` model.
-Enter a name for your camera and click **Create**.
+Enter a name or use the suggested name for your camera and click **Create**.
 
-{{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="1200x" style="width=600x" >}}
 
 Edit and fill in the attributes as applicable.
-If you click on the **Video Path** field while your robot is live, a dropdown autopopulates with identified camera paths.
+If you click on **Show more**, then the **video_path** field while your machine is live, a dropdown autopopulates with identified camera paths.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -133,15 +133,22 @@ Viam supports the following pixel formats:
 
 - I420
 - I444
-- MJPEG
+- MJPEG / MJPG
 - NV12
 - NV21
 - RGBA
-- UYVY
-- YUY2
+- UYVY / Y422
+- YUY2 / YUYV / V422
 - Z16
 
 If your machine is connected to the Viam app, the available pixel formats supported by your camera automatically appear in the **Format** dropdown menu, which is visible when you click the **Show more** button.
+
+On Linux, you can also manually determine which pixel formats your camera supports by running the following command on the machine your camera is connected to.
+Replace `/dev/video0` with the video path you [determined for your video device above](#using-video_path), if different:
+
+```sh {class="command-line" data-prompt="$"}
+v4l2-ctl --list-formats-ext --device /dev/video0
+```
 
 ## View the camera stream
 
@@ -191,6 +198,6 @@ Then, select: **Interface Options -> Camera -> Enable Camera**.
 
 Restart the Pi to complete the configuration.
 
-## Next Steps
+## Next steps
 
 {{< readfile "/static/include/components/camera-model-next-steps.md" >}}

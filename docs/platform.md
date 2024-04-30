@@ -1,21 +1,23 @@
 ---
 title: "Platform"
 linkTitle: "Platform"
+description: "Use Viam to configure, program, operate, manage, and collect data from your smart machines."
 weight: 400
 type: docs
-layout: "empty"
-empty_node: true
-manualLink: "/"
 ---
 
-## Manage
+Viam is a complete software platform for {{< glossary_tooltip term_id="smart-machine" text="smart machines">}} that runs on Linux and macOS and supports a wide variety of popular systems, including:
 
-You do not have to use the app to use Viam's platform to build your robot, but it has several key features to help you get started managing your robots, including configuring robots with more complicated architecture like sub-parts or remotes:
+{{< board-carousel >}}
+<br>
+
+Explore the elements of the Viam platform:
 
 {{< cards >}}
-{{% card link="/build/configure" %}}
-{{% card link="/fleet" %}}
-{{% card link="/data" %}}
-{{% card link="/ml" %}}
-{{% card link="/build/configure/parts-and-remotes" %}}
+{{% card link="/build" class="fit-contain" %}}
+{{% card link="/registry" class="fit-contain" %}}
+{{% card link="/fleet" class="fit-contain" %}}
+{{% card link="/data" class="fit-contain" imageOverwrite="/platform/data.svg" %}}
+{{% card link="/ml" class="fit-contain" %}}
+{{% card link="/mobility" class="fit-contain" %}}
 {{< /cards >}}

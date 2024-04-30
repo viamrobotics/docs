@@ -3,8 +3,11 @@ title: "Add Constraints and Transforms to a Motion Plan"
 linkTitle: "Add Motion Constraints"
 type: "docs"
 description: "Use constraints and transforms with the motion service."
-webmSrc: "/tutorials/videos/motion_constraints.webm"
-mp4Src: "/tutorials/videos/motion_constraints.mp4"
+videos:
+  [
+    "/tutorials/videos/motion_constraints.webm",
+    "/tutorials/videos/motion_constraints.mp4",
+  ]
 images: ["/tutorials/videos/motion_constraints.gif"]
 videoAlt: "An arm moving a cup from one side of a tissue box to the other, across a table. The cup stays upright."
 tags: ["arm", "gripper", "motion", "services"]
@@ -54,9 +57,9 @@ The motion service is one of the "built-in" services, so you don't need to do an
 {{% expand "Click to see what your raw JSON config should look like." %}}
 
 If you completed the previous tutorial, your robot's configuration should match the following.
-You can view your robot configuration in [the Viam app](https://app.viam.com/) under the **Config** tab by clicking **Raw JSON**.
+You can view your robot configuration in [the Viam app](https://app.viam.com/) under the **CONFIGURE** tab by selecting **JSON** mode in the left-hand menu.
 
-If instead you are creating a new robot for this tutorial, copy the following configuration into the Raw JSON field:
+If instead you create a new machine for this tutorial, copy and paste the following configuration into the **JSON** field:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -141,10 +144,12 @@ You will use this same code later in this tutorial.
 Since this tutorial gets a bit more complicated than the last, let's configure a representation of the table so you can see it in the frame system visualizer.
 This configured table won't be taken into account by the motion service, but it's useful to be able to see it.
 
-On your robot's **Config** tab, create a new component called `table` with **Type** `generic` and **Model** `fake`.
-Click **Create component**, then click **Add frame**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+Select the `generic` type, then select the `fake` model.
+Enter the name `"table"` for your movement sensor and click **Create**.
 
-Go to the **Frame System** subtab.
+Select the **Frame** mode on the **CONFIGURE** tab.
 Click **table** on the left menu.
 For **Geometry** click **box**.
 
@@ -152,7 +157,7 @@ Set the dimensions (**Size**) to `1000` x `1000` x `20`.
 Notice that the top of the table is now 10mm above the origin, because the 20mm thickness is centered on the centerpoint.
 Account for this by giving the table a **Translation** of `-10` in the Z direction, moving the top of the table to 0.
 
-![The Frame System subtab of the Components tab with a 1000 wide, 1000 deep, 200 millimeter thick box representing the top of the table.](../../constrain-motion/frame-table.jpg)
+![The Frame mode of the **CONFIGURE** tab with a 1000 wide, 1000 deep, 200 millimeter thick box representing the top of the table.](../../constrain-motion/frame-table.jpg)
 
 ### Visualize obstacles on the table
 -->
@@ -203,7 +208,7 @@ The following diagram shows this, as well as the global coordinate system.
 
 If you are using a `fake` gripper, there is no real hardware to calibrate and you can [continue to the next section](#use-a-transform-to-represent-a-drinking-cup), imagining that your fake gripper corresponds to the diagram above.
 
-If you are using a real arm and gripper, use the [**Control** tab](/fleet/machines/#control) in the [Viam app](https://app.viam.com/) to move the gripper, look at its reported orientations, and map them to its orientation in the real world.
+If you are using a real arm and gripper, use the [**CONTROL** tab](/fleet/machines/#control) in the [Viam app](https://app.viam.com/) to move the gripper, look at its reported orientations, and map them to its orientation in the real world.
 If the axes are different from those described above, take these differences into account in your code.
 
 ## Use a transform to represent a drinking cup
@@ -326,6 +331,7 @@ await my_gripper.open()
 
 The following code contains everything covered in this tutorial in addition to the `connect()` function, and the resource access code from the last tutorial that you need here as well.
 Be sure to change the `<API-KEY>`, `<API-KEY-ID>`, and the `ADDRESS FROM THE VIAM APP` placeholders shown in the code to match your actual robot credentials, and change all relevant parameters such as `z_offset` and other dimensions and poses to match your hardware.
+You can find the `<API-KEY>` and `<API-KEY-ID>` values for your machine on the **CONNECT** tab's **API keys** page.
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -343,10 +349,10 @@ from viam.proto.service.motion import Constraints, LinearConstraint
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      # Replace "<API-KEY>" (including brackets) with your machine's API key
       api_key='<API-KEY>',
-      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-      # id
+      # Replace "<API-KEY-ID>" (including brackets) with your machine's API key
+      # ID
       api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)

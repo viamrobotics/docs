@@ -3,7 +3,6 @@ title: Model
 id: model
 full_link:
 short_description: A particular implementation of a resource. For example, UR5e is a model of the arm component subtype.
-aka:
 ---
 
 A particular implementation of a {{< glossary_tooltip term_id="resource" text="resource" >}} {{< glossary_tooltip term_id="subtype" text="subtype" >}} that implements its [API](/build/program/apis/).
@@ -17,4 +16,4 @@ Models are either included with [`viam-server`](/get-started/installation/), pro
 All models are uniquely namespaced as colon-delimited-triplets.
 Built-in model names have the form `rdk:builtin:name`.
 Modular resource model names have the form `namespace:repo-name:name`.
-See [Naming your model](/registry/upload/#naming-your-model-namespacerepo-namename) for more information.
+See [Naming your model](/registry/#naming-your-model-namespacerepo-namename) for more information.

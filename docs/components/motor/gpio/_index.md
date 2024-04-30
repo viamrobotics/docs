@@ -7,6 +7,7 @@ description: "Configure brushed or brushless DC motors."
 images: ["/icons/components/motor.svg"]
 aliases:
   - "/components/motor/gpio/"
+no_list: true
 # SMEs: Rand, James
 ---
 
@@ -15,16 +16,16 @@ The `gpio` model supports [DC motors](https://en.wikipedia.org/wiki/DC_motor) (b
 [Encoders](/components/encoder/) can be configured to work with `gpio` motors.
 Find more information in the [encoded motor documentation](/components/motor/gpio/encoded-motor/).
 
-To configure a DC motor as a component of your robot, first configure the [board](/components/board/) to which the motor driver is wired.
+To configure a DC motor as a component of your machine, first configure the [board](/components/board/) to which the motor driver is wired.
 Then add your motor:
 
 {{< tabs name="gpio-config">}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `motor` type, then select the `gpio` model.
-Enter a name for your motor and click **Create**.
+Enter a name or use the suggested name for your motor and click **Create**.
 
 ![G P I O motor config in the builder UI with the In1 and In2 pins configured and the PWM pin field left blank.](/components/motor/gpio-config-ui.png)
 
@@ -119,8 +120,8 @@ The following attributes are available for `gpio` motors:
 | `board` | string | **Required** | `name` of the [board](/components/board/) to which the motor driver is wired. |
 | `max_rpm` | int | **Required** | This is an estimate of the maximum RPM the motor will run at with full power under no load. The [`GoFor`](/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed. ***Not required** or available for [encoded](/components/motor/gpio/encoded-motor/) `gpio` motors.* |
 | `pins` | object | **Required** | A structure that holds pin configuration information; [see below](#pins). |
-| `min_power_pct` | number | Optional | Sets a limit on minimum power percentage sent to the motor. <br> Default: `0.0` |
-| `max_power_pct` | number | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
+| `min_power_pct` | float | Optional | Sets a limit on minimum power percentage sent to the motor. <br> Default: `0.0` |
+| `max_power_pct` | float | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
 | `pwm_freq` | int | Optional | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range. <br> Default: `800` |
 | `dir_flip` | bool | Optional | Flips the direction of "forward" versus "backward" rotation. Default: `false` |
 | `encoder` | string | Optional | The name of an encoder attached to this motor. See [encoded motor](/components/motor/gpio/encoded-motor/). |
@@ -190,6 +191,6 @@ Only the output side of the driver board is different in that more wires connect
 
 ![An example wiring diagram showing a Raspberry Pi, 12V power supply, RioRand 400W brushless DC motor controller, and 3 phase 12V brushless DC motor. The motor has three power wires (one for each phase) and five sensor wires (two to power the sensor and one for each of the three Hall effect sensors).](/components/motor/motor-brushless-dc-wiring.png)
 
-{{< readfile "/static/include/components/test-control/motor-control.md" >}}
+## Test the motor
 
-## Next steps
+{{< readfile "/static/include/components/test-control/motor-control.md" >}}

@@ -1,14 +1,20 @@
 ---
 title: "Export Data"
 linkTitle: "Export Data"
-description: "Export data from the Viam app to your local computer using the Viam CLI."
-weight: 40
+description: "Download data from the Viam app to your local computer using the data client API or the Viam CLI."
+weight: 45
 type: "docs"
 tags: ["data management", "cloud", "sync"]
+icon: true
+images: ["/services/icons/data-capture.svg"]
 aliases:
   - /manage/data/export/
 # SME: Alexa Greenberg
 ---
+
+Download machine data to your computer with the Viam CLI or data client API.
+
+## Export data with the Viam CLI
 
 To export your synced data using the Viam CLI, first [install the Viam CLI](/fleet/cli/#install) and [authenticate](/fleet/cli/#authenticate) to Viam.
 
@@ -37,6 +43,16 @@ Then, to export data from the data management service in the cloud:
 
 You can see more information about exporting data in the [Viam CLI documentation](/fleet/cli/#data).
 
-## Next Steps
+## Manage data with the data client API
+
+A set of methods using the data client API for managing data, including export, batch delete, tag, and upload functions, are provided in the [Python SDK](https://python.viam.dev).
+
+The following methods are supported by the data client API:
+
+{{< readfile "/static/include/services/apis/data-client.md" >}}
+
+Click on the method name for more information.
+
+## Next steps
 
 For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).

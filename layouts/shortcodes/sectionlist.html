@@ -7,7 +7,7 @@
         <a href="{{ .Permalink }}" title="{{.Title}}">
           <div>
             {{ if .Params.icon }}
-              {{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "45x45" "alt" (.Params.linkTitle) "declaredimensions" "true" "style" "") }}
+              {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "45x45" "alt" (.Params.linkTitle) "declaredimensions" "true" "style" "") }}
             {{ end }}
             <p>{{ .LinkTitle }}</p>
           </div>

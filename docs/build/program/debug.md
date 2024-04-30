@@ -5,17 +5,17 @@ weight: 60
 type: "docs"
 description: "Read and filter logs to fix issues while programming with Viam's SDKs."
 images: ["/services/icons/sdk.svg"]
-tags: ["client", "sdk", "logs", "debug", "robot", "viam-server"]
+tags: ["client", "sdk", "logs", "debug", "machine", "viam-server"]
 aliases:
   - /program/debug/
 ---
 
-Read and filter a robot's logs to view updates from your robot's `viam-server` instance and troubleshoot issues with your program.
+Read and filter a machine's logs to view updates from your machine's `viam-server` instance and troubleshoot issues with your program.
 
 {{< tabs >}}
 {{% tab name="App UI" %}}
 
-Navigate to the **Logs** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **LOGS** tab of your machine's page in [the Viam app](https://app.viam.com).
 
 Use the **Filter** input to filter the logs by key terms, and select from the **Levels** dropdown menu to filter the logs by warning level:
 

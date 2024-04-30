@@ -8,15 +8,16 @@ aliases:
   - "/services/motion/constraints/"
 ---
 
-You can constrain the motion of your robot using the motion service's built-in constraint options.
+You can constrain the motion of your machine using the motion service's built-in constraint options.
 Constraints are passed as arguments to the [`Move`](../#move) method.
 
 The following constraints are available:
 
-- [Linear Constraint](#linear-constraint)
-- [Orientation Constraint](#orientation-constraint)
+- [Linear constraint](#linear-constraint)
+- [Orientation constraint](#orientation-constraint)
+- [Next steps](#next-steps)
 
-## Linear Constraint
+## Linear constraint
 
 The linear constraint (`{"motion_profile": "linear"}`) forces the path taken by `component_name` to follow an exact linear path from the start to the goal.
 If the start and goal orientations are different, the orientation along the path will follow the quaternion [Slerp (Spherical Linear Interpolation)](https://en.wikipedia.org/wiki/Slerp) of the orientation from start to goal.
@@ -72,7 +73,7 @@ You can find more information in the [Go SDK Docs](https://pkg.go.dev/go.viam.co
 {{% /tab %}}
 {{< /tabs >}}
 
-## Orientation Constraint
+## Orientation constraint
 
 The orientation constraint (`{"motion_profile": "orientation"}`) places a restriction on the orientation change during a motion, such that the orientation during the motion does not deviate from the [Slerp](https://en.wikipedia.org/wiki/Slerp) between start and goal by more than a set amount.
 This is similar to the "orient_tolerance" option in the linear profile, but without any path restrictions.

@@ -4,9 +4,8 @@ linkTitle: "Microcontroller Development Setup"
 weight: 50
 no_list: true
 type: docs
-image: "get-started/installation/thumbnails/esp32-espressif.png"
-imageAlt: "E S P 32 - espressif"
 images: ["/get-started/installation/thumbnails/esp32-espressif.png"]
+imageAlt: "E S P 32 - espressif"
 description: "Set up the Espressif ESP32 for development with the micro-RDK."
 # SMEs: Nicolas M., Gautham V., Andrew M.
 aliases:
@@ -15,9 +14,9 @@ aliases:
 
 {{% readfile "/static/include/micro-rdk.md" %}}
 
-## Get Started
+## Get started
 
-Follow these steps to install and build the micro-rdk on your ESP32 for development:
+Follow these steps to install and build the micro-RDK on your ESP32 for development:
 
 1. Install the [required software](#software-requirements)
 2. [Set up your development environment](#set-up-your-development-environment) manually or with Viam's Canon CLI utility _(recommended)_
@@ -25,12 +24,12 @@ Follow these steps to install and build the micro-rdk on your ESP32 for developm
 
 {{% readfile "/static/include/micro-rdk-hardware.md" %}}
 
-### Software Requirements
+### Software requirements
 
 The micro-RDK is written in Rust.
 To be able to develop the micro-RDK on macOS and Linux systems, you must install the following software on your development machine:
 
-#### Install Dependencies
+#### Install dependencies
 
 {{< tabs >}}
 {{% tab name="Linux" %}}
@@ -149,7 +148,7 @@ brew install cmake ninja dfu-util
 {{% /tab %}}
 {{% /tabs %}}
 
-#### Install and Activate the ESP-IDF
+#### Install and activate the ESP-IDF
 
 Clone Viam's fork of the ESP-IDF, the development framework for Espressif SoCs (System-on-Chips) supported on Windows, Linux and macOS:
 
@@ -177,7 +176,7 @@ To avoid conflicts with other toolchains, adding this command to your `.bashrc` 
 Instead, save this command to run in any future terminal session where you need to activate the ESP-IDF development framework.
 {{< /alert >}}
 
-#### Install the Rust ESP Toolchain and Activate the ESP-RS Virtual Environment
+#### Install the Rust ESP toolchain and activate the ESP-RS virtual environment
 
 First, install the following tools with `cargo`:
 
@@ -215,16 +214,16 @@ Instead, save this command to run in any future terminal session where you need 
 {{% /tab %}}
 {{% /tabs %}}
 
-## Install the Micro-RDK
+## Install the micro-RDK
 
-### Create a New Robot
+### Create a new machine
 
-Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/fleet/machines/#add-a-new-robot) in your desired location.
+Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/fleet/machines/#add-a-new-machine) in your desired location.
 
-Click on the name of the robot to go to the robot's page.
-Then, navigate to the **Config** tab.
+Click on the name of the machine to go to the machine's page.
+Then, navigate to the **CONFIGURE** tab.
 
-### Configure your robot with an ESP32
+### Configure your machine with an ESP32
 
 [Client API](/build/program/apis/) usage with the micro-RDK is currently limited to the following supported {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
@@ -235,32 +234,33 @@ Then, navigate to the **Config** tab.
 - [Motor](/build/micro-rdk/motor/)
 
 See [micro-RDK](/build/micro-rdk/) to get a list of supported models and instructions on how to configure them.
-Follow [this guide](/build/micro-rdk/board/esp32/) to configure an `esp32` board on your robot.
+Follow [this guide](/build/micro-rdk/board/esp32/) to configure an `esp32` board on your machine.
 
-### Generate a New Project from the Micro-RDK Template
+### Generate a new project from the micro-RDK template
 
 [Start Docker](https://docs.docker.com/config/daemon/start/) on your development machine.
 If you haven't already, complete Docker's [Linux post installation steps](https://docs.docker.com/engine/install/linux-postinstall/) to set up Docker to run whenever your system boots up.
 
-Use [the Micro-RDK template](https://github.com/viamrobotics/micro-rdk-robot-template.git) to create a new Micro-RDK project to upload to your ESP32 by running:
+Use [the Micro-RDK template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project) to create a new Micro-RDK project to upload to your ESP32 by running:
 
 ```sh { class="command-line" data-prompt="$"}
-cargo generate --git https://github.com/viamrobotics/micro-rdk-robot-template.git
+cargo generate --git https://github.com/viamrobotics/micro-rdk.git
 ```
 
-You will be prompted to paste your robot's JSON configuration into the terminal.
+Select `templates/project` when prompted.
+
+You will be prompted to paste your machine's `viam-server` app JSON configuration into the terminal.
 To obtain this:
 
-- Navigate to [your new robot's](#create-a-new-robot) page on [the Viam app](https://app.viam.com).
-- Click on the **Setup** tab.
-  Keep your `Mode` and `Architecture` selections at default.
-- Click the **Copy viam-server config** button on the right side of the **Setup** tab.
-  The micro-RDK needs this JSON file, which contains your robot part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
-- Paste the `viam-server` config into your terminal when prompted.
+- Navigate to [your new machine's](#create-a-new-machine) page on [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
+- Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="/build/micro-rdk/part-dropdown.png" resize="x600" style="max-width: 500px" declaredimensions=true alt="The part status dropdown of an offline machine.">}}
+- Click the copy icon underneath **Viam server configuration** to copy the `viam-server` app JSON configuration.
+  The micro-RDK needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+- Paste the `viam-server` app config into your terminal when prompted.
 
 {{% snippet "secret-share.md" %}}
 
-### Upload the Micro-RDK to your ESP32
+### Upload the micro-RDK to your ESP32
 
 Now, upload the project to connect to your ESP32 and remotely control it live on [the Viam app](https://app.viam.com):
 
@@ -289,7 +289,7 @@ If successful, you will retain a serial connection to the board until you press 
 To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
 While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
-Navigate to your new robot's page on [the Viam app](https://app.viam.com).
+Navigate to your new machine's page on [the Viam app](https://app.viam.com).
 If successful, **Live** should be displayed underneath **Last online**.
 
 ### Troubleshooting

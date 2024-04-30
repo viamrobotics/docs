@@ -5,25 +5,24 @@ weight: 10
 type: "docs"
 description: "Configure a fake servo."
 tags: ["servo", "components"]
-icon: "/icons/components/servo.svg"
+icon: true
+images: ["/icons/components/servo.svg"]
 aliases:
   - "/components/servo/fake/"
 # SME: Rand
 ---
 
-You can use a `fake` servo to test implementing a servo component on your robot without any physical hardware.
-
-Configure a `fake` servo as follows:
+Configure a `fake` servo to test implementing a servo component on your machine without any physical hardware:
 
 {{< tabs name="Configure a Fake Servo" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `servo` type, then select the `fake` model.
-Enter a name for your servo and click **Create**.
+Enter a name or use the suggested name for your servo and click **Create**.
 
-![An example configuration for a fake servo in the Viam app Config Builder.](/components/servo/fake-servo-ui-config.png)
+{{< imgproc src="/components/servo/fake-servo-ui-config.png" alt="An example configuration for a fake servo in the Viam app Config Builder." resize="1200x" style="width:650px" >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

@@ -15,14 +15,16 @@ aliases:
 A base is the moving platform that the other parts of a mobile robot attach to.
 For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see the [Base Component](/components/base/).
 
-## Supported Models
+## Supported models
 
 For configuration information, click on the supported base model name:
 
 <!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
-| [`esp32_wheeled_base`](esp32_wheeled_base/) | Mobile robot with two wheels |
+| [`two_wheeled_base`](two_wheeled_base/) | Mobile robot with two wheels |
+
+{{% readfile "/static/include/micro-create-your-own.md" %}}
 
 ## API
 

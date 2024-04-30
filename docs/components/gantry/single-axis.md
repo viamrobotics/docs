@@ -12,46 +12,20 @@ aliases:
 # SME: Rand, Martha
 ---
 
-Configure a `single-axis` gantry to integrate a single-axis gantry into your robot.
+Configure a `single-axis` gantry to integrate a single-axis gantry into your machine.
 Before configuring the gantry, configure any [motor components](/components/motor/) that are part of the gantry.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `gantry` type, then select the `single-axis` model.
-Enter a name for your sensor and click **Create**.
+Enter a name or use the suggested name for your sensor and click **Create**.
 
 ![Creation of a single-axis gantry component in the Viam app config builder.](/components/gantry/single-axis-ui-config.png)
 
-Copy and paste the following attribute template into your gantry's **Attributes** box.
-Then remove and fill in the attributes as applicable to your gantry, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "motor": "<your-motor-name>",
-  "length_mm": <int>,
-  "mm_per_rev": <int>
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "motor": "my-motor",
-  "length_mm": 98,
-  "mm_per_rev": 20
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Fill in the attributes as applicable to your gantry, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

@@ -6,7 +6,8 @@ weight: 80
 type: "docs"
 description: "A hobby servo is a special type of small motor whose position you can precisely control."
 tags: ["servo", "components"]
-icon: "/icons/components/servo.svg"
+icon: true
+images: ["/icons/components/servo.svg"]
 no_list: true
 modulescript: false
 aliases:
@@ -25,14 +26,14 @@ The following shows an example wiring diagram for a hobby servo wired to a [`pi`
 The colors of the servo wires in this diagram may not match your servo.
 Refer to your servo's data sheet for wiring specifications.
 
-Most robots with a servo need at least the following hardware:
+Most machines with a servo need at least the following hardware:
 
 - A [board component](/components/board/) that can run `viam-server`
 - A servo
 - A power supply for the board
 - A power supply for the servo
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/mobility/frame-system/" >}}
@@ -48,11 +49,9 @@ Check your device's data sheet and configure that type of servo as an [encoded m
 
 {{% /alert %}}
 
-## Supported Models
+## Supported models
 
 To use your servo with Viam, check whether one of the following [built-in models](#built-in-models) supports your servo.
-
-{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Built-in models
 
@@ -65,23 +64,23 @@ For configuration information, click on the model name:
 | [`gpio`](gpio/) | A hobby servo wired to any model of [board](/components/board/#supported-models) besides `pi`. |
 | [`pi`](pi/) | A hobby servo wired to a [Raspberry Pi board](/components/board/pi/). |
 
-<!-- ### Modular Resources
+<!-- ### Modular resources
 
 {{<modular-resources api="rdk:component:servo" type="servo">}}
 -->
 
-If none of these models fit your use case, you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it.
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ## Control your servo with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Then control your machine programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have a servo called `"my_servo"` configured as a component of your robot.
+These examples assume you have a servo called `"my_servo"` configured as a component of your machine.
 If your servo has a different name, change the `name` in the code.
 
 Be sure to import the servo package for the SDK you are using:
@@ -466,10 +465,10 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< snippet "social.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/tutorials/projects/guardian" %}}
-{{% card link="/tutorials/control/yahboom-rover" %}}
+{{% card link="/tutorials/configure/configure-rover" %}}
 {{% card link="/tutorials/projects/integrating-viam-with-openai" %}}
 {{< /cards >}}

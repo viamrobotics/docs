@@ -7,7 +7,7 @@ type: "docs"
 description: "A camera captures 2D or 3D images and sends them to the computer controlling the machine."
 no_list: true
 tags: ["camera", "components"]
-icon: "/icons/components/camera.svg"
+icon: true
 images: ["/icons/components/camera.svg"]
 modulescript: true
 aliases:
@@ -33,21 +33,19 @@ You can use different models to:
 - Combine streams from multiple cameras into one.
 - Transform and process images.
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/data/" >}}
 {{< relatedcard link="/ml/vision/" >}}
 {{< relatedcard link="/mobility/frame-system/" >}}
 {{< relatedcard link="/mobility/slam/" >}}
-{{< relatedcard link="/ml/deploy/" >}}
+{{< relatedcard link="/ml/deploy/" alt_title="Machine Learning" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your camera with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your camera.
-
-{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Built-in models
 
@@ -60,31 +58,28 @@ For configuration information, click on the model name:
 | [`image_file`](image-file/) | Gets color and depth images frames from a file path. |
 | [`velodyne`](velodyne/) | Uses velodyne lidar. |
 | [`webcam`](webcam/) | A standard camera that streams camera data. |
-| [`rtsp`](rtsp/) | A streaming camera with an MJPEG track. |
 | [`fake`](fake/) | A camera model for testing. |
-| [`single_stream`](single-stream/) | A HTTP client camera that streams image data from an HTTP endpoint. |
-| [`dual_stream`](dual-stream/) | A HTTP client camera that combines the streams of two camera servers to create colorful point clouds. |
 | [`join_color_depth`](join-color-depth/) | Joins the outputs of a color and depth camera already registered in your config to create a third "camera" that outputs the combined and aligned image. |
-| [`align_color_depth_extrinsics`](align-color-depth-extrinsics/) | Uses the intrinsics of the color and depth camera, as well as the extrinsic pose between them, to align two images. |
-| [`align_color_depth_homography`](align-color-depth-homography/) | Uses a homography matrix to align the color and depth images. |
 | [`join_pointclouds`](join-pointclouds/) | Combines the point clouds from multiple camera sources and projects them to be from the point of view of target_frame. |
 | [`transform`](transform/) | A pipeline for applying transformations to an input image source. |
 | [`ultrasonic`](ultrasonic/) | The [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor. |
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:camera" type="camera">}}
 
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
 ## Control your camera with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Then control your machine programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have a camera called `"my_camera"` configured as a component of your robot.
+These examples assume you have a camera called `"my_camera"` configured as a component of your machine.
 If your camera has a different name, change the `name` in the code.
 
 Be sure to import the camera package for the SDK you are using:
@@ -196,8 +191,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### GetImages
 
+{{% alert title="Usage" color="note" %}}
+Intended specifically for use with cameras that support simultaneous depth and color image streams, like the [Intel RealSense](https://app.viam.com/module/viam/realsense) or [Luxonis OAK cameras](https://app.viam.com/module/viam/oak).
+If your camera does not have multiple imagers, this method will work without capturing multiple images simultaneously.
+
+You can use the [`rgb-d-overlay` module](https://app.viam.com/module/viam/rgb-d-overlay) to view and compare the camera streams returned by this method.
+See the [module readme](https://github.com/viam-labs/rgb-d-overlay) for further instructions.
+{{% /alert %}}
+
 Get simultaneous images from different imagers, along with associated metadata.
-The multiple images returned from GetImages do not represent a time series of images.
+The multiple images returned from `GetImages()` do not represent a time series of images.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -508,7 +511,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 {{% /tab %}}
 {{< /tabs >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/ml/vision" %}}

@@ -6,7 +6,8 @@ weight: 70
 type: "docs"
 description: "A motor is a rotating machine that transforms electrical energy into mechanical energy."
 tags: ["motor", "components"]
-icon: "/icons/components/motor.svg"
+icon: true
+images: ["/icons/components/motor.svg"]
 no_list: true
 modulescript: true
 aliases:
@@ -18,7 +19,7 @@ Electric motors are machines that convert electricity into rotary motion.
 They are the most common form of [actuator](https://en.wikipedia.org/wiki/Actuator) in robotics.
 The _motor_ component type natively supports brushed DC motors, brushless DC motors, and stepper motors controlled by a variety of [motor drivers](https://www.wellpcb.com/what-is-motor-driver.html).
 
-Most robots with a motor need at least the following hardware:
+Most machines with a motor need at least the following hardware:
 
 - The motor itself.
 - A compatible motor driver.
@@ -29,7 +30,7 @@ Most robots with a motor need at least the following hardware:
 
 [^dmcboard]: The `DMC4000` model does not require a board.
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/mobility/frame-system/" >}}
@@ -38,11 +39,9 @@ Most robots with a motor need at least the following hardware:
 {{< relatedcard link="/mobility/slam/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your motor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your motor.
-
-{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Built-in models
 
@@ -59,9 +58,11 @@ Model | Description <a name="model-table"></a>
 [`roboclaw`](./roboclaw/) | [Standard brushed DC motor](https://en.wikipedia.org/wiki/DC_motor) driven by [Basicmicro's](https://www.basicmicro.com/) [RoboClaw](https://www.basicmicro.com/RoboClaw-2x30A-Motor-Controller_p_9.html) motor controller
 [`fake`](./fake/) | Used to test code without hardware
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:motor" type="motor">}}
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Micro-RDK
 
@@ -69,14 +70,14 @@ If you are using the micro-RDK, navigate to [Micro-RDK Motor](/build/micro-rdk/m
 
 ## Control your motor with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Then control your machine programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have a motor called `"my_motor"` configured as a component of your robot.
+These examples assume you have a motor called `"my_motor"` configured as a component of your machine.
 If your motor has a different name, change the `name` in the code.
 
 Be sure to import the motor package for the SDK you are using:
@@ -748,11 +749,10 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/tutorials/get-started/confetti-bot/" %}}
 {{% card link="/tutorials/get-started/lazy-susan/" %}}
-{{% card link="/tutorials/control/yahboom-rover" %}}
-{{% card link="/tutorials/configure/scuttlebot" %}}
+{{% card link="/tutorials/configure/configure-rover" %}}
 {{< /cards >}}

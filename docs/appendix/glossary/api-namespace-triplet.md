@@ -3,7 +3,6 @@ title: API Namespace Triplet
 id: api-namespace-triplet
 full_link:
 short_description: namespace:type:subtype
-aka:
 ---
 
 Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} {{< glossary_tooltip term_id="subtype" text="subtype" >}} exposes an [application programming interface (API)](https://en.wikipedia.org/wiki/API) to describe how you can interact with that resource.

@@ -13,11 +13,11 @@ aliases:
 
 The `customlinux` board model supports boards like the [Mediatek Genio 500 Pumpkin](https://ologicinc.com/portfolio/mediateki500/) that run Linux operating systems and are not supported by other built-in Viam models.
 
-To integrate a custom Linux board into your robot:
+To integrate a custom Linux board into your machine:
 
 1. [Install `viam-server`](#install-viam-server) on your machine.
 1. [Create a board definitions file](#create-a-board-definitions-file), specifying the mapping between your board's GPIO pins and connected hardware.
-1. [Configure a `customlinux` board](#configure-your-board) on your robot, specifying the path to the definitions file in the board configuration.
+1. [Configure a `customlinux` board](#configure-your-board) on your machine, specifying the path to the definitions file in the board configuration.
 
 ## Install `viam-server`
 
@@ -248,18 +248,14 @@ The following parameters are available for each pin object:
 | `pwm_chip_sysfs_dir` | string | Optional | Uniquely specifies which PWM device within [sysfs](https://en.wikipedia.org/wiki/Sysfs) this pin is connected to. See [PWM info tips](#tips-for-finding-pwm-information) below. <br> Example: `3290000.pwm`. |
 | `pwm_id` | integer | Optional | The line number on the PWM chip. See [PWM info tips](#tips-for-finding-pwm-information) below. <br> Example: `0`. |
 
-{{% alert title="Tip" color="tip" %}}
+{{% alert title="Note" color="note" %}}
 
 `pwm_chip_sysfs_dir` and `pwm_id` only apply to pins with hardware PWM supported and enabled.
 If your board supports hardware PWM, you will need to enable it if it is not enabled by default.
 This process depends on your specific board.
 
-{{% /alert %}}
-
-{{% alert title="Info" color="info" %}}
-
-The current version of `viam-server` creates PWM functionality with software.
-The implementation of hardware-based PWM for custom Linux boards is planned for release in the future, so we recommend that you add PWM information to your board now so that you do not need to update your config later.
+In the current version of `viam-server`, each pin is dedicated to either GPIO or hardware PWM.
+If a pin is designated as a hardware PWM pin, you cannot use it as a GPIO pin.
 
 {{% /alert %}}
 
@@ -336,63 +332,20 @@ For example, if the <file>npwm</file> contains `"4"`, then the valid `pwm_id` va
 Determining which specific chip and line are attached to each pin depends on the board.
 Try looking at your board's data sheet and cross-referencing with the output from the commands above.
 
-### Upload your board definitions file
-
-Once you have created your board definitions file, you can choose to upload it to the Viam app using the [Viam CLI](/fleet/cli/).
-
-Uploading your definitions file allows you to store it centrally on the Viam app, and to deploy it your machines without needing to create it again for each one.
-
-For example:
-
-- The following command uploads a board definitions file named `my-board-def-file.json` that contains pin mappings for a configured [board](/components/board/) named `my-board`:
-
-  ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-  viam board upload --name='my-board' --organization='abcdef12-abcd-abcd-abcd-abcdef123456' --version=1.0.0 my-board-def-file.json
-  ```
-
-- The following command downloads a previously-uploaded board definitions file stored as `my-board` from the Viam app:
-
-  ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-  viam board download --name='my-board' --organization='abcdef12-abcd-abcd-abcd-abcdef123456' --version=1.0.0
-  ```
-
-For more information, see the [`viam board` CLI command](/fleet/cli/#board).
-
 ## Configure your board
 
 {{< tabs name="Configure a customlinux board" >}}
+
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `board` type, then select the `customlinux` model.
-Enter a name for your `customlinux` board and click **Create**.
+Enter a name or use the suggested name for your `customlinux` board and click **Create**.
 
 ![An example configuration for a customlinux board in the Viam app Config Builder.](/components/board/customlinux-ui-config.png)
 
-Copy and paste the following attribute template into your board's **Attributes** box.
-Then edit the file path to use your [board definitions file](#create-a-board-definitions-file).
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "board_defs_file_path": "<file_path>"
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "board_defs_file_path": "/home/root/board.json"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Edit the file path to use your [board definitions file](#create-a-board-definitions-file).
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

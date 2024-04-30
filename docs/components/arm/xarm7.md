@@ -3,7 +3,7 @@ title: "Configure an xArm7 Arm"
 linkTitle: "xArm7"
 weight: 34
 type: "docs"
-description: "Configure a UFACTORY xArm 7 for your robot."
+description: "Configure a UFACTORY xArm 7 for your machine."
 images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 aliases:
@@ -11,15 +11,15 @@ aliases:
 # SMEs: Bucket, Motion
 ---
 
-Configure an `xArm7` arm to integrate a [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) into your robot:
+Configure an `xArm7` arm to integrate a [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) into your machine:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `arm` type, then select the `xArm7` model.
-Enter a name for your arm and click **Create**.
+Enter a name or use the suggested name for your arm and click **Create**.
 
 ![Web UI configuration panel for an arm of model xArm6 in the Viam app, with Attributes & Depends On dropdowns and the option to add a frame.](/components/arm/xArm7-ui-config.png)
 

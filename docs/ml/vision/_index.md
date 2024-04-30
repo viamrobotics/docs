@@ -4,12 +4,17 @@ linkTitle: "Computer Vision"
 weight: 90
 type: "docs"
 description: "The vision service enables your machine to use its on-board cameras to intelligently see and interpret the world around it."
-icon: "/services/icons/vision.svg"
+icon: true
+images: ["/services/icons/vision.svg"]
 tags: ["vision", "computer vision", "CV", "services"]
 no_list: true
-modulescript: false
+modulescript: true
 aliases:
   - "/services/vision/"
+  - "/ml/vision/detection/"
+  - "/ml/vision/classification/"
+  - "/ml/vision/segmentation/"
+  - "/services/vision/segmentation/"
 # SMEs: Bijan, Khari
 ---
 
@@ -18,23 +23,97 @@ While the camera component lets you access what your machine's camera sees, the 
 
 Currently, the vision service supports the following kinds of operations:
 
-{{< cards >}}
-{{% card link="/ml/vision/detection/" %}}
-{{% card link="/ml/vision/classification/" %}}
-{{% card link="/ml/vision/segmentation" %}}
-{{< /cards >}}
+- [Detections](#detections)
+- [Classifications](#classifications)
+- [Segmentations](#segmentations)
 
-<!-- TODO: Change this page to use model names as subpages -->
-<!-- ### Modular Resources
+## Detections
+
+<div class="td-max-width-on-larger-screens">
+  <div class="alignright" >
+    {{< imgproc alt="A white dog with a bounding box around it labeled 'Dog: 0.71'" src="/ml/vision/dog-detector.png" resize="300x" declaredimensions=true >}}
+  </div>
+</div>
+
+_2D Object Detection_ is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct "objects" of interest in the scene.
+Any camera that can return 2D images can use 2D object detection.
+
+You can use different types of detectors, both based on heuristics and machine learning, for any object you may need to identify.
+
+The returned detections consist of the bounding box around the identified object, as well as its label and confidence score:
+
+- `x_min`, `y_min`, `x_max`, `y_max` (int): specify the bounding box around the object.
+- `class_name` (string): specifies the label of the found object.
+- `confidence` (float): specifies the confidence of the assigned label.
+  Between `0.0` and `1.0`, inclusive.
+
+**Supported API methods:**
+
+- [GetDetections()](#getdetections)
+- [GetDetectionsFromCamera()](#getdetectionsfromcamera)
+
+## Classifications
+
+_2D Image Classification_ is the process of taking a 2D image from a camera and deciding which class label, out of many, best describes the given image.
+Any camera that can return 2D images can use 2D image classification.
+
+The class labels used for classification vary and depend on the machine learning model and how it was trained.
+
+The returned classifications consist of the image's class label and confidence score.
+
+- `class_name` (string): specifies the label of the found object.
+- `confidence` (float): specifies the confidence of the assigned label.
+  Between `0.0` and `1.0`, inclusive.
+
+**Supported API methods:**
+
+- [GetClassifications()](#getclassifications)
+- [GetClassificationsFromCamera()](#getclassificationsfromcamera)
+
+## Segmentations
+
+_3D Object Segmentation_ is the process of separating and returning a list of the identified "objects" from a 3D scene.
+The "objects" are usually a list of point clouds with associated metadata, like the label, the 3D bounding box, and center coordinates of the object.
+
+3D object segmentation is useful for obstacle detection.
+See our guide [Navigate with a Rover Base](/tutorials/services/navigate-with-rover-base/#next-steps-automate-obstacle-detection) for an example of automating obstacle avoidance with 3D object segmentation for obstacle detection.
+
+Any camera that can return 3D pointclouds can use 3D object segmentation.
+
+**Supported API methods:**
+
+- [GetObjectPointClouds()](#getobjectpointclouds)
+
+## Supported models
+
+To use a vision service with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your use case.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
+
+<!-- prettier-ignore -->
+Model | Description <a name="model-table"></a>
+----- | -----------
+[`mlmodel`](./mlmodel/) | A detector or classifier that uses a model available on the machine’s hard drive to draw bounding boxes around objects or returns a class label and confidence score.
+[`color_detector`](./color_detector/) | A heuristic detector that draws boxes around objects according to their hue (does not detect black, gray, and white).
+[`obstacles_pointcloud`](./obstacles_pointcloud/) | A segmenter that identifies well-separated objects above a flat plane.
+[`detector_3d_segmenter`](./detector_3d_segmenter/) | A segmenter that takes 2D bounding boxes from an object detector and projects the pixels in the bounding box to points in 3D space.
+[`obstacles_depth`](./obstacles_depth/) | A segmenter for depth cameras that returns the perceived obstacles as a set of 3-dimensional bounding boxes, each with a Pose as a vector.
+[`obstacles_distance`](./obstacles_distance/) | A segmenter that takes point clouds from a camera input and returns the average single closest point to the camera as a perceived obstacle.
+
+### Modular resources
 
 {{<modular-resources api="rdk:service:vision" type="vision">}}
 
-{{< readfile "/static/include/create-your-own-mr.md" >}}-->
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
-## Used With
+## Used with
 
 {{< cards >}}
-{{< relatedcard link="/ml/" >}}
+{{< relatedcard link="/ml/deploy/" alt_title="Machine Learning" >}}
 {{< /cards >}}
 
 ## API
@@ -45,14 +124,14 @@ Different vision service models support different methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with a [camera](/components/camera/) and a vision service [detector](/ml/vision/detection/), [classifier](/ml/vision/classification/) or [segmenter](/ml/vision/segmentation/), as applicable, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
-Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
+The following code examples assume that you have a machine configured with a [camera](/components/camera/) and a vision service [detector](/ml/vision/#detections), [classifier](/ml/vision/#classifications) or [segmenter](/ml/vision/#segmentations), as applicable, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
+Go to your machine's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 
 ### GetDetections
 
-Get a list of detections from a given image using a configured [detector](./detection/).
+Get a list of detections from a given image using a configured [detector](#detections).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -69,10 +148,10 @@ Get a list of detections from a given image using a configured [detector](./dete
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_detections).
 
 ```python {class="line-numbers linkable-line-numbers" data-line="11"}
-# Grab camera from the robot
+# Grab camera from the machine
 cam1 = Camera.from_robot(robot, "cam1")
 
-# Get the detector you configured on your robot
+# Get the detector you configured on your machine
 my_detector = VisionClient.from_robot(robot, "my_detector")
 
 # Get an image from the camera
@@ -100,14 +179,14 @@ detections = await my_detector.get_detections(raw_img)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="22"}
-// Grab the camera from the robot
+// Grab the camera from the machine
 cameraName := "cam1"
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }
 
-// Grab the detector you configured on your robot
+// Grab the detector you configured on your machine
 visService, err := vision.from_robot(robot=robot, name='my_detector')
 if err != nil {
     logger.Fatalf("Cannot get vision service: %v", err)
@@ -135,7 +214,7 @@ if len(detections) > 0 {
 
 ### GetDetectionsFromCamera
 
-Get a list of detections from the next image from a specified camera using a configured [detector](./detection/).
+Get a list of detections from the next image from a specified camera using a configured [detector](./#detections).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -154,7 +233,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers" data-line="8"}
 camera_name = "cam1"
 
-# Grab the detector you configured on your robot
+# Grab the detector you configured on your machine
 my_detector = VisionClient.from_robot(robot, "my_detector")
 
 # Get detections from the next image from the camera
@@ -178,14 +257,14 @@ detections = await my_detector.get_detections_from_camera(camera_name)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
-// Grab the camera from the robot
+// Grab the camera from the machine
 cameraName := "cam1"
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }
 
-// Grab the detector you configured on your robot
+// Grab the detector you configured on your machine
 visService, err := vision.from_robot(robot=robot, name='my_detector')
 if err != nil {
     logger.Fatalf("Cannot get vision service: %v", err)
@@ -206,7 +285,7 @@ if len(detections) > 0 {
 
 ### GetClassifications
 
-Get a list of classifications from a given image using a configured [classifier](./classification/).
+Get a list of classifications from a given image using a configured [classifier](#classifications).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -225,10 +304,10 @@ Get a list of classifications from a given image using a configured [classifier]
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_classifications).
 
 ```python {class="line-numbers linkable-line-numbers" data-line="11"}
-# Grab camera from the robot
+# Grab camera from the machine
 cam1 = Camera.from_robot(robot, "cam1")
 
-# Get the classifier you configured on your robot
+# Get the classifier you configured on your machine
 my_classifier = VisionClient.from_robot(robot, "my_classifier")
 
 # Get an image from the camera
@@ -258,14 +337,14 @@ classifications = await my_classifier.get_classifications(raw_img, 2)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="22"}
-// Grab the camera from the robot
+// Grab the camera from the machine
 cameraName := "cam1"
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }
 
-// Grab the classifier you configured on your robot
+// Grab the classifier you configured on your machine
 visService, err := vision.from_robot(robot=robot, name='my_classifier')
 if err != nil {
     logger.Fatalf("Cannot get vision service: %v", err)
@@ -293,7 +372,7 @@ if len(classifications) > 0 {
 
 ### GetClassificationsFromCamera
 
-Get a list of classifications from the next image from a specified camera using a configured [classifier](./classification/).
+Get a list of classifications from the next image from a specified camera using a configured [classifier](#classifications).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -314,7 +393,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers" data-line="8"}
 camera_name = "cam1"
 
-# Grab the classifier you configured on your robot
+# Grab the classifier you configured on your machine
 my_classifier = VisionClient.from_robot(robot, "my_classifier")
 
 # Get the 2 classifications with the highest confidence scores from the next
@@ -342,14 +421,14 @@ classifications = await my_classifier.get_classifications_from_camera(
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
-// Grab the camera from the robot
+// Grab the camera from the machine
 cameraName := "cam1"
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }
 
-// Grab the classifier you configured on your robot
+// Grab the classifier you configured on your machine
 visService, err := vision.from_robot(robot=robot, name='my_classifier')
 if err != nil {
     logger.Fatalf("Cannot get vision service: %v", err)
@@ -370,7 +449,7 @@ if len(classifications) > 0 {
 
 ### GetObjectPointClouds
 
-Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using a specified [segmenter](./segmentation/)).
+Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using a specified [segmenter](#segmentations)).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -387,10 +466,10 @@ Get a list of 3D point cloud objects and associated metadata in the latest pictu
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_object_point_clouds).
 
 ```python {class="line-numbers linkable-line-numbers" data-line="8"}
-# Grab the 3D camera from the robot
+# Grab the 3D camera from the machine
 cam1 = Camera.from_robot(robot, "cam1")
 
-# Grab the object segmenter you configured on your robot
+# Grab the object segmenter you configured on your machine
 my_segmenter = VisionClient.from_robot(robot, "my_segmenter")
 
 # Get the objects from the camera output
@@ -414,14 +493,14 @@ objects = await my_segmenter.get_object_point_clouds(cam1)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
-// Grab the camera from the robot
+// Grab the camera from the machine
 cameraName := "cam1"
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }
 
-// Grab the segmenter you configured on your robot
+// Grab the segmenter you configured on your machine
 visService, err := vision.from_robot(robot=robot, name='my_segmenter')
 if err != nil {
     logger.Fatalf("Cannot get vision service: %v", err)
@@ -440,7 +519,7 @@ if len(objects) > 0 {
 {{% /tab %}}
 {{< /tabs >}}
 
-## DoCommand
+### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the service API.
 For built-in service models, any model-specific commands available are covered with each model's documentation.

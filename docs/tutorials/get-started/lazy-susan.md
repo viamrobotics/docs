@@ -3,8 +3,8 @@ title: "Create a Lazy Susan Using a DC Motor"
 linkTitle: "Lazy Susan"
 type: "docs"
 description: "Wire a DC motor to a board, attach a plate on top, and control the motor to rotate the plate."
-webmSrc: "/tutorials/lazy-susan/preview.webm"
-mp4Src: "/tutorials/lazy-susan/preview.mp4"
+videos:
+  ["/tutorials/lazy-susan/preview.webm", "/tutorials/lazy-susan/preview.mp4"]
 videoAlt: "A circular wooden board slowly spinning clockwise with 3 bowls on top filled with snacks."
 images: ["/tutorials/lazy-susan/preview.gif"]
 tags: ["motor", "python"]
@@ -55,7 +55,7 @@ You will also need the following tools:
 - Double-sided tape (optional, but recommended)
 - Wire cutters/scissors
 
-## Hardware Setup
+## Hardware setup
 
 A brushed DC motor is a motor that converts electrical current into mechanical energy.
 In a brushed DC motor, the rotor spins 180-degrees when an electric current is applied.
@@ -66,7 +66,7 @@ The brushed motor we are using has a high starting torque which means it can rea
 A motor driver is a device that takes signals from your board and sends power to a motor based on those signals.
 Motor drivers allow you to start and stop the motor, select clockwise or counterclockwise rotation, and speed it up or slow it down.
 
-A {{< glossary_tooltip term_id="board" text="board" >}} is the hardware that sends digital signals to control your robot.
+A {{< glossary_tooltip term_id="board" text="board" >}} is the hardware that sends digital signals to control your machine.
 Your board allows you to send PWM (pulse width modulation) signals to the motor driver to control the motor speed.
 PWM controls motor speed by sending electrical current in pulses - the more frequently pulses are sent in a given time period, the faster the motor will move.
 The board sends PWM signals to the motor driver through GPIO (general-purpose input/output) pins, which are digital pins that the board provides to allow you to flexibly communicate with various devices.
@@ -86,15 +86,12 @@ The Raspberry Pi is powered by its own 5V power cable.
 Connect the flange coupler to your motor, and use the M3 screws and screwdriver to fix the flange coupler to your circular board or plate.
 Turn on the Raspberry Pi and move on to setting up your software.
 
-### Software Setup
+### Software setup
 
 If you have not already done so, follow the [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/) to prepare your Pi to connect your robot to the Viam app.
 Once your Pi is ready, `ssh` into it from your computer.
 
-In your web browser, go to [the Viam app](https://app.viam.com) and create a new robot instance.
-Name your robot whatever you like and head to the **Setup** tab.
-On your Pi, follow the steps there to download the Viam app config and download and install `viam-server`.
-Wait a moment until your robot connects to the Viam app.
+{{% snippet "setup.md" %}}
 
 ## Configure your robot
 
@@ -161,7 +158,7 @@ Click the **Save Config** button.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your board and motor:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your board and motor:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

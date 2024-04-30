@@ -6,7 +6,7 @@ weight: 50
 type: "docs"
 description: "A special type of sensor that measures rotation of a motor or joint."
 tags: ["encoder", "components"]
-icon: "/icons/components/encoder.svg"
+icon: true
 images: ["/icons/components/encoder.svg"]
 no_list: true
 modulescript: false
@@ -28,13 +28,13 @@ The encoder component supports:
 - Single phase or single pin "pulse output" encoders, which measure the position relative to the starting position but not the direction.
 - Absolute encoders, which provide the absolute position of a rotating shaft, without requiring a reference point.
 
-Most robots with an encoder need at least the following hardware:
+Most machines with an encoder need at least the following hardware:
 
 - A [board component](/components/board/) that can run a `viam-server` instance.
   For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
-- Some sort of rotary robot part (like a motor, joint or dial) for which you want to measure movement.
+- Some sort of rotary machine part (like a motor, joint or dial) for which you want to measure movement.
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/mobility/motion/" >}}
@@ -43,11 +43,9 @@ Most robots with an encoder need at least the following hardware:
 {{< relatedcard link="/mobility/frame-system/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your encoder with Viam, check whether one of the following [built-in models](#built-in-models) supports your encoder.
-
-{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Built-in models
 
@@ -62,9 +60,11 @@ For configuration information, click on the model name:
 | [`single`](single/) | A single pin "pulse output" encoder which returns its relative position but no direction. |
 
 <!-- No encoders yet -->
-<!-- ### Modular Resources
+<!-- ### Modular resources
 
 {{<modular-resources api="rdk:component:encoder" type="encoder">}} -->
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Micro-RDK
 
@@ -72,14 +72,14 @@ If you are using the micro-RDK, navigate to [Micro-RDK Encoder](/build/micro-rdk
 
 ## Control your encoder with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Then control your machine programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have an encoder called `"my_encoder"` configured as a component of your robot.
+These examples assume you have an encoder called `"my_encoder"` configured as a component of your machine.
 If your encoder has a different name, change the `name` in the code.
 
 Be sure to import the encoder package for the SDK you are using:
@@ -434,8 +434,8 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
-{{% card link="/tutorials/configure/scuttlebot" %}}
+{{% card link="/tutorials/configure/configure-rover" %}}
 {{< /cards >}}

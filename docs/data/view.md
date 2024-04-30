@@ -2,11 +2,10 @@
 title: "View and Filter Data"
 linkTitle: "View Data"
 description: "View and filter data on the DATA page in the Viam Cloud."
-weight: 38
+weight: 25
 type: "docs"
 tags: ["data management", "cloud", "sync"]
-image: "/ml/collect.svg"
-imageAlt: "View images"
+icon: true
 images: ["/ml/collect.svg"]
 aliases:
   - /manage/data/view/
@@ -32,19 +31,27 @@ If you click on an image or a file, a **Details** panel appears on the right wit
 
 ![Data view with an image selected](/data/data_view.png)
 
-## Filter Data
+## Filter data
 
 On the [**DATA** page in the Viam app](https://app.viam.com/data/view), you can filter data in the left **Filtering** panel.
 You can filter by several categories including machine name, location, or timestamp range.
 
-For example, if you specify `Rover Rental` for location and click **SEARCH**, you can see all data captured on robots that belong to your `Rover Rental` location.
+For example, if you specify `Rover Rental` for location and click **SEARCH**, you can see all data captured on machines that belong to your `Rover Rental` location.
+
+{{< alert title="Tip" color="tip" >}}
+
+To [view only data captured from one machine part or from one component or service](/data/capture/#view-captured-data), click on the menu on the respective resource on the configuration page and select **View captured data**.
+
+{{<imgproc src="/data/capture-data-menu.png" resize="500x" declaredimensions=true alt="Resource menu with the options Rename, Duplicate, View captured data, and Delete" class="aligncenter">}}
+
+{{< /alert >}}
 
 You can also filter data using the [Viam Python SDK](https://python.viam.dev/).
 For example, you could use the [`BinaryDataByFilter`](/build/program/apis/data-client/#binarydatabyfilter) or [`TabularDataByFilter`](/build/program/apis/data-client/#tabulardatabyfilter) methods to filter binary data or tabular data respectively.
 
 To query your data using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} instead, see [Query Data using SQL / MQL](/data/query/).
 
-## Delete Data
+## Delete data
 
 You can delete image or file data from the [Viam app](https://app.viam.com).
 To delete image data, click on an image in the **Images** subtab and click on **DELETE SELECTED**.
@@ -52,11 +59,15 @@ To delete a file, click on the file in the **Files** subtab and click the **Dele
 
 To delete all image, file, or sensor data respectively, click on **DELETE ALL** in the top right corner.
 
+{{< alert title="Tip" color="tip" >}}
+If you need to delete many images that are from a specific time frame or machine, you can apply a [filter](#filter-data) and then click **DELETE ALL**.
+{{< /alert >}}
+
 ![Data view with no image selected showing the Delete all button](/data/delete_all.png)
 
 You can also delete data using the [Viam CLI](/fleet/cli/).
 
-## Next Steps
+## Next steps
 
 To export your captured data from the cloud, see [Export Data](../export/).
 

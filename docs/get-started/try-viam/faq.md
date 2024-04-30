@@ -16,10 +16,10 @@ No matter where you are in the world you can take over and play around with a Vi
 
 {{< readfile "/static/include/try-viam/create-a-reservation.md" >}}
 
-## My robot had an error, a system crash, or is physically stuck
+## My machine had an error, a system crash, or is physically stuck
 
 1. Please notify Viam support on [our Community Discord](https://discord.gg/viam).
-2. Use the **Add Viam Support** button on your robot's Location page to give Viam Support access to your _location_.
+2. Use the **Add Viam Support** button on your machine's Location page to give Viam Support access to your _location_.
    Refer to [Managing Locations and sub-locations](/fleet/locations/).
 
 ## Can I extend my time?
@@ -36,40 +36,40 @@ Yes.
 
 ## How can I reuse my rented rover?
 
-After using Try Viam, your robot config stays in your Viam account.
-You can access your robot page, write code to control it, and modify its config after your reservation time ends.
+After using Try Viam, your machine config stays in your Viam account.
+You can access your machine page, write code to control it, and modify its config after your reservation time ends.
 
 When you next rent a rover you can choose to configure it with a previous rover configuration from your account or create a new rover with the standard starting config.
 
 {{< alert title="Tip" color="tip" >}}
-You can also reuse your code for the rover for other robots that you configure with Viam in the future.
+You can also reuse your code for the rover for other machines that you configure with Viam in the future.
 {{< /alert >}}
 
 ## What happens to my rented rover after the rental session?
 
-1. On session expiration, Viam removes the "live" status from the robot.
-2. Viam then removes your config from the physical robot in preparation for its next rental.
+1. On session expiration, Viam removes the "live" status from the machine.
+2. Viam then removes your config from the physical machine in preparation for its next rental.
 3. The Rover Rental Location and the final config of all previous rental rovers remain visible to your organization.
    You can continue modifying the configurations as desired.
 
-## I accidentally deleted my robot
+## I accidentally deleted my machine
 
-Unfortunately, there is no recovery path for a deleted robot.
-If you delete your robot and have a current reservation, click **Cancel Reservation** and then request a new reservation.
+Unfortunately, there is no recovery path for a deleted machine.
+If you delete your machine and have a current reservation, click **Cancel Reservation** and then request a new reservation.
 
-## Can I rename my robot or change the location?
+## Can I rename my machine or change the location?
 
-You can rename your robot or change the location.
+You can rename your machine or change the location.
 If you change the location, you must refresh the page.
 
-## Which organization does this robot belong to?
+## Which organization does this machine e belong to?
 
-Your robot belongs to the [organization](/fleet/organizations/) you were in when you made the request.
+Your machine belongs to the [organization](/fleet/organizations/) you were in when you made the request.
 
-## Can I share this Location with a friend to work on the robot together?
+## Can I share this Location with a friend to work on the machine together?
 
-Sure, you can [invite other users to your organization](/fleet/locations/) to collaborate on your robot.
-As members of your organization, those users have full control of your robot.
+Sure, you can [invite other users to your organization](/fleet/locations/) to collaborate on your machine.
+As members of your organization, those users have full control of your machine.
 Another collaboration option is to use screen sharing in a Zoom or Webex session.
 
 ## How many active rentals can I have?

@@ -3,8 +3,11 @@ title: "Plan Motion with an Arm and a Gripper"
 linkTitle: "Plan Motion with an Arm"
 type: "docs"
 description: "Use the motion service to move robot arms and other components."
-webmSrc: "/tutorials/videos/motion_armmoving.webm"
-mp4Src: "/tutorials/videos/motion_armmoving.mp4"
+videos:
+  [
+    "/tutorials/videos/motion_armmoving.webm",
+    "/tutorials/videos/motion_armmoving.mp4",
+  ]
 videoAlt: "An arm moving with the motion service"
 tags: ["arm", "gripper", "motion", "services"]
 authors: []
@@ -38,7 +41,7 @@ Before starting this tutorial, make sure you have the [Viam Python SDK](https://
 
 If you are connecting to a real robotic arm during this tutorial, make sure your computer can communicate with the controller before continuing.
 
-Make sure you have mastery of the concepts outlined in the first Motion tutorial, [Access and Move a Robot Arm](../accessing-and-moving-robot-arm/), before continuing.
+Make sure you have mastery of the concepts outlined in the first motion tutorial, [Access and Move a Robot Arm](../accessing-and-moving-robot-arm/), before continuing.
 This tutorial picks up right where **Access and Move a Robot Arm** stops, so further examples depend on having a connected robot, client and service access, and other infrastructure in place.
 This also helps simplify and shorten the code examples presented below.
 
@@ -46,7 +49,7 @@ For a helpful recap of the code we previously added, look at [the full code samp
 
 ## Configure a robot
 
-The [robot configuration from the prior tutorial](../accessing-and-moving-robot-arm/#configure-a-robot) should be used for this tutorial.
+The [robot configuration from the prior tutorial](../accessing-and-moving-robot-arm/#configure-a-machine) should be used for this tutorial.
 We will revisit that robot configuration and add new components during specific sections below.
 
 The motion service is one of the "built-in" services, which means that no initial configuration is required to start planning and executing complex motion.
@@ -218,7 +221,7 @@ Feel free to change these dimensions, including thickness (the Z coordinate in t
 Additional obstacles can also be _appended_ as desired.
 
 {{< alert title="Tip" color="note" >}}
-Within the app, the **Frame System** subtab of your robot's **Config** tab gives you the ability to experiment with various geometry representations with better visual feedback.
+Within the app, the **Frame System** subtab of your machine's **Config** tab gives you the ability to experiment with various geometry representations with better visual feedback.
 {{< /alert >}}
 
 <div class="td-max-width-on-larger-screens">
@@ -288,7 +291,7 @@ if err != nil {
 
 ## Command other components to move with the motion service
 
-In this section you will add a new component to your robot.
+In this section you will add a new component to your machine.
 One device that is very commonly attached to the end of a robot arm is a [_gripper_](/components/gripper/).
 Most robot arms pick up and manipulate objects in the world with a gripper, so learning how to directly move a gripper is very useful.
 Though various motion service commands cause the gripper to move, ultimately the arm is doing all of the work in these situations.
@@ -310,7 +313,7 @@ We need to do several things to prepare a new gripper component for motion.
    - For **Geometry Type** choose **Box**.
    - Enter desired values for the box's **Length**, **Width**, and **Height**, and the box origin's **X**, **Y**, and **Z** values.
 4. Include the `myArm` component in the **Depends On** dropdown for `myGripper`.
-5. Save this new robot configuration.
+5. Save this new machine configuration.
    - Your `viam-server` instance should update automatically.
 
 <div class="td-max-width-on-larger-screens">
@@ -421,10 +424,10 @@ from viam.services.motion import MotionClient
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      # Replace "<API-KEY>" (including brackets) with your machine's API key
       api_key='<API-KEY>',
-      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-      # id
+      # Replace "<API-KEY-ID>" (including brackets) with your machine's API key
+      # ID
       api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('<ROBOT ADDRESS>', opts)
@@ -552,11 +555,11 @@ func main() {
       "<ROBOT ADDRESS>",
       logger,
       client.WithDialOptions(rpc.WithEntityCredentials(
-      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
       "<API-KEY-ID>",
       rpc.Credentials{
           Type:    rpc.CredentialsTypeAPIKey,
-          // Replace "<API-KEY>" (including brackets) with your robot's api key
+          // Replace "<API-KEY>" (including brackets) with your machine's API key
           Payload: "<API-KEY>",
       })),
   )

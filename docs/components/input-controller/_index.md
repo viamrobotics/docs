@@ -4,9 +4,10 @@ linkTitle: "Input Controller"
 weight: 60
 type: "docs"
 no_list: true
-description: "An input controller, like a gamepad or joystick, is a device humans use to control a robot's actions."
+description: "An input controller, like a gamepad or joystick, is a device humans use to control a machine's actions."
 tags: ["input controller", "components"]
-icon: "/icons/components/controller.svg"
+icon: true
+images: ["/icons/components/controller.svg"]
 modulescript: false
 aliases:
   - "/components/input-controller/"
@@ -15,7 +16,7 @@ aliases:
 
 You are likely already familiar with human-interface devices, like keyboards and mice, elevator button panels, light power switches, joysticks, and gamepads, or, video game controllers, from your daily life.
 
-Configuring an _input_ component allows you to use devices like these with your robot, enabling you to control your robot's actions by interacting with the device.
+Configuring an _input_ component allows you to use devices like these with your machine, enabling you to control your machine's actions by interacting with the device.
 
 This component currently supports devices like gamepads and joysticks that contain one or more [Controls](#control-field) representing the individual axes and buttons on the device.
 To use the controller's inputs, you must [register callback functions](#registercontrolcallback) to the [Controls](#control-field) with the `input` API.
@@ -23,24 +24,22 @@ To use the controller's inputs, you must [register callback functions](#register
 The callback functions can then handle the [Events](#getevents) that are sent when the Control is activated or moved.
 For example, when a specific button is pushed, the callback function registered to it can move another component, or print a specific output.
 
-Most robots with an input controller need at least the following hardware:
+Most machines with an input controller need at least the following hardware:
 
 - A computer capable of running `viam-server`.
-- A power supply cable or batteries for the input device and the robot.
+- A power supply cable or batteries for the input device and the machine.
 - A component that you can direct the input to control, like an [arm](/components/arm/) or [motor](/components/motor/).
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/mobility/base-rc/" >}}
 {{< relatedcard link="/mobility/frame-system/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your input controller with Viam, check whether one of the following [built-in models](#built-in-models) supports your input controller.
-
-{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Built-in models
 
@@ -56,24 +55,26 @@ For configuration information, click on the model name:
 | [`fake`](fake/) | A model for testing, with [no physical hardware - see GitHub.](https://github.com/viamrobotics/rdk/tree/main/components/input/fake) |
 
 <!-- No modular resources yet -->
-<!-- ### Modular Resources
+<!-- ### Modular resources
 
 {{<modular-resources api="rdk:component:input_controller" type="input_controller">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}-->
 
-## Control your robot with an input controller with Viam's client SDK libraries
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
-Once you've configured your input controller according to model type, you can write code to define how your robot processes the input from the controller.
+## Control your machine with an input controller with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+Once you've configured your input controller according to model type, you can write code to define how your machine processes the input from the controller.
+
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Then control your machine programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have an input controller called `"my_controller"` configured as a component of your robot.
+These examples assume you have an input controller called `"my_controller"` configured as a component of your machine.
 If your input controller has a different name, change the `name` in the code.
 
 Be sure to import the input controller package for the SDK you are using:
@@ -161,9 +162,9 @@ async def handle_controller(controller):
 
 
 async def main():
-    # ... < INSERT CONNECTION CODE FROM ROBOT'S CODE SAMPLE TAB >
+    # ... < INSERT CONNECTION CODE FROM MACHINE'S CODE SAMPLE TAB >
 
-    # Get your controller from the robot.
+    # Get your controller from the machine.
     my_controller = Controller.from_robot(
         robot=myRobotWithController, name="my_controller")
 
@@ -221,15 +222,15 @@ func main() {
 
 
 func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (err error) {
-    // ... < INSERT CONNECTION CODE FROM ROBOT'S CODE SAMPLE TAB >
+    // ... < INSERT CONNECTION CODE FROM MACHINE'S CODE SAMPLE TAB >
 
-    // Get the controller from the robot.
+    // Get the controller from the machine.
     myController, err := input.FromRobot(myRobotWithController, "my_controller")
 
     // Run the handleController function.
     err := HandleController(myController)
 
-    // Delay closing your connection to your robot.
+    // Delay closing your connection to your machine.
     err = myRobotWithController.Start(ctx)
     defer myRobotWithController.Close(ctx)
 
@@ -264,7 +265,7 @@ This method returns the current state of the controller as a map of [Event Objec
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_events).
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Get the controller from the robot.
+# Get the controller from the machine.
 my_controller = Controller.from_robot(
     robot=myRobotWithController, name="my_controller")
 
@@ -291,7 +292,7 @@ print(f"Recent Events:\n{recent_events}")
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get the controller from the robot.
+// Get the controller from the machine.
 myController, err := input.FromRobot(myRobotWithController, "my_controller")
 
 // Get the most recent Event for each Control.
@@ -323,7 +324,7 @@ Get a list of the [Controls](#control-field) that your controller provides.
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_controls).
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Get the controller from the robot.
+# Get the controller from the machine.
 my_controller = Controller.from_robot(
     robot=myRobotWithController, name="my_controller")
 
@@ -350,7 +351,7 @@ print(f"Controls:\n{controls}")
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get the controller from the robot.
+// Get the controller from the machine.
 myController, err := input.FromRobot(myRobotWithController, "my_controller")
 
 // Get the list of Controls provided by the controller.
@@ -509,7 +510,7 @@ If you are implementing your own input controller and add features that have no 
 - [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Get the controller from the robot.
+# Get the controller from the machine.
 my_controller = Controller.from_robot(
     robot=myRobotWithController, name="my_controller")
 
@@ -533,7 +534,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get the controller from the robot.
+// Get the controller from the machine.
 myController, err := input.FromRobot(myRobotWithController, "my_controller")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
@@ -590,11 +591,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 {{% /tab %}}
 {{< /tabs >}}
 
-## API Types
+## API types
 
 The `input` API defines the following types:
 
-### Event Object
+### Event object
 
 Each `Event` object represents a singular event from the input device, and has four fields:
 
@@ -603,7 +604,7 @@ Each `Event` object represents a singular event from the input device, and has f
 3. `Control`: `Control` indicating which [Axis](#axis-controls), [Button](#button-controls), or Pedal on the controller has been changed.
 4. `Value`: `float64` indicating the position of an [Axis](#axis-controls) or the state of a [Button](#button-controls) on the specified control.
 
-#### EventType Field
+#### EventType field
 
 A string-like type indicating the specific type of input event, such as a button press or axis movement.
 
@@ -704,7 +705,7 @@ See [the Viam RDK](https://github.com/viamrobotics/rdk/blob/main/components/inpu
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Control Field
+#### Control field
 
 A string representing the physical input location, like a specific axis or button, of your `Controller` that the [Event Object](#event-object) is coming from.
 
@@ -791,7 +792,7 @@ See [Github](https://github.com/viamrobotics/rdk/blob/main/components/input/inpu
 {{% /tab %}}
 {{< /tabs >}}
 
-### Axis Controls
+### Axis controls
 
 {{% alert title="Support Notice" color="note" %}}
 Currently, only `Absolute` axes are supported.
@@ -809,7 +810,7 @@ These controls report a `PositionChangeAbs` [EventType](#eventtype-field).
 - `0.0`: Center, neutral position.
 - `-1.0`: Maximum position in the negative direction.
 
-#### AbsoluteXY Axes
+#### AbsoluteXY axes
 
 If your input controller has an analog stick, this is what the stick's controls report as.
 
@@ -820,7 +821,7 @@ Alternatively, if your input controller has _two_ analog sticks, this is what th
 | `AbsoluteX` | Stick Left    | Neutral | Stick Right     |
 | `AbsoluteY` | Stick Forward | Neutral | Stick Backwards |
 
-#### AbsoluteR-XY Axes
+#### AbsoluteR-XY axes
 
 If your input controller has _two_ analog sticks, this is what the right joystick's controls report as.
 
@@ -831,7 +832,7 @@ If your input controller has _two_ analog sticks, this is what the right joystic
 
 - For `Y` axes, the positive direction is "nose up," and indicates _pulling_ back on the joystick.
 
-#### Hat/D-Pad Axes
+#### Hat/D-Pad axes
 
 If your input controller has a directional pad with analog buttons on the pad, this is what those controls report as.
 
@@ -841,7 +842,7 @@ If your input controller has a directional pad with analog buttons on the pad, t
 | `AbsoluteHat0X` | Left DPAD Button Press | Neutral | Right DPAD Button Press |
 | `AbsoluteHat0Y` | Up DPAD Button Press | Neutral | Down DPAD Button Press |
 
-#### Z Axes (Analog Trigger Sticks)
+#### Z axes (analog trigger sticks)
 
 {{% alert title="Info" color="info" %}}
 Devices like analog triggers and gas or brake pedals use `Absolute` axes, but they only report position change in the positive direction.
@@ -867,7 +868,7 @@ This is not common.
 | `AbsoluteZ`  | Stick Left Yaw | Neutral | Stick Right Yaw |
 | `AbsoluteRZ` | Stick Left Yaw | Neutral | Stick Right Yaw |
 
-### Button Controls
+### Button controls
 
 Button Controls report either `ButtonPress` or `ButtonRelease` as their [EventType](#eventtype-field).
 
@@ -876,7 +877,7 @@ Button Controls report either `ButtonPress` or `ButtonRelease` as their [EventTy
 - `0`: released
 - `1`: pressed
 
-#### Action Buttons (ABXY)
+#### Action buttons (ABXY)
 
 If your input controller is a gamepad with digital action buttons, this is what the controls for these buttons report as.
 
@@ -902,7 +903,7 @@ As different systems label the actual buttons differently, we use compass direct
 | - | - | - |
 | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Right</td></tr><tr><td>`ButtonSouth`</td><td>Left</td></tr><tr> </table> | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Bottom</td></tr> </table> |
 
-#### Trigger Buttons (Bumper)
+#### Trigger buttons (bumpers)
 
 If your input controller is a gamepad with digital trigger buttons, this is what the controls for those buttons report as.
 
@@ -911,7 +912,7 @@ If your input controller is a gamepad with digital trigger buttons, this is what
 | - | - | - |
 | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Left</td></tr><tr><td>`ButtonRT`</td><td>Right</td></tr> </table> | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Top-left</td></tr><tr><td>`ButtonRT`</td><td>Top-right</td></tr><tr><td>`ButtonLT2`</td><td>Bottom-left</td></tr><tr><td>`ButtonRT2`</td><td>Bottom-right</td></tr> </table> |
 
-#### Digital Buttons for Sticks
+#### Digital buttons for sticks
 
 If your input controller is a gamepad with "clickable" thumbsticks, this is what thumbstick presses report as.
 
@@ -920,7 +921,7 @@ If your input controller is a gamepad with "clickable" thumbsticks, this is what
 | `ButtonLThumb` | Left or upper button for stick  |
 | `ButtonRThumb` | Right or lower button for stick |
 
-#### Miscellaneous Buttons
+#### Miscellaneous buttons
 
 Many devices have additional buttons.
 If your input controller is a gamepad with these common buttons, this is what the controls for those buttons report as.
@@ -933,9 +934,9 @@ If your input controller is a gamepad with these common buttons, this is what th
 | `ButtonRecord` | Recording                                           |
 | `ButtonEStop`  | Emergency Stop (on some industrial controllers)     |
 
-## Usage Examples
+## Usage examples
 
-### Control a Wheeled Base with a Logitech G920 Steering Wheel Controller
+### Control a wheeled base with a Logitech G920 steering wheel controller
 
 The following Python code is an example of controlling a wheeled {{% glossary_tooltip term_id="base" text="base"%}} with a Logitech G920 steering wheel controller, configured as a `gamepad` input controller.
 
@@ -1050,9 +1051,9 @@ async def handleController(controller):
 
 
 async def main():
-    # ADD YOUR ROBOT REMOTE ADDRESS and API KEY VALUES.
-    # These can be found in the Code sample tab of app.viam.com.
-    # Toggle 'Include secret' to show the api key values.
+    # ADD YOUR MACHINE REMOTE ADDRESS and API KEY VALUES.
+    # These can be found in app.viam.com's CONNECT tab's Code sample page.
+    # Toggle 'Include secret' to show the API key values.
     g920_robot = await connect_robot(
         "robot123example.locationxyzexample.viam.com", "API_KEY", "API_KEY_ID")
     modal_robot = await connect_robot(
@@ -1071,7 +1072,7 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
-### Drive a robot with Four Wheels & a Skid Steer Platform
+### Drive a robot with four wheels and a skid steer platform
 
 The following Go code is part of an example of using an input controller to drive a robot with four wheels & a skid steer platform.
 
@@ -1115,9 +1116,9 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< snippet "social.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
-{{% card link="/tutorials/control/yahboom-rover" %}}
-{{% card link="/tutorials/control/scuttle-gamepad" %}}
+{{% card link="/tutorials/configure/configure-rover" %}}
+{{% card link="/tutorials/control/gamepad" %}}
 {{< /cards >}}

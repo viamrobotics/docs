@@ -4,15 +4,16 @@ linkTitle: "Drive with the SDK"
 weight: 2
 type: "docs"
 description: "Use a Viam SDK to program a rover to move in a square."
-webmSrc: "/tutorials/try-viam-sdk/image1.webm"
-mp4Src: "/tutorials/try-viam-sdk/image1.mp4"
+videos:
+  ["/tutorials/try-viam-sdk/image1.webm", "/tutorials/try-viam-sdk/image1.mp4"]
 videoAlt: "A Viam Rover driving in a square"
 images: ["/tutorials/try-viam-sdk/image1.gif"]
-tags: ["base", "viam rover", "try viam", "sdk", "python"]
+tags: ["base", "viam rover", "try viam", "sdk", "python", "flutter"]
 aliases:
   - /tutorials/get-started/try-viam-sdk
+  - /tutorials/viam-rover/try-viam-sdk
 authors: []
-languages: ["python", "go", "typescript"]
+languages: ["python", "go", "typescript", "flutter", "c++"]
 viamresources: ["base"]
 level: "Beginner"
 date: "2022-12-08"
@@ -47,7 +48,13 @@ If you are using your own robot for this tutorial instead of [renting one](https
 
 ## Install a Viam SDK
 
-Install either the [Viam Python SDK](https://python.viam.dev/), the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme), or the [TypeScript SDK](https://ts.viam.dev/) on your local computer.
+Install one of the following SDKs on your local computer:
+
+- the [Viam Python SDK](https://python.viam.dev/)
+- the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
+- the [Viam Flutter SDK](https://flutter.viam.dev/)
+- the [Viam TypeScript SDK](https://ts.viam.dev/)
+- the [Viam C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk/#readme)
 
 {{< alert title="Tip" color="tip" >}}
 If you are [renting your rover](https://app.viam.com/try), we recommend that you get the Viam SDK set up before your reservation starts.
@@ -61,13 +68,13 @@ If you are running out of time during your rental, you can [extend your rover re
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to your [robot's page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **Python** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to your [machine's page on the Viam app](https://app.viam.com/robots), select the **CONNECT** tab's **Code sample** page, then select **Python** and copy the boilerplate code.
 
 {{% snippet "show-secret.md" %}}
 
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
-Next, create a file named <file>square.py</file> and paste the boilerplate code from the **Code sample** tab of the Viam app into your file.
+Next, create a file named <file>square.py</file> and paste the boilerplate code from the **Code sample** page of the Viam app into your file.
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
@@ -100,13 +107,13 @@ name: "cam"
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **Go** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **CONNECT** tab's **Code sample** page, then select **Go** and copy the boilerplate code.
 
 {{% snippet "show-secret.md" %}}
 
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
-Next, create a file named <file>square.go</file> and paste the boilerplate code from the **Code sample** tab of the Viam app into your file.
+Next, create a file named <file>square.go</file> and paste the boilerplate code from the **Code sample** page of the Viam app into your file.
 Then, save your file.
 
 Initialize your project, and install the necessary libraries, and then run the program to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live:
@@ -131,13 +138,17 @@ go run square.go
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **TypeScript** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **CONNECT** tab's **Code sample** page, then select **TypeScript** and copy the boilerplate code.
+
+{{< alert title="Info" color="info" >}}
+The TypeScript SDK currently only supports building web browser apps.
+{{< /alert >}}
 
 {{% snippet "show-secret.md" %}}
 
 This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
 
-Next, create a file named <file>main.ts</file> and paste the boilerplate code from the **Code sample** tab of the Viam app into your file.
+Next, create a file named <file>main.ts</file> and paste the boilerplate code from the **Code sample** page of the Viam app into your file.
 Then, save your file.
 
 Create another file named <file>package.json</file> with the following contents:
@@ -155,7 +166,7 @@ Create another file named <file>package.json</file> with the following contents:
   "author": "Viam Docs Team",
   "license": "ISC",
   "devDependencies": {
-    "esbuild": "0.16.12"
+    "esbuild": "*"
   },
   "dependencies": {
     "@viamrobotics/sdk": "*"
@@ -196,11 +207,61 @@ If you open the developer console, you should see some output including the name
 These are the components and services that the robot is configured with in the Viam app.
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+Flutter code must be launched from inside a running Flutter application.
+To get started programming your rover with Flutter, follow the instructions to [Build a Flutter App that Integrates with Viam](/tutorials/control/flutter-app/).
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **CONNECT** tab's **Code sample** page, then select **C++** and copy the boilerplate code.
+
+{{% snippet "show-secret.md" %}}
+
+This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
+
+Next, create a file named <file>drive_in_square.cpp</file> and paste the boilerplate code from the **Code sample** page of the Viam app into your file.
+Then, save your file.
+
+Compile your code, and then run the program to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live:
+
+```sh {class="command-line" data-prompt="$"}
+cmake . -G Ninja
+ninja all
+./drive_in_square
+```
+
+The program prints an array of resources.
+These are the components and services that the robot is configured with in the Viam app.
+
+```sh {class="command-line" data-prompt="$" data-output="2-20"}
+./src/viam/examples/camera/example_camera
+Resources of the robot:
+ - cam (camera)
+ - Lenc (encoder)
+ - overhead-cam:builtin (sensors)
+ - overhead-cam:builtin (motion)
+ - builtin (sensors)
+ - right (motor)
+ - Renc (encoder)
+ - overhead-cam:overheadcam (camera)
+ - builtin (motion)
+ - builtin (data_manager)
+ - viam_base (base)
+ - local (board)
+ - left (motor)
+ - overhead-cam:builtin (data_manager)
+ ...
+```
+
+{{% /tab %}}
+
 {{< /tabs >}}
 
 {{% alert title="Tip" color="tip" %}}
 
-If you are [renting your rover](https://app.viam.com/try), and your reservation ends before you have completed this tutorial, change the connection information (the robot address and the payload) to connect to your new rover and continue.
+If you are [renting your rover](https://app.viam.com/try), and your reservation ends before you have completed this tutorial, you can start a new session with the same rover configuration so you do not need to change the connection information (the robot address and the payload).
 
 {{% /alert %}}
 
@@ -285,13 +346,13 @@ import (
 
 Next, you need to initialize your rover base.
 
-In the main function, after you connect, paste the code from lines 19-22.
+In the main function, after you connect, paste the code from lines 22-26.
 On the Try Viam rental rovers, the default base name is `viam_base`.
 If you have a different base name, update the name in your code.
 
 Your main function should look like this:
 
-```go {class="line-numbers linkable-line-numbers" data-line="19-22"}
+```go {class="line-numbers linkable-line-numbers" data-line="22-26"}
 func main() {
     logger := logging.NewLogger("client")
     robot, err := client.New(
@@ -299,11 +360,11 @@ func main() {
         "ADDRESS FROM THE VIAM APP",
         logger,
         client.WithDialOptions(rpc.WithEntityCredentials(
-        // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+        // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
         "<API-KEY-ID>",
         rpc.Credentials{
             Type:    rpc.CredentialsTypeAPIKey,
-            // Replace "<API-KEY>" (including brackets) with your robot's api key
+            // Replace "<API-KEY>" (including brackets) with your machine's API key
             Payload: "<API-KEY>",
         })),
     )
@@ -368,10 +429,10 @@ async function main() {
     host,
     credential: {
       type: "api-key",
-      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      // Replace "<API-KEY>" (including brackets) with your machine's API key
       payload: "<API-KEY>",
     },
-    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
     authEntity: "<API-KEY-ID>",
     signalingAddress: "https://app.viam.com:443",
   });
@@ -417,7 +478,7 @@ If you have a different base name, update the name in your code.
 ```ts {class="line-numbers linkable-line-numbers"}
 // This function moves a base component in a square.
 async function moveInSquare(client: VIAM.RobotClient) {
-  // Replace with the name of a motor on your robot.
+  // Replace with the name of a motor on your machine.
   const name = "viam_base";
   const baseClient = new VIAM.BaseClient(client, name);
 
@@ -458,10 +519,10 @@ async function main() {
     host,
     credential: {
       type: "api-key",
-      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      // Replace "<API-KEY>" (including brackets) with your machine's API key
       payload: "<API-KEY>",
     },
-    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
     authEntity: "<API-KEY-ID>",
     signalingAddress: "https://app.viam.com:443",
   });
@@ -474,10 +535,313 @@ async function main() {
 ```
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+Add a new file to your application in <file>/lib</file> called <file>base_screen.dart</file>.
+Paste this code into your file:
+
+```dart {class="line-numbers linkable-line-numbers"}
+/// This is the BaseScreen, which allows us to control a Base.
+
+import 'package:flutter/material.dart';
+import 'package:viam_sdk/viam_sdk.dart';
+import 'package:viam_sdk/widgets.dart';
+
+class BaseScreen extends StatelessWidget {
+  final Base base;
+
+  const BaseScreen(this.base, {super.key});
+
+  Future<void> moveSquare() async {
+    for (var i=0; i<4; i++) {
+      await base.moveStraight(500, 500);
+      await base.spin(90, 100);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(base.name)),
+      body: Center(
+        child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+              onPressed: moveSquare,
+              child: const Text('Move Base in Square'),
+            ),
+        ]))
+        ,);}}
+```
+
+This code creates a screen with a singular centered button that, when pressed, calls on the `moveSquare()` method to drive the base in a square.
+
+Then, replace the contents of <file>robot_screen.dart</file> with the following file, or add the highlighted lines of code to your program in the locations indicated:
+
+```dart {class="line-numbers linkable-line-numbers" data-line="11, 73-85, 101-102"}
+/// This is the screen that shows the resources available on a robot (or smart machine).
+/// It takes in a Viam app client instance, as well as a robot client.
+/// It then uses the Viam client instance to create a connection to that robot client.
+/// Once the connection is established, you can view the resources available
+/// and send commands to them.
+
+import 'package:flutter/material.dart';
+import 'package:viam_sdk/protos/app/app.dart';
+import 'package:viam_sdk/viam_sdk.dart';
+
+import 'base_screen.dart';
+
+class RobotScreen extends StatefulWidget {
+  final Viam _viam;
+  final Robot robot;
+
+  const RobotScreen(this._viam, this.robot, {super.key});
+
+  @override
+  State<RobotScreen> createState() => _RobotScreenState();
+}
+
+class _RobotScreenState extends State<RobotScreen> {
+  /// Similar to previous screens, start with [_isLoading] to true.
+  bool _isLoading = true;
+
+  /// This is the [RobotClient], which allows you to access
+  /// all the resources of a Viam Smart Machine.
+  /// This differs from the [Robot] provided to us in the widget constructor
+  /// in that the [RobotClient] contains a direct connection to the Smart Machine
+  /// and its resources. The [Robot] object simply contains information about
+  /// the Smart Machine, but is not actually connected to the machine itself.
+  ///
+  /// This is initialized late because it requires an asynchronous
+  /// network call to establish the connection.
+  late RobotClient client;
+
+  @override
+  void initState() {
+    super.initState();
+    // Call our own _initState method to initialize our state.
+    _initState();
+  }
+
+  @override
+  void dispose() {
+    // You should always close the [RobotClient] to free up resources.
+    // Calling [RobotClient.close] will clean up any tasks and
+    // resources created by Viam.
+    client.close();
+    super.dispose();
+  }
+
+  /// This method will get called when the widget initializes its state.
+  /// It exists outside the overridden [initState] function since it's async.
+  Future<void> _initState() async {
+    // Using the authenticated [Viam] the received as a parameter,
+    // the app can obtain a connection to the Robot.
+    // There is a helpful convenience method on the [Viam] instance for this.
+    final robotClient = await widget._viam.getRobotClient(widget.robot);
+    setState(() {
+      client = robotClient;
+      _isLoading = false;
+    });
+  }
+
+  /// A computed variable that returns the available [ResourceName]s of
+  /// this robot in an alphabetically sorted list.
+  List<ResourceName> get _sortedResourceNames {
+    return client.resourceNames..sort((a, b) => a.name.compareTo(b.name));
+  }
+
+  bool _isNavigable(ResourceName rn) {
+    if (rn.subtype == Base.subtype.resourceSubtype) {
+      return true;
+    }
+    return false;
+  }
+
+  void _navigate(ResourceName rn) {
+    if (rn.subtype == Base.subtype.resourceSubtype) {
+      final base = Base.fromRobot(client, rn.name);
+      Navigator.of(context).push(MaterialPageRoute(builder: (_) => BaseScreen(base)));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(widget.robot.name)),
+        body: _isLoading
+            ? const Center(child: CircularProgressIndicator.adaptive())
+            : ListView.builder(
+                itemCount: client.resourceNames.length,
+                itemBuilder: (_, index) {
+                  final resourceName = _sortedResourceNames[index];
+                  return ListTile(
+                    title: Text(resourceName.name),
+                    subtitle: Text(
+                        '${resourceName.namespace}:${resourceName.type}:${resourceName.subtype}'),
+                    onTap: () => _navigate(resourceName),
+                    trailing: _isNavigable(resourceName) ? Icon(Icons.chevron_right) : SizedBox.shrink(),
+                  );
+                }));
+  }
+}
+```
+
+This imports the <file>base_screen.dart</file> file into the program and adds logic to check if a {{< glossary_tooltip term_id="resource" text="resource" >}} is "navigable", or, has a screen made for it.
+Base is the only resource that is navigable.
+
+To navigate to the base screen, save your code and launch your simulator.
+Navigate to the robot screen of a (live) machine with a base resource configured, and see the resources displayed like the following:
+
+{{<imgproc src="/tutorials/try-viam-sdk/resource-menu.png" resize="300x" declaredimensions=true alt="Machine resources listed in an example Flutter app">}}
+
+Then, click on the base to display the base screen.
+You may need to scroll to the bottom of the list of resources.
+
+{{<imgproc src="/tutorials/try-viam-sdk/button.png" resize="300x" declaredimensions=true alt="Button to drive a rover in a square in an example Flutter app">}}
+
+Click on the button to move your robot in a square:
+
+{{<video webm_src="/tutorials/try-viam-sdk/square-test-rover.webm" mp4_src="/tutorials/try-viam-sdk/square-test-rover.mp4" alt="An example flutter app moving a Try Viam rental rover in a square" poster="/tutorials/try-viam-sdk/square-test-rover.jpg">}}
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+The first thing you need to do is import the [base component](https://cpp.viam.dev/classviam_1_1sdk_1_1Base.html). The base is responsible for controlling the motors attached to the base of the rover. Add the following line of code to your imports:
+
+```cpp {class="line-numbers linkable-line-numbers"}
+#include <viam/sdk/components/base.hpp>
+```
+
+Additionally, add the following namespaces under your imports:
+
+```cpp {class="line-numbers linkable-line-numbers"}
+using namespace viam::sdk;
+using std::cerr;
+using std::cout;
+using std::endl;
+```
+
+Next, you need to initialize your rover base.
+
+In the main function, after you connect, paste the code from lines 21-30. On the Try Viam rental rovers, the default base name is `viam_base`. If you have a different base name, update the name in your code.
+
+Your main function should look like this:
+
+```cpp {class="line-numbers linkable-line-numbers" data-line="21,23-30"}
+int main() {
+    namespace vs = ::viam::sdk;
+    try {
+        std::string host("ADDRESS FROM THE VIAM APP");
+        DialOptions dial_opts;
+        // Replace "<API-KEY-ID>" with your machine's api key ID
+        dial_opts.set_entity(std::string("<API-KEY-ID>"));
+        // Replace "<API-KEY>" with your machine's api key
+        Credentials credentials("api-key", "<API-KEY>");
+        dial_opts.set_credentials(credentials);
+        boost::optional<DialOptions> opts(dial_opts);
+        Options options(0, opts);
+
+        auto robot = RobotClient::at_address(host, options);
+
+        std::cout << "Resources:\n";
+        for (const Name& resource: robot->resource_names()) {
+          std::cout << "\t" << resource << "\n" << std::endl;
+        }
+
+        std::string base_name("viam_base");
+
+        cout << "Getting base: " << base_name << endl;
+        std::shared_ptr<Base> base;
+        try {
+            base = robot->resource_by_name<Base>(base_name);
+        } catch (const std::exception& e) {
+            cerr << "Failed to find " << base_name << ". Exiting." << endl;
+            throw;
+        }
+
+    } catch (const std::exception& ex) {
+        cerr << "Program failed. Exception: " << std::string(ex.what()) << endl;
+        return EXIT_FAILURE;
+    } catch (...) {
+        cerr << "Program failed without exception message." << endl;
+        return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
+}
+```
+
+Now that your rover base has been initialized, you can write code to drive it in a square. Paste this snippet above your `main()` function:
+
+```cpp {class="line-numbers linkable-line-numbers"}
+void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
+  for (int i = 0; i < 4; ++i) {
+    cout << "Move straight" << endl;
+    // Move the base forward 600mm at 500mm/s
+    base->move_straight(500, 500);
+    cout << "Spin" << endl;
+    // Spin the base by 90 degree at 100 degrees per second
+    base->spin(90, 100);
+  }
+}
+```
+
+Invoke the move_in_square() function in your main function after initializing your base.
+
+Your main function should now look like this:
+
+```cpp {class="line-numbers linkable-line-numbers" data-line="21,23-33"}
+int main() {
+    namespace vs = ::viam::sdk;
+    try {
+        std::string host("ADDRESS FROM THE VIAM APP");
+        DialOptions dial_opts;
+        // Replace "<API-KEY-ID>" with your machine's api key ID
+        dial_opts.set_entity(std::string("<API-KEY-ID>"));
+        // Replace "<API-KEY>" with your machine's api key
+        Credentials credentials("api-key", "<API-KEY>");
+        dial_opts.set_credentials(credentials);
+        boost::optional<DialOptions> opts(dial_opts);
+        Options options(0, opts);
+
+        auto robot = RobotClient::at_address(host, options);
+
+        std::cout << "Resources:\n";
+        for (const Name& resource: robot->resource_names()) {
+          std::cout << "\t" << resource << "\n" << std::endl;
+        }
+
+        std::string base_name("viam_base");
+
+        cout << "Getting base: " << base_name << endl;
+        std::shared_ptr<Base> base;
+        try {
+            base = robot->resource_by_name<Base>(base_name);
+
+            move_in_square(base);
+
+        } catch (const std::exception& e) {
+            cerr << "Failed to find " << base_name << ". Exiting." << endl;
+            throw;
+        }
+
+    } catch (const std::exception& ex) {
+        cerr << "Program failed. Exception: " << std::string(ex.what()) << endl;
+        return EXIT_FAILURE;
+    } catch (...) {
+        cerr << "Program failed without exception message." << endl;
+        return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
+}
+```
+
+{{% /tab %}}
 {{< /tabs >}}
 
 {{< alert title="Tip" color="tip" >}}
-If you are [renting your rover](https://app.viam.com/try), go to the **Control** tab, and make sure you can monitor the camera feed from your rover.
+If you are [renting your rover](https://app.viam.com/try), go to the **CONTROL** tab of the Viam app, and make sure you can monitor the camera feed from your rover.
 {{< /alert >}}
 
 When you run your code, your robot moves in a square.
@@ -486,7 +850,7 @@ When you run your code, your robot moves in a square.
 {{<gif webm_src="/tutorials/try-viam-sdk/image2.webm" mp4_src="../../try-viam-sdk/image2.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square on the left, and on the right, a terminal window shows the output of running the square function as the rover moves in a square.">}}
 </div>
 
-## Complete Code
+## Complete code
 
 This is the complete code for the tutorial:
 
@@ -503,10 +867,10 @@ from viam.rpc.dial import Credentials, DialOptions
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-        # id
+        # Replace "<API-KEY-ID>" (including brackets) with your machine's
+        # API key ID
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
@@ -551,7 +915,6 @@ import (
     "go.viam.com/rdk/components/base"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
     "go.viam.com/utils/rpc"
 )
 
@@ -573,11 +936,11 @@ func main() {
       "ADDRESS FROM THE VIAM APP",
       logger,
       client.WithDialOptions(rpc.WithEntityCredentials(
-      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
       "<API-KEY-ID>",
       rpc.Credentials{
           Type:    rpc.CredentialsTypeAPIKey,
-          // Replace "<API-KEY>" (including brackets) with your robot's api key
+          // Replace "<API-KEY>" (including brackets) with your machine's API key
           Payload: "<API-KEY>",
       })),
     )
@@ -614,10 +977,10 @@ func main() {
   "author": "Viam Docs Team",
   "license": "ISC",
   "devDependencies": {
-    "esbuild": "0.16.12"
+    "esbuild": "*"
   },
   "dependencies": {
-    "@viamrobotics/sdk": "^0.0.28"
+    "@viamrobotics/sdk": "*"
   }
 }
 ```
@@ -654,10 +1017,10 @@ async function main() {
     host,
     credential: {
       type: "api-key",
-      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      // Replace "<API-KEY>" (including brackets) with your machine's API key
       payload: "<API-KEY>",
     },
-    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
     authEntity: "<API-KEY-ID>",
     signalingAddress: "https://app.viam.com:443",
   });
@@ -670,7 +1033,7 @@ async function main() {
 
 // This function moves a base component in a square.
 async function moveInSquare(client: VIAM.RobotClient) {
-  // Replace with the name of a motor on your robot.
+  // Replace with the name of a motor on your machine.
   const name = "viam_base";
   const baseClient = new VIAM.BaseClient(client, name);
 
@@ -697,9 +1060,233 @@ main().catch((error) => {
 ```
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+<file>robot_screen.dart</file>:
+
+```dart {class="line-numbers linkable-line-numbers"}
+/// This is the BaseScreen, which allows us to control a Base.
+
+import 'package:flutter/material.dart';
+import 'package:viam_sdk/viam_sdk.dart';
+import 'package:viam_sdk/widgets.dart';
+
+class BaseScreen extends StatelessWidget {
+  final Base base;
+
+  const BaseScreen(this.base, {super.key});
+
+  Future<void> moveSquare() async {
+    for (var i=0; i<4; i++) {
+      await base.moveStraight(500, 500);
+      await base.spin(90, 100);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(base.name)),
+      body: Center(
+        child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+              onPressed: moveSquare,
+              child: const Text('Move Base in Square'),
+            ),
+        ]))
+        ,);}}
+```
+
+<file>base_screen.dart</file>:
+
+```dart {class="line-numbers linkable-line-numbers"}
+/// This is the screen that shows the resources available on a robot (or smart machine).
+/// It takes in a Viam app client instance, as well as a robot client.
+/// It then uses the Viam client instance to create a connection to that robot client.
+/// Once the connection is established, you can view the resources available
+/// and send commands to them.
+
+import 'package:flutter/material.dart';
+import 'base_screen.dart';
+import 'package:viam_sdk/protos/app/app.dart';
+import 'package:viam_sdk/viam_sdk.dart';
+
+class RobotScreen extends StatefulWidget {
+  final Viam _viam;
+  final Robot robot;
+
+  const RobotScreen(this._viam, this.robot, {super.key});
+
+  @override
+  State<RobotScreen> createState() => _RobotScreenState();
+}
+
+class _RobotScreenState extends State<RobotScreen> {
+  /// Similar to previous screens, start with [_isLoading] to true.
+  bool _isLoading = true;
+
+  /// This is the [RobotClient], which allows you to access
+  /// all the resources of a Viam Smart Machine.
+  /// This differs from the [Robot] provided to us in the widget constructor
+  /// in that the [RobotClient] contains a direct connection to the Smart Machine
+  /// and its resources. The [Robot] object simply contains information about
+  /// the Smart Machine, but is not actually connected to the machine itself.
+  ///
+  /// This is initialized late because it requires an asynchronous
+  /// network call to establish the connection.
+  late RobotClient client;
+
+  @override
+  void initState() {
+    super.initState();
+    // Call our own _initState method to initialize our state.
+    _initState();
+  }
+
+  @override
+  void dispose() {
+    // You should always close the [RobotClient] to free up resources.
+    // Calling [RobotClient.close] will clean up any tasks and
+    // resources created by Viam.
+    client.close();
+    super.dispose();
+  }
+
+  /// This method will get called when the widget initializes its state.
+  /// It exists outside the overridden [initState] function since it's async.
+  Future<void> _initState() async {
+    // Using the authenticated [Viam] the received as a parameter,
+    // the app can obtain a connection to the Robot.
+    // There is a helpful convenience method on the [Viam] instance for this.
+    final robotClient = await widget._viam.getRobotClient(widget.robot);
+    setState(() {
+      client = robotClient;
+      _isLoading = false;
+    });
+  }
+
+  /// A computed variable that returns the available [ResourceName]s of
+  /// this robot in an alphabetically sorted list.
+  List<ResourceName> get _sortedResourceNames {
+    return client.resourceNames..sort((a, b) => a.name.compareTo(b.name));
+  }
+
+  bool _isNavigable(ResourceName rn) {
+    if (rn.subtype == Base.subtype.resourceSubtype) {
+      return true;
+    }
+    return false;
+  }
+
+  void _navigate(ResourceName rn) {
+    if (rn.subtype == Base.subtype.resourceSubtype) {
+      final base = Base.fromRobot(client, rn.name);
+      Navigator.of(context).push(MaterialPageRoute(builder: (_) => BaseScreen(base)));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(widget.robot.name)),
+        body: _isLoading
+            ? const Center(child: CircularProgressIndicator.adaptive())
+            : ListView.builder(
+                itemCount: client.resourceNames.length,
+                itemBuilder: (_, index) {
+                  final resourceName = _sortedResourceNames[index];
+                  return ListTile(
+                    title: Text(resourceName.name),
+                    subtitle: Text(
+                        '${resourceName.namespace}:${resourceName.type}:${resourceName.subtype}'),
+                    onTap: () => _navigate(resourceName),
+                    trailing: _isNavigable(resourceName) ? Icon(Icons.chevron_right) : SizedBox.shrink(),
+                  );
+                }));
+  }
+}
+```
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+```cpp {class="line-numbers linkable-line-numbers"}
+#include <string>
+#include <vector>
+
+#include <boost/optional.hpp>
+
+#include <viam/sdk/robot/client.hpp>
+#include <viam/sdk/components/base.hpp>
+
+using namespace viam::sdk;
+using std::cerr;
+using std::cout;
+using std::endl;
+
+void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
+    for (int i = 0; i < 4; ++i) {
+        cout << "Move straight" << endl;
+        // Move the base forward 600mm at 500mm/s
+        base->move_straight(500, 500);
+        cout << "Spin" << endl;
+        // Spin the base by 90 degree at 100 degrees per second
+        base->spin(90, 100);
+    }
+}
+
+int main() {
+    namespace vs = ::viam::sdk;
+    try {
+        std::string host("ADDRESS FROM THE VIAM APP");
+        DialOptions dial_opts;
+        // Replace "<API-KEY-ID>" with your machine's api key ID
+        dial_opts.set_entity(std::string("<API-KEY-ID>"));
+        // Replace "<API-KEY>" with your machine's api key
+        Credentials credentials("api-key", "<API-KEY>");
+        dial_opts.set_credentials(credentials);
+        boost::optional<DialOptions> opts(dial_opts);
+        Options options(0, opts);
+
+        auto robot = RobotClient::at_address(host, options);
+
+        std::cout << "Resources:\n";
+        for (const Name& resource: robot->resource_names()) {
+          std::cout << "\t" << resource << "\n" << std::endl;
+        }
+
+        std::string base_name("viam_base");
+
+        cout << "Getting base: " << base_name << endl;
+        std::shared_ptr<Base> base;
+        try {
+            base = robot->resource_by_name<Base>(base_name);
+
+            move_in_square(base);
+
+        } catch (const std::exception& e) {
+            cerr << "Failed to find " << base_name << ". Exiting." << endl;
+            throw;
+        }
+
+    } catch (const std::exception& ex) {
+        cerr << "Program failed. Exception: " << std::string(ex.what()) << endl;
+        return EXIT_FAILURE;
+    } catch (...) {
+        cerr << "Program failed without exception message." << endl;
+        return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
+}
+```
+
+{{% /tab %}}
+
 {{< /tabs >}}
 
-## Next Steps
+## Next steps
 
 If you're ready for more, try making your rover move in different ways.
 Can you make it move in a circle?

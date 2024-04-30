@@ -24,7 +24,7 @@ See the following example for reference.
 
 <!-- After sveltekit migration we should also be able to get a key from the UI-->
 
-Select **Include API Key** on the **Code sample** page of the [Viam app](https://app.viam.com) to obtain your API key and API key ID values.
+Select **Include secret** on the **Code sample** page of the **CONNECT** tab of the [Viam app](https://app.viam.com) to obtain your API key and API key ID values.
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -37,11 +37,11 @@ async def connect() -> ViamClient:
     dial_options = DialOptions(
       credentials=Credentials(
         type="api-key",
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
         payload='<API-KEY>',
       ),
-      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-      # id
+      # Replace "<API-KEY-ID>" (including brackets) with your machine's
+      # API key ID
       auth_entity='<API-KEY-ID>'
     )
     return await ViamClient.create_from_dial_options(dial_options)
@@ -102,7 +102,7 @@ Get training job metadata for all jobs within an organization.
 
 **Parameters:**
 
-- `org_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of your organization to request training job metadata from. Retrieve this value with the cloud management API's [`ListOrganizations()`](/build/program/apis/cloud/#listorganizations).
+- `org_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of your organization to request training job metadata from. Retrieve this value with the fleet management API's [`ListOrganizations()`](/build/program/apis/fleet/#listorganizations).
 - `training_status` [(Optional[TrainingStatus.ValueType])](https://python.viam.dev/autoapi/viam/gen/app/mltraining/v1/ml_training_pb2/index.html#viam.gen.app.mltraining.v1.ml_training_pb2.TrainingStatus): The status of training jobs you want to filter the list by. If you leave this unspecified, all training jobs for your organization are returned.
 
 **Returns**:

@@ -6,8 +6,7 @@ weight: 10
 type: "docs"
 description: "A NAME is a ... description of what the component is."
 tags: ["camera", "components"]
-image: "/icons/components.png"
-# icon: "path/to/svg/file"
+icon: true # this should be used when the image is an icon, it will adjust the sizing and object-fit
 images: ["/icons/components.png"]
 draft: true
 no_list: true
@@ -24,12 +23,12 @@ Use cases (optional):
 - A brief description of one sample use case.
 - ...
 
-Most robots with a COMPONENT need at least the following hardware (optional):
+Most machines with a COMPONENT need at least the following hardware (optional):
 
 - Board
 - ...
 
-## Related Services
+## Related services
 
 Add services commonly used with the component.
 
@@ -38,11 +37,9 @@ Add services commonly used with the component.
 {{< relatedcard link="/mobility/frame-system/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your COMPONENT with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your COMPONENT.
-
-{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Built-in models
 
@@ -54,20 +51,22 @@ For configuration information, click on the model name:
 | [`model1`](model1/) | An XYZ unit made by Some Company(INSERT LINK AS APPLICABLE)         |
 | [`model2`](model2/) | An ABCDE unit made by Some Other Company(INSERT LINK AS APPLICABLE) |
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:component" type="component">}}
 
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
 ## Control your board with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by getting your `COMPONENT` component from the robot with `FromRobot` and adding API method calls, as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Then control your machine programmatically by getting your `COMPONENT` component from the machine with `FromRobot` and adding API method calls, as shown in the following examples.
 
-These examples assume you have a board called "my_board" configured as a component of your robot.
+These examples assume you have a board called "my_board" configured as a component of your machine.
 If your board has a different name, change the `name` in the code.
 
 Be sure to import the COMPONENT package for the SDK you are using:
@@ -95,7 +94,7 @@ import (
 
 The COMPONENT component supports the following methods:
 
-_Writing Instructions: Use the method names in the protobuf, not the Python or Go-specific method names._
+_Writing Instructions: Use the method names in the [protobuf](https://github.com/viamrobotics/api/blob/main/component/board/v1/board_grpc.pb.go), not the Python or Go-specific method names._
 _Use an included snippet so you can add it to <file>/program/apis/</file>._
 
 {{< readfile "/static/include/components/apis/component.md" >}}
@@ -211,7 +210,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< snippet "social.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{< /cards >}}

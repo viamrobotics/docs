@@ -25,7 +25,7 @@ A user can create more organizations at any time.
 
 Any member of an organization can invite new users to that organization.
 
-For example, you may have an account with one organization for your personal robots at home and another organization for the robots at work.
+For example, you may have an account with one organization for your personal smart machines at home and another organization for the smart machines at work.
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/eb7v6dabCGQ">}}
 
@@ -43,7 +43,7 @@ Click an organization's name to navigate to its list of locations.
 To create a new organization, click on the Org's **Settings** in the top right of the navigation bar.
 Then enter the name for your new organization in the **New Organization** field in the upper left of the page.
 
-### Invite users to your organization
+### Invite someone to an organization
 
 To invite a user to your organization, click on the Org's **Settings** in the top right of the navigation bar.
 In the members section of the page, click on **Grant access** and enter their email address.
@@ -54,17 +54,21 @@ Then select the resource that you would like to grant the user access to and the
 You can grant a user access to the following resources:
 
 - an {{< glossary_tooltip term_id="organization" text="organization" >}}
-- an {{< glossary_tooltip term_id="location" text="location" >}}
-- an {{< glossary_tooltip term_id="robot" text="robot" >}}
+- a {{< glossary_tooltip term_id="location" text="location" >}}
+- a {{< glossary_tooltip term_id="machine" text="machine" >}}
 
 For more information on the permissions the roles assign for each resource, see [Permissions](/fleet/rbac/#permissions).
+
+#### Use the mobile app
+
+You can also use the [Viam mobile app](/fleet/#the-viam-mobile-app) to invite users to your organization, on the go. Navigate to Home on the mobile app, and select your organization. Click the gear icon in the upper right corner to access the mobile organization settings page. On the settings page enter an email address, select a role, and tap **Grant Access**.
 
 ### Create a namespace for your organization
 
 When uploading [custom modules](/registry/) to the Viam registry, you must set a namespace for your organization to associate your module with.
 
 To create a new namespace for your organization, click on the Org's **Settings** in the top right of the navigation bar, then click the **Set a public namespace** button.
-Enter a name for your namespace, and then click **Set namespace**.
+Enter a name or use the suggested name for your namespace, and then click **Set namespace**.
 Consider the following as you chose a namespace:
 
 - A namespace may only contain letters, numbers, and the dash (`-`) character.

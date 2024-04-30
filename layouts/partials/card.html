@@ -1,53 +1,92 @@
-{{ $class := .class }}
-{{ $customTitle := .customTitle }}
-{{ $customDescription := .customDescription }}
-{{ $customCanonicalLink := .customCanonicalLink }}
-{{ $link := (path.Clean (.link)) }}
-{{ $baseurl := .Site.BaseURL }}
-{{ if (eq (substr .Site.BaseURL -1 1) "/" ) }}
-  {{ $baseurl := (substr .Site.BaseURL 0 -1) }}
-{{ end }}
+{{- $class := .class -}}
+{{- $customTitle := .customTitle -}}
+{{- $customDescription := .customDescription -}}
+{{- $customCanonicalLink := .customCanonicalLink -}}
+{{- $imageOverwrite := .imageOverwrite -}}
+{{- $link := (path.Clean (.link)) -}}
+{{- $baseurl := .Site.BaseURL -}}
+{{- if (eq (substr .Site.BaseURL -1 1) "/" ) -}}
+  {{- $baseurl := (substr .Site.BaseURL 0 -1) -}}
+{{- end -}}
 <div class="col hover-card {{ if $class }}{{ $class }}{{ end }}">
-  {{ if site.GetPage ($link | string) }}
-    {{ with site.GetPage ($link | string) }}
-    {{if $customCanonicalLink }}
+{{- if site.GetPage ($link | string) -}}
+  {{- with site.GetPage ($link | string) -}}
+    {{- if $customCanonicalLink -}}
     <a href="{{$customCanonicalLink}}">
-    {{ else }}
+    {{- else -}}
     <a href="{{.RelPermalink}}">
-    {{ end }}
-      {{ if .Params.webmSrc }}
+    {{- end -}}
+    {{- if $imageOverwrite -}}
+      <div class="hover-card-img">
+        {{- partial "imgproc.html" (dict "src" ($imageOverwrite) "resize" "400x" "alt" (.Params.linkTitle) "style" "") -}}
+      </div>
+    {{- else -}}
+      {{- if .Params.videos -}}
         <div class="hover-card-video">
-					{{ partial "gif.html" (dict "webm_src" .Params.webmSrc "mp4_src" .Params.mp4Src "alt" .Params.videoAlt "maxWidth" "100%" "class" "" ) }}
+          <!-- First two videos are used for previews -->
+          {{ $extension_first_file := path.Ext (index .Params.videos 0) }}
+          {{ $extension_second_file := path.Ext (index .Params.videos 1) }}
+          <!-- check video extension -->
+          {{- if and (eq $extension_first_file ".webm") (eq $extension_second_file ".mp4") -}}
+            {{- partial "gif.html" (dict "webm_src" (index .Params.videos 0) "mp4_src" (index .Params.videos 1) "alt" .Params.videoAlt "maxWidth" "100%" "class" "" ) -}}
+          {{- else if and (eq $extension_second_file ".webm") (eq $extension_first_file ".mp4") -}}
+            {{- partial "gif.html" (dict "webm_src" (index .Params.videos 1) "mp4_src" (index .Params.videos 0) "alt" .Params.videoAlt "maxWidth" "100%" "class" "" ) -}}
+          {{- else -}}
+            {{ warnf "The first two videos specified in the frontmatter must be of type mp4 and webm: %s" .Params.videos }}
+          {{- end -}}
         </div>
-        {{ end }}
-        {{ if .Params.image }}
-          <div class="hover-card-img">
-            {{ $img := resources.GetMatch .Params.image }}
-            {{if $img }}
-              {{ partial "imgproc.html" (dict "src" (.Params.image) "resize" "400x" "alt" (.Params.imageAlt) "style" "") }}
-            {{ else }}
-              {{ errorf "Couldn't get image %s" .Params.image }}
-            {{ end }}
-          </div>
-        {{ end }}
-				{{ if .Params.icon }}
-				<div class="hover-card-icon">
-					{{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
-				</div>
-				{{ end }}
-        <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
-          {{ if $customTitle }}
-            <div>{{ $customTitle }}</div>
-          {{ else }}
-            <div>{{ .LinkTitle }}</div>
-          {{ end }}
-          {{ if ne $class "small" }}
-          <p> {{ if $customDescription }} {{ $customDescription }} {{ else }} {{ .Description }} {{ end }} </p>
-          {{ end }}
+      {{- else if .Params.images -}}
+         {{- if .Params.icon -}}<div class="hover-card-icon"> {{- else -}}<div class="hover-card-img"> {{- end -}}
+           {{- $img := resources.GetMatch (index .Params.images 0) -}}
+           {{- if $img -}}
+             {{- if .Params.imageAlt -}}
+               {{- partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "400x" "alt" (.Params.imageAlt) "style" "") -}}
+             {{- else -}}
+               {{- partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "400x" "alt" (.Params.linkTitle) "style" "") -}}
+             {{- end -}}
+           {{- else -}}
+             {{- errorf "Couldn't get image %s" (index .Params.images 0) -}}
+           {{- end -}}
         </div>
-      </a>
-      {{ end }}
-  {{ else }}
-  {{ errorf "Card has a bad link: %s" $link }}
-  {{ end }}
+       {{- end -}}
+     {{- end -}}
+    <div {{ if (index .Params.images 0) }}class="small-hover-card-div"{{ end }}{{ if .Params.videos }}class="small-hover-card-div"{{ end }}>
+     {{- if $customTitle -}}
+      <div> {{- $customTitle -}}</div>
+     {{- else -}}
+      <div> {{- .LinkTitle -}}</div>
+     {{- end -}}
+     {{- if ne $class "small" -}}
+    <p>  {{- if $customDescription -}}  {{- $customDescription -}}  {{- else -}}  {{- .Description -}}  {{- end -}} </p>
+     {{- end -}}
+    </div>
+    </a>
+   {{- end -}}
+ {{- else -}}
+  {{- if strings.HasPrefix ($link | string) "http" -}}
+    <a href="{{.RelPermalink}}">
+    {{- if $imageOverwrite -}}
+      <div class="hover-card-img">
+        {{- partial "imgproc.html" (dict "src" ($imageOverwrite) "resize" "400x" "alt" (.alt) "style" "") -}}
+      </div>
+    {{- else -}}
+      {{- if .webm_src -}}
+        <div class="hover-card-video">
+            {{- partial "gif.html" (dict "webm_src" .webm_src "mp4_src" .mp4_src "alt" .alt "maxWidth" "100%" "class" "" ) -}}
+        </div>
+       {{- end -}}
+     {{- end -}}
+    <div {{ if .webm_src }}class="small-hover-card-div"{{ end }}>
+     {{- if $customTitle -}}
+      <div> {{- $customTitle -}}</div>
+     {{- end -}}
+     {{- if ne $class "small" -}}
+    <p>  {{- if $customDescription -}}  {{- $customDescription -}} {{- end -}} </p>
+     {{- end -}}
+    </div>
+    </a>
+  {{- else -}}
+    {{- errorf "Card has a bad link: %s" $link -}}
+  {{- end -}}
+ {{- end -}}
 </div>

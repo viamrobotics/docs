@@ -16,16 +16,16 @@ The `gpiostepper` model of the motor component supports bipolar [stepper motors]
 Viam also supports some more advanced stepper driver chips ([TMC5072](../tmc5072/), [DMC4000](../dmc4000/)) that have their own microcontrollers that handle things like speed and acceleration control.
 {{< /alert >}}
 
-To configure a `gpiostepper` motor as a component of your robot, first configure the [board](/components/board/) to which the motor driver is wired.
+To configure a `gpiostepper` motor as a component of your machine, first configure the [board](/components/board/) to which the motor driver is wired.
 Then, add the motor:
 
 {{< tabs name="gpiostepper-config">}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `motor` type, then select the `gpiostepper` model.
-Enter a name for your motor and click **Create**.
+Enter a name or use the suggested name for your motor and click **Create**.
 
 ![Screenshot of a gpiostepper motor config with the step and dir pins configured to pins 13 and 15.](/components/motor/gpiostepper-config-ui.png)
 
@@ -117,7 +117,7 @@ The following attributes are available for `gpiostepper` motors:
 
 Refer to your motor and motor driver data sheets for specifics.
 
-### Wiring Example
+## Wiring example
 
 Typically, a stepper motor will have an even number of wires.
 Each pair of wires forms a loop through a coil of the motor.
@@ -130,5 +130,7 @@ The following example uses a Big Tree Tech breakout board with a [TMC2209 integr
 
 In this particular example the enable pin on the upper left corner of the driver is connected to ground to pull it low.
 See the data sheet of your stepper motor and stepper motor driver for information on how to wire your specific hardware.
+
+## Test the motor
 
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}

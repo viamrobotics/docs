@@ -4,7 +4,6 @@ defaultContentLanguageInSubdir = false
 enableMissingTranslationPlaceholders = false
 enableRobotsTXT = false
 enableGitInfo = true
-disableKinds = ["RSS"]
 timeout = 60000
 
 [taxonomies]
@@ -32,7 +31,6 @@ anchor = "smart"
 [languages]
 [languages.en]
 title = "Viam Documentation"
-description = "Viam Documentation"
 languageName ="English"
 weight = 1
 
@@ -48,6 +46,7 @@ weight = 1
     codeFences = true
 
 [outputs]
+home = ["HTML"]
 section = ["HTML", "Typesense"]
 
 [outputFormats.Typesense]
@@ -55,6 +54,10 @@ baseName = "typesense"
 isPlainText = true
 mediaType = "application/json"
 notAlternative = true
+
+[outputFormats.RSS]
+mediaType = "application/rss+xml"
+baseName = "feed"
 
 [params]
 copyright = "Viam, Inc. - Documentation is licensed under Creative Commons ShareAlike License. "

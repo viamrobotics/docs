@@ -3,30 +3,30 @@ title: "Run SDK Code"
 linkTitle: "Run Code"
 weight: 50
 type: "docs"
-description: "Execute the logic you've written to control your robot or fleet."
+description: "Execute the logic you've written to control your machine or fleet."
 images: ["/services/icons/sdk.svg"]
 tags: ["client", "sdk", "application", "sdk", "fleet", "program"]
 aliases:
   - /program/run/
 ---
 
-After saving your [code sample](/build/program/#hello-world-the-code-sample-tab) and adding control logic with [Viam's SDKs](/build/program/apis/), run your program to control your Viam-connected robot.
+After saving your [code sample](/build/program/#hello-world-the-connect-tab) and adding control logic with [Viam's SDKs](/build/program/apis/), run your program to control your Viam-connected machine.
 
 ### Authentication
 
 {{< readfile "/static/include/program/authenticate.md" >}}
 
-## Run Code Remotely
+## Run code remotely
 
-Most of the time, as long as both you and your robot are connected to the internet, you will want to run code to control your robot remotely.
+You can remotely control your machine from anywhere in the world.
+If your machine and your personal computer are both connected to the Internet, you can run code to control your machine remotely from your personal computer.
 
-{{<imgproc src="/build/program/remotely.png" resize="800x" declaredimensions=true alt="A client connecting remotely to a robot">}}
+{{<imgproc src="/build/program/remotely.png" resize="900x" declaredimensions=true alt="A client connecting remotely to a machine">}}
 
-The advantage of this method is that your robot and your computer do not have to be connected to the same WAN/LAN to issue control commands.
-You can remotely control your robot with any application you implement from anywhere in the world.
-For example, you can run code on your personal computer, creating a client [session](/build/program/apis/sessions/), where the code running on that computer sends instructions to your robot's `viam-server` instance over the internet.
+This method is convenient for most use cases because your machine and your personal computer do not have to be connected to the same WAN/LAN to issue control commands.
+When you run code on one computer, creating a client [session](/build/program/apis/sessions/), the code running on that computer sends instructions to your machine's `viam-server` instance over the Internet.
 
-After editing your code to include your robot's [authentication credentials](#authentication), run a command to execute the program in the terminal of a machine with the appropriate programming language and Viam SDK installed:
+After editing your code to include your machine's [authentication credentials](#authentication), run a command to execute the program in the terminal of a computer with the appropriate programming language and [Viam SDK](/sdks/) installed:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -62,66 +62,70 @@ flutter run <DART_FILE>
 {{% /tab %}}
 {{< /tabs >}}
 
-This is useful because as long as that computer is able to establish a network connection with the robot's computer, your control logic will be executed on the robot.
+As long as that computer is able to establish a network connection with the machine's computer, your control logic will be executed on the machine.
 
-## Run Code On-Robot
+If the internet becomes unavailable to the machine or to your computer but a local network is available, your code will continue to run as described in the next section:
 
-In case you run [PID control loops](https://en.wikipedia.org/wiki/PID_controller) or your robots have intermittent network connectivity, you can ensure this does not interfere with the code's execution, by running the control code on the same board that is running `viam-server`.
+## Run code on local network
 
-{{<imgproc src="/build/program/on-robot.png" resize="800x" declaredimensions=true alt="A client running on a robot">}}
+Your machines do not need to be connected to the Internet for you to be able to run code.
+As long as your machine is connected to the same LAN or WAN network as the device running the code, you can connect to it and run code.
 
-When connecting to a robot using the connection code from the [code sample tab](/build/program/#hello-world-the-code-sample-tab), a [client session](/build/program/apis/sessions/) automatically uses the [most efficient route](/build/program/connectivity/) to connect to your robot, which means the favored route for commands will be over localhost.
+When you use the connection code sample from the [**CONNECT** tab](/build/program/#hello-world-the-connect-tab), that code establishes a [client session](/build/program/apis/sessions/) that automatically uses the [most efficient route](/build/program/connectivity/) to send commands to your machine.
+That means that when the device your code runs on is on the same network as your machine, even if internet is available, the connection will choose the most efficient route and connect over LAN or WAN.
+If you subsequently lose internet connectivity, but stay connected to LAN or WAN, the connection will thus remain.
 
-## Run code automatically
+## Run code on-machine
 
-If you want to run your code automatically when your robot boots, you can configure Viam to run your code as a [process](/build/configure/#processes).
+You can run SDK code directly on your machine.
+If you run [PID control loops](https://en.wikipedia.org/wiki/PID_controller) or your machines have intermittent or no network connectivity, you can ensure lags in communication do not interfere with the machine's performance by running the control code on the same board that is running `viam-server`.
+Running everything on one machine is also convenient if you have a machine (for example, an air quality sensor) that runs all the time, and you don't want to have to connect to it from a separate computer constantly.
 
-To be able to run your code from your board, you need to install the relevant SDK as well as other required dependencies:
+{{<imgproc src="/build/program/on-robot.png" resize="900x" declaredimensions=true alt="A client running on a machine">}}
 
-{{< tabs >}}
-{{% tab name="Python" %}}
+The script you run on-machine is the same as the script you [run remotely](#run-code-remotely) or on a local network.
+When the connection code from the [**CONNECT** tab's **Code sample** page](/build/program/#hello-world-the-connect-tab) executes, it creates a [client session](/build/program/apis/sessions/) connected to your machine using the [most efficient route](/build/program/connectivity/).
+Because the code is running on the same machine as `viam-server`, the favored route for commands is automatically over localhost.
 
-1. [`ssh` into your board](/get-started/installation/prepare/rpi-setup/#connect-with-ssh) and install `pip`:
-
-   ```sh {class="command-line" data-prompt="$"}
-   sudo apt install python3-pip
-   ```
-
-2. Create a folder `robot` inside your home directory:
-
-   ```sh {class="command-line" data-prompt="$"}
-   mkdir robot
-   ```
-
-3. Then install the Viam Python SDK (and other dependencies if required) **into that folder**:
-
-   ```sh {class="command-line" data-prompt="$"}
-   pip3 install --target=robot viam-sdk <other-required-dependencies>
-   ```
-
-4. Add your code to your new folder:
-
-   ```sh {class="command-line" data-prompt="$"}
-   scp main.py user@host.local:/home/myboard/robot/main.py
-   ```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-Now navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Processes** subtab and navigate to the **Create process** menu.
-
-Enter `main` as the process name and click **Create process**.
+Install the appropriate programming language and [Viam SDK](/sdks/) on your machine and run a command to execute the program in the terminal of that machine instead of from a separate computer:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-In the new process panel, enter `python3` as the executable, `main.py` as the argument, and the working directory of your board Pi as `/home/myboard/robot`.
-Click on **Add argument**.
+```sh {class="command-line" data-prompt="$"}
+python3 ~/myCode/myViamFile.py
+```
 
-Click **Save config** in the bottom left corner of the screen.
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```sh {class="command-line" data-prompt="$"}
+go run ~/myCode/myViamFile.go
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+For an example, see [this execution demo.](https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/vanilla)
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+For information on running C++ code see [the instructions on GitHub](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+```sh {class="command-line" data-prompt="$"}
+flutter run <DART_FILE>
+```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-Now your robot will start its code automatically once booted.
+### Run code automatically as a process
+
+If you want to run your code on-machine automatically when your machine boots, you can configure your machine to run your code as a _{{< glossary_tooltip term_id="process" text="process" >}}_.
+You can configure the process to run once on boot, or continuously.
+
+Find information on how to configure a process in [Processes](/build/configure/processes/).

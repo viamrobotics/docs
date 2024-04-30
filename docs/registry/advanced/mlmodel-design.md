@@ -5,12 +5,13 @@ weight: 60
 type: "docs"
 tags: ["data management", "ml", "model training", "vision"]
 description: "Design your ML Model service to work with Viam's vision services."
-icon: "/services/icons/ml.svg"
+icon: true
+images: ["/services/icons/ml.svg"]
 # SME: Bijan Haney
 ---
 
 The [Machine Learning (ML) model service](/ml/) allow you to deploy machine learning models to your smart machine.
-Vision services, like [an `"mlmodel"` detector](/ml/vision/detection/#configure-an-mlmodel-detector) or [classifier](/ml/vision/classification/#configure-an-mlmodel-classifier), enable your machines to identify and classify objects in images with the deployed models' predictions.
+Vision services, like [an `"mlmodel"` detector](/ml/vision/mlmodel/) or [classifier](/ml/vision/mlmodel/), enable your machines to identify and classify objects in images with the deployed models' predictions.
 
 The two services work closely together, with the vision service relying on the deployed ML model to make inferences.
 If you are [designing your own ML Model service](/registry/), you must try to make your ML models' shapes match the input and output tensors the `mlmodel` vision service expects to work with if you want the two services to coordinate in classification or detection.
@@ -20,7 +21,7 @@ For an example of this, see [Example Metadata](#example-metadata).
 
 ## Input tensor: `input_info` in metadata
 
-For both [classification](/ml/vision/classification/) and [detection](/ml/vision/detection/) models, the vision service sends a single input tensor to the ML Model with the following structure:
+For both [classification](/ml/vision/mlmodel/) and [detection](/ml/vision/mlmodel/) models, the vision service sends a single input tensor to the ML Model with the following structure:
 
 - One input tensor called `"image"` with type `uint8` or `float32` and shape `(1, height, width, 3)`, with the last channel `3` being the RGB bytes of the pixel.
 - If image `height` and `width` are unknown or variable, then `height` and/or `width` `= -1`. During inference runtime the image will have a known height and width.
@@ -31,13 +32,13 @@ Data can be returned by the ML model in many ways, due to the variety of machine
 The vision service will try to take into account many different forms of models as specified by the metadata of the model.
 If the model does not provide metadata, the vision service will make the following assumptions:
 
-For [classifications](/ml/vision/classification/):
+For [classifications](/ml/vision/#classifications):
 
 - The model returns 1 tensor, called `"probability"` with shape `(1, n_classifications)`
 - The data is floating point numbers representing probability, between `0` and `1`.
 - If the data is not between `0` and `1`, the vision service computes a softmax over the data, resulting in floating point numbers between `0` and `1` representing probability.
 
-For [detections](/ml/vision/detection/):
+For [detections](/ml/vision/#detections):
 
 - The model returns 3 tensors
   1. `"Location"`: the bounding boxes
@@ -55,14 +56,14 @@ For labels:
 
 - Many computer vision models have an associated 'labelfile.txt' that lists the class labels associated with the model.
   To get those labels associated with the model, currently the vision service looks at the first element of the `output_info` list in the ML models' metadata and checks for a key called `"labels"` in its `"extra"` struct.
-  The value of that key should be the full path to the label file on the robot.
+  The value of that key should be the full path to the label file on the machine.
   See [Example Metadata](#example-metadata) for an example of this.
 
   ```sh {class="command-line" data-prompt="$"}
   label_path = ml_model_metadata.output_info.extra["labels"]
   ```
 
-### Example Metadata
+### Example metadata
 
 For example, a TF lite detector model that works with the vision service is structured with the following [metadata](/ml/deploy/#metadata):
 

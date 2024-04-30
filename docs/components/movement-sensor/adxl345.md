@@ -18,53 +18,14 @@ If you are using a [Viam Rover](/get-started/try-viam/), this is the acceleromet
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `movement-sensor` type, then select the `accel-adxl345` model.
-Enter a name for your movement sensor and click **Create**.
+Enter a name or use the suggested name for your movement sensor and click **Create**.
 
-{{< imgproc src="/components/movement-sensor/adxl345-builder.png" alt="Creation of an `accel-adxl345` movement sensor in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/components/movement-sensor/adxl345-builder.png" alt="Creation of an `accel-adxl345` movement sensor in the Viam app config builder." resize="1200x" style="width:650px" >}}
 
-Copy and paste the following attribute template into your movement sensor's **Attributes** box.
-Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "i2c_bus": "<your-i2c-bus-index>",
-  "use_alternate_i2c_address": <boolean>,
-  "board": "<your-board-name>",
-  "tap": {
-    "accelerometer_pin": <int>,
-    "interrupt_pin": "<your-digital-interrupt-name-on-board>",
-    "exclude_x": <boolean>,
-    "exclude_y": <boolean>,
-    "exclude_z": <boolean>,
-    "threshold": <float>,
-    "dur_us": <float>
-  },
-  "free_fall": {
-    "accelerometer_pin": <int>,
-    "interrupt_pin": "<your-digital-interrupt-name-on-board>",
-    "threshold": <float>,
-    "time_ms": <float>
-  }
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "i2c_bus": "2"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Fill in the attributes as applicable to your movement sensor, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

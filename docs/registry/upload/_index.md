@@ -1,6 +1,6 @@
 ---
-title: "Upload your own modules to the Viam registry"
-linkTitle: "Upload"
+title: "Upload your Own Modules to the Viam Registry"
+linkTitle: "Upload your module"
 weight: 20
 type: "docs"
 tags:
@@ -14,18 +14,24 @@ tags:
   ]
 description: "Use the Viam CLI to upload a custom module to the Viam registry as a public module or as a private module that is shared only within your organization."
 no_list: true
+icon: true
+images: ["/registry/upload-module.svg"]
 aliases:
   - "/extend/modular-resources/upload/"
   - "/modular-resources/upload/"
 ---
 
-Once you have [created a custom module](/registry/create/), use the [Viam CLI](/fleet/cli/) to upload it to the Viam registry as a public module that is shared with other Viam users, or as a private module that is shared only within your [organization](/fleet/organizations/).
+Once you have [created a custom module](/registry/create/), use the instructions on this page to upload it to the Viam registry as a public module that is shared with other Viam users, or as a private module that is shared only within your [organization](/fleet/organizations/).
 
-Once uploaded, you can also [update your modules](/registry/upload/#update-an-existing-module).
+You can upload your module in one of two ways:
 
-## Upload a custom module
+- You can [upload your module using the Viam CLI](#upload-a-custom-module-using-the-cli), ideal for testing or on-demand releases.
+  You can also [update your module using the CLI](#update-an-existing-module) to push code changes as needed.
+- You can [use a GitHub Action to automatically upload your module when you make a new GitHub release](#update-an-existing-module-using-a-github-action), ideal for continuous integration (CI) pipelines.
 
-To upload your custom module to the [Viam registry](https://app.viam.com/registry), either as a public or private module, use the Viam CLI commands `create`, `upload`, and `update` following these instructions:
+## Upload a custom module using the CLI
+
+To upload your custom module to the [Viam registry](https://app.viam.com/registry), either as a public or private module, use the Viam CLI commands `create` and `upload` following these instructions:
 
 1. First, [install the Viam CLI](/fleet/cli/#install) and [authenticate](/fleet/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
 
@@ -112,13 +118,19 @@ If you mark your module as public, you cannot change it back to private.
         <td><code>models</code></td>
         <td>object</td>
         <td><strong>Required</strong></td>
-        <td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/fleet/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p><p>For more information, see <a href="#naming-your-model-namespacerepo-namename">naming your model</a>.</p></td>
+        <td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/fleet/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p><p>For more information, see <a href="/registry/#naming-your-model-namespacerepo-namename">naming your model</a>.</p></td>
       </tr>
       <tr>
         <td><code>entrypoint</code></td>
         <td>string</td>
         <td><strong>Required</strong></td>
         <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing your module as a single file to the <code>upload</code> command, provide the path to that single file. If you are providing a directory containing your module to the <code>upload</code> command, provide the path to the entry point file contained within that directory.</td>
+      </tr>
+      <tr>
+        <td><code>build</code></td>
+        <td>object</td>
+        <td><strong>Optional</strong></td>
+        <td>An object containing the command to run to build your module, as well as optional fields for the path to your dependency setup script, the target architectures to build for, and the path to your built module. Use this with the <a href="/fleet/cli/#using-the-build-subcommand">Viam CLI's build subcommand</a>. </td>
       </tr>
 
     </table>
@@ -137,7 +149,12 @@ If you mark your module as public, you cannot change it back to private.
           "model": "acme:demo:my-model"
         }
       ],
-      "entrypoint": "my-module.sh"
+      "build": {
+        "path": "dist/archive.tar.gz", // optional - path to your built module
+        "build": "./build.sh", // command that will build your module
+        "arch": ["linux/amd64", "linux/arm64"] // architecture(s) to build for
+      },
+      "entrypoint": "dist/main"
     }
     ```
 
@@ -146,34 +163,25 @@ If you mark your module as public, you cannot change it back to private.
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 
-For more information, see [naming your model](#naming-your-model-namespacerepo-namename).
+For more information, see [Naming your model](/registry/#naming-your-model-namespacerepo-namename).
 
     {{% /alert %}}
 
     See [`meta.json` file](/fleet/cli/#the-metajson-file) for more information.
 
-4. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam registry.
-   Run this command from within the same directory as your `meta.json` file:
-
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   viam module update
-   ```
-
-   On a successful update, the command will return a link to the updated module in the Viam registry.
-
-5. For modules written in Python, you should package your module files as an archive first, before uploading.
+1. For modules written in Python, you should package your module files as an archive first, before uploading.
    Other languages can proceed to the next step to upload their module directly.
    To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   tar -czf module.tar.gz run.sh requirements.txt src
+   tar -czvf dist/archive.tar.gz dist/main
    ```
 
-   Where `run.sh` is your [entrypoint file](/registry/create/#prepare-the-module-for-execution), `requirements.txt` is your [pip dependency list file](/registry/create/#prepare-the-module-for-execution), and `src` is the source directory of your module.
+Where `dist/main` is the [packaged executable](/registry/create/#compile-or-package-your-module) that runs the module at the [entry point](/registry/create/#write-an-entry-point-main-program-file).
 
-   Supply the path to the resulting archive file in the next step.
+Supply the path to the resulting archive file in the next step.
 
-6. Run `viam module upload` to upload your custom module to the Viam registry.
+1. Run `viam module upload` to upload your custom module to the Viam registry.
    Specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
@@ -231,33 +239,32 @@ You can update an existing module in the [Viam registry](https://app.viam.com/re
 Updating your module manually is appropriate for smaller projects, especially those with only one contributor.
 Updating your module automatically using CI is better suited for larger, ongoing projects, especially those with multiple contributors.
 
+{{% alert title="Tip" color="tip" %}}
+If you would like to test your module locally against its intended target platform before uploading it, you can follow the steps for [Iterative module development](/registry/advanced/iterative-development/) to verify that any code changes you have made work as expected on your target platform.
+{{% /alert %}}
+
 ### Update an existing module using the Viam CLI
 
-To update an existing module in the [Viam registry](https://app.viam.com/registry) manually, use the [Viam CLI](/fleet/cli/):
+To update an existing module in the [Viam registry](https://app.viam.com/registry) manually, you can use the [Viam CLI](/fleet/cli/).
 
-1. Edit your custom module with the changes you'd like to make.
+{{% alert title="Tip" color="tip" %}}
+If you intend to make frequent code changes to your module, want to support a variety of platforms, or otherwise want to streamline your module development workflow, consider [using a GitHub action to update your module](#update-an-existing-module-using-a-github-action) instead.
+{{% /alert %}}
+
+1. Edit your custom module code with the changes you'd like to make.
 
 1. Update your custom module's `meta.json` file with any needed changes.
-   For example, if you have altered your model's name, or adjusted the endpoint name, you'll need to update `meta.json` with these changes.
-
-1. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam registry.
-   Run this command from within the same directory as your `meta.json` file:
-
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   viam module update
-   ```
-
-   On a successful update, the command will return a link to the updated module in the Viam registry.
+   For example, if you have altered your model's description, or adjusted the endpoint name, you'll need to update `meta.json` with these changes.
 
 1. For modules written in Python, you should package your module files as an archive first, before uploading.
    Other languages can proceed to the next step to upload their module directly.
    To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   tar -czf module.tar.gz run.sh requirements.txt src
+   tar -czf module.tar.gz dist/main
    ```
 
-   Where `run.sh` is your [entrypoint file](/registry/create/#prepare-the-module-for-execution), `requirements.txt` is your [pip dependency list file](/registry/create/#prepare-the-module-for-execution), and `src` is the source directory of your module.
+   Where `dist/main` is your [packaged executable](/registry/create/#compile-or-package-your-module).
 
    Supply the path to the resulting archive file in the next step.
 
@@ -279,7 +286,10 @@ For more information, see the [`viam module` command](/fleet/cli/#module)
 
 ### Update an existing module using a GitHub action
 
-To update an existing module in the [Viam registry](https://app.viam.com/registry) using continuous integration (CI), use the [`upload-module` GitHub action](https://github.com/viamrobotics/upload-module).
+To update an existing module in the [Viam registry](https://app.viam.com/registry) using continuous integration (CI), you can use one of two Github actions.
+You can only use these GitHub actions if you have already created the module by running `viam module create` and `viam module update`.
+For most use cases, we recommend the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86, ARM Linux, and MacOS.
+However, if you already have your own CI with access to arm runners or only intend to build on `x86` or `mac`, you may also use the [`upload-module` GitHub action](https://github.com/viamrobotics/upload-module) instead which allows you to define the exact build steps.
 
 1. Edit your custom module with the changes you'd like to make.
 
@@ -288,51 +298,250 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
    If you have not yet created any GitHub actions, click the **Set up a workflow yourself** link.
    See the [GitHub actions documentation](https://docs.github.com/en/actions/creating-actions) for more information.
 
-1. Paste the following action template YAML into the edit window.
+1. Paste one of the following action templates into the edit window, depending on whether you are using the `build-action` or `upload-module` action:
 
-   ```yaml {class="line-numbers linkable-line-numbers"}
-   on:
-     push:
-     release:
-       types: [released]
+{{< tabs >}}
+{{% tab name="CI with build-action" %}}
 
-   jobs:
-     publish:
-       runs-on: ubuntu-latest
-       steps:
-         - uses: actions/checkout@v3
-         - name: build
-           run: echo "your build command goes here" && false # <-- replace this with the command that builds your module's tar.gz
-         - uses: viamrobotics/upload-module@v1
-           # if: github.event_name == 'release' # <-- once the action is working, uncomment this so you only upload on release
-           with:
-             module-path: module.tar.gz
-             platform: linux/amd64 # <-- replace with your target architecture, or your module will not deploy
-             version: ${{ github.event_name == 'release' && github.ref_name || format('0.0.0-{0}.{1}', github.ref_name, github.run_number) }} # <-- see 'Versioning' section below for explanation
-             key-id: ${{ secrets.viam_key_id }}
-             key-value: ${{ secrets.viam_key_value }}
-   ```
+```yaml {class="line-numbers linkable-line-numbers"}
+# see https://github.com/viamrobotics/build-action for help
+on:
+  push:
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+" # the build-action will trigger on tags with the format 1.0.0
 
-1. Edit the copied code to include the configuration specific to your module.
-   Each item marked with a `<--` comment requires that you edit the configuration values accordingly.
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: viamrobotics/build-action@v1
+        with:
+          # note: you can replace this line with 'version: ""' if
+          # you want to test the build process without deploying
+          version: ${{ github.ref_name }}
+          ref: ${{ github.sha }}
+          key-id: ${{ secrets.viam_key_id }}
+          key-value: ${{ secrets.viam_key_value }}
+```
 
-   Set `run` to the command you use to build and package your module.
-   When you are ready to test the action, uncomment `if: github.event_name == 'release'` to enable the action to trigger a run when you [issue a release](https://docs.github.com/en/repositories/releasing-projects-on-github).
+The `build-action` GitHub action relies on a build command that you need to specify in the <file>meta.json</file> file that you created for your module when you first [uploaded it](/registry/upload/#upload-a-custom-module-using-the-cli).
+At the end of your <file>meta.json</file>, add the build configuration:
 
-   For guidance on configuring the other parameters, see the documentation for each:
+<!-- { {< tabs >}}
+{ {% tab name="Single Build File" %}} -->
 
-   - [`org-id`](/fleet/cli/#using-the---org-id-and---public-namespace-arguments): Not required if your module is public.
-   - [`platform`](/fleet/cli/#using-the---platform-argument): You can only upload one platform at a time.
-   - [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning): Also see [Using the --version argument](/fleet/cli/#using-the---version-argument) for more details on the types of versioning supported.
+```json {class="line-numbers linkable-line-numbers" data-line="4-7"}
+{
+  "module_id": "example-module",
+  ...
+  "build": {
+    "setup": "./setup.sh", // optional - command to install your build dependencies
+    "build": "./build.sh", // command that will build your module
+    "path" : "dist/archive.tar.gz", // optional - path to your built module
+    "arch" : ["linux/amd64", "linux/arm64"] // architecture(s) to build for
+  }
+}
+```
 
-1. Create an organization API key and configure your GitHub repository to use it to authenticate during GitHub action runs, following the steps below:
+{{%expand "Click to view example setup.sh" %}}
 
-   1. Follow the instructions to [create an organization API key](/fleet/cli/#create-an-organization-api-key).
-      These steps will return a `key id` and a `key value` which together comprise your organization API key.
-      By default, a new organization API key is created with **Owner** permissions, giving the key full read and write access to all robots within your organization.
-      You can change an API key's permissions from the Viam app on the [organizations page](/fleet/organizations/) by clicking the **Show details** link next to your API key.
+```sh { class="command-line"}
+#!/bin/bash
+set -e
+UNAME=$(uname -s)
 
-      If you have already created an organization API key, you can skip this step.
+if [ "$UNAME" = "Linux" ]
+then
+    echo "Installing venv on Linux"
+    sudo apt-get install -y python3-venv
+fi
+if [ "$UNAME" = "Darwin" ]
+then
+    echo "Installing venv on Darwin"
+    brew install python3-venv
+fi
+
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+```
+
+{{% /expand%}}
+
+{{%expand "Click to view example build.sh (with setup.sh)" %}}
+
+```sh { class="command-line"}
+#!/bin/bash
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main
+```
+
+{{% /expand%}}
+
+{{%expand "Click to view example build.sh (without setup.sh)" %}}
+
+```sh { class="command-line"}
+#!/bin/bash
+set -e
+UNAME=$(uname -s)
+
+if [ "$UNAME" = "Linux" ]
+then
+    echo "Installing venv on Linux"
+    sudo apt-get install -y python3-venv
+fi
+if [ "$UNAME" = "Darwin" ]
+then
+    echo "Installing venv on Darwin"
+    brew install python3-venv
+fi
+
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main
+```
+
+{{% /expand%}}
+
+<!-- { {% /tab %}}
+{ {% tab name="Platform Specific" %}}
+
+```json {class="line-numbers linkable-line-numbers" data-line="4-13"}
+{
+  "module_id": "example-module",
+  ...
+  "build": {
+    "arch": {
+          "linux/arm64": {
+            "path" : "dist/archive.tar.gz",               // optional - path to your built module
+            "build": "./build-linux-arm64.sh" // command that will build your module
+          },
+          "darwin/arm64": {
+            "build": "./build-darwin-arm64.sh" // command that will build your module
+          }
+        } // architecture(s) to build for
+  }
+}
+```
+
+{ {%expand "Click to view example build-linux-arm64.sh" %}}
+
+```sh { class="command-line"}
+#!/bin/bash
+set -e
+
+sudo apt-get install -y python3-venv
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main
+```
+
+{ {% /expand%}}
+
+{{ %expand "Click to view example build-darwin-arm64.sh" %}}
+
+```sh { class="command-line"}
+#!/bin/bash
+set -e
+
+brew install python3-venv
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main
+```
+
+{ {% /expand%}}
+
+{ {% /tab %}}
+{ {< /tabs >}} -->
+
+You can test this build configuration by running the Viam CLI's [`build local` command](/fleet/cli/#using-the-build-subcommand) on your development machine:
+
+```sh {class="command-line" data-prompt="$"}
+viam module build local
+```
+
+The command will run your build instructions locally without running a cloud build job.
+
+For more details, see the [`build-action` GitHub Action documentation](https://github.com/viamrobotics/build-action), or take a look through one of the following example repositories that show how to package and deploy modules using the Viam SDKs:
+
+- [Golang CI yaml](https://github.com/viam-labs/wifi-sensor/blob/main/.github/workflows/build.yml)
+- [Golang Example CI meta.json](https://github.com/viam-labs/wifi-sensor/blob/main/meta.json)
+<!-- - [C++ Example CI yaml](https://github.com/viamrobotics/module-example-cpp/blob/main/.github/workflows/build2.yml)
+- [C++ Example CI meta.json](https://github.com/viamrobotics/module-example-cpp/blob/main/meta.json) -->
+
+{{% /tab %}}
+{{% tab name="CI with upload-action" %}}
+
+```yaml {class="line-numbers linkable-line-numbers"}
+on:
+  push:
+  release:
+    types: [released]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: build
+        run: echo "your build command goes here" && false # <-- replace this with the command that builds your module's tar.gz
+      - uses: viamrobotics/upload-module@v1
+        # if: github.event_name == 'release' # <-- once the action is working, uncomment this so you only upload on release
+        with:
+          module-path: module.tar.gz
+          platform: linux/amd64 # <-- replace with your target architecture, or your module will not deploy
+          version: ${{ github.event_name == 'release' && github.ref_name || format('0.0.0-{0}.{1}', github.ref_name, github.run_number) }} # <-- see 'Versioning' section below for explanation
+          key-id: ${{ secrets.viam_key_id }}
+          key-value: ${{ secrets.viam_key_value }}
+```
+
+Edit the copied code to include the configuration specific to your module.
+Each item marked with a `<--` comment requires that you edit the configuration values accordingly.
+
+Set `run` to the command you use to build and package your module, such as invoking a makefile or running a shell script.
+When you are ready to test the action, uncomment `if: github.event_name == 'release'` to enable the action to trigger a run when you [issue a release](https://docs.github.com/en/repositories/releasing-projects-on-github).
+
+For guidance on configuring the other parameters, see the documentation for each:
+
+- [`org-id`](/fleet/cli/#using-the---org-id-and---public-namespace-arguments): Not required if your module is public.
+- [`platform`](/fleet/cli/#using-the---platform-argument): You can only upload one platform at a time.
+- [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning): Also see [Using the --version argument](/fleet/cli/#using-the---version-argument) for more details on the types of versioning supported.
+
+For more details, see the [`upload-module` GitHub Action documentation](https://github.com/viamrobotics/upload-module), or take a look through one of the following example repositories that show how to package and deploy modules using the Viam SDKs:
+
+- [Python with virtualenv](https://github.com/viam-labs/python-example-module/blob/main/.github/workflows/main.yml)
+- [Python with docker](https://github.com/viamrobotics/python-container-module/blob/main/.github/workflows/deploy.yml)
+- [Golang](https://github.com/viam-labs/wifi-sensor/blob/main/.github/workflows/deploy.yml)
+
+{{% /tab %}}
+{{< /tabs >}}
+
+1. Create an [organization API key](/fleet/cli/#create-an-organization-api-key) with the [owner](/fleet/rbac/#permissions) role, which the GitHub action will use to authenticate to the Viam platform, using one of the following methods:
+
+   - Use the Viam CLI to create an organization API key, which includes the owner role by default:
+
+     ```sh {class="command-line" data-prompt="$"}
+     viam organizations api-key create --org-id <org-id> --name <key-name>
+     ```
+
+   - Use the organizations page on the [Viam app](https://app.viam.com/) to generate a new organization API key.
+     Make sure your organization API key is set to **Role: Owner**, or the GitHub action will not be able to successfully authenticate during runs.
+     If you are using an existing organization API key which is not set to **Role: Owner**, you can change an API key's permissions from the Viam app on the organizations page by clicking the **Show details** link next to your API key.
+     The operator role cannot be used to authenticate GitHub action runs.
+     For more information see [Manage organizations](/fleet/organizations/).
+
+   Both methods return a `key id` and a `key value` which together comprise your organization API key.
+
+1. Then, configure your GitHub repository to use your organization API key to authenticate during GitHub action runs, following the steps below:
 
    1. In the GitHub repository for your project, select **Settings**, then **Secrets and variables**, then **Actions**.
 
@@ -342,7 +551,7 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
 
    For more information on GitHub secrets, see the GitHub documentation for [creating secrets for a repository](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository).
 
-1. Push a commit to your module or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
+1. Push a tag to your repo or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
    The specific step to take to release your software depends on your CI workflow, your GitHub configuration, and the `run` step you defined earlier.
    Once complete, your module will upload to the [Viam registry](https://app.viam.com/registry) with the appropriate version automatically.
 
@@ -353,47 +562,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 - [Golang](https://github.com/viam-labs/wifi-sensor)
 - [C++](https://github.com/viamrobotics/module-example-cpp)
 
-## Naming your model: namespace:repo-name:name
-
-If you are [creating a custom module](/registry/create/) and want to [upload that module](/registry/upload/) to the Viam registry, ensure your model name meets the following requirements:
-
-- The namespace of your model **must** match the [namespace of your organization](/fleet/organizations/#create-a-namespace-for-your-organization).
-  For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:demo:mybase`.
-- Your model triplet must be all-lowercase.
-- Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
-
-For the middle segment of your model triplet `repo-name`, use the name of the git repository where you store your module's code.
-The `repo-name` should describe the common functionality provided across the model or models of that module.
-
-For example:
-
-- The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model uses the repository name [yahboom](https://github.com/viam-labs/yahboom).
-  The models implement the `rdk:component:arm` and the `rdk:component:gripper` API to support the Yahboom DOFBOT arm and gripper, respectively:
-
-  ```json
-  {
-      "api": "rdk:component:arm",
-      "model": "rand:yahboom:arm"
-  },
-  {
-      "api": "rdk:component:gripper",
-      "model": "rand:yahboom:gripper"
-  }
-  ```
-
-- The `viam-labs:audioout:pygame` model uses the repository name [audioout](https://github.com/viam-labs/audioout)
-  It implements the custom API `viam-labs:service:audioout`:
-
-  ```json
-  {
-    "api": "viam-labs:service:audioout",
-    "model": "viam-labs:audioout:pygame"
-  }
-  ```
-
-The `viam` namespace is reserved for models provided by Viam.
-
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/registry/configure/" %}}

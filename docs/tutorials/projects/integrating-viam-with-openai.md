@@ -1,5 +1,5 @@
 ---
-title: "Integrate Viam with ChatGPT to create a companion robot"
+title: "Integrate Viam with ChatGPT to Create a Companion Robot"
 linkTitle: "AI Companion Robot"
 type: "docs"
 tags:
@@ -17,13 +17,12 @@ tags:
     "python",
   ]
 description: "Harness AI and use ChatGPT to add life to your Viam rover and turn it into a companion robot."
-image: "/tutorials/ai-integration/rosey_robot.jpg"
 images: ["/tutorials/ai-integration/rosey_robot.jpg"]
 aliases: /tutorials/integrating-viam-with-openai/
 imageAlt: "An AI powered companion robot called Rosey."
 authors: ["Matt Vella"]
 languages: ["python"]
-viamresources: ["custom", "servo", "board", "ml model", "vision", "speech"]
+viamresources: ["custom", "servo", "board", "mlmodel", "vision", "speech"]
 level: "Intermediate"
 date: "2023-02-15"
 # updated: ""
@@ -71,7 +70,10 @@ This tutorial will show you how to use the Viam platform to create an AI-integra
 This tutorial assumes that you have already set up your Viam Rover.
 If not, first follow the Viam Rover [setup instructions](/get-started/try-viam/rover-resources/rover-tutorial/).
 
-If you are not using a Viam Rover, [install viam-server](/get-started/installation/) and configure your robot with the [appropriate components](/components/).
+If you are not using a Viam Rover, [add a new machine](/fleet/machines/#add-a-new-machine) in the [Viam app](https://app.viam.com).
+Then follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on the computer you're using for your project and connect to the Viam app.
+Wait until your machine has successfully connected.
+Then configure your machine with the [appropriate components](/components/).
 If you are using a different rover, the [Viam Rover setup instructions](/get-started/try-viam/rover-resources/rover-tutorial-fragments/) may still help you configure your robot.
 
 ### 1. Connect the servo
@@ -159,7 +161,7 @@ sudo apt-get install alsa-tools alsa-utils
 sudo apt-get install flac
 ```
 
-Now, install the python library dependencies by running the following command from inside the directory where you cloned the code:
+Now, install the Python library dependencies by running the following command from inside the directory where you cloned the code:
 
 ```sh {class="command-line" data-prompt="$"}
 pip install -r requirements.txt
@@ -168,6 +170,8 @@ pip install -r requirements.txt
 Finally, you will need both Viam robot credentials and OpenAI API credentials in order to run the software.
 
 {{% snippet "show-secret.md" %}}
+
+You can find API key and API key ID values for your robot by navigating to the **CONNECT** tab in the [Viam app](https://app.viam.com) and selecting the **API keys** page.
 
 To acquire OpenAI credentials, [sign up for OpenAI](https://openai.com/api/) and [set up API keys](https://platform.openai.com/account/api-keys).
 
@@ -198,30 +202,26 @@ Now, configure your rover to:
 
 ### 1. Configure the servo
 
-To configure your [servo](/components/servo/), go to your rover's **Config** tab and click the **Components** subtab.
+To configure your [servo](/components/servo/), go to your rover's **CONFIGURE** tab.
 
-Click **Create component** in the lower-left corner of the screen.
+- Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+- Select the `servo` type, then select the `pi` model (since you've attached your servo to a Raspberry Pi).
+- Enter the name `servo1` for your servo and click **Create**.
 
-Select type `servo`.
-Since you've attached your servo to a Raspberry Pi, choose the model `pi`.
+Now, in the panel for `servo1`, add the following attribute configuration:
 
-Name it `servo1`.
-Click **Create**.
+{{< imgproc src="/tutorials/ai-integration/servo_pane.png" alt="An example configuration for a pi servo with GPIO 8 and board 'local' in the Viam app Config Builder." resize="1200x" style="width:450px" >}}
 
-{{<imgproc src="/tutorials/ai-integration/servo_component_add.png" resize="900x" declaredimensions=true alt="Adding the servo component." style="border:1px solid #000" >}}
+- Enter `8` for `pin`.
+- Select the name of your [board](/components/board/) for the `board` attribute: in this case, `local`.
 
-Now, in the panel for `servo1`, add the following configuration in attributes to tell `viam-server` that the servo is attached to GPIO pin 8, then press the **Save Config** button.
+This tells `viam-server` that the servo is attached to GPIO pin 8 on the board.
 
-```json
-{
-  "pin": "8",
-  "board": "local"
-}
-```
-
+Press the **Save** button in the top-right corner of the page to save your config.
 `viam-server` will now make the servo available for use.
-Click on the **Control** tab.
-You should see a panel for `servo1`.
+
+Click on the **CONTROL** tab.
+As long as your machine is connected to the app, you will see a panel for `servo1`.
 From there, you can change the angle of your servo by increments of 1 or 10 degrees.
 
 Move the servo to 0 degrees, and attach the emotion wheel to the servo with the happy emoji facing upwards and centered.
@@ -233,34 +233,36 @@ We found that if set up this way, the following positions accurately show the co
 
 ### 2. Configure the ML Model and vision services to use the detector
 
-Click the **Config** tab and then the **Services** subtab.
-From there, scroll to the bottom and create a new service of **type** `ML Models`, **model** `tflite_cpu` named 'stuff_detector'.
+The [ML model service](/ml/) allows you to deploy a machine learning model to your robot.
+This tutorial uses a pre-trained machine learning (ML) model from the Viam registry named [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
+This model can detect a variety of objects, which you can find in the provided <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
+
+To configure an ML model service:
+
+- Select the **CONFIGURE** tab.
+- Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+- Select the `ML model` type, then select the `TFLite CPU` model.
+- Enter the name `stuff_detector` for your service and click **Create**.
+
 Your robot will register this as a machine learning model and make it available for use.
 
-{{<imgproc src="/tutorials/ai-integration/mlmodels_service_add.png" resize="500x" declaredimensions=true alt="Adding the ML Models Service." style="border:1px solid #000">}}
+Select **Deploy model on machine** for the **Deployment** field.
+Then select the `viam-labs:EfficientDet-COCO` model from the **Models** dropdown.
 
-Make sure `Path to Existing Model on Robot` is selected.
+Now, create a vision service to visualize your ML model:
 
-Update the **Model Path** and **Label Path** to match where you [copied the tutorial software](#5-set-up-tutorial-software).
-For example, the model path would would be similar to:
+- Select the **CONFIGURE** tab.
+- Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+- Select the `vision` type, then select the `ML model` model.
+- Enter the name `mlmodel` for your service and click **Create**.
 
-```sh {class="command-line" data-prompt="$"}
-/home/<username>/tutorial-openai-integration/detector/effdet0.tflite
-```
-
-and the label path similar to:
-
-```sh {class="command-line" data-prompt="$"}
-/home/<username>/tutorial-openai-integration/detector/labels.txt
-```
-
-Now, create a new service of **type** `vision`, **model** `ML Model` named 'vis-stuff-detector'.
 Your companion robot will use this to interface with the machine learning model allowing you to - well, detect stuff!
 
-{{<imgproc src="/tutorials/ai-integration/vision_service_add.png" resize="500x" declaredimensions=true alt="Adding the vision service." style="border:1px solid #000">}}
+Select the model that you added in the previous step in the **ML Model** field of your detector:
 
-Select the model that you added in the previous step.
-Click **Save config** to finish adding the detector.
+{{<imgproc src="/services/deploy-model-menu.png" resize="700x" alt="Models dropdown menu with models from the registry.">}}
+
+Click **Save** in the top-right corner of the page to save your config.
 
 ## Bring "Rosey" to life
 
@@ -313,26 +315,23 @@ For example:
 
 This opens up some really interesting possibilities, like having your robot talk to you in a voice that sounds like your favorite celebrity, or having your robot tell your cat to "Get off of the table!" in an AI version of your own voice.
 
-## Alternative Option: Configure Viam Labs speech module
+## Alternative option: configure Viam Labs speech module
 
 As an alternate option for adding an AI speech integration to your robot, [the Viam Registry](https://app.viam.com/registry) provides [the `speech` module](https://app.viam.com/module/viam-labs/speech), a modular [service](/services/) providing text-to-speech (TTS) and speech-to-text (STT) capabilities for robots running on the Viam platform.
 Usage is documented on [Viam Labs' GitHub](https://github.com/viam-labs/speech).
 
 ### Configuration
 
-Navigate to the **Config** page of your rover robot in [the Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** page of your rover robot in [the Viam app](https://app.viam.com).
 
 {{< tabs name="Configure the speech module" >}}
-{{% tab name="Config Builder" %}}
+{{% tab name="Builder" %}}
 
-Click on the **Services** subtab and click the **Create service** button.
-Search `speech`.
-Select the `speech/speechio` option:
-
-![Add the speech module in the Viam config builder UI for services.](/tutorials/ai-integration/add-speech-module.png)
-
-Give your new speech module a name of your choice.
-Copy and paste the following JSON into the attributes box:
+- Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+- Search `speech`.
+- Select the `speech/speechio` option and click **Add module**.
+- Give your new speech module a name of your choice.
+- In the pane that appears for the service, copy and paste the following JSON into the attributes field:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -347,12 +346,16 @@ Copy and paste the following JSON into the attributes box:
 }
 ```
 
-Save the config.
+For example:
+
+{{< imgproc src="/tutorials/ai-integration/add-speech-module.png" alt="Adding attributes to the speech module in the Viam config builder UI for services." resize="1000x" style="width:450px" >}}
+
+Save your config by selecting the **Save** button in the top-right corner of the page.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Select **Raw JSON** mode.
+Select **JSON** mode.
 Copy and paste the following into your `modules` array to add [`speech`](https://app.viam.com/module/viam-labs/speech) from [the Viam app's Modular Registry](https://app.viam.com/registry):
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -385,7 +388,7 @@ Then, copy and paste the following into your `services` array to add [elevenlabs
 }
 ```
 
-Save the config.
+Save your config by selecting the **Save** button in the top-right corner of the page.
 
 {{% /tab %}}
 {{< /tabs >}}

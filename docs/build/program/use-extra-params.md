@@ -35,9 +35,9 @@ For example:
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def main():
-    # ... Connect to the robot.
+    # ... Connect to the machine.
 
-    # Get your sensor resource from the robot.
+    # Get your sensor resource from the machine.
     your_sensor = YourSensor.from_robot(robot, "your-sensor")
 
     # Define a dictionary containing extra information.
@@ -64,9 +64,9 @@ For example:
 
 ```go {class="line-numbers linkable-line-numbers"}
 func main() {
-    ... // Connect to the robot
+    ... // Connect to the machine
 
-    // Get your sensor resource from the robot.
+    // Get your sensor resource from the machine.
     yourSensor, err := YourSensor.FromRobot(robot, "your-sensor")
 
     // Define a map containing extra information.

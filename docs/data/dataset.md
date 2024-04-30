@@ -1,13 +1,13 @@
 ---
-title: "Label data and create datasets"
+title: "Label Data and Create Datasets"
 linkTitle: "Create Datasets"
 description: "Label data and create datasets for managing data and creating machine learning models."
-weight: 39
+weight: 30
 type: "docs"
 tags: ["data management", "cloud", "sync"]
+imageAlt: "Label data and create datasets"
 images: ["/data/label-dog.gif"]
-webmSrc: "/data/label-dog.webm"
-mp4Src: "/data/label-dog.mp4"
+videos: ["/data/label-dog.webm", "/data/label-dog.mp4"]
 videoAlt: "Add a bounding box around the dog in an image."
 aliases:
   - /manage/data/label/
@@ -57,7 +57,7 @@ To see all the images that have bounding boxes, you can filter your dataset by s
 
 To delete a bounding box, click the cross next to the corresponding label.
 
-### Image Tags
+### Image tags
 
 You can use tags to [create classification models](/ml/train-model/#train-a-model) for images.
 For example, if you would like to create a model that identifies an image of a star in a set of images, tag each image containing a star with a `star` tag.
@@ -95,11 +95,11 @@ Once you have created a dataset, you can select the existing dataset from the dr
 {{<gif webm_src="/data/add-to-dataset.webm" mp4_src="/data/add-to-dataset.mp4" alt="Add image to dataset">}}
 
 You can also create a new dataset from the [**DATASETS** subtab](https://app.viam.com/data/datasets).
-Click **Create dataset**, enter a name for your dataset and click **Create dataset** again.
+Click **Create dataset**, enter a name or use the suggested name for your dataset and click **Create dataset** again.
 
 ![Create dataset UI](/data/create-dataset.png)
 
-Alternatively, you can use the [`viam data dataset add` command](/fleet/cli/#data) to add an image or group of images matching a specific filter using the Viam CLI.
+Alternatively, you can use the [`viam data dataset add` command](/fleet/cli/#data) to add an image or group of images matching a specific filter to a dataset using the Viam CLI.
 
 ### Remove an image from a dataset
 
@@ -130,7 +130,7 @@ Alternatively, you can also click on the dataset and rename it from the three-do
 To delete a dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets), right click on the dataset and click on **Delete** in the menu that appears.
 Alternatively, you can also click on the dataset and delete it from the three-dot icon next to the dataset name.
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/ml/train-model/" %}}

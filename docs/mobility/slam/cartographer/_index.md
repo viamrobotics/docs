@@ -5,35 +5,42 @@ weight: 70
 type: "docs"
 description: "Configure a Simultaneous Localization And Mapping (SLAM) service with the Cartographer modular resource."
 tags: ["slam", "services"]
-icon: "/services/icons/slam.svg"
+icon: true
+images: ["/services/icons/slam.svg"]
 aliases:
   - "/services/slam/run-slam-cartographer/"
   - "/services/slam/cartographer/"
 # SMEs: Kat, Jeremy
 ---
 
+{{% alert title="Temporarily not available in the cloud" color="caution" %}}
+
+Running `cartographer` in the cloud is temporarily disabled, and the attribute `use_cloud_slam` defaults to `false`.
+If you set `use_cloud_slam` to `true`, it will not be possible to see the results in the remote control card.
+
+{{% /alert %}}
+
 [The Cartographer Project](https://github.com/cartographer-project) contains a C++ library that performs dense Simultaneous Localization And Mapping (SLAM).
 
 To use Cartographer with the Viam {{< glossary_tooltip term_id="slam" text="SLAM" >}} service, you can use the [`cartographer`](https://app.viam.com/module/viam/cartographer) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
-See [Modular resources](/registry/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
+See the [Use Modules](/registry/#use-modules) section for instructions on using a module from the Viam registry on your machine.
 
 The source code for this module is available on the [`viam-cartographer` GitHub repository](https://github.com/viamrobotics/viam-cartographer).
 
 {{% alert title="Info" color="info" %}}
 
-Cartographer supports taking **2D LiDAR** or **3D LiDAR** data and optionally **inertial measurement unit (IMU)** and/or **odometry** data as input.
+Currently, the `cartographer` modular resource supports taking 2D LiDAR and optionally IMU and/or odometry data as input.
 
-However, currently, the `cartographer` modular resource only supports taking **2D LiDAR** and optionally **IMU** data as input.
-Support for taking **3D LiDAR** and **odometry** data as input may be added in the future.
+Support for taking 3D LiDAR data as input may be added in the future.
 
 {{% /alert %}}
 
 Cartographer can operate:
 
-- _online_ [using a live robot](#use-a-live-robot) for creating and updating maps or for localization
+- _online_ [using a live machine](#use-a-live-machine) for creating and updating maps or for localization
 - _offline_ [using previously captured data](#use-previously-captured-data) for creating and updating maps
 
-## Use a live robot
+## Use a live machine
 
 The `cartographer` module supports three modes of operation:
 
@@ -42,7 +49,7 @@ The `cartographer` module supports three modes of operation:
 - [Pure localization](#localize-only)
 
 Creating and updating SLAM maps with Cartographer is especially CPU-intensive, so the `cartographer` modular resource runs in the cloud for these two tasks.
-For doing pure localization on an existing map, the `cartographer` modular resource runs locally on your robot.
+For doing pure localization on an existing map, the `cartographer` modular resource runs locally on your machine.
 
 {{% alert title="Info" color="info" %}}
 
@@ -51,169 +58,236 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) for more information.
 
 {{% /alert %}}
 
-### Requirements
+### Hardware requirements
 
-- You must have an RPlidar, such as the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) or [RPlidar A3](https://www.slamtec.com/en/Lidar/A3), physically connected to your robot.
+#### RPLidar
 
-  Be sure to position the RPlidar so that it **faces forward in the direction of travel**. For example, if you are using a Viam Rover and the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to the Rover so that the **pointed** end of the RPlidar mount housing is facing in the same direction as the webcam.
+- You must have an RPlidar, such as the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) or [RPlidar A3](https://www.slamtec.com/en/Lidar/A3), physically connected to your machine.
+
+  Be sure to position the RPlidar so that it **faces forward in the direction of travel**. For example, if you are using a [Viam Rover](https://www.viam.com/resources/rover) and the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to the Rover so that the **pointed** end of the RPlidar mount housing is facing in the same direction as the webcam.
+
+  Furthermore, ensure that the center of the RPlidar is mounted at the center of your machine's [base](/components/base/).
+  In the case of the Viam Rover the center is in the middle between the wheels.
 
   If you need a **mount plate** for your RPlidar A1 or A3 model, you can 3D print an adapter plate using the following:
 
   - [RPlidar A1 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA1_adapter.STL)
   - [RPlidar A3 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA3_adapter.STL)
 
-- In addition, you must [add the `rplidar` module to your robot](https://github.com/viamrobotics/rplidar) to support the RPlidar hardware, if you have not done so already.
+- In addition, you must [add the `rplidar` module to your machine](https://github.com/viamrobotics/rplidar) to support the RPlidar hardware, if you have not done so already.
 
   {{< alert title="SUPPORT" color="note" >}}
 
-  Currently, the `rplidar` and `cartographer` modules support the Linux platform only.
+  Currently, the `rplidar` and `cartographer` modules only support the Linux platform.
 
   {{< /alert >}}
+
+#### Movement sensors (optional)
+
+You can use data from one or more movement sensors on your machine to supplement the required LiDAR data.
+If you choose to use movement sensor data for SLAM, you can:
+
+- Add only inertial measurement unit (IMU) data
+  - Requires a movement sensor that supports [`AngularVelocity`](/mobility/navigation/#angular-velocity) and [`LinearAcceleration`](/mobility/navigation/#linear-acceleration) readings
+- Add only odometry data
+  - Requires a movement sensor that collects [`Position`](/mobility/navigation/#position) and [`Orientation`](/mobility/navigation/#orientation) data (for example, [`wheeled-odometry`](/components/movement-sensor/wheeled-odometry/))
+- Add both IMU _and_ odometry data
+  - Requires all four of the above kinds of data, merged together using the [`merged` movement sensor model](/components/movement-sensor/merged/)
+- If you choose this option, be sure to configure data capture on the `merged` sensor and not on the individual movement sensors when following the steps below.
 
 ### Create a new map
 
 To create a new map, follow the instructions below.
 Creating a new map uses an instance of the cartographer module running in the cloud.
 
-1. Configure your `cartographer` SLAM service
+1. Enable data capture and configure your `cartographer` SLAM service:
 
-   After installing your physical RPlidar and adding the `rplidar` module as outlined in the [requirements](#requirements) section, follow the steps below to add the `cartographer` module to your robot:
+{{< tabs name="Create new map">}}
+{{% tab name="Config Builder" %}}
 
-   {{< tabs name="Create new map">}}
-   {{% tab name="Config Builder" %}}
-   Follow the instructions below to set up the `cartographer` module on your robot:
+1. Add the data management service to your machine:
 
-   1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-   1. Click on the **Services** subtab and click **Create service** in the lower-left corner.
-   1. Select **SLAM**, then select `cartographer`.
-      You can also search for "cartographer".
-   1. Click **Add module**, give your service a name of your choice, then click **Create**.
-   1. In the resulting `SLAM` service configuration pane, first choose `Create new map` as the **Mapping mode**, then configure the rest of the **Attributes** for that mapping mode:
+   Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+   Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+   Choose `Data Management` as the type and either use the suggested name or specify a name for your data management service, for example `data_manager-1`.
+   Click **Create**.
 
-      - **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your robot](https://github.com/viamrobotics/rplidar).
-        Example: "my-rplidar"
-        - Then set a **Data capture rate (Hz)** for it.
-          Example: "5"
-      - **Movement Sensor (Optional)**: Select the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API.
-        Example: "my-imu"
-        - Then set a **Data capture rate (Hz)** for it.
-          Example: "20"
-      - **Minimum range (meters)**: Set the minimum range of your `rplidar`.
-        See [config params](#config_params) for suggested values for RPLidar A1 and A3.
-      - **Maximum range (meters)**: Set the maximum range of your `rplidar`.
-        See [config params](#config_params) for suggested values for RPLidar A1 and A3.
+   On the panel that appears, you can manage the capturing and syncing functions.
+   You can also specify the **directory**, the sync **interval**, and any **tags** to apply to captured data.
+   See the [data management service](/data/) for more information.
 
-      If you would like to tune additional Cartographer parameters, you can expand **Show additional parameters**.
-      See the [`config_params`](#config_params) section for more information on the other parameters.
+2. Enable data capture for your camera, and for your movement sensor if you would like to use IMU data, odometry data, or both:
 
-   To save your changes, click **Save config** at the bottom of the page.
+   Find the component's card on your machine's **CONFIGURE** tab.
+   Click `Add Method`, then specify the method type and the capture frequency.
 
-   Check the **Logs** tab of your robot in the Viam app to make sure your RPlidar has connected and no errors are being raised.
+   - For the required LiDAR camera, choose the `NextPointCloud` method.
+     Set the capture frequency.
+     `5` hertz is a good starting place for most applications.
 
-   {{%/tab %}}
-   {{% tab name="JSON Example" %}}
+     {{<imgproc src="/mobility/slam/rplidar-capture.png" resize="x1100" declaredimensions=true alt="An R P lidar camera configured in the Viam app config builder with next point cloud configured for capture at 5 hertz." >}}
 
-   This example JSON configuration:
+   - To capture data from one or more movement sensors:
 
-   - adds the `viam:rplidar` and the `viam:cartographer` modules
-   - configures the `viam:slam:cartographer` service and the [data management service](/data/)
-   - adds an `viam:lidar:rplidar` camera with data management configured
+{{< tabs name="Movement sensor options" >}}
+{{% tab name="IMU only" %}}
 
-   <br>
+For an IMU, choose the `AngularVelocity` and `LinearAcceleration` methods and set the capture frequency.
+`20` hertz is a good starting place for most applications.
 
-   ```json {class="line-numbers linkable-line-numbers"}
-   {
-     "modules": [
-       {
-         "type": "registry",
-         "name": "viam_rplidar",
-         "module_id": "viam:rplidar",
-         "version": "0.1.14"
-       },
-       {
-         "type": "registry",
-         "name": "viam_cartographer",
-         "module_id": "viam:cartographer",
-         "version": "0.3.36"
-       }
-     ],
-     "services": [
-       {
-         "attributes": {
-           "config_params": {
-             "max_range_meters": "25",
-             "mode": "2d",
-             "min_range_meters": "0.2"
-           },
-           "camera": {
-             "name": "rplidar",
-             "data_frequency_hz": "5"
-           },
-           "enable_mapping": true,
-           "use_cloud_slam": true
-         },
-         "name": "slam",
-         "type": "slam",
-         "namespace": "rdk",
-         "model": "viam:slam:cartographer"
-       },
-       {
-         "name": "Data-Management-Service",
-         "type": "data_manager",
-         "attributes": {
-           "tags": [],
-           "additional_sync_paths": [],
-           "sync_interval_mins": 0.1,
-           "capture_dir": ""
-         }
-       }
-     ],
-     "components": [
-       {
-         "namespace": "rdk",
-         "attributes": {},
-         "depends_on": [],
-         "service_configs": [
-           {
-             "attributes": {
-               "capture_methods": [
-                 {
-                   "disabled": false,
-                   "method": "NextPointCloud",
-                   "capture_frequency_hz": 5
-                 }
-               ]
-             },
-             "type": "data_manager"
-           }
-         ],
-         "name": "rplidar",
-         "model": "viam:lidar:rplidar",
-         "type": "camera"
-       }
-     ]
-   }
-   ```
+{{<imgproc src="/mobility/slam/imu-capture.png" resize="x1100" declaredimensions=true alt="An IMU configured in the Viam app config builder with angular velocity and linear acceleration both configured for capture at 20 hertz." >}}
 
-   {{% /tab %}}
-   {{< /tabs >}}
+{{% /tab %}}
+{{% tab name="Odometry only" %}}
 
-   {{< alert title="Tip" color="tip" >}}
-   Be aware that data is not only captured when a slam session is running.
-   [Data Capture](/data/capture/) continuously monitors and captures your robot's sensor data while the robot is running.
-   To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/).
-   {{< /alert >}}
+For a movement sensor that supports odometry, choose the `Position` and `Orientation` methods and set the capture frequency.
+`20` hertz is a good starting place for most applications.
 
-   For more information about the configuration attributes, see [Attributes](#attributes).
+{{<imgproc src="/mobility/slam/odometer-capture.png" resize="x1100" declaredimensions=true alt="A wheeled odometer configured in the Viam app config builder with position and orientation both configured for capture at 20 hertz." >}}
 
-2. Start a mapping session
+{{% /tab %}}
+{{% tab name="Both (merged)" %}}
 
-   Navigate to the **Control** tab on your robot's page and click on the dropdown menu matching the `name` of the service you created.
+For a `merged` movement sensor, choose all four methods (`AngularVelocity`, `LinearAcceleration`, `Position`, and `Orientation`) and set the capture frequency.
+`20` hertz is a good starting place for most applications.
+You _do not_ need to configure data capture on the individual IMU and odometer.
+
+{{<imgproc src="/mobility/slam/merged-capture.png" resize="x1100" declaredimensions=true alt="An IMU configured in the Viam app config builder with angular velocity, linear acceleration, position, and orientation all configured for capture at 20 hertz." >}}
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{< alert title="Tip" color="tip" >}}
+Note that [Data Capture](/data/capture/) continuously monitors and captures your machine’s sensor data while the machine is running. To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/) once you have finished your SLAM session.
+{{< /alert >}}
+
+3. Set up the `cartographer` module on your machine:
+
+   Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+
+   Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+   Select **SLAM**, then select `cartographer`.
+   You can also search for "cartographer".
+
+   Click **Add module**, give your service a name of your choice, then click **Create**.
+
+   In the resulting `SLAM` service configuration pane, choose `Create new map` as the **Mapping mode**, then configure the rest of the **Attributes** for that mapping mode:
+
+   - **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your machine](https://github.com/viamrobotics/rplidar).
+     Example: "my-rplidar"
+   - **Movement Sensor (Optional)**: Select the `name` of the movement sensor component that you want to use for SLAM.
+     If you are using both an IMU _and_ an odometer, select the `name` of the `merged` movement sensor, _not_ the `name` of either of the individual movement sensors.
+     Examples: "my-imu", "MyOdometer," or "merged-ms".
+   - **Minimum range (meters)**: Set the minimum range of your `rplidar`.
+     See [config params](#config_params) for suggested values for RPLidar A1 and A3.
+   - **Maximum range (meters)**: Set the maximum range of your `rplidar`.
+     See [config params](#config_params) for suggested values for RPLidar A1 and A3.
+
+   If you would like to tune additional Cartographer parameters, you can expand **Show additional parameters**.
+   See the [`config_params`](#config_params) section for more information on the other parameters.
+
+   To save your changes, click the **Save** button in the top right corner of the page.
+
+   Check the **LOGS** tab of your machine in the Viam app to make sure your RPlidar has connected and no errors are being raised.
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+This example JSON configuration:
+
+- adds the `viam:rplidar` and the `viam:cartographer` modules
+- configures the `viam:slam:cartographer` service and the [data management service](/data/)
+- adds an `viam:lidar:rplidar` camera with data capture configured
+
+  <br>
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_rplidar",
+      "module_id": "viam:rplidar",
+      "version": "0.1.14"
+    },
+    {
+      "type": "registry",
+      "name": "viam_cartographer",
+      "module_id": "viam:cartographer",
+      "version": "0.3.36"
+    }
+  ],
+  "services": [
+    {
+      "attributes": {
+        "config_params": {
+          "max_range_meters": "25",
+          "mode": "2d",
+          "min_range_meters": "0.2"
+        },
+        "camera": {
+          "name": "rplidar",
+          "data_frequency_hz": "5"
+        },
+        "enable_mapping": true,
+        "use_cloud_slam": true
+      },
+      "name": "slam",
+      "type": "slam",
+      "namespace": "rdk",
+      "model": "viam:slam:cartographer"
+    },
+    {
+      "name": "data_manager-1",
+      "type": "data_manager",
+      "attributes": {
+        "tags": [],
+        "additional_sync_paths": [],
+        "sync_interval_mins": 0.1,
+        "capture_dir": ""
+      }
+    }
+  ],
+  "components": [
+    {
+      "namespace": "rdk",
+      "attributes": {},
+      "depends_on": [],
+      "service_configs": [
+        {
+          "attributes": {
+            "capture_methods": [
+              {
+                "disabled": false,
+                "method": "NextPointCloud",
+                "capture_frequency_hz": 5
+              }
+            ]
+          },
+          "type": "data_manager"
+        }
+      ],
+      "name": "rplidar",
+      "model": "viam:lidar:rplidar",
+      "type": "camera"
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+For more information about the configuration attributes, see [Attributes](#attributes).
+
+1. Start a mapping session:
+
+   Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.
 
    When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
 
-   Enter a name for your new map and click **Start session**.
+   Enter a name or use the suggested name for your new map and click **Start session**.
    Wait for the slam session to finish starting up in the cloud, which **takes about 2 minutes**.
 
    Make sure to either **manually refresh**, or **change the refresh frequency** to something other than `Manual`.
@@ -232,7 +306,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
    ![offline mapping maps computing table](/mobility/slam/offline-mapping-maps-computing-table.png)
 
-   When you are ready to end the slam session, return to your robot's **Control** tab and click **End session**.
+   When you are ready to end the slam session, return to your machine's **CONTROL** tab and click **End session**.
    If you do not click **End session**, the slam session will automatically end after 45 minutes.
 
    Once the session has ended, the map is saved to your **Location** page's **SLAM library** tab.
@@ -248,14 +322,14 @@ Creating a new map uses an instance of the cartographer module running in the cl
 To update an existing map with new pointcloud data from a new SLAM session, follow the instructions below.
 Updating an existing map uses an instance of the `cartographer` module running in the cloud, and _does not_ overwrite the existing map.
 
-1. Configure your `cartographer` SLAM service
+1. Configure your `cartographer` SLAM service:
 
    {{< tabs name="Update existing map">}}
    {{% tab name="Config Builder" %}}
 
    Configure **Select map** and **Map version** with the name and version of the map you would like to update.
    For the other attributes, review the information in [Create a new map](#create-a-new-map).
-   You can see more details about the available maps from your robot's **Location** page under the **SLAM library** tab.
+   You can see more details about the available maps from your machine's **Location** page under the **SLAM library** tab.
 
    {{% /tab %}}
    {{% tab name="JSON Example" %}}
@@ -264,7 +338,7 @@ Updating an existing map uses an instance of the `cartographer` module running i
 
    - adds the `viam:rplidar` and the `viam:cartographer` modules
    - configures the `viam:slam:cartographer` service and the [data management service](/data/)
-   - adds an `viam:lidar:rplidar` camera with data management configured
+   - adds an `viam:lidar:rplidar` camera with data capture configured
    - specifies the `slam_map` to be updated in the `packages`
 
    <br>
@@ -307,7 +381,7 @@ Updating an existing map uses an instance of the `cartographer` module running i
          "model": "viam:slam:cartographer"
        },
        {
-         "name": "Data-Management-Service",
+         "name": "data_manager-1",
          "type": "data_manager",
          "attributes": {
            "tags": [],
@@ -355,17 +429,11 @@ Updating an existing map uses an instance of the `cartographer` module running i
    {{% /tab %}}
    {{< /tabs >}}
 
-   {{< alert title="Tip" color="tip" >}}
-   Be aware that data is not only captured when a slam session is running.
-   [Data Capture](/data/capture/) continuously monitors and captures your robot's sensor data while the robot is running.
-   To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/).
-   {{< /alert >}}
-
    For more information about the configuration attributes, see [Attributes](#attributes).
 
-2. Start a mapping session
+2. Start a mapping session:
 
-   Navigate to the **Control** tab on your robot's page and click on the dropdown menu matching the `name` of the service you created.
+   Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.
 
    When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
@@ -379,22 +447,22 @@ Updating an existing map uses an instance of the `cartographer` module running i
 
 {{% alert title="Info" color="info" %}}
 
-Cartographer may take several minutes to find your robot's position on the existing map.
-In the meantime, your robot will show up at the map's origin (with the `(x,y)` coordinates `(0,0)`).
+Cartographer may take several minutes to find your machine's position on the existing map.
+In the meantime, your machine will show up at the map's origin (with the `(x,y)` coordinates `(0,0)`).
 
 {{% /alert %}}
 
 ### Localize only
 
-In this mode, the `cartographer` module on your robot executes the Cartographer algorithm itself locally to find its position on a map.
+In this mode, the `cartographer` module on your machine executes the Cartographer algorithm itself locally to find its position on a map.
 
-1.  Configure your `cartographer` SLAM service
+1.  Configure your `cartographer` SLAM service:
 
     {{< tabs name="Localize only">}}
     {{% tab name="Config Builder" %}}
 
-The configuration is similar to the configuration for [updating an existing map](#update-an-existing-map), except instead of configuring a `Data capture rate (Hz)` on the camera and movement sensor, set a `Data polling rate (Hz)` on both.
-The `cartographer` module on your robot polls the live LiDAR and IMU directly at these rates, whereas the capture rate is only used when data is being sent to the cloud.
+The configuration is similar to the configuration for [updating an existing map](#update-an-existing-map), except instead of adding a data management service and configuring data capture on the camera and movement sensor, set a `Data polling rate (Hz)` on both.
+The `cartographer` module on your machine polls the live LiDAR and IMU directly at these rates, whereas data capture is only used when data is being sent to the cloud.
 
     {{% /tab %}}
     {{% tab name="JSON Example" %}}
@@ -403,7 +471,7 @@ This example JSON configuration:
 
 - adds the `viam:rplidar` and the `viam:cartographer` modules
 - configures the `viam:slam:cartographer` service
-- adds an `viam:lidar:rplidar` camera
+- adds an `viam:lidar:rplidar` camera with a `Data polling rate (Hz)` of `5`
 - specifies the `slam_map` for localization in the `packages`
 
 <br>
@@ -470,33 +538,25 @@ This example JSON configuration:
     {{% /tab %}}
     {{< /tabs >}}
 
-    {{< alert title="Tip" color="tip" >}}
-
-Be aware that data is not only captured when a slam session is running.
-[Data Capture](/data/capture/) continuously monitors and captures your robot's sensor data while the robot is running.
-To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/).
-
-    {{< /alert >}}
-
     For more information about the configuration attributes, see [Attributes](#attributes).
 
-2.  Start a mapping session
+1.  Start a mapping session:
 
-    Navigate to the **Control** tab on your robot's page and click on the dropdown menu matching the `name` of the service you created.
+    Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
 
     Unlike when creating or updating a map, you do not need to start and end a slam session.
-    The pointcloud for the existing map will appear **immediately** and Cartographer will try to find your robot's position on it.
+    The pointcloud for the existing map will appear **immediately** and Cartographer will try to find your machine's position on it.
 
-    Since the map will not change, nothing new will be added to this robot's location's **SLAM library**.
+    Since the map will not change, nothing new will be added to this machine's location's **SLAM library**.
 
     ![slam RC card localize only](/mobility/slam/slam-RC-card-localize-only.png)
 
     {{% alert title="Info" color="info" %}}
 
-Cartographer may take several minutes to find your robot's position on the existing map.
-In the meantime, your robot will show up at the map's origin (with the `(x,y)` coordinates `(0,0)`).
+Cartographer may take several minutes to find your machine's position on the existing map.
+In the meantime, your machine will show up at the map's origin (with the `(x,y)` coordinates `(0,0)`).
 
-If you move your robot, it will appear to be moving in a trajectory from the map's origin.
+If you move your machine, it will appear to be moving in a trajectory from the map's origin.
 
     {{% /alert %}}
 
@@ -505,7 +565,7 @@ If you move your robot, it will appear to be moving in a trajectory from the map
 <!-- prettier-ignore -->
 | Name | Data Type | Inclusion | Description |
 | ---- | --------- | --------- | ----------- |
-| `use_cloud_slam` | boolean | **Required** | If `true`, the Cartographer algorithm will execute in the cloud rather than locally on your robot. |
+| `use_cloud_slam` | boolean | **Required** | If `true`, the Cartographer algorithm will execute in the cloud rather than locally on your machine. |
 | `camera` | obj | **Required** | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the LiDAR camera component to use as input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that camera component. |
 | `movement_sensor` | obj | Optional | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the IMU movement sensor (that is, a movement sensor that supports the `GetAngularVelocity` and `GetLinearAcceleration` API methods) to use as additional input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that movement sensor component. |
 | `enable_mapping` | boolean | Optional | If `true`, Cartographer will build the map in addition to doing localization. <ul> Default: `true` </ul> |
@@ -525,8 +585,8 @@ You can browse your previously captured data from the **Data** page under the **
 
 To create a map, you must have already captured LiDAR data in the location in which you would like to create the map.
 
-The following example shows the previously-captured LiDAR data under the **Point clouds** tab for a robot named `test`.
-Selecting a row opens a pane to the right that contains more information, such as the `Robot ID` of the robot the component belongs to:
+The following example shows the previously-captured LiDAR data under the **Point clouds** tab for a machine named `test`.
+Selecting a row opens a pane to the right that contains more information, such as the `Machine ID` of the machine the component belongs to:
 
 {{<imgproc src="/mobility/slam/offline-mapping-pointcloud-data.png" resize="1200x" declaredimensions=true alt="UI showing captured point clouds">}}
 
@@ -538,8 +598,8 @@ Example of previously captured IMU data:
 
 Navigate to the **SLAM library** tab on your location page, and click **Make new map** on the top right and specify a map name or click **Update map** next to an existing map.
 
-1. Enter the **Robot name**, **Camera name**, and optionally the **Movement Sensor name** of the components whose previously captured data you want to use to create or update a map.
-   If your robot has been deleted, you can alternatively specify the **robot ID**.
+1. Enter the **Machine name**, **Camera name**, and optionally the **Movement Sensor name** of the components whose previously captured data you want to use to create or update a map.
+   If your machine has been deleted, you can alternatively specify the **machine ID**.
 1. Adjust the configuration parameters as needed.
    See [`config_params`](#config_params) for details.
 1. Select the timeframe of the data you'd like to use.
@@ -548,23 +608,23 @@ Navigate to the **SLAM library** tab on your location page, and click **Make new
 
 {{<imgproc src="/mobility/slam/offline-mapping-generate-map.png" resize="1200x" declaredimensions=true alt="UI for creating a new map from captured data">}}
 
-### View the Map
+### View the map
 
 Unlike in `Online` mode, you cannot see the map being created while the slam session is in progress, but similar to when creating or updating a map in `Online` mode, you can see that your cloud slam session is in progress from your **Location** page's **SLAM library** tab.
 When all the data has been processed (or 45 minutes have passed, whichever occurs first), the map will be saved to your **Location** page's **SLAM library** tab.
 
-### Delete the Map
+### Delete the map
 
 To clear a SLAM map, go to your **Location** page's **SLAM library** tab.
 Click on the trash can icon in the upper right-hand corner of a map's card to delete the map.
 
-## SLAM Mapping Best Practices
+## SLAM mapping best practices
 
 The best way to improve map quality is by taking extra care when creating the initial map.
 While in a slam session, you should:
 
 - turn gently and gradually, completely avoiding sudden quick turns
-- make frequent loop closures, arriving back at a previously mapped area so the robot can correct for errors in the map layout
+- make frequent loop closures, arriving back at a previously mapped area so the machine can correct for errors in the map layout
 - stay relatively (but not extremely) close to walls
 - use a robot that can go smoothly over bumps and transitions between flooring areas
 - drive at a moderate speed

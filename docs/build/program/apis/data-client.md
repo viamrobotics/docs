@@ -29,12 +29,15 @@ Data client API methods are only available in the Python SDK.
 
 ## Establish a connection
 
-To use the Viam data client API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`DataClient`](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient).
-See the following example for reference.
+To use the Viam data client API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate a [`DataClient`](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient).
 
-<!-- After sveltekit migration we should also be able to get a key from the UI-->
+You will also need an API key and API key ID to authenticate your session.
+To get an API key (and corresponding ID), you have two options:
 
-Use the Viam CLI [to generate an api key to authenticate](/fleet/cli/#authenticate).
+- [Create an API key using the Viam app](/fleet/rbac/#add-an-api-key)
+- [Create an API key using the Viam CLI](/fleet/cli/#create-an-organization-api-key)
+
+The following example instantiates a `ViamClient`, authenticating with an API key, and then instantiates a `DataClient`:
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -47,11 +50,11 @@ async def connect() -> ViamClient:
     dial_options = DialOptions(
       credentials=Credentials(
         type="api-key",
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
         payload='<API-KEY>',
       ),
-      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-      # id
+      # Replace "<API-KEY-ID>" (including brackets) with your machine's
+      # API key ID
       auth_entity='<API-KEY-ID>'
     )
     return await ViamClient.create_from_dial_options(dial_options)
@@ -69,16 +72,7 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
-Once you have instantiated a `DataClient`, you can run the following [API methods](#api) against the `DataClient` object (named `data_client` in the examples).
-
-## Find Part ID
-
-To find the ID of your robot part, navigate to its **Setup** tab in the [Viam app](https://app.viam.com).
-Keep architecture selection at default.
-In Step 1, grab the part id from the second string of the generated command as the token following `id=`.
-For example:
-
-![Part ID displayed in the Viam app.](/build/program/data-client/grab-part-id.png)
+Once you have instantiated a `DataClient`, you can run [API methods](#api) against the `DataClient` object (named `data_client` in the examples).
 
 ## API
 
@@ -558,7 +552,7 @@ Uploaded binary data can be found under the **Images**, **Point clouds**, or **F
 **Parameters:**
 
 - `binary_data` [(bytes)](https://docs.python.org/3/library/stdtypes.html#bytes-objects): The data to be uploaded, represented in bytes.
-- `part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Part ID of the component used to capture the data. See [Find Part ID](#find-part-id) for instructions on retrieving this value.
+- `part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Part ID of the component used to capture the data. See [Find part ID](#find-part-id) for instructions on retrieving this value.
 - `component_type` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Type of the component used to capture the data.
 - `component_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Name of the component used to capture the data.
 - `method_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Name of the method used to capture the data.
@@ -603,7 +597,7 @@ Uploaded tabular data can be found under the **Sensors** subtab of the app's [**
 **Parameters:**
 
 - `tabular_data` [(List[Mapping[str, Any]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): List of the data to be uploaded, represented tabularly as a collection of dictionaries.
-- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data. See [Find Part ID](#find-part-id) for instructions on retrieving this value.
+- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data. See [Find part ID](#find-part-id) for instructions on retrieving this value.
 - `component_type` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Type of the component used to capture the data.
 - `component_name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the component used to capture the data.
 - `method_name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the method used to capture the data.
@@ -698,7 +692,7 @@ All other types of uploaded files can be found under the **Files** subtab of the
 **Parameters:**
 
 - `data` [(bytes)](https://docs.python.org/3/library/stdtypes.html#bytes-objects): Bytes representing the file data to upload.
-- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data. See [Find Part ID](#find-part-id) for instructions on retrieving this value.
+- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data. See [Find part ID](#find-part-id) for instructions on retrieving this value.
 - `component_type` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Type of the component used to capture the data.
 - `component_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the component used to capture the data.
 - `file_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional name of the file. The empty string `""` will be assigned as the filename if one isn’t provided.
@@ -735,7 +729,7 @@ Uploaded files can be found under the **Files** subtab of the app's [**Data** ta
 **Parameters:**
 
 - `filepath` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The absolute filepath of the file to be uploaded.
-- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data. See [Find Part ID](#find-part-id) for instructions on retrieving this value.
+- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data. See [Find part ID](#find-part-id) for instructions on retrieving this value.
 - `component_type` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Type of the component used to capture the data.
 - `component_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the component used to capture the data.
 - `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/data/dataset/#image-tags) to allow for tag-based data filtering when retrieving data.
@@ -842,3 +836,240 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### CreateDataset
+
+Create a new dataset.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The name of the dataset being created.
+- `organization_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the organization where the dataset is being created.
+
+**Returns:**
+
+- [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The dataset ID of the created dataset.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.create_dataset).
+
+```python {class="line-numbers linkable-line-numbers"}
+name = await data_client.create_dataset(
+  name="<dataset-name>",
+  organization_id="<your-org-id>"
+)
+print(name)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListDatasetByIds
+
+Get a list of datasets using their IDs.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `ids` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): The IDs of the datasets being called for.
+
+**Returns:**
+
+- (Sequence[[Dataset](https://python.viam.dev/autoapi/viam/gen/app/dataset/v1/dataset_pb2/index.html#viam.gen.app.dataset.v1.dataset_pb2.Dataset)]): The list of datasets.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.list_dataset_by_ids).
+
+```python {class="line-numbers linkable-line-numbers"}
+datasets = await data_client.list_dataset_by_ids(
+  ids=["abcd-1234xyz-8765z-123abc"]
+)
+print(datasets)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListDatasetByOrganizationId
+
+Get the datasets in an organization.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `organization_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the organization.
+
+**Returns:**
+
+- (Sequence[[Dataset](https://python.viam.dev/autoapi/viam/gen/app/dataset/v1/dataset_pb2/index.html#viam.gen.app.dataset.v1.dataset_pb2.Dataset)]): The list of datasets in the organization.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.list_datasets_by_organization_id).
+
+```python {class="line-numbers linkable-line-numbers"}
+datasets = await data_client.list_datasets_by_organization_id(
+  organization_id="<your-org-id>"
+)
+print(datasets)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### RenameDataset
+
+Rename a dataset specified by the dataset ID.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the dataset.
+- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The new name of the dataset.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.rename_dataset).
+
+```python {class="line-numbers linkable-line-numbers"}
+await data_client.rename_dataset(
+    id="abcd-1234xyz-8765z-123abc",
+    name="<dataset-name>"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteDataset
+
+Delete a dataset.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the dataset.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_dataset).
+
+```python {class="line-numbers linkable-line-numbers"}
+await data_client.delete_dataset(
+  id="abcd-1234xyz-8765z-123abc"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### AddBinaryDataToDatasetByIds
+
+Add the [BinaryData](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryData) to the provided dataset.
+This BinaryData will be tagged with the VIAM_DATASET\_{id} label.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `binary_ids` (List[[BinaryID](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID "viam.gen.app.data.v1.data_pb2.BinaryID")]): The IDs of binary data to add to dataset.
+- `dataset_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the dataset to be added to.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_binary_data_to_dataset_by_ids).
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import BinaryID
+
+binary_metadata = await data_client.binary_data_by_filter(
+    include_file_data=False
+)
+
+my_binary_ids = []
+
+for obj in binary_metadata:
+    my_binary_ids.append(
+        BinaryID(
+            file_id=obj.metadata.id,
+            organization_id=obj.metadata.capture_metadata.organization_id,
+            location_id=obj.metadata.capture_metadata.location_id
+            )
+        )
+
+await data_client.add_binary_data_to_dataset_by_ids(
+    binary_ids=my_binary_ids,
+    dataset_id="abcd-1234xyz-8765z-123abc"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### RemoveBinaryDataFromDatasetByIds
+
+Remove the BinaryData from the provided dataset.
+This BinaryData will lose the VIAM_DATASET\_{id} tag.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `binary_ids` (List[[BinaryID](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID "viam.gen.app.data.v1.data_pb2.BinaryID")]): The IDs of binary data to remove from dataset.
+- `dataset_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the dataset to be removed from.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_binary_data_from_dataset_by_ids).
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import BinaryID
+
+binary_metadata = await data_client.binary_data_by_filter(
+    include_file_data=False
+)
+
+my_binary_ids = []
+
+for obj in binary_metadata:
+    my_binary_ids.append(
+        BinaryID(
+            file_id=obj.metadata.id,
+            organization_id=obj.metadata.capture_metadata.organization_id,
+            location_id=obj.metadata.capture_metadata.location_id
+        )
+    )
+
+await data_client.remove_binary_data_from_dataset_by_ids(
+    binary_ids=my_binary_ids,
+    dataset_id="abcd-1234xyz-8765z-123abc"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Find part ID
+
+To copy the ID of your machine part, select the part status dropdown to the right of your machine's location and name on the top of its page and click the copy icon next to **Part ID**.
+
+For example:
+
+![Part ID displayed in the Viam app.](/build/program/data-client/grab-part-id.png)

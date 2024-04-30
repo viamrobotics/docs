@@ -1,11 +1,13 @@
 ---
 title: "Query Data with SQL or MQL"
 linkTitle: "Query Data"
-weight: 40
+weight: 35
 no_list: true
 type: "docs"
 tags: ["data management", "data", "services"]
 description: "Query tabular data that you have synced to the Viam app using the data management service with SQL or MQL."
+icon: true
+images: ["/services/icons/data-query.svg"]
 aliases:
   - /manage/data/query/
 # SME: Devin Hilly
@@ -18,7 +20,7 @@ You can:
 - [Query tabular data in the Viam app](#query-tabular-data-in-the-viam-app): Run SQL or MQL queries against your synced tabular data from the **Query** subtab under the **Data** tab in the Viam app.
 - [Query tabular data directly from a compatible client](#query-tabular-data-directly-from-a-compatible-client): Directly query tabular data from an MQL-compatible client, such as `mongosh`.
 
-You can run queries against both the captured tabular data itself as well as its metadata, including robot ID, organization ID, and [tags](/data/dataset/#image-tags).
+You can run queries against both the captured tabular data itself as well as its metadata, including machine ID, organization ID, and [tags](/data/dataset/#image-tags).
 
 Only tabular data, such as [sensor](/components/sensor/) readings, can be queried using SQL or MQL.
 To search non-tabular data, such as images, see [Filter Data](/data/view/#filter-data).
@@ -38,7 +40,7 @@ Before you can configure data query, you must:
 ## Query tabular data in the Viam app
 
 Once you have synced tabular data to the Viam app, you can run SQL or MQL queries against your synced data from the [**Query** subtab](https://app.viam.com/data/query) under the **Data** tab in the Viam app.
-You must have the [owner](/fleet/#permissions) role in order to query data in the Viam app.
+You must have the [owner](/fleet/rbac/) role in order to query data in the Viam app.
 
 1. Navigate to the [**Query** subtab](https://app.viam.com/data/query).
 
@@ -72,7 +74,7 @@ For more information on MQL syntax, see the [MQL (MongoDB Query Language)](https
 Configure direct data query to be able to query captured tabular data in the Viam cloud using {{< glossary_tooltip term_id="mql" text="MQL" >}} or {{< glossary_tooltip term_id="sql" text="SQL" >}} from a MQL-compatible client, such as `mongosh` or MongoDB Compass.
 Synced data is stored in a MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance.
 
-You can query against both the captured tabular data itself as well as its metadata, including robot ID, organization ID, and [tags](/data/dataset/#image-tags).
+You can query against both the captured tabular data itself as well as its metadata, including machine ID, organization ID, and [tags](/data/dataset/#image-tags).
 
 Only tabular data, such as [sensor](/components/sensor/) readings, can be queried in this fashion.
 
@@ -95,6 +97,7 @@ You do not need to perform any additional configuration when [querying data in t
 
 1. Configure a new database user for the Viam organization's MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance, which is where your machine's synced data is stored.
    Provide your organization's `org-id` from step 2, and a desired new password for your database user.
+   Your password must be at least 8 characters long, and include at least one uppercase, one number, and one special character (such as `$` or `%`):
 
    ```sh {class="line-numbers linkable-line-numbers"}
    viam data database configure --org-id=<YOUR-ORGANIZATION-ID> --password=<NEW-DBUSER-PASSWORD>
@@ -185,9 +188,49 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
      [ { numStanding: 215 } ]
      ```
 
+{{< alert title="Tip" color="tip" >}}
+If you use a data field that is named the same as a [reserved SQL keyword](https://en.wikipedia.org/wiki/List_of_SQL_reserved_words), such as `value` or `position`, you must escape that field name in your query using backticks ( <file>\`</file> ).
+For example, to query against a field named `value` which is a subfield of the `data` field in the `readings` collection, you would use:
+
+```mongodb {class="command-line" data-prompt=">"}
+select data.`value` from readings
+```
+
+See the [MongoDB Atlas Documentation](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatability-and-limitations) for more information.
+
+{{< /alert >}}
+
 For information on connecting to your Atlas instance from other MQL clients, see the MongoDB Atlas [Connect to your Cluster Tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
 
-## Next Steps
+#### Query by date
+
+When using MQL to query your data by date or time range, you can optimize query performance by avoiding the MongoDB `$toDate` expression, using the [BSON `date` type](https://www.mongodb.com/docs/manual/reference/bson-types/#date) instead.
+
+For example, you could use the following query to search by a date range in the `mongosh` shell, using the JavaScript `Date()` constructor to specify an explicit start timestamp, and use the current time as the end timestamp:
+
+```mongodb {class="command-line" data-prompt=">"}
+// Switch to sensorData database:
+use sensorData
+
+// Set desired start and end times:
+const startTime = new Date('2024-02-10T19:45:07.000Z')
+const endTime = new Date()
+
+// Run query using $match:
+db.readings.aggregate(
+    [
+        { $match: {
+            time_received: {
+                $gte: startTime,
+                $lte: endTime }
+        } }
+    ] )
+```
+
+## Next steps
+
+With data query enabled, you can now visualize your machine's uploaded tabular data using many popular data visualization services, such as Grafana.
+See [Visualize Data](/data/visualize/) for instructions on setting up and using these data visualization services with Viam, or the [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) tutorial for a detailed walkthrough specific to Grafana.
 
 To export your captured data from the cloud, see [Export Data](../export/).
 

@@ -21,15 +21,23 @@ aliases:
 ---
 
 Some use cases may require advanced considerations when designing or deploying modular resources.
-Depending on your needs, you may wish to define a new API subtype, deploy a custom component using a server on a {{< glossary_tooltip term_id="remote" text="remote" >}} {{< glossary_tooltip term_id="part" text="part" >}}, or design a custom ML model.
+Depending on your needs, you may wish to define a new API subtype, deploy a custom component using a server on a {{< glossary_tooltip term_id="remote-part" text="remote" >}} {{< glossary_tooltip term_id="part" text="part" >}}, or design a custom ML model.
 
 ## New API subtypes
 
 The [component APIs](/build/program/apis/#component-apis) and [service APIs](/build/program/apis/#service-apis) provide a standard interface for controlling common hardware components and higher level functionality.
+If your use case aligns closely with an existing API, you should use that API to program your new resource.
 
-If you want to use most of an existing API but need just a few other functions, try using the [`DoCommand`](/build/program/apis/#docommand) endpoint and [extra parameters](/build/program/use-extra-params/) to add custom functionality to an existing subtype.
+If you want to use most of an existing API but need just a few other functions, you can use the [`DoCommand`](/build/program/apis/#docommand) endpoint together with [extra parameters](/build/program/use-extra-params/) to add custom functionality to an existing resource {{< glossary_tooltip term_id="subtype" text="subtype" >}}.
 
-If your resource does not fit into any of the existing {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} {{< glossary_tooltip term_id="subtype" text="subtypes" >}} or you want to define different methods for the API, you can use the [generic API](/components/generic/) with [`DoCommand`](/build/program/apis/#docommand) or [define a new resource subtype and an API for that subtype](/registry/advanced/create-subtype/).
+Or, if your resource does not fit into an existing resource subtype, you can use one of the following:
+
+- If you are working with a component that doesn't fit into any of the existing [component APIs](/build/program/apis/#component-apis), you can use the [generic component](/components/generic/) to build your own component API.
+- If you are designing a service that doesn't fit into any of the existing [service APIs](/build/program/apis/#service-apis), you can use the [generic service](/registry/advanced/generic/) to build your own service API.
+
+Both generic resources use the [`DoCommand`](/build/program/apis/#docommand) endpoint to enable you to make arbitrary calls as needed for your resource.
+
+Alternatively, you can also [define a new resource subtype and an API for that subtype](/registry/advanced/create-subtype/) if none of the above options are a good fit for your use case.
 
 ## Custom components as remotes
 

@@ -15,12 +15,12 @@ You can either use a {{< glossary_tooltip term_id="grpc" text="gRPC" >}} server 
 
 You can find the source code for these servers in the [Viam Robotics repo](https://github.com/viamrobotics/camera-servers).
 
-## Using the gRPC Server
+## Using the gRPC server
 
 Use the gRPC server if you want 2D image streams and also want the 3D point clouds from the Intel RealSense camera.
 They will show up as 3 separate cameras.
 
-### Download the Intel RealSense gRPC Camera Server
+### Download the Intel RealSense gRPC camera server
 
 On your Raspberry Pi, download the following server for your intel camera
 
@@ -29,9 +29,9 @@ sudo curl -o /usr/local/bin/intelgrpcserver https://storage.googleapis.com/packa
 sudo chmod a+rx /usr/local/bin/intelgrpcserver
 ```
 
-### Configure the Server to Run on Robot Start-Up
+### Configure the server to run on machine start-up
 
-On the [Viam app](https://app.viam.com), click **Config** and then access the **Processes** tab. Add the following configuration:
+On the [Viam app](https://app.viam.com), click **CONFIGURE** and then access the **Processes** tab. Add the following configuration:
 
 ```json
 [
@@ -45,7 +45,7 @@ On the [Viam app](https://app.viam.com), click **Config** and then access the **
 
 This configures the gRPC server to run on port 8085 of your Pi.
 
-On the **Config** tab, click **Remotes**, and then add the following configuration:
+On the **CONFIGURE** tab, click **Remotes**, and then add the following configuration:
 
 ```json
 [
@@ -57,14 +57,14 @@ On the **Config** tab, click **Remotes**, and then add the following configurati
 ]
 ```
 
-This adds the two cameras to your robot.
+This adds the two cameras to your machine.
 They will have the names `intel:color` and `intel:depth`.
 
-### Create a Camera to Display Point Clouds
+### Create a camera to display point clouds
 
-Click **Components** on the **Config** tab.
+Click **Components** on the **CONFIGURE** tab.
 Now, add the `align_color_depth` camera model.
-The **Attributes** pane on the left allows you to enter the necessary attributes for your component.
+Click the **{}** (Switch to Advanced) button in the top right of the component panel to edit the component's attributes directly with JSON.
 
 Enter the necessary JSON configuration for your camera:
 
@@ -101,7 +101,7 @@ Enter the necessary JSON configuration for your camera:
 }
 ```
 
-In the **Control** tab, you can now see both the individual 2D camera streams, as well as the point cloud camera of the combined color and depth image that you created with `join_color_depth`.
+In the **CONTROL** tab, you can now see both the individual 2D camera streams, as well as the point cloud camera of the combined color and depth image that you created with `join_color_depth`.
 
 ## Using the HTTP server
 
@@ -116,9 +116,9 @@ sudo curl -o /usr/local/bin/intelrealserver https://storage.googleapis.com/packa
 sudo chmod a+rx /usr/local/bin/intelrealserver
 ```
 
-### Configure the Server to Run on Robot Start-Up
+### Configure the server to run on machine start-up
 
-On the [Viam app](https://app.viam.com), click **Config** and then click **Processes**.
+On the [Viam app](https://app.viam.com), click **CONFIGURE** and then click **Processes**.
 Enter the following configuration:
 
 ```json
@@ -139,9 +139,12 @@ The endpoints that it creates are:
 - [http://your-raspi-address:8181/pic.png](http://your-raspi-address:8181/pic.png) - a png image from the color camera
 - [http://your-raspi-address:8181/depth.png](http://your-raspi-address:8181/depth.png) - a png image from the depth camera
 
-## Create a Camera to Display Point Clouds
+## Create a camera to display point clouds
 
-Click **Config** and then click **Components**.
+Click **CONFIGURE** and then click **Components**.
+
+<!-- dual_stream no longer exists -->
+
 Enter the following camera model: "dual_stream"
 
 ```json

@@ -1,21 +1,21 @@
 ---
 title: "Viam CLI"
 linkTitle: "CLI"
-weight: 99
+weight: 80
 type: "docs"
 no_list: true
-description: "Manage and control your robots from the command line."
+description: "Manage and control your machines from the command line."
 aliases:
   - "/build/program/cli"
   - /manage/cli/
 ---
 
-The Viam CLI (command line interface) tool enables you to manage your robots and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} across organizations and locations from the command line.
+The Viam CLI (command line interface) tool enables you to manage your machines and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} across organizations and locations from the command line.
 The CLI lets you:
 
 - Retrieve [organization](/fleet/organizations/) and location information
-- Manage [robot fleet](/fleet/) data and logs
-- Control robots by issuing component and service commands
+- Manage [machine fleet](/fleet/) data and logs
+- Control machines by issuing component and service commands
 - Upload and manage [modular resources](/registry/) in the Viam registry
 
 For example, this CLI command moves a servo to the 75 degree position:
@@ -97,9 +97,9 @@ to later update the Viam CLI tool on macOS, run `brew upgrade viam`.
 
 Once you have [installed the Viam CLI](#install), you must authenticate your CLI session with Viam in order to run CLI commands.
 
-You can authenticate your CLI session using either a personal access token, or an organization, location, or robot API key.
+You can authenticate your CLI session using either a personal access token, or an organization, location, or machine part API key.
 To use an organization API key to authenticate, you must first [create an organization API key](#create-an-organization-api-key).
-Similarly, to authenticate using a location or robot API key, you must first create a [location](#create-a-location-api-key) or [robot API key](#create-a-robot-api-key).
+Similarly, to authenticate using a location or machine part API key, you must first create a [location](#create-a-location-api-key) or [machine part API key](#create-a-machine-part-api-key).
 
 - To authenticate your CLI session using a personal access token:
 
@@ -127,13 +127,13 @@ Similarly, to authenticate using a location or robot API key, you must first cre
 
   If you haven't already, [create a location API key](#create-a-location-api-key) to use this authentication method.
 
-- To authenticate your CLI session using a robot API key:
+- To authenticate your CLI session using a machine part API key:
 
   ```sh {class="command-line" data-prompt="$"}
-  viam login api-key --key-id <robot-api-key-uuid> --key <robot-api-key-secret-value>
+  viam login api-key --key-id <machine-part-api-key-uuid> --key <machine-part-api-key-secret-value>
   ```
 
-  If you haven't already, [create a robot API key](#create-a-robot-api-key) to use this authentication method.
+  If you haven't already, [create a machine part API key](#create-a-machine-part-api-key) to use this authentication method.
 
 An authenticated session is valid for 24 hours, unless you explicitly [log out](#logout).
 
@@ -144,7 +144,7 @@ After the session expires or you log out, you must re-authenticate to use the CL
 To use an organization API key to authenticate your CLI session, you must first create one:
 
 1. First, [authenticate](#authenticate) your CLI session.
-   If your organization does not already have an organization API key created, authenticate using a personal access token or either a [location API key](#create-a-location-api-key) or [robot API key](#create-a-robot-api-key).
+   If your organization does not already have an organization API key created, authenticate using a personal access token or either a [location API key](#create-a-location-api-key) or [machine part API key](#create-a-machine-part-api-key).
 
 1. Then, run the following command to create a new organization API key:
 
@@ -177,7 +177,7 @@ An organization can have multiple API keys.
 To use an location API key to authenticate your CLI session, you must first create one:
 
 1. First, [authenticate](#authenticate) your CLI session.
-   If you don't already have a location API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [robot API key](#create-a-robot-api-key).
+   If you don't already have a location API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [machine part API key](#create-a-machine-part-api-key).
 
 1. Then, run the following command to create a new location API key:
 
@@ -211,14 +211,14 @@ To switch to using a location API key for authentication right away, [logout](#l
 
 A location can have multiple API keys.
 
-### Create a robot API key
+### Create a machine part API key
 
-To use a robot API key to authenticate your CLI session, you must first create one:
+To use a machine part API key to authenticate your CLI session, you must first create one:
 
 1. First, [authenticate](#authenticate) your CLI session.
-   If you don't already have a robot API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [location API key](#create-a-location-api-key).
+   If you don't already have a machine part API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [location API key](#create-a-location-api-key).
 
-1. Then, run the following command to create a new robot API key:
+1. Then, run the following command to create a new machine part API key:
 
    ```sh {class="command-line" data-prompt="$"}
    viam robots api-key create --robot-id <robot-id> --org-id <org-id> --name <key-name>
@@ -226,8 +226,8 @@ To use a robot API key to authenticate your CLI session, you must first create o
 
    Where:
 
-   - `robot-id` is your robot's ID.
-     You can find your robot ID by running `viam robots list`.
+   - `robot-id` is your machine's ID.
+     You can find your machine ID by running `viam robots list`.
    - `org-id` is an optional organization ID to attach the key to.
      You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
      If only one organization owns the robot, you can omit the parameter.
@@ -240,17 +240,17 @@ You will need both to authenticate.
 
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
-Authenticating using a robot API key gives the authenticated CLI session full read and write access to your robot.
+Authenticating using a machine part API key gives the authenticated CLI session full read and write access to your machine.
 {{% /alert %}}
 
-Once created, you can use the robot API key to authenticate future CLI sessions or to [connect to your robot with the SDK](/build/program/#authenticate).
-To switch to using a robot API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
+Once created, you can use the machine part API key to authenticate future CLI sessions or to [connect to your machine with the SDK](/build/program/#authenticate).
+To switch to using a machine part API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
 
 A location can have multiple API keys.
 
-## Manage your robots with the Viam CLI
+## Manage your machines with the Viam CLI
 
-With the Viam CLI [installed](#install) and [authenticated](#authenticate), you can use it to issue commands to your robot fleet or manage custom modules.
+With the Viam CLI [installed](#install) and [authenticated](#authenticate), you can use it to issue commands to your machine fleet or manage custom modules.
 All Viam CLI commands use the following format:
 
 ```sh {class="command-line" data-prompt="$"}
@@ -284,54 +284,9 @@ viam organizations --help
 
 ## Commands
 
-### board
+### `data`
 
-The `board` command allows you to manage your board definition files.
-With it, you can upload new board definition files to the Viam app, download your existing board definition files, and list the files already uploaded.
-
-You can use board definition files to configure pin mappings for [`customlinux` boards](/components/board/customlinux/).
-
-```sh {class="command-line" data-prompt="$"}
-viam board upload --name=<board name> --organization=<org name> --version=<definition file version> file.json
-viam board download --name=<board name> --organization=<org name> --version=<definition file version>
-viam board list --organization=<org name>
-```
-
-Examples:
-
-```sh {class="command-line" data-prompt="$"}
-# upload a new board definition file named 'my-board' with version '1.0.0' for org 'my-org'
-viam board upload --name=my-board --organization=my-org --version=1.0.0 my-board.json
-
-# download an existing board definition file named 'my-board' at version '1.0.0' for org 'my-org'
-viam board download --name=my-board --organization=my-org --version=1.0.0
-
-# list all available board definition files for org 'my-org'
-viam board list --organization=my-org
-```
-
-#### Command options
-
-<!-- prettier-ignore -->
-|        command option     |       description      | positional arguments
-| ----------- | ----------- | ----------- |
-| `upload`      | upload a new board definition file to the Viam app | **board definition file** : provide the board definition file to upload, in JSON form. |
-| `download`      | download an existing board definition file | - |
-| `list`      | list available board definition files | - |
-| `--help`      | return help      | - |
-
-##### Named arguments
-
-<!-- prettier-ignore -->
-|        argument     |       description | applicable commands | required
-| ----------- | ----------- | ----------- | ----------- |
-| `--name`      | output directory for downloaded data       | `upload`, `download` | true |
-| `--organization`      | organization name to upload, download, or list board definition files from      | `upload`, `download`, `list` | true |
-| `--version`      | version of the board definition file to tag the upload with, or to specifically download. Defaults to latest if not set.    | `upload`, `download` | true |
-
-### data
-
-The `data` command allows you to manage robot data.
+The `data` command allows you to manage machine data.
 With it, you can export data in a variety of formats, delete specified data, add or remove images from a dataset and filter a dataset by tags, or configure a database user to enable querying synced tabular data directly in the cloud.
 
 ```sh {class="command-line" data-prompt="$"}
@@ -456,7 +411,7 @@ You cannot use the `--file-ids` argument when using `filter`.
 
 See [Datasets](/data/dataset/#datasets) for more information.
 
-### locations
+### `locations`
 
 The `locations` command allows you to manage the [locations](/fleet/locations/) that you have access to.
 With it, you can list available locations, filter locations by organization, or create a new location API key.
@@ -509,7 +464,7 @@ If you haven't already, you must [create an organization API key](#create-an-org
 <!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| `api-key`      | authenticate to Viam using an organization, location, or robot API key      | create |
+| `api-key`      | authenticate to Viam using an organization, location, or machine part API key      | create |
 | `print-access-token`      | prints the access token used to authenticate the current CLI session      | - |
 | `--help`      | return help      | - |
 | `--disable-browser-open` | authenticate in a headless environment by preventing the opening of the default browser during login (default: false) | - |
@@ -522,7 +477,7 @@ If you haven't already, you must [create an organization API key](#create-an-org
 | `--key-id`    | the `key id` (UUID) of the API key | `api-key` | true |
 | `--key`    | the `key value` of the API key | `api-key` | true |
 
-### logout
+### `logout`
 
 The `logout` command ends an authenticated CLI session.
 
@@ -530,7 +485,7 @@ The `logout` command ends an authenticated CLI session.
 viam logout
 ```
 
-### module
+### `module`
 
 The `module` command allows to you to manage custom {{< glossary_tooltip term_id="module" text="modules" >}}
 This includes:
@@ -561,7 +516,7 @@ viam module update
 viam module upload --version "1.0.0" --platform "darwin/arm64" packaged-module.tar.gz
 ```
 
-See [Upload a custom module](/registry/upload/#upload-a-custom-module) and [Update an existing module](/registry/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+See [Upload a custom module](/registry/upload/#upload-a-custom-module-using-the-cli) and [Update an existing module](/registry/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
 
 If you update and release your module as part of a continuous integration (CI) workflow, you can also
 [automatically upload new versions of your module on release](/registry/upload/#update-an-existing-module-using-a-github-action) using a GitHub Action.
@@ -572,8 +527,12 @@ If you update and release your module as part of a continuous integration (CI) w
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `create`    | generate new metadata for a custom module on your local filesystem  | - |
-| `update`    | update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file) | - |
+| `update`    | update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file). Note that the `upload` command automatically runs `update` for you; you do not need to explicitly run `update` if you are also running `upload` | - |
 | `upload`    | validate and upload a new or existing custom module on your local filesystem to the Viam registry. See [Upload validation](#upload-validation) for more information | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code |
+| `build start`    | start a module build in a cloud runner using the build step in your [`meta.json` file](#the-metajson-file). See [Using the `build` subcommand](#using-the-build-subcommand) | - |
+| `build local`    | start a module build locally using the build step in your [`meta.json` file](#the-metajson-file). See [Using the `build` subcommand](#using-the-build-subcommand) | - |
+| `build list`    | list the status of your cloud module builds. See [Using the `build` subcommand](#using-the-build-subcommand) | - |
+| `build logs`    | show the logs from a specific cloud module build. See [Using the `build` subcommand](#using-the-build-subcommand) | - |
 | `--help`      | return help      | - |
 
 ##### Named arguments
@@ -581,13 +540,16 @@ If you update and release your module as part of a continuous integration (CI) w
 <!-- prettier-ignore -->
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
+| `--count`    | number of cloud builds to list, defaults to displaying all builds | `build list` | false |
 | `--force`    | skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | false |
-| `--module`     |  the path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload` | false |
+| `--id`    | the build ID to list or show logs for, as returned from `build start` | `build list`, `build logs` | false |
+| `--module`     |  the path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload`, `build` | false |
 | `--name`     |  the name of the custom module to be created | `create` | true |
 | `--org-id`      | the organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | true |
 | `--public-namespace`      | the [namespace](/fleet/organizations/#create-a-namespace-for-your-organization) to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | true |
-| `--platform`      |  the architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument) | `upload` | true |
+| `--platform`      |  the architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument) | `upload`, `build logs` | true |
 | `--version`      |  the version of your module to set for this upload. See [Using the `--version` argument](#using-the---version-argument)  | `upload` | true |
+| `--wait`      |  wait for the build to finish before outputting any logs  | `build logs` | false |
 
 ##### Using the `--org-id` and `--public-namespace` arguments
 
@@ -628,12 +590,14 @@ For example, if you upload your module with support for `any/amd64` and then als
 
 The Viam registry page for your module displays the platforms your module supports for each version you have uploaded.
 
+If you are using the `build logs` command, the `--platform` argument instead restricts the logs returned by the command to only those build jobs that match the specified platform.
+
 ##### Using the `--version` argument
 
 The `--version` argument accepts a valid [semver 2.0](https://semver.org/) version (example: `1.0.0`).
 You set an initial version for your custom module with your first `viam module upload` command for that module, and can later increment the version with subsequent `viam module upload` commands.
 
-Once your module is uploaded, users can select which version of your module to use on their robot from your module's page on the Viam registry.
+Once your module is uploaded, users can select which version of your module to use on their machine from your module's page on the Viam registry.
 Users can choose to pin to a specific patch version, permit upgrades within major release families or only within minor releases, or permit continuous updates.
 
 When you `update` a module configuration and then `upload` it, the `entrypoint` for that module defined in the [`meta.json` file](#the-metajson-file) is associated with the specific `--version` for that `upload`.
@@ -717,21 +681,200 @@ For example, the following represents the configuration of an example `my-module
       "model": "acme:demo:my-model"
     }
   ],
-  "entrypoint": "run.sh"
+  "entrypoint": "dist/main"
 }
 ```
 
 {{% alert title="Important" color="note" %}}
-If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/registry/upload/#naming-your-model-namespacerepo-namename) must match the [namespace of your organization](/fleet/organizations/#create-a-namespace-for-your-organization).
+If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/registry/#naming-your-model-namespacerepo-namename) must match the [namespace of your organization](/fleet/organizations/#create-a-namespace-for-your-organization).
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 {{% /alert %}}
 
-See [Upload a custom module](/registry/upload/#upload-a-custom-module) and [Update an existing module](/registry/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+See [Upload a custom module](/registry/upload/#upload-a-custom-module-using-the-cli) and [Update an existing module](/registry/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
 
 See [Modular resources](/registry/) for a conceptual overview of modules and the modular resource system at Viam.
 
-### organizations
+##### Using the `build` subcommand
+
+You can use the `module build start` or `module build local` commands to build your custom module according to the build steps you specify in your <file>meta.json</file> file:
+
+- Use `build start` to build or compile your module on a cloud build host that might offer additional platform support than you have access to locally.
+- Use `build local` to quickly test that your module builds or compiles as expected on your local hardware.
+
+To configure your module's build steps, add a `build` object to your [`meta.json` file](#the-metajson-file) like the following:
+
+<!-- Developers can either have a single build file for all platforms, or platform specific files: -->
+
+<!-- { {< tabs >}}
+{ {% tab name="Single Build File" %}} -->
+
+```json {class="line-numbers linkable-line-numbers"}
+"build": {
+  "setup": "./setup.sh",                  // optional - command to install your build dependencies
+  "build": "./build.sh",                  // command that will build your module
+  "path" : "dist/archive.tar.gz",         // optional - path to your built module
+                                          // (passed to the 'viam module upload' command)
+  "arch" : ["linux/amd64", "linux/arm64"] // architecture(s) to build for
+}
+```
+
+{{%expand "Click to view example setup.sh" %}}
+
+```sh { class="command-line"}
+#!/bin/bash
+set -e
+UNAME=$(uname -s)
+
+if [ "$UNAME" = "Linux" ]
+then
+    echo "Installing venv on Linux"
+    sudo apt-get install -y python3-venv
+fi
+if [ "$UNAME" = "Darwin" ]
+then
+    echo "Installing venv on Darwin"
+    brew install python3-venv
+fi
+
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+```
+
+{{% /expand%}}
+
+{{%expand "Click to view example build.sh (with setup.sh)" %}}
+
+```sh { class="command-line"}
+#!/bin/bash
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main
+```
+
+{{% /expand%}}
+
+{{%expand "Click to view example build.sh (without setup.sh)" %}}
+
+```sh { class="command-line"}
+#!/bin/bash
+set -e
+UNAME=$(uname -s)
+
+if [ "$UNAME" = "Linux" ]
+then
+    echo "Installing venv on Linux"
+    sudo apt-get install -y python3-venv
+fi
+if [ "$UNAME" = "Darwin" ]
+then
+    echo "Installing venv on Darwin"
+    brew install python3-venv
+fi
+
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main
+```
+
+{{% /expand%}}
+
+<!-- { {% /tab %}} -->
+<!-- { {% tab name="Platform Specific" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+"build": {
+  "path" : "dist/archive.tar.gz",               // optional - path to your built module
+                                                // (passed to the 'viam module upload' command)
+  "arch": {
+        "linux/arm64": {
+          "build": "./build-linux-arm64.sh" // command that will build your module
+        },
+        "darwin/arm64": {
+          "build": "./build-darwin-arm64.sh" // command that will build your module
+        }
+      } // architecture(s) to build for
+}
+```
+
+{ {%expand "Click to view example build-linux-arm64.sh" %}}
+
+```sh { class="command-line"}
+#!/bin/bash
+set -e
+
+sudo apt-get install -y python3-venv
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main
+```
+
+{ {% /expand%}}
+
+{ {%expand "Click to view example build-darwin-arm64.sh" %}}
+
+```sh { class="command-line"}
+#!/bin/bash
+set -e
+
+brew install python3-venv
+python3 -m venv .venv
+. .venv/bin/activate
+pip3 install -r requirements.txt
+python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+tar -czvf dist/archive.tar.gz dist/main
+```
+
+{ {% /expand%}}
+
+{{ % /tab %}}
+{ {< /tabs >}} -->
+
+For example, the following extends the `my-module` <file>meta.json</file> file from the previous section using the single build file approach, adding a new `build` object to control its build parameters when used with `module build start` or `module build local`:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "module_id": "acme:my-module",
+  "visibility": "public",
+  "url": "https://github.com/acme-co-example/my-module",
+  "description": "An example custom module.",
+  "models": [
+    {
+      "api": "rdk:component:generic",
+      "model": "acme:demo:my-model"
+    }
+  ],
+  "build": {
+    "setup": "./setup.sh",
+    "build": "./build.sh",
+    "path": "dist/archive.tar.gz",
+    "arch": ["linux/amd64", "linux/arm64"]
+  },
+  "entrypoint": "dist/main"
+}
+```
+
+When you initiate a build job using either `start` or `local`, the command returns the build ID of your job.
+Provide that build ID to the `module build logs` command to show the relevant build logs for that build.
+
+For example, use the following to initiate a build, and return the build logs as soon as it completes:
+
+```sh {class="command-line" data-prompt="$"}
+viam module build logs --wait --id $(viam module build start --version "0.1.2")
+```
+
+To list all in-progress builds and their build status, use the following command:
+
+```sh {class="command-line" data-prompt="$"}
+viam module build list
+```
+
+### `organizations`
 
 The `organizations` command allows you to list the organizations your authenticated session belongs to, and to create a new organization API key.
 
@@ -767,42 +910,42 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 | `--org-id`      | the organization to create an API key for |`api-key` | true |
 | `--name`     |  the optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time   |`api-key` | false |
 
-### robots
+### `robots`
 
-The `robots` command allows you to manage your robot fleet.
+The `robots` command allows you to manage your machine fleet.
 This includes:
 
-- Listing all robots that you have access to, filtered by organization and location.
-- Creating API keys to grant access to a specific robot
-- Retrieving robot and robot part status
-- Retrieving robot and robot part logs
-- Controlling a robot by issuing component and service commands
-- Accessing your robot with a secure shell (when this feature is enabled)
+- Listing all machines that you have access to, filtered by organization and location.
+- Creating API keys to grant access to a specific machine
+- Retrieving machine and machine part status
+- Retrieving machine and machine part logs
+- Controlling a machine by issuing component and service commands
+- Accessing your machine with a secure shell (when this feature is enabled)
 
 ```sh {class="command-line" data-prompt="$"}
 viam robots list
-viam robots status --organization=<org name> --location=<location name> --robot=<robot id>
-viam robots logs --organization=<org name> --location=<location name> --robot=<robot id> [...named args]
-viam robots part status --organization=<org name> --location=<location name> --robot=<robot id>
-viam robots part run --organization=<org name> --location=<location name> --robot=<robot id> [--stream] --data <meth>
-viam robots part shell --organization=<org name> --location=<location name> --robot=<robot id>
+viam robots status --organization=<org name> --location=<location name> --robot=<machine id>
+viam robots logs --organization=<org name> --location=<location name> --robot=<machine id> [...named args]
+viam robots part status --organization=<org name> --location=<location name> --robot=<machine id>
+viam robots part run --organization=<org name> --location=<location name> --robot=<machine id> [--stream] --data <meth>
+viam robots part shell --organization=<org name> --location=<location name> --robot=<machine id>
 ```
 
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
 
-# list all robots you have access to
+# list all machines you have access to
 viam robots list
 
-# get robot status
+# get machine status
 viam robots status  --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Robot's Org" --location myLoc
 
-# stream error level logs from a robot part
+# stream error level logs from a machine part
 viam robots part logs --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
 --organization "Robot's Org" --location myLoc --part "myrover-main" --tail true
 
-# stream classifications from a robot part every 500 milliseconds from the Viam Vision Service with classifier "stuff_detector"
+# stream classifications from a machine part every 500 milliseconds from the Viam Vision Service with classifier "stuff_detector"
 viam robots part run --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
 --organization "Robot's Org" --location myLoc --part "myrover-main" --stream 500ms \
 --data '{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_detector", "n":1}' \
@@ -814,11 +957,11 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 <!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| `list`      | list all robots that the authenticated session has access to, filtered by organization and location.  | - |
-| `api-key`   |  work with an api-key for your robot | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
-| `status`      | retrieve robot status for a specified robot  | - |
-| `logs`      | retrieve logs for a specified robot | - |
-| `part`      | manage a specified robot part  | `status`, `run`, `logs`, `shell` (see [positional arguments: part](#positional-arguments-part)) |
+| `list`      | list all machines that the authenticated session has access to, filtered by organization and location.  | - |
+| `api-key`   |  work with an api-key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
+| `status`      | retrieve machine status for a specified machine  | - |
+| `logs`      | retrieve logs for a specified machine | - |
+| `part`      | manage a specified machine part  | `status`, `run`, `logs`, `shell` (see [positional arguments: part](#positional-arguments-part)) |
 | `--help`      | return help      | - |
 
 ##### Positional arguments: `api-key`
@@ -826,7 +969,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 <!-- prettier-ignore -->
 | argument | description |
 | ----------- | ----------- | ----------- |
-| `create`     | create an API key for a specific robot |
+| `create`     | create an API key for a specific machine |
 | `--help`      | return help |
 
 ##### Positional arguments: `part`
@@ -834,10 +977,10 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 <!-- prettier-ignore -->
 |        argument     |       description |
 | ----------- | ----------- | ----------- |
-| `status`     | retrieve robot status for a specified robot part |
+| `status`     | retrieve machine status for a specified machine part |
 | `run`     |  run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. |
-| `logs`     |  get logs for the specified robot part |
-| `shell`     |  access a robot part securely using a secure shell. This feature must be enabled. |
+| `logs`     |  get logs for the specified machine part |
+| `shell`     |  access a machine part securely using a secure shell. This feature must be enabled. |
 | `--help`      | return help |
 
 ##### Named arguments
@@ -845,21 +988,21 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 <!-- prettier-ignore -->
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| `--organization`      | organization name that the robot belongs to       |`list`, `status`, `logs`, `part`|true |
-| `--location`     |  location name that the robot belongs to    |`list`, `status`, `logs`, `part`|true |
-| `--robot`      |  robot id for which the command is being issued   |`status`, `logs`, `part`|true |
+| `--organization`      | organization name that the machine belongs to       |`list`, `status`, `logs`, `part`|true |
+| `--location`     |  location name that the machine belongs to    |`list`, `status`, `logs`, `part`|true |
+| `--robot`      |  machine id for which the command is being issued   |`status`, `logs`, `part`|true |
 | `--errors`      |  boolean, return only errors (default: false)   |`logs`|false |
 | `--part`      |  part name for which the command is being issued    |`logs`|false |
 | `--tail`     |  tail (stream) logs, boolean(default false)    |`part logs`|false |
 | `--stream`      |  if specified, the interval in which to stream the specified data, for example, 100ms or 1s    |`part run`|false |
 | `--data`      |  command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments))   |`part run`|true |
-| `--robot-id`      | the robot to create an API key for |`api-key` | true |
+| `--robot-id`      | the machine to create an API key for |`api-key` | true |
 | `--name`     |  the optional name of the API key    |`api-key` | false |
 | `--org-id`      |  the optional organization ID to attach the key to  |`api-key` | false |
 
 ##### Using the `--stream` and `--data` arguments
 
-Issuing the `part` command with the `run` positional argument allows you to run component and service (resource) commands for a selected robot part.
+Issuing the `part` command with the `run` positional argument allows you to run component and service (resource) commands for a selected machine part.
 
 The `--data` parameter is required and you must specify both:
 
@@ -883,7 +1026,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 
 The `--stream` argument, when included in the CLI command prior to the `--data` command, will stream data back at the specified interval.
 
-### version
+### `version`
 
 The `version` command returns the version of the Viam CLI.
 To update to the latest version of the CLI, run the [installation steps](#install) again to download and install the latest version.
@@ -892,7 +1035,7 @@ To update to the latest version of the CLI, run the [installation steps](#instal
 viam version
 ```
 
-### whoami
+### `whoami`
 
 The `whoami` command returns the Viam user for an authenticated CLI session, or "Not logged in" if there is no authenticated session.
 

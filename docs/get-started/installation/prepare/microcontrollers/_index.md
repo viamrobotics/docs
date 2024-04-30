@@ -4,9 +4,8 @@ linkTitle: "Microcontroller Setup"
 weight: 50
 no_list: true
 type: docs
-image: "get-started/installation/thumbnails/esp32-espressif.png"
-imageAlt: "E S P 32 - espressif"
 images: ["/get-started/installation/thumbnails/esp32-espressif.png"]
+imageAlt: "E S P 32 - espressif"
 description: "Set up the Espressif ESP32 with the micro-RDK."
 aliases:
   - /installation/microcontrollers/
@@ -18,31 +17,31 @@ aliases:
 
 {{% readfile "/static/include/micro-rdk-hardware.md" %}}
 
-## Install the Micro-RDK
+## Install the micro-RDK
 
-The Micro-RDK Installer is a CLI that allows you to flash a build of Micro-RDK, along with your robot's credentials and your wifi information, directly to your ESP32.
+The micro-RDK installer is a CLI that allows you to flash a build of micro-RDK, along with your machine's credentials and your wifi information, directly to your ESP32.
 
 With this installation, you can use your ESP32 with all supported resource APIs, but you cannot write your own code directly interacting with the chip.
 If you want to program the chip directly, follow the setup instructions in [the Micro-RDK Development Setup](/get-started/installation/prepare/microcontrollers/development-setup/) instead.
 
-### Flash your ESP32 with the Micro-RDK Installer
+### Flash your ESP32 with the micro-RDK installer
 
-Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/fleet/machines/#add-a-new-robot) in your desired location.
+Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/fleet/machines/#add-a-new-machine) in your desired location.
 
-1. Click on the name of the robot to go to the robot's page.
-2. Click on the **Setup** tab.
-3. Select your computer's architecture as **Architecture** and select **Micro-RDK** as **RDK type**.
+1. Click on the name of the machine to go to its page.
+2. Navigate to the **CONFIGURE** tab and find your machine's card. An alert will be present directing you to **Set up your machine part**. Click **View setup instructions** to open the setup instructions.
+3. Select your computer's architecture and operating system, and select **Micro-RDK** as **RDK type**.
 4. Follow the instructions to flash the micro-RDK directly to an ESP32 connected to your computer through a data cable.
 
    To see the micro-RDK server logs through the serial connection, add `--monitor` to the command in step 3.
    If the program cannot auto-detect the serial port to which your ESP32 is connected, you may be prompted to select the correct one among a list.
 
-Go back to your new robot's page on [the Viam app](https://app.viam.com).
-If successful, your robot will show that it's **Live**.
+Go back to your new machine's page on [the Viam app](https://app.viam.com).
+If successful, your machine will show that it's **Live**.
 
 For more `micro-rdk-installer` CLI usage options, see [GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/micro-rdk-installer).
 
-### Configure your robot
+### Configure your machine
 
 The micro-RDK provides different component models than the fully featured RDK.
 See [Micro-RDK](/build/micro-rdk/) to get a list of supported models and instructions on how to configure them.
@@ -54,13 +53,77 @@ See [Micro-RDK](/build/micro-rdk/) to get a list of supported models and instruc
 
 <h4>Configure your board </h4>
 
-Configure your `esp32` board for your robot.
+Configure your `esp32` board for your machine.
 
 {{% /manualcard %}}
 {{% card link="/build/configure/" %}}
 {{% card link="/tutorials/" %}}
 {{% card link="/build/program/" %}}
 {{< /cards >}}
+
+## Recommendations when using an SDK
+
+If the connection to the ESP32 with an SDK is unstable we recommend the following changes to the default settings in your SDK code when connecting to an ESP32.
+This will disable the SDK background task that monitors the connection to the micro-RDK, saving bandwidth.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+# Replace the connect function found in the CONNECT tab with the following
+async def connect():
+    opts = RobotClient.Options(
+        # Micro-RDK configures once at boot,
+        # so we don't need to check if the components have changed
+        refresh_interval=0,
+        # Checking the connection can safely be disabled
+        check_connection_interval=0,
+        # Same for Attempting to reconnect
+        attempt_reconnect_interval=0,
+        disable_sessions=True,
+        # Micro-RDK doesn't support sessions so it is safe to disable them
+        dial_options=DialOptions.with_api_key(
+            # Replace "<API-KEY-ID>" (including brackets)
+            # with your machine's api key id
+            api_key_id='<API-KEY-ID>',
+            # Replace "<API-KEY>" (including brackets)
+            # with your machine's api key
+            api_key='<API-KEY>')
+    )
+    # Replace "<ROBOT-URL>" (including brackets) with your machine's url
+    return await RobotClient.at_address('<ROBOT-URL>', opts)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+// Replace the call to client.New with the following block
+robot, err := client.New(
+    context.Background(),
+    "<ROBOT-URL>", // Replace "<ROBOT-URL>" (including brackets) with your machine's url
+    logger,
+    client.WithDisableSessions(), // Micro-RDK doesn't support sessions so it is safe to disable them
+    client.WithCheckConnectedEvery(0), // Checking the connection can safely be disabled
+    client.WithReconnectEvery(0), // Same for Attempting to reconnect
+    client.WithRefreshEvery(0), // Micro-RDK configures once at boot, so we don't need to check if the components have changed
+    client.WithDialOptions(rpc.WithEntityCredentials(
+        // Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
+        "<API-KEY-ID>",
+        rpc.Credentials{
+            Type: rpc.CredentialsTypeAPIKey,
+            // Replace "<API-KEY>" (including brackets) with your machine's api key
+            Payload: "<API-KEY>",
+        })),
+    )
+if err != nil {
+    logger.Fatal(err)
+}
+
+```
+
+{{% /tab %}}
+{{% /tabs %}}
 
 ## Troubleshooting
 

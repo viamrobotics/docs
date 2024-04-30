@@ -20,8 +20,8 @@ Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
 A global positioning system (GPS) receives signals from satellites in the earth’s orbit to determine where it is and how fast it is going.
-All supported GPS models provide data for the `Position`, `CompassHeading` and `LinearVelocity` methods.
-You can obtain fix and correction data by using the sensor `GetReadings` method, which is available because GPSes wrap the [sensor component](/components/sensor/).
+All supported GPS models provide data for the [`Position`](/components/movement-sensor/#getposition), [`CompassHeading`](/components/movement-sensor/#getcompassheading), [`LinearVelocity`](/components/movement-sensor/#getlinearvelocity), and [`GetAccuracy`](/components/movement-sensor/#getaccuracy) methods.
+You can obtain fix and correction data by using the sensor [`GetReadings`](/components/sensor/#getreadings) method, which is available because GPSes wrap the [sensor component](/components/sensor/).
 
 The `gps-nmea-rtk-serial` and [`gps-nmea-rtk-pmtk`](../gps-nmea-rtk-pmtk/) movement sensor models support [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [real time kinematic positioning (RTK)](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS units ([such as these](https://www.sparkfun.com/rtk)).
 
@@ -37,48 +37,14 @@ If your movement sensor uses I<sup>2</sup>C communication instead of serial, use
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `movement-sensor` type, then select the `gps-nmea-rtk-serial` model.
-Enter a name for your movement sensor and click **Create**.
+Enter a name or use the suggested name for your movement sensor and click **Create**.
 
-{{< imgproc src="/components/movement-sensor/gps-nmea-rtk-serial-builder.png" alt="Creation of a `gps-nmea-rtk-serial` movement sensor in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/components/movement-sensor/gps-nmea-rtk-serial-builder.png" alt="Creation of a `gps-nmea-rtk-serial` movement sensor in the Viam app config builder." resize="1200x" style="width:650px" >}}
 
-Copy and paste the following attribute template into your movement sensor's **Attributes** box.
-Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "serial_path": "<path_to_serial_port>",
-  "serial_baud_rate": <int>,
-  "ntrip_connect_attempts": <int>,
-  "ntrip_mountpoint": "<identifier>",
-  "ntrip_password": "<password for NTRIP server>",
-  "ntrip_url": "<URL of NTRIP server>",
-  "ntrip_username": "<username for NTRIP server>"
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "serial_path": "/dev/serial/by-path/usb-0:1.1:1.0",
-  "serial_baud_rate": 115200,
-  "ntrip_connect_attempts": 12,
-  "ntrip_mountpoint": "MNTPT",
-  "ntrip_password": "pass",
-  "ntrip_url": "http://ntrip/url",
-  "ntrip_username": "usr"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Fill in the attributes as applicable to your movement sensor, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

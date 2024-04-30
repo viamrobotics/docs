@@ -11,8 +11,8 @@ aliases:
 ---
 
 A global positioning system (GPS) receives signals from satellites in the earth’s orbit to determine where it is and how fast it is going.
-All supported GPS models provide data for the `Position`, `CompassHeading` and `LinearVelocity` methods.
-You can obtain fix and correction data by using the sensor `GetReadings` method, which is available because GPSes wrap the [sensor component](/components/sensor/).
+All supported GPS models provide data for the [`Position`](/components/movement-sensor/#getposition), [`CompassHeading`](/components/movement-sensor/#getcompassheading), [`LinearVelocity`](/components/movement-sensor/#getlinearvelocity), and [`GetAccuracy`](/components/movement-sensor/#getaccuracy) methods.
+You can obtain fix and correction data by using the sensor [`GetReadings`](/components/sensor/#getreadings) method, which is available because GPSes wrap the [sensor component](/components/sensor/).
 
 The `gps-nmea` movement sensor model supports [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS units.
 
@@ -22,64 +22,14 @@ The `gps-nmea` model can be connected using USB and send data through a serial c
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `movement-sensor` type, then select the `gps-nmea` model.
-Enter a name for your movement sensor and click **Create**.
+Enter a name or use the suggested name for your movement sensor and click **Create**.
 
-{{< imgproc src="/components/movement-sensor/gps-nmea-builder.png" alt="Creation of a `gps-nmea` movement sensor in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/components/movement-sensor/gps-nmea-builder.png" alt="Creation of a `gps-nmea` movement sensor in the Viam app config builder." resize="1200x" style="width:650px" >}}
 
-Copy and paste the following attribute template into your movement sensor's **Attributes** box.
-Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "connection_type": "<serial|I2C>",
-  "serial_attributes": {
-    "serial_path": "<your-device-path>",
-    "serial_baud_rate": <int>
-  },
-  "i2c_attributes": {
-    "i2c_bus": "<index-of-bus-on-board>",
-    "i2c_addr": <int>,
-    "i2c_baud_rate": <int>
-  },
-  "disable_nmea": <boolean>
-}
-```
-
-{{% /tab %}}
-{{% tab name="USB/serial attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "connection_type": "serial",
-  "serial_attributes": {
-    "serial_path": "/dev/serial/by-path/<device_ID>",
-    "serial_baud_rate": 38400
-  }
-}
-```
-
-{{% /tab %}}
-{{% tab name="I2c attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "connection_type": "I2C",
-  "i2c_attributes": {
-    "i2c_bus": "1",
-    "i2c_addr": 111,
-    "i2c_baud_rate": 38400
-  }
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Fill in the attributes as applicable to your movement sensor, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -102,8 +52,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
             "i2c_bus": "<index-of-bus-on-board>",
             "i2c_addr": <int>,
             "i2c_baud_rate": <int>
-        },
-        "disable_nmea": <boolean>
+        }
       },
       "depends_on": [],
     }
@@ -172,9 +121,8 @@ The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB
 | Name              | Type    | Inclusion    | Description  |
 | ----------------- | ------- | ------------ | ---------------- |
 | `connection_type` | string  | **Required** | `"I2C"` or `"serial"`. See [Connection Attributes](#connection-attributes) below. |
-| `disable_nmea`    | boolean | Optional     | If set to `true`, changes the NMEA message protocol to RTCM when using a chip as a base station. <br> Default: `false` |
 
-### Connection Attributes
+### Connection attributes
 
 You need to configure attributes to specify how the GPS connects to your computer.
 You can use either serial communication (over USB) or I<sup>2</sup>C communication (through pins to a [board](/components/board/)).
@@ -186,7 +134,7 @@ See examples of this struct in the example tabs above.
 {{< tabs >}}
 {{% tab name="Serial" %}}
 
-### Serial Config Attributes
+### Serial config attributes
 
 For a movement sensor communicating over serial, you'll need to include a `serial_attributes` struct containing:
 
@@ -199,7 +147,7 @@ For a movement sensor communicating over serial, you'll need to include a `seria
 {{% /tab %}}
 {{% tab name="I2C" %}}
 
-### I2C Config Attributes
+### I2C config attributes
 
 For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attributes` struct containing:
 

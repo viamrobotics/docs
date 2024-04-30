@@ -1,4 +1,4 @@
-The following example assumes you have a [camera](/components/camera/) called `camera0` configured as a component of your robot.
+The following example assumes you have a [camera](/components/camera/) called `camera0` configured as a component of your machine.
 If your camera has a different name in the Viam app, change the `name` in the example.
 
 {{< tabs >}}
@@ -21,8 +21,8 @@ import (
 "go.viam.com/rdk/components/camera"
 )
 
-// grab the camera from the robot
-cameraName := "camera0" // make sure to use the same component name that you have in your robot configuration
+// grab the camera from the machine
+cameraName := "camera0" // make sure to use the same component name that you have in your machine configuration
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)

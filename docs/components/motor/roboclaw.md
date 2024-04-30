@@ -21,15 +21,15 @@ Follow [this guide](https://resources.basicmicro.com/roboclaw-motor-controllers-
 
 {{< /alert >}}
 
-To configure a `roboclaw` motor as a component of your robot:
+To configure a `roboclaw` motor as a component of your machine:
 
 {{< tabs name="Configure your roboclaw motor">}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `motor` type, then select the `roboclaw` model.
-Enter a name for your motor and click **Create**.
+Enter a name or use the suggested name for your motor and click **Create**.
 
 ![A roboclaw motor config.](/components/motor/roboclaw-ui-config.png)
 
@@ -99,5 +99,7 @@ The following attributes are available for `roboclaw` motors:
 | `ticks_per_rotation` | int | Optional | Number of full steps in a rotation. Update this if you connect [encoders](/components/encoder/) to your controller through its EN1 and EN2 pins. <br> Default: `0` |
 
 Refer to your motor and motor driver data sheets for specifics.
+
+## Test the motor
 
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}

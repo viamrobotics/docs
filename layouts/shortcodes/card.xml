@@ -1,0 +1,1 @@
+{{ partial "card.xml" (dict "link" (.Get "link") "class" (.Get "class") "customTitle" (.Get "customTitle") "customDescription" (.Get "customDescription") "customCanonicalLink" (.Get "canonical") "imageOverwrite" (.Get "imageOverwrite") ) }}

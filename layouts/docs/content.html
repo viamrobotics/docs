@@ -2,18 +2,17 @@
 	<!-- Check size of preview images -->
 	{{ if .Params.Images }}
 		{{ range .Params.Images}}
-			{{ $image_type_arr := split . "." }}
-			{{ $image_ext := index $image_type_arr 1 }}
-			{{if eq $image_ext "gif" }}
+			{{ $image_ext := path.Ext . }}
+			{{if eq $image_ext ".gif" }}
 				<!-- GIF -->
 				{{if os.FileExists (printf "/static%s" .) }}
 					{{ $f := os.Stat (printf "/static%s" .) }}
 					{{ $sizeInBytes := div $f.Size 1000 }}
 					{{ if gt $sizeInBytes 1000 }}
-						{{ warnf "Size of preview file %s was %d kB - please reduce file size" . $sizeInBytes  }}
+						{{ errorf "Size of preview file %s was %d kB - please reduce file size" . $sizeInBytes  }}
 					{{ end }}
 				{{else}}
-					{{errorf "Preview file not found - did you use the absolute file path? %s" . }}
+					{{ errorf "Preview file not found - did you use the absolute file path? %s" . }}
 				{{end}}
 			{{ else }}
 			<!-- it's an image -->
@@ -21,10 +20,10 @@
 				{{ $f := os.Stat (printf "/assets%s" .) }}
 				{{ $sizeInBytes := div $f.Size 1000 }}
 				{{ if gt $sizeInBytes 1000 }}
-					{{ warnf "Size of preview file %s was %d kB - please reduce file size" . $sizeInBytes  }}
+					{{ errorf "Size of preview file %s was %d kB - please reduce file size" . $sizeInBytes  }}
 				{{ end }}
 				{{else}}
-					{{errorf "Preview file not found - did you use the absolute file path? %s" . }}
+					{{ errorf "Preview file not found - did you use the absolute file path? %s" . }}
 				{{end}}
 			{{ end }}
 		{{ end }}
@@ -47,12 +46,11 @@
 	{{ .Content }}
 
 	{{ if ne .Params.no_list true}}
-
 	{{ $pages := union .Sections .Pages }}
 	  <div id="archive" class="card-container">
 		<div class="row-no-margin">
 		  {{ range sort $pages ".Weight"}}
-			{{ partial "card.html" (dict "link" (.Page.File) "class" "" "customTitle" "" "customDescription" "" "customCanonicalLink" (.Page.Params.canonical) ) }}
+			{{ partial "card.html" (dict "link" (.Page.File.Path) "class" "" "customTitle" "" "customDescription" "" "customCanonicalLink" (.Page.Params.canonical) ) }}
 		{{ end }}
 		</div>
 	  </div>

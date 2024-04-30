@@ -4,9 +4,9 @@ linkTitle: "Base"
 weight: 10
 type: "docs"
 no_list: true
-description: "The moving platform that the other parts of a mobile robot attach to."
+description: "A moving platform that the other parts of a mobile robot attach to."
 tags: ["base", "components"]
-icon: "/icons/components/base.svg"
+icon: true
 images: ["/icons/components/base.svg"]
 modulescript: true
 aliases:
@@ -29,7 +29,7 @@ Most mobile robots with a base need at least the following hardware:
 - A power supply for the actuators.
 - Some sort of chassis to hold everything together.
 
-## Related Services
+## Related services
 
 {{< cards >}}
 {{< relatedcard link="/mobility/base-rc/" >}}
@@ -37,11 +37,9 @@ Most mobile robots with a base need at least the following hardware:
 {{< relatedcard link="/mobility/navigation/" >}}
 {{< /cards >}}
 
-## Supported Models
+## Supported models
 
 To use your base with Viam, check whether one of the following [built-in models](#built-in-models) or {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} supports your base.
-
-{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Built-in models
 
@@ -51,11 +49,14 @@ For configuration information, click on the model name:
 | Model | Description |
 | ----- | ----------- |
 | [`wheeled`](wheeled/) | Mobile wheeled robot |
+| [`sensor-controlled`](sensor-controlled/) | A model that wraps other base models with feedback control from a movement sensor |
 | [`fake`](fake/) | A model used for testing, with no physical hardware |
 
-### Modular Resources
+### Modular resources
 
 {{<modular-resources api="rdk:component:base" type="base">}}
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ### Micro-RDK
 
@@ -63,14 +64,14 @@ If you are using the micro-RDK, navigate to [Micro-RDK Base](/build/micro-rdk/ba
 
 ## Control your base with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Then control your machine programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have a wheeled base called `"my_base"` configured as a component of your robot.
+These examples assume you have a wheeled base called `"my_base"` configured as a component of your machine.
 If your base has a different name, change the `name` in the code.
 
 Be sure to import the base package for the SDK you are using:
@@ -711,10 +712,10 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< snippet "social.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
-{{% card link="/tutorials/control/yahboom-rover" %}}
+{{% card link="/tutorials/configure/configure-rover" %}}
 {{% card link="/tutorials/get-started/try-viam-sdk" %}}
 {{% card link="/tutorials/services/webcam-line-follower-robot" %}}
 {{< /cards >}}

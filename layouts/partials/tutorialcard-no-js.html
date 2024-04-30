@@ -1,59 +1,72 @@
-{{ $size := (.size) }}
-{{ $customTitle := (.custom) }}
-{{ $link := (path.Clean (.link)) }}
-{{ $baseurl := .Site.BaseURL }}
-{{ if (eq (substr .Site.BaseURL -1 1) "/" ) }}
-  {{ $baseurl := (substr .Site.BaseURL 0 -1) }}
-{{ end }}
+{{- $size := (.size) -}}
+{{- $customTitle := (.custom) -}}
+{{- $link := (path.Clean (.link)) -}}
+{{- $baseurl := .Site.BaseURL -}}
+{{- if (eq (substr .Site.BaseURL -1 1) "/" ) -}}
+  {{- $baseurl := (substr .Site.BaseURL 0 -1) -}}
+{{- end -}}
 <div class="col tutorial hover-card">
-  {{ if site.GetPage ($link | string) }}
-    {{ with site.GetPage ($link | string) }}
+  {{- if site.GetPage ($link | string) -}}
+    {{- with site.GetPage ($link | string) -}}
       <a href="{{.RelPermalink}}">
-          {{ if .Params.webmSrc }}
+          {{- if .Params.videos -}}
           <div class="hover-card-video">
-            <video autoplay loop muted playsinline alt="{{ .Params.videoAlt }}" width="100%" style="max-width: 100% " class="">
-              <source src="{{relURL (substr (.Params.webmSrc) 1) }}" type="video/webm">
-              <source src="{{relURL (substr (.Params.mp4Src) 1) }}" type="video/mp4">
-              There should have been a video here but your browser does not seem to support it.
-            </video>
+          <!-- First two videos are used for previews -->
+          {{- $extension_first_file := path.Ext (index .Params.videos 0) -}}
+          {{- $extension_second_file := path.Ext (index .Params.videos 1) -}}
+          <!-- check video extension -->
+          {{- if and (eq $extension_first_file ".webm") (eq $extension_second_file ".mp4") -}}
+          <video autoplay loop muted playsinline alt="{{ .Params.videoAlt }}" width="100%" style="max-width: 100% " class="">
+            <source src="{{relURL (substr (index .Params.videos 0) 1) }}" type="video/webm">
+            <source src="{{relURL (substr (index .Params.videos 1) 1) }}" type="video/mp4">
+            There should have been a video here but your browser does not seem to support it.
+          </video>
+          {{- else if and (eq $extension_second_file ".webm") (eq $extension_first_file ".mp4") -}}
+          <video autoplay loop muted playsinline alt="{{ .Params.videoAlt }}" width="100%" style="max-width: 100% " class="">
+            <source src="{{relURL (substr (index .Params.videos 1) 1) }}" type="video/webm">
+            <source src="{{relURL (substr (index .Params.videos 0) 1) }}" type="video/mp4">
+            There should have been a video here but your browser does not seem to support it.
+          </video>
+          {{- else -}}
+            {{ warnf "The first two videos specified in the frontmatter must be of type mp4 and webm: %s" .Params.videos }}
+          {{- end -}}
           </div>
-          {{ end }}
-          {{ if .Params.image }}
-          <div class="hover-card-img">
-            {{ partial "imgproc.html" (dict "src" .Params.image "resize" "300x" "alt" .Params.imageAlt "style" "" "class" "" "declaredimensions" false ) }}
-          </div>
-          {{ end }}
-          {{ if .Params.icon }}
-          <div class="hover-card-icon">
-            {{ partial "imgproc.html" (dict "src" .Params.icon "resize" "300x" "alt" .Params.linkTitle "style" "" "class" (.class) "declaredimensions" false ) }}
-          </div>
-          {{ end }}
-          <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
+          {{- else if .Params.images -}}
+          {{- if .Params.icon -}}<div class="hover-card-icon"> {{- else -}}
+            <div class="hover-card-img"> {{- end -}}
+              {{- if .Params.imageAlt -}}
+              {{- partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "300x" "alt" .Params.imageAlt "style" "" "class" "" "declaredimensions" false ) -}}
+              {{- else -}}
+              {{- partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "300x" "alt" .Params.linkTitle "style" "" "class" "" "declaredimensions" false ) -}}
+              {{- end -}}
+            </div>
+          {{- end -}}
+          <div {{ if (index .Params.images 0) }}class="small-hover-card-div"{{ end }}{{ if .Params.videos }}class="small-hover-card-div"{{ end }}>
             <div>
-            {{ if $customTitle }}<span>{{ $customTitle }}</span>{{ else }}<span>{{ .LinkTitle }}</span>{{ end }}
+            {{- if $customTitle -}}<span>{{- $customTitle -}}</span>{{- else -}}<span>{{- .LinkTitle -}}</span>{{- end -}}
             <div class="pills">
             {{if .Params.languages}}
-            {{ range sort .Params.languages }}
-              <div class="pill pill-lang">{{ . }}</div>
-            {{ end }}
-            {{ end }}
+            {{- range sort .Params.languages -}}
+              <div class="pill pill-lang">{{- . -}}</div>
+            {{- end -}}
+            {{- end -}}
             {{if .Params.viamresources}}
-            {{ range sort .Params.viamresources }}
-              <div class="pill pill-component">{{ . }}</div>
-            {{ end }}
-            {{ end }}
+            {{- range sort .Params.viamresources -}}
+              <div class="pill pill-component">{{- . -}}</div>
+            {{- end -}}
+            {{- end -}}
             </div>
           </div>
           {{if .Params.cost}}
             <div class="robot-cost">
               <div class="key">Materials: </div>
-              <div class="value">~${{ .Params.cost }}</div>
+              <div class="value">~${{- .Params.cost -}}</div>
             </div>
-          {{ end }}
+          {{- end -}}
         </div>
       </a>
-      {{ end }}
-  {{ else }}
-  {{ warnf "?Tutorial card has a bad link: %s" $link }}
-  {{ end }}
+      {{- end -}}
+  {{- else -}}
+  {{- warnf "Tutorial card has a bad link: %s" $link -}}
+  {{- end -}}
 </div>

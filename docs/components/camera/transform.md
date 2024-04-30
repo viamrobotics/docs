@@ -11,20 +11,21 @@ aliases:
 # SMEs: Bijan, vision team
 ---
 
-Use the transform model to apply transformations to input source images.
+Use the `transform` model to apply transformations to input source images.
 The transformations are applied in the order they are written in the `pipeline`.
 
 {{< tabs name="Example transform view" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `camera` type, then select the `transform` model.
-Enter a name for your camera and click **Create**.
+Enter a name or use the suggested name for your camera and click **Create**.
 
 ![Configuration of an transform view in the Viam app config builder.](/components/camera/configure-transform.png)
 
-Copy and paste the following attribute template into your camera's **Attributes** box.
+Click the **{}** (Switch to Advanced) button in the top right of the component panel to edit the component's attributes directly with JSON.
+Copy and paste the following attribute template into the attributes field.
 Then remove and fill in the attributes as applicable to your camera, according to the table below.
 
 {{< tabs >}}
@@ -130,8 +131,10 @@ Classifications overlay text from the `GetClassifications` method of the [vision
 {
   "type": "classifications",
   "attributes": {
-    "classifier_name": string,
-    "confidence_threshold": float
+    "classifier_name": "<name>",
+    "confidence_threshold": <float>,
+    "max_classifications": <int>,
+    "valid_labels": [ "<label>" ]
   }
 }
 ```
@@ -140,6 +143,8 @@ Classifications overlay text from the `GetClassifications` method of the [vision
 
 - `classifier_name`: The name of the classifier in the [vision service](/ml/vision/).
 - `confidence_threshold`: The threshold above which to display classifications.
+- `max_classifications`: _Optional_. The maximum number of classifications to display on the camera stream at any given time. Default: `1`.
+- `valid_labels`: _Optional_. An array of labels that you to see detections for on the camera stream. If not specified, all labels from the classifier are used.
 
 {{% /tab %}}
 
@@ -151,10 +156,10 @@ The Crop transform crops takes an image and crops it to a rectangular area speci
 {
   "type": "crop",
   "attributes": {
-    "x_min_px": int,
-    "y_min_px": int,
-    "x_max_px": int,
-    "y_max_px": int
+    "x_min_px": <int>,
+    "y_min_px": <int>,
+    "x_max_px": <int>,
+    "y_max_px": <int>
   }
 }
 
@@ -177,9 +182,9 @@ The Depth Edges transform creates a canny edge detector to detect edges on an in
 {
   "type": "depth_edges",
   "attributes": {
-    "high_threshold_pct": float,
-    "low_threshold_pct": float,
-    "blur_radius_px": float
+    "high_threshold_pct": <float>,
+    "low_threshold_pct": <float>,
+    "blur_radius_px": <float>
   }
 }
 ```
@@ -235,7 +240,8 @@ The Detections transform takes the input image and overlays the detections from 
   "type": "detections",
   "attributes": {
     "detector_name": string,
-    "confidence_threshold": float
+    "confidence_threshold": <float>,
+    "valid_labels": ["<label>"]
   }
 }
 ```
@@ -244,6 +250,7 @@ The Detections transform takes the input image and overlays the detections from 
 
 - `detector_name`: The name of the detector configured in the [vision service](/ml/vision/).
 - `confidence_threshold`: Specify to only display detections above the specified threshold (decimal between 0 and 1).
+- `valid_labels`: _Optional_. An array of labels that you to see detections for on the camera stream. If not specified, all labels from the classifier are used.
 
 {{% /tab %}}
 
@@ -274,12 +281,12 @@ Useful to debug the alignment of the two images.
   "type": "overlay",
   "attributes": {
     "intrinsic_parameters": {
-      "width_px": int,
-      "height_px": int,
-      "ppx": float,
-      "ppy": float,
-      "fx": float,
-      "fy": float,
+      "width_px": <int>,
+      "height_px": <int>,
+      "ppx": <float>,
+      "ppy": <float>,
+      "fx": <float>,
+      "fy": <float>,
     }
   }
 }
@@ -305,8 +312,8 @@ The Resize transform resizes the image to the specified height and width.
 {
   "type": "resize",
   "attributes": {
-    "width_px": int,
-    "height_px": int
+    "width_px": <int>,
+    "height_px": <int>
   }
 }
 ```
@@ -321,7 +328,7 @@ The Resize transform resizes the image to the specified height and width.
 {{% tab name="Rotate" %}}
 
 The Rotate transformation rotates the image by 180 degrees.
-This feature is useful for when the camera is installed upside down on your robot.
+This feature is useful for when the camera is installed upside down on your machine.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -347,19 +354,19 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
   "type": "undistort",
   "attributes": {
     "intrinsic_parameters": {
-     "width_px": int,
-      "height_px": int,
-      "ppx": float,
-      "ppy": float,
-      "fx": float,
-      "fy": float
+     "width_px": <int>,
+      "height_px": <int>,
+      "ppx": <float>,
+      "ppy": <float>,
+      "fx": <float>,
+      "fy": <float>
     },
     "distortion_parameters": {
-      "rk1": float,
-      "rk2": float,
-      "rk3": float,
-      "tp1": float,
-      "tp2": float
+      "rk1": <float>,
+      "rk2": <float>,
+      "rk3": <float>,
+      "tp1": <float>,
+      "tp2": <float>
     }
   }
 }
@@ -407,7 +414,7 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 
 {{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/ml/vision" %}}

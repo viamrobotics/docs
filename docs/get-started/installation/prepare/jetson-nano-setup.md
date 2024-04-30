@@ -3,9 +3,8 @@ title: "NVIDIA Jetson Nano and Orin Nano Setup Guide"
 linkTitle: "Jetson Nano and Orin Nano Setup"
 weight: 20
 type: "docs"
-image: "/get-started/installation/thumbnails/jetson-nano-dev-kit.png"
-imageAlt: "Jetson Nano"
 images: ["/get-started/installation/thumbnails/jetson-nano-dev-kit.png"]
+imageAlt: "Jetson Nano"
 description: "Prepare your Jetson Nano or Jetson Orin Nano for viam-server installation."
 no_list: true
 aliases:
@@ -24,7 +23,7 @@ Follow this guide to set up the [Jetson Nano Developer Kit](https://developer.nv
 {{% alert title="Important" color="note" %}}
 
 This guide assumes that you have a Jetson Nano Developer Kit or a Jetson Orin Nano Developer Kit with a Jetson module and reference carrier board.
-If you want to use a different carrier board to incorporate your Nano into your robot, the type of carrier board you use will affect your hardware requirements.
+If you want to use a different carrier board to incorporate your Nano into your machine, the type of carrier board you use will affect your hardware requirements.
 
 {{% /alert %}}
 
@@ -34,11 +33,11 @@ The GPIO pins on Jetson boards are rated 3.3V signals. 5V signals from encoders 
 
 {{% /alert %}}
 
-## Hardware Requirements
+## Hardware requirements
 
 You need the following hardware, tools, and software to install `viam-server` on a Jetson Nano or Jetson Orin Nano:
 
-**Initial Setup with Display Attached:**
+**Initial setup with display attached:**
 
 1. A [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) or [Jetson Orin Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-agx-orin-developer-kit)
 2. A microSD card (32GB UHS-1 minimum recommended)
@@ -47,7 +46,7 @@ You need the following hardware, tools, and software to install `viam-server` on
 5. Ethernet cable and/or Wifi dongle, to establish network connection on the Nano
 6. 5V-2A (Nano) or 9-19V (Orin Nano) DC power supply with barrel jack connector
 
-**Initial Setup in Headless Mode:**
+**Initial setup in headless mode:**
 
 1. A [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) or [Jetson Orin Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-agx-orin-developer-kit)
 2. A microSD card (32GB UHS-1 minimum recommended)
@@ -57,7 +56,7 @@ You need the following hardware, tools, and software to install `viam-server` on
 6. Ethernet cable and/or Wifi dongle, to establish network connection on the Nano
 7. 5V-2A (Nano) or 9-19V (Orin Nano) DC power supply with barrel jack connector
 
-## Nano Setup Guide
+## Nano setup guide
 
 Follow the instructions in [Getting Started with Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit) or [Getting Started with Jetson Orin Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-orin-nano-devkit).
 Once you have reached _Next Steps_, return to the Viam docs.
@@ -74,7 +73,7 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 
 {{< readfile "/static/include/install/install-linux-aarch.md" >}}
 
-## Serial Communication Protocol Tips
+## Serial communication protocol tips
 
 To change the pins that are in use for modes of serial communication, launch <file>jetson-io.py</file> with the following commands:
 
@@ -99,7 +98,7 @@ For a Jetson Orin Nano, reference the following:
 Note that I2C buses do not need to be configured through <file>jetson-io.py</file>.
 See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/ConfiguringTheJetsonExpansionHeaders.html) for more information.
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/build/configure/" %}}
@@ -109,7 +108,7 @@ See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https:/
 
 ## Troubleshooting
 
-Make sure the polarity on your barrel jack power supply is matched when powering your robot.
+Make sure the polarity on your barrel jack power supply is matched when powering your machine.
 See the last step of your appropriate [initial setup guide](#hardware-requirements) for instructions on choosing the correct power supply for your Nano board.
 
 If you do not see an interactive menu after launching <file>jetson-io.py</file>, try resizing your window to a large size.

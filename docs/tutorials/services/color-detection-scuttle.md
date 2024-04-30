@@ -3,8 +3,11 @@ title: "Follow a Colored Object with a Rover (like SCUTTLE)"
 linkTitle: "Colored Object Follower"
 type: "docs"
 description: "Instructions for detecting and following a colored object with a rover, like a SCUTTLE robot."
-webmSrc: "/tutorials/videos/scuttle-colordetection-preview.webm"
-mp4Src: "/tutorials/videos/scuttle-colordetection-preview.mp4"
+videos:
+  [
+    "/tutorials/videos/scuttle-colordetection-preview.webm",
+    "/tutorials/videos/scuttle-colordetection-preview.mp4",
+  ]
 videoAlt: "Detecting color with a Scuttle Robot"
 images: ["/tutorials/videos/scuttle-colordetection-preview.gif"]
 aliases:
@@ -35,8 +38,8 @@ You can see the [full code](#full-code) at the bottom of the page.
 You will need the following hardware to complete this tutorial:
 
 - A wheeled rover, configured with a [base component](/components/base/) on the [Viam app](https://app.viam.com/).
-  This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a different rover.
-  - Regardless of the type of base you are using, [Setting up a SCUTTLE with Viam](/tutorials/configure/scuttlebot/) is a good place to start if you haven't already configured your base.
+  This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot) or an entirely different rover.
+  - For a tutorial on configuring your rover, see [Configure a Rover](/tutorials/configure/configure-rover/).
 - An attached and configured [webcam camera](/components/camera/webcam/).
 
 ## Set up the hardware
@@ -48,12 +51,12 @@ Turn on the power to the rover.
 
 This tutorial uses the color `#a13b4c` or `rgb(161,59,76)` (a reddish color).
 
-To create a [color detector vision service](/ml/vision/detection/):
+To create a [color detector vision service](/ml/vision/#detections):
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
 Click the **Services** subtab and click **Create service** in the lower-left corner.
 Select the `Vision` type, then select the `Color Detector` model.
 Enter `my_color_detector` as the name for your service and click **Create**.
@@ -153,7 +156,7 @@ pip3 install viam-sdk
 
 ### Connect
 
-Next, go to the **Code sample** tab on your [robot page](https://app.viam.com/robots) and select **Python**, then click **Copy**.
+Next, go to the **Code sample** tab on your [machine page](https://app.viam.com/robots) and select **Python**, then click **Copy**.
 
 {{% snippet "show-secret.md" %}}
 
@@ -188,10 +191,10 @@ from viam.components.base import Base
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-        # id
+        # Replace "<API-KEY-ID>" (including brackets) with your machine's
+        # API key ID
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address("ADDRESS FROM THE VIAM APP", opts)
@@ -307,7 +310,7 @@ Use something like a red sports ball or book cover as a target to follow to test
 {{<video webm_src="/tutorials/videos/scuttledemos_colordetection.webm" mp4_src="/tutorials/videos/scuttledemos_colordetection.mp4" poster="/tutorials/scuttlebot/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
 </div>
 
-## Next Steps
+## Next steps
 
 Congratulations! If you're ready for more, try making your rover detect other colors.
 You could also write some code with a Viam SDK to [make your rover move in a square](/tutorials/get-started/try-viam-sdk/).
@@ -328,10 +331,10 @@ from viam.components.base import Base
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-        # id
+        # Replace "<API-KEY-ID>" (including brackets) with your machine's
+        # API key ID
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address("ADDRESS FROM THE VIAM APP", opts)

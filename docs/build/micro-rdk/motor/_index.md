@@ -15,7 +15,7 @@ aliases:
 A motor is a rotating machine that transforms electrical energy into mechanical energy.
 For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Motor Component](/components/motor/).
 
-## Supported Models
+## Supported models
 
 For configuration information, click on the supported motor model name:
 
@@ -23,6 +23,8 @@ For configuration information, click on the supported motor model name:
 | Model | Description |
 | ----- | ----------- |
 | [`gpio`](./gpio/) | [Standard brushed or brushless DC motor](https://en.wikipedia.org/wiki/DC_motor) |
+
+{{% readfile "/static/include/micro-create-your-own.md" %}}
 
 ## API
 

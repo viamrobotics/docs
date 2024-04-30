@@ -1,10 +1,8 @@
 ---
 title: "Access and Move a Robot Arm"
 linkTitle: "Move a Robot Arm"
-weight: 6
 type: "docs"
 description: "Access and control one of the most fundamental systems in robotics: A robotic arm."
-image: "/tutorials/motion/preview.jpg"
 imageAlt: "A robotic arm"
 images: ["/tutorials/motion/preview.jpg"]
 tags: ["arm", "motion", "services"]
@@ -24,7 +22,7 @@ no_list: true
 {{< alert title="Caution" color="caution" >}}
 Be careful when instructing robot arms to move.
 Before running any code, ensure your robotic arm has enough space and that there are no obstacles.
-Also pay attention to your surroundings, double-check your code for correctness, and make sure anyone nearby is aware and alert before issuing commands to your robot.
+Also pay attention to your surroundings, double-check your code for correctness, and make sure anyone nearby is aware and alert before issuing commands to your machine.
 {{< /alert >}}
 
 The following instructions show you how to interact with an [arm component](/components/arm/), help you understand how an arm describes its state, and assist you in issuing movement commands to your robotic arm.
@@ -47,58 +45,55 @@ Before starting this tutorial, make sure you have the [Viam Python SDK](https://
 
 If you are connecting to a real robotic arm during this tutorial, make sure your computer can communicate with the controller before continuing.
 
-## Configure a Robot
+## Configure a machine
 
-1. Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-2. Create a new robot.
-3. Follow the instructions on the **Setup** tab.
-4. Select the **Config** tab.
-5. Under the **Components** subtab, click **Create component** in the lower-left corner and create a component with the following attributes:
+{{% snippet "setup.md" %}}
 
-   - Choose `Arm` as the type.
+1. Once your machine is live, select the **CONFIGURE** tab.
+1. Click on the **+** symbol next to your machine in the **Builder** panel and select **Component** in the menu that opens:
+
+   - Choose `arm` as the type.
    - Choose your desired model.
-     - If you're using an xArm 6, choose the `xArm6` model from the dropdown list.
+     - For example, if you're using an xArm 6, choose the `xArm6` model from the list.
    - Enter `myArm` as the **Name** for this component, then click **Create**.
 
-6. In the newly created `myArm` component panel, fill in some additional details:
+1. In the newly created `myArm` component panel, configure any attributes as needed.
+   Refer to the documentation for the model for information about your arm's model.
 
-   - Enter the IP address for your robot controller in the **Host** field
-   - Enter a desired velocity _(in degrees per second)_ for the robot arm's motions in the **Speed** field
-     - For an `xArm6`, a safe value is `15` degrees per second.
+1. Switch to the **Frame** mode and select `myArm` in the left-hand menu to see the default values for your arm.
+   You do not need to change the default values that populate the new frame card.
 
-7. Add a **Frame** to this component.
+   <!-- TODO -->
 
-   - You do not need to change the default values that populate the new frame card
+   {{<imgproc src="/tutorials/motion/access_02_arm_config.png" resize="1000x" declaredimensions=true alt="Sample machine arm configuration with several fields filled out." style="max-width: 600px" >}}
 
-   {{<imgproc src="/tutorials/motion/access_02_arm_config.png" resize="700x" declaredimensions=true alt="Sample robot arm configuration with several fields filled out." class="alignright" style="max-width: 400px" >}}
+1. Save your machine configuration.
 
-8. Save this robot configuration.
-
-9. Go to the **Code sample** tab and select the programming language you are working in.
+1. Go to the **Code sample** page of the **CONNECT** tab and select the programming language you are working in.
 
    {{% snippet "show-secret.md" %}}
 
-   Then, paste this boilerplate code into a file and run the script to verify you can connect to your robot.
-   Throughout this tutorial you will replace and amend this code.
+   Then, copy and paste the boilerplate code into a file and run the resulting script to verify you can connect to your machine.
+   Throughout the rest of this tutorial, you will replace and amend this code.
    The [full tutorial code](#full-tutorial-code) is available at the bottom of this tutorial for reference.
 
-## Access the Arm
+## Access the arm
 
 The `arm` component library has several methods to simplify accessing and working with robotic arms.
 In this step, you'll fetch data about the robotic arm's current position.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-The following lines from the [full **Python** tutorial code](#full-tutorial-code) enable you to use the `myArm` component you configured earlier.
+Your script will resemble the following lines from the [full **Python** tutorial code](#full-tutorial-code) which enable you to use the `myArm` component you configured earlier.
 The code then calls the [`get_end_position`](/components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Access myArm
-my_arm_component = Arm.from_robot(robot, "myArm")
+my_arm = Arm.from_robot(machine, "myArm")
 
 # End Position of myArm
-my_arm_end_position = await my_arm_component.get_end_position()
-print(f"myArm get_end_position return value: {my_arm_end_position}")
+my_arm_return_value = await my_arm.get_end_position()
+print(f"myArm get_end_position return value: {my_arm_return_value}")
 ```
 
 You should see output that looks similar to the following:
@@ -117,40 +112,41 @@ The `x`, `y`, and `z` values correspond to the `position` element of the pose, w
 
 {{% /tab %}}
 {{% tab name="Go" %}}
-The following lines from the [full **Go** tutorial code](#full-tutorial-code) enable you to use the `myArm` component you configured earlier.
+Your script will resemble the following lines from the [full **Go** tutorial code](#full-tutorial-code) which enable you to use the `myArm` component you configured earlier.
 The code then calls the [`EndPosition`](/components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Access myArm
-myArmComponent, err := arm.FromRobot(robot, "myArm")
-if err != nil {
-  fmt.Println(err)
+myArmComponent, err := arm.FromRobot(machine, "myArm")
+if err!=nil {
+  logger.Error(err)
+  return
 }
 
 // End Position of myArm
-myArmEndPosition, err := myArmComponent.EndPosition(context.Background(), nil)
-if err != nil {
-  fmt.Println(err)
+myArmReturnValue, err:= myArmComponent.EndPosition(context.Background(), map[string]interface{}{})
+if err!=nil {
+  logger.Error(err)
+  return
 }
-fmt.Println("myArm EndPosition position value:", myArmEndPosition.Point())
-fmt.Println("myArm EndPosition orientation value:", myArmEndPosition.Orientation())
+logger.Infof("myArm EndPosition return value: %+v", myArmReturnValue)
+
 ```
 
 You should see output that looks similar to the following:
 
 ```sh {class="command-line" data-prompt="$" data-output="1-10"}
-myArm EndPosition position value: (200.734507558989150766137755, 0.002850766765420175395673, 108.639665936211727625959611)
-myArm EndPosition orientation value: &{-0.009825947555660422 -2.127840592298059e-06 0.9999517242097753 -5.6523269754840597e-08}
+myArm EndPosition position return value: (200.734507558989150766137755, 0.002850766765420175395673, 108.639665936211727625959611)
 ```
 
-The `Position` and `Orientation` values are the two parts of a `Pose`, but you can inspect them separately (as you have done here) or together.
+The `Position` value is part of a `Pose`.
 
 {{% /tab %}}
 {{< /tabs >}}
 
 The state of a robot arm can also be described as the **combined positions of each joint** attached to the arm.
 You can access a robot arm's "joint states" (as they are sometimes referred to) by calling a different method on the arm component.
-Use the following code right after the code that gets the end effector pose from the prior code sample.
+Add the following code right after the code that gets the end effector pose from the prior code sample.
 When you run the code, you'll see that these two pieces of information are presented differently.
 
 {{< tabs >}}
@@ -158,7 +154,7 @@ When you run the code, you'll see that these two pieces of information are prese
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Joint Positions of myArm
-my_arm_joint_positions = await my_arm_component.get_joint_positions()
+my_arm_joint_positions = await my_arm.get_joint_positions()
 print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
 ```
 
@@ -183,9 +179,10 @@ You can also see these values reflected on the Control tab in the Viam app for y
 // Joint Positions of myArm
 myArmJointPositions, err := myArmComponent.JointPositions(context.Background(), nil)
 if err != nil {
-  fmt.Println(err)
+  logger.Error(err)
+  return
 }
-fmt.Println("myArm JointPositions return value:", myArmJointPositions)
+logger.Infof("myArm JointPositions return value:", myArmJointPositions)
 ```
 
 You should see output that looks similar to the following:
@@ -206,12 +203,12 @@ Other times you may need to describe the position of another object with respect
 There is a mathematical relationship that allows you to convert between these two representations, known as the **forward and inverse kinematics**, which is foundational to complex robotic motion.
 We will not cover forward and inverse kinematics in this tutorial, but resources for further reading on these topics are linked in the [**Next Steps**](#next-steps-and-references) section.
 
-## Move the Arm
+## Move the arm
 
 The two main options for specifying arm movement are through **joint position commands** and through **pose commands**.
 Let's start with joint position commands, as their formulation is a little simpler.
 
-### Joint Position Commands
+### Joint position commands
 
 First, you can initiate motion with a joint position command.
 A final note:
@@ -233,7 +230,7 @@ See the [arm reference document](/components/arm/#movetojointpositions) for furt
 ```python {class="line-numbers linkable-line-numbers"}
 # Command a joint position move: move the forearm of the arm slightly up
 cmd_joint_positions = JointPositions(values=[0, 0, -30.0, 0, 0, 0])
-await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
+await my_arm.move_to_joint_positions(positions=cmd_joint_positions)
 ```
 
 {{% /tab %}}
@@ -248,7 +245,8 @@ See the [arm reference document](/components/arm/#movetojointpositions) for furt
 cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, -30.0, 0.0, 0.0, 0.0}}
 err = myArmComponent.MoveToJointPositions(context.Background(), cmdJointPositions, nil)
 if err != nil {
-  fmt.Println(err)
+  logger.Error(err)
+  return
 }
 ```
 
@@ -260,7 +258,7 @@ Feel free to experiment further with joint position commands by changing the val
 
 When you are ready to move on, the next section will show you how to use **pose commands**.
 
-### Pose Commands
+### Pose commands
 
 When you [got the end position of the arm](#access-the-arm), this data was returned in the format of a `Pose`.
 The returned `Pose` is a combination of position and orientation data that indicates the end of the arm's full 6-dimensional configuration in space.
@@ -277,9 +275,9 @@ If you want to synthesize new poses directly, note that you must import an addit
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Generate a simple pose move +100mm in the +Z direction of the arm
-cmd_arm_pose = await my_arm_component.get_end_position()
+cmd_arm_pose = await my_arm.get_end_position()
 cmd_arm_pose.z += 100.0
-await my_arm_component.move_to_position(pose=cmd_arm_pose)
+await my_arm.move_to_position(pose=cmd_arm_pose)
 ```
 
 {{% /tab %}}
@@ -291,7 +289,8 @@ Add `"go.viam.com/rdk/referenceframe"` and `"go.viam.com/rdk/spatialmath"` to yo
 // Generate a simple pose move +100mm in the +Z direction of the arm
 currentArmPose, err := myArmComponent.EndPosition(context.Background(), nil)
 if err != nil {
-  fmt.Println(err)
+  logger.Error(err)
+  return
 }
 adjustedArmPoint := currentArmPose.Point()
 adjustedArmPoint.Z += 100.0
@@ -299,7 +298,8 @@ cmdArmPose := spatialmath.NewPose(adjustedArmPoint, currentArmPose.Orientation()
 
 err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, nil)
 if err != nil {
-  fmt.Println(err)
+  logger.Error(err)
+  return
 }
 ```
 
@@ -311,7 +311,7 @@ Using this code you can quickly adjust one or more elements of position AND orie
 For all motion actions taken in this tutorial, there may be joint positions or poses that are unreachable for particular reasons (potential collisions, a pose in space is unreachable because the arm is too short).
 Regularly check your client script's feedback and the `viam-server` logs for any issues that may arise.
 
-## Next Steps and References
+## Next steps and references
 
 If you would like to continue onto working with Viam's motion service, check out one of these tutorials:
 
@@ -324,7 +324,7 @@ If you would like to continue onto working with Viam's motion service, check out
 
 For more resources on robot kinematics, read through the Wikipedia pages for [Forward kinematics](https://en.wikipedia.org/wiki/Forward_kinematics) and [Inverse kinematics](https://en.wikipedia.org/wiki/Inverse_kinematics).
 
-## Full Tutorial Code
+## Full tutorial code
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -340,44 +340,44 @@ from viam.rpc.dial import Credentials, DialOptions
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      # Replace "<API-KEY>" (including brackets) with your machine's API key
       api_key='<API-KEY>',
-      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-      # id
+      # Replace "<API-KEY-ID>" (including brackets) with your machine's API key
+      # ID
       api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 
 
 async def main():
-    robot = await connect()
+    machine = await connect()
 
     print('Resources:')
-    print(robot.resource_names)
+    print(machine.resource_names)
 
     # Access myArm
-    my_arm_component = Arm.from_robot(robot, "myArm")
+    my_arm = Arm.from_robot(machine, "myArm")
 
     # End Position of myArm
-    my_arm_end_position = await my_arm_component.get_end_position()
+    my_arm_end_position = await my_arm.get_end_position()
     print(f"myArm get_end_position return value: {my_arm_end_position}")
 
     # Joint Positions of myArm
-    my_arm_joint_positions = await my_arm_component.get_joint_positions()
+    my_arm_joint_positions = await my_arm.get_joint_positions()
     print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
 
     # Command a joint position move: small adjustment to the last joint
     cmd_joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 15.0])
-    await my_arm_component.move_to_joint_positions(
+    await my_arm.move_to_joint_positions(
         positions=cmd_joint_positions)
 
     # Generate a simple pose move +100mm in the +Z direction of the arm
-    cmd_arm_pose = await my_arm_component.get_end_position()
+    cmd_arm_pose = await my_arm.get_end_position()
     cmd_arm_pose.z += 100.0
-    await my_arm_component.move_to_position(pose=cmd_arm_pose)
+    await my_arm.move_to_position(pose=cmd_arm_pose)
 
     # Don't forget to close the robot when you're done!
-    await robot.close()
+    await machine.close()
 
 if __name__ == '__main__':
     asyncio.run(main())
@@ -393,13 +393,13 @@ package main
 
 import (
   "context"
-  "fmt"
 
   armapi "go.viam.com/api/component/arm/v1"
-  "go.viam.com/rdk/components/arm"
   "go.viam.com/rdk/logging"
-  "go.viam.com/rdk/referenceframe"
   "go.viam.com/rdk/robot/client"
+  "go.viam.com/utils/rpc"
+  "go.viam.com/rdk/components/arm"
+  "go.viam.com/rdk/referenceframe"
   "go.viam.com/rdk/spatialmath"
   "go.viam.com/rdk/utils"
   "go.viam.com/utils/rpc"
@@ -407,59 +407,63 @@ import (
 
 func main() {
   logger := logging.NewLogger("client")
-  robot, err := client.New(
+  machine, err := client.New(
       context.Background(),
       "ADDRESS FROM THE VIAM APP",
       logger,
       client.WithDialOptions(rpc.WithEntityCredentials(
-      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
       "<API-KEY-ID>",
       rpc.Credentials{
           Type:    rpc.CredentialsTypeAPIKey,
-          // Replace "<API-KEY>" (including brackets) with your robot's api key
+          // Replace "<API-KEY>" (including brackets) with your machine's API key
           Payload: "<API-KEY>",
       })),
   )
   if err != nil {
       logger.Fatal(err)
   }
-  defer robot.Close(context.Background())
+  defer machine.Close(context.Background())
 
   logger.Info("Resources:")
-  logger.Info(robot.ResourceNames())
+  logger.Info(machine.ResourceNames())
 
   // Access myArm
-  myArmComponent, err := arm.FromRobot(robot, "myArm")
+  myArmComponent, err := arm.FromRobot(machine, "myArm")
   if err != nil {
-    fmt.Println(err)
+    logger.Error(err)
+    return
   }
 
   // End Position of myArm
-  myArmEndPosition, err := myArmComponent.EndPosition(context.Background(), nil)
+  myArmReturnValue, err := myArmComponent.EndPosition(context.Background(), nil)
   if err != nil {
-    fmt.Println(err)
+    logger.Error(err)
+    return
   }
-  fmt.Println("myArm EndPosition position value:", myArmEndPosition.Point())
-  fmt.Println("myArm EndPosition orientation value:", myArmEndPosition.Orientation())
+  logger.Infof("myArm EndPosition return value: %+v", myArmReturnValue)
 
   // Joint Positions of myArm
   myArmJointPositions, err := myArmComponent.JointPositions(context.Background(), nil)
   if err != nil {
-    fmt.Println(err)
+    logger.Error(err)
+    return
   }
-  fmt.Println("myArm JointPositions return value:", myArmJointPositions)
+  logger.Infof("myArm JointPositions return value:", myArmJointPositions)
 
   // Command a joint position move: small adjustment to the last joint
   cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, 0.0, 0.0, 0.0, 15.0}}
   err = myArmComponent.MoveToJointPositions(context.Background(), cmdJointPositions, nil)
   if err != nil {
-    fmt.Println(err)
+    logger.Error(err)
+    return
   }
 
   // Generate a simple pose move +100mm in the +Z direction of the arm
   currentArmPose, err := myArmComponent.EndPosition(context.Background(), nil)
   if err != nil {
-    fmt.Println(err)
+    logger.Error(err)
+    return
   }
   adjustedArmPoint := currentArmPose.Point()
   adjustedArmPoint.Z += 100.0
@@ -467,7 +471,8 @@ func main() {
 
   err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, nil)
   if err != nil {
-    fmt.Println(err)
+    logger.Error(err)
+    return
   }
 }
 ```

@@ -67,6 +67,14 @@ h2, .h2 {
   clear: both;
 }
 
+.td-content {
+  min-height: 92%;
+}
+
+.td-content > h2.frontpage-headers {
+  margin-top: 1.5rem;
+}
+
 h3, .h3 {
   font-family: space grotesk, sans-serif;
   font-size: 1.1667rem !important;
@@ -196,6 +204,9 @@ a > code {
 p, li {
   color: #515151;
   a {
+    text-decoration: none;
+  }
+  a:hover {
     text-decoration: underline;
   }
 }
@@ -366,11 +377,11 @@ END MARKETING CSS
 }
 
 .alert a {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .alert a:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 
@@ -434,6 +445,11 @@ END MARKETING CSS
   margin: 1rem;
 }
 
+.use-cases * .hover-card {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 1rem;
+}
+
 // Hover animations and colors
 
 .hover-card:hover {
@@ -475,8 +491,44 @@ END MARKETING CSS
   color: black;
 }
 
+.hover-card > a > div {
+  color: black;
+}
+
 .hover-card > div > div {
   margin-bottom: 0.5rem;
+}
+
+.hover-card > a > div > p {
+  margin-bottom: 0rem;
+}
+
+// adjust for cards that only have a link and an icon
+
+.hover-card.link-with-icon > a {
+  width: 100%;
+}
+
+.hover-card.link-with-icon > a > div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.hover-card.link-with-icon * picture {
+  width: 45px;
+  height: 45px;
+  margin-right: 1em;
+}
+
+.hover-card.link-with-icon * img {
+  aspect-ratio: unset;
+  margin: unset;
+  object-fit: fill;
+  min-width: 45px;
+  width: 45px;
+  height: 45px;
+  border: unset;
 }
 
 // For some reason video elements don't calculate the height correctly. This adjusts for that.
@@ -496,6 +548,10 @@ END MARKETING CSS
   aspect-ratio: 4 / 3;
   margin-bottom: 0 !important;
   border: 1px solid black;
+}
+
+.fit-contain.hover-card * img, .fit-contain.hover-card * video {
+  object-fit: contain;
 }
 
 .hover-card * img.fill {
@@ -611,6 +667,7 @@ END MARKETING CSS
 
     .hover-card-video, .hover-card-img {
       max-width: 50%;
+      min-width: 50%;
       margin: 0 1rem 1rem 0;
       margin: auto;
       padding-right: 1rem;
@@ -635,7 +692,7 @@ END MARKETING CSS
     }
 
     div.small-hover-card-div {
-      width: 50%;
+      min-width: 50%;
     }
 
     p {
@@ -751,7 +808,7 @@ END MARKETING CSS
 /* START CSS to ensure lists within columns of markdown aren't indented */
 
 td > ul, td > ol {
-  padding-inline-start: 0;
+  padding-inline-start: 1.5em;
 }
 
 /* END CSS to ensure lists within columns of markdown aren't indented */
@@ -801,21 +858,39 @@ td > ul, td > ol {
   color: black;
   border-radius: 0;
   background-color: whitesmoke;
-  margin: 0;
+  margin: 0.5rem;
   padding: 1rem 1.25rem;
   i {
     color: black;
   }
 }
 
-#scrollButton {
+#scrollButton, #chatButton {
   position: sticky;
   left: 100%;
   bottom: 1rem;
   border-radius: 0;
+  height: 60px;
+  width: 60px;
+  opacity: 1;
+  transition: opacity 0.5s;
+  background-color: #000000;
+  color: white;
 }
 
-#edit-on-github {
+#scrollButton > i, #chatButton > i {
+  color: white;
+}
+
+#scrollButton {
+  margin-right: 76px;
+}
+
+#chatButton {
+  padding: 6px;
+}
+
+#edit-on-github, #rss-feed {
   float: right;
   a {
     color: #515151;
@@ -930,6 +1005,14 @@ img.frame {
 
 .feedback-ty > p {
   margin-top: 1rem;
+}
+
+// This ensures the gray sidebar covers the area where the sticky buttons are rendered.
+@media (min-width: 768px) {
+  .td-sidebar {
+    padding-bottom: 76px;
+    margin-bottom: -76px;
+  }
 }
 
 /* END Feedback container */
@@ -1249,7 +1332,7 @@ ul.sectionlist > li:hover {
 #tutorial-menu {
   display: flex;
   flex-direction: column;
-  max-width: 600px;
+  max-width: 800px;
 }
 
 #tutorial-filters, #tutorial-filter-items {
@@ -1276,6 +1359,25 @@ ul.sectionlist > li:hover {
 
 .ais-Hits-item {
   display: flex;
+}
+
+.ais-Hits-item > .blogpost .title:after {
+  content: "Blogpost";
+  background-color: #ffd400;
+}
+
+.ais-Hits-item .title:after {
+  content: "Tutorial";
+  padding: 0.1rem 0.2rem;
+  margin-left: 0.5rem;
+  background-color: #00ef83;
+  font-size: 0.833rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.ais-Hits-item .hover-card-video {
+  border: none;
 }
 
 #hits .ais-Hits-list {
@@ -1355,7 +1457,7 @@ ul.sectionlist > li:hover {
 
 // Pagination CSS start
 
-#pagination {
+#pagination, #paginationML {
   margin: 2rem auto;
 }
 
@@ -1440,7 +1542,7 @@ a.ais-Pagination-link:hover {
 // ensure tutorials page is 100% of height
 
 .row.flex-xl-nowrap {
-  min-height: 100%;
+  min-height: 90%;
 }
 
 // Helper to allow search to link to tabs
@@ -1449,15 +1551,19 @@ a.ais-Pagination-link:hover {
   display: none;
 }
 
-// styling for model list from modular resources
+// styling for model list from registry
 
-.mr-component {
+.mr-component, mr-model {
   margin-bottom: 1rem;
 }
 
 .modellist > div {
   display: flex;
   border-bottom: 1px solid #dee2e6;
+}
+
+.modellist * .ais-Hits-list {
+  flex-direction: column;
 }
 
 .modellist * .ais-Hits.ais-Hits--empty {
@@ -1507,6 +1613,7 @@ a.ais-Pagination-link:hover {
 }
 
 .modellistheader > .description, .modellist * .description {
+  overflow-wrap: anywhere;
 }
 
 #searchbox {
@@ -1544,34 +1651,120 @@ input[type=search]::-webkit-search-cancel-button {
 
 .changelog-outer {
   display: flex;
+  justify-content: space-between;
 }
 
 .changelog div {
   padding-right: 4px;
 }
 
-.changelog div span {
+.changelog .colorbox, .changelog .datebox {
   text-transform: uppercase;
   padding: 0.1rem 0.25rem;
   border: 1px solid black;
   font-size: 1rem;
   font-weight: 500;
-  line-height: 1.3;
-  vertical-align: top;
+  line-height: 1.0;
+  margin-right: 0.5em;
 }
 
-.changelog-added {
+.box-fit {
+  display: flex;
+}
+
+.date-fit {
+  min-width: fit-content;
+}
+
+.changelog-added .colorbox {
   background-color: #00ef83;
 }
 
-.changelog-improved {
+.changelog-improved .colorbox {
   background-color: #00e8e8;
 }
 
-.changelog-changed {
+.changelog-changed .colorbox {
   background-color: #ffd400;
 }
 
-.changelog-removed {
+.changelog-removed .colorbox {
   background-color: #ff0047;
+}
+
+// Changelog filtering
+
+#changelog-menu {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  position: relative;
+}
+
+#changelog-filters button {
+  text-decoration: none;
+  color: black;
+  padding: 0.2rem 1rem;
+  margin: 0.2rem;
+  border: 1px solid black;
+}
+
+#added-button.active, #added-button:hover {
+  background-color: #93f6c9;
+}
+
+#improved-button.active, #improved-button:hover {
+  background-color: #92f3f3;
+}
+
+#changed-button.active, #changed-button:hover {
+  background-color: #f4eab7;
+}
+
+#removed-button.active, #removed-button:hover {
+  background-color: #f68dab;
+}
+
+#all-button.active, #all-button:hover {
+  background-color: #d1b4cb;
+}
+
+.filterable {
+  display: none;
+  margin: 1em 0em;
+}
+
+div .filterable > p {
+  position: relative;
+  z-index: 1;
+}
+
+// Display only the elements that currently have show class
+.show {
+  display: block;
+}
+
+.hidethisone {
+  display: none;
+}
+
+// END changelog filtering
+
+.linkcontainer {
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.usecase {
+  min-width: 280px;
+  max-width: 400px;
+  margin: 1em;
+  padding: 1em;
+}
+
+.usecase:hover {
+  background-color: whitesmoke;
 }

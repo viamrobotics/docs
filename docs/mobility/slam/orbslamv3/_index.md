@@ -56,7 +56,7 @@ The webcam can be installed on a robot, or just held in your hand.
 
 {{% /alert %}}
 
-First, follow these instructions to connect and calibrate your webcam as a component of your robot:
+First, follow these instructions to connect and calibrate your webcam as a component of your machine:
 
 1. [Connect and configure a webcam](/components/camera/webca/)
 2. [Calibrate a camera](/components/camera/calibrate/)
@@ -66,14 +66,14 @@ Now, add the `orbslamv3` service:
 {{< tabs name="Add the ORBSLAM3 Service Live">}}
 {{% tab name="Config Builder" %}}
 
-Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **Config** tab on your robot's page, and click on the **Services** subtab.
+Go to your machine's page on the [Viam app](https://app.viam.com/).
+Navigate to the **CONFIGURE** tab on your machine's page, and click on the **Services** subtab.
 
 Add a service with type `slam`, model `orbslamv3`, and a name of your choice.
 
 ![adding orbslam3 slam service](/mobility/slam/add-orbslam-service-ui.png)
 
-Paste the following into the **Attributes** field of your new service:
+Paste the following into the attributes field of your new service:
 
 ```json
 {
@@ -87,14 +87,14 @@ Paste the following into the **Attributes** field of your new service:
 }
 ```
 
-![adding orbslam3 slam service attributes box](/mobility/slam/add-orbslam-service-attributes-live.png)
+![adding orbslam3 slam service attributes field](/mobility/slam/add-orbslam-service-attributes-live.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **Config** tab .
-Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing camera configuration:
+Go to your machine's page on the [Viam app](https://app.viam.com/).
+Navigate to the **CONFIGURE** tab .
+Select the **JSON** mode, then copy/paste the following `"services"` JSON to add to your existing camera configuration:
 
 ```json
 // "components": [ ...], YOUR CAMERA COMPONENT
@@ -175,14 +175,14 @@ If this directory structure is not present at runtime, the SLAM service creates 
 {{< tabs name="Add the ORBSLAM3 Service with Dataset">}}
 {{% tab name="Config Builder" %}}
 
-Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **Config** tab on your robot's page, and click on the **Services** subtab.
+Go to your machine's page on the [Viam app](https://app.viam.com/).
+Navigate to the **CONFIGURE** tab on your machine's page, and click on the **Services** subtab.
 
 Add a service with type `slam`, model `orbslamv3`, and a name of your choice:
 
 ![adding orbslam3 slam service](/mobility/slam/add-orbslam-service-ui.png)
 
-Paste the following into the **Attributes** field of your new service:
+Paste the following into the attributes field of your new service:
 
 ```json
 {
@@ -195,14 +195,14 @@ Paste the following into the **Attributes** field of your new service:
 }
 ```
 
-![adding orbslam3 slam service attributes box](/mobility/slam/add-orbslam-service-attributes-offline.png)
+![adding orbslam3 slam service attributes field](/mobility/slam/add-orbslam-service-attributes-offline.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **Config** tab .
-Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing camera configuration:
+Go to your machine's page on the [Viam app](https://app.viam.com/).
+Navigate to the **CONFIGURE** tab .
+Select the **JSON** mode, then copy/paste the following `"services"` JSON to add to your existing camera configuration:
 
 ```json
 // "components": [ ...], YOUR CAMERA COMPONENT
@@ -339,7 +339,7 @@ Adjust these parameters to fine-tune the algorithm `orbslamv3` utilizes:
 
 ## View the Map
 
-After saving your config, head over to the **Control** tab and click on the dropdown menu matching the `name` of the service you created.
+After saving your config, head over to the **CONTROL** tab and click on the dropdown menu matching the `name` of the service you created.
 
 Change the **Refresh frequency** to your desired frequency.
 If in Live Data mode, move your webcam around slowly.

@@ -1,7 +1,7 @@
 
 {{ $jsCarousel := resources.Get "js/carousel.js" }}
 {{ $jsCarousel := $jsCarousel | minify }}
-{{ if eq .Page.Title "Viam Documentation" }}
+{{ if or (eq .Page.Title "Viam Documentation") (eq .Page.Title "Platform") (eq .Page.Title "Viam in 3 minutes") (eq .Page.Title "Build Your Machine with Flexible Building Blocks") (eq .Page.Title "Get Started") }}
 <script type="text/javascript" src="{{$jsCarousel.RelPermalink}}" crossorigin="anonymous"></script>
 {{ end }}
 
@@ -94,10 +94,11 @@ window.markmap = {
 {{ if .Site.Params.offlineSearch }}
 {{ $jsSearch = resources.Get "js/offline-search.js" }}
 {{ end }}
-{{ $js := (slice $jsIndex $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam) | resources.Concat "js/main.js" }}
 {{ if not hugo.IsProduction }}
+{{ $js := (slice $jsIndex $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam) | resources.Concat "js/main.js" }}
 <script src="{{ $js.RelPermalink }}"></script>
 {{ else }}
+{{ $js := (slice $jsIndex $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam) | resources.Concat "js/main.js" }}
 {{ $js := $js | minify | fingerprint }}
 {{ $jsSentry := $jsSentry | minify }}
 <script async src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>

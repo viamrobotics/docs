@@ -1,11 +1,11 @@
 ---
-title: "Build a robotic claw game with a Raspberry Pi"
+title: "Build a Robotic Claw Game with a Raspberry Pi"
 linkTitle: "Claw Game"
 type: "docs"
 description: "Create your own version of the famous arcade claw machine using a robotic arm and a claw grabber."
 tags: ["app", "board", "motor", "gripper"]
-webmSrc: "/tutorials/claw-game/preview.webm"
-mp4Src: "/tutorials/claw-game/preview.mp4"
+videos:
+  ["/tutorials/claw-game/preview.webm", "/tutorials/claw-game/preview.mp4"]
 videoAlt: "GIF of the claw game in action at a party."
 images: ["/tutorials/claw-game/preview.gif"]
 authors: ["Arielle Mella", "Hazal Mestci", "Matt Vella"]
@@ -43,9 +43,9 @@ To build your own claw game machine, you need the following hardware:
 - An iPad or other tablet
 - 1 x 4’x4’ fiberboard
 - 10 x 2”x4”x8’ lumber
-- 4 x [5/16 2 inch lag screws](https://www.homedepot.com/p/Everbilt-5-16-in-x-2-in-Zinc-Plated-Hex-Drive-Hex-Head-Lag-Screw-801446/204645617)
+- 4 x 5/16 2 inch lag screws
 - A box of 3” deck screws
-- 8 x [⅜” 4 inch hex bolts](https://www.homedepot.com/p/Everbilt-3-8-in-24-TPI-x-4-in-Zinc-Plated-Grade-5-Fine-Thread-Hex-Bolt-851928/205029373) with nuts and washers
+- 8 x ⅜” 4 inch hex bolts with nuts and washers
 - [Velcro cable ties](https://www.amazon.com/Fastening-Adjustable-Organization-Microfiber-Management/dp/B08KH6WTJZ)
 - 3 x 4’x2.5’ sheets of plexiglass
 - A box of small wood screws for mounting the plexiglass
@@ -131,21 +131,22 @@ To finish the table construction, attach the supporting legs and mount the arm t
 ## Configure the robot
 
 Next, configure your newly-built robot.
-Go to [the Viam app](https://app.viam.com) and create a new robot.
-Follow the instructions on the **Setup** tab to install `viam-server` on your Raspberry Pi and connect to your robot.
 
-Robots are organized into {{< glossary_tooltip term_id="part" text="parts" >}}, where each part represents a computer (a [single-board computer](/get-started/installation/), desktop, laptop, or other computer) running `viam-server`, the hardware {{< glossary_tooltip term_id="component" text="components" >}} attached to it, and any {{< glossary_tooltip term_id="service" text="services" >}} or other resources running on it.
+{{% snippet "setup.md" %}}
 
-Every robot has a main part which is automatically created when you create the robot.
-Since you just created a new robot, your robot's main part is already defined.
-Multi-part robots also have one or more sub-parts representing additional computers running `viam-server`.
-If you have two computers within the _same robot_, you can use one as the main part and [connect the other to it as a sub-part](/build/configure/parts-and-remotes/#configure-a-sub-part). This is the approach this tutorial follows: you'll run the [motion planning service](/mobility/motion/) on a laptop and connect that laptop as a sub-part to your robot.
+Machines are organized into {{< glossary_tooltip term_id="part" text="parts" >}}, where each part represents a computer (a [single-board computer](/get-started/installation/), desktop, laptop, or other computer) running `viam-server`, the hardware {{< glossary_tooltip term_id="component" text="components" >}} attached to it, and any {{< glossary_tooltip term_id="service" text="services" >}} or other resources running on it.
+
+Every machine has a main part which is automatically created when you create the machine.
+Since you just created a new machine, your machine's main part is already defined.
+Multi-part machines also have one or more sub-parts representing additional computers running `viam-server`.
+If you have two computers within the _same machine_, you can use one as the main part and [connect the other to it as a sub-part](/build/configure/parts/#configure-a-sub-part).
+This is the approach this tutorial follows: you'll run the [motion planning service](/mobility/motion/) on a laptop and connect that laptop as a sub-part to your machine.
 
 {{< alert title="Tip" color="tip" >}}
 Technically you could configure all the components within one part, but motion planning is more performant when running on a computer like a macOS or Linux laptop running `viam-server`.
 {{< /alert >}}
 
-Use the parts dropdown menu in the top banner of your robot’s page on [the Viam app](https://app.viam.com/) to add a new sub-part called `planning`:
+Use the parts dropdown menu in the top banner of your machine’s page on [the Viam app](https://app.viam.com/) to add a new sub-part called `planning`:
 
 <p>
 {{<imgproc src="/tutorials/claw-game/app-planning.png" resize="500x" declaredimensions=true alt="UI for adding a sub part named planning." class="aligncenter">}}
@@ -153,10 +154,10 @@ Use the parts dropdown menu in the top banner of your robot’s page on [the Via
 
 Follow the instructions on the **Setup** tab to install `viam-server` on your development machine and connect to your robot's sub-part.
 
-For more information about parts, see [Machine Architecture: Parts, Sub-Parts and Remotes](/build/configure/parts-and-remotes/).
+For more information about parts, see [Machine Architecture: Parts](/build/configure/parts/).
 
 Now you are ready to configure the individual components in the [Viam app](https://app.viam.com).
-Navigate to the **Config** tab of your robot's page and select your main part from the parts dropdown.
+Navigate to the **Config** tab of your machine's page and select your main part from the parts dropdown.
 
 ### Configure the board
 
@@ -173,14 +174,14 @@ Name your board `myBoard` and click **Create**.
 
 You can name your board whatever you want as long as you use the same name to refer to it in your code.
 We named it `myBoard` for simplicity.
-This is the only component in the main robot.
+This is the only component in the main machine.
 
 Click **Save config** in the lower-left corner of the screen.
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your board:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your board:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -218,7 +219,8 @@ Name it `myArm` and click **Create**.
 
 ![Create component panel, with the name attribute filled as myArm, type attribute filled as arm and model attribute filled as xArm6. In the Attributes section, host is filled 10.1.1.26 and in Frame section, there is a world frame.](/tutorials/claw-game/app-myarm.png)
 
-Configure the arm component with the arm's IP address in the `host` field under **Attributes**.
+Configure the arm component with the arm's IP address in the `host` field.
+Click the **{}** (Switch to Advanced) button in the top right of the component panel to edit the component's attributes directly with JSON.
 Our arm's address was `10.1.1.26`, but you should use the IP address for your arm.
 
 For more information on xArm6 configuration, see [Configure an xArm6 Arm](/components/arm/xarm6/).
@@ -228,7 +230,7 @@ Click **Save config** in the lower-left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your arm:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your arm:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -293,7 +295,7 @@ Click **Save config** in the lower-left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your arm and gripper:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your arm and gripper:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -419,7 +421,7 @@ In order to control the claw through Viam, you will now wire the relay to the Ra
 
 Once `viam-server` has started, you can test closing and opening the claw.
 The Viam `board` component gives us an interface for this.
-Go to the **Control** tab for your robot, open the `MyBoard` card, enter `8` next to **Set** under the GPIO interface, choose `high` and click **Set Pin State**.
+Go to the **Control** tab for your machine, open the `MyBoard` card, enter `8` next to **Set** under the GPIO interface, choose `high` and click **Set Pin State**.
 The relay will trigger the claw circuit to be closed when the GPIO pin state is set to high and your claw will close.
 Now select `low` and click **Set Pin State** again: the claw will open.
 
@@ -819,12 +821,12 @@ To use the [Viam TypeScript SDK](https://ts.viam.dev/) you must install the depe
    npm install
    ```
 
-1. Determine your robot's location secret and host address by navigating to the **Code sample** tab in the [Viam app](https://app.viam.com).
-   Use the host address of your main robot part, as it will reference all parts of your robot.
+1. Determine your machine's location secret and host address by navigating to the **Code sample** tab in the [Viam app](https://app.viam.com).
+   Use the host address of your main machine part, as it will reference all parts of your machine.
 
    {{% snippet "show-secret.md" %}}
 
-1. Then, run the following command to start the custom TypeScript interface, inserting your robot's API key as the argument for `VIAM_API_KEY`,your robot's api key id as the argument for `VIAM_API_KEY_ID`, and your main part host address for `VIAM_LOCATION`:
+1. Then, run the following command to start the custom TypeScript interface, inserting your machine's API key as the argument for `VIAM_API_KEY`,your machine's API key ID as the argument for `VIAM_API_KEY_ID`, and your main part host address for `VIAM_LOCATION`:
 
    ```sh {class="command-line" data-prompt="$"}
    export VIAM_LOCATION=<mylocation>;VIAM_API_KEY=<myapikey>;VIAM_API_KEY_ID=<myapikeyid>;npm run start-simple
@@ -867,7 +869,7 @@ async function right(motionClient: MotionClient, armClient: ArmClient) {
     referenceFrame: "world",
     pose: rightPose
   }
-// Call the move method with the new rightPose values to move your arm and pass in your robot component name, WorldState, and constraints
+// Call the move method with the new rightPose values to move your arm and pass in your machine component name, WorldState, and constraints
   await motionClient.move(rightPoseInFrame, myArm, myWorldState, constraints)
 }
 ```
@@ -939,7 +941,7 @@ For some next steps, you could:
 - Add a camera and extend the interface to allow folks from anywhere in the world to play the claw game and win.
 
   {{< alert title="Tip" color="tip" >}}
-  Viam already allows you to securely control robots from anywhere.
+  Viam already allows you to securely control machines from anywhere.
   {{< /alert >}}
 
 Or you can head over to our [Tutorials](/tutorials/) page and try one of our other tutorials to continue building other robots.

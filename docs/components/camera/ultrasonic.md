@@ -5,7 +5,7 @@ weight: 60
 type: "docs"
 description: "Configure an ultrasonic model camera."
 tags: ["camera", "components", "ultrasonic"]
-icon: "/icons/components/camera.svg"
+icon: true
 images: ["/icons/components/camera.svg"]
 aliases:
   - "/components/camera/ultrasonic/"
@@ -17,47 +17,19 @@ An ultrasonic distance sensor can also be configured as a [sensor](/components/s
 When configured as a sensor, you can use the sensor method [`GetReadings()`](/components/sensor/#getreadings), rather than the camera method [`GetPointCloud()`](/components/camera/#getpointcloud).
 {{< /alert >}}
 
-Configure an `ultrasonic` camera to integrate the [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into your robot:
+Configure an `ultrasonic` camera to integrate the [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into your machine:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `camera` type, then select the `ultrasonic` model.
-Enter a name for your camera and click **Create**.
+Enter a name or use the suggested name for your camera and click **Create**.
 
 ![Creation of a ultrasonic camera in the Viam app config builder.](/components/camera/configure-ultrasonic.png)
 
-Copy and paste the following attribute template into your camera's **Attributes** box.
-Then remove and fill in the attributes as applicable to your camera, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "trigger_pin": "<pin-number>",
-  "echo_interrupt_pin": "<pin-number>",
-  "board": "<your-board-name>",
-  "timeout_ms": <int>
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "trigger_pin": "5",
-  "echo_interrupt_pin": "15",
-  "board": "local",
-  "timeout_ms": "1200"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Edit the attributes as applicable to your camera, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -112,6 +84,6 @@ The following attributes are available for `ultrasonic` cameras:
 
 {{< readfile "/static/include/components/ultrasonic-attributes.md" >}}
 
-## Next Steps
+## Next steps
 
 {{< readfile "/static/include/components/camera-model-next-steps.md" >}}

@@ -5,7 +5,11 @@
   {{ $f := os.Stat $webmLink }}
   {{ $sizeInBytes := div $f.Size 1000 }}
   {{ if gt $sizeInBytes 1000 }}
-    {{ warnf "Size of video file %s was %d kB - please reduce file size" $webmLink $sizeInBytes  }}
+    {{ if not hugo.IsProduction }}
+    {{ warnf "Size of video file %s was %d kB - please reduce file size. This will be an error on PRs." $webmLink $sizeInBytes }}
+    {{ else }}
+    {{ errorf "Size of video file %s was %d kB - please reduce file size" $mp4Link $sizeInBytes }}
+    {{ end }}
   {{ end }}
 {{ else }}
   {{errorf "File not found - did you use the absolute file path? %s" $webmLink}}
@@ -14,7 +18,11 @@
   {{ $f := os.Stat $mp4Link }}
   {{ $sizeInBytes := div $f.Size 1000 }}
   {{ if gt $sizeInBytes 1000 }}
-    {{ warnf "Size of video file %s was %d kB - please reduce file size" $mp4Link $sizeInBytes  }}
+    {{ if not hugo.IsProduction }}
+      {{ warnf "Size of video file %s was %d kB - please reduce file size. This will be an error on PRs." $mp4Link $sizeInBytes }}
+    {{ else }}
+      {{ errorf "Size of video file %s was %d kB - please reduce file size" $mp4Link $sizeInBytes }}
+    {{ end }}
   {{ end }}
 {{end}}
 

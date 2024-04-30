@@ -1,56 +1,83 @@
 {{- $.Scratch.Add "index" slice -}}
-{{- $section := $.Site.GetPage "section" .Section }}
+{{- $section := $.Site.GetPage "section" .Section -}}
       {{- range .Site.AllPages -}}
             {{- if or (and (.IsDescendant $section) (and (not .Draft) (and (not .Params.private) (not .Params.empty_node)))) $section.IsHome -}}
-                  {{ if eq .Section "tutorials" }}
-                        {{ $.Scratch.Set "latestDate" .Date.UTC.Unix}}
+                  {{- if eq .Section "tutorials" -}}
+                        {{- $.Scratch.Set "latestDate" .Date.UTC.Unix -}}
                         {{- if .Params.updated -}}
-                              {{ $.Scratch.Set "latestDate" ((time .Params.updated).UTC.Unix) -}}
-                        {{ end }}
+                              {{- $.Scratch.Set "latestDate" ((time .Params.updated).UTC.Unix) -}}
+                        {{- end -}}
                         {{- if not (.Params.cost) -}}
-                              {{ errorf "No cost on tutorial: %s" .Title }}
+                              {{- errorf "No cost on tutorial: %s" .Title -}}
                         {{- end -}}
 
                         {{- if .Weight -}}
-                              {{ $.Scratch.Set "featured" .Weight }}
+                              {{- $.Scratch.Set "featured" .Weight -}}
                         {{- else -}}
-                              {{ $.Scratch.Set "featured" 9999 }}
+                              {{- $.Scratch.Set "featured" 9999 -}}
                         {{- end -}}
 
-                        {{- if .Params.webmSrc -}}
-                              {{- if eq (.Params.webmSrc | printf "%.1s") "/" -}}
-                                    {{ $.Scratch.Set "webm" (printf "..%s" .Params.webmSrc) }}
-                              {{- else -}}
-                                    {{ $.Scratch.Set "webm" (printf "%s" .Params.webmSrc) }}
+                        {{- if (index .Params.videos 0) -}}
+                              {{- if and (eq (path.Ext (index .Params.videos 0)) ".webm") (eq (path.Ext (index .Params.videos 1)) ".mp4") -}}
+
+                                    {{- if eq ((index .Params.videos 0) | printf "%.1s") "/" -}}
+                                          {{- $.Scratch.Set "webm" (printf "..%s" (index .Params.videos 0)) -}}
+                                    {{- else -}}
+                                          {{- $.Scratch.Set "webm" (printf "%s" (index .Params.videos 0)) -}}
+                                    {{- end -}}
+                                    {{- if eq ((index .Params.videos 1) | printf "%.1s") "/" -}}
+                                          {{- $.Scratch.Set "mp4" (printf "..%s" (index .Params.videos 1)) -}}
+                                    {{- else -}}
+                                          {{- $.Scratch.Set "mp4" (printf "%s" (index .Params.videos 1)) -}}
+                                    {{- end -}}
+
+                              {{- else if and (eq (path.Ext (index .Params.videos 1)) ".webm") (eq (path.Ext (index .Params.videos 0)) ".mp4") -}}
+
+                                    {{- if eq ((index .Params.videos 1) | printf "%.1s") "/" -}}
+                                          {{- $.Scratch.Set "webm" (printf "..%s" (index .Params.videos 1)) -}}
+                                    {{- else -}}
+                                          {{- $.Scratch.Set "webm" (printf "%s" (index .Params.videos 1)) -}}
+                                    {{- end -}}
+                                    {{- if eq ((index .Params.videos 0) | printf "%.1s") "/" -}}
+                                          {{- $.Scratch.Set "mp4" (printf "..%s" (index .Params.videos 0)) -}}
+                                    {{- else -}}
+                                          {{- $.Scratch.Set "mp4" (printf "%s" (index .Params.videos 0)) -}}
+                                    {{- end -}}
+
                               {{- end -}}
+                              {{- $.Scratch.Set "image" "" -}}
                         {{- else -}}
-                              {{ $.Scratch.Set "webm" "" }}
+                              {{- $.Scratch.Set "webm" "" -}}
+                              {{- $.Scratch.Set "mp4" "" -}}
+                              {{- if (index .Params.images 0) -}}
+                                    {{- $image_ext := path.Ext (index .Params.images 0) -}}
+                                    {{- $image_extensions := slice ".png" ".jpg" ".jpeg" ".svg" -}}
+                                    {{- if in $image_extensions $image_ext -}}
+                                          {{- if eq ((index .Params.images 0) | printf "%.1s") "/" -}}
+                                                {{- $.Scratch.Set "image" (printf "..%s" (index .Params.images 0)) -}}
+                                          {{- else -}}
+                                                {{- $.Scratch.Set "image" (printf "%s" (index .Params.images 0)) -}}
+                                          {{- end -}}
+                                    {{- else -}}
+                                          {{- $.Scratch.Set "image" "" -}}
+                                    {{- end -}}
+                              {{- else -}}
+                              {{- $.Scratch.Set "image" "" -}}
+                              {{- end -}}
                         {{- end -}}
-                        {{- if .Params.mp4Src -}}
-                              {{- if eq (.Params.mp4Src | printf "%.1s") "/" -}}
-                                    {{ $.Scratch.Set "mp4" (printf "..%s" .Params.mp4Src) }}
-                              {{- else -}}
-                                    {{ $.Scratch.Set "mp4" (printf "%s" .Params.mp4Src) }}
-                              {{- end -}}
+
+                        {{- if .Params.resource -}}
+                              {{- $.Scratch.Set "resource" .Params.resource -}}
                         {{- else -}}
-                              {{ $.Scratch.Set "mp4" "" }}
-                        {{- end -}}
-                        {{- if .Params.image -}}
-                              {{- if eq (.Params.image | printf "%.1s") "/" -}}
-                                    {{ $.Scratch.Set "image" (printf "..%s" .Params.image) }}
-                              {{- else -}}
-                                    {{ $.Scratch.Set "image" (printf "%s" .Params.image) }}
-                              {{- end -}}
-                        {{- else -}}
-                              {{ $.Scratch.Set "image" "" }}
+                              {{- $.Scratch.Set "resource" "tutorial" -}}
                         {{- end -}}
 
                         {{- if .Params.canonical -}}
-                              {{ $.Scratch.Set "permalink" (printf "%s" .Params.canonical) }}
-                              {{ $.Scratch.Set "relpermalink" (printf "%s" .Params.canonical) }}
+                              {{- $.Scratch.Set "permalink" (printf "%s" .Params.canonical) -}}
+                              {{- $.Scratch.Set "relpermalink" (printf "%s" .Params.canonical) -}}
                         {{- else -}}
-                              {{ $.Scratch.Set "permalink" .Permalink }}
-                              {{ $.Scratch.Set "relpermalink" (printf "..%s" .RelPermalink) }}
+                              {{- $.Scratch.Set "permalink" .Permalink -}}
+                              {{- $.Scratch.Set "relpermalink" (printf "..%s" .RelPermalink) -}}
                         {{- end -}}
 
                         {{- $.Scratch.Add "index"
@@ -78,11 +105,11 @@
                               "videoAlt" .Params.videoAlt
                               "languages" .Params.languages
                               "viamservices" (intersect (.Params.viamresources) (slice "data_manager" "motion" "frame_system" "mlmodel" "navigation" "base_remote_control" "sensors" "slam" "vision"))
-                              "viamcomponents" (intersect (.Params.viamresources) (slice "arm" "base" "board" "camera" "encoder" "gantry" "gripper" "input_controller" "motor" "movement_sensor" "sensor" "servo"))
+                              "viamcomponents" (intersect (.Params.viamresources) (slice "arm" "base" "board" "camera" "encoder" "generic" "encoder" "gantry" "gripper" "input_controller" "motor" "movement_sensor" "power_sensor" "sensor" "servo"))
                               "level" .Params.level
                               "cost" (int (.Params.cost))
                               "featured" ($.Scratch.Get "featured")
-                              "resource" "docs-tutorial"
+                              "resource" ($.Scratch.Get "resource")
                         )}}
                   {{- end -}}
             {{- end -}}

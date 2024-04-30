@@ -11,19 +11,19 @@ aliases:
 # SMEs: James
 ---
 
-Configure a `gpio` input controller to use a GPIO- or ADC-based device to communicate with your robot.
+Configure a `gpio` input controller to use a GPIO- or ADC-based device to communicate with your machine.
 
 {{< tabs name="Configure a `gpio` input controller" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `input_controller` type, then select the `gpio` model.
-Enter a name for your input controller and click **Create**.
+Enter a name or use the suggested name for your input controller and click **Create**.
 
 ![An example configuration for a GPIO input controller component in the Viam App config builder](/components/input-controller/gpio-input-controller-ui-config.png)
 
-Copy and paste the following attribute template into your input controller's **Attributes** box.
+Copy and paste the following attribute template into your input controller's attributes field.
 Then remove and fill in the attributes as applicable to your input controller, according to the table below.
 
 {{< tabs >}}
@@ -74,7 +74,7 @@ Then remove and fill in the attributes as applicable to your input controller, a
     }
   },
   "axes": {
-    "analogReader1": {
+    "analog1": {
       "control": "AbsoluteX",
       "min": 0,
       "max": 1023,
@@ -84,7 +84,7 @@ Then remove and fill in the attributes as applicable to your input controller, a
       "bidirectional": false,
       "invert": false
     },
-    "analogReader2": {
+    "analog2": {
       "control": "AbsoluteY",
       "min": 0,
       "max": 1023,
@@ -167,7 +167,7 @@ Then remove and fill in the attributes as applicable to your input controller, a
           }
         },
         "axes": {
-          "analogReader1": {
+          "analog1": {
             "control": "AbsoluteX",
             "min": 0,
             "max": 1023,
@@ -177,7 +177,7 @@ Then remove and fill in the attributes as applicable to your input controller, a
             "bidirectional": false,
             "invert": false
           },
-          "analogReader2": {
+          "analog2": {
             "control": "AbsoluteY",
             "min": 0,
             "max": 1023,

@@ -1,9 +1,9 @@
 ---
-title: "Configure an MPU-6050 Gyroscope/Accelerometer"
+title: "Configure an MPU-6050 (Micro-RDK)"
 linkTitle: "gyro-mpu6050"
 weight: 40
 type: "docs"
-description: "Configure an MPU-6050 movement sensor."
+description: "Configure an MPU-6050 movement sensor with a microcontroller."
 images: ["/icons/components/imu.svg"]
 aliases:
   - /micro-rdk/movement-sensor/gyro-mpu6050/
@@ -15,14 +15,14 @@ The `gyro-mpu6050` movement sensor model supports a combination [gyroscope and a
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `movement-sensor` type, then select the `gyro-mpu6050` model.
-Enter a name for your movement sensor and click **Create**.
+Enter a name or use the suggested name for your movement sensor and click **Create**.
 
 {{< imgproc src="/components/movement-sensor/mpu6050-builder.png" alt="Creation of an `gyro-mpu6050` movement sensor in the Viam app config builder." resize="600x" >}}
 
-Copy and paste the following attribute template into your movement sensor's **Attributes** box.
+Copy and paste the following attribute template into your movement sensor's attributes field.
 Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
 
 {{< tabs >}}

@@ -1,8 +1,8 @@
 ---
-title: "Configure a single encoder"
+title: "Configure a Single Encoder (Micro-RDK)"
 linkTitle: "single"
 type: "docs"
-description: "Configure a single encoder."
+description: "Configure a single encoder with a microcontroller."
 images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 aliases:

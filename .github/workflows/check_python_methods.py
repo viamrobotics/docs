@@ -14,7 +14,7 @@ args = parser.parse_args()
 services = ["motion", "navigation", "slam", "vision", "mlmodel"]
 components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic", "gripper",
               "input", "movement_sensor", "power_sensor", "sensor"]
-app_apis = ["data_client", "app_client"]
+app_apis = ["data_client", "app_client", "billing_client"]
 robot_apis = ["robot"]
 
 ignore_apis = [
@@ -97,8 +97,11 @@ def parse(type, names):
         if service == "data_client":
             service = "data-client"
 
+        if service == "billing_client":
+            service = "billing-client"
+
         if service == "app_client":
-            service = "cloud"
+            service = "fleet"
 
         # Find all python methods objects on Python docs site soup
         py_methods_sdk_docs = soup.find_all("dl", class_="py method")
@@ -308,4 +311,4 @@ if total_sdk_methods_missing:
     print_method_information(missing_components, components_dict)
     print_method_information(missing_app_apis, app_apis_dict)
     print_method_information(missing_robot_apis, robot_apis_dict)
-    # sys.exit(1)
+    sys.exit(1)

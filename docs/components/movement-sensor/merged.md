@@ -15,7 +15,7 @@ This allows you to aggregate the API methods supported by multiple sensors into 
 
 This is especially useful if you want to get readings of position and orientation _or_ linear and angular velocity at the same time, which are normally separately supported and returned by [`GPS`](/components/movement-sensor/#supported-models) or [`IMU`](/components/movement-sensor/#supported-models) models, respectively.
 
-To reduce velocity error when your robot is using the [navigation service](/mobility/navigation/), aggregate `Position()` from a [`GPS`](/components/movement-sensor/#supported-models) and `Orientation()` from an [`IMU`](/components/movement-sensor/#supported-models) movement sensor in a `merged` model.
+To reduce velocity error when your machine is using the [navigation service](/mobility/navigation/), aggregate `Position()` from a [`GPS`](/components/movement-sensor/#supported-models) and `Orientation()` from an [`IMU`](/components/movement-sensor/#supported-models) movement sensor in a `merged` model.
 
 Configure a [navigation service](/mobility/navigation/) to use your merged sensor to navigate.
 
@@ -25,46 +25,17 @@ Reference the `name` you configure for each individual component in the `merged`
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `movement-sensor` type, then select the `merged` model.
-Enter a name for your movement sensor and click **Create**.
+Enter a name or use the suggested name for your movement sensor and click **Create**.
 
-{{< imgproc src="/components/movement-sensor/merged-config-builder.png" alt="Creation of an `merged` movement sensor in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/components/movement-sensor/merged-config-builder.png" alt="Creation of an `merged` movement sensor in the Viam app config builder." resize="1200x" style="width:650px" >}}
 
-Copy and paste the following attribute template into your movement sensor's **Attributes** box.
-Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
+Fill in the attributes as applicable to your movement sensor, according to the table below.
+For example:
 
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "position": ["<your-gps-sensor-name-1>", "<your-gps-sensor-name-2>"],
-  "orientation": ["<your-imu-sensor-name-1>"],
-  "compass_heading": ["<your-gps-sensor-name-1>"],
-  "angular_velocity": ["<your-imu-sensor-name-1>"],
-  "linear_velocity": ["<your-gps-sensor-name-1>"],
-  "linear_acceleration": ["<your-accelerometer-sensor-name-1>"]
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "position": ["gps1"],
-  "orientation": ["imu-wit"],
-  "compass_heading": ["gps1"],
-  "angular_velocity": ["imu-wit", "mpu6050"],
-  "linear_velocity": ["gps1"],
-  "linear_acceleration": ["adxl345"]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+{{< imgproc src="/components/movement-sensor/merged-config-builder-attributes.png" alt="Creation of an `merged` movement sensor with attributes filled in in the Viam app config builder." resize="1200x" style="width:650px" >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -118,7 +89,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 
 ## Attributes
 
-Configure an array of the `name` of each movement sensor you want to add to your robot as a merged resource in the attributes of the `merged` movement sensor model:
+Configure an array of the `name` of each movement sensor you want to add to your machine as a merged resource in the attributes of the `merged` movement sensor model:
 
 - The name of each attribute represents the `Property` that that particular movement sensor supports, or the type of reading or measurement that it takes.
 - Get the properties supported by each model from its [model configuration documentation](/components/movement-sensor/#supported-models), or by calling [`GetProperties()`](/components/movement-sensor/#getproperties) on the sensor.
@@ -136,8 +107,8 @@ Configure an array of the `name` of each movement sensor you want to add to your
 | `linear_acceleration` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads linear acceleration       |
 
 Note that only one sensor from each array can be used to retrieve each type of reading.
-Your robot uses the first sensor in the array that has implemented the relevant API method in its model and does not raise an error at runtime.
-For instance, in the **JSON Example** above, if both `"imu-wit"` and `"mpu6050"` support returning `angular_velocity`, `"mpu6050"` is only used to read angular velocity on the robot if `"imu-wit"` returns an error at runtime.
+Your machine uses the first sensor in the array that has implemented the relevant API method in its model and does not raise an error at runtime.
+For instance, in the **JSON Example** above, if both `"imu-wit"` and `"mpu6050"` support returning `angular_velocity`, `"mpu6050"` is only used to read angular velocity on the machine if `"imu-wit"` returns an error at runtime.
 
 ## Test the movement sensor
 

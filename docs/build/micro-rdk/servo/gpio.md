@@ -1,29 +1,30 @@
 ---
-title: "Configure a gpio Servo"
+title: "Configure a GPIO Servo (Micro-RDK)"
 linkTitle: "gpio"
 weight: 90
 type: "docs"
-description: "Configure a gpio servo."
+description: "Configure a gpio servo with a microcontroller."
 tags: ["servo", "components"]
-icon: "/icons/components/servo.svg"
+icon: true
+images: ["/icons/components/servo.svg"]
 aliases:
   - /micro-rdk/servo/gpio/
 # SME: Gautham
 ---
 
-Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins into your robot:
+Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins into your machine:
 
 {{< tabs name="Configure a gpio Servo" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `servo` type, then select the `gpio` model.
-Enter a name for your servo and click **Create**.
+Enter a name or use the suggested name for your servo and click **Create**.
 
 ![An example configuration for a gpio servo in the Viam app Config Builder.](/components/servo/gpio-servo-ui-config.png)
 
-Copy and paste the following attribute template into your servo's **Attributes** box.
+Copy and paste the following attribute template into your servo's attributes field.
 Then remove and fill in the attributes as applicable to your servo, according to the table below.
 
 {{< tabs >}}

@@ -12,7 +12,7 @@ While many common issues and their possible resolutions are presented here, this
 If you have encountered an error that is not listed here, we'd love to hear from you on our [Community Discord](https://discord.gg/viam)!
 Please post the error message you received along with how you were able to trigger it and we'll see if we can help.
 
-## Common Installation Errors
+## Common installation errors
 
 ### The authenticity of host 'hostname.local' can't be established
 
@@ -99,7 +99,7 @@ To support a `viam-server` installation, you must install `libfuse2`.
 
 **Additional Error:** `jack server is not running or cannot be started`
 
-**Description**: When configuring a Linux {{< glossary_tooltip term_id="board" text="board" >}}, Linux installations with broken or misconfigured sound libraries may experience one or both of these errors, even if not using audio components in the robot configuration.
+**Description**: When configuring a Linux {{< glossary_tooltip term_id="board" text="board" >}}, Linux installations with broken or misconfigured sound libraries may experience one or both of these errors, even if not using audio components in the machine configuration.
 
 **Solution:** Consult the documentation for your Linux OS and chosen sound library for guidance on installing any missing software dependencies.
 For example, if you are using `jackd` and `PulseAudio` on a Raspberry Pi, you can run the following to install any missing dependencies:
@@ -108,16 +108,16 @@ For example, if you are using `jackd` and `PulseAudio` on a Raspberry Pi, you ca
 sudo apt install jackd qjackctl libpulse-dev pulseaudio
 ```
 
-This error can be safely ignored if you do not intend to use audio on your robot.
+This error can be safely ignored if you do not intend to use audio on your machine.
 
 ## Common Viam App Errors
 
 ### Failed to connect; retrying
 
-**Description:** The [Viam app](https://app.viam.com) is unable to communicate with your robot, and will attempt to reconnect every few seconds until it is able to do so.
-When a robot is disconnected, it will continue to run with its locally-cached current configuration, but will not be accessible for remote control or configuration through the Viam app.
+**Description:** The [Viam app](https://app.viam.com) is unable to communicate with your machine, and will attempt to reconnect every few seconds until it is able to do so.
+When a machine is disconnected, it will continue to run with its locally-cached current configuration, but will not be accessible for remote control or configuration through the Viam app.
 
-**Solution:** Check the following to ensure your robot is accessible to the Viam app:
+**Solution:** Check the following to ensure your machine is accessible to the Viam app:
 
 - Is the {{< glossary_tooltip term_id="board" text="board" >}} component connected to the internet?
 - Is the `ssh` service configured and running locally on the board?
@@ -126,7 +126,7 @@ When a robot is disconnected, it will continue to run with its locally-cached cu
   It should be listed as `active (running)`.
 
   - If it is listed as `stopped` or `failed`, you can try restarting it with `sudo systemctl start viam-server`.
-  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](/get-started/installation/#prepare-your-board), and then followed the instructions on the **Setup** tab on the Viam app.
+  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](/get-started/installation/#prepare-your-board), and then followed the {{< glossary_tooltip term_id="setup" text="setup instructions" >}}.
   - If none of the above succeed in getting `viam-server` up and running, check the logs on your board for any pertinent error messages.
     Depending on your board's specific Linux OS, you might use a command similar to the following to show the 50 most recent log messages from `viam-server`. Run this command from within an `ssh` session to the board:
 
@@ -140,9 +140,9 @@ When a robot is disconnected, it will continue to run with its locally-cached cu
 
 **Description:** A [frame](/mobility/frame-system/) attribute may be malformed, and is preventing the parsing of the component's configuration.
 
-**Solution:** Check the **Config** tab for your robot in the [Viam app](https://app.viam.com) and look for a frame attribute, either in **Builder** mode, under the **Frame System** tab or in **Raw JSON** mode.
+**Solution:** Check the **CONFIGURE** tab for your machine in the [Viam app](https://app.viam.com) and look for a `frame` attribute, either in **Frame** or **JSON** mode.
 If you see a `frame` attribute that you didn't create yourself, delete the whole `frame` object from the JSON config.
-It will resemble the following:
+In **JSON** mode, it will resemble the following:
 
 ```json
 "frame": {
@@ -209,7 +209,7 @@ It will resemble the following:
 
       Replace `/dev/video0` in the above command with the video path you determined for your video device above, if different.
 
-      The command will return a list of pixel formats your camera supports, such as `MJPG` or `YUYV`.
+      The command will return a list of pixel formats your camera supports, such as `MJPG` (also notated as `MJPEG`) or `YUYV` (also notated as `YUY2`).
       In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/components/camera/webcam/#using-format).
       If your camera does not support any of these formats, it cannot be used with Viam.
 
@@ -222,24 +222,24 @@ This file contains basic diagnostic and configuration information about your cam
 **Description:** When working with a [camera](/components/camera/) component, depending on the camera, you may need to explicitly provide some camera-specific configuration parameters.
 
 **Solution:** Check the specifications for your camera, and manually provide configuration parameters such as width and height to the camera component configuration page on the [Viam app](https://app.viam.com).
-Under **Config > Components**, find your camera, then fill in your camera's specific configuration either using the **Show more** button to show the relevant configuration options, or the **Go to advanced** link in the component panel's upper-right to enter these attributes manually.
+On the **CONFIGURE** page, find your camera, then fill in your camera's specific configuration either using the **Show more** button to show the relevant configuration options, or the **{}** (Switch to Advanced) button in the top right of the component panel to enter these attributes manually.
 Provide at least the width and height values to start.
 
-## Known Application and Plugin Conflicts
+## Known application and plugin conflicts
 
-### macOS Applications
-
-None at this time.
-
-### Windows Applications
+### macOS applications
 
 None at this time.
 
-### Linux Applications
+### Windows applications
 
 None at this time.
 
-### Browser Plugins
+### Linux applications
 
-**Chrome Plugin: Allow right click** - This Chrome plugin interferes with the [Viam app](https://app.viam.com)'s ability to configure a service.
+None at this time.
+
+### Browser plugins
+
+**Chrome plugin: Allow Right-Click** - This Chrome plugin interferes with the [Viam app](https://app.viam.com)'s ability to configure a service.
 If you are experiencing issues with the **Create Service** pane in the Viam app, temporarily disable this plugin until you have saved your configuration in the Viam app.

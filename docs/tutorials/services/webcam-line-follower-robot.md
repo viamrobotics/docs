@@ -4,8 +4,11 @@ linkTitle: "RGB Line Follower"
 type: "docs"
 description: "Build a line-following robot that relies on a webcam and color detection."
 tags: ["base", "vision", "detector", "camera", "services", "python"]
-webmSrc: "/tutorials/webcam-line-follower/lf-tape-follow3.webm"
-mp4Src: "/tutorials/webcam-line-follower/lf-tape-follow3.mp4"
+videos:
+  [
+    "/tutorials/webcam-line-follower/lf-tape-follow3.webm",
+    "/tutorials/webcam-line-follower/lf-tape-follow3.mp4",
+  ]
 videoAlt: "The green line the camera sees as the rover moves along it."
 aliases:
   - "/tutorials/webcam-line-follower-robot/"
@@ -28,11 +31,11 @@ no_list: true
 Many line-following robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background.
 This tutorial uses a standard webcam in place of these sensors, and allows a robot to follow a line of any color that is at least somewhat different from the background.
 
-**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/ml/vision/detection/">vision service color detector</a>.
+**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/ml/vision/#detections">vision service color detector</a>.
 
 **What you will learn**:
 
-- How to use the [vision service](/ml/vision/)'s [color detectors](/ml/vision/detection/#configure-a-color_detector)
+- How to use the [vision service](/ml/vision/)'s [color detectors](/ml/vision/color_detector/)
 - How to use the [Python SDK](https://python.viam.dev/), including:
   - How to establish communication between the code you write and your robot
   - How to send commands to components of your robot
@@ -54,19 +57,16 @@ To build your own line follower robot, you need the following hardware:
 | **Colored tape**: Any color is suitable as long as the color is suitably different from the floor color. For our tutorial, we used green electrical tape to stand out against our grey carpet. | $4 |
 | **Floor space**: Non-shiny floors tend to work best. | - |
 
-### Install `viam-server` and connect to your robot
+### Install `viam-server` and connect to your machine
 
-Go to the [Viam app](https://app.viam.com) and create a new robot called `follower`.
-
-Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/get-started/installation/#install-viam-server).
-Follow the instructions until the Viam app shows that your robot has successfully connected.
+{{% snippet "setup.md" %}}
 
 ## Configure your components
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab.
 
 1. **Add the board.**
@@ -100,7 +100,7 @@ Click on the **Components** subtab.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your board, your motors, your base, and your camera:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your board, your motors, your base, and your camera:
 
 {{< alert title="Note" color="note" >}}
 Your `"video_path"` value may be different.
@@ -184,7 +184,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ## Test your components
 
-Navigate to your [robot's **Control** tab](/fleet/machines/#control) to test your components.
+Navigate to your [machine's **Control** tab](/fleet/machines/#control) to test your components.
 Verify that it’s connected by refreshing the page and ensuring that **Last Online** (in the top banner) says, "Live."
 
 1. Go to the **Control** tab, click on the base panel, and toggle the transform camera to on.
@@ -201,16 +201,16 @@ Verify that it’s connected by refreshing the page and ensuring that **Last Onl
 
 ## Configuring a color detector for the color of your tape line
 
-You'll use the [vision service color detector](/ml/vision/detection/#configure-a-color_detector) to programmatically identify the line to follow.
+You'll use the [vision service color detector](/ml/vision/color_detector/) to programmatically identify the line to follow.
 Before you can start on that, you need to get creative though and use your colored tape to make a path for your robot to follow.
 Perhaps a circle or other shape, or perhaps a path from one point of interest to another.
 Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.
 
 Once you have created your path, set your robot on the line such that the line appears in the front of the camera’s view.
-Verify that the camera sees the line by viewing the camera feed on the **Control** tab of the robot page.
+Verify that the camera sees the line by viewing the camera feed on the **Control** tab of the machine page.
 
 <p>
-{{<imgproc src="/tutorials/webcam-line-follower/lf-cam-view6.png" resize="600x" class="aligncenter" declaredimensions=true alt="The camera view in the control tab on the robot page">}}
+{{<imgproc src="/tutorials/webcam-line-follower/lf-cam-view6.png" resize="600x" class="aligncenter" declaredimensions=true alt="The camera view in the control tab on the machine page">}}
 </p>
 
 Now, let's configure the color detector so your rover can detect the line:
@@ -218,12 +218,12 @@ Now, let's configure the color detector so your rover can detect the line:
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Next, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Next, navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Services** subtab.
 
 1. **Add a vision service.**
 
-Next, add a vision service [detector](/ml/vision/detection/):
+Next, add a vision service [detector](/ml/vision/#detections):
 
 Click the **Create service** button in the lower-left corner of the **Services** subtab.
 Select type `Vision` and model `Color Detector`.
@@ -266,7 +266,7 @@ Replace the attributes JSON object with the following object which specifies the
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration which adds the configuration for the vision service and the transform camera:
+On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration which adds the configuration for the vision service and the transform camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -375,7 +375,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ## Test your color detector
 
-Navigate to your [robot's **Control** tab](/fleet/machines/#control) to test the transform camera.
+Navigate to your [machine's **Control** tab](/fleet/machines/#control) to test the transform camera.
 Click on the transform camera panel and toggle the camera on.
 You should now be able to view the camera feed with color detector overlays superimposed on the image.
 
@@ -422,7 +422,7 @@ To make your rover follow your line, you need to install Python and the Viam Pyt
 
    {{% snippet "show-secret.md" %}}
 
-   Copy the robot's address and API key and paste them into the definition for the `connect()` function, replacing the placeholders shown there.
+   Copy the machine's address and API key and paste them into the definition for the `connect()` function, replacing the placeholders shown there.
 
 1. You can run the program from your computer or from your Pi.
    If you would like to get your program onto your Pi, you have a few options.
@@ -611,7 +611,7 @@ If your rover keeps driving off the line so fast that the color detector can’t
 
 Things to try:
 
-- Add a [`saturation_cutoff_pct` or a `value_cutoff_percent`](/ml/vision/detection/#configure-a-color_detector) to your vision service parameters.
+- Add a [`saturation_cutoff_pct` or a `value_cutoff_percent`](/ml/vision/color_detector/) to your vision service parameters.
 - Try to achieve more consistent lighting on and around the line.
 - Try a different color of line, or a different background.
   Be sure to update your `detect_color` parameter accordingly.

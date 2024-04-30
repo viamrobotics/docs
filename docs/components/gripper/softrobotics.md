@@ -14,44 +14,14 @@ The `softrobotics` model supports the [Soft Robotics *m*Grip](https://www.softro
 {{< tabs name="Configure a softrobotics gripper" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `gripper` type, then select the `softrobotics` model.
-Enter a name for your gripper and click **Create**.
+Enter a name or use the suggested name for your gripper and click **Create**.
 
 ![Creation of a softrobotics gripper component in the Viam app config builder.](/components/gripper/softrobotics-ui-config.png)
 
-Copy and paste the following attribute template into your gripper's **Attributes** box.
-Then remove and fill in the attributes as applicable to your gripper, according to the table below.
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "board": "<your-board-name>",
-  "open": "<pin-number-on-board>",
-  "close": "<pin-number-on-board>",
-  "power": "<pin-number-on-board>",
-  "analog_reader": "psi"
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "board": "local",
-  "open": "11",
-  "close": "13",
-  "power": "15",
-  "analog_reader": "psi"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Fill in the attributes as applicable to your gripper, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

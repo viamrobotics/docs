@@ -10,15 +10,15 @@ aliases:
   - "/components/arm/ur5e/"
 ---
 
-Configure a `ur5e` arm to add a [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) to your robot:
+Configure a `ur5e` arm to add a [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) to your machine:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `arm` type, then select the `ur5e` model.
-Enter a name for your arm and click **Create**.
+Enter a name or use the suggested name for your arm and click **Create**.
 
 ![Web UI configuration panel for an arm of model ur5e in the Viam app, with Attributes & Depends On dropdowns and the option to add a frame.](/components/arm/ur5e-ui-config.png)
 

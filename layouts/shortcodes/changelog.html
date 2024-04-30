@@ -1,10 +1,23 @@
 {{ $color := .Get "color" }}
 {{ $title := .Get "title" }}
-<div class="changelog changelog-outer">
-  <div>
-    <span class="changelog-{{ $color }}">{{ $color }}</span>
+{{ $date := .Get "date" }}
+<div class="filterable changelog-{{ $color }}">
+  <div class="changelog changelog-outer">
+    <div class="box-fit">
+      <div>
+        <span class="colorbox">{{ $color }}</span>
+      </div>
+      <div>
+        <h3 id="{{ anchorize $title }}">{{ $title }}</h3>
+      </div>
+    </div>
+      <div class="date-fit">
+      <span class="datebox">{{ $date | time.Format "Jan 2006" }}</span>
+      </div>
   </div>
-  <div>
-    <h3 id="{{ anchorize $title }}">{{ $title }}</h3>
-  </div>
+{{ if eq $.Page.File.Ext "md" }}
+  {{ $.Inner | markdownify }}
+{{ else }}
+  {{ $.Inner | htmlUnescape | safeHTML }}
+{{ end }}
 </div>

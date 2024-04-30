@@ -4,50 +4,50 @@ linkTitle: "Local Configuration File"
 weight: 2
 no_list: true
 type: docs
-icon: "/get-started/installation/thumbnails/manage.png"
+icon: true
 images: ["/get-started/installation/thumbnails/manage.png"]
-description: "Building a local robot configuration file for use with viam-server."
+description: "Building a local machine configuration file for use with viam-server."
 ---
 
 The `viam-server` binary uses a JSON-formatted configuration file to define all resources (hardware [components](/components/) and software [services](/services/)) it has access to, as well as any relevant parameters for those resources.
 
-When you [install `viam-server`](/get-started/installation/) from [the Viam app](https://app.viam.com), you configure your robot directly in the app, and the app will automatically sync your configuration to your robot.
+When you [install `viam-server`](/get-started/installation/) from [the Viam app](https://app.viam.com), you configure your machine directly in the app, and the app will automatically sync your configuration to your machine.
 
-However, if your robot will never connect to the internet, you will need to create your own local configuration file, using one of these options:
+However, if your machine will never connect to the internet, you will need to create your own local configuration file, using one of these options:
 
-- [Build a local configuration file in the Viam app](#build-a-local-configuration-file-in-the-viam-app) - Use the Viam app to build the configuration file and copy it to your robot, without connecting your robot to the Viam app.
+- [Build a local configuration file in the Viam app](#build-a-local-configuration-file-in-the-viam-app) - Use the Viam app to build the configuration file and copy it to your machine, without connecting your machine to the Viam app.
 - [Build a local configuration file manually](#build-a-local-configuration-file-manually) - Build your own local configuration file based on the example file.
 
 For information on the individual configuration options available, see [Configuration](/build/configure/).
 
 ## Build a local configuration file in the Viam app
 
-If your robot will never connect to the internet, and you want to create a local configuration file manually, you can still use the Viam app to build the configuration file even without connecting your robot to it.
+If your machine will never connect to the internet, and you want to create a local configuration file manually, you can still use the Viam app to build the configuration file even without connecting your machine to it.
 Follow the steps below to build and then download your configuration file:
 
-1. Navigate to [the Viam app](https://app.viam.com) and select the **Config** tab.
+1. Navigate to [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
 1. Use **Builder** mode to add components and services, configure attributes, and map pin assignments.
-1. Then, switch to **Raw JSON** mode to be shown the equivalent JSON configuration to the settings you made in **Builder** mode.
+1. Then, switch to **JSON** mode to be shown the equivalent JSON configuration to the settings you made in **Builder** mode.
 1. Download the JSON configuration to the board or computer you intend to run `viam-server` on.
-   You can click the **See full config** link to view this file in plaintext for easy copying.
+   In **Builder** mode, you can select the **...** (Actions) menu to the right of your main part's name in the left-hand panel and click the **View debug configuration** option to view the full configuration file in plaintext for easy copying.
 
-If you later need to make changes to your robot's configuration:
+If you later need to make changes to your machine's configuration:
 
-1. Make your edits under the **Config** tab in **Builder** mode
-1. Switch to **Raw JSON** mode to view your full configuration in JSON format
-1. Download the code to your robot, overwriting your local configuration file with the new one.
+1. Make your edits under the **CONFIGURE** tab in **Builder** mode
+1. Select the **View debug configuration** option from the **...** (Actions) menu to the right of your main part's name in the left-hand panel to view your full configuration in JSON format.
+1. Download the code to your machine, overwriting your local configuration file with the new one.
    If it is currently running, `viam-server` will detect the updated configuration and apply it automatically -- there is no need to restart `viam-server` to apply changes.
 
 {{% alert title="Note" color="note" %}}
-This process is not required if your robot is connected to the Viam app.
-When connected, any configuration changes you make in the app are propagated to your robot automatically.
-If your robot temporarily disconnects from the internet, its configuration is cached locally, and any configuration changes you may have made in the app are propagated to your robot once it reconnects.
+This process is not required if your machine is connected to the Viam app.
+When connected, any configuration changes you make in the app are propagated to your machine automatically.
+If your machine temporarily disconnects from the internet, its configuration is cached locally, and any configuration changes you may have made in the app are propagated to your machine once it reconnects.
 {{% /alert %}}
 
 ## Build a local configuration file manually
 
-If your robot will never connect to the internet, you can create a local configuration file yourself without using the Viam app.
-A locally-configured robot will not be able to access Viam's cloud features.
+If your machine will never connect to the internet, you can create a local configuration file yourself without using the Viam app.
+A locally-configured machine will not be able to access Viam's cloud features.
 For most users, we recommend [using the Viam app to create the configuration file](#build-a-local-configuration-file-in-the-viam-app) as it is less error-prone.
 
 If you followed the instructions to [install `viam-server`](/get-started/installation/), the installation process provides an example configuration file in the following location:
@@ -55,12 +55,12 @@ If you followed the instructions to [install `viam-server`](/get-started/install
 - Linux: <file>/etc/viam.json</file>
 - macOS: <file>/opt/homebrew/etc/viam.json</file>
 
-You can also use the [example configuration file](#example-json-configuration-file) below to base your robot's configuration on.
+You can also use the [example configuration file](#example-json-configuration-file) below to base your machine's configuration on.
 
 {{% alert title="Note" color="note" %}}
-This process is not required if your robot is connected to the Viam app.
-When connected, any configuration changes you make in the app are propagated to your robot automatically.
-If your robot temporarily disconnects from the internet, its configuration is cached locally, and any configuration changes you may have made in the app are propagated to your robot once it reconnects.
+This process is not required if your machine is connected to the Viam app.
+When connected, any configuration changes you make in the app are propagated to your machine automatically.
+If your machine temporarily disconnects from the internet, its configuration is cached locally, and any configuration changes you may have made in the app are propagated to your machine once it reconnects.
 {{% /alert %}}
 
 ## Example JSON configuration file

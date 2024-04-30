@@ -3,9 +3,8 @@ title: "Pumpkin Board Setup Guide"
 linkTitle: "Pumpkin Board Setup"
 weight: 25
 type: "docs"
-image: "/get-started/installation/thumbnails/pumpkin.png"
-imageAlt: "Pumpkin board"
 images: ["/get-started/installation/thumbnails/pumpkin.png"]
+imageAlt: "Pumpkin board"
 description: "Configure the pin mappings to use a pumpkin board."
 no_list: true
 aliases:
@@ -212,14 +211,14 @@ Configure your board as a [`customlinux`](/components/board/customlinux/) board 
 {{< tabs name="Configure a customlinux board" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `board` type, then select the `customlinux` model.
-Enter a name for your `customlinux` board and click **Create**.
+Enter a name or use the suggested name for your `customlinux` board and click **Create**.
 
 ![An example configuration for a customlinux board in the Viam app Config Builder.](/components/board/customlinux-ui-config.png)
 
-Copy and paste the following json object into your board's **Attributes** box.
+Copy and paste the following json object into your board's attributes field.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -250,7 +249,7 @@ Copy and paste the following json object into your board's **Attributes** box.
 {{% /tab %}}
 {{< /tabs >}}
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% card link="/build/configure/" %}}

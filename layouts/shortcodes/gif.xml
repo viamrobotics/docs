@@ -1,0 +1,6 @@
+<div>
+    <video autoplay loop muted playsinline alt="{{ .Get "alt" }}" width="100%" style="max-width: {{ .Get "max-width" }}" class="{{- if .Get "class" -}}{{ .Get "class" }}{{- end }}">
+    <source src="{{relURL (substr (.Get "webm_src") 1) }}" type="video/webm">
+    <source src="{{relURL (substr (.Get "mp4_src") 1) }}" type="video/mp4">
+    </video>
+  </div>
