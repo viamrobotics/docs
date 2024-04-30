@@ -27,43 +27,43 @@ For local communication between [parts](/build/configure/parts/#machine-parts) V
 
 For more detailed information on how to operate and test your resources, expand the relevant resource below:
 
-{{% expand "arm" %}}
+{{% expand "Arm" %}}
 {{< readfile "/static/include/components/test-control/arm-control.md" >}}
 {{% /expand%}}
 
-{{% expand "base" %}}
+{{% expand "Base" %}}
 {{< readfile "/static/include/components/test-control/base-control.md" >}}
 {{% /expand%}}
 
-{{% expand "board" %}}
+{{% expand "Board" %}}
 {{< readfile "/static/include/components/board/test-board-digital-interrupts.md" >}}
 {{% /expand%}}
 
-{{% expand "camera" %}}
+{{% expand "Camera" %}}
 {{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
 {{% /expand%}}
 
-{{% expand "encoder" %}}
+{{% expand "Encoder" %}}
 {{< readfile "/static/include/components/test-control/encoder-control.md" >}}
 {{% /expand%}}
 
-{{% expand "gantry" %}}
+{{% expand "Gantry" %}}
 {{< readfile "/static/include/components/test-control/gantry-control.md" >}}
 {{% /expand%}}
 
-{{% expand "generic component" %}}
+{{% expand "Generic component" %}}
 {{< readfile "/static/include/components/test-control/generic-control.md" >}}
 {{% /expand%}}
 
-{{% expand "gripper" %}}
+{{% expand "Gripper" %}}
 {{< readfile "/static/include/components/test-control/gripper-control.md" >}}
 {{% /expand%}}
 
-{{% expand "input controller" %}}
+{{% expand "Input controller" %}}
 {{< readfile "/static/include/components/test-control/input-controller-control.md" >}}
 {{% /expand%}}
 
-{{% expand "motor" %}}
+{{% expand "Motor" %}}
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}
 {{% /expand%}}
 
@@ -75,15 +75,15 @@ For more detailed information on how to operate and test your resources, expand 
 {{< readfile "/static/include/components/test-control/movement-sensor-imu-control.md" >}}
 {{% /expand%}}
 
-{{% expand "power sensor" %}}
+{{% expand "Power sensor" %}}
 {{< readfile "/static/include/components/test-control/power-sensor-control.md" >}}
 {{% /expand%}}
 
-{{% expand "sensor" %}}
+{{% expand "Sensor" %}}
 {{< readfile "/static/include/components/test-control/sensor-control.md" >}}
 {{% /expand%}}
 
-{{% expand "servo" %}}
+{{% expand "Servo" %}}
 {{< readfile "/static/include/components/test-control/servo-control.md" >}}
 {{% /expand%}}
 
