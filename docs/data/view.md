@@ -33,10 +33,10 @@ If you click on an image or a file, a **Details** panel appears on the right wit
 
 ## Filter data
 
-On the [**DATA** page in the Viam app](https://app.viam.com/data/view), you can filter data in the left **Filtering** panel.
+On the [**DATA** page in the Viam app](https://app.viam.com/data/view), you can filter data in the left **Filters** panel.
 You can filter by several categories including machine name, location, or timestamp range.
 
-For example, if you specify `Rover Rental` for location and click **SEARCH**, you can see all data captured on machines that belong to your `Rover Rental` location.
+For example, if you specify `Rover Rental` for location and click **Apply**, you can see all data captured on machines that belong to your `Rover Rental` location.
 
 {{< alert title="Tip" color="tip" >}}
 
