@@ -95,8 +95,8 @@ You can also find your tabular data under the **Sensors** subtab of the app's [*
 
 - `filter` [(Optional[viam.proto.app.data.Filter])](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter): Optional `Filter` specifying tabular data to retrieve. Specify no filter to download all tabular data.
 - `limit` [(Optional[int])](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex): The maximum number of entries to include in a page. Defaults to 50 if unspecified.
-- `sort_order` Optional[Order.ValueType]: The desired sort order of the data.
-- `last` [Optional[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional string indicating the ID of the last-returned data. If provided, the server will return the next data entries after the `last` ID.
+- `sort_order` (Optional[Order.ValueType]): The desired sort order of the data.
+- `last` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str: Optional string indicating the ID of the last-returned data. If provided, the server will return the next data entries after the `last` ID.
 - `count_only` [(bool)](https://docs.python.org/3/library/stdtypes.html): Whether to return only the total count of entries. Default: `False`.
 - `include_internal_data` [(bool)](https://docs.python.org/3/library/stdtypes.html): Whether to return the internal data. Internal data is used for Viam-specific data ingestion, like cloud SLAM. Default: `False`.
 - `dest` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Filepath to write retrieved data to. If not populated, writes to your current directory.
@@ -104,8 +104,8 @@ You can also find your tabular data under the **Sensors** subtab of the app's [*
 **Returns**:
 
 - [(List[TabularData])](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.TabularData), int, str]): The tabular data retrieved from the [Viam app](https://app.viam.com).
-- [int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex): The count (number of entries).
-- [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The last-returned page ID.
+- [(int)](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex): The count (number of entries).
+- [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The last-returned page ID.
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app.data import Filter
@@ -135,8 +135,8 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 
 - `filter` [(Optional[viam.proto.app.data.Filter])](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter): Optional `Filter` specifying binary data to retrieve. Specify no filter to download all binary data.
 - `limit` [(Optional[int])](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex): The maximum number of entries to include in a page. Defaults to 50 if unspecified.
-- `sort_order` Optional[Order.ValueType]: The desired sort order of the data.
-- `last` [Optional[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional string indicating the ID of the last-returned data. If provided, the server will return the next data entries after the `last` ID.
+- `sort_order` (Optional[Order.ValueType]): The desired sort order of the data.
+- `last` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional string indicating the ID of the last-returned data. If provided, the server will return the next data entries after the `last` ID.
 - `include_binary_data` [(bool)](https://docs.python.org/3/library/stdtypes.html): Boolean specifying whether to actually include the binary file data with each retrieved file. Whether to return the internal data. Internal data is used for Viam-specific data ingestion, like cloud SLAM. Default: `True` meaning both the files' data and metadata are returned.
 - `count_only` [(bool)](https://docs.python.org/3/library/stdtypes.html): Whether to return only the total count of entries. Default: `False`.
 - `include_internal_data` [(bool)](https://docs.python.org/3/library/stdtypes.html): Whether to return the internal data. Internal data is used for Viam-specific data ingestion, like cloud SLAM. Default: `False`.
@@ -145,8 +145,8 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 **Returns**:
 
 - [(List[BinaryData])](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.BinaryData): The binary data retrieved from the [Viam app](https://app.viam.com).
-- [int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex): The count (number of entries).
-- [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The last-returned page ID.
+- [(int)](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex): The count (number of entries).
+- [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The last-returned page ID.
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app.data import Filter
