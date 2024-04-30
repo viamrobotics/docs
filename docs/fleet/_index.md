@@ -101,6 +101,7 @@ Machine [configuration](machines/#configure) and machine [code](/build/program/)
 
 <br>
 
+In addition to the [Viam app](https://app.viam.com), the fully featured web application where you can access all fleet management tools, there is a Viam mobile app.
 The Viam mobile app allows you to:
 
 - see if your machines are online
