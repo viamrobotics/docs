@@ -22,7 +22,7 @@ outputs:
 {{% changelog date="2024-05-09" color="changed" title="Return type of GetImage()" %}}
 
 The Python SDK introduced a new image container class called [`ViamImage`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage).
-The camera API's [`GetImage()`](/components/camera/#getimage) API method now returns a `ViamImage` type, and the vision service's [GetDetections()](/ml/vision#getdetections) and [GetClassifications()](/ml/vision#getclassifications) take in `ViamImage` as a parameter.
+The camera API's [`GetImage()`](/components/camera/#getimage) API method now returns a `ViamImage` type, and the vision service's [GetDetections()](/ml/vision/#getdetections) and [GetClassifications()](/ml/vision/#getclassifications) take in `ViamImage` as a parameter.
 
 {{% /changelog %}}
 
