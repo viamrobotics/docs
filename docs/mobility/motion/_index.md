@@ -908,7 +908,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ## Test the motion service
 
-You can test motion on your machine from the [**CONTROL** tab](/fleet/machines/#control).
+You can test motion on your machine from the [**CONTROL** tab](/fleet/machines/control/).
 
 ![Motion card on the Control tab](/mobility/motion/motion-rc-card.png)
 

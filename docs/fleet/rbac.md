@@ -13,7 +13,7 @@ Users can have access to different fleet management capabilities depending on wh
 
 - **Owner**: Can see and edit [every tab on the machine page](/fleet/machines/#navigating-the-machine-page).
   Can manage users in the app.
-- **Operator**: Can see and use only the [**CONTROL**](/fleet/machines/#control) tab.
+- **Operator**: Can see and use only the [**CONTROL**](/fleet/machines/control/) tab.
   Cannot see or edit the [**CONFIGURE**](/fleet/machines/#configure), [**LOGS**](/fleet/machines/#logs), or **CONNECT** tabs.
 
 For more detailed information on the permissions each role confers for different resources, see [Permissions](/fleet/rbac/#permissions).

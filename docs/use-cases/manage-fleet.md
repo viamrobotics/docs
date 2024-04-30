@@ -58,7 +58,7 @@ Using the [Viam app](https://app.viam.com), you can:
 
 - Monitor the status of each machine from its [**LOGS** tab](/fleet/machines/#logs).
 - View any data captured by your fleet from the [**Data** tab](/data/).
-- Operate machines remotely from the [**CONTROL** tab](/fleet/machines/#control).
+- Operate machines remotely from the [**CONTROL** tab](/fleet/machines/control/).
 
 Use [modules](/registry/) to deploy code to your fleet and manage versioning.
 

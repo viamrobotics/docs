@@ -1227,7 +1227,7 @@ The following attributes are available for `viam:base:agilex-limo` bases:
 
 ## Next steps
 
-- To test your base, go to the [**CONTROL** tab](https://docs.viam.com/fleet/machines/#control).
+- To test your base, go to the [**CONTROL** tab](https://docs.viam.com/fleet/machines/control/).
 - To write code against your base, use one of the [available SDKs](https://docs.viam.com/program/).
 - To view examples using a base component, explore [these tutorials](https://docs.viam.com/tutorials/).
 

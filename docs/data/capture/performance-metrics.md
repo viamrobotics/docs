@@ -56,7 +56,7 @@ In the next step you will configure the data management service to capture and s
 
 ### Test sensor data
 
-After you configure your sensor, navigate to the [**CONTROL** tab](/fleet/machines/#control) and select the **Sensors** dropdown panel.
+After you configure your sensor, navigate to the [**CONTROL** tab](/fleet/machines/control/) and select the **Sensors** dropdown panel.
 To access detailed readings from your sensor, click on the **Get Readings** button.
 
 {{<gif webm_src="/data/monitor.webm" mp4_src="/data/monitor.mp4" alt="sensor control tab">}}

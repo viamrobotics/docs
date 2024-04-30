@@ -122,7 +122,7 @@ You can test your detector with [live camera footage](#live-camera-footage) or [
 
 ### Live camera footage
 
-If you intend to use the detector with a camera that is part of your machine, you can test your detector from the [**Control tab**](/fleet/machines/#control) or with code:
+If you intend to use the detector with a camera that is part of your machine, you can test your detector from the [**Control tab**](/fleet/machines/control/) or with code:
 
 1. Configure a [camera component](/components/camera/).
    {{< alert title="Tip" color="tip" >}}

@@ -22,7 +22,7 @@ cost: "0"
 </div>
 
 Flutter is Google's user interface toolkit for building applications for mobile, web, and desktop from a single codebase.
-If you're looking to monitor and control individual machines with the same functionality you have on the [**CONTROL** tab](/fleet/machines/#control), you can use the general-purpose [Viam mobile app](/fleet/#the-viam-mobile-app) rather than creating your own.
+If you're looking to monitor and control individual machines with the same functionality you have on the [**CONTROL** tab](/fleet/machines/control/), you can use the general-purpose [Viam mobile app](/fleet/#the-viam-mobile-app) rather than creating your own.
 If you need custom functionality or a custom interface, you can use Viam's [Flutter SDK](https://flutter.viam.dev/) to build a custom app to interact with your machines that run on Viam.
 
 This tutorial guides you through creating a mobile app that shows your machines and their components.

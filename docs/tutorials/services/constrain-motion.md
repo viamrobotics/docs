@@ -208,7 +208,7 @@ The following diagram shows this, as well as the global coordinate system.
 
 If you are using a `fake` gripper, there is no real hardware to calibrate and you can [continue to the next section](#use-a-transform-to-represent-a-drinking-cup), imagining that your fake gripper corresponds to the diagram above.
 
-If you are using a real arm and gripper, use the [**CONTROL** tab](/fleet/machines/#control) in the [Viam app](https://app.viam.com/) to move the gripper, look at its reported orientations, and map them to its orientation in the real world.
+If you are using a real arm and gripper, use the [**CONTROL** tab](/fleet/machines/control/) in the [Viam app](https://app.viam.com/) to move the gripper, look at its reported orientations, and map them to its orientation in the real world.
 If the axes are different from those described above, take these differences into account in your code.
 
 ## Use a transform to represent a drinking cup

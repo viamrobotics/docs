@@ -103,7 +103,7 @@ Before editing a config, we recommend you refresh the page to ensure you have al
 The Viam mobile app allows you to:
 
 - see if your machines are online
-- access the [control interface](/fleet/machines/#control) for each machine
+- access the [control interface](/fleet/machines/control/) for each machine
 - [invite people to collaborate with you and modify access](/fleet/rbac/#use-the-mobile-app)
 - check machine [logs](/fleet/machines/#logs)
 - [upload images from your phone to the cloud](/data/upload/#upload-images-with-the-viam-mobile-app)

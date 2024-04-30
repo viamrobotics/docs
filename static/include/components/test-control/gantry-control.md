@@ -1,6 +1,6 @@
 ## Test the gantry
 
-Once your gantry is configured and connected, go to the [**CONTROL** tab](/fleet/machines/#control) and click on the gantry's dropdown panel.
+Once your gantry is configured and connected, go to the [**CONTROL** tab](/fleet/machines/control/) and click on the gantry's dropdown panel.
 
 Use the panel to adjust the position of the actuator on the axis and check whether it moves as expected.
 
