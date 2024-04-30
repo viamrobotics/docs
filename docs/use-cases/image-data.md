@@ -49,7 +49,7 @@ Once you have synced images, you can [view those images in the Viam app](/data/v
 {{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **5. Filter data by common search criteria**
 
-You can [filter synced images in the Viam app](/data/view/#filter-data) using the **Filtering** menu under the **Data** tab in the Viam app, using search criteria such as machine name, location, date range, or component name.
+You can [filter synced images in the Viam app](/data/view/#filter-data) using the **Filters** menu under the **Data** tab in the Viam app, using search criteria such as machine name, location, date range, or component name.
 
 {{< /tablestep >}}
 {{< tablestep >}}
