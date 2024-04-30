@@ -384,56 +384,6 @@ names := myBoard.DigitalInterruptNames()
 {{% /tab %}}
 {{< /tabs >}}
 
-### Status
-
-Get the current status of the board as a `BoardStatus`.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
-- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- [(BoardStatus)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.BoardStatus): Mappings of the current status of the fields and values of any [Analog](#analogs) pins and [DigitalInterrupts](#digital_interrupts) configured on the board.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.status).
-
-```python
-my_board = Board.from_robot(robot=robot, name="my_board")
-
-# Get the current status of the board.
-status = await my_board.status()
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-
-**Returns:**
-
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-- [(BoardStatus)](https://pkg.go.dev/go.viam.com/api/common/v1#BoardStatus): Mappings of the current status of the fields and values of any [AnalogReaders](#analogs) and [DigitalInterrupts](#digital_interrupts) configured on the board.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
-
-```go
-myBoard, err := board.FromRobot(robot, "my_board")
-
-// Get the current status of the board.
-err := myBoard.Status(context.Background(), nil)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### SetPowerMode
 
 Set the board to the indicated `PowerMode`.

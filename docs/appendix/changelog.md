@@ -19,6 +19,12 @@ outputs:
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
+{{% changelog date="2024-04-30" color="removed" title="Removed status from Board API" %}}
+
+Viam has removed support for following Board API methods models: `Status()`, `AnalogStatus()`, and `DigitalInterruptStatus()`.
+
+{{% /changelog %}}
+
 {{% changelog date="2024-04-19" color="removed" title="Removed and replaced camera models" %}}
 
 Viam has removed support for following builtin camera models: `single_stream`, `dual_stream`, `align_color_depth_extrinsics`, and `align_color_depth_homography`.
