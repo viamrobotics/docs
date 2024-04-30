@@ -47,9 +47,7 @@ Then, follow the instructions on the page to connect and set up your machine.
 If your machine is controlled by a microcontroller, install the [**Micro-RDK**](/get-started/installation/prepare/microcontrollers/) instead of full `viam-server`.
 {{% /alert %}}
 
-{{% alert Title="Tip" color ="tip" %}}
-More in-depth information on installing `viam-server` can be found in our [Install Guide](/get-started/installation/#install-viam-server).
-{{% /alert %}}
+More in-depth information on installing `viam-server` can be found in our [Installation Guide](/get-started/installation/#install-viam-server).
 
 Once all parts of your machine are set up and connected to the app, the part status display at the top left corner of the page turns green.
 Now, you can manage your machine with one of four tabs: **CONFIGURE**, **CONTROL**, **LOGS**, and **CONNECT**:
