@@ -28,10 +28,11 @@ base,GetProperties,get_properties,Properties,getProperties
 base,Close,close,Close,
 
 ## Board
-board,Status,status,Status,status
+board,Status,,Status,status
 board,SetGPIO,set,Set,setGPIO
 board,GetGPIO,get,Get,getGPIO
-board,PWM,get_pwm,PWM,pWM
+## HACK: Proto is PWM but we call it GetPWM in docs. Upstream likely to change to match soonish:
+board,GetPWM,get_pwm,PWM,pWM
 board,SetPWM,set_pwm,SetPWM,setPWM
 board,PWMFrequency,get_pwm_frequency,PWMFreq,pWMFrequency
 board,SetPWMFrequency,set_pwm_frequency,SetPWMFreq,setPWMFrequency
@@ -166,6 +167,16 @@ sensor,GetGeometries,get_geometries,,getGeometries
 ## HACK: No proto for close, manually mapping:
 sensor,Close,close,Close,
 
+## Servo
+servo,Move,move,Move,move
+servo,GetPosition,get_position,Position,getPosition
+servo,Stop,stop,stop,,stop
+servo,IsMoving,is_moving,,isMoving
+servo,DoCommand,do_command,,doCommand
+servo,GetGeometries,get_geometries,,getGeometries
+## HACK: No proto for close, manually mapping:
+servo,Close,close,Close,
+
 ## Generic Service
 generic_service,DoCommand,do_command,,doCommand
 ## HACK: No proto for close, manually mapping:
@@ -237,7 +248,8 @@ app,GetOrganizationNamespaceAvailability,get_organization_namespace_availability
 app,UpdateOrganization,update_organization,,updateOrganization
 app,DeleteOrganization,,,deleteOrganization
 app,ListOrganizationMembers,list_organization_members,,listOrganizationMembers
-app,CreateOrganizationInvite,create_organization_invite,,createOrganizationInvite
+## Python: create_organization_invite is currently broken upstream, removing temporarily from map:
+app,CreateOrganizationInvite,,,createOrganizationInvite
 app,UpdateOrganizationInviteAuthorizations,update_organization_invite_authorizations,,updateOrganizationInviteAuthorizations
 app,DeleteOrganizationMember,delete_organization_member,,deleteOrganizationMember
 app,DeleteOrganizationInvite,delete_organization_invite,,deleteOrganizationInvite
@@ -321,23 +333,23 @@ data,AddBinaryDataToDatasetByIDs,add_binary_data_to_dataset_by_ids,,addBinaryDat
 data,RemoveBinaryDataFromDatasetByIDs,remove_binary_data_from_dataset_by_ids,,removeBinaryDataFromDatasetByIDs
 ## TODO: handle sync, either in data or datasync
 
-## Dataset
-dataset,CreateDataset,create_dataset,,createDataset
-dataset,DeleteDataset,delete_dataset,,deleteDataset
-dataset,RenameDataset,rename_dataset,,renameDataset
-dataset,ListDatasetsByOrganizationID,list_datasets_by_organization_id,,listDatasetsByOrganizationID
-dataset,ListDatasetsByIDs,list_dataset_by_ids,,listDatasetsByIDs
+## Dataset (from proto: Dataset, HACK: bundling with proto: Data)
+data,CreateDataset,create_dataset,,createDataset
+data,DeleteDataset,delete_dataset,,deleteDataset
+data,RenameDataset,rename_dataset,,renameDataset
+data,ListDatasetsByOrganizationID,list_datasets_by_organization_id,,listDatasetsByOrganizationID
+data,ListDatasetsByIDs,list_dataset_by_ids,,listDatasetsByIDs
 
-## Datasync
-datasync,DataCaptureUpload,,,dataCaptureUpload
+## Datasync (from proto: Datasync, HACK: bundling with proto: Data)
+data,DataCaptureUpload,,,dataCaptureUpload
 ## HACK: DataCaptureUpload instead implemented in binary_data_capture_upload (python), adding pseudo-entry:
-datasync,BinaryDataCaptureUpload,binary_data_capture_upload,,
+data,BinaryDataCaptureUpload,binary_data_capture_upload,,
 ## HACK: DataCaptureUpload instead implemented in tabular_data_capture_upload (python), adding pseudo-entry:
-datasync,TabularDataCaptureUpload,tabular_data_capture_upload,,
-datasync,FileUpload,file_upload,,fileUpload
+data,TabularDataCaptureUpload,tabular_data_capture_upload,,
+data,FileUpload,file_upload,,fileUpload
 ## HACK: FileUpload also implemented in file_upload_from_path (python), adding pseudo-entry:
-datasync,FileUploadFromPath,file_upload_from_path,,
-datasync,StreamingDataCaptureUpload,streaming_data_capture_upload,,streamingDataCaptureUpload
+data,FileUploadFromPath,file_upload_from_path,,
+data,StreamingDataCaptureUpload,streaming_data_capture_upload,,streamingDataCaptureUpload
 
 ## MLTraining
 mltraining,SubmitTrainingJob,,,submitTrainingJob
