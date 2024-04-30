@@ -1,13 +1,14 @@
 ---
 title: "Viam CLI"
 linkTitle: "CLI"
-weight: 80
+weight: 650
 type: "docs"
 no_list: true
 description: "Manage and control your machines from the command line."
 aliases:
   - "/build/program/cli"
   - /manage/cli/
+  - /fleet/cli/
 ---
 
 The Viam CLI (command line interface) tool enables you to manage your machines and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} across organizations and locations from the command line.

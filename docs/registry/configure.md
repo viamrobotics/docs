@@ -84,7 +84,7 @@ To add a modular [component](/components/) from the Viam registry to your machin
 
    {{<imgproc src="registry/configure/add-component-screen.png" resize="500x" style="max-width: 400px" declaredimensions=true alt="The add a component modal showing the intel realsense module pane, with the 'Add module' button shown">}}
 
-   Be sure the modular component you select supports the [platform](/fleet/cli/#using-the---platform-argument) you intend to use it with, such as `linux arm64`.
+   Be sure the modular component you select supports the [platform](/cli/#using-the---platform-argument) you intend to use it with, such as `linux arm64`.
    You can see which platforms the module supports at bottom of the module information screen before you add it.
 
 When you add a modular component from the registry, it appears on the **CONFIGURE** tab like any other component.
@@ -114,7 +114,7 @@ To add a modular [service](/services/) from the Viam registry to your machine:
 
    {{<imgproc src="registry/configure/add-service-screen.png" resize="500x" style="max-width: 400px" declaredimensions=true alt="The add a component modal showing the mlmodelservice triton module pane, with the 'Add module' button shown">}}
 
-   Be sure the modular service you select supports the [platform](/fleet/cli/#using-the---platform-argument) you intend to use it with, such as `linux arm64`.
+   Be sure the modular service you select supports the [platform](/cli/#using-the---platform-argument) you intend to use it with, such as `linux arm64`.
    You can see which platforms the module supports at bottom of the module information screen before you add it.
 
 When you add a modular service from the registry, it appears on the **CONFIGURE** tab like any other service.

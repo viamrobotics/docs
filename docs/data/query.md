@@ -87,7 +87,7 @@ These steps are only required when querying tabular data directly from an MQL-co
 You do not need to perform any additional configuration when [querying data in the Viam app](/data/query/#query-tabular-data-in-the-viam-app).
 {{< /alert >}}
 
-1. If you haven't already, [install the Viam CLI](/fleet/cli/#install) and [authenticate](/fleet/cli/#authenticate) to Viam.
+1. If you haven't already, [install the Viam CLI](/cli/#install) and [authenticate](/cli/#authenticate) to Viam.
 
 1. Find your organization ID by running the following command, or from your organization's **Settings** page in [the Viam App](https://app.viam.com/):
 
@@ -115,7 +115,7 @@ You do not need to perform any additional configuration when [querying data in t
    This command returns the `hostname` (including database name) to use to connect to your data store on the Viam organization's MongoDB Atlas instance.
    You will need this to query your data in the next section.
 
-For more information, see the documentation for the [Viam CLI `database` command](/fleet/cli/#data).
+For more information, see the documentation for the [Viam CLI `database` command](/cli/#data).
 
 ### Query
 

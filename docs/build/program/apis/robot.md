@@ -183,7 +183,7 @@ Pass these options to [`AtAddress`](#ataddress).
 
 **Parameters:**
 
-- `api_key` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): [An API key](/fleet/cli/#authenticate) with access to the machine.
+- `api_key` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): [An API key](/cli/#authenticate) with access to the machine.
 - `api_key_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Your API key ID.
   Must be a valid UUID.
 
