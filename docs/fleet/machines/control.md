@@ -1,6 +1,6 @@
 ---
 title: "Control Machines"
-linkTitle: "Control"
+linkTitle: "Control Machines"
 weight: 10
 type: "docs"
 description: "A machine is an organizational concept, consisting of either one or multiple parts working closely together to complete tasks."
@@ -67,11 +67,11 @@ For more detailed information on how to operate and test your resources, expand 
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}
 {{% /expand%}}
 
-{{% expand "movement sensor (gps)" %}}
+{{% expand "Movement sensor (GPS)" %}}
 {{< readfile "/static/include/components/test-control/movement-sensor-gps-control.md" >}}
 {{% /expand%}}
 
-{{% expand "movement sensor (imu)" %}}
+{{% expand "Movement sensor (IMU)" %}}
 {{< readfile "/static/include/components/test-control/movement-sensor-imu-control.md" >}}
 {{% /expand%}}
 
@@ -91,7 +91,7 @@ For more detailed information on how to operate and test your resources, expand 
 
 The following services also provide control interfaces:
 
-- [SLAM](/mobility/slam/cartographer/#create-a-new-map): for createing a new map
+- [SLAM](/mobility/slam/cartographer/#create-a-new-map): for creating a new SLAM map and for using the motion service to move a machine on a SLAM map
 - [Motion](/mobility/motion/#test-the-motion-service): for moving a machine on a map
 
 ## Control interface in the Viam mobile app
