@@ -912,11 +912,11 @@ You can test motion on your machine from the [**CONTROL** tab](/fleet/machines/c
 
 ![Motion card on the Control tab](/mobility/motion/motion-rc-card.png)
 
-Click on the **Move** button to issue `MoveOnMap()` requests.
+Enter x and y coordinates to move your machine to, then click the **Move** button to issue a `MoveOnMap()` request.
 
 {{< alert title="Info" color="info" >}}
 
-The `plan_deviation_m` for `MoveOnMap()` on calls issues from the **CONTROL** tab is 0.5 m.
+The `plan_deviation_m` for `MoveOnMap()` on calls issued from the **CONTROL** tab is 0.5 m.
 
 {{< /alert >}}
 

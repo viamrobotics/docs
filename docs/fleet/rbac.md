@@ -1,6 +1,6 @@
 ---
 title: "Role-Based Access Control"
-linkTitle: "Access Control"
+linkTitle: "Manage Access"
 description: "Fleet and data management permissions."
 weight: 50
 type: "docs"

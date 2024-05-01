@@ -1,14 +1,14 @@
 ---
 title: "Control Machines"
 linkTitle: "Control Machines"
-weight: 10
+weight: 45
 type: "docs"
 description: "A machine is an organizational concept, consisting of either one or multiple parts working closely together to complete tasks."
 tags: ["fleet management", "control", "app"]
 images: ["/fleet/control.gif"]
 ---
 
-Once you have configured components and services for your machine, you can test, monitor, and remotely operate them from the **CONTROL** tab in the [Viam app](https://app.viam.com) or the [Viam mobile app](/fleet/#the-viam-mobile-app).
+Once you have [configured components and services](/fleet/configure/) for your machine, you can test, monitor, and remotely operate them from the **CONTROL** tab in the [Viam app](https://app.viam.com) or the [Viam mobile app](/fleet/#the-viam-mobile-app).
 
 ## Control interface in the Viam app
 
