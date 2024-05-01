@@ -36,7 +36,7 @@ board,SetPWM,set_pwm,SetPWM,setPWM
 board,PWMFrequency,get_pwm_frequency,PWMFreq,pWMFrequency
 board,SetPWMFrequency,set_pwm_frequency,SetPWMFreq,setPWMFrequency
 board,DoCommand,do_command,,doCommand
-board,ReadAnalogReader,analog_reader_by_name,AnalogReaderByName,readAnalogReader
+board,ReadAnalogReader,analog_reader_by_name,AnalogByName,readAnalogReader
 board,WriteAnalog,write_analog,WriteAnalog,writeAnalog
 board,GetDigitalInterruptValue,digital_interrupt_by_name,DigitalInterruptByName,,
 board,StreamTicks,,StreamTicks,streamTicks
@@ -45,7 +45,7 @@ board,GetGeometries,get_geometries,,getGeometries
 ## HACK: Board (python, go) provides additional helper functions, adding 5 pseudo-entries:
 board,Read,read,Read,
 board,Value,value,Value,getDigitalInterruptValue
-board,AnalogReaderNames,analog_reader_names,AnalogReaderNames,
+board,AnalogReaderNames,analog_reader_names,AnalogNames,
 board,DigitalInterruptNames,digital_interrupt_names,DigitalInterruptNames,
 board,GPIOPinByName,gpio_pin_by_name,GPIOPinByName,
 board,Reconfigure,,Reconfigure,
