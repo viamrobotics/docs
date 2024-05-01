@@ -28,7 +28,6 @@ base,GetProperties,get_properties,Properties,getProperties
 base,Close,close,Close,
 
 ## Board
-board,Status,,Status,status
 board,SetGPIO,set,Set,setGPIO
 board,GetGPIO,get,Get,getGPIO
 ## HACK: Proto is PWM but we call it GetPWM in docs. Upstream likely to change to match soonish:
