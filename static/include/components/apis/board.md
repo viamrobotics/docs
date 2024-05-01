@@ -1,7 +1,7 @@
 <!-- prettier-ignore -->
 Method Name | Description
 ----------- | -----------
-[`ReadAnalog`](/components/board/#readanalog) | Get an [`Analog`](/components/board/#analogs) by `name`.
+[`AnalogByName`](/components/board/#analogbyname) | Get an [`Analog`](/components/board/#analogs) by `name`.
 [`GetDigitalInterruptValue`](/components/board/#getdigitalinterruptvalue) | Get a [`DigitalInterrupt`](/components/board/#digital_interrupts) by `name`.
 [`GetGPIO`](/components/board/#getgpio) | Get a `GPIOPin` by its {{< glossary_tooltip term_id="pin-number" text="pin number" >}}.
 [`SetGPIO`](/components/board/#setgpio) | Set a `GPIOPin` by its {{< glossary_tooltip term_id="pin-number" text="pin number" >}}.

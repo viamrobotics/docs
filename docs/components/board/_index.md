@@ -140,7 +140,7 @@ Additionally, the nested `GPIOPin`, `Analog`, and `DigitalInterrupt` interfaces 
 
 {{< readfile "/static/include/components/apis/digitalinterrupt.md" >}}
 
-### ReadAnalog
+### AnalogByName
 
 Get an [`Analog`](#analogs) pin by `name`.
 
@@ -161,7 +161,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the Analog "my_example_analog_pin".
-analog = await my_board.analog_by_name(name="my_example_analog")
+analog = await my_board.analog_reader_by_name(name="my_example_analog")
 ```
 
 {{% /tab %}}
