@@ -602,7 +602,25 @@ def parse(type, names):
                                 ## in its entirety to the go_methods dictionary by type (like 'component'), by resource (like 'arm'),
                                 ## using the method_name as key:
                                 go_methods[type][resource][method_name] = this_method_dict
-                
+
+                        ## Go SDK docs for each interface omit inherited functions. If the resource being considered inherits from
+                        ## resource.Resource (currently all components and services do, and no app or robot interfaces do), then add
+                        ## the three inherited methods manually: Reconfigure(), DoCommand(), Close()
+                        ## (Match only to instances that are preceded by a tab char, or we'll catch ResourceByName erroneously):
+                        if '\tresource.Resource' in resource_interface.text:
+                            go_methods[type][resource]['Reconfigure'] = {'proto': 'Reconfigure', \
+                                'description': 'Reconfigure must reconfigure the resource atomically and in place. If this cannot be guaranteed, then usage of AlwaysRebuild or TriviallyReconfigurable is permissible.', \
+                                'usage': 'Reconfigure(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, deps <a href="#Dependencies">Dependencies</a>, conf <a href="#Config">Config</a>) <a href="/builtin#error">error</a>', \
+                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
+                            go_methods[type][resource]['DoCommand'] = {'proto': 'DoCommand', \
+                                'description': 'DoCommand sends/receives arbitrary data.', \
+                                'usage': 'DoCommand(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, cmd map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
+                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
+                            go_methods[type][resource]['Close'] = {'proto': 'Close', \
+                                'description': 'Close must safely shut down the resource and prevent further use. Close must be idempotent. Later reconfiguration may allow a resource to be "open" again.', \
+                                'usage': 'Close(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) <a href="/builtin#error">error</a>', \
+                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
+
                 ## We have finished looping through all scraped Go methods. Write the go_methods dictionary
                 ## in its entirety to the all_methods dictionary using "go" as the key:
                 all_methods["go"] = go_methods
