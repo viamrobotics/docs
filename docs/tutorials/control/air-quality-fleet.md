@@ -627,7 +627,7 @@ The following instructions describe how to set up an API key for one location.
    return document.getElementById("insert-readings").replaceWith(htmlblock);
    ```
 
-The full code is available for reference [on GitHub](https://github.com/viam-labs/air-quality-fleet/blob/main/main.ts).
+The full code is available for reference on [GitHub](https://github.com/viam-labs/air-quality-fleet/blob/main/main.ts).
 
 ### Style your dashboard
 
