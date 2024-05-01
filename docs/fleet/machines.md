@@ -18,7 +18,7 @@ A machine always has a main part that receives client requests, and any number o
 
 ## Add a new machine
 
-Add a new machine by providing a name in the **New machine** field and clicking **Add machine**.
+Add a new machine in the [Viam app](https://app.viam.com) by providing a name in the **New machine** field and clicking **Add machine**.
 
 ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add Machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
 
@@ -44,10 +44,10 @@ Select your system's architecture and select the version of the {{< glossary_too
 Then, follow the instructions on the page to connect and set up your machine.
 
 {{% alert title="Tip" color="tip" %}}
-The **Micro-RDK** is for [microcontrollers](/get-started/installation/prepare/microcontrollers/).
-
-More in-depth information on installing `viam-server` can be found in our [Install Guide](/get-started/installation/#install-viam-server).
+If your machine is controlled by a microcontroller, install the [**Micro-RDK**](/get-started/installation/prepare/microcontrollers/) instead of full `viam-server`.
 {{% /alert %}}
+
+More in-depth information on installing `viam-server` can be found in our [Installation Guide](/get-started/installation/#install-viam-server).
 
 Once all parts of your machine are set up and connected to the app, the part status display at the top left corner of the page turns green.
 Now, you can manage your machine with one of four tabs: **CONFIGURE**, **CONTROL**, **LOGS**, and **CONNECT**:
