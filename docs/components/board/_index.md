@@ -1270,7 +1270,7 @@ Calculation of value differs between the `"type"` of interrupt [configured](#dig
 
 **Returns:**
 
-- [(int)](https://docs.python.org/3/library/functions.html#int): The amount of [Ticks](#tick) that have occurred.
+- [(int)](https://docs.python.org/3/library/functions.html#int): The amount of ticks that have occurred.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.DigitalInterrupt.value).
 
@@ -1296,7 +1296,7 @@ count = await interrupt.value()
 
 **Returns:**
 
-- [(int64)](https://pkg.go.dev/builtin#int64): The amount of [Ticks](#tick) that have occurred.
+- [(int64)](https://pkg.go.dev/builtin#int64): The amount of ticks that have occurred.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#BasicDigitalInterrupt).
@@ -1325,7 +1325,7 @@ count, err := interrupt.Value(context.Background(), nil)
 
 **Returns:**
 
-- [(int)](https://docs.python.org/3/library/functions.html#int): The [RollingAverage](https://pkg.go.dev/go.viam.com/rdk/utils#RollingAverage) of the time in nanoseconds between two successive low signals (pulse width) recorded by [`Tick()`](#tick), computed over a window of size `10`.
+- [(int)](https://docs.python.org/3/library/functions.html#int): The [RollingAverage](https://pkg.go.dev/go.viam.com/rdk/utils#RollingAverage) of the time in nanoseconds between two successive low signals (pulse width) recorded by the digital interrupt's ticks, computed over a window of size `10`.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.DigitalInterrupt.value).
 
@@ -1351,7 +1351,7 @@ rolling_avg = await interrupt.value()
 
 **Returns:**
 
-- [(int64)](https://pkg.go.dev/builtin#int64): The [RollingAverage](https://pkg.go.dev/go.viam.com/rdk/utils#RollingAverage) of the time in nanoseconds between two successive low signals (pulse width) recorded by [`Tick()`](#tick), computed over a window of size `10`.
+- [(int64)](https://pkg.go.dev/builtin#int64): The [RollingAverage](https://pkg.go.dev/go.viam.com/rdk/utils#RollingAverage) of the time in nanoseconds between two successive low signals (pulse width) recorded by the digital interrupt's ticks, computed over a window of size `10`.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#ServoDigitalInterrupt).
@@ -1368,247 +1368,6 @@ rolling_avg, err := interrupt.Value(context.Background(), nil)
 
 {{% /tab %}}
 {{< /tabs >}}
-{{% /tab %}}
-{{< /tabs >}}
-
-### Tick
-
-Record an interrupt and notify any [channels](https://go.dev/tour/concurrency/2) that have been added with [AddCallback()](#addcallback).
-
-{{% alert title="Tip" color="tip" %}}
-You should only need to integrate this method into your application code for testing purposes, as the handling of `Tick()` should be automated once the interrupt is configured.
-
-Calling this method is not yet fully implemented with the Viam Python SDK.
-{{% /alert %}}
-
-<!-- NOT YET IMPLEMENTED: See https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/board/client.py#L60
-
-BASIC
-
-**Parameters:**
-
-- `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is set to high.
-If `false`, the state of the pin is set to low.
-- `nanos` [(int)](https://docs.python.org/3/library/functions.html#int): The time that has elapsed in nanoseconds since the last time the interrupt was ticked.
-
-**Returns:**
-
-- None
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.DigitalInterrupt.tick).
-
-```python
-my_board = Board.from_robot(robot=robot, name="my_board")
-
-# Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt = await my_board.digital_interrupt_by_name(
-    name="my_example_digital_interrupt")
-
-# Record an interrupt and notify any interested callbacks.
-await interrupt.tick(high=true, nanos=12345)
-```
-
-SERVO
-
-**Parameters:**
-
-- `high` (https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is set to high.
-If `false`, the state of the pin is set to low.
-- `nanos` [(int)](https://docs.python.org/3/library/functions.html#int): The time in nanoseconds between two successive low signals (pulse width).
-
-**Returns:**
-
-- None
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.DigitalInterrupt.tick).
-
-```python
-my_board = Board.from_robot(robot=robot, name="my_board")
-
-# Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt = await my_board.digital_interrupt_by_name(
-    name="my_example_digital_interrupt")
-
-# Record an interrupt and notify any interested callbacks.
-await interrupt.tick(high=true, nanos=12345)
-```
- -->
-
-{{< tabs >}}
-{{% tab name="Basic - Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is set to high.
-  If `false`, the state of the pin is set to low.
-- `now` [(uint64)](https://pkg.go.dev/builtin#uint64): The time that has elapsed in nanoseconds since the last time the interrupt was ticked.
-
-**Returns:**
-
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#BasicDigitalInterrupt).
-
-```go
-myBoard, err := board.FromRobot(robot, "my_board")
-
-// Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
-
-// Record an interrupt and notify any interested callbacks.
-err := interrupt.Tick(context.Background(), true, 12345)
-```
-
-{{% /tab %}}
-{{% tab name="Servo - Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is set to high.
-  If `false`, the state of the pin is set to low.
-- `nanoseconds` [(uint64)](https://pkg.go.dev/builtin#uint64): The time in nanoseconds between two successive low signals (pulse width).
-
-**Returns:**
-
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#ServoDigitalInterrupt).
-
-```go
-myBoard, err := board.FromRobot(robot, "my_board")
-
-// Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
-
-// Record an interrupt and notify any interested callbacks.
-err := interrupt.Tick(context.Background(), true, 12345)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### AddCallback
-
-Add a [channel](https://go.dev/tour/concurrency/2) as a listener for when the state of the [configured GPIO pin](#digital_interrupts) changes.
-When [Tick()](#tick) is called, callbacks added to an interrupt will be sent the returned value `high`.
-
-{{% alert title="Support Notice" color="note" %}}
-This method is not available for digital interrupts [configured](#digital_interrupts) with `"type": "servo"`.
-It is also not yet fully implemented with the Viam Python SDK.
-{{% /alert %}}
-
-<!-- NOT YET IMPLEMENTED: see https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/board/client.py#L63
-
-**Parameters:**
-
-- `queue` [(multiprocessing.Queue)](https://docs.python.org/3/library/multiprocessing.html#multiprocessing.Queue): The receiving queue.
-
-**Returns:**
-
-- None
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.DigitalInterrupt.add_callback).
-
-```python
-"""from multiprocessing import Queue"""
-my_board = Board.from_robot(robot=robot, name="my_board")
-
-# Get the GPIOPin with pin number 15.
-pin = await my_board.gpio_pin_by_name(name="15")
-
-callback_queue = Queue(maxsize=10)
-
-# Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt = await my_board.digital_interrupt_by_name(
-    name="my_example_digital_interrupt")
-
-# Add a queue to the interrupt.
-interrupt.add_callback(callback_queue)
-```
- -->
-
-{{< tabs >}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `callback` ([chan](https://go.dev/tour/concurrency/2) [Tick](https://pkg.go.dev/go.viam.com/rdk/components/board#Tick)): The channel to add as a listener for when the state of the GPIO pin this interrupt is [configured for](#digital_interrupts) changes between high and low.
-
-**Returns:**
-
-- None
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt.AddCallback).
-
-```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(robot, "my_board")
-
-// Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
-
-// Make the channel for Tick().
-ch := make(chan Tick)
-
-// Add the channel to "my_example_digital_interrupt" as a callback.
-interrupt.AddCallback(ch)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### Close
-
-Safely shut down the resource and prevent further use.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- None
-
-**Returns:**
-
-- None
-
-```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
-
-# Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt = await my_board.digital_interrupt_by_name(
-    name="my_example_digital_interrupt")
-
-# Close the interrupt.
-await interrupt.close()
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.DigitalInterruptClient.close).
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-
-**Returns:**
-
-- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
-
-```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(robot, "my_board")
-
-// Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
-
-// Close the interrupt.
-err := interrupt.Close(ctx)
-```
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
-
 {{% /tab %}}
 {{< /tabs >}}
 
