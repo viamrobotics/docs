@@ -48,7 +48,6 @@ board,Value,value,Value,getDigitalInterruptValue
 board,AnalogReaderNames,analog_reader_names,AnalogNames,
 board,DigitalInterruptNames,digital_interrupt_names,DigitalInterruptNames,
 board,GPIOPinByName,gpio_pin_by_name,GPIOPinByName,
-board,Reconfigure,,Reconfigure,
 ## HACK: No proto for close, manually mapping:
 board,Close,close,Close,
 
