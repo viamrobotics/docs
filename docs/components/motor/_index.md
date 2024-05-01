@@ -150,7 +150,7 @@ await my_motor.set_power(power=0.4)
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 ```go
-myMotor, err := motor.FromRobot(robot, "my_motor")
+myMotor, err := motor.FromRobot(machine, "my_motor")
 
 // Set the motor power to 40% forwards.
 myMotor.SetPower(context.Background(), 0.4, nil)
@@ -206,7 +206,7 @@ await my_motor.go_for(rpm=60, revolutions=7.2)
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 ```go
-myMotor, err := motor.FromRobot(robot, "my_motor")
+myMotor, err := motor.FromRobot(machine, "my_motor")
 
 // Turn the motor 7.2 revolutions at 60 RPM.
 myMotor.GoFor(context.Background(), 60, 7.2, nil)
@@ -259,7 +259,7 @@ await my_motor.go_to(rpm=75, revolutions=8.3)
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 ```go
-myMotor, err := motor.FromRobot(robot, "my_motor")
+myMotor, err := motor.FromRobot(machine, "my_motor")
 
 // Turn the motor to 8.3 revolutions from home at 75 RPM.
 myMotor.GoTo(context.Background(), 75, 8.3, nil)
@@ -308,7 +308,7 @@ await my_motor.reset_zero_position(offset=0.0)
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 ```go
-myMotor, err := motor.FromRobot(robot, "my_motor")
+myMotor, err := motor.FromRobot(machine, "my_motor")
 
 // Set the current position as the new home position with no offset.
 myMotor.ResetZeroPosition(context.Background(), 0.0, nil)
@@ -359,7 +359,7 @@ position = await my_motor.get_position()
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 ```go
-myMotor, err := motor.FromRobot(robot, "my_motor")
+myMotor, err := motor.FromRobot(machine, "my_motor")
 
 // Get the current position of the motor.
 position, err := myMotor.Position(context.Background(), nil)
@@ -412,7 +412,7 @@ print(f'Properties: {properties}')
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 ```go
-myMotor, err := motor.FromRobot(robot, "my_motor")
+myMotor, err := motor.FromRobot(machine, "my_motor")
 
 // Return whether or not the motor supports certain optional features.
 properties, err := myMotor.Properties(context.Background(), nil)
@@ -470,7 +470,7 @@ print('Powered: ', powered)
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 ```go
-myMotor, err := motor.FromRobot(robot, "my_motor")
+myMotor, err := motor.FromRobot(machine, "my_motor")
 
 // Check whether the motor is currently running.
 powered, pct, err := myMotor.IsPowered(context.Background(), nil)
@@ -524,7 +524,7 @@ print('Moving: ', moving)
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/resource#MovingCheckable).
 
 ```go
-myMotor, err := motor.FromRobot(robot, "my_motor")
+myMotor, err := motor.FromRobot(machine, "my_motor")
 
 // Check whether the motor is currently moving.
 moving, err := myMotor.IsMoving(context.Background())
@@ -575,7 +575,7 @@ await my_motor.stop()
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 ```go
-myMotor, err := motor.FromRobot(robot, "my_motor")
+myMotor, err := motor.FromRobot(machine, "my_motor")
 
 // Stop the motor.
 myMotor.Stop(context.Background(), nil)
@@ -629,7 +629,7 @@ if geometries:
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMotor, err := motor.FromRobot(robot, "my_motor")
+myMotor, err := motor.FromRobot(machine, "my_motor")
 
 geometries, err := myMotor.Geometries(context.Background(), nil)
 
@@ -688,7 +688,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMotor, err := motor.FromRobot(robot, "my_motor")
+myMotor, err := motor.FromRobot(machine, "my_motor")
 
 resp, err := myMotor.DoCommand(ctx, map[string]interface{}{"command": "jog", "raw_input": "home"})
 ```
@@ -733,7 +733,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMotor, err := motor.FromRobot(robot, "my_motor")
+myMotor, err := motor.FromRobot(machine, "my_motor")
 
 err := myMotor.Close(ctx)
 ```
