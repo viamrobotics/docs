@@ -621,6 +621,18 @@ def parse(type, names):
                                 'usage': 'Close(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) <a href="/builtin#error">error</a>', \
                                 'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
 
+                        ## Similarly, if the resource being considered inherits from resource.Actuator (Servo, for example),
+                        ## then add the two inherited methods manually: IsMoving() and Stop():
+                        if '\tresource.Actuator' in resource_interface.text:
+                            go_methods[type][resource]['IsMoving'] = {'proto': 'IsMoving', \
+                                'description': 'IsMoving returns whether the resource is moving or not', \
+                                'usage': 'IsMoving(<a href="/context">context</a>.<a href="/context#Context">Context</a>) (<a href="/builtin#bool">bool</a>, <a href="/builtin#error">error</a>)', \
+                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Actuator'}
+                            go_methods[type][resource]['Stop'] = {'proto': 'Stop', \
+                                'description': 'Stop stops all movement for the resource', \
+                                'usage': 'Stop(<a href="/context">context</a>.<a href="/context#Context">Context</a>, map[<a href="/builtin#string">string</a>]interface{}) <a href="/builtin#error">error</a>', \
+                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Actuator'}
+
                 ## We have finished looping through all scraped Go methods. Write the go_methods dictionary
                 ## in its entirety to the all_methods dictionary using "go" as the key:
                 all_methods["go"] = go_methods
