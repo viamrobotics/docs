@@ -19,7 +19,7 @@ languages: ["python"]
 viamresources: ["base", "vision", "camera"]
 level: "Intermediate"
 date: "2022-08-18"
-updated: "2023-08-11"
+updated: "2024-05-01"
 cost: 540
 no_list: true
 ---
@@ -56,9 +56,9 @@ To create a [color detector vision service](/ml/vision/#detections):
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
-Click the **Services** subtab and click **Create service** in the lower-left corner.
-Select the `Vision` type, then select the `Color Detector` model.
+Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/robots).
+Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Service**.
+Select the `vision` type, then select the `color detector` model.
 Enter `my_color_detector` as the name for your service and click **Create**.
 
 In your vision service's panel, set the following **Attributes**:
@@ -70,7 +70,7 @@ In your vision service's panel, set the following **Attributes**:
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Add the vision service object to the services array in your rover’s raw JSON configuration:
+Add the vision service object to the services array in your rover’s JSON configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "services": [
@@ -91,7 +91,7 @@ Add the vision service object to the services array in your rover’s raw JSON c
 {{% /tab %}}
 {{< /tabs >}}
 
-Click **Save config** and head to the **Components** tab.
+Click **Save**.
 
 You have configured a heuristic-based detector that draws boxes around objects according to their color.
 
@@ -104,7 +104,7 @@ To determine the color value from the actual cam component image, you can use a 
 
 ### Test your color detector
 
-You can test your detector from the [**Control tab**](/fleet/control/):
+You can test your detector from the [**CONTROL** tab](/fleet/control):
 
 1. Configure a [transform camera](/components/camera/transform/) with the following attributes:
 
@@ -125,8 +125,8 @@ You can test your detector from the [**Control tab**](/fleet/control/):
 
    For `<camera-name>`, insert the name of your configured physical camera.
 
-2. Click **Save config**.
-3. Navigate to the **Control** tab, click on your transform camera and toggle it on.
+2. Click **Save**.
+3. Navigate to the **CONTROL** tab, click on your transform camera and toggle it on.
    The transform camera will now show detections with bounding boxes around the detected colors.
 
 {{< alert title="Tip" color="tip" >}}
@@ -156,13 +156,13 @@ pip3 install viam-sdk
 
 ### Connect
 
-Next, go to the **Code sample** tab on your [machine page](https://app.viam.com/robots) and select **Python**, then click **Copy**.
+Next, go to the **Code sample** page of the **CONNECT** tab on your [machine page](https://app.viam.com/robots) and select **Python**, then click the copy icon.
 
 {{% snippet "show-secret.md" %}}
 
 This code snippet imports all the necessary packages and sets up a connection with the Viam app.
 
-Next, create a file named <file>main.py</file> and paste the boilerplate code from the **Code sample** tab of the Viam app into your file.
+Next, create a file named <file>main.py</file> and paste the boilerplate code from the **Code sample** page of the Viam app into your file.
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
@@ -176,18 +176,20 @@ python3 main.py
 
 The program prints a list of robot resources.
 
-On top of the packages that the code sample snippet imports, add the `random` and the `vlc` package to the imports.
+On top of the packages that the code sample snippet imports, add the `random` and the `vlc` packages to the imports, and `pil_to_viam_image` and `viam_to_pil_image` from `viam.media.utils.pil`
 The top of your code should now look like this:
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
+import random
+import vlc
 
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
 from viam.services.vision import VisionClient
 from viam.components.camera import Camera
 from viam.components.base import Base
-
+from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
@@ -269,6 +271,9 @@ async def main():
     camera = Camera.from_robot(robot, camera_name)
     frame = await camera.get_image(mime_type="image/jpeg")
 
+    # Convert to PIL Image
+    pil_frame = viam_to_pil_image(frame)
+
     # Grab the vision service for the detector
     my_detector = VisionClient.from_robot(robot, "my_color_detector")
 
@@ -277,7 +282,7 @@ async def main():
     for i in range(numCycles):
         detections = await my_detector.get_detections_from_camera(camera_name)
 
-        answer = leftOrRight(detections, frame.size[0]/2)
+        answer = leftOrRight(detections, pil_frame.size[0]/2)
         if answer == 0:
             print("left")
             await base.spin(spinNum, vel)     # CCW is positive
@@ -317,16 +322,19 @@ You could also write some code with a Viam SDK to [make your rover move in a squ
 
 {{< snippet "social.md" >}}
 
-## Full Code
+## Full code
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
+import random
+import vlc
 
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
 from viam.services.vision import VisionClient
 from viam.components.camera import Camera
 from viam.components.base import Base
+from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
 
 
 async def connect():
@@ -375,6 +383,9 @@ async def main():
     camera = Camera.from_robot(robot, camera_name)
     frame = await camera.get_image(mime_type="image/jpeg")
 
+    # Convert to PIL Image
+    pil_frame = viam_to_pil_image(frame)
+
     # Grab the vision service for the detector
     my_detector = VisionClient.from_robot(robot, "my_color_detector")
 
@@ -383,7 +394,7 @@ async def main():
     for i in range(numCycles):
         detections = await my_detector.get_detections_from_camera(camera_name)
 
-        answer = leftOrRight(detections, frame.size[0]/2)
+        answer = leftOrRight(detections, pil_frame.size[0]/2)
         if answer == 0:
             print("left")
             await base.spin(spinNum, vel)     # CCW is positive

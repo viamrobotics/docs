@@ -11,7 +11,7 @@ languages: ["python"]
 viamresources: ["camera", "mlmodel", "vision"]
 level: "Intermediate"
 date: "2023-03-30"
-updated: "2024-04-19"
+updated: "2024-05-01"
 cost: "0"
 no_list: true
 ---
@@ -252,8 +252,10 @@ async def main():
                 found = True
         if found:
             print("sending a message")
+            # Convert to PIL image
+            pil_image = viam_to_pil_image(img)
             # Change this path to your own
-            img.save('/yourpath/foundyou.jpeg')
+            pil_img.save('/yourpath/foundyou.jpeg')
             # Yagmail section
             # Create a yagmail.SMTP instance
             # to initialize the server connection.
