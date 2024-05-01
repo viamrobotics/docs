@@ -20,6 +20,4 @@ Select the card for a step-by-step guide to the solution:
 {{% card link="/use-cases/manage-fleet/" class="fit-contain" %}}
 {{< /cards >}}
 
-<br>
-
 Find more examples of how Viam is being used in the world by reviewing [Customer Stories](https://www.viam.com/customers), [tutorials](/tutorials/), or [blog posts](https://www.viam.com/blog?categories=Tutorials).

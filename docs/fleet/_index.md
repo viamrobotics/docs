@@ -52,7 +52,7 @@ Each machine resides in a location.
 {{% /manualcard %}}
 {{< /cards >}}
 
-<br><br>
+<br>
 
 {{<imgproc src="/fleet/fleet.svg" resize="1400x" style="max-width: 1400px" declaredimensions=true alt="A diagram showing how organizations, locations, and machines are grouped by Viam's fleet management">}}
 
@@ -96,12 +96,18 @@ Machine [configuration](machines/#configure) and machine [code](/build/program/)
 
 ## The Viam mobile app
 
-{{<gif webm_src="/manage/mobile-app-octagon.webm" mp4_src="/manage/mobile-app-octagon.mp4" alt="GIF of red button being pressed and cannon of confetti bot spraying confetti" class="alignright" max-width="200px">}}
+{{<gif webm_src="/fleet/mobile-app-octagon.webm" mp4_src="/fleet/mobile-app-octagon.mp4" alt="GIF of red button being pressed and cannon of confetti bot spraying confetti" class="alignright" max-width="200px">}}
 
 <br>
 
 In addition to the [Viam app](https://app.viam.com), the fully featured web application where you can access all fleet management tools, there is a Viam mobile app.
-The mobile app is a convenient way to see if your machine is online, access the [control interface](/fleet/machines/#control), [invite people to collaborate with you and modify access](/fleet/rbac/#use-the-mobile-app), check machine [logs](/fleet/machines/#logs), and [upload images to the cloud](/data/upload/#upload-images-with-the-viam-mobile-app).
+The Viam mobile app allows you to:
+
+- see if your machines are online
+- access the [control interface](/fleet/control/) for each machine
+- [invite people to collaborate with you and modify access](/fleet/rbac/#use-the-mobile-app)
+- check machine [logs](/fleet/machines/#logs)
+- [upload images from your phone to the cloud](/data/upload/#upload-images-with-the-viam-mobile-app)
 
 You can find the mobile app on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
 

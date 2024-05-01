@@ -202,9 +202,99 @@ npm start
 
 Open a web browser and visit `localhost:8000`.
 You should see a disabled button that says `Click me`.
-If you successfully configured your robot and it is able to connect to the Viam app, the button will become enabled.
-If you open the developer console, you should see some output including the names of your rover's resources.
+Open the developer console to see the console output.
+If you successfully configured your robot and it is able to connect to the Viam app, you will see some output including the names of your rover's resources.
 These are the components and services that the robot is configured with in the Viam app.
+
+Your main function should look similar to this.
+Only the first few lines that connect to your rover, and the last few lines that call your main function, are necessary for this tutorial.
+Unless you want to keep printing resource names to the console each time you load the page, delete lines 16-43 to keep your code brief.
+
+```ts {class="line-numbers linkable-line-numbers" data-line="16-43"}
+async function main() {
+  const host = "ADDRESS_FROM_VIAM_APP";
+
+  const robot = await VIAM.createRobotClient({
+    host,
+    credential: {
+      type: "api-key",
+      // Replace "<API-KEY>" (including brackets) with your machine's API key
+      payload: "<API-KEY>",
+    },
+    // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+    authEntity: "<API-KEY-ID>",
+    signalingAddress: "https://app.viam.com:443",
+  });
+
+  // Note that the pin supplied is a placeholder. Please change this to a valid pin you are using.
+  // local
+  const localClient = new VIAM.BoardClient(robot, "local");
+  const localReturnValue = await localClient.getGPIO("16");
+  console.log("local getGPIO return value:", localReturnValue);
+
+  // right
+  const rightClient = new VIAM.MotorClient(robot, "right");
+  const rightReturnValue = await rightClient.isMoving();
+  console.log("right isMoving return value:", rightReturnValue);
+
+  // left
+  const leftClient = new VIAM.MotorClient(robot, "left");
+  const leftReturnValue = await leftClient.isMoving();
+  console.log("left isMoving return value:", leftReturnValue);
+
+  // viam_base
+  const viamBaseClient = new VIAM.BaseClient(robot, "viam_base");
+  const viamBaseReturnValue = await viamBaseClient.isMoving();
+  console.log("viam_base isMoving return value:", viamBaseReturnValue);
+
+  // cam
+  const camClient = new VIAM.CameraClient(robot, "cam");
+  const camReturnValue = await camClient.getImage();
+  console.log("cam getImage return value:", camReturnValue);
+
+  console.log("Resources:");
+  console.log(await robot.resourceNames());
+}
+
+main().catch((error) => {
+  console.error("encountered an error:", error);
+});
+```
+
+Add the following line to your main function:
+
+```ts {class="line-numbers linkable-line-numbers"}
+button().disabled = false;
+```
+
+Your <file>main.ts</file> should now look like this:
+
+```ts {class="line-numbers linkable-line-numbers" data-line="16"}
+async function main() {
+  const host = "ADDRESS_FROM_VIAM_APP";
+
+  const robot = await VIAM.createRobotClient({
+    host,
+    credential: {
+      type: "api-key",
+      // Replace "<API-KEY>" (including brackets) with your machine's API key
+      payload: "<API-KEY>",
+    },
+    // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+    authEntity: "<API-KEY-ID>",
+    signalingAddress: "https://app.viam.com:443",
+  });
+
+  button().disabled = false;
+}
+
+main().catch((error) => {
+  console.error("encountered an error:", error);
+});
+```
+
+Refresh the browser page.
+When the connection to the rover is established, the `Click me` button will become enabled.
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -419,55 +509,6 @@ func main() {
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-Your main function should look similar to this but only the first few lines that connect to your rover are important for us:
-
-```ts {class="line-numbers linkable-line-numbers" data-line="1-12"}
-async function main() {
-  const host = "ADDRESS_FROM_VIAM_APP";
-
-  const robot = await VIAM.createRobotClient({
-    host,
-    credential: {
-      type: "api-key",
-      // Replace "<API-KEY>" (including brackets) with your machine's API key
-      payload: "<API-KEY>",
-    },
-    // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
-    authEntity: "<API-KEY-ID>",
-    signalingAddress: "https://app.viam.com:443",
-  });
-
-  // Note that the pin supplied is a placeholder. Please change this to a valid pin you are using.
-  // local
-  const localClient = new VIAM.BoardClient(robot, "local");
-  const localReturnValue = await localClient.getGPIO("16");
-  console.log("local getGPIO return value:", localReturnValue);
-
-  // right
-  const rightClient = new VIAM.MotorClient(robot, "right");
-  const rightReturnValue = await rightClient.isMoving();
-  console.log("right isMoving return value:", rightReturnValue);
-
-  // left
-  const leftClient = new VIAM.MotorClient(robot, "left");
-  const leftReturnValue = await leftClient.isMoving();
-  console.log("left isMoving return value:", leftReturnValue);
-
-  // viam_base
-  const viamBaseClient = new VIAM.BaseClient(robot, "viam_base");
-  const viamBaseReturnValue = await viamBaseClient.isMoving();
-  console.log("viam_base isMoving return value:", viamBaseReturnValue);
-
-  // cam
-  const camClient = new VIAM.CameraClient(robot, "cam");
-  const camReturnValue = await camClient.getImage();
-  console.log("cam getImage return value:", camReturnValue);
-
-  console.log("Resources:");
-  console.log(await robot.resourceNames());
-}
-```
-
 Underneath the `main` function, add the following function that initializes your rover base client and drives it in a square:
 
 {{< alert title="Important" color="note" >}}
@@ -507,11 +548,16 @@ function button() {
 
 Next, register a listener on the button you obtain from the `button` fuction and make it invoke the `moveInSquare` function.
 Place this code after the rover connection code:
-You can keep or remove the additional boilerplate code as you wish.
+
+```ts {class="line-numbers linkable-line-numbers"}
+button().onclick = async () => {
+  await moveInSquare(robot);
+};
+```
 
 Your main function should now look like this:
 
-```ts {class="line-numbers linkable-line-numbers" data-line="14-17"}
+```ts {class="line-numbers linkable-line-numbers" data-line="16-17"}
 async function main() {
   const host = "ADDRESS_FROM_VIAM_APP";
 

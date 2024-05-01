@@ -26,6 +26,12 @@ The camera API's [`GetImage()`](/components/camera/#getimage) API method now ret
 
 {{% /changelog %}}
 
+{{% changelog date="2024-04-30" color="removed" title="Removed status from Board API" %}}
+
+Viam has removed support for following Board API methods models: `Status()`, `AnalogStatus()`, and `DigitalInterruptStatus()`.
+
+{{% /changelog %}}
+
 {{% changelog date="2024-04-19" color="removed" title="Removed and replaced camera models" %}}
 
 Viam has removed support for following builtin camera models: `single_stream`, `dual_stream`, `align_color_depth_extrinsics`, and `align_color_depth_homography`.
@@ -368,7 +374,7 @@ Now when you invite collaborators to join your organization, you can assign perm
 - **Owner**: These members can see and edit [every tab on the machine page](/fleet/machines/#navigating-the-machine-page), as well as manage users in the app.
   This role is best for those on your team who are actively engineering and building machines.
 
-- **Operator**: These members can only see and use the [remote control tab](/fleet/machines/#control).
+- **Operator**: These members can only see and use the [remote control tab](/fleet/control/).
   This role is best for those on your team who are teleoperating or remotely controlling machines.
 
 For more information about assigning permissions and collaborating with others on Viam, see [Fleet Management](/fleet/).

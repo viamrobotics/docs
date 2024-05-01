@@ -21,7 +21,7 @@ To export your synced data using the Viam CLI, first [install the Viam CLI](/fle
 Then, to export data from the data management service in the cloud:
 
 1. Navigate to the [**DATA** page in the Viam app](https://app.viam.com/data/view).
-2. Below the **SEARCH** button in the **Filtering** panel, click **Copy Export Command** to copy the export command to the clipboard.
+2. Below the **SEARCH** button in the **Filters** panel, click **Copy Export Command** to copy the export command to the clipboard.
 
    ![The 'copy export command' button from the Viam app.](/data/copy_command.png)
 

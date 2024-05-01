@@ -450,6 +450,10 @@ END MARKETING CSS
   margin: 0.5rem 1rem;
 }
 
+.card-container {
+  margin-bottom: 2rem;
+}
+
 // Hover animations and colors
 
 .hover-card:hover {
@@ -1067,6 +1071,10 @@ img.frame {
   @include media-breakpoint-up(lg) {
       max-width: 90%;
   }
+}
+
+.gif {
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 992px) {

@@ -369,7 +369,11 @@ The following example captures data from the `ReadImage` method of a camera:
 
 ## View captured data
 
-To view captured data for a {{< glossary_tooltip term_id="part" text="machine part" >}}, click on the menu in the top right of its card and select **View captured data**.
+To view captured data for a machine, click on the data icon next to the **Save** button on the top right of the app.
+
+{{<imgproc src="/data/data-icon.png" resize="300x" declaredimensions=true alt="Data icon">}}
+
+To view captured data for a {{< glossary_tooltip term_id="part" text="machine part" >}}, click on the menu in the top right of its card or the menu in the machine resources list in the **Builder** menu and select **View captured data**.
 
 {{<imgproc src="/data/part-menu.png" resize="300x" declaredimensions=true alt="Machine menu with the options Rename, Restart part, View captured data, View setup instructions, View history, View debug configuration, and Delete machine">}}
 

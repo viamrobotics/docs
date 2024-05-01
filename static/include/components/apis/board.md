@@ -7,7 +7,6 @@ Method Name | Description
 [`SetGPIO`](/components/board/#setgpio) | Set a `GPIOPin` by its {{< glossary_tooltip term_id="pin-number" text="pin number" >}}.
 [`AnalogNames`](/components/board/#analognames) | Get the `name` of every [`Analog`](/components/board/#analogs).
 [`DigitalInterruptNames`](/components/board/#digitalinterruptnames) | Get the `name` of every [`DigitalInterrupt`](/components/board/#digital_interrupts).
-[`Status`](/components/board/#status) | Get the current status of this board.
 [`SetPWM`](/components/board/#setpwm) | Set the board to the indicated power mode.
 [`WriteAnalog`](/components/board/#writeanalog) | Write an analog value to a pin on the board.
 [`StreamTicks`](/components/board/#streamticks) | Start a stream of [`DigitalInterrupt`](/components/board/#digital_interrupts) ticks.

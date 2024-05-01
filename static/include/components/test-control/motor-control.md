@@ -1,4 +1,4 @@
-Once your motor is configured and connected, go to the [**CONTROL** tab](/fleet/machines/#control) and click on the motor's dropdown panel.
+Once your motor is configured and connected, go to the [**CONTROL** tab](/fleet/control/) and click on the motor's dropdown panel.
 Use the buttons to try turning your motor forwards or backwards at different power levels and check whether it moves as expected.
 
 ![Motor control panel.](/components/motor/control.png)

@@ -23,7 +23,7 @@ aliases:
 
 `viam-server` is the binary built from [Robot Development Kit](https://github.com/viamrobotics/rdk) that contains and manages communications between all Viam's built-in hardware drivers ({{< glossary_tooltip term_id="component" text="components" >}}) and software {{< glossary_tooltip term_id="service" text="services" >}}, connects your machine to the cloud, manages machine configuration, and manages dependencies including {{< glossary_tooltip term_id="module" text="modules" >}}.
 
-To use Viam software with your machine, install and run `viam-server` on the single board computer (SBC) or other computer that will run your machine and is connected to your hardware.
+To use Viam software with your machine, install and run `viam-server` on the single-board computer (SBC) or other computer that will run your machine and is connected to your hardware.
 Installing on a laptop or desktop computer is useful if you don't have an SBC available, or if you want to run a Viam [service](/services/) with your machine that requires more computing resources than are otherwise available on an SBC.
 
 For an overview of the Viam software platform, see [Viam in 3 minutes](/get-started/viam/).
@@ -47,9 +47,8 @@ If you are using one of the following boards, click on the card to follow the gu
 {{% card link="/get-started/installation/prepare/jetson-nano-setup/" class="small" %}}
 {{% card link="/get-started/installation/prepare/jetson-agx-orin-setup/" class="small" %}}
 {{% card link="/get-started/installation/prepare/pumpkin/" class="small" %}}
+{{% card link="/get-started/installation/prepare/odroid-c4-setup/" class="small" %}}
 {{< /cards >}}
-
-<br>
 
 Viam also provides a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured Robot Development Kit (RDK).
 If you are using a microcontroller, prepare your board using the following guide:
@@ -57,8 +56,6 @@ If you are using a microcontroller, prepare your board using the following guide
 {{< cards >}}
 {{% card link="/get-started/installation/prepare/microcontrollers" class="small" %}}
 {{< /cards >}}
-
-<br>
 
 Other SBCs such as the [RockPi S](https://wiki.radxa.com/RockpiS) and [Orange Pi Zero 2](https://orangepi.com/index.php?route=product/product&path=237&product_id=849) can run Viam with an experimental [periph.io](https://periph.io/) based [modular component](https://github.com/viam-labs/periph_board).
 
@@ -90,9 +87,7 @@ To install `viam-server` on a macOS computer:
 
    {{<imgproc src="/get-started/installation/setup-part.png" resize="900x" style="max-width:700px" declaredimensions=true alt="Machine setup alert in a newly created machine">}}
 
-   Click **View setup instructions** to open the setup instructions:
-
-   {{<imgproc src="/get-started/installation/macos-setup-instructions.png" resize="900x" style="max-width:700px" declaredimensions=true alt="Setup instructions">}}
+   Click **View setup instructions** to open the setup instructions.
 
 1. Select **Mac** as your system's OS and **RDK** as your RDK type.
 

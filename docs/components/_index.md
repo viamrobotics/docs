@@ -12,7 +12,7 @@ aliases:
 Viam provides support for a wide variety of hardware.
 A _component_ represents a physical piece of hardware in your {{< glossary_tooltip term_id="machine" text="machine" >}}, and the software that directly supports that hardware.
 
-{{< imgproc src="/viam/machine-components.png" alt="Diagram with various components and services on a smart machine. This machine employs the vision, navigation, and data capture services, which run within viam-server on the machine's single board computer." resize="650x" class="aligncenter" >}}
+{{< imgproc src="/viam/machine-components.png" alt="Diagram with various components and services on a smart machine. This machine employs the vision, navigation, and data capture services, which run within viam-server on the machine's single-board computer." resize="650x" class="aligncenter" >}}
 <br>
 
 Viam groups categories of hardware together, with a [standardized API](/build/program/apis/#component-apis) for all _{{< glossary_tooltip term_id="model" text="models" >}}_ in each grouping.

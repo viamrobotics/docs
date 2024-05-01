@@ -1,6 +1,6 @@
 ---
-title: "Add a Rover Fragment to your Machine"
-linkTitle: "Add a Rover Fragment to your Machine"
+title: "Configure your Viam Rover with a Fragment"
+linkTitle: "Configure your Viam Rover"
 weight: 20
 type: "docs"
 tags: ["rover", "tutorial"]
@@ -172,7 +172,10 @@ The fragment you added is read-only, but if you need to modify your rover's conf
 
 ## Next steps
 
+After you have configured your rover, follow one of these tutorials:
+
 {{< cards >}}
-{{% card link="/tutorials/get-started/try-viam-sdk" %}}
-{{% card link="/tutorials/services/try-viam-color-detection" %}}
+{{% card link="/tutorials/get-started/try-viam-sdk/" %}}
+{{% card link="/tutorials/services/try-viam-color-detection/" %}}
+{{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}

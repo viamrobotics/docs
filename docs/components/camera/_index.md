@@ -174,7 +174,7 @@ To get an image in the Go SDK, you first need to construct a `Stream` and then y
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCamera, err := camera.FromRobot(robot, "my_camera")
+myCamera, err := camera.FromRobot(machine, "my_camera")
 
 // gets the stream from a camera
 stream, err := myCamera.Stream(context.Background())
@@ -238,7 +238,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCamera, err := camera.FromRobot(robot, "my_camera")
+myCamera, err := camera.FromRobot(machine, "my_camera")
 
 images, metadata, err := myCamera.Images(context.Background())
 ```
@@ -297,7 +297,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCamera, err := camera.FromRobot(robot, "my_camera")
+myCamera, err := camera.FromRobot(machine, "my_camera")
 
 pointCloud, err := myCamera.NextPointCloud(context.Background())
 ```
@@ -343,7 +343,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCamera, err := camera.FromRobot(robot, "my_camera")
+myCamera, err := camera.FromRobot(machine, "my_camera")
 
 // gets the properties from a camera
 properties, err := myCamera.Properties(context.Background())
@@ -400,7 +400,7 @@ if geometries:
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCamera, err := camera.FromRobot(robot, "my_camera")
+myCamera, err := camera.FromRobot(machine, "my_camera")
 
 geometries, err := myCamera.Geometries(context.Background(), nil)
 
@@ -455,7 +455,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCamera, err := camera.FromRobot(robot, "my_camera")
+myCamera, err := camera.FromRobot(machine, "my_camera")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myCamera.DoCommand(context.Background(), command)
@@ -501,9 +501,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCamera, err := camera.FromRobot(robot, "my_camera")
+myCamera, err := camera.FromRobot(machine, "my_camera")
 
-err := myCamera.Close(ctx)
+err = myCamera.Close(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
@@ -518,7 +518,5 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 {{% card link="/tutorials/services/try-viam-color-detection" %}}
 {{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}
-
-<br>
 
 {{< snippet "social.md" >}}

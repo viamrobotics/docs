@@ -145,7 +145,7 @@ positions = await my_gantry.get_position()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
 
 ```go
-myGantry, err := gantry.FromRobot(robot, "my_gantry")
+myGantry, err := gantry.FromRobot(machine, "my_gantry")
 
 // Get the current positions of the axes of the gantry in millimeters.
 position, err := myGantry.Position(context.Background(), nil)
@@ -205,12 +205,12 @@ await my_gantry.move_to_position(
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
 
 ```go
-myGantry, err := gantry.FromRobot(robot, "my_gantry")
+myGantry, err := gantry.FromRobot(machine, "my_gantry")
 
 // Create a list of positions for the axes of the gantry to move to. Assume in this example that the gantry is multi-axis, with 3 axes.
-examplePositions = []float64{1, 2, 3}
+examplePositions := []float64{1, 2, 3}
 
-exampleSpeeds = []float64{3, 9, 12}
+exampleSpeeds := []float64{3, 9, 12}
 
 // Move the axes of the gantry to the positions specified.
 myGantry.MoveToPosition(context.Background(), examplePositions, exampleSpeeds, nil)
@@ -259,7 +259,7 @@ await my_gantry.home()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
 
 ```go
-myGantry, err := gantry.FromRobot(robot, "my_gantry")
+myGantry, err := gantry.FromRobot(machine, "my_gantry")
 
 myGantry.Home(context.Background(), nil)
 ```
@@ -308,7 +308,7 @@ lengths_mm = await my_gantry.get_lengths()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
 
 ```go
-myGantry, err := gantry.FromRobot(robot, "my_gantry")
+myGantry, err := gantry.FromRobot(machine, "my_gantry")
 
 // Get the lengths of the axes of the gantry in millimeters.
 lengths_mm, err := myGantry.Lengths(context.Background(), nil)
@@ -358,7 +358,7 @@ await my_gantry.stop()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
 
 ```go
-myGantry, err := gantry.FromRobot(robot, "my_gantry")
+myGantry, err := gantry.FromRobot(machine, "my_gantry")
 
 // Stop all motion of the gantry. It is assumed that the gantry stops immediately.
 myGantry.Stop(context.Background(), nil)
@@ -410,7 +410,7 @@ print(my_gantry.is_moving())
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
 
 ```go
-myGantry, err := gantry.FromRobot(robot, "my_gantry")
+myGantry, err := gantry.FromRobot(machine, "my_gantry")
 
 // Stop all motion of the gantry. It is assumed that the gantry stops immediately.
 myGantry.Stop(context.Background(), nil)
@@ -467,7 +467,7 @@ if geometries:
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGantry, err := gantry.FromRobot(robot, "my_gantry")
+myGantry, err := gantry.FromRobot(machine, "my_gantry")
 
 geometries, err := myGantry.Geometries(context.Background(), nil)
 
@@ -522,7 +522,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGantry, err := gantry.FromRobot(robot, "my_gantry")
+myGantry, err := gantry.FromRobot(machine, "my_gantry")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myGantry.DoCommand(context.Background(), command)
@@ -568,9 +568,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGantry, err := gantry.FromRobot(robot, "my_gantry")
+myGantry, err := gantry.FromRobot(machine, "my_gantry")
 
-err := myGantry.Close(ctx)
+err = myGantry.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
