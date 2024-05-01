@@ -184,7 +184,7 @@ For specific information on how to configure each supported component type, see 
 When you configure a component on the **CONFIGURE** tab, it will also appear on the **CONTROL** tab which gives you an interface to test and interact with it.
 The **Code sample** page on the **CONNECT** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/build/program/apis/).
 
-<!-- TODO: R2D2 need to update this section with updated control tab view { {<gif webm_src="/manage/control.webm" mp4_src="/manage/control.mp4" alt="Using the control tab">} } -->
+<!-- TODO: R2D2 need to update this section with updated control tab view { {<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="Using the control tab">} } -->
 
 {{% /alert %}}
 

@@ -908,15 +908,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ## Test the motion service
 
-You can test motion on your machine from the [**CONTROL** tab](/fleet/machines/#control).
+You can test motion on your machine from the [**CONTROL** tab](/fleet/control/).
 
 ![Motion card on the Control tab](/mobility/motion/motion-rc-card.png)
 
-Click on the **Move** button to issue `MoveOnMap()` requests.
+Enter x and y coordinates to move your machine to, then click the **Move** button to issue a `MoveOnMap()` request.
 
 {{< alert title="Info" color="info" >}}
 
-The `plan_deviation_m` for `MoveOnMap()` on calls issues from the **CONTROL** tab is 0.5 m.
+The `plan_deviation_m` for `MoveOnMap()` on calls issued from the **CONTROL** tab is 0.5 m.
 
 {{< /alert >}}
 

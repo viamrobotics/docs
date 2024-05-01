@@ -5,7 +5,7 @@ weight: 10
 type: "docs"
 description: "A machine is an organizational concept, consisting of either one or multiple parts working closely together to complete tasks."
 tags: ["fleet management", "cloud", "app"]
-images: ["/manage/control.gif"]
+images: ["/fleet/app-usage/create-machine.png"]
 aliases:
   - /fleet/robots/
   - /manage/fleet/machines/
@@ -71,36 +71,32 @@ To see the history of the configuration of a machine part, click on **History** 
 For more information, see the [configuration documentation](/build/configure/#the-configure-tab).
 
 {{< alert title="Tip" color="tip" >}}
-If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your machine](/build/configure/).
+If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your fleet](/fleet/configure-a-fleet/).
 {{< /alert >}}
 
 ### CONTROL
 
-Once you have configured components and services for your machine, you can visually test and remotely operate them from the **CONTROL** tab in the [Viam app](https://app.viam.com).
-For example, if you have configured a base with wheels, you can control your machine's movement with an arrow pad and fields to change base’s speed.
-If you have configured a camera component, a window in the **CONTROL** tab displays the camera output.
+Once you have configured components and services for your machine, you can visually test and remotely operate them from the **CONTROL** tab in the [Viam app](https://app.viam.com) or the [Viam mobile app](/fleet/#the-viam-mobile-app).
 
-If you use remote control in the [Viam app](https://app.viam.com) UI, all communication to the machine uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
-For local communication between [parts](/build/configure/parts/#machine-parts) Viam uses gRPC or WebRTC.
+For more information, see [Control machines](/fleet/control/).
 
-{{<gif webm_src="/manage/control.webm" mp4_src="/manage/control.mp4" alt="Using the control tab" max-width="800px">}}
-
-<br>
-
-You can also access the control interface using the [Viam mobile app](/fleet/#the-viam-mobile-app), which you can find on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
-The Viam mobile app gives you the ability to monitor and operate machines in your fleet.
-You can control each machine component, watch any live camera feeds, adjust components' runtime parameters, and switch between controllable components just as you would in the Viam app.
-
-{{<gif webm_src="/manage/mobile-app-control.webm" mp4_src="/manage/mobile-app-control.mp4" alt="Using the control interface under the locations tab on the Viam mobile app" max-width="300px">}}
+{{<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="Using the control tab" max-width="800px">}}
 
 ### LOGS
 
 To make debugging issues with your machines easier, each machine automatically sends its logs to the cloud.
 You can access your logs from the **LOGS** tab in the [Viam app](https://app.viam.com) and filter your logs for specific keywords or log levels:
 
-{{<gif webm_src="/manage/log-filtering.webm" mp4_src="/manage/log-filtering.mp4" alt="Filter logs by term of log level in the UI" max-width="800px">}}
+{{<gif webm_src="/fleet/log-filtering.webm" mp4_src="/fleet/log-filtering.mp4" alt="Filter logs by term of log level in the UI" max-width="800px">}}
 
 You can click on the part names in the left-hand menu to switch logs between parts. You can also change your timestamp format to ISO or Local depending on your preference.
+
+To view logs in the Viam mobile app:
+
+1. Select an organization clicking on the menu icon in the top left corner and tapping an organization.
+2. Tap the **Locations** tab and tap on a location and then on a machine.
+3. Click the menu button marked "**...**" in the upper right corner.
+4. Click **View Logs**.
 
 ### CONNECT
 
