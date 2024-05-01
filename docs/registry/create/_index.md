@@ -1123,7 +1123,7 @@ _Add instructions here for any requirements._
 ## Configure your <INSERT MODEL NAME> <INSERT API NAME>
 
 > [!NOTE]
-> Before configuring your <INSERT API NAME>, you must [create a machine](/manage/fleet/machines/#add-a-new-machine).
+> Before configuring your <INSERT API NAME>, you must [create a machine](https://docs.viam.com/fleet/machines/#add-a-new-machine).
 
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com/).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
@@ -1139,7 +1139,7 @@ On the new component panel, copy and paste the following attribute template into
 ```
 
 > [!NOTE]
-> For more information, see [Configure a Machine](/build/configure/).
+> For more information, see [Configure a Machine](https://docs.viam.com/build/configure/).
 
 ### Attributes
 

@@ -23,7 +23,7 @@ You can capture and monitor the following metrics about the performance of indiv
 
 ## Requirements
 
-To capture data from a machine, you need to [create a machine in Viam](/manage/fleet/machines/#add-a-new-machine) and follow the setup instructions to install `viam-server` and connect it to the Viam app.
+To capture data from a machine, you need to [create a machine in Viam](/fleet/machines/#add-a-new-machine) and follow the setup instructions to install `viam-server` and connect it to the Viam app.
 
 {{< alert title="Note" color="note" >}}
 You must run `viam-server` with `sudo` to monitor machine performance metrics.
