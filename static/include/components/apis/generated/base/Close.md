@@ -1,0 +1,19 @@
+### Close
+
+\{\{< tabs >}}
+\{\{% tab name="Python" %}\}
+
+Python Method: close
+
+Safely shut down the resource and prevent further use.
+
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.close).
+
+``` python {class="line-numbers linkable-line-numbers"}
+await component.close()
+
+```
+
+\{\{% /tab %}}
+

@@ -1,11 +1,11 @@
-### GetEndPosition
+### GetJointPositions
 
 \{\{< tabs >}}
 \{\{% tab name="Python" %}\}
 
-Python Method: get_end_position
+Python Method: get_joint_positions
 
-Get the current position of the end of the arm expressed as a Pose.
+Get the JointPositions representing the current position of the arm.
 
 **Parameters:**
 
@@ -15,15 +15,15 @@ Get the current position of the end of the arm expressed as a Pose.
 
 **Returns:**
 
-- [(viam.components.arm.Pose)](INSERT RETURN TYPE LINK): The location and orientation of the arm described as a Pose.
+- [(viam.proto.component.arm.JointPositions)](INSERT RETURN TYPE LINK): The current JointPositions for the arm.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_end_position).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_joint_positions).
 
 ``` python {class="line-numbers linkable-line-numbers"}
 my_arm = Arm.from_robot(robot=robot, name="my_arm")
 
-# Get the end position of the arm as a Pose.
-pos = await my_arm.get_end_position()
+# Get the current position of each joint on the arm as JointPositions.
+pos = await my_arm.get_joint_positions()
 
 ```
 
@@ -31,7 +31,7 @@ pos = await my_arm.get_end_position()
 
 \{\{% tab name="Go" %\}\}
 
-Go Method: EndPosition
+Go Method: JointPositions
 
 **Parameters:**
 
@@ -40,7 +40,7 @@ Go Method: EndPosition
 
 **Returns:**
 
-- `spatialmath`[(Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/spatialmath#spatialmath):
+- `pb`[(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#pb):
 - [(error)](<INSERT PARAM TYPE LINK>)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
@@ -49,7 +49,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 \{\{% tab name="Flutter" %}\}
 
-Flutter Method: getEndPosition
+Flutter Method: getJointPositions
 
 **Parameters:**
 
@@ -57,7 +57,7 @@ Flutter Method: getEndPosition
 - `extra`- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 - `name`
 
-For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.arm/ArmServiceClient/getEndPosition.html).
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.arm/ArmServiceClient/getJointPositions.html).
 
 \{\{% /tab %}}
 

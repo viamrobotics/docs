@@ -1,11 +1,11 @@
-### GetEndPosition
+### PWMFrequency
 
 \{\{< tabs >}}
 \{\{% tab name="Python" %}\}
 
-Python Method: get_end_position
+Python Method: get_pwm_frequency
 
-Get the current position of the end of the arm expressed as a Pose.
+Get the PWM frequency of the pin.
 
 **Parameters:**
 
@@ -15,15 +15,18 @@ Get the current position of the end of the arm expressed as a Pose.
 
 **Returns:**
 
-- [(viam.components.arm.Pose)](INSERT RETURN TYPE LINK): The location and orientation of the arm described as a Pose.
+- [(int)](INSERT RETURN TYPE LINK): The PWM frequency.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_end_position).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.GPIOPinClient.get_pwm_frequency).
 
 ``` python {class="line-numbers linkable-line-numbers"}
-my_arm = Arm.from_robot(robot=robot, name="my_arm")
+my_board = Board.from_robot(robot=robot, name="my_board")
 
-# Get the end position of the arm as a Pose.
-pos = await my_arm.get_end_position()
+# Get the GPIOPin with pin number 15.
+pin = await my_board.gpio_pin_by_name(name="15")
+
+# Get the PWM frequency of this pin.
+freq = await pin.get_pwm_frequency()
 
 ```
 
@@ -31,7 +34,7 @@ pos = await my_arm.get_end_position()
 
 \{\{% tab name="Go" %\}\}
 
-Go Method: EndPosition
+Go Method: PWMFreq
 
 **Parameters:**
 
@@ -40,24 +43,25 @@ Go Method: EndPosition
 
 **Returns:**
 
-- `spatialmath`[(Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/spatialmath#spatialmath):
+- [(uint)](<INSERT PARAM TYPE LINK>)
 - [(error)](<INSERT PARAM TYPE LINK>)
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
 \{\{% /tab %}}
 
 \{\{% tab name="Flutter" %}\}
 
-Flutter Method: getEndPosition
+Flutter Method: pWMFrequency
 
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 - `extra`- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `name`
+- `name`- `pin` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `pin`
 
-For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.arm/ArmServiceClient/getEndPosition.html).
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.board/BoardServiceClient/pWMFrequency.html).
 
 \{\{% /tab %}}
 

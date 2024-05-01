@@ -1103,7 +1103,7 @@ def write_markdown(type, names, methods):
                     proto = row.split(',')[1]
                     py_method_name = row.split(',')[2]
                     go_method_name = row.split(',')[3]
-                    flutter_method_name = row.split(',')[4]
+                    flutter_method_name = row.split(',')[4].rstrip()
 
                     ## Allow setting protos with 0 sdk method maps, to allow us to disable writing MD
                     ## for specific protos as needed, if needed:
@@ -1303,7 +1303,7 @@ def write_markdown(type, names, methods):
 
                             output_file.write("\{\{% /tab %}}\n\n")
 
-                        if go_method_name:
+                        if go_method_name and go_method_name != "Close":
                             output_file.write('\{\{% tab name="Go" %\}\}\n\n')
                             output_file.write('Go Method: ' + go_method_name + '\n\n')
 

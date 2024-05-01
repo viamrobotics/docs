@@ -28,7 +28,6 @@ base,GetProperties,get_properties,Properties,getProperties
 base,Close,close,Close,
 
 ## Board
-board,Status,,Status,status
 board,SetGPIO,set,Set,setGPIO
 board,GetGPIO,get,Get,getGPIO
 ## HACK: Proto is PWM but we call it GetPWM in docs. Upstream likely to change to match soonish:
@@ -37,7 +36,8 @@ board,SetPWM,set_pwm,SetPWM,setPWM
 board,PWMFrequency,get_pwm_frequency,PWMFreq,pWMFrequency
 board,SetPWMFrequency,set_pwm_frequency,SetPWMFreq,setPWMFrequency
 board,DoCommand,do_command,,doCommand
-board,ReadAnalogReader,analog_reader_by_name,AnalogReaderByName,readAnalogReader
+## SG: below may have no proto: does it map to Read?
+board,ReadAnalogReader,analog_reader_by_name,AnalogByName,readAnalogReader
 board,WriteAnalog,write_analog,WriteAnalog,writeAnalog
 board,GetDigitalInterruptValue,digital_interrupt_by_name,DigitalInterruptByName,,
 board,StreamTicks,,StreamTicks,streamTicks
@@ -49,11 +49,6 @@ board,Value,value,Value,getDigitalInterruptValue
 board,AnalogReaderNames,analog_reader_names,AnalogReaderNames,
 board,DigitalInterruptNames,digital_interrupt_names,DigitalInterruptNames,
 board,GPIOPinByName,gpio_pin_by_name,GPIOPinByName,
-## TODO: Better parse-by-interface to capture Go methods like Tick (DigitalInterrupt)
-## UPSTREAM: Go SDK docs use informal(?) styling for some DigitalInterrupt methods:
-board,Tick,,Tick,
-board,AddCallback,,AddCallback,
-board,RemoveCallback,,RemoveCallback,
 board,Reconfigure,,Reconfigure,
 ## HACK: No proto for close, manually mapping:
 board,Close,close,Close,
