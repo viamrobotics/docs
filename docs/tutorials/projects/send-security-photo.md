@@ -219,6 +219,7 @@ from viam.components.camera import Camera
 from viam.rpc.dial import Credentials, DialOptions
 from viam.services.vision import VisionClient, VisModelConfig, \
     VisModelType, Detection
+from viam.media.utils.pil import viam_to_pil_image
 
 # Set environment variables. You can get them from your machine's CONNECT tab
 api_key = os.getenv('API_KEY') or ''
@@ -255,7 +256,7 @@ async def main():
             # Convert to PIL image
             pil_image = viam_to_pil_image(img)
             # Change this path to your own
-            pil_img.save('/yourpath/foundyou.jpeg')
+            pil_image.save('/yourpath/foundyou.jpeg')
             # Yagmail section
             # Create a yagmail.SMTP instance
             # to initialize the server connection.
