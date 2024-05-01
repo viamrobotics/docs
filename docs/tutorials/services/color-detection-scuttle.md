@@ -104,7 +104,7 @@ To determine the color value from the actual cam component image, you can use a 
 
 ### Test your color detector
 
-You can test your detector from the [**CONTROL** tab](/fleet/control):
+You can test your detector from the [**CONTROL** tab](/fleet/control/):
 
 1. Configure a [transform camera](/components/camera/transform/) with the following attributes:
 
@@ -190,6 +190,7 @@ from viam.services.vision import VisionClient
 from viam.components.camera import Camera
 from viam.components.base import Base
 from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
+
 
 async def connect():
     opts = RobotClient.Options.with_api_key(

@@ -150,8 +150,8 @@ The Python SDK provides the helper functions `viam_to_pil_image` and `pil_to_via
 For example:
 
 ```python {class="line-numbers linkable-line-numbers"}
-## from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
-# < Add above import to the beginning of your code >
+# from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
+# < ADD ABOVE IMPORT TO BEGINNING OF PROGRAM >
 
 # Get the ViamImage from your camera.
 frame = await my_camera.get_image()
