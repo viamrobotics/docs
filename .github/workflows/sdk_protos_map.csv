@@ -48,11 +48,6 @@ board,Value,value,Value,getDigitalInterruptValue
 board,AnalogReaderNames,analog_reader_names,AnalogReaderNames,
 board,DigitalInterruptNames,digital_interrupt_names,DigitalInterruptNames,
 board,GPIOPinByName,gpio_pin_by_name,GPIOPinByName,
-## TODO: Better parse-by-interface to capture Go methods like Tick (DigitalInterrupt)
-## UPSTREAM: Go SDK docs use informal(?) styling for some DigitalInterrupt methods:
-board,Tick,,Tick,
-board,AddCallback,,AddCallback,
-board,RemoveCallback,,RemoveCallback,
 board,Reconfigure,,Reconfigure,
 ## HACK: No proto for close, manually mapping:
 board,Close,close,Close,
