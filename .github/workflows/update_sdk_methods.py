@@ -915,12 +915,15 @@ def parse(type, names):
                             and not regex.search('info_', tag.text))
 
                         this_method_dict["parameters"] = {}
-                        this_method_parameters_dict = {}
                         this_method_dict["returns"] = {}
-                        this_method_returns_dict = {}
 
                         # Parse parameters:
                         for parameter_tag in parameters_soup:
+
+                            ## Create new empty dictionary this_method_parameters_dict to house all parameter
+                            ## keys for this method, to allow for multiple parameters. Also resets the
+                            ## previous parameter's data when looping through multiple parameters:
+                            this_method_parameters_dict = {}
 
                             param_name = parameter_tag.get('id')
                             this_method_parameters_dict["param_link"] = parameter_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
@@ -951,6 +954,12 @@ def parse(type, names):
                                 and not regex.search('info_', tag.text))
 
                             for return_tag in returns_soup:
+
+                                ## Create new empty dictionary this_method_parameters_dict to house all parameter
+                                ## keys for this method, to allow for multiple parameters. Also resets the
+                                ## previous parameter's data when looping through multiple parameters:
+                                this_method_returns_dict = {}
+
                                 return_name = return_tag.get('id')
                                 this_method_returns_dict["return_link"] = return_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
 
