@@ -1,18 +1,16 @@
 ### MoveToJointPositions
 
-\{\{< tabs >}}
-\{\{% tab name="Python" %}\}
-
-Python Method: move_to_joint_positions
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 Move each joint on the arm to the corresponding angle specified in positions.
 
 **Parameters:**
 
-- `positions` [(viam.proto.component.arm.JointPositions)](https://python.viam.dev/autoapi/viam/../proto/component/arm/index.html#viam.proto.component.arm.JointPositions) (required) The destination JointPositions for the arm.:
-- `positions`- `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional) Extra options to pass to the underlying RPC call.:
-- `extra`- `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional) An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.:
-- `timeout`
+- `positions` [(viam.proto.component.arm.JointPositions)](https://python.viam.dev/autoapi/viam/../proto/component/arm/index.html#viam.proto.component.arm.JointPositions) (required): The destination JointPositions for the arm.
+- `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.move_to_joint_positions).
 
@@ -32,11 +30,8 @@ await my_arm.move_to_joint_positions(positions=jointPos)
 
 ```
 
-\{\{% /tab %}}
-
-\{\{% tab name="Go" %\}\}
-
-Go Method: MoveToJointPositions
+{{% /tab %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -50,22 +45,17 @@ Go Method: MoveToJointPositions
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
-\{\{% /tab %}}
-
-\{\{% tab name="Flutter" %}\}
-
-Flutter Method: moveToJointPositions
+{{% /tab %}}
+{{% tab name="Flutter" %}}
 
 **Parameters:**
 
 - `extra` [(JointPositions)](https://flutter.viam.dev/viam_protos.component.arm/JointPositions-class.html) (required):
-- `extra`- `name` [(JointPositions)](https://flutter.viam.dev/viam_protos.component.arm/JointPositions-class.html) (required):
-- `name`- `positions` [(JointPositions)](https://flutter.viam.dev/viam_protos.component.arm/JointPositions-class.html) (required):
-- `positions`
+- `name` [(JointPositions)](https://flutter.viam.dev/viam_protos.component.arm/JointPositions-class.html) (required):
+- `positions` [(JointPositions)](https://flutter.viam.dev/viam_protos.component.arm/JointPositions-class.html) (required):
+
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.arm/ArmServiceClient/moveToJointPositions.html).
 
-\{\{% /tab %}}
-
-\{\{< /tabs >}}
-
+{{% /tab %}}
+{{< /tabs >}}

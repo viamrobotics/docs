@@ -1,16 +1,14 @@
 ### ReadAnalogReader
 
-\{\{< tabs >}}
-\{\{% tab name="Python" %}\}
-
-Python Method: analog_reader_by_name
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 Get an AnalogReader by name.
 
 **Parameters:**
 
-- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) (required) Name of the analog reader to be retrieved.:
-- `name`
+- `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) (required): Name of the analog reader to be retrieved.
+
 
 **Returns:**
 
@@ -26,9 +24,31 @@ reader = await my_board.analog_reader_by_name(name="my_example_analog_reader")
 
 ```
 
-\{\{% /tab %}}
+{{% /tab %}}
+{{% tab name="Go" %}}
 
-\{\{% tab name="Go" %\}\}
+**Parameters:**
 
-Go Method: AnalogReaderByName
+- `name`[(string)](<INSERT PARAM TYPE LINK>)
 
+**Returns:**
+
+- [(Analog)](<INSERT PARAM TYPE LINK>)
+- [(error)](<INSERT PARAM TYPE LINK>)
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `analogReaderName` [(Struct)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `boardName` [(Struct)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `extra` [(Struct)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.board/BoardServiceClient/readAnalogReader.html).
+
+{{% /tab %}}
+{{< /tabs >}}

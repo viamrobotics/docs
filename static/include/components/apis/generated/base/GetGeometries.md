@@ -1,17 +1,15 @@
 ### GetGeometries
 
-\{\{< tabs >}}
-\{\{% tab name="Python" %}\}
-
-Python Method: get_geometries
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 Get all geometries associated with the Component, in their current configuration, in the [frame](/mobility/frame-system/) of the Component.
 
 **Parameters:**
 
-- `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional) Extra options to pass to the underlying RPC call.:
-- `extra`- `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional) An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.:
-- `timeout`
+- `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
 
 **Returns:**
 
@@ -28,21 +26,16 @@ if geometries:
 
 ```
 
-\{\{% /tab %}}
-
-\{\{% tab name="Flutter" %}\}
-
-Flutter Method: getGeometries
+{{% /tab %}}
+{{% tab name="Flutter" %}}
 
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `extra`- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `name`
+- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.base/BaseServiceClient/getGeometries.html).
 
-\{\{% /tab %}}
-
-\{\{< /tabs >}}
-
+{{% /tab %}}
+{{< /tabs >}}

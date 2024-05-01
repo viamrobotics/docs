@@ -1,19 +1,17 @@
 ### SetPower
 
-\{\{< tabs >}}
-\{\{% tab name="Python" %}\}
-
-Python Method: set_power
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 Set the linear and angular velocity of the Base When linear is 0, the the base will spin. When angular is 0, the the base will move in a straight line. When both linear and angular are 0, the base will stop. When linear and angular are both nonzero, the base will move in an arc, with a tighter radius if angular power is greater than linear power.
 
 **Parameters:**
 
-- `linear` [(viam.components.base.Vector3)](<INSERT PARAM TYPE LINK>) (required) The linear component. Only the Y component is used for wheeled base. Positive implies forwards.:
-- `linear`- `angular` [(viam.components.base.Vector3)](<INSERT PARAM TYPE LINK>) (required) The angular component. Only the Z component is used for wheeled base. Positive turns left; negative turns right.:
-- `angular`- `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional) Extra options to pass to the underlying RPC call.:
-- `extra`- `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional) An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.:
-- `timeout`
+- `linear` [(viam.components.base.Vector3)](<INSERT PARAM TYPE LINK>) (required): The linear component. Only the Y component is used for wheeled base. Positive implies forwards.
+- `angular` [(viam.components.base.Vector3)](<INSERT PARAM TYPE LINK>) (required): The angular component. Only the Z component is used for wheeled base. Positive turns left; negative turns right.
+- `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_power).
 
@@ -46,11 +44,8 @@ await my_base.set_power(
 
 ```
 
-\{\{% /tab %}}
-
-\{\{% tab name="Go" %\}\}
-
-Go Method: SetPower
+{{% /tab %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -65,23 +60,18 @@ Go Method: SetPower
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
-\{\{% /tab %}}
-
-\{\{% tab name="Flutter" %}\}
-
-Flutter Method: setPower
+{{% /tab %}}
+{{% tab name="Flutter" %}}
 
 **Parameters:**
 
 - `angular` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `angular`- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `extra`- `linear` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `linear`- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `name`
+- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `linear` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.base/BaseServiceClient/setPower.html).
 
-\{\{% /tab %}}
-
-\{\{< /tabs >}}
-
+{{% /tab %}}
+{{< /tabs >}}

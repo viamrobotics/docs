@@ -602,6 +602,36 @@ def parse(type, names):
                                 ## in its entirety to the go_methods dictionary by type (like 'component'), by resource (like 'arm'),
                                 ## using the method_name as key:
                                 go_methods[type][resource][method_name] = this_method_dict
+
+                        ## Go SDK docs for each interface omit inherited functions. If the resource being considered inherits from
+                        ## resource.Resource (currently all components and services do, and no app or robot interfaces do), then add
+                        ## the three inherited methods manually: Reconfigure(), DoCommand(), Close()
+                        ## (Match only to instances that are preceded by a tab char, or we'll catch ResourceByName erroneously):
+                        if '\tresource.Resource' in resource_interface.text:
+                            go_methods[type][resource]['Reconfigure'] = {'proto': 'Reconfigure', \
+                                'description': 'Reconfigure must reconfigure the resource atomically and in place. If this cannot be guaranteed, then usage of AlwaysRebuild or TriviallyReconfigurable is permissible.', \
+                                'usage': 'Reconfigure(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, deps <a href="#Dependencies">Dependencies</a>, conf <a href="#Config">Config</a>) <a href="/builtin#error">error</a>', \
+                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
+                            go_methods[type][resource]['DoCommand'] = {'proto': 'DoCommand', \
+                                'description': 'DoCommand sends/receives arbitrary data.', \
+                                'usage': 'DoCommand(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, cmd map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
+                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
+                            go_methods[type][resource]['Close'] = {'proto': 'Close', \
+                                'description': 'Close must safely shut down the resource and prevent further use. Close must be idempotent. Later reconfiguration may allow a resource to be "open" again.', \
+                                'usage': 'Close(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) <a href="/builtin#error">error</a>', \
+                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
+                            
+                        ## Similarly, if the resource being considered inherits from resource.Actuator (Servo, for example),
+                        ## then add the two inherited methods manually: IsMoving() and Stop():
+                        if '\tresource.Actuator' in resource_interface.text:
+                            go_methods[type][resource]['IsMoving'] = {'proto': 'IsMoving', \
+                                'description': 'IsMoving returns whether the resource is moving or not', \
+                                'usage': 'IsMoving(<a href="/context">context</a>.<a href="/context#Context">Context</a>) (<a href="/builtin#bool">bool</a>, <a href="/builtin#error">error</a>)', \
+                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Actuator'}
+                            go_methods[type][resource]['Stop'] = {'proto': 'Stop', \
+                                'description': 'Stop stops all movement for the resource', \
+                                'usage': 'Stop(<a href="/context">context</a>.<a href="/context#Context">Context</a>, map[<a href="/builtin#string">string</a>]interface{}) <a href="/builtin#error">error</a>', \
+                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Actuator'}
                 
                 ## We have finished looping through all scraped Go methods. Write the go_methods dictionary
                 ## in its entirety to the all_methods dictionary using "go" as the key:
@@ -983,14 +1013,14 @@ def parse_method_usage(usage_string):
             param_type_link = "https://pkg.go.dev/builtin#error"
         else:
             type_name = parts[-1].strip('` ')  # Remove backticks and spaces
-            print(f"type_name: {type_name}")
+            # print(f"type_name: {type_name}")
 
             param_type = ' '.join(parts[:-1]).strip('() ')  # Remove parentheses and spaces
-            print(f"param_type: {param_type}")
+            # print(f"param_type: {param_type}")
 
             # Extracting the type link from the type string
             type_link = regex.search(r'<a href="([^"]+)">', param_type)
-            print(f"type_link extracted: {type_link}")
+            # print(f"type_link extracted: {type_link}")
             if type_link:
                 param_type_link = type_link.group(1)
             else:
@@ -1136,11 +1166,10 @@ def write_markdown(type, names, methods):
                             for line in open(proto_override_file, 'r', encoding='utf-8'):
                                output_file.write(line)
 
-                        output_file.write('\{\{< tabs >}}\n')
+                        output_file.write('{{< tabs >}}\n')
 
                         if py_method_name:
-                            output_file.write('\{\{% tab name="Python" %}\}\n\n')
-                            output_file.write('Python Method: ' + py_method_name + '\n\n')
+                            output_file.write('{{% tab name="Python" %}}\n\n')
 
                             ## Check for method overrides.
                             ## This check supports additional filename switches, to control whether this
@@ -1234,16 +1263,13 @@ def write_markdown(type, names, methods):
                                     else:
                                         output_file.write(' (required)')
 
+                                    output_file.write(':')
+
                                     if param_description:
                                         output_file.write(f" {param_description}")
-
-                                    output_file.write(':')
                                                                 
                                     # line break for parameters list
                                     output_file.write('\n')
-
-                                    param_type = methods['python'][type][resource][py_method_name]['parameters'][parameter]['param_type']
-                                    output_file.write('- `' + parameter + '`')
 
                                 output_file.write('\n')
                             
@@ -1301,11 +1327,10 @@ def write_markdown(type, names, methods):
                                 for line in open(method_override_file_path, 'r', encoding='utf-8'):
                                     output_file.write(line)
 
-                            output_file.write("\{\{% /tab %}}\n\n")
+                            output_file.write("{{% /tab %}}\n")
 
                         if go_method_name and go_method_name != "Close":
-                            output_file.write('\{\{% tab name="Go" %\}\}\n\n')
-                            output_file.write('Go Method: ' + go_method_name + '\n\n')
+                            output_file.write('{{% tab name="Go" %}}\n\n')
 
                             ## Check for method overrides.
                             ## This check supports additional filename switches, to control whether this
@@ -1353,12 +1378,12 @@ def write_markdown(type, names, methods):
 
                                 method_usage = methods['go'][type][resource][go_method_name]['usage']
 
-                                print("USAGE STRING:")
-                                print(method_usage)
+                                # print("USAGE STRING:")
+                                # print(method_usage)
 
                                 usage_string = method_usage.split('(')
-                                print("SPLIT USAGE STRING")
-                                print(usage_string)
+                                # print("SPLIT USAGE STRING")
+                                # print(usage_string)
 
                                 if len(usage_string) == 3:
                                     parameters = usage_string[1]
@@ -1366,8 +1391,8 @@ def write_markdown(type, names, methods):
 
                                 else:
                                     usage_string = usage_string[1].split(') ')
-                                    print("SPLIT USAGE STRING WITH ONE RETURN")
-                                    print(usage_string)
+                                    # print("SPLIT USAGE STRING WITH ONE RETURN")
+                                    # print(usage_string)
 
                                     if usage_string[0] != '':
                                         parameters = usage_string[0]
@@ -1377,8 +1402,7 @@ def write_markdown(type, names, methods):
                                         returns = usage_string[1]
 
                                 if parameters:
-
-                                    print(f"Parameters: {parameters}")
+                                    # print(f"Parameters: {parameters}")
 
                                     # Parse and format parameters
                                     output_file.write('**Parameters:**\n\n')
@@ -1391,7 +1415,7 @@ def write_markdown(type, names, methods):
 
                                 if returns:
 
-                                    print(f"Returns: {returns}")
+                                    # print(f"Returns: {returns}")
 
                                     # Parse and format returns
                                     output_file.write('\n**Returns:**\n\n')
@@ -1419,11 +1443,10 @@ def write_markdown(type, names, methods):
                                 for line in open(method_override_file_path, 'r', encoding='utf-8'):
                                     output_file.write(line)
 
-                            output_file.write("\{\{% /tab %}}\n\n")
+                            output_file.write("{{% /tab %}}\n")
 
                         if flutter_method_name:
-                            output_file.write('\{\{% tab name="Flutter" %}\}\n\n')
-                            output_file.write('Flutter Method: ' + flutter_method_name + '\n\n')
+                            output_file.write('{{% tab name="Flutter" %}}\n\n')
 
                             ## Check for method overrides.
                             ## This check supports additional filename switches, to control whether this
@@ -1517,16 +1540,13 @@ def write_markdown(type, names, methods):
                                     else:
                                         output_file.write(' (required)')
 
+                                    output_file.write(':')
+
                                     if param_description:
                                         output_file.write(f" {param_description}")
-
-                                    output_file.write(':')
                                                                 
                                     # line break for parameters list
                                     output_file.write('\n')
-
-                                    param_type = methods['flutter'][type][resource][flutter_method_name]['parameters'][parameter]['param_type']
-                                    output_file.write('- `' + parameter + '`')
 
                                 output_file.write('\n')
                             
@@ -1584,8 +1604,8 @@ def write_markdown(type, names, methods):
                                 for line in open(method_override_file_path, 'r', encoding='utf-8'):
                                     output_file.write(line)
 
-                            output_file.write("\{\{% /tab %}}\n\n")
-                            output_file.write("\{\{< /tabs >}}\n\n")
+                            output_file.write("{{% /tab %}}\n")
+                            output_file.write("{{< /tabs >}}\n")
 
 ## Main run function:
 ## - proto_map()        Fetch canonical proto methods from upstream, used for Flutter mapping in `parse()`

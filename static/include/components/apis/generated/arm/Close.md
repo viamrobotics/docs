@@ -1,9 +1,7 @@
 ### Close
 
-\{\{< tabs >}}
-\{\{% tab name="Python" %}\}
-
-Python Method: close
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 Safely shut down the resource and prevent further use.
 
@@ -15,5 +13,4 @@ await component.close()
 
 ```
 
-\{\{% /tab %}}
-
+{{% /tab %}}

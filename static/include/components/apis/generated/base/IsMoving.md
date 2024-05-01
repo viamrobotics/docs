@@ -1,16 +1,14 @@
 ### IsMoving
 
-\{\{< tabs >}}
-\{\{% tab name="Python" %}\}
-
-Python Method: is_moving
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 Get if the base is currently moving.
 
 **Parameters:**
 
-- `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional) An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.:
-- `timeout`
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
 
 **Returns:**
 
@@ -27,20 +25,15 @@ print('Moving: ', moving)
 
 ```
 
-\{\{% /tab %}}
-
-\{\{% tab name="Flutter" %}\}
-
-Flutter Method: isMoving
+{{% /tab %}}
+{{% tab name="Flutter" %}}
 
 **Parameters:**
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `name`
+
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.base/BaseServiceClient/isMoving.html).
 
-\{\{% /tab %}}
-
-\{\{< /tabs >}}
-
+{{% /tab %}}
+{{< /tabs >}}

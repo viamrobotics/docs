@@ -46,10 +46,9 @@ board,GetGeometries,get_geometries,,getGeometries
 ## HACK: Board (python, go) provides additional helper functions, adding 5 pseudo-entries:
 board,Read,read,Read,
 board,Value,value,Value,getDigitalInterruptValue
-board,AnalogReaderNames,analog_reader_names,AnalogReaderNames,
+board,AnalogReaderNames,analog_reader_names,AnalogNames,
 board,DigitalInterruptNames,digital_interrupt_names,DigitalInterruptNames,
 board,GPIOPinByName,gpio_pin_by_name,GPIOPinByName,
-board,Reconfigure,,Reconfigure,
 ## HACK: No proto for close, manually mapping:
 board,Close,close,Close,
 
@@ -165,7 +164,7 @@ sensor,Close,close,Close,
 ## Servo
 servo,Move,move,Move,move
 servo,GetPosition,get_position,Position,getPosition
-servo,Stop,stop,stop,,stop
+servo,Stop,stop,,stop
 servo,IsMoving,is_moving,,isMoving
 servo,DoCommand,do_command,,doCommand
 servo,GetGeometries,get_geometries,,getGeometries
@@ -329,22 +328,22 @@ data,RemoveBinaryDataFromDatasetByIDs,remove_binary_data_from_dataset_by_ids,,re
 ## TODO: handle sync, either in data or datasync
 
 ## Dataset (from proto: Dataset, HACK: bundling with proto: Data)
-data,CreateDataset,create_dataset,,createDataset
-data,DeleteDataset,delete_dataset,,deleteDataset
-data,RenameDataset,rename_dataset,,renameDataset
-data,ListDatasetsByOrganizationID,list_datasets_by_organization_id,,listDatasetsByOrganizationID
-data,ListDatasetsByIDs,list_dataset_by_ids,,listDatasetsByIDs
+## data,CreateDataset,create_dataset,,createDataset
+## data,DeleteDataset,delete_dataset,,deleteDataset
+## data,RenameDataset,rename_dataset,,renameDataset
+## data,ListDatasetsByOrganizationID,list_datasets_by_organization_id,,listDatasetsByOrganizationID
+## data,ListDatasetsByIDs,list_dataset_by_ids,,listDatasetsByIDs
 
 ## Datasync (from proto: Datasync, HACK: bundling with proto: Data)
-data,DataCaptureUpload,,,dataCaptureUpload
+## data,DataCaptureUpload,,,dataCaptureUpload
 ## HACK: DataCaptureUpload instead implemented in binary_data_capture_upload (python), adding pseudo-entry:
 data,BinaryDataCaptureUpload,binary_data_capture_upload,,
 ## HACK: DataCaptureUpload instead implemented in tabular_data_capture_upload (python), adding pseudo-entry:
 data,TabularDataCaptureUpload,tabular_data_capture_upload,,
-data,FileUpload,file_upload,,fileUpload
+## data,FileUpload,file_upload,,fileUpload
 ## HACK: FileUpload also implemented in file_upload_from_path (python), adding pseudo-entry:
 data,FileUploadFromPath,file_upload_from_path,,
-data,StreamingDataCaptureUpload,streaming_data_capture_upload,,streamingDataCaptureUpload
+## data,StreamingDataCaptureUpload,streaming_data_capture_upload,,streamingDataCaptureUpload
 
 ## MLTraining
 mltraining,SubmitTrainingJob,,,submitTrainingJob
@@ -356,7 +355,7 @@ mltraining,DeleteCompletedTrainingJob,,,deleteCompletedTrainingJob
 ## Robot
 robot,GetOperations,get_operations,,getOperations
 robot,GetSessions,,,getSessions
-robot,ResourceNames,,ResourceNames,resourceNames
+## robot,ResourceNames,,ResourceNames,resourceNames
 robot,ResourceRPCSubtypes,,,resourceRPCSubtypes
 robot,CancelOperation,cancel_operation,,cancelOperation
 robot,BlockForOperation,block_for_operation,,blockForOperation

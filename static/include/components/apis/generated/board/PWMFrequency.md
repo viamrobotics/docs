@@ -1,17 +1,15 @@
 ### PWMFrequency
 
-\{\{< tabs >}}
-\{\{% tab name="Python" %}\}
-
-Python Method: get_pwm_frequency
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 Get the PWM frequency of the pin.
 
 **Parameters:**
 
-- `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional) Extra options to pass to the underlying RPC call.:
-- `extra`- `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional) An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.:
-- `timeout`
+- `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
 
 **Returns:**
 
@@ -30,11 +28,8 @@ freq = await pin.get_pwm_frequency()
 
 ```
 
-\{\{% /tab %}}
-
-\{\{% tab name="Go" %\}\}
-
-Go Method: PWMFreq
+{{% /tab %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -48,22 +43,17 @@ Go Method: PWMFreq
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
-\{\{% /tab %}}
-
-\{\{% tab name="Flutter" %}\}
-
-Flutter Method: pWMFrequency
+{{% /tab %}}
+{{% tab name="Flutter" %}}
 
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `extra`- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `name`- `pin` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `pin`
+- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `pin` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.board/BoardServiceClient/pWMFrequency.html).
 
-\{\{% /tab %}}
-
-\{\{< /tabs >}}
-
+{{% /tab %}}
+{{< /tabs >}}

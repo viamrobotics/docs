@@ -1,17 +1,15 @@
 ### Stop
 
-\{\{< tabs >}}
-\{\{% tab name="Python" %}\}
-
-Python Method: stop
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 Stop the base.
 
 **Parameters:**
 
-- `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional) Extra options to pass to the underlying RPC call.:
-- `extra`- `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional) An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.:
-- `timeout`
+- `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.stop).
 
@@ -26,21 +24,16 @@ await my_base.stop()
 
 ```
 
-\{\{% /tab %}}
-
-\{\{% tab name="Flutter" %}\}
-
-Flutter Method: stop
+{{% /tab %}}
+{{% tab name="Flutter" %}}
 
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `extra`- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `name`
+- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.base/BaseServiceClient/stop.html).
 
-\{\{% /tab %}}
-
-\{\{< /tabs >}}
-
+{{% /tab %}}
+{{< /tabs >}}

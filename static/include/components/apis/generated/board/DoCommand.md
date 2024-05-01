@@ -1,17 +1,15 @@
 ### DoCommand
 
-\{\{< tabs >}}
-\{\{% tab name="Python" %}\}
-
-Python Method: do_command
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 Send/Receive arbitrary commands to the Resource
 
 **Parameters:**
 
-- `command` [(Mapping[str, ValueTypes])](<INSERT PARAM TYPE LINK>) (required) The command to execute:
-- `command`- `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional) An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.:
-- `timeout`
+- `command` [(Mapping[str, ValueTypes])](<INSERT PARAM TYPE LINK>) (required): The command to execute
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
 
 **Returns:**
 
@@ -25,21 +23,16 @@ result = component.do(command)
 
 ```
 
-\{\{% /tab %}}
-
-\{\{% tab name="Flutter" %}\}
-
-Flutter Method: doCommand
+{{% /tab %}}
+{{% tab name="Flutter" %}}
 
 **Parameters:**
 
 - `command` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `command`- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `name`
+- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.board/BoardServiceClient/doCommand.html).
 
-\{\{% /tab %}}
-
-\{\{< /tabs >}}
-
+{{% /tab %}}
+{{< /tabs >}}

@@ -1,17 +1,15 @@
 ### GetEndPosition
 
-\{\{< tabs >}}
-\{\{% tab name="Python" %}\}
-
-Python Method: get_end_position
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 Get the current position of the end of the arm expressed as a Pose.
 
 **Parameters:**
 
-- `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional) Extra options to pass to the underlying RPC call.:
-- `extra`- `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional) An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.:
-- `timeout`
+- `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
 
 **Returns:**
 
@@ -27,11 +25,8 @@ pos = await my_arm.get_end_position()
 
 ```
 
-\{\{% /tab %}}
-
-\{\{% tab name="Go" %\}\}
-
-Go Method: EndPosition
+{{% /tab %}}
+{{% tab name="Go" %}}
 
 **Parameters:**
 
@@ -45,21 +40,16 @@ Go Method: EndPosition
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
-\{\{% /tab %}}
-
-\{\{% tab name="Flutter" %}\}
-
-Flutter Method: getEndPosition
+{{% /tab %}}
+{{% tab name="Flutter" %}}
 
 **Parameters:**
 
 - `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `extra`- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `name`
+- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.arm/ArmServiceClient/getEndPosition.html).
 
-\{\{% /tab %}}
-
-\{\{< /tabs >}}
-
+{{% /tab %}}
+{{< /tabs >}}
