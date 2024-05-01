@@ -184,7 +184,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ## Test your components
 
-Navigate to your [machine's **Control** tab](/fleet/machines/control/) to test your components.
+Navigate to your [machine's **Control** tab](/fleet/control/) to test your components.
 Verify that it’s connected by refreshing the page and ensuring that **Last Online** (in the top banner) says, "Live."
 
 1. Go to the **Control** tab, click on the base panel, and toggle the transform camera to on.
@@ -375,7 +375,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ## Test your color detector
 
-Navigate to your [machine's **Control** tab](/fleet/machines/control/) to test the transform camera.
+Navigate to your [machine's **Control** tab](/fleet/control/) to test the transform camera.
 Click on the transform camera panel and toggle the camera on.
 You should now be able to view the camera feed with color detector overlays superimposed on the image.
 

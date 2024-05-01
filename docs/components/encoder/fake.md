@@ -56,7 +56,7 @@ No attributes are available for `fake` encoders.
 
 ## Test the encoder
 
-Once your encoder is configured and your machine is connected, go to the [**CONTROL** tab](/fleet/machines/control/) and click on the encoder's dropdown panel.
+Once your encoder is configured and your machine is connected, go to the [**CONTROL** tab](/fleet/control/) and click on the encoder's dropdown panel.
 The ticks count is displayed.
 
 ![Encoder control panel.](/components/encoder/control.png)

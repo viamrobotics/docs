@@ -131,7 +131,7 @@ The following attributes are available for `model1` arms:
 
 ## Test the component
 
-After you configure your compontent, navigate to the [**CONTROL** tab](/fleet/machines/control/) and select the **Component** dropdown panel.
+After you configure your compontent, navigate to the [**CONTROL** tab](/fleet/control/) and select the **Component** dropdown panel.
 
 Then _explain how to interact with the panel_.
 

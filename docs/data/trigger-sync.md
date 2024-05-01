@@ -260,7 +260,7 @@ You have now configured sync to happen during a specific time slot.
 To test your setup, [configure a webcam](https://docs.viam.com/components/camera/webcam/) or another component and [enable data capture on the component](https://docs.viam.com/data/capture/#configure-data-capture-for-individual-components).
 For a camera component, use the `ReadImage` method.
 The data manager will now capture data.
-Go to the [**CONTROL** tab](https://docs.viam.com/fleet/machines/control/).
+Go to the [**CONTROL** tab](https://docs.viam.com/fleet/control/).
 You should see the sensor.
 Click on `GetReadings`.
 

@@ -219,7 +219,7 @@ If the classifier's results exceed the confidence threshold, the **Run model** s
 
 ### Live camera footage
 
-If you intend to use the detector or classifier with a camera that is part of your machine, you can test your detector or classifier from the [**Control tab**](/fleet/machines/control/) or with code:
+If you intend to use the detector or classifier with a camera that is part of your machine, you can test your detector or classifier from the [**Control tab**](/fleet/control/) or with code:
 
 1. Configure a [camera component](/components/camera/).
 

@@ -104,7 +104,7 @@ To determine the color value from the actual cam component image, you can use a 
 
 ### Test your color detector
 
-You can test your detector from the [**Control tab**](/fleet/machines/control/):
+You can test your detector from the [**Control tab**](/fleet/control/):
 
 1. Configure a [transform camera](/components/camera/transform/) with the following attributes:
 

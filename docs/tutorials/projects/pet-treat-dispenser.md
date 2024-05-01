@@ -182,7 +182,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{< /tabs >}}
 
-To test everything is wired and configured correctly, head to the [Control tab](/fleet/machines/control/).
+To test everything is wired and configured correctly, head to the [Control tab](/fleet/control/).
 Start by testing the motor.
 Click on the motor panel and set the **RPM** to 20 and **# of Revolutions** to 100 to see your treat dispensing mechanism in action.
 Feel free to tweak these values to achieve the desired speed of your dispenser.

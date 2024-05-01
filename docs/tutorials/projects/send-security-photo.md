@@ -155,7 +155,7 @@ Click **Save** in the top right corner of the screen.
 {{<imgproc src="/tutorials/send-security-photo/control-view.png" class="alignright" resize="300x" declaredimensions=true alt="the control tab">}}
 
 At this point, you can test that the model is detecting people.
-Navigate to your [machine's CONTROL tab](/fleet/machines/control/).
+Navigate to your [machine's CONTROL tab](/fleet/control/).
 
 Click on the `detectionCam` panel and toggle **View detectionCam** on.
 If the vision service detects a person on the configured camera, you will see a red box around the detection along with the confidence score of the detection.

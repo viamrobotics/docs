@@ -117,5 +117,5 @@ The following attributes are available for `wheeled-odometry` movement sensors:
 
 ## Test the movement sensor
 
-After you configure your movement sensor, navigate to the [Control tab](/fleet/machines/control/) and select the dedicated movement sensor dropdown panel.
+After you configure your movement sensor, navigate to the [Control tab](/fleet/control/) and select the dedicated movement sensor dropdown panel.
 This panel presents the data collected by the movement sensor.
