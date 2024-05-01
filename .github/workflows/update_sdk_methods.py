@@ -1008,7 +1008,7 @@ def write_markdown(type, names, methods):
                     proto = row.split(',')[1]
                     py_method_name = row.split(',')[2]
                     go_method_name = row.split(',')[3]
-                    flutter_method_name = row.split(',')[4]
+                    flutter_method_name = row.split(',')[4].rstrip()
 
                     ## Allow setting protos with 0 sdk method maps, to allow us to disable writing MD
                     ## for specific protos as needed, if needed:
