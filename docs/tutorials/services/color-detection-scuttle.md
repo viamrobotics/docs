@@ -176,13 +176,11 @@ python3 main.py
 
 The program prints a list of robot resources.
 
-On top of the packages that the code sample snippet imports, add the `random` and the `vlc` packages to the imports, and `pil_to_viam_image` and `viam_to_pil_image` from `viam.media.utils.pil`
+On top of the packages that the code sample snippet imports, import `pil_to_viam_image` and `viam_to_pil_image` from `viam.media.utils.pil`.
 The top of your code should now look like this:
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
-import random
-import vlc
 
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
@@ -327,8 +325,6 @@ You could also write some code with a Viam SDK to [make your rover move in a squ
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
-import random
-import vlc
 
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
