@@ -178,18 +178,8 @@ detections = await my_detector.get_detections(img)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="22"}
-// Grab the camera from the machine
-cameraName := "cam1"
-myCam, err := camera.FromRobot(robot, cameraName)
-if err != nil {
-  logger.Fatalf("cannot get camera: %v", err)
-}
-
-// Grab the detector you configured on your machine
-visService, err := vision.from_robot(robot=robot, name='my_detector')
-if err != nil {
-    logger.Fatalf("Cannot get vision service: %v", err)
-}
+myCam, err := camera.FromRobot(machine, "camera-1")
+visService, err := vision.FromRobot(machine, "vision-1")
 
 // Get the stream from a camera
 camStream, err := myCam.Stream(context.Background())
@@ -230,7 +220,7 @@ Get a list of detections from the next image from a specified camera using a con
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_detections_from_camera).
 
 ```python {class="line-numbers linkable-line-numbers" data-line="8"}
-camera_name = "cam1"
+camera_name = "camera-1"
 
 # Grab the detector you configured on your machine
 my_detector = VisionClient.from_robot(robot, "my_detector")
@@ -257,7 +247,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
 // Grab the camera from the machine
-cameraName := "cam1"
+cameraName := "camera-1"
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
@@ -335,18 +325,8 @@ classifications = await my_classifier.get_classifications(img, 2)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="22"}
-// Grab the camera from the machine
-cameraName := "cam1"
-myCam, err := camera.FromRobot(robot, cameraName)
-if err != nil {
-  logger.Fatalf("cannot get camera: %v", err)
-}
-
-// Grab the classifier you configured on your machine
-visService, err := vision.from_robot(robot=robot, name='my_classifier')
-if err != nil {
-    logger.Fatalf("Cannot get vision service: %v", err)
-}
+myCam, err := camera.FromRobot(machine, "camera-1")
+visService, err := vision.FromRobot(machine, "vision-1")
 
 // Get the stream from a camera
 camStream, err := myCam.Stream(context.Background())
@@ -419,18 +399,8 @@ classifications = await my_classifier.get_classifications_from_camera(
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
-// Grab the camera from the machine
-cameraName := "cam1"
-myCam, err := camera.FromRobot(robot, cameraName)
-if err != nil {
-  logger.Fatalf("cannot get camera: %v", err)
-}
-
-// Grab the classifier you configured on your machine
-visService, err := vision.from_robot(robot=robot, name='my_classifier')
-if err != nil {
-    logger.Fatalf("Cannot get vision service: %v", err)
-}
+myCam, err := camera.FromRobot(robot, "camera-1")
+visService, err := vision.FromRobot(machine, "vision-1")
 
 // Get the 2 classifications with the highest confidence scores from the camera output
 classifications, err := visService.ClassificationsFromCamera(context.Background(), myCam, 2, nil)
@@ -491,21 +461,11 @@ objects = await my_segmenter.get_object_point_clouds(cam1)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
-// Grab the camera from the machine
-cameraName := "cam1"
-myCam, err := camera.FromRobot(robot, cameraName)
-if err != nil {
-  logger.Fatalf("cannot get camera: %v", err)
-}
-
-// Grab the segmenter you configured on your machine
-visService, err := vision.from_robot(robot=robot, name='my_segmenter')
-if err != nil {
-    logger.Fatalf("Cannot get vision service: %v", err)
-}
+myCam, err := camera.FromRobot(machine, "camera-1")
+visService, err := vision.FromRobot(machine, "vision-1")
 
 // Get the objects from the camera output
-objects, err := visService.ObjectPointClouds(context.Background(), myCam, nil)
+objects, err := visService.GetObjectPointClouds(context.Background(), "camera-1", nil)
 if err != nil {
     logger.Fatalf("Could not get point clouds: %v", err)
 }
@@ -564,12 +524,9 @@ await vision_svc.do_command(my_command)
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Access your vision service
-visService, err := vision.from_robot(robot=robot, name="my_vision_svc")
-if err != nil {
-  logger.Fatal(err)
-}
+visService, err := vision.FromRobot(machine, "vision-1")
 
-resp, err := visService.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
+resp, err := visService.DoCommand(context.Background(), map[string]interface{}{"command": "dosomething", "someparameter": 52})
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
@@ -612,9 +569,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-visService, err := vision.FromRobot(robot, "my_vision_svc")
+visService, err := vision.FromRobot(machine, "vision-1")
 
-err := visService.Close(ctx)
+err := visService.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
