@@ -67,7 +67,7 @@ If you need to delete many images that are from a specific time frame or machine
 
 ![Data view with no image selected showing the Delete all button](/data/delete_all.png)
 
-You can also delete data using the [Viam CLI](/fleet/cli/).
+You can also delete data using the [Viam CLI](/cli/).
 
 ## Next steps
 

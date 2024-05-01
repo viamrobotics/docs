@@ -4,7 +4,7 @@ To authenticate yourself to your machine, you need
 
       <!-- we will be releasing the ability to create API keys across all types of resources and combinations soon (i.e an API key can have an authorization on a org, location, machine or any combination of all three). this is correct for now though but it will be changing shortly. -->
 
-   To authenticate, [use a machine part API key](/fleet/machines/#api-keys) or [an API key](/fleet/cli/#authenticate) with access to the machine.
+   To authenticate, [use a machine part API key](/fleet/machines/#api-keys) or [an API key](/cli/#authenticate) with access to the machine.
    Copy and paste the API key ID and the API key into your environment variables or directly into the code:
 
    {{< tabs >}}

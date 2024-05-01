@@ -11,7 +11,7 @@ images: ["/services/icons/ml.svg"]
 
 Once you have [created the first version of your module](/registry/create/), you can use the procedure outlined on this page to iterate on your design, and test changes quickly.
 
-Generally, when developing a module, you have two options for iterative development, depending on the specific [platform](/fleet/cli/#using-the---platform-argument) you want your module to support:
+Generally, when developing a module, you have two options for iterative development, depending on the specific [platform](/cli/#using-the---platform-argument) you want your module to support:
 
 - **Test Locally:** If you want your module to support the same platform as your development workstation, you can test your module locally.
   For example, if you are developing a module on a macOS computer with an M2 processor (the `arm64` architecture), and want your module to support only macOS computers running the `arm64` architecture, you can perform your module development and testing workflow entirely on your macOS workstation.

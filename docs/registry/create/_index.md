@@ -1328,7 +1328,7 @@ If you get `"ImportError: attempted relative import with no known parent package
 In addition, PyInstaller does not support cross-compiling: you must compile your module on the target architecture you wish to support.
 For example, you cannot run a module on a Linux `arm64` system if you compiled it using PyInstaller on a Linux `amd64` system.
 Viam makes this easy to manage by providing a build system for modules.
-Follow [these instructions](/fleet/cli/#using-the-build-subcommand) to automatically build for each system your module can support using Viam's [CLI](/fleet/cli/).
+Follow [these instructions](/cli/#using-the-build-subcommand) to automatically build for each system your module can support using Viam's [CLI](/cli/).
 
 {{% /alert %}}
 

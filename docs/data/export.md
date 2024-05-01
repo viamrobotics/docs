@@ -16,7 +16,7 @@ Download machine data to your computer with the Viam CLI or data client API.
 
 ## Export data with the Viam CLI
 
-To export your synced data using the Viam CLI, first [install the Viam CLI](/fleet/cli/#install) and [authenticate](/fleet/cli/#authenticate) to Viam.
+To export your synced data using the Viam CLI, first [install the Viam CLI](/cli/#install) and [authenticate](/cli/#authenticate) to Viam.
 
 Then, to export data from the data management service in the cloud:
 
@@ -34,14 +34,14 @@ Then, to export data from the data management service in the cloud:
    This command uses the Viam CLI to download the data locally onto your computer based on the search criteria you select in the Viam app.
 
    By default, the command creates a new directory named `data` in the current directory and downloads the specified data.
-   If you want to store the data in a different location, change the specified folder with the [`--destination` flag](/fleet/cli/#named-arguments).
+   If you want to store the data in a different location, change the specified folder with the [`--destination` flag](/cli/#named-arguments).
 
    Once the command has finished running and downloading the data, you can view and use the data locally.
 
    Since data is downloaded in parallel, the order is not guaranteed.
    Sort your folder by filename in order to see them in chronological order.
 
-You can see more information about exporting data in the [Viam CLI documentation](/fleet/cli/#data).
+You can see more information about exporting data in the [Viam CLI documentation](/cli/#data).
 
 ## Manage data with the data client API
 
