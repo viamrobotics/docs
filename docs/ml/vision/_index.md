@@ -179,7 +179,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ```go {class="line-numbers linkable-line-numbers" data-line="22"}
 myCam, err := camera.FromRobot(machine, "camera-1")
-visService, err := vision.FromRobot(machine, "vision-1")
+visService, err := vision.FromRobot(machine, "my_detector")
 
 // Get the stream from a camera
 camStream, err := myCam.Stream(context.Background())
@@ -326,7 +326,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ```go {class="line-numbers linkable-line-numbers" data-line="22"}
 myCam, err := camera.FromRobot(machine, "camera-1")
-visService, err := vision.FromRobot(machine, "vision-1")
+visService, err := vision.FromRobot(machine, "my_detector")
 
 // Get the stream from a camera
 camStream, err := myCam.Stream(context.Background())
@@ -400,7 +400,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
 myCam, err := camera.FromRobot(robot, "camera-1")
-visService, err := vision.FromRobot(machine, "vision-1")
+visService, err := vision.FromRobot(machine, "my_detector")
 
 // Get the 2 classifications with the highest confidence scores from the camera output
 classifications, err := visService.ClassificationsFromCamera(context.Background(), myCam, 2, nil)
@@ -462,7 +462,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
 myCam, err := camera.FromRobot(machine, "camera-1")
-visService, err := vision.FromRobot(machine, "vision-1")
+visService, err := vision.FromRobot(machine, "my_detector")
 
 // Get the objects from the camera output
 objects, err := visService.GetObjectPointClouds(context.Background(), "camera-1", nil)
@@ -524,7 +524,7 @@ await vision_svc.do_command(my_command)
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Access your vision service
-visService, err := vision.FromRobot(machine, "vision-1")
+visService, err := vision.FromRobot(machine, "my_detector")
 
 resp, err := visService.DoCommand(context.Background(), map[string]interface{}{"command": "dosomething", "someparameter": 52})
 ```
@@ -569,7 +569,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-visService, err := vision.FromRobot(machine, "vision-1")
+visService, err := vision.FromRobot(machine, "my_detector")
 
 err := visService.Close(context.Background())
 ```
