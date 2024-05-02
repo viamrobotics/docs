@@ -155,6 +155,11 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
+if err != nil {
+    logger.Error(err)
+    return
+}
+
 ctx := context.Background()
 
 // Get the current position of the movement sensor.
@@ -208,6 +213,11 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
+if err != nil {
+    logger.Error(err)
+    return
+}
+
 ctx := context.Background()
 
 // Get the current linear velocity of the movement sensor.
@@ -264,6 +274,11 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
+if err != nil {
+    logger.Error(err)
+    return
+}
+
 ctx := context.Background()
 
 // Get the current angular velocity of the movement sensor.
@@ -323,6 +338,11 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
+if err != nil {
+    logger.Error(err)
+    return
+}
+
 ctx := context.Background()
 
 // Get the current linear acceleration of the movement sensor.
@@ -379,6 +399,11 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
+if err != nil {
+    logger.Error(err)
+    return
+}
+
 ctx := context.Background()
 
 // Get the current compass heading of the movement sensor.
@@ -432,6 +457,11 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go {class="line-numbers linkable-line-numbers"}
 myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
+if err != nil {
+    logger.Error(err)
+    return
+}
+
 ctx := context.Background()
 
 // Get the current orientation of the movement sensor.
@@ -492,6 +522,11 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
+if err != nil {
+    logger.Error(err)
+    return
+}
+
 ctx := context.Background()
 
 // Get the supported properties of the movement sensor.
@@ -575,6 +610,11 @@ For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
+if err != nil {
+    logger.Error(err)
+    return
+}
+
 ctx := context.Background()
 
 // Get the accuracy of the movement sensor.
@@ -630,6 +670,11 @@ For more information, see the [Go SDK docs for Sensor](https://pkg.go.dev/go.via
 
 ```go
 myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
+if err != nil {
+    logger.Error(err)
+    return
+}
+
 ctx := context.Background()
 
 // Get the latest readings from the movement sensor.
@@ -747,6 +792,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
+if err != nil {
+    logger.Error(err)
+    return
+}
+
 ctx := context.Background()
 
 resp, err := myMovementSensor.DoCommand(ctx, map[string]interface{}{"command": "reset", "example_param": 30})
@@ -793,6 +843,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
+if err != nil {
+    logger.Error(err)
+    return
+}
+
 ctx := context.Background()
 
 err = myMovementSensor.Close(ctx)

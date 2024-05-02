@@ -130,7 +130,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 // Create a power sensor instance
 myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
 if err != nil {
-  logger.Fatalf("cannot get power sensor: %v", err)
+    logger.Error(err)
+    return
 }
 
 ctx:= context.Background()
@@ -189,7 +190,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 // Create a power sensor instance
 myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
 if err != nil {
-  logger.Fatalf("cannot get power sensor: %v", err)
+    logger.Error(err)
+    return
 }
 ctx := context.Background()
 
@@ -246,7 +248,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 // Create a power sensor instance
 myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
 if err != nil {
-  logger.Fatalf("cannot get power sensor: %v", err)
+    logger.Error(err)
+    return
 }
 
 ctx := context.Background()
@@ -302,6 +305,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
+if err != nil {
+    logger.Error(err)
+    return
+}
+
 ctx := context.Background()
 
 // Get the readings provided by the sensor.
@@ -415,6 +423,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
+if err != nil {
+    logger.Error(err)
+    return
+}
+
 ctx := context.Background()
 
 resp, err := myPowerSensor.DoCommand(ctx, map[string]interface{}{"command": "reset", "example_param": 30})
@@ -461,6 +474,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
+if err != nil {
+    logger.Error(err)
+    return
+}
 
 err = myPowerSensor.Close(context.Background)
 ```
