@@ -257,7 +257,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
 // Grab the camera from the machine
 cameraName := "camera-1"
-myCam, err := camera.FromRobot(robot, cameraName)
+myCam, err := camera.FromRobot(machine, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }
@@ -393,7 +393,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 camera_name = "cam1"
 
 # Grab the classifier you configured on your machine
-my_classifier = VisionClient.from_robot(robot, "my_classifier")
+my_classifier = VisionClient.from_robot(machine, "my_classifier")
 
 # Get the 2 classifications with the highest confidence scores from the next
 # image from the camera
@@ -420,7 +420,7 @@ classifications = await my_classifier.get_classifications_from_camera(
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
 
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
-myCam, err := camera.FromRobot(robot, "camera-1")
+myCam, err := camera.FromRobot(machine, "camera-1")
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }
