@@ -110,7 +110,7 @@ You can run `GetProperties` on your sensor for a list of its supported methods.
 
 ### GetPosition
 
-Report the current GeoPoint (latitude, longitude) and altitude (in meters).
+Report the current GeoPoint (latitude, longitude) and altitude (in meters above sea level).
 
 Supported by GPS models.
 
