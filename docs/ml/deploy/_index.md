@@ -156,6 +156,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ```go {class="line-numbers linkable-line-numbers"}
 myMLModel, err := mlmodel.FromRobot(machine, "my_mlmodel_service")
+if err!=nil {
+      logger.Error(err)
+      return
+    }
+
 ctx := context.Background()
 
 input_tensors := ml.Tensors{"0": tensor.New(tensor.WithShape(1, 2, 3), tensor.WithBacking(6))}
@@ -205,6 +210,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ```go {class="line-numbers linkable-line-numbers"}
 myMLModel, err := mlmodel.FromRobot(machine, "my_mlmodel_service")
+if err!=nil {
+      logger.Error(err)
+      return
+    }
+
 ctx := context.Background()
 
 metadata, err := myMLModel.Metadata(ctx)
@@ -263,6 +273,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 myMLModel, err := mlmodel.FromRobot(machine, "my_mlmodel_service")
+if err!=nil {
+      logger.Error(err)
+      return
+    }
+
 ctx := context.Background()
 
 resp, err := myMLModel.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
@@ -309,6 +324,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 myMLModel, err := mlmodel.FromRobot(machine, "my_mlmodel_service")
+if err!=nil {
+      logger.Error(err)
+      return
+    }
+
 ctx := context.Background()
 
 err = myMLModel.Close(ctx)

@@ -179,7 +179,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ```go {class="line-numbers linkable-line-numbers" data-line="22"}
 myCam, err := camera.FromRobot(machine, "camera-1")
+if err != nil {
+  logger.Fatalf("cannot get camera: %v", err)
+}
+
 visService, err := vision.FromRobot(machine, "my_detector")
+if err != nil {
+  logger.Fatalf("cannot get vision service: %v", err)
+}
+
 ctx := context.Background()
 
 // Get the stream from a camera
@@ -327,11 +335,22 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ```go {class="line-numbers linkable-line-numbers" data-line="22"}
 myCam, err := camera.FromRobot(machine, "camera-1")
+if err != nil {
+  logger.Fatalf("cannot get camera: %v", err)
+}
+
 visService, err := vision.FromRobot(machine, "my_detector")
+if err != nil {
+  logger.Fatalf("cannot get vision service: %v", err)
+}
 ctx := context.Background()
 
 // Get the stream from a camera
 camStream, err := myCam.Stream(ctx)
+if err!=nil {
+      logger.Error(err)
+      return
+    }
 
 // Get an image from the camera stream
 img, release, err := camStream.Next(ctx)
@@ -402,7 +421,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
 myCam, err := camera.FromRobot(robot, "camera-1")
+if err != nil {
+  logger.Fatalf("cannot get camera: %v", err)
+}
+
 visService, err := vision.FromRobot(machine, "my_detector")
+if err != nil {
+  logger.Fatalf("cannot get vision service: %v", err)
+}
+
 ctx := context.Background()
 
 // Get the 2 classifications with the highest confidence scores from the camera output
@@ -465,7 +492,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
 myCam, err := camera.FromRobot(machine, "camera-1")
+if err != nil {
+  logger.Fatalf("cannot get camera: %v", err)
+}
+
 visService, err := vision.FromRobot(machine, "my_detector")
+if err != nil {
+  logger.Fatalf("cannot get vision service: %v", err)
+}
+
 ctx := context.Background()
 
 // Get the objects from the camera output
