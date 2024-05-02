@@ -10,6 +10,9 @@ Add tags to binary data.
 - `tags` [(List[str])](<INSERT PARAM TYPE LINK>) (required): List of tags to add to specified binary data. Must be non-empty.
 - `binary_ids` [(List[viam.proto.app.data.BinaryID])](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID) (required): List of BinaryID objects specifying binary data to tag. Must be non-empty.
 
+**Returns:**
+
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_tags_to_binary_data_by_ids).
 
@@ -34,7 +37,6 @@ for obj in binary_metadata:
     )
 
 binary_data = await data_client.add_tags_to_binary_data_by_ids(tags, my_ids)
-
 ```
 
 {{% /tab %}}
@@ -42,9 +44,12 @@ binary_data = await data_client.add_tags_to_binary_data_by_ids(tags, my_ids)
 
 **Parameters:**
 
-- `binaryIds` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required):
+- `binaryIds` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)> (required):
 - `tags` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.data/DataServiceClient/addTagsToBinaryDataByIDs.html).
 

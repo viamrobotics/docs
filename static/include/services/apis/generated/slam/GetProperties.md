@@ -9,7 +9,6 @@ Get information regarding the current SLAM session.
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(viam.services.slam.slam.SLAM.Properties)](INSERT RETURN TYPE LINK): The properties of SLAM
@@ -21,7 +20,6 @@ slam_svc = SLAMClient.from_robot(robot=robot, name="my_slam_service")
 
 # Get the properties of your current SLAM session.
 slam_properties = await slam_svc.get_properties()
-
 ```
 
 {{% /tab %}}
@@ -29,12 +27,12 @@ slam_properties = await slam_svc.get_properties()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
 
 **Returns:**
 
-- [(Properties)](<INSERT PARAM TYPE LINK>)
-- [(error)](<INSERT PARAM TYPE LINK>)
+- [(Properties)](https://pkg.go.dev#Properties):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
 
@@ -45,6 +43,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.slam/SLAMServiceClient/getProperties.html).
 

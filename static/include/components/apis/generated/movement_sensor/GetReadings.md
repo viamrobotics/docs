@@ -10,7 +10,6 @@ Obtain the measurements/data specific to this sensor. If a sensor is not configu
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(Mapping[str, viam.utils.SensorReading])](INSERT RETURN TYPE LINK): The readings for the MovementSensor. Can be of any type.
@@ -23,7 +22,6 @@ my_movement_sensor = MovementSensor.from_robot(
 
 # Get the latest readings from the movement sensor.
 readings = await my_movement_sensor.get_readings()
-
 ```
 
 {{% /tab %}}
@@ -31,9 +29,12 @@ readings = await my_movement_sensor.get_readings()
 
 **Parameters:**
 
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.movementsensor/MovementSensorServiceClient/getReadings.html).
 

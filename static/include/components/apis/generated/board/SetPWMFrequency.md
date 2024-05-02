@@ -11,6 +11,9 @@ Set the pin to the given PWM frequency (in Hz). When frequency is 0, it will use
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
+**Returns:**
+
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.GPIOPinClient.set_pwm_frequency).
 
@@ -22,7 +25,6 @@ pin = await my_board.gpio_pin_by_name(name="15")
 
 # Set the PWM frequency of this pin to 1600 Hz.
 high = await pin.set_pwm_frequency(frequency=1600)
-
 ```
 
 {{% /tab %}}
@@ -30,8 +32,8 @@ high = await pin.set_pwm_frequency(frequency=1600)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- `freqHz`[(uint)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `freqHz`[(uint)](https://pkg.go.dev/builtin#uint):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -45,11 +47,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `frequencyHz` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
+- `frequencyHz` [(Int64)](https://pub.dev/documentation/fixnum/1.1.0/fixnum/Int64-class.html) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 - `pin` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.board/BoardServiceClient/setPWMFrequency.html).
 

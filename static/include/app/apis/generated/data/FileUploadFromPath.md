@@ -15,7 +15,6 @@ Upload arbitrary file data.
 - `method_parameters` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Optional dictionary of the method parameters. No longer in active use.
 - `tags` [(List[str])](<INSERT PARAM TYPE LINK>) (optional): Optional list of tags to allow for tag-based filtering when retrieving data.
 
-
 **Returns:**
 
 - [(str)](INSERT RETURN TYPE LINK): ID of the new file.
@@ -28,7 +27,7 @@ file_id = await data_client.file_upload_from_path(
     tags=["tag_1", "tag_2"],
     filepath="/Users/<your-username>/<your-directory>/<your-file.txt>"
 )
-
 ```
 
 {{% /tab %}}
+{{< /tabs >}}

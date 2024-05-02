@@ -10,7 +10,6 @@ Create a robot client that is connected to the robot at the provided address.
 - `address` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) (required): Address of the robot (IP address, URL, etc.)
 - `options` [(Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options) (required): Options for connecting and refreshing
 
-
 **Returns:**
 
 - [(typing_extensions.Self)](INSERT RETURN TYPE LINK): the RobotClient
@@ -32,7 +31,7 @@ async def connect():
 async def main():
     # Make a RobotClient
     robot = await connect()
-
 ```
 
 {{% /tab %}}
+{{< /tabs >}}

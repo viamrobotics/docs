@@ -10,7 +10,6 @@ Get the current linear acceleration as a Vector3 with x, y, and z axes represent
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(viam.components.movement_sensor.Vector3)](INSERT RETURN TYPE LINK): The linear acceleration in m/sec^2
@@ -26,7 +25,6 @@ lin_accel = await my_movement_sensor.get_linear_acceleration()
 
 # Get the x component of linear acceleration.
 x_lin_accel = lin_accel.x
-
 ```
 
 {{% /tab %}}
@@ -34,13 +32,13 @@ x_lin_accel = lin_accel.x
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `r3`[(Vector)](https://pkg.go.dev/github.com/golang/geo/r3#r3):
-- [(error)](<INSERT PARAM TYPE LINK>)
+- `r3`[(Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
@@ -49,9 +47,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.movementsensor/MovementSensorServiceClient/getLinearAcceleration.html).
 

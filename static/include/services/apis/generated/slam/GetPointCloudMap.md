@@ -10,7 +10,6 @@ Get the point cloud map.
 - `return_edited_map` [(bool)](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool) (required): signal to the SLAM service to return an edited map, if the map package contains one and if the SLAM service supports the feature
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(List[bytes])](INSERT RETURN TYPE LINK): Complete pointcloud in standard PCD format. Chunks of the PointCloud, concatenating all GetPointCloudMapResponse.point_cloud_pcd_chunk values.
@@ -22,7 +21,6 @@ slam_svc = SLAMClient.from_robot(robot=robot, name="my_slam_service")
 
 # Get the point cloud map in standard PCD format.
 pcd_map = await slam_svc.get_point_cloud_map()
-
 ```
 
 {{% /tab %}}
@@ -30,8 +28,12 @@ pcd_map = await slam_svc.get_point_cloud_map()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- `returnEditedMap`[(bool)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `returnEditedMap`[(bool)](https://pkg.go.dev/builtin#bool):
+
+**Returns:**
+
+- None.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
 
@@ -40,9 +42,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `name` [(bool)](https://api.flutter.dev/flutter/dart-core/bool-class.html) (required):
+- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 - `returnEditedMap` [(bool)](https://api.flutter.dev/flutter/dart-core/bool-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.slam/SLAMServiceClient/getPointCloudMap.html).
 

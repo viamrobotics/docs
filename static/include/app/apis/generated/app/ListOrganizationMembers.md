@@ -5,6 +5,9 @@
 
 List the members and invites of the currently authed-to organization.
 
+**Parameters:**
+
+- None.
 
 **Returns:**
 
@@ -14,7 +17,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ``` python {class="line-numbers linkable-line-numbers"}
 member_list, invite_list = await cloud.list_organization_members()
-
 ```
 
 {{% /tab %}}
@@ -24,6 +26,9 @@ member_list, invite_list = await cloud.list_organization_members()
 
 - `organizationId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/listOrganizationMembers.html).
 

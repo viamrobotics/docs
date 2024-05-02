@@ -10,7 +10,6 @@ Get the kinematics information associated with the arm.
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(Tuple[viam.components.arm.KinematicsFileFormat.ValueType, bytes])](INSERT RETURN TYPE LINK):  A tuple containing two values; the first [0] value represents the format of thefile, either in URDF format or Viam’s kinematic parameter format (spatial vector algebra), and the second [1] value represents the byte contents of the file.   
@@ -28,7 +27,6 @@ k_file = kinematics[0]
 
 # Get the byte contents of the file.
 k_bytes = kinematics[1]
-
 ```
 
 {{% /tab %}}
@@ -36,9 +34,12 @@ k_bytes = kinematics[1]
 
 **Parameters:**
 
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.arm/ArmServiceClient/getKinematics.html).
 

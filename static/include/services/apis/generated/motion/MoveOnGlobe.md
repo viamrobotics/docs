@@ -16,7 +16,6 @@ Move a component to a specific latitude and longitude, using a MovementSensor to
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(str)](INSERT RETURN TYPE LINK): ExecutionID of the move_on_globe() call, which can be used to track execution progress.
@@ -38,7 +37,6 @@ execution_id = await motion.move_on_globe(
     component_name=my_base_resource_name,
     destination=my_destination,
     movement_sensor_name=mvmnt_sensor_resource_name)
-
 ```
 
 {{% /tab %}}
@@ -46,14 +44,14 @@ execution_id = await motion.move_on_globe(
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- `req`[(MoveOnGlobeReq)](<INSERT PARAM TYPE LINK>)
-- [())](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `req`[(MoveOnGlobeReq)](https://pkg.go.dev#MoveOnGlobeReq):
+- [())](<INSERT PARAM TYPE LINK>):
 
 **Returns:**
 
-- [(ExecutionID)](<INSERT PARAM TYPE LINK>)
-- [(error)](<INSERT PARAM TYPE LINK>)
+- [(ExecutionID)](https://pkg.go.dev#ExecutionID):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
@@ -62,15 +60,18 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `componentName` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[GeoObstacle](https://flutter.viam.dev/viam_protos.common.common/GeoObstacle-class.html)> (required):
-- `destination` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[GeoObstacle](https://flutter.viam.dev/viam_protos.common.common/GeoObstacle-class.html)> (required):
-- `extra` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[GeoObstacle](https://flutter.viam.dev/viam_protos.common.common/GeoObstacle-class.html)> (required):
-- `heading` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[GeoObstacle](https://flutter.viam.dev/viam_protos.common.common/GeoObstacle-class.html)> (required):
-- `motionConfiguration` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[GeoObstacle](https://flutter.viam.dev/viam_protos.common.common/GeoObstacle-class.html)> (required):
-- `movementSensorName` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[GeoObstacle](https://flutter.viam.dev/viam_protos.common.common/GeoObstacle-class.html)> (required):
-- `name` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[GeoObstacle](https://flutter.viam.dev/viam_protos.common.common/GeoObstacle-class.html)> (required):
+- `componentName` [(ResourceName)](https://flutter.viam.dev/viam_sdk/ResourceName-class.html) (required):
+- `destination` [(GeoPoint)](https://flutter.viam.dev/viam_sdk/GeoPoint-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
+- `heading` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html) (required):
+- `motionConfiguration` [(MotionConfiguration)](https://flutter.viam.dev/viam_protos.service.motion/MotionConfiguration-class.html) (required):
+- `movementSensorName` [(ResourceName)](https://flutter.viam.dev/viam_sdk/ResourceName-class.html) (required):
+- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 - `obstacles` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[GeoObstacle](https://flutter.viam.dev/viam_protos.common.common/GeoObstacle-class.html)> (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.motion/MotionServiceClient/moveOnGlobe.html).
 

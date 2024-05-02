@@ -15,7 +15,6 @@ Update the documentation URL, description, models, entrypoint, and/or the visibi
 - `organization_id` [(str)](<INSERT PARAM TYPE LINK>) (optional):
 - `public` [(bool)](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool) (required): The visibility that should be set for the module. Defaults to False (private).
 
-
 **Returns:**
 
 - [(str)](INSERT RETURN TYPE LINK): The URL of the newly updated module.
@@ -28,7 +27,6 @@ url_of_my_module = await cloud.update_module(
     url="https://docsformymodule.viam.com",
     description="A base to support hoverboards.",
     entrypoint="exec")
-
 ```
 
 {{% /tab %}}
@@ -36,13 +34,16 @@ url_of_my_module = await cloud.update_module(
 
 **Parameters:**
 
-- `description` [(Visibility)](https://flutter.viam.dev/viam_protos.app.app/Visibility-class.html)<[Model](https://flutter.viam.dev/viam_protos.app.app/Model-class.html)> (required):
-- `entrypoint` [(Visibility)](https://flutter.viam.dev/viam_protos.app.app/Visibility-class.html)<[Model](https://flutter.viam.dev/viam_protos.app.app/Model-class.html)> (required):
-- `models` [(Visibility)](https://flutter.viam.dev/viam_protos.app.app/Visibility-class.html)<[Model](https://flutter.viam.dev/viam_protos.app.app/Model-class.html)> (required):
-- `moduleId` [(Visibility)](https://flutter.viam.dev/viam_protos.app.app/Visibility-class.html)<[Model](https://flutter.viam.dev/viam_protos.app.app/Model-class.html)> (required):
-- `url` [(Visibility)](https://flutter.viam.dev/viam_protos.app.app/Visibility-class.html)<[Model](https://flutter.viam.dev/viam_protos.app.app/Model-class.html)> (required):
-- `visibility` [(Visibility)](https://flutter.viam.dev/viam_protos.app.app/Visibility-class.html)<[Model](https://flutter.viam.dev/viam_protos.app.app/Model-class.html)> (required):
+- `description` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `entrypoint` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `models` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Model](https://flutter.viam.dev/viam_protos.app.app/Model-class.html)> (required):
+- `moduleId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `url` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `visibility` [(Visibility)](https://flutter.viam.dev/viam_protos.app.app/Visibility-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/updateModule.html).
 

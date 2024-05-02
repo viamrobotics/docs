@@ -16,7 +16,6 @@ Filter and download binary data. The data will be paginated into pages of limit 
 - `include_internal_data` [(bool)](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool) (required): Whether to return the internal data. Internal data is used for Viam-specific data ingestion, like cloud SLAM. Defaults to False
 - `dest` [(str)](<INSERT PARAM TYPE LINK>) (optional): Optional filepath for writing retrieved data.
 
-
 **Returns:**
 
 - [(Tuple[List[BinaryData], int, str])](INSERT RETURN TYPE LINK): The binary data. int: The count (number of entries) str: The last-returned page ID.
@@ -35,7 +34,6 @@ while True:
     if not data:
         break
     my_data.extend(data)
-
 ```
 
 {{% /tab %}}
@@ -44,10 +42,13 @@ while True:
 **Parameters:**
 
 - `countOnly` [(bool)](https://api.flutter.dev/flutter/dart-core/bool-class.html) (required):
-- `dataRequest` [(bool)](https://api.flutter.dev/flutter/dart-core/bool-class.html) (required):
+- `dataRequest` [(DataRequest)](https://flutter.viam.dev/viam_protos.app.data/DataRequest-class.html) (required):
 - `includeBinary` [(bool)](https://api.flutter.dev/flutter/dart-core/bool-class.html) (required):
 - `includeInternalData` [(bool)](https://api.flutter.dev/flutter/dart-core/bool-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.data/DataServiceClient/binaryDataByFilter.html).
 

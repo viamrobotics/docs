@@ -11,7 +11,6 @@ Transform a given source Pose from the reference [frame](/mobility/frame-system/
 - `destination` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) (required): The name of the reference frame to transform the given pose to.
 - `additional_transforms` [(List[viam.proto.common.Transform])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform) (optional):
 
-
 **Returns:**
 
 - [(viam.proto.common.PoseInFrame)](INSERT RETURN TYPE LINK): The pose and the reference frame for the new destination.
@@ -20,7 +19,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ``` python {class="line-numbers linkable-line-numbers"}
 pose = await robot.transform_pose(PoseInFrame(), "origin")
-
 ```
 
 {{% /tab %}}
@@ -28,16 +26,16 @@ pose = await robot.transform_pose(PoseInFrame(), "origin")
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- `referenceframe`[(PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#referenceframe):
-- `dst`[(string)](<INSERT PARAM TYPE LINK>)
-- `referenceframe`[(LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#referenceframe):
-- [())](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `referenceframe`[(PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#PoseInFrame):
+- `dst`[(string)](https://pkg.go.dev/builtin#string):
+- `referenceframe`[(LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#LinkInFrame):
+- [())](<INSERT PARAM TYPE LINK>):
 
 **Returns:**
 
-- `referenceframe`[(PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#referenceframe):
-- [(error)](<INSERT PARAM TYPE LINK>)
+- `referenceframe`[(PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#PoseInFrame):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
@@ -46,10 +44,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `destination` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Transform](https://flutter.viam.dev/viam_protos.common.common/Transform-class.html)> (required):
-- `source` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Transform](https://flutter.viam.dev/viam_protos.common.common/Transform-class.html)> (required):
+- `destination` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `source` [(PoseInFrame)](https://flutter.viam.dev/viam_sdk/PoseInFrame-class.html) (required):
 - `supplementalTransforms` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Transform](https://flutter.viam.dev/viam_protos.common.common/Transform-class.html)> (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.robot.robot/RobotServiceClient/transformPose.html).
 

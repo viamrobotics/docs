@@ -5,6 +5,9 @@
 
 Get a list of all locations under the currently authed-to organization.
 
+**Parameters:**
+
+- None.
 
 **Returns:**
 
@@ -14,7 +17,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ``` python {class="line-numbers linkable-line-numbers"}
 locations = await cloud.list_locations()
-
 ```
 
 {{% /tab %}}
@@ -24,6 +26,9 @@ locations = await cloud.list_locations()
 
 - `organizationId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/listLocations.html).
 

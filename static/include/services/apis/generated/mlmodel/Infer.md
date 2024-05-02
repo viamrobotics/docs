@@ -10,7 +10,6 @@ Take an already ordered input tensor as an array, make an inference on the model
 - `input_tensors` [(Dict[str, numpy.typing.NDArray])](<INSERT PARAM TYPE LINK>) (required): A dictionary of input flat tensors as specified in the metadata
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(Dict[str, numpy.typing.NDArray])](INSERT RETURN TYPE LINK): A dictionary of output flat tensors as specified in the metadata
@@ -26,7 +25,6 @@ nd_array = np.array([1, 2, 3], dtype=np.float64)
 input_tensors = {"0": nd_array}
 
 output_tensors = await my_mlmodel.infer(input_tensors)
-
 ```
 
 {{% /tab %}}
@@ -34,13 +32,13 @@ output_tensors = await my_mlmodel.infer(input_tensors)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- `tensors`[(Tensors)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/ml#tensors):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `tensors`[(Tensors)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/ml#Tensors):
 
 **Returns:**
 
-- `ml`[(Tensors)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/ml#ml):
-- [(error)](<INSERT PARAM TYPE LINK>)
+- `ml`[(Tensors)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/ml#Tensors):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/mlmodel#Service).
 
@@ -49,10 +47,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `inputTensors` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
+- `inputTensors` [(FlatTensors)](https://flutter.viam.dev/viam_protos.service.mlmodel/FlatTensors-class.html) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.mlmodel/MLModelServiceClient/infer.html).
 

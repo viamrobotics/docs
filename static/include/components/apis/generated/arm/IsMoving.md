@@ -9,7 +9,6 @@ Get if the arm is currently moving.
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(bool)](INSERT RETURN TYPE LINK): Whether the arm is moving.
@@ -24,7 +23,6 @@ await my_arm.stop()
 
 # Print if the arm is currently moving.
 print(my_arm.is_moving())
-
 ```
 
 {{% /tab %}}
@@ -34,6 +32,9 @@ print(my_arm.is_moving())
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.arm/ArmServiceClient/isMoving.html).
 

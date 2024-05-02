@@ -9,7 +9,6 @@ Get the Mode the service is operating in.
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(viam.services.navigation.Mode.ValueType)](INSERT RETURN TYPE LINK): The Mode the service is operating in.
@@ -21,7 +20,6 @@ my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
 
 # Get the Mode the service is operating in
 await my_nav.get_mode()
-
 ```
 
 {{% /tab %}}
@@ -29,13 +27,13 @@ await my_nav.get_mode()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [(Mode)](<INSERT PARAM TYPE LINK>)
-- [(error)](<INSERT PARAM TYPE LINK>)
+- [(Mode)](https://pkg.go.dev#Mode):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
@@ -44,9 +42,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.navigation/NavigationServiceClient/getMode.html).
 

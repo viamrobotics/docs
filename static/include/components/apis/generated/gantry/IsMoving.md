@@ -9,7 +9,6 @@ Get if the gantry is currently moving.
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(bool)](INSERT RETURN TYPE LINK): Whether the gantry is moving.
@@ -25,7 +24,6 @@ await my_gantry.stop()
 
 # Print if the gantry is currently moving.
 print(my_gantry.is_moving())
-
 ```
 
 {{% /tab %}}
@@ -35,6 +33,9 @@ print(my_gantry.is_moving())
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.gantry/GantryServiceClient/isMoving.html).
 

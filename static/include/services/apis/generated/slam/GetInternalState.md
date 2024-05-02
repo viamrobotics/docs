@@ -9,7 +9,6 @@ Get the internal state of the SLAM algorithm required to continue mapping/locali
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(List[bytes])](INSERT RETURN TYPE LINK): Chunks of the internal state of the SLAM algorithm
@@ -21,7 +20,6 @@ slam = SLAMClient.from_robot(robot=robot, name="my_slam_service")
 
 # Get the internal state of the SLAM algorithm required to continue mapping/localization.
 internal_state = await slam.get_internal_state()
-
 ```
 
 {{% /tab %}}
@@ -29,7 +27,11 @@ internal_state = await slam.get_internal_state()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+
+**Returns:**
+
+- None.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
 
@@ -40,6 +42,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.slam/SLAMServiceClient/getInternalState.html).
 

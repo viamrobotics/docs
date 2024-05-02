@@ -11,7 +11,6 @@ Update the authorizations attached to an organization invite that has already be
 - `add_authorizations` [(List[viam.proto.app.Authorization])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization) (optional): Optional list of authorizations to add to the invite.
 - `remove_authorizations` [(List[viam.proto.app.Authorization])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization) (optional): Optional list of authorizations to remove from the invite.
 
-
 **Returns:**
 
 - [(viam.proto.app.OrganizationInvite)](INSERT RETURN TYPE LINK): The updated invite.
@@ -34,7 +33,6 @@ update_invite = await cloud.update_organization_invite_authorizations(
     email="notarealemail@viam.com",
     add_authorizations =[authorization_to_add]
 )
-
 ```
 
 {{% /tab %}}
@@ -43,10 +41,13 @@ update_invite = await cloud.update_organization_invite_authorizations(
 **Parameters:**
 
 - `addAuthorizations` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Authorization](https://flutter.viam.dev/viam_protos.app.app/Authorization-class.html)> (required):
-- `email` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Authorization](https://flutter.viam.dev/viam_protos.app.app/Authorization-class.html)> (required):
-- `organizationId` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Authorization](https://flutter.viam.dev/viam_protos.app.app/Authorization-class.html)> (required):
+- `email` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `organizationId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 - `removeAuthorizations` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Authorization](https://flutter.viam.dev/viam_protos.app.app/Authorization-class.html)> (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/updateOrganizationInviteAuthorizations.html).
 

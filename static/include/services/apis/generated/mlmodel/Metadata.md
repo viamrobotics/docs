@@ -9,7 +9,6 @@ Get the metadata (such as name, type, expected tensor/array shape, inputs, and o
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(viam.services.mlmodel.mlmodel.Metadata)](INSERT RETURN TYPE LINK): The metadata
@@ -20,7 +19,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_mlmodel = MLModelClient.from_robot(robot=robot, name="my_mlmodel_service")
 
 metadata = await my_mlmodel.metadata()
-
 ```
 
 {{% /tab %}}
@@ -28,12 +26,12 @@ metadata = await my_mlmodel.metadata()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
 
 **Returns:**
 
-- [(MLMetadata)](<INSERT PARAM TYPE LINK>)
-- [(error)](<INSERT PARAM TYPE LINK>)
+- [(MLMetadata)](https://pkg.go.dev#MLMetadata):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/mlmodel#Service).
 
@@ -42,9 +40,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.mlmodel/MLModelServiceClient/metadata.html).
 

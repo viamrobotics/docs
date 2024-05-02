@@ -12,6 +12,9 @@ Spin the motor the specified number of revolutions at specified rpm. When rpm or
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
+**Returns:**
+
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/client/index.html#viam.components.motor.client.MotorClient.go_for).
 
@@ -20,7 +23,6 @@ my_motor = Motor.from_robot(robot=robot, name="my_motor")
 
 # Turn the motor 7.2 revolutions at 60 RPM.
 await my_motor.go_for(rpm=60, revolutions=7.2)
-
 ```
 
 {{% /tab %}}
@@ -28,9 +30,9 @@ await my_motor.go_for(rpm=60, revolutions=7.2)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- [(rpm)](<INSERT PARAM TYPE LINK>)
-- `revolutions`[(float64)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- [(rpm)](<INSERT PARAM TYPE LINK>):
+- `revolutions`[(float64)](https://pkg.go.dev/builtin#float64):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -44,11 +46,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html) (required):
-- `name` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
+- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 - `revolutions` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html) (required):
 - `rpm` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.motor/MotorServiceClient/goFor.html).
 

@@ -12,7 +12,6 @@ Updates organization details.
 - `region` [(str)](<INSERT PARAM TYPE LINK>) (optional): If provided, updates the org’s region.
 - `cid` [(str)](<INSERT PARAM TYPE LINK>) (optional): If provided, update’s the org’s CRM ID.
 
-
 **Returns:**
 
 - [(viam.proto.app.Organization)](INSERT RETURN TYPE LINK): The updated organization.
@@ -30,6 +29,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `publicNamespace` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 - `region` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/updateOrganization.html).
 

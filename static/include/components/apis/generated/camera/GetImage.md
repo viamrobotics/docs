@@ -11,7 +11,6 @@ Get the next image from the camera as an Image or RawImage. Be sure to close the
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(PIL.Image.Image | viam.components.camera.RawImage)](INSERT RETURN TYPE LINK): The frame
@@ -27,7 +26,6 @@ frame = await my_camera.get_image(mime_type = CameraMimeType.VIAM_RAW_DEPTH)
 # Convert "frame" to a standard 2D image representation.
 # Remove the 1st 3x8 bytes and reshape the raw bytes to List[List[Int]].
 standard_frame = frame.bytes_to_depth_array()
-
 ```
 
 {{% /tab %}}
@@ -35,13 +33,13 @@ standard_frame = frame.bytes_to_depth_array()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- `gostream`[(ErrorHandler)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/gostream#gostream):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `gostream`[(ErrorHandler)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/gostream#ErrorHandler):
 
 **Returns:**
 
-- `gostream`[(VideoStream)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/gostream#gostream):
-- [(error)](<INSERT PARAM TYPE LINK>)
+- `gostream`[(VideoStream)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/gostream#VideoStream):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).
 
@@ -50,10 +48,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
 - `mimeType` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.camera/CameraServiceClient/getImage.html).
 

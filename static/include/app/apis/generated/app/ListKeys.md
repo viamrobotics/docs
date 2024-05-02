@@ -5,6 +5,9 @@
 
 Lists all keys for the currently-authed-to org.
 
+**Parameters:**
+
+- None.
 
 **Returns:**
 
@@ -14,7 +17,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ``` python {class="line-numbers linkable-line-numbers"}
 keys = cloud.list_keys()
-
 ```
 
 {{% /tab %}}
@@ -24,6 +26,9 @@ keys = cloud.list_keys()
 
 - `orgId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/listKeys.html).
 

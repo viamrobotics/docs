@@ -11,6 +11,9 @@ Set the current position (modified by offset) to be the new zero (home) position
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
+**Returns:**
+
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/client/index.html#viam.components.motor.client.MotorClient.reset_zero_position).
 
@@ -19,7 +22,6 @@ my_motor = Motor.from_robot(robot=robot, name="my_motor")
 
 # Set the current position as the new home position with no offset.
 await my_motor.reset_zero_position(offset=0.0)
-
 ```
 
 {{% /tab %}}
@@ -27,8 +29,8 @@ await my_motor.reset_zero_position(offset=0.0)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- `offset`[(float64)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `offset`[(float64)](https://pkg.go.dev/builtin#float64):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -42,10 +44,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html) (required):
-- `name` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
+- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 - `offset` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.motor/MotorServiceClient/resetZeroPosition.html).
 

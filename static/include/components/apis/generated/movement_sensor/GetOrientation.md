@@ -10,7 +10,6 @@ Get the current orientation
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(viam.components.movement_sensor.Orientation)](INSERT RETURN TYPE LINK): The orientation
@@ -23,7 +22,6 @@ my_movement_sensor = MovementSensor.from_robot(
 
 # Get the current orientation vector of the movement sensor.
 orientation = await my_movement_sensor.get_orientation()
-
 ```
 
 {{% /tab %}}
@@ -31,13 +29,13 @@ orientation = await my_movement_sensor.get_orientation()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `spatialmath`[(Orientation)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/spatialmath#spatialmath):
-- [(error)](<INSERT PARAM TYPE LINK>)
+- `spatialmath`[(Orientation)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/spatialmath#Orientation):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
@@ -46,9 +44,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.movementsensor/MovementSensorServiceClient/getOrientation.html).
 

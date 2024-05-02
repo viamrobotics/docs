@@ -11,7 +11,6 @@ Change the name of a location and/or assign it a new parent location.
 - `name` [(str)](<INSERT PARAM TYPE LINK>) (optional): Optional new name to be updated on the location. Defaults to the empty string “” (i.e., the name doesn’t change).
 - `parent_location_id` [(str)](<INSERT PARAM TYPE LINK>) (optional): Optional ID of new parent location to move the location under. Defaults to the empty string “” (i.e., no new parent location is assigned).
 
-
 **Returns:**
 
 - [(viam.proto.app.Location)](INSERT RETURN TYPE LINK): The newly updated location.
@@ -39,7 +38,6 @@ my_updated_location = await cloud.update_location(
     name="",
     parent_location_id=""
 )
-
 ```
 
 {{% /tab %}}
@@ -52,6 +50,9 @@ my_updated_location = await cloud.update_location(
 - `parentLocationId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 - `region` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/updateLocation.html).
 

@@ -12,6 +12,9 @@ Spin the base in place angle degrees, at the given angular velocity, expressed i
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
+**Returns:**
+
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.spin).
 
@@ -20,7 +23,6 @@ my_base = Base.from_robot(robot=robot, name="my_base")
 
 # Spin the base 10 degrees at an angular velocity of 15 deg/sec.
 await my_base.spin(angle=10, velocity=15)
-
 ```
 
 {{% /tab %}}
@@ -28,9 +30,9 @@ await my_base.spin(angle=10, velocity=15)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- [(angleDeg)](<INSERT PARAM TYPE LINK>)
-- `degsPerSec`[(float64)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- [(angleDeg)](<INSERT PARAM TYPE LINK>):
+- `degsPerSec`[(float64)](https://pkg.go.dev/builtin#float64):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -44,11 +46,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `angleDeg` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `degsPerSec` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `angleDeg` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html) (required):
+- `degsPerSec` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.base/BaseServiceClient/spin.html).
 

@@ -11,6 +11,9 @@ Stop a component being moved by an in progress move_on_globe() or move_on_map() 
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
+**Returns:**
+
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.MotionClient.stop_plan).
 
@@ -20,7 +23,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 # or `move_on_map()`
 my_base_resource_name = Base.get_resource_name("my_base")
 await motion.stop_plan(component_name=mvmnt_sensor)
-
 ```
 
 {{% /tab %}}
@@ -28,8 +30,8 @@ await motion.stop_plan(component_name=mvmnt_sensor)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- `req`[(StopPlanReq)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `req`[(StopPlanReq)](https://pkg.go.dev#StopPlanReq):
 
 **Returns:**
 
@@ -42,10 +44,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `componentName` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `componentName` [(ResourceName)](https://flutter.viam.dev/viam_sdk/ResourceName-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.motion/MotionServiceClient/stopPlan.html).
 

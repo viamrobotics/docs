@@ -5,6 +5,9 @@
 
 Get app-related information about the robot.
 
+**Parameters:**
+
+- None.
 
 **Returns:**
 
@@ -17,12 +20,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
 
 **Returns:**
 
-- `cloud`[(Metadata)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/cloud#cloud):
-- [(error)](<INSERT PARAM TYPE LINK>)
+- `cloud`[(Metadata)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/cloud#Metadata):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
@@ -32,6 +35,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Parameters:**
 
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.robot.robot/RobotServiceClient/getCloudMetadata.html).
 

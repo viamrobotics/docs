@@ -12,6 +12,9 @@ Add a role under the currently authed-to organization.
 - `resource_type` [(Literal[organization] | Literal[location] | Literal[robot])](<INSERT PARAM TYPE LINK>) (required): Type of the resource to add role to. Must match resource_id.
 - `resource_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) (required): ID of the resource the role applies to (i.e., either an organization, location, or robot ID).
 
+**Returns:**
+
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.add_role).
 
@@ -21,7 +24,6 @@ await cloud.add_role(
     role="owner",
     resource_type="location",
     resource_id="111ab12345")
-
 ```
 
 {{% /tab %}}
@@ -31,6 +33,9 @@ await cloud.add_role(
 
 - `authorization` [(Authorization)](https://flutter.viam.dev/viam_protos.app.app/Authorization-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/addRole.html).
 

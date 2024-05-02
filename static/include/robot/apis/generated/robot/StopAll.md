@@ -9,13 +9,15 @@ Cancel all current and outstanding operations for the robot and stop all actuato
 
 - `extra` [(Mapping[str, Any])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName) (required): Extra options to pass to the underlying RPC call.
 
+**Returns:**
+
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.stop_all).
 
 ``` python {class="line-numbers linkable-line-numbers"}
 # Cancel all current and outstanding operations for the robot and stop all actuators and movement.
 await robot.stop_all()
-
 ```
 
 {{% /tab %}}
@@ -23,7 +25,7 @@ await robot.stop_all()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -39,6 +41,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - `extra` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[StopExtraParameters](https://flutter.viam.dev/viam_protos.robot.robot/StopExtraParameters-class.html)> (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.robot.robot/RobotServiceClient/stopAll.html).
 

@@ -12,7 +12,6 @@ Get a list of classifications in the next image given a camera and a classifier
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(List[viam.proto.service.vision.Classification])](INSERT RETURN TYPE LINK): The list of Classifications
@@ -28,7 +27,6 @@ my_classifier = VisionClient.from_robot(robot, "my_classifier")
 # Get the 2 classifications with the highest confidence scores from the next image from the camera
 classifications = await my_classifier.get_classifications_from_camera(
     camera_name, 2)
-
 ```
 
 {{% /tab %}}
@@ -36,16 +34,16 @@ classifications = await my_classifier.get_classifications_from_camera(
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- `cameraName`[(string)](<INSERT PARAM TYPE LINK>)
-- `n`[(int)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `cameraName`[(string)](https://pkg.go.dev/builtin#string):
+- `n`[(int)](https://pkg.go.dev/builtin#int):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-- [())](<INSERT PARAM TYPE LINK>)
+- [())](<INSERT PARAM TYPE LINK>):
 
 **Returns:**
 
-- `classification`[(Classifications)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/vision/classification#classification):
-- [(error)](<INSERT PARAM TYPE LINK>)
+- `classification`[(Classifications)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/vision/classification#Classifications):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
 
@@ -55,10 +53,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `cameraName` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `n` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
+- `n` [(int)](https://api.flutter.dev/flutter/dart-core/int-class.html) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.vision/VisionServiceClient/getClassificationsFromCamera.html).
 

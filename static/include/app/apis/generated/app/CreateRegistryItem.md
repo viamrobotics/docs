@@ -5,10 +5,13 @@
 
 **Parameters:**
 
-- `name` [(PackageType)](https://flutter.viam.dev/viam_protos.app.packages/PackageType-class.html) (required):
-- `organizationId` [(PackageType)](https://flutter.viam.dev/viam_protos.app.packages/PackageType-class.html) (required):
+- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `organizationId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 - `type` [(PackageType)](https://flutter.viam.dev/viam_protos.app.packages/PackageType-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/createRegistryItem.html).
 

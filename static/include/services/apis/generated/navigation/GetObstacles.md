@@ -9,7 +9,6 @@ Get an array or list of the obstacles currently in the service’s data storage.
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(List[viam.services.navigation.GeoObstacle])](INSERT RETURN TYPE LINK): A list comprised of each GeoObstacle in the service’s data storage. These are objects designated for the robot to avoid when navigating.
@@ -21,7 +20,6 @@ my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
 
 # Get a list containing each obstacle stored by the navigation service
 obstacles = await my_nav.get_obstacles()
-
 ```
 
 {{% /tab %}}
@@ -29,13 +27,13 @@ obstacles = await my_nav.get_obstacles()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `spatialmath`[(GeoObstacle)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/spatialmath#spatialmath):
-- [(error)](<INSERT PARAM TYPE LINK>)
+- `spatialmath`[(GeoObstacle)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/spatialmath#GeoObstacle):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
@@ -44,9 +42,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.navigation/NavigationServiceClient/getObstacles.html).
 

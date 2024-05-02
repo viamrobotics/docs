@@ -9,7 +9,6 @@ Get a list of tags using a filter.
 
 - `filter` [(viam.proto.app.data.Filter)](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter) (optional): Filter specifying data to retrieve from. If no Filter is provided, all data tags will return.
 
-
 **Returns:**
 
 - [(List[str])](INSERT RETURN TYPE LINK): The list of tags.
@@ -21,7 +20,6 @@ from viam.proto.app.data import Filter
 
 my_filter = Filter(component_name="my_camera")
 tags = await data_client.tags_by_filter(my_filter)
-
 ```
 
 {{% /tab %}}
@@ -31,6 +29,9 @@ tags = await data_client.tags_by_filter(my_filter)
 
 - `filter` [(Filter)](https://flutter.viam.dev/viam_protos.app.data/Filter-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.data/DataServiceClient/tagsByFilter.html).
 

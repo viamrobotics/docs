@@ -9,7 +9,6 @@ Get information about the navigation service.
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(viam.services.navigation.MapType.ValueType)](INSERT RETURN TYPE LINK): Information about the type of map the service is using.
@@ -21,7 +20,6 @@ my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
 
 # Get the properties of the current navigation service.
 nav_properties = await my_nav.get_properties()
-
 ```
 
 {{% /tab %}}
@@ -29,12 +27,12 @@ nav_properties = await my_nav.get_properties()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
 
 **Returns:**
 
-- [(Properties)](<INSERT PARAM TYPE LINK>)
-- [(error)](<INSERT PARAM TYPE LINK>)
+- [(Properties)](https://pkg.go.dev#Properties):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
@@ -45,6 +43,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.navigation/NavigationServiceClient/getProperties.html).
 

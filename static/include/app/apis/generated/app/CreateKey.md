@@ -10,7 +10,6 @@ Creates a new [API key](/fleet/cli/#authenticate).
 - `authorizations` [(List[APIKeyAuthorization])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization) (required): A list of authorizations to associate with the key.
 - `name` [(str)](<INSERT PARAM TYPE LINK>) (optional): A name for the key. If None, defaults to the current timestamp.
 
-
 **Returns:**
 
 - [(Tuple[str, str])](INSERT RETURN TYPE LINK): The api key and api key ID.
@@ -27,7 +26,6 @@ resource_id="your-robot-id123"
 )
 
 api_key, api_key_id = cloud.create_key([auth], "my_key")
-
 ```
 
 {{% /tab %}}
@@ -35,9 +33,12 @@ api_key, api_key_id = cloud.create_key([auth], "my_key")
 
 **Parameters:**
 
-- `authorizations` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html)<[Authorization](https://flutter.viam.dev/viam_protos.app.app/Authorization-class.html)> (required):
-- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html)<[Authorization](https://flutter.viam.dev/viam_protos.app.app/Authorization-class.html)> (required):
+- `authorizations` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Authorization](https://flutter.viam.dev/viam_protos.app.app/Authorization-class.html)> (required):
+- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/createKey.html).
 

@@ -9,7 +9,6 @@ Get simultaneous images from different imagers, along with associated metadata. 
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(Tuple[List[viam.media.video.NamedImage], viam.proto.common.ResponseMetadata])](INSERT RETURN TYPE LINK):  A tuple containing two values; the first [0] a list of images returned from thecamera system, and the second [1] the metadata associated with this response.   
@@ -22,7 +21,6 @@ my_camera = Camera.from_robot(robot=robot, name="my_camera")
 images, metadata = await my_camera.get_images()
 img0 = images[0].image
 timestamp = metadata.captured_at
-
 ```
 
 {{% /tab %}}
@@ -30,13 +28,13 @@ timestamp = metadata.captured_at
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
 
 **Returns:**
 
-- [(NamedImage)](<INSERT PARAM TYPE LINK>)
-- `resource`[(ResponseMetadata)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/resource#resource):
-- [(error)](<INSERT PARAM TYPE LINK>)
+- [(NamedImage)](https://pkg.go.dev#NamedImage):
+- `resource`[(ResponseMetadata)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/resource#ResponseMetadata):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).
 
@@ -47,6 +45,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.camera/CameraServiceClient/getImages.html).
 

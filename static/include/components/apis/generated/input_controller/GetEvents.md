@@ -10,7 +10,6 @@ Returns the most recent Event for each input (which should be the current state)
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(Dict[viam.components.input.input.Control, viam.components.input.input.Event])](INSERT RETURN TYPE LINK): The most recent event for each input
@@ -27,7 +26,6 @@ recent_events = await my_controller.get_events()
 
 # Print out the most recent Event for each Control.
 print(f"Recent Events: {recent_events}")
-
 ```
 
 {{% /tab %}}
@@ -35,13 +33,13 @@ print(f"Recent Events: {recent_events}")
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `Control`[(Event)](https://pkg.go.dev#Control#Control):
-- [(error)](<INSERT PARAM TYPE LINK>)
+- `Control`[(Event)](https://pkg.go.dev#Event):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
@@ -50,9 +48,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `controller` [(Struct)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `extra` [(Struct)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `controller` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.input_controller/InputControllerServiceClient/getEvents.html).
 

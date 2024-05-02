@@ -10,7 +10,6 @@ Get the current value of the interrupt, which is based on the type of interrupt.
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(int)](INSERT RETURN TYPE LINK): The current value.
@@ -27,7 +26,6 @@ interrupt = await my_board.digital_interrupt_by_name(
 # Get the amount of times this DigitalInterrupt has been interrupted with a
 # tick.
 count = await interrupt.value()
-
 ```
 
 {{% /tab %}}
@@ -35,13 +33,13 @@ count = await interrupt.value()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [(int64)](<INSERT PARAM TYPE LINK>)
-- [(error)](<INSERT PARAM TYPE LINK>)
+- [(int64)](https://pkg.go.dev/builtin#int64):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt).
 
@@ -50,10 +48,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `boardName` [(Struct)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `digitalInterruptName` [(Struct)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `extra` [(Struct)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `boardName` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `digitalInterruptName` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.board/BoardServiceClient/getDigitalInterruptValue.html).
 

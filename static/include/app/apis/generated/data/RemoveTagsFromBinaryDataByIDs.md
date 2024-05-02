@@ -10,7 +10,6 @@ Remove tags from binary.
 - `tags` [(List[str])](<INSERT PARAM TYPE LINK>) (required): List of tags to remove from specified binary data. Must be non-empty.
 - `binary_ids` [(List[viam.proto.app.data.BinaryID])](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID) (required): List of BinaryID objects specifying binary data to untag. Must be non-empty.
 
-
 **Returns:**
 
 - [(int)](INSERT RETURN TYPE LINK): The number of tags removed.
@@ -39,7 +38,6 @@ for obj in binary_metadata:
 
 binary_data = await data_client.remove_tags_from_binary_data_by_ids(
     tags, my_ids)
-
 ```
 
 {{% /tab %}}
@@ -47,9 +45,12 @@ binary_data = await data_client.remove_tags_from_binary_data_by_ids(
 
 **Parameters:**
 
-- `binaryIds` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required):
+- `binaryIds` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)> (required):
 - `tags` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.data/DataServiceClient/removeTagsFromBinaryDataByIDs.html).
 

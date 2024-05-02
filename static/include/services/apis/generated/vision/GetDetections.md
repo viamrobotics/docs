@@ -11,7 +11,6 @@ Get a list of detections in the given image using the specified detector
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(List[viam.proto.service.vision.Detection])](INSERT RETURN TYPE LINK): A list of 2D bounding boxes, their labels, and the confidence score of the labels, around the found objects in the next 2D image from the given camera, with the given detector applied to it.
@@ -30,7 +29,6 @@ img = await cam1.get_image()
 
 # Get detections from that image
 detections = await my_detector.get_detections(img)
-
 ```
 
 {{% /tab %}}
@@ -38,14 +36,14 @@ detections = await my_detector.get_detections(img)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- `img`[(Image)](https://pkg.go.dev/image#img):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `img`[(Image)](https://pkg.go.dev/image#Image):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `objectdetection`[(Detection)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/vision/objectdetection#objectdetection):
-- [(error)](<INSERT PARAM TYPE LINK>)
+- `objectdetection`[(Detection)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/vision/objectdetection#Detection):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
 
@@ -54,13 +52,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `extra` [(Int64)](https://pub.dev/documentation/fixnum/1.1.0/fixnum/Int64-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required):
-- `height` [(Int64)](https://pub.dev/documentation/fixnum/1.1.0/fixnum/Int64-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required):
-- `image` [(Int64)](https://pub.dev/documentation/fixnum/1.1.0/fixnum/Int64-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required):
-- `mimeType` [(Int64)](https://pub.dev/documentation/fixnum/1.1.0/fixnum/Int64-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required):
-- `name` [(Int64)](https://pub.dev/documentation/fixnum/1.1.0/fixnum/Int64-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required):
-- `width` [(Int64)](https://pub.dev/documentation/fixnum/1.1.0/fixnum/Int64-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
+- `height` [(Int64)](https://pub.dev/documentation/fixnum/1.1.0/fixnum/Int64-class.html) (required):
+- `image` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required):
+- `mimeType` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `width` [(Int64)](https://pub.dev/documentation/fixnum/1.1.0/fixnum/Int64-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.vision/VisionServiceClient/getDetections.html).
 

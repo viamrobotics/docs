@@ -5,6 +5,9 @@
 
 List the modules under the currently authed-to organization.
 
+**Parameters:**
+
+- None.
 
 **Returns:**
 
@@ -14,7 +17,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ``` python {class="line-numbers linkable-line-numbers"}
 modules_list = await cloud.list_modules()
-
 ```
 
 {{% /tab %}}
@@ -24,6 +26,9 @@ modules_list = await cloud.list_modules()
 
 - `organizationId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/listModules.html).
 

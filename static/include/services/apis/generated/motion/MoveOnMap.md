@@ -15,7 +15,6 @@ Move a component to a specific pose, using a SlamService for the SLAM map, using
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(str)](INSERT RETURN TYPE LINK): ExecutionID of the move_on_map() call, which can be used to track execution progress.
@@ -37,7 +36,6 @@ my_pose = Pose(y=10)
 execution_id = await motion.move_on_map(component_name=my_base_resource_name,
                                         destination=my_pose,
                                         slam_service_name=my_slam_service_name)
-
 ```
 
 {{% /tab %}}
@@ -45,14 +43,14 @@ execution_id = await motion.move_on_map(component_name=my_base_resource_name,
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- `req`[(MoveOnMapReq)](<INSERT PARAM TYPE LINK>)
-- [())](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `req`[(MoveOnMapReq)](https://pkg.go.dev#MoveOnMapReq):
+- [())](<INSERT PARAM TYPE LINK>):
 
 **Returns:**
 
-- [(ExecutionID)](<INSERT PARAM TYPE LINK>)
-- [(error)](<INSERT PARAM TYPE LINK>)
+- [(ExecutionID)](https://pkg.go.dev#ExecutionID):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
@@ -61,14 +59,17 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `componentName` [(ResourceName)](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)<[Geometry](https://flutter.viam.dev/viam_protos.common.common/Geometry-class.html)> (required):
-- `destination` [(ResourceName)](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)<[Geometry](https://flutter.viam.dev/viam_protos.common.common/Geometry-class.html)> (required):
-- `extra` [(ResourceName)](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)<[Geometry](https://flutter.viam.dev/viam_protos.common.common/Geometry-class.html)> (required):
-- `motionConfiguration` [(ResourceName)](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)<[Geometry](https://flutter.viam.dev/viam_protos.common.common/Geometry-class.html)> (required):
-- `name` [(ResourceName)](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)<[Geometry](https://flutter.viam.dev/viam_protos.common.common/Geometry-class.html)> (required):
-- `obstacles` [(ResourceName)](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)<[Geometry](https://flutter.viam.dev/viam_protos.common.common/Geometry-class.html)> (required):
-- `slamServiceName` [(ResourceName)](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)<[Geometry](https://flutter.viam.dev/viam_protos.common.common/Geometry-class.html)> (required):
+- `componentName` [(ResourceName)](https://flutter.viam.dev/viam_sdk/ResourceName-class.html) (required):
+- `destination` [(Pose)](https://flutter.viam.dev/viam_sdk/Pose-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
+- `motionConfiguration` [(MotionConfiguration)](https://flutter.viam.dev/viam_protos.service.motion/MotionConfiguration-class.html) (required):
+- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `obstacles` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Geometry](https://flutter.viam.dev/viam_protos.common.common/Geometry-class.html)> (required):
+- `slamServiceName` [(ResourceName)](https://flutter.viam.dev/viam_sdk/ResourceName-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.motion/MotionServiceClient/moveOnMap.html).
 

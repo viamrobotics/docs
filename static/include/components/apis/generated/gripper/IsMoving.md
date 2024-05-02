@@ -9,7 +9,6 @@ Get if the gripper is currently moving.
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(bool)](INSERT RETURN TYPE LINK): Whether the gripper is moving.
@@ -22,7 +21,6 @@ my_gripper = Gripper.from_robot(robot=robot, name="my_gripper")
 # Check whether the gripper is currently moving.
 moving = await my_gripper.is_moving()
 print('Moving:', moving)
-
 ```
 
 {{% /tab %}}
@@ -32,6 +30,9 @@ print('Moving:', moving)
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.gripper/GripperServiceClient/isMoving.html).
 

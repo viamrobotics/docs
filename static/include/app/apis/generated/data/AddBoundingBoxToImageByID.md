@@ -14,7 +14,6 @@ Add a bounding box to an image.
 - `x_max_normalized` [(float)](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex) (required): Max X value of the bounding box normalized from 0 to 1.
 - `y_max_normalized` [(float)](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex) (required): Max Y value of the bounding box normalized from 0 to 1.
 
-
 **Returns:**
 
 - [(str)](INSERT RETURN TYPE LINK): The bounding box ID
@@ -40,7 +39,6 @@ bbox_label = await data_client.add_bounding_box_to_image_by_id(
 )
 
 print(bbox_label)
-
 ```
 
 {{% /tab %}}
@@ -48,13 +46,16 @@ print(bbox_label)
 
 **Parameters:**
 
-- `binaryId` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html) (required):
-- `label` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html) (required):
+- `binaryId` [(BinaryID)](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html) (required):
+- `label` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 - `xMaxNormalized` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html) (required):
 - `xMinNormalized` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html) (required):
 - `yMaxNormalized` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html) (required):
 - `yMinNormalized` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.data/DataServiceClient/addBoundingBoxToImageByID.html).
 

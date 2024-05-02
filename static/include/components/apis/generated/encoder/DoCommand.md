@@ -10,7 +10,6 @@ Send/Receive arbitrary commands to the Resource
 - `command` [(Mapping[str, ValueTypes])](<INSERT PARAM TYPE LINK>) (required): The command to execute
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(Mapping[str, viam.utils.ValueTypes])](INSERT RETURN TYPE LINK): Result of the executed command
@@ -20,7 +19,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ``` python {class="line-numbers linkable-line-numbers"}
 command = {"cmd": "test", "data1": 500}
 result = component.do(command)
-
 ```
 
 {{% /tab %}}
@@ -28,9 +26,12 @@ result = component.do(command)
 
 **Parameters:**
 
-- `command` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `command` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.encoder/EncoderServiceClient/doCommand.html).
 

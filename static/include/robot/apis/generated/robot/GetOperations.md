@@ -5,6 +5,9 @@
 
 Get the list of operations currently running on the robot.
 
+**Parameters:**
+
+- None.
 
 **Returns:**
 
@@ -14,7 +17,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ``` python {class="line-numbers linkable-line-numbers"}
 operations = await robot.get_operations()
-
 ```
 
 {{% /tab %}}
@@ -23,6 +25,9 @@ operations = await robot.get_operations()
 **Parameters:**
 
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.robot.robot/RobotServiceClient/getOperations.html).
 

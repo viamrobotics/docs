@@ -11,7 +11,6 @@ Report the position of the encoder. The value returned is the current position i
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(Tuple[float, viam.proto.component.encoder.PositionType.ValueType])](INSERT RETURN TYPE LINK):  A tuple containing two values; the first [0] the Position of the encoder which can either beticks since last zeroing for a relative encoder or degrees for an absolute encoder, and the second [1] the type of position the encoder returns (ticks or degrees).   
@@ -24,7 +23,6 @@ my_encoder = Encoder.from_robot(robot=robot, name='my_encoder')
 # Get the position of the encoder in ticks
 position = await my_encoder.get_position(encoder.PositionTypeTicks)
 print("The encoder position is currently ", position[0], position[1])
-
 ```
 
 {{% /tab %}}
@@ -32,15 +30,15 @@ print("The encoder position is currently ", position[0], position[1])
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- `positionType`[(PositionType)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `positionType`[(PositionType)](https://pkg.go.dev#PositionType):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [(float64)](<INSERT PARAM TYPE LINK>)
-- [(PositionType)](<INSERT PARAM TYPE LINK>)
-- [(error)](<INSERT PARAM TYPE LINK>)
+- [(float64)](https://pkg.go.dev/builtin#float64):
+- [(PositionType)](https://pkg.go.dev#PositionType):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/encoder#Encoder).
 
@@ -49,10 +47,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [(PositionType)](https://flutter.viam.dev/viam_protos.component.encoder/PositionType-class.html) (required):
-- `name` [(PositionType)](https://flutter.viam.dev/viam_protos.component.encoder/PositionType-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
+- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 - `positionType` [(PositionType)](https://flutter.viam.dev/viam_protos.component.encoder/PositionType-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.encoder/EncoderServiceClient/getPosition.html).
 

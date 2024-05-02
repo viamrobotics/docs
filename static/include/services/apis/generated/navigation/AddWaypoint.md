@@ -10,6 +10,9 @@ Add a waypoint to the service’s data storage.
 - `point` [(viam.services.navigation.GeoPoint)](<INSERT PARAM TYPE LINK>) (required): The current location of the robot in the navigation service, represented in a GeoPoint with latitude and longitude values.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
+**Returns:**
+
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.add_waypoint).
 
@@ -22,7 +25,6 @@ my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
 
  # Add your waypoint to the service's data storage
  await my_nav.add_waypoint(point=location)
-
 ```
 
 {{% /tab %}}
@@ -30,8 +32,8 @@ my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- `geo`[(Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#geo):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `geo`[(Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -45,10 +47,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `location` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
+- `location` [(GeoPoint)](https://flutter.viam.dev/viam_sdk/GeoPoint-class.html) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.navigation/NavigationServiceClient/addWaypoint.html).
 

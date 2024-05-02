@@ -12,6 +12,9 @@ Register a function that will fire on given EventTypes for a given Control
 - `function` [(viam.components.input.input.ControlFunction)](<INSERT PARAM TYPE LINK>) (optional): The function to run on specific triggers
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 
+**Returns:**
+
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.register_control_callback).
 
@@ -53,7 +56,6 @@ async def main():
     await handleController(my_controller)
 
     # ... < INSERT ANY OTHER CODE FOR MAIN FUNCTION >
-
 ```
 
 {{% /tab %}}
@@ -61,10 +63,10 @@ async def main():
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- `control`[(Control)](<INSERT PARAM TYPE LINK>)
-- [(EventType)](<INSERT PARAM TYPE LINK>)
-- `ctrlFunc`[(ControlFunction)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `control`[(Control)](https://pkg.go.dev#Control):
+- [(EventType)](https://pkg.go.dev#EventType):
+- `ctrlFunc`[(ControlFunction)](https://pkg.go.dev#ControlFunction):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -74,3 +76,4 @@ async def main():
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
 {{% /tab %}}
+{{< /tabs >}}

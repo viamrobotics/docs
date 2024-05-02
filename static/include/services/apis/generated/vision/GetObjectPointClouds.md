@@ -11,7 +11,6 @@ Returns a list of the 3D point cloud objects and associated metadata in the late
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(List[viam.proto.common.PointCloudObject])](INSERT RETURN TYPE LINK): The pointcloud objects with metadata
@@ -33,7 +32,6 @@ with open("/tmp/pointcloud_data.pcd", "wb") as f:
     f.write(objects[0].point_cloud)
 pcd = o3d.io.read_point_cloud("/tmp/pointcloud_data.pcd")
 points = np.asarray(pcd.points)
-
 ```
 
 {{% /tab %}}
@@ -41,14 +39,14 @@ points = np.asarray(pcd.points)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- `cameraName`[(string)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `cameraName`[(string)](https://pkg.go.dev/builtin#string):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `viz`[(Object)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/vision#viz):
-- [(error)](<INSERT PARAM TYPE LINK>)
+- `viz`[(Object)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/vision#Object):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
 
@@ -58,10 +56,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `cameraName` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
 - `mimeType` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.vision/VisionServiceClient/getObjectPointClouds.html).
 

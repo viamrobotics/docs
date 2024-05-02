@@ -9,7 +9,6 @@ Get an array of waypoints currently in the service’s data storage. These are l
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(List[viam.services.navigation.Waypoint])](INSERT RETURN TYPE LINK): An array comprised of each Waypoint in the service’s data storage. These are locations designated within a path for the robot to navigate to.
@@ -21,7 +20,6 @@ my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
 
 # Get a list containing each waypoint stored by the navigation service
 waypoints = await my_nav.get_waypoints()
-
 ```
 
 {{% /tab %}}
@@ -29,13 +27,13 @@ waypoints = await my_nav.get_waypoints()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [(Waypoint)](<INSERT PARAM TYPE LINK>)
-- [(error)](<INSERT PARAM TYPE LINK>)
+- [(Waypoint)](https://pkg.go.dev#Waypoint):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
@@ -44,9 +42,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.navigation/NavigationServiceClient/getWaypoints.html).
 

@@ -5,6 +5,9 @@
 
 List the organization(s) the user is an authorized owner of.
 
+**Parameters:**
+
+- None.
 
 **Returns:**
 
@@ -14,7 +17,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ``` python {class="line-numbers linkable-line-numbers"}
 org_list = await cloud.list_organizations()
-
 ```
 
 {{% /tab %}}
@@ -23,6 +25,9 @@ org_list = await cloud.list_organizations()
 **Parameters:**
 
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/listOrganizations.html).
 

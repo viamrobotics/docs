@@ -12,6 +12,9 @@ Write an analog value to a pin on the board.
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
+**Returns:**
+
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.write_analog).
 
@@ -20,7 +23,6 @@ my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Set pin 11 to value 48.
 await my_board.write_analog(pin="11", value=48)
-
 ```
 
 {{% /tab %}}
@@ -28,9 +30,9 @@ await my_board.write_analog(pin="11", value=48)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- `pin`[(string)](<INSERT PARAM TYPE LINK>)
-- `value`[(int32)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `pin`[(string)](https://pkg.go.dev/builtin#string):
+- `value`[(int32)](https://pkg.go.dev/builtin#int32):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -44,11 +46,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [(int)](https://api.flutter.dev/flutter/dart-core/int-class.html) (required):
-- `name` [(int)](https://api.flutter.dev/flutter/dart-core/int-class.html) (required):
-- `pin` [(int)](https://api.flutter.dev/flutter/dart-core/int-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
+- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `pin` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 - `value` [(int)](https://api.flutter.dev/flutter/dart-core/int-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.board/BoardServiceClient/writeAnalog.html).
 

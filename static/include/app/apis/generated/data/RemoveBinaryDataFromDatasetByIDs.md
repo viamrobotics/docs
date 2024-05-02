@@ -10,6 +10,9 @@ Remove the BinaryData from the provided dataset.
 - `binary_ids` [(List[viam.proto.app.data.BinaryID])](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.BinaryID) (required): The IDs of binary data to remove from dataset.
 - `dataset_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) (required): The ID of the dataset to be removed from.
 
+**Returns:**
+
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_binary_data_from_dataset_by_ids).
 
@@ -35,7 +38,6 @@ await data_client.remove_binary_data_from_dataset_by_ids(
     binary_ids=my_binary_ids,
     dataset_id="abcd-1234xyz-8765z-123abc"
 )
-
 ```
 
 {{% /tab %}}
@@ -43,9 +45,12 @@ await data_client.remove_binary_data_from_dataset_by_ids(
 
 **Parameters:**
 
-- `binaryIds` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)> (required):
-- `datasetId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)> (required):
+- `binaryIds` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)> (required):
+- `datasetId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.data/DataServiceClient/removeBinaryDataFromDatasetByIDs.html).
 

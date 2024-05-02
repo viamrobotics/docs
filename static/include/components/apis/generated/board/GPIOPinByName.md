@@ -9,7 +9,6 @@ Get a GPIO Pin by name.
 
 - `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) (required): Name of the GPIO pin.
 
-
 **Returns:**
 
 - [(viam.components.board.board.Board.GPIOPin)](INSERT RETURN TYPE LINK): The pin.
@@ -21,7 +20,6 @@ my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the GPIOPin with pin number 15.
 pin = await my_board.gpio_pin_by_name(name="15")
-
 ```
 
 {{% /tab %}}
@@ -29,13 +27,14 @@ pin = await my_board.gpio_pin_by_name(name="15")
 
 **Parameters:**
 
-- `name`[(string)](<INSERT PARAM TYPE LINK>)
+- `name`[(string)](https://pkg.go.dev/builtin#string):
 
 **Returns:**
 
-- [(GPIOPin)](<INSERT PARAM TYPE LINK>)
-- [(error)](<INSERT PARAM TYPE LINK>)
+- [(GPIOPin)](https://pkg.go.dev#GPIOPin):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
 {{% /tab %}}
+{{< /tabs >}}

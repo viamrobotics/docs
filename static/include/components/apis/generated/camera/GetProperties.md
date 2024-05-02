@@ -9,7 +9,6 @@ Get the camera intrinsic parameters and camera distortion parameters
 
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(viam.components.camera.Camera.Properties)](INSERT RETURN TYPE LINK): The properties of the camera
@@ -20,7 +19,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_camera = Camera.from_robot(robot=robot, name="my_camera")
 
 properties = await my_camera.get_properties()
-
 ```
 
 {{% /tab %}}
@@ -28,12 +26,12 @@ properties = await my_camera.get_properties()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
 
 **Returns:**
 
-- [(Properties)](<INSERT PARAM TYPE LINK>)
-- [(error)](<INSERT PARAM TYPE LINK>)
+- [(Properties)](https://pkg.go.dev#Properties):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).
 
@@ -44,6 +42,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.camera/CameraServiceClient/getProperties.html).
 

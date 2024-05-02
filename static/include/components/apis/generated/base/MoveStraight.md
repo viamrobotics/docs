@@ -12,6 +12,9 @@ Move the base in a straight line the given distance, expressed in millimeters, a
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
+**Returns:**
+
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.move_straight).
 
@@ -23,7 +26,6 @@ await my_base.move_straight(distance=40, velocity=90)
 
 # Move the base 40 mm at a velocity of -90 mm/s, backward.
 await my_base.move_straight(distance=40, velocity=-90)
-
 ```
 
 {{% /tab %}}
@@ -31,9 +33,9 @@ await my_base.move_straight(distance=40, velocity=-90)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- `distanceMm`[(int)](<INSERT PARAM TYPE LINK>)
-- `mmPerSec`[(float64)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `distanceMm`[(int)](https://pkg.go.dev/builtin#int):
+- `mmPerSec`[(float64)](https://pkg.go.dev/builtin#float64):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -47,11 +49,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `distanceMm` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
-- `mmPerSec` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `distanceMm` [(Int64)](https://pub.dev/documentation/fixnum/1.1.0/fixnum/Int64-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
+- `mmPerSec` [(double)](https://api.flutter.dev/flutter/dart-core/double-class.html) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.base/BaseServiceClient/moveStraight.html).
 

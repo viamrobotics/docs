@@ -9,7 +9,6 @@ Get a location’s LocationAuth (location secret(s)).
 
 - `location_id` [(str)](<INSERT PARAM TYPE LINK>) (optional): ID of the location to retrieve LocationAuth from. Defaults to the location ID provided at AppClient instantiation.
 
-
 **Returns:**
 
 - [(viam.proto.app.LocationAuth)](INSERT RETURN TYPE LINK): The LocationAuth containing location secrets.
@@ -18,7 +17,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ``` python {class="line-numbers linkable-line-numbers"}
 loc_auth = await cloud.location_auth(location_id="123xy12345")
-
 ```
 
 {{% /tab %}}
@@ -28,6 +26,9 @@ loc_auth = await cloud.location_auth(location_id="123xy12345")
 
 - `locationId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/locationAuth.html).
 

@@ -10,7 +10,6 @@ Send/receive arbitrary commands.
 - `command` [(Mapping[str, ValueTypes])](<INSERT PARAM TYPE LINK>) (required): The command to execute
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(Mapping[str, viam.utils.ValueTypes])](INSERT RETURN TYPE LINK): Result of the executed command
@@ -27,7 +26,6 @@ my_command = {
 
 # Can be used with any resource, using the motion service as an example
 await motion.do_command(command=my_command)
-
 ```
 
 {{% /tab %}}
@@ -35,9 +33,12 @@ await motion.do_command(command=my_command)
 
 **Parameters:**
 
-- `command` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `command` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.slam/SLAMServiceClient/doCommand.html).
 

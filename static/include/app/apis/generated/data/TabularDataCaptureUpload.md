@@ -16,7 +16,6 @@ Upload tabular sensor data.
 - `tags` [(List[str])](<INSERT PARAM TYPE LINK>) (optional): Optional list of tags to allow for tag-based data filtering when retrieving data.
 - `data_request_times` [(List[Tuple[datetime.datetime, datetime.datetime]])](<INSERT PARAM TYPE LINK>) (optional): Optional list of tuples, each containing datetime objects denoting the times this data was requested[0] by the robot and received[1] from the appropriate sensor. Passing a list of tabular data and Timestamps with length n > 1 will result in n datapoints being uploaded, all tied to the same metadata.
 
-
 **Returns:**
 
 - [(str)](INSERT RETURN TYPE LINK): the file_id of the uploaded data.
@@ -36,7 +35,7 @@ file_id = await data_client.tabular_data_capture_upload(
     data_request_times=[(time_requested, time_received)],
     tabular_data=[{'PowerPCT': 0, 'IsPowered': False}]
 )
-
 ```
 
 {{% /tab %}}
+{{< /tabs >}}

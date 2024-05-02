@@ -5,6 +5,9 @@
 
 Get the names of all known digital interrupts.
 
+**Parameters:**
+
+- None.
 
 **Returns:**
 
@@ -17,7 +20,6 @@ my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the name of every DigitalInterrupt configured on the board.
 names = await my_board.digital_interrupt_names()
-
 ```
 
 {{% /tab %}}
@@ -25,13 +27,14 @@ names = await my_board.digital_interrupt_names()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [(string)](<INSERT PARAM TYPE LINK>)
+- [(string)](https://pkg.go.dev/builtin#string):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
 {{% /tab %}}
+{{< /tabs >}}

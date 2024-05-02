@@ -9,12 +9,14 @@ Blocks on the specified operation on the robot. This function will only return w
 
 - `id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) (required): ID of operation to block on.
 
+**Returns:**
+
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.block_for_operation).
 
 ``` python {class="line-numbers linkable-line-numbers"}
 await robot.block_for_operation("INSERT OPERATION ID")
-
 ```
 
 {{% /tab %}}
@@ -24,6 +26,9 @@ await robot.block_for_operation("INSERT OPERATION ID")
 
 - `id` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.robot.robot/RobotServiceClient/blockForOperation.html).
 

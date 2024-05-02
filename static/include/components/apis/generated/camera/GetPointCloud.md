@@ -10,7 +10,6 @@ Get the next point cloud from the camera. This will be returned as bytes with a 
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(Tuple[bytes, str])](INSERT RETURN TYPE LINK):  A tuple containing two values; the first [0] the pointcloud data, and the second [1] the mimetype of thepointcloud (e.g. PCD).   
@@ -28,7 +27,6 @@ with open("/tmp/pointcloud_data.pcd", "wb") as f:
     f.write(data)
 pcd = o3d.io.read_point_cloud("/tmp/pointcloud_data.pcd")
 points = np.asarray(pcd.points)
-
 ```
 
 {{% /tab %}}
@@ -36,12 +34,12 @@ points = np.asarray(pcd.points)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
 
 **Returns:**
 
-- `pointcloud`[(PointCloud)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/pointcloud#pointcloud):
-- [(error)](<INSERT PARAM TYPE LINK>)
+- `pointcloud`[(PointCloud)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/pointcloud#PointCloud):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).
 
@@ -50,10 +48,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
 - `mimeType` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 - `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.component.camera/CameraServiceClient/getPointCloud.html).
 

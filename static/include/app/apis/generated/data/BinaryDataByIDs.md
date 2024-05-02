@@ -10,7 +10,6 @@ Filter and download binary data.
 - `binary_ids` [(List[viam.proto.app.data.BinaryID])](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID) (required): BinaryID objects specifying the desired data. Must be non-empty.
 - `dest` [(str)](<INSERT PARAM TYPE LINK>) (optional): Optional filepath for writing retrieved data.
 
-
 **Returns:**
 
 - [(List[BinaryData])](INSERT RETURN TYPE LINK): The binary data.
@@ -36,7 +35,6 @@ for obj in binary_metadata:
     )
 
 binary_data = await data_client.binary_data_by_ids(my_ids)
-
 ```
 
 {{% /tab %}}
@@ -44,9 +42,12 @@ binary_data = await data_client.binary_data_by_ids(my_ids)
 
 **Parameters:**
 
-- `binaryIds` [(bool)](https://api.flutter.dev/flutter/dart-core/bool-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)> (required):
-- `includeBinary` [(bool)](https://api.flutter.dev/flutter/dart-core/bool-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)> (required):
+- `binaryIds` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)> (required):
+- `includeBinary` [(bool)](https://api.flutter.dev/flutter/dart-core/bool-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.data/DataServiceClient/binaryDataByIDs.html).
 

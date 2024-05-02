@@ -9,7 +9,6 @@ Filter and delete binary data.
 
 - `binary_ids` [(List[viam.proto.app.data.BinaryID])](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID) (required): BinaryID objects specifying the data to be deleted. Must be non-empty.
 
-
 **Returns:**
 
 - [(int)](INSERT RETURN TYPE LINK): The number of items deleted.
@@ -35,7 +34,6 @@ for obj in binary_metadata:
     )
 
 binary_data = await data_client.delete_binary_data_by_ids(my_ids)
-
 ```
 
 {{% /tab %}}
@@ -45,6 +43,9 @@ binary_data = await data_client.delete_binary_data_by_ids(my_ids)
 
 - `binaryIds` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)> (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.data/DataServiceClient/deleteBinaryDataByIDs.html).
 

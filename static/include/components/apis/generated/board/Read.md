@@ -10,7 +10,6 @@ Read the current value.
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(int)](INSERT RETURN TYPE LINK): The current value.
@@ -33,7 +32,6 @@ reader = await my_board.analog_reader_by_name(
 # Get the value of the digital signal "my_example_analog_reader" has most
 # recently measured.
 reading = reader.read()
-
 ```
 
 {{% /tab %}}
@@ -41,14 +39,15 @@ reading = reader.read()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [(int)](<INSERT PARAM TYPE LINK>)
-- [(error)](<INSERT PARAM TYPE LINK>)
+- [(int)](https://pkg.go.dev/builtin#int):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Analog).
 
 {{% /tab %}}
+{{< /tabs >}}

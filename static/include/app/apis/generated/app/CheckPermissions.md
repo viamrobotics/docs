@@ -9,7 +9,6 @@ Checks validity of a list of permissions.
 
 - `permissions` [(List[viam.proto.app.AuthorizedPermissions])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions) (required): the permissions to validate (e.g., “read_organization”, “control_robot”)
 
-
 **Returns:**
 
 - [(List[viam.proto.app.AuthorizedPermissions])](INSERT RETURN TYPE LINK): The permissions argument, with invalid permissions filtered out.
@@ -27,7 +26,6 @@ permissions = [AuthorizedPermissions(resource_type="organization",
                                                   "read_robot_logs"])]
 
 filtered_permissions = await cloud.check_permissions(permissions)
-
 ```
 
 {{% /tab %}}
@@ -37,6 +35,9 @@ filtered_permissions = await cloud.check_permissions(permissions)
 
 - `permissions` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[AuthorizedPermissions](https://flutter.viam.dev/viam_protos.app.app/AuthorizedPermissions-class.html)> (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.app/AppServiceClient/checkPermissions.html).
 

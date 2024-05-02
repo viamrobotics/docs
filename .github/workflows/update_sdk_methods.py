@@ -915,12 +915,15 @@ def parse(type, names):
                             and not regex.search('info_', tag.text))
 
                         this_method_dict["parameters"] = {}
-                        this_method_parameters_dict = {}
                         this_method_dict["returns"] = {}
-                        this_method_returns_dict = {}
 
                         # Parse parameters:
                         for parameter_tag in parameters_soup:
+
+                            ## Create new empty dictionary this_method_parameters_dict to house all parameter
+                            ## keys for this method, to allow for multiple parameters. Also resets the
+                            ## previous parameter's data when looping through multiple parameters:
+                            this_method_parameters_dict = {}
 
                             param_name = parameter_tag.get('id')
                             this_method_parameters_dict["param_link"] = parameter_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
@@ -951,6 +954,12 @@ def parse(type, names):
                                 and not regex.search('info_', tag.text))
 
                             for return_tag in returns_soup:
+
+                                ## Create new empty dictionary this_method_parameters_dict to house all parameter
+                                ## keys for this method, to allow for multiple parameters. Also resets the
+                                ## previous parameter's data when looping through multiple parameters:
+                                this_method_returns_dict = {}
+
                                 return_name = return_tag.get('id')
                                 this_method_returns_dict["return_link"] = return_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
 
@@ -991,9 +1000,6 @@ def parse_method_usage(usage_string):
     # Splitting the usage string by comma to separate parameters and removing unwanted substrings
     parameters = list(filter(None, (param.strip() for param in usage_string.replace("\n\t\t", "").replace("\n\t,", "").replace("\n\t", "").split(','))))
 
-    print("Parameters")
-    print(parameters)
-
     parsed_usage_string = []
 
     for param in parameters:
@@ -1013,14 +1019,10 @@ def parse_method_usage(usage_string):
             param_type_link = "https://pkg.go.dev/builtin#error"
         else:
             type_name = parts[-1].strip('` ')  # Remove backticks and spaces
-            # print(f"type_name: {type_name}")
-
             param_type = ' '.join(parts[:-1]).strip('() ')  # Remove parentheses and spaces
-            # print(f"param_type: {param_type}")
 
             # Extracting the type link from the type string
-            type_link = regex.search(r'<a href="([^"]+)">', param_type)
-            # print(f"type_link extracted: {type_link}")
+            type_link = regex.search(r'href="([^"]+)">', type_name)
             if type_link:
                 param_type_link = type_link.group(1)
             else:
@@ -1050,32 +1052,24 @@ def format_method_usage(parsed_usage_string):
             if matches:
                 # Extracted content between ">" and "<"
                 type_name = matches[0]
-                print("Extracted type name:", type_name)
-            else:
-                # passing for now
-                pass 
 
             return_string += f"- "
 
             # Extracting the parameter type from the param_type string
-            print(f"Type name pre extraction: {param_type}")
+            # print(f"Type name pre extraction: {param_type}")
             param_name = regex.search(r'\w+(?=\s*<)', param_type)
             if param_name:
                 param_name = param_name.group()
-                print(f"Param name detected: {param_name}")
                 return_string += f"`{param_name}`"
-            else:
-                print(f"No param name detected, param type: {param_type}")
             
             # Creating the parameter type link based on the extracted type name
-            print(f"CREATING PARAMETER TYPE LINK from param type link {param_type_link}")
+            # print(f"CREATING PARAMETER TYPE LINK from param type link {param_type_link}")
             if param_type_link:
-                print(f"type_link stripped: {param_type_link}")
-                param_type_link = f"https://pkg.go.dev{param_type_link}#{param_name}"
+                # print(f"type_link stripped: {param_type_link}")
+                param_type_link = f"https://pkg.go.dev{param_type_link}"
                 return_string += f"[({type_name})]({param_type_link}):"
             else:
-                print("No param type link")
-                return_string += f"[({type_name})](<INSERT PARAM TYPE LINK>)"
+                return_string += f"[({type_name})](<INSERT PARAM TYPE LINK>):"
 
             formatted_output.append(return_string)
 
@@ -1224,9 +1218,9 @@ def write_markdown(type, names, methods):
                                 
                                 output_file.write(method_description + '\n\n')
 
+                            output_file.write('**Parameters:**\n\n')
+
                             if 'parameters' in methods['python'][type][resource][py_method_name]:
-                                
-                                output_file.write('**Parameters:**\n\n')
 
                                 for parameter in methods['python'][type][resource][py_method_name]['parameters'].keys():
 
@@ -1271,11 +1265,13 @@ def write_markdown(type, names, methods):
                                     # line break for parameters list
                                     output_file.write('\n')
 
-                                output_file.write('\n')
-                            
+                            # Handle case where no parameters are found
+                            else:
+                                output_file.write("- None.\n")
+
+                            output_file.write('\n**Returns:**\n\n')
+
                             if 'return' in methods['python'][type][resource][py_method_name]:
-            
-                                output_file.write('\n**Returns:**\n\n')
 
                                 return_data = methods['python'][type][resource][py_method_name]["return"]
                                 return_type = return_data.get("return_type")
@@ -1303,12 +1299,12 @@ def write_markdown(type, names, methods):
                                         pass
 
                                     if return_description:
-                                        output_file.write(f": {return_description}")
-
-                                else:
-                                    output_file.write("None.")
-
-                                output_file.write("\n")
+                                        output_file.write(f": {return_description}\n")
+                                    else:
+                                        output_file.write(": <INSERT RETURN DESCRIPTION>\n")
+                            # Handle case where no returns are found
+                            else:
+                                output_file.write("- None.\n")
 
                             # Output the method link
                             output_file.write(f'\nFor more information, see the [Python SDK Docs]({methods["python"][type][resource][py_method_name]["method_link"]}).\n\n')
@@ -1317,7 +1313,7 @@ def write_markdown(type, names, methods):
                             if 'code_sample' in methods['python'][type][resource][py_method_name]:
 
                                 output_file.write('``` ' + code_fence_fmt['python'] + ' {class="line-numbers linkable-line-numbers"}\n')
-                                output_file.write(methods['python'][type][resource][py_method_name]['code_sample'] + '\n')
+                                output_file.write(methods['python'][type][resource][py_method_name]['code_sample'])
                                 output_file.write('```\n\n')
 
                             ## If we detected an 'after' method override file earlier, write it out here:
@@ -1327,7 +1323,10 @@ def write_markdown(type, names, methods):
                                 for line in open(method_override_file_path, 'r', encoding='utf-8'):
                                     output_file.write(line)
 
+                            # Close tabs
                             output_file.write("{{% /tab %}}\n")
+                            if not go_method_name and not flutter_method_name:
+                                output_file.write("{{< /tabs >}}\n")
 
                         if go_method_name and go_method_name != "Close":
                             output_file.write('{{% tab name="Go" %}}\n\n')
@@ -1372,18 +1371,11 @@ def write_markdown(type, names, methods):
                                         for line in open(method_override_file_path, 'r', encoding='utf-8'):
                                             output_file.write(line)
 
-                            ## [no descriptions]
-
                             if 'usage' in methods['go'][type][resource][go_method_name]:
 
                                 method_usage = methods['go'][type][resource][go_method_name]['usage']
 
-                                # print("USAGE STRING:")
-                                # print(method_usage)
-
                                 usage_string = method_usage.split('(')
-                                # print("SPLIT USAGE STRING")
-                                # print(usage_string)
 
                                 if len(usage_string) == 3:
                                     parameters = usage_string[1]
@@ -1391,8 +1383,6 @@ def write_markdown(type, names, methods):
 
                                 else:
                                     usage_string = usage_string[1].split(') ')
-                                    # print("SPLIT USAGE STRING WITH ONE RETURN")
-                                    # print(usage_string)
 
                                     if usage_string[0] != '':
                                         parameters = usage_string[0]
@@ -1401,30 +1391,31 @@ def write_markdown(type, names, methods):
                                     else:
                                         returns = usage_string[1]
 
+                                output_file.write('**Parameters:**\n\n')
+
                                 if parameters:
-                                    # print(f"Parameters: {parameters}")
-
                                     # Parse and format parameters
-                                    output_file.write('**Parameters:**\n\n')
-
                                     parsed_parameters = parse_method_usage(parameters)
                                     formatted_parameters = format_method_usage(parsed_parameters)
 
                                     for line in formatted_parameters:
                                         output_file.write(line + '\n')
+                                # Handle case where no parameters are found
+                                else:
+                                    output_file.write("- None.\n")
 
+                                output_file.write('\n**Returns:**\n\n')
                                 if returns:
-
-                                    # print(f"Returns: {returns}")
-
                                     # Parse and format returns
-                                    output_file.write('\n**Returns:**\n\n')
 
                                     parsed_returns = parse_method_usage(returns)
                                     formatted_returns = format_method_usage(parsed_returns)
 
                                     for line in formatted_returns:
                                         output_file.write(line + '\n')
+                                # Handle case where no returns are found
+                                else:
+                                    output_file.write("- None.\n")
 
                             # Output the method link
                             output_file.write(f'\nFor more information, see the [Go SDK Docs]({methods["go"][type][resource][go_method_name]["method_link"]}).\n\n')
@@ -1433,7 +1424,7 @@ def write_markdown(type, names, methods):
                             if 'code_sample' in methods['go'][type][resource][go_method_name]:
 
                                 output_file.write('``` ' + code_fence_fmt['go'] + ' {class="line-numbers linkable-line-numbers"}\n')
-                                output_file.write(methods['go'][type][resource][go_method_name]['code_sample'] + '\n')
+                                output_file.write(methods['go'][type][resource][go_method_name]['code_sample'])
                                 output_file.write('```\n\n')
 
                             ## If we detected an 'after' method override file earlier, write it out here:
@@ -1444,6 +1435,8 @@ def write_markdown(type, names, methods):
                                     output_file.write(line)
 
                             output_file.write("{{% /tab %}}\n")
+                            if not flutter_method_name:
+                                output_file.write("{{< /tabs >}}\n")
 
                         if flutter_method_name:
                             output_file.write('{{% tab name="Flutter" %}}\n\n')
@@ -1501,9 +1494,8 @@ def write_markdown(type, names, methods):
                                 
                                 output_file.write(method_description + '\n\n')
 
+                            output_file.write('**Parameters:**\n\n')
                             if 'parameters' in methods['flutter'][type][resource][flutter_method_name]:
-                                
-                                output_file.write('**Parameters:**\n\n')
 
                                 for parameter in methods['flutter'][type][resource][flutter_method_name]['parameters'].keys():
 
@@ -1548,11 +1540,12 @@ def write_markdown(type, names, methods):
                                     # line break for parameters list
                                     output_file.write('\n')
 
-                                output_file.write('\n')
-                            
+                            # Handle case where no parameters are found
+                            else:
+                                output_file.write("- None.\n")
+
+                            output_file.write('\n**Returns:**\n\n')
                             if 'return' in methods['flutter'][type][resource][flutter_method_name]:
-            
-                                output_file.write('\n**Returns:**\n\n')
 
                                 return_data = methods['flutter'][type][resource][flutter_method_name]["return"]
                                 return_type = return_data.get("return_type")
@@ -1581,11 +1574,11 @@ def write_markdown(type, names, methods):
 
                                     if return_description:
                                         output_file.write(f": {return_description}")
-
-                                else:
-                                    output_file.write("None.")
-
-                                output_file.write("\n")
+                                    else:
+                                        output_file.write(": <INSERT RETURN DESCRIPTION>")
+                            else:
+                                # Handle case where no parameters are found
+                                output_file.write("- None.\n")
 
                             # Output the method link
                             output_file.write(f'\nFor more information, see the [Flutter SDK Docs]({methods["flutter"][type][resource][flutter_method_name]["method_link"]}).\n\n')
@@ -1594,7 +1587,7 @@ def write_markdown(type, names, methods):
                             if 'code_sample' in methods['flutter'][type][resource][flutter_method_name]:
 
                                 output_file.write('``` ' + code_fence_fmt['flutter'] + ' {class="line-numbers linkable-line-numbers"}\n')
-                                output_file.write(methods['flutter'][type][resource][flutter_method_name]['code_sample'] + '\n')
+                                output_file.write(methods['flutter'][type][resource][flutter_method_name]['code_sample'])
                                 output_file.write('```\n\n')
 
                             ## If we detected an 'after' method override file earlier, write it out here:

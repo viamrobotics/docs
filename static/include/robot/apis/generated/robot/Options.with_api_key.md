@@ -10,7 +10,6 @@ Create RobotClient.Options with an [API key](/fleet/cli/#authenticate) for crede
 - `api_key` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) (required): your API key
 - `api_key_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) (required): your API key ID. Must be a valid UUID
 
-
 **Returns:**
 
 - [(typing_extensions.Self)](INSERT RETURN TYPE LINK): the RobotClient.Options
@@ -26,7 +25,7 @@ api_key_id = '<API-KEY-ID>'
 opts = RobotClient.Options.with_api_key(api_key, api_key_id)
 
 robot = await RobotClient.at_address('<ADDRESS-FROM-THE-VIAM-APP>', opts)
-
 ```
 
 {{% /tab %}}
+{{< /tabs >}}

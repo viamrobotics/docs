@@ -12,7 +12,6 @@ Get a list of classifications in the given image using the specified classifier
 - `extra` [(Mapping[str, Any])](<INSERT PARAM TYPE LINK>) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(float)](<INSERT PARAM TYPE LINK>) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
-
 **Returns:**
 
 - [(List[viam.proto.service.vision.Classification])](INSERT RETURN TYPE LINK): The list of Classifications
@@ -31,7 +30,6 @@ img = await cam1.get_image()
 
 # Get the 2 classifications with the highest confidence scores
 classifications = await my_classifier.get_classifications(img, 2)
-
 ```
 
 {{% /tab %}}
@@ -39,16 +37,16 @@ classifications = await my_classifier.get_classifications(img, 2)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#ctx):
-- `img`[(Image)](https://pkg.go.dev/image#img):
-- `n`[(int)](<INSERT PARAM TYPE LINK>)
+- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `img`[(Image)](https://pkg.go.dev/image#Image):
+- `n`[(int)](https://pkg.go.dev/builtin#int):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-- [())](<INSERT PARAM TYPE LINK>)
+- [())](<INSERT PARAM TYPE LINK>):
 
 **Returns:**
 
-- `classification`[(Classifications)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/vision/classification#classification):
-- [(error)](<INSERT PARAM TYPE LINK>)
+- `classification`[(Classifications)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/vision/classification#Classifications):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
 
@@ -57,14 +55,17 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `extra` [(int)](https://api.flutter.dev/flutter/dart-core/int-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required):
-- `height` [(int)](https://api.flutter.dev/flutter/dart-core/int-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required):
-- `image` [(int)](https://api.flutter.dev/flutter/dart-core/int-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required):
-- `mimeType` [(int)](https://api.flutter.dev/flutter/dart-core/int-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required):
-- `n` [(int)](https://api.flutter.dev/flutter/dart-core/int-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required):
-- `name` [(int)](https://api.flutter.dev/flutter/dart-core/int-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required):
-- `width` [(int)](https://api.flutter.dev/flutter/dart-core/int-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required):
+- `extra` [(Struct)](<INSERT PARAM TYPE LINK>) (required):
+- `height` [(int)](https://api.flutter.dev/flutter/dart-core/int-class.html) (required):
+- `image` [(List)](https://api.flutter.dev/flutter/dart-core/List-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required):
+- `mimeType` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `n` [(int)](https://api.flutter.dev/flutter/dart-core/int-class.html) (required):
+- `name` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required):
+- `width` [(int)](https://api.flutter.dev/flutter/dart-core/int-class.html) (required):
 
+**Returns:**
+
+- None.
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.service.vision/VisionServiceClient/getClassifications.html).
 

@@ -17,7 +17,6 @@ Upload binary sensor data.
 - `tags` [(List[str])](<INSERT PARAM TYPE LINK>) (optional): Optional list of tags to allow for tag-based data filtering when retrieving data.
 - `data_request_times` [(Tuple[datetime.datetime, datetime.datetime])](<INSERT PARAM TYPE LINK>) (optional): Optional tuple containing `datetime`s objects denoting the times this data was requested[0] by the robot and received[1] from the appropriate sensor.
 
-
 **Returns:**
 
 - [(str)](INSERT RETURN TYPE LINK): the file_id of the uploaded data.
@@ -39,7 +38,7 @@ file_id = await data_client.binary_data_capture_upload(
     file_extension=".jpg",
     binary_data=b"Encoded image bytes"
 )
-
 ```
 
 {{% /tab %}}
+{{< /tabs >}}

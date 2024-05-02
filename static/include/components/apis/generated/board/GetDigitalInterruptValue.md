@@ -9,7 +9,6 @@ Get a DigitalInterrupt by name.
 
 - `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) (required): Name of the digital interrupt.
 
-
 **Returns:**
 
 - [(viam.components.board.board.Board.DigitalInterrupt)](INSERT RETURN TYPE LINK): The digital interrupt.
@@ -22,7 +21,6 @@ my_board = Board.from_robot(robot=robot, name="my_board")
 # Get the DigitalInterrupt "my_example_digital_interrupt".
 interrupt = await my_board.digital_interrupt_by_name(
     name="my_example_digital_interrupt")
-
 ```
 
 {{% /tab %}}
@@ -30,13 +28,14 @@ interrupt = await my_board.digital_interrupt_by_name(
 
 **Parameters:**
 
-- `name`[(string)](<INSERT PARAM TYPE LINK>)
+- `name`[(string)](https://pkg.go.dev/builtin#string):
 
 **Returns:**
 
-- [(DigitalInterrupt)](<INSERT PARAM TYPE LINK>)
-- [(error)](<INSERT PARAM TYPE LINK>)
+- [(DigitalInterrupt)](https://pkg.go.dev#DigitalInterrupt):
+- [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
 {{% /tab %}}
+{{< /tabs >}}
