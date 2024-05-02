@@ -62,7 +62,7 @@ For more information, see [Fleet Management](/fleet/).
 
 ### Example
 
-Imagine you create a PM2.5 monitoring company called Pollution Monitoring Made Simple.
+Imagine you create an air quality monitoring company called Pollution Monitoring Made Simple.
 Anyone can sign up and order one of your sensing machines.
 When a new customer signs up, you assemble a new machine with a sensor, SBC, and power supply.
 
