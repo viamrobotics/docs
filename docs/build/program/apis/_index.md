@@ -383,7 +383,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(robot, "my_board")
+myBoard, err := board.FromRobot(machine, "my_board")
 
 resp, err := myBoard.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
 ```
