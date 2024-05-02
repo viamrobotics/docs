@@ -180,16 +180,17 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 ```go {class="line-numbers linkable-line-numbers" data-line="22"}
 myCam, err := camera.FromRobot(machine, "camera-1")
 visService, err := vision.FromRobot(machine, "my_detector")
+ctx := context.Background()
 
 // Get the stream from a camera
-camStream, err := myCam.Stream(context.Background())
+camStream, err := myCam.Stream(ctx)
 
 // Get an image from the camera stream
-img, release, err := camStream.Next(context.Background())
+img, release, err := camStream.Next(ctx)
 defer release()
 
 // Get the detections from the image
-detections, err := visService.Detections(context.Background(), img, nil)
+detections, err := visService.Detections(ctx, img, nil)
 if err != nil {
     logger.Fatalf("Could not get detections: %v", err)
 }
@@ -260,7 +261,7 @@ if err != nil {
 }
 
 // Get detections from the camera output
-detections, err := visService.DetectionsFromCamera(context.Background(), myCam, nil)
+detections, err := visService.DetectionsFromCamera(ctx, myCam, nil)
 if err != nil {
     logger.Fatalf("Could not get detections: %v", err)
 }
@@ -327,12 +328,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 ```go {class="line-numbers linkable-line-numbers" data-line="22"}
 myCam, err := camera.FromRobot(machine, "camera-1")
 visService, err := vision.FromRobot(machine, "my_detector")
+ctx := context.Background()
 
 // Get the stream from a camera
-camStream, err := myCam.Stream(context.Background())
+camStream, err := myCam.Stream(ctx)
 
 // Get an image from the camera stream
-img, release, err := camStream.Next(context.Background())
+img, release, err := camStream.Next(ctx)
 defer release()
 
 // Get the 2 classifications with the highest confidence scores from the image
@@ -401,9 +403,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
 myCam, err := camera.FromRobot(robot, "camera-1")
 visService, err := vision.FromRobot(machine, "my_detector")
+ctx := context.Background()
 
 // Get the 2 classifications with the highest confidence scores from the camera output
-classifications, err := visService.ClassificationsFromCamera(context.Background(), myCam, 2, nil)
+classifications, err := visService.ClassificationsFromCamera(ctx, myCam, 2, nil)
 if err != nil {
     logger.Fatalf("Could not get classifications: %v", err)
 }
@@ -463,9 +466,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 ```go {class="line-numbers linkable-line-numbers" data-line="15"}
 myCam, err := camera.FromRobot(machine, "camera-1")
 visService, err := vision.FromRobot(machine, "my_detector")
+ctx := context.Background()
 
 // Get the objects from the camera output
-objects, err := visService.GetObjectPointClouds(context.Background(), "camera-1", nil)
+objects, err := visService.GetObjectPointClouds(ctx, "camera-1", nil)
 if err != nil {
     logger.Fatalf("Could not get point clouds: %v", err)
 }
@@ -525,8 +529,9 @@ await vision_svc.do_command(my_command)
 ```go {class="line-numbers linkable-line-numbers"}
 // Access your vision service
 visService, err := vision.FromRobot(machine, "my_detector")
+ctx := context.Background()
 
-resp, err := visService.DoCommand(context.Background(), map[string]interface{}{"command": "dosomething", "someparameter": 52})
+resp, err := visService.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
@@ -570,8 +575,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 visService, err := vision.FromRobot(machine, "my_detector")
+ctx := context.Background()
 
-err := visService.Close(context.Background())
+err := visService.Close(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

@@ -161,9 +161,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ```go {class="line-numbers linkable-line-numbers"}
 data, err := data_manager.FromRobot(machine, "my_data_service")
+ctx := context.Background()
 
 // Sync data stored on the machine to the cloud.
-err = data.Sync(context.Background(), nil)
+err = data.Sync(ctx, nil)
 ```
 
 {{% /tab %}}
