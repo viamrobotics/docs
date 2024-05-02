@@ -124,9 +124,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 myGripper, err := gripper.FromRobot(machine, "my_gripper")
+ctx := context.Background()
 
 // Open the gripper.
-err = myGripper.Open(context.Background(), nil)
+err = myGripper.Open(ctx, nil)
 ```
 
 {{% /tab %}}
@@ -173,9 +174,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 myGripper, err := gripper.FromRobot(machine, "my_gripper")
+ctx := context.Background()
 
 // Grab with the gripper.
-grabbed, err := myGripper.Grab(context.Background(), nil)
+grabbed, err := myGripper.Grab(ctx, nil)
 ```
 
 {{% /tab %}}
@@ -222,9 +224,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 myGripper, err := gripper.FromRobot(machine, "my_gripper")
+ctx := context.Background()
 
 // Stop the gripper.
-err = myGripper.Stop(context.Background(), nil)
+err = myGripper.Stop(ctx, nil)
 ```
 
 {{% /tab %}}
@@ -271,9 +274,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ```go
 myGripper, err := gripper.FromRobot(robot, "my_gripper")
+ctx := context.Background()
 
 // Check whether the gripper is currently moving.
-moving, err := myGripper.IsMoving(context.Background())
+moving, err := myGripper.IsMoving(ctx)
 logger.Info("Is moving?")
 logger.Info(moving)
 ```
@@ -326,8 +330,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ```go {class="line-numbers linkable-line-numbers"}
 myGripper, err := gripper.FromRobot(machine, "my_gripper")
+ctx := context.Background()
 
-geometries, err := myGripper.Geometries(context.Background(), nil)
+geometries, err := myGripper.Geometries(ctx, nil)
 
 if len(geometries) > 0 {
     // Get the center of the first geometry
@@ -383,8 +388,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 myGripper, err := gripper.FromRobot(machine, "my_gripper")
+ctx := context.Background()
 
-resp, err := myGripper.DoCommand(context.Background(), map[string]interface{}{"command": "example"})
+resp, err := myGripper.DoCommand(ctx, map[string]interface{}{"command": "example"})
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/api/blob/main/component/gripper/v1/gripper_grpc.pb.go).
@@ -428,8 +434,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 myGripper, err := gripper.FromRobot(machine, "my_gripper")
+ctx := context.Background()
 
-err := myGripper.Close(context.Background())
+err := myGripper.Close(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

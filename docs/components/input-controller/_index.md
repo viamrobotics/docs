@@ -288,9 +288,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go {class="line-numbers linkable-line-numbers"}
 // Get the controller from the machine.
 myController, err := input.FromRobot(machine, "my_controller")
+ctx := context.Background()
 
 // Get the most recent Event for each Control.
-recent_events, err := myController.Events(context.Background(), nil)
+recent_events, err := myController.Events(ctx, nil)
 
 // Log the most recent Event for each Control.
 logger.Info("Recent Events: %v", recent_events)
@@ -347,9 +348,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go {class="line-numbers linkable-line-numbers"}
 // Get the controller from the machine.
 myController, err := input.FromRobot(machine, "my_controller")
+ctx := context.Background()
 
 // Get the list of Controls provided by the controller.
-controls, err := myController.Controls(context.Background(), nil)
+controls, err := myController.Controls(ctx, nil)
 
 // Log the list of Controls provided by the controller.
 logger.Info("Controls:")
@@ -532,9 +534,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```go {class="line-numbers linkable-line-numbers"}
 // Get the controller from the machine.
 myController, err := input.FromRobot(machine, "my_controller")
+ctx := context.Background()
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myController.DoCommand(context.Background(), command)
+result, err := myController.DoCommand(ctx, command)
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
