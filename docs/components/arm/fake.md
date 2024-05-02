@@ -25,6 +25,14 @@ Enter a name or use the suggested name for your arm and click **Create**.
 
 Fill in the attributes as applicable to your arm, according to the table below.
 
+{{% alert title="Important" color="note" %}}
+
+Exactly one of these attributes must be supplied for your `fake` arm to work.
+If neither are specified, an error is thrown asking for specification.
+If both attributes are specified, an error is thrown stating "can only populate either ArmModel or ModelPath - not both".
+
+{{% /alert %}}
+
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
@@ -68,13 +76,5 @@ The following attributes are available for `fake` arms:
 | ---- | ---- | --------- | ----------- |
 | `arm-model` | string | Optional | Model name of the robotic arm model you want your fake arm to act as. See [built-in arm models](../#supported-models) for supported model names. |
 | `model-path` | string | Optional | The path to the [kinematic configuration file](/internals/kinematic-chain-config/) of the arm driver you want your fake arm to act as. This path should point to the exact location where the file is located on your computer running `viam-server`. |
-
-{{% alert title="Important" color="note" %}}
-
-Exactly one of these attributes must be supplied for your `fake` arm to work.
-If neither are specified, an error is thrown asking for specification.
-If both attributes are specified, an error is thrown stating "can only populate either ArmModel or ModelPath - not both".
-
-{{% /alert %}}
 
 {{< readfile "/static/include/components/test-control/arm-control.md" >}}
