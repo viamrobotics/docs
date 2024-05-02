@@ -133,8 +133,10 @@ if err != nil {
   logger.Fatalf("cannot get power sensor: %v", err)
 }
 
+ctx:= context.Background()
+
 // Get the current reading from device in amps
-current, isAC, err := myPowerSensor.Current(context.Background(), nil)
+current, isAC, err := myPowerSensor.Current(ctx, nil)
 ```
 
 {{% /tab %}}
@@ -189,9 +191,10 @@ myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
 if err != nil {
   logger.Fatalf("cannot get power sensor: %v", err)
 }
+ctx := context.Background()
 
 // Get the voltage from device in volts
-voltage, isAC, err := myPowerSensor.Voltage(context.Background(), nil)
+voltage, isAC, err := myPowerSensor.Voltage(ctx, nil)
 ```
 
 {{% /tab %}}
@@ -246,8 +249,10 @@ if err != nil {
   logger.Fatalf("cannot get power sensor: %v", err)
 }
 
+ctx := context.Background()
+
 // Get the power measurement from device in watts
-power, err := myPowerSensor.Power(context.Background(), nil)
+power, err := myPowerSensor.Power(ctx, nil)
 ```
 
 {{% /tab %}}
@@ -297,9 +302,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
+ctx := context.Background()
 
 // Get the readings provided by the sensor.
-readings, err := myPowerSensor.Readings(context.Background(), nil)
+readings, err := myPowerSensor.Readings(ctx, nil)
 ```
 
 {{% /tab %}}
@@ -409,8 +415,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
+ctx := context.Background()
 
-resp, err := myPowerSensor.DoCommand(context.Background(), map[string]interface{}{"command": "reset", "example_param": 30})
+resp, err := myPowerSensor.DoCommand(ctx, map[string]interface{}{"command": "reset", "example_param": 30})
 ```
 
 For more information, see the [Go SDK Code](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

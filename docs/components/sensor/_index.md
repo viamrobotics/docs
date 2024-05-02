@@ -142,9 +142,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 mySensor, err := sensor.FromRobot(machine, "my_sensor")
+ctx := context.Background()
 
 // Get the readings provided by the sensor.
-readings, err := mySensor.Readings(context.Background(), nil)
+readings, err := mySensor.Readings(ctx, nil)
 ```
 
 {{% /tab %}}
@@ -255,8 +256,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 mySensor, err := sensor.FromRobot(machine, "my_sensor")
+ctx := context.Background()
 
-resp, err := mySensor.DoCommand(context.Background(), map[string]interface{}{"command": "calibrate", "offset": 273})
+resp, err := mySensor.DoCommand(ctx, map[string]interface{}{"command": "calibrate", "offset": 273})
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
