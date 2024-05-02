@@ -356,6 +356,17 @@ DoCommand sends commands containing arbitrary data to the resource.
 
 - [(`Mapping[str, viam.utils.ValueTypes]`)](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes): The result of the executed command.
 
+```python {class="line-numbers linkable-line-numbers"}
+my_board = Board.from_robot(robot=robot, name="my_board")
+
+my_command = {
+  "command": "dosomething",
+  "someparameter": 52
+}
+
+await my_board.do_command(my_command)
+```
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/resource/base/index.html).
 
 {{% /tab %}}
@@ -370,6 +381,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(map[string]interface{})](https://go.dev/blog/maps): The result of the executed command.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+resp, err := myBoard.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
