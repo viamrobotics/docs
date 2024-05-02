@@ -332,7 +332,7 @@ geometries, err := myGripper.Geometries(context.Background(), nil)
 if len(geometries) > 0 {
     // Get the center of the first geometry
     elem := geometries[0]
-    fmt.Println("Pose of the first geometry's center point:", elem.ToProtobuf().Center)
+    fmt.Println("Pose of the first geometry's center point:", elem.Pose())
 }
 ```
 
