@@ -71,7 +71,7 @@ After testing your classifier, see the following to further explore Viam's data 
 You can also explore our [tutorials](/tutorials/) for more machine learning ideas:
 
 {{< cards >}}
+{{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
 {{% card link="/tutorials/projects/pet-treat-dispenser/" customTitle="Smart Pet Feeder" %}}
 {{% card link="/registry/examples/tflite-module/" %}}
-{{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
 {{< /cards >}}
