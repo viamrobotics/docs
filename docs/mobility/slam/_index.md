@@ -104,6 +104,12 @@ pose = await slam.get_position()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam).
 
 ```go {class="line-numbers linkable-line-numbers"}
+mySlam, err := slam.FromRobot(machine, "my_slam_service")
+if err != nil {
+  logger.Error(err)
+  return
+}
+
 // Get the current position of the specified source component in the SLAM map as a Pose.
 pos, name, err := mySlam.Position(context.Background())
 ```
@@ -150,6 +156,12 @@ pcd_map = await slam_svc.get_point_cloud_map()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
+mySlam, err := slam.FromRobot(machine, "my_slam_service")
+if err != nil {
+  logger.Error(err)
+  return
+}
+
 // Get the point cloud map in standard PCD format.
 pcd_map, err := mySlam.PointCloudMap(context.Background(), true)
 ```
@@ -205,6 +217,12 @@ slam_properties = await slam_svc.get_properties()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties).
 
 ```go {class="line-numbers linkable-line-numbers"}
+mySlam, err := slam.FromRobot(machine, "my_slam_service")
+if err != nil {
+  logger.Error(err)
+  return
+}
+
 // Get the properties of your current SLAM session
 properties, err := mySlam.Properties(context.Background())
 ```
@@ -252,6 +270,12 @@ internal_state = await slam.get_internal_state()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
+mySlam, err := slam.FromRobot(machine, "my_slam_service")
+if err != nil {
+  logger.Error(err)
+  return
+}
+
 // Get the internal state of the SLAM algorithm required to continue mapping/localization.
 internalState, err := mySlam.InternalState(context.Background())
 ```
@@ -304,6 +328,12 @@ await slam.do_command(my_command)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
+mySlam, err := slam.FromRobot(machine, "my_slam_service")
+if err != nil {
+  logger.Error(err)
+  return
+}
+
 resp, err := mySlam.DoCommand(context.Background(), map[string]interface{}{"command": "dosomething", "someparameter": 52})
 ```
 
@@ -347,6 +377,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
+mySlam, err := slam.FromRobot(machine, "my_slam_service")
+if err != nil {
+  logger.Error(err)
+  return
+}
+
 err := mySlam.Close(context.Background())
 ```
 
