@@ -96,6 +96,12 @@ You do not need to perform any additional configuration when [querying data in t
    ```
 
 1. Configure a new database user for the Viam organization's MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance, which is where your machine's synced data is stored.
+
+   {{< alert title="Warning" color="warning" >}}
+   If you or someone else in your organization have already created this user, the following steps update the password for that user instead.
+   Dashboards or other integrations relying on this password will then need to be updated.
+   {{< /alert >}}
+
    Provide your organization's `org-id` from step 2, and a desired new password for your database user.
    Your password must be at least 8 characters long, and include at least one uppercase, one number, and one special character (such as `$` or `%`):
 
@@ -104,7 +110,6 @@ You do not need to perform any additional configuration when [querying data in t
    ```
 
    This command configures a new database user for your org for use with data query.
-   If you have already created this user, this command updates the password for that user instead.
 
 1. Determine the hostname for your organization's MongoDB Atlas Data Federation instance by running the following command with the organization's `org-id` from step 2:
 
