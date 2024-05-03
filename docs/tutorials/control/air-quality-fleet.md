@@ -224,8 +224,8 @@ Once you understand how to configure machines and use fragments, you can use [Pr
 #### Configure data capture and sync
 
 You have configured the sensor so the board can communicate with it, but sensor data is not yet being saved anywhere.
-Enable [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/) so that data from your air quality sensor will be first stored on the machine and then pushed up to the cloud where you can access all the data from your sensors remotely.
-You'll be able to access data from all sensors in all locations, and when you're ready, you can give customers [access](/fleet/rbac/) to the data from the sensors in their locations.
+Viam's [data management service](/data/) lets you capture data locally from each sensor and then sync it to the cloud where you can access historical sensor data and see trends over time.
+Once you configure the rest of your sensing machines, you'll be able to remotely access data from all sensors in all locations, and when you're ready, you can give customers [access](/fleet/rbac/) to the data from the sensors in their locations.
 
 Configure data capture and sync as follows:
 
