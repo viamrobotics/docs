@@ -63,10 +63,10 @@ async def main():
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `control`[(Control)](https://pkg.go.dev#Control):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `control` [(Control)](https://pkg.go.dev#Control):
 - [(EventType)](https://pkg.go.dev#EventType):
-- `ctrlFunc`[(ControlFunction)](https://pkg.go.dev#ControlFunction):
+- `ctrlFunc` [(ControlFunction)](https://pkg.go.dev#ControlFunction):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

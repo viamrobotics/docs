@@ -36,13 +36,13 @@ detections = await my_detector.get_detections(img)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `img`[(Image)](https://pkg.go.dev/image#Image):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `img` [(Image)](https://pkg.go.dev/image#Image):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `objectdetection`[(Detection)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/vision/objectdetection#Detection):
+- `objectdetection` [(Detection)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/vision/objectdetection#Detection):
 - [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).

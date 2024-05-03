@@ -26,15 +26,15 @@ pose = await robot.transform_pose(PoseInFrame(), "origin")
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `referenceframe`[(PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#PoseInFrame):
-- `dst`[(string)](https://pkg.go.dev/builtin#string):
-- `referenceframe`[(LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#LinkInFrame):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `referenceframe` [(PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#PoseInFrame):
+- `dst` [(string)](https://pkg.go.dev/builtin#string):
+- `referenceframe` [(LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#LinkInFrame):
 - [())](<INSERT PARAM TYPE LINK>):
 
 **Returns:**
 
-- `referenceframe`[(PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#PoseInFrame):
+- `referenceframe` [(PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#PoseInFrame):
 - [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).

@@ -25,8 +25,8 @@ statuses = await robot.get_status()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `resource`[(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/resource#Name):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `resource` [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/resource#Name):
 
 **Returns:**
 

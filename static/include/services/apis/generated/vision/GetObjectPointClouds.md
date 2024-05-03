@@ -39,13 +39,13 @@ points = np.asarray(pcd.points)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `cameraName`[(string)](https://pkg.go.dev/builtin#string):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `cameraName` [(string)](https://pkg.go.dev/builtin#string):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `viz`[(Object)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/vision#Object):
+- `viz` [(Object)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/vision#Object):
 - [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).

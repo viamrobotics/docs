@@ -37,15 +37,15 @@ classifications = await my_classifier.get_classifications(img, 2)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `img`[(Image)](https://pkg.go.dev/image#Image):
-- `n`[(int)](https://pkg.go.dev/builtin#int):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `img` [(Image)](https://pkg.go.dev/image#Image):
+- `n` [(int)](https://pkg.go.dev/builtin#int):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 - [())](<INSERT PARAM TYPE LINK>):
 
 **Returns:**
 
-- `classification`[(Classifications)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/vision/classification#Classifications):
+- `classification` [(Classifications)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/vision/classification#Classifications):
 - [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).

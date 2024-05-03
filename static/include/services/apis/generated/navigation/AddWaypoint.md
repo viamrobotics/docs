@@ -32,8 +32,8 @@ my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `geo`[(Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `geo` [(Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

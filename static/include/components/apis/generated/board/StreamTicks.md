@@ -5,9 +5,9 @@
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
 - [(DigitalInterrupt)](https://pkg.go.dev#DigitalInterrupt):
-- `chan`[(Tick)](https://pkg.go.dev#Tick):
+- `chan` [(Tick)](https://pkg.go.dev#Tick):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

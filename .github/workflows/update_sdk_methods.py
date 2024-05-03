@@ -1060,7 +1060,7 @@ def format_method_usage(parsed_usage_string):
             param_name = regex.search(r'\w+(?=\s*<)', param_type)
             if param_name:
                 param_name = param_name.group()
-                return_string += f"`{param_name}`"
+                return_string += f"`{param_name}` "
             
             # Creating the parameter type link based on the extracted type name
             # print(f"CREATING PARAMETER TYPE LINK from param type link {param_type_link}")

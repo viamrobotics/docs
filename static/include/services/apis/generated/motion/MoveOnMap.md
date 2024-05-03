@@ -43,8 +43,8 @@ execution_id = await motion.move_on_map(component_name=my_base_resource_name,
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `req`[(MoveOnMapReq)](https://pkg.go.dev#MoveOnMapReq):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `req` [(MoveOnMapReq)](https://pkg.go.dev#MoveOnMapReq):
 - [())](<INSERT PARAM TYPE LINK>):
 
 **Returns:**

@@ -32,8 +32,8 @@ await pin.set(high="true")
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `high`[(bool)](https://pkg.go.dev/builtin#bool):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `high` [(bool)](https://pkg.go.dev/builtin#bool):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

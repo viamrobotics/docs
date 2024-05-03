@@ -30,9 +30,9 @@ await my_base.spin(angle=10, velocity=15)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
 - [(angleDeg)](<INSERT PARAM TYPE LINK>):
-- `degsPerSec`[(float64)](https://pkg.go.dev/builtin#float64):
+- `degsPerSec` [(float64)](https://pkg.go.dev/builtin#float64):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

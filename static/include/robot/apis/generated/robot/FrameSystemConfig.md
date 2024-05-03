@@ -26,11 +26,11 @@ print(f"frame system configuration: {frame_system}")
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
 
 **Returns:**
 
-- `framesystem`[(Config)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/robot/framesystem#Config):
+- `framesystem` [(Config)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/robot/framesystem#Config):
 - [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).

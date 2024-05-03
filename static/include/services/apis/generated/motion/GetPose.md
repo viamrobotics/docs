@@ -28,16 +28,16 @@ component_name = Arm.get_resource_name("arm")
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `componentName`[(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/resource#Name):
-- `destinationFrame`[(string)](https://pkg.go.dev/builtin#string):
-- `referenceframe`[(LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#LinkInFrame):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `componentName` [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/resource#Name):
+- `destinationFrame` [(string)](https://pkg.go.dev/builtin#string):
+- `referenceframe` [(LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#LinkInFrame):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 - [())](<INSERT PARAM TYPE LINK>):
 
 **Returns:**
 
-- `referenceframe`[(PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#PoseInFrame):
+- `referenceframe` [(PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#PoseInFrame):
 - [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).

@@ -31,12 +31,12 @@ component_configs = await robot.discover_components(qs)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `resource`[(DiscoveryQuery)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/resource#DiscoveryQuery):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `resource` [(DiscoveryQuery)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/resource#DiscoveryQuery):
 
 **Returns:**
 
-- `resource`[(Discovery)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/resource#Discovery):
+- `resource` [(Discovery)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/resource#Discovery):
 - [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).

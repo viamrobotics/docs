@@ -51,9 +51,9 @@ await my_base.set_power(
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
 - [(linear)](<INSERT PARAM TYPE LINK>):
-- `angular`[(Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector):
+- `angular` [(Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

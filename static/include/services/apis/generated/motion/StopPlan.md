@@ -30,8 +30,8 @@ await motion.stop_plan(component_name=mvmnt_sensor)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `req`[(StopPlanReq)](https://pkg.go.dev#StopPlanReq):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `req` [(StopPlanReq)](https://pkg.go.dev#StopPlanReq):
 
 **Returns:**
 

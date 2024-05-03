@@ -30,11 +30,11 @@ success = await MotionServiceClient.move(resource_name, ...)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `componentName`[(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/resource#Name):
-- `referenceframe`[(PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#PoseInFrame):
-- `referenceframe`[(WorldState)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#WorldState):
-- `pb`[(Constraints)](https://pkg.go.dev/go.viam.com/api/service/motion/v1#Constraints):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `componentName` [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/resource#Name):
+- `referenceframe` [(PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#PoseInFrame):
+- `referenceframe` [(WorldState)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/referenceframe#WorldState):
+- `pb` [(Constraints)](https://pkg.go.dev/go.viam.com/api/service/motion/v1#Constraints):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 - [())](<INSERT PARAM TYPE LINK>):
 

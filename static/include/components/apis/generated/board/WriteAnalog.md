@@ -30,9 +30,9 @@ await my_board.write_analog(pin="11", value=48)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `pin`[(string)](https://pkg.go.dev/builtin#string):
-- `value`[(int32)](https://pkg.go.dev/builtin#int32):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `pin` [(string)](https://pkg.go.dev/builtin#string):
+- `value` [(int32)](https://pkg.go.dev/builtin#int32):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

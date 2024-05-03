@@ -29,8 +29,8 @@ await my_motor.set_power(power=0.4)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `powerPct`[(float64)](https://pkg.go.dev/builtin#float64):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `powerPct` [(float64)](https://pkg.go.dev/builtin#float64):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

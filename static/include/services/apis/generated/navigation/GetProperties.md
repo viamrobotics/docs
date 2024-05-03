@@ -27,7 +27,7 @@ nav_properties = await my_nav.get_properties()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
 
 **Returns:**
 

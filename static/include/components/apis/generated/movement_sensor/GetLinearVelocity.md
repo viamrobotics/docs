@@ -29,12 +29,12 @@ lin_vel = await my_movement_sensor.get_linear_velocity()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `r3`[(Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector):
+- `r3` [(Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector):
 - [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).

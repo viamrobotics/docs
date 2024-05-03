@@ -30,12 +30,12 @@ position = await my_movement_sensor.get_position()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `geo`[(Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point):
+- `geo` [(Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point):
 - [(float64)](https://pkg.go.dev/builtin#float64):
 - [(error)](https://pkg.go.dev/builtin#error):
 

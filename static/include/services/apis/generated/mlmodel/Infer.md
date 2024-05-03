@@ -32,12 +32,12 @@ output_tensors = await my_mlmodel.infer(input_tensors)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `tensors`[(Tensors)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/ml#Tensors):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `tensors` [(Tensors)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/ml#Tensors):
 
 **Returns:**
 
-- `ml`[(Tensors)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/ml#Tensors):
+- `ml` [(Tensors)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/ml#Tensors):
 - [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/mlmodel#Service).

@@ -32,8 +32,8 @@ high = await pin.set_pwm_frequency(frequency=1600)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `freqHz`[(uint)](https://pkg.go.dev/builtin#uint):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `freqHz` [(uint)](https://pkg.go.dev/builtin#uint):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

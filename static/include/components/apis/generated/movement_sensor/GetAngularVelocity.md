@@ -32,12 +32,12 @@ y_ang_vel = ang_vel.y
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `spatialmath`[(AngularVelocity)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/spatialmath#AngularVelocity):
+- `spatialmath` [(AngularVelocity)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/spatialmath#AngularVelocity):
 - [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).

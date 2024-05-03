@@ -26,7 +26,7 @@ metadata = await my_mlmodel.metadata()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
 
 **Returns:**
 

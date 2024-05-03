@@ -27,7 +27,7 @@ slam_properties = await slam_svc.get_properties()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
 
 **Returns:**
 

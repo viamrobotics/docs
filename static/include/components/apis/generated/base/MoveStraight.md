@@ -33,9 +33,9 @@ await my_base.move_straight(distance=40, velocity=-90)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `distanceMm`[(int)](https://pkg.go.dev/builtin#int):
-- `mmPerSec`[(float64)](https://pkg.go.dev/builtin#float64):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `distanceMm` [(int)](https://pkg.go.dev/builtin#int):
+- `mmPerSec` [(float64)](https://pkg.go.dev/builtin#float64):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

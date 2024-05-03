@@ -31,8 +31,8 @@ resp = await motion.get_plan(component_name=my_base_resource_name)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `req`[(PlanHistoryReq)](https://pkg.go.dev#PlanHistoryReq):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `req` [(PlanHistoryReq)](https://pkg.go.dev#PlanHistoryReq):
 - [())](<INSERT PARAM TYPE LINK>):
 
 **Returns:**

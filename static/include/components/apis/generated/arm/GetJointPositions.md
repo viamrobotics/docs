@@ -28,12 +28,12 @@ pos = await my_arm.get_joint_positions()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `pb`[(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions):
+- `pb` [(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions):
 - [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).

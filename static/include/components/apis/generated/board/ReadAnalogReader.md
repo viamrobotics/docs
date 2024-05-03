@@ -27,7 +27,7 @@ reader = await my_board.analog_reader_by_name(name="my_example_analog_reader")
 
 **Parameters:**
 
-- `name`[(string)](https://pkg.go.dev/builtin#string):
+- `name` [(string)](https://pkg.go.dev/builtin#string):
 
 **Returns:**
 

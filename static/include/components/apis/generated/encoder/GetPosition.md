@@ -30,8 +30,8 @@ print("The encoder position is currently ", position[0], position[1])
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `positionType`[(PositionType)](https://pkg.go.dev#PositionType):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `positionType` [(PositionType)](https://pkg.go.dev#PositionType):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

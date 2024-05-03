@@ -28,8 +28,8 @@ await my_nav.set_mode(Mode.ValueType.MODE_WAYPOINT)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `mode`[(Mode)](https://pkg.go.dev#Mode):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `mode` [(Mode)](https://pkg.go.dev#Mode):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

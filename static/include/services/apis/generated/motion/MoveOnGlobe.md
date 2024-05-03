@@ -44,8 +44,8 @@ execution_id = await motion.move_on_globe(
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `req`[(MoveOnGlobeReq)](https://pkg.go.dev#MoveOnGlobeReq):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `req` [(MoveOnGlobeReq)](https://pkg.go.dev#MoveOnGlobeReq):
 - [())](<INSERT PARAM TYPE LINK>):
 
 **Returns:**

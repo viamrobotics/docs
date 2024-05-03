@@ -20,11 +20,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
 
 **Returns:**
 
-- `cloud`[(Metadata)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/cloud#Metadata):
+- `cloud` [(Metadata)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/cloud#Metadata):
 - [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).

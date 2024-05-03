@@ -29,8 +29,8 @@ await my_motor.reset_zero_position(offset=0.0)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `offset`[(float64)](https://pkg.go.dev/builtin#float64):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `offset` [(float64)](https://pkg.go.dev/builtin#float64):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

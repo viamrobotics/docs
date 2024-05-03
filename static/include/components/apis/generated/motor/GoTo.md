@@ -30,9 +30,9 @@ await my_motor.go_to(rpm=75, revolutions=8.3)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
 - [(rpm)](<INSERT PARAM TYPE LINK>):
-- `positionRevolutions`[(float64)](https://pkg.go.dev/builtin#float64):
+- `positionRevolutions` [(float64)](https://pkg.go.dev/builtin#float64):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

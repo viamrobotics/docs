@@ -27,11 +27,11 @@ pose = await slam.get_position()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
 
 **Returns:**
 
-- `spatialmath`[(Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/spatialmath#Pose):
+- `spatialmath` [(Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/spatialmath#Pose):
 - [(string)](https://pkg.go.dev/builtin#string):
 - [(error)](https://pkg.go.dev/builtin#error):
 

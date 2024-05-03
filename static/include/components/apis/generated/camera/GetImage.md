@@ -33,12 +33,12 @@ standard_frame = frame.bytes_to_depth_array()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `gostream`[(ErrorHandler)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/gostream#ErrorHandler):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `gostream` [(ErrorHandler)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/gostream#ErrorHandler):
 
 **Returns:**
 
-- `gostream`[(VideoStream)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/gostream#VideoStream):
+- `gostream` [(VideoStream)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/gostream#VideoStream):
 - [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).

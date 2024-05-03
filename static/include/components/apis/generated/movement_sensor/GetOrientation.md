@@ -29,12 +29,12 @@ orientation = await my_movement_sensor.get_orientation()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `spatialmath`[(Orientation)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/spatialmath#Orientation):
+- `spatialmath` [(Orientation)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/spatialmath#Orientation):
 - [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).

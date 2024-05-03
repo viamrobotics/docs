@@ -32,8 +32,8 @@ await myController.trigger_event(event=my_event, timeout=7.0)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `event`[(Event)](https://pkg.go.dev#Event):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `event` [(Event)](https://pkg.go.dev#Event):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

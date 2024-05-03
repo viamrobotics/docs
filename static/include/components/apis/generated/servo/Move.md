@@ -32,8 +32,8 @@ await my_servo.move(90)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `angleDeg`[(uint32)](https://pkg.go.dev/builtin#uint32):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `angleDeg` [(uint32)](https://pkg.go.dev/builtin#uint32):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

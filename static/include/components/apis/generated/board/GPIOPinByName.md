@@ -27,7 +27,7 @@ pin = await my_board.gpio_pin_by_name(name="15")
 
 **Parameters:**
 
-- `name`[(string)](https://pkg.go.dev/builtin#string):
+- `name` [(string)](https://pkg.go.dev/builtin#string):
 
 **Returns:**
 

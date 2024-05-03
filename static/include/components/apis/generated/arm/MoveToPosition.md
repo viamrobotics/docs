@@ -32,8 +32,8 @@ await my_arm.move_to_position(pose=examplePose)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `pose`[(Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/spatialmath#Pose):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `pose` [(Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/spatialmath#Pose):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

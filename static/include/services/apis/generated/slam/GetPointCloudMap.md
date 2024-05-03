@@ -28,8 +28,8 @@ pcd_map = await slam_svc.get_point_cloud_map()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `returnEditedMap`[(bool)](https://pkg.go.dev/builtin#bool):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `returnEditedMap` [(bool)](https://pkg.go.dev/builtin#bool):
 
 **Returns:**
 

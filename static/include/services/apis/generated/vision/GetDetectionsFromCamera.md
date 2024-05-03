@@ -32,13 +32,13 @@ detections = await my_detector.get_detections_from_camera(camera_name)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `cameraName`[(string)](https://pkg.go.dev/builtin#string):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `cameraName` [(string)](https://pkg.go.dev/builtin#string):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- `objectdetection`[(Detection)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/vision/objectdetection#Detection):
+- `objectdetection` [(Detection)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/vision/objectdetection#Detection):
 - [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).

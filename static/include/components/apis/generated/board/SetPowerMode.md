@@ -29,9 +29,9 @@ status = await my_board.set_power_mode(mode=PowerMode.POWER_MODE_OFFLINE_DEEP)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `mode`[(PowerMode)](https://pkg.go.dev/go.viam.com/api/component/board/v1#PowerMode):
-- `time`[(Duration)](https://pkg.go.dev/time#Duration):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `mode` [(PowerMode)](https://pkg.go.dev/go.viam.com/api/component/board/v1#PowerMode):
+- `time` [(Duration)](https://pkg.go.dev/time#Duration):
 
 **Returns:**
 

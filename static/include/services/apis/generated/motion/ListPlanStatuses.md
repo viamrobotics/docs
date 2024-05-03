@@ -28,8 +28,8 @@ resp = await motion.list_plan_statuses()
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `req`[(ListPlanStatusesReq)](https://pkg.go.dev#ListPlanStatusesReq):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `req` [(ListPlanStatusesReq)](https://pkg.go.dev#ListPlanStatusesReq):
 - [())](<INSERT PARAM TYPE LINK>):
 
 **Returns:**

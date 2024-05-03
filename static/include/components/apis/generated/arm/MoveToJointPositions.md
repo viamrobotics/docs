@@ -37,8 +37,8 @@ await my_arm.move_to_joint_positions(positions=jointPos)
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `pb`[(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `pb` [(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions):
 - `extra` [(map[string]interface\{\})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

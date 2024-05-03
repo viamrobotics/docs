@@ -5,14 +5,14 @@
 
 **Parameters:**
 
-- `ctx`[(Context)](https://pkg.go.dev/context#Context):
-- `srcpc`[(PointCloud)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/pointcloud#PointCloud):
+- `ctx` [(Context)](https://pkg.go.dev/context#Context):
+- `srcpc` [(PointCloud)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/pointcloud#PointCloud):
 - [(srcName)](<INSERT PARAM TYPE LINK>):
-- `dstName`[(string)](https://pkg.go.dev/builtin#string):
+- `dstName` [(string)](https://pkg.go.dev/builtin#string):
 
 **Returns:**
 
-- `pointcloud`[(PointCloud)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/pointcloud#PointCloud):
+- `pointcloud` [(PointCloud)](https://pkg.go.dev/go.viam.com/rdk@v0.26.0/pointcloud#PointCloud):
 - [(error)](https://pkg.go.dev/builtin#error):
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).

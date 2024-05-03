@@ -28,7 +28,7 @@ interrupt = await my_board.digital_interrupt_by_name(
 
 **Parameters:**
 
-- `name`[(string)](https://pkg.go.dev/builtin#string):
+- `name` [(string)](https://pkg.go.dev/builtin#string):
 
 **Returns:**
 
