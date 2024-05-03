@@ -113,7 +113,8 @@ You can choose to manage your fleet of machines differently based on what makes 
 
 With your organizational structure in place, let's add some machines:
 
-1. Connect the single-board computer you'll be shipping to Antonia to power.
+1. Connect your first single-board computer to power.
+   For this tutorial, we'll treat this as the machine for our first customer, Antonia.
    If the computer does not already have a Viam-compatible operating system installed, follow the [Prepare your board steps in the Installation Guide](/get-started/installation/#prepare-your-board) to install a compatible operating system.
    You _do not_ need to follow the "Install `viam-server`" section; you will do that in the next step!
 
@@ -802,8 +803,10 @@ For an example of setting up text alerts, see the [Detect a Person and Send a Ph
 For another example of a custom TypeScript interface, check out the [Claw Game tutorial](/tutorials/projects/claw-game/).
 Instead of displaying data, the claw game interface has buttons to control a robotic arm.
 
+In this tutorial we covered configuring a fleet of machines using fragments, but to automate the setup process further, you can [use the Viam Agent to provision machines](/fleet/provision/).
+
 {{< cards >}}
+{{% card link="/fleet/provision/" %}}
 {{% card link="/tutorials/services/visualize-data-grafana/" %}}
 {{% card link="/tutorials/projects/helmet/" %}}
-{{% card link="/tutorials/projects/claw-game/" %}}
 {{< /cards >}}
