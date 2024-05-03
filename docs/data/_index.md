@@ -160,7 +160,7 @@ Sync data stored on the machine to the cloud.
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager).
 
 ```go {class="line-numbers linkable-line-numbers"}
-data, err := machine.ResourceByName(datamanager.Named("my_data_service"))
+data, err := datamanager.FromRobot(machine, "my_data_service")
 if err!=nil {
       logger.Error(err)
       return
