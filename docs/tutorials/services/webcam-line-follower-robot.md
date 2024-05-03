@@ -101,7 +101,7 @@ Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https
 {{% /tab %}}
 {{% tab name="JSON" %}}
 
-With [`JSON`](/build/configure/#the-configure-tab) mode selected on the **CONFIGURE** tab, replace the configuration with the following JSON configuration for your board, your motors, your base, and your camera:
+With [**JSON**](/build/configure/#the-configure-tab) mode selected on the **CONFIGURE** tab, replace the configuration with the following JSON configuration for your board, your motors, your base, and your camera:
 
 {{< alert title="Note" color="note" >}}
 Your `"video_path"` value may be different.
