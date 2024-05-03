@@ -165,7 +165,7 @@ await my_servo.move(30)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/servo#Servo).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServoComponent, err := servo.FromRobot(robot, "my_servo")
+myServoComponent, err := servo.FromRobot(machine, "my_servo")
 
 // Move the servo from its origin to the desired angle of 30 degrees.
 myServoComponent.Move(context.Background(), 30, nil)
@@ -221,7 +221,7 @@ pos2 = await my_servo.get_position()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/servo#Servo).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServoComponent, err := servo.FromRobot(robot, "my_servo")
+myServoComponent, err := servo.FromRobot(machine, "my_servo")
 
 // Get the current set angle of the servo.
 pos1, err = myServoComponent.Position(context.Background(), nil)
@@ -282,7 +282,7 @@ await my_servo.stop()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/servo#Servo).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServoComponent, err := servo.FromRobot(robot, "my_servo")
+myServoComponent, err := servo.FromRobot(machine, "my_servo")
 
 // Move the servo from its origin to the desired angle of 10 degrees.
 myServoComponent.Move(context.Background(), 10, nil)
@@ -339,7 +339,7 @@ if geometries:
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServoComponent, err := servo.FromRobot(robot, "my_servo")
+myServoComponent, err := servo.FromRobot(machine, "my_servo")
 
 geometries, err := myServoComponent.Geometries(context.Background(), nil)
 
@@ -394,7 +394,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServoComponent, err := servo.FromRobot(robot, "my_servo")
+myServoComponent, err := servo.FromRobot(machine, "my_servo")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myServoComponent.DoCommand(context.Background(), command)
@@ -440,9 +440,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServoComponent, err := servo.FromRobot(robot, "my_servo")
+myServoComponent, err := servo.FromRobot(machine, "my_servo")
 
-err := myServoComponent.Close(ctx)
+err = myServoComponent.Close(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
