@@ -21,7 +21,7 @@ outputs:
 
 {{% changelog date="2024-04-30" color="removed" title="Removed status from Board API" %}}
 
-Viam has removed support for following Board API methods models: `Status()`, `AnalogStatus()`, and `DigitalInterruptStatus()`.
+Viam has removed support for following Board API methods models: `Status()`, `AnalogStatus()`, `DigitalInterruptStatus()`, `Close()`, `Tick()`, `AddCallback()`, and `RemoveCallback()`.
 
 {{% /changelog %}}
 
