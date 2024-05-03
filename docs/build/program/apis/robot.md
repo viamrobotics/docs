@@ -45,10 +45,10 @@ async def connect():
 
 async def main():
     # Make a RobotClient
-    robot = await connect()
+    machine = await connect()
     print('Resources:')
-    print(robot.resource_names)
-    await robot.close()
+    print(machine.resource_names)
+    await machine.close()
 
 if __name__ == '__main__':
     asyncio.run(main())
@@ -75,7 +75,7 @@ import (
 
 func main() {
   logger := logging.NewLogger("client")
-  robot, err := client.New(
+  machine, err := client.New(
       context.Background(),
       "ADDRESS FROM THE VIAM APP",
       logger,
@@ -93,9 +93,9 @@ func main() {
       logger.Fatal(err)
   }
 
-  defer robot.Close(context.Background())
+  defer machine.Close(context.Background())
   logger.Info("Resources:")
-  logger.Info(robot.ResourceNames())
+  logger.Info(machine.ResourceNames())
 }
 ```
 
@@ -144,7 +144,7 @@ func main() {
   ctx := context.Background()
   timeoutContext, cancel := context.WithTimeout(ctx, 10*time.Second)
   defer cancel()
-  robot, err := client.New(
+  machine, err := client.New(
       timeoutContext,
       "ADDRESS FROM THE VIAM APP",
       logger,
@@ -200,7 +200,7 @@ api_key_id = '<API-KEY-ID>'
 
 opts = RobotClient.Options.with_api_key(api_key, api_key_id)
 
-robot = await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+machine = await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options.with_api_key).
@@ -222,7 +222,7 @@ Create a RobotClient that is connected to the machine at the provided address.
 
 **Returns:**
 
-- `RobotClient`: The robot client.
+- `RobotClient`: The machine client.
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def connect():
@@ -238,7 +238,7 @@ async def connect():
 
 async def main():
     # Make a RobotClient
-    robot = await connect()
+    machine = await connect()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.at_address).
@@ -272,7 +272,7 @@ async def connect_with_channel() -> RobotClient:
     async with await dial('ADDRESS', DialOptions()) as channel:
         return await RobotClient.with_channel(channel, RobotClient.Options())
 
-robot = await connect_with_channel()
+machine = await connect_with_channel()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.with_channel).
@@ -296,7 +296,7 @@ Manually refresh the underlying parts of this machine.
 - None
 
 ```python {class="line-numbers linkable-line-numbers"}
-await robot.refresh()
+await machine.refresh()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.refresh).
@@ -313,7 +313,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go
-err := robot.Refresh(ctx)
+err := machine.Refresh(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient.Refresh).
@@ -361,7 +361,7 @@ Cancel the specified operation on the machine.
 - None
 
 ```python {class="line-numbers linkable-line-numbers"}
-await robot.cancel_operation("INSERT OPERATION ID")
+await machine.cancel_operation("INSERT OPERATION ID")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.cancel_operation).
@@ -386,7 +386,7 @@ This function will only return when the specific operation has finished or has b
 - None
 
 ```python {class="line-numbers linkable-line-numbers"}
-await robot.block_for_operation("INSERT OPERATION ID")
+await machine.block_for_operation("INSERT OPERATION ID")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.block_for_operation).
@@ -411,7 +411,7 @@ Transform a given source Pose from the original reference frame to a new destina
 - [(PoseInFrame)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame): Transformed pose in frame.
 
 ```python {class="line-numbers linkable-line-numbers"}
-pose = await robot.transform_pose(PoseInFrame(), "origin")
+pose = await machine.transform_pose(PoseInFrame(), "origin")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.transform_pose).
@@ -438,7 +438,7 @@ import (
 )
 
 baseOrigin := referenceframe.NewPoseInFrame("test-base", spatialmath.NewZeroPose())
-movementSensorToBase, err := robot.TransformPose(ctx, baseOrigin, "my-movement-sensor", nil)
+movementSensorToBase, err := machine.TransformPose(ctx, baseOrigin, "my-movement-sensor", nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient.TransformPose).
@@ -463,13 +463,13 @@ Get a list of discovered component configurations.
 
 ```python
 # Define a new discovery query.
-q = robot.DiscoveryQuery(subtype=acme.API, model="some model")
+q = machine.DiscoveryQuery(subtype=acme.API, model="some model")
 
 # Define a list of discovery queries.
 qs = [q]
 
 # Get component configurations with these queries.
-component_configs = await robot.discover_components(qs)
+component_configs = await machine.discover_components(qs)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.discover_components)
@@ -496,7 +496,7 @@ q := resource.NewDiscoveryQuery(acme.API, resource.Model{Name: "some model"})
 qs := []resource.DiscoverQuery{q}
 
 // Get component configurations with these queries.
-component_configs, err := robot.DiscoverComponents(ctx.Background(), qs)
+component_configs, err := machine.DiscoverComponents(ctx.Background(), qs)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
@@ -520,7 +520,7 @@ const q = new proto.DiscoveryQuery(acme.API, resource.Model{Name: "some model"})
 let qs:  proto.DiscoveryQuery[] = [q]
 
 // Get the array of discovered component configurations.
-const componentConfigs = await robot.discoverComponents(queries);
+const componentConfigs = await machine.discoverComponents(queries);
 ```
 
 For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/RobotClient.html).
@@ -567,7 +567,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Print the frame system configuration
-frameSystem, err := robot.FrameSystemConfig(context.Background(), nil)
+frameSystem, err := machine.FrameSystemConfig(context.Background(), nil)
 fmt.Println(frameSystem)
 ```
 
@@ -614,7 +614,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get the status of the resources on the machine.
-statuses = await robot.get_status()
+statuses = await machine.get_status()
 ```
 
 {{% /tab %}}
@@ -634,8 +634,7 @@ statuses = await robot.get_status()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get the status of the resources on the machine.
-status, err = robot.Status(ctx.Background())
+status, err := machine.Status(ctx)
 ```
 
 {{% /tab %}}
@@ -654,7 +653,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ```typescript {class="line-numbers linkable-line-numbers"}
 // Get the status of the resources on the machine.
-const status = await robot.getStatus();
+const status = await machine.getStatus();
 ```
 
 {{% /tab %}}
@@ -678,7 +677,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Cleanly close the underlying connections and stop any periodic tasks.
-await robot.close()
+await machine.close()
 ```
 
 {{% /tab %}}
@@ -696,7 +695,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Cleanly close the underlying connections and stop any periodic tasks,
-err := robot.Close(ctx.Background())
+err := machine.Close(ctx)
 ```
 
 {{% /tab %}}
@@ -714,7 +713,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ```typescript {class="line-numbers linkable-line-numbers"}
 // Cleanly close the underlying connections and stop any periodic tasks
-await robot.disconnect();
+await machine.disconnect();
 ```
 
 {{% /tab %}}
@@ -740,7 +739,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers"}
 # Cancel all current and outstanding operations for the robot and stop all
 # actuators and movement.
-await robot.stop_all()
+await machine.stop_all()
 ```
 
 {{% /tab %}}
@@ -759,7 +758,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Cancel all current and outstanding operations for the machine and stop all actuators and movement.
-err := robot.StopAll(ctx.Background())
+err := machine.StopAll(ctx)
 ```
 
 {{% /tab %}}
@@ -777,7 +776,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ```typescript {class="line-numbers linkable-line-numbers"}
 // Cancel all current and outstanding operations for the machine and stop all actuators and movement.
-await robot.stopAll();
+await machine.stopAll();
 ```
 
 {{% /tab %}}
@@ -801,7 +800,7 @@ Get a list of all known resource names connected to this machine.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.resource_names)
 
 ```python
-resource_names = robot.resource_names
+resource_names = machine.resource_names
 ```
 
 {{% /tab %}}
@@ -816,7 +815,7 @@ resource_names = robot.resource_names
 - [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): List of all known resource names.
 
 ```go
-resource_names := robot.ResourceNames()
+resource_names := machine.ResourceNames()
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
@@ -834,7 +833,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ```typescript
 // Get a list of all resources on the machine.
-const resource_names = await robot.resourceNames();
+const resource_names = await machine.resourceNames();
 ```
 
 For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/RobotClient.html).
@@ -860,7 +859,7 @@ Returns app-related information about the robot.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_cloud_metadata).
 
 ```python
-metadata = robot.get_cloud_metadata()
+metadata = machine.get_cloud_metadata()
 print(metadata.robot_part_id)
 print(metadata.primary_org_id)
 print(metadata.location_id)
@@ -880,7 +879,7 @@ print(metadata.location_id)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 ```go
-metadata := robot.GetCloudMetadata()
+metadata := machine.GetCloudMetadata()
 fmt.Println(metadata.RobotPartID)
 fmt.Println(metadata.PrimaryOrgID)
 fmt.Println(metadata.LocationID)
