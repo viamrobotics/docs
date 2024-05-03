@@ -390,7 +390,7 @@ You don't need to install or edit anything else on your machine's single-board c
         "start": "esbuild ./main.ts --bundle --outfile=static/main.js --servedir=static --format=esm",
         "test": "echo \"Error: no test specified\" && exit 1"
       },
-      "author": "Viam Docs Team",
+      "author": "<YOUR NAME>",
       "license": "ISC",
       "devDependencies": {
         "esbuild": "*"
