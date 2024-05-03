@@ -411,9 +411,13 @@ If you don't know what the proceeding sentence means, don't worry about it; just
 ### Authenticate your code to your Viam app location
 
 Your TypeScript code requires an API key to establish a connection to your machines.
+You can set up credentials to access data from all the sensor machines in your organization, or from just one location.
 
-You can set up credentials to access data from all the sensor machines in your organization, or from just one location, so in our example you could provide Antonia with an API key to see the data from her location, and provide RobotsRUs with a different API key to access the data from their RobotsRUs location.
-If RobotsRUs wanted to separate their data viewing dashboards by sub-locations, you could set up API keys for RobotsRUs to access data for each of their sub-locations separately, or you could modify the example code to filter data by location name.
+In our example you could create a dashboard for Antonia with an API key to see the data from her location, and create a separate dashboard for RobotsRUs with a different API key to access the data from their location.
+If RobotsRUs wanted to separate their dashboards by sub-locations, you could set up API keys for RobotsRUs to access data for each of their sub-locations separately, or you could modify the example code to filter data by location name.
+
+You can then either deploy each dashboard on a web server you manage, or add a web server on one machine per customer that hosts the dashboard for the respective customer so that they can access their data on their local network.
+We leave this step to the reader.
 
 The following instructions describe how to set up an API key for one location.
 
