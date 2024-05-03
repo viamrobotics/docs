@@ -264,17 +264,17 @@ async def main():
     vel = 500            # go this fast when moving motor
 
     # Connect to robot client and set up components
-    robot = await connect()
-    base = Base.from_robot(robot, "my_base")
+    machine = await connect()
+    base = Base.from_robot(machine, "my_base")
     camera_name = "<camera-name>"
-    camera = Camera.from_robot(robot, camera_name)
+    camera = Camera.from_robot(machine, camera_name)
     frame = await camera.get_image(mime_type="image/jpeg")
 
     # Convert to PIL Image
     pil_frame = viam_to_pil_image(frame)
 
     # Grab the vision service for the detector
-    my_detector = VisionClient.from_robot(robot, "my_color_detector")
+    my_detector = VisionClient.from_robot(machine, "my_color_detector")
 
     # Main loop. Detect the ball, determine if it's on the left or right, and
     # head that way. Repeat this for numCycles
@@ -374,17 +374,17 @@ async def main():
     vel = 500            # go this fast when moving motor
 
     # Connect to robot client and set up components
-    robot = await connect()
-    base = Base.from_robot(robot, "my_base")
+    machine = await connect()
+    base = Base.from_robot(machine, "my_base")
     camera_name = "<camera-name>"
-    camera = Camera.from_robot(robot, camera_name)
+    camera = Camera.from_robot(machine, camera_name)
     frame = await camera.get_image(mime_type="image/jpeg")
 
     # Convert to PIL Image
     pil_frame = viam_to_pil_image(frame)
 
     # Grab the vision service for the detector
-    my_detector = VisionClient.from_robot(robot, "my_color_detector")
+    my_detector = VisionClient.from_robot(machine, "my_color_detector")
 
     # Main loop. Detect the ball, determine if it's on the left or right, and
     # head that way. Repeat this for numCycles

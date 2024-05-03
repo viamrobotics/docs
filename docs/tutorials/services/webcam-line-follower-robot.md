@@ -267,7 +267,7 @@ Replace the attributes JSON object (`{}`) with the following object which specif
 {{% /tab %}}
 {{% tab name="JSON" %}}
 
-With [`JSON` mode](/build/configure/#the-configure-tab) selected, replace the configuration with the following JSON configuration which adds the configuration for the vision service and the transform camera:
+With [**JSON** mode](/build/configure/#the-configure-tab) selected, replace the configuration with the following JSON configuration which adds the configuration for the vision service and the transform camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -519,11 +519,11 @@ The code you are using has several functions:
 - `stop_robot`: Stops the robot's motion.
 
   ```python {class="line-numbers linkable-line-numbers"}
-  async def stop_robot(robot):
+  async def stop_robot(machine):
     """
     Stop the robot's motion.
     """
-    base = Base.from_robot(robot, "scuttlebase")
+    base = Base.from_robot(machine, "scuttlebase")
     await base.stop()
   ```
 
@@ -541,13 +541,13 @@ async def main():
     """
     Main line follower function.
     """
-    robot = await connect()
+    machine = await connect()
     print("connected")
-    camera = Camera.from_robot(robot, "my_camera")
-    base = Base.from_robot(robot, "scuttlebase")
+    camera = Camera.from_robot(machine, "my_camera")
+    base = Base.from_robot(machine, "scuttlebase")
 
     # Put your detector name in place of "green_detector"
-    green_detector = VisionClient.from_robot(robot, "green_detector")
+    green_detector = VisionClient.from_robot(machine, "green_detector")
 
     # counter to increase robustness
     counter = 0
@@ -580,8 +580,8 @@ async def main():
 
     print("The path is behind us and forward is only open wasteland.")
 
-    await stop_robot(robot)
-    await robot.close()
+    await stop_robot(machine)
+    await machine.close()
 ```
 
 To run the program:
