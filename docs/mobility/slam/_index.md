@@ -148,7 +148,8 @@ pcd_map = await slam_svc.get_point_cloud_map()
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `returnEditedMap` [(bool)](https://pkg.go.dev/builtin#bool): A flag that determines if the method should return the edited version of the point cloud map or the original map. Setting this parameter to `true` triggers a formatted map to be retrieved.
-  **Returns:**
+
+**Returns:**
 
 - (func() [[]byte](https://pkg.go.dev/builtin#byte), [error](https://pkg.go.dev/builtin#error)): The complete point cloud map in standard PCD format.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
