@@ -157,6 +157,8 @@ Permissions for managing org settings and user roles are as follows:
 | Invite, resend invite, and revoke invite              | **Yes**   | No           | **Yes\***      | No                | **Yes\***     | No               |
 | Change someone else's role                            | **Yes**   | No           | **Yes\***      | No                | **Yes\***     | No               |
 | Create a new organization                             | **Yes**   | **Yes**      | **Yes**        | **Yes**           | **Yes**       | **Yes**          |
+| Delete modules                                        | **Yes**   | No           | No             | No                | No            | No               |
+| Make public modules private                           | **Yes**   | No           | No             | No                | No            | No               |
 
 \*For locations/machines they have access to
 
