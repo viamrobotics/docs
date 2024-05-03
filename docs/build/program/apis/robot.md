@@ -634,7 +634,7 @@ statuses = await machine.get_status()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 ```go {class="line-numbers linkable-line-numbers"}
-status, err := machine.Status(ctx.Background())
+status, err := machine.Status(ctx)
 ```
 
 {{% /tab %}}
@@ -695,7 +695,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Cleanly close the underlying connections and stop any periodic tasks,
-err := machine.Close(ctx.Background())
+err := machine.Close(ctx)
 ```
 
 {{% /tab %}}
@@ -758,7 +758,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Cancel all current and outstanding operations for the machine and stop all actuators and movement.
-err := machine.StopAll(ctx.Background())
+err := machine.StopAll(ctx)
 ```
 
 {{% /tab %}}
