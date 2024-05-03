@@ -104,10 +104,16 @@ pose = await slam.get_position()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam).
 
 ```go {class="line-numbers linkable-line-numbers"}
-slam_svc, err := slam.FromRobot(robot, "my_slam_service")
+mySlam, err := slam.FromRobot(machine, "my_slam_service")
+if err != nil {
+  logger.Error(err)
+  return
+}
+
+ctx := context.Background()
 
 // Get the current position of the specified source component in the SLAM map as a Pose.
-pos, name, err := slam_svc.GetPosition(context.Background())
+pos, name, err := mySlam.Position(ctx)
 ```
 
 {{% /tab %}}
@@ -143,8 +149,8 @@ pcd_map = await slam_svc.get_point_cloud_map()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-
-**Returns:**
+- `returnEditedMap` [(bool)](https://pkg.go.dev/builtin#bool): A flag that determines if the method should return the edited version of the point cloud map or the original map. Setting this parameter to `true` triggers a formatted map to be retrieved.
+  **Returns:**
 
 - (func() [[]byte](https://pkg.go.dev/builtin#byte), [error](https://pkg.go.dev/builtin#error)): The complete point cloud map in standard PCD format.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
@@ -152,10 +158,16 @@ pcd_map = await slam_svc.get_point_cloud_map()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
-slam_svc, err := slam.FromRobot(robot, "my_slam_service")
+mySlam, err := slam.FromRobot(machine, "my_slam_service")
+if err != nil {
+  logger.Error(err)
+  return
+}
+
+ctx := context.Background()
 
 // Get the point cloud map in standard PCD format.
-pcd_map, err := slam_svc.GetPointCloudMap(context.Background())
+pcd_map, err := mySlam.PointCloudMap(ctx, true)
 ```
 
 {{% /tab %}}
@@ -209,10 +221,16 @@ slam_properties = await slam_svc.get_properties()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties).
 
 ```go {class="line-numbers linkable-line-numbers"}
-slam_svc, err := slam.FromRobot(robot, "my_slam_service")
+mySlam, err := slam.FromRobot(machine, "my_slam_service")
+if err != nil {
+  logger.Error(err)
+  return
+}
+
+ctx := context.Background()
 
 // Get the properties of your current SLAM session
-properties, err := slam_svc.Properties(context.Background())
+properties, err := mySlam.Properties(ctx)
 ```
 
 {{% /tab %}}
@@ -258,10 +276,16 @@ internal_state = await slam.get_internal_state()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
-slam_svc, err := slam.FromRobot(robot, "my_slam_service")
+mySlam, err := slam.FromRobot(machine, "my_slam_service")
+if err != nil {
+  logger.Error(err)
+  return
+}
+
+ctx := context.Background()
 
 // Get the internal state of the SLAM algorithm required to continue mapping/localization.
-internal_state, err := slam_svc.GetInternalState(context.Background())
+internalState, err := mySlam.InternalState(ctx)
 ```
 
 {{% /tab %}}
@@ -312,9 +336,15 @@ await slam.do_command(my_command)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-slam_svc, err := slam.FromRobot(robot, "my_slam_service")
+mySlam, err := slam.FromRobot(machine, "my_slam_service")
+if err != nil {
+  logger.Error(err)
+  return
+}
 
-resp, err := slam_svc.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
+ctx := context.Background()
+
+resp, err := mySlam.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
@@ -357,9 +387,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-slam_svc, err := slam.FromRobot(robot, "my_slam_service")
+mySlam, err := slam.FromRobot(machine, "my_slam_service")
+if err != nil {
+  logger.Error(err)
+  return
+}
 
-err := slam_svc.Close(ctx)
+ctx := context.Background()
+
+err := mySlam.Close(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
