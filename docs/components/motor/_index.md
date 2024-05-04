@@ -150,7 +150,7 @@ await my_motor.set_power(power=0.4)
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 ```go
-myMotorComponent, err := motor.FromRobot(robot, "my_motor")
+myMotorComponent, err := motor.FromRobot(machine, "my_motor")
 
 // Set the motor power to 40% forwards.
 myMotorComponent.SetPower(context.Background(), 0.4, nil)
