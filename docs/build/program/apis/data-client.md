@@ -1145,7 +1145,7 @@ await data_client.remove_binary_data_from_dataset_by_ids(
 ### ConfigureDatabaseUser
 
 Configure a database user for the Viam organization’s MongoDB Atlas Data Federation instance. It can also be used to reset the
-password of the existing database user.
+You can also use this to reset the password of the existing database user.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
