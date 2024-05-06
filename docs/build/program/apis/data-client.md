@@ -251,7 +251,11 @@ Obtain unified tabular data and metadata, queried with MQL.
 ```python {class="line-numbers linkable-line-numbers"}
 tabular_data = await data_client.tabular_data_by_mql(
     organization_id=organization_id,
-    sql_query="SELECT * FROM readings"
+    mql_query=[b"{ $match: {
+            'robot_id': 'abcdef12-abcd-abcd-abcd-abcdef123456',
+            'component_name': 'my-ultrasonic-sensor',
+            'data.readings.distance': { $gt: .2 } } },
+        { $count: 'numStanding' }"]
 )
 ```
 
