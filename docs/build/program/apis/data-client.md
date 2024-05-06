@@ -241,7 +241,7 @@ Obtain unified tabular data and metadata, queried with MQL.
 
 **Parameters:**
 
-- organization_id [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the organization that owns the data.
+- `organization_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the organization that owns the data.
 - mql_binary (List[bytes]): The MQL query to run as a list of BSON documents.
 
 **Returns:**
