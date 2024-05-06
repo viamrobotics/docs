@@ -225,8 +225,6 @@ motion,GetPose,get_pose,GetPose,getPose
 motion,StopPlan,stop_plan,StopPlan,stopPlan
 motion,ListPlanStatuses,list_plan_statuses,ListPlanStatuses,listPlanStatuses
 motion,GetPlan,get_plan,PlanHistory,getPlan
-## HACK: Not sure what this is, for Localizer interface (go):
-motion,CurrentPosition,,CurrentPosition,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 motion,Reconfigure,,Reconfigure,
 motion,DoCommand,do_command,DoCommand,doCommand
@@ -269,15 +267,20 @@ vision,DoCommand,do_command,DoCommand,doCommand
 vision,Close,close,Close,
 
 ## App
-app,GetUserIDByEmail,,,getUserIDByEmail
-app,CreateOrganization,,,createOrganization
+## GUESS: Think this is intended to be internal only:
+app,GetUserIDByEmail,,,
+## GUESS: Think this is intended to be internal only:
+app,CreateOrganization,,,
 app,ListOrganizations,list_organizations,,listOrganizations
-app,GetOrganizationsWithAccessToLocation,,,getOrganizationsWithAccessToLocation
-app,ListOrganizationsByUser,,,listOrganizationsByUser
+## GUESS: Think this is intended to be internal only:
+app,GetOrganizationsWithAccessToLocation,,,
+## GUESS: Think this is intended to be internal only:
+app,ListOrganizationsByUser,,,
 app,GetOrganization,get_organization,,getOrganization
 app,GetOrganizationNamespaceAvailability,get_organization_namespace_availability,,getOrganizationNamespaceAvailability
 app,UpdateOrganization,update_organization,,updateOrganization
-app,DeleteOrganization,,,deleteOrganization
+## GUESS: Think this is intended to be internal only:
+app,DeleteOrganization,,,
 app,ListOrganizationMembers,list_organization_members,,listOrganizationMembers
 ## Python: create_organization_invite is currently broken upstream, removing temporarily from map:
 app,CreateOrganizationInvite,,,createOrganizationInvite
@@ -290,8 +293,9 @@ app,GetLocation,get_location,,getLocation
 app,UpdateLocation,update_location,,updateLocation
 app,DeleteLocation,delete_location,,deleteLocation
 app,ListLocations,list_locations,,listLocations
-app,ShareLocation,,,shareLocation
-app,UnshareLocation,,,unshareLocation
+## GUESS: Think these are intended to be internal only:
+app,ShareLocation,,,
+app,UnshareLocation,,,
 app,LocationAuth,location_auth,,locationAuth
 app,CreateLocationSecret,create_location_secret,,createLocationSecret
 app,DeleteLocationSecret,delete_location_secret,,deleteLocationSecret
@@ -306,7 +310,8 @@ app,GetRobotPartHistory,get_robot_part_history,,getRobotPartHistory
 app,UpdateRobotPart,update_robot_part,,updateRobotPart
 app,NewRobotPart,new_robot_part,,newRobotPart
 app,DeleteRobotPart,delete_robot_part,,deleteRobotPart
-app,GetRobotAPIKeys,,,getRobotAPIKeys
+## GUESS: Think this is intended to be internal only:
+app,GetRobotAPIKeys,,,
 app,MarkPartAsMain,mark_part_as_main,,markPartAsMain
 app,MarkPartForRestart,mark_part_for_restart,,markPartForRestart
 app,CreateRobotPartSecret,create_robot_part_secret,,createRobotPartSecret
@@ -325,11 +330,12 @@ app,RemoveRole,remove_role,,removeRole
 app,ChangeRole,,,changeRole
 app,ListAuthorizations,list_authorizations,,listAuthorizations
 app,CheckPermissions,check_permissions,,checkPermissions
-app,GetRegistryItem,,,getRegistryItem
-app,CreateRegistryItem,,,createRegistryItem
-app,UpdateRegistryItem,,,updateRegistryItem
-app,ListRegistryItems,,,listRegistryItems
-app,DeleteRegistryItem,,,deleteRegistryItem
+## GUESS: Manipulating the registry via Flutter is internal-only:
+app,GetRegistryItem,,,
+app,CreateRegistryItem,,,
+app,UpdateRegistryItem,,,
+app,ListRegistryItems,,,
+app,DeleteRegistryItem,,,
 app,CreateModule,create_module,,createModule
 app,UpdateModule,update_module,,updateModule
 app,UploadModuleFile,upload_module_file,,uploadModuleFile
@@ -338,7 +344,8 @@ app,ListModules,list_modules,,listModules
 app,CreateKey,create_key,,createKey
 app,DeleteKey,,,deleteKey
 app,ListKeys,list_keys,,listKeys
-app,RotateKey,,,rotateKey
+## GUESS: Think this is intended to be internal only, at least for now:
+app,RotateKey,,,
 app,CreateKeyFromExistingKeyAuthorizations,create_key_from_existing_key_authorizations,,createKeyFromExistingKeyAuthorizations
 
 ## Billing
@@ -349,8 +356,8 @@ billing,GetInvoicePdf,get_invoice_pdf,,
 
 ## Data
 data,TabularDataByFilter,tabular_data_by_filter,,tabularDataByFilter
-data,TabularDataBySQL,,,tabularDataBySQL
-data,TabularDataByMQL,,,tabularDataByMQL
+data,TabularDataBySQL,tabular_data_by_sql,,tabularDataBySQL
+data,TabularDataByMQL,tabular_data_by_mql,,tabularDataByMQL
 data,BinaryDataByFilter,binary_data_by_filter,,binaryDataByFilter
 data,BinaryDataByIDs,binary_data_by_ids,,binaryDataByIDs
 data,DeleteTabularData,delete_tabular_data,,deleteTabularData
@@ -365,6 +372,7 @@ data,AddBoundingBoxToImageByID,add_bounding_box_to_image_by_id,,addBoundingBoxTo
 data,RemoveBoundingBoxFromImageByID,remove_bounding_box_from_image_by_id,,removeBoundingBoxFromImageByID
 data,BoundingBoxLabelsByFilter,bounding_box_labels_by_filter,,boundingBoxLabelsByFilter
 data,GetDatabaseConnection,get_database_connection,,getDatabaseConnection
+## TODO: Something wrong with parsing: configure_database_user in PySDK (??):
 data,ConfigureDatabaseUser,,,configureDatabaseUser
 data,AddBinaryDataToDatasetByIDs,add_binary_data_to_dataset_by_ids,,addBinaryDataToDatasetByIDs
 data,RemoveBinaryDataFromDatasetByIDs,remove_binary_data_from_dataset_by_ids,,removeBinaryDataFromDatasetByIDs
@@ -388,17 +396,21 @@ datasync,FileUploadFromPath,file_upload_from_path,,
 datasync,StreamingDataCaptureUpload,streaming_data_capture_upload,,streamingDataCaptureUpload
 
 ## MLTraining
+## TODO: Something wrong with parsing: submit_training_job in PySDK (??):
 mltraining,SubmitTrainingJob,,,submitTrainingJob
 mltraining,GetTrainingJob,get_training_job,,getTrainingJob
 mltraining,ListTrainingJobs,list_training_jobs,,listTrainingJobs
 mltraining,CancelTrainingJob,cancel_training_job,,cancelTrainingJob
+## Borked in Python: https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.delete_completed_training_job
 mltraining,DeleteCompletedTrainingJob,,,deleteCompletedTrainingJob
 
 ## Robot
+## Omitting some Flutter methods from now until we can determine what they do
+## (no counterpart description text in other SDKs, as no other SDKs implement these)
 robot,GetOperations,get_operations,,getOperations
-robot,GetSessions,,,getSessions
+robot,GetSessions,,,
 robot,ResourceNames,,ResourceNames,resourceNames
-robot,ResourceRPCSubtypes,,,resourceRPCSubtypes
+robot,ResourceRPCSubtypes,,,
 robot,CancelOperation,cancel_operation,,cancelOperation
 robot,BlockForOperation,block_for_operation,,blockForOperation
 robot,DiscoverComponents,discover_components,DiscoverComponents,discoverComponents
@@ -406,10 +418,10 @@ robot,FrameSystemConfig,get_frame_system_config,FrameSystemConfig,frameSystemCon
 robot,TransformPose,transform_pose,TransformPose,transformPose
 robot,TransformPCD,,TransformPointCloud,transformPCD
 robot,GetStatus,get_status,Status,getStatus
-robot,StreamStatus,,,streamStatus
+robot,StreamStatus,,,
 robot,StopAll,stop_all,StopAll,stopAll
-robot,StartSession,,,startSession
-robot,SendSessionHeartbeat,,,sendSessionHeartbeat
+robot,StartSession,,,
+robot,SendSessionHeartbeat,,,
 robot,Log,log,,log
 robot,GetCloudMetadata,get_cloud_metadata,CloudMetadata,getCloudMetadata
 ## HACK: Robot (python) provides additional helper function, adding 4 pseudo-entries:
