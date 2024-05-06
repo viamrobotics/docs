@@ -246,7 +246,7 @@ Obtain unified tabular data and metadata, queried with MQL.
 
 **Returns:**
 
-- (`List[Dict[str, ValueTypes]]`): An array of data objects.
+- (List[Dict[str, ValueTypes]]): An array of data objects.
 
 ```python {class="line-numbers linkable-line-numbers"}
 tabular_data = await data_client.tabular_data_by_sql(
