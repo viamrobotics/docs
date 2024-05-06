@@ -98,6 +98,7 @@ You do not need to perform any additional configuration when [querying data in t
 1. Configure a new database user for the Viam organization's MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance, which is where your machine's synced data is stored.
 
    {{< alert title="Warning" color="warning" >}}
+   The command will create a user with your organisation id as the username.
    If you or someone else in your organization have already created this user, the following steps update the password for that user instead.
    Dashboards or other integrations relying on this password will then need to be updated.
    {{< /alert >}}
