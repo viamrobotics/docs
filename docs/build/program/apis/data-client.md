@@ -213,7 +213,7 @@ Obtain unified tabular data and metadata, queried with SQL.
 
 **Parameters:**
 
-- organization_id [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the organization that owns the data.
+- `organization_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the organization that owns the data.
 - sql_query [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The SQL query to run.
 
 **Returns:**
