@@ -46,7 +46,7 @@ See [PWM signals on `esp32` pins](/build/micro-rdk/board/esp32/#pwm-signals-on-e
 
 For `Analog`s:
 
-- [`Read()`](/components/board/#read)
+- [`ReadAnalogReader()`](/components/board/#readanalogreader)
 
 For `DigitalInterrupt`s:
 

@@ -1135,7 +1135,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ## `Analog` API
 
-### Read
+### ReadAnalogReader
 
 Read the current integer value of the digital signal output by the [ADC](#analogs).
 
