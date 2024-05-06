@@ -92,8 +92,8 @@ sdk_url_mapping = {
 ## type = ["array", "of", "resources"]
 components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic_component", "gripper",
               "input_controller", "motor", "movement_sensor", "power_sensor", "sensor", "servo"]
-services = ["generic_service", "mlmodel", "motion", "navigation", "slam", "vision"]
-app_apis = ["app", "data", "mltraining"]
+services = ["base_remote_control", "data_manager", "generic_service", "mlmodel", "motion", "navigation", "slam", "vision"]
+app_apis = ["app", "billing", "data", "mltraining"]
 robot_apis = ["robot"]
 
 ## Dictionary of proto API names, with empty methods array, to be filled in for later use by get_proto_apis():
@@ -168,6 +168,11 @@ proto_map = {
         "name": "ServoServiceClient",
         "methods": []
     },
+    "data_manager": {
+        "url": "https://github.com/viamrobotics/api/blob/main/service/datamanager/v1/data_manager_grpc.pb.go",
+        "name": "DataManagerServiceClient",
+        "methods": []
+    },
     "generic_service": {
         "url": "https://raw.githubusercontent.com/viamrobotics/api/main/service/generic/v1/generic_grpc.pb.go",
         "name": "GenericServiceClient",
@@ -201,6 +206,11 @@ proto_map = {
     "app": {
         "url": "https://raw.githubusercontent.com/viamrobotics/api/main/app/v1/app_grpc.pb.go",
         "name": "AppServiceClient",
+        "methods": []
+    },
+    "billing": {
+        "url": "https://github.com/viamrobotics/api/blob/main/app/v1/billing_grpc.pb.go",
+        "name": "BillingServiceClient",
         "methods": []
     },
     "data": {
@@ -240,7 +250,9 @@ go_resource_overrides = {
     "input_controller": "input",
     "movement_sensor": "movementsensor",
     "power_sensor": "powersensor",
-    "generic_service": "generic"
+    "generic_service": "generic",
+    "base_remote_control": "baseremotecontrol",
+    "data_manager": "datamanager"
 }
 
 ## Ignore these specific APIs if they error, are deprecated, etc:
@@ -253,7 +265,7 @@ go_ignore_apis = [
     'robot.RemoteByName', # robot method
     'robot.ResourceByName', # robot method
     'robot.RemoteNames', # robot method
-    'robot.ResourceNames', # robot method
+    #'robot.ResourceNames', # robot method
     'robot.ResourceRPCAPIs', # robot method
     'robot.ProcessManager', # robot method
     'robot.OperationManager', # robot method
@@ -287,6 +299,7 @@ python_resource_overrides = {
     "generic_service": "generic",
     "data": "data_client",
     "app": "app_client",
+    "billing": "billing_client",
     "data": "data_client",
     "mltraining": "ml_training_client"
 }
@@ -489,8 +502,6 @@ def parse(type, names):
                 elif type == "robot":
                     url = f"{sdk_url}/go.viam.com/rdk/{type}"
                 elif type == "app":
-                    ## TODO: Currently ignoring app client for go SDK, but GO does have app > data > Sync.
-                    ##       Need to fix this code so that we permit app type, but only if not app resource.
                     pass
                 go_methods[type][resource] = {}
 
@@ -508,8 +519,10 @@ def parse(type, names):
                     url = f"{sdk_url}/autoapi/viam/{type}/client/index.html"
                 python_methods[type][resource] = {}
 
-            ## Determine URL form for Flutter depending on type (like 'component'):
-            elif sdk == "flutter":
+            ## Determine URL form for Flutter depending on type (like 'component').
+            ## TEMP: Manually exclude Base Remote Control and Data Manager Services, which are Go only.
+            ## TODO: Handle resources with 0 implemented methods for this SDK better.
+            elif sdk == "flutter" and resource != 'base_remote_control' and resource != 'data_manager':
                 if resource in flutter_resource_overrides:
                     url = f"{sdk_url}/viam_protos.{type}.{flutter_resource_overrides[resource]}/{proto_map[resource]['name']}-class.html"
                 else:
@@ -561,7 +574,7 @@ def parse(type, names):
                                 with open(proto_map_file, 'r') as f:
                                     for row in f:
                                         if not row.startswith('#') \
-                                        and row.startswith(resource) \
+                                        and row.startswith(resource + ',') \
                                         and row.split(',')[3] == method_name:
                                             this_method_dict["proto"] = row.split(',')[1]
 
@@ -633,6 +646,22 @@ def parse(type, names):
                                 'usage': 'Stop(<a href="/context">context</a>.<a href="/context#Context">Context</a>, map[<a href="/builtin#string">string</a>]interface{}) <a href="/builtin#error">error</a>', \
                                 'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Actuator'}
 
+                        ## Similarly, if the resource being considered inherits from resource.Shaped (Base, for example),
+                        ## then add the one inherited method manually: Geometries():
+                        if '\tresource.Shaped' in resource_interface.text:
+                            go_methods[type][resource]['Geometries'] = {'proto': 'GetGeometries', \
+                                'description': 'Geometries returns the list of geometries associated with the resource, in any order. The poses of the geometries reflect their current location relative to the frame of the resource.', \
+                                'usage': 'Geometries(<a href="/context">context</a>.<a href="/context#Context">Context</a>, map[<a href="/builtin#string">string</a>]interface{}) ([]<a href="/go.viam.com/rdk/spatialmath">spatialmath</a>.<a href="/go.viam.com/rdk/spatialmath#Geometry">Geometry</a>, <a href="/builtin#error">error</a>)', \
+                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Shaped'}
+
+                        ## Similarly, if the resource being considered inherits from resource.Sensor (Movement Sensor, for example),
+                        ## then add the one inherited method manually: Readings():
+                        if '\tresource.Sensor' in resource_interface.text:
+                            go_methods[type][resource]['Readings'] = {'proto': 'GetReadings', \
+                                'description': 'Readings return data specific to the type of sensor and can be of any type.', \
+                                'usage': 'Readings(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, extra map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
+                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Sensor'}
+
                 ## We have finished looping through all scraped Go methods. Write the go_methods dictionary
                 ## in its entirety to the all_methods dictionary using "go" as the key:
                 all_methods["go"] = go_methods
@@ -641,8 +670,10 @@ def parse(type, names):
                ##Go SDK has no APP API!
                pass
 
-            ## Scrape each parent method tag and all contained child tags for Python by resource:
-            elif sdk == "python":
+            ## Scrape each parent method tag and all contained child tags for Python by resource.
+            ## TEMP: Manually exclude Base Remote Control and Data Manager Services, which are Go only.
+            ## TODO: Handle resources with 0 implemented methods for this SDK better.
+            elif sdk == "python" and resource != 'base_remote_control' and resource != 'data_manager':
                 soup = make_soup(url)
                 python_methods_raw = soup.find_all("dl", class_="py method")
 
@@ -668,7 +699,7 @@ def parse(type, names):
                             for row in f:
                                 #print(row)
                                 if not row.startswith('#') \
-                                and row.startswith(resource) \
+                                and row.startswith(resource + ',') \
                                 and row.split(',')[2] == method_name:
                                     this_method_dict["proto"] = row.split(',')[1]
 
@@ -872,9 +903,11 @@ def parse(type, names):
                 ## in its entirety to the all_methods dictionary using "python" as the key:
                 all_methods["python"] = python_methods
 
-            ## Scrape each parent method tag and all contained child tags for Flutter by resource:
+            ## Scrape each parent method tag and all contained child tags for Flutter by resource.
+            ## TEMP: Manually exclude Base Remote Control and Data Manager Services, which are Go only.
+            ## TODO: Handle resources with 0 implemented methods for this SDK better.
             ## TODO: Better code comments for Flutter
-            elif sdk == "flutter":
+            elif sdk == "flutter" and resource != 'base_remote_control' and resource != 'data_manager':
                 soup = make_soup(url)
                 ## Limit matched class to exactly 'callable', i.e. not 'callable inherited', remove the constructor (proto id) itself, and remove '*_Pre' methods from Robot API:
                 flutter_methods_raw = soup.find_all(
@@ -900,7 +933,7 @@ def parse(type, names):
                                 row = row.rstrip()
 
                                 if not row.startswith('#') \
-                                and row.startswith(resource) \
+                                and row.startswith(resource + ',') \
                                 and row.split(',')[4] == method_name:
                                     this_method_dict["proto"] = row.split(',')[1]                
 
@@ -987,8 +1020,12 @@ def parse(type, names):
                 all_methods["flutter"] = flutter_methods
 
             else:
-                ## Should never get here.
-                print("unsupported language!")
+                ## Good code would never get here.
+                ## This code gets here when facing a resource with 0 implemented methods for
+                ## the SDK we're looping for.
+                ## TODO: Fix so resources with 0 implemented methods for an SDK are silently
+                ## skipped without requiring manual exclusion in parse().
+                pass
 
     return all_methods
 
@@ -1043,7 +1080,7 @@ def write_markdown(type, names, methods):
             for row in f:
                 #print(row)
                 if not row.startswith('#') \
-                and row.startswith(resource):
+                and row.startswith(resource + ','):
                     proto = row.split(',')[1]
                     py_method_name = row.split(',')[2]
                     go_method_name = row.split(',')[3]
@@ -1075,10 +1112,10 @@ def write_markdown(type, names, methods):
                         proto_override_file = os.path.join(path_to_protos_override, proto_override_filename)
                         if os.path.isfile(proto_override_file):
 
-                            output_file.write('PROTO OVERRIDE: ')
-
                             for line in open(proto_override_file, 'r', encoding='utf-8'):
                                output_file.write(line)
+
+                            output_file.write('\n')
 
                         output_file.write('{{< tabs >}}\n')
 
