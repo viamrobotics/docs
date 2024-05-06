@@ -1,0 +1,1 @@
+Delete a specified machine.
