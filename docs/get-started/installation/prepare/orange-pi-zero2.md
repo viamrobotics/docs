@@ -21,8 +21,8 @@ Follow this guide to set up your Orange Pi Zero2 to run `viam-server`.
 
 - Development machine: laptop or computer workstation
 - An [Orange Pi Zero2](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-Zero-2.html)
-- A 5V 3amps(3A) power supply with a USB-C connector
-- A microSD card: Minimum of 8 GB, 16 GB recommended
+- A 5V 3A power supply with a USB-C connector
+- A microSD card: Minimum of 8GB, 16GB recommended
 - A monitor: for display
 - [Micro-HDMI to HDMI cable](https://www.amazon.com/Amazon-Basics-Flexible-Durable-18Gpbs/dp/B07KSDB25X/): to connect Orange Pi to monitor display
 - USB keyboard and mouse
