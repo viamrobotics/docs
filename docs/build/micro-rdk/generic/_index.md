@@ -3,8 +3,9 @@ title: "Micro-RDK Generic Models"
 linkTitle: "Generic"
 weight: 30
 type: "docs"
-description: "Support in the micro-RDK for generic compoent types."
+description: "The micro-RDK generic component for generic compoent types."
 images: ["/icons/components/generic.svg"]
+icon: true
 tags: ["generic", "components", "micro-rdk"]
 no_list: true
 # SMEs: Gautham V.
