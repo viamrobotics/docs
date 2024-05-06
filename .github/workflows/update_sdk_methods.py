@@ -1163,7 +1163,7 @@ def write_markdown(type, names, methods):
             for row in f:
                 #print(row)
                 if not row.startswith('#') \
-                and row.startswith(resource):
+                and row.startswith(resource + ','):
                     proto = row.split(',')[1]
                     py_method_name = row.split(',')[2]
                     go_method_name = row.split(',')[3]
@@ -1185,9 +1185,9 @@ def write_markdown(type, names, methods):
                         ## Write proto as H3:
                         output_file.write('### ' + proto + '\n\n')
 
-                        ## TODO: This is where the proto description would go.
-                        ##       We are not currently pulling this from the upstream api repo,
-                        ##       but we could. Not every proto has a description however.
+                        ## NOTE: This is where proto descriptions could go if we scraped them.
+                        ## However, many do not have descriptions, so we opted instead to
+                        ## use the proto override system to provide all proto descriptions instead.
 
                         proto_override_filename = resource + '.' + proto + '.md'
 
@@ -1195,10 +1195,10 @@ def write_markdown(type, names, methods):
                         proto_override_file = os.path.join(path_to_protos_override, proto_override_filename)
                         if os.path.isfile(proto_override_file):
 
-                            output_file.write('PROTO OVERRIDE: ')
-
                             for line in open(proto_override_file, 'r', encoding='utf-8'):
                                output_file.write(line)
+
+                            output_file.write('\n')
 
                         output_file.write('{{< tabs >}}\n')
 
@@ -1240,23 +1240,24 @@ def write_markdown(type, names, methods):
                                         (method_override_filename.endswith('.before.md') or \
                                         method_override_filename.endswith('.md')):
 
-                                        output_file.write('METHOD OVERRIDE BEFORE: ')
+                                        #output_file.write('METHOD OVERRIDE BEFORE: ')
 
                                         for line in open(method_override_file_path, 'r', encoding='utf-8'):
                                             output_file.write(line)
 
-                            if 'description' in methods['python'][type][resource][py_method_name]:
-
-                                ## Check if method description contains any matching string in override_description_links.
-                                ## If match, add link to text in description:
-
-                                method_description = methods['python'][type][resource][py_method_name]['description']
-
-                                for override_text in override_description_links.keys():
-                                    if override_text in methods['python'][type][resource][py_method_name]['description']:
-                                        method_description = link_description('md', methods['python'][type][resource][py_method_name]['description'], override_text, override_description_links[override_text])
-
-                                output_file.write(method_description + '\n\n')
+                            ## Removing per-SDK description in favor of proto description (by way of proto override files)
+                            #if 'description' in methods['python'][type][resource][py_method_name]:
+                            #
+                            #    ## Check if method description contains any matching string in override_description_links.
+                            #    ## If match, add link to text in description:
+                            #
+                            #    method_description = methods['python'][type][resource][py_method_name]['description']
+                            #
+                            #    for override_text in override_description_links.keys():
+                            #        if override_text in methods['python'][type][resource][py_method_name]['description']:
+                            #            method_description = link_description('md', methods['python'][type][resource][py_method_name]['description'], override_text, override_description_links[override_text])
+                            #
+                            #    output_file.write(method_description + '\n\n')
 
                             output_file.write('**Parameters:**\n\n')
 
@@ -1368,7 +1369,7 @@ def write_markdown(type, names, methods):
                             if not go_method_name and not flutter_method_name:
                                 output_file.write("{{< /tabs >}}\n")
 
-                        if go_method_name and go_method_name != "Close":
+                        if go_method_name:
                             output_file.write('{{% tab name="Go" %}}\n\n')
 
                             ## Check for method overrides.
@@ -1406,16 +1407,18 @@ def write_markdown(type, names, methods):
                                         (method_override_filename.endswith('.before.md') or \
                                         method_override_filename.endswith('.md')):
 
-                                        output_file.write('METHOD OVERRIDE BEFORE: ')
-
                                         for line in open(method_override_file_path, 'r', encoding='utf-8'):
                                             output_file.write(line)
+
+                                        output_file.write('\n')
 
                             if 'usage' in methods['go'][type][resource][go_method_name]:
 
                                 method_usage = methods['go'][type][resource][go_method_name]['usage']
 
                                 usage_string = method_usage.split('(')
+
+                                parameters = ''
 
                                 if len(usage_string) == 3:
                                     parameters = usage_string[1]
@@ -1433,7 +1436,7 @@ def write_markdown(type, names, methods):
 
                                 output_file.write('**Parameters:**\n\n')
 
-                                if parameters:
+                                if len(parameters) > 0:
                                     # Parse and format parameters
                                     parsed_parameters = parse_method_usage(parameters)
                                     formatted_parameters = format_method_usage(parsed_parameters)
@@ -1516,23 +1519,24 @@ def write_markdown(type, names, methods):
                                         (method_override_filename.endswith('.before.md') or \
                                         method_override_filename.endswith('.md')):
 
-                                        output_file.write('METHOD OVERRIDE BEFORE: ')
+                                        #output_file.write('METHOD OVERRIDE BEFORE: ')
 
                                         for line in open(method_override_file_path, 'r', encoding='utf-8'):
                                             output_file.write(line)
 
-                            if 'description' in methods['flutter'][type][resource][flutter_method_name]:
-
-                                ## Check if method description contains any matching string in override_description_links.
-                                ## If match, add link to text in description:
-
-                                method_description = methods['flutter'][type][resource][flutter_method_name]['description']
-
-                                for override_text in override_description_links.keys():
-                                    if override_text in methods['flutter'][type][resource][flutter_method_name]['description']:
-                                        method_description = link_description('md', methods['flutter'][type][resource][flutter_method_name]['description'], override_text, override_description_links[override_text])
-
-                                output_file.write(method_description + '\n\n')
+                            ## Removing per-SDK description in favor of proto description (by way of proto override files)
+                            #if 'description' in methods['flutter'][type][resource][flutter_method_name]:
+                            #
+                            #    ## Check if method description contains any matching string in override_description_links.
+                            #    ## If match, add link to text in description:
+                            #
+                            #    method_description = methods['flutter'][type][resource][flutter_method_name]['description']
+                            #
+                            #    for override_text in override_description_links.keys():
+                            #        if override_text in methods['flutter'][type][resource][flutter_method_name]['description']:
+                            #            method_description = link_description('md', methods['flutter'][type][resource][flutter_method_name]['description'], override_text, override_description_links[override_text])
+                            #
+                            #    output_file.write(method_description + '\n\n')
 
                             output_file.write('**Parameters:**\n\n')
                             if 'parameters' in methods['flutter'][type][resource][flutter_method_name]:
