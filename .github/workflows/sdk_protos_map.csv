@@ -192,7 +192,7 @@ servo,Close,close,Close,
 base_remote_control,ControllerInputs,,ControllerInputs,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 base_remote_control,Reconfigure,,Reconfigure,
-base_remote_control,DoCommand,,DoCommand,doCommand
+base_remote_control,DoCommand,,DoCommand,
 base_remote_control,Close,,Close,
 
 ## Data Manager

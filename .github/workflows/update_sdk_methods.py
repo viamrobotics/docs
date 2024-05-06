@@ -520,9 +520,9 @@ def parse(type, names):
                 python_methods[type][resource] = {}
 
             ## Determine URL form for Flutter depending on type (like 'component').
-            ## TEMP: Manually exclude Base Remote Control and Data Manager Services, which are Go only.
+            ## TEMP: Manually exclude Base Remote Control Service (Go only):
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
-            elif sdk == "flutter" and resource != 'base_remote_control' and resource != 'data_manager':
+            elif sdk == "flutter" and resource != 'base_remote_control':
                 if resource in flutter_resource_overrides:
                     url = f"{sdk_url}/viam_protos.{type}.{flutter_resource_overrides[resource]}/{proto_map[resource]['name']}-class.html"
                 else:
@@ -671,7 +671,7 @@ def parse(type, names):
                pass
 
             ## Scrape each parent method tag and all contained child tags for Python by resource.
-            ## TEMP: Manually exclude Base Remote Control and Data Manager Services, which are Go only.
+            ## TEMP: Manually exclude Base Remote Control Service (Go only) and Data Manager Service (Go + Flutter only).
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
             elif sdk == "python" and resource != 'base_remote_control' and resource != 'data_manager':
                 soup = make_soup(url)
@@ -904,10 +904,10 @@ def parse(type, names):
                 all_methods["python"] = python_methods
 
             ## Scrape each parent method tag and all contained child tags for Flutter by resource.
-            ## TEMP: Manually exclude Base Remote Control and Data Manager Services, which are Go only.
+            ## TEMP: Manually exclude Base Remote Control Service (Go only).
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
             ## TODO: Better code comments for Flutter
-            elif sdk == "flutter" and resource != 'base_remote_control' and resource != 'data_manager':
+            elif sdk == "flutter" and resource != 'base_remote_control':
                 soup = make_soup(url)
                 ## Limit matched class to exactly 'callable', i.e. not 'callable inherited', remove the constructor (proto id) itself, and remove '*_Pre' methods from Robot API:
                 flutter_methods_raw = soup.find_all(
