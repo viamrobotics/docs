@@ -204,6 +204,62 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### TabularDataBySQL
+
+Obtain unified tabular data and metadata, queried with SQL.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- organization_id [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the organization that owns the data.
+- sql_query [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The SQL query to run.
+
+**Returns:**
+
+- (`List[Dict[str, ValueTypes]]`): An array of data objects.
+
+```python {class="line-numbers linkable-line-numbers"}
+tabular_data = await data_client.tabular_data_by_sql(
+    organization_id=organization_id,
+    sql_query="SELECT * FROM readings"
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_sql).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### TabularDataByMQL
+
+Obtain unified tabular data and metadata, queried with MQL.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- organization_id [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the organization that owns the data.
+- mql_binary (List[bytes]): The MQL query to run as a list of BSON documents.
+
+**Returns:**
+
+- (`List[Dict[str, ValueTypes]]`): An array of data objects.
+
+```python {class="line-numbers linkable-line-numbers"}
+tabular_data = await data_client.tabular_data_by_sql(
+    organization_id=organization_id,
+    sql_query="SELECT * FROM readings"
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_mql).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### DeleteTabularData
 
 Delete tabular data older than a specified number of days.
@@ -1082,6 +1138,35 @@ await data_client.remove_binary_data_from_dataset_by_ids(
     dataset_id="abcd-1234xyz-8765z-123abc"
 )
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ConfigureDatabaseUser
+
+Configure a database user for the Viam organization’s MongoDB Atlas Data Federation instance. It can also be used to reset the
+password of the existing database user.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- organization_id [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the organization.
+- password [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The password of the user.
+
+**Returns:**
+
+- None.
+
+```python {class="line-numbers linkable-line-numbers"}
+await data_client.configure_database_user(
+    organization_id=organization_id,
+    password="CHANGE-ME"
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.configure_database_user).
 
 {{% /tab %}}
 {{< /tabs >}}
