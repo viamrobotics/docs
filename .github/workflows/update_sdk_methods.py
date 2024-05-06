@@ -93,7 +93,7 @@ sdk_url_mapping = {
 components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic_component", "gripper",
               "input_controller", "motor", "movement_sensor", "power_sensor", "sensor", "servo"]
 services = ["base_remote_control", "data_manager", "generic_service", "mlmodel", "motion", "navigation", "slam", "vision"]
-app_apis = ["app", "billing", "data", "mltraining"]
+app_apis = ["app", "billing", "data", "dataset", "data_sync", "mltraining"]
 robot_apis = ["robot"]
 
 ## Dictionary of proto API names, with empty methods array, to be filled in for later use by get_proto_apis():
@@ -223,7 +223,7 @@ proto_map = {
         "name": "DatasetServiceClient",
         "methods": []
     },
-    "datasync": {
+    "data_sync": {
         "url": "https://raw.githubusercontent.com/viamrobotics/api/main/app/datasync/v1/data_sync_grpc.pb.go",
         "name": "DataSyncServiceClient",
         "methods": []
@@ -301,6 +301,10 @@ python_resource_overrides = {
     "app": "app_client",
     "billing": "billing_client",
     "data": "data_client",
+    ## Python bundles Dataset and Datasync protos in with Data,
+    ## while Flutter does not. HACK:
+    "dataset": "data_client",
+    "data_sync": "data_client",
     "mltraining": "ml_training_client"
 }
 
