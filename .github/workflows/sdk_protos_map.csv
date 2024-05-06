@@ -3,15 +3,15 @@
 ## Arm
 arm,GetEndPosition,get_end_position,EndPosition,getEndPosition
 arm,MoveToPosition,move_to_position,MoveToPosition,moveToPosition
-arm,GetJointPositions,get_joint_positions,JointPositions,getJointPositions
 arm,MoveToJointPositions,move_to_joint_positions,MoveToJointPositions,moveToJointPositions
-## UPSTREAM: Go SDK docs omits standard functions like stop, docommand, getgeometries:
-arm,Stop,stop,,stop
-arm,IsMoving,is_moving,,isMoving
-arm,DoCommand,do_command,,doCommand
+arm,GetJointPositions,get_joint_positions,JointPositions,getJointPositions
 arm,GetKinematics,get_kinematics,,getKinematics
-arm,GetGeometries,get_geometries,,getGeometries
-## HACK: No proto for close, manually mapping:
+## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
+arm,IsMoving,is_moving,IsMoving,isMoving
+arm,Stop,stop,Stop,stop
+arm,GetGeometries,get_geometries,Geometries,getGeometries
+arm,Reconfigure,,Reconfigure,
+arm,DoCommand,do_command,DoCommand,doCommand
 arm,Close,close,Close,
 
 ## Base
@@ -19,12 +19,13 @@ base,MoveStraight,move_straight,MoveStraight,moveStraight
 base,Spin,spin,Spin,spin
 base,SetPower,set_power,SetPower,setPower
 base,SetVelocity,set_velocity,SetVelocity,setVelocity
-base,Stop,stop,,stop
-base,IsMoving,is_moving,,isMoving
-base,DoCommand,do_command,,doCommand
-base,GetGeometries,get_geometries,,getGeometries
 base,GetProperties,get_properties,Properties,getProperties
-## HACK: No proto for close, manually mapping:
+## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
+base,IsMoving,is_moving,IsMoving,isMoving
+base,Stop,stop,Stop,stop
+base,GetGeometries,get_geometries,Geometries,getGeometries
+base,Reconfigure,,Reconfigure,
+base,DoCommand,do_command,DoCommand,doCommand
 base,Close,close,Close,
 
 ## Board
@@ -35,7 +36,6 @@ board,GetPWM,get_pwm,PWM,pWM
 board,SetPWM,set_pwm,SetPWM,setPWM
 board,PWMFrequency,get_pwm_frequency,PWMFreq,pWMFrequency
 board,SetPWMFrequency,set_pwm_frequency,SetPWMFreq,setPWMFrequency
-board,DoCommand,do_command,,doCommand
 board,ReadAnalogReader,analog_reader_by_name,AnalogByName,readAnalogReader
 board,WriteAnalog,write_analog,WriteAnalog,writeAnalog
 board,GetDigitalInterruptValue,digital_interrupt_by_name,DigitalInterruptByName,,
@@ -48,7 +48,9 @@ board,Value,value,Value,getDigitalInterruptValue
 board,AnalogReaderNames,analog_reader_names,AnalogNames,
 board,DigitalInterruptNames,digital_interrupt_names,DigitalInterruptNames,
 board,GPIOPinByName,gpio_pin_by_name,GPIOPinByName,
-## HACK: No proto for close, manually mapping:
+## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
+board,Reconfigure,,Reconfigure,
+board,DoCommand,do_command,DoCommand,doCommand
 board,Close,close,Close,
 
 ## Camera
@@ -57,6 +59,7 @@ camera,GetImages,get_images,Images,getImages
 camera,RenderFrame,,,renderFrame
 camera,GetPointCloud,get_point_cloud,NextPointCloud,getPointCloud
 camera,GetProperties,get_properties,Properties,getProperties
+## NOTED: Camera in Go SDK doesn't appear to implement (inherit) these:
 camera,DoCommand,do_command,,doCommand
 camera,GetGeometries,get_geometries,,getGeometries
 ## HACK: No proto for close, manually mapping:
@@ -66,37 +69,43 @@ camera,Close,close,Close,
 encoder,GetPosition,get_position,Position,getPosition
 encoder,ResetPosition,reset_position,ResetPosition,resetPosition
 encoder,GetProperties,get_properties,Properties,getProperties
-encoder,DoCommand,do_command,,doCommand
 encoder,GetGeometries,get_geometries,,getGeometries
-## HACK: No proto for close, manually mapping:
+## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
+encoder,Reconfigure,,Reconfigure,
+encoder,DoCommand,do_command,DoCommand,doCommand
 encoder,Close,close,Close,
 
 ## Gantry
 gantry,GetPosition,get_position,Position,getPosition
 gantry,MoveToPosition,move_to_position,MoveToPosition,moveToPosition
-gantry,Home,home,Home,home
 gantry,GetLengths,get_lengths,Lengths,getLengths
-gantry,Stop,stop,,stop
-gantry,IsMoving,is_moving,,isMoving
-gantry,DoCommand,do_command,,doCommand
+gantry,Home,home,Home,home
+## NOTED: Gantry in Go SDK doesn't appear to implement (inherit) this:
 gantry,GetGeometries,get_geometries,,getGeometries
-## HACK: No proto for close, manually mapping:
+## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
+gantry,IsMoving,is_moving,IsMoving,isMoving
+gantry,Stop,stop,Stop,stop
+gantry,Reconfigure,,Reconfigure,
+gantry,DoCommand,do_command,DoCommand,doCommand
 gantry,Close,close,Close,
 
 ## Generic Component
+## NOTED:Generic Component in Go SDK doesn't appear to implement (inherit) these:
 generic_component,DoCommand,do_command,,doCommand
 generic_component,GetGeometries,get_geometries,,getGeometries
 ## HACK: No proto for close, manually mapping:
-generic_component,Close,close,Close,
+## NOTED: Go SDK also missing Close, but we have it in our docs?:
+generic_component,Close,close,,
 
 ## Gripper
 gripper,Open,open,Open,open
 gripper,Grab,grab,Grab,grab
-gripper,Stop,stop,,stop
-gripper,IsMoving,is_moving,,isMoving
-gripper,DoCommand,do_command,,doCommand
-gripper,GetGeometries,get_geometries,,getGeometries
-## HACK: No proto for close, manually mapping:
+## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
+gripper,IsMoving,is_moving,IsMoving,isMoving
+gripper,Stop,stop,Stop,stop
+gripper,GetGeometries,get_geometries,Geometries,getGeometries
+gripper,Reconfigure,,Reconfigure,
+gripper,DoCommand,do_command,DoCommand,doCommand
 gripper,Close,close,Close,
 
 ## Input Controller
@@ -104,11 +113,13 @@ input_controller,GetControls,get_controls,Controls,getControls
 input_controller,GetEvents,get_events,Events,getEvents
 input_controller,StreamEvents,,,streamEvents
 input_controller,TriggerEvent,trigger_event,TriggerEvent,triggerEvent
-input_controller,DoCommand,do_command,,doCommand
+## NOTED: Go SDK doesn't appear to implement this:
 input_controller,GetGeometries,get_geometries,,getGeometries
 ## HACK: Input (python, go) provides additional helper function, adding 1 pseudo-entries:
 input_controller,RegisterControlCallback,register_control_callback,RegisterControlCallback,
-## HACK: No proto for close, manually mapping:
+## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
+input_controller,Reconfigure,,Reconfigure,
+input_controller,DoCommand,do_command,DoCommand,doCommand
 input_controller,Close,close,Close,
 
 ## Motor
@@ -118,12 +129,13 @@ motor,GoTo,go_to,GoTo,goTo
 motor,ResetZeroPosition,reset_zero_position,ResetZeroPosition,resetZeroPosition
 motor,GetPosition,get_position,Position,getPosition
 motor,GetProperties,get_properties,Properties,getProperties
-motor,Stop,stop,,stop
 motor,IsPowered,is_powered,IsPowered,isPowered
-motor,IsMoving,is_moving,,isMoving
-motor,DoCommand,do_command,,doCommand
 motor,GetGeometries,get_geometries,,getGeometries
-## HACK: No proto for close, manually mapping:
+## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
+motor,IsMoving,is_moving,IsMoving,isMoving
+motor,Stop,stop,Stop,stop
+motor,Reconfigure,,Reconfigure,
+motor,DoCommand,do_command,DoCommand,doCommand
 motor,Close,close,Close,
 
 ## Movement Sensor
@@ -135,52 +147,74 @@ movement_sensor,GetPosition,get_position,Position,getPosition
 movement_sensor,GetProperties,get_properties,Properties,getProperties
 movement_sensor,GetAccuracy,get_accuracy,Accuracy,getAccuracy
 movement_sensor,GetLinearAcceleration,get_linear_acceleration,LinearAcceleration,getLinearAcceleration
-movement_sensor,DoCommand,do_command,,doCommand
+## NOTED: Go SDK doesn't appear to implement this:
 movement_sensor,GetGeometries,get_geometries,,getGeometries
-movement_sensor,GetReadings,get_readings,,getReadings
-## HACK: No proto for close, manually mapping:
+## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
+movement_sensor,GetReadings,get_readings,Readings,getReadings
+movement_sensor,Reconfigure,,Reconfigure,
+movement_sensor,DoCommand,do_command,DoCommand,doCommand
 movement_sensor,Close,close,Close,
 
 ## Power Sensor
 power_sensor,GetVoltage,get_voltage,Voltage,getVoltage
 power_sensor,GetCurrent,get_current,Current,getCurrent
 power_sensor,GetPower,get_power,Power,getPower
-power_sensor,GetReadings,get_readings,,getReadings
-power_sensor,DoCommand,do_command,,doCommand
 ## HACK: No GetGeometries proto for power sensor component, adding 1 pseudo-entry:
+## NOTED: But not for Go SDK:
 power_sensor,GetGeometries,get_geometries,,
-## HACK: No proto for close, manually mapping:
+## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
+power_sensor,GetReadings,get_readings,Readings,getReadings
+power_sensor,Reconfigure,,Reconfigure,
+power_sensor,DoCommand,do_command,DoCommand,doCommand
 power_sensor,Close,close,Close,
 
 ## Sensor
-## UPSTREAM: Go SDK docs omit readings, but implement:
-sensor,GetReadings,get_readings,,getReadings
-sensor,DoCommand,do_command,,doCommand
 sensor,GetGeometries,get_geometries,,getGeometries
-## HACK: No proto for close, manually mapping:
+## HACK: No proto for close (and/or inherited in Go SDK), manually mapping:
+sensor,GetReadings,get_readings,Readings,getReadings
+sensor,Reconfigure,,Reconfigure,
+sensor,DoCommand,do_command,DoCommand,doCommand
 sensor,Close,close,Close,
 
 ## Servo
 servo,Move,move,Move,move
 servo,GetPosition,get_position,Position,getPosition
-servo,Stop,stop,stop,,stop
-servo,IsMoving,is_moving,,isMoving
-servo,DoCommand,do_command,,doCommand
 servo,GetGeometries,get_geometries,,getGeometries
-## HACK: No proto for close, manually mapping:
+## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
+servo,IsMoving,is_moving,IsMoving,isMoving
+servo,Stop,stop,Stop,stop
+servo,Reconfigure,,Reconfigure,
+servo,DoCommand,do_command,DoCommand,doCommand
 servo,Close,close,Close,
 
+## Base Remote Control
+## HACK: No proto for Base Remote Control, manually adding:
+base_remote_control,ControllerInputs,,ControllerInputs,
+## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
+base_remote_control,Reconfigure,,Reconfigure,
+base_remote_control,DoCommand,,DoCommand,doCommand
+base_remote_control,Close,,Close,
+
+## Data Manager
+data_manager,Sync,,Sync,
+## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
+data_manager,Reconfigure,,Reconfigure,
+data_manager,DoCommand,,DoCommand,
+data_manager,Close,,Close,
+
 ## Generic Service
+## NOTED:Generic Component in Go SDK doesn't appear to implement (inherit) these:
 generic_service,DoCommand,do_command,,doCommand
 ## HACK: No proto for close, manually mapping:
+## NOTED: Go SDK also missing Close, but we have it in our docs?:
 generic_service,Close,close,Close,
 
 ## MLModel
 mlmodel,Infer,infer,Infer,infer
 mlmodel,Metadata,metadata,Metadata,metadata
-## HACK: No proto for doCommand, manually mapping:
-mlmodel,DoCommand,do_command,,
-## HACK: No proto for close, manually mapping:
+## HACK: No proto for DoCommand or Close (and/or inherited in Go SDK), manually mapping:
+mlmodel,Reconfigure,,Reconfigure,
+mlmodel,DoCommand,do_command,DoCommand,
 mlmodel,Close,close,Close,
 
 ## Motion
@@ -191,10 +225,11 @@ motion,GetPose,get_pose,GetPose,getPose
 motion,StopPlan,stop_plan,StopPlan,stopPlan
 motion,ListPlanStatuses,list_plan_statuses,ListPlanStatuses,listPlanStatuses
 motion,GetPlan,get_plan,PlanHistory,getPlan
-motion,DoCommand,do_command,,doCommand
 ## HACK: Not sure what this is, for Localizer interface (go):
 motion,CurrentPosition,,CurrentPosition,
-## HACK: No proto for close, manually mapping:
+## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
+motion,Reconfigure,,Reconfigure,
+motion,DoCommand,do_command,DoCommand,doCommand
 motion,Close,close,Close,
 
 ## Navigation
@@ -207,8 +242,9 @@ navigation,RemoveWaypoint,remove_waypoint,RemoveWaypoint,removeWaypoint
 navigation,GetObstacles,get_obstacles,Obstacles,getObstacles
 navigation,GetPaths,get_paths,Paths,getPaths
 navigation,GetProperties,get_properties,Properties,getProperties
-navigation,DoCommand,do_command,,doCommand
-## HACK: No proto for close, manually mapping:
+## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
+navigation,Reconfigure,,Reconfigure,
+navigation,DoCommand,do_command,DoCommand,doCommand
 navigation,Close,close,Close,
 
 ## SLAM
@@ -216,8 +252,9 @@ slam,GetPosition,get_position,Position,getPosition
 slam,GetPointCloudMap,get_point_cloud_map,PointCloudMap,getPointCloudMap
 slam,GetInternalState,get_internal_state,InternalState,getInternalState
 slam,GetProperties,get_properties,Properties,getProperties
-slam,DoCommand,do_command,,doCommand
-## HACK: No proto for close, manually mapping:
+## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
+slam,Reconfigure,,Reconfigure,
+slam,DoCommand,do_command,DoCommand,doCommand
 slam,Close,close,Close,
 
 ## Vision
@@ -226,8 +263,9 @@ vision,GetDetections,get_detections,Detections,getDetections
 vision,GetClassificationsFromCamera,get_classifications_from_camera,ClassificationsFromCamera,getClassificationsFromCamera
 vision,GetClassifications,get_classifications,Classifications,getClassifications
 vision,GetObjectPointClouds,get_object_point_clouds,GetObjectPointClouds,getObjectPointClouds
-vision,DoCommand,do_command,,doCommand
-## HACK: No proto for close, manually mapping:
+## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
+vision,Reconfigure,,Reconfigure,
+vision,DoCommand,do_command,DoCommand,doCommand
 vision,Close,close,Close,
 
 ## App
@@ -303,6 +341,12 @@ app,ListKeys,list_keys,,listKeys
 app,RotateKey,,,rotateKey
 app,CreateKeyFromExistingKeyAuthorizations,create_key_from_existing_key_authorizations,,createKeyFromExistingKeyAuthorizations
 
+## Billing
+billing,GetCurrentMonthUsage,get_current_month_usage,,
+billing,GetOrgBillingInformation,get_org_billing_information,,
+billing,GetInvoicesSummary,get_invoices_summary,,
+billing,GetInvoicePdf,get_invoice_pdf,,
+
 ## Data
 data,TabularDataByFilter,tabular_data_by_filter,,tabularDataByFilter
 data,TabularDataBySQL,,,tabularDataBySQL
@@ -324,7 +368,6 @@ data,GetDatabaseConnection,get_database_connection,,getDatabaseConnection
 data,ConfigureDatabaseUser,,,configureDatabaseUser
 data,AddBinaryDataToDatasetByIDs,add_binary_data_to_dataset_by_ids,,addBinaryDataToDatasetByIDs
 data,RemoveBinaryDataFromDatasetByIDs,remove_binary_data_from_dataset_by_ids,,removeBinaryDataFromDatasetByIDs
-## TODO: handle sync, either in data or datasync
 
 ## Dataset (from proto: Dataset, HACK: bundling with proto: Data)
 data,CreateDataset,create_dataset,,createDataset
