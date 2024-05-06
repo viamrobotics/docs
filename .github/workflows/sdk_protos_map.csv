@@ -207,7 +207,7 @@ data_manager,Close,,Close,
 generic_service,DoCommand,do_command,,doCommand
 ## HACK: No proto for close, manually mapping:
 ## NOTED: Go SDK also missing Close, but we have it in our docs?:
-generic_service,Close,close,Close,
+generic_service,Close,close,,
 
 ## MLModel
 mlmodel,Infer,infer,Infer,infer
