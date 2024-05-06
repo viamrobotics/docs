@@ -171,12 +171,12 @@ This wiring example corresponds to the [example config above](#encoder-config).
 
 ## Test the motor
 
-Once your motor is configured and connected, go to the [**CONTROL** tab](/fleet/machines/#control) and click on the motor's dropdown panel.
+Once your motor is configured and connected, go to the [**CONTROL** tab](/fleet/control/) and click on the motor's dropdown panel.
 Use the buttons to try turning your motor forwards or backwards at different power levels and check whether it moves as expected.
 
 ![Motor control panel.](/components/motor/control.png)
 
-For example, a [Viam Rover](https://docs.viam.com/get-started/try-viam/rover-resources/) with encoded motors following both an [angular](/components/base/#spin) and [linear](/components/base/#movestraight) velocity command:
+For example, a [Viam Rover](/get-started/try-viam/rover-resources/) with encoded motors following both an [angular](/components/base/#spin) and [linear](/components/base/#movestraight) velocity command:
 
 {{<gif webm_src="/components/encoded-motor/base_moving.webm" mp4_src="/components/encoded-motor/base-moving.mp4" alt="A Viam rover turning in a half circle" max-width="400px" >}}
 

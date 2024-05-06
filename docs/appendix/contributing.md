@@ -61,7 +61,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
 
 - **Explanation (conceptual)**: An understanding-oriented piece of content.
   This content provides background knowledge on a topic and tends to be referenced in how-to guides and tutorials.
-  For example the [Robot Development Kit page](https://docs.viam.com/internals/rdk/) or the [Registry page](https://docs.viam.com/registry/).
+  For example the [Robot Development Kit page](/internals/rdk/) or the [Registry page](/registry/).
   It’s useful to have a real or imagined "Why?" question to serve as a prompt.
 
   {{% expand "Click to view template" %}}
@@ -93,7 +93,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
 
 - **How-to Guide (procedural)**: A task-oriented piece of content that directs a reader to perform actions step by step to complete a task, like a recipe.
   Generally starts with a description of the task and things to consider, and then provides a set of numbered steps to follow.
-  For example, the [Installation page](https://docs.viam.com/get-started/installation/) or the [Find module page](https://docs.viam.com/registry/configure/).
+  For example, the [Installation page](/get-started/installation/) or the [Find module page](/registry/configure/).
 
   {{% expand "Click to view template" %}}
 
@@ -158,7 +158,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   {{% /expand %}}
 
 - **Reference**: A concise, information-oriented piece of content that generally starts with an overview/introduction and then a list of some kind (configuration options, API methods, etc.).
-  Examples include the [API pages](https://docs.viam.com/build/program/apis/) as well as [component and service pages](https://docs.viam.com/components/arm/).
+  Examples include the [API pages](/build/program/apis/) as well as [component and service pages](/components/arm/).
 
   Example template: [Component template](https://github.com/viamrobotics/docs/blob/main/docs/components/component/_index.md).
 

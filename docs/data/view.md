@@ -33,10 +33,10 @@ If you click on an image or a file, a **Details** panel appears on the right wit
 
 ## Filter data
 
-On the [**DATA** page in the Viam app](https://app.viam.com/data/view), you can filter data in the left **Filtering** panel.
+On the [**DATA** page in the Viam app](https://app.viam.com/data/view), you can filter data in the left **Filters** panel.
 You can filter by several categories including machine name, location, or timestamp range.
 
-For example, if you specify `Rover Rental` for location and click **SEARCH**, you can see all data captured on machines that belong to your `Rover Rental` location.
+For example, if you specify `Rover Rental` for location and click **Apply**, you can see all data captured on machines that belong to your `Rover Rental` location.
 
 {{< alert title="Tip" color="tip" >}}
 
@@ -54,7 +54,9 @@ To query your data using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{
 ## Delete data
 
 You can delete image or file data from the [Viam app](https://app.viam.com).
-To delete image data, click on an image in the **Images** subtab and click on **DELETE SELECTED**.
+To delete image data, hover over an image and click on the checkbox on the image.
+Then click on **Delete selected**.
+You can delete multiple images at once by selecting them individually or by holding the **SHIFT** key to select a range of images.
 To delete a file, click on the file in the **Files** subtab and click the **Delete** icon.
 
 To delete all image, file, or sensor data respectively, click on **DELETE ALL** in the top right corner.
@@ -65,7 +67,7 @@ If you need to delete many images that are from a specific time frame or machine
 
 ![Data view with no image selected showing the Delete all button](/data/delete_all.png)
 
-You can also delete data using the [Viam CLI](/fleet/cli/).
+You can also delete data using the [Viam CLI](/cli/).
 
 ## Next steps
 

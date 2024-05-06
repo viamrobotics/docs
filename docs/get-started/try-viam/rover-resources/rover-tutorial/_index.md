@@ -53,7 +53,7 @@ Find the details on [GitHub](https://github.com/viamrobotics/Viam-Rover-2).
 
    {{<imgproc src="get-started/try-viam/rover-resources/viam-rover/allen-wrenches.png" resize="180x" alt="Three allen wrenches" >}}
 
-1. Four extenders to increase the height of the rover to house larger internal single board computers (such as a Jetson Orin Nano).
+1. Four extenders to increase the height of the rover to house larger internal single-board computers (such as a Jetson Orin Nano).
 
    {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/extenders.png" resize="400x" declaredimensions=true alt="Four extenders" >}}
 
@@ -100,7 +100,7 @@ For more information, see [Camera Component](/components/camera/).
 The Viam Rover 2 utilizes a motherboard to which all ancillary components (buck converter, motor driver, IMU, INA219) are mounted.
 This board includes an auxiliary Raspberry Pi 4 pinout that dupont connectors can be connected to, an auxiliary power input terminal, 5V, 3.3V and Ground pins.
 
-The motherboard also incorporates hole patterns for the following alternative single board computers:
+The motherboard also incorporates hole patterns for the following alternative single-board computers:
 
 - Jetson Nano and Orin Nano
 - Rock Pi S

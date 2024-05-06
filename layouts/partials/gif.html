@@ -26,7 +26,7 @@
   {{ end }}
 {{end}}
 
-<div>
+<div class="gif">
   <video autoplay loop muted playsinline alt="{{ .alt }}" width="100%" style="max-width: {{ .maxWidth }}" class="{{- if .class -}}{{ .class}}{{- end }} lozad">
     <source data-src="{{relURL (substr (.webm_src) 1) }}" type="video/webm">
     <source data-src="{{relURL (substr (.mp4_src) 1) }}" type="video/mp4">

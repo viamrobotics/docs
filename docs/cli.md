@@ -1,13 +1,14 @@
 ---
 title: "Viam CLI"
 linkTitle: "CLI"
-weight: 80
+weight: 650
 type: "docs"
 no_list: true
 description: "Manage and control your machines from the command line."
 aliases:
   - "/build/program/cli"
   - /manage/cli/
+  - /fleet/cli/
 ---
 
 The Viam CLI (command line interface) tool enables you to manage your machines and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} across organizations and locations from the command line.
@@ -402,8 +403,8 @@ viam data dataset add filter --dataset-id=abc --org-ids=123 --start=2023-01-01T0
 To find the dataset id of a given dataset, go to the [**Datasets** subtab](https://app.viam.com/data/datasets) under the **Data** tab on the Viam app and select a dataset.
 The dataset id can be found in the URL of the Viam app window when viewing a given dataset, following the `?id=` portion of the URL, resembling `abcdef1234567890abcdef12`.
 
-You can also have the filter parameters generated for you using the **Filtering** pane of the **Data** tab.
-Navigate to the [**Data** tab in the Viam app](https://app.viam.com/data/view), make your selections from the search parameters under the **Filtering** pane (such as robot name, start and end time, or tags), and click the **Copy export command** button.
+You can also have the filter parameters generated for you using the **Filters** pane of the **Data** tab.
+Navigate to the [**Data** tab in the Viam app](https://app.viam.com/data/view), make your selections from the search parameters under the **Filters** pane (such as robot name, start and end time, or tags), and click the **Copy export command** button.
 A `viam data export` command string will be copied to your clipboard that includes the search parameters you selected.
 You can use the same filter parameters (such as `--start`, `--end`, etc) with your `viam data database add filter` or `viam data database remove filter` commands, except you would exclude the `--data-type` and `--destination` flags, which are specific to `viam data export`.
 

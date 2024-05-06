@@ -26,7 +26,7 @@ Your API key needs to have [Org owner permissions](/fleet/rbac/#organization-set
 To get an API key (and corresponding ID), you have two options:
 
 - [Create an API key using the Viam app](/fleet/rbac/#add-an-api-key)
-- [Create an API key using the Viam CLI](/fleet/cli/#create-an-organization-api-key)
+- [Create an API key using the Viam CLI](/cli/#create-an-organization-api-key)
 
 The following example instantiates a `ViamClient`, authenticating with an API key, and then instantiates a `BillingClient`:
 

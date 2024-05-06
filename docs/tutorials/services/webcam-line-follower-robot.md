@@ -51,7 +51,7 @@ To build your own line follower robot, you need the following hardware:
 <!-- prettier-ignore -->
 | Hardware | Avg. price |
 | -------- | ----------------- |
-| **A single board computer**: This tutorial uses a Raspberry Pi running a 64-bit Linux distribution. If you use a different board, configure your {{< glossary_tooltip term_id="board" text="board" >}} using the [instructions for your board](/get-started/installation/#prepare-your-board). | $60 |
+| **A single-board computer**: This tutorial uses a Raspberry Pi running a 64-bit Linux distribution. If you use a different board, configure your {{< glossary_tooltip term_id="board" text="board" >}} using the [instructions for your board](/get-started/installation/#prepare-your-board). | $60 |
 | **A wheeled [base component](/components/base/)**: This tutorial uses a [SCUTTLE robot](https://www.scuttlerobot.org/shop/), but any other wheeled base works as long as it can carry the board and camera, and is capable of turning in place. | $99+ |
 | **RGB camera**: A common off-the-shelf webcam (such as the [EMEET C690](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1)) connected to the Pi’s USB port, or something like an [ArduCam](https://www.amazon.com/Arducam-Megapixels-Sensor-OV5647-Raspberry/dp/B012V1HEP4/) with a ribbon connector to the Pi’s camera module port. **You must mount the camera on the front of the rover, pointing down towards the floor.** | $30 |
 | **Colored tape**: Any color is suitable as long as the color is suitably different from the floor color. For our tutorial, we used green electrical tape to stand out against our grey carpet. | $4 |
@@ -184,7 +184,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ## Test your components
 
-Navigate to your [machine's **Control** tab](/fleet/machines/#control) to test your components.
+Navigate to your [machine's **Control** tab](/fleet/control/) to test your components.
 Verify that it’s connected by refreshing the page and ensuring that **Last Online** (in the top banner) says, "Live."
 
 1. Go to the **Control** tab, click on the base panel, and toggle the transform camera to on.
@@ -375,7 +375,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ## Test your color detector
 
-Navigate to your [machine's **Control** tab](/fleet/machines/#control) to test the transform camera.
+Navigate to your [machine's **Control** tab](/fleet/control/) to test the transform camera.
 Click on the transform camera panel and toggle the camera on.
 You should now be able to view the camera feed with color detector overlays superimposed on the image.
 
