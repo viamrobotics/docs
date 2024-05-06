@@ -56,7 +56,7 @@ If it prompts you for a password, note that the default password for Orange Pi d
 
 ## Establish a network connection
 
-The Orange Pi Zero2 comes equipped with a wireless network antennae.
+The Orange Pi Zero2 comes equipped with a wireless network antenna.
 To connect to WiFi, click on the WiFi icon in the top right of the monitor display, select your preferred network or hotspot, and enter the password.
 
 For more information, consult the [official user guide](https://drive.google.com/drive/folders/1ToDjWZQptABxfiRwaeYW1WzQILM5iwpb).
