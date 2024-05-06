@@ -127,17 +127,8 @@ print("The current is ", current, " A, Is AC: ", is_ac)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
 
 ```go
-// Create a power sensor instance
-myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
-ctx:= context.Background()
-
 // Get the current reading from device in amps
-current, isAC, err := myPowerSensor.Current(ctx, nil)
+current, isAC, err := myPowerSensor.Current(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -187,16 +178,8 @@ print("The voltage is", voltage, "V, Is AC:", is_ac)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
 
 ```Go
-// Create a power sensor instance
-myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
-if err != nil {
-    logger.Error(err)
-    return
-}
-ctx := context.Background()
-
 // Get the voltage from device in volts
-voltage, isAC, err := myPowerSensor.Voltage(ctx, nil)
+voltage, isAC, err := myPowerSensor.Voltage(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -245,17 +228,8 @@ print("The power is", power, "Watts")
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
 
 ```Go
-// Create a power sensor instance
-myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
-ctx := context.Background()
-
 // Get the power measurement from device in watts
-power, err := myPowerSensor.Power(ctx, nil)
+power, err := myPowerSensor.Power(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -304,16 +278,8 @@ readings = await my_power_sensor.get_readings()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#Readings).
 
 ```go
-myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
-ctx := context.Background()
-
 // Get the readings provided by the sensor.
-readings, err := myPowerSensor.Readings(ctx, nil)
+readings, err := myPowerSensor.Readings(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -422,15 +388,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
-ctx := context.Background()
-
-resp, err := myPowerSensor.DoCommand(ctx, map[string]interface{}{"command": "reset", "example_param": 30})
+resp, err := myPowerSensor.DoCommand(context.Background(), map[string]interface{}{"command": "reset", "example_param": 30})
 ```
 
 For more information, see the [Go SDK Code](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
@@ -473,13 +431,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
-err = myPowerSensor.Close(context.Background)
+err := myPowerSensor.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

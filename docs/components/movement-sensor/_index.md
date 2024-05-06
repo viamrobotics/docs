@@ -154,16 +154,8 @@ position = await my_movement_sensor.get_position()
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 ```go
-myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
-ctx := context.Background()
-
 // Get the current position of the movement sensor.
-position, altitude, err := myMovementSensor.Position(ctx, nil)
+position, altitude, err := myMovementSensor.Position(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -212,16 +204,8 @@ lin_vel = await my_movement_sensor.get_linear_velocity()
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 ```go
-myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
-ctx := context.Background()
-
 // Get the current linear velocity of the movement sensor.
-linVel, err := myMovementSensor.LinearVelocity(ctx, nil)
+linVel, err := myMovementSensor.LinearVelocity(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -273,16 +257,8 @@ y_ang_vel = ang_vel.y
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 ```go
-myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
-ctx := context.Background()
-
 // Get the current angular velocity of the movement sensor.
-angVel, err := myMovementSensor.AngularVelocity(ctx, nil)
+angVel, err := myMovementSensor.AngularVelocity(context.Background(), nil)
 
 // Get the y component of angular velocity.
 yAngVel := angVel.Y
@@ -337,16 +313,8 @@ x_lin_accel = lin_accel.x
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 ```go
-myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
-ctx := context.Background()
-
 // Get the current linear acceleration of the movement sensor.
-linAccel, err := myMovementSensor.LinearAcceleration(ctx, nil)
+linAccel, err := myMovementSensor.LinearAcceleration(context.Background(), nil)
 
 // Get the x component of linear acceleration
 xAngVel := linAccel.X
@@ -398,16 +366,8 @@ heading = await my_movement_sensor.get_compass_heading()
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 ```go
-myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
-ctx := context.Background()
-
 // Get the current compass heading of the movement sensor.
-heading, err := myMovementSensor.CompassHeading(ctx, nil)
+heading, err := myMovementSensor.CompassHeading(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -456,16 +416,8 @@ orientation = await my_movement_sensor.get_orientation()
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
-ctx := context.Background()
-
 // Get the current orientation of the movement sensor.
-sensorOrientation, err := myMovementSensor.Orientation(ctx, nil)
+sensorOrientation, err := myMovementSensor.Orientation(context.Background(), nil)
 
 // Get the orientation vector (a unit vector pointing in the same direction as the sensor and theta, an angle representing the sensor's rotation about that axis).
 orientation := sensorOrientation.OrientationVectorDegrees()
@@ -521,16 +473,8 @@ properties = await my_movement_sensor.get_properties()
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 ```go
-myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
-ctx := context.Background()
-
 // Get the supported properties of the movement sensor.
-properties, err := myMovementSensor.Properties(ctx, nil)
+properties, err := myMovementSensor.Properties(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -609,16 +553,8 @@ accuracy = await my_movement_sensor.get_accuracy()
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 ```go
-myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
-ctx := context.Background()
-
 // Get the accuracy of the movement sensor.
-accuracy, err := myMovementSensor.Accuracy(ctx, nil)
+accuracy, err := myMovementSensor.Accuracy(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -669,16 +605,8 @@ readings = await my_movement_sensor.get_readings()
 For more information, see the [Go SDK docs for Sensor](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor) (because `Readings` is part of the general sensor API that movement sensor wraps).
 
 ```go
-myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
-ctx := context.Background()
-
 // Get the latest readings from the movement sensor.
-readings, err := myMovementSensor.Readings(ctx, nil)
+readings, err := myMovementSensor.Readings(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -791,15 +719,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
-ctx := context.Background()
-
-resp, err := myMovementSensor.DoCommand(ctx, map[string]interface{}{"command": "reset", "example_param": 30})
+resp, err := myMovementSensor.DoCommand(context.Background(), map[string]interface{}{"command": "reset", "example_param": 30})
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
@@ -842,15 +762,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
-ctx := context.Background()
-
-err = myMovementSensor.Close(ctx)
+err := myMovementSensor.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
