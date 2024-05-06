@@ -1153,7 +1153,7 @@ You can also use this to reset the password of the existing database user.
 **Parameters:**
 
 - `organization_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the organization.
-- password [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The password of the user.
+- `password` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The password of the user.
 
 **Returns:**
 
