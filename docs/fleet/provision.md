@@ -32,9 +32,15 @@ However, to then parse the readings and provide tailored guidance to a ship's ca
 
 Using the Viam Agent, this company could ship their machines directly to customers and have each machine provision `viam-server` as it comes online for each user, eliminating factory setup time and allowing for tailored configurations per customer as needed.
 
-The Viam Agent is open source, and [available on GitHub](https://github.com/viamrobotics/agent).
+The flow of provisioning a new machine using the Viam Agent is as follows:
 
-The example video shows using the [Viam mobile application](/fleet/#the-viam-mobile-app) to connect to the Viam Agent on a newly-deployed machine and completing network setup.
+![Diagram of the flow of provisioning a new machine with the Viam agent.](/platform/provision/style-provisioning-diagram.png)
+
+{{% alert title="Note" color="note" %}}
+The example video above shows using the [Viam mobile application](/fleet/#the-viam-mobile-app) to connect to the Viam Agent on a newly-deployed machine and completing network setup.
+{{% /alert %}}
+
+The Viam Agent is open source, and available on [GitHub](https://github.com/viamrobotics/agent).
 
 ## Install the Viam Agent
 
@@ -179,7 +185,10 @@ For example, to configure SSIDs and passwords for two WiFi networks named `prima
 
 You can add this configuration to the <file>/etc/viam.json</file> configuration file you deploy to your machine, or from the **CONFIGURE** tab in the [Viam app](https://app.viam.com/) for your machine, using **Raw JSON** mode.
 The Viam Agent will attempt to connect to the `ssid` with the highest `priority` first.
-If the highest-priority network is not available, it will then attempt to connect to the next-highest `priority` network, and so on until all configured networks have been tried.
+If the highest-priority network is not available, it will then attempt to connect to the next-highest `priority` network, and so on until all configured networks have been tried:
+
+![Diagram of the flow of provisioning a new machine with the Viam agent when there is an issue connecting to WiFi.](/platform/provision/style-provisioning-diagram-error.png)
+
 If no configured WiFi network could be connected to, the Viam Agent will instead create its own WiFI hotspot, as described in the next section.
 
 ### Create a WiFi hotspot
