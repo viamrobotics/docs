@@ -1,5 +1,5 @@
 ---
-title: "Selectively Capture Data using filtered-camera"
+title: "Selectively Capture Data Using filtered-camera"
 linkTitle: "Filtered Camera"
 type: "docs"
 description: "Use the filtered-camera module to selectively capture images."
