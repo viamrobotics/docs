@@ -19,7 +19,7 @@ sdks_supported = ["go", "python", "flutter"]
 ## as a comma-separated list, or omit entirely to run against all sdks_supported.
 ## NOTE: The team has decided to always write all sdk languages each run, to support
 ##       writing per-proto include files. For current recommended usage, always omit
-##       any sdk langs to run against all (which runs against all).
+##       any sdk langs to run against all.
 ## Use 'verbose' to enable DEBUG output.
 ## Use 'map' to generate a proto map template file:
 parser = argparse.ArgumentParser()
@@ -44,7 +44,7 @@ elif args.sdk_language is not None:
 
     sdks = []
     for sdk_lang in sdk_langs:
-    
+
         if sdk_lang not in sdks_supported:
             print("ERROR: Unsupported SDK language: " + sdk_lang)
             print("Exiting ...")
@@ -393,7 +393,7 @@ code_fence_fmt = {
 }
 
 ## Fetch canonical Proto method names.
-## Required by Flutter parsing, not used by Python or Go parsing yet (see comments in parse())
+## Required by Flutter parsing, and for generating the initial mapping file if -m was passed:
 def get_proto_apis():
     for api in proto_map.keys():
         api_url = proto_map[api]["url"]
@@ -402,8 +402,8 @@ def get_proto_apis():
         api_page = urlopen(api_url)
         api_html = api_page.read().decode("utf-8")
 
-        ## protos are presented in plaintext, so we must match by expected raw text:
-        proto_regex = 'type ' + regex.escape(api_name) + '[^{]*\{([^}]+)\}'
+        ## Protos are presented in plaintext, so we must match by expected raw text:
+        proto_regex = 'type ' + regex.escape(api_name) + r'[^{]*\{([^}]+)\}'
         search = regex.search(proto_regex, api_html)
         match_output = search.group()
         split = match_output.splitlines()
@@ -601,7 +601,7 @@ def parse(type, names):
                                     ## omitting the first string, which is either the opening comment tag itself,
                                     ## or the usage of this method, if the comment is appended to the end of usage line:
                                     for comment in regex.split(r'<span class="comment">', this_method_raw2)[1:]:
-                                     
+
                                         comment_raw = regex.split(r'</span>.*', comment.removeprefix('//'))[0].lstrip()
                                         method_description = method_description + comment_raw
 
@@ -710,7 +710,7 @@ def parse(type, names):
                         ## Determine method description, stripping newlines:
                         this_method_dict["description"] = tag.find('dd').p.text.replace("\n", " ")
 
-                        ## Determine method direct link, no need to parse for it, it's inferrable: 
+                        ## Determine method direct link, no need to parse for it, it's inferrable:
                         this_method_dict["method_link"] = url + "#" + id
 
                         ## Assemble array of all tags which contain parameters for this method:
@@ -718,7 +718,7 @@ def parse(type, names):
                         parameter_tags = tag.find_all(
                             lambda tag: tag.name == 'em'
                             and tag.get('class') == ['sig-param']
-                            and not regex.search('\*', tag.text))
+                            and not regex.search(r'\*', tag.text))
 
                         if len(parameter_tags) != 0:
 
@@ -774,7 +774,7 @@ def parse(type, names):
                                     this_method_parameters_dict["param_type"] = "Mapping[str, Any]"
 
                                 ## 'Timeout' params do not appear in "Parameters" section (Except for PySDK > Motion Service),
-                                ## so we must populate this param's content manually: 
+                                ## so we must populate this param's content manually:
                                 elif param_name == 'timeout':
 
                                     this_method_parameters_dict["param_description"] = "An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call."
@@ -802,7 +802,7 @@ def parse(type, names):
                                         if param_name != 'extra' and \
                                             param_name != 'timeout' and \
                                             strong_tag.text == param_name:
-                                            
+
                                             ## OPTION: Get just the parameter description, stripping all newlines:
                                             this_method_parameters_dict["param_description"] = regex.split(r" – ", strong_tag.parent.text)[1].replace("\n", " ")
 
@@ -841,10 +841,10 @@ def parse(type, names):
                             ## Create new empty dictionary for this_method_dict named "return":
                             this_method_dict["return"] = {}
 
-                            ## CHOICE: Get return_type by explicit key name:
+                            ## OPTION: Get return_type by explicit key name:
                             this_method_dict["return"]["return_type"] = return_tag.find('span', class_="sig-return-typehint").text
 
-                            ## CHOICE: Get full return usage, including type info and html links if present, stripping all newlines:
+                            ## OPTION: Get full return usage, including type info and html links if present, stripping all newlines:
                             this_method_dict["return"]["return_usage"] = str(return_tag.find('span', class_="sig-return-typehint")).replace("\n", " ")
 
                             ## Get return description from "Returns" section if present:
@@ -881,11 +881,11 @@ def parse(type, names):
                                     ## Split contained text at " - " to get first half, which is just the error name:
                                     raises_name = regex.split(r" – ", strong_tag.parent.text)[0]
 
-                                    ## CHOICE: Get full error raised usage, including type info and html links if present.
+                                    ## OPTION: Get full error raised usage, including type info and html links if present.
                                     ## NOTE: Errors raised (py) don't seem to have any links, just some monospace formatting:
                                     this_method_raises_dict["raises_usage"] = str(strong_tag.parent).replace("\n", " ")
 
-                                    ## CHOICE: Determine error raised description, stripping any newlines:
+                                    ## OPTION: Determine error raised description, stripping any newlines:
                                     this_method_raises_dict["raises_description"] = regex.split(r" – ", strong_tag.parent.text)[1].replace("\n", " ")
 
                                     ## Add all values for this raised error to this_method_dict by raises_name:
@@ -902,7 +902,7 @@ def parse(type, names):
                         ## in its entirety to the python_methods dictionary by type (like 'component'), by resource (like 'arm'),
                         ## using the method_name as key:
                         python_methods[type][resource][method_name] = this_method_dict
-                
+
                 ## We have finished looping through all scraped Python methods. Write the python_methods dictionary
                 ## in its entirety to the all_methods dictionary using "python" as the key:
                 all_methods["python"] = python_methods
@@ -910,7 +910,6 @@ def parse(type, names):
             ## Scrape each parent method tag and all contained child tags for Flutter by resource.
             ## TEMP: Manually exclude Base Remote Control Service (Go only).
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
-            ## TODO: Better code comments for Flutter
             elif sdk == "flutter" and resource != 'base_remote_control':
                 soup = make_soup(url)
                 ## Limit matched class to exactly 'callable', i.e. not 'callable inherited', remove the constructor (proto id) itself, and remove '*_Pre' methods from Robot API:
@@ -923,6 +922,8 @@ def parse(type, names):
                 ## Loop through scraped tags and select salient data:
                 for tag in flutter_methods_raw:
 
+                    ## Create new empty dictionary for this specific method, to be appended to ongoing flutter_methods dictionary,
+                    ## in form: flutter_methods[type][resource][method_name] = this_method_dict
                     this_method_dict = {}
 
                     method_name = tag.get('id')
@@ -939,8 +940,9 @@ def parse(type, names):
                                 if not row.startswith('#') \
                                 and row.startswith(resource + ',') \
                                 and row.split(',')[4] == method_name:
-                                    this_method_dict["proto"] = row.split(',')[1]                
+                                    this_method_dict["proto"] = row.split(',')[1]
 
+                        ## Determine method link:
                         this_method_dict["method_link"] = tag.find("span", class_="name").a['href'].replace("..", sdk_url)
 
                         ## Flutter SDK puts all parameter detail on a separate params page that we must additionally make_soup on:
@@ -992,9 +994,9 @@ def parse(type, names):
 
                             for return_tag in returns_soup:
 
-                                ## Create new empty dictionary this_method_parameters_dict to house all parameter
-                                ## keys for this method, to allow for multiple parameters. Also resets the
-                                ## previous parameter's data when looping through multiple parameters:
+                                ## Create new empty dictionary this_method_returns_dict to house all return
+                                ## keys for this method, to allow for multiple returns. Also resets the
+                                ## previous return's data when looping through multiple returns:
                                 this_method_returns_dict = {}
 
                                 return_name = return_tag.get('id')
@@ -1021,6 +1023,8 @@ def parse(type, names):
 
                         flutter_methods[type][resource][method_name] = this_method_dict
 
+                ## We have finished looping through all scraped Flutter methods. Write the flutter_methods dictionary
+                ## in its entirety to the all_methods dictionary using "flutter" as the key:
                 all_methods["flutter"] = flutter_methods
 
             else:
@@ -1034,7 +1038,7 @@ def parse(type, names):
     return all_methods
 
 
-# Parse usage string
+# Parse usage string, used in write_markdown():
 def parse_method_usage(usage_string):
 
     # Splitting the usage string by comma to separate parameters and removing unwanted substrings
@@ -1072,7 +1076,7 @@ def parse_method_usage(usage_string):
 
     return parsed_usage_string
 
-# Format usage string
+# Format usage string, used in write_markdown():
 def format_method_usage(parsed_usage_string):
     formatted_output = []
     for type_name, param_type, param_type_link in parsed_usage_string:
@@ -1116,8 +1120,7 @@ def format_method_usage(parsed_usage_string):
     return formatted_output
 
 ## write_markdown() takes the data object returned from parse(), and writes out the markdown
-## for each method in that object. Here's an example of how I envision the data object being used.
-## Of course, feel free to adapt and change as you like!
+## for each method in that object:
 def write_markdown(type, names, methods):
 
     ## Generate special version of type var that matches how we refer to it in MD filepaths.
@@ -1127,7 +1130,7 @@ def write_markdown(type, names, methods):
     else:
         type_filepath_name = type
 
-    ## Set 'generated' folder structure and override directories:
+    ## Set 'generated' folder structure and 'override' directories:
     relative_generated_path = 'static/include/' + type_filepath_name + '/apis/generated/'
     path_to_generated = os.path.join(gitroot, relative_generated_path)
     relative_override_path = 'static/include/' + type_filepath_name + '/apis/overrides/'
@@ -1135,20 +1138,20 @@ def write_markdown(type, names, methods):
     path_to_protos_override = os.path.join(path_to_overrides, 'protos')
     path_to_methods_override = os.path.join(path_to_overrides, 'methods')
 
-
+    ## Create any missing directories, or take no action if already present:
     Path(path_to_generated).mkdir(parents=True, exist_ok=True)
     Path(path_to_protos_override).mkdir(parents=True, exist_ok=True)
     Path(path_to_methods_override).mkdir(parents=True, exist_ok=True)
 
     ## NOTE: To use the above override directories:
     ## To override a proto with custom leading MD content, place a file here:
-    ##    docs/static/include/{type}/apis/generated/overrides/protos/{resource}.{protoname}.md
+    ##    docs/static/include/{type}/apis/overrides/protos/{resource}.{protoname}.md
     ## To override a method with custom leading MD content, place a file here:
-    ##    docs/static/include/{type}/apis/generated/overrides/methods/{sdk}.{resource}.{methodname}.before.md
+    ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.before.md
     ##      OR JUST:
-    ##    docs/static/include/{type}/apis/generated/overrides/methods/{sdk}.{resource}.{methodname}.md
+    ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.md
     ## To override a method with custom trailing MD content, place a file here:
-    ##    docs/static/include/{type}/apis/generated/overrides/methods/{sdk}.{resource}.{methodname}.after.md
+    ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.after.md
 
     ## Loop through each resource, such as 'arm'. run() already calls parse() in
     ## scope limited to 'type', so we don't have to loop by type:
@@ -1161,7 +1164,6 @@ def write_markdown(type, names, methods):
         ## Loop through mapping file, and determine which sdk methods to document for each proto:
         with open(proto_map_file, 'r') as f:
             for row in f:
-                #print(row)
                 if not row.startswith('#') \
                 and row.startswith(resource + ','):
                     proto = row.split(',')[1]
@@ -1173,21 +1175,22 @@ def write_markdown(type, names, methods):
                     ## for specific protos as needed, if needed:
                     if py_method_name or go_method_name or flutter_method_name:
 
-                        ## Determine where to write the file for this loop. Suggesting:
-                        ## docs/static/include/{type}/apis/generated/{sdk}.md
-                        #relative_path = 'static/include/' + type_filepath_name + '/apis/generated/'
-                        #print(relative_path)
+                        ## About to change this to by-resource filenames, instead of by-proto filenames. Stay tuned!
                         filename = proto + '.md'
 
                         full_path_to_file = os.path.join(path_to_resource, filename)
-                        output_file = open('%s' % full_path_to_file, "w") 
+                        output_file = open('%s' % full_path_to_file, "w")
 
                         ## Write proto as H3:
                         output_file.write('### ' + proto + '\n\n')
 
-                        ## NOTE: This is where proto descriptions could go if we scraped them.
-                        ## However, many do not have descriptions, so we opted instead to
-                        ## use the proto override system to provide all proto descriptions instead.
+                        ## NOTE: This is where proto descriptions could go if we scraped them. However:
+                        ## - Some protos do not have descriptions.
+                        ## - DOCS provides vastly better descriptions in some cases.
+                        ## - DOCS descriptions are often deeply linked to DOCS content.
+                        ## We use the proto override system instead to provide these proto descriptions.
+                        ## TODO: Consider adding/enhancing proto descriptions to viamrobotics/api,
+                        ## and adding descriptions scraping to get_proto_apis().
 
                         proto_override_filename = resource + '.' + proto + '.md'
 
@@ -1212,15 +1215,11 @@ def write_markdown(type, names, methods):
                             ## the auto-gen content for this method (i.e. before params,returns, etc).
                             ## Appending filename with .after places MD content after the auto-gen content
                             ## for this method (i.e. after params and code samples).
-                            ## EXAMPLE (before): https://docs.viam.com/components/camera/#getimage (Go tab)
-                            ## EXAMPLE (after): https://docs.viam.com/mobility/motion/#getpose (Py tab)
 
                             has_after_override = 0
 
-                            ## .../overrides/methods/{resource}/{sdk}/{method}.before|after.md
+                            ## .../overrides/methods/{resource}.{sdk}.{method}.before|after.md
                             for method_override_filename in os.listdir(path_to_methods_override):
-                                #if py_method_name in method_override_filename:
-                                ## TODO: Fix for all SDKs:
                                 if method_override_filename.startswith('python.' + resource + '.' + py_method_name):
                                     method_override_file_path = os.path.join(path_to_methods_override, method_override_filename)
                                     if method_override_filename.endswith('.after.md'):
@@ -1234,30 +1233,14 @@ def write_markdown(type, names, methods):
                                         has_after_override = 1
 
                                     ## Just being painfully explicit that we accept '.before' or nothing to control injecting
-                                    ## before the auto-gen content (such as params, returns, etc), or exactly `.after' to control
+                                    ## before the auto-gen content (such as params, returns, etc), or exactly '.after' to control
                                     ## injecting after the auto-gen content:
                                     if not method_override_filename.endswith('.after.md') and \
                                         (method_override_filename.endswith('.before.md') or \
                                         method_override_filename.endswith('.md')):
 
-                                        #output_file.write('METHOD OVERRIDE BEFORE: ')
-
                                         for line in open(method_override_file_path, 'r', encoding='utf-8'):
                                             output_file.write(line)
-
-                            ## Removing per-SDK description in favor of proto description (by way of proto override files)
-                            #if 'description' in methods['python'][type][resource][py_method_name]:
-                            #
-                            #    ## Check if method description contains any matching string in override_description_links.
-                            #    ## If match, add link to text in description:
-                            #
-                            #    method_description = methods['python'][type][resource][py_method_name]['description']
-                            #
-                            #    for override_text in override_description_links.keys():
-                            #        if override_text in methods['python'][type][resource][py_method_name]['description']:
-                            #            method_description = link_description('md', methods['python'][type][resource][py_method_name]['description'], override_text, override_description_links[override_text])
-                            #
-                            #    output_file.write(method_description + '\n\n')
 
                             output_file.write('**Parameters:**\n\n')
 
@@ -1288,7 +1271,7 @@ def write_markdown(type, names, methods):
                                                 output_file.write(f"<{param_subtype}>")
                                         else:
                                             output_file.write(f"({param_type_link})")
-                                    # SG: Haven't found any sub-types without param type links-- they are all in flutter SDK-- 
+                                    # SG: Haven't found any sub-types without param type links-- they are all in flutter SDK--
                                     # could expand this logic if popped up or grabbing more subtypes?
                                     else:
                                         output_file.write('(<INSERT PARAM TYPE LINK>)')
@@ -1379,15 +1362,11 @@ def write_markdown(type, names, methods):
                             ## the auto-gen content for this method (i.e. before params,returns, etc).
                             ## Appending filename with .after places MD content after the auto-gen content
                             ## for this method (i.e. after params and code samples).
-                            ## EXAMPLE (before): https://docs.viam.com/components/camera/#getimage (Go tab)
-                            ## EXAMPLE (after): https://docs.viam.com/mobility/motion/#getpose (Py tab)
 
                             has_after_override = 0
 
-                            ## .../overrides/methods/{resource}/{sdk}/{method}.before|after.md
+                            ## .../overrides/methods/{resource}.{sdk}.{method}.before|after.md
                             for method_override_filename in os.listdir(path_to_methods_override):
-                                #if py_method_name in method_override_filename:
-                                ## TODO: Fix for all SDKs:
                                 if method_override_filename.startswith('go.' + resource + '.' + go_method_name):
                                     method_override_file_path = os.path.join(path_to_methods_override, method_override_filename)
                                     if method_override_filename.endswith('.after.md'):
@@ -1401,7 +1380,7 @@ def write_markdown(type, names, methods):
                                         has_after_override = 1
 
                                     ## Just being painfully explicit that we accept '.before' or nothing to control injecting
-                                    ## before the auto-gen content (such as params, returns, etc), or exactly `.after' to control
+                                    ## before the auto-gen content (such as params, returns, etc), or exactly '.after' to control
                                     ## injecting after the auto-gen content:
                                     if not method_override_filename.endswith('.after.md') and \
                                         (method_override_filename.endswith('.before.md') or \
@@ -1491,15 +1470,11 @@ def write_markdown(type, names, methods):
                             ## the auto-gen content for this method (i.e. before params,returns, etc).
                             ## Appending filename with .after places MD content after the auto-gen content
                             ## for this method (i.e. after params and code samples).
-                            ## EXAMPLE (before): https://docs.viam.com/components/camera/#getimage (Go tab)
-                            ## EXAMPLE (after): https://docs.viam.com/mobility/motion/#getpose (Py tab)
 
                             has_after_override = 0
 
-                            ## .../overrides/methods/{resource}/{sdk}/{method}.before|after.md
+                            ## .../overrides/methods/{resource}.{sdk}.{method}.before|after.md
                             for method_override_filename in os.listdir(path_to_methods_override):
-                                #if py_method_name in method_override_filename:
-                                ## TODO: Fix for all SDKs:
                                 if method_override_filename.startswith('flutter.' + resource + '.' + flutter_method_name):
                                     method_override_file_path = os.path.join(path_to_methods_override, method_override_filename)
                                     if method_override_filename.endswith('.after.md'):
@@ -1513,30 +1488,14 @@ def write_markdown(type, names, methods):
                                         has_after_override = 1
 
                                     ## Just being painfully explicit that we accept '.before' or nothing to control injecting
-                                    ## before the auto-gen content (such as params, returns, etc), or exactly `.after' to control
+                                    ## before the auto-gen content (such as params, returns, etc), or exactly '.after' to control
                                     ## injecting after the auto-gen content:
                                     if not method_override_filename.endswith('.after.md') and \
                                         (method_override_filename.endswith('.before.md') or \
                                         method_override_filename.endswith('.md')):
 
-                                        #output_file.write('METHOD OVERRIDE BEFORE: ')
-
                                         for line in open(method_override_file_path, 'r', encoding='utf-8'):
                                             output_file.write(line)
-
-                            ## Removing per-SDK description in favor of proto description (by way of proto override files)
-                            #if 'description' in methods['flutter'][type][resource][flutter_method_name]:
-                            #
-                            #    ## Check if method description contains any matching string in override_description_links.
-                            #    ## If match, add link to text in description:
-                            #
-                            #    method_description = methods['flutter'][type][resource][flutter_method_name]['description']
-                            #
-                            #    for override_text in override_description_links.keys():
-                            #        if override_text in methods['flutter'][type][resource][flutter_method_name]['description']:
-                            #            method_description = link_description('md', methods['flutter'][type][resource][flutter_method_name]['description'], override_text, override_description_links[override_text])
-                            #
-                            #    output_file.write(method_description + '\n\n')
 
                             output_file.write('**Parameters:**\n\n')
                             if 'parameters' in methods['flutter'][type][resource][flutter_method_name]:
@@ -1566,7 +1525,7 @@ def write_markdown(type, names, methods):
                                                 output_file.write(f"<{param_subtype}>")
                                         else:
                                             output_file.write(f"({param_type_link})")
-                                    # SG: Haven't found any sub-types without param type links-- they are all in flutter SDK-- 
+                                    # SG: Haven't found any sub-types without param type links-- they are all in flutter SDK--
                                     # could expand this logic if popped up or grabbing more subtypes?
                                     else:
                                         output_file.write('(<INSERT PARAM TYPE LINK>)')
@@ -1669,6 +1628,7 @@ def run():
                 os.remove(debug_filepath)
             debug_file = open('%s' % debug_filepath, "w")
 
+        ## Parse components:
         if args.verbose:
             print('DEBUG: Now parsing upstream COMPONENT methods for: ' + str(sdks))
         component_methods = parse("component", components)
@@ -1680,6 +1640,7 @@ def run():
         if args.verbose:
             print('DEBUG: Completed writing markdown for COMPONENT methods!')
 
+        ## Parse services:
         if args.verbose:
             print('DEBUG: Now parsing upstream SERVICE methods for: ' + str(sdks))
         service_methods = parse("service", services)
@@ -1691,6 +1652,7 @@ def run():
         if args.verbose:
             print('DEBUG: Completed writing markdown for SERVICE methods!')
 
+        ## Parse app client:
         if args.verbose:
             print('DEBUG: Now parsing upstream APP methods for: ' + str(sdks))
         app_methods = parse("app", app_apis)
@@ -1702,6 +1664,7 @@ def run():
         if args.verbose:
             print('DEBUG: Completed writing markdown for APP methods!')
 
+        ## Parse robot client:
         if args.verbose:
             print('DEBUG: Now parsing upstream ROBOT methods for: ' + str(sdks))
         robot_methods = parse("robot", robot_apis)
