@@ -24,6 +24,9 @@ cost: 540
 no_list: true
 ---
 
+<!-- LEARNING GOALS
+After following this tutorial, you will understand how the ML model service and the Vision service work together and you will be able to use both alongside the base and camera components to make a machine respond to the world around it.  -->
+
 In this tutorial, you'll learn how to use the [vision service](/ml/vision/) to make a rover follow a colored object.
 We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover, including the [Viam rover](/get-started/try-viam/rover-resources/).
 

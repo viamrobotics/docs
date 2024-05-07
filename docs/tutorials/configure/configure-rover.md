@@ -21,6 +21,13 @@ cost: 540
 ---
 
 This tutorial will guide you through configuring a rover.
+
+{{< alert title="Learning Goals" color="info" >}}
+
+After following this tutorial, you will be able to configure any rover using existing built-in or modular components.
+
+{{< /alert >}}
+
 If you are using a SCUTTLE, a Yahboom rover, or a different rover, this tutorial covers instructions for your rover model.
 
 {{< alert title="Viam Rover" color="note" >}}
