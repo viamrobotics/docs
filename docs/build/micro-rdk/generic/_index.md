@@ -3,7 +3,7 @@ title: "Micro-RDK Generic Models"
 linkTitle: "Generic"
 weight: 30
 type: "docs"
-description: "The micro-RDK generic component for generic compoent types."
+description: "The micro-RDK generic component for generic component types."
 images: ["/icons/components/generic.svg"]
 icon: true
 tags: ["generic", "components", "micro-rdk"]
