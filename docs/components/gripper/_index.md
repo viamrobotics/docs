@@ -124,7 +124,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 // Open the gripper.
-err = myGripper.Open(context.Background(), nil)
+err := myGripper.Open(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -218,7 +218,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go
 // Stop the gripper.
-err =: myGripper.Stop(context.Background(), nil)
+err := myGripper.Stop(context.Background(), nil)
 ```
 
 {{% /tab %}}
