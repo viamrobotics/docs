@@ -36,7 +36,6 @@ weight: 5
 # SMEs: Ray Bjorkman, Fahmina
 ---
 
-The [navigation service](/mobility/navigation/) is the stateful definition of the [motion service](/mobility/motion/).
 
 Using navigation, you can queue up user-defined waypoints and your machine will move to them in the order that you specify.
 You can also add obstacles or set linear and angular velocity targets in your navigation service config.
