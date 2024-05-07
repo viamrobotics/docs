@@ -28,7 +28,7 @@ By the end of this tutorial, you'll be able to drive your rover around like an R
 
 {{< alert title="Learning Goals" color="info" >}}
 
-After following this tutorial, you will be able to use the input controller component to control your machine using a gamepad
+After following this tutorial, you will be able to use the input controller component to control your machine using a gamepad.
 
 {{< /alert >}}
 
