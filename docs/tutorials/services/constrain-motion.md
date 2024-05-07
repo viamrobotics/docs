@@ -38,7 +38,7 @@ After following this tutorial, you will be able to:
 
 {{< /alert >}}
 
-In this tutorial, you we will teach you about transforms and constraints with the example of moving a cup across a table without hitting another object, and while remaining upright.
+In this tutorial, you will learn about transforms and constraints with the example of moving a cup across a table without hitting another object, and while remaining upright.
 
 The [full tutorial code](#full-tutorial-code) is available at the end of this page.
 
