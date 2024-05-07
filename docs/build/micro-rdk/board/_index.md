@@ -3,8 +3,9 @@ title: "Micro-RDK Board Models"
 linkTitle: "Board"
 weight: 30
 type: "docs"
-description: "The micro-RDK support for the signal wire hub of a smart machine, with GPIO pins for transmitting signals between the machine's computer and its other components."
+description: "The micro-RDK board component for the signal wire hub of a smart machine, with GPIO pins for transmitting signals between the machine's computer and its other components."
 images: ["/icons/components/board.svg"]
+icon: true
 tags: ["board", "components", "micro-rdk"]
 no_list: true
 aliases:

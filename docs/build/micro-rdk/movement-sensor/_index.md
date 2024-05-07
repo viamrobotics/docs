@@ -3,8 +3,9 @@ title: "Micro-RDK Movement Sensor Models"
 linkTitle: "Movement Sensor"
 weight: 30
 type: "docs"
-description: "Support in the micro-RDK for movement sensors, sensors that measure location, kinematic data, or both."
+description: "The micro-RDK movement sensor component for sensors that measure location, kinematic data, or both."
 images: ["/icons/components/imu.svg"]
+icon: true
 tags: ["movement sensor", "components", "micro-rdk"]
 no_list: true
 aliases:
