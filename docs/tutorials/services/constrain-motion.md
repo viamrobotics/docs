@@ -20,22 +20,33 @@ date: "2023-07-03"
 cost: 8400
 ---
 
-{{< alert title="Caution" color="caution" >}}
-Be careful when instructing robot arms to move.
-Before running any code, ensure your robotic arm has enough space and that there are no obstacles.
-Also pay attention to your surroundings, double-check your code for correctness, and make sure anyone nearby is aware and alert before issuing commands to your robot.
-{{< /alert >}}
-
 {{<gif webm_src="/tutorials/videos/motion_constraints.webm" mp4_src="/tutorials/videos/motion_constraints.mp4" alt="An arm moving a cup from one side of a tissue box to the other, across a table. The cup stays upright." class="alignright" max-width="250px">}}
 
 Say you want your robot to pass you a cup of tea, but you don't want it to spill the water or bump into other objects on the table.
 
 If you followed along with the [Plan Motion with an Arm tutorial](../plan-motion-with-arm-gripper/), you used the [motion service](/mobility/motion/) to move a robot arm and end effector to desired positions.
-This tutorial builds on this foundation and shows you how to use [constraints](/mobility/motion/constraints/) and transforms to control the way your robot moves between its start and end position.
+This tutorial builds on this foundation.
 
-In this tutorial, you will learn to move a cup across a table without hitting another object, and while remaining upright.
+<br>
+
+{{< alert title="Learning Goals" color="info" >}}
+
+After following this tutorial, you will be able to:
+
+- use transforms to represent objects that are connected to a machine without being components of the machine
+- use constraints to control the way your machine moves between its start and end position
+
+{{< /alert >}}
+
+In this tutorial, you we will teach you about transforms and constraints with the example of moving a cup across a table without hitting another object, and while remaining upright.
 
 The [full tutorial code](#full-tutorial-code) is available at the end of this page.
+
+{{< alert title="Caution" color="caution" >}}
+Be careful when instructing robot arms to move.
+Before running any code, ensure your robotic arm has enough space and that there are no obstacles.
+Also pay attention to your surroundings, double-check your code for correctness, and make sure anyone nearby is aware and alert before issuing commands to your robot.
+{{< /alert >}}
 
 ## Prerequisites
 

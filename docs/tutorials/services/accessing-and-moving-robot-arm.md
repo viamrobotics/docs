@@ -19,6 +19,10 @@ cost: 8400
 no_list: true
 ---
 
+<!-- LEARNING GOALS
+After following this tutorial, you will know how to set up your components in the frame system and to move your components without the motion service. You will know that the motion service exists.
+-->
+
 {{< alert title="Caution" color="caution" >}}
 Be careful when instructing robot arms to move.
 Before running any code, ensure your robotic arm has enough space and that there are no obstacles.
