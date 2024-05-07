@@ -20,9 +20,9 @@ cost: 8400
 no_list: true
 ---
 
-With Viam you can move individual components, like [an arm](../accessing-and-moving-robot-arm/) by issuing command like `MoveToPosition()` or `MoveToJointPosition`.
+With Viam you can move individual components, like [arms](../accessing-and-moving-robot-arm/), by issuing commands like `MoveToPosition` or `MoveToJointPosition`.
 The [motion service](/mobility/motion/) enables you to do much more sophisticated movement involving one or many components of your robot.
-The service abstracts the lower level commands away so that you can call the `Move()` command with the desired destination position in a frame, alongside any obstacles and geometries attached to your machine, and the service will move your machine to the desired location for you.
+The service abstracts the lower-level commands away so that instead of passing in a series of joint positions, you can call the `Move()` command with the desired destination and any obstacles, and the service will move your machine to the desired location for you.
 
 {{< alert title="Learning Goals" color="info" >}}
 After following this tutorial, you will be able to:

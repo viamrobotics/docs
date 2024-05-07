@@ -46,8 +46,8 @@ Viam's motion planner will plan routes that avoid those obstacles and attempt to
 
 After following this tutorial, you will be able to:
 
-- add waypoints to specify locations you want your machine to move to both in the app and programmatically
-- use the navigation service to start moving your machine along those waypoints
+- add waypoints to specify locations you want your machine to move to, both in the app and programmatically
+- use the navigation service to move your machine along those waypoints
 
 {{< /alert >}}
 
