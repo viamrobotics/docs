@@ -58,7 +58,8 @@ For configuration information, click on the model name:
 | [`numato`](numato/) | [Numato GPIO Modules](https://numato.com/product-category/automation/gpio-modules/), peripherals for adding GPIO pins |
 | [`pca9685`](pca9685/) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel I<sup>2</sup>C [PWM](https://docs.arduino.cc/learn/microcontrollers/analog-output)/[servo](/components/servo/) driver peripheral |
 | [`odroid`](odroid/) | [Odroid-C4](https://www.hardkernel.com/shop/odroid-c4/) |
-| [`customlinux`](customlinux/) | A model for other Linux boards. |
+| [`orangepi`](orangepi/) | [Orange Pi Zero2](http://www.orangepi.org/index.html) or [OrangePi 3 LTS](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/orange-pi-3-LTS.html)  |
+| [`customlinux`](customlinux/) | A model for other Linux boards |
 | [`fake`](fake/) | A model used for testing, with no physical hardware |
 
 ### Modular resources
