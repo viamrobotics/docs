@@ -34,7 +34,6 @@ Most machines with an input controller need at least the following hardware:
 
 {{< cards >}}
 {{< relatedcard link="/mobility/base-rc/" >}}
-{{< relatedcard link="/mobility/frame-system/" >}}
 {{< /cards >}}
 
 ## Supported models
