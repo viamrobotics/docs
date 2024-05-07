@@ -185,7 +185,7 @@ cargo install espup
 ```
 
 ```sh { class="command-line" data-prompt="$"}
-cargo install cargo-espflash v2.0.0-rc.1
+cargo install cargo-espflash
 ```
 
 ```sh { class="command-line" data-prompt="$"}
