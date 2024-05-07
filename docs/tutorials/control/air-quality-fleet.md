@@ -10,7 +10,7 @@ authors: ["Jessamy Taylor"]
 languages: ["typescript"]
 viamresources: ["sensor", "data_manager"]
 level: "Intermediate"
-date: "2024-04-23"
+date: "2024-05-07"
 # updated: ""  # When the tutorial was last entirely checked
 cost: 200
 # Learning goals:
