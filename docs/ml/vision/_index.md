@@ -182,11 +182,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 camStream, err := myCam.Stream(context.Background())
 
 // Get an image from the camera stream
-img, release, err := camStream.Next(ctx)
+img, release, err := camStream.Next(context.Background())
 defer release()
 
 // Get the detections from the image
-detections, err := visService.Detections(ctx, img, nil)
+detections, err := visService.Detections(context.Background(), img, nil)
 if err != nil {
     logger.Fatalf("Could not get detections: %v", err)
 }
