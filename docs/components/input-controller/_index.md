@@ -210,7 +210,7 @@ func handleController(ctx context.Context, logger logging.Logger, controller inp
     if !slices.Contains(controls, input.ButtonStart) {
         return errors.New("button `ButtonStart` not found; controller may be disconnected")
     }
-    return controller
+    return controller.RegisterControlCallback(context.Background(), Control: input.ButtonStart, triggers, printStartTime, nil)
 }
 
 func main() {
@@ -227,8 +227,9 @@ func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) err
     }
 
     // Run the handleController function.
-    if err = handleController(myController)
+    if err = handleController(myController) {
         return err
+    }
 
     // < Insert any other code for main function >
 
@@ -286,15 +287,8 @@ print(f"Recent Events:\n{recent_events}")
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get the controller from the machine.
-myController, err := input.FromRobot(machine, "my_controller")
-ctx := context.Background()
-
 // Get the most recent Event for each Control.
-recent_events, err := myController.Events(ctx, nil)
-
-// Log the most recent Event for each Control.
-logger.Info("Recent Events: %v", recent_events)
+recent_events, err := myController.Events(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -346,16 +340,8 @@ print(f"Controls:\n{controls}")
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get the controller from the machine.
-myController, err := input.FromRobot(machine, "my_controller")
-ctx := context.Background()
-
 // Get the list of Controls provided by the controller.
-controls, err := myController.Controls(ctx, nil)
-
-// Log the list of Controls provided by the controller.
-logger.Info("Controls:")
-logger.Info(controls)
+controls, err := myController.Controls(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -532,12 +518,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get the controller from the machine.
-myController, err := input.FromRobot(machine, "my_controller")
-ctx := context.Background()
-
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myController.DoCommand(ctx, command)
+result, err := myController.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
@@ -580,9 +562,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myController, err := input.FromRobot(machine, "my_controller")
-
-err = myController.Close(ctx)
+err := myController.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

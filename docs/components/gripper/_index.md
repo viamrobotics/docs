@@ -123,11 +123,8 @@ await my_gripper.open()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gripper#Gripper).
 
 ```go
-myGripper, err := gripper.FromRobot(machine, "my_gripper")
-ctx := context.Background()
-
 // Open the gripper.
-err = myGripper.Open(ctx, nil)
+err = myGripper.Open(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -173,11 +170,8 @@ grabbed = await my_gripper.grab()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gripper#Gripper).
 
 ```go
-myGripper, err := gripper.FromRobot(machine, "my_gripper")
-ctx := context.Background()
-
 // Grab with the gripper.
-grabbed, err := myGripper.Grab(ctx, nil)
+grabbed, err := myGripper.Grab(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -223,11 +217,8 @@ await my_gripper.stop()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gripper#Gripper).
 
 ```go
-myGripper, err := gripper.FromRobot(machine, "my_gripper")
-ctx := context.Background()
-
 // Stop the gripper.
-err = myGripper.Stop(ctx, nil)
+err =: myGripper.Stop(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -273,11 +264,8 @@ print('Moving:', moving)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#MovingCheckable).
 
 ```go
-myGripper, err := gripper.FromRobot(robot, "my_gripper")
-ctx := context.Background()
-
 // Check whether the gripper is currently moving.
-moving, err := myGripper.IsMoving(ctx)
+moving, err := myGripper.IsMoving(context.Background())
 logger.Info("Is moving?")
 logger.Info(moving)
 ```
@@ -329,10 +317,7 @@ if geometries:
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGripper, err := gripper.FromRobot(machine, "my_gripper")
-ctx := context.Background()
-
-geometries, err := myGripper.Geometries(ctx, nil)
+geometries, err := myGripper.Geometries(context.Background(), nil)
 
 if len(geometries) > 0 {
     // Get the center of the first geometry
@@ -387,10 +372,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGripper, err := gripper.FromRobot(machine, "my_gripper")
-ctx := context.Background()
-
-resp, err := myGripper.DoCommand(ctx, map[string]interface{}{"command": "example"})
+resp, err := myGripper.DoCommand(context.Background(), map[string]interface{}{"command": "example"})
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/api/blob/main/component/gripper/v1/gripper_grpc.pb.go).
@@ -433,10 +415,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGripper, err := gripper.FromRobot(machine, "my_gripper")
-ctx := context.Background()
-
-err := myGripper.Close(ctx)
+err := myGripper.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
