@@ -155,17 +155,9 @@ output_tensors = await my_mlmodel.infer(input_tensors)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/mlmodel#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMLModel, err := mlmodel.FromRobot(machine, "my_mlmodel_service")
-if err!=nil {
-      logger.Error(err)
-      return
-    }
-
-ctx := context.Background()
-
 input_tensors := ml.Tensors{"0": tensor.New(tensor.WithShape(1, 2, 3), tensor.WithBacking(6))}
 
-output_tensors, err := myMLModel.Infer(ctx, input_tensors)
+output_tensors, err := myMLModel.Infer(context.Background(), input_tensors)
 ```
 
 {{% /tab %}}
@@ -209,15 +201,7 @@ metadata = await my_mlmodel.metadata()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/mlmodel#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMLModel, err := mlmodel.FromRobot(machine, "my_mlmodel_service")
-if err!=nil {
-      logger.Error(err)
-      return
-    }
-
-ctx := context.Background()
-
-metadata, err := myMLModel.Metadata(ctx)
+metadata, err := myMLModel.Metadata(context.Background())
 ```
 
 {{% /tab %}}
@@ -272,15 +256,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMLModel, err := mlmodel.FromRobot(machine, "my_mlmodel_service")
-if err!=nil {
-      logger.Error(err)
-      return
-    }
-
-ctx := context.Background()
-
-resp, err := myMLModel.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
+resp, err := myMLModel.DoCommand(context.Background(), map[string]interface{}{"command": "dosomething", "someparameter": 52})
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
@@ -323,15 +299,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMLModel, err := mlmodel.FromRobot(machine, "my_mlmodel_service")
-if err!=nil {
-      logger.Error(err)
-      return
-    }
-
-ctx := context.Background()
-
-err = myMLModel.Close(ctx)
+err := myMLModel.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
