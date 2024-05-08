@@ -16,6 +16,12 @@ cost: "0"
 no_list: true
 ---
 
+<!-- LEARNING GOALS
+After following this tutorial, you will understand how to control sync parameters, so you can build filters that allow you to filter the data you are collecting from your machines.
+
+Note: Consider this tutorial alongside filtered camera tutorial.
+-->
+
 If your smart machine [captures](/data/capture/) a lot of data, you might want to filter captured data to selectively store only the data you are interested in.
 For example, you might want to use your smart machine's camera to capture images based on specific criteria, such as the presence of a certain color, and omit captured images that don't meet that criteria.
 

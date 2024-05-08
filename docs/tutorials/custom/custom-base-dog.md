@@ -24,6 +24,12 @@ cost: 190
 # SMEs: James Otting, Eric Daniels
 ---
 
+<!-- LEARNING GOAL:
+After following this tutorial, you will know about Viam's modular platform and be able to identify if you need to create your own modular resource for your base and create and use that resource.
+
+Consider if can be merged with intermode rover one to create more generalized guidance.
+ -->
+
 The [base component type](/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the [Viam app](https://app.viam.com/) remote control interface.
 
 Viam natively supports a wheeled base model, but if you have a quadruped or other form of base that requires a different underlying implementation, you can create a custom component as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
