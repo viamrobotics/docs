@@ -23,6 +23,13 @@ date: "2022-10-11"
 cost: "0"
 ---
 
+<!-- LEARNING GOALS
+After following this tutorial, you will know how to use fake components to prototype if you don't have (the right) components at hand. You will also know how to swap out your fake components for real components when you get them.
+
+Notes:
+Imagine you are designing a robot with an arm and a camera. You have ordered the arm on backorder and you'll receive it in 2 months. In the meantime, you want to write and test code that you'll use to control the arm based on what the camera sees..."Have readers configure a fake arm, and either a fake or real camera. Have readers write code to do something interesting, and test it using the control tab. Then, have readers reconfigure it once the "arm arrives," demonstrating how you can swap fake for real without touching your code. Then, say you decide to change to a different arm, or make a second machine with a different arm. Demonstrate or at least mention that you use the same code for that arm too.
+Rename to something like Prototype and iterate. -->
+
 In this tutorial you will build a mock robot to learn how to configure {{< glossary_tooltip term_id="machine" text="smart machines" >}} with Viam.
 You do not need any hardware to do this tutorial.
 

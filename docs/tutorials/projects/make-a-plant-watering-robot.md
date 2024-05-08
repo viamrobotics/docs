@@ -17,6 +17,13 @@ no_list: true
 # SMES: Olivia Miller, Sierra Guequierre, Hazal Mestci
 ---
 
+<!-- LEARNING GOALS:
+After this tutorial you understand viam's modular platform and can build a machine from start to finish. You will be able to create machines using builtin and registry resources and write code with the SDKs to operate your machine
+
+Notes:
+possibly extend or point to data management tutorial next? To Jessamy's in particular? and the grafana tutorial
+-->
+
 ![Picture of the plant watering robot on a desk.](/tutorials/plant-watering-pi/plant-watering-robot.png)
 
 Building a useful robot doesn't have to require complicated code or expensive equipment.

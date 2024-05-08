@@ -15,6 +15,12 @@ date: "2024-01-17"
 cost: "0"
 ---
 
+<!-- LEARNING GOALS
+After following this tutorial, you will be able to write a Flutter app that can control a machine.
+Notes:
+- It would be best if we change this tutorial to allow users to select any machine in their fleet and control it in an interesting way, but it shouldn't just mimic the existing viam mobile app; it should provide something different.
+-->
+
 <div class="td-max-width-on-larger-screens">
  <div class="alignleft center-if-small" style="max-width:250px">
   {{<gif webm_src="/tutorials/flutter-app/demo.webm" mp4_src="/tutorials/flutter-app/demo.mp4" alt="Rendering of the mobile app. Log in is clicked, then all Clint's locations are shown, Clint's Desk it clicked, all its smart machines are listed, and then desk-robot is clicked, showing a list of components and services belonging to that smart machine.">}}
