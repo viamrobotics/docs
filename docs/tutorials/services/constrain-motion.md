@@ -27,6 +27,8 @@ Say you want your robot to pass you a cup of tea, but you don't want it to spill
 If you followed along with the [Plan Motion with an Arm tutorial](../plan-motion-with-arm-gripper/), you used the [motion service](/mobility/motion/) to move a robot arm and end effector to desired positions.
 This tutorial builds on this foundation.
 
+In this tutorial, you will learn about transforms and constraints with the example of moving a cup across a table without hitting another object, and while remaining upright.
+
 <br>
 
 {{< alert title="Learning Goals" color="info" >}}
@@ -37,8 +39,6 @@ After following this tutorial, you will be able to:
 - use constraints to control the way your machine moves between its start and end position
 
 {{< /alert >}}
-
-In this tutorial, you will learn about transforms and constraints with the example of moving a cup across a table without hitting another object, and while remaining upright.
 
 The [full tutorial code](#full-tutorial-code) is available at the end of this page.
 
