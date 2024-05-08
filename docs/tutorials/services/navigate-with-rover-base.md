@@ -36,7 +36,6 @@ weight: 5
 # SMEs: Ray Bjorkman, Fahmina
 ---
 
-
 The [navigation service](/mobility/navigation/) allows you to queue up user-defined waypoints for your machine to move to in the order that you specify.
 You can also add obstacles or set linear and angular velocity targets in your navigation service config.
 Viam's motion planner will plan routes that avoid those obstacles and attempt to keep the robot at your specified velocity.
