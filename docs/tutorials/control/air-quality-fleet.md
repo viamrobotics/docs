@@ -30,6 +30,7 @@ By completing this project, you will learn to:
 - Organize your fleet using {{< glossary_tooltip term_id="location" text="locations" >}}
 - Collect and sync data from multiple machines
 - Use the Viam TypeScript SDK to query sensor data and create a custom dashboard
+- Use API keys to provide access to different groups of machines
 
 {{< /alert >}}
 
