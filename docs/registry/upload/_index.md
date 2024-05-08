@@ -588,7 +588,7 @@ To delete a module, navigate to its page in the [**REGISTRY** section of the Via
 
 {{% alert title="Note" color="note" %}}
 
-If for some reason you need to delete a module and the delete option is unavailable to you, please [contact our support team](https://support.viam.com/hc/en-us) for assistance.
+If you need to delete a module and the delete option is unavailable to you, please [contact our support team](https://support.viam.com/hc/en-us) for assistance.
 
 {{% /alert %}}
 
