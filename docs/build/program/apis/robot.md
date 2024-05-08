@@ -596,7 +596,7 @@ console.log("FrameSytemConfig:", await robot.frameSystemConfig());
 
 Get the status of the resources on the machine.
 You can provide a list of ResourceNames for which you want statuses.
-If no names are passed in, the status of every resource configured on the machine is returned.
+If no names are passed in, the status of every available resource on the machine is returned.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -900,7 +900,7 @@ For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/
 
 ```typescript
 // Get the metadata of the machine.
-const metadata = await robot.getCloudMetadata();
+const metadata = await machine.getCloudMetadata();
 console.log(metadata);
 ```
 
