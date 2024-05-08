@@ -21,6 +21,9 @@ cost: 200
 ---
 
 In this tutorial you will use a fleet of devices to collect air quality data from different places and display the most recent readings from each device in a custom viewing dashboard.
+
+{{< alert title="Learning Goals" color="info" >}}
+
 By completing this project, you will learn to:
 
 - Configure a fleet of identical machines
@@ -28,7 +31,9 @@ By completing this project, you will learn to:
 - Collect and sync data from multiple machines
 - Use the Viam TypeScript SDK to query sensor data and create a custom dashboard
 
-  ![Air quality dashboard in a web browser with PM2.5 readings from three different sensor machines displayed.](/tutorials/air-quality-fleet/three-sensor-dash-wide.png)
+{{< /alert >}}
+
+![Air quality dashboard in a web browser with PM2.5 readings from three different sensor machines displayed.](/tutorials/air-quality-fleet/three-sensor-dash-wide.png)
 
 ## Requirements
 
