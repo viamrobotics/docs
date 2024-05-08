@@ -661,7 +661,8 @@ const status = await machine.getStatus();
 
 ### Close
 
-Close the underlying connections and stop any periodic tasks across all constituent parts of the machine.
+Close the underlying client connections to the machine and stops any periodic tasks running in the client.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
