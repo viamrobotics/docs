@@ -33,7 +33,7 @@ Finally, you'll configure a webhook to trigger the serverless function when some
 
 After completing this tutorial, you will:
 
-- know how the mlmodel service and the vision service work together
+- know how the ML model service and the vision service work together
 - be able to use the MLmodel service and the vision service on a machine with an existing model to interpret the world around the machine
 - be able to use data capture and webhooks to set up notifications based on the machine's perception of the world around it
 
