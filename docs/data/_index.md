@@ -160,8 +160,6 @@ Sync data stored on the machine to the cloud.
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager).
 
 ```go {class="line-numbers linkable-line-numbers"}
-data, err := datamanager.FromRobot(robot, "my_data_service")
-
 // Sync data stored on the machine to the cloud.
 err := data.Sync(context.Background(), nil)
 ```
