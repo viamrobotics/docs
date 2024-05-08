@@ -1,7 +1,7 @@
 extends: substitution
 message: "Use '%s' instead of '%s'."
 link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/terminology/general-term-guidelines/avoid-obscure-words.rst'
-level: error
+level: warning
 ignorecase: true
 action:
   name: replace
