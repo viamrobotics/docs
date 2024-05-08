@@ -136,6 +136,24 @@ For example, they might resemble `home/models/fruit/my_fruit_model.tflite`.
 
 Save the configuration.
 
+## Model requirements
+
+{{% alert title="Tip" color="tip" %}}
+Models [trained](/ml/train-model/) in the Viam app meet these requirements by design.
+{{% /alert %}}
+
+We strongly recommend that you package your TensorFlow Lite model with metadata in [the standard form](https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs).
+
+In the absence of metadata, your `tflite_cpu` model must satisfy the following requirements:
+
+- A single input tensor representing the image of type UInt8 (expecting values from 0 to 255) or Float 32 (values from -1 to 1).
+- At least 3 output tensors (the rest won’t be read) containing the bounding boxes, class labels, and confidence scores (in that order).
+- Bounding box output tensor must be ordered [x x y y], where x is an x-boundary (xmin or xmax) of the bounding box and the same is true for y.
+  Each value should be between 0 and 1, designating the percentage of the image at which the boundary can be found.
+
+These requirements are satisfied by a few publicly available model architectures including EfficientDet, MobileNet, and SSD MobileNet V1.
+You can use one of these architectures or build your own.
+
 ## Next steps
 
 To make use of your model with your machine, add a [vision service](/ml/vision/) or a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}:
@@ -160,21 +178,3 @@ Configure your `mlmodel classifier`.
 {{% card link="/registry/examples/tflite-module/" customTitle="Example: TensorFlow Lite Modular Service" %}}
 
 {{< /cards >}}
-
-## Model requirements
-
-{{% alert title="Tip" color="tip" %}}
-Models [trained](/ml/train-model/) in the Viam app meet these requirements by design.
-{{% /alert %}}
-
-We strongly recommend that you package your TensorFlow Lite model with metadata in [the standard form](https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs).
-
-In the absence of metadata, your `tflite_cpu` model must satisfy the following requirements:
-
-- A single input tensor representing the image of type UInt8 (expecting values from 0 to 255) or Float 32 (values from -1 to 1).
-- At least 3 output tensors (the rest won’t be read) containing the bounding boxes, class labels, and confidence scores (in that order).
-- Bounding box output tensor must be ordered [x x y y], where x is an x-boundary (xmin or xmax) of the bounding box and the same is true for y.
-  Each value should be between 0 and 1, designating the percentage of the image at which the boundary can be found.
-
-These requirements are satisfied by a few publicly available model architectures including EfficientDet, MobileNet, and SSD MobileNet V1.
-You can use one of these architectures or build your own.
