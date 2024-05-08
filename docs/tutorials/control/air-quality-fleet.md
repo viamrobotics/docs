@@ -28,7 +28,7 @@ By completing this project, you will learn to:
 - Collect and sync data from multiple machines
 - Use the Viam TypeScript SDK to query sensor data and create a custom dashboard
 
-  {{<imgproc class="aligncenter" src="/tutorials/air-quality-fleet/three-sensor-dash-wide.png" resize="x900" declaredimensions=true alt="Air quality dashboard in a web browser with PM2.5 readings from three different sensor machines displayed." style="max-width:500px" >}}
+  ![Air quality dashboard in a web browser with PM2.5 readings from three different sensor machines displayed.](/tutorials/air-quality-fleet/three-sensor-dash-wide.png)
 
 ## Requirements
 
@@ -58,6 +58,8 @@ You choose how to group your machines.
 
 {{<imgproc class="aligncenter" src="/fleet/fleet.svg" declaredimensions=true alt="Tree diagram with three locations that belong to one organization. One location contains sub-location A containing two machines and sub-location B containing one machine. Each of the two other locations contains machines directly with no sub-locations." >}}
 
+<br>
+
 For more information, see [Fleet Management](/fleet/).
 
 ### Example
@@ -76,6 +78,8 @@ RobotsRUs wants to separate their sensor data by physical location, so you creat
 When you grant Antonia access to her location, she will be able to view data from the air sensors at her home.
 When you grant RobotsRUs access to their location, they will be able to view data from all of their sub-locations, or they can choose to spin up a dashboard showing data from only one sub-location at a time.
 You, as the organization owner, will be able to manage any necessary configuration changes for all air sensing machines in all locations created within the Pollution Monitoring Made Simple organization.
+
+{{<imgproc class="aligncenter" src="/tutorials/air-quality-fleet/example-org-structure.png" resize="x900" declaredimensions=true alt="Diagram of the Pollution Monitoring Made Simple organization. In it are two locations: Antonia's HOme and Robots R Us. Robots R Us contains two sub-locations, each containing some machines. The Antonia's Home location contains two machines (and no sub-locations)." >}}
 
 ### Organize your fleet
 
@@ -186,7 +190,7 @@ Once you understand how to configure machines and use fragments, you can use [Pr
 3. Click **Add module**.
    This adds the {{< glossary_tooltip term_id="module" text="module" >}} that provides the sensor model that supports the specific hardware we are using for this tutorial.
 
-   {{<imgproc src="/tutorials/air-quality-fleet/add-sensor-module.png" resize="x1100" declaredimensions=true alt="The Add Module button that appears after you click the model name." style="max-width:600px" >}}
+   ![The Add Module button that appears after you click the model name.](/tutorials/air-quality-fleet/add-sensor-module.png)
 
 4. Give the sensor a name like `PM_sensor` and click **Create**.
 5. In the newly created **PM_sensor** card, replace the contents of the attributes box (the empty curly braces `{}`) with the following:
@@ -219,7 +223,7 @@ Once you understand how to configure machines and use fragments, you can use [Pr
 7. Save the config.
    Your machine config should now resemble the following:
 
-   {{<imgproc src="/tutorials/air-quality-fleet/configured-sensor.png" resize="x1100" declaredimensions=true alt="Configure tab showing PM sensor and the sensor module configured." style="max-width:600px" >}}
+   ![Configure tab showing PM sensor and the sensor module configured.](/tutorials/air-quality-fleet/configured-sensor.png)
 
 #### Configure data capture and sync
 
@@ -268,7 +272,7 @@ In any case, now that the JSON is generated, you are ready to create a {{< gloss
 
    Delete the entire `agent_config` section including the comma just above it:
 
-   {{<imgproc src="/tutorials/air-quality-fleet/delete-agent-config.png" resize="x1100" declaredimensions=true alt="The section of the raw JSON that you should delete: the entire agent section." style="max-width:600px" >}}
+   ![The section of the raw JSON that you should delete: the entire agent section.](/tutorials/air-quality-fleet/delete-agent-config.png)
 
 6. Click **Save fragment**.
 7. Now, you can actually delete the entire config from your machine!
@@ -285,7 +289,7 @@ Add the fragment you just created to each of your machines including the first o
 1. Click the **+** button, then click **Insert fragment** in the dropdown menu.
 2. Search for and click the name of your fragment, for example `air-sensing-machine`.
 
-   {{<imgproc src="/tutorials/air-quality-fleet/add-fragment.png" resize="x1100" declaredimensions=true alt="The insert fragment UI." style="max-width:600px" >}}
+   ![The insert fragment UI.](/tutorials/air-quality-fleet/add-fragment.png)
 
 3. Click **Insert fragment**.
    The module, sensor, and data manager will appear in your config.
@@ -301,7 +305,7 @@ For each machine:
 2. Within the **Sensors** section, click **Get Readings** for the **PM_sensor**.
    If the sensor software and hardware is working, you should see values populate the **Readings** column.
 
-   {{<imgproc src="/tutorials/air-quality-fleet/get-readings.png" resize="x1100" declaredimensions=true alt="The sensor readings on the control tab." style="max-width:600px" >}}
+   ![The sensor readings on the control tab.](/tutorials/air-quality-fleet/get-readings.png)
 
    If you do not see readings, check the **LOGS** tab for errors, double-check that serial communication is enabled on the singe board computer, and check that the `usb_interface` path is correctly specified (click below).
 
@@ -348,7 +352,7 @@ Next, check that data is being synced from your sensors to the cloud:
     Click the **Tags** dropdown and select the `air-quality` tag you applied to your data.
     You can also use these filters to show the data from one of your air quality sensors at a time by typing a machine name into the **Machine name** box and clicking **Apply** in the lower-left corner.
 
-    {{<imgproc src="/tutorials/air-quality-fleet/synced-data.png" resize="x1100" declaredimensions=true alt="The sensor readings that have synced to the DATA page." style="max-width:600px" >}}
+    ![The sensor readings that have synced to the DATA page.](/tutorials/air-quality-fleet/synced-data.png)
 
 Once you've confirmed that data is being collected and synced correctly, you're ready to start building a dashboard to display the data.
 If you'd like to graph your data using a Grafana dashboard, try our [Visualize Data with Grafana tutorial](/tutorials/services/visualize-data-grafana/).
@@ -362,7 +366,7 @@ You'll host the website locally on your personal computer, and view the interfac
 
 As you'll find out in the [authentication step](#authenticate-your-code-to-your-viam-app-location), you can set each customer up with credentials to access the data from only their location, or you can create a dashboard showing data from all sensors in your entire organization.
 
-{{<imgproc class="aligncenter" src="/tutorials/air-quality-fleet/two-sensors.png" resize="x1000" declaredimensions=true alt="The air quality dashboard you'll build. This one has PM2.5 readings from two different sensor machines displayed, and a key with categories of air quality." style="max-width:500px" >}}
+![The air quality dashboard you'll build. This one has PM2.5 readings from two different sensor machines displayed, and a key with categories of air quality.](/tutorials/air-quality-fleet/two-sensors.png)
 
 ### Set up your TypeScript project
 
@@ -461,7 +465,7 @@ The following instructions describe how to set up an API key for one location.
 
     In the [Viam app](https://app.viam.com), navigate to the location page for the location containing your air quality machines.
 
-    {{<imgproc src="/tutorials/air-quality-fleet/loc-secret-button.png" resize="x900" declaredimensions=true alt="The location secret with a Copy button next to it." style="max-width:650px" >}}
+    ![The location secret with a Copy button next to it.](/tutorials/air-quality-fleet/loc-secret-button.png)
 
     Copy the **Location ID** and paste it into your code in place of `<LOCATION ID>`, so that that line resembles `const orgID: string = "abcde12345"`.
 
@@ -782,14 +786,14 @@ You can find all the code in the [GitHub repo for this tutorial](https://github.
    npm start
    ```
 
-   {{<imgproc src="/tutorials/air-quality-fleet/terminal-url.png" resize="x900" declaredimensions=true alt="Terminal window with the command 'npm start' run inside the aqi-dashboard folder. The output says 'start' and then 'esbuild' followed by the esbuild string from the package.json file you configured. Then there's 'Local:' followed by a URL and 'Network:' follwed by a different URL." style="max-width:700px" >}}
+   ![Terminal window with the command 'npm start' run inside the aqi-dashboard folder. The output says 'start' and then 'esbuild' followed by the esbuild string from the package.json file you configured. Then there's 'Local:' followed by a URL and 'Network:' follwed by a different URL.](/tutorials/air-quality-fleet/terminal-url.png)
 
 1. The terminal should output a line such as `Local:  http://127.0.0.1:8000/`.
    Copy the URL the terminal displays and paste it into the address bar in your web browser.
    The data may take up to approximately 5 seconds to load, then you should see air quality data from all of your sensors.
    If the dashboard does not appear, right-click the page, select **Inspect**, and check for errors in the console.
 
-   {{<imgproc class="aligncenter" src="/tutorials/air-quality-fleet/three-sensor-dash.png" resize="x900" declaredimensions=true alt="Air quality dashboard in a web browser with PM2.5 readings from three different sensor machines displayed." style="max-width:500px" >}}
+   ![Air quality dashboard in a web browser with PM2.5 readings from three different sensor machines displayed.](/tutorials/air-quality-fleet/three-sensor-dash.png)
 
    Great work.
    You've learned how to configure a fleet of machines, sync their data to one place, and pull that data into a custom dashboard using TypeScript.
