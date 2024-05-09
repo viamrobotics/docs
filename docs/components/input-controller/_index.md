@@ -210,7 +210,7 @@ func handleController(ctx context.Context, logger logging.Logger, controller inp
     if !slices.Contains(controls, input.ButtonStart) {
         return errors.New("button `ButtonStart` not found; controller may be disconnected")
     }
-    return controller.RegisterControlCallback(context.Background(), Control: input.ButtonStart, triggers, printStartTime, nil)
+    return controller.RegisterControlCallback(context.Background(), input.ButtonStart, triggers, printStartTime, nil)
 }
 
 func main() {
