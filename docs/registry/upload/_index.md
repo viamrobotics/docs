@@ -33,7 +33,7 @@ You can upload your module in one of two ways:
 
 To upload your custom module to the [Viam registry](https://app.viam.com/registry), either as a public or private module, use the Viam CLI commands `create` and `upload` following these instructions:
 
-1. First, [install the Viam CLI](/fleet/cli/#install) and [authenticate](/fleet/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
+1. First, [install the Viam CLI](/cli/#install) and [authenticate](/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
 
 2. Next, run the `viam module create` command to choose a custom module name and generate the required metadata for your module.
    By default, a new module is created as _private_, meaning that it is only accessible to members of your [organization](/fleet/organizations/), but you can choose to set the `visibility` of your module to _public_ to make it accessible to all Viam users.
@@ -49,17 +49,13 @@ Get the `org-id` for your {{< glossary_tooltip term_id="organization" text="orga
 viam module create --name <your-module-name> --org-id <your-org-id>
 ```
 
-If you later wish to make your module public, you can use the [`viam module update` command](/fleet/cli/#module).
+If you later wish to make your module public, you can use the [`viam module update` command](/cli/#module).
 
 {{% /tab %}}
 {{% tab name="Public" %}}
 
-{{% alert title="Important" color="note" %}}
-If you mark your module as public, you cannot change it back to private.
-{{% /alert %}}
-
 1.  If you haven't already, [create a new namespace](/fleet/organizations/#create-a-namespace-for-your-organization) for your organization.
-    If you have already created a namespace, you can find it on your organization's **Settings** page in [the Viam App](https://app.viam.com/), or by running the [`viam organizations list`](/fleet/cli/#organizations) command.
+    If you have already created a namespace, you can find it on your organization's **Settings** page in [the Viam App](https://app.viam.com/), or by running the [`viam organizations list`](/cli/#organizations) command.
 
 2.  To generate metadata for your module using your public namespace, run the following command from the same directory as your custom module:
 
@@ -100,7 +96,7 @@ If you mark your module as public, you cannot change it back to private.
         <td><code>visibility</code></td>
         <td>string</td>
         <td><strong>Required</strong></td>
-        <td>Whether the module is accessible only to members of your <a href="/fleet/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can later make a private module public using the <code>viam module update</code> command, but once you make a module public, you cannot change it back to private.<br><br>Default: <code>private</code></td>
+        <td>Whether the module is accessible only to members of your <a href="/fleet/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can later make a private module public using the <code>viam module update</code> command. Once you make a module public, you can change it back to private if it is not configured on any machines outside of your organization.<br><br>Default: <code>private</code></td>
       </tr>
       <tr>
         <td><code>url</code></td>
@@ -130,7 +126,7 @@ If you mark your module as public, you cannot change it back to private.
         <td><code>build</code></td>
         <td>object</td>
         <td><strong>Optional</strong></td>
-        <td>An object containing the command to run to build your module, as well as optional fields for the path to your dependency setup script, the target architectures to build for, and the path to your built module. Use this with the <a href="/fleet/cli/#using-the-build-subcommand">Viam CLI's build subcommand</a>. </td>
+        <td>An object containing the command to run to build your module, as well as optional fields for the path to your dependency setup script, the target architectures to build for, and the path to your built module. Use this with the <a href="/cli/#using-the-build-subcommand">Viam CLI's build subcommand</a>. </td>
       </tr>
 
     </table>
@@ -167,7 +163,7 @@ For more information, see [Naming your model](/registry/#naming-your-model-names
 
     {{% /alert %}}
 
-    See [`meta.json` file](/fleet/cli/#the-metajson-file) for more information.
+    See [`meta.json` file](/cli/#the-metajson-file) for more information.
 
 1. For modules written in Python, you should package your module files as an archive first, before uploading.
    Other languages can proceed to the next step to upload their module directly.
@@ -192,10 +188,10 @@ Supply the path to the resulting archive file in the next step.
 
    - `version`: provide a version for your custom module, using [semantic versioning](https://semver.org/) (example: `1.0.0`).
      You can later increment this value with subsequent `viam module upload` commands.
-     See [Using the `--version` argument](/fleet/cli/#using-the---version-argument) for more information.
+     See [Using the `--version` argument](/cli/#using-the---version-argument) for more information.
    - `platform`: provide the system architecture your custom module supports.
      You can only provide one `platform` argument at a time to the `viam module upload` command.
-     See [Using the `--platform` argument](/fleet/cli/#using-the---platform-argument) for the full list of supported architectures.
+     See [Using the `--platform` argument](/cli/#using-the---platform-argument) for the full list of supported architectures.
    - `module-path`: provide the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code.
 
    {{% alert title="Important" color="note" %}}
@@ -225,15 +221,15 @@ Supply the path to the resulting archive file in the next step.
      viam module upload --version 1.0.0 --platform linux/amd64 packaged-module.tar.gz
      ```
 
-When you `upload` a module, the command performs basic [validation](/fleet/cli/#upload-validation) of your module to check for common errors.
+When you `upload` a module, the command performs basic [validation](/cli/#upload-validation) of your module to check for common errors.
 
-For more information, see the [`viam module` command](/fleet/cli/#module)
+For more information, see the [`viam module` command](/cli/#module)
 
 ## Update an existing module
 
 You can update an existing module in the [Viam registry](https://app.viam.com/registry) in one of two ways:
 
-- [Upload new versions of your module manually](#update-an-existing-module-using-the-viam-cli) using the [Viam CLI](/fleet/cli/).
+- [Upload new versions of your module manually](#update-an-existing-module-using-the-viam-cli) using the [Viam CLI](/cli/).
 - [Automatically upload new versions of your module on release](#update-an-existing-module-using-a-github-action) as part of a continuous integration (CI) workflow, using a GitHub Action.
 
 Updating your module manually is appropriate for smaller projects, especially those with only one contributor.
@@ -245,7 +241,7 @@ If you would like to test your module locally against its intended target platfo
 
 ### Update an existing module using the Viam CLI
 
-To update an existing module in the [Viam registry](https://app.viam.com/registry) manually, you can use the [Viam CLI](/fleet/cli/).
+To update an existing module in the [Viam registry](https://app.viam.com/registry) manually, you can use the [Viam CLI](/cli/).
 
 {{% alert title="Tip" color="tip" %}}
 If you intend to make frequent code changes to your module, want to support a variety of platforms, or otherwise want to streamline your module development workflow, consider [using a GitHub action to update your module](#update-an-existing-module-using-a-github-action) instead.
@@ -274,15 +270,15 @@ If you intend to make frequent code changes to your module, want to support a va
    viam module upload --version <version> --platform <platform> <module-path>
    ```
 
-   For example, the following command uploads a module compressed as an archive named `my-module.tar.gz` to the Viam registry, and increments the [`version`](/fleet/cli/#using-the---version-argument) of the module to version `1.0.1`:
+   For example, the following command uploads a module compressed as an archive named `my-module.tar.gz` to the Viam registry, and increments the [`version`](/cli/#using-the---version-argument) of the module to version `1.0.1`:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version 1.0.1 --platform darwin/arm64 my-module.tar.gz
    ```
 
-   When you `upload` a module, the command performs basic [validation](/fleet/cli/#upload-validation) of your module to check for common errors.
+   When you `upload` a module, the command performs basic [validation](/cli/#upload-validation) of your module to check for common errors.
 
-For more information, see the [`viam module` command](/fleet/cli/#module)
+For more information, see the [`viam module` command](/cli/#module)
 
 ### Update an existing module using a GitHub action
 
@@ -463,7 +459,7 @@ tar -czvf dist/archive.tar.gz dist/main
 { {% /tab %}}
 { {< /tabs >}} -->
 
-You can test this build configuration by running the Viam CLI's [`build local` command](/fleet/cli/#using-the-build-subcommand) on your development machine:
+You can test this build configuration by running the Viam CLI's [`build local` command](/cli/#using-the-build-subcommand) on your development machine:
 
 ```sh {class="command-line" data-prompt="$"}
 viam module build local
@@ -512,9 +508,9 @@ When you are ready to test the action, uncomment `if: github.event_name == 'rele
 
 For guidance on configuring the other parameters, see the documentation for each:
 
-- [`org-id`](/fleet/cli/#using-the---org-id-and---public-namespace-arguments): Not required if your module is public.
-- [`platform`](/fleet/cli/#using-the---platform-argument): You can only upload one platform at a time.
-- [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning): Also see [Using the --version argument](/fleet/cli/#using-the---version-argument) for more details on the types of versioning supported.
+- [`org-id`](/cli/#using-the---org-id-and---public-namespace-arguments): Not required if your module is public.
+- [`platform`](/cli/#using-the---platform-argument): You can only upload one platform at a time.
+- [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning): Also see [Using the --version argument](/cli/#using-the---version-argument) for more details on the types of versioning supported.
 
 For more details, see the [`upload-module` GitHub Action documentation](https://github.com/viamrobotics/upload-module), or take a look through one of the following example repositories that show how to package and deploy modules using the Viam SDKs:
 
@@ -525,7 +521,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 {{% /tab %}}
 {{< /tabs >}}
 
-1. Create an [organization API key](/fleet/cli/#create-an-organization-api-key) with the [owner](/fleet/rbac/#permissions) role, which the GitHub action will use to authenticate to the Viam platform, using one of the following methods:
+1. Create an [organization API key](/cli/#create-an-organization-api-key) with the [owner](/fleet/rbac/#permissions) role, which the GitHub action will use to authenticate to the Viam platform, using one of the following methods:
 
    - Use the Viam CLI to create an organization API key, which includes the owner role by default:
 
@@ -561,6 +557,52 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 - [Python with docker](https://github.com/viamrobotics/python-container-module)
 - [Golang](https://github.com/viam-labs/wifi-sensor)
 - [C++](https://github.com/viamrobotics/module-example-cpp)
+
+## Change a module from public to private
+
+You can change the visibility of a module from public to private if:
+
+- you are an [owner](/fleet/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
+- no machines outside of the organization that owns the module have the module configured (no other orgs are using it).
+
+To change the visibility, navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry), hover to the right of the visibility indicator near the right side of the page until an **Edit** button appears, and click it to make changes.
+
+{{<imgproc src="/registry/upload/edit-module-visibility.png" resize="x1000" declaredimensions=true alt="A module page with a Visibility heading on the right side. Under it, an Edit button has appeared." max-width="700px" >}}
+
+You can also edit the visibility by editing the <file>meta.json</file> file and then running the following [CLI](/cli/#module) command:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module update
+```
+
+## Delete a module
+
+You can delete a module if:
+
+- you are an [owner](/fleet/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
+- no machines have the module configured.
+
+To delete a module, navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry), click the **...** menu in the upper-right corner of the page, and click **Delete**.
+
+{{<imgproc src="/registry/upload/delete-module.png" resize="x1000" declaredimensions=true alt="A module page with the ... menu open. Delete is the only option in the menu." max-width="700px" >}}
+
+{{% alert title="Note" color="note" %}}
+
+If you need to delete a module and the delete option is unavailable to you, please [contact our support team](https://support.viam.com/hc/en-us) for assistance.
+
+{{% /alert %}}
+
+### Delete just one version of a module
+
+Deleting a version of a module requires the same org owner permissions as deleting the entire module, and similarly, you cannot delete a version if any machines are using it.
+To delete just one version of a module:
+
+1. Navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry)
+2. Click **Show previous versions** under the **Latest version** heading.
+3. Click the trash can icon next to the version you'd like to delete.
+
+Versions are immutable, meaning that you cannot upload a new file with the same version number as the deleted one.
+To upload another version, you must increment the version number to a later version number.
 
 ## Next steps
 

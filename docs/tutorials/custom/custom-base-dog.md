@@ -19,7 +19,7 @@ languages: ["python"]
 viamresources: ["base", "camera", "custom"]
 level: "Intermediate"
 date: "2023-05-15"
-# updated: ""
+updated: "2024-05-07"
 cost: 190
 # SMEs: James Otting, Eric Daniels
 ---
@@ -31,11 +31,11 @@ Viam natively supports a wheeled base model, but if you have a quadruped or othe
 This tutorial demonstrates how to add a custom base using [this robot dog kit and its open source code](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi) as an example.
 
 <div class="alignleft">
-  {{<gif webm_src="/tutorials/custom-base-dog/base-control-dog.webm" mp4_src="/tutorials/custom-base-dog/base-control-dog.mp4" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the machine's Control tab on the Viam app open in a browser window." max-width="400px">}}
+  {{<gif webm_src="/tutorials/custom-base-dog/base-control-dog.webm" mp4_src="/tutorials/custom-base-dog/base-control-dog.mp4" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the machine's control tab on the Viam app open in a browser window." max-width="400px">}}
 </div>
 
 By the end of the tutorial, you will be able to drive this dog around using the Viam base methods: `MoveStraight`, `Spin`, `SetPower`, `SetVelocity`, and `Stop`.
-You will also be able to use the **Control** tab in the Viam app to remotely drive the dog around using your keyboard while viewing the camera feed.
+You will also be able to use the **CONTROL** tab in the Viam app to remotely drive the dog around using your keyboard while viewing the camera feed.
 You’ll learn to implement a custom component type in Viam, and you’ll be equipped to implement other sorts of custom components in the future for whatever robots you dream up.
 
 ## Code used in this tutorial
@@ -141,7 +141,7 @@ This way, you can isolate any client-server connection problems if they exist.
 ### Create a connection test file
 
 In a convenient directory on your development machine, create a Python file and open it in your favorite IDE.
-We named ours "dog_test.py" and opened it in Visual Studio Code.
+We named ours <file>dog_test.py</file> and opened it in Visual Studio Code.
 
 Paste the following code snippet into the file you created:
 
@@ -168,8 +168,10 @@ Save the file.
 
 Go to the [machine page](https://app.viam.com/robots) for your robot dog that you created when installing `viam-server` on the Pi.
 
-In the banner towards the top of the page, the IP address of the robot dog Pi is displayed under **IPs**.
-Copy the IP to your clipboard.
+Open the part status dropdown in the top left of the page.
+If your machine is connected to the app, this should say **Live**.
+The IP address of the robot dog Pi is displayed under **IPs**.
+Click the copy icon to copy the IP address to your clipboard.
 Inside <file>dog_test.py</file>, replace `PASTE DOG IP ADDRESS HERE` with the copied IP.
 Save the file.
 
@@ -348,45 +350,38 @@ sudo chmod +x run.sh
 
 You need to tell your robot how to access the module you created.
 
-On the [Viam app](https://app.viam.com), go to your machine's **Config** tab.
-Click the **Modules** subtab.
+On the [Viam app](https://app.viam.com), go to your machine's **CONFIGURE** tab.
+Click the **+** (Create) button next to your main part in the left-hand menu and select **Local module**, then **Local module**.
 Name your module `my-custom-base`.
 Enter the path (for example, `/home/fido/robotdog/run.sh`) to your module's executable file in the **Executable path** field.
-Click **Save Config** at the bottom of the page.
+Click **Save** at the top right of the page to save your config.
 
 ![Screenshot of the Viam app Config tab with the Modules subtab open, showing my-custom-base configured.](/tutorials/custom-base-dog/module-config.png)
 
 ## Configure the components
 
 Now that the custom base code is set up, you need to configure all your hardware components.
-Navigate to the **Components** subtab of your machine's **Config** tab.
 
 ### Configure the camera
 
 Configure the ribbon camera on the dog as a `webcam` following our [webcam documentation](/components/camera/webcam/).
 
-Click **Save config**.
+Click **Save**.
 
 ### Configure the base
 
-Because your custom base relies on a local module, you need to use raw JSON to configure your modular resource.
-Use the **Mode** selector in the upper-left corner of the **Config** tab to switch to **Raw JSON** mode.
+Now, add the local base component from the local module.
+Click the **+** (Create) button next to your main part in the left-hand menu and select **Local module**, then **Local component**.
+Select `base` as the **Type**.
+Name your component `quadruped`.
+For the colon-delimited triplet, enter `viamlabs:base:robotdog`.
 
-Locate the `"components": []` portion of the config file.
-At the end of your camera configuration, add a comma and then add the following base configuration:
+Then, in the configuration panel that appears for the local base, copy and paste the follow attributes:
 
 ```json
 {
-  "namespace": "rdk",
-  "name": "quadruped",
-  "type": "base",
-  "model": "viamlabs:base:robotdog",
-  "attributes": {
-    "ip_address": "<HOSTNAME>.local",
-
-    "port": 5001
-  },
-  "depends_on": []
+  "ip_address": "<HOSTNAME>.local",
+  "port": 5001
 }
 ```
 
@@ -396,28 +391,22 @@ If this doesn't work, you can instead try using the IP address of the machine wh
 If you are using a port other than `5001`, edit the `port` attribute.
 `5001` is the default port for sending and receiving instructions to and from the Freenove server.
 
-Click **Save config**.
+Click **Save**.
 
-Your raw JSON configuration should look similar to the following:
+Your local component configuration should look similar to the following:
 
-![Raw JSON mode on the Config tab, showing the components and modules sections of the machine's raw JSON config.](/tutorials/custom-base-dog/raw-json.png)
-
-Toggle back to **Builder** mode and make sure a configuration panel has been generated:
-
-![Screenshot of the Viam app CONFIG tab with the Config subtab open, showing quadruped configured.](/tutorials/custom-base-dog/config-modular-component.png)
-
-If yours doesn't resemble the following, go back to the raw JSON and double-check your JSON formatting.
+![CONFIGURE tab, showing the attributes editor of the `quadruped` local base component.](/tutorials/custom-base-dog/quadruped-config.png)
 
 ## Start the Freenove server
 
 To operate the dog, you need to start the Freenove robot dog server (which you saved as <file>/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/main.py</file>).
 
-You can configure a [_process_](/build/configure/processes/) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
+Configure a [_process_](/build/configure/processes/) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
 
-Navigate to the **Processes** subtab of your machine's **Config** tab.
+Click the **+** (Create) button next to your main part in the left-hand menu and select **Process**.
 
-Create a new process and give it a name (for example `freenove`).
-Fill out the config panel as follows:
+In the process configuration panel that appears, click on the name in the top left corner and rename it to `freenove`.
+Fill out the configuration panel as follows:
 
 - **Executable**: The path to Python on your Pi, for example `/usr/bin/python`.
   If you're not sure what this path should be, run `which python` on your Pi command line to find it.
@@ -428,11 +417,11 @@ Fill out the config panel as follows:
 - **Logging**: Toggle to the **on** position so you can view logs for this server process.
 - **Execute once**: Leave this **off** so that the Freenove server will continue to run, and will restart if it crashes.
 
-Click **Save config** at the bottom of the window.
+Click **Save**.
 
 ![Screenshot of the Processes subtab of the Config tab, showing a process configured as detailed above.](/tutorials/custom-base-dog/process-config.png)
 
-{{% expand "Click to see what the processes config looks like in Raw JSON mode." %}}
+{{% expand "Click to see what the processes config looks like in JSON mode." %}}
 
 ```json
   "processes": [
@@ -467,11 +456,11 @@ sudo python main.py -tn
 
 ## Driving the robot from the Viam app
 
-Navigate to the **Control** tab.
+Navigate to the **CONTROL** tab.
 
 Click the **quadruped** component panel to expand it and reveal the controls.
 
-![Screenshot of the Control tab with the custom base card expanded to reveal arrow control buttons.](/tutorials/custom-base-dog/control-tab.png)
+![Screenshot of the CONTROL tab with the custom base card expanded to reveal arrow control buttons.](/tutorials/custom-base-dog/control-tab.png)
 
 1. Enable the camera stream from the **Select Cameras** dropdown.
 2. Toggle the **Keyboard Disabled** switch to **Keyboard Enabled** to use the WASD keys on your keyboard.
@@ -518,7 +507,7 @@ Depending on the speed of your server connection, you may need to hold down the 
 
 In this tutorial you learned how to implement a custom component model and control it using the Viam app.
 You learned about configuring modules and processes.
-You drove the robot dog around using the Viam **Control** tab.
+You drove the robot dog around using the Viam **CONTROL** tab.
 
 To add more functionality, try using the generic `do_command` method to add different behaviors to your robot dog.
 You could also use the Viam [vision service](/ml/vision/) with the robot dog's [camera component](/components/camera/).

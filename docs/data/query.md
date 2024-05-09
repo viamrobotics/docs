@@ -87,7 +87,7 @@ These steps are only required when querying tabular data directly from an MQL-co
 You do not need to perform any additional configuration when [querying data in the Viam app](/data/query/#query-tabular-data-in-the-viam-app).
 {{< /alert >}}
 
-1. If you haven't already, [install the Viam CLI](/fleet/cli/#install) and [authenticate](/fleet/cli/#authenticate) to Viam.
+1. If you haven't already, [install the Viam CLI](/cli/#install) and [authenticate](/cli/#authenticate) to Viam.
 
 1. Find your organization ID by running the following command, or from your organization's **Settings** page in [the Viam App](https://app.viam.com/):
 
@@ -96,6 +96,13 @@ You do not need to perform any additional configuration when [querying data in t
    ```
 
 1. Configure a new database user for the Viam organization's MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance, which is where your machine's synced data is stored.
+
+   {{< alert title="Warning" color="warning" >}}
+   The command will create a user with your organisation id as the username.
+   If you or someone else in your organization have already created this user, the following steps update the password for that user instead.
+   Dashboards or other integrations relying on this password will then need to be updated.
+   {{< /alert >}}
+
    Provide your organization's `org-id` from step 2, and a desired new password for your database user.
    Your password must be at least 8 characters long, and include at least one uppercase, one number, and one special character (such as `$` or `%`):
 
@@ -104,7 +111,6 @@ You do not need to perform any additional configuration when [querying data in t
    ```
 
    This command configures a new database user for your org for use with data query.
-   If you have already created this user, this command updates the password for that user instead.
 
 1. Determine the hostname for your organization's MongoDB Atlas Data Federation instance by running the following command with the organization's `org-id` from step 2:
 
@@ -115,7 +121,7 @@ You do not need to perform any additional configuration when [querying data in t
    This command returns the `hostname` (including database name) to use to connect to your data store on the Viam organization's MongoDB Atlas instance.
    You will need this to query your data in the next section.
 
-For more information, see the documentation for the [Viam CLI `database` command](/fleet/cli/#data).
+For more information, see the documentation for the [Viam CLI `database` command](/cli/#data).
 
 ### Query
 

@@ -231,3 +231,11 @@ To configure a webhook:
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## More examples
+
+The [Monitor Job Site Helmet Usage with Computer Vision tutorial](/tutorials/projects/helmet/#configure-a-webhook-on-your-machine) uses webhooks to send email notifications.
+
+{{< cards >}}
+{{% card link="/tutorials/projects/helmet/" %}}
+{{< /cards >}}

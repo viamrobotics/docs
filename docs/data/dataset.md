@@ -21,7 +21,7 @@ To manage your data you can use labels and datasets.
 
 To label data, go to the [**DATA** tab](https://app.viam.com/data/view) in the Viam app.
 
-On the **Images** subtab, you can filter available images, using the **Filtering** menu and select the attributes that match where, how, and when the data was collected.
+On the **Images** subtab, you can filter available images, using the **Filters** menu and select the attributes that match where, how, and when the data was collected.
 
 {{< alert title="Info" color="info" >}}
 Filtered datasets are views and not materialized.
@@ -53,7 +53,7 @@ If you want to expand the image, click on the expand side menu arrow in the corn
 {{<gif webm_src="/data/label-dog-big.webm" mp4_src="/data/label-dog-big.mp4" alt="Add a bounding box around the dog in an image in a big menu">}}
 
 Repeat this with all images in your dataset.
-To see all the images that have bounding boxes, you can filter your dataset by selecting the label from the **Bounding box labels** dropdown in the **Filtering** menu.
+To see all the images that have bounding boxes, you can filter your dataset by selecting the label from the **Bounding box labels** dropdown in the **Filters** menu.
 
 To delete a bounding box, click the cross next to the corresponding label.
 
@@ -99,7 +99,7 @@ Click **Create dataset**, enter a name or use the suggested name for your datase
 
 ![Create dataset UI](/data/create-dataset.png)
 
-Alternatively, you can use the [`viam data dataset add` command](/fleet/cli/#data) to add an image or group of images matching a specific filter to a dataset using the Viam CLI.
+Alternatively, you can use the [`viam data dataset add` command](/cli/#data) to add an image or group of images matching a specific filter to a dataset using the Viam CLI.
 
 ### Remove an image from a dataset
 
@@ -107,7 +107,7 @@ To remove an image from a dataset click on the delete button next to the dataset
 
 {{<gif webm_src="/data/delete-from-dataset.webm" mp4_src="/data/delete-from-dataset.mp4" alt="Remove from dataset">}}
 
-Alternatively, you can use the [`viam data dataset remove` command](/fleet/cli/#data) to remove an image or group of images matching a specific filter using the Viam CLI.
+Alternatively, you can use the [`viam data dataset remove` command](/cli/#data) to remove an image or group of images matching a specific filter using the Viam CLI.
 
 ### View the data in a dataset
 

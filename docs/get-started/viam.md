@@ -73,7 +73,7 @@ For each component that makes up your machine:
 </p>
 
 1. Add it to your machine by [choosing the component type](/build/configure/#components) (example: `camera`) and model (example: `webcam`).
-2. Test it with the visual [control tab](/fleet/machines/#control).
+2. Test it with the visual [control tab](/fleet/control/).
 3. See any problems with in-app [logs](/fleet/machines/#logs), review or roll back [configuration history](/fleet/machines/#configure).
 
 After configuring your machine's hardware, you can configure [high level functionality](/services/) the same way:

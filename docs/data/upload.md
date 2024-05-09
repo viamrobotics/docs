@@ -113,9 +113,11 @@ Also unlike data sync, this method _does not_ delete data from your device.
 Upload images as machine data straight from your phone, skipping the normal data capture and cloud synchronization process, through the [Viam mobile app](/fleet/#the-viam-mobile-app).
 This is useful if you want to capture images for training machine learning models on the go.
 
-1. Select an organization by swiping left to right or clicking on the menu icon in the top left corner and tap an organization. Then tap the **Locations** tab and select a location and machine.
-2. Click the menu button marked "**...**" in the upper right corner.
-3. Click **Upload Images**.
-4. Select each image you want to upload, and click **Add**.
+1. Select an organization by clicking on the menu icon in the top left corner and tapping an organization.
+2. Tap the **Locations** tab and select a location, then select a machine.
+3. Tap the menu button marked "**...**" in the upper right corner.
+4. Tap **Upload Images**.
+5. Select each image you want to upload, then tap **Add**.
 
-With regard to metadata, these images are associated with the machine part you selected, and aren't associated with a component or method.
+The uploaded images metadata will contain the machine part you selected.
+However, the uploaded images will not be associated with a component or method.

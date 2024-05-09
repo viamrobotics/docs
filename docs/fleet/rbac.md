@@ -1,6 +1,6 @@
 ---
 title: "Role-Based Access Control"
-linkTitle: "Access Control"
+linkTitle: "Manage Access"
 description: "Fleet and data management permissions."
 weight: 50
 type: "docs"
@@ -13,7 +13,7 @@ Users can have access to different fleet management capabilities depending on wh
 
 - **Owner**: Can see and edit [every tab on the machine page](/fleet/machines/#navigating-the-machine-page).
   Can manage users in the app.
-- **Operator**: Can see and use only the [**CONTROL**](/fleet/machines/#control) tab.
+- **Operator**: Can see and use only the [**CONTROL**](/fleet/control/) tab.
   Cannot see or edit the [**CONFIGURE**](/fleet/machines/#configure), [**LOGS**](/fleet/machines/#logs), or **CONNECT** tabs.
 
 For more detailed information on the permissions each role confers for different resources, see [Permissions](/fleet/rbac/#permissions).
@@ -157,6 +157,8 @@ Permissions for managing org settings and user roles are as follows:
 | Invite, resend invite, and revoke invite              | **Yes**   | No           | **Yes\***      | No                | **Yes\***     | No               |
 | Change someone else's role                            | **Yes**   | No           | **Yes\***      | No                | **Yes\***     | No               |
 | Create a new organization                             | **Yes**   | **Yes**      | **Yes**        | **Yes**           | **Yes**       | **Yes**          |
+| Delete modules                                        | **Yes**   | No           | No             | No                | No            | No               |
+| Make public modules private                           | **Yes**   | No           | No             | No                | No            | No               |
 
 \*For locations/machines they have access to
 

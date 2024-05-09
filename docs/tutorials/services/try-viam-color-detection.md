@@ -20,6 +20,9 @@ no_list: true
 # SMEs: Hazal
 ---
 
+<!-- LEARNING GOALS
+After following this tutorial, you will understand how the ML model service and the Vision service work together and you will be able to use both alongside the base and camera components to make a machine respond to the world around it.  -->
+
 In this tutorial you will learn how to configure a color detector with the vision service and leverage that detector with a [transform camera](/components/camera/transform/) to detect the color red.
 
 The [vision service](/ml/vision/) enables a robot to use its cameras to see and interpret the world around it.

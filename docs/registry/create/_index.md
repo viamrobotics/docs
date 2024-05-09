@@ -310,7 +310,7 @@ class MyBase(Base, Reconfigurable):
 {{< alert title="Note" color="note" >}}
 For an example featuring a sensor, see [MCP300x](https://github.com/viam-labs/mcp300x-adc-sensor).
 
-For additional examples use the [modular resources search](https://docs.viam.com/registry/#modular-resources) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
+For additional examples use the [modular resources search](/registry/#modular-resources) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
 {{< /alert >}}
 
 When implementing built-in methods from the Viam Python SDK in your model, be sure your implementation of those methods returns any values designated in the built-in function's return signature, typed correctly.
@@ -319,7 +319,7 @@ For example, the `is_moving()` implementation in the example code above returns 
 For more information on the base component API methods used in this example, see the following resources:
 
 - [Python SDK documentation for the `Base` class](https://python.viam.dev/autoapi/viam/components/base/index.html)
-- [Base API methods](https://docs.viam.com/components/base/#api)
+- [Base API methods](/components/base/#api)
 
 For more Python module examples:
 
@@ -560,7 +560,7 @@ func (b *myBase) Close(ctx context.Context) error {
 {{< alert title="Note" color="note" >}}
 For an example featuring a sensor, see [MCP3004-8](https://github.com/mestcihazal/mcp3004-8-go).
 
-For additional examples use the [modular resources search](https://docs.viam.com/registry/#modular-resources) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
+For additional examples use the [modular resources search](/registry/#modular-resources) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
 {{< /alert >}}
 
 When implementing built-in methods from the Viam Go SDK in your model, be sure your implementation of those methods returns any values designated in the built-in method's return signature, typed correctly.
@@ -570,7 +570,7 @@ This matches the `error` return type of the built-in `SetPower()` method as defi
 For more information on the base component API methods used in this example, see the following resources:
 
 - [Go SDK documentation for the `base` package](https://pkg.go.dev/go.viam.com/rdk/components/base#pkg-functions)
-- [Base API methods](https://docs.viam.com/components/base/#api)
+- [Base API methods](/components/base/#api)
 
 For more Go module examples:
 
@@ -813,7 +813,7 @@ For example, the `set_power()` implementation in the example code above returns 
 For more information on the base component API methods used in these examples, see the following resources:
 
 - [C++ SDK documentation for the `Base` class](https://cpp.viam.dev/classviam_1_1sdk_1_1Base.html)
-- [Base API methods](https://docs.viam.com/components/base/#api)
+- [Base API methods](/components/base/#api)
 
 For more C++ module examples:
 
@@ -1106,11 +1106,8 @@ Strings of the form `<INSERT X>` indicate placeholders that you need to replace 
 ````md
 # [`<INSERT MODULE NAME>` module](<INSERT LINK TO MODULE REPO>)
 
-This module implements the [`<INSERT API TRIPLET>` API]<INSERT LINK TO DOCS (if applicable)> in an <INSERT MODEL> model.
+This [module](https://docs.viam.com/registry/#modular-resources) implements the [`<INSERT API TRIPLET>` API]<INSERT LINK TO DOCS (if applicable)> in an <INSERT MODEL> model.
 With this model, you can...
-
-> [!NOTE]
-> For more information, see [Modular Resources](https://docs.viam.com/registry/#modular-resources).
 
 ## Requirements
 
@@ -1122,13 +1119,8 @@ _Add instructions here for any requirements._
 
 ## Configure your <INSERT MODEL NAME> <INSERT API NAME>
 
-> [!NOTE]
-> Before configuring your <INSERT API NAME>, you must [create a machine](https://docs.viam.com/manage/fleet/machines/#add-a-new-machine).
-
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com/).
-Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
-Select the `<INSERT API NAME>` type, then select the `<INSERT MODEL>` model.
-Click **Add module**, then enter a name or use the suggested name for your <INSERT API NAME> and click **Create**.
+Navigate to the [**CONFIGURE** tab](https://docs.viam.com/build/configure/) of your [machine](https://docs.viam.com/fleet/machines/) in [the Viam app](https://app.viam.com/).
+[Add <INSERT COMPONENT TYPE / INSERT RESOURCE NAME> to your machine](https://docs.viam.com/build/configure/#components).
 
 On the new component panel, copy and paste the following attribute template into your <INSERT API NAME>’s attributes field:
 
@@ -1137,9 +1129,6 @@ On the new component panel, copy and paste the following attribute template into
   <INSERT SAMPLE ATTRIBUTES>
 }
 ```
-
-> [!NOTE]
-> For more information, see [Configure a Machine](https://docs.viam.com/build/configure/).
 
 ### Attributes
 
@@ -1177,15 +1166,15 @@ _Add troubleshooting notes here._
 ````md
 # [`agilex-limo` module](https://app.viam.com/module/viam/agilex-limo)
 
-This module implements the [`rdk:component:base` API](https://docs.viam.com/components/base/#api) in an `agilex` model for the [AgileX LIMO](https://global.agilex.ai/education/4) base to be used with [`viam-server`](https://docs.viam.com/). This driver supports differential, ackermann, and omni directional steering modes over the serial port.
+This module implements the [`rdk:component:base` API](/components/base/#api) in an `agilex` model for the [AgileX LIMO](https://global.agilex.ai/education/4) base to be used with [`viam-server`](/). This driver supports differential, ackermann, and omni directional steering modes over the serial port.
 
 > [!NOTE]
-> For more information, see [Modular Resources](https://docs.viam.com/registry/#modular-resources).
+> For more information, see [Modular Resources](/registry/#modular-resources).
 
 ## Configure your `agilex-limo` base
 
 > [!NOTE]
-> Before configuring your base, you must [create a machine](https://docs.viam.com/fleet/machines/#add-a-new-machine).
+> Before configuring your base, you must [create a machine](/fleet/machines/#add-a-new-machine).
 
 Navigate to the **CONFIGURE** tab of your machine’s page in [the Viam app](https://app.viam.com/). Click the **+** icon next to your machine part in the left-hand menu and select **Component**. Select the `base` type, then search for and select the `agilex-limo` model. Click **Add module**, then enter a name or use the suggested name for your base and click **Create**.
 
@@ -1199,7 +1188,7 @@ On the new component panel, copy and paste the following attribute template into
 ```
 
 > [!NOTE]
-> For more information, see [Configure a Machine](https://docs.viam.com/build/configure/).
+> For more information, see [Configure a Machine](/build/configure/).
 
 ### Attributes
 
@@ -1227,9 +1216,9 @@ The following attributes are available for `viam:base:agilex-limo` bases:
 
 ## Next steps
 
-- To test your base, go to the [**CONTROL** tab](https://docs.viam.com/fleet/machines/#control).
-- To write code against your base, use one of the [available SDKs](https://docs.viam.com/program/).
-- To view examples using a base component, explore [these tutorials](https://docs.viam.com/tutorials/).
+- To test your base, go to the [**CONTROL** tab](/fleet/control/).
+- To write code against your base, use one of the [available SDKs](/program/).
+- To view examples using a base component, explore [these tutorials](/tutorials/).
 
 ## Local development
 
@@ -1328,7 +1317,7 @@ If you get `"ImportError: attempted relative import with no known parent package
 In addition, PyInstaller does not support cross-compiling: you must compile your module on the target architecture you wish to support.
 For example, you cannot run a module on a Linux `arm64` system if you compiled it using PyInstaller on a Linux `amd64` system.
 Viam makes this easy to manage by providing a build system for modules.
-Follow [these instructions](/fleet/cli/#using-the-build-subcommand) to automatically build for each system your module can support using Viam's [CLI](/fleet/cli/).
+Follow [these instructions](/cli/#using-the-build-subcommand) to automatically build for each system your module can support using Viam's [CLI](/cli/).
 
 {{% /alert %}}
 
@@ -1449,10 +1438,10 @@ Browse additional example modules by language:
 <!-- prettier-ignore -->
 | Module | Repository | Description |
 | ------ | ---------- | ----------- |
-| [monocular-visual-odometry](https://app.viam.com/module/viam/monocular-visual-odometry) | [viamrobotics/viam-visual-odometry](https://github.com/viamrobotics/viam-visual-odometry) | Extends the built-in [movement sensor API](https://docs.viam.com/components/movement-sensor/#api) to support using monocular visual odometry to enable any calibrated camera to function as a movement sensor. |
-| [oak](https://app.viam.com/module/viam/oak) | [viamrobotics/viam-camera-oak](https://github.com/viamrobotics/viam-camera-oak) | Extends the built-in [camera API](https://docs.viam.com/components/camera/#api) to support OAK cameras. |
-| [odrive](https://app.viam.com/module/viam/odrive) | [viamrobotics/odrive](https://github.com/viamrobotics/odrive) | Extends the built-in [motor API](https://docs.viam.com/components/motor/#api) to support the ODrive motor. This module provides two models, one for a `canbus`-connected ODrive motor, and one for a `serial`-connected ODrive motor. |
-| [yahboom](https://app.viam.com/module/rand/yahboom) | [viamlabs/yahboom](https://github.com/viam-labs/yahboom) | Extends the built-in [arm API](https://docs.viam.com/components/arm/#api) and [gripper API](https://docs.viam.com/components/gripper/#api) to support the Yahboom Dofbot robotic arm. |
+| [monocular-visual-odometry](https://app.viam.com/module/viam/monocular-visual-odometry) | [viamrobotics/viam-visual-odometry](https://github.com/viamrobotics/viam-visual-odometry) | Extends the built-in [movement sensor API](/components/movement-sensor/#api) to support using monocular visual odometry to enable any calibrated camera to function as a movement sensor. |
+| [oak](https://app.viam.com/module/viam/oak) | [viamrobotics/viam-camera-oak](https://github.com/viamrobotics/viam-camera-oak) | Extends the built-in [camera API](/components/camera/#api) to support OAK cameras. |
+| [odrive](https://app.viam.com/module/viam/odrive) | [viamrobotics/odrive](https://github.com/viamrobotics/odrive) | Extends the built-in [motor API](/components/motor/#api) to support the ODrive motor. This module provides two models, one for a `canbus`-connected ODrive motor, and one for a `serial`-connected ODrive motor. |
+| [yahboom](https://app.viam.com/module/rand/yahboom) | [viamlabs/yahboom](https://github.com/viam-labs/yahboom) | Extends the built-in [arm API](/components/arm/#api) and [gripper API](/components/gripper/#api) to support the Yahboom Dofbot robotic arm. |
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -1460,9 +1449,9 @@ Browse additional example modules by language:
 <!-- prettier-ignore -->
 | Module | Repository | Description |
 | ------ | ---------- | ----------- |
-| [agilex-limo](https://app.viam.com/module/viam/agilex-limo) | [viamlabs/agilex](https://github.com/viam-labs/agilex/) | Extends the built-in [base API](https://docs.viam.com/components/base/#api) to support the Agilex Limo base. |
-| [rplidar](https://app.viam.com/module/viam/rplidar) | [viamrobotics/rplidar](https://github.com/viamrobotics/rplidar) | Extends the built-in [camera API](https://docs.viam.com/components/camera/#api) to support several models of the SLAMTEC RPlidar. |
-| [filtered-camera](https://app.viam.com/module/erh/filtered-camera) | [erh/filtered_camera](https://github.com/erh/filtered_camera) | Extends the built-in [camera API](https://docs.viam.com/components/camera/#api) to enable filtering captured images by comparing to a defined ML model, and only syncing matching images to the Viam app. See the [filtered-camera tutorial](/tutorials/projects/filtered-camera/) for more information. |
+| [agilex-limo](https://app.viam.com/module/viam/agilex-limo) | [viamlabs/agilex](https://github.com/viam-labs/agilex/) | Extends the built-in [base API](/components/base/#api) to support the Agilex Limo base. |
+| [rplidar](https://app.viam.com/module/viam/rplidar) | [viamrobotics/rplidar](https://github.com/viamrobotics/rplidar) | Extends the built-in [camera API](/components/camera/#api) to support several models of the SLAMTEC RPlidar. |
+| [filtered-camera](https://app.viam.com/module/erh/filtered-camera) | [erh/filtered_camera](https://github.com/erh/filtered_camera) | Extends the built-in [camera API](/components/camera/#api) to enable filtering captured images by comparing to a defined ML model, and only syncing matching images to the Viam app. See the [filtered-camera tutorial](/tutorials/projects/filtered-camera/) for more information. |
 
 {{% /tab %}}
 {{% tab name="C++" %}}
@@ -1470,8 +1459,8 @@ Browse additional example modules by language:
 <!-- prettier-ignore -->
 | Module | Repository | Description |
 | ------ | ---------- | ----------- |
-| [csi-cam](https://app.viam.com/module/viam/csi-cam) | [viamrobotics/csi-camera](https://github.com/viamrobotics/csi-camera/) | Extends the built-in [camera API](https://docs.viam.com/components/camera/#api) to support the Intel CSI camera. |
-<!-- | [module-example-cpp](https://app.viam.com/module/viam/module-example-cpp) | [viamrobotics/module-example-cpp](https://github.com/viamrobotics/module-example-cpp) | Extends the built-in [sensor API](https://docs.viam.com/components/sensor/#api) to report wifi statistics. | -->
+| [csi-cam](https://app.viam.com/module/viam/csi-cam) | [viamrobotics/csi-camera](https://github.com/viamrobotics/csi-camera/) | Extends the built-in [camera API](/components/camera/#api) to support the Intel CSI camera. |
+<!-- | [module-example-cpp](https://app.viam.com/module/viam/module-example-cpp) | [viamrobotics/module-example-cpp](https://github.com/viamrobotics/module-example-cpp) | Extends the built-in [sensor API](/components/sensor/#api) to report wifi statistics. | -->
 
 {{% /tab %}}
 {{% /tabs %}}
