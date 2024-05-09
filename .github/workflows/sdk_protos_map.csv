@@ -36,8 +36,9 @@ board,GetPWM,get_pwm,PWM,pWM
 board,SetPWM,set_pwm,SetPWM,setPWM
 board,PWMFrequency,get_pwm_frequency,PWMFreq,pWMFrequency
 board,SetPWMFrequency,set_pwm_frequency,SetPWMFreq,setPWMFrequency
-board,ReadAnalogReader,analog_reader_by_name,AnalogByName,readAnalogReader
-board,WriteAnalog,write_analog,WriteAnalog,writeAnalog
+board,ReadAnalogReader,analog_by_name,AnalogByName,readAnalogReader
+## HACK: Omitting PySDK: write_analog, currently borked: https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.write_analog
+board,WriteAnalog,,WriteAnalog,writeAnalog
 board,GetDigitalInterruptValue,digital_interrupt_by_name,DigitalInterruptByName,,
 board,StreamTicks,,StreamTicks,streamTicks
 board,SetPowerMode,set_power_mode,SetPowerMode,setPowerMode
@@ -45,7 +46,7 @@ board,GetGeometries,get_geometries,,getGeometries
 ## HACK: Board (python, go) provides additional helper functions, adding 5 pseudo-entries:
 board,Read,read,Read,
 board,Value,value,Value,getDigitalInterruptValue
-board,AnalogReaderNames,analog_reader_names,AnalogNames,
+board,AnalogReaderNames,analog_names,AnalogNames,
 board,DigitalInterruptNames,digital_interrupt_names,DigitalInterruptNames,
 board,GPIOPinByName,gpio_pin_by_name,GPIOPinByName,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
