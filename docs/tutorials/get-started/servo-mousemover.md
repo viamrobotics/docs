@@ -21,6 +21,11 @@ cost: 80
 no_list: true
 ---
 
+<!-- LEARNING GOALS
+After following this tutorial, you will know when to use a motor component and be able to configure a servo component and control it using the Viam app the Viam SDKs.
+
+Notes: Also point out that a reader can use fake components if they don't have real ones.-->
+
 Have you ever been working from home and needed to step out for a moment?
 Maybe it was to clear your head, grab your lunch, answer the door, and you get in trouble because it showed you as offline?
 
