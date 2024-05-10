@@ -19,11 +19,11 @@ menuindent: true
 # SME: Alexa Greenberg
 ---
 
+## Overview
+
 The data management service is a robust solution for smart machine data handling, [data capture](/data/capture/), and [cloud synchronization](/data/cloud-sync/).
 Using the data management service, you can collect data from different parts of a robot, IoT device, or any other machine.
 Once collected, you can configure which data to securely sync to the cloud, and view, sort, or manage it directly in the cloud without needing to manually gather data from each machine.
-
-## Overview
 
 ![Data is captured on the machine, uploaded to the cloud, and then deleted off local storage.](/data/data_management.png)
 
