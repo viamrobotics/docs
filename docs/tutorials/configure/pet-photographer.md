@@ -17,7 +17,7 @@ no_list: true
 ---
 
 <!-- LEARNING GOALS
-After following this tutorial, you will understand how to control sync parameters, so you can build filters that allow you to filter the data you are collecting from your machines.
+After following this tutorial, you will understand how to control sync parameters and build filters that allow you to filter the data you are collecting from your machines.
 
 Note: Consider this tutorial alongside filtered camera tutorial.
 -->
