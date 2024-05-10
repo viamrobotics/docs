@@ -405,8 +405,6 @@ firstPoseInFrame := referenceframe.NewPoseInFrame(referenceframe.World, firstPos
 
 // Calculate firstPoseInFrame from the perspective of the origin frame of myArm
 transformedPoseInFrame, err := machine.TransformPose(context.Background(), firstPoseInFrame, "myArm", nil)
-fmt.Println("Transformed Position:", transformedPoseInFrame.Pose().Point())
-fmt.Println("Transformed Orientation:", transformedPoseInFrame.Pose().Orientation())
 ```
 
 {{% /tab %}}
