@@ -25,7 +25,7 @@ cost: 190
 ---
 
 <!-- LEARNING GOAL:
-After following this tutorial, you will know about Viam's modular platform and be able to identify if you need to create your own modular resource for your base and create and use that resource.
+After following this tutorial, you will know about Viam's modules and be able to identify if you need to create your own modular resource for your base, as well as how to create and use that resource.
 
 Consider if can be merged with intermode rover one to create more generalized guidance.
  -->

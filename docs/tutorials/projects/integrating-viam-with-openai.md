@@ -31,7 +31,7 @@ no_list: true
 ---
 
 <!-- LEARNING GOALS
-After following this tutorial, you will know about Viam's modular platform, know when you need to use modules, and be able to find useful resources, like the speech module and follow their instructions to use them.
+After following this tutorial, you will know about modules and understand when you need to use them, and be able to find useful resources from the Viam Registry, such as the speech module.
 Notes:
 - Potentially requires a full rewrite.
 - Keep openai as an example but make the rest more simple.
