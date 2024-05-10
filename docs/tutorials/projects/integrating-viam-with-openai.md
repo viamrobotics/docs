@@ -30,6 +30,14 @@ cost: 200
 no_list: true
 ---
 
+<!-- LEARNING GOALS
+After following this tutorial, you will know about modules and understand when you need to use them, and be able to find useful resources from the Viam Registry, such as the speech module.
+Notes:
+- Potentially requires a full rewrite.
+- Keep openai as an example but make the rest more simple.
+- Consider moving the tutorial as is to the blog if the resulting content is too different.
+-->
+
 When we think of robots, most of us tend to group them into categories:
 
 - useful robots

@@ -14,6 +14,12 @@ date: "2023-12-20"
 cost: "0"
 ---
 
+<!--
+After following this tutorial, you will know how to leverage the filtered-camera module alongside an ML model to selectively sync data.
+
+Note: Consider this tutorial alongside pet photographer. The ML apects around capturing data and training a model should likely be merged with capture and train a model, so this tutorial can focus more on the fitlering data before it reaches the cloud aspects.
+ -->
+
 {{< imgproc src="/tutorials/filtered-camera-module/viam-figure-preview.png" alt="The promotional Viam wooden figure we give out at events, being correctly detected with a 0.97 confidence threshold" resize="400x"  class="alignright" >}}
 
 With the data management service, a Viam machine can capture data from a variety of components and sync that data to the Viam app.
