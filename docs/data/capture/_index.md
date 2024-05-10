@@ -68,7 +68,9 @@ To capture data from one or more machines, you must first add the [data manageme
         "capture_dir": "",
         "tags": [],
         "capture_disabled": false,
-        "sync_disabled": true
+        "sync_disabled": true,
+        "delete_every_nth_when_disk_full": 5,
+        "maximum_num_sync_threads": 1000
       }
     }
   ]
@@ -366,6 +368,35 @@ The following example captures data from the `ReadImage` method of a camera:
 ```
 
 {{% /expand%}}
+
+## Automatic data deletion
+
+If [cloud sync](/data/cloud-sync/) is enabled, the data management service deletes captured data once it has successfully synced to the cloud.
+
+The data management service will also automatically delete local data in the event your machine's local storage fills up.
+Local data is automatically deleted when _all_ of the following conditions are met:
+
+- Data capture is enabled on the data manager service
+- Local disk usage percentage is greater than or equal to 90%
+- The Viam capture directory is at least 50% of the current local disk usage
+
+If local disk usage is greater than or equal to 90%, but the Viam capture directory is not at least 50% of that usage, a warning log message will be emitted instead and no action will be taken.
+
+Automatic file deletion only applies to files in the specified Viam capture directory, which is set to `~/.viam/capture` by default.
+Data outside of this directory is not touched by automatic data deletion.
+
+If your machine captures a large amount of data, or frequently goes offline for long periods of time while capturing data, consider moving the Viam capture directory to a larger, dedicated storage device on your machine if available. You can change the capture directory using the `capture_dir` attribute.
+
+You can also control how local data is deleted if your machine's local storage becomes full, using the `delete_every_nth_when_disk_full` and `maximum_num_sync_threads` attributes:
+
+- The `delete_every_nth_when_disk_full` attribute controls how many files to delete when local storage meets the above fullness criteria.
+  The data management service will delete every Nth file that has been captured upon reaching this threshold.
+  The default value is `5`, meaning that every fifth captured file will be deleted.
+
+- The `maximum_num_sync_threads` attribute controls how many concurrent CPU threads to dedicate to the automatic deletion task when local storage meets the above fullness criteria.
+  The data management service will use up to this configured number of threads.
+  The default value is `1000`, and is suitable for most cases.
+  Some Pi and Pi-based boards may encounter issues with the default thread count; if you encounter issues with automatic deletion, try raising this value as needed.
 
 ## View captured data
 

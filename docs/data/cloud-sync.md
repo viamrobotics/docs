@@ -134,15 +134,16 @@ In the example pictured here, the data management service syncs the configured c
   For example, if the service has uploaded 33% of the data and then the internet connection is severed, sync is interrupted.
   Once the service retries and successfully connects, data synchronization resumes at 33%.
 
-- **Storage** When a machine loses its internet connection, it cannot resume cloud sync until it can reach the Viam cloud again.
+- **Storage** Data that is successfully synced to the cloud is automatically deleted from local storage.
+
+  When a machine loses its internet connection, it cannot resume cloud sync until it can reach the Viam cloud again.
 
   To ensure that the machine can store all data captured while it has no connection, you need to provide enough local data storage.
 
   {{< alert title="Warning" color="warning" >}}
 
-  Currently, the data management service can use the entire available disk space to store data.
-  If the machine loses connectivity and remains disconnected, data capture can eventually use all disk space.
-  Currently, Viam does not safeguard against this.
+  If your machine's disk fills up beyond a certain threshold, the data management service will delete captured data to free up additional space and maintain a working machine.
+  See [automatic data deletion](/data/capture/#automatic-data-deletion) for configuration options.
 
   {{< /alert >}}
 
