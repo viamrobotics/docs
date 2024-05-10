@@ -25,7 +25,7 @@ weight: 1
 ---
 
 <!-- LEARNING GOALS:
-After following this tutorial, you will understand when to use a board component and be able to configure a board component for your SBC and control the component using the Viam app and the Viam SDKs.
+After following this tutorial, you will understand when to use a board component and be able to configure a board component for your SBC and control it using the Viam app and the Viam SDKs.
 Notes: Also point out that a reader can use fake components if they don't have real ones. -->
 
 This tutorial will show you how to use Viam to make an LED blink with a Raspberry Pi.

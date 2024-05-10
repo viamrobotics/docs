@@ -22,7 +22,7 @@ no_list: true
 ---
 
 <!-- LEARNING GOALS
-After following this tutorial, you will know when to use a motor component and be able to configure a servo component and control the component using the Viam app the Viam SDKs.
+After following this tutorial, you will know when to use a motor component and be able to configure a servo component and control it using the Viam app the Viam SDKs.
 
 Notes: Also point out that a reader can use fake components if they don't have real ones.-->
 

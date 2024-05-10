@@ -18,7 +18,7 @@ no_list: true
 ---
 
 <!-- LEARNING GOALS:
-After this tutorial you understand viam's modular platform and can build a machine from start to finish. You will be able to create machines using builtin and registry resources and write code with the SDKs to operate your machine
+After this tutorial you will understand what modules are and when to use them, and be able to build a machine from start to finish. You will be able to create machines using built-in resources as well as resources from the Viam registry, and can write code with the SDKs to operate your machine.
 
 Notes:
 possibly extend or point to data management tutorial next? To Jessamy's in particular? and the grafana tutorial
