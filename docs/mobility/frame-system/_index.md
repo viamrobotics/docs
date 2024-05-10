@@ -404,7 +404,7 @@ firstPose := spatialmath.NewPoseFromPoint(r3.Vector{X: 0.0, Y: 0.0, Z: 0.0})
 firstPoseInFrame := referenceframe.NewPoseInFrame(referenceframe.World, firstPose)
 
 // Calculate firstPoseInFrame from the perspective of the origin frame of myArm
-transformedPoseInFrame, err := robot.TransformPose(ctx, firstPoseInFrame, "myArm", nil)
+transformedPoseInFrame, err := machine.TransformPose(context.Background(), firstPoseInFrame, "myArm", nil)
 fmt.Println("Transformed Position:", transformedPoseInFrame.Pose().Point())
 fmt.Println("Transformed Orientation:", transformedPoseInFrame.Pose().Orientation())
 ```
