@@ -103,23 +103,14 @@ You need to install Raspberry Pi OS (formerly called Raspbian) on the microSD ca
 
    {{< imgproc alt="Raspberry Pi Imager window showing the 'Set username and password' option is selected. The user has entered username 'Robota' and some hidden password." src="/get-started/installation/rpi-setup/imager-set-passwordauthentication.png" resize="550x" declaredimensions=true >}}
 
-{{< alert title="Caution" color="caution" >}}
-
-The default username and password on Raspberry Pis are
-
-- username: pi
-- password: raspberry
-
-However, it's [bad practice](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/) to keep the default username and password on a Raspberry Pi since doing so makes it easy for hackers to get access to your Pi.
-
-{{< /alert >}}
-
-1. Select the **SERVICES** tab.
-1. Check **Enable SSH**.
+2. Select the **SERVICES** tab.
+3. Check **Enable SSH**.
 
 {{% alert title="IMPORTANT" color="note" %}}
 
 Be sure that you remember the `hostname`, `username`, and `password` you set, as you will need them when you SSH into your Pi.
+
+Do not use the default username and password on a Raspberry Pi, as this poses a [security risk](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/).
 
 {{% /alert  %}}
 
