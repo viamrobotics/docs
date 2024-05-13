@@ -325,7 +325,7 @@ To delete more data iterate over the data with a shell script:
 ```sh
 # deleting one hour of image data
 for i in {00..59}; do
-viam data delete --org_ids=<org-id> --data_type=binary --mime_types=image/jpeg,image/png --start=2022-12-13T06:00:00.000Z --end=2022-12-13T06:${i}:00.000Z
+  viam data delete binary --org-ids=<org-id> --mime-types=image/jpeg,image/png --start=2024-05-13T11:00:00.000Z --end=2024-05-13T11:${i}:00.000Z
 done
 ```
 
