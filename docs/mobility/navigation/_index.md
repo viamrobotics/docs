@@ -331,7 +331,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ```go
 // Set the Mode the service is operating in to MODE_WAYPOINT and begin navigation
-err := myNav.SetMode(context.Background(), Mode.MODE_WAYPOINT, nil)
+err := myNav.SetMode(context.Background(), navigation.ModeWaypoint, nil)
 ```
 
 {{% /tab %}}
@@ -524,8 +524,8 @@ await my_nav.add_waypoint(point=location)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 ```go
-// Assumes you have imported "github.com/kellydunn/golang-geo" as `geo`
 // Create a new waypoint with latitude and longitude values of 0 degrees
+// Assumes you have imported "github.com/kellydunn/golang-geo" as `geo`
 location := geo.NewPoint(0, 0)
 
 // Add your waypoint to the service's data storage
@@ -577,12 +577,14 @@ await my_nav.remove_waypoint(waypoint_id)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 ```go
-// Create a new ObjectID
-// assumes you have imported "go.mongodb.org/mongo-driver/bson/primitive"
-waypoint_id := primitive.NewObjectID()
+// Assumes you have already called AddWaypoint once and the waypoint has not yet been reached
+waypoints, err := myNav.Waypoints(context.Background(), nil)
+if (err != nil || len(waypoints) == 0) {
+  return
+}
 
-// Remove the waypoint matching that ObjectID from the service's data storage
-err := myNav.RemoveWaypoint(context.Background(), waypoint_id, nil)
+// Remove the waypoint from the service's data storage
+err = myNav.RemoveWaypoint(context.Background(), waypoints[0].ID, nil)
 ```
 
 {{% /tab %}}
