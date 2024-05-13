@@ -223,7 +223,7 @@ Obtain unified tabular data and metadata, queried with SQL.
 ```python {class="line-numbers linkable-line-numbers"}
 tabular_data = await data_client.tabular_data_by_sql(
     organization_id=organization_id,
-    sql_query="SELECT * FROM readings"
+    sql_query="SELECT * FROM readings LIMIT 5"
 )
 ```
 
