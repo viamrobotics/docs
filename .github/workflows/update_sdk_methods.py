@@ -329,9 +329,13 @@ python_ignore_apis = [
     'viam.components.board.client.BoardClient.write_analog' # Currently borked: https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.write_analog
 ]
 
-## Use these URLs for data types that are not otherwise captured by parse().
-## Data type links defined here will be used instead of scraped links if found:
+## Use these URLs for data types that are not otherwise captured by parse(), such as:
+## - Well-known built-in data types that are not scrapable (like 'int')
+## - Viam-specific data types, even if scrapeable, that are part of a multiple-data-type return
+##   (like list_organization_members : Tuple[List[viam.proto.app.OrganizationMember], List[viam.proto.app.OrganizationInvite]]
+## Data type links defined here will be used instead of scraped links if both exist:
 python_datatype_links = {
+    ## Built-in data types:
     "str": "https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str",
     "int": "https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex",
     "float": "https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex",
@@ -339,7 +343,14 @@ python_datatype_links = {
     "bool": "https://docs.python.org/3/library/stdtypes.html#boolean-type-bool",
     "datetime": "https://docs.python.org/3/library/datetime.html",
     "datetime.datetime": "https://docs.python.org/3/library/datetime.html",
-    "datetime.timedelta": "https://docs.python.org/3/library/datetime.html#timedelta-objects"
+    "datetime.timedelta": "https://docs.python.org/3/library/datetime.html#timedelta-objects",
+    ## Viam-specific data types:
+    "viam.proto.app.OrganizationMember": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationMember",
+    "viam.proto.app.OrganizationInvite": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite",
+    "viam.components.arm.KinematicsFileFormat.ValueType": "https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.KinematicsFileFormat",
+    "viam.media.video.NamedImage": "https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage",
+    "viam.proto.common.ResponseMetadata": "https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata",
+    "viam.proto.component.encoder.PositionType.ValueType": "https://python.viam.dev/autoapi/viam/gen/component/encoder/v1/encoder_pb2/index.html#viam.gen.component.encoder.v1.encoder_pb2.PositionType"
 }
 
 ## Inject these URLs, relative to 'docs', into param/return/raises descriptions that contain exact matching key text.
@@ -903,6 +914,9 @@ def parse(type, names):
                                 this_method_dict["return"]["return_type"] = linked_return_type
                             elif return_tag.find('a', class_="reference internal"):
 
+                                ## TODO: Only grabbing the first link encountered, but a few methods return a tuple of two data linked data types.
+                                ## Handling those via link_data_types() with manual entries in python_datatype_links for now,
+                                ## But there's room for a more elegant solution:
                                 return_type_link_raw = return_tag.find('a', class_="reference internal").get("href")
 
                                 ## Return type link is an anchor link:
