@@ -1158,10 +1158,6 @@ def write_markdown(type, names, methods):
     ## scope limited to 'type', so we don't have to loop by type:
     for resource in names:
 
-        ## Create by-resource directory structure if not already present:
-        #path_to_resource = os.path.join(path_to_generated, resource)
-        #Path(path_to_resource).mkdir(parents=True, exist_ok=True)
-
         ## Determine where to write output:
         filename = resource + '.md'
         full_path_to_file = os.path.join(path_to_generated, filename)
@@ -1170,7 +1166,7 @@ def write_markdown(type, names, methods):
         ## Switch to identify the first method encountered for each resource, to help with
         ## knowing when we are at the top of the include file, or whether to to double newline
         ## between protos:
-        is_first_method_in_this_resource = 1
+        is_first_method_in_this_resource = True
 
         ## Loop through mapping file, and determine which sdk methods to document for each proto:
         with open(proto_map_file, 'r') as f:
@@ -1617,7 +1613,7 @@ def write_markdown(type, names, methods):
                     ## After this loop, we will be working with additional methods appended to the same {resource}.md include file.
                     ## This switch tells us at the start of the loop for this same resource that we should double-newline the next
                     ## proto encountered:
-                    is_first_method_in_this_resource = 0
+                    is_first_method_in_this_resource = False
 
 ## Main run function:
 ## - proto_map()        Fetch canonical proto methods from upstream, used for Flutter mapping in `parse()`
