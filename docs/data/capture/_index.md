@@ -69,8 +69,7 @@ To capture data from one or more machines, you must first add the [data manageme
         "tags": [],
         "capture_disabled": false,
         "sync_disabled": true,
-        "delete_every_nth_when_disk_full": 5,
-        "maximum_num_sync_threads": 1000
+        "delete_every_nth_when_disk_full": 5
       }
     }
   ]
@@ -387,16 +386,12 @@ Data outside of this directory is not touched by automatic data deletion.
 
 If your machine captures a large amount of data, or frequently goes offline for long periods of time while capturing data, consider moving the Viam capture directory to a larger, dedicated storage device on your machine if available. You can change the capture directory using the `capture_dir` attribute.
 
-You can also control how local data is deleted if your machine's local storage becomes full, using the `delete_every_nth_when_disk_full` and `maximum_num_sync_threads` attributes:
+You can also control how local data is deleted if your machine's local storage becomes full, using the `delete_every_nth_when_disk_full` attribute:
 
 - The `delete_every_nth_when_disk_full` attribute controls how many files to delete when local storage meets the above fullness criteria.
   The data management service will delete every Nth file that has been captured upon reaching this threshold.
   The default value is `5`, meaning that every fifth captured file will be deleted.
-
-- The `maximum_num_sync_threads` attribute controls how many concurrent CPU threads to dedicate to the automatic deletion task when local storage meets the above fullness criteria.
-  The data management service will use up to this configured number of threads.
-  The default value is `1000`, and is suitable for most cases.
-  Some Pi and Pi-based boards may encounter issues with the default thread count; if you encounter issues with automatic deletion, try raising this value as needed.
+  This value should be suitable for most cases.
 
 ## View captured data
 
