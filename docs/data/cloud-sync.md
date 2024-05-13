@@ -72,7 +72,7 @@ To set up triggers for syncing see [Trigger Sync](/data/trigger-sync/).
 
 ### Configure sync threads
 
-When cloud sync is enabled, the data management service will use up to 1000 concurrent CPU threads by default to sync data to the Viam cloud, depending on how much data is being synced.
+When cloud sync is enabled, the data management service will use up to `1000` concurrent CPU threads by default to sync data to the Viam cloud, depending on how much data is being synced.
 You can adjust the permitted thread count with the `maximum_num_sync_threads` attribute.
 
 The default value of `1000` concurrent threads is sufficient for most use cases, but if you are using limited hardware, are operating under heavy CPU load, or are syncing a large amount of data at once, consider lowering this value as needed.
@@ -95,6 +95,8 @@ The default value of `1000` concurrent threads is sufficient for most use cases,
   ]
 }
 ```
+
+{{% /expand%}}
 
 ### Pause sync
 
