@@ -875,11 +875,8 @@ def parse(type, names):
                                                 ## Parameter type link is an anchor link:
                                                 if param_type_link_raw.startswith('#'):
                                                     this_method_parameters_dict["param_type"] = '[' + param_type + '](' + url + param_type_link_raw + ')'
-                                                ## Parameter type link is a relative link, in one of three forms:
-                                                elif param_type_link_raw.startswith('../../../'):
-                                                    this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../../', '')+ ')'
-                                                elif param_type_link_raw.startswith('../../'):
-                                                    this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../', '')+ ')'
+                                                ## Parameter type link is a relative link, starting 1 - 3 instances of '../'
+                                                ## Convert to an absolute link:
                                                 elif param_type_link_raw.startswith('../'):
                                                     this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
 
@@ -921,12 +918,9 @@ def parse(type, names):
 
                                 ## Return type link is an anchor link:
                                 if return_type_link_raw.startswith('#'):
-                                    this_method_dict["return"]["return_type"] = '[' + return_type + '](' + url + param_type_link_raw + ')'
-                                ## Return type link is a relative link, in one of three forms:
-                                elif return_type_link_raw.startswith('../../../'):
-                                    this_method_dict["return"]["return_type"] = '[' + return_type + '](' + sdk_url + "/autoapi/viam/" + return_type_link_raw.replace('../../../', '')+ ')'
-                                elif return_type_link_raw.startswith('../../'):
-                                    this_method_dict["return"]["return_type"] = '[' + return_type + '](' + sdk_url + "/autoapi/viam/" + return_type_link_raw.replace('../../', '')+ ')'
+                                    this_method_dict["return"]["return_type"] = '[' + return_type + '](' + url + return_type_link_raw + ')'
+                                ## Return type link is a relative link, starting 1 - 3 instances of '../'
+                                ## Convert to an absolute link:
                                 elif return_type_link_raw.startswith('../'):
                                     this_method_dict["return"]["return_type"] = '[' + return_type + '](' + sdk_url + "/autoapi/viam/" + return_type_link_raw.replace('../', '')+ ')'
 
