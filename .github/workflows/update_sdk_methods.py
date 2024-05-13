@@ -508,20 +508,13 @@ def link_data_types(sdk, data_type_string):
 
             for data_type_found in matching_data_types:
 
-                ## Build two regexes to handle leading and trailing alphanumeric matches
-                ## (which indicate that a match to a data type is in fact a string match to
-                ## a different data type that _contains_ this data type string!)
-                data_type_regex1 = "r'[A-Za-z0-9]" + data_type_found + "'"
-                data_type_regex2 = "r'" + data_type_found + "[A-Za-z0-9]'"
-
                 ## Discard string matches that are substrings of other data type strings:
-                if not regex.search(data_type_regex1, data_type_string) and not regex.search(data_type_regex2, data_type_string):
- 
+                if not regex.search('[A-Za-z0-9]' + data_type_found, data_type_string) and not regex.search(data_type_found + '[A-Za-z0-9]', data_type_string):
+
                     data_type_linked = '[' + data_type_found + '](' + python_datatype_links[data_type_found] + ')'
                     linked_data_type_string = regex.sub(data_type_found, data_type_linked, linked_data_type_string)
                 else:
-                    ## Not entirely sure I'm fully omitting bad matches here, but it seems to be working?
-                    #print('SKIPPING: ' + data_type_found + ' for ' + data_type_string)
+                    ## If we get here, this data_type is actually a substring of another data type. Take no action:
                     pass
 
     return linked_data_type_string
