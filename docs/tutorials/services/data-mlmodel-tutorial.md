@@ -22,6 +22,12 @@ no_list: true
 # SMEs: Alexa Greenberg, Natalia Jacobowitz
 ---
 
+<!-- LEARNING GOALS
+After following this tutorial, you will understand how to use the data management service to capture and sync image data from your machine to the Viam app, and how to train a machine learning model on that data. You will be able to use the mlmodel service together with the vision service to be able to overlay successful matches directly over your camera feed in the Viam app.
+
+Notes:
+- Consider whether we should add/replace some of this content in this with some of Selectively Capture Data using filtered-camera  that capture captrue & train as well. -->
+
 In this tutorial, you will use three Viam services together to enable your machine to recognize specific objects in the world around it:
 
 - The [data management service](#the-data-management-service), to capture images from a camera on your machine and sync them to the cloud.

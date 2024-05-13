@@ -21,6 +21,14 @@ date: "2022-12-08"
 cost: "0"
 ---
 
+<!-- LEARNING GOALS:
+After following this tutorial, you will know about the Viam SDKs and the APIs for each component that you can use to control your machines. You will be able to run sample code to operate a machine.
+Notes:
+- Rewrite in a way that it teaches how to use SDKs and APIs and uses the rover merely as an example.
+- Improve TS and Flutter explanations to match level of explanation.
+- Explain what "initialize" means, and more about base vs motors.
+-->
+
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/daU5iNsSO0w">}}
 
 The Viam {{< glossary_tooltip term_id="sdk" text="SDKs" >}} allow you to write code in Python, Go, or TypeScript to control a Viam-connected machine.

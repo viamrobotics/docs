@@ -26,6 +26,9 @@ no_list: true
 # SME: Matt Vella, James Otting
 ---
 
+<!-- LEARNING GOALS
+After following this tutorial, you will know about Viam's modular platform and be able to identify if you need to create your own modular resource for your base and create and use that resource. -->
+
 <div class="td-max-width-on-larger-screens">
 {{<imgproc src="/tutorials/intermode/rover_outside.png" resize="400x" declaredimensions=true alt="Intermode rover pictured outdoors." class="alignright" style="max-width:300px">}}
 </div>

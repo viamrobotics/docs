@@ -37,10 +37,9 @@ See [Use machine learning with your machine](#use-machine-learning-with-your-mac
 ## Example tutorials
 
 {{< cards >}}
-{{% card link="/tutorials/projects/integrating-viam-with-openai/" customDescription="Add object detection, speech recognition, natural language processing, and speech synthesis capabilities to a machine." %}}
-{{% card link="/tutorials/projects/helmet/" %}}
 {{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
-{{% card link="/tutorials/projects/pet-treat-dispenser/" customTitle="Smart Pet Feeder" %}}
+{{% card link="/tutorials/projects/helmet/" %}}
+{{% card link="/tutorials/projects/integrating-viam-with-openai/" customDescription="Add object detection, speech recognition, natural language processing, and speech synthesis capabilities to a machine." %}}
 {{< /cards >}}
 
 ## Model support
