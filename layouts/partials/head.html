@@ -66,5 +66,13 @@ hugo.IsProduction (ne $outputFormat "print") -}}
 rel="stylesheet" href="{{ "css/prism.css" | relURL }}"/> {{ end -}} {{ partial
 "hooks/head-end.html" . -}} {{/* To comply with GDPR, cookie consent scripts
 places in head-end must execute before Google Analytics is enabled */ -}} {{ if
-hugo.IsProduction -}} {{ if hasPrefix .Site.GoogleAnalytics "G-" -}} {{ template
-"_internal/google_analytics.html" . -}} {{ end -}} {{ end -}}
+hugo.IsProduction -}}{{- if .Site.GoogleAnalytics -}}
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N93SVKS');</script>
+<!-- End Google Tag Manager -->
+{{- end -}}
+{{ end -}} {{ end -}}
