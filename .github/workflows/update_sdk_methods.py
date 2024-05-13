@@ -839,14 +839,14 @@ def parse(type, names):
 
                                         ## Parameter type link is an anchor link:
                                         if param_type_link_raw.startswith('#'):
-                                            this_method_parameters_dict["param_type"] = '[' + param_name + '](' + url + param_type_link_raw + ')'
+                                            this_method_parameters_dict["param_type"] = '[' + param_type + '](' + url + param_type_link_raw + ')'
                                         ## Parameter type link is a relative link, in one of three forms:
                                         elif param_type_link_raw.startswith('../../../'):
-                                            this_method_parameters_dict["param_type"] = '[' + param_name + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../../', '')+ ')'
+                                            this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../../', '')+ ')'
                                         elif param_type_link_raw.startswith('../../'):
-                                            this_method_parameters_dict["param_type"] = '[' + param_name + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../', '')+ ')'
+                                            this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../', '')+ ')'
                                         elif param_type_link_raw.startswith('../'):
-                                            this_method_parameters_dict["param_type"] = '[' + param_name + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
+                                            this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
 
                                         ## Get parameter usage and description, if method contains a "Parameters" section. Otherwise omit.
                                         ## NOTE: We can't just use the initial param content as found above, because it does not contain descriptions,
@@ -874,14 +874,14 @@ def parse(type, names):
                                                     param_type_link_raw = strong_tag.parent.find('a', class_="reference internal").get("href")
                                                     ## Parameter type link is an anchor link:
                                                     if param_type_link_raw.startswith('#'):
-                                                        this_method_parameters_dict["param_type"] = '[' + param_name + '](' + url + param_type_link_raw + ')'
+                                                        this_method_parameters_dict["param_type"] = '[' + param_type + '](' + url + param_type_link_raw + ')'
                                                     ## Parameter type link is a relative link, in one of three forms:
                                                     elif param_type_link_raw.startswith('../../../'):
-                                                        this_method_parameters_dict["param_type"] = '[' + param_name + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../../', '')+ ')'
+                                                        this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../../', '')+ ')'
                                                     elif param_type_link_raw.startswith('../../'):
-                                                        this_method_parameters_dict["param_type"] = '[' + param_name + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../', '')+ ')'
+                                                        this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../', '')+ ')'
                                                     elif param_type_link_raw.startswith('../'):
-                                                        this_method_parameters_dict["param_type"] = '[' + param_name + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
+                                                        this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
 
                                             ## Unable to determine parameter description, neither timeout or extra, nor matching to any
                                             ## param in initial method usage string. Usually this means a non-param (like error raised),
