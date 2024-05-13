@@ -70,6 +70,34 @@ You can use a {{< glossary_tooltip term_id="module" text="module" >}} to sync da
 For example, if you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
 To set up triggers for syncing see [Trigger Sync](/data/trigger-sync/).
 
+### Configure sync threads
+
+When cloud sync is enabled, the data management service will use up to `1000` concurrent CPU threads by default to sync data to the Viam cloud, depending on how much data is being synced.
+You can adjust the permitted thread count with the `maximum_num_sync_threads` attribute.
+
+The default value of `1000` concurrent threads is sufficient for most use cases, but if you are using limited hardware, are operating under heavy CPU load, or are syncing a large amount of data at once, consider lowering this value as needed.
+
+{{%expand "Click to view the JSON configuration with 250 threads configured" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [],
+  "services": [
+    {
+      "name": "data_manager",
+      "type": "data_manager",
+      "attributes": {
+        "sync_interval_mins": 0.1,
+        "capture_dir": "",
+        "maximum_num_sync_threads": 250
+      }
+    }
+  ]
+}
+```
+
+{{% /expand%}}
+
 ### Pause sync
 
 You can pause Cloud Sync at any time by navigating to your machine's **CONFIGURE** tab and disabling **Syncing** for your [data management service](../).
@@ -134,15 +162,16 @@ In the example pictured here, the data management service syncs the configured c
   For example, if the service has uploaded 33% of the data and then the internet connection is severed, sync is interrupted.
   Once the service retries and successfully connects, data synchronization resumes at 33%.
 
-- **Storage** When a machine loses its internet connection, it cannot resume cloud sync until it can reach the Viam cloud again.
+- **Storage** Data that is successfully synced to the cloud is automatically deleted from local storage.
+
+  When a machine loses its internet connection, it cannot resume cloud sync until it can reach the Viam cloud again.
 
   To ensure that the machine can store all data captured while it has no connection, you need to provide enough local data storage.
 
   {{< alert title="Warning" color="warning" >}}
 
-  Currently, the data management service can use the entire available disk space to store data.
-  If the machine loses connectivity and remains disconnected, data capture can eventually use all disk space.
-  Currently, Viam does not safeguard against this.
+  If your machine's disk fills up beyond a certain threshold, the data management service will delete captured data to free up additional space and maintain a working machine.
+  See [automatic data deletion](/data/capture/#automatic-data-deletion) for configuration options.
 
   {{< /alert >}}
 

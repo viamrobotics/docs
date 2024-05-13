@@ -75,6 +75,7 @@ The [data management](/data/) service has two parts: [data capture](/data/captur
 
 Data capture and data sync are frequently used together, and are both enabled by default when you add the data management service to your machine.
 However, if you want to manage your machine's captured data yourself, you can enable data capture but disable data sync.
+If you are capturing data to a device with limited storage, or intend to capture a large amount of data, see [automatic data deletion](/data/capture/#automatic-data-deletion).
 
 To capture data from your machine and sync to the Viam app, add the data management service and configure data capture for at least one component.
 
