@@ -207,7 +207,7 @@ controls, err := controller.Controls(ctx, nil)
 if !slices.Contains(controls, input.ButtonStart) {
     return errors.New("button `ButtonStart` not found; controller may be disconnected")
 }
-    controller.RegisterControlCallback(context.Background(), input.ButtonStart, triggers, printStartTime, nil)
+    myController.RegisterControlCallback(context.Background(), input.ButtonStart, triggers, printStartTime, nil)
 ```
 
 {{% /tab %}}
