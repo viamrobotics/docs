@@ -131,12 +131,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGeneric, err := generic.FromRobot(machine, "my_generic_service")
-if err != nil{
-  logger.Error(err)
-  return
-}
-
 resp, err := myGeneric.DoCommand(context.Background(), map[string]interface{}{"command": "example"})
 ```
 
@@ -202,13 +196,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred. Close will never return an error for a generic resource.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGeneric, err := generic.FromRobot(machine, "my_generic")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
-err = myGeneric.Close(context.Background())
+err := myGeneric.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#TriviallyCloseable).
