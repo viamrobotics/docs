@@ -319,6 +319,16 @@ viam data database configure --org-id=abc --password=my_password123
 viam data database hostname --org-id=abc
 ```
 
+Viam currently only supports deleting approximately 500 files at a time.
+To delete more data iterate over the data with a shell script:
+
+```sh
+# deleting one hour of image data
+for i in {00..59}; do
+viam data delete --org_ids=<org-id> --data_type=binary --mime_types=image/jpeg,image/png --start=2022-12-13T06:00:00.000Z --end=2022-12-13T06:${i}:00.000Z
+done
+```
+
 #### Command options
 
 <!-- prettier-ignore -->
