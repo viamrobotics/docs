@@ -1,11 +1,11 @@
 ---
-title: "Configure a WitMotion HWT905 IMU"
+title: "Configure a WitMotion HWT905-TTL IMU"
 linkTitle: "imu-wit-hwt905"
 weight: 10
 type: "docs"
-description: "Configure a WitMotion HWT905 IMU on your machine. Once configured, use the API to obtain the AngularVelocity, Orientation, CompassHeading and LinearAcceleration."
+description: "Configure a WitMotion HWT905-TTL IMU on your machine. Once configured, use the API to obtain the AngularVelocity, Orientation, CompassHeading and LinearAcceleration."
 images: ["/icons/components/imu.svg"]
-# SMEs: Rand
+# SMEs: Bucket Team
 ---
 
 An [inertial measurement unit (IMU)](https://en.wikipedia.org/wiki/Inertial_measurement_unit) provides data for the [`AngularVelocity`](/components/movement-sensor/#getangularvelocity), [`Orientation`](/components/movement-sensor/#getorientation), [`CompassHeading`](/components/movement-sensor/#getcompassheading), [`LinearAcceleration`](/components/movement-sensor/#getlinearacceleration), and [`GetAccuracy`](/components/movement-sensor/#getaccuracy) methods.
