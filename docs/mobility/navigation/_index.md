@@ -732,7 +732,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-resp, err := myNav.DoCommand(context.Background, map[string]interface{}{"command": "dosomething", "someparameter": 52})
+resp, err := myNav.DoCommand(context.Background(), map[string]interface{}{"command": "dosomething", "someparameter": 52})
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
@@ -818,7 +818,7 @@ An example of a `CompassHeading` reading:
 
 ```go
 // heading is a float64 between 0-360
-heading, err := gps.CompassHeading(context.Background, nil)
+heading, err := gps.CompassHeading(context.Background(), nil)
 ```
 
 Use compass heading readings to determine the _bearing_ of your machine, or, the [cardinal direction](https://en.wikipedia.org/wiki/Cardinal_direction) that your machine is facing.
@@ -837,7 +837,7 @@ An example of an `Orientation` reading:
 
 ```go
 // orientation is a OrientationVector struct with OX, OY, OZ denoting the coordinates of the vector and rotation about z-axis, Theta
-orientation, err := imuwit.Orientation(context.Background, nil)
+orientation, err := imuwit.Orientation(context.Background(), nil)
 ```
 
 Use orientation readings to determine the orientation of an object in 3D space as an [_orientation vector_](/internals/orientation-vector/).
@@ -861,7 +861,7 @@ An example of an `AngularVelocity` reading:
 
 ```go
 // angularVelocity is an AngularVelocity r3 Vector with X, Y, and Z magnitudes
-angularVelocity, err := imu.AngularVelocity(context.Background, nil)
+angularVelocity, err := imu.AngularVelocity(context.Background(), nil)
 ```
 
 Use angular velocity readings to determine the speed and direction at which your machine is rotating.
@@ -882,7 +882,7 @@ An example of a `Position` reading:
 
 ```go
 // position is a geo.Point consisting  of Lat and Long: -73.98 and an altitude in float64
-position, altitude, err:= imu.Position(context.Background, nil)
+position, altitude, err := imu.Position(context.Background(), nil)
 ```
 
 Use position readings to determine the GPS coordinates of an object in 3D space or its position in the geographic coordinate system [(GCS)](https://en.wikipedia.org/wiki/Geographic_coordinate_system).
@@ -904,7 +904,7 @@ An example of a `LinearVelocity` reading:
 
 ```go
 // linearVelocity is an r3.Vector with X, Y, and Z magnitudes
-linearVelocity, err := imu.LinearVelocity(context.Background, nil)
+linearVelocity, err := imu.LinearVelocity(context.Background(), nil)
 ```
 
 Use linear velocity readings to determine the speed at which your machine is moving through space.
@@ -924,7 +924,7 @@ An example of a `LinearAcceleration` reading:
 
 ```go
 // linearAcceleration is an r3.Vector with X, Y, and Z magnitudes
-linearAcceleration, err := imu.LinearAcceleration(context.Background, nil)
+linearAcceleration, err := imu.LinearAcceleration(context.Background(), nil)
 ```
 
 You can use linear acceleration readings to determine the rate of change of the [linear velocity](/mobility/navigation/#linear-velocity) of your machine, or, the acceleration at which your machine is moving through space.

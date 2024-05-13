@@ -398,13 +398,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Define a Pose coincident with the world reference frame
-firstPose := spatialmath.NewPoseFromPoint(r3.Vector{X: 0.0, Y: 0.0, Z: 0.0})
+firstPose := spatialmath.NewZeroPose
 
 // Establish the world as the reference for firstPose
 firstPoseInFrame := referenceframe.NewPoseInFrame(referenceframe.World, firstPose)
 
 // Calculate firstPoseInFrame from the perspective of the origin frame of myArm
-transformedPoseInFrame, err := machine.TransformPose(context.Background(), firstPoseInFrame, "myArm", nil)
+transformedPoseInFrame, err := fsService.TransformPose(context.Background(), firstPoseInFrame, "myArm", nil)
 ```
 
 {{% /tab %}}
