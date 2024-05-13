@@ -17,6 +17,13 @@ no_list: true
 # SMES: Olivia Miller, Sierra Guequierre, Hazal Mestci
 ---
 
+<!-- LEARNING GOALS:
+After this tutorial you will understand what modules are and when to use them, and be able to build a machine from start to finish. You will be able to create machines using built-in resources as well as resources from the Viam registry, and can write code with the SDKs to operate your machine.
+
+Notes:
+possibly extend or point to data management tutorial next? To Jessamy's in particular? and the grafana tutorial
+-->
+
 ![Picture of the plant watering robot on a desk.](/tutorials/plant-watering-pi/plant-watering-robot.png)
 
 Building a useful robot doesn't have to require complicated code or expensive equipment.
