@@ -597,6 +597,7 @@ console.log("FrameSytemConfig:", await robot.frameSystemConfig());
 Get the status of the resources on the machine.
 You can provide a list of ResourceNames for which you want statuses.
 If no names are passed in, the status of every available resource on the machine is returned.
+Status includes information relevant to the resource type, for example a servo's status includes its current position.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
