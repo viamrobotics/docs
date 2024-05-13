@@ -848,40 +848,40 @@ def parse(type, names):
                                         elif param_type_link_raw.startswith('../'):
                                             this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
 
-                                        ## Get parameter usage and description, if method contains a "Parameters" section. Otherwise omit.
-                                        ## NOTE: We can't just use the initial param content as found above, because it does not contain descriptions,
-                                        ## and we can't just use this "Parameters" section, because it does not (usually) contain things like `extra` and `timeout`.
-                                        ## METHODOLOGY: Find parent <p> tag around matching <strong>param_name</strong> tag which contains this data.
-                                        ##   Determining by <strong> tags allows matching parameters regardless whether they are
-                                        ##   presented in <p> tags (single param) or <li> tags (multiple params):
-                                        for strong_tag in tag.find_all('strong'):
-                                            ## We have to explicitly exclude extra and timeout from this loop also,
-                                            ## because Python Motion service includes them explicitly as well:
-                                            if param_name != 'extra' and \
-                                                param_name != 'timeout' and \
-                                                strong_tag.text == param_name:
+                                    ## Get parameter usage and description, if method contains a "Parameters" section. Otherwise omit.
+                                    ## NOTE: We can't just use the initial param content as found above, because it does not contain descriptions,
+                                    ## and we can't just use this "Parameters" section, because it does not (usually) contain things like `extra` and `timeout`.
+                                    ## METHODOLOGY: Find parent <p> tag around matching <strong>param_name</strong> tag which contains this data.
+                                    ##   Determining by <strong> tags allows matching parameters regardless whether they are
+                                    ##   presented in <p> tags (single param) or <li> tags (multiple params):
+                                    for strong_tag in tag.find_all('strong'):
+                                        ## We have to explicitly exclude extra and timeout from this loop also,
+                                        ## because Python Motion service includes them explicitly as well:
+                                        if param_name != 'extra' and \
+                                            param_name != 'timeout' and \
+                                            strong_tag.text == param_name:
 
-                                                ## OPTION: Get just the parameter description, stripping all newlines:
-                                                this_method_parameters_dict["param_description"] = regex.split(r" – ", strong_tag.parent.text)[1].replace("\n", " ")
+                                            ## OPTION: Get just the parameter description, stripping all newlines:
+                                            this_method_parameters_dict["param_description"] = regex.split(r" – ", strong_tag.parent.text)[1].replace("\n", " ")
 
-                                                ## OPTION: Get full parameter usage string, stripping all newlines:
-                                                ## NOTE: Currently unused.
-                                                this_method_parameters_dict['param_usage'] = strong_tag.parent.text.replace("\n", " ")
+                                            ## OPTION: Get full parameter usage string, stripping all newlines:
+                                            ## NOTE: Currently unused.
+                                            this_method_parameters_dict['param_usage'] = strong_tag.parent.text.replace("\n", " ")
 
-                                                ## Some params provide data type links in Parameters section only, not initial usage.
-                                                ## Get that here if soL
-                                                if strong_tag.parent.find('a', class_="reference internal"):
-                                                    param_type_link_raw = strong_tag.parent.find('a', class_="reference internal").get("href")
-                                                    ## Parameter type link is an anchor link:
-                                                    if param_type_link_raw.startswith('#'):
-                                                        this_method_parameters_dict["param_type"] = '[' + param_type + '](' + url + param_type_link_raw + ')'
-                                                    ## Parameter type link is a relative link, in one of three forms:
-                                                    elif param_type_link_raw.startswith('../../../'):
-                                                        this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../../', '')+ ')'
-                                                    elif param_type_link_raw.startswith('../../'):
-                                                        this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../', '')+ ')'
-                                                    elif param_type_link_raw.startswith('../'):
-                                                        this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
+                                            ## Some params provide data type links in Parameters section only, not initial usage.
+                                            ## Get that here if soL
+                                            if strong_tag.parent.find('a', class_="reference internal"):
+                                                param_type_link_raw = strong_tag.parent.find('a', class_="reference internal").get("href")
+                                                ## Parameter type link is an anchor link:
+                                                if param_type_link_raw.startswith('#'):
+                                                    this_method_parameters_dict["param_type"] = '[' + param_type + '](' + url + param_type_link_raw + ')'
+                                                ## Parameter type link is a relative link, in one of three forms:
+                                                elif param_type_link_raw.startswith('../../../'):
+                                                    this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../../', '')+ ')'
+                                                elif param_type_link_raw.startswith('../../'):
+                                                    this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../', '')+ ')'
+                                                elif param_type_link_raw.startswith('../'):
+                                                    this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
 
                                             ## Unable to determine parameter description, neither timeout or extra, nor matching to any
                                             ## param in initial method usage string. Usually this means a non-param (like error raised),
@@ -914,7 +914,7 @@ def parse(type, names):
                                 this_method_dict["return"]["return_type"] = linked_return_type
                             elif return_tag.find('a', class_="reference internal"):
 
-                                ## TODO: Only grabbing the first link encountered, but a few methods return a tuple of two data linked data types.
+                                ## TODO: Only grabbing the first link encountered, but a few methods return a tuple of two linked data types.
                                 ## Handling those via link_data_types() with manual entries in python_datatype_links for now,
                                 ## But there's room for a more elegant solution:
                                 return_type_link_raw = return_tag.find('a', class_="reference internal").get("href")
