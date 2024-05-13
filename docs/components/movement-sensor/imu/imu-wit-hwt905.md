@@ -54,7 +54,7 @@ Then fill in the attributes as applicable to your movement sensor, according to 
   "components": [
     {
       "name": "myIMU",
-      "model": "imu-wit",
+      "model": "imu-wit-hwt905",
       "type": "movement_sensor",
       "namespace": "rdk",
       "attributes": {
