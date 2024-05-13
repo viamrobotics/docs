@@ -341,7 +341,6 @@ python_datatype_links = {
     "float": "https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex",
     "bytes": "https://docs.python.org/3/library/stdtypes.html#bytes-objects",
     "bool": "https://docs.python.org/3/library/stdtypes.html#boolean-type-bool",
-    "datetime": "https://docs.python.org/3/library/datetime.html",
     "datetime.datetime": "https://docs.python.org/3/library/datetime.html",
     "datetime.timedelta": "https://docs.python.org/3/library/datetime.html#timedelta-objects",
     ## Viam-specific data types:
@@ -875,7 +874,7 @@ def parse(type, names):
                                                 ## Parameter type link is an anchor link:
                                                 if param_type_link_raw.startswith('#'):
                                                     this_method_parameters_dict["param_type"] = '[' + param_type + '](' + url + param_type_link_raw + ')'
-                                                ## Parameter type link is a relative link, starting 1 - 3 instances of '../'
+                                                ## Parameter type link is a relative link, beginning with 1 - 3 instances of '../'
                                                 ## Convert to an absolute link:
                                                 elif param_type_link_raw.startswith('../'):
                                                     this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
@@ -919,14 +918,10 @@ def parse(type, names):
                                 ## Return type link is an anchor link:
                                 if return_type_link_raw.startswith('#'):
                                     this_method_dict["return"]["return_type"] = '[' + return_type + '](' + url + return_type_link_raw + ')'
-                                ## Return type link is a relative link, starting 1 - 3 instances of '../'
+                                ## Return type link is a relative link, beginning with 1 - 3 instances of '../'
                                 ## Convert to an absolute link:
                                 elif return_type_link_raw.startswith('../'):
                                     this_method_dict["return"]["return_type"] = '[' + return_type + '](' + sdk_url + "/autoapi/viam/" + return_type_link_raw.replace('../', '')+ ')'
-
-                                else:
-                                    ## Unable to find any links.
-                                    pass
 
                             ## OPTION: Get full return usage, including type info and html links if present, stripping all newlines:
                             ## NOTE: Currently unused.

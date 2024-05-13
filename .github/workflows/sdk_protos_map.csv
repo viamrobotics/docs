@@ -386,15 +386,15 @@ dataset,ListDatasetsByOrganizationID,list_datasets_by_organization_id,,listDatas
 dataset,ListDatasetsByIDs,list_dataset_by_ids,,listDatasetsByIDs
 
 ## Datasync
-datasync,DataCaptureUpload,,,dataCaptureUpload
+data_sync,DataCaptureUpload,,,dataCaptureUpload
 ## HACK: DataCaptureUpload instead implemented in binary_data_capture_upload (python), adding pseudo-entry:
-datasync,BinaryDataCaptureUpload,binary_data_capture_upload,,
+data_sync,BinaryDataCaptureUpload,binary_data_capture_upload,,
 ## HACK: DataCaptureUpload instead implemented in tabular_data_capture_upload (python), adding pseudo-entry:
-datasync,TabularDataCaptureUpload,tabular_data_capture_upload,,
-datasync,FileUpload,file_upload,,fileUpload
+data_sync,TabularDataCaptureUpload,tabular_data_capture_upload,,
+data_sync,FileUpload,file_upload,,fileUpload
 ## HACK: FileUpload also implemented in file_upload_from_path (python), adding pseudo-entry:
-datasync,FileUploadFromPath,file_upload_from_path,,
-datasync,StreamingDataCaptureUpload,streaming_data_capture_upload,,streamingDataCaptureUpload
+data_sync,FileUploadFromPath,file_upload_from_path,,
+data_sync,StreamingDataCaptureUpload,streaming_data_capture_upload,,streamingDataCaptureUpload
 
 ## MLTraining
 ## TODO: Something wrong with parsing: submit_training_job in PySDK (??):
