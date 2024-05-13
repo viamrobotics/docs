@@ -325,7 +325,8 @@ python_ignore_apis = [
     'viam.robot.client.RobotClient.transform_point_cloud', # unimplemented
     'viam.robot.client.RobotClient.get_component', # GUESS ?
     'viam.robot.client.RobotClient.get_service', # GUESS ?
-    'viam.app.app_client.AppClient.create_organization_invite' # Currently borked: https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_organization_invite
+    'viam.app.app_client.AppClient.create_organization_invite', # Currently borked: https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_organization_invite
+    'viam.components.board.client.BoardClient.write_analog' # Currently borked: https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.write_analog
 ]
 
 ## Use these URLs for data types that are built-in to the language:
@@ -1157,9 +1158,15 @@ def write_markdown(type, names, methods):
     ## scope limited to 'type', so we don't have to loop by type:
     for resource in names:
 
-        ## Create by-resource directory structure if not already present:
-        path_to_resource = os.path.join(path_to_generated, resource)
-        Path(path_to_resource).mkdir(parents=True, exist_ok=True)
+        ## Determine where to write output:
+        filename = resource + '.md'
+        full_path_to_file = os.path.join(path_to_generated, filename)
+        output_file = open('%s' % full_path_to_file, "w")
+
+        ## Switch to identify the first method encountered for each resource, to help with
+        ## knowing when we are at the top of the include file, or whether to to double newline
+        ## between protos:
+        is_first_method_in_this_resource = True
 
         ## Loop through mapping file, and determine which sdk methods to document for each proto:
         with open(proto_map_file, 'r') as f:
@@ -1175,14 +1182,11 @@ def write_markdown(type, names, methods):
                     ## for specific protos as needed, if needed:
                     if py_method_name or go_method_name or flutter_method_name:
 
-                        ## About to change this to by-resource filenames, instead of by-proto filenames. Stay tuned!
-                        filename = proto + '.md'
-
-                        full_path_to_file = os.path.join(path_to_resource, filename)
-                        output_file = open('%s' % full_path_to_file, "w")
-
-                        ## Write proto as H3:
-                        output_file.write('### ' + proto + '\n\n')
+                        ## Write proto as H3, with leading newlines if appending to ongoing {resource}.md file:
+                        if is_first_method_in_this_resource:
+                            output_file.write('### ' + proto + '\n\n')
+                        else:
+                            output_file.write('\n### ' + proto + '\n\n')
 
                         ## NOTE: This is where proto descriptions could go if we scraped them. However:
                         ## - Some protos do not have descriptions.
@@ -1336,16 +1340,17 @@ def write_markdown(type, names, methods):
                             ## If the method has a code sample, print it here:
                             if 'code_sample' in methods['python'][type][resource][py_method_name]:
 
-                                output_file.write('``` ' + code_fence_fmt['python'] + ' {class="line-numbers linkable-line-numbers"}\n')
+                                output_file.write('```' + code_fence_fmt['python'] + ' {class="line-numbers linkable-line-numbers"}\n')
                                 output_file.write(methods['python'][type][resource][py_method_name]['code_sample'])
                                 output_file.write('```\n\n')
 
                             ## If we detected an 'after' method override file earlier, write it out here:
                             if has_after_override:
-                                output_file.write('\n')
 
                                 for line in open(method_override_file_path, 'r', encoding='utf-8'):
                                     output_file.write(line)
+
+                                output_file.write('\n')
 
                             # Close tabs
                             output_file.write("{{% /tab %}}\n")
@@ -1445,16 +1450,17 @@ def write_markdown(type, names, methods):
                             ## If the method has a code sample, print it here:
                             if 'code_sample' in methods['go'][type][resource][go_method_name]:
 
-                                output_file.write('``` ' + code_fence_fmt['go'] + ' {class="line-numbers linkable-line-numbers"}\n')
+                                output_file.write('```' + code_fence_fmt['go'] + ' {class="line-numbers linkable-line-numbers"}\n')
                                 output_file.write(methods['go'][type][resource][go_method_name]['code_sample'])
                                 output_file.write('```\n\n')
 
                             ## If we detected an 'after' method override file earlier, write it out here:
                             if has_after_override:
-                                output_file.write('\n')
 
                                 for line in open(method_override_file_path, 'r', encoding='utf-8'):
                                     output_file.write(line)
+
+                                output_file.write('\n')
 
                             output_file.write("{{% /tab %}}\n")
                             if not flutter_method_name:
@@ -1589,20 +1595,25 @@ def write_markdown(type, names, methods):
                             ## If the method has a code sample, print it here:
                             if 'code_sample' in methods['flutter'][type][resource][flutter_method_name]:
 
-                                output_file.write('``` ' + code_fence_fmt['flutter'] + ' {class="line-numbers linkable-line-numbers"}\n')
+                                output_file.write('```' + code_fence_fmt['flutter'] + ' {class="line-numbers linkable-line-numbers"}\n')
                                 output_file.write(methods['flutter'][type][resource][flutter_method_name]['code_sample'])
                                 output_file.write('```\n\n')
 
                             ## If we detected an 'after' method override file earlier, write it out here:
                             if has_after_override:
-                                output_file.write('\n')
 
                                 for line in open(method_override_file_path, 'r', encoding='utf-8'):
                                     output_file.write(line)
 
+                                output_file.write('\n')
+
                             output_file.write("{{% /tab %}}\n")
                             output_file.write("{{< /tabs >}}\n")
 
+                    ## After this loop, we will be working with additional methods appended to the same {resource}.md include file.
+                    ## This switch tells us at the start of the loop for this same resource that we should double-newline the next
+                    ## proto encountered:
+                    is_first_method_in_this_resource = False
 
 ## Main run function:
 ## - proto_map()        Fetch canonical proto methods from upstream, used for Flutter mapping in `parse()`
