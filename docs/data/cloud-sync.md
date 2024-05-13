@@ -70,6 +70,32 @@ You can use a {{< glossary_tooltip term_id="module" text="module" >}} to sync da
 For example, if you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
 To set up triggers for syncing see [Trigger Sync](/data/trigger-sync/).
 
+### Configure sync threads
+
+When cloud sync is enabled, the data management service will use up to 1000 concurrent CPU threads by default to sync data to the Viam cloud, depending on how much data is being synced.
+You can adjust the permitted thread count with the `maximum_num_sync_threads` attribute.
+
+The default value of `1000` concurrent threads is sufficient for most use cases, but if you are using limited hardware, are operating under heavy CPU load, or are syncing a large amount of data at once, consider lowering this value as needed.
+
+{{%expand "Click to view the JSON configuration with 250 threads configured" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [],
+  "services": [
+    {
+      "name": "data_manager",
+      "type": "data_manager",
+      "attributes": {
+        "sync_interval_mins": 0.1,
+        "capture_dir": "",
+        "maximum_num_sync_threads": 250
+      }
+    }
+  ]
+}
+```
+
 ### Pause sync
 
 You can pause Cloud Sync at any time by navigating to your machine's **CONFIGURE** tab and disabling **Syncing** for your [data management service](../).
