@@ -99,17 +99,11 @@ You need to install Raspberry Pi OS (formerly called Raspbian) on the microSD ca
 
 {{% tab name="Password" %}}
 
-Select the checkbox next to **Set username and password** and set a username (for example, your first name) and a unique password that you will use to log into the Pi:
+1. Select the checkbox next to **Set username and password** and set a username (for example, your first name) and a unique password that you will use to log into the Pi:
 
-{{< imgproc alt="Raspberry Pi Imager window showing the 'Set username and password' option is selected. The user has entered username 'Robota' and some hidden password." src="/get-started/installation/rpi-setup/imager-set-passwordauthentication.png" resize="550x" declaredimensions=true >}}
+   {{< imgproc alt="Raspberry Pi Imager window showing the 'Set username and password' option is selected. The user has entered username 'Robota' and some hidden password." src="/get-started/installation/rpi-setup/imager-set-passwordauthentication.png" resize="550x" declaredimensions=true >}}
 
-{{% alert title="IMPORTANT" color="note" %}}
-
-Be sure that you remember the `hostname`, `username`, and `password` you set, as you will need them when you SSH into your Pi.
-
-{{% /alert  %}}
-
-{{< alert title="Caution" color="caution" >}}
+  {{< alert title="Caution" color="caution" >}}
 
 The default username and password on Raspberry Pis are
 
@@ -117,9 +111,17 @@ The default username and password on Raspberry Pis are
 - password: raspberry
 
 However, it's [bad practice](https://www.zdnet.com/article/linux-malware-enslaves-raspberry-pi-to-mine-cryptocurrency/) to keep the default username and password on a Raspberry Pi since doing so makes it easy for hackers to get access to your Pi.
-In the past, malware infected thousands of Raspberry Pi devices that were using the default username and password.
 
-{{< /alert >}}
+   {{< /alert >}}
+
+1. Select the **SERVICES** tab.
+1. Check **Enable SSH**.
+
+{{% alert title="IMPORTANT" color="note" %}}
+
+Be sure that you remember the `hostname`, `username`, and `password` you set, as you will need them when you SSH into your Pi.
+
+{{% /alert  %}}
 
 {{% /tab %}}
 {{% tab name="SSH" %}}
