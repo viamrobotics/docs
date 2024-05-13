@@ -525,13 +525,13 @@ The following instructions describe how to set up an API key for one location.
    ];
    let machineIDs: any = await myDataClient?.tabularDataByMQL(
      orgID,
-     BSONQueryForMachineIDList
+     BSONQueryForMachineIDList,
    );
    // Get all the air quality data
    const BSONQueryForData = [BSON.serialize(query)];
    let thedata: any = await myDataClient?.tabularDataByMQL(
      orgID,
-     BSONQueryForData
+     BSONQueryForData,
    );
    ```
 

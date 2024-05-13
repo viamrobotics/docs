@@ -186,7 +186,7 @@ Create a folder <file>static</file> and inside it another file named <file>index
 Add the following markup:
 
 ```html {class="line-numbers linkable-line-numbers"}
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <title>Drive a Rover</title>
@@ -1042,7 +1042,7 @@ func main() {
 <file>static/index.html</file>:
 
 ```html {class="line-numbers linkable-line-numbers"}
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <title>Drive a Rover</title>
