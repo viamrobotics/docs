@@ -1387,6 +1387,8 @@ def write_markdown(type, names, methods):
 
                                     if param_description:
                                         output_file.write(f" {param_description}")
+                                    else:
+                                        output_file.write(": <INSERT PARAM DESCRIPTION>\n")
 
                                     # line break for parameters list
                                     output_file.write('\n')
