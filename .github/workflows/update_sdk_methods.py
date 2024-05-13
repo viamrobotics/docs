@@ -329,9 +329,9 @@ python_ignore_apis = [
     'viam.components.board.client.BoardClient.write_analog' # Currently borked: https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.write_analog
 ]
 
-## Use these URLs for data types that are not otherwise captured by parse():
+## Use these URLs for data types that are not otherwise captured by parse().
+## Data type links defined here will be used instead of scraped links if found:
 python_datatype_links = {
-    ## Standard data types:
     "str": "https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str",
     "int": "https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex",
     "float": "https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex",
@@ -339,46 +339,7 @@ python_datatype_links = {
     "bool": "https://docs.python.org/3/library/stdtypes.html#boolean-type-bool",
     "datetime": "https://docs.python.org/3/library/datetime.html",
     "datetime.datetime": "https://docs.python.org/3/library/datetime.html",
-    "datetime.timedelta": "https://docs.python.org/3/library/datetime.html#timedelta-objects",
-
-    ## Viam data types:
-    "RobotPart": "https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart",
-    "Fragment": "https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment",
-    "List[LogEntry]": "https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry",
-    "viam.proto.app.Robot": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot",
-    "viam.proto.app.Module": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Module",
-    
-    "viam.proto.app.Location": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location",
-    "viam.proto.app.LocationAuth": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.LocationAuth",
-    "viam.proto.app.Organization": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Organization",
-
-    "List[RobotPartHistoryEntry]": "https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPartHistoryEntry",
-    "List[viam.proto.app.Authorization]": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization",
-    "List[viam.proto.app.APIKeyWithAuthorizations]": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.APIKeyWithAuthorizations",
-    "Literal[owner] | Literal[operator]": "https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str",
-    "Literal[organization] | Literal[location] | Literal[robot]": "https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str",
-    "List[viam.proto.app.AuthorizedPermissions]": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions",
-    "viam.components.arm.Pose": "https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose",
-    #"viam.proto.component.arm.JointPositions": "https://python.viam.dev/autoapi/viam/proto/component/arm/index.html#viam.proto.component.arm.JointPositions",
-    "viam.components.arm.KinematicsFileFormat.ValueType": "https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.KinematicsFileFormat",
-    "viam.components.base.Vector3": "https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Vector3",
-    "viam.components.board.board.Board.GPIOPin": "https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.GPIOPin",
-    "viam.components.board.board.Board.Analog": "https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.Analog",
-    "viam.components.board.board.Board.DigitalInterrupt": "https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.DigitalInterrupt",
-    "viam.media.video.NamedImage": "https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage",
-    "viam.proto.common.ResponseMetadata": "https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResponseMetadata",
-    "viam.components.camera.Camera.Properties": "https://python.viam.dev/autoapi/viam/components/audio_input/audio_input/index.html#viam.components.audio_input.audio_input.AudioInput.Properties",
-    "viam.proto.common.Geometry": "https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry",
-    "viam.proto.component.encoder.PositionType.ValueType": "https://python.viam.dev/autoapi/viam/gen/component/encoder/v1/encoder_pb2/index.html#viam.gen.component.encoder.v1.encoder_pb2.PositionType"
-    #"viam.components.input.input.Control": "https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.input.Control",
-    #"viam.components.input.input.EventType": "https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.input.EventType",
-    #"viam.components.input.input.Event": "https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.input.Event"
-
-
-    #"Tuple[List[viam.proto.app.OrganizationMember], List[viam.proto.app.OrganizationInvite]]"
-
-    #"Control": "https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control",
-    #"EventType": "https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.EventType"
+    "datetime.timedelta": "https://docs.python.org/3/library/datetime.html#timedelta-objects"
 }
 
 ## Inject these URLs, relative to 'docs', into param/return/raises descriptions that contain exact matching key text.
@@ -486,7 +447,7 @@ def make_soup(url):
 ## multiple data types (and therefore requires multiple data type links), such as
 ## ListOrganizationMembers: Tuple[List[viam.proto.app.OrganizationMember], List[viam.proto.app.OrganizationInvite]
 ## DESIGN DECISION: Ignore well-known, usually leading (containing) data types like List, Tuple, Dict.
-## NOTE: Only used in PySDK parsing, for now:
+## NOTE: Only used in PySDK parsing, for now (but should work for all with minor tweak to support per-language links array):
 def link_data_types(sdk, data_type_string):
 
     linked_data_type_string = ""
@@ -509,7 +470,7 @@ def link_data_types(sdk, data_type_string):
             for data_type_found in matching_data_types:
 
                 ## Discard string matches that are substrings of other data type strings:
-                if not regex.search('[A-Za-z0-9]' + data_type_found, data_type_string) and not regex.search(data_type_found + '[A-Za-z0-9]', data_type_string):
+                if not regex.search(r'[A-Za-z0-9]' + data_type_found, data_type_string) and not regex.search(data_type_found + r'[A-Za-z0-9]', data_type_string):
 
                     data_type_linked = '[' + data_type_found + '](' + python_datatype_links[data_type_found] + ')'
                     linked_data_type_string = regex.sub(data_type_found, data_type_linked, linked_data_type_string)
@@ -517,7 +478,13 @@ def link_data_types(sdk, data_type_string):
                     ## If we get here, this data_type is actually a substring of another data type. Take no action:
                     pass
 
-    return linked_data_type_string
+    ## If we didn't find any matching links, return an empty string so we can know to look elsewhere,
+    ## otherwise return linked data type string:
+    if linked_data_type_string == data_type_string:
+        return ""
+    else:
+        return linked_data_type_string
+
 
 ## Link matching text, used in write_markdown():
 ## NOTE: Currently does not support formatting for link titles
@@ -813,11 +780,6 @@ def parse(type, names):
                                 ## Determine parameter type:
                                 param_type = parameter_tag.find_all('span', class_='n')[1].text
 
-                                if method_name == 'move_to_joint_positions':
-                                    print('PARAM: ' + param_name + '    TYPE: ' + param_type)
-
-                                #this_method_parameters_dict["param_type"] = param_type
-
                                 ## Determine if this parameter is optional, and strip off ' | None' syntax if so:
                                 if param_type.endswith(' | None'):
                                     this_method_parameters_dict["optional"] = True
@@ -825,17 +787,6 @@ def parse(type, names):
                                     #this_method_parameters_dict["param_type"] = param_type
                                 else:
                                     this_method_parameters_dict["optional"] = False
-
-                                if method_name == 'move_to_joint_positions':
-                                    print('PARAM: ' + param_name + '    TYPE2: ' + param_type)
-
-                                ## Determine if this parameter data type has a data type link. Include if so, otherwise omit:
-                                #if param_type in python_datatype_links.keys():
-                                #    this_method_parameters_dict["param_type_link"] = python_datatype_links[param_type]
-
-                                #matching_data_types2 = list(key for key in python_datatype_links if key in param_type)
-                                #if len(matching_data_types2) > 0:
-                                #    print('METHOD: ' + method_name + '    PARAM NAME: ' + param_name + '         PARAM TYPE: ' + param_type + ' RESULT MAYBE: ' + str(matching_data_types2))
 
                                 ## 'Extra' params do not appear in "Parameters" section (Except for PySDK > Motion Service),
                                 ## so we must populate this param's content manually:
@@ -862,78 +813,71 @@ def parse(type, names):
                                     this_method_parameters_dict["param_type"] = "Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]"
 
                                 else:
+
+                                    ## First, check python_datatype_links array for manually-mapped data type links.
+                                    ## These will override all other ways of determining data type links:
                                     linked_param_type = ""
                                     linked_param_type = link_data_types('python', param_type)
 
-                                    if method_name == 'move_to_joint_positions':
-                                        print('PARAM: ' + param_name + '    LINKED PARAM TYPE: ' + linked_param_type)
-
+                                    ## If link_data_types() returns a linked data type string, use that.
+                                    ## Otherwise, check the scraped parameter_tag for the link:
                                     if linked_param_type != "":
                                         this_method_parameters_dict["param_type"] = linked_param_type
                                     elif parameter_tag.find('a', class_="reference internal"):
                                         param_type_link_raw = parameter_tag.find('a', class_="reference internal").get("href")
 
-
-                                        ## WE ARE SOMEHOW NOT GETTING HERE, DESPITE DEFINITELY HAVING A LINK UPSTREAM:
-                                        if method_name == 'move_to_joint_positions':
-                                            print('PARAM: ' + param_name + '    TYPE LINK RAW: ' + param_type_link_raw)
-
                                         ## Parameter type link is an anchor link:
                                         if param_type_link_raw.startswith('#'):
                                             this_method_parameters_dict["param_type"] = '[' + param_name + '](' + url + param_type_link_raw + ')'
-                                        ## Parameter type link is a relative link, in one of two forms:
+                                        ## Parameter type link is a relative link, in one of three forms:
                                         elif param_type_link_raw.startswith('../../../'):
                                             this_method_parameters_dict["param_type"] = '[' + param_name + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../../', '')+ ')'
                                         elif param_type_link_raw.startswith('../../'):
                                             this_method_parameters_dict["param_type"] = '[' + param_name + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../', '')+ ')'
+                                        elif param_type_link_raw.startswith('../'):
+                                            this_method_parameters_dict["param_type"] = '[' + param_name + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
 
-                                    ## Get parameter usage and description, if method contains a "Parameters" section. Otherwise omit.
-                                    ## NOTE: We can't just use the initial param content as found above, because it does not contain descriptions,
-                                    ## and we can't just use this "Parameters" section, because it does not (usually) contain things like `extra` and `timeout`.
-                                    ## METHODOLOGY: Find parent <p> tag around matching <strong>param_name</strong> tag which contains this data.
-                                    ##   Determining by <strong> tags allows matching parameters regardless whether they are
-                                    ##   presented in <p> tags (single param) or <li> tags (multiple params):
-                                    for strong_tag in tag.find_all('strong'):
-                                        ## We have to explicitly exclude extra and timeout from this loop also,
-                                        ## because Python Motion service includes them explicitly as well:
-                                        if param_name != 'extra' and \
-                                            param_name != 'timeout' and \
-                                            strong_tag.text == param_name:
+                                        ## Get parameter usage and description, if method contains a "Parameters" section. Otherwise omit.
+                                        ## NOTE: We can't just use the initial param content as found above, because it does not contain descriptions,
+                                        ## and we can't just use this "Parameters" section, because it does not (usually) contain things like `extra` and `timeout`.
+                                        ## METHODOLOGY: Find parent <p> tag around matching <strong>param_name</strong> tag which contains this data.
+                                        ##   Determining by <strong> tags allows matching parameters regardless whether they are
+                                        ##   presented in <p> tags (single param) or <li> tags (multiple params):
+                                        for strong_tag in tag.find_all('strong'):
+                                            ## We have to explicitly exclude extra and timeout from this loop also,
+                                            ## because Python Motion service includes them explicitly as well:
+                                            if param_name != 'extra' and \
+                                                param_name != 'timeout' and \
+                                                strong_tag.text == param_name:
 
-                                            ## OPTION: Get just the parameter description, stripping all newlines:
-                                            this_method_parameters_dict["param_description"] = regex.split(r" – ", strong_tag.parent.text)[1].replace("\n", " ")
+                                                ## OPTION: Get just the parameter description, stripping all newlines:
+                                                this_method_parameters_dict["param_description"] = regex.split(r" – ", strong_tag.parent.text)[1].replace("\n", " ")
 
-                                            ## OPTION: Get full parameter usage string, stripping all newlines:
-                                            ## NOTE: Currently unused.
-                                            this_method_parameters_dict['param_usage'] = strong_tag.parent.text.replace("\n", " ")
+                                                ## OPTION: Get full parameter usage string, stripping all newlines:
+                                                ## NOTE: Currently unused.
+                                                this_method_parameters_dict['param_usage'] = strong_tag.parent.text.replace("\n", " ")
 
-                                            ## Some params provide data type links in Parameters section only, not initial usage.
-                                            ## Get that here if so:
-                                            if strong_tag.parent.find('a', class_="reference internal"):
-                                                param_type_link_raw = strong_tag.parent.find('a', class_="reference internal").get("href")
-                                                ## Parameter type link is an anchor link:
-                                                if param_type_link_raw.startswith('#'):
-                                                    this_method_parameters_dict["param_type"] = '[' + param_name + '](' + url + param_type_link_raw + ')'
-                                                ## Parameter type link is a relative link, in one of two forms:
-                                                elif param_type_link_raw.startswith('../../../'):
-                                                    this_method_parameters_dict["param_type"] = '[' + param_name + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../../', '')+ ')'
-                                                elif param_type_link_raw.startswith('../../'):
-                                                    this_method_parameters_dict["param_type"] = '[' + param_name + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../', '')+ ')'
+                                                ## Some params provide data type links in Parameters section only, not initial usage.
+                                                ## Get that here if soL
+                                                if strong_tag.parent.find('a', class_="reference internal"):
+                                                    param_type_link_raw = strong_tag.parent.find('a', class_="reference internal").get("href")
+                                                    ## Parameter type link is an anchor link:
+                                                    if param_type_link_raw.startswith('#'):
+                                                        this_method_parameters_dict["param_type"] = '[' + param_name + '](' + url + param_type_link_raw + ')'
+                                                    ## Parameter type link is a relative link, in one of three forms:
+                                                    elif param_type_link_raw.startswith('../../../'):
+                                                        this_method_parameters_dict["param_type"] = '[' + param_name + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../../', '')+ ')'
+                                                    elif param_type_link_raw.startswith('../../'):
+                                                        this_method_parameters_dict["param_type"] = '[' + param_name + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../', '')+ ')'
+                                                    elif param_type_link_raw.startswith('../'):
+                                                        this_method_parameters_dict["param_type"] = '[' + param_name + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
 
-                                        ## Unable to determine parameter description, neither timeout or extra, nor matching to any
-                                        ## param in initial method usage string. Usually this means a non-param (like error raised),
-                                        ## but if we are missing expected param descriptions, expand this section to catch them.
-                                        else:
-                                            ## No-op:
-                                            pass
-
-                                    #else:
-                                        ## Unable to find any links.
-                                        ## We will try again when looping params in the Parameters section.
-                                        ## Sometimes the param links are there instead. No-op here:
-                                        #pass
-                                    #    this_method_parameters_dict["param_type"] = "INSERT DATA TYPE LINK"
-                                    #    print('ERROR: ' + 'M: ' + method_name + '  LPT: ' + linked_param_type)
+                                            ## Unable to determine parameter description, neither timeout or extra, nor matching to any
+                                            ## param in initial method usage string. Usually this means a non-param (like error raised),
+                                            ## but if we are missing expected param descriptions, expand this section to catch them.
+                                            else:
+                                                ## No-op:
+                                                pass
 
                                 this_method_dict["parameters"][param_name] = this_method_parameters_dict
 
@@ -952,22 +896,29 @@ def parse(type, names):
                             return_type = return_tag.find('span', class_="sig-return-typehint").text
                             this_method_dict["return"]["return_type"] = return_type
 
-                            ## Determine if the return data type has a data type link. Include if so, otherwise omit:
-                            #if return_type in python_datatype_links.keys():
-                            #    this_method_dict["return"]["return_type_link"] = python_datatype_links[return_type]
-                            #else:
-                            #    ## No matching type link found in python_datatype_links[] array, omit link:
-                            #    pass
-
                             linked_return_type = ""
                             linked_return_type = link_data_types('python', return_type)
 
                             if linked_return_type != "":
                                 this_method_dict["return"]["return_type"] = linked_return_type
-                            else:
-                                ## Unable to find any links.
-                                #pass
-                                this_method_dict["return"]["return_type"] = "INSERT DATA TYPE LINK"
+                            elif return_tag.find('a', class_="reference internal"):
+
+                                return_type_link_raw = return_tag.find('a', class_="reference internal").get("href")
+
+                                ## Return type link is an anchor link:
+                                if return_type_link_raw.startswith('#'):
+                                    this_method_dict["return"]["return_type"] = '[' + return_type + '](' + url + param_type_link_raw + ')'
+                                ## Return type link is a relative link, in one of three forms:
+                                elif return_type_link_raw.startswith('../../../'):
+                                    this_method_dict["return"]["return_type"] = '[' + return_type + '](' + sdk_url + "/autoapi/viam/" + return_type_link_raw.replace('../../../', '')+ ')'
+                                elif return_type_link_raw.startswith('../../'):
+                                    this_method_dict["return"]["return_type"] = '[' + return_type + '](' + sdk_url + "/autoapi/viam/" + return_type_link_raw.replace('../../', '')+ ')'
+                                elif return_type_link_raw.startswith('../'):
+                                    this_method_dict["return"]["return_type"] = '[' + return_type + '](' + sdk_url + "/autoapi/viam/" + return_type_link_raw.replace('../', '')+ ')'
+
+                                else:
+                                    ## Unable to find any links.
+                                    pass
 
                             ## OPTION: Get full return usage, including type info and html links if present, stripping all newlines:
                             ## NOTE: Currently unused.
