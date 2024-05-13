@@ -252,7 +252,7 @@ Obtain unified tabular data and metadata, queried with MQL.
 tabular_data = await data_client.tabular_data_by_mql(
     organization_id=organization_id,
     mql_query=[
-        bson.encode({'$match': {'location_id': '<location-id>'} }),
+        bson.encode({ '$match': { 'location_id': '<location-id>' } }),
         bson.encode({ "$limit": 5 })
     ]
 )
