@@ -129,7 +129,7 @@ h7, .h7 {
   height: fit-content;
 }
 
-.td-toc ul li.is-active-li {
+.td-toc ul li.is-active-li, .td-toc ul li.toc-active {
   border-left: 2px solid #666666;
 }
 
