@@ -258,7 +258,7 @@ tabular_data = await data_client.tabular_data_by_mql(
 )
 ```
 
-You must install the `pymongo` package and `import bson` to use the `tabular_data_by_mql` method.
+You must `import bson` to create valid bson binary objects as input for the `tabular_data_by_mql` method.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_mql).
 
 {{% /tab %}}
