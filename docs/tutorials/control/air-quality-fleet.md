@@ -276,7 +276,7 @@ In any case, now that the JSON is generated, you are ready to create a {{< gloss
 4. Replace the empty curly braces `{}` with the config you copied from your machine.
 5. Because the [Viam Agent](/fleet/provision/) config auto-populates into every machine's config, and configuring the agent using a fragment isn't supported, you do not need to include it in the fragment.
 
-   Delete the entire `agent_config` section including the comma just above it:
+   Delete the entire `agent` section including the comma just above it:
 
    ![The section of the raw JSON that you should delete: the entire agent section.](/tutorials/air-quality-fleet/delete-agent-config.png)
 
