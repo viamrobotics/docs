@@ -1342,30 +1342,10 @@ def write_markdown(type, names, methods):
                                     param_data = methods['python'][type][resource][py_method_name]['parameters'][parameter]
 
                                     param_type = param_data.get("param_type")
-                                    #param_subtype = param_data.get("param_subtype")
-                                    #param_type_link = param_data.get("param_type_link")
-                                    #param_subtype_link = param_data.get("param_subtype_link")
                                     param_description = param_data.get("param_description")
                                     optional = param_data.get("optional")
 
                                     output_file.write(f'- `{parameter}` ({param_type})')
-
-                                    # Ideally we could update at least Python SDK with type links?
-                                    #if param_type_link:
-                                    #    # Check for subtype
-                                    #    if param_subtype:
-                                    #        output_file.write(f"({param_type_link})")
-                                    #        if param_subtype_link:
-                                    #            output_file.write(f"<[{param_subtype}]")
-                                    #            output_file.write(f"({param_subtype_link})>")
-                                    #        else:
-                                    #            output_file.write(f"<{param_subtype}>")
-                                    #    else:
-                                    #        output_file.write(f"({param_type_link})")
-                                    # SG: Haven't found any sub-types without param type links-- they are all in flutter SDK--
-                                    # could expand this logic if popped up or grabbing more subtypes?
-                                    #else:
-                                    #    output_file.write('(<INSERT PARAM TYPE LINK>)')
 
                                     if optional:
                                         output_file.write(' (optional)')
@@ -1392,28 +1372,10 @@ def write_markdown(type, names, methods):
 
                                 return_data = methods['python'][type][resource][py_method_name]["return"]
                                 return_type = return_data.get("return_type")
-                                #return_subtype = return_data.get("return_subtype")
-                                #return_type_link = return_data.get("return_type_link")
-                                #return_link = return_data.get("return_type_link") # TODO: handle this
-                                #return_subtype_link = return_data.get("return_subtype_link")
                                 return_description = return_data.get("return_description")
 
                                 if return_type:
                                     output_file.write(f"- ({return_type})")
-
-                                    #if return_type_link:
-                                    #    output_file.write(f"({return_type_link})")
-                                    #else:
-                                    #    output_file.write("(INSERT RETURN TYPE LINK)")
-
-                                    #if return_subtype:
-                                    #    output_file.write(f"<[{return_subtype}]")
-                                    #    if return_subtype_link:
-                                    #        output_file.write(f"({return_subtype_link})>")
-                                    #    else:
-                                    #        output_file.write("(<INSERT RETURN SUBTYPE LINK>)")
-                                    #else:
-                                    #    pass
 
                                     if return_description:
                                         output_file.write(f": {return_description}\n")
