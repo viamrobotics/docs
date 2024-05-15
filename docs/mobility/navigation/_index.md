@@ -815,6 +815,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 - [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/) - some GPS hardware only report heading while moving.
 - [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/) - some GPS hardware only report heading while moving.
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
+- [imu-wit-hwt905](/components/movement-sensor/imu/imu-wit-hwt905/)
 
 An example of a `CompassHeading` reading:
 
@@ -833,6 +834,7 @@ Then use the movement sensor API's [`GetCompassHeading()`](/components/movement-
 The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/) take orientation measurements:
 
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
+- [imu-wit-hwt905](/components/movement-sensor/imu/imu-wit-hwt905/)
 - [wheeled-odometry](/components/movement-sensor/wheeled-odometry/)
 
 An example of an `Orientation` reading:
@@ -856,6 +858,7 @@ Then use the movement sensor API's [`GetOrientation()`](/components/movement-sen
 The following {{< glossary_tooltip term_id="model" text="models" >}} of the [movement sensor](/components/movement-sensor/) component take angular velocity measurements:
 
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
+- [imu-wit-hwt905](/components/movement-sensor/imu/imu-wit-hwt905/)
 - [wheeled-odometry](/components/movement-sensor/wheeled-odometry/)
 - [gyro-mpu6050](/components/movement-sensor/mpu6050/)
 
@@ -920,6 +923,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 
 - [accel-adxl345](/components/movement-sensor/adxl345/)
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
+- [imu-wit-hwt905](/components/movement-sensor/imu/imu-wit-hwt905/)
 - [gyro-mpu6050](/components/movement-sensor/mpu6050/)
 
 An example of a `LinearAcceleration` reading:
