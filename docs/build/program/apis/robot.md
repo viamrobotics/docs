@@ -882,9 +882,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ```go
 metadata := machine.GetCloudMetadata()
-fmt.Println(metadata.RobotPartID)
-fmt.Println(metadata.PrimaryOrgID)
-fmt.Println(metadata.LocationID)
+machine_part_id = metadata.MachinePartID
+primary_org_id = metadata.PrimaryOrgID
+location_id = metadata.LocationID
 ```
 
 {{% /tab %}}
