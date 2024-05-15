@@ -991,7 +991,7 @@ Now you can follow similar steps and customize the code you've written to config
 Try these other tutorials for more on working with the data management and vision services:
 
 {{< cards >}}
-{{% card link="/tutorials/services/try-viam-color-detection/" %}}
+{{% card link="/tutorials/services/basic-color-detection/" %}}
 {{% card link="/tutorials/projects/pet-treat-dispenser/" %}}
 {{% card link="/tutorials/projects/guardian/" %}}
 {{% card link="/tutorials/projects/send-security-photo/" %}}
