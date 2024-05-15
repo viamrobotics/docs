@@ -107,9 +107,9 @@ From the SSH session on the TDA4VM board:
 ## Next steps
 
 {{< cards >}}
-{{% card link="/build/configure/" %}}
+{{% card link="/machine/configure/" %}}
 {{% card link="/tutorials/" %}}
-{{% card link="/build/program/" %}}
+{{% card link="/program/" %}}
 {{< /cards >}}
 
 ## Need assistance?

@@ -29,11 +29,11 @@ Note that some servos have a different PWM range, mapping to a different set of 
 
 #### Hardware requirements
 
-Unlike [motors](/components/motor/), servos do not require a motor driver chip.
+Unlike [motors](/machine/components/motor/), servos do not require a motor driver chip.
 
 A typical servo control setup comprises the following:
 
-- A Raspberry Pi (or other [board](/components/board/))
+- A Raspberry Pi (or other [board](/machine/components/board/))
 - A servo
 - An appropriate power supply
   - If the servo will not be under any significant load and thus won’t draw much current, you may be able to get away with powering it off 5V (if that’s its required voltage) from the Pi pins.
@@ -47,7 +47,7 @@ Always disconnect devices from power before plugging, unplugging or moving wires
 
 Here's an example of how a servo might be wired to a Raspberry Pi:
 
-![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](/components/servo/servo-wiring.png)
+![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](/machine/components/servo/servo-wiring.png)
 
 ### Resistors
 

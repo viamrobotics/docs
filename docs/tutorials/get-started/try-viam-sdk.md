@@ -33,7 +33,7 @@ Notes:
 
 The Viam {{< glossary_tooltip term_id="sdk" text="SDKs" >}} allow you to write code in Python, Go, or TypeScript to control a Viam-connected machine.
 In this tutorial you will learn how to use the Viam SDKS as you write code to make a robot drive in a square.
-You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try), [your own Viam Rover](/get-started/try-viam/rover-resources/), or another [mobile robot](/components/base/).
+You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try), [your own Viam Rover](/get-started/try-viam/rover-resources/), or another [mobile robot](/machine/components/base/).
 
 <div class="td-max-width-on-larger-screens">
 {{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square." max-width="400px">}}
@@ -48,10 +48,10 @@ You can also directly see the [complete code for the tutorial](#complete-code).
 You don't need any hardware to complete this tutorial!
 You can rent a rover to drive remotely at no cost with [Try Viam](https://app.viam.com/try).
 
-If you have your own rover on hand, whether it's a [Viam rover](https://www.viam.com/resources/rover) or not, this tutorial works for any wheeled robot that can be configured as a [base component](/components/base/wheeled/).
+If you have your own rover on hand, whether it's a [Viam rover](https://www.viam.com/resources/rover) or not, this tutorial works for any wheeled robot that can be configured as a [base component](/machine/components/base/wheeled/).
 
 {{% alert title="Important" color="note" %}}
-If you are using your own robot for this tutorial instead of [renting one](https://app.viam.com/try), be sure to [install `viam-server`](/get-started/installation/#install-viam-server) on it and [configure](/build/configure/) its hardware before proceeding with this tutorial.
+If you are using your own robot for this tutorial instead of [renting one](https://app.viam.com/try), be sure to [install `viam-server`](/get-started/installation/#install-viam-server) on it and [configure](/machine/configure/) its hardware before proceeding with this tutorial.
 {{% /alert %}}
 
 ## Install a Viam SDK
@@ -371,7 +371,7 @@ The following code moves the rover in a square:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-The first thing you need to do is import the [base component](https://python.viam.dev/autoapi/viam/components/base/index.html#module-viam.components.base).
+The first thing you need to do is import the [base component](https://python.viam.dev/autoapi/viam/machine/components/base/index.html#module-viam.components.base).
 The base is responsible for controlling the motors attached to the base of the rover.
 Add the following line of code to your imports:
 
@@ -431,14 +431,14 @@ async def main():
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The first thing you need to do is import the [base component](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
+The first thing you need to do is import the [base component](https://pkg.go.dev/go.viam.com/rdk/machine/components/base#Base).
 The base is responsible for controlling the motors attached to the base of the rover.
 Add the following line of code to your imports before:
 
 ```go {class="line-numbers linkable-line-numbers" data-line="3"}
 import (
     // Be sure to keep all of the other imported libraries
-    "go.viam.com/rdk/components/base"
+    "go.viam.com/rdk/machine/components/base"
 )
 ```
 
@@ -765,7 +765,7 @@ Click on the button to move your robot in a square:
 The first thing you need to do is import the [base component](https://cpp.viam.dev/classviam_1_1sdk_1_1Base.html). The base is responsible for controlling the motors attached to the base of the rover. Add the following line of code to your imports:
 
 ```cpp {class="line-numbers linkable-line-numbers"}
-#include <viam/sdk/components/base.hpp>
+#include <viam/sdk/machine/components/base.hpp>
 ```
 
 Additionally, add the following namespaces under your imports:
@@ -966,7 +966,7 @@ package main
 import (
     "context"
 
-    "go.viam.com/rdk/components/base"
+    "go.viam.com/rdk/machine/components/base"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
     "go.viam.com/utils/rpc"
@@ -1273,7 +1273,7 @@ class _RobotScreenState extends State<RobotScreen> {
 #include <boost/optional.hpp>
 
 #include <viam/sdk/robot/client.hpp>
-#include <viam/sdk/components/base.hpp>
+#include <viam/sdk/machine/components/base.hpp>
 
 using namespace viam::sdk;
 using std::cerr;
@@ -1345,6 +1345,6 @@ int main() {
 If you're ready for more, try making your rover move in different ways.
 Can you make it move in a circle?
 A figure-eight?
-You could also write some code to control the other components on the robot, like the [camera](/components/camera/), or the rover's [motors](/components/motor/).
+You could also write some code to control the other components on the robot, like the [camera](/machine/components/camera/), or the rover's [motors](/machine/components/motor/).
 
-You could also control Viam's services, by adding [data management](/data/) to collect data in real time or [vision services](/ml/vision/) to [add color detection to your rover](/tutorials/services/try-viam-color-detection/).
+You could also control Viam's services, by adding [data management](/app/data/) to collect data in real time or [vision services](/services/vision/) to [add color detection to your rover](/tutorials/services/try-viam-color-detection/).

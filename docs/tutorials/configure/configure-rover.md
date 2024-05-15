@@ -53,14 +53,14 @@ In the following, you can see two popular examples with components that are pres
 
 ## Configure the board
 
-The first component you will add is the [board](/components/board/) which represents the Raspberry Pi to which the other components are wired.
+The first component you will add is the [board](/machine/components/board/) which represents the Raspberry Pi to which the other components are wired.
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `board` type, then select the `pi` model.
 Enter `local` as the name and click **Create**.
 You can use a different name but will then need to adjust the name in the following steps to the name you choose.
 
-![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/components/board/pi-ui-config.png)
+![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/machine/components/board/pi-ui-config.png)
 
 You don't need to add any attributes for your board.
 
@@ -143,7 +143,7 @@ Add the following JSON objects to the `components` array:
 {{% /tab %}}
 {{% tab name="Other" %}}
 
-Follow the instructions for the [model of encoder](/components/encoder/#supported-models) your rover uses to configure your encoders and configure at least a `right` and a `left` encoder.
+Follow the instructions for the [model of encoder](/machine/components/encoder/#supported-models) your rover uses to configure your encoders and configure at least a `right` and a `left` encoder.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -243,7 +243,7 @@ Add the following JSON objects to the `components` array:
 {{% /tab %}}
 {{% tab name="Yahboom" %}}
 
-Since both right (and left) side motors of the Yahboom rover are wired together to a single motor driver, you configure the right (and left) side motors as a single [motor component](/components/motor/).
+Since both right (and left) side motors of the Yahboom rover are wired together to a single motor driver, you configure the right (and left) side motors as a single [motor component](/machine/components/motor/).
 
 Start with the right set of wheels.
 
@@ -253,7 +253,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `motor` type, then select the `gpio` model.
 Enter `right` as the name or use the suggested name for your motor and click **Create**.
 
-![G P I O motor config in the builder UI with the In1 and In2 pins configured and the PWM pin field left blank.](/components/motor/gpio-config-ui.png)
+![G P I O motor config in the builder UI with the In1 and In2 pins configured and the PWM pin field left blank.](/machine/components/motor/gpio-config-ui.png)
 
 Click the **Board** dropdown and select `local` as the board the motor driver is wired to.
 Next, configure the **Component Pin Assignment** section to represent how the motor is wired to the board.
@@ -294,7 +294,7 @@ You can ignore the other optional attributes.
 {{% /tab %}}
 {{% tab name="Other" %}}
 
-Follow the instructions for the [model of motor](/components/motor/#supported-models) your rover uses to configure your motors and configure at least a `right` and a `left` motor.
+Follow the instructions for the [model of motor](/machine/components/motor/#supported-models) your rover uses to configure your motors and configure at least a `right` and a `left` motor.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -344,7 +344,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `camera` type, then select the `webcam` model.
 Enter a name or use the suggested name for your camera and click **Create**.
 
-{{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="1200x" style="width=600x" >}}
+{{< imgproc src="/machine/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="1200x" style="width=600x" >}}
 
 If you click on the **Video Path** field while your robot is live, a dropdown autopopulates with identified camera paths.
 
@@ -366,7 +366,7 @@ If you click on the **Video Path** field while your robot is live, a dropdown au
 {{% /tab %}}
 {{< /tabs >}}
 
-If your rover has its camera mounted on a pair of [servos](/components/servo/), like the Yahboom rover, you can use these to control the pan and tilt of the camera.
+If your rover has its camera mounted on a pair of [servos](/machine/components/servo/), like the Yahboom rover, you can use these to control the pan and tilt of the camera.
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Select the `servo` type, then select the `pi` model.
@@ -387,11 +387,11 @@ Set `Depends On` to `local`, and `pin` to the pin the servo is wired to (`21` fo
 
 ## Configure the base
 
-Next, configure the [base component](/components/base/), which describes the geometry of your chassis and wheels so that the software can calculate how to steer the rover in a coordinated way.
+Next, configure the [base component](/machine/components/base/), which describes the geometry of your chassis and wheels so that the software can calculate how to steer the rover in a coordinated way.
 Configuring a {{% glossary_tooltip term_id="base" text="base"%}} component also provides you with a nice UI for moving the rover around.
 
 {{< alert title="Note" color="note" >}}
-Viam supports most rovers with built-in models like the [`wheeled`](/components/base/wheeled/) base.
+Viam supports most rovers with built-in models like the [`wheeled`](/machine/components/base/wheeled/) base.
 If your rover is not supported out of the box, follow the [Create a Modular Resource to Control a Rover](/tutorials/custom/controlling-an-intermode-rover-canbus/) tutorial to create a model for your rover or mobile robot.
 {{< /alert >}}
 
@@ -426,7 +426,7 @@ Enter a name or use the suggested name for your base and click **Create**.
 {{% /tab %}}
 {{< /tabs >}}
 
-{{< imgproc src="/components/base/wheeled-base-ui-config.png" alt="An example configuration for a wheeled base in the Viam app config builder, with Attributes & Depends On dropdowns and the option to add a frame." resize="1200x" style="width: 900px" >}}
+{{< imgproc src="/machine/components/base/wheeled-base-ui-config.png" alt="An example configuration for a wheeled base in the Viam app config builder, with Attributes & Depends On dropdowns and the option to add a frame." resize="1200x" style="width: 900px" >}}
 
 {{% /tab %}}
 {{% tab name="JSON" %}}

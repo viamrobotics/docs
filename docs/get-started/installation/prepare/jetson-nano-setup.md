@@ -101,9 +101,9 @@ See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https:/
 ## Next steps
 
 {{< cards >}}
-{{% card link="/build/configure/" %}}
+{{% card link="/machine/configure/" %}}
 {{% card link="/tutorials/" %}}
-{{% card link="/build/program/" %}}
+{{% card link="/program/" %}}
 {{< /cards >}}
 
 ## Troubleshooting

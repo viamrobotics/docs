@@ -23,7 +23,7 @@ The easiest way to try Viam is to [rent and remotely configure and control a Via
   <tr>
     <th>{{<imgproc src="/get-started/try-viam/try-viam-1.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="ALT">}}
       <b>1. Click on TRY in Viam</b>
-      <p>Log into the Viam app and go to the <a href="https://app.viam.com/try">TRY tab</a>. Don’t have a Viam account? Follow the <a href="/fleet/account/#create-account-and-log-in">instructions to sign up</a> for an account.</p>
+      <p>Log into the Viam app and go to the <a href="https://app.viam.com/try">TRY tab</a>. Don’t have a Viam account? Follow the <a href="/app/fleet/account/#create-account-and-log-in">instructions to sign up</a> for an account.</p>
     </th>
   </tr>
   <tr>

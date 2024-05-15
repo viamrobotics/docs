@@ -27,7 +27,7 @@ no_list: true
 <!-- LEARNING GOALS
 After following this tutorial, you will understand how the ML model service and the Vision service work together and you will be able to use both alongside the base and camera components to make a machine respond to the world around it.  -->
 
-In this tutorial, you'll learn how to use the [vision service](/ml/vision/) to make a rover follow a colored object.
+In this tutorial, you'll learn how to use the [vision service](/services/vision/) to make a rover follow a colored object.
 We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover, including the [Viam rover](/get-started/try-viam/rover-resources/).
 
 <div class="aligncenter">
@@ -40,10 +40,10 @@ You can see the [full code](#full-code) at the bottom of the page.
 
 You will need the following hardware to complete this tutorial:
 
-- A wheeled rover, configured with a [base component](/components/base/) on the [Viam app](https://app.viam.com/).
+- A wheeled rover, configured with a [base component](/machine/components/base/) on the [Viam app](https://app.viam.com/).
   This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot) or an entirely different rover.
   - For a tutorial on configuring your rover, see [Configure a Rover](/tutorials/configure/configure-rover/).
-- An attached and configured [webcam camera](/components/camera/webcam/).
+- An attached and configured [webcam camera](/machine/components/camera/webcam/).
 
 ## Set up the hardware
 
@@ -54,7 +54,7 @@ Turn on the power to the rover.
 
 This tutorial uses the color `#a13b4c` or `rgb(161,59,76)` (a reddish color).
 
-To create a [color detector vision service](/ml/vision/#detections):
+To create a [color detector vision service](/services/vision/#detections):
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
@@ -107,9 +107,9 @@ To determine the color value from the actual cam component image, you can use a 
 
 ### Test your color detector
 
-You can test your detector from the [**Control tab**](/fleet/control/):
+You can test your detector from the [**Control tab**](/app/fleet/control/):
 
-1. Configure a [transform camera](/components/camera/transform/) with the following attributes:
+1. Configure a [transform camera](/machine/components/camera/transform/) with the following attributes:
 
    ```json
    {

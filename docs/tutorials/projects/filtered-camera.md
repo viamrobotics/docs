@@ -48,12 +48,12 @@ The `filtered-camera` module is available from the [Viam registry](https://app.v
 
 The `filtered-camera` module filters image data captured by a camera component, and so requires that your machine has a camera component and the data management service configured.
 
-- A [camera component](/components/camera/), such as a [webcam](/components/camera/webcam/), allows your machine to see the world around it through an attached camera.
-- The [data management service](/data/) enables your machine to capture images from an attached camera and sync them to the cloud.
+- A [camera component](/machine/components/camera/), such as a [webcam](/machine/components/camera/webcam/), allows your machine to see the world around it through an attached camera.
+- The [data management service](/app/data/) enables your machine to capture images from an attached camera and sync them to the cloud.
 
 ### Add a camera component
 
-Add a [camera](/components/camera/) component to your machine:
+Add a [camera](/machine/components/camera/) component to your machine:
 
 1. Navigate to your machine's page on the [Viam app](https://app.viam.com/robots) and select the **CONFIGURE** tab.
 1. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**.
@@ -78,7 +78,7 @@ Next, add the data management service to your machine to be able to capture and 
 
    {{< imgproc src="/tutorials/filtered-camera-module/configure-data-management.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="700x" >}}
 
-For more information, see [Add the data management service](/data/capture/#add-the-data-management-service).
+For more information, see [Add the data management service](/app/data/capture/#add-the-data-management-service).
 
 ### Configure data capture for a camera component
 
@@ -99,19 +99,19 @@ Once you have added the data management service, enable image data capture for y
 1. Click **Save** in the top right corner of the page to save your changes.
 1. You can check that data is being captured and synced by clicking on the menu icon on the camera configuration pane and selecting **View captured data**.
 
-   {{<imgproc src="/data/capture-data-menu.png" resize="500x" declaredimensions=true alt="Resource menu with the options Rename, Duplicate, View captured data, and Delete" class="aligncenter">}}
+   {{<imgproc src="/app/data/capture-data-menu.png" resize="500x" declaredimensions=true alt="Resource menu with the options Rename, Duplicate, View captured data, and Delete" class="aligncenter">}}
 
    If you see images appear here, proceed to the next step.
    If you do not see images appear after a short time, see the [troubleshooting](#troubleshooting) section for further guidance.
 
-For more information see [Configure data capture](/data/capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/data/cloud-sync/).
+For more information see [Configure data capture](/app/data/capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/app/data/cloud-sync/).
 
 ## The machine learning (ML) model for filtering
 
 The `filtered-camera` module that you will use in this tutorial supports two modes of filtering:
 
-- [Detection](/ml/vision/#detections), where you use an ML model trained by drawing bounding boxes around distinct objects within captured images, which enables your machine to be able to detect those objects on its own.
-- [Classification](/ml/vision/#classifications), where you use an ML model trained by tagging images with a class label that best describes it, which enables your machine to classify similar images on its own.
+- [Detection](/services/vision/#detections), where you use an ML model trained by drawing bounding boxes around distinct objects within captured images, which enables your machine to be able to detect those objects on its own.
+- [Classification](/services/vision/#classifications), where you use an ML model trained by tagging images with a class label that best describes it, which enables your machine to classify similar images on its own.
 
 In this tutorial, you will use filtering with a _detection_ model to be able to detect certain objects in the camera feed and filter on the detected objects.
 To create a detection model, you can train a machine learning (ML) model on images captured by your camera.
@@ -137,9 +137,9 @@ For best results:
 {{< /alert >}}
 
 Once you have enough images captured and synced to the Viam app, add those images to a new dataset.
-A [dataset](/data/dataset/) allows you to conveniently view, work with, and train an ML model on a collection of images.
+A [dataset](/app/data/dataset/) allows you to conveniently view, work with, and train an ML model on a collection of images.
 
-1. In the [Viam app](https://app.viam.com), navigate to the [**DATA**](/data/view/) tab to view your captured images.
+1. In the [Viam app](https://app.viam.com), navigate to the [**DATA**](/app/data/view/) tab to view your captured images.
 1. Select an image you want to use in your ML model.
 1. In the **Actions** pane on the right-hand side, enter a new dataset name under **Datasets**, then press return.
 1. Repeat the steps above to add more images to your dataset, until you have enough to train an ML model on.
@@ -153,7 +153,7 @@ A [dataset](/data/dataset/) allows you to conveniently view, work with, and trai
 
 Once you have created a dataset containing the images you want to use, label and draw bounding boxes around the objects in those images you want your machine to be able to identify.
 
-1. In the [Viam app](https://app.viam.com), navigate to the [**Datasets**](https://app.viam.com/data/datasets) subtab of the **DATA** page and select the dataset you created.
+1. In the [Viam app](https://app.viam.com), navigate to the [**Datasets**](https://app.viam.com/app/data/datasets) subtab of the **DATA** page and select the dataset you created.
 1. Select an image you want to use in your ML model.
 1. In the **Actions** pane on the right-hand side, select the **Bounding box** mode, enter a new label that describes the object in the image you want to detect, then draw a bounding box over the image on the right-hand side.
    The example below shows adding the `viam-figure` label to an image, with a rectangular bounding box drawn around it.
@@ -169,13 +169,13 @@ Once you have created a dataset containing the images you want to use, label and
 
 Once your dataset is ready, train a new ML model on that dataset.
 
-1. Click the **Train model** button in the upper-left corner of the [**Datasets**](https://app.viam.com/data/datasets) subtab view for your dataset.
+1. Click the **Train model** button in the upper-left corner of the [**Datasets**](https://app.viam.com/app/data/datasets) subtab view for your dataset.
 1. Select the **Object detection** model type, select the label or labels you added in the previous step, enter a name or use the suggested name for your new ML model, and click **Train model**.
 
    {{< imgproc src="/tutorials/filtered-camera-module/train-a-new-model.png" alt="The models tab in the Viam app showing the configuration for training a new object detection model using the viam-figure dataset and viam-figure label" resize="1000x" >}}
 
    Your model will begin training on the images you have tagged, and should be ready after a short time.
-   You can view your model's training progress from the **Models** subtab under the [**DATA** page](https://app.viam.com/data/view).
+   You can view your model's training progress from the **Models** subtab under the [**DATA** page](https://app.viam.com/app/data/view).
 
    {{< imgproc src="/tutorials/filtered-camera-module/train-model-training.png" alt="The models subtab under the data tab in the Viam app showing a model being actively trained" resize="800x" >}}
 
@@ -183,7 +183,7 @@ Once your dataset is ready, train a new ML model on that dataset.
 
    {{< imgproc src="/tutorials/filtered-camera-module/train-model-complete.png" alt="The models subtab under the data tab in the Viam app, showing a model that has completed training and is ready for use" resize="1200x" >}}
 
-For more information, see [Train a model](/ml/train-model/).
+For more information, see [Train a model](/app/ml/train-model/).
 
 ### Use an existing ML model
 
@@ -214,9 +214,9 @@ You can download that model here:
 
 To upload and use an existing ML model:
 
-1. Navigate to the [**Models** page](https://app.viam.com/data/models) in the Viam app and click the **Upload model** button.
-1. Select **New model** and configure visibility for your model: public models are available to all Viam users while private models are only available to users in your [organization](/fleet/organizations/).
-1. If you haven't already, you will be prompted to select an [organization namespace](/fleet/organizations/#create-a-namespace-for-your-organization).
+1. Navigate to the [**Models** page](https://app.viam.com/app/data/models) in the Viam app and click the **Upload model** button.
+1. Select **New model** and configure visibility for your model: public models are available to all Viam users while private models are only available to users in your [organization](/app/fleet/organizations/).
+1. If you haven't already, you will be prompted to select an [organization namespace](/app/fleet/organizations/#create-a-namespace-for-your-organization).
 1. Then, in the resulting **Upload model** screen, enter a name or use the suggested name for your model, select **Object detection**, and upload both the <file>effdet0.tflite</file> and <file>labels.txt</file> files.
    Add a brief description of your model, then click **Upload model**.
 
@@ -226,7 +226,7 @@ Your uploaded model is immediately available for use after upload.
 
 {{< imgproc src="/tutorials/filtered-camera-module/upload-model-complete.png" alt="The models subtab under the data tab in the Viam app, showing a model that has been uploaded and is ready for use" resize="1200x" >}}
 
-If you are designing your own TensorFlow Lite model, see [model requirements](/ml/deploy/tflite_cpu/#model-requirements) for guidance on structuring your own model.
+If you are designing your own TensorFlow Lite model, see [model requirements](/services/ml/deploy/tflite_cpu/#model-requirements) for guidance on structuring your own model.
 
 For more information, see [Upload an existing model](/ml/upload-model/).
 
@@ -234,8 +234,8 @@ For more information, see [Upload an existing model](/ml/upload-model/).
 
 The `filtered-camera` module filters image data based on your ML model, and so requires that your machine has an ML model service and vision service configured.
 
-- The [ML model service](/ml/deploy/) enables your machine to deploy a machine learning (ML) model to be used by other services.
-- The [vision service](/ml/vision/) uses the deployed model together with your machine's camera to detect objects defined in the ML model on its own.
+- The [ML model service](/services/ml/deploy/) enables your machine to deploy a machine learning (ML) model to be used by other services.
+- The [vision service](/services/vision/) uses the deployed model together with your machine's camera to detect objects defined in the ML model on its own.
 
 ### Add the ML model service
 
@@ -245,11 +245,11 @@ Add the ML model service to your machine to be able to deploy and update ML mode
 1. Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**, then select the built-in `TFLite CPU` model.
 1. Use the suggested name for your service or give it a name, like `my-mlmodel-service`, then click **Create**.
 1. On the panel that appears, select the **Deploy model on machine** toggle, then select your model from the **Select model** dropdown.
-   If you don't see your model name appear here, ensure that your model appears under the [**Models** subtab](https://app.viam.com/data/models) of the **DATA** tab in the Viam app.
+   If you don't see your model name appear here, ensure that your model appears under the [**Models** subtab](https://app.viam.com/app/data/models) of the **DATA** tab in the Viam app.
    If you trained your own model, ensure that the model has finished training and appears under the **Models** section of that page, and not the **Training** section.
 1. Click **Save** in the top right corner of the page to save your changes.
 
-For more information, see [Create an ML model service](/ml/deploy/).
+For more information, see [Create an ML model service](/services/ml/deploy/).
 
 ### Add the vision service
 
@@ -263,11 +263,11 @@ Add the vision service to your machine to be able to use the deployed ML model w
 
    {{< imgproc src="/tutorials/filtered-camera-module/configure-vision-service.png" alt="The vision service configuration pane with my-mlmodel-service selected as the ML model" resize="500x" >}}
 
-For more information, see [Configure an `mlmodel` detector](/ml/vision/mlmodel/).
+For more information, see [Configure an `mlmodel` detector](/services/vision/mlmodel/).
 
 ## Test your ML model with a transform camera
 
-Before filtering your data, you can create a [transform camera](/components/camera/transform/) to test that the ML model is working as expected with your camera.
+Before filtering your data, you can create a [transform camera](/machine/components/camera/transform/) to test that the ML model is working as expected with your camera.
 A transform camera will overlay a bounding box on your camera's live feed when it detects objects that match its ML model.
 This step is optional, you can skip this step if you want to get right to filtering your data with the `filtered-camera` module.
 
@@ -395,7 +395,7 @@ With everything configured, the `filtered-camera` module is now ready to selecti
 
    We want to use the `filtered-camera` module to capture data instead, so that it can selectively capture image based on your ML model.
 
-1. Position your machine's camera so that no detectible objects are visible, then ensure that no new images are being synced to the Viam app by watching the [**DATA** tab](https://app.viam.com/data/view) in the Viam app.
+1. Position your machine's camera so that no detectible objects are visible, then ensure that no new images are being synced to the Viam app by watching the [**DATA** tab](https://app.viam.com/app/data/view) in the Viam app.
 1. Then place an object that is part of your trained ML model within view of your camera, and watch images of that object begin to appear under the **DATA** tab automatically.
 1. Remove the object from view of the camera, and images should stop being captured and synced.
 
@@ -416,7 +416,7 @@ You can also refine your existing ML model by adding and labelling new images th
 
 If you trained a new model as part of this tutorial, try using the provided [pre-trained model files](#upload-an-existing-ml-model) instead, and then aiming your machine's camera at objects listed in the <file>labels.txt</file> file to see how accurately it is able to detect those objects.
 
-In this tutorial, you learned how to use the `filtered-camera` module with [object detection](/ml/vision/#detections), but you can also use it to perform [object classification](/ml/vision/#classifications).
+In this tutorial, you learned how to use the `filtered-camera` module with [object detection](/services/vision/#detections), but you can also use it to perform [object classification](/services/vision/#classifications).
 See the [`filtered-camera` module repository](https://github.com/erh/filtered_camera) for the attributes to use to configure object classification.
 
 ## Troubleshooting
@@ -429,4 +429,4 @@ Your machine can only sync images to the Viam app when it is online; if it is no
 ### Cannot train ML model
 
 In order to train an ML model on images, you must label at least 10 images, and your dataset must include at least 80% labeled images.
-If you get an error on the Viam app [models page](https://app.viam.com/data/models) similar to `too few images` when you go to train a model, try adding more images to your dataset and labelling them until you have at least 10 labelled images, and a dataset where at least 80% of the images it contains are labelled.
+If you get an error on the Viam app [models page](https://app.viam.com/app/data/models) similar to `too few images` when you go to train a model, try adding more images to your dataset and labelling them until you have at least 10 labelled images, and a dataset where at least 80% of the images it contains are labelled.

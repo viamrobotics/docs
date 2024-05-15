@@ -138,7 +138,7 @@ When a machine is disconnected, it will continue to run with its locally-cached 
 
 **Full Error:** `Error: cannot parse config: JSON: cannot unmarshal string into Go struct field Component.components.frame of type float64.`
 
-**Description:** A [frame](/mobility/frame-system/) attribute may be malformed, and is preventing the parsing of the component's configuration.
+**Description:** A [frame](/machine/services/frame-system/) attribute may be malformed, and is preventing the parsing of the component's configuration.
 
 **Solution:** Check the **CONFIGURE** tab for your machine in the [Viam app](https://app.viam.com) and look for a `frame` attribute, either in **Frame** or **JSON** mode.
 If you see a `frame` attribute that you didn't create yourself, delete the whole `frame` object from the JSON config.
@@ -162,7 +162,7 @@ In **JSON** mode, it will resemble the following:
 
 **Additional Errors:** `cannot open webcam`, and `found no webcams`.
 
-**Description:** When working with a [camera](/components/camera/) component on the Linux platform, your Linux OS must be able to access the camera properly, and the camera must be configured to use a pixel format that Viam supports.
+**Description:** When working with a [camera](/machine/components/camera/) component on the Linux platform, your Linux OS must be able to access the camera properly, and the camera must be configured to use a pixel format that Viam supports.
 
 **Solution:** On your Linux system, verify each of the following:
 
@@ -210,16 +210,16 @@ In **JSON** mode, it will resemble the following:
       Replace `/dev/video0` in the above command with the video path you determined for your video device above, if different.
 
       The command will return a list of pixel formats your camera supports, such as `MJPG` (also notated as `MJPEG`) or `YUYV` (also notated as `YUY2`).
-      In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/components/camera/webcam/#using-format).
+      In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/machine/components/camera/webcam/#using-format).
       If your camera does not support any of these formats, it cannot be used with Viam.
 
-If you are still having issues with your camera component on the Linux platform, and would like to [file an issue](https://github.com/viamrobotics/rdk), include your machine's camera debug file contained in the <file>/root/.viam/debug/components/camera</file> directory.
-If you are running `viam-server` as a different user, find the <file>.viam/debug/components/camera</file> directory in that user's home directory instead.
+If you are still having issues with your camera component on the Linux platform, and would like to [file an issue](https://github.com/viamrobotics/rdk), include your machine's camera debug file contained in the <file>/root/.viam/debug/machine/components/camera</file> directory.
+If you are running `viam-server` as a different user, find the <file>.viam/debug/machine/components/camera</file> directory in that user's home directory instead.
 This file contains basic diagnostic and configuration information about your camera that helps to quickly troubleshoot issues.
 
 ### Error: failed to find the best driver that fits the constraints
 
-**Description:** When working with a [camera](/components/camera/) component, depending on the camera, you may need to explicitly provide some camera-specific configuration parameters.
+**Description:** When working with a [camera](/machine/components/camera/) component, depending on the camera, you may need to explicitly provide some camera-specific configuration parameters.
 
 **Solution:** Check the specifications for your camera, and manually provide configuration parameters such as width and height to the camera component configuration page on the [Viam app](https://app.viam.com).
 On the **CONFIGURE** page, find your camera, then fill in your camera's specific configuration either using the **Show more** button to show the relevant configuration options, or the **{}** (Switch to Advanced) button in the top right of the component panel to enter these attributes manually.

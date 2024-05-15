@@ -1,1 +1,1 @@
-Create a new [API key](/fleet/rbac/#api-keys).
+Create a new [API key](/app/fleet/rbac/#api-keys).

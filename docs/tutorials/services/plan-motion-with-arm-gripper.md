@@ -21,7 +21,7 @@ no_list: true
 ---
 
 With Viam you can move individual components, like [arms](../accessing-and-moving-robot-arm/), by issuing commands like `MoveToPosition` or `MoveToJointPosition`.
-The [motion service](/mobility/motion/) enables you to do much more sophisticated movement involving one or many components of your robot.
+The [motion service](/machine/services/motion/) enables you to do much more sophisticated movement involving one or many components of your robot.
 The service abstracts the lower-level commands away so that instead of passing in a series of joint positions, you can call the `Move()` command with the desired destination and any obstacles, and the service will move your machine to the desired location for you.
 
 {{< alert title="Learning Goals" color="info" >}}
@@ -32,7 +32,7 @@ After following this tutorial, you will be able to:
 
 {{< /alert >}}
 
-Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
+Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/machine/components/arm/).
 
 The [full tutorial code](#full-tutorial-code) is available at the end of this page.
 
@@ -88,7 +88,7 @@ You must import an additional Go package to access the motion service.
 Add the following line to your import list:
 
 ```go
-"go.viam.com/rdk/services/motion"
+"go.viam.com/rdk/machine/services/motion"
 ```
 
 Then add the sample code below to your client script:
@@ -103,14 +103,14 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-The Motion service has a method that can get the _pose_ of a component relative to a [_reference frame_](/mobility/frame-system/).
+The Motion service has a method that can get the _pose_ of a component relative to a [_reference frame_](/machine/services/frame-system/).
 In the tutorial where we interacted with an arm component, we used the `GetEndPosition` method to determine the pose of the end effector of `myArm`.
 The `GetPose` method provided by the motion service serves a similar function to `GetEndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
 
 ### Get the `ResourceName`
 
-When you use the [arm API](/components/arm/#api), you call methods on your arm component itself.
-To use the [motion service API](/mobility/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the motion service method.
+When you use the [arm API](/machine/components/arm/#api), you call methods on your arm component itself.
+To use the [motion service API](/machine/services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the motion service method.
 
 Add the following to the section of your code where you access the arm:
 
@@ -239,7 +239,7 @@ Within the app, the **Frame System** subtab of your machine's **Config** tab giv
 
 In previous examples you controlled motion of individual components.
 Now you will use the motion service to control the motion of the robot as a whole.
-You will use the motion service's [`Move`](/mobility/motion/#move) method to execute more general robotic motion.
+You will use the motion service's [`Move`](/machine/services/motion/#move) method to execute more general robotic motion.
 You can designate specific components for motion planning by passing in the resource name (note the use of the arm resource in the code samples below).
 The `worldState` we constructed earlier is also passed in so that the motion service takes that information into account when planning.
 
@@ -299,10 +299,10 @@ if err != nil {
 ## Command other components to move with the motion service
 
 In this section you will add a new component to your machine.
-One device that is very commonly attached to the end of a robot arm is a [_gripper_](/components/gripper/).
+One device that is very commonly attached to the end of a robot arm is a [_gripper_](/machine/components/gripper/).
 Most robot arms pick up and manipulate objects in the world with a gripper, so learning how to directly move a gripper is very useful.
 Though various motion service commands cause the gripper to move, ultimately the arm is doing all of the work in these situations.
-This is possible because the motion service considers other components of the robot (through the [frame system](/mobility/frame-system/)) when calculating how to achieve the desired motion.
+This is possible because the motion service considers other components of the robot (through the [frame system](/machine/services/frame-system/)) when calculating how to achieve the desired motion.
 
 ### Add a gripper component
 
@@ -368,7 +368,7 @@ await motion_service.move(component_name=my_gripper_resource,
 Add the following line to your import list:
 
 ```go
-"go.viam.com/rdk/components/gripper"
+"go.viam.com/rdk/machine/components/gripper"
 ```
 
 Then add this code to your `main()`:
@@ -544,12 +544,12 @@ import (
 
   "github.com/golang/geo/r3"
   armapi "go.viam.com/api/component/arm/v1"
-  "go.viam.com/rdk/components/arm"
-  "go.viam.com/rdk/components/gripper"
+  "go.viam.com/rdk/machine/components/arm"
+  "go.viam.com/rdk/machine/components/gripper"
   "go.viam.com/rdk/logging"
   "go.viam.com/rdk/referenceframe"
   "go.viam.com/rdk/robot/client"
-  "go.viam.com/rdk/services/motion"
+  "go.viam.com/rdk/machine/services/motion"
   "go.viam.com/rdk/spatialmath"
   "go.viam.com/rdk/utils"
   "go.viam.com/utils/rpc"

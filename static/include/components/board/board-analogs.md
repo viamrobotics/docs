@@ -1,6 +1,6 @@
 An [analog-to-digital converter](https://www.electronics-tutorials.ws/combination/analogue-to-digital-converter.html) (ADC) takes a continuous voltage input (analog signal) and converts it to an discrete integer output (digital signal).
 
-ADCs are useful when building a robot, as they enable your board to read the analog signal output by most types of [sensors](/components/sensor/) and other hardware components.
+ADCs are useful when building a robot, as they enable your board to read the analog signal output by most types of [sensors](/machine/components/sensor/) and other hardware components.
 
 To integrate an ADC into your machine, you must first physically connect the pins on your ADC to your board.
 
@@ -12,7 +12,7 @@ Then, integrate `analogs` into the `attributes` of your board by following the *
 On your board's panel, click **Show more**, then select **Add analog**.
 Assign a name to your analog and then fill in the required properties outlined below.
 
-![An example configuration for analogs in the Viam app Config Builder.](/components/board/analogs-ui-config.png)
+![An example configuration for analogs in the Viam app Config Builder.](/machine/components/board/analogs-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

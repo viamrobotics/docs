@@ -1,4 +1,4 @@
-The following example assumes you have a [camera](/components/camera/) called `camera0` configured as a component of your machine.
+The following example assumes you have a [camera](/machine/components/camera/) called `camera0` configured as a component of your machine.
 If your camera has a different name in the Viam app, change the `name` in the example.
 
 {{< tabs >}}
@@ -18,7 +18,7 @@ image = await my_cam.get_image()
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
-"go.viam.com/rdk/components/camera"
+"go.viam.com/rdk/machine/components/camera"
 )
 
 // grab the camera from the machine

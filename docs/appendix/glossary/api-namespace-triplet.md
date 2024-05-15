@@ -13,9 +13,9 @@ The `namespace` for built-in Viam resources is `rdk`, while the `type` is `compo
 `subtype` refers to a specific component or service, like a `camera` or `vision`.
 
 One subtype can have various {{< glossary_tooltip term_id="model" text="models" >}}, custom or built-in, but they all must conform to the subtype's API definition.
-This requirement ensures that when a resource of that model is deployed, you can [interface with it](/build/program/) using the same [client API methods](/build/program/apis/) you would when programming resources of the same subtype with a different model.
+This requirement ensures that when a resource of that model is deployed, you can [interface with it](/program/) using the same [client API methods](/program/apis/) you would when programming resources of the same subtype with a different model.
 
 For example:
 
-- The API of the built-in component [camera](/components/camera/) is `rdk:component:camera`, which exposes methods such as `GetImage()`.
-- The API of the built-in service [vision](/ml/vision/) is `rdk:service:vision`, which exposes methods such as `GetDetectionsFromCamera()`.
+- The API of the built-in component [camera](/machine/components/camera/) is `rdk:component:camera`, which exposes methods such as `GetImage()`.
+- The API of the built-in service [vision](/services/vision/) is `rdk:service:vision`, which exposes methods such as `GetDetectionsFromCamera()`.

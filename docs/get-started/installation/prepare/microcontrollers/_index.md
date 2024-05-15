@@ -26,7 +26,7 @@ If you want to program the chip directly, follow the setup instructions in [the 
 
 ### Flash your ESP32 with the micro-RDK installer
 
-Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/fleet/machines/#add-a-new-machine) in your desired location.
+Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/app/fleet/machines/#add-a-new-machine) in your desired location.
 
 1. Click on the name of the machine to go to its page.
 2. Navigate to the **CONFIGURE** tab and find your machine's card. An alert will be present directing you to **Set up your machine part**. Click **View setup instructions** to open the setup instructions.
@@ -44,21 +44,21 @@ For more `micro-rdk-installer` CLI usage options, see [GitHub](https://github.co
 ### Configure your machine
 
 The micro-RDK provides different component models than the fully featured RDK.
-See [Micro-RDK](/build/micro-rdk/) to get a list of supported models and instructions on how to configure them.
+See [Micro-RDK](/micro-rdk/) to get a list of supported models and instructions on how to configure them.
 
 ## Next steps
 
 {{< cards >}}
-{{% manualcard link="/build/micro-rdk/board/esp32/" %}}
+{{% manualcard link="/micro-rdk/board/esp32/" %}}
 
 <h4>Configure your board </h4>
 
 Configure your `esp32` board for your machine.
 
 {{% /manualcard %}}
-{{% card link="/build/configure/" %}}
+{{% card link="/machine/configure/" %}}
 {{% card link="/tutorials/" %}}
-{{% card link="/build/program/" %}}
+{{% card link="/program/" %}}
 {{< /cards >}}
 
 ## Recommendations when using an SDK

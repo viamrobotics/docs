@@ -1,4 +1,4 @@
-Move a [base](/components/base/) component to a destination [`Pose`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) on a {{< glossary_tooltip term_id="slam" text="SLAM" >}} map.
+Move a [base](/machine/components/base/) component to a destination [`Pose`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) on a {{< glossary_tooltip term_id="slam" text="SLAM" >}} map.
 
 `MoveOnMap()` is non blocking, meaning the motion service will move the component to the destination [`Pose`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) after `MoveOnMap()` returns.
 
@@ -12,14 +12,13 @@ You can monitor the progress of the `MoveOnMap()` call by querying `GetPlan()` a
 
 Use the machine's position reported by the {{< glossary_tooltip term_id="slam" text="SLAM" >}} service to check the location of the machine.
 
-`MoveOnMap()` is intended for use with the [navigation service](/mobility/navigation/), providing autonomous indoor navigation for rover [bases](/components/base/).
+`MoveOnMap()` is intended for use with the [navigation service](/machine/services/navigation/), providing autonomous indoor navigation for rover [bases](/machine/components/base/).
 
 {{< alert title="Requirements" color="info" >}}
-To use `MoveOnMap()`, your [SLAM service](/mobility/slam/) must implement `GetPointCloudMap()` and `GetPosition()`
+To use `MoveOnMap()`, your [SLAM service](/machine/services/slam/) must implement `GetPointCloudMap()` and `GetPosition()`
 
-Make sure the [SLAM service](/mobility/slam/) you use alongside the this motion service supports the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [SLAM service API](/mobility/slam/#api):
+Make sure the [SLAM service](/machine/services/slam/) you use alongside the this motion service supports the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [SLAM service API](/machine/services/slam/#api):
 
 - It must support `GetPointCloudMap()` to report the SLAM map as a pointcloud.
 - It must support `GetPosition()` to report the machine's current location on the SLAM map.
   {{< /alert >}}
-  

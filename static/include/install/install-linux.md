@@ -33,7 +33,7 @@ To install `viam-server` on a Linux computer:
 
 1. Add a new machine by providing a name in the **New machine** field and clicking **Add machine**:
 
-   ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
+   ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/app/fleet/app-usage/create-machine.png)
 
 1. Navigate to the **CONFIGURE** tab and find your machine's card.
    An alert will be present directing you to **Set up your machine part**:

@@ -14,7 +14,7 @@ aliases:
 _Try Viam_ is a way to try out the Viam platform without setting up any hardware yourself.
 You can take over a Viam Rover in our robotics lab to play around!
 
-Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](#using-the-reservation-system), [navigate the Viam platform](/fleet/), and [drive the rover](../try-viam-tutorial/#control-tab):
+Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](#using-the-reservation-system), [navigate the Viam platform](/app/fleet/), and [drive the rover](../try-viam-tutorial/#control-tab):
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/YYpZ9CVDwMU" max-width="600px">}}
 
@@ -34,7 +34,7 @@ Once your reservation starts and the system has configured your rover, click **T
 
 ### Limitations
 
-When using a rented Viam rover, adding [modules](/registry/) is disabled for security purposes.
+When using a rented Viam rover, adding [modules](/app/registry/) is disabled for security purposes.
 
 ### Extend your reservation
 

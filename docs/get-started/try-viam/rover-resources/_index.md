@@ -30,7 +30,7 @@ If you want a convenient mobile {{% glossary_tooltip term_id="base" text="base"%
             The <a href="https://www.viam.com/resources/rover" target="_blank">Viam Rover 2</a> arrives preassembled with two encoded motors with suspension, a webcam with a microphone unit, a 6 axis IMU, power management and more.
             It is primarily designed for use with a Raspberry Pi 4.
             Featuring an anodized aluminum chassis with expandable mounting features, the rover can comfortably navigate indoor environments with a 20 lb payload.
-            You can customize your rover by mounting <a href="/components/sensor/">sensors</a>, <a href="/components/camera/">LiDAR</a>, and <a href="/components/arm/">arms</a>.
+            You can customize your rover by mounting <a href="/machine/components/sensor/">sensors</a>, <a href="/machine/components/camera/">LiDAR</a>, and <a href="/machine/components/arm/">arms</a>.
         </p>
     </div>
 </div>

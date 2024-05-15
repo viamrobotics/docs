@@ -26,25 +26,25 @@ Go to the [Viam app](https://app.viam.com) and sign up with Google, GitHub, Appl
 
 {{< /tablestep >}}
 {{< tablestep >}}
-{{<imgproc src="/fleet/fleet.svg" class="fill alignleft" resize="600x" style="max-width: 400px" declaredimensions=true alt="Two locations within an organization">}}
+{{<imgproc src="/app/fleet/fleet.svg" class="fill alignleft" resize="600x" style="max-width: 400px" declaredimensions=true alt="Two locations within an organization">}}
 **2. Create organizations and locations**
 
-Use [organizations](/fleet/organizations/), and [locations](/fleet/locations/) within them, to organize your machines into groups and manage user access.
+Use [organizations](/app/fleet/organizations/), and [locations](/app/fleet/locations/) within them, to organize your machines into groups and manage user access.
 
 {{< /tablestep >}}
 {{< tablestep >}}
-{{<imgproc src="/fleet/app-usage/limit-access.png" class="fill alignright" resize="600x" style="max-width: 350px" declaredimensions=true alt="Limit user access">}}
+{{<imgproc src="/app/fleet/app-usage/limit-access.png" class="fill alignright" resize="600x" style="max-width: 350px" declaredimensions=true alt="Limit user access">}}
 **3. Invite other users and assign permissions**
 
-Invite other users to an organization or a location to [share access](/fleet/#use-viam-for-collaboration) to the machines within it.
+Invite other users to an organization or a location to [share access](/app/fleet/#use-viam-for-collaboration) to the machines within it.
 Assign each user a role (owner or operator) to manage permissions.
 
 {{< /tablestep >}}
 {{< tablestep >}}
-{{<imgproc src="/fleet/app-usage/create-machine.png" class="fill alignleft" resize="600x" style="max-width: 450px" declaredimensions=true alt="Create a new machine in the Viam app">}}
+{{<imgproc src="/app/fleet/app-usage/create-machine.png" class="fill alignleft" resize="600x" style="max-width: 450px" declaredimensions=true alt="Create a new machine in the Viam app">}}
 **4. Connect machines to the cloud**
 
-Users with access to a location can create and collaborate on the [machines](/fleet/machines/) within it.
+Users with access to a location can create and collaborate on the [machines](/app/fleet/machines/) within it.
 When you [install `viam-server`](/get-started/installation/) on each machine, unique keys are generated to securely connect it to the Viam app.
 Use the config builder interface to configure {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} for new or existing smart machines.
 You can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} to streamline the process of configuring multiple similar machines.
@@ -56,11 +56,11 @@ You can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} to stre
 
 Using the [Viam app](https://app.viam.com), you can:
 
-- Monitor the status of each machine from its [**LOGS** tab](/fleet/machines/#logs).
-- View any data captured by your fleet from the [**Data** tab](/data/).
-- Operate machines remotely from the [**CONTROL** tab](/fleet/control/).
+- Monitor the status of each machine from its [**LOGS** tab](/app/fleet/machines/#logs).
+- View any data captured by your fleet from the [**Data** tab](/app/data/).
+- Operate machines remotely from the [**CONTROL** tab](/app/fleet/control/).
 
-Use [modules](/registry/) to deploy code to your fleet and manage versioning.
+Use [modules](/app/registry/) to deploy code to your fleet and manage versioning.
 
 {{< /tablestep >}}
 {{< /table >}}
@@ -68,9 +68,9 @@ Use [modules](/registry/) to deploy code to your fleet and manage versioning.
 ## Next steps
 
 {{< cards >}}
-{{% card link="/fleet/" %}}
+{{% card link="/app/fleet/" %}}
 {{% card link="/cli/" %}}
-{{% card link="/fleet/rbac/" %}}
+{{% card link="/app/fleet/rbac/" %}}
 
 <!-- markdownlint-disable MD034 -->
 

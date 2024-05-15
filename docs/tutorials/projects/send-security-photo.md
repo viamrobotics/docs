@@ -23,7 +23,7 @@ Maybe someone is eating your chocolates when you are away.
 You're not sure who, but you suspect Steve.
 This robot will help you catch the culprit.
 
-When someone comes to your desk, the robot will use the [vision service](/ml/vision/) and the [ML model service](/ml/) to detect a person, take their photo, and text you an alert with a photo of the person.
+When someone comes to your desk, the robot will use the [vision service](/services/vision/) and the [ML model service](/ml/) to detect a person, take their photo, and text you an alert with a photo of the person.
 
 ![Text message reading "Alert There is someone at your desk beware" with a photo of a person (Steve) detected by the camera as he approaches the desk.](/tutorials/send-security-photo/text-message.png)
 
@@ -56,7 +56,7 @@ You will use the following software in this tutorial:
 
 ### Configure the camera component
 
-Configure your [webcam](/components/camera/webcam/) so that your machine can get the video stream from your camera:
+Configure your [webcam](/machine/components/camera/webcam/) so that your machine can get the video stream from your camera:
 
 1. On the [Viam app](https://app.viam.com), navigate to your machine's page.
    Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with the Viam app.
@@ -81,12 +81,12 @@ If it doesn't, double-check that your config is saved correctly, and check the *
 
 ### Configure your services
 
-Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/ml/vision/) on your machine.
+Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/services/vision/) on your machine.
 This tutorial uses a pre-trained Machine Learning model from the Viam Registry called [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
 The model can detect a variety of things, including `Persons`.
 You can see a full list of what the model can detect in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
-If you want to train your own model instead, follow the instructions in [train a model](/ml/train-model/).
+If you want to train your own model instead, follow the instructions in [train a model](/app/ml/train-model/).
 
 1. **Configure the ML model service**
 
@@ -104,7 +104,7 @@ If you want to train your own model instead, follow the instructions in [train a
    Select **Deploy model on machine** for the **Deployment** field.
    Then select the `viam-labs:EfficientDet-COCO` model from the **Models** dropdown.
 
-1. **Configure an mlmodel detector** [vision service](/ml/vision/)
+1. **Configure an mlmodel detector** [vision service](/services/vision/)
 
    Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**.
    Start typing `ML model` and select **vision / ML model** from the builtin options.
@@ -119,7 +119,7 @@ If you want to train your own model instead, follow the instructions in [train a
 
 ### Configure the detection camera
 
-To be able to test that the vision service is working, add a [transform camera](/components/camera/transform/) which will add bounding boxes and labels around the objects the service detects.
+To be able to test that the vision service is working, add a [transform camera](/machine/components/camera/transform/) which will add bounding boxes and labels around the objects the service detects.
 
 Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**.
 Start typing "transform" and select **camera / transform**.
@@ -155,7 +155,7 @@ Click **Save** in the top right corner of the screen.
 {{<imgproc src="/tutorials/send-security-photo/control-view.png" class="alignright" resize="300x" declaredimensions=true alt="the control tab">}}
 
 At this point, you can test that the model is detecting people.
-Navigate to your [machine's CONTROL tab](/fleet/control/).
+Navigate to your [machine's CONTROL tab](/app/fleet/control/).
 
 Click on the `detectionCam` panel and toggle **View detectionCam** on.
 If the vision service detects a person on the configured camera, you will see a red box around the detection along with the confidence score of the detection.

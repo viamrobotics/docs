@@ -24,7 +24,7 @@ cost: 8400
 
 Say you want your robot to pass you a cup of tea, but you don't want it to spill the water or bump into other objects on the table.
 
-If you followed along with the [Plan Motion with an Arm tutorial](../plan-motion-with-arm-gripper/), you used the [motion service](/mobility/motion/) to move a robot arm and end effector to desired positions.
+If you followed along with the [Plan Motion with an Arm tutorial](../plan-motion-with-arm-gripper/), you used the [motion service](/machine/services/motion/) to move a robot arm and end effector to desired positions.
 This tutorial builds on this foundation.
 
 In this tutorial, you will learn about transforms and constraints with the example of moving a cup across a table without hitting another object, and while remaining upright.
@@ -54,13 +54,13 @@ Before starting this tutorial, you must:
 
 - Install the [Viam Python SDK](https://python.viam.dev/)<!-- or the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme/)-->.
 - If you are connecting to a real robotic arm during this tutorial, make sure your computer can communicate with the arm controller before continuing.
-  Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6/), but you can use any [arm model](/components/arm/) including a [fake arm model](/components/arm/fake/).
+  Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6/), but you can use any [arm model](/machine/components/arm/) including a [fake arm model](/machine/components/arm/fake/).
 - Complete the previous tutorial, [Plan Motion with an Arm and a Gripper](../plan-motion-with-arm-gripper/), which configures the robot, client and service access, and other infrastructure we'll need for this tutorial.
   For reference, see the [full code sample from the prior tutorial](../plan-motion-with-arm-gripper/#full-tutorial-code).
 
 ## Configure your robot
 
-Use the same robot configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](/components/arm/) and [gripper](/components/gripper/) components with [frames](/mobility/frame-system/) configured.
+Use the same robot configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](/machine/components/arm/) and [gripper](/machine/components/gripper/) components with [frames](/machine/services/frame-system/) configured.
 Make one change: Change the Z translation of the gripper frame from `90` to `0`.
 
 The motion service is one of the "built-in" services, so you don't need to do anything to enable it on your robot.
@@ -219,7 +219,7 @@ The following diagram shows this, as well as the global coordinate system.
 
 If you are using a `fake` gripper, there is no real hardware to calibrate and you can [continue to the next section](#use-a-transform-to-represent-a-drinking-cup), imagining that your fake gripper corresponds to the diagram above.
 
-If you are using a real arm and gripper, use the [**CONTROL** tab](/fleet/control/) in the [Viam app](https://app.viam.com/) to move the gripper, look at its reported orientations, and map them to its orientation in the real world.
+If you are using a real arm and gripper, use the [**CONTROL** tab](/app/fleet/control/) in the [Viam app](https://app.viam.com/) to move the gripper, look at its reported orientations, and map them to its orientation in the real world.
 If the axes are different from those described above, take these differences into account in your code.
 
 ## Use a transform to represent a drinking cup
@@ -227,7 +227,7 @@ If the axes are different from those described above, take these differences int
 Imagine your cup is 120 millimeters tall with a radius of 45 millimeters.
 You need to take this space into account to avoid bumping objects on the table with the cup.
 
-You can pass transforms to the [motion service `move` method](/mobility/motion/#move) to represent objects that are connected to the robot but are not actual robotic components.
+You can pass transforms to the [motion service `move` method](/machine/services/motion/#move) to represent objects that are connected to the robot but are not actual robotic components.
 To represent the drinking cup held in your robot's gripper, create a transform with the cup's measurements:
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -305,10 +305,10 @@ If we changed it to `theta=90` or `theta=270`, the gripper jaws would open verti
 
 ## Add a motion constraint
 
-To keep the cup upright as the arm moves it from one place on the table to another, create a [linear constraint](/mobility/motion/constraints/#linear-constraint).
+To keep the cup upright as the arm moves it from one place on the table to another, create a [linear constraint](/machine/services/motion/constraints/#linear-constraint).
 When you tell the robot to move the cup from one upright position to another, the linear constraint forces the gripper to move linearly and to maintain the upright orientation of the cup throughout the planned path.
 
-You could try using an [orientation constraint](/mobility/motion/constraints/#orientation-constraint) instead, which would also constrain the orientation.
+You could try using an [orientation constraint](/machine/services/motion/constraints/#orientation-constraint) instead, which would also constrain the orientation.
 However, since this opens up many more options for potential paths, it is much more computationally intensive than the linear constraint.
 
 The code below creates a linear constraint and then uses that constraint to keep the cup upright and move it in a series of linear paths along the predetermined route while avoiding the obstacles we've defined:

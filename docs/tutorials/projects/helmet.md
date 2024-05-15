@@ -18,7 +18,7 @@ cost: 120
 {{<imgproc src="/tutorials/helmet/ppe-hooks.png" resize="x300" declaredimensions=true alt="Hard hats and neon reflective vests on hooks." class="alignright" style="max-width: 350px">}}
 
 We all know personal protective equipment (PPE) helps keep us safe, but sometimes we need a reminder to use it consistently.
-Luckily, you can address this problem using Viam's integrated [data capture](/data/capture/), [computer vision](/ml/vision/), and [webhooks](/build/configure/webhooks/), along with a hard hat detection model.
+Luckily, you can address this problem using Viam's integrated [data capture](/app/data/capture/), [computer vision](/services/vision/), and [webhooks](/machine/configure/webhooks/), along with a hard hat detection model.
 
 By following this tutorial you will build a system to look out for you and your team, sending an email notification when someone isn't wearing a hard hat.
 
@@ -79,7 +79,7 @@ Then, make sure your computer (whether it's a personal computer or an SBC) is co
 
 ### Configure your physical camera
 
-Configure your [webcam](/components/camera/webcam/) so that your machine can get the video stream from the camera:
+Configure your [webcam](/machine/components/camera/webcam/) so that your machine can get the video stream from the camera:
 
 1. On the [Viam app](https://app.viam.com), navigate to your machine's page.
    Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with the Viam app.
@@ -104,8 +104,8 @@ If it doesn't, double-check that your config is saved correctly, and check the *
 
 ### Configure the vision service
 
-Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/ml/vision/) on your machine.
-Viam's built-in [`mlmodel` vision service](/ml/vision/mlmodel/) works with Tensor Flow Lite models, but since this tutorial uses a YOLOv8 model, we will use a {{< glossary_tooltip term_id="module" text="module" >}} from the [modular resource registry](/registry/) that augments Viam with YOLOv8 integration.
+Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/services/vision/) on your machine.
+Viam's built-in [`mlmodel` vision service](/services/vision/mlmodel/) works with Tensor Flow Lite models, but since this tutorial uses a YOLOv8 model, we will use a {{< glossary_tooltip term_id="module" text="module" >}} from the [modular resource registry](/app/registry/) that augments Viam with YOLOv8 integration.
 The [YOLOv8 module](https://github.com/viam-labs/YOLOv8) enables you to use any [YOLOv8 model](https://huggingface.co/models?other=yolov8) with your Viam machines.
 
 1. Navigate to your machine's **CONFIGURE** tab.
@@ -193,7 +193,7 @@ Now that the detector is configured, it's time to test it!
 
 ## Configure data capture and sync
 
-Viam's built-in [data management service](/data/) allows you to, among other things, capture images and sync them to the cloud.
+Viam's built-in [data management service](/app/data/) allows you to, among other things, capture images and sync them to the cloud.
 For this project, you will capture images of people without hard hats so that you can see who wasn't wearing one, and so that you can trigger notifications when these images are captured and synced.
 Configure data capture on the `objectfilter` camera to capture images of people without hard hats:
 
@@ -224,7 +224,7 @@ To make sure the detector camera is capturing and syncing labeled images:
 
 1. Position yourself in front of your webcam for approximately 30 seconds to let it capture a few images of a person without a hard hat on.
 
-2. Navigate to your [**DATA** page](https://app.viam.com/data/view?view=images) in the Viam app.
+2. Navigate to your [**DATA** page](https://app.viam.com/app/data/view?view=images) in the Viam app.
    You should see some images with bounding boxes on them.
    If you do not, try refreshing the page.
 
@@ -247,7 +247,7 @@ Now that you have verified that the detector and data sync are working, modify y
 
 ## Set up email notifications
 
-[Webhooks](/build/configure/webhooks/) allow you to trigger actions by sending an HTML request when a certain event happens.
+[Webhooks](/machine/configure/webhooks/) allow you to trigger actions by sending an HTML request when a certain event happens.
 In this case, you're going to set up a webhook to trigger a serverless function that sends you an email when an image of someone without a hard hat is uploaded to the cloud.
 
 Before you configure a webhook on your machine, you need to create a serverless function for the webhook to call.
@@ -320,7 +320,7 @@ The following code is adapted from that example.
         html_content='Hello!<br><br>Please remember to keep \
         hard hats on where required. Thank you! \
         <br><br>You can view captured images in \
-        <a href="https://app.viam.com/data/view?view=images">\
+        <a href="https://app.viam.com/app/data/view?view=images">\
         the DATA tab</a of the Viam app>.'
     )
 
@@ -373,7 +373,7 @@ def email(request):
         html_content='Hello!<br><br>Please remember to keep \
         hard hats on where required. Thank you! \
         <br><br>You can view captured images in \
-        <a href="https://app.viam.com/data/view?view=images">\
+        <a href="https://app.viam.com/app/data/view?view=images">\
         the DATA tab</a of the Viam app>.'
     )
 
@@ -410,7 +410,7 @@ Now you can test the script:
 
 ### Configure a webhook on your machine
 
-Now it's time to configure a [webhook](/build/configure/webhooks/) on your machine to trigger the email cloud function when a person is not wearing a hard hat.
+Now it's time to configure a [webhook](/machine/configure/webhooks/) on your machine to trigger the email cloud function when a person is not wearing a hard hat.
 Since you configured data to sync only when an image of a person without a hard hat is captured, configuring the webhook to trigger each time an image is synced to the cloud will produce the desired result.
 
 Configure a webhook as follows:
@@ -461,10 +461,10 @@ Here are some ways you could expand on this project:
 - Change your cloud function to send a different kind of notification, or trigger some other action.
   For an example demonstrating how to configure text notifications, see the [Detect a Person and Send a Photo tutorial](/tutorials/projects/send-security-photo/).
 
-- Use a different existing model or [train your own](/ml/train-model/), to detect and send notifications about something else such as [forklifts](https://huggingface.co/keremberke/yolov8m-forklift-detection) appearing in your camera stream.
+- Use a different existing model or [train your own](/app/ml/train-model/), to detect and send notifications about something else such as [forklifts](https://huggingface.co/keremberke/yolov8m-forklift-detection) appearing in your camera stream.
 
 {{< cards >}}
 {{% card link="/tutorials/projects/send-security-photo/" %}}
-{{% card link="/ml/train-model/" %}}
+{{% card link="/app/ml/train-model/" %}}
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}

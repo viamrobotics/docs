@@ -39,14 +39,14 @@ Click **Save** in the upper right corner of the page to save your new configurat
 
 The fragment adds the following components to your machine's JSON configuration:
 
-- A [board component](/components/board/pi/) named `local` representing the Raspberry Pi.
-- Two [motors](/components/motor/gpio/) (`right` and `left`)
+- A [board component](/machine/components/board/pi/) named `local` representing the Raspberry Pi.
+- Two [motors](/machine/components/motor/gpio/) (`right` and `left`)
   - The configured pin numbers correspond to where the motor drivers are connected to the board.
-- Two [encoders](/components/encoder/single/), one for each motor
-- A wheeled [base](/components/base/), an abstraction that coordinates the movement of the right and left motors
-- A webcam [camera](/components/camera/webcam/)
-- An [accelerometer](/components/movement-sensor/mpu6050/)
-- A [power sensor](/components/power-sensor/ina219/)
+- Two [encoders](/machine/components/encoder/single/), one for each motor
+- A wheeled [base](/machine/components/base/), an abstraction that coordinates the movement of the right and left motors
+- A webcam [camera](/machine/components/camera/webcam/)
+- An [accelerometer](/machine/components/movement-sensor/mpu6050/)
+- A [power sensor](/machine/components/power-sensor/ina219/)
 
 For information about how to configure components yourself when you are not using the fragment, click the links on each component above.
 To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=7c413f24-691d-4ae6-a759-df3654cfe4c8).
@@ -69,17 +69,17 @@ Click **Save** in the upper right corner of the page to save your configuration.
 
 The fragment adds the following components to your machine's JSON configuration:
 
-- A [board component](/components/board/pi/) named `local` representing the Raspberry Pi
+- A [board component](/machine/components/board/pi/) named `local` representing the Raspberry Pi
   - An I<sup>2</sup>C bus for connection to the accelerometer.
-- Two [motors](/components/motor/gpio/) (`right` and `left`)
+- Two [motors](/machine/components/motor/gpio/) (`right` and `left`)
   - The configured pin numbers correspond to where the motor drivers are connected to the board.
-- Two [encoders](/components/encoder/single/), one for each motor
-- A wheeled [base](/components/base/), an abstraction that coordinates the movement of the right and left motors
+- Two [encoders](/machine/components/encoder/single/), one for each motor
+- A wheeled [base](/machine/components/base/), an abstraction that coordinates the movement of the right and left motors
   - Width between the wheel centers: 260 mm
   - Wheel circumference: 217 mm
   - Spin slip factor: 1
-- A webcam [camera](/components/camera/webcam/)
-- An [accelerometer](/components/movement-sensor/adxl345/)
+- A webcam [camera](/machine/components/camera/webcam/)
+- An [accelerometer](/machine/components/movement-sensor/adxl345/)
 
 {{% alert title="Info" color="info" %}}
 
@@ -107,14 +107,14 @@ Click **Save** in the upper right corner of the page to save your new configurat
 
 The fragment adds the following components to your machine's JSON configuration:
 
-- A [board component](/components/board/pi/) named `local` representing the Jetson.
-- Two [motors](/components/motor/gpio/) (`right` and `left`)
+- A [board component](/machine/components/board/pi/) named `local` representing the Jetson.
+- Two [motors](/machine/components/motor/gpio/) (`right` and `left`)
   - The configured pin numbers correspond to where the motor drivers are connected to the board.
-- Two [encoders](/components/encoder/single/), one for each motor
-- A wheeled [base](/components/base/), an abstraction that coordinates the movement of the right and left motors
-- A webcam [camera](/components/camera/webcam/)
-- An [accelerometer](/components/movement-sensor/mpu6050/)
-- A [power sensor](/components/power-sensor/ina219/)
+- Two [encoders](/machine/components/encoder/single/), one for each motor
+- A wheeled [base](/machine/components/base/), an abstraction that coordinates the movement of the right and left motors
+- A webcam [camera](/machine/components/camera/webcam/)
+- An [accelerometer](/machine/components/movement-sensor/mpu6050/)
+- A [power sensor](/machine/components/power-sensor/ina219/)
 
 For information about how to configure components yourself when you are not using the fragment, click the links on each component above.
 To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=747e1f43-309b-4311-b1d9-1dfca45bd097).
@@ -135,14 +135,14 @@ Click **Save** in the upper right corner of the page to save your new configurat
 
 The fragment adds the following components to your machine's JSON configuration:
 
-- A [board component](/components/board/pi/) named `local` representing the Jetson.
-- Two [motors](/components/motor/gpio/) (`right` and `left`)
+- A [board component](/machine/components/board/pi/) named `local` representing the Jetson.
+- Two [motors](/machine/components/motor/gpio/) (`right` and `left`)
   - The configured pin numbers correspond to where the motor drivers are connected to the board.
-- Two [encoders](/components/encoder/single/), one for each motor
-- A wheeled [base](/components/base/), an abstraction that coordinates the movement of the right and left motors
-- A webcam [camera](/components/camera/webcam/)
-- An [accelerometer](/components/movement-sensor/mpu6050/)
-- A [power sensor](/components/power-sensor/ina219/)
+- Two [encoders](/machine/components/encoder/single/), one for each motor
+- A wheeled [base](/machine/components/base/), an abstraction that coordinates the movement of the right and left motors
+- A webcam [camera](/machine/components/camera/webcam/)
+- An [accelerometer](/machine/components/movement-sensor/mpu6050/)
+- A [power sensor](/machine/components/power-sensor/ina219/)
 
 For information about how to configure components yourself when you are not using the fragment, click the links on each component above.
 To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=6208e890-8400-4197-bf0f-e8ddeca4e157).

@@ -10,7 +10,7 @@ images: ["/platform/mobility.svg", "/use-cases/base-control.png"]
 ---
 
 If you have a rover base, you can use Viam to teleoperate it and to navigate autonomously.
-Once you have configured your machine, you can remotely control your machine on the app's **CONTROL** tab, and set up autonomous navigation with the [navigation service](/mobility/navigation/).
+Once you have configured your machine, you can remotely control your machine on the app's **CONTROL** tab, and set up autonomous navigation with the [navigation service](/machine/services/navigation/).
 
 {{< table >}}
 {{< tablestep >}}
@@ -18,33 +18,33 @@ Once you have configured your machine, you can remotely control your machine on 
 **1. Teleoperate**
 
 You can remotely control your rover from anywhere through the [Viam app](https://app.viam.com).
-Create an account and add a machine, [install `viam-server`](/get-started/installation/), and [configure your rover base](/components/base/).
+Create an account and add a machine, [install `viam-server`](/get-started/installation/), and [configure your rover base](/machine/components/base/).
 Then, go to the **CONTROL** tab and access a remote control card for your base, with an interface for controlling speed, direction, and power.
 You can also view live feeds from any cameras you configure.
 
 {{< /tablestep >}}
 {{< tablestep >}}
-{{<imgproc src="/services/icons/base-rc.svg" class="fill alignleft" resize="200x" style="max-width: 200px" declaredimensions=true alt="Base remote control service icon.">}}
+{{<imgproc src="/machine/services/icons/base-rc.svg" class="fill alignleft" resize="200x" style="max-width: 200px" declaredimensions=true alt="Base remote control service icon.">}}
 **2. Program to move**
 
-Remotely control your rover base programmatically with a [Viam SDK](/sdks/) by making calls to the [base API](/components/base/#api).
-Or, [configure the base remote control service](/mobility/base-rc/) to teleoperate your base with an [input controller.](/components/input-controller/)
+Remotely control your rover base programmatically with a [Viam SDK](/sdks/) by making calls to the [base API](/machine/components/base/#api).
+Or, [configure the base remote control service](/machine/services/base-rc/) to teleoperate your base with an [input controller.](/machine/components/input-controller/)
 
 {{< /tablestep >}}
 {{< tablestep >}}
-{{<imgproc src="/services/icons/navigation.svg" class="fill alignright" resize="200x" style="max-width: 200px" declaredimensions=true alt="Navigation icon.">}}
+{{<imgproc src="/machine/services/icons/navigation.svg" class="fill alignright" resize="200x" style="max-width: 200px" declaredimensions=true alt="Navigation icon.">}}
 **3. Prepare your base to navigate**
 
-[Configure a movement sensor](/components/movement-sensor/) as part of your machine to use navigation.
-Additionally, [configure and calibrate](/mobility/navigation/#configure-and-calibrate-the-frame-system-service-for-gps-navigation) the frame system for GPS navigation.
-Then, [configure the navigation service](/mobility/navigation/) on your machine.
+[Configure a movement sensor](/machine/components/movement-sensor/) as part of your machine to use navigation.
+Additionally, [configure and calibrate](/machine/services/navigation/#configure-and-calibrate-the-frame-system-service-for-gps-navigation) the frame system for GPS navigation.
+Then, [configure the navigation service](/machine/services/navigation/) on your machine.
 
 {{< /tablestep >}}
 {{< tablestep >}}
 {{<imgproc src="/use-cases/navigation-card.png" class="fill alignleft" resize="200x" style="max-width: 300px" declaredimensions=true alt="Navigation map card">}}
 **4. Navigate autonomously**
 
-Define a path for your rover to navigate with waypoints and obstacles. Then, start and stop your machine's motion along the path and view your machine's current location. You can use the map interface on the **CONTROL** tab or the [navigation API](/mobility/navigation/#api).
+Define a path for your rover to navigate with waypoints and obstacles. Then, start and stop your machine's motion along the path and view your machine's current location. You can use the map interface on the **CONTROL** tab or the [navigation API](/machine/services/navigation/#api).
 
 {{< /tablestep >}}
 {{< /table >}}
@@ -53,7 +53,7 @@ Define a path for your rover to navigate with waypoints and obstacles. Then, sta
 
 {{< cards >}}
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
-{{% card link="/mobility/motion/" %}}
-{{% card link="/mobility/navigation/" %}}
-{{% card link="/mobility/base-rc/" %}}
+{{% card link="/machine/services/motion/" %}}
+{{% card link="/machine/services/navigation/" %}}
+{{% card link="/machine/services/base-rc/" %}}
 {{< /cards >}}

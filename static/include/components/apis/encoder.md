@@ -1,9 +1,9 @@
 <!-- prettier-ignore -->
 Method Name | Description
 ----------- | -----------
-[`GetPosition`](/components/encoder/#getposition) | Get the current position of the encoder.
-[`ResetPosition`](/components/encoder/#resetposition) | Reset the position to zero.
-[`GetProperties`](/components/encoder/#getproperties) | Get the supported properties of this encoder.
-[`GetGeometries`](/components/encoder/#getgeometries) | Get all the geometries associated with the encoder in its current configuration, in the [frame](/mobility/frame-system/) of the encoder.
-[`DoCommand`](/components/encoder/#docommand) | Send or receive model-specific commands.
-[`Close`](/components/encoder/#close) | Safely shut down the resource and prevent further use.
+[`GetPosition`](/machine/components/encoder/#getposition) | Get the current position of the encoder.
+[`ResetPosition`](/machine/components/encoder/#resetposition) | Reset the position to zero.
+[`GetProperties`](/machine/components/encoder/#getproperties) | Get the supported properties of this encoder.
+[`GetGeometries`](/machine/components/encoder/#getgeometries) | Get all the geometries associated with the encoder in its current configuration, in the [frame](/machine/services/frame-system/) of the encoder.
+[`DoCommand`](/machine/components/encoder/#docommand) | Send or receive model-specific commands.
+[`Close`](/machine/components/encoder/#close) | Safely shut down the resource and prevent further use.

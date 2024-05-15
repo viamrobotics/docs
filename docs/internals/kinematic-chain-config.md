@@ -8,13 +8,13 @@ tags: ["slam", "services"]
 # SMEs: Motion
 ---
 
-Many components have complex kinematic chains and require an additional set of intermediate reference frames to use Viam's [Motion service](/mobility/motion/).
+Many components have complex kinematic chains and require an additional set of intermediate reference frames to use Viam's [Motion service](/machine/services/motion/).
 
-- For example, an [arm](/components/arm/) has a reference frame originating where the arm is attached to a surface, but it also has links and joints whose frames of reference matter when attempting to move the arm to a [pose](/internals/orientation-vector/) with [`MoveToPosition()`](/components/arm/#movetoposition).
+- For example, an [arm](/machine/components/arm/) has a reference frame originating where the arm is attached to a surface, but it also has links and joints whose frames of reference matter when attempting to move the arm to a [pose](/internals/orientation-vector/) with [`MoveToPosition()`](/machine/components/arm/#movetoposition).
 
 If you want to implement a component with a complex kinematic chain that is not already built into the RDK, you need to add a file to your driver that details the attachment of the intermediate reference frames on the component.
 
-This file can be a <file>.json</file> file in the [same format as Viam's built-in arm drivers](https://github.com/viamrobotics/rdk/blob/main/components/arm/xarm/xarm6_kinematics.json), or an [<file>.URDF</file> file](https://industrial-training-master.readthedocs.io/en/melodic/_source/session3/Intro-to-URDF.html).
+This file can be a <file>.json</file> file in the [same format as Viam's built-in arm drivers](https://github.com/viamrobotics/rdk/blob/main/machine/components/arm/xarm/xarm6_kinematics.json), or an [<file>.URDF</file> file](https://industrial-training-master.readthedocs.io/en/melodic/_source/session3/Intro-to-URDF.html).
 
 ## Kinematic parameters
 
@@ -30,7 +30,7 @@ Additionally, if you are making your own robot and defining new drivers, incorre
 
 {{% /alert %}}
 
-This is an example <file>.json</file> configuration as used by Viam's [Universal Robots](https://www.universal-robots.com/) [arm driver](https://github.com/viamrobotics/rdk/blob/main/components/arm/universalrobots/ur5e.json):
+This is an example <file>.json</file> configuration as used by Viam's [Universal Robots](https://www.universal-robots.com/) [arm driver](https://github.com/viamrobotics/rdk/blob/main/machine/components/arm/universalrobots/ur5e.json):
 
 {{< tabs name="Kinematic Parameter Types" >}}
 {{% tab name="SVA" %}}
@@ -312,7 +312,7 @@ This is an example <file>.json</file> configuration as used by Viam's [Universal
 {{% alert title="Info" color="info" %}}
 
 These reference frames are ingested by the frame system.
-They are not exposed in the [client SDKs](/build/program/), with one exception.
-If your resource is an [arm component](/components/arm/), you can use the [`GetKinematics()`](/components/arm/#getkinematics) method to access its kinematics information.
+They are not exposed in the [client SDKs](/program/), with one exception.
+If your resource is an [arm component](/machine/components/arm/), you can use the [`GetKinematics()`](/machine/components/arm/#getkinematics) method to access its kinematics information.
 
 {{% /alert %}}

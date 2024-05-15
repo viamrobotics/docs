@@ -43,7 +43,7 @@ You can complete this tutorial using any number of air quality sensing machines.
 For each machine, you will need the following hardware:
 
 - [SDS011 Nova PM sensor](https://www.amazon.com/SDS011-Quality-Detection-Conditioning-Monitor/dp/B07FSDMRR5)
-  - If you choose to use a different air quality sensor, you may need to [create your own module](/registry/create/) implementing the [sensor API](/components/sensor/#api) for your specific hardware.
+  - If you choose to use a different air quality sensor, you may need to [create your own module](/app/registry/create/) implementing the [sensor API](/machine/components/sensor/#api) for your specific hardware.
 - A single-board computer (SBC) [capable of running `viam-server`](https://docs.viam.com/get-started/installation/)
 - An appropriate power supply
 
@@ -62,11 +62,11 @@ An organization is the highest level grouping, and often contains all the locati
 These groupings allow you to manage permissions; you can grant a user access to an individual machine, to all the machines in a location, or to everything in an entire organization.
 You choose how to group your machines.
 
-{{<imgproc class="aligncenter" src="/fleet/fleet.svg" declaredimensions=true alt="Tree diagram with three locations that belong to one organization. One location contains sub-location A containing two machines and sub-location B containing one machine. Each of the two other locations contains machines directly with no sub-locations." >}}
+{{<imgproc class="aligncenter" src="/app/fleet/fleet.svg" declaredimensions=true alt="Tree diagram with three locations that belong to one organization. One location contains sub-location A containing two machines and sub-location B containing one machine. Each of the two other locations contains machines directly with no sub-locations." >}}
 
 <br>
 
-For more information, see [Fleet Management](/fleet/).
+For more information, see [Fleet Management](/app/fleet/).
 
 ### Example
 
@@ -172,7 +172,7 @@ For each sensing machine:
 
 ## Configure your air quality sensors
 
-You need to [configure](/build/configure/) your hardware so that each of your machines can communicate with its attached air quality [sensor](/components/sensor/).
+You need to [configure](/machine/configure/) your hardware so that each of your machines can communicate with its attached air quality [sensor](/machine/components/sensor/).
 
 No matter how many sensing machines you use, you can configure them efficiently by using a reusable configuration block called a _{{< glossary_tooltip term_id="fragment" text="fragment" >}}_.
 Fragments are a way to share and manage identical machine configurations across multiple machines.
@@ -183,7 +183,7 @@ With all your machines configured using the same fragment, if you need to update
 {{< alert title="Note" color="note" >}}
 If this was a real company, adding the fragment to each individual machine would quickly become tiring.
 We're showing you how to do this manually as a learning device.
-Once you understand how to configure machines and use fragments, you can use [Provisioning](/fleet/provision/) to automatically set up your devices.
+Once you understand how to configure machines and use fragments, you can use [Provisioning](/app/fleet/provision/) to automatically set up your devices.
 {{< /alert >}}
 
 ### Configure your first machine
@@ -234,8 +234,8 @@ Once you understand how to configure machines and use fragments, you can use [Pr
 #### Configure data capture and sync
 
 You have configured the sensor so the board can communicate with it, but sensor data is not yet being saved anywhere.
-Viam's [data management service](/data/) lets you capture data locally from each sensor and then sync it to the cloud where you can access historical sensor data and see trends over time.
-Once you configure the rest of your sensing machines, you'll be able to remotely access data from all sensors in all locations, and when you're ready, you can give customers [access](/fleet/rbac/) to the data from the sensors in their locations.
+Viam's [data management service](/app/data/) lets you capture data locally from each sensor and then sync it to the cloud where you can access historical sensor data and see trends over time.
+Once you configure the rest of your sensing machines, you'll be able to remotely access data from all sensors in all locations, and when you're ready, you can give customers [access](/app/fleet/rbac/) to the data from the sensors in their locations.
 
 Configure data capture and sync as follows:
 
@@ -274,7 +274,7 @@ In any case, now that the JSON is generated, you are ready to create a {{< gloss
 2. Navigate to the **FLEET** page and click [**Fragments**](https://app.viam.com/fragments) at the bottom of the left nav.
 3. Type in a name for your fragment, such as `air-sensing-machine` and click **Add fragment**.
 4. Replace the empty curly braces `{}` with the config you copied from your machine.
-5. Because the [Viam Agent](/fleet/provision/) config auto-populates into every machine's config, and configuring the agent using a fragment isn't supported, you do not need to include it in the fragment.
+5. Because the [Viam Agent](/app/fleet/provision/) config auto-populates into every machine's config, and configuring the agent using a fragment isn't supported, you do not need to include it in the fragment.
 
    Delete the entire `agent_config` section including the comma just above it:
 
@@ -318,11 +318,11 @@ For each machine:
    {{%expand "Click here for usb_interface troubleshooting help" %}}
 
 If you only have one USB device plugged into each of your boards, the `usb_interface` value you configured in the sensor config is likely (conveniently) the same for all of your machines.
-If not, you can use [fragment mods](/fleet/configure-a-fleet/#use-fragment_mods) to modify the value on any machine for which it is different:
+If not, you can use [fragment mods](/app/fleet/configure-a-fleet/#use-fragment_mods) to modify the value on any machine for which it is different:
 
 1. If you're not getting sensor readings from a given machine, check the path of the USB port using the same [process by which you found the first USB path](#usb-path).
 2. If the path to your sensor on one machine is different from the one you configured in the fragment, add a fragment mod to the config of that machine to change the path without needing to remove the entire fragment.
-   Follow the [instructions to add a fragment mod](/fleet/configure-a-fleet/#use-fragment_mods) to your machine's config, using the following JSON template:
+   Follow the [instructions to add a fragment mod](/app/fleet/configure-a-fleet/#use-fragment_mods) to your machine's config, using the following JSON template:
 
    ```json {class="line-numbers linkable-line-numbers"}
    "fragment_mods": [
@@ -817,10 +817,10 @@ For an example of setting up text alerts, see the [Detect a Person and Send a Ph
 For another example of a custom TypeScript interface, check out the [Claw Game tutorial](/tutorials/projects/claw-game/).
 Instead of displaying data, the claw game interface has buttons to control a robotic arm.
 
-In this tutorial we covered configuring a fleet of machines using fragments, but to automate the setup process further, you can [use the Viam Agent to provision machines](/fleet/provision/).
+In this tutorial we covered configuring a fleet of machines using fragments, but to automate the setup process further, you can [use the Viam Agent to provision machines](/app/fleet/provision/).
 
 {{< cards >}}
-{{% card link="/fleet/provision/" %}}
+{{% card link="/app/fleet/provision/" %}}
 {{% card link="/tutorials/services/visualize-data-grafana/" %}}
 {{% card link="/tutorials/projects/helmet/" %}}
 {{< /cards >}}

@@ -35,7 +35,7 @@ This tutorial will show you how to build a mouse mover using Viam, a Raspberry P
 This machine will turn the continuous servo that's secured inside the box, which will turn the circle under the optical mouse.
 This will keep your computer from falling asleep.
 
-This project is a good place to begin if you're new to robotics and would like to learn how to use a [servo component](/components/servo/) with the Viam app and Viam's [Python SDK](https://python.viam.dev/).
+This project is a good place to begin if you're new to robotics and would like to learn how to use a [servo component](/machine/components/servo/) with the Viam app and Viam's [Python SDK](https://python.viam.dev/).
 
 <div style="display:flex;" class="aligncenter">
 <div style="border:1px solid gray;">
@@ -170,7 +170,7 @@ Go to the [Viam app](https://app.viam.com), and navigate to the **CONFIGURE** ta
 
 ### Board component
 
-Create a [board component](/components/board/):
+Create a [board component](/machine/components/board/):
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
@@ -183,7 +183,7 @@ You can name the board whatever you want, but if you change the name you must up
 
 ### Servo component
 
-Create a [servo component](/components/servo/):
+Create a [servo component](/machine/components/servo/):
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component**.

@@ -1,0 +1,38 @@
+---
+title: "Micro-RDK Encoder Models"
+linkTitle: "Encoder"
+weight: 30
+type: "docs"
+description: "The micro-RDK encoder component for a special type of sensor that measures rotation of a motor or joint."
+images: ["/icons/components/encoder.svg"]
+icon: true
+tags: ["encoder", "components", "micro-rdk"]
+no_list: true
+aliases:
+  - /micro-rdk/encoder/
+# SMEs: Nick M., Gautham V.
+---
+
+An encoder is a special type of sensor that measures rotation of a motor or joint.
+For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Encoder Component](/machine/components/encoder/).
+
+## Supported models
+
+For configuration information, click on one of the supported encoder model names:
+
+<!-- prettier-ignore -->
+| Model | Description |
+| ----- | ----------- |
+| [`incremental`](incremental/) | A two phase encoder, which can measure the speed and direction of rotation in relation to a given reference point |
+| [`single`](single/) | A single pin "pulse output" encoder which returns its relative position but no direction |
+
+{{% readfile "/static/include/micro-create-your-own.md" %}}
+
+## API
+
+The micro-RDK [encoder API](/machine/components/encoder/#api) supports only the following supported client SDK API methods, which operate the same ways as those in the full-featured RDK:
+
+- [`ResetPosition()`](/machine/components/encoder/#resetposition)
+- [`GetPosition()`](/machine/components/encoder/#getposition)
+- [`GetProperties()`](/machine/components/encoder/#getproperties)
+- [`DoCommand()`](/machine/components/encoder/#docommand)

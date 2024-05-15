@@ -7,7 +7,7 @@ description: "The RDK is the open-source, on-machine portion of the Viam platfor
 tags: ["server", "rdk"]
 aliases:
   - "/product-overviews/rdk"
-  - "/build/program/rdk"
+  - "/program/rdk"
 ---
 
 {{< alert title="Tip" color="tip" >}}
@@ -50,7 +50,7 @@ You can also revert to an earlier configuration from the History tab.
 
 ### Logging
 
-Log messages written appear under the [**LOGS** tab](/fleet/machines/#logs) for the machine running the module.
+Log messages written appear under the [**LOGS** tab](/app/fleet/machines/#logs) for the machine running the module.
 
 ### Shutdown
 
@@ -59,7 +59,7 @@ During machine shutdown, the RDK handles modular resource instances similarly to
 ## Next steps
 
 {{< cards >}}
-{{% card link="/build/program/apis/" %}}
-{{% card link="/registry/" customTitle="Viam Registry" %}}
-{{% card link="/build/micro-rdk/" %}}
+{{% card link="/program/apis/" %}}
+{{% card link="/app/registry/" customTitle="Viam Registry" %}}
+{{% card link="/micro-rdk/" %}}
 {{< /cards >}}

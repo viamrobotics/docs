@@ -34,7 +34,7 @@ This is a great place to start if you have never built a robot or a circuit befo
 {{<gif webm_src="/tutorials/blink-an-led/image9.webm" mp4_src="/tutorials/blink-an-led/image9.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." max-width="300px">}}
 
 First, you'll use the control interface on the [Viam app](https://app.viam.com) to turn the LED on and off.
-Then, you'll write code to control the LED using the Viam [software development kits](/build/program/).
+Then, you'll write code to control the LED using the Viam [software development kits](/program/).
 
 ## What you'll need for this guide
 
@@ -134,7 +134,7 @@ Go to the [Viam app](https://app.viam.com/) and navigate to your new machine's *
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Add a [_board component_](/components/board/) to represent your single-board computer, which in this case is the Raspberry Pi.
+Add a [_board component_](/machine/components/board/) to represent your single-board computer, which in this case is the Raspberry Pi.
 To create the new component, click the **+** icon next to your machine {{< glossary_tooltip term_id="part" text="part" >}} in the left-hand menu and select **Component**.
 Select the `board` type, then select the `pi` model.
 Enter a name or use the suggested name for your board and click **Create**.
@@ -173,7 +173,7 @@ Click the **Save** button in the top right corner of the page to save your chang
 ## Control your robot using the Viam app
 
 When you configure your board component, the Viam app generates a control panel for it.
-Click the [**CONTROL** tab](/fleet/control/) to view the control panels for all your machine's components (in this case, just the board).
+Click the [**CONTROL** tab](/app/fleet/control/) to view the control panels for all your machine's components (in this case, just the board).
 
 Click the board card to expand it.
 Here, you can click on **Get** to get the current status of your pin.
@@ -301,7 +301,7 @@ go run blink.go
 
 ### Write code to blink the LED
 
-In order to interact with the GPIO pins on our Raspberry Pi, you need to import the [board component](/components/board/) from the Viam SDK.
+In order to interact with the GPIO pins on our Raspberry Pi, you need to import the [board component](/machine/components/board/) from the Viam SDK.
 
 The **Code sample** page automatically adds the board import for you, but it doesn't hurt to double-check.
 
@@ -323,7 +323,7 @@ At the top of your <file>blink.go</file>, make sure to include the following imp
 import (
   "fmt"
   "time"
-  "go.viam.com/rdk/components/board"
+  "go.viam.com/rdk/machine/components/board"
 )
 ```
 

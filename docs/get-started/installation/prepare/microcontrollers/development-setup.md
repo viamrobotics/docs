@@ -218,23 +218,23 @@ Instead, save this command to run in any future terminal session where you need 
 
 ### Create a new machine
 
-Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/fleet/machines/#add-a-new-machine) in your desired location.
+Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/app/fleet/machines/#add-a-new-machine) in your desired location.
 
 Click on the name of the machine to go to the machine's page.
 Then, navigate to the **CONFIGURE** tab.
 
 ### Configure your machine with an ESP32
 
-[Client API](/build/program/apis/) usage with the micro-RDK is currently limited to the following supported {{< glossary_tooltip term_id="resource" text="resources" >}}:
+[Client API](/program/apis/) usage with the micro-RDK is currently limited to the following supported {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
-- [Base](/build/micro-rdk/base/)
-- [Board](/build/micro-rdk/board/)
-- [Encoder](/build/micro-rdk/encoder/)
-- [Movement Sensor](/build/micro-rdk/movement-sensor/)
-- [Motor](/build/micro-rdk/motor/)
+- [Base](/micro-rdk/base/)
+- [Board](/micro-rdk/board/)
+- [Encoder](/micro-rdk/encoder/)
+- [Movement Sensor](/micro-rdk/movement-sensor/)
+- [Motor](/micro-rdk/motor/)
 
-See [micro-RDK](/build/micro-rdk/) to get a list of supported models and instructions on how to configure them.
-Follow [this guide](/build/micro-rdk/board/esp32/) to configure an `esp32` board on your machine.
+See [micro-RDK](/micro-rdk/) to get a list of supported models and instructions on how to configure them.
+Follow [this guide](/micro-rdk/board/esp32/) to configure an `esp32` board on your machine.
 
 ### Generate a new project from the micro-RDK template
 
@@ -253,7 +253,7 @@ You will be prompted to paste your machine's `viam-server` app JSON configuratio
 To obtain this:
 
 - Navigate to [your new machine's](#create-a-new-machine) page on [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
-- Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="/build/micro-rdk/part-dropdown.png" resize="x600" style="max-width: 500px" declaredimensions=true alt="The part status dropdown of an offline machine.">}}
+- Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="/micro-rdk/part-dropdown.png" resize="x600" style="max-width: 500px" declaredimensions=true alt="The part status dropdown of an offline machine.">}}
 - Click the copy icon underneath **Viam server configuration** to copy the `viam-server` app JSON configuration.
   The micro-RDK needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 - Paste the `viam-server` app config into your terminal when prompted.

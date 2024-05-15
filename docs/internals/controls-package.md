@@ -7,7 +7,7 @@ description: "The Control Package implements feedback control on an endpoint."
 # SME: Nicolas Menard, Rand, Martha
 ---
 
-[Encoded motors](/components/motor/gpio/encoded-motor/) and [sensor controlled bases](/components/base/sensor-controlled/) use a control loop that is implemented by `viam-server`.
+[Encoded motors](/machine/components/motor/gpio/encoded-motor/) and [sensor controlled bases](/machine/components/base/sensor-controlled/) use a control loop that is implemented by `viam-server`.
 You can configure the `control_parameters` attribute for both components to adjust the control loop.
 However, if you want to change or customize the control loops on these components beyond the configurable parameter, or you want to add a control loop to a different component, you can use the controls package to [build your own PID control loop](/internals/controls-package/#creating-and-using-a-pid-control-loop).
 

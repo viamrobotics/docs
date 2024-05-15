@@ -72,11 +72,11 @@ For each component that makes up your machine:
 {{< imgproc src="/viam/test_components.png" alt="Multiple components being tested in the Viam app." resize="320x" style="max-width:320px" class="alignright" >}}
 </p>
 
-1. Add it to your machine by [choosing the component type](/build/configure/#components) (example: `camera`) and model (example: `webcam`).
-2. Test it with the visual [control tab](/fleet/control/).
-3. See any problems with in-app [logs](/fleet/machines/#logs), review or roll back [configuration history](/fleet/machines/#configure).
+1. Add it to your machine by [choosing the component type](/machine/configure/#components) (example: `camera`) and model (example: `webcam`).
+2. Test it with the visual [control tab](/app/fleet/control/).
+3. See any problems with in-app [logs](/app/fleet/machines/#logs), review or roll back [configuration history](/app/fleet/machines/#configure).
 
-After configuring your machine's hardware, you can configure [high level functionality](/services/) the same way:
+After configuring your machine's hardware, you can configure [high level functionality](/machine/services/) the same way:
 
 - **Data Management** enables you to capture and sync data from one or more machines, and use that data for machine learning and beyond.
 - **Fleet management** enables you to configure, control, debug, and manage entire fleets of machines.
@@ -92,7 +92,7 @@ After configuring your machine's hardware, you can configure [high level functio
 
 <img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure machine control." class="alignleft" style="max-width:270px;"></img>
 
-The Viam platform provides a consistent programming interface for all machines, allowing you to [control your machines](/build/program/apis/) with code in the **language of your choice**.
+The Viam platform provides a consistent programming interface for all machines, allowing you to [control your machines](/program/apis/) with code in the **language of your choice**.
 Viam currently has SDKs for [Go](https://pkg.go.dev/go.viam.com/rdk), [Python](https://python.viam.dev/), and [TypeScript](https://ts.viam.dev/).
 Additional SDKs are coming soon, including Rust, Java, C++, and Flutter.
 
@@ -106,9 +106,9 @@ This provides flexibility and security whether you are building tight control lo
 There are four categories of APIs:
 
 - [Robot](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) provides high level machine commands
-- [Components](/components/) like motors, arms, GPS
-- [Services](/services/) like computer vision, motion planning, Simultaneous Localization And Mapping (SLAM)
-- Cloud applications like [Fleet Management](/fleet/), [Data Management](/data/)
+- [Components](/machine/components/) like motors, arms, GPS
+- [Services](/machine/services/) like computer vision, motion planning, Simultaneous Localization And Mapping (SLAM)
+- Cloud applications like [Fleet Management](/app/fleet/), [Data Management](/app/data/)
 
 You can see the Viam API specification on [GitHub](https://github.com/viamrobotics/api).
 
@@ -130,7 +130,7 @@ This allows for tremendous flexibility in terms of your architecture design.
 
 ## Scale
 
-Viam provides [fleet management capabilities](/fleet/) to help you scale your machines in production.
+Viam provides [fleet management capabilities](/app/fleet/) to help you scale your machines in production.
 With it you can:
 
 - Manage permissions within your organization and locations.
@@ -143,9 +143,9 @@ You can also extend Viam to support additional hardware components or software s
 
 The Viam registry allows hardware and software engineers to collaborate on their machine projects by writing and sharing custom modules with each other.
 You can add a module from the Viam registry directly from your machine's **Configuration** tab in [the Viam app](https://app.viam.com/), using the **+ Create component** button.
-You can also [upload your own module to the Viam registry](/registry/upload/).
+You can also [upload your own module to the Viam registry](/app/registry/upload/).
 
-See [Modular resources](/registry/) for more information.
+See [Modular resources](/app/registry/) for more information.
 
 ## Next steps
 

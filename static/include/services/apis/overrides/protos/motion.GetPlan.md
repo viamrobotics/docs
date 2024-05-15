@@ -1,4 +1,4 @@
-By default, returns the plan history of the most recent [`MoveOnGlobe`](/mobility/motion/#moveonglobe) or [`MoveOnMap`](/mobility/motion/#moveonmap) call to move a [base](/components/base/) component.
+By default, returns the plan history of the most recent [`MoveOnGlobe`](/machine/services/motion/#moveonglobe) or [`MoveOnMap`](/machine/services/motion/#moveonmap) call to move a [base](/machine/components/base/) component.
 
 The plan history for executions before the most recent can be requested by providing an `ExecutionID` in the request.
 

@@ -23,9 +23,9 @@ no_list: true
 <!-- LEARNING GOALS
 After following this tutorial, you will understand how the ML model service and the Vision service work together and you will be able to use both alongside the base and camera components to make a machine respond to the world around it.  -->
 
-In this tutorial you will learn how to configure a color detector with the vision service and leverage that detector with a [transform camera](/components/camera/transform/) to detect the color red.
+In this tutorial you will learn how to configure a color detector with the vision service and leverage that detector with a [transform camera](/machine/components/camera/transform/) to detect the color red.
 
-The [vision service](/ml/vision/) enables a robot to use its cameras to see and interpret the world around it.
+The [vision service](/services/vision/) enables a robot to use its cameras to see and interpret the world around it.
 The service also allows you to create different types of detectors with which the robot can recognize objects, scan QR codes, perform optical quality inspections, sort different colored objects, take measurements, and more.
 
 You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try) or with [your own Viam Rover](/get-started/try-viam/rover-resources/).
@@ -56,7 +56,7 @@ This tutorial uses the color `#7a4f5c` or `rgb(122, 79, 92)` (a reddish color).
 
 **Hex color #7a4f5c**: {{<imgproc src="/tutorials/try-viam-color-detection/7a4f5c.png" resize="150x" declaredimensions=true alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color.">}}
 
-Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/robots) and configure your [vision service color detector](/ml/vision/#detections):
+Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/robots) and configure your [vision service color detector](/services/vision/#detections):
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
@@ -101,7 +101,7 @@ The `color_detector` is a heuristic-based detector that draws boxes around objec
 
 Click **Save** to save your configuration.
 
-You cannot interact directly with the [vision service](/ml/vision/).
+You cannot interact directly with the [vision service](/services/vision/).
 To be able to interact with the vision service you must configure a camera component.
 
 {{< alert title="Tip" color="tip" >}}
@@ -118,8 +118,8 @@ Note that the detector does not detect black, perfect greys (greys where the red
 
 ## Configure a transform camera to use the color detector
 
-Viam [camera](/components/camera/) components can be physical like the one already configured on the rover, or virtual.
-A virtual [_transform camera_](/components/camera/transform/) transforms the output from a physical camera.
+Viam [camera](/machine/components/camera/) components can be physical like the one already configured on the rover, or virtual.
+A virtual [_transform camera_](/machine/components/camera/transform/) transforms the output from a physical camera.
 
 To view output from the color detector overlaid on images from a physical camera, configure a transform camera:
 

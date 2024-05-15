@@ -206,7 +206,7 @@ Use the template and example below to populate the JSON file with a single key, 
 
 ## Configure a `customlinux` board
 
-Configure your board as a [`customlinux`](/components/board/customlinux/) board to use your board definitions file:
+Configure your board as a [`customlinux`](/machine/components/board/customlinux/) board to use your board definitions file:
 
 {{< tabs name="Configure a customlinux board" >}}
 {{% tab name="Config Builder" %}}
@@ -216,7 +216,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `board` type, then select the `customlinux` model.
 Enter a name or use the suggested name for your `customlinux` board and click **Create**.
 
-![An example configuration for a customlinux board in the Viam app Config Builder.](/components/board/customlinux-ui-config.png)
+![An example configuration for a customlinux board in the Viam app Config Builder.](/machine/components/board/customlinux-ui-config.png)
 
 Copy and paste the following json object into your board's attributes field.
 
@@ -252,9 +252,9 @@ Copy and paste the following json object into your board's attributes field.
 ## Next steps
 
 {{< cards >}}
-{{% card link="/build/configure/" %}}
+{{% card link="/machine/configure/" %}}
 {{% card link="/tutorials/" %}}
-{{% card link="/build/program/" %}}
+{{% card link="/program/" %}}
 {{< /cards >}}
 
 ## Need assistance?

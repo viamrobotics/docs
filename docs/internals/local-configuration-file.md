@@ -9,7 +9,7 @@ images: ["/get-started/installation/thumbnails/manage.png"]
 description: "Building a local machine configuration file for use with viam-server."
 ---
 
-The `viam-server` binary uses a JSON-formatted configuration file to define all resources (hardware [components](/components/) and software [services](/services/)) it has access to, as well as any relevant parameters for those resources.
+The `viam-server` binary uses a JSON-formatted configuration file to define all resources (hardware [components](/machine/components/) and software [services](/machine/services/)) it has access to, as well as any relevant parameters for those resources.
 
 When you [install `viam-server`](/get-started/installation/) from [the Viam app](https://app.viam.com), you configure your machine directly in the app, and the app will automatically sync your configuration to your machine.
 
@@ -18,7 +18,7 @@ However, if your machine will never connect to the internet, you will need to cr
 - [Build a local configuration file in the Viam app](#build-a-local-configuration-file-in-the-viam-app) - Use the Viam app to build the configuration file and copy it to your machine, without connecting your machine to the Viam app.
 - [Build a local configuration file manually](#build-a-local-configuration-file-manually) - Build your own local configuration file based on the example file.
 
-For information on the individual configuration options available, see [Configuration](/build/configure/).
+For information on the individual configuration options available, see [Configuration](/machine/configure/).
 
 ## Build a local configuration file in the Viam app
 
@@ -66,7 +66,7 @@ If your machine temporarily disconnects from the internet, its configuration is 
 ## Example JSON configuration file
 
 If you want to create your own JSON configuration file without using [the Viam app](https://app.viam.com), you can start with the following example file.
-This file contains some basic example [component](/components/) and [service](/services/) configurations, as well as an example of a {{< glossary_tooltip term_id="process" text="process" >}}:
+This file contains some basic example [component](/machine/components/) and [service](/machine/services/) configurations, as well as an example of a {{< glossary_tooltip term_id="process" text="process" >}}:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -224,4 +224,4 @@ This file contains some basic example [component](/components/) and [service](/s
 }
 ```
 
-For more information on the individual configuration options available, see [Configuration](/build/configure/).
+For more information on the individual configuration options available, see [Configuration](/machine/configure/).
