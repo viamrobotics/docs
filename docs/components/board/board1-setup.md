@@ -7,6 +7,7 @@ description: "Flash an <storage-medium> for the <board-series-model> to prepare 
 images: ["/get-started/installation/thumbnails/<board-series-model>.png"]
 imageAlt: "<board-series-model>"
 no_list: true
+draft: true
 ---
 
 The [<board-series-model>](http://www.<board-series-model>) from <manufacturer/organization> is a <brief board description of features and specifications>.
