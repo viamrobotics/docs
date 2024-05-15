@@ -329,20 +329,27 @@ python_ignore_apis = [
     'viam.components.board.client.BoardClient.write_analog' # Currently borked: https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.write_analog
 ]
 
-## Use these URLs for data types that are built-in to the language:
+## Use these URLs for data types that are not otherwise captured by parse(), such as:
+## - Well-known built-in data types that are not scrapable (like 'int')
+## - Viam-specific data types, even if scrapeable, that are part of a multiple-data-type return
+##   (like list_organization_members : Tuple[List[viam.proto.app.OrganizationMember], List[viam.proto.app.OrganizationInvite]]
+## Data type links defined here will be used instead of scraped links if both exist:
 python_datatype_links = {
+    ## Built-in data types:
     "str": "https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str",
     "int": "https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex",
     "float": "https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex",
     "bytes": "https://docs.python.org/3/library/stdtypes.html#bytes-objects",
     "bool": "https://docs.python.org/3/library/stdtypes.html#boolean-type-bool",
-    "list": "https://docs.python.org/3/library/stdtypes.html#typesseq-list",
-    "tuple": "https://docs.python.org/3/library/stdtypes.html#tuples",
-    "datetime": "https://docs.python.org/3/library/datetime.html",
     "datetime.datetime": "https://docs.python.org/3/library/datetime.html",
-    ## We could also choose to be explicit about Viam data types, like so:
-    "Control": "https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control",
-    "EventType": "https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.EventType"
+    "datetime.timedelta": "https://docs.python.org/3/library/datetime.html#timedelta-objects",
+    ## Viam-specific data types:
+    "viam.proto.app.OrganizationMember": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationMember",
+    "viam.proto.app.OrganizationInvite": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite",
+    "viam.components.arm.KinematicsFileFormat.ValueType": "https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.KinematicsFileFormat",
+    "viam.media.video.NamedImage": "https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage",
+    "viam.proto.common.ResponseMetadata": "https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata",
+    "viam.proto.component.encoder.PositionType.ValueType": "https://python.viam.dev/autoapi/viam/gen/component/encoder/v1/encoder_pb2/index.html#viam.gen.component.encoder.v1.encoder_pb2.PositionType"
 }
 
 ## Inject these URLs, relative to 'docs', into param/return/raises descriptions that contain exact matching key text.
@@ -445,6 +452,50 @@ def make_soup(url):
    except urllib.error.HTTPError as err:
        print(f'An HTTPError was thrown: {err.code} {err.reason} for URL: {url}')
 
+## Link any matching data types to their reference links, based on {sdk}_datatype_links[] array,
+## used in parse() for both param and return data types. Handles data types syntax that includes
+## multiple data types (and therefore requires multiple data type links), such as
+## ListOrganizationMembers: Tuple[List[viam.proto.app.OrganizationMember], List[viam.proto.app.OrganizationInvite]
+## DESIGN DECISION: Ignore well-known, usually leading (containing) data types like List, Tuple, Dict.
+## NOTE: Only used in PySDK parsing, for now (but should work for all with minor tweak to support per-language links array):
+def link_data_types(sdk, data_type_string):
+
+    linked_data_type_string = ""
+
+    ## If the passed data_type_string matches exactly to a data type defined in python_datatype_links, use that:
+    if data_type_string in python_datatype_links.keys():
+       linked_data_type_string = '[' + data_type_string + '](' + python_datatype_links[data_type_string] + ')'
+    else:
+
+        ## Assemble all encountered data types that match to python_datatype_links keys into array.
+        ## This match is a little too greedy, and will match, say, 'int' to 'JointPositions'. To counter
+        ## this, we additionally check for leading and trailing alphanumeric characters further in:
+        matching_data_types = list(key for key in python_datatype_links if key in data_type_string)
+
+        if len(matching_data_types) > 0:
+
+            ## Ugly hack to allow us to append within the for loop below, sorry:
+            linked_data_type_string = data_type_string
+
+            for data_type_found in matching_data_types:
+
+                ## Discard string matches that are substrings of other data type strings:
+                if not regex.search(r'[A-Za-z0-9]' + data_type_found, data_type_string) and not regex.search(data_type_found + r'[A-Za-z0-9]', data_type_string):
+
+                    data_type_linked = '[' + data_type_found + '](' + python_datatype_links[data_type_found] + ')'
+                    linked_data_type_string = regex.sub(data_type_found, data_type_linked, linked_data_type_string)
+                else:
+                    ## If we get here, this data_type is actually a substring of another data type. Take no action:
+                    pass
+
+    ## If we didn't find any matching links, return an empty string so we can know to look elsewhere,
+    ## otherwise return linked data type string:
+    if linked_data_type_string == data_type_string:
+        return ""
+    else:
+        return linked_data_type_string
+
+
 ## Link matching text, used in write_markdown():
 ## NOTE: Currently does not support formatting for link titles
 ## (EXAMPLE: bolded DATA tab here: https://docs.viam.com/build/program/apis/data-client/#binarydatabyfilter)
@@ -461,7 +512,7 @@ def link_description(format_type, full_description, link_text, link_url):
 
     return linked_description
 
-## Fetch sdk documentations for each language in sdks array, by language, by type, by resource, by method.
+## Fetch SDK documentation for each language in sdks array, by language, by type, by resource, by method.
 def parse(type, names):
 
 ## TODO:
@@ -739,32 +790,13 @@ def parse(type, names):
                                 ## Determine parameter type:
                                 param_type = parameter_tag.find_all('span', class_='n')[1].text
 
-                                this_method_parameters_dict["param_type"] = param_type
-
                                 ## Determine if this parameter is optional, and strip off ' | None' syntax if so:
                                 if param_type.endswith(' | None'):
                                     this_method_parameters_dict["optional"] = True
-                                    this_method_parameters_dict["param_type"] = param_type.replace(' | None', "")
+                                    param_type = param_type.replace(' | None', "")
+                                    #this_method_parameters_dict["param_type"] = param_type
                                 else:
                                     this_method_parameters_dict["optional"] = False
-
-                                ## Determine if this parameter has a parameter type link. Include if so, otherwise omit:
-                                if param_type in python_datatype_links.keys():
-                                    this_method_parameters_dict["param_type_link"] = python_datatype_links[param_type]
-                                elif parameter_tag.find('a', class_="reference internal"):
-                                    param_type_link_raw = parameter_tag.find('a', class_="reference internal").get("href")
-                                    ## Parameter type link is an anchor link:
-                                    if param_type_link_raw.startswith('#'):
-                                        this_method_parameters_dict["param_type_link"] = url + param_type_link_raw
-                                    ## Parameter type link is a relative link:
-                                    elif param_type_link_raw.startswith('../../'):
-                                        this_method_parameters_dict["param_type_link"] = sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../', '')
-
-                                else:
-                                    ## Unable to find any links.
-                                    ## We will try again when looping params in the Parameters section.
-                                    ## Sometimes the param links are there instead. No-op here:
-                                    pass
 
                                 ## 'Extra' params do not appear in "Parameters" section (Except for PySDK > Motion Service),
                                 ## so we must populate this param's content manually:
@@ -772,7 +804,7 @@ def parse(type, names):
 
                                     this_method_parameters_dict["param_description"] = "Extra options to pass to the underlying RPC call."
                                     this_method_parameters_dict["param_usage"] = "extra (Mapping[str, Any]) - Extra options to pass to the underlying RPC call."
-                                    this_method_parameters_dict["param_type"] = "Mapping[str, Any]"
+                                    this_method_parameters_dict["param_type"] = "Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]"
 
                                 ## 'Timeout' params do not appear in "Parameters" section (Except for PySDK > Motion Service),
                                 ## so we must populate this param's content manually:
@@ -780,7 +812,7 @@ def parse(type, names):
 
                                     this_method_parameters_dict["param_description"] = "An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call."
                                     this_method_parameters_dict["param_usage"] = "timeout (float) - An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call."
-                                    this_method_parameters_dict["param_type"] = "float"
+                                    this_method_parameters_dict["param_type"] = "[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)"
 
                                 ## Initial method usage syntax and Parameters section do not agree on param_type for do_command.
                                 ## Manually override with correct values, for param 'command' only:
@@ -788,9 +820,33 @@ def parse(type, names):
 
                                     this_method_parameters_dict["param_description"] = "The command to execute"
                                     this_method_parameters_dict["param_usage"] = "command (Mapping[str, ValueTypes]) – The command to execute"
-                                    this_method_parameters_dict["param_type"] = "Mapping[str, ValueTypes]"
+                                    this_method_parameters_dict["param_type"] = "Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]"
 
                                 else:
+
+                                    ## First, check python_datatype_links array for manually-mapped data type links.
+                                    ## These will override all other ways of determining data type links:
+                                    linked_param_type = ""
+                                    linked_param_type = link_data_types('python', param_type)
+
+                                    ## If link_data_types() returns a linked data type string, use that.
+                                    ## Otherwise, check the scraped parameter_tag for the link:
+                                    if linked_param_type != "":
+                                        this_method_parameters_dict["param_type"] = linked_param_type
+                                    elif parameter_tag.find('a', class_="reference internal"):
+                                        param_type_link_raw = parameter_tag.find('a', class_="reference internal").get("href")
+
+                                        ## Parameter type link is an anchor link:
+                                        if param_type_link_raw.startswith('#'):
+                                            this_method_parameters_dict["param_type"] = '[' + param_type + '](' + url + param_type_link_raw + ')'
+                                        ## Parameter type link is a relative link, in one of three forms:
+                                        elif param_type_link_raw.startswith('../../../'):
+                                            this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../../', '')+ ')'
+                                        elif param_type_link_raw.startswith('../../'):
+                                            this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../', '')+ ')'
+                                        elif param_type_link_raw.startswith('../'):
+                                            this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
+
                                     ## Get parameter usage and description, if method contains a "Parameters" section. Otherwise omit.
                                     ## NOTE: We can't just use the initial param content as found above, because it does not contain descriptions,
                                     ## and we can't just use this "Parameters" section, because it does not (usually) contain things like `extra` and `timeout`.
@@ -808,26 +864,27 @@ def parse(type, names):
                                             this_method_parameters_dict["param_description"] = regex.split(r" – ", strong_tag.parent.text)[1].replace("\n", " ")
 
                                             ## OPTION: Get full parameter usage string, stripping all newlines:
+                                            ## NOTE: Currently unused.
                                             this_method_parameters_dict['param_usage'] = strong_tag.parent.text.replace("\n", " ")
 
                                             ## Some params provide data type links in Parameters section only, not initial usage.
-                                            ## Get that here if so:
-                                            ## TODO: Only finding the first link, a few have more than one.
+                                            ## Get that here if soL
                                             if strong_tag.parent.find('a', class_="reference internal"):
                                                 param_type_link_raw = strong_tag.parent.find('a', class_="reference internal").get("href")
                                                 ## Parameter type link is an anchor link:
                                                 if param_type_link_raw.startswith('#'):
-                                                    this_method_parameters_dict["param_type_link"] = url + param_type_link_raw
-                                                ## Parameter type link is a relative link:
-                                                elif param_type_link_raw.startswith('../../'):
-                                                    this_method_parameters_dict["param_type_link"] = sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../', '')
+                                                    this_method_parameters_dict["param_type"] = '[' + param_type + '](' + url + param_type_link_raw + ')'
+                                                ## Parameter type link is a relative link, beginning with 1 - 3 instances of '../'
+                                                ## Convert to an absolute link:
+                                                elif param_type_link_raw.startswith('../'):
+                                                    this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
 
-                                        ## Unable to determine parameter description, neither timeout or extra, nor matching to any
-                                        ## param in initial method usage string. Usually this means a non-param (like error raised),
-                                        ## but if we are missing expected param descriptions, expand this section to catch them.
-                                        else:
-                                            ## No-op:
-                                            pass
+                                            ## Unable to determine parameter description, neither timeout or extra, nor matching to any
+                                            ## param in initial method usage string. Usually this means a non-param (like error raised),
+                                            ## but if we are missing expected param descriptions, expand this section to catch them.
+                                            else:
+                                                ## No-op:
+                                                pass
 
                                 this_method_dict["parameters"][param_name] = this_method_parameters_dict
 
@@ -843,9 +900,31 @@ def parse(type, names):
                             this_method_dict["return"] = {}
 
                             ## OPTION: Get return_type by explicit key name:
-                            this_method_dict["return"]["return_type"] = return_tag.find('span', class_="sig-return-typehint").text
+                            return_type = return_tag.find('span', class_="sig-return-typehint").text
+                            this_method_dict["return"]["return_type"] = return_type
+
+                            linked_return_type = ""
+                            linked_return_type = link_data_types('python', return_type)
+
+                            if linked_return_type != "":
+                                this_method_dict["return"]["return_type"] = linked_return_type
+                            elif return_tag.find('a', class_="reference internal"):
+
+                                ## TODO: Only grabbing the first link encountered, but a few methods return a tuple of two linked data types.
+                                ## Handling those via link_data_types() with manual entries in python_datatype_links for now,
+                                ## But there's room for a more elegant solution:
+                                return_type_link_raw = return_tag.find('a', class_="reference internal").get("href")
+
+                                ## Return type link is an anchor link:
+                                if return_type_link_raw.startswith('#'):
+                                    this_method_dict["return"]["return_type"] = '[' + return_type + '](' + url + return_type_link_raw + ')'
+                                ## Return type link is a relative link, beginning with 1 - 3 instances of '../'
+                                ## Convert to an absolute link:
+                                elif return_type_link_raw.startswith('../'):
+                                    this_method_dict["return"]["return_type"] = '[' + return_type + '](' + sdk_url + "/autoapi/viam/" + return_type_link_raw.replace('../', '')+ ')'
 
                             ## OPTION: Get full return usage, including type info and html links if present, stripping all newlines:
+                            ## NOTE: Currently unused.
                             this_method_dict["return"]["return_usage"] = str(return_tag.find('span', class_="sig-return-typehint")).replace("\n", " ")
 
                             ## Get return description from "Returns" section if present:
@@ -884,6 +963,7 @@ def parse(type, names):
 
                                     ## OPTION: Get full error raised usage, including type info and html links if present.
                                     ## NOTE: Errors raised (py) don't seem to have any links, just some monospace formatting:
+                                    ## NOTE: Currently unused.
                                     this_method_raises_dict["raises_usage"] = str(strong_tag.parent).replace("\n", " ")
 
                                     ## OPTION: Determine error raised description, stripping any newlines:
@@ -1048,13 +1128,17 @@ def parse_method_usage(usage_string):
     parsed_usage_string = []
 
     for param in parameters:
-        # HACKY: Hardcoding extra and error bc they are all the same and parsing from usage string
+        # HACKY: Hardcoding ctx, extra, and error bc they are all the same and parsing from usage string
         # has proven difficult
 
         # Splitting each parameter by space to separate parameter name and type
         parts = param.split()
 
-        if 'extra' in param:
+        if 'ctx' in param:
+            type_name = "ctx"
+            param_type = "Context"
+            param_type_link = "https://pkg.go.dev/context#Context"
+        elif 'extra' in param:
             type_name = "extra"
             param_type = "map[string]interface\{\}"
             param_type_link = "https://go.dev/blog/maps"
@@ -1084,7 +1168,10 @@ def format_method_usage(parsed_usage_string):
 
         return_string = ""
 
-        if type_name == "extra":
+        if type_name == "ctx":
+            return_string += f"- `{type_name}` [({param_type})]({param_type_link}): A Context carries a deadline, a cancellation signal, and other values across API boundaries."
+            formatted_output.append(return_string)
+        elif type_name == "extra":
             return_string += f"- `{type_name}` [({param_type})]({param_type_link}): Extra options to pass to the underlying RPC call."
             formatted_output.append(return_string)
         elif param_type == "error":
@@ -1255,30 +1342,10 @@ def write_markdown(type, names, methods):
                                     param_data = methods['python'][type][resource][py_method_name]['parameters'][parameter]
 
                                     param_type = param_data.get("param_type")
-                                    param_subtype = param_data.get("param_subtype")
-                                    param_type_link = param_data.get("param_type_link")
-                                    param_subtype_link = param_data.get("param_subtype_link")
                                     param_description = param_data.get("param_description")
                                     optional = param_data.get("optional")
 
-                                    output_file.write(f'- `{parameter}` [({param_type})]')
-
-                                    # Ideally we could update at least Python SDK with type links?
-                                    if param_type_link:
-                                        # Check for subtype
-                                        if param_subtype:
-                                            output_file.write(f"({param_type_link})")
-                                            if param_subtype_link:
-                                                output_file.write(f"<[{param_subtype}]")
-                                                output_file.write(f"({param_subtype_link})>")
-                                            else:
-                                                output_file.write(f"<{param_subtype}>")
-                                        else:
-                                            output_file.write(f"({param_type_link})")
-                                    # SG: Haven't found any sub-types without param type links-- they are all in flutter SDK--
-                                    # could expand this logic if popped up or grabbing more subtypes?
-                                    else:
-                                        output_file.write('(<INSERT PARAM TYPE LINK>)')
+                                    output_file.write(f'- `{parameter}` ({param_type})')
 
                                     if optional:
                                         output_file.write(' (optional)')
@@ -1289,6 +1356,8 @@ def write_markdown(type, names, methods):
 
                                     if param_description:
                                         output_file.write(f" {param_description}")
+                                    else:
+                                        output_file.write(": <INSERT PARAM DESCRIPTION>\n")
 
                                     # line break for parameters list
                                     output_file.write('\n')
@@ -1303,28 +1372,10 @@ def write_markdown(type, names, methods):
 
                                 return_data = methods['python'][type][resource][py_method_name]["return"]
                                 return_type = return_data.get("return_type")
-                                return_subtype = return_data.get("return_subtype")
-                                return_type_link = return_data.get("return_type_link")
-                                return_link = return_data.get("return_type_link") # TODO: handle this
-                                return_subtype_link = return_data.get("return_subtype_link")
                                 return_description = return_data.get("return_description")
 
                                 if return_type:
-                                    output_file.write(f"- [({return_type})]")
-
-                                    if return_type_link:
-                                        output_file.write(f"({return_type_link})")
-                                    else:
-                                        output_file.write("(INSERT RETURN TYPE LINK)")
-
-                                    if return_subtype:
-                                        output_file.write(f"<[{return_subtype}]")
-                                        if return_subtype_link:
-                                            output_file.write(f"({return_subtype_link})>")
-                                        else:
-                                            output_file.write("(<INSERT RETURN SUBTYPE LINK>)")
-                                    else:
-                                        pass
+                                    output_file.write(f"- ({return_type})")
 
                                     if return_description:
                                         output_file.write(f": {return_description}\n")
