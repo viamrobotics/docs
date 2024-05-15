@@ -322,7 +322,7 @@ viam data database hostname --org-id=abc
 Viam currently only supports deleting approximately 500 files at a time.
 To delete more data iterate over the data with a shell script:
 
-```sh
+```sh {class="command-line" data-prompt="$"}
 # deleting one hour of image data
 for i in {00..59}; do
   viam data delete binary --org-ids=<org-id> --mime-types=image/jpeg,image/png --start=2024-05-13T11:00:00.000Z --end=2024-05-13T11:${i}:00.000Z
