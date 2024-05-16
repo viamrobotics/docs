@@ -2,7 +2,7 @@
 title: "Monitor Air Quality with a Fleet of Sensors"
 linkTitle: "Air Quality Fleet"
 type: "docs"
-description: "Use a fleet of machines with air quality sensors to monitor PM 2.5 levels in different indoor and outdoor locations."
+description: "Configure a fleet of machines to capture air quality sensor data across different locations."
 images: ["/tutorials/air-quality-fleet/three-sensor-dash-wide.png"]
 imageAlt: "A web dashboard showing PM2.5 readings from two air quality sensors."
 tags: ["tutorial"]
