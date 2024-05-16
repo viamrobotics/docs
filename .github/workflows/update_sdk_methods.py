@@ -64,12 +64,12 @@ if args.verbose:
 ## This script must be run within the 'docs' git repo. Here we check
 ## to make sure this is the case, and get the root of our git-managed
 ## repo to use later in parse() and write_markdown():
-process = subprocess.Popen(['git', 'rev-parse', '--show-toplevel'], \
+process_result = subprocess.Popen(['git', 'rev-parse', '--show-toplevel'], \
                      stdout=subprocess.PIPE, \
                      stderr=subprocess.PIPE)
-stdout, stderr = process.communicate()
+stdout, stderr = process_result.communicate()
 
-if process.returncode == 0:
+if process_result.returncode == 0:
     gitroot = stdout.decode().rstrip()
 else:
     print("ERROR: You must run this script within a cloned copy of the 'docs' git repo!")
@@ -92,21 +92,16 @@ proto_map_file = os.path.join(gitroot, '.github/workflows/sdk_protos_map.csv')
 
 is_go_sdk_staging_available = False
 
-## Currently hardcoding URL and port, but can add dynamic detection if needed:
-go_sdk_docs_staging_url = urllib.request.Request('http://localhost:8080/go.viam.com/rdk')
+## Check to see if pkgsite (Go SDK docs local builder process) is running, and get its PID if so:
+process_result = subprocess.run(["ps -ef | grep pkgsite | grep -v grep | awk {'print $2'}"], shell=True, text = True, capture_output=True)
+pkgsite_pid = process_result.stdout.rstrip()
 
-try:
-    go_sdk_staging_status = urllib.request.urlopen(go_sdk_docs_staging_url).getcode()
-    if go_sdk_staging_status == 200:
-        is_go_sdk_staging_available = True
-        if args.verbose:
-            print('DEBUG: Detected local staged Go SDK docs URL, using that for Go code samples.')
-except urllib.error.HTTPError as err:
-    ## Go SDK docs staging URL unavailable, skip without raising an error:
-    pass
-except urllib.error.URLError as err:
-    ## Go SDK docs staging URL unavailable, skip without raising an error:
-    pass
+if pkgsite_pid != '':
+    process_result = subprocess.run(["lsof -Pp " + pkgsite_pid + " | grep LISTEN | awk {'print $9'} | sed 's%.*:%%g'"], shell=True, text = True, capture_output=True)
+    pkgsite_port = process_result.stdout
+    is_go_sdk_staging_available = True
+    if args.verbose:
+        print('DEBUG: Detected local staged Go SDK docs URL, using that for Go code samples.')
 
 ## Array mapping language to its root URL:
 sdk_url_mapping = {
@@ -725,9 +720,10 @@ def parse(type, names):
                                 elif len(go_code_samples_raw) > 1:
                                 
                                     ## In case we want to support multiple code samples per method down the line,
-                                    ## this is where to process. Update write_markdown() accordingly to enable looping
-                                    ## through possible code sample data objects.
-                                    pass
+                                    ## this is where to process (and: update write_markdown() accordingly to enable looping
+                                    ## through possible code sample data objects). For now we just continue to fetch just the
+                                    ## first-discovered (i.e., at index [0]):
+                                    this_method_dict["code_sample"] = go_code_samples_raw[0].find_next('pre').text.replace("\t", "  ")
 
                                 ## We have finished collecting all data for this method. Write the this_method_dict dictionary
                                 ## in its entirety to the go_methods dictionary by type (like 'component'), by resource (like 'arm'),
