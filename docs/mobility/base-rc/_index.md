@@ -140,14 +140,8 @@ Close out of all remote control related systems.
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/baseremotecontrol).
 
 ```go {class="line-numbers linkable-line-numbers"}
-baseRCService, err := baseremotecontrol.FromRobot(machine, "my_base_rc_service")
-if err != nil {
-    logger.Error(err)
-    return
-}
-
 // Close out of all remote control related systems.
-err = baseRCService.Close(context.Background())
+err := baseRCService.Close(context.Background())
 ```
 
 {{% /tab %}}
@@ -171,11 +165,6 @@ Get a list of inputs from the controller that are being monitored for that contr
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/baseremotecontrol).
 
 ```go {class="line-numbers linkable-line-numbers"}
-baseRCService, err := baseremotecontrol.FromRobot(machine, "my_base_rc_service")
-if err != nil {
-    logger.Error(err)
-    return
-}
 // Get the list of inputs from the controller that are being monitored for that control mode.
 inputs := baseRCService.ControllerInputs()
 ```
