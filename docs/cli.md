@@ -692,7 +692,7 @@ For example, the following represents the configuration of an example `my-module
       "model": "acme:demo:my-model"
     }
   ],
-  "entrypoint": "dist/main"
+  "entrypoint": "<PATH-TO-EXECUTABLE>"
 }
 ```
 
@@ -761,7 +761,7 @@ pip3 install -r requirements.txt
 #!/bin/bash
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz dist/main
+tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
 {{% /expand%}}
@@ -788,7 +788,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz dist/main
+tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
 {{% /expand%}}
@@ -822,7 +822,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz dist/main
+tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
 { {% /expand%}}
@@ -838,7 +838,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz dist/main
+tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
 { {% /expand%}}
@@ -866,7 +866,7 @@ For example, the following extends the `my-module` <file>meta.json</file> file f
     "path": "dist/archive.tar.gz",
     "arch": ["linux/amd64", "linux/arm64"]
   },
-  "entrypoint": "dist/main"
+  "entrypoint": "<PATH-TO-EXECUTABLE>"
 }
 ```
 
