@@ -14,16 +14,11 @@ draft: true
 
 {{% alert title="REQUIREMENTS" color="note" %}}
 
-Follow the [setup guide](/get-started/installation/prepare/<board-setup-filename>) to prepare your <model-name> to run `viam-server` before you configure your <model-name> board.
+Follow the [setup guide](/get-started/installation/prepare/board1-setup) to prepare your <model-name> to run `viam-server` before you configure your <model-name> board.
 
 {{% /alert %}}
 
-Configure a `<board-model>` board to integrate an (<board-series-model>)[http://www.board-model-details-page], (<board-series-model-1>)[http://www.board-model-1-details-page], or (<board-series-model-2>)[http://www.board-model-2-details-page] board into your machine.
-
-To flash the SD card to your board and for detailed setup instructions, follow the corresponding (<)[]
-
-follow [this guide to flash your board](/get-started/installation/prepare/orange-pi-zero2/).
-Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on your board and connect to the Viam app.
+Configure a `<board-model>` board to integrate an [<board-series-model>](http://www.example.com), [<board-series-model-1>](http://example.com), or [<board-series-model-2>](http://example.com) board into your machine.
 
 {{< tabs name="Configure a <board-model> Board" >}}
 {{% tab name="Config Builder" %}}
@@ -33,7 +28,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `board` type, then select the `<board-model>` model.
 Enter a name or use the suggested name for your board and click **Create**.
 
-![An example configuration for a <board-model> board in the Viam app Config Builder.](/components/board/<board-config>.png)
+![An example configuration for a <board-model> board in the Viam app Config Builder.](/components/board/pi-ui-config.png)
 
 Click the **{}** (Switch to Advanced) button in the top right of the component panel to edit your board's attributes with JSON, according to the following table.
 
