@@ -30,7 +30,7 @@ Without writing any code, you will be able to view your camera stream, with dete
 The [vision service](/ml/vision/) enables a robot to use its cameras to see and interpret the world around it.
 The service also allows you to create different types of detectors with which the robot can recognize objects, scan QR codes, perform optical quality inspections, sort different colored objects, take measurements, and more.
 
-You can follow this tutorial with your own computer (laptop, desktop, or single-board computer) and webcam, or you can use a [rented Viam Rover](https://app.viam.com/try) if your computer is not compatible with [`viam-server`](/get-started/installation/).
+You can follow this tutorial with your own computer (laptop, desktop, or single-board computer) and webcam, or you can remotely borrow a [Viam rover](https://app.viam.com/try) if your computer is not compatible with [`viam-server`](/get-started/installation/).
 
 {{< tabs >}}
 {{% tab name="Use your own computer and webcam" %}}
@@ -58,7 +58,7 @@ In the [Viam app](https://app.viam.com), create a machine and follow the setup i
 1. Click to enable the **View cam** toggle and view your camera's live stream.
 
 {{% /tab %}}
-{{% tab name="Use a rented Viam machine" %}}
+{{% tab name="Use a borrowed Viam rover" %}}
 
 Each [Try Viam rover](https://app.viam.com/try) already has `viam-server` installed and is equipped with a webcam, so Try Viam is a great option if you do not have a macOS or Linux computer and a webcam available.
 
@@ -67,6 +67,10 @@ If you are renting a rover, we recommend that you skim through this tutorial bef
 
 Be aware that if you are running out of time during your rental, you can [extend your rover rental](/get-started/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
 {{< /alert >}}
+
+## Borrow a rover
+
+Borrow a rover for free for 10 minutes (with free time extension if no one is waiting) through [Try Viam](https://app.viam.com/try).
 
 ## Enable the cameras
 
@@ -206,34 +210,34 @@ After adding the component and its attributes, click **Save** in the top right c
 
 In the **CONTROL** tab, click the **detectionCam** card to expand it, and toggle **View detectionCam** to show the camera feed.
 
-Hold a rose-colored object in front of the camera.
+Point the camera at a rose-colored object or hold one up in front of the camera.
 
 Each time the camera detects the color, you will see a red rectangle around the color labeled with the detection confidence level.
 
-![Base component panel displaying an example color detection.](/tutorials/try-viam-color-detection/detected-example.png)
+![Camera component panel displaying an example color detection.](/tutorials/try-viam-color-detection/detected-example.png)
 
 {{% /tab %}}
+{{% tab name="Use a borrowed Viam rover" %}}
 
-{{% tab name="Use a rented Viam machine" %}}
-
-In the **CONTROL** tab, click on your base component and enable the detection camera in the **Live Feeds** section.
+In the **CONTROL** tab, click on your base component and enable **detectionCam** in the **Live Feeds** section.
 
 Next, enable the keyboard and move your rover around until your camera detects the specified color.
 
-Scroll down in the **CONTROL** tab, click to expand the **detectionCam** card, and toggle **View detectionCam** to view the live stream.
-
 Each time the camera detects the color, you will see a red rectangle around the color labeled with the detection confidence level.
 
-![Base component panel displaying an example color detection.](/tutorials/try-viam-color-detection/detected-example.png)
+![Base component panel displaying an example color detection.](/tutorials/try-viam-color-detection/detected-try-viam-example.png)
 
-<!--TODO: Test actual workflow here; does base show detectionCam? -->
+You can also find the dedicated **detectionCam** card in the **CONTROL** tab, displaying the same feed.
 
 {{% /tab %}}
 {{< /tabs >}}
 
 ## Next steps
 
-If you're ready for more, try making your rover detect other colors.
-You could also write some code with a Viam SDK to [make your Viam Rover move in a square](/tutorials/get-started/try-viam-sdk/).
+Try changing the detector config to detect other colors.
+
+To do more with the vision service and incorporate machine learning, try [our person detection security robot tutorial](/tutorials/projects/send-security-photo/).
+
+To learn about coding with Viam's SDKs, try [making a rover move in a square](/tutorials/get-started/try-viam-sdk/).
 
 {{< snippet "social.md" >}}
