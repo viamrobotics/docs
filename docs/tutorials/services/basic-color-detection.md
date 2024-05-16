@@ -70,7 +70,7 @@ Be aware that if you are running out of time during your rental, you can [extend
 
 ## Borrow a rover
 
-Borrow a rover for free for 10 minutes (with free time extension if no one is waiting) through [Try Viam](https://app.viam.com/try).
+Borrow a rover free of cost for 10 minutes (with free time extension if no one is waiting) through [Try Viam](https://app.viam.com/try).
 
 ## Enable the cameras
 
