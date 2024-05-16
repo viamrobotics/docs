@@ -96,7 +96,14 @@ To configure a webhook:
         "attributes": {
           "data_types": ["binary", "tabular"]
         },
-        "type": "part_data_ingested"
+        "type": "part_data_ingested",
+        "headers": {
+          "Component-Type": "sensor",
+          "Component-Name": "my_temp_sensor",
+          "Method-Name": "temperature_reading",
+          "Min-Time-Received": "2024-01-01T00:00:00",
+          "Max-Time-Received": "2024-01-01T23:59:59"
+        }
       }
     }
   ]
@@ -112,7 +119,7 @@ To configure a webhook:
    For example, if you want to trigger a webhook on temperature readings, configure data capture and sync on your temperature sensor.
    Be aware that the component must return the type of data you configured in `data_types`.
 5. Write your cloud/lambda function to process the request from `viam-server`.
-   The following example function sends a Slack message with a machine's details, such as robot and location IDs, when it receives a request:
+   The following example function sends a Slack message with a machine's details, such as robot and location IDs, as well as other relevant headers, when it receives a request:
 
    ```python {class="line-numbers linkable-line-numbers"}
    import functions_framework
@@ -213,7 +220,7 @@ To configure a webhook:
 3. While your part is online, the webhook action triggers at a specified interval.
    Edit the `seconds_between_notifications` attribute to set this interval according to your preferences.
 4. Write your cloud/lambda function to process the request from `viam-server`.
-   The following example function sends a Slack message with a machine's details, such as robot and location IDs, when it receives a request:
+   The following example function sends a Slack message with a machine's details, such as robot and location IDs, as well as other relevant headers, when it receives a request:
 
    ```python {class="line-numbers linkable-line-numbers"}
    import functions_framework
@@ -229,8 +236,8 @@ To configure a webhook:
        "Robot-ID": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value'
        "Component-Type": request.headers['component-type'] if 'component-type' in request.headers else 'no value'
        "Component-Name": request.headers['component-name'] if 'component-name' in request.headers else 'no value'
-       "Method-Name": request.headers['method-name'] if 'method-name'in request.headers else 'no value'
-       "Min-Time-Received": request.headers['min-time-received'] if 'min-time-received'in request.headers else 'no value'
+       "Method-Name": request.headers['method-name'] if 'method-name' in request.headers else 'no value'
+       "Min-Time-Received": request.headers['min-time-received'] if 'min-time-received' in request.headers else 'no value'
        "Max-Time-Received": request.headers['max-time-received'] if 'max-time-received' in request.headers else 'no value'
      }
 
