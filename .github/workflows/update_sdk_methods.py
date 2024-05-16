@@ -79,6 +79,35 @@ else:
 ## Build path to sdk_protos_map.csv file that contains proto-to-methods mapping, used in write_markdown():
 proto_map_file = os.path.join(gitroot, '.github/workflows/sdk_protos_map.csv')
 
+## Check to see if we have a locally-staged version of the Go SDK Docs (RDK repo). If so,
+## scrape our code samples (and only code samples!) from that URL instead. This check just
+## establishes whether the URL is up or not; if detected as up here, it is scraped in parse().
+## TODO: Consider if we need to consider other ports besides '8080', i.e. if multiple stage attempts,
+##   or if port was already in use by another service when pkgsite command was issues
+##   (8080 a very common web services default port)
+## NOTE: To stage the Go SDK docs (RDK repo):
+##   - Clone https://github.com/viamrobotics/rdk
+##   - Make your changes (add code samples as needed)
+##   - Run, from within the repo: go install golang.org/x/pkgsite/cmd/pkgsite@latest; pkgsite -open
+
+is_go_sdk_staging_available = False
+
+## Currently hardcoding URL and port, but can add dynamic detection if needed:
+go_sdk_docs_staging_url = urllib.request.Request('http://localhost:8080/go.viam.com/rdk')
+
+try:
+    go_sdk_staging_status = urllib.request.urlopen(go_sdk_docs_staging_url).getcode()
+    if go_sdk_staging_status == 200:
+        is_go_sdk_staging_available = True
+        if args.verbose:
+            print('DEBUG: Detected local staged Go SDK docs URL, using that for Go code samples.')
+except urllib.error.HTTPError as err:
+    ## Go SDK docs staging URL unavailable, skip without raising an error:
+    pass
+except urllib.error.URLError as err:
+    ## Go SDK docs staging URL unavailable, skip without raising an error:
+    pass
+
 ## Array mapping language to its root URL:
 sdk_url_mapping = {
     "go": "https://pkg.go.dev",
@@ -662,10 +691,43 @@ def parse(type, names):
 
                                 ## Get full method usage string, by omitting all comment spans:
                                 method_usage_raw = regex.sub(r'<span class="comment">.*</span>', '', this_method_raw2)
-                                this_method_dict["usage"] = regex.sub(r'</span>', '', method_usage_raw).lstrip().rstrip()
+                                this_method_dict["usage"] = regex.sub(r'</span>', '', method_usage_raw).replace("\t", "  ").lstrip().rstrip()
 
                                 ## Not possible to link to the specific functions, so we link to the parent resource instead:
                                 this_method_dict["method_link"] = url + '#' + interface_name
+
+
+                                if is_go_sdk_staging_available:
+
+                                    staging_url = regex.sub('https://pkg.go.dev', 'http://localhost:8080', url)
+
+                                    #staging_url = 'https://pkg.go.dev', 'http://localhost:8080'
+                                    staging_soup = make_soup(staging_url)
+
+                                    ## Get a raw dump of all go methods by interface for each resource:
+                                    go_code_samples_raw = staging_soup.find_all(
+                                        lambda code_sample_tag: code_sample_tag.name == 'p'
+                                        and method_name + " example:" in code_sample_tag.text)
+                                else:
+
+                                    ## Get a raw dump of all go methods by interface for each resource:
+                                    go_code_samples_raw = soup.find_all(
+                                        lambda code_sample_tag: code_sample_tag.name == 'p'
+                                        and method_name + " example:" in code_sample_tag.text)
+
+                                ## Determine if a code sample is provided for this method:
+                                if len(go_code_samples_raw) == 1:
+
+                                    ## Fetch code sample raw text, preserving newlines but stripping all formatting.
+                                    ## This string should be suitable for feeding into any python formatter to get proper form:
+                                    this_method_dict["code_sample"] = go_code_samples_raw[0].find_next('pre').text.replace("\t", "  ")
+
+                                elif len(go_code_samples_raw) > 1:
+                                
+                                    ## In case we want to support multiple code samples per method down the line,
+                                    ## this is where to process. Update write_markdown() accordingly to enable looping
+                                    ## through possible code sample data objects.
+                                    pass
 
                                 ## We have finished collecting all data for this method. Write the this_method_dict dictionary
                                 ## in its entirety to the go_methods dictionary by type (like 'component'), by resource (like 'arm'),
