@@ -696,12 +696,12 @@ def parse(type, names):
                                 ## Not possible to link to the specific functions, so we link to the parent resource instead:
                                 this_method_dict["method_link"] = url + '#' + interface_name
 
-
+                                ## Check for code sample for this method.
+                                ## If we detected that a local instance of the Go SDK docs is available, use that.
+                                ## Otherwise, use the existing scraped 'soup' object from the live Go SDK docs instead.
                                 if is_go_sdk_staging_available:
 
                                     staging_url = regex.sub('https://pkg.go.dev', 'http://localhost:8080', url)
-
-                                    #staging_url = 'https://pkg.go.dev', 'http://localhost:8080'
                                     staging_soup = make_soup(staging_url)
 
                                     ## Get a raw dump of all go methods by interface for each resource:
