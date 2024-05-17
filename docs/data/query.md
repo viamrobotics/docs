@@ -112,33 +112,24 @@ You do not need to perform any additional configuration when [querying data in t
 
    This command configures a new database user for your org for use with data query.
 
-1. Determine the hostname for your organization's MongoDB Atlas Data Federation instance by running the following command with the organization's `org-id` from step 2:
+1. Determine the connection URI for your organization's MongoDB Atlas Data Federation instance by running the following command with the organization's `org-id` from step 2:
 
    ```sh {class="line-numbers linkable-line-numbers"}
    viam data database hostname --org-id=<YOUR-ORGANIZATION-ID>
    ```
 
-   This command returns the `hostname` (including database name) to use to connect to your data store on the Viam organization's MongoDB Atlas instance.
+   This command returns the hostname (including database name) and connection URI to use to connect to your data store on the Viam organization's MongoDB Atlas instance.
+   The connection URI includes everything you need to connect to your organization's MongoDB Atlas Data Federation instance from a valid MQL-compatible client, except your Viam account password.
+   Replace the placeholder text `YOUR-PASSWORD-HERE` in the connection URI with your Viam account password.
    You will need this to query your data in the next section.
 
 For more information, see the documentation for the [Viam CLI `database` command](/cli/#data).
 
 ### Query
 
-Once you have synced tabular data to the Viam app, you can directly query that data from an MQL-compatible client, such as [`mongosh`](https://www.mongodb.com/docs/mongodb-shell/) or [Compass](https://www.mongodb.com/docs/compass/current/).
+Once you have synced tabular data to the Viam app, you can directly query that data from an MQL-compatible client, such as the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/), [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), or many third-party tools.
 
-1. Open your chosen MQL-compatible client an connect to the Viam organization's MongoDB Atlas instance.
-   You can use any client that is capable of connecting to a MongoDB Atlas instance, including the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/), [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), and many third-party tools.
-   To connect, use the `hostname` you determined when you [configured direct data query](/data/query/#configure-data-query), and structure your username in the following format:
-
-   ```sh
-   db-user-<YOUR-ORG-ID>
-   ```
-
-   Where `<YOUR-ORG-ID>` is your organization ID, determined from the `viam organizations list` CLI command.
-   The full username you provide to your client should therefore resemble `db-user-abcdef12-abcd-abcd-abcd-abcdef123456`.
-
-For example, to connect to your Viam organization's MongoDB Atlas instance and query data using the `mongosh` shell:
+For example, to use the `mongosh` shell to connect to your Viam organization's MongoDB Atlas instance and query data:
 
 1. If you haven't already, [download the `mongosh` shell](https://www.mongodb.com/try/download/shell).
    See the [`mongosh` documentation](https://www.mongodb.com/docs/mongodb-shell/) for more information.
@@ -146,14 +137,13 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
 1. Run the following command to connect to the Viam organization's MongoDB Atlas instance from `mongosh`:
 
    ```sh {class="command-line" data-prompt=">"}
-   mongosh "mongodb://<YOUR-DB-HOSTNAME>" --tls --authenticationDatabase admin --username db-user-<YOUR-ORG-ID>
+   mongosh "<YOUR-DB-CONNECTION-URI>"
    ```
 
    Where:
 
-   - `<YOUR-DB-HOSTNAME>` is your organization's assigned MongoDB Atlas instance hostname, determined from the [`viam data database hostname` CLI command](/data/query/#configure-data-query).
-   - `<YOUR-ORG-ID>` is your organization ID, determined from the `viam organizations list` CLI command.
-     The full username you provide to the `--username` flag should therefore resemble `db-user-abcdef12-abcd-abcd-abcd-abcdef123456`.
+   - `<YOUR-DB-CONNECTION-URI>` is your organization's assigned MongoDB Atlas connection URI, determined from the [`viam data database hostname` CLI command](/data/query/#configure-data-query).
+   - `YOUR-PASSWORD-HERE` (included in the connection URI) is your Viam account password, as set by the [`viam data database configure` CLI command](/data/query/#configure-data-query).
 
 1. Once connected, you can run SQL or MQL to query captured data directly. For example:
 

@@ -47,11 +47,26 @@ With data query configured, you can use a variety of popular third-party tools t
 
 When you sync captured data to Viam, that data is stored in the Viam organization’s MongoDB Atlas Data Federation instance.
 
-Most third-party visualization tools require the _connection string_ to that database server, and the _credentials_ to authenticate to that server in order to visualize your data.
+Most third-party visualization tools require the _connection URI_ (also called the connection string) to that database server, and the _credentials_ to authenticate to that server in order to visualize your data.
+Some third-party tools instead require a _hostname_ and _database name_ of the database server.
 
 When you [configured data query](/data/query/#configure-data-query), this information was provided to you:
 
-- **Connection string**: The connection string your visualization tool uses to connect to and query your data.
+- **Connection URI**: The connection URI your visualization tool uses to connect to and query your data.
+  You can find your connection URI by running the `viam data database hostname` command:
+
+  ```sh
+  mongodb://db-user-abcdef12-abcd-abcd-abcd-abcdef123456:ABab123=123@data-federation-abcdef12-abcd-abcd-abcd-abcdef123456-e4irv.a.query.mongodb.net/?ssl=true&authSource=admin
+  ```
+
+  You can also specify a desired database name in your connection URI, if desired.
+  For example, to use the `sensorData` database, the default name for uploaded tabular data, your connection string would resemble:
+
+  ```sh
+  mongodb://db-user-abcdef12-abcd-abcd-abcd-abcdef123456:ABab123=123@data-federation-abcdef12-abcd-abcd-abcd-abcdef123456-e4irv.a.query.mongodb.net/sensorData?ssl=true&authSource=admin
+  ```
+
+- **Hostname and Database name**: If you client doesn't use a connection URI, you can supply the hostname and database name of the database server instead.
   Substitute the hostname returned from the `viam data database hostname` command for `<MONGODB-ATLAS-DF-HOSTNAME>` and the desired database name to query for `<DATABASE-NAME>`:
 
   ```sh
@@ -64,19 +79,24 @@ When you [configured data query](/data/query/#configure-data-query), this inform
   mongodb://data-federation-abcdef12-abcd-abcd-abcd-abcdef123456-e4irv.a.query.mongodb.net/sensorData?directConnection=true&authSource=admin&tls=true
   ```
 
+  If you are using a connection URI, the hostname and database name are already included in the URI string.
+
 - **Username**: Your database user. Substitute your organization ID for `<YOUR-ORG-ID>`:
 
   ```sh
   db-user-<YOUR-ORG-ID>
   ```
 
-  For example, your connection string would resemble:
+  For example, your username would resemble:
 
   ```sh
   db-user-abcdef12-abcd-abcd-abcd-abcdef123456
   ```
 
+  If you are using a connection URI, your username is already included in the URI string.
+
 - **Password**: Your chosen password for your database user, configured with the `viam data database` command.
+  Your password must be at least 8 characters long, and include at least one uppercase, one number, and one special character (such as `$` or `%`):
 
 With your data connection configured, you can then follow the instructions for your specific third-party visualization tool to be able to visualize that data on your chosen platform.
 
