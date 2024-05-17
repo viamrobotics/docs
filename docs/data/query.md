@@ -110,7 +110,8 @@ You do not need to perform any additional configuration when [querying data in t
    viam data database configure --org-id=<YOUR-ORGANIZATION-ID> --password=<NEW-DBUSER-PASSWORD>
    ```
 
-   This command configures a new database user for your org for use with data query.
+   This command configures a new database user for your org for use with data query, and sets the password.
+   If you have already run this command before, this command instead updates the password to the new value you set.
 
 1. Determine the connection URI for your organization's MongoDB Atlas Data Federation instance by running the following command with the organization's `org-id` from step 2:
 
@@ -119,8 +120,8 @@ You do not need to perform any additional configuration when [querying data in t
    ```
 
    This command returns the hostname (including database name) and connection URI to use to connect to your data store on the Viam organization's MongoDB Atlas instance.
-   The connection URI includes everything you need to connect to your organization's MongoDB Atlas Data Federation instance from a valid MQL-compatible client, except your Viam account password.
-   Replace the placeholder text `YOUR-PASSWORD-HERE` in the connection URI with your Viam account password.
+   The connection URI includes everything you need to connect to your organization's MongoDB Atlas Data Federation instance from a valid MQL-compatible client, except configured database password.
+   Replace the placeholder text `YOUR-PASSWORD-HERE` in the connection URI with the configured database password, as returned from the `viam data database configure` command.
    You will need this to query your data in the next section.
 
 For more information, see the documentation for the [Viam CLI `database` command](/cli/#data).
@@ -143,7 +144,7 @@ For example, to use the `mongosh` shell to connect to your Viam organization's M
    Where:
 
    - `<YOUR-DB-CONNECTION-URI>` is your organization's assigned MongoDB Atlas connection URI, determined from the [`viam data database hostname` CLI command](/data/query/#configure-data-query).
-   - `YOUR-PASSWORD-HERE` (included in the connection URI) is your Viam account password, as set by the [`viam data database configure` CLI command](/data/query/#configure-data-query).
+   - `YOUR-PASSWORD-HERE` (included in the connection URI) is the configured database password, as set by the [`viam data database configure` CLI command](/data/query/#configure-data-query).
 
 1. Once connected, you can run SQL or MQL to query captured data directly. For example:
 
