@@ -238,6 +238,8 @@ db.readings.aggregate(
 With data query enabled, you can now visualize your machine's uploaded tabular data using many popular data visualization services, such as Grafana.
 See [Visualize Data](/data/visualize/) for instructions on setting up and using these data visualization services with Viam, or the [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) tutorial for a detailed walkthrough specific to Grafana.
 
+For a tutorial that walks through querying data and displaying it on a TypeScript dashboard, see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/).
+
 To export your captured data from the cloud, see [Export Data](../export/).
 
 To adjust the rate at which your machine captures data, see [Configure Data Capture](/data/capture/#configure-data-capture-for-individual-components).
