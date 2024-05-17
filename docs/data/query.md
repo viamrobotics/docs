@@ -121,7 +121,7 @@ You do not need to perform any additional configuration when [querying data in t
 
    This command returns the hostname (including database name) and connection URI to use to connect to your data store on the Viam organization's MongoDB Atlas instance.
    The connection URI includes everything you need to connect to your organization's MongoDB Atlas Data Federation instance from a valid MQL-compatible client, except for your configured database password.
-   Replace the placeholder text `YOUR-PASSWORD-HERE` in the connection URI with your configured database password, as returned from the `viam data database configure` command.
+   Replace the placeholder text `YOUR-PASSWORD-HERE` in the connection URI with your configured database password, as set by the `viam data database configure` command.
    You will need this to query your data in the next section.
 
 For more information, see the documentation for the [Viam CLI `database` command](/cli/#data).
