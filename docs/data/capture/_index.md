@@ -291,8 +291,8 @@ The following example captures data from two analog readers that provide a volta
                 "capture_frequency_hz": 1,
                 "name": "rdk:component:board/my-esp32",
                 "additional_params": {
-                  "A2": "",
-                  "A1": ""
+                  "reader_name": "A1",
+                  "reader_name": "A2"
                 },
                 "disabled": false
               },
@@ -302,7 +302,7 @@ The following example captures data from two analog readers that provide a volta
                 "capture_frequency_hz": 1,
                 "name": "rdk:component:board/my-esp32",
                 "additional_params": {
-                  "27": ""
+                  "pin_name": “27”
                 },
                 "disabled": false
               }
