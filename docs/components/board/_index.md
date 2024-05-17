@@ -417,7 +417,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Set the power mode of the board to OFFLINE_DEEP.
-status = await my_board.set_power_mode(mode=PowerMode.POWER_MODE_OFFLINE_DEEP)
+await my_board.set_power_mode(mode=PowerMode.POWER_MODE_OFFLINE_DEEP)
 ```
 
 {{% /tab %}}
@@ -439,7 +439,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 myBoard, err := board.FromRobot(robot, "my_board")
 
 // Set the power mode of the board to OFFLINE_DEEP.
-err := myBoard.Status(context.Background(), nil)
 myBoard.SetPowerMode(context.Background(), boardpb.PowerMode_POWER_MODE_OFFLINE_DEEP, nil)
 ```
 
