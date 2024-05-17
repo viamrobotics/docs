@@ -248,9 +248,14 @@ navigation,Close,close,Close,
 
 ## SLAM
 slam,GetPosition,get_position,Position,getPosition
-slam,GetPointCloudMap,get_point_cloud_map,PointCloudMap,getPointCloudMap
-slam,GetInternalState,get_internal_state,InternalState,getInternalState
+## HACK: SLAM (Go) implements proto GetPointCloudMap in user-facing helper PointCloudMapFull instead:
+slam,GetPointCloudMap,get_point_cloud_map,,getPointCloudMap
+## HACK: SLAM (Go) implements proto GetInternalState in user-facing helper InternalStateFull instead:
+slam,GetInternalState,get_internal_state,,getInternalState
 slam,GetProperties,get_properties,Properties,getProperties
+## HACK: SLAM (Go) provides 2 additional helper functions, adding 2 pseudo-entries:
+slam,InternalStateFull,,InternalStateFull,
+slam,PointCloudMapFull,,PointCloudMapFull,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 slam,Reconfigure,,Reconfigure,
 slam,DoCommand,do_command,DoCommand,doCommand
