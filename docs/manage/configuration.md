@@ -46,7 +46,7 @@ After you have completed the setup steps and successfully connected to your robo
 
 Your robot does not need to stay connected to the Viam app after it has obtained its configuration file.
 The configuration is cached locally.
-If your robot will never connect to the internet, you can also create a [local configuration file](/reference/appendix/local-configuration-file/) on the robot itself.
+If your robot will never connect to the internet, you can also create a [local configuration file](/reference/internals/local-configuration-file/) on the robot itself.
 {{% /alert %}}
 
 ## The Config tab
@@ -131,7 +131,7 @@ If you add components in **Builder** mode and click **Save Config** at the botto
 }
 ```
 
-See [Example JSON configuration file](/reference/appendix/local-configuration-file/#example-json-configuration-file) for an additional example.
+See [Example JSON configuration file](/reference/internals/local-configuration-file/#example-json-configuration-file) for an additional example.
 
 {{% /expand %}}
 
@@ -355,7 +355,7 @@ Configuring `viam-server` with the Viam app allows you to make use of the cloud 
 - [Data Management](/manage/data/)
 - [Machine Learning](/manage/ml/)
 
-However, if you are configuring a robot that can never connect to the internet, you can create a [local configuration file](/reference/appendix/local-configuration-file/) on your robot.
+However, if you are configuring a robot that can never connect to the internet, you can create a [local configuration file](/reference/internals/local-configuration-file/) on your robot.
 A locally-configured robot will not be able to access Viam's cloud features.
 
 ## Next Steps

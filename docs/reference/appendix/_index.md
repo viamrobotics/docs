@@ -7,4 +7,5 @@ type: "docs"
 description: "Reference and Background Material"
 aliases:
   - "/appendix/"
+no_list: true
 ---
