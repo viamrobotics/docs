@@ -194,7 +194,7 @@ val, err := analog.Read(context.Background, map[string]interface{})
 
 ### GetDigitalInterruptValue
 
-Get an [`DigitalInterrupt`](#digital_interrupts) by `name`.
+Get a [`DigitalInterrupt`](#digital_interrupts) by `name`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -227,7 +227,7 @@ interrupt = await my_board.digital_interrupt_by_name(
 **Returns:**
 
 - [(DigitalInterrupt)](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt): An interface representing a configured interrupt on the board.
-- [(bool)](https://pkg.go.dev/builtin#bool): True if there was a digital interrupt of this `name` found on your board.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -235,7 +235,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 myBoard, err := board.FromRobot(robot, "my_board")
 
 // Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
+interrupt, err := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
 ```
 
 {{% /tab %}}
@@ -1306,7 +1306,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 myBoard, err := board.FromRobot(robot, "my_board")
 
 // Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
+interrupt, err := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
 
 // Get the amount of times this DigitalInterrupt has been interrupted with a tick.
 count, err := interrupt.Value(context.Background(), nil)
@@ -1361,7 +1361,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 myBoard, err := board.FromRobot(robot, "my_board")
 
 // Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
+interrupt, err := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
 
 // Get the rolling average of the pulse width across each time the DigitalInterrupt is interrupted with a tick.
 rolling_avg, err := interrupt.Value(context.Background(), nil)
