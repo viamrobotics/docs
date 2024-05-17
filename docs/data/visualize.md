@@ -60,7 +60,7 @@ When you [configured data query](/data/query/#configure-data-query), this inform
   ```
 
   Replace `YOUR-PASSWORD-HERE` with your database password as returned from the `viam data database configure` command.
-  
+
   You can also specify a desired database name in your connection URI, if desired.
   For example, to use the `sensorData` database, the default name for uploaded tabular data, your connection string would resemble:
 
