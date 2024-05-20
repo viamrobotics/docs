@@ -1309,13 +1309,11 @@ def write_markdown(type, names, methods):
         is_first_method_in_this_resource = True
 
         ## Determine where to write output for this resource:
-        resource_filename = resource + '.md'
-        full_path_to_file = os.path.join(path_to_generated, resource_filename)
-        output_file = open('%s' % full_path_to_file, "w")
+        full_path_to_resource_file = os.path.join(path_to_generated, resource + '.md')
+        output_file = open('%s' % full_path_to_resource_file, "w")
 
         ## Determine where to write API protos list table for this resource:
-        resource_protos_table_filename = resource + '-table.md'
-        full_path_to_table_file = os.path.join(path_to_generated, resource_protos_table_filename)
+        full_path_to_table_file = os.path.join(path_to_generated, resource + '-table.md')
         table_file = open('%s' % full_path_to_table_file, "w")
 
         ## Loop through mapping file, and determine which sdk methods to document for each proto:
@@ -1395,12 +1393,12 @@ def write_markdown(type, names, methods):
                             file_contents = regex.sub(r'\{\{\%.*\%\}\}.*\{\{\% \/[a-b].* \%\}\}', '', file_contents, flags=regex.DOTALL)
                             search_result = file_contents.split('.\n', 1)[0].strip().replace("\n", " ")
 
-                        ## If the proto description is missing a trailing period, or we stripped it off during the above matching, append
-                        ## (restore) the period character:
-                        if not search_result.endswith('.'):
-                            proto_description_first_sentence = search_result + '.'
-                        else:
-                            proto_description_first_sentence = search_result
+                            ## If the proto description is missing a trailing period, or we stripped it off during the above matching, append
+                            ## (restore) the period character:
+                            if not search_result.endswith('.'):
+                                proto_description_first_sentence = search_result + '.'
+                            else:
+                                proto_description_first_sentence = search_result
 
                         ## Write out this proto's entry to this resource's table_file:
                         table_file.write('[`' + proto + '`](' + this_proto_anchor_link + ') | ' + proto_description_first_sentence + '\n')
