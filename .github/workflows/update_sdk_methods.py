@@ -1367,23 +1367,23 @@ def write_markdown(type, names, methods):
 
                         ## Determine what the anchor link structure should be for this resource. Each type has its own standard:
                         if type == 'component':
-                            this_proto_anchor_link = '/' + type_filepath_name + '/' + resource + '/#' + proto.lower()
+                            proto_anchor_link = '/' + type_filepath_name + '/' + resource + '/#' + proto.lower()
                         elif type == 'service' and resource in ['base_remote_control', 'motion', 'navigation', 'slam']:
-                            this_proto_anchor_link = '/mobility/' + resource.replace('base_remote_control', 'base_rc') + '/#' + proto.lower()
+                            proto_anchor_link = '/mobility/' + resource.replace('base_remote_control', 'base_rc') + '/#' + proto.lower()
                         elif type == 'service' and resource == 'data_manager':
-                            this_proto_anchor_link = '/data/#' + proto.lower()
+                            proto_anchor_link = '/data/#' + proto.lower()
                         elif type == 'service' and resource == 'generic_service':
-                            this_proto_anchor_link = '/registry/advanced/generic/#' + proto.lower()
+                            proto_anchor_link = '/registry/advanced/generic/#' + proto.lower()
                         elif type == 'service' and resource in ['mlmodel', 'vision']:
-                            this_proto_anchor_link = '/ml/' + resource.replace('mlmodel', 'deploy') + '/#' + proto.lower()
+                            proto_anchor_link = '/ml/' + resource.replace('mlmodel', 'deploy') + '/#' + proto.lower()
                         elif type == 'app' and resource == 'app':
-                            this_proto_anchor_link = '/build/program/apis/fleet/#' + proto.lower()
+                            proto_anchor_link = '/build/program/apis/fleet/#' + proto.lower()
                         elif type == 'app' and resource in ["billing", "mltraining"]:
-                            this_proto_anchor_link = '/build/program/apis/' + resource.replace('mltraining','ml-training') + '-client/#' + proto.lower()
+                            proto_anchor_link = '/build/program/apis/' + resource.replace('mltraining','ml-training') + '-client/#' + proto.lower()
                         elif type == 'app' and resource in ["data", "dataset", "data_sync"]:
-                            this_proto_anchor_link = '/build/program/apis/data-client/#' + proto.lower()
+                            proto_anchor_link = '/build/program/apis/data-client/#' + proto.lower()
                         elif type == 'robot':
-                            this_proto_anchor_link = '/build/program/apis/' + resource + '/#' + proto.lower()
+                            proto_anchor_link = '/build/program/apis/' + resource + '/#' + proto.lower()
 
                         ## Fetch just the first sentence from the proto_override_file (first text string terminated by '.\n', ignoring hugo
                         ## shortcodes like alerts ('{{%.*%}}.*{{% \[a-b].* %}}'), which precede some override files' (proto descriptions')
@@ -1401,7 +1401,7 @@ def write_markdown(type, names, methods):
                                 proto_description_first_sentence = search_result
 
                         ## Write out this proto's entry to this resource's table_file:
-                        table_file.write('[`' + proto + '`](' + this_proto_anchor_link + ') | ' + proto_description_first_sentence + '\n')
+                        table_file.write('[`' + proto + '`](' + proto_anchor_link + ') | ' + proto_description_first_sentence + '\n')
 
                         ## Begin the per-language markdown writing to output_file with the opening tabset declaration:
                         output_file.write('{{< tabs >}}\n')
