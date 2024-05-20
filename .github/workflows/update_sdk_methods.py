@@ -776,6 +776,33 @@ def parse(type, names):
                                 'usage': 'Readings(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, extra map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
                                 'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Sensor'}
 
+                ## For SLAM service only, additionally fetch data for two helper methods defined outside of the resource's interface:
+                if resource == 'slam':
+
+                    ## Fetch PointCloudMapFull:
+                    pointcloudmapfull_method_raw = soup.find_all(
+                        lambda tag: tag.name == 'div'
+                        and tag.get('class') == ['Documentation-declaration']
+                        and "PointCloudMapFull" in tag.pre.text)
+
+                    go_methods[type][resource]['PointCloudMapFull'] = {}
+                    go_methods[type][resource]['PointCloudMapFull']['proto'] = 'PointCloudMapFull'
+                    go_methods[type][resource]['PointCloudMapFull']['description'] = pointcloudmapfull_method_raw[0].pre.find_next('p').text
+                    go_methods[type][resource]['PointCloudMapFull']['usage'] = pointcloudmapfull_method_raw[0].pre.text.removeprefix('func ')
+                    go_methods[type][resource]['PointCloudMapFull']['method_link'] = 'https://pkg.go.dev/go.viam.com/rdk/services/slam#PointCloudMapFull'
+
+                    ## Fetch InternalStateFull:
+                    internalstatefull_method_raw = soup.find_all(
+                        lambda tag: tag.name == 'div'
+                        and tag.get('class') == ['Documentation-declaration']
+                        and "InternalStateFull" in tag.pre.text)
+
+                    go_methods[type][resource]['InternalStateFull'] = {}
+                    go_methods[type][resource]['InternalStateFull']['proto'] = 'InternalStateFull'
+                    go_methods[type][resource]['InternalStateFull']['description'] = internalstatefull_method_raw[0].pre.find_next('p').text
+                    go_methods[type][resource]['InternalStateFull']['usage'] = internalstatefull_method_raw[0].pre.text.removeprefix('func ')
+                    go_methods[type][resource]['InternalStateFull']['method_link'] = 'https://pkg.go.dev/go.viam.com/rdk/services/slam#InternalStateFull'
+
                 ## We have finished looping through all scraped Go methods. Write the go_methods dictionary
                 ## in its entirety to the all_methods dictionary using "go" as the key:
                 all_methods["go"] = go_methods
