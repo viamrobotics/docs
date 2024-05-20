@@ -9,12 +9,13 @@ tags: ["board", "components", "orangepi"]
 # SMEs: Olivia Miller
 ---
 
-Configure an `orangepi` board to integrate an [Orange Pi Zero2](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Zero-2.html) or [OrangePi 3 LTS](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/orange-pi-3-LTS.html) into your machine.
+Configure an `orangepi` board to integrate the GPIO pins of an [Orange Pi Zero2](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Zero-2.html) or [OrangePi 3 LTS](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/orange-pi-3-LTS.html) into your machine.
 
-If you have an Orange Pi Zero2, follow [this guide to flash your board](/get-started/installation/prepare/orange-pi-zero2/).
-Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on your board and connect to the Viam app.
+If you have an Orange Pi Zero2, first follow [this guide to flash your board](/get-started/installation/prepare/orange-pi-zero2/).
+If you have an Orange Pi 3 LTS, follow [this guide](/get-started/installation/prepare/orange-pi-3-lts/) instead.
+Once you have prepared your board, follow your new machine part's {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on your board and connect to the Viam app.
 
-Then, configure your board as a {{< glossary_tooltip term_id="component" text="component" >}} of your machine in [the Viam app](https://app.viam.com):
+To use the GPIO pins on your board to [configure a smart machine](https://docs.viam.com/build/configure) with your Orange Pi computer, configure your board as a {{< glossary_tooltip term_id="component" text="component" >}} of your machine in [the Viam app](https://app.viam.com):
 
 {{< tabs name="Configure an orangepi Board" >}}
 {{% tab name="Config Builder" %}}
