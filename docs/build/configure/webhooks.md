@@ -11,9 +11,9 @@ Webhooks allow you to trigger actions when certain types of data are sent from y
 For example, you can configure a webhook to send you a notification when your robot's sensor collects a new reading.
 Viam provides two webhook types depending on the event you want to trigger on:
 
-- Data has been synced to the cloud: trigger when data from the machine is synced
-- Part is online: trigger continuously at specified interval while the {{< glossary_tooltip term_id="part" text="machine part" >}} is online
-- Part is offline: trigger continuously at specified interval while the machine part is offline
+- **Data has been synced to the cloud**: trigger when data from the machine is synced
+- **Part is online**: trigger continuously at specified interval while the {{< glossary_tooltip term_id="part" text="machine part" >}} is online
+- **Part is offline**: trigger continuously at specified interval while the machine part is offline
 
 To configure a webhook:
 
@@ -35,11 +35,12 @@ To configure a webhook:
 {{% tab name="Data synced to cloud" %}}
 
 5. Select the types of data you want to trigger on from the dropdown.
+   Whenever any data of the type you select is synced from any component on your machine, the webhook will trigger.
 
 {{% alert title="Note" color="note" %}}
 Be sure to configure [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/) for the relevant components.
 For example, if you want to trigger a webhook on temperature readings, configure data capture and sync on your temperature sensor.
-Be aware that the component must return the type of data you configured in the webhook's **Data Types**.
+Be aware that the component must return the type of data you configure in the webhook's **Data Types**.
 {{% /alert %}}
 
 {{% /tab %}}
@@ -65,10 +66,10 @@ Be aware that the component must return the type of data you configured in the w
 {{% tab name="Raw JSON" %}}
 
 If you prefer to configure your webhook with raw JSON instead of the config builder, you can paste one of the following JSON templates into your JSON config.
-`"webhooks"` is a top-level section like `"components"`, `"services"`, or any of the other config sections.
+`"webhooks"` is a top-level section like `"components"` or `"services"`.
 
 {{< tabs >}}
-{{% tab name="JSON Template: Data" %}}
+{{% tab name="JSON Template: Data Synced" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
   "webhooks": [
