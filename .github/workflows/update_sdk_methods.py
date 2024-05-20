@@ -354,7 +354,7 @@ python_ignore_apis = [
 ]
 
 ## Use these URLs for data types that are not otherwise captured by parse(), such as:
-## - Well-known built-in data types that are not scrapable (like 'int')
+## - Well-known built-in data types that are not scrapeable (like 'int')
 ## - Viam-specific data types, even if scrapeable, that are part of a multiple-data-type return
 ##   (like list_organization_members : Tuple[List[viam.proto.app.OrganizationMember], List[viam.proto.app.OrganizationInvite]]
 ## Data type links defined here will be used instead of scraped links if both exist:
@@ -1303,15 +1303,20 @@ def write_markdown(type, names, methods):
     ## scope limited to 'type', so we don't have to loop by type:
     for resource in names:
 
-        ## Determine where to write output:
-        filename = resource + '.md'
-        full_path_to_file = os.path.join(path_to_generated, filename)
-        output_file = open('%s' % full_path_to_file, "w")
-
         ## Switch to identify the first method encountered for each resource, to help with
         ## knowing when we are at the top of the include file, or whether to to double newline
         ## between protos:
         is_first_method_in_this_resource = True
+
+        ## Determine where to write output for this resource:
+        resource_filename = resource + '.md'
+        full_path_to_file = os.path.join(path_to_generated, resource_filename)
+        output_file = open('%s' % full_path_to_file, "w")
+
+        ## Determine where to write API protos list table for this resource:
+        resource_protos_table_filename = resource + '-table.md'
+        full_path_to_table_file = os.path.join(path_to_generated, resource_protos_table_filename)
+        table_file = open('%s' % full_path_to_table_file, "w")
 
         ## Loop through mapping file, and determine which sdk methods to document for each proto:
         with open(proto_map_file, 'r') as f:
@@ -1327,6 +1332,7 @@ def write_markdown(type, names, methods):
                     ## for specific protos as needed, if needed:
                     if py_method_name or go_method_name or flutter_method_name:
 
+                        ## We have at least one implemented method for this proto, so begin writing output markdown for this resource.
                         ## Write proto as H3, with leading newlines if appending to ongoing {resource}.md file:
                         if is_first_method_in_this_resource:
                             output_file.write('### ' + proto + '\n\n')
@@ -1352,6 +1358,54 @@ def write_markdown(type, names, methods):
 
                             output_file.write('\n')
 
+                        ## We have at least one implemented method for this proto, so begin writing table list markdown for this resource.
+                        ## Add proto name to table_file listing, with standard first three lines.
+                        ## We write this here, depending on is_first_method_in_this_resource, in case we have a resource with 0 implemented protos
+                        ## down the line, to avoid blank table_files:
+                        if is_first_method_in_this_resource:
+                            table_file.write('<!-- prettier-ignore -->\n')
+                            table_file.write('Method Name | Description\n')
+                            table_file.write('----------- | -----------\n')
+
+                        ## Determine what the anchor link structure should be for this resource. Each type has its own standard:
+                        if type == 'component':
+                            this_proto_anchor_link = '/' + type_filepath_name + '/' + resource + '/#' + proto.lower()
+                        elif type == 'service' and resource in ['base_remote_control', 'motion', 'navigation', 'slam']:
+                            this_proto_anchor_link = '/mobility/' + resource.replace('base_remote_control', 'base_rc') + '/#' + proto.lower()
+                        elif type == 'service' and resource == 'data_manager':
+                            this_proto_anchor_link = '/data/#' + proto.lower()
+                        elif type == 'service' and resource == 'generic_service':
+                            this_proto_anchor_link = '/registry/advanced/generic/#' + proto.lower()
+                        elif type == 'service' and resource in ['mlmodel', 'vision']:
+                            this_proto_anchor_link = '/ml/' + resource.replace('mlmodel', 'deploy') + '/#' + proto.lower()
+                        elif type == 'app' and resource == 'app':
+                            this_proto_anchor_link = '/build/program/apis/fleet/#' + proto.lower()
+                        elif type == 'app' and resource in ["billing", "mltraining"]:
+                            this_proto_anchor_link = '/build/program/apis/' + resource.replace('mltraining','ml-training') + '-client/#' + proto.lower()
+                        elif type == 'app' and resource in ["data", "dataset", "data_sync"]:
+                            this_proto_anchor_link = '/build/program/apis/data-client/#' + proto.lower()
+                        elif type == 'robot':
+                            this_proto_anchor_link = '/build/program/apis/' + resource + '/#' + proto.lower()
+
+                        ## Fetch just the first sentence from the proto_override_file (first text string terminated by '.\n', ignoring hugo
+                        ## shortcodes like alerts ('{{%.*%}}.*{{% \[a-b].* %}}'), which precede some override files' (proto descriptions'
+                        ## first sentence:
+                        with open(proto_override_file, 'r') as f:
+                            file_contents = f.read().strip()
+                            file_contents = regex.sub(r'\{\{\%.*\%\}\}.*\{\{\% \/[a-b].* \%\}\}', '', file_contents, flags=regex.DOTALL)
+                            search_result = file_contents.split('.\n', 1)[0].strip().replace("\n", " ")
+
+                        ## If the proto description is missing a trailing period, or we stripped it off during the above matching, append
+                        ## (restore) the period character:
+                        if not search_result.endswith('.'):
+                            proto_description_first_sentence = search_result + '.'
+                        else:
+                            proto_description_first_sentence = search_result
+
+                        ## Write out this proto's entry to this resource's table_file:
+                        table_file.write('[`' + proto + '`](' + this_proto_anchor_link + ') | ' + proto_description_first_sentence + '\n')
+
+                        ## Begin the per-language markdown writing to output_file with the opening tabset declaration:
                         output_file.write('{{< tabs >}}\n')
 
                         if py_method_name:
