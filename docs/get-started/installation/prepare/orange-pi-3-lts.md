@@ -36,6 +36,7 @@ Before you power the board, you need to install an operating system.
 
 1. First, download an [Orange Pi 3 LTS Ubuntu image](https://drive.google.com/drive/folders/1KzyzyByev-fpZat7yvgYz1omOqFFqt1k) to your development machine.
    We recommend `ubuntu_jammy_desktop`.
+1. Unzip the image.
 1. Insert the micro-SD card into the SD card reader and connect the reader to your development machine.
 1. Follow [this guide](https://sbc-community.org/docs/general_guides/prepare_sd_card/) to flash the OS to your micro-SD card using [balenaEtcher](https://etcher.balena.io/).
 1. Insert the micro-SD into the Orange Pi.
@@ -56,15 +57,18 @@ Alternatively, plug the two devices into your USB hub and connect the USB hub to
 For board schematics, consult the [Orange Pi 3 LTS documentation](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/orange-pi-3-LTS.html).
 {{% /alert %}}
 
-You should now be greeted with the Orange Pi display.
+After it boots, you should be greeted with the Orange Pi desktop display.
 If it prompts you for a password, note that the default password for Orange Pi devices is "orangepi".
 
 ## Establish a network connection
 
 The Orange Pi 3 LTS comes equipped with a wireless network antenna.
-To connect to WiFi, click on the WiFi icon in the top right of the monitor display, select your preferred network or hotspot, and enter the password.
+To connect to WiFi through the desktop, click on the WiFi icon in the top right of the monitor display, select your preferred network or hotspot, and enter the password.
 
-For more information, consult the [official user manual](https://drive.google.com/file/d/1jka7avWnzNeTIQFkk78LoJdygWaGH2iu/view).
+{{% alert title="Tip" color="tip" %}}
+You can also connect to WiFi while connected to the Orange Pi on the terminal with several different methods, including the `nmcli` tool.
+For more information, consult the [official user manual](https://drive.google.com/file/d/1jka7avWnzNeTIQFkk78LoJdygWaGH2iu/view) (page 80).
+{{% /alert %}}
 
 ## Install `viam-server`
 

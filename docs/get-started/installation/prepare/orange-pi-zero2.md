@@ -36,6 +36,7 @@ Before you power the board, you need to install an operating system.
 
 1. First, download an [Orange Pi Ubuntu image](https://drive.google.com/drive/folders/1ohxfoxWJ0sv8yEHbrXL1Bu2RkBhuCMup) to your development machine.
    We recommend `ubuntu_jammy_desktop`.
+1. Unzip the image.
 1. Insert the micro-SD card into the SD card reader and connect the reader to your development machine.
 1. Follow [this guide](https://sbc-community.org/docs/general_guides/prepare_sd_card/) to flash the OS to your micro-SD card using [balenaEtcher](https://etcher.balena.io/).
 1. Insert the micro-SD into the Orange Pi.
@@ -51,7 +52,7 @@ The Orange Pi will only power on with a compatible operating system installed.
 To connect to a display, connect the micro-HDMI end of your HDMI cable to the Orange Pi and the other end to your monitor.
 Then, to connect the keyboard and mouse, plug the two devices into your USB hub and connect the USB hub to your Orange Pi's USB-A port.
 
-You should now be greeted with the Orange Pi display.
+After it boots, you should be greeted with the Orange Pi desktop display.
 If it prompts you for a password, note that the default password for Orange Pi devices is "orangepi".
 
 ## Establish a network connection
@@ -59,7 +60,10 @@ If it prompts you for a password, note that the default password for Orange Pi d
 The Orange Pi Zero2 comes equipped with a wireless network antenna.
 To connect to WiFi, click on the WiFi icon in the top right of the monitor display, select your preferred network or hotspot, and enter the password.
 
-For more information, consult the [official user guide](https://drive.google.com/drive/folders/1ToDjWZQptABxfiRwaeYW1WzQILM5iwpb).
+{{% alert title="Tip" color="tip" %}}
+You can also connect to WiFi while connected to the Orange Pi on the terminal with several different methods, including the `nmcli` tool.
+For more information, consult the [official user manual](https://drive.google.com/file/d/1jka7avWnzNeTIQFkk78LoJdygWaGH2iu/view) (page 80).
+{{% /alert %}}
 
 ## Install `viam-server`
 
