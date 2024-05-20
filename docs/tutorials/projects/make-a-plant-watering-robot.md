@@ -17,6 +17,13 @@ no_list: true
 # SMES: Olivia Miller, Sierra Guequierre, Hazal Mestci
 ---
 
+<!-- LEARNING GOALS:
+After this tutorial you will understand what modules are and when to use them, and be able to build a machine from start to finish. You will be able to create machines using built-in resources as well as resources from the Viam registry, and can write code with the SDKs to operate your machine.
+
+Notes:
+possibly extend or point to data management tutorial next? To Jessamy's in particular? and the grafana tutorial
+-->
+
 ![Picture of the plant watering robot on a desk.](/tutorials/plant-watering-pi/plant-watering-robot.png)
 
 Building a useful robot doesn't have to require complicated code or expensive equipment.
@@ -440,4 +447,7 @@ Also, consider how often you would like to check the moisture levels of the plan
 
 Now that you have created your automatic plant watering system with a resistive soil moisture sensor, you can easily use Viam to automate other aspects of your garden.
 For example, you can use a [light sensor](https://www.amazon.com/Sensor-Module-Raspberry-Integrated-Circuits/dp/B07L15M5JG) or a [temperature sensor](https://www.amazon.com/KY-011-Cathode-Arduino-Starter-2-color/dp/B07869PKKF/ref=as_li_ss_tl?keywords=arduino+two+color+led+module&qid=1556591832&s=gateway&sr=8-2&th=1&linkCode=sl1&tag=murraynet-20&linkId=c36cd98be29498a9883b656c7011b6bb&language=en_US), and get readings from other channels of the MCP3008!
+
+You could set up data capture and [graph your sensor data](/tutorials/services/visualize-data-grafana/), or [create your own custom Typescript dashboard](/tutorials/control/air-quality-fleet/) to display your sensor data.
+
 If you build something based on this please share it in our [Community Discord](https://discord.gg/viam) - we'd love to see it.

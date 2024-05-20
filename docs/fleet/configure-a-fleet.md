@@ -350,3 +350,9 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
 Viam provides several [pre-made fragments](https://app.viam.com/fragments) which you can use as templates for writing your own fragments.
 
 For an example of a fragment that configures multiple components and services, see the [Viam Rover fragment](https://app.viam.com/fragment?id=3e8e0e1c-f515-4eac-8307-b6c9de7cfb84).
+
+For an example of creating a fragment and using it to configure a fleet of machines, see the air quality fleet tutorial:
+
+{{< cards >}}
+{{% card link="/tutorials/control/air-quality-fleet/" %}}
+{{< /cards >}}

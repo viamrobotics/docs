@@ -20,19 +20,26 @@ cost: 8400
 no_list: true
 ---
 
+With Viam you can move individual components, like [arms](../accessing-and-moving-robot-arm/), by issuing commands like `MoveToPosition` or `MoveToJointPosition`.
+The [motion service](/mobility/motion/) enables you to do much more sophisticated movement involving one or many components of your robot.
+The service abstracts the lower-level commands away so that instead of passing in a series of joint positions, you can call the `Move()` command with the desired destination and any obstacles, and the service will move your machine to the desired location for you.
+
+{{< alert title="Learning Goals" color="info" >}}
+After following this tutorial, you will be able to:
+
+- provide a representation of objects in the world to Viam
+- use the motion service to move machines or components of your machine
+
+{{< /alert >}}
+
+Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
+
+The [full tutorial code](#full-tutorial-code) is available at the end of this page.
+
 {{< alert title="Caution" color="caution" >}}
 Be careful when instructing robot arms to move.
 Before running any code, ensure your robotic arm has enough space and that there are no obstacles.
 Also pay attention to your surroundings, double-check your code for correctness, and make sure anyone nearby is aware and alert before issuing commands to your robot.
-{{< /alert >}}
-
-Moving individual components, like [an arm](../accessing-and-moving-robot-arm/), is a good way to start using Viam, but there is so much more you can do.
-The [motion service](/mobility/motion/) enables sophisticated movement involving one or many components of your robot.
-
-{{< alert title="Tip" color="tip" >}}
-Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
-
-The [full tutorial code](#full-tutorial-code) is available at the end of this page.
 {{< /alert >}}
 
 ## Prerequisites

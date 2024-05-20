@@ -17,11 +17,13 @@ The `imu-wit` movement sensor model supports the following IMUs manufactured by 
 
 - BWT61CL
 - BWT901CL
-- HWT901B TTL
+- HWT901B-TTL
 
 {{% alert title="Info" color="info" %}}
 
 Other WitMotion IMUs that communicate over serial may also work with this model but have not been tested.
+
+If you are using WitMotion's HWT905 IMU, configure an [`imu-wit-hwt905`](../imu-wit-hwt905/).
 
 {{% /alert %}}
 

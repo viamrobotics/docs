@@ -36,7 +36,7 @@ The [Viam registry](https://app.viam.com/registry) is the central place where yo
 {{% /manualcard %}}
 {{% manualcard link="#modular-resources" %}}
 
-**Modular resources** that add capabilities to your machine beyond what is built-in to `viam-server`
+**Modular resources** that add capabilities to your machine beyond what is built into `viam-server`
 
 {{% /manualcard %}}
 {{< /cards >}}
@@ -79,7 +79,7 @@ Viam provides built-in support for a variety of {{< glossary_tooltip term_id="re
 - Various types of hardware {{< glossary_tooltip term_id="component" text="components" >}}.
 - High-level functionality exposed as {{< glossary_tooltip term_id="service" text="services" >}}.
 
-If the model of component or service you want to use for your project is not built-in to `viam-server` and available for configuration by default, you can use a {{< glossary_tooltip term_id="model" text="model" >}} from a {{< glossary_tooltip term_id="module" text="module" >}}.
+If the model of component or service you want to use for your project is not built into `viam-server` and available for configuration by default, you can use a {{< glossary_tooltip term_id="model" text="model" >}} from a {{< glossary_tooltip term_id="module" text="module" >}}.
 
 To configure a modular resource on your robot, [add new models that others have created](/registry/configure/#add-a-modular-resource-from-the-viam-registry) from the [Viam registry](https://app.viam.com/registry) or [create your own](#create-your-own-modules).
 

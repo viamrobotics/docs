@@ -192,54 +192,22 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ```go {class="line-numbers linkable-line-numbers"}
 
-// Define a function that handles the controller.
-func handleController(controller input.Controller) {
-
-    // Define a function to handle pressing the Start Menu Button "ButtonStart" on your controller, logging the start time.
-    printStartTime := func(ctx context.Context, event input.Event) {
-        logger.Info("Start Menu Button was pressed at this time: %v", event.Time)
-    }
-
-    // Define the EventType "ButtonPress" to serve as the trigger for printStartTime.
-    triggers := [1]input.EventType{input.ButtonPress}
-
-    // Get the controller's Controls.
-    controls, err := controller.Controls(context.Background(), nil)
-
-    // If the "ButtonStart" Control is found, register the function printStartTime to fire when "ButtonStart" has the event "ButtonPress" occur.
-    if slices.Contains(controls, Control.ButtonStart) {
-        err := controller.RegisterControlCallback(context.Background(), Control: input.ButtonStart, triggers, printStartTime, nil)
-    }
-     else {
-        logger.Fatalf("Oops! Couldn't find the start button control! Is your controller connected?")
-    }
+// Define a function to handle pressing the Start Menu button, "ButtonStart", on your controller and logging the start time
+printStartTime := func(ctx context.Context, event input.Event) {
+    logger.Info("Start Menu Button was pressed at this time: %v", event.Time)
 }
 
-func main() {
-    utils.ContextualMain(mainWithArgs, logging.NewLogger("client"))
+// Define the EventType "ButtonPress" to serve as the trigger for printStartTime.
+triggers := []input.EventType{input.ButtonPress}
+
+// Get the controller's Controls.
+controls, err := controller.Controls(ctx, nil)
+
+// If the "ButtonStart" Control is found, register the function printStartTime to fire when "ButtonStart" has the event "ButtonPress" occur.
+if !slices.Contains(controls, input.ButtonStart) {
+    return errors.New("button `ButtonStart` not found; controller may be disconnected")
 }
-
-
-func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (err error) {
-    // ... < INSERT CONNECTION CODE FROM MACHINE'S CODE SAMPLE TAB >
-
-    // Get the controller from the machine.
-    myController, err := input.FromRobot(myRobotWithController, "my_controller")
-
-    // Run the handleController function.
-    err := HandleController(myController)
-
-    // Delay closing your connection to your machine.
-    err = myRobotWithController.Start(ctx)
-    defer myRobotWithController.Close(ctx)
-
-    // Wait to exit mainWithArgs() until Context is Done.
-    <-ctx.Done()
-
-    // ... < INSERT ANY OTHER CODE FOR MAIN FUNCTION >
-
-    return nil
-}
+    myController.RegisterControlCallback(context.Background(), input.ButtonStart, triggers, printStartTime, nil)
 ```
 
 {{% /tab %}}
@@ -247,7 +215,7 @@ func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (er
 
 ### GetEvents
 
-This method returns the current state of the controller as a map of [Event Objects](#event-object), representing the most recent event that has occured on each available [Control](#control-field).
+This method returns the current state of the controller as a map of [Event Objects](#event-object), representing the most recent event that has occurred on each available [Control](#control-field).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -291,14 +259,8 @@ print(f"Recent Events:\n{recent_events}")
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get the controller from the machine.
-myController, err := input.FromRobot(myRobotWithController, "my_controller")
-
 // Get the most recent Event for each Control.
 recent_events, err := myController.Events(context.Background(), nil)
-
-// Log the most recent Event for each Control.
-logger.Info("Recent Events: %v", recent_events)
 ```
 
 {{% /tab %}}
@@ -350,15 +312,8 @@ print(f"Controls:\n{controls}")
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get the controller from the machine.
-myController, err := input.FromRobot(myRobotWithController, "my_controller")
-
 // Get the list of Controls provided by the controller.
 controls, err := myController.Controls(context.Background(), nil)
-
-// Log the list of Controls provided by the controller.
-logger.Info("Controls:")
-logger.Info(controls)
 ```
 
 {{% /tab %}}
@@ -416,14 +371,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 // Define a "Button is Pressed" event for the control ButtonStart.
 buttonIsPressedEvent := input.Event{Time: time.Now(), Event: input.ButtonPress, Control: input.ButtonStart, Value: 1.0}
 
-// Trigger the event on your controller.
-err := myController.TriggerEvent(ctx Context.background(), buttonIsPressedEvent, nil)
+triggerableController, ok := myController.(input.Triggerable)
+if !ok {
+    logger.Fatalf("this controller does not support trigger events")
+}
 
-// Log any errors that occur.
+// Trigger the event on your controller.
+err = triggerableController.TriggerEvent(ctx, buttonIsPressedEvent, nil)
 if err != nil {
   logger.Fatalf("cannot trigger event on controller: %v", err)
 }
-
 ```
 
 {{% /tab %}}
@@ -533,9 +490,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get the controller from the machine.
-myController, err := input.FromRobot(myRobotWithController, "my_controller")
-
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myController.DoCommand(context.Background(), command)
 ```
@@ -580,9 +534,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myController, err := input.FromRobot(myRobotWithController, "my_controller")
-
-err := myController.Close(ctx)
+err := myController.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

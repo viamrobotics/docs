@@ -23,20 +23,18 @@ The data management service is a robust solution for smart machine data handling
 Using the data management service, you can collect data from different parts of a robot, IoT device, or any other machine.
 Once collected, you can configure which data to securely sync to the cloud, and view, sort, or manage it directly in the cloud without needing to manually gather data from each machine.
 
-## Overview
-
 ![Data is captured on the machine, uploaded to the cloud, and then deleted off local storage.](/data/data_management.png)
 
 Viam's data management features can be broken down into on-device and cloud data capabilities:
 
-### On-device data management
+## On-device data management
 
 Manage data directly on your robot, with configurable data capture from various components, automated recovery after interruptions, and secure cloud synchronization for efficient data storage and management.
 
 {{< cards >}}
 {{% manualcard link="/data/capture/" %}}
 
-#### Data capture
+### Data capture
 
 Configurable for various robot components like cameras, sensors, and motors, with configurable capture frequency.
 Automatically resumes after robot restarts.
@@ -44,7 +42,7 @@ Automatically resumes after robot restarts.
 {{% /manualcard %}}
 {{% manualcard link="/data/cloud-sync/" %}}
 
-#### Cloud sync
+### Cloud sync
 
 Securely transfer data to the cloud at the frequency you define.
 Resilient to interruptions, and deletes local data post-sync for space management.
@@ -52,35 +50,35 @@ Resilient to interruptions, and deletes local data post-sync for space managemen
 {{% /manualcard %}}
 {{< /cards >}}
 
-### Cloud data management
+## Cloud data management
 
 Experience streamlined data handling with advanced querying, viewing, and filtering capabilities, along with efficient data labeling and exporting tools.
 
 {{< cards >}}
 {{% manualcard link="/data/query/" %}}
 
-#### Query data
+### Query data
 
 Make SQL or MQL queries on synced sensor data, accessible through the Viam app and MQL-compatible clients.
 
 {{% /manualcard %}}
 {{% manualcard link="/data/view/" %}}
 
-#### View and filter data
+### View and filter data
 
 View and filter different data types in the cloud, with the option to delete data on the Viam app.
 
 {{% /manualcard %}}
 {{% manualcard link="/data/dataset/" %}}
 
-#### Create datasets
+### Create datasets
 
 Label data for management and machine learning, with dynamic datasets that change with underlying data modifications.
 
 {{% /manualcard %}}
 {{% manualcard link="/data/export/" %}}
 
-#### Export data
+### Export data
 
 Export data with the Viam CLI and download your data for offline access.
 
@@ -160,8 +158,6 @@ Sync data stored on the machine to the cloud.
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager).
 
 ```go {class="line-numbers linkable-line-numbers"}
-data, err := datamanager.FromRobot(robot, "my_data_service")
-
 // Sync data stored on the machine to the cloud.
 err := data.Sync(context.Background(), nil)
 ```

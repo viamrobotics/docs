@@ -153,3 +153,28 @@ In the absence of metadata, your `tflite_cpu` model must satisfy the following r
 
 These requirements are satisfied by a few publicly available model architectures including EfficientDet, MobileNet, and SSD MobileNet V1.
 You can use one of these architectures or build your own.
+
+## Next steps
+
+To make use of your model with your machine, add a [vision service](/ml/vision/) or a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}:
+
+{{< cards >}}
+
+{{% manualcard link="/ml/vision/mlmodel/"%}}
+
+<h4>Create a detector with your model</h4>
+
+Configure an `mlmodel detector`.
+
+{{% /manualcard %}}
+{{% manualcard link="/ml/vision/mlmodel/"%}}
+
+<h4>Create a classifier with your model</h4>
+
+Configure your `mlmodel classifier`.
+
+{{% /manualcard %}}
+
+{{% card link="/registry/examples/tflite-module/" customTitle="Example: TensorFlow Lite Modular Service" %}}
+
+{{< /cards >}}

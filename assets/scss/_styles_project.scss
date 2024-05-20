@@ -123,34 +123,40 @@ h7, .h7 {
 
 // TABLE OF CONTENT CHANGES
 
-.td-toc > nav ul li {
+.td-toc ul li {
   border-left: 2px solid #1be020;
   padding-left: 16px;
   height: fit-content;
 }
 
-.td-toc > nav ul li.toc-active {
+.td-toc ul li.is-active-li, .td-toc ul li.toc-active {
   border-left: 2px solid #666666;
 }
 
-.td-toc > nav ul li ul li {
+.toc-list, .td-toc ul ul {
+  padding-inline-start: 0;
+}
+
+.td-toc ul li ul li {
   margin-left: -18px;
   padding-left: 32px;
   height: fit-content;
+  // border can get applied twice - this fixes that.
+  border-left: 2px;
 }
 
-.td-toc > nav ul li ul li.toc-active {
+.td-toc nav ul li ul li {
   border-left: 2px solid #666666;
 }
 
-.td-toc #TableOfContents ul li a {
+.td-toc ul li a {
   font-size: 0.833rem;
   font-weight: 500;
   color: #333333;
   text-decoration: none;
 }
 
-.td-toc #TableOfContents ul li li a {
+.td-toc ul li li a {
   font-size: 0.833rem;
   font-weight: 400;
   color: #666666;

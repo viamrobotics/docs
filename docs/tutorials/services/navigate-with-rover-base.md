@@ -36,11 +36,18 @@ weight: 5
 # SMEs: Ray Bjorkman, Fahmina
 ---
 
-One key feature of Viam is [the navigation service](/mobility/navigation/), the stateful definition of Viam's [motion service](/mobility/motion/).
-
-Using Navigation, you can queue up user-defined waypoints and your robot will move to them in the order that you specify.
+The [navigation service](/mobility/navigation/) allows you to queue up user-defined waypoints for your machine to move to in the order that you specify.
 You can also add obstacles or set linear and angular velocity targets in your navigation service config.
 Viam's motion planner will plan routes that avoid those obstacles and attempt to keep the robot at your specified velocity.
+
+{{< alert title="Learning Goals" color="info" >}}
+
+After following this tutorial, you will be able to:
+
+- add waypoints to specify locations you want your machine to move to, both in the app and programmatically
+- use the navigation service to move your machine along those waypoints
+
+{{< /alert >}}
 
 To try it out yourself, you need a mobile base and a movement sensor that can track the robot's GPS coordinates and angular and linear velocity.
 Follow this tutorial to get started using Viam's Navigation service to help your wheeled base navigate across space with our recommended stack.

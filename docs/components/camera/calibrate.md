@@ -111,5 +111,5 @@ The following is a full example config:
 {{< cards >}}
 {{% card link="/components/camera/transform/" %}}
 {{% card link="/ml/vision" %}}
-{{% card link="/tutorials/services/try-viam-color-detection" %}}
+{{% card link="/tutorials/services/basic-color-detection" %}}
 {{< /cards >}}

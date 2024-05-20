@@ -620,7 +620,7 @@ To see more code examples of how to use Viam's vision service, see [our example 
 ## Next steps
 
 {{< cards >}}
-{{% card link="/tutorials/services/try-viam-color-detection/" %}}
+{{% card link="/tutorials/services/basic-color-detection/" %}}
 {{% card link="/tutorials/services/color-detection-scuttle/" %}}
 {{% card link="/tutorials/services/webcam-line-follower-robot/" %}}
 {{< /cards >}}
