@@ -10,7 +10,7 @@ no_list: true
 # SME: Olivia Miller
 ---
 
-The [Orange Pi 3 LTS](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Zero-2.html) is a highly compact open-source single-board computer equipped with dual-band wireless WiFi and Bluetooth 5.0.
+The [Orange Pi 3 LTS](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Zero-2.html) is a highly compact open-source single-board computer equipped with dual-band WiFi and Bluetooth 5.0.
 It can run Ubuntu, Android10, or Debian distributions.
 
 {{<imgproc src="get-started/installation/thumbnails/orange-pi-3-LTS.png" alt="The Orange Pi 3 LTS single-board computer." resize="350x" declaredimensions=true >}}
@@ -38,7 +38,7 @@ Before you power the board, you need to install an operating system.
    We recommend `ubuntu_jammy_desktop`.
 1. Unzip the image.
 1. Insert the micro-SD card into the SD card reader and connect the reader to your development machine.
-1. Follow [this guide](https://sbc-community.org/docs/general_guides/prepare_sd_card/) to flash the OS to your micro-SD card using [balenaEtcher](https://etcher.balena.io/).
+1. Follow the [Orange Pi guide to prepare your microSD card](https://sbc-community.org/docs/general_guides/prepare_sd_card/) to flash the OS to your micro-SD card using [balenaEtcher](https://etcher.balena.io/).
 1. Insert the micro-SD into the Orange Pi.
 
 To power your Orange Pi 3 LTS, connect your power adapter to the LTS's USB-C port.
@@ -50,15 +50,15 @@ The Orange Pi will only power on with a compatible operating system installed.
 {{% /alert %}}
 
 To connect to a display, connect the HDMI cable to the Orange Pi's HDMI port and the other end to your monitor.
-Then, to connect the keyboard and mouse, plug the keyboard and mouse into the two USB-A ports on your Orange Pi.
-Alternatively, plug the two devices into your USB hub and connect the USB hub to your Orange Pi's USB-A port.
+Then, connect your keyboard and mouse to the two USB-A ports on your Orange Pi.
+Alternatively, you can connect your peripherals to a USB hub and connect the USB hub to your Orange Pi's USB-A port.
 
 {{% alert title="Tip" color="tip" %}}
 For board schematics, consult the [Orange Pi 3 LTS documentation](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/orange-pi-3-LTS.html).
 {{% /alert %}}
 
-After it boots, you should be greeted with the Orange Pi desktop display.
-If it prompts you for a password, note that the default password for Orange Pi devices is "orangepi".
+Once the Orange Pi successfully boots, you should be greeted with the Orange Pi desktop display.
+If you are prompted for a login password, note that the default password for Orange Pi devices is "orangepi".
 
 ## Establish a network connection
 
