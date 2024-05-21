@@ -1,1 +1,1 @@
-Submit a custom training job.
+Submit a training job from a custom training script.

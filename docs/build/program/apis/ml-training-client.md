@@ -182,7 +182,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_p
 
 ### SubmitCustomTrainingJob
 
-Submit a custom training job.
+Submit a training job from a custom training script.
 To use this method, you must first upload a custom training script to the [Registry](https://app.viam.com/registry/).
 
 {{< tabs >}}
