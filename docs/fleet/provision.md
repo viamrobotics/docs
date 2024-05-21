@@ -32,9 +32,11 @@ However, to then parse the readings and provide tailored guidance to a ship's ca
 
 Using the Viam Agent, this company could ship their machines directly to customers and have each machine provision `viam-server` as it comes online for each user, eliminating factory setup time and allowing for tailored configurations per customer as needed.
 
-The Viam Agent is open source, and [available on GitHub](https://github.com/viamrobotics/agent).
+{{% alert title="Note" color="note" %}}
+The example video above shows using the [Viam mobile application](/fleet/#the-viam-mobile-app) to connect to the Viam Agent on a newly-deployed machine and completing network setup.
+{{% /alert %}}
 
-The example video shows using the [Viam mobile application](/fleet/#the-viam-mobile-app) to connect to the Viam Agent on a newly-deployed machine and completing network setup.
+The Viam Agent is open source, and available on [GitHub](https://github.com/viamrobotics/agent).
 
 ## Install the Viam Agent
 
@@ -138,7 +140,10 @@ The Viam Agent is installed as a `systemd` service named `viam-agent`.
 With the Viam Agent installed, your machine will either connect to a local WiFi network or will create its own WiFi hotspot, depending on your configuration.
 
 - If you include a `viam-server` configuration file on your machine, located at <file>/etc/viam.json</file>, which includes a WiFi network and password to connect to, the Viam Agent will connect to the network automatically when in range.
-- If you did not include this file, or the configured WiFi network is not available when your machine comes online, the Viam Agent will create its own WiFi hotspot.
+- If you did not include this file, or the configured WiFi network is not available when your machine comes online, the Viam Agent will create its own WiFi hotspot and request WiFi credentials:
+  ![Diagram of the flow of provisioning a new machine with the Viam agent.](/platform/provision/style-provisioning-diagram.png)
+  If there is an issue connecting to the WiFi hotspot with the input WiFi credentials, this flow will repeat until the device is online:
+  ![Diagram of the flow of provisioning a new machine with the Viam agent when there is an issue connecting to WiFi.](/platform/provision/style-provisioning-diagram-error.png)
 
 This provisioning functionality uses the [Viam Agent provisioning subsystem](https://github.com/viamrobotics/agent-provisioning).
 
@@ -180,7 +185,8 @@ For example, to configure SSIDs and passwords for two WiFi networks named `prima
 You can add this configuration to the <file>/etc/viam.json</file> configuration file you deploy to your machine, or from the **CONFIGURE** tab in the [Viam app](https://app.viam.com/) for your machine, using **Raw JSON** mode.
 The Viam Agent will attempt to connect to the `ssid` with the highest `priority` first.
 If the highest-priority network is not available, it will then attempt to connect to the next-highest `priority` network, and so on until all configured networks have been tried.
-If no configured WiFi network could be connected to, the Viam Agent will instead create its own WiFI hotspot, as described in the next section.
+
+If no configured WiFi network could be connected to, the Viam Agent will instead create its own WiFi hotspot, as described in the next section.
 
 ### Create a WiFi hotspot
 
