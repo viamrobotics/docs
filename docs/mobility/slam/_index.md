@@ -10,13 +10,20 @@ images: ["/services/icons/slam.svg"]
 no_list: true
 aliases:
   - "/services/slam/"
-# SMEs: Kat, Jeremy
+# SMEs: John N.
 ---
 
 {{% alert title="Stability Notice" color="note" %}}
 The SLAM service is an experimental feature.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
+{{% /alert %}}
+
+{{% alert title="Temporarily not available in live mode" color="caution" %}}
+
+Running models of the SLAM service in live mode is temporarily disabled.
+[Collect a dataset and use offline mode](/mobility/slam/cartographer/#use-previously-captured-data) instead.
+
 {{% /alert %}}
 
 [Simultaneous Localization And Mapping (SLAM)](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping) allows your machine to create a map of its surroundings and find its location within that map.
