@@ -23,7 +23,7 @@ The Viam Agent:
 - Automatically connects to a pre-configured WiFi network, or creates its own wireless hotspot if no pre-configured WiFi network is detected.
 - Installs `viam-server` as a static binary, removing the need to perform any library linking or dependency installation during first-time setup.
   You can also use a custom build of `viam-server`, if needed.
-- Provides automatic updates for `viam-server`, the agent itself, and any configured functionalities it controls, such as Agent Provisioning.
+- Provides automatic updates for `viam-server`, the agent itself, and any configured subsystems (such as the Agent Provisioning subsystem).
 - Allows control of deployed software versions through the Viam app.
 
 Consider a company that sells machines that monitor weather conditions on a maritime craft and provide navigation advice based on those readings.
@@ -199,7 +199,7 @@ For example, to set the hotspot password to `acme123`, you can use the following
         "hotspot_password": "acme123"
         ...
        }
-   }
+    }
 }
 ```
 
