@@ -388,6 +388,7 @@ dataset,CreateDataset,create_dataset,,createDataset
 dataset,DeleteDataset,delete_dataset,,deleteDataset
 dataset,RenameDataset,rename_dataset,,renameDataset
 dataset,ListDatasetsByOrganizationID,list_datasets_by_organization_id,,listDatasetsByOrganizationID
+## NOTE: yes PySDK is singular:
 dataset,ListDatasetsByIDs,list_dataset_by_ids,,listDatasetsByIDs
 
 ## Datasync
