@@ -17,7 +17,7 @@ First, follow the installation guide for your specific Orange Pi board:
 - For an Orange Pi 3 LTS, follow the [Orange Pi 3 LTS installation guide](/get-started/installation/prepare/orange-pi-3-lts/).
 Once you have prepared your board, follow your new machine part's {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on your board and connect to the Viam app.
 
-To use the GPIO pins on your board to [configure a smart machine](https://docs.viam.com/build/configure) with your Orange Pi computer, configure your board as a {{< glossary_tooltip term_id="component" text="component" >}} of your machine in [the Viam app](https://app.viam.com):
+To use the GPIO pins on your board to [configure a smart machine](/build/configure) with your Orange Pi computer, configure your board as a {{< glossary_tooltip term_id="component" text="component" >}} of your machine in [the Viam app](https://app.viam.com):
 
 {{< tabs name="Configure an orangepi Board" >}}
 {{% tab name="Config Builder" %}}
