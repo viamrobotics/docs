@@ -405,6 +405,7 @@ data_sync,StreamingDataCaptureUpload,streaming_data_capture_upload,,streamingDat
 ## MLTraining
 ## TODO: Something wrong with parsing: submit_training_job in PySDK (??):
 mltraining,SubmitTrainingJob,,,submitTrainingJob
+mltraining,SubmitCustomTrainingJob,submit_custom_training_job,,submitCustomTrainingJob
 mltraining,GetTrainingJob,get_training_job,,getTrainingJob
 mltraining,ListTrainingJobs,list_training_jobs,,listTrainingJobs
 mltraining,CancelTrainingJob,cancel_training_job,,cancelTrainingJob
