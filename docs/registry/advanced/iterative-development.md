@@ -4,7 +4,7 @@ linkTitle: "Iterative Development"
 weight: 40
 type: "docs"
 tags: ["modules", "modular resources", "registry"]
-description: "Iterate on and test your modules locally before uploading to the Viam registry."
+description: "Test your modules locally before uploading to the Viam registry, and use prerelease versioning to publish beta versions of your module."
 icon: true
 images: ["/services/icons/ml.svg"]
 ---
@@ -22,6 +22,7 @@ Both of these options involve deploying your module to the target test system as
 Even if you have already published a version of your module to the registry, you might still find it useful to follow the steps in this section to verify that changes you make as part of releasing a new version work as expected on your target platform.
 
 Then, once you have tested it, you can [upload your module](/registry/upload/) to the Viam registry.
+You can use [prerelease versioning](#use-prerelease-versioning) to publish a version of your module to the registry without affecting machines that are using stable versions of your module.
 
 {{< tabs >}}
 {{% tab name="Test Locally" %}}
@@ -278,3 +279,20 @@ If you are prompted with a message similar to `Enter passphrase for key '/Users/
   ```
 
 Then test your `ssh` connection once more to ensure that you are connected without being prompted for a password.
+
+## Use prerelease versioning
+
+To publish a module version that is not yet fully tested, you can publish it as a prerelease (also called "release candidate") version of a module to the modular registry.
+Publishing a prerelease version will not affect any machines that are using the existing module.
+Regardless of the machine’s version pinning setting, only machines that are set to the exact prerelease version will be updated.
+
+For example, imagine your latest stable version is `0.1.2`.
+If you publish a prerelease version tagged `0.1.2-rc0`, all machines continue to use version `0.1.2`.
+Similarly, if you publish a prerelease version tagged `0.1.3-rc0`, all machines will stay on version `0.1.2`.
+If you pin a machine to the exact version number `0.1.3-rc0`, only then will that machine use the prerelease version.
+
+### Syntax
+
+It is up to you as the developer to choose your prerelease tagging scheme.
+You can append any label after the major, minor, and patch version numbers.
+For example, you can label your prerelease version `0.1.2-rc0` or `0.1.2-beta`.
