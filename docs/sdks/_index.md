@@ -12,6 +12,7 @@ Viam's SDK libraries wrap the Viam's APIs for interacting with a machine's [comp
 ## Backend SDKs
 
 Use the backend SDK to build business logic to control [components](/build/program/apis/#component-apis) and [services](/build/program/apis/#service-apis), as well as manage your [fleet](/build/program/apis/#fleet-management-api) and [data](/build/program/apis/data-client/), and [billing information](/build/program/apis/billing-client/), or [provision](/fleet/provision/#provision-a-new-machine) machines.
+With the backend SDKs you can also create custom {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}. 
 
 {{< sectionlist-custom >}}
 {{% sectionlist-custom-item link="/sdks/python/" %}}
