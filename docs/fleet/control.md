@@ -25,7 +25,7 @@ For local communication between [parts](/build/configure/parts/#machine-parts) V
 
 You can also switch between different machine parts and control the selected machine part directly from the **CONTROL** tab.
 
-{{< imgproc src="/fleet/app-usage/control-machine-parts.png" alt="A machine's control tab populated with a main machine part and its subpart." resize="650x" class="aligncenter" >}}
+{{< imgproc src="/fleet/app-usage/control-machine-part-dropdown.png" alt="The expanded Machine part dropdown menu with the main part selected on the Control tab." resize="650x" class="aligncenter" >}}
 
 For more information on configuring and controlling machine parts, see [Machine Architecture](/build/configure/parts/#machine-parts).
 
