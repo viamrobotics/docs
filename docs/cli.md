@@ -22,7 +22,7 @@ The CLI lets you:
 For example, this CLI command moves a servo to the 75 degree position:
 
 ```sh {class="command-line" data-prompt="$"}
-viam robots part run --robot 82c608a-1be9-46a5 --organization "Robot's Org" \
+viam machines part run --robot 82c608a-1be9-46a5 --organization "Robot's Org" \
 --location myLoc --part "myrobot-main" --data '{"name": "myServo", "angle_deg":75}' \
 viam.component.servo.v1.ServoService.MoveRequest
 ```
@@ -164,11 +164,11 @@ You will need both to authenticate.
 
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
-By default, new organization API keys are created with **Owner** permissions, giving the key full read and write access to all robots within your organization.
+By default, new organization API keys are created with **Owner** permissions, giving the key full read and write access to all machines within your organization.
 You can change an API key's permissions from the Viam app on the [organizations page](/fleet/organizations/) by clicking the **Show details** link next to your API key.
 {{% /alert %}}
 
-Once created, you can use the organization API key to authenticate future CLI sessions or to [connect to robots with the SDK](/build/program/#authenticate)..
+Once created, you can use the organization API key to authenticate future CLI sessions or to [connect to machines with the SDK](/build/program/#authenticate).
 To switch to using an organization API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
 
 An organization can have multiple API keys.
@@ -190,7 +190,7 @@ To use an location API key to authenticate your CLI session, you must first crea
    Where:
 
    - `location-id` is your location ID.
-     You can find your location ID by running `viam locations list` or by visiting your [robot fleet's page](https://app.viam.com/robots) in the Viam app.
+     You can find your location ID by running `viam locations list` or by visiting your [fleet's page](https://app.viam.com/robots) in the Viam app.
    - `org-id` is an optional organization ID to attach the key to.
      You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
      If only one organization owns the location, you can omit the parameter.
@@ -203,11 +203,11 @@ You will need both to authenticate.
 
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
-By default, new location API keys are created with **Owner** permissions, giving the key full read and write access to all robots within your location.
+By default, new location API keys are created with **Owner** permissions, giving the key full read and write access to all machines within your location.
 You can change an API key's permissions from the Viam app on the [organizations page](/fleet/organizations/) by clicking the **Show details** link next to your API key.
 {{% /alert %}}
 
-Once created, you can use the location API key to authenticate future CLI sessions or to [connect to robots with the SDK](/build/program/#authenticate).
+Once created, you can use the location API key to authenticate future CLI sessions or to [connect to machines with the SDK](/build/program/#authenticate).
 To switch to using a location API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
 
 A location can have multiple API keys.
@@ -222,13 +222,13 @@ To use a machine part API key to authenticate your CLI session, you must first c
 1. Then, run the following command to create a new machine part API key:
 
    ```sh {class="command-line" data-prompt="$"}
-   viam robots api-key create --robot-id <robot-id> --org-id <org-id> --name <key-name>
+   viam machines api-key create --robot-id <robot-id> --org-id <org-id> --name <key-name>
    ```
 
    Where:
 
    - `robot-id` is your machine's ID.
-     You can find your machine ID by running `viam robots list`.
+     You can find your machine ID by running `viam machines list`.
    - `org-id` is an optional organization ID to attach the key to.
      You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
      If only one organization owns the robot, you can omit the parameter.
@@ -322,7 +322,7 @@ viam data database hostname --org-id=abc
 Viam currently only supports deleting approximately 500 files at a time.
 To delete more data iterate over the data with a shell script:
 
-```sh
+```sh {class="command-line" data-prompt="$"}
 # deleting one hour of image data
 for i in {00..59}; do
   viam data delete binary --org-ids=<org-id> --mime-types=image/jpeg,image/png --start=2024-05-13T11:00:00.000Z --end=2024-05-13T11:${i}:00.000Z
@@ -692,7 +692,7 @@ For example, the following represents the configuration of an example `my-module
       "model": "acme:demo:my-model"
     }
   ],
-  "entrypoint": "dist/main"
+  "entrypoint": "<PATH-TO-EXECUTABLE>"
 }
 ```
 
@@ -761,7 +761,7 @@ pip3 install -r requirements.txt
 #!/bin/bash
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz dist/main
+tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
 {{% /expand%}}
@@ -788,7 +788,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz dist/main
+tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
 {{% /expand%}}
@@ -822,7 +822,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz dist/main
+tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
 { {% /expand%}}
@@ -838,7 +838,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz dist/main
+tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
 { {% /expand%}}
@@ -866,7 +866,7 @@ For example, the following extends the `my-module` <file>meta.json</file> file f
     "path": "dist/archive.tar.gz",
     "arch": ["linux/amd64", "linux/arm64"]
   },
-  "entrypoint": "dist/main"
+  "entrypoint": "<PATH-TO-EXECUTABLE>"
 }
 ```
 
@@ -921,9 +921,9 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 | `--org-id`      | the organization to create an API key for |`api-key` | true |
 | `--name`     |  the optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time   |`api-key` | false |
 
-### `robots`
+### `machines` (alias `robots`)
 
-The `robots` command allows you to manage your machine fleet.
+The `machines` command allows you to manage your machine fleet.
 This includes:
 
 - Listing all machines that you have access to, filtered by organization and location.
@@ -934,12 +934,12 @@ This includes:
 - Accessing your machine with a secure shell (when this feature is enabled)
 
 ```sh {class="command-line" data-prompt="$"}
-viam robots list
-viam robots status --organization=<org name> --location=<location name> --robot=<machine id>
-viam robots logs --organization=<org name> --location=<location name> --robot=<machine id> [...named args]
-viam robots part status --organization=<org name> --location=<location name> --robot=<machine id>
-viam robots part run --organization=<org name> --location=<location name> --robot=<machine id> [--stream] --data <meth>
-viam robots part shell --organization=<org name> --location=<location name> --robot=<machine id>
+viam machines list
+viam machines status --organization=<org name> --location=<location name> --robot=<machine id>
+viam machines logs --organization=<org name> --location=<location name> --robot=<machine id> [...named args]
+viam machines part status --organization=<org name> --location=<location name> --robot=<machine id>
+viam machines part run --organization=<org name> --location=<location name> --robot=<machine id> [--stream] --data <meth>
+viam machines part shell --organization=<org name> --location=<location name> --robot=<machine id>
 ```
 
 Examples:
@@ -947,17 +947,17 @@ Examples:
 ```sh {class="command-line" data-prompt="$"}
 
 # list all machines you have access to
-viam robots list
+viam machines list
 
 # get machine status
-viam robots status  --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Robot's Org" --location myLoc
+viam machines status  --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Robot's Org" --location myLoc
 
 # stream error level logs from a machine part
-viam robots part logs --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
+viam machines part logs --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
 --organization "Robot's Org" --location myLoc --part "myrover-main" --tail true
 
 # stream classifications from a machine part every 500 milliseconds from the Viam Vision Service with classifier "stuff_detector"
-viam robots part run --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
+viam machines part run --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
 --organization "Robot's Org" --location myLoc --part "myrover-main" --stream 500ms \
 --data '{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_detector", "n":1}' \
 viam.service.vision.v1.VisionService.GetClassificationsFromCamera

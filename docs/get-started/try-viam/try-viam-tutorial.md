@@ -226,6 +226,6 @@ If you have questions, check out our [FAQ](/get-started/try-viam/faq/) or join o
 
 {{< cards >}}
 {{% card link="/tutorials/get-started/try-viam-sdk" %}}
-{{% card link="/tutorials/services/try-viam-color-detection" %}}
+{{% card link="/tutorials/services/basic-color-detection" %}}
 {{% card link="/get-started/try-viam/rover-resources" %}}
 {{< /cards >}}

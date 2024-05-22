@@ -38,7 +38,7 @@ board,PWMFrequency,get_pwm_frequency,PWMFreq,pWMFrequency
 board,SetPWMFrequency,set_pwm_frequency,SetPWMFreq,setPWMFrequency
 board,ReadAnalogReader,analog_by_name,AnalogByName,readAnalogReader
 ## HACK: Omitting PySDK: write_analog, currently borked: https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.write_analog
-board,WriteAnalog,,WriteAnalog,writeAnalog
+board,WriteAnalog,,Write,writeAnalog
 board,GetDigitalInterruptValue,digital_interrupt_by_name,DigitalInterruptByName,,
 board,StreamTicks,,StreamTicks,streamTicks
 board,SetPowerMode,set_power_mode,SetPowerMode,setPowerMode
@@ -248,9 +248,14 @@ navigation,Close,close,Close,
 
 ## SLAM
 slam,GetPosition,get_position,Position,getPosition
-slam,GetPointCloudMap,get_point_cloud_map,PointCloudMap,getPointCloudMap
-slam,GetInternalState,get_internal_state,InternalState,getInternalState
+## HACK: SLAM (Go) implements proto GetPointCloudMap in user-facing helper PointCloudMapFull instead:
+slam,GetPointCloudMap,get_point_cloud_map,,getPointCloudMap
+## HACK: SLAM (Go) implements proto GetInternalState in user-facing helper InternalStateFull instead:
+slam,GetInternalState,get_internal_state,,getInternalState
 slam,GetProperties,get_properties,Properties,getProperties
+## HACK: SLAM (Go) provides 2 additional helper functions, adding 2 pseudo-entries:
+slam,InternalStateFull,,InternalStateFull,
+slam,PointCloudMapFull,,PointCloudMapFull,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 slam,Reconfigure,,Reconfigure,
 slam,DoCommand,do_command,DoCommand,doCommand
@@ -383,18 +388,19 @@ dataset,CreateDataset,create_dataset,,createDataset
 dataset,DeleteDataset,delete_dataset,,deleteDataset
 dataset,RenameDataset,rename_dataset,,renameDataset
 dataset,ListDatasetsByOrganizationID,list_datasets_by_organization_id,,listDatasetsByOrganizationID
+## NOTE: yes PySDK is singular:
 dataset,ListDatasetsByIDs,list_dataset_by_ids,,listDatasetsByIDs
 
 ## Datasync
-datasync,DataCaptureUpload,,,dataCaptureUpload
+data_sync,DataCaptureUpload,,,dataCaptureUpload
 ## HACK: DataCaptureUpload instead implemented in binary_data_capture_upload (python), adding pseudo-entry:
-datasync,BinaryDataCaptureUpload,binary_data_capture_upload,,
+data_sync,BinaryDataCaptureUpload,binary_data_capture_upload,,
 ## HACK: DataCaptureUpload instead implemented in tabular_data_capture_upload (python), adding pseudo-entry:
-datasync,TabularDataCaptureUpload,tabular_data_capture_upload,,
-datasync,FileUpload,file_upload,,fileUpload
+data_sync,TabularDataCaptureUpload,tabular_data_capture_upload,,
+data_sync,FileUpload,file_upload,,fileUpload
 ## HACK: FileUpload also implemented in file_upload_from_path (python), adding pseudo-entry:
-datasync,FileUploadFromPath,file_upload_from_path,,
-datasync,StreamingDataCaptureUpload,streaming_data_capture_upload,,streamingDataCaptureUpload
+data_sync,FileUploadFromPath,file_upload_from_path,,
+data_sync,StreamingDataCaptureUpload,streaming_data_capture_upload,,streamingDataCaptureUpload
 
 ## MLTraining
 ## TODO: Something wrong with parsing: submit_training_job in PySDK (??):

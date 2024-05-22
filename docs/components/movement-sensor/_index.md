@@ -48,7 +48,8 @@ Model | Description <a name="model-table"></a>
 [`gps-nmea-rtk-pmtk`](./gps/gps-nmea-rtk-pmtk/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models using I<sup>2</sup>C (**experimental**)
 [`gps-nmea-rtk-serial`](./gps/gps-nmea-rtk-serial/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models using serial communication (**experimental**)
 [`dual-gps-rtk`](./gps/dual-gps-rtk/) | A movement sensor that calculates compass heading from two GPS movement sensors
-[`imu-wit`](./imu/imu-wit/) | IMUs manufactured by [WitMotion](https://www.wit-motion.com/)
+[`imu-wit-hwt905`](./imu/imu-wit-hwt905/) | The [HWT905-TTL IMU](https://www.wit-motion.com/proztgjd/39.html) manufactured by WitMotion
+[`imu-wit`](./imu/imu-wit/) | Other IMUs manufactured by [WitMotion](https://www.wit-motion.com/): BWT61CL, BWT901CL, and HWT901B-TTL
 [`accel-adxl345`](./adxl345/) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer
 [`gyro-mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense
 [`merged`](./merged/) | A model that allows you to aggregate the API methods supported by multiple sensors into a singular sensor client, effectively merging the models of the individual resources

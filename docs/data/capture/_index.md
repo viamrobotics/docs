@@ -430,4 +430,5 @@ To learn how to capture Performance Metrics for machines, see [Performance Monit
 {{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
 {{% card link="/data/capture/performance-metrics/" %}}
 {{% card link="/tutorials/projects/filtered-camera/" %}}
+{{% card link="/tutorials/control/air-quality-fleet/" %}}
 {{< /cards >}}

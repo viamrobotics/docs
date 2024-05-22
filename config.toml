@@ -126,6 +126,16 @@ enable = false
   url = "https://www.linkedin.com/company/viaminc/about/"
   icon = "fab fa-linkedin"
   desc = "Connect with Viam on LinkedIn for news and information"
+[[params.links.user]]
+  name = "Youtube"
+  url = "https://www.youtube.com/@viamrobotics"
+  icon = "fab fa-youtube"
+  desc = "Watch and learn how to use Viam"
+[[params.links.user]]
+  name = "Blog"
+  url = "https://www.viam.com/blog"
+  icon = "fa fa-newspaper"
+  desc = "Watch and learn how to use Viam"
 [[params.links.developer]]
   name = "GitHub"
   url = "https://github.com/viamrobotics/"

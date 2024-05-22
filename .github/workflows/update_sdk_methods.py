@@ -64,12 +64,12 @@ if args.verbose:
 ## This script must be run within the 'docs' git repo. Here we check
 ## to make sure this is the case, and get the root of our git-managed
 ## repo to use later in parse() and write_markdown():
-process = subprocess.Popen(['git', 'rev-parse', '--show-toplevel'], \
+process_result = subprocess.Popen(['git', 'rev-parse', '--show-toplevel'], \
                      stdout=subprocess.PIPE, \
                      stderr=subprocess.PIPE)
-stdout, stderr = process.communicate()
+stdout, stderr = process_result.communicate()
 
-if process.returncode == 0:
+if process_result.returncode == 0:
     gitroot = stdout.decode().rstrip()
 else:
     print("ERROR: You must run this script within a cloned copy of the 'docs' git repo!")
@@ -78,6 +78,30 @@ else:
 
 ## Build path to sdk_protos_map.csv file that contains proto-to-methods mapping, used in write_markdown():
 proto_map_file = os.path.join(gitroot, '.github/workflows/sdk_protos_map.csv')
+
+## Check to see if we have a locally-staged version of the Go SDK Docs (RDK repo). If so,
+## scrape our code samples (and only code samples!) from that URL instead. This check just
+## establishes whether the URL is up or not; if detected as up here, it is scraped in parse().
+## TODO: Consider if we need to consider other ports besides '8080', i.e. if multiple stage attempts,
+##   or if port was already in use by another service when pkgsite command was issues
+##   (8080 a very common web services default port)
+## NOTE: To stage the Go SDK docs (RDK repo):
+##   - Clone https://github.com/viamrobotics/rdk
+##   - Make your changes (add code samples as needed)
+##   - Run, from within the repo: go install golang.org/x/pkgsite/cmd/pkgsite@latest; pkgsite -open
+
+is_go_sdk_staging_available = False
+
+## Check to see if pkgsite (Go SDK docs local builder process) is running, and get its PID if so:
+process_result = subprocess.run(["ps -ef | grep pkgsite | grep -v grep | awk {'print $2'}"], shell=True, text = True, capture_output=True)
+pkgsite_pid = process_result.stdout.rstrip()
+
+if pkgsite_pid != '':
+    process_result = subprocess.run(["lsof -Pp " + pkgsite_pid + " | grep LISTEN | awk {'print $9'} | sed 's%.*:%%g'"], shell=True, text = True, capture_output=True)
+    pkgsite_port = process_result.stdout
+    is_go_sdk_staging_available = True
+    if args.verbose:
+        print('DEBUG: Detected local staged Go SDK docs URL, using that for Go code samples.')
 
 ## Array mapping language to its root URL:
 sdk_url_mapping = {
@@ -329,20 +353,27 @@ python_ignore_apis = [
     'viam.components.board.client.BoardClient.write_analog' # Currently borked: https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.write_analog
 ]
 
-## Use these URLs for data types that are built-in to the language:
+## Use these URLs for data types that are not otherwise captured by parse(), such as:
+## - Well-known built-in data types that are not scrapeable (like 'int')
+## - Viam-specific data types, even if scrapeable, that are part of a multiple-data-type return
+##   (like list_organization_members : Tuple[List[viam.proto.app.OrganizationMember], List[viam.proto.app.OrganizationInvite]]
+## Data type links defined here will be used instead of scraped links if both exist:
 python_datatype_links = {
+    ## Built-in data types:
     "str": "https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str",
     "int": "https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex",
     "float": "https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex",
     "bytes": "https://docs.python.org/3/library/stdtypes.html#bytes-objects",
     "bool": "https://docs.python.org/3/library/stdtypes.html#boolean-type-bool",
-    "list": "https://docs.python.org/3/library/stdtypes.html#typesseq-list",
-    "tuple": "https://docs.python.org/3/library/stdtypes.html#tuples",
-    "datetime": "https://docs.python.org/3/library/datetime.html",
     "datetime.datetime": "https://docs.python.org/3/library/datetime.html",
-    ## We could also choose to be explicit about Viam data types, like so:
-    "Control": "https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control",
-    "EventType": "https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.EventType"
+    "datetime.timedelta": "https://docs.python.org/3/library/datetime.html#timedelta-objects",
+    ## Viam-specific data types:
+    "viam.proto.app.OrganizationMember": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationMember",
+    "viam.proto.app.OrganizationInvite": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite",
+    "viam.components.arm.KinematicsFileFormat.ValueType": "https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.KinematicsFileFormat",
+    "viam.media.video.NamedImage": "https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage",
+    "viam.proto.common.ResponseMetadata": "https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata",
+    "viam.proto.component.encoder.PositionType.ValueType": "https://python.viam.dev/autoapi/viam/gen/component/encoder/v1/encoder_pb2/index.html#viam.gen.component.encoder.v1.encoder_pb2.PositionType"
 }
 
 ## Inject these URLs, relative to 'docs', into param/return/raises descriptions that contain exact matching key text.
@@ -445,6 +476,50 @@ def make_soup(url):
    except urllib.error.HTTPError as err:
        print(f'An HTTPError was thrown: {err.code} {err.reason} for URL: {url}')
 
+## Link any matching data types to their reference links, based on {sdk}_datatype_links[] array,
+## used in parse() for both param and return data types. Handles data types syntax that includes
+## multiple data types (and therefore requires multiple data type links), such as
+## ListOrganizationMembers: Tuple[List[viam.proto.app.OrganizationMember], List[viam.proto.app.OrganizationInvite]
+## DESIGN DECISION: Ignore well-known, usually leading (containing) data types like List, Tuple, Dict.
+## NOTE: Only used in PySDK parsing, for now (but should work for all with minor tweak to support per-language links array):
+def link_data_types(sdk, data_type_string):
+
+    linked_data_type_string = ""
+
+    ## If the passed data_type_string matches exactly to a data type defined in python_datatype_links, use that:
+    if data_type_string in python_datatype_links.keys():
+       linked_data_type_string = '[' + data_type_string + '](' + python_datatype_links[data_type_string] + ')'
+    else:
+
+        ## Assemble all encountered data types that match to python_datatype_links keys into array.
+        ## This match is a little too greedy, and will match, say, 'int' to 'JointPositions'. To counter
+        ## this, we additionally check for leading and trailing alphanumeric characters further in:
+        matching_data_types = list(key for key in python_datatype_links if key in data_type_string)
+
+        if len(matching_data_types) > 0:
+
+            ## Ugly hack to allow us to append within the for loop below, sorry:
+            linked_data_type_string = data_type_string
+
+            for data_type_found in matching_data_types:
+
+                ## Discard string matches that are substrings of other data type strings:
+                if not regex.search(r'[A-Za-z0-9]' + data_type_found, data_type_string) and not regex.search(data_type_found + r'[A-Za-z0-9]', data_type_string):
+
+                    data_type_linked = '[' + data_type_found + '](' + python_datatype_links[data_type_found] + ')'
+                    linked_data_type_string = regex.sub(data_type_found, data_type_linked, linked_data_type_string)
+                else:
+                    ## If we get here, this data_type is actually a substring of another data type. Take no action:
+                    pass
+
+    ## If we didn't find any matching links, return an empty string so we can know to look elsewhere,
+    ## otherwise return linked data type string:
+    if linked_data_type_string == data_type_string:
+        return ""
+    else:
+        return linked_data_type_string
+
+
 ## Link matching text, used in write_markdown():
 ## NOTE: Currently does not support formatting for link titles
 ## (EXAMPLE: bolded DATA tab here: https://docs.viam.com/build/program/apis/data-client/#binarydatabyfilter)
@@ -461,7 +536,7 @@ def link_description(format_type, full_description, link_text, link_url):
 
     return linked_description
 
-## Fetch sdk documentations for each language in sdks array, by language, by type, by resource, by method.
+## Fetch SDK documentation for each language in sdks array, by language, by type, by resource, by method.
 def parse(type, names):
 
 ## TODO:
@@ -611,10 +686,44 @@ def parse(type, names):
 
                                 ## Get full method usage string, by omitting all comment spans:
                                 method_usage_raw = regex.sub(r'<span class="comment">.*</span>', '', this_method_raw2)
-                                this_method_dict["usage"] = regex.sub(r'</span>', '', method_usage_raw).lstrip().rstrip()
+                                this_method_dict["usage"] = regex.sub(r'</span>', '', method_usage_raw).replace("\t", "  ").lstrip().rstrip()
 
                                 ## Not possible to link to the specific functions, so we link to the parent resource instead:
                                 this_method_dict["method_link"] = url + '#' + interface_name
+
+                                ## Check for code sample for this method.
+                                ## If we detected that a local instance of the Go SDK docs is available, use that.
+                                ## Otherwise, use the existing scraped 'soup' object from the live Go SDK docs instead.
+                                if is_go_sdk_staging_available:
+
+                                    staging_url = regex.sub('https://pkg.go.dev', 'http://localhost:8080', url)
+                                    staging_soup = make_soup(staging_url)
+
+                                    ## Get a raw dump of all go methods by interface for each resource:
+                                    go_code_samples_raw = staging_soup.find_all(
+                                        lambda code_sample_tag: code_sample_tag.name == 'p'
+                                        and method_name + " example:" in code_sample_tag.text)
+                                else:
+
+                                    ## Get a raw dump of all go methods by interface for each resource:
+                                    go_code_samples_raw = soup.find_all(
+                                        lambda code_sample_tag: code_sample_tag.name == 'p'
+                                        and method_name + " example:" in code_sample_tag.text)
+
+                                ## Determine if a code sample is provided for this method:
+                                if len(go_code_samples_raw) == 1:
+
+                                    ## Fetch code sample raw text, preserving newlines but stripping all formatting.
+                                    ## This string should be suitable for feeding into any python formatter to get proper form:
+                                    this_method_dict["code_sample"] = go_code_samples_raw[0].find_next('pre').text.replace("\t", "  ")
+
+                                elif len(go_code_samples_raw) > 1:
+                                
+                                    ## In case we want to support multiple code samples per method down the line,
+                                    ## this is where to process (and: update write_markdown() accordingly to enable looping
+                                    ## through possible code sample data objects). For now we just continue to fetch just the
+                                    ## first-discovered (i.e., at index [0]):
+                                    this_method_dict["code_sample"] = go_code_samples_raw[0].find_next('pre').text.replace("\t", "  ")
 
                                 ## We have finished collecting all data for this method. Write the this_method_dict dictionary
                                 ## in its entirety to the go_methods dictionary by type (like 'component'), by resource (like 'arm'),
@@ -666,6 +775,33 @@ def parse(type, names):
                                 'description': 'Readings return data specific to the type of sensor and can be of any type.', \
                                 'usage': 'Readings(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, extra map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
                                 'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Sensor'}
+
+                ## For SLAM service only, additionally fetch data for two helper methods defined outside of the resource's interface:
+                if resource == 'slam':
+
+                    ## Fetch PointCloudMapFull:
+                    pointcloudmapfull_method_raw = soup.find_all(
+                        lambda tag: tag.name == 'div'
+                        and tag.get('class') == ['Documentation-declaration']
+                        and "PointCloudMapFull" in tag.pre.text)
+
+                    go_methods[type][resource]['PointCloudMapFull'] = {}
+                    go_methods[type][resource]['PointCloudMapFull']['proto'] = 'PointCloudMapFull'
+                    go_methods[type][resource]['PointCloudMapFull']['description'] = pointcloudmapfull_method_raw[0].pre.find_next('p').text
+                    go_methods[type][resource]['PointCloudMapFull']['usage'] = pointcloudmapfull_method_raw[0].pre.text.removeprefix('func ')
+                    go_methods[type][resource]['PointCloudMapFull']['method_link'] = 'https://pkg.go.dev/go.viam.com/rdk/services/slam#PointCloudMapFull'
+
+                    ## Fetch InternalStateFull:
+                    internalstatefull_method_raw = soup.find_all(
+                        lambda tag: tag.name == 'div'
+                        and tag.get('class') == ['Documentation-declaration']
+                        and "InternalStateFull" in tag.pre.text)
+
+                    go_methods[type][resource]['InternalStateFull'] = {}
+                    go_methods[type][resource]['InternalStateFull']['proto'] = 'InternalStateFull'
+                    go_methods[type][resource]['InternalStateFull']['description'] = internalstatefull_method_raw[0].pre.find_next('p').text
+                    go_methods[type][resource]['InternalStateFull']['usage'] = internalstatefull_method_raw[0].pre.text.removeprefix('func ')
+                    go_methods[type][resource]['InternalStateFull']['method_link'] = 'https://pkg.go.dev/go.viam.com/rdk/services/slam#InternalStateFull'
 
                 ## We have finished looping through all scraped Go methods. Write the go_methods dictionary
                 ## in its entirety to the all_methods dictionary using "go" as the key:
@@ -739,32 +875,13 @@ def parse(type, names):
                                 ## Determine parameter type:
                                 param_type = parameter_tag.find_all('span', class_='n')[1].text
 
-                                this_method_parameters_dict["param_type"] = param_type
-
                                 ## Determine if this parameter is optional, and strip off ' | None' syntax if so:
                                 if param_type.endswith(' | None'):
                                     this_method_parameters_dict["optional"] = True
-                                    this_method_parameters_dict["param_type"] = param_type.replace(' | None', "")
+                                    param_type = param_type.replace(' | None', "")
+                                    #this_method_parameters_dict["param_type"] = param_type
                                 else:
                                     this_method_parameters_dict["optional"] = False
-
-                                ## Determine if this parameter has a parameter type link. Include if so, otherwise omit:
-                                if param_type in python_datatype_links.keys():
-                                    this_method_parameters_dict["param_type_link"] = python_datatype_links[param_type]
-                                elif parameter_tag.find('a', class_="reference internal"):
-                                    param_type_link_raw = parameter_tag.find('a', class_="reference internal").get("href")
-                                    ## Parameter type link is an anchor link:
-                                    if param_type_link_raw.startswith('#'):
-                                        this_method_parameters_dict["param_type_link"] = url + param_type_link_raw
-                                    ## Parameter type link is a relative link:
-                                    elif param_type_link_raw.startswith('../../'):
-                                        this_method_parameters_dict["param_type_link"] = sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../', '')
-
-                                else:
-                                    ## Unable to find any links.
-                                    ## We will try again when looping params in the Parameters section.
-                                    ## Sometimes the param links are there instead. No-op here:
-                                    pass
 
                                 ## 'Extra' params do not appear in "Parameters" section (Except for PySDK > Motion Service),
                                 ## so we must populate this param's content manually:
@@ -772,7 +889,7 @@ def parse(type, names):
 
                                     this_method_parameters_dict["param_description"] = "Extra options to pass to the underlying RPC call."
                                     this_method_parameters_dict["param_usage"] = "extra (Mapping[str, Any]) - Extra options to pass to the underlying RPC call."
-                                    this_method_parameters_dict["param_type"] = "Mapping[str, Any]"
+                                    this_method_parameters_dict["param_type"] = "Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]"
 
                                 ## 'Timeout' params do not appear in "Parameters" section (Except for PySDK > Motion Service),
                                 ## so we must populate this param's content manually:
@@ -780,7 +897,7 @@ def parse(type, names):
 
                                     this_method_parameters_dict["param_description"] = "An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call."
                                     this_method_parameters_dict["param_usage"] = "timeout (float) - An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call."
-                                    this_method_parameters_dict["param_type"] = "float"
+                                    this_method_parameters_dict["param_type"] = "[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)"
 
                                 ## Initial method usage syntax and Parameters section do not agree on param_type for do_command.
                                 ## Manually override with correct values, for param 'command' only:
@@ -788,9 +905,33 @@ def parse(type, names):
 
                                     this_method_parameters_dict["param_description"] = "The command to execute"
                                     this_method_parameters_dict["param_usage"] = "command (Mapping[str, ValueTypes]) – The command to execute"
-                                    this_method_parameters_dict["param_type"] = "Mapping[str, ValueTypes]"
+                                    this_method_parameters_dict["param_type"] = "Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]"
 
                                 else:
+
+                                    ## First, check python_datatype_links array for manually-mapped data type links.
+                                    ## These will override all other ways of determining data type links:
+                                    linked_param_type = ""
+                                    linked_param_type = link_data_types('python', param_type)
+
+                                    ## If link_data_types() returns a linked data type string, use that.
+                                    ## Otherwise, check the scraped parameter_tag for the link:
+                                    if linked_param_type != "":
+                                        this_method_parameters_dict["param_type"] = linked_param_type
+                                    elif parameter_tag.find('a', class_="reference internal"):
+                                        param_type_link_raw = parameter_tag.find('a', class_="reference internal").get("href")
+
+                                        ## Parameter type link is an anchor link:
+                                        if param_type_link_raw.startswith('#'):
+                                            this_method_parameters_dict["param_type"] = '[' + param_type + '](' + url + param_type_link_raw + ')'
+                                        ## Parameter type link is a relative link, in one of three forms:
+                                        elif param_type_link_raw.startswith('../../../'):
+                                            this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../../', '')+ ')'
+                                        elif param_type_link_raw.startswith('../../'):
+                                            this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../', '')+ ')'
+                                        elif param_type_link_raw.startswith('../'):
+                                            this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
+
                                     ## Get parameter usage and description, if method contains a "Parameters" section. Otherwise omit.
                                     ## NOTE: We can't just use the initial param content as found above, because it does not contain descriptions,
                                     ## and we can't just use this "Parameters" section, because it does not (usually) contain things like `extra` and `timeout`.
@@ -808,26 +949,27 @@ def parse(type, names):
                                             this_method_parameters_dict["param_description"] = regex.split(r" – ", strong_tag.parent.text)[1].replace("\n", " ")
 
                                             ## OPTION: Get full parameter usage string, stripping all newlines:
+                                            ## NOTE: Currently unused.
                                             this_method_parameters_dict['param_usage'] = strong_tag.parent.text.replace("\n", " ")
 
                                             ## Some params provide data type links in Parameters section only, not initial usage.
-                                            ## Get that here if so:
-                                            ## TODO: Only finding the first link, a few have more than one.
+                                            ## Get that here if soL
                                             if strong_tag.parent.find('a', class_="reference internal"):
                                                 param_type_link_raw = strong_tag.parent.find('a', class_="reference internal").get("href")
                                                 ## Parameter type link is an anchor link:
                                                 if param_type_link_raw.startswith('#'):
-                                                    this_method_parameters_dict["param_type_link"] = url + param_type_link_raw
-                                                ## Parameter type link is a relative link:
-                                                elif param_type_link_raw.startswith('../../'):
-                                                    this_method_parameters_dict["param_type_link"] = sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../', '')
+                                                    this_method_parameters_dict["param_type"] = '[' + param_type + '](' + url + param_type_link_raw + ')'
+                                                ## Parameter type link is a relative link, beginning with 1 - 3 instances of '../'
+                                                ## Convert to an absolute link:
+                                                elif param_type_link_raw.startswith('../'):
+                                                    this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
 
-                                        ## Unable to determine parameter description, neither timeout or extra, nor matching to any
-                                        ## param in initial method usage string. Usually this means a non-param (like error raised),
-                                        ## but if we are missing expected param descriptions, expand this section to catch them.
-                                        else:
-                                            ## No-op:
-                                            pass
+                                            ## Unable to determine parameter description, neither timeout or extra, nor matching to any
+                                            ## param in initial method usage string. Usually this means a non-param (like error raised),
+                                            ## but if we are missing expected param descriptions, expand this section to catch them.
+                                            else:
+                                                ## No-op:
+                                                pass
 
                                 this_method_dict["parameters"][param_name] = this_method_parameters_dict
 
@@ -843,9 +985,31 @@ def parse(type, names):
                             this_method_dict["return"] = {}
 
                             ## OPTION: Get return_type by explicit key name:
-                            this_method_dict["return"]["return_type"] = return_tag.find('span', class_="sig-return-typehint").text
+                            return_type = return_tag.find('span', class_="sig-return-typehint").text
+                            this_method_dict["return"]["return_type"] = return_type
+
+                            linked_return_type = ""
+                            linked_return_type = link_data_types('python', return_type)
+
+                            if linked_return_type != "":
+                                this_method_dict["return"]["return_type"] = linked_return_type
+                            elif return_tag.find('a', class_="reference internal"):
+
+                                ## TODO: Only grabbing the first link encountered, but a few methods return a tuple of two linked data types.
+                                ## Handling those via link_data_types() with manual entries in python_datatype_links for now,
+                                ## But there's room for a more elegant solution:
+                                return_type_link_raw = return_tag.find('a', class_="reference internal").get("href")
+
+                                ## Return type link is an anchor link:
+                                if return_type_link_raw.startswith('#'):
+                                    this_method_dict["return"]["return_type"] = '[' + return_type + '](' + url + return_type_link_raw + ')'
+                                ## Return type link is a relative link, beginning with 1 - 3 instances of '../'
+                                ## Convert to an absolute link:
+                                elif return_type_link_raw.startswith('../'):
+                                    this_method_dict["return"]["return_type"] = '[' + return_type + '](' + sdk_url + "/autoapi/viam/" + return_type_link_raw.replace('../', '')+ ')'
 
                             ## OPTION: Get full return usage, including type info and html links if present, stripping all newlines:
+                            ## NOTE: Currently unused.
                             this_method_dict["return"]["return_usage"] = str(return_tag.find('span', class_="sig-return-typehint")).replace("\n", " ")
 
                             ## Get return description from "Returns" section if present:
@@ -884,6 +1048,7 @@ def parse(type, names):
 
                                     ## OPTION: Get full error raised usage, including type info and html links if present.
                                     ## NOTE: Errors raised (py) don't seem to have any links, just some monospace formatting:
+                                    ## NOTE: Currently unused.
                                     this_method_raises_dict["raises_usage"] = str(strong_tag.parent).replace("\n", " ")
 
                                     ## OPTION: Determine error raised description, stripping any newlines:
@@ -1048,13 +1213,17 @@ def parse_method_usage(usage_string):
     parsed_usage_string = []
 
     for param in parameters:
-        # HACKY: Hardcoding extra and error bc they are all the same and parsing from usage string
+        # HACKY: Hardcoding ctx, extra, and error bc they are all the same and parsing from usage string
         # has proven difficult
 
         # Splitting each parameter by space to separate parameter name and type
         parts = param.split()
 
-        if 'extra' in param:
+        if 'ctx' in param:
+            type_name = "ctx"
+            param_type = "Context"
+            param_type_link = "https://pkg.go.dev/context#Context"
+        elif 'extra' in param:
             type_name = "extra"
             param_type = "map[string]interface\{\}"
             param_type_link = "https://go.dev/blog/maps"
@@ -1084,7 +1253,10 @@ def format_method_usage(parsed_usage_string):
 
         return_string = ""
 
-        if type_name == "extra":
+        if type_name == "ctx":
+            return_string += f"- `{type_name}` [({param_type})]({param_type_link}): A Context carries a deadline, a cancellation signal, and other values across API boundaries."
+            formatted_output.append(return_string)
+        elif type_name == "extra":
             return_string += f"- `{type_name}` [({param_type})]({param_type_link}): Extra options to pass to the underlying RPC call."
             formatted_output.append(return_string)
         elif param_type == "error":
@@ -1158,15 +1330,18 @@ def write_markdown(type, names, methods):
     ## scope limited to 'type', so we don't have to loop by type:
     for resource in names:
 
-        ## Determine where to write output:
-        filename = resource + '.md'
-        full_path_to_file = os.path.join(path_to_generated, filename)
-        output_file = open('%s' % full_path_to_file, "w")
-
         ## Switch to identify the first method encountered for each resource, to help with
         ## knowing when we are at the top of the include file, or whether to to double newline
         ## between protos:
         is_first_method_in_this_resource = True
+
+        ## Determine where to write output for this resource:
+        full_path_to_resource_file = os.path.join(path_to_generated, resource + '.md')
+        output_file = open('%s' % full_path_to_resource_file, "w")
+
+        ## Determine where to write API protos list table for this resource:
+        full_path_to_table_file = os.path.join(path_to_generated, resource + '-table.md')
+        table_file = open('%s' % full_path_to_table_file, "w")
 
         ## Loop through mapping file, and determine which sdk methods to document for each proto:
         with open(proto_map_file, 'r') as f:
@@ -1182,6 +1357,7 @@ def write_markdown(type, names, methods):
                     ## for specific protos as needed, if needed:
                     if py_method_name or go_method_name or flutter_method_name:
 
+                        ## We have at least one implemented method for this proto, so begin writing output markdown for this resource.
                         ## Write proto as H3, with leading newlines if appending to ongoing {resource}.md file:
                         if is_first_method_in_this_resource:
                             output_file.write('### ' + proto + '\n\n')
@@ -1207,6 +1383,54 @@ def write_markdown(type, names, methods):
 
                             output_file.write('\n')
 
+                        ## We have at least one implemented method for this proto, so begin writing table list markdown for this resource.
+                        ## Add proto name to table_file listing, with standard first three lines.
+                        ## We write this here, depending on is_first_method_in_this_resource, in case we have a resource with 0 implemented protos
+                        ## down the line, to avoid blank table_files:
+                        if is_first_method_in_this_resource:
+                            table_file.write('<!-- prettier-ignore -->\n')
+                            table_file.write('Method Name | Description\n')
+                            table_file.write('----------- | -----------\n')
+
+                        ## Determine what the anchor link structure should be for this resource. Each type has its own standard:
+                        if type == 'component':
+                            proto_anchor_link = '/' + type_filepath_name + '/' + resource + '/#' + proto.lower()
+                        elif type == 'service' and resource in ['base_remote_control', 'motion', 'navigation', 'slam']:
+                            proto_anchor_link = '/mobility/' + resource.replace('base_remote_control', 'base_rc') + '/#' + proto.lower()
+                        elif type == 'service' and resource == 'data_manager':
+                            proto_anchor_link = '/data/#' + proto.lower()
+                        elif type == 'service' and resource == 'generic_service':
+                            proto_anchor_link = '/registry/advanced/generic/#' + proto.lower()
+                        elif type == 'service' and resource in ['mlmodel', 'vision']:
+                            proto_anchor_link = '/ml/' + resource.replace('mlmodel', 'deploy') + '/#' + proto.lower()
+                        elif type == 'app' and resource == 'app':
+                            proto_anchor_link = '/build/program/apis/fleet/#' + proto.lower()
+                        elif type == 'app' and resource in ["billing", "mltraining"]:
+                            proto_anchor_link = '/build/program/apis/' + resource.replace('mltraining','ml-training') + '-client/#' + proto.lower()
+                        elif type == 'app' and resource in ["data", "dataset", "data_sync"]:
+                            proto_anchor_link = '/build/program/apis/data-client/#' + proto.lower()
+                        elif type == 'robot':
+                            proto_anchor_link = '/build/program/apis/' + resource + '/#' + proto.lower()
+
+                        ## Fetch just the first sentence from the proto_override_file (first text string terminated by '.\n'), ignoring hugo
+                        ## shortcodes like alerts ('{{%.*%}}.*{{% \[a-b].* %}}'), which precede some override files' (proto descriptions')
+                        ## first sentence:
+                        with open(proto_override_file, 'r') as f:
+                            file_contents = f.read().strip()
+                            file_contents = regex.sub(r'\{\{\%.*\%\}\}.*\{\{\% \/[a-b].* \%\}\}', '', file_contents, flags=regex.DOTALL)
+                            search_result = file_contents.split('.\n', 1)[0].strip().replace("\n", " ")
+
+                            ## If the proto description is missing a trailing period, or we stripped it off during the above matching, append
+                            ## (restore) the period character:
+                            if not search_result.endswith('.'):
+                                proto_description_first_sentence = search_result + '.'
+                            else:
+                                proto_description_first_sentence = search_result
+
+                        ## Write out this proto's entry to this resource's table_file:
+                        table_file.write('[`' + proto + '`](' + proto_anchor_link + ') | ' + proto_description_first_sentence + '\n')
+
+                        ## Begin the per-language markdown writing to output_file with the opening tabset declaration:
                         output_file.write('{{< tabs >}}\n')
 
                         if py_method_name:
@@ -1255,30 +1479,10 @@ def write_markdown(type, names, methods):
                                     param_data = methods['python'][type][resource][py_method_name]['parameters'][parameter]
 
                                     param_type = param_data.get("param_type")
-                                    param_subtype = param_data.get("param_subtype")
-                                    param_type_link = param_data.get("param_type_link")
-                                    param_subtype_link = param_data.get("param_subtype_link")
                                     param_description = param_data.get("param_description")
                                     optional = param_data.get("optional")
 
-                                    output_file.write(f'- `{parameter}` [({param_type})]')
-
-                                    # Ideally we could update at least Python SDK with type links?
-                                    if param_type_link:
-                                        # Check for subtype
-                                        if param_subtype:
-                                            output_file.write(f"({param_type_link})")
-                                            if param_subtype_link:
-                                                output_file.write(f"<[{param_subtype}]")
-                                                output_file.write(f"({param_subtype_link})>")
-                                            else:
-                                                output_file.write(f"<{param_subtype}>")
-                                        else:
-                                            output_file.write(f"({param_type_link})")
-                                    # SG: Haven't found any sub-types without param type links-- they are all in flutter SDK--
-                                    # could expand this logic if popped up or grabbing more subtypes?
-                                    else:
-                                        output_file.write('(<INSERT PARAM TYPE LINK>)')
+                                    output_file.write(f'- `{parameter}` ({param_type})')
 
                                     if optional:
                                         output_file.write(' (optional)')
@@ -1289,6 +1493,8 @@ def write_markdown(type, names, methods):
 
                                     if param_description:
                                         output_file.write(f" {param_description}")
+                                    else:
+                                        output_file.write(": <INSERT PARAM DESCRIPTION>\n")
 
                                     # line break for parameters list
                                     output_file.write('\n')
@@ -1303,28 +1509,10 @@ def write_markdown(type, names, methods):
 
                                 return_data = methods['python'][type][resource][py_method_name]["return"]
                                 return_type = return_data.get("return_type")
-                                return_subtype = return_data.get("return_subtype")
-                                return_type_link = return_data.get("return_type_link")
-                                return_link = return_data.get("return_type_link") # TODO: handle this
-                                return_subtype_link = return_data.get("return_subtype_link")
                                 return_description = return_data.get("return_description")
 
                                 if return_type:
-                                    output_file.write(f"- [({return_type})]")
-
-                                    if return_type_link:
-                                        output_file.write(f"({return_type_link})")
-                                    else:
-                                        output_file.write("(INSERT RETURN TYPE LINK)")
-
-                                    if return_subtype:
-                                        output_file.write(f"<[{return_subtype}]")
-                                        if return_subtype_link:
-                                            output_file.write(f"({return_subtype_link})>")
-                                        else:
-                                            output_file.write("(<INSERT RETURN SUBTYPE LINK>)")
-                                    else:
-                                        pass
+                                    output_file.write(f"- ({return_type})")
 
                                     if return_description:
                                         output_file.write(f": {return_description}\n")

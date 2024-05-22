@@ -150,7 +150,7 @@ If you later wish to make your module public, you can use the [`viam module upda
         "build": "./build.sh", // command that will build your module
         "arch": ["linux/amd64", "linux/arm64"] // architecture(s) to build for
       },
-      "entrypoint": "dist/main"
+      "entrypoint": "<PATH-TO-EXECUTABLE>"
     }
     ```
 
@@ -170,10 +170,10 @@ For more information, see [Naming your model](/registry/#naming-your-model-names
    To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   tar -czvf dist/archive.tar.gz dist/main
+   tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
    ```
 
-Where `dist/main` is the [packaged executable](/registry/create/#compile-or-package-your-module) that runs the module at the [entry point](/registry/create/#write-an-entry-point-main-program-file).
+Where `<PATH-TO-EXECUTABLE>` is the [packaged executable](/registry/create/#compile-or-package-your-module) that runs the module at the [entry point](/registry/create/#write-an-entry-point-main-program-file).
 
 Supply the path to the resulting archive file in the next step.
 
@@ -257,10 +257,10 @@ If you intend to make frequent code changes to your module, want to support a va
    To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   tar -czf module.tar.gz dist/main
+   tar -czf module.tar.gz <PATH-TO-EXECUTABLE>
    ```
 
-   Where `dist/main` is your [packaged executable](/registry/create/#compile-or-package-your-module).
+   Where `<PATH-TO-EXECUTABLE>` is your [packaged executable](/registry/create/#compile-or-package-your-module).
 
    Supply the path to the resulting archive file in the next step.
 
@@ -371,7 +371,7 @@ pip3 install -r requirements.txt
 #!/bin/bash
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz dist/main
+tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
 {{% /expand%}}
@@ -398,7 +398,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz dist/main
+tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
 {{% /expand%}}
@@ -435,7 +435,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz dist/main
+tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
 { {% /expand%}}
@@ -451,7 +451,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz dist/main
+tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
 { {% /expand%}}

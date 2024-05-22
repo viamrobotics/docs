@@ -418,6 +418,6 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 
 {{< cards >}}
 {{% card link="/ml/vision" %}}
-{{% card link="/tutorials/services/try-viam-color-detection" %}}
+{{% card link="/tutorials/services/basic-color-detection" %}}
 {{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}

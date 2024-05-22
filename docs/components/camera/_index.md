@@ -519,7 +519,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 {{< cards >}}
 {{% card link="/ml/vision" %}}
-{{% card link="/tutorials/services/try-viam-color-detection" %}}
+{{% card link="/tutorials/services/basic-color-detection" %}}
 {{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}
 

@@ -7,9 +7,9 @@ tocbot.init({
   // Where to grab the headings to build the table of contents.
   contentSelector: '.td-content',
   // Which headings to grab inside of the contentSelector element.
-  headingSelector: 'h2, h3',
+  headingSelector: '.td-content > h2, .td-content > h3',
   // For headings inside relative or absolute positioned containers within content.
-  hasInnerContainers: true,
+  hasInnerContainers: false,
   scrollSmooth: true,
   orderedList: false
 });
