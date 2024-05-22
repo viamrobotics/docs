@@ -124,7 +124,7 @@ You do not need to perform any additional configuration when [querying data in t
    - Most MQL-compatible database clients require the _connection URI_, along with your user credentials, to connect to this server.
    - Some MQL-compatible database client instead require a _hostname_ and _database name_, along with your user credentials, to connect to this server.
 
-   You will need this to query your data in the next section.
+   You will need this information to query your data in the next section.
 
 For more information, see the documentation for the [Viam CLI `database` command](/cli/#data).
 
