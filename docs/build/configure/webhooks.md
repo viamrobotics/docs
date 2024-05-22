@@ -3,7 +3,7 @@ title: "Configure a Webhook"
 linkTitle: "Webhooks"
 weight: 50
 type: "docs"
-description: "Configure a webhook to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes."
+description: "Configure a webhook to trigger actions when data is sent from your machine to the cloud, or when your machine's internet connectivity changes."
 tags: ["webhooks"]
 ---
 
