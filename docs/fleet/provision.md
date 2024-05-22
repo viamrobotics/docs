@@ -242,12 +242,6 @@ To provision your machine, create a <file>/etc/viam-provisioning.json</file> con
 
 This file configures some basic metadata, specifies a [fragment](/fleet/configure-a-fleet/) to use to configure the machine, and provides the WiFi network name and password to allow your machine to connect automatically on startup.
 
-{{% alert title="Support Notice" color="note" %}}
-
-You cannot configure the Viam Agent itself using fragments.
-
-{{% /alert %}}
-
 ## Use the Viam mobile app
 
 You can use the [Viam mobile application](/fleet/#the-viam-mobile-app), available for download from the [Apple](https://apps.apple.com/us/app/viam-robotics/id6451424162) and [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US) app stores, to connect to the Viam Agent on deployed machines.

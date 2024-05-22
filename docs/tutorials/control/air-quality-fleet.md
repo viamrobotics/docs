@@ -274,7 +274,7 @@ In any case, now that the JSON is generated, you are ready to create a {{< gloss
 2. Navigate to the **FLEET** page and click [**Fragments**](https://app.viam.com/fragments) at the bottom of the left nav.
 3. Type in a name for your fragment, such as `air-sensing-machine` and click **Add fragment**.
 4. Replace the empty curly braces `{}` with the config you copied from your machine.
-5. Because the [Viam Agent](/fleet/provision/) config auto-populates into every machine's config, and configuring the agent using a fragment isn't supported, you do not need to include it in the fragment.
+5. Because the [Viam Agent](/fleet/provision/) config auto-populates into every machine's config, you do not need to include it in the fragment.
 
    Delete the entire `agent` section including the comma just above it:
 
