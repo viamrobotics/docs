@@ -151,35 +151,33 @@ This provisioning functionality uses the [Viam Agent provisioning subsystem](htt
 
 If you specify a WiFi network to connect to in your configuration file, the Viam Agent will automatically connect to that network when in range.
 
-You can configure one or more WiFi networks to connect to in the `agent_config` configuration object in your `viam-server` configuration file.
+You can configure one or more WiFi networks to connect to in the `agent` configuration object in your `viam-server` configuration file.
 For example, to configure SSIDs and passwords for two WiFi networks named `primaryNet` and `fallbackNet`, you can use the following configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
 ...
-"agent_config": {
-    "subsystems": {
-      "agent-provisioning": {
+"agent": {
+    "agent-provisioning": {
+      ...
+      "attributes": {
         ...
-        "attributes": {
-          ...
-          "networks": [
-            {
-              "type": "wifi",
-              "ssid": "primaryNet",
-              "psk": "myFirstPassword",
-              "priority": 30
-            },
-            {
-              "type": "wifi",
-              "ssid": "fallbackNet",
-              "psk": "mySecondPassword",
-              "priority": 10
-            }
-          ]
-        }
-      }
-    }
-}
+        "networks": [
+          {
+            "type": "wifi",
+            "ssid": "primaryNet",
+             "psk": "myFirstPassword",
+             "priority": 30
+          },
+          {
+            "type": "wifi",
+            "ssid": "fallbackNet",
+            "psk": "mySecondPassword",
+            "priority": 10
+           }
+         ]
+       }
+     }
+  }
 ```
 
 You can add this configuration to the <file>/etc/viam.json</file> configuration file you deploy to your machine, or from the **CONFIGURE** tab in the [Viam app](https://app.viam.com/) for your machine, using **Raw JSON** mode.
@@ -195,20 +193,18 @@ If you did not include a `viam-server` configuration file on your machine, or no
 By default, the hotspot network is named `viam-setup-HOSTNAME`, where `HOSTNAME` is replaced with the hostname of your machine.
 The WiFi password for this network is `viamsetup` by default.
 
-You can customize these values in the `agent_config` configuration object in your `viam-server` configuration file.
+You can customize these values in the `agent` configuration object in your `viam-server` configuration file.
 For example, to set the hotspot password to `acme123`, you can use the following configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
 ...
-"agent_config": {
-    "subsystems": {
-      "agent-provisioning": {
+"agent": {
+    "agent-provisioning": {
+      ...
+       "attributes": {
+        "hotspot_password": "acme123"
         ...
-        "attributes": {
-          "hotspot_password": "acme123"
-          ...
-        }
-      }
+       }
     }
 }
 ```
@@ -251,12 +247,6 @@ To provision your machine, create a <file>/etc/viam-provisioning.json</file> con
 ```
 
 This file configures some basic metadata, specifies a [fragment](/fleet/configure-a-fleet/) to use to configure the machine, and provides the WiFi network name and password to allow your machine to connect automatically on startup.
-
-{{% alert title="Support Notice" color="note" %}}
-
-You cannot configure the Viam Agent itself using fragments.
-
-{{% /alert %}}
 
 ## Use the Viam mobile app
 

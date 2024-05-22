@@ -274,14 +274,8 @@ In any case, now that the JSON is generated, you are ready to create a {{< gloss
 2. Navigate to the **FLEET** page and click [**Fragments**](https://app.viam.com/fragments) at the bottom of the left nav.
 3. Type in a name for your fragment, such as `air-sensing-machine` and click **Add fragment**.
 4. Replace the empty curly braces `{}` with the config you copied from your machine.
-5. Because the [Viam Agent](/fleet/provision/) config auto-populates into every machine's config, and configuring the agent using a fragment isn't supported, you do not need to include it in the fragment.
-
-   Delete the entire `agent_config` section including the comma just above it:
-
-   ![The section of the raw JSON that you should delete: the entire agent section.](/tutorials/air-quality-fleet/delete-agent-config.png)
-
-6. Click **Save fragment**.
-7. Now, you can actually delete the entire config from your machine!
+5. Click **Save fragment**.
+6. Now, you can actually delete the entire config from your machine!
    In the next section, you will replace it with the fragment you just created so that it gets updated alongside all your other machines when you update the fragment in the future.
 
    Navigate back to your machine's **CONFIGURE** tab, select **JSON** mode, and delete the entire contents of the config.
