@@ -8,11 +8,12 @@ no_list: true
 ---
 
 Viam's SDK libraries wrap the Viam's APIs for interacting with a machine's [components](/build/program/apis/#component-apis) and [services](/build/program/apis/#service-apis), as well as for [cloud capabilities](/build/program/apis/#robot-api), such as [data management](/build/program/apis/#data-client-api) and [fleet management](/build/program/apis/#fleet-management-api).
+You can run SDK code from anywhere, it does not necessarily have to be run on the same machine that runs `viam-server`.
 
 ## Backend SDKs
 
 Use the backend SDK to build business logic to control [components](/build/program/apis/#component-apis) and [services](/build/program/apis/#service-apis), as well as manage your [fleet](/build/program/apis/#fleet-management-api) and [data](/build/program/apis/data-client/), and [billing information](/build/program/apis/billing-client/), or [provision](/fleet/provision/#provision-a-new-machine) machines.
-With the backend SDKs you can also create custom {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}. 
+With the backend SDKs you can also create custom {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}.
 
 {{< sectionlist-custom >}}
 {{% sectionlist-custom-item link="/sdks/python/" %}}
