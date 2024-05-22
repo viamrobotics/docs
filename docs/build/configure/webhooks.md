@@ -103,6 +103,23 @@ If you prefer to configure your webhook with raw JSON instead of the config buil
 ```
 
 {{% /tab %}}
+{{% tab name="JSON Template: Part Offline" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+  "webhooks": [
+    {
+      "url": "<Insert your own cloud function or lambda URL for sending the event>",
+      "event": {
+        "type": "part_offline",
+        "attributes": {
+          "seconds_between_notifications": <number of seconds>
+        }
+      }
+    }
+  ]
+```
+
+{{% /tab %}}
 {{% tab name="JSON Example" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
