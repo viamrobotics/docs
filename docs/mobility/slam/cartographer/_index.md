@@ -37,11 +37,10 @@ Cartographer can operate:
 
 {{% alert title="Temporarily not available in live mode" color="caution" %}}
 
-Running `cartographer` in live mode is temporarily disabled.
+Running `cartographer` in live mode and in the cloud is temporarily disabled.
+The attribute `use_cloud_slam` defaults to `false`.
+If you set it to `true`, it will not be possible to see the results in the remote control card.
 [Collect a dataset and use offline mode](#use-previously-captured-data) instead.
-
-Additionally, running `cartographer` in the cloud is temporarily disabled, and the attribute `use_cloud_slam` defaults to `false`.
-If you set `use_cloud_slam` to `true`, it will not be possible to see the results in the remote control card.
 
 {{% /alert %}}
 

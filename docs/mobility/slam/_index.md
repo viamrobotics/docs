@@ -19,9 +19,9 @@ Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
-{{% alert title="Temporarily not available in live mode" color="caution" %}}
+{{% alert title="Cloud SLAM temporarily not available in live mode" color="caution" %}}
 
-Running models of the SLAM service in live mode is temporarily disabled.
+Running models of the SLAM service in the cloud and in live mode is temporarily disabled.
 [Collect a dataset and use offline mode](/mobility/slam/cartographer/#use-previously-captured-data) instead.
 
 {{% /alert %}}
