@@ -27,6 +27,8 @@ You can also switch between different machine parts and control the selected mac
 
 {{< imgproc src="/fleet/app-usage/control-machine-parts.png" alt="A machine's control tab populated with a main machine part and its subpart." resize="650x" class="aligncenter" >}}
 
+For more information on configuring and controlling machine parts, see [Machine Architecture](/build/configure/parts/#machine-parts).
+
 ### Components
 
 For more detailed information on how to operate and test your resources, expand the relevant resource below:
