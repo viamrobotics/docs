@@ -285,15 +285,19 @@ The following example captures data from two analog readers that provide a volta
           "type": "data_manager",
           "attributes": {
             "capture_methods": [
-              // Captures data from two analog readers (A1 and A2)
-              {
+             // Captures data from two analog readers (A1 and A2)
+             {
                 "method": "Analogs",
                 "capture_frequency_hz": 1,
                 "name": "rdk:component:board/my-esp32",
-                "additional_params": {
-                  "reader_name": "A1",
-                  "reader_name": "A2"
-                },
+                "additional_params": { "reader_name": "A1" },
+                "disabled": false
+             },
+             {
+                "method": "Analogs",
+                "capture_frequency_hz": 1,
+                "name": "rdk:component:board/my-esp32",
+                "additional_params": { "reader_name": "A2" },
                 "disabled": false
               },
               // Captures data from pin 27 of the board's GPIO
