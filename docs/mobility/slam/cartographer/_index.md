@@ -10,15 +10,8 @@ images: ["/services/icons/slam.svg"]
 aliases:
   - "/services/slam/run-slam-cartographer/"
   - "/services/slam/cartographer/"
-# SMEs: Kat, Jeremy
+# SMEs: John N.
 ---
-
-{{% alert title="Temporarily not available in the cloud" color="caution" %}}
-
-Running `cartographer` in the cloud is temporarily disabled, and the attribute `use_cloud_slam` defaults to `false`.
-If you set `use_cloud_slam` to `true`, it will not be possible to see the results in the remote control card.
-
-{{% /alert %}}
 
 [The Cartographer Project](https://github.com/cartographer-project) contains a C++ library that performs dense Simultaneous Localization And Mapping (SLAM).
 
@@ -41,6 +34,15 @@ Cartographer can operate:
 - _offline_ [using previously captured data](#use-previously-captured-data) for creating and updating maps
 
 ## Use a live machine
+
+{{% alert title="Temporarily not available in live mode" color="caution" %}}
+
+Running `cartographer` in the cloud with live mode is temporarily disabled.
+The attribute `use_cloud_slam` defaults to `false`.
+If you set it to `true`, it will not be possible to see the results in the remote control card.
+[Collect a dataset and use offline mode](#use-previously-captured-data) instead.
+
+{{% /alert %}}
 
 The `cartographer` module supports three modes of operation:
 
