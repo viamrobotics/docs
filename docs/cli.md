@@ -684,7 +684,7 @@ For example, the following represents the configuration of an example `my-module
 {
   "module_id": "acme:my-module",
   "visibility": "public",
-  "url": "https://github.com/acme-co-example/my-module",
+  "url": "https://github.com/<my-repo-name>/my-module",
   "description": "An example custom module.",
   "models": [
     {
