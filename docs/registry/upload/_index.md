@@ -137,7 +137,7 @@ If you later wish to make your module public, you can use the [`viam module upda
     {
       "module_id": "acme:my-module",
       "visibility": "public",
-      "url": "https://github.com/{my-repo-name}/my-module",
+      "url": "https://github.com/<my-repo-name>/my-module",
       "description": "An example custom module.",
       "models": [
         {
