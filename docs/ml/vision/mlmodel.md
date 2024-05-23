@@ -124,7 +124,7 @@ The following attributes are available for an `mlmodel` detector or classifier:
 | `input_image_mean_value` | array | Optional | The standard deviation of the RGB (or BGR) values. Only required if the ML model service expects the input image to be normalized. <br> Default: `[0.5, 0.5, 0.5]` |
 | `input_image_std_dev` | array | Optional | The standard deviation of the RGB (or BGR) values. Only required if the ML model service expects the input image to be normalized. <br> Default: `[0.5, 0.5, 0.5]` |
 | `default_minimum_confidence` | number | Optional | Set this to apply a minimum confidence score filter on all outputs. If left blank, no confidence filter is applied. <br> Example: `0.81` |
-| `label_confidences` | object | Optional | A map that filters on label names, applying a specified minimum confidence to a specific label. If a label has a confidence set lower than `"default_minimum_confidence"`, that confidence overwrites the default for the specified label. If this attribute is left blank, no filtering on labels is applied. <br> Example: `{"DOG": 0.8, "CARROT": 0.3}` |
+| `label_confidences` | object | Optional | A map that filters on label names, applying a specified minimum confidence to a specific label. If a label has a confidence lower than `default_minimum_confidence`, that confidence overwrites the default for the specified label. If you leave this attribute blank, no filtering on labels is applied. <br> Example: `{"DOG": 0.8, "CARROT": 0.3}` |
 
 ## Tensor names
 
