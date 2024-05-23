@@ -24,8 +24,13 @@ updated: "2024-04-17"
 cost: 575
 ---
 
-This tutorial teaches you how to add a Bluetooth gamepad controller to your wheeled robot.
 By the end of this tutorial, you'll be able to drive your rover around like an RC car.
+
+{{< alert title="Learning Goals" color="info" >}}
+
+After following this tutorial, you will be able to use the input controller component to control your machine using a gamepad.
+
+{{< /alert >}}
 
 ## Requirements
 
@@ -225,6 +230,6 @@ If you'd like to do more with your rover, check out one of these tutorials:
 
 {{< cards >}}
 {{% card link="/tutorials/get-started/try-viam-sdk/" %}}
-{{% card link="/tutorials/services/try-viam-color-detection/" %}}
+{{% card link="/tutorials/services/basic-color-detection/" %}}
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}

@@ -54,10 +54,6 @@ If you later wish to make your module public, you can use the [`viam module upda
 {{% /tab %}}
 {{% tab name="Public" %}}
 
-{{% alert title="Important" color="note" %}}
-If you mark your module as public, you cannot change it back to private.
-{{% /alert %}}
-
 1.  If you haven't already, [create a new namespace](/fleet/organizations/#create-a-namespace-for-your-organization) for your organization.
     If you have already created a namespace, you can find it on your organization's **Settings** page in [the Viam App](https://app.viam.com/), or by running the [`viam organizations list`](/cli/#organizations) command.
 
@@ -100,7 +96,7 @@ If you mark your module as public, you cannot change it back to private.
         <td><code>visibility</code></td>
         <td>string</td>
         <td><strong>Required</strong></td>
-        <td>Whether the module is accessible only to members of your <a href="/fleet/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can later make a private module public using the <code>viam module update</code> command, but once you make a module public, you cannot change it back to private.<br><br>Default: <code>private</code></td>
+        <td>Whether the module is accessible only to members of your <a href="/fleet/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can later make a private module public using the <code>viam module update</code> command. Once you make a module public, you can change it back to private if it is not configured on any machines outside of your organization.<br><br>Default: <code>private</code></td>
       </tr>
       <tr>
         <td><code>url</code></td>
@@ -154,7 +150,7 @@ If you mark your module as public, you cannot change it back to private.
         "build": "./build.sh", // command that will build your module
         "arch": ["linux/amd64", "linux/arm64"] // architecture(s) to build for
       },
-      "entrypoint": "dist/main"
+      "entrypoint": "<PATH-TO-EXECUTABLE>"
     }
     ```
 
@@ -174,10 +170,10 @@ For more information, see [Naming your model](/registry/#naming-your-model-names
    To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   tar -czvf dist/archive.tar.gz dist/main
+   tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
    ```
 
-Where `dist/main` is the [packaged executable](/registry/create/#compile-or-package-your-module) that runs the module at the [entry point](/registry/create/#write-an-entry-point-main-program-file).
+Where `<PATH-TO-EXECUTABLE>` is the [packaged executable](/registry/create/#compile-or-package-your-module) that runs the module at the [entry point](/registry/create/#write-an-entry-point-main-program-file).
 
 Supply the path to the resulting archive file in the next step.
 
@@ -261,10 +257,10 @@ If you intend to make frequent code changes to your module, want to support a va
    To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   tar -czf module.tar.gz dist/main
+   tar -czf module.tar.gz <PATH-TO-EXECUTABLE>
    ```
 
-   Where `dist/main` is your [packaged executable](/registry/create/#compile-or-package-your-module).
+   Where `<PATH-TO-EXECUTABLE>` is your [packaged executable](/registry/create/#compile-or-package-your-module).
 
    Supply the path to the resulting archive file in the next step.
 
@@ -375,7 +371,7 @@ pip3 install -r requirements.txt
 #!/bin/bash
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz dist/main
+tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
 {{% /expand%}}
@@ -402,7 +398,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz dist/main
+tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
 {{% /expand%}}
@@ -439,7 +435,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz dist/main
+tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
 { {% /expand%}}
@@ -455,7 +451,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz dist/main
+tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
 { {% /expand%}}
@@ -561,6 +557,52 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 - [Python with docker](https://github.com/viamrobotics/python-container-module)
 - [Golang](https://github.com/viam-labs/wifi-sensor)
 - [C++](https://github.com/viamrobotics/module-example-cpp)
+
+## Change a module from public to private
+
+You can change the visibility of a module from public to private if:
+
+- you are an [owner](/fleet/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
+- no machines outside of the organization that owns the module have the module configured (no other orgs are using it).
+
+To change the visibility, navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry), hover to the right of the visibility indicator near the right side of the page until an **Edit** button appears, and click it to make changes.
+
+{{<imgproc src="/registry/upload/edit-module-visibility.png" resize="x1000" declaredimensions=true alt="A module page with a Visibility heading on the right side. Under it, an Edit button has appeared." max-width="700px" >}}
+
+You can also edit the visibility by editing the <file>meta.json</file> file and then running the following [CLI](/cli/#module) command:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module update
+```
+
+## Delete a module
+
+You can delete a module if:
+
+- you are an [owner](/fleet/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
+- no machines have the module configured.
+
+To delete a module, navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry), click the **...** menu in the upper-right corner of the page, and click **Delete**.
+
+{{<imgproc src="/registry/upload/delete-module.png" resize="x1000" declaredimensions=true alt="A module page with the ... menu open. Delete is the only option in the menu." max-width="700px" >}}
+
+{{% alert title="Note" color="note" %}}
+
+If you need to delete a module and the delete option is unavailable to you, please [contact our support team](https://support.viam.com/hc/en-us) for assistance.
+
+{{% /alert %}}
+
+### Delete just one version of a module
+
+Deleting a version of a module requires the same org owner permissions as deleting the entire module, and similarly, you cannot delete a version if any machines are using it.
+To delete just one version of a module:
+
+1. Navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry)
+2. Click **Show previous versions** under the **Latest version** heading.
+3. Click the trash can icon next to the version you'd like to delete.
+
+Versions are immutable, meaning that you cannot upload a new file with the same version number as the deleted one.
+To upload another version, you must increment the version number to a later version number.
 
 ## Next steps
 

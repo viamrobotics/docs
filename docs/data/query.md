@@ -96,6 +96,13 @@ You do not need to perform any additional configuration when [querying data in t
    ```
 
 1. Configure a new database user for the Viam organization's MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance, which is where your machine's synced data is stored.
+
+   {{< alert title="Warning" color="warning" >}}
+   The command will create a user with your organization ID as the username.
+   If you or someone else in your organization have already created this user, the following steps update the password for that user instead.
+   Dashboards or other integrations relying on this password will then need to be updated.
+   {{< /alert >}}
+
    Provide your organization's `org-id` from step 2, and a desired new password for your database user.
    Your password must be at least 8 characters long, and include at least one uppercase, one number, and one special character (such as `$` or `%`):
 
@@ -103,36 +110,29 @@ You do not need to perform any additional configuration when [querying data in t
    viam data database configure --org-id=<YOUR-ORGANIZATION-ID> --password=<NEW-DBUSER-PASSWORD>
    ```
 
-   This command configures a new database user for your org for use with data query.
-   If you have already created this user, this command updates the password for that user instead.
+   This command configures a new database user for your organization for use with data query, and sets the password.
+   If you have already run this command before, this command instead updates the password to the new value you set.
 
-1. Determine the hostname for your organization's MongoDB Atlas Data Federation instance by running the following command with the organization's `org-id` from step 2:
+1. Determine the connection URI (also known as a connection string) for your organization's MongoDB Atlas Data Federation instance by running the following command with the organization's `org-id` from step 2:
 
    ```sh {class="line-numbers linkable-line-numbers"}
    viam data database hostname --org-id=<YOUR-ORGANIZATION-ID>
    ```
 
-   This command returns the `hostname` (including database name) to use to connect to your data store on the Viam organization's MongoDB Atlas instance.
-   You will need this to query your data in the next section.
+   This command returns both the _connection URI_ to your organization's MongoDB Atlas Data Federation instance, as well as its _hostname_ and _database name_:
+
+   - Most MQL-compatible database clients require the _connection URI_, along with your user credentials, to connect to this server.
+   - Some MQL-compatible database client instead require a _hostname_ and _database name_, along with your user credentials, to connect to this server.
+
+   You will need this information to query your data in the next section.
 
 For more information, see the documentation for the [Viam CLI `database` command](/cli/#data).
 
 ### Query
 
-Once you have synced tabular data to the Viam app, you can directly query that data from an MQL-compatible client, such as [`mongosh`](https://www.mongodb.com/docs/mongodb-shell/) or [Compass](https://www.mongodb.com/docs/compass/current/).
+Once you have synced tabular data to the Viam app and [configured a database user](#configure-data-query), you can directly query that data from an MQL-compatible database client, such as the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/), [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), or one of many third-party tools.
 
-1. Open your chosen MQL-compatible client an connect to the Viam organization's MongoDB Atlas instance.
-   You can use any client that is capable of connecting to a MongoDB Atlas instance, including the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/), [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), and many third-party tools.
-   To connect, use the `hostname` you determined when you [configured direct data query](/data/query/#configure-data-query), and structure your username in the following format:
-
-   ```sh
-   db-user-<YOUR-ORG-ID>
-   ```
-
-   Where `<YOUR-ORG-ID>` is your organization ID, determined from the `viam organizations list` CLI command.
-   The full username you provide to your client should therefore resemble `db-user-abcdef12-abcd-abcd-abcd-abcdef123456`.
-
-For example, to connect to your Viam organization's MongoDB Atlas instance and query data using the `mongosh` shell:
+For example, to use the `mongosh` shell to connect to your Viam organization's MongoDB Atlas instance and query data:
 
 1. If you haven't already, [download the `mongosh` shell](https://www.mongodb.com/try/download/shell).
    See the [`mongosh` documentation](https://www.mongodb.com/docs/mongodb-shell/) for more information.
@@ -140,14 +140,15 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
 1. Run the following command to connect to the Viam organization's MongoDB Atlas instance from `mongosh`:
 
    ```sh {class="command-line" data-prompt=">"}
-   mongosh "mongodb://<YOUR-DB-HOSTNAME>" --tls --authenticationDatabase admin --username db-user-<YOUR-ORG-ID>
+   mongosh "<YOUR-DB-CONNECTION-URI>"
    ```
 
    Where:
 
-   - `<YOUR-DB-HOSTNAME>` is your organization's assigned MongoDB Atlas instance hostname, determined from the [`viam data database hostname` CLI command](/data/query/#configure-data-query).
-   - `<YOUR-ORG-ID>` is your organization ID, determined from the `viam organizations list` CLI command.
-     The full username you provide to the `--username` flag should therefore resemble `db-user-abcdef12-abcd-abcd-abcd-abcdef123456`.
+   - `<YOUR-DB-CONNECTION-URI>` is your organization's assigned MongoDB Atlas connection URI, determined from the [`viam data database hostname` CLI command](/data/query/#configure-data-query).
+   - `YOUR-PASSWORD-HERE` (included in the connection URI) is your configured database password, as set by the [`viam data database configure` CLI command](/data/query/#configure-data-query).
+
+   If you are connecting from a database client that requires a server hostname and database name, provide those values from the [`viam data database hostname` CLI command](/data/query/#configure-data-query) instead.
 
 1. Once connected, you can run SQL or MQL to query captured data directly. For example:
 
@@ -231,6 +232,8 @@ db.readings.aggregate(
 
 With data query enabled, you can now visualize your machine's uploaded tabular data using many popular data visualization services, such as Grafana.
 See [Visualize Data](/data/visualize/) for instructions on setting up and using these data visualization services with Viam, or the [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) tutorial for a detailed walkthrough specific to Grafana.
+
+For a tutorial that walks through querying data and displaying it on a TypeScript dashboard, see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/).
 
 To export your captured data from the cloud, see [Export Data](../export/).
 

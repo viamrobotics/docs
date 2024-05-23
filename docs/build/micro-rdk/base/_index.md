@@ -3,8 +3,9 @@ title: "Micro-RDK Base Models"
 linkTitle: "Base"
 weight: 30
 type: "docs"
-description: "The micro-RDK support for moving platforms that the other parts of a mobile robot attach to."
+description: "The micro-RDK base component for moving platforms that the other parts of a mobile robot attach to."
 images: ["/icons/components/base.svg"]
+icon: true
 tags: ["base", "components", "micro-rdk"]
 no_list: true
 # SMEs: Nick M., Gautham V.

@@ -32,9 +32,11 @@ However, to then parse the readings and provide tailored guidance to a ship's ca
 
 Using the Viam Agent, this company could ship their machines directly to customers and have each machine provision `viam-server` as it comes online for each user, eliminating factory setup time and allowing for tailored configurations per customer as needed.
 
-The Viam Agent is open source, and [available on GitHub](https://github.com/viamrobotics/agent).
+{{% alert title="Note" color="note" %}}
+The example video above shows using the [Viam mobile application](/fleet/#the-viam-mobile-app) to connect to the Viam Agent on a newly-deployed machine and completing network setup.
+{{% /alert %}}
 
-The example video shows using the [Viam mobile application](/fleet/#the-viam-mobile-app) to connect to the Viam Agent on a newly-deployed machine and completing network setup.
+The Viam Agent is open source, and available on [GitHub](https://github.com/viamrobotics/agent).
 
 ## Install the Viam Agent
 
@@ -138,7 +140,10 @@ The Viam Agent is installed as a `systemd` service named `viam-agent`.
 With the Viam Agent installed, your machine will either connect to a local WiFi network or will create its own WiFi hotspot, depending on your configuration.
 
 - If you include a `viam-server` configuration file on your machine, located at <file>/etc/viam.json</file>, which includes a WiFi network and password to connect to, the Viam Agent will connect to the network automatically when in range.
-- If you did not include this file, or the configured WiFi network is not available when your machine comes online, the Viam Agent will create its own WiFi hotspot.
+- If you did not include this file, or the configured WiFi network is not available when your machine comes online, the Viam Agent will create its own WiFi hotspot and request WiFi credentials:
+  ![Diagram of the flow of provisioning a new machine with the Viam agent.](/platform/provision/style-provisioning-diagram.png)
+  If there is an issue connecting to the WiFi hotspot with the input WiFi credentials, this flow will repeat until the device is online:
+  ![Diagram of the flow of provisioning a new machine with the Viam agent when there is an issue connecting to WiFi.](/platform/provision/style-provisioning-diagram-error.png)
 
 This provisioning functionality uses the [Viam Agent provisioning subsystem](https://github.com/viamrobotics/agent-provisioning).
 
@@ -146,41 +151,40 @@ This provisioning functionality uses the [Viam Agent provisioning subsystem](htt
 
 If you specify a WiFi network to connect to in your configuration file, the Viam Agent will automatically connect to that network when in range.
 
-You can configure one or more WiFi networks to connect to in the `agent_config` configuration object in your `viam-server` configuration file.
+You can configure one or more WiFi networks to connect to in the `agent` configuration object in your `viam-server` configuration file.
 For example, to configure SSIDs and passwords for two WiFi networks named `primaryNet` and `fallbackNet`, you can use the following configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
 ...
-"agent_config": {
-    "subsystems": {
-      "agent-provisioning": {
+"agent": {
+    "agent-provisioning": {
+      ...
+      "attributes": {
         ...
-        "attributes": {
-          ...
-          "networks": [
-            {
-              "type": "wifi",
-              "ssid": "primaryNet",
-              "psk": "myFirstPassword",
-              "priority": 30
-            },
-            {
-              "type": "wifi",
-              "ssid": "fallbackNet",
-              "psk": "mySecondPassword",
-              "priority": 10
-            }
-          ]
-        }
-      }
-    }
-}
+        "networks": [
+          {
+            "type": "wifi",
+            "ssid": "primaryNet",
+             "psk": "myFirstPassword",
+             "priority": 30
+          },
+          {
+            "type": "wifi",
+            "ssid": "fallbackNet",
+            "psk": "mySecondPassword",
+            "priority": 10
+           }
+         ]
+       }
+     }
+  }
 ```
 
 You can add this configuration to the <file>/etc/viam.json</file> configuration file you deploy to your machine, or from the **CONFIGURE** tab in the [Viam app](https://app.viam.com/) for your machine, using **Raw JSON** mode.
 The Viam Agent will attempt to connect to the `ssid` with the highest `priority` first.
 If the highest-priority network is not available, it will then attempt to connect to the next-highest `priority` network, and so on until all configured networks have been tried.
-If no configured WiFi network could be connected to, the Viam Agent will instead create its own WiFI hotspot, as described in the next section.
+
+If no configured WiFi network could be connected to, the Viam Agent will instead create its own WiFi hotspot, as described in the next section.
 
 ### Create a WiFi hotspot
 
@@ -189,20 +193,18 @@ If you did not include a `viam-server` configuration file on your machine, or no
 By default, the hotspot network is named `viam-setup-HOSTNAME`, where `HOSTNAME` is replaced with the hostname of your machine.
 The WiFi password for this network is `viamsetup` by default.
 
-You can customize these values in the `agent_config` configuration object in your `viam-server` configuration file.
+You can customize these values in the `agent` configuration object in your `viam-server` configuration file.
 For example, to set the hotspot password to `acme123`, you can use the following configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
 ...
-"agent_config": {
-    "subsystems": {
-      "agent-provisioning": {
+"agent": {
+    "agent-provisioning": {
+      ...
+       "attributes": {
+        "hotspot_password": "acme123"
         ...
-        "attributes": {
-          "hotspot_password": "acme123"
-          ...
-        }
-      }
+       }
     }
 }
 ```
@@ -245,12 +247,6 @@ To provision your machine, create a <file>/etc/viam-provisioning.json</file> con
 ```
 
 This file configures some basic metadata, specifies a [fragment](/fleet/configure-a-fleet/) to use to configure the machine, and provides the WiFi network name and password to allow your machine to connect automatically on startup.
-
-{{% alert title="Support Notice" color="note" %}}
-
-You cannot configure the Viam Agent itself using fragments.
-
-{{% /alert %}}
 
 ## Use the Viam mobile app
 

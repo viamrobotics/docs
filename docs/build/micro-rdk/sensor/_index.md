@@ -3,8 +3,9 @@ title: "Micro-RDK Sensor Models"
 linkTitle: "Sensor"
 weight: 30
 type: "docs"
-description: "Support in the micro-RDK for sensors, devices that measure information about the outside world."
+description: "The micro-RDK sensor component for devices that measure information about the outside world."
 images: ["/icons/components/sensor.svg"]
+icon: true
 tags: ["sensor", "components", "micro-rdk"]
 no_list: true
 # SMEs: Andrew Morrow

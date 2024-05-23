@@ -3,8 +3,9 @@ title: "Micro-RDK Servo Models"
 linkTitle: "Servo"
 weight: 30
 type: "docs"
-description: "Support in the micro-RDK for servos, small motors whose position you can precisely control."
+description: "The micro-RDK servo component for small motors whose position you can precisely control."
 images: ["/icons/components/servo.svg"]
+icon: true
 tags: ["servo", "components", "micro-rdk"]
 no_list: true
 aliases:

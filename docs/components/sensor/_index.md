@@ -141,8 +141,6 @@ readings = await my_sensor.get_readings()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor).
 
 ```go
-mySensor, err := sensor.FromRobot(robot, "my_sensor")
-
 // Get the readings provided by the sensor.
 readings, err := mySensor.Readings(context.Background(), nil)
 ```
@@ -254,9 +252,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-mySensor, err := sensor.FromRobot(robot, "my_sensor")
-
-resp, err := mySensor.DoCommand(ctx, map[string]interface{}{"command": "calibrate", "offset": 273})
+resp, err := mySensor.DoCommand(context.Background(), map[string]interface{}{"command": "calibrate", "offset": 273})
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
@@ -299,9 +295,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-mySensor, err := sensor.FromRobot(robot, "my_sensor")
-
-err := mySensor.Close(ctx)
+err := mySensor.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

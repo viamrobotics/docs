@@ -145,11 +145,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers"}
 my_servo = Servo.from_robot(robot=robot, name="my_servo")
 
-# Move the servo from its origin to the desired angle of 10 degrees.
-await my_servo.move(10)
-
-# Move the servo from its origin to the desired angle of 90 degrees.
-await my_servo.move(90)
+# Move the servo from its origin to the desired angle of 30 degrees.
+await my_servo.move(30)
 ```
 
 {{% /tab %}}
@@ -168,13 +165,8 @@ await my_servo.move(90)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/servo#Servo).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServo, err := servo.FromRobot(robot, "my_servo")
-
-// Move the servo from its origin to the desired angle of 10 degrees.
-myServo.Move(context.Background(), 10, nil)
-
-// Move the servo from its origin to the desired angle of 90 degrees.
-myServo.Move(context.Background(), 90, nil)
+// Move the servo from its origin to the desired angle of 30 degrees.
+myServoComponent.Move(context.Background(), 30, nil)
 ```
 
 {{% /tab %}}
@@ -200,9 +192,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_servo = Servo.from_robot(robot=robot, name="my_servo")
-
-# Move the servo from its origin to the desired angle of 10 degrees.
-await my_servo.move(10)
 
 # Get the current set angle of the servo.
 pos1 = await my_servo.get_position()
@@ -230,19 +219,17 @@ pos2 = await my_servo.get_position()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/servo#Servo).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServo, err := servo.FromRobot(robot, "my_servo")
-
-// Move the servo from its origin to the desired angle of 10 degrees.
-myServo.Move(context.Background(), 10, nil)
-
 // Get the current set angle of the servo.
-pos1, err = myServo.Position(context.Background(), nil)
+pos1, err := myServoComponent.Position(context.Background(), nil)
 
 // Move the servo from its origin to the desired angle of 20 degrees.
-myServo.Move(context.Background(), 20, nil)
+myServoComponent.Move(context.Background(), 20, nil)
 
 // Get the current set angle of the servo.
-pos2, err = myServo.Position(context.Background(), nil)
+pos2, err := myServoComponent.Position(context.Background(), nil)
+
+logger.Info("Position 1: ", pos1)
+logger.Info("Position 2: ", pos2)
 ```
 
 {{% /tab %}}
@@ -291,13 +278,11 @@ await my_servo.stop()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/servo#Servo).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServo, err := servo.FromRobot(robot, "my_servo")
-
 // Move the servo from its origin to the desired angle of 10 degrees.
-myServo.Move(context.Background(), 10, nil)
+myServoComponent.Move(context.Background(), 10, nil)
 
 // Stop the servo. It is assumed that the servo stops moving immediately.
-myServo.Stop(context.Background(), nil)
+myServoComponent.Stop(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -348,9 +333,7 @@ if geometries:
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServo, err := servo.FromRobot(robot, "my_servo")
-
-geometries, err := myServo.Geometries(context.Background(), nil)
+geometries, err := myServoComponent.Geometries(context.Background(), nil)
 
 if len(geometries) > 0 {
     // Get the center of the first geometry
@@ -403,10 +386,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServo, err := servo.FromRobot(robot, "my_servo")
-
 command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myServo.DoCommand(context.Background(), command)
+result, err := myServoComponent.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
@@ -449,9 +430,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServo, err := servo.FromRobot(robot, "my_servo")
-
-err := myServo.Close(ctx)
+err := myServoComponent.Close(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

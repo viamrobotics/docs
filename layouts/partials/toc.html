@@ -1,8 +1,4 @@
 {{ if not .Params.notoc }}
-{{ with .TableOfContents }}
-{{ if ge (len .) 200 }}
 <h6>On this page</h6>
-<div class="td-toc">{{ . }}</div>
-{{ end }}
-{{ end }}
+<div class="td-toc" id="TableOfContents"></div>
 {{ end }}

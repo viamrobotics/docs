@@ -160,5 +160,5 @@ After adding the appropriate fragment, follow one of these tutorials with your b
 
 {{< cards >}}
 {{% card link="/tutorials/get-started/try-viam-sdk/" %}}
-{{% card link="/tutorials/services/try-viam-color-detection/" %}}
+{{% card link="/tutorials/services/basic-color-detection/" %}}
 {{< /cards >}}

@@ -48,7 +48,8 @@ Model | Description <a name="model-table"></a>
 [`gps-nmea-rtk-pmtk`](./gps/gps-nmea-rtk-pmtk/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models using I<sup>2</sup>C (**experimental**)
 [`gps-nmea-rtk-serial`](./gps/gps-nmea-rtk-serial/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models using serial communication (**experimental**)
 [`dual-gps-rtk`](./gps/dual-gps-rtk/) | A movement sensor that calculates compass heading from two GPS movement sensors
-[`imu-wit`](./imu/imu-wit/) | IMUs manufactured by [WitMotion](https://www.wit-motion.com/)
+[`imu-wit-hwt905`](./imu/imu-wit-hwt905/) | The [HWT905-TTL IMU](https://www.wit-motion.com/proztgjd/39.html) manufactured by WitMotion
+[`imu-wit`](./imu/imu-wit/) | Other IMUs manufactured by [WitMotion](https://www.wit-motion.com/): BWT61CL, BWT901CL, and HWT901B-TTL
 [`accel-adxl345`](./adxl345/) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer
 [`gyro-mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense
 [`merged`](./merged/) | A model that allows you to aggregate the API methods supported by multiple sensors into a singular sensor client, effectively merging the models of the individual resources
@@ -110,7 +111,7 @@ You can run `GetProperties` on your sensor for a list of its supported methods.
 
 ### GetPosition
 
-Report the current GeoPoint (latitude, longitude) and altitude (in meters).
+Report the current GeoPoint (latitude, longitude), as well as altitude above sea level in meters.
 
 Supported by GPS models.
 
@@ -154,11 +155,8 @@ position = await my_movement_sensor.get_position()
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 ```go
-myMovementSensor, err := movementsensor.FromRobot(
-    robot, "my_movement_sensor")
-
 // Get the current position of the movement sensor.
-position, err := myMovementSensor.Position(context.Background(), nil)
+position, altitude, err := myMovementSensor.Position(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -207,8 +205,6 @@ lin_vel = await my_movement_sensor.get_linear_velocity()
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 ```go
-myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
-
 // Get the current linear velocity of the movement sensor.
 linVel, err := myMovementSensor.LinearVelocity(context.Background(), nil)
 ```
@@ -262,8 +258,6 @@ y_ang_vel = ang_vel.y
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 ```go
-myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
-
 // Get the current angular velocity of the movement sensor.
 angVel, err := myMovementSensor.AngularVelocity(context.Background(), nil)
 
@@ -320,8 +314,6 @@ x_lin_accel = lin_accel.x
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 ```go
-myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
-
 // Get the current linear acceleration of the movement sensor.
 linAccel, err := myMovementSensor.LinearAcceleration(context.Background(), nil)
 
@@ -375,8 +367,6 @@ heading = await my_movement_sensor.get_compass_heading()
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 ```go
-myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
-
 // Get the current compass heading of the movement sensor.
 heading, err := myMovementSensor.CompassHeading(context.Background(), nil)
 ```
@@ -427,8 +417,6 @@ orientation = await my_movement_sensor.get_orientation()
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
-
 // Get the current orientation of the movement sensor.
 sensorOrientation, err := myMovementSensor.Orientation(context.Background(), nil)
 
@@ -486,8 +474,6 @@ properties = await my_movement_sensor.get_properties()
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 ```go
-myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
-
 // Get the supported properties of the movement sensor.
 properties, err := myMovementSensor.Properties(context.Background(), nil)
 ```
@@ -568,8 +554,6 @@ accuracy = await my_movement_sensor.get_accuracy()
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 ```go
-myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
-
 // Get the accuracy of the movement sensor.
 accuracy, err := myMovementSensor.Accuracy(context.Background(), nil)
 ```
@@ -622,8 +606,6 @@ readings = await my_movement_sensor.get_readings()
 For more information, see the [Go SDK docs for Sensor](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor) (because `Readings` is part of the general sensor API that movement sensor wraps).
 
 ```go
-myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
-
 // Get the latest readings from the movement sensor.
 readings, err := myMovementSensor.Readings(context.Background(), nil)
 ```
@@ -679,7 +661,7 @@ if geometries:
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBase, err := movementsensor.FromRobot(robot, "my_movement_sensor")
+myBase, err := movementsensor.FromRobot(machine, "my_movement_sensor")
 
 geometries, err := myBase.Geometries(context.Background(), nil)
 
@@ -738,9 +720,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
-
-resp, err := myMovementSensor.DoCommand(ctx, map[string]interface{}{"command": "reset", "example_param": 30})
+resp, err := myMovementSensor.DoCommand(context.Background(), map[string]interface{}{"command": "reset", "example_param": 30})
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
@@ -783,9 +763,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
-
-err := myMovementSensor.Close(ctx)
+err := myMovementSensor.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

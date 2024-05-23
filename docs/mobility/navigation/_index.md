@@ -276,8 +276,6 @@ await my_nav.get_mode()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 ```go
-myNav, err := navigation.FromRobot(robot, "my_nav_service")
-
 // Get the Mode the service is operating in
 mode, err := myNav.Mode(context.Background(), nil)
 ```
@@ -332,10 +330,8 @@ await my_nav.set_mode(Mode.ValueType.MODE_WAYPOINT)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 ```go
-myNav, err := navigation.FromRobot(robot, "my_nav_service")
-
 // Set the Mode the service is operating in to MODE_WAYPOINT and begin navigation
-mode, err := myNav.SetMode(context.Background(), Mode.MODE_WAYPOINT, nil)
+err := myNav.SetMode(context.Background(), navigation.ModeWaypoint, nil)
 ```
 
 {{% /tab %}}
@@ -381,8 +377,6 @@ location = await my_nav.get_location()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 ```go
-myNav, err := navigation.FromRobot(robot, "my_nav_service")
-
 // Get the current location of the robot in the navigation service
 location, err := myNav.Location(context.Background(), nil)
 ```
@@ -432,8 +426,6 @@ waypoints = await my_nav.get_waypoints()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 ```go
-myNav, err := navigation.FromRobot(robot, "my_nav_service")
-
 // Get an array containing each waypoint stored by the navigation service
 waypoints, err := myNav.Waypoints(context.Background(), nil)
 ```
@@ -480,8 +472,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myNav, err := navigation.FromRobot(robot, "my_nav_service")
-
 // Get the properties of the current navigation service
 navProperties, err := myNav.Properties(context.Background())
 ```
@@ -534,10 +524,9 @@ await my_nav.add_waypoint(point=location)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 ```go
-myNav, err := navigation.FromRobot(robot, "my_nav_service")
-
 // Create a new waypoint with latitude and longitude values of 0 degrees
-location = geo.NewPoint(0, 0)
+// Assumes you have imported "github.com/kellydunn/golang-geo" as `geo`
+location := geo.NewPoint(0, 0)
 
 // Add your waypoint to the service's data storage
 err := myNav.AddWaypoint(context.Background(), location, nil)
@@ -588,13 +577,14 @@ await my_nav.remove_waypoint(waypoint_id)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 ```go
-myNav, err := navigation.FromRobot(robot, "my_nav_service")
+// Assumes you have already called AddWaypoint once and the waypoint has not yet been reached
+waypoints, err := myNav.Waypoints(context.Background(), nil)
+if (err != nil || len(waypoints) == 0) {
+  return
+}
 
-// Create a new ObjectID
-waypoint_id = primitive.NewObjectID()
-
-// Remove the waypoint matching that ObjectID from the service's data storage
-err := myNav.RemoveWaypoint(context.Background(), waypoint_id, nil)
+// Remove the waypoint from the service's data storage
+err = myNav.RemoveWaypoint(context.Background(), waypoints[0].ID, nil)
 ```
 
 {{% /tab %}}
@@ -645,8 +635,6 @@ obstacles = await my_nav.get_obstacles()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 ```go
-myNav, err := navigation.FromRobot(robot, "my_nav_service")
-
 // Get an array containing each obstacle stored by the navigation service
 obstacles, err := myNav.Obstacles(context.Background(), nil)
 ```
@@ -694,8 +682,6 @@ paths = await my_nav.get_paths()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 ```go
-myNav, err := navigation.FromRobot(robot, "my_nav_service")
-
 // Get an array containing each path stored by the navigation service
 paths, err := myNav.Paths(context.Background(), nil)
 ```
@@ -748,9 +734,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myNav, err := navigation.FromRobot(robot, "my_nav_service")
-
-resp, err := myNav.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
+resp, err := myNav.DoCommand(context.Background(), map[string]interface{}{"command": "dosomething", "someparameter": 52})
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
@@ -793,9 +777,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-myNav, err := navigation.FromRobot(robot, "my_nav_service")
-
-err := myNav.Close(ctx)
+err := myNav.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
@@ -833,12 +815,13 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 - [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/) - some GPS hardware only report heading while moving.
 - [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/) - some GPS hardware only report heading while moving.
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
+- [imu-wit-hwt905](/components/movement-sensor/imu/imu-wit-hwt905/)
 
 An example of a `CompassHeading` reading:
 
 ```go
 // heading is a float64 between 0-360
-heading, err := gps.CompassHeading(context.Background, nil)
+heading, err := gps.CompassHeading(context.Background(), nil)
 ```
 
 Use compass heading readings to determine the _bearing_ of your machine, or, the [cardinal direction](https://en.wikipedia.org/wiki/Cardinal_direction) that your machine is facing.
@@ -851,13 +834,14 @@ Then use the movement sensor API's [`GetCompassHeading()`](/components/movement-
 The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/) take orientation measurements:
 
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
+- [imu-wit-hwt905](/components/movement-sensor/imu/imu-wit-hwt905/)
 - [wheeled-odometry](/components/movement-sensor/wheeled-odometry/)
 
 An example of an `Orientation` reading:
 
 ```go
 // orientation is a OrientationVector struct with OX, OY, OZ denoting the coordinates of the vector and rotation about z-axis, Theta
-orientation, err := imuwit.Orientation(context.Background, nil)
+orientation, err := imuwit.Orientation(context.Background(), nil)
 ```
 
 Use orientation readings to determine the orientation of an object in 3D space as an [_orientation vector_](/internals/orientation-vector/).
@@ -874,6 +858,7 @@ Then use the movement sensor API's [`GetOrientation()`](/components/movement-sen
 The following {{< glossary_tooltip term_id="model" text="models" >}} of the [movement sensor](/components/movement-sensor/) component take angular velocity measurements:
 
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
+- [imu-wit-hwt905](/components/movement-sensor/imu/imu-wit-hwt905/)
 - [wheeled-odometry](/components/movement-sensor/wheeled-odometry/)
 - [gyro-mpu6050](/components/movement-sensor/mpu6050/)
 
@@ -881,7 +866,7 @@ An example of an `AngularVelocity` reading:
 
 ```go
 // angularVelocity is an AngularVelocity r3 Vector with X, Y, and Z magnitudes
-angularVelocity, err := imu.AngularVelocity(context.Background, nil)
+angularVelocity, err := imu.AngularVelocity(context.Background(), nil)
 ```
 
 Use angular velocity readings to determine the speed and direction at which your machine is rotating.
@@ -902,7 +887,7 @@ An example of a `Position` reading:
 
 ```go
 // position is a geo.Point consisting  of Lat and Long: -73.98 and an altitude in float64
-position, altitude, err:= imu.Position(context.Background, nil)
+position, altitude, err := imu.Position(context.Background(), nil)
 ```
 
 Use position readings to determine the GPS coordinates of an object in 3D space or its position in the geographic coordinate system [(GCS)](https://en.wikipedia.org/wiki/Geographic_coordinate_system).
@@ -924,7 +909,7 @@ An example of a `LinearVelocity` reading:
 
 ```go
 // linearVelocity is an r3.Vector with X, Y, and Z magnitudes
-linearVelocity, err := imu.LinearVelocity(context.Background, nil)
+linearVelocity, err := imu.LinearVelocity(context.Background(), nil)
 ```
 
 Use linear velocity readings to determine the speed at which your machine is moving through space.
@@ -938,13 +923,14 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 
 - [accel-adxl345](/components/movement-sensor/adxl345/)
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
+- [imu-wit-hwt905](/components/movement-sensor/imu/imu-wit-hwt905/)
 - [gyro-mpu6050](/components/movement-sensor/mpu6050/)
 
 An example of a `LinearAcceleration` reading:
 
 ```go
 // linearAcceleration is an r3.Vector with X, Y, and Z magnitudes
-linearAcceleration, err := imu.LinearAcceleration(context.Background, nil)
+linearAcceleration, err := imu.LinearAcceleration(context.Background(), nil)
 ```
 
 You can use linear acceleration readings to determine the rate of change of the [linear velocity](/mobility/navigation/#linear-velocity) of your machine, or, the acceleration at which your machine is moving through space.

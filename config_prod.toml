@@ -1,5 +1,5 @@
 baseURL = "https://docs.viam.com"
 
-googleAnalytics = 'G-P0NZTY2VM2'
+googleAnalytics = 'GTM-N93SVKS'
 
 HUGO_ENV="production"
