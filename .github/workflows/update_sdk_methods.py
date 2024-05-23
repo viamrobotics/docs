@@ -1046,13 +1046,34 @@ def parse(type, names):
                                     ## Split contained text at " - " to get first half, which is just the error name:
                                     raises_name = regex.split(r" – ", strong_tag.parent.text)[0]
 
-                                    ## OPTION: Get full error raised usage, including type info and html links if present.
-                                    ## NOTE: Errors raised (py) don't seem to have any links, just some monospace formatting:
-                                    ## NOTE: Currently unused.
-                                    this_method_raises_dict["raises_usage"] = str(strong_tag.parent).replace("\n", " ")
+                                    ## Process remaining data fields depending on whether the error data type is linked or not.
+                                    ## If the error includes a linked data type:
+                                    if strong_tag.parent.name == 'a':
 
-                                    ## OPTION: Determine error raised description, stripping any newlines:
-                                    this_method_raises_dict["raises_description"] = regex.split(r" – ", strong_tag.parent.text)[1].replace("\n", " ")
+                                        ## OPTION: Get full error raised usage, including type info and html links if present.
+                                        ## NOTE: Currently unused.
+                                        raises_usage = str(strong_tag.parent.parent).replace("\n", " ")
+                                        raises_link = strong_tag.parent.get('href')
+
+                                        ## Replace the scraped relative link with a full URL, in one of two forms:
+                                        ## Scraped link is an anchor link:
+                                        if raises_link.startswith('#'):
+                                            this_method_raises_dict["raises_usage"] = regex.sub(r'href=".*"', 'href="' + url + raises_link + '"', raises_usage)
+                                        ## Scraped link is a relative link:
+                                        elif raises_link.startswith('../'):
+                                            this_method_raises_dict["raises_usage"] = regex.sub(r'href=".*"', 'href="' + sdk_url + '/autoapi/viam/' + raises_link.replace('../', '') + '"', raises_usage)
+
+                                        ## OPTION: Determine error raised description, stripping any newlines:
+                                        this_method_raises_dict["raises_description"] = regex.split(r" – ", strong_tag.parent.parent.text)[1].replace("\n", " ")
+
+                                    ## If the error does not include a linked data type:
+                                    else:
+                                        ## OPTION: Get full error raised usage:
+                                        ## NOTE: Currently unused.
+                                        this_method_raises_dict["raises_usage"] = str(strong_tag.parent).replace("\n", " ")
+
+                                        ## OPTION: Determine error raised description, stripping any newlines:
+                                        this_method_raises_dict["raises_description"] = regex.split(r" – ", strong_tag.parent.text)[1].replace("\n", " ")
 
                                     ## Add all values for this raised error to this_method_dict by raises_name:
                                     this_method_dict["raises"][raises_name] = this_method_raises_dict
@@ -1225,7 +1246,7 @@ def parse_method_usage(usage_string):
             param_type_link = "https://pkg.go.dev/context#Context"
         elif 'extra' in param:
             type_name = "extra"
-            param_type = "map[string]interface\{\}"
+            param_type = "map[string]interface{}"
             param_type_link = "https://go.dev/blog/maps"
         elif param == '<a href="/builtin#error">error</a>':
             type_name = ""
