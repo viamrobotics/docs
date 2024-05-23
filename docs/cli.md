@@ -852,7 +852,7 @@ For example, the following extends the `my-module` <file>meta.json</file> file f
 {
   "module_id": "acme:my-module",
   "visibility": "public",
-  "url": "https://github.com/acme-co-example/my-module",
+  "url": "https://github.com/<my-repo-name>/my-module",
   "description": "An example custom module.",
   "models": [
     {
