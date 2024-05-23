@@ -121,6 +121,69 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### SubmitCustomTrainingJob
+
+Submit a training job from a custom training script.
+To use this method, you must first upload a custom training script to the [Registry](https://app.viam.com/registry/).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to submit the training job to. To retrieve this, expand your organization's dropdown in the top right corner of the [Viam app](https://app.viam.com/), select **Settings**, and copy **Organization ID**.
+- `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to train the ML model on. To retrieve this, navigate to your dataset's page in the [Viam app](https://app.viam.com/data/datasets), click **...** in the left-hand menu, and click **Copy dataset ID**.
+- `registry_item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the custom training script in the Registry.
+- `model_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the ML model to train.
+- `model_version` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The version of the ML model you're training. This string must be unique from any previous versions you've set.
+
+**Returns:**
+
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The ID of the training job created.
+
+```python {class="line-numbers linkable-line-numbers"}
+dataset_id = await ml_training_client.submit_training_job(
+  "3988fd7d-b1c0-4f36-9842-0c666f374d3c",
+  "66491a0666a6c8aa4a33e43e",
+  "0kbe999e-d4c6-427f-0938-123a7b12345c:my-test-script",
+  "your-model-name",
+  "3")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.submit_custom_training_job).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `datasetId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required): The ID of the dataset to train the ML model on. To retrieve this, navigate to your dataset's page in the [Viam app](https://app.viam.com/data/datasets), click **...** in the left-hand menu, and click **Copy dataset ID**.
+- `modelName` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required): The name of the ML model to train.
+- `modelVersion` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required): The version of the ML model you're training. This string must be unique from any previous versions you've set.
+- `organizationId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required): The ID of the organization to submit the training job to. To retrieve this, expand your organization's dropdown in the top right corner of the [Viam app](https://app.viam.com/), select **Settings**, and copy **Organization ID**.
+- `registryItemId` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required): The ID of the custom training script in the Registry.
+- `registryItemVersion` [(String)](https://api.flutter.dev/flutter/dart-core/String-class.html) (required): The version of the custom training script to use.
+
+**Returns:**
+
+- None.
+
+```dart {class="line-numbers linkable-line-numbers"}
+String datasetID = ml_training.submitTrainingJob(
+  "66491a0666a6c8aa4a33e43e",
+  "your-model-name",
+  "1",
+  "3988fd7d-b1c0-4f36-9842-0c666f374d3c",
+  "0kbe999e-d4c6-427f-0938-123a7b12345c:my-test-script",
+  "my-test-script",
+  "INSERT REGISTRY ITEM VERSION");
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_protos.app.ml_training/MLTrainingServiceClient/submitCustomTrainingJob.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### CancelTrainingJob
 
 Cancel the specified training job.
