@@ -1061,10 +1061,9 @@ def parse(type, names):
                                             this_method_raises_dict["raises_usage"] = regex.sub(r'href=".*"', 'href="' + url + raises_link + '"', raises_usage)
                                         ## Scraped link is a relative link:
                                         elif raises_link.startswith('../'):
-                                            this_method_raises_dict["raises_usage"] = = regex.sub(r'href=".*"', 'href="' + sdk_url + '/autoapi/viam/' + raises_link.replace('../', '') + '"', raises_usage)
+                                            this_method_raises_dict["raises_usage"] = regex.sub(r'href=".*"', 'href="' + sdk_url + '/autoapi/viam/' + raises_link.replace('../', '') + '"', raises_usage)
 
                                         ## OPTION: Determine error raised description, stripping any newlines:
-                                        raises_desc = regex.split(r" – ", strong_tag.parent.parent.text)[1].replace("\n", " ")
                                         this_method_raises_dict["raises_description"] = regex.split(r" – ", strong_tag.parent.parent.text)[1].replace("\n", " ")
 
                                     ## If the error does not include a linked data type:
@@ -1072,10 +1071,8 @@ def parse(type, names):
                                         ## OPTION: Get full error raised usage:
                                         ## NOTE: Currently unused.
                                         this_method_raises_dict["raises_usage"] = str(strong_tag.parent).replace("\n", " ")
-                                        raises_usage = str(strong_tag.parent).replace("\n", " ")
 
                                         ## OPTION: Determine error raised description, stripping any newlines:
-                                        raises_desc = regex.split(r" – ", strong_tag.parent.text)[1].replace("\n", " ")
                                         this_method_raises_dict["raises_description"] = regex.split(r" – ", strong_tag.parent.text)[1].replace("\n", " ")
 
                                     ## Add all values for this raised error to this_method_dict by raises_name:
