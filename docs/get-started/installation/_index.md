@@ -42,12 +42,14 @@ If you are using one of the following boards, click on the card to follow the gu
 
 {{< cards >}}
 {{% card link="/get-started/installation/prepare/rpi-setup/" class="small" %}}
-{{% card link="/get-started/installation/prepare/beaglebone-setup/" class="small" %}}
-{{% card link="/get-started/installation/prepare/sk-tda4vm/" class="small" %}}
-{{% card link="/get-started/installation/prepare/jetson-nano-setup/" class="small" %}}
-{{% card link="/get-started/installation/prepare/jetson-agx-orin-setup/" class="small" %}}
-{{% card link="/get-started/installation/prepare/pumpkin/" class="small" %}}
 {{% card link="/get-started/installation/prepare/odroid-c4-setup/" class="small" %}}
+{{% card link="/get-started/installation/prepare/orange-pi-3-lts/" class="small" %}}
+{{% card link="/get-started/installation/prepare/orange-pi-zero2/" class="small" %}}
+{{% card link="/get-started/installation/prepare/beaglebone-setup/" class="small" %}}
+{{% card link="/get-started/installation/prepare/jetson-agx-orin-setup/" class="small" %}}
+{{% card link="/get-started/installation/prepare/jetson-nano-setup/" class="small" %}}
+{{% card link="/get-started/installation/prepare/pumpkin/" class="small" %}}
+{{% card link="/get-started/installation/prepare/sk-tda4vm/" class="small" %}}
 {{< /cards >}}
 
 Viam also provides a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured Robot Development Kit (RDK).
