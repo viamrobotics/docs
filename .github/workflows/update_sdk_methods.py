@@ -753,11 +753,11 @@ def parse(type, names):
                         if '\tresource.Actuator' in resource_interface.text:
                             go_methods[type][resource]['IsMoving'] = {'proto': 'IsMoving', \
                                 'description': 'IsMoving returns whether the resource is moving or not', \
-                                'usage': 'IsMoving(<a href="/context">context</a>.<a href="/context#Context">Context</a>) (<a href="/builtin#bool">bool</a>, <a href="/builtin#error">error</a>)', \
+                                'usage': 'IsMoving(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) (<a href="/builtin#bool">bool</a>, <a href="/builtin#error">error</a>)', \
                                 'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Actuator'}
                             go_methods[type][resource]['Stop'] = {'proto': 'Stop', \
                                 'description': 'Stop stops all movement for the resource', \
-                                'usage': 'Stop(<a href="/context">context</a>.<a href="/context#Context">Context</a>, map[<a href="/builtin#string">string</a>]interface{}) <a href="/builtin#error">error</a>', \
+                                'usage': 'Stop(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, extra map[<a href="/builtin#string">string</a>]interface{}) <a href="/builtin#error">error</a>', \
                                 'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Actuator'}
 
                         ## Similarly, if the resource being considered inherits from resource.Shaped (Base, for example),
@@ -765,7 +765,7 @@ def parse(type, names):
                         if '\tresource.Shaped' in resource_interface.text:
                             go_methods[type][resource]['Geometries'] = {'proto': 'GetGeometries', \
                                 'description': 'Geometries returns the list of geometries associated with the resource, in any order. The poses of the geometries reflect their current location relative to the frame of the resource.', \
-                                'usage': 'Geometries(<a href="/context">context</a>.<a href="/context#Context">Context</a>, map[<a href="/builtin#string">string</a>]interface{}) ([]<a href="/go.viam.com/rdk/spatialmath">spatialmath</a>.<a href="/go.viam.com/rdk/spatialmath#Geometry">Geometry</a>, <a href="/builtin#error">error</a>)', \
+                                'usage': 'Geometries(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, extra map[<a href="/builtin#string">string</a>]interface{}) ([]<a href="/go.viam.com/rdk/spatialmath">spatialmath</a>.<a href="/go.viam.com/rdk/spatialmath#Geometry">Geometry</a>, <a href="/builtin#error">error</a>)', \
                                 'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Shaped'}
 
                         ## Similarly, if the resource being considered inherits from resource.Sensor (Movement Sensor, for example),
@@ -788,7 +788,7 @@ def parse(type, names):
                     go_methods[type][resource]['PointCloudMapFull'] = {}
                     go_methods[type][resource]['PointCloudMapFull']['proto'] = 'PointCloudMapFull'
                     go_methods[type][resource]['PointCloudMapFull']['description'] = pointcloudmapfull_method_raw[0].pre.find_next('p').text
-                    go_methods[type][resource]['PointCloudMapFull']['usage'] = pointcloudmapfull_method_raw[0].pre.text.removeprefix('func ')
+                    go_methods[type][resource]['PointCloudMapFull']['usage'] = str(pointcloudmapfull_method_raw[0].pre).removeprefix('func')
                     go_methods[type][resource]['PointCloudMapFull']['method_link'] = 'https://pkg.go.dev/go.viam.com/rdk/services/slam#PointCloudMapFull'
 
                     ## Fetch InternalStateFull:
@@ -800,7 +800,7 @@ def parse(type, names):
                     go_methods[type][resource]['InternalStateFull'] = {}
                     go_methods[type][resource]['InternalStateFull']['proto'] = 'InternalStateFull'
                     go_methods[type][resource]['InternalStateFull']['description'] = internalstatefull_method_raw[0].pre.find_next('p').text
-                    go_methods[type][resource]['InternalStateFull']['usage'] = internalstatefull_method_raw[0].pre.text.removeprefix('func ')
+                    go_methods[type][resource]['InternalStateFull']['usage'] = str(internalstatefull_method_raw[0].pre).removeprefix('func')
                     go_methods[type][resource]['InternalStateFull']['method_link'] = 'https://pkg.go.dev/go.viam.com/rdk/services/slam#InternalStateFull'
 
                 ## We have finished looping through all scraped Go methods. Write the go_methods dictionary
@@ -1132,7 +1132,8 @@ def parse(type, names):
                         ## Determine method link:
                         this_method_dict["method_link"] = tag.find("span", class_="name").a['href'].replace("..", sdk_url)
 
-                        ## Flutter SDK puts all parameter detail on a separate params page that we must additionally make_soup on:
+                        ## Flutter SDK puts all parameter detail on a separate params page that we must additionally make_soup on.
+                        ## Fetch target URL and make_soup of matching parameter tags:
                         parameters_link = tag.find("span", class_="type-annotation").a['href'].replace("..", sdk_url)
                         parameters_soup_raw = make_soup(parameters_link)
                         parameters_soup = parameters_soup_raw.find_all(
@@ -1140,73 +1141,81 @@ def parse(type, names):
                             and tag.get('class') == ['property']
                             and not regex.search('info_', tag.text))
 
-                        this_method_dict["parameters"] = {}
-                        this_method_dict["returns"] = {}
+                        ## Parse parameters, if any are found:
+                        if len(parameters_soup) != 0:
 
-                        # Parse parameters:
-                        for parameter_tag in parameters_soup:
+                            ## Create new empty dictionary for this_method_dict named "parameters":
+                            this_method_dict["parameters"] = {}
 
-                            ## Create new empty dictionary this_method_parameters_dict to house all parameter
-                            ## keys for this method, to allow for multiple parameters. Also resets the
-                            ## previous parameter's data when looping through multiple parameters:
-                            this_method_parameters_dict = {}
+                            for parameter_tag in parameters_soup:
 
-                            param_name = parameter_tag.get('id')
-                            this_method_parameters_dict["param_link"] = parameter_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
+                                ## Create new empty dictionary this_method_parameters_dict to house all parameter
+                                ## keys for this method, to allow for multiple parameters. Also resets the
+                                ## previous parameter's data when looping through multiple parameters:
+                                this_method_parameters_dict = {}
 
-                            parameter_type_raw = parameter_tag.find("span", class_="signature")
+                                param_name = parameter_tag.get('id')
+                                this_method_parameters_dict["param_link"] = parameter_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
 
-                            if not parameter_type_raw.find("a"):
-                                this_method_parameters_dict["param_type"] = parameter_type_raw.string[2:]
-                            elif len(parameter_type_raw.find_all("a")) == 1:
-                                this_method_parameters_dict["param_type"] = parameter_type_raw.find("a").text
-                                this_method_parameters_dict["param_type_link"] = parameter_type_raw.a['href'].replace("..", sdk_url)
-                            elif len(parameter_type_raw.find_all("a")) == 2:
-                                this_method_parameters_dict["param_type"] = parameter_type_raw.find("a").text
-                                this_method_parameters_dict["param_type_link"] = parameter_type_raw.a['href'].replace("..", sdk_url)
-                                this_method_parameters_dict["param_subtype"] = parameter_type_raw.find("span", class_="type-parameter").text
-                                this_method_parameters_dict["param_subtype_link"] = parameter_type_raw.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
+                                parameter_type_raw = parameter_tag.find("span", class_="signature")
 
-                            this_method_dict["parameters"][param_name] = this_method_parameters_dict
+                                if not parameter_type_raw.find("a"):
+                                    this_method_parameters_dict["param_type"] = parameter_type_raw.string[2:]
+                                elif len(parameter_type_raw.find_all("a")) == 1:
+                                    this_method_parameters_dict["param_type"] = parameter_type_raw.find("a").text
+                                    this_method_parameters_dict["param_type_link"] = parameter_type_raw.a['href'].replace("..", sdk_url)
+                                elif len(parameter_type_raw.find_all("a")) == 2:
+                                    this_method_parameters_dict["param_type"] = parameter_type_raw.find("a").text
+                                    this_method_parameters_dict["param_type_link"] = parameter_type_raw.a['href'].replace("..", sdk_url)
+                                    this_method_parameters_dict["param_subtype"] = parameter_type_raw.find("span", class_="type-parameter").text
+                                    this_method_parameters_dict["param_subtype_link"] = parameter_type_raw.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
 
-                        # Parse returns:
+                                this_method_dict["parameters"][param_name] = this_method_parameters_dict
+
+                        # Flutter SDK renders return values in 'type-parameter' spans:
                         if tag.find("span", class_="type-parameter").a:
 
-                            returns_link = tag.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
-                            returns_soup_raw = make_soup(returns_link)
-                            returns_soup = returns_soup_raw.find_all(
+                            return_link = tag.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
+                            return_soup_raw = make_soup(return_link)
+                            return_soup = return_soup_raw.find_all(
                                 lambda tag: tag.name == 'dt'
                                 and tag.get('class') == ['property']
                                 and not regex.search('info_', tag.text))
 
-                            for return_tag in returns_soup:
+                            ## Parse returns, if any are found:
+                            if len(return_soup) != 0:
 
-                                ## Create new empty dictionary this_method_returns_dict to house all return
-                                ## keys for this method, to allow for multiple returns. Also resets the
-                                ## previous return's data when looping through multiple returns:
-                                this_method_returns_dict = {}
+                                ## Create new empty dictionary for this_method_dict named "return":
+                                this_method_dict["return"] = {}
 
-                                return_name = return_tag.get('id')
-                                this_method_returns_dict["return_link"] = return_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
+                                for return_tag in return_soup:
 
-                                return_type_raw = return_tag.find("span", class_="signature")
+                                    ## Create new empty dictionary this_method_returns_dict to house all return
+                                    ## keys for this method, to allow for multiple returns. Also resets the
+                                    ## previous return's data when looping through multiple returns:
+                                    this_method_return_dict = {}
 
-                                if not return_type_raw.find("a"):
-                                    this_method_returns_dict["return_type"] = return_type_raw.string[2:]
-                                elif len(return_type_raw.find_all("a")) == 1:
-                                    this_method_returns_dict["return_type"] = return_type_raw.find("a").text
-                                    this_method_returns_dict["return_type_link"] = return_type_raw.a['href'].replace("..", sdk_url)
-                                elif len(return_type_raw.find_all("a")) == 2:
-                                    this_method_returns_dict["return_type"] = return_type_raw.find("a").text
-                                    this_method_returns_dict["return_type_link"] = return_type_raw.a['href'].replace("..", sdk_url)
-                                    this_method_returns_dict["return_subtype"] = return_type_raw.find("span", class_="type-parameter").text
-                                    this_method_returns_dict["return_subtype_link"] = return_type_raw.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
+                                    return_name = return_tag.get('id')
+                                    this_method_return_dict["return_link"] = return_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
 
-                                this_method_dict["returns"][return_name] = this_method_returns_dict
+                                    return_type_raw = return_tag.find("span", class_="signature")
+
+                                    if not return_type_raw.find("a"):
+                                        this_method_return_dict["return_type"] = return_type_raw.string[2:]
+                                    elif len(return_type_raw.find_all("a")) == 1:
+                                        this_method_return_dict["return_type"] = return_type_raw.find("a").text
+                                        this_method_return_dict["return_type_link"] = return_type_raw.a['href'].replace("..", sdk_url)
+                                    elif len(return_type_raw.find_all("a")) == 2:
+                                        this_method_return_dict["return_type"] = return_type_raw.find("a").text
+                                        this_method_return_dict["return_type_link"] = return_type_raw.a['href'].replace("..", sdk_url)
+                                        this_method_return_dict["return_subtype"] = return_type_raw.find("span", class_="type-parameter").text
+                                        this_method_return_dict["return_subtype_link"] = return_type_raw.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
+
+                                    this_method_dict["return"][return_name] = this_method_return_dict
 
                         else:
                             return_name = return_tag.get('id')
-                            this_method_returns_dict["return_type"] = tag.find("span", class_="type-parameter").string
+                            this_method_return_dict["return_type"] = tag.find("span", class_="type-parameter").string
 
                         flutter_methods[type][resource][method_name] = this_method_dict
 
@@ -1234,36 +1243,44 @@ def parse_method_usage(usage_string):
     parsed_usage_string = []
 
     for param in parameters:
-        # HACKY: Hardcoding ctx, extra, and error bc they are all the same and parsing from usage string
+        # HACKY: Hardcoding ctx, extra, cmd, and error bc they are all the same and parsing from usage string
         # has proven difficult
 
-        # Splitting each parameter by space to separate parameter name and type
-        parts = param.split()
+        ## Discard false-positive match for some Go SDK resources which choose to render each param on a newline,
+        ## resulting in trailing ',\n)' syntax that is otherwise interpreted here as a param named ')':
+        if param != ')':
 
-        if 'ctx' in param:
-            type_name = "ctx"
-            param_type = "Context"
-            param_type_link = "https://pkg.go.dev/context#Context"
-        elif 'extra' in param:
-            type_name = "extra"
-            param_type = "map[string]interface{}"
-            param_type_link = "https://go.dev/blog/maps"
-        elif param == '<a href="/builtin#error">error</a>':
-            type_name = ""
-            param_type = "error"
-            param_type_link = "https://pkg.go.dev/builtin#error"
-        else:
-            type_name = parts[-1].strip('` ')  # Remove backticks and spaces
-            param_type = ' '.join(parts[:-1]).strip('() ')  # Remove parentheses and spaces
+            # Splitting each parameter by space to separate parameter name and type
+            parts = param.split()
 
-            # Extracting the type link from the type string
-            type_link = regex.search(r'href="([^"]+)">', type_name)
-            if type_link:
-                param_type_link = type_link.group(1)
+            if 'ctx' in param:
+                type_name = "ctx"
+                param_type = "Context"
+                param_type_link = "https://pkg.go.dev/context#Context"
+            elif 'extra' in param:
+                type_name = "extra"
+                param_type = "map[string]interface{}"
+                param_type_link = "https://go.dev/blog/maps"
+            elif 'cmd' in param:
+                type_name = "cmd"
+                param_type = "map[string]interface{}"
+                param_type_link = "https://go.dev/blog/maps"
+            elif param == '<a href="/builtin#error">error</a>':
+                type_name = ""
+                param_type = "error"
+                param_type_link = "https://pkg.go.dev/builtin#error"
             else:
-                param_type_link = None
+                type_name = parts[-1].strip('` ')  # Remove backticks and spaces
+                param_type = ' '.join(parts[:-1]).strip('() ')  # Remove parentheses and spaces
 
-        parsed_usage_string.append((type_name, param_type, param_type_link))
+                # Extracting the type link from the type string
+                type_link = regex.search(r'href="([^"]+)">', type_name)
+                if type_link:
+                    param_type_link = type_link.group(1)
+                else:
+                    param_type_link = None
+
+            parsed_usage_string.append((type_name, param_type, param_type_link))
 
     return parsed_usage_string
 
@@ -1279,6 +1296,9 @@ def format_method_usage(parsed_usage_string):
             formatted_output.append(return_string)
         elif type_name == "extra":
             return_string += f"- `{type_name}` [({param_type})]({param_type_link}): Extra options to pass to the underlying RPC call."
+            formatted_output.append(return_string)
+        elif type_name == "cmd":
+            return_string += f"- `{type_name}` [({param_type})]({param_type_link}): The command to execute."
             formatted_output.append(return_string)
         elif param_type == "error":
             return_string += f"- [({param_type})]({param_type_link}): An error, if one occurred."
@@ -1305,9 +1325,9 @@ def format_method_usage(parsed_usage_string):
             if param_type_link:
                 # print(f"type_link stripped: {param_type_link}")
                 param_type_link = f"https://pkg.go.dev{param_type_link}"
-                return_string += f"[({type_name})]({param_type_link}):"
+                return_string += f"[({type_name})]({param_type_link})"
             else:
-                return_string += f"[({type_name})](<INSERT PARAM TYPE LINK>):"
+                return_string += f"[({type_name})](<INSERT PARAM TYPE LINK>)"
 
             formatted_output.append(return_string)
 
@@ -1510,12 +1530,8 @@ def write_markdown(type, names, methods):
                                     else:
                                         output_file.write(' (required)')
 
-                                    output_file.write(':')
-
                                     if param_description:
-                                        output_file.write(f" {param_description}")
-                                    else:
-                                        output_file.write(": <INSERT PARAM DESCRIPTION>\n")
+                                        output_file.write(f": {param_description}")
 
                                     # line break for parameters list
                                     output_file.write('\n')
@@ -1538,7 +1554,7 @@ def write_markdown(type, names, methods):
                                     if return_description:
                                         output_file.write(f": {return_description}\n")
                                     else:
-                                        output_file.write(": <INSERT RETURN DESCRIPTION>\n")
+                                        output_file.write("\n")
                             # Handle case where no returns are found
                             else:
                                 output_file.write("- None.\n")
@@ -1546,20 +1562,21 @@ def write_markdown(type, names, methods):
                             ## If the method has a code sample, print it here:
                             if 'code_sample' in methods['python'][type][resource][py_method_name]:
 
-                                output_file.write('\n\n```' + code_fence_fmt['python'] + ' {class="line-numbers linkable-line-numbers"}\n')
+                                output_file.write('\n**Example:**\n')
+                                output_file.write('\n```' + code_fence_fmt['python'] + ' {class="line-numbers linkable-line-numbers"}\n')
                                 output_file.write(methods['python'][type][resource][py_method_name]['code_sample'])
-                                output_file.write('```')
-
-                            # Output the method link
-                            output_file.write(f'\n\nFor more information, see the [Python SDK Docs]({methods["python"][type][resource][py_method_name]["method_link"]}).\n\n')
+                                output_file.write('```\n')
 
                             ## If we detected an 'after' method override file earlier, write it out here:
                             if has_after_override:
 
+                                output_file.write('\n')
+
                                 for line in open(method_override_file_path, 'r', encoding='utf-8'):
                                     output_file.write(line)
 
-                                output_file.write('\n')
+                            # Output the method link
+                            output_file.write(f'\nFor more information, see the [Python SDK Docs]({methods["python"][type][resource][py_method_name]["method_link"]}).\n\n')
 
                             # Close tabs
                             output_file.write("{{% /tab %}}\n")
@@ -1653,23 +1670,24 @@ def write_markdown(type, names, methods):
                                 else:
                                     output_file.write("- None.\n")
 
-                            # Output the method link
-                            output_file.write(f'\nFor more information, see the [Go SDK Docs]({methods["go"][type][resource][go_method_name]["method_link"]}).\n\n')
-
                             ## If the method has a code sample, print it here:
                             if 'code_sample' in methods['go'][type][resource][go_method_name]:
 
-                                output_file.write('```' + code_fence_fmt['go'] + ' {class="line-numbers linkable-line-numbers"}\n')
+                                output_file.write('\n**Example:**\n')
+                                output_file.write('\n```' + code_fence_fmt['go'] + ' {class="line-numbers linkable-line-numbers"}\n')
                                 output_file.write(methods['go'][type][resource][go_method_name]['code_sample'])
-                                output_file.write('```\n\n')
+                                output_file.write('```\n')
 
                             ## If we detected an 'after' method override file earlier, write it out here:
                             if has_after_override:
 
+                                output_file.write('\n')
+
                                 for line in open(method_override_file_path, 'r', encoding='utf-8'):
                                     output_file.write(line)
 
-                                output_file.write('\n')
+                            # Output the method link
+                            output_file.write(f'\nFor more information, see the [Go SDK Docs]({methods["go"][type][resource][go_method_name]["method_link"]}).\n\n')
 
                             output_file.write("{{% /tab %}}\n")
                             if not flutter_method_name:
@@ -1750,10 +1768,8 @@ def write_markdown(type, names, methods):
                                     else:
                                         output_file.write(' (required)')
 
-                                    output_file.write(':')
-
                                     if param_description:
-                                        output_file.write(f" {param_description}")
+                                        output_file.write(f": {param_description}")
 
                                     # line break for parameters list
                                     output_file.write('\n')
@@ -1765,64 +1781,67 @@ def write_markdown(type, names, methods):
                             output_file.write('\n**Returns:**\n\n')
                             if 'return' in methods['flutter'][type][resource][flutter_method_name]:
 
-                                return_data = methods['flutter'][type][resource][flutter_method_name]["return"]
-                                return_type = return_data.get("return_type")
-                                return_subtype = return_data.get("return_subtype")
-                                return_type_link = return_data.get("return_type_link")
-                                return_link = return_data.get("return_type_link") # TODO: handle this
-                                return_subtype_link = return_data.get("return_subtype_link")
-                                return_description = return_data.get("return_description")
+                                for return_name in methods['flutter'][type][resource][flutter_method_name]["return"].keys():
 
-                                if return_type:
-                                    output_file.write(f"- [({return_type})]")
+                                    return_data = methods['flutter'][type][resource][flutter_method_name]["return"][return_name]
+                                    return_type = return_data.get("return_type")
+                                    return_subtype = return_data.get("return_subtype")
+                                    return_type_link = return_data.get("return_type_link")
+                                    return_link = return_data.get("return_type_link") # TODO: handle this
+                                    return_subtype_link = return_data.get("return_subtype_link")
+                                    return_description = return_data.get("return_description")
 
-                                    if return_type_link:
-                                        output_file.write(f"({return_type_link})")
-                                    else:
-                                        output_file.write("(INSERT RETURN TYPE LINK)")
+                                    if return_type:
+                                        output_file.write(f"- `{return_name}` [({return_type})]")
 
-                                    if return_subtype:
-                                        output_file.write(f"<[{return_subtype}]")
-                                        if return_subtype_link:
-                                            output_file.write(f"({return_subtype_link})>")
+                                        if return_type_link:
+                                            output_file.write(f"({return_type_link})")
                                         else:
-                                            output_file.write("(<INSERT RETURN SUBTYPE LINK>)")
-                                    else:
-                                        pass
+                                            output_file.write("(INSERT RETURN TYPE LINK)")
 
-                                    if return_description:
-                                        output_file.write(f": {return_description}")
-                                    else:
-                                        output_file.write(": <INSERT RETURN DESCRIPTION>")
+                                        if return_subtype:
+                                            output_file.write(f"<[{return_subtype}]")
+                                            if return_subtype_link:
+                                                output_file.write(f"({return_subtype_link})>")
+                                            else:
+                                                output_file.write("(<INSERT RETURN SUBTYPE LINK>)")
+                                        else:
+                                            pass
+
+                                        if return_description:
+                                            output_file.write(f": {return_description}")
+                                        else:
+                                            output_file.write("\n")
                             else:
-                                # Handle case where no parameters are found
+                                # Handle case where no returns are found
                                 output_file.write("- None.\n")
-
-                            # Output the method link
-                            output_file.write(f'\nFor more information, see the [Flutter SDK Docs]({methods["flutter"][type][resource][flutter_method_name]["method_link"]}).\n\n')
 
                             ## If the method has a code sample, print it here:
                             if 'code_sample' in methods['flutter'][type][resource][flutter_method_name]:
 
-                                output_file.write('```' + code_fence_fmt['flutter'] + ' {class="line-numbers linkable-line-numbers"}\n')
+                                output_file.write('\n**Example:**\n')
+                                output_file.write('\n```' + code_fence_fmt['flutter'] + ' {class="line-numbers linkable-line-numbers"}\n')
                                 output_file.write(methods['flutter'][type][resource][flutter_method_name]['code_sample'])
-                                output_file.write('```\n\n')
+                                output_file.write('```\n')
 
                             ## If we detected an 'after' method override file earlier, write it out here:
                             if has_after_override:
 
+                                output_file.write('\n')
+
                                 for line in open(method_override_file_path, 'r', encoding='utf-8'):
                                     output_file.write(line)
 
-                                output_file.write('\n')
+                            # Output the method link
+                            output_file.write(f'\nFor more information, see the [Flutter SDK Docs]({methods["flutter"][type][resource][flutter_method_name]["method_link"]}).\n\n')
 
                             output_file.write("{{% /tab %}}\n")
                             output_file.write("{{< /tabs >}}\n")
 
-                    ## After this loop, we will be working with additional methods appended to the same {resource}.md include file.
-                    ## This switch tells us at the start of the loop for this same resource that we should double-newline the next
-                    ## proto encountered:
-                    is_first_method_in_this_resource = False
+                        ## After this loop, we will be working with additional methods appended to the same {resource}.md include file.
+                        ## This switch tells us at the start of the loop for this same resource that we should double-newline the next
+                        ## proto encountered:
+                        is_first_method_in_this_resource = False
 
 ## Main run function:
 ## - proto_map()        Fetch canonical proto methods from upstream, used for Flutter mapping in `parse()`
