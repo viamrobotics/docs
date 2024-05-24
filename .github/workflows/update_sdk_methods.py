@@ -1,14 +1,14 @@
-from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from pathlib import Path
 import sys
 import os
-import markdownify
 import subprocess
-import urllib.parse
-import urllib.error
 import re as regex
 import argparse
+
+from automation_lang_specifics.go import GoParser
+from automation_lang_specifics.proto_mapping import proto_map
+from automation_lang_specifics.shared_tools import make_soup
 
 
 ## Set the full list of SDK languages we scrape here:
@@ -77,31 +77,8 @@ else:
     exit(1)
 
 ## Build path to sdk_protos_map.csv file that contains proto-to-methods mapping, used in write_markdown():
-proto_map_file = os.path.join(gitroot, '.github/workflows/sdk_protos_map.csv')
 
-## Check to see if we have a locally-staged version of the Go SDK Docs (RDK repo). If so,
-## scrape our code samples (and only code samples!) from that URL instead. This check just
-## establishes whether the URL is up or not; if detected as up here, it is scraped in parse().
-## TODO: Consider if we need to consider other ports besides '8080', i.e. if multiple stage attempts,
-##   or if port was already in use by another service when pkgsite command was issues
-##   (8080 a very common web services default port)
-## NOTE: To stage the Go SDK docs (RDK repo):
-##   - Clone https://github.com/viamrobotics/rdk
-##   - Make your changes (add code samples as needed)
-##   - Run, from within the repo: go install golang.org/x/pkgsite/cmd/pkgsite@latest; pkgsite -open
-
-is_go_sdk_staging_available = False
-
-## Check to see if pkgsite (Go SDK docs local builder process) is running, and get its PID if so:
-process_result = subprocess.run(["ps -ef | grep pkgsite | grep -v grep | awk {'print $2'}"], shell=True, text = True, capture_output=True)
-pkgsite_pid = process_result.stdout.rstrip()
-
-if pkgsite_pid != '':
-    process_result = subprocess.run(["lsof -Pp " + pkgsite_pid + " | grep LISTEN | awk {'print $9'} | sed 's%.*:%%g'"], shell=True, text = True, capture_output=True)
-    pkgsite_port = process_result.stdout
-    is_go_sdk_staging_available = True
-    if args.verbose:
-        print('DEBUG: Detected local staged Go SDK docs URL, using that for Go code samples.')
+PROTO_MAP_FILE = os.path.join(gitroot, '.github/workflows/sdk_protos_map.csv')
 
 ## Array mapping language to its root URL:
 sdk_url_mapping = {
@@ -119,202 +96,6 @@ components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic_co
 services = ["base_remote_control", "data_manager", "generic_service", "mlmodel", "motion", "navigation", "slam", "vision"]
 app_apis = ["app", "billing", "data", "dataset", "data_sync", "mltraining"]
 robot_apis = ["robot"]
-
-## Dictionary of proto API names, with empty methods array, to be filled in for later use by get_proto_apis():
-proto_map = {
-    "arm": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/arm/v1/arm_grpc.pb.go",
-        "name": "ArmServiceClient",
-        "methods": []
-    },
-    "base": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/base/v1/base_grpc.pb.go",
-        "name": "BaseServiceClient",
-        "methods": []
-    },
-    "board": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/board/v1/board_grpc.pb.go",
-        "name": "BoardServiceClient",
-        "methods": []
-    },
-    "camera": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/camera/v1/camera_grpc.pb.go",
-        "name": "CameraServiceClient",
-        "methods": []
-    },
-    "encoder": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/encoder/v1/encoder_grpc.pb.go",
-        "name": "EncoderServiceClient",
-        "methods": []
-    },
-    "gantry": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/gantry/v1/gantry_grpc.pb.go",
-        "name": "GantryServiceClient",
-        "methods": []
-    },
-    "generic_component": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/generic/v1/generic_grpc.pb.go",
-        "name": "GenericServiceClient",
-        "methods": []
-    },
-    "gripper": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/gripper/v1/gripper_grpc.pb.go",
-        "name": "GripperServiceClient",
-        "methods": []
-    },
-    "input_controller": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/inputcontroller/v1/input_controller_grpc.pb.go",
-        "name": "InputControllerServiceClient",
-        "methods": []
-    },
-    "motor": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/motor/v1/motor_grpc.pb.go",
-        "name": "MotorServiceClient",
-        "methods": []
-    },
-    "movement_sensor": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/movementsensor/v1/movementsensor_grpc.pb.go",
-        "name": "MovementSensorServiceClient",
-        "methods": []
-    },
-    "power_sensor": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/powersensor/v1/powersensor_grpc.pb.go",
-        "name": "PowerSensorServiceClient",
-        "methods": []
-    },
-    "sensor": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/sensor/v1/sensor_grpc.pb.go",
-        "name": "SensorServiceClient",
-        "methods": []
-    },
-    "servo": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/servo/v1/servo_grpc.pb.go",
-        "name": "ServoServiceClient",
-        "methods": []
-    },
-    "data_manager": {
-        "url": "https://github.com/viamrobotics/api/blob/main/service/datamanager/v1/data_manager_grpc.pb.go",
-        "name": "DataManagerServiceClient",
-        "methods": []
-    },
-    "generic_service": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/service/generic/v1/generic_grpc.pb.go",
-        "name": "GenericServiceClient",
-        "methods": []
-    },
-    "mlmodel": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/service/mlmodel/v1/mlmodel_grpc.pb.go",
-        "name": "MLModelServiceClient",
-        "methods": []
-    },
-    "motion": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/service/motion/v1/motion_grpc.pb.go",
-        "name": "MotionServiceClient",
-        "methods": []
-    },
-    "navigation": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/service/navigation/v1/navigation_grpc.pb.go",
-        "name": "NavigationServiceClient",
-        "methods": []
-    },
-    "slam": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/service/slam/v1/slam_grpc.pb.go",
-        "name": "SLAMServiceClient",
-        "methods": []
-    },
-    "vision": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/service/vision/v1/vision_grpc.pb.go",
-        "name": "VisionServiceClient",
-        "methods": []
-    },
-    "app": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/app/v1/app_grpc.pb.go",
-        "name": "AppServiceClient",
-        "methods": []
-    },
-    "billing": {
-        "url": "https://github.com/viamrobotics/api/blob/main/app/v1/billing_grpc.pb.go",
-        "name": "BillingServiceClient",
-        "methods": []
-    },
-    "data": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/app/data/v1/data_grpc.pb.go",
-        "name": "DataServiceClient",
-        "methods": []
-    },
-    "dataset": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/app/dataset/v1/dataset_grpc.pb.go",
-        "name": "DatasetServiceClient",
-        "methods": []
-    },
-    "data_sync": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/app/datasync/v1/data_sync_grpc.pb.go",
-        "name": "DataSyncServiceClient",
-        "methods": []
-    },
-    "robot": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/robot/v1/robot_grpc.pb.go",
-        "name": "RobotServiceClient",
-        "methods": []
-    },
-    "mltraining": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/app/mltraining/v1/ml_training_grpc.pb.go",
-        "name": "MLTrainingServiceClient",
-        "methods": []
-    }
-}
-
-## Language-specific resource name overrides:
-##   "proto_resource_name" : "language-specific_resource_name"
-##   "as-it-appears-in-type-array": "as-it-is-used-per-sdk"
-## Note: Always remap generic component and service, for all languages,
-##       as this must be unique for this script, but is non-unique across sdks.
-go_resource_overrides = {
-    "generic_component": "generic",
-    "input_controller": "input",
-    "movement_sensor": "movementsensor",
-    "power_sensor": "powersensor",
-    "generic_service": "generic",
-    "base_remote_control": "baseremotecontrol",
-    "data_manager": "datamanager"
-}
-
-## Ignore these specific APIs if they error, are deprecated, etc:
-## {resource}.{methodname} to exclude a specific method, or
-## interface.{interfacename} to exclude an entire Go interface:
-go_ignore_apis = [
-    'interface.NavStore', # motion service interface
-    'interface.LocalRobot', # robot interface
-    'interface.RemoteRobot', # robot interface
-    'robot.RemoteByName', # robot method
-    'robot.ResourceByName', # robot method
-    'robot.RemoteNames', # robot method
-    #'robot.ResourceNames', # robot method
-    'robot.ResourceRPCAPIs', # robot method
-    'robot.ProcessManager', # robot method
-    'robot.OperationManager', # robot method
-    'robot.SessionManager', # robot method
-    'robot.PackageManager', # robot method
-    'robot.Logger' # robot method
-]
-
-## Use these URLs for data types (for params, returns, and errors raised) that are
-## built-in to the language or provided by a non-Viam third-party package:
-## TODO: Not currently using these in parse(), but could do a simple replace()
-##       or could handle in markdownification instead. TBD. Same with other SDK lang link arrays:
-go_datatype_links = {
-    "context": "https://pkg.go.dev/context",
-    "map": "https://go.dev/blog/maps",
-    "bool": "https://pkg.go.dev/builtin#bool",
-    "int": "https://pkg.go.dev/builtin#int",
-    "float64": "https://pkg.go.dev/builtin#float64",
-    "image": "https://pkg.go.dev/image#Image",
-    "r3.vector": "https://pkg.go.dev/github.com/golang/geo/r3#Vector",
-    "string": "https://pkg.go.dev/builtin#string",
-    "*geo.Point": "https://pkg.go.dev/github.com/kellydunn/golang-geo#Point",
-    "primitive.ObjectID": "https://pkg.go.dev/go.mongodb.org/mongo-driver/bson/primitive#ObjectID",
-    "error": "https://pkg.go.dev/builtin#error"
-}
 
 ## Language-specific resource name overrides:
 python_resource_overrides = {
@@ -467,15 +248,6 @@ def get_proto_apis():
 
     return proto_map
 
-## Fetch URL content via BS4, used in parse():
-def make_soup(url):
-   try:
-       page = urlopen(url)
-       html = page.read().decode("utf-8")
-       return BeautifulSoup(html, "html.parser")
-   except urllib.error.HTTPError as err:
-       print(f'An HTTPError was thrown: {err.code} {err.reason} for URL: {url}')
-
 ## Link any matching data types to their reference links, based on {sdk}_datatype_links[] array,
 ## used in parse() for both param and return data types. Handles data types syntax that includes
 ## multiple data types (and therefore requires multiple data type links), such as
@@ -549,6 +321,8 @@ def parse(type, names):
     ## all_methods[sdk][type][resource]
     all_methods = {}
 
+    go_parser = GoParser(args.verbose)
+
     ## Iterate through each sdk (like 'python') in sdks array:
     for sdk in sdks:
 
@@ -556,6 +330,7 @@ def parse(type, names):
         if sdk == "go":
             go_methods = {}
             go_methods[type] = {}
+            go_methods[type] = go_parser.parse(sdk_url_mapping[sdk], type, names, PROTO_MAP_FILE)
         elif sdk == "python":
             python_methods = {}
             python_methods[type] = {}
@@ -571,22 +346,8 @@ def parse(type, names):
         ## Iterate through each resource (like 'arm') in type (like 'components') array:
         for resource in names:
 
-            ## Determine URL form for Go depending on type (like 'component'):
-            if sdk == "go":
-                if type in ("component", "service") and resource in go_resource_overrides:
-                    url = f"{sdk_url}/go.viam.com/rdk/{type}s/{go_resource_overrides[resource]}"
-                elif type in ("component", "service"):
-                    url = f"{sdk_url}/go.viam.com/rdk/{type}s/{resource}"
-                elif type == "robot" and resource in go_resource_overrides:
-                    url = f"{sdk_url}/go.viam.com/rdk/{type}/{go_resource_overrides[resource]}"
-                elif type == "robot":
-                    url = f"{sdk_url}/go.viam.com/rdk/{type}"
-                elif type == "app":
-                    pass
-                go_methods[type][resource] = {}
-
             ## Determine URL form for Python depending on type (like 'component'):
-            elif sdk == "python":
+            if sdk == "python":
                 if type in ("component", "service") and resource in python_resource_overrides:
                     url = f"{sdk_url}/autoapi/viam/{type}s/{python_resource_overrides[resource]}/client/index.html"
                 elif type in ("component", "service"):
@@ -613,208 +374,10 @@ def parse(type, names):
                 pass
                 #print("unsupported language!")
 
-            ## Scrape each parent method tag and all contained child tags for Go by resource:
-            if sdk == "go" and type != "app":
-
-                soup = make_soup(url)
-
-                ## Get a raw dump of all go methods by interface for each resource:
-                go_methods_raw = soup.find_all(
-                    lambda tag: tag.name == 'div'
-                    and tag.get('class') == ['Documentation-declaration']
-                    and "type" in tag.pre.text
-                    and "interface {" in tag.pre.text)
-
-                # some resources have more than one interface:
-                for resource_interface in go_methods_raw:
-
-                    ## Determine the interface name, which we need for the method_link:
-                    interface_name = resource_interface.find('pre').text.splitlines()[0].removeprefix('type ').removesuffix(' interface {')
-                    #print(interface_name)
-
-                    ## Exclude unwanted Go interfaces:
-                    check_interface_name = 'interface.' + interface_name
-                    if not check_interface_name in go_ignore_apis:
-
-                        ## Loop through each method found for this interface:
-                        for tag in resource_interface.find_all('span', attrs={"data-kind" : "method"}):
-
-                            ## Create new empty dictionary for this specific method, to be appended to ongoing go_methods dictionary,
-                            ## in form: go_methods[type][resource][method_name] = this_method_dict
-                            this_method_dict = {}
-
-                            tag_id = tag.get('id')
-                            method_name = tag.get('id').split('.')[1]
-
-                            ## Exclude unwanted Go methods:
-                            check_method_name = resource + '.' + method_name
-                            if not check_method_name in go_ignore_apis:
-
-                                ## Look up method_name in proto_map file, and return matching proto:
-                                with open(proto_map_file, 'r') as f:
-                                    for row in f:
-                                        if not row.startswith('#') \
-                                        and row.startswith(resource + ',') \
-                                        and row.split(',')[3] == method_name:
-                                            this_method_dict["proto"] = row.split(',')[1]
-
-                                ## Extract the raw text from resource_interface matching method_name.
-                                ## Split by method span, throwing out remainder of span tag, catching cases where
-                                ## id is first attr or data-kind is first attr, and slicing to omit the first match,
-                                ## which is the opening of the method span tag, not needed:
-                                this_method_raw1 = regex.split(r'id="' + tag_id + '"', str(resource_interface))[1].removeprefix('>').removeprefix(' data-kind="method">').lstrip()
-
-                                ## Then, omit all text that begins a new method span, and additionally remove trailing
-                                ## element closers for earlier tags we spliced into (pre and span):
-                                this_method_raw2 = regex.split(r'<span .*data-kind="method".*>', this_method_raw1)[0].removesuffix('}</pre>\n</div>').removesuffix('</span>').rstrip()
-
-                                method_description = ""
-
-                                ## Get method description, if any comment spans are found:
-                                if tag.find('span', class_='comment'):
-
-                                    ## Iterate through all comment spans, splitting by opening comment tag, and
-                                    ## omitting the first string, which is either the opening comment tag itself,
-                                    ## or the usage of this method, if the comment is appended to the end of usage line:
-                                    for comment in regex.split(r'<span class="comment">', this_method_raw2)[1:]:
-
-                                        comment_raw = regex.split(r'</span>.*', comment.removeprefix('//'))[0].lstrip()
-                                        method_description = method_description + comment_raw
-
-                                ## Write comment field as appended comments if found, or empty string if none.
-                                this_method_dict["description"] = method_description
-
-                                ## Get full method usage string, by omitting all comment spans:
-                                method_usage_raw = regex.sub(r'<span class="comment">.*</span>', '', this_method_raw2)
-                                this_method_dict["usage"] = regex.sub(r'</span>', '', method_usage_raw).replace("\t", "  ").lstrip().rstrip()
-
-                                ## Not possible to link to the specific functions, so we link to the parent resource instead:
-                                this_method_dict["method_link"] = url + '#' + interface_name
-
-                                ## Check for code sample for this method.
-                                ## If we detected that a local instance of the Go SDK docs is available, use that.
-                                ## Otherwise, use the existing scraped 'soup' object from the live Go SDK docs instead.
-                                if is_go_sdk_staging_available:
-
-                                    staging_url = regex.sub('https://pkg.go.dev', 'http://localhost:8080', url)
-                                    staging_soup = make_soup(staging_url)
-
-                                    ## Get a raw dump of all go methods by interface for each resource:
-                                    go_code_samples_raw = staging_soup.find_all(
-                                        lambda code_sample_tag: code_sample_tag.name == 'p'
-                                        and method_name + " example:" in code_sample_tag.text)
-                                else:
-
-                                    ## Get a raw dump of all go methods by interface for each resource:
-                                    go_code_samples_raw = soup.find_all(
-                                        lambda code_sample_tag: code_sample_tag.name == 'p'
-                                        and method_name + " example:" in code_sample_tag.text)
-
-                                ## Determine if a code sample is provided for this method:
-                                if len(go_code_samples_raw) == 1:
-
-                                    ## Fetch code sample raw text, preserving newlines but stripping all formatting.
-                                    ## This string should be suitable for feeding into any python formatter to get proper form:
-                                    this_method_dict["code_sample"] = go_code_samples_raw[0].find_next('pre').text.replace("\t", "  ")
-
-                                elif len(go_code_samples_raw) > 1:
-                                
-                                    ## In case we want to support multiple code samples per method down the line,
-                                    ## this is where to process (and: update write_markdown() accordingly to enable looping
-                                    ## through possible code sample data objects). For now we just continue to fetch just the
-                                    ## first-discovered (i.e., at index [0]):
-                                    this_method_dict["code_sample"] = go_code_samples_raw[0].find_next('pre').text.replace("\t", "  ")
-
-                                ## We have finished collecting all data for this method. Write the this_method_dict dictionary
-                                ## in its entirety to the go_methods dictionary by type (like 'component'), by resource (like 'arm'),
-                                ## using the method_name as key:
-                                go_methods[type][resource][method_name] = this_method_dict
-
-                        ## Go SDK docs for each interface omit inherited functions. If the resource being considered inherits from
-                        ## resource.Resource (currently all components and services do, and no app or robot interfaces do), then add
-                        ## the three inherited methods manually: Reconfigure(), DoCommand(), Close()
-                        ## (Match only to instances that are preceded by a tab char, or we'll catch ResourceByName erroneously):
-                        if '\tresource.Resource' in resource_interface.text:
-                            go_methods[type][resource]['Reconfigure'] = {'proto': 'Reconfigure', \
-                                'description': 'Reconfigure must reconfigure the resource atomically and in place. If this cannot be guaranteed, then usage of AlwaysRebuild or TriviallyReconfigurable is permissible.', \
-                                'usage': 'Reconfigure(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, deps <a href="#Dependencies">Dependencies</a>, conf <a href="#Config">Config</a>) <a href="/builtin#error">error</a>', \
-                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
-                            go_methods[type][resource]['DoCommand'] = {'proto': 'DoCommand', \
-                                'description': 'DoCommand sends/receives arbitrary data.', \
-                                'usage': 'DoCommand(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, cmd map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
-                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
-                            go_methods[type][resource]['Close'] = {'proto': 'Close', \
-                                'description': 'Close must safely shut down the resource and prevent further use. Close must be idempotent. Later reconfiguration may allow a resource to be "open" again.', \
-                                'usage': 'Close(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) <a href="/builtin#error">error</a>', \
-                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
-
-                        ## Similarly, if the resource being considered inherits from resource.Actuator (Servo, for example),
-                        ## then add the two inherited methods manually: IsMoving() and Stop():
-                        if '\tresource.Actuator' in resource_interface.text:
-                            go_methods[type][resource]['IsMoving'] = {'proto': 'IsMoving', \
-                                'description': 'IsMoving returns whether the resource is moving or not', \
-                                'usage': 'IsMoving(<a href="/context">context</a>.<a href="/context#Context">Context</a>) (<a href="/builtin#bool">bool</a>, <a href="/builtin#error">error</a>)', \
-                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Actuator'}
-                            go_methods[type][resource]['Stop'] = {'proto': 'Stop', \
-                                'description': 'Stop stops all movement for the resource', \
-                                'usage': 'Stop(<a href="/context">context</a>.<a href="/context#Context">Context</a>, map[<a href="/builtin#string">string</a>]interface{}) <a href="/builtin#error">error</a>', \
-                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Actuator'}
-
-                        ## Similarly, if the resource being considered inherits from resource.Shaped (Base, for example),
-                        ## then add the one inherited method manually: Geometries():
-                        if '\tresource.Shaped' in resource_interface.text:
-                            go_methods[type][resource]['Geometries'] = {'proto': 'GetGeometries', \
-                                'description': 'Geometries returns the list of geometries associated with the resource, in any order. The poses of the geometries reflect their current location relative to the frame of the resource.', \
-                                'usage': 'Geometries(<a href="/context">context</a>.<a href="/context#Context">Context</a>, map[<a href="/builtin#string">string</a>]interface{}) ([]<a href="/go.viam.com/rdk/spatialmath">spatialmath</a>.<a href="/go.viam.com/rdk/spatialmath#Geometry">Geometry</a>, <a href="/builtin#error">error</a>)', \
-                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Shaped'}
-
-                        ## Similarly, if the resource being considered inherits from resource.Sensor (Movement Sensor, for example),
-                        ## then add the one inherited method manually: Readings():
-                        if '\tresource.Sensor' in resource_interface.text:
-                            go_methods[type][resource]['Readings'] = {'proto': 'GetReadings', \
-                                'description': 'Readings return data specific to the type of sensor and can be of any type.', \
-                                'usage': 'Readings(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, extra map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
-                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Sensor'}
-
-                ## For SLAM service only, additionally fetch data for two helper methods defined outside of the resource's interface:
-                if resource == 'slam':
-
-                    ## Fetch PointCloudMapFull:
-                    pointcloudmapfull_method_raw = soup.find_all(
-                        lambda tag: tag.name == 'div'
-                        and tag.get('class') == ['Documentation-declaration']
-                        and "PointCloudMapFull" in tag.pre.text)
-
-                    go_methods[type][resource]['PointCloudMapFull'] = {}
-                    go_methods[type][resource]['PointCloudMapFull']['proto'] = 'PointCloudMapFull'
-                    go_methods[type][resource]['PointCloudMapFull']['description'] = pointcloudmapfull_method_raw[0].pre.find_next('p').text
-                    go_methods[type][resource]['PointCloudMapFull']['usage'] = pointcloudmapfull_method_raw[0].pre.text.removeprefix('func ')
-                    go_methods[type][resource]['PointCloudMapFull']['method_link'] = 'https://pkg.go.dev/go.viam.com/rdk/services/slam#PointCloudMapFull'
-
-                    ## Fetch InternalStateFull:
-                    internalstatefull_method_raw = soup.find_all(
-                        lambda tag: tag.name == 'div'
-                        and tag.get('class') == ['Documentation-declaration']
-                        and "InternalStateFull" in tag.pre.text)
-
-                    go_methods[type][resource]['InternalStateFull'] = {}
-                    go_methods[type][resource]['InternalStateFull']['proto'] = 'InternalStateFull'
-                    go_methods[type][resource]['InternalStateFull']['description'] = internalstatefull_method_raw[0].pre.find_next('p').text
-                    go_methods[type][resource]['InternalStateFull']['usage'] = internalstatefull_method_raw[0].pre.text.removeprefix('func ')
-                    go_methods[type][resource]['InternalStateFull']['method_link'] = 'https://pkg.go.dev/go.viam.com/rdk/services/slam#InternalStateFull'
-
-                ## We have finished looping through all scraped Go methods. Write the go_methods dictionary
-                ## in its entirety to the all_methods dictionary using "go" as the key:
-                all_methods["go"] = go_methods
-
-            elif sdk == "go" and type == "app":
-               ##Go SDK has no APP API!
-               pass
-
             ## Scrape each parent method tag and all contained child tags for Python by resource.
             ## TEMP: Manually exclude Base Remote Control Service (Go only) and Data Manager Service (Go + Flutter only).
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
-            elif sdk == "python" and resource != 'base_remote_control' and resource != 'data_manager':
+            if sdk == "python" and resource != 'base_remote_control' and resource != 'data_manager':
                 soup = make_soup(url)
                 python_methods_raw = soup.find_all("dl", class_="py method")
 
@@ -836,7 +399,7 @@ def parse(type, names):
                         method_name = id.rsplit('.',1)[1]
 
                         ## Look up method_name in proto_map file, and return matching proto:
-                        with open(proto_map_file, 'r') as f:
+                        with open(PROTO_MAP_FILE, 'r') as f:
                             for row in f:
                                 #print(row)
                                 if not row.startswith('#') \
@@ -1118,7 +681,7 @@ def parse(type, names):
                     if not method_name in flutter_ignore_apis:
 
                         ## Look up method_name in proto_map file, and return matching proto:
-                        with open(proto_map_file, 'r') as f:
+                        with open(PROTO_MAP_FILE, 'r') as f:
                             for row in f:
                                 ## Because Flutter is the final entry in the mapping CSV, we must also rstrip() to
                                 ## strip the trailing newline (\n) off the row itself:
@@ -1221,6 +784,8 @@ def parse(type, names):
                 ## TODO: Fix so resources with 0 implemented methods for an SDK are silently
                 ## skipped without requiring manual exclusion in parse().
                 pass
+
+    all_methods["go"] = go_parser.go_methods
 
     return all_methods
 
@@ -1365,7 +930,7 @@ def write_markdown(type, names, methods):
         table_file = open('%s' % full_path_to_table_file, "w")
 
         ## Loop through mapping file, and determine which sdk methods to document for each proto:
-        with open(proto_map_file, 'r') as f:
+        with open(PROTO_MAP_FILE, 'r') as f:
             for row in f:
                 if not row.startswith('#') \
                 and row.startswith(resource + ','):
