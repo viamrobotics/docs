@@ -302,7 +302,7 @@ The following example captures data from two analog readers that provide a volta
               },
               // Captures data from pin 27 of the board's GPIO
               {
-                "method": "Gpio",
+                "method": "Gpios",
                 "capture_frequency_hz": 1,
                 "name": "rdk:component:board/my-esp32",
                 "additional_params": {
