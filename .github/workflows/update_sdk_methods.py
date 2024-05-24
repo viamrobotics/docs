@@ -718,7 +718,7 @@ def parse(type, names):
                                     this_method_dict["code_sample"] = go_code_samples_raw[0].find_next('pre').text.replace("\t", "  ")
 
                                 elif len(go_code_samples_raw) > 1:
-                                
+
                                     ## In case we want to support multiple code samples per method down the line,
                                     ## this is where to process (and: update write_markdown() accordingly to enable looping
                                     ## through possible code sample data objects). For now we just continue to fetch just the
@@ -1543,15 +1543,15 @@ def write_markdown(type, names, methods):
                             else:
                                 output_file.write("- None.\n")
 
-                            # Output the method link
-                            output_file.write(f'\nFor more information, see the [Python SDK Docs]({methods["python"][type][resource][py_method_name]["method_link"]}).\n\n')
-
                             ## If the method has a code sample, print it here:
                             if 'code_sample' in methods['python'][type][resource][py_method_name]:
 
-                                output_file.write('```' + code_fence_fmt['python'] + ' {class="line-numbers linkable-line-numbers"}\n')
+                                output_file.write('\n\n```' + code_fence_fmt['python'] + ' {class="line-numbers linkable-line-numbers"}\n')
                                 output_file.write(methods['python'][type][resource][py_method_name]['code_sample'])
-                                output_file.write('```\n\n')
+                                output_file.write('```')
+
+                            # Output the method link
+                            output_file.write(f'\n\nFor more information, see the [Python SDK Docs]({methods["python"][type][resource][py_method_name]["method_link"]}).\n\n')
 
                             ## If we detected an 'after' method override file earlier, write it out here:
                             if has_after_override:
