@@ -923,9 +923,11 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 
 ### `packages`
 
-The `packages` command allows you to export packages from the Viam cloud.
+The `packages` command allows you to upload packages to the Viam cloud or export packages from the Viam cloud.
 
 ```sh {class="command-line" data-prompt="$"}
+viam packages upload --org-id=<org-id> --name=<package-name> --version=latest --type=ml_model --path=.
+
 viam packages export --org-id=<org-id> --name=<package-name> --version=latest --type=ml_model --destination=.
 ```
 
@@ -934,18 +936,20 @@ viam packages export --org-id=<org-id> --name=<package-name> --version=latest --
 <!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
+| `upload`      | upload a package to the Viam cloud  | - |
 | `export`      | download a package from the Viam cloud  | - |
 
 ##### Named arguments
 
 <!-- prettier-ignore -->
-| argument | description | required |
-| ----------- | ----------- | ----------- | ----------- |
-| `--org-id`      | the organization ID of the requested package | true |
-| `--name`     |  the name of the requested package   | true |
-| `--version`     |  the version of the requested package or `latest`  | true |
-| `--type`     |  the type of the requested package: unspecified for packages you have uploaded yourself through the CLI or SDKs, `ml_model`, `archive`, `module`, or `slam_map` | true |
-| `--destination`     |  the output directory for downloaded package   | true |
+| argument | description | applicable commands | required |
+| -------- | ----------- | ------------------- | -------- |
+| `--org-id` | the organization ID of the package | `upload`, `export` | true |
+| `--name` |  the name of the package | `upload`, `export` | true |
+| `--version` | the version of the package or `latest` | `upload`, `export` | true |
+| `--type` | the type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | `upload`, `export` | true |
+| `--path` |  the output directory for downloaded package | `export` | true |
+| `--destination` |  the path to the package for upload | `upload` | true |
 
 ### `machines` (alias `robots`)
 
