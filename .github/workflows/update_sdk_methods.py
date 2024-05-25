@@ -788,7 +788,7 @@ def parse(type, names):
                     go_methods[type][resource]['PointCloudMapFull'] = {}
                     go_methods[type][resource]['PointCloudMapFull']['proto'] = 'PointCloudMapFull'
                     go_methods[type][resource]['PointCloudMapFull']['description'] = pointcloudmapfull_method_raw[0].pre.find_next('p').text
-                    go_methods[type][resource]['PointCloudMapFull']['usage'] = str(pointcloudmapfull_method_raw[0].pre).removeprefix('func')
+                    go_methods[type][resource]['PointCloudMapFull']['usage'] = str(pointcloudmapfull_method_raw[0].pre).removeprefix('<pre>func ').removesuffix('</pre>')
                     go_methods[type][resource]['PointCloudMapFull']['method_link'] = 'https://pkg.go.dev/go.viam.com/rdk/services/slam#PointCloudMapFull'
 
                     ## Fetch InternalStateFull:
@@ -800,7 +800,7 @@ def parse(type, names):
                     go_methods[type][resource]['InternalStateFull'] = {}
                     go_methods[type][resource]['InternalStateFull']['proto'] = 'InternalStateFull'
                     go_methods[type][resource]['InternalStateFull']['description'] = internalstatefull_method_raw[0].pre.find_next('p').text
-                    go_methods[type][resource]['InternalStateFull']['usage'] = str(internalstatefull_method_raw[0].pre).removeprefix('func')
+                    go_methods[type][resource]['InternalStateFull']['usage'] = str(internalstatefull_method_raw[0].pre).removeprefix('<pre>func ').removesuffix('</pre>')
                     go_methods[type][resource]['InternalStateFull']['method_link'] = 'https://pkg.go.dev/go.viam.com/rdk/services/slam#InternalStateFull'
 
                 ## We have finished looping through all scraped Go methods. Write the go_methods dictionary
@@ -1809,7 +1809,7 @@ def write_markdown(type, names, methods):
                                             pass
 
                                         if return_description:
-                                            output_file.write(f": {return_description}")
+                                            output_file.write(f": {return_description}\n")
                                         else:
                                             output_file.write("\n")
                             else:
