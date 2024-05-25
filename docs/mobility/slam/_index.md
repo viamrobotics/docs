@@ -104,15 +104,13 @@ pose = await slam.get_position()
 **Returns:**
 
 - [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A `Pose` representing the current position of the specified component.
-- [(string)](https://pkg.go.dev/builtin#string): The `"name"` of the component the SLAM service is configured to source point cloud data from.
-  For example, a [camera](/components/camera/) named `"cam"`.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam).
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Get the current position of the specified source component in the SLAM map as a Pose.
-pos, name, err := mySLAMService.Position(context.Background())
+pos, err := mySLAMService.Position(context.Background())
 ```
 
 {{% /tab %}}
