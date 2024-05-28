@@ -8,6 +8,7 @@ images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 aliases:
   - "/components/arm/xarm7/"
+component_description: "UFACTORY xArm 7."
 # SMEs: Bucket, Motion
 ---
 

@@ -12,6 +12,7 @@ images: ["/icons/components/power-sensor.svg"]
 modulescript: true
 aliases:
   - "/components/power-sensor/"
+hide_children: true
 # SME: #team-bucket
 ---
 
@@ -26,22 +27,7 @@ Integrate this component to monitor your power levels.
 
 ## Supported models
 
-To use your power sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your power sensor.
-
-### Built-in models
-
-For configuration information, click on the model name:
-
-| Model                 | Description <a name="model-table"></a>         |
-| --------------------- | ---------------------------------------------- |
-| [`fake`](./fake/)     | a digital power sensor for testing             |
-| [`ina219`](./ina219/) | INA219 power sensor; current and power monitor |
-| [`ina226`](./ina226/) | INA226 power sensor; current and power monitor |
-| [`renogy`](./renogy/) | solar charge controller                        |
-
-### Modular resources
-
-{{<modular-resources api="rdk:component:power_sensor" type="power_sensor">}}
+{{<resources api="rdk:component:power_sensor" type="power_sensor">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 

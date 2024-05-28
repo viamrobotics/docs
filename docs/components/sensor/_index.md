@@ -12,6 +12,7 @@ images: ["/icons/components/sensor.svg"]
 modulescript: true
 aliases:
   - "/components/sensor/"
+hide_children: true
 # SME: #team-bucket
 ---
 
@@ -41,24 +42,7 @@ Most machines with a sensor need at least the following hardware:
 
 ## Supported models
 
-To use your sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your sensor.
-
-### Built-in models
-
-For configuration information, click on the model name:
-
-<!-- prettier-ignore -->
-| Model | Description |
-| ----- | ----------- |
-| [`fake`](fake/) | A model used for testing, with no physical hardware. |
-| [`ultrasonic`](ultrasonic/) | The [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor |
-| [`bme280`](bme280/) | [BME280 environmental sensor](https://www.adafruit.com/product/2652) |
-| [`ds18b20`](ds18b20/) | [DallasTemperature DS18B20 digital temperature sensor](https://www.adafruit.com/product/381) |
-| [`sensirion-sht3xd`](sensirion-sht3xd/) | [Sensirion SHT3x-DIS temperature and humidity sensor](https://www.adafruit.com/product/2857) |
-
-### Modular resources
-
-{{<modular-resources api="rdk:component:sensor" type="sensor">}}
+{{<resources api="rdk:component:sensor" type="sensor">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 

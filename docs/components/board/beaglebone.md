@@ -8,6 +8,7 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/beaglebone/"
+component_description: "BeagleBoard’s BeagleBone AI-64."
 # SMEs: Gautham, Rand
 ---
 

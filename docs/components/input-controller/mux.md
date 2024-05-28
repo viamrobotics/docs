@@ -8,6 +8,7 @@ images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 aliases:
   - "/components/input-controller/mux/"
+component_description: "Multiplexed controller, combining multiple sources of input."
 # SMEs: James
 ---
 

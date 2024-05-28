@@ -8,6 +8,7 @@ images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:
   - "/components/base/sensor-controlled/"
+component_description: "A model that wraps other base models with feedback control from a movement sensor"
 # SMEs: Rand H., Martha J.
 ---
 

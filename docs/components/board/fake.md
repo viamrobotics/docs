@@ -8,6 +8,7 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/fake/"
+component_description: "A model used for testing, with no physical hardware."
 # SMEs: Gautham, Rand
 ---
 

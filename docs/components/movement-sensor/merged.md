@@ -7,6 +7,7 @@ description: "Configure a merged movement sensor."
 images: ["/icons/components/imu.svg"]
 aliases:
   - "/components/movement-sensor/merged/"
+component_description: "A model that allows you to aggregate the API methods supported by multiple sensors into a singular sensor client, effectively merging the models of the individual resources."
 # SMEs: Rand
 ---
 

@@ -8,6 +8,7 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/jetson/"
+component_description: "NVIDIA Jetson AGX Orin, NVIDIA Jetson Orin Nano, NVIDIA Jetson Xavier NX, NVIDIA Jetson Nano."
 # SMEs: Gautham, Rand
 ---
 

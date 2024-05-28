@@ -7,6 +7,7 @@ description: "Configure a brushed DC motor driven by a roboclaw motor controller
 images: ["/icons/components/motor.svg"]
 aliases:
   - "/components/motor/roboclaw/"
+component_description: "Standard brushed DC motor driven by Basicmicro’s RoboClaw motor controller."
 # SMEs: Olivia, Rand
 ---
 

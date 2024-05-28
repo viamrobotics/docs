@@ -7,6 +7,7 @@ images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 aliases:
   - "/components/encoder/ams-as5048/"
+component_description: "The AMS-AS5048 encoder is an absolute encoder that which can connect using an I2C interface."
 # SMEs: Rand
 ---
 

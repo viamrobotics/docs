@@ -7,6 +7,7 @@ description: "Configure a fake movement sensor to test software without any hard
 images: ["/icons/components/imu.svg"]
 aliases:
   - "/components/movement-sensor/fake/"
+component_description: "Used to test code without hardware."
 # SMEs: Rand
 ---
 

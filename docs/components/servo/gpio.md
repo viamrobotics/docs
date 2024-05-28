@@ -9,6 +9,7 @@ icon: true
 images: ["/icons/components/servo.svg"]
 aliases:
   - "/components/servo/gpio/"
+component_description: "A hobby servo wired to any model of board besides pi."
 # SME: Rand
 ---
 

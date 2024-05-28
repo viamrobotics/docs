@@ -39,21 +39,7 @@ Add services commonly used with the component.
 
 ## Supported models
 
-To use your COMPONENT with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your COMPONENT.
-
-### Built-in models
-
-For configuration information, click on the model name:
-
-<!-- prettier-ignore -->
-| Model               | Description                                                         |
-| ------------------- | ------------------------------------------------------------------- |
-| [`model1`](model1/) | An XYZ unit made by Some Company(INSERT LINK AS APPLICABLE)         |
-| [`model2`](model2/) | An ABCDE unit made by Some Other Company(INSERT LINK AS APPLICABLE) |
-
-### Modular resources
-
-{{<modular-resources api="rdk:component:component" type="component">}}
+{{<resources api="rdk:component:component" type="component">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 

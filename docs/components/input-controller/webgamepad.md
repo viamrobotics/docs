@@ -8,6 +8,7 @@ images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 aliases:
   - "/components/input-controller/webgamepad/"
+component_description: "A remote, web based gamepad."
 # SMEs: James
 ---
 

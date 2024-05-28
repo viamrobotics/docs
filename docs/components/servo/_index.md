@@ -12,6 +12,7 @@ no_list: true
 modulescript: false
 aliases:
   - "/components/servo/"
+hide_children: true
 # SME: #team-bucket
 ---
 
@@ -51,23 +52,7 @@ Check your device's data sheet and configure that type of servo as an [encoded m
 
 ## Supported models
 
-To use your servo with Viam, check whether one of the following [built-in models](#built-in-models) supports your servo.
-
-### Built-in models
-
-For configuration information, click on the model name:
-
-<!-- prettier-ignore -->
-| Model | Description |
-| ----- | ----------- |
-| [`fake`](fake/) | A model used for testing, with no physical hardware. |
-| [`gpio`](gpio/) | A hobby servo wired to any model of [board](/components/board/#supported-models) besides `pi`. |
-| [`pi`](pi/) | A hobby servo wired to a [Raspberry Pi board](/components/board/pi/). |
-
-<!-- ### Modular resources
-
-{{<modular-resources api="rdk:component:servo" type="servo">}}
--->
+{{<resources api="rdk:component:servo" type="servo">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 

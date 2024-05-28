@@ -8,5 +8,6 @@ layout: "empty"
 canonical: "components/movement-sensor/"
 aliases:
   - "/components/movement-sensor/gps/"
+no_component: true
 # SMEs: Rand
 ---

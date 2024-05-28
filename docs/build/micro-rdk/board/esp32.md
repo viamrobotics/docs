@@ -108,8 +108,8 @@ The following properties are available for `analogs`:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-|`name` | string | **Required** | Your name for the analog reader. |
-|`pin`| integer | **Required** | The GPIO number of the ADC's connection pin, wired to the board. |
+| `name` | string | **Required** | Your name for the analog reader. |
+| `pin`| integer | **Required** | The GPIO number of the ADC's connection pin, wired to the board. |
 
 ### `i2cs`
 

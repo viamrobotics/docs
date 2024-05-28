@@ -8,6 +8,7 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - "/components/camera/transform/"
+component_description: "A pipeline for applying transformations to an input image source."
 # SMEs: Bijan, vision team
 ---
 

@@ -6,6 +6,7 @@ type: "docs"
 description: "Configure a Raspberry Pi 5 board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
+component_description: "Raspberry Pi 5."
 # SMEs: Bucket, Alan
 ---
 

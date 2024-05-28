@@ -8,6 +8,7 @@ images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 aliases:
   - "/components/arm/ur5e/"
+component_description: "Universal Robots UR5e"
 ---
 
 Configure a `ur5e` arm to add a [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) to your machine:

@@ -9,6 +9,7 @@ icon: true
 images: ["/icons/components/sensor.svg"]
 aliases:
   - "/components/sensor/ultrasonic/"
+component_description: "The HC-S204 ultrasonic distance sensor."
 # SME: #team-bucket
 ---
 

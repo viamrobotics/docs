@@ -8,6 +8,7 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - "/components/camera/webcam/"
+component_description: "A standard camera that streams camera data."
 # SMEs: Bijan, vision team
 ---
 

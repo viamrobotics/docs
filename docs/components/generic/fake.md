@@ -7,6 +7,7 @@ description: "Configure a fake generic component."
 tags: ["generic", "components"]
 aliases:
   - "/components/generic/fake/"
+component_description: "A model used for testing, with no physical hardware."
 ---
 
 Configure a `fake` generic component to test implementing a generic component on your machine without any physical hardware:

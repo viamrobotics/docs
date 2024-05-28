@@ -8,6 +8,7 @@ images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:
   - "/components/base/wheeled/"
+component_description: "Mobile wheeled robot."
 # SMEs: Steve B
 ---
 

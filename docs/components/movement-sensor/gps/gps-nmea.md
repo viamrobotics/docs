@@ -7,6 +7,7 @@ description: "Configure an NMEA-based GPS on your machine. Once configured use t
 images: ["/icons/components/imu.svg"]
 aliases:
   - /components/movement-sensor/gps/gps-nmea/
+component_description: "NMEA-based GPS models."
 # SMEs: Rand
 ---
 

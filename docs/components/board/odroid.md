@@ -6,6 +6,7 @@ type: "docs"
 description: "Configure an Odroid board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
+component_description: "Odroid-C4"
 ---
 
 {{% alert title="REQUIREMENTS" color="note" %}}

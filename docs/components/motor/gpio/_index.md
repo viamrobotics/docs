@@ -8,6 +8,7 @@ images: ["/icons/components/motor.svg"]
 aliases:
   - "/components/motor/gpio/"
 no_list: true
+component_description: "Standard brushed or brushless DC motor."
 # SMEs: Rand, James
 ---
 

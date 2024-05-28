@@ -8,6 +8,7 @@ images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 aliases:
   - "/components/input-controller/gpio/"
+component_description: "Customizable GPIO/ADC based device using a board component."
 # SMEs: James
 ---
 

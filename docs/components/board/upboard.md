@@ -8,6 +8,7 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/upboard/"
+component_description: "An Intel-based board like the UP4000."
 # SMEs: Susmita
 ---
 

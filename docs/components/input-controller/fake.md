@@ -8,6 +8,7 @@ images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 aliases:
   - "/components/input-controller/fake/"
+component_description: "A model for testing, with no physical hardware."
 # SMEs: James
 ---
 
