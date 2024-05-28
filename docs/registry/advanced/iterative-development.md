@@ -293,6 +293,17 @@ If you pin a machine to the exact version number `0.1.3-rc0`, only then will tha
 
 ### Syntax
 
-It is up to you as the developer to choose your prerelease tagging scheme.
+Your tags should adhere to [semantic versioning specification (SemVer)](https://semver.org), meaning that the tag should begin with a major version number, then a minor version number, then a patch version number, separated by periods.
+It is up to you as the developer to choose when to increment each number.
 You can append any label after the major, minor, and patch version numbers.
 For example, you can label your prerelease version `0.1.2-rc0` or `0.1.2-beta`.
+If your tag does not adhere to SemVer, cloud builds will fail.
+
+### Update your GitHub action file
+
+If you are using cloud build, be sure to update your [GitHub action file](/registry/upload/#update-an-existing-module-using-a-github-action) tags to include the release candidate version.
+You can use `"*"` to trigger the build action on all tags regardless of correct syntax, or you can use the following regular expression to trigger the build action on all tags that have valid syntax:
+
+```regex
+/^(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch>0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?P<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/gm
+```
