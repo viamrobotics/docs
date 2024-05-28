@@ -921,6 +921,36 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 | `--org-id`      | the organization to create an API key for |`api-key` | true |
 | `--name`     |  the optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time   |`api-key` | false |
 
+### `packages`
+
+The `packages` command allows you to upload packages to the Viam cloud or export packages from the Viam cloud.
+
+```sh {class="command-line" data-prompt="$"}
+viam packages upload --org-id=<org-id> --name=<package-name> --version=latest --type=ml_model --path=.
+
+viam packages export --org-id=<org-id> --name=<package-name> --version=latest --type=ml_model --destination=.
+```
+
+#### Command options
+
+<!-- prettier-ignore -->
+|        command option     |       description      | positional arguments
+| ----------- | ----------- | ----------- |
+| `upload`      | upload a package to the Viam cloud  | - |
+| `export`      | download a package from the Viam cloud  | - |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| argument | description | applicable commands | required |
+| -------- | ----------- | ------------------- | -------- |
+| `--org-id` | the organization ID of the package | `upload`, `export` | true |
+| `--name` |  the name of the package | `upload`, `export` | true |
+| `--version` | the version of the package or `latest` | `upload`, `export` | true |
+| `--type` | the type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | `upload`, `export` | true |
+| `--path` |  the output directory for downloaded package | `export` | true |
+| `--destination` |  the path to the package for upload | `upload` | true |
+
 ### `machines` (alias `robots`)
 
 The `machines` command allows you to manage your machine fleet.
