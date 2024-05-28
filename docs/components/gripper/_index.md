@@ -33,11 +33,10 @@ To use your gripper with Viam, check whether one of the following [built-in mode
 
 For configuration information, click on the model name:
 
-<!-- prettier-ignore -->
-Model | Description
------ | -----------
-[`softrobotics`](./softrobotics/) | The _m_Grip soft gripper by [Soft Robotics](https://www.softroboticsinc.com/) |
-[`fake`](fake/) | A model used for testing, with no physical hardware. |
+| Model                             | Description                                                                    |
+| --------------------------------- | ------------------------------------------------------------------------------ |
+| [`softrobotics`](./softrobotics/) | The \_m_Grip soft gripper by [Soft Robotics](https://www.softroboticsinc.com/) |
+| [`fake`](fake/)                   | A model used for testing, with no physical hardware.                           |
 
 ### Modular resources
 
