@@ -46,10 +46,9 @@ Before creating a new generic component, check whether one of the following [mod
 
 For configuration information, click on the model name:
 
-<!-- prettier-ignore -->
-Model | Description
------ | -----------
-[`fake`](fake/) | A model used for testing, with no physical hardware.
+| Model           | Description                                          |
+| --------------- | ---------------------------------------------------- |
+| [`fake`](fake/) | A model used for testing, with no physical hardware. |
 
 ### Modular resources
 
