@@ -301,7 +301,7 @@ If your tag does not adhere to SemVer, cloud builds will fail.
 
 ### Update your GitHub action file
 
-If you are using cloud build, be sure to update your [GitHub action file](/registry/upload/#update-an-existing-module-using-a-github-action) tags to include the release candidate version.
+If you are using Cloud Build, be sure to update your [GitHub action file](/registry/upload/#update-an-existing-module-using-a-github-action) tags to include the release candidate version.
 You can use `"*"` to trigger the build action on all tags regardless of correct syntax, or you can use the following regular expression to trigger the build action on all tags that have valid syntax:
 
 ```regex
