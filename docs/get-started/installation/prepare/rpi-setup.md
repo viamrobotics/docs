@@ -61,7 +61,7 @@ You need to install Raspberry Pi OS (formerly called Raspbian) on the microSD ca
 
    {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS (Other) is selected." src="/get-started/installation/rpi-setup/select-other-custom-os.png" resize="800x" declaredimensions=true >}}
 
-   Select **Raspberry Pi OS (Legacy, 64-bit) Full** from the menu.
+   Select **Raspberry Pi OS Full (64-bit)** from the menu.
 
    {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS (Legacy, 64-bit) Full is selected." src="/get-started/installation/rpi-setup/select-other-rpi.png" resize="800x" declaredimensions=true >}}
 
@@ -167,9 +167,7 @@ Be sure that you remember the `hostname` and `username` you set, as you will nee
 
     After granting permissions to the Imager, it will begin writing and then verifying the Linux installation to the MicroSD card.
 
-    Remove the microSD card from your computer when it is complete:
-
-    {{< imgproc class="aligncenter" alt="You will be notified with a dialogue box informing you that Raspberry Pi OS (Legacy, 64-bit) Full has been written successfully." src="/get-started/installation/rpi-setup/imager-done.png" resize="700x" declaredimensions=true >}}
+    Remove the microSD card from your computer when the installation is complete.
 
 2.  Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an outlet.
     A red LED will turn on to indicate that the Pi is connected to power.
