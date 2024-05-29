@@ -125,7 +125,7 @@
 
                   {{- $.Scratch.Set "id" (printf "builtin:rdk:component:%s:%s" (strings.ToLower .Parent.LinkTitle) (strings.ToLower .LinkTitle)) -}}
                   {{- $.Scratch.Set "api" (printf "rdk:component:%s" (strings.ToLower .Parent.LinkTitle)) -}}
-                  {{- $.Scratch.Set "component_description" (printf "Builtin component: %s" .Params.component_description) -}}
+                  {{- $.Scratch.Set "component_description" (printf "Built-in component: %s" .Params.component_description) -}}
                   {{- if not .Params.component_description -}}
                         {{ warnf "Missing description: %s %s" .Parent.LinkTitle .LinkTitle }}
                   {{- end -}}
