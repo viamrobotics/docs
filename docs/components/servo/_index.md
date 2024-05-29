@@ -9,7 +9,7 @@ tags: ["servo", "components"]
 icon: true
 images: ["/icons/components/servo.svg"]
 no_list: true
-modulescript: false
+modulescript: true
 aliases:
   - "/components/servo/"
 hide_children: true
