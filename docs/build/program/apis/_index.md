@@ -198,24 +198,6 @@ Different [vision service](/ml/vision/) models support different methods:
 
 ## Signaling APIs
 
-### GPIO pins
-
-In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with GPIO pins on a board:
-
-{{< readfile "/static/include/components/apis/gpiopin.md" >}}
-
-### Analog-to-digital converters (ADCs)
-
-In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [ADCs](/components/board/#analogs) on a board:
-
-{{< readfile "/static/include/components/apis/analogreader.md" >}}
-
-### Digital interrupts
-
-In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [digital interrupts](/components/board/#digital_interrupts) on a board:
-
-{{< readfile "/static/include/components/apis/digitalinterrupt.md" >}}
-
 ## ResourceBase methods
 
 In the Python SDK, the [`ResourceBase`](https://python.viam.dev/autoapi/viam/resource/base/index.html) class defines a basic set of API methods that all child resources should provide for users.
