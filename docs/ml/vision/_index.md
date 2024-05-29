@@ -138,7 +138,7 @@ Get a list of detections from a given image using a configured [detector](#detec
 
 **Parameters:**
 
-- `image` [(RawImage)](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.RawImage): The image in which to look for detections.
+- `image` [(ViamImage)](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.ViamImage): The image in which to look for detections.
 - `extra` (Mapping[str, Any]) (_optional_): A generic struct, containing extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -265,7 +265,7 @@ Get a list of classifications from a given image using a configured [classifier]
 
 **Parameters:**
 
-- `image` [(RawImage)](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.RawImage): The image in which to look for classifications.
+- `image` [(ViamImage)](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.ViamImage): The image in which to look for classifications.
 - `count` [(int)](https://docs.python.org/3/library/functions.html#int): The number of classifications to return.
   For example, if you specify `3` you will get the top three classifications with the greatest confidence scores.
 - `extra` (Mapping[str, Any]) (_optional_): A generic struct, containing extra options to pass to the underlying RPC call.

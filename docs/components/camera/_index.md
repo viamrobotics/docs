@@ -111,9 +111,7 @@ The camera component supports the following methods:
 
 ### GetImage
 
-Returns an image from the camera.
-You can request a specific MIME type but the returned MIME type is not guaranteed.
-If the server does not know how to return the specified MIME type, the server returns the image in another format instead.
+Get an image from the camera with the specified MIME type.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -121,12 +119,10 @@ If the server does not know how to return the specified MIME type, the server re
 **Parameters:**
 
 - `mime_type` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The requested MIME type of the image.
-  The returned MIME type is not guaranteed to match the image output type:
-  If the requested MIME type has `+lazy` appended to it or the requested MIME type is not supported for decoding/encoding, `GetImage` returns a [`RawImage`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.RawImage) instead.
 
 **Returns:**
 
-- ([PIL.Image](https://pillow.readthedocs.io/en/stable/reference/Image.html) or [RawImage](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.RawImage)): The requested frame.
+- ([ViamImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.ViamImage): The requested frame.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_camera = Camera.from_robot(robot=robot, name="my_camera")
@@ -136,7 +132,7 @@ frame = await my_camera.get_image(mime_type="image/jpeg")
 
 <br>
 
-If the `mime_type` of your image is `image/vnd.viam.dep`, pass the returned image data to the Viam Python SDK's [`RawImage.bytes_to_depth_array()`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.RawImage.bytes_to_depth_array) method to decode the raw image data to a standard 2D image representation.
+If the `mime_type` of your image is `image/vnd.viam.dep`, pass the returned image data to the Viam Python SDK's [`ViamImage.bytes_to_depth_array()`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.ViamImage.bytes_to_depth_array) method to decode the raw image data to a standard 2D image representation.
 
 For example:
 
@@ -147,6 +143,29 @@ frame = await my_camera.get_image()
 # Convert "frame" to a standard 2D image representation.
 # Remove the 1st 3x8 bytes and reshape the raw bytes to List[List[Int]].
 standard_frame = frame.bytes_to_depth_array()
+```
+
+The Python SDK provides the helper functions `viam_to_pil_image` and `pil_to_viam_image` to decode the `ViamImage` into a [`PIL Image`](https://omz-software.com/pythonista/docs/ios/Image.html) and vice versa.
+
+For example:
+
+```python {class="line-numbers linkable-line-numbers"}
+# from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
+# < ADD ABOVE IMPORT TO BEGINNING OF PROGRAM >
+
+# Get the ViamImage from your camera.
+frame = await my_camera.get_image()
+
+# Convert "frame" to a PIL Image representation.
+pil_frame = viam_to_pil_image(frame)
+
+# Use methods from the PIL Image class to get size.
+x, y = pil_frame.size[0], pil_frame.size[1]
+# Crop image to get only the left two fifths of the original image.
+cropped_pil_frame = pil_frame.crop((0, 0, x / 2.5, y))
+
+# Convert back to ViamImage.
+cropped_frame = pil_to_viam_image(cropped_pil_frame)
 ```
 
 {{% alert title="Tip" color="tip" %}}

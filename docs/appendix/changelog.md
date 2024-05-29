@@ -19,6 +19,40 @@ outputs:
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
+{{% changelog date="2024-05-09" color="changed" title="Return type of GetImage()" %}}
+
+The Python SDK introduced a new image container class called [`ViamImage`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage).
+The camera API's [`GetImage()`](/components/camera/#getimage) API method now returns a `ViamImage` type, and the vision service's [GetDetections()](/ml/vision/#getdetections) and [GetClassifications()](/ml/vision/#getclassifications) take in `ViamImage` as a parameter.
+
+You can use the helper functions `viam_to_pil_image` and `pil_to_viam_image` provided by the Python SDK to convert the `ViamImage` into a [`PIL Image`](https://omz-software.com/pythonista/docs/ios/Image.html) and vice versa.
+
+{{%expand "Click for an example of using the ViamImage -> PIL Image helper functions." %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+# from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
+# < ADD ABOVE IMPORT TO BEGINNING OF PROGRAM >
+
+# Get the ViamImage from your camera.
+frame = await my_camera.get_image()
+
+# Convert "frame" to a PIL Image representation.
+pil_frame = viam_to_pil_image(frame)
+
+# Use methods from the PIL Image class to get size.
+x, y = pil_frame.size[0], pil_frame.size[1]
+# Crop image to get only the left two fifths of the original image.
+cropped_pil_frame = pil_frame.crop((0, 0, x / 2.5, y))
+
+# Convert back to ViamImage.
+cropped_frame = pil_to_viam_image(cropped_pil_frame)
+
+# Get detections from your vision service.
+detections = await detector.get_detections(cropped_frame)
+```
+
+{{% /expand%}}
+{{% /changelog %}}
+
 {{% changelog date="2024-04-30" color="removed" title="Removed status from Board API" %}}
 
 Viam has removed support for following Board API methods models: `Status()`, `AnalogStatus()`, `DigitalInterruptStatus()`, `Close()`, `Tick()`, `AddCallback()`, and `RemoveCallback()`.
