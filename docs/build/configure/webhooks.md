@@ -34,7 +34,7 @@ To configure a webhook:
 ```json {class="line-numbers linkable-line-numbers"}
   "webhooks": [
     {
-      "url": "<Insert your own cloud function or lambda URL for sending the event>",
+      "url": "<Insert your own cloud function or lambda URL for sending the event>?data_type=binary",
       "event": {
         "attributes": {
           "data_types": ["binary", "tabular", "file"]
@@ -91,7 +91,7 @@ To configure a webhook:
   ],
   "webhooks": [
     {
-      "url": "https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws",
+      "url": "https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws?data_type=binary",
       "event": {
         "attributes": {
           "data_types": ["binary", "tabular"]
@@ -132,12 +132,14 @@ To configure a webhook:
        "Org-ID": request.headers['org-id'] if 'org-id' in request.headers else 'no value',
        "Location-ID": request.headers['location-id'] if 'location-id' in request.headers else 'no value',
        "Part-ID": request.headers['part-id'] if 'part-id' in request.headers else 'no value',
-       "Robot-ID": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value'
-       "Component-Type": request.headers['component-type'] if 'component-type' in request.headers else 'no value'
-       "Component-Name": request.headers['component-name'] if 'component-name' in request.headers else 'no value'
-       "Method-Name": request.headers['method-name'] if 'method-name' in request.headers else 'no value'
-       "Min-Time-Received": request.headers['min-time-received'] if 'min-time-received' in request.headers else 'no value'
-       "Max-Time-Received": request.headers['max-time-received'] if 'max-time-received' in request.headers else 'no value'
+       "Robot-ID": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value',
+       "Component-Type": request.headers['component-type'] if 'component-type' in request.headers else 'no value',
+       "Component-Name": request.headers['component-name'] if 'component-name' in request.headers else 'no value',
+       "Method-Name": request.headers['method-name'] if 'method-name' in request.headers else 'no value',
+       "Min-Time-Received": request.headers['min-time-received'] if 'min-time-received' in request.headers else 'no value',
+       "Max-Time-Received": request.headers['max-time-received'] if 'max-time-received' in request.headers else 'no value',
+
+      "Data-Type": request.args['data_type'] if 'data_type' in request.args else 'no value'
      }
 
      slack_url = "<paste in your own Slack URL>"
@@ -233,12 +235,14 @@ To configure a webhook:
        "Org-ID": request.headers['org-id'] if 'org-id' in request.headers else 'no value',
        "Location-ID": request.headers['location-id'] if 'location-id' in request.headers else 'no value',
        "Part-ID": request.headers['part-id'] if 'part-id' in request.headers else 'no value',
-       "Robot-ID": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value'
-       "Component-Type": request.headers['component-type'] if 'component-type' in request.headers else 'no value'
-       "Component-Name": request.headers['component-name'] if 'component-name' in request.headers else 'no value'
-       "Method-Name": request.headers['method-name'] if 'method-name' in request.headers else 'no value'
-       "Min-Time-Received": request.headers['min-time-received'] if 'min-time-received' in request.headers else 'no value'
-       "Max-Time-Received": request.headers['max-time-received'] if 'max-time-received' in request.headers else 'no value'
+       "Robot-ID": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value',
+       "Component-Type": request.headers['component-type'] if 'component-type' in request.headers else 'no value',
+       "Component-Name": request.headers['component-name'] if 'component-name' in request.headers else 'no value',
+       "Method-Name": request.headers['method-name'] if 'method-name' in request.headers else 'no value',
+       "Min-Time-Received": request.headers['min-time-received'] if 'min-time-received' in request.headers else 'no value',
+       "Max-Time-Received": request.headers['max-time-received'] if 'max-time-received' in request.headers else 'no value',
+
+      "Data-Type": request.args['data_type'] if 'data_type' in request.args else 'no value'
      }
 
      slack_url = "<paste in your own Slack URL>"
