@@ -355,31 +355,31 @@ done
 ##### Named arguments
 
 <!-- prettier-ignore -->
-| Argument     | Description | Applicable commands | Required |
+| Argument     | Description | Applicable commands | Inclusion |
 | ----------- | ----------- | ----------- | ----------- |
-| `--destination`      | Output directory for downloaded data       |`export`| True |
-| `--data-type`     | Data type to be downloaded: either binary or tabular   |`export`| True |
-| `--component-name`      | Filter by specified component name  |`export`, `delete`| False |
-| `--component-type`     | Filter by specified component type       |`export`, `delete`| False |
-| `--component-model`   | Filter by specified component model       |`export`, `delete`| False |
-| `--dataset-id`   | Dataset to add or remove images from     |`dataset`| True |
-| `--delete-older-than-days` | Number of days, 0 means all data will be deleted | `delete` | False |
-| `--start`      | ISO-8601 timestamp indicating the start of the interval       |`export`, `delete`, `dataset`| False |
-| `--end`      | ISO-8601 timestamp indicating the end of the interval       |`export`, `delete`, `dataset`| False |
-| `--file-ids` | File-ids to add or remove from a dataset       |`dataset`| True |
-| `--location-id`      | Location id for the file ids being added or removed from the specified dataset (only accepts one location id)       |`dataset`| True |
-| `--location-ids`      | Filter by specified location id (accepts comma-separated list)       |`export`, `delete`| False |
-| `--method`       | Filter by specified method       |`export`, `delete`| False |
+| `--destination`      | Output directory for downloaded data       |`export`| **Required** |
+| `--data-type`     | Data type to be downloaded: either binary or tabular   |`export`| **Required** |
+| `--component-name`      | Filter by specified component name  |`export`, `delete`| Optional |
+| `--component-type`     | Filter by specified component type       |`export`, `delete`| Optional |
+| `--component-model`   | Filter by specified component model       |`export`, `delete`| Optional |
+| `--dataset-id`   | Dataset to add or remove images from     |`dataset`| **Required** |
+| `--delete-older-than-days` | Number of days, 0 means all data will be deleted | `delete` | Optional |
+| `--start`      | ISO-8601 timestamp indicating the start of the interval       |`export`, `delete`, `dataset`| Optional |
+| `--end`      | ISO-8601 timestamp indicating the end of the interval       |`export`, `delete`, `dataset`| Optional |
+| `--file-ids` | File-ids to add or remove from a dataset       |`dataset`| **Required** |
+| `--location-id`      | Location id for the file ids being added or removed from the specified dataset (only accepts one location id)       |`dataset`| **Required** |
+| `--location-ids`      | Filter by specified location id (accepts comma-separated list)       |`export`, `delete`| Optional |
+| `--method`       | Filter by specified method       |`export`, `delete`| Optional |
 | `--mime-types`      | Filter by specified MIME type (accepts comma-separated list)       |`export`, `delete`|false |
-| `--org-id` | Org ID for the database user being configured (with `database`), or for the file ids being added or removed from the specified dataset (with `dataset`) | `database configure`, `database hostname`, `dataset` | True |
-| `--org-ids`     | Filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`| False |
+| `--org-id` | Org ID for the database user being configured (with `database`), or for the file ids being added or removed from the specified dataset (with `dataset`) | `database configure`, `database hostname`, `dataset` | **Required** |
+| `--org-ids`     | Filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`| Optional |
 | `--parallel`      | Number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|false |
-| `--part-id`      | Filter by specified part id      |`export`, `delete`| False |
-| `--part-name`     | Filter by specified part name       |`export`, `delete`| False |
-| `--robot-id`     | Filter by specified robot id       |`export`, `delete`| False |
-| `--robot-name`      | Filter by specified robot name       |`export`, `delete`| False |
-| `--tags`      | Filter by specified tag (accepts comma-separated list)       |`export`, `delete`, `dataset`| False |
-| `--password` | Password for the database user being configured | `database configure` | True |
+| `--part-id`      | Filter by specified part id      |`export`, `delete`| Optional |
+| `--part-name`     | Filter by specified part name       |`export`, `delete`| Optional |
+| `--robot-id`     | Filter by specified robot id       |`export`, `delete`| Optional |
+| `--robot-name`      | Filter by specified robot name       |`export`, `delete`| Optional |
+| `--tags`      | Filter by specified tag (accepts comma-separated list)       |`export`, `delete`, `dataset`| Optional |
+| `--password` | Password for the database user being configured | `database configure` | **Required** |
 
 ##### Using the `ids` argument
 
@@ -434,8 +434,8 @@ viam locations list [<organization id>]
 #### Command options
 
 <!-- prettier-ignore -->
-| Command option     | Description      | Positional arguments |
-| ----------- | ----------- | ----------- |
+| Command option | Description | Positional arguments |
+| -------------- | ----------- | -------------------- |
 | `list`      | List all locations (name and id) that the authenticated session has access to, grouped by organization  | **organization id** : return results for specified organization only |
 | `api-key`   | Work with an api-key for your location | `create` |
 | `--help`      | Return help      | - |
@@ -450,12 +450,11 @@ viam locations list [<organization id>]
 
 ##### Named arguments
 
-<!-- prettier-ignore -->
-| Argument | Description | Applicable commands | Required |
-| -------- | ----------- | ------------------- | ----------- |
-| `--location-id`      | The location to create an API key for |`api-key` | True |
-| `--name`     | The name of the API key    |`api-key` | False |
-| `--org-id`      | The organization ID to attach the key to  |`api-key` | False |
+| Argument        | Description                              | Applicable commands | Inclusion    |
+| --------------- | ---------------------------------------- | ------------------- | ------------ |
+| `--location-id` | The location to create an API key for    | `api-key`           | **Required** |
+| `--name`        | The name of the API key                  | `api-key`           | Optional     |
+| `--org-id`      | The organization ID to attach the key to | `api-key`           | Optional     |
 
 ### `login`
 
@@ -473,20 +472,19 @@ If you haven't already, you must [create an organization API key](#create-an-org
 #### Command options
 
 <!-- prettier-ignore -->
-| Command option     | Description      | Positional arguments |
-| ----------- | ----------- | ----------- |
+| Command option | Description | Positional arguments |
+| -------------- | ----------- | -------------------- |
 | `api-key`      | Authenticate to Viam using an organization, location, or machine part API key      | Create |
-| `print-access-token`      | Prints the access token used to authenticate the current CLI session      | - |
+| `print-access-token`      | Prints the access token used to authenticate the current CLI session    | - |
 | `--help`      | Return help      | - |
 | `--disable-browser-open` | Authenticate in a headless environment by preventing the opening of the default browser during login (default: false) | - |
 
 ##### Named arguments
 
-<!-- prettier-ignore -->
-| Argument     | Description | Applicable commands | Required |
-| ----------- | ----------- | ----------- | ----------- |
-| `--key-id`    | The `key id` (UUID) of the API key | `api-key` | True |
-| `--key`    | The `key value` of the API key | `api-key` | True |
+| Argument   | Description                        | Applicable commands | Inclusion    |
+| ---------- | ---------------------------------- | ------------------- | ------------ |
+| `--key-id` | The `key id` (UUID) of the API key | `api-key`           | **Required** |
+| `--key`    | The `key value` of the API key     | `api-key`           | **Required** |
 
 ### `logout`
 
@@ -549,18 +547,18 @@ If you update and release your module as part of a continuous integration (CI) w
 ##### Named arguments
 
 <!-- prettier-ignore -->
-| Argument     | Description | Applicable commands | Required |
+| Argument     | Description | Applicable commands | Inclusion |
 | ----------- | ----------- | ----------- | ----------- |
-| `--count`    | Number of cloud builds to list, defaults to displaying all builds | `build list` | False |
-| `--force`    | Skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | False |
-| `--id`    | The build ID to list or show logs for, as returned from `build start` | `build list`, `build logs` | False |
-| `--module`     | The path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload`, `build` | False |
-| `--name`     | The name of the custom module to be created | `create` | True |
-| `--org-id`      | The organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | True |
-| `--public-namespace`      | The [namespace](/fleet/organizations/#create-a-namespace-for-your-organization) to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | True |
-| `--platform`      | The architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument) | `upload`, `build logs` | True |
-| `--version`      | The version of your module to set for this upload. See [Using the `--version` argument](#using-the---version-argument)  | `upload` | True |
-| `--wait`      | Wait for the build to finish before outputting any logs  | `build logs` | False |
+| `--count`    | Number of cloud builds to list, defaults to displaying all builds | `build list` | Optional |
+| `--force`    | Skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | Optional |
+| `--id`    | The build ID to list or show logs for, as returned from `build start` | `build list`, `build logs` | Optional |
+| `--module`     | The path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload`, `build` | Optional |
+| `--name`     | The name of the custom module to be created | `create` | **Required** |
+| `--org-id`      | The organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | **Required** |
+| `--public-namespace`      | The [namespace](/fleet/organizations/#create-a-namespace-for-your-organization) to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | **Required** |
+| `--platform`      | The architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument) | `upload`, `build logs` | **Required** |
+| `--version`      | The version of your module to set for this upload. See [Using the `--version` argument](#using-the---version-argument)  | `upload` | **Required** |
+| `--wait`      | Wait for the build to finish before outputting any logs  | `build logs` | Optional |
 
 ##### Using the `--org-id` and `--public-namespace` arguments
 
@@ -916,10 +914,10 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 ##### Named arguments
 
 <!-- prettier-ignore -->
-| Argument | Description | Applicable commands | Required |
+| Argument | Description | Applicable commands | Inclusion |
 | ----------- | ----------- | ----------- | ----------- |
-| `--org-id`      | The organization to create an API key for |`api-key` | True |
-| `--name`     | The optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time   |`api-key` | False |
+| `--org-id`      | The organization to create an API key for |`api-key` | **Required** |
+| `--name`     | The optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time   |`api-key` | Optional |
 
 ### `packages`
 
@@ -942,14 +940,14 @@ viam packages export --org-id=<org-id> --name=<package-name> --version=latest --
 ##### Named arguments
 
 <!-- prettier-ignore -->
-| Argument | Description | Applicable commands | Required |
+| Argument | Description | Applicable commands | Inclusion |
 | -------- | ----------- | ------------------- | -------- |
-| `--org-id` | The organization ID of the package | `upload`, `export` | True |
-| `--name` | The name of the package | `upload`, `export` | True |
-| `--version` | The version of the package or `latest` | `upload`, `export` | True |
-| `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | `upload`, `export` | True |
-| `--path` | The output directory for downloaded package | `export` | True |
-| `--destination` | The path to the package for upload | `upload` | True |
+| `--org-id` | The organization ID of the package | `upload`, `export` | **Required** |
+| `--name` | The name of the package | `upload`, `export` | **Required** |
+| `--version` | The version of the package or `latest` | `upload`, `export` | **Required** |
+| `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | `upload`, `export` | **Required** |
+| `--path` | The output directory for downloaded package | `export` | **Required** |
+| `--destination` | The path to the package for upload | `upload` | **Required** |
 
 ### `machines` (alias `robots`)
 
@@ -1016,7 +1014,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 ##### Positional arguments: `part`
 
 <!-- prettier-ignore -->
-| Argument     | Description |
+| Argument    | Description |
 | ----------- | ----------- | ----------- |
 | `status`     | Retrieve machine status for a specified machine part |
 | `run`     | Run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. |
@@ -1027,19 +1025,19 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 ##### Named arguments
 
 <!-- prettier-ignore -->
-| Argument     | Description | Applicable commands | Required |
+| Argument    | Description | Applicable commands | Inclusion |
 | ----------- | ----------- | ----------- | ----------- |
-| `--organization`      | Organization name that the machine belongs to       |`list`, `status`, `logs`, `part`|true |
-| `--location`     | Location name that the machine belongs to    |`list`, `status`, `logs`, `part`|true |
-| `--robot`      | Machine id for which the command is being issued   |`status`, `logs`, `part`|true |
-| `--errors`      | Boolean, return only errors (default: false)   |`logs`|false |
-| `--part`      | Part name for which the command is being issued    |`logs`|false |
-| `--tail`     | Tail (stream) logs, boolean(default false)    |`part logs`|false |
-| `--stream`      | If specified, the interval in which to stream the specified data, for example, 100ms or 1s    |`part run`|false |
-| `--data`      | Command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments))   |`part run`|true |
-| `--robot-id`      | The machine to create an API key for |`api-key` | True |
-| `--name`     | The optional name of the API key    |`api-key` | False |
-| `--org-id`      | The optional organization ID to attach the key to  |`api-key` | False |
+| `--organization` | Organization name that the machine belongs to       | `list`, `status`, `logs`, `part` | **Required** |
+| `--location`     | Location name that the machine belongs to    | `list`, `status`, `logs`, `part` | **Required** |
+| `--robot`      | Machine id for which the command is being issued   | `status`, `logs`, `part` | **Required** |
+| `--errors`      | Boolean, return only errors (default: false)   | `logs` | Optional |
+| `--part`      | Part name for which the command is being issued    | `logs` | Optional |
+| `--tail`     | Tail (stream) logs, boolean(default false)    | `part logs` | Optional |
+| `--stream`   | If specified, the interval in which to stream the specified data, for example, 100ms or 1s | `part run` | Optional |
+| `--data`     | Command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments)) | `part run` | **Required** |
+| `--robot-id` | The machine to create an API key for | `api-key` | **Required** |
+| `--name`     | The optional name of the API key    | `api-key` | Optional |
+| `--org-id`      | The optional organization ID to attach the key to  | `api-key` | Optional |
 
 ##### Using the `--stream` and `--data` arguments
 
