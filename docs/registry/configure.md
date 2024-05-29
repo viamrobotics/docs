@@ -433,9 +433,9 @@ The following properties are available for modules:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-`name` | string | **Required**| Name of the module you are registering. |
-`executable_path` | string | **Required**| The absolute path to the executable on your machine's filesystem. |
-`type` | string | **Required**| Either `registry` or `local`. |
+| `name` | string | **Required**| Name of the module you are registering. |
+| `executable_path` | string | **Required**| The absolute path to the executable on your machine's filesystem. |
+| `type` | string | **Required**| Either `registry` or `local`. |
 
 Edit these properties in your module's JSON configuration:
 

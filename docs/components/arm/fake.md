@@ -27,8 +27,8 @@ Fill in the attributes as applicable to your arm, according to the table below.
 
 {{% alert title="Important" color="note" %}}
 
-Exactly one of these attributes must be supplied for your `fake` arm to work.
-If neither are specified, an error is thrown asking for specification.
+Only one of these attributes can be supplied for your `fake` arm to work.
+If neither are specified, a fake arm model with 1 degree-of-freedom will be used.
 If both attributes are specified, an error is thrown stating "can only populate either ArmModel or ModelPath - not both".
 
 {{% /alert %}}
