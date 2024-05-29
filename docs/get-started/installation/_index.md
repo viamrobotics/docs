@@ -36,6 +36,8 @@ For an overview of the Viam software platform, see [Viam in 3 minutes](/get-star
 - Windows Subsystem for Linux (WSL)
 - macOS
 
+{{< readfile "/static/include/install/windows-support.md" >}}
+
 ## Prepare your board
 
 If you are using one of the following boards, click on the card to follow the guide for that board:
