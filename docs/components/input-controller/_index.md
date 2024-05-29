@@ -840,18 +840,18 @@ As different systems label the actual buttons differently, we use compass direct
   {{% /alert %}}
 
 <!-- prettier-ignore -->
-| Diamond 4-Action Button Pad | Rectangle 4-Action Button Pad | |
-| - | - | - |
+| Diamond 4-Action Button Pad | Rectangle 4-Action Button Pad |
+| - | - |
 | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonNorth`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Bottom</td></tr><tr><td>`ButtonEast`</td><td>Right</td></tr><tr><td>`ButtonWest`</td><td>Left</td></tr> </table> | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonNorth`</td><td>Top-left</td></tr><tr><td>`ButtonSouth`</td><td>Bottom-right</td></tr><tr><td>`ButtonEast`</td><td>Top-right</td></tr><tr><td>`ButtonWest`</td><td>Bottom-left</td></tr> </table> |
 
 <!-- prettier-ignore -->
-| Horizontal 3-Action Button Pad | Vertical 3-Action Button Pad | |
-| - | - | - |
+| Horizontal 3-Action Button Pad | Vertical 3-Action Button Pad |
+| - | - |
 | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonWest`</td><td>Left</td></tr><tr><td>`ButtonSouth`</td><td>Center</td></tr><tr><td>`ButtonEast`</td><td>Right</td></tr> </table> | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonWest`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Center</td></tr><tr><td>`ButtonEast`</td><td>Bottom</td></tr> </table> |
 
 <!-- prettier-ignore -->
-| Horizontal 2-Action Button Pad | Vertical 2-Action Button Pad | |
-| - | - | - |
+| Horizontal 2-Action Button Pad | Vertical 2-Action Button Pad |
+| - | - |
 | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Right</td></tr><tr><td>`ButtonSouth`</td><td>Left</td></tr><tr> </table> | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Bottom</td></tr> </table> |
 
 #### Trigger buttons (bumpers)
@@ -860,7 +860,7 @@ If your input controller is a gamepad with digital trigger buttons, this is what
 
 <!-- prettier-ignore -->
 | 2-Trigger Button Pad | 4-Trigger Button Pad |
-| - | - | - |
+| - | - |
 | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Left</td></tr><tr><td>`ButtonRT`</td><td>Right</td></tr> </table> | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Top-left</td></tr><tr><td>`ButtonRT`</td><td>Top-right</td></tr><tr><td>`ButtonLT2`</td><td>Bottom-left</td></tr><tr><td>`ButtonRT2`</td><td>Bottom-right</td></tr> </table> |
 
 #### Digital buttons for sticks

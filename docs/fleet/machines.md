@@ -78,9 +78,13 @@ If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fra
 
 Once you have configured components and services for your machine, you can visually test and remotely operate them from the **CONTROL** tab in the [Viam app](https://app.viam.com) or the [Viam mobile app](/fleet/#the-viam-mobile-app).
 
-For more information, see [Control machines](/fleet/control/).
-
 {{<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="Using the control tab" max-width="800px">}}
+
+You can also switch between different machine parts by selecting the part from the **Machine part** dropdown menu.
+
+{{< imgproc src="/fleet/app-usage/control-machine-part-dropdown.png" alt="The expanded Machine part dropdown menu with the main part selected on the Control tab." resize="650x" class="aligncenter" >}}
+
+For more information, see [Control machines](/fleet/control/).
 
 ### LOGS
 

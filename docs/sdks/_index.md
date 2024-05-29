@@ -7,9 +7,35 @@ description: "Program and control your machines in the languages you already kno
 no_list: true
 ---
 
-You can write code to control your machines using the following software development kits (SDKs):
+Viam's SDK libraries wrap the Viam's APIs for interacting with a machine's [components](/build/program/apis/#component-apis) and [services](/build/program/apis/#service-apis), as well as for [cloud capabilities](/build/program/apis/#robot-api), such as [data management](/build/program/apis/#data-client-api) and [fleet management](/build/program/apis/#fleet-management-api).
+You can run SDK code from anywhere, it does not necessarily have to be run on the same machine that runs `viam-server`.
 
-{{<sectionlist section="/sdks">}}
+## Backend SDKs
+
+Use the backend SDK to build business logic to control [components](/build/program/apis/#component-apis) and [services](/build/program/apis/#service-apis), as well as manage your [fleet](/build/program/apis/#fleet-management-api) and [data](/build/program/apis/data-client/), and [billing information](/build/program/apis/billing-client/), or [provision](/fleet/provision/#provision-a-new-machine) machines.
+With the backend SDKs you can also create custom {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}.
+
+{{< sectionlist-custom >}}
+{{% sectionlist-custom-item link="/sdks/python/" %}}
+{{% sectionlist-custom-item link="/sdks/go/" %}}
+{{% sectionlist-custom-item link="/sdks/cpp/" %}}
+{{< /sectionlist-custom >}}
+
+## Frontend SDKs
+
+Use the frontend SDK to control your machine's [components](/build/program/apis/#component-apis), as well as manage your [data](/build/program/apis/data-client/) or [provision](/fleet/provision/#provision-a-new-machine) machines.
+
+{{< sectionlist-custom >}}
+{{% sectionlist-custom-item link="/sdks/typescript/" %}}
+{{< /sectionlist-custom >}}
+
+## Mobile SDK
+
+Use the mobile SDK to build iOS and Android apps to control your machine's [components](/build/program/apis/#component-apis), as well as manage your [fleet](/build/program/apis/#fleet-management-api) and [data](/build/program/apis/data-client/), or [provision](/fleet/provision/#provision-a-new-machine) machines.
+
+{{< sectionlist-custom >}}
+{{% sectionlist-custom-item link="/sdks/flutter/" %}}
+{{< /sectionlist-custom >}}
 
 <br>
 

@@ -1,0 +1,14 @@
+{{ with site.GetPage (.Get "link") }}
+
+<li>
+  <a href="{{ .Permalink }}" title="{{.Title}}">
+    <div>
+      {{ if .Params.icon }} {{ partial "imgproc.html" (dict "src" (index
+      .Params.images 0) "resize" "45x45" "alt" (.Params.linkTitle)
+      "declaredimensions" "true" "style" "") }} {{ end }}
+      <p>{{ .LinkTitle }}</p>
+    </div>
+  </a>
+</li>
+
+{{ end }}

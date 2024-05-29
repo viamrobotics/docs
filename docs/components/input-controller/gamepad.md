@@ -55,7 +55,7 @@ The following attributes are available for `gamepad` input controllers:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `dev_file` | string | Optional | If `dev_file` is left blank or not included, `viam-server` will search and use the first gamepad it finds that's connected to the computer controlling your machine. If you want to specify a device, give the absolute path to the input device event file. For example: `/dev/input/event42`. |
-| `auto_reconnect` | boolean | Optional | Applies to both remote (gRPC) and local (bluetooth or direct USB connected) devices. If set to `true`, `viam-server` tries to (re)connect the device automatically. It waits for a device to connect during a machine's start-up. If set to false (default) then start-up fails if a device is not already connected.
+| `auto_reconnect` | boolean | Optional | Applies to both remote (gRPC) and local (bluetooth or direct USB connected) devices. If set to `true`, `viam-server` tries to (re)connect the device automatically. It waits for a device to connect during a machine's start-up. If set to false (default) then start-up fails if a device is not already connected. |
 
 {{< readfile "/static/include/components/test-control/input-controller-control.md" >}}
 

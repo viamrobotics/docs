@@ -23,6 +23,12 @@ For local communication between [parts](/build/configure/parts/#machine-parts) V
 
 {{<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="Using the control tab" max-width="800px">}}
 
+You can also switch between different machine parts and control the selected machine part directly from the **CONTROL** tab.
+
+{{< imgproc src="/fleet/app-usage/control-machine-part-dropdown.png" alt="The expanded Machine part dropdown menu with the main part selected on the Control tab." resize="650x" class="aligncenter" >}}
+
+For more information on configuring and controlling machine parts, see [Machine Architecture](/build/configure/parts/#machine-parts).
+
 ### Components
 
 For more detailed information on how to operate and test your resources, expand the relevant resource below:

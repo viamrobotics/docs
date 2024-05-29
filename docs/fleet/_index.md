@@ -118,3 +118,11 @@ You can find the mobile app on the [App Store](https://apps.apple.com/vn/app/via
 <a href="https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US" target="_blank">
   <img src="https://github.com/viamrobotics/docs/assets/90707162/6ebd6960-08c5-41d4-81f9-42293fbfdfd4" width="200px" alt="google play store icon" class="center-if-small" >
 </a>
+
+## Next steps
+
+Check out the following tutorial for an example of organizing a fleet into locations, configuring multiple machines, and syncing data from all of them:
+
+{{< cards >}}
+{{% card link="/tutorials/control/air-quality-fleet/" %}}
+{{< /cards >}}

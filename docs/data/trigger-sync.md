@@ -218,26 +218,24 @@ On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selectiv
       "type": "data_manager"
     }
   ],
-  "agent_config": {
-    "subsystems": {
-      "viam-server": {
-        "release_channel": "stable",
-        "pin_version": "",
-        "pin_url": "",
-        "disable_subsystem": false
-      },
-      "agent-provisioning": {
-        "release_channel": "stable",
-        "pin_version": "",
-        "pin_url": "",
-        "disable_subsystem": false
-      },
-      "viam-agent": {
-        "release_channel": "stable",
-        "pin_version": "",
-        "pin_url": "",
-        "disable_subsystem": false
-      }
+  "agent": {
+    "viam-server": {
+      "release_channel": "stable",
+      "pin_version": "",
+      "pin_url": "",
+      "disable_subsystem": false
+    },
+    "agent-provisioning": {
+      "release_channel": "stable",
+      "pin_version": "",
+      "pin_url": "",
+      "disable_subsystem": false
+    },
+    "viam-agent": {
+      "release_channel": "stable",
+      "pin_version": "",
+      "pin_url": "",
+      "disable_subsystem": false
     }
   },
   "modules": [

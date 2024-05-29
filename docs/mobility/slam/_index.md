@@ -10,13 +10,20 @@ images: ["/services/icons/slam.svg"]
 no_list: true
 aliases:
   - "/services/slam/"
-# SMEs: Kat, Jeremy
+# SMEs: John N.
 ---
 
 {{% alert title="Stability Notice" color="note" %}}
 The SLAM service is an experimental feature.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
+{{% /alert %}}
+
+{{% alert title="Cloud SLAM temporarily not available in live mode" color="caution" %}}
+
+Running models of the SLAM service in the cloud with live mode is temporarily disabled.
+[Collect a dataset and use offline mode](/mobility/slam/cartographer/#use-previously-captured-data) instead.
+
 {{% /alert %}}
 
 [Simultaneous Localization And Mapping (SLAM)](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping) allows your machine to create a map of its surroundings and find its location within that map.
@@ -97,17 +104,13 @@ pose = await slam.get_position()
 **Returns:**
 
 - [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A `Pose` representing the current position of the specified component.
-- [(string)](https://pkg.go.dev/builtin#string): The `"name"` of the component the SLAM service is configured to source point cloud data from.
-  For example, a [camera](/components/camera/) named `"cam"`.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam).
 
 ```go {class="line-numbers linkable-line-numbers"}
-slam_svc, err := slam.FromRobot(robot, "my_slam_service")
-
 // Get the current position of the specified source component in the SLAM map as a Pose.
-pos, name, err := slam_svc.GetPosition(context.Background())
+pos, err := mySLAMService.Position(context.Background())
 ```
 
 {{% /tab %}}
@@ -143,6 +146,7 @@ pcd_map = await slam_svc.get_point_cloud_map()
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `returnEditedMap` [(bool)](https://pkg.go.dev/builtin#bool): A flag that determines if the method should return the edited version of the point cloud map or the original map. Setting this parameter to `true` triggers a formatted map to be retrieved.
 
 **Returns:**
 
@@ -152,10 +156,8 @@ pcd_map = await slam_svc.get_point_cloud_map()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
-slam_svc, err := slam.FromRobot(robot, "my_slam_service")
-
 // Get the point cloud map in standard PCD format.
-pcd_map, err := slam_svc.GetPointCloudMap(context.Background())
+pcd_map, err := mySLAMService.PointCloudMap(context.Background(), true)
 ```
 
 {{% /tab %}}
@@ -209,10 +211,8 @@ slam_properties = await slam_svc.get_properties()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties).
 
 ```go {class="line-numbers linkable-line-numbers"}
-slam_svc, err := slam.FromRobot(robot, "my_slam_service")
-
 // Get the properties of your current SLAM session
-properties, err := slam_svc.Properties(context.Background())
+properties, err := mySLAMService.Properties(context.Background())
 ```
 
 {{% /tab %}}
@@ -258,10 +258,8 @@ internal_state = await slam.get_internal_state()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
-slam_svc, err := slam.FromRobot(robot, "my_slam_service")
-
 // Get the internal state of the SLAM algorithm required to continue mapping/localization.
-internal_state, err := slam_svc.GetInternalState(context.Background())
+internalState, err := mySLAMService.InternalState(context.Background())
 ```
 
 {{% /tab %}}
@@ -312,9 +310,7 @@ await slam.do_command(my_command)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-slam_svc, err := slam.FromRobot(robot, "my_slam_service")
-
-resp, err := slam_svc.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
+resp, err := mySLAMService.DoCommand(context.Background(), map[string]interface{}{"command": "dosomething", "someparameter": 52})
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
@@ -357,9 +353,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-slam_svc, err := slam.FromRobot(robot, "my_slam_service")
-
-err := slam_svc.Close(ctx)
+err := mySLAMService.Close(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

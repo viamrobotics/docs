@@ -141,6 +141,8 @@ h7, .h7 {
   margin-left: -18px;
   padding-left: 32px;
   height: fit-content;
+  // border can get applied twice - this fixes that.
+  border-left: 2px;
 }
 
 .td-toc nav ul li ul li {

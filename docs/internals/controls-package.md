@@ -33,15 +33,15 @@ By tuning the coefficients on each of these terms, you can adjust how your base 
 The following functions are available for creating and using a control loop:
 
 <!-- prettier-ignore -->
-Method Name | Description
------------ | -----------
-[`SetupPIDControlConfig`](/internals/controls-package/#setuppidcontrolconfig) | Creates a [PIDLoop](/internals/controls-package/#pidloop) object that contains all the necessary attributes to run a control loop based on the specified [Options](/internals/controls-package/#options).
-[`TunePIDLoop`](/internals/controls-package/#tunepidloop) | Automatically tunes the system and logs the calculated PID values for the loop.
-[`StartControlLoop`](/internals/controls-package/#startcontrolloop) | Starts the control loop in a background thread.
-[`CreateConstantBlock`](/internals/controls-package/#createconstantblock) | Creates a control block of type `constant`, all control loops need at least one constant block representing the set point.
-[`UpdateConstantBlock`](/internals/controls-package/#updateconstantblock) | Updates the value of a constant block to the new set point.
-[`CreateTrapzBlock`](/internals/controls-package/#createtrapzblock) | Creates a control block of type `trapezoidalVelocityProfile`. Control loops that control position (for example, control loops for encoded motors), need a trapezoidal velocity profile block.
-[`UpdateTrapzBlock`](/internals/controls-package/#updatetrapzblock) | Updates the attributes of a trapezoidal velocity profile block to the new desired max velocity.
+| Method Name | Description |
+| ----------- | ----------- |
+| [`SetupPIDControlConfig`](/internals/controls-package/#setuppidcontrolconfig) | Creates a [PIDLoop](/internals/controls-package/#pidloop) object that contains all the necessary attributes to run a control loop based on the specified [Options](/internals/controls-package/#options). |
+| [`TunePIDLoop`](/internals/controls-package/#tunepidloop) | Automatically tunes the system and logs the calculated PID values for the loop. |
+| [`StartControlLoop`](/internals/controls-package/#startcontrolloop) | Starts the control loop in a background thread. |
+| [`CreateConstantBlock`](/internals/controls-package/#createconstantblock) | Creates a control block of type `constant`, all control loops need at least one constant block representing the set point. |
+| [`UpdateConstantBlock`](/internals/controls-package/#updateconstantblock) | Updates the value of a constant block to the new set point. |
+| [`CreateTrapzBlock`](/internals/controls-package/#createtrapzblock) | Creates a control block of type `trapezoidalVelocityProfile`. Control loops that control position (for example, control loops for encoded motors), need a trapezoidal velocity profile block. |
+| [`UpdateTrapzBlock`](/internals/controls-package/#updatetrapzblock) | Updates the attributes of a trapezoidal velocity profile block to the new desired max velocity. |
 
 ### SetupPIDControlConfig
 
