@@ -367,16 +367,16 @@ done
 | `--start`      | ISO-8601 timestamp indicating the start of the interval       |`export`, `delete`, `dataset`| Optional |
 | `--end`      | ISO-8601 timestamp indicating the end of the interval       |`export`, `delete`, `dataset`| Optional |
 | `--file-ids` | File-ids to add or remove from a dataset       |`dataset`| **Required** |
-| `--location-id`      | Location id for the file ids being added or removed from the specified dataset (only accepts one location id)       |`dataset`| **Required** |
-| `--location-ids`      | Filter by specified location id (accepts comma-separated list)       |`export`, `delete`| Optional |
+| `--location-id`      | Location ID for the file ids being added or removed from the specified dataset (only accepts one location id)       |`dataset`| **Required** |
+| `--location-ids`      | Filter by specified location ID (accepts comma-separated list)       |`export`, `delete`| Optional |
 | `--method`       | Filter by specified method       |`export`, `delete`| Optional |
 | `--mime-types`      | Filter by specified MIME type (accepts comma-separated list)       |`export`, `delete`|false |
 | `--org-id` | Org ID for the database user being configured (with `database`), or for the file ids being added or removed from the specified dataset (with `dataset`) | `database configure`, `database hostname`, `dataset` | **Required** |
-| `--org-ids`     | Filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`| Optional |
+| `--org-ids`     | Filter by specified organizations ID (accepts comma-separated list)       |`export`, `delete`| Optional |
 | `--parallel`      | Number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|false |
-| `--part-id`      | Filter by specified part id      |`export`, `delete`| Optional |
+| `--part-id`      | Filter by specified part ID      |`export`, `delete`| Optional |
 | `--part-name`     | Filter by specified part name       |`export`, `delete`| Optional |
-| `--robot-id`     | Filter by specified robot id       |`export`, `delete`| Optional |
+| `--robot-id`     | Filter by specified robot ID       |`export`, `delete`| Optional |
 | `--robot-name`      | Filter by specified robot name       |`export`, `delete`| Optional |
 | `--tags`      | Filter by specified tag (accepts comma-separated list)       |`export`, `delete`, `dataset`| Optional |
 | `--password` | Password for the database user being configured | `database configure` | **Required** |
@@ -391,10 +391,10 @@ For example, the following adds three images specified by their file ids to the 
 viam data dataset add ids --dataset-id=abc --location-id=123 --org-id=123 --file-ids=abc,123,def
 ```
 
-To find the dataset id of a given dataset, go to the [**Datasets** subtab](https://app.viam.com/data/datasets) under the **Data** tab on the Viam app and select a dataset.
-The dataset id can be found in the URL of the Viam app window when viewing a given dataset, following the `?id=` portion of the URL, resembling `abcdef1234567890abcdef12`.
+To find the dataset ID of a given dataset, go to the [**Datasets** subtab](https://app.viam.com/data/datasets) under the **Data** tab on the Viam app and select a dataset.
+The dataset ID can be found in the URL of the Viam app window when viewing a given dataset, following the `?id=` portion of the URL, resembling `abcdef1234567890abcdef12`.
 
-To find the file id of a given image, navigate to the [**Data** tab in the Viam app](https://app.viam.com/data/view) and select your image.
+To find the file ID of a given image, navigate to the [**Data** tab in the Viam app](https://app.viam.com/data/view) and select your image.
 Its **File ID** is shown under the **Details** subtab that appears on the right.
 
 You cannot use filter arguments, such as `--start` or `--end` when using `ids`.
@@ -410,8 +410,8 @@ For example, the following adds all images captured between January 1 and Octobe
 viam data dataset add filter --dataset-id=abc --org-ids=123 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
 ```
 
-To find the dataset id of a given dataset, go to the [**Datasets** subtab](https://app.viam.com/data/datasets) under the **Data** tab on the Viam app and select a dataset.
-The dataset id can be found in the URL of the Viam app window when viewing a given dataset, following the `?id=` portion of the URL, resembling `abcdef1234567890abcdef12`.
+To find the dataset ID of a given dataset, go to the [**Datasets** subtab](https://app.viam.com/data/datasets) under the **Data** tab on the Viam app and select a dataset.
+The dataset ID can be found in the URL of the Viam app window when viewing a given dataset, following the `?id=` portion of the URL, resembling `abcdef1234567890abcdef12`.
 
 You can also have the filter parameters generated for you using the **Filters** pane of the **Data** tab.
 Navigate to the [**Data** tab in the Viam app](https://app.viam.com/data/view), make your selections from the search parameters under the **Filters** pane (such as robot name, start and end time, or tags), and click the **Copy export command** button.
@@ -580,13 +580,13 @@ The `--platform` argument accepts one of the following architectures:
 | `any/amd64`    | Any supported OS running the `amd64` architecture. | Suitable for most Docker-based modules on `amd64`. |
 | `any/arm64`    | Any supported OS running the `arm64` (`aarch64`) architecture. | Suitable for most Docker-based modules on `arm64`. |
 | `linux/any`    | Linux machines running any architecture. | Suitable for Python modules that also require Linux OS-level support (such as platform-specific dependencies). |
-| `darwin/any`   | MacOS machines running any architecture. | Suitable for Python modules that also require macOS OS-level support (such as platform-specific dependencies). |
+| `darwin/any`   | macOS machines running any architecture. | Suitable for Python modules that also require macOS OS-level support (such as platform-specific dependencies). |
 | `linux/amd64`  | Linux machines running the Intel `x86_64` architecture. | Suitable for most C++ or Go modules on Linux `amd64`. |
 | `linux/arm64`  | Linux machines running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi. | Suitable for most C++ or Go modules on Linux `arm64`. |
 | `linux/arm32v7`| Linux machines running the `arm32v7` architecture. | Suitable for most C++ or Go modules on Linux `arm32v7`. |
 | `linux/arm32v6`| Linux machines running the `arm32v6` architecture. | Suitable for most C++ or Go modules on `arm32v6`. |
-| `darwin/amd64` | MacOS machines running the Intel `x86_64` architecture. | Suitable for most C++ or Go modules on macOS `amd64`. |
-| `darwin/arm64` | MacOS machines running the `arm64` architecture, such as Apple Silicon. | Suitable for most C++ or Go modules on macOS `arm64`. |
+| `darwin/amd64` | macOS machines running the Intel `x86_64` architecture. | Suitable for most C++ or Go modules on macOS `amd64`. |
+| `darwin/arm64` | macOS machines running the `arm64` architecture, such as Apple Silicon. | Suitable for most C++ or Go modules on macOS `arm64`. |
 
 You can use the `uname -m` command on your computer or board to determine its system architecture.
 
@@ -1029,7 +1029,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 | ----------- | ----------- | ----------- | ----------- |
 | `--organization` | Organization name that the machine belongs to       | `list`, `status`, `logs`, `part` | **Required** |
 | `--location`     | Location name that the machine belongs to    | `list`, `status`, `logs`, `part` | **Required** |
-| `--robot`      | Machine id for which the command is being issued   | `status`, `logs`, `part` | **Required** |
+| `--robot`      | Machine ID for which the command is being issued   | `status`, `logs`, `part` | **Required** |
 | `--errors`      | Boolean, return only errors (default: false)   | `logs` | Optional |
 | `--part`      | Part name for which the command is being issued    | `logs` | Optional |
 | `--tail`     | Tail (stream) logs, boolean(default false)    | `part logs` | Optional |
