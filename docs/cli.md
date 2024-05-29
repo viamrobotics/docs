@@ -259,12 +259,12 @@ viam [global options] command [command options] [arguments...]
 ```
 
 <!-- prettier-ignore -->
-|        parameter     |       description      |
+| Parameter   | Description |
 | ----------- | ----------- |
-| [global options](#global-options)      | _optional_ - list of flags that apply for commands      |
-| [command](#commands)  | _required_ - the specific CLI command to run        |
-| command options   | _required for some commands_  - the operation to run for the specified command.     |
-| arguments   | _required for some commands_ - the arguments for the specified command operation. Some commands take positional arguments, some named arguments.     |
+| [Global options](#global-options)      | _optional_ - list of flags that apply for commands      |
+| [Command](#commands)  | _required_ - the specific CLI command to run        |
+| Command options   | _required for some commands_  - the operation to run for the specified command.     |
+| Arguments   | _required for some commands_ - the arguments for the specified command operation. Some commands take positional arguments, some named arguments.     |
 
 See the list of [commands](#commands) below.
 
@@ -332,54 +332,54 @@ done
 #### Command options
 
 <!-- prettier-ignore -->
-|        command option     |       description      | positional arguments |
-| ----------- | ----------- | ----------- |
-| `export`      | export data in a specified format to a specified location  | - |
-| `database configure`      | create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data/query/#configure-data-query)  | - |
-| `database hostname`      | get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/data/query/#configure-data-query)  | - |
-| `dataset add`      | add a new image to an existing dataset by its file id, or add a group of images by specifying a filter | `filter` |
-| `dataset remove`      | remove an existing image from a dataset by its file id, or remove a group of images by specifying a filter | `filter` |
-| `delete binary`      | delete binary data  | - |
-| `delete tabular`      | delete tabular data  | - |
-| `--help`      | return help      | - |
+| Command option | Description | Positional arguments |
+| -------------- | ----------- | -------------------- |
+| `export`       | Export data in a specified format to a specified location  | - |
+| `database configure`      | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data/query/#configure-data-query)  | - |
+| `database hostname`      | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/data/query/#configure-data-query)  | - |
+| `dataset add`      | Add a new image to an existing dataset by its file id, or add a group of images by specifying a filter | `filter` |
+| `dataset remove`      | Remove an existing image from a dataset by its file id, or remove a group of images by specifying a filter | `filter` |
+| `delete binary`      | Delete binary data  | - |
+| `delete tabular`      | Delete tabular data  | - |
+| `--help`      | Return help      | - |
 
 ##### Positional arguments: `dataset`
 
 <!-- prettier-ignore -->
-| argument | description |
-| ----------- | ----------- | ----------- |
+| Argument | Description |
+| ----------- | ----------- |
 | `filter`     | `add` or `delete` images from a dataset using a filter. See [Using the `filter` argument)](#using-the-filter-argument).|
 | `ids`     | `add` or `delete` images from a dataset by specifying one or more file ids as a comma-separated list. See [Using the `ids` argument)](#using-the-ids-argument).|
-| `--help`      | return help |
+| `--help`      | Return help |
 
 ##### Named arguments
 
 <!-- prettier-ignore -->
-|        argument     |       description | applicable commands | required |
+| Argument     | Description | Applicable commands | Required |
 | ----------- | ----------- | ----------- | ----------- |
-| `--destination`      | output directory for downloaded data       |`export`| true |
-| `--data-type`     |  data type to be downloaded: either binary or tabular   |`export`| true |
-| `--component-name`      | filter by specified component name  |`export`, `delete`| false |
-| `--component-type`     | filter by specified component type       |`export`, `delete`| false |
-| `--component-model`   | filter by specified component model       |`export`, `delete`| false |
-| `--dataset-id`   | dataset to add or remove images from     |`dataset`| true |
-| `--delete-older-than-days` | number of days, 0 means all data will be deleted | `delete` | false |
-| `--start`      | ISO-8601 timestamp indicating the start of the interval       |`export`, `delete`, `dataset`| false |
-| `--end`      | ISO-8601 timestamp indicating the end of the interval       |`export`, `delete`, `dataset`| false |
-| `--file-ids` | file-ids to add or remove from a dataset       |`dataset`| true |
-| `--location-id`      | location id for the file ids being added or removed from the specified dataset (only accepts one location id)       |`dataset`| true |
-| `--location-ids`      | filter by specified location id (accepts comma-separated list)       |`export`, `delete`| false |
-| `--method`       | filter by specified method       |`export`, `delete`| false |
-| `--mime-types`      | filter by specified MIME type (accepts comma-separated list)       |`export`, `delete`|false |
-| `--org-id` | org ID for the database user being configured (with `database`), or for the file ids being added or removed from the specified dataset (with `dataset`) | `database configure`, `database hostname`, `dataset` | true |
-| `--org-ids`     | filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`| false |
-| `--parallel`      | number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|false |
-| `--part-id`      | filter by specified part id      |`export`, `delete`| false |
-| `--part-name`     | filter by specified part name       |`export`, `delete`| false |
-| `--robot-id`     | filter by specified robot id       |`export`, `delete`| false |
-| `--robot-name`      | filter by specified robot name       |`export`, `delete`| false |
-| `--tags`      | filter by specified tag (accepts comma-separated list)       |`export`, `delete`, `dataset`| false |
-| `--password` | password for the database user being configured | `database configure` | true |
+| `--destination`      | Output directory for downloaded data       |`export`| True |
+| `--data-type`     | Data type to be downloaded: either binary or tabular   |`export`| True |
+| `--component-name`      | Filter by specified component name  |`export`, `delete`| False |
+| `--component-type`     | Filter by specified component type       |`export`, `delete`| False |
+| `--component-model`   | Filter by specified component model       |`export`, `delete`| False |
+| `--dataset-id`   | Dataset to add or remove images from     |`dataset`| True |
+| `--delete-older-than-days` | Number of days, 0 means all data will be deleted | `delete` | False |
+| `--start`      | ISO-8601 timestamp indicating the start of the interval       |`export`, `delete`, `dataset`| False |
+| `--end`      | ISO-8601 timestamp indicating the end of the interval       |`export`, `delete`, `dataset`| False |
+| `--file-ids` | File-ids to add or remove from a dataset       |`dataset`| True |
+| `--location-id`      | Location id for the file ids being added or removed from the specified dataset (only accepts one location id)       |`dataset`| True |
+| `--location-ids`      | Filter by specified location id (accepts comma-separated list)       |`export`, `delete`| False |
+| `--method`       | Filter by specified method       |`export`, `delete`| False |
+| `--mime-types`      | Filter by specified MIME type (accepts comma-separated list)       |`export`, `delete`|false |
+| `--org-id` | Org ID for the database user being configured (with `database`), or for the file ids being added or removed from the specified dataset (with `dataset`) | `database configure`, `database hostname`, `dataset` | True |
+| `--org-ids`     | Filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`| False |
+| `--parallel`      | Number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|false |
+| `--part-id`      | Filter by specified part id      |`export`, `delete`| False |
+| `--part-name`     | Filter by specified part name       |`export`, `delete`| False |
+| `--robot-id`     | Filter by specified robot id       |`export`, `delete`| False |
+| `--robot-name`      | Filter by specified robot name       |`export`, `delete`| False |
+| `--tags`      | Filter by specified tag (accepts comma-separated list)       |`export`, `delete`, `dataset`| False |
+| `--password` | Password for the database user being configured | `database configure` | True |
 
 ##### Using the `ids` argument
 
@@ -434,28 +434,28 @@ viam locations list [<organization id>]
 #### Command options
 
 <!-- prettier-ignore -->
-|        command option     |       description      | positional arguments |
+| Command option     | Description      | Positional arguments |
 | ----------- | ----------- | ----------- |
-| `list`      | list all locations (name and id) that the authenticated session has access to, grouped by organization  | **organization id** : return results for specified organization only |
-| `api-key`   |  work with an api-key for your location | `create` |
-| `--help`      | return help      | - |
+| `list`      | List all locations (name and id) that the authenticated session has access to, grouped by organization  | **organization id** : return results for specified organization only |
+| `api-key`   | Work with an api-key for your location | `create` |
+| `--help`      | Return help      | - |
 
 ##### Positional arguments: `api-key`
 
 <!-- prettier-ignore -->
-| argument | description |
-| ----------- | ----------- | ----------- |
-| `create`     | create an API key for a specific location |
-| `--help`      | return help |
+| Argument | Description |
+| ----------- | ----------- |
+| `create`     | Create an API key for a specific location |
+| `--help`      | Return help |
 
 ##### Named arguments
 
 <!-- prettier-ignore -->
-| argument | description | applicable commands | required |
-| ----------- | ----------- | ----------- | ----------- |
-| `--location-id`      | the location to create an API key for |`api-key` | true |
-| `--name`     |  the name of the API key    |`api-key` | false |
-| `--org-id`      |  the organization ID to attach the key to  |`api-key` | false |
+| Argument | Description | Applicable commands | Required |
+| -------- | ----------- | ------------------- | ----------- |
+| `--location-id`      | The location to create an API key for |`api-key` | True |
+| `--name`     | The name of the API key    |`api-key` | False |
+| `--org-id`      | The organization ID to attach the key to  |`api-key` | False |
 
 ### `login`
 
@@ -473,20 +473,20 @@ If you haven't already, you must [create an organization API key](#create-an-org
 #### Command options
 
 <!-- prettier-ignore -->
-|        command option     |       description      | positional arguments |
+| Command option     | Description      | Positional arguments |
 | ----------- | ----------- | ----------- |
-| `api-key`      | authenticate to Viam using an organization, location, or machine part API key      | create |
-| `print-access-token`      | prints the access token used to authenticate the current CLI session      | - |
-| `--help`      | return help      | - |
-| `--disable-browser-open` | authenticate in a headless environment by preventing the opening of the default browser during login (default: false) | - |
+| `api-key`      | Authenticate to Viam using an organization, location, or machine part API key      | Create |
+| `print-access-token`      | Prints the access token used to authenticate the current CLI session      | - |
+| `--help`      | Return help      | - |
+| `--disable-browser-open` | Authenticate in a headless environment by preventing the opening of the default browser during login (default: false) | - |
 
 ##### Named arguments
 
 <!-- prettier-ignore -->
-|        argument     |       description | applicable commands | required |
+| Argument     | Description | Applicable commands | Required |
 | ----------- | ----------- | ----------- | ----------- |
-| `--key-id`    | the `key id` (UUID) of the API key | `api-key` | true |
-| `--key`    | the `key value` of the API key | `api-key` | true |
+| `--key-id`    | The `key id` (UUID) of the API key | `api-key` | True |
+| `--key`    | The `key value` of the API key | `api-key` | True |
 
 ### `logout`
 
@@ -535,32 +535,32 @@ If you update and release your module as part of a continuous integration (CI) w
 #### Command options
 
 <!-- prettier-ignore -->
-|        command option     |       description      | positional arguments |
+| Command option     | Description      | Positional arguments |
 | ----------- | ----------- | ----------- |
-| `create`    | generate new metadata for a custom module on your local filesystem  | - |
-| `update`    | update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file). Note that the `upload` command automatically runs `update` for you; you do not need to explicitly run `update` if you are also running `upload` | - |
-| `upload`    | validate and upload a new or existing custom module on your local filesystem to the Viam registry. See [Upload validation](#upload-validation) for more information | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code |
-| `build start`    | start a module build in a cloud runner using the build step in your [`meta.json` file](#the-metajson-file). See [Using the `build` subcommand](#using-the-build-subcommand) | - |
-| `build local`    | start a module build locally using the build step in your [`meta.json` file](#the-metajson-file). See [Using the `build` subcommand](#using-the-build-subcommand) | - |
-| `build list`    | list the status of your cloud module builds. See [Using the `build` subcommand](#using-the-build-subcommand) | - |
-| `build logs`    | show the logs from a specific cloud module build. See [Using the `build` subcommand](#using-the-build-subcommand) | - |
-| `--help`      | return help      | - |
+| `create`    | Generate new metadata for a custom module on your local filesystem  | - |
+| `update`    | Update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file). Note that the `upload` command automatically runs `update` for you; you do not need to explicitly run `update` if you are also running `upload` | - |
+| `upload`    | Validate and upload a new or existing custom module on your local filesystem to the Viam registry. See [Upload validation](#upload-validation) for more information | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code |
+| `build start`    | Start a module build in a cloud runner using the build step in your [`meta.json` file](#the-metajson-file). See [Using the `build` subcommand](#using-the-build-subcommand) | - |
+| `build local`    | Start a module build locally using the build step in your [`meta.json` file](#the-metajson-file). See [Using the `build` subcommand](#using-the-build-subcommand) | - |
+| `build list`    | List the status of your cloud module builds. See [Using the `build` subcommand](#using-the-build-subcommand) | - |
+| `build logs`    | Show the logs from a specific cloud module build. See [Using the `build` subcommand](#using-the-build-subcommand) | - |
+| `--help`      | Return help      | - |
 
 ##### Named arguments
 
 <!-- prettier-ignore -->
-|        argument     |       description | applicable commands | required |
+| Argument     | Description | Applicable commands | Required |
 | ----------- | ----------- | ----------- | ----------- |
-| `--count`    | number of cloud builds to list, defaults to displaying all builds | `build list` | false |
-| `--force`    | skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | false |
-| `--id`    | the build ID to list or show logs for, as returned from `build start` | `build list`, `build logs` | false |
-| `--module`     |  the path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload`, `build` | false |
-| `--name`     |  the name of the custom module to be created | `create` | true |
-| `--org-id`      | the organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | true |
-| `--public-namespace`      | the [namespace](/fleet/organizations/#create-a-namespace-for-your-organization) to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | true |
-| `--platform`      |  the architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument) | `upload`, `build logs` | true |
-| `--version`      |  the version of your module to set for this upload. See [Using the `--version` argument](#using-the---version-argument)  | `upload` | true |
-| `--wait`      |  wait for the build to finish before outputting any logs  | `build logs` | false |
+| `--count`    | Number of cloud builds to list, defaults to displaying all builds | `build list` | False |
+| `--force`    | Skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | False |
+| `--id`    | The build ID to list or show logs for, as returned from `build start` | `build list`, `build logs` | False |
+| `--module`     | The path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload`, `build` | False |
+| `--name`     | The name of the custom module to be created | `create` | True |
+| `--org-id`      | The organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | True |
+| `--public-namespace`      | The [namespace](/fleet/organizations/#create-a-namespace-for-your-organization) to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | True |
+| `--platform`      | The architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument) | `upload`, `build logs` | True |
+| `--version`      | The version of your module to set for this upload. See [Using the `--version` argument](#using-the---version-argument)  | `upload` | True |
+| `--wait`      | Wait for the build to finish before outputting any logs  | `build logs` | False |
 
 ##### Using the `--org-id` and `--public-namespace` arguments
 
@@ -576,19 +576,19 @@ You may use either argument for the `viam module create` command, but must use `
 The `--platform` argument accepts one of the following architectures:
 
 <!-- prettier-ignore -->
-|  Architecture  | Description | Common use case |
+| Architecture  | Description | Common use case |
 | -------------- | ----------- | --------------- |
 | `any`          | Any supported OS running any supported architecture. | Suitable for most Python modules that do not require OS-level support (such as platform-specific dependencies). |
 | `any/amd64`    | Any supported OS running the `amd64` architecture. | Suitable for most Docker-based modules on `amd64`. |
 | `any/arm64`    | Any supported OS running the `arm64` (`aarch64`) architecture. | Suitable for most Docker-based modules on `arm64`. |
 | `linux/any`    | Linux machines running any architecture. | Suitable for Python modules that also require Linux OS-level support (such as platform-specific dependencies). |
-| `darwin/any`   | macOS machines running any architecture. | Suitable for Python modules that also require macOS OS-level support (such as platform-specific dependencies). |
+| `darwin/any`   | MacOS machines running any architecture. | Suitable for Python modules that also require macOS OS-level support (such as platform-specific dependencies). |
 | `linux/amd64`  | Linux machines running the Intel `x86_64` architecture. | Suitable for most C++ or Go modules on Linux `amd64`. |
 | `linux/arm64`  | Linux machines running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi. | Suitable for most C++ or Go modules on Linux `arm64`. |
 | `linux/arm32v7`| Linux machines running the `arm32v7` architecture. | Suitable for most C++ or Go modules on Linux `arm32v7`. |
 | `linux/arm32v6`| Linux machines running the `arm32v6` architecture. | Suitable for most C++ or Go modules on `arm32v6`. |
-| `darwin/amd64` | macOS machines running the Intel `x86_64` architecture. | Suitable for most C++ or Go modules on macOS `amd64`. |
-| `darwin/arm64` | macOS machines running the `arm64` architecture, such as Apple Silicon. | Suitable for most C++ or Go modules on macOS `arm64`. |
+| `darwin/amd64` | MacOS machines running the Intel `x86_64` architecture. | Suitable for most C++ or Go modules on macOS `amd64`. |
+| `darwin/arm64` | MacOS machines running the `arm64` architecture, such as Apple Silicon. | Suitable for most C++ or Go modules on macOS `arm64`. |
 
 You can use the `uname -m` command on your computer or board to determine its system architecture.
 
@@ -899,27 +899,27 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 #### Command options
 
 <!-- prettier-ignore -->
-|        command option     |       description      | positional arguments |
+| Command option     | Description      | Positional arguments |
 | ----------- | ----------- | ----------- |
-| `list`      | list all organizations (name, id, and [namespace](/fleet/organizations/#create-a-namespace-for-your-organization)) that the authenticated session belongs to    | - |
-| `api-key`      | create a new organization API key    |`create` |
-| `--help`      | return help      | - |
+| `list`      | List all organizations (name, id, and [namespace](/fleet/organizations/#create-a-namespace-for-your-organization)) that the authenticated session belongs to    | - |
+| `api-key`      | Create a new organization API key    |`create` |
+| `--help`      | Return help      | - |
 
 ##### Positional arguments: `api-key`
 
 <!-- prettier-ignore -->
-| argument | description |
+| Argument | Description |
 | ----------- | ----------- | ----------- |
-| `create`     | create an API key for an organization |
-| `--help`      | return help |
+| `create`     | Create an API key for an organization |
+| `--help`      | Return help |
 
 ##### Named arguments
 
 <!-- prettier-ignore -->
-| argument | description | applicable commands | required |
+| Argument | Description | Applicable commands | Required |
 | ----------- | ----------- | ----------- | ----------- |
-| `--org-id`      | the organization to create an API key for |`api-key` | true |
-| `--name`     |  the optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time   |`api-key` | false |
+| `--org-id`      | The organization to create an API key for |`api-key` | True |
+| `--name`     | The optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time   |`api-key` | False |
 
 ### `packages`
 
@@ -934,22 +934,22 @@ viam packages export --org-id=<org-id> --name=<package-name> --version=latest --
 #### Command options
 
 <!-- prettier-ignore -->
-|        command option     |       description      | positional arguments |
+| Command option     | Description      | Positional arguments |
 | ----------- | ----------- | ----------- |
-| `upload`      | upload a package to the Viam cloud  | - |
-| `export`      | download a package from the Viam cloud  | - |
+| `upload`      | Upload a package to the Viam cloud  | - |
+| `export`      | Download a package from the Viam cloud  | - |
 
 ##### Named arguments
 
 <!-- prettier-ignore -->
-| argument | description | applicable commands | required |
+| Argument | Description | Applicable commands | Required |
 | -------- | ----------- | ------------------- | -------- |
-| `--org-id` | the organization ID of the package | `upload`, `export` | true |
-| `--name` |  the name of the package | `upload`, `export` | true |
-| `--version` | the version of the package or `latest` | `upload`, `export` | true |
-| `--type` | the type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | `upload`, `export` | true |
-| `--path` |  the output directory for downloaded package | `export` | true |
-| `--destination` |  the path to the package for upload | `upload` | true |
+| `--org-id` | The organization ID of the package | `upload`, `export` | True |
+| `--name` | The name of the package | `upload`, `export` | True |
+| `--version` | The version of the package or `latest` | `upload`, `export` | True |
+| `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | `upload`, `export` | True |
+| `--path` | The output directory for downloaded package | `export` | True |
+| `--destination` | The path to the package for upload | `upload` | True |
 
 ### `machines` (alias `robots`)
 
@@ -996,50 +996,50 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 #### Command options
 
 <!-- prettier-ignore -->
-|        command option     |       description      | positional arguments |
+| Command option     | Description      | Positional arguments |
 | ----------- | ----------- | ----------- |
-| `list`      | list all machines that the authenticated session has access to, filtered by organization and location.  | - |
-| `api-key`   |  work with an api-key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
-| `status`      | retrieve machine status for a specified machine  | - |
-| `logs`      | retrieve logs for a specified machine | - |
-| `part`      | manage a specified machine part  | `status`, `run`, `logs`, `shell` (see [positional arguments: part](#positional-arguments-part)) |
-| `--help`      | return help      | - |
+| `list`      | List all machines that the authenticated session has access to, filtered by organization and location.  | - |
+| `api-key`   | Work with an api-key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
+| `status`      | Retrieve machine status for a specified machine  | - |
+| `logs`      | Retrieve logs for a specified machine | - |
+| `part`      | Manage a specified machine part  | `status`, `run`, `logs`, `shell` (see [positional arguments: part](#positional-arguments-part)) |
+| `--help`      | Return help      | - |
 
 ##### Positional arguments: `api-key`
 
 <!-- prettier-ignore -->
-| argument | description |
+| Argument | Description |
 | ----------- | ----------- | ----------- |
-| `create`     | create an API key for a specific machine |
-| `--help`      | return help |
+| `create`     | Create an API key for a specific machine |
+| `--help`      | Return help |
 
 ##### Positional arguments: `part`
 
 <!-- prettier-ignore -->
-|        argument     |       description |
+| Argument     | Description |
 | ----------- | ----------- | ----------- |
-| `status`     | retrieve machine status for a specified machine part |
-| `run`     |  run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. |
-| `logs`     |  get logs for the specified machine part |
-| `shell`     |  access a machine part securely using a secure shell. This feature must be enabled. |
-| `--help`      | return help |
+| `status`     | Retrieve machine status for a specified machine part |
+| `run`     | Run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. |
+| `logs`     | Get logs for the specified machine part |
+| `shell`     | Access a machine part securely using a secure shell. This feature must be enabled. |
+| `--help`      | Return help |
 
 ##### Named arguments
 
 <!-- prettier-ignore -->
-|        argument     |       description | applicable commands | required |
+| Argument     | Description | Applicable commands | Required |
 | ----------- | ----------- | ----------- | ----------- |
-| `--organization`      | organization name that the machine belongs to       |`list`, `status`, `logs`, `part`|true |
-| `--location`     |  location name that the machine belongs to    |`list`, `status`, `logs`, `part`|true |
-| `--robot`      |  machine id for which the command is being issued   |`status`, `logs`, `part`|true |
-| `--errors`      |  boolean, return only errors (default: false)   |`logs`|false |
-| `--part`      |  part name for which the command is being issued    |`logs`|false |
-| `--tail`     |  tail (stream) logs, boolean(default false)    |`part logs`|false |
-| `--stream`      |  if specified, the interval in which to stream the specified data, for example, 100ms or 1s    |`part run`|false |
-| `--data`      |  command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments))   |`part run`|true |
-| `--robot-id`      | the machine to create an API key for |`api-key` | true |
-| `--name`     |  the optional name of the API key    |`api-key` | false |
-| `--org-id`      |  the optional organization ID to attach the key to  |`api-key` | false |
+| `--organization`      | Organization name that the machine belongs to       |`list`, `status`, `logs`, `part`|true |
+| `--location`     | Location name that the machine belongs to    |`list`, `status`, `logs`, `part`|true |
+| `--robot`      | Machine id for which the command is being issued   |`status`, `logs`, `part`|true |
+| `--errors`      | Boolean, return only errors (default: false)   |`logs`|false |
+| `--part`      | Part name for which the command is being issued    |`logs`|false |
+| `--tail`     | Tail (stream) logs, boolean(default false)    |`part logs`|false |
+| `--stream`      | If specified, the interval in which to stream the specified data, for example, 100ms or 1s    |`part run`|false |
+| `--data`      | Command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments))   |`part run`|true |
+| `--robot-id`      | The machine to create an API key for |`api-key` | True |
+| `--name`     | The optional name of the API key    |`api-key` | False |
+| `--org-id`      | The optional organization ID to attach the key to  |`api-key` | False |
 
 ##### Using the `--stream` and `--data` arguments
 
@@ -1089,6 +1089,6 @@ viam whoami
 You can pass global options after the `viam` CLI keyword with any command.
 
 <!-- prettier-ignore -->
-|        global option     |       description |
+| Global option     | Description |
 | ----------- | ----------- |
-| `--debug` | enable debug logging (default: false) |
+| `--debug` | Enable debug logging (default: false) |
