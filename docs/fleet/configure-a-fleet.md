@@ -33,12 +33,6 @@ You must be an [organization owner](/fleet/rbac/#permissions) in order to create
 A fragment can define one, several, or all resources on a machine.
 You can add multiple fragments to a single machine, and you can add additional resources to a machine that has already been configured with a fragment.
 
-{{% alert title="Support Notice" color="note" %}}
-
-While you can [use the Viam Agent to deploy a fragment](/fleet/provision/#use-a-provisioning-configuration-file) to your machine or fleet, you cannot configure the Viam Agent itself using fragments.
-
-{{% /alert %}}
-
 ## Create a fragment
 
 Before you create a fragment, you'll need a JSON configuration file.

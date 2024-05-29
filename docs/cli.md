@@ -332,11 +332,11 @@ done
 #### Command options
 
 <!-- prettier-ignore -->
-|        command option     |       description      | positional arguments
+|        command option     |       description      | positional arguments |
 | ----------- | ----------- | ----------- |
 | `export`      | export data in a specified format to a specified location  | - |
 | `database configure`      | create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data/query/#configure-data-query)  | - |
-| `database hostname`      | get the MongoDB Atlas Data Federation instance hostname and database name. See [Configure data query](/data/query/#configure-data-query)  | - |
+| `database hostname`      | get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/data/query/#configure-data-query)  | - |
 | `dataset add`      | add a new image to an existing dataset by its file id, or add a group of images by specifying a filter | `filter` |
 | `dataset remove`      | remove an existing image from a dataset by its file id, or remove a group of images by specifying a filter | `filter` |
 | `delete binary`      | delete binary data  | - |
@@ -355,7 +355,7 @@ done
 ##### Named arguments
 
 <!-- prettier-ignore -->
-|        argument     |       description | applicable commands | required
+|        argument     |       description | applicable commands | required |
 | ----------- | ----------- | ----------- | ----------- |
 | `--destination`      | output directory for downloaded data       |`export`| true |
 | `--data-type`     |  data type to be downloaded: either binary or tabular   |`export`| true |
@@ -434,7 +434,7 @@ viam locations list [<organization id>]
 #### Command options
 
 <!-- prettier-ignore -->
-|        command option     |       description      | positional arguments
+|        command option     |       description      | positional arguments |
 | ----------- | ----------- | ----------- |
 | `list`      | list all locations (name and id) that the authenticated session has access to, grouped by organization  | **organization id** : return results for specified organization only |
 | `api-key`   |  work with an api-key for your location | `create` |
@@ -473,7 +473,7 @@ If you haven't already, you must [create an organization API key](#create-an-org
 #### Command options
 
 <!-- prettier-ignore -->
-|        command option     |       description      | positional arguments
+|        command option     |       description      | positional arguments |
 | ----------- | ----------- | ----------- |
 | `api-key`      | authenticate to Viam using an organization, location, or machine part API key      | create |
 | `print-access-token`      | prints the access token used to authenticate the current CLI session      | - |
@@ -483,7 +483,7 @@ If you haven't already, you must [create an organization API key](#create-an-org
 ##### Named arguments
 
 <!-- prettier-ignore -->
-|        argument     |       description | applicable commands | required
+|        argument     |       description | applicable commands | required |
 | ----------- | ----------- | ----------- | ----------- |
 | `--key-id`    | the `key id` (UUID) of the API key | `api-key` | true |
 | `--key`    | the `key value` of the API key | `api-key` | true |
@@ -535,7 +535,7 @@ If you update and release your module as part of a continuous integration (CI) w
 #### Command options
 
 <!-- prettier-ignore -->
-|        command option     |       description      | positional arguments
+|        command option     |       description      | positional arguments |
 | ----------- | ----------- | ----------- |
 | `create`    | generate new metadata for a custom module on your local filesystem  | - |
 | `update`    | update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file). Note that the `upload` command automatically runs `update` for you; you do not need to explicitly run `update` if you are also running `upload` | - |
@@ -549,7 +549,7 @@ If you update and release your module as part of a continuous integration (CI) w
 ##### Named arguments
 
 <!-- prettier-ignore -->
-|        argument     |       description | applicable commands | required
+|        argument     |       description | applicable commands | required |
 | ----------- | ----------- | ----------- | ----------- |
 | `--count`    | number of cloud builds to list, defaults to displaying all builds | `build list` | false |
 | `--force`    | skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | false |
@@ -684,7 +684,7 @@ For example, the following represents the configuration of an example `my-module
 {
   "module_id": "acme:my-module",
   "visibility": "public",
-  "url": "https://github.com/acme-co-example/my-module",
+  "url": "https://github.com/<my-repo-name>/my-module",
   "description": "An example custom module.",
   "models": [
     {
@@ -852,7 +852,7 @@ For example, the following extends the `my-module` <file>meta.json</file> file f
 {
   "module_id": "acme:my-module",
   "visibility": "public",
-  "url": "https://github.com/acme-co-example/my-module",
+  "url": "https://github.com/<my-repo-name>/my-module",
   "description": "An example custom module.",
   "models": [
     {
@@ -899,7 +899,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 #### Command options
 
 <!-- prettier-ignore -->
-|        command option     |       description      | positional arguments
+|        command option     |       description      | positional arguments |
 | ----------- | ----------- | ----------- |
 | `list`      | list all organizations (name, id, and [namespace](/fleet/organizations/#create-a-namespace-for-your-organization)) that the authenticated session belongs to    | - |
 | `api-key`      | create a new organization API key    |`create` |
@@ -920,6 +920,36 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 | ----------- | ----------- | ----------- | ----------- |
 | `--org-id`      | the organization to create an API key for |`api-key` | true |
 | `--name`     |  the optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time   |`api-key` | false |
+
+### `packages`
+
+The `packages` command allows you to upload packages to the Viam cloud or export packages from the Viam cloud.
+
+```sh {class="command-line" data-prompt="$"}
+viam packages upload --org-id=<org-id> --name=<package-name> --version=latest --type=ml_model --path=.
+
+viam packages export --org-id=<org-id> --name=<package-name> --version=latest --type=ml_model --destination=.
+```
+
+#### Command options
+
+<!-- prettier-ignore -->
+|        command option     |       description      | positional arguments |
+| ----------- | ----------- | ----------- |
+| `upload`      | upload a package to the Viam cloud  | - |
+| `export`      | download a package from the Viam cloud  | - |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| argument | description | applicable commands | required |
+| -------- | ----------- | ------------------- | -------- |
+| `--org-id` | the organization ID of the package | `upload`, `export` | true |
+| `--name` |  the name of the package | `upload`, `export` | true |
+| `--version` | the version of the package or `latest` | `upload`, `export` | true |
+| `--type` | the type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | `upload`, `export` | true |
+| `--path` |  the output directory for downloaded package | `export` | true |
+| `--destination` |  the path to the package for upload | `upload` | true |
 
 ### `machines` (alias `robots`)
 
@@ -966,7 +996,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 #### Command options
 
 <!-- prettier-ignore -->
-|        command option     |       description      | positional arguments
+|        command option     |       description      | positional arguments |
 | ----------- | ----------- | ----------- |
 | `list`      | list all machines that the authenticated session has access to, filtered by organization and location.  | - |
 | `api-key`   |  work with an api-key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
@@ -997,7 +1027,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 ##### Named arguments
 
 <!-- prettier-ignore -->
-|        argument     |       description | applicable commands | required
+|        argument     |       description | applicable commands | required |
 | ----------- | ----------- | ----------- | ----------- |
 | `--organization`      | organization name that the machine belongs to       |`list`, `status`, `logs`, `part`|true |
 | `--location`     |  location name that the machine belongs to    |`list`, `status`, `logs`, `part`|true |

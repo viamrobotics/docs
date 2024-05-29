@@ -153,7 +153,7 @@ Permissions for managing org settings and user roles are as follows:
 | Leave the org                                         | **Yes**   | **Yes**      | **Yes**        | **Yes**           | **Yes**       | **Yes**          |
 | See their own role                                    | **Yes**   | **Yes**      | **Yes**        | **Yes**           | **Yes**       | **Yes**          |
 | See other peoples' roles                              | **Yes**   | **Yes**      | **Yes\***      | **Yes\***         | **Yes\***     | **Yes\***        |
-| See all org members (including email and date joined) | **Yes**   | **Yes**      |
+| See all org members (including email and date joined) | **Yes**   | **Yes**      | No             | No                | No            | No               |
 | Invite, resend invite, and revoke invite              | **Yes**   | No           | **Yes\***      | No                | **Yes\***     | No               |
 | Change someone else's role                            | **Yes**   | No           | **Yes\***      | No                | **Yes\***     | No               |
 | Create a new organization                             | **Yes**   | **Yes**      | **Yes**        | **Yes**           | **Yes**       | **Yes**          |

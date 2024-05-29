@@ -1168,15 +1168,13 @@ _Add troubleshooting notes here._
 
 This module implements the [`rdk:component:base` API](/components/base/#api) in an `agilex` model for the [AgileX LIMO](https://global.agilex.ai/education/4) base to be used with [`viam-server`](/). This driver supports differential, ackermann, and omni directional steering modes over the serial port.
 
-> [!NOTE]
-> For more information, see [Modular Resources](/registry/#modular-resources).
-
 ## Configure your `agilex-limo` base
 
 > [!NOTE]
 > Before configuring your base, you must [create a machine](/fleet/machines/#add-a-new-machine).
 
-Navigate to the **CONFIGURE** tab of your machine’s page in [the Viam app](https://app.viam.com/). Click the **+** icon next to your machine part in the left-hand menu and select **Component**. Select the `base` type, then search for and select the `agilex-limo` model. Click **Add module**, then enter a name or use the suggested name for your base and click **Create**.
+Navigate to the **CONFIGURE** tab of your machine’s page in [the Viam app](https://app.viam.com/).
+[Add `base` / `agilex-limo` to your machine](https://docs.viam.com/build/configure/#components).
 
 On the new component panel, copy and paste the following attribute template into your base’s attributes field:
 
