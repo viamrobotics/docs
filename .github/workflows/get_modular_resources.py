@@ -57,7 +57,7 @@ async def main():
         json_m)
                 print(insert_resp)
 
-    # Get builtin resources from typesense.json
+    # Get built-in resources from typesense.json
     with open('typesense.json') as f:
         components = json.load(f)
         for c in components:
