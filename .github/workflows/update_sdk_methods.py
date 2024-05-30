@@ -79,30 +79,6 @@ else:
 ## Build path to sdk_protos_map.csv file that contains proto-to-methods mapping, used in write_markdown():
 proto_map_file = os.path.join(gitroot, '.github/workflows/sdk_protos_map.csv')
 
-## Check to see if we have a locally-staged version of the Go SDK Docs (RDK repo). If so,
-## scrape our code samples (and only code samples!) from that URL instead. This check just
-## establishes whether the URL is up or not; if detected as up here, it is scraped in parse().
-## TODO: Consider if we need to consider other ports besides '8080', i.e. if multiple stage attempts,
-##   or if port was already in use by another service when pkgsite command was issues
-##   (8080 a very common web services default port)
-## NOTE: To stage the Go SDK docs (RDK repo):
-##   - Clone https://github.com/viamrobotics/rdk
-##   - Make your changes (add code samples as needed)
-##   - Run, from within the repo: go install golang.org/x/pkgsite/cmd/pkgsite@latest; pkgsite -open
-
-is_go_sdk_staging_available = False
-
-## Check to see if pkgsite (Go SDK docs local builder process) is running, and get its PID if so:
-process_result = subprocess.run(["ps -ef | grep pkgsite | grep -v grep | awk {'print $2'}"], shell=True, text = True, capture_output=True)
-pkgsite_pid = process_result.stdout.rstrip()
-
-if pkgsite_pid != '':
-    process_result = subprocess.run(["lsof -Pp " + pkgsite_pid + " | grep LISTEN | awk {'print $9'} | sed 's%.*:%%g'"], shell=True, text = True, capture_output=True)
-    pkgsite_port = process_result.stdout
-    is_go_sdk_staging_available = True
-    if args.verbose:
-        print('DEBUG: Detected local staged Go SDK docs URL, using that for Go code samples.')
-
 ## Array mapping language to its root URL:
 sdk_url_mapping = {
     "go": "https://pkg.go.dev",
@@ -424,6 +400,53 @@ code_fence_fmt = {
     'flutter': 'dart'
 }
 
+## Check to see if we have a locally-staged version of any of the supported SDK docs sites.
+## If any are detected here, they will be used for all content in parse(), and the live
+## version for that SDK docs site will not be scraped at all!
+
+python_staging_url = ''
+go_staging_url = ''
+flutter_staging_url = ''
+
+## Check for GO SDK docs staging on local workstation:
+go_process_pid = ''
+go_process_pid = subprocess.run(["ps -ef | grep pkgsite | grep -v grep | awk {'print $2'}"], shell=True, text=True, capture_output=True).stdout.rstrip()
+
+## If we found a staged local instance of the GO SDK docs, determine which port it is using, and build the staging URL to scrape against:
+if go_process_pid != '':
+    go_process_port = subprocess.run(["lsof -Pp " + go_process_pid + " | grep LISTEN | awk {'print $9'} | sed 's%.*:%%g'"], shell=True, text = True, capture_output=True).stdout.rstrip()
+    go_staging_url = 'http://localhost:' + go_process_port
+    if args.verbose:
+        print('DEBUG: Detected local staged Go SDK docs URL: ' + go_staging_url + '/go.viam.com/rdk')
+        print('       Using this URL for all Go content (ignoring live version).')
+
+## Check for Python and Flutter SDK docs staging on local workstation.
+## Both use http.server with a user-selected port. This command fetches all possible matches:
+http_server_process_pids = subprocess.run(["ps -ef | grep http.server | grep -v grep | awk '{print $2}'"], shell=True, text=True, capture_output=True).stdout.rstrip().split('\n')
+
+## For each http.server processes detected, make educated guesses about which is which:
+for pid in http_server_process_pids:
+    http_server_pwd_result = subprocess.run(["lsof -Pp " + pid + " | grep cwd | awk {'print $9'}"], shell=True, text = True, capture_output=True).stdout.rstrip()
+    
+    ## Quality guess: Python build process always builds to this directory; safe to assume:
+    if 'docs/_build/html' in http_server_pwd_result:
+        python_process_port = subprocess.run(["lsof -Pp " + pid + " | grep LISTEN | awk {'print $9'} | sed 's%.*:%%g'"], shell=True, text = True, capture_output=True).stdout.rstrip()
+        python_staging_url = 'http://localhost:' + python_process_port
+        if args.verbose:
+            print('DEBUG: Detected local staged Python SDK docs URL: ' + python_staging_url)
+            print('       Using this URL for all Python content (ignoring live version).')
+
+    ## Mediocre guess: Flutter build process likely to have string 'flutter' in cwd, either 'viam-flutter-sdk' as cloned directly, or 'flutter' as renamed by operator.
+    ## TODO: If operators run into instances where this script misses a valid Flutter staging URL because the path to that staged HTML artifacts dir has been
+    ## renamed in a fashion that does not include the string 'flutter', then change this to just always pick up any instances of http.server that aren't already matched to 
+    ## Flutter, above. This would mean that operators cannot run an unrelated http.server instance on this workstation, which they currently can do with present config.
+    if 'flutter' in http_server_pwd_result:
+        flutter_process_port = subprocess.run(["lsof -Pp " + pid + " | grep LISTEN | awk {'print $9'} | sed 's%.*:%%g'"], shell=True, text = True, capture_output=True).stdout.rstrip()
+        flutter_staging_url = 'http://localhost:' + flutter_process_port + '/doc/api'
+        if args.verbose:
+            print('DEBUG: Detected local staged Flutter SDK docs URL: ' + flutter_staging_url)
+            print('       Using this URL for all Flutter content (ignoring live version).')
+
 ## Fetch canonical Proto method names.
 ## Required by Flutter parsing, and for generating the initial mapping file if -m was passed:
 def get_proto_apis():
@@ -552,21 +575,32 @@ def parse(type, names):
     ## Iterate through each sdk (like 'python') in sdks array:
     for sdk in sdks:
 
+        ## Determine SDK URL based on resource type:
+        sdk_url = sdk_url_mapping[sdk]
+        scrape_url = sdk_url
+
+        print('SDK URL: ' + sdk_url)
+
         ## Build empty dict to house methods:
         if sdk == "go":
             go_methods = {}
             go_methods[type] = {}
+            if go_staging_url != '':
+                scrape_url = go_staging_url
         elif sdk == "python":
             python_methods = {}
             python_methods[type] = {}
+            if python_staging_url != '':
+                scrape_url = python_staging_url
         elif sdk == "flutter":
             flutter_methods = {}
             flutter_methods[type] = {}
+            if flutter_staging_url != '':
+                scrape_url = flutter_staging_url
         else:
             print("unsupported language!")
 
-        ## Determine SDK URL based on resource type:
-        sdk_url = sdk_url_mapping[sdk]
+        print('SCRAPE URL: ' + scrape_url)
 
         ## Iterate through each resource (like 'arm') in type (like 'components') array:
         for resource in names:
@@ -574,13 +608,13 @@ def parse(type, names):
             ## Determine URL form for Go depending on type (like 'component'):
             if sdk == "go":
                 if type in ("component", "service") and resource in go_resource_overrides:
-                    url = f"{sdk_url}/go.viam.com/rdk/{type}s/{go_resource_overrides[resource]}"
+                    url = f"{scrape_url}/go.viam.com/rdk/{type}s/{go_resource_overrides[resource]}"
                 elif type in ("component", "service"):
-                    url = f"{sdk_url}/go.viam.com/rdk/{type}s/{resource}"
+                    url = f"{scrape_url}/go.viam.com/rdk/{type}s/{resource}"
                 elif type == "robot" and resource in go_resource_overrides:
-                    url = f"{sdk_url}/go.viam.com/rdk/{type}/{go_resource_overrides[resource]}"
+                    url = f"{scrape_url}/go.viam.com/rdk/{type}/{go_resource_overrides[resource]}"
                 elif type == "robot":
-                    url = f"{sdk_url}/go.viam.com/rdk/{type}"
+                    url = f"{scrape_url}/go.viam.com/rdk/{type}"
                 elif type == "app":
                     pass
                 go_methods[type][resource] = {}
@@ -588,15 +622,15 @@ def parse(type, names):
             ## Determine URL form for Python depending on type (like 'component'):
             elif sdk == "python":
                 if type in ("component", "service") and resource in python_resource_overrides:
-                    url = f"{sdk_url}/autoapi/viam/{type}s/{python_resource_overrides[resource]}/client/index.html"
+                    url = f"{scrape_url}/autoapi/viam/{type}s/{python_resource_overrides[resource]}/client/index.html"
                 elif type in ("component", "service"):
-                    url = f"{sdk_url}/autoapi/viam/{type}s/{resource}/client/index.html"
+                    url = f"{scrape_url}/autoapi/viam/{type}s/{resource}/client/index.html"
                 elif type == "app" and resource in python_resource_overrides:
-                    url = f"{sdk_url}/autoapi/viam/{type}/{python_resource_overrides[resource]}/index.html"
+                    url = f"{scrape_url}/autoapi/viam/{type}/{python_resource_overrides[resource]}/index.html"
                 elif type == "app":
-                    url = f"{sdk_url}/autoapi/viam/{type}/{resource}/index.html"
+                    url = f"{scrape_url}/autoapi/viam/{type}/{resource}/index.html"
                 else: # robot
-                    url = f"{sdk_url}/autoapi/viam/{type}/client/index.html"
+                    url = f"{scrape_url}/autoapi/viam/{type}/client/index.html"
                 python_methods[type][resource] = {}
 
             ## Determine URL form for Flutter depending on type (like 'component').
@@ -604,9 +638,9 @@ def parse(type, names):
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
             elif sdk == "flutter" and resource != 'base_remote_control':
                 if resource in flutter_resource_overrides:
-                    url = f"{sdk_url}/viam_protos.{type}.{flutter_resource_overrides[resource]}/{proto_map[resource]['name']}-class.html"
+                    url = f"{scrape_url}/viam_protos.{type}.{flutter_resource_overrides[resource]}/{proto_map[resource]['name']}-class.html"
                 else:
-                    url = f"{sdk_url}/viam_protos.{type}.{resource}/{proto_map[resource]['name']}-class.html"
+                    url = f"{scrape_url}/viam_protos.{type}.{resource}/{proto_map[resource]['name']}-class.html"
                 flutter_methods[type][resource] = {}
             ## If an invalid language was provided:
             else:
@@ -692,23 +726,9 @@ def parse(type, names):
                                 this_method_dict["method_link"] = url + '#' + interface_name
 
                                 ## Check for code sample for this method.
-                                ## If we detected that a local instance of the Go SDK docs is available, use that.
-                                ## Otherwise, use the existing scraped 'soup' object from the live Go SDK docs instead.
-                                if is_go_sdk_staging_available:
-
-                                    staging_url = regex.sub('https://pkg.go.dev', 'http://localhost:8080', url)
-                                    staging_soup = make_soup(staging_url)
-
-                                    ## Get a raw dump of all go methods by interface for each resource:
-                                    go_code_samples_raw = staging_soup.find_all(
-                                        lambda code_sample_tag: code_sample_tag.name == 'p'
-                                        and method_name + " example:" in code_sample_tag.text)
-                                else:
-
-                                    ## Get a raw dump of all go methods by interface for each resource:
-                                    go_code_samples_raw = soup.find_all(
-                                        lambda code_sample_tag: code_sample_tag.name == 'p'
-                                        and method_name + " example:" in code_sample_tag.text)
+                                go_code_samples_raw = soup.find_all(
+                                    lambda code_sample_tag: code_sample_tag.name == 'p'
+                                    and method_name + " example:" in code_sample_tag.text)
 
                                 ## Determine if a code sample is provided for this method:
                                 if len(go_code_samples_raw) == 1:
@@ -1134,7 +1154,7 @@ def parse(type, names):
 
                         ## Flutter SDK puts all parameter detail on a separate params page that we must additionally make_soup on.
                         ## Fetch target URL and make_soup of matching parameter tags:
-                        parameters_link = tag.find("span", class_="type-annotation").a['href'].replace("..", sdk_url)
+                        parameters_link = tag.find("span", class_="type-annotation").a['href'].replace("..", scrape_url)
                         parameters_soup_raw = make_soup(parameters_link)
                         parameters_soup = parameters_soup_raw.find_all(
                             lambda tag: tag.name == 'dt'
