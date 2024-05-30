@@ -402,8 +402,8 @@ code_fence_fmt = {
 
 ## Check to see if we have a locally-staged version of any of the supported SDK docs sites.
 ## If any are detected here, they will be used for all content in parse(), and the live
-## version for that SDK docs site will not be scraped at all!
-
+## version for that SDK docs site will not be scraped at all! First, set empty staging URLs
+## to allow us to later action on whether they are empty or not:
 python_staging_url = ''
 go_staging_url = ''
 flutter_staging_url = ''
