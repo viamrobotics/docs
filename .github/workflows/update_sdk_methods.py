@@ -409,7 +409,6 @@ go_staging_url = ''
 flutter_staging_url = ''
 
 ## Check for GO SDK docs staging on local workstation:
-go_process_pid = ''
 go_process_pid = subprocess.run(["ps -ef | grep pkgsite | grep -v grep | awk {'print $2'}"], shell=True, text=True, capture_output=True).stdout.rstrip()
 
 ## If we found a staged local instance of the GO SDK docs, determine which port it is using, and build the staging URL to scrape against:
@@ -424,7 +423,7 @@ if go_process_pid != '':
 ## Both use http.server with a user-selected port. This command fetches all possible matches:
 http_server_process_pids = subprocess.run(["ps -ef | grep http.server | grep -v grep | awk '{print $2}'"], shell=True, text=True, capture_output=True).stdout.rstrip().split('\n')
 
-## For each http.server processes detected, make educated guesses about which is which:
+## For each http.server processes detected, make educated guesses about which is which, determine the port used, and build the staging URL to scrape against:
 for pid in http_server_process_pids:
     http_server_pwd_result = subprocess.run(["lsof -Pp " + pid + " | grep cwd | awk {'print $9'}"], shell=True, text = True, capture_output=True).stdout.rstrip()
     
@@ -579,7 +578,8 @@ def parse(type, names):
         sdk_url = sdk_url_mapping[sdk]
         scrape_url = sdk_url
 
-        ## Build empty dict to house methods:
+        ## Build empty dict to house methods, and update scrape_url
+        ## with staging link if we detected one earlier:
         if sdk == "go":
             go_methods = {}
             go_methods[type] = {}
