@@ -579,8 +579,6 @@ def parse(type, names):
         sdk_url = sdk_url_mapping[sdk]
         scrape_url = sdk_url
 
-        print('SDK URL: ' + sdk_url)
-
         ## Build empty dict to house methods:
         if sdk == "go":
             go_methods = {}
@@ -599,8 +597,6 @@ def parse(type, names):
                 scrape_url = flutter_staging_url
         else:
             print("unsupported language!")
-
-        print('SCRAPE URL: ' + scrape_url)
 
         ## Iterate through each resource (like 'arm') in type (like 'components') array:
         for resource in names:
@@ -645,7 +641,6 @@ def parse(type, names):
             ## If an invalid language was provided:
             else:
                 pass
-                #print("unsupported language!")
 
             ## Scrape each parent method tag and all contained child tags for Go by resource:
             if sdk == "go" and type != "app":
@@ -664,7 +659,6 @@ def parse(type, names):
 
                     ## Determine the interface name, which we need for the method_link:
                     interface_name = resource_interface.find('pre').text.splitlines()[0].removeprefix('type ').removesuffix(' interface {')
-                    #print(interface_name)
 
                     ## Exclude unwanted Go interfaces:
                     check_interface_name = 'interface.' + interface_name
