@@ -1396,7 +1396,7 @@ def write_markdown(type, names, methods):
 
                     ## Allow setting protos with 0 sdk method maps, to allow us to disable writing MD
                     ## for specific protos as needed, if needed:
-                    if py_method_name or go_method_name or flutter_method_name:
+                    if (py_method_name and "python" in sdks) or (go_method_name and "go" in sdks) or (flutter_method_name and "flutter" in sdks):
 
                         ## We have at least one implemented method for this proto, so begin writing output markdown for this resource.
                         ## Write proto as H3, with leading newlines if appending to ongoing {resource}.md file:
@@ -1474,7 +1474,7 @@ def write_markdown(type, names, methods):
                         ## Begin the per-language markdown writing to output_file with the opening tabset declaration:
                         output_file.write('{{< tabs >}}\n')
 
-                        if py_method_name:
+                        if py_method_name and "python" in sdks:
                             output_file.write('{{% tab name="Python" %}}\n\n')
 
                             ## Check for method overrides.
@@ -1580,10 +1580,10 @@ def write_markdown(type, names, methods):
 
                             # Close tabs
                             output_file.write("{{% /tab %}}\n")
-                            if not go_method_name and not flutter_method_name:
+                            if not (go_method_name and "go" in sdks) and not (flutter_method_name and "flutter" in sdks):
                                 output_file.write("{{< /tabs >}}\n")
 
-                        if go_method_name:
+                        if go_method_name and "go" in sdks:
                             output_file.write('{{% tab name="Go" %}}\n\n')
 
                             ## Check for method overrides.
@@ -1690,10 +1690,10 @@ def write_markdown(type, names, methods):
                             output_file.write(f'\nFor more information, see the [Go SDK Docs]({methods["go"][type][resource][go_method_name]["method_link"]}).\n\n')
 
                             output_file.write("{{% /tab %}}\n")
-                            if not flutter_method_name:
+                            if not (flutter_method_name and "flutter" in sdks):
                                 output_file.write("{{< /tabs >}}\n")
 
-                        if flutter_method_name:
+                        if flutter_method_name and "flutter" in sdks:
                             output_file.write('{{% tab name="Flutter" %}}\n\n')
 
                             ## Check for method overrides.
@@ -1842,6 +1842,17 @@ def write_markdown(type, names, methods):
                         ## This switch tells us at the start of the loop for this same resource that we should double-newline the next
                         ## proto encountered:
                         is_first_method_in_this_resource = False
+
+        ## Close file handles:
+        output_file.close()
+        table_file.close()
+
+        ## When running against specific languages using the sdks array, it is possible to create empty target files.
+        ## If such empty target files are present on the local filesystem, remove them:
+        if os.path.isfile(full_path_to_resource_file) and os.path.getsize(full_path_to_resource_file) == 0:
+            os.remove(full_path_to_resource_file)
+        if os.path.isfile(full_path_to_table_file) and os.path.getsize(full_path_to_table_file) == 0:
+            os.remove(full_path_to_table_file)
 
 ## Main run function:
 ## - proto_map()        Fetch canonical proto methods from upstream, used for Flutter mapping in `parse()`
