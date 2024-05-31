@@ -1083,6 +1083,65 @@ The `whoami` command returns the Viam user for an authenticated CLI session, or 
 viam whoami
 ```
 
+### `auth-app`
+
+The `auth-app` command allows you to register and update your mobile or web app (created with the Viam Flutter or TypeScript [SDKs](/sdks/)) with [FusionAuth](https://fusionauth.io/) (the tool Viam uses for authentication and authorization) so that you or other users can log into your app with the same credentials they use to log into the [Viam app](https://app.viam.com).
+The user's credentials allow them the same [permissions](/fleet/rbac/) to organizations, locations, and machines that they have in the Viam app.
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+viam auth-app register --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-name="julias app" --origin-uris="https://test.com","https://test2.com" --redirect-uris="https://redirect-url.com" --logout-uri="https://logout.com"
+Info: Successfully registered auth application
+{
+  "application_id": "1234a1z9-ab2c-1234-5678-bcd12345678a",
+  "application_name": "julias app",
+  "secret": "supersupersecretsecret"
+}
+
+viam auth-app update --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-id=1234a1z9-ab2c-1234-5678-bcd12345678a --redirect-uris="https://test.com","https://test2.com"
+Info: Successfully updated auth application
+{
+  "application_id": "1234a1z9-ab2c-1234-5678-bcd12345678a",
+  "application_name": "julias app"
+}
+```
+
+{{% alert title="Caution" color="caution" %}}
+Do not share the secret returned by `auth-app register` publicly.
+Sharing this information could compromise your system security by allowing unauthorized access to your machines, or to the computer running your machine.
+{{% /alert %}}
+
+#### Command options
+
+| Command option | Description                             |
+| -------------- | --------------------------------------- |
+| `register`     | Register an application with FusionAuth |
+| `update`       | Update your application                 |
+
+##### Named arguments: `register`
+
+<!-- prettier-ignore -->
+| Argument             | Description                                                       | Inclusion    |
+| -------------------- | ----------------------------------------------------------------- | ------------ |
+| `--org-id`           | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID to with which to associate this app | **Required** |
+| `--application-name` | A name of your choosing for your application                      | **Required** |
+| `--origin-uris`      | All URIs from which valid logins to FusionAuth can originate from | **Required** |
+| `--redirect-uris`    | URIs to which FusionAuth will redirect the user upon login        | **Required** |
+| `--logout-uri`       | URI of page to show user upon logout                              | **Required** |
+
+##### Named arguments: `update`
+
+<!-- prettier-ignore -->
+| Argument             | Description                                  | Inclusion    |
+| -------------------- | -------------------------------------------- | ------------ |
+| `--org-id`           | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID to with which to associate this app | **Required** |
+| `--application-id`   | The identifier of your application, as returned when you registered the application. | **Required** |
+| `--application-name` | A name of your choosing for your application | Optional |
+| `--origin-uris`      | All URIs from which valid logins to FusionAuth can originate from | Optional |
+| `--redirect-uris`    | URIs to which FusionAuth will redirect the user upon login | Optional |
+| `--logout-uri`       | URI of page to show user upon logout         | Optional |
+
 ## Global options
 
 You can pass global options after the `viam` CLI keyword with any command.
