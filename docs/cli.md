@@ -1085,7 +1085,7 @@ viam whoami
 
 ### `auth-app`
 
-The `auth-app` command allows you to register and update your mobile or web app (created with the Viam Flutter or TypeScript [SDKs](/sdks/)) with [FusionAuth](https://fusionauth.io/) (the tool Viam uses for authentication and authorization) so that you or other users can log into your app with the same credentials they use to log into the [Viam app](https://app.viam.com).
+The `auth-app` command allows you to register and update your web or mobile application (created with the Viam Flutter or TypeScript [SDKs](/sdks/)) with [FusionAuth](https://fusionauth.io/) (the tool Viam uses for authentication and authorization) so that you or other users can log into your app with the same credentials they use to log into the [Viam app](https://app.viam.com).
 The user's credentials allow them the same [permissions](/fleet/rbac/) to organizations, locations, and machines that they have in the Viam app.
 
 Examples:
@@ -1135,8 +1135,8 @@ Sharing this information could compromise your system security by allowing unaut
 <!-- prettier-ignore -->
 | Argument             | Description                                  | Inclusion    |
 | -------------------- | -------------------------------------------- | ------------ |
-| `--org-id`           | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID to with which to associate this app | **Required** |
-| `--application-id`   | The identifier of your application, as returned when you registered the application. | **Required** |
+| `--org-id`           | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID with which to associate this app | **Required** |
+| `--application-id`   | The identifier of your application, returned when you registered the application | **Required** |
 | `--application-name` | A name of your choosing for your application | Optional |
 | `--origin-uris`      | All URIs from which valid logins to FusionAuth can originate from | Optional |
 | `--redirect-uris`    | URIs to which FusionAuth will redirect the user upon login | Optional |
