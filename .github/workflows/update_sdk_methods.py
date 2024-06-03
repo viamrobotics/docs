@@ -714,7 +714,10 @@ def parse(type, names):
 
                                 ## Get full method usage string, by omitting all comment spans:
                                 method_usage_raw = regex.sub(r'<span class="comment">.*</span>', '', this_method_raw2)
-                                this_method_dict["usage"] = regex.sub(r'</span>', '', method_usage_raw).replace("\t", "  ").lstrip().rstrip()
+                                method_usage_raw2 = regex.sub(r'</span>', '', method_usage_raw).replace("\t", "  ").lstrip().rstrip()
+                                ## Some Go params use versioned links, some omit the version (to use latest).
+                                ## Standardize on using latest for all cases. This handles parameters and returns:
+                                this_method_dict["usage"] = regex.sub(r'/rdk@v[0-9\.]*/', '/rdk/', method_usage_raw2, flags=regex.DOTALL)
 
                                 ## Not possible to link to the specific functions, so we link to the parent resource instead:
                                 this_method_dict["method_link"] = url + '#' + interface_name
