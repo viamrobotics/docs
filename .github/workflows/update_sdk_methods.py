@@ -11,21 +11,34 @@ import re as regex
 import argparse
 
 
-## Set the full list of SDK languages we scrape here:
+## The full list of SDK languages we scrape. You can use the sdk_languages
+## positional parameter to refine this at runtime if desired:
 sdks_supported = ["go", "python", "flutter"]
 
-## Parse arguments passed to update_sdk_methods.py.
-## You can either provide the specific sdk languages to run against
-## as a comma-separated list, or omit entirely to run against all sdks_supported.
-## NOTE: The team has decided to always write all sdk languages each run, to support
-##       writing per-proto include files. For current recommended usage, always omit
-##       any sdk langs to run against all.
-## Use 'verbose' to enable DEBUG output.
-## Use 'map' to generate a proto map template file:
-parser = argparse.ArgumentParser()
+## Arrays of resources to scrape, by type:
+##   type = ["array", "of", "resources"]
+## You can use the target_resources positional parameter to refine this
+## at runtime if desired:
+components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic_component", "gripper",
+              "input_controller", "motor", "movement_sensor", "power_sensor", "sensor", "servo"]
+services = ["base_remote_control", "data_manager", "generic_service", "mlmodel", "motion", "navigation", "slam", "vision"]
+app_apis = ["app", "billing", "data", "dataset", "data_sync", "mltraining"]
+robot_apis = ["robot"]
 
-parser.add_argument('sdk_language', type=str, nargs='?', help="A comma-separated list of the sdks to run against. \
+## Parse arguments passed to update_sdk_methods.py. You can:
+## - Provide the specific sdk languages to run against as a comma-separated list, or
+##     omit entirely to run against all sdks_supported.
+## - Provide the specific resource(s) to run against as a comma-separated list, or
+##     omit entirely to run against all resources, across all types. This option
+##     only supports arbitrary resources within the same resource type (i.e. all
+##     components, or all services).
+## - Use 'verbose' mode to enable DEBUG output.
+## - Use 'map' mode to generate a proto map template file only.
+parser = argparse.ArgumentParser()
+parser.add_argument('sdk_languages', type=str, nargs='?', help="A comma-separated list of the sdks to run against. \
                      Can be one of: go, python, flutter. Omit to run against all sdks.")
+parser.add_argument('target_resources', type=str, nargs='?', help="A comma-separated list of the resources to run against. \
+                     Must be all within the same resource type, like component or service. Omit to run against all resources.")
 parser.add_argument('-m', '--map', action='store_true', help="Generate initial mapping CSV file from upstream protos. \
                      In this mode, only the initial mapping file is output, no markdown.")
 parser.add_argument('-v', '--verbose', action='store_true', help="Run in verbose mode. Writes a debug file containing \
@@ -33,33 +46,80 @@ parser.add_argument('-v', '--verbose', action='store_true', help="Run in verbose
                      Also prints high-level status updates to STDOUT. \
                      Deletes previous debug file when run again.")
 
-## Quick sanity check of provided sdk languages. If all is well,
-## assemble sdks array to iterate through:
+## Parse provided parameters and arguments, if any:
 args = parser.parse_args()
 if args.map:
     ## We check for args.map again in both proto_map() and run().
     sdks = sdks_supported
-elif args.sdk_language is not None:
-    sdk_langs = [s.strip() for s in args.sdk_language.split(",")]
-
-    sdks = []
-    for sdk_lang in sdk_langs:
-
-        if sdk_lang not in sdks_supported:
-            print("ERROR: Unsupported SDK language: " + sdk_lang)
-            print("Exiting ...")
-            exit(1)
-        else:
-            sdks.append(sdk_lang)
 else:
-    sdks = sdks_supported
+    sdk_list = ''
+    resource_list = ''
+    only_run_against = ''
 
+    ## Using specific argument names to allow help text to be specific, but checking both
+    ## for sdk or resource values, to allow providing either in any position on the CLI.
+    if args.sdk_languages is not None:
+        first_list = [s.strip() for s in args.sdk_languages.split(",")]
+        if True in tuple(x in sdks_supported for x in first_list):
+            sdk_list = first_list
+        else:
+            resource_list = first_list
+    if args.target_resources is not None:
+        second_list = [s.strip() for s in args.target_resources.split(",")]
+        if True in tuple(x in sdks_supported for x in second_list):
+            sdk_list = second_list
+        else:
+            resource_list = second_list
+
+    ## If (one of) the list(s) contains an SDK language name:
+    if sdk_list:
+        sdks = []
+        for sdk_lang in sdk_list:
+            if sdk_lang not in sdks_supported:
+                print("ERROR: Unsupported SDK language: " + sdk_lang)
+                print("Exiting ...")
+                exit(1)
+            else:
+                sdks.append(sdk_lang)
+    else:
+        sdks = sdks_supported
+
+    ## If (one of) the list(s) does not contain an SDK language name, assume this list is
+    ## intended to serve as the resource list, and check each item against its matching
+    ## likely resource type. All provided resources must be of the same resource type,
+    ## so we can return an error to the operator as soon as any subsequent resource fails
+    ## to match to another entry on the first's resource type array (i.e. if first is arm,
+    ## we can always safely error and quit if second returns False against same type array: component):
+    if resource_list:
+        if True in tuple(x in components for x in resource_list) and not False in tuple(x in components for x in resource_list):
+            only_run_against = 'components'
+            components = resource_list
+        elif True in tuple(x in services for x in resource_list) and not False in tuple(x in services for x in resource_list):
+            only_run_against = 'services'
+            services = resource_list
+        elif True in tuple(x in app_apis for x in resource_list) and not False in tuple(x in app_apis for x in resource_list):
+            only_run_against = 'app_apis'
+            app_apis = resource_list
+        elif True in tuple(x in robot_apis for x in resource_list) and not False in tuple(x in robot_apis for x in resource_list):
+            only_run_against = 'robot_apis'
+            robot_apis = resource_list
+        else:
+           print("ERROR: Malformed resource list: " + str(resource_list))
+           print("       Specified resources must all be within a single resource type, like components or services.")
+           print("Exiting ...")
+           exit(1)
+
+## If running in verbose mode, print some initial configuration details to the operator:
 if args.verbose:
     print('\nVERBOSE MODE: See /tmp/update_sdk_methods_debug.txt for debug output.')
     print('              Note: This file is deleted at the start of each new verbose run.')
     print('              Try, in a separate terminal window:\n')
     print('              DURING RUN: tail -f /tmp/update_sdk_methods_debug.txt')
     print('              AFTER RUN: less /tmp/update_sdk_methods_debug.txt\n')
+if sdk_list and args.verbose:
+    print('SDKS OVERRIDE: Only running against ' + str(sdks) + '\n')
+if resource_list and args.verbose:
+    print('RESOURCE OVERRIDE: Only running against ' + str(resource_list) + '\n')
 
 ## This script must be run within the 'docs' git repo. Here we check
 ## to make sure this is the case, and get the root of our git-managed
@@ -111,14 +171,6 @@ sdk_url_mapping = {
     "typescript": "https://ts.viam.dev",
     "flutter": "https://flutter.viam.dev"
 }
-
-## Arrays of resources to scrape, by type:
-## type = ["array", "of", "resources"]
-components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic_component", "gripper",
-              "input_controller", "motor", "movement_sensor", "power_sensor", "sensor", "servo"]
-services = ["base_remote_control", "data_manager", "generic_service", "mlmodel", "motion", "navigation", "slam", "vision"]
-app_apis = ["app", "billing", "data", "dataset", "data_sync", "mltraining"]
-robot_apis = ["robot"]
 
 ## Dictionary of proto API names, with empty methods array, to be filled in for later use by get_proto_apis():
 proto_map = {
@@ -1868,52 +1920,56 @@ def run():
             debug_file = open('%s' % debug_filepath, "w")
 
         ## Parse components:
-        if args.verbose:
-            print('DEBUG: Now parsing upstream COMPONENT methods for: ' + str(sdks))
-        component_methods = parse("component", components)
-        if args.verbose:
-            print('DEBUG: Completed parsing upstream COMPONENT methods!')
-            debug_file.write(str(component_methods))
-            print('DEBUG: Now writing markdown for COMPONENT methods for: ' + str(sdks))
-        write_markdown("component", components, component_methods)
-        if args.verbose:
-            print('DEBUG: Completed writing markdown for COMPONENT methods!')
+        if only_run_against not in ['services', 'app_apis', 'robot_apis']:
+            if args.verbose:
+                print('DEBUG: Now parsing upstream COMPONENT methods for: ' + str(sdks))
+            component_methods = parse("component", components)
+            if args.verbose:
+                print('DEBUG: Completed parsing upstream COMPONENT methods!')
+                debug_file.write(str(component_methods) + '\n')
+                print('DEBUG: Now writing markdown for COMPONENT methods for: ' + str(sdks))
+            write_markdown("component", components, component_methods)
+            if args.verbose:
+                print('DEBUG: Completed writing markdown for COMPONENT methods!')
 
         ## Parse services:
-        if args.verbose:
-            print('DEBUG: Now parsing upstream SERVICE methods for: ' + str(sdks))
-        service_methods = parse("service", services)
-        if args.verbose:
-            print('DEBUG: Completed parsing upstream SERVICE methods!')
-            debug_file.write(str(service_methods))
-            print('DEBUG: Now writing markdown for SERVICE methods for: ' + str(sdks))
-        write_markdown("service", services, service_methods)
-        if args.verbose:
-            print('DEBUG: Completed writing markdown for SERVICE methods!')
+        if only_run_against not in ['components', 'app_apis', 'robot_apis']:
+            if args.verbose:
+                print('DEBUG: Now parsing upstream SERVICE methods for: ' + str(sdks))
+            service_methods = parse("service", services)
+            if args.verbose:
+                print('DEBUG: Completed parsing upstream SERVICE methods!')
+                debug_file.write(str(service_methods) + '\n')
+                print('DEBUG: Now writing markdown for SERVICE methods for: ' + str(sdks))
+            write_markdown("service", services, service_methods)
+            if args.verbose:
+                print('DEBUG: Completed writing markdown for SERVICE methods!')
 
         ## Parse app client:
-        if args.verbose:
-            print('DEBUG: Now parsing upstream APP methods for: ' + str(sdks))
-        app_methods = parse("app", app_apis)
-        if args.verbose:
-            print('DEBUG: Completed parsing upstream APP methods!')
-            debug_file.write(str(app_methods))
-            print('DEBUG: Now writing markdown for APP methods for: ' + str(sdks))
-        write_markdown("app", app_apis, app_methods)
-        if args.verbose:
-            print('DEBUG: Completed writing markdown for APP methods!')
+        if only_run_against not in ['components', 'services', 'robot_apis']:
+            if args.verbose:
+                print('DEBUG: Now parsing upstream APP methods for: ' + str(sdks))
+            app_methods = parse("app", app_apis)
+            if args.verbose:
+                print('DEBUG: Completed parsing upstream APP methods!')
+                debug_file.write(str(app_methods) + '\n')
+                print('DEBUG: Now writing markdown for APP methods for: ' + str(sdks))
+            write_markdown("app", app_apis, app_methods)
+            if args.verbose:
+                print('DEBUG: Completed writing markdown for APP methods!')
 
         ## Parse robot client:
-        if args.verbose:
-            print('DEBUG: Now parsing upstream ROBOT methods for: ' + str(sdks))
-        robot_methods = parse("robot", robot_apis)
-        if args.verbose:
-            print('DEBUG: Completed parsing upstream ROBOT methods!')
-            debug_file.write(str(robot_methods))
-            print('DEBUG: Now writing markdown for ROBOT methods for: ' + str(sdks))
-        write_markdown("robot", robot_apis, robot_methods)
-        if args.verbose:
-            print('DEBUG: Completed writing markdown for ROBOT methods!')
+        if only_run_against not in ['components', 'services', 'app_apis']:
+            if args.verbose:
+                print('DEBUG: Now parsing upstream ROBOT methods for: ' + str(sdks))
+            robot_methods = parse("robot", robot_apis)
+            if args.verbose:
+                print('DEBUG: Completed parsing upstream ROBOT methods!')
+                debug_file.write(str(robot_methods) + '\n')
+                print('DEBUG: Now writing markdown for ROBOT methods for: ' + str(sdks))
+            write_markdown("robot", robot_apis, robot_methods)
+            if args.verbose:
+                print('DEBUG: Completed writing markdown for ROBOT methods!')
 
 run()
 
