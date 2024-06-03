@@ -438,7 +438,7 @@ for pid in http_server_process_pids:
     ## Mediocre guess: Flutter build process likely to have string 'flutter' in cwd, either 'viam-flutter-sdk' as cloned directly, or 'flutter' as renamed by operator.
     ## TODO: If operators run into instances where this script misses a valid Flutter staging URL because the path to that staged HTML artifacts dir has been
     ## renamed in a fashion that does not include the string 'flutter', then change this to just always pick up any instances of http.server that aren't already matched to 
-    ## Flutter, above. This would mean that operators cannot run an unrelated http.server instance on this workstation, which they currently can do with present config.
+    ## Go, above. This would mean that operators cannot run an unrelated http.server instance on this workstation, which they currently can do with present config.
     if 'flutter' in http_server_pwd_result:
         flutter_process_port = subprocess.run(["lsof -Pp " + pid + " | grep LISTEN | awk {'print $9'} | sed 's%.*:%%g'"], shell=True, text = True, capture_output=True).stdout.rstrip()
         flutter_staging_url = 'http://localhost:' + flutter_process_port + '/doc/api'
