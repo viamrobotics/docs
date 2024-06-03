@@ -21,7 +21,7 @@ To configure a Raspberry Pi 4 or earlier, see [Configure a Raspberry Pi 4, 3, or
 
 ### Enable hardware PWM
 
-_(Optional)_ If you want to use hardware PWM on {{< glossary_tooltip term_id="pin-number" text="pins" >}} 12 and 35, edit <file>/boot/config.txt</file> on your Pi, adding the following line:
+_(Optional)_ If you want to use hardware PWM on {{< glossary_tooltip term_id="pin-number" text="pins" >}} 12 and 35, edit <file>/boot/firmare/config.txt</file> on your Pi, adding the following line:
 
 ```sh {class="line-numbers linkable-line-numbers"}
 dtoverlay=pwm-2chan
