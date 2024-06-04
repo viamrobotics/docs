@@ -1323,7 +1323,7 @@ Follow [these instructions](/cli/#using-the-build-subcommand) to automatically b
 {{% tab name="Python: venv" %}}
 
 Create a `run.sh` shell script that creates a new Python virtual environment, ensures that the package dependencies your module requires are installed, and runs your module.
-This is recommended approach for modules written in Python:
+This is the recommended approach for modules written in Python:
 
 1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
    For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) is installed:
