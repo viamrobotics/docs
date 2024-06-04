@@ -3,7 +3,7 @@ title: "Set up a SparkFun RTK Reference Station"
 linkTitle: "SparkFun RTK Reference Station Setup"
 weight: 20
 type: "docs"
-description: "Set up your own SparkFun RTK base station."
+description: "Follow this guide to set up your own SparkFun RTK base station, a high-precision GPS module designed for use with the RTK satellite navigation technique."
 images: ["/icons/components/imu.svg"]
 # SMEs: Susmita
 ---
@@ -169,9 +169,9 @@ Other devices can then access the correction data using an NTRIP client.
 - Enable this option. Enter the following credentials:
   - **Caster Host:** rtk2go.com
   - **Caster Port:** 2101
-  - **Caster User:** <test@test.org>
-  - **Mount Point:** [name of mountpoint from your [RTK2GO Casting Service reservation](#reserve-a-rtk2go-casting-service)]
-  - **Mount Point PW:** [password from your [RTK2GO Casting Service reservation](#reserve-a-rtk2go-casting-service)]
+  - **Caster User:** [insert your email]
+  - **Mount Point:** [insert name of mountpoint from your [RTK2GO Casting Service reservation](#reserve-a-rtk2go-casting-service)]
+  - **Mount Point PW:** [insert password from your [RTK2GO Casting Service reservation](#reserve-a-rtk2go-casting-service)]
 
 For example:
 
