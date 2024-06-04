@@ -49,7 +49,7 @@ You can choose to power it up using USB-C or Ethernet (PoE):
 
 ## Configure CfgWiFi mode
 
-**CfgWiFi** (or Configure-Via-WiFi) mode allows you to configure the reference station through WiFi.
+**CfgWiFi** mode allows you to configure the reference station through WiFi.
 You can also configure it using Ethernet (**Cfg Eth** mode) but for that an Ethernet connection is required, which can be limiting for outdoor setup.
 
 To configure **CfgWiFi** mode, select **CfgWiFi** using the reference kit's **MODE** button.
@@ -155,7 +155,7 @@ Better accuracy is achieved with long-term logging and post processing.
 - Default: 60s and 5.0m.
 - Limits: 60 to 900s, 1.0 to 5.0m.
 - Enable the **Survey-In** mode, and configure it as follows:
-  - **Minimum observation time(s)**: 60 (default)
+  - **Minimum observation time**: 60 (default)
   - **Required Mean 3D standard deviation (m)**: 5.00 (default)
 
 **Fixed**: You only want the **Fixed** mode if your reference station will be stationary at a permanent location.
@@ -169,7 +169,7 @@ Other devices can then access the correction data using an NTRIP client.
 - Enable this option. Enter the following credentials:
   - **Caster Host:** rtk2go.com
   - **Caster Port:** 2101
-  - **Caster User:** test@test.com
+  - **Caster User:** <test@test.org>
   - **Mount Point:** [name of mountpoint from your [RTK2GO Casting Service reservation](#reserve-a-rtk2go-casting-service)]
   - **Mount Point PW:** [password from your [RTK2GO Casting Service reservation](#reserve-a-rtk2go-casting-service)]
 
