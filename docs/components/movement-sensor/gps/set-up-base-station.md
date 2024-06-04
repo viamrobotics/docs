@@ -223,7 +223,7 @@ Once you see **Casting** on the mode menu display screen, go to `rtk2go.com:2101
 
 ## Next steps: configure an RTK movement sensor
 
-Provide this mount point as the `ntrip_url` attribute in your Viam machine config for the RTK-enabled models of movement sensor.
+Provide the RTK2GO casting URL `rtk2go.com:2101` as the `ntrip_url` attribute in your Viam machine config for the RTK-enabled models of movement sensor.
 
 Click on the link to follow configuration instructions for each model:
 
