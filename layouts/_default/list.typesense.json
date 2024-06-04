@@ -123,8 +123,8 @@
                         {{- $.Scratch.Set "relpermalink" (printf "../..%s" .RelPermalink) -}}
                   {{- end -}}
 
-                  {{- $.Scratch.Set "id" (printf "builtin:rdk:component:%s:%s" (strings.ToLower .Parent.LinkTitle) (strings.ToLower .LinkTitle)) -}}
-                  {{- $.Scratch.Set "api" (printf "rdk:component:%s" (strings.ToLower .Parent.LinkTitle)) -}}
+                  {{- $.Scratch.Set "id" (printf "builtin:rdk:component:%s:%s" (strings.Replace (strings.ToLower .Parent.LinkTitle) " " "_" ) (strings.ToLower .LinkTitle) ) -}}
+                  {{- $.Scratch.Set "api" (printf "rdk:component:%s" (strings.Replace (strings.ToLower .Parent.LinkTitle) " " "_" )) -}}
                   {{- $.Scratch.Set "component_description" (printf "Built-in component: %s" .Params.component_description) -}}
                   {{- if not .Params.component_description -}}
                         {{ warnf "Missing description: %s %s" .Parent.LinkTitle .LinkTitle }}
@@ -134,7 +134,7 @@
                   "id" ($.Scratch.Get "id")
                   "module_id" "builtin"
                   "url" ($.Scratch.Get "relpermalink")
-                  "type" (strings.ToLower .Parent.LinkTitle)
+                  "type" (strings.Replace (strings.ToLower .LinkTitle) " " "_" )
                   "model" .LinkTitle
                   "description" ($.Scratch.Get "component_description")
                   "api" ($.Scratch.Get "api")
