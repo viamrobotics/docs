@@ -65,10 +65,6 @@ If you want to write a module to extend support to a new type of component or se
 Most module use cases, however, benefit from extending an existing API, as covered below.
 {{% /alert %}}
 
-{{% alert title="Tip" color="tip" %}}
-If you would like to test your module locally against its intended target platform before uploading it, you can follow the steps for [Iterative module development](/registry/advanced/iterative-development/) to verify that any code changes you have made work as expected on your target platform.
-{{% /alert %}}
-
 ### (Optional) Use a module template
 
 If you are using Golang, use the [Golang Module templates](https://github.com/viam-labs/module-templates-golang) which contain detailed instructions for creating your module.
