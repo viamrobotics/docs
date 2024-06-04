@@ -48,15 +48,15 @@ To use your motor with Viam, check whether one of the following [built-in models
 For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
-Model | Description <a name="model-table"></a>
------ | -----------
-[`gpio`](./gpio/) | [Standard brushed or brushless DC motor](https://en.wikipedia.org/wiki/DC_motor)
-[`gpiostepper`](./gpiostepper/) | Bipolar stepper motor with current regulation and 1/32 microstepping driven by a basic driver like [DRV8825](https://www.ti.com/product/DRV8825) or [TMC2209](https://www.trinamic.com/support/eval-kits/details/tmc2209-bob/)
-[`28byj48`](./28byj48/) | Small unipolar 28BYJ-48 stepper motor driven by a [ULN2003](https://www.ti.com/product/ULN2003A) driver
-[`TMC5072`](./tmc5072/) | Stepper motor driven by [the TMC5072 chip](https://www.trinamic.com/support/eval-kits/details/tmc5072-bob/)
-[`DMC4000`](./dmc4000/) | Stepper motor driven by a [DMC-40x0 series motion controller](https://www.galil.com/motion-controllers/multi-axis/dmc-40x0)
-[`roboclaw`](./roboclaw/) | [Standard brushed DC motor](https://en.wikipedia.org/wiki/DC_motor) driven by [Basicmicro's](https://www.basicmicro.com/) [RoboClaw](https://www.basicmicro.com/RoboClaw-2x30A-Motor-Controller_p_9.html) motor controller
-[`fake`](./fake/) | Used to test code without hardware
+| Model | Description <a name="model-table"></a> |
+| ----- | -------------------------------------- |
+| [`gpio`](./gpio/) | [Standard brushed or brushless DC motor](https://en.wikipedia.org/wiki/DC_motor) |
+| [`gpiostepper`](./gpiostepper/) | Bipolar stepper motor with current regulation and 1/32 microstepping driven by a basic driver like [DRV8825](https://www.ti.com/product/DRV8825) or [TMC2209](https://www.trinamic.com/support/eval-kits/details/tmc2209-bob/) |
+| [`28byj48`](./28byj48/) | Small unipolar 28BYJ-48 stepper motor driven by a [ULN2003](https://www.ti.com/product/ULN2003A) driver |
+| [`TMC5072`](./tmc5072/) | Stepper motor driven by [the TMC5072 chip](https://www.trinamic.com/support/eval-kits/details/tmc5072-bob/) |
+| [`DMC4000`](./dmc4000/) | Stepper motor driven by a [DMC-40x0 series motion controller](https://www.galil.com/motion-controllers/multi-axis/dmc-40x0) |
+| [`roboclaw`](./roboclaw/) | [Standard brushed DC motor](https://en.wikipedia.org/wiki/DC_motor) driven by [Basicmicro's](https://www.basicmicro.com/) [RoboClaw](https://www.basicmicro.com/RoboClaw-2x30A-Motor-Controller_p_9.html) motor controller |
+| [`fake`](./fake/) | Used to test code without hardware |
 
 ### Modular resources
 
