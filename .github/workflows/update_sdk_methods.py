@@ -716,8 +716,12 @@ def parse(type, names):
                                 method_usage_raw = regex.sub(r'<span class="comment">.*</span>', '', this_method_raw2)
                                 this_method_dict["usage"] = regex.sub(r'</span>', '', method_usage_raw).replace("\t", "  ").lstrip().rstrip()
 
-                                ## Not possible to link to the specific functions, so we link to the parent resource instead:
-                                this_method_dict["method_link"] = url + '#' + interface_name
+                                ## Not possible to link to the specific functions, so we link to the parent resource instead.
+                                ## If we are scraping from a local staging instance, replace host and port with upstream link target URL:
+                                if go_staging_url != '':
+                                    this_method_dict["method_link"] = str(url + '#' + interface_name).replace(go_staging_url, 'https://pkg.go.dev')
+                                else:
+                                    this_method_dict["method_link"] = url + '#' + interface_name
 
                                 ## Check for code sample for this method.
                                 go_code_samples_raw = soup.find_all(
@@ -861,8 +865,12 @@ def parse(type, names):
                         ## Determine method description, stripping newlines:
                         this_method_dict["description"] = tag.find('dd').p.text.replace("\n", " ")
 
-                        ## Determine method direct link, no need to parse for it, it's inferrable:
-                        this_method_dict["method_link"] = url + "#" + id
+                        ## Determine method direct link, no need to parse for it, it's inferrable.
+                        ## If we are scraping from a local staging instance, replace host and port with upstream link target URL:
+                        if python_staging_url != '':
+                            this_method_dict["method_link"] = str(url + "#" + id).replace(python_staging_url, 'https://python.viam.dev')
+                        else:
+                            this_method_dict["method_link"] = url + "#" + id
 
                         ## Assemble array of all tags which contain parameters for this method:
                         ## METHODOLOGY: tag: em, class: sig-param, and not * or **kwargs:
