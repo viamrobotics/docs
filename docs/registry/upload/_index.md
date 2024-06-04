@@ -206,7 +206,7 @@ For a Python module built using the `venv` approach, the command might look like
  tar -czf module.tar.gz run.sh requirements.txt src
 ```
 
-Where `run.sh` is your [entrypoint file](/registry/create/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/registry/create/#compile-or-package-your-module), and `src` is the source directory of your module.
+Where `run.sh` is your [entrypoint file](/registry/create/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/registry/create/#compile-or-package-your-module), and `src` is the directory that contains the source code of your module.
 
 Supply the path to the resulting archive file in the next step.
 

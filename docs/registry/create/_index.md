@@ -1410,7 +1410,8 @@ Compiling your Python module in this fashion ensures that your module has access
 If you intend to share your module with other users, or to deploy it to a fleet of machines, this approach "bundles" your module code together with its required dependencies, making your module highly-portable across like architectures.
 
 However, used in this manner, Nuitka does not support relative imports (imports starting with `.`).
-In addition, Nuitka does not support cross-compiling: you must compile your module on the target architecture you wish to support.
+In addition, Nuitka does not support cross-compiling: you can only compile your module on the target architecture you wish to support if using the Nutika approach.
+If you want to cross-compile your module, consider using a different local compilation method, or the [`module build start` command](/cli/#using-the-build-subcommand) to build your module on a cloud build host, which supports building for multiple platforms.
 For example, you cannot run a module on a Linux `arm64` system if you compiled it using Nuitka on a Linux `amd64` system.
 
 {{% /tab %}}
