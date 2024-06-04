@@ -9,6 +9,7 @@ aliases:
   - "/components/motor/gpio/"
 no_list: true
 component_description: "Standard brushed or brushless DC motor."
+usage: 999999
 # SMEs: Rand, James
 ---
 

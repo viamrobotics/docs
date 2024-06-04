@@ -9,6 +9,7 @@ tags: ["board", "components"]
 aliases:
   - "/components/board/pi/"
 component_description: "Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W."
+usage: 999999
 # SMEs: Gautham, Rand
 ---
 

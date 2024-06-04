@@ -126,6 +126,11 @@
                   {{- $.Scratch.Set "id" (printf "builtin:rdk:component:%s:%s" (strings.Replace (strings.ToLower .Parent.LinkTitle) " " "_" ) (strings.ToLower .LinkTitle) ) -}}
                   {{- $.Scratch.Set "api" (printf "rdk:component:%s" (strings.Replace (strings.ToLower .Parent.LinkTitle) " " "_" )) -}}
                   {{- $.Scratch.Set "component_description" (printf "Built-in component: %s" .Params.component_description) -}}
+                  {{- if .Params.usage -}}
+                        {{- $.Scratch.Set "usage" .Params.usage -}}
+                  {{- else -}}
+                        {{- $.Scratch.Set "usage" 800000 -}}
+                  {{- end -}}
                   {{- if not .Params.component_description -}}
                         {{ warnf "Missing description: %s %s" .Parent.LinkTitle .LinkTitle }}
                   {{- end -}}
@@ -138,8 +143,8 @@
                   "model" .LinkTitle
                   "description" ($.Scratch.Get "component_description")
                   "api" ($.Scratch.Get "api")
-                  "total_organization_usage" 999999
-                  "total_robot_usage" 999999
+                  "total_organization_usage" ($.Scratch.Get "usage")
+                  "total_robot_usage" ($.Scratch.Get "usage")
                   )}}
                   {{- end -}}
             {{- end -}}

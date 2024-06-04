@@ -9,6 +9,7 @@ tags: ["board", "components"]
 aliases:
   - "/components/board/jetson/"
 component_description: "NVIDIA Jetson AGX Orin, NVIDIA Jetson Orin Nano, NVIDIA Jetson Xavier NX, NVIDIA Jetson Nano."
+usage: 999999
 # SMEs: Gautham, Rand
 ---
 

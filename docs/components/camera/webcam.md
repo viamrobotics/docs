@@ -9,6 +9,7 @@ tags: ["camera", "components"]
 aliases:
   - "/components/camera/webcam/"
 component_description: "A standard camera that streams camera data."
+usage: 999999
 # SMEs: Bijan, vision team
 ---
 

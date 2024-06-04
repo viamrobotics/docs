@@ -1,7 +1,7 @@
 const { TypesenseInstantSearchAdapter, instantsearch } = window;
 
 const api = document.getElementsByClassName("mr-component")[0].id;
-console.log(api)
+console.log(api);
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   server: {
     apiKey: "JhUowFH6ERd20FTIIzpTZtfDWFUp6lIs", // Be sure to use an API key that only allows search operations
@@ -20,7 +20,7 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   additionalSearchParameters: {
     query_by: "api,model,description",
     sort_by: "total_organization_usage:desc,total_robot_usage:desc",
-    infix: "always"
+    infix: "always",
   },
 });
 const searchClient = typesenseInstantsearchAdapter.searchClient;
@@ -53,7 +53,6 @@ if (api == "") {
   `;
 }
 
-
 search.addWidgets([
   instantsearch.widgets.hits({
     container: "#hits",
@@ -62,19 +61,19 @@ search.addWidgets([
     },
   }),
   instantsearch.widgets.searchBox({
-    container: '#searchbox',
-    placeholder: 'Search for a model...',
+    container: "#searchbox",
+    placeholder: "Search for a model...",
     poweredBy: false,
     wrapInput: true,
     showReset: false,
     showSubmit: false,
-    showLoadingIndicator: false
+    showLoadingIndicator: false,
   }),
   instantsearch.widgets.stats({
-    container: '#searchstats',
+    container: "#searchstats",
     templates: {
       text(data, { html }) {
-        let results = '';
+        let results = "";
 
         if (data.hasManyResults) {
           results += `${data.nbHits} results:`;
@@ -91,16 +90,15 @@ search.addWidgets([
   instantsearch.widgets.configure(filters),
   instantsearch.widgets.pagination({
     container: "#pagination",
-    scrollTo: false
+    scrollTo: false,
   }),
 ]);
 
 search.start();
 
-const mlmodels = document.getElementsByClassName("mr-model")
+const mlmodels = document.getElementsByClassName("mr-model");
 
 if (mlmodels.length !== 0) {
-
   const mlmodel = document.getElementsByClassName("mr-model")[0].id;
   const typesenseInstantsearchAdapterML = new TypesenseInstantSearchAdapter({
     server: {
@@ -120,7 +118,7 @@ if (mlmodels.length !== 0) {
     additionalSearchParameters: {
       query_by: "model_id,description",
       sort_by: "total_organization_usage:desc,total_robot_usage:desc",
-      infix: "always"
+      infix: "always",
     },
   });
   const searchClientML = typesenseInstantsearchAdapterML.searchClient;
@@ -141,7 +139,6 @@ if (mlmodels.length !== 0) {
   <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
   `;
 
-
   searchML.addWidgets([
     instantsearch.widgets.hits({
       container: "#hitsML",
@@ -150,19 +147,19 @@ if (mlmodels.length !== 0) {
       },
     }),
     instantsearch.widgets.searchBox({
-      container: '#searchboxML',
-      placeholder: 'Search for a model...',
+      container: "#searchboxML",
+      placeholder: "Search for a model...",
       poweredBy: false,
       wrapInput: true,
       showReset: false,
       showSubmit: false,
-      showLoadingIndicator: false
+      showLoadingIndicator: false,
     }),
     instantsearch.widgets.stats({
-      container: '#searchstatsML',
+      container: "#searchstatsML",
       templates: {
         text(data, { html }) {
-          let resultsML = '';
+          let resultsML = "";
 
           if (data.hasManyResults) {
             resultsML += `${data.nbHits} results:`;
@@ -179,10 +176,9 @@ if (mlmodels.length !== 0) {
     instantsearch.widgets.configure(filtersML),
     instantsearch.widgets.pagination({
       container: "#paginationML",
-      scrollTo: false
+      scrollTo: false,
     }),
   ]);
 
   searchML.start();
-
 }
