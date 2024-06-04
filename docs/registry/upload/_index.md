@@ -133,6 +133,8 @@ If you later wish to make your module public, you can use the [`viam module upda
 
     For example, the following represents the configuration of an example `my-module` public module in the `acme` namespace:
 
+    {{%expand "Click to view example meta.json with build object" %}}
+
     ```json {class="line-numbers linkable-line-numbers"}
     {
       "module_id": "acme:my-module",
@@ -150,9 +152,31 @@ If you later wish to make your module public, you can use the [`viam module upda
         "build": "./build.sh", // command that will build your module
         "arch": ["linux/amd64", "linux/arm64"] // architecture(s) to build for
       },
-      "entrypoint": "<PATH-TO-EXECUTABLE>"
+      "entrypoint": "dist/main" // path to executable
     }
     ```
+
+    {{% /expand%}}
+
+    {{%expand "Click to view example meta.json without build object" %}}
+
+    ```json {class="line-numbers linkable-line-numbers"}
+    {
+      "module_id": "acme:my-module",
+      "visibility": "public",
+      "url": "https://github.com/<my-repo-name>/my-module",
+      "description": "An example custom module.",
+      "models": [
+        {
+          "api": "rdk:component:generic",
+          "model": "acme:demo:my-model"
+        }
+      ],
+      "entrypoint": "my-module.sh" // path to executable
+    }
+    ```
+
+    {{% /expand%}}
 
     {{% alert title="Important" color="note" %}}
 
@@ -174,6 +198,15 @@ For more information, see [Naming your model](/registry/#naming-your-model-names
    ```
 
 Where `<PATH-TO-EXECUTABLE>` is the [packaged executable](/registry/create/#compile-or-package-your-module) that runs the module at the [entry point](/registry/create/#write-an-entry-point-main-program-file).
+If using PyInstaller, by default this would be `dist/main`.
+
+For a Python module built using the `venv` approach, the command might look like this:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+ tar -czf module.tar.gz run.sh requirements.txt src
+```
+
+Where `run.sh` is your [entrypoint file](/registry/create/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/registry/create/#compile-or-package-your-module), and `src` is the directory that contains the source code of your module.
 
 Supply the path to the resulting archive file in the next step.
 

@@ -1009,7 +1009,7 @@ Rename a dataset specified by the dataset ID.
 
 **Parameters:**
 
-- `id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the dataset.
+- `id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the dataset. To retrieve this, navigate to your dataset's page in the [Viam app](https://app.viam.com/data/datasets), click **...** in the left-hand menu, and click **Copy dataset ID**.
 - `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The new name of the dataset.
 
 **Returns:**

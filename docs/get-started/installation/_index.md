@@ -106,16 +106,16 @@ To install `viam-server` on a macOS computer:
 
 1. Add a new machine by providing a name in the **New machine** field and clicking **Add machine**:
 
-   {{<imgproc src="/fleet/app-usage/create-machine.png" resize="900x" style="max-width:700px" declaredimensions=true alt="The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.">}}
+   ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
 
 1. Navigate to the **CONFIGURE** tab and find your machine's card.
    An alert will be present directing you to **Set up your machine part**:
 
-   {{<imgproc src="/get-started/installation/setup-part.png" resize="900x" style="max-width:700px" declaredimensions=true alt="Machine setup alert in a newly created machine">}}
+   ![Machine setup alert in a newly-created machine](/get-started/installation/setup-part.png)
 
    Click **View setup instructions** to open the setup instructions:
 
-   {{<imgproc src="/get-started/installation/wsl-setup-instructions.png" resize="900x" style="max-width:700px" declaredimensions=true alt="Setup instructions">}}
+   ![Setup instructions](/get-started/installation/wsl-setup-instructions.png)
 
 1. Select **Windows** as your system's OS and **RDK** as your RDK type.
 
