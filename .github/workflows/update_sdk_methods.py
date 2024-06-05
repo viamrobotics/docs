@@ -1512,8 +1512,8 @@ def write_markdown(type, names, methods):
                         ## down the line, to avoid blank table_files:
                         if is_first_method_in_this_resource:
                             table_file.write('<!-- prettier-ignore -->\n')
-                            table_file.write('Method Name | Description\n')
-                            table_file.write('----------- | -----------\n')
+                            table_file.write('| Method Name | Description |\n')
+                            table_file.write('| ----------- | ----------- |\n')
 
                         ## Determine what the anchor link structure should be for this resource. Each type has its own standard:
                         if type == 'component':
@@ -1543,6 +1543,11 @@ def write_markdown(type, names, methods):
                             file_contents = regex.sub(r'\{\{\%.*\%\}\}.*\{\{\% \/[a-b].* \%\}\}', '', file_contents, flags=regex.DOTALL)
                             search_result = file_contents.split('.\n', 1)[0].strip().replace("\n", " ")
 
+                            ## If the proto description contains any MD links, strip them out.
+                            ## We do not wanted links in this table file:
+                            #search_result = regex.sub(r"\[(.+)\]\(.+\)", r"\1", search_result)
+                            search_result = regex.sub(r"\[(.+?)\]\(.+?\)", r"\1", search_result)
+
                             ## If the proto description is missing a trailing period, or we stripped it off during the above matching, append
                             ## (restore) the period character:
                             if not search_result.endswith('.'):
@@ -1551,7 +1556,7 @@ def write_markdown(type, names, methods):
                                 proto_description_first_sentence = search_result
 
                         ## Write out this proto's entry to this resource's table_file:
-                        table_file.write('[`' + proto + '`](' + proto_anchor_link + ') | ' + proto_description_first_sentence + '\n')
+                        table_file.write('| [`' + proto + '`](' + proto_anchor_link + ') | ' + proto_description_first_sentence + ' |\n')
 
                         ## Begin the per-language markdown writing to output_file with the opening tabset declaration:
                         output_file.write('{{< tabs >}}\n')
