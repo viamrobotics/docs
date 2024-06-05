@@ -17,3 +17,4 @@ bin
 .vale.ini
 .frontmatter
 frontmatter.json
+Pipfile
