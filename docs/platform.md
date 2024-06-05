@@ -10,3 +10,14 @@ Viam is a complete software platform for {{< glossary_tooltip term_id="smart-mac
 
 {{< board-carousel >}}
 <br>
+
+{{< cards >}}
+{{% card link="/build/" %}}
+{{% card link="/fleet/" %}}
+{{% card link="/components/" %}}
+{{% card link="/services/" %}}
+{{% card link="/registry/" %}}
+{{% card link="/sdks/" %}}
+{{% card link="/cli/" %}}
+{{% card link="/internals/" %}}
+{{< /cards >}}
