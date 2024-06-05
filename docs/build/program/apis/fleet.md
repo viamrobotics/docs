@@ -1319,6 +1319,9 @@ List the {{< glossary_tooltip term_id="module" text="modules" >}} under the orga
 {{< tabs >}}
 {{% tab name="Python" %}}
 
+**Parameters:**
+- `org_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Organization ID for which to retrieve modules.
+- 
 **Raises:**
 
 - `GRPCError`: This error is raised if an invalid machine ID is passed.
@@ -1328,7 +1331,7 @@ List the {{< glossary_tooltip term_id="module" text="modules" >}} under the orga
 - [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The list of modules.
 
 ```python {class="line-numbers linkable-line-numbers"}
-modules_list = await fleet.list_modules()
+modules_list = await fleet.list_modules(org_id="<org-id>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_modules).

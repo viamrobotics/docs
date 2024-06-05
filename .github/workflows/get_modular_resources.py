@@ -37,7 +37,7 @@ async def main():
     viam_client = await connect()
     # Instantiate an AppClient called "cloud" to run cloud app API methods on
     cloud = viam_client.app_client
-    module_list = await cloud.list_modules()
+    module_list = await cloud.list_modules(org_id=os.environ['TEST_ORG_ID'])
 
     for module in module_list:
         if module.visibility == 2:
