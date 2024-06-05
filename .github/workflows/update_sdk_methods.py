@@ -1396,14 +1396,16 @@ def format_method_usage(parsed_usage_string):
             return_string += f"- "
 
             # Extracting the parameter type from the param_type string
-            # print(f"Type name pre extraction: {param_type}")
-            param_name = regex.search(r'\w+(?=\s*<)', param_type)
+            # If a list data type for Go (i.e. []datatypename), format accordingly:
+            param_name = regex.search(r'\w+(?=\s*\[?\]?<)', param_type)
             if param_name:
                 param_name = param_name.group()
-                return_string += f"`{param_name}` "
+                if '[]' in param_type:
+                    return_string += f"`{param_name}` \[\]"
+                else:
+                    return_string += f"`{param_name}` "
 
             # Creating the parameter type link based on the extracted type name
-            # print(f"CREATING PARAMETER TYPE LINK from param type link {param_type_link}")
             if param_type_link:
                 # print(f"type_link stripped: {param_type_link}")
                 param_type_link = f"https://pkg.go.dev{param_type_link}"
