@@ -1090,7 +1090,7 @@ The user's credentials allow them the same [permissions](/fleet/rbac/) to organi
 
 Examples:
 
-```sh {class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"  data-output="2-8,10-14"}
 viam auth-app register --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-name="julias app" --origin-uris="https://test.com","https://test2.com" --redirect-uris="https://redirect-url.com" --logout-uri="https://logout.com"
 Info: Successfully registered auth application
 {
@@ -1124,7 +1124,7 @@ Sharing this information could compromise your system security by allowing unaut
 <!-- prettier-ignore -->
 | Argument             | Description                                                       | Inclusion    |
 | -------------------- | ----------------------------------------------------------------- | ------------ |
-| `--org-id`           | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID to with which to associate this app | **Required** |
+| `--org-id`           | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID with which to associate this app | **Required** |
 | `--application-name` | A name of your choosing for your application                      | **Required** |
 | `--origin-uris`      | All URIs from which valid logins to FusionAuth can originate from | **Required** |
 | `--redirect-uris`    | URIs to which FusionAuth will redirect the user upon login        | **Required** |
@@ -1138,7 +1138,7 @@ Sharing this information could compromise your system security by allowing unaut
 | `--org-id`           | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID with which to associate this app | **Required** |
 | `--application-id`   | The identifier of your application, returned when you registered the application | **Required** |
 | `--application-name` | A name of your choosing for your application | Optional |
-| `--origin-uris`      | All URIs from which valid logins to FusionAuth can originate from | Optional |
+| `--origin-uris`      | All URIs from which valid logins to FusionAuth can originate | Optional |
 | `--redirect-uris`    | URIs to which FusionAuth will redirect the user upon login | Optional |
 | `--logout-uri`       | URI of page to show user upon logout         | Optional |
 
