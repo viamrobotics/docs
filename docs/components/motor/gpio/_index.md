@@ -15,8 +15,10 @@ usage: 999999
 
 The `gpio` model supports [DC motors](https://en.wikipedia.org/wiki/DC_motor) (both brushed and brushless).
 
+{{< alert title="Note" color="note" >}}
 [Encoders](/components/encoder/) can be configured to work with `gpio` motors.
 Find more information in the [encoded motor documentation](/components/motor/gpio/encoded-motor/).
+{{< /alert >}}
 
 To configure a DC motor as a component of your machine, first configure the [board](/components/board/) to which the motor driver is wired.
 Then add your motor:
