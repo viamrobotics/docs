@@ -65,7 +65,7 @@ async def main():
             print(c)
             c["last_updated"] = time_now
             c["total_organization_usage"] = int(c["total_organization_usage"])
-            c["total_organization_usage"] = int(c["total_robot_usage"])
+            c["total_robot_usage"] = int(c["total_robot_usage"])
             print(c)
             insert_resp = typesense_client.collections['resources'].documents.upsert(c)
             print("INSERTED")
