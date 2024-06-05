@@ -1397,7 +1397,7 @@ def format_method_usage(parsed_usage_string):
 
             # Extracting the parameter type from the param_type string
             # If a list data type for Go (i.e. []datatypename), format accordingly:
-            param_name = regex.search(r'\w+(?=\s*\[?\]?<)', param_type)
+            param_name = regex.search(r'\w+(?=\s*\[?\]?\*?<)', param_type)
             if param_name:
                 param_name = param_name.group()
                 if '[]' in param_type:
