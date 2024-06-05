@@ -82,8 +82,8 @@ async def main():
             json_m = {
                 "id": model.item_id,
                 "model_id": model.item_id,
-                "total_organization_usage": model.total_organization_usage,
-                "total_robot_usage": model.total_robot_usage,
+                "total_organization_usage": int(model.total_organization_usage),
+                "total_robot_usage": int(model.total_robot_usage),
                 "description": model.description,
                 "last_updated": time_now,
                 "url": "https://app.viam.com/ml-model/" + model.public_namespace + "/" + model.name + "/"
