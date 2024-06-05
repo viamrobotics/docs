@@ -46,7 +46,7 @@ Most machines with a servo need at least the following hardware:
 The Viam servo component supports [hobby servos](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
 
 If your motor is coupled with an [encoder](/components/encoder/), not a potentiometer, for position feedback, you should not configure it as a servo.
-Check your device's data sheet and configure that type of servo as an [encoded motor](/components/motor/gpio/encoded-motor/).
+Check your device's data sheet and configure that type of servo as an [encoded motor](/components/motor/encoded-motor/).
 
 {{% /alert %}}
 

@@ -95,7 +95,7 @@ You can use the `fragment_mods` objects to be able to deploy a fragment to a fle
 
 {{% changelog date="2024-03-01" color="added" title="Dual GPS movement sensor" %}}
 
-You can now use the [dual GPS movement sensor component](/components/movement-sensor/gps/dual-gps-rtk/) to integrate a movement sensor that employs two GPS sensors into your machine.
+You can now use the [dual GPS movement sensor component](/components/movement-sensor/dual-gps-rtk/) to integrate a movement sensor that employs two GPS sensors into your machine.
 The dual GPS movement sensor calculates a compass heading from both GPS sensors, and returns the midpoint position between the two sensors as its position.
 
 {{% /changelog %}}
