@@ -51,7 +51,7 @@ To [view only data captured from one machine part or from one component or servi
 You can also filter data using the [Viam Python SDK](https://python.viam.dev/).
 For example, you could use the [`BinaryDataByFilter`](/appendix/apis/data-client/#binarydatabyfilter) or [`TabularDataByFilter`](/appendix/apis/data-client/#tabulardatabyfilter) methods to filter binary data or sensor data respectively.
 
-To query your data using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} instead, see [Query Data using SQL / MQL](/services/data/query/).
+To query your data using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} instead, see [Query Data using SQL / MQL](/use-cases/sensor-data-query/).
 
 ## Delete data
 
@@ -75,7 +75,7 @@ You can also delete data using the [Viam CLI](/cli/).
 
 To export your captured data from the cloud, see [Export Data](../export/).
 
-If you have synced data, such as [sensor](/components/sensor/) readings, you can [query that data with SQL or MQL](../query/) from the Viam app or a MQL-compatible client.
+If you have synced data, such as [sensor](/components/sensor/) readings, you can [query that data with SQL or MQL](/use-cases/sensor-data-query/) from the Viam app or a MQL-compatible client.
 If you have synced images, you can use those images to [train machine learning models](/services/ml/train-model/) within the Viam app.
 
 For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).

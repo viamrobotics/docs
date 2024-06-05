@@ -40,7 +40,7 @@ outputs:
       </a>
 </div>
 <div class="col hover-card link-with-icon">
-  <a href="use-cases/sensor-data/" class="noanchor"><div>
+  <a href="use-cases/sensor-data-visualize/" class="noanchor"><div>
     <picture><img src="icons/data-analytics.svg" alt="Data Analytics" loading="lazy"></picture>
     <p>Capture and query sensor data</p></div>
       </a>

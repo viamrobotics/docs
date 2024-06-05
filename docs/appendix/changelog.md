@@ -129,7 +129,7 @@ Viam has added a [sensor-controlled base](/components/base/sensor-controlled/) c
 
 {{% changelog date="2024-01-31" color="added" title="Visualize captured data" %}}
 
-You can now [visualize your data](/services/data/visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
+You can now [visualize your data](/use-cases/sensor-data-visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
 You can visualize any data, such as sensor readings, that you have [synced](/services/data/cloud-sync/) to the Viam app from your machine.
 
 See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) for a full walkthrough focused on Grafana specifically.
@@ -173,9 +173,9 @@ Location secrets, the previous method of authentication, is deprecated and will 
 
 {{% changelog date="2023-11-30" color="added" title="Queryable sensor data" %}}
 
-Once you have added the data management service and synced tabular data, such as sensor readings, to the Viam app, you can now run queries against both captured tabular data as well as its metadata using either SQL or MQL.
+Once you have added the data management service and synced data, such as sensor readings, to the Viam app, you can now run queries against both captured data as well as its metadata using either SQL or MQL.
 
-For more information, see [Query Data with SQL or MQL](/services/data/query/).
+For more information, see [Query Data with SQL or MQL](/use-cases/sensor-data-query/).
 
 {{% /changelog %}}
 
