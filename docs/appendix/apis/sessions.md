@@ -18,6 +18,7 @@ tags:
   ]
 aliases:
   - /program/apis/sessions/
+  - /build/program/apis/sessions/
 ---
 
 When you connect to a machine using an SDK, the SDK connects to the machine's `viam-server` instance as a _client_.
@@ -119,7 +120,7 @@ To manage your session with the session management API:
 ### Disable default session management
 
 The `SessionsClient` that serves the session management API is automatically enabled on your machine.
-It is instantiated as part of your [`RobotClient`](/build/program/apis/#robot-api) instance (client of the Robot API).
+It is instantiated as part of your [`RobotClient`](/appendix/apis/#robot-api) instance (client of the Robot API).
 If you want to disable it, you can pass the option to your machine, as demonstrated in the following code snippets:
 
 {{< tabs >}}
@@ -159,6 +160,6 @@ You can do this with Viam's [client SDKs](https://pkg.go.dev/go.viam.com/rdk/ses
 
 ### Use the session management API to manually manage sessions
 
-Use your [`RobotClient()`](/build/program/apis/#robot-api) instance to access the [`SessionsClient`](https://pkg.go.dev/go.viam.com/rdk/session) within your client SDK program.
+Use your [`RobotClient()`](/appendix/apis/#robot-api) instance to access the [`SessionsClient`](https://pkg.go.dev/go.viam.com/rdk/session) within your client SDK program.
 This is a [gRPC](https://grpc.io/) client that `viam-server` instantiates at robot runtime.
 Then, define your own [`SessionsClient`](https://github.com/viamrobotics/rdk/blob/main/robot/client/client.go).

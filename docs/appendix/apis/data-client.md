@@ -17,6 +17,7 @@ tags:
   ]
 aliases:
   - /program/apis/data-client/
+  - /build/program/apis/data-client/
 ---
 
 The data client API allows you to upload and retrieve data to and from the [Viam app](https://app.viam.com).

@@ -11,6 +11,7 @@ aliases:
   - /getting-started/rpi-setup/
   - /installation/rpi-setup/
   - /installation/prepare/rpi-setup/
+  - /get-started/installation/prepare/rpi-setup/
 # SME: James
 ---
 

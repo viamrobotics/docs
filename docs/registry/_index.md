@@ -118,7 +118,7 @@ To use a modular resource from the registry, add it from your machine's **CONFIG
 After adding a module to your machine, you can choose to [configure](/registry/configure/) it for automatic version updates from the Viam registry, or update your module manually.
 By default, newly added modules will remain at the version they were when you installed them, and will not update automatically.
 
-Once you have added and configured the module you would like to use in the Viam app, you can test your added resource using the [**CONTROL** tab](/fleet/control/) and program it using [standardized APIs](/build/program/apis/).
+Once you have added and configured the module you would like to use in the Viam app, you can test your added resource using the [**CONTROL** tab](/fleet/control/) and program it using [standardized APIs](/appendix/apis/).
 
 `viam-server` manages the [dependencies](/internals/rdk/#dependency-management), [start-up](/internals/rdk/#start-up), [reconfiguration](/internals/rdk/#reconfiguration), [data management](/data/capture/#configure-data-capture-for-individual-components), and [shutdown](/internals/rdk/#shutdown) behavior of your modular resource.
 
@@ -137,7 +137,7 @@ If none of the existing modular resources in the Viam registry support your use 
 
 - **Implement a custom service**: Implement your own algorithm or {{< glossary_tooltip term_id="model" text="model" >}} against a corresponding service API or use custom algorithms or data models when working with services such as {{< glossary_tooltip term_id="slam" text="SLAM" >}}, vision, or motion planning.
 
-You can write modules in a variety of programming languages, such as, Go, Python, C++, Rust, while implementing the same [APIs](/build/program/apis/).
+You can write modules in a variety of programming languages, such as, Go, Python, C++, Rust, while implementing the same [APIs](/appendix/apis/).
 To create a new module:
 
 1. [Create a module](/registry/create/) with one or more modular resources by implementing all methods for the component's or service's standardized API.
@@ -188,13 +188,13 @@ The `viam` namespace is reserved for models provided by Viam.
 
 ### Valid APIs to implement in your model
 
-When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing {{< glossary_tooltip term_id="component" text="component" >}}, valid [APIs](/build/program/apis/) always have the following parameters:
+When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing {{< glossary_tooltip term_id="component" text="component" >}}, valid [APIs](/appendix/apis/) always have the following parameters:
 
 - `namespace`: `rdk`
 - `type`: `component`
 - `subtype`: any one of [these component proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/component), for example `motor`
 
-When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing [service](/services/), valid [APIs](/build/program/apis/) always have the following parameters:
+When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing [service](/services/), valid [APIs](/appendix/apis/) always have the following parameters:
 
 - `namespace`: `rdk`
 - `type`: `service`

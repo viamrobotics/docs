@@ -9,7 +9,7 @@ description: "Image a Texas Instruments TDA4VM starter kit board to prepare it f
 no_list: true
 aliases:
   - /installation/prepare/sk-tda4vm/
-#SMEs: Matt Dannenberg
+  - /get-started/installation/prepare/sk-tda4vm/
 ---
 
 ## Hardware requirements

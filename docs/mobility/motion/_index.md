@@ -46,7 +46,7 @@ The motion service itself is enabled on the machine by default, so you do not ne
 {{% alert title="Tip" color="tip" %}}
 
 Because the motion service is enabled by default, you don't give it a `"name"` while configuring it.
-Use the name `"builtin"` to access the built-in motion service in your code with methods like [`FromRobot()`](/build/program/apis/#fromrobot) that require a `ResourceName`.
+Use the name `"builtin"` to access the built-in motion service in your code with methods like [`FromRobot()`](/appendix/apis/#fromrobot) that require a `ResourceName`.
 
 {{% /alert %}}
 

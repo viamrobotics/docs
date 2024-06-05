@@ -483,7 +483,7 @@ http_server_process_pids = subprocess.run(["ps -ef | grep http.server | grep -v 
 ## For each http.server processes detected, make educated guesses about which is which, determine the port used, and build the staging URL to scrape against:
 for pid in http_server_process_pids:
     http_server_pwd_result = subprocess.run(["lsof -Pp " + pid + " | grep cwd | awk {'print $9'}"], shell=True, text = True, capture_output=True).stdout.rstrip()
-    
+
     ## Quality guess: Python build process always builds to this directory; safe to assume:
     if 'docs/_build/html' in http_server_pwd_result:
         python_process_port = subprocess.run(["lsof -Pp " + pid + " | grep LISTEN | awk {'print $9'} | sed 's%.*:%%g'"], shell=True, text = True, capture_output=True).stdout.rstrip()
@@ -494,7 +494,7 @@ for pid in http_server_process_pids:
 
     ## Mediocre guess: Flutter build process likely to have string 'flutter' in cwd, either 'viam-flutter-sdk' as cloned directly, or 'flutter' as renamed by operator.
     ## TODO: If operators run into instances where this script misses a valid Flutter staging URL because the path to that staged HTML artifacts dir has been
-    ## renamed in a fashion that does not include the string 'flutter', then change this to just always pick up any instances of http.server that aren't already matched to 
+    ## renamed in a fashion that does not include the string 'flutter', then change this to just always pick up any instances of http.server that aren't already matched to
     ## Go, above. This would mean that operators cannot run an unrelated http.server instance on this workstation, which they currently can do with present config.
     if 'flutter' in http_server_pwd_result:
         flutter_process_port = subprocess.run(["lsof -Pp " + pid + " | grep LISTEN | awk {'print $9'} | sed 's%.*:%%g'"], shell=True, text = True, capture_output=True).stdout.rstrip()
@@ -601,7 +601,7 @@ def link_data_types(sdk, data_type_string):
 
 ## Link matching text, used in write_markdown():
 ## NOTE: Currently does not support formatting for link titles
-## (EXAMPLE: bolded DATA tab here: https://docs.viam.com/build/program/apis/data-client/#binarydatabyfilter)
+## (EXAMPLE: bolded DATA tab here: https://docs.viam.com/appendix/apis/data-client/#binarydatabyfilter)
 def link_description(format_type, full_description, link_text, link_url):
 
     ## Supports 'md' link styling or 'html' link styling.
@@ -1527,13 +1527,13 @@ def write_markdown(type, names, methods):
                         elif type == 'service' and resource in ['mlmodel', 'vision']:
                             proto_anchor_link = '/ml/' + resource.replace('mlmodel', 'deploy') + '/#' + proto.lower()
                         elif type == 'app' and resource == 'app':
-                            proto_anchor_link = '/build/program/apis/fleet/#' + proto.lower()
+                            proto_anchor_link = '/appendix/apis/fleet/#' + proto.lower()
                         elif type == 'app' and resource in ["billing", "mltraining"]:
-                            proto_anchor_link = '/build/program/apis/' + resource.replace('mltraining','ml-training') + '-client/#' + proto.lower()
+                            proto_anchor_link = '/appendix/apis/' + resource.replace('mltraining','ml-training') + '-client/#' + proto.lower()
                         elif type == 'app' and resource in ["data", "dataset", "data_sync"]:
-                            proto_anchor_link = '/build/program/apis/data-client/#' + proto.lower()
+                            proto_anchor_link = '/appendix/apis/data-client/#' + proto.lower()
                         elif type == 'robot':
-                            proto_anchor_link = '/build/program/apis/' + resource + '/#' + proto.lower()
+                            proto_anchor_link = '/appendix/apis/' + resource + '/#' + proto.lower()
 
                         ## Fetch just the first sentence from the proto_override_file (first text string terminated by '.\n'), ignoring hugo
                         ## shortcodes like alerts ('{{%.*%}}.*{{% \[a-b].* %}}'), which precede some override files' (proto descriptions')

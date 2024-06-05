@@ -13,7 +13,7 @@ The `namespace` for built-in Viam resources is `rdk`, while the `type` is `compo
 `subtype` refers to a specific component or service, like a `camera` or `vision`.
 
 One subtype can have various {{< glossary_tooltip term_id="model" text="models" >}}, custom or built-in, but they all must conform to the subtype's API definition.
-This requirement ensures that when a resource of that model is deployed, you can [interface with it](/build/program/) using the same [client API methods](/build/program/apis/) you would when programming resources of the same subtype with a different model.
+This requirement ensures that when a resource of that model is deployed, you can [interface with it](/build/program/) using the same [client API methods](/appendix/apis/) you would when programming resources of the same subtype with a different model.
 
 For example:
 

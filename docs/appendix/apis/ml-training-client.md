@@ -7,6 +7,7 @@ description: "Use the ML training client API to manage ML training jobs taking p
 tags: ["cloud", "sdk", "viam-server", "networking", "apis", "ml model", "ml"]
 aliases:
   - /program/apis/ml_training-client/
+  - /build/program/apis/ml-training-client/
 ---
 
 The ML training API allows you to get information about and cancel ML training jobs taking place on the [Viam app](https://app.viam.com).
@@ -102,7 +103,7 @@ Get training job metadata for all jobs within an organization.
 
 **Parameters:**
 
-- `org_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of your organization to request training job metadata from. Retrieve this value with the fleet management API's [`ListOrganizations()`](/build/program/apis/fleet/#listorganizations).
+- `org_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of your organization to request training job metadata from. Retrieve this value with the fleet management API's [`ListOrganizations()`](/appendix/apis/fleet/#listorganizations).
 - `training_status` [(Optional[TrainingStatus.ValueType])](https://python.viam.dev/autoapi/viam/gen/app/mltraining/v1/ml_training_pb2/index.html#viam.gen.app.mltraining.v1.ml_training_pb2.TrainingStatus): The status of training jobs you want to filter the list by. If you leave this unspecified, all training jobs for your organization are returned.
 
 **Returns**:

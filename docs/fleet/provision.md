@@ -54,7 +54,7 @@ If you want to install the Viam Agent on a machine that you have already configu
 
 1. Determine your machine {{< glossary_tooltip term_id="part" text="part's" >}} ID.
    To copy the ID of your machine part, select the part status dropdown to the right of your machine's location and name on the top of its page and click the copy icon next to **Part ID**.
-   For an example, see [Find part ID](/build/program/apis/data-client/#find-part-id)
+   For an example, see [Find part ID](/appendix/apis/data-client/#find-part-id)
 1. Determine your machine's [API key and API key ID](/build/program/#authenticate).
    If you haven't already, you can [use the CLI to create a new API key and API key ID](/cli/#create-an-organization-api-key).
 1. Run the following command, replacing `<KEYID>`, `<KEY>`, and `<PARTID>` with your machine's values as determined from the steps above:

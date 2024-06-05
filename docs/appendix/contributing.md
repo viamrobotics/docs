@@ -158,7 +158,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   {{% /expand %}}
 
 - **Reference**: A concise, information-oriented piece of content that generally starts with an overview/introduction and then a list of some kind (configuration options, API methods, etc.).
-  Examples include the [API pages](/build/program/apis/) as well as [component and service pages](/components/arm/).
+  Examples include the [API pages](/appendix/apis/) as well as [component and service pages](/components/arm/).
 
   Example template: [Component template](https://github.com/viamrobotics/docs/blob/main/docs/components/component/_index.md).
 

@@ -91,7 +91,7 @@ flutter pub add viam_sdk
 
 ## Hello world: the CONNECT tab
 
-Create a program in the language of your choice to connect to your machine and use methods built into the SDK's client API libraries to [interact with and control](/build/program/apis/) the {{< glossary_tooltip term_id="resource" text="resources" >}} on the machine.
+Create a program in the language of your choice to connect to your machine and use methods built into the SDK's client API libraries to [interact with and control](/appendix/apis/) the {{< glossary_tooltip term_id="resource" text="resources" >}} on the machine.
 
 Start by navigating to your machine's page on [the Viam app](https://app.viam.com/robots).
 Select the **CONNECT** tab and **Code sample** page, select your preferred programming language, and copy the code generated for you from the corresponding SDK.
@@ -305,11 +305,11 @@ The program will connect to your machine and print a list of the available {{< g
 
 ### Edit the sample code
 
-Once you have successfully run the sample code, you can edit the boilerplate code by [adding control logic](/build/program/apis/) to make a client application that connects to your machine and controls it in the way you want.
-You can find the right libraries to import for SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/build/program/apis/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
+Once you have successfully run the sample code, you can edit the boilerplate code by [adding control logic](/appendix/apis/) to make a client application that connects to your machine and controls it in the way you want.
+You can find the right libraries to import for SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/appendix/apis/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
 
 {{< cards >}}
-{{% card link="/build/program/apis/" customTitle="Add Logic to Interface with Resources" %}}
+{{% card link="/appendix/apis/" customTitle="Add Logic to Interface with Resources" %}}
 {{% card link="/build/program/run/" %}}
 {{% card link="/build/program/debug/" %}}
 {{< /cards >}}

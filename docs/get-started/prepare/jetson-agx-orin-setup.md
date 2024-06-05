@@ -9,6 +9,7 @@ description: "Set up the Jetson AGX Orin Developer Kit to prepare your NVIDIA Je
 no_list: true
 aliases:
   - /installation/prepare/jetson-agx-orin-setup/
+  - /get-started/installation/prepare/jetson-agx-orin-setup/
 # SMEs: Pete Garafano
 ---
 

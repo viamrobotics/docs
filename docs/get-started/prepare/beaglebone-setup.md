@@ -11,6 +11,7 @@ aliases:
   - "/installation/beaglebone-install/"
   - "/installation/prepare/beaglebone-install/"
   - "/installation/prepare/beaglebone-setup/"
+  - /get-started/installation/prepare/beaglebone-setup/
 # SMEs: Shawn, Matt Dannenberg, and Rand
 ---
 
