@@ -9,6 +9,7 @@ images: ["/services/vision/dog-detector.png"]
 aliases:
   - "/services/vision/detection/"
   - "/services/vision/classification/"
+  - "/ml/vision/color_detector/"
 # SMEs: Bijan, Khari
 ---
 
