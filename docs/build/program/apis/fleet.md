@@ -1320,8 +1320,9 @@ List the {{< glossary_tooltip term_id="module" text="modules" >}} under the orga
 {{% tab name="Python" %}}
 
 **Parameters:**
+
 - `org_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Organization ID for which to retrieve modules.
-- 
+
 **Raises:**
 
 - `GRPCError`: This error is raised if an invalid machine ID is passed.
