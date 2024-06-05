@@ -70,7 +70,7 @@ Use [modules](/registry/) to deploy code to your fleet and manage versioning.
 {{< cards >}}
 {{% card link="/fleet/" %}}
 {{% card link="/cli/" %}}
-{{% card link="/fleet/rbac/" %}}
+{{% card link="/cloud/rbac/" %}}
 
 <!-- markdownlint-disable MD034 -->
 

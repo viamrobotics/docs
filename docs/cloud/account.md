@@ -6,6 +6,8 @@ type: "docs"
 description: "Log in and out of your Viam account."
 tags: ["fleet management", "cloud", "app"]
 no_list: true
+aliases:
+  - /fleet/account/
 ---
 
 The [Viam app](https://app.viam.com/) is a web UI for managing and building machines.

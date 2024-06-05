@@ -9,6 +9,7 @@ images: ["/fleet/app-usage/create-machine.png"]
 aliases:
   - /fleet/robots/
   - /manage/fleet/machines/
+  - /fleet/machines/
 ---
 
 A _machine_ is an organizational concept, consisting of either one <em>{{< glossary_tooltip term_id="part" text="part" >}}</em>, or multiple _parts_ working closely together to complete tasks.
@@ -121,7 +122,7 @@ This page has instructions for how to configure a {{< glossary_tooltip term_id="
 #### API keys
 
 Your machine and the Viam app communicate securely using [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection) with unique secrets.
-The **API keys** page of the **CONNECT** tab allows you to access, generate, and delete your [API keys](/fleet/rbac/#api-keys), which grant access to organizations, locations, and machines.
+The **API keys** page of the **CONNECT** tab allows you to access, generate, and delete your [API keys](/cloud/rbac/#api-keys), which grant access to organizations, locations, and machines.
 
 ![The Security tab of a machine's page noting the Machine part API keys dropdown menu, with the clipboard icon on the far right and the Generate Key button underneath the dropdown.](/fleet/app-usage/machine-secrets.png)
 

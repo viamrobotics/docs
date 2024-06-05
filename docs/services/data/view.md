@@ -9,7 +9,6 @@ icon: true
 images: ["/services/ml/collect.svg"]
 aliases:
   - /manage/data/view/
-aliases:
   - /data/view/
 # SME: Alexa Greenberg
 ---
@@ -20,7 +19,7 @@ After the data management service synchronizes the uploaded data in Viam, you ca
 
 The **DATA** page displays data from all resources you are an owner of within the {{< glossary_tooltip term_id="organization" text="organization" >}} you are currently authenticated to.
 This includes data from any locations shared with your organizations.
-For more information on who can do what with data, see [Permissions](/fleet/rbac/#permissions).
+For more information on who can do what with data, see [Permissions](/cloud/rbac/#permissions).
 
 The **DATA** page shows data about:
 

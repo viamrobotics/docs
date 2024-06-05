@@ -1,7 +1,7 @@
 ---
 title: "Services"
 linkTitle: "Services"
-weight: 550
+weight: 420
 type: docs
 description: "Services are built-in software packages that make it easier to add complex capabilities such as motion planning or object detection to your machine."
 images: ["/general/services.png"]

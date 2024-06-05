@@ -115,7 +115,7 @@ For _tabular_ sensor data, you can run {{< glossary_tooltip term_id="sql" text="
 ### Permissions
 
 Data management permissions vary between owners and operators.
-For more information about who can do what with data, see [Data Permissions](/fleet/rbac/#data-and-machine-learning).
+For more information about who can do what with data, see [Data Permissions](/cloud/rbac/#data-and-machine-learning).
 
 ## API
 

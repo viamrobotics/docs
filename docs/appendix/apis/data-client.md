@@ -35,7 +35,7 @@ To use the Viam data client API, you first need to instantiate a [`ViamClient`](
 You will also need an API key and API key ID to authenticate your session.
 To get an API key (and corresponding ID), you have two options:
 
-- [Create an API key using the Viam app](/fleet/rbac/#add-an-api-key)
+- [Create an API key using the Viam app](/cloud/rbac/#add-an-api-key)
 - [Create an API key using the Viam CLI](/cli/#create-an-organization-api-key)
 
 The following example instantiates a `ViamClient`, authenticating with an API key, and then instantiates a `DataClient`:

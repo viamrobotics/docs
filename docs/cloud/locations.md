@@ -8,6 +8,7 @@ description: A location is a virtual grouping of machines that allows you to org
 tags: ["fleet management", "cloud", "app"]
 aliases:
   - /manage/fleet/locations/
+  - /fleet/locations/
 ---
 
 In Viam, every machine belongs to a location.
@@ -55,7 +56,7 @@ To move a sub-location to the top level of locations, select **Root** from the *
 A location always belongs to the organization it was created in.
 Members of the organization have access to all locations in the organization by default.
 
-For more information on the permissions the roles assign for each resource, see [Permissions](/fleet/rbac/#locations).
+For more information on the permissions the roles assign for each resource, see [Permissions](/cloud/rbac/#locations).
 
 You can share a location beyond its organization by sharing a location with an additional organization:
 

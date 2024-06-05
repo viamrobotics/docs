@@ -159,7 +159,7 @@ You can now run `viam-server` on a [Raspberry Pi 5](/components/board/pi5/) with
 
 {{% changelog date="2023-12-31" color="added" title="Role-based access control" %}}
 
-Users can now have [access to different fleet management capabilities](/fleet/rbac/) depending on whether they are an owner or an operator of a given organization, location, or machine.
+Users can now have [access to different fleet management capabilities](/cloud/rbac/) depending on whether they are an owner or an operator of a given organization, location, or machine.
 
 {{% /changelog %}}
 
@@ -188,7 +188,7 @@ To make it easier to iterate while training machine learning models from image d
 {{% changelog date="2023-11-30" color="improved" title="Manage users access" %}}
 
 You can now manage users access to machines, locations, and organizations.
-For more information, see [Access Control](/fleet/rbac/)
+For more information, see [Access Control](/cloud/rbac/)
 
 {{% /changelog %}}
 

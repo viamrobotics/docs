@@ -1,19 +1,12 @@
 ---
-title: "Deploy a large fleet"
-linkTitle: "Deploy a large fleet"
+title: "Cloud Organization Hierarchy"
+linkTitle: "Cloud Organization Hierarchy"
 weight: 430
 type: "docs"
 description: "Configure, control, debug, and manage your machines from the cloud at app.viam.com on your own or with a team."
 tags: ["fleet management", "cloud", "app"]
 images: ["/platform/fleet.svg"]
 no_list: true
-aliases:
-  - "/manage/fleet-management"
-  - "/manage/app-usage"
-  - "/product-overviews/fleet-management/"
-  - "/fleet/"
-  - /manage/fleet/
-  - /manage/
 menuindent: true
 ---
 

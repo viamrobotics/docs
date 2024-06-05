@@ -7,6 +7,7 @@ description: "An organization is a group of one or more locations that helps you
 tags: ["fleet management", "cloud", "app"]
 aliases:
   - /manage/fleet/organizations/
+  - /fleet/organizations/
 ---
 
 An organization is a group of one or more locations that helps you organize your fleet.
@@ -15,7 +16,7 @@ An organization is the highest level grouping in the Viam platform, which genera
 You can also use organizations for departments or other entities that can have one or more [locations](/fleet/locations/).
 If you are familiar with Google Drive, you can think of an organization as a shared drive.
 
-{{<imgproc src="/fleet/rbac.png" resize="900x" declaredimensions=true alt="Organization page">}}
+{{<imgproc src="/cloud/rbac.png" resize="900x" declaredimensions=true alt="Organization page">}}
 
 When you or another user registers for an account with Viam, they become a member of an organization.
 If the user was invited to an organization, they become a part of that organization.
@@ -57,7 +58,7 @@ You can grant a user access to the following resources:
 - a {{< glossary_tooltip term_id="location" text="location" >}}
 - a {{< glossary_tooltip term_id="machine" text="machine" >}}
 
-For more information on the permissions the roles assign for each resource, see [Permissions](/fleet/rbac/#permissions).
+For more information on the permissions the roles assign for each resource, see [Permissions](/cloud/rbac/#permissions).
 
 #### Use the mobile app
 

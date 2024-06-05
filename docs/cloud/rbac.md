@@ -5,6 +5,8 @@ description: "Fleet and data management permissions."
 weight: 50
 type: "docs"
 tags: ["data management", "cloud", "app", "fleet management"]
+aliases:
+  - /fleet/rbac/
 # SME: Devin Hilly
 ---
 
@@ -16,7 +18,7 @@ Users can have access to different fleet management capabilities depending on wh
 - **Operator**: Can see and use only the [**CONTROL**](/fleet/control/) tab.
   Cannot see or edit the [**CONFIGURE**](/fleet/machines/#configure), [**LOGS**](/fleet/machines/#logs), or **CONNECT** tabs.
 
-For more detailed information on the permissions each role confers for different resources, see [Permissions](/fleet/rbac/#permissions).
+For more detailed information on the permissions each role confers for different resources, see [Permissions](/cloud/rbac/#permissions).
 
 ## Change a user's access
 
@@ -24,7 +26,7 @@ If you have the **Owner** role, you can [invite new users](/fleet/organizations/
 
 To view the roles each organization member has, click on the organization dropdown in the top navigation bar and click on **Settings**.
 
-{{<imgproc src="/fleet/rbac.png" resize="700x" declaredimensions=true alt="Organization page">}}
+{{<imgproc src="/cloud/rbac.png" resize="700x" declaredimensions=true alt="Organization page">}}
 
 ### Limit access
 
@@ -35,7 +37,7 @@ You can also remove the user by clicking on **Remove user**.
 
 {{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/limit-access.png" resize="800x" declaredimensions=true >}}
 
-For more information on the permissions the roles assign for each resource, see [Permissions](/fleet/rbac/#permissions).
+For more information on the permissions the roles assign for each resource, see [Permissions](/cloud/rbac/#permissions).
 
 ### Grant additional access
 
@@ -44,7 +46,7 @@ Then either change the role of the user from operator to owner with the dropdown
 
 {{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/grant-access.png" resize="800x" declaredimensions=true >}}
 
-For more information on the permissions the roles assign for each resource, see [Permissions](/fleet/rbac/#permissions).
+For more information on the permissions the roles assign for each resource, see [Permissions](/cloud/rbac/#permissions).
 
 {{< alert title="Note" color="note" >}}
 The option to grant additional access is only visible if you can grant the user additional access.

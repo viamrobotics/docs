@@ -41,7 +41,7 @@ Before you can configure data query, you must:
 ## Query tabular data in the Viam app
 
 Once you have synced tabular data to the Viam app, you can run SQL or MQL queries against your synced data from the [**Query** subtab](https://app.viam.com/data/query) under the **Data** tab in the Viam app.
-You must have the [owner](/fleet/rbac/) role in order to query data in the Viam app.
+You must have the [owner](/cloud/rbac/) role in order to query data in the Viam app.
 
 1. Navigate to the [**Query** subtab](https://app.viam.com/data/query).
 

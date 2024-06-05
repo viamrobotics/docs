@@ -5,6 +5,8 @@ weight: 40
 type: "docs"
 description: Use fragments to configure many machines at the same time.
 tags: ["fleet management", "cloud", "app"]
+aliases:
+  - /fleet/configure-a-fleet/
 ---
 
 If you have multiple machines with similar configurations, you can use a _fragment_ to configure all of the machines at the same time.
@@ -28,7 +30,7 @@ You can see the number of machines using your fragment from the [fragments page]
 
 Fragments are private to each organization by default.
 If you would like to make your fragment available to users outside your organization, please reach out to us to request that we make your fragment public.
-You must be an [organization owner](/fleet/rbac/#permissions) in order to create fragments.
+You must be an [organization owner](/cloud/rbac/#permissions) in order to create fragments.
 
 A fragment can define one, several, or all resources on a machine.
 You can add multiple fragments to a single machine, and you can add additional resources to a machine that has already been configured with a fragment.

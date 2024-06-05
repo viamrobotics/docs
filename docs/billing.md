@@ -1,10 +1,13 @@
 ---
 title: "Payment and billing"
 linkTitle: "Billing"
-weight: 99
+weight: 790
 type: "docs"
 description: "An overview of the Payments & Billing page."
 tags: ["fleet management", "cloud", "app"]
+menuindent: true
+aliases:
+  - /fleet/billing/
 ---
 
 {{<imgproc src="/fleet/billing-menu.png" resize="400x" declaredimensions=true alt="Payment and billing menu item" class="alignright">}}

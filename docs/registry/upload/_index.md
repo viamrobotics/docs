@@ -554,7 +554,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 {{% /tab %}}
 {{< /tabs >}}
 
-1. Create an [organization API key](/cli/#create-an-organization-api-key) with the [owner](/fleet/rbac/#permissions) role, which the GitHub action will use to authenticate to the Viam platform, using one of the following methods:
+1. Create an [organization API key](/cli/#create-an-organization-api-key) with the [owner](/cloud/rbac/#permissions) role, which the GitHub action will use to authenticate to the Viam platform, using one of the following methods:
 
    - Use the Viam CLI to create an organization API key, which includes the owner role by default:
 
@@ -595,7 +595,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 
 You can change the visibility of a module from public to private if:
 
-- you are an [owner](/fleet/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
+- you are an [owner](/cloud/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
 - no machines outside of the organization that owns the module have the module configured (no other orgs are using it).
 
 To change the visibility, navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry), hover to the right of the visibility indicator near the right side of the page until an **Edit** button appears, and click it to make changes.
@@ -612,7 +612,7 @@ viam module update
 
 You can delete a module if:
 
-- you are an [owner](/fleet/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
+- you are an [owner](/cloud/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
 - no machines have the module configured.
 
 To delete a module, navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry), click the **...** menu in the upper-right corner of the page, and click **Delete**.

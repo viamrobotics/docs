@@ -235,7 +235,7 @@ Once you understand how to configure machines and use fragments, you can use [Pr
 
 You have configured the sensor so the board can communicate with it, but sensor data is not yet being saved anywhere.
 Viam's [data management service](/data/) lets you capture data locally from each sensor and then sync it to the cloud where you can access historical sensor data and see trends over time.
-Once you configure the rest of your sensing machines, you'll be able to remotely access data from all sensors in all locations, and when you're ready, you can give customers [access](/fleet/rbac/) to the data from the sensors in their locations.
+Once you configure the rest of your sensing machines, you'll be able to remotely access data from all sensors in all locations, and when you're ready, you can give customers [access](/cloud/rbac/) to the data from the sensors in their locations.
 
 Configure data capture and sync as follows:
 
