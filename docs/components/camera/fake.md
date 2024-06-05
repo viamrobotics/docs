@@ -9,6 +9,7 @@ tags: ["camera", "components"]
 aliases:
   - "/components/camera/fake/"
 component_description: "A camera model for testing."
+toc_hide: true
 # SMEs: Bijan, vision team
 ---
 

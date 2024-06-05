@@ -10,6 +10,7 @@ aliases:
   - "/components/camera/webcam/"
 component_description: "A standard camera that streams camera data."
 usage: 999999
+toc_hide: true
 # SMEs: Bijan, vision team
 ---
 
