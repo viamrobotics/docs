@@ -74,11 +74,19 @@ If you prefer to configure your webhook with raw JSON instead of the config buil
 ```json {class="line-numbers linkable-line-numbers"}
   "webhooks": [
     {
-      "url": "<Insert your own cloud function or lambda URL for sending the event>",
+      "url": "<Insert your own cloud function or lambda URL for sending the event>?data_type=binary",
       "event": {
         "type": "part_data_ingested",
         "attributes": {
           "data_types": ["binary", "tabular", "file"]
+        },
+        "type": "part_data_ingested",
+        "headers": {
+          "Component-Type": "<Component type>",
+          "Component-Name": "<Component name>",
+          "Method-Name": "<Method name>",
+          "Min-Time-Received": "<Minimum time>",
+          "Max-Time-Received": "<Maximum time>",
         }
       }
     }
@@ -91,11 +99,19 @@ If you prefer to configure your webhook with raw JSON instead of the config buil
 ```json {class="line-numbers linkable-line-numbers"}
   "webhooks": [
     {
-      "url": "<Insert your own cloud function or lambda URL for sending the event>",
+      "url": "https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws?data_type=binary",
       "event": {
         "type": "part_online",
         "attributes": {
-          "seconds_between_notifications": <number of seconds>
+          "data_types": ["binary", "tabular"]
+        },
+        "type": "part_data_ingested",
+        "headers": {
+          "Component-Type": "sensor",
+          "Component-Name": "my_temp_sensor",
+          "Method-Name": "temperature_reading",
+          "Min-Time-Received": "2024-01-01T00:00:00",
+          "Max-Time-Received": "2024-01-01T23:59:59"
         }
       }
     }
@@ -103,7 +119,57 @@ If you prefer to configure your webhook with raw JSON instead of the config buil
 ```
 
 {{% /tab %}}
-{{% tab name="JSON Template: Part Offline" %}}
+{{< /tabs >}}
+
+2. Replace the URL value with the URL of your cloud/lambda function.
+3. Edit the `data_types` list to include only the types of data you want to trigger on.
+4. Configure [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/) for the relevant components.
+   For example, if you want to trigger a webhook on temperature readings, configure data capture and sync on your temperature sensor.
+   Be aware that the component must return the type of data you configured in `data_types`.
+5. Write your cloud/lambda function to process the request from `viam-server`.
+   The following example function sends a Slack message with a machine's details, such as robot and location IDs, as well as other relevant headers, when it receives a request:
+
+   ```python {class="line-numbers linkable-line-numbers"}
+   import functions_framework
+   import requests
+   import time
+
+   @functions_framework.http
+   def hello_http(request):
+     payload = {
+       "Org-ID": request.headers['org-id'] if 'org-id' in request.headers else 'no value',
+       "Location-ID": request.headers['location-id'] if 'location-id' in request.headers else 'no value',
+       "Part-ID": request.headers['part-id'] if 'part-id' in request.headers else 'no value',
+       "Robot-ID": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value',
+       "Component-Type": request.headers['component-type'] if 'component-type' in request.headers else 'no value',
+       "Component-Name": request.headers['component-name'] if 'component-name' in request.headers else 'no value',
+       "Method-Name": request.headers['method-name'] if 'method-name' in request.headers else 'no value',
+       "Min-Time-Received": request.headers['min-time-received'] if 'min-time-received' in request.headers else 'no value',
+       "Max-Time-Received": request.headers['max-time-received'] if 'max-time-received' in request.headers else 'no value',
+
+      "Data-Type": request.args['data_type'] if 'data_type' in request.args else 'no value'
+     }
+
+     slack_url = "<paste in your own Slack URL>"
+     headers = {}
+
+     response = requests.post(slack_url, json=payload, headers=headers)
+
+     request_json = request.get_json(silent=True)
+     request_args = request.args
+
+     return 'Sent request to {}'.format(slack_url)
+
+   ```
+
+{{% /tab %}}
+{{% tab name="part_online" %}}
+
+1. Paste the following JSON template into your raw JSON config.
+   `"webhooks"` is a top-level section like `"components"`, `"services"`, or any of the other config sections.
+
+{{< tabs >}}
+{{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
   "webhooks": [
@@ -173,11 +239,11 @@ If you prefer to configure your webhook with raw JSON instead of the config buil
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% /tab %}}
-{{< /tabs >}}
-
-7. Write your cloud/lambda function to process the request from `viam-server`.
-   The following example function sends a Slack message with a machine's details, such as robot and location IDs, when it receives a request:
+2. Replace the URL value with the URL of your cloud/lambda function.
+3. While your part is online, the webhook action triggers at a specified interval.
+   Edit the `seconds_between_notifications` attribute to set this interval according to your preferences.
+4. Write your cloud/lambda function to process the request from `viam-server`.
+   The following example function sends a Slack message with a machine's details, such as robot and location IDs, as well as other relevant headers, when it receives a request:
 
    ```python {class="line-numbers linkable-line-numbers"}
    import functions_framework
@@ -190,7 +256,14 @@ If you prefer to configure your webhook with raw JSON instead of the config buil
        "Org-ID": request.headers['org-id'] if 'org-id' in request.headers else 'no value',
        "Location-ID": request.headers['location-id'] if 'location-id' in request.headers else 'no value',
        "Part-ID": request.headers['part-id'] if 'part-id' in request.headers else 'no value',
-       "Robot-ID": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value'
+       "Robot-ID": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value',
+       "Component-Type": request.headers['component-type'] if 'component-type' in request.headers else 'no value',
+       "Component-Name": request.headers['component-name'] if 'component-name' in request.headers else 'no value',
+       "Method-Name": request.headers['method-name'] if 'method-name' in request.headers else 'no value',
+       "Min-Time-Received": request.headers['min-time-received'] if 'min-time-received' in request.headers else 'no value',
+       "Max-Time-Received": request.headers['max-time-received'] if 'max-time-received' in request.headers else 'no value',
+
+      "Data-Type": request.args['data_type'] if 'data_type' in request.args else 'no value'
      }
 
      slack_url = "<paste in your own Slack URL>"
