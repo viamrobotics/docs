@@ -6,6 +6,8 @@ type: "docs"
 description: "Configure a WitMotion HWT905-TTL IMU on your machine. Once configured, use the API to obtain the AngularVelocity, Orientation, CompassHeading and LinearAcceleration."
 images: ["/icons/components/imu.svg"]
 component_description: "The HWT905-TTL IMU manufactured by WitMotion."
+aliases:
+  - "/components/movement-sensor/imu/imu-wit-hwt905/"
 # SMEs: Susmita, Bucket Team
 ---
 
