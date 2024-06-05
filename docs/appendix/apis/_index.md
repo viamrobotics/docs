@@ -10,6 +10,7 @@ tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api"]
 aliases:
   - /program/sdks/
   - /program/apis/
+  - /build/program/apis/
 no_list: true
 ---
 
@@ -23,19 +24,19 @@ The API methods provided by the SDKs for each of these resource APIs wrap gRPC c
 
 ### Robot API
 
-All machines support the following methods through the [robot API](/build/program/apis/robot/):
+All machines support the following methods through the [robot API](/appendix/apis/robot/):
 
 {{< readfile "/static/include/services/apis/robot.md" >}}
 
 ### Fleet management API
 
-The [fleet management API](/build/program/apis/fleet/) supports the following methods:
+The [fleet management API](/appendix/apis/fleet/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/fleet.md" >}}
 
 ### Data client API
 
-The [data client API](/build/program/apis/data-client/) supports the following methods to upload and retrieve data like images or sensor readings directly to the [Viam app](https://app.viam.com) (among [others](https://python.viam.dev/autoapi/viam/app/data_client/index.html)):
+The [data client API](/appendix/apis/data-client/) supports the following methods to upload and retrieve data like images or sensor readings directly to the [Viam app](https://app.viam.com) (among [others](https://python.viam.dev/autoapi/viam/app/data_client/index.html)):
 
 {{< readfile "/static/include/services/apis/data-client.md" >}}
 
@@ -47,7 +48,7 @@ The ML training API allows you to get information about and cancel ML training j
 
 ### Billing client API
 
-The [billing client API](/build/program/apis/billing-client/) supports the following methods to retrieve billing information from the [Viam app](https://app.viam.com):
+The [billing client API](/appendix/apis/billing-client/) supports the following methods to retrieve billing information from the [Viam app](https://app.viam.com):
 
 {{< readfile "/static/include/services/apis/billing-client.md" >}}
 

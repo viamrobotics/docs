@@ -43,22 +43,22 @@ For an overview of the Viam software platform, see [Viam in 3 minutes](/get-star
 If you are using one of the following boards, click on the card to follow the guide for that board:
 
 {{< cards >}}
-{{% card link="/get-started/installation/prepare/rpi-setup/" class="small" %}}
-{{% card link="/get-started/installation/prepare/odroid-c4-setup/" class="small" %}}
-{{% card link="/get-started/installation/prepare/orange-pi-3-lts/" class="small" %}}
-{{% card link="/get-started/installation/prepare/orange-pi-zero2/" class="small" %}}
-{{% card link="/get-started/installation/prepare/beaglebone-setup/" class="small" %}}
-{{% card link="/get-started/installation/prepare/jetson-agx-orin-setup/" class="small" %}}
-{{% card link="/get-started/installation/prepare/jetson-nano-setup/" class="small" %}}
-{{% card link="/get-started/installation/prepare/pumpkin/" class="small" %}}
-{{% card link="/get-started/installation/prepare/sk-tda4vm/" class="small" %}}
+{{% card link="/get-started/prepare/rpi-setup/" class="small" %}}
+{{% card link="/get-started/prepare/odroid-c4-setup/" class="small" %}}
+{{% card link="/get-started/prepare/orange-pi-3-lts/" class="small" %}}
+{{% card link="/get-started/prepare/orange-pi-zero2/" class="small" %}}
+{{% card link="/get-started/prepare/beaglebone-setup/" class="small" %}}
+{{% card link="/get-started/prepare/jetson-agx-orin-setup/" class="small" %}}
+{{% card link="/get-started/prepare/jetson-nano-setup/" class="small" %}}
+{{% card link="/get-started/prepare/pumpkin/" class="small" %}}
+{{% card link="/get-started/prepare/sk-tda4vm/" class="small" %}}
 {{< /cards >}}
 
 Viam also provides a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured Robot Development Kit (RDK).
 If you are using a microcontroller, prepare your board using the following guide:
 
 {{< cards >}}
-{{% card link="/get-started/installation/prepare/microcontrollers" class="small" %}}
+{{% card link="/get-started/installation/microcontrollers" class="small" %}}
 {{< /cards >}}
 
 Other SBCs such as the [RockPi S](https://wiki.radxa.com/RockpiS) and [Orange Pi Zero 2](https://orangepi.com/index.php?route=product/product&path=237&product_id=849) can run Viam with an experimental [periph.io](https://periph.io/) based [modular component](https://github.com/viam-labs/periph_board).

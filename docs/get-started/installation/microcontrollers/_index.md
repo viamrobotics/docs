@@ -1,6 +1,6 @@
 ---
-title: "Microcontroller Setup: the Micro-RDK"
-linkTitle: "Microcontroller Setup"
+title: "Microcontrollers: the Micro-RDK"
+linkTitle: "Microcontrollers"
 weight: 50
 no_list: true
 type: docs
@@ -10,6 +10,7 @@ description: "Set up the Espressif ESP32 with the micro-RDK."
 aliases:
   - /installation/microcontrollers/
   - /installation/prepare/microcontrollers/
+  - /get-started/installation/prepare/microcontrollers/
 # SMEs: Nicolas M., Gautham V., Andrew M.
 ---
 
@@ -22,7 +23,7 @@ aliases:
 The micro-RDK installer is a CLI that allows you to flash a build of micro-RDK, along with your machine's credentials and your wifi information, directly to your ESP32.
 
 With this installation, you can use your ESP32 with all supported resource APIs, but you cannot write your own code directly interacting with the chip.
-If you want to program the chip directly, follow the setup instructions in [the Micro-RDK Development Setup](/get-started/installation/prepare/microcontrollers/development-setup/) instead.
+If you want to program the chip directly, follow the setup instructions in [the Micro-RDK Development Setup](/get-started/installation/microcontrollers/development-setup/) instead.
 
 ### Flash your ESP32 with the micro-RDK installer
 

@@ -7,6 +7,8 @@ description: "Image an Orange Pi 3 LTS to prepare it for viam-server installatio
 images: ["/get-started/installation/thumbnails/orange-pi-3-LTS.png"]
 imageAlt: "Orange Pi 3 LTS"
 no_list: true
+aliases:
+  - /get-started/installation/prepare/orange-pi-3-lts/
 # SME: Olivia Miller
 ---
 

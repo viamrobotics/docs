@@ -9,6 +9,7 @@ description: "Prepare your Jetson Nano or Jetson Orin Nano for viam-server insta
 no_list: true
 aliases:
   - /installation/prepare/jetson-nano-setup/
+  - /get-started/installation/prepare/jetson-nano-setup/
 # SMEs: Pete Garafano
 ---
 

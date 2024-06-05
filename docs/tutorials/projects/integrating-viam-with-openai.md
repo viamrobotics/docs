@@ -66,7 +66,7 @@ This tutorial will show you how to use the Viam platform to create an AI-integra
 
 ## Hardware list
 
-- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with [`viam-server` installed](/get-started/installation/prepare/rpi-setup/).
+- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with [`viam-server` installed](/get-started/prepare/rpi-setup/).
 - [Viam rover](https://www.viam.com/resources/rover) (note: this tutorial can also be adapted to work with any other configured rover that has a webcam and a microphone)
 - [270 degree servo](https://www.amazon.com/ANNIMOS-Digital-Waterproof-DS3218MG-Control/dp/B076CNKQX4/)
 - [USB powered speaker](https://www.amazon.com/Bluetooth-Portable-Wireless-Speakers-Playtime/dp/B07PLFCP3W/) (with included 3.5mm audio cable and USB power cable)

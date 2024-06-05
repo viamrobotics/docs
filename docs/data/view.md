@@ -47,7 +47,7 @@ To [view only data captured from one machine part or from one component or servi
 {{< /alert >}}
 
 You can also filter data using the [Viam Python SDK](https://python.viam.dev/).
-For example, you could use the [`BinaryDataByFilter`](/build/program/apis/data-client/#binarydatabyfilter) or [`TabularDataByFilter`](/build/program/apis/data-client/#tabulardatabyfilter) methods to filter binary data or tabular data respectively.
+For example, you could use the [`BinaryDataByFilter`](/appendix/apis/data-client/#binarydatabyfilter) or [`TabularDataByFilter`](/appendix/apis/data-client/#tabulardatabyfilter) methods to filter binary data or tabular data respectively.
 
 To query your data using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} instead, see [Query Data using SQL / MQL](/data/query/).
 

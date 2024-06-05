@@ -18,7 +18,7 @@ menuindent: true
 ---
 
 Viam fleet management allows you to organize, manage, and control any number of machines alone or in collaboration with others.
-You can manage and control your fleet of {{< glossary_tooltip term_id="machine" text="smart machines" >}} from the [Viam app](https://app.viam.com), using the [CLI](/cli/), or using the [fleet management API](/build/program/apis/fleet/).
+You can manage and control your fleet of {{< glossary_tooltip term_id="machine" text="smart machines" >}} from the [Viam app](https://app.viam.com), using the [CLI](/cli/), or using the [fleet management API](/appendix/apis/fleet/).
 
 ## Work with groups of machines
 

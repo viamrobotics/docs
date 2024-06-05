@@ -26,7 +26,7 @@ Viam provides built-in support for a variety of different {{< glossary_tooltip t
 
 A module provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, and is packaged in a manner that streamlines deployment to a Viam machine.
 Modules run alongside [`viam-server`](/get-started/installation/) as separate processes, communicating with `viam-server` over UNIX sockets.
-When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/build/program/apis/) with `viam-server`, making the new model available for use.
+When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/appendix/apis/) with `viam-server`, making the new model available for use.
 
 You can search the [Viam Registry](https://app.viam.com/registry) and [deploy an existing module to your machine](/registry/configure/) in a few clicks if you find one that meets your needs.
 Or you can write your own module to address your specific use case, and either upload it to the Viam registry to share with others, or deploy it to your machine as a local module without uploading to the registry.
@@ -36,7 +36,7 @@ Follow the instructions below to learn how to write a new module using your pref
 {{< alert title="Note: Micro-RDK modules" color="note" >}}
 The [micro-RDK](/build/micro-rdk/) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
 Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) for information on how to create custom resources for your micro-RDK machine.
-You will need to [recompile and flash your ESP32 yourself](/get-started/installation/prepare/microcontrollers/development-setup/) instead of using Viam's prebuilt binary and installer.
+You will need to [recompile and flash your ESP32 yourself](/get-started/installation/microcontrollers/development-setup/) instead of using Viam's prebuilt binary and installer.
 {{< /alert >}}
 
 You can also watch this guide to creating a vision service module:
@@ -53,14 +53,14 @@ Generally, to write a module, you:
 
 While you can certainly combine the resource model definition and the main program code into a single file if desired (for example, a single `main.py` program that includes both the model definition and the `main()` program that uses it), this guide will use separate files for each.
 
-Most modules extend an existing [component API](/build/program/apis/#component-apis) or [service API](/build/program/apis/#service-apis) to add support for a new type of that resource.
-For example, you could extend the [camera component API](/components/camera/#api) to support new image formats or a new type of camera, or extend the [ML model service API](/build/program/apis/#ml-model) to support a new machine learning (ML) model type beyond `tflite`.
+Most modules extend an existing [component API](/appendix/apis/#component-apis) or [service API](/appendix/apis/#service-apis) to add support for a new type of that resource.
+For example, you could extend the [camera component API](/components/camera/#api) to support new image formats or a new type of camera, or extend the [ML model service API](/appendix/apis/#ml-model) to support a new machine learning (ML) model type beyond `tflite`.
 
 {{% alert title=Note color="note" %}}
 If you want to write a module to extend support to a new type of component or service that is relatively unique, consider using the generic API for your resource type to build your own API:
 
-- If you are working with a component that doesn't fit into any of the existing [component APIs](/build/program/apis/#component-apis), you can use the [generic component](/components/generic/) to build your own component API.
-- If you are designing a service that doesn't fit into any of the existing [service APIs](/build/program/apis/#service-apis), you can use the [generic service](/registry/advanced/generic/) to build your own service API.
+- If you are working with a component that doesn't fit into any of the existing [component APIs](/appendix/apis/#component-apis), you can use the [generic component](/components/generic/) to build your own component API.
+- If you are designing a service that doesn't fit into any of the existing [service APIs](/appendix/apis/#service-apis), you can use the [generic service](/registry/advanced/generic/) to build your own service API.
 
 Most module use cases, however, benefit from extending an existing API, as covered below.
 {{% /alert %}}

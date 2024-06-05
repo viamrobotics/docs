@@ -8,7 +8,7 @@ The micro-RDK is a lightweight version of the {{% glossary_tooltip term_id="rdk"
 
 The only microcontroller the micro-RDK currently supports is the [ESP32](https://www.espressif.com/en/products/socs/esp32).
 
-[Client API](/build/program/apis/) usage with the micro-RDK currently supports the following {{< glossary_tooltip term_id="resource" text="resources" >}}:
+[Client API](/appendix/apis/) usage with the micro-RDK currently supports the following {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
 {{< cards >}}
 {{% card link="/build/micro-rdk/base/" %}}

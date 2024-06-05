@@ -9,7 +9,8 @@ description: "Configure the pin mappings to use a pumpkin board."
 no_list: true
 aliases:
   - /installation/prepare/pumpkin/
-#SMEs: Matt Dannenberg
+aliases:
+  - /get-started/installation/prepare/pumpkin/
 ---
 
 To use a [Mediatek Genio 500 Pumpkin single-board computer](https://ologicinc.com/portfolio/mediateki500/) with Viam:

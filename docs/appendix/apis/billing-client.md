@@ -6,7 +6,8 @@ type: "docs"
 description: "Use the billing client API to retrieve billing information from the Viam app."
 tags: ["cloud", "sdk", "viam-server", "networking", "apis", "robot api"]
 aliases:
-  - /program/apis/data-client/
+  - /program/apis/billing-client/
+  - /build/program/apis/billing-client/
 ---
 
 The billing client API allows you to retrieve billing information from the [Viam app](https://app.viam.com).

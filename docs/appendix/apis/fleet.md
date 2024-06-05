@@ -17,6 +17,7 @@ tags:
   ]
 aliases:
   - /program/apis/fleet/
+  - /appendix/apis/fleet/
   - /build/program/apis/fleet/
 ---
 

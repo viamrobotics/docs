@@ -54,7 +54,7 @@ The tutorial uses the following hardware, but you can adjust it as needed:
 - A water container
 - A screwdriver
 
-Before starting this tutorial, follow the [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/) to prepare your Pi to run `viam-server`.
+Before starting this tutorial, follow the [Raspberry Pi Setup Guide](/get-started/prepare/rpi-setup/) to prepare your Pi to run `viam-server`.
 Connect your Pi to its power supply to power it on.
 Make sure your Pi is flashed with a Viam-compatible operating system, and that you are able to SSH into it.
 

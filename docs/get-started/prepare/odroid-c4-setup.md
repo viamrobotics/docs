@@ -7,6 +7,8 @@ description: "Image a Odroid-C4 to prepare it for viam-server installation."
 images: ["/get-started/installation/thumbnails/odroid-c4.png"]
 imageAlt: "Odroid-C4"
 no_list: true
+aliases:
+  - /get-started/installation/prepare/odroid-c4-setup/
 # SME: Olivia Miller
 ---
 

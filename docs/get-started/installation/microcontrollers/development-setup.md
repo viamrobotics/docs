@@ -1,6 +1,6 @@
 ---
-title: "The Micro-RDK Development Setup"
-linkTitle: "Microcontroller Development Setup"
+title: "Micro-RDK Development Setup"
+linkTitle: "Micro-RDK Development Setup"
 weight: 50
 no_list: true
 type: docs
@@ -10,11 +10,8 @@ description: "Set up the Espressif ESP32 for development with the micro-RDK."
 # SMEs: Nicolas M., Gautham V., Andrew M.
 aliases:
   - "/installation/prepare/microcontrollers/development-setup/"
+  - /get-started/installation/prepare/microcontrollers/development-setup/
 ---
-
-{{% readfile "/static/include/micro-rdk.md" %}}
-
-## Get started
 
 Follow these steps to install and build the micro-RDK on your ESP32 for development:
 
@@ -225,7 +222,7 @@ Then, navigate to the **CONFIGURE** tab.
 
 ### Configure your machine with an ESP32
 
-[Client API](/build/program/apis/) usage with the micro-RDK is currently limited to the following supported {{< glossary_tooltip term_id="resource" text="resources" >}}:
+[Client API](/appendix/apis/) usage with the micro-RDK is currently limited to the following supported {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
 - [Base](/build/micro-rdk/base/)
 - [Board](/build/micro-rdk/board/)
