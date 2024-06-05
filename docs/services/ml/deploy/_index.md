@@ -7,7 +7,7 @@ tags: ["data management", "ml", "model training"]
 aliases:
   - /manage/data/deploy-model/
   - /services/ml/
-  - /data/deploy/
+  - /ml/deploy/
 description: "Deploy Machine Learning models to a machine and use the vision service to detect or classify images or to create point clouds of identified objects."
 modulescript: true
 icon: true
