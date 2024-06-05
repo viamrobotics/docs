@@ -116,8 +116,8 @@ jobs:
         uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
-          cache: 'pip' # caching pip dependencies
+          python-version: "3.9"
+          cache: "pip" # caching pip dependencies
       - name: Download the components models file
         uses: actions/download-artifact@v3
         with:
@@ -126,5 +126,5 @@ jobs:
       - name: "Update modular resources"
         run: python3 .github/workflows/get_modular_resources.py
         env:
-          TYPESENSE_API_KEY_MR: ${{ secrets.TYPESENSE_API_KEY_R }}
+          TYPESENSE_API_KEY_R: ${{ secrets.TYPESENSE_API_KEY_R }}
           VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
