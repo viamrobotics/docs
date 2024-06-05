@@ -12,6 +12,7 @@ no_list: true
 modulescript: true
 aliases:
   - /components/movement-sensor/
+hide_children: true
 # SME: Rand
 ---
 
@@ -34,31 +35,7 @@ Viam also supports generic [sensors](/components/sensor/) and [encoders](/compon
 
 ## Supported models
 
-To use your GPS, IMU, accelerometer, or other movement sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your movement sensor.
-
-### Built-in models
-
-Viam supports several different models of movement sensor.
-For configuration information, click on the model name:
-
-<!-- prettier-ignore -->
-| Model | Description <a name="model-table"></a> |
-| ----- | -------------------------------------- |
-| [`gps-nmea`](./gps/gps-nmea/) | [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS models |
-| [`gps-nmea-rtk-pmtk`](./gps/gps-nmea-rtk-pmtk/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models using I<sup>2</sup>C (**experimental**) |
-| [`gps-nmea-rtk-serial`](./gps/gps-nmea-rtk-serial/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models using serial communication (**experimental**) |
-| [`dual-gps-rtk`](./gps/dual-gps-rtk/) | A movement sensor that calculates compass heading from two GPS movement sensors |
-| [`imu-wit-hwt905`](./imu/imu-wit-hwt905/) | The [HWT905-TTL IMU](https://www.wit-motion.com/proztgjd/39.html) manufactured by WitMotion |
-| [`imu-wit`](./imu/imu-wit/) | Other IMUs manufactured by [WitMotion](https://www.wit-motion.com/): BWT61CL, BWT901CL, and HWT901B-TTL |
-| [`accel-adxl345`](./adxl345/) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer |
-| [`gyro-mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense |
-| [`merged`](./merged/) | A model that allows you to aggregate the API methods supported by multiple sensors into a singular sensor client, effectively merging the models of the individual resources |
-| [`wheeled-odometry`](./wheeled-odometry/) | A model that uses [encoders](/components/encoder/) to get an odometry estimate from a wheeled base |
-| [`fake`](./fake/) | Used to test code without hardware |
-
-### Modular resources
-
-{{<modular-resources api="rdk:component:movement_sensor" type="movement_sensor">}}
+{{<resources api="rdk:component:movement_sensor" type="movement_sensor">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 

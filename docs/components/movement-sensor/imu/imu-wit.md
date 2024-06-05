@@ -7,6 +7,7 @@ description: "Configure a WitMotion IMU on your machine. Once configured use the
 images: ["/icons/components/imu.svg"]
 aliases:
   - "/components/movement-sensor/imu/imu-wit/"
+component_description: "Other IMUs manufactured by WitMotion: BWT61CL, BWT901CL, and HWT901B-TTL."
 # SMEs: Rand
 ---
 

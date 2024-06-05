@@ -12,6 +12,7 @@ no_list: true
 modulescript: true
 aliases:
   - "/components/gripper/"
+hide_children: true
 # SMEs: Bucket Team
 ---
 
@@ -27,20 +28,7 @@ A _gripper_ is a robotic grasping device that can open and close, often attached
 
 ## Supported models
 
-To use your gripper with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your gripper.
-
-### Built-in models
-
-For configuration information, click on the model name:
-
-| Model                             | Description                                                                    |
-| --------------------------------- | ------------------------------------------------------------------------------ |
-| [`softrobotics`](./softrobotics/) | The \_m_Grip soft gripper by [Soft Robotics](https://www.softroboticsinc.com/) |
-| [`fake`](fake/)                   | A model used for testing, with no physical hardware.                           |
-
-### Modular resources
-
-{{<modular-resources api="rdk:component:gripper" type="gripper">}}
+{{<resources api="rdk:component:gripper" type="gripper">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 

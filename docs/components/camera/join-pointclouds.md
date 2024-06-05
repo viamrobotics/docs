@@ -8,6 +8,7 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - "/components/camera/join-pointclouds/"
+component_description: "Combines the point clouds from multiple camera sources and projects them to be from the point of view of target_frame."
 # SMEs: Bijan, vision team
 ---
 

@@ -8,9 +8,10 @@ description: "An input controller, like a gamepad or joystick, is a device human
 tags: ["input controller", "components"]
 icon: true
 images: ["/icons/components/controller.svg"]
-modulescript: false
+modulescript: true
 aliases:
   - "/components/input-controller/"
+hide_children: true
 # SME: James
 ---
 
@@ -38,27 +39,7 @@ Most machines with an input controller need at least the following hardware:
 
 ## Supported models
 
-To use your input controller with Viam, check whether one of the following [built-in models](#built-in-models) supports your input controller.
-
-### Built-in models
-
-For configuration information, click on the model name:
-
-<!-- prettier-ignore -->
-| Model | Description |
-| ----- | ----------- |
-| [`gamepad`](gamepad/) | X-box, Playstation, and similar controllers with Linux support. |
-| [`gpio`](gpio/) | Customizable GPIO/ADC based device using a board component. |
-| [`mux`](mux/) | [Multiplexed](https://en.wikipedia.org/wiki/Multiplexer) controller, combining multiple sources of input. |
-| [`webgamepad`](webgamepad/) | A remote, web based gamepad. |
-| [`fake`](fake/) | A model for testing, with [no physical hardware - see GitHub.](https://github.com/viamrobotics/rdk/tree/main/components/input/fake) |
-
-<!-- No modular resources yet -->
-<!-- ### Modular resources
-
-{{<modular-resources api="rdk:component:input_controller" type="input_controller">}}
-
-{{< readfile "/static/include/create-your-own-mr.md" >}}-->
+{{<resources api="rdk:component:input_controller" type="input_controller">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 

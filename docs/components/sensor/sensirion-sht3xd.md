@@ -9,6 +9,7 @@ icon: true
 images: ["/icons/components/sensor.svg"]
 aliases:
   - "/components/sensor/sensirion-sht3xd/"
+component_description: "Sensirion SHT3x-DIS temperature and humidity sensor."
 # SME: #team-bucket
 ---
 

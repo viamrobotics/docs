@@ -8,6 +8,7 @@ images: ["/icons/components/imu.svg"]
 aliases:
   - "/components/movement-sensor/gps/gps-rtk/"
   - "/components/movement-sensor/gps/gps-nmea-rtk-serial/"
+component_description: "NTRIP-based RTK GPS models using serial communication (experimental)."
 # SMEs: Susmita
 ---
 

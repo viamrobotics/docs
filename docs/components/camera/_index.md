@@ -13,6 +13,7 @@ modulescript: true
 aliases:
   - "/tutorials/configure-a-camera"
   - "/components/camera/"
+hide_children: true
 # SMEs: Bijan, vision team
 ---
 
@@ -45,28 +46,7 @@ You can use different models to:
 
 ## Supported models
 
-To use your camera with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your camera.
-
-### Built-in models
-
-For configuration information, click on the model name:
-
-<!-- prettier-ignore -->
-| Model | Description |
-| ----- | ----------- |
-| [`ffmpeg`](ffmpeg/) | Uses a camera, a video file, or a stream as a camera. |
-| [`image_file`](image-file/) | Gets color and depth images frames from a file path. |
-| [`velodyne`](velodyne/) | Uses velodyne lidar. |
-| [`webcam`](webcam/) | A standard camera that streams camera data. |
-| [`fake`](fake/) | A camera model for testing. |
-| [`join_color_depth`](join-color-depth/) | Joins the outputs of a color and depth camera already registered in your config to create a third "camera" that outputs the combined and aligned image. |
-| [`join_pointclouds`](join-pointclouds/) | Combines the point clouds from multiple camera sources and projects them to be from the point of view of target_frame. |
-| [`transform`](transform/) | A pipeline for applying transformations to an input image source. |
-| [`ultrasonic`](ultrasonic/) | The [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor. |
-
-### Modular resources
-
-{{<modular-resources api="rdk:component:camera" type="camera">}}
+{{<resources api="rdk:component:camera" type="camera">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 

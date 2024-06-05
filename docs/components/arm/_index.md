@@ -12,6 +12,10 @@ images: ["/icons/components/arm.svg"]
 modulescript: true
 aliases:
   - "/components/arm/"
+hide_children: true
+outputs:
+  - html
+  - typesense
 # SME: Peter L
 ---
 
@@ -60,24 +64,7 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 
 ## Supported models
 
-To use your arm with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your arm.
-
-### Built-in models
-
-For configuration information, click on the model name:
-
-<!-- prettier-ignore -->
-| Model | Description |
-| ----- | ----------- |
-| [`fake`](fake/) | A model used for testing, with no physical hardware. |
-| [`xArm6`](xarm6/) | [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) |
-| [`xArm7`](xarm7/) | [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) |
-| [`lite6`](lite6/) | [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6) |
-| [`ur5e`](ur5e/) | [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) |
-
-### Modular resources
-
-{{<modular-resources api="rdk:component:arm" type="arm">}}
+{{<resources api="rdk:component:arm" type="arm">}}
 
 {{< alert title="Add support for other models" color="tip" >}}
 

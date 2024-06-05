@@ -11,6 +11,7 @@ images: ["/icons/components/base.svg"]
 modulescript: true
 aliases:
   - "/components/base/"
+hide_children: true
 # SMEs: Steve B
 ---
 
@@ -39,22 +40,7 @@ Most mobile robots with a base need at least the following hardware:
 
 ## Supported models
 
-To use your base with Viam, check whether one of the following [built-in models](#built-in-models) or {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} supports your base.
-
-### Built-in models
-
-For configuration information, click on the model name:
-
-<!-- prettier-ignore -->
-| Model | Description |
-| ----- | ----------- |
-| [`wheeled`](wheeled/) | Mobile wheeled robot |
-| [`sensor-controlled`](sensor-controlled/) | A model that wraps other base models with feedback control from a movement sensor |
-| [`fake`](fake/) | A model used for testing, with no physical hardware |
-
-### Modular resources
-
-{{<modular-resources api="rdk:component:base" type="base">}}
+{{<resources api="rdk:component:base" type="base">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 

@@ -7,6 +7,7 @@ description: "In-depth information on the various components available within th
 images: ["/icons/components.png"]
 aliases:
   - "/components/"
+no_component: true
 ---
 
 Viam provides support for a wide variety of hardware.

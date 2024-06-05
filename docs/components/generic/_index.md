@@ -12,6 +12,7 @@ no_list: true
 modulescript: true
 aliases:
   - "/components/generic/"
+hide_children: true
 # SMEs:
 ---
 
@@ -38,22 +39,9 @@ If you want to use most of an existing API but need just a few other functions, 
 
 ## Supported models
 
-Before creating a new generic component, check whether one of the following [modular resources](#modular-resources) supports your use case.
+{{<resources api="rdk:component:generic" type="generic">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
-
-### Built-in models
-
-For configuration information, click on the model name:
-
-<!-- prettier-ignore -->
-| Model | Description |
-| ----- | ----------- |
-| [`fake`](fake/) | A model used for testing, with no physical hardware. |
-
-### Modular resources
-
-{{<modular-resources api="rdk:component:generic" type="generic">}}
 
 ## Control your board with Viam's client SDK libraries
 

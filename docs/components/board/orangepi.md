@@ -6,6 +6,7 @@ type: "docs"
 description: "Configure an Orange Pi board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components", "orangepi"]
+component_description: "Orange Pi Zero2 or OrangePi 3 LTS."
 # SMEs: Olivia Miller
 ---
 

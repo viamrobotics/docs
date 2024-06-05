@@ -6,4 +6,5 @@ type: "docs"
 empty_node: true
 layout: "empty"
 canonical: "components/movement-sensor/"
+no_component: true
 ---
