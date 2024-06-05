@@ -1,5 +1,5 @@
 ---
-title: "Configure an NTRIP-Based RTK GPS with an I2C Connection"
+title: "Configure NTRIP-Based RTK GPS with I2C Connection"
 linkTitle: "gps-nmea-rtk-pmtk"
 weight: 10
 type: "docs"

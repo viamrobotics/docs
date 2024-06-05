@@ -422,5 +422,5 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 {{< cards >}}
 {{% card link="/tutorials/configure/configure-rover/" %}}
-{{% card link="/components/motor/gpio/encoded-motor/" %}}
+{{% card link="/components/motor/encoded-motor/" %}}
 {{< /cards >}}

@@ -73,7 +73,7 @@ All together, your kit looks like this:
 
 The motors come with integrated encoders.
 For information on encoders, see [Encoder Component](/components/encoder/).
-For more information on encoded DC motors, see [Encoded Motors](/components/motor/gpio/encoded-motor/).
+For more information on encoded DC motors, see [Encoded Motors](/components/motor/encoded-motor/).
 
 The kit also includes stiffer suspension springs that you can substitute for the ones on the rover.
 Generally, a stiff suspension helps with precise steering control.

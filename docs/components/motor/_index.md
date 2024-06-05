@@ -245,7 +245,7 @@ myMotorComponent.GoTo(context.Background(), 75, 8.3, nil)
 
 ### ResetZeroPosition
 
-Set the current position (modified by `offset`) of an [encoded motor](/components/motor/gpio/encoded-motor/) to be the new zero (home) position.
+Set the current position (modified by `offset`) of an [encoded motor](/components/motor/encoded-motor/) to be the new zero (home) position.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -292,7 +292,7 @@ myMotorComponent.ResetZeroPosition(context.Background(), 0.0, nil)
 
 ### GetPosition
 
-Report the position of an [encoded motor](/components/motor/gpio/encoded-motor/) based on its encoder.
+Report the position of an [encoded motor](/components/motor/encoded-motor/) based on its encoder.
 The value returned is the number of revolutions relative to its zero position.
 This method raises an exception if position reporting is not supported by the motor.
 

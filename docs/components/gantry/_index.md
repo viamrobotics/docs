@@ -33,7 +33,7 @@ Most machines with a gantry need at least the following hardware:
 
 - A [board](/components/board/) or [controller](/components/input-controller/) component that can detect changes in voltage on GPIO pins
 - A [motor](/components/motor/) that can move linear rails
-  - Encoded motor: See [DC motor with encoder](/components/motor/gpio/encoded-motor/) and [encoder component](/components/encoder/).
+  - Encoded motor: See [DC motor with encoder](/components/motor/encoded-motor/) and [encoder component](/components/encoder/).
   - Stepper motor: See [Stepper motor](/components/motor/gpiostepper/).
     Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
 - Limit switches, to attach to the ends of the gantry's axis
