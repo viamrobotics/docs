@@ -1543,9 +1543,7 @@ def write_markdown(type, names, methods):
                             file_contents = regex.sub(r'\{\{\%.*\%\}\}.*\{\{\% \/[a-b].* \%\}\}', '', file_contents, flags=regex.DOTALL)
                             search_result = file_contents.split('.\n', 1)[0].strip().replace("\n", " ")
 
-                            ## If the proto description contains any MD links, strip them out.
-                            ## We do not wanted links in this table file:
-                            #search_result = regex.sub(r"\[(.+)\]\(.+\)", r"\1", search_result)
+                            ## If the proto description contains any MD links, strip them out:
                             search_result = regex.sub(r"\[(.+?)\]\(.+?\)", r"\1", search_result)
 
                             ## If the proto description is missing a trailing period, or we stripped it off during the above matching, append
