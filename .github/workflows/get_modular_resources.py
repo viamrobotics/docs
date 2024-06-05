@@ -61,8 +61,11 @@ async def main():
     with open('typesense.json') as f:
         components = json.load(f)
         for c in components:
+            print("COMPONENT")
+            print(c)
             c["last_updated"] = time_now
             insert_resp = typesense_client.collections['resources'].documents.upsert(c)
+            print("INSERTED")
             print(insert_resp)
 
     # Create a request to list registry items and get the response from the app
