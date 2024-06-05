@@ -14,7 +14,7 @@ When placed in a known location, the RTK Reference Station calculates and transm
 
 After following this guide, you can provide the URL from your reference station's fixed-position NTRIP server as the `ntrip_url` attribute in your Viam machine config for the `gps-nmea-rtk-pmtk` and `gps-nmea-rtk-serial` models of movement sensor to allow rovers configured with these sensors to receive both GPS signals and correction data and apply corrections to achieve centimeter-level accuracy in positioning.
 
-## Reserve a RTK2GO casting service
+## Reserve an RTK2GO casting service
 
 To distribute the correction information from your reference station, you should reserve an RTK2GO casting service for your station.
 
@@ -37,7 +37,7 @@ Connect the GNSS Surveying Antenna included with the Reference Station kit to th
 
 ## Bring the antenna outside
 
-Bring the surveying antenna outside, where it can have a clear 360 view of the sky.
+Bring the surveying antenna outside, where it can have a clear 360 degree view of the sky.
 This enables more accurate correction streaming.
 
 ## Power up the reference station
@@ -66,17 +66,19 @@ For more information, see the [RTK Reference Station Hookup Guide](https://learn
 When **CfgWiFi** mode is selected, the reference station broadcasts its own WiFi called “RTK Config”.
 
 {{% alert title="Note" color="note" %}}
-It is highly recommended that you use a hotspot for outdoor rovers. If you do use a hotspot, configure the reference station on the hotspot network. Also ensure that the hotspot is set to 2.4GHz and not 5GHz because the reference station can not connect to a network over 2.4GHz.
+It is highly recommended that you use a hotspot for outdoor usage, such as with rovers.
+If you do use a hotspot, configure the reference station on the hotspot network.
+Also ensure that the hotspot is set to 2.4GHz and not 5GHz because the reference station can not connect to a network over 2.4GHz.
 {{% /alert %}}
 
-Connect your phone or computer to the WiFi network called “RTK Config” and use your web browser (Safari or Internet Explorer are recommended over Chrome) to go to the address `192.168.4.1`, which is the default IP address of the reference station.
-There, see the RTK setup configure page displayed:
+Connect your phone or computer to the WiFi network called "RTK Config" and use your web browser (Safari or Internet Explorer are recommended over Chrome) to go to the address `192.168.4.1`, which is the default IP address of the reference station.
+At that address you will see the RTK setup configure page displayed:
 
 {{< imgproc src="/components/movement-sensor/sparkfun-configure-page.png" alt="The SparkFun RTK Setup configure page displayed with dropdown menu rows showing different options for configuration." resize="900x" style="width:450px" >}}
 
 ### Update System configuration
 
-Look on the top of the RTK setup configure page and ensure that the firmware version of the base station is v4.0:
+Look on the top of the RTK setup configure page and ensure that the firmware version of the base station is v4.0 or higher:
 
 {{< imgproc src="/components/movement-sensor/sparkfun-rtk-firmware.png" alt="The top of the SparkFun RTK Setup configure page with the RTK Firmware version displayed as v4.0." resize="1000x" style="width:500px" >}}
 
@@ -95,12 +97,12 @@ This is what each option means and what value you should select:
   - Note: The measurement rate is overridden to 1Hz when you configure the reference station to **Base** mode.
   - Default: 4Hz.
   - Limit: 0.000122 to 10Hz.
-    Here, select the default value of **4Hz**.
+    For this use case, select the default value of **4Hz**.
 
 - **Seconds between measurements:**: The number of seconds between measurements. This input is the inverse of the measurement rate and is useful when taking a measurement every few seconds across a long survey (24+ hours).
   - Note: The measurement rate is overridden to 1Hz when in **Base** mode.
   - Limit: 0.1 to 8196 seconds.
-    Here, select the value of **0.25**.
+    For this use case, select the value **0.25**.
 
 **Dynamic Model:** Adjusts the internal algorithm to match the expected application environment.
 This setting improves the receiver's interpretation of measurements and thus provides a more accurate position output.
@@ -148,7 +150,7 @@ Make your **Message Rates** option look like this:
 Select the **Base Configuration** dropdown on the RTK setup configure page.
 
 **Survey-In:** If the precise location of a base station is not known it may be obtained by ‘surveying’ the location.
-The base is fixed in one place and takes approximately 60 seconds worth of readings to obtain a best fit location based on the measurements. This method achieves ~30cm accurate position but can vary.
+Generally, you'd fix your base in one place and let it take approximately 60 seconds worth of readings to obtain a best fit location based on the measurements. This method achieves ~30cm accurate position but can vary.
 Increasing the minimum observation time or required mean deviation increases accuracy but only to a point.
 Better accuracy is achieved with long-term logging and post processing.
 
@@ -225,7 +227,7 @@ Once you see **Casting** on the mode menu display screen, go to `rtk2go.com:2101
 
 Provide the RTK2GO casting URL `rtk2go.com:2101` as the `ntrip_url` attribute in your Viam machine config for the RTK-enabled models of movement sensor.
 
-Click on the link to follow configuration instructions for each model:
+Next, follow the configuration instructions for the desired model:
 
 - [`gps-nmea-rtk-pmtk`](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
 - [`gps-nmea-rtk-serial`](/components/movement-sensor/gps/gps-nmea-rtk-serial/)
