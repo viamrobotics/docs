@@ -104,8 +104,8 @@ For more detailed information on how to operate and test your resources, expand 
 
 The following services also provide control interfaces:
 
-- [SLAM](/mobility/slam/cartographer/#create-a-new-map): for creating a new SLAM map and for using the motion service to move a machine on a SLAM map
-- [Navigation](/mobility/navigation/#control-tab-usage): for moving a machine to waypoints on a map
+- [SLAM](/services/slam/cartographer/#create-a-new-map): for creating a new SLAM map and for using the motion service to move a machine on a SLAM map
+- [Navigation](/services/navigation/#control-tab-usage): for moving a machine to waypoints on a map
 
 ## Control interface in the Viam mobile app
 

@@ -333,7 +333,7 @@ Once you have run the example and examined the module and client code, you might
 
 - Write a client similar to `example_audio_classification_client` that generates a different kind of data and provides a suitable TensorFlow Lite model for that data to the `MLModelService` modular resource.
   For example, you might find a new [pre-trained TensorFlow Lite model](https://www.tensorflow.org/lite/models/trained) that analyzes [speech waveforms](https://tfhub.dev/s?deployment-format=lite&module-type=audio-speech-synthesis) and write a client to provide these waveform samples to the `MLModelService` modular resource and interpret the results returned.
-- Write a client similar to `example_audio_classification_client` that [trains its own model](/ml/train-model/) on existing or incoming data, as long as that model fulfils the TFLite model constraints.
+- Write a client similar to `example_audio_classification_client` that [trains its own model](/services/ml/train-model/) on existing or incoming data, as long as that model fulfils the TFLite model constraints.
   For example, you might add a [movement sensor](/components/movement-sensor/) component to your machine that captures sensor readings to the built-in [data management service](/data/).
   Then you could write a client that trains a new model based on the collected data, provides the model and new sensor data readings to the `MLModelService` modular resource, and interprets the results returned.
 - Write a module similar to `example_mlmodelservice_tflite` that accepts models for other inference engines besides TensorFlow Lite, then write a client that provides a valid model and source data for that inference engine.

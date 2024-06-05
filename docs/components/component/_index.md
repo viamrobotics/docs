@@ -34,7 +34,7 @@ Add services commonly used with the component.
 
 {{< cards >}}
 {{< relatedcard link="/data/" >}}
-{{< relatedcard link="/mobility/frame-system/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
 {{< /cards >}}
 
 ## Supported models

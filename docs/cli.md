@@ -1,7 +1,7 @@
 ---
 title: "Viam CLI"
 linkTitle: "CLI"
-weight: 650
+weight: 700
 type: "docs"
 no_list: true
 description: "Manage and control your machines from the command line."
@@ -9,6 +9,7 @@ aliases:
   - "/build/program/cli"
   - /manage/cli/
   - /fleet/cli/
+menuindent: true
 ---
 
 The Viam CLI (command line interface) tool enables you to manage your machines and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} across organizations and locations from the command line.
@@ -335,8 +336,8 @@ done
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
 | `export`       | Export data in a specified format to a specified location  | - |
-| `database configure`      | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data/query/#configure-data-query)  | - |
-| `database hostname`      | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/data/query/#configure-data-query)  | - |
+| `database configure`      | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/services/data/query/#configure-data-query)  | - |
+| `database hostname`      | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/services/data/query/#configure-data-query)  | - |
 | `dataset add`      | Add a new image to an existing dataset by its file id, or add a group of images by specifying a filter | `filter` |
 | `dataset remove`      | Remove an existing image from a dataset by its file id, or remove a group of images by specifying a filter | `filter` |
 | `delete binary`      | Delete binary data  | - |

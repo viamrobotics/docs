@@ -4,7 +4,7 @@ linkTitle: "Build simple smart machines"
 weight: 10
 type: "docs"
 description: "Build a simple smart machine in a few steps using Viam's modular system of components and services without writing much or any code."
-images: ["/platform/build.svg", "/ml/configure.svg"]
+images: ["/platform/build.svg", "/services/ml/configure.svg"]
 tags: ["components", "configuration"]
 ---
 
@@ -57,7 +57,7 @@ With the panels, you can drive motors at different speeds, view your camera feed
 {{< /tablestep >}}
 {{< tablestep >}}
 
-{{<imgproc src="/ml/collect.svg" class="fill alignright" style="max-width: 220px"  declaredimensions=true alt="Services">}}
+{{<imgproc src="/services/ml/collect.svg" class="fill alignright" style="max-width: 220px"  declaredimensions=true alt="Services">}}
 **5. Configure services**
 
 Services are built-in Viam software packages that add high-level functionality to your smart machine like computer vision or motion planning.
@@ -67,7 +67,7 @@ If you are making a simple machine that doesn't use services, you can skip this 
 {{< /tablestep >}}
 {{< tablestep >}}
 
-{{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 210px"  declaredimensions=true alt="Services">}}
+{{<imgproc src="/services/ml/configure.svg" class="fill alignleft" style="max-width: 210px"  declaredimensions=true alt="Services">}}
 **6. Do more with code**
 
 Write a program to control your smart machine using the programming language of your choice.

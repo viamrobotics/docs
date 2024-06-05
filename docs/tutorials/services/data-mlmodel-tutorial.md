@@ -5,7 +5,7 @@ weight: 4
 type: "docs"
 description: "Configure data capture and cloud sync, filter and tag captured data, and train an ML model."
 imageAlt: "The data page of the Viam app showing a gallery of the images captured from the Viam Rover."
-images: ["/ml/training.png"]
+images: ["/services/ml/training.png"]
 aliases:
   - "/tutorials/data-management-tutorial/"
   - "/tutorials/data-management/"
@@ -32,7 +32,7 @@ In this tutorial, you will use three Viam services together to enable your machi
 
 - The [data management service](#the-data-management-service), to capture images from a camera on your machine and sync them to the cloud.
 - The [ML model service](#the-ml-model-service), to manage and deploy a machine learning (ML) model based on these images, once you have added tags to the images matching the objects you want to detect.
-- The [vision service](/ml/vision/), to enable your machine's camera to detect objects defined in the ML model on its own.
+- The [vision service](/services/vision/), to enable your machine's camera to detect objects defined in the ML model on its own.
 
 With all three services working together, your machine will be able to analyze its camera feed for the presence of specific shapes, such as a red star or blue circle.
 When it detects a likely match, it will overlay a confidence score onto the camera feed alongside the name of the detected shape, indicating how closely the shape in the camera frame matches a shape it has seen before.
@@ -125,7 +125,7 @@ Now that you have configured data capture on your camera component, you can view
 
 Click on the menu icon on the camera configuration pane and select **View captured data**.
 
-{{<imgproc src="/data/capture-data-menu.png" resize="500x" declaredimensions=true alt="Resource menu with the options Rename, Duplicate, View captured data, and Delete" class="aligncenter">}}
+{{<imgproc src="/services/data/capture-data-menu.png" resize="500x" declaredimensions=true alt="Resource menu with the options Rename, Duplicate, View captured data, and Delete" class="aligncenter">}}
 
 Here you can view the images captured so far from the camera on your machine.
 New images should appear roughly every six seconds as cloud sync uploads them from your machine.
@@ -136,7 +136,7 @@ If you have a lot of images, filter them by limiting the displayed images to a s
 
 {{< imgproc src="/tutorials/data-management/filter-date-range.png" alt="The data tab displaying images filtered by date and time range" resize="1200x" >}}
 
-For more information see [View and filter data](/data/view/).
+For more information see [View and filter data](/services/data/view/).
 
 ## The ML model service
 
@@ -144,7 +144,7 @@ Once your machine is capturing and syncing images to the Viam app, you are ready
 You can use an ML model to help your machine adapt its behavior to the world around it.
 
 For this tutorial, you will train an ML model to be able to recognize specific shapes (for example, red and blue stars), and then deploy that model to your machine using the _ML (machine learning) model service_.
-With a model deployed to your machine, you can use the [ML model](/ml/) service together with the [vision](/ml/vision/) service to analyze newly-detected objects for a possible match to a known shape.
+With a model deployed to your machine, you can use the [ML model](/ml/) service together with the [vision](/services/vision/) service to analyze newly-detected objects for a possible match to a known shape.
 
 To train a model from your captured data, first tag your images with appropriate labels and add them to a dataset.
 Then train a model based on your dataset and labels and deploy the model to your machine.
@@ -218,7 +218,7 @@ Models that are still being trained appear under **Training**, while models that
 
 {{< imgproc src="/tutorials/data-management/trained-model.png" alt="The models tab on the data page showing a completed model named my-classifier-model ready for deployment" resize="800x" >}}
 
-For more information, see [Train a model](/ml/train-model/).
+For more information, see [Train a model](/services/ml/train-model/).
 
 ### Deploy a model
 
@@ -325,7 +325,7 @@ In this tutorial, you learned:
 - how to use the [data management](/data/) service to capture images from your machine's camera and sync them to the Viam app
 - how to filter and tag your synced images according to the objects you wanted to detect
 - how to use the [ML model](/ml/) service to train an ML model based on those images and deploy that model to your machine
-- how to use the [vision service](/ml/vision/) to detect objects defined in an ML model from a live camera feed
+- how to use the [vision service](/services/vision/) to detect objects defined in an ML model from a live camera feed
 
 From here, you could do anything! Try one of the following:
 
@@ -333,7 +333,7 @@ From here, you could do anything! Try one of the following:
   For example, you might train it to stop or start based on your hand gesture, to turn in a specific direction, or adjust its speed.
 - Teach your machine to [recognize specific pets](/tutorials/projects/pet-treat-dispenser/), and dispense treats appropriately.
 - Teach your machine to [recognize specific toys](/tutorials/projects/bedtime-songs-bot/), and to sing a specific song about each.
-- Try creating an [object detection model](/ml/vision/#detections) to be able to identify parts of an image specifically with a bounding box.
+- Try creating an [object detection model](/services/vision/#detections) to be able to identify parts of an image specifically with a bounding box.
 
 For more ideas, check out our other [tutorials](/tutorials/).
 

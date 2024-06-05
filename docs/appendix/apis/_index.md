@@ -151,7 +151,7 @@ Documentation on using these methods in your SDK code is found on [service pages
 
 ### Base Remote Control
 
-The [base remote control service](/mobility/base-rc/) supports the following methods:
+The [base remote control service](/services/base-rc/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/base-rc.md" >}}
 
@@ -163,7 +163,7 @@ The [data management service](/data/) supports the following methods:
 
 ### Generic
 
-The [generic service](/registry/advanced/generic/) supports the following methods:
+The [generic service](/services/generic/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generic.md" >}}
 
@@ -175,25 +175,25 @@ The [ML model service](/ml/) supports the following methods:
 
 ### Motion
 
-The [motion service](/mobility/motion/) supports the following methods:
+The [motion service](/services/motion/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/motion.md" >}}
 
 ### Navigation
 
-The [navigation service](/mobility/navigation/) supports the following methods:
+The [navigation service](/services/navigation/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/navigation.md" >}}
 
 ### SLAM
 
-The [Simultaneous Localization And Mapping (SLAM) service](/mobility/slam/) supports the following methods:
+The [Simultaneous Localization And Mapping (SLAM) service](/services/slam/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/slam.md" >}}
 
 ### Vision
 
-Different [vision service](/ml/vision/) models support different methods:
+Different [vision service](/services/vision/) models support different methods:
 
 {{< readfile "/static/include/services/apis/vision.md" >}}
 

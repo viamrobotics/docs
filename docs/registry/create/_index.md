@@ -60,7 +60,7 @@ For example, you could extend the [camera component API](/components/camera/#api
 If you want to write a module to extend support to a new type of component or service that is relatively unique, consider using the generic API for your resource type to build your own API:
 
 - If you are working with a component that doesn't fit into any of the existing [component APIs](/appendix/apis/#component-apis), you can use the [generic component](/components/generic/) to build your own component API.
-- If you are designing a service that doesn't fit into any of the existing [service APIs](/appendix/apis/#service-apis), you can use the [generic service](/registry/advanced/generic/) to build your own service API.
+- If you are designing a service that doesn't fit into any of the existing [service APIs](/appendix/apis/#service-apis), you can use the [generic service](/services/generic/) to build your own service API.
 
 Most module use cases, however, benefit from extending an existing API, as covered below.
 {{% /alert %}}

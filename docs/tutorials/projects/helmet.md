@@ -18,7 +18,7 @@ cost: 120
 {{<imgproc src="/tutorials/helmet/ppe-hooks.png" resize="x300" declaredimensions=true alt="Hard hats and neon reflective vests on hooks." class="alignright" style="max-width: 350px">}}
 
 We all know personal protective equipment (PPE) helps keep us safe, but sometimes we need a reminder to use it consistently.
-Luckily, you can address this problem using Viam's integrated [data capture](/data/capture/), [computer vision](/ml/vision/), and [webhooks](/build/configure/webhooks/), along with a hard hat detection model.
+Luckily, you can address this problem using Viam's integrated [data capture](/data/capture/), [computer vision](/services/vision/), and [webhooks](/build/configure/webhooks/), along with a hard hat detection model.
 
 By following this tutorial you will build a system to look out for you and your team, sending an email notification when someone isn't wearing a hard hat.
 
@@ -104,8 +104,8 @@ If it doesn't, double-check that your config is saved correctly, and check the *
 
 ### Configure the vision service
 
-Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/ml/vision/) on your machine.
-Viam's built-in [`mlmodel` vision service](/ml/vision/mlmodel/) works with Tensor Flow Lite models, but since this tutorial uses a YOLOv8 model, we will use a {{< glossary_tooltip term_id="module" text="module" >}} from the [modular resource registry](/registry/) that augments Viam with YOLOv8 integration.
+Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/services/vision/) on your machine.
+Viam's built-in [`mlmodel` vision service](/services/vision/mlmodel/) works with Tensor Flow Lite models, but since this tutorial uses a YOLOv8 model, we will use a {{< glossary_tooltip term_id="module" text="module" >}} from the [modular resource registry](/registry/) that augments Viam with YOLOv8 integration.
 The [YOLOv8 module](https://github.com/viam-labs/YOLOv8) enables you to use any [YOLOv8 model](https://huggingface.co/models?other=yolov8) with your Viam machines.
 
 1. Navigate to your machine's **CONFIGURE** tab.
@@ -461,10 +461,10 @@ Here are some ways you could expand on this project:
 - Change your cloud function to send a different kind of notification, or trigger some other action.
   For an example demonstrating how to configure text notifications, see the [Detect a Person and Send a Photo tutorial](/tutorials/projects/send-security-photo/).
 
-- Use a different existing model or [train your own](/ml/train-model/), to detect and send notifications about something else such as [forklifts](https://huggingface.co/keremberke/yolov8m-forklift-detection) appearing in your camera stream.
+- Use a different existing model or [train your own](/services/ml/train-model/), to detect and send notifications about something else such as [forklifts](https://huggingface.co/keremberke/yolov8m-forklift-detection) appearing in your camera stream.
 
 {{< cards >}}
 {{% card link="/tutorials/projects/send-security-photo/" %}}
-{{% card link="/ml/train-model/" %}}
+{{% card link="/services/ml/train-model/" %}}
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}

@@ -8,6 +8,7 @@ images: ["/icons/components.png"]
 aliases:
   - "/components/"
 no_component: true
+menuindent: true
 ---
 
 Viam provides support for a wide variety of hardware.

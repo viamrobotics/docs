@@ -36,7 +36,7 @@ weight: 5
 # SMEs: Ray Bjorkman, Fahmina
 ---
 
-The [navigation service](/mobility/navigation/) allows you to queue up user-defined waypoints for your machine to move to in the order that you specify.
+The [navigation service](/services/navigation/) allows you to queue up user-defined waypoints for your machine to move to in the order that you specify.
 You can also add obstacles or set linear and angular velocity targets in your navigation service config.
 Viam's motion planner will plan routes that avoid those obstacles and attempt to keep the robot at your specified velocity.
 
@@ -71,7 +71,7 @@ Follow this tutorial to get started using Viam's Navigation service to help your
    3. A [`merged`](/components/movement-sensor/merged/) model aggregating the readings together for the navigation service to consume.
 
    You can use any combo of movement sensors you want as long as you are getting all the types of measurements required.
-   See [the navigation service](/mobility/navigation/#requirements) for more info on movement sensor requirements.
+   See [the navigation service](/services/navigation/#requirements) for more info on movement sensor requirements.
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -163,7 +163,7 @@ Refer to the [`gpio` motor](/components/motor/gpio/) documentation for attribute
    {{<imgproc src="/tutorials/navigate-with-rover-base/wheeled-base-config-builder.png" resize="800x" declaredimensions=true alt="An example configuration for a wheeled base in the Viam app Config Builder." style="min-height:550px; max-height:600px">}}
 
    - Make sure to select each of your right and left motors as **right** and **left**, as well as set the **wheel_circumference_mm** and **width_mm** of each of the wheels the motors are attached to.
-   - [Configure the frame system](/mobility/frame-system/#configuration) for this wheeled base so that the navigation service knows where it is in relation to the movement sensor.
+   - [Configure the frame system](/services/frame-system/#configuration) for this wheeled base so that the navigation service knows where it is in relation to the movement sensor.
 
      - Switch to **Frame** mode on the **CONFIGURE** tab and select your base.
        If your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s third input field, Z, to `1` and its fourth input field, theta, to `90`.
@@ -344,7 +344,7 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
     Refer to [the `merged` movement sensor documentation](/components/movement-sensor/merged/) for attribute information.
 
     - Make sure your `merged` movement sensor is configured to gather `"position"` readings from the `gps` movement sensor.
-    - [Configure the frame system](/mobility/frame-system/#configuration) for this movement sensor so that the navigation service knows where it is in relation to the base.
+    - [Configure the frame system](/services/frame-system/#configuration) for this movement sensor so that the navigation service knows where it is in relation to the base.
 
       - Switch to **Frame** mode on the **CONFIGURE** tab and select your movement sensor.
         If your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s third input field, Z, to `1`.
@@ -462,7 +462,7 @@ To add the navigation service to your robot, do the following:
    ```
 
    Edit the attributes as applicable.
-   Attribute information is available in [the navigation service documentation](/mobility/navigation/#configuration).
+   Attribute information is available in [the navigation service documentation](/services/navigation/#configuration).
 
 1. Click **Save** in the top right corner of the screen to save your changes.
 
@@ -470,7 +470,7 @@ Your navigation service should now appear in your machine's **CONFIGURE** tab as
 
 ![Navigation Card](/tutorials/navigate-with-rover-base/navigation-config-builder.png)
 
-For more detailed information see [the navigation service](/mobility/navigation/#configuration).
+For more detailed information see [the navigation service](/services/navigation/#configuration).
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
@@ -543,7 +543,7 @@ Your rover will begin navigating between waypoints.
 
 ### Programmatic method
 
-If you want to do add waypoints programmatically, use the service's [API method `AddWaypoint()`](/mobility/navigation/#addwaypoint):
+If you want to do add waypoints programmatically, use the service's [API method `AddWaypoint()`](/services/navigation/#addwaypoint):
 
 #### Add waypoints
 
@@ -578,7 +578,7 @@ await my_nav.add_waypoint(point=location)
 
 #### Begin navigation
 
-To start navigating, set your service to `MODE_WAYPOINT` with the service's [API method `SetMode()`](/mobility/navigation/#setmode):
+To start navigating, set your service to `MODE_WAYPOINT` with the service's [API method `SetMode()`](/services/navigation/#setmode):
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -622,8 +622,8 @@ Attribute information for an `ultrasonic` [camera](/components/camera/) is the s
 
 {{< /alert >}}
 
-If you want the robot to be able to automatically detect obstacles in front of it, [configure a Vision service segmenter](/ml/vision/#segmentations).
-For example, [configure](/ml/vision/obstacles_depth/) the Vision service model [`obstacles_depth`](/ml/vision/obstacles_depth/) to detect obstacles in front of the robot.
+If you want the robot to be able to automatically detect obstacles in front of it, [configure a Vision service segmenter](/services/vision/#segmentations).
+For example, [configure](/services/vision/obstacles_depth/) the Vision service model [`obstacles_depth`](/services/vision/obstacles_depth/) to detect obstacles in front of the robot.
 Then, use one of [Viam's client SDKs](/build/program/) to automate obstacle avoidance with the navigation service like in the following Python program:
 
 {{%expand "Click to view full example of automated obstacle avoidance with the Python SDK" %}}

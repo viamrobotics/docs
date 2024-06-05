@@ -538,7 +538,7 @@ Get the configuration of the frame system of a given machine.
 
 **Parameters:**
 
-- `additional_transforms` [(Optional[List[viam.proto.common.Transform]])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform): A optional list of [additional transforms](/mobility/frame-system/#additional-transforms).
+- `additional_transforms` [(Optional[List[viam.proto.common.Transform]])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform): A optional list of [additional transforms](/services/frame-system/#additional-transforms).
 
 **Returns:**
 
@@ -577,7 +577,7 @@ fmt.Println(frameSystem)
 
 **Parameters:**
 
-- `transforms` [(Transform[])](https://ts.viam.dev/classes/commonApi.Transform.html): An optional array of [additional transforms](/mobility/frame-system/#additional-transforms).
+- `transforms` [(Transform[])](https://ts.viam.dev/classes/commonApi.Transform.html): An optional array of [additional transforms](/services/frame-system/#additional-transforms).
 
 **Returns:**
 

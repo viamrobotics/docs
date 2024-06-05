@@ -1,7 +1,7 @@
 ---
 title: "Extend Viam with Models from the Viam Registry"
 linkTitle: "Registry"
-weight: 420
+weight: 600
 type: "docs"
 tags:
   [
@@ -70,7 +70,7 @@ You can search the available ML models from the Viam registry here:
     </div>
 </noscript>
 
-To use an existing model from the registry, [deploy the ML model to your robot](/ml/deploy/) and use a [Vision service](/ml/vision/) to make detections or classifications on-machine.
+To use an existing model from the registry, [deploy the ML model to your robot](/services/ml/deploy/) and use a [Vision service](/services/vision/) to make detections or classifications on-machine.
 
 ## Modular resources
 

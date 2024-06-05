@@ -3,7 +3,7 @@ title: "Capture and sync image data"
 linkTitle: "Capture and sync image data"
 weight: 20
 type: "docs"
-images: ["/ml/collect.svg"]
+images: ["/services/ml/collect.svg"]
 description: "Capture image data from a camera on your machine and sync that data to the cloud."
 ---
 
@@ -39,17 +39,17 @@ With data management configured, [capture image data from a camera on your machi
 
 {{< /tablestep >}}
 {{< tablestep >}}
-{{<imgproc src="/ml/collect.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
+{{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **4. View data in the Viam app**
 
-Once you have synced images, you can [view those images in the Viam app](/data/view/) from the **Data** tab.
+Once you have synced images, you can [view those images in the Viam app](/services/data/view/) from the **Data** tab.
 
 {{< /tablestep >}}
 {{< tablestep >}}
-{{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
+{{<imgproc src="/services/ml/configure.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **5. Filter data by common search criteria**
 
-You can [filter synced images in the Viam app](/data/view/#filter-data) using the **Filters** menu under the **Data** tab in the Viam app, using search criteria such as machine name, location, date range, or component name.
+You can [filter synced images in the Viam app](/services/data/view/#filter-data) using the **Filters** menu under the **Data** tab in the Viam app, using search criteria such as machine name, location, date range, or component name.
 
 {{< /tablestep >}}
 {{< tablestep >}}
@@ -64,7 +64,7 @@ You can also [export your data from the Viam app](/data/export/) to a deployed m
 ## Next steps
 
 {{< cards >}}
-{{% card link="/data/query/" %}}
+{{% card link="/services/data/query/" %}}
 {{% card link="/ml/" %}}
 {{% card link="/tutorials/" %}}
 {{< /cards >}}

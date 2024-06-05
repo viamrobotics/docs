@@ -65,7 +65,7 @@ You can switch between **Builder**, **JSON**, and **Frame** mode by clicking on 
 - **Builder** mode provides a graphical interface for configuring your machine resources.
 - **JSON** mode provides a text editing field where you can write and edit the config manually.
 - **Frame** mode provides a graphical interface for configuring and visualizing the relative position of components in space.
-  For more information, see the [Frame System documentation](/mobility/frame-system/).
+  For more information, see the [Frame System documentation](/services/frame-system/).
 
 Regardless of the editing mode you choose, Viam stores the configuration file in [JSON (JavaScript Object Notation)](https://en.wikipedia.org/wiki/JSON).
 
@@ -247,7 +247,7 @@ See [Use Fragments to Configure a Fleet](/fleet/configure-a-fleet/) for more inf
 The frame system holds reference frame information for the relative position of components in space.
 
 Clicking on the **Frame** mode to visualize and configure the relative positions of components.
-Find more information in the [frame system documentation](/mobility/frame-system/).
+Find more information in the [frame system documentation](/services/frame-system/).
 
 ### Webhooks
 

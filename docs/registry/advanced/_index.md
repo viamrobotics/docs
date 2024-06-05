@@ -33,7 +33,7 @@ If you want to use most of an existing API but need just a few other functions, 
 Or, if your resource does not fit into an existing resource subtype, you can use one of the following:
 
 - If you are working with a component that doesn't fit into any of the existing [component APIs](/appendix/apis/#component-apis), you can use the [generic component](/components/generic/) to build your own component API.
-- If you are designing a service that doesn't fit into any of the existing [service APIs](/appendix/apis/#service-apis), you can use the [generic service](/registry/advanced/generic/) to build your own service API.
+- If you are designing a service that doesn't fit into any of the existing [service APIs](/appendix/apis/#service-apis), you can use the [generic service](/services/generic/) to build your own service API.
 
 Both generic resources use the [`DoCommand`](/appendix/apis/#docommand) endpoint to enable you to make arbitrary calls as needed for your resource.
 
@@ -47,6 +47,6 @@ However, if you are unable to use [modular resources](/registry/) because you ne
 
 ## Design a custom ML model
 
-When working with the [ML model service](/ml/), you can [deploy an existing model](/ml/upload-model/) or [train your own model](/ml/train-model/).
+When working with the [ML model service](/ml/), you can [deploy an existing model](/ml/upload-model/) or [train your own model](/services/ml/train-model/).
 
-However, if you are writing your own {{< glossary_tooltip term_id="module" text="module" >}} that uses the ML model service together with the [vision service](/ml/vision/), you can also [design your own ML model](/registry/advanced/mlmodel-design/) to better match your specific use case.
+However, if you are writing your own {{< glossary_tooltip term_id="module" text="module" >}} that uses the ML model service together with the [vision service](/services/vision/), you can also [design your own ML model](/registry/advanced/mlmodel-design/) to better match your specific use case.
