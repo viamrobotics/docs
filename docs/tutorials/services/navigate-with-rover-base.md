@@ -66,7 +66,7 @@ Follow this tutorial to get started using Viam's Navigation service to help your
 
    We used three movement sensors to satisfy these requirements:
 
-   1. A [SparkFun GPS-RTK-SMA Breakout](https://www.sparkfun.com/products/16481) [movement sensor](/components/movement-sensor/) configured as a [`gps-nmea-rtk-serial`](/components/movement-sensor/gps/gps-nmea-rtk-serial/) model, providing GPS position and compass heading measurements.
+   1. A [SparkFun GPS-RTK-SMA Breakout](https://www.sparkfun.com/products/16481) [movement sensor](/components/movement-sensor/) configured as a [`gps-nmea-rtk-serial`](/components/movement-sensor/gps-nmea-rtk-serial/) model, providing GPS position and compass heading measurements.
    2. A [`wheeled-odometry`](/components/movement-sensor/wheeled-odometry/) model gathering angular and linear velocity information from the [encoders](/components/encoder/) wired to our base's [motors](/components/motor/).
    3. A [`merged`](/components/movement-sensor/merged/) model aggregating the readings together for the navigation service to consume.
 
@@ -327,7 +327,7 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
     ![An example configuration for a GPS movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/gps-movement-sensor-config-builder.png)
 
     We named ours `gps`.
-    Refer to [the `gps-nmea-rtk-serial` movement sensor documentation](/components/movement-sensor/gps/gps-nmea-rtk-serial/) for attribute information.
+    Refer to [the `gps-nmea-rtk-serial` movement sensor documentation](/components/movement-sensor/gps-nmea-rtk-serial/) for attribute information.
 
 2.  Configure a wheeled odometry movement sensor to provide angular and linear velocity measurements from the encoded motors on our base.
 
