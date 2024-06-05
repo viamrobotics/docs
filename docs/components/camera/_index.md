@@ -13,7 +13,6 @@ modulescript: true
 aliases:
   - "/tutorials/configure-a-camera"
   - "/components/camera/"
-hide_children: true
 # SMEs: Bijan, vision team
 ---
 
