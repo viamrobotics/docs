@@ -10,6 +10,7 @@ images: ["/services/icons/navigation.svg"]
 tags: ["navigation", "services", "base", "rover"]
 aliases:
   - "/services/navigation/"
+  - "/mobility/navigation/"
 # SMEs: Raymond
 ---
 

@@ -7,6 +7,7 @@ weight: 45
 tags: ["frame system", "services"]
 aliases:
   - /services/frame-system/frame-config/
+  - /mobility/frame-system/frame-config/
 # SMEs: Peter L, Gautham, Bijan
 ---
 

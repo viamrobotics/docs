@@ -7,6 +7,7 @@ tags: ["data management", "ml", "model training"]
 aliases:
   - /manage/data/upload-model/
   - /manage/ml/upload-model/
+  - /ml/upload-model/
 description: "Upload a Machine Learning model to the Viam registry to use it with the ML Model service."
 # SME: Steven B.
 ---

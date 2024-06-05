@@ -10,6 +10,7 @@ images: ["/services/icons/frame-system.svg"]
 tags: ["frame system", "services"]
 aliases:
   - /services/frame-system/
+  - /mobility/frame-system/
 # SMEs: Peter L, Gautham, Bijan
 ---
 

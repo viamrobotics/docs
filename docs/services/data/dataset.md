@@ -12,6 +12,7 @@ videoAlt: "Add a bounding box around the dog in an image."
 aliases:
   - /manage/data/label/
   - /manage/data/dataset/
+  - /data/dataset/
 # SME: Tahiya Salam and Alexa Greenberg
 ---
 

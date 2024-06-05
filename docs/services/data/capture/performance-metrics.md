@@ -10,6 +10,7 @@ images: ["/services/data/monitor.gif"]
 videos: ["/services/data/monitor.webm", "/services/data/monitor.mp4"]
 aliases:
   - "/services/data/capture/"
+  - "/data/capture/performance-metrics/"
 # SME: Alexa Greenberg
 ---
 

@@ -5,6 +5,8 @@ weight: 20
 type: "docs"
 description: "A segmenter that identifies well-separated objects above a flat plane."
 tags: ["vision", "computer vision", "CV", "services", "segmentation"]
+aliases:
+  - /ml/vision/obstacles_pointcloud/
 # SMEs: Bijan, Khari
 ---
 

@@ -5,6 +5,8 @@ weight: 10
 type: "docs"
 description: "Configure a fake generic service using the generic service API."
 tags: ["generic", "services"]
+aliases:
+  - /registry/advanced/generic/fake/
 ---
 
 Configure a `fake` generic service to test implementing a generic service on your machine:

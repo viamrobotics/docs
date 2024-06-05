@@ -7,6 +7,7 @@ description: "This model takes 2D bounding boxes from an object detector and pro
 tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 aliases:
   - "/services/vision/segmentation/"
+  - /ml/vision/detector_3d_segmenter/
 # SMEs: Bijan, Khari
 ---
 

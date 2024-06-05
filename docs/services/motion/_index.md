@@ -10,6 +10,7 @@ images: ["/services/icons/motion.svg"]
 no_list: true
 aliases:
   - "/services/motion/"
+  - "/mobility/motion/"
 # SME: Motion team
 ---
 

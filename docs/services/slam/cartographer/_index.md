@@ -10,6 +10,7 @@ images: ["/services/icons/slam.svg"]
 aliases:
   - "/services/slam/run-slam-cartographer/"
   - "/services/slam/cartographer/"
+  - "/mobility/slam/cartographer/"
 # SMEs: John N.
 ---
 

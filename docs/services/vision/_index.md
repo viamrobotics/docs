@@ -15,6 +15,7 @@ aliases:
   - "/ml/vision/classification/"
   - "/ml/vision/segmentation/"
   - "/services/vision/segmentation/"
+  - /ml/vision/
 # SMEs: Bijan, Khari
 ---
 

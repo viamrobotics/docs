@@ -8,6 +8,8 @@ description: "Edit a machine learning model previously published to the registry
 modulescript: true
 icon: true
 images: ["/services/icons/ml.svg"]
+aliases:
+  - /ml/edit/
 # SME: Steven B.
 ---
 

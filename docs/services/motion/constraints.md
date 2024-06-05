@@ -6,6 +6,7 @@ type: "docs"
 description: "Configure constraints to specify certain types of motion."
 aliases:
   - "/services/motion/constraints/"
+  - "/mobility/motion/constraints/"
 ---
 
 You can constrain the motion of your machine using the motion service's built-in constraint options.

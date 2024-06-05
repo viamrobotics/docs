@@ -6,6 +6,7 @@ type: "docs"
 description: "Information about the motion planning algorithms Viam uses."
 aliases:
   - "/services/motion/algorithms/"
+  - "/mobility/motion/algorithms/"
 ---
 
 Robotic motion planning is heavily reliant on planning algorithms to determine how to achieve motion for a particular scenario.

@@ -7,6 +7,8 @@ tags: ["data management", "ml", "model training"]
 description: "Configure a tflite_cpu ML model service to deploy TensorFlow lite models to your machine."
 icon: true
 images: ["/services/icons/ml.svg"]
+aliases:
+  - /data/deploy/tflite_cpu/
 # SME: Khari
 ---
 

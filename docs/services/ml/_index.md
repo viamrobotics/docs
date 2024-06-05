@@ -9,6 +9,7 @@ description: "Use Viam's built-in machine learning capabilities to train image c
 images: ["/platform/ml.svg"]
 aliases:
   - /manage/ml/
+  - /ml/
 # SME: Aaron Casas
 ---
 

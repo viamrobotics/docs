@@ -10,6 +10,7 @@ images: ["/services/icons/slam.svg"]
 no_list: true
 aliases:
   - "/services/slam/"
+  - "/mobility/slam/"
 # SMEs: John N.
 ---
 

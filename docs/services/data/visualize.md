@@ -8,6 +8,8 @@ tags: ["data management", "data", "services", "visualize"]
 description: "Visualize tabular data from the Viam app using popular tools like Grafana."
 icon: true
 images: ["/services/icons/data-visualization.svg"]
+aliases:
+  - /data/visualize/
 # SME: Devin Hilly
 ---
 

@@ -5,6 +5,8 @@ description: "Trigger cloud sync to sync captured data conditionally."
 weight: 20
 type: "docs"
 tags: ["data management", "cloud", "sync"]
+aliases:
+  - /data/trigger-sync/
 # SME: Alexa Greenberg
 ---
 

@@ -8,6 +8,8 @@ tags: ["data management", "cloud", "sync"]
 image: "/services/icons/data-capture.svg"
 imageAlt: "Upload data to the Viam app"
 images: ["/services/icons/data-capture.svg"]
+aliases:
+  - /data/upload/
 # SME: Alexa Greenberg
 ---
 

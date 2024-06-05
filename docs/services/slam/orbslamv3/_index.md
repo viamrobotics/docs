@@ -8,6 +8,7 @@ description: "Configure a SLAM service with the ORB-SLAM3 library."
 tags: ["slam", "services"]
 aliases:
   - "/services/slam/orbslamv3/"
+  - "/mobility/slam/orbslamv3/"
 # SMEs: Kat, Jeremy
 ---
 

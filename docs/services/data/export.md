@@ -9,6 +9,7 @@ icon: true
 images: ["/services/icons/data-capture.svg"]
 aliases:
   - /manage/data/export/
+  - /data/export/
 # SME: Alexa Greenberg
 ---
 

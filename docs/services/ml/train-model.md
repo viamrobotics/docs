@@ -12,6 +12,7 @@ aliases:
 description: "Train an image classification model on labeled image data."
 aliases:
   - /manage/ml/train-model/
+  - /ml/train-model/
 # SME: Tahiya + Alexa Greenberg
 ---
 
