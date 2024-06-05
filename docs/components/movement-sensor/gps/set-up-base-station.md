@@ -140,8 +140,8 @@ Keep this deselected.
 - **Caster Host:** rtk2go.com
 - **Caster Port:** 2101
 - **Caster User:** [insert your email]
-- **Mount Point:** [insert name of mountpoint from your [RTK2GO Casting Service reservation](#reserve-a-rtk2go-casting-service)]
-- **Mount Point PW:** [insert password from your [RTK2GO Casting Service reservation](#reserve-a-rtk2go-casting-service)]
+- **Mount Point:** [insert name of mountpoint from your [RTK2GO Casting Service reservation](#reserve-an-rtk2go-casting-service)]
+- **Mount Point PW:** [insert password from your [RTK2GO Casting Service reservation](#reserve-an-rtk2go-casting-service)]
 
 For example:
 
