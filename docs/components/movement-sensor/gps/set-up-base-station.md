@@ -12,7 +12,7 @@ Follow this guide to set up your [SparkFun RTK Reference Station](https://www.sp
 RTK improves the precision of positional data from satellite-based positioning systems like the Global Positioning System (GPS).
 When placed in a known location, the RTK Reference Station calculates and transmits correction data to RTK-enabled GPS receivers based on satellite signals it receives.
 
-After following this guide, you can provide the URL from your reference station's fixed-position NTRIP server as the `ntrip_url` attribute in your Viam machine config for the `gps-nmea-rtk-pmtk` and `gps-nmea-rtk-serial` models of movement sensor to allow rovers configured with these sensors to receive both GPS signals and correction data and apply corrections to achieve centimeter-level accuracy in positioning.
+After following this guide, you can provide the mount point, username, password, and URL from your reference station's fixed-position NTRIP server in your Viam machine config for the [`gps-nmea-rtk-pmtk`](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/) and [`gps-nmea-rtk-serial`](/components/movement-sensor/gps/gps-nmea-rtk-serial/) models of movement sensor to allow a rover or other machine configured with your sensor to apply corrections from the reference station, enabling your machine to achieve centimeter-level accuracy in positioning.
 
 ## Reserve an RTK2GO casting service
 
@@ -88,51 +88,28 @@ To update the version of the firmware to 4.0, select the **System Configuration*
 ### Update GNSS configuration
 
 Select the **GNSS Configuration** dropdown on the RTK setup configure page.
-This is what each option means and what value you should select:
+Hover over the subsequent **i** button for more information about an option, including default values and limits.
+For each option, select the following:
 
 **Measurement Rate:**
 
-- **In Hz:** The number of solutions or location ‘fixes’ per second. Anything above 4Hz may cause Bluetooth congestion and/or logging discrepancies.
+- **In Hz:** 4.00 Hz (default).
+- **Seconds between measurements:**: 0.25.
 
-  - Note: The measurement rate is overridden to 1Hz when you configure the reference station to **Base** mode.
-  - Default: 4Hz.
-  - Limit: 0.000122 to 10Hz.
-    For this use case, select the default value of **4Hz**.
+**Dynamic Model:** Portable (default).
 
-- **Seconds between measurements:**: The number of seconds between measurements. This input is the inverse of the measurement rate and is useful when taking a measurement every few seconds across a long survey (24+ hours).
-  - Note: The measurement rate is overridden to 1Hz when in **Base** mode.
-  - Limit: 0.1 to 8196 seconds.
-    For this use case, select the value **0.25**.
+**Min SV Elevation:** 10.
 
-**Dynamic Model:** Adjusts the internal algorithm to match the expected application environment.
-This setting improves the receiver's interpretation of measurements and thus provides a more accurate position output.
-Setting the receiver to an unsuitable platform model for the given application environment is likely to result in a loss of receiver performance and position accuracy.
+**Min C/N0**: Keep the default value here as appropriate to your model, **6dBHz** for ZED-F9P and **20dBHz** for ZED-F9R models.
 
-- Default: **Portable**
-- Keep the default selection of **Portable** here.
-
-**Min SV Elevation:** Minimum elevation in degrees for a GNSS satellite to be used in a fix.
-
-- Select **10**.
-
-**Min C/N0**: Minimum satellite signal level to use in a fix.
-
-- Default: **6dBHz** for ZED-F9P and **20dBHz** for ZED-F9R.
-- Keep the default value here.
-
-**Constellations:** The receiver is capable of concurrently receiving signals from multiple satellites across multiple constellations.
-Some applications dictate the need to turn off certain constellation reception.
-Deselecting a given constellation will cause the receiver to ignore those signals preventing them from being used during position calculations.
-
-- Default: **GPS**, **SBAS**, **GLONASS**, **BeiDou**, and **Galileo**.
-- Keep the default selections here.
+**Constellations:** Keep the default selections here: **GPS**, **SBAS**, **GLONASS**, **BeiDou**, and **Galileo**.
 
 With these recommended values selected, your GNSS Configuration should look like this:
 
 {{< imgproc src="/components/movement-sensor/sparkfun-GNSS-config.png" alt="Recommended GNSS Configuration." resize="900x" style="width:450px" >}}
 
 Now click on the **Message Rates** box.
-In the Message Menu make sure to enable the following messages, because VIAM’s RTK driver uses these messages:
+In the Message Menu enable the following messages:
 
 - GGA
 - GLL
@@ -141,7 +118,8 @@ In the Message Menu make sure to enable the following messages, because VIAM’s
 - RMC
 - VTG
 
-Make your **Message Rates** option look like this:
+This is necessary for this use case because Viam’s RTK driver uses these messages.
+Your **Message Rates** option should look like this:
 
 {{< imgproc src="/components/movement-sensor/sparkfun-GNSS-message-rates.png" alt="Recommended GNSS Message Rates Configuration." resize="900x" style="width:450px" >}}
 
@@ -149,31 +127,21 @@ Make your **Message Rates** option look like this:
 
 Select the **Base Configuration** dropdown on the RTK setup configure page.
 
-**Survey-In:** If the precise location of a base station is not known it may be obtained by ‘surveying’ the location.
-Generally, you'd fix your base in one place and let it take approximately 60 seconds worth of readings to obtain a best fit location based on the measurements. This method achieves ~30cm accurate position but can vary.
-Increasing the minimum observation time or required mean deviation increases accuracy but only to a point.
-Better accuracy is achieved with long-term logging and post processing.
+**Survey-In:** Enable the **Survey-In** mode, and configure it as follows:
 
-- Default: 60s and 5.0m.
-- Limits: 60 to 900s, 1.0 to 5.0m.
-- Enable the **Survey-In** mode, and configure it as follows:
-  - **Minimum observation time**: 60 (default)
-  - **Required Mean 3D standard deviation (m)**: 5.00 (default)
+- **Minimum observation time**: 60 (default).
+- **Required Mean 3D standard deviation (m)**: 5.00 (default).
 
 **Fixed**: You only want the **Fixed** mode if your reference station will be stationary at a permanent location.
+Keep this deselected.
 
-- Keep this deselected.
+**Enable NTRIP Server:** Enable this option. Enter the following credentials:
 
-**Enable NTRIP Server:** You use this NTRIP server to upload the base's correction data to the casting service.
-Other devices can then access the correction data using an NTRIP client.
-
-- Default: Disabled.
-- Enable this option. Enter the following credentials:
-  - **Caster Host:** rtk2go.com
-  - **Caster Port:** 2101
-  - **Caster User:** [insert your email]
-  - **Mount Point:** [insert name of mountpoint from your [RTK2GO Casting Service reservation](#reserve-a-rtk2go-casting-service)]
-  - **Mount Point PW:** [insert password from your [RTK2GO Casting Service reservation](#reserve-a-rtk2go-casting-service)]
+- **Caster Host:** rtk2go.com
+- **Caster Port:** 2101
+- **Caster User:** [insert your email]
+- **Mount Point:** [insert name of mountpoint from your [RTK2GO Casting Service reservation](#reserve-a-rtk2go-casting-service)]
+- **Mount Point PW:** [insert password from your [RTK2GO Casting Service reservation](#reserve-a-rtk2go-casting-service)]
 
 For example:
 
@@ -185,12 +153,8 @@ Select the **WiFi Configuration** dropdown on the RTK setup configure page.
 
 **Networks:** Enter credentials for up to 4 WiFi networks.
 The device tries all networks and uses the best network available.
-This is essential for NTRIP client/server configuration.
 
-**Configure Mode:** In **AP** mode, the device broadcasts as an access point called “RTK-Config”.
-In **WiFi** mode, the device connects to local WiFi and is configurable on the displayed IP address.
-
-- Select **WiFi**.
+**Configure Mode:** WiFi.
 
 Your WiFi configuration should look like this, with the examples replaced with your real values:
 
@@ -200,9 +164,8 @@ Your WiFi configuration should look like this, with the examples replaced with y
 
 Select the **Profile Configuration** dropdown on the RTK setup configure page.
 
-Select a profile and then assign settings to that profile.
-At reset, your RTK device will use the selected profile.
-Profile changes are saved when you select a different profile or when you press **Save Configuration**.
+Select a profile to assign settings to that profile.
+At reset, your RTK device will use the selected settings profile.
 
 Your **Profile Configuration** should look like this:
 
@@ -220,19 +183,24 @@ Press the button again to step through the available modes.
 Once highlighted, pause on **Base** to select this mode.
 
 Because you configured the base station to be in **Survey-in** mode in the [update Base configuration step](#update-base-configuration), it will take your base station up to six minutes to go into **Xmitting RTCM** mode.
-Then, after a few minutes it should go into **Casting** mode.
+After a few minutes it goes into **Casting** mode.
 Once you see **Casting** on the mode menu display screen, go to `rtk2go.com:2101` in your browser and find your mount point in the source table.
 
 ## Next steps: configure an RTK movement sensor
 
-Provide the RTK2GO casting URL `rtk2go.com:2101` as the `ntrip_url` attribute in your Viam machine config for the RTK-enabled models of movement sensor.
-
-Next, follow the configuration instructions for the desired model:
+Open the configuration instructions for your RTK-enabled movement sensor model:
 
 - [`gps-nmea-rtk-pmtk`](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
 - [`gps-nmea-rtk-serial`](/components/movement-sensor/gps/gps-nmea-rtk-serial/)
 
-This allows rovers configured with these sensors to receive both GPS signals and correction data and apply corrections to achieve centimeter-level accuracy in positioning.
+Follow the configuration instructions, providing the values you entered for your NTRIP server [Base configuration](#update-base-configuration) as the equal attributes in your Viam machine config:
+
+- `ntrip_url`: your RTK2GO casting URL, comprised of **Caster Host** and **Caster Port** (like `rtk2go.com:2101`)
+- `ntrip_username`: your **Caster User**, which should be your email
+- `ntrip_password`: your **Mount Point PW**
+- `ntrip_mountpoint`: your **Mount Point** name
+
+Configuring your movement sensor with your NTRIP casting server access information allows your machine to receive both GPS signals and correction data and apply corrections, increasing the positioning capacity of the movement sensor to centimeter-level accuracy.
 
 ## Troubleshooting
 
