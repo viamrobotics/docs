@@ -187,7 +187,7 @@ Move the end of the arm to the desired [Pose](https://python.viam.dev/autoapi/vi
 
 **Parameters:**
 
-- `pose` [(Pose)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
+- `pose` [(Pose)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose): A representation of the arm's destination position as a 6 DOF (six degrees of freedom) pose.
   The `Pose` is composed of values for location and orientation with respect to the origin.
   Location is expressed as distance, which is represented by x, y, and z coordinate values.
   Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
@@ -216,7 +216,7 @@ await my_arm.move_to_position(pose=examplePose)
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `Pose` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
+- `Pose` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A representation of the arm's destination position as a 6 DOF (six degrees of freedom) pose.
   The `Pose` is composed of values for location and orientation with respect to the origin.
   Location is expressed as distance, which is represented by x, y, and z coordinate values.
   Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
