@@ -38,10 +38,10 @@ Most machines with an encoder need at least the following hardware:
 ## Related services
 
 {{< cards >}}
-{{< relatedcard link="/mobility/motion/" >}}
-{{< relatedcard link="/mobility/navigation/" >}}
-{{< relatedcard link="/data/" >}}
-{{< relatedcard link="/mobility/frame-system/" >}}
+{{< relatedcard link="/services/motion/" >}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
 {{< /cards >}}
 
 ## Supported models
@@ -257,8 +257,8 @@ properties, err := myEncoder.Properties(context.Background(), nil)
 
 ### GetGeometries
 
-Get all the geometries associated with the encoder in its current configuration, in the [frame](/mobility/frame-system/) of the encoder.
-The [motion](/mobility/motion/) and [navigation](/mobility/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+Get all the geometries associated with the encoder in its current configuration, in the [frame](/services/frame-system/) of the encoder.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

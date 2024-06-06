@@ -60,7 +60,7 @@ For example, you could extend the [camera component API](/components/camera/#api
 If you want to write a module to extend support to a new type of component or service that is relatively unique, consider using the generic API for your resource type to build your own API:
 
 - If you are working with a component that doesn't fit into any of the existing [component APIs](/appendix/apis/#component-apis), you can use the [generic component](/components/generic/) to build your own component API.
-- If you are designing a service that doesn't fit into any of the existing [service APIs](/appendix/apis/#service-apis), you can use the [generic service](/registry/advanced/generic/) to build your own service API.
+- If you are designing a service that doesn't fit into any of the existing [service APIs](/appendix/apis/#service-apis), you can use the [generic service](/services/generic/) to build your own service API.
 
 Most module use cases, however, benefit from extending an existing API, as covered below.
 {{% /alert %}}
@@ -77,7 +77,7 @@ If you are using Python, you can use the [Viam module generator](https://github.
 
 A resource model is identified by a unique name, often called the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, using the format: `namespace:repo-name:model-name`, where:
 
-- `namespace` is the [namespace of your organization](/fleet/organizations/#create-a-namespace-for-your-organization).
+- `namespace` is the [namespace of your organization](/cloud/organizations/#create-a-namespace-for-your-organization).
 - `repo-name` is the code repository (GitHub repo) that houses your module code.
 - `model-name` is the name of the new resource model that your module will provide.
 
@@ -1005,7 +1005,7 @@ int main(int argc, char** argv) {
 ### Configure logging
 
 If desired, you can configure your module to output log messages to the [Viam app](https://app.viam.com/).
-Log messages sent to the Viam app appear under the [**LOGS** tab](/fleet/machines/#logs) for your machine in an easily-parsable and searchable manner.
+Log messages sent to the Viam app appear under the [**LOGS** tab](/cloud/machines/#logs) for your machine in an easily-parsable and searchable manner.
 
 Log messages generated when your machine is offline are queued, and sent together when your machine connects to the internet once more.
 
@@ -1171,7 +1171,7 @@ This module implements the [`rdk:component:base` API](/components/base/#api) in 
 ## Configure your `agilex-limo` base
 
 > [!NOTE]
-> Before configuring your base, you must [create a machine](/fleet/machines/#add-a-new-machine).
+> Before configuring your base, you must [create a machine](/cloud/machines/#add-a-new-machine).
 
 Navigate to the **CONFIGURE** tab of your machine’s page in [the Viam app](https://app.viam.com/).
 [Add `base` / `agilex-limo` to your machine](https://docs.viam.com/build/configure/#components).

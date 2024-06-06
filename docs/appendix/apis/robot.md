@@ -19,7 +19,7 @@ The robot API is supported for use with the [Viam Python SDK](https://python.via
 
 To interact with the robot API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
 
-To find the API key, API key ID, and machine address, go to [Viam app](https://app.viam.com/), select the machine you wish to connect to, and go to the [**Code sample**](/fleet/machines/#code-sample) tab.
+To find the API key, API key ID, and machine address, go to [Viam app](https://app.viam.com/), select the machine you wish to connect to, and go to the [**Code sample**](/cloud/machines/#code-sample) tab.
 Toggle **Include API key**, and then copy and paste the API key ID and the API key into your environment variables or directly into the code:
 
 {{< tabs >}}
@@ -538,7 +538,7 @@ Get the configuration of the frame system of a given machine.
 
 **Parameters:**
 
-- `additional_transforms` [(Optional[List[viam.proto.common.Transform]])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform): A optional list of [additional transforms](/mobility/frame-system/#additional-transforms).
+- `additional_transforms` [(Optional[List[viam.proto.common.Transform]])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform): A optional list of [additional transforms](/services/frame-system/#additional-transforms).
 
 **Returns:**
 
@@ -577,7 +577,7 @@ fmt.Println(frameSystem)
 
 **Parameters:**
 
-- `transforms` [(Transform[])](https://ts.viam.dev/classes/commonApi.Transform.html): An optional array of [additional transforms](/mobility/frame-system/#additional-transforms).
+- `transforms` [(Transform[])](https://ts.viam.dev/classes/commonApi.Transform.html): An optional array of [additional transforms](/services/frame-system/#additional-transforms).
 
 **Returns:**
 

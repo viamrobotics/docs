@@ -417,15 +417,15 @@ python_datatype_links = {
 ## NOTE 2: I omitted links to the SDKs (like for 'datetime', and 'dataclass' since these can be
 ## separately handled uniformly (perhaps with the {sdk}_datatype_links array for example).
 ## EXAMPLES: The first two items in this dict correspond to these docs examples:
-## EXAMPLE 1: https://docs.viam.com/mobility/frame-system/#transformpose
-## EXAMPLE 2: https://docs.viam.com/mobility/motion/#moveonmap
+## EXAMPLE 1: https://docs.viam.com/services/frame-system/#transformpose
+## EXAMPLE 2: https://docs.viam.com/services/motion/#moveonmap
 override_description_links = {
-    "additional transforms": "/mobility/frame-system/#additional-transforms",
-    "SLAM service": "/mobility/slam/",
-    "frame": "/mobility/frame-system/",
+    "additional transforms": "/services/frame-system/#additional-transforms",
+    "SLAM service": "/services/slam/",
+    "frame": "/services/frame-system/",
     "Viam app": "https://app.viam.com/",
-    "organization settings page": "/fleet/organizations/",
-    "image tags": "/data/dataset/#image-tags",
+    "organization settings page": "/cloud/organizations/",
+    "image tags": "/services/data/dataset/#image-tags",
     "API key": "/fleet/cli/#authenticate",
     "in configuration": "/components/board/#digital_interrupts",
     "board model": "/components/board/#supported-models",
@@ -1521,13 +1521,13 @@ def write_markdown(type, names, methods):
                         if type == 'component':
                             proto_anchor_link = '/' + type_filepath_name + '/' + resource + '/#' + proto.lower()
                         elif type == 'service' and resource in ['base_remote_control', 'motion', 'navigation', 'slam']:
-                            proto_anchor_link = '/mobility/' + resource.replace('base_remote_control', 'base_rc') + '/#' + proto.lower()
+                            proto_anchor_link = '/services/' + resource.replace('base_remote_control', 'base_rc') + '/#' + proto.lower()
                         elif type == 'service' and resource == 'data_manager':
-                            proto_anchor_link = '/data/#' + proto.lower()
+                            proto_anchor_link = 'services/data/#' + proto.lower()
                         elif type == 'service' and resource == 'generic_service':
-                            proto_anchor_link = '/registry/advanced/generic/#' + proto.lower()
+                            proto_anchor_link = '/services/generic/#' + proto.lower()
                         elif type == 'service' and resource in ['mlmodel', 'vision']:
-                            proto_anchor_link = '/ml/' + resource.replace('mlmodel', 'deploy') + '/#' + proto.lower()
+                            proto_anchor_link = '/services/ml/' + resource.replace('mlmodel', 'deploy') + '/#' + proto.lower()
                         elif type == 'app' and resource == 'app':
                             proto_anchor_link = '/appendix/apis/fleet/#' + proto.lower()
                         elif type == 'app' and resource in ["billing", "mltraining"]:

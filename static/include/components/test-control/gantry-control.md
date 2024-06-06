@@ -6,4 +6,4 @@ Use the panel to adjust the position of the actuator on the axis and check wheth
 
 {{<imgproc src="/components/gantry/gantry-control-tab.png" resize="450x" declaredimensions=true alt="Gantry control panel.">}}
 
-If the gantry does not appear on the **CONTROL** tab, or if you notice unexpected behavior, check your machine's [**LOGS** tab](/fleet/machines/#logs) for errors, and review the configuration.
+If the gantry does not appear on the **CONTROL** tab, or if you notice unexpected behavior, check your machine's [**LOGS** tab](/cloud/machines/#logs) for errors, and review the configuration.

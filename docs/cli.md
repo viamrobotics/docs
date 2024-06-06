@@ -1,7 +1,7 @@
 ---
 title: "Viam CLI"
 linkTitle: "CLI"
-weight: 650
+weight: 700
 type: "docs"
 no_list: true
 description: "Manage and control your machines from the command line."
@@ -9,12 +9,13 @@ aliases:
   - "/build/program/cli"
   - /manage/cli/
   - /fleet/cli/
+menuindent: true
 ---
 
 The Viam CLI (command line interface) tool enables you to manage your machines and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} across organizations and locations from the command line.
 The CLI lets you:
 
-- Retrieve [organization](/fleet/organizations/) and location information
+- Retrieve [organization](/cloud/organizations/) and location information
 - Manage [machine fleet](/fleet/) data and logs
 - Control machines by issuing component and service commands
 - Upload and manage [modular resources](/registry/) in the Viam registry
@@ -165,7 +166,7 @@ You will need both to authenticate.
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
 By default, new organization API keys are created with **Owner** permissions, giving the key full read and write access to all machines within your organization.
-You can change an API key's permissions from the Viam app on the [organizations page](/fleet/organizations/) by clicking the **Show details** link next to your API key.
+You can change an API key's permissions from the Viam app on the [organizations page](/cloud/organizations/) by clicking the **Show details** link next to your API key.
 {{% /alert %}}
 
 Once created, you can use the organization API key to authenticate future CLI sessions or to [connect to machines with the SDK](/build/program/#authenticate).
@@ -204,7 +205,7 @@ You will need both to authenticate.
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
 By default, new location API keys are created with **Owner** permissions, giving the key full read and write access to all machines within your location.
-You can change an API key's permissions from the Viam app on the [organizations page](/fleet/organizations/) by clicking the **Show details** link next to your API key.
+You can change an API key's permissions from the Viam app on the [organizations page](/cloud/organizations/) by clicking the **Show details** link next to your API key.
 {{% /alert %}}
 
 Once created, you can use the location API key to authenticate future CLI sessions or to [connect to machines with the SDK](/build/program/#authenticate).
@@ -335,8 +336,8 @@ done
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
 | `export`       | Export data in a specified format to a specified location  | - |
-| `database configure`      | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data/query/#configure-data-query)  | - |
-| `database hostname`      | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/data/query/#configure-data-query)  | - |
+| `database configure`      | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/services/data/query/#configure-data-query)  | - |
+| `database hostname`      | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/services/data/query/#configure-data-query)  | - |
 | `dataset add`      | Add a new image to an existing dataset by its file id, or add a group of images by specifying a filter | `filter` |
 | `dataset remove`      | Remove an existing image from a dataset by its file id, or remove a group of images by specifying a filter | `filter` |
 | `delete binary`      | Delete binary data  | - |
@@ -399,7 +400,7 @@ Its **File ID** is shown under the **Details** subtab that appears on the right.
 
 You cannot use filter arguments, such as `--start` or `--end` when using `ids`.
 
-See [Datasets](/data/dataset/#datasets) for more information.
+See [Datasets](/services/data/dataset/#datasets) for more information.
 
 ##### Using the `filter` argument
 
@@ -420,11 +421,11 @@ You can use the same filter parameters (such as `--start`, `--end`, etc) with yo
 
 You cannot use the `--file-ids` argument when using `filter`.
 
-See [Datasets](/data/dataset/#datasets) for more information.
+See [Datasets](/services/data/dataset/#datasets) for more information.
 
 ### `locations`
 
-The `locations` command allows you to manage the [locations](/fleet/locations/) that you have access to.
+The `locations` command allows you to manage the [locations](/cloud/locations/) that you have access to.
 With it, you can list available locations, filter locations by organization, or create a new location API key.
 
 ```sh {class="command-line" data-prompt="$"}
@@ -555,7 +556,7 @@ If you update and release your module as part of a continuous integration (CI) w
 | `--module`     | The path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload`, `build` | Optional |
 | `--name`     | The name of the custom module to be created | `create` | **Required** |
 | `--org-id`      | The organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | **Required** |
-| `--public-namespace`      | The [namespace](/fleet/organizations/#create-a-namespace-for-your-organization) to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | **Required** |
+| `--public-namespace`      | The [namespace](/cloud/organizations/#create-a-namespace-for-your-organization) to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | **Required** |
 | `--platform`      | The architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument) | `upload`, `build logs` | **Required** |
 | `--version`      | The version of your module to set for this upload. See [Using the `--version` argument](#using-the---version-argument)  | `upload` | **Required** |
 | `--wait`      | Wait for the build to finish before outputting any logs  | `build logs` | Optional |
@@ -564,7 +565,7 @@ If you update and release your module as part of a continuous integration (CI) w
 
 All of the `module` commands accept either the `--org-id` or `--public-namespace` argument.
 
-- Use the `--public-namespace` argument to supply the [namespace](/fleet/organizations/#create-a-namespace-for-your-organization) of your organization, suitable for uploading your module to the Viam registry and sharing with other users.
+- Use the `--public-namespace` argument to supply the [namespace](/cloud/organizations/#create-a-namespace-for-your-organization) of your organization, suitable for uploading your module to the Viam registry and sharing with other users.
 - Use the `--org-id` to provide your organization ID instead, suitable for sharing your module privately within your organization.
 
 You may use either argument for the `viam module create` command, but must use `--public-namespace` for the `update` and `upload` commands when uploading as a public module (`"visibility": "public"`) to the Viam registry.
@@ -641,14 +642,14 @@ The `meta.json` file includes the following configuration options:
     <td><code>module_id</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
-    <td>The name of the module, including its <a href="/fleet/organizations/#create-a-namespace-for-your-organization">namespace</a></td>
+    <td>The name of the module, including its <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace</a></td>
 
   </tr>
   <tr>
     <td><code>visibility</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
-    <td>Whether the module is accessible only to members of your <a href="/fleet/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can change this setting later using the <code>viam module update</code> command.<br><br>Default: <code>private</code></td>
+    <td>Whether the module is accessible only to members of your <a href="/cloud/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can change this setting later using the <code>viam module update</code> command.<br><br>Default: <code>private</code></td>
   </tr>
   <tr>
     <td><code>url</code></td>
@@ -695,7 +696,7 @@ For example, the following represents the configuration of an example `my-module
 ```
 
 {{% alert title="Important" color="note" %}}
-If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/registry/#naming-your-model-namespacerepo-namename) must match the [namespace of your organization](/fleet/organizations/#create-a-namespace-for-your-organization).
+If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/registry/#naming-your-model-namespacerepo-namename) must match the [namespace of your organization](/cloud/organizations/#create-a-namespace-for-your-organization).
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 {{% /alert %}}
@@ -899,7 +900,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 <!-- prettier-ignore -->
 | Command option     | Description      | Positional arguments |
 | ----------- | ----------- | ----------- |
-| `list`      | List all organizations (name, id, and [namespace](/fleet/organizations/#create-a-namespace-for-your-organization)) that the authenticated session belongs to    | - |
+| `list`      | List all organizations (name, id, and [namespace](/cloud/organizations/#create-a-namespace-for-your-organization)) that the authenticated session belongs to    | - |
 | `api-key`      | Create a new organization API key    |`create` |
 | `--help`      | Return help      | - |
 

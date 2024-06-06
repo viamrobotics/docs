@@ -21,9 +21,9 @@ A _gripper_ is a robotic grasping device that can open and close, often attached
 ## Related services
 
 {{< cards >}}
-{{< relatedcard link="/data/" >}}
-{{< relatedcard link="/mobility/frame-system/" >}}
-{{< relatedcard link="/mobility/motion/" >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/motion/" >}}
 {{< /cards >}}
 
 ## Supported models
@@ -262,8 +262,8 @@ logger.Info(moving)
 
 ### GetGeometries
 
-Get all the geometries associated with the gripper in its current configuration, in the [frame](/mobility/frame-system/) of the gripper.
-The [motion](/mobility/motion/) and [navigation](/mobility/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+Get all the geometries associated with the gripper in its current configuration, in the [frame](/services/frame-system/) of the gripper.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

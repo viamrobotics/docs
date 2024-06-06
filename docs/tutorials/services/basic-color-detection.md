@@ -27,7 +27,7 @@ After following this tutorial, you will understand how the ML model service and 
 In this tutorial, you will detect the color red using your computer's webcam and the Viam vision service.
 Without writing any code, you will be able to view your camera stream, with detection bounding boxes, from the Viam app control interface.
 
-The [vision service](/ml/vision/) enables a robot to use its cameras to see and interpret the world around it.
+The [vision service](/services/vision/) enables a robot to use its cameras to see and interpret the world around it.
 The service also allows you to create different types of detectors with which the robot can recognize objects, scan QR codes, perform optical quality inspections, sort different colored objects, take measurements, and more.
 
 You can follow this tutorial with your own computer (laptop, desktop, or single-board computer) and webcam, or you can remotely borrow a [Viam rover](https://app.viam.com/try) if your computer is not compatible with [`viam-server`](/get-started/installation/).
@@ -95,7 +95,7 @@ This tutorial uses the color `#7a4f5c` or `rgb(122, 79, 92)` (a reddish color).
 
 **Hex color #7a4f5c**: {{<imgproc src="/tutorials/try-viam-color-detection/7a4f5c.png" resize="150x" declaredimensions=true alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color.">}}
 
-Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/robots) and configure your [vision service color detector](/ml/vision/#detections):
+Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.com/robots) and configure your [vision service color detector](/services/vision/#detections):
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
@@ -140,7 +140,7 @@ The `color_detector` is a heuristic-based detector that draws boxes around objec
 
 Click **Save** to save your configuration.
 
-You cannot interact directly with the [vision service](/ml/vision/).
+You cannot interact directly with the [vision service](/services/vision/).
 To be able to interact with the vision service you must configure a camera component.
 
 {{< alert title="Tip" color="tip" >}}

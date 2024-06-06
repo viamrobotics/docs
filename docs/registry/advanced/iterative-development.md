@@ -29,7 +29,7 @@ You can use [prerelease versioning](#use-prerelease-versioning) to publish a ver
 
 If you are developing a module for the same target architecture as your development workstation, you can test your module locally using the following procedure:
 
-1. Navigate to the [Viam app](https://app.viam.com/robots) and [add a new machine](/fleet/machines/#add-a-new-machine) to serve as your development machine.
+1. Navigate to the [Viam app](https://app.viam.com/robots) and [add a new machine](/cloud/machines/#add-a-new-machine) to serve as your development machine.
    Be sure to follow the steps shown in the Viam app to install `viam-server` on your local machine.
 
 1. If you are using a programming language that requires that you build your module, such as Go or C++, follow the instructions for your language to [compile or package](/registry/create/#compile-or-package-your-module) your module.
@@ -82,7 +82,7 @@ If you are developing a module for the same target architecture as your developm
 
 If you are developing a module for a different target architecture than your development workstation, you can sync your module code and test your module remotely using the following procedure:
 
-1. Navigate to the [Viam app](https://app.viam.com/robots) and [add a new machine](/fleet/machines/#add-a-new-machine) to serve as your development machine.
+1. Navigate to the [Viam app](https://app.viam.com/robots) and [add a new machine](/cloud/machines/#add-a-new-machine) to serve as your development machine.
    Be sure to follow the steps shown in the Viam app to install `viam-server` on the target machine you want to test and build on.
    For example, to test and build your module on your Raspberry Pi, be sure to install `viam-server` on the Pi itself, not your macOS workstation.
 

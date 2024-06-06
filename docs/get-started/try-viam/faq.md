@@ -20,7 +20,7 @@ No matter where you are in the world you can take over and play around with a Vi
 
 1. Please notify Viam support on [our Community Discord](https://discord.gg/viam).
 2. Use the **Add Viam Support** button on your machine's Location page to give Viam Support access to your _location_.
-   Refer to [Managing Locations and sub-locations](/fleet/locations/).
+   Refer to [Managing Locations and sub-locations](/cloud/locations/).
 
 ## Can I extend my time?
 
@@ -64,11 +64,11 @@ If you change the location, you must refresh the page.
 
 ## Which organization does this machine e belong to?
 
-Your machine belongs to the [organization](/fleet/organizations/) you were in when you made the request.
+Your machine belongs to the [organization](/cloud/organizations/) you were in when you made the request.
 
 ## Can I share this Location with a friend to work on the machine together?
 
-Sure, you can [invite other users to your organization](/fleet/locations/) to collaborate on your machine.
+Sure, you can [invite other users to your organization](/cloud/locations/) to collaborate on your machine.
 As members of your organization, those users have full control of your machine.
 Another collaboration option is to use screen sharing in a Zoom or Webex session.
 

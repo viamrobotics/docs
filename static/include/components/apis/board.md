@@ -10,6 +10,6 @@ Method Name | Description
 [`SetPWM`](/components/board/#setpwm) | Set the board to the indicated power mode.
 [`WriteAnalog`](/components/board/#writeanalog) | Write an analog value to a pin on the board.
 [`StreamTicks`](/components/board/#streamticks) | Start a stream of [`DigitalInterrupt`](/components/board/#digital_interrupts) ticks.
-[`GetGeometries`](/components/board/#getgeometries) | Get all the geometries associated with the board in its current configuration, in the [frame](/mobility/frame-system/) of the board.
+[`GetGeometries`](/components/board/#getgeometries) | Get all the geometries associated with the board in its current configuration, in the [frame](/services/frame-system/) of the board.
 [`DoCommand`](/components/board/#docommand) | Send or receive model-specific commands.
 [`Close`](/components/board/#close) | Safely shut down the resource and prevent further use.

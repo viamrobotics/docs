@@ -23,7 +23,7 @@ Maybe someone is eating your chocolates when you are away.
 You're not sure who, but you suspect Steve.
 This robot will help you catch the culprit.
 
-When someone comes to your desk, the robot will use the [vision service](/ml/vision/) and the [ML model service](/ml/) to detect a person, take their photo, and text you an alert with a photo of the person.
+When someone comes to your desk, the robot will use the [vision service](/services/vision/) and the [ML model service](/services/ml/) to detect a person, take their photo, and text you an alert with a photo of the person.
 
 ![Text message reading "Alert There is someone at your desk beware" with a photo of a person (Steve) detected by the camera as he approaches the desk.](/tutorials/send-security-photo/text-message.png)
 
@@ -81,12 +81,12 @@ If it doesn't, double-check that your config is saved correctly, and check the *
 
 ### Configure your services
 
-Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/ml/vision/) on your machine.
+Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/services/vision/) on your machine.
 This tutorial uses a pre-trained Machine Learning model from the Viam Registry called [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
 The model can detect a variety of things, including `Persons`.
 You can see a full list of what the model can detect in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
-If you want to train your own model instead, follow the instructions in [train a model](/ml/train-model/).
+If you want to train your own model instead, follow the instructions in [train a model](/services/ml/train-model/).
 
 1. **Configure the ML model service**
 
@@ -104,7 +104,7 @@ If you want to train your own model instead, follow the instructions in [train a
    Select **Deploy model on machine** for the **Deployment** field.
    Then select the `viam-labs:EfficientDet-COCO` model from the **Models** dropdown.
 
-1. **Configure an mlmodel detector** [vision service](/ml/vision/)
+1. **Configure an mlmodel detector** [vision service](/services/vision/)
 
    Click the **+** (Create) button next to your main part in the left-hand menu and select **Service**.
    Start typing `ML model` and select **vision / ML model** from the builtin options.

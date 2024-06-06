@@ -104,8 +104,8 @@ For more detailed information on how to operate and test your resources, expand 
 
 The following services also provide control interfaces:
 
-- [SLAM](/mobility/slam/cartographer/#create-a-new-map): for creating a new SLAM map and for using the motion service to move a machine on a SLAM map
-- [Navigation](/mobility/navigation/#control-tab-usage): for moving a machine to waypoints on a map
+- [SLAM](/services/slam/cartographer/#create-a-new-map): for creating a new SLAM map and for using the motion service to move a machine on a SLAM map
+- [Navigation](/services/navigation/#control-tab-usage): for moving a machine to waypoints on a map
 
 ## Control interface in the Viam mobile app
 
@@ -118,5 +118,5 @@ For example, you can view live camera feeds, adjust components' runtime paramete
 
 Additionally, the machine control interface provides a menu for:
 
-- [viewing a machine's logs](/fleet/machines/#logs)
-- [uploading images from your phone to the cloud](/data/upload/#upload-images-with-the-viam-mobile-app)
+- [viewing a machine's logs](/cloud/machines/#logs)
+- [uploading images from your phone to the cloud](/services/data/upload/#upload-images-with-the-viam-mobile-app)

@@ -36,11 +36,11 @@ You can use different models to:
 ## Related services
 
 {{< cards >}}
-{{< relatedcard link="/data/" >}}
-{{< relatedcard link="/ml/vision/" >}}
-{{< relatedcard link="/mobility/frame-system/" >}}
-{{< relatedcard link="/mobility/slam/" >}}
-{{< relatedcard link="/ml/deploy/" alt_title="Machine Learning" >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/vision/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/slam/" >}}
+{{< relatedcard link="/services/ml/deploy/" alt_title="Machine Learning" >}}
 {{< /cards >}}
 
 ## Supported models
@@ -359,8 +359,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### GetGeometries
 
-Get all the geometries associated with the camera in its current configuration, in the [frame](/mobility/frame-system/) of the camera.
-The [motion](/mobility/motion/) and [navigation](/mobility/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+Get all the geometries associated with the camera in its current configuration, in the [frame](/services/frame-system/) of the camera.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -516,7 +516,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 ## Next steps
 
 {{< cards >}}
-{{% card link="/ml/vision" %}}
+{{% card link="/services/vision" %}}
 {{% card link="/tutorials/services/basic-color-detection" %}}
 {{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}

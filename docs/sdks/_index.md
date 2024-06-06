@@ -1,10 +1,11 @@
 ---
 title: "SDKs"
 linkTitle: "SDKs"
-weight: 700
+weight: 650
 type: "docs"
 description: "Program and control your machines in the languages you already know like Python, Go, TypeScript, C++, and Flutter."
 no_list: true
+menuindent: true
 ---
 
 Viam's SDK libraries wrap the Viam's APIs for interacting with a machine's [components](/appendix/apis/#component-apis) and [services](/appendix/apis/#service-apis), as well as for [cloud capabilities](/appendix/apis/#robot-api), such as [data management](/appendix/apis/#data-client-api) and [fleet management](/appendix/apis/#fleet-management-api).

@@ -21,7 +21,7 @@ aliases:
   - "/modular-resources/upload/"
 ---
 
-Once you have [created a custom module](/registry/create/), use the instructions on this page to upload it to the Viam registry as a public module that is shared with other Viam users, or as a private module that is shared only within your [organization](/fleet/organizations/).
+Once you have [created a custom module](/registry/create/), use the instructions on this page to upload it to the Viam registry as a public module that is shared with other Viam users, or as a private module that is shared only within your [organization](/cloud/organizations/).
 
 You can upload your module in one of two ways:
 
@@ -36,7 +36,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
 1. First, [install the Viam CLI](/cli/#install) and [authenticate](/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
 
 2. Next, run the `viam module create` command to choose a custom module name and generate the required metadata for your module.
-   By default, a new module is created as _private_, meaning that it is only accessible to members of your [organization](/fleet/organizations/), but you can choose to set the `visibility` of your module to _public_ to make it accessible to all Viam users.
+   By default, a new module is created as _private_, meaning that it is only accessible to members of your [organization](/cloud/organizations/), but you can choose to set the `visibility` of your module to _public_ to make it accessible to all Viam users.
 
    Select the private or public tab for instructions to upload your module with the respective `visibility` setting:
 
@@ -54,7 +54,7 @@ If you later wish to make your module public, you can use the [`viam module upda
 {{% /tab %}}
 {{% tab name="Public" %}}
 
-1.  If you haven't already, [create a new namespace](/fleet/organizations/#create-a-namespace-for-your-organization) for your organization.
+1.  If you haven't already, [create a new namespace](/cloud/organizations/#create-a-namespace-for-your-organization) for your organization.
     If you have already created a namespace, you can find it on your organization's **Settings** page in [the Viam App](https://app.viam.com/), or by running the [`viam organizations list`](/cli/#organizations) command.
 
 2.  To generate metadata for your module using your public namespace, run the following command from the same directory as your custom module:
@@ -81,7 +81,7 @@ If you later wish to make your module public, you can use the [`viam module upda
         <td><code>module_id</code></td>
         <td>string</td>
         <td><strong>Required</strong></td>
-        <td>The module ID, which includes either the module <a href="/fleet/organizations/#create-a-namespace-for-your-organization">namespace</a> or <a href="/fleet/organizations/">organization-id</a>, followed by its name (pre-populated using the <code>--name</code> you provided in the <code>viam module create</code> command).
+        <td>The module ID, which includes either the module <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace</a> or <a href="/cloud/organizations/">organization-id</a>, followed by its name (pre-populated using the <code>--name</code> you provided in the <code>viam module create</code> command).
         <div class="alert alert-caution" role="alert">
       <h4 class="alert-heading">Caution</h4>
 
@@ -96,7 +96,7 @@ If you later wish to make your module public, you can use the [`viam module upda
         <td><code>visibility</code></td>
         <td>string</td>
         <td><strong>Required</strong></td>
-        <td>Whether the module is accessible only to members of your <a href="/fleet/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can later make a private module public using the <code>viam module update</code> command. Once you make a module public, you can change it back to private if it is not configured on any machines outside of your organization.<br><br>Default: <code>private</code></td>
+        <td>Whether the module is accessible only to members of your <a href="/cloud/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can later make a private module public using the <code>viam module update</code> command. Once you make a module public, you can change it back to private if it is not configured on any machines outside of your organization.<br><br>Default: <code>private</code></td>
       </tr>
       <tr>
         <td><code>url</code></td>
@@ -114,7 +114,7 @@ If you later wish to make your module public, you can use the [`viam module upda
         <td><code>models</code></td>
         <td>object</td>
         <td><strong>Required</strong></td>
-        <td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/fleet/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p><p>For more information, see <a href="/registry/#naming-your-model-namespacerepo-namename">naming your model</a>.</p></td>
+        <td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p><p>For more information, see <a href="/registry/#naming-your-model-namespacerepo-namename">naming your model</a>.</p></td>
       </tr>
       <tr>
         <td><code>entrypoint</code></td>
@@ -554,7 +554,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 {{% /tab %}}
 {{< /tabs >}}
 
-1. Create an [organization API key](/cli/#create-an-organization-api-key) with the [owner](/fleet/rbac/#permissions) role, which the GitHub action will use to authenticate to the Viam platform, using one of the following methods:
+1. Create an [organization API key](/cli/#create-an-organization-api-key) with the [owner](/cloud/rbac/#permissions) role, which the GitHub action will use to authenticate to the Viam platform, using one of the following methods:
 
    - Use the Viam CLI to create an organization API key, which includes the owner role by default:
 
@@ -566,7 +566,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
      Make sure your organization API key is set to **Role: Owner**, or the GitHub action will not be able to successfully authenticate during runs.
      If you are using an existing organization API key which is not set to **Role: Owner**, you can change an API key's permissions from the Viam app on the organizations page by clicking the **Show details** link next to your API key.
      The operator role cannot be used to authenticate GitHub action runs.
-     For more information see [Manage organizations](/fleet/organizations/).
+     For more information see [Manage organizations](/cloud/organizations/).
 
    Both methods return a `key id` and a `key value` which together comprise your organization API key.
 
@@ -595,7 +595,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 
 You can change the visibility of a module from public to private if:
 
-- you are an [owner](/fleet/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
+- you are an [owner](/cloud/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
 - no machines outside of the organization that owns the module have the module configured (no other orgs are using it).
 
 To change the visibility, navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry), hover to the right of the visibility indicator near the right side of the page until an **Edit** button appears, and click it to make changes.
@@ -612,7 +612,7 @@ viam module update
 
 You can delete a module if:
 
-- you are an [owner](/fleet/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
+- you are an [owner](/cloud/rbac/) in the {{< glossary_tooltip term_id="organization" text="organization" >}} that owns the module, AND
 - no machines have the module configured.
 
 To delete a module, navigate to its page in the [**REGISTRY** section of the Viam app](https://app.viam.com/registry), click the **...** menu in the upper-right corner of the page, and click **Delete**.

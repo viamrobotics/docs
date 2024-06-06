@@ -35,7 +35,7 @@ To use the Viam data client API, you first need to instantiate a [`ViamClient`](
 You will also need an API key and API key ID to authenticate your session.
 To get an API key (and corresponding ID), you have two options:
 
-- [Create an API key using the Viam app](/fleet/rbac/#add-an-api-key)
+- [Create an API key using the Viam app](/cloud/rbac/#add-an-api-key)
 - [Create an API key using the Viam CLI](/cli/#create-an-organization-api-key)
 
 The following example instantiates a `ViamClient`, authenticating with an API key, and then instantiates a `DataClient`:
@@ -275,7 +275,7 @@ Delete tabular data older than a specified number of days.
 **Parameters:**
 
 - `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): ID of organization to delete data from.
-  You can obtain your organization id from the [organization settings page](/fleet/organizations/).
+  You can obtain your organization id from the [organization settings page](/cloud/organizations/).
 - `delete_older_than_days` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Delete data that was captured up to this many days ago.
   For example if delete_older_than_days is `10`, this deletes any data that was captured up to 10 days ago.
   If it is `0`, all existing data is deleted.
@@ -607,7 +607,7 @@ Get a connection to access a MongoDB Atlas Data federation instance.
 **Parameters:**
 
 - `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Organization to retrieve the connection for.
-  You can obtain your organization id from the [organization settings page](/fleet/organizations/).
+  You can obtain your organization id from the [organization settings page](/cloud/organizations/).
 
 **Returns:**
 
@@ -637,7 +637,7 @@ Uploaded binary data can be found under the **Images**, **Point clouds**, or **F
 - `component_type` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Type of the component used to capture the data.
 - `component_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Name of the component used to capture the data.
 - `method_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Name of the method used to capture the data.
-- `tags` ([Optional[List[str]]](https://docs.python.org/3/library/stdtypes.html#typesseq-list)): Optional list of [image tags](/data/dataset/#image-tags) to allow for tag-based data filtering when retrieving data.
+- `tags` ([Optional[List[str]]](https://docs.python.org/3/library/stdtypes.html#typesseq-list)): Optional list of [image tags](/services/data/dataset/#image-tags) to allow for tag-based data filtering when retrieving data.
 - `data_request_times` ([Optional[Tuple[datetime.datetime, datetime.datetime]]](https://docs.python.org/3/library/stdtypes.html#tuples)): Optional tuple containing [`datetime`](https://docs.python.org/3/library/datetime.html) objects denoting the times this data was requested and received by the appropriate sensor.
 - `file_extension` ([Optional[str]](https://docs.python.org/3/library/typing.html#typing.Optional)): The file extension of binary data including the period. For example, `".jpg"`, `".png"`, or `".pcd"`. Specify this to route the binary data to its corresponding mime type in storage in the [Viam app](https://app.viam.com).
 
@@ -682,7 +682,7 @@ Uploaded tabular data can be found under the **Sensors** subtab of the app's [**
 - `component_type` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Type of the component used to capture the data.
 - `component_name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the component used to capture the data.
 - `method_name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the method used to capture the data.
-- `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/data/dataset/#image-tags) to allow for tag-based data filtering when retrieving data.
+- `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/services/data/dataset/#image-tags) to allow for tag-based data filtering when retrieving data.
 - `data_request_times` [(Optional[Tuple[datetime.datetime, datetime.datetime]])](https://docs.python.org/3/library/stdtypes.html#tuples): Optional tuple containing [`datetime`](https://docs.python.org/3/library/datetime.html) objects denoting the times this data was requested and received by the appropriate sensor.
 
 **Returns**:
@@ -727,7 +727,7 @@ Uploaded streaming data can be found under the [**Data** tab](https://app.viam.c
 - `method_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional name of the method associated with the file.
 - `method_parameters` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional dictionary of the method parameters. No longer in active use.
 - `data_request_times` [(Optional[Tuple[datetime.datetime, datetime.datetime]])](https://docs.python.org/3/library/stdtypes.html#tuples): Optional tuple containing [`datetime`](https://docs.python.org/3/library/datetime.html) objects denoting the times this data was requested and received by the appropriate sensor.
-- `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/data/dataset/#image-tags) to allow for tag-based data filtering when retrieving data.
+- `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/services/data/dataset/#image-tags) to allow for tag-based data filtering when retrieving data.
 
 **Returns:**
 
@@ -778,7 +778,7 @@ All other types of uploaded files can be found under the **Files** subtab of the
 - `component_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the component used to capture the data.
 - `file_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional name of the file. The empty string `""` will be assigned as the filename if one isn’t provided.
 - `file_extension` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional file extension. The empty string `""` will be assigned as the file extension if one isn’t provided.
-- `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/data/dataset/#image-tags) to allow for tag-based data filtering when retrieving data.
+- `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/services/data/dataset/#image-tags) to allow for tag-based data filtering when retrieving data.
 
 **Returns**:
 
@@ -813,7 +813,7 @@ Uploaded files can be found under the **Files** subtab of the app's [**Data** ta
 - `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data. See [Find part ID](#find-part-id) for instructions on retrieving this value.
 - `component_type` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Type of the component used to capture the data.
 - `component_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the component used to capture the data.
-- `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/data/dataset/#image-tags) to allow for tag-based data filtering when retrieving data.
+- `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/services/data/dataset/#image-tags) to allow for tag-based data filtering when retrieving data.
 
 **Returns**:
 

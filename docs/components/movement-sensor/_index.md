@@ -28,9 +28,9 @@ Viam also supports generic [sensors](/components/sensor/) and [encoders](/compon
 ## Related services
 
 {{< cards >}}
-{{< relatedcard link="/mobility/motion/" >}}
-{{< relatedcard link="/mobility/navigation/" >}}
-{{< relatedcard link="/mobility/slam/" >}}
+{{< relatedcard link="/services/motion/" >}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< relatedcard link="/services/slam/" >}}
 {{< /cards >}}
 
 ## Supported models
@@ -592,8 +592,8 @@ readings, err := myMovementSensor.Readings(context.Background(), nil)
 
 ### GetGeometries
 
-Get all the geometries associated with the movement sensor in its current configuration, in the [frame](/mobility/frame-system/) of the movement sensor.
-The [motion](/mobility/motion/) and [navigation](/mobility/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+Get all the geometries associated with the movement sensor in its current configuration, in the [frame](/services/frame-system/) of the movement sensor.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -758,6 +758,6 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 Try adding a movement sensor to your [mobile robot](/components/base/) and writing some code with our [SDKs](/appendix/apis/) to implement closed-loop movement control for your machine.
 
-Or, try configuring [data capture](/data/) on your movement sensor.
+Or, try configuring [data capture](/services/data/) on your movement sensor.
 
 {{< snippet "social.md" >}}

@@ -38,7 +38,7 @@ To configure a webhook:
    Whenever any data of the type you select is synced from any component on your machine, the webhook will trigger.
 
 {{% alert title="Note" color="note" %}}
-Be sure to configure [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/) for the relevant components.
+Be sure to configure [data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/) for the relevant components.
 For example, if you want to trigger a webhook on temperature readings, configure data capture and sync on your temperature sensor.
 Be aware that the component must return the type of data you configure in the webhook's **Data Types**.
 {{% /alert %}}

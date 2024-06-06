@@ -27,7 +27,7 @@ If you want to program the chip directly, follow the setup instructions in [the 
 
 ### Flash your ESP32 with the micro-RDK installer
 
-Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/fleet/machines/#add-a-new-machine) in your desired location.
+Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
 
 1. Click on the name of the machine to go to its page.
 2. Navigate to the **CONFIGURE** tab and find your machine's card. An alert will be present directing you to **Set up your machine part**. Click **View setup instructions** to open the setup instructions.

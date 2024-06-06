@@ -7,6 +7,6 @@ Method Name | Description
 [`GetLengths`](/components/gantry/#getlengths) | Get the lengths of the axes of the gantry in mm.
 [`Stop`](/components/gantry/#stop) | Stop the gantry from moving.
 [`IsMoving`](/components/gantry/#ismoving) | Get if the gantry is currently moving.
-[`GetGeometries`](/components/gantry/#getgeometries) | Get all the geometries associated with the gantry in its current configuration, in the [frame](/mobility/frame-system/) of the gantry.
+[`GetGeometries`](/components/gantry/#getgeometries) | Get all the geometries associated with the gantry in its current configuration, in the [frame](/services/frame-system/) of the gantry.
 [`DoCommand`](/components/gantry/#docommand) | Send or receive model-specific commands.
 [`Close`](/components/gantry/#close) | Safely shut down the resource and prevent further use.

@@ -34,10 +34,10 @@ Most machines with a motor need at least the following hardware:
 ## Related services
 
 {{< cards >}}
-{{< relatedcard link="/mobility/frame-system/" >}}
-{{< relatedcard link="/mobility/motion/" >}}
-{{< relatedcard link="/mobility/navigation/" >}}
-{{< relatedcard link="/mobility/slam/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/motion/" >}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< relatedcard link="/services/slam/" >}}
 {{< /cards >}}
 
 ## Supported models
@@ -553,8 +553,8 @@ myMotorComponent.Stop(context.Background(), nil)
 
 ### GetGeometries
 
-Get all the geometries associated with the motor in its current configuration, in the [frame](/mobility/frame-system/) of the motor.
-The [motion](/mobility/motion/) and [navigation](/mobility/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+Get all the geometries associated with the motor in its current configuration, in the [frame](/services/frame-system/) of the motor.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

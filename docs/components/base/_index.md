@@ -33,9 +33,9 @@ Most mobile robots with a base need at least the following hardware:
 ## Related services
 
 {{< cards >}}
-{{< relatedcard link="/mobility/base-rc/" >}}
-{{< relatedcard link="/mobility/frame-system/" >}}
-{{< relatedcard link="/mobility/navigation/" >}}
+{{< relatedcard link="/services/base-rc/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/navigation/" >}}
 {{< /cards >}}
 
 ## Supported models
@@ -540,8 +540,8 @@ myBaseWheelCircumference := properties.WheelCircumferenceMeters
 
 ### GetGeometries
 
-Get all the geometries associated with the base in its current configuration, in the [frame](/mobility/frame-system/) of the base.
-The [motion](/mobility/motion/) and [navigation](/mobility/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+Get all the geometries associated with the base in its current configuration, in the [frame](/services/frame-system/) of the base.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

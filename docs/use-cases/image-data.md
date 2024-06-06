@@ -3,7 +3,7 @@ title: "Capture and sync image data"
 linkTitle: "Capture and sync image data"
 weight: 20
 type: "docs"
-images: ["/ml/collect.svg"]
+images: ["/services/ml/collect.svg"]
 description: "Capture image data from a camera on your machine and sync that data to the cloud."
 ---
 
@@ -17,7 +17,7 @@ For example, you might add the data management service to multiple machines to b
 {{<imgproc src="/icons/components/camera.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="configure a camera component">}}
 **1. Configure a camera**
 
-First, [create a machine](/fleet/machines/#add-a-new-machine) if you haven't yet.
+First, [create a machine](/cloud/machines/#add-a-new-machine) if you haven't yet.
 
 Then [add a camera component](/components/camera/), such as a [webcam](/components/camera/webcam/).
 
@@ -26,37 +26,37 @@ Then [add a camera component](/components/camera/), such as a [webcam](/componen
 {{<imgproc src="/services/icons/data-management.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
 **2. Configure the data management service**
 
-Next, [add the data management service](/data/) to be able to configure how your camera captures and stores images.
+Next, [add the data management service](/services/data/) to be able to configure how your camera captures and stores images.
 
-Then configure [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/).
+Then configure [data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/).
 
 {{< /tablestep >}}
 {{< tablestep >}}
 {{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
 **3. Capture data**
 
-With data management configured, [capture image data from a camera on your machine](/data/capture/#configure-data-capture-for-individual-components). Captured data is automatically synced to the cloud after a short delay.
+With data management configured, [capture image data from a camera on your machine](/services/data/capture/#configure-data-capture-for-individual-components). Captured data is automatically synced to the cloud after a short delay.
 
 {{< /tablestep >}}
 {{< tablestep >}}
-{{<imgproc src="/ml/collect.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
+{{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **4. View data in the Viam app**
 
-Once you have synced images, you can [view those images in the Viam app](/data/view/) from the **Data** tab.
+Once you have synced images, you can [view those images in the Viam app](/services/data/view/) from the **Data** tab.
 
 {{< /tablestep >}}
 {{< tablestep >}}
-{{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
+{{<imgproc src="/services/ml/configure.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **5. Filter data by common search criteria**
 
-You can [filter synced images in the Viam app](/data/view/#filter-data) using the **Filters** menu under the **Data** tab in the Viam app, using search criteria such as machine name, location, date range, or component name.
+You can [filter synced images in the Viam app](/services/data/view/#filter-data) using the **Filters** menu under the **Data** tab in the Viam app, using search criteria such as machine name, location, date range, or component name.
 
 {{< /tablestep >}}
 {{< tablestep >}}
 {{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **6. Export data**
 
-You can also [export your data from the Viam app](/data/export/) to a deployed machine, or to any computer.
+You can also [export your data from the Viam app](/services/data/export/) to a deployed machine, or to any computer.
 
 {{< /tablestep >}}
 {{< /table >}}
@@ -64,7 +64,7 @@ You can also [export your data from the Viam app](/data/export/) to a deployed m
 ## Next steps
 
 {{< cards >}}
-{{% card link="/data/query/" %}}
-{{% card link="/ml/" %}}
+{{% card link="/services/data/query/" %}}
+{{% card link="/services/ml/" %}}
 {{% card link="/tutorials/" %}}
 {{< /cards >}}

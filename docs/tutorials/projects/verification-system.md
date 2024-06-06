@@ -52,7 +52,7 @@ If you wanted to take this tutorial further, you could use these state transitio
 
 Before following this tutorial, you should:
 
-1. [Create a new machine](/fleet/machines/#add-a-new-machine) in the Viam app.
+1. [Create a new machine](/cloud/machines/#add-a-new-machine) in the Viam app.
 1. [Install `viam-server`](/get-started/installation/) on your new machine.
 
 Your machine must have a [camera](/components/camera/) component, such as a [webcam](/components/camera/webcam/).
@@ -84,7 +84,7 @@ In order for your machine's camera to be able to detect the presence of a person
 
 ### Use an existing ML model
 
-The [ML model service](/ml/) allows you to deploy a machine learning model to your robot.
+The [ML model service](/services/ml/) allows you to deploy a machine learning model to your robot.
 For your machine to be able to detect people, you will use a Machine Learning model from the Viam registry called [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
 The model can detect a variety of things which you can see in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file including `person`s.
 
@@ -104,15 +104,15 @@ Finally, configure an `mlmodel` detector vision service to use your new `"person
 5. Select the `persondetect` ML model service your model is deployed on from the **ML Model** dropdown.
 6. Click **Save**.
 
-For more information, see [Configure an `mlmodel` detector](/ml/vision/mlmodel/)
+For more information, see [Configure an `mlmodel` detector](/services/vision/mlmodel/)
 
 Continue to [Configure a facial detector](#configure-a-facial-detector).
 
 ### Train your own model
 
-To train your own model, you will need to capture images of a variety of people using your camera, and upload them to the Viam app using the [data management service](/data/).
+To train your own model, you will need to capture images of a variety of people using your camera, and upload them to the Viam app using the [data management service](/services/data/).
 
-To add the [data management service](/data/) and configure data capture:
+To add the [data management service](/services/data/) and configure data capture:
 
 1. Navigate to your machine’s page on the [Viam app](https://app.viam.com/robots) and select the **CONFIGURE** tab.
 2. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
@@ -136,7 +136,7 @@ To add the [data management service](/data/) and configure data capture:
    Here you can view the images captured so far from the camera on your machine.
    You should see new images appearing steadily as cloud sync uploads them from your machine.
 
-For more information, see [configure data capture for individual components](/data/capture/#configure-data-capture-for-individual-components).
+For more information, see [configure data capture for individual components](/services/data/capture/#configure-data-capture-for-individual-components).
 
 {{% alert title="Tip" color="tip" %}}
 If you are using a different model of camera, you may need to use a different method **Type** in your data capture configuration.
@@ -160,12 +160,12 @@ For best results:
 
 Then, create a new dataset using your uploaded images and train a new model using that model:
 
-1. [Create a new dataset and add the images you captured](/data/dataset/#create-a-dataset-and-add-data).
+1. [Create a new dataset and add the images you captured](/services/data/dataset/#create-a-dataset-and-add-data).
    Remember that you must add at least 10 images that contain people, as well as a few (but no more than 20% of the total images) that _do not_ contain people.
-2. Label the images that contain people with [bounding boxes](/data/dataset/#bounding-boxes), and add the label `person`. You only want this model to be able to distinguish between what is and isn't a person, so you can conduct this training step with anyone, not necessarily the specific people you intend to approve later.
-3. [Train a model on your dataset](/ml/train-model/).
+2. Label the images that contain people with [bounding boxes](/services/data/dataset/#bounding-boxes), and add the label `person`. You only want this model to be able to distinguish between what is and isn't a person, so you can conduct this training step with anyone, not necessarily the specific people you intend to approve later.
+3. [Train a model on your dataset](/services/ml/train-model/).
    Give it the name `"persondetect"`, and select **Object Detection** as the **Model Type**.
-4. [Deploy the model](/ml/deploy/) to your machine so it can be used by other services, such as the vision service.
+4. [Deploy the model](/services/ml/deploy/) to your machine so it can be used by other services, such as the vision service.
 
 Finally, configure an `mlmodel` detector to use your new `"persondetect"` ML model:
 
@@ -176,7 +176,7 @@ Finally, configure an `mlmodel` detector to use your new `"persondetect"` ML mod
 5. Select the `persondetect` ML model service your model is deployed on from the **ML Model** dropdown.
 6. Click **Save**.
 
-For more information, see [Configure an `mlmodel` detector](/ml/vision/mlmodel/)
+For more information, see [Configure an `mlmodel` detector](/services/vision/mlmodel/)
 
 Now you are ready to configure the more fine-grained layer: the facial recognition detector.
 
@@ -313,9 +313,9 @@ To add a transform camera to your machine:
 
 {{% alert title="Note" color="note" %}}
 The various states do not cause anything to happen on their own besides appearing as overlays on the transform cam.
-To trigger an audio alarm or otherwise have your machine take an action based on the reported state, you can write your own logic using one of the [Viam SDKs](/build/program/) to [poll the classifications](/ml/vision/#getclassificationsfromcamera).
+To trigger an audio alarm or otherwise have your machine take an action based on the reported state, you can write your own logic using one of the [Viam SDKs](/build/program/) to [poll the classifications](/services/vision/#getclassificationsfromcamera).
 
-See [2D Image Classification](/ml/vision/#classifications) for information about working with classifiers in Viam, and [Vision API](/ml/vision/#api) for usage of the Computer Vision API this module implements.
+See [2D Image Classification](/services/vision/#classifications) for information about working with classifiers in Viam, and [Vision API](/services/vision/#api) for usage of the Computer Vision API this module implements.
 {{% /alert %}}
 
 With everything configured, you are now ready to see your facial recognition machine in action by watching the transform camera as a person passes in front of the camera.
@@ -335,8 +335,8 @@ Now that you've got the verification aspect of your system working, you can use 
 For example:
 
 - Write a program using one of the [Viam SDK](/sdks/) to poll the `facial-verification` module for its current state, and take action when a particular state is reached.
-  For example, you could use [`GetClassificationsFromCamera()`](/ml/vision/#getclassificationsfromcamera) to capture when a transition into the `ALARM` state occurs, and then send you an Email with the captured image of the trespasser!
-- Try changing the type of [detectors](/ml/vision/#detections), using different detectors for the `TRIGGER_1` and `TRIGGER_2` states.
+  For example, you could use [`GetClassificationsFromCamera()`](/services/vision/#getclassificationsfromcamera) to capture when a transition into the `ALARM` state occurs, and then send you an Email with the captured image of the trespasser!
+- Try changing the type of [detectors](/services/vision/#detections), using different detectors for the `TRIGGER_1` and `TRIGGER_2` states.
 - Add the [filtered camera module](/tutorials/projects/filtered-camera/) to your machine, and use it as the source camera in your verification system in order to save images to the Viam cloud only when the system enters into specific states.
   This way, you could limit the images captured and synced to only those you are interested in reviewing later, for example.
 - If you don't want the `ALARM` capabilities, and would like to just use it as a notification system when a detector gets triggered, set `disable_alarm: true` in the config, which prevents `TRIGGER_2` from entering into the `COUNTDOWN` state, meaning the system will only cycle between the states of `TRIGGER_1` and `TRIGGER_2`.

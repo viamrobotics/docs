@@ -379,7 +379,7 @@ Enable the I<sup>2</sup>C protocol on your Pi to get readings from the power sen
 
 If you followed the instructions in the [Pi installation guide](/get-started/prepare/rpi-setup/), you should have already made an account on the [Viam app](https://app.viam.com), installed `viam-server` on the board, and added a new machine.
 
-If not, make sure to [prepare your device and install `viam-server`](/get-started/installation/), and then [add a new machine](/fleet/machines/#add-a-new-machine).
+If not, make sure to [prepare your device and install `viam-server`](/get-started/installation/), and then [add a new machine](/cloud/machines/#add-a-new-machine).
 
 To configure your rover so you can start driving it, [add a Viam Rover 2 Fragment to your machine](/get-started/try-viam/rover-resources/rover-tutorial-fragments/).
 
@@ -408,7 +408,7 @@ The following are just a few ideas, but you can expand or modify the rover kit w
 - For GPS navigation, we support NMEA (using serial and I<sup>2</sup>C) and RTK.
   Make and model don't make a difference as long as you use these protocols.
   See [Movement Sensor Component](/components/movement-sensor/) for more information.
-- For [LiDAR laser range scanning](/mobility/slam/cartographer/), we recommend Velodyne, or RPlidar (including A1, which is a sub-$100 LIDAR).
+- For [LiDAR laser range scanning](/services/slam/cartographer/), we recommend Velodyne, or RPlidar (including A1, which is a sub-$100 LIDAR).
 - For robot arms, we tried the [Yahboom DOFBOT robotics arm](https://category.yahboom.net/products/dofbot-jetson_nano) with success.
 
 ### Mount an RPlidar to the rover

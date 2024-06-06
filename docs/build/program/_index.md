@@ -50,7 +50,7 @@ Windows is not supported.
 If you are using Windows, use the [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) and install the Python SDK using the preceding instructions for Linux.
 For other unsupported systems, see [Installing from source](https://python.viam.dev/#installing-from-source).
 
-If you intend to use the [ML (machine learning) model service](/ml/), use the following command instead, which installs additional required dependencies along with the Python SDK:
+If you intend to use the [ML (machine learning) model service](/services/ml/), use the following command instead, which installs additional required dependencies along with the Python SDK:
 
 ```sh {class="command-line" data-prompt="$"}
 pip install 'viam-sdk[mlmodel]'

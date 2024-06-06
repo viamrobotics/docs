@@ -34,7 +34,7 @@ Most machines with an input controller need at least the following hardware:
 ## Related services
 
 {{< cards >}}
-{{< relatedcard link="/mobility/base-rc/" >}}
+{{< relatedcard link="/services/base-rc/" >}}
 {{< /cards >}}
 
 ## Supported models
@@ -369,8 +369,8 @@ if err != nil {
 
 ### GetGeometries
 
-Get all the geometries associated with the input controller in its current configuration, in the [frame](/mobility/frame-system/) of the input controller.
-The [motion](/mobility/motion/) and [navigation](/mobility/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+Get all the geometries associated with the input controller in its current configuration, in the [frame](/services/frame-system/) of the input controller.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
