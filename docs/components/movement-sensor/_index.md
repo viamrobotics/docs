@@ -758,6 +758,6 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 Try adding a movement sensor to your [mobile robot](/components/base/) and writing some code with our [SDKs](/appendix/apis/) to implement closed-loop movement control for your machine.
 
-Or, try configuring [data capture](/data/) on your movement sensor.
+Or, try configuring [data capture](/services/data/) on your movement sensor.
 
 {{< snippet "social.md" >}}

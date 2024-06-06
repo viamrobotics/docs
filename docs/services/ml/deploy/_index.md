@@ -21,7 +21,7 @@ This can mean deploying:
 
 - a model you [trained](/services/ml/train-model/)
 - a model from [the registry](https://app.viam.com/registry) that another user has shared publicly
-- a model trained outside the Viam platform that you have [uploaded](/ml/upload-model/) to the registry privately or publicly
+- a model trained outside the Viam platform that you have [uploaded](/services/ml/upload-model/) to the registry privately or publicly
 - a model trained outside the Viam platform that's already available on your machine
 
 After deploying your model, you need to configure an additional service to use the deployed model.
@@ -36,7 +36,7 @@ You can use the following built-in model of the service:
 <!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
-| [`tflite_cpu`](./tflite_cpu/) | Runs a TensorFlow Lite model that you have [trained](/services/ml/train-model/) or [uploaded](/ml/upload-model/) on the CPU of your machine. |
+| [`tflite_cpu`](./tflite_cpu/) | Runs a TensorFlow Lite model that you have [trained](/services/ml/train-model/) or [uploaded](/services/ml/upload-model/) on the CPU of your machine. |
 
 ### Modular resources
 

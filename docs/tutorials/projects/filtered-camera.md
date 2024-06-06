@@ -49,7 +49,7 @@ The `filtered-camera` module is available from the [Viam registry](https://app.v
 The `filtered-camera` module filters image data captured by a camera component, and so requires that your machine has a camera component and the data management service configured.
 
 - A [camera component](/components/camera/), such as a [webcam](/components/camera/webcam/), allows your machine to see the world around it through an attached camera.
-- The [data management service](/data/) enables your machine to capture images from an attached camera and sync them to the cloud.
+- The [data management service](/services/data/) enables your machine to capture images from an attached camera and sync them to the cloud.
 
 ### Add a camera component
 
@@ -78,7 +78,7 @@ Next, add the data management service to your machine to be able to capture and 
 
    {{< imgproc src="/tutorials/filtered-camera-module/configure-data-management.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="700x" >}}
 
-For more information, see [Add the data management service](/data/capture/#add-the-data-management-service).
+For more information, see [Add the data management service](/services/data/capture/#add-the-data-management-service).
 
 ### Configure data capture for a camera component
 
@@ -104,7 +104,7 @@ Once you have added the data management service, enable image data capture for y
    If you see images appear here, proceed to the next step.
    If you do not see images appear after a short time, see the [troubleshooting](#troubleshooting) section for further guidance.
 
-For more information see [Configure data capture](/data/capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/data/cloud-sync/).
+For more information see [Configure data capture](/services/data/capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/services/data/cloud-sync/).
 
 ## The machine learning (ML) model for filtering
 
@@ -137,7 +137,7 @@ For best results:
 {{< /alert >}}
 
 Once you have enough images captured and synced to the Viam app, add those images to a new dataset.
-A [dataset](/data/dataset/) allows you to conveniently view, work with, and train an ML model on a collection of images.
+A [dataset](/services/data/dataset/) allows you to conveniently view, work with, and train an ML model on a collection of images.
 
 1. In the [Viam app](https://app.viam.com), navigate to the [**DATA**](/services/data/view/) tab to view your captured images.
 1. Select an image you want to use in your ML model.
@@ -215,8 +215,8 @@ You can download that model here:
 To upload and use an existing ML model:
 
 1. Navigate to the [**Models** page](https://app.viam.com/data/models) in the Viam app and click the **Upload model** button.
-1. Select **New model** and configure visibility for your model: public models are available to all Viam users while private models are only available to users in your [organization](/fleet/organizations/).
-1. If you haven't already, you will be prompted to select an [organization namespace](/fleet/organizations/#create-a-namespace-for-your-organization).
+1. Select **New model** and configure visibility for your model: public models are available to all Viam users while private models are only available to users in your [organization](/cloud/organizations/).
+1. If you haven't already, you will be prompted to select an [organization namespace](/cloud/organizations/#create-a-namespace-for-your-organization).
 1. Then, in the resulting **Upload model** screen, enter a name or use the suggested name for your model, select **Object detection**, and upload both the <file>effdet0.tflite</file> and <file>labels.txt</file> files.
    Add a brief description of your model, then click **Upload model**.
 
@@ -228,7 +228,7 @@ Your uploaded model is immediately available for use after upload.
 
 If you are designing your own TensorFlow Lite model, see [model requirements](/services/ml/deploy/tflite_cpu/#model-requirements) for guidance on structuring your own model.
 
-For more information, see [Upload an existing model](/ml/upload-model/).
+For more information, see [Upload an existing model](/services/ml/upload-model/).
 
 ## Configure the ML model and vision services
 
@@ -412,7 +412,7 @@ For example, you can:
 - Train an ML model on various common forms of delivery packaging, so that your machine can send you an image of a new delivery, but not clutter your inbox with images of other things, such as cars driving by.
 - Train an ML model on a variety of domestic farm animals, so that your machine can alert you if a different kind of animal is detected in the vicinity, without capturing images of every animal.
 
-You can also refine your existing ML model by adding and labelling new images that help the ML model better identify matching objects, and then [upload the new version of your model](/ml/upload-model/#upload-a-new-model-or-new-version) using the ML model service.
+You can also refine your existing ML model by adding and labelling new images that help the ML model better identify matching objects, and then [upload the new version of your model](/services/ml/upload-model/#upload-a-new-model-or-new-version) using the ML model service.
 
 If you trained a new model as part of this tutorial, try using the provided [pre-trained model files](#upload-an-existing-ml-model) instead, and then aiming your machine's camera at objects listed in the <file>labels.txt</file> file to see how accurately it is able to detect those objects.
 

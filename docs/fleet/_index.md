@@ -27,14 +27,14 @@ To organize your fleet you use:
 <!-- markdownlint-disable MD001 -->
 
 {{< cards >}}
-{{% manualcard link="/fleet/organizations/" %}}
+{{% manualcard link="/cloud/organizations/" %}}
 
 #### Organizations
 
 The highest level grouping, generally used for different companies.
 
 {{% /manualcard %}}
-{{% manualcard link="/fleet/locations/" %}}
+{{% manualcard link="/cloud/locations/" %}}
 
 #### Locations
 
@@ -42,7 +42,7 @@ A virtual grouping of devices up with up to three levels of nesting that can rep
 
 An organization can have multiple locations.
 {{% /manualcard %}}
-{{% manualcard link="/fleet/machines/" %}}
+{{% manualcard link="/cloud/machines/" %}}
 
 #### Machines
 
@@ -61,9 +61,9 @@ Each machine resides in a location.
 The organization structure enables you to:
 
 - configure groups of machines with reusable {{< glossary_tooltip term_id="fragment" text="fragments" >}} that [configure](/build/configure/) a set of resources for each machine that uses the fragment.
-- deploy [code packages](/registry/) or [machine learning models](/ml/), without manually copying files by uploading it to Viam's cloud and deploying it to your fleet
-- control a machine with code, the app's [**CONTROL** tab](machines/#control), or the [Viam mobile app](#the-viam-mobile-app)
-- obtain health metrics, such as status, uptime, version, or [logs](machines/#logs)
+- deploy [code packages](/registry/) or [machine learning models](/services/ml/), without manually copying files by uploading it to Viam's cloud and deploying it to your fleet
+- control a machine with code, the app's [**CONTROL** tab](/cloud/machines/#control), or the [Viam mobile app](#the-viam-mobile-app)
+- obtain health metrics, such as status, uptime, version, or [logs](/cloud/machines/#logs)
 - perform debugging
 
 All of this is possible when you are close to your machine, as well as remotely from anywhere in the world.
@@ -81,7 +81,7 @@ For more information, see [Permissions](/cloud/rbac/#permissions).
 ### Configuration
 
 When you or your collaborators change the configuration of a machine or a group of machines in the Viam app, `viam-server` automatically synchronizes the configuration and updates the running resources within 15 seconds.
-This means everyone who has access can change a fleet's [configuration](machines/#configure), even while your machines are running.
+This means everyone who has access can change a fleet's [configuration](/cloud/machines/#configure), even while your machines are running.
 
 You can see configuration changes made by yourself or by your collaborators by selecting **History** on the right side of your machine part's card on the **CONFIGURE** tab.
 You can also revert to an earlier configuration from the History tab.
@@ -92,7 +92,7 @@ If you edit a config while someone else edits the same config, the person who sa
 Before editing a config, we recommend you refresh the page to ensure you have all the latest changes.
 {{< /alert >}}
 
-Machine [configuration](machines/#configure) and machine [code](/build/program/) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
+Machine [configuration](/cloud/machines/#configure) and machine [code](/build/program/) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
 
 ## The Viam mobile app
 
@@ -106,8 +106,8 @@ The Viam mobile app allows you to:
 - see if your machines are online
 - access the [control interface](/fleet/control/) for each machine
 - [invite people to collaborate with you and modify access](/cloud/rbac/#use-the-mobile-app)
-- check machine [logs](/fleet/machines/#logs)
-- [upload images from your phone to the cloud](/data/upload/#upload-images-with-the-viam-mobile-app)
+- check machine [logs](/cloud/machines/#logs)
+- [upload images from your phone to the cloud](/services/data/upload/#upload-images-with-the-viam-mobile-app)
 
 You can find the mobile app on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
 

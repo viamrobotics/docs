@@ -18,16 +18,16 @@ You can then run queries against that data to search for outliers or edge cases,
 {{<imgproc src="/services/icons/data-management.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Configure the data management service">}}
 **1. Configure the data management service**
 
-First, [create a machine](/fleet/machines/#add-a-new-machine) if you haven't yet.
+First, [create a machine](/cloud/machines/#add-a-new-machine) if you haven't yet.
 
-Then, [add the data management service](/data/), and configure [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/).
+Then, [add the data management service](/services/data/), and configure [data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/).
 
 {{< /tablestep >}}
 {{< tablestep >}}
 {{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Capture tabular data from a sensor">}}
 **2. Capture data**
 
-Next, [capture tabular data from a component on your machine](/data/capture/#configure-data-capture-for-individual-components), such as a sensor. With cloud sync enabled, captured data is automatically uploaded to the Viam app after a short delay.
+Next, [capture tabular data from a component on your machine](/services/data/capture/#configure-data-capture-for-individual-components), such as a sensor. With cloud sync enabled, captured data is automatically uploaded to the Viam app after a short delay.
 
 You can view your synced data in the Viam app from the **Data** tab.
 

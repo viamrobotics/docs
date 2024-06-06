@@ -74,7 +74,7 @@ For each component that makes up your machine:
 
 1. Add it to your machine by [choosing the component type](/build/configure/#components) (example: `camera`) and model (example: `webcam`).
 2. Test it with the visual [control tab](/fleet/control/).
-3. See any problems with in-app [logs](/fleet/machines/#logs), review or roll back [configuration history](/fleet/machines/#configure).
+3. See any problems with in-app [logs](/cloud/machines/#logs), review or roll back [configuration history](/cloud/machines/#configure).
 
 After configuring your machine's hardware, you can configure [high level functionality](/services/) the same way:
 
@@ -108,7 +108,7 @@ There are four categories of APIs:
 - [Robot](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) provides high level machine commands
 - [Components](/components/) like motors, arms, GPS
 - [Services](/services/) like computer vision, motion planning, Simultaneous Localization And Mapping (SLAM)
-- Cloud applications like [Fleet Management](/fleet/), [Data Management](/data/)
+- Cloud applications like [Fleet Management](/fleet/), [Data Management](/services/data/)
 
 You can see the Viam API specification on [GitHub](https://github.com/viamrobotics/api).
 

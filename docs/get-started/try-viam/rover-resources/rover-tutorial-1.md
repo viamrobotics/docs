@@ -238,7 +238,7 @@ If the Pi has power, the lights on the Raspberry Pi will light up.
 
 ### Connect to the Viam app
 
-While the Pi boots, go to the [Viam app](https://app.viam.com/robots) and [add a machine](/fleet/machines/#add-a-new-machine).
+While the Pi boots, go to the [Viam app](https://app.viam.com/robots) and [add a machine](/cloud/machines/#add-a-new-machine).
 Navigate to the **CONFIGURE** tab and find your machine's card.
 An alert will be present directing you to **Set up your machine part**.
 Click **View setup instructions** to open the setup instructions.

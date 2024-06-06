@@ -157,7 +157,7 @@ The [base remote control service](/services/base-rc/) supports the following met
 
 ### Data Management
 
-The [data management service](/data/) supports the following methods:
+The [data management service](/services/data/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/data.md" >}}
 
@@ -169,7 +169,7 @@ The [generic service](/services/generic/) supports the following methods:
 
 ### ML Model
 
-The [ML model service](/ml/) supports the following methods:
+The [ML model service](/services/ml/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/ml.md" >}}
 

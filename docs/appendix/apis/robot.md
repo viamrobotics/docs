@@ -19,7 +19,7 @@ The robot API is supported for use with the [Viam Python SDK](https://python.via
 
 To interact with the robot API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
 
-To find the API key, API key ID, and machine address, go to [Viam app](https://app.viam.com/), select the machine you wish to connect to, and go to the [**Code sample**](/fleet/machines/#code-sample) tab.
+To find the API key, API key ID, and machine address, go to [Viam app](https://app.viam.com/), select the machine you wish to connect to, and go to the [**Code sample**](/cloud/machines/#code-sample) tab.
 Toggle **Include API key**, and then copy and paste the API key ID and the API key into your environment variables or directly into the code:
 
 {{< tabs >}}

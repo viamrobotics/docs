@@ -76,7 +76,7 @@ Viam has removed support for following builtin camera models: `single_stream`, `
 {{% changelog date="2024-03-01" color="added" title="Additional ML models" %}}
 
 Viam has added support for the TensorFlow, PyTorch, and ONNX ML model frameworks, expanding upon the existing support for TensorFlow Lite models.
-You can now [upload your own ML model](/ml/upload-model/) using any of these frameworks for use with the Vision service.
+You can now [upload your own ML model](/services/ml/upload-model/) using any of these frameworks for use with the Vision service.
 
 {{% /changelog %}}
 
@@ -88,7 +88,7 @@ You can now use the [ultrasonic sensor component](/build/micro-rdk/sensor/ultras
 
 {{% changelog date="2024-03-01" color="added" title="Edit a machine configuration that uses a fragment" %}}
 
-You can now edit the configuration of an existing machine that has been configured with a fragment by using [the `fragment_mods` object](/fleet/configure-a-fleet/#modify-the-config-of-a-machine-that-uses-a-fragment) in your configuration.
+You can now edit the configuration of an existing machine that has been configured with a fragment by using [the `fragment_mods` object](/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment) in your configuration.
 You can use the `fragment_mods` objects to be able to deploy a fragment to a fleet of machines, but still be able to make additional per-machine edits as needed.
 
 {{% /changelog %}}
@@ -115,7 +115,7 @@ You can now use the [generic service](/services/generic/) to define new, unique 
 
 {{% changelog date="2024-02-12" color="added" title="ML models in the registry" %}}
 
-You can now [upload machine learning (ML) models](/ml/upload-model/) to the Viam registry, in addition to modules.
+You can now [upload machine learning (ML) models](/services/ml/upload-model/) to the Viam registry, in addition to modules.
 You may upload models you have trained yourself using the Viam app, or models you have trained outside of the App.
 When uploading, you have the option to make your model available to the general public for reuse.
 
@@ -130,7 +130,7 @@ Viam has added a [sensor-controlled base](/components/base/sensor-controlled/) c
 {{% changelog date="2024-01-31" color="added" title="Visualize captured data" %}}
 
 You can now [visualize your data](/services/data/visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
-You can visualize any tabular data, such as sensor readings, that you have [synced](/data/cloud-sync/) to the Viam app from your machine.
+You can visualize any tabular data, such as sensor readings, that you have [synced](/services/data/cloud-sync/) to the Viam app from your machine.
 
 See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) for a full walkthrough focused on Grafana specifically.
 
@@ -181,7 +181,7 @@ For more information, see [Query Data with SQL or MQL](/services/data/query/).
 
 {{% changelog date="2023-11-30" color="changed" title="Model training from datasets" %}}
 
-To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/data/dataset/).
+To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/services/data/dataset/).
 
 {{% /changelog %}}
 
@@ -252,7 +252,7 @@ You now have the capability to use a [power sensor component](/components/power-
 {{% /changelog %}}
 
 {{% changelog date="2023-09-30" color="added" title="Filter component’s data before the cloud" %}}
-Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/data/cloud-sync/).
+Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/services/data/cloud-sync/).
 It equips machines to:
 
 - Remove data that is not of interest
@@ -398,7 +398,7 @@ This update allows you to:
 
 Now when you invite collaborators to join your organization, you can assign permissions to members by setting one of these roles:
 
-- **Owner**: These members can see and edit [every tab on the machine page](/fleet/machines/#navigating-the-machine-page), as well as manage users in the app.
+- **Owner**: These members can see and edit [every tab on the machine page](/cloud/machines/#navigating-the-machine-page), as well as manage users in the app.
   This role is best for those on your team who are actively engineering and building machines.
 
 - **Operator**: These members can only see and use the [remote control tab](/fleet/control/).
@@ -802,14 +802,14 @@ You will no longer be able to add or remove models using the SDKs.
 #### Add machine learning vision models to a vision service
 
 The way to add machine learning vision models is changing.
-You will need to first register the machine learning model file with the [ML model service](/ml/) and then add that registered model to a vision service.
+You will need to first register the machine learning model file with the [ML model service](/services/ml/) and then add that registered model to a vision service.
 
 {{% /changelog %}}
 
 {{% changelog date="2023-03-31" color="added" title="Machine learning for image classification models" %}}
 
-You can now [train](/services/ml/train-model/) and [deploy](/services/ml/deploy/) image classification models with the [data management service](/data/) and use your machine's image data directly within Viam.
-Additionally, you can [upload and use](/ml/upload-model/) existing machine learning models with your machines.
+You can now [train](/services/ml/train-model/) and [deploy](/services/ml/deploy/) image classification models with the [data management service](/services/data/) and use your machine's image data directly within Viam.
+Additionally, you can [upload and use](/services/ml/upload-model/) existing machine learning models with your machines.
 For more information on using data synced to the cloud to train machine learning models, read [Train a model](/services/ml/train-model/).
 
 {{% /changelog %}}

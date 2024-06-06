@@ -16,7 +16,7 @@ aliases:
 _Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#vision-service)_
 
 The `mlmodel` vision service model is a machine learning detector or classifier that draws bounding boxes or returns class labels according to the specified TensorFlow Lite, TensorFlow, PyTorch, or ONNX model file available on the machine’s hard drive.
-To create a `mlmodel` detector or classifier, you need an [ML model service with a suitable model](/ml/).
+To create a `mlmodel` detector or classifier, you need an [ML model service with a suitable model](/services/ml/).
 Before configuring your `mlmodel` detector or classifier, you need to:
 
 {{< cards >}}
@@ -24,14 +24,14 @@ Before configuring your `mlmodel` detector or classifier, you need to:
 
 <h4>Train or upload an ML model</h4>
 
-You can [add an existing model](/ml/upload-model/) or [train your own models](/services/ml/train-model/) for object detection and classification using data from the [data management service](/data/).
+You can [add an existing model](/services/ml/upload-model/) or [train your own models](/services/ml/train-model/) for object detection and classification using data from the [data management service](/services/data/).
 
 {{% /manualcard %}}
 {{% manualcard %}}
 
 <h4>Deploy your model</h4>
 
-To make use of ML models with your machine, use a suitable [ML model service](/ml/) to deploy and run the model.
+To make use of ML models with your machine, use a suitable [ML model service](/services/ml/) to deploy and run the model.
 
 {{% /manualcard %}}
 {{< /cards >}}
@@ -139,7 +139,7 @@ Both the `mlmodel` detector and classifier require that the input and output ten
   - The _output tensor_ must be named `probability`
 
 If you [trained your ML model using the Viam app](/services/ml/train-model/), your `mlmodel` tensors are already named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
-However, if you [uploaded your own ML model](/ml/upload-model/), or are using one from the [Viam registry](https://app.viam.com/registry), you may need to remap your tensor names to meet this requirement, and should follow the instructions to [remap tensor names](#remap-tensor-names).
+However, if you [uploaded your own ML model](/services/ml/upload-model/), or are using one from the [Viam registry](https://app.viam.com/registry), you may need to remap your tensor names to meet this requirement, and should follow the instructions to [remap tensor names](#remap-tensor-names).
 
 ### Remap tensor names
 
@@ -211,7 +211,7 @@ The feature is only available for classifiers that were uploaded after September
 
 {{<gif webm_src="/services/vision/mug-classifier.webm" mp4_src="/services/vision/mug-classifier.mp4" alt="A classification model run against an image containing a mug." max-width="250px" class="alignright">}}
 
-If you have images stored in the [Viam cloud](/data/), you can run your classifier against your images in the [Viam app](https://app.viam.com/).
+If you have images stored in the [Viam cloud](/services/data/), you can run your classifier against your images in the [Viam app](https://app.viam.com/).
 
 1. Navigate to the [Data tab](/services/data/view/) and click on the **Images** subtab.
 2. Click on an image to open the side menu, and select the **Actions** tab under the **Data** tab.

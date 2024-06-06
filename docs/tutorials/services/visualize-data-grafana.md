@@ -23,7 +23,7 @@ You can choose to visualize data from a component on one machine, from multiple 
 
 Only components that capture tabular data, such as [sensor](/components/sensor/) readings or other time-series data, support data visualization.
 
-You can visualize both the captured tabular data itself as well as its metadata, including machine ID, organization ID, and [tags](/data/dataset/#image-tags).
+You can visualize both the captured tabular data itself as well as its metadata, including machine ID, organization ID, and [tags](/services/data/dataset/#image-tags).
 
 Follow the steps in this tutorial to learn how to collect data from your machine, sync that data to the Viam app, enable third-party access to that data, and present that data visually and flexibly in Grafana.
 
@@ -36,7 +36,7 @@ For general guidance appropriate for any third-party visualization tool, see [Vi
 
 Before following this tutorial, ensure you have:
 
-- A machine with [connected to the Viam app](/fleet/machines/#add-a-new-machine).
+- A machine with [connected to the Viam app](/cloud/machines/#add-a-new-machine).
 
 - A configured [sensor component](/components/sensor/), such as the [ultrasonic](/components/sensor/ultrasonic/) sensor, that reports tabular data.
 
@@ -53,9 +53,9 @@ Before following this tutorial, ensure you have:
 
 ## The data management service
 
-You can manage how your machine works with data by using the [data management service](/data/).
+You can manage how your machine works with data by using the [data management service](/services/data/).
 
-The data management service has two parts: [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/).
+The data management service has two parts: [data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/).
 
 - **Data capture** allows you to capture data locally from specific components on your machine running Viam.
   You can choose the components, corresponding methods, and the frequency of the data capture from the [Viam app](https://app.viam.com/).
@@ -83,7 +83,7 @@ First, add the data management service to your machine to be able capture and sy
 
    {{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="900x" >}}
 
-For more information, see [Add the data management service](/data/capture/#add-the-data-management-service).
+For more information, see [Add the data management service](/services/data/capture/#add-the-data-management-service).
 
 ### Configure data capture for a component
 
@@ -108,7 +108,7 @@ To enable data capture for a sensor component:
 After a short while, your sensor will begin capturing live readings, and syncing those readings to the Viam app.
 You can check that data is being captured and synced by clicking on the menu icon on the sensor configuration pane. and selecting **View captured data**.
 
-For more information see [Configure data capture](/data/capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/data/cloud-sync/).
+For more information see [Configure data capture](/services/data/capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/services/data/cloud-sync/).
 
 ### Configure data query
 
@@ -172,7 +172,7 @@ With your machine capturing data and syncing it to Viam, and direct query of tha
 1. Click the **Save & test** button to save your settings.
    Grafana will perform a health check on your configuration settings to verify that everything looks good.
 
-This connection allows Grafana to access all synced tabular data under your [organization](/fleet/organizations/), from any machine.
+This connection allows Grafana to access all synced tabular data under your [organization](/cloud/organizations/), from any machine.
 
 ## Visualize your data
 
@@ -232,7 +232,7 @@ See Grafana's [Global variables documentation](https://grafana.com/docs/grafana/
 
 In this tutorial, you learned:
 
-- how to use the [data management](/data/) service to capture data from your machine and sync it to the Viam app
+- how to use the [data management](/services/data/) service to capture data from your machine and sync it to the Viam app
 - how to [enable data query access](/services/data/query/#configure-data-query) to your synced data
 - how to connect Grafana to your data
 - how to build a dashboard visualizing that data

@@ -63,7 +63,7 @@ Before following this tutorial, ensure you have:
 
 You can manage how your machine works with data files and images by using the _data management service_.
 
-The [data management](/data/) service has two parts: [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/).
+The [data management](/services/data/) service has two parts: [data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/).
 
 - **Data capture** allows you to capture data locally from specific components on your machine running Viam.
   You can choose the components, corresponding methods, and the frequency of the data capture from the [Viam app](https://app.viam.com/).
@@ -75,7 +75,7 @@ The [data management](/data/) service has two parts: [data capture](/data/captur
 
 Data capture and data sync are frequently used together, and are both enabled by default when you add the data management service to your machine.
 However, if you want to manage your machine's captured data yourself, you can enable data capture but disable data sync.
-If you are capturing data to a device with limited storage, or intend to capture a large amount of data, see [automatic data deletion](/data/capture/#automatic-data-deletion).
+If you are capturing data to a device with limited storage, or intend to capture a large amount of data, see [automatic data deletion](/services/data/capture/#automatic-data-deletion).
 
 To capture data from your machine and sync to the Viam app, add the data management service and configure data capture for at least one component.
 
@@ -92,7 +92,7 @@ First, add the data management service to your machine to be able capture and sy
 
    {{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="900x" >}}
 
-For more information, see [Add the data management service](/data/capture/#add-the-data-management-service).
+For more information, see [Add the data management service](/services/data/capture/#add-the-data-management-service).
 
 ### Configure data capture for a component
 
@@ -117,7 +117,7 @@ To enable image data capture for a camera component:
 
 1. Click **Save** at the top right of the window to save your changes.
 
-For more information see [Configure data capture](/data/capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/data/cloud-sync/).
+For more information see [Configure data capture](/services/data/capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/services/data/cloud-sync/).
 
 ### View and filter captured data
 
@@ -144,7 +144,7 @@ Once your machine is capturing and syncing images to the Viam app, you are ready
 You can use an ML model to help your machine adapt its behavior to the world around it.
 
 For this tutorial, you will train an ML model to be able to recognize specific shapes (for example, red and blue stars), and then deploy that model to your machine using the _ML (machine learning) model service_.
-With a model deployed to your machine, you can use the [ML model](/ml/) service together with the [vision](/services/vision/) service to analyze newly-detected objects for a possible match to a known shape.
+With a model deployed to your machine, you can use the [ML model](/services/ml/) service together with the [vision](/services/vision/) service to analyze newly-detected objects for a possible match to a known shape.
 
 To train a model from your captured data, first tag your images with appropriate labels and add them to a dataset.
 Then train a model based on your dataset and labels and deploy the model to your machine.
@@ -222,7 +222,7 @@ For more information, see [Train a model](/services/ml/train-model/).
 
 ### Deploy a model
 
-Once your model has finished training, add the [ML model](/ml/) service and deploy your model to your machine to be able to use it to classify newly-captured images.
+Once your model has finished training, add the [ML model](/services/ml/) service and deploy your model to your machine to be able to use it to classify newly-captured images.
 
 To deploy a model to your machine:
 
@@ -322,9 +322,9 @@ If your transform camera is not matching objects you have tagged, try lowering t
 
 In this tutorial, you learned:
 
-- how to use the [data management](/data/) service to capture images from your machine's camera and sync them to the Viam app
+- how to use the [data management](/services/data/) service to capture images from your machine's camera and sync them to the Viam app
 - how to filter and tag your synced images according to the objects you wanted to detect
-- how to use the [ML model](/ml/) service to train an ML model based on those images and deploy that model to your machine
+- how to use the [ML model](/services/ml/) service to train an ML model based on those images and deploy that model to your machine
 - how to use the [vision service](/services/vision/) to detect objects defined in an ML model from a live camera feed
 
 From here, you could do anything! Try one of the following:

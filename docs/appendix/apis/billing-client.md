@@ -76,7 +76,7 @@ The billing client API supports the following methods:
 ### GetCurrentMonthUsage
 
 Access data usage information for the current month for a given organization.
-You can also find your usage data on the [**Payment and billing** page](/fleet/billing/).
+You can also find your usage data on the [**Payment and billing** page](/billing/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -101,7 +101,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ### GetInvoicePdf
 
 Access invoice PDF data and optionally save it to a provided file path.
-You can also find your invoices on the [**Payment and billing** page](/fleet/billing/).
+You can also find your invoices on the [**Payment and billing** page](/billing/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -153,7 +153,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ### GetOrgBillingInformation
 
 Access billing information (payment method, billing tier, etc.) for a given org.
-You can also find this information on the [**Payment and billing** page](/fleet/billing/).
+You can also find this information on the [**Payment and billing** page](/billing/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -44,10 +44,10 @@ The [Viam registry](https://app.viam.com/registry) is the central place where yo
 ## ML models
 
 Viam provides the ability to train, upload, and deploy machine learning models within the platform.
-See [Machine Learning](/ml/) for more information.
+See [Machine Learning](/services/ml/) for more information.
 
 The Viam registry hosts trained ML models that users have made public, which you can use to deploy classifiers or detectors for your use case onto your robot instead of training your own.
-You can also [upload your own model to the registry](/ml/upload-model/).
+You can also [upload your own model to the registry](/services/ml/upload-model/).
 
 You can search the available ML models from the Viam registry here:
 
@@ -120,7 +120,7 @@ By default, newly added modules will remain at the version they were when you in
 
 Once you have added and configured the module you would like to use in the Viam app, you can test your added resource using the [**CONTROL** tab](/fleet/control/) and program it using [standardized APIs](/appendix/apis/).
 
-`viam-server` manages the [dependencies](/internals/rdk/#dependency-management), [start-up](/internals/rdk/#start-up), [reconfiguration](/internals/rdk/#reconfiguration), [data management](/data/capture/#configure-data-capture-for-individual-components), and [shutdown](/internals/rdk/#shutdown) behavior of your modular resource.
+`viam-server` manages the [dependencies](/internals/rdk/#dependency-management), [start-up](/internals/rdk/#start-up), [reconfiguration](/internals/rdk/#reconfiguration), [data management](/services/data/capture/#configure-data-capture-for-individual-components), and [shutdown](/internals/rdk/#shutdown) behavior of your modular resource.
 
 ### Tutorials using modules
 
@@ -150,7 +150,7 @@ To create a new module:
 
 If you are [creating a custom module](/registry/create/) and want to [upload that module](/registry/upload/) to the Viam registry, ensure your model name meets the following requirements:
 
-- The namespace of your model **must** match the [namespace of your organization](/fleet/organizations/#create-a-namespace-for-your-organization).
+- The namespace of your model **must** match the [namespace of your organization](/cloud/organizations/#create-a-namespace-for-your-organization).
   For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:repo-name:mybase`.
 - Your model triplet must be all-lowercase.
 - Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.

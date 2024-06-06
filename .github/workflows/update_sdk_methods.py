@@ -424,7 +424,7 @@ override_description_links = {
     "SLAM service": "/services/slam/",
     "frame": "/services/frame-system/",
     "Viam app": "https://app.viam.com/",
-    "organization settings page": "/fleet/organizations/",
+    "organization settings page": "/cloud/organizations/",
     "image tags": "/services/data/dataset/#image-tags",
     "API key": "/fleet/cli/#authenticate",
     "in configuration": "/components/board/#digital_interrupts",

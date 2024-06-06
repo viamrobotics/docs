@@ -27,7 +27,7 @@ The Viam Agent:
 - Allows control of deployed software versions through the Viam app.
 
 Consider a company that sells machines that monitor weather conditions on a maritime craft and provide navigation advice based on those readings.
-Such a machine might use Viam to interface between a [sensor component](/components/sensor/) that takes weather measurements, and the [data management service](/data/) to regularly upload a stream of readings, for example.
+Such a machine might use Viam to interface between a [sensor component](/components/sensor/) that takes weather measurements, and the [data management service](/services/data/) to regularly upload a stream of readings, for example.
 However, to then parse the readings and provide tailored guidance to a ship's captain, the company has written their own proprietary application which includes live analytics and speech generation for conveying advice to the captain.
 
 Using the Viam Agent, this company could ship their machines directly to customers and have each machine provision `viam-server` as it comes online for each user, eliminating factory setup time and allowing for tailored configurations per customer as needed.
@@ -70,7 +70,7 @@ If you want to install the Viam Agent on a machine that you have not yet created
 
 1. Create a configuration file with the desired configuration for your machine. You can:
 
-   - You can [create a new machine in the Viam app](/fleet/machines/#add-a-new-machine) and configure it as desired, then switch to **Raw JSON** mode and copy the configuration shown into a new file on your machine.
+   - You can [create a new machine in the Viam app](/cloud/machines/#add-a-new-machine) and configure it as desired, then switch to **Raw JSON** mode and copy the configuration shown into a new file on your machine.
    - You can base your configuration on the [example configuration file](/internals/local-configuration-file/#example-json-configuration-file), and adjust as needed.
    - You can use an existing configuration file from a deployed machine, or adapt such a file as needed to fit the specifications of your new machine.
 
@@ -246,7 +246,7 @@ To provision your machine, create a <file>/etc/viam-provisioning.json</file> con
 }
 ```
 
-This file configures some basic metadata, specifies a [fragment](/fleet/configure-a-fleet/) to use to configure the machine, and provides the WiFi network name and password to allow your machine to connect automatically on startup.
+This file configures some basic metadata, specifies a [fragment](/fleet/fragments/) to use to configure the machine, and provides the WiFi network name and password to allow your machine to connect automatically on startup.
 
 ## Use the Viam mobile app
 

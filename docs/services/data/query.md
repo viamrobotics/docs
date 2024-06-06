@@ -14,14 +14,14 @@ aliases:
 # SME: Devin Hilly
 ---
 
-Once you have [added the data management service](/data/capture/#add-the-data-management-service) and [synced tabular data to the Viam app](/data/cloud-sync/), you can perform queries against that data using either {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
+Once you have [added the data management service](/services/data/capture/#add-the-data-management-service) and [synced tabular data to the Viam app](/services/data/cloud-sync/), you can perform queries against that data using either {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
 
 You can:
 
 - [Query tabular data in the Viam app](#query-tabular-data-in-the-viam-app): Run SQL or MQL queries against your synced tabular data from the **Query** subtab under the **Data** tab in the Viam app.
 - [Query tabular data directly from a compatible client](#query-tabular-data-directly-from-a-compatible-client): Directly query tabular data from an MQL-compatible client, such as `mongosh`.
 
-You can run queries against both the captured tabular data itself as well as its metadata, including machine ID, organization ID, and [tags](/data/dataset/#image-tags).
+You can run queries against both the captured tabular data itself as well as its metadata, including machine ID, organization ID, and [tags](/services/data/dataset/#image-tags).
 
 Only tabular data, such as [sensor](/components/sensor/) readings, can be queried using SQL or MQL.
 To search non-tabular data, such as images, see [Filter Data](/services/data/view/#filter-data).
@@ -31,11 +31,11 @@ To perform searches against tabular data from within the Python SDK, use the [`T
 
 Before you can configure data query, you must:
 
-1. [Add the data management service](/data/capture/#add-the-data-management-service) to your machine.
-1. [Configure data capture](/data/capture/) for at least one component, such as a sensor.
+1. [Add the data management service](/services/data/capture/#add-the-data-management-service) to your machine.
+1. [Configure data capture](/services/data/capture/) for at least one component, such as a sensor.
    Only components that capture tabular data support data query.
    To search non-tabular data, see [Filter Data](/services/data/view/#filter-data).
-1. [Configure cloud sync](/data/cloud-sync/), and sync data to the Viam app.
+1. [Configure cloud sync](/services/data/cloud-sync/), and sync data to the Viam app.
    When you are able to [view your data in the Viam app](/services/data/view/), you are ready to proceed.
 
 ## Query tabular data in the Viam app
@@ -75,7 +75,7 @@ For more information on MQL syntax, see the [MQL (MongoDB Query Language)](https
 Configure direct data query to be able to query captured tabular data in the Viam cloud using {{< glossary_tooltip term_id="mql" text="MQL" >}} or {{< glossary_tooltip term_id="sql" text="SQL" >}} from a MQL-compatible client, such as `mongosh` or MongoDB Compass.
 Synced data is stored in a MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance.
 
-You can query against both the captured tabular data itself as well as its metadata, including machine ID, organization ID, and [tags](/data/dataset/#image-tags).
+You can query against both the captured tabular data itself as well as its metadata, including machine ID, organization ID, and [tags](/services/data/dataset/#image-tags).
 
 Only tabular data, such as [sensor](/components/sensor/) readings, can be queried in this fashion.
 
@@ -238,6 +238,6 @@ For a tutorial that walks through querying data and displaying it on a TypeScrip
 
 To export your captured data from the cloud, see [Export Data](../export/).
 
-To adjust the rate at which your machine captures data, see [Configure Data Capture](/data/capture/#configure-data-capture-for-individual-components).
+To adjust the rate at which your machine captures data, see [Configure Data Capture](/services/data/capture/#configure-data-capture-for-individual-components).
 
-To adjust the sync frequency, see [Configure Cloud Sync](/data/cloud-sync/).
+To adjust the sync frequency, see [Configure Cloud Sync](/services/data/cloud-sync/).

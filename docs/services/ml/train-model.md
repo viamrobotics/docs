@@ -16,7 +16,7 @@ aliases:
 # SME: Tahiya + Alexa Greenberg
 ---
 
-You can add classification tags or bounding boxes to [images collected](/data/capture/) by machines, add them to a dataset, and use the annotated data to train a **Single Label Classification Model**, **Multi Label Classification Model** or **Object Detection Model** within Viam.
+You can add classification tags or bounding boxes to [images collected](/services/data/capture/) by machines, add them to a dataset, and use the annotated data to train a **Single Label Classification Model**, **Multi Label Classification Model** or **Object Detection Model** within Viam.
 
 When training machine learning models, it is important to supply a variety of different data about the subject.
 In the case of image classification, it is important to provide images of the object being identified in different situations, such as from different angles or in different lighting situations.
@@ -24,7 +24,7 @@ The more varied the provided data set, the more accurate the resulting model bec
 
 ## Train a model
 
-After [creating a dataset](/data/dataset/), navigate to the **DATA** tab and the **DATASETS** subtab.
+After [creating a dataset](/services/data/dataset/), navigate to the **DATA** tab and the **DATASETS** subtab.
 Then click on the dataset you want to train a model from and click on the **Train model** button on your dataset's page.
 
 On the **Train a model** menu:
@@ -47,7 +47,7 @@ Once the model has finished training, it becomes visible in the **Models** secti
 
 {{< alert title="Note" color="note" >}}
 
-Your [dataset](/data/dataset/) is not versioned.
+Your [dataset](/services/data/dataset/) is not versioned.
 You can add or remove data from it at any time.
 Existing models will not change if you change the dataset they were trained on.
 To iterate on your model and train on the a changed dataset, [train a new version of your model](#train-a-new-version-of-a-model).
@@ -56,7 +56,7 @@ To iterate on your model and train on the a changed dataset, [train a new versio
 
 ### Train a new version of a model
 
-If you [deploy a model](/ml/) to a machine, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the machine.
+If you [deploy a model](/services/ml/) to a machine, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the machine.
 If you train a new version of that model, Viam will automatically deploy the new version to the machine and replace the old version.
 
 {{< alert title="Important" color="note" >}}

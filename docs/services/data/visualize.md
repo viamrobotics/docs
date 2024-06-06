@@ -16,7 +16,7 @@ aliases:
 Once you have [configured data query](/services/data/query/#configure-data-query) for your organization's data store, you can visualize your data from a variety of third-party tools, including Grafana, Tableau, Google's Looker Studio, and more.
 You can choose to visualize data from a component on one machine, from multiple components together, or from many components across a fleet of machines, all from a single pane of glass.
 
-You can visualize both the captured data itself as well as its metadata, including machine ID, organization ID, and [tags](/data/dataset/#image-tags).
+You can visualize both the captured data itself as well as its metadata, including machine ID, organization ID, and [tags](/services/data/dataset/#image-tags).
 
 Only components that capture tabular data, such as [sensor](/components/sensor/) readings or other time-series data, support data visualization.
 
@@ -30,10 +30,10 @@ For a full walkthrough using Grafana specifically, see the [Visualize Data Using
 
 Before you can visualize your data, you must:
 
-1. [Add the data management service](/data/capture/#add-the-data-management-service) to your machine.
-1. [Configure data capture](/data/capture/) for at least one component, such as a sensor.
+1. [Add the data management service](/services/data/capture/#add-the-data-management-service) to your machine.
+1. [Configure data capture](/services/data/capture/) for at least one component, such as a sensor.
    Only components that capture tabular data support data visualization.
-1. [Configure cloud sync](/data/cloud-sync/), and sync data to the Viam app.
+1. [Configure cloud sync](/services/data/cloud-sync/), and sync data to the Viam app.
    When you are able to [view your data in the Viam app](/services/data/view/), you are ready to proceed.
 1. [Configure data query](/services/data/query/#configure-data-query) to allow third-party visualization tools, such as Grafana, to access your synced data.
 

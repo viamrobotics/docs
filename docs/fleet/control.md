@@ -118,5 +118,5 @@ For example, you can view live camera feeds, adjust components' runtime paramete
 
 Additionally, the machine control interface provides a menu for:
 
-- [viewing a machine's logs](/fleet/machines/#logs)
-- [uploading images from your phone to the cloud](/data/upload/#upload-images-with-the-viam-mobile-app)
+- [viewing a machine's logs](/cloud/machines/#logs)
+- [uploading images from your phone to the cloud](/services/data/upload/#upload-images-with-the-viam-mobile-app)

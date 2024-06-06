@@ -240,7 +240,7 @@ You can use fragments to share similar {{< glossary_tooltip term_id="resource" t
 For example, if you have multiple machines with the same motor hardware, wired the same way, you can create a fragment to configure that motor and share it easily across all of your machines, without needing to individually configure the motor component for each machine.
 
 To configure a fragment, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Insert fragment**.
-See [Use Fragments to Configure a Fleet](/fleet/configure-a-fleet/) for more information on creating and deploying fragments.
+See [Use Fragments to Configure a Fleet](/fleet/fragments/) for more information on creating and deploying fragments.
 
 ### Frames
 
@@ -280,7 +280,7 @@ To restore to an earlier version of your configuration, click the **Restore vers
 
 If you run into issues, here are some things to try:
 
-- Check the [**LOGS** tab](/fleet/machines/#logs) to view log messages and errors from `viam-server`.
+- Check the [**LOGS** tab](/cloud/machines/#logs) to view log messages and errors from `viam-server`.
   You can also [access the local log file](/get-started/installation/manage/#view-viam-server-logs) on your machine if needed.
 - Make sure all configured components are saved to your config.
   If they aren't, you will see an **Unsaved changes** note next to the **Save** button in the top right corner of the page.
@@ -297,8 +297,8 @@ If you run into issues, here are some things to try:
 Configuring `viam-server` with the Viam app allows you to make use of the cloud features of Viam:
 
 - [Fleet Management](/fleet/)
-- [Data Management](/data/)
-- [Machine Learning](/ml/)
+- [Data Management](/services/data/)
+- [Machine Learning](/services/ml/)
 
 However, if you are configuring a machine that can never connect to the internet, you can create a [local configuration file](/internals/local-configuration-file/) on your machine.
 A locally-configured machine will not be able to access Viam's cloud features.

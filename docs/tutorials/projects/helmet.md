@@ -18,7 +18,7 @@ cost: 120
 {{<imgproc src="/tutorials/helmet/ppe-hooks.png" resize="x300" declaredimensions=true alt="Hard hats and neon reflective vests on hooks." class="alignright" style="max-width: 350px">}}
 
 We all know personal protective equipment (PPE) helps keep us safe, but sometimes we need a reminder to use it consistently.
-Luckily, you can address this problem using Viam's integrated [data capture](/data/capture/), [computer vision](/services/vision/), and [webhooks](/build/configure/webhooks/), along with a hard hat detection model.
+Luckily, you can address this problem using Viam's integrated [data capture](/services/data/capture/), [computer vision](/services/vision/), and [webhooks](/build/configure/webhooks/), along with a hard hat detection model.
 
 By following this tutorial you will build a system to look out for you and your team, sending an email notification when someone isn't wearing a hard hat.
 
@@ -193,7 +193,7 @@ Now that the detector is configured, it's time to test it!
 
 ## Configure data capture and sync
 
-Viam's built-in [data management service](/data/) allows you to, among other things, capture images and sync them to the cloud.
+Viam's built-in [data management service](/services/data/) allows you to, among other things, capture images and sync them to the cloud.
 For this project, you will capture images of people without hard hats so that you can see who wasn't wearing one, and so that you can trigger notifications when these images are captured and synced.
 Configure data capture on the `objectfilter` camera to capture images of people without hard hats:
 

@@ -13,7 +13,7 @@ aliases:
 # SME: Alexa Greenberg
 ---
 
-If you configured [data capture](/data/capture/) on your machine, data is automatically uploaded to the Viam cloud from the directory and at the interval you specified.
+If you configured [data capture](/services/data/capture/) on your machine, data is automatically uploaded to the Viam cloud from the directory and at the interval you specified.
 However, if you want to upload a batch of data once from somewhere else, either from a different place on your machine or from your personal computer or mobile device, you have several options:
 
 - Configure the path to your directory in the Viam app, wait for the files to sync, then delete the path.
@@ -38,7 +38,7 @@ The following steps assume you already have a machine with [`viam-server` instal
 
 1. Put the data you want to sync in a directory on your machine.
    All of the data in the folder will be synced, so be sure that you want to upload all of the contents of the folder.
-2. If you haven't already, [add the data management service to your machine's config.](/data/capture/#add-the-data-management-service)
+2. If you haven't already, [add the data management service to your machine's config.](/services/data/capture/#add-the-data-management-service)
 3. Navigate to your data management card within the **Services** subtab of your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
 4. Next to **Additional paths**, click **Add pathway**.
    Enter the full path to the directory where the data you want to upload is stored, for example, `/Users/Artoo/my_cat_photos`.

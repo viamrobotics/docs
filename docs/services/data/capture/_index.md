@@ -31,7 +31,7 @@ When you configure the robot, you may set the camera to capture point cloud data
 For the arm, you may want to capture joint positions at 1Hz.
 If your requirements change and you want to capture data from both components at 10Hz, you can change the configurations at any time by changing the number.
 
-Data capture is frequently used with [Cloud Sync](/data/cloud-sync/).
+Data capture is frequently used with [Cloud Sync](/services/data/cloud-sync/).
 However, if you want to manage your machine's captured data yourself, you can enable only data capture without cloud sync.
 
 ## Add the data management service
@@ -375,7 +375,7 @@ The following example captures data from the `ReadImage` method of a camera:
 
 ## Automatic data deletion
 
-If [cloud sync](/data/cloud-sync/) is enabled, the data management service deletes captured data once it has successfully synced to the cloud.
+If [cloud sync](/services/data/cloud-sync/) is enabled, the data management service deletes captured data once it has successfully synced to the cloud.
 
 The data management service will also automatically delete local data in the event your machine's local storage fills up.
 Local data is automatically deleted when _all_ of the following conditions are met:
@@ -422,7 +422,7 @@ If you are capturing camera data, it can happen that the camera captures and syn
 
 ## Next steps
 
-To sync your captured data with the cloud, [configure cloud sync](/data/cloud-sync/).
+To sync your captured data with the cloud, [configure cloud sync](/services/data/cloud-sync/).
 
 If you have synced tabular data, such as [sensor](/components/sensor/) readings, you can [query that data with SQL or MQL](/services/data/query/) from the Viam app or a MQL-compatible client.
 If you have synced images, you can use those images to [train machine learning models](/services/ml/train-model/) within the Viam app.

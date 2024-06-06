@@ -25,7 +25,7 @@ To use a given service, add it to your machine's configuration.
 
 [Configuring](/build/#step-2-configure) services on your machine indicates to `viam-server` which software packages you want to use with your machine, and how to integrate that software with your [components](/components/) and other services.
 Services take many forms, so their configuration and usage varies widely.
-For example, when you [configure data capture](/data/capture/), you indicate which types of data you want to capture, from which components.
+For example, when you [configure data capture](/services/data/capture/), you indicate which types of data you want to capture, from which components.
 When you configure the [frame system](/services/frame-system/), you indicate how the components relate to each other spatially.
 Find more information in the documentation for each service below.
 

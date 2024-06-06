@@ -41,7 +41,7 @@ For example, if you specify `Rover Rental` for location and click **Apply**, you
 
 {{< alert title="Tip" color="tip" >}}
 
-To [view only data captured from one machine part or from one component or service](/data/capture/#view-captured-data), click on the menu on the respective resource on the configuration page and select **View captured data**.
+To [view only data captured from one machine part or from one component or service](/services/data/capture/#view-captured-data), click on the menu on the respective resource on the configuration page and select **View captured data**.
 
 {{<imgproc src="/services/data/capture-data-menu.png" resize="500x" declaredimensions=true alt="Resource menu with the options Rename, Duplicate, View captured data, and Delete" class="aligncenter">}}
 

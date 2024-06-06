@@ -3,4 +3,4 @@ Use the buttons to try turning your motor forwards or backwards at different pow
 
 ![Motor control panel.](/components/motor/control.png)
 
-If the motor does not appear on the **CONTROL** tab, or if you notice unexpected behavior, check your machine's [**LOGS** tab](/fleet/machines/#logs) for errors, and review the configuration.
+If the motor does not appear on the **CONTROL** tab, or if you notice unexpected behavior, check your machine's [**LOGS** tab](/cloud/machines/#logs) for errors, and review the configuration.

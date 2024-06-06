@@ -10,7 +10,7 @@ images: ["/services/icons/ml.svg"]
 # SME: Bijan Haney
 ---
 
-The [Machine Learning (ML) model service](/ml/) allow you to deploy machine learning models to your smart machine.
+The [Machine Learning (ML) model service](/services/ml/) allow you to deploy machine learning models to your smart machine.
 Vision services, like [an `"mlmodel"` detector](/services/vision/mlmodel/) or [classifier](/services/vision/mlmodel/), enable your machines to identify and classify objects in images with the deployed models' predictions.
 
 The two services work closely together, with the vision service relying on the deployed ML model to make inferences.

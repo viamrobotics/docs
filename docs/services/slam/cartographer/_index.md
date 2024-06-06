@@ -117,7 +117,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
    On the panel that appears, you can manage the capturing and syncing functions.
    You can also specify the **directory**, the sync **interval**, and any **tags** to apply to captured data.
-   See the [data management service](/data/) for more information.
+   See the [data management service](/services/data/) for more information.
 
 2. Enable data capture for your camera, and for your movement sensor if you would like to use IMU data, odometry data, or both:
 
@@ -161,7 +161,7 @@ You _do not_ need to configure data capture on the individual IMU and odometer.
 {{< /tabs >}}
 
 {{< alert title="Tip" color="tip" >}}
-Note that [Data Capture](/data/capture/) continuously monitors and captures your machine’s sensor data while the machine is running. To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/) once you have finished your SLAM session.
+Note that [Data Capture](/services/data/capture/) continuously monitors and captures your machine’s sensor data while the machine is running. To avoid incurring charges while not in use, [turn off data capture for your sensors](/services/data/capture/) once you have finished your SLAM session.
 {{< /alert >}}
 
 3. Set up the `cartographer` module on your machine:
@@ -199,7 +199,7 @@ Note that [Data Capture](/data/capture/) continuously monitors and captures your
 This example JSON configuration:
 
 - adds the `viam:rplidar` and the `viam:cartographer` modules
-- configures the `viam:slam:cartographer` service and the [data management service](/data/)
+- configures the `viam:slam:cartographer` service and the [data management service](/services/data/)
 - adds an `viam:lidar:rplidar` camera with data capture configured
 
   <br>
@@ -340,7 +340,7 @@ Updating an existing map uses an instance of the `cartographer` module running i
    This example JSON configuration:
 
    - adds the `viam:rplidar` and the `viam:cartographer` modules
-   - configures the `viam:slam:cartographer` service and the [data management service](/data/)
+   - configures the `viam:slam:cartographer` service and the [data management service](/services/data/)
    - adds an `viam:lidar:rplidar` camera with data capture configured
    - specifies the `slam_map` to be updated in the `packages`
 

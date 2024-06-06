@@ -49,7 +49,7 @@ You can:
 
 - [train a model on the Viam app](/services/ml/train-model/) and deploy it
 - deploy a pre-trained model another user has published from [the registry](https://app.viam.com/registry)
-- [upload](/ml/upload-model/) a model trained outside the Viam platform to the registry privately or publicly and deploy it
+- [upload](/services/ml/upload-model/) a model trained outside the Viam platform to the registry privately or publicly and deploy it
 - deploy a model trained outside the Viam platform that's already available on your machine
 
 The model you use must be supported on the Viam platform.
@@ -60,7 +60,7 @@ Viam supports the following model frameworks:
 - [PyTorch](https://pytorch.org/): with the [`triton` ML model service](https://github.com/viamrobotics/viam-mlmodelservice-triton)
 - [ONNX](https://onnx.ai/): with the [`onnx_cpu` ML model service](https://github.com/viam-labs/onnx-cpu)
 
-For more information, see [Model framework support](/ml/upload-model/#model-framework-support).
+For more information, see [Model framework support](/services/ml/upload-model/#model-framework-support).
 
 ## Use machine learning with your machine
 

@@ -86,7 +86,7 @@ Your model is now updated.
 
 {{% alert title="Note" color="note" %}}
 
-If you [deploy a model](/ml/) to a machine, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the machine.
+If you [deploy a model](/services/ml/) to a machine, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the machine.
 If you upload a new version of that model, Viam will automatically deploy the new version to the machine and replace the old version.
 
 If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [JSON machine configuration](/build/configure/#the-configure-tab).

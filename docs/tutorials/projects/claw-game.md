@@ -937,7 +937,7 @@ In this tutorial, you learned how to:
 For some next steps, you could:
 
 - Use the advanced interface included in the project repository to leverage the [motion service](/services/motion/) for larger, more complex arm movement within the enclosure.
-- Add a camera and use the [vision service](/services/vision/) to add color detection, or use an [ML model](/ml/) to determine grab success rate and create a score counter.
+- Add a camera and use the [vision service](/services/vision/) to add color detection, or use an [ML model](/services/ml/) to determine grab success rate and create a score counter.
 - Design a hard mode where the prizes are shuffled around with the arm every few attempts.
 - Add a camera and extend the interface to allow folks from anywhere in the world to play the claw game and win.
 

@@ -22,7 +22,7 @@ After following this tutorial, you will understand how to control sync parameter
 Note: Consider this tutorial alongside filtered camera tutorial.
 -->
 
-If your smart machine [captures](/data/capture/) a lot of data, you might want to filter captured data to selectively store only the data you are interested in.
+If your smart machine [captures](/services/data/capture/) a lot of data, you might want to filter captured data to selectively store only the data you are interested in.
 For example, you might want to use your smart machine's camera to capture images based on specific criteria, such as the presence of a certain color, and omit captured images that don't meet that criteria.
 
 In this tutorial, you will use a custom {{< glossary_tooltip term_id="module" text="module" >}} to function as a color filter, and use it with a [camera](/components/camera/) to only capture images where your pet is in the frame in the following way:
@@ -157,7 +157,7 @@ For more information, refer to [Define a new resource model](/registry/create/#d
 
 The filter function in your custom filter module must contain two critical elements:
 
-1. A utility function that will check if the caller of the filter function is the [data management](/data/) service.
+1. A utility function that will check if the caller of the filter function is the [data management](/services/data/) service.
 1. A safeguard that ensures if the data management service is not the caller, an error and the unfiltered data is returned.
 
 {{< alert title="Important" color="note" >}}
@@ -823,12 +823,12 @@ Whether you've downloaded the `colorfilter` module, or written your own color fi
 
 Next, add the following services to your smart machine to support the color filter module:
 
-- The [data management service](/data/) enables your smart machine to capture data and sync it to the cloud.
+- The [data management service](/services/data/) enables your smart machine to capture data and sync it to the cloud.
 - The [vision service](/services/vision/#detections) enables your smart machine to perform color detection on objects in a camera stream.
 
 ### Add the data management service
 
-To enable data capture on your machine, add and configure the [data management service](/data/) to capture and store data on your machine's computer:
+To enable data capture on your machine, add and configure the [data management service](/services/data/) to capture and store data on your machine's computer:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -845,7 +845,7 @@ To enable data capture on your machine, add and configure the [data management s
 
    ![An instance of the data management service named "dm". The cloud sync and capturing options are toggled on and the directory is empty. The interval is set to 0.1](/tutorials/pet-photographer/data-management-services.png)
 
-   For more detailed information, see [Add the data management service](/data/capture/#add-the-data-management-service).
+   For more detailed information, see [Add the data management service](/services/data/capture/#add-the-data-management-service).
    {{% /tab %}}
    {{% tab name="JSON Template" %}}
    Add the data management service to the services array in your rover’s raw JSON configuration:

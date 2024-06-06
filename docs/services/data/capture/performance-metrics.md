@@ -24,7 +24,7 @@ You can capture and monitor the following metrics about the performance of indiv
 
 ## Requirements
 
-To capture data from a machine, you need to [create a machine in Viam](/fleet/machines/#add-a-new-machine) and follow the setup instructions to install `viam-server` and connect it to the Viam app.
+To capture data from a machine, you need to [create a machine in Viam](/cloud/machines/#add-a-new-machine) and follow the setup instructions to install `viam-server` and connect it to the Viam app.
 
 {{< alert title="Note" color="note" >}}
 You must run `viam-server` with `sudo` to monitor machine performance metrics.
@@ -64,7 +64,7 @@ To access detailed readings from your sensor, click on the **Get Readings** butt
 
 ## Configure data management service to capture and sync sensor data
 
-To capture the data from your configured sensor, you need to add the [data management service](/data/) and configure it to capture and sync the sensor data:
+To capture the data from your configured sensor, you need to add the [data management service](/services/data/) and configure it to capture and sync the sensor data:
 
 1. On your machine's **CONFIGURE** page, go to the **Services** subtab and click **Create service**.
 2. Select the **data management** service and give it a name.

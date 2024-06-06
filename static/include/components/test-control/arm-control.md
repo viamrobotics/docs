@@ -6,4 +6,4 @@ Use the buttons to move the end position or the joints and check whether it move
 
 {{<imgproc src="/components/arm/control.png" resize="450x" declaredimensions=true alt="Arm control panel.">}}
 
-If the arm does not appear on the **CONTROL** tab, or if you notice unexpected behavior, check your machine's [**LOGS** tab](/fleet/machines/#logs) for errors, and review the configuration.
+If the arm does not appear on the **CONTROL** tab, or if you notice unexpected behavior, check your machine's [**LOGS** tab](/cloud/machines/#logs) for errors, and review the configuration.

@@ -13,16 +13,16 @@ aliases:
 Role-Based Access Control (RBAC) is a way to enforce security in the [Viam app](https://app.viam.com) by assigning organization members roles that confer permissions.
 Users can have access to different fleet management capabilities depending on whether they are an owner or an operator of a given {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="machine" text="machine" >}}.
 
-- **Owner**: Can see and edit [every tab on the machine page](/fleet/machines/#navigating-the-machine-page).
+- **Owner**: Can see and edit [every tab on the machine page](/cloud/machines/#navigating-the-machine-page).
   Can manage users in the app.
 - **Operator**: Can see and use only the [**CONTROL**](/fleet/control/) tab.
-  Cannot see or edit the [**CONFIGURE**](/fleet/machines/#configure), [**LOGS**](/fleet/machines/#logs), or **CONNECT** tabs.
+  Cannot see or edit the [**CONFIGURE**](/cloud/machines/#configure), [**LOGS**](/cloud/machines/#logs), or **CONNECT** tabs.
 
 For more detailed information on the permissions each role confers for different resources, see [Permissions](/cloud/rbac/#permissions).
 
 ## Change a user's access
 
-If you have the **Owner** role, you can [invite new users](/fleet/organizations/#invite-someone-to-an-organization) and change the roles assigned to an organization member on a per machine, location, or organization level.
+If you have the **Owner** role, you can [invite new users](/cloud/organizations/#invite-someone-to-an-organization) and change the roles assigned to an organization member on a per machine, location, or organization level.
 
 To view the roles each organization member has, click on the organization dropdown in the top navigation bar and click on **Settings**.
 
@@ -176,7 +176,7 @@ Permissions for managing {{< glossary_tooltip term_id="fragment" text="fragments
 
 ### Data and machine learning
 
-Permissions for [data management](/data/) and [machine learning](/ml/) are as follows:
+Permissions for [data management](/services/data/) and [machine learning](/services/ml/) are as follows:
 
 | Permissions                         | Org owner                                     | Org operator | Location owner                                                      | Location operator | Machine owner                                                       | Machine operator |
 | ----------------------------------- | --------------------------------------------- | ------------ | ------------------------------------------------------------------- | ----------------- | ------------------------------------------------------------------- | ---------------- |

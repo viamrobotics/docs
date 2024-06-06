@@ -10,7 +10,7 @@ aliases:
   - /fleet/billing/
 ---
 
-{{<imgproc src="/fleet/billing-menu.png" resize="400x" declaredimensions=true alt="Payment and billing menu item" class="alignright">}}
+{{<imgproc src="/billing-menu.png" resize="400x" declaredimensions=true alt="Payment and billing menu item" class="alignright">}}
 
 To access the **Payment and billing** page, click on the organization name in the top right of the navigation bar and then click on **Payment and billing**.
 
@@ -28,7 +28,7 @@ For Pricing information, please see [pricing & billing explained](https://www.vi
 
 {{< /alert >}}
 
-![Payment and billing overview](/fleet/billing-overview.png)
+![Payment and billing overview](/billing-overview.png)
 
 ## Download an invoice
 

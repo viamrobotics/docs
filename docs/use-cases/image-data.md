@@ -17,7 +17,7 @@ For example, you might add the data management service to multiple machines to b
 {{<imgproc src="/icons/components/camera.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="configure a camera component">}}
 **1. Configure a camera**
 
-First, [create a machine](/fleet/machines/#add-a-new-machine) if you haven't yet.
+First, [create a machine](/cloud/machines/#add-a-new-machine) if you haven't yet.
 
 Then [add a camera component](/components/camera/), such as a [webcam](/components/camera/webcam/).
 
@@ -26,16 +26,16 @@ Then [add a camera component](/components/camera/), such as a [webcam](/componen
 {{<imgproc src="/services/icons/data-management.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
 **2. Configure the data management service**
 
-Next, [add the data management service](/data/) to be able to configure how your camera captures and stores images.
+Next, [add the data management service](/services/data/) to be able to configure how your camera captures and stores images.
 
-Then configure [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/).
+Then configure [data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/).
 
 {{< /tablestep >}}
 {{< tablestep >}}
 {{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
 **3. Capture data**
 
-With data management configured, [capture image data from a camera on your machine](/data/capture/#configure-data-capture-for-individual-components). Captured data is automatically synced to the cloud after a short delay.
+With data management configured, [capture image data from a camera on your machine](/services/data/capture/#configure-data-capture-for-individual-components). Captured data is automatically synced to the cloud after a short delay.
 
 {{< /tablestep >}}
 {{< tablestep >}}
@@ -56,7 +56,7 @@ You can [filter synced images in the Viam app](/services/data/view/#filter-data)
 {{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **6. Export data**
 
-You can also [export your data from the Viam app](/data/export/) to a deployed machine, or to any computer.
+You can also [export your data from the Viam app](/services/data/export/) to a deployed machine, or to any computer.
 
 {{< /tablestep >}}
 {{< /table >}}

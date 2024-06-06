@@ -29,7 +29,7 @@ If you change your mind and want your machine to sync less frequently, you can c
 
 ## Configuration
 
-Before you can configure [cloud sync](/data/cloud-sync/), you must [add the data management service](/data/capture/#add-the-data-management-service).
+Before you can configure [cloud sync](/services/data/cloud-sync/), you must [add the data management service](/services/data/capture/#add-the-data-management-service).
 
 To enable cloud sync, navigate to your machine's **CONFIGURE** tab and enable **Syncing** for your [data management service](../).
 Click the **Save** button in the top right corner of the page.
@@ -69,7 +69,7 @@ If `capture_dir` is unspecified, `viam-server` will use the default directory at
 
 You can use a {{< glossary_tooltip term_id="module" text="module" >}} to sync data only when a certain logic condition is met, instead of at a regular time interval.
 For example, if you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
-To set up triggers for syncing see [Trigger Sync](/data/trigger-sync/).
+To set up triggers for syncing see [Trigger Sync](/services/data/trigger-sync/).
 
 ### Configure sync threads
 
@@ -172,7 +172,7 @@ In the example pictured here, the data management service syncs the configured c
   {{< alert title="Warning" color="warning" >}}
 
   If your machine's disk fills up beyond a certain threshold, the data management service will delete captured data to free up additional space and maintain a working machine.
-  See [automatic data deletion](/data/capture/#automatic-data-deletion) for configuration options.
+  See [automatic data deletion](/services/data/capture/#automatic-data-deletion) for configuration options.
 
   {{< /alert >}}
 
@@ -180,7 +180,7 @@ In the example pictured here, the data management service syncs the configured c
 
 To view your captured data in the cloud, see [View Data](/services/data/view/).
 
-To export your captured data from the cloud, see [Export Data](/data/export/).
+To export your captured data from the cloud, see [Export Data](/services/data/export/).
 
 If you have synced tabular data, such as [sensor](/components/sensor/) readings, you can [query that data with SQL or MQL](/services/data/query/) from the Viam app or a MQL-compatible client.
 If you have synced images, you can use those images to [train machine learning models](/services/ml/train-model/) within the Viam app.

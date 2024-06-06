@@ -20,14 +20,14 @@ To organize your fleet you use:
 <!-- markdownlint-disable MD001 -->
 
 {{< cards >}}
-{{% manualcard link="/fleet/organizations/" %}}
+{{% manualcard link="/cloud/organizations/" %}}
 
 #### Organizations
 
 The highest level grouping, generally used for different companies.
 
 {{% /manualcard %}}
-{{% manualcard link="/fleet/locations/" %}}
+{{% manualcard link="/cloud/locations/" %}}
 
 #### Locations
 
@@ -35,7 +35,7 @@ A virtual grouping of devices up with up to three levels of nesting that can rep
 
 An organization can have multiple locations.
 {{% /manualcard %}}
-{{% manualcard link="/fleet/machines/" %}}
+{{% manualcard link="/cloud/machines/" %}}
 
 #### Machines
 
@@ -54,8 +54,8 @@ Each machine resides in a location.
 The organization structure enables you to:
 
 - configure groups of machines with reusable {{< glossary_tooltip term_id="fragment" text="fragments" >}} that [configure](/build/configure/) a set of resources for each machine that uses the fragment.
-- deploy [code packages](/registry/) or [machine learning models](/ml/), without manually copying files by uploading it to Viam's cloud and deploying it to your fleet
-- control a machine with code, the app's [**CONTROL** tab](machines/#control), or the [Viam mobile app](#the-viam-mobile-app)
+- deploy [code packages](/registry/) or [machine learning models](/services/ml/), without manually copying files by uploading it to Viam's cloud and deploying it to your fleet
+- control a machine with code, the app's [**CONTROL** tab](/cloud/machines/#control), or the [Viam mobile app](#the-viam-mobile-app)
 - obtain health metrics, such as status, uptime, version, or [logs](machines/#logs)
 - perform debugging
 
@@ -99,8 +99,8 @@ The Viam mobile app allows you to:
 - see if your machines are online
 - access the [control interface](/fleet/control/) for each machine
 - [invite people to collaborate with you and modify access](/cloud/rbac/#use-the-mobile-app)
-- check machine [logs](/fleet/machines/#logs)
-- [upload images from your phone to the cloud](/data/upload/#upload-images-with-the-viam-mobile-app)
+- check machine [logs](/cloud/machines/#logs)
+- [upload images from your phone to the cloud](/services/data/upload/#upload-images-with-the-viam-mobile-app)
 
 You can find the mobile app on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
 

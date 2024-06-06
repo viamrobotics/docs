@@ -34,10 +34,10 @@ To set up conditional syncing you need to:
 
 ### Requirements
 
-Before configuring your sensor, you must [create a machine](/fleet/machines/#add-a-new-machine) and you also need to:
+Before configuring your sensor, you must [create a machine](/cloud/machines/#add-a-new-machine) and you also need to:
 
-1. Enable [data capture](/data/capture/).
-2. Enable [cloud sync](/data/cloud-sync/).
+1. Enable [data capture](/services/data/capture/).
+2. Enable [cloud sync](/services/data/cloud-sync/).
 
 ### Add sensor to determine when to sync
 
@@ -257,7 +257,7 @@ You have now configured sync to happen during a specific time slot.
 
 ### Test your sync configuration
 
-To test your setup, [configure a webcam](/components/camera/webcam/) or another component and [enable data capture on the component](/data/capture/#configure-data-capture-for-individual-components).
+To test your setup, [configure a webcam](/components/camera/webcam/) or another component and [enable data capture on the component](/services/data/capture/#configure-data-capture-for-individual-components).
 For a camera component, use the `ReadImage` method.
 The data manager will now capture data.
 Go to the [**CONTROL** tab](/fleet/control/).

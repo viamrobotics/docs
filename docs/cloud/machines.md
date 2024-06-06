@@ -72,7 +72,7 @@ To see the history of the configuration of a machine part, click on **History** 
 For more information, see the [configuration documentation](/build/configure/#the-configure-tab).
 
 {{< alert title="Tip" color="tip" >}}
-If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your fleet](/fleet/configure-a-fleet/).
+If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your fleet](/fleet/fragments/).
 {{< /alert >}}
 
 ### CONTROL

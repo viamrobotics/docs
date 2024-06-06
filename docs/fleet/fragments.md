@@ -281,7 +281,7 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
 
    {{% /expand%}}
    {{%expand "Modify data sync settings" %}}
-   This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to change the sync interval for a [data management service](/data/) named `data-management` in the fragment:
+   This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to change the sync interval for a [data management service](/services/data/) named `data-management` in the fragment:
 
    ```json {class="line-numbers linkable-line-numbers"}
    "fragment_mods": [
