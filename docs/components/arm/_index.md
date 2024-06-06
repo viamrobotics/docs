@@ -12,6 +12,10 @@ images: ["/icons/components/arm.svg"]
 modulescript: true
 aliases:
   - "/components/arm/"
+hide_children: true
+outputs:
+  - html
+  - typesense
 # SME: Peter L
 ---
 
@@ -60,24 +64,7 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 
 ## Supported models
 
-To use your arm with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your arm.
-
-### Built-in models
-
-For configuration information, click on the model name:
-
-<!-- prettier-ignore -->
-| Model | Description |
-| ----- | ----------- |
-| [`fake`](fake/) | A model used for testing, with no physical hardware. |
-| [`xArm6`](xarm6/) | [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) |
-| [`xArm7`](xarm7/) | [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) |
-| [`lite6`](lite6/) | [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6) |
-| [`ur5e`](ur5e/) | [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) |
-
-### Modular resources
-
-{{<modular-resources api="rdk:component:arm" type="arm">}}
+{{<resources api="rdk:component:arm" type="arm">}}
 
 {{< alert title="Add support for other models" color="tip" >}}
 
@@ -200,7 +187,7 @@ Move the end of the arm to the desired [Pose](https://python.viam.dev/autoapi/vi
 
 **Parameters:**
 
-- `pose` [(Pose)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
+- `pose` [(Pose)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose): A representation of the arm's destination position as a 6 DOF (six degrees of freedom) pose.
   The `Pose` is composed of values for location and orientation with respect to the origin.
   Location is expressed as distance, which is represented by x, y, and z coordinate values.
   Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
@@ -229,7 +216,7 @@ await my_arm.move_to_position(pose=examplePose)
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `Pose` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose.
+- `Pose` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A representation of the arm's destination position as a 6 DOF (six degrees of freedom) pose.
   The `Pose` is composed of values for location and orientation with respect to the origin.
   Location is expressed as distance, which is represented by x, y, and z coordinate values.
   Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.

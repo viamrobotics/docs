@@ -64,7 +64,7 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 ## Setup
 
 1. Install the WiFi board/device on the Nano. Follow the manufacturer's instructions to do so.
-2. Power the Jetson Nano with a power supply and [prepare the device and install `viam-server`](/get-started/installation/prepare/jetson-nano-setup/).
+2. Power the Jetson Nano with a power supply and [prepare the device and install `viam-server`](/get-started/prepare/jetson-nano-setup/).
 3. Switch back to the main guide and complete these two steps:
    [Add the power supply](/get-started/try-viam/rover-resources/rover-tutorial/#add-the-power-supply) and [Configure the low-voltage cutoff circuit](/get-started/try-viam/rover-resources/rover-tutorial/#configure-the-low-voltage-cutoff-circuit).
 4. Unscrew the top of the rover with the biggest Allen key.
@@ -127,7 +127,7 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 
 ## Setup
 
-1. Power the Jetson Orin Nano with a power supply and [prepare the device and install `viam-server`](/get-started/installation/prepare/jetson-nano-setup/).
+1. Power the Jetson Orin Nano with a power supply and [prepare the device and install `viam-server`](/get-started/prepare/jetson-nano-setup/).
 2. Switch back to the main guide and complete these two steps:
    [Add the power supply](/get-started/try-viam/rover-resources/rover-tutorial/#add-the-power-supply) and [Configure the low-voltage cutoff circuit](/get-started/try-viam/rover-resources/rover-tutorial/#configure-the-low-voltage-cutoff-circuit).
 3. Unscrew the top of the rover with the biggest Allen key.
@@ -150,7 +150,7 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 
 ### Control your rover on the Viam app
 
-If you followed the instructions in the [Jetson installation guide](/get-started/installation/prepare/jetson-nano-setup/), you should have already made an account on the [Viam app](https://app.viam.com), installed `viam-server` on the board, and added a new machine.
+If you followed the instructions in the [Jetson installation guide](/get-started/prepare/jetson-nano-setup/), you should have already made an account on the [Viam app](https://app.viam.com), installed `viam-server` on the board, and added a new machine.
 
 To configure your rover so you can start driving it, [add a Viam Rover 2 Fragment to your machine](/get-started/try-viam/rover-resources/rover-tutorial-fragments/).
 

@@ -8,6 +8,7 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/customlinux/"
+component_description: "A model for other Linux boards."
 # SMEs: Alan, Olivia, Susmita
 ---
 

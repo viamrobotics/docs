@@ -12,6 +12,7 @@ images: ["/icons/components/gantry.svg"]
 modulescript: true
 aliases:
   - "/components/gantry/"
+hide_children: true
 # SME: Rand
 ---
 
@@ -32,7 +33,7 @@ Most machines with a gantry need at least the following hardware:
 
 - A [board](/components/board/) or [controller](/components/input-controller/) component that can detect changes in voltage on GPIO pins
 - A [motor](/components/motor/) that can move linear rails
-  - Encoded motor: See [DC motor with encoder](/components/motor/gpio/encoded-motor/) and [encoder component](/components/encoder/).
+  - Encoded motor: See [DC motor with encoder](/components/motor/encoded-motor/) and [encoder component](/components/encoder/).
   - Stepper motor: See [Stepper motor](/components/motor/gpiostepper/).
     Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
 - Limit switches, to attach to the ends of the gantry's axis
@@ -46,22 +47,7 @@ Most machines with a gantry need at least the following hardware:
 
 ## Supported models
 
-To use your gantry with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your gantry.
-
-### Built-in models
-
-For configuration information, click on the model name:
-
-<!-- prettier-ignore -->
-| Model | Description |
-| ----- | ----------- |
-| [`fake`](fake/) | A model used for testing, with no physical hardware. |
-| [`single-axis`](single-axis/) | A gantry with a singular linear rail. |
-| [`multi-axis`](multi-axis/) | A gantry with multiple linear rails. Composed of multiple `single-axis` gantries. |
-
-### Modular resources
-
-{{<modular-resources api="rdk:component:gantry" type="gantry">}}
+{{<resources api="rdk:component:gantry" type="gantry">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 

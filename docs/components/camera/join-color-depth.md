@@ -8,6 +8,8 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - "/components/camera/join-color-depth/"
+component_description: "Joins the outputs of a color and depth camera already registered in your config to create a third “camera” that outputs the combined and aligned image."
+toc_hide: true
 # SMEs: Bijan, vision team
 ---
 

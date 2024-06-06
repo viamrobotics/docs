@@ -8,6 +8,9 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - "/components/camera/webcam/"
+component_description: "A standard camera that streams camera data."
+usage: 999999
+toc_hide: true
 # SMEs: Bijan, vision team
 ---
 
@@ -176,7 +179,7 @@ If you are capturing camera data, it can happen that the camera captures and syn
 
 ### CSI Camera not working on a Raspberry Pi
 
-If you are using a CSI camera v1.3 or v2.0 on a Raspberry Pi, you need to [enable legacy mode](/get-started/installation/prepare/rpi-setup/#enable-communication-protocols).
+If you are using a CSI camera v1.3 or v2.0 on a Raspberry Pi, you need to [enable legacy mode](/get-started/prepare/rpi-setup/#enable-communication-protocols).
 If you are using a CSI camera v3.0, you need to use the [`viam:camera:csi` module](https://github.com/viamrobotics/csi-camera/) instead.
 
 ### High CPU usage

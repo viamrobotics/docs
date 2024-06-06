@@ -13,7 +13,7 @@ aliases:
 
 {{% alert title="REQUIREMENTS" color="caution" %}}
 
-Follow the [setup guide](/get-started/installation/prepare/microcontrollers/) to prepare your ESP32 for running the micro-RDK before configuring an `esp32` board.
+Follow the [setup guide](/get-started/installation/microcontrollers/) to prepare your ESP32 for running the micro-RDK before configuring an `esp32` board.
 
 Viam recommends purchasing the ESP32 with a development board. The following ESP32 microcontrollers are supported:
 
@@ -96,7 +96,7 @@ The following attributes are available for `esp32` boards:
 | `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](#analogs). |
 | `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](#i2cs). |
 | `digital_interrupts` | object | Optional | Any digital interrupts' GPIO number. See [configuration info](#digital_interrupts). |
-| `pins` | object | Required | The GPIO number of any GPIO pins you wish to use as input/output with the [`GPIOPin` API](/build/program/apis/#gpio-pins). |
+| `pins` | object | Required | The GPIO number of any GPIO pins you wish to use as input/output with the [`GPIOPin` API](/appendix/apis/#gpio-pins). |
 
 Any pin not specified in either `"pins"` or `"digital_interrupts"` cannot be interacted with through the [board API](/components/board/#api).
 Interaction with digital interrupts is only supported with the [board API](/components/board/#api); these digital interrupts cannot be used as software interrupts in driver implementations.
@@ -108,8 +108,8 @@ The following properties are available for `analogs`:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-|`name` | string | **Required** | Your name for the analog reader. |
-|`pin`| integer | **Required** | The GPIO number of the ADC's connection pin, wired to the board. |
+| `name` | string | **Required** | Your name for the analog reader. |
+| `pin`| integer | **Required** | The GPIO number of the ADC's connection pin, wired to the board. |
 
 ### `i2cs`
 

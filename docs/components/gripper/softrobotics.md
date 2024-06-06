@@ -7,6 +7,7 @@ description: "Configure a Soft Robotics gripper."
 images: ["/icons/components/gripper.svg"]
 aliases:
   - "/components/gripper/softrobotics/"
+component_description: "The mGrip soft gripper by Soft Robotics"
 ---
 
 The `softrobotics` model supports the [Soft Robotics *m*Grip](https://www.softroboticsinc.com/uploads/2021/03/Soft_Robotics_ModularGripping_800129_RevD_LR.pdf) gripper controlled by the [Soft Robotics *co*Drive Control Unit](https://www.softroboticsinc.com/uploads/2020/05/Tech_Sheet_coDrive_Control_Unit_-__TS-200210_Rev_B.pdf).

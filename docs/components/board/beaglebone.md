@@ -8,12 +8,13 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/beaglebone/"
+component_description: "BeagleBoard’s BeagleBone AI-64."
 # SMEs: Gautham, Rand
 ---
 
 {{% alert title="REQUIREMENTS" color="note" %}}
 
-Follow the [setup guide](/get-started/installation/prepare/beaglebone-setup/) to prepare your BeagleBone for running `viam-server` before configuring a `beaglebone` board.
+Follow the [setup guide](/get-started/prepare/beaglebone-setup/) to prepare your BeagleBone for running `viam-server` before configuring a `beaglebone` board.
 
 {{% /alert %}}
 

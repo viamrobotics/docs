@@ -53,7 +53,7 @@ The following steps assume you already have a machine with [`viam-server` instal
 
 ## Upload data with Python
 
-You can use the Viam Python SDK's data client API [`file_upload_from_path`](/build/program/apis/data-client/#fileuploadfrompath) method to upload one or more files from your computer to the Viam cloud.
+You can use the Viam Python SDK's data client API [`file_upload_from_path`](/appendix/apis/data-client/#fileuploadfrompath) method to upload one or more files from your computer to the Viam cloud.
 
 {{% alert title="Note" color="note" %}}
 
@@ -70,11 +70,11 @@ Also unlike data sync, this method _does not_ delete data from your device.
    pip install viam-sdk
    ```
 
-2. Create a Python script file in a directory of your choice and [add code to establish a connection](/build/program/apis/data-client/#establish-a-connection) from your computer to your [Viam app](https://app.viam.com) {{< glossary_tooltip term_id="location" text="location" >}} or individual {{< glossary_tooltip term_id="part" text="machine part" >}}.
+2. Create a Python script file in a directory of your choice and [add code to establish a connection](/appendix/apis/data-client/#establish-a-connection) from your computer to your [Viam app](https://app.viam.com) {{< glossary_tooltip term_id="location" text="location" >}} or individual {{< glossary_tooltip term_id="part" text="machine part" >}}.
 
 3. Use the `file_upload_from_path` method to upload your data, depending on whether you are uploading one or multiple files:
 
-   - To upload just one file, make a call to `file_upload_from_path` according to [the data client API documentation](/build/program/apis/data-client/#fileuploadfrompath).
+   - To upload just one file, make a call to `file_upload_from_path` according to [the data client API documentation](/appendix/apis/data-client/#fileuploadfrompath).
      The following example code could be placed inside the `main()` function (or a function called from `main()`):
 
      ```python {class="line-numbers linkable-line-numbers"}
@@ -88,7 +88,7 @@ Also unlike data sync, this method _does not_ delete data from your device.
      )
      ```
 
-   - To upload all the files in a directory, you can use the same [`file_upload_from_path`](/build/program/apis/data-client/#fileuploadfrompath) method inside a `for` loop, for example:
+   - To upload all the files in a directory, you can use the same [`file_upload_from_path`](/appendix/apis/data-client/#fileuploadfrompath) method inside a `for` loop, for example:
 
      ```python {class="line-numbers linkable-line-numbers"}
      import os # Add this package at the top of your program

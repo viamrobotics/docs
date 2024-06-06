@@ -6,11 +6,12 @@ type: "docs"
 description: "Configure an Odroid board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
+component_description: "Odroid-C4"
 ---
 
 {{% alert title="REQUIREMENTS" color="note" %}}
 
-Follow the [setup guide](/get-started/installation/prepare/odroid-c4-setup/) to prepare your Odroid-C4 for running `viam-server` before configuring an `odroid` board.
+Follow the [setup guide](/get-started/prepare/odroid-c4-setup/) to prepare your Odroid-C4 for running `viam-server` before configuring an `odroid` board.
 
 {{% /alert %}}
 

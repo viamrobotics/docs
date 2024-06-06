@@ -14,11 +14,11 @@ aliases:
 You can define a new {{< glossary_tooltip term_id="resource" text="resource" >}} _{{< glossary_tooltip term_id="subtype" text="subtype" >}}_ API if:
 
 - You have a {{% glossary_tooltip term_id="resource" text="resource" %}} that does not fit into any of the existing {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} subtypes.
-- You have a resource that could fit into an existing subtype, but you want to define an API with different methods and messages than the ones in the existing [APIs](/build/program/apis/) for that subtype.
+- You have a resource that could fit into an existing subtype, but you want to define an API with different methods and messages than the ones in the existing [APIs](/appendix/apis/) for that subtype.
 
   {{% alert title="Tip" color="tip" %}}
 
-  If you want to use most of an existing API but need just a few other functions, try using the [`DoCommand`](/build/program/apis/#docommand) endpoint and [extra parameters](/build/program/use-extra-params/) to add custom functionality to an existing subtype.
+  If you want to use most of an existing API but need just a few other functions, try using the [`DoCommand`](/appendix/apis/#docommand) endpoint and [extra parameters](/build/program/use-extra-params/) to add custom functionality to an existing subtype.
   For example, if you have a [sensor](/components/sensor/) and you want to define a `Calibrate` method, you can use `DoCommand`.
 
   {{% /alert %}}

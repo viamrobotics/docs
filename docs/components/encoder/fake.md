@@ -8,6 +8,7 @@ tags: ["encoder", "components"]
 weight: 10
 aliases:
   - "/components/encoder/fake/"
+component_description: "An encoder model for testing."
 # SMEs: Rand
 ---
 

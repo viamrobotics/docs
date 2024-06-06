@@ -1,5 +1,4 @@
-{{ with site.GetPage (.Get "link") }}
-
+{{- with site.GetPage (.Get "link") -}}
 <li>
   <a href="{{ .Permalink }}" title="{{.Title}}">
     <div>
@@ -10,5 +9,4 @@
     </div>
   </a>
 </li>
-
-{{ end }}
+{{- end -}}

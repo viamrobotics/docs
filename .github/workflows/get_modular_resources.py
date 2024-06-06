@@ -2,6 +2,7 @@ import asyncio
 import time
 import os
 import typesense
+import json
 
 from viam.rpc.dial import DialOptions, Credentials
 from viam.app.viam_client import ViamClient
@@ -10,7 +11,7 @@ from viam.proto.app import ListRegistryItemsRequest, ListRegistryItemsResponse
 
 async def connect() -> ViamClient:
     dial_options = DialOptions(
-        auth_entity='744b0c18-f6fd-4c8d-a707-d3f261b353cc',
+        auth_entity='fc5301b4-af27-4421-88fb-31352510bac1',
         credentials=Credentials(
             type='api-key',
             payload=os.environ['VIAM_API_KEY']
@@ -21,7 +22,7 @@ async def connect() -> ViamClient:
 async def main():
 
     typesense_client = typesense.Client({
-        'api_key': os.environ['TYPESENSE_API_KEY_MR'],
+        'api_key': os.environ['TYPESENSE_API_KEY_R'],
         'nodes': [{
             'host': 'cgnvrk0xwyj9576lp-1.a1.typesense.net',
             'port': '443',
@@ -36,7 +37,7 @@ async def main():
     viam_client = await connect()
     # Instantiate an AppClient called "cloud" to run cloud app API methods on
     cloud = viam_client.app_client
-    module_list = await cloud.list_modules()
+    module_list = await cloud.list_modules(org_id=os.environ['TEST_ORG_ID'])
 
     for module in module_list:
         if module.visibility == 2:
@@ -52,9 +53,23 @@ async def main():
                     "api": model.api,
                     "last_updated": time_now
                 }
-                insert_resp = typesense_client.collections['modular_resources'].documents.upsert(
+                insert_resp = typesense_client.collections['resources'].documents.upsert(
         json_m)
                 print(insert_resp)
+
+    # Get built-in resources from typesense.json
+    with open('typesense.json') as f:
+        components = json.load(f)
+        for c in components:
+            print("COMPONENT")
+            print(c)
+            c["last_updated"] = time_now
+            c["total_organization_usage"] = int(c["total_organization_usage"])
+            c["total_robot_usage"] = int(c["total_robot_usage"])
+            print(c)
+            insert_resp = typesense_client.collections['resources'].documents.upsert(c)
+            print("INSERTED")
+            print(insert_resp)
 
     # Create a request to list registry items and get the response from the app
     request = ListRegistryItemsRequest(organization_id=cloud._organization_id)
@@ -70,8 +85,8 @@ async def main():
             json_m = {
                 "id": model.item_id,
                 "model_id": model.item_id,
-                "total_organization_usage": model.total_organization_usage,
-                "total_robot_usage": model.total_robot_usage,
+                "total_organization_usage": int(model.total_organization_usage),
+                "total_robot_usage": int(model.total_robot_usage),
                 "description": model.description,
                 "last_updated": time_now,
                 "url": "https://app.viam.com/ml-model/" + model.public_namespace + "/" + model.name + "/"
@@ -84,7 +99,7 @@ async def main():
 
     # Deleting documents that didn't get updated (presumably deleted)
     try:
-        typesense_client.collections['modular_resources'].documents.delete({'filter_by': 'last_updated: <' + time_now})
+        typesense_client.collections['resources'].documents.delete({'filter_by': 'last_updated: <' + time_now + ',module_id: !builtin' })
         typesense_client.collections['mlmodels'].documents.delete({'filter_by': 'last_updated: <' + time_now})
     except Exception as e:
         pass

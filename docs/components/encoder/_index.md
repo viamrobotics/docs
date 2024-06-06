@@ -9,9 +9,10 @@ tags: ["encoder", "components"]
 icon: true
 images: ["/icons/components/encoder.svg"]
 no_list: true
-modulescript: false
+modulescript: true
 aliases:
   - "/components/encoder/"
+hide_children: true
 # SME: Rand
 ---
 
@@ -45,24 +46,7 @@ Most machines with an encoder need at least the following hardware:
 
 ## Supported models
 
-To use your encoder with Viam, check whether one of the following [built-in models](#built-in-models) supports your encoder.
-
-### Built-in models
-
-For configuration information, click on the model name:
-
-<!-- prettier-ignore -->
-| Model | Description |
-| ----- | ----------- |
-| [`AMS-AS5048`](ams-as5048/) | The `AMS-AS5048` encoder is an absolute encoder that which can connect using an I2C interface. |
-| [`fake`](fake/) | An encoder model for testing. |
-| [`incremental`](incremental/) | A two phase encoder, which can measure the speed and direction of rotation in relation to a given reference point. |
-| [`single`](single/) | A single pin "pulse output" encoder which returns its relative position but no direction. |
-
-<!-- No encoders yet -->
-<!-- ### Modular resources
-
-{{<modular-resources api="rdk:component:encoder" type="encoder">}} -->
+{{<resources api="rdk:component:encoder" type="encoder">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
@@ -437,5 +421,6 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 ## Next steps
 
 {{< cards >}}
-{{% card link="/tutorials/configure/configure-rover" %}}
+{{% card link="/tutorials/configure/configure-rover/" %}}
+{{% card link="/components/motor/encoded-motor/" %}}
 {{< /cards >}}

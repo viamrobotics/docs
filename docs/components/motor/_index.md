@@ -12,6 +12,7 @@ no_list: true
 modulescript: true
 aliases:
   - "/components/motor/"
+hide_children: true
 # SME: Rand
 ---
 
@@ -41,26 +42,7 @@ Most machines with a motor need at least the following hardware:
 
 ## Supported models
 
-To use your motor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your motor.
-
-### Built-in models
-
-For configuration information, click on the model name:
-
-<!-- prettier-ignore -->
-Model | Description <a name="model-table"></a>
------ | -----------
-[`gpio`](./gpio/) | [Standard brushed or brushless DC motor](https://en.wikipedia.org/wiki/DC_motor)
-[`gpiostepper`](./gpiostepper/) | Bipolar stepper motor with current regulation and 1/32 microstepping driven by a basic driver like [DRV8825](https://www.ti.com/product/DRV8825) or [TMC2209](https://www.trinamic.com/support/eval-kits/details/tmc2209-bob/)
-[`28byj48`](./28byj48/) | Small unipolar 28BYJ-48 stepper motor driven by a [ULN2003](https://www.ti.com/product/ULN2003A) driver
-[`TMC5072`](./tmc5072/) | Stepper motor driven by [the TMC5072 chip](https://www.trinamic.com/support/eval-kits/details/tmc5072-bob/)
-[`DMC4000`](./dmc4000/) | Stepper motor driven by a [DMC-40x0 series motion controller](https://www.galil.com/motion-controllers/multi-axis/dmc-40x0)
-[`roboclaw`](./roboclaw/) | [Standard brushed DC motor](https://en.wikipedia.org/wiki/DC_motor) driven by [Basicmicro's](https://www.basicmicro.com/) [RoboClaw](https://www.basicmicro.com/RoboClaw-2x30A-Motor-Controller_p_9.html) motor controller
-[`fake`](./fake/) | Used to test code without hardware
-
-### Modular resources
-
-{{<modular-resources api="rdk:component:motor" type="motor">}}
+{{<resources api="rdk:component:motor" type="motor">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
@@ -263,7 +245,7 @@ myMotorComponent.GoTo(context.Background(), 75, 8.3, nil)
 
 ### ResetZeroPosition
 
-Set the current position (modified by `offset`) of an [encoded motor](/components/motor/gpio/encoded-motor/) to be the new zero (home) position.
+Set the current position (modified by `offset`) of an [encoded motor](/components/motor/encoded-motor/) to be the new zero (home) position.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -310,7 +292,7 @@ myMotorComponent.ResetZeroPosition(context.Background(), 0.0, nil)
 
 ### GetPosition
 
-Report the position of an [encoded motor](/components/motor/gpio/encoded-motor/) based on its encoder.
+Report the position of an [encoded motor](/components/motor/encoded-motor/) based on its encoder.
 The value returned is the number of revolutions relative to its zero position.
 This method raises an exception if position reporting is not supported by the motor.
 

@@ -11,21 +11,34 @@ import re as regex
 import argparse
 
 
-## Set the full list of SDK languages we scrape here:
+## The full list of SDK languages we scrape. You can use the sdk_languages
+## positional parameter to refine this at runtime if desired:
 sdks_supported = ["go", "python", "flutter"]
 
-## Parse arguments passed to update_sdk_methods.py.
-## You can either provide the specific sdk languages to run against
-## as a comma-separated list, or omit entirely to run against all sdks_supported.
-## NOTE: The team has decided to always write all sdk languages each run, to support
-##       writing per-proto include files. For current recommended usage, always omit
-##       any sdk langs to run against all.
-## Use 'verbose' to enable DEBUG output.
-## Use 'map' to generate a proto map template file:
-parser = argparse.ArgumentParser()
+## Arrays of resources to scrape, by type:
+##   type = ["array", "of", "resources"]
+## You can use the target_resources positional parameter to refine this
+## at runtime if desired:
+components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic_component", "gripper",
+              "input_controller", "motor", "movement_sensor", "power_sensor", "sensor", "servo"]
+services = ["base_remote_control", "data_manager", "generic_service", "mlmodel", "motion", "navigation", "slam", "vision"]
+app_apis = ["app", "billing", "data", "dataset", "data_sync", "mltraining"]
+robot_apis = ["robot"]
 
-parser.add_argument('sdk_language', type=str, nargs='?', help="A comma-separated list of the sdks to run against. \
+## Parse arguments passed to update_sdk_methods.py. You can:
+## - Provide the specific sdk languages to run against as a comma-separated list, or
+##     omit entirely to run against all sdks_supported.
+## - Provide the specific resource(s) to run against as a comma-separated list, or
+##     omit entirely to run against all resources, across all types. This option
+##     only supports arbitrary resources within the same resource type (i.e. all
+##     components, or all services).
+## - Use 'verbose' mode to enable DEBUG output.
+## - Use 'map' mode to generate a proto map template file only.
+parser = argparse.ArgumentParser()
+parser.add_argument('sdk_languages', type=str, nargs='?', help="A comma-separated list of the sdks to run against. \
                      Can be one of: go, python, flutter. Omit to run against all sdks.")
+parser.add_argument('target_resources', type=str, nargs='?', help="A comma-separated list of the resources to run against. \
+                     Must be all within the same resource type, like component or service. Omit to run against all resources.")
 parser.add_argument('-m', '--map', action='store_true', help="Generate initial mapping CSV file from upstream protos. \
                      In this mode, only the initial mapping file is output, no markdown.")
 parser.add_argument('-v', '--verbose', action='store_true', help="Run in verbose mode. Writes a debug file containing \
@@ -33,33 +46,85 @@ parser.add_argument('-v', '--verbose', action='store_true', help="Run in verbose
                      Also prints high-level status updates to STDOUT. \
                      Deletes previous debug file when run again.")
 
-## Quick sanity check of provided sdk languages. If all is well,
-## assemble sdks array to iterate through:
+## Parse provided parameters and arguments, if any:
 args = parser.parse_args()
 if args.map:
     ## We check for args.map again in both proto_map() and run().
     sdks = sdks_supported
-elif args.sdk_language is not None:
-    sdk_langs = [s.strip() for s in args.sdk_language.split(",")]
-
-    sdks = []
-    for sdk_lang in sdk_langs:
-
-        if sdk_lang not in sdks_supported:
-            print("ERROR: Unsupported SDK language: " + sdk_lang)
-            print("Exiting ...")
-            exit(1)
-        else:
-            sdks.append(sdk_lang)
 else:
-    sdks = sdks_supported
+    sdk_list = ''
+    resource_list = ''
+    only_run_against = ''
 
+    ## Using specific argument names to allow help text to be specific, but checking both
+    ## for sdk or resource values, to allow providing either in any position on the CLI.
+    if args.sdk_languages is not None:
+        first_list = [s.strip() for s in args.sdk_languages.split(",")]
+        if True in tuple(x in sdks_supported for x in first_list):
+            sdk_list = first_list
+        else:
+            resource_list = first_list
+    if args.target_resources is not None:
+        second_list = [s.strip() for s in args.target_resources.split(",")]
+        if True in tuple(x in sdks_supported for x in second_list):
+            sdk_list = second_list
+        else:
+            resource_list = second_list
+
+    ## If (one of) the list(s) contains an SDK language name:
+    if sdk_list:
+        sdks = []
+        for sdk_lang in sdk_list:
+            if sdk_lang not in sdks_supported:
+                print("ERROR: Unsupported SDK language: " + sdk_lang)
+                print("Exiting ...")
+                exit(1)
+            else:
+                sdks.append(sdk_lang)
+        print("\nIMPORTANT: You have indicated that you want to run against specific SDKs, instead of all.")
+        print("           This will ERASE any existing content for any SDKs which you have not specified.")
+        print("           This is suitable for the initial conversion to autogenerated content, but likely")
+        print("           not desireable once automation is in full swing. If you do not want this, you should")
+        print("           CANCEL this run, and re-run without specifying any SDKs, which will run against all.")
+    else:
+        sdks = sdks_supported
+
+    ## If (one of) the list(s) does not contain an SDK language name, assume this list is
+    ## intended to serve as the resource list, and check each item against its matching
+    ## likely resource type. All provided resources must be of the same resource type,
+    ## so we can return an error to the operator as soon as any subsequent resource fails
+    ## to match to another entry on the first's resource type array (i.e. if first is arm,
+    ## we can always safely error and quit if second returns False against same type array: component):
+    if resource_list:
+        if True in tuple(x in components for x in resource_list) and not False in tuple(x in components for x in resource_list):
+            only_run_against = 'components'
+            components = resource_list
+        elif True in tuple(x in services for x in resource_list) and not False in tuple(x in services for x in resource_list):
+            only_run_against = 'services'
+            services = resource_list
+        elif True in tuple(x in app_apis for x in resource_list) and not False in tuple(x in app_apis for x in resource_list):
+            only_run_against = 'app_apis'
+            app_apis = resource_list
+        elif True in tuple(x in robot_apis for x in resource_list) and not False in tuple(x in robot_apis for x in resource_list):
+            only_run_against = 'robot_apis'
+            robot_apis = resource_list
+        else:
+           print("ERROR: Malformed resource list: " + str(resource_list))
+           print("       Specified resources must all be within a single resource type, like components or services.")
+           print("Exiting ...")
+           exit(1)
+
+## If running in verbose mode, print some initial configuration details to the operator:
 if args.verbose:
     print('\nVERBOSE MODE: See /tmp/update_sdk_methods_debug.txt for debug output.')
     print('              Note: This file is deleted at the start of each new verbose run.')
     print('              Try, in a separate terminal window:\n')
     print('              DURING RUN: tail -f /tmp/update_sdk_methods_debug.txt')
     print('              AFTER RUN: less /tmp/update_sdk_methods_debug.txt\n')
+if sdk_list and args.verbose:
+    print('SDKS OVERRIDE: Only running against ' + str(sdks) + '\n')
+if resource_list and args.verbose:
+    print('RESOURCE OVERRIDE: Only running against ' + str(resource_list) + '\n')
 
 ## This script must be run within the 'docs' git repo. Here we check
 ## to make sure this is the case, and get the root of our git-managed
@@ -79,30 +144,6 @@ else:
 ## Build path to sdk_protos_map.csv file that contains proto-to-methods mapping, used in write_markdown():
 proto_map_file = os.path.join(gitroot, '.github/workflows/sdk_protos_map.csv')
 
-## Check to see if we have a locally-staged version of the Go SDK Docs (RDK repo). If so,
-## scrape our code samples (and only code samples!) from that URL instead. This check just
-## establishes whether the URL is up or not; if detected as up here, it is scraped in parse().
-## TODO: Consider if we need to consider other ports besides '8080', i.e. if multiple stage attempts,
-##   or if port was already in use by another service when pkgsite command was issues
-##   (8080 a very common web services default port)
-## NOTE: To stage the Go SDK docs (RDK repo):
-##   - Clone https://github.com/viamrobotics/rdk
-##   - Make your changes (add code samples as needed)
-##   - Run, from within the repo: go install golang.org/x/pkgsite/cmd/pkgsite@latest; pkgsite -open
-
-is_go_sdk_staging_available = False
-
-## Check to see if pkgsite (Go SDK docs local builder process) is running, and get its PID if so:
-process_result = subprocess.run(["ps -ef | grep pkgsite | grep -v grep | awk {'print $2'}"], shell=True, text = True, capture_output=True)
-pkgsite_pid = process_result.stdout.rstrip()
-
-if pkgsite_pid != '':
-    process_result = subprocess.run(["lsof -Pp " + pkgsite_pid + " | grep LISTEN | awk {'print $9'} | sed 's%.*:%%g'"], shell=True, text = True, capture_output=True)
-    pkgsite_port = process_result.stdout
-    is_go_sdk_staging_available = True
-    if args.verbose:
-        print('DEBUG: Detected local staged Go SDK docs URL, using that for Go code samples.')
-
 ## Array mapping language to its root URL:
 sdk_url_mapping = {
     "go": "https://pkg.go.dev",
@@ -111,14 +152,6 @@ sdk_url_mapping = {
     "typescript": "https://ts.viam.dev",
     "flutter": "https://flutter.viam.dev"
 }
-
-## Arrays of resources to scrape, by type:
-## type = ["array", "of", "resources"]
-components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic_component", "gripper",
-              "input_controller", "motor", "movement_sensor", "power_sensor", "sensor", "servo"]
-services = ["base_remote_control", "data_manager", "generic_service", "mlmodel", "motion", "navigation", "slam", "vision"]
-app_apis = ["app", "billing", "data", "dataset", "data_sync", "mltraining"]
-robot_apis = ["robot"]
 
 ## Dictionary of proto API names, with empty methods array, to be filled in for later use by get_proto_apis():
 proto_map = {
@@ -424,6 +457,52 @@ code_fence_fmt = {
     'flutter': 'dart'
 }
 
+## Check to see if we have a locally-staged version of any of the supported SDK docs sites.
+## If any are detected here, they will be used for all content in parse(), and the live
+## version for that SDK docs site will not be scraped at all! First, set empty staging URLs
+## to allow us to later action on whether they are empty or not:
+python_staging_url = ''
+go_staging_url = ''
+flutter_staging_url = ''
+
+## Check for GO SDK docs staging on local workstation:
+go_process_pid = subprocess.run(["ps -ef | grep pkgsite | grep -v grep | awk {'print $2'}"], shell=True, text=True, capture_output=True).stdout.rstrip()
+
+## If we found a staged local instance of the GO SDK docs, determine which port it is using, and build the staging URL to scrape against:
+if go_process_pid != '':
+    go_process_port = subprocess.run(["lsof -Pp " + go_process_pid + " | grep LISTEN | awk {'print $9'} | sed 's%.*:%%g'"], shell=True, text = True, capture_output=True).stdout.rstrip()
+    go_staging_url = 'http://localhost:' + go_process_port
+    if args.verbose:
+        print('DEBUG: Detected local staged Go SDK docs URL: ' + go_staging_url + '/go.viam.com/rdk')
+        print('       Using this URL for all Go content (ignoring live version).')
+
+## Check for Python and Flutter SDK docs staging on local workstation.
+## Both use http.server with a user-selected port. This command fetches all possible matches:
+http_server_process_pids = subprocess.run(["ps -ef | grep http.server | grep -v grep | awk '{print $2}'"], shell=True, text=True, capture_output=True).stdout.rstrip().split('\n')
+
+## For each http.server processes detected, make educated guesses about which is which, determine the port used, and build the staging URL to scrape against:
+for pid in http_server_process_pids:
+    http_server_pwd_result = subprocess.run(["lsof -Pp " + pid + " | grep cwd | awk {'print $9'}"], shell=True, text = True, capture_output=True).stdout.rstrip()
+
+    ## Quality guess: Python build process always builds to this directory; safe to assume:
+    if 'docs/_build/html' in http_server_pwd_result:
+        python_process_port = subprocess.run(["lsof -Pp " + pid + " | grep LISTEN | awk {'print $9'} | sed 's%.*:%%g'"], shell=True, text = True, capture_output=True).stdout.rstrip()
+        python_staging_url = 'http://localhost:' + python_process_port
+        if args.verbose:
+            print('DEBUG: Detected local staged Python SDK docs URL: ' + python_staging_url)
+            print('       Using this URL for all Python content (ignoring live version).')
+
+    ## Mediocre guess: Flutter build process likely to have string 'flutter' in cwd, either 'viam-flutter-sdk' as cloned directly, or 'flutter' as renamed by operator.
+    ## TODO: If operators run into instances where this script misses a valid Flutter staging URL because the path to that staged HTML artifacts dir has been
+    ## renamed in a fashion that does not include the string 'flutter', then change this to just always pick up any instances of http.server that aren't already matched to
+    ## Go, above. This would mean that operators cannot run an unrelated http.server instance on this workstation, which they currently can do with present config.
+    if 'flutter' in http_server_pwd_result:
+        flutter_process_port = subprocess.run(["lsof -Pp " + pid + " | grep LISTEN | awk {'print $9'} | sed 's%.*:%%g'"], shell=True, text = True, capture_output=True).stdout.rstrip()
+        flutter_staging_url = 'http://localhost:' + flutter_process_port + '/doc/api'
+        if args.verbose:
+            print('DEBUG: Detected local staged Flutter SDK docs URL: ' + flutter_staging_url)
+            print('       Using this URL for all Flutter content (ignoring live version).')
+
 ## Fetch canonical Proto method names.
 ## Required by Flutter parsing, and for generating the initial mapping file if -m was passed:
 def get_proto_apis():
@@ -522,7 +601,7 @@ def link_data_types(sdk, data_type_string):
 
 ## Link matching text, used in write_markdown():
 ## NOTE: Currently does not support formatting for link titles
-## (EXAMPLE: bolded DATA tab here: https://docs.viam.com/build/program/apis/data-client/#binarydatabyfilter)
+## (EXAMPLE: bolded DATA tab here: https://docs.viam.com/appendix/apis/data-client/#binarydatabyfilter)
 def link_description(format_type, full_description, link_text, link_url):
 
     ## Supports 'md' link styling or 'html' link styling.
@@ -552,21 +631,29 @@ def parse(type, names):
     ## Iterate through each sdk (like 'python') in sdks array:
     for sdk in sdks:
 
-        ## Build empty dict to house methods:
+        ## Determine SDK URL based on resource type:
+        sdk_url = sdk_url_mapping[sdk]
+        scrape_url = sdk_url
+
+        ## Build empty dict to house methods, and update scrape_url
+        ## with staging link if we detected one earlier:
         if sdk == "go":
             go_methods = {}
             go_methods[type] = {}
+            if go_staging_url != '':
+                scrape_url = go_staging_url
         elif sdk == "python":
             python_methods = {}
             python_methods[type] = {}
+            if python_staging_url != '':
+                scrape_url = python_staging_url
         elif sdk == "flutter":
             flutter_methods = {}
             flutter_methods[type] = {}
+            if flutter_staging_url != '':
+                scrape_url = flutter_staging_url
         else:
             print("unsupported language!")
-
-        ## Determine SDK URL based on resource type:
-        sdk_url = sdk_url_mapping[sdk]
 
         ## Iterate through each resource (like 'arm') in type (like 'components') array:
         for resource in names:
@@ -574,13 +661,13 @@ def parse(type, names):
             ## Determine URL form for Go depending on type (like 'component'):
             if sdk == "go":
                 if type in ("component", "service") and resource in go_resource_overrides:
-                    url = f"{sdk_url}/go.viam.com/rdk/{type}s/{go_resource_overrides[resource]}"
+                    url = f"{scrape_url}/go.viam.com/rdk/{type}s/{go_resource_overrides[resource]}"
                 elif type in ("component", "service"):
-                    url = f"{sdk_url}/go.viam.com/rdk/{type}s/{resource}"
+                    url = f"{scrape_url}/go.viam.com/rdk/{type}s/{resource}"
                 elif type == "robot" and resource in go_resource_overrides:
-                    url = f"{sdk_url}/go.viam.com/rdk/{type}/{go_resource_overrides[resource]}"
+                    url = f"{scrape_url}/go.viam.com/rdk/{type}/{go_resource_overrides[resource]}"
                 elif type == "robot":
-                    url = f"{sdk_url}/go.viam.com/rdk/{type}"
+                    url = f"{scrape_url}/go.viam.com/rdk/{type}"
                 elif type == "app":
                     pass
                 go_methods[type][resource] = {}
@@ -588,15 +675,15 @@ def parse(type, names):
             ## Determine URL form for Python depending on type (like 'component'):
             elif sdk == "python":
                 if type in ("component", "service") and resource in python_resource_overrides:
-                    url = f"{sdk_url}/autoapi/viam/{type}s/{python_resource_overrides[resource]}/client/index.html"
+                    url = f"{scrape_url}/autoapi/viam/{type}s/{python_resource_overrides[resource]}/client/index.html"
                 elif type in ("component", "service"):
-                    url = f"{sdk_url}/autoapi/viam/{type}s/{resource}/client/index.html"
+                    url = f"{scrape_url}/autoapi/viam/{type}s/{resource}/client/index.html"
                 elif type == "app" and resource in python_resource_overrides:
-                    url = f"{sdk_url}/autoapi/viam/{type}/{python_resource_overrides[resource]}/index.html"
+                    url = f"{scrape_url}/autoapi/viam/{type}/{python_resource_overrides[resource]}/index.html"
                 elif type == "app":
-                    url = f"{sdk_url}/autoapi/viam/{type}/{resource}/index.html"
+                    url = f"{scrape_url}/autoapi/viam/{type}/{resource}/index.html"
                 else: # robot
-                    url = f"{sdk_url}/autoapi/viam/{type}/client/index.html"
+                    url = f"{scrape_url}/autoapi/viam/{type}/client/index.html"
                 python_methods[type][resource] = {}
 
             ## Determine URL form for Flutter depending on type (like 'component').
@@ -604,14 +691,13 @@ def parse(type, names):
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
             elif sdk == "flutter" and resource != 'base_remote_control':
                 if resource in flutter_resource_overrides:
-                    url = f"{sdk_url}/viam_protos.{type}.{flutter_resource_overrides[resource]}/{proto_map[resource]['name']}-class.html"
+                    url = f"{scrape_url}/viam_protos.{type}.{flutter_resource_overrides[resource]}/{proto_map[resource]['name']}-class.html"
                 else:
-                    url = f"{sdk_url}/viam_protos.{type}.{resource}/{proto_map[resource]['name']}-class.html"
+                    url = f"{scrape_url}/viam_protos.{type}.{resource}/{proto_map[resource]['name']}-class.html"
                 flutter_methods[type][resource] = {}
             ## If an invalid language was provided:
             else:
                 pass
-                #print("unsupported language!")
 
             ## Scrape each parent method tag and all contained child tags for Go by resource:
             if sdk == "go" and type != "app":
@@ -630,7 +716,6 @@ def parse(type, names):
 
                     ## Determine the interface name, which we need for the method_link:
                     interface_name = resource_interface.find('pre').text.splitlines()[0].removeprefix('type ').removesuffix(' interface {')
-                    #print(interface_name)
 
                     ## Exclude unwanted Go interfaces:
                     check_interface_name = 'interface.' + interface_name
@@ -686,29 +771,22 @@ def parse(type, names):
 
                                 ## Get full method usage string, by omitting all comment spans:
                                 method_usage_raw = regex.sub(r'<span class="comment">.*</span>', '', this_method_raw2)
-                                this_method_dict["usage"] = regex.sub(r'</span>', '', method_usage_raw).replace("\t", "  ").lstrip().rstrip()
+                                method_usage_raw2 = regex.sub(r'</span>', '', method_usage_raw).replace("\t", "  ").lstrip().rstrip()
+                                ## Some Go params use versioned links, some omit the version (to use latest).
+                                ## Standardize on using latest for all cases. This handles parameters and returns:
+                                this_method_dict["usage"] = regex.sub(r'/rdk@v[0-9\.]*/', '/rdk/', method_usage_raw2, flags=regex.DOTALL)
 
-                                ## Not possible to link to the specific functions, so we link to the parent resource instead:
-                                this_method_dict["method_link"] = url + '#' + interface_name
+                                ## Not possible to link to the specific functions, so we link to the parent resource instead.
+                                ## If we are scraping from a local staging instance, replace host and port with upstream link target URL:
+                                if go_staging_url != '':
+                                    this_method_dict["method_link"] = str(url + '#' + interface_name).replace(go_staging_url, 'https://pkg.go.dev')
+                                else:
+                                    this_method_dict["method_link"] = url + '#' + interface_name
 
                                 ## Check for code sample for this method.
-                                ## If we detected that a local instance of the Go SDK docs is available, use that.
-                                ## Otherwise, use the existing scraped 'soup' object from the live Go SDK docs instead.
-                                if is_go_sdk_staging_available:
-
-                                    staging_url = regex.sub('https://pkg.go.dev', 'http://localhost:8080', url)
-                                    staging_soup = make_soup(staging_url)
-
-                                    ## Get a raw dump of all go methods by interface for each resource:
-                                    go_code_samples_raw = staging_soup.find_all(
-                                        lambda code_sample_tag: code_sample_tag.name == 'p'
-                                        and method_name + " example:" in code_sample_tag.text)
-                                else:
-
-                                    ## Get a raw dump of all go methods by interface for each resource:
-                                    go_code_samples_raw = soup.find_all(
-                                        lambda code_sample_tag: code_sample_tag.name == 'p'
-                                        and method_name + " example:" in code_sample_tag.text)
+                                go_code_samples_raw = soup.find_all(
+                                    lambda code_sample_tag: code_sample_tag.name == 'p'
+                                    and method_name + " example:" in code_sample_tag.text)
 
                                 ## Determine if a code sample is provided for this method:
                                 if len(go_code_samples_raw) == 1:
@@ -847,8 +925,12 @@ def parse(type, names):
                         ## Determine method description, stripping newlines:
                         this_method_dict["description"] = tag.find('dd').p.text.replace("\n", " ")
 
-                        ## Determine method direct link, no need to parse for it, it's inferrable:
-                        this_method_dict["method_link"] = url + "#" + id
+                        ## Determine method direct link, no need to parse for it, it's inferrable.
+                        ## If we are scraping from a local staging instance, replace host and port with upstream link target URL:
+                        if python_staging_url != '':
+                            this_method_dict["method_link"] = str(url + "#" + id).replace(python_staging_url, 'https://python.viam.dev')
+                        else:
+                            this_method_dict["method_link"] = url + "#" + id
 
                         ## Assemble array of all tags which contain parameters for this method:
                         ## METHODOLOGY: tag: em, class: sig-param, and not * or **kwargs:
@@ -1134,7 +1216,7 @@ def parse(type, names):
 
                         ## Flutter SDK puts all parameter detail on a separate params page that we must additionally make_soup on.
                         ## Fetch target URL and make_soup of matching parameter tags:
-                        parameters_link = tag.find("span", class_="type-annotation").a['href'].replace("..", sdk_url)
+                        parameters_link = tag.find("span", class_="type-annotation").a['href'].replace("..", scrape_url)
                         parameters_soup_raw = make_soup(parameters_link)
                         parameters_soup = parameters_soup_raw.find_all(
                             lambda tag: tag.name == 'dt'
@@ -1314,14 +1396,16 @@ def format_method_usage(parsed_usage_string):
             return_string += f"- "
 
             # Extracting the parameter type from the param_type string
-            # print(f"Type name pre extraction: {param_type}")
-            param_name = regex.search(r'\w+(?=\s*<)', param_type)
+            # If a list data type for Go (i.e. []datatypename), format accordingly:
+            param_name = regex.search(r'\w+(?=\s*\[?\]?\*?<)', param_type)
             if param_name:
                 param_name = param_name.group()
-                return_string += f"`{param_name}` "
+                if '[]' in param_type:
+                    return_string += f"`{param_name}` \[\]"
+                else:
+                    return_string += f"`{param_name}` "
 
             # Creating the parameter type link based on the extracted type name
-            # print(f"CREATING PARAMETER TYPE LINK from param type link {param_type_link}")
             if param_type_link:
                 # print(f"type_link stripped: {param_type_link}")
                 param_type_link = f"https://pkg.go.dev{param_type_link}"
@@ -1396,7 +1480,7 @@ def write_markdown(type, names, methods):
 
                     ## Allow setting protos with 0 sdk method maps, to allow us to disable writing MD
                     ## for specific protos as needed, if needed:
-                    if py_method_name or go_method_name or flutter_method_name:
+                    if (py_method_name and "python" in sdks) or (go_method_name and "go" in sdks) or (flutter_method_name and "flutter" in sdks):
 
                         ## We have at least one implemented method for this proto, so begin writing output markdown for this resource.
                         ## Write proto as H3, with leading newlines if appending to ongoing {resource}.md file:
@@ -1445,13 +1529,13 @@ def write_markdown(type, names, methods):
                         elif type == 'service' and resource in ['mlmodel', 'vision']:
                             proto_anchor_link = '/ml/' + resource.replace('mlmodel', 'deploy') + '/#' + proto.lower()
                         elif type == 'app' and resource == 'app':
-                            proto_anchor_link = '/build/program/apis/fleet/#' + proto.lower()
+                            proto_anchor_link = '/appendix/apis/fleet/#' + proto.lower()
                         elif type == 'app' and resource in ["billing", "mltraining"]:
-                            proto_anchor_link = '/build/program/apis/' + resource.replace('mltraining','ml-training') + '-client/#' + proto.lower()
+                            proto_anchor_link = '/appendix/apis/' + resource.replace('mltraining','ml-training') + '-client/#' + proto.lower()
                         elif type == 'app' and resource in ["data", "dataset", "data_sync"]:
-                            proto_anchor_link = '/build/program/apis/data-client/#' + proto.lower()
+                            proto_anchor_link = '/appendix/apis/data-client/#' + proto.lower()
                         elif type == 'robot':
-                            proto_anchor_link = '/build/program/apis/' + resource + '/#' + proto.lower()
+                            proto_anchor_link = '/appendix/apis/' + resource + '/#' + proto.lower()
 
                         ## Fetch just the first sentence from the proto_override_file (first text string terminated by '.\n'), ignoring hugo
                         ## shortcodes like alerts ('{{%.*%}}.*{{% \[a-b].* %}}'), which precede some override files' (proto descriptions')
@@ -1474,7 +1558,7 @@ def write_markdown(type, names, methods):
                         ## Begin the per-language markdown writing to output_file with the opening tabset declaration:
                         output_file.write('{{< tabs >}}\n')
 
-                        if py_method_name:
+                        if py_method_name and "python" in sdks:
                             output_file.write('{{% tab name="Python" %}}\n\n')
 
                             ## Check for method overrides.
@@ -1580,10 +1664,10 @@ def write_markdown(type, names, methods):
 
                             # Close tabs
                             output_file.write("{{% /tab %}}\n")
-                            if not go_method_name and not flutter_method_name:
+                            if not (go_method_name and "go" in sdks) and not (flutter_method_name and "flutter" in sdks):
                                 output_file.write("{{< /tabs >}}\n")
 
-                        if go_method_name:
+                        if go_method_name and "go" in sdks:
                             output_file.write('{{% tab name="Go" %}}\n\n')
 
                             ## Check for method overrides.
@@ -1690,10 +1774,10 @@ def write_markdown(type, names, methods):
                             output_file.write(f'\nFor more information, see the [Go SDK Docs]({methods["go"][type][resource][go_method_name]["method_link"]}).\n\n')
 
                             output_file.write("{{% /tab %}}\n")
-                            if not flutter_method_name:
+                            if not (flutter_method_name and "flutter" in sdks):
                                 output_file.write("{{< /tabs >}}\n")
 
-                        if flutter_method_name:
+                        if flutter_method_name and "flutter" in sdks:
                             output_file.write('{{% tab name="Flutter" %}}\n\n')
 
                             ## Check for method overrides.
@@ -1843,6 +1927,17 @@ def write_markdown(type, names, methods):
                         ## proto encountered:
                         is_first_method_in_this_resource = False
 
+        ## Close file handles:
+        output_file.close()
+        table_file.close()
+
+        ## When running against specific languages using the sdks array, it is possible to create empty target files.
+        ## If such empty target files are present on the local filesystem, remove them:
+        if os.path.isfile(full_path_to_resource_file) and os.path.getsize(full_path_to_resource_file) == 0:
+            os.remove(full_path_to_resource_file)
+        if os.path.isfile(full_path_to_table_file) and os.path.getsize(full_path_to_table_file) == 0:
+            os.remove(full_path_to_table_file)
+
 ## Main run function:
 ## - proto_map()        Fetch canonical proto methods from upstream, used for Flutter mapping in `parse()`
 ## - parse()            Get methods for each defined type & resource, return data object for each, by SDK
@@ -1868,52 +1963,56 @@ def run():
             debug_file = open('%s' % debug_filepath, "w")
 
         ## Parse components:
-        if args.verbose:
-            print('DEBUG: Now parsing upstream COMPONENT methods for: ' + str(sdks))
-        component_methods = parse("component", components)
-        if args.verbose:
-            print('DEBUG: Completed parsing upstream COMPONENT methods!')
-            debug_file.write(str(component_methods))
-            print('DEBUG: Now writing markdown for COMPONENT methods for: ' + str(sdks))
-        write_markdown("component", components, component_methods)
-        if args.verbose:
-            print('DEBUG: Completed writing markdown for COMPONENT methods!')
+        if only_run_against not in ['services', 'app_apis', 'robot_apis']:
+            if args.verbose:
+                print('DEBUG: Now parsing upstream COMPONENT methods for: ' + str(sdks))
+            component_methods = parse("component", components)
+            if args.verbose:
+                print('DEBUG: Completed parsing upstream COMPONENT methods!')
+                debug_file.write(str(component_methods) + '\n')
+                print('DEBUG: Now writing markdown for COMPONENT methods for: ' + str(sdks))
+            write_markdown("component", components, component_methods)
+            if args.verbose:
+                print('DEBUG: Completed writing markdown for COMPONENT methods!')
 
         ## Parse services:
-        if args.verbose:
-            print('DEBUG: Now parsing upstream SERVICE methods for: ' + str(sdks))
-        service_methods = parse("service", services)
-        if args.verbose:
-            print('DEBUG: Completed parsing upstream SERVICE methods!')
-            debug_file.write(str(service_methods))
-            print('DEBUG: Now writing markdown for SERVICE methods for: ' + str(sdks))
-        write_markdown("service", services, service_methods)
-        if args.verbose:
-            print('DEBUG: Completed writing markdown for SERVICE methods!')
+        if only_run_against not in ['components', 'app_apis', 'robot_apis']:
+            if args.verbose:
+                print('DEBUG: Now parsing upstream SERVICE methods for: ' + str(sdks))
+            service_methods = parse("service", services)
+            if args.verbose:
+                print('DEBUG: Completed parsing upstream SERVICE methods!')
+                debug_file.write(str(service_methods) + '\n')
+                print('DEBUG: Now writing markdown for SERVICE methods for: ' + str(sdks))
+            write_markdown("service", services, service_methods)
+            if args.verbose:
+                print('DEBUG: Completed writing markdown for SERVICE methods!')
 
         ## Parse app client:
-        if args.verbose:
-            print('DEBUG: Now parsing upstream APP methods for: ' + str(sdks))
-        app_methods = parse("app", app_apis)
-        if args.verbose:
-            print('DEBUG: Completed parsing upstream APP methods!')
-            debug_file.write(str(app_methods))
-            print('DEBUG: Now writing markdown for APP methods for: ' + str(sdks))
-        write_markdown("app", app_apis, app_methods)
-        if args.verbose:
-            print('DEBUG: Completed writing markdown for APP methods!')
+        if only_run_against not in ['components', 'services', 'robot_apis']:
+            if args.verbose:
+                print('DEBUG: Now parsing upstream APP methods for: ' + str(sdks))
+            app_methods = parse("app", app_apis)
+            if args.verbose:
+                print('DEBUG: Completed parsing upstream APP methods!')
+                debug_file.write(str(app_methods) + '\n')
+                print('DEBUG: Now writing markdown for APP methods for: ' + str(sdks))
+            write_markdown("app", app_apis, app_methods)
+            if args.verbose:
+                print('DEBUG: Completed writing markdown for APP methods!')
 
         ## Parse robot client:
-        if args.verbose:
-            print('DEBUG: Now parsing upstream ROBOT methods for: ' + str(sdks))
-        robot_methods = parse("robot", robot_apis)
-        if args.verbose:
-            print('DEBUG: Completed parsing upstream ROBOT methods!')
-            debug_file.write(str(robot_methods))
-            print('DEBUG: Now writing markdown for ROBOT methods for: ' + str(sdks))
-        write_markdown("robot", robot_apis, robot_methods)
-        if args.verbose:
-            print('DEBUG: Completed writing markdown for ROBOT methods!')
+        if only_run_against not in ['components', 'services', 'app_apis']:
+            if args.verbose:
+                print('DEBUG: Now parsing upstream ROBOT methods for: ' + str(sdks))
+            robot_methods = parse("robot", robot_apis)
+            if args.verbose:
+                print('DEBUG: Completed parsing upstream ROBOT methods!')
+                debug_file.write(str(robot_methods) + '\n')
+                print('DEBUG: Now writing markdown for ROBOT methods for: ' + str(sdks))
+            write_markdown("robot", robot_apis, robot_methods)
+            if args.verbose:
+                print('DEBUG: Completed writing markdown for ROBOT methods!')
 
 run()
 

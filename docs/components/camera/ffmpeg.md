@@ -8,6 +8,8 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - "/components/camera/ffmpeg/"
+component_description: "Uses a camera, a video file, or a stream as a camera."
+toc_hide: true
 # SMEs: Bijan, vision team
 ---
 

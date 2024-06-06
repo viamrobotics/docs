@@ -35,7 +35,7 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
   Be sure that you match hostname, username, and password exactly to what you initially configured when imaging your board.
 - If you are still unable to connect, restart your board and try your `ssh` connection again after a few minutes.
 - If that fails, try re-imaging your board following the [installation guide](/get-started/installation/) appropriate for your board.
-  - If using the [Raspberry Pi installation guide](/get-started/installation/prepare/rpi-setup/), be sure to carefully enter the configuration details under the **Advanced Options** (gear icon) button on the [Raspberry Pi imager](https://www.raspberrypi.com/software/) before you re-image your board.
+  - If using the [Raspberry Pi installation guide](/get-started/prepare/rpi-setup/), be sure to carefully enter the configuration details under the **Advanced Options** (gear icon) button on the [Raspberry Pi imager](https://www.raspberrypi.com/software/) before you re-image your board.
   - If you re-imaged your board and provided a different hostname, you may need to accept the `ssh` host key again by typing `yes` when prompted.
   - If you re-imaged your board and provided the same hostname, you may see an error message similar to `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!`.
     - If so, edit your `~/.ssh/known_hosts` file to delete any single lines that begin with the board hostname you specified (like `hostname.local` or similar).

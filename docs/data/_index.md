@@ -109,7 +109,7 @@ You can configure the frequency of data capture individually for each supported 
 
 ### Query your data
 
-Once you have [synced](/data/cloud-sync/), you can query the data you've collected in multiple ways, including through the [data client API](/build/program/apis/data-client/) or [inside the Viam app](/data/query/).
+Once you have [synced](/data/cloud-sync/), you can query the data you've collected in multiple ways, including through the [data client API](/appendix/apis/data-client/) or [inside the Viam app](/data/query/).
 For _tabular_ sensor data, you can run {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries against your synced data from the [Query subtab](https://app.viam.com/data/query) of the **Data** tab in the Viam app.
 
 ### Permissions
@@ -124,7 +124,7 @@ The data management service supports the following methods:
 {{< readfile "/static/include/services/apis/data.md" >}}
 
 The data client API supports a separate set of methods that allow you to upload and export data to and from the Viam app.
-For information about that API, see [Data Client API](/build/program/apis/data-client/).
+For information about that API, see [Data Client API](/appendix/apis/data-client/).
 
 {{% alert title="Tip" color="tip" %}}
 

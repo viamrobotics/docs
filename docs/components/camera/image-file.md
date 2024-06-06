@@ -8,6 +8,8 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - "/components/camera/image-file/"
+component_description: "Gets color and depth images frames from a file path."
+toc_hide: true
 # SMEs: Bijan, vision team
 ---
 

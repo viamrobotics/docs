@@ -95,7 +95,7 @@ You can use the `fragment_mods` objects to be able to deploy a fragment to a fle
 
 {{% changelog date="2024-03-01" color="added" title="Dual GPS movement sensor" %}}
 
-You can now use the [dual GPS movement sensor component](/components/movement-sensor/gps/dual-gps-rtk/) to integrate a movement sensor that employs two GPS sensors into your machine.
+You can now use the [dual GPS movement sensor component](/components/movement-sensor/dual-gps-rtk/) to integrate a movement sensor that employs two GPS sensors into your machine.
 The dual GPS movement sensor calculates a compass heading from both GPS sensors, and returns the midpoint position between the two sensors as its position.
 
 {{% /changelog %}}
@@ -109,7 +109,7 @@ The Viam agent is a software provisioning manager that you can install on your m
 
 {{% changelog date="2024-02-12" color="added" title="Generic service" %}}
 
-You can now use the [generic service](/registry/advanced/generic/) to define new, unique types of services that do not already have an [appropriate API](/build/program/apis/#service-apis) defined for them.
+You can now use the [generic service](/registry/advanced/generic/) to define new, unique types of services that do not already have an [appropriate API](/appendix/apis/#service-apis) defined for them.
 
 {{% /changelog %}}
 
@@ -319,8 +319,8 @@ If you depend on sensor data to plan and control machine operations, this featur
 
 The Python SDK now includes sessions, a safety feature that automatically cancels operations if the client loses connection to your machine.
 
-[Session management](/build/program/apis/sessions/) helps you to ensure safer operation of your machine when dealing with actuating controls.
-Sessions are enabled by default, with the option to [disable sessions](/build/program/apis/sessions/#disable-default-session-management).
+[Session management](/appendix/apis/sessions/) helps you to ensure safer operation of your machine when dealing with actuating controls.
+Sessions are enabled by default, with the option to [disable sessions](/appendix/apis/sessions/#disable-default-session-management).
 
 {{% /changelog %}}
 
@@ -432,7 +432,7 @@ The latest updates enable you to:
 The updated code samples now includes:
 
 - Options for C++ and TypeScript
-- The ability to hide or display your machines' [secrets](/build/program/apis/)
+- The ability to hide or display your machines' [secrets](/appendix/apis/)
 
 Access these samples in the **Code sample** tab on your machine's page to connect to your machine in various languages.
 
@@ -884,7 +884,7 @@ When adding [frames](/mobility/frame-system/) to your machine's config in the Vi
 {{% changelog date="2023-02-28" color="added" title="Support for microcontrollers" %}}
 
 Micro-RDK is a lightweight version of the RDK that can run on an ESP32.
-Find more information in the [micro-RDK documentation](/get-started/installation/prepare/microcontrollers/).
+Find more information in the [micro-RDK documentation](/get-started/installation/microcontrollers/).
 
 {{% /changelog %}}
 

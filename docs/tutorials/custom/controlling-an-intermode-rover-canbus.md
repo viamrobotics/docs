@@ -46,7 +46,7 @@ Once you specify the circumference of the wheels and how far they are apart, you
 However, some rovers or other mobile robots do not expose direct motor control.
 For these types of machines, this tutorial shows you how to create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 Creating a modular resource for your robot allows you to issue commands using the same [`base` interface](/components/base/#api) as you would with builtin Viam components.
-Once you have created the custom component, you can control both the Viam components and the modular resources using any of the [Viam SDKs](/build/program/apis/).
+Once you have created the custom component, you can control both the Viam components and the modular resources using any of the [Viam SDKs](/appendix/apis/).
 Even if your modular resource is built in Golang, you can use the Python, C++, or any other Viam SDK to issue commands.
 
 {{% alert title="Tip" color="tip"%}}
@@ -63,7 +63,7 @@ This tutorial shows you how to leverage this protocol and abstract it into the V
 
 The tutorial uses the following hardware:
 
-- <a href="https://a.co/d/bxEdcAT" target="_blank">Raspberry Pi with microSD card</a>, with `viam-server` installed per [our Raspberry Pi setup guide](/get-started/installation/prepare/rpi-setup/).
+- <a href="https://a.co/d/bxEdcAT" target="_blank">Raspberry Pi with microSD card</a>, with `viam-server` installed per [our Raspberry Pi setup guide](/get-started/prepare/rpi-setup/).
 - [An Intermode rover](https://www.intermode.io/)
 - [PiCAN 2 - Canbus interface for Raspberry Pi](https://copperhilltech.com/pican-2-can-bus-interface-for-raspberry-pi/)
 - [12V to 5V Buck Converter](https://www.amazon.com/dp/B01M03288J)
@@ -74,7 +74,7 @@ The tutorial uses the following hardware:
 ### Machine setup
 
 Before you can use Viam on your device, you must ensure it has a supported operating system.
-If you are using a Raspberry Pi, start by [setting up your Raspberry Pi](/get-started/installation/prepare/rpi-setup/).
+If you are using a Raspberry Pi, start by [setting up your Raspberry Pi](/get-started/prepare/rpi-setup/).
 For other single-board computers, see the [installation guide](/get-started/installation/#prepare-your-board).
 
 {{% snippet "setup.md" %}}
@@ -114,7 +114,7 @@ You can now power up the rover, which also provides power to your Pi and allows 
 
 ## A modular resource for the Intermode base
 
-The Viam platform provides [APIs](/build/program/apis/) for common component types within `viam-server`.
+The Viam platform provides [APIs](/appendix/apis/) for common component types within `viam-server`.
 For controlling a mobile robot's movements, the [base component](/components/base/) exposes a useful interface.
 
 In the rest of this tutorial, you'll learn how to use this API to create your own custom modular resource.

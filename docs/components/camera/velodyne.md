@@ -8,6 +8,8 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - "/components/camera/velodyne/"
+component_description: "Uses velodyne lidar."
+toc_hide: true
 # SMEs: SLAM team
 ---
 

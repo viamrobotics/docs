@@ -26,7 +26,7 @@ Viam provides built-in support for a variety of different {{< glossary_tooltip t
 
 A module provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, and is packaged in a manner that streamlines deployment to a Viam machine.
 Modules run alongside [`viam-server`](/get-started/installation/) as separate processes, communicating with `viam-server` over UNIX sockets.
-When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/build/program/apis/) with `viam-server`, making the new model available for use.
+When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/appendix/apis/) with `viam-server`, making the new model available for use.
 
 You can search the [Viam Registry](https://app.viam.com/registry) and [deploy an existing module to your machine](/registry/configure/) in a few clicks if you find one that meets your needs.
 Or you can write your own module to address your specific use case, and either upload it to the Viam registry to share with others, or deploy it to your machine as a local module without uploading to the registry.
@@ -36,7 +36,7 @@ Follow the instructions below to learn how to write a new module using your pref
 {{< alert title="Note: Micro-RDK modules" color="note" >}}
 The [micro-RDK](/build/micro-rdk/) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
 Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) for information on how to create custom resources for your micro-RDK machine.
-You will need to [recompile and flash your ESP32 yourself](/get-started/installation/prepare/microcontrollers/development-setup/) instead of using Viam's prebuilt binary and installer.
+You will need to [recompile and flash your ESP32 yourself](/get-started/installation/microcontrollers/development-setup/) instead of using Viam's prebuilt binary and installer.
 {{< /alert >}}
 
 You can also watch this guide to creating a vision service module:
@@ -53,14 +53,14 @@ Generally, to write a module, you:
 
 While you can certainly combine the resource model definition and the main program code into a single file if desired (for example, a single `main.py` program that includes both the model definition and the `main()` program that uses it), this guide will use separate files for each.
 
-Most modules extend an existing [component API](/build/program/apis/#component-apis) or [service API](/build/program/apis/#service-apis) to add support for a new type of that resource.
-For example, you could extend the [camera component API](/components/camera/#api) to support new image formats or a new type of camera, or extend the [ML model service API](/build/program/apis/#ml-model) to support a new machine learning (ML) model type beyond `tflite`.
+Most modules extend an existing [component API](/appendix/apis/#component-apis) or [service API](/appendix/apis/#service-apis) to add support for a new type of that resource.
+For example, you could extend the [camera component API](/components/camera/#api) to support new image formats or a new type of camera, or extend the [ML model service API](/appendix/apis/#ml-model) to support a new machine learning (ML) model type beyond `tflite`.
 
 {{% alert title=Note color="note" %}}
 If you want to write a module to extend support to a new type of component or service that is relatively unique, consider using the generic API for your resource type to build your own API:
 
-- If you are working with a component that doesn't fit into any of the existing [component APIs](/build/program/apis/#component-apis), you can use the [generic component](/components/generic/) to build your own component API.
-- If you are designing a service that doesn't fit into any of the existing [service APIs](/build/program/apis/#service-apis), you can use the [generic service](/registry/advanced/generic/) to build your own service API.
+- If you are working with a component that doesn't fit into any of the existing [component APIs](/appendix/apis/#component-apis), you can use the [generic component](/components/generic/) to build your own component API.
+- If you are designing a service that doesn't fit into any of the existing [service APIs](/appendix/apis/#service-apis), you can use the [generic service](/registry/advanced/generic/) to build your own service API.
 
 Most module use cases, however, benefit from extending an existing API, as covered below.
 {{% /alert %}}
@@ -1244,7 +1244,7 @@ This executable file:
 Depending on the language you are using to code your module, you may have options for how you create your executable file:
 
 {{% tabs %}}
-{{% tab name="Python" %}}
+{{% tab name="Python: pyinstaller (recommended)" %}}
 
 The recommended approach for Python is to use [`PyInstaller`](https://pypi.org/project/pyinstaller/) to compile your module into a packaged executable: a standalone file containing your program, the Python interpreter, and all of its dependencies.
 When packaged in this fashion, you can run the resulting executable on your desired target platform or platforms without needing to install additional software or manage dependencies manually.
@@ -1318,6 +1318,97 @@ Viam makes this easy to manage by providing a build system for modules.
 Follow [these instructions](/cli/#using-the-build-subcommand) to automatically build for each system your module can support using Viam's [CLI](/cli/).
 
 {{% /alert %}}
+
+{{% /tab %}}
+{{% tab name="Python: venv" %}}
+
+Create a `run.sh` shell script that creates a new Python virtual environment, ensures that the package dependencies your module requires are installed, and runs your module.
+This is the recommended approach for modules written in Python:
+
+1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
+   For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) is installed:
+
+   ```sh { class="command-line" data-prompt="$"}
+   viam-sdk
+   ```
+
+   Add additional dependencies for your module as needed.
+   See the [pip `requirements.txt` file documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more information.
+
+1. Add a shell script that creates a new virtual environment, installs the dependencies listed in `requirements.txt`, and runs the module entry point file `main.py`:
+
+   ```sh { class="command-line" data-prompt="$"}
+   #!/bin/sh
+   cd `dirname $0`
+
+   # Create a virtual environment to run our code
+   VENV_NAME="venv"
+   PYTHON="$VENV_NAME/bin/python"
+
+   python3 -m venv $VENV_NAME
+   $PYTHON -m pip install -r requirements.txt -U # remove -U if viam-sdk should not be upgraded whenever possible
+
+   # Be sure to use `exec` so that termination signals reach the python process,
+   # or handle forwarding termination signals manually
+   exec $PYTHON <your-src-dir-if-inside>/main.py $@
+   ```
+
+1. Make your shell script executable by running the following command in your terminal:
+
+   ```sh { class="command-line" data-prompt="$"}
+   sudo chmod +x <your-file-path-to>/run.sh
+   ```
+
+Using a virtual environment together with a `requirements.txt` file and a `run.sh` file that references it ensures that your module has access to any packages it requires during runtime.
+If you intend to share your module with other users, or to deploy it to a fleet of machines, this approach handles dependency resolution for each deployment automatically, meaning that there is no need to explicitly determine and install the Python packages your module requires to run on each machine that installs your module.
+See [prepare a Python virtual environment](/build/program/python-venv/) for more information.
+
+{{% /tab %}}
+{{% tab name="Python: nuitka" %}}
+
+Use the [`nuitka` Python compiler](https://pypi.org/project/Nuitka/) to compile your module into a single executable file:
+
+1. In order to use Nuitka, you must install a [supported C compiler](https://github.com/Nuitka/Nuitka#c-compiler) on your machine.
+
+1. Then, [create a Python virtual environment](/build/program/python-venv/) in your module's directory to ensure your module has access to any required libraries.
+   Be sure you are within your Python virtual environment for the rest of these steps: your terminal prompt should include the name of your virtual environment in parenthesis.
+
+1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
+   For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) and Nuitka (`nuitka`) are installed:
+
+   ```sh { class="command-line" data-prompt="$"}
+   viam-sdk
+   nuitka
+   ```
+
+   Add additional dependencies for your module as needed.
+   See the [pip `requirements.txt` file documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more information.
+
+1. Install the dependencies listed in your `requirements.txt` file within your Python virtual environment using the following command:
+
+   ```sh { class="command-line" data-prompt="$"}
+   python -m pip install -r requirements.txt -U
+   ```
+
+1. Then, compile your module using Nuitka with the following command:
+
+   ```sh { class="command-line" data-prompt="$"}
+   python -m nuitka --onefile src/main.py
+   ```
+
+   If you need to include any additional data files to support your module, specify them using the `--include-data-files` flag:
+
+   ```sh { class="command-line" data-prompt="$"}
+   python -m nuitka --onefile --include-data-files=src/arm/my_arm_kinematics.json src/main.py
+   ```
+
+Compiling your Python module in this fashion ensures that your module has access to any packages it requires during runtime.
+If you intend to share your module with other users, or to deploy it to a fleet of machines, this approach "bundles" your module code together with its required dependencies, making your module highly-portable across like architectures.
+
+However, used in this manner, Nuitka does not support relative imports (imports starting with `.`).
+In addition, Nuitka does not support cross-compiling: you can only compile your module on the target architecture you wish to support if using the Nutika approach.
+If you want to cross-compile your module, consider using a different local compilation method, or the [`module build start` command](/cli/#using-the-build-subcommand) to build your module on a cloud build host, which supports building for multiple platforms.
+For example, you cannot run a module on a Linux `arm64` system if you compiled it using Nuitka on a Linux `amd64` system.
 
 {{% /tab %}}
 {{% tab name="Go" %}}

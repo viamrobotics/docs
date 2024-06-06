@@ -8,12 +8,13 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/ti/"
+component_description: "Texas Instruments TDA4VM."
 # SMEs: Gautham, Rand
 ---
 
 {{% alert title="REQUIREMENTS" color="caution" %}}
 
-Follow the [setup guide](/get-started/installation/prepare/sk-tda4vm/) to prepare your TDA4VM for running `viam-server` before configuring a `ti` board.
+Follow the [setup guide](/get-started/prepare/sk-tda4vm/) to prepare your TDA4VM for running `viam-server` before configuring a `ti` board.
 
 {{% /alert %}}
 

@@ -182,7 +182,7 @@ For specific information on how to configure each supported component type, see 
 {{% alert title="Tip" color="tip" %}}
 
 When you configure a component on the **CONFIGURE** tab, it will also appear on the **CONTROL** tab which gives you an interface to test and interact with it.
-The **Code sample** page on the **CONNECT** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/build/program/apis/).
+The **Code sample** page on the **CONNECT** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/appendix/apis/).
 
 <!-- TODO: R2D2 need to update this section with updated control tab view { {<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="Using the control tab">} } -->
 
@@ -264,7 +264,7 @@ Expand a part's configuration card to open its network configuration interface:
 
 You can configure the address `viam-server` binds to for accepting connections.
 By default, `viam-server` binds to `0.0.0.0:8080` when managed by the Viam app or when authentication and TLS are enabled.
-You can also set the [heartbeat](/build/program/apis/sessions/#heartbeats) window.
+You can also set the [heartbeat](/appendix/apis/sessions/#heartbeats) window.
 
 ## Configuration History
 
@@ -305,6 +305,6 @@ A locally-configured machine will not be able to access Viam's cloud features.
 
 ## Next steps
 
-After configuring your machine, you can use the [Viam SDKs](/build/program/apis/) to program and control your machine.
+After configuring your machine, you can use the [Viam SDKs](/appendix/apis/) to program and control your machine.
 
 If you want to try configuring a machine but don't have any hardware on hand, try the [Build a Mock Robot](/tutorials/configure/build-a-mock-robot/) tutorial.

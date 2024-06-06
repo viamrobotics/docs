@@ -41,7 +41,7 @@ Then, you'll write code to control the LED using the Viam [software development 
 You will use the following hardware for this tutorial:
 
 - [Raspberry Pi](https://a.co/d/5Tn67G3)
-  - Refer to the [Viam Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/) to set up your Pi.
+  - Refer to the [Viam Raspberry Pi Setup Guide](/get-started/prepare/rpi-setup/) to set up your Pi.
 - [A solderless breadboard](https://www.amazon.com/dp/B0135IQ0ZC)
 - [Jumper wires](https://amzn.to/2qVhd4y)
 - [Resistor pack](https://amzn.to/2Dmainw)
@@ -52,7 +52,7 @@ You will use the following hardware for this tutorial:
 
 Before you build your circuit, you need to set up the operating system on your Raspberry Pi and install `viam-server` on the Pi:
 
-Follow the [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/) to set up the operating system.
+Follow the [Raspberry Pi Setup Guide](/get-started/prepare/rpi-setup/) to set up the operating system.
 
 {{% snippet "setup.md" %}}
 

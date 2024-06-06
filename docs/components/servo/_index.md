@@ -9,9 +9,10 @@ tags: ["servo", "components"]
 icon: true
 images: ["/icons/components/servo.svg"]
 no_list: true
-modulescript: false
+modulescript: true
 aliases:
   - "/components/servo/"
+hide_children: true
 # SME: #team-bucket
 ---
 
@@ -45,29 +46,13 @@ Most machines with a servo need at least the following hardware:
 The Viam servo component supports [hobby servos](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
 
 If your motor is coupled with an [encoder](/components/encoder/), not a potentiometer, for position feedback, you should not configure it as a servo.
-Check your device's data sheet and configure that type of servo as an [encoded motor](/components/motor/gpio/encoded-motor/).
+Check your device's data sheet and configure that type of servo as an [encoded motor](/components/motor/encoded-motor/).
 
 {{% /alert %}}
 
 ## Supported models
 
-To use your servo with Viam, check whether one of the following [built-in models](#built-in-models) supports your servo.
-
-### Built-in models
-
-For configuration information, click on the model name:
-
-<!-- prettier-ignore -->
-| Model | Description |
-| ----- | ----------- |
-| [`fake`](fake/) | A model used for testing, with no physical hardware. |
-| [`gpio`](gpio/) | A hobby servo wired to any model of [board](/components/board/#supported-models) besides `pi`. |
-| [`pi`](pi/) | A hobby servo wired to a [Raspberry Pi board](/components/board/pi/). |
-
-<!-- ### Modular resources
-
-{{<modular-resources api="rdk:component:servo" type="servo">}}
--->
+{{<resources api="rdk:component:servo" type="servo">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 

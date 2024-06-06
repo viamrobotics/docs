@@ -9,6 +9,7 @@ icon: true
 images: ["/icons/components/sensor.svg"]
 aliases:
   - "/components/power-sensor/fake/"
+component_description: "A digital power sensor for testing."
 # SME: #team-bucket
 ---
 

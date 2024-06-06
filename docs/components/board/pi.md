@@ -8,12 +8,14 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/pi/"
+component_description: "Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W."
+usage: 999999
 # SMEs: Gautham, Rand
 ---
 
 {{% alert title="REQUIREMENTS" color="note" %}}
 
-Follow the [setup guide](/get-started/installation/prepare/rpi-setup/) to prepare your Pi for running `viam-server` before configuring a `pi` board.
+Follow the [setup guide](/get-started/prepare/rpi-setup/) to prepare your Pi for running `viam-server` before configuring a `pi` board.
 
 {{% /alert %}}
 

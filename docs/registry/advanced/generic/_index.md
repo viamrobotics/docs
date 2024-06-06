@@ -13,7 +13,7 @@ modulescript: true
 # SMEs:
 ---
 
-The _generic_ service {{< glossary_tooltip term_id="subtype" text="subtype" >}} enables you to add support for unique types of services that do not already have an [appropriate API](/build/program/apis/#service-apis) defined for them.
+The _generic_ service {{< glossary_tooltip term_id="subtype" text="subtype" >}} enables you to add support for unique types of services that do not already have an [appropriate API](/appendix/apis/#service-apis) defined for them.
 
 For example, when writing code to manage [simultaneous localization and mapping (SLAM)](/mobility/slam/) for your machine, it makes sense to use the existing [SLAM API](/mobility/slam/#api), which provides specific functionality required for generating accurate maps of an environment.
 However, if you want to create a new service to monitor your machine's CPU and RAM usage for example, you need very different functionality that isn't currently exposed in any API.
@@ -41,9 +41,9 @@ If you want to use most of an existing API but need just a few other functions, 
 For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
-Model | Description
------ | -----------
-[`fake`](fake/) | A model used for testing a generic service.
+| Model | Description |
+| ----- | ----------- |
+| [`fake`](fake/) | A model used for testing a generic service. |
 
 ## Control your machine with Viam's client SDK libraries
 

@@ -35,7 +35,7 @@ In this tutorial, you will:
 
 To build your own claw game machine, you need the following hardware:
 
-- A [Raspberry Pi](https://a.co/d/bxEdcAT) with a microSD card, set up following the [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/).
+- A [Raspberry Pi](https://a.co/d/bxEdcAT) with a microSD card, set up following the [Raspberry Pi Setup Guide](/get-started/prepare/rpi-setup/).
 - An [xarm6](https://www.robotshop.com/products/xarm-6-dof-robotic-arm) robotic arm
 - An [Arcade claw](https://www.ebay.com/itm/393988987705)
 - A [Relay](https://www.amazon.com/gp/product/B095YFJ69T)
@@ -806,7 +806,8 @@ We ended up using over 600 foam balls.
 ## Create a custom interface using TypeScript
 
 Now that you've built out and tested all of the main functionality of your claw game, it's time to design a custom interface to control it.
-This tutorial shows you how to create the interfaces for a touch screen tablet (in our project, we mounted an iPad to the facade of our claw machine prototype).The interface is hosted on a separate macOS or Linux computer locally and then accessed on the tablet using your computer's local address.
+This tutorial shows you how to create the interfaces for a touch screen tablet (in our project, we mounted an iPad to the facade of our claw machine prototype).
+The interface is hosted on a separate macOS or Linux computer locally and then accessed on the tablet using your computer's local address.
 
 Within the project code repository, the <file>src</file> folder contains the main TypeScript code that executes all robot commands.
 The `static` folder contains the frontend code, including styling and HTML.

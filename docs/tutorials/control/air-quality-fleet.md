@@ -129,7 +129,7 @@ With your organizational structure in place, let's add some machines:
    You _do not_ need to follow the "Install `viam-server`" section; you will do that in the next step!
 
 1. Enable serial communication so that the SBC can communicate with the air quality sensor.
-   For example, if you are using a Raspberry Pi, SSH to it and [enable serial communication in `raspi-config`](/get-started/installation/prepare/rpi-setup/#enable-communication-protocols).
+   For example, if you are using a Raspberry Pi, SSH to it and [enable serial communication in `raspi-config`](/get-started/prepare/rpi-setup/#enable-communication-protocols).
 
 1. Click **Antonia's Home** in the left navigation menu to navigate to that location's page.
    In the **New machine** field near the top-right corner of the screen, type in a name for the machine, such as `Home Air Quality Sensor`, and click **Add machine**.

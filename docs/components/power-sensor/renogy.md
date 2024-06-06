@@ -9,6 +9,7 @@ icon: true
 images: ["/icons/components/sensor.svg"]
 aliases:
   - "/components/power-sensor/renogy/"
+component_description: "Solar charge controller."
 # SME: #team-bucket
 ---
 

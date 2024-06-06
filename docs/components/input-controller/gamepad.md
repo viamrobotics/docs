@@ -8,6 +8,7 @@ images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 aliases:
   - "/components/input-controller/gamepad/"
+component_description: "X-box, Playstation, and similar controllers with Linux support."
 # SMEs: James
 ---
 
