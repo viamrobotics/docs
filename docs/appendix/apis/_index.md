@@ -62,7 +62,7 @@ Documentation on using these methods in your SDK code is found on each [componen
 
 The [arm component](/components/arm/) supports the following methods:
 
-{{< readfile "/static/include/components/apis/arm.md" >}}
+{{< readfile "/static/include/components/apis/generated/arm-table.md" >}}
 
 ### Base
 
