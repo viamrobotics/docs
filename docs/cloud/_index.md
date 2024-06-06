@@ -1,6 +1,6 @@
 ---
-title: "Cloud Organization Hierarchy"
-linkTitle: "Cloud Organization Hierarchy"
+title: "Cloud organization hierarchy"
+linkTitle: "Cloud organization hierarchy"
 weight: 430
 type: "docs"
 description: "Configure, control, debug, and manage your machines from the cloud at app.viam.com on your own or with a team."
