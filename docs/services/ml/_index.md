@@ -68,13 +68,13 @@ For more information, see [Model framework support](/ml/upload-model/#model-fram
   <tr>
     <th>{{<imgproc src="/services/ml/collect.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Collect data">}}
       <b>1. Collect</b>
-      <p>Start by collecting data from your cameras, sensors, or any other source on your machine with the <a href="/data/">data management service</a>. You can <a href="/services/data/view/">view the data</a> on the <b>Data tab</b>.</p>
+      <p>Start by collecting data from your cameras, sensors, or any other source on your machine with the <a href="/services/data/">data management service</a>. You can <a href="/services/data/view/">view the data</a> on the <b>Data tab</b>.</p>
     </th>
   </tr>
   <tr>
     <th>{{<imgproc src="/services/ml/label.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Label data">}}
       <b>2. Create a dataset and label</b>
-      <p>Once you have collected data, <a href="/data/dataset/">label your data and create a dataset</a> in preparation for training machine learning models.</p>
+      <p>Once you have collected data, <a href="/services/data/dataset/">label your data and create a dataset</a> in preparation for training machine learning models.</p>
     </th>
   </tr>
   <tr>

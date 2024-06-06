@@ -22,7 +22,7 @@ Integrate this component to monitor your power levels.
 ## Related services
 
 {{< cards >}}
-{{< relatedcard link="/data/" >}}
+{{< relatedcard link="/services/data/" >}}
 {{< /cards >}}
 
 ## Supported models

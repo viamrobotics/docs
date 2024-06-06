@@ -59,7 +59,7 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 {{< cards >}}
 {{< relatedcard link="/services/motion/" >}}
 {{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/data/" >}}
+{{< relatedcard link="/services/data/" >}}
 {{< /cards >}}
 
 ## Supported models

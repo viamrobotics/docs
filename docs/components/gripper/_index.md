@@ -21,7 +21,7 @@ A _gripper_ is a robotic grasping device that can open and close, often attached
 ## Related services
 
 {{< cards >}}
-{{< relatedcard link="/data/" >}}
+{{< relatedcard link="/services/data/" >}}
 {{< relatedcard link="/services/frame-system/" >}}
 {{< relatedcard link="/services/motion/" >}}
 {{< /cards >}}

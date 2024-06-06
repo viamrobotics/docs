@@ -33,7 +33,7 @@ Most machines with a COMPONENT need at least the following hardware (optional):
 Add services commonly used with the component.
 
 {{< cards >}}
-{{< relatedcard link="/data/" >}}
+{{< relatedcard link="/services/data/" >}}
 {{< relatedcard link="/services/frame-system/" >}}
 {{< /cards >}}
 

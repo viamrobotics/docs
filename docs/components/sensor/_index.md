@@ -37,7 +37,7 @@ Most machines with a sensor need at least the following hardware:
 ## Related services
 
 {{< cards >}}
-{{< relatedcard link="/data/" >}}
+{{< relatedcard link="/services/data/" >}}
 {{< /cards >}}
 
 ## Supported models

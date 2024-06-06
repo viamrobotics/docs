@@ -33,7 +33,7 @@ Viam provides built-in support for the following service types.
 You can also add support for additional service types using [{{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}](/registry/).
 
 {{< cards >}}
-{{% card link="/data/" %}}
+{{% card link="/services/data/" %}}
 {{% card link="/services/motion/" %}}
 {{% card link="/services/frame-system/" %}}
 {{% card link="/services/base-rc/" %}}

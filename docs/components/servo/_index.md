@@ -38,7 +38,7 @@ Most machines with a servo need at least the following hardware:
 
 {{< cards >}}
 {{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/data/" >}}
+{{< relatedcard link="/services/data/" >}}
 {{< /cards >}}
 
 {{% alert title="Tip" color="tip" %}}

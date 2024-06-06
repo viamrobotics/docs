@@ -425,7 +425,7 @@ override_description_links = {
     "frame": "/services/frame-system/",
     "Viam app": "https://app.viam.com/",
     "organization settings page": "/fleet/organizations/",
-    "image tags": "/data/dataset/#image-tags",
+    "image tags": "/services/data/dataset/#image-tags",
     "API key": "/fleet/cli/#authenticate",
     "in configuration": "/components/board/#digital_interrupts",
     "board model": "/components/board/#supported-models",

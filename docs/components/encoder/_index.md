@@ -40,7 +40,7 @@ Most machines with an encoder need at least the following hardware:
 {{< cards >}}
 {{< relatedcard link="/services/motion/" >}}
 {{< relatedcard link="/services/navigation/" >}}
-{{< relatedcard link="/data/" >}}
+{{< relatedcard link="/services/data/" >}}
 {{< relatedcard link="/services/frame-system/" >}}
 {{< /cards >}}
 

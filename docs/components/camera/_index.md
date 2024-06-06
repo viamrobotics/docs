@@ -36,7 +36,7 @@ You can use different models to:
 ## Related services
 
 {{< cards >}}
-{{< relatedcard link="/data/" >}}
+{{< relatedcard link="/services/data/" >}}
 {{< relatedcard link="/services/vision/" >}}
 {{< relatedcard link="/services/frame-system/" >}}
 {{< relatedcard link="/services/slam/" >}}
