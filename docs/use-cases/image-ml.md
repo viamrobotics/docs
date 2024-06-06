@@ -25,7 +25,7 @@ You will not need to write any code unless you want to use webhooks.
 1. [Collect image data and sync it to the cloud](#collect-image-data-and-sync-it-to-the-cloud)
 2. [Use filtering to collect and sync only certain images](#use-filtering-to-collect-and-sync-only-certain-images)
 3. [Create a dataset and label data](#create-a-dataset-and-label-data)
-4. [Train a machine learning (ML) model](#train-a-machine-learning-ml-model)
+4. [Train and test a machine learning (ML) model](#train-and-test-a-machine-learning-ml-model)
 5. [Set up webhook alerts when certain things are identified in an image](#set-up-webhook-alerts-when-certain-things-are-identified-in-an-image)
 
 </div>
