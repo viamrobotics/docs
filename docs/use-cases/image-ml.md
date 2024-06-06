@@ -186,7 +186,7 @@ Click **Train model** and follow the prompts.
 **2. Deploy your ML model [_(i)_](/ml/deploy)**
 
 To make use of ML models with your machine, configure the built-in ML model service on your machine to deploy and run the model.
-Once you've added it, choose your newly-trained model from the drop-down menu.
+Once you've added it, choose your newly-trained model from the dropdown menu.
 
 {{< /tablestep >}}
 {{< tablestep >}}
