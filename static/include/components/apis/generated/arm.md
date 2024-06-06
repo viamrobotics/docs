@@ -332,6 +332,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(bool)](https://pkg.go.dev/builtin#bool)
 - [(error)](https://pkg.go.dev/builtin#error)
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// This example shows using IsMoving with an arm component.
+myArm, err := arm.FromRobot(machine, "my_arm")
+
+// Stop all motion of the arm. It is assumed that the arm stops immediately.
+myArm.Stop(context.Background(), nil)
+
+// Log if the arm is currently moving.
+is_moving, err := myArm.IsMoving(context.Background())
+logger.Info(is_moving)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
 
 {{% /tab %}}
@@ -375,6 +389,16 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// This example shows using Stop with an arm component.
+myArm, err := arm.FromRobot(machine, "my_arm")
+
+// Stop all motion of the arm. It is assumed that the arm stops immediately.
+err = myArm.Stop(context.Background(), nil)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
 
@@ -422,6 +446,21 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `spatialmath` \[\][(Geometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry)
 - [(error)](https://pkg.go.dev/builtin#error)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// This example shows using Geometries with an arm component.
+myArm, err := arm.FromRobot(machine, "my_arm")
+
+geometries, err := myArm.Geometries(context.Background(), nil)
+
+if len(geometries) > 0 {
+   // Get the center of the first geometry
+   elem := geometries[0]
+   fmt.Println("Pose of the first geometry's center point:", elem.center)
+}
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
@@ -491,6 +530,16 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `map` [(string)](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error)
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// Perform an arbitrary command against an arm component.
+myArm, err := arm.FromRobot(machine, "my_arm")
+
+command := map[string]interface{}{"cmd": "test", "data1": 500}
+result, err := myArm.DoCommand(context.Background(), command)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
@@ -529,6 +578,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// Close an arm component.
+myArm, err := arm.FromRobot(machine, "my_arm")
+
+err = myArm.Close(ctx)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
