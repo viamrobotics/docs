@@ -5,7 +5,7 @@ weight: 50
 no_list: true
 type: "docs"
 tags: ["data management", "data", "services", "visualize"]
-description: "Visualize tabular data from the Viam app using popular tools like Grafana."
+description: "Visualize data from the Viam app using popular tools like Grafana."
 icon: true
 images: ["/services/icons/data-visualization.svg"]
 aliases:
@@ -64,7 +64,7 @@ When you [configured data query](/services/data/query/#configure-data-query), th
   Replace `YOUR-PASSWORD-HERE` with your database password as returned from the `viam data database configure` command.
 
   You can also specify a desired database name in your connection URI, if desired.
-  For example, to use the `sensorData` database, the default name for uploaded tabular data, your connection string would resemble:
+  For example, to use the `sensorData` database, the default name for uploaded sensor data, your connection string would resemble:
 
   ```sh
   mongodb://db-user-abcdef12-abcd-abcd-abcd-abcdef123456:YOUR-PASSWORD-HERE@data-federation-abcdef12-abcd-abcd-abcd-abcdef123456-e4irv.a.query.mongodb.net/sensorData?ssl=true&authSource=admin
@@ -77,7 +77,7 @@ When you [configured data query](/services/data/query/#configure-data-query), th
   mongodb://<MONGODB-ATLAS-DF-HOSTNAME>/<DATABASE-NAME>?directConnection=true&authSource=admin&tls=true
   ```
 
-  For example, to use the `sensorData` database, the default name for uploaded tabular data, your connection string would resemble:
+  For example, to use the `sensorData` database, the default name for uploaded sensor data, your connection string would resemble:
 
   ```sh
   mongodb://data-federation-abcdef12-abcd-abcd-abcd-abcdef123456-e4irv.a.query.mongodb.net/sensorData?directConnection=true&authSource=admin&tls=true

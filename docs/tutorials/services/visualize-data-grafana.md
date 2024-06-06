@@ -21,9 +21,9 @@ no_list: true
 Once you have [configured data query](/services/data/query/#configure-data-query) for your organization's data store, you can visualize your data from a variety of third-party tools, including Grafana.
 You can choose to visualize data from a component on one machine, from multiple components together, or from many components across a fleet of machines, all from a single pane of glass.
 
-Only components that capture tabular data, such as [sensor](/components/sensor/) readings or other time-series data, support data visualization.
+Only components that capture [sensor](/components/sensor/) readings or other time-series data support data visualization.
 
-You can visualize both the captured tabular data itself as well as its metadata, including machine ID, organization ID, and [tags](/services/data/dataset/#image-tags).
+You can visualize both the captured data itself as well as its metadata, including machine ID, organization ID, and [tags](/services/data/dataset/#image-tags).
 
 Follow the steps in this tutorial to learn how to collect data from your machine, sync that data to the Viam app, enable third-party access to that data, and present that data visually and flexibly in Grafana.
 
@@ -38,12 +38,12 @@ Before following this tutorial, ensure you have:
 
 - A machine with [connected to the Viam app](/cloud/machines/#add-a-new-machine).
 
-- A configured [sensor component](/components/sensor/), such as the [ultrasonic](/components/sensor/ultrasonic/) sensor, that reports tabular data.
+- A configured [sensor component](/components/sensor/), such as the [ultrasonic](/components/sensor/ultrasonic/) sensor, that reports data.
 
   - This tutorial uses a dataset of plant moisture measurements, originally captured for our [Plant watering tutorial](/tutorials/projects/make-a-plant-watering-robot/) using an analog resistive soil moisture sensor connected to an analog-to-digital-converter (ADC).
     The ADC functionality was provided by the [`mcp300x-adc-sensor` module](https://app.viam.com/module/hazalmestci/mcp300x-adc-sensor) from the [Viam registry](https://app.viam.com/registry).
 
-  - If you already have tabular data synced to the Viam app that you want to use, you can skip this requirement, and can skip directly to the [Configure data query](#configure-data-query) portion of this tutorial.
+  - If you already have data synced to the Viam app that you want to use, you can skip this requirement, and can skip directly to the [Configure data query](#configure-data-query) portion of this tutorial.
 
 - A Grafana instance.
 
@@ -89,7 +89,7 @@ For more information, see [Add the data management service](/services/data/captu
 
 Once you have added the data management service, you can configure data capture for specific components on your machine.
 For this tutorial, you will configure data capture for a [sensor](/components/sensor/) component, gathering sensor readings to later visualize in Grafana.
-Only tabular data, such as sensor readings or other time-series data, can be visualized in this manner.
+Only sensor readings or other time-series data can be visualized in this manner.
 
 To enable data capture for a sensor component:
 
@@ -114,7 +114,7 @@ For more information see [Configure data capture](/services/data/capture/#config
 
 Next, enable the ability to query your synced data.
 When you sync captured data to Viam, that data is stored in the Viam organization’s [MongoDB Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance.
-Configuring data query allows you to directly [query your data using the Viam app](/services/data/query/#query-tabular-data-in-the-viam-app) or [query your data from a compatible client](/services/data/query/#query) (such as `mongosh`), but also allows Grafana to access that data and visualize it.
+Configuring data query allows you to directly [query your data using the Viam app](/services/data/query/#query-data-in-the-viam-app) or [query your data from a compatible client](/services/data/query/#query) (such as `mongosh`), but also allows Grafana to access that data and visualize it.
 
 To enable data query:
 
@@ -144,7 +144,7 @@ With your machine capturing data and syncing it to Viam, and direct query of tha
      mongodb://<MONGODB-ATLAS-DF-HOSTNAME>/<DATABASE-NAME>?directConnection=true&authSource=admin&tls=true
      ```
 
-     For example, to use the `sensorData` database, the default name for uploaded tabular data, your connection string would resemble:
+     For example, to use the `sensorData` database, the default name for uploaded sensor data, your connection string would resemble:
 
      ```sh
      mongodb://data-federation-abcdef12-abcd-abcd-abcd-abcdef123456-e4irv.a.query.mongodb.net/sensorData?directConnection=true&authSource=admin&tls=true
@@ -172,7 +172,7 @@ With your machine capturing data and syncing it to Viam, and direct query of tha
 1. Click the **Save & test** button to save your settings.
    Grafana will perform a health check on your configuration settings to verify that everything looks good.
 
-This connection allows Grafana to access all synced tabular data under your [organization](/cloud/organizations/), from any machine.
+This connection allows Grafana to access all synced sensor data under your [organization](/cloud/organizations/), from any machine.
 
 ## Visualize your data
 
