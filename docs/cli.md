@@ -1116,7 +1116,7 @@ Sharing this information could compromise your system security by allowing unaut
 
 | Command option | Description                             |
 | -------------- | --------------------------------------- |
-| `register`     | Register an application with FusionAuth |
+| `register`     | Register an [application](https://fusionauth.io/docs/get-started/core-concepts/applications) with FusionAuth |
 | `update`       | Update your application                 |
 
 ##### Named arguments: `register`
@@ -1125,7 +1125,7 @@ Sharing this information could compromise your system security by allowing unaut
 | Argument             | Description                                                       | Inclusion    |
 | -------------------- | ----------------------------------------------------------------- | ------------ |
 | `--org-id`           | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID with which to associate this app | **Required** |
-| `--application-name` | A name of your choosing for your application                      | **Required** |
+| `--application-name` | A display name (of your choice) for your application. | **Required** |
 | `--origin-uris`      | All URIs from which valid logins to FusionAuth can originate from | **Required** |
 | `--redirect-uris`    | URIs to which FusionAuth will redirect the user upon login        | **Required** |
 | `--logout-uri`       | URI of page to show user upon logout                              | **Required** |
@@ -1135,9 +1135,9 @@ Sharing this information could compromise your system security by allowing unaut
 <!-- prettier-ignore -->
 | Argument             | Description                                  | Inclusion    |
 | -------------------- | -------------------------------------------- | ------------ |
-| `--org-id`           | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID with which to associate this app | **Required** |
+| `--org-id`           | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID with which this app is associated | **Required** |
 | `--application-id`   | The identifier of your application, returned when you registered the application | **Required** |
-| `--application-name` | A name of your choosing for your application | Optional |
+| `--application-name` | A display name (of your choice) for your application. | Optional |
 | `--origin-uris`      | All URIs from which valid logins to FusionAuth can originate | Optional |
 | `--redirect-uris`    | URIs to which FusionAuth will redirect the user upon login | Optional |
 | `--logout-uri`       | URI of page to show user upon logout         | Optional |
