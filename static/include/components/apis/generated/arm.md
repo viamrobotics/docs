@@ -533,7 +533,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Perform an arbitrary command against an arm component.
+// This example shows using DoCommand with an arm component.
 myArm, err := arm.FromRobot(machine, "my_arm")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
@@ -582,7 +582,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Close an arm component.
+// This example shows using Close with an arm component.
 myArm, err := arm.FromRobot(machine, "my_arm")
 
 err = myArm.Close(ctx)
