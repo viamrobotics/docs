@@ -80,7 +80,7 @@ For more information, see [Model framework support](/ml/upload-model/#model-fram
   <tr>
     <th>{{<imgproc src="/services/ml/train.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Train models">}}
       <b>3. Train or upload an ML model</b>
-      <p>Use your labeled data to <a href="/services/ml/train-model/">train your own model</a> for object detection or classification</a>. If you don't want to train your own model, you can also <a href="/registry/">use an ML model from the registry</a> or <a href="/ml/upload-model/">upload an existing model</a>.</p>
+      <p>Use your labeled data to <a href="/services/ml/train-model/">train your own model</a> for object detection or classification</a>. If you don't want to train your own model, you can also <a href="/registry/">use an ML model from the registry</a> or <a href="/services/ml/upload-model/">upload an existing model</a>.</p>
     </th>
   </tr>
   <tr>

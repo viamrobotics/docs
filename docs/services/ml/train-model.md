@@ -93,7 +93,7 @@ You can delete a model from the [models page](https://app.viam.com/data/models) 
 ## Next steps
 
 {{< cards >}}
-{{% manualcard link="/ml/" %}}
+{{% manualcard link="/services/ml/" %}}
 
 <h4>Deploy your model</h4>
 

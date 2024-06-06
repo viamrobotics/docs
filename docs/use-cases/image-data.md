@@ -65,6 +65,6 @@ You can also [export your data from the Viam app](/data/export/) to a deployed m
 
 {{< cards >}}
 {{% card link="/services/data/query/" %}}
-{{% card link="/ml/" %}}
+{{% card link="/services/ml/" %}}
 {{% card link="/tutorials/" %}}
 {{< /cards >}}
