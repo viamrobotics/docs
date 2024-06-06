@@ -35,8 +35,16 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- `spatialmath` [(Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.28.1/spatialmath#Pose)
+- `spatialmath` [(Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose)
 - [(error)](https://pkg.go.dev/builtin#error)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myArm, err := arm.FromRobot(machine, "my_arm")
+// Get the end position of the arm as a Pose.
+pos, err := myArm.EndPosition(context.Background(), nil)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -80,12 +88,26 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `pose` [(Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.28.1/spatialmath#Pose)
+- `pose` [(Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose)
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myArm, err := arm.FromRobot(machine, "my_arm")
+// Create a Pose for the arm.
+examplePose := spatialmath.NewPose(
+        r3.Vector{X: 5, Y: 5, Z: 5},
+        &spatialmath.OrientationVectorDegrees{0X: 5, 0Y: 5, Theta: 20}
+)
+
+// Move your arm to the Pose.
+err = myArm.MoveToPosition(context.Background(), examplePose, nil)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -140,12 +162,28 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `pb` [(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions)
+- `positionDegs` [(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions)
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// Assumes you have imported "go.viam.com/api/component/arm/v1" as `componentpb`
+myArm, err := arm.FromRobot(machine, "my_arm")
+
+// Declare an array of values with your desired rotational value for each joint on the arm.
+degrees := []float64{4.0, 5.0, 6.0}
+
+// Declare a new JointPositions with these values.
+jointPos := &componentpb.JointPositions{Values: degrees}
+
+// Move each joint of the arm to the position these values specify.
+err = myArm.MoveToJointPositions(context.Background(), jointPos, nil)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -191,6 +229,22 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `pb` [(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions)
 - [(error)](https://pkg.go.dev/builtin#error)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// Assumes you have imported "go.viam.com/api/component/arm/v1" as `componentpb`
+myArm, err := arm.FromRobot(machine, "my_arm")
+
+// Declare an array of values with your desired rotational value for each joint on the arm.
+degrees := []float64{4.0, 5.0, 6.0}
+
+// Declare a new JointPositions with these values.
+jointPos := &componentpb.JointPositions{Values: degrees}
+
+// Move each joint of the arm to the position these values specify.
+err = myArm.MoveToJointPositions(context.Background(), jointPos, nil)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -366,7 +420,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- `spatialmath` [(Geometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry)
+- `spatialmath` \[\][(Geometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry)
 - [(error)](https://pkg.go.dev/builtin#error)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
@@ -434,7 +488,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(string)](https://pkg.go.dev/builtin#string)
+- `map` [(string)](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error)
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
