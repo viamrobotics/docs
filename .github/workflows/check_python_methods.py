@@ -27,11 +27,11 @@ ignore_apis = [
 ]
 
 services_page_mapping = {
-    "motion": "mobility/motion",
-    "navigation": "mobility/navigation",
-    "slam": "mobility/slam",
-    "vision": "ml/vision",
-    "ml": "ml/deploy"
+    "motion": "services/motion",
+    "navigation": "services/navigation",
+    "slam": "services/slam",
+    "vision": "services/vision",
+    "ml": "services/ml/deploy"
 }
 
 def is_unimplemented(obj):
