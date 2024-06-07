@@ -18,7 +18,7 @@ cost: 120
 {{<imgproc src="/tutorials/helmet/ppe-hooks.png" resize="x300" declaredimensions=true alt="Hard hats and neon reflective vests on hooks." class="alignright" style="max-width: 350px">}}
 
 We all know personal protective equipment (PPE) helps keep us safe, but sometimes we need a reminder to use it consistently.
-Luckily, you can address this problem using Viam's integrated [data capture](/services/data/capture/), [computer vision](/services/vision/), and [webhooks](/build/configure/webhooks/), along with a hard hat detection model.
+Luckily, you can address this problem using Viam's integrated [data capture](/services/data/capture/), [computer vision](/services/vision/), and [triggers](/build/configure/triggers/), along with a hard hat detection model.
 
 By following this tutorial you will build a system to look out for you and your team, sending an email notification when someone isn't wearing a hard hat.
 
@@ -27,7 +27,7 @@ By following this tutorial you will build a system to look out for you and your 
 First, you'll set up and test the computer vision functionality that can detect people wearing a hard hat and wearing no hard hat.
 Next, you'll set up data capture and sync to record images of people without hard hats and upload them to the cloud.
 Then, you'll write a serverless function capable of sending email notifications.
-Finally, you'll configure a webhook to trigger the serverless function when someone isn't wearing a hard hat.
+Finally, you'll configure a trigger to trigger the serverless function when someone isn't wearing a hard hat.
 
 {{< alert title="Learning Goals" color="info" >}}
 
@@ -35,7 +35,7 @@ After completing this tutorial, you will:
 
 - know how the ML model service and the vision service work together
 - be able to use the ML model service and the vision service on a machine with an existing model to interpret the world around the machine
-- be able to use data capture and webhooks to set up notifications based on a machine's perception of the world around it
+- be able to use data capture and triggers to set up notifications based on a machine's perception of the world around it
 
 {{< /alert >}}
 
@@ -247,10 +247,10 @@ Now that you have verified that the detector and data sync are working, modify y
 
 ## Set up email notifications
 
-[Webhooks](/build/configure/webhooks/) allow you to trigger actions by sending an HTML request when a certain event happens.
-In this case, you're going to set up a webhook to trigger a serverless function that sends you an email when an image of someone without a hard hat is uploaded to the cloud.
+[Triggers](/build/configure/triggers/) allow you to trigger actions by sending an HTML request when a certain event happens.
+In this case, you're going to set up a trigger to trigger a serverless function that sends you an email when an image of someone without a hard hat is uploaded to the cloud.
 
-Before you configure a webhook on your machine, you need to create a serverless function for the webhook to call.
+Before you configure a trigger on your machine, you need to create a serverless function for the trigger to call.
 
 ### Create a serverless function
 
@@ -344,7 +344,7 @@ The following code is adapted from that example.
 
 #### Register an HTTP function
 
-The webhook you will configure with Viam invokes the function with an HTTP request.
+The trigger you will configure with Viam invokes the function with an HTTP request.
 You can learn more about HTTP functions in [Google's Write HTTP functions guide](https://cloud.google.com/functions/docs/writing/write-http-functions).
 
 You need to add `@functions_framework.http` at the top of your function to register the HTTP function, and you need to add a `return` statement at the bottom to return an HTTP response.
@@ -408,21 +408,21 @@ Now you can test the script:
    If you don't see an email, check your spam folder.
    If you still don't see an email, make sure your SendGrid account is fully set up (2FA enabled, email confirmed) and that your email API key is [correctly configured](#configure-email-credentials).
 
-### Configure a webhook on your machine
+### Configure a trigger on your machine
 
-Now it's time to configure a [webhook](/build/configure/webhooks/) on your machine to trigger the email cloud function when a person is not wearing a hard hat.
-Since you configured data to sync only when an image of a person without a hard hat is captured, configuring the webhook to trigger each time an image is synced to the cloud will produce the desired result.
+Now it's time to configure a [trigger](/build/configure/triggers/) on your machine to trigger the email cloud function when a person is not wearing a hard hat.
+Since you configured data to sync only when an image of a person without a hard hat is captured, configuring the trigger to trigger each time an image is synced to the cloud will produce the desired result.
 
-Configure a webhook as follows:
+Configure a trigger as follows:
 
 1. Navigate to the **CONFIGURE** tab of your machine.
    Select **JSON** mode in the left-hand menu.
 
 2. Paste the following JSON template into your JSON config.
-   `"webhooks"` is a top-level section like `"components"`, `"services"`, or any of the other config sections.
+   `"triggers"` is a top-level section like `"components"`, `"services"`, or any of the other config sections.
 
    ```json {class="line-numbers linkable-line-numbers"}
-     "webhooks": [
+     "triggers": [
        {
          "url": "<Insert your own cloud function URL>",
          "event": {

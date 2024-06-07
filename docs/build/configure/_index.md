@@ -24,7 +24,7 @@ You can configure the following resources:
 - [Sub-parts](/build/configure/#sub-parts): Sub-parts are a way to connect two computers inside the same machine.
 - [Fragments](/build/configure/#fragments): Fragments are a way of sharing and managing identical configuration files (or parts of config files) across multiple machines.
 - [Frames](#frames): Frames hold reference frame information for the relative position of components in space.
-- [Webhooks](/build/configure/#webhooks): Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
+- [Triggers](/build/configure/#triggers): Triggers allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
 - [Network](/build/configure/#network): Networking options allow you to configure the bind address for accepting connections.
 
 To start configuring, go to the [Viam app](https://app.viam.com) and create a new machine.
@@ -249,12 +249,12 @@ The frame system holds reference frame information for the relative position of 
 Clicking on the **Frame** mode to visualize and configure the relative positions of components.
 Find more information in the [frame system documentation](/services/frame-system/).
 
-### Webhooks
+### Triggers
 
-Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
-For example, you can configure a webhook to send you a notification when your robot's sensor collects a new reading.
+Triggers allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
+For example, you can configure a trigger to send you a notification when your robot's sensor collects a new reading.
 
-See [Configure a Webhook](/build/configure/webhooks/) for more information on webhooks.
+See [Configure a Trigger](/build/configure/triggers/) for more information on triggers.
 
 ### Network
 
