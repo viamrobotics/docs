@@ -31,14 +31,14 @@ base,Close,close,Close,
 ## Board
 board,SetGPIO,set,Set,setGPIO
 board,GetGPIO,get,Get,getGPIO
-## HACK: Proto is PWM but we call it GetPWM in docs. Upstream likely to change to match soonish:
+## HACK: Proto is PWM but we use GetPWM in docs:
 board,GetPWM,get_pwm,PWM,pWM
 board,SetPWM,set_pwm,SetPWM,setPWM
 board,PWMFrequency,get_pwm_frequency,PWMFreq,pWMFrequency
 board,SetPWMFrequency,set_pwm_frequency,SetPWMFreq,setPWMFrequency
-board,ReadAnalogReader,analog_by_name,AnalogByName,readAnalogReader
-## HACK: Omitting PySDK: write_analog, currently borked: https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.write_analog
-board,WriteAnalog,,Write,writeAnalog
+## HACK: Proto is ReadAnalogReader but we use AnalogByName in docs:
+board,AnalogByName,analog_by_name,AnalogByName,readAnalogReader
+board,Write,write,Write,writeAnalog
 board,GetDigitalInterruptValue,digital_interrupt_by_name,DigitalInterruptByName,,
 board,StreamTicks,,StreamTicks,streamTicks
 board,SetPowerMode,set_power_mode,SetPowerMode,setPowerMode
