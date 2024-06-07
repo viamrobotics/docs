@@ -1,8 +1,8 @@
 <!-- prettier-ignore -->
 | Method Name | Description |
 | ----------- | ----------- |
-| [`GetEndPosition`](/components/arm/#getendposition) | Get the current position of the arm as a Pose. |
-| [`MoveToPosition`](/components/arm/#movetoposition) | Move the end of the arm to the desired Pose, relative to the base of the arm. |
+| [`GetEndPosition`](/components/arm/#getendposition) | Get the current position of the arm as a pose. |
+| [`MoveToPosition`](/components/arm/#movetoposition) | Move the end of the arm to the desired pose, relative to the base of the arm. |
 | [`MoveToJointPositions`](/components/arm/#movetojointpositions) | Move each joint on the arm to the position specified in `positions`. |
 | [`GetJointPositions`](/components/arm/#getjointpositions) | Get the current position of each joint on the arm. |
 | [`GetKinematics`](/components/arm/#getkinematics) | Get the kinematics information associated with the arm as the format and byte contents of the kinematics file. |
