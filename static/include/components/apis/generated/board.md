@@ -298,7 +298,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 {{% /tab %}}
 {{< /tabs >}}
 
-### ReadAnalogReader
+### AnalogByName
 
 Get an [`AnalogReader`](#analogs) by `name`.
 
@@ -341,11 +341,26 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 {{% /tab %}}
 {{< /tabs >}}
 
-### WriteAnalog
+### Write
 
 Write an analog value to a pin on the board.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `value` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required)
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.AnalogClient.write).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
