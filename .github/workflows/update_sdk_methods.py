@@ -1321,25 +1321,20 @@ def parse_method_usage(usage_string):
 
     # Splitting the usage string by comma to separate parameters and removing unwanted substrings
     parameters = list(filter(None, (param.strip() for param in usage_string.replace("\n\t\t", "").replace("\n\t,", "").replace("\n\t", "").split(','))))
-
     parsed_usage_string = []
 
     for param in parameters:
-        # HACKY: Hardcoding ctx, extra, cmd, and error bc they are all the same and parsing from usage string
-        # has proven difficult
-
         ## Discard false-positive match for some Go SDK resources which choose to render each param on a newline,
         ## resulting in trailing ',\n)' syntax that is otherwise interpreted here as a param named ')':
         if param != ')':
 
-            # Splitting each parameter by space to separate parameter name and type
-            parts = param.split()
-
-            if 'ctx' in param:
+            ## HACKY: Hardcoding several params and returns. These are: the ctx, extra, and cmd params,
+            ## the error return, and several parameters that require type inference.
+            if param.startswith('ctx'):
                 type_name = "ctx"
                 param_type = "Context"
                 param_type_link = "https://pkg.go.dev/context#Context"
-            elif 'extra' in param:
+            elif param.startswith('extra'):
                 type_name = "extra"
                 param_type = "map[string]interface{}"
                 param_type_link = "https://go.dev/blog/maps"
@@ -1352,13 +1347,52 @@ def parse_method_usage(usage_string):
                 param_type = "error"
                 param_type_link = "https://pkg.go.dev/builtin#error"
             else:
-                type_name = parts[-1].strip('` ')  # Remove backticks and spaces
-                param_type = ' '.join(parts[:-1]).strip('() ')  # Remove parentheses and spaces
+                param_raw = regex.sub(r'<.*?>', '', param).removesuffix(')').split()
+                ## Handle channel data types (only used for Board > StreamTicks):
+                if len(param_raw) == 3 and param_raw[0] == 'ch':
+                    type_name = 'ch chan'
+                    param_type = 'Tick'
+                    type_link = '#Tick'
+                ## Handle named parameters:
+                elif len(param_raw) == 2:
+                    type_name = param_raw[0]
+                    param_type = param_raw[1]
+                    type_link = regex.findall(r'href="([^"]+)">', param)[-1]
+                ## Handle returns, or parameters with inferred data types:
+                elif len(param_raw) == 1:
+                    ## Hardcode for type inference for angleDeg param:
+                    if param_raw[0] == 'angleDeg':
+                        type_name = 'angleDeg'
+                        param_type = 'float64'
+                        type_link = '/builtin#float64'
+                    ## Hardcode for type inference for linear param:
+                    elif param_raw[0] == 'linear':
+                        type_name = 'linear'
+                        param_type = 'r3.Vector'
+                        type_link = '/github.com/golang/geo/r3#Vector'
+                    ## Hardcode for type inference for positionsMm param:
+                    elif param_raw[0] == 'positionsMm':
+                        type_name = 'positionsMm'
+                        param_type = '[]float64'
+                        type_link = '/builtin#float64'
+                    ## Hardcode for type inference for rpm param:
+                    elif param_raw[0] == 'rpm':
+                        type_name = 'rpm'
+                        param_type = 'float64'
+                        type_link = '/builtin#float64'
+                    ## Hardcode for type inference for srcName param:
+                    elif param_raw[0] == 'srcName':
+                        type_name = 'srcName'
+                        param_type = 'string'
+                        type_link = '/builtin#string'
+                    ## Handle returns:
+                    else:
+                        type_name = ''
+                        param_type = param_raw[0]
+                        type_link = regex.findall(r'href="([^"]+)">', param)[-1]
 
-                # Extracting the type link from the type string
-                type_link = regex.search(r'href="([^"]+)">', type_name)
                 if type_link:
-                    param_type_link = type_link.group(1)
+                    param_type_link = type_link
                 else:
                     param_type_link = None
 
@@ -1367,12 +1401,21 @@ def parse_method_usage(usage_string):
     return parsed_usage_string
 
 # Format usage string, used in write_markdown():
-def format_method_usage(parsed_usage_string):
+def format_method_usage(parsed_usage_string, method_link):
     formatted_output = []
     for type_name, param_type, param_type_link in parsed_usage_string:
 
         return_string = ""
 
+        ## Creating the parameter type link depending on whether it is an absolute
+        ## or relative link, using passed method_link if the latter:
+        if param_type_link and param_type_link.startswith('/'):
+            param_type_link = f"https://pkg.go.dev{param_type_link}"
+        elif param_type_link and param_type_link.startswith('#'):
+            param_type_link_base = regex.sub(r'#.*', '', method_link)
+            param_type_link = f"{param_type_link_base}{param_type_link}"
+
+        ## Hardcode select parameters / returns, in order to provide their descriptions:
         if type_name == "ctx":
             return_string += f"- `{type_name}` [({param_type})]({param_type_link}): A Context carries a deadline, a cancellation signal, and other values across API boundaries."
             formatted_output.append(return_string)
@@ -1386,34 +1429,14 @@ def format_method_usage(parsed_usage_string):
             return_string += f"- [({param_type})]({param_type_link}): An error, if one occurred."
             formatted_output.append(return_string)
         else:
-            # Extracting param name from html
-            matches = regex.findall(r'>(.*?)<', type_name)
-
-            if matches:
-                # Extracted content between ">" and "<"
-                type_name = matches[0]
-
-            return_string += f"- "
-
-            # Extracting the parameter type from the param_type string
-            # If a list data type for Go (i.e. []datatypename), format accordingly:
-            param_name = regex.search(r'\w+(?=\s*\[?\]?\*?<)', param_type)
-            if param_name:
-                param_name = param_name.group()
-                if '[]' in param_type:
-                    return_string += f"`{param_name}` \[\]"
-                else:
-                    return_string += f"`{param_name}` "
-
-            # Creating the parameter type link based on the extracted type name
-            if param_type_link:
-                # print(f"type_link stripped: {param_type_link}")
-                param_type_link = f"https://pkg.go.dev{param_type_link}"
-                return_string += f"[({type_name})]({param_type_link})"
+            ## Format returns:
+            if type_name == '':
+               return_string += f"- [({param_type})]({param_type_link})"
+               formatted_output.append(return_string)
+            ## Format parameters:
             else:
-                return_string += f"[({type_name})](<INSERT PARAM TYPE LINK>)"
-
-            formatted_output.append(return_string)
+               return_string += f"- `{type_name}` [({param_type})]({param_type_link})"
+               formatted_output.append(return_string)
 
     return formatted_output
 
@@ -1736,7 +1759,7 @@ def write_markdown(type, names, methods):
                                 if len(parameters) > 0:
                                     # Parse and format parameters
                                     parsed_parameters = parse_method_usage(parameters)
-                                    formatted_parameters = format_method_usage(parsed_parameters)
+                                    formatted_parameters = format_method_usage(parsed_parameters, methods["go"][type][resource][go_method_name]["method_link"])
 
                                     for line in formatted_parameters:
                                         output_file.write(line + '\n')
@@ -1749,7 +1772,7 @@ def write_markdown(type, names, methods):
                                     # Parse and format returns
 
                                     parsed_returns = parse_method_usage(returns)
-                                    formatted_returns = format_method_usage(parsed_returns)
+                                    formatted_returns = format_method_usage(parsed_returns, methods["go"][type][resource][go_method_name]["method_link"])
 
                                     for line in formatted_returns:
                                         output_file.write(line + '\n')
