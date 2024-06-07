@@ -1142,7 +1142,7 @@ Write a value to the analog writer.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.AnalogClient.write).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name=”my_board”)
+my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the AnalogWriter “my_example_analog_writer”.
 writer = await my_board.analog_by_name(name=”my_example_analog_writer”)
