@@ -213,8 +213,7 @@ The multiple images returned from `GetImages()` do not represent a time series o
 
 **Returns:**
 
-- [(List[NamedImage])](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage): The list of images returned from the camera system.
-- [(ResponseMetadata)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResponseMetadata): The metadata timestamp with this response.
+- (Tuple[List[[NamedImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage)], [ResponseMetadata](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResponseMetadata)]): A tuple containing two values; the first [0] a list of images returned from the camera system, and the second [1] the metadata associated with this response.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_camera = Camera.from_robot(robot=robot, name="my_camera")
