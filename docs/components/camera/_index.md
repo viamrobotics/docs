@@ -101,7 +101,7 @@ Get an image from the camera with the specified MIME type.
 
 **Returns:**
 
-- ([ViamImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.ViamImage): The requested frame.
+- ([ViamImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.ViamImage)): The requested frame.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_camera = Camera.from_robot(robot=robot, name="my_camera")
