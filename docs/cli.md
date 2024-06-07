@@ -1132,6 +1132,8 @@ Sharing this information could compromise your system security by allowing unaut
 
 ##### Named arguments: `update`
 
+The `org-id` and `application-id` are immutable; they cannot be updated after the application is registered.
+
 <!-- prettier-ignore -->
 | Argument             | Description                                  | Inclusion    |
 | -------------------- | -------------------------------------------- | ------------ |
