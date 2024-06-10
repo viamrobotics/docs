@@ -19,9 +19,10 @@ After following this guide, you can provide the mount point, username, password,
 To distribute the correction information from your reference station, you should reserve an RTK2GO casting service for your station.
 
 Follow the instructions on [New Base Station Reservation](http://rtk2go.com/sample-page/new-reservation/) to enter information about your reference station.
-Wait for the confirmation email, to which you will need to reply.
-Upon reply, you will receive a password for your mount point.
-Save this, as you will need it later in this set up process.
+Ensure that the email you provide here is the same as the email you use to authenticate to the [Viam app](app.viam.com).
+Wait for the confirmation email, to which you need to reply.
+Upon reply, if you didn't request a specific password you receive a randomized password for your mount point.
+Save the details of your mountpoint password, username (email), mountpoint name and caster URL, as you need it later in this set up process.
 
 For more information about the RTK2GO reservation system, see [Reservations](http://rtk2go.com/reservations/).
 
@@ -38,7 +39,7 @@ Connect the GNSS Surveying Antenna included with the Reference Station kit to th
 ## Bring the antenna outside
 
 Bring the surveying antenna outside, where it can have a clear 360 degree view of the sky.
-This enables more accurate correction streaming.
+You must do this to enable casting from the reference station.
 
 ## Power up the reference station
 
@@ -135,13 +136,14 @@ Select the **Base Configuration** dropdown on the RTK setup configure page.
 **Fixed**: You only want the **Fixed** mode if your reference station will be stationary at a permanent location.
 Keep this deselected.
 
-**Enable NTRIP Server:** Enable this option. Enter the following credentials:
+**Enable NTRIP Server:** Enable this option.
+Enter the following credentials:
 
 - **Caster Host:** rtk2go.com
-- **Caster Port:** 2101
-- **Caster User:** [insert your email]
-- **Mount Point:** [insert name of mountpoint from your [RTK2GO Casting Service reservation](#reserve-an-rtk2go-casting-service)]
-- **Mount Point PW:** [insert password from your [RTK2GO Casting Service reservation](#reserve-an-rtk2go-casting-service)]
+- **Caster Port:** [insert port from your [RTK2GO reservation](#reserve-an-rtk2go-casting-service) URL]
+- **Caster User:** [insert email from your [RTK2GO reservation](#reserve-an-rtk2go-casting-service)]
+- **Mount Point:** [insert name of mountpoint from your [RTK2GO reservation](#reserve-an-rtk2go-casting-service)]
+- **Mount Point PW:** [insert password from your [RTK2GO reservation](#reserve-an-rtk2go-casting-service)]
 
 For example:
 
