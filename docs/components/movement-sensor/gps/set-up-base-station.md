@@ -19,7 +19,6 @@ After following this guide, you can provide the mount point, username, password,
 To distribute the correction information from your reference station, you should reserve an RTK2GO casting service for your station.
 
 Follow the instructions on [New Base Station Reservation](http://rtk2go.com/sample-page/new-reservation/) to enter information about your reference station.
-Ensure that the email you provide here is the same as the email you use to authenticate to the [Viam app](app.viam.com).
 Wait for the confirmation email, to which you need to reply.
 Upon reply, if you didn't request a specific password you receive a randomized password for your mount point.
 Save the details of your mountpoint password, username (email), mountpoint name and caster URL, as you need it later in this set up process.
@@ -198,7 +197,7 @@ Open the configuration instructions for your RTK-enabled movement sensor model:
 Follow the configuration instructions, providing the values you entered for your NTRIP server [Base configuration](#update-base-configuration) as the equal attributes in your Viam machine config:
 
 - `ntrip_url`: your RTK2GO casting URL, comprised of **Caster Host** and **Caster Port** (like `rtk2go.com:2101`)
-- `ntrip_username`: your **Caster User**, which should be your email
+- `ntrip_username`: your **Caster User**, which should be the same email you used for your [RTK2GO reservation](#reserve-an-rtk2go-casting-service)]
 - `ntrip_password`: your **Mount Point PW**
 - `ntrip_mountpoint`: your **Mount Point** name
 
