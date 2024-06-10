@@ -1072,7 +1072,7 @@ Read the current value from the analog reader.
 
 **Returns:**
 
-- [(int)](https://docs.python.org/3/library/functions.html#int): The value of the digital signal output by the analog pin.
+- [(Analog.Value)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.Analog.Value): The current value, including the integer `value` of the digital signal output by the analog pin and the `min_range`, `max_range`, and `step_size` of the reader.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.Analog.read).
 
@@ -1092,6 +1092,7 @@ analog = await my_board.analog_by_name(
 # Get the value of the digital signal "my_example_analog" has most
 # recently measured.
 reading = analog.read()
+reading_value = reading.value
 ```
 
 {{% /tab %}}
@@ -1104,10 +1105,10 @@ reading = analog.read()
 
 **Returns:**
 
-- [(int)](https://pkg.go.dev/builtin#int): The value of the digital signal output by the analog pin.
+- [(AnalogValue)](https://pkg.go.dev/go.viam.com/rdk/components/board#AnalogValue): The current value, including the integer `Value` of the digital signal output by the analog pin and the `Min`, `Max`, and `StepSize` of the reader.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Analog).
 
 ```go
 myBoard, err := board.FromRobot(robot, "my_board")
@@ -1117,6 +1118,7 @@ analog, err := myBoard.AnalogByName("my_example_analog")
 
 // Get the value of the digital signal "my_example_analog" has most recently measured.
 reading := analog.Read(context.Background(), nil)
+reading_value := reading.Value
 ```
 
 {{% /tab %}}
