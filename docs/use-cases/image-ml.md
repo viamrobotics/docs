@@ -104,7 +104,7 @@ From the **Select model** dropdown, select the name of your ML model service (fo
 {{<imgproc src="/services/icons/modular-registry.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **3. Configure the filtered camera**
 
-The `filtered-camera` {{< glossary_tooltip term_id="modular resource" text="modular component" >}} pulls the stream of images from the camera you configured earlier, and applies the vision service to it.
+The `filtered-camera` {{< glossary_tooltip term_id="modular-resource" text="modular component" >}} pulls the stream of images from the camera you configured earlier, and applies the vision service to it.
 
 Configure a `filtered-camera` component on your machine, following the [attribute guide in the README](https://github.com/erh/filtered_camera?tab=readme-ov-file#configure-your-filtered-camera) to specify the names of your webcam and vision service, and add classification and object detection filters.
 
@@ -183,7 +183,7 @@ Click **Train model** and follow the prompts.
 {{< /tablestep >}}
 {{< tablestep >}}
 {{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Train models">}}
-**2. Deploy your ML model [_(i)_](/ml/deploy)**
+**2. Deploy your ML model [_(i)_](/ml/deploy/)**
 
 To make use of ML models with your machine, configure the built-in ML model service on your machine to deploy and run the model.
 Once you've added it, choose your newly-trained model from the dropdown menu.
