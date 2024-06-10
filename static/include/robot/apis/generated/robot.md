@@ -48,6 +48,24 @@ resource_names := machine.ResourceNames()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- [(ResourceName.AsObject[])](https://ts.viam.dev/modules/commonApi.ResourceName-1.html): List of all known resource names.
+
+```typescript
+// Get a list of all resources on the machine.
+const resource_names = await machine.resourceNames();
+```
+
+For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/RobotClient.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### CancelOperation
@@ -162,6 +180,30 @@ component_configs, err := machine.DiscoverComponents(ctx.Background(), qs)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `queries` [(DiscoveryQuery[])](https://ts.viam.dev/classes/robotApi.DiscoveryQuery.html): An array of [tuples of API and model](https://ts.viam.dev/classes/robotApi.DiscoveryQuery.html#constructor) that you want to retrieve the component configurations corresponding to.
+
+**Returns:**
+
+- [(Discovery[])](https://ts.viam.dev/classes/robotApi.Discovery.html): List of discovered component configurations.
+
+```typescript
+// Define a new discovery query.
+const q = new proto.DiscoveryQuery(acme.API, resource.Model{Name: "some model"})
+
+// Define an array of discovery queries.
+let qs:  proto.DiscoveryQuery[] = [q]
+
+// Get the array of discovered component configurations.
+const componentConfigs = await machine.discoverComponents(queries);
+```
+
+For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/RobotClient.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### FrameSystemConfig
@@ -210,6 +252,24 @@ fmt.Println(frameSystem)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `transforms` [(Transform[])](https://ts.viam.dev/classes/commonApi.Transform.html): An optional array of [additional transforms](/mobility/frame-system/#additional-transforms).
+
+**Returns:**
+
+- [(FrameSystemConfig[])](https://ts.viam.dev/classes/robotApi.FrameSystemConfig.html): An array of individual parts that make up a machine's frame system.
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#frameSystemConfig).
+
+```typescript {class="line-numbers linkable-line-numbers"}
+// Get the frame system configuration
+console.log("FrameSytemConfig:", await robot.frameSystemConfig());
+```
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -344,6 +404,25 @@ status, err := machine.Status(ctx)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `resourceNames` [(commonApi.ResourceName[])](https://ts.viam.dev/classes/commonApi.ResourceName.html): An optional array of ResourceNames for components you want the status of.
+  If no names are passed in, all resource statuses are returned.
+
+**Returns:**
+
+- [(robotApi.Status[])](https://ts.viam.dev/classes/robotApi.Status.html): An array containing the status of each resource.
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformPCD).
+
+```typescript {class="line-numbers linkable-line-numbers"}
+// Get the status of the resources on the machine.
+const status = await machine.getStatus();
+```
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### StopAll
@@ -390,6 +469,24 @@ err := machine.StopAll(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#stopAll).
+
+```typescript {class="line-numbers linkable-line-numbers"}
+// Cancel all current and outstanding operations for the machine and stop all actuators and movement.
+await machine.stopAll();
+```
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -640,6 +737,24 @@ err := machine.Close(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#disconnect).
+
+```typescript {class="line-numbers linkable-line-numbers"}
+// Cleanly close the underlying connections and stop any periodic tasks
+await machine.disconnect();
+```
 
 {{% /tab %}}
 {{< /tabs >}}
