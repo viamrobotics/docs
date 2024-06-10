@@ -708,7 +708,7 @@ def parse(type, names):
                 go_methods_raw = soup.find_all(
                     lambda tag: tag.name == 'div'
                     and tag.get('class') == ['Documentation-declaration']
-                    and "type" in tag.pre.text
+                    and tag.pre.text.startswith('type')
                     and "interface {" in tag.pre.text)
 
                 # some resources have more than one interface:
@@ -808,51 +808,76 @@ def parse(type, names):
                                 ## using the method_name as key:
                                 go_methods[type][resource][method_name] = this_method_dict
 
-                        ## Go SDK docs for each interface omit inherited functions. If the resource being considered inherits from
-                        ## resource.Resource (currently all components and services do, and no app or robot interfaces do), then add
-                        ## the three inherited methods manually: Reconfigure(), DoCommand(), Close()
-                        ## (Match only to instances that are preceded by a tab char, or we'll catch ResourceByName erroneously):
-                        if '\tresource.Resource' in resource_interface.text:
-                            go_methods[type][resource]['Reconfigure'] = {'proto': 'Reconfigure', \
-                                'description': 'Reconfigure must reconfigure the resource atomically and in place. If this cannot be guaranteed, then usage of AlwaysRebuild or TriviallyReconfigurable is permissible.', \
-                                'usage': 'Reconfigure(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, deps <a href="#Dependencies">Dependencies</a>, conf <a href="#Config">Config</a>) <a href="/builtin#error">error</a>', \
-                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
-                            go_methods[type][resource]['DoCommand'] = {'proto': 'DoCommand', \
-                                'description': 'DoCommand sends/receives arbitrary data.', \
-                                'usage': 'DoCommand(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, cmd map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
-                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
-                            go_methods[type][resource]['Close'] = {'proto': 'Close', \
-                                'description': 'Close must safely shut down the resource and prevent further use. Close must be idempotent. Later reconfiguration may allow a resource to be "open" again.', \
-                                'usage': 'Close(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) <a href="/builtin#error">error</a>', \
-                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
+                        ## If this Go interface inherits from another interface, also fetch data for those inherited methods:
+                        if '\tresource.' in resource_interface.text:
 
-                        ## Similarly, if the resource being considered inherits from resource.Actuator (Servo, for example),
-                        ## then add the two inherited methods manually: IsMoving() and Stop():
-                        if '\tresource.Actuator' in resource_interface.text:
-                            go_methods[type][resource]['IsMoving'] = {'proto': 'IsMoving', \
-                                'description': 'IsMoving returns whether the resource is moving or not', \
-                                'usage': 'IsMoving(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) (<a href="/builtin#bool">bool</a>, <a href="/builtin#error">error</a>)', \
-                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Actuator'}
-                            go_methods[type][resource]['Stop'] = {'proto': 'Stop', \
-                                'description': 'Stop stops all movement for the resource', \
-                                'usage': 'Stop(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, extra map[<a href="/builtin#string">string</a>]interface{}) <a href="/builtin#error">error</a>', \
-                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Actuator'}
+                            resource_url = f"{scrape_url}/go.viam.com/rdk/resource"
+                            resource_soup = make_soup(resource_url)
 
-                        ## Similarly, if the resource being considered inherits from resource.Shaped (Base, for example),
-                        ## then add the one inherited method manually: Geometries():
-                        if '\tresource.Shaped' in resource_interface.text:
-                            go_methods[type][resource]['Geometries'] = {'proto': 'GetGeometries', \
-                                'description': 'Geometries returns the list of geometries associated with the resource, in any order. The poses of the geometries reflect their current location relative to the frame of the resource.', \
-                                'usage': 'Geometries(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, extra map[<a href="/builtin#string">string</a>]interface{}) ([]<a href="/go.viam.com/rdk/spatialmath">spatialmath</a>.<a href="/go.viam.com/rdk/spatialmath#Geometry">Geometry</a>, <a href="/builtin#error">error</a>)', \
-                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Shaped'}
+                            ## If the resource being considered inherits from resource.Resource (currently all components and services do,
+                            ## and no app or robot interfaces do), then add the three inherited methods manually: Reconfigure(), DoCommand(), Close()
+                            if '\tresource.Resource' in resource_interface.text:
+                                go_methods[type][resource]['Reconfigure'] = {'proto': 'Reconfigure', \
+                                    'description': 'Reconfigure must reconfigure the resource atomically and in place. If this cannot be guaranteed, then usage of AlwaysRebuild or TriviallyReconfigurable is permissible.', \
+                                    'usage': 'Reconfigure(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, deps <a href="#Dependencies">Dependencies</a>, conf <a href="#Config">Config</a>) <a href="/builtin#error">error</a>', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
+                                code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "Reconfigure example:" in code_sample_tag.text)
+                                if code_sample:
+                                    go_methods[type][resource]['Reconfigure']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
+                                go_methods[type][resource]['DoCommand'] = {'proto': 'DoCommand', \
+                                    'description': 'DoCommand sends/receives arbitrary data.', \
+                                    'usage': 'DoCommand(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, cmd map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
+                                code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "DoCommand example:" in code_sample_tag.text)
+                                if code_sample:
+                                    go_methods[type][resource]['DoCommand']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
+                                go_methods[type][resource]['Close'] = {'proto': 'Close', \
+                                    'description': 'Close must safely shut down the resource and prevent further use. Close must be idempotent. Later reconfiguration may allow a resource to be "open" again.', \
+                                    'usage': 'Close(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) <a href="/builtin#error">error</a>', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
+                                code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "Close example:" in code_sample_tag.text)
+                                if code_sample:
+                                    go_methods[type][resource]['Close']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
 
-                        ## Similarly, if the resource being considered inherits from resource.Sensor (Movement Sensor, for example),
-                        ## then add the one inherited method manually: Readings():
-                        if '\tresource.Sensor' in resource_interface.text:
-                            go_methods[type][resource]['Readings'] = {'proto': 'GetReadings', \
-                                'description': 'Readings return data specific to the type of sensor and can be of any type.', \
-                                'usage': 'Readings(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, extra map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
-                                'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Sensor'}
+                            ## Similarly, if the resource being considered inherits from resource.Actuator (Servo, for example),
+                            ## then add the two inherited methods manually: IsMoving() and Stop():
+                            if '\tresource.Actuator' in resource_interface.text:
+                                go_methods[type][resource]['IsMoving'] = {'proto': 'IsMoving', \
+                                    'description': 'IsMoving returns whether the resource is moving or not', \
+                                    'usage': 'IsMoving(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) (<a href="/builtin#bool">bool</a>, <a href="/builtin#error">error</a>)', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Actuator'}
+                                code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "IsMoving example:" in code_sample_tag.text)
+                                if code_sample:
+                                    go_methods[type][resource]['IsMoving']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
+                                go_methods[type][resource]['Stop'] = {'proto': 'Stop', \
+                                    'description': 'Stop stops all movement for the resource', \
+                                    'usage': 'Stop(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, extra map[<a href="/builtin#string">string</a>]interface{}) <a href="/builtin#error">error</a>', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Actuator'}
+                                code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "Stop example:" in code_sample_tag.text)
+                                if code_sample:
+                                    go_methods[type][resource]['Stop']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
+
+                            ## Similarly, if the resource being considered inherits from resource.Shaped (Base, for example),
+                            ## then add the one inherited method manually: Geometries():
+                            if '\tresource.Shaped' in resource_interface.text:
+                                go_methods[type][resource]['Geometries'] = {'proto': 'GetGeometries', \
+                                    'description': 'Geometries returns the list of geometries associated with the resource, in any order. The poses of the geometries reflect their current location relative to the frame of the resource.', \
+                                    'usage': 'Geometries(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, extra map[<a href="/builtin#string">string</a>]interface{}) ([]<a href="/go.viam.com/rdk/spatialmath">spatialmath</a>.<a href="/go.viam.com/rdk/spatialmath#Geometry">Geometry</a>, <a href="/builtin#error">error</a>)', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Shaped'}
+                                code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "Geometries example:" in code_sample_tag.text)
+                                if code_sample:
+                                    go_methods[type][resource]['Geometries']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
+
+                            ## Similarly, if the resource being considered inherits from resource.Sensor (Movement Sensor, for example),
+                            ## then add the one inherited method manually: Readings():
+                            if '\tresource.Sensor' in resource_interface.text:
+                                go_methods[type][resource]['Readings'] = {'proto': 'GetReadings', \
+                                    'description': 'Readings return data specific to the type of sensor and can be of any type.', \
+                                    'usage': 'Readings(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, extra map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Sensor'}
+                                code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "Readings example:" in code_sample_tag.text)
+                                if code_sample:
+                                    go_methods[type][resource]['Readings']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
 
                 ## For SLAM service only, additionally fetch data for two helper methods defined outside of the resource's interface:
                 if resource == 'slam':
