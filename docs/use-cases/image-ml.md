@@ -37,7 +37,7 @@ You will not need to write any code unless you want to use webhooks.
 {{<imgproc src="/icons/components/camera.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="configure a camera component">}}
 **1. Configure a camera [_(i)_](/components/camera/)**
 
-First, [create a machine](/fleet/machines/#add-a-new-machine) if you haven't yet.
+First, [create a machine](/cloud/machines/#add-a-new-machine) if you haven't yet.
 
 Configure a camera component, such as a [webcam](/components/camera/webcam/), on your machine.
 
@@ -85,14 +85,14 @@ The following steps use the [`filtered_camera`](https://github.com/erh/filtered_
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **1. Add an ML model to your machine [_(i)_](/services/ml/deploy/)**
 
-Configure an ML model service on your machine that is compatible with the ML model you want to use, for example [TFLite CPU](/ml/deploy/tflite_cpu/).
+Configure an ML model service on your machine that is compatible with the ML model you want to use, for example [TFLite CPU](/services/ml/deploy/tflite_cpu/).
 
 From the **Model** dropdown, select the preexisting model you want to use, or click **Add new model** to upload your own.
 
 {{< /tablestep >}}
 {{< tablestep >}}
 {{<imgproc src="/services/icons/vision.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
-**2. Add a vision service to use with the ML model [_(i)_](/services/ml/vision/)**
+**2. Add a vision service to use with the ML model [_(i)_](/services/vision/)**
 
 You can think of the vision service as the bridge between the ML model service and the output from your camera.
 
@@ -191,7 +191,7 @@ Once you've added it, choose your newly-trained model from the dropdown menu.
 {{< /tablestep >}}
 {{< tablestep >}}
 {{<imgproc src="/services/icons/vision.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Configure a service">}}
-**3. Configure an <code>mlmodel</code> vision service [_(i)_](/services/ml/vision/)**
+**3. Configure an <code>mlmodel</code> vision service [_(i)_](/services/vision/)**
 
 You can think of the vision service as the bridge between the ML model service and the output from your camera.
 
@@ -201,9 +201,9 @@ Then, from the **Select model** dropdown, select the name of your ML model servi
 {{< /tablestep >}}
 {{< tablestep >}}
 {{<imgproc src="/services/ml/deploy.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Deploy your model">}}
-**4. Test your classifier [_(i)_](/services/ml/vision/mlmodel/#test-your-detector-or-classifier)**
+**4. Test your classifier [_(i)_](/services/vision/mlmodel/#test-your-detector-or-classifier)**
 
-Test your mlmodel classifier with [existing images in the Viam app](/services/ml/vision/mlmodel/#existing-images-in-the-cloud), [live camera footage,](/services/ml/vision/mlmodel/#live-camera-footage) or [existing images on a computer](/services/ml/vision/mlmodel/#existing-images-on-your-machine).
+Test your mlmodel classifier with [existing images in the Viam app](/services/vision/mlmodel/#existing-images-in-the-cloud), [live camera footage,](/services/vision/mlmodel/#live-camera-footage) or [existing images on a computer](/services/vision/mlmodel/#existing-images-on-your-machine).
 
 {{< /tablestep >}}
 {{< /table >}}
