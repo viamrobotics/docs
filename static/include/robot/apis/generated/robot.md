@@ -476,7 +476,7 @@ Pass these options to [`AtAddress`](#ataddress).
 
 **Returns:**
 
-- (typing_extensions.Self): the RobotClient.Options
+- ([typing_extensions.Self](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient)): the RobotClient.Options
 
 **Example:**
 
@@ -510,7 +510,7 @@ Create a RobotClient that is connected to the machine at the provided address.
 
 **Returns:**
 
-- (typing_extensions.Self): the RobotClient
+- ([typing_extensions.Self](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient)): the RobotClient
 
 **Example:**
 
@@ -551,7 +551,7 @@ Any machines created using this method will NOT automatically close the channel 
 
 **Returns:**
 
-- (typing_extensions.Self): the RobotClient
+- ([typing_extensions.Self](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient)): the RobotClient
 
 **Example:**
 
