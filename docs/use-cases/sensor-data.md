@@ -4,10 +4,10 @@ linkTitle: "Capture and query sensor data"
 weight: 30
 type: "docs"
 images: ["/tutorials/visualize-data-grafana/grafana-dashboard-preview.png"]
-description: "Query tabular data from your machine on the Viam app or from a compatible client."
+description: "Query data from your machine on the Viam app or from a compatible client."
 ---
 
-You can use the data management service to capture tabular data from a connected component on your machine and sync that data to the cloud.
+You can use the data management service to capture data from a connected component on your machine and sync that data to the cloud.
 Once you have synced that data, you can query it using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} to obtain actionable insights.
 
 For example, you might configure data capture for several sensors on your machine, or across sensors on multiple machines, to report the ambient operating temperature.
@@ -24,10 +24,10 @@ Then, [add the data management service](/services/data/), and configure [data ca
 
 {{< /tablestep >}}
 {{< tablestep >}}
-{{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Capture tabular data from a sensor">}}
+{{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Capture data from a sensor">}}
 **2. Capture data**
 
-Next, [capture tabular data from a component on your machine](/services/data/capture/#configure-data-capture-for-individual-components), such as a sensor. With cloud sync enabled, captured data is automatically uploaded to the Viam app after a short delay.
+Next, [capture data from a component on your machine](/services/data/capture/#configure-data-capture-for-individual-components), such as a sensor. With cloud sync enabled, captured data is automatically uploaded to the Viam app after a short delay.
 
 You can view your synced data in the Viam app from the **Data** tab.
 
@@ -36,7 +36,7 @@ You can view your synced data in the Viam app from the **Data** tab.
 {{<imgproc src="/services/icons/data-query.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Configure the data management service">}}
 **3. Query data in the Viam app**
 
-Once your data has synced, you can [query your data from within the Viam app](/services/data/query/#query-tabular-data-in-the-viam-app) using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
+Once your data has synced, you can [query your data from within the Viam app](/services/data/query/#query-data-in-the-viam-app) using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
 
 For example, this query limits returned results to show data captured by the <code>my-ultrasonic-sensor</code> component only, and with a maximum of 5 results.
 
@@ -47,7 +47,7 @@ For example, this query limits returned results to show data captured by the <co
 {{<imgproc src="/services/icons/data-query.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Configure the data management service">}}
 **4. Query data from a compatible client**
 
-If you prefer, you can also <a href ="/services/data/query/#query-tabular-data-directly-from-a-compatible-client">query your data directly from an MQL-compatible client</a>, such as <code>mongosh</code> or MongoDB Compass, using SQL or MQL.
+If you prefer, you can also <a href ="/services/data/query/#query-data-directly-from-a-compatible-client">query your data directly from an MQL-compatible client</a>, such as <code>mongosh</code> or MongoDB Compass, using SQL or MQL.
 
 {{<imgproc src="/services/data/data-query-mongosh-example.png" class="fill alignleft" resize="600x" declaredimensions=true alt="SQL query in mongosh filtering by machine, component, and specific data readings">}}
 

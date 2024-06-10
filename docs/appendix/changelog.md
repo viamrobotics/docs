@@ -130,7 +130,7 @@ Viam has added a [sensor-controlled base](/components/base/sensor-controlled/) c
 {{% changelog date="2024-01-31" color="added" title="Visualize captured data" %}}
 
 You can now [visualize your data](/services/data/visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
-You can visualize any tabular data, such as sensor readings, that you have [synced](/services/data/cloud-sync/) to the Viam app from your machine.
+You can visualize any data, such as sensor readings, that you have [synced](/services/data/cloud-sync/) to the Viam app from your machine.
 
 See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) for a full walkthrough focused on Grafana specifically.
 
