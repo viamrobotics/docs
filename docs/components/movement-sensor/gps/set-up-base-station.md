@@ -12,7 +12,7 @@ Follow this guide to set up your [SparkFun RTK Reference Station](https://www.sp
 RTK improves the precision of positional data from satellite-based positioning systems like the Global Positioning System (GPS).
 When placed in a known location, the RTK Reference Station calculates and transmits correction data to RTK-enabled GPS receivers based on satellite signals it receives.
 
-After following this guide, you can provide the mount point, username, password, and URL from your reference station's fixed-position NTRIP server in your Viam machine config for the [`gps-nmea-rtk-pmtk`](/components/movement-sensor/gps-nmea-rtk-pmtk/) and [`gps-nmea-rtk-serial`](/components/movement-sensor/gps-nmea-rtk-serial/) models of movement sensor to allow a rover or other machine configured with your sensor to apply corrections from the reference station, enabling your machine to achieve centimeter-level accuracy in positioning.
+After following this guide, you can provide the mount point, username, password, and URL from your reference station's NTRIP server in your Viam machine config for the [`gps-nmea-rtk-pmtk`](/components/movement-sensor/gps-nmea-rtk-pmtk/) and [`gps-nmea-rtk-serial`](/components/movement-sensor/gps-nmea-rtk-serial/) models of movement sensor to allow a rover or other machine configured with your sensor to apply corrections from the reference station, enabling your machine to achieve sub-centimeter-level accuracy in positioning.
 
 ## Reserve an RTK2GO casting service
 
