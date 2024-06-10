@@ -13,7 +13,7 @@
 | [`StopAll`](/appendix/apis/robot/#stopall) | Cancel all current and outstanding operations for the machine and stop all actuators and movement. |
 | [`Log`](/appendix/apis/robot/#log) | Create a LogEntry object from the log to send to the RDK over gRPC. |
 | [`GetCloudMetadata`](/appendix/apis/robot/#getcloudmetadata) | Get app-related information about the robot. |
-| [`Options.with_api_key`](/appendix/apis/robot/#options.with_api_key) | Create a `RobotClient.Options` using an API key as credentials. |
+| [`Options.with_api_key`](/appendix/apis/robot/#options_with_api_key) | Create a `RobotClient.Options` using an API key as credentials. |
 | [`AtAddress`](/appendix/apis/robot/#ataddress) | Create a RobotClient that is connected to the machine at the provided address. |
 | [`WithChannel`](/appendix/apis/robot/#withchannel) | Create a RobotClient that is connected to a machine over the given channel. |
 | [`Refresh`](/appendix/apis/robot/#refresh) | Manually refresh the underlying parts of this machine. |
