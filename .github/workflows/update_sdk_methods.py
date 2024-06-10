@@ -1566,24 +1566,26 @@ def write_markdown(type, names, methods):
                             table_file.write('| ----------- | ----------- |\n')
 
                         ## Determine what the anchor link structure should be for this resource. Each type has its own standard:
+                        proto_link = proto.replace('.', '').lower()
+
                         if type == 'component':
-                            proto_anchor_link = '/' + type_filepath_name + '/' + resource + '/#' + proto.lower()
+                            proto_anchor_link = '/' + type_filepath_name + '/' + resource + '/#' + proto_link
                         elif type == 'service' and resource in ['base_remote_control', 'motion', 'navigation', 'slam']:
-                            proto_anchor_link = '/services/' + resource.replace('base_remote_control', 'base_rc') + '/#' + proto.lower()
+                            proto_anchor_link = '/services/' + resource.replace('base_remote_control', 'base_rc') + '/#' + proto_link
                         elif type == 'service' and resource == 'data_manager':
-                            proto_anchor_link = 'services/data/#' + proto.lower()
+                            proto_anchor_link = 'services/data/#' + proto_link
                         elif type == 'service' and resource == 'generic_service':
-                            proto_anchor_link = '/services/generic/#' + proto.lower()
+                            proto_anchor_link = '/services/generic/#' + proto_link
                         elif type == 'service' and resource in ['mlmodel', 'vision']:
-                            proto_anchor_link = '/services/ml/' + resource.replace('mlmodel', 'deploy') + '/#' + proto.lower()
+                            proto_anchor_link = '/services/ml/' + resource.replace('mlmodel', 'deploy') + '/#' + proto_link
                         elif type == 'app' and resource == 'app':
-                            proto_anchor_link = '/appendix/apis/fleet/#' + proto.lower()
+                            proto_anchor_link = '/appendix/apis/fleet/#' + proto_link
                         elif type == 'app' and resource in ["billing", "mltraining"]:
-                            proto_anchor_link = '/appendix/apis/' + resource.replace('mltraining','ml-training') + '-client/#' + proto.lower()
+                            proto_anchor_link = '/appendix/apis/' + resource.replace('mltraining','ml-training') + '-client/#' + proto_link
                         elif type == 'app' and resource in ["data", "dataset", "data_sync"]:
-                            proto_anchor_link = '/appendix/apis/data-client/#' + proto.lower()
+                            proto_anchor_link = '/appendix/apis/data-client/#' + proto_link
                         elif type == 'robot':
-                            proto_anchor_link = '/appendix/apis/' + resource + '/#' + proto.lower()
+                            proto_anchor_link = '/appendix/apis/' + resource + '/#' + proto_link
 
                         ## Fetch just the first sentence from the proto_override_file (first text string terminated by '.\n'), ignoring hugo
                         ## shortcodes like alerts ('{{%.*%}}.*{{% \[a-b].* %}}'), which precede some override files' (proto descriptions')
