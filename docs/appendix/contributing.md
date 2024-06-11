@@ -217,7 +217,7 @@ Additional we enforce the following substitutions:
 | compute parts | computer |
 | microprocessor | Raspberry Pi or Jetson or another specific term |
 
-<! -- vale on -->
+<!-- vale on -->
 
 ### Vale linting
 
