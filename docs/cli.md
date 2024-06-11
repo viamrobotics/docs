@@ -1086,7 +1086,7 @@ viam whoami
 ### `auth-app`
 
 The `auth-app` command allows you to register and update your web or mobile application (created with the Viam Flutter or TypeScript [SDKs](/sdks/)) with [FusionAuth](https://fusionauth.io/) (the tool Viam uses for authentication and authorization) so that you or other users can log into your app with the same credentials they use to log into the [Viam app](https://app.viam.com).
-The user's credentials allow them the same [permissions](/fleet/rbac/) to organizations, locations, and machines that they have in the Viam app.
+The user's credentials allow them the same [permissions](/cloud/rbac/) to organizations, locations, and machines that they have in the Viam app.
 
 Examples:
 
