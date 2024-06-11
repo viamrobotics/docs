@@ -1148,7 +1148,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the AnalogWriter “my_example_analog_writer”.
-writer = await my_board.analog_by_name(name=”my_example_analog_writer”)
+writer = await my_board.analog_by_name(name="my_example_analog_writer")
 
 await writer.write(42)
 ```
