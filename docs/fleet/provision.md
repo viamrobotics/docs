@@ -141,11 +141,14 @@ With the Viam Agent installed, your machine will either connect to a local WiFi 
 
 - If you include a `viam-server` configuration file on your machine, located at <file>/etc/viam.json</file>, which includes a WiFi network and password to connect to, the Viam Agent will connect to the network automatically when in range.
 - If you did not include this file, or the configured WiFi network is not available when your machine comes online, the Viam Agent will create its own WiFi hotspot and request WiFi credentials:
+
   ![Diagram of the flow of provisioning a new machine with the Viam agent.](/platform/provision/style-provisioning-diagram.png)
+
   If there is an issue connecting to the WiFi hotspot with the input WiFi credentials, this flow will repeat until the device is online:
+
   ![Diagram of the flow of provisioning a new machine with the Viam agent when there is an issue connecting to WiFi.](/platform/provision/style-provisioning-diagram-error.png)
 
-This provisioning functionality uses the [Viam Agent provisioning subsystem](https://github.com/viamrobotics/agent-provisioning).
+This provisioning functionality is provided by the [Viam Agent provisioning subsystem](https://github.com/viamrobotics/agent-provisioning).
 
 ### Connect to an existing network
 
@@ -212,7 +215,7 @@ For example, to set the hotspot password to `acme123`, you can use the following
 You can add this configuration to your machine's configuration in the **CONFIGURE** tab in the [Viam app](https://app.viam.com/), using **JSON** mode, or directly to the <file>/etc/viam.json</file> configuration file you deploy to your machine.
 
 If you did not initially provide a `viam-server` app configuration in either of these methods, you will be prompted to paste one in when you connect to the WiFi hotspot.
-This is the part of the machine configuration JSON which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to the Viam app.
+This is the JSON which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to the Viam app.
 
 To copy a machine's `viam-server` app configuration:
 
