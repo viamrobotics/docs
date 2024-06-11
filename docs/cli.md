@@ -1114,6 +1114,7 @@ Sharing this information could compromise your system security by allowing unaut
 
 #### Command options
 
+<!-- prettier-ignore -->
 | Command option | Description                             |
 | -------------- | --------------------------------------- |
 | `register`     | Register an [application](https://fusionauth.io/docs/get-started/core-concepts/applications) with FusionAuth |
