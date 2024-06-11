@@ -1072,7 +1072,7 @@ Read the current value from the analog reader.
 
 **Returns:**
 
-- [(Analog.Value)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.Analog.Value): The current value, including the integer `value` of the digital signal output by the analog pin and the `min_range`, `max_range`, and `step_size` of the reader.
+- [(Analog.Value)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.Analog.Value): The result of reading an analog reader. It contains the raw data read as `value`, the reader’s minimum and maximum possible values as `min_range` and `max_range`, and its `step_size` (the minimum possible change between values it can read).
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.Analog.read).
 
