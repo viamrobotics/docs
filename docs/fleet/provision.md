@@ -157,27 +157,27 @@ For example, to configure SSIDs and passwords for two WiFi networks named `prima
 ```json {class="line-numbers linkable-line-numbers"}
 ...
 "agent": {
-    "agent-provisioning": {
+  "agent-provisioning": {
+    ...
+    "attributes": {
       ...
-      "attributes": {
-        ...
-        "networks": [
-          {
-            "type": "wifi",
-            "ssid": "primaryNet",
-             "psk": "myFirstPassword",
-             "priority": 30
-          },
-          {
-            "type": "wifi",
-            "ssid": "fallbackNet",
-            "psk": "mySecondPassword",
-            "priority": 10
-           }
-         ]
-       }
-     }
+      "networks": [
+        {
+          "type": "wifi",
+          "ssid": "primaryNet",
+          "psk": "myFirstPassword",
+          "priority": 30
+        },
+        {
+          "type": "wifi",
+          "ssid": "fallbackNet",
+          "psk": "mySecondPassword",
+          "priority": 10
+        }
+      ]
+    }
   }
+}
 ```
 
 You can add this configuration to the <file>/etc/viam.json</file> configuration file you deploy to your machine, or from the **CONFIGURE** tab in the [Viam app](https://app.viam.com/) for your machine, using **Raw JSON** mode.
@@ -199,13 +199,13 @@ For example, to set the hotspot password to `acme123`, you can use the following
 ```json {class="line-numbers linkable-line-numbers"}
 ...
 "agent": {
-    "agent-provisioning": {
+  "agent-provisioning": {
+    ...
+    "attributes": {
+      "hotspot_password": "acme123"
       ...
-       "attributes": {
-        "hotspot_password": "acme123"
-        ...
-       }
     }
+  }
 }
 ```
 
