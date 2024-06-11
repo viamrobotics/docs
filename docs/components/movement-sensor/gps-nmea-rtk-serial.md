@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "Configure an NTRIP-based RTK that uses serial communication."
 images: ["/icons/components/imu.svg"]
+toc_hide: true
 aliases:
   - "/components/movement-sensor/gps/gps-rtk/"
   - "/components/movement-sensor/gps/gps-nmea-rtk-serial/"

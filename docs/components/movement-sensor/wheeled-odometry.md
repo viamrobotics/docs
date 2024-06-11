@@ -4,6 +4,7 @@ linkTitle: "wheeled-odometry"
 type: "docs"
 description: "Configure a wheeled odometry movement sensor."
 images: ["/icons/components/imu.svg"]
+toc_hide: true
 tags:
   [
     "movement sensor",

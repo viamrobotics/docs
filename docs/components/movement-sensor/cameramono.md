@@ -6,6 +6,7 @@ type: "docs"
 description: "Configure camera_mono, an experimental visual odometry model."
 images: ["/icons/components/imu.svg"]
 draft: true
+toc_hide: true
 aliases:
   - "/components/movement-sensor/cameramono/"
 # SMEs: Rand

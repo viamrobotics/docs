@@ -5,6 +5,7 @@ weight: 20
 type: "docs"
 description: "Follow this guide to set up your own SparkFun RTK base station, a high-precision GPS module designed for use with the RTK satellite navigation technique."
 images: ["/icons/components/imu.svg"]
+no_component: true
 # SMEs: Susmita
 ---
 
