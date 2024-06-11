@@ -1060,7 +1060,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ### Read
 
-Read the current value from the analog reader.
+Read the current value from an analog pin or analog reader capable of reading analog values.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1117,8 +1117,9 @@ myBoard, err := board.FromRobot(robot, "my_board")
 analog, err := myBoard.AnalogByName("my_example_analog")
 
 // Get the value of the digital signal "my_example_analog" has most recently measured.
-reading := analog.Read(context.Background(), nil)
-reading_value := reading.Value
+reading, err := analog.Read(context.Background(), nil)
+readingValue := reading.Value
+stepSize := reading.StepSize
 ```
 
 {{% /tab %}}
@@ -1126,7 +1127,7 @@ reading_value := reading.Value
 
 ### Write
 
-Write a value to the analog writer.
+Write an analog value to a pin or analog output on a board capable of doing so.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
