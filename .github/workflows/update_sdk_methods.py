@@ -1569,7 +1569,8 @@ def write_markdown(type, names, methods):
                         proto_link = proto.replace('.', '').lower()
 
                         if type == 'component':
-                            proto_anchor_link = '/' + type_filepath_name + '/' + resource + '/#' + proto_link
+                            resource_no_underscores = resource.replace('_','-')
+                            proto_anchor_link = '/' + type_filepath_name + '/' + resource_no_underscores + '/#' + proto_link
                         elif type == 'service' and resource in ['base_remote_control', 'motion', 'navigation', 'slam']:
                             proto_anchor_link = '/services/' + resource.replace('base_remote_control', 'base_rc') + '/#' + proto_link
                         elif type == 'service' and resource == 'data_manager':
