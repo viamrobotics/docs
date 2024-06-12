@@ -42,11 +42,6 @@ Viam also supports generic [sensors](/components/sensor/) and [encoders](/compon
 
 If you are using the micro-RDK, navigate to [Micro-RDK Movement Sensor](/build/micro-rdk/movement-sensor/) for supported model information.
 
-### SparkFun RTK reference station setup
-
-An RTK Reference Station calculates and transmits correction data to RTK enabled GPS receivers to improve positioning to sub-centimenter level accuracy.
-Follow the guide to [Set up a SparkFun RTK Reference Station](/components/movement-sensor/set-up-base-station/) to configure a SparkFun station for use with one of Viam's RTK-enabled GPS movement sensor models.
-
 ## Control your movement sensor with Viam's client SDK libraries
 
 To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
