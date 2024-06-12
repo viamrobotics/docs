@@ -799,7 +799,7 @@ Here, you can toggle the mode of the service between **Manual** and **Waypoint**
 The following concepts are important to understand when utilizing the navigation service.
 Each concept is a type of relative or absolute measurement, taken by a [movement sensor](/components/movement-sensor/), which can then be utilized by your machine to navigate across space.
 
-Here's how to make use of the following types of measurements:
+Here's how to use the following types of measurements:
 
 - [Compass Heading](/services/navigation/#compass-heading)
 - [Orientation](/services/navigation/#orientation)

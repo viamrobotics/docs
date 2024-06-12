@@ -1,4 +1,4 @@
-If you want to control your base by specifying a desired velocity in terms of distance/time, for example 5 m/s, and you have a movement sensor that measures the actual velocity, you can make use of the sensor to adjust the velocity.
+If you want to control your base by specifying a desired velocity in terms of distance/time, for example 5 m/s, and you have a movement sensor that measures the actual velocity, you can use the sensor to adjust the velocity.
 Alternatively, if your base has position reporting motors, you can use the [wheeled odometry](/components/movement-sensor/wheeled-odometry/) movement sensor to get an estimate of the necessary velocities.
 
 Setting the `control_parameters` attribute sets up a PID control loop.

@@ -41,7 +41,7 @@ Use your labeled data to [train your own models](/services/ml/train-model/) for 
 {{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="max-width: 200px" declaredimensions=true alt="Train models">}}
 **4. Deploy your ML model**
 
-To make use of ML models with your machine, use the built-in [ML model service](/services/ml/) to deploy and run the model.
+To use ML models with your machine, use the built-in [ML model service](/services/ml/) to deploy and run the model.
 
 {{< /tablestep >}}
 {{< tablestep >}}

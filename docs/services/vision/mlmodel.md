@@ -31,7 +31,7 @@ You can [add an existing model](/services/ml/upload-model/) or [train your own m
 
 <h4>Deploy your model</h4>
 
-To make use of ML models with your machine, use a suitable [ML model service](/services/ml/) to deploy and run the model.
+To use ML models with your machine, use a suitable [ML model service](/services/ml/) to deploy and run the model.
 
 {{% /manualcard %}}
 {{< /cards >}}
