@@ -34,7 +34,7 @@ Then, to export data from the data management service in the cloud:
 
    This command uses the Viam CLI to download the data locally onto your computer based on the search criteria you select in the Viam app.
 
-   By default, the command creates a new directory named `data` in the current directory and downloads the specified data.
+   By default, the command creates two new directories named `data` and `metadata` in the current directory and downloads the specified data into the `data` folder and metadata, like bounding box information and labels, in `JSON`-format into the `metadata` folder.
    If you want to store the data in a different location, change the specified folder with the [`--destination` flag](/cli/#named-arguments).
 
    Once the command has finished running and downloading the data, you can view and use the data locally.
