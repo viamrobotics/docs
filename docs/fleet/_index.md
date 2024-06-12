@@ -84,7 +84,7 @@ When you or your collaborators change the configuration of a machine or a group 
 This means everyone who has access can change a fleet's [configuration](/cloud/machines/#configure), even while your machines are running.
 
 You can see configuration changes made by yourself or by your collaborators by selecting **History** on the right side of your machine part's card on the **CONFIGURE** tab.
-You can also revert to an earlier configuration from the [Part history page](build/configure/#configuration-history).
+You can also revert to an earlier configuration from the [Part history page](/build/configure/#configuration-history).
 
 {{< alert title="Simultaneous config edits" color="caution" >}}
 If you edit a config while someone else edits the same config, the person who saves last will overwrite any prior changes that aren't reflected in the new config.
