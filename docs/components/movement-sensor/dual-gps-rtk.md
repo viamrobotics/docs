@@ -6,6 +6,7 @@ type: "docs"
 description: "Configure a movement sensor that calculates compass heading from two gps movement sensors."
 images: ["/icons/components/imu.svg"]
 component_description: "A movement sensor that calculates compass heading from two GPS movement sensors."
+toc_hide: true
 aliases:
   - /components/movement-sensor/gps/dual-gps-rtk/
 # SMEs: Rand

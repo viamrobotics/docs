@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "Configure an NMEA-based GPS on your machine. Once configured use the API to obtain the Position, CompassHeading and LinearVelocity."
 images: ["/icons/components/imu.svg"]
+toc_hide: true
 aliases:
   - /components/movement-sensor/gps/gps-nmea/
 component_description: "NMEA-based GPS models."

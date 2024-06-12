@@ -8,6 +8,7 @@ images: ["/icons/components/imu.svg"]
 aliases:
   - "/components/movement-sensor/adxl345/"
 component_description: "The Analog Devices ADXL345 digital accelerometer."
+toc_hide: true
 # SMEs: Rand, Kim Mishra
 ---
 

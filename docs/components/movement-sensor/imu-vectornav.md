@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "Configure a VectorNav IMU."
 images: ["/icons/components/imu.svg"]
+toc_hide: true
 draft: true
 aliases:
   - "/components/movement-sensor/imu/imu-vectornav/"

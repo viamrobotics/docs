@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "Configure a WitMotion IMU on your machine. Once configured use the API to obtain the AngularVelocity, Orientation, CompassHeading and LinearAcceleration."
 images: ["/icons/components/imu.svg"]
+toc_hide: true
 aliases:
   - "/components/movement-sensor/imu/imu-wit/"
 component_description: "Other IMUs manufactured by WitMotion: BWT61CL, BWT901CL, and HWT901B-TTL."
