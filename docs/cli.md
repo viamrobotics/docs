@@ -1083,6 +1083,68 @@ The `whoami` command returns the Viam user for an authenticated CLI session, or 
 viam whoami
 ```
 
+### `auth-app`
+
+The `auth-app` command allows you to register and update your web or mobile application (created with the Viam Flutter or TypeScript [SDKs](/sdks/)) with [FusionAuth](https://fusionauth.io/) (the tool Viam uses for authentication and authorization) so that you or other users can log into your app with the same credentials they use to log into the [Viam app](https://app.viam.com).
+The user's credentials allow them the same [permissions](/cloud/rbac/) to organizations, locations, and machines that they have in the Viam app.
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"  data-output="2-8,10-14"}
+viam auth-app register --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-name="julias app" --origin-uris="https://test.com","https://test2.com" --redirect-uris="https://redirect-url.com" --logout-uri="https://logout.com"
+Info: Successfully registered auth application
+{
+  "application_id": "1234a1z9-ab2c-1234-5678-bcd12345678a",
+  "application_name": "julias app",
+  "secret": "supersupersecretsecret"
+}
+
+viam auth-app update --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-id=1234a1z9-ab2c-1234-5678-bcd12345678a --redirect-uris="https://test.com","https://test2.com"
+Info: Successfully updated auth application
+{
+  "application_id": "1234a1z9-ab2c-1234-5678-bcd12345678a",
+  "application_name": "julias app"
+}
+```
+
+{{% alert title="Caution" color="caution" %}}
+Do not share the secret returned by `auth-app register` publicly.
+Sharing this information could compromise your system security by allowing unauthorized access to your machines, or to the computer running your machine.
+{{% /alert %}}
+
+#### Command options
+
+<!-- prettier-ignore -->
+| Command option | Description                             |
+| -------------- | --------------------------------------- |
+| `register`     | Register an [application](https://fusionauth.io/docs/get-started/core-concepts/applications) with FusionAuth |
+| `update`       | Update your application                 |
+
+##### Named arguments: `register`
+
+<!-- prettier-ignore -->
+| Argument             | Description                                                       | Inclusion    |
+| -------------------- | ----------------------------------------------------------------- | ------------ |
+| `--org-id`           | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID with which to associate this app | **Required** |
+| `--application-name` | A display name (of your choice) for your application. | **Required** |
+| `--origin-uris`      | All URIs from which valid logins to FusionAuth can originate from | **Required** |
+| `--redirect-uris`    | URIs to which FusionAuth will redirect the user upon login        | **Required** |
+| `--logout-uri`       | URI of page to show user upon logout                              | **Required** |
+
+##### Named arguments: `update`
+
+The `org-id` and `application-id` are immutable; they cannot be updated after the application is registered.
+
+<!-- prettier-ignore -->
+| Argument             | Description                                  | Inclusion    |
+| -------------------- | -------------------------------------------- | ------------ |
+| `--org-id`           | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID with which this app is associated | **Required** |
+| `--application-id`   | The identifier of your application, returned when you registered the application | **Required** |
+| `--application-name` | A display name (of your choice) for your application. | Optional |
+| `--origin-uris`      | All URIs from which valid logins to FusionAuth can originate | Optional |
+| `--redirect-uris`    | URIs to which FusionAuth will redirect the user upon login | Optional |
+| `--logout-uri`       | URI of page to show user upon logout         | Optional |
+
 ## Global options
 
 You can pass global options after the `viam` CLI keyword with any command.
