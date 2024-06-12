@@ -160,19 +160,19 @@ movement_sensor,Close,close,Close,
 power_sensor,GetVoltage,get_voltage,Voltage,getVoltage
 power_sensor,GetCurrent,get_current,Current,getCurrent
 power_sensor,GetPower,get_power,Power,getPower
+power_sensor,GetReadings,get_readings,Readings,getReadings
 ## HACK: No GetGeometries proto for power sensor component, adding 1 pseudo-entry:
 ## NOTED: But not for Go SDK:
 power_sensor,GetGeometries,get_geometries,,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
-power_sensor,GetReadings,get_readings,Readings,getReadings
 power_sensor,Reconfigure,,Reconfigure,
 power_sensor,DoCommand,do_command,DoCommand,doCommand
 power_sensor,Close,close,Close,
 
 ## Sensor
+sensor,GetReadings,get_readings,Readings,getReadings
 sensor,GetGeometries,get_geometries,,getGeometries
 ## HACK: No proto for close (and/or inherited in Go SDK), manually mapping:
-sensor,GetReadings,get_readings,Readings,getReadings
 sensor,Reconfigure,,Reconfigure,
 sensor,DoCommand,do_command,DoCommand,doCommand
 sensor,Close,close,Close,

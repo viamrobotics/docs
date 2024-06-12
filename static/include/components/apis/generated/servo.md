@@ -206,6 +206,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(bool)](https://pkg.go.dev/builtin#bool)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// This example shows using IsMoving with an arm component.
+myArm, err := arm.FromRobot(machine, "my_arm")
+
+// Stop all motion of the arm. It is assumed that the arm stops immediately.
+myArm.Stop(context.Background(), nil)
+
+// Log if the arm is currently moving.
+is_moving, err := myArm.IsMoving(context.Background())
+logger.Info(is_moving)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
 
 {{% /tab %}}
@@ -252,6 +266,16 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// This example shows using Stop with an arm component.
+myArm, err := arm.FromRobot(machine, "my_arm")
+
+// Stop all motion of the arm. It is assumed that the arm stops immediately.
+err = myArm.Stop(context.Background(), nil)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
 
@@ -321,6 +345,16 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(map[string]interface{})](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// This example shows using DoCommand with an arm component.
+myArm, err := arm.FromRobot(machine, "my_arm")
+
+command := map[string]interface{}{"cmd": "test", "data1": 500}
+result, err := myArm.DoCommand(context.Background(), command)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
@@ -359,6 +393,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// This example shows using Close with an arm component.
+myArm, err := arm.FromRobot(machine, "my_arm")
+
+err = myArm.Close(ctx)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
