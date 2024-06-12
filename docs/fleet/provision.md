@@ -264,5 +264,5 @@ For more information, see [Mobile app provisioning](https://github.com/viamrobot
 You can write your own mobile application or add provisioning to your existing mobile application using our SDKs which allow you to connect to the Viam Agent and provision your machines.
 For example, you can fetch local networks available to your deployed machine with `getNetworkList()`, or assign network credentials for a specific network with `setNetworkCredentials()`.
 
-Currently, provisioning is supported by the [Viam Flutter SDK](https://flutter.viam.dev/viam_protos.provisioning.provisioning/ProvisioningServiceClient-class.html) and the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/src/app/provisioning-client.ts).
+Currently, provisioning is supported by the Viam [Flutter SDK](https://flutter.viam.dev/viam_protos.provisioning.provisioning/ProvisioningServiceClient-class.html) and the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/src/app/provisioning-client.ts).
 If you are not using Flutter or TypeScript and would like to use provisioning, please [contact us](mailto:support@viam.com).
