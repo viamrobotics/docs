@@ -61,10 +61,10 @@ Each machine resides in a location.
 The organization structure enables you to:
 
 - configure groups of machines with reusable {{< glossary_tooltip term_id="fragment" text="fragments" >}} that [configure](/build/configure/) a set of resources for each machine that uses the fragment.
-- deploy [code packages](/registry/) or [machine learning models](/services/ml/), without manually copying files by uploading it to Viam's cloud and deploying it to your fleet
-- control a machine with code, the app's [**CONTROL** tab](/cloud/machines/#control), or the [Viam mobile app](#the-viam-mobile-app)
-- obtain health metrics, such as status, uptime, version, or [logs](/cloud/machines/#logs)
-- perform debugging
+- deploy [code packages](/registry/) or [machine learning models](/services/ml/), without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
+- control a machine with code, the app's [**CONTROL** tab](/cloud/machines/#control), or the [Viam mobile app](#the-viam-mobile-app).
+- obtain health metrics, such as status, uptime, version, or [logs](/cloud/machines/#logs).
+- perform debugging.
 
 All of this is possible when you are close to your machine, as well as remotely from anywhere in the world.
 
@@ -84,7 +84,7 @@ When you or your collaborators change the configuration of a machine or a group 
 This means everyone who has access can change a fleet's [configuration](/cloud/machines/#configure), even while your machines are running.
 
 You can see configuration changes made by yourself or by your collaborators by selecting **History** on the right side of your machine part's card on the **CONFIGURE** tab.
-You can also revert to an earlier configuration from the History tab.
+You can also revert to an earlier configuration from the [Part history page](/build/configure/#configuration-history).
 
 {{< alert title="Simultaneous config edits" color="caution" >}}
 If you edit a config while someone else edits the same config, the person who saves last will overwrite any prior changes that aren't reflected in the new config.
