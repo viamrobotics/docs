@@ -202,7 +202,7 @@ Follow the configuration instructions, providing the values you entered for your
 - `ntrip_password`: your **Mount Point PW**
 - `ntrip_mountpoint`: your **Mount Point** name
 
-Configuring your movement sensor with your NTRIP casting server access information allows your machine to receive both GPS signals and correction data and apply corrections, increasing the positioning capacity of the movement sensor to centimeter-level accuracy.
+Configuring your movement sensor with your NTRIP casting server access information allows your machine to receive both GPS signals and correction data and apply corrections, increasing the positioning capacity of the movement sensor to sub-centimeter level accuracy.
 
 ## Troubleshooting
 
