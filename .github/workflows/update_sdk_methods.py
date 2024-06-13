@@ -1478,6 +1478,11 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
 
             ## If we have a param description override, use that. If not, skip:
             if param_or_return_description != '':
+
+                ## Add a trailing period if it is missing, either from upstream or from override file:
+                if not param_or_return_description.endswith('.'):
+                    param_or_return_description = param_or_return_description + '.'
+
                 ## Format returns:
                 if type_name == '':
                    return_string += f"- [({param_type})]({param_type_link}): {param_or_return_description}"
@@ -1700,6 +1705,11 @@ def write_markdown(type, names, methods):
                                         output_file.write(' (required)')
 
                                     if param_description:
+
+                                        ## Add a trailing period if it is missing, either from upstream or from override file:
+                                        if not param_description.endswith('.'):
+                                            param_description = param_description + '.'
+
                                         output_file.write(f": {param_description}")
 
                                     # line break for parameters list
@@ -1734,6 +1744,11 @@ def write_markdown(type, names, methods):
                                     output_file.write(f"- ({return_type})")
 
                                     if return_description:
+
+                                        ## Add a trailing period if it is missing, either from upstream or from override file:
+                                        if not return_description.endswith('.'):
+                                            return_description = return_description + '.'
+
                                         output_file.write(f": {return_description}\n")
                                     else:
                                         output_file.write("\n")
@@ -1924,6 +1939,11 @@ def write_markdown(type, names, methods):
                                         output_file.write(' (required)')
 
                                     if param_description:
+
+                                        ## Add a trailing period if it is missing, either from upstream or from override file:
+                                        if not param_description.endswith('.'):
+                                            param_description = param_description + '.'
+
                                         output_file.write(f": {param_description}")
 
                                     # line break for parameters list
@@ -1976,6 +1996,11 @@ def write_markdown(type, names, methods):
                                             pass
 
                                         if return_description:
+
+                                            ## Add a trailing period if it is missing, either from upstream or from override file:
+                                            if not return_description.endswith('.'):
+                                                return_description = return_description + '.'
+
                                             output_file.write(f": {return_description}\n")
                                         else:
                                             output_file.write("\n")
