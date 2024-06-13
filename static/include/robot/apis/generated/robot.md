@@ -530,6 +530,15 @@ Get app-related information about the robot.
 
 - ([viam.proto.robot.GetCloudMetadataResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetCloudMetadataResponse)): App-related metadata.
 
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+metadata = machine.get_cloud_metadata()
+print(metadata.robot_part_id)
+print(metadata.primary_org_id)
+print(metadata.location_id)
+```
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_cloud_metadata).
 
 {{% /tab %}}
