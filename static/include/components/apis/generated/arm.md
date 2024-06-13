@@ -1,6 +1,6 @@
 ### GetEndPosition
 
-Get the current position of the arm as a [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose).
+Get the current position of the arm as a [pose](/internals/orientation-vector/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -35,8 +35,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- `spatialmath` [(Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose)
-- [(error)](https://pkg.go.dev/builtin#error)
+- [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
 
@@ -53,7 +53,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### MoveToPosition
 
-Move the end of the arm to the desired [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose), relative to the base of the arm.
+Move the end of the arm to the desired [pose](/internals/orientation-vector/), relative to the base of the arm.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -88,7 +88,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `pose` [(Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose)
+- `pose` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose)
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -162,7 +162,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `positionDegs` [(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions)
+- `positionDegs` [(*pb.JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions)
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -227,8 +227,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- `pb` [(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions)
-- [(error)](https://pkg.go.dev/builtin#error)
+- [(*pb.JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
 
@@ -330,7 +330,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(bool)](https://pkg.go.dev/builtin#bool)
-- [(error)](https://pkg.go.dev/builtin#error)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
 
@@ -444,8 +444,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- `spatialmath` \[\][(Geometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry)
-- [(error)](https://pkg.go.dev/builtin#error)
+- [([]spatialmath.Geometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
 
@@ -478,8 +478,8 @@ Reconfigure must reconfigure the resource atomically and in place.
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `deps` [(Dependencies)](https://pkg.go.dev#Dependencies)
-- `conf` [(Config)](https://pkg.go.dev#Config)
+- `deps` [(Dependencies)](https://pkg.go.dev/go.viam.com/rdk/resource#Dependencies)
+- `conf` [(Config)](https://pkg.go.dev/go.viam.com/rdk/resource#Config)
 
 **Returns:**
 
@@ -527,8 +527,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- `map` [(string)](https://pkg.go.dev/builtin#string)
-- [(error)](https://pkg.go.dev/builtin#error)
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
 
