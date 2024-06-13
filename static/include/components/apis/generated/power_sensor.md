@@ -36,8 +36,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(float64)](https://pkg.go.dev/builtin#float64)
-- [(bool)](https://pkg.go.dev/builtin#bool)
+- [(float64)](https://pkg.go.dev/builtin#float64): The measurement of the voltage, represented as a 64-bit float number.
+- [(bool)](https://pkg.go.dev/builtin#bool): Indicate whether voltage is AC (`true`) or DC (`false`).
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -90,8 +90,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(float64)](https://pkg.go.dev/builtin#float64)
-- [(bool)](https://pkg.go.dev/builtin#bool)
+- [(float64)](https://pkg.go.dev/builtin#float64): The measurement of the current, represented as a 64-bit float number.
+- [(bool)](https://pkg.go.dev/builtin#bool): Indicate whether current is AC (`true`) or DC (`false`).
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -120,7 +120,7 @@ Return the power reading in watts.
 
 **Returns:**
 
-- ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The measurement of the power, represented as a float.
+- ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The power reading in watts.
 
 **Example:**
 
@@ -144,7 +144,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(float64)](https://pkg.go.dev/builtin#float64)
+- [(float64)](https://pkg.go.dev/builtin#float64): The measurement of the power, represented as a 64-bit float number.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -174,7 +174,7 @@ If a sensor is not configured to have a measurement or fails to read a piece of 
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.SensorReading]): The measurements or readings that this power sensor provides.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.SensorReading]):  The readings for the PowerSensor. Can be of any type. Includes voltage in volts (float), current inamperes (float), is_ac (bool), and power in watts (float).   .
 
 **Example:**
 
@@ -197,7 +197,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string): A map containing the measurements from the sensor. Contents depend on sensor model and can be of any type.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -255,8 +255,8 @@ Reconfigure must reconfigure the resource atomically and in place.
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `deps` [(Dependencies)](https://pkg.go.dev/go.viam.com/rdk/resource#Dependencies)
-- `conf` [(Config)](https://pkg.go.dev/go.viam.com/rdk/resource#Config)
+- `deps` [(Dependencies)](https://pkg.go.dev/go.viam.com/rdk/resource#Dependencies): The resource dependencies.
+- `conf` [(Config)](https://pkg.go.dev/go.viam.com/rdk/resource#Config): The resource configuration.
 
 **Returns:**
 
@@ -277,12 +277,12 @@ If you are implementing your own power sensor and add features that have no buil
 
 **Parameters:**
 
-- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute
+- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
 
 **Example:**
 
@@ -303,7 +303,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string): The command response.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
