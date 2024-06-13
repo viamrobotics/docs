@@ -1473,7 +1473,8 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
 
             if os.path.exists(param_desc_override_file):
                 for line in open(param_desc_override_file, 'r', encoding='utf-8'):
-                    param_or_return_description = param_or_return_description + line.rstrip()
+                    param_or_return_description = param_or_return_description + line.replace('\n', ' ')
+                param_or_return_description.rstrip()
 
             ## If we have a param description override, use that. If not, skip:
             if param_or_return_description != '':
@@ -1491,7 +1492,7 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
                 else:
                    return_string += f"- `{type_name}` [({param_type})]({param_type_link})"
 
-        formatted_output.append(return_string)
+        formatted_output.append(return_string.rstrip())
 
     return formatted_output
 
@@ -1684,7 +1685,7 @@ def write_markdown(type, names, methods):
 
                                     if os.path.exists(param_desc_override_file):
                                         for line in open(param_desc_override_file, 'r', encoding='utf-8'):
-                                            param_description = param_description + line
+                                            param_description = param_description + line.replace('\n', ' ')
                                         param_description = param_description.rstrip()
                                     else:
                                         param_description = param_data.get("param_description")
@@ -1724,7 +1725,7 @@ def write_markdown(type, names, methods):
 
                                 if os.path.exists(return_desc_override_file):
                                     for line in open(return_desc_override_file, 'r', encoding='utf-8'):
-                                        return_description = return_description + line
+                                        return_description = return_description + line.replace('\n', ' ')
                                     return_description = return_description.rstrip()
                                 else:
                                     return_description = return_data.get("return_description")
@@ -1891,7 +1892,8 @@ def write_markdown(type, names, methods):
 
                                     if os.path.exists(param_desc_override_file):
                                         for line in open(param_desc_override_file, 'r', encoding='utf-8'):
-                                            param_description = param_description + line.rstrip()
+                                            param_description = param_description + line.replace('\n', ' ')
+                                        param_description = param_description.rstrip()
                                     else:
                                         param_description = param_data.get("param_description")
 
@@ -1951,7 +1953,8 @@ def write_markdown(type, names, methods):
 
                                     if os.path.exists(return_desc_override_file):
                                         for line in open(return_desc_override_file, 'r', encoding='utf-8'):
-                                            return_description = return_description + line.rstrip()
+                                            return_description = return_description + line.replace('\n', ' ')
+                                        return_description = return_description.rstrip()
                                     else:
                                         return_description = return_data.get("return_description")
 
