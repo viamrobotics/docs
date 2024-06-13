@@ -1472,12 +1472,12 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
             else:
                 if 'map[string]interface{}' in param_type:
                     return_type_short = 'string'
-                elif param_type.startswith('[]'):
-                    return_type_short = param_type.removeprefix('[]')
                 elif '.' in param_type:
                     return_type_short = param_type.split('.')[-1]
                 else:
                     return_type_short = param_type
+
+                return_type_short = return_type_short.removeprefix('[]').removeprefix('*')
 
                 ## .../overrides/methods/{sdk}.{resource}.{go_method_name}.{return_data_type_last_part}.return.md
                 param_desc_override_file = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.' + return_type_short + '.return.md'
@@ -1682,7 +1682,7 @@ def write_markdown(type, names, methods):
 
                             ## If we detected a 'before' method override file, write it out here:
                             if os.path.exists(before_method_override_filepath):
-                                for line in open(before_method_override_file_path, 'r', encoding='utf-8'):
+                                for line in open(before_method_override_filepath, 'r', encoding='utf-8'):
                                     output_file.write(line)
 
                             output_file.write('**Parameters:**\n\n')
@@ -1782,7 +1782,7 @@ def write_markdown(type, names, methods):
                             if os.path.exists(after_method_override_filepath):
 
                                 output_file.write('\n')
-                                for line in open(after_method_override_file_path, 'r', encoding='utf-8'):
+                                for line in open(after_method_override_filepath, 'r', encoding='utf-8'):
                                     output_file.write(line)
 
                             # Output the method link
@@ -1806,7 +1806,7 @@ def write_markdown(type, names, methods):
 
                             ## If we detected a 'before' method override file, write it out here:
                             if os.path.exists(before_method_override_filepath):
-                                for line in open(before_method_override_file_path, 'r', encoding='utf-8'):
+                                for line in open(before_method_override_filepath, 'r', encoding='utf-8'):
                                     output_file.write(line)
 
                                 output_file.write('\n')
@@ -1875,7 +1875,7 @@ def write_markdown(type, names, methods):
                             if os.path.exists(after_method_override_filepath):
 
                                 output_file.write('\n')
-                                for line in open(after_method_override_file_path, 'r', encoding='utf-8'):
+                                for line in open(after_method_override_filepath, 'r', encoding='utf-8'):
                                     output_file.write(line)
 
                             # Output the method link
@@ -1898,7 +1898,7 @@ def write_markdown(type, names, methods):
 
                             ## If we detected a 'before' method override file, write it out here:
                             if os.path.exists(before_method_override_filepath):
-                                for line in open(before_method_override_file_path, 'r', encoding='utf-8'):
+                                for line in open(before_method_override_filepath, 'r', encoding='utf-8'):
                                     output_file.write(line)
 
                             output_file.write('**Parameters:**\n\n')
@@ -2034,7 +2034,7 @@ def write_markdown(type, names, methods):
                             if os.path.exists(after_method_override_filepath):
 
                                 output_file.write('\n')
-                                for line in open(after_method_override_file_path, 'r', encoding='utf-8'):
+                                for line in open(after_method_override_filepath, 'r', encoding='utf-8'):
                                     output_file.write(line)
 
                             # Output the method link
