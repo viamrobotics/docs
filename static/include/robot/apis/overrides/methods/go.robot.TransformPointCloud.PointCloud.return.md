@@ -1,0 +1,1 @@
+The transformed `PointCloud`.
