@@ -1426,7 +1426,7 @@ def parse_method_usage(usage_string):
     return parsed_usage_string
 
 # Format usage string, used in write_markdown():
-def format_method_usage(parsed_usage_string, method_link):
+def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_methods_override, method_link):
     formatted_output = []
     for type_name, param_type, param_type_link in parsed_usage_string:
 
@@ -1443,25 +1443,55 @@ def format_method_usage(parsed_usage_string, method_link):
         ## Hardcode select parameters / returns, in order to provide their descriptions:
         if type_name == "ctx":
             return_string += f"- `{type_name}` [({param_type})]({param_type_link}): A Context carries a deadline, a cancellation signal, and other values across API boundaries."
-            formatted_output.append(return_string)
         elif type_name == "extra":
             return_string += f"- `{type_name}` [({param_type})]({param_type_link}): Extra options to pass to the underlying RPC call."
-            formatted_output.append(return_string)
         elif type_name == "cmd":
             return_string += f"- `{type_name}` [({param_type})]({param_type_link}): The command to execute."
-            formatted_output.append(return_string)
         elif param_type == "error":
             return_string += f"- [({param_type})]({param_type_link}): An error, if one occurred."
-            formatted_output.append(return_string)
         else:
-            ## Format returns:
-            if type_name == '':
-               return_string += f"- [({param_type})]({param_type_link})"
-               formatted_output.append(return_string)
-            ## Format parameters:
+            ## Check for param and return description overrides:
+            param_or_return_description = ''
+            ## Param override:
+            if type_name != '':
+                ## .../overrides/methods/{sdk}.{resource}.{go_method_name}.{param_name}.md
+                param_desc_override_file = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.' + type_name + '.md'
+            ## Return override:
             else:
-               return_string += f"- `{type_name}` [({param_type})]({param_type_link})"
-               formatted_output.append(return_string)
+                if 'map[string]interface{}' in param_type:
+                    return_type_short = 'string' 
+                elif '.' in param_type:
+                    return_type_short = param_type.split('.')[-1]
+                else:
+                    return_type_short = param_type
+
+                ## .../overrides/methods/{sdk}.{resource}.{go_method_name}.{return_data_type_last_part}.return.md
+                param_desc_override_file = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.' + return_type_short + '.return.md'
+
+            ## NOTE: To help when populating override files, uncomment this line, run this script, and use printed paths as filepaths:
+            #print(param_desc_override_file)
+
+            if os.path.exists(param_desc_override_file):
+                for line in open(param_desc_override_file, 'r', encoding='utf-8'):
+                    param_or_return_description = param_or_return_description + line.rstrip()
+
+            ## If we have a param description override, use that. If not, skip:
+            if param_or_return_description != '':
+                ## Format returns:
+                if type_name == '':
+                   return_string += f"- [({param_type})]({param_type_link}): {param_or_return_description}"
+                ## Format parameters:
+                else:
+                   return_string += f"- `{type_name}` [({param_type})]({param_type_link}): {param_or_return_description}"
+            else:
+                ## Format returns:
+                if type_name == '':
+                   return_string += f"- [({param_type})]({param_type_link})"
+                ## Format parameters:
+                else:
+                   return_string += f"- `{type_name}` [({param_type})]({param_type_link})"
+
+        formatted_output.append(return_string)
 
     return formatted_output
 
@@ -1489,15 +1519,23 @@ def write_markdown(type, names, methods):
     Path(path_to_protos_override).mkdir(parents=True, exist_ok=True)
     Path(path_to_methods_override).mkdir(parents=True, exist_ok=True)
 
-    ## NOTE: To use the above override directories:
+    ## NOTE: To use the above override directories, place a file at one of these locations.
+    ## IMPORTANT: Filenames are CASE-SENSITIVE!
     ## To override a proto with custom leading MD content, place a file here:
     ##    docs/static/include/{type}/apis/overrides/protos/{resource}.{protoname}.md
     ## To override a method with custom leading MD content, place a file here:
     ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.before.md
-    ##      OR JUST:
-    ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.md
     ## To override a method with custom trailing MD content, place a file here:
     ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.after.md
+    ## To override a specific parameter description for a method with custom MD content, place a file here:
+    ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.{parameter_name}.md
+    ## To override a specific return description for a method with custom MD content, place a file here:
+    ##    For Python (can have only one return, returns are not named):
+    ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.return.md
+    ##    For Flutter (can have multiple returns, returns are named):
+    ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.{return_name}.md
+    ##    For Go (can have multiple returns, returns are not named):
+    ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.{return_data_type_last_part}.return.md
 
     ## Loop through each resource, such as 'arm'. run() already calls parse() in
     ## scope limited to 'type', so we don't have to loop by type:
@@ -1614,39 +1652,18 @@ def write_markdown(type, names, methods):
                         if py_method_name and "python" in sdks:
                             output_file.write('{{% tab name="Python" %}}\n\n')
 
-                            ## Check for method overrides.
-                            ## This check supports additional filename switches, to control whether this
-                            ## override is to be placed either before the auto-gen stuff, or after.
-                            ## Appending filename with .before (or omitting) places MD content before
-                            ## the auto-gen content for this method (i.e. before params,returns, etc).
-                            ## Appending filename with .after places MD content after the auto-gen content
-                            ## for this method (i.e. after params and code samples).
+                            ## Assemble possible method override filepaths. Provide a file at one or both of these locations to
+                            ## inject additional MD content either before or after the auto-generated method content:
+                            ## 'before': injects immediately after the opening SDK tab and before the first parameter is listed.
+                            ## 'after': injects immediately after the code sample (or last return if none), and before the closing SDK tab.
+                            ## .../overrides/methods/{sdk}.{resource}.{py_method_name}.before|after.md
+                            before_method_override_filepath = path_to_methods_override + '/python.' + resource + '.' + py_method_name + '.before.md'
+                            after_method_override_filepath = path_to_methods_override + '/python.' + resource + '.' + py_method_name + '.after.md'
 
-                            has_after_override = 0
-
-                            ## .../overrides/methods/{resource}.{sdk}.{method}.before|after.md
-                            for method_override_filename in os.listdir(path_to_methods_override):
-                                if method_override_filename.startswith('python.' + resource + '.' + py_method_name):
-                                    method_override_file_path = os.path.join(path_to_methods_override, method_override_filename)
-                                    if method_override_filename.endswith('.after.md'):
-
-                                        ## Because we are writing out MD content in the same general loop as we are getting it
-                                        ## from the passed data object, we have to delay this 'after' write until later.
-                                        ## If you wanted to fetch all data first, and then afterwards loop through it all
-                                        ## separately, you could do this all together. For this implementation of this mock writer
-                                        ## function, I'm just noting in has_after_override that I need to come back
-                                        ## to this later in the writer loop:
-                                        has_after_override = 1
-
-                                    ## Just being painfully explicit that we accept '.before' or nothing to control injecting
-                                    ## before the auto-gen content (such as params, returns, etc), or exactly '.after' to control
-                                    ## injecting after the auto-gen content:
-                                    if not method_override_filename.endswith('.after.md') and \
-                                        (method_override_filename.endswith('.before.md') or \
-                                        method_override_filename.endswith('.md')):
-
-                                        for line in open(method_override_file_path, 'r', encoding='utf-8'):
-                                            output_file.write(line)
+                            ## If we detected a 'before' method override file, write it out here:
+                            if os.path.exists(before_method_override_filepath):
+                                for line in open(before_method_override_file_path, 'r', encoding='utf-8'):
+                                    output_file.write(line)
 
                             output_file.write('**Parameters:**\n\n')
 
@@ -1657,7 +1674,21 @@ def write_markdown(type, names, methods):
                                     param_data = methods['python'][type][resource][py_method_name]['parameters'][parameter]
 
                                     param_type = param_data.get("param_type")
-                                    param_description = param_data.get("param_description")
+
+                                    param_description = ''
+                                    ## .../overrides/methods/{sdk}.{resource}.{py_method_name}.{param_name}.md
+                                    param_desc_override_file = path_to_methods_override + '/python.' + resource + '.' + py_method_name + '.' + parameter + '.md'
+
+                                    ## NOTE: To help when populating param override files, uncomment this line, run this script, and use printed paths as filepaths:
+                                    #print(param_desc_override_file)
+
+                                    if os.path.exists(param_desc_override_file):
+                                        for line in open(param_desc_override_file, 'r', encoding='utf-8'):
+                                            param_description = param_description + line
+                                        param_description = param_description.rstrip()
+                                    else:
+                                        param_description = param_data.get("param_description")
+
                                     optional = param_data.get("optional")
 
                                     output_file.write(f'- `{parameter}` ({param_type})')
@@ -1683,7 +1714,20 @@ def write_markdown(type, names, methods):
 
                                 return_data = methods['python'][type][resource][py_method_name]["return"]
                                 return_type = return_data.get("return_type")
-                                return_description = return_data.get("return_description")
+
+                                return_description = ''
+                                ## .../overrides/methods/{sdk}.{resource}.{py_method_name}.return.md
+                                return_desc_override_file = path_to_methods_override + '/python.' + resource + '.' + py_method_name + '.return.md'
+
+                                ## NOTE: To help when populating return override files, uncomment this line, run this script, and use printed paths as filepaths:
+                                #print(return_desc_override_file)
+
+                                if os.path.exists(return_desc_override_file):
+                                    for line in open(return_desc_override_file, 'r', encoding='utf-8'):
+                                        return_description = return_description + line
+                                    return_description = return_description.rstrip()
+                                else:
+                                    return_description = return_data.get("return_description")
 
                                 if return_type:
                                     output_file.write(f"- ({return_type})")
@@ -1705,11 +1749,10 @@ def write_markdown(type, names, methods):
                                 output_file.write('```\n')
 
                             ## If we detected an 'after' method override file earlier, write it out here:
-                            if has_after_override:
+                            if os.path.exists(after_method_override_filepath):
 
                                 output_file.write('\n')
-
-                                for line in open(method_override_file_path, 'r', encoding='utf-8'):
+                                for line in open(after_method_override_file_path, 'r', encoding='utf-8'):
                                     output_file.write(line)
 
                             # Output the method link
@@ -1723,41 +1766,20 @@ def write_markdown(type, names, methods):
                         if go_method_name and "go" in sdks:
                             output_file.write('{{% tab name="Go" %}}\n\n')
 
-                            ## Check for method overrides.
-                            ## This check supports additional filename switches, to control whether this
-                            ## override is to be placed either before the auto-gen stuff, or after.
-                            ## Appending filename with .before (or omitting) places MD content before
-                            ## the auto-gen content for this method (i.e. before params,returns, etc).
-                            ## Appending filename with .after places MD content after the auto-gen content
-                            ## for this method (i.e. after params and code samples).
+                            ## Assemble possible method override filepaths. Provide a file at one or both of these locations to
+                            ## inject additional MD content either before or after the auto-generated method content:
+                            ## 'before': injects immediately after the opening SDK tab and before the first parameter is listed.
+                            ## 'after': injects immediately after the code sample (or last return if none), and before the closing SDK tab.
+                            ## .../overrides/methods/{sdk}.{resource}.{go_method_name}.before|after.md
+                            before_method_override_filepath = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.before.md'
+                            after_method_override_filepath = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.after.md'
 
-                            has_after_override = 0
+                            ## If we detected a 'before' method override file, write it out here:
+                            if os.path.exists(before_method_override_filepath):
+                                for line in open(before_method_override_file_path, 'r', encoding='utf-8'):
+                                    output_file.write(line)
 
-                            ## .../overrides/methods/{resource}.{sdk}.{method}.before|after.md
-                            for method_override_filename in os.listdir(path_to_methods_override):
-                                if method_override_filename.startswith('go.' + resource + '.' + go_method_name):
-                                    method_override_file_path = os.path.join(path_to_methods_override, method_override_filename)
-                                    if method_override_filename.endswith('.after.md'):
-
-                                        ## Because we are writing out MD content in the same general loop as we are getting it
-                                        ## from the passed data object, we have to delay this 'after' write until later.
-                                        ## If you wanted to fetch all data first, and then afterwards loop through it all
-                                        ## separately, you could do this all together. For this implementation of this mock writer
-                                        ## function, I'm just noting in has_after_override that I need to come back
-                                        ## to this later in the writer loop:
-                                        has_after_override = 1
-
-                                    ## Just being painfully explicit that we accept '.before' or nothing to control injecting
-                                    ## before the auto-gen content (such as params, returns, etc), or exactly '.after' to control
-                                    ## injecting after the auto-gen content:
-                                    if not method_override_filename.endswith('.after.md') and \
-                                        (method_override_filename.endswith('.before.md') or \
-                                        method_override_filename.endswith('.md')):
-
-                                        for line in open(method_override_file_path, 'r', encoding='utf-8'):
-                                            output_file.write(line)
-
-                                        output_file.write('\n')
+                                output_file.write('\n')
 
                             if 'usage' in methods['go'][type][resource][go_method_name]:
 
@@ -1786,7 +1808,9 @@ def write_markdown(type, names, methods):
                                 if len(parameters) > 0:
                                     # Parse and format parameters
                                     parsed_parameters = parse_method_usage(parameters)
-                                    formatted_parameters = format_method_usage(parsed_parameters, methods["go"][type][resource][go_method_name]["method_link"])
+                                    formatted_parameters = format_method_usage(parsed_parameters, go_method_name, resource, path_to_methods_override, methods["go"][type][resource][go_method_name]["method_link"])
+
+                                    ## NOTE: Use commented-out print statements in formatted_returns() if populating override files.
 
                                     for line in formatted_parameters:
                                         output_file.write(line + '\n')
@@ -1799,7 +1823,9 @@ def write_markdown(type, names, methods):
                                     # Parse and format returns
 
                                     parsed_returns = parse_method_usage(returns)
-                                    formatted_returns = format_method_usage(parsed_returns, methods["go"][type][resource][go_method_name]["method_link"])
+                                    formatted_returns = format_method_usage(parsed_returns, go_method_name, resource, path_to_methods_override, methods["go"][type][resource][go_method_name]["method_link"])
+
+                                    ## NOTE: Use commented-out print statements in formatted_returns() if populating override files.
 
                                     for line in formatted_returns:
                                         output_file.write(line + '\n')
@@ -1816,11 +1842,10 @@ def write_markdown(type, names, methods):
                                 output_file.write('```\n')
 
                             ## If we detected an 'after' method override file earlier, write it out here:
-                            if has_after_override:
+                            if os.path.exists(after_method_override_filepath):
 
                                 output_file.write('\n')
-
-                                for line in open(method_override_file_path, 'r', encoding='utf-8'):
+                                for line in open(after_method_override_file_path, 'r', encoding='utf-8'):
                                     output_file.write(line)
 
                             # Output the method link
@@ -1833,39 +1858,18 @@ def write_markdown(type, names, methods):
                         if flutter_method_name and "flutter" in sdks:
                             output_file.write('{{% tab name="Flutter" %}}\n\n')
 
-                            ## Check for method overrides.
-                            ## This check supports additional filename switches, to control whether this
-                            ## override is to be placed either before the auto-gen stuff, or after.
-                            ## Appending filename with .before (or omitting) places MD content before
-                            ## the auto-gen content for this method (i.e. before params,returns, etc).
-                            ## Appending filename with .after places MD content after the auto-gen content
-                            ## for this method (i.e. after params and code samples).
+                            ## Assemble possible method override filepaths. Provide a file at one or both of these locations to
+                            ## inject additional MD content either before or after the auto-generated method content:
+                            ## 'before': injects immediately after the opening SDK tab and before the first parameter is listed.
+                            ## 'after': injects immediately after the code sample (or last return if none), and before the closing SDK tab.
+                            ## .../overrides/methods/{sdk}.{resource}.{flutter_method_name}.before|after.md
+                            before_method_override_filepath = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.before.md'
+                            after_method_override_filepath = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.after.md'
 
-                            has_after_override = 0
-
-                            ## .../overrides/methods/{resource}.{sdk}.{method}.before|after.md
-                            for method_override_filename in os.listdir(path_to_methods_override):
-                                if method_override_filename.startswith('flutter.' + resource + '.' + flutter_method_name):
-                                    method_override_file_path = os.path.join(path_to_methods_override, method_override_filename)
-                                    if method_override_filename.endswith('.after.md'):
-
-                                        ## Because we are writing out MD content in the same general loop as we are getting it
-                                        ## from the passed data object, we have to delay this 'after' write until later.
-                                        ## If you wanted to fetch all data first, and then afterwards loop through it all
-                                        ## separately, you could do this all together. For this implementation of this mock writer
-                                        ## function, I'm just noting in has_after_override that I need to come back
-                                        ## to this later in the writer loop:
-                                        has_after_override = 1
-
-                                    ## Just being painfully explicit that we accept '.before' or nothing to control injecting
-                                    ## before the auto-gen content (such as params, returns, etc), or exactly '.after' to control
-                                    ## injecting after the auto-gen content:
-                                    if not method_override_filename.endswith('.after.md') and \
-                                        (method_override_filename.endswith('.before.md') or \
-                                        method_override_filename.endswith('.md')):
-
-                                        for line in open(method_override_file_path, 'r', encoding='utf-8'):
-                                            output_file.write(line)
+                            ## If we detected a 'before' method override file, write it out here:
+                            if os.path.exists(before_method_override_filepath):
+                                for line in open(before_method_override_file_path, 'r', encoding='utf-8'):
+                                    output_file.write(line)
 
                             output_file.write('**Parameters:**\n\n')
                             if 'parameters' in methods['flutter'][type][resource][flutter_method_name]:
@@ -1878,7 +1882,19 @@ def write_markdown(type, names, methods):
                                     param_subtype = param_data.get("param_subtype")
                                     param_type_link = param_data.get("param_type_link")
                                     param_subtype_link = param_data.get("param_subtype_link")
-                                    param_description = param_data.get("param_description")
+
+                                    param_description = ''
+                                    param_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + parameter + '.md'
+
+                                    ## NOTE: To help when populating param override files, uncomment this line, run this script, and use printed paths as filepaths:
+                                    #print(param_desc_override_file)
+
+                                    if os.path.exists(param_desc_override_file):
+                                        for line in open(param_desc_override_file, 'r', encoding='utf-8'):
+                                            param_description = param_description + line.rstrip()
+                                    else:
+                                        param_description = param_data.get("param_description")
+
                                     optional = param_data.get("optional")
 
                                     output_file.write(f'- `{parameter}` [({param_type})]')
@@ -1926,7 +1942,18 @@ def write_markdown(type, names, methods):
                                     return_type_link = return_data.get("return_type_link")
                                     return_link = return_data.get("return_type_link") # TODO: handle this
                                     return_subtype_link = return_data.get("return_subtype_link")
-                                    return_description = return_data.get("return_description")
+
+                                    return_description = ''
+                                    return_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + return_name + '.md'
+
+                                    ## NOTE: To help when populating return override files, uncomment this line, run this script, and use printed paths as filepaths:
+                                    #print(return_desc_override_file)
+
+                                    if os.path.exists(return_desc_override_file):
+                                        for line in open(return_desc_override_file, 'r', encoding='utf-8'):
+                                            return_description = return_description + line.rstrip()
+                                    else:
+                                        return_description = return_data.get("return_description")
 
                                     if return_type:
                                         output_file.write(f"- `{return_name}` [({return_type})]")
@@ -1962,11 +1989,10 @@ def write_markdown(type, names, methods):
                                 output_file.write('```\n')
 
                             ## If we detected an 'after' method override file earlier, write it out here:
-                            if has_after_override:
+                            if os.path.exists(after_method_override_filepath):
 
                                 output_file.write('\n')
-
-                                for line in open(method_override_file_path, 'r', encoding='utf-8'):
+                                for line in open(after_method_override_file_path, 'r', encoding='utf-8'):
                                     output_file.write(line)
 
                             # Output the method link
