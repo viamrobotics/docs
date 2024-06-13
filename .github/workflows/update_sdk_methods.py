@@ -1471,7 +1471,9 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
             ## Return override:
             else:
                 if 'map[string]interface{}' in param_type:
-                    return_type_short = 'string' 
+                    return_type_short = 'string'
+                elif param_type.startswith('[]'):
+                    return_type_short = param_type.removeprefix('[]')
                 elif '.' in param_type:
                     return_type_short = param_type.split('.')[-1]
                 else:
