@@ -1445,8 +1445,20 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
             return_string += f"- `{type_name}` [({param_type})]({param_type_link}): A Context carries a deadline, a cancellation signal, and other values across API boundaries."
         elif type_name == "extra":
             return_string += f"- `{type_name}` [({param_type})]({param_type_link}): Extra options to pass to the underlying RPC call."
-        elif type_name == "cmd":
+        elif go_method_name == "DoCommand" and type_name == "cmd":
             return_string += f"- `{type_name}` [({param_type})]({param_type_link}): The command to execute."
+        elif go_method_name == "Reconfigure" and type_name == "deps":
+            return_string += f"- `{type_name}` [({param_type})]({param_type_link}): The resource dependencies."
+        elif go_method_name == "Reconfigure" and type_name == "conf":
+            return_string += f"- `{type_name}` [({param_type})]({param_type_link}): The resource configuration."
+        elif go_method_name == "DoCommand" and param_type == "map[string]interface{}":
+            return_string += f"- [({param_type})]({param_type_link}): The command response."
+        elif go_method_name == "Geometries" and param_type == "[]spatialmath.Geometry":
+            return_string += f"- [({param_type})]({param_type_link}): The geometries associated with this resource, in any order."
+        elif go_method_name == "IsMoving" and param_type == "bool":
+            return_string += f"- [({param_type})]({param_type_link}): Whether this resource is moving (`true`) or not (`false`)."
+        elif go_method_name == "Readings" and param_type == "map[string]interface{}":
+            return_string += f"- [({param_type})]({param_type_link}): A map containing the measurements from the sensor. Contents depend on sensor model and can be of any type."
         elif param_type == "error":
             return_string += f"- [({param_type})]({param_type_link}): An error, if one occurred."
         else:
@@ -1474,7 +1486,7 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
             if os.path.exists(param_desc_override_file):
                 for line in open(param_desc_override_file, 'r', encoding='utf-8'):
                     param_or_return_description = param_or_return_description + line.replace('\n', ' ')
-                param_or_return_description.rstrip()
+                param_or_return_description = param_or_return_description.rstrip()
 
             ## If we have a param description override, use that. If not, skip:
             if param_or_return_description != '':
