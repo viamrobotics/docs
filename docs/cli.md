@@ -229,7 +229,7 @@ To use a machine part API key to authenticate your CLI session, you must first c
    Where:
 
    - `robot-id` is your machine's ID.
-     You can find your machine ID by running `viam machines list`, or by clicking the **...** in the upper-right corner of your machine's page in the [Viam app](https://app.viam.com).
+     You can find your machine ID by running `viam machines list`, or by clicking the **...** button in the upper-right corner of your machine's page in the [Viam app](https://app.viam.com), and selecting **Copy machine ID**.
    - `org-id` is an optional organization ID to attach the key to.
      You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the Viam app.
      If only one organization owns the robot, you can omit the parameter.

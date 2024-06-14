@@ -1330,7 +1330,7 @@ List the {{< glossary_tooltip term_id="module" text="modules" >}} under the orga
 
 **Raises:**
 
-- `GRPCError`: This error is raised if an invalid org ID is passed.
+- `GRPCError`: This error is raised if an invalid organization ID is passed.
 
 **Returns:**
 
