@@ -1483,7 +1483,7 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
                 param_desc_override_file = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.' + return_type_short + '.return.md'
 
             ## NOTE: To help when populating override files, uncomment this line, run this script, and use printed paths as filepaths:
-            #print('         ' + param_desc_override_file.split('/')[-1])
+            #print(param_desc_override_file)
 
             if os.path.exists(param_desc_override_file):
                 for line in open(param_desc_override_file, 'r', encoding='utf-8'):
@@ -1700,7 +1700,7 @@ def write_markdown(type, names, methods):
                                     param_desc_override_file = path_to_methods_override + '/python.' + resource + '.' + py_method_name + '.' + parameter + '.md'
 
                                     ## NOTE: To help when populating param override files, uncomment this line, run this script, and use printed paths as filepaths:
-                                    #print('         ' + param_desc_override_file.split('/')[-1])
+                                    #print(param_desc_override_file)
 
                                     if os.path.exists(param_desc_override_file):
                                         for line in open(param_desc_override_file, 'r', encoding='utf-8'):
@@ -1745,7 +1745,7 @@ def write_markdown(type, names, methods):
                                 return_desc_override_file = path_to_methods_override + '/python.' + resource + '.' + py_method_name + '.return.md'
 
                                 ## NOTE: To help when populating return override files, uncomment this line, run this script, and use printed paths as filepaths:
-                                #print('         ' + return_desc_override_file.split('/')[-1])
+                                #print(return_desc_override_file)
 
                                 if os.path.exists(return_desc_override_file):
                                     for line in open(return_desc_override_file, 'r', encoding='utf-8'):
@@ -1917,7 +1917,7 @@ def write_markdown(type, names, methods):
                                     param_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + parameter + '.md'
 
                                     ## NOTE: To help when populating param override files, uncomment this line, run this script, and use printed paths as filepaths:
-                                    #print('         ' + param_desc_override_file.split('/')[-1])
+                                    #print(param_desc_override_file)
 
                                     if os.path.exists(param_desc_override_file):
                                         for line in open(param_desc_override_file, 'r', encoding='utf-8'):
@@ -1983,7 +1983,7 @@ def write_markdown(type, names, methods):
                                     return_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + return_name + '.md'
 
                                     ## NOTE: To help when populating return override files, uncomment this line, run this script, and use printed paths as filepaths:
-                                    #print('         ' + return_desc_override_file.split('/')[-1])
+                                    #print(return_desc_override_file)
 
                                     if os.path.exists(return_desc_override_file):
                                         for line in open(return_desc_override_file, 'r', encoding='utf-8'):
