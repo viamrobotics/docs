@@ -6,6 +6,7 @@
 | [`GetOrganizationNamespaceAvailability`](/appendix/apis/fleet/#getorganizationnamespaceavailability) | Check the availability of an {{< glossary_tooltip term_id="organization" text="organization" >}} namespace. |
 | [`UpdateOrganization`](/appendix/apis/fleet/#updateorganization) | Updates organization details. |
 | [`ListOrganizationMembers`](/appendix/apis/fleet/#listorganizationmembers) | List the members and invites of the {{< glossary_tooltip term_id="organization" text="organization" >}} that you are currently authenticated to. |
+| [`CreateOrganizationInvite`](/appendix/apis/fleet/#createorganizationinvite) | Create an {{< glossary_tooltip term_id="organization" text="organization" >}} invite and send it by email. |
 | [`UpdateOrganizationInviteAuthorizations`](/appendix/apis/fleet/#updateorganizationinviteauthorizations) | Update (add or remove) the authorizations attached to an organization invite that has already been created. |
 | [`DeleteOrganizationMember`](/appendix/apis/fleet/#deleteorganizationmember) | Remove a member from the {{< glossary_tooltip term_id="organization" text="organization" >}} you are currently authenticated to. |
 | [`DeleteOrganizationInvite`](/appendix/apis/fleet/#deleteorganizationinvite) | Delete a pending organization invite to the organization you are currently authenticated to. |
@@ -16,8 +17,6 @@
 | [`DeleteLocation`](/appendix/apis/fleet/#deletelocation) | Delete a {{< glossary_tooltip term_id="location" text="location" >}}. |
 | [`ListLocations`](/appendix/apis/fleet/#listlocations) | Get a list of all {{< glossary_tooltip term_id="location" text="locations" >}} under the organization you are currently authenticated to. |
 | [`LocationAuth`](/appendix/apis/fleet/#locationauth) | Get a location’s `LocationAuth` (location secret or secrets). |
-| [`CreateLocationSecret`](/appendix/apis/fleet/#createlocationsecret) | Create a new location secret. |
-| [`DeleteLocationSecret`](/appendix/apis/fleet/#deletelocationsecret) | Delete a location secret. |
 | [`GetRobot`](/appendix/apis/fleet/#getrobot) | Get a {{< glossary_tooltip term_id="machine" text="machine" >}} by its ID. |
 | [`GetRobotParts`](/appendix/apis/fleet/#getrobotparts) | Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under a specific {{< glossary_tooltip term_id="machine" text="machine" >}}. |
 | [`GetRobotPart`](/appendix/apis/fleet/#getrobotpart) | Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}}. |

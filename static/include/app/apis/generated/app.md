@@ -104,7 +104,7 @@ List the members and invites of the {{< glossary_tooltip term_id="organization" 
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list members of.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list members of. You can obtain your organization ID from the Viam app’s organization settings page.
 
 **Returns:**
 
@@ -121,6 +121,35 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### CreateOrganizationInvite
+
+Create an {{< glossary_tooltip term_id="organization" text="organization" >}} invite and send it by email.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create an invite for. You can obtain your organization ID from the Viam app’s organization settings page.
+- `email` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The email address to send the invite to.
+- `authorizations` ([List[viam.proto.app.Authorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)) (optional): Specifications of the authorizations to include in the invite. If not provided, full owner permissions will be granted.
+- `send_email_invite` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Whether or not an email should be sent to the recipient of an invite. The user must accept the email to be added to the associated authorizations. When set to false, the user automatically receives the associated authorization on the next login of the user with the associated email address.
+
+**Returns:**
+
+- ([viam.proto.app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)): The organization invite.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.create_organization_invite("org-id", "youremail@email.com")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_organization_invite).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### UpdateOrganizationInviteAuthorizations
 
 Update (add or remove) the authorizations attached to an organization invite that has already been created.
@@ -131,7 +160,7 @@ If an invitation has only one authorization and you want to remove it, delete th
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that the invite is for.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that the invite is for. You can obtain your organization ID from the Viam app’s organization settings page.
 - `email` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Email of the user the invite was sent to.
 - `add_authorizations` ([List[viam.proto.app.Authorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)) (optional): Optional list of authorizations to add to the invite.
 - `remove_authorizations` ([List[viam.proto.app.Authorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)) (optional): Optional list of authorizations to remove from the invite.
@@ -175,7 +204,7 @@ Remove a member from the {{< glossary_tooltip term_id="organization" text="organ
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the org to remove the user from.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the org to remove the user from. You can obtain your organization ID from the Viam app’s organization settings page.
 - `user_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the user to remove.
 
 **Returns:**
@@ -205,7 +234,7 @@ Delete a pending organization invite to the organization you are currently authe
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that the invite to delete was for.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that the invite to delete was for. You can obtain your organization ID from the Viam app’s organization settings page.
 - `email` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The email address the pending invite was sent to.
 
 **Returns:**
@@ -232,17 +261,17 @@ Resend a pending organization invite email.
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that the invite to resend was for.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that the invite to resend was for. You can obtain your organization ID from the Viam app’s organization settings page.
 - `email` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The email address associated with the invite.
 
 **Returns:**
 
-- ([viam.proto.app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite))
+- ([viam.proto.app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)): The organization invite sent.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.resend_organization_invite("org-id", "youremail@email.com")
+org_invite = await cloud.resend_organization_invite("org-id", "youremail@email.com")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.resend_organization_invite).
@@ -260,7 +289,7 @@ Optionally, put the new location under a specified parent location.
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the location under.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the location under. You can obtain your organization ID from the Viam app’s organization settings page.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Name of the location.
 - `parent_location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional parent location to put the location under. Defaults to a root-level location if no location ID is provided.
 
@@ -315,8 +344,8 @@ Change the name of a {{< glossary_tooltip term_id="location" text="parent locati
 **Parameters:**
 
 - `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the location to update. Must be specified.
-- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional new name to be updated on the location. Defaults to the empty string “” (that is, the name doesn’t change).
-- `parent_location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional ID of new parent location to move the location under. Defaults to the empty string “” (that is, no new parent location is assigned).
+- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional new name to be updated on the location. Defaults to the empty string “” (i.e., the name doesn’t change).
+- `parent_location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional ID of new parent location to move the location under. Defaults to the empty string “” (i.e., no new parent location is assigned).
 
 **Returns:**
 
@@ -387,7 +416,7 @@ Get a list of all {{< glossary_tooltip term_id="location" text="locations" >}} u
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the org to list locations for.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the org to list locations for. You can obtain your organization ID from the Viam app’s organization settings page.
 
 **Returns:**
 
@@ -426,60 +455,6 @@ loc_auth = await cloud.location_auth(location_id="123xy12345")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.location_auth).
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### CreateLocationSecret
-
-Create a new location secret.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): ID of the location to generate a new secret for. Defaults to the location ID provided at AppClient instantiation.
-
-**Returns:**
-
-- ([viam.proto.app.LocationAuth](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.LocationAuth)): The specified location’s LocationAuth containing the newly created secret.
-
-**Example:**
-
-```python {class="line-numbers linkable-line-numbers"}
-new_loc_auth = await cloud.create_location_secret()
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_location_secret).
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### DeleteLocationSecret
-
-Delete a location secret.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `secret_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the secret to delete.
-- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): ID of the location to delete secret from. Defaults to the location ID provided at AppClient instantiation.
-
-**Returns:**
-
-- None.
-
-**Example:**
-
-```python {class="line-numbers linkable-line-numbers"}
-await cloud.delete_location_secret(
-    secret_id="abcd123-456-7890ab-cxyz98-989898xyzxyz")
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_location_secret).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -523,7 +498,7 @@ Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under
 
 **Returns:**
 
-- ([List[RobotPart]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The list of robot parts.
+- ([List[RobotPart]](http://localhost:9001/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The list of robot parts.
 
 **Example:**
 
@@ -552,7 +527,7 @@ Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 **Returns:**
 
-- ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The robot part.
+- ([RobotPart](http://localhost:9001/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The robot part.
 
 **Example:**
 
@@ -576,14 +551,14 @@ Get the logs associated with a specific machine {{< glossary_tooltip term_id="pa
 **Parameters:**
 
 - `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to get logs from.
-- `filter` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Only include logs with messages that contain the string filter. Defaults to empty string “” (that is, no filter).
+- `filter` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Only include logs with messages that contain the string filter. Defaults to empty string “” (i.e., no filter).
 - `dest` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional filepath to write the log entries to.
 - `errors_only` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Boolean specifying whether or not to only include error logs. Defaults to True.
 - `num_log_entries` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): Number of log entries to return. Passing 0 returns all logs. Defaults to 100. All logs or the first num_log_entries logs will be returned, whichever comes first.
 
 **Returns:**
 
-- ([List[LogEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The list of log entries.
+- ([List[LogEntry]](http://localhost:9001/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The list of log entries.
 
 **Example:**
 
@@ -608,11 +583,11 @@ Get an asynchronous iterator that receives live machine part logs.
 
 - `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to retrieve logs from.
 - `errors_only` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Boolean specifying whether or not to only include error logs. Defaults to True.
-- `filter` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Only include logs with messages that contain the string filter. Defaults to empty string “” (that is, no filter).
+- `filter` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Only include logs with messages that contain the string filter. Defaults to empty string “” (i.e., no filter).
 
 **Returns:**
 
-- ([viam.app._logs._LogsStream[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live robot part logs.
+- ([viam.app._logs._LogsStream[List[LogEntry]]](http://localhost:9001/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live robot part logs.
 
 **Example:**
 
@@ -639,7 +614,7 @@ Get a list containing the history of a machine {{< glossary_tooltip term_id="par
 
 **Returns:**
 
-- ([List[RobotPartHistoryEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPartHistoryEntry)): The list of the robot part’s history.
+- ([List[RobotPartHistoryEntry]](http://localhost:9001/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPartHistoryEntry)): The list of the robot part’s history.
 
 **Example:**
 
@@ -668,7 +643,7 @@ Change the name of and assign an optional new configuration to a machine {{< glo
 
 **Returns:**
 
-- ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The newly updated robot part.
+- ([RobotPart](http://localhost:9001/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The newly updated robot part.
 
 **Example:**
 
@@ -804,7 +779,7 @@ Create a machine {{< glossary_tooltip term_id="part" text="part" >}} secret.
 
 **Returns:**
 
-- ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The robot part the new secret was generated for.
+- ([RobotPart](http://localhost:9001/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The robot part the new secret was generated for.
 
 **Example:**
 
@@ -911,7 +886,7 @@ Change the name of an existing machine.
 
 - `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot to update.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New name to be updated on the robot.
-- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): ID of the location under which the robot exists. Defaults to the location ID provided at AppClient instantiation
+- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): ID of the location under which the robot exists. Defaults to the location ID provided at AppClient instantiation.
 
 **Returns:**
 
@@ -965,12 +940,12 @@ Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}} in th
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list fragments for.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list fragments for. You can obtain your organization ID from the Viam app’s organization settings page.
 - `show_public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Optional boolean specifying whether or not to only show public fragments. If True, only public fragments will return. If False, only private fragments will return. Defaults to True.
 
 **Returns:**
 
-- ([List[Fragment]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The list of fragments.
+- ([List[Fragment]](http://localhost:9001/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The list of fragments.
 
 **Example:**
 
@@ -996,7 +971,7 @@ Get a {{< glossary_tooltip term_id="fragment" text="fragment" >}} by ID.
 
 **Returns:**
 
-- ([Fragment](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The fragment.
+- ([Fragment](http://localhost:9001/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The fragment.
 
 **Example:**
 
@@ -1021,13 +996,13 @@ Create a new private {{< glossary_tooltip term_id="fragment" text="fragment" >}}
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the ragment within.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the fragment within. You can obtain your organization ID from the Viam app’s organization settings page.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Name of the fragment.
 - `config` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional Dictionary representation of new config to assign to specified fragment. Can be assigned by updating the fragment.
 
 **Returns:**
 
-- ([Fragment](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The newly created fragment.
+- ([Fragment](http://localhost:9001/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The newly created fragment.
 
 **Example:**
 
@@ -1056,7 +1031,7 @@ Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and it
 
 **Returns:**
 
-- ([Fragment](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The newly updated fragment.
+- ([Fragment](http://localhost:9001/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The newly updated fragment.
 
 **Example:**
 
@@ -1107,11 +1082,11 @@ Add a role under the organization you are currently authenticated to.
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the role in.
-- `identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the entity the role belongs to (for example, a user ID).
-- `role` (None) (required): The role to add.
-- `resource_type` (None) (required): Type of the resource to add role to. Must match resource_id.
-- `resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the resource the role applies to (that is, either an organization, location, or robot ID).
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the role in. You can obtain your organization ID from the Viam app’s organization settings page.
+- `identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the entity the role belongs to (e.g., a user ID).
+- `role` (Literal[owner] | Literal[operator]) (required): The role to add (either `"owner"` or `"operator"`).
+- `resource_type` (Literal[organization] | Literal[location] | Literal[robot]) (required): The type of the resource to add the role to (either `"organization"`, `"location"`, or `"robot"`). Must match the type of the `resource_id`'s resource.
+- `resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the resource the role applies to (the ID of either an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="machine" text="machine" >}}.).
 
 **Returns:**
 
@@ -1142,11 +1117,11 @@ Remove a role under the organization you are currently authenticated to.
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization the role exists in.
-- `identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the entity the role belongs to (for example, a user ID).
-- `role` (None) (required): The role to remove.
-- `resource_type` (None) (required): Type of the resource the role is being removed from. Must match resource_id.
-- `resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the resource the role applies to (that is, either an organization, location, or robot ID).
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization the role exists in. You can obtain your organization ID from the Viam app’s organization settings page.
+- `identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the entity the role belongs to (e.g., a user ID).
+- `role` (Literal[owner] | Literal[operator]) (required): The role to remove.
+- `resource_type` (Literal[organization] | Literal[location] | Literal[robot]) (required): Type of the resource the role is being removed from. Must match resource_id.
+- `resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the resource the role applies to (i.e., either an organization, location, or robot ID).
 
 **Returns:**
 
@@ -1207,7 +1182,7 @@ Check if the organization, location, or robot your `ViamClient` is authenticated
 
 **Parameters:**
 
-- `permissions` ([List[viam.proto.app.AuthorizedPermissions]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions)) (required): the permissions to validate (for example, “read_organization”, “control_robot”)
+- `permissions` ([List[viam.proto.app.AuthorizedPermissions]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions)) (required): the permissions to validate (e.g., “read_organization”, “control_robot”).
 
 **Returns:**
 
@@ -1300,7 +1275,7 @@ Create a {{< glossary_tooltip term_id="module" text="module" >}} under the organ
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the module under.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the module under. You can obtain your organization ID from the Viam app’s organization settings page.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the module. Must be unique within your organization.
 
 **Returns:**
@@ -1328,7 +1303,7 @@ Update the documentation URL, description, models, entrypoint, and/or the visibi
 
 **Parameters:**
 
-- `module_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the module being updated, containing module name (for example, “my-module”) or namespace and module name (for example, “my-org:my-module”).
+- `module_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the module being updated, containing module name (e.g., “my-module”) or namespace and module name (e.g., “my-org:my-module”).
 - `url` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The url to reference for documentation and code (NOT the url of the module itself).
 - `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): A short description of the module that explains its purpose.
 - `models` ([List[viam.proto.app.Model]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Model)) (optional): list of models that are available in the module.
@@ -1416,7 +1391,7 @@ List the {{< glossary_tooltip term_id="module" text="modules" >}} under the orga
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list modules for.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list modules for. You can obtain your organization ID from the Viam app’s organization settings page.
 
 **Returns:**
 
@@ -1442,7 +1417,7 @@ Create a new [API key](/cloud/rbac/#api-keys).
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the key for.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the key for. You can obtain your organization ID from the Viam app’s organization settings page.
 - `authorizations` ([List[APIKeyAuthorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)) (required): A list of authorizations to associate with the key.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): A name for the key. If None, defaults to the current timestamp.
 
@@ -1478,7 +1453,7 @@ List all keys for the {{< glossary_tooltip term_id="organization" text="organiza
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list API keys for.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list API keys for. You can obtain your organization ID from the Viam app’s organization settings page.
 
 **Returns:**
 
@@ -1504,11 +1479,11 @@ Create a new API key with an existing key’s authorizations.
 
 **Parameters:**
 
-- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the API key to duplication authorizations from
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the API key to duplication authorizations from.
 
 **Returns:**
 
-- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): The API key and API key id
+- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): The API key and API key id.
 
 **Example:**
 

@@ -289,7 +289,7 @@ app,UpdateOrganization,update_organization,,updateOrganization
 app,DeleteOrganization,,,
 app,ListOrganizationMembers,list_organization_members,,listOrganizationMembers
 ## Python: create_organization_invite is currently broken upstream, removing temporarily from map:
-app,CreateOrganizationInvite,,,createOrganizationInvite
+app,CreateOrganizationInvite,create_organization_invite,,createOrganizationInvite
 app,UpdateOrganizationInviteAuthorizations,update_organization_invite_authorizations,,updateOrganizationInviteAuthorizations
 app,DeleteOrganizationMember,delete_organization_member,,deleteOrganizationMember
 app,DeleteOrganizationInvite,delete_organization_invite,,deleteOrganizationInvite
@@ -303,8 +303,8 @@ app,ListLocations,list_locations,,listLocations
 app,ShareLocation,,,
 app,UnshareLocation,,,
 app,LocationAuth,location_auth,,locationAuth
-app,CreateLocationSecret,create_location_secret,,createLocationSecret
-app,DeleteLocationSecret,delete_location_secret,,deleteLocationSecret
+app,CreateLocationSecret,,,
+app,DeleteLocationSecret,,,
 app,GetRobot,get_robot,,getRobot
 ## TODO: Rover stuff is implemented in py,flutter, but internal in design. Omit at proto-level, not lang-level:
 app,GetRoverRentalRobots,,,
