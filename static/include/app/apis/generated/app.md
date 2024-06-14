@@ -666,7 +666,7 @@ Create a new machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 **Parameters:**
 
-- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the the robot to create a new part for.
+- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to create a new part for. See [Find machine ID](#find-machine-id) for instructions on retrieving this value.
 - `part_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Name of the new part.
 
 **Returns:**
@@ -694,7 +694,7 @@ Delete the specified machine {{< glossary_tooltip term_id="part" text="part" >}}
 
 **Parameters:**
 
-- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to delete. Must be specified.
+- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to delete. See [Find part ID](#find-part-id) for instructions on retrieving this value.
 
 **Returns:**
 
@@ -884,7 +884,7 @@ Change the name of an existing machine.
 
 **Parameters:**
 
-- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot to update.
+- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to update. See [Find machine ID](#find-machine-id) for instructions on retrieving this value.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New name to be updated on the robot.
 - `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): ID of the location under which the robot exists. Defaults to the location ID provided at AppClient instantiation.
 
@@ -914,7 +914,7 @@ Delete a specified machine.
 
 **Parameters:**
 
-- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot to delete.
+- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to delete. See [Find machine ID](#find-machine-id) for instructions on retrieving this value.
 
 **Returns:**
 

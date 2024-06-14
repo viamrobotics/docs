@@ -95,3 +95,9 @@ To copy the ID of your machine part, select the part status dropdown to the righ
 For example:
 
 ![Part ID displayed in the Viam app.](/build/program/data-client/grab-part-id.png)
+
+## Find machine ID
+
+To copy the ID of your {{< glossary_tooltip term_id="machine" text="machine" >}}, click the **...** (Actions) button in the upper-right corner of your machine's page, then click **Copy machine ID**:
+
+![Machine ID in the actions dropdown in the Viam app.](/fleet/app-usage/copy-machine-id.png)
