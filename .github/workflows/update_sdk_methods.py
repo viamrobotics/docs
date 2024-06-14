@@ -382,7 +382,6 @@ python_ignore_apis = [
     'viam.robot.client.RobotClient.transform_point_cloud', # unimplemented
     'viam.robot.client.RobotClient.get_component', # GUESS ?
     'viam.robot.client.RobotClient.get_service', # GUESS ?
-    'viam.app.app_client.AppClient.create_organization_invite', # Currently borked: https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_organization_invite
     'viam.components.board.client.BoardClient.write_analog' # Currently borked: https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.write_analog
 ]
 
@@ -986,7 +985,7 @@ def parse(type, names):
                                 if param_type.endswith(' | None'):
                                     this_method_parameters_dict["optional"] = True
                                     param_type = param_type.replace(' | None', "")
-                                    #this_method_parameters_dict["param_type"] = param_type
+
                                 else:
                                     this_method_parameters_dict["optional"] = False
 
@@ -1038,6 +1037,9 @@ def parse(type, names):
                                             this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../', '')+ ')'
                                         elif param_type_link_raw.startswith('../'):
                                             this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
+
+                                    else:
+                                        this_method_parameters_dict["param_type"] = param_type
 
                                     ## Get parameter usage and description, if method contains a "Parameters" section. Otherwise omit.
                                     ## NOTE: We can't just use the initial param content as found above, because it does not contain descriptions,
