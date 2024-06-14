@@ -344,8 +344,8 @@ Change the name of a {{< glossary_tooltip term_id="location" text="parent locati
 **Parameters:**
 
 - `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the location to update. Must be specified.
-- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional new name to be updated on the location. Defaults to the empty string “” (i.e., the name doesn’t change).
-- `parent_location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional ID of new parent location to move the location under. Defaults to the empty string “” (i.e., no new parent location is assigned).
+- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional new name to be updated on the location. Defaults to the empty string “” (that is, the name doesn’t change).
+- `parent_location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional ID of new parent location to move the location under. Defaults to the empty string “” (that is, no new parent location is assigned).
 
 **Returns:**
 
@@ -551,7 +551,7 @@ Get the logs associated with a specific machine {{< glossary_tooltip term_id="pa
 **Parameters:**
 
 - `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to get logs from.
-- `filter` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Only include logs with messages that contain the string filter. Defaults to empty string “” (i.e., no filter).
+- `filter` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Only include logs with messages that contain the string filter. Defaults to empty string “” (that is, no filter).
 - `dest` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional filepath to write the log entries to.
 - `errors_only` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Boolean specifying whether or not to only include error logs. Defaults to True.
 - `num_log_entries` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): Number of log entries to return. Passing 0 returns all logs. Defaults to 100. All logs or the first num_log_entries logs will be returned, whichever comes first.
@@ -583,7 +583,7 @@ Get an asynchronous iterator that receives live machine part logs.
 
 - `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to retrieve logs from.
 - `errors_only` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Boolean specifying whether or not to only include error logs. Defaults to True.
-- `filter` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Only include logs with messages that contain the string filter. Defaults to empty string “” (i.e., no filter).
+- `filter` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Only include logs with messages that contain the string filter. Defaults to empty string “” (that is, no filter).
 
 **Returns:**
 
@@ -1083,7 +1083,7 @@ Add a role under the organization you are currently authenticated to.
 **Parameters:**
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the role in. You can obtain your organization ID from the Viam app’s organization settings page.
-- `identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the entity the role belongs to (e.g., a user ID).
+- `identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the entity the role belongs to (for example, a user ID).
 - `role` (Literal[owner] | Literal[operator]) (required): The role to add (either `"owner"` or `"operator"`).
 - `resource_type` (Literal[organization] | Literal[location] | Literal[robot]) (required): The type of the resource to add the role to (either `"organization"`, `"location"`, or `"robot"`). Must match the type of the `resource_id`'s resource.
 - `resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the resource the role applies to (the ID of either an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="machine" text="machine" >}}.).
@@ -1118,10 +1118,10 @@ Remove a role under the organization you are currently authenticated to.
 **Parameters:**
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization the role exists in. You can obtain your organization ID from the Viam app’s organization settings page.
-- `identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the entity the role belongs to (e.g., a user ID).
+- `identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the entity the role belongs to (for example, a user ID).
 - `role` (Literal[owner] | Literal[operator]) (required): The role to remove.
 - `resource_type` (Literal[organization] | Literal[location] | Literal[robot]) (required): Type of the resource the role is being removed from. Must match resource_id.
-- `resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the resource the role applies to (i.e., either an organization, location, or robot ID).
+- `resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the resource the role applies to (that is, either an organization, location, or robot ID).
 
 **Returns:**
 
@@ -1182,7 +1182,7 @@ Check if the organization, location, or robot your `ViamClient` is authenticated
 
 **Parameters:**
 
-- `permissions` ([List[viam.proto.app.AuthorizedPermissions]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions)) (required): the permissions to validate (e.g., “read_organization”, “control_robot”).
+- `permissions` ([List[viam.proto.app.AuthorizedPermissions]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions)) (required): the permissions to validate (for example, “read_organization”, “control_robot”).
 
 **Returns:**
 
@@ -1303,7 +1303,7 @@ Update the documentation URL, description, models, entrypoint, and/or the visibi
 
 **Parameters:**
 
-- `module_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the module being updated, containing module name (e.g., “my-module”) or namespace and module name (e.g., “my-org:my-module”).
+- `module_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the module being updated, containing module name (for example, “my-module”) or namespace and module name (for example, “my-org:my-module”).
 - `url` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The url to reference for documentation and code (NOT the url of the module itself).
 - `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): A short description of the module that explains its purpose.
 - `models` ([List[viam.proto.app.Model]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Model)) (optional): list of models that are available in the module.
