@@ -602,7 +602,7 @@ Example of previously captured IMU data:
 Navigate to the **SLAM library** tab on your location page, and click **Make new map** on the top right and specify a map name or click **Update map** next to an existing map.
 
 1. Enter the **Machine name**, **Camera name**, and optionally the **Movement Sensor name** of the components whose previously captured data you want to use to create or update a map.
-   If your machine has been deleted, you can alternatively specify the **machine ID**.
+   If your machine has been deleted, you can alternatively specify the [**machine ID**](/appendix/apis/fleet/#find-machine-id).
 1. Adjust the configuration parameters as needed.
    See [`config_params`](#config_params) for details.
 1. Select the timeframe of the data you'd like to use.

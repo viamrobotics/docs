@@ -686,6 +686,7 @@ Create a new machine {{< glossary_tooltip term_id="part" text="part" >}}.
 **Parameters:**
 
 - `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine to create a new part for.
+  See [Find machine ID](#find-machine-id) for instructions on retrieving this value.
 - `part_name` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the new part.
 
 **Raises:**
@@ -715,7 +716,8 @@ Delete the specified machine {{< glossary_tooltip term_id="part" text="part" >}}
 
 **Parameters:**
 
-- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to delete. See [Find part ID](#find-part-id) for instructions on retrieving this value.
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine part to delete.
+  See [Find part ID](#find-part-id) for instructions on retrieving this value.
 
 **Raises:**
 
@@ -905,6 +907,7 @@ Change the name of an existing machine.
 **Parameters:**
 
 - `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine to update.
+  See [Find machine ID](#find-machine-id) for instructions on retrieving this value.
 - `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): New name for the machine.
 - `location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location in which the machine exists.
   Defaults to the location ID provided at `AppClient` instantiation.
@@ -937,6 +940,7 @@ Delete a specified machine.
 **Parameters:**
 
 - `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the machine to delete.
+  See [Find machine ID](#find-machine-id) for instructions on retrieving this value.
 
 **Raises:**
 
@@ -1326,7 +1330,7 @@ List the {{< glossary_tooltip term_id="module" text="modules" >}} under the orga
 
 **Raises:**
 
-- `GRPCError`: This error is raised if an invalid machine ID is passed.
+- `GRPCError`: This error is raised if an invalid org ID is passed.
 
 **Returns:**
 
@@ -1663,8 +1667,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ## Find part ID
 
-To copy the ID of your machine part, select the part status dropdown to the right of your machine's location and name on the top of its page and click the copy icon next to **Part ID**.
-
-For example:
+To copy the ID of your machine {{< glossary_tooltip term_id="part" text="part" >}}, select the part status dropdown to the right of your machine's location and name on the top of its page and click the copy icon next to **Part ID**:
 
 ![Part ID displayed in the Viam app.](/build/program/data-client/grab-part-id.png)
+
+## Find machine ID
+
+To copy the ID of your {{< glossary_tooltip term_id="machine" text="machine" >}}, click the **...** (Actions) button in the upper-right corner of your machine's page, then click **Copy machine ID**:
+
+![Machine ID in the actions dropdown in the Viam app.](/fleet/app-usage/copy-machine-id.png)
