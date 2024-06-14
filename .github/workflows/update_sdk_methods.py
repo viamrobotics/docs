@@ -39,6 +39,9 @@ parser.add_argument('sdk_languages', type=str, nargs='?', help="A comma-separate
                      Can be one of: go, python, flutter. Omit to run against all sdks.")
 parser.add_argument('target_resources', type=str, nargs='?', help="A comma-separated list of the resources to run against. \
                      Must be all within the same resource type, like component or service. Omit to run against all resources.")
+parser.add_argument('-o', '--overrides', action='store_true', help="Print out the full expected parameter | return description \
+                     override filepath to STDOUT. Use with something like:\n \
+                     for filename in `python3 .github/workflows/update_sdk_methods.py -o go motion`; do touch $filename; done")
 parser.add_argument('-m', '--map', action='store_true', help="Generate initial mapping CSV file from upstream protos. \
                      In this mode, only the initial mapping file is output, no markdown.")
 parser.add_argument('-v', '--verbose', action='store_true', help="Run in verbose mode. Writes a debug file containing \
@@ -125,6 +128,13 @@ if sdk_list and args.verbose:
     print('SDKS OVERRIDE: Only running against ' + str(sdks) + '\n')
 if resource_list and args.verbose:
     print('RESOURCE OVERRIDE: Only running against ' + str(resource_list) + '\n')
+if args.overrides and args.verbose:
+    print("ERROR: You cannot use verbose mode with print overrides mode.")
+    print("       If you want this script to print the overrides filepaths it needs")
+    print("       for param | return description overrides, rerun this script with")
+    print("       the -o flag but WITHOUT the -v flag.")
+    print("Exiting ...")
+    exit(1)
 
 ## This script must be run within the 'docs' git repo. Here we check
 ## to make sure this is the case, and get the root of our git-managed
@@ -1482,8 +1492,8 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
                 ## .../overrides/methods/{sdk}.{resource}.{go_method_name}.{return_data_type_last_part}.return.md
                 param_desc_override_file = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.' + return_type_short + '.return.md'
 
-            ## NOTE: To help when populating override files, uncomment this line, run this script, and use printed paths as filepaths:
-            #print(param_desc_override_file)
+            if args.overrides:
+                print(param_desc_override_file)
 
             if os.path.exists(param_desc_override_file):
                 for line in open(param_desc_override_file, 'r', encoding='utf-8'):
@@ -1699,8 +1709,8 @@ def write_markdown(type, names, methods):
                                     ## .../overrides/methods/{sdk}.{resource}.{py_method_name}.{param_name}.md
                                     param_desc_override_file = path_to_methods_override + '/python.' + resource + '.' + py_method_name + '.' + parameter + '.md'
 
-                                    ## NOTE: To help when populating param override files, uncomment this line, run this script, and use printed paths as filepaths:
-                                    #print(param_desc_override_file)
+                                    if args.overrides:
+                                        print(param_desc_override_file)
 
                                     if os.path.exists(param_desc_override_file):
                                         for line in open(param_desc_override_file, 'r', encoding='utf-8'):
@@ -1744,8 +1754,8 @@ def write_markdown(type, names, methods):
                                 ## .../overrides/methods/{sdk}.{resource}.{py_method_name}.return.md
                                 return_desc_override_file = path_to_methods_override + '/python.' + resource + '.' + py_method_name + '.return.md'
 
-                                ## NOTE: To help when populating return override files, uncomment this line, run this script, and use printed paths as filepaths:
-                                #print(return_desc_override_file)
+                                if args.overrides:
+                                    print(return_desc_override_file)
 
                                 if os.path.exists(return_desc_override_file):
                                     for line in open(return_desc_override_file, 'r', encoding='utf-8'):
@@ -1916,8 +1926,8 @@ def write_markdown(type, names, methods):
                                     param_description = ''
                                     param_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + parameter + '.md'
 
-                                    ## NOTE: To help when populating param override files, uncomment this line, run this script, and use printed paths as filepaths:
-                                    #print(param_desc_override_file)
+                                    if args.overrides:
+                                        print(param_desc_override_file)
 
                                     if os.path.exists(param_desc_override_file):
                                         for line in open(param_desc_override_file, 'r', encoding='utf-8'):
@@ -1982,8 +1992,8 @@ def write_markdown(type, names, methods):
                                     return_description = ''
                                     return_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + return_name + '.md'
 
-                                    ## NOTE: To help when populating return override files, uncomment this line, run this script, and use printed paths as filepaths:
-                                    #print(return_desc_override_file)
+                                    if args.overrides:
+                                        print(return_desc_override_file)
 
                                     if os.path.exists(return_desc_override_file):
                                         for line in open(return_desc_override_file, 'r', encoding='utf-8'):
