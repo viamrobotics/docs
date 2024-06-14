@@ -26,7 +26,7 @@ The API methods provided by the SDKs for each of these resource APIs wrap gRPC c
 
 All machines support the following methods through the [robot API](/appendix/apis/robot/):
 
-{{< readfile "/static/include/services/apis/robot.md" >}}
+{{< readfile "/static/include/robot/apis/generated/robot-table.md" >}}
 
 ### Fleet management API
 

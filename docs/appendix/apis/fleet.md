@@ -90,9 +90,7 @@ The fleet management API supports the following methods (among [others](https://
 
 ## Find part ID
 
-To copy the ID of your machine part, select the part status dropdown to the right of your machine's location and name on the top of its page and click the copy icon next to **Part ID**.
-
-For example:
+To copy the ID of your machine {{< glossary_tooltip term_id="part" text="part" >}}, select the part status dropdown to the right of your machine's location and name on the top of its page and click the copy icon next to **Part ID**:
 
 ![Part ID displayed in the Viam app.](/build/program/data-client/grab-part-id.png)
 

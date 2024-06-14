@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "Configure an NTRIP-based RTK that uses serial communication."
 images: ["/icons/components/imu.svg"]
+toc_hide: true
 aliases:
   - "/components/movement-sensor/gps/gps-rtk/"
   - "/components/movement-sensor/gps/gps-nmea-rtk-serial/"
@@ -27,7 +28,9 @@ You can obtain fix and correction data by using the sensor [`GetReadings`](/comp
 The `gps-nmea-rtk-serial` and [`gps-nmea-rtk-pmtk`](../gps-nmea-rtk-pmtk/) movement sensor models support [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [real time kinematic positioning (RTK)](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS units ([such as these](https://www.sparkfun.com/rtk)).
 
 The chip requires a correction source to get to the required positional accuracy.
-The `gps-nmea-rtk-serial` model uses an over-the-internet correction source and sends the data over a serial connection to the [board](/components/board/).
+The `gps-nmea-rtk-serial` model uses an over-the-internet correction source like an RTK reference station and sends the data over a serial connection to the [board](/components/board/).
+
+Follow the guide to [Set up a SparkFun RTK Reference Station](/components/movement-sensor/set-up-base-station/) to configure a SparkFun station for use with this RTK-enabled GPS movement sensor model.
 
 {{% alert title="Tip" color="tip" %}}
 

@@ -192,10 +192,37 @@ Some additional formatting options are supported with [Hugo Shortcodes](https://
 
 We follow the [Rackspace Style Guide](https://web.archive.org/web/20200829151826/https://developer.rackspace.com/docs/style-guide/) with many rules encoded in Vale rules.
 
+Additional we enforce the following substitutions:
+
+<!-- vale off -->
+<!-- prettier-ignore -->
+| Do not say | Instead say |
+| ---------- | ----------- |
+| web app, cloud app | Viam app or Viam platform |
+| viam app, Viam App | Viam app |
+| Viam-server, Viam server, Viam-Server | viam-server |
+| Config Tab, Config tab, Configure Tab | CONFIGURE tab |
+| Vision service, Vision Service | vision service |
+| Motion service, Motion Service | motion service |
+| slam service, Slam service, SLAM Service | SLAM service |
+| Data Management Service, Data Management service | data management service |
+| in the website | on the website |
+| on the app | in the app |
+| user of an org | member of an org |
+| main part and child part, main part and non-main part | main part and sub-part |
+| subpart | sub-part |
+| drop down | dropdown |
+| drop-down | dropdown |
+| RPLIDAR, Rplidar | RPlidar |
+| compute parts | computer |
+| microprocessor | Raspberry Pi or Jetson or another specific term |
+
+<!-- vale on -->
+
 ### Vale linting
 
 {{< alert title="Tip" color="tip" >}}
-We recommend you work in Visual Studio Code and install the [Vale extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server) to make use of the vale linter.
+We recommend you work in Visual Studio Code and install the [Vale extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server) to use the vale linter.
 {{< /alert >}}
 
 When you open a PR, your changes will be checked against a few style rules.

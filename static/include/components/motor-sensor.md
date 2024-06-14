@@ -1,4 +1,4 @@
-If you want to control your motor by specifying the distance and velocity in terms of distance and distance/time, for example 2 rotations at 5 m/s, and you have an encoder, you can make use of the position of your encoder to adjust the distance and velocity.
+If you want to control your motor by specifying the distance and velocity in terms of distance and distance/time, for example 2 rotations at 5 m/s, and you have an encoder, you can use the position of your encoder to adjust the distance and velocity.
 
 You can do this in two ways:
 

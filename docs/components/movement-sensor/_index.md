@@ -12,7 +12,6 @@ no_list: true
 modulescript: true
 aliases:
   - /components/movement-sensor/
-hide_children: true
 # SME: Rand
 ---
 

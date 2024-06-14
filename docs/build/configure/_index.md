@@ -294,7 +294,7 @@ If you run into issues, here are some things to try:
 
 ## Local setup
 
-Configuring `viam-server` with the Viam app allows you to make use of the cloud features of Viam:
+Configuring `viam-server` with the Viam app allows you to use Viam's cloud features:
 
 - [Fleet Management](/fleet/)
 - [Data Management](/services/data/)

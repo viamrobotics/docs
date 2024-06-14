@@ -1,6 +1,6 @@
 ### GetEndPosition
 
-Get the current position of the arm as a [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose).
+Get the current position of the arm as a [pose](/internals/orientation-vector/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -12,7 +12,7 @@ Get the current position of the arm as a [Pose](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- ([viam.components.arm.Pose](https://python.viam.dev/autoapi/viam/index.html#viam.components.arm.Pose)): The location and orientation of the arm described as a Pose.
+- ([viam.components.arm.Pose](https://python.viam.dev/autoapi/viam/index.html#viam.components.arm.Pose)): A representation of the arm’s current position as a 6 DOF (six degrees of freedom) pose. The Pose is composed of values for location and orientation with respect to the origin. Location is expressed as distance, which is represented by x, y, and z coordinate values. Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
 
 **Example:**
 
@@ -35,8 +35,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- `spatialmath` [(Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose)
-- [(error)](https://pkg.go.dev/builtin#error)
+- [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A representation of the arm's current position as a 6 DOF (six degrees of freedom) pose. The `Pose` is composed of values for location and orientation with respect to the origin. Location is expressed as distance, which is represented by x, y, and z coordinate values. Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
 
@@ -53,14 +53,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### MoveToPosition
 
-Move the end of the arm to the desired [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose), relative to the base of the arm.
+Move the end of the arm to the desired [pose](/internals/orientation-vector/), relative to the base of the arm.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `pose` ([viam.components.arm.Pose](https://python.viam.dev/autoapi/viam/index.html#viam.components.arm.Pose)) (required): The destination Pose for the arm.
+- `pose` ([viam.components.arm.Pose](https://python.viam.dev/autoapi/viam/index.html#viam.components.arm.Pose)) (required): The destination Pose for the arm. The Pose is composed of values for location and orientation with respect to the origin. Location is expressed as distance, which is represented by x, y, and z coordinate values. Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -88,7 +88,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `pose` [(Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose)
+- `pose` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A representation of the arm's destination position as a 6 DOF (six degrees of freedom) pose. The `Pose` is composed of values for location and orientation with respect to the origin. Location is expressed as distance, which is represented by x, y, and z coordinate values. Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -162,7 +162,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `positionDegs` [(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions)
+- `positionDegs` [(*pb.JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions): The desired position of each joint of the arm at the end of movement. JointPositions can have one attribute, `values`, a list of joint positions with rotational values (degrees) and translational values (mm).
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -204,7 +204,7 @@ Get the current position of each joint on the arm.
 
 **Returns:**
 
-- ([viam.proto.component.arm.JointPositions](https://python.viam.dev/autoapi/viam/proto/component/arm/index.html#viam.proto.component.arm.JointPositions)): The current JointPositions for the arm.
+- ([viam.proto.component.arm.JointPositions](https://python.viam.dev/autoapi/viam/proto/component/arm/index.html#viam.proto.component.arm.JointPositions)): The current JointPositions for the arm. JointPositions can have one attribute, values, a list of joint positions with rotational values (degrees) and translational values (mm).
 
 **Example:**
 
@@ -227,8 +227,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- `pb` [(JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions)
-- [(error)](https://pkg.go.dev/builtin#error)
+- [(*pb.JointPositions)](https://pkg.go.dev/go.viam.com/api/component/arm/v1#JointPositions): The desired position of each joint of the arm at the end of movement.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
 
@@ -269,7 +269,7 @@ Get the kinematics information associated with the arm as the format and byte co
 
 **Returns:**
 
-- (Tuple[[viam.components.arm.KinematicsFileFormat.ValueType](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.KinematicsFileFormat), [bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]):  A tuple containing two values; the first [0] value represents the format of thefile, either in URDF format or Viam’s kinematic parameter format (spatial vector algebra), and the second [1] value represents the byte contents of the file.   
+- (Tuple[[viam.components.arm.KinematicsFileFormat.ValueType](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.KinematicsFileFormat), [bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): A tuple containing two values; the first [0] value represents the format of the file, either in URDF format or Viam’s kinematic parameter format (spatial vector algebra), and the second [1] value represents the byte contents of the file.
 
 **Example:**
 
@@ -329,8 +329,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(bool)](https://pkg.go.dev/builtin#bool)
-- [(error)](https://pkg.go.dev/builtin#error)
+- [(bool)](https://pkg.go.dev/builtin#bool): Whether this resource is moving (`true`) or not (`false`).
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
 
@@ -444,8 +444,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- `spatialmath` \[\][(Geometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry)
-- [(error)](https://pkg.go.dev/builtin#error)
+- [([]spatialmath.Geometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry): The geometries associated with this resource, in any order.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
 
@@ -478,8 +478,8 @@ Reconfigure must reconfigure the resource atomically and in place.
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `deps` [(Dependencies)](https://pkg.go.dev#Dependencies)
-- `conf` [(Config)](https://pkg.go.dev#Config)
+- `deps` [(Dependencies)](https://pkg.go.dev/go.viam.com/rdk/resource#Dependencies): The resource dependencies.
+- `conf` [(Config)](https://pkg.go.dev/go.viam.com/rdk/resource#Config): The resource configuration.
 
 **Returns:**
 
@@ -501,12 +501,12 @@ If you are implementing your own arm and add features that have no built-in API 
 
 **Parameters:**
 
-- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute
+- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
 
 **Example:**
 
@@ -527,8 +527,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- `map` [(string)](https://pkg.go.dev/builtin#string)
-- [(error)](https://pkg.go.dev/builtin#error)
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string): The command response.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
 

@@ -405,7 +405,8 @@ python_datatype_links = {
     "viam.components.arm.KinematicsFileFormat.ValueType": "https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.KinematicsFileFormat",
     "viam.media.video.NamedImage": "https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage",
     "viam.proto.common.ResponseMetadata": "https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata",
-    "viam.proto.component.encoder.PositionType.ValueType": "https://python.viam.dev/autoapi/viam/gen/component/encoder/v1/encoder_pb2/index.html#viam.gen.component.encoder.v1.encoder_pb2.PositionType"
+    "viam.proto.component.encoder.PositionType.ValueType": "https://python.viam.dev/autoapi/viam/gen/component/encoder/v1/encoder_pb2/index.html#viam.gen.component.encoder.v1.encoder_pb2.PositionType",
+    "typing_extensions.Self": "https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient"  
 }
 
 ## Inject these URLs, relative to 'docs', into param/return/raises descriptions that contain exact matching key text.
@@ -1571,7 +1572,8 @@ def write_markdown(type, names, methods):
                         proto_link = proto.replace('.', '').lower()
 
                         if type == 'component':
-                            proto_anchor_link = '/' + type_filepath_name + '/' + resource + '/#' + proto_link
+                            resource_no_underscores = resource.replace('_','-')
+                            proto_anchor_link = '/' + type_filepath_name + '/' + resource_no_underscores + '/#' + proto_link
                         elif type == 'service' and resource in ['base_remote_control', 'motion', 'navigation', 'slam']:
                             proto_anchor_link = '/services/' + resource.replace('base_remote_control', 'base_rc') + '/#' + proto_link
                         elif type == 'service' and resource == 'data_manager':
