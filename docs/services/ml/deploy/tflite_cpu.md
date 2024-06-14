@@ -158,7 +158,7 @@ You can use one of these architectures or build your own.
 
 ## Next steps
 
-To make use of your model with your machine, add a [vision service](/services/vision/) or a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}:
+To use your model with your machine, add a [vision service](/services/vision/) or a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}:
 
 {{< cards >}}
 

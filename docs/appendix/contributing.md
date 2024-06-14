@@ -222,7 +222,7 @@ Additional we enforce the following substitutions:
 ### Vale linting
 
 {{< alert title="Tip" color="tip" >}}
-We recommend you work in Visual Studio Code and install the [Vale extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server) to make use of the vale linter.
+We recommend you work in Visual Studio Code and install the [Vale extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server) to use the vale linter.
 {{< /alert >}}
 
 When you open a PR, your changes will be checked against a few style rules.
