@@ -98,7 +98,7 @@ Edit and fill in the attributes as applicable.
 
 <!-- prettier-ignore -->
 | Name                       | Type   | Required? | Description |
-| -------------------------- | ------ | ------------ | ----------- |
+| -------------------------- | ------ | --------- | ----------- |
 | `camera`                   | string | **Required** | The `name` of the [camera](/components/camera/) you want to use for visual odometry. |
 | `motion_estimation_config` | object | **Required** | See [motionestimation.go in RDK](https://github.com/viamrobotics/rdk/blob/99f62a1640f4c267b744bdfc2924e9fd4f7a3c60/vision/odometry/motionestimation.go). |
 
