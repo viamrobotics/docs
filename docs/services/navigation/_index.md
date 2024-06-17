@@ -608,7 +608,7 @@ See the [motion service](/services/motion/) for more information.
 
 **Returns:**
 
-- [(List[navigation.GeoObstacle])](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoObstacle): A list comprised of each `GeoObstacle` in the service's data storage.
+- [(List[navigation.GeoGeometry])](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoGeometry): A list comprised of each `GeoGeometry` in the service's data storage.
   These are objects designated for the robot to avoid when navigating.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.get_obstacles).
@@ -630,7 +630,7 @@ obstacles = await my_nav.get_obstacles()
 
 **Returns:**
 
-- [([]\*spatialmath.GeoObstacle)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#GeoObstacle): An array comprised of each `GeoObstacle` in the service's data storage.
+- [([]\*spatialmath.GeoGeometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#GeoGeometry): An array comprised of each `GeoGeometry` in the service's data storage.
   These are objects designated for the robot to avoid when navigating.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
