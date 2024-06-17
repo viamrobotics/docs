@@ -58,7 +58,7 @@ Then fill in the following fields:
 
 <!-- prettier-ignore -->
 | Attribute (Builder Mode) | Attribute (JSON) | Type    | Required? | Description |
-| ------------------------ | ----------------- | ------- | ---------- | ----------- |
+| ------------------------ | ---------------- | ------- | ---------- | ----------- |
 | Executable               | `name`               | string  | **Required** | The command you want to execute when your machine connects to the server. |
 | Arguments                | `args`               | string  | Optional     | Arguments to follow the command. |
 | Working directory        | `cwd`                | string  | Optional     | Where you want the process to execute. Defaults to the directory where `viam-server` executes. |
