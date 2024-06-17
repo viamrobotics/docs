@@ -86,13 +86,13 @@ The [camera component](/components/camera/) supports the following methods:
 
 The [encoder component](/components/encoder/) supports the following methods:
 
-{{< readfile "/static/include/components/apis/encoder.md" >}}
+{{< readfile "/static/include/components/apis/generated/encoder-table.md" >}}
 
 ### Gantry
 
 The [gantry component](/components/gantry/) supports the following methods:
 
-{{< readfile "/static/include/components/apis/gantry.md" >}}
+{{< readfile "/static/include/components/apis/generated/gantry-table.md" >}}
 
 ### Generic
 
@@ -104,7 +104,7 @@ The [generic component](/components/generic/) supports the following methods:
 
 The [gripper component](/components/gripper/) supports the following methods:
 
-{{< readfile "/static/include/components/apis/gripper.md" >}}
+{{< readfile "/static/include/components/apis/generated/gripper-table.md" >}}
 
 ### Input Controller
 
