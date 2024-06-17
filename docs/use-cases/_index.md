@@ -7,8 +7,7 @@ no_list: true
 ---
 
 The Viam platform supports a wide variety of IoT and robotics applications.
-Here are a few common use cases Viam provides solutions for.
-Select the card for a step-by-step guide to the solution:
+Click on one of the following guides that provide solutions for common tasks and workflows:
 
 {{< cards >}}
 {{% card link="/use-cases/configure/" class="fit-contain" %}}
@@ -20,4 +19,4 @@ Select the card for a step-by-step guide to the solution:
 {{% card link="/use-cases/manage-fleet/" class="fit-contain" %}}
 {{< /cards >}}
 
-Find more examples of how Viam is being used in the world by reviewing [Customer Stories](https://www.viam.com/customers), [tutorials](/tutorials/), or [blog posts](https://www.viam.com/blog?categories=Tutorials).
+If you're looking for examples of how Viam is being used in the world, have a look at [customer stories](https://www.viam.com/customers), follow our [step-by-step tutorials](/tutorials/), or browse our [blog posts](https://www.viam.com/blog?categories=Tutorials).
