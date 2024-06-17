@@ -46,7 +46,7 @@ Then [find and add a sensor model](/components/sensor/) that supports your senso
 
 ## Query data in the Viam app
 
-Once your data has synced, you can [query your data from within the Viam app](/use-cases/sensor-data-query/#query-data-in-the-viam-app) using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
+Once your data has synced, you can [query your data from within the Viam app](/use-cases/collect-sensor-data/#query-data-in-the-viam-app) using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
 
 You must have the [owner](/cloud/rbac/) role in order to query data in the Viam app.
 
