@@ -32,7 +32,7 @@ All machines support the following methods through the [robot API](/appendix/api
 
 The [fleet management API](/appendix/apis/fleet/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/fleet.md" >}}
+{{< readfile "/static/include/app/apis/generated/app-table.md" >}}
 
 ### Data client API
 
