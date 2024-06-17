@@ -15,14 +15,12 @@ If you want to capture only certain images, such as those containing a person, y
 With your images synced to the cloud, you can view images from all your machines in one Viam app interface.
 From there, you can use your image data to do things like [train ML models](/use-cases/deploy-ml/).
 
-<div style="border:1px solid; box-shadow:5px 5px 0 0;padding:1rem; margin:1rem; background-color:#f5f5f5">
-
-**In this page:**
+{{< alert title="In this page" color="tip" >}}
 
 1. [Collect image data and sync it to the cloud](#collect-image-data-and-sync-it-to-the-cloud)
 2. [Use filtering to collect and sync only certain images](#use-filtering-to-collect-and-sync-only-certain-images)
 
-</div>
+{{< /alert >}}
 
 ## Collect image data and sync it to the cloud
 
@@ -122,7 +120,18 @@ If you need to trigger sync in a different way, see [Trigger cloud sync conditio
 
 ## Next steps
 
+## Next steps
+
+Now that you have collected image data, you can also [train computer vision models](/use-cases/deploy-ml/) or [query your data](/services/data/query/):
+
 {{< cards >}}
 {{% card link="/use-cases/deploy-ml/" %}}
 {{% card link="/services/data/query/" %}}
+{{< /cards >}}
+
+To see image data filtering in action, check out these tutorials:
+
+{{< cards >}}
+{{% card link="/tutorials/projects/filtered-camera/" %}}
+{{% card link="/tutorials/configure/pet-photographer.md" %}}
 {{< /cards >}}

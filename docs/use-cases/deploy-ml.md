@@ -19,14 +19,12 @@ You can then get even more image data of your dog and improve your ML model by t
 You can do all of this using the [Viam app](https://app.viam.com) user interface.
 You will not need to write any code.
 
-<div style="border:1px solid; box-shadow:5px 5px 0 0;padding:1rem; margin:1rem; background-color:#f5f5f5">
-
-**In this page:**
+{{< alert title="In this page" color="tip" >}}
 
 1. [Create a dataset and label data](#create-a-dataset-and-label-data)
 2. [Train and test a machine learning (ML) model](#train-and-test-a-machine-learning-ml-model)
 
-</div>
+{{< /alert >}}
 
 ## Create a dataset and label data
 
