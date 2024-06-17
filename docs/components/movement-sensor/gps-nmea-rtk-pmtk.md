@@ -110,7 +110,7 @@ The following attributes are available for a `gps-nmea-rtk-pmtk` movement sensor
 
 <!-- prettier-ignore -->
 | Name                     | Type   | Required? | Description |
-| ------------------------ | ------ | ------------ | ----------- |
+| ------------------------ | ------ | -------- | ----------- |
 | `i2c_addr`               | int    | **Required** | The device's I<sup>2</sup>C address. |
 | `i2c_bus`                | string | **Required** | The index of the I<sup>2</sup>C bus of the board wired to the sensor. |
 | `i2c_baud_rate`          | int    | Optional     | The rate at which data is sent from the sensor. Optional. <br> Default: `38400` |
