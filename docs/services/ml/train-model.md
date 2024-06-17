@@ -60,7 +60,7 @@ If you [deploy a model](/services/ml/) to a machine, Viam automatically assumes 
 If you train a new version of that model, Viam will automatically deploy the new version to the machine and replace the old version.
 
 {{< alert title="Important" color="note" >}}
-The previous model remains unchanged when you are training a new version of a model and is not used as input.
+When you train a new version of a model, the previous model remains unchanged and is not used as input.
 If you are training a new model, you need to again go to your dataset's page and click on the **Train Model** button.
 {{< /alert >}}
 
