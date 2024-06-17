@@ -130,7 +130,7 @@ Get a list of all the position types that are supported by a given encoder.
 
 **Returns:**
 
-- ([viam.components.encoder.encoder.Encoder.Properties](https://python.viam.dev/autoapi/viam/encoder/index.html#viam.components.encoder.encoder.Encoder.Properties)): Map of position types to supported status.
+- ([viam.components.encoder.encoder.Encoder.Properties](https://python.viam.dev/autoapi/viam/components/encoder/encoder/index.html#viam.components.encoder.encoder.Encoder.Properties)): Map of position types to supported status.
 
 **Example:**
 
