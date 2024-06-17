@@ -22,14 +22,20 @@ From there, you can use your image data to do things like [train ML models](/use
 
 {{< /alert >}}
 
+## Prerequisites
+
+{{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
+
+{{% snippet "setup.md" %}}
+
+{{% /expand%}}
+
 ## Collect image data and sync it to the cloud
 
 {{< table >}}
 {{< tablestep >}}
 {{<imgproc src="/icons/components/camera.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="configure a camera component">}}
 **1. Configure a camera [_(i)_](/components/camera/)**
-
-First, [create a machine](/cloud/machines/#add-a-new-machine) if you haven't yet.
 
 Configure a camera component, such as a [webcam](/components/camera/webcam/), on your machine.
 

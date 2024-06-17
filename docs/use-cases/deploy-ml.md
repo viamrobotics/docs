@@ -36,6 +36,7 @@ You will not need to write any code.
 Start by collecting images from your cameras and syncing it to the [Viam app](https://app.viam.com).
 See [Collect image data and sync it to the cloud](/use-cases/image-data/#collect-image-data-and-sync-it-to-the-cloud) for instructions.
 
+<br>
 {{% alert title="Tip" color="tip" %}}
 To keep your data organized, configure a tag in your data management service config panel.
 This tag will be applied to all data synced from that machine.
