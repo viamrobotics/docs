@@ -98,7 +98,7 @@ The [gantry component](/components/gantry/) supports the following methods:
 
 The [generic component](/components/generic/) supports the following methods:
 
-{{< readfile "/static/include/components/apis/generated/generic_component-table.md" >}}
+{{< readfile "/static/include/components/apis/generic.md" >}}
 
 ### Gripper
 
