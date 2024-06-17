@@ -106,7 +106,7 @@ Inside the `tap` object, you can include the following attributes:
 
 <!-- prettier-ignore -->
 | Name                | Type   | Required? | Description |
-| ------------------- | ------ | -------- | ----------- |
+| ------------------- | ------ | --------- | ----------- |
 | `accelerometer_pin` | int    | **Required** | On the accelerometer you can choose to send the interrupts to int1 or int2. Specify this by setting this config value to `1` or `2`. |
 | `interrupt_pin`     | string | **Required** | The `name` of the [digital interrupt](/components/board/#digital_interrupts) you configured for the pin on the [board](/components/board/) wired to the `accelerometer_pin`. |
 | `exclude_x`         | bool   | Optional     | Tap detection defaults to all three axes. Exclude the x axis by setting this to true. <br> Default: `false` |
@@ -121,7 +121,7 @@ Inside the `freefall` object, you can include the following attributes:
 
 <!-- prettier-ignore -->
 | Name                | Type   | Required? | Description |
-| ------------------- | ------ | -------- | ----------- |
+| ------------------- | ------ | --------- | ----------- |
 | `accelerometer_pin` | int    | **Required** | On the accelerometer you can choose to send the interrupts to int1 or int2. Specify this by setting this config value to `1` or `2`. |
 | `interrupt_pin`     | string | **Required** | The `name` of the [digital interrupt](/components/board/#digital_interrupts) you configured for the pin on the [board](/components/board/) wired to the `accelerometer_pin`. |
 | `threshold`         | float  | Optional     | The acceleration on each axis is compared with this value to determine if a free-fall event occurred (in milligrams, between `0` and `15,937`). <br> Default: `437.5` |
