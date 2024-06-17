@@ -91,9 +91,9 @@ import (
 
 The encoder component supports the following methods:
 
-{{< readfile /static/include/components/apis/generated/encoder-table.md" >}}
+{{< readfile "/static/include/components/apis/generated/encoder-table.md" >}}
 
-{{< readfile /static/include/components/apis/generated/encoder.md" >}}
+{{< readfile "/static/include/components/apis/generated/encoder.md" >}}
 
 ## Troubleshooting
 

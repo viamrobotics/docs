@@ -69,9 +69,9 @@ import (
 
 The gripper component supports the following methods:
 
-{{< readfile /static/include/components/apis/generated/gripper-table.md" >}}
+{{< readfile "/static/include/components/apis/generated/gripper-table.md" >}}
 
-{{< readfile /static/include/components/apis/generated/gripper.md" >}}
+{{< readfile "/static/include/components/apis/generated/gripper.md" >}}
 
 ## Troubleshooting
 

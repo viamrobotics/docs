@@ -88,9 +88,9 @@ import (
 
 The gantry component supports the following methods:
 
-{{< readfile /static/include/components/apis/generated/gantry-table.md" >}}
+{{< readfile "/static/include/components/apis/generated/gantry-table.md" >}}
 
-{{< readfile /static/include/components/apis/generated/gantry.md" >}}
+{{< readfile "/static/include/components/apis/generated/gantry.md" >}}
 
 ## Troubleshooting
 
