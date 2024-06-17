@@ -87,9 +87,187 @@ import (
 
 The generic component supports the following method:
 
-{{< readfile "/static/include/components/apis/generated/generic_component-table.md" >}}
+{{< readfile "/static/include/components/apis/generic.md" >}}
 
-{{< readfile "/static/include/components/apis/generated/generic_component.md" >}}
+### GetGeometries
+
+Get all the geometries associated with the generic component in its current configuration, in the [frame](/services/frame-system/) of the generic component.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(List[Geometry])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry): The geometries associated with the generic component, in any order.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/generic/client/index.html#viam.components.generic.client.GenericClient.get_geometries).
+
+```python {class="line-numbers linkable-line-numbers"}
+my_generic = Generic.from_robot(robot=robot, name="my_generic_component")
+
+geometries = await my_generic.get_geometries()
+
+if geometries:
+    # Get the center of the first geometry
+    print(f"Pose of the first geometry's centerpoint: {geometries[0].center}")
+```
+
+{{% /tab %}}
+
+<!-- Go tab
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [`[]spatialmath.Geometry`](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry): The geometries associated with the generic component, in any order.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
+
+```go {class="line-numbers linkable-line-numbers"}
+myGeneric, err := generic.FromRobot(robot, "my_generic_component")
+
+geometries, err := myGeneric.Geometries(context.Background(), nil)
+
+if len(geometries) > 0 {
+    // Get the center of the first geometry
+    elem := geometries[0]
+    fmt.Println("Pose of the first geometry's center point:", elem.center)
+}
+```
+
+ -->
+
+{{< /tabs >}}
+
+### DoCommand
+
+Execute model-specific commands.
+If you are implementing your own generic component and add features that have no built-in API method, you can access them with `DoCommand`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
+
+**Returns:**
+
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_generic = Generic.from_robot(robot=robot, name="my_generic_component")
+
+raw_dict = {
+  "command": "raw",
+  "raw_input": "home"
+}
+await my_generic.do_command(raw_dict)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/generic/client/index.html#viam.components.generic.client.GenericClient.do_command).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
+
+**Returns:**
+
+- [(map[string]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+resp, err := myGeneric.DoCommand(context.Background(), map[string]interface{}{"command": "example"})
+```
+
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/api/blob/main/component/generic/v1/generic_grpc.pb.go).
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+**Parameters:**
+
+- `command` [(AttributeMap)](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/common/proto_type.hpp#L13): The command to execute.
+
+**Returns:**
+
+- [(AttributeMap)](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/common/proto_type.hpp#L13): Result of the executed command.
+
+```cpp {class="line-numbers linkable-line-numbers"}
+auto my_generic = robot->resource_by_name<GenericComponent>("my_generic_component");
+auto example = std::make_shared<ProtoType>(std::string("example"));
+AttributeMap command =
+    std::make_shared<std::unordered_map<std::string, std::shared_ptr<ProtoType>>>();
+command->insert({{std::string("command"), example}});
+auto resp = my_generic->do_command(command);
+```
+
+For more information, see the [C++ SDK Docs](https://cpp.viam.dev/classviam_1_1sdk_1_1GenericComponent.html)
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+my_generic = Generic.from_robot(robot, "my_generic")
+
+await my_generic.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/generic/client/index.html#viam.components.generic.client.GenericClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred. Close will never return an error for a generic resource.
+
+```go {class="line-numbers linkable-line-numbers"}
+err := myGeneric.Close(context.Background())
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#TriviallyCloseable).
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+There is no need to explicitly close a generic component's resource in C++, as resource destruction is handled automatically by the generic component's class destructor when variables exit scope.
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Troubleshooting
 
