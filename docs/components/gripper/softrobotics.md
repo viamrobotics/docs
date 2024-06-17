@@ -91,7 +91,7 @@ The following attributes are available for `softrobotics` grippers:
 
 <!-- prettier-ignore -->
 | Name            | Required? | Type   | Description                                                                                                                                                                                    |
-| --------------- | --------- | ------ | ------------ |
+| --------------- | --------- | ------ | ----------- |
 | `board`         | **Required** | string | The `name` of the [board](/components/board/) to which your gripper [control unit](https://www.softroboticsinc.com/uploads/2020/05/Tech_Sheet_coDrive_Control_Unit_-__TS-200210_Rev_B.pdf) is wired. |
 | `open`          | **Required** | string | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board pin wired to the open pin (D1) on the gripper controller.                                                     |
 | `close`         | **Required** | string | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board pin wired to the close pin (D2) on the gripper controller.                                                    |
