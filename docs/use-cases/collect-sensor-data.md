@@ -9,7 +9,7 @@ modulescript: true
 # SME: Devin Hilly
 ---
 
-You can use the data management service to capture sensor or time-series data from any machine and sync that data to the cloud.
+You can use the data management service to capture sensor data from any machine and sync that data to the cloud.
 Then, you can query it using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} to obtain actionable insights or connect it to third-party visualization tools.
 
 For example, you can configure data capture for several sensors on one machine, or for serveral sensors across multiple machines, to report the ambient operating temperature.
