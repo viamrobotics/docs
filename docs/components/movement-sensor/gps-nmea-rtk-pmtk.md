@@ -109,7 +109,7 @@ Fill in the attributes as applicable to your movement sensor, according to the t
 The following attributes are available for a `gps-nmea-rtk-pmtk` movement sensor:
 
 <!-- prettier-ignore -->
-| Name                     | Type   | Inclusion    | Description |
+| Name                     | Type   | Required? | Description |
 | ------------------------ | ------ | ------------ | ----------- |
 | `i2c_addr`               | int    | **Required** | The device's I<sup>2</sup>C address. |
 | `i2c_bus`                | string | **Required** | The index of the I<sup>2</sup>C bus of the board wired to the sensor. |

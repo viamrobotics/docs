@@ -119,7 +119,7 @@ An example configuration for a `gpio` motor:
 The following attributes are available for `gpio` motors:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | `name` of the [board](/components/board/) to which the motor driver is wired. |
 | `max_rpm` | int | **Required** | This is an estimate of the maximum RPM the motor will run at with full power under no load. The [`GoFor`](/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed. ***Not required** or available for [encoded](/components/motor/encoded-motor/) `gpio` motors.* |
@@ -149,7 +149,7 @@ There are three common ways for your computer to communicate with a brushed DC m
 Inside the `pins` struct you need to configure **two or three** of the following, in addition to `"en_high"` or `"en_low"`, depending on your motor driver:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `a` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "IN1" or "A" pin is wired to. |
 | `b` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "IN2" or "B" pin is wired to. |

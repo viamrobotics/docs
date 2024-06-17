@@ -57,7 +57,7 @@ Fill in the attributes as applicable to your gantry, according to the table belo
 The following attributes are available for `single-axis` gantries:
 
 <!-- prettier-ignore -->
-| Attribute | Type | Inclusion | Description |
+| Attribute | Type | Required? | Description |
 | --------- | ---- | --------- | ----------  |
 | `length_mm` | int | **Required** | Length of the axis of the gantry in millimeters. |
 | `motor` | string | **Required** | `name` of the [motor](/components/motor/) that moves the gantry's actuator. |

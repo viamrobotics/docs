@@ -68,7 +68,7 @@ Assign a name to your analog and then fill in the required properties outlined b
 The following properties are available for `analogs`:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 |`name` | string | **Required** | Your name for the analog reader. |
 |`pin`| string | **Required** | The pin number of the ADC's connection pin, wired to the board. This should be labeled as the physical index of the pin on the ADC.

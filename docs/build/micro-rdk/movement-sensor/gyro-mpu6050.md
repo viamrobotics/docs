@@ -114,7 +114,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 ## Attributes
 
 <!-- prettier-ignore -->
-| Name                  | Type    | Inclusion    | Description |
+| Name                  | Type    | Required? | Description |
 | --------------------- | ------- | ------------ | ----------- |
 | `board`               | string  | **Required** | The `name` of the [board](/build/micro-rdk/board/) to which the device is wired. |
 | `i2c_bus`             | string  | **Required** | The `name` of the I<sup>2</sup>C bus configured on your [board](/components/board/) wired to this device. |

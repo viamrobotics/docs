@@ -123,7 +123,7 @@ Then remove and fill in the attributes as applicable to your COMPONENT, accordin
 The following attributes are available for `model1` arms:
 
 <!-- prettier-ignore -->
-| Name         | Inclusion    | Type   | Default Value | Description                                                                                                                                                                                      |
+| Name         | Required? | Type   | Default Value | Description                                                                                                                                                                                      |
 | ------------ | ------------ | ------ | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `board`      | **Required** | string | -             | The name of the board to which the device is wired.                                                                                                                                              |
 | `i2c_bus`    | **Required** | string | -             | The name of the I<sup>2</sup>C bus through which the device communicates with the SBC. Note that this must match the name you gave the I<sup>2</sup>C bus you configured in the board component. |

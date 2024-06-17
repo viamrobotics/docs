@@ -92,7 +92,7 @@ Edit and fill in the attributes as applicable.
 The following attributes are available for `xArm7` arms:
 
 <!-- prettier-ignore -->
-| Attribute | Type | Inclusion | Description |
+| Attribute | Type | Required? | Description |
 | ----------| ---- | ----------| ----------- |
 | `host` | string | **Required** | IP address of the arm's system on your network. Find this when setting up your xArm. |
 | `port` | int | Optional | Port number of the arm's system. Find this when setting up your xArm. <br> Default: `502` |

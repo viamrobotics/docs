@@ -55,7 +55,7 @@ Edit and fill in the attributes as applicable.
 The following attributes are available for `AMS-AS5048` encoders:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `connection_type` | string | **Required** | Use `"i2c"`. |
 | `i2c_attributes` | object | **Required** | The attributes to configure the I<sup>2</sup>C connection: <ul> <li> <code>i2c_bus</code>: The index of the I<sup>2</sup>C bus on the [board](/components/board/) wired to this encoder. <br> Example: `"1"` </li> <li> <code>i2c_addr</code>: The address of the bus. <br> Example: `64` </li> </ul> |

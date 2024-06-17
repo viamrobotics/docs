@@ -1,5 +1,5 @@
 <!-- prettier-ignore -->
-| Parameter Mode | Description | Inclusion | Default Value | Notes |
+| Parameter Mode | Description | Required? | Default Value | Notes |
 | -------------- | ----------- | --------- | ------------- | ----- |
 | `mode` | `2d` | **Required** | None | |
 | `optimize_every_n_nodes` | How many trajectory nodes are inserted before the global optimization is run. | Optional | `3` | To disable global SLAM and use only local SLAM, set this to `0`. |

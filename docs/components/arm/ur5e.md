@@ -73,7 +73,7 @@ Edit and fill in the attributes as applicable.
 The following attributes are available for `ur5e` arms:
 
 <!-- prettier-ignore -->
-| Attribute | Type | Inclusion | Description |
+| Attribute | Type | Required? | Description |
 | --------- | ---- | ----------| ----------- |
 | `speed_degs_per_sec` | float | **Required** | Desired maximum speed of joint movement in degrees per second. Must be between `3` and `180`. |
 | `host` | string | **Required** | The IP address of the arm's system on your network. Find this when setting up your UR5e. |

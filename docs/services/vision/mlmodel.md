@@ -116,7 +116,7 @@ Click the **Save** button in the top right corner of the page.
 The following attributes are available for an `mlmodel` detector or classifier:
 
 <!-- prettier-ignore -->
-| Parameter | Type | Inclusion | Description |
+| Parameter | Type | Required? | Description |
 | --------- | ---- | --------- | ----------- |
 | `mlmodel_name` | string | **Required** | The name of the [ML model service](/services/ml/deploy/) you want to use the model from. |
 | `remap_output_names` | object | Optional | The names of your output tensors, mapped to the service requirements. See [Tensor names](#tensor-names) for more information. |

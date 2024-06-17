@@ -91,7 +91,7 @@ Click the **Save** button in the top right corner of the page.
 The following attributes are available for `esp32` boards:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](#analogs). |
 | `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](#i2cs). |
@@ -106,7 +106,7 @@ Interaction with digital interrupts is only supported with the [board API](/comp
 The following properties are available for `analogs`:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `name` | string | **Required** | Your name for the analog reader. |
 | `pin`| integer | **Required** | The GPIO number of the ADC's connection pin, wired to the board. |
@@ -116,7 +116,7 @@ The following properties are available for `analogs`:
 The following properties are available for `i2cs`:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 |`name`| string| **Required** | `name` of the I<sup>2</sup>C bus. |
 |`bus`| string | **Required** | The index of the I<sup>2</sup>C bus. Must be either `i2c0` or `i2c1`. |
@@ -130,7 +130,7 @@ The following properties are available for `i2cs`:
 The following properties are available for `digital_interrupts`:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 |`pin`| string | **Required** | The GPIO number of the board's GPIO pin that you wish to configure the digital interrupt for. |
 

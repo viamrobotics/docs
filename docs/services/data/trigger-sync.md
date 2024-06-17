@@ -106,7 +106,7 @@ To use [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at
 The following attributes are available for the `naomi:sync-at-time:timesyncsensor` sensor:
 
 <!-- prettier-ignore -->
-| Name    | Type   | Inclusion    | Description |
+| Name    | Type   | Required? | Description |
 | ------- | ------ | ------------ | ----------- |
 | `start` | string | **Required** | The start time for the time frame during which you want to sync. Example: `"14:10:00"`.  |
 | `end`   | string | **Required** | The end of the sync time frame, for example: `"15:35:00"`. |

@@ -92,7 +92,7 @@ Fill in the attributes as applicable to your movement sensor, according to the t
 ## Attributes
 
 <!-- prettier-ignore -->
-| Name | Type   | Inclusion    | Description |
+| Name | Type   | Required? | Description |
 | ---- | ------ | ------------ | ----------- |
 | `i2c_bus` | string | **Required** | The index of the I2C bus on the board your device is connected to. Often a number. <br> Example: "2"  |
 | `use_alternate_i2c_address` | bool | Optional | Depends on whether you wire SDO low (leaving the default address of 0x53) or high (making the address 0x1D). If high, set true. If low, set false or omit the attribute. <br> Default: `false` |
@@ -105,7 +105,7 @@ Fill in the attributes as applicable to your movement sensor, according to the t
 Inside the `tap` object, you can include the following attributes:
 
 <!-- prettier-ignore -->
-| Name                | Type   | Inclusion    | Description |
+| Name                | Type   | Required? | Description |
 | ------------------- | ------ | ------------ | ----------- |
 | `accelerometer_pin` | int    | **Required** | On the accelerometer you can choose to send the interrupts to int1 or int2. Specify this by setting this config value to `1` or `2`. |
 | `interrupt_pin`     | string | **Required** | The `name` of the [digital interrupt](/components/board/#digital_interrupts) you configured for the pin on the [board](/components/board/) wired to the `accelerometer_pin`. |
@@ -120,7 +120,7 @@ Inside the `tap` object, you can include the following attributes:
 Inside the `freefall` object, you can include the following attributes:
 
 <!-- prettier-ignore -->
-| Name                | Type   | Inclusion    | Description |
+| Name                | Type   | Required? | Description |
 | ------------------- | ------ | ------------ | ----------- |
 | `accelerometer_pin` | int    | **Required** | On the accelerometer you can choose to send the interrupts to int1 or int2. Specify this by setting this config value to `1` or `2`. |
 | `interrupt_pin`     | string | **Required** | The `name` of the [digital interrupt](/components/board/#digital_interrupts) you configured for the pin on the [board](/components/board/) wired to the `accelerometer_pin`. |

@@ -57,7 +57,7 @@ Navigate to that card.
 Then fill in the following fields:
 
 <!-- prettier-ignore -->
-| Attribute (Builder Mode) | Attribute (JSON) | Type    | Inclusion    | Description |
+| Attribute (Builder Mode) | Attribute (JSON) | Type    | Required? | Description |
 | ------------------------ | -------------------- | ------- | ------------ | ----------- |
 | Executable               | `name`               | string  | **Required** | The command you want to execute when your machine connects to the server. |
 | Arguments                | `args`               | string  | Optional     | Arguments to follow the command. |
