@@ -20,9 +20,9 @@ You can then run queries against that data to search for outliers or edge cases,
 
 {{< alert title="In this page" color="tip" >}}
 
-1. [Gathering data on any machine and syncing it to the cloud](#gather-and-sync-data).
-1. [Configuring data query](#configure-data-query).
-1. [Querying data from third-party tools](#query-data-using-third-party-tools).
+1. [Gather data on any machine and syncing it to the cloud](#gather-and-sync-data).
+1. [Configure data query](#configure-data-query).
+1. [Query data from third-party tools](#query-data-using-third-party-tools).
 
 {{< /alert >}}
 

@@ -15,12 +15,13 @@ Then, you can query it using {{< glossary_tooltip term_id="sql" text="SQL" >}} o
 For example, you can configure data capture for several sensors on one machine, or for serveral sensors across multiple machines, to report the ambient operating temperature.
 You can then run queries against that data to search for outliers or edge cases, to analyze how the ambient temperature affects your machines' operation.
 
-You can do all of this using the [Viam app](https://app.viam.com/) user interface. You will not need to write any code.
+You can do all of this using the [Viam app](https://app.viam.com/) user interface.
+You will not need to write any code.
 
 {{< alert title="In this page" color="tip" >}}
 
-1. [Gathering data on any machine and syncing it to the cloud](#gather-and-sync-data).
-1. [Querying data in the Viam app](#query-data-in-the-viam-app).
+1. [Gather data on any machine and syncing it to the cloud](#gather-and-sync-data).
+1. [Query data in the Viam app](#query-data-in-the-viam-app).
 
 {{< /alert >}}
 
@@ -48,7 +49,7 @@ Then [find and add a sensor model](/components/sensor/) that supports your senso
 
 Once your data has synced, you can [query your data from within the Viam app](/use-cases/collect-sensor-data/#query-data-in-the-viam-app) using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
 
-You must have the [owner](/cloud/rbac/) role in order to query data in the Viam app.
+You must have the [owner role](/cloud/rbac/) in order to query data in the Viam app.
 
 {{< table >}}
 {{< tablestep >}}

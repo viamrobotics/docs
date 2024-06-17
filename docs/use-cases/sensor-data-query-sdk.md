@@ -1,5 +1,5 @@
 ---
-title: "Query sensor data with Python SDK"
+title: "Query sensor data with the Python SDK"
 linkTitle: "Query sensor data with SDK"
 weight: 31
 type: "docs"
