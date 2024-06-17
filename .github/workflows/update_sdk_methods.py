@@ -1640,8 +1640,9 @@ def write_markdown(type, names, methods):
                         proto_link = proto.replace('.', '').lower()
 
                         if type == 'component':
-                            resource_no_underscores = resource.replace('_','-')
-                            proto_anchor_link = '/' + type_filepath_name + '/' + resource_no_underscores + '/#' + proto_link
+                            ## Replace underscores, and convert generic_component to just generic:
+                            resource_adjusted = resource.replace('generic_component', 'generic').replace('_','-')
+                            proto_anchor_link = '/' + type_filepath_name + '/' + resource_adjusted + '/#' + proto_link
                         elif type == 'service' and resource in ['base_remote_control', 'motion', 'navigation', 'slam']:
                             proto_anchor_link = '/services/' + resource.replace('base_remote_control', 'base_rc') + '/#' + proto_link
                         elif type == 'service' and resource == 'data_manager':
