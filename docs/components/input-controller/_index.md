@@ -20,9 +20,9 @@ You are likely already familiar with human-interface devices, like keyboards and
 Configuring an _input_ component allows you to use devices like these with your machine, enabling you to control your machine's actions by interacting with the device.
 
 This component currently supports devices like gamepads and joysticks that contain one or more [Controls](#control-field) representing the individual axes and buttons on the device.
-To use the controller's inputs, you must [register callback functions](#registercontrolcallback) to the [Controls](#control-field) with the `input` API.
+To use the controller's inputs, you must [register callback functions](/components/input-controller/#registercontrolcallback) to the [Controls](#control-field) with the `input` API.
 
-The callback functions can then handle the [Events](#getevents) that are sent when the Control is activated or moved.
+The callback functions can then handle the [Events](/components/input-controller/#getevents) that are sent when the Control is activated or moved.
 For example, when a specific button is pushed, the callback function registered to it can move another component, or print a specific output.
 
 Most machines with an input controller need at least the following hardware:
@@ -103,7 +103,7 @@ Each `Event` object represents a singular event from the input device, and has f
 
 A string-like type indicating the specific type of input event, such as a button press or axis movement.
 
-- To select for events of all type when registering callback function with [RegisterControlCallback](#registercontrolcallback), you can use `AllEvents` as your `EventType`.
+- To select for events of all type when registering callback function with [RegisterControlCallback](/components/input-controller/#registercontrolcallback), you can use `AllEvents` as your `EventType`.
 - The registered function is then called in addition to any other callback functions you've registered, every time an `Event` happens on your controller.
   This is useful for debugging without interrupting normal controls, or for capturing extra or unknown events.
 
