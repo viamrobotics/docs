@@ -107,7 +107,7 @@ The following attributes are available for the `naomi:sync-at-time:timesyncsenso
 
 <!-- prettier-ignore -->
 | Name    | Type   | Required? | Description |
-| ------- | ------ | ------------ | ----------- |
+| ------- | ------ | --------- | ----------- |
 | `start` | string | **Required** | The start time for the time frame during which you want to sync. Example: `"14:10:00"`.  |
 | `end`   | string | **Required** | The end of the sync time frame, for example: `"15:35:00"`. |
 | `zone`  | string | **Required** | The time zone for the `start` and `end` time, for example: `"CET"`. |
