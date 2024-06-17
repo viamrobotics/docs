@@ -114,7 +114,7 @@ Then remove and fill in the attributes as applicable to your camera, according t
 The following attributes are available for `transform` views:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `source` | string | **Required** | `name` of the camera to transform. |
 | `pipeline` | array | **Required** | Specify an array of transformation objects. |

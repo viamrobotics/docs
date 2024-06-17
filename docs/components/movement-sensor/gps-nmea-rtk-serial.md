@@ -111,8 +111,8 @@ The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB
 The following attributes are available for a `gps-nmea-rtk-pmtk` movement sensor:
 
 <!-- prettier-ignore -->
-| Name                     | Type   | Inclusion    | Description |
-| ------------------------ | ------ | ------------ | ---------------- |
+| Name                     | Type   | Required? | Description |
+| ------------------------ | ------ | --------- | ----------- |
 | `serial_path`            | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. To find your serial device path, first connect the serial device to your machine, then:<ul><li>On Linux, run <code>ls /dev/serial/by-path/\*</code> to show connected serial devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/serial/by-path/usb-0:1.1:1.0"</code>.</li><li>On macOS, run <code>ls /dev/tty\* \| grep -i usb</code> to show connected USB serial devices, <code>ls /dev/tty\*</code> to browse all devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/ttyS0"</code>.</li></ul> |
 | `serial_baud_rate`       | int    | Optional     | The rate at which data is sent from the sensor. <br> Default: `38400` |
 | `ntrip_url`              | string | **Required** | The URL of the NTRIP server from which you get correction data. Connects to a base station (maintained by a third party) for RTK corrections. |

@@ -1,5 +1,5 @@
 <!-- prettier-ignore -->
-| Attribute | Type | Inclusion | Description |
+| Attribute | Type | Required? | Description |
 | --------- | ---- | --------- | ----------- |
 | `trigger_pin` | string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the [board's](/components/board/) GPIO pin that you have wired [the ultrasonic's trigger pin](https://www.sparkfun.com/products/15569) to. |
 | `echo_interrupt_pin` | string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin [the ultrasonic's echo pin](https://www.sparkfun.com/products/15569) is wired to on the board. If you have already created a [digital interrupt](/components/board/#digital_interrupts) for this pin in the [board's configuration](/components/board/), use that digital interrupt's `name` instead. |

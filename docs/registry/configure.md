@@ -142,7 +142,7 @@ You can edit the configuration of the modular resource or resources you have add
 If you prefer to use JSON, the following properties are available for all modular resources:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/#valid-apis-to-implement-in-your-model) |
 | `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/#valid-apis-to-implement-in-your-model). |
@@ -431,7 +431,7 @@ Locate a module's card in the part-resource hierarchy and click on it to expand.
 The following properties are available for modules:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `name` | string | **Required**| Name of the module you are registering. |
 | `executable_path` | string | **Required**| The absolute path to the executable on your machine's filesystem. |
@@ -469,7 +469,7 @@ Once you have added a local module to your machine, you can add any number of th
 The following properties are available for modular resources:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/#valid-apis-to-implement-in-your-model). |
 | `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/#valid-apis-to-implement-in-your-model). |

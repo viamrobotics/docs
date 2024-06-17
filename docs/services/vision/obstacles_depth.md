@@ -111,7 +111,7 @@ Add the following vision service object to the services array in your raw JSON c
 The following parameters are available for an `"obstacles_depth"` segmenter:
 
 <!-- prettier-ignore -->
-| Parameter | Inclusion | Description |
+| Parameter | Required? | Description |
 | --------- | --------- | ----------- |
 | `min_points_in_plane` | Optional | An integer that specifies how many points to put on the flat surface or ground plane when clustering. This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps. <br> Default: `500` </br> |
 | `min_points_in_segment` | Optional | An integer that sets a minimum size to the returned objects, and filters out all other found objects below that size. <br> Default: `10` </br> |

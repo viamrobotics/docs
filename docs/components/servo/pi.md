@@ -94,7 +94,7 @@ Fill in the attributes as applicable to your servo, according to the table below
 The following attributes are available for `pi` servos:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `pin` | string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin the servo's control wire is wired to on the [board](/components/board/). |
 | `board` | string | **Required** | `name` of the [board](/components/board/) the servo is wired to. |

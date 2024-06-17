@@ -566,7 +566,7 @@ If you move your machine, it will appear to be moving in a trajectory from the m
 ### Attributes
 
 <!-- prettier-ignore -->
-| Name | Data Type | Inclusion | Description |
+| Name | Data Type | Required? | Description |
 | ---- | --------- | --------- | ----------- |
 | `use_cloud_slam` | boolean | **Required** | If `true`, the Cartographer algorithm will execute in the cloud rather than locally on your machine. |
 | `camera` | obj | **Required** | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the LiDAR camera component to use as input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that camera component. |

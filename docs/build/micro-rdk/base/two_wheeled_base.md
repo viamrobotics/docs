@@ -70,7 +70,7 @@ Configure a `two_wheeled_base` base as follows:
 The following attributes are available for `two_wheeled_base` bases:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `left` | string | **Required** | The `name` of a drive motor on the left side of the base. |
 | `right` | string | **Required** | The `name` of a drive motor on the right side of the base. |
