@@ -93,7 +93,7 @@ The following attributes are available for `xArm7` arms:
 
 <!-- prettier-ignore -->
 | Attribute | Type | Required? | Description |
-| ----------| ---- | ----------| ----------- |
+| ----------| ---- | --------- | ----------- |
 | `host` | string | **Required** | IP address of the arm's system on your network. Find this when setting up your xArm. |
 | `port` | int | Optional | Port number of the arm's system. Find this when setting up your xArm. <br> Default: `502` |
 | `speed_degs_per_sec` | float | Optional | Desired maximum speed of joint movement in degrees/sec. <br> Default: `20.0` |
