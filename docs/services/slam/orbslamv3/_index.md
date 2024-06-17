@@ -322,7 +322,7 @@ Setting `delete_processed_data: true` and `use_live_data: false` is invalid and 
 Adjust these parameters to fine-tune the algorithm `orbslamv3` utilizes:
 
 <!-- prettier-ignore -->
-| Parameter Mode | Description | Required? | Default Value |
+| Parameter | Description | Required? | Default Value |
 | -------------- | ----------- | --------- | ------------- |
 | `mode` | `rgbd` or `mono` | **Required** | No default |
 | `debug` | Boolean specifying if the service should be run in debug mode. Affects log output. | Optional | `false` |
