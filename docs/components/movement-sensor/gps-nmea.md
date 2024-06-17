@@ -121,7 +121,7 @@ The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB
 
 <!-- prettier-ignore -->
 | Name              | Type    | Required? | Description  |
-| ----------------- | ------- | ------------ | ---------------- |
+| ----------------- | ------- | -------- | ---------------- |
 | `connection_type` | string  | **Required** | `"I2C"` or `"serial"`. See [Connection Attributes](#connection-attributes) below. |
 
 ### Connection attributes
@@ -142,7 +142,7 @@ For a movement sensor communicating over serial, you'll need to include a `seria
 
 <!-- prettier-ignore -->
 | Name               | Type   | Required? | Description  |
-| ------------------ | ------ | ------------ | ------------------------- |
+| ------------------ | ------ | -------- | ------------------------- |
 | `serial_path` | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. To find your serial device path, first connect the serial device to your machine, then:<ul><li>On Linux, run <code>ls /dev/serial/by-path/\*</code> to show connected serial devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/serial/by-path/usb-0:1.1:1.0"</code>.</li><li>On macOS, run <code>ls /dev/tty\* \| grep -i usb</code> to show connected USB serial devices, <code>ls /dev/tty\*</code> to browse all devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/ttyS0"</code>.</li></ul> |
 | `serial_baud_rate` | int    | Optional     | The rate at which data is sent from the sensor. <br> Default: `38400` |
 
@@ -155,7 +155,7 @@ For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attr
 
 <!-- prettier-ignore -->
 | Name            | Type   | Required? | Description |
-| --------------- | ------ | ------------ | ------------------------ |
+| --------------- | ------ | -------- | ------------------------ |
 | `i2c_bus`       | string | **Required** | The index of the I<sup>2</sup>C bus on the board wired to the sensor. |
 | `i2c_addr`      | int    | **Required** | The device's I<sup>2</sup>C address. |
 | `i2c_baud_rate` | int    | Optional     | The rate at which data is sent from the sensor. Optional. <br> Default: `38400` |

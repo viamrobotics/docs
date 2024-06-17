@@ -100,7 +100,7 @@ Configure an array of the `name` of each movement sensor you want to add to your
 
 <!-- prettier-ignore -->
 | Name                  | Type  | Required? | Description |
-| --------------------- | ----- | ---------- | ----------- |
+| --------------------- | ----- | --------- | ----------- |
 | `position`            | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads position.                 |
 | `orientation`         | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads orientation.              |
 | `compass_heading`     | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads compass heading position. |
