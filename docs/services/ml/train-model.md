@@ -61,7 +61,7 @@ If you train a new version of that model, Viam will automatically deploy the new
 
 {{< alert title="Important" color="note" >}}
 When you train a new version of a model, the previous model remains unchanged and is not used as input.
-If you are training a new model, you need to again go to your dataset's page and click on the **Train Model** button.
+To train a new model, you need to again go to your dataset's page and click on the **Train Model** button.
 {{< /alert >}}
 
 If you do not want Viam to automatically deploy the `latest` version of the model, you can change `packages` configuration in the [JSON machine configuration](/build/configure/#the-configure-tab).
