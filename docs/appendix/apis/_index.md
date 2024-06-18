@@ -80,7 +80,7 @@ The [board component](/components/board/) supports the following methods:
 
 The [camera component](/components/camera/) supports the following methods:
 
-{{< readfile "/static/include/components/apis/camera.md" >}}
+{{< readfile "/static/include/components/apis/generated/camera-table.md" >}}
 
 ### Encoder
 
