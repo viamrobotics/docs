@@ -44,13 +44,13 @@ The [data client API](/appendix/apis/data-client/) supports the following method
 
 The ML training API allows you to get information about and cancel ML training jobs taking place on the [Viam app](https://app.viam.com):
 
-{{< readfile "/static/include/services/apis/ml-training-client.md" >}}
+{{< readfile "/static/include/app/apis/generated/mltraining-table.md" >}}
 
 ### Billing client API
 
 The [billing client API](/appendix/apis/billing-client/) supports the following methods to retrieve billing information from the [Viam app](https://app.viam.com):
 
-{{< readfile "/static/include/services/apis/billing-client.md" >}}
+{{< readfile "/static/include/app/apis/generated/billing-table.md" >}}
 
 ## Component APIs
 
