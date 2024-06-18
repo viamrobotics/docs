@@ -50,8 +50,8 @@ The returned detections consist of the bounding box around the identified object
 
 **Supported API methods:**
 
-- [GetDetections()](#getdetections)
-- [GetDetectionsFromCamera()](#getdetectionsfromcamera)
+- [GetDetections()](/services/vision/#getdetections)
+- [GetDetectionsFromCamera()](/services/vision/#getdetectionsfromcamera)
 
 ## Classifications
 
@@ -68,8 +68,8 @@ The returned classifications consist of the image's class label and confidence s
 
 **Supported API methods:**
 
-- [GetClassifications()](#getclassifications)
-- [GetClassificationsFromCamera()](#getclassificationsfromcamera)
+- [GetClassifications()](/services/vision/#getclassifications)
+- [GetClassificationsFromCamera()](/services/vision/#getclassificationsfromcamera)
 
 ## Segmentations
 
@@ -83,7 +83,7 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 **Supported API methods:**
 
-- [GetObjectPointClouds()](#getobjectpointclouds)
+- [GetObjectPointClouds()](/services/vision/#getobjectpointclouds)
 
 ## Supported models
 
