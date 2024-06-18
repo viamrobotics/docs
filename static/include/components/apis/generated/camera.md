@@ -1,6 +1,6 @@
 ### GetImage
 
-Returns an image from the camera.
+Return an image from the camera.
 You can request a specific MIME type but the returned MIME type is not guaranteed.
 If the server does not know how to return the specified MIME type, the server returns the image in another format instead.
 
@@ -134,7 +134,7 @@ The multiple images returned from `GetImages()` do not represent a time series o
 
 **Returns:**
 
-- (Tuple[List[[viam.media.video.NamedImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage)], [viam.proto.common.ResponseMetadata](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata)]): A tuple containing two values; the first [0] a list of images returned from the camera system, and the second [1] the metadata associated with this response.
+- (Tuple[List[[video.NamedImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage)], [common.ResponseMetadata](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata)]): A tuple containing two values; the first [0] a list of images returned from the camera system, and the second [1] the metadata associated with this response.
 
 **Example:**
 
