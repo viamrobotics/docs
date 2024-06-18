@@ -110,18 +110,21 @@ The [gripper component](/components/gripper/) supports the following methods:
 
 The [input controller component](/components/input-controller/) supports the following methods:
 
-{{< readfile "/static/include/components/apis/input-controller.md" >}}
+{{< readfile "/static/include/components/apis/generated/input_controller-table.md" >}}
 
 ### Motor
 
 The [motor component](/components/motor/) supports the following methods:
 
-{{< readfile "/static/include/components/apis/motor.md" >}}
+{{< readfile "/static/include/components/apis/generated/motor-table.md" >}}
 
 ### Movement Sensor
 
 The [movement sensor component](/components/movement-sensor/) supports the following methods.
 Some methods are only supported by certain models:
+
+<!-- IMPORTANT: This resource uses a manual table file. Automation does not update this file! -->
+<!-- Please be sure to update this manual file if you are updating movement-sensor! -->
 
 {{< readfile "/static/include/components/apis/movement-sensor.md" >}}
 

@@ -417,7 +417,8 @@ python_datatype_links = {
     "viam.media.video.NamedImage": "https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage",
     "viam.proto.common.ResponseMetadata": "https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata",
     "viam.proto.component.encoder.PositionType.ValueType": "https://python.viam.dev/autoapi/viam/gen/component/encoder/v1/encoder_pb2/index.html#viam.gen.component.encoder.v1.encoder_pb2.PositionType",
-    "typing_extensions.Self": "https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient"
+    "typing_extensions.Self": "https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient",
+    "viam.components.movement_sensor.movement_sensor.MovementSensor.Accuracy": "https://python.viam.dev/autoapi/viam/components/movement_sensor/movement_sensor/index.html#viam.components.movement_sensor.movement_sensor.MovementSensor.Accuracy"
 }
 
 ## Inject these URLs, relative to 'docs', into param/return/raises descriptions that contain exact matching key text.
@@ -797,7 +798,8 @@ def parse(type, names):
                                 ## Check for code sample for this method.
                                 go_code_samples_raw = soup.find_all(
                                     lambda code_sample_tag: code_sample_tag.name == 'p'
-                                    and method_name + " example:" in code_sample_tag.text)
+                                    and code_sample_tag.text.startswith(method_name)
+                                    and " example:" in code_sample_tag.text)
 
                                 ## Determine if a code sample is provided for this method:
                                 if len(go_code_samples_raw) == 1:
@@ -1082,7 +1084,14 @@ def parse(type, names):
                                                     this_method_parameters_dict["param_type"] = '[' + param_type + '](' + url + param_type_link_raw + ')'
                                                 ## Parameter type link is a relative link, beginning with 1 - 3 instances of '../'
                                                 ## Convert to an absolute link:
-                                                elif param_type_link_raw.startswith('../'):
+                                                elif param_type_link_raw.startswith('../') \
+                                                    and not param_type_link_raw.startswith('../../'):
+                                                    if resource in python_resource_overrides:
+                                                        linkable_resource = python_resource_overrides[resource]
+                                                    else:
+                                                        linkable_resource = resource
+                                                    this_method_parameters_dict["param_type"] = f'[{param_type}]({sdk_url}/autoapi/viam/{type}s/{linkable_resource}/' + param_type_link_raw.replace('../', '')+ ')'
+                                                elif return_type_link_raw.startswith('../'):
                                                     this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
 
                                             ## Unable to determine parameter description, neither timeout or extra, nor matching to any
@@ -1126,6 +1135,13 @@ def parse(type, names):
                                     this_method_dict["return"]["return_type"] = '[' + return_type + '](' + url.replace(python_staging_url, sdk_url) + return_type_link_raw + ')'
                                 ## Return type link is a relative link, beginning with 1 - 3 instances of '../'
                                 ## Convert to an absolute link:
+                                elif return_type_link_raw.startswith('../') \
+                                    and not return_type_link_raw.startswith('../../'):
+                                    if resource in python_resource_overrides:
+                                        linkable_resource = python_resource_overrides[resource]
+                                    else:
+                                        linkable_resource = resource
+                                    this_method_dict["return"]["return_type"] = f'[{return_type}]({sdk_url}/autoapi/viam/{type}s/{linkable_resource}/' + return_type_link_raw.replace('../', '')+ ')'
                                 elif return_type_link_raw.startswith('../'):
                                     this_method_dict["return"]["return_type"] = '[' + return_type + '](' + sdk_url + "/autoapi/viam/" + return_type_link_raw.replace('../', '')+ ')'
 
@@ -1488,6 +1504,8 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
                     return_type_short = 'string'
                 elif '.' in param_type:
                     return_type_short = param_type.split('.')[-1]
+                elif ']' in param_type:
+                    return_type_short = param_type.split(']')[-1]
                 else:
                     return_type_short = param_type
 
@@ -1500,8 +1518,14 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
                 print(param_desc_override_file)
 
             if os.path.exists(param_desc_override_file):
+                preserve_formatting = False
                 for line in open(param_desc_override_file, 'r', encoding='utf-8'):
-                    param_or_return_description = param_or_return_description + line.replace('\n', ' ')
+                    if '<!-- preserve-formatting -->' in line:
+                        preserve_formatting = True
+                    if preserve_formatting and '<!-- preserve-formatting -->' not in line:
+                        param_or_return_description = param_or_return_description + line
+                    elif '<!-- preserve-formatting -->' not in line:
+                        param_or_return_description = param_or_return_description + line.replace('\n', ' ')
                 param_or_return_description = param_or_return_description.rstrip()
 
             ## If we have a param description override, use that. If not, skip:
@@ -1632,7 +1656,7 @@ def write_markdown(type, names, methods):
                         ## Add proto name to table_file listing, with standard first three lines.
                         ## We write this here, depending on is_first_method_in_this_resource, in case we have a resource with 0 implemented protos
                         ## down the line, to avoid blank table_files:
-                        if is_first_method_in_this_resource:
+                        if is_first_method_in_this_resource and resource != 'movement_sensor':
                             table_file.write('<!-- prettier-ignore -->\n')
                             table_file.write('| Method Name | Description |\n')
                             table_file.write('| ----------- | ----------- |\n')
@@ -1680,7 +1704,8 @@ def write_markdown(type, names, methods):
                                 proto_description_first_sentence = search_result
 
                         ## Write out this proto's entry to this resource's table_file:
-                        table_file.write('| [`' + proto + '`](' + proto_anchor_link + ') | ' + proto_description_first_sentence + ' |\n')
+                        if resource != 'movement_sensor':
+                            table_file.write('| [`' + proto + '`](' + proto_anchor_link + ') | ' + proto_description_first_sentence + ' |\n')
 
                         ## Begin the per-language markdown writing to output_file with the opening tabset declaration:
                         output_file.write('{{< tabs >}}\n')
@@ -1719,8 +1744,14 @@ def write_markdown(type, names, methods):
                                         print(param_desc_override_file)
 
                                     if os.path.exists(param_desc_override_file):
+                                        preserve_formatting = False
                                         for line in open(param_desc_override_file, 'r', encoding='utf-8'):
-                                            param_description = param_description + line.replace('\n', ' ')
+                                            if '<!-- preserve-formatting -->' in line:
+                                                preserve_formatting = True
+                                            if preserve_formatting and '<!-- preserve-formatting -->' not in line:
+                                                param_description = param_description + line
+                                            elif '<!-- preserve-formatting -->' not in line:
+                                                param_description = param_description + line.replace('\n', ' ')
                                         param_description = param_description.rstrip()
                                     else:
                                         param_description = param_data.get("param_description")
@@ -1764,8 +1795,14 @@ def write_markdown(type, names, methods):
                                     print(return_desc_override_file)
 
                                 if os.path.exists(return_desc_override_file):
+                                    preserve_formatting = False
                                     for line in open(return_desc_override_file, 'r', encoding='utf-8'):
-                                        return_description = return_description + line.replace('\n', ' ')
+                                        if '<!-- preserve-formatting -->' in line:
+                                            preserve_formatting = True
+                                        if preserve_formatting and '<!-- preserve-formatting -->' not in line:
+                                            return_description = return_description + line
+                                        elif '<!-- preserve-formatting -->' not in line:
+                                            return_description = return_description + line.replace('\n', ' ')
                                     return_description = return_description.rstrip()
                                 else:
                                     return_description = return_data.get("return_description")
@@ -1936,8 +1973,14 @@ def write_markdown(type, names, methods):
                                         print(param_desc_override_file)
 
                                     if os.path.exists(param_desc_override_file):
+                                        preserve_formatting = False
                                         for line in open(param_desc_override_file, 'r', encoding='utf-8'):
-                                            param_description = param_description + line.replace('\n', ' ')
+                                            if '<!-- preserve-formatting -->' in line:
+                                                preserve_formatting = True
+                                            if preserve_formatting and '<!-- preserve-formatting -->' not in line:
+                                                param_description = param_description + line
+                                            elif '<!-- preserve-formatting -->' not in line:
+                                                param_description = param_description + line.replace('\n', ' ')
                                         param_description = param_description.rstrip()
                                     else:
                                         param_description = param_data.get("param_description")
@@ -2002,8 +2045,14 @@ def write_markdown(type, names, methods):
                                         print(return_desc_override_file)
 
                                     if os.path.exists(return_desc_override_file):
+                                        preserve_formatting = False
                                         for line in open(return_desc_override_file, 'r', encoding='utf-8'):
-                                            return_description = return_description + line.replace('\n', ' ')
+                                            if '<!-- preserve-formatting -->' in line:
+                                                preserve_formatting = True
+                                            if preserve_formatting and '<!-- preserve-formatting -->' not in line:
+                                                return_description = return_description + line
+                                            elif '<!-- preserve-formatting -->' not in line:
+                                                return_description = return_description + line.replace('\n', ' ')
                                         return_description = return_description.rstrip()
                                     else:
                                         return_description = return_data.get("return_description")

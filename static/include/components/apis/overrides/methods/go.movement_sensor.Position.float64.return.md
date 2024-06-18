@@ -1,0 +1,1 @@
+The altitude in meters.
