@@ -1,9 +1,9 @@
 ### SetPower
 
-Sets the portion of max power to send to the motor (between -1 and 1).
-1 is 100% power forwards; -1 is 100% power backwards.
+Set the portion of max power to send to the motor (between `-1` and `1`).
+A value of `1` represents 100% power forwards, while a value of `-1` represents 100% power backwards.
 
-Power is expressed as a floating point between -1 and 1 that scales between -100% and 100% power.
+Power is expressed as a floating point between `-1` and `1` that scales between -100% and 100% power.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -57,7 +57,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### GoFor
 
-Spins the motor the specified number of revolutions at specified revolutions per minute.
+Spin the motor the specified number of revolutions at specified revolutions per minute.
 When `rpm` or `revolutions` is a negative value, the motor spins in the backward direction.
 If both `rpm` and `revolutions` are negative, the motor spins in the forward direction.
 
@@ -115,7 +115,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### GoTo
 
-Turns the motor to a specified position (in terms of revolutions from home/zero) at a specified speed in revolutions per minute (RPM).
+Turn the motor to a specified position (in terms of revolutions from home/zero) at a specified speed in revolutions per minute (RPM).
 Regardless of the directionality of the `rpm`, the motor will move towards the specified target position.
 This blocks until the position has been reached.
 
@@ -211,6 +211,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// Set the current position as the new home position with no offset.
+myMotorComponent.ResetZeroPosition(context.Background(), 0.0, nil)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 {{% /tab %}}
@@ -255,7 +262,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(float64)](https://pkg.go.dev/builtin#float64): The unit returned is the number of revolutions which is intended to be fed back into calls of GoFor.
+- [(float64)](https://pkg.go.dev/builtin#float64): The unit returned is the number of revolutions which is intended to be fed back into calls of `GoFor`.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -336,7 +343,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### IsPowered
 
-Returns whether or not the motor is currently running, and the portion of max power (between 0 and 1; if the motor is off the power will be 0).
+Return whether or not the motor is currently running, and the portion of max power (between `0` and `1`; if the motor is off the power will be `0`).
 Stepper motors will report `true` if they are being powered while holding a position, as well as when they are turning.
 
 {{< tabs >}}
@@ -429,7 +436,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### IsMoving
 
-Returns whether the motor is actively moving (or attempting to move) under its own power.
+Return whether the motor is actively moving (or attempting to move) under its own power.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

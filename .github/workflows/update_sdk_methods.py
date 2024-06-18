@@ -797,7 +797,8 @@ def parse(type, names):
                                 ## Check for code sample for this method.
                                 go_code_samples_raw = soup.find_all(
                                     lambda code_sample_tag: code_sample_tag.name == 'p'
-                                    and method_name + " example:" in code_sample_tag.text)
+                                    and code_sample_tag.text.startswith(method_name)
+                                    and " example:" in code_sample_tag.text)
 
                                 ## Determine if a code sample is provided for this method:
                                 if len(go_code_samples_raw) == 1:
@@ -1654,7 +1655,7 @@ def write_markdown(type, names, methods):
                         ## Add proto name to table_file listing, with standard first three lines.
                         ## We write this here, depending on is_first_method_in_this_resource, in case we have a resource with 0 implemented protos
                         ## down the line, to avoid blank table_files:
-                        if is_first_method_in_this_resource:
+                        if is_first_method_in_this_resource and resource != 'movement_sensor':
                             table_file.write('<!-- prettier-ignore -->\n')
                             table_file.write('| Method Name | Description |\n')
                             table_file.write('| ----------- | ----------- |\n')
@@ -1701,7 +1702,8 @@ def write_markdown(type, names, methods):
                                 proto_description_first_sentence = search_result
 
                         ## Write out this proto's entry to this resource's table_file:
-                        table_file.write('| [`' + proto + '`](' + proto_anchor_link + ') | ' + proto_description_first_sentence + ' |\n')
+                        if resource != 'movement_sensor':
+                            table_file.write('| [`' + proto + '`](' + proto_anchor_link + ') | ' + proto_description_first_sentence + ' |\n')
 
                         ## Begin the per-language markdown writing to output_file with the opening tabset declaration:
                         output_file.write('{{< tabs >}}\n')
