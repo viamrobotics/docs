@@ -567,6 +567,12 @@ def make_soup(url):
    except urllib.error.HTTPError as err:
        print(f'An HTTPError was thrown: {err.code} {err.reason} for URL: {url}')
 
+def shorten_data_type(t):
+    if '.' in t:
+        return '.'.join(t.split('.')[-2:])
+    else:
+        return t
+
 ## Link any matching data types to their reference links, based on {sdk}_datatype_links[] array,
 ## used in parse() for both param and return data types. Handles data types syntax that includes
 ## multiple data types (and therefore requires multiple data type links), such as
@@ -579,7 +585,8 @@ def link_data_types(sdk, data_type_string):
 
     ## If the passed data_type_string matches exactly to a data type defined in python_datatype_links, use that:
     if data_type_string in python_datatype_links.keys():
-       linked_data_type_string = '[' + data_type_string + '](' + python_datatype_links[data_type_string] + ')'
+        shorter_data_type = shorten_data_type(data_type_string)
+        linked_data_type_string = '[' + shorter_data_type + '](' + python_datatype_links[data_type_string] + ')'
     else:
 
         ## Assemble all encountered data types that match to python_datatype_links keys into array.
@@ -597,7 +604,8 @@ def link_data_types(sdk, data_type_string):
                 ## Discard string matches that are substrings of other data type strings:
                 if not regex.search(r'[A-Za-z0-9]' + data_type_found, data_type_string) and not regex.search(data_type_found + r'[A-Za-z0-9]', data_type_string):
 
-                    data_type_linked = '[' + data_type_found + '](' + python_datatype_links[data_type_found] + ')'
+                    shorter_data_type = shorten_data_type(data_type_found)
+                    data_type_linked = '[' + shorter_data_type + '](' + python_datatype_links[data_type_found] + ')'
                     linked_data_type_string = regex.sub(data_type_found, data_type_linked, linked_data_type_string)
                 else:
                     ## If we get here, this data_type is actually a substring of another data type. Take no action:
