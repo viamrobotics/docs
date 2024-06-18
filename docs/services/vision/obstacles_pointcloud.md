@@ -85,7 +85,7 @@ Add the vision service object to the services array in your raw JSON configurati
     "min_points_in_plane": 1500,
     "min_points_in_segment": 250,
     "max_dist_from_plane_mm": 10.0,
-    "ground_plane_normal_vec": {x: 0, y:0, z: 1},
+    "ground_plane_normal_vec": {"x": 0, "y":0, "z": 1},
     "ground_angle_tolerance_degs": 20.0,
     "clustering_radius": 5,
     "clustering_strictness": 3
