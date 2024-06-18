@@ -186,19 +186,19 @@ The [motion service](/services/motion/) supports the following methods:
 
 The [navigation service](/services/navigation/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/navigation.md" >}}
+{{< readfile "/static/include/services/apis/generated/navigation-table.md" >}}
 
 ### SLAM
 
 The [Simultaneous Localization And Mapping (SLAM) service](/services/slam/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/slam.md" >}}
+{{< readfile "/static/include/services/apis/generated/slam-table.md" >}}
 
 ### Vision
 
 Different [vision service](/services/vision/) models support different methods:
 
-{{< readfile "/static/include/services/apis/vision.md" >}}
+{{< readfile "/static/include/services/apis/generated/vision-table.md" >}}
 
 ## Signaling APIs
 
