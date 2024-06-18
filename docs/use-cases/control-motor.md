@@ -4,7 +4,7 @@ linkTitle: "Control a motor in 60 seconds"
 type: "docs"
 weight: 30
 images: ["/icons/components/motor.svg"]
-description: "Control a motor using Viam in just a few steps."
+description: "Use Viam to control a motor's speed and direction in just a few steps."
 ---
 
 This guide will demonstrate how to control a motor using Viam in just a few steps. You can use Viam to control a motor's speed and direction directly from [the platform](https://app.viam.com/), [programatically](https://docs.viam.com/build/program/), or by using [the mobile app](/fleet/#the-viam-mobile-app).
