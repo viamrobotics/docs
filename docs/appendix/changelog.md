@@ -26,7 +26,7 @@ The camera API's [`GetImage()`](/components/camera/#getimage) API method now ret
 
 You can use the helper functions `viam_to_pil_image` and `pil_to_viam_image` provided by the Python SDK to convert the `ViamImage` into a [`PIL Image`](https://omz-software.com/pythonista/docs/ios/Image.html) and vice versa.
 
-{{%expand "Click for an example of using the ViamImage -> PIL Image helper functions." %}}
+{{< expand "Click for an example of using the ViamImage -> PIL Image helper functions." >}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 # from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
@@ -50,7 +50,7 @@ cropped_frame = pil_to_viam_image(cropped_pil_frame)
 detections = await detector.get_detections(cropped_frame)
 ```
 
-{{% /expand%}}
+{{< /expand >}}
 {{% /changelog %}}
 
 {{% changelog date="2024-04-30" color="removed" title="Removed status from Board API" %}}
