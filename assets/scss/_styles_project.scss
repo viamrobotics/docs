@@ -442,7 +442,9 @@ END MARKETING CSS
 .expand {
   padding-bottom: 1rem;
 }
-
+summary::-webkit-details-marker {
+  display: none;
+}
 /* END CSS FOR EXPANDER */
 
 
