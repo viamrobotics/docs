@@ -417,7 +417,7 @@ python_datatype_links = {
     "viam.media.video.NamedImage": "https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage",
     "viam.proto.common.ResponseMetadata": "https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata",
     "viam.proto.component.encoder.PositionType.ValueType": "https://python.viam.dev/autoapi/viam/gen/component/encoder/v1/encoder_pb2/index.html#viam.gen.component.encoder.v1.encoder_pb2.PositionType",
-    "typing_extensions.Self": "https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient"  
+    "typing_extensions.Self": "https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient"
 }
 
 ## Inject these URLs, relative to 'docs', into param/return/raises descriptions that contain exact matching key text.
@@ -1123,7 +1123,7 @@ def parse(type, names):
 
                                 ## Return type link is an anchor link:
                                 if return_type_link_raw.startswith('#'):
-                                    this_method_dict["return"]["return_type"] = '[' + return_type + '](' + url + return_type_link_raw + ')'
+                                    this_method_dict["return"]["return_type"] = '[' + return_type + '](' + url.replace(python_staging_url, sdk_url) + return_type_link_raw + ')'
                                 ## Return type link is a relative link, beginning with 1 - 3 instances of '../'
                                 ## Convert to an absolute link:
                                 elif return_type_link_raw.startswith('../'):
