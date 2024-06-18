@@ -86,7 +86,7 @@ If you click on **Show more**, then the **video_path** field while your machine 
 The following attributes are available for `webcam` cameras:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `video_path` | string | Optional | The ID of or the path to the webcam. If you don't provide a `video_path`, it defaults to the first valid video path it finds. Using the ID of a webcam is more consistent than the path. See [Using `video_path`](#using-video_path). |
 | `format` | string | Optional | The camera image format, used with `video_path` to find the camera. See [Using `format`](#using-format). |

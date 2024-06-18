@@ -53,7 +53,7 @@ Edit the attributes as applicable to your camera, according to the table below.
 The following attributes are available for `fake` cameras:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `width` | int | Optional | The width of the image in pixels. The maximum width is 10000. <br> Default: `1280` |
 | `height` | int | Optional | The height of the image in pixels. The maximum height is 10000. <br> Default: `720` |

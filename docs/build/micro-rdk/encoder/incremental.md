@@ -71,7 +71,7 @@ Fill in and edit the attributes as applicable.
 The following attributes are available for `incremental` encoders:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | The `name` of the [board](/build/micro-rdk/board/) to which the encoder is wired. |
 | `a` | string | **Required** | GPIO number of one of the pins to which the encoder is wired |

@@ -17,6 +17,7 @@ images:
   ]
 description: "Build a machine yourself by following along with a tutorial."
 no_list: true
+hide_children: true
 sitemap:
   priority: 1.0
 aliases:

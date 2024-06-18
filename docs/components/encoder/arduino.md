@@ -49,7 +49,7 @@ Edit and fill in the attributes as applicable.
 The following attributes are available for `arduino` encoders:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | The `name` of the board to which the encoder is wired. |
 | `motor_name` | string | **Required** | The `name` of the motor. |

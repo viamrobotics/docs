@@ -85,7 +85,7 @@ Add the vision service object to the services array in your raw JSON configurati
     "min_points_in_plane": 1500,
     "min_points_in_segment": 250,
     "max_dist_from_plane_mm": 10.0,
-    "ground_plane_normal_vec": {x: 0, y:0, z: 1},
+    "ground_plane_normal_vec": {"x": 0, "y":0, "z": 1},
     "ground_angle_tolerance_degs": 20.0,
     "clustering_radius": 5,
     "clustering_strictness": 3
@@ -100,7 +100,7 @@ Add the vision service object to the services array in your raw JSON configurati
 The following parameters are available for a `"obstacles_pointcloud"`.
 
 <!-- prettier-ignore -->
-| Parameter | Inclusion | Description |
+| Parameter | Required? | Description |
 | --------- | --------- | ----------- |
 | `min_points_in_plane` | Optional | An integer that specifies how many points to put on the flat surface or ground plane when clustering. This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps. <br> Default: `500` </br> |
 | `min_points_in_segment` | Optional | An integer that sets a minimum size to the returned objects, and filters out all other found objects below that size. <br> Default: `10` </br> |

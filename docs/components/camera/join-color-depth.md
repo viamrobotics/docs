@@ -93,7 +93,7 @@ Then remove and fill in the attributes as applicable to your camera, according t
 The following attributes are available for `join_color_depth` views:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `output_image_type` | string | **Required** | Specify `color` or `depth` for the output stream. |
 | `color_camera_name` | string | **Required** | `name` of the color camera to pull images from. If your camera provides both color and depth image streams, you must set this to be the same as `depth_camera_name`. |

@@ -60,7 +60,7 @@ Edit the attributes as applicable to your machine, according to the table below.
 The following attributes are available for `join_pointclouds` views:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `target_frame` | string | **Required** | The frame of reference for the points in the merged point cloud. |
 | `source_cameras` | array | **Required** | The `name` of each of the camera sources to combine. |

@@ -8,6 +8,8 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--local', action='store_true', required=False)
+parser.add_argument('--verbose', action='store_true', required=False)
+parser.add_argument('--generate', action='store_true', required=False)
 
 args = parser.parse_args()
 
@@ -23,7 +25,8 @@ ignore_apis = [
     'viam.app.app_client.Fragment.from_proto',
     'viam.app.app_client.RobotPartHistoryEntry.from_proto',
     'viam.app.app_client.AppClient.get_rover_rental_parts',
-    'viam.app.data_client.DataClient.create_filter' # deprecated
+    'viam.app.data_client.DataClient.create_filter',  # deprecated
+    'viam.app.app_client.AppClient.get_rover_rental_robots'  # internal
 ]
 
 services_page_mapping = {
@@ -117,6 +120,11 @@ def parse(type, names):
             and not id.endswith("SUBTYPE") and not id.endswith(".from_robot") \
             and not id.endswith(".get_resource_name") and not id.endswith(".get_operation") \
             and not id.endswith(".LOGGER") and not id.endswith("__") \
+            and not id.endswith(".HasField") \
+            and not id.endswith(".WhichOneof") \
+            and not id.endswith(".from_proto") \
+            and not id.endswith(".to_proto") \
+            and not id.endswith("ReconfigurableResourceRPCClientBase.reset_channel") \
             and not id in ignore_apis:
                 if is_unimplemented(tag_sigobject):
                     py_methods_sdk_docs_undocumented_ids.append(id)
@@ -282,8 +290,9 @@ def parse(type, names):
 
 
     print(f"SDK methods missing for type {type}: {sdk_methods_missing}\n\n")
-    print(f"SDK methods unimplemented for type {type}: {py_methods_sdk_docs_undocumented_ids}\n\n")
-    print(f"SDK methods found for type {type}: {sdk_methods_found}\n\n")
+    if args.verbose:
+        print(f"SDK methods unimplemented for type {type}: {py_methods_sdk_docs_undocumented_ids}\n\n")
+        print(f"SDK methods found for type {type}: {sdk_methods_found}\n\n")
 
     return sdk_methods_missing, methods_dict
 
@@ -305,7 +314,7 @@ total_sdk_methods_missing.extend(missing_components)
 total_sdk_methods_missing.extend(missing_app_apis)
 total_sdk_methods_missing.extend(missing_robot_apis)
 
-if total_sdk_methods_missing:
+if total_sdk_methods_missing and args.generate:
     print(f"Total SDK methods missing: {total_sdk_methods_missing} \n\nMissing Method Information:\n")
     print_method_information(missing_services, services_dict)
     print_method_information(missing_components, components_dict)

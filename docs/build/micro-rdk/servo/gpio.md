@@ -116,7 +116,7 @@ Then remove and fill in the attributes as applicable to your servo, according to
 The following attributes are available for `gpio` servos:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `pin` | string | **Required** | The GPIO number of the pin the servo's control wire is wired to on the board. |
 | `board` | string | **Required** | `name` of the [board](/build/micro-rdk/board/) the servo is wired to. |

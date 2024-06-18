@@ -78,7 +78,7 @@ Since a `fake` motor isn't a physical piece of hardware, attributes are only rep
 However, if you would like to mock up a virtual placeholder for a real, physical motor, you can configure some or all of the following attributes:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | Optional | `name` of the [board](/components/board/) to which the motor driver is wired. |
 | `min_power_pct` | float | Optional | Sets a limit on minimum power percentage sent to the motor. <br> Default: `0.0` |
@@ -93,7 +93,7 @@ However, if you would like to mock up a virtual placeholder for a real, physical
 Nested within `pins`:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `a` | string | Optional | See [Pin Information](#pin-information). Corresponds to "IN1" on many driver data sheets. {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the GPIO pin this is wired to on the [board](/components/board/). |
 | `b` | string | Optional | See [Pin Information](#pin-information). Corresponds to "IN2" on many driver data sheets. {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the GPIO pin this is wired to on the [board](/components/board/). |
