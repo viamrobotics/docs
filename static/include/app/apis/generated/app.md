@@ -498,7 +498,7 @@ Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under
 
 **Returns:**
 
-- ([List[RobotPart]](http://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The list of robot parts.
+- ([List[RobotPart]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The list of robot parts.
 
 **Example:**
 
@@ -527,7 +527,7 @@ Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 **Returns:**
 
-- ([RobotPart](http://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The robot part.
+- ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The robot part.
 
 **Example:**
 
@@ -558,7 +558,7 @@ Get the logs associated with a specific machine {{< glossary_tooltip term_id="pa
 
 **Returns:**
 
-- ([List[LogEntry]](http://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The list of log entries.
+- ([List[LogEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The list of log entries.
 
 **Example:**
 
@@ -587,7 +587,7 @@ Get an asynchronous iterator that receives live machine part logs.
 
 **Returns:**
 
-- ([viam.app._logs._LogsStream[List[LogEntry]]](http://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live robot part logs.
+- ([viam.app._logs._LogsStream[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live robot part logs.
 
 **Example:**
 
@@ -614,7 +614,7 @@ Get a list containing the history of a machine {{< glossary_tooltip term_id="par
 
 **Returns:**
 
-- ([List[RobotPartHistoryEntry]](http://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPartHistoryEntry)): The list of the robot part’s history.
+- ([List[RobotPartHistoryEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPartHistoryEntry)): The list of the robot part’s history.
 
 **Example:**
 
@@ -643,7 +643,7 @@ Change the name of and assign an optional new configuration to a machine {{< glo
 
 **Returns:**
 
-- ([RobotPart](http://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The newly updated robot part.
+- ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The newly updated robot part.
 
 **Example:**
 
@@ -779,7 +779,7 @@ Create a machine {{< glossary_tooltip term_id="part" text="part" >}} secret.
 
 **Returns:**
 
-- ([RobotPart](http://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The robot part the new secret was generated for.
+- ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The robot part the new secret was generated for.
 
 **Example:**
 
@@ -945,7 +945,7 @@ Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}} in th
 
 **Returns:**
 
-- ([List[Fragment]](http://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The list of fragments.
+- ([List[Fragment]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The list of fragments.
 
 **Example:**
 
@@ -971,7 +971,7 @@ Get a {{< glossary_tooltip term_id="fragment" text="fragment" >}} by ID.
 
 **Returns:**
 
-- ([Fragment](http://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The fragment.
+- ([Fragment](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The fragment.
 
 **Example:**
 
@@ -1002,7 +1002,7 @@ Create a new private {{< glossary_tooltip term_id="fragment" text="fragment" >}}
 
 **Returns:**
 
-- ([Fragment](http://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The newly created fragment.
+- ([Fragment](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The newly created fragment.
 
 **Example:**
 
@@ -1031,7 +1031,7 @@ Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and it
 
 **Returns:**
 
-- ([Fragment](http://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The newly updated fragment.
+- ([Fragment](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The newly updated fragment.
 
 **Example:**
 
