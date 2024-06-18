@@ -85,6 +85,7 @@ You can run `GetProperties` on your sensor for a list of its supported methods.
 
 <!-- IMPORTANT: This resource uses a manual table file. Automation does not update this file! -->
 <!-- Please be sure to update this manual file if you are updating movement-sensor! -->
+
 {{< readfile "/static/include/components/apis/movement-sensor.md" >}}
 
 {{< readfile "/static/include/components/apis/generated/movement_sensor.md" >}}

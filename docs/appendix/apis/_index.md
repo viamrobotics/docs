@@ -123,7 +123,10 @@ The [motor component](/components/motor/) supports the following methods:
 The [movement sensor component](/components/movement-sensor/) supports the following methods.
 Some methods are only supported by certain models:
 
-{{< readfile "/static/include/components/apis/generated/movement_sensor-table.md" >}}
+<!-- IMPORTANT: This resource uses a manual table file. Automation does not update this file! -->
+<!-- Please be sure to update this manual file if you are updating movement-sensor! -->
+
+{{< readfile "/static/include/components/apis/movement-sensor.md" >}}
 
 ### Power Sensor
 
