@@ -1,0 +1,14 @@
+name: link-checker-example
+on:
+  pull_request:
+
+jobs:
+  job_one:
+    name: Check for Broken Links
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for Broken Links
+        id: link-report
+        uses: docker://ghcr.io/threefoldfoundation/website-link-checker:latest
+        with:
+          args: 'https://flutter.viam.dev/ -e 404 -w all'
