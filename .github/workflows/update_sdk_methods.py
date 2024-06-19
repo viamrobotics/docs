@@ -1824,6 +1824,23 @@ def write_markdown(type, names, methods):
                             else:
                                 output_file.write("- None.\n")
 
+                            if 'raises' in methods['python'][type][resource][py_method_name]:
+                                output_file.write('\n**Raises:**\n\n')
+
+                                raises_object = methods['python'][type][resource][py_method_name]["raises"]
+                                raises_types = methods['python'][type][resource][py_method_name]["raises"].keys()
+                                for raises_type in raises_types:
+                                    output_file.write(f"- ({raises_type})")
+                                    if "raises_description" in raises_object[raises_type]:
+                                        raises_description= raises_object[raises_type]["raises_description"]
+                                        ## Add a trailing period if it is missing:
+                                        if not raises_description.endswith('.'):
+                                            raises_description = raises_description + '.'
+
+                                        output_file.write(f": {raises_description}\n")
+                                    else:
+                                        output_file.write("\n")
+
                             ## If the method has a code sample, print it here:
                             if 'code_sample' in methods['python'][type][resource][py_method_name]:
 
