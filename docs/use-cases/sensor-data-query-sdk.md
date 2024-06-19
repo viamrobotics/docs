@@ -16,7 +16,7 @@ You can then write a script to run queries against that data to search for outli
 
 {{< alert title="In this page" color="tip" >}}
 
-1. [Setting up the Python SDK](#)
+1. [Setting up the Python SDK](#set-up-the-python-sdk).
 1. [Querying data with the Python SDK](#search-data-with-the-python-sdk).
 
 {{< /alert >}}
@@ -34,6 +34,8 @@ You can then write a script to run queries against that data to search for outli
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Then [find and add a sensor model](/components/sensor/) that supports your sensor.
+
+If you're not sure which sensor model to choose, start with the [`viam:viam-sensor:telegrafsensor`](https://github.com/viamrobotics/viam-telegraf-sensor) which captures performance data (CPU, memory usage, and more) from your machine.
 
 {{% /expand%}}
 
@@ -82,9 +84,9 @@ viam organizations api-key create --org-id <org-id> --name my-api-key
 {{< tablestep link="/appendix/apis/data-client/">}}
 **2. Use the API key with the `data_client`**
 
-Use the API key and the [`TabularDataByFilter()`](/appendix/apis/data-client/#tabulardatabyfilter) method to query data:
+Use the API key and [`TabularDataByFilter()`](/appendix/apis/data-client/#tabulardatabyfilter), [`TabularDataBySQL()`](/appendix/apis/data-client/#tabulardatabysql), [`TabularDataByMQL()`](/appendix/apis/data-client/#tabulardatabymql), and[`DeleteTabularData()`](/appendix/apis/data-client/#deletetabulardata) to query data:
 
-```python {class="line-numbers linkable-line-numbers" data-line="28-30"}
+```python {class="line-numbers linkable-line-numbers" data-line="28-50"}
 import asyncio
 
 from viam.rpc.dial import DialOptions, Credentials
@@ -113,20 +115,34 @@ async def main():
     data_client = viam_client.data_client
 
     my_filter = Filter(component_name="my-sensor")
-    tabular_data, count, id = await data_client.tabular_data_by_filter(
+    data, count, id = await data_client.tabular_data_by_filter(
         filter=my_filter, limit=5)
+    # This query requests all stored data grouped by hour and calculates the
+    # average, minimum, and maximum of the memory usage
+    data = await data_client.tabular_data_by_mql(
+      organization_id=organization_id,
+      mql_query=[
+        bson.dumps({'$match': {'location_id': '<location-id>'}}),
+        bson.dumps({
+          "$group": {
+            "_id": {
+              "year": {"$year": "$time_requested"},
+              "dayOfYear": {"$dayOfYear": "$time_requested"},
+              "hour": {"$hour": "$time_requested"}
+            },
+            "count": {"$sum": 1},
+            "max_mem": {"$max": "$data.readings.mem.used_percent"},
+            "min_mem": {"$min": "$data.readings.mem.used_percent"},
+            "average_mem": {"$avg": "$data.readings.mem.used_percent"}
+          }
+        })
+      ])
 
     viam_client.close()
 
 if __name__ == '__main__':
     asyncio.run(main())
 ```
-
-You can also use:
-
-- [`TabularDataBySQL()`](/appendix/apis/data-client/#tabulardatabysql)
-- [`TabularDataByMQL()`](/appendix/apis/data-client/#tabulardatabymql)
-- [`DeleteTabularData()`](/appendix/apis/data-client/#deletetabulardata)
 
 {{< /tablestep >}}
 {{< /table >}}

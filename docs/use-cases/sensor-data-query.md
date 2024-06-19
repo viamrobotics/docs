@@ -39,6 +39,8 @@ Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Then [find and add a sensor model](/components/sensor/) that supports your sensor.
 
+If you're not sure which sensor model to choose, start with the [`viam:viam-sensor:telegrafsensor`](https://github.com/viamrobotics/viam-telegraf-sensor) which captures performance data (CPU, memory usage, and more) from your machine.
+
 {{% /expand%}}
 
 {{% expand "Captured sensor data. Click to see instructions." %}}
@@ -62,7 +64,7 @@ See the [`mongosh` documentation](https://www.mongodb.com/docs/mongodb-shell/) f
 
 ## Query data in the Viam app
 
-Once your data has synced, you can [query your data from within the Viam app](/use-cases/collect-sensor-data/#query-data-in-the-viam-app) using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
+Once your data has synced, you can query your data from within the Viam app using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
 
 You must have the [owner role](/cloud/rbac/) in order to query data in the Viam app.
 

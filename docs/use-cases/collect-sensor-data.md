@@ -10,7 +10,7 @@ modulescript: true
 ---
 
 You can use the data management service to capture sensor data from any or all of your machines and sync that data to the cloud.
-For example, you can configure data capture for several sensors across one or multiple machines to report the ambient operating temperature.
+For example, you can configure data capture for several sensors across one or multiple machines to report the current memory usage or the ambient operating temperature.
 
 You can do all of this using the [Viam app](https://app.viam.com/) user interface.
 You will not need to write any code.
@@ -35,6 +35,8 @@ You will not need to write any code.
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Then [find and add a sensor model](/components/sensor/) that supports your sensor.
+
+If you're not sure which sensor model to choose, start with the [`viam:viam-sensor:telegrafsensor`](https://github.com/viamrobotics/viam-telegraf-sensor) which captures performance data (CPU, memory usage, and more) from your machine.
 
 {{% /expand%}}
 
@@ -86,6 +88,8 @@ If you need to sync data conditionally, for example at a certain time, see [Trig
 
 To confirm data is being synced, go to the **DATA** tab and select the **Sensors** subtab.
 Confirm that you are seeing data appear.
+
+{{<gif webm_src="/services/data/monitor.webm" mp4_src="/services/data/monitor.mp4" alt="sensor control tab">}}
 
 {{< /tablestep >}}
 {{< /table >}}

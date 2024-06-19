@@ -46,6 +46,8 @@ Then [find and add a sensor model](/components/sensor/) that supports your senso
 
 Follow the guide to [capture sensor data](/use-cases/sensor-data-query/).
 
+If you're not sure which sensor model to choose, start with the [`viam:viam-sensor:telegrafsensor`](https://github.com/viamrobotics/viam-telegraf-sensor) which captures performance data (CPU, memory usage, and more) from your machine.
+
 {{% /expand%}}
 
 {{% expand "The Viam CLI to set up data query. Click to see instructions." %}}
@@ -133,15 +135,9 @@ You can choose to visualize data from a component on one machine, from multiple 
 Some third-party visualization tools support the ability to directly query your data within their platform to generate more granular visualizations of specific data.
 You might use this functionality to visualize only a single day's metrics, limit the visualization to a select machine or component, or to isolate an outlier in your reported data, for example.
 
-While every third-party tool is different, you would generally query your data using either {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
-
-See the following guide for examples:
+While every third-party tool is different, you would generally query your data using either {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}. See the following guide on [querying sensor data](/use-cases/sensor-data-query/) for more information.
 
 <!-- markdownlint-disable-file MD034 -->
-
-{{< cards >}}
-{{% card link="/use-cases/sensor-data-query/" %}}
-{{< /cards >}}
 
 {{< /tablestep >}}
 {{< /table >}}
