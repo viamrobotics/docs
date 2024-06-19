@@ -12,15 +12,14 @@ aliases:
 # SME: Devin Hilly
 ---
 
-You can use the data management service to capture sensor or time-series data from any machine and sync that data to the cloud.
-Then, you can query it using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} to obtain actionable insights or connect it to third-party visualization tools.
-
-For example, you can configure data capture for several sensors on one machine, or for serveral sensors across multiple machines, to report the ambient operating temperature.
+You can use the data management service to [capture sensor data](/use-cases/collect-sensor-data/) from any machine and sync that data to the cloud.
+Then, you can follow the steps on this page to query it using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
+For example, you can configure data capture for several sensors on one machine, or for several sensors across multiple machines, to report the ambient operating temperature.
 You can then run queries against that data to search for outliers or edge cases, to analyze how the ambient temperature affects your machines' operation.
 
 {{< alert title="In this page" color="tip" >}}
 
-1. [Gather data on any machine and syncing it to the cloud](#gather-and-sync-data).
+1. [Query data in the Viam app](#query-data-in-the-viam-app).
 1. [Configure data query](#configure-data-query).
 1. [Query data from third-party tools](#query-data-using-third-party-tools).
 
@@ -42,6 +41,12 @@ Then [find and add a sensor model](/components/sensor/) that supports your senso
 
 {{% /expand%}}
 
+{{% expand "Captured sensor data. Click to see instructions." %}}
+
+Follow the guide to [capture sensor data](/use-cases/sensor-data-query/).
+
+{{% /expand%}}
+
 {{% expand "The Viam CLI to set up data query. Click to see instructions." %}}
 
 {{< readfile "/static/include/how-to/install-cli.md" >}}
@@ -50,14 +55,69 @@ Then [find and add a sensor model](/components/sensor/) that supports your senso
 
 {{% expand "`mongosh` or another third-party tool for querying data. Click to see instructions." %}}
 
-You can [download the `mongosh` shell](https://www.mongodb.com/try/download/shell) to follow along.
+[Download the `mongosh` shell](https://www.mongodb.com/try/download/shell) or another third-party tool that can connect to a MongoDB data source to follow along.
 See the [`mongosh` documentation](https://www.mongodb.com/docs/mongodb-shell/) for more information.
 
 {{% /expand%}}
 
-## Gather and sync data
+## Query data in the Viam app
 
-{{< readfile "/static/include/how-to/gather-sync-sensor.md" >}}
+Once your data has synced, you can [query your data from within the Viam app](/use-cases/collect-sensor-data/#query-data-in-the-viam-app) using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
+
+You must have the [owner role](/cloud/rbac/) in order to query data in the Viam app.
+
+{{< table >}}
+{{< tablestep >}}
+**1. Query with SQL or MQL**
+
+Navigate to the [**Query** page](https://app.viam.com/data/query).
+Then, select either **SQL** or **MQL** from the **Query mode** dropdown menu on the right-hand side.
+
+{{< /tablestep >}}
+{{< tablestep >}}
+**2. Run your query**
+
+This example query returns 5 readings from a component called `my-sensor`:
+
+{{< tabs >}}
+{{% tab name="SQL" %}}
+
+```sql
+SELECT * FROM readings WHERE component_name = 'my-sensor' LIMIT 5
+```
+
+{{% /tab %}}
+{{% tab name="MQL" %}}
+
+```mql
+[{ "$match": { "component_name": "my-sensor" } }, { "$limit": 5 }]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+{{< /tablestep >}}
+{{< tablestep >}}
+**3. Review results**
+
+Click **Run query** when ready to perform your query and get matching results.
+Query results are displayed as a [JSON array](https://json-schema.org/understanding-json-schema/reference/array) below your query.
+
+{{% expand "See examples" %}}
+
+- The following shows a SQL query that filters by component name and specific column names, and its returned results:
+
+  {{< imgproc src="/services/data/query-ui-results.png" alt="Viam App Data Query tab with a SQL query shown and results shown below including two matching records" resize="800x" >}}
+
+- The following shows a SQL query that returns a count of records matching the search criteria:
+
+  {{< imgproc src="/services/data/query-ui-numreadings.png" alt="Viam App Data Query tab with a SQL query shown with the resulting count of matching records displayed below" resize="800x" >}}
+
+For more information on MQL syntax, see the [MQL (MongoDB Query Language)](https://www.mongodb.com/docs/manual/tutorial/query-documents/) documentation.
+
+{{% /expand%}}
+
+{{< /tablestep >}}
+{{< /table >}}
 
 ## Configure data query
 

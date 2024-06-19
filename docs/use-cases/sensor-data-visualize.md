@@ -1,6 +1,6 @@
 ---
-title: "Collect and analyze sensor data from any machines"
-linkTitle: "Collect and analyze sensor data"
+title: "Visualize sensor data from any machines"
+linkTitle: "Visualize and analyze sensor data"
 weight: 32
 type: "docs"
 images: ["/services/icons/data-visualization.svg"]
@@ -21,7 +21,6 @@ You can do all of this using the [Viam app](https://app.viam.com/) user interfac
 
 {{< alert title="In this page" color="tip" >}}
 
-1. [Gathering data on any machine and syncing it to the cloud](#gather-and-sync-data).
 1. [Configuring data query](#configure-data-query).
 1. [Visualizing data with third-party tools](#visualize-data-with-third-party-tools).
 
@@ -43,15 +42,17 @@ Then [find and add a sensor model](/components/sensor/) that supports your senso
 
 {{% /expand%}}
 
+{{% expand "Captured sensor data. Click to see instructions." %}}
+
+Follow the guide to [capture sensor data](/use-cases/sensor-data-query/).
+
+{{% /expand%}}
+
 {{% expand "The Viam CLI to set up data query. Click to see instructions." %}}
 
 {{< readfile "/static/include/how-to/install-cli.md" >}}
 
 {{% /expand%}}
-
-## Gather and sync data
-
-{{< readfile "/static/include/how-to/gather-sync-sensor.md" >}}
 
 ## Configure data query
 

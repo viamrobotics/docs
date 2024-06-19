@@ -9,15 +9,14 @@ modulescript: true
 # SME: Devin Hilly
 ---
 
-You can use the data management service to capture sensor or time-series data from any machine and sync that data to the cloud.
-Then, you can query it using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} to obtain actionable insights or connect it to third-party visualization tools.
-
-For example, you can configure data capture for several sensors on one machine, or for serveral sensors across multiple machines, to report the ambient operating temperature.
-You can then run queries against that data to search for outliers or edge cases, to analyze how the ambient temperature affects your machines' operation.
+You can use the data management service to [capture sensor data](/use-cases/collect-sensor-data/) from any machine and sync that data to the cloud.
+Then, you can use the Python SDK to retrieve and query that data.
+For example, you can configure data capture for several sensors on one machine, or for several sensors across multiple machines, to report the ambient operating temperature.
+You can then write a script to run queries against that data to search for outliers or edge cases, to analyze how the ambient temperature affects your machines' operation or to take action if the machines are overheating.
 
 {{< alert title="In this page" color="tip" >}}
 
-1. [Gathering data on any machine and syncing it to the cloud](#gather-and-sync-data).
+1. [Setting up the Python SDK](#)
 1. [Querying data with the Python SDK](#search-data-with-the-python-sdk).
 
 {{< /alert >}}
@@ -38,17 +37,19 @@ Then [find and add a sensor model](/components/sensor/) that supports your senso
 
 {{% /expand%}}
 
+{{% expand "Captured sensor data. Click to see instructions." %}}
+
+Follow the guide to [capture sensor data](/use-cases/sensor-data-query/).
+
+{{% /expand%}}
+
 {{% expand "The Viam CLI to set up data query. Click to see instructions." %}}
 
 {{< readfile "/static/include/how-to/install-cli.md" >}}
 
 {{% /expand%}}
 
-## Gather and sync data
-
-{{< readfile "/static/include/how-to/gather-sync-sensor.md" >}}
-
-## Search data with the Python SDK
+## Set up the Python SDK
 
 {{< table >}}
 {{< tablestep link="/build/program/#requirements">}}
@@ -63,8 +64,13 @@ pip install viam-sdk
 ```
 
 {{< /tablestep >}}
+{{< /table >}}
+
+## Search data with the Python SDK
+
+{{< table >}}
 {{< tablestep link="/cli/#organizations">}}
-**2. Create an API key**
+**1. Create an API key**
 
 To access your machines using the Python SDK, you must use an API key:
 
@@ -74,7 +80,7 @@ viam organizations api-key create --org-id <org-id> --name my-api-key
 
 {{< /tablestep >}}
 {{< tablestep link="/appendix/apis/data-client/">}}
-**3. Use the API key with the `data_client`**
+**2. Use the API key with the `data_client`**
 
 Use the API key and the [`TabularDataByFilter()`](/appendix/apis/data-client/#tabulardatabyfilter) method to query data:
 
