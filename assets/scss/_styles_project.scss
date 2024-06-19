@@ -1053,7 +1053,7 @@ img.frame {
 // Align media to left, center, or right
 
 @media (min-width: 650px) {
-  img.alignright { padding: 4px; margin: 0 0 2px 20px; display: inline; position: relative; }
+  img.alignright { padding: 4px; margin: 0 0 2px 20px; display: inline; }
   img.alignleft { padding: 4px; margin: 0 20px 2px 0; display: inline; }
   video.alignright { padding: 4px; margin: 0 0 2px 20px; display: inline; }
   video.alignleft { padding: 4px; margin: 0 20px 2px 0; display: inline; }

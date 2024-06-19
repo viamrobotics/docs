@@ -70,7 +70,7 @@ You can control your motor directly from the Viam app, using the mobile app, or 
 
 3. Control programatically
 
-You can use the following code to control the motor's speed and direction using your preferred SDK:
+   You can use the following code to control the motor's speed and direction using your preferred SDK:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -117,12 +117,12 @@ if __name__ == '__main__':
 package main
 
 import (
-	"context"
+  "context"
 
-	"go.viam.com/rdk/logging"
-	"go.viam.com/rdk/robot/client"
-	"go.viam.com/utils/rpc"
-	"go.viam.com/rdk/components/motor")
+  "go.viam.com/rdk/logging"
+  "go.viam.com/rdk/robot/client"
+  "go.viam.com/utils/rpc"
+  "go.viam.com/rdk/components/motor")
 
 func main() {
    logger := logging.NewDebugLogger("client")
