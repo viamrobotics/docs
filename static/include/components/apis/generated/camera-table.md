@@ -1,7 +1,7 @@
 <!-- prettier-ignore -->
 | Method Name | Description |
 | ----------- | ----------- |
-| [`GetImage`](/components/camera/#getimage) | Returns an image from the camera. |
+| [`GetImage`](/components/camera/#getimage) | Return an image from the camera. |
 | [`GetImages`](/components/camera/#getimages) | Get simultaneous images from different imagers, along with associated metadata. |
 | [`GetPointCloud`](/components/camera/#getpointcloud) | Get a point cloud from the camera as bytes with a MIME type describing the structure of the data. |
 | [`GetProperties`](/components/camera/#getproperties) | Get the camera intrinsic parameters and camera distortion, as well as whether the camera supports returning point clouds. |
