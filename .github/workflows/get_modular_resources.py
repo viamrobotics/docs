@@ -58,7 +58,7 @@ async def main():
                 print(insert_resp)
 
     # Get built-in resources from typesense.json
-    with open('typesense.json') as f:
+    with open('typesense_components.json') as f:
         components = json.load(f)
         for c in components:
             print("COMPONENT")
@@ -68,6 +68,19 @@ async def main():
             c["total_robot_usage"] = int(c["total_robot_usage"])
             print(c)
             insert_resp = typesense_client.collections['resources'].documents.upsert(c)
+            print("INSERTED")
+            print(insert_resp)
+
+    with open('typesense_services.json') as f:
+        services = json.load(f)
+        for s in services:
+            print("SERVICES")
+            print(s)
+            s["last_updated"] = time_now
+            s["total_organization_usage"] = int(s["total_organization_usage"])
+            s["total_robot_usage"] = int(s["total_robot_usage"])
+            print(s)
+            insert_resp = typesense_client.collections['resources'].documents.upsert(s)
             print("INSERTED")
             print(insert_resp)
 

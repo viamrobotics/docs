@@ -4,6 +4,7 @@ linkTitle: "obstacles_depth"
 weight: 20
 type: "docs"
 description: "A segmenter for depth cameras that returns the perceived obstacles as a set of 3-dimensional bounding boxes, each with a Pose as a vector."
+service_description: "A segmenter for depth cameras that returns the perceived obstacles as a set of 3-dimensional bounding boxes, each with a Pose as a vector."
 tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 aliases:
   - /ml/vision/obstacles_depth/

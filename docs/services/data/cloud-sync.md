@@ -10,6 +10,7 @@ images: ["/services/icons/data-cloud-sync.svg"]
 aliases:
   - "/services/data/cloud-sync/"
   - "/data/cloud-sync/"
+no_service: true
 # SME: Alexa Greenberg
 ---
 

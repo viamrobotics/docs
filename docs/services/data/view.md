@@ -10,6 +10,7 @@ images: ["/services/ml/collect.svg"]
 aliases:
   - /manage/data/view/
   - /data/view/
+no_service: true
 # SME: Alexa Greenberg
 ---
 

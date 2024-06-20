@@ -8,6 +8,7 @@ tags: ["frame system", "services"]
 aliases:
   - /services/frame-system/frame-config/
   - /mobility/frame-system/frame-config/
+no_service: true
 # SMEs: Peter L, Gautham, Bijan
 ---
 

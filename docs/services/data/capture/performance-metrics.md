@@ -11,6 +11,7 @@ videos: ["/services/data/monitor.webm", "/services/data/monitor.mp4"]
 aliases:
   - "/services/data/capture/"
   - "/data/capture/performance-metrics/"
+no_service: true
 # SME: Alexa Greenberg
 ---
 

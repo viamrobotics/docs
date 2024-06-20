@@ -11,6 +11,7 @@ images: ["/services/icons/data-query.svg"]
 aliases:
   - /manage/data/query/
   - /data/query/
+no_service: true
 # SME: Devin Hilly
 ---
 
