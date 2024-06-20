@@ -18,32 +18,32 @@ You can use Viam to control a motor's speed and direction directly from [the Via
 
 Follow these steps to control your motor:
 
-{{< expand-and-search "Step 1: Create a machine" >}}
+{{< expand "Step 1: Create a machine" >}}
 
 Go to the viam app and [add a new machine](/cloud/machines/#add-a-new-machine).
 
 ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
 
-{{< /expand-and-search >}}
+{{< /expand >}}
 
-{{< expand-and-search "Step 2: Configure a Board" >}}
+{{< expand "Step 2: Configure a Board" >}}
 
 Then, [add a board component](/components/board/), such as a [Raspberry Pi board](/components/board/pi/).
 
 ![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/components/board/pi-ui-config.png)
 
-{{< /expand-and-search >}}
+{{< /expand >}}
 
-{{< expand-and-search "Step 3: Configure a motor" >}}
+{{< expand "Step 3: Configure a motor" >}}
 
 [Add a motor component](/components/motor/), such as a [gpio motor](/components/motor/gpio/).
 Ensure your motor, motor driver, and board are properly connected.
 
 ![The CONFIGURE tab of the Viam app populated with a configured gpio motor.](/components/motor/gpio-config-ui.png)
 
-{{< /expand-and-search >}}
+{{< /expand >}}
 
-{{< expand-and-search "Step 4: Choose how you will control the motor" >}}
+{{< expand "Step 4: Choose how you will control the motor" >}}
 
 You can control your motor directly from the Viam app, using the mobile app, or programatically.
 
@@ -166,4 +166,4 @@ func main() {
 {{% /tab %}}
 {{< /tabs >}}
 
-{{< /expand-and-search >}}
+{{< /expand >}}
