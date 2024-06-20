@@ -9,6 +9,7 @@ images: ["/services/icons/vision.svg"]
 tags: ["vision", "computer vision", "CV", "services"]
 no_list: true
 modulescript: true
+hide_children: true
 aliases:
   - "/services/vision/"
   - "/ml/vision/detection/"

@@ -10,6 +10,7 @@ icon: true
 images: ["/icons/components/generic.svg"]
 no_list: true
 modulescript: true
+hide_children: true
 aliases:
   - /registry/advanced/generic/
 # SMEs:
