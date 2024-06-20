@@ -1175,10 +1175,15 @@ def parse(type, names):
                             ## and new empty dictionary this_method_raises_dict to house all errors raised
                             ## keys for this method, to allow for multiple errors raised:
                             this_method_dict["raises"] = {}
-                            this_method_raises_dict = {}
 
                             ## Iterate through all <strong> tags in method tag:
                             for strong_tag in tag.find_all('strong'):
+
+                                ## Create new empty dictionary this_method_raises_dict to house all raises (errors)
+                                ## keys for this method, to allow for multiple errors raised. Also resets the
+                                ## previous error's data when looping through multiple errors:
+                                this_method_raises_dict = {}
+
                                 ## Determine if this <strong> tag is preceded by a <dt> tag containing the text "Raises". Otherwise omit.
                                 ## METHODOLOGY: Find previous <dt> tag before matching <strong>param_name</strong> tag which contains this data.
                                 ##   Determining by <strong> tags allows matching parameters regardless whether they are
@@ -1827,6 +1832,23 @@ def write_markdown(type, names, methods):
                             # Handle case where no returns are found
                             else:
                                 output_file.write("- None.\n")
+
+                            if 'raises' in methods['python'][type][resource][py_method_name]:
+                                output_file.write('\n**Raises:**\n\n')
+
+                                raises_object = methods['python'][type][resource][py_method_name]["raises"]
+                                raises_types = methods['python'][type][resource][py_method_name]["raises"].keys()
+                                for raises_type in raises_types:
+                                    output_file.write(f"- ({raises_type})")
+                                    if "raises_description" in raises_object[raises_type]:
+                                        raises_description= raises_object[raises_type]["raises_description"]
+                                        ## Add a trailing period if it is missing:
+                                        if not raises_description.endswith('.'):
+                                            raises_description = raises_description + '.'
+
+                                        output_file.write(f": {raises_description}\n")
+                                    else:
+                                        output_file.write("\n")
 
                             ## If the method has a code sample, print it here:
                             if 'code_sample' in methods['python'][type][resource][py_method_name]:

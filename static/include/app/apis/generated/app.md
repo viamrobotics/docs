@@ -39,6 +39,10 @@ Return details about the requested organization.
 
 - ([viam.proto.app.Organization](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Organization)): The requested organization.
 
+**Raises:**
+
+- (GRPCError): If the provided org_id is invalid, or not currently authed to.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_organization).
 
 {{% /tab %}}
@@ -58,6 +62,10 @@ Check the availability of an {{< glossary_tooltip term_id="organization" text="o
 **Returns:**
 
 - ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): True if the provided namespace is available.
+
+**Raises:**
+
+- (GRPCError): If an invalid namespace (for example, “”) is provided.
 
 **Example:**
 
@@ -89,6 +97,10 @@ Updates organization details.
 **Returns:**
 
 - ([viam.proto.app.Organization](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Organization)): The updated organization.
+
+**Raises:**
+
+- (GRPCError): If the org’s namespace has already been set, or if the provided namespace is already taken.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_organization).
 
@@ -139,6 +151,10 @@ Create an {{< glossary_tooltip term_id="organization" text="organization" >}} in
 
 - ([viam.proto.app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)): The organization invite.
 
+**Raises:**
+
+- (GRPCError): if an invalid email is provided, or if the user is already a member of the org.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -168,6 +184,10 @@ If an invitation has only one authorization and you want to remove it, delete th
 **Returns:**
 
 - ([viam.proto.app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)): The updated invite.
+
+**Raises:**
+
+- (GRPCError): If no authorizations are passed or if an invalid combination of authorizations is passed (for example an authorization to remove when the invite only contains one authorization).
 
 **Example:**
 
@@ -241,6 +261,10 @@ Delete a pending organization invite to the organization you are currently authe
 
 - None.
 
+**Raises:**
+
+- (GRPCError): If no pending invite is associated with the provided email address.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -267,6 +291,10 @@ Resend a pending organization invite email.
 **Returns:**
 
 - ([viam.proto.app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)): The organization invite sent.
+
+**Raises:**
+
+- (GRPCError): If no pending invite is associated with the provided email address.
 
 **Example:**
 
@@ -297,6 +325,10 @@ Optionally, put the new location under a specified parent location.
 
 - ([viam.proto.app.Location](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location)): The newly created location.
 
+**Raises:**
+
+- (GRPCError): If either an invalid name (for example, “”), or parent location ID (for example, a nonexistent ID) is passed.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -322,6 +354,10 @@ Get a {{< glossary_tooltip term_id="location" text="location" >}} by its locatio
 **Returns:**
 
 - ([viam.proto.app.Location](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location)): The location.
+
+**Raises:**
+
+- (GRPCError): If an invalid location ID is passed or if one isn’t passed and there was no location ID provided at AppClient instantiation.
 
 **Example:**
 
@@ -350,6 +386,10 @@ Change the name of a {{< glossary_tooltip term_id="location" text="parent locati
 **Returns:**
 
 - ([viam.proto.app.Location](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location)): The newly updated location.
+
+**Raises:**
+
+- (GRPCError): If either an invalid location ID, name, or parent location ID is passed.
 
 **Example:**
 
@@ -395,6 +435,10 @@ Delete a {{< glossary_tooltip term_id="location" text="location" >}}.
 **Returns:**
 
 - None.
+
+**Raises:**
+
+- (GRPCError): If an invalid location ID is passed.
 
 **Example:**
 
@@ -448,6 +492,10 @@ Get a location’s `LocationAuth` (location secret or secrets).
 
 - ([viam.proto.app.LocationAuth](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.LocationAuth)): The LocationAuth containing location secrets.
 
+**Raises:**
+
+- (GRPCError): If an invalid location ID is passed or if one isn’t passed and there was no location ID provided at AppClient instantiation.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -474,6 +522,10 @@ Get a {{< glossary_tooltip term_id="machine" text="machine" >}} by its ID.
 
 - ([viam.proto.app.Robot](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)): The robot.
 
+**Raises:**
+
+- (GRPCError): If an invalid robot ID is passed.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -499,6 +551,10 @@ Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under
 **Returns:**
 
 - ([List[RobotPart]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The list of robot parts.
+
+**Raises:**
+
+- (GRPCError): If an invalid robot ID is passed.
 
 **Example:**
 
@@ -528,6 +584,10 @@ Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}}.
 **Returns:**
 
 - ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The robot part.
+
+**Raises:**
+
+- (GRPCError): If an invalid robot part ID is passed.
 
 **Example:**
 
@@ -559,6 +619,10 @@ Get the logs associated with a specific machine {{< glossary_tooltip term_id="pa
 **Returns:**
 
 - ([List[LogEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The list of log entries.
+
+**Raises:**
+
+- (GRPCError): If an invalid robot part ID is passed.
 
 **Example:**
 
@@ -616,6 +680,10 @@ Get a list containing the history of a machine {{< glossary_tooltip term_id="par
 
 - ([List[RobotPartHistoryEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPartHistoryEntry)): The list of the robot part’s history.
 
+**Raises:**
+
+- (GRPCError): If an invalid robot part ID is provided.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -645,6 +713,10 @@ Change the name of and assign an optional new configuration to a machine {{< glo
 
 - ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The newly updated robot part.
 
+**Raises:**
+
+- (GRPCError): If either an invalid robot part ID, name, or config is passed.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -673,6 +745,10 @@ Create a new machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 - ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The new robot part’s ID.
 
+**Raises:**
+
+- (GRPCError): If either an invalid robot ID or name is passed.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -699,6 +775,10 @@ Delete the specified machine {{< glossary_tooltip term_id="part" text="part" >}}
 **Returns:**
 
 - None.
+
+**Raises:**
+
+- (GRPCError): If an invalid robot part ID is passed.
 
 **Example:**
 
@@ -727,6 +807,10 @@ Mark a machine part as the [_main_ part](/build/configure/parts/#machine-parts) 
 
 - None.
 
+**Raises:**
+
+- (GRPCError): If an invalid robot part ID is passed.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -754,6 +838,10 @@ Mark a specified machine part for restart.
 
 - None.
 
+**Raises:**
+
+- (GRPCError): If an invalid robot part ID is passed.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -780,6 +868,10 @@ Create a machine {{< glossary_tooltip term_id="part" text="part" >}} secret.
 **Returns:**
 
 - ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The robot part the new secret was generated for.
+
+**Raises:**
+
+- (GRPCError): If an invalid robot part ID is passed.
 
 **Example:**
 
@@ -809,6 +901,10 @@ Delete a machine part secret.
 
 - None.
 
+**Raises:**
+
+- (GRPCError): If an invalid robot part ID or secret ID is passed.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -837,6 +933,10 @@ Get a list of all machines in a specified location.
 
 - ([List[viam.proto.app.Robot]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)): The list of robots.
 
+**Raises:**
+
+- (GRPCError): If an invalid location ID is passed or one isn’t passed and there was no location ID provided at AppClient instantiation.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -863,6 +963,10 @@ Create a new {{< glossary_tooltip term_id="machine" text="machine" >}}.
 **Returns:**
 
 - ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The new robot’s ID.
+
+**Raises:**
+
+- (GRPCError): If an invalid location ID is passed or one isn’t passed and there was no location ID provided at AppClient instantiation.
 
 **Example:**
 
@@ -892,6 +996,10 @@ Change the name of an existing machine.
 
 - ([viam.proto.app.Robot](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)): The newly updated robot.
 
+**Raises:**
+
+- (GRPCError): If either an invalid robot ID, name, or location ID is passed or a location ID isn’t passed and there was no location ID provided at AppClient instantiation.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -919,6 +1027,10 @@ Delete a specified machine.
 **Returns:**
 
 - None.
+
+**Raises:**
+
+- (GRPCError): If an invalid robot ID is passed.
 
 **Example:**
 
@@ -973,6 +1085,10 @@ Get a {{< glossary_tooltip term_id="fragment" text="fragment" >}} by ID.
 
 - ([Fragment](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The fragment.
 
+**Raises:**
+
+- (GRPCError): If an invalid fragment ID is passed.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -1004,6 +1120,10 @@ Create a new private {{< glossary_tooltip term_id="fragment" text="fragment" >}}
 
 - ([Fragment](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The newly created fragment.
 
+**Raises:**
+
+- (GRPCError): If an invalid name is passed.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -1033,6 +1153,10 @@ Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and it
 
 - ([Fragment](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The newly updated fragment.
 
+**Raises:**
+
+- (GRPCError): if an invalid ID, name, or config is passed.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -1060,6 +1184,10 @@ Delete a {{< glossary_tooltip term_id="fragment" text="fragment" >}}.
 **Returns:**
 
 - None.
+
+**Raises:**
+
+- (GRPCError): If an invalid fragment ID is passed.
 
 **Example:**
 
@@ -1091,6 +1219,10 @@ Add a role under the organization you are currently authenticated to.
 **Returns:**
 
 - None.
+
+**Raises:**
+
+- (GRPCError): If either an invalid identity ID, role ID, resource type, or resource ID is passed.
 
 **Example:**
 
@@ -1127,6 +1259,10 @@ Remove a role under the organization you are currently authenticated to.
 
 - None.
 
+**Raises:**
+
+- (GRPCError): If either an invalid identity ID, role ID, resource type, or resource ID or is passed.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -1160,6 +1296,10 @@ If no resource IDs are provided, all resource authorizations within the organiza
 
 - ([List[viam.proto.app.Authorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)): The list of authorizations.
 
+**Raises:**
+
+- (GRPCError): If an invalid resource ID is passed.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -1187,6 +1327,10 @@ Check if the organization, location, or robot your `ViamClient` is authenticated
 **Returns:**
 
 - ([List[viam.proto.app.AuthorizedPermissions]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions)): The permissions argument, with invalid permissions filtered out.
+
+**Raises:**
+
+- (GRPCError): If the list of permissions to validate is empty.
 
 **Example:**
 
@@ -1282,6 +1426,10 @@ Create a {{< glossary_tooltip term_id="module" text="module" >}} under the organ
 
 - (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing the ID [0] of the new module and its URL [1].
 
+**Raises:**
+
+- (GRPCError): If an invalid name (for example, “”) is passed.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -1313,6 +1461,10 @@ Update the documentation URL, description, models, entrypoint, and/or the visibi
 **Returns:**
 
 - ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The URL of the newly updated module.
+
+**Raises:**
+
+- (GRPCError): If either an invalid module ID, URL, list of models, or organization ID is passed.
 
 **Example:**
 
@@ -1371,6 +1523,10 @@ Get a {{< glossary_tooltip term_id="module" text="module" >}} by its ID.
 
 - ([viam.proto.app.Module](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Module)): The module.
 
+**Raises:**
+
+- (GRPCError): If an invalid module ID is passed.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -1424,6 +1580,10 @@ Create a new [API key](/cloud/rbac/#api-keys).
 **Returns:**
 
 - (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): The api key and api key ID.
+
+**Raises:**
+
+- (GRPCError): If the authorizations list is empty.
 
 **Example:**
 
