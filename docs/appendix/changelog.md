@@ -22,7 +22,7 @@ outputs:
 {{< changelog date="2024-05-09" color="changed" title="Return type of GetImage()" >}}
 
 The Python SDK introduced a new image container class called [`ViamImage`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage).
-The camera API's [`GetImage()`](/components/camera/#getimage) API method now returns a `ViamImage` type, and the vision service's [GetDetections()](/services/vision/#getdetections) and [GetClassifications()](/services/vision/#getclassifications) take in `ViamImage` as a parameter.
+The camera API's [`GetImage()`](/components/camera/#getimage) API method now returns a `ViamImage` type, and the vision service's [`GetDetections()`](/services/vision/#getdetections) and [`GetClassifications()`](/services/vision/#getclassifications) take in `ViamImage` as a parameter.
 
 You can use the helper functions `viam_to_pil_image` and `pil_to_viam_image` provided by the Python SDK to convert the `ViamImage` into a [`PIL Image`](https://omz-software.com/pythonista/docs/ios/Image.html) and vice versa.
 
@@ -53,9 +53,30 @@ detections = await detector.get_detections(cropped_frame)
 {{< /expand >}}
 {{< /changelog >}}
 
+{{% changelog date="2024-04-16" color="changed" title="Updated Viam app interface" %}}
+
+The [Viam app](https://app.viam.com) machine page UI has been updated significantly.
+In addition to other improvements, your component, service, and other resource config cards are all displayed on one page instead of in separate tabs.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-04-30" color="changed" title="Renamed AnalogReader to Analog" %}}
+
+`AnalogReader` has been renamed to `Analog`.
+The functionality remains the same, but code that uses [analogs](/components/board/#analogs) must be updated.
+`AnalogReaderByName()` and `AnalogReaderNames()` have become [`AnalogByName()`](/components/board/#analogbyname) and [`AnalogNames()`](/components/board/#analognames), respectively.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-04-30" color="added" title="Added part online and part offline triggers" %}}
+
+You can now configure [triggers](/build/configure/triggers/) to execute actions when a {{< glossary_tooltip term_id="part" text="machine part" >}} comes online or goes offline.
+
+{{% /changelog %}}
+
 {{% changelog date="2024-04-30" color="removed" title="Removed status from Board API" %}}
 
-Viam has removed support for following Board API methods models: `Status()`, `AnalogStatus()`, `DigitalInterruptStatus()`, `Close()`, `Tick()`, `AddCallback()`, and `RemoveCallback()`.
+Viam has removed support for the following board API methods: `Status()`, `AnalogStatus()`, `DigitalInterruptStatus()`, `Close()`, `Tick()`, `AddCallback()`, and `RemoveCallback()`.
 
 {{% /changelog %}}
 
@@ -80,9 +101,9 @@ You can now [upload your own ML model](/services/ml/upload-model/) using any of 
 
 {{% /changelog %}}
 
-{{% changelog date="2024-03-01" color="added" title="Ultrasonic sensor for Micro-RDK" %}}
+{{% changelog date="2024-03-01" color="added" title="Ultrasonic sensor for micro-RDK" %}}
 
-You can now use the [ultrasonic sensor component](/build/micro-rdk/sensor/ultrasonic/) with the [Micro-RDK](/build/micro-rdk/) to integrate a [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running the Micro-RDK.
+You can now use the [ultrasonic sensor component](/build/micro-rdk/sensor/ultrasonic/) with the [micro-RDK](/build/micro-rdk/) to integrate an [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running the micro-RDK.
 
 {{% /changelog %}}
 
