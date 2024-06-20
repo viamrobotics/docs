@@ -120,7 +120,7 @@ List the members and invites of the {{< glossary_tooltip term_id="organization" 
 
 **Returns:**
 
-- (Tuple[List[[viam.proto.app.OrganizationMember](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationMember)], List[[viam.proto.app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)]]): A tuple containing two lists; the first [0] of organization members, and the second [1] of organization invites.
+- (Tuple[List[[app.OrganizationMember](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationMember)], List[[app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)]]): A tuple containing two lists; the first [0] of organization members, and the second [1] of organization invites.
 
 **Example:**
 
@@ -149,7 +149,7 @@ Create an {{< glossary_tooltip term_id="organization" text="organization" >}} in
 
 **Returns:**
 
-- ([viam.proto.app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)): The organization invite.
+- ([app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)): The organization invite.
 
 **Raises:**
 
@@ -183,7 +183,7 @@ If an invitation has only one authorization and you want to remove it, delete th
 
 **Returns:**
 
-- ([viam.proto.app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)): The updated invite.
+- ([app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)): The updated invite.
 
 **Raises:**
 
@@ -290,7 +290,7 @@ Resend a pending organization invite email.
 
 **Returns:**
 
-- ([viam.proto.app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)): The organization invite sent.
+- ([app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)): The organization invite sent.
 
 **Raises:**
 
