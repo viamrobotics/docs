@@ -1081,8 +1081,10 @@ def parse(type, names):
                                             if strong_tag.parent.find('a', class_="reference internal"):
                                                 param_type_link_raw = strong_tag.parent.find('a', class_="reference internal").get("href")
                                                 ## Parameter type link is an anchor link:
-                                                if param_type_link_raw.startswith('#'):
+                                                if param_type_link_raw.startswith('#') and python_staging_url == '':
                                                     this_method_parameters_dict["param_type"] = '[' + param_type + '](' + url + param_type_link_raw + ')'
+                                                elif return_type_link_raw.startswith('#') and python_staging_url != '':
+                                                    this_method_parameters_dict["param_type"] = '[' + param_type + '](' + url.replace(python_staging_url, sdk_url) + param_type_link_raw + ')'
                                                 ## Parameter type link is a relative link, beginning with 1 - 3 instances of '../'
                                                 ## Convert to an absolute link:
                                                 elif param_type_link_raw.startswith('../') \
@@ -1132,7 +1134,9 @@ def parse(type, names):
                                 return_type_link_raw = return_tag.find('a', class_="reference internal").get("href")
 
                                 ## Return type link is an anchor link:
-                                if return_type_link_raw.startswith('#'):
+                                if return_type_link_raw.startswith('#') and python_staging_url == '':
+                                    this_method_dict["return"]["return_type"] = '[' + return_type + '](' + url + return_type_link_raw + ')'
+                                elif return_type_link_raw.startswith('#') and python_staging_url != '':
                                     this_method_dict["return"]["return_type"] = '[' + return_type + '](' + url.replace(python_staging_url, sdk_url) + return_type_link_raw + ')'
                                 ## Return type link is a relative link, beginning with 1 - 3 instances of '../'
                                 ## Convert to an absolute link:
