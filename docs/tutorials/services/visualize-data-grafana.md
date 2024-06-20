@@ -114,7 +114,7 @@ For more information see [Configure data capture](/services/data/capture/#config
 
 Next, enable the ability to query your synced data.
 When you sync captured data to Viam, that data is stored in the Viam organization’s [MongoDB Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance.
-Configuring data query allows you to directly [query your data using the Viam app](/use-cases/collect-sensor-data/#query-data-in-the-viam-app) or [query your data from a compatible client](/use-cases/sensor-data-query/#configure-data-query) (such as `mongosh`), but also allows Grafana to access that data and visualize it.
+Configuring data query allows you to directly [query your data](/use-cases/sensor-data-query/#query-data-in-the-viam-app) using the Viam app or a compatible client (such as `mongosh`), but also allows Grafana to access that data and visualize it.
 
 To enable data query:
 
