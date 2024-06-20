@@ -1171,10 +1171,15 @@ def parse(type, names):
                             ## and new empty dictionary this_method_raises_dict to house all errors raised
                             ## keys for this method, to allow for multiple errors raised:
                             this_method_dict["raises"] = {}
-                            this_method_raises_dict = {}
 
                             ## Iterate through all <strong> tags in method tag:
                             for strong_tag in tag.find_all('strong'):
+
+                                ## Create new empty dictionary this_method_raises_dict to house all raises (errors)
+                                ## keys for this method, to allow for multiple errors raised. Also resets the
+                                ## previous error's data when looping through multiple errors:
+                                this_method_raises_dict = {}
+
                                 ## Determine if this <strong> tag is preceded by a <dt> tag containing the text "Raises". Otherwise omit.
                                 ## METHODOLOGY: Find previous <dt> tag before matching <strong>param_name</strong> tag which contains this data.
                                 ##   Determining by <strong> tags allows matching parameters regardless whether they are
