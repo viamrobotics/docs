@@ -4,6 +4,7 @@ linkTitle: "obstacles_distance"
 weight: 20
 type: "docs"
 description: "A segmenter that takes point clouds from a camera input and returns the average single closest point to the camera as a perceived obstacle."
+service_description: "A segmenter that takes point clouds from a camera input and returns the average single closest point to the camera as a perceived obstacle."
 tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 aliases:
   - /ml/vision/obstacles_distance/

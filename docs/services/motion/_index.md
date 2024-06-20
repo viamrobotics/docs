@@ -11,6 +11,7 @@ no_list: true
 aliases:
   - "/services/motion/"
   - "/mobility/motion/"
+no_service: true
 # SME: Motion team
 ---
 

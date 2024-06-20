@@ -12,6 +12,7 @@ aliases:
   - "/services/data/capture/"
   - "/data/capture/"
 # SME: Alexa Greenberg
+no_service: true
 ---
 
 The data management service captures data from one or more components locally on the machine's storage.

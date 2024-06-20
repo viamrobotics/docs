@@ -7,6 +7,7 @@ type: "docs"
 tags: ["data management", "cloud", "sync"]
 aliases:
   - /data/trigger-sync/
+no_service: true
 # SME: Alexa Greenberg
 ---
 

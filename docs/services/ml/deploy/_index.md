@@ -29,18 +29,7 @@ For example, you can configure an [`mlmodel` vision service](/services/vision/) 
 
 ## Supported models
 
-### Built-in models
-
-You can use the following built-in model of the service:
-
-<!-- prettier-ignore -->
-| Model | Description |
-| ----- | ----------- |
-| [`tflite_cpu`](./tflite_cpu/) | Runs a TensorFlow Lite model that you have [trained](/services/ml/train-model/) or [uploaded](/services/ml/upload-model/) on the CPU of your machine. |
-
-### Modular resources
-
-{{<modular-resources api="rdk:service:mlmodel" type="ML model">}}
+{{<resources_svc api="rdk:service:mlmodel" type="ML model">}}
 
 {{< alert title="Add support for other models" color="tip" >}}
 If none of the existing models of the ML model service fit your use case, you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it.

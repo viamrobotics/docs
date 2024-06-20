@@ -5,6 +5,7 @@ weight: 60
 type: "docs"
 tags: ["data management", "ml", "model training"]
 description: "Configure a tflite_cpu ML model service to deploy TensorFlow lite models to your machine."
+service_description: "Runs a TensorFlow Lite model that you have trained or uploaded on the CPU of your machine."
 icon: true
 images: ["/services/icons/ml.svg"]
 aliases:

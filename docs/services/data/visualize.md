@@ -10,6 +10,7 @@ icon: true
 images: ["/services/icons/data-visualization.svg"]
 aliases:
   - /data/visualize/
+no_service: true
 # SME: Devin Hilly
 ---
 

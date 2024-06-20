@@ -38,14 +38,9 @@ If you want to use most of an existing API but need just a few other functions, 
 
 ## Supported models
 
-### Built-in models
+{{<resources_svc api="rdk:service:generic" type="generic">}}
 
-For configuration information, click on the model name:
-
-<!-- prettier-ignore -->
-| Model | Description |
-| ----- | ----------- |
-| [`fake`](fake/) | A model used for testing a generic service. |
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ## Control your machine with Viam's client SDK libraries
 
