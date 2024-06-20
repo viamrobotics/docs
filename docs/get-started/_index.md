@@ -20,6 +20,12 @@ If you need any help along the way, join our community:
 
 {{< cards >}}
 {{% card link="/get-started/installation/" %}}
-{{% card link="https://discord.gg/viam" customDescription="Have questions, or want to meet other people working on smart machines? Join us in the Community Discord!" customTitle="Community" webm_src="/heart.webm" mp4_src="/heart.mp4" alt="A robot drawing a heart" %}}
+{{% manualcard link="https://discord.gg/viam" webm_src="/heart.webm" mp4_src="/heart.mp4" alt="A robot drawing a heart" %}}
+
+#### Community
+
+Have questions, or want to meet other people working on smart machines? Join us in the Community Discord!
+
+{{% /manualcard %}}
 
 {{< /cards >}}
