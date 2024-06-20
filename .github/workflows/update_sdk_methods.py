@@ -1092,7 +1092,7 @@ def parse(type, names):
                                                     else:
                                                         linkable_resource = resource
                                                     this_method_parameters_dict["param_type"] = f'[{param_type}]({sdk_url}/autoapi/viam/{type}s/{linkable_resource}/' + param_type_link_raw.replace('../', '')+ ')'
-                                                elif param_type_link_raw.startswith('../'):
+                                                elif return_type_link_raw.startswith('../'):
                                                     this_method_parameters_dict["param_type"] = '[' + param_type + '](' + sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
 
                                             ## Unable to determine parameter description, neither timeout or extra, nor matching to any
