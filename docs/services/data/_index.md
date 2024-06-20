@@ -92,6 +92,8 @@ Export data with the Viam CLI and download your data for offline access.
 
 You must [configure data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/) with the data management service to be able to view, label, and export data.
 
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/J0NNiQD0ocQ">}}
+
 #### Used with
 
 You can configure the frequency of data capture individually for each supported component:

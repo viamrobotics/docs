@@ -33,6 +33,8 @@ You can use different models to:
 - Combine streams from multiple cameras into one.
 - Transform and process images.
 
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/iKCMo89oyfw">}}
+
 ## Related services
 
 {{< cards >}}
