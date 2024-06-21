@@ -36,15 +36,6 @@ You will not need to write any code.
 Start by collecting images from your cameras and syncing it to the [Viam app](https://app.viam.com).
 See [Collect image data and sync it to the cloud](/use-cases/image-data/#collect-image-data-and-sync-it-to-the-cloud) for instructions.
 
-<br>
-{{% alert title="Tip" color="tip" %}}
-To keep your data organized, configure a tag in your data management service config panel.
-This tag will be applied to all data synced from that machine.
-If you apply the same tag to all data gathered from all machines that you want to use in your dataset, you can filter by that tag in the Viam app **DATA** tab to make the next steps easier.
-
-This is not required, since you can use other filters like time or machine ID in the **DATA** tab to isolate your data.
-{{% /alert %}}
-
 {{< /tablestep >}}
 {{< tablestep >}}
 {{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Label data">}}
