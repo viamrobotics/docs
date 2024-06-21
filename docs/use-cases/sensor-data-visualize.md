@@ -10,8 +10,7 @@ aliases:
   - /data/visualize/
 ---
 
-You can use the data management service to capture sensor or time-series data from any machine and sync that data to the cloud.
-Then, you can visualize your data with a variety of third-party tools, including Grafana, Tableau, Google's Looker Studio, and more.
+Once you have used the data management service to [capture data](/use-cases/collect-sensor-data/), you can visualize your data with a variety of third-party tools, including Grafana, Tableau, Google's Looker Studio, and more.
 You can choose to visualize data from a component on one machine, from multiple components together, or from many components across a fleet of machines, all from a single pane of glass.
 
 For example, you can configure data capture for several sensors on one machine or for several sensors across multiple machines to report the ambient operating temperature.
