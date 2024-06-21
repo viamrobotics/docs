@@ -79,7 +79,8 @@ Click **Train model** and follow the prompts.
 {{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Train models">}}
 **2. Deploy your ML model**
 
-Configure the built-in [ML model service](/services/ml/deploy/) to deploy and run the model.
+On the **Configure** page add the built-in [ML model service](/services/ml/deploy/) and select your ML model.
+The service will to deploy and run the model.
 Once you've added the ML model service to your machine, choose your newly-trained model from the dropdown menu in the ML model service's configuration card.
 
 {{< /tablestep >}}
@@ -87,7 +88,7 @@ Once you've added the ML model service to your machine, choose your newly-traine
 {{<imgproc src="/services/icons/vision.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Configure a service">}}
 **3. Configure an <code>mlmodel</code> vision service [_(i)_](/services/vision/)**
 
-You can think of the vision service as the bridge between the ML model service and the output from your camera.
+The vision service takes the the ML model and applies it to the stream of images from your camera.
 
 Add the `vision / ML model` service to your machine.
 Then, from the **Select model** dropdown, select the name of the ML model service you configured in the last step (for example, `mlmodel-1`).

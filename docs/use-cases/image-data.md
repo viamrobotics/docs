@@ -45,7 +45,7 @@ Configure a camera component, such as a [webcam](/components/camera/webcam/), on
 **2. Enable the data management service [_(i)_](/services/data/)**
 
 In your camera component configuration panel, find the **Data capture** section.
-Click **Add method** and follow the prompt to **Create data management service**.
+Click **Add method** and follow the prompt to **Create a data management service**.
 You can leave the default data manager settings.
 
 {{< /tablestep >}}
@@ -126,9 +126,7 @@ If you need to trigger sync in a different way, see [Trigger cloud sync conditio
 
 ## Next steps
 
-## Next steps
-
-Now that you have collected image data, you can also [train computer vision models](/use-cases/deploy-ml/) or [query your data](/services/data/query/):
+Now that you have collected image data, you can [train new computer vision models](/use-cases/deploy-ml/) or [programmatically access your data](/services/data/export/):
 
 {{< cards >}}
 {{% card link="/use-cases/deploy-ml/" %}}
