@@ -11,6 +11,7 @@ Learn about the Viam platform by reading our Viam in 3 minutes guide or try it o
 {{< cards >}}
 {{% card link="/get-started/viam/" %}}
 {{% card link="/get-started/try-viam/" %}}
+{{% card link="/get-started/quickstarts/control-motor/" %}}
 {{< /cards >}}
 
 If you're ready to try it on your own machine, start by installing `viam-server`.

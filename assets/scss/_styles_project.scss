@@ -437,6 +437,7 @@ END MARKETING CSS
   border-bottom: black solid 1px;
   background: whitesmoke;
   padding: 1rem;
+  overflow: hidden;
 }
 
 .expand {
@@ -1807,4 +1808,20 @@ div .filterable > p {
 .usecase-table .tablestep:nth-of-type(even) {
   background-color: white;
   border-top: 1px solid #dee2e6;
+}
+
+// Expander styling
+
+details * i.fa-chevron-down {
+  display: none;
+}
+details * i.fa-chevron-right {
+  display: unset;
+}
+
+details[open] * i.fa-chevron-down {
+  display: unset;
+}
+details[open] * i.fa-chevron-right {
+  display: none;
 }
