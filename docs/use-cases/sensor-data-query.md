@@ -27,12 +27,6 @@ You can then run queries against that data to search for outliers or edge cases,
 
 ## Prerequisites
 
-{{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
-
-{{% snippet "setup.md" %}}
-
-{{% /expand%}}
-
 {{% expand "At least one configured sensor. Click to see instructions." %}}
 
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
