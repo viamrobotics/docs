@@ -64,7 +64,7 @@ You can also [export your data from the Viam app](/services/data/export/) to a d
 ## Next steps
 
 {{< cards >}}
-{{% card link="/services/data/query/" %}}
+{{% card link="/use-cases/sensor-data-query/" %}}
 {{% card link="/services/ml/" %}}
 {{% card link="/tutorials/" %}}
 {{< /cards >}}

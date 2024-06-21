@@ -87,6 +87,6 @@ The data you obtain about your machines is associated with metadata about the ma
 Once you have captured data about your machines, you can query your captured data with any tools that with SQL or MQL or visualize your data with tools like Grafana:
 
 {{< cards >}}
-{{% card link="/services/data/query/" %}}
-{{% card link="/services/data/visualize" %}}
+{{% card link="/use-cases/sensor-data-query/" %}}
+{{% card link="/use-cases/sensor-data-visualize/" %}}
 {{< /cards >}}

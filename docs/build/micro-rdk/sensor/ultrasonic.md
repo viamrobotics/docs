@@ -102,4 +102,6 @@ The following attributes are available for `ultrasonic` sensors:
 | `echo_interrupt_pin` | string | **Required** | The GPIO number of the board's GPIO pin that you have wired to the echo pin of your ultrasonic sensor. Please note that unlike the RDK ultrasonic sensor, you must not use a named pin associated with a digital interrupt configured on your board: it will not (currently) work. |
 | `timeout_ms`  | int | Optional | Time to wait in milliseconds before initiating a timeout when requesting readings from your ultrasonic sensor. <br> Default: `50` <br> Max: `100` |
 
+## Test the sensor
+
 {{< readfile "/static/include/components/test-control/sensor-control.md" >}}

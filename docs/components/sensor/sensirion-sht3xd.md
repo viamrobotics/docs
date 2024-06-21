@@ -59,4 +59,6 @@ The following attributes are available for `sensirion-sht3xd` sensors:
 | `i2c_bus` | string | **Required** | The index of the I2C bus on the board that the sensor is wired to. |
 | `i2c_address` | string | Optional | The [I2C device address](https://learn.adafruit.com/i2c-addresses/overview) of the sensor. <br> Default: `0x44` |
 
+## Test the sensor
+
 {{< readfile "/static/include/components/test-control/sensor-control.md" >}}

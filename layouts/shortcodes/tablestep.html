@@ -1,11 +1,13 @@
-<tr>
-    <th>
-        {{ with $.Inner }}
-          {{ if eq $.Page.File.Ext "md" }}
-            {{ $.Inner | markdownify }}
-          {{ else }}
-            {{ $.Inner | htmlUnescape | safeHTML }}
-          {{ end }}
-        {{ end }}
-    </th>
-</tr>
+{{- $link := (.Get "link") -}}
+<div class="tablestep">
+  {{ if $link }}
+  <a href="{{ $link }}" class="tablesteplink" title="Click for more information on the topic."><i class="fa fa-info-circle"></i></a>
+  {{ end }}
+  {{ with $.Inner }}
+      {{ if eq $.Page.File.Ext "md" }}
+        {{ $.Inner | markdownify }}
+      {{ else }}
+        {{ $.Inner | htmlUnescape | safeHTML }}
+      {{ end }}
+    {{ end }}
+</div>
