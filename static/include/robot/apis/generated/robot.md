@@ -558,6 +558,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 metadata, err := machine.CloudMetadata(ctx.Background())
+machine_part_id = metadata.MachinePartID
+primary_org_id = metadata.PrimaryOrgID
+location_id = metadata.LocationID
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
