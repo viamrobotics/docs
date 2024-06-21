@@ -64,6 +64,14 @@ Use the interface on the **DATA** tab (or the [`viam data dataset add` command](
 {{< /tablestep >}}
 {{< /table >}}
 
+{{% alert title="Tip" color="tip" %}}
+To keep your data organized, you can configure a tag in your data management service config panel.
+This tag will be applied to all data synced from that machine in the future.
+If you apply the same tag to all data gathered from all machines that you want to use in your dataset, you can filter by that tag in the Viam app **DATA** tab, or when querying data.
+
+This is not required, since you can use other filters like time or machine ID in the **DATA** tab to isolate your data.
+{{% /alert %}}
+
 ## Train and test a machine learning (ML) model
 
 {{< table >}}
