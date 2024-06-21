@@ -27,23 +27,9 @@ You can do all of this using the [Viam app](https://app.viam.com/) user interfac
 
 ## Prerequisites
 
-{{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
-
-{{% snippet "setup.md" %}}
-
-{{% /expand%}}
-
-{{% expand "At least one configured sensor. Click to see instructions." %}}
-
-Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
-Then [find and add a sensor model](/components/sensor/) that supports your sensor.
-
-{{% /expand%}}
-
 {{% expand "Captured sensor data. Click to see instructions." %}}
 
-Follow the guide to [capture sensor data](/use-cases/sensor-data-query/).
+Follow the guide to [capture sensor data](/use-cases/collect-sensor-data/).
 
 If you're not sure which sensor model to choose, start with the [`viam:viam-sensor:telegrafsensor`](https://github.com/viamrobotics/viam-telegraf-sensor) which captures performance data (CPU, memory usage, and more) from your machine.
 
