@@ -393,7 +393,10 @@ python_ignore_apis = [
     'viam.robot.client.RobotClient.transform_point_cloud', # unimplemented
     'viam.robot.client.RobotClient.get_component', # GUESS ?
     'viam.robot.client.RobotClient.get_service', # GUESS ?
-    'viam.components.board.client.BoardClient.write_analog' # Currently borked: https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.write_analog
+    'viam.components.board.client.BoardClient.write_analog', # Currently borked: https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.write_analog
+    'viam.components.board.client.StreamWithIterator.next', # No content upstream
+    'viam.robot.client.ViamChannel.close', # channel-specific close
+    'viam.robot.client.SessionsClient.reset'  # session-specific reset
 ]
 
 ## Use these URLs for data types that are not otherwise captured by parse(), such as:
