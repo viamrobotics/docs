@@ -20,7 +20,7 @@ Follow these steps to control your motor:
 
 {{< expand "Step 1: Create a machine" >}}
 
-Go to the viam app and [add a new machine](/cloud/machines/#add-a-new-machine).
+Go to the Viam app and [add a new machine](/cloud/machines/#add-a-new-machine).
 
 ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
 
