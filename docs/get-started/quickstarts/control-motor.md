@@ -64,9 +64,7 @@ You can control your motor directly from the Viam app, using the mobile app, or 
 
    Select the location that your machine is assigned to from the **Locations** tab.
 
-   {{<gif webm_src="/get-started/quickstarts/mobile-app-motor-control.webm" mp4_src="/get-started/quickstarts/mobile-app-motor-control.mp4" alt="Using an example machine on the Viam mobile app to set the direction and speed of a configured motor using the slider on the user interface" max-height="50px" max-width="200px" clear="both" class="alignright">}}
-
-    <div style="clear: both;"></div>
+   {{<gif webm_src="/get-started/quickstarts/mobile-app-motor-control.webm" mp4_src="/get-started/quickstarts/mobile-app-motor-control.mp4" alt="Using an example machine on the Viam mobile app to set the direction and speed of a configured motor using the slider on the user interface" max-height="50px" max-width="200px" class="HELLO aligncenter">}}
 
 3. Control programatically
 
@@ -99,7 +97,8 @@ async def main():
 
     # motor-1
     motor_1 = Motor.from_robot(machine, "motor-1")
-    motor_1_return_value = await motor_1.is_moving()
+    # Turn the motor 7.2 revolutions at 60 RPM.
+    await motor_1.go_for(rpm=60, revolutions=7.2)
     print(f"motor-1 is_moving return value: {motor_1_return_value}")
 
     # Don't forget to close the machine when you're done!
@@ -154,7 +153,8 @@ func main() {
       logger.Error(err)
       return
     }
-    motor1ReturnValue, err:= motor1Component.IsMoving(context.Background())
+    // Turn the motor 7.2 revolutions at 60 RPM.
+    motor1Component.GoFor(context.Background(), 60, 7.2, nil)
     if err!=nil {
       logger.Error(err)
       return
@@ -167,3 +167,21 @@ func main() {
 {{< /tabs >}}
 
 {{< /expand >}}
+
+## Next steps
+
+Now that you have made a motor move, explore other components, or related servies:
+
+{{< cards >}}
+{{% card link="/components/" %}}
+{{% card link="/services/navigation/" %}}
+{{% card link="/services/SLAM/" %}}
+{{< /cards >}}
+
+To see motors in real-world projects, check out these tutorials:
+
+{{< cards >}}
+{{% card link="/tutorials/get-started/confetti-bot/" %}}
+{{% card link="/tutorials/get-started/lazy-susan/" %}}
+{{% card link="/tutorials/configure/configure-rover/" %}}
+{{< /cards >}}

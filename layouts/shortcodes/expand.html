@@ -9,12 +9,6 @@
     </span>
   </summary>
   <div class="expand-content">
-    {{- if (findRE "(gif|mp4)_src" .Inner) -}}
-    <div class="media-wrapper">
-      {{.Inner | safeHTML}}
-    </div>
-    {{- else -}}
     {{.Inner | markdownify}}
-    {{- end -}}
   </div>
 </details>
