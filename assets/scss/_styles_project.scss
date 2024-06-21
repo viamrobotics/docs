@@ -1809,3 +1809,19 @@ div .filterable > p {
   background-color: white;
   border-top: 1px solid #dee2e6;
 }
+
+// Expander styling
+
+details * i.fa-chevron-down {
+  display: none;
+}
+details * i.fa-chevron-right {
+  display: unset;
+}
+
+details[open] * i.fa-chevron-down {
+  display: unset;
+}
+details[open] * i.fa-chevron-right {
+  display: none;
+}

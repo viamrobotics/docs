@@ -1,5 +1,7 @@
-<details closed class="expand">
-  <summary class="expand-label" style="cursor: pointer;">
+<details class="expand">
+  <summary class="expand-label" style="display: block;">
+    <i style="font-size:x-small;" class="fas fa-chevron-right"></i>
+    <i style="font-size:x-small;" class="fas fa-chevron-down"></i>
     <span>
       {{- if .IsNamedParams -}}
       {{.Get "default" | default "Click to expand"}}
