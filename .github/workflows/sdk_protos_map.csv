@@ -436,6 +436,6 @@ robot,Options.with_api_key,with_api_key,,
 robot,AtAddress,at_address,,
 robot,WithChannel,with_channel,,
 robot,Refresh,refresh,,
-robot,Shutdown,shutdown,,
+robot,Shutdown,shutdown,Shutdown,
 ## HACK: No proto for close, manually mapping:
 robot,Close,close,Close,
