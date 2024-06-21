@@ -83,7 +83,7 @@ Fill in the attributes as applicable to your movement sensor, according to the t
 ## Attributes
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | The `name` of the [board](/components/board/) to which the device is wired. |
 | `spi_bus` | string | **Required** | The index of the SPI bus over which the device communicates with the board. |

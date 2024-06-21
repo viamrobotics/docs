@@ -77,7 +77,7 @@ Fill in the attributes as applicable to your movement sensor, according to the t
 The following attributes are available for a `dual-gps-rtk` movement sensor:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `first_gps` | int | **Required** | The name you have configured for the first movement sensor you want to combine the measurements from. Must be a GPS model. |
 | `second_gps` | string | **Required** | The name you have configured for the second movement sensor you want to combine the measurements from. Must be a GPS model. |

@@ -4,6 +4,7 @@ linkTitle: "detector_3d_segmenter"
 weight: 20
 type: "docs"
 description: "This model takes 2D bounding boxes from an object detector and projects the pixels in the bounding box to points in 3D space."
+service_description: "A segmenter that takes 2D bounding boxes from an object detector and projects the pixels in the bounding box to points in 3D space."
 tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 aliases:
   - "/services/vision/segmentation/"
@@ -85,7 +86,7 @@ Add the vision service object to the services array in your raw JSON configurati
 The following parameters are available for a `detector_3d_segmenter`.
 
 <!-- prettier-ignore -->
-| Parameter | Inclusion | Description |
+| Parameter | Required? | Description |
 | --------- | --------- | ----------- |
 | `detector_name`| **Required**  | The name of a registered detector vision service. The segmenter vision service uses the detections from `"detector_name"` to create the 3D segments. |
 | `confidence_threshold_pct` | Optional | A number between 0 and 1 which represents a filter on object confidence scores. Detections that score below the threshold will be filtered out in the segmenter. The default is 0.5. |

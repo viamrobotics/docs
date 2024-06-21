@@ -346,6 +346,7 @@ END MARKETING CSS
 .td-content .alert:not(:first-child) {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+  clear: both;
 }
 
 .alert-heading { // left margin for h4 in alerts
@@ -1785,4 +1786,25 @@ div .filterable > p {
 
 .usecase:hover {
   background-color: whitesmoke;
+}
+
+// TABLES
+.tablesteplink {
+  float: right;
+  color: black;
+}
+
+.tablestep {
+  clear: both;
+  padding: 1rem;
+}
+
+.usecase-table .tablestep:nth-of-type(odd) {
+  background-color: whitesmoke;
+  border-top: 1px solid #dee2e6;
+}
+
+.usecase-table .tablestep:nth-of-type(even) {
+  background-color: white;
+  border-top: 1px solid #dee2e6;
 }

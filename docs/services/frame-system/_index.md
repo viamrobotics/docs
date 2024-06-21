@@ -11,6 +11,7 @@ tags: ["frame system", "services"]
 aliases:
   - /services/frame-system/
   - /mobility/frame-system/
+no_service: true
 # SMEs: Peter L, Gautham, Bijan
 ---
 
@@ -149,7 +150,7 @@ You can add a reference frame to your component with the following template:
 Configure the reference frame as follows:
 
 <!-- prettier-ignore -->
-| Parameter | Inclusion | Required |
+| Parameter | Required? | Required |
 | --------- | ----------- | ----- |
 | `parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
 | `translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: _mm_. |
@@ -238,7 +239,7 @@ Click the grid icons below and to the right of the **Frame** button or press the
 {{% /tab %}}
 {{< /tabs >}}
 
-### Bounding geometries
+### Geometries
 
 To visualize a component's spatial constraints, add `geometry` properties by selecting a component and selecting a **Geometry** type in the **Frame** subtab of the **CONFIGURE** tab of a machine's page on [the Viam app](https://app.viam.com).
 

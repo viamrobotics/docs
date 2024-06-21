@@ -59,7 +59,7 @@ Edit the attributes as applicable.
 The following attributes are available for `fake` input controllers:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `callback_delay_sec` | float | **Required** | The number of seconds between callbacks getting triggered. Random between 1 and 2 if not specified. `0` is not valid and will be overwritten by a random delay. |
 | `event_value` | float | Optional | Set the value of events returned. Random between -1 and 1 if not specified. |

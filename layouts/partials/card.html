@@ -64,7 +64,11 @@
    {{- end -}}
  {{- else -}}
   {{- if strings.HasPrefix ($link | string) "http" -}}
+    {{- if $customCanonicalLink -}}
+    <a href="{{$customCanonicalLink}}">
+    {{- else -}}
     <a href="{{.RelPermalink}}">
+    {{- end -}}
     {{- if $imageOverwrite -}}
       <div class="hover-card-img">
         {{- partial "imgproc.html" (dict "src" ($imageOverwrite) "resize" "400x" "alt" (.alt) "style" "") -}}

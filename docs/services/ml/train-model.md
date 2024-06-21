@@ -13,6 +13,7 @@ description: "Train an image classification model on labeled image data."
 aliases:
   - /manage/ml/train-model/
   - /ml/train-model/
+no_service: true
 # SME: Tahiya + Alexa Greenberg
 ---
 
@@ -29,13 +30,16 @@ Then click on the dataset you want to train a model from and click on the **Trai
 
 On the **Train a model** menu:
 
+1. Leave **New model** and **Built-in training** selected.
+   If you want to train on a custom training script, select that option.
+   Click **Next steps**.
 1. Enter a name or use the suggested name for your new model.
 1. Select a **Model Type** and one or more labels to train on:
    - **Single Label Classification**: The resulting model predicts one of the selected labels or `UNKNOWN` per image.
      If you are only using one label, ensure that the dataset you are training on also contains unlabeled images.
    - **Multi Label Classification**: The resulting model predicts one or more of the selected labels per image.
    - **Object Detection**: The resulting model predicts either no detected objects or any number of object labels alongside their locations per image.
-1. Click **TRAIN MODEL**
+1. Click **Train model**
 
 {{<gif webm_src="/services/ml/train-model.webm" mp4_src="/services/ml/train-model.mp4" alt="Train a model UI">}}
 
@@ -54,15 +58,18 @@ To iterate on your model and train on the a changed dataset, [train a new versio
 
 {{< /alert >}}
 
-### Train a new version of a model
+## Train a new version of a model
+
+From your dataset's page, click the **Train a model** menu, select **New version**, then select the existing model, and click **Train model**.
+The model will train using the same script that was used when you trained the first version.
+For example, if you used the built-in TFLite training script to train the first version, it will be used to train all future versions of this model.
+
+{{< alert title="Info" color="info" >}}
+When you train a new version of a model, the previous model remains unchanged and is not used as input.
+{{< /alert >}}
 
 If you [deploy a model](/services/ml/) to a machine, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the machine.
 If you train a new version of that model, Viam will automatically deploy the new version to the machine and replace the old version.
-
-{{< alert title="Important" color="note" >}}
-The previous model remains unchanged when you are training a new version of a model and is not used as input.
-If you are training a new model, you need to again go to your dataset's page and click on the **Train Model** button.
-{{< /alert >}}
 
 If you do not want Viam to automatically deploy the `latest` version of the model, you can change `packages` configuration in the [JSON machine configuration](/build/configure/#the-configure-tab).
 

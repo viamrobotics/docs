@@ -297,7 +297,7 @@ These are generated at runtime, so there is no need to adjust this folder.
 {{% tab name="Attributes" %}}
 
 <!-- prettier-ignore -->
-| Name | Data Type | Inclusion | Description |
+| Name | Data Type | Required? | Description |
 | ---- | --------- | --------- | ----------- |
 | `data_dir` | string | **Required** | Path to the directory used for saving input <file>/data</file> and output <file>/map</file> visualizations. |
 | `sensors` | string[] | **Required** | Names of any configured [webcams](/components/camera/) providing data to the SLAM service. |
@@ -322,7 +322,7 @@ Setting `delete_processed_data: true` and `use_live_data: false` is invalid and 
 Adjust these parameters to fine-tune the algorithm `orbslamv3` utilizes:
 
 <!-- prettier-ignore -->
-| Parameter Mode | Description | Inclusion | Default Value |
+| Parameter | Description | Required? | Default Value |
 | -------------- | ----------- | --------- | ------------- |
 | `mode` | `rgbd` or `mono` | **Required** | No default |
 | `debug` | Boolean specifying if the service should be run in debug mode. Affects log output. | Optional | `false` |

@@ -61,7 +61,7 @@ Assign a name to your digital interrupt and then enter a pin number.
 The following properties are available for `digital_interrupts`:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 |`name` | string | **Required** | Your name for the digital interrupt. |
 |`pin`| string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board's GPIO pin that you wish to configure the digital interrupt for. |

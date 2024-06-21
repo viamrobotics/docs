@@ -4,6 +4,7 @@ linkTitle: "obstacles_distance"
 weight: 20
 type: "docs"
 description: "A segmenter that takes point clouds from a camera input and returns the average single closest point to the camera as a perceived obstacle."
+service_description: "A segmenter that takes point clouds from a camera input and returns the average single closest point to the camera as a perceived obstacle."
 tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 aliases:
   - /ml/vision/obstacles_distance/
@@ -76,7 +77,7 @@ Add the vision service object to the services array in your raw JSON configurati
 The following parameters are available for a `obstacles_distance` segmenter:
 
 <!-- prettier-ignore -->
-| Parameter | Inclusion | Description |
+| Parameter | Required? | Description |
 | --------- | --------- | ----------- |
 | `num_queries`| Optional  | How many times the model should call [`GetPointCloud()`](/components/camera/#getpointcloud) before taking the average of the measurements and returning the single closest point. Accepts an integer between `1` and `20`. <br> Default: `10`  |
 

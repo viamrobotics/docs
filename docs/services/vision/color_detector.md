@@ -4,6 +4,7 @@ linkTitle: "color_detector"
 weight: 10
 type: "docs"
 description: "A heuristic detector that draws boxes around objects according to their hue (does not detect black, gray, and white)."
+service_description: "A heuristic detector that draws boxes around objects according to their hue (does not detect black, gray, and white)."
 tags: ["vision", "computer vision", "CV", "services", "detection"]
 images: ["/services/vision/dog-detector.png"]
 aliases:
@@ -96,7 +97,7 @@ Add the vision service object to the services array in your JSON configuration:
 The following parameters are available for a `color_detector`:
 
 <!-- prettier-ignore -->
-| Parameter | Inclusion | Description |
+| Parameter | Required? | Description |
 | --------- | --------- | ----------- |
 | `segment_size_px` | **Required** | An integer that sets a minimum size (in pixels) of a contiguous color region to be detected, and filters out all other found objects below that size. |
 | `detect_color` | **Required** | The color to detect in the image, as a string of the form `#RRGGBB`. The color is written as a hexadecimal string prefixed by ‘#’. |

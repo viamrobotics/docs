@@ -11,6 +11,7 @@ tags: ["navigation", "services", "base", "rover"]
 aliases:
   - "/services/navigation/"
   - "/mobility/navigation/"
+no_service: true
 # SMEs: Raymond
 ---
 
@@ -149,7 +150,7 @@ Edit and fill in the attributes as applicable.
 The following attributes are available for `Navigation` services:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `store` | obj | **Required** | The type and configuration of data storage to use. Either type `"memory"`, where no additional configuration is needed and the waypoints are stored in local memory while the navigation process is running, or `"mongodb"`, where data persists at the specified [MongoDB URI](https://www.mongodb.com/docs/manual/reference/connection-string) of your MongoDB deployment. <br> Default: `"memory"` |
 | `base` | string | **Required** | The `name` you have configured for the [base](/components/base/) you are operating with this service. |

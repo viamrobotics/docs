@@ -1134,7 +1134,7 @@ On the new component panel, copy and paste the following attribute template into
 
 The following attributes are available for `<INSERT MODEL TRIPLET>` <INSERT API NAME>s:
 
-| Name    | Type   | Inclusion    | Description |
+| Name    | Type   | Required?    | Description |
 | ------- | ------ | ------------ | ----------- |
 | `todo1` | string | **Required** | TODO        |
 | `todo2` | string | Optional     | TODO        |
@@ -1192,7 +1192,7 @@ On the new component panel, copy and paste the following attribute template into
 
 The following attributes are available for `viam:base:agilex-limo` bases:
 
-| Name          | Type   | Inclusion    | Description                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Name          | Type   | Required?    | Description                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | ------------- | ------ | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `drive_mode`  | string | **Required** | LIMO [steering mode](https://docs.trossenrobotics.com/agilex_limo_docs/operation/steering_modes.html#switching-steering-modes). Options: `differential`, `ackermann`, `omni` (mecanum).                                                                                                                                                                                                                                                 |
 | `serial_path` | string | Optional     | The full filesystem path to the serial device, starting with <file>/dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyTHS1`, to its device file, such as <file>/dev/ttyTHS1</file>. If you omit this attribute, Viam will attempt to automatically detect the path.<br>Default: `/dev/ttyTHS1` |

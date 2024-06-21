@@ -36,6 +36,7 @@ board,GetPWM,get_pwm,PWM,pWM
 board,SetPWM,set_pwm,SetPWM,setPWM
 board,PWMFrequency,get_pwm_frequency,PWMFreq,pWMFrequency
 board,SetPWMFrequency,set_pwm_frequency,SetPWMFreq,setPWMFrequency
+board,AnalogReaderNames,analog_names,AnalogNames,
 board,ReadAnalogReader,analog_by_name,AnalogByName,readAnalogReader
 ## HACK: Omitting PySDK: write_analog, currently borked: https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.write_analog
 board,WriteAnalog,,Write,writeAnalog
@@ -46,7 +47,6 @@ board,GetGeometries,get_geometries,,getGeometries
 ## HACK: Board (python, go) provides additional helper functions, adding 5 pseudo-entries:
 board,Read,read,Read,
 board,Value,value,Value,getDigitalInterruptValue
-board,AnalogReaderNames,analog_names,AnalogNames,
 board,DigitalInterruptNames,digital_interrupt_names,DigitalInterruptNames,
 board,GPIOPinByName,gpio_pin_by_name,GPIOPinByName,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
@@ -436,5 +436,6 @@ robot,Options.with_api_key,with_api_key,,
 robot,AtAddress,at_address,,
 robot,WithChannel,with_channel,,
 robot,Refresh,refresh,,
+robot,Shutdown,shutdown,Shutdown,
 ## HACK: No proto for close, manually mapping:
 robot,Close,close,Close,

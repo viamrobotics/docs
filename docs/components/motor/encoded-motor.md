@@ -144,7 +144,7 @@ Here’s an example configuration:
 In addition to the [attributes for a non-encoded motor](/components/motor/gpio/), the following attributes are available for encoded DC motors:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `encoder` | string | **Required** | `name` of the encoder. |
 | `ticks_per_rotation` | int | **Required** | Number of ticks in a full rotation of the encoder and motor shaft. |

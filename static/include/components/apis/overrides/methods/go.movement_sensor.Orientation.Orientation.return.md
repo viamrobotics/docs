@@ -1,0 +1,1 @@
+Abstract base class for protocol messages, containing `o_x`, `o_y`, `o_z`, and `theta`, which together represent a vector pointing in the direction that the sensor is pointing, and the angle (`theta`) in degrees of the sensor's rotation about that axis.

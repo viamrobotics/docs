@@ -8,6 +8,7 @@ tags: ["frame system", "services"]
 aliases:
   - /services/frame-system/frame-config/
   - /mobility/frame-system/frame-config/
+no_service: true
 # SMEs: Peter L, Gautham, Bijan
 ---
 
@@ -75,7 +76,7 @@ To configure your machine following this example:
 {{< /tabs >}}
 
 <!-- prettier-ignore -->
-| Parameter | Inclusion | Required |
+| Parameter | Required? | Required |
 | --------- | ----------- | ----- |
 | `parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
 | `translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: _mm_. |

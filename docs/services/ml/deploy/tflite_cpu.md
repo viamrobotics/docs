@@ -5,6 +5,7 @@ weight: 60
 type: "docs"
 tags: ["data management", "ml", "model training"]
 description: "Configure a tflite_cpu ML model service to deploy TensorFlow lite models to your machine."
+service_description: "Runs a TensorFlow Lite model that you have trained or uploaded on the CPU of your machine."
 icon: true
 images: ["/services/icons/ml.svg"]
 aliases:
@@ -123,7 +124,7 @@ You do not need to edit the configuration yourself, expect if you wish to change
 The following parameters are available for a `"tflite_cpu"` model:
 
 <!-- prettier-ignore -->
-| Parameter | Inclusion | Description |
+| Parameter | Required? | Description |
 | --------- | --------- | ----------- |
 | `model_path` | **Required** | The absolute path to the `.tflite model` file, as a `string`. |
 | `label_path` | Optional | The absolute path to a `.txt` file that holds class labels for your TFLite model, as a `string`. This text file should contain an ordered listing of class labels. Without this file, classes will read as "1", "2", and so on. |

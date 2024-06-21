@@ -10,6 +10,7 @@ imageAlt: "Upload data to the Viam app"
 images: ["/services/icons/data-capture.svg"]
 aliases:
   - /data/upload/
+no_service: true
 # SME: Alexa Greenberg
 ---
 

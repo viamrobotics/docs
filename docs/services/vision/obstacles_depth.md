@@ -4,6 +4,7 @@ linkTitle: "obstacles_depth"
 weight: 20
 type: "docs"
 description: "A segmenter for depth cameras that returns the perceived obstacles as a set of 3-dimensional bounding boxes, each with a Pose as a vector."
+service_description: "A segmenter for depth cameras that returns the perceived obstacles as a set of 3-dimensional bounding boxes, each with a Pose as a vector."
 tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 aliases:
   - /ml/vision/obstacles_depth/
@@ -111,7 +112,7 @@ Add the following vision service object to the services array in your raw JSON c
 The following parameters are available for an `"obstacles_depth"` segmenter:
 
 <!-- prettier-ignore -->
-| Parameter | Inclusion | Description |
+| Parameter | Required? | Description |
 | --------- | --------- | ----------- |
 | `min_points_in_plane` | Optional | An integer that specifies how many points to put on the flat surface or ground plane when clustering. This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps. <br> Default: `500` </br> |
 | `min_points_in_segment` | Optional | An integer that sets a minimum size to the returned objects, and filters out all other found objects below that size. <br> Default: `10` </br> |

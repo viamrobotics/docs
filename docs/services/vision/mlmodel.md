@@ -4,6 +4,7 @@ linkTitle: "mlmodel"
 weight: 10
 type: "docs"
 description: "A detector or classifier that uses an ML model available on the machine to draw bounding boxes around objects or return a class label."
+service_description: "A detector or classifier that uses a model available on the machine’s hard drive to draw bounding boxes around objects or returns a class label and confidence score."
 tags: ["vision", "computer vision", "CV", "services", "detection"]
 images: ["/services/vision/dog-detector.png"]
 aliases:
@@ -116,7 +117,7 @@ Click the **Save** button in the top right corner of the page.
 The following attributes are available for an `mlmodel` detector or classifier:
 
 <!-- prettier-ignore -->
-| Parameter | Type | Inclusion | Description |
+| Parameter | Type | Required? | Description |
 | --------- | ---- | --------- | ----------- |
 | `mlmodel_name` | string | **Required** | The name of the [ML model service](/services/ml/deploy/) you want to use the model from. |
 | `remap_output_names` | object | Optional | The names of your output tensors, mapped to the service requirements. See [Tensor names](#tensor-names) for more information. |

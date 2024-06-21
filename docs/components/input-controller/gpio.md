@@ -202,7 +202,7 @@ Then remove and fill in the attributes as applicable to your input controller, a
 The following attributes are available for `gpio` input controllers:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required**| The name of the board component with GPIO or ADC pins to use as the controlling device. |
 | `buttons` | object | **Required** | The [Buttons](../#button-controls) available for control. These should be connected to the GPIO/ADC board. <br><br> <b>Each button has the following fields:</b> <br><ul><li><code>name</code>: Name of the Digital Interrupt the button/switch is connected to, as configured on the board component.</li><li><code>control</code>: The [Control](../#control-field) type to use when reporting events as this button's state is changed.</li><li><code>invert</code>: Boolean indicating if the digital input (high/low) should be inverted when reporting button Control value indicating button state.<br> This option is given because digital switches vary between high, `1`, and low, `0`, as their default at rest.<ul><li>*true:* `0` is pressed, and `1` is released.</li><li>*false (default):* `0` is released, and `1` is pressed.</li></ul></li><li><code>debounce_ms</code>: How many milliseconds to wait for the interrupt to settle. This is needed because some switches can be electrically noisy.</li></ul> |
