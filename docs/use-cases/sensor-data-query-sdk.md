@@ -41,7 +41,7 @@ If you're not sure which sensor model to choose, start with the [`viam:viam-sens
 
 {{% expand "Captured sensor data. Click to see instructions." %}}
 
-Follow the guide to [capture sensor data](/use-cases/sensor-data-query/).
+Follow the guide to [capture sensor data](/use-cases/collect-sensor-data/).
 
 {{% /expand%}}
 
