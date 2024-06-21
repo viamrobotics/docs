@@ -1215,7 +1215,7 @@ The following attributes are available for `viam:base:agilex-limo` bases:
 ## Next steps
 
 - To test your base, go to the [**CONTROL** tab](/fleet/control/).
-- To write code against your base, use one of the [available SDKs](/program/).
+- To write code against your base, use one of the [available SDKs](/build/program/).
 - To view examples using a base component, explore [these tutorials](/tutorials/).
 
 ## Local development
