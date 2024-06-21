@@ -37,18 +37,18 @@ Start by collecting images from your cameras and syncing it to the [Viam app](ht
 See [Collect image data and sync it to the cloud](/use-cases/image-data/#collect-image-data-and-sync-it-to-the-cloud) for instructions.
 
 {{< /tablestep >}}
-{{< tablestep >}}
+{{< tablestep link="/services/data/dataset/">}}
 {{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Label data">}}
-**2. Label your images [_(i)_](/services/data/dataset/)**
+**2. Label your images**
 
 Once you have enough images of the objects you'd like to classify, use the interface on the **DATA** tab to label your data.
 If you want to train an image classifier, use image tags.
 For an object detector, use bounding boxes.
 
 {{< /tablestep >}}
-{{< tablestep >}}
+{{< tablestep link="/services/data/dataset/">}}
 {{<imgproc src="/services/ml/label.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Label data">}}
-**2. Create a dataset [_(i)_](/services/data/dataset/)**
+**2. Create a dataset**
 
 Use the interface on the **DATA** tab (or the [`viam data dataset add` command](/cli/#data)) to add all images you want to train the model on to a dataset.
 
@@ -66,9 +66,9 @@ This is not required, since you can use other filters like time or machine ID in
 ## Train and test a machine learning (ML) model
 
 {{< table >}}
-{{< tablestep >}}
+{{< tablestep link="/services/ml/train-model/">}}
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Train models">}}
-**1. Train an ML model [_(i)_](/services/ml/train-model/)**
+**1. Train an ML model**
 
 In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/services/data/datasets) and select the one you want to train on.
 Click **Train model** and follow the prompts.
@@ -83,9 +83,9 @@ The service will to deploy and run the model.
 Once you've added the ML model service to your machine, choose your newly-trained model from the dropdown menu in the ML model service's configuration card.
 
 {{< /tablestep >}}
-{{< tablestep >}}
+{{< tablestep link="/services/vision/">}}
 {{<imgproc src="/services/icons/vision.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Configure a service">}}
-**3. Configure an <code>mlmodel</code> vision service [_(i)_](/services/vision/)**
+**3. Configure an <code>mlmodel</code> vision service**
 
 The vision service takes the the ML model and applies it to the stream of images from your camera.
 
@@ -93,9 +93,9 @@ Add the `vision / ML model` service to your machine.
 Then, from the **Select model** dropdown, select the name of the ML model service you configured in the last step (for example, `mlmodel-1`).
 
 {{< /tablestep >}}
-{{< tablestep >}}
+{{< tablestep link="/services/vision/mlmodel/#test-your-detector-or-classifier">}}
 {{<imgproc src="/services/ml/deploy.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Deploy your model">}}
-**4. Test your classifier [_(i)_](/services/vision/mlmodel/#test-your-detector-or-classifier)**
+**4. Test your classifier**
 
 Test your ML model classifier with [existing images in the Viam app](/services/vision/mlmodel/#existing-images-in-the-cloud), [live camera footage,](/services/vision/mlmodel/#live-camera-footage) or [existing images on a computer](/services/vision/mlmodel/#existing-images-on-your-machine).
 

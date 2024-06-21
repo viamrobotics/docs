@@ -33,16 +33,16 @@ From there, you can use your image data to do things like [train ML models](/use
 ## Collect image data and sync it to the cloud
 
 {{< table >}}
-{{< tablestep >}}
+{{< tablestep link="/components/camera/">}}
 {{<imgproc src="/icons/components/camera.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="configure a camera component">}}
-**1. Configure a camera [_(i)_](/components/camera/)**
+**1. Configure a camera**
 
 Configure a camera component, such as a [webcam](/components/camera/webcam/), on your machine.
 
 {{< /tablestep >}}
-{{< tablestep >}}
+{{< tablestep link="/services/data/">}}
 {{<imgproc src="/services/icons/data-management.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
-**2. Enable the data management service [_(i)_](/services/data/)**
+**2. Enable the data management service**
 
 In your camera component configuration panel, find the **Data capture** section.
 Click **Add method** and follow the prompt to **Create a data management service**.
@@ -76,18 +76,18 @@ Contributors have written several filtering {{< glossary_tooltip term_id="module
 The following steps use the [`filtered_camera`](https://github.com/erh/filtered_camera) module:
 
 {{< table >}}
-{{< tablestep >}}
+{{< tablestep link="/services/ml/deploy/">}}
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
-**1. Add an ML model to your machine [_(i)_](/services/ml/deploy/)**
+**1. Add an ML model to your machine**
 
 Configure an ML model service on your machine that is compatible with the ML model you want to use, for example [TFLite CPU](/services/ml/deploy/tflite_cpu/).
 
 From the **Model** dropdown, select the preexisting model you want to use, or click **Add new model** to upload your own.
 
 {{< /tablestep >}}
-{{< tablestep >}}
+{{< tablestep link="/services/vision/">}}
 {{<imgproc src="/services/icons/vision.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
-**2. Add a vision service to use with the ML model [_(i)_](/services/vision/)**
+**2. Add a vision service to use with the ML model**
 
 You can think of the vision service as the bridge between the ML model service and the output from your camera.
 
@@ -130,7 +130,7 @@ Now that you have collected image data, you can [train new computer vision model
 
 {{< cards >}}
 {{% card link="/use-cases/deploy-ml/" %}}
-{{% card link="/services/data/query/" %}}
+{{% card link="/use-cases/sensor-data-query/" %}}
 {{< /cards >}}
 
 To see image data filtering in action, check out these tutorials:
