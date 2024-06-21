@@ -4,7 +4,7 @@ linkTitle: "Query sensor data with SDK"
 weight: 31
 type: "docs"
 images: ["/services/icons/data-query.svg"]
-description: "Query sensor data that you have synced to the Viam app using the data management service with SQL or MQL."
+description: "Retrieve and query sensor data that you have synced to the Viam app using Python SDK."
 modulescript: true
 # SME: Devin Hilly
 ---
@@ -17,7 +17,7 @@ You can then write a script to run queries against that data to search for outli
 {{< alert title="In this page" color="tip" >}}
 
 1. [Setting up the Python SDK](#set-up-the-python-sdk).
-1. [Querying data with the Python SDK](#search-data-with-the-python-sdk).
+1. [Querying data with the Python SDK](#query-data-with-the-python-sdk).
 
 {{< /alert >}}
 
@@ -58,7 +58,7 @@ pip install viam-sdk
 {{< /tablestep >}}
 {{< /table >}}
 
-## Search data with the Python SDK
+## Query data with the Python SDK
 
 {{< table >}}
 {{< tablestep link="/cli/#organizations">}}
@@ -136,6 +136,8 @@ if __name__ == '__main__':
 
 {{< /tablestep >}}
 {{< /table >}}
+
+Adjust the Python script to uery your data further.
 
 ## Next steps
 

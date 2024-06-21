@@ -11,9 +11,9 @@ aliases:
 ---
 
 Once you have used the data management service to [capture data](/use-cases/collect-sensor-data/), you can visualize your data with a variety of third-party tools, including Grafana, Tableau, Google's Looker Studio, and more.
-You can choose to visualize data from a component on one machine, from multiple components together, or from many components across a fleet of machines, all from a single pane of glass.
+You can choose to visualize data from a component on one machine, from multiple components together, or from many components across a fleet of machines.
 
-For example, you can configure data capture for several sensors on one machine or for several sensors across multiple machines to report the ambient operating temperature.
+For example, you can configure data capture for several sensors across multiple machines to report the ambient operating temperature.
 You can then visualize that data to easily understand how the ambient temperature affects your machines' operation.
 
 You can do all of this using the [Viam app](https://app.viam.com/) user interface. You will not need to write any code.
@@ -30,8 +30,6 @@ You can do all of this using the [Viam app](https://app.viam.com/) user interfac
 {{% expand "Captured sensor data. Click to see instructions." %}}
 
 Follow the guide to [capture sensor data](/use-cases/collect-sensor-data/).
-
-If you're not sure which sensor model to choose, start with the [`viam:viam-sensor:telegrafsensor`](https://github.com/viamrobotics/viam-telegraf-sensor) which captures performance data (CPU, memory usage, and more) from your machine.
 
 {{% /expand%}}
 
@@ -69,7 +67,7 @@ This is what they look like:
 {{< tabs >}}
 {{% tab name="Connection URI and credentials" %}}
 
-If your client supports a connection URI, use the following format:
+If your client supports a connection URI, use the following format and repolace `YOUR-PASSWORD-HERE` with your database password as configured with the `viam data database configure` command:
 
 ```sh {class="command-line" data-prompt="$"}
 mongodb://db-user-abcdef12-abcd-abcd-abcd-abcdef123456:YOUR-PASSWORD-HERE@data-federation-abcdef12-abcd-abcd-abcd-abcdef123456-e4irv.a.query.mongodb.net/?ssl=true&authSource=admin
@@ -113,14 +111,13 @@ Substitute your organization ID for `<YOUR-ORG-ID>`.
 
 {{< /tablestep >}}
 {{< tablestep >}}
-**3. Using visualization tools for dashboards**
-
-You can choose to visualize data from a component on one machine, from multiple components together, or from many components across a fleet of machines, all from a single pane of glass.
+**3. Use visualization tools for dashboards**
 
 Some third-party visualization tools support the ability to directly query your data within their platform to generate more granular visualizations of specific data.
 You might use this functionality to visualize only a single day's metrics, limit the visualization to a select machine or component, or to isolate an outlier in your reported data, for example.
 
-While every third-party tool is different, you would generally query your data using either {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}. See the following guide on [querying sensor data](/use-cases/sensor-data-query/) for more information.
+While every third-party tool is different, you would generally query your data using either {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
+See the [guide on querying sensor data](/use-cases/sensor-data-query/) for more information.
 
 <!-- markdownlint-disable-file MD034 -->
 
