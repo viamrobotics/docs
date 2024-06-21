@@ -52,7 +52,7 @@ You can control your motor directly from the Viam app, using the mobile app, or 
    Navigate to your machine's **CONTROL** tab in the Viam app and use the **Power %** slider to set the motors speed.
    Use the **Backwards** and **Forwards** buttons to change the direction.
 
-   {{<gif webm_src="/get-started/quickstarts/motor-control.webm" mp4_src="/get-started/quickstarts/motor-control.mp4" alt="Using the slider, Backwards, and Forwards buttons on the Viam app to control the direction and speed of a configured motor" class="alignright"  min-height="750px">}}
+   {{<gif webm_src="/get-started/quickstarts/motor-control.webm" mp4_src="/get-started/quickstarts/motor-control.mp4" alt="Using the slider, Backwards, and Forwards buttons on the Viam app to control the direction and speed of a configured motor" class="aligncenter"  min-height="750px">}}
 
 2. Control from the mobile app
 
