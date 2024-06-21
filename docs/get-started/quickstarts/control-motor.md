@@ -92,6 +92,7 @@ async def connect():
     return await RobotClient.at_address(
         'my-machine-main.1ye34y6p21.viam.cloud', opts)
 
+
 async def main():
     machine = await connect()
 
@@ -107,9 +108,9 @@ async def main():
     # Don't forget to close the machine when you're done!
     await machine.close()
 
+
 if __name__ == '__main__':
     asyncio.run(main())
-
 ```
 
 {{% /tab %}}
