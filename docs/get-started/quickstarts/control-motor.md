@@ -80,14 +80,17 @@ from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
 from viam.components.motor import Motor
 
+
 async def connect():
     opts = RobotClient.Options.with_api_key(
         # Replace "<API-KEY>" (including brackets) with your machine's api key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
+        # Replace "<API-KEY-ID>" (including brackets) with your machine's api
+        # key id
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('my-machine-main.1ye34y6p21.viam.cloud', opts)
+    return await RobotClient.at_address(
+        'my-machine-main.1ye34y6p21.viam.cloud', opts)
 
 async def main():
     machine = await connect()
@@ -130,11 +133,11 @@ func main() {
     "my-machine-main.1ye34y6p21.viam.cloud",
     logger,
     client.WithDialOptions(rpc.WithEntityCredentials(
-            /* Replace "<API-KEY-ID>" (including brackets) with your machine's api key id */
+      /* Replace "<API-KEY-ID>" (including brackets) with your machine's api key id */
       "<API-KEY-ID>",
       rpc.Credentials{
         Type:    rpc.CredentialsTypeAPIKey,
-            /* Replace "<API-KEY>" (including brackets) with your machine's api key */
+        /* Replace "<API-KEY>" (including brackets) with your machine's api key */
         Payload: "<API-KEY>",
       })),
   )
