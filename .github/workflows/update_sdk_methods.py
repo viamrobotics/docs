@@ -1091,7 +1091,7 @@ def parse(type, names):
                                                 ## Parameter type link is an anchor link:
                                                 if param_type_link_raw.startswith('#') and python_staging_url == '':
                                                     this_method_parameters_dict["param_type"] = '[' + param_type + '](' + url + param_type_link_raw + ')'
-                                                elif return_type_link_raw.startswith('#') and python_staging_url != '':
+                                                elif param_type_link_raw.startswith('#') and python_staging_url != '':
                                                     this_method_parameters_dict["param_type"] = '[' + param_type + '](' + url.replace(python_staging_url, sdk_url) + param_type_link_raw + ')'
                                                 ## Parameter type link is a relative link, beginning with 1 - 3 instances of '../'
                                                 ## Convert to an absolute link:
