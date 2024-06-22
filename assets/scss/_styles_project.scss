@@ -1825,3 +1825,7 @@ details[open] * i.fa-chevron-down {
 details[open] * i.fa-chevron-right {
   display: none;
 }
+
+details summary::-webkit-details-marker {
+  display:none;
+}

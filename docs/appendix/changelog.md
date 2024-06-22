@@ -19,7 +19,7 @@ outputs:
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
-{{% changelog date="2024-05-09" color="changed" title="Return type of GetImage()" %}}
+{{< changelog date="2024-05-09" color="changed" title="Return type of GetImage()" >}}
 
 The Python SDK introduced a new image container class called [`ViamImage`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage).
 The camera API's [`GetImage()`](/components/camera/#getimage) API method now returns a `ViamImage` type, and the vision service's [GetDetections()](/services/vision/#getdetections) and [GetClassifications()](/services/vision/#getclassifications) take in `ViamImage` as a parameter.
@@ -51,7 +51,7 @@ detections = await detector.get_detections(cropped_frame)
 ```
 
 {{< /expand >}}
-{{% /changelog %}}
+{{< /changelog >}}
 
 {{% changelog date="2024-04-30" color="removed" title="Removed status from Board API" %}}
 
