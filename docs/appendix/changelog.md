@@ -20,15 +20,30 @@ outputs:
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
 <!-- This isn't in the docs yet
+{{% changelog date="2024-06-14" color="changed" title="Python get_robot_part_logs parameters" %}}
+
+The `errors_only` parameter has been removed from [`get_robot_part_logs()`](/appendix/apis/fleet/#getrobotpartlogs) and replaced with `log_levels`.
+
+{{% /changelog %}}-->
+
+<!-- This isn't in the docs yet
 {{% changelog date="2024-05-28" color="added" title="CaptureAllFromCamera and GetProperties to vision API" %}}
 
 The vision service now supports two new methods: [`CaptureAllFromCamera`](/services/vision/#captureallfromcamera) and [`GetProperties`](/services/vision/#getproperties).
 
 {{% /changelog %}}-->
 
+{{% changelog date="2024-05-28" color="changed" title="Return type of analog Read" %}}
+
+The board analog API [`Read()`](/components/board/#read) method now returns an `AnalogValue` struct instead of a single int.
+The struct contains an int representing the value of the reading, min and max range of values, and the precision of the reading.
+
+{{% /changelog %}}
+
 {{% changelog date="2024-05-14" color="changed" title="Renamed GeoObstacle to GeoGeometry" %}}
 
-The [motion service API](/services/motion/#api) parameter `GeoObstacle` has been renamed to `GeoGeometry`.
+The motion service API parameter `GeoObstacle` has been renamed to `GeoGeometry`.
+This affects users of the [`MoveOnGlobe()`](/services/motion/#moveonglobe) method.
 
 {{% /changelog %}}
 
