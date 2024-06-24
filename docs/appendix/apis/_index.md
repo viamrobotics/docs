@@ -212,7 +212,7 @@ In addition to the [board API](#board), the [board component](/components/board/
 
 In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [ADCs](/components/board/#analogs) on a board:
 
-{{< readfile "/static/include/components/apis/analogreader.md" >}}
+{{< readfile "/static/include/components/apis/analog.md" >}}
 
 ### Digital interrupts
 
