@@ -38,7 +38,7 @@ Enter a name or use the suggested name for your camera and click **Create**.
 
 Click the **Save** button in the top right corner of the page to save your config.
 Go to the **CONTROL** tab and expand the camera's remote control card to test the camera stream.
-If you don't see an image stream, you need to [configure the `video_path` attribute](/components/camera/webcam/#using-video-path).
+If you don't see an image stream, you need to [configure the `video_path` attribute](/components/camera/webcam/#using-video_path).
 
 For more detailed information, including optional attribute configuration, see the [`webcam` docs](/components/camera/webcam/).
 

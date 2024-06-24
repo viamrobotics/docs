@@ -10,6 +10,7 @@ icon: true
 images: ["/services/icons/ml.svg"]
 aliases:
   - /ml/deploy/tflite_cpu/
+  - /services/ml/deploy/tflite_cpu/
 # SME: Khari
 ---
 
