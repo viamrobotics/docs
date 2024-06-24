@@ -17,7 +17,7 @@ Follow these steps to install and build the micro-RDK on your ESP32 for developm
 
 1. Install the [required software](#software-requirements)
 2. [Set up your development environment](#set-up-your-development-environment) manually or with Viam's Canon CLI utility _(recommended)_
-3. [Install the Micro-RDK](#install-the-micro-rdk)
+3. [Install the micro-RDK](#install-the-micro-rdk)
 
 {{% readfile "/static/include/micro-rdk-hardware.md" %}}
 
@@ -238,7 +238,7 @@ Follow [this guide](/build/micro-rdk/board/esp32/) to configure an `esp32` board
 [Start Docker](https://docs.docker.com/config/daemon/start/) on your development machine.
 If you haven't already, complete Docker's [Linux post installation steps](https://docs.docker.com/engine/install/linux-postinstall/) to set up Docker to run whenever your system boots up.
 
-Use [the Micro-RDK template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project) to create a new Micro-RDK project to upload to your ESP32 by running:
+Use [the micro-RDK template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project) to create a new micro-RDK project to upload to your ESP32 by running:
 
 ```sh { class="command-line" data-prompt="$"}
 cargo generate --git https://github.com/viamrobotics/micro-rdk.git
