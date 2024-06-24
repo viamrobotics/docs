@@ -28,7 +28,7 @@ Make sure the [movement sensor](/components/movement-sensor/) you use supports u
 The `heading` parameter is experimental.
 Specifying `heading` in a request to `MoveOnGlobe` is not currently recommended if the minimum turning radius of your component is greater than zero, as this combination may cause high latency in the [motion planning algorithms](/services/motion/algorithms/).
 
-Specifying `obstacles` in a request to `MoveOnGlobe()` will cause an error if you configure a `"translation"` in the `"geometries"` of any of the `GeoObstacle` objects.
+Specifying `obstacles` in a request to `MoveOnGlobe()` will cause an error if you configure a `"translation"` in the `"geometries"` of any of the `GeoGeometry` objects.
 Translation in obstacles is not supported by the [navigation service](/services/navigation/).
 
 {{< /alert >}}
