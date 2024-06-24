@@ -19,7 +19,20 @@ outputs:
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
-{{< changelog date="2024-05-09" color="changed" title="Return type of GetImage()" >}}
+<!-- This isn't in the docs yet
+{{% changelog date="2024-05-28" color="added" title="CaptureAllFromCamera and GetProperties to vision API" %}}
+
+The vision service now supports two new methods: [`CaptureAllFromCamera`](/services/vision/#captureallfromcamera) and [`GetProperties`](/services/vision/#getproperties).
+
+{{% /changelog %}}-->
+
+{{% changelog date="2024-05-14" color="changed" title="Renamed GeoObstacle to GeoGeometry" %}}
+
+The [motion service API](/services/motion/#api) parameter `GeoObstacle` has been renamed to `GeoGeometry`.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-05-09" color="changed" title="Return type of GetImage" %}}
 
 The Python SDK introduced a new image container class called [`ViamImage`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage).
 The camera API's [`GetImage()`](/components/camera/#getimage) API method now returns a `ViamImage` type, and the vision service's [`GetDetections()`](/services/vision/#getdetections) and [`GetClassifications()`](/services/vision/#getclassifications) take in `ViamImage` as a parameter.
@@ -53,10 +66,16 @@ detections = await detector.get_detections(cropped_frame)
 {{< /expand >}}
 {{< /changelog >}}
 
-{{% changelog date="2024-04-16" color="changed" title="Updated Viam app interface" %}}
+{{% changelog date="2024-05-08" color="removed" title="WriteAnalog from Go SDK" %}}
 
-The [Viam app](https://app.viam.com) machine page UI has been updated significantly.
-In addition to other improvements, your component, service, and other resource config cards are all displayed on one page instead of in separate tabs.
+The `WriteAnalog()` method has been removed from the Go SDK.
+Use [`AnalogByName()`](/components/board/#analogbyname) followed by [`Write()`](/components/board/#write) instead.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-04-30" color="changed" title="Python SDK data retrieval behavior" %}}
+
+[`tabular_data_by_filter()`](/appendix/apis/data-client/#tabulardatabyfilter) and [`binary_data_by_filter()`](/appendix/apis/data-client/#binarydatabyfilter) now return paginated data.
 
 {{% /changelog %}}
 
@@ -68,13 +87,13 @@ The functionality remains the same, but code that uses [analogs](/components/boa
 
 {{% /changelog %}}
 
-{{% changelog date="2024-04-30" color="added" title="Added part online and part offline triggers" %}}
+{{% changelog date="2024-04-30" color="added" title="Part online and part offline triggers" %}}
 
 You can now configure [triggers](/build/configure/triggers/) to execute actions when a {{< glossary_tooltip term_id="part" text="machine part" >}} comes online or goes offline.
 
 {{% /changelog %}}
 
-{{% changelog date="2024-04-30" color="removed" title="Removed status from Board API" %}}
+{{% changelog date="2024-04-30" color="removed" title="Status from Board API" %}}
 
 Viam has removed support for the following board API methods: `Status()`, `AnalogStatus()`, `DigitalInterruptStatus()`, `Close()`, `Tick()`, `AddCallback()`, and `RemoveCallback()`.
 
@@ -84,13 +103,18 @@ Viam has removed support for the following board API methods: `Status()`, `Analo
 
 Viam has removed support for following builtin camera models: `single_stream`, `dual_stream`, `align_color_depth_extrinsics`, and `align_color_depth_homography`.
 
-<!-- Viam has replaced the following camera models with module model equivalents: -->
+{{% /changelog %}}
 
-<!-- - `velodyne` is now [`viam:camera:velodyne`]()
-- `join_color_depth` is now [`viam:camera:join_color_depth`]()
-- `join_pointclouds` is now [`viam:camera:join_point_clouds
-`]()
-- `ultrasonic` is now [`viam:camera:ultrasonic`]() and [`viam:sensor:ultrasonic`]() -->
+{{% changelog date="2024-04-17" color="changed" title="Updated GetCloudMetadata response" %}}
+
+In addition to the existing returned metadata, the [`GetCloudMetadata`](/appendix/apis/robot/#getcloudmetadata) method now returns `machine_id` and `machine_part_id` as well.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-04-16" color="improved" title="Viam app interface" %}}
+
+The [Viam app](https://app.viam.com) machine page UI has been updated significantly.
+In addition to other improvements, your component, service, and other resource config cards are all displayed on one page instead of in separate tabs.
 
 {{% /changelog %}}
 
