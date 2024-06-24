@@ -450,11 +450,11 @@ override_description_links = {
 
 ## Language-specific resource name overrides:
 flutter_resource_overrides = {
-    "generic_component": "generic",
-    "movement_sensor": "movementsensor",
-    "power_sensor": "powersensor",
-    "generic_service": "generic",
-    "mltraining": "ml_training"
+    "generic_component": "Generic",
+    "movement_sensor": "MovementSensor",
+    "power_sensor": "PowerSensor",
+    "vision": "VisionClient",
+    "robot": "RobotClient"
 }
 
 ## Ignore these specific APIs if they error, are deprecated, etc:
@@ -712,11 +712,16 @@ def parse(type, names):
             ## Determine URL form for Flutter depending on type (like 'component').
             ## TEMP: Manually exclude Base Remote Control Service (Go only):
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
-            elif sdk == "flutter" and resource != 'base_remote_control':
+            elif sdk == "flutter" and resource != 'base_remote_control' and resource != 'encoder' and resource != 'input_controller' \
+                and resource != 'data_manager' and resource != 'generic_service' and resource !='mlmodel' and resource !='motion' \
+                and resource !='navigation' and resource !='slam' and type !='app':
+
                 if resource in flutter_resource_overrides:
-                    url = f"{scrape_url}/viam_protos.{type}.{flutter_resource_overrides[resource]}/{proto_map[resource]['name']}-class.html"
+                    url = f"{scrape_url}/viam_sdk/{flutter_resource_overrides[resource]}-class.html"
+                    print(url)
                 else:
-                    url = f"{scrape_url}/viam_protos.{type}.{resource}/{proto_map[resource]['name']}-class.html"
+                    url = f"{scrape_url}/viam_sdk/{resource.capitalize()}-class.html"
+                    print(url)
                 flutter_methods[type][resource] = {}
             ## If an invalid language was provided:
             else:
@@ -1255,14 +1260,21 @@ def parse(type, names):
             ## Scrape each parent method tag and all contained child tags for Flutter by resource.
             ## TEMP: Manually exclude Base Remote Control Service (Go only).
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
-            elif sdk == "flutter" and resource != 'base_remote_control':
+            elif sdk == "flutter" and resource != 'base_remote_control' and resource != 'encoder' and resource != 'input_controller' \
+                and resource != 'data_manager' and resource != 'generic_service' and resource !='mlmodel' and resource !='motion' \
+                and resource !='navigation' and resource !='slam' and type !='app':
                 soup = make_soup(url)
-                ## Limit matched class to exactly 'callable', i.e. not 'callable inherited', remove the constructor (proto id) itself, and remove '*_Pre' methods from Robot API:
+
+                if resource in flutter_resource_overrides:
+                    flutter_resource = flutter_resource_overrides[resource]
+                else:
+                    flutter_resource = resource.capitalize()
+                ## Limit matched class to either 'callable' or 'callable inherited' and remove the constructor (proto id) itself:
                 flutter_methods_raw = soup.find_all(
                     lambda tag: tag.name == 'dt'
-                    and tag.get('class') == ['callable']
-                    and not regex.search(proto_map[resource]['name'], tag.text)
-                    and not regex.search('_Pre', tag.text))
+                    and not tag.get('id') == flutter_resource
+                    and tag.has_attr("class")
+                    and "callable" in tag.get("class"))
 
                 ## Loop through scraped tags and select salient data:
                 for tag in flutter_methods_raw:
@@ -1272,6 +1284,7 @@ def parse(type, names):
                     this_method_dict = {}
 
                     method_name = tag.get('id')
+                    print('METHOD NAME: ' + method_name)
 
                     if not method_name in flutter_ignore_apis:
 
@@ -1288,92 +1301,139 @@ def parse(type, names):
                                     this_method_dict["proto"] = row.split(',')[1]
 
                         ## Determine method link:
-                        this_method_dict["method_link"] = tag.find("span", class_="name").a['href'].replace("..", sdk_url)
+                        method_link = tag.find("span", class_="name").a['href'].replace("..", sdk_url)
+                        this_method_dict["method_link"] = method_link
 
-                        ## Flutter SDK puts all parameter detail on a separate params page that we must additionally make_soup on.
-                        ## Fetch target URL and make_soup of matching parameter tags:
-                        parameters_link = tag.find("span", class_="type-annotation").a['href'].replace("..", scrape_url)
-                        parameters_soup_raw = make_soup(parameters_link)
-                        parameters_soup = parameters_soup_raw.find_all(
-                            lambda tag: tag.name == 'dt'
-                            and tag.get('class') == ['property']
-                            and not regex.search('info_', tag.text))
+                        ## While some method info is available to us on this current Flutter SDK page, the code sample is only found on the 
+                        ## method_link page. So we scrape that page for everything:
+                        method_soup = make_soup(method_link)
+
+                        ## Method description and code samples are both found within the same section tag:
+                        desc_or_code_sample = method_soup.find('section', class_ = 'desc markdown')
+
+                        if desc_or_code_sample:
+                            if desc_or_code_sample.p:
+                                this_method_dict["method_description"] = desc_or_code_sample.p.text
+                            if desc_or_code_sample.pre:
+                                this_method_dict["code_sample"] = desc_or_code_sample.pre.text
+
+                        parameter_tags = method_soup.find_all(
+                            lambda tag: tag.name == 'span'
+                            and tag.get('class') == ['parameter'])
 
                         ## Parse parameters, if any are found:
-                        if len(parameters_soup) != 0:
+                        if len(parameter_tags) != 0:
 
                             ## Create new empty dictionary for this_method_dict named "parameters":
                             this_method_dict["parameters"] = {}
 
-                            for parameter_tag in parameters_soup:
+                            for parameter_tag in parameter_tags:
 
                                 ## Create new empty dictionary this_method_parameters_dict to house all parameter
                                 ## keys for this method, to allow for multiple parameters. Also resets the
                                 ## previous parameter's data when looping through multiple parameters:
                                 this_method_parameters_dict = {}
 
-                                param_name = parameter_tag.get('id')
-                                this_method_parameters_dict["param_link"] = parameter_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
+                                param_name = parameter_tag.find('span', class_ = 'parameter-name').text
+                                #print(param_name)
+                                param_usage = parameter_tag.find('span', class_ = 'type-annotation')
+                                #print(param_usage)
+                                this_method_parameters_dict["param_usage"] = param_usage
+                                if parameter_tag.find('span', class_ = 'type-annotation').find_previous('span').text.startswith('{'):
+                                    this_method_parameters_dict["optional"] = True
+                                else:
+                                    this_method_parameters_dict["optional"] = False
 
-                                parameter_type_raw = parameter_tag.find("span", class_="signature")
+                                #param_name = parameter_tag.get('id')
+                                #this_method_parameters_dict["param_link"] = parameter_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
 
-                                if not parameter_type_raw.find("a"):
-                                    this_method_parameters_dict["param_type"] = parameter_type_raw.string[2:]
-                                elif len(parameter_type_raw.find_all("a")) == 1:
-                                    this_method_parameters_dict["param_type"] = parameter_type_raw.find("a").text
-                                    this_method_parameters_dict["param_type_link"] = parameter_type_raw.a['href'].replace("..", sdk_url)
-                                elif len(parameter_type_raw.find_all("a")) == 2:
-                                    this_method_parameters_dict["param_type"] = parameter_type_raw.find("a").text
-                                    this_method_parameters_dict["param_type_link"] = parameter_type_raw.a['href'].replace("..", sdk_url)
-                                    this_method_parameters_dict["param_subtype"] = parameter_type_raw.find("span", class_="type-parameter").text
-                                    this_method_parameters_dict["param_subtype_link"] = parameter_type_raw.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
+                                #parameter_type_raw = parameter_tag.find("span", class_="signature")
+
+                                #if not parameter_type_raw.find("a"):
+                                #    this_method_parameters_dict["param_type"] = parameter_type_raw.string[2:]
+                                #elif len(parameter_type_raw.find_all("a")) == 1:
+                                #    this_method_parameters_dict["param_type"] = parameter_type_raw.find("a").text
+                                #    this_method_parameters_dict["param_type_link"] = parameter_type_raw.a['href'].replace("..", sdk_url)
+                                #elif len(parameter_type_raw.find_all("a")) == 2:
+                                #    this_method_parameters_dict["param_type"] = parameter_type_raw.find("a").text
+                                #    this_method_parameters_dict["param_type_link"] = parameter_type_raw.a['href'].replace("..", sdk_url)
+                                #    this_method_parameters_dict["param_subtype"] = parameter_type_raw.find("span", class_="type-parameter").text
+                                #    this_method_parameters_dict["param_subtype_link"] = parameter_type_raw.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
 
                                 this_method_dict["parameters"][param_name] = this_method_parameters_dict
 
-                        # Flutter SDK renders return values in 'type-parameter' spans:
-                        if tag.find("span", class_="type-parameter").a:
 
-                            return_link = tag.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
-                            return_soup_raw = make_soup(return_link)
-                            return_soup = return_soup_raw.find_all(
-                                lambda tag: tag.name == 'dt'
-                                and tag.get('class') == ['property']
-                                and not regex.search('info_', tag.text))
+                        return_tags = method_soup.find_all(
+                            lambda tag: tag.name == 'span'
+                            and tag.get('class') == ['returntype'])
+
+                        if len(return_tags) != 0:
+
+                            ## Create new empty dictionary for this_method_dict named "return":
+                            this_method_dict["return"] = {}
+
+                            for return_tag in return_tags:
+                                #print(return_tag)
+
+                                ## Create new empty dictionary this_method_returns_dict to house all return
+                                ## keys for this method, to allow for multiple returns. Also resets the
+                                ## previous return's data when looping through multiple returns:
+                                this_method_return_dict = {}
+
+                                return_usage = return_tag
+                                this_method_return_dict["return_usage"] = return_usage
+
+                                if return_tag.find('span', class_ = 'type-parameter'):
+                                    return_type = return_tag.find('span', class_ = 'type-parameter').text
+                                else:
+                                    return_type = return_tag.text
+
+
+
+                        # Flutter SDK renders return values in 'type-parameter' spans:
+                        #if tag.find("span", class_="type-parameter").a:
+
+                        #    return_link = tag.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
+                        #    return_soup_raw = make_soup(return_link)
+                        #    return_soup = return_soup_raw.find_all(
+                        #        lambda tag: tag.name == 'dt'
+                        #        and tag.get('class') == ['property']
+                        #        and not regex.search('info_', tag.text))
 
                             ## Parse returns, if any are found:
-                            if len(return_soup) != 0:
+                        #    if len(return_soup) != 0:
 
                                 ## Create new empty dictionary for this_method_dict named "return":
-                                this_method_dict["return"] = {}
+                        #        this_method_dict["return"] = {}
 
-                                for return_tag in return_soup:
+                        #        for return_tag in return_soup:
 
                                     ## Create new empty dictionary this_method_returns_dict to house all return
                                     ## keys for this method, to allow for multiple returns. Also resets the
                                     ## previous return's data when looping through multiple returns:
-                                    this_method_return_dict = {}
+                        #            this_method_return_dict = {}
 
-                                    return_name = return_tag.get('id')
-                                    this_method_return_dict["return_link"] = return_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
+                        #            return_name = return_tag.get('id')
+                        #            this_method_return_dict["return_link"] = return_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
 
-                                    return_type_raw = return_tag.find("span", class_="signature")
+                        #            return_type_raw = return_tag.find("span", class_="signature")
 
-                                    if not return_type_raw.find("a"):
-                                        this_method_return_dict["return_type"] = return_type_raw.string[2:]
-                                    elif len(return_type_raw.find_all("a")) == 1:
-                                        this_method_return_dict["return_type"] = return_type_raw.find("a").text
-                                        this_method_return_dict["return_type_link"] = return_type_raw.a['href'].replace("..", sdk_url)
-                                    elif len(return_type_raw.find_all("a")) == 2:
-                                        this_method_return_dict["return_type"] = return_type_raw.find("a").text
-                                        this_method_return_dict["return_type_link"] = return_type_raw.a['href'].replace("..", sdk_url)
-                                        this_method_return_dict["return_subtype"] = return_type_raw.find("span", class_="type-parameter").text
-                                        this_method_return_dict["return_subtype_link"] = return_type_raw.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
+                        #            if not return_type_raw.find("a"):
+                        #                this_method_return_dict["return_type"] = return_type_raw.string[2:]
+                        #            elif len(return_type_raw.find_all("a")) == 1:
+                        #                this_method_return_dict["return_type"] = return_type_raw.find("a").text
+                        #                this_method_return_dict["return_type_link"] = return_type_raw.a['href'].replace("..", sdk_url)
+                        #            elif len(return_type_raw.find_all("a")) == 2:
+                        #                this_method_return_dict["return_type"] = return_type_raw.find("a").text
+                        #                this_method_return_dict["return_type_link"] = return_type_raw.a['href'].replace("..", sdk_url)
+                        #                this_method_return_dict["return_subtype"] = return_type_raw.find("span", class_="type-parameter").text
+                        #                this_method_return_dict["return_subtype_link"] = return_type_raw.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
 
-                                    this_method_dict["return"][return_name] = this_method_return_dict
+                                this_method_dict["return"][return_type] = this_method_return_dict
 
-                        else:
-                            return_name = return_tag.get('id')
-                            this_method_return_dict["return_type"] = tag.find("span", class_="type-parameter").string
+                        #else:
+                        #    return_name = return_tag.get('id')
+                        #    this_method_return_dict["return_type"] = tag.find("span", class_="type-parameter").string
 
                         flutter_methods[type][resource][method_name] = this_method_dict
 
@@ -1381,6 +1441,10 @@ def parse(type, names):
                 ## in its entirety to the all_methods dictionary using "flutter" as the key:
                 all_methods["flutter"] = flutter_methods
 
+            elif sdk == "flutter" and type == "app":
+                ##Flutter SDK has no APP API!
+                pass
+            
             else:
                 ## Good code would never get here.
                 ## This code gets here when facing a resource with 0 implemented methods for
