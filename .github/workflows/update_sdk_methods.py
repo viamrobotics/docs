@@ -1523,7 +1523,7 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
             param_or_return_description = ''
             ## Param override:
             if type_name != '':
-                ## .../overrides/methods/{sdk}.{resource}.{go_method_name}.{param_name}.md
+                ## .../overrides/methods/{sdk}.{resource}.{method_name}.{param_name}.md
                 param_desc_override_file = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.' + type_name + '.md'
             ## Return override:
             else:
@@ -1538,7 +1538,7 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
 
                 return_type_short = return_type_short.removeprefix('[]').removeprefix('*')
 
-                ## .../overrides/methods/{sdk}.{resource}.{go_method_name}.{return_data_type_last_part}.return.md
+                ## .../overrides/methods/{sdk}.{resource}.{method_name}.{return_type_short}.return.md
                 param_desc_override_file = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.' + return_type_short + '.return.md'
 
             if args.overrides:
@@ -1607,20 +1607,20 @@ def write_markdown(type, names, methods):
     ## NOTE: To use the above override directories, place a file at one of these locations.
     ## IMPORTANT: Filenames are CASE-SENSITIVE!
     ## To override a proto with custom leading MD content, place a file here:
-    ##    docs/static/include/{type}/apis/overrides/protos/{resource}.{protoname}.md
+    ##    docs/static/include/{type}/apis/overrides/protos/{resource}.{proto_name}.md
     ## To override a method with custom leading MD content, place a file here:
-    ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.before.md
+    ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{method_name}.before.md
     ## To override a method with custom trailing MD content, place a file here:
-    ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.after.md
+    ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{method_name}.after.md
     ## To override a specific parameter description for a method with custom MD content, place a file here:
-    ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.{parameter_name}.md
+    ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{method_name}.{parameter_name}.md
     ## To override a specific return description for a method with custom MD content, place a file here:
     ##    For Python (can have only one return, returns are not named):
-    ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.return.md
-    ##    For Flutter (can have multiple returns, returns are named):
-    ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.{return_data_type_last_part}.return.md
+    ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{method_name}.return.md
+    ##    For Flutter (can have multiple returns, returns are not named):
+    ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{method_name}.{return_type_short}.return.md
     ##    For Go (can have multiple returns, returns are not named):
-    ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.{return_data_type_last_part}.return.md
+    ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{method_name}.{return_type_short}.return.md
 
     ## Loop through each resource, such as 'arm'. run() already calls parse() in
     ## scope limited to 'type', so we don't have to loop by type:
@@ -1744,7 +1744,7 @@ def write_markdown(type, names, methods):
                             ## inject additional MD content either before or after the auto-generated method content:
                             ## 'before': injects immediately after the opening SDK tab and before the first parameter is listed.
                             ## 'after': injects immediately after the code sample (or last return if none), and before the closing SDK tab.
-                            ## .../overrides/methods/{sdk}.{resource}.{py_method_name}.before|after.md
+                            ## .../overrides/methods/{sdk}.{resource}.{method_name}.before|after.md
                             before_method_override_filepath = path_to_methods_override + '/python.' + resource + '.' + py_method_name + '.before.md'
                             after_method_override_filepath = path_to_methods_override + '/python.' + resource + '.' + py_method_name + '.after.md'
 
@@ -1897,7 +1897,7 @@ def write_markdown(type, names, methods):
                             ## inject additional MD content either before or after the auto-generated method content:
                             ## 'before': injects immediately after the opening SDK tab and before the first parameter is listed.
                             ## 'after': injects immediately after the code sample (or last return if none), and before the closing SDK tab.
-                            ## .../overrides/methods/{sdk}.{resource}.{go_method_name}.before|after.md
+                            ## .../overrides/methods/{sdk}.{resource}.{method_name}.before|after.md
                             before_method_override_filepath = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.before.md'
                             after_method_override_filepath = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.after.md'
 
@@ -1989,7 +1989,7 @@ def write_markdown(type, names, methods):
                             ## inject additional MD content either before or after the auto-generated method content:
                             ## 'before': injects immediately after the opening SDK tab and before the first parameter is listed.
                             ## 'after': injects immediately after the code sample (or last return if none), and before the closing SDK tab.
-                            ## .../overrides/methods/{sdk}.{resource}.{flutter_method_name}.before|after.md
+                            ## .../overrides/methods/{sdk}.{resource}.{method_name}.before|after.md
                             before_method_override_filepath = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.before.md'
                             after_method_override_filepath = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.after.md'
 
@@ -2009,11 +2009,13 @@ def write_markdown(type, names, methods):
                                     param_usage = param_data.get("param_usage")
 
                                     param_description = ''
+                                    ## .../overrides/methods/{sdk}.{resource}.{method_name}.{param_name}.md
                                     param_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + parameter + '.md'
 
                                     if args.overrides:
                                         print(param_desc_override_file)
-
+ 
+                                    ## Check if param description override file exists:
                                     if os.path.exists(param_desc_override_file):
                                         preserve_formatting = False
                                         for line in open(param_desc_override_file, 'r', encoding='utf-8'):
@@ -2060,11 +2062,19 @@ def write_markdown(type, names, methods):
                                     return_usage = return_data.get("return_usage")
 
                                     return_description = ''
-                                    return_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + return_type + '.return.md'
+
+                                    if '<' in return_type:
+                                        return_type_short = return_type.split('<')[1].split('>')[0].split(',')[0]
+                                    else:
+                                        return_type_short = return_type
+
+                                    ## .../overrides/methods/{sdk}.{resource}.{flutter_method_name}.{return_type_short}.return.md
+                                    return_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + return_type_short + '.return.md'
 
                                     if args.overrides:
                                         print(return_desc_override_file)
 
+                                    ## Check if return description override file exists:
                                     if os.path.exists(return_desc_override_file):
                                         preserve_formatting = False
                                         for line in open(return_desc_override_file, 'r', encoding='utf-8'):
