@@ -29,48 +29,22 @@ menuindent: true
 The [Viam registry](https://app.viam.com/registry) is the central place where you can browse:
 
 {{< cards >}}
-{{% manualcard link="#ml-models" %}}
-
-**ML models** to deploy with machine applications like computer vision
-
-{{% /manualcard %}}
 {{% manualcard link="#modular-resources" %}}
 
 **Modular resources** that add capabilities to your machine beyond what is built into `viam-server`
 
 {{% /manualcard %}}
+{{% manualcard link="#ml-models" %}}
+
+**ML models** to deploy with machine applications like computer vision
+
+{{% /manualcard %}}
+{{% manualcard link="#ml-training-scripts" %}}
+
+**Training scripts** to train custom machine learning models from Python source distribution.
+
+{{% /manualcard %}}
 {{< /cards >}}
-
-## ML models
-
-Viam provides the ability to train, upload, and deploy machine learning models within the platform.
-See [Machine Learning](/services/ml/) for more information.
-
-The Viam registry hosts trained ML models that users have made public, which you can use to deploy classifiers or detectors for your use case onto your robot instead of training your own.
-You can also [upload your own model to the registry](/services/ml/upload-model/).
-
-You can search the available ML models from the Viam registry here:
-
-<div id="searchboxML"></div>
-<p>
-<div id="searchstatsML"></div></p>
-<div class="mr-model" id="">
-  <div class="modellistheader">
-    <div class="name">Model</div>
-    <div>Description</div>
-  </div>
-<div id="hitsML" class="modellist">
-</div>
-<div id="paginationML"></div>
-</div>
-<noscript>
-    <div class="alert alert-caution" role="alert">
-        <h4 class="alert-heading">Javascript</h4>
-        <p>Please enable javascript to see and search ML models.</p>
-    </div>
-</noscript>
-
-To use an existing model from the registry, [deploy the ML model to your robot](/services/ml/deploy/) and use a [Vision service](/services/vision/) to make detections or classifications on-machine.
 
 ## Modular resources
 
@@ -206,3 +180,59 @@ When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}}
 {{% card link="/tutorials/custom/custom-base-dog/" %}}
 {{% card link="/registry/examples/custom-arm/" %}}
 {{< /cards >}}
+
+## ML models
+
+Viam provides the ability to train, upload, and deploy machine learning models within the platform.
+See [Machine Learning](/services/ml/) for more information.
+
+The Viam registry hosts trained ML models that users have made public, which you can use to deploy classifiers or detectors for your use case onto your robot instead of training your own.
+You can also [upload your own model to the registry](/services/ml/upload-model/).
+
+You can search the available ML models from the Viam registry here:
+
+<div id="searchboxML"></div>
+<p>
+<div id="searchstatsML"></div></p>
+<div class="mr-model" id="">
+  <div class="modellistheader">
+    <div class="name">Model</div>
+    <div>Description</div>
+  </div>
+<div id="hitsML" class="modellist">
+</div>
+<div id="paginationML"></div>
+</div>
+<noscript>
+    <div class="alert alert-caution" role="alert">
+        <h4 class="alert-heading">Javascript</h4>
+        <p>Please enable javascript to see and search ML models.</p>
+    </div>
+</noscript>
+
+To use an existing model from the registry, [deploy the ML model to your robot](/services/ml/deploy/) and use a [Vision service](/services/vision/) to make detections or classifications on-machine.
+
+## ML training scripts
+
+The Viam registry hosts trained ML training scripts that users have made public, which you can use to train custom machine learning models from Python source distribution. You can also upload your own training script <link to new machine learning custom training page>
+
+You can search the available ML training scripts from the Viam registry here:
+
+<div id="searchboxML"></div>
+<p>
+<div id="searchstatsML"></div></p>
+<div class="mr-model" id="">
+  <div class="modellistheader">
+    <div class="name">Model</div>
+    <div>Description</div>
+  </div>
+<div id="hitsML" class="modellist">
+</div>
+<div id="paginationML"></div>
+</div>
+<noscript>
+    <div class="alert alert-caution" role="alert">
+        <h4 class="alert-heading">Javascript</h4>
+        <p>Please enable javascript to see and search ML models.</p>
+    </div>
+</noscript>

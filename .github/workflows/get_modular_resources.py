@@ -78,6 +78,7 @@ async def main():
 
     ml_models_list = []
     for item in response.items:
+        print(f"ITEM: {item}, ITEM TYPE: {item.type}")
         if item.type == 2:
             ml_models_list.append(item)
 
