@@ -204,37 +204,37 @@ if (scripts.length !== 0) {
     //  query_by is required.
     additionalSearchParameters: {
       query_by: "model_id,description",
-      sort_by: "total_organization_usage:desc,total_robot_usage:desc",
+      sort_by: "last_updated",
       infix: "always",
     },
   });
   const searchClientScripts = typesenseInstantsearchAdapterScripts.searchClient;
 
-  const searchML = instantsearch({
-    indexName: "mlmodels",
+  const searchScripts = instantsearch({
+    indexName: "trainingscripts",
     searchClient: searchClientScripts,
   });
 
-  let filtersML;
-  let itemtemplateML;
+  let filtersScripts;
+  let itemtemplateScripts;
 
-  filtersML = {
+  filtersScripts = {
     hitsPerPage: 5,
   };
-  itemtemplateML = `
+  itemtemplateScripts = `
   <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model_id" }{{/helpers.highlight}}</code></a></p></div>
   <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
   `;
 
-  searchML.addWidgets([
+  searchScripts.addWidgets([
     instantsearch.widgets.hits({
-      container: "#hitsML",
+      container: "#hitsScripts",
       templates: {
-        item: itemtemplateML,
+        item: itemtemplateScripts,
       },
     }),
     instantsearch.widgets.searchBox({
-      container: "#searchboxML",
+      container: "#searchboxScripts",
       placeholder: "Search for a model...",
       poweredBy: false,
       wrapInput: true,
@@ -243,7 +243,7 @@ if (scripts.length !== 0) {
       showLoadingIndicator: false,
     }),
     instantsearch.widgets.stats({
-      container: "#searchstatsML",
+      container: "#searchstatsScripts",
       templates: {
         text(data, { html }) {
           let resultsML = "";
@@ -260,12 +260,12 @@ if (scripts.length !== 0) {
         },
       },
     }),
-    instantsearch.widgets.configure(filtersML),
+    instantsearch.widgets.configure(filtersScripts),
     instantsearch.widgets.pagination({
-      container: "#paginationML",
+      container: "#paginationScripts",
       scrollTo: false,
     }),
   ]);
 
-  searchML.start();
+  searchScripts.start();
 }
