@@ -718,10 +718,8 @@ def parse(type, names):
 
                 if resource in flutter_resource_overrides:
                     url = f"{scrape_url}/viam_sdk/{flutter_resource_overrides[resource]}-class.html"
-                    print(url)
                 else:
                     url = f"{scrape_url}/viam_sdk/{resource.capitalize()}-class.html"
-                    print(url)
                 flutter_methods[type][resource] = {}
             ## If an invalid language was provided:
             else:
@@ -971,7 +969,6 @@ def parse(type, names):
                         ## Look up method_name in proto_map file, and return matching proto:
                         with open(proto_map_file, 'r') as f:
                             for row in f:
-                                #print(row)
                                 if not row.startswith('#') \
                                 and row.startswith(resource + ',') \
                                 and row.split(',')[2] == method_name:
@@ -1359,7 +1356,6 @@ def parse(type, names):
                             this_method_dict["return"] = {}
 
                             for return_tag in return_tags:
-                                #print(return_tag)
 
                                 ## Create new empty dictionary this_method_returns_dict to house all return
                                 ## keys for this method, to allow for multiple returns. Also resets the
@@ -2141,15 +2137,16 @@ def write_markdown(type, names, methods):
 ## - write_markdown()   Write out salient fields from passed data object to specific MD files
 def run():
 
-    if args.verbose:
-        print('DEBUG: Now fetching upstream PROTOs')
-    proto_map = get_proto_apis()
-    if args.verbose:
-        print('DEBUG: Completed fetching upstream PROTOs!')
+    ## If generating the mapping template file, skip all other functionality:
+    if args.map:
+        if args.verbose:
+            print('DEBUG: Now fetching upstream PROTOs')
+        proto_map = get_proto_apis()
+        if args.verbose:
+            print('DEBUG: Completed fetching upstream PROTOs!')
 
-    ## If generating the mapping template file, skip all other functionality.
     ## Otherwise, continue as normal:
-    if not args.map:
+    else:
 
         ## If running in verbose mode:
         if args.verbose:
