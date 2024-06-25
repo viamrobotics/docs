@@ -14,7 +14,7 @@ Follow this guide to detect people with a webcam on the Viam platform, using a [
 
 ## Requirements
 
-- A computer: a development machine like your laptop and optionally a single-board computer like the Raspberry Pi
+- A computer: a development machine such as your laptop and optionally a single-board computer such as the Raspberry Pi
 - A webcam: this could be the webcam on your laptop or any other webcam you can connect to your computer
 - An account on the [Viam app](https://app.viam.com)
 
