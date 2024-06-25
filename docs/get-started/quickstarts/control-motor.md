@@ -14,6 +14,8 @@ You can use Viam to control a motor's speed and direction directly from [the Via
 
 - A single-board computer with a supported OS installed (such as Raspberry Pi)
 - A motor and compatible motor driver connected to the board
+- A power supply for the board
+- A separate power supply for the motor
 
 Follow these steps to control your motor:
 
