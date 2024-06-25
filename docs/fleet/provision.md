@@ -138,7 +138,7 @@ The Viam Agent is installed as a `systemd` service named `viam-agent`.
 ### View Viam Agent logs
 
 The Viam Agent writes log messages to the [Viam app](https://app.viam.com/).
-These messages can be found on the [**LOGS** tab](/cloud/machines/#logs) of your machine's page.
+You can find these messages on the [**LOGS** tab](/cloud/machines/#logs) of your machine's page.
 
 Log messages are only sent when your machine is online and connected to the internet.
 If your machine is offline, log messages are queued, and are sent to the Viam app once your machine reconnects to the internet.
