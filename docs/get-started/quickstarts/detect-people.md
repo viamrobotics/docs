@@ -77,7 +77,7 @@ Select the ML model service your person detector model is deployed on (which you
 
 Click the **Save** button in the top right corner of the page.
 
-For more detailed information, including optional attribute configuration, see the [`mlmodel` docs](/services/ml/vision/mlmodel/).
+For more detailed information, including optional attribute configuration, see the [`mlmodel` docs](/services/vision/mlmodel/).
 
 {{% /expand%}}
 
