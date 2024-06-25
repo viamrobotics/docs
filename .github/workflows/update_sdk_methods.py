@@ -1622,7 +1622,7 @@ def write_markdown(type, names, methods):
     ##    For Python (can have only one return, returns are not named):
     ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.return.md
     ##    For Flutter (can have multiple returns, returns are named):
-    ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.{return_name}.md
+    ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.{return_data_type_last_part}.return.md
     ##    For Go (can have multiple returns, returns are not named):
     ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.{return_data_type_last_part}.return.md
 
@@ -2011,9 +2011,6 @@ def write_markdown(type, names, methods):
 
                                     param_type = param_data.get("param_type")
                                     param_usage = param_data.get("param_usage")
-                                    #param_subtype = param_data.get("param_subtype")
-                                    #param_type_link = param_data.get("param_type_link")
-                                    #param_subtype_link = param_data.get("param_subtype_link")
 
                                     param_description = ''
                                     param_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + parameter + '.md'
@@ -2037,23 +2034,6 @@ def write_markdown(type, names, methods):
                                     optional = param_data.get("optional")
 
                                     output_file.write(f'- `{parameter}` {param_usage}')
-
-                                    # Ideally we could update at least Python SDK with type links?
-                                    #if param_type_link:
-                                    #    # Check for subtype
-                                    #    if param_subtype:
-                                    #        output_file.write(f"({param_type_link})")
-                                    #        if param_subtype_link:
-                                    #            output_file.write(f"<[{param_subtype}]")
-                                    #            output_file.write(f"({param_subtype_link})>")
-                                    #        else:
-                                    #            output_file.write(f"<{param_subtype}>")
-                                    #    else:
-                                    #        output_file.write(f"({param_type_link})")
-                                    # SG: Haven't found any sub-types without param type links-- they are all in flutter SDK--
-                                    # could expand this logic if popped up or grabbing more subtypes?
-                                    #else:
-                                    #    output_file.write('(<INSERT PARAM TYPE LINK>)')
 
                                     if optional:
                                         output_file.write(' (optional)')
@@ -2082,14 +2062,9 @@ def write_markdown(type, names, methods):
 
                                     return_data = methods['flutter'][type][resource][flutter_method_name]["return"][return_type]
                                     return_usage = return_data.get("return_usage")
-                                    #return_type = return_data.get("return_type")
-                                    #return_subtype = return_data.get("return_subtype")
-                                    #return_type_link = return_data.get("return_type_link")
-                                    #return_link = return_data.get("return_type_link") # TODO: handle this
-                                    #return_subtype_link = return_data.get("return_subtype_link")
 
                                     return_description = ''
-                                    return_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + return_type + 'return.md'
+                                    return_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + return_type + '.return.md'
 
                                     if args.overrides:
                                         print(return_desc_override_file)
@@ -2109,20 +2084,6 @@ def write_markdown(type, names, methods):
 
                                     if return_type:
                                         output_file.write(f"- `{return_type}` {return_usage}")
-
-                                        #if return_type_link:
-                                        #    output_file.write(f"({return_type_link})")
-                                        #else:
-                                        #    output_file.write("(INSERT RETURN TYPE LINK)")
-
-                                        #if return_subtype:
-                                        #    output_file.write(f"<[{return_subtype}]")
-                                        #    if return_subtype_link:
-                                        #        output_file.write(f"({return_subtype_link})>")
-                                        #    else:
-                                        #        output_file.write("(<INSERT RETURN SUBTYPE LINK>)")
-                                        #else:
-                                        #    pass
 
                                         if return_description:
 
