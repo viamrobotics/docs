@@ -189,7 +189,7 @@ if (scripts.length !== 0) {
   const scripts = document.getElementsByClassName("training-scripts")[0].id;
   const typesenseInstantsearchAdapterScripts = new TypesenseInstantSearchAdapter({
     server: {
-      apiKey: "Qhooem9HCRuFMVZPNQOhABAdEWJaSnlY", // Be sure to use an API key that only allows search operations
+      apiKey: "2bRwauAYhbrdjti898D6RXSkwgyEihDk", // Be sure to use an API key that only allows search operations
       nodes: [
         {
           host: "cgnvrk0xwyj9576lp-1.a1.typesense.net",
@@ -204,7 +204,7 @@ if (scripts.length !== 0) {
     //  query_by is required.
     additionalSearchParameters: {
       query_by: "model_id,description",
-      sort_by: "last_updated",
+      sort_by: "last_updated:desc",
       infix: "always",
     },
   });
@@ -235,7 +235,7 @@ if (scripts.length !== 0) {
     }),
     instantsearch.widgets.searchBox({
       container: "#searchboxScripts",
-      placeholder: "Search for a model...",
+      placeholder: "Search for a script...",
       poweredBy: false,
       wrapInput: true,
       showReset: false,
@@ -246,17 +246,17 @@ if (scripts.length !== 0) {
       container: "#searchstatsScripts",
       templates: {
         text(data, { html }) {
-          let resultsML = "";
+          let resultsScripts = "";
 
           if (data.hasManyResults) {
-            resultsML += `${data.nbHits} results:`;
+            resultsScripts += `${data.nbHits} results:`;
           } else if (data.hasOneResult) {
-            resultsML += `1 result:`;
+            resultsScripts += `1 result:`;
           } else {
-            resultsML += ``;
+            resultsScripts += ``;
           }
 
-          return `<span>${resultsML}</span>`;
+          return `<span>${resultsScripts}</span>`;
         },
       },
     }),
