@@ -106,7 +106,7 @@ async def main():
                 "name": script.name,
                 "description": script.description,
                 "last_updated": time_now,
-                "url": "https://app.viam.com/ml-model/" + script.public_namespace + "/" + script.name + "/"
+                "url": "https://app.viam.com/ml-training/" + script.public_namespace + "/" + script.name + "/"
             }
             insert_resp = typesense_client.collections['trainingscripts'].documents.upsert(
         json_m)
