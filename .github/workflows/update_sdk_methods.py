@@ -2089,7 +2089,7 @@ def write_markdown(type, names, methods):
                                         return_description = return_data.get("return_description")
 
                                     if return_type:
-                                        output_file.write(f"- `{return_type}` {return_usage}")
+                                        output_file.write(f"- {return_usage}")
 
                                         if return_description:
 
