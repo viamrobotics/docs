@@ -70,7 +70,7 @@ This is not required, since you can use other filters like time or machine ID in
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Train models">}}
 **1. Train an ML model**
 
-In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/services/data/datasets) and select the one you want to train on.
+In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train on.
 Click **Train model** and follow the prompts.
 
 {{< /tablestep >}}
