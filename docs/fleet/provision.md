@@ -135,6 +135,16 @@ The Viam Agent is installed as a `systemd` service named `viam-agent`.
 
   For more information, see [Viam Agent management](https://github.com/viamrobotics/agent#management).
 
+### View Viam Agent logs
+
+The Viam Agent writes log messages to the [Viam app](https://app.viam.com/).
+You can find these messages on the [**LOGS** tab](/cloud/machines/#logs) of your machine's page.
+
+Viam Agent only sends messages when your machine is online and connected to the internet.
+If your machine is offline, log messages are queued, and are sent to the Viam app once your machine reconnects to the internet.
+
+These log messages include when `viam-server` is stopped and started, the status of agent subsystems, and any errors or warning encountered during operation.
+
 ## Provision a new machine
 
 With the Viam Agent installed, your machine will either connect to a local WiFi network or will create its own WiFi hotspot, depending on your configuration.
