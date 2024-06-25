@@ -74,8 +74,17 @@ Select the `vision` type, then select the `ML model` model.
 Enter a name or use the suggested name for your service and click **Create**.
 
 Select the ML model service your person detector model is deployed on (which you created in step 4) from the **ML Model** dropdown.
+Then, click **{}** (Switch to advanced) in the top right corner of the configuration pane.
+Add the following JSON to the JSON configuration to set the `default_minimum_confidence` of the detector:
 
-Click the **Save** button in the top right corner of the page.
+``` json
+"default_minimum_confidence": 0.82
+```
+
+This optional attribute simplifies your detections output (which you'll view in step 6) by filtering out detections below the threshold of 82% confidence.
+You can adjust this attribute as necessary.
+
+Click the **Save** button in the top right corner of the page to save your configuration.
 
 For more detailed information, including optional attribute configuration, see the [`mlmodel` docs](/services/vision/mlmodel/).
 
