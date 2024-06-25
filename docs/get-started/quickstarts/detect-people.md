@@ -10,7 +10,9 @@ images: ["/platform/ml.svg"]
 imageAlt: "Machine Learning"
 ---
 
-Follow this guide to detect people with a webcam on the Viam platform, using a [pre trained ML model from the registry](https://app.viam.com/ml-model/ml-models-scuttle/people).
+Follow this guide to detect people with a webcam on the Viam platform, using a [pre trained ML model from the registry](https://app.viam.com/ml-model/ml-models-scuttle/people):
+
+{{<imgproc src="/get-started/quickstarts/vision-card.png" resize="x1100" declaredimensions=true alt="Positive person detection on the vision card." >}}
 
 ## Requirements
 
@@ -77,7 +79,7 @@ Select the ML model service your person detector model is deployed on (which you
 Then, click **{}** (Switch to advanced) in the top right corner of the configuration pane.
 Add the following JSON to the JSON configuration to set the `default_minimum_confidence` of the detector:
 
-``` json
+```json
 "default_minimum_confidence": 0.82
 ```
 
@@ -89,7 +91,6 @@ Click the **Save** button in the top right corner of the page to save your confi
 For more detailed information, including optional attribute configuration, see the [`mlmodel` docs](/services/vision/mlmodel/).
 
 {{% /expand%}}
-
 {{%expand "Step 6: Control person detection" %}}
 
 Now, test your person detection with the computer vision service's remote control card.
@@ -98,11 +99,12 @@ Navigate to the **CONTROL** tab in the [Viam app](https://app.viam.com).
 Click on the `vision` service's card to expand it.
 
 Click **Refresh** to refresh the image stream and see detections as labeled boxes on the images along with position, dimension, class and confidence data.
-Detections in class `Person` with a high confidence score show positive person detections.
+Detections in class `Person` with a high confidence score show positive person detections, but the ML model can also detect other objects:
 
-For example:
+{{<imgproc src="/get-started/quickstarts/vision-card-more-detections.png" resize="x1100" declaredimensions=true alt="Positive person detection on the vision card with a lower default minimum confidence threshold." >}}
 
-{{<imgproc src="/get-started/quickstarts/vision-card.png" resize="x1100" declaredimensions=true alt="Positive person detection on the vision card." >}}
+You can view detections with a lower confidence score from the vision control card, like in the above screenshot, by lowering the `"default_minimum_confidence"` attribute.
+
 {{% /expand%}}
 
 ## Next steps
