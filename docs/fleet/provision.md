@@ -143,7 +143,7 @@ You can find these messages on the [**LOGS** tab](/cloud/machines/#logs) of your
 Viam Agent only sends messages when your machine is online and connected to the internet.
 If your machine is offline, log messages are queued, and are sent to the Viam app once your machine reconnects to the internet.
 
-These log messages include when `viam-server` is stopped and started, the status of agent subsystems, and any errors or warning encountered during operation.
+These log messages include when `viam-server` is stopped and started, the status of agent subsystems, and any errors or warnings encountered during operation.
 
 ## Provision a new machine
 
