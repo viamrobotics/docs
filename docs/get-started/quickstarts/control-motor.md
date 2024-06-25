@@ -8,13 +8,14 @@ images: ["/icons/components/motor.svg"]
 description: "Use Viam to control a motor's speed and direction in just a few steps."
 ---
 
-You can use Viam to control a motor's speed and direction directly from [the Viam app](https://app.viam.com/), [the mobile app](/fleet/#the-viam-mobile-app), or [programatically](https://docs.viam.com/build/program/).
+You can use Viam to control a motor's speed and direction directly from [the Viam app](https://app.viam.com/), [the mobile app](/fleet/#the-viam-mobile-app), or [programmatically](/build/program/).
 
-### Requirements
+## Requirements
 
-- A board with a supported OS installed (such as Raspberry Pi)
-- A motor connected to the board
-- A motor driver (optional)
+- A single-board computer with a supported OS installed (such as Raspberry Pi)
+- A motor and compatible motor driver connected to the board
+- A power supply for the board
+- A separate power supply for the motor
 
 Follow these steps to control your motor:
 
@@ -26,7 +27,7 @@ Go to the Viam app and [add a new machine](/cloud/machines/#add-a-new-machine).
 
 {{< /expand >}}
 
-{{< expand "Step 2: Configure a Board" >}}
+{{< expand "Step 2: Configure a board" >}}
 
 Then, [add a board component](/components/board/), such as a [Raspberry Pi board](/components/board/pi/).
 
@@ -45,36 +46,38 @@ Ensure your motor, motor driver, and board are properly connected.
 
 {{< expand "Step 4: Choose how you will control the motor" >}}
 
-You can control your motor directly from the Viam app, using the mobile app, or programatically.
+You can control your motor directly from the Viam app, using the mobile app, or programmatically.
 
-1. Control from the app
+### Option 1: Control from the app
 
-   Navigate to your machine's **CONTROL** tab in the Viam app and use the **Power %** slider to set the motors speed.
-   Use the **Backwards** and **Forwards** buttons to change the direction.
+Navigate to your machine's **CONTROL** tab in the Viam app and use the **Power %** slider to set the motor's speed.
+Use the **Backwards** and **Forwards** buttons to change the direction.
 
-   {{<gif webm_src="/get-started/quickstarts/motor-control.webm" mp4_src="/get-started/quickstarts/motor-control.mp4" alt="Using the slider, Backwards, and Forwards buttons on the Viam app to control the direction and speed of a configured motor" class="aligncenter"  min-height="750px">}}
+{{<gif webm_src="/get-started/quickstarts/motor-control.webm" mp4_src="/get-started/quickstarts/motor-control.mp4" alt="Using the slider, Backwards, and Forwards buttons on the Viam app to control the direction and speed of a configured motor" class="aligncenter"  min-height="750px">}}
 
-2. Control from the mobile app
+### Option 2: Control from the mobile app
 
-   You can use [the Viam mobile app](/fleet/#the-viam-mobile-app) to control your motor's speed and direction directly from your smart device.
+You can use [the Viam mobile app](/fleet/#the-viam-mobile-app) to control your motor's speed and direction directly from your smart device.
 
-   Open the Viam mobile app and log in to your account.
-   Select the location where your machine is assigned.
-   Choose your machine from the list and use the mobile interface to adjust the motor settings.
+Open the Viam mobile app and log in to your account.
+Select the location where your machine is assigned.
+Choose your machine from the list and use the mobile interface to adjust the motor settings.
 
-   Select the location that your machine is assigned to from the **Locations** tab.
+Select the location that your machine is assigned to from the **Locations** tab.
 
-   {{<gif webm_src="/get-started/quickstarts/mobile-app-motor-control.webm" mp4_src="/get-started/quickstarts/mobile-app-motor-control.mp4" alt="Using an example machine on the Viam mobile app to set the direction and speed of a configured motor using the slider on the user interface" max-height="50px" max-width="200px" class="HELLO aligncenter">}}
+{{<gif webm_src="/get-started/quickstarts/mobile-app-motor-control.webm" mp4_src="/get-started/quickstarts/mobile-app-motor-control.mp4" alt="Using an example machine on the Viam mobile app to set the direction and speed of a configured motor using the slider on the user interface" max-height="50px" max-width="200px" class="HELLO aligncenter">}}
 
-3. Control programatically
+### Option 3: Control programmatically
 
-   You can use the following code to control the motor's speed and direction using your preferred SDK:
+You can use the following code to control the motor's speed and direction using your preferred SDK.
+Find your machine's API key and address on your machine's **CONNECT** tab.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 ```python
 import asyncio
+import time
 
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
@@ -83,14 +86,14 @@ from viam.components.motor import Motor
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your machine's api key
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your machine's api
-        # key id
+        # Replace "<API-KEY-ID>" (including brackets) with your machine's API
+        # key ID
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address(
-        'my-machine-main.1ye34y6p21.viam.cloud', opts)
+        '<YOUR MACHINE ADDRESS>', opts)
 
 
 async def main():
@@ -99,11 +102,14 @@ async def main():
     print('Resources:')
     print(machine.resource_names)
 
-    # motor-1
+    # Instantiate the motor client
     motor_1 = Motor.from_robot(machine, "motor-1")
-    # Turn the motor 7.2 revolutions at 60 RPM.
-    await motor_1.go_for(rpm=60, revolutions=7.2)
-    print(f"motor-1 is_moving return value: {motor_1_return_value}")
+    # Turn the motor at 35% power forwards
+    await motor_1.set_power(power=0.35)
+    # Let the motor spin for 4 seconds
+    time.sleep(4)
+    # Stop the motor
+    await motor_1.stop()
 
     # Don't forget to close the machine when you're done!
     await machine.close()
@@ -121,6 +127,7 @@ package main
 
 import (
   "context"
+  "time"
 
   "go.viam.com/rdk/logging"
   "go.viam.com/rdk/robot/client"
@@ -128,17 +135,18 @@ import (
   "go.viam.com/rdk/components/motor")
 
 func main() {
-   logger := logging.NewDebugLogger("client")
+  logger := logging.NewDebugLogger("client")
   machine, err := client.New(
     context.Background(),
-    "my-machine-main.1ye34y6p21.viam.cloud",
+    // Replace "<YOUR MACHINE ADDRESS>" (including brackets) with your machine's address
+    "<YOUR MACHINE ADDRESS>",
     logger,
     client.WithDialOptions(rpc.WithEntityCredentials(
-      /* Replace "<API-KEY-ID>" (including brackets) with your machine's api key id */
+      // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
       "<API-KEY-ID>",
       rpc.Credentials{
         Type:    rpc.CredentialsTypeAPIKey,
-        /* Replace "<API-KEY>" (including brackets) with your machine's api key */
+        // Replace "<API-KEY>" (including brackets) with your machine's API key
         Payload: "<API-KEY>",
       })),
   )
@@ -151,19 +159,26 @@ func main() {
   logger.Info(machine.ResourceNames())
 
 
-    // motor-1
-    motor1Component, err:= motor.FromRobot(machine, "motor-1")
-    if err!=nil {
-      logger.Error(err)
-      return
-    }
-    // Turn the motor 7.2 revolutions at 60 RPM.
-    motor1Component.GoFor(context.Background(), 60, 7.2, nil)
-    if err!=nil {
-      logger.Error(err)
-      return
-    }
-    logger.Infof("motor-1 IsMoving return value: %+v", motor1ReturnValue)
+  // Instantiate the motor client
+  motor1Component, err:= motor.FromRobot(machine, "motor-1")
+  if err != nil {
+    logger.Error(err)
+    return
+  }
+  // Turn the motor at 35% power forwards
+  err = motor1Component.SetPower(context.Background(), 0.35, nil)
+  if err != nil {
+    logger.Error(err)
+    return
+  }
+  // Let the motor spin for 4 seconds
+  time.Sleep(4 * time.Second)
+  // Stop the motor
+  err = motor1Component.Stop(context.Background(), nil)
+  if err != nil {
+    logger.Error(err)
+    return
+  }
 }
 ```
 
