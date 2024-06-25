@@ -1,9 +1,9 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from pathlib import Path
+from markdownify import markdownify as md
 import sys
 import os
-import markdownify
 import subprocess
 import urllib.parse
 import urllib.error
@@ -1284,7 +1284,6 @@ def parse(type, names):
                     this_method_dict = {}
 
                     method_name = tag.get('id')
-                    print('METHOD NAME: ' + method_name)
 
                     if not method_name in flutter_ignore_apis:
 
@@ -1334,34 +1333,21 @@ def parse(type, names):
                                 ## previous parameter's data when looping through multiple parameters:
                                 this_method_parameters_dict = {}
 
+                                ## Parse for param name and usage string, convert to string (for markdownify):
                                 param_name = parameter_tag.find('span', class_ = 'parameter-name').text
-                                #print(param_name)
-                                param_usage = parameter_tag.find('span', class_ = 'type-annotation')
-                                #print(param_usage)
-                                this_method_parameters_dict["param_usage"] = param_usage
+                                param_usage = str(parameter_tag.find('span', class_ = 'type-annotation'))
+
+                                ## Markdownify parameter usage and replace relative links with absolute:
+                                formatted_param_usage = md(param_usage, strip=['wbr']).replace("../../", "https://flutter.viam.dev/")
+                                this_method_parameters_dict["param_usage"] = formatted_param_usage
+
+                                ## Parse if parameter is optional:
                                 if parameter_tag.find('span', class_ = 'type-annotation').find_previous('span').text.startswith('{'):
                                     this_method_parameters_dict["optional"] = True
                                 else:
                                     this_method_parameters_dict["optional"] = False
 
-                                #param_name = parameter_tag.get('id')
-                                #this_method_parameters_dict["param_link"] = parameter_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
-
-                                #parameter_type_raw = parameter_tag.find("span", class_="signature")
-
-                                #if not parameter_type_raw.find("a"):
-                                #    this_method_parameters_dict["param_type"] = parameter_type_raw.string[2:]
-                                #elif len(parameter_type_raw.find_all("a")) == 1:
-                                #    this_method_parameters_dict["param_type"] = parameter_type_raw.find("a").text
-                                #    this_method_parameters_dict["param_type_link"] = parameter_type_raw.a['href'].replace("..", sdk_url)
-                                #elif len(parameter_type_raw.find_all("a")) == 2:
-                                #    this_method_parameters_dict["param_type"] = parameter_type_raw.find("a").text
-                                #    this_method_parameters_dict["param_type_link"] = parameter_type_raw.a['href'].replace("..", sdk_url)
-                                #    this_method_parameters_dict["param_subtype"] = parameter_type_raw.find("span", class_="type-parameter").text
-                                #    this_method_parameters_dict["param_subtype_link"] = parameter_type_raw.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
-
                                 this_method_dict["parameters"][param_name] = this_method_parameters_dict
-
 
                         return_tags = method_soup.find_all(
                             lambda tag: tag.name == 'span'
@@ -1380,60 +1366,20 @@ def parse(type, names):
                                 ## previous return's data when looping through multiple returns:
                                 this_method_return_dict = {}
 
-                                return_usage = return_tag
-                                this_method_return_dict["return_usage"] = return_usage
+                                # Parse return usage string, convert to string (for markdownify):
+                                return_usage = str(return_tag)
 
+                                ## Markdownify return usage and replace relative links with absolute:
+                                formatted_return_usage = md(return_usage, strip=['wbr']).replace("../../", "https://flutter.viam.dev/")
+                                this_method_return_dict["return_usage"] = formatted_return_usage
+
+                                # Parse return type:
                                 if return_tag.find('span', class_ = 'type-parameter'):
                                     return_type = return_tag.find('span', class_ = 'type-parameter').text
                                 else:
                                     return_type = return_tag.text
 
-
-
-                        # Flutter SDK renders return values in 'type-parameter' spans:
-                        #if tag.find("span", class_="type-parameter").a:
-
-                        #    return_link = tag.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
-                        #    return_soup_raw = make_soup(return_link)
-                        #    return_soup = return_soup_raw.find_all(
-                        #        lambda tag: tag.name == 'dt'
-                        #        and tag.get('class') == ['property']
-                        #        and not regex.search('info_', tag.text))
-
-                            ## Parse returns, if any are found:
-                        #    if len(return_soup) != 0:
-
-                                ## Create new empty dictionary for this_method_dict named "return":
-                        #        this_method_dict["return"] = {}
-
-                        #        for return_tag in return_soup:
-
-                                    ## Create new empty dictionary this_method_returns_dict to house all return
-                                    ## keys for this method, to allow for multiple returns. Also resets the
-                                    ## previous return's data when looping through multiple returns:
-                        #            this_method_return_dict = {}
-
-                        #            return_name = return_tag.get('id')
-                        #            this_method_return_dict["return_link"] = return_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
-
-                        #            return_type_raw = return_tag.find("span", class_="signature")
-
-                        #            if not return_type_raw.find("a"):
-                        #                this_method_return_dict["return_type"] = return_type_raw.string[2:]
-                        #            elif len(return_type_raw.find_all("a")) == 1:
-                        #                this_method_return_dict["return_type"] = return_type_raw.find("a").text
-                        #                this_method_return_dict["return_type_link"] = return_type_raw.a['href'].replace("..", sdk_url)
-                        #            elif len(return_type_raw.find_all("a")) == 2:
-                        #                this_method_return_dict["return_type"] = return_type_raw.find("a").text
-                        #                this_method_return_dict["return_type_link"] = return_type_raw.a['href'].replace("..", sdk_url)
-                        #                this_method_return_dict["return_subtype"] = return_type_raw.find("span", class_="type-parameter").text
-                        #                this_method_return_dict["return_subtype_link"] = return_type_raw.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
-
                                 this_method_dict["return"][return_type] = this_method_return_dict
-
-                        #else:
-                        #    return_name = return_tag.get('id')
-                        #    this_method_return_dict["return_type"] = tag.find("span", class_="type-parameter").string
 
                         flutter_methods[type][resource][method_name] = this_method_dict
 
@@ -2064,9 +2010,10 @@ def write_markdown(type, names, methods):
                                     param_data = methods['flutter'][type][resource][flutter_method_name]['parameters'][parameter]
 
                                     param_type = param_data.get("param_type")
-                                    param_subtype = param_data.get("param_subtype")
-                                    param_type_link = param_data.get("param_type_link")
-                                    param_subtype_link = param_data.get("param_subtype_link")
+                                    param_usage = param_data.get("param_usage")
+                                    #param_subtype = param_data.get("param_subtype")
+                                    #param_type_link = param_data.get("param_type_link")
+                                    #param_subtype_link = param_data.get("param_subtype_link")
 
                                     param_description = ''
                                     param_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + parameter + '.md'
@@ -2089,24 +2036,24 @@ def write_markdown(type, names, methods):
 
                                     optional = param_data.get("optional")
 
-                                    output_file.write(f'- `{parameter}` [({param_type})]')
+                                    output_file.write(f'- `{parameter}` {param_usage}')
 
                                     # Ideally we could update at least Python SDK with type links?
-                                    if param_type_link:
-                                        # Check for subtype
-                                        if param_subtype:
-                                            output_file.write(f"({param_type_link})")
-                                            if param_subtype_link:
-                                                output_file.write(f"<[{param_subtype}]")
-                                                output_file.write(f"({param_subtype_link})>")
-                                            else:
-                                                output_file.write(f"<{param_subtype}>")
-                                        else:
-                                            output_file.write(f"({param_type_link})")
+                                    #if param_type_link:
+                                    #    # Check for subtype
+                                    #    if param_subtype:
+                                    #        output_file.write(f"({param_type_link})")
+                                    #        if param_subtype_link:
+                                    #            output_file.write(f"<[{param_subtype}]")
+                                    #            output_file.write(f"({param_subtype_link})>")
+                                    #        else:
+                                    #            output_file.write(f"<{param_subtype}>")
+                                    #    else:
+                                    #        output_file.write(f"({param_type_link})")
                                     # SG: Haven't found any sub-types without param type links-- they are all in flutter SDK--
                                     # could expand this logic if popped up or grabbing more subtypes?
-                                    else:
-                                        output_file.write('(<INSERT PARAM TYPE LINK>)')
+                                    #else:
+                                    #    output_file.write('(<INSERT PARAM TYPE LINK>)')
 
                                     if optional:
                                         output_file.write(' (optional)')
@@ -2131,17 +2078,18 @@ def write_markdown(type, names, methods):
                             output_file.write('\n**Returns:**\n\n')
                             if 'return' in methods['flutter'][type][resource][flutter_method_name]:
 
-                                for return_name in methods['flutter'][type][resource][flutter_method_name]["return"].keys():
+                                for return_type in methods['flutter'][type][resource][flutter_method_name]["return"].keys():
 
-                                    return_data = methods['flutter'][type][resource][flutter_method_name]["return"][return_name]
-                                    return_type = return_data.get("return_type")
-                                    return_subtype = return_data.get("return_subtype")
-                                    return_type_link = return_data.get("return_type_link")
-                                    return_link = return_data.get("return_type_link") # TODO: handle this
-                                    return_subtype_link = return_data.get("return_subtype_link")
+                                    return_data = methods['flutter'][type][resource][flutter_method_name]["return"][return_type]
+                                    return_usage = return_data.get("return_usage")
+                                    #return_type = return_data.get("return_type")
+                                    #return_subtype = return_data.get("return_subtype")
+                                    #return_type_link = return_data.get("return_type_link")
+                                    #return_link = return_data.get("return_type_link") # TODO: handle this
+                                    #return_subtype_link = return_data.get("return_subtype_link")
 
                                     return_description = ''
-                                    return_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + return_name + '.md'
+                                    return_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + return_type + 'return.md'
 
                                     if args.overrides:
                                         print(return_desc_override_file)
@@ -2160,21 +2108,21 @@ def write_markdown(type, names, methods):
                                         return_description = return_data.get("return_description")
 
                                     if return_type:
-                                        output_file.write(f"- `{return_name}` [({return_type})]")
+                                        output_file.write(f"- `{return_type}` {return_usage}")
 
-                                        if return_type_link:
-                                            output_file.write(f"({return_type_link})")
-                                        else:
-                                            output_file.write("(INSERT RETURN TYPE LINK)")
+                                        #if return_type_link:
+                                        #    output_file.write(f"({return_type_link})")
+                                        #else:
+                                        #    output_file.write("(INSERT RETURN TYPE LINK)")
 
-                                        if return_subtype:
-                                            output_file.write(f"<[{return_subtype}]")
-                                            if return_subtype_link:
-                                                output_file.write(f"({return_subtype_link})>")
-                                            else:
-                                                output_file.write("(<INSERT RETURN SUBTYPE LINK>)")
-                                        else:
-                                            pass
+                                        #if return_subtype:
+                                        #    output_file.write(f"<[{return_subtype}]")
+                                        #    if return_subtype_link:
+                                        #        output_file.write(f"({return_subtype_link})>")
+                                        #    else:
+                                        #        output_file.write("(<INSERT RETURN SUBTYPE LINK>)")
+                                        #else:
+                                        #    pass
 
                                         if return_description:
 
