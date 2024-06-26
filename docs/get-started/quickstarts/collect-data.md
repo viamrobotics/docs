@@ -1,5 +1,5 @@
 ---
-title: "Collect data in 2 minutes"
+title: "Collect images or sensor data in 2 minutes"
 linkTitle: "Collect data in 2 minutes"
 type: "docs"
 weight: 20
