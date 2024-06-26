@@ -9,6 +9,7 @@ aliases:
   - /manage/ml/upload-model/
   - /ml/upload-model/
 description: "Upload a Machine Learning model to the Viam registry to use it with the ML Model service."
+no_service: true
 # SME: Steven B.
 ---
 

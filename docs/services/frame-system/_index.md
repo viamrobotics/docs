@@ -11,6 +11,7 @@ tags: ["frame system", "services"]
 aliases:
   - /services/frame-system/
   - /mobility/frame-system/
+no_service: true
 # SMEs: Peter L, Gautham, Bijan
 ---
 
@@ -238,7 +239,7 @@ Click the grid icons below and to the right of the **Frame** button or press the
 {{% /tab %}}
 {{< /tabs >}}
 
-### Bounding geometries
+### Geometries
 
 To visualize a component's spatial constraints, add `geometry` properties by selecting a component and selecting a **Geometry** type in the **Frame** subtab of the **CONFIGURE** tab of a machine's page on [the Viam app](https://app.viam.com).
 

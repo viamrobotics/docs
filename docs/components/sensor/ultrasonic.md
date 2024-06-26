@@ -87,4 +87,6 @@ The following attributes are available for `ultrasonic` sensors:
 
 {{< readfile "/static/include/components/ultrasonic-attributes.md" >}}
 
+## Test the sensor
+
 {{< readfile "/static/include/components/test-control/sensor-control.md" >}}

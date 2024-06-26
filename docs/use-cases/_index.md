@@ -11,10 +11,13 @@ Click on one of the following guides that provide solutions for common tasks and
 
 {{< cards >}}
 {{% card link="/use-cases/configure/" class="fit-contain" %}}
-{{% card link="/use-cases/image-data/" %}}
-{{% card link="/use-cases/sensor-data/" %}}
-{{% card link="/use-cases/deploy-code/" class="fit-contain" %}}
+{{% card link="/use-cases/image-data/" class="fit-contain" %}}
 {{% card link="/use-cases/deploy-ml/" class="fit-contain" %}}
+{{% card link="/use-cases/collect-sensor-data/" %}}
+{{% card link="/use-cases/sensor-data-query/" %}}
+{{% card link="/use-cases/sensor-data-query-sdk/" %}}
+{{% card link="/use-cases/sensor-data-visualize/" %}}
+{{% card link="/use-cases/deploy-code/" class="fit-contain" %}}
 {{% card link="/use-cases/navigate/" %}}
 {{% card link="/use-cases/manage-fleet/" class="fit-contain" %}}
 {{< /cards >}}

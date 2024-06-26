@@ -5,10 +5,12 @@ weight: 60
 type: "docs"
 tags: ["data management", "ml", "model training"]
 description: "Configure a tflite_cpu ML model service to deploy TensorFlow lite models to your machine."
+service_description: "Runs a TensorFlow Lite model that you have trained or uploaded on the CPU of your machine."
 icon: true
 images: ["/services/icons/ml.svg"]
 aliases:
   - /ml/deploy/tflite_cpu/
+  - /services/ml/deploy/tflite_cpu/
 # SME: Khari
 ---
 
@@ -37,7 +39,7 @@ You can choose to configure your service with an existing model on the machine o
 {{< tabs >}}
 {{% tab name="Deploy Model on Machine" %}}
 
-1. To configure your service and deploy a model onto your machine, select **Deploy model on machine** for the **Deployment** field in the resulting vision service configuration pane,.
+1. To configure your service and deploy a model onto your machine, select **Deploy model on machine** for the **Deployment** field in the resulting ML model service configuration pane.
 
 2. Click on **Select models** to open a dropdown with all of the ML models available to you privately, as well as all of the ML models available in [the registry](https://app.viam.com), which are shared by users.
    Models that your organization has trained that are not uploaded to the registry will appear first in the dropdown.

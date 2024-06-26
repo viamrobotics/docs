@@ -1,7 +1,10 @@
+{{- if .Get "no-intro" -}}
+{{- else -}}
 <p>To use your {{.Get "type" }} component, check whether one of the following models supports it.
 </p>
 <p>For configuration information, click on the model name:
 </p>
+{{- end -}}
 <div id="searchbox"></div>
 <div id="searchstats"></div></p>
 <div class="mr-component" id="{{ .Get "api" }}">

@@ -5,9 +5,9 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  workflow_dispatch:
-  pull_request:
-
+  schedule:
+    # 10am UTC on weekdays
+    - cron: '0 10 * * 3'
 jobs:
   python-methods:
     runs-on: ubuntu-latest
@@ -33,3 +33,24 @@ jobs:
 
       - name: Run Coverage test
         run: make coveragetest
+      - name: Login to Jira
+        if: failure()
+        uses: atlassian/gajira-login@v3
+        env:
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+      - name: Create Jira ticket
+        if: failure()
+        id: create
+        uses: atlassian/gajira-create@v3
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        with:
+          project: DOCS
+          issuetype: Task
+          summary: New Python Methods
+          description: "For more info see https://github.com/viamrobotics/docs/actions/runs/${{ env.GITHUB_RUN_ID }}."
+      - name: Log created Jira issue
+        if: failure()
+        run: echo "Issue ${{ steps.create.outputs.issue }} was created"

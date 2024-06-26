@@ -93,7 +93,11 @@ For more detailed information on how to operate and test your resources, expand 
 {{% /expand%}}
 
 {{% expand "Sensor" %}}
+
+## Test the sensor
+
 {{< readfile "/static/include/components/test-control/sensor-control.md" >}}
+
 {{% /expand%}}
 
 {{% expand "Servo" %}}

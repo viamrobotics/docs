@@ -16,6 +16,7 @@ aliases:
   - "/data/"
 icon: true
 images: ["/services/icons/data-management.svg"]
+no_service: true
 # SME: Alexa Greenberg
 ---
 
@@ -55,7 +56,7 @@ Resilient to interruptions, and deletes local data post-sync for space managemen
 Experience streamlined data handling with advanced querying, viewing, and filtering capabilities, along with efficient data labeling and exporting tools.
 
 {{< cards >}}
-{{% manualcard link="/services/data/query/" %}}
+{{% manualcard link="/use-cases/sensor-data-query/" %}}
 
 ### Query data
 
@@ -91,6 +92,8 @@ Export data with the Viam CLI and download your data for offline access.
 
 You must [configure data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/) with the data management service to be able to view, label, and export data.
 
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/J0NNiQD0ocQ">}}
+
 #### Used with
 
 You can configure the frequency of data capture individually for each supported component:
@@ -109,7 +112,7 @@ You can configure the frequency of data capture individually for each supported 
 
 ### Query your data
 
-Once you have [synced](/services/data/cloud-sync/), you can query the data you've collected in multiple ways, including through the [data client API](/appendix/apis/data-client/) or [inside the Viam app](/services/data/query/).
+Once you have [synced](/services/data/cloud-sync/), you can query the data you've collected in multiple ways, including through the [data client API](/appendix/apis/data-client/) or [inside the Viam app](/use-cases/sensor-data-query/).
 For _tabular_ sensor data, you can run {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries against your synced data from the [Query subtab](https://app.viam.com/data/query) of the **Data** tab in the Viam app.
 
 ### Permissions

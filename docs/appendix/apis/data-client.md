@@ -87,14 +87,14 @@ Filter and download optionally filtered tabular data from the [Viam app](https:/
 The data will be paginated into pages of `limit` items, and the pagination ID will be included in the returned tuple.
 If a destination is provided, the data will be saved to that file.
 If the file is not empty, it will be overwritten.
-You can also find your tabular data under the **Sensors** subtab of the app's [**Data** tab](https://app.viam.com/data).
+You can also find your data under the **Sensors** subtab of the app's [**Data** tab](https://app.viam.com/data).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- `filter` [(Optional[viam.proto.app.data.Filter])](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter): Optional `Filter` specifying tabular data to retrieve. Specify no filter to download all tabular data.
+- `filter` [(Optional[viam.proto.app.data.Filter])](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter): Optional `Filter` specifying data to retrieve. Specify no filter to download all data.
 - `limit` [(Optional[int])](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex): The maximum number of entries to include in a page. Default: `50`.
 - `sort_order` (Optional[Order.ValueType]): The desired sort order of the data.
 - `last` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional string indicating the ID of the last-returned data. If provided, the server will return the next data entries after the `last` ID.
@@ -104,7 +104,7 @@ You can also find your tabular data under the **Sensors** subtab of the app's [*
 
 **Returns**:
 
-- [(List[TabularData])](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.TabularData), int, str]): The tabular data retrieved from the [Viam app](https://app.viam.com).
+- [(List[TabularData])](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.TabularData), int, str]): The data retrieved from the [Viam app](https://app.viam.com).
 - [(int)](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex): The count (number of entries).
 - [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The last-returned page ID.
 
