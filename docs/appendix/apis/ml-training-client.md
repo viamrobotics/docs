@@ -69,4 +69,4 @@ The ML training client API supports the following methods:
 
 {{< readfile "/static/include/app/apis/generated/mltraining-table.md" >}}
 
-{{< readfile "static/include/app/apis/generated/mltraining.md" >}}
+{{< readfile "/static/include/app/apis/generated/mltraining.md" >}}
