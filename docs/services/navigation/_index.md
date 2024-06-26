@@ -1,5 +1,5 @@
 ---
-title: "The Navigation Service"
+title: "Navigation Service"
 linkTitle: "Navigation"
 description: "The navigation service uses GPS to autonomously navigate a rover to user-defined endpoints."
 type: docs

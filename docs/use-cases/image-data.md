@@ -15,12 +15,17 @@ If you want to capture only certain images, such as those containing a person, y
 With your images synced to the cloud, you can view images from all your machines in one Viam app interface.
 From there, you can use your image data to do things like [train ML models](/use-cases/deploy-ml/).
 
+{{<imgproc src="/use-cases/ml-cycle.svg" declaredimensions=true alt="Cyclical diagram of a plant watering machine capturing images of plants, syncing those images to the cloud, a machine learning model being trained, and that model being used to recognize yellow leaves on plants and water them." style="max-width:350px" class=aligncenter >}}
+<br>
+
 {{< alert title="In this page" color="tip" >}}
 
 1. [Collect image data and sync it to the cloud](#collect-image-data-and-sync-it-to-the-cloud)
 2. [Use filtering to collect and sync only certain images](#use-filtering-to-collect-and-sync-only-certain-images)
 
 {{< /alert >}}
+
+In the next how-to guide you can use the images you collect here to [train computer vision models](/use-cases/deploy-ml/).
 
 ## Prerequisites
 
