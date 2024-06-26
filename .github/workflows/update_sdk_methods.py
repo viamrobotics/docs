@@ -1,9 +1,9 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from pathlib import Path
+from markdownify import markdownify as md
 import sys
 import os
-import markdownify
 import subprocess
 import urllib.parse
 import urllib.error
@@ -450,11 +450,11 @@ override_description_links = {
 
 ## Language-specific resource name overrides:
 flutter_resource_overrides = {
-    "generic_component": "generic",
-    "movement_sensor": "movementsensor",
-    "power_sensor": "powersensor",
-    "generic_service": "generic",
-    "mltraining": "ml_training"
+    "generic_component": "Generic",
+    "movement_sensor": "MovementSensor",
+    "power_sensor": "PowerSensor",
+    "vision": "VisionClient",
+    "robot": "RobotClient"
 }
 
 ## Ignore these specific APIs if they error, are deprecated, etc:
@@ -712,11 +712,14 @@ def parse(type, names):
             ## Determine URL form for Flutter depending on type (like 'component').
             ## TEMP: Manually exclude Base Remote Control Service (Go only):
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
-            elif sdk == "flutter" and resource != 'base_remote_control':
+            elif sdk == "flutter" and resource != 'base_remote_control' and resource != 'encoder' and resource != 'input_controller' \
+                and resource != 'data_manager' and resource != 'generic_service' and resource !='mlmodel' and resource !='motion' \
+                and resource !='navigation' and resource !='slam' and type !='app':
+
                 if resource in flutter_resource_overrides:
-                    url = f"{scrape_url}/viam_protos.{type}.{flutter_resource_overrides[resource]}/{proto_map[resource]['name']}-class.html"
+                    url = f"{scrape_url}/viam_sdk/{flutter_resource_overrides[resource]}-class.html"
                 else:
-                    url = f"{scrape_url}/viam_protos.{type}.{resource}/{proto_map[resource]['name']}-class.html"
+                    url = f"{scrape_url}/viam_sdk/{resource.capitalize()}-class.html"
                 flutter_methods[type][resource] = {}
             ## If an invalid language was provided:
             else:
@@ -966,7 +969,6 @@ def parse(type, names):
                         ## Look up method_name in proto_map file, and return matching proto:
                         with open(proto_map_file, 'r') as f:
                             for row in f:
-                                #print(row)
                                 if not row.startswith('#') \
                                 and row.startswith(resource + ',') \
                                 and row.split(',')[2] == method_name:
@@ -1255,14 +1257,21 @@ def parse(type, names):
             ## Scrape each parent method tag and all contained child tags for Flutter by resource.
             ## TEMP: Manually exclude Base Remote Control Service (Go only).
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
-            elif sdk == "flutter" and resource != 'base_remote_control':
+            elif sdk == "flutter" and resource != 'base_remote_control' and resource != 'encoder' and resource != 'input_controller' \
+                and resource != 'data_manager' and resource != 'generic_service' and resource !='mlmodel' and resource !='motion' \
+                and resource !='navigation' and resource !='slam' and type !='app':
                 soup = make_soup(url)
-                ## Limit matched class to exactly 'callable', i.e. not 'callable inherited', remove the constructor (proto id) itself, and remove '*_Pre' methods from Robot API:
+
+                if resource in flutter_resource_overrides:
+                    flutter_resource = flutter_resource_overrides[resource]
+                else:
+                    flutter_resource = resource.capitalize()
+                ## Limit matched class to either 'callable' or 'callable inherited' and remove the constructor (proto id) itself:
                 flutter_methods_raw = soup.find_all(
                     lambda tag: tag.name == 'dt'
-                    and tag.get('class') == ['callable']
-                    and not regex.search(proto_map[resource]['name'], tag.text)
-                    and not regex.search('_Pre', tag.text))
+                    and not tag.get('id') == flutter_resource
+                    and tag.has_attr("class")
+                    and "callable" in tag.get("class"))
 
                 ## Loop through scraped tags and select salient data:
                 for tag in flutter_methods_raw:
@@ -1288,92 +1297,85 @@ def parse(type, names):
                                     this_method_dict["proto"] = row.split(',')[1]
 
                         ## Determine method link:
-                        this_method_dict["method_link"] = tag.find("span", class_="name").a['href'].replace("..", sdk_url)
+                        method_link = tag.find("span", class_="name").a['href'].replace("..", sdk_url)
+                        this_method_dict["method_link"] = method_link
 
-                        ## Flutter SDK puts all parameter detail on a separate params page that we must additionally make_soup on.
-                        ## Fetch target URL and make_soup of matching parameter tags:
-                        parameters_link = tag.find("span", class_="type-annotation").a['href'].replace("..", scrape_url)
-                        parameters_soup_raw = make_soup(parameters_link)
-                        parameters_soup = parameters_soup_raw.find_all(
-                            lambda tag: tag.name == 'dt'
-                            and tag.get('class') == ['property']
-                            and not regex.search('info_', tag.text))
+                        ## While some method info is available to us on this current Flutter SDK page, the code sample is only found on the 
+                        ## method_link page. So we scrape that page for everything:
+                        method_soup = make_soup(method_link)
+
+                        ## Method description and code samples are both found within the same section tag:
+                        desc_or_code_sample = method_soup.find('section', class_ = 'desc markdown')
+
+                        if desc_or_code_sample:
+                            if desc_or_code_sample.p:
+                                this_method_dict["method_description"] = desc_or_code_sample.p.text
+                            if desc_or_code_sample.pre:
+                                this_method_dict["code_sample"] = desc_or_code_sample.pre.text
+
+                        parameter_tags = method_soup.find_all(
+                            lambda tag: tag.name == 'span'
+                            and tag.get('class') == ['parameter'])
 
                         ## Parse parameters, if any are found:
-                        if len(parameters_soup) != 0:
+                        if len(parameter_tags) != 0:
 
                             ## Create new empty dictionary for this_method_dict named "parameters":
                             this_method_dict["parameters"] = {}
 
-                            for parameter_tag in parameters_soup:
+                            for parameter_tag in parameter_tags:
 
                                 ## Create new empty dictionary this_method_parameters_dict to house all parameter
                                 ## keys for this method, to allow for multiple parameters. Also resets the
                                 ## previous parameter's data when looping through multiple parameters:
                                 this_method_parameters_dict = {}
 
-                                param_name = parameter_tag.get('id')
-                                this_method_parameters_dict["param_link"] = parameter_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
+                                ## Parse for param name and usage string, convert to string (for markdownify):
+                                param_name = parameter_tag.find('span', class_ = 'parameter-name').text
+                                param_usage = str(parameter_tag.find('span', class_ = 'type-annotation'))
 
-                                parameter_type_raw = parameter_tag.find("span", class_="signature")
+                                ## Markdownify parameter usage and replace relative links with absolute:
+                                formatted_param_usage = md(param_usage, strip=['wbr']).replace("../../", "https://flutter.viam.dev/")
+                                this_method_parameters_dict["param_usage"] = formatted_param_usage
 
-                                if not parameter_type_raw.find("a"):
-                                    this_method_parameters_dict["param_type"] = parameter_type_raw.string[2:]
-                                elif len(parameter_type_raw.find_all("a")) == 1:
-                                    this_method_parameters_dict["param_type"] = parameter_type_raw.find("a").text
-                                    this_method_parameters_dict["param_type_link"] = parameter_type_raw.a['href'].replace("..", sdk_url)
-                                elif len(parameter_type_raw.find_all("a")) == 2:
-                                    this_method_parameters_dict["param_type"] = parameter_type_raw.find("a").text
-                                    this_method_parameters_dict["param_type_link"] = parameter_type_raw.a['href'].replace("..", sdk_url)
-                                    this_method_parameters_dict["param_subtype"] = parameter_type_raw.find("span", class_="type-parameter").text
-                                    this_method_parameters_dict["param_subtype_link"] = parameter_type_raw.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
+                                ## Parse if parameter is optional:
+                                if parameter_tag.find('span', class_ = 'type-annotation').find_previous('span').text.startswith('{'):
+                                    this_method_parameters_dict["optional"] = True
+                                else:
+                                    this_method_parameters_dict["optional"] = False
 
                                 this_method_dict["parameters"][param_name] = this_method_parameters_dict
 
-                        # Flutter SDK renders return values in 'type-parameter' spans:
-                        if tag.find("span", class_="type-parameter").a:
+                        return_tags = method_soup.find_all(
+                            lambda tag: tag.name == 'span'
+                            and tag.get('class') == ['returntype'])
 
-                            return_link = tag.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
-                            return_soup_raw = make_soup(return_link)
-                            return_soup = return_soup_raw.find_all(
-                                lambda tag: tag.name == 'dt'
-                                and tag.get('class') == ['property']
-                                and not regex.search('info_', tag.text))
+                        if len(return_tags) != 0:
 
-                            ## Parse returns, if any are found:
-                            if len(return_soup) != 0:
+                            ## Create new empty dictionary for this_method_dict named "return":
+                            this_method_dict["return"] = {}
 
-                                ## Create new empty dictionary for this_method_dict named "return":
-                                this_method_dict["return"] = {}
+                            for return_tag in return_tags:
 
-                                for return_tag in return_soup:
+                                ## Create new empty dictionary this_method_returns_dict to house all return
+                                ## keys for this method, to allow for multiple returns. Also resets the
+                                ## previous return's data when looping through multiple returns:
+                                this_method_return_dict = {}
 
-                                    ## Create new empty dictionary this_method_returns_dict to house all return
-                                    ## keys for this method, to allow for multiple returns. Also resets the
-                                    ## previous return's data when looping through multiple returns:
-                                    this_method_return_dict = {}
+                                # Parse return usage string, convert to string (for markdownify):
+                                return_usage = str(return_tag)
 
-                                    return_name = return_tag.get('id')
-                                    this_method_return_dict["return_link"] = return_tag.find("span", class_="name").a['href'].replace("..", sdk_url)
+                                ## Markdownify return usage and replace relative links with absolute:
+                                formatted_return_usage = md(return_usage, strip=['wbr']).replace("../../", "https://flutter.viam.dev/")
+                                this_method_return_dict["return_usage"] = formatted_return_usage
 
-                                    return_type_raw = return_tag.find("span", class_="signature")
+                                # Parse return type:
+                                if return_tag.find('span', class_ = 'type-parameter'):
+                                    return_type = return_tag.find('span', class_ = 'type-parameter').text
+                                else:
+                                    return_type = return_tag.text
 
-                                    if not return_type_raw.find("a"):
-                                        this_method_return_dict["return_type"] = return_type_raw.string[2:]
-                                    elif len(return_type_raw.find_all("a")) == 1:
-                                        this_method_return_dict["return_type"] = return_type_raw.find("a").text
-                                        this_method_return_dict["return_type_link"] = return_type_raw.a['href'].replace("..", sdk_url)
-                                    elif len(return_type_raw.find_all("a")) == 2:
-                                        this_method_return_dict["return_type"] = return_type_raw.find("a").text
-                                        this_method_return_dict["return_type_link"] = return_type_raw.a['href'].replace("..", sdk_url)
-                                        this_method_return_dict["return_subtype"] = return_type_raw.find("span", class_="type-parameter").text
-                                        this_method_return_dict["return_subtype_link"] = return_type_raw.find("span", class_="type-parameter").a['href'].replace("..", sdk_url)
-
-                                    this_method_dict["return"][return_name] = this_method_return_dict
-
-                        else:
-                            return_name = return_tag.get('id')
-                            this_method_return_dict["return_type"] = tag.find("span", class_="type-parameter").string
+                                this_method_dict["return"][return_type] = this_method_return_dict
 
                         flutter_methods[type][resource][method_name] = this_method_dict
 
@@ -1381,6 +1383,10 @@ def parse(type, names):
                 ## in its entirety to the all_methods dictionary using "flutter" as the key:
                 all_methods["flutter"] = flutter_methods
 
+            elif sdk == "flutter" and type == "app":
+                ##Flutter SDK has no APP API!
+                pass
+            
             else:
                 ## Good code would never get here.
                 ## This code gets here when facing a resource with 0 implemented methods for
@@ -1517,7 +1523,7 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
             param_or_return_description = ''
             ## Param override:
             if type_name != '':
-                ## .../overrides/methods/{sdk}.{resource}.{go_method_name}.{param_name}.md
+                ## .../overrides/methods/{sdk}.{resource}.{method_name}.{param_name}.md
                 param_desc_override_file = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.' + type_name + '.md'
             ## Return override:
             else:
@@ -1532,7 +1538,7 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
 
                 return_type_short = return_type_short.removeprefix('[]').removeprefix('*')
 
-                ## .../overrides/methods/{sdk}.{resource}.{go_method_name}.{return_data_type_last_part}.return.md
+                ## .../overrides/methods/{sdk}.{resource}.{method_name}.{return_type_short}.return.md
                 param_desc_override_file = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.' + return_type_short + '.return.md'
 
             if args.overrides:
@@ -1601,20 +1607,20 @@ def write_markdown(type, names, methods):
     ## NOTE: To use the above override directories, place a file at one of these locations.
     ## IMPORTANT: Filenames are CASE-SENSITIVE!
     ## To override a proto with custom leading MD content, place a file here:
-    ##    docs/static/include/{type}/apis/overrides/protos/{resource}.{protoname}.md
+    ##    docs/static/include/{type}/apis/overrides/protos/{resource}.{proto_name}.md
     ## To override a method with custom leading MD content, place a file here:
-    ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.before.md
+    ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{method_name}.before.md
     ## To override a method with custom trailing MD content, place a file here:
-    ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.after.md
+    ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{method_name}.after.md
     ## To override a specific parameter description for a method with custom MD content, place a file here:
-    ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.{parameter_name}.md
+    ##    docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{method_name}.{parameter_name}.md
     ## To override a specific return description for a method with custom MD content, place a file here:
     ##    For Python (can have only one return, returns are not named):
-    ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.return.md
-    ##    For Flutter (can have multiple returns, returns are named):
-    ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.{return_name}.md
+    ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{method_name}.return.md
+    ##    For Flutter (can have multiple returns, returns are not named):
+    ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{method_name}.{return_type_short}.return.md
     ##    For Go (can have multiple returns, returns are not named):
-    ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{methodname}.{return_data_type_last_part}.return.md
+    ##        docs/static/include/{type}/apis/overrides/methods/{sdk}.{resource}.{method_name}.{return_type_short}.return.md
 
     ## Loop through each resource, such as 'arm'. run() already calls parse() in
     ## scope limited to 'type', so we don't have to loop by type:
@@ -1738,7 +1744,7 @@ def write_markdown(type, names, methods):
                             ## inject additional MD content either before or after the auto-generated method content:
                             ## 'before': injects immediately after the opening SDK tab and before the first parameter is listed.
                             ## 'after': injects immediately after the code sample (or last return if none), and before the closing SDK tab.
-                            ## .../overrides/methods/{sdk}.{resource}.{py_method_name}.before|after.md
+                            ## .../overrides/methods/{sdk}.{resource}.{method_name}.before|after.md
                             before_method_override_filepath = path_to_methods_override + '/python.' + resource + '.' + py_method_name + '.before.md'
                             after_method_override_filepath = path_to_methods_override + '/python.' + resource + '.' + py_method_name + '.after.md'
 
@@ -1891,7 +1897,7 @@ def write_markdown(type, names, methods):
                             ## inject additional MD content either before or after the auto-generated method content:
                             ## 'before': injects immediately after the opening SDK tab and before the first parameter is listed.
                             ## 'after': injects immediately after the code sample (or last return if none), and before the closing SDK tab.
-                            ## .../overrides/methods/{sdk}.{resource}.{go_method_name}.before|after.md
+                            ## .../overrides/methods/{sdk}.{resource}.{method_name}.before|after.md
                             before_method_override_filepath = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.before.md'
                             after_method_override_filepath = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.after.md'
 
@@ -1983,7 +1989,7 @@ def write_markdown(type, names, methods):
                             ## inject additional MD content either before or after the auto-generated method content:
                             ## 'before': injects immediately after the opening SDK tab and before the first parameter is listed.
                             ## 'after': injects immediately after the code sample (or last return if none), and before the closing SDK tab.
-                            ## .../overrides/methods/{sdk}.{resource}.{flutter_method_name}.before|after.md
+                            ## .../overrides/methods/{sdk}.{resource}.{method_name}.before|after.md
                             before_method_override_filepath = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.before.md'
                             after_method_override_filepath = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.after.md'
 
@@ -2000,16 +2006,16 @@ def write_markdown(type, names, methods):
                                     param_data = methods['flutter'][type][resource][flutter_method_name]['parameters'][parameter]
 
                                     param_type = param_data.get("param_type")
-                                    param_subtype = param_data.get("param_subtype")
-                                    param_type_link = param_data.get("param_type_link")
-                                    param_subtype_link = param_data.get("param_subtype_link")
+                                    param_usage = param_data.get("param_usage")
 
                                     param_description = ''
+                                    ## .../overrides/methods/{sdk}.{resource}.{method_name}.{param_name}.md
                                     param_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + parameter + '.md'
 
                                     if args.overrides:
                                         print(param_desc_override_file)
-
+ 
+                                    ## Check if param description override file exists:
                                     if os.path.exists(param_desc_override_file):
                                         preserve_formatting = False
                                         for line in open(param_desc_override_file, 'r', encoding='utf-8'):
@@ -2025,24 +2031,7 @@ def write_markdown(type, names, methods):
 
                                     optional = param_data.get("optional")
 
-                                    output_file.write(f'- `{parameter}` [({param_type})]')
-
-                                    # Ideally we could update at least Python SDK with type links?
-                                    if param_type_link:
-                                        # Check for subtype
-                                        if param_subtype:
-                                            output_file.write(f"({param_type_link})")
-                                            if param_subtype_link:
-                                                output_file.write(f"<[{param_subtype}]")
-                                                output_file.write(f"({param_subtype_link})>")
-                                            else:
-                                                output_file.write(f"<{param_subtype}>")
-                                        else:
-                                            output_file.write(f"({param_type_link})")
-                                    # SG: Haven't found any sub-types without param type links-- they are all in flutter SDK--
-                                    # could expand this logic if popped up or grabbing more subtypes?
-                                    else:
-                                        output_file.write('(<INSERT PARAM TYPE LINK>)')
+                                    output_file.write(f'- `{parameter}` {param_usage}')
 
                                     if optional:
                                         output_file.write(' (optional)')
@@ -2067,21 +2056,25 @@ def write_markdown(type, names, methods):
                             output_file.write('\n**Returns:**\n\n')
                             if 'return' in methods['flutter'][type][resource][flutter_method_name]:
 
-                                for return_name in methods['flutter'][type][resource][flutter_method_name]["return"].keys():
+                                for return_type in methods['flutter'][type][resource][flutter_method_name]["return"].keys():
 
-                                    return_data = methods['flutter'][type][resource][flutter_method_name]["return"][return_name]
-                                    return_type = return_data.get("return_type")
-                                    return_subtype = return_data.get("return_subtype")
-                                    return_type_link = return_data.get("return_type_link")
-                                    return_link = return_data.get("return_type_link") # TODO: handle this
-                                    return_subtype_link = return_data.get("return_subtype_link")
+                                    return_data = methods['flutter'][type][resource][flutter_method_name]["return"][return_type]
+                                    return_usage = return_data.get("return_usage")
 
                                     return_description = ''
-                                    return_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + return_name + '.md'
+
+                                    if '<' in return_type:
+                                        return_type_short = return_type.split('<')[1].split('>')[0].split(',')[0]
+                                    else:
+                                        return_type_short = return_type
+
+                                    ## .../overrides/methods/{sdk}.{resource}.{flutter_method_name}.{return_type_short}.return.md
+                                    return_desc_override_file = path_to_methods_override + '/flutter.' + resource + '.' + flutter_method_name + '.' + return_type_short + '.return.md'
 
                                     if args.overrides:
                                         print(return_desc_override_file)
 
+                                    ## Check if return description override file exists:
                                     if os.path.exists(return_desc_override_file):
                                         preserve_formatting = False
                                         for line in open(return_desc_override_file, 'r', encoding='utf-8'):
@@ -2096,21 +2089,7 @@ def write_markdown(type, names, methods):
                                         return_description = return_data.get("return_description")
 
                                     if return_type:
-                                        output_file.write(f"- `{return_name}` [({return_type})]")
-
-                                        if return_type_link:
-                                            output_file.write(f"({return_type_link})")
-                                        else:
-                                            output_file.write("(INSERT RETURN TYPE LINK)")
-
-                                        if return_subtype:
-                                            output_file.write(f"<[{return_subtype}]")
-                                            if return_subtype_link:
-                                                output_file.write(f"({return_subtype_link})>")
-                                            else:
-                                                output_file.write("(<INSERT RETURN SUBTYPE LINK>)")
-                                        else:
-                                            pass
+                                        output_file.write(f"- {return_usage}")
 
                                         if return_description:
 
@@ -2168,15 +2147,16 @@ def write_markdown(type, names, methods):
 ## - write_markdown()   Write out salient fields from passed data object to specific MD files
 def run():
 
-    if args.verbose:
-        print('DEBUG: Now fetching upstream PROTOs')
-    proto_map = get_proto_apis()
-    if args.verbose:
-        print('DEBUG: Completed fetching upstream PROTOs!')
+    ## If generating the mapping template file, skip all other functionality:
+    if args.map:
+        if args.verbose:
+            print('DEBUG: Now fetching upstream PROTOs')
+        proto_map = get_proto_apis()
+        if args.verbose:
+            print('DEBUG: Completed fetching upstream PROTOs!')
 
-    ## If generating the mapping template file, skip all other functionality.
     ## Otherwise, continue as normal:
-    if not args.map:
+    else:
 
         ## If running in verbose mode:
         if args.verbose:
