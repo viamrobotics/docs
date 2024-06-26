@@ -6,7 +6,7 @@ type: "docs"
 tags: ["vision", "data", "services", "quickstart", "ml", "camera", "webcam"]
 no_list: true
 description: "Use Viam's machine learning capabilities to deploy a person detector ML model to your machine."
-images: ["/platform/ml.svg"]
+images: ["/icons/components/camera.svg"]
 imageAlt: "Machine Learning"
 ---
 
