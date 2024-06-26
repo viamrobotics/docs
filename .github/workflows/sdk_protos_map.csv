@@ -419,13 +419,11 @@ data_sync,FileUploadFromPath,file_upload_from_path,,
 data_sync,StreamingDataCaptureUpload,streaming_data_capture_upload,,
 
 ## MLTraining
-## TODO: Something wrong with parsing: submit_training_job in PySDK (??):
-mltraining,SubmitTrainingJob,,,
+mltraining,SubmitTrainingJob,submit_training_job,,
 mltraining,GetTrainingJob,get_training_job,,
 mltraining,ListTrainingJobs,list_training_jobs,,
 mltraining,CancelTrainingJob,cancel_training_job,,
-## Borked in Python: https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.delete_completed_training_job
-mltraining,DeleteCompletedTrainingJob,,,
+mltraining,DeleteCompletedTrainingJob,delete_completed_training_job,,
 
 ## Robot
 ## Omitting some Flutter methods from now until we can determine what they do

@@ -388,7 +388,6 @@ python_ignore_apis = [
     'viam.app.data_client.DataClient.configure_database_user', # unimplemented
     'viam.app.data_client.DataClient.create_filter', # deprecated
     'viam.app.data_client.DataClient.delete_tabular_data_by_filter', # deprecated
-    'viam.app.ml_training_client.MLTrainingClient.submit_training_job', # unimplemented
     'viam.components.input.client.ControllerClient.reset_channel', # GUESS ?
     'viam.robot.client.RobotClient.transform_point_cloud', # unimplemented
     'viam.robot.client.RobotClient.get_component', # GUESS ?
