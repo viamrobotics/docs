@@ -812,7 +812,7 @@ def parse(type, names):
                                 go_code_samples_raw = soup.find_all(
                                     lambda code_sample_tag: code_sample_tag.name == 'p'
                                     and code_sample_tag.text.startswith(method_name)
-                                    and " example:" in code_sample_tag.text)
+                                    and code_sample_tag.text.endswith(method_name + ' example:\n'))
 
                                 ## Determine if a code sample is provided for this method:
                                 if len(go_code_samples_raw) == 1:
@@ -1694,13 +1694,13 @@ def write_markdown(type, names, methods):
                             ## Replace underscores, and convert generic_component to just generic:
                             resource_adjusted = resource.replace('generic_component', 'generic').replace('_','-')
                             proto_anchor_link = '/' + type_filepath_name + '/' + resource_adjusted + '/#' + proto_link
-                        elif type == 'service' and resource in ['base_remote_control', 'motion', 'navigation', 'slam']:
+                        elif type == 'service' and resource in ['base_remote_control', 'motion', 'navigation', 'slam', 'vision']:
                             proto_anchor_link = '/services/' + resource.replace('base_remote_control', 'base_rc') + '/#' + proto_link
                         elif type == 'service' and resource == 'data_manager':
                             proto_anchor_link = 'services/data/#' + proto_link
                         elif type == 'service' and resource == 'generic_service':
                             proto_anchor_link = '/services/generic/#' + proto_link
-                        elif type == 'service' and resource in ['mlmodel', 'vision']:
+                        elif type == 'service' and resource == 'mlmodel':
                             proto_anchor_link = '/services/ml/' + resource.replace('mlmodel', 'deploy') + '/#' + proto_link
                         elif type == 'app' and resource == 'app':
                             proto_anchor_link = '/appendix/apis/fleet/#' + proto_link

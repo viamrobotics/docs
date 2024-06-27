@@ -1,1 +1,1 @@
-Get the `ResourceName` for this vision service with the given name.
+Get the `ResourceName` for this instance of the Vision service with the given name.
