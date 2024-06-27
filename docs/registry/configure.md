@@ -393,8 +393,11 @@ To add a local module on your machine, first add its module, then the component 
 1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 2. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**, then **Local module**.
 3. Enter a **Name** for this instance of your module.
-4. Enter the [module's executable path](/registry/create/#compile-or-package-your-module).
-   This path must be the absolute path to the executable on your machine's filesystem.
+4. Enter the module's **Executable path**.
+   This path must be the absolute path on your machine's filesystem to either:
+   - the module's [executable file](/registry/create/#compile-or-package-your-module), such as `run.sh` or a compiled binary.
+   - a packaged tarball of your module, ending in `.tar.gz` or `.tgz`.
+     If you are providing a tarball file in this field, be sure that your packaged tarball contains your module's [`meta.json` file](/cli/#the-metajson-file) within it.
 5. Then, click the **Create** button, and click **Save** in the upper right corner to save your config.
 
    {{<imgproc src="registry/configure/add-local-module-csi-cam.png" resize="300x" declaredimensions=true alt="The add a local module pane with name 'my-csi-cam' and executable path '/usr/local/bin/viam-csi'">}}
