@@ -37,6 +37,7 @@ If you are developing a module for the same target architecture as your developm
 
 1. Navigate to the Viam app, select your machine, and [add your module as a local module](/registry/configure/#local-modules) to your machine.
    For the **Executable path** field, enter the absolute path on your machine's filesystem to either:
+
    - the module's [executable file](/registry/create/#compile-or-package-your-module), such as `run.sh` or a compiled binary.
    - a packaged tarball of your module, ending in `.tar.gz` or `.tgz`.
      If you are providing a tarball file in this field, be sure that your packaged tarball contains your module's [`meta.json` file](/cli/#the-metajson-file) within it.
