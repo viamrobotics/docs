@@ -799,7 +799,7 @@ def parse(type, names):
                                 go_code_samples_raw = soup.find_all(
                                     lambda code_sample_tag: code_sample_tag.name == 'p'
                                     and code_sample_tag.text.startswith(method_name)
-                                    and " example:" in code_sample_tag.text)
+                                    and code_sample_tag.text.endswith(method_name + ' example:\n'))
 
                                 ## Determine if a code sample is provided for this method:
                                 if len(go_code_samples_raw) == 1:
