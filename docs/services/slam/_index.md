@@ -3,7 +3,7 @@ title: "SLAM Service"
 linkTitle: "SLAM"
 weight: 30
 type: "docs"
-description: "Simultaneous Localization And Mapping (SLAM) allows your machine to create a map of its surroundings and find its location within that map."
+description: "Simultaneous localization and mapping (SLAM) allows your machine to create a map of its surroundings and find its location within that map."
 tags: ["slam", "services"]
 icon: true
 images: ["/services/icons/slam.svg"]

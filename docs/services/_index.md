@@ -8,6 +8,7 @@ images: ["/general/services.png"]
 aliases:
   - "/services/"
 menuindent: true
+no_list: true
 ---
 
 Services are built-in software packages that make it easier to add complex capabilities such as motion planning or object detection to your machine.

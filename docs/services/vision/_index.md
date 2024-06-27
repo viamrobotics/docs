@@ -1,5 +1,5 @@
 ---
-title: "Use Computer Vision with the Vision Service"
+title: "Vision Service"
 linkTitle: "Computer Vision"
 weight: 90
 type: "docs"
