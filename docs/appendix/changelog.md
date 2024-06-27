@@ -21,7 +21,7 @@ outputs:
 
 {{% changelog date="2024-06-24" color="changed" title="Viam Agent roaming mode" %}}
 
-The Viam Agent now supports roaming mode. You can use the Viam Agent in roaming mode to allow it to attempt to connect to each specified WiFI network in your configuration.
+The Viam Agent now supports roaming mode. You can use the Viam Agent in roaming mode to allow it to attempt to connect to each specified WiFi network in your configuration.
 In roaming mode, the Viam Agent only connects to a WiFi network that has internet access, and will skip a configured network if it is offline.
 
 {{% /changelog %}}
