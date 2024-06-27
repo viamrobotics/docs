@@ -10,7 +10,7 @@ description: "Use Viam to gather images or sensor data from your machine."
 
 Follow this guide to start collecting images or sensor data from your machine using the [data management service](/services/data/):
 
-![The Viam app DATA page showing sensor data from an air quality sensor.](/get-started/quickstarts/data-page.png)
+![The Viam app DATA page showing sensor data from an air quality sensor.](/get-started/quickstarts/collect-data/data-page.png)
 
 ## Requirements
 
@@ -42,8 +42,12 @@ Go to the Viam app and [add a new machine](/cloud/machines/#add-a-new-machine).
 Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page to install `viam-server` on your computer and connect it to the Viam app.
 
+![The Viam app DATA page showing sensor data from an air quality sensor.](/get-started/quickstarts/collect-data/setup-button.png)
+
 {{% /expand%}}
 {{< expand "Step 3: Configure a camera" >}}
+
+{{<gif webm_src="/how-tos/configure-webcam.webm" mp4_src="/how-tos/configure-webcam.mp4" alt="The process described below." max-width="550px" class=aligncenter >}}
 
 1. From the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com/), click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 
@@ -60,6 +64,8 @@ For more detailed information, including optional attribute configuration, see t
 
 {{< /expand >}}
 {{< expand "Step 4: Configure data capture on the camera" >}}
+
+{{<gif webm_src="/how-tos/capture-images.webm" mp4_src="/how-tos/capture-images.mp4" alt="The process described below." max-width="600px" class=aligncenter >}}
 
 1. Return to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com/).
    Locate the configuration card for your camera.
@@ -83,6 +89,8 @@ For more on the camera API, see [Camera Component](/components/camera/#getimage)
 {{< /expand >}}
 {{< expand "Step 5: View the captured image data" >}}
 
+![The Data tab in the upper-left corner of the screen.](/get-started/quickstarts/collect-data/data-tab-navigation.png)
+
 In the upper banner of the [Viam app](https://app.viam.com/), click **DATA** to see the captured images displayed.
 If you do not see images from your camera, try waiting a minute and refreshing the page to allow time for the images to be captured and then synced to the app at the interval you configured.
 
@@ -103,6 +111,8 @@ Go to the Viam app and [add a new machine](/cloud/machines/#add-a-new-machine).
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page to install `viam-server` on your computer and connect it to the Viam app.
 
+![The Viam app DATA page showing sensor data from an air quality sensor.](/get-started/quickstarts/collect-data/setup-button.png)
+
 {{% /expand%}}
 {{< expand "Step 3: Configure a board" >}}
 
@@ -114,40 +124,19 @@ Then, [add a board component](/components/board/), such as a [Raspberry Pi board
 
 {{< expand "Step 4: Configure a sensor" >}}
 
-[Add a sensor component](/components/sensor/), such as a [gpio motor](/components/motor/gpio/).
+[Add a sensor component](/components/sensor/) compatible with your sensor hardware.
 Ensure your sensor and board are properly connected.
 
 ![The CONFIGURE tab of the Viam app populated with a configured gpio motor.](/components/motor/gpio-config-ui.png)
 
 {{< /expand >}}
 
-{{< expand "Step 5: Choose how you will control the motor" >}}
+{{< expand "Step 5: View the captured sensor data" >}}
 
-You can control your motor directly from the Viam app, using the mobile app, or programmatically.
+![The Data tab in the upper-left corner of the screen.](/get-started/quickstarts/collect-data/data-tab-navigation.png)
 
-### Option 1: Control from the app
-
-Navigate to your machine's **CONTROL** tab in the Viam app and use the **Power %** slider to set the motor's speed.
-Use the **Backwards** and **Forwards** buttons to change the direction.
-
-{{<gif webm_src="/get-started/quickstarts/motor-control.webm" mp4_src="/get-started/quickstarts/motor-control.mp4" alt="Using the slider, Backwards, and Forwards buttons on the Viam app to control the direction and speed of a configured motor" class="aligncenter"  min-height="750px">}}
-
-### Option 2: Control from the mobile app
-
-You can use [the Viam mobile app](/fleet/#the-viam-mobile-app) to control your motor's speed and direction directly from your smart device.
-
-Open the Viam mobile app and log in to your account.
-Select the location where your machine is assigned.
-Choose your machine from the list and use the mobile interface to adjust the motor settings.
-
-Select the location that your machine is assigned to from the **Locations** tab.
-
-{{<gif webm_src="/get-started/quickstarts/mobile-app-motor-control.webm" mp4_src="/get-started/quickstarts/mobile-app-motor-control.mp4" alt="Using an example machine on the Viam mobile app to set the direction and speed of a configured motor using the slider on the user interface" max-height="50px" max-width="200px" class="HELLO aligncenter">}}
-
-### Option 3: Control programmatically
-
-You can use the following code to control the motor's speed and direction using your preferred SDK.
-Find your machine's API key and address on your machine's **CONNECT** tab.
+In the upper banner of the [Viam app](https://app.viam.com/), click **DATA** to see the captured sensor data displayed.
+If you do not see data from your sensor, try waiting a minute and refreshing the page to allow time for the readings to be captured and then synced to the app at the interval you configured.
 
 {{< /expand >}}
 
