@@ -79,7 +79,7 @@ For more detailed information, including optional attribute configuration, see t
 
    - Set the frequency to `0.1` to capture an image every 10 seconds.
 
-   - Set the MIME type to `image/png`.
+   - Set the MIME type to `image/jpeg`.
 
 For more detailed information on data capture, see [Configure Data Capture](/services/data/capture/).
 For more on the camera API, see [Camera Component](/components/camera/#getimage).
