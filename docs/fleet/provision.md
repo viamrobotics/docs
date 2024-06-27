@@ -195,7 +195,7 @@ If you want the Viam Agent to require that a WiFi network be connected to the in
 If the configured WiFi network could not be connected to, the Viam Agent will instead [create its own WiFi hotspot](#create-a-wifi-hotspot).
 If you want the Viam Agent to try to connect to another network if the first one could not be accessed, use [roaming mode](#use-roaming-mode).
 
-You can configure how long the Agent waits for connections and the timeout before it creates a hotspot in the [provisioning configuration file](use-a-provisioning-configuration-file).
+You can configure how long the Agent waits for connections and the timeout before it creates a hotspot in the [provisioning configuration file](#use-a-provisioning-configuration-file).
 
 ### Use roaming mode
 
@@ -237,7 +237,7 @@ In the example above, the `primaryNet` WiFi network has the highest priority of 
 
 If no configured WiFi network could be connected to, or all configured networks were offline at the time the connection attempt was made, the Viam Agent will instead [create its own WiFi hotspot](#create-a-wifi-hotspot).
 
-You can configure how long the Agent waits for connections and the timeout before it creates a hotspot in the [provisioning configuration file](use-a-provisioning-configuration-file).
+You can configure how long the Agent waits for connections and the timeout before it creates a hotspot in the [provisioning configuration file](#use-a-provisioning-configuration-file).
 
 ### Create a WiFi hotspot
 
