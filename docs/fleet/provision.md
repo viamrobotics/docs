@@ -164,7 +164,7 @@ This provisioning functionality is provided by the [Viam Agent provisioning subs
 
 If you specify a WiFi network to connect to in your configuration file, the Viam Agent will automatically connect to that network when in range.
 
-To configure the Agent with the necessary Wifi connection information and credentials, add an `agent` configuration object to your `viam-server` configuration file that contains this information.
+To configure the Agent with the necessary WiFi connection information and credentials, add an `agent` configuration object to your `viam-server` configuration file that contains this information.
 
 For example, the following configuration defines the connection information and credentials necessary to connect to a `exampleNet` network:
 
