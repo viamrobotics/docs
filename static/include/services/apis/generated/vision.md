@@ -15,6 +15,10 @@ Get a list of detections from the next image from a specified camera using a con
 
 - ([List[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): A list of 2D bounding boxes, their labels, and the confidence score of the labels, around the found objects in the next 2D image from the given camera, with the given detector applied to it.
 
+**Raises:**
+
+- (ViamError): Raised if given an image without a specified width and height.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -59,6 +63,27 @@ if len(detections) > 0 {
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `cameraName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)>>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+var detections = await myVisionService.detectionsFromCamera('myWebcam');
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/VisionClient/detectionsFromCamera.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetDetections
@@ -77,6 +102,10 @@ Get a list of detections from a given image using a configured [detector](#detec
 **Returns:**
 
 - ([List[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): A list of 2D bounding boxes, their labels, and the confidence score of the labels, around the found objects in the next 2D image from the given camera, with the given detector applied to it.
+
+**Raises:**
+
+- (ViamError): Raised if given an image without a specified width and height.
 
 **Example:**
 
@@ -113,8 +142,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get detections from the camera output
-detections, err := visService.DetectionsFromCamera(context.Background(), myCam, nil)
+// Get the stream from a camera
+camStream, err := myCam.Stream(context.Background())
+
+// Get an image from the camera stream
+img, release, err := camStream.Next(context.Background())
+defer release()
+
+// Get the detections from the image
+detections, err := visService.Detections(context.Background(), img, nil)
 if err != nil {
     logger.Fatalf("Could not get detections: %v", err)
 }
@@ -124,6 +160,28 @@ if len(detections) > 0 {
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `image` [ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html) (required)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)>>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+var latestImage = await myWebcam.image();
+var detections = await myVisionService.detections(latestImage);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/VisionClient/detections.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -192,6 +250,28 @@ if len(classifications) > 0 {
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `cameraName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `count` [int](https://api.flutter.dev/flutter/dart-core/int-class.html) (required)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)>>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+var classifications = await myVisionService.classificationsFromCamera('myWebcam', 2);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/VisionClient/classificationsFromCamera.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetClassifications
@@ -248,8 +328,19 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get the 2 classifications with the highest confidence scores from the camera output
-classifications, err := visService.ClassificationsFromCamera(context.Background(), myCam, 2, nil)
+// Get the stream from a camera
+camStream, err := myCam.Stream(context.Background())
+if err!=nil {
+    logger.Error(err)
+    return
+}
+
+// Get an image from the camera stream
+img, release, err := camStream.Next(context.Background())
+defer release()
+
+// Get the 2 classifications with the highest confidence scores from the image
+classifications, err := visService.Classifications(context.Background(), img, 2, nil)
 if err != nil {
     logger.Fatalf("Could not get classifications: %v", err)
 }
@@ -259,6 +350,29 @@ if len(classifications) > 0 {
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `image` [ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html) (required)
+- `count` [int](https://api.flutter.dev/flutter/dart-core/int-class.html) (required)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)>>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+var latestImage = await myWebcam.image();
+var classifications = await myVisionService.classifications(latestImage, 2);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/VisionClient/classifications.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -329,6 +443,27 @@ if len(objects) > 0 {
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `cameraName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[PointCloudObject](https://flutter.viam.dev/viam_protos.common.common/PointCloudObject-class.html)>>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+var ptCloud = await myVisionService.objectPointClouds('myCamera');
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/VisionClient/objectPointClouds.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -414,6 +549,68 @@ result, err := myArm.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example using doCommand with an arm component
+const command = {'cmd': 'test', 'data1': 500};
+var result = myArm.doCommand(command);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/VisionClient/doCommand.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### FromRobot
+
+Get the resource from the provided robot with the given name.
+
+{{< tabs >}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `robot` [RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html) (required)
+- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [VisionClient](https://flutter.viam.dev/viam_sdk/VisionClient-class.html)
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/VisionClient/fromRobot.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Name
+
+Get the `ResourceName` for this instance of the Vision service with the given name.
+
+{{< tabs >}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [ResourceName](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/VisionClient/getResourceName.html).
 
 {{% /tab %}}
 {{< /tabs >}}
