@@ -10,8 +10,6 @@ description: "Use Viam to gather images or sensor data from your machine."
 
 Follow this guide to start collecting images or sensor data from your machine using the [data management service](/services/data/):
 
-![The Viam app DATA page showing sensor data from an air quality sensor.](/get-started/quickstarts/collect-data/data-page.png)
-
 ## Requirements
 
 - A Linux or macOS computer:
@@ -196,18 +194,16 @@ If you do not see data from your sensor, try waiting a minute and refreshing the
 
 ## Next steps
 
-Now that you have made a motor move, explore other components, or related servies:
+Now that you have captured data, try training a computer vision model on your images, or query your sensor data:
 
 {{< cards >}}
-{{% card link="/components/" %}}
-{{% card link="/services/navigation/" %}}
-{{% card link="/services/SLAM/" %}}
+{{% card link="/use-cases/deploy-ml/" %}}
+{{% card link="/use-cases/sensor-data-query/" %}}
 {{< /cards >}}
 
-To see motors in real-world projects, check out these tutorials:
+To see data capture in real-world projects, check out these tutorials:
 
 {{< cards >}}
-{{% card link="/tutorials/get-started/confetti-bot/" %}}
-{{% card link="/tutorials/get-started/lazy-susan/" %}}
-{{% card link="/tutorials/configure/configure-rover/" %}}
+{{% card link="/tutorials/projects/helmet/" %}}
+{{% card link="/tutorials/control/air-quality-fleet/" %}}
 {{< /cards >}}
