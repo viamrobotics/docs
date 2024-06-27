@@ -189,7 +189,7 @@ func main() {
 
 ## Next steps
 
-Now that you have made a motor move, explore other components, or related servies:
+Now that you have made a motor move, explore other components or related services:
 
 {{< cards >}}
 {{% card link="/components/" %}}
