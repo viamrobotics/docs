@@ -1,5 +1,5 @@
 ---
-title: "Computer Vision Service"
+title: "Vision Service"
 linkTitle: "Computer Vision"
 weight: 90
 type: "docs"
