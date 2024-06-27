@@ -10,6 +10,7 @@ icon: true
 images: ["/services/icons/ml.svg"]
 aliases:
   - /ml/edit/
+no_service: true
 # SME: Steven B.
 ---
 

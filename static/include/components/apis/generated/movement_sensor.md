@@ -359,7 +359,7 @@ Supported by GPS models and `imu-wit`.
 
 **Returns:**
 
-- ([viam.components.movement_sensor.movement_sensor.MovementSensor.Accuracy](https://python.viam.dev/autoapi/viam/components/movement_sensor/movement_sensor/index.html#viam.components.movement_sensor.movement_sensor.MovementSensor.Accuracy)): The accuracies of the movement sensor.
+- ([MovementSensor.Accuracy](https://python.viam.dev/autoapi/viam/components/movement_sensor/movement_sensor/index.html#viam.components.movement_sensor.movement_sensor.MovementSensor.Accuracy)): The accuracies of the movement sensor.
 
 **Example:**
 

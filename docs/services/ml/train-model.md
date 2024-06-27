@@ -13,6 +13,7 @@ description: "Train an image classification model on labeled image data."
 aliases:
   - /manage/ml/train-model/
   - /ml/train-model/
+no_service: true
 # SME: Tahiya + Alexa Greenberg
 ---
 

@@ -11,6 +11,7 @@ tags: ["navigation", "services", "base", "rover"]
 aliases:
   - "/services/navigation/"
   - "/mobility/navigation/"
+no_service: true
 # SMEs: Raymond
 ---
 

@@ -19,14 +19,42 @@ outputs:
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
-{{% changelog date="2024-05-09" color="changed" title="Return type of GetImage()" %}}
+<!-- This isn't in the docs yet
+{{% changelog date="2024-06-14" color="changed" title="Python get_robot_part_logs parameters" %}}
+
+The `errors_only` parameter has been removed from [`get_robot_part_logs()`](/appendix/apis/fleet/#getrobotpartlogs) and replaced with `log_levels`.
+
+{{% /changelog %}}-->
+
+<!-- This isn't in the docs yet
+{{% changelog date="2024-05-28" color="added" title="CaptureAllFromCamera and GetProperties to vision API" %}}
+
+The vision service now supports two new methods: [`CaptureAllFromCamera`](/services/vision/#captureallfromcamera) and [`GetProperties`](/services/vision/#getproperties).
+
+{{% /changelog %}}-->
+
+{{% changelog date="2024-05-28" color="changed" title="Return type of analog Read" %}}
+
+The board analog API [`Read()`](/components/board/#read) method now returns an `AnalogValue` struct instead of a single int.
+The struct contains an int representing the value of the reading, min and max range of values, and the precision of the reading.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-05-14" color="changed" title="Renamed GeoObstacle to GeoGeometry" %}}
+
+The motion service API parameter `GeoObstacle` has been renamed to `GeoGeometry`.
+This affects users of the [`MoveOnGlobe()`](/services/motion/#moveonglobe) method.
+
+{{% /changelog %}}
+
+{{< changelog date="2024-05-09" color="changed" title="Return type of GetImage" >}}
 
 The Python SDK introduced a new image container class called [`ViamImage`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage).
-The camera API's [`GetImage()`](/components/camera/#getimage) API method now returns a `ViamImage` type, and the vision service's [GetDetections()](/services/vision/#getdetections) and [GetClassifications()](/services/vision/#getclassifications) take in `ViamImage` as a parameter.
+The camera component's [`GetImage()`](/components/camera/#getimage) method now returns a `ViamImage` type, and the vision service's [`GetDetections()`](/services/vision/#getdetections) and [`GetClassifications()`](/services/vision/#getclassifications) methods take in `ViamImage` as a parameter.
 
 You can use the helper functions `viam_to_pil_image` and `pil_to_viam_image` provided by the Python SDK to convert the `ViamImage` into a [`PIL Image`](https://omz-software.com/pythonista/docs/ios/Image.html) and vice versa.
 
-{{%expand "Click for an example of using the ViamImage -> PIL Image helper functions." %}}
+{{< expand "Click for an example of using the ViamImage -> PIL Image helper functions." >}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 # from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
@@ -50,12 +78,39 @@ cropped_frame = pil_to_viam_image(cropped_pil_frame)
 detections = await detector.get_detections(cropped_frame)
 ```
 
-{{% /expand%}}
+{{< /expand >}}
+{{< /changelog >}}
+
+{{% changelog date="2024-05-08" color="removed" title="WriteAnalog from Go SDK" %}}
+
+The `WriteAnalog()` method has been removed from the Go SDK.
+Use [`AnalogByName()`](/components/board/#analogbyname) followed by [`Write()`](/components/board/#write) instead.
+
 {{% /changelog %}}
 
-{{% changelog date="2024-04-30" color="removed" title="Removed status from Board API" %}}
+{{% changelog date="2024-04-30" color="changed" title="Python SDK data retrieval behavior" %}}
 
-Viam has removed support for following Board API methods models: `Status()`, `AnalogStatus()`, `DigitalInterruptStatus()`, `Close()`, `Tick()`, `AddCallback()`, and `RemoveCallback()`.
+[`tabular_data_by_filter()`](/appendix/apis/data-client/#tabulardatabyfilter) and [`binary_data_by_filter()`](/appendix/apis/data-client/#binarydatabyfilter) now return paginated data.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-04-30" color="changed" title="Renamed AnalogReader to Analog" %}}
+
+`AnalogReader` has been renamed to `Analog`.
+The functionality remains the same, but code that uses [analogs](/components/board/#analogs) must be updated.
+`AnalogReaderByName()` and `AnalogReaderNames()` have become [`AnalogByName()`](/components/board/#analogbyname) and [`AnalogNames()`](/components/board/#analognames), respectively.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-04-30" color="added" title="Part online and part offline triggers" %}}
+
+You can now configure [triggers](/build/configure/triggers/) to execute actions when a {{< glossary_tooltip term_id="part" text="machine part" >}} comes online or goes offline.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-04-30" color="removed" title="Status from Board API" %}}
+
+Viam has removed support for the following board API methods: `Status()`, `AnalogStatus()`, `DigitalInterruptStatus()`, `Close()`, `Tick()`, `AddCallback()`, and `RemoveCallback()`.
 
 {{% /changelog %}}
 
@@ -63,13 +118,18 @@ Viam has removed support for following Board API methods models: `Status()`, `An
 
 Viam has removed support for following builtin camera models: `single_stream`, `dual_stream`, `align_color_depth_extrinsics`, and `align_color_depth_homography`.
 
-<!-- Viam has replaced the following camera models with module model equivalents: -->
+{{% /changelog %}}
 
-<!-- - `velodyne` is now [`viam:camera:velodyne`]()
-- `join_color_depth` is now [`viam:camera:join_color_depth`]()
-- `join_pointclouds` is now [`viam:camera:join_point_clouds
-`]()
-- `ultrasonic` is now [`viam:camera:ultrasonic`]() and [`viam:sensor:ultrasonic`]() -->
+{{% changelog date="2024-04-17" color="changed" title="Updated GetCloudMetadata response" %}}
+
+In addition to the existing returned metadata, the [`GetCloudMetadata`](/appendix/apis/robot/#getcloudmetadata) method now returns `machine_id` and `machine_part_id` as well.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-04-16" color="improved" title="Viam app interface" %}}
+
+The [Viam app](https://app.viam.com) machine page UI has been updated significantly.
+In addition to other improvements, your component, service, and other resource config cards are all displayed on one page instead of in separate tabs.
 
 {{% /changelog %}}
 
@@ -80,9 +140,9 @@ You can now [upload your own ML model](/services/ml/upload-model/) using any of 
 
 {{% /changelog %}}
 
-{{% changelog date="2024-03-01" color="added" title="Ultrasonic sensor for Micro-RDK" %}}
+{{% changelog date="2024-03-01" color="added" title="Ultrasonic sensor for micro-RDK" %}}
 
-You can now use the [ultrasonic sensor component](/build/micro-rdk/sensor/ultrasonic/) with the [Micro-RDK](/build/micro-rdk/) to integrate a [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running the Micro-RDK.
+You can now use the [ultrasonic sensor component](/build/micro-rdk/sensor/ultrasonic/) with the [micro-RDK](/build/micro-rdk/) to integrate an [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running the micro-RDK.
 
 {{% /changelog %}}
 
@@ -129,7 +189,7 @@ Viam has added a [sensor-controlled base](/components/base/sensor-controlled/) c
 
 {{% changelog date="2024-01-31" color="added" title="Visualize captured data" %}}
 
-You can now [visualize your data](/services/data/visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
+You can now [visualize your data](/use-cases/sensor-data-visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
 You can visualize any data, such as sensor readings, that you have [synced](/services/data/cloud-sync/) to the Viam app from your machine.
 
 See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) for a full walkthrough focused on Grafana specifically.
@@ -173,9 +233,9 @@ Location secrets, the previous method of authentication, is deprecated and will 
 
 {{% changelog date="2023-11-30" color="added" title="Queryable sensor data" %}}
 
-Once you have added the data management service and synced tabular data, such as sensor readings, to the Viam app, you can now run queries against both captured tabular data as well as its metadata using either SQL or MQL.
+Once you have added the data management service and synced data, such as sensor readings, to the Viam app, you can now run queries against both captured data as well as its metadata using either SQL or MQL.
 
-For more information, see [Query Data with SQL or MQL](/services/data/query/).
+For more information, see [Query Data with SQL or MQL](/use-cases/sensor-data-query/).
 
 {{% /changelog %}}
 

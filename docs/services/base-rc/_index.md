@@ -10,6 +10,7 @@ images: ["/services/icons/base-rc.svg"]
 aliases:
   - "/services/base-rc/"
   - "/mobility/base-rc/"
+no_service: true
 # SME: Eric
 ---
 

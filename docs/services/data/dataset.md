@@ -13,6 +13,7 @@ aliases:
   - /manage/data/label/
   - /manage/data/dataset/
   - /data/dataset/
+no_service: true
 # SME: Tahiya Salam and Alexa Greenberg
 ---
 
