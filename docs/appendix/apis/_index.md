@@ -36,9 +36,15 @@ The [fleet management API](/appendix/apis/fleet/) supports the following methods
 
 ### Data client API
 
-The [data client API](/appendix/apis/data-client/) supports the following methods to upload and retrieve data like images or sensor readings directly to the [Viam app](https://app.viam.com) (among [others](https://python.viam.dev/autoapi/viam/app/data_client/index.html)):
+The [data client API](/appendix/apis/data-client/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/data-client.md" >}}
+Methods to upload data like images or sensor readings directly to the [Viam app](https://app.viam.com):
+
+{{< readfile "/static/include/app/apis/generated/data_sync-table.md" >}}
+
+Methods to download, filter, tag, or perform other tasks on data like images or sensor readings:
+
+{{< readfile "/static/include/app/apis/generated/data-table.md" >}}
 
 ### ML training API
 
