@@ -87,9 +87,15 @@ Methods to download, filter, tag, or perform other tasks on data like images or 
 
 {{< readfile "/static/include/app/apis/generated/data-table.md" >}}
 
+Methods to work with datasets:
+
+{{< readfile "/static/include/app/apis/generated/dataset-table.md" >}}
+
 {{< readfile "/static/include/app/apis/generated/data_sync.md" >}}
 
 {{< readfile "/static/include/app/apis/generated/data.md" >}}
+
+{{< readfile "/static/include/app/apis/generated/dataset.md" >}}
 
 ## Find part ID
 

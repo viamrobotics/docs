@@ -46,6 +46,10 @@ Methods to download, filter, tag, or perform other tasks on data like images or 
 
 {{< readfile "/static/include/app/apis/generated/data-table.md" >}}
 
+Methods to work with datasets:
+
+{{< readfile "/static/include/app/apis/generated/dataset-table.md" >}}
+
 ### ML training API
 
 The ML training API allows you to get information about and cancel ML training jobs taking place on the [Viam app](https://app.viam.com):
