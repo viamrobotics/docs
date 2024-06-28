@@ -10,7 +10,7 @@ tags: ["board", "components", "micro-rdk"]
 no_list: true
 aliases:
   - /micro-rdk/board/
-# SMEs: Nick M., Gautham V.
+# SMEs: Nick M., Gautham V., Andrew M., Esha M.
 ---
 
 A board is the signal wire hub of a {{< glossary_tooltip term_id="machine" text="smart machine" >}}, with GPIO pins for transmitting signals between the machine's computer and its other components.
@@ -24,8 +24,6 @@ For configuration information, click on the supported board model name:
 | Model             | Description              |
 | ----------------- | ------------------------ |
 | [`esp32`](esp32/) | An ESP32 microcontroller |
-
-{{% readfile "/static/include/micro-create-your-own.md" %}}
 
 ## API
 
