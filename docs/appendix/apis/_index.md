@@ -156,13 +156,13 @@ Documentation on using these methods in your SDK code is found on [service pages
 
 The [base remote control service](/services/base-rc/) supports the following methods:
 
-{{< readfile "static/include/services/apis/generated/base_remote_control-table.md" >}}
+{{< readfile "/static/include/services/apis/generated/base_remote_control-table.md" >}}
 
 ### Data Management
 
 The [data management service](/services/data/) supports the following methods:
 
-{{< readfile "static/include/services/apis/generated/data_manager-table.md" >}}
+{{< readfile "/static/include/services/apis/generated/data_manager-table.md" >}}
 
 ### Generic
 

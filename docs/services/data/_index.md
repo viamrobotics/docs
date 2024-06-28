@@ -124,7 +124,7 @@ For more information about who can do what with data, see [Data Permissions](/cl
 
 The data management service supports the following methods:
 
-{{< readfile "static/include/services/apis/generated/data_manager-table.md" >}}
+{{< readfile "/static/include/services/apis/generated/data_manager-table.md" >}}
 
 The data client API supports a separate set of methods that allow you to upload and export data to and from the Viam app.
 For information about that API, see [Data Client API](/appendix/apis/data-client/).
@@ -136,7 +136,7 @@ Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and
 
 {{% /alert %}}
 
-{{< readfile "static/include/services/apis/generated/data_manager.md" >}}
+{{< readfile "/static/include/services/apis/generated/data_manager.md" >}}
 
 ## Next steps: train and deploy machine learning
 

@@ -114,7 +114,7 @@ The following attributes are available for base remote control services:
 
 The base remote control service supports the following methods:
 
-{{< readfile "static/include/services/apis/generated/base_remote_control-table.md" >}}
+{{< readfile "/static/include/services/apis/generated/base_remote_control-table.md" >}}
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -124,4 +124,4 @@ Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and
 
 {{% /alert %}}
 
-{{< readfile "static/include/services/apis/generated/base_remote_control.md" >}}
+{{< readfile "/static/include/services/apis/generated/base_remote_control.md" >}}
