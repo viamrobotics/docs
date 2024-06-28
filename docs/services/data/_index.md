@@ -124,7 +124,7 @@ For more information about who can do what with data, see [Data Permissions](/cl
 
 The data management service supports the following methods:
 
-{{< readfile "/static/include/services/apis/data.md" >}}
+{{< readfile "static/include/services/apis/generated/data_manager-table.md" >}}
 
 The data client API supports a separate set of methods that allow you to upload and export data to and from the Viam app.
 For information about that API, see [Data Client API](/appendix/apis/data-client/).
@@ -136,37 +136,7 @@ Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and
 
 {{% /alert %}}
 
-### Sync
-
-{{% alert title="Important" color="tip" %}}
-
-This method is not yet available in the Viam Python SDK.
-
-{{% /alert %}}
-
-Sync data stored on the machine to the cloud.
-
-{{< tabs >}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-
-**Returns:**
-
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager).
-
-```go {class="line-numbers linkable-line-numbers"}
-// Sync data stored on the machine to the cloud.
-err := data.Sync(context.Background(), nil)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+{{< readfile "static/include/services/apis/generated/data_manager.md" >}}
 
 ## Next steps: train and deploy machine learning
 
