@@ -109,11 +109,11 @@ To enable image data capture for a camera component:
      This will capture an image from the camera roughly once every 3 seconds.
      You can adjust the capture frequency if you want the camera to capture more or less image data, but avoid configuring data capture to higher rates than your hardware can handle, as this could lead to performance degradation.
 
-   - Set the **Mime type** to `image/jpeg` to configure image data capture.
+   - Set the **MIME type** to `image/jpeg` to configure image data capture.
 
      {{< imgproc src="/tutorials/data-management/camera-data-capture.png" alt="The camera component configuration pane with data capture configuration enabled using type ReadImage and a capture frequency of 0.333" resize="600x" >}}
 
-   - Toggle the **On/Off** switch to **On**.
+   - Make sure the **On/Off** toggle is switched to **On**.
 
 1. Click **Save** at the top right of the window to save your changes.
 
