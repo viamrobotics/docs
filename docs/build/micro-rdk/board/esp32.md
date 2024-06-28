@@ -136,7 +136,7 @@ The following properties are available for `digital_interrupts`:
 
 ### PWM signals on `esp32` pins
 
-You can set PWM frequencies with Viam through the [`GPIOPin` API](/build/micro-rdk/board/#api).
+You can set PWM frequencies with Viam through the [`GPIOPin` API](/build/micro-rdk/board/#api). Make sure to check [the supported range of frequencies and duty resolutions](https://docs.espressif.com/projects/esp-idf/en/v4.4/esp32/api-reference/peripherals/ledc.html?highlight=pwm#supported-range-of-frequency-and-duty-resolutions) before proceeding. 
 A configured `esp32` board can support a maximum of four different PWM frequencies simultaneously, as the boards only have four available timers.
 
 For example:
