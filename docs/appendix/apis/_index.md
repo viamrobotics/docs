@@ -68,13 +68,13 @@ The [arm component](/components/arm/) supports the following methods:
 
 The [base component](/components/base/) supports the following methods:
 
-{{< readfile "static/include/components/apis/generated/base-table.md" >}}
+{{< readfile "/static/include/components/apis/generated/base-table.md" >}}
 
 ### Board
 
 The [board component](/components/board/) supports the following methods:
 
-{{< readfile "static/include/components/apis/generated/board-table.md" >}}
+{{< readfile "/static/include/components/apis/generated/board-table.md" >}}
 
 ### Camera
 

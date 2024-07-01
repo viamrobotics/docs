@@ -85,9 +85,9 @@ import (
 
 The base component supports the following methods:
 
-{{< readfile "static/include/components/apis/generated/base-table.md" >}}
+{{< readfile "/static/include/components/apis/generated/base-table.md" >}}
 
-{{< readfile "static/include/components/apis/generated/base.md" >}}
+{{< readfile "/static/include/components/apis/generated/base.md" >}}
 
 ## Troubleshooting
 

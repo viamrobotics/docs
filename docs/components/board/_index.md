@@ -99,9 +99,9 @@ import (
 
 The board component supports the following methods:
 
-{{< readfile "static/include/components/apis/generated/board-table.md" >}}
+{{< readfile "/static/include/components/apis/generated/board-table.md" >}}
 
-{{< readfile "static/include/components/apis/generated/board.md" >}}
+{{< readfile "/static/include/components/apis/generated/board.md" >}}
 
 ## Troubleshooting
 
