@@ -40,10 +40,10 @@ board,GetPWM,get_pwm,PWM,pwm
 board,SetPWM,set_pwm,SetPWM,setPwm
 board,PWMFrequency,get_pwm_frequency,PWMFreq,pwmFrequency
 board,SetPWMFrequency,set_pwm_frequency,SetPWMFreq,setPwmFrequency
-board,AnalogReaderNames,analog_names,AnalogNames,
-board,ReadAnalogReader,analog_by_name,AnalogByName,analogReaderValue
+board,AnalogNames,analog_names,AnalogNames,
+board,AnalogByName,analog_by_name,AnalogByName,analogReaderValue
 ## HACK: Omitting PySDK: write_analog, currently borked: https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.write_analog
-board,WriteAnalog,,Write,writeAnalog
+board,Write,,Write,writeAnalog
 board,GetDigitalInterruptValue,digital_interrupt_by_name,DigitalInterruptByName,,
 board,StreamTicks,,StreamTicks,streamTicks
 board,SetPowerMode,set_power_mode,SetPowerMode,setPowerMode

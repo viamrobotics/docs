@@ -38,8 +38,8 @@ For `GPIOPin`s:
 - [`GetGPIO()`](/components/board/#getgpio)
 - [`GetPWM()`](/components/board/#getpwm)
 - [`SetPWM()`](/components/board/#setpwm)
-- [`PWMFreq()`](/components/board/#pwmfreq)
-- [`SetPWMFreq()`](/components/board/#setpwmfreq)
+- [`PWMFreq()`](/components/board/#pwmfrequency)
+- [`SetPWMFreq()`](/components/board/#setpwmfrequency)
 
 See [PWM signals on `esp32` pins](/build/micro-rdk/board/esp32/#pwm-signals-on-esp32-pins) for more information on setting PWM frequencies with `esp32` boards.
 
