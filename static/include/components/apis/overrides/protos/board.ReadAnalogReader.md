@@ -1,1 +1,1 @@
-Get an [`AnalogReader`](#analogs) by `name`.
+Get an [`Analog`](#analogs) by `name`.

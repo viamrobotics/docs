@@ -42,6 +42,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the GPIOPin with pin number 15.
+pin, err := myBoard.GPIOPinByName("15")
+
+// Set the pin to high.
+err := pin.Set(context.Background(), "true", nil)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
 {{% /tab %}}
@@ -111,6 +123,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is high. If `false`, the state of the pin is low.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the GPIOPin with pin number 15.
+pin, err := myBoard.GPIOPinByName("15")
+
+// Get if it is true or false that the state of the pin is high.
+high := pin.Get(context.Background(), nil)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
@@ -189,6 +213,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(float64)](https://pkg.go.dev/builtin#float64): A float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the high state relative to the interval period of the PWM signal.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the GPIOPin with pin number 15.
+pin, err := myBoard.GPIOPinByName("15")
+
+// Returns the duty cycle.
+duty_cycle := pin.PWM(context.Background(), nil)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
 {{% /tab %}}
@@ -260,6 +296,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the GPIOPin with pin number 15.
+pin, err := myBoard.GPIOPinByName("15")
+
+// Set the duty cycle to .6, meaning that this pin will be in the high state for 60% of the duration of the PWM interval period.
+err := pin.SetPWM(context.Background(), .6, nil)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
 {{% /tab %}}
@@ -330,6 +378,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(uint)](https://pkg.go.dev/builtin#uint): The PWM Frequency in Hertz (Hz) (the count of PWM interval periods per second) the digital signal output by this pin is set to.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the GPIOPin with pin number 15.
+pin, err := myBoard.GPIOPinByName("15")
+
+// Get the PWM frequency of this pin.
+freqHz, err := pin.PWMFreq(context.Background(), nil)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
 {{% /tab %}}
@@ -399,6 +459,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the GPIOPin with pin number 15.
+pin, err := myBoard.GPIOPinByName("15")
+
+// Set the PWM frequency of this pin to 1600 Hz.
+high := pin.SetPWMFreq(context.Background(), 1600, nil)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
 
@@ -507,6 +579,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(Analog)](https://pkg.go.dev/go.viam.com/rdk/components/board#Analog): An interface representing an analog pin configured and residing on the board.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the Analog pin "my_example_analog".
+analog, err := myBoard.AnalogByName("my_example_analog")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
 {{% /tab %}}
@@ -549,6 +630,18 @@ Write an analog value to a pin on the board.
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the Analog pin "my_example_analog".
+analog, err := myBoard.AnalogByName("my_example_analog")
+
+// Set the pin to value 48.
+err := analog.Write(context.Background(), 48, nil)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Analog).
 
@@ -616,6 +709,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(DigitalInterrupt)](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt): An interface representing a configured interrupt on the board.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt, err := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
 {{% /tab %}}
@@ -638,6 +740,27 @@ Start a stream of [`DigitalInterrupt`](/components/board/#digital_interrupts) ti
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Make a channel to stream ticks
+ticksChan := make(chan board.Tick)
+
+interrupts := []*DigitalInterrupt{}
+
+if di8, err := myBoard.DigitalInterruptByName("8"); err == nil {
+  interrupts = append(interrupts, di8)
+}
+
+if di11, err := myBoard.DigitalInterruptByName("11"); err == nil {
+  interrupts = append(interrupts, di11)
+}
+
+err = myBoard.StreamTicks(context.Background(), interrupts, ticksChan, nil)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -715,6 +838,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+Set the power mode of the board to OFFLINE_DEEP.
+myBoard.SetPowerMode(context.Background(), boardpb.PowerMode_POWER_MODE_OFFLINE_DEEP, nil)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -823,6 +955,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(AnalogValue)](https://pkg.go.dev/go.viam.com/rdk/components/board#AnalogValue): The current value, including the integer `Value` of the digital signal output by the analog pin and the `Min`, `Max`, and `StepSize` of the reader.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the analog pin "my_example_analog".
+analog, err := myBoard.AnalogByName("my_example_analog")
+
+// Get the value of the analog signal "my_example_analog" has most recently measured.
+reading, err := analog.Read(context.Background(), nil)
+readingValue := reading.Value
+stepSize := reading.StepSize
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Analog).
 
 {{% /tab %}}
@@ -831,9 +977,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ### Value
 
 Get the current value of this interrupt.
-If a post processor function has been added with [`AddPostProcessor()`](#addpostprocessor), it will be applied to this value before it is returned.
-
-Calculation of value differs between the `"type"` of interrupt [configured](#digital_interrupts):
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -875,6 +1018,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(int64)](https://pkg.go.dev/builtin#int64): The amount of ticks that have occurred.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt, err := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
+
+// Get the amount of times this DigitalInterrupt has ticked.
+count, err := interrupt.Value(context.Background(), nil)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt).
 
@@ -981,6 +1136,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(GPIOPin)](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin): An interface representing an individual GPIO pin on the board.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the GPIOPin with pin number 15.
+pin, err := myBoard.GPIOPinByName("15")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
