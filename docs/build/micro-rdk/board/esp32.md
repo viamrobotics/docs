@@ -82,10 +82,10 @@ Copy the following JSON template and paste it into your configuration inside the
         "name": "sensor"
       }
     ],
-    "digital_interrupts" : [
-        {
-         "pin": 4
-        }
+    "digital_interrupts": [
+      {
+        "pin": 4
+      }
     ]
   },
   "depends_on": []
