@@ -4,8 +4,8 @@ linkTitle: "Train computer vision models"
 weight: 20
 type: "docs"
 tags: ["vision", "data", "services"]
-images: ["/services/ml/collect.svg"]
-description: "Collect images and do interesting things with computer vision, ML, and webhooks."
+images: ["/services/ml/train.svg"]
+description: "Use your image data to train a computer vision ML model."
 ---
 
 You can use Viam's built-in tools to train a machine learning (ML) model on your images and then deploy computer vision on your machines.
