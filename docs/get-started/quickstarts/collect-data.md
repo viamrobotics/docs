@@ -8,7 +8,7 @@ images: ["/platform/data.svg"]
 description: "Use Viam to gather images or sensor data from your machine."
 ---
 
-Follow this guide to start collecting images or sensor data from your machine using the [data management service](/services/data/):
+Follow this guide to start collecting images or sensor data from your machine using the [data management service](/services/data/).
 
 ## Requirements
 
@@ -18,12 +18,12 @@ Follow this guide to start collecting images or sensor data from your machine us
 - A camera or a sensor.
   Options:
   - The webcam built into your computer
-  - A USB webcam plugged into your computer or SBC
+  - A USB webcam connected to your computer or SBC
   - A sensor (such as a temperature sensor) wired to your single-board computer's GPIO pins
 
 ## Instructions
 
-Select a tab below to collect images from a camera, or to collect readings from a sensor:
+Select a tab below to collect images from a camera or readings from a sensor:
 
 {{< tabs >}}
 {{% tab name="Collect camera images" %}}
@@ -35,19 +35,19 @@ Go to the Viam app and [add a new machine](/cloud/machines/#add-a-new-machine).
 ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
 
 {{< /expand >}}
-{{%expand "Step 2: Install viam-server" %}}
+{{% expand "Step 2: Install viam-server" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
+Navigate to the **CONFIGURE** tab on your machine's page in the [Viam app](https://app.viam.com).
 Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page to install `viam-server` on your computer and connect it to the Viam app.
 
 ![The Viam app DATA page showing sensor data from an air quality sensor.](/get-started/quickstarts/collect-data/setup-button.png)
 
-{{% /expand%}}
+{{% /expand %}}
 {{< expand "Step 3: Configure a camera" >}}
 
-{{<gif webm_src="/how-tos/configure-webcam.webm" mp4_src="/how-tos/configure-webcam.mp4" alt="The process described below." max-width="550px" class=aligncenter >}}
+{{< gif webm_src="/how-tos/configure-webcam.webm" mp4_src="/how-tos/configure-webcam.mp4" alt="The process described below." max-width="550px" class=aligncenter >}}
 
-1. From the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com/), click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+1. From the **CONFIGURE** tab on your machine's page in [the Viam app](https://app.viam.com/), click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 
 2. Select the `camera` type, then select the `webcam` model.
 
@@ -56,20 +56,20 @@ Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} th
 4. Click the **Save** button in the top right corner of the page to save your config.
 
 5. Go to the **CONTROL** tab and expand the camera's remote control card to test the camera stream.
-   If you don't see an image stream, you need to [configure the `video_path` attribute](/components/camera/webcam/#using-video_path).
+   If you don't see an image stream, [configure the `video_path` attribute](/components/camera/webcam/#using-video_path).
 
 For more detailed information, including optional attribute configuration, see the [`webcam` docs](/components/camera/webcam/).
 
 {{< /expand >}}
 {{< expand "Step 4: Configure data capture on the camera" >}}
 
-{{<gif webm_src="/how-tos/capture-images.webm" mp4_src="/how-tos/capture-images.mp4" alt="The process described below." max-width="600px" class=aligncenter >}}
+{{<gif webm_src="/how-tos/capture-images.webm" mp4_src="/how-tos/capture-images.mp4" alt="The process described below." max-width="600px" class="aligncenter" >}}
 
-1. Return to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com/).
+1. Return to the **CONFIGURE** tab on your machine's page in [the Viam app](https://app.viam.com/).
    Locate the configuration card for your camera.
 
 2. Click the **Add method** button.
-   When the **Create data management service** prompt pops up, click to add the service to your machine.
+   When the **Create data management service** prompt appears, click to add the service to your machine.
    Leave the default settings.
 
 3. Scroll back up to your camera config card.
@@ -144,13 +144,13 @@ For example, if you are using a Raspberry Pi, SSH to it and [enable serial commu
 1. Add required attributes, such as information about how the sensor is connected to the board.
    You can find information on these attributes by clicking the name of your sensor model in the [supported models list](/components/sensor/#supported-models).
 
-1. Click the **Save** button in the top right corner of the page to save your config.
+1. Click the **Save** button in the upper right corner of the page to save your configuration.
 
 1. Go to the **CONTROL** tab and expand the sensor's remote control card to test the sensor.
    Click **Get readings**.
    If you don't see the latest reading from the sensor, check that your sensor is properly wired to the board, and that the type of communication the sensor uses is enabled on the board (if applicable).
 
-   {{<imgproc src="/get-started/quickstarts/collect-data/get-readings-control-tab.png" resize="x1100" declaredimensions=true alt="The sensor card on the Control tab with some air quality readings." style="max-width:600px" >}}
+   {{< imgproc src="/get-started/quickstarts/collect-data/get-readings-control-tab.png" resize="x1100" declaredimensions=true alt="The sensor card on the Control tab with some air quality readings." style="max-width:600px" >}}
 
 {{% alert title="Important" color="note" %}}
 If your sensor uses I<sup>2</sup>C, SPI, or serial port communication, you need to enable that type of communication in your board's settings.
@@ -160,16 +160,16 @@ For example, if you are using a Raspberry Pi, SSH to it and [enable serial commu
 {{< /expand >}}
 {{< expand "Step 5: Configure data capture on the sensor" >}}
 
-{{<gif webm_src="/how-tos/capture-sensor-readings.webm" mp4_src="/how-tos/capture-sensor-readings.mp4" alt="The process described below." max-width="600px" class=aligncenter >}}
+{{< gif webm_src="/how-tos/capture-sensor-readings.webm" mp4_src="/how-tos/capture-sensor-readings.mp4" alt="The process described below." max-width="600px" class="aligncenter" >}}
 
-1. Return to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com/).
+1. Return to the **CONFIGURE** tab on your machine's page in [the Viam app](https://app.viam.com/).
    Locate the configuration card for your sensor.
 
 2. Click the **Add method** button.
-   When the **Create data management service** prompt pops up, click to add the service to your machine.
+   When the **Data management service missing** alert appears, click **Create data management service** to add the service to your machine.
    Leave the default settings.
 
-3. Scroll back up to your sensor config card.
+3. Scroll back up to your sensor configuration card.
    In the **Data capture** section:
 
    - Click the **Method** dropdown and select **Readings**.
