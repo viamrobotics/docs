@@ -412,6 +412,8 @@ python_datatype_links = {
     "bool": "https://docs.python.org/3/library/stdtypes.html#boolean-type-bool",
     "datetime.datetime": "https://docs.python.org/3/library/datetime.html",
     "datetime.timedelta": "https://docs.python.org/3/library/datetime.html#timedelta-objects",
+    ## Third-party data types:
+    "numpy.typing.NDArray": "https://numpy.org/doc/stable/reference/typing.html#numpy.typing.NDArray",
     ## Viam-specific data types:
     "viam.proto.app.OrganizationMember": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationMember",
     "viam.proto.app.OrganizationInvite": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite",
