@@ -499,9 +499,9 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
-### AnalogReaderNames
+### AnalogNames
 
-Get the name of every [`AnalogReader`](#analogs) configured and residing on the board.
+Get the name of every [`Analog`](#analogs) configured and residing on the board.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -541,9 +541,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 {{% /tab %}}
 {{< /tabs >}}
 
-### ReadAnalogReader
+### AnalogByName
 
-Get an [`AnalogReader`](#analogs) by `name`.
+Get an [`Analog`](#analogs) by `name`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -614,7 +614,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
-### WriteAnalog
+### Write
 
 Write an analog value to a pin on the board.
 
