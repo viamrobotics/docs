@@ -566,6 +566,19 @@ location_id = metadata.LocationID
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[CloudMetadata](https://flutter.viam.dev/viam_sdk/CloudMetadata.html)>
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/RobotClient/getCloudMetadata.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### Options.with_api_key
@@ -645,6 +658,20 @@ async def main():
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.at_address).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `url` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `options` [RobotClientOptions](https://flutter.viam.dev/viam_sdk/RobotClientOptions-class.html) (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html)>
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/RobotClient/atAddress.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### WithChannel
@@ -707,6 +734,19 @@ await robot.refresh()
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.refresh).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/RobotClient/refresh.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### Shutdown
@@ -740,6 +780,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// Shut down the robot.
+err := machine.Shutdown()
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
@@ -788,6 +835,19 @@ err := machine.Close(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/RobotClient/close.html).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}

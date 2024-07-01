@@ -444,7 +444,7 @@ robot,StopAll,stop_all,StopAll,
 robot,StartSession,,,
 robot,SendSessionHeartbeat,,,
 robot,Log,log,,
-robot,GetCloudMetadata,get_cloud_metadata,CloudMetadata,getCloudMetadata
+robot,GetCloudMetadata,get_cloud_metadata,GetCloudMetadata,getCloudMetadata
 ## HACK: Robot (python) provides additional helper function, adding 4 pseudo-entries:
 robot,Options.with_api_key,with_api_key,,
 robot,AtAddress,at_address,,atAddress
