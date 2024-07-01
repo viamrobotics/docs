@@ -214,9 +214,9 @@ Configure data capture on the `objectfilter` camera to capture images of people 
    Click the **Type** dropdown and select **ReadImage**.
    Set the capture frequency to `0.2` images per second (equivalent to one image every 5 seconds).
    You can always change the frequency to suit your use case.
-   Leave **MIME type** at the default `image/jpeg`.
+   Set the **MIME type** to `image/jpeg`.
 
-   {{<imgproc src="/tutorials/helmet/datacapture-config.png" resize="x1100" declaredimensions=true alt="The objectfilter cam configured with data capture set to read images at 0.2 hertz. Mime type is left at the default image/jpeg." >}}
+   {{<imgproc src="/tutorials/helmet/datacapture-config.png" resize="x1100" declaredimensions=true alt="The objectfilter cam configured with data capture set to read images at 0.2 hertz. MIME type is set to image/jpeg." >}}
 
 ### Test data capture and sync
 

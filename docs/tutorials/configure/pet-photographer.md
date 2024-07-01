@@ -8,7 +8,7 @@ imageAlt: "Filtered data from the custom colorfiltercam in the DATA tab showing 
 images: ["/tutorials/pet-photographer/data-capture.png"]
 authors: ["Sky Leilani"]
 languages: ["go", "python"]
-viamresources: ["vision", "camera"]
+viamresources: ["vision", "camera", "data_manager"]
 level: "Intermediate"
 date: "2023-09-17"
 # updated: "2024-04-19"
@@ -963,11 +963,17 @@ If you haven't already, add a [camera](/components/camera/) component to your sm
 
 ### Configure data capture
 
-To add data capture for the color filter camera, click **Add method** in the **Data capture** section of your color filter camera component.
-Toggle the **Method** dropdown menu, select **ReadImage**, and set the **Frequency** of the capture to `0.1`, which will configure the data management service to capture images from your camera about once every 10 seconds.
-Then, click **Save**.
+To add data capture for the color filter camera:
 
-![A component panel for a color filter modular resource with the attributes filled out for vision service and actual_cam as well as the data capture configuration capture set capture ReadImage at 0.1 frequency](/tutorials/pet-photographer/colorfiltercam-component.png)
+1. Click **Add method** in the **Data capture** section of your color filter camera component.
+
+2. Toggle the **Method** dropdown menu, select **ReadImage**, and set the **Frequency** of the capture to `0.1`, which will configure the data management service to capture images from your camera once every 10 seconds.
+
+3. Click the **MIME type** dropdown and select `image/jpeg`.
+
+4. Click **Save** in the top right corner of the screen.
+
+![A component panel for a color filter modular resource with the attributes filled out for vision service and actual_cam as well as the data capture configuration capture set to capture ReadImage at a frequency of 0.1 images per second.](/tutorials/pet-photographer/colorfiltercam-component.png)
 
 ## Test your color filter camera
 

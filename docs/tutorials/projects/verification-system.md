@@ -124,9 +124,10 @@ To add the [data management service](/services/data/) and configure data capture
 5. Scroll to the panel of the camera you just configured.
    Find the **Data capture** section.
    Click **Add Method**.
-   If you're using a webcam, select the **Method** type [`ReadImage()`](/components/camera/#getimage).
+   If you're using a webcam, select the **Method** type [`ReadImage`](/components/camera/#getimage).
    Set the **Frequency** to `0.333`.
-   This will capture an image from the camera roughly once every 3 seconds.
+   This will capture an image from the camera once every 3 seconds.
+   Set the **MIME type** to `image/jpeg`.
    Click **Save**.
 6. Toggle the **Data capture** on.
    Now, your camera is taking pictures.
