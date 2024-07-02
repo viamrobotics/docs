@@ -87,9 +87,9 @@ import (
 
 The generic component supports the following method:
 
-{{< readfile "/static/include/services/apis/generated/generic_component-table.md" >}}
+{{< readfile "/static/include/components/apis/generated/generic_component-table.md" >}}
 
-{{< readfile "/static/include/services/apis/generated/generic_component.md" >}}
+{{< readfile "/static/include/components/apis/generated/generic_component.md" >}}
 
 ## Troubleshooting
 
