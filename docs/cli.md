@@ -1090,7 +1090,7 @@ Manage training scripts for custom ML training.
 | `--script-name` | Name of the ML training script to update or upload. | `upload`, `update` | **Required** |
 | `--version` | Version of the ML training script to upload. | `upload` | Optional |
 | `--framework` | Framework of the ML training script to upload, can be "tflite", "tensorflow", "pytorch" or "onnx". | `upload` | Optional |
-| `--type` | Task type of the ML training script to upload, can be "single_label_classification", "multi_label_classification", or "object_detection". | `upload` | Optional |
+| `--type` | Task type of the ML training script to upload, can be `single_label_classification`, `multi_label_classification`, or `object_detection`. | `upload` | Optional |
 | `--draft` | Indicate draft mode, drafts are not viewable in the registry. | `upload` | Optional |
 | `--visibility` | Visibility of the registry item, can be `public` or `private`. | `update` | **Required** |
 | `--description` | Description of the ML training script. | `update` | Optional |
@@ -1105,7 +1105,6 @@ Train on data.
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
 | `submit` | Submits training job on data in the Viam cloud | `managed`, `custom` |
-| `update` | Update visibility of ML training script in registry | - |
 
 ##### Positional arguments: `submit`
 
@@ -1121,7 +1120,7 @@ Train on data.
 | Argument | Description |
 | -------- | ----------- |
 | `from-registry` | Submit custom training job with an existing training script in the registry on data in the Viam cloud |
-| `with-upload` | Submit custom training job along with an uploaded training script on data in the Viam cloud |
+| `with-upload` | Upload a draft training script and submit a custom training job on data in the Viam cloud |
 
 ##### Named arguments
 
@@ -1131,7 +1130,7 @@ Train on data.
 | `--dataset-id` | The ID of the dataset to train on. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--model-org-id` | The organization ID to train and save the ML model in. | `submit managed` | **Required** |
 | `--model-name` | The name of the ML model. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
-| `--model-type` | Type of model to train. can be one of "single_label_classification", "multi_label_classification", or "object_detection". | `submit managed`, `submit custom with-upload` | **Required**, Optional |
+| `--model-type` | Type of model to train. can be one of `single_label_classification`, `multi_label_classification`, or `object_detection`. | `submit managed`, `submit custom with-upload` | **Required**, Optional |
 | `--model-labels` | Labels to train on. These will either be classification or object detection labels. | `submit managed` | **Required** |
 | `--model-version` | Set the version of the submitted model. Defaults to current timestamp if unspecified. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--org-id` | The organization ID to train and save the ML model in. | `submit custom from-registry` | **Required** |

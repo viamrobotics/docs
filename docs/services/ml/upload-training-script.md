@@ -520,19 +520,22 @@ setup(
 
 {{% /expand%}}
 
-3. Follow the instructions to [create a source distribution from your files](https://docs.python.org/3.10/distutils/sourcedist).
+3. Follow the instructions to [create a `tar.gz` gzip'd tar file from your files](https://docs.python.org/3.10/distutils/sourcedist).
 
 You can reference the directory structure of this [example classification training script](https://app.viam.dev/packages/0fbe951e-d4c6-427f-985f-784b7b85842c/manual_testing_byots_classification/ml_training/latest/0fbe951e-d4c6-427f-985f-784b7b85842c).
 
 ## Upload a new training script or new version
 
 You must use the Viam CLI to upload your training script to the Registry.
-You can use the [`viam training-script upload`](/cli/#training-script) command in the form `viam training-script upload --path=<entrypoint-path> --org-id=<your-org-id> --script-name=<name-for-script>` to upload a new script.
+You can use the [`viam training-script upload`](/cli/#training-script) command in the form `viam training-script upload --path=<path-to-tarball> --org-id=<your-org-id> --script-name=<name-for-script>` to upload a new script.
 You can also simultaneously upload a training script and submit a training job with the [`viam train submit custom from-upload` command](/cli/#position-arguments-submit-custom).
-Follow the instructions in the [CLI docs](/cli/) to install the CLI and formulate these commands.
 
-Once uploaded, you can view the script by navigating to the [registry's \*\*Training Scripts&& page](https://app.viam.com/registry?type=Training+Script).
+Follow the instructions in the [CLI documentation](/cli/) to install the CLI and formulate these commands.
+
+Once uploaded, you can view the script by navigating to the [registry's **Training Scripts** page](https://app.viam.com/registry?type=Training+Script).
 
 ## Submit a training job
 
-You can use the Viam CLI's [`viam train submit`](/cli/#positional-arguments-submit) command to submit a training job, in the form `viam train submit custom from-registry` to use a training script already in the registry and in the form `viam train submit custom from-upload` to upload a training script and submit a training job at the same time.
+You can use the Viam CLI's [`viam train submit`](/cli/#positional-arguments-submit) command to submit a training job.
+
+Referencing the [CLI documentation](/cli/#positional-arguments-submit), use `viam train submit custom from-registry` to submit a training job from a training script already in the registry and `viam train submit custom from-upload` to upload a training script and submit a training job at the same time.
