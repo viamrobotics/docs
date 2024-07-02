@@ -37,7 +37,7 @@ Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} th
 Then, [add a board component](/components/board/).
 
 Look through the [**Supported Models**](/components/motor/#supported-models) to determine the model of component to configure.
-For example, configure a [`pi` motor](/components/motor/pi/) for a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W:
+For example, configure a [`pi` board](/components/board/pi/) for a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W:
 
 ![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/get-started/quickstarts/configure-pi.png)
 
