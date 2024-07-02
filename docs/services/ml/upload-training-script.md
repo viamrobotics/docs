@@ -59,9 +59,7 @@ _INPUT_NORM_STD = 127.5
 
 # This is used for parsing the dataset file produced and stored in Viam,
 # specifically for getting the label annotations.
-def parse_filenames_and_labels_from_json(
-    filename: str, all_labels: ty.List[str]
-) -> ty.Tuple[ty.List[str], ty.List[str]]:
+def parse_filenames_and_labels_from_json(filename: str, all_labels: ty.List[str]) -> ty.Tuple[ty.List[str], ty.List[str]]:
     """Load and parse JSON file to return image filenames and corresponding labels.
     Args:
         filename: JSONLines file containing filenames and labels
