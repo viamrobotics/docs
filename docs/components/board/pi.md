@@ -8,12 +8,14 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/pi/"
+component_description: "Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W."
+usage: 999999
 # SMEs: Gautham, Rand
 ---
 
 {{% alert title="REQUIREMENTS" color="note" %}}
 
-Follow the [setup guide](/get-started/installation/prepare/rpi-setup/) to prepare your Pi for running `viam-server` before configuring a `pi` board.
+Follow the [setup guide](/get-started/prepare/rpi-setup/) to prepare your Pi for running `viam-server` before configuring a `pi` board.
 
 {{% /alert %}}
 
@@ -74,7 +76,7 @@ Edit the attributes as applicable to your board, according to the table below.
 The following attributes are available for `pi` boards:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](#analogs). |
 | `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](#digital_interrupts). |

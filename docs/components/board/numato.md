@@ -8,6 +8,7 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/numato/"
+component_description: "Numato GPIO Modules, peripherals for adding GPIO pins."
 # SMEs: Gautham, Rand
 ---
 
@@ -63,7 +64,7 @@ Edit the attributes as applicable to your board, according to the table below.
 The following attributes are available for `numato` boards:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `pins` | int | **Required** | Number of GPIO pins available on the module. |
 | `analogs` | object | Optional | Attributes of any pins that can be used as Analog-to-Digital Converter (ADC) inputs. See [configuration info](#analogs). |

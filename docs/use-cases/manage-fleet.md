@@ -29,7 +29,7 @@ Go to the [Viam app](https://app.viam.com) and sign up with Google, GitHub, Appl
 {{<imgproc src="/fleet/fleet.svg" class="fill alignleft" resize="600x" style="max-width: 400px" declaredimensions=true alt="Two locations within an organization">}}
 **2. Create organizations and locations**
 
-Use [organizations](/fleet/organizations/), and [locations](/fleet/locations/) within them, to organize your machines into groups and manage user access.
+Use [organizations](/cloud/organizations/), and [locations](/cloud/locations/) within them, to organize your machines into groups and manage user access.
 
 {{< /tablestep >}}
 {{< tablestep >}}
@@ -44,7 +44,7 @@ Assign each user a role (owner or operator) to manage permissions.
 {{<imgproc src="/fleet/app-usage/create-machine.png" class="fill alignleft" resize="600x" style="max-width: 450px" declaredimensions=true alt="Create a new machine in the Viam app">}}
 **4. Connect machines to the cloud**
 
-Users with access to a location can create and collaborate on the [machines](/fleet/machines/) within it.
+Users with access to a location can create and collaborate on the [machines](/cloud/machines/) within it.
 When you [install `viam-server`](/get-started/installation/) on each machine, unique keys are generated to securely connect it to the Viam app.
 Use the config builder interface to configure {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} for new or existing smart machines.
 You can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} to streamline the process of configuring multiple similar machines.
@@ -56,8 +56,8 @@ You can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} to stre
 
 Using the [Viam app](https://app.viam.com), you can:
 
-- Monitor the status of each machine from its [**LOGS** tab](/fleet/machines/#logs).
-- View any data captured by your fleet from the [**Data** tab](/data/).
+- Monitor the status of each machine from its [**LOGS** tab](/cloud/machines/#logs).
+- View any data captured by your fleet from the [**Data** tab](/services/data/).
 - Operate machines remotely from the [**CONTROL** tab](/fleet/control/).
 
 Use [modules](/registry/) to deploy code to your fleet and manage versioning.
@@ -70,7 +70,7 @@ Use [modules](/registry/) to deploy code to your fleet and manage versioning.
 {{< cards >}}
 {{% card link="/fleet/" %}}
 {{% card link="/cli/" %}}
-{{% card link="/fleet/rbac/" %}}
+{{% card link="/cloud/rbac/" %}}
 
 <!-- markdownlint-disable MD034 -->
 

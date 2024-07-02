@@ -2,7 +2,7 @@
 title: "Manage and deploy code versions"
 linkTitle: "Manage and deploy code versions"
 type: "docs"
-weight: 30
+weight: 25
 images: ["/platform/registry.svg"]
 description: "Deploy and manage module versions as public or private resources with the Viam CLI."
 ---
@@ -21,7 +21,7 @@ When you deploy a module, whether its one you've written yourself or added from 
 {{<imgproc src="/registry/module-icon.svg" class="fill alignleft" style="max-width: 150px" alt="Search modules">}}
 **1. Search modules**
 
-Once you [have created a machine in the Viam app](/fleet/machines/#add-a-new-machine), [search for modules in the Viam registry](/registry/configure/) that fit your machine's requirements, and then [add a module](/registry/configure/#add-a-modular-resource-from-the-viam-registry) from your machine's configuration page in the Viam app.
+Once you [have created a machine in the Viam app](/cloud/machines/#add-a-new-machine), [search for modules in the Viam registry](/registry/configure/) that fit your machine's requirements, and then [add a module](/registry/configure/#add-a-modular-resource-from-the-viam-registry) from your machine's configuration page in the Viam app.
 
 {{< /tablestep >}}
 {{< tablestep >}}
@@ -39,7 +39,7 @@ Or, you can [create your own module](/registry/create/) to add support for new h
 
 Once you have created your new module, you can deploy it to your machine in one of two ways:
 
-- You can [upload your module](/registry/upload/) to the Viam registry using the Viam CLI. Modules available from the Viam registry can be deployed directly to a machine or fleet of machines from the Viam app. When you upload your module to the registry, you can choose to make it **public** to make your module available to all or **private** to make your module only visible to members of your [organization](/fleet/organizations/).
+- You can [upload your module](/registry/upload/) to the Viam registry using the Viam CLI. Modules available from the Viam registry can be deployed directly to a machine or fleet of machines from the Viam app. When you upload your module to the registry, you can choose to make it **public** to make your module available to all or **private** to make your module only visible to members of your [organization](/cloud/organizations/).
 - You can deploy your module directly to your machine as a [local module](/registry/configure/#local-modules). Local modules are not uploaded to the Viam registry, and must be manually added to your machine.
 
 If your machine is offline when you deploy a module, it will deploy once your machine comes back online.

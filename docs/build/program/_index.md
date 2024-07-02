@@ -46,10 +46,11 @@ source .venv/bin/activate
 pip install viam-sdk
 ```
 
-Windows is not supported. If you are using Windows, use the [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) and install the Python SDK using the preceding instructions for Linux.
+Windows is not supported.
+If you are using Windows, use the [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) and install the Python SDK using the preceding instructions for Linux.
 For other unsupported systems, see [Installing from source](https://python.viam.dev/#installing-from-source).
 
-If you intend to use the [ML (machine learning) model service](/ml/), use the following command instead, which installs additional required dependencies along with the Python SDK:
+If you intend to use the [ML (machine learning) model service](/services/ml/), use the following command instead, which installs additional required dependencies along with the Python SDK:
 
 ```sh {class="command-line" data-prompt="$"}
 pip install 'viam-sdk[mlmodel]'
@@ -90,7 +91,7 @@ flutter pub add viam_sdk
 
 ## Hello world: the CONNECT tab
 
-Create a program in the language of your choice to connect to your machine and use methods built into the SDK's client API libraries to [interact with and control](/build/program/apis/) the {{< glossary_tooltip term_id="resource" text="resources" >}} on the machine.
+Create a program in the language of your choice to connect to your machine and use methods built into the SDK's client API libraries to [interact with and control](/appendix/apis/) the {{< glossary_tooltip term_id="resource" text="resources" >}} on the machine.
 
 Start by navigating to your machine's page on [the Viam app](https://app.viam.com/robots).
 Select the **CONNECT** tab and **Code sample** page, select your preferred programming language, and copy the code generated for you from the corresponding SDK.
@@ -304,11 +305,11 @@ The program will connect to your machine and print a list of the available {{< g
 
 ### Edit the sample code
 
-Once you have successfully run the sample code, you can edit the boilerplate code by [adding control logic](/build/program/apis/) to make a client application that connects to your machine and controls it in the way you want.
-You can find the right libraries to import for SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/build/program/apis/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
+Once you have successfully run the sample code, you can edit the boilerplate code by [adding control logic](/appendix/apis/) to make a client application that connects to your machine and controls it in the way you want.
+You can find the right libraries to import for SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/appendix/apis/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
 
 {{< cards >}}
-{{% card link="/build/program/apis/" customTitle="Add Logic to Interface with Resources" %}}
+{{% card link="/appendix/apis/" customTitle="Add Logic to Interface with Resources" %}}
 {{% card link="/build/program/run/" %}}
 {{% card link="/build/program/debug/" %}}
 {{< /cards >}}

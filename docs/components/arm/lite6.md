@@ -7,6 +7,7 @@ description: "Configure a UFACTORY Lite 6 arm for your machine."
 tags: ["arm", "components"]
 aliases:
   - "/components/arm/xarmlite/"
+component_description: "UFACTORY Lite 6"
 # SMEs: Bucket, Motion
 ---
 
@@ -90,13 +91,13 @@ Fill in the attributes as applicable to your arm, according to the table below.
 The following attributes are available for `lite6` arms:
 
 <!-- prettier-ignore -->
-| Attribute | Type | Inclusion | Description |
-| --------- | ---- | ----------| ----------- |
+| Attribute | Type | Required? | Description |
+| --------- | ---- | --------- | ----------- |
 | `host` | string | **Required** | IP address of the arm's system on your network. Find this when setting up your xArm. |
 | `port` | int | Optional | Port number of the arm's system. Find this when setting up your xArm. <br> Default: `502` |
 | `speed_degs_per_sec` | float | Optional | Desired maximum speed of joint movement in degrees/sec. <br> Default: `20.0` |
 | `acceleration_degs_per_sec_per_sec` | float | Optional | Desired maximum acceleration of joint movement in degrees/sec<sup>2</sup>. <br> Default: `50.0` |
 
-See [the frame system service](/mobility/frame-system/) for more information on utilizing and modifying the `"frame"` configuration shown in the `JSON Example` above.
+See [the frame system service](/services/frame-system/) for more information on utilizing and modifying the `"frame"` configuration shown in the `JSON Example` above.
 
 {{< readfile "/static/include/components/test-control/arm-control.md" >}}

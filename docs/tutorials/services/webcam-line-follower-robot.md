@@ -17,7 +17,7 @@ languages: ["python"]
 viamresources: ["vision", "camera", "base"]
 level: "Intermediate"
 date: "2022-08-26"
-updated: "2023-08-04"
+updated: "2024-05-01"
 cost: 570
 no_list: true
 ---
@@ -31,11 +31,11 @@ no_list: true
 Many line-following robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background.
 This tutorial uses a standard webcam in place of these sensors, and allows a robot to follow a line of any color that is at least somewhat different from the background.
 
-**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/ml/vision/#detections">vision service color detector</a>.
+**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/services/vision/#detections">vision service color detector</a>.
 
 **What you will learn**:
 
-- How to use the [vision service](/ml/vision/)'s [color detectors](/ml/vision/color_detector/)
+- How to use the [vision service](/services/vision/)'s [color detectors](/services/vision/color_detector/)
 - How to use the [Python SDK](https://python.viam.dev/), including:
   - How to establish communication between the code you write and your robot
   - How to send commands to components of your robot
@@ -64,43 +64,44 @@ To build your own line follower robot, you need the following hardware:
 ## Configure your components
 
 {{< tabs >}}
-{{% tab name="Builder UI" %}}
+{{% tab name="Builder" %}}
 
-Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab.
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 
 1. **Add the board.**
 
-   Click **Create component**.
+   Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
    Select the type `board`, and select the `pi` model.
    Enter `local` as the name of your [board component](/components/board/), then click **Create**.
 
 2. **Add the motors.**
 
-   Click **Create component**.
+   Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
    Select the type `motor`, and select the `gpio` model.
    Enter `leftm` as the name of your [motor component](/components/motor/), then click **Create** and fill in the appropriate properties for your motor.
    Repeat the same for the right motor and call it `rightm`.
 
 3. **Add the base.**
 
-   Click **Create component**.
+   Click the **+** (Create) (Create) icon next to your machine part in the left-hand menu and select **Component**.
    Select the type `base`, and select the `wheeled` model.
    Enter `scuttlebase` as the name for your [base component](/components/base/), then click **Create** and select the motors.
 
 4. **Add the camera.**
 
-   Create a [camera component](/components/camera/) with the name `my_camera`, the type `camera` and the model `webcam`.
-   Click **Create component** to add the camera.
-   If your robot is connected, you can click the **Video Path** field in the new camera panel to reveal a dropdown populated with camera paths that have been identified on your machine.
+   Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
+   Select the type `camera`, and select the `webcam` model.
+   Enter the name `my_camera`, then click create.
+   Select **Show more** on the configuration panel to see the attributes available for configuration.
+   If your machine is connected, you can click the **video_path** field to reveal a dropdown populated with camera paths that have been identified on your machine.
    Select the path to the camera you want to use.
 
-5. Click **Save config** in the bottom left corner of the screen.
+5. Click **Save** in the top right corner of the screen.
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your board, your motors, your base, and your camera:
+With [**JSON**](/build/configure/#the-configure-tab) mode selected on the **CONFIGURE** tab, replace the configuration with the following JSON configuration for your board, your motors, your base, and your camera:
 
 {{< alert title="Note" color="note" >}}
 Your `"video_path"` value may be different.
@@ -177,17 +178,17 @@ To find yours, follow [these instructions](/components/camera/webcam/#using-vide
 }
 ```
 
-Click **Save config** in the bottom left corner of the screen.
+Click **Save** in the top right corner of the screen.
 
 {{% /tab %}}
 {{< /tabs >}}
 
 ## Test your components
 
-Navigate to your [machine's **Control** tab](/fleet/control/) to test your components.
-Verify that it’s connected by refreshing the page and ensuring that **Last Online** (in the top banner) says, "Live."
+Navigate to your [machine's **CONTROL** tab](/fleet/control/) to test your components.
+Verify that it’s connected by refreshing the page and ensuring that the part status dropdown (in the top banner) says, "Live."
 
-1. Go to the **Control** tab, click on the base panel, and toggle the transform camera to on.
+1. Go to the **CONTROL** tab, click on the base panel, and toggle the transform camera to on.
    Ensure the camera works as expected.
 
 1. Enable the keyboard controls and move the base using your keyboard.
@@ -201,13 +202,13 @@ Verify that it’s connected by refreshing the page and ensuring that **Last Onl
 
 ## Configuring a color detector for the color of your tape line
 
-You'll use the [vision service color detector](/ml/vision/color_detector/) to programmatically identify the line to follow.
+You'll use the [vision service color detector](/services/vision/color_detector/) to programmatically identify the line to follow.
 Before you can start on that, you need to get creative though and use your colored tape to make a path for your robot to follow.
 Perhaps a circle or other shape, or perhaps a path from one point of interest to another.
 Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.
 
 Once you have created your path, set your robot on the line such that the line appears in the front of the camera’s view.
-Verify that the camera sees the line by viewing the camera feed on the **Control** tab of the machine page.
+Verify that the camera sees the line by viewing the camera feed on the **CONTROL** tab of the machine page.
 
 <p>
 {{<imgproc src="/tutorials/webcam-line-follower/lf-cam-view6.png" resize="600x" class="aligncenter" declaredimensions=true alt="The camera view in the control tab on the machine page">}}
@@ -218,33 +219,33 @@ Now, let's configure the color detector so your rover can detect the line:
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Next, navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
-Click on the **Services** subtab.
+Next, navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 
 1. **Add a vision service.**
 
-Next, add a vision service [detector](/ml/vision/#detections):
+Next, add a vision service [detector](/services/vision/#detections):
 
-Click the **Create service** button in the lower-left corner of the **Services** subtab.
-Select type `Vision` and model `Color Detector`.
+Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Service**.
+Select type `vision` and model `color detector`.
 Enter `green_detector` for the name, then click **Create**.
 
 In your vision service’s panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels).
 Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding rgb or hex value.
 We used `rgb(25,255,217)` or `#19FFD9` to match the color of our green electrical tape, and specified a segment size of 100 pixels with a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
 
-2. Click **Save config** in the bottom left corner of the screen.
+2. Click **Save** in the top right corner of the screen.
 
 3. (optional) **Add a `transform` camera as a visualizer**
 
 If you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform/).
 This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
 
-Click on the **Components** subtab and click **Create component**.
+Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
 Add a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
 Name it `transform_cam` and click **Create**.
 
-Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
+Click **{}** (Switch to advanced) in the top right of the camera's configuration panel to switch to advanced mode.
+Replace the attributes JSON object (`{}`) with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
 
 ```json
 {
@@ -261,12 +262,12 @@ Replace the attributes JSON object with the following object which specifies the
 }
 ```
 
-4. Click **Save config** in the bottom left corner of the screen.
+4. Click **Save** in the top right corner of the screen.
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration which adds the configuration for the vision service and the transform camera:
+With [**JSON** mode](/build/configure/#the-configure-tab) selected, replace the configuration with the following JSON configuration which adds the configuration for the vision service and the transform camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -368,14 +369,14 @@ On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the config
 }
 ```
 
-Click **Save config** in the bottom left corner of the screen.
+Click **Save** in the top right corner of the screen.
 
 {{% /tab %}}
 {{< /tabs >}}
 
 ## Test your color detector
 
-Navigate to your [machine's **Control** tab](/fleet/control/) to test the transform camera.
+Navigate to your [machine's **CONTROL** tab](/fleet/control/) to test the transform camera.
 Click on the transform camera panel and toggle the camera on.
 You should now be able to view the camera feed with color detector overlays superimposed on the image.
 
@@ -418,11 +419,19 @@ To make your rover follow your line, you need to install Python and the Viam Pyt
 
 1. Download the [robot line follower code](https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py).
 
-1. From your robot’s page on the [Viam app](https://app.viam.com/), go to the **Code sample** tab and select **Python**.
+1. From your robot’s page on the [Viam app](https://app.viam.com/), go to the **CONNECT** tab's **Code sample** page and select **Python**.
 
    {{% snippet "show-secret.md" %}}
 
    Copy the machine's address and API key and paste them into the definition for the `connect()` function, replacing the placeholders shown there.
+
+   Also, add the following import to the beginning of your code:
+
+   ```python {class="line-numbers linkable-line-numbers"}
+   from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
+   ```
+
+   You use these helper functions in your program to convert images captured.
 
 1. You can run the program from your computer or from your Pi.
    If you would like to get your program onto your Pi, you have a few options.
@@ -452,11 +461,16 @@ The code you are using has several functions:
       """
       frame = await camera.get_image(mime_type="image/jpeg")
 
-      x, y = frame.size[0], frame.size[1]
+      # Convert to PIL Image
+      pil_frame = viam_to_pil_image(frame)
+      x, y = pil_frame.size[0], pil_frame.size[1]
 
       # Crop the image to get only the middle fifth of the top third of the
       # original image
-      cropped_frame = frame.crop((x / 2.5, 0, x / 1.25, y / 3))
+      cropped_pil_frame = pil_frame.crop((x / 2.5, 0, x / 1.25, y / 3))
+
+      # Convert back to ViamImage
+      cropped_frame = pil_to_viam_image(cropped_pil_frame)
 
       detections = await detector.get_detections(cropped_frame)
 
@@ -474,17 +488,26 @@ The code you are using has several functions:
       of the robot's front.
       """
       frame = await camera.get_image(mime_type="image/jpeg")
-      x, y = frame.size[0], frame.size[1]
+
+      # Convert to PIL image
+      pil_frame = viam_to_pil_image(frame)
+      x, y = pil_frame.size[0], pil_frame.size[1]
 
       if location == "left":
           # Crop image to get only the left two fifths of the original image
-          cropped_frame = frame.crop((0, 0, x / 2.5, y))
+          cropped_pil_frame = pil_frame.crop((0, 0, x / 2.5, y))
+
+          # Convert back to PIL Image
+          cropped_frame = pil_to_viam_image(cropped_pil_frame)
 
           detections = await detector.get_detections(cropped_frame)
 
       elif location == "right":
           # Crop image to get only the right two fifths of the original image
-          cropped_frame = frame.crop((x / 1.25, 0, x, y))
+          cropped_pil_frame = pil_frame.crop((x / 1.25, 0, x, y))
+
+          # Convert back to ViamImage
+          cropped_frame = pil_to_viam_image(cropped_pil_frame)
 
           detections = await detector.get_detections(cropped_frame)
 
@@ -496,11 +519,11 @@ The code you are using has several functions:
 - `stop_robot`: Stops the robot's motion.
 
   ```python {class="line-numbers linkable-line-numbers"}
-  async def stop_robot(robot):
+  async def stop_robot(machine):
     """
     Stop the robot's motion.
     """
-    base = Base.from_robot(robot, "scuttlebase")
+    base = Base.from_robot(machine, "scuttlebase")
     await base.stop()
   ```
 
@@ -518,13 +541,13 @@ async def main():
     """
     Main line follower function.
     """
-    robot = await connect()
+    machine = await connect()
     print("connected")
-    camera = Camera.from_robot(robot, "my_camera")
-    base = Base.from_robot(robot, "scuttlebase")
+    camera = Camera.from_robot(machine, "my_camera")
+    base = Base.from_robot(machine, "scuttlebase")
 
     # Put your detector name in place of "green_detector"
-    green_detector = VisionClient.from_robot(robot, "green_detector")
+    green_detector = VisionClient.from_robot(machine, "green_detector")
 
     # counter to increase robustness
     counter = 0
@@ -557,8 +580,8 @@ async def main():
 
     print("The path is behind us and forward is only open wasteland.")
 
-    await stop_robot(robot)
-    await robot.close()
+    await stop_robot(machine)
+    await machine.close()
 ```
 
 To run the program:
@@ -586,7 +609,7 @@ To run the program:
 ## Next steps
 
 You now have a rover following a path of your choice, anywhere you want it to go!
-Along the way, you have learned how to configure a wheeled base, camera, and color detector with Viam and how to test them from the **Control** tab.
+Along the way, you have learned how to configure a wheeled base, camera, and color detector with Viam and how to test them from the **CONTROL** tab.
 
 If you are wondering what to do next, why not try one of the following ideas:
 
@@ -609,7 +632,7 @@ If your rover keeps driving off the line so fast that the color detector can’t
 
 Things to try:
 
-- Add a [`saturation_cutoff_pct` or a `value_cutoff_percent`](/ml/vision/color_detector/) to your vision service parameters.
+- Add a [`saturation_cutoff_pct` or a `value_cutoff_percent`](/services/vision/color_detector/) to your vision service parameters.
 - Try to achieve more consistent lighting on and around the line.
 - Try a different color of line, or a different background.
   Be sure to update your `detect_color` parameter accordingly.

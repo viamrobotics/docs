@@ -27,7 +27,7 @@ The Viam Agent:
 - Allows control of deployed software versions through the Viam app.
 
 Consider a company that sells machines that monitor weather conditions on a maritime craft and provide navigation advice based on those readings.
-Such a machine might use Viam to interface between a [sensor component](/components/sensor/) that takes weather measurements, and the [data management service](/data/) to regularly upload a stream of readings, for example.
+Such a machine might use Viam to interface between a [sensor component](/components/sensor/) that takes weather measurements, and the [data management service](/services/data/) to regularly upload a stream of readings, for example.
 However, to then parse the readings and provide tailored guidance to a ship's captain, the company has written their own proprietary application which includes live analytics and speech generation for conveying advice to the captain.
 
 Using the Viam Agent, this company could ship their machines directly to customers and have each machine provision `viam-server` as it comes online for each user, eliminating factory setup time and allowing for tailored configurations per customer as needed.
@@ -54,7 +54,7 @@ If you want to install the Viam Agent on a machine that you have already configu
 
 1. Determine your machine {{< glossary_tooltip term_id="part" text="part's" >}} ID.
    To copy the ID of your machine part, select the part status dropdown to the right of your machine's location and name on the top of its page and click the copy icon next to **Part ID**.
-   For an example, see [Find part ID](/build/program/apis/data-client/#find-part-id)
+   For an example, see [Find part ID](/appendix/apis/data-client/#find-part-id)
 1. Determine your machine's [API key and API key ID](/build/program/#authenticate).
    If you haven't already, you can [use the CLI to create a new API key and API key ID](/cli/#create-an-organization-api-key).
 1. Run the following command, replacing `<KEYID>`, `<KEY>`, and `<PARTID>` with your machine's values as determined from the steps above:
@@ -70,7 +70,7 @@ If you want to install the Viam Agent on a machine that you have not yet created
 
 1. Create a configuration file with the desired configuration for your machine. You can:
 
-   - You can [create a new machine in the Viam app](/fleet/machines/#add-a-new-machine) and configure it as desired, then switch to **Raw JSON** mode and copy the configuration shown into a new file on your machine.
+   - You can [create a new machine in the Viam app](/cloud/machines/#add-a-new-machine) and configure it as desired, then switch to **Raw JSON** mode and copy the configuration shown into a new file on your machine.
    - You can base your configuration on the [example configuration file](/internals/local-configuration-file/#example-json-configuration-file), and adjust as needed.
    - You can use an existing configuration file from a deployed machine, or adapt such a file as needed to fit the specifications of your new machine.
 
@@ -135,17 +135,30 @@ The Viam Agent is installed as a `systemd` service named `viam-agent`.
 
   For more information, see [Viam Agent management](https://github.com/viamrobotics/agent#management).
 
+### View Viam Agent logs
+
+The Viam Agent writes log messages to the [Viam app](https://app.viam.com/).
+You can find these messages on the [**LOGS** tab](/cloud/machines/#logs) of your machine's page.
+
+Viam Agent only sends messages when your machine is online and connected to the internet.
+If your machine is offline, log messages are queued, and are sent to the Viam app once your machine reconnects to the internet.
+
+These log messages include when `viam-server` is stopped and started, the status of agent subsystems, and any errors or warnings encountered during operation.
+
 ## Provision a new machine
 
 With the Viam Agent installed, your machine will either connect to a local WiFi network or will create its own WiFi hotspot, depending on your configuration.
 
 - If you include a `viam-server` configuration file on your machine, located at <file>/etc/viam.json</file>, which includes a WiFi network and password to connect to, the Viam Agent will connect to the network automatically when in range.
 - If you did not include this file, or the configured WiFi network is not available when your machine comes online, the Viam Agent will create its own WiFi hotspot and request WiFi credentials:
+
   ![Diagram of the flow of provisioning a new machine with the Viam agent.](/platform/provision/style-provisioning-diagram.png)
+
   If there is an issue connecting to the WiFi hotspot with the input WiFi credentials, this flow will repeat until the device is online:
+
   ![Diagram of the flow of provisioning a new machine with the Viam agent when there is an issue connecting to WiFi.](/platform/provision/style-provisioning-diagram-error.png)
 
-This provisioning functionality uses the [Viam Agent provisioning subsystem](https://github.com/viamrobotics/agent-provisioning).
+This provisioning functionality is provided by the [Viam Agent provisioning subsystem](https://github.com/viamrobotics/agent-provisioning).
 
 ### Connect to an existing network
 
@@ -157,27 +170,27 @@ For example, to configure SSIDs and passwords for two WiFi networks named `prima
 ```json {class="line-numbers linkable-line-numbers"}
 ...
 "agent": {
-    "agent-provisioning": {
+  "agent-provisioning": {
+    ...
+    "attributes": {
       ...
-      "attributes": {
-        ...
-        "networks": [
-          {
-            "type": "wifi",
-            "ssid": "primaryNet",
-             "psk": "myFirstPassword",
-             "priority": 30
-          },
-          {
-            "type": "wifi",
-            "ssid": "fallbackNet",
-            "psk": "mySecondPassword",
-            "priority": 10
-           }
-         ]
-       }
-     }
+      "networks": [
+        {
+          "type": "wifi",
+          "ssid": "primaryNet",
+          "psk": "myFirstPassword",
+          "priority": 30
+        },
+        {
+          "type": "wifi",
+          "ssid": "fallbackNet",
+          "psk": "mySecondPassword",
+          "priority": 10
+        }
+      ]
+    }
   }
+}
 ```
 
 You can add this configuration to the <file>/etc/viam.json</file> configuration file you deploy to your machine, or from the **CONFIGURE** tab in the [Viam app](https://app.viam.com/) for your machine, using **Raw JSON** mode.
@@ -199,20 +212,20 @@ For example, to set the hotspot password to `acme123`, you can use the following
 ```json {class="line-numbers linkable-line-numbers"}
 ...
 "agent": {
-    "agent-provisioning": {
+  "agent-provisioning": {
+    ...
+    "attributes": {
+      "hotspot_password": "acme123"
       ...
-       "attributes": {
-        "hotspot_password": "acme123"
-        ...
-       }
     }
+  }
 }
 ```
 
 You can add this configuration to your machine's configuration in the **CONFIGURE** tab in the [Viam app](https://app.viam.com/), using **JSON** mode, or directly to the <file>/etc/viam.json</file> configuration file you deploy to your machine.
 
 If you did not initially provide a `viam-server` app configuration in either of these methods, you will be prompted to paste one in when you connect to the WiFi hotspot.
-This is the part of the machine configuration JSON which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to the Viam app.
+This is the JSON which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to the Viam app.
 
 To copy a machine's `viam-server` app configuration:
 
@@ -246,7 +259,7 @@ To provision your machine, create a <file>/etc/viam-provisioning.json</file> con
 }
 ```
 
-This file configures some basic metadata, specifies a [fragment](/fleet/configure-a-fleet/) to use to configure the machine, and provides the WiFi network name and password to allow your machine to connect automatically on startup.
+This file configures some basic metadata, specifies a [fragment](/fleet/fragments/) to use to configure the machine, and provides the WiFi network name and password to allow your machine to connect automatically on startup.
 
 ## Use the Viam mobile app
 
@@ -261,5 +274,5 @@ For more information, see [Mobile app provisioning](https://github.com/viamrobot
 You can write your own mobile application or add provisioning to your existing mobile application using our SDKs which allow you to connect to the Viam Agent and provision your machines.
 For example, you can fetch local networks available to your deployed machine with `getNetworkList()`, or assign network credentials for a specific network with `setNetworkCredentials()`.
 
-Currently, provisioning is supported by the [Viam Flutter SDK](https://flutter.viam.dev/viam_protos.provisioning.provisioning/ProvisioningServiceClient-class.html) and the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/src/app/provisioning-client.ts).
+Currently, provisioning is supported by the Viam [Flutter SDK](https://flutter.viam.dev/viam_protos.provisioning.provisioning/ProvisioningServiceClient-class.html) and the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/src/app/provisioning-client.ts).
 If you are not using Flutter or TypeScript and would like to use provisioning, please [contact us](mailto:support@viam.com).

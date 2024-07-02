@@ -14,7 +14,7 @@ draft: true
 
 {{% alert title="REQUIREMENTS" color="note" %}}
 
-Follow the [setup guide](/get-started/installation/prepare/board1-setup) to prepare your <model-name> to run `viam-server` before you configure your <model-name> board.
+Follow the [setup guide](/get-started/prepare/board1-setup) to prepare your <model-name> to run `viam-server` before you configure your <model-name> board.
 
 {{% /alert %}}
 
@@ -75,7 +75,7 @@ Click the **{}** (Switch to Advanced) button in the top right of the component p
 The following attributes are available for `<board-model>` boards:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](#digital_interrupts).|
 | `analogs` | object | Optional | Attributes of any pins that can be used as Analog-to-Digital Converter (ADC) inputs. See [configuration info](#analogs).|

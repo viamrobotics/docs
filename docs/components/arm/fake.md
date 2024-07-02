@@ -8,6 +8,7 @@ images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 aliases:
   - "/components/arm/fake/"
+component_description: "A model used for testing, with no physical hardware."
 # SMEs: Bucket, Motion
 ---
 
@@ -27,8 +28,8 @@ Fill in the attributes as applicable to your arm, according to the table below.
 
 {{% alert title="Important" color="note" %}}
 
-Exactly one of these attributes must be supplied for your `fake` arm to work.
-If neither are specified, an error is thrown asking for specification.
+Only one of these attributes can be supplied for your `fake` arm to work.
+If neither are specified, a fake arm model with 1 degree-of-freedom will be used.
 If both attributes are specified, an error is thrown stating "can only populate either ArmModel or ModelPath - not both".
 
 {{% /alert %}}
@@ -72,7 +73,7 @@ If both attributes are specified, an error is thrown stating "can only populate 
 The following attributes are available for `fake` arms:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `arm-model` | string | Optional | Model name of the robotic arm model you want your fake arm to act as. See [built-in arm models](../#supported-models) for supported model names. |
 | `model-path` | string | Optional | The path to the [kinematic configuration file](/internals/kinematic-chain-config/) of the arm driver you want your fake arm to act as. This path should point to the exact location where the file is located on your computer running `viam-server`. |

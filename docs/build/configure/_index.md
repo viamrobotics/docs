@@ -24,7 +24,7 @@ You can configure the following resources:
 - [Sub-parts](/build/configure/#sub-parts): Sub-parts are a way to connect two computers inside the same machine.
 - [Fragments](/build/configure/#fragments): Fragments are a way of sharing and managing identical configuration files (or parts of config files) across multiple machines.
 - [Frames](#frames): Frames hold reference frame information for the relative position of components in space.
-- [Webhooks](/build/configure/#webhooks): Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
+- [Triggers](/build/configure/#triggers): Triggers allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
 - [Network](/build/configure/#network): Networking options allow you to configure the bind address for accepting connections.
 
 To start configuring, go to the [Viam app](https://app.viam.com) and create a new machine.
@@ -65,7 +65,7 @@ You can switch between **Builder**, **JSON**, and **Frame** mode by clicking on 
 - **Builder** mode provides a graphical interface for configuring your machine resources.
 - **JSON** mode provides a text editing field where you can write and edit the config manually.
 - **Frame** mode provides a graphical interface for configuring and visualizing the relative position of components in space.
-  For more information, see the [Frame System documentation](/mobility/frame-system/).
+  For more information, see the [Frame System documentation](/services/frame-system/).
 
 Regardless of the editing mode you choose, Viam stores the configuration file in [JSON (JavaScript Object Notation)](https://en.wikipedia.org/wiki/JSON).
 
@@ -182,7 +182,7 @@ For specific information on how to configure each supported component type, see 
 {{% alert title="Tip" color="tip" %}}
 
 When you configure a component on the **CONFIGURE** tab, it will also appear on the **CONTROL** tab which gives you an interface to test and interact with it.
-The **Code sample** page on the **CONNECT** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/build/program/apis/).
+The **Code sample** page on the **CONNECT** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/appendix/apis/).
 
 <!-- TODO: R2D2 need to update this section with updated control tab view { {<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="Using the control tab">} } -->
 
@@ -240,21 +240,21 @@ You can use fragments to share similar {{< glossary_tooltip term_id="resource" t
 For example, if you have multiple machines with the same motor hardware, wired the same way, you can create a fragment to configure that motor and share it easily across all of your machines, without needing to individually configure the motor component for each machine.
 
 To configure a fragment, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Insert fragment**.
-See [Use Fragments to Configure a Fleet](/fleet/configure-a-fleet/) for more information on creating and deploying fragments.
+See [Use Fragments to Configure a Fleet](/fleet/fragments/) for more information on creating and deploying fragments.
 
 ### Frames
 
 The frame system holds reference frame information for the relative position of components in space.
 
 Clicking on the **Frame** mode to visualize and configure the relative positions of components.
-Find more information in the [frame system documentation](/mobility/frame-system/).
+Find more information in the [frame system documentation](/services/frame-system/).
 
-### Webhooks
+### Triggers
 
-Webhooks allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
-For example, you can configure a webhook to send you a notification when your robot's sensor collects a new reading.
+Triggers allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
+For example, you can configure a trigger to send you a notification when your robot's sensor collects a new reading.
 
-See [Configure a Webhook](/build/configure/webhooks/) for more information on webhooks.
+See [Configure a Trigger](/build/configure/triggers/) for more information on triggers.
 
 ### Network
 
@@ -264,7 +264,7 @@ Expand a part's configuration card to open its network configuration interface:
 
 You can configure the address `viam-server` binds to for accepting connections.
 By default, `viam-server` binds to `0.0.0.0:8080` when managed by the Viam app or when authentication and TLS are enabled.
-You can also set the [heartbeat](/build/program/apis/sessions/#heartbeats) window.
+You can also set the [heartbeat](/appendix/apis/sessions/#heartbeats) window.
 
 ## Configuration History
 
@@ -280,7 +280,7 @@ To restore to an earlier version of your configuration, click the **Restore vers
 
 If you run into issues, here are some things to try:
 
-- Check the [**LOGS** tab](/fleet/machines/#logs) to view log messages and errors from `viam-server`.
+- Check the [**LOGS** tab](/cloud/machines/#logs) to view log messages and errors from `viam-server`.
   You can also [access the local log file](/get-started/installation/manage/#view-viam-server-logs) on your machine if needed.
 - Make sure all configured components are saved to your config.
   If they aren't, you will see an **Unsaved changes** note next to the **Save** button in the top right corner of the page.
@@ -294,17 +294,17 @@ If you run into issues, here are some things to try:
 
 ## Local setup
 
-Configuring `viam-server` with the Viam app allows you to make use of the cloud features of Viam:
+Configuring `viam-server` with the Viam app allows you to use Viam's cloud features:
 
 - [Fleet Management](/fleet/)
-- [Data Management](/data/)
-- [Machine Learning](/ml/)
+- [Data Management](/services/data/)
+- [Machine Learning](/services/ml/)
 
 However, if you are configuring a machine that can never connect to the internet, you can create a [local configuration file](/internals/local-configuration-file/) on your machine.
 A locally-configured machine will not be able to access Viam's cloud features.
 
 ## Next steps
 
-After configuring your machine, you can use the [Viam SDKs](/build/program/apis/) to program and control your machine.
+After configuring your machine, you can use the [Viam SDKs](/appendix/apis/) to program and control your machine.
 
 If you want to try configuring a machine but don't have any hardware on hand, try the [Build a Mock Robot](/tutorials/configure/build-a-mock-robot/) tutorial.

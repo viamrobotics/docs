@@ -8,6 +8,8 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - "/components/camera/join-pointclouds/"
+component_description: "Combines the point clouds from multiple camera sources and projects them to be from the point of view of target_frame."
+toc_hide: true
 # SMEs: Bijan, vision team
 ---
 
@@ -58,7 +60,7 @@ Edit the attributes as applicable to your machine, according to the table below.
 The following attributes are available for `join_pointclouds` views:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `target_frame` | string | **Required** | The frame of reference for the points in the merged point cloud. |
 | `source_cameras` | array | **Required** | The `name` of each of the camera sources to combine. |

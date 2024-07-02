@@ -8,6 +8,7 @@ images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 aliases:
   - "/components/arm/xarm6/"
+component_description: "UFACTORY xArm 6."
 # SMEs: Bucket, Motion
 ---
 
@@ -91,13 +92,13 @@ Edit and fill in the attributes as applicable.
 The following attributes are available for `xArm6` arms:
 
 <!-- prettier-ignore -->
-| Attribute | Type | Inclusion | Description |
-| --------- | ---- | ----------| ----------- |
+| Attribute | Type | Required? | Description |
+| --------- | ---- | --------- | ----------- |
 | `host`  | string | **Required** | IP address of the arm's system on your network. Find this when setting up your xArm. |
 | `port`  | int | Optional | Port number of the arm's system. Find this when setting up your xArm. <br> Default: `502` |
 | `speed_degs_per_sec` | float | Optional | Desired maximum speed of joint movement in degrees/sec. <br> Default: `20.0` |
 | `acceleration_degs_per_sec_per_sec`  | float | Optional | Desired maximum acceleration of joint movement in degrees/sec<sup>2</sup>. <br> Default: `50.0` |
 
-See [the frame system Service](/mobility/frame-system/) for more information on utilizing and modifying the `"frame"` configuration shown in the `JSON Example` above.
+See [the frame system Service](/services/frame-system/) for more information on utilizing and modifying the `"frame"` configuration shown in the `JSON Example` above.
 
 {{< readfile "/static/include/components/test-control/arm-control.md" >}}

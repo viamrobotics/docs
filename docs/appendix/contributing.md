@@ -64,7 +64,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   For example the [Robot Development Kit page](/internals/rdk/) or the [Registry page](/registry/).
   It’s useful to have a real or imagined "Why?" question to serve as a prompt.
 
-  {{% expand "Click to view template" %}}
+  {{< expand "Click to view template" >}}
 
   ```md
   # Concept
@@ -89,13 +89,13 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   Links to related content.
   ```
 
-  {{% /expand %}}
+  {{< /expand >}}
 
 - **How-to Guide (procedural)**: A task-oriented piece of content that directs a reader to perform actions step by step to complete a task, like a recipe.
   Generally starts with a description of the task and things to consider, and then provides a set of numbered steps to follow.
   For example, the [Installation page](/get-started/installation/) or the [Find module page](/registry/configure/).
 
-  {{% expand "Click to view template" %}}
+  {{< expand "Click to view template" >}}
 
   ```md
   # Do This Task
@@ -113,12 +113,12 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   Links to related content.
   ```
 
-  {{% /expand %}}
+  {{< /expand >}}
 
 - **Tutorial**: A learning-oriented piece of content that functions as a lesson for the reader.
   A tutorial helps readers to learn and apply skills by doing something meaningful and attainable.
 
-  {{% expand "Click to view template" %}}
+  {{< expand "Click to view template" >}}
 
   ```md
   # Do X with Y
@@ -155,14 +155,14 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
 
   For the full template see [template.md](https://github.com/viamrobotics/docs/blob/main/docs/tutorials/template.md).
 
-  {{% /expand %}}
+  {{< /expand >}}
 
 - **Reference**: A concise, information-oriented piece of content that generally starts with an overview/introduction and then a list of some kind (configuration options, API methods, etc.).
-  Examples include the [API pages](/build/program/apis/) as well as [component and service pages](/components/arm/).
+  Examples include the [API pages](/appendix/apis/) as well as [component and service pages](/components/arm/).
 
   Example template: [Component template](https://github.com/viamrobotics/docs/blob/main/docs/components/component/_index.md).
 
-  {{% expand "Click to view template" %}}
+  {{< expand "Click to view template" >}}
 
   ```md
   # Product, Feature or API Name
@@ -181,7 +181,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   Links to related content.
   ```
 
-  {{% /expand %}}
+  {{< /expand >}}
 
 ## Style guide
 
@@ -192,10 +192,37 @@ Some additional formatting options are supported with [Hugo Shortcodes](https://
 
 We follow the [Rackspace Style Guide](https://web.archive.org/web/20200829151826/https://developer.rackspace.com/docs/style-guide/) with many rules encoded in Vale rules.
 
+Additional we enforce the following substitutions:
+
+<!-- vale off -->
+<!-- prettier-ignore -->
+| Do not say | Instead say |
+| ---------- | ----------- |
+| web app, cloud app | Viam app or Viam platform |
+| viam app, Viam App | Viam app |
+| Viam-server, Viam server, Viam-Server | viam-server |
+| Config Tab, Config tab, Configure Tab | CONFIGURE tab |
+| Vision service, Vision Service | vision service |
+| Motion service, Motion Service | motion service |
+| slam service, Slam service, SLAM Service | SLAM service |
+| Data Management Service, Data Management service | data management service |
+| in the website | on the website |
+| on the app | in the app |
+| user of an org | member of an org |
+| main part and child part, main part and non-main part | main part and sub-part |
+| subpart | sub-part |
+| drop down | dropdown |
+| drop-down | dropdown |
+| RPLIDAR, Rplidar | RPlidar |
+| compute parts | computer |
+| microprocessor | Raspberry Pi or Jetson or another specific term |
+
+<!-- vale on -->
+
 ### Vale linting
 
 {{< alert title="Tip" color="tip" >}}
-We recommend you work in Visual Studio Code and install the [Vale extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server) to make use of the vale linter.
+We recommend you work in Visual Studio Code and install the [Vale extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server) to use the vale linter.
 {{< /alert >}}
 
 When you open a PR, your changes will be checked against a few style rules.

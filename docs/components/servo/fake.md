@@ -9,6 +9,7 @@ icon: true
 images: ["/icons/components/servo.svg"]
 aliases:
   - "/components/servo/fake/"
+component_description: "A model used for testing, with no physical hardware."
 # SME: Rand
 ---
 

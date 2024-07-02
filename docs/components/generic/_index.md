@@ -12,17 +12,18 @@ no_list: true
 modulescript: true
 aliases:
   - "/components/generic/"
+hide_children: true
 # SMEs:
 ---
 
-The _generic_ component {{< glossary_tooltip term_id="subtype" text="subtype" >}} enables you to add support for unique types of hardware that do not already have an [appropriate API](/build/program/apis/#component-apis) defined for them.
+The _generic_ component {{< glossary_tooltip term_id="subtype" text="subtype" >}} enables you to add support for unique types of hardware that do not already have an [appropriate API](/appendix/apis/#component-apis) defined for them.
 
 For example, when using an [arm component](/components/arm/), it makes sense to use the [arm API](/components/arm/#api), which provides specific functionality an arm component needs, such as moving to position or stopping movement.
 However, if you want to use an LED display for example, you need very different functionality that isn't currently exposed in any API.
 Instead, you can use the generic component API to add support for your unique type of hardware, like LED displays, to your machine.
 
 Use generic for a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} model that represents a unique type of hardware.
-If you are adding new high-level software functionality, rather than supporting new hardware components, use the [generic service](/registry/advanced/generic/) instead.
+If you are adding new high-level software functionality, rather than supporting new hardware components, use the [generic service](/services/generic/) instead.
 
 There are no built-in generic component models (other than `fake`).
 
@@ -38,22 +39,9 @@ If you want to use most of an existing API but need just a few other functions, 
 
 ## Supported models
 
-Before creating a new generic component, check whether one of the following [modular resources](#modular-resources) supports your use case.
+{{<resources api="rdk:component:generic" type="generic">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
-
-### Built-in models
-
-For configuration information, click on the model name:
-
-<!-- prettier-ignore -->
-Model | Description
------ | -----------
-[`fake`](fake/) | A model used for testing, with no physical hardware.
-
-### Modular resources
-
-{{<modular-resources api="rdk:component:generic" type="generic">}}
 
 ## Control your board with Viam's client SDK libraries
 
@@ -103,8 +91,8 @@ The generic component supports the following method:
 
 ### GetGeometries
 
-Get all the geometries associated with the generic component in its current configuration, in the [frame](/mobility/frame-system/) of the generic component.
-The [motion](/mobility/motion/) and [navigation](/mobility/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+Get all the geometries associated with the generic component in its current configuration, in the [frame](/services/frame-system/) of the generic component.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

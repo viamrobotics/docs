@@ -11,6 +11,6 @@ Resource models belonging to a subtype share the same API.
 
 For example, an arm is a subtype of the {{< glossary_tooltip term_id="component" text="component" >}} resource type, while the `ur5e` is a {{< glossary_tooltip term_id="model" text="model" >}} of the arm subtype's API.
 
-The [Vision Service](/ml/vision/) is a subtype of the {{< glossary_tooltip term_id="service" text="service" >}} resource type.
+The [Vision Service](/services/vision/) is a subtype of the {{< glossary_tooltip term_id="service" text="service" >}} resource type.
 
 A subtype is designated by its {{< glossary_tooltip term_id="api-namespace-triplet" text="api-namespace-triplet" >}}.

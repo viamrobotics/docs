@@ -9,6 +9,7 @@ icon: true
 images: ["/icons/components/sensor.svg"]
 aliases:
   - "/components/sensor/ultrasonic/"
+component_description: "The HC-S204 ultrasonic distance sensor."
 # SME: #team-bucket
 ---
 
@@ -16,7 +17,7 @@ aliases:
 An ultrasonic distance sensor can also be configured as a [camera](/components/camera/) resource.
 
 When configured as a camera, you can use the camera method [`GetPointCloud()`](/components/camera/#getpointcloud), rather than the sensor method [`GetReadings()`](/components/sensor/#getreadings).
-Additionally, you can use the camera component as an input to a [vision service](/ml/vision/) model that returns obstacles.
+Additionally, you can use the camera component as an input to a [vision service](/services/vision/) model that returns obstacles.
 {{< /alert >}}
 
 Configure an `ultrasonic` sensor to integrate the [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into your machine:
@@ -85,5 +86,7 @@ Fill in the attributes as applicable to your sensor, according to the table belo
 The following attributes are available for `ultrasonic` sensors:
 
 {{< readfile "/static/include/components/ultrasonic-attributes.md" >}}
+
+## Test the sensor
 
 {{< readfile "/static/include/components/test-control/sensor-control.md" >}}

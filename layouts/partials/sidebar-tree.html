@@ -48,6 +48,7 @@
 {{ $pages_tmp := where (union $s.Pages $s.Sections).ByWeight ".Params.toc_hide" "!=" true -}}
 {{ $pages := $pages_tmp | first $sidebarMenuTruncate -}}
 {{ $withChild := gt (len $pages) 0 -}}
+{{ $hideChildren := cond (isset $s.Params "hide_children") true false -}}
 {{ $manualLink := cond (isset $s.Params "manuallink") $s.Params.manualLink ( cond (isset $s.Params "manuallinkrelref") (relref $s $s.Params.manualLinkRelref) $s.RelPermalink) -}}
 {{ $manualLinkTitle := cond (isset $s.Params "manuallinktitle") $s.Params.manualLinkTitle $s.Title -}}
 {{ $empty_node := $s.Params.empty_node -}}
@@ -66,7 +67,9 @@
         <a href="{{ $manualLink }}"{{ if ne $s.LinkTitle $manualLinkTitle }} title="{{ $manualLinkTitle }}"{{ end }}{{ with $s.Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }} class="{{ if $active}} active{{ end }}{{ if $treeRoot }} tree-root{{ end }}">{{ $s.LinkTitle }}
         </a>
       {{- end }}
-      {{- if (and (and $withChild (not $treeRoot) (ne  .section.File.Path "tutorials/_index.md" ) ) ) }}
+      {{- if (or (and (and $withChild (not $treeRoot) (ne  .section.File.Path "tutorials/_index.md" ) ) ) (not $hideChildren) ) }}
+      {{- if $hideChildren -}}
+      {{- else -}}
       <span class="menu-toggle">
         {{ if (or $activePath $active) }}
           <i class="fas fa-chevron-down"></i>
@@ -74,6 +77,7 @@
           <i class="fas fa-chevron-right"></i>
         {{- end }}
       {{- end }}
+      {{- end -}}
     </span>
   {{ else }}
       {{ if $s.Params.canonical }}
@@ -86,12 +90,15 @@
   {{ end }}
   {{- end }}
   {{- if (and $withChild (ne .section.File.Path "tutorials/_index.md" ) ) }}
-  {{- $ulNr := add $ulNr 1 }}
-  <ul class="ul-{{ $ulNr }}">
-    {{ range $pages -}}
-    {{ template "section-tree-nav-section" (dict "page" $p "section" . "shouldDelayActive" $shouldDelayActive "sidebarMenuTruncate" $sidebarMenuTruncate "ulNr" $ulNr "ulShow" $ulShow) }}
+    {{- if $hideChildren -}}
+    {{- else -}}
+      {{- $ulNr := add $ulNr 1 }}
+      <ul class="ul-{{ $ulNr }}">
+        {{ range $pages -}}
+        {{ template "section-tree-nav-section" (dict "page" $p "section" . "shouldDelayActive" $shouldDelayActive "sidebarMenuTruncate" $sidebarMenuTruncate "ulNr" $ulNr "ulShow" $ulShow) }}
+        {{- end }}
+      </ul>
     {{- end }}
-  </ul>
   {{- end }}
 </li>
 {{- end }}

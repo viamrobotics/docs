@@ -8,6 +8,7 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/customlinux/"
+component_description: "A model for other Linux boards."
 # SMEs: Alan, Olivia, Susmita
 ---
 
@@ -240,10 +241,10 @@ Use the template and example below to populate the JSON file with a single key, 
 The following parameters are available for each pin object:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `name` | string | **Required** | The name of the pin. This can be anything you want but it is convenient to use the physical board pin number. <br> Example: `"3"`. |
-| `device_name` | string | **Required** | The name of the device in <file>/dev</file> that this pin is attached to. Multiple pins may be attached to the same GPIO chip.  See [GPIO info tips](#tips-for-finding-gpio-information) below. <br> Example: `"gpiochip0"`.
+| `device_name` | string | **Required** | The name of the device in <file>/dev</file> that this pin is attached to. Multiple pins may be attached to the same GPIO chip.  See [GPIO info tips](#tips-for-finding-gpio-information) below. <br> Example: `"gpiochip0"`. |
 | `line_number` | integer | **Required** | The line on the chip that is attached to this pin. See [GPIO info tips](#tips-for-finding-gpio-information) below. <br> Example: `81`. |
 | `pwm_chip_sysfs_dir` | string | Optional | Uniquely specifies which PWM device within [sysfs](https://en.wikipedia.org/wiki/Sysfs) this pin is connected to. See [PWM info tips](#tips-for-finding-pwm-information) below. <br> Example: `3290000.pwm`. |
 | `pwm_id` | integer | Optional | The line number on the PWM chip. See [PWM info tips](#tips-for-finding-pwm-information) below. <br> Example: `0`. |
@@ -393,6 +394,6 @@ Edit the file path to use your [board definitions file](#create-a-board-definiti
 The following attributes are available for `customlinux` boards:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `board_defs_file_path` | string | **Required** | The path to the pin mappings. See [Create a board definitions file](#create-a-board-definitions-file). |

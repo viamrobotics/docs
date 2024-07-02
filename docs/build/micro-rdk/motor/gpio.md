@@ -13,7 +13,7 @@ aliases:
 The `gpio` model supports [DC motors](https://en.wikipedia.org/wiki/DC_motor) (both brushed and brushless).
 
 You can configure [encoders](/build/micro-rdk/encoder/) to work with `gpio` motors.
-Find more information in the [encoded motor documentation](/components/motor/gpio/encoded-motor/).
+Find more information in the [encoded motor documentation](/components/motor/encoded-motor/).
 
 To configure a DC motor as a component of your machine, first configure the [board](/build/micro-rdk/board/) to which the motor driver is wired.
 Then add your motor:
@@ -106,7 +106,7 @@ An example configuration for a `gpio` motor:
 The following attributes are available for `gpio` motors:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | `name` of the [board](/build/micro-rdk/board/) to which the motor driver is wired. |
 | `pins` | object | **Required** | A structure that holds pin configuration information; [see below](#pins). |
@@ -114,7 +114,7 @@ The following attributes are available for `gpio` motors:
 | `max_power_pct` | float | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
 | `pwm_freq` | int | Optional | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range. <br> Default: `800` |
 | `dir_flip` | bool | Optional | Flips the direction of "forward" versus "backward" rotation. Default: `false` |
-| `encoder` | string | Optional | The name of an encoder attached to this motor. See [encoded motor](/components/motor/gpio/encoded-motor/). |
+| `encoder` | string | Optional | The name of an encoder attached to this motor. See [encoded motor](/components/motor/encoded-motor/). |
 
 Refer to your motor and motor driver data sheets for specifics.
 
@@ -135,7 +135,7 @@ There are three common ways for your computer to communicate with a brushed DC m
 Inside the `pins` struct you need to configure **two or three** of the following depending on your motor driver:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `a` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "IN1" or "A" pin is wired to. |
 | `b` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "IN2" or "B" pin is wired to. |

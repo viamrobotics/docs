@@ -142,7 +142,7 @@ You can edit the configuration of the modular resource or resources you have add
 If you prefer to use JSON, the following properties are available for all modular resources:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/#valid-apis-to-implement-in-your-model) |
 | `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/#valid-apis-to-implement-in-your-model). |
@@ -431,11 +431,11 @@ Locate a module's card in the part-resource hierarchy and click on it to expand.
 The following properties are available for modules:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-`name` | string | **Required**| Name of the module you are registering. |
-`executable_path` | string | **Required**| The absolute path to the executable on your machine's filesystem. |
-`type` | string | **Required**| Either `registry` or `local`. |
+| `name` | string | **Required**| Name of the module you are registering. |
+| `executable_path` | string | **Required**| The absolute path to the executable on your machine's filesystem. |
+| `type` | string | **Required**| Either `registry` or `local`. |
 
 Edit these properties in your module's JSON configuration:
 
@@ -469,7 +469,7 @@ Once you have added a local module to your machine, you can add any number of th
 The following properties are available for modular resources:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/#valid-apis-to-implement-in-your-model). |
 | `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/#valid-apis-to-implement-in-your-model). |
@@ -538,7 +538,7 @@ You can send commands to the base according to the Viam [base API](/components/b
 
 ## Next steps
 
-Now that you've configured a modular resource, test it with the [**CONTROL** tab](/fleet/control/) and program it with the [Viam SDKs](/build/program/apis/).
+Now that you've configured a modular resource, test it with the [**CONTROL** tab](/fleet/control/) and program it with the [Viam SDKs](/appendix/apis/).
 
 You can also check out these tutorials that configure and use modular resources:
 

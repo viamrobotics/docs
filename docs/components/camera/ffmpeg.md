@@ -8,6 +8,8 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - "/components/camera/ffmpeg/"
+component_description: "Uses a camera, a video file, or a stream as a camera."
+toc_hide: true
 # SMEs: Bijan, vision team
 ---
 
@@ -73,7 +75,7 @@ Edit the attributes as applicable to your camera, according to the table below.
 The following attributes are available for `ffmpeg` cameras:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `video_path` | string | **Required** | The file path to the camera device, color image file, or streaming camera. If you are using a camera with an RTSP stream, provide the RTSP address to this attribute. |
 | `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |

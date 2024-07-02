@@ -26,7 +26,7 @@ In this tutorial, you will:
 
 - assemble the claw game machine and learn how to fabricate your own encasement for the machine
 - learn how to configure the components using Viam
-- master the art of controlling your robot with our [motion service](/mobility/motion/) using the [Viam Python SDK](https://python.viam.dev/)
+- master the art of controlling your robot with our [motion service](/services/motion/) using the [Viam Python SDK](https://python.viam.dev/)
 - learn how to create a custom control interface using the [Viam TypeScript SDK](https://ts.viam.dev/)
 
 ## Requirements
@@ -35,7 +35,7 @@ In this tutorial, you will:
 
 To build your own claw game machine, you need the following hardware:
 
-- A [Raspberry Pi](https://a.co/d/bxEdcAT) with a microSD card, set up following the [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/).
+- A [Raspberry Pi](https://a.co/d/bxEdcAT) with a microSD card, set up following the [Raspberry Pi Setup Guide](/get-started/prepare/rpi-setup/).
 - An [xarm6](https://www.robotshop.com/products/xarm-6-dof-robotic-arm) robotic arm
 - An [Arcade claw](https://www.ebay.com/itm/393988987705)
 - A [Relay](https://www.amazon.com/gp/product/B095YFJ69T)
@@ -140,7 +140,7 @@ Every machine has a main part which is automatically created when you create the
 Since you just created a new machine, your machine's main part is already defined.
 Multi-part machines also have one or more sub-parts representing additional computers running `viam-server`.
 If you have two computers within the _same machine_, you can use one as the main part and [connect the other to it as a sub-part](/build/configure/parts/#configure-a-sub-part).
-This is the approach this tutorial follows: you'll run the [motion planning service](/mobility/motion/) on a laptop and connect that laptop as a sub-part to your machine.
+This is the approach this tutorial follows: you'll run the [motion planning service](/services/motion/) on a laptop and connect that laptop as a sub-part to your machine.
 
 {{< alert title="Tip" color="tip" >}}
 Technically you could configure all the components within one part, but motion planning is more performant when running on a computer like a macOS or Linux laptop running `viam-server`.
@@ -429,7 +429,7 @@ Now select `low` and click **Set Pin State** again: the claw will open.
 
 ## Create obstacles and a world state
 
-The claw game machine will use the [motion service](/mobility/motion/) to plan its movements.
+The claw game machine will use the [motion service](/services/motion/) to plan its movements.
 To make sure the arm doesn't hit the walls of the enclosure or the prize drop hole, you need to create representations of obstacles around the arm that the motion service can use when planning.
 
 Obstacles are geometries located at a pose relative to some frame.
@@ -442,12 +442,12 @@ Represented in that file are obstacles for the prize drop hole, and each of the 
 If the dimensions of your enclosure differ from ours, adjust your `obstacles.json` file to match your enclosure.
 
 The obstacles for our arm are configured in reference to the "world" frame which is defined as a , which is a special frame that represents the starting point for all other frames in the robot's world.
-The list of obstacles are defined in a `WorldState` object, which is passed as an argument in each [move()](/mobility/motion/#move) call.
+The list of obstacles are defined in a `WorldState` object, which is passed as an argument in each [move()](/services/motion/#move) call.
 
 {{< alert title="Tip" color="tip" >}}
 If the arm is not mounted exactly perpendicular to the x/y axis of the enclosure, you can adjust the theta (_th_) of the arm within the arm component configuration by a number of degrees to compensate.
 Obstacles can then be configured as if the arm were straight in the enclosure.
-See the [frame system documentation](/mobility/frame-system/) for more information.
+See the [frame system documentation](/services/frame-system/) for more information.
 {{< /alert >}}
 
 ### Find the home pose within the enclosure
@@ -542,7 +542,7 @@ home_pose = Pose(x=390.0, y=105.0, z=home_plane, o_x=0, o_y=0, o_z=-1, theta=0)
 grab_plane = 240.0
 ```
 
-Then we define the [constraints](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.Constraints) - in this case we are using an [orientation constraint](/mobility/motion/constraints/#orientation-constraint).
+Then we define the [constraints](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.Constraints) - in this case we are using an [orientation constraint](/services/motion/constraints/#orientation-constraint).
 The orientation constraint places a restriction on the orientation change during a motion, as the arm in a claw game should always face down so the gripper is always in a position where is can descend and grab a prize:
 
 ```python
@@ -598,7 +598,7 @@ async def grab(board, doGrab):
         await pin.set(False)
 ```
 
-Lastly, the code defines the functions `move_absolute()`, `home()`, `move_to_offset()` and `move_z()`, which construct new pose requests to send to the [motion service](/mobility/motion/).
+Lastly, the code defines the functions `move_absolute()`, `home()`, `move_to_offset()` and `move_z()`, which construct new pose requests to send to the [motion service](/services/motion/).
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def move_absolute(arm, motion_service, pose):
@@ -806,7 +806,8 @@ We ended up using over 600 foam balls.
 ## Create a custom interface using TypeScript
 
 Now that you've built out and tested all of the main functionality of your claw game, it's time to design a custom interface to control it.
-This tutorial shows you how to create the interfaces for a touch screen tablet (in our project, we mounted an iPad to the facade of our claw machine prototype).The interface is hosted on a separate macOS or Linux computer locally and then accessed on the tablet using your computer's local address.
+This tutorial shows you how to create the interfaces for a touch screen tablet (in our project, we mounted an iPad to the facade of our claw machine prototype).
+The interface is hosted on a separate macOS or Linux computer locally and then accessed on the tablet using your computer's local address.
 
 Within the project code repository, the <file>src</file> folder contains the main TypeScript code that executes all robot commands.
 The `static` folder contains the frontend code, including styling and HTML.
@@ -930,13 +931,13 @@ async function grab(boardClient: BoardClient) {
 In this tutorial, you learned how to:
 
 - Make your own claw machine.
-- Test, configure, and control a robot arm using Viam’s [motion service](/mobility/motion/), the [Viam Python SDK](https://python.viam.dev/), and [the Viam app](https://app.viam.com).
+- Test, configure, and control a robot arm using Viam’s [motion service](/services/motion/), the [Viam Python SDK](https://python.viam.dev/), and [the Viam app](https://app.viam.com).
 - Design your own custom interface using the [Viam TypeScript SDK](https://ts.viam.dev/).
 
 For some next steps, you could:
 
-- Use the advanced interface included in the project repository to leverage the [motion service](/mobility/motion/) for larger, more complex arm movement within the enclosure.
-- Add a camera and use the [vision service](/ml/vision/) to add color detection, or use an [ML model](/ml/) to determine grab success rate and create a score counter.
+- Use the advanced interface included in the project repository to leverage the [motion service](/services/motion/) for larger, more complex arm movement within the enclosure.
+- Add a camera and use the [vision service](/services/vision/) to add color detection, or use an [ML model](/services/ml/) to determine grab success rate and create a score counter.
 - Design a hard mode where the prizes are shuffled around with the arm every few attempts.
 - Add a camera and extend the interface to allow folks from anywhere in the world to play the claw game and win.
 

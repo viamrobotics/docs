@@ -62,7 +62,7 @@ You’ll learn to implement a custom component type in Viam, and you’ll be equ
 
 Freenove documentation includes Raspberry Pi setup instructions but we recommend the following steps to make sure the Pi is set up for this tutorial:
 
-Follow the steps in our [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/) to install Raspberry Pi OS.
+Follow the steps in our [Raspberry Pi Setup Guide](/get-started/prepare/rpi-setup/) to install Raspberry Pi OS.
 
 {{% alert title=Note color="note" %}}
 
@@ -112,7 +112,7 @@ If the name of the directory where you store and run your code is different, be 
    pip install viam-sdk
    ```
 
-1. Enable I<sup>2</sup>C per [the instructions in the Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/#enable-communication-protocols).
+1. Enable I<sup>2</sup>C per [the instructions in the Raspberry Pi Setup Guide](/get-started/prepare/rpi-setup/#enable-communication-protocols).
 
 1. Alter the I<sup>2</sup>C baud rate according to [Chapter 1, Step 2 in the Freenove instructions](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Tutorial.pdf) (page 40 as of January 24, 2023).
 
@@ -516,5 +516,5 @@ You learned about configuring modules and processes.
 You drove the robot dog around using the Viam **CONTROL** tab.
 
 To add more functionality, try using the generic `do_command` method to add different behaviors to your robot dog.
-You could also use the Viam [vision service](/ml/vision/) with the robot dog's [camera component](/components/camera/).
+You could also use the Viam [vision service](/services/vision/) with the robot dog's [camera component](/components/camera/).
 For example, you could write code to tell the robot dog to [move towards a colored target](/tutorials/services/color-detection-scuttle/) or to [follow a colored line](/tutorials/services/webcam-line-follower-robot/), similarly to how these tasks are done with wheeled bases in the tutorials linked here.

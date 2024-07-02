@@ -9,6 +9,7 @@ tags: ["gantry", "components"]
 aliases:
   - "/components/gantry/multiaxis/"
   - "/components/gantry/multi-axis/"
+component_description: "A gantry with multiple linear rails. Composed of multiple single-axis gantries."
 # SME: Rand, Martha
 ---
 
@@ -204,7 +205,7 @@ Fill in the attributes as applicable to your gantry, according to the table belo
 The following attributes are available for `multi-axis` gantries:
 
 <!-- prettier-ignore -->
-| Attribute | Type | Inclusion | Description |
+| Attribute | Type | Required? | Description |
 | --------- | ---- | --------- | ----------- |
 | `subaxes_list` | array | **Required** | An array of the `name` of each of the sub-axes, the [`single-axis`](/components/gantry/single-axis/) gantries that make up the `multi-axis` gantry. |
 | `move_simultaneously` | boolean | Optional | A boolean indicating if the sub-axes should move together, or one at a time when `MoveToPosition` is called. <br> Default:  `false` |

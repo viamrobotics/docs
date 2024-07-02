@@ -6,11 +6,12 @@ type: "docs"
 description: "Configure an Odroid board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
+component_description: "Odroid-C4"
 ---
 
 {{% alert title="REQUIREMENTS" color="note" %}}
 
-Follow the [setup guide](/get-started/installation/prepare/odroid-c4-setup/) to prepare your Odroid-C4 for running `viam-server` before configuring an `odroid` board.
+Follow the [setup guide](/get-started/prepare/odroid-c4-setup/) to prepare your Odroid-C4 for running `viam-server` before configuring an `odroid` board.
 
 {{% /alert %}}
 
@@ -54,7 +55,7 @@ Click the **{}** (Switch to Advanced) button in the top right of the odroid boar
 The following attributes are available for `odroid` boards:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](#digital_interrupts).|
 | `analogs` | object | Optional | Attributes of any pins that can be used as Analog-to-Digital Converter (ADC) inputs. See [configuration info](#analogs).|

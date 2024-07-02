@@ -8,6 +8,7 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/fake/"
+component_description: "A model used for testing, with no physical hardware."
 # SMEs: Gautham, Rand
 ---
 
@@ -51,7 +52,7 @@ Edit the attributes as applicable to your board, according to the table below.
 The following attributes are available for `fake` boards:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `fail_new` | bool | **Required** | If the fake board should raise an error at machine start-up. |
 | `analogs` | object | Optional | Attributes of any pins that can be used as Analog-to-Digital Converter (ADC) inputs. See [configuration info](#analogs). |

@@ -20,5 +20,5 @@ aliases:
 ## Next steps
 
 {{< cards >}}
-{{% card link="/get-started/installation/prepare/microcontrollers" %}}
+{{% card link="/get-started/installation/microcontrollers" %}}
 {{< /cards >}}

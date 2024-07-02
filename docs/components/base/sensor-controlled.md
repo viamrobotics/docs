@@ -8,6 +8,7 @@ images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:
   - "/components/base/sensor-controlled/"
+component_description: "A model that wraps other base models with feedback control from a movement sensor"
 # SMEs: Rand H., Martha J.
 ---
 
@@ -70,7 +71,7 @@ Edit and fill in the attributes as applicable.
 The following attributes are available for `sensor-controlled` bases:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `movement_sensor` | array | **Required** | Array with the `name`s of any movement sensors on your base you want to gather feedback from. The driver will select the first movement sensor providing appropriate feedback for either the `SetVelocity()` or the `Spin()` endpoint. <br> If your sensor has an adjustable frequency or period, set the frequency to something greater than or equal to the default base control loop frequency of 10Hz, or set the period to something less than or equal to the corresponding period of 100msecs. |
 | `base` | string | **Required** | String with the `name` of the base you want to wrap with sensor control. |

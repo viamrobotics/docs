@@ -20,10 +20,10 @@ As of June 01, 2022, we support the following SLAM libraries:
 
 ## Current Architecture
 
-The SLAM service in rdk (located in /rdk/service/slam) is a wrapper for the C++ SLAM libraries mentioned above.
+The SLAM service in the RDK (located in /rdk/service/slam) is a wrapper for the C++ SLAM libraries mentioned above.
 It has three roles, interface with an executable C++ binary of the chosen library, start up a data process (if desired), and to pass GRPC requests/responses between servers.
 
-<img src="/mobility/slam-service-arch.png"/>
+<img src="/services/slam-service-arch.png" alt="Flow diagram of the SLAM service architecture."/>
 
 ### Data Generation
 

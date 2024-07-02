@@ -12,6 +12,7 @@ images: ["/icons/components/board.svg"]
 modulescript: true
 aliases:
   - "/components/board/"
+hide_children: true
 # SMEs: Gautham, Rand
 ---
 
@@ -31,8 +32,6 @@ Signaling is overseen by a computer running `viam-server` which allows you to co
 
 ## Supported models
 
-To use your board with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your board.
-
 {{< alert title="Running viam-server" color="note" >}}
 
 The board component allows you to use the pins on your board.
@@ -43,28 +42,7 @@ If there is no board model for your board:
 
 {{< /alert >}}
 
-### Built-in models
-
-For configuration information, click on the model name:
-
-<!-- prettier-ignore -->
-| Model | Description |
-| ----- | ----------- |
-| [`pi`](pi/) | [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), [Raspberry Pi 3](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) |
-| [`jetson`](jetson/) | [NVIDIA Jetson AGX Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Orin Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-xavier-nx/), [NVIDIA Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) |
-| [`upboard`](upboard/) | An Intel-based board like the [UP4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) |
-| [`ti`](ti/) | [Texas Instruments TDA4VM](https://devices.amazonaws.com/detail/a3G8a00000E2QErEAN/TI-TDA4VM-Starter-Kit-for-Edge-AI-vision-systems) |
-| [`beaglebone`](beaglebone/) | [BeagleBoard's BeagleBone AI-64](https://www.beagleboard.org/boards/beaglebone-ai-64) |
-| [`numato`](numato/) | [Numato GPIO Modules](https://numato.com/product-category/automation/gpio-modules/), peripherals for adding GPIO pins |
-| [`pca9685`](pca9685/) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel I<sup>2</sup>C [PWM](https://docs.arduino.cc/learn/microcontrollers/analog-output)/[servo](/components/servo/) driver peripheral |
-| [`odroid`](odroid/) | [Odroid-C4](https://www.hardkernel.com/shop/odroid-c4/) |
-| [`orangepi`](orangepi/) | [Orange Pi Zero2](http://www.orangepi.org/index.html) or [OrangePi 3 LTS](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/orange-pi-3-LTS.html)  |
-| [`customlinux`](customlinux/) | A model for other Linux boards |
-| [`fake`](fake/) | A model used for testing, with no physical hardware |
-
-### Modular resources
-
-{{<modular-resources api="rdk:component:board" type="board">}}
+{{<resources api="rdk:component:board" type="board">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
@@ -133,7 +111,7 @@ Additionally, the nested `GPIOPin`, `Analog`, and `DigitalInterrupt` interfaces 
 
 [`Analog`](#analog-api) API:
 
-{{< readfile "/static/include/components/apis/analogreader.md" >}}
+{{< readfile "/static/include/components/apis/analog.md" >}}
 
 <br>
 
@@ -141,7 +119,7 @@ Additionally, the nested `GPIOPin`, `Analog`, and `DigitalInterrupt` interfaces 
 
 {{< readfile "/static/include/components/apis/digitalinterrupt.md" >}}
 
-### ReadAnalog
+### AnalogByName
 
 Get an [`Analog`](#analogs) pin by `name`.
 
@@ -175,7 +153,7 @@ analog = await my_board.analog_by_name(name="my_example_analog")
 **Returns:**
 
 - [(Analog)](https://pkg.go.dev/go.viam.com/rdk/components/board#AnalogReader): An interface representing an analog pin configured and residing on the board.
-- [(bool)](https://pkg.go.dev/builtin#bool): True if there was an analog pin of this `name` found on your board.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -184,9 +162,6 @@ myBoard, err := board.FromRobot(robot, "my_board")
 
 // Get the Analog pin "my_example_analog".
 analog, err := myBoard.AnalogByName("my_example_analog")
-
-// Read the value from the analog pin.
-val, err := analog.Read(context.Background, map[string]interface{})
 ```
 
 {{% /tab %}}
@@ -445,58 +420,6 @@ myBoard.SetPowerMode(context.Background(), boardpb.PowerMode_POWER_MODE_OFFLINE_
 {{% /tab %}}
 {{< /tabs >}}
 
-### WriteAnalog
-
-Write an analog value to a pin on the board.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `pin` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the pin ({{< glossary_tooltip term_id="pin-number" text="pin number" >}}).
-- `value` [(int)](https://docs.python.org/3/library/functions.html#int): Value to write to the pin.
-- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- None
-
-```python {class="line-numbers linkable-line-numbers"}
-my_board = Board.from_robot(robot=robot, name="my_board")
-
-# Set pin 11 to value 48.
-await my_board.write_analog(pin="11", value=48)
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.write_analog).
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `pin` [(string)](https://pkg.go.dev/builtin#string): Name of the pin ({{< glossary_tooltip term_id="pin-number" text="pin number" >}}).
-- `value` [(int)](https://pkg.go.dev/builtin#int32): Value to write to the pin.
-- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-
-**Returns:**
-
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
-
-```go
-myBoard, err := board.FromRobot(robot, "my_board")
-
-// Set pin 11 to value 48.
-err := myBoard.WriteAnalog(context.Background(), "11", 48, nil)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### StreamTicks
 
 Start a stream of [`DigitalInterrupt`](/components/board/#digital_interrupts) ticks.
@@ -564,8 +487,8 @@ err = myBoard.StreamTicks(context.Background(), interrupts, ticksChan, nil)
 
 ### GetGeometries
 
-Get all the geometries associated with the board in its current configuration, in the [frame](/mobility/frame-system/) of the board.
-The [motion](/mobility/motion/) and [navigation](/mobility/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+Get all the geometries associated with the board in its current configuration, in the [frame](/services/frame-system/) of the board.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1137,7 +1060,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ### Read
 
-Read the current integer value of the digital signal output by the [ADC](#analogs).
+Read the current value from an analog pin or analog reader capable of reading analog values.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1149,9 +1072,10 @@ Read the current integer value of the digital signal output by the [ADC](#analog
 
 **Returns:**
 
-- [(int)](https://docs.python.org/3/library/functions.html#int): The value of the digital signal output by the analog pin.
+- [(Analog.Value)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.Analog.Value): The result of reading an analog reader.
+  It contains the raw data read as `value`, the reader’s minimum and maximum possible values as `min_range` and `max_range`, and its `step_size` (the minimum possible change between values it can read).
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.AnalogReader.read).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.Analog.read).
 
 ```python
 my_board = Board.from_robot(robot=robot, name="my_board")
@@ -1169,6 +1093,7 @@ analog = await my_board.analog_by_name(
 # Get the value of the digital signal "my_example_analog" has most
 # recently measured.
 reading = analog.read()
+reading_value = reading.value
 ```
 
 {{% /tab %}}
@@ -1181,48 +1106,53 @@ reading = analog.read()
 
 **Returns:**
 
-- [(int)](https://pkg.go.dev/builtin#int): The value of the digital signal output by the analog pin.
+- [(AnalogValue)](https://pkg.go.dev/go.viam.com/rdk/components/board#AnalogValue): The current value, including the integer `Value` of the digital signal output by the analog pin and the `Min`, `Max`, and `StepSize` of the reader.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Analog).
 
 ```go
 myBoard, err := board.FromRobot(robot, "my_board")
 
-// Get the Analog pin "my_example_analog".
+// Get the analog pin "my_example_analog".
 analog, err := myBoard.AnalogByName("my_example_analog")
 
 // Get the value of the digital signal "my_example_analog" has most recently measured.
-reading := analog.Read(context.Background(), nil)
+reading, err := analog.Read(context.Background(), nil)
+readingValue := reading.Value
+stepSize := reading.StepSize
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-### Close
+### Write
 
-Safely shut down the resource and prevent further use.
+Write an analog value to a pin or analog output on a board capable of doing so.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- None
+- `value` [(int)](https://docs.python.org/3/library/functions.html#int): Value to write to the pin.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
 - None
 
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.AnalogClient.write).
+
 ```python {class="line-numbers linkable-line-numbers"}
 my_board = Board.from_robot(robot=robot, name="my_board")
 
-# Get the Analog pin "my_example_analog".
-analog = await my_board.analog_by_name(
-    name="my_example_analog")
-```
+# Get the AnalogWriter “my_example_analog_writer”.
+writer = await my_board.analog_by_name(name="my_example_analog_writer")
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.AnalogReaderClient.close).
+await writer.write(42)
+```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -1230,22 +1160,24 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `value` [(int)](https://pkg.go.dev/builtin#int32): Value to write to the pin.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-```go {class="line-numbers linkable-line-numbers"}
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
+
+```go
 myBoard, err := board.FromRobot(robot, "my_board")
 
-// Get the Analog "my_example_analog".
+// Get the Analog pin "my_example_analog".
 analog, err := myBoard.AnalogByName("my_example_analog")
 
-// Read the current value from the analog pin.
-value, err := analog.Read(context.Background(), map[string]interface{})
+// Set the pin to value 48.
+err := analog.Write(context.Background(), 48, nil)
 ```
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{< /tabs >}}

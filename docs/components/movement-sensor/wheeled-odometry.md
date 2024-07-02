@@ -4,6 +4,7 @@ linkTitle: "wheeled-odometry"
 type: "docs"
 description: "Configure a wheeled odometry movement sensor."
 images: ["/icons/components/imu.svg"]
+toc_hide: true
 tags:
   [
     "movement sensor",
@@ -16,6 +17,7 @@ tags:
   ]
 aliases:
   - "/components/movement-sensor/wheeled-odometry/"
+component_description: "A model that uses encoders to get an odometry estimate from a wheeled base."
 # SMEs: Rand, Martha
 ---
 
@@ -25,11 +27,11 @@ _Wheeled odometry_ is the estimation of the rate of change of position, orientat
 Because of this method of estimation, you don't have to have a specific piece of movement sensor hardware to implement `wheeled-odometry` on your machine.
 This model uses [encoders](/components/encoder/) from [position reporting motors](/components/motor/) to get an odometry estimate of a wheeled base as it moves.
 
-With a configured `wheeled-odometry` movement sensor, your machine calculates an estimation of the position, orientation, linear velocity, and angular velocity of the wheeled base each time `time_interval_msec` elapses during a [session](/build/program/apis/sessions/).
+With a configured `wheeled-odometry` movement sensor, your machine calculates an estimation of the position, orientation, linear velocity, and angular velocity of the wheeled base each time `time_interval_msec` elapses during a [session](/appendix/apis/sessions/).
 You can access these readings through the [movement sensor API](/components/movement-sensor/#api).
 For the best accuracy with odometry calculations, it is recommended you configure a time interval of less than `1000` milliseconds.
 
-After configuring a `wheeled-odometry` movement sensor, you can operate your base with Viam's built-in services like the [navigation service](/mobility/navigation/).
+After configuring a `wheeled-odometry` movement sensor, you can operate your base with Viam's built-in services like the [navigation service](/services/navigation/).
 
 ## Set-up requirements
 
@@ -108,7 +110,7 @@ Fill in the attributes as applicable to your movement sensor, according to the t
 The following attributes are available for `wheeled-odometry` movement sensors:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `base` | string | **Required** | The `name` of the [base](/components/base/) to which the encoders making up this movement sensor are wired. |
 | `left_motors` | object | **Required** | A list containing the name of each of the bases' left [position-reporting motors](/components/motor/gpio/). |

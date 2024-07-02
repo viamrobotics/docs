@@ -7,6 +7,7 @@ images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 aliases:
   - "/components/encoder/single/"
+component_description: "A single pin “pulse output” encoder which returns its relative position but no direction."
 # SMEs: Rand
 ---
 
@@ -49,7 +50,7 @@ Fill in and edit the attributes as applicable.
 The following attributes are available for `single` encoders:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | The `name` of the [board](/components/board/) to which the encoder is wired. |
 | `pins` | object | **Required** | A struct holding the name of the pin wired to the encoder: <ul> <li> <code>i</code>: {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the pin to which the encoder is wired. </li> </ul> |

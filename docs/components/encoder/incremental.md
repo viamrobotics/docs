@@ -7,6 +7,7 @@ images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 aliases:
   - "/components/encoder/incremental/"
+component_description: "A two phase encoder, which can measure the speed and direction of rotation in relation to a given reference point."
 # SMEs: Rand
 ---
 
@@ -82,7 +83,7 @@ Fill in and edit the attributes as applicable.
 The following attributes are available for `incremental` encoders:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | The `name` of the [board](/components/board/) to which the encoder is wired. |
 | `pins` | object | **Required** | A struct holding the names of the pins wired to the encoder: <ul> <li> <code>a</code>: {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of one of the pins to which the encoder is wired. </li> <li> <code>b</code>: Required for two phase encoder. {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} for the second board pin to which the encoder is wired. </li><p>If the encoded motor does not operate as expected, the encoder pins might be configured in reverse, switch the <code>a</code> and <code>b</code> pin definitions in your incremental encoder attributes to reconfigure your encoded motor.</p> </ul> |

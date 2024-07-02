@@ -8,6 +8,9 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - "/components/camera/webcam/"
+component_description: "A standard camera that streams camera data."
+usage: 999999
+toc_hide: true
 # SMEs: Bijan, vision team
 ---
 
@@ -83,7 +86,7 @@ If you click on **Show more**, then the **video_path** field while your machine 
 The following attributes are available for `webcam` cameras:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `video_path` | string | Optional | The ID of or the path to the webcam. If you don't provide a `video_path`, it defaults to the first valid video path it finds. Using the ID of a webcam is more consistent than the path. See [Using `video_path`](#using-video_path). |
 | `format` | string | Optional | The camera image format, used with `video_path` to find the camera. See [Using `format`](#using-format). |
@@ -176,7 +179,7 @@ If you are capturing camera data, it can happen that the camera captures and syn
 
 ### CSI Camera not working on a Raspberry Pi
 
-If you are using a CSI camera v1.3 or v2.0 on a Raspberry Pi, you need to [enable legacy mode](/get-started/installation/prepare/rpi-setup/#enable-communication-protocols).
+If you are using a CSI camera v1.3 or v2.0 on a Raspberry Pi, you need to [enable legacy mode](/get-started/prepare/rpi-setup/#enable-communication-protocols).
 If you are using a CSI camera v3.0, you need to use the [`viam:camera:csi` module](https://github.com/viamrobotics/csi-camera/) instead.
 
 ### High CPU usage

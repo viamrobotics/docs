@@ -8,6 +8,7 @@ images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 aliases:
   - "/components/input-controller/mux/"
+component_description: "Multiplexed controller, combining multiple sources of input."
 # SMEs: James
 ---
 
@@ -108,7 +109,7 @@ The following example configuration combines a `gamepad` and a `webgamepad` cont
 The following attributes are available for `mux` input controllers:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `sources` | array | **Required** | The `name` of every controller component you wish to combine input from. |
 

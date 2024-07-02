@@ -11,6 +11,7 @@ images: ["/icons/components/base.svg"]
 modulescript: true
 aliases:
   - "/components/base/"
+hide_children: true
 # SMEs: Steve B
 ---
 
@@ -32,29 +33,14 @@ Most mobile robots with a base need at least the following hardware:
 ## Related services
 
 {{< cards >}}
-{{< relatedcard link="/mobility/base-rc/" >}}
-{{< relatedcard link="/mobility/frame-system/" >}}
-{{< relatedcard link="/mobility/navigation/" >}}
+{{< relatedcard link="/services/base-rc/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/navigation/" >}}
 {{< /cards >}}
 
 ## Supported models
 
-To use your base with Viam, check whether one of the following [built-in models](#built-in-models) or {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} supports your base.
-
-### Built-in models
-
-For configuration information, click on the model name:
-
-<!-- prettier-ignore -->
-| Model | Description |
-| ----- | ----------- |
-| [`wheeled`](wheeled/) | Mobile wheeled robot |
-| [`sensor-controlled`](sensor-controlled/) | A model that wraps other base models with feedback control from a movement sensor |
-| [`fake`](fake/) | A model used for testing, with no physical hardware |
-
-### Modular resources
-
-{{<modular-resources api="rdk:component:base" type="base">}}
+{{<resources api="rdk:component:base" type="base">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
@@ -554,8 +540,8 @@ myBaseWheelCircumference := properties.WheelCircumferenceMeters
 
 ### GetGeometries
 
-Get all the geometries associated with the base in its current configuration, in the [frame](/mobility/frame-system/) of the base.
-The [motion](/mobility/motion/) and [navigation](/mobility/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+Get all the geometries associated with the base in its current configuration, in the [frame](/services/frame-system/) of the base.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

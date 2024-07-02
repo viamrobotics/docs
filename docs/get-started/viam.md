@@ -27,7 +27,7 @@ When using Viam, this is what you'll need to know to plan your machine:
   Many {{< glossary_tooltip term_id="component" text="components">}} are natively supported by the Viam platform.
   You will not need to write a single line of code to integrate them, and swapping out component models will not require code changes.
 - **Functionality**:
-  You can make use of computer vision, motion planning, Simultaneous Localization And Mapping (SLAM), data management, machine learning, and more by configuring Viam's built-in {{< glossary_tooltip term_id="service" text="services">}}.
+  You can use computer vision, motion planning, simultaneous localization and mapping (SLAM), data management, machine learning, and more by configuring Viam's built-in {{< glossary_tooltip term_id="service" text="services">}}.
 - **Architecture**:
   You can build simple machines or multi-part machines that use secure communication channels across local networks and the cloud, all of which can be managed with a uniform API.
 - **Extensibility**: If you need additional functionality, you can leverage {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} from the Viam registry to extend support in Viam to new hardware components and software services.
@@ -74,7 +74,7 @@ For each component that makes up your machine:
 
 1. Add it to your machine by [choosing the component type](/build/configure/#components) (example: `camera`) and model (example: `webcam`).
 2. Test it with the visual [control tab](/fleet/control/).
-3. See any problems with in-app [logs](/fleet/machines/#logs), review or roll back [configuration history](/fleet/machines/#configure).
+3. See any problems with in-app [logs](/cloud/machines/#logs), review or roll back [configuration history](/cloud/machines/#configure).
 
 After configuring your machine's hardware, you can configure [high level functionality](/services/) the same way:
 
@@ -92,7 +92,7 @@ After configuring your machine's hardware, you can configure [high level functio
 
 <img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure machine control." class="alignleft" style="max-width:270px;"></img>
 
-The Viam platform provides a consistent programming interface for all machines, allowing you to [control your machines](/build/program/apis/) with code in the **language of your choice**.
+The Viam platform provides a consistent programming interface for all machines, allowing you to [control your machines](/appendix/apis/) with code in the **language of your choice**.
 Viam currently has SDKs for [Go](https://pkg.go.dev/go.viam.com/rdk), [Python](https://python.viam.dev/), and [TypeScript](https://ts.viam.dev/).
 Additional SDKs are coming soon, including Rust, Java, C++, and Flutter.
 
@@ -108,7 +108,7 @@ There are four categories of APIs:
 - [Robot](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) provides high level machine commands
 - [Components](/components/) like motors, arms, GPS
 - [Services](/services/) like computer vision, motion planning, Simultaneous Localization And Mapping (SLAM)
-- Cloud applications like [Fleet Management](/fleet/), [Data Management](/data/)
+- Cloud applications like [Fleet Management](/fleet/), [Data Management](/services/data/)
 
 You can see the Viam API specification on [GitHub](https://github.com/viamrobotics/api).
 

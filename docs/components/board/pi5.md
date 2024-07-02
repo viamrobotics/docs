@@ -6,12 +6,14 @@ type: "docs"
 description: "Configure a Raspberry Pi 5 board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
+component_description: "Raspberry Pi 5."
+usage: 999999
 # SMEs: Bucket, Alan
 ---
 
 {{% alert title="REQUIREMENTS" color="note" %}}
 
-Follow the [setup guide](/get-started/installation/prepare/rpi-setup/) to prepare your Pi for running `viam-server` before configuring a `pi5` board.
+Follow the [setup guide](/get-started/prepare/rpi-setup/) to prepare your Pi for running `viam-server` before configuring a `pi5` board.
 
 {{% /alert %}}
 
@@ -21,7 +23,7 @@ To configure a Raspberry Pi 4 or earlier, see [Configure a Raspberry Pi 4, 3, or
 
 ### Enable hardware PWM
 
-_(Optional)_ If you want to use hardware PWM on {{< glossary_tooltip term_id="pin-number" text="pins" >}} 12 and 35, edit <file>/boot/config.txt</file> on your Pi, adding the following line:
+_(Optional)_ If you want to use hardware PWM on {{< glossary_tooltip term_id="pin-number" text="pins" >}} 12 and 35, edit <file>/boot/firmware/config.txt</file> on your Pi, adding the following line:
 
 ```sh {class="line-numbers linkable-line-numbers"}
 dtoverlay=pwm-2chan
@@ -85,7 +87,7 @@ Edit the attributes as applicable to your board, according to the table below.
 The following attributes are available for `pi5` boards:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](#analogs). |
 | `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](#digital_interrupts). |

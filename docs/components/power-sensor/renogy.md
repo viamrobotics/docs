@@ -9,6 +9,7 @@ icon: true
 images: ["/icons/components/sensor.svg"]
 aliases:
   - "/components/power-sensor/renogy/"
+component_description: "Solar charge controller."
 # SME: #team-bucket
 ---
 
@@ -78,7 +79,7 @@ The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB
 The following attributes are available for `renogy` sensors:
 
 <!-- prettier-ignore -->
-| Attribute | Type | Inclusion | Description |
+| Attribute | Type | Required? | Description |
 | --------- | ---- | --------- | ----------- |
 | `serial_path` | string | Optional | The full filesystem path to the serial device, starting with <file>/dev/</file>. To find your serial device path, first connect the serial device to your machine, then:<ul><li>On Linux, run <code>ls /dev/serial/by-path/\*</code> to show connected serial devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/serial/by-path/usb-0:1.1:1.0"</code>.</li><li>On macOS, run <code>ls /dev/tty\* \| grep -i usb</code> to show connected USB serial devices, <code>ls /dev/tty\*</code> to browse all devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/ttyS0"</code>.</li></ul><br>Default: `/dev/serial0` |
 | `serial_baud_rate` | integer | Optional | The baud rate to use for serial communications. <br> Default: `9600` |

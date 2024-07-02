@@ -8,6 +8,7 @@ images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 aliases:
   - "/components/arm/ur5e/"
+component_description: "Universal Robots UR5e"
 ---
 
 Configure a `ur5e` arm to add a [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) to your machine:
@@ -72,8 +73,8 @@ Edit and fill in the attributes as applicable.
 The following attributes are available for `ur5e` arms:
 
 <!-- prettier-ignore -->
-| Attribute | Type | Inclusion | Description |
-| --------- | ---- | ----------| ----------- |
+| Attribute | Type | Required? | Description |
+| --------- | ---- | --------- | ----------- |
 | `speed_degs_per_sec` | float | **Required** | Desired maximum speed of joint movement in degrees per second. Must be between `3` and `180`. |
 | `host` | string | **Required** | The IP address of the arm's system on your network. Find this when setting up your UR5e. |
 

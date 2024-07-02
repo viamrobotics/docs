@@ -7,6 +7,7 @@ description: "Configure a brushed DC motor driven by a roboclaw motor controller
 images: ["/icons/components/motor.svg"]
 aliases:
   - "/components/motor/roboclaw/"
+component_description: "Standard brushed DC motor driven by Basicmicro’s RoboClaw motor controller."
 # SMEs: Olivia, Rand
 ---
 
@@ -90,7 +91,7 @@ The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB
 The following attributes are available for `roboclaw` motors:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `serial_path` | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. To find your serial device path, first connect the serial device to your machine, then:<ul><li>On Linux, run <code>ls /dev/serial/by-path/\*</code> to show connected serial devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/serial/by-path/usb-0:1.1:1.0"</code>.</li><li>On macOS, run <code>ls /dev/tty\* \| grep -i usb</code> to show connected USB serial devices, <code>ls /dev/tty\*</code> to browse all devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/ttyS0"</code>.</li></ul> |
 | `serial_baud_rate` | int | Optional | [Rate to send data](https://learn.sparkfun.com/tutorials/serial-communication) over the serial line. This must match the baudrate you have set up using basicmicro's setup program. You cannot have multiple `roboclaw` motors with different baud rates. <br> Default: `38400` |

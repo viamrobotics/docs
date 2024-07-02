@@ -25,17 +25,17 @@ Depending on your needs, you may wish to define a new API subtype, deploy a cust
 
 ## New API subtypes
 
-The [component APIs](/build/program/apis/#component-apis) and [service APIs](/build/program/apis/#service-apis) provide a standard interface for controlling common hardware components and higher level functionality.
+The [component APIs](/appendix/apis/#component-apis) and [service APIs](/appendix/apis/#service-apis) provide a standard interface for controlling common hardware components and higher level functionality.
 If your use case aligns closely with an existing API, you should use that API to program your new resource.
 
-If you want to use most of an existing API but need just a few other functions, you can use the [`DoCommand`](/build/program/apis/#docommand) endpoint together with [extra parameters](/build/program/use-extra-params/) to add custom functionality to an existing resource {{< glossary_tooltip term_id="subtype" text="subtype" >}}.
+If you want to use most of an existing API but need just a few other functions, you can use the [`DoCommand`](/appendix/apis/#docommand) endpoint together with [extra parameters](/build/program/use-extra-params/) to add custom functionality to an existing resource {{< glossary_tooltip term_id="subtype" text="subtype" >}}.
 
 Or, if your resource does not fit into an existing resource subtype, you can use one of the following:
 
-- If you are working with a component that doesn't fit into any of the existing [component APIs](/build/program/apis/#component-apis), you can use the [generic component](/components/generic/) to build your own component API.
-- If you are designing a service that doesn't fit into any of the existing [service APIs](/build/program/apis/#service-apis), you can use the [generic service](/registry/advanced/generic/) to build your own service API.
+- If you are working with a component that doesn't fit into any of the existing [component APIs](/appendix/apis/#component-apis), you can use the [generic component](/components/generic/) to build your own component API.
+- If you are designing a service that doesn't fit into any of the existing [service APIs](/appendix/apis/#service-apis), you can use the [generic service](/services/generic/) to build your own service API.
 
-Both generic resources use the [`DoCommand`](/build/program/apis/#docommand) endpoint to enable you to make arbitrary calls as needed for your resource.
+Both generic resources use the [`DoCommand`](/appendix/apis/#docommand) endpoint to enable you to make arbitrary calls as needed for your resource.
 
 Alternatively, you can also [define a new resource subtype and an API for that subtype](/registry/advanced/create-subtype/) if none of the above options are a good fit for your use case.
 
@@ -47,6 +47,6 @@ However, if you are unable to use [modular resources](/registry/) because you ne
 
 ## Design a custom ML model
 
-When working with the [ML model service](/ml/), you can [deploy an existing model](/ml/upload-model/) or [train your own model](/ml/train-model/).
+When working with the [ML model service](/services/ml/), you can [deploy an existing model](/services/ml/upload-model/) or [train your own model](/services/ml/train-model/).
 
-However, if you are writing your own {{< glossary_tooltip term_id="module" text="module" >}} that uses the ML model service together with the [vision service](/ml/vision/), you can also [design your own ML model](/registry/advanced/mlmodel-design/) to better match your specific use case.
+However, if you are writing your own {{< glossary_tooltip term_id="module" text="module" >}} that uses the ML model service together with the [vision service](/services/vision/), you can also [design your own ML model](/registry/advanced/mlmodel-design/) to better match your specific use case.

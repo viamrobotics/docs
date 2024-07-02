@@ -3,32 +3,6 @@ The AppImage is a single, self-contained binary that runs on 64-bit Linux system
 
 To install `viam-server` on a Linux computer:
 
-1. Determine if FUSE version 2 is installed on your Linux system:
-
-   ```sh {class="command-line" data-prompt="$"}
-   find /usr -name libfuse.so.2
-   ```
-
-   If the above command does not return a path to the `libfuse.so.2` file, install FUSE version 2 according to your Linux platform:
-
-   - If installing `viam-server` on a Raspberry Pi running Raspberry Pi OS (Debian GNU/Linux 12 bookworm or later), install FUSE version 2 with the following command:
-
-     ```sh {class="command-line" data-prompt="$"}
-     sudo apt install libfuse2
-     ```
-
-   - If installing `viam-server` on Ubuntu, install FUSE version 2 with the following commands:
-
-     ```sh {class="command-line" data-prompt="$"}
-     sudo add-apt-repository universe
-     sudo apt install libfuse2
-     ```
-
-   - If installing `viam-server` on other Linux distributions, or for more information, see [FUSE troubleshooting](/appendix/troubleshooting/#appimages-require-fuse-to-run).
-
-   **Do not** install the `fuse` package (that is, without a version number).
-   `viam-server` requires FUSE version 2 specifically (`libfuse2`).
-
 1. Go to the [Viam app](https://app.viam.com). Create an account if you haven't already.
 
 1. Add a new machine by providing a name in the **New machine** field and clicking **Add machine**:

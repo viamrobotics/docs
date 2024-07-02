@@ -8,12 +8,12 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - /micro-rdk/board/esp32/
-# SMEs: Gautham, Rand
+# SMEs: Gautham, Nico, Andrew
 ---
 
 {{% alert title="REQUIREMENTS" color="caution" %}}
 
-Follow the [setup guide](/get-started/installation/prepare/microcontrollers/) to prepare your ESP32 for running the micro-RDK before configuring an `esp32` board.
+Follow the [setup guide](/get-started/installation/microcontrollers/) to prepare your ESP32 for running the micro-RDK before configuring an `esp32` board.
 
 Viam recommends purchasing the ESP32 with a development board. The following ESP32 microcontrollers are supported:
 
@@ -54,6 +54,11 @@ Copy the following JSON template and paste it into your configuration inside the
         "pin": <int>,
         "name": "<your-analog-name>"
       }
+    ],
+    "digital_interrupts" : [
+        {
+         "pin": <int>
+        }
     ]
   },
   "depends_on": []
@@ -76,6 +81,11 @@ Copy the following JSON template and paste it into your configuration inside the
         "pin": "34",
         "name": "sensor"
       }
+    ],
+    "digital_interrupts": [
+      {
+        "pin": 4
+      }
     ]
   },
   "depends_on": []
@@ -91,12 +101,12 @@ Click the **Save** button in the top right corner of the page.
 The following attributes are available for `esp32` boards:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](#analogs). |
 | `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](#i2cs). |
 | `digital_interrupts` | object | Optional | Any digital interrupts' GPIO number. See [configuration info](#digital_interrupts). |
-| `pins` | object | Required | The GPIO number of any GPIO pins you wish to use as input/output with the [`GPIOPin` API](/build/program/apis/#gpio-pins). |
+| `pins` | object | Required | The GPIO number of any GPIO pins you wish to use as input/output with the [`GPIOPin` API](/appendix/apis/#gpio-pins). |
 
 Any pin not specified in either `"pins"` or `"digital_interrupts"` cannot be interacted with through the [board API](/components/board/#api).
 Interaction with digital interrupts is only supported with the [board API](/components/board/#api); these digital interrupts cannot be used as software interrupts in driver implementations.
@@ -106,17 +116,17 @@ Interaction with digital interrupts is only supported with the [board API](/comp
 The following properties are available for `analogs`:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-|`name` | string | **Required** | Your name for the analog reader. |
-|`pin`| integer | **Required** | The GPIO number of the ADC's connection pin, wired to the board.
+| `name` | string | **Required** | Your name for the analog reader. |
+| `pin`| integer | **Required** | The GPIO number of the ADC's connection pin, wired to the board. |
 
 ### `i2cs`
 
 The following properties are available for `i2cs`:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 |`name`| string| **Required** | `name` of the I<sup>2</sup>C bus. |
 |`bus`| string | **Required** | The index of the I<sup>2</sup>C bus. Must be either `i2c0` or `i2c1`. |
@@ -130,13 +140,14 @@ The following properties are available for `i2cs`:
 The following properties are available for `digital_interrupts`:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-|`pin`| string | **Required** | The GPIO number of the board's GPIO pin that you wish to configure the digital interrupt for. |
+|`pin`| integer | **Required** | The GPIO number of the board's GPIO pin that you wish to configure the digital interrupt for. |
 
 ### PWM signals on `esp32` pins
 
 You can set PWM frequencies with Viam through the [`GPIOPin` API](/build/micro-rdk/board/#api).
+Refer to the [Espressif documentation for valid frequencies and duty resolutions](https://docs.espressif.com/projects/esp-idf/en/v4.4/esp32/api-reference/peripherals/ledc.html?#supported-range-of-frequency-and-duty-resolutions).
 A configured `esp32` board can support a maximum of four different PWM frequencies simultaneously, as the boards only have four available timers.
 
 For example:

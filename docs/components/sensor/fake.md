@@ -9,6 +9,7 @@ icon: true
 images: ["/icons/components/sensor.svg"]
 aliases:
   - "/components/sensor/fake/"
+component_description: "A model used for testing, with no physical hardware."
 # SME: #team-bucket
 ---
 
@@ -47,5 +48,7 @@ No attributes are available for `fake` sensors.
 A call to [`Readings()`](../#getreadings) on a `fake` sensor always returns readings of `{"a":1, "b":2, "c":3}`.
 
 {{% /alert %}}
+
+## Test the sensor
 
 {{< readfile "/static/include/components/test-control/sensor-control.md" >}}

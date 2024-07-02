@@ -19,7 +19,7 @@ Due to the way processes are designed for stability, if you are configuring a pr
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-1. [`ssh` into your board](/get-started/installation/prepare/rpi-setup/#connect-with-ssh) and install `pip`:
+1. [`ssh` into your board](/get-started/prepare/rpi-setup/#connect-with-ssh) and install `pip`:
 
    ```sh {class="command-line" data-prompt="$"}
    sudo apt install python3-pip
@@ -57,8 +57,8 @@ Navigate to that card.
 Then fill in the following fields:
 
 <!-- prettier-ignore -->
-| Attribute (Builder Mode) | Attribute (JSON) | Type    | Inclusion    | Description |
-| ------------------------ | -------------------- | ------- | ------------ | ----------- |
+| Attribute (Builder Mode) | Attribute (JSON) | Type    | Required? | Description |
+| ------------------------ | ---------------- | ------- | --------- | ----------- |
 | Executable               | `name`               | string  | **Required** | The command you want to execute when your machine connects to the server. |
 | Arguments                | `args`               | string  | Optional     | Arguments to follow the command. |
 | Working directory        | `cwd`                | string  | Optional     | Where you want the process to execute. Defaults to the directory where `viam-server` executes. |

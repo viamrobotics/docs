@@ -113,5 +113,84 @@
                         )}}
                   {{- end -}}
             {{- end -}}
+            {{- if eq .Section "components" -}}
+                  {{- if and (and (ne .Parent.Title "Components") (not .Draft)) (not .Params.no_component) -}}
+                  {{- if .Params.canonical -}}
+                        {{- $.Scratch.Set "permalink" (printf "%s" .Params.canonical) -}}
+                        {{- $.Scratch.Set "relpermalink" (printf "%s" .Params.canonical) -}}
+                  {{- else -}}
+                        {{- $.Scratch.Set "permalink" .Permalink -}}
+                        {{- $.Scratch.Set "relpermalink" (printf "../..%s" .RelPermalink) -}}
+                  {{- end -}}
+
+                  {{- $.Scratch.Set "id" (printf "builtin:rdk:component:%s:%s" (strings.Replace (strings.ToLower .Parent.LinkTitle) " " "_" ) (strings.ToLower .LinkTitle) ) -}}
+                  {{- $.Scratch.Set "api" (printf "rdk:component:%s" (strings.Replace (strings.ToLower .Parent.LinkTitle) " " "_" )) -}}
+                  {{- $.Scratch.Set "component_description" (printf "Built-in component: %s" .Params.component_description) -}}
+                  {{- if .Params.usage -}}
+                        {{- $.Scratch.Set "usage" .Params.usage -}}
+                  {{- else -}}
+                        {{- $.Scratch.Set "usage" 800000 -}}
+                  {{- end -}}
+                  {{- if not .Params.component_description -}}
+                        {{ warnf "Missing description: %s %s" .Parent.LinkTitle .LinkTitle }}
+                  {{- end -}}
+                  {{- $.Scratch.Add "index"
+                  (dict
+                  "id" ($.Scratch.Get "id")
+                  "module_id" "builtin"
+                  "url" ($.Scratch.Get "relpermalink")
+                  "type" (strings.Replace (strings.ToLower .LinkTitle) " " "_" )
+                  "model" .LinkTitle
+                  "description" ($.Scratch.Get "component_description")
+                  "api" ($.Scratch.Get "api")
+                  "total_organization_usage" ($.Scratch.Get "usage")
+                  "total_robot_usage" ($.Scratch.Get "usage")
+                  )}}
+                  {{- end -}}
+            {{- end -}}
+            {{- if eq .Section "services" -}}
+                  {{ $services_with_resources := slice "Generic Service" "Deploy Model" "Computer Vision" }}
+                  {{- if and (in $services_with_resources .Parent.LinkTitle) (and (not .Draft) (not .Params.no_service)) -}}
+                  {{- if .Params.canonical -}}
+                        {{- $.Scratch.Set "permalink" (printf "%s" .Params.canonical) -}}
+                        {{- $.Scratch.Set "relpermalink" (printf "%s" .Params.canonical) -}}
+                  {{- else -}}
+                        {{- $.Scratch.Set "permalink" .Permalink -}}
+                        {{- $.Scratch.Set "relpermalink" (printf "../..%s" .RelPermalink) -}}
+                  {{- end -}}
+
+                  {{- $.Scratch.Set "id" (printf "builtin:rdk:service:%s:%s" (strings.Replace (strings.ToLower .Parent.LinkTitle) " " "_" ) (strings.ToLower .LinkTitle) ) -}}
+                  {{- if eq .Parent.LinkTitle "Deploy Model" -}}
+                        {{- $.Scratch.Set "api" (printf "rdk:service:mlmodel" ) -}}
+                  {{- else -}}
+                        {{- if eq .Parent.LinkTitle "Generic Service" -}}
+                        {{- $.Scratch.Set "api" (printf "rdk:service:generic" ) -}}
+                        {{- else -}}
+                        {{- $.Scratch.Set "api" (printf "rdk:service:vision" ) -}}
+                        {{- end -}}
+                  {{- end -}}
+                  {{- $.Scratch.Set "service_description" (printf "Built-in service: %s" .Params.service_description) -}}
+                  {{- if .Params.usage -}}
+                        {{- $.Scratch.Set "usage" .Params.usage -}}
+                  {{- else -}}
+                        {{- $.Scratch.Set "usage" 800000 -}}
+                  {{- end -}}
+                  {{- if not .Params.service_description -}}
+                        {{ warnf "Missing description: %s %s" .Parent.LinkTitle .LinkTitle }}
+                  {{- end -}}
+                  {{- $.Scratch.Add "index"
+                  (dict
+                  "id" ($.Scratch.Get "id")
+                  "module_id" "builtin"
+                  "url" ($.Scratch.Get "relpermalink")
+                  "type" (strings.Replace (strings.ToLower .LinkTitle) " " "_" )
+                  "model" .LinkTitle
+                  "description" ($.Scratch.Get "service_description")
+                  "api" ($.Scratch.Get "api")
+                  "total_organization_usage" ($.Scratch.Get "usage")
+                  "total_robot_usage" ($.Scratch.Get "usage")
+                  )}}
+                  {{- end -}}
+            {{- end -}}
       {{- end -}}
 {{- $.Scratch.Get "index" | jsonify -}}

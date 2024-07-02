@@ -19,9 +19,98 @@ outputs:
 
 <!-- If there is no concrete date for a change that makes sense, use the end of the month it was released in. -->
 
-{{% changelog date="2024-04-30" color="removed" title="Removed status from Board API" %}}
+<!-- This isn't in the docs yet
+{{% changelog date="2024-06-14" color="changed" title="Python get_robot_part_logs parameters" %}}
 
-Viam has removed support for following Board API methods models: `Status()`, `AnalogStatus()`, `DigitalInterruptStatus()`, `Close()`, `Tick()`, `AddCallback()`, and `RemoveCallback()`.
+The `errors_only` parameter has been removed from [`get_robot_part_logs()`](/appendix/apis/fleet/#getrobotpartlogs) and replaced with `log_levels`.
+
+{{% /changelog %}}-->
+
+<!-- This isn't in the docs yet
+{{% changelog date="2024-05-28" color="added" title="CaptureAllFromCamera and GetProperties to vision API" %}}
+
+The vision service now supports two new methods: [`CaptureAllFromCamera`](/services/vision/#captureallfromcamera) and [`GetProperties`](/services/vision/#getproperties).
+
+{{% /changelog %}}-->
+
+{{% changelog date="2024-05-28" color="changed" title="Return type of analog Read" %}}
+
+The board analog API [`Read()`](/components/board/#read) method now returns an `AnalogValue` struct instead of a single int.
+The struct contains an int representing the value of the reading, min and max range of values, and the precision of the reading.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-05-14" color="changed" title="Renamed GeoObstacle to GeoGeometry" %}}
+
+The motion service API parameter `GeoObstacle` has been renamed to `GeoGeometry`.
+This affects users of the [`MoveOnGlobe()`](/services/motion/#moveonglobe) method.
+
+{{% /changelog %}}
+
+{{< changelog date="2024-05-09" color="changed" title="Return type of GetImage" >}}
+
+The Python SDK introduced a new image container class called [`ViamImage`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage).
+The camera component's [`GetImage()`](/components/camera/#getimage) method now returns a `ViamImage` type, and the vision service's [`GetDetections()`](/services/vision/#getdetections) and [`GetClassifications()`](/services/vision/#getclassifications) methods take in `ViamImage` as a parameter.
+
+You can use the helper functions `viam_to_pil_image` and `pil_to_viam_image` provided by the Python SDK to convert the `ViamImage` into a [`PIL Image`](https://omz-software.com/pythonista/docs/ios/Image.html) and vice versa.
+
+{{< expand "Click for an example of using the ViamImage -> PIL Image helper functions." >}}
+
+```python {class="line-numbers linkable-line-numbers"}
+# from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
+# < ADD ABOVE IMPORT TO BEGINNING OF PROGRAM >
+
+# Get the ViamImage from your camera.
+frame = await my_camera.get_image()
+
+# Convert "frame" to a PIL Image representation.
+pil_frame = viam_to_pil_image(frame)
+
+# Use methods from the PIL Image class to get size.
+x, y = pil_frame.size[0], pil_frame.size[1]
+# Crop image to get only the left two fifths of the original image.
+cropped_pil_frame = pil_frame.crop((0, 0, x / 2.5, y))
+
+# Convert back to ViamImage.
+cropped_frame = pil_to_viam_image(cropped_pil_frame)
+
+# Get detections from your vision service.
+detections = await detector.get_detections(cropped_frame)
+```
+
+{{< /expand >}}
+{{< /changelog >}}
+
+{{% changelog date="2024-05-08" color="removed" title="WriteAnalog from Go SDK" %}}
+
+The `WriteAnalog()` method has been removed from the Go SDK.
+Use [`AnalogByName()`](/components/board/#analogbyname) followed by [`Write()`](/components/board/#write) instead.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-04-30" color="changed" title="Python SDK data retrieval behavior" %}}
+
+[`tabular_data_by_filter()`](/appendix/apis/data-client/#tabulardatabyfilter) and [`binary_data_by_filter()`](/appendix/apis/data-client/#binarydatabyfilter) now return paginated data.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-04-30" color="changed" title="Renamed AnalogReader to Analog" %}}
+
+`AnalogReader` has been renamed to `Analog`.
+The functionality remains the same, but code that uses [analogs](/components/board/#analogs) must be updated.
+`AnalogReaderByName()` and `AnalogReaderNames()` have become [`AnalogByName()`](/components/board/#analogbyname) and [`AnalogNames()`](/components/board/#analognames), respectively.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-04-30" color="added" title="Part online and part offline triggers" %}}
+
+You can now configure [triggers](/build/configure/triggers/) to execute actions when a {{< glossary_tooltip term_id="part" text="machine part" >}} comes online or goes offline.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-04-30" color="removed" title="Status from Board API" %}}
+
+Viam has removed support for the following board API methods: `Status()`, `AnalogStatus()`, `DigitalInterruptStatus()`, `Close()`, `Tick()`, `AddCallback()`, and `RemoveCallback()`.
 
 {{% /changelog %}}
 
@@ -29,39 +118,44 @@ Viam has removed support for following Board API methods models: `Status()`, `An
 
 Viam has removed support for following builtin camera models: `single_stream`, `dual_stream`, `align_color_depth_extrinsics`, and `align_color_depth_homography`.
 
-<!-- Viam has replaced the following camera models with module model equivalents: -->
+{{% /changelog %}}
 
-<!-- - `velodyne` is now [`viam:camera:velodyne`]()
-- `join_color_depth` is now [`viam:camera:join_color_depth`]()
-- `join_pointclouds` is now [`viam:camera:join_point_clouds
-`]()
-- `ultrasonic` is now [`viam:camera:ultrasonic`]() and [`viam:sensor:ultrasonic`]() -->
+{{% changelog date="2024-04-17" color="changed" title="Updated GetCloudMetadata response" %}}
+
+In addition to the existing returned metadata, the [`GetCloudMetadata`](/appendix/apis/robot/#getcloudmetadata) method now returns `machine_id` and `machine_part_id` as well.
+
+{{% /changelog %}}
+
+{{% changelog date="2024-04-16" color="improved" title="Viam app interface" %}}
+
+The [Viam app](https://app.viam.com) machine page UI has been updated significantly.
+In addition to other improvements, your component, service, and other resource config cards are all displayed on one page instead of in separate tabs.
 
 {{% /changelog %}}
 
 {{% changelog date="2024-03-01" color="added" title="Additional ML models" %}}
 
 Viam has added support for the TensorFlow, PyTorch, and ONNX ML model frameworks, expanding upon the existing support for TensorFlow Lite models.
-You can now [upload your own ML model](/ml/upload-model/) using any of these frameworks for use with the Vision service.
+You can now [upload your own ML model](/services/ml/upload-model/) using any of these frameworks for use with the Vision service.
 
 {{% /changelog %}}
 
-{{% changelog date="2024-03-01" color="added" title="Ultrasonic sensor for Micro-RDK" %}}
+{{% changelog date="2024-03-01" color="added" title="Ultrasonic sensor for micro-RDK" %}}
 
-You can now use the [ultrasonic sensor component](/build/micro-rdk/sensor/ultrasonic/) with the [Micro-RDK](/build/micro-rdk/) to integrate a [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running the Micro-RDK.
+You can now use the [ultrasonic sensor component](/build/micro-rdk/sensor/ultrasonic/) with the [micro-RDK](/build/micro-rdk/) to integrate an [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running the micro-RDK.
 
 {{% /changelog %}}
 
 {{% changelog date="2024-03-01" color="added" title="Edit a machine configuration that uses a fragment" %}}
 
-You can now edit the configuration of an existing machine that has been configured with a fragment by using [the `fragment_mods` object](/fleet/configure-a-fleet/#modify-the-config-of-a-machine-that-uses-a-fragment) in your configuration.
+You can now edit the configuration of an existing machine that has been configured with a fragment by using [the `fragment_mods` object](/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment) in your configuration.
 You can use the `fragment_mods` objects to be able to deploy a fragment to a fleet of machines, but still be able to make additional per-machine edits as needed.
 
 {{% /changelog %}}
 
 {{% changelog date="2024-03-01" color="added" title="Dual GPS movement sensor" %}}
 
-You can now use the [dual GPS movement sensor component](/components/movement-sensor/gps/dual-gps-rtk/) to integrate a movement sensor that employs two GPS sensors into your machine.
+You can now use the [dual GPS movement sensor component](/components/movement-sensor/dual-gps-rtk/) to integrate a movement sensor that employs two GPS sensors into your machine.
 The dual GPS movement sensor calculates a compass heading from both GPS sensors, and returns the midpoint position between the two sensors as its position.
 
 {{% /changelog %}}
@@ -75,13 +169,13 @@ The Viam agent is a software provisioning manager that you can install on your m
 
 {{% changelog date="2024-02-12" color="added" title="Generic service" %}}
 
-You can now use the [generic service](/registry/advanced/generic/) to define new, unique types of services that do not already have an [appropriate API](/build/program/apis/#service-apis) defined for them.
+You can now use the [generic service](/services/generic/) to define new, unique types of services that do not already have an [appropriate API](/appendix/apis/#service-apis) defined for them.
 
 {{% /changelog %}}
 
 {{% changelog date="2024-02-12" color="added" title="ML models in the registry" %}}
 
-You can now [upload machine learning (ML) models](/ml/upload-model/) to the Viam registry, in addition to modules.
+You can now [upload machine learning (ML) models](/services/ml/upload-model/) to the Viam registry, in addition to modules.
 You may upload models you have trained yourself using the Viam app, or models you have trained outside of the App.
 When uploading, you have the option to make your model available to the general public for reuse.
 
@@ -95,16 +189,16 @@ Viam has added a [sensor-controlled base](/components/base/sensor-controlled/) c
 
 {{% changelog date="2024-01-31" color="added" title="Visualize captured data" %}}
 
-You can now [visualize your data](/data/visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
-You can visualize any tabular data, such as sensor readings, that you have [synced](/data/cloud-sync/) to the Viam app from your machine.
+You can now [visualize your data](/use-cases/sensor-data-visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
+You can visualize any data, such as sensor readings, that you have [synced](/services/data/cloud-sync/) to the Viam app from your machine.
 
 See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) for a full walkthrough focused on Grafana specifically.
 
 {{% /changelog %}}
 
-{{% changelog date="2024-01-31" color="added" title="Use webhooks to trigger actions" %}}
+{{% changelog date="2024-01-31" color="added" title="Use triggers to trigger actions" %}}
 
-You can now configure [webhooks](/build/configure/webhooks/) to trigger actions when certain types of data are sent from your machine to the cloud.
+You can now configure [triggers](/build/configure/triggers/) (previously called webhooks) to execute actions when certain types of data are sent from your machine to the cloud.
 
 {{% /changelog %}}
 
@@ -125,7 +219,7 @@ You can now run `viam-server` on a [Raspberry Pi 5](/components/board/pi5/) with
 
 {{% changelog date="2023-12-31" color="added" title="Role-based access control" %}}
 
-Users can now have [access to different fleet management capabilities](/fleet/rbac/) depending on whether they are an owner or an operator of a given organization, location, or machine.
+Users can now have [access to different fleet management capabilities](/cloud/rbac/) depending on whether they are an owner or an operator of a given organization, location, or machine.
 
 {{% /changelog %}}
 
@@ -139,22 +233,22 @@ Location secrets, the previous method of authentication, is deprecated and will 
 
 {{% changelog date="2023-11-30" color="added" title="Queryable sensor data" %}}
 
-Once you have added the data management service and synced tabular data, such as sensor readings, to the Viam app, you can now run queries against both captured tabular data as well as its metadata using either SQL or MQL.
+Once you have added the data management service and synced data, such as sensor readings, to the Viam app, you can now run queries against both captured data as well as its metadata using either SQL or MQL.
 
-For more information, see [Query Data with SQL or MQL](/data/query/).
+For more information, see [Query Data with SQL or MQL](/use-cases/sensor-data-query/).
 
 {{% /changelog %}}
 
 {{% changelog date="2023-11-30" color="changed" title="Model training from datasets" %}}
 
-To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/data/dataset/).
+To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/services/data/dataset/).
 
 {{% /changelog %}}
 
 {{% changelog date="2023-11-30" color="improved" title="Manage users access" %}}
 
 You can now manage users access to machines, locations, and organizations.
-For more information, see [Access Control](/fleet/rbac/)
+For more information, see [Access Control](/cloud/rbac/)
 
 {{% /changelog %}}
 
@@ -164,7 +258,7 @@ After you upload and train a machine learning model, you can test its results in
 
 This allows you to refine models by iteratively tagging more images for training based on observed performance.
 
-For more information, see [Test classification models with existing images in the cloud](/ml/vision/mlmodel/#existing-images-in-the-cloud).
+For more information, see [Test classification models with existing images in the cloud](/services/vision/mlmodel/#existing-images-in-the-cloud).
 
 To use this update, the classifier must have been trained or uploaded after September 19, 2023.
 The current version of this feature exclusively supports classification models.
@@ -182,7 +276,7 @@ Read the [Viam PLC Support](https://www.viam.com/post/viam-plc-support-democrati
 
 {{% changelog date="2023-10-31" color="improved" title="SLAM map creation" %}}
 
-The [Cartographer-module](/mobility/slam/cartographer/) now runs in Viam's cloud for creating or updating maps.
+The [Cartographer-module](/services/slam/cartographer/) now runs in Viam's cloud for creating or updating maps.
 This enhancement allows you to:
 
 - Generate larger maps without encountering session timeouts
@@ -218,7 +312,7 @@ You now have the capability to use a [power sensor component](/components/power-
 {{% /changelog %}}
 
 {{% changelog date="2023-09-30" color="added" title="Filter component’s data before the cloud" %}}
-Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/data/cloud-sync/).
+Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/services/data/cloud-sync/).
 It equips machines to:
 
 - Remove data that is not of interest
@@ -285,8 +379,8 @@ If you depend on sensor data to plan and control machine operations, this featur
 
 The Python SDK now includes sessions, a safety feature that automatically cancels operations if the client loses connection to your machine.
 
-[Session management](/build/program/apis/sessions/) helps you to ensure safer operation of your machine when dealing with actuating controls.
-Sessions are enabled by default, with the option to [disable sessions](/build/program/apis/sessions/#disable-default-session-management).
+[Session management](/appendix/apis/sessions/) helps you to ensure safer operation of your machine when dealing with actuating controls.
+Sessions are enabled by default, with the option to [disable sessions](/appendix/apis/sessions/#disable-default-session-management).
 
 {{% /changelog %}}
 
@@ -307,7 +401,7 @@ This update enables you to implement custom models of an arm component as a [mod
 - `movetoJointPositions`
 - `GetKinematics`
 
-Then, use the [motion planning service](/mobility/motion/) to specify poses, and Viam handles the rest.
+Then, use the [motion planning service](/services/motion/) to specify poses, and Viam handles the rest.
 
 For more information, see this [tutorial on creating a custom arm](/registry/examples/custom-arm/).
 
@@ -335,7 +429,7 @@ To better control gantries with Viam, you can now:
 
 {{% changelog date="2023-06-30" color="improved" title="Optimized Viam-trained object detection models" %}}
 
-This update for object detection models [trained with the machine learning service](/ml/train-model/) brings significant improvements, including:
+This update for object detection models [trained with the machine learning service](/services/ml/train-model/) brings significant improvements, including:
 
 - 76% faster model inference for camera streams
 - 64% quicker model training for object detection
@@ -351,7 +445,7 @@ The beta release of the [TypeScript SDK](https://github.com/viamrobotics/viam-ty
 
 {{% changelog date="2023-05-31" color="added" title="Train object detection ML models" %}}
 
-You now have the capability to directly [train object detection models](/ml/train-model/) in addition to image classification models from within the Viam app.
+You now have the capability to directly [train object detection models](/services/ml/train-model/) in addition to image classification models from within the Viam app.
 
 This update allows you to:
 
@@ -364,7 +458,7 @@ This update allows you to:
 
 Now when you invite collaborators to join your organization, you can assign permissions to members by setting one of these roles:
 
-- **Owner**: These members can see and edit [every tab on the machine page](/fleet/machines/#navigating-the-machine-page), as well as manage users in the app.
+- **Owner**: These members can see and edit [every tab on the machine page](/cloud/machines/#navigating-the-machine-page), as well as manage users in the app.
   This role is best for those on your team who are actively engineering and building machines.
 
 - **Operator**: These members can only see and use the [remote control tab](/fleet/control/).
@@ -398,7 +492,7 @@ The latest updates enable you to:
 The updated code samples now includes:
 
 - Options for C++ and TypeScript
-- The ability to hide or display your machines' [secrets](/build/program/apis/)
+- The ability to hide or display your machines' [secrets](/appendix/apis/)
 
 Access these samples in the **Code sample** tab on your machine's page to connect to your machine in various languages.
 
@@ -414,7 +508,7 @@ You can manage the data synced to Viam's cloud with the new capability for bulk 
 
 {{% alert title="Important: Breaking Change" color="note" %}}
 
-The [vision service](/ml/vision/) became more modular in RDK [v0.2.36](https://github.com/viamrobotics/rdk/releases/tag/v0.2.36), API [v0.1.118](https://github.com/viamrobotics/api/releases/tag/v0.1.118), and Python SDK [v0.2.18](https://github.com/viamrobotics/viam-python-sdk/releases/tag/v0.2.18).
+The [vision service](/services/vision/) became more modular in RDK [v0.2.36](https://github.com/viamrobotics/rdk/releases/tag/v0.2.36), API [v0.1.118](https://github.com/viamrobotics/api/releases/tag/v0.1.118), and Python SDK [v0.2.18](https://github.com/viamrobotics/viam-python-sdk/releases/tag/v0.2.18).
 
 Find more information on each of the changes below.
 
@@ -458,7 +552,7 @@ detections = await vision.get_detections(img, "find_objects")
 
 #### Color detector configurations
 
-You can replace existing color detectors by [configuring new ones in the UI](/ml/vision/color_detector/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
+You can replace existing color detectors by [configuring new ones in the UI](/services/vision/color_detector/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -533,7 +627,7 @@ You can replace existing color detectors by [configuring new ones in the UI](/ml
 
 #### TFLite detector configurations
 
-You can replace existing TFLite detectors by [configuring new ones in the UI](/ml/vision/mlmodel/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
+You can replace existing TFLite detectors by [configuring new ones in the UI](/services/vision/mlmodel/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -593,7 +687,7 @@ You can replace existing TFLite detectors by [configuring new ones in the UI](/m
 
 #### TFLite Classifier configurations
 
-You can replace existing TFLite classifiers by [configuring new ones in the UI](/ml/vision/mlmodel/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
+You can replace existing TFLite classifiers by [configuring new ones in the UI](/services/vision/mlmodel/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -653,7 +747,7 @@ You can replace existing TFLite classifiers by [configuring new ones in the UI](
 
 #### Radius Clustering 3D segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/obstacles_pointcloud/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/services/vision/obstacles_pointcloud/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -707,7 +801,7 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
 
 #### Detector to 3D segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/detector_3d_segmenter/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/services/vision/detector_3d_segmenter/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -768,21 +862,21 @@ You will no longer be able to add or remove models using the SDKs.
 #### Add machine learning vision models to a vision service
 
 The way to add machine learning vision models is changing.
-You will need to first register the machine learning model file with the [ML model service](/ml/) and then add that registered model to a vision service.
+You will need to first register the machine learning model file with the [ML model service](/services/ml/) and then add that registered model to a vision service.
 
 {{% /changelog %}}
 
 {{% changelog date="2023-03-31" color="added" title="Machine learning for image classification models" %}}
 
-You can now [train](/ml/train-model/) and [deploy](/ml/deploy/) image classification models with the [data management service](/data/) and use your machine's image data directly within Viam.
-Additionally, you can [upload and use](/ml/upload-model/) existing machine learning models with your machines.
-For more information on using data synced to the cloud to train machine learning models, read [Train a model](/ml/train-model/).
+You can now [train](/services/ml/train-model/) and [deploy](/services/ml/deploy/) image classification models with the [data management service](/services/data/) and use your machine's image data directly within Viam.
+Additionally, you can [upload and use](/services/ml/upload-model/) existing machine learning models with your machines.
+For more information on using data synced to the cloud to train machine learning models, read [Train a model](/services/ml/train-model/).
 
 {{% /changelog %}}
 
 {{% changelog date="2023-03-31" color="added" title="Motion planning with new `constraint` parameter" %}}
 
-A new parameter, [`constraint`](/mobility/motion/constraints/), has been added to the [Motion service API](/mobility/motion/#api), allowing you to define restrictions on the machine's movement.
+A new parameter, [`constraint`](/services/motion/constraints/), has been added to the [Motion service API](/services/motion/#api), allowing you to define restrictions on the machine's movement.
 The constraint system also provides flexibility to specify that obstacles should only impact specific frames of a machine.
 
 {{% /changelog %}}
@@ -843,14 +937,14 @@ Find more information in the [TypeScript SDK docs](https://ts.viam.dev/).
 
 {{% changelog date="2023-02-28" color="added" title="Frame system visualizer" %}}
 
-When adding [frames](/mobility/frame-system/) to your machine's config in the Viam app, you can now use the **Frame System** subtab of the **CONFIGURE** tab to more easily visualize the relative positions of frames.
+When adding [frames](/services/frame-system/) to your machine's config in the Viam app, you can now use the **Frame System** subtab of the **CONFIGURE** tab to more easily visualize the relative positions of frames.
 
 {{% /changelog %}}
 
 {{% changelog date="2023-02-28" color="added" title="Support for microcontrollers" %}}
 
 Micro-RDK is a lightweight version of the RDK that can run on an ESP32.
-Find more information in the [micro-RDK documentation](/get-started/installation/prepare/microcontrollers/).
+Find more information in the [micro-RDK documentation](/get-started/installation/microcontrollers/).
 
 {{% /changelog %}}
 
@@ -875,7 +969,7 @@ The movement sensor API now includes a [GetLinearAcceleration](/components/movem
 
 {{% changelog date="2023-01-31" color="added" title="Support for capsule geometry" %}}
 
-The [motion service](/mobility/motion/) now supports capsule geometries.
+The [motion service](/services/motion/) now supports capsule geometries.
 
 The UR5 arm model has been improved using this new geometry type.
 
@@ -919,7 +1013,7 @@ There are two new movement sensor {{< glossary_tooltip term_id="model" text="mod
 
 {{% changelog date="2022-12-28" color="improved" title="Motion planning with remote components" %}}
 
-The [motion service](/mobility/motion/) is now agnostic to the networking topology of a machine.
+The [motion service](/services/motion/) is now agnostic to the networking topology of a machine.
 
 - Kinematic information is now transferred over the robot API.
   This means that the motion service is able to get kinematic information for every component on the machine, regardless of whether it is on a main or remote viam-server.

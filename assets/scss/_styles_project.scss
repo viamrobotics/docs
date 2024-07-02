@@ -129,9 +129,13 @@ h7, .h7 {
   height: fit-content;
 }
 
-.td-toc ul li.is-active-li, .td-toc ul li.toc-active {
+.td-toc ul li.is-active-li {
   border-left: 2px solid #666666;
 }
+
+// .td-toc ul li.toc-active {
+//   border-left: 2px solid #666666;
+// }
 
 .toc-list, .td-toc ul ul {
   padding-inline-start: 0;
@@ -342,6 +346,7 @@ END MARKETING CSS
 .td-content .alert:not(:first-child) {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+  clear: both;
 }
 
 .alert-heading { // left margin for h4 in alerts
@@ -432,6 +437,7 @@ END MARKETING CSS
   border-bottom: black solid 1px;
   background: whitesmoke;
   padding: 1rem;
+  overflow: hidden;
 }
 
 .expand {
@@ -1781,4 +1787,46 @@ div .filterable > p {
 
 .usecase:hover {
   background-color: whitesmoke;
+}
+
+// TABLES
+.tablesteplink {
+  float: right;
+  color: black;
+}
+
+.tablestep {
+  clear: both;
+  padding: 1rem;
+  overflow: auto;
+}
+
+.usecase-table .tablestep:nth-of-type(odd) {
+  background-color: whitesmoke;
+  border-top: 1px solid #dee2e6;
+}
+
+.usecase-table .tablestep:nth-of-type(even) {
+  background-color: white;
+  border-top: 1px solid #dee2e6;
+}
+
+// Expander styling
+
+details * i.fa-chevron-down {
+  display: none;
+}
+details * i.fa-chevron-right {
+  display: unset;
+}
+
+details[open] * i.fa-chevron-down {
+  display: unset;
+}
+details[open] * i.fa-chevron-right {
+  display: none;
+}
+
+details summary::-webkit-details-marker {
+  display:none;
 }

@@ -1,0 +1,1 @@
+The image in which to look for detections.

@@ -37,7 +37,7 @@ If you are using a Viam Rover, use the [Viam Rover tutorial fragment](/get-start
 ## Requirements
 
 - A Raspberry Pi running an instance of `viam-server`.
-  See our [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/) for instructions.
+  See our [Raspberry Pi Setup Guide](/get-started/prepare/rpi-setup/) for instructions.
 - A rover like the [SCUTTLE robot](https://www.scuttlerobot.org/shop/) or the [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot)
 
 ## Start configuring your robot

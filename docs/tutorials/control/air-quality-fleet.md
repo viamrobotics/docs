@@ -129,7 +129,7 @@ With your organizational structure in place, let's add some machines:
    You _do not_ need to follow the "Install `viam-server`" section; you will do that in the next step!
 
 1. Enable serial communication so that the SBC can communicate with the air quality sensor.
-   For example, if you are using a Raspberry Pi, SSH to it and [enable serial communication in `raspi-config`](/get-started/installation/prepare/rpi-setup/#enable-communication-protocols).
+   For example, if you are using a Raspberry Pi, SSH to it and [enable serial communication in `raspi-config`](/get-started/prepare/rpi-setup/#enable-communication-protocols).
 
 1. Click **Antonia's Home** in the left navigation menu to navigate to that location's page.
    In the **New machine** field near the top-right corner of the screen, type in a name for the machine, such as `Home Air Quality Sensor`, and click **Add machine**.
@@ -234,8 +234,8 @@ Once you understand how to configure machines and use fragments, you can use [Pr
 #### Configure data capture and sync
 
 You have configured the sensor so the board can communicate with it, but sensor data is not yet being saved anywhere.
-Viam's [data management service](/data/) lets you capture data locally from each sensor and then sync it to the cloud where you can access historical sensor data and see trends over time.
-Once you configure the rest of your sensing machines, you'll be able to remotely access data from all sensors in all locations, and when you're ready, you can give customers [access](/fleet/rbac/) to the data from the sensors in their locations.
+Viam's [data management service](/services/data/) lets you capture data locally from each sensor and then sync it to the cloud where you can access historical sensor data and see trends over time.
+Once you configure the rest of your sensing machines, you'll be able to remotely access data from all sensors in all locations, and when you're ready, you can give customers [access](/cloud/rbac/) to the data from the sensors in their locations.
 
 Configure data capture and sync as follows:
 
@@ -312,11 +312,11 @@ For each machine:
    {{%expand "Click here for usb_interface troubleshooting help" %}}
 
 If you only have one USB device plugged into each of your boards, the `usb_interface` value you configured in the sensor config is likely (conveniently) the same for all of your machines.
-If not, you can use [fragment mods](/fleet/configure-a-fleet/#use-fragment_mods) to modify the value on any machine for which it is different:
+If not, you can use [fragment mods](/fleet/fragments/#use-fragment_mods) to modify the value on any machine for which it is different:
 
 1. If you're not getting sensor readings from a given machine, check the path of the USB port using the same [process by which you found the first USB path](#usb-path).
 2. If the path to your sensor on one machine is different from the one you configured in the fragment, add a fragment mod to the config of that machine to change the path without needing to remove the entire fragment.
-   Follow the [instructions to add a fragment mod](/fleet/configure-a-fleet/#use-fragment_mods) to your machine's config, using the following JSON template:
+   Follow the [instructions to add a fragment mod](/fleet/fragments/#use-fragment_mods) to your machine's config, using the following JSON template:
 
    ```json {class="line-numbers linkable-line-numbers"}
    "fragment_mods": [

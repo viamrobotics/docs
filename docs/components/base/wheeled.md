@@ -8,6 +8,7 @@ images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:
   - "/components/base/wheeled/"
+component_description: "Mobile wheeled robot."
 # SMEs: Steve B
 ---
 
@@ -135,7 +136,7 @@ Edit and fill in the attributes as applicable.
 The following attributes are available for `wheeled` bases:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `left` | array | **Required** | Array with the `name` of any drive motors on the left side of the base. |
 | `right` | array | **Required** | Array with the `name` of any drive motors on the right side of the base. |

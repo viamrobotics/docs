@@ -4,7 +4,7 @@ default: true
 options:
   frontMatter: true
 
-#/no-hard-tabs - Hard tabs
+# MD010/no-hard-tabs - Hard tabs
 MD010:
   spaces_per_tab: 4
 
@@ -34,3 +34,6 @@ MD049: "underscore"
 
 # Space after list marker - needed for prettier linter
 MD030: false
+
+MD055:
+  style: "leading_and_trailing"

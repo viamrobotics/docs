@@ -5,8 +5,10 @@ weight: 40
 type: "docs"
 description: "Configure a merged movement sensor."
 images: ["/icons/components/imu.svg"]
+toc_hide: true
 aliases:
   - "/components/movement-sensor/merged/"
+component_description: "A model that allows you to aggregate the API methods supported by multiple sensors into a singular sensor client, effectively merging the models of the individual resources."
 # SMEs: Rand
 ---
 
@@ -15,9 +17,9 @@ This allows you to aggregate the API methods supported by multiple sensors into 
 
 This is especially useful if you want to get readings of position and orientation _or_ linear and angular velocity at the same time, which are normally separately supported and returned by [`GPS`](/components/movement-sensor/#supported-models) or [`IMU`](/components/movement-sensor/#supported-models) models, respectively.
 
-To reduce velocity error when your machine is using the [navigation service](/mobility/navigation/), aggregate `Position()` from a [`GPS`](/components/movement-sensor/#supported-models) and `Orientation()` from an [`IMU`](/components/movement-sensor/#supported-models) movement sensor in a `merged` model.
+To reduce velocity error when your machine is using the [navigation service](/services/navigation/), aggregate `Position()` from a [`GPS`](/components/movement-sensor/#supported-models) and `Orientation()` from an [`IMU`](/components/movement-sensor/#supported-models) movement sensor in a `merged` model.
 
-Configure a [navigation service](/mobility/navigation/) to use your merged sensor to navigate.
+Configure a [navigation service](/services/navigation/) to use your merged sensor to navigate.
 
 Before configuring a `merged` movement sensor, configure each movement sensor you want to merge as an individual component according to its [model's configuration instructions](/components/movement-sensor/#supported-models).
 Reference the `name` you configure for each individual component in the `merged` sensor's configuration attributes:
@@ -97,8 +99,8 @@ Configure an array of the `name` of each movement sensor you want to add to your
   You can use the same sensor for multiple attributes if it supports multiple properties.
 
 <!-- prettier-ignore -->
-| Name                  | Type  | Inclusion                                | Description |
-| --------------------- | ----- | ---------------------------------------- | ----------- |
+| Name                  | Type  | Required? | Description |
+| --------------------- | ----- | --------- | ----------- |
 | `position`            | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads position.                 |
 | `orientation`         | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads orientation.              |
 | `compass_heading`     | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads compass heading position. |

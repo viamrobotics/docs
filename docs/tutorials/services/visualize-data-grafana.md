@@ -18,32 +18,32 @@ no_list: true
 
 <!-- After following this tutorial, you will be able to use the data management service to capture and sync sensor data from your machine to the Viam app, from which you can then configure a visualization dashboard such as Grafana to view and optionally query your sensor readings. -->
 
-Once you have [configured data query](/data/query/#configure-data-query) for your organization's data store, you can visualize your data from a variety of third-party tools, including Grafana.
+Once you have [configured data query](/use-cases/sensor-data-query/#configure-data-query) for your organization's data store, you can visualize your data from a variety of third-party tools, including Grafana.
 You can choose to visualize data from a component on one machine, from multiple components together, or from many components across a fleet of machines, all from a single pane of glass.
 
-Only components that capture tabular data, such as [sensor](/components/sensor/) readings or other time-series data, support data visualization.
+Only components that capture [sensor](/components/sensor/) readings or other time-series data support data visualization.
 
-You can visualize both the captured tabular data itself as well as its metadata, including machine ID, organization ID, and [tags](/data/dataset/#image-tags).
+You can visualize both the captured data itself as well as its metadata, including machine ID, organization ID, and [tags](/services/data/dataset/#image-tags).
 
 Follow the steps in this tutorial to learn how to collect data from your machine, sync that data to the Viam app, enable third-party access to that data, and present that data visually and flexibly in Grafana.
 
 {{% alert title="Info" color="info" %}}
 This tutorial focuses on using Grafana to visualize your captured data.
-For general guidance appropriate for any third-party visualization tool, see [Visualize data](/data/visualize/).
+For general guidance appropriate for any third-party visualization tool, see [Visualize data](/use-cases/sensor-data-visualize/).
 {{% /alert %}}
 
 ## Prerequisites
 
 Before following this tutorial, ensure you have:
 
-- A machine with [connected to the Viam app](/fleet/machines/#add-a-new-machine).
+- A machine with [connected to the Viam app](/cloud/machines/#add-a-new-machine).
 
-- A configured [sensor component](/components/sensor/), such as the [ultrasonic](/components/sensor/ultrasonic/) sensor, that reports tabular data.
+- A configured [sensor component](/components/sensor/), such as the [ultrasonic](/components/sensor/ultrasonic/) sensor, that reports data.
 
   - This tutorial uses a dataset of plant moisture measurements, originally captured for our [Plant watering tutorial](/tutorials/projects/make-a-plant-watering-robot/) using an analog resistive soil moisture sensor connected to an analog-to-digital-converter (ADC).
     The ADC functionality was provided by the [`mcp300x-adc-sensor` module](https://app.viam.com/module/hazalmestci/mcp300x-adc-sensor) from the [Viam registry](https://app.viam.com/registry).
 
-  - If you already have tabular data synced to the Viam app that you want to use, you can skip this requirement, and can skip directly to the [Configure data query](#configure-data-query) portion of this tutorial.
+  - If you already have data synced to the Viam app that you want to use, you can skip this requirement, and can skip directly to the [Configure data query](#configure-data-query) portion of this tutorial.
 
 - A Grafana instance.
 
@@ -53,9 +53,9 @@ Before following this tutorial, ensure you have:
 
 ## The data management service
 
-You can manage how your machine works with data by using the [data management service](/data/).
+You can manage how your machine works with data by using the [data management service](/services/data/).
 
-The data management service has two parts: [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/).
+The data management service has two parts: [data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/).
 
 - **Data capture** allows you to capture data locally from specific components on your machine running Viam.
   You can choose the components, corresponding methods, and the frequency of the data capture from the [Viam app](https://app.viam.com/).
@@ -83,13 +83,13 @@ First, add the data management service to your machine to be able capture and sy
 
    {{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="900x" >}}
 
-For more information, see [Add the data management service](/data/capture/#add-the-data-management-service).
+For more information, see [Add the data management service](/services/data/capture/#add-the-data-management-service).
 
 ### Configure data capture for a component
 
 Once you have added the data management service, you can configure data capture for specific components on your machine.
 For this tutorial, you will configure data capture for a [sensor](/components/sensor/) component, gathering sensor readings to later visualize in Grafana.
-Only tabular data, such as sensor readings or other time-series data, can be visualized in this manner.
+Only sensor readings or other time-series data can be visualized in this manner.
 
 To enable data capture for a sensor component:
 
@@ -108,17 +108,17 @@ To enable data capture for a sensor component:
 After a short while, your sensor will begin capturing live readings, and syncing those readings to the Viam app.
 You can check that data is being captured and synced by clicking on the menu icon on the sensor configuration pane. and selecting **View captured data**.
 
-For more information see [Configure data capture](/data/capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/data/cloud-sync/).
+For more information see [Configure data capture](/services/data/capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/services/data/cloud-sync/).
 
 ### Configure data query
 
 Next, enable the ability to query your synced data.
 When you sync captured data to Viam, that data is stored in the Viam organization’s [MongoDB Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance.
-Configuring data query allows you to directly [query your data using the Viam app](/data/query/#query-tabular-data-in-the-viam-app) or [query your data from a compatible client](/data/query/#query) (such as `mongosh`), but also allows Grafana to access that data and visualize it.
+Configuring data query allows you to directly [query your data](/use-cases/sensor-data-query/#query-data-in-the-viam-app) using the Viam app or a compatible client (such as `mongosh`), but also allows Grafana to access that data and visualize it.
 
 To enable data query:
 
-1. Follow the steps to [configure data query](/data/query/#configure-data-query).
+1. Follow the steps to [configure data query](/use-cases/sensor-data-query/#configure-data-query).
 
 1. Note the username and hostname returned from these steps, in addition to the password you chose for that user.
    You will use this information in the next section.
@@ -144,14 +144,14 @@ With your machine capturing data and syncing it to Viam, and direct query of tha
      mongodb://<MONGODB-ATLAS-DF-HOSTNAME>/<DATABASE-NAME>?directConnection=true&authSource=admin&tls=true
      ```
 
-     For example, to use the `sensorData` database, the default name for uploaded tabular data, your connection string would resemble:
+     For example, to use the `sensorData` database, the default name for uploaded sensor data, your connection string would resemble:
 
      ```sh
      mongodb://data-federation-abcdef12-abcd-abcd-abcd-abcdef123456-e4irv.a.query.mongodb.net/sensorData?directConnection=true&authSource=admin&tls=true
      ```
 
      The connection string is specific to your organization ID and configured user.
-     You must have followed the steps under [configure data query](/data/query/#configure-data-query) previously in order for this URL to be valid.
+     You must have followed the steps under [configure data query](/use-cases/sensor-data-query/#configure-data-query) previously in order for this URL to be valid.
 
    - **Credentials: User**: Enter the following username, substituting your organization ID as determined earlier, for `<YOUR-ORG-ID>`:
 
@@ -165,14 +165,14 @@ With your machine capturing data and syncing it to Viam, and direct query of tha
      db-user-abcdef12-abcd-abcd-abcd-abcdef123456
      ```
 
-   - **Credentials: Password**: Enter the password you provided when you [configured data query](/data/query/#configure-data-query) previously.
+   - **Credentials: Password**: Enter the password you provided when you [configured data query](/use-cases/sensor-data-query/#configure-data-query) previously.
 
    {{<imgproc src="/tutorials/visualize-data-grafana/configure-grafana-mongodb-datasource.png" resize="800x" declaredimensions=true alt="The Grafana data source plugin configuration page, showing the connection string and username filled in with the configuration determined from the previous steps">}}
 
 1. Click the **Save & test** button to save your settings.
    Grafana will perform a health check on your configuration settings to verify that everything looks good.
 
-This connection allows Grafana to access all synced tabular data under your [organization](/fleet/organizations/), from any machine.
+This connection allows Grafana to access all synced sensor data under your [organization](/cloud/organizations/), from any machine.
 
 ## Visualize your data
 
@@ -232,8 +232,8 @@ See Grafana's [Global variables documentation](https://grafana.com/docs/grafana/
 
 In this tutorial, you learned:
 
-- how to use the [data management](/data/) service to capture data from your machine and sync it to the Viam app
-- how to [enable data query access](/data/query/#configure-data-query) to your synced data
+- how to use the [data management](/services/data/) service to capture data from your machine and sync it to the Viam app
+- how to [enable data query access](/use-cases/sensor-data-query/#configure-data-query) to your synced data
 - how to connect Grafana to your data
 - how to build a dashboard visualizing that data
 - how to use query language to dynamically update the visualization based on UI selections

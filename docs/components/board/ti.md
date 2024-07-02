@@ -8,12 +8,13 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - "/components/board/ti/"
+component_description: "Texas Instruments TDA4VM."
 # SMEs: Gautham, Rand
 ---
 
 {{% alert title="REQUIREMENTS" color="caution" %}}
 
-Follow the [setup guide](/get-started/installation/prepare/sk-tda4vm/) to prepare your TDA4VM for running `viam-server` before configuring a `ti` board.
+Follow the [setup guide](/get-started/prepare/sk-tda4vm/) to prepare your TDA4VM for running `viam-server` before configuring a `ti` board.
 
 {{% /alert %}}
 
@@ -60,7 +61,7 @@ Enter a name or use the suggested name for your board and click **Create**.
 The following attributes are available for `ti` boards:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](#digital_interrupts). |
 

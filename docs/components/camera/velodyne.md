@@ -8,6 +8,8 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - "/components/camera/velodyne/"
+component_description: "Uses velodyne lidar."
+toc_hide: true
 # SMEs: SLAM team
 ---
 
@@ -48,7 +50,7 @@ Edit and fill in the attributes as applicable.
 The following attributes are available for `velodyne` cameras:
 
 <!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
+| Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `port` | int | **Required** | The port the Velodyne camera is running on. Try `2368` if you are unsure. |
 | `ttl_ms` | int | **Required** | Frequency in milliseconds to output the [TTL signal](https://en.wikipedia.org/wiki/Transistor%E2%80%93transistor_logic) from the camera. |
