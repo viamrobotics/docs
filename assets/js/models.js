@@ -182,3 +182,90 @@ if (mlmodels.length !== 0) {
 
   searchML.start();
 }
+
+const scripts = document.getElementsByClassName("training-scripts");
+
+if (scripts.length !== 0) {
+  const scripts = document.getElementsByClassName("training-scripts")[0].id;
+  const typesenseInstantsearchAdapterScripts = new TypesenseInstantSearchAdapter({
+    server: {
+      apiKey: "2bRwauAYhbrdjti898D6RXSkwgyEihDk", // Be sure to use an API key that only allows search operations
+      nodes: [
+        {
+          host: "cgnvrk0xwyj9576lp-1.a1.typesense.net",
+          port: "443",
+          protocol: "https",
+        },
+      ],
+      cacheSearchResultsForSeconds: 2 * 60, // Cache search results from server. Defaults to 2 minutes. Set to 0 to disable caching.
+    },
+    // The following parameters are directly passed to Typesense's search API endpoint.
+    //  So you can pass any parameters supported by the search endpoint below.
+    //  query_by is required.
+    additionalSearchParameters: {
+      query_by: "model_id,description",
+      sort_by: "last_updated:desc",
+      infix: "always",
+    },
+  });
+  const searchClientScripts = typesenseInstantsearchAdapterScripts.searchClient;
+
+  const searchScripts = instantsearch({
+    indexName: "trainingscripts",
+    searchClient: searchClientScripts,
+  });
+
+  let filtersScripts;
+  let itemtemplateScripts;
+
+  filtersScripts = {
+    hitsPerPage: 5,
+  };
+  itemtemplateScripts = `
+  <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model_id" }{{/helpers.highlight}}</code></a></p></div>
+  <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
+  `;
+
+  searchScripts.addWidgets([
+    instantsearch.widgets.hits({
+      container: "#hitsScripts",
+      templates: {
+        item: itemtemplateScripts,
+      },
+    }),
+    instantsearch.widgets.searchBox({
+      container: "#searchboxScripts",
+      placeholder: "Search for a script...",
+      poweredBy: false,
+      wrapInput: true,
+      showReset: false,
+      showSubmit: false,
+      showLoadingIndicator: false,
+    }),
+    instantsearch.widgets.stats({
+      container: "#searchstatsScripts",
+      templates: {
+        text(data, { html }) {
+          let resultsScripts = "";
+
+          if (data.hasManyResults) {
+            resultsScripts += `${data.nbHits} results:`;
+          } else if (data.hasOneResult) {
+            resultsScripts += `1 result:`;
+          } else {
+            resultsScripts += ``;
+          }
+
+          return `<span>${resultsScripts}</span>`;
+        },
+      },
+    }),
+    instantsearch.widgets.configure(filtersScripts),
+    instantsearch.widgets.pagination({
+      container: "#paginationScripts",
+      scrollTo: false,
+    }),
+  ]);
+
+  searchScripts.start();
+}
