@@ -98,7 +98,7 @@ def parse_filenames_and_bboxes_from_json(
     with open(filename, "rb") as f:
         for line in f:
             json_line = json.loads(line)
-            image_filenames.append(json_line["image_path"]))
+            image_filenames.append(json_line["image_path"])
             annotations = json_line["bounding_box_annotations"]
             labels = []
             coords = []
