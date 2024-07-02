@@ -57,9 +57,9 @@ ROUNDING_DIGITS = 5
 _INPUT_NORM_MEAN = 127.5
 _INPUT_NORM_STD = 127.5
 
-# IMPORTANT: One of the following two helper functions must be included in your training script
-#  depending on the type of model you're training.
-#  This is used for parsing the dataset file produced and stored in Viam.
+# IMPORTANT: One of the following two helper functions 
+# must be included in your training script depending on the type of model you're training.
+# This is used for parsing the dataset file produced and stored in Viam.
 
 def parse_filenames_and_labels_from_json(filename: str, all_labels: ty.List[str]) -> ty.Tuple[ty.List[str], ty.List[str]]:
     """Load and parse the dataset JSON file to return image filenames and corresponding labels.
