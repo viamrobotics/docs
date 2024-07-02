@@ -1,7 +1,7 @@
 ---
 title: "Train a Model with a Custom Python Training Script"
-linkTitle: "Train a Model with a Custom Training Script"
-weight: 50
+linkTitle: "Use a Custom Training Script"
+weight: 90
 type: "docs"
 tags: ["data management", "ml", "model training"]
 description: "How to write and upload a custom machine learning model training script to the Viam registry and use it to submit training jobs."
@@ -10,7 +10,7 @@ no_service: true
 ---
 
 You can upload a custom training script to the [Viam registry](https://app.viam.com/registry/) to train your ML model.
-Follow this guide to create and upload your own Python script to load a training dataset, train an ML model, and produce a model artifact.
+Follow this guide to create, upload, and submit your Python script that loads a training dataset, trains an ML model, and produces a model artifact.
 
 ## Create a training script
 
@@ -534,8 +534,14 @@ Follow the instructions in the [CLI documentation](/cli/) to install the CLI and
 
 Once uploaded, you can view the script by navigating to the [registry's **Training Scripts** page](https://app.viam.com/registry?type=Training+Script).
 
+### Update the visibility of a training script
+
+To update the visibility of a training script, use the CLi's [`viam training-script update`](/cli/#training-script) command and set the `--visibility` flag to `public` or `private`.
+
 ## Submit a training job
 
 You can use the Viam CLI's [`viam train submit`](/cli/#positional-arguments-submit) command to submit a training job.
 
 Referencing the [CLI documentation](/cli/#positional-arguments-submit), use `viam train submit custom from-registry` to submit a training job from a training script already in the registry and `viam train submit custom from-upload` to upload a training script and submit a training job at the same time.
+
+Once successfully submitted, view your training job in the **Training** section of the Viam app's **DATA** page's [**MODELS** tab](https://app.viam.com/data/models).
