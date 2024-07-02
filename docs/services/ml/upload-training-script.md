@@ -57,7 +57,7 @@ ROUNDING_DIGITS = 5
 _INPUT_NORM_MEAN = 127.5
 _INPUT_NORM_STD = 127.5
 
-# This is used for parsing the dataset file produced and stored in Viam, 
+# This is used for parsing the dataset file produced and stored in Viam,
 # specifically for getting the label annotations.
 def parse_filenames_and_labels_from_json(
     filename: str, all_labels: ty.List[str]
