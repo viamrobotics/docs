@@ -57,11 +57,12 @@ ROUNDING_DIGITS = 5
 _INPUT_NORM_MEAN = 127.5
 _INPUT_NORM_STD = 127.5
 
-# This is used for parsing the dataset file produced and stored in Viam, specifically for getting the label annotations.
-def parse_filenames_and_labels_from_json(
-    filename: str, all_labels: ty.List[str]
-) -> ty.Tuple[ty.List[str], ty.List[str]]:
-    """Load and parse JSON file to return image filenames and corresponding labels.
+# IMPORTANT: One of the following two helper functions must be included in your training script
+#  depending on the type of model you're training.
+#  This is used for parsing the dataset file produced and stored in Viam.
+
+def parse_filenames_and_labels_from_json(filename: str, all_labels: ty.List[str]) -> ty.Tuple[ty.List[str], ty.List[str]]:
+    """Load and parse the dataset JSON file to return image filenames and corresponding labels.
     Args:
         filename: JSONLines file containing filenames and labels
         model_type: either 'single_label' or 'multi_label'
@@ -82,12 +83,11 @@ def parse_filenames_and_labels_from_json(
             image_labels.append(labels)
     return image_filenames, image_labels
 
-# This is used for parsing the dataset file produced and stored in Viam, specifically for getting the bounding box annotations.
 def parse_filenames_and_bboxes_from_json(
     filename: str,
     all_labels: ty.List[str],
 ) -> ty.Tuple[ty.List[str], ty.List[str], ty.List[ty.List[float]]]:
-    """Load and parse JSON file to return image filenames and corresponding labels with bboxes.
+    """Load and parse the dataset JSON file to return image filenames and corresponding labels with bboxes.
     Args:
         filename: JSONLines file containing filenames and bboxes
     """
@@ -372,7 +372,8 @@ def save_model_metrics_classification(
     with open(filename, "w") as f:
         json.dump(metrics, f, ensure_ascii=False)
 
-# This allows us to save model artifact to Viam, which will be viewable as a registry item for the ML model name and version specified.
+# IMPORTANT: You must include a helper function like the following for your framework type that allows you to save  the model artifact to Viam, which will be viewable as a registry item for the ML model name and version specified.
+
 def save_tflite_classification(
     model: Model,
     model_dir: str,
