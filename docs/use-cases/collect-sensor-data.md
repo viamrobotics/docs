@@ -3,7 +3,7 @@ title: "Collect and view sensor data from any machines"
 linkTitle: "Collect sensor data"
 weight: 29
 type: "docs"
-images: ["/services/icons/data-query.svg"]
+images: ["/services/icons/data-capture.svg"]
 description: "Gather sensor data, sync it to the cloud, and view it in the Viam app."
 modulescript: true
 # SME: Devin Hilly
