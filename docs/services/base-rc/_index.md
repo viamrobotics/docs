@@ -114,7 +114,7 @@ The following attributes are available for base remote control services:
 
 The base remote control service supports the following methods:
 
-{{< readfile "/static/include/services/apis/base-rc.md" >}}
+{{< readfile "/static/include/services/apis/generated/base_remote_control-table.md" >}}
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -124,52 +124,4 @@ Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and
 
 {{% /alert %}}
 
-### Close
-
-Close out of all remote control related systems.
-
-{{< tabs >}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-
-**Returns:**
-
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/baseremotecontrol).
-
-```go {class="line-numbers linkable-line-numbers"}
-// Close out of all remote control related systems.
-err := baseRCService.Close(context.Background())
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### ControllerInputs
-
-Get a list of inputs from the controller that are being monitored for that control mode.
-
-{{< tabs >}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- None
-
-**Returns:**
-
-- [([]Control)](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control): A list of inputs from the controller that are being monitored for that control mode..
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/baseremotecontrol).
-
-```go {class="line-numbers linkable-line-numbers"}
-// Get the list of inputs from the controller that are being monitored for that control mode.
-inputs := baseRCService.ControllerInputs()
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+{{< readfile "/static/include/services/apis/generated/base_remote_control.md" >}}

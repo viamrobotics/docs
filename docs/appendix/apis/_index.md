@@ -44,13 +44,13 @@ The [data client API](/appendix/apis/data-client/) supports the following method
 
 The ML training API allows you to get information about and cancel ML training jobs taking place on the [Viam app](https://app.viam.com):
 
-{{< readfile "/static/include/services/apis/ml-training-client.md" >}}
+{{< readfile "/static/include/app/apis/generated/mltraining-table.md" >}}
 
 ### Billing client API
 
 The [billing client API](/appendix/apis/billing-client/) supports the following methods to retrieve billing information from the [Viam app](https://app.viam.com):
 
-{{< readfile "/static/include/services/apis/billing-client.md" >}}
+{{< readfile "/static/include/app/apis/generated/billing-table.md" >}}
 
 ## Component APIs
 
@@ -156,13 +156,13 @@ Documentation on using these methods in your SDK code is found on [service pages
 
 The [base remote control service](/services/base-rc/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/base-rc.md" >}}
+{{< readfile "/static/include/services/apis/generated/base_remote_control-table.md" >}}
 
 ### Data Management
 
 The [data management service](/services/data/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/data.md" >}}
+{{< readfile "/static/include/services/apis/generated/data_manager-table.md" >}}
 
 ### Generic
 
@@ -186,19 +186,19 @@ The [motion service](/services/motion/) supports the following methods:
 
 The [navigation service](/services/navigation/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/navigation.md" >}}
+{{< readfile "/static/include/services/apis/generated/navigation-table.md" >}}
 
 ### SLAM
 
 The [Simultaneous Localization And Mapping (SLAM) service](/services/slam/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/slam.md" >}}
+{{< readfile "/static/include/services/apis/generated/slam-table.md" >}}
 
 ### Vision
 
 Different [vision service](/services/vision/) models support different methods:
 
-{{< readfile "/static/include/services/apis/vision.md" >}}
+{{< readfile "/static/include/services/apis/generated/vision-table.md" >}}
 
 ## Signaling APIs
 
@@ -212,7 +212,7 @@ In addition to the [board API](#board), the [board component](/components/board/
 
 In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [ADCs](/components/board/#analogs) on a board:
 
-{{< readfile "/static/include/components/apis/analogreader.md" >}}
+{{< readfile "/static/include/components/apis/analog.md" >}}
 
 ### Digital interrupts
 

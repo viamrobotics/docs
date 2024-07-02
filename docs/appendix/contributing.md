@@ -64,7 +64,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   For example the [Robot Development Kit page](/internals/rdk/) or the [Registry page](/registry/).
   It’s useful to have a real or imagined "Why?" question to serve as a prompt.
 
-  {{% expand "Click to view template" %}}
+  {{< expand "Click to view template" >}}
 
   ```md
   # Concept
@@ -89,13 +89,13 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   Links to related content.
   ```
 
-  {{% /expand %}}
+  {{< /expand >}}
 
 - **How-to Guide (procedural)**: A task-oriented piece of content that directs a reader to perform actions step by step to complete a task, like a recipe.
   Generally starts with a description of the task and things to consider, and then provides a set of numbered steps to follow.
   For example, the [Installation page](/get-started/installation/) or the [Find module page](/registry/configure/).
 
-  {{% expand "Click to view template" %}}
+  {{< expand "Click to view template" >}}
 
   ```md
   # Do This Task
@@ -113,12 +113,12 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   Links to related content.
   ```
 
-  {{% /expand %}}
+  {{< /expand >}}
 
 - **Tutorial**: A learning-oriented piece of content that functions as a lesson for the reader.
   A tutorial helps readers to learn and apply skills by doing something meaningful and attainable.
 
-  {{% expand "Click to view template" %}}
+  {{< expand "Click to view template" >}}
 
   ```md
   # Do X with Y
@@ -155,14 +155,14 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
 
   For the full template see [template.md](https://github.com/viamrobotics/docs/blob/main/docs/tutorials/template.md).
 
-  {{% /expand %}}
+  {{< /expand >}}
 
 - **Reference**: A concise, information-oriented piece of content that generally starts with an overview/introduction and then a list of some kind (configuration options, API methods, etc.).
   Examples include the [API pages](/appendix/apis/) as well as [component and service pages](/components/arm/).
 
   Example template: [Component template](https://github.com/viamrobotics/docs/blob/main/docs/components/component/_index.md).
 
-  {{% expand "Click to view template" %}}
+  {{< expand "Click to view template" >}}
 
   ```md
   # Product, Feature or API Name
@@ -181,7 +181,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   Links to related content.
   ```
 
-  {{% /expand %}}
+  {{< /expand >}}
 
 ## Style guide
 

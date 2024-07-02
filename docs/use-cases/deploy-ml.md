@@ -4,8 +4,8 @@ linkTitle: "Train computer vision models"
 weight: 20
 type: "docs"
 tags: ["vision", "data", "services"]
-images: ["/services/ml/collect.svg"]
-description: "Collect images and do interesting things with computer vision, ML, and webhooks."
+images: ["/services/ml/train.svg"]
+description: "Use your image data to train a computer vision ML model."
 ---
 
 You can use Viam's built-in tools to train a machine learning (ML) model on your images and then deploy computer vision on your machines.
@@ -70,7 +70,7 @@ This is not required, since you can use other filters like time or machine ID in
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Train models">}}
 **1. Train an ML model**
 
-In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/services/data/datasets) and select the one you want to train on.
+In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train on.
 Click **Train model** and follow the prompts.
 
 {{< /tablestep >}}

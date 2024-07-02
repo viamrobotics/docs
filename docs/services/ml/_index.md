@@ -15,7 +15,7 @@ aliases:
 
 {{<imgproc src="/services/ml/training.png" class="alignright" resize="400x" declaredimensions=true alt="ML training">}}
 
-Machine Learning (ML) provides your machines with the ability to adjust its behavior based on models that recognize patterns or make predictions.
+Machine learning (ML) provides your machines with the ability to adjust their behavior based on models that recognize patterns or make predictions.
 
 Common use cases include:
 

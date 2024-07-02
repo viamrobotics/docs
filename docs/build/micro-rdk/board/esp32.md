@@ -8,7 +8,7 @@ images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
   - /micro-rdk/board/esp32/
-# SMEs: Gautham, Rand
+# SMEs: Gautham, Nico, Andrew
 ---
 
 {{% alert title="REQUIREMENTS" color="caution" %}}
@@ -54,6 +54,11 @@ Copy the following JSON template and paste it into your configuration inside the
         "pin": <int>,
         "name": "<your-analog-name>"
       }
+    ],
+    "digital_interrupts" : [
+        {
+         "pin": <int>
+        }
     ]
   },
   "depends_on": []
@@ -75,6 +80,11 @@ Copy the following JSON template and paste it into your configuration inside the
       {
         "pin": "34",
         "name": "sensor"
+      }
+    ],
+    "digital_interrupts": [
+      {
+        "pin": 4
       }
     ]
   },
@@ -132,11 +142,12 @@ The following properties are available for `digital_interrupts`:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-|`pin`| string | **Required** | The GPIO number of the board's GPIO pin that you wish to configure the digital interrupt for. |
+|`pin`| integer | **Required** | The GPIO number of the board's GPIO pin that you wish to configure the digital interrupt for. |
 
 ### PWM signals on `esp32` pins
 
 You can set PWM frequencies with Viam through the [`GPIOPin` API](/build/micro-rdk/board/#api).
+Refer to the [Espressif documentation for valid frequencies and duty resolutions](https://docs.espressif.com/projects/esp-idf/en/v4.4/esp32/api-reference/peripherals/ledc.html?#supported-range-of-frequency-and-duty-resolutions).
 A configured `esp32` board can support a maximum of four different PWM frequencies simultaneously, as the boards only have four available timers.
 
 For example:

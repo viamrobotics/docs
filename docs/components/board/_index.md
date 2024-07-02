@@ -111,7 +111,7 @@ Additionally, the nested `GPIOPin`, `Analog`, and `DigitalInterrupt` interfaces 
 
 [`Analog`](#analog-api) API:
 
-{{< readfile "/static/include/components/apis/analogreader.md" >}}
+{{< readfile "/static/include/components/apis/analog.md" >}}
 
 <br>
 
@@ -1072,7 +1072,8 @@ Read the current value from an analog pin or analog reader capable of reading an
 
 **Returns:**
 
-- [(Analog.Value)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.Analog.Value): The result of reading an analog reader. It contains the raw data read as `value`, the reader’s minimum and maximum possible values as `min_range` and `max_range`, and its `step_size` (the minimum possible change between values it can read).
+- [(Analog.Value)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.Analog.Value): The result of reading an analog reader.
+  It contains the raw data read as `value`, the reader’s minimum and maximum possible values as `min_range` and `max_range`, and its `step_size` (the minimum possible change between values it can read).
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.Analog.read).
 
@@ -1113,7 +1114,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go
 myBoard, err := board.FromRobot(robot, "my_board")
 
-// Get the Analog pin "my_example_analog".
+// Get the analog pin "my_example_analog".
 analog, err := myBoard.AnalogByName("my_example_analog")
 
 // Get the value of the digital signal "my_example_analog" has most recently measured.

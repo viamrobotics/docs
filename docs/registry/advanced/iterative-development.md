@@ -36,7 +36,12 @@ If you are developing a module for the same target architecture as your developm
    If you are using a programming language that does not require compilation, such as Python, you can skip this step.
 
 1. Navigate to the Viam app, select your machine, and [add your module as a local module](/registry/configure/#local-modules) to your machine.
-   Provide the **Executable path** in the configuration, pointing to the compiled or built binary, or the executable script, depending on your language.
+   For the **Executable path** field, enter the absolute path on your machine's filesystem to either:
+
+   - the module's [executable file](/registry/create/#compile-or-package-your-module), such as `run.sh` or a compiled binary.
+   - a [packaged tarball](https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_tar.html) of your module, ending in `.tar.gz` or `.tgz`.
+     If you are providing a tarball file in this field, be sure that your packaged tarball contains your module's [`meta.json` file](/cli/#the-metajson-file) within it.
+
    If you have previously added your module as a _registry module_, you will need to first remove the registry version of your module before then adding the local version.
 
 1. Click the **Save** button in the top right corner of the page.

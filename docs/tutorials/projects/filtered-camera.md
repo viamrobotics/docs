@@ -91,7 +91,7 @@ Once you have added the data management service, enable image data capture for y
      This will capture an image from the camera roughly once every 3 seconds.
      You can adjust the capture frequency if you want the camera to capture more or less image data, but avoid configuring data capture to higher rates than your hardware can handle, as this could lead to performance degradation.
 
-   - Set the **Mime type** to `image/jpeg`.
+   - Set the **MIME type** to `image/jpeg`.
    - Ensure that the toggle on the right-hand side is set to **On**.
 
      {{< imgproc src="/tutorials/filtered-camera-module/configure-webcam-data-capture.png" alt="The camera component configuration pane in the Viam app with data capture configured and enabled" resize="800x" >}}
@@ -377,7 +377,7 @@ Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.
      This will capture an image from the camera roughly once every 3 seconds.
      You can adjust the capture frequency if you want the camera to capture more or less image data, but avoid configuring data capture to higher rates than your hardware can handle, as this could lead to performance degradation.
 
-   - Set the **Mime type** to `image/jpeg`.
+   - Set the **MIME type** to `image/jpeg`.
    - Ensure that the toggle on the right-hand side is set to **On**.
 
 1. Click **Save** in the top right corner of the page to save your changes.
