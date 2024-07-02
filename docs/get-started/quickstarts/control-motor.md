@@ -21,30 +21,41 @@ Follow these steps to control your motor:
 
 {{< expand "Step 1: Create a machine" >}}
 
-Go to the Viam app and [add a new machine](/cloud/machines/#add-a-new-machine).
-
-![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
-
-{{< /expand >}}
-
-{{< expand "Step 2: Configure a board" >}}
-
-Then, [add a board component](/components/board/), such as a [Raspberry Pi board](/components/board/pi/).
-
-![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/components/board/pi-ui-config.png)
+Go to the Viam app.
+Select a location and [add a new machine](/cloud/machines/#add-a-new-machine).
+Click the name of your machine to go to that machine's page.
 
 {{< /expand >}}
+{{%expand "Step 2: Install viam-server" %}}
 
-{{< expand "Step 3: Configure a motor" >}}
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page to install `viam-server` on your computer and connect it to the Viam app.
 
-[Add a motor component](/components/motor/), such as a [gpio motor](/components/motor/gpio/).
-Ensure your motor, motor driver, and board are properly connected.
+{{% /expand%}}
+{{< expand "Step 3: Configure a board" >}}
 
-![The CONFIGURE tab of the Viam app populated with a configured gpio motor.](/components/motor/gpio-config-ui.png)
+Then, [add a board component](/components/board/).
+
+Look through the [**Supported Models**](/components/motor/#supported-models) to determine the model of component to configure.
+For example, configure a [`pi` motor](/components/motor/pi/) for a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W:
+
+![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/get-started/quickstarts/configure-pi.png)
+
+Follow the instructions in the board model's documentation to configure any required attributes.
 
 {{< /expand >}}
+{{< expand "Step 4: Configure a motor" >}}
 
-{{< expand "Step 4: Choose how you will control the motor" >}}
+[Add a motor component](/components/motor/) that represents the type of motor and motor driver you're using.
+Look through the [**Supported Models**](/components/motor/#supported-models) to determine the model of component to configure.
+For example, configure a [`gpio` motor](/components/motor/gpio/) to represent a standard DC motor (both brushed and brushless):
+
+![The CONFIGURE tab of the Viam app populated with a configured gpio motor.](/get-started/quickstarts/configure-motor.png)
+
+Follow the instructions in the model's documentation to configure the attributes and ensure your motor, motor driver, and board are properly wired together so that the computer can connect with the motor.
+
+{{< /expand >}}
+{{< expand "Step 5: Choose how you will control the motor" >}}
 
 You can control your motor directly from the Viam app, using the mobile app, or programmatically.
 
