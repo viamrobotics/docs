@@ -939,11 +939,10 @@ def parse(type, names):
                 ## in its entirety to the all_methods dictionary using "go" as the key:
                 all_methods["go"] = go_methods
 
+            ## Assemble workaround data object for DoCommand for Go generic component and service.
+            ## Using code sample and method_link from resource.Resource, because these cannot be found
+            ## in Go docs for these resources:
             elif sdk == "go" and (resource == "generic_component" or resource == "generic_service"):
-
-                ## Assemble workaround data object for DoCommand for Go generic component and service.
-                ## Using code sample and method_link from resource.Resource, because these cannot be found
-                ## in Go docs for these resources:
 
                 go_methods[type][resource]['DoCommand'] = {}
                 go_methods[type][resource]['DoCommand'] = {'proto': 'DoCommand', \
