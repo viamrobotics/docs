@@ -125,6 +125,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 Submit a training job from a custom training script.
 To use this method, you must first upload a custom training script to the [Registry](https://app.viam.com/registry/).
+Follow the guide to [Use a Custom Training Script](/services/ml/upload-training-script/) to do so.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
