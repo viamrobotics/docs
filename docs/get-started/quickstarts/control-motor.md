@@ -23,7 +23,6 @@ Follow these steps to control your motor:
 
 Go to the Viam app.
 Select a location and [add a new machine](/cloud/machines/#add-a-new-machine).
-Click the name of your machine to go to that machine's page.
 
 {{< /expand >}}
 {{%expand "Step 2: Install viam-server" %}}
@@ -46,13 +45,14 @@ Follow the instructions in the board model's documentation to configure any requ
 {{< /expand >}}
 {{< expand "Step 4: Configure a motor" >}}
 
-[Add a motor component](/components/motor/) that represents the type of motor and motor driver you're using.
+[Add a motor component](/components/motor/) that supports the type of motor and motor driver you're using.
 Look through the [**Supported Models**](/components/motor/#supported-models) to determine the model of component to configure.
-For example, configure a [`gpio` motor](/components/motor/gpio/) to represent a standard DC motor (both brushed and brushless):
+For example, if you are using a standard DC motor (brushed or brushless) wired to a typical GPIO pin-controlled motor driver, configure a [`gpio` motor](/components/motor/gpio/):
 
 ![The CONFIGURE tab of the Viam app populated with a configured gpio motor.](/get-started/quickstarts/configure-motor.png)
 
-Follow the instructions in the model's documentation to configure the attributes and ensure your motor, motor driver, and board are properly wired together so that the computer can connect with the motor.
+Follow the motor driver manufacturer's data sheet to properly wire your motor driver to your board and to your motor.
+Follow the [model's documentation](/components/motor/) to configure the attributes so that the computer can send signals to the motor.
 
 {{< /expand >}}
 {{< expand "Step 5: Choose how you will control the motor" >}}
