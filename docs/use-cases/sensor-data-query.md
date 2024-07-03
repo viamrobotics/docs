@@ -132,7 +132,6 @@ mongosh "<YOUR-DB-CONNECTION-URI>"
 
 {{< /tablestep >}}
 {{< tablestep >}}
-
 **2. Query data from a compatible client**
 
 Once connected, you can run SQL or MQL statements to query captured data directly.
