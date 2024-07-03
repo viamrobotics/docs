@@ -17,6 +17,11 @@ Then, you can follow the steps on this page to query it using {{< glossary_toolt
 For example, you can configure data capture for several sensors on one machine, or for several sensors across multiple machines, to report the ambient operating temperature.
 You can then run queries against that data to search for outliers or edge cases, to analyze how the ambient temperature affects your machines' operation.
 
+- **SQL:** For querying captured data, Viam supports the [MongoDB Atlas SQL dialect](https://www.mongodb.com/docs/atlas/data-federation/query/sql/query-with-asql-statements/), which supports standard SQL query syntax in addition to Atlas-specific capabilities such as `FLATTEN` and `UNWIND`.
+  For more information, see the [MongoDB Atlas SQL language reference](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/).
+
+- **MQL**: Viam also supports the [MongoDB Query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for querying captured data from MQL-compatible clients such as `mongosh` or MongoDB Compass.
+
 {{< alert title="In this page" color="tip" >}}
 
 1. [Query data in the Viam app](#query-data-in-the-viam-app).
@@ -127,6 +132,7 @@ mongosh "<YOUR-DB-CONNECTION-URI>"
 
 {{< /tablestep >}}
 {{< tablestep >}}
+
 **2. Query data from a compatible client**
 
 Once connected, you can run SQL or MQL statements to query captured data directly.
