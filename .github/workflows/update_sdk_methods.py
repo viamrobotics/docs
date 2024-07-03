@@ -1559,8 +1559,9 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
             ## If we have a param description override, use that. If not, skip:
             if param_or_return_description != '':
 
-                ## Add a trailing period if it is missing, either from upstream or from override file:
-                if not param_or_return_description.endswith('.'):
+                ## Add a trailing period if it is missing, either from upstream or from override file,
+                ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                if not param_or_return_description.endswith('.') and not param_or_return_description.endswith('>'):
                     param_or_return_description = param_or_return_description + '.'
 
                 ## Format returns:
