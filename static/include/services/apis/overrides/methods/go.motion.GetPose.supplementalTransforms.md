@@ -1,4 +1,4 @@
-<!-- retain-formatting -->
+<!-- preserve-formatting -->
 An optional list of `LinkInFrame`s.
   A `LinkInFrame` represents an additional frame which is added to the machine's frame system.
   It consists of:

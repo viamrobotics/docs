@@ -15,16 +15,35 @@ The motion service takes the volumes associated with all configured machine comp
 
 **Parameters:**
 
-- `component_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)) (required)
-- `destination` ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)) (required)
-- `world_state` ([viam.proto.common.WorldState](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState)) (optional)
-- `constraints` ([viam.proto.service.motion.Constraints](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.Constraints)) (optional)
-- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional)
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional)
+- `component_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)) (required): The `ResourceName` of the piece of the robot that should arrive at the destination. Note that `move` moves the distal end of the component to the destination. For example, when moving a robotic arm, the piece that will arrive at the destination is the end effector attachment point, not the base of the arm.
+- `destination` ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)) (required): Describes where the `component_name` frame should be moved to. Can be any pose, from the perspective of any component whose location is configured as a [`frame`](../frame-system/).
+- `world_state` ([viam.proto.common.WorldState](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState)) (optional): Data structure specifying information about the world around the machine.
+  Used to augment the motion solving process.
+  `world_state` includes obstacles and transforms:
+
+  - **Obstacles**: Geometries located at a pose relative to some frame.
+    When solving a motion plan with movable frames that contain inherent geometries, the solved path is constrained such that none of those inherent geometries intersect with the obstacles.
+    Important considerations:
+    - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
+    - The motion service assumes that obstacles are static.
+      If a worldstate obstacle is physically attached to a part of the robot such that it will move with the robot, specify it with _transforms_.
+    - Obstacles are defined by a pose and a [geometry](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry) with dimensions.
+      The pose location is the point at the center of the geometry.
+    - Obstacle locations are defined with respect to the _origin_ of the specified frame.
+      Their poses are relative to the _origin_ of the specified frame.
+      An obstacle associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} is interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
+      This is different from `destination` and `component_name`, where poses are relative to the distal end of a frame.
+  - **Transforms**: A list of `PoseInFrame` messages that specify other transformations to temporarily add to the frame system at solve time.
+    Transforms can be used to account for geometries that are attached to the robot but not configured as robot components.
+    For example, you could use a transform to represent the volume of a marker held in your machine's gripper.
+    Transforms are not added to the config or carried into later processes.
+- `constraints` ([viam.proto.service.motion.Constraints](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.Constraints)) (optional): Pass in [motion constraints](./constraints/). By default, motion is unconstrained with the exception of obstacle avoidance.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool))
+- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): Whether the move was successful (`true`) or unsuccessful (`false`).
 
 **Example:**
 
@@ -123,17 +142,23 @@ Make sure the [SLAM service](/services/slam/) you use alongside the this motion 
 
 **Parameters:**
 
-- `component_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.ResourceName)) (required)
-- `destination` ([viam.proto.common.Pose](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.Pose)) (required)
-- `slam_service_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.ResourceName)) (required)
-- `configuration` ([viam.proto.service.motion.MotionConfiguration](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.MotionConfiguration)) (optional)
-- `obstacles` ([Iterable[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.Geometry)) (optional)
-- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional)
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional)
+- `component_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.ResourceName)) (required): The `ResourceName` of the base to move.
+- `destination` ([viam.proto.common.Pose](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.Pose)) (required): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
+- `slam_service_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.ResourceName)) (required): The `ResourceName` of the [SLAM service](/services/slam/) from which the SLAM map is requested.
+- `configuration` ([viam.proto.service.motion.MotionConfiguration](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.MotionConfiguration)) (optional): The configuration you want to set across this machine for this motion service. This parameter and each of its fields are optional.
+  - `obstacle_detectors` [(Iterable[ObstacleDetector])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ObstacleDetector): The names of each [vision service](/services/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.
+  - `position_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the position of the machine.
+  - `obstacle_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the vision service for new obstacles.
+  - `plan_deviation_m` [(float)](https://docs.python.org/3/library/functions.html#float): The distance in meters that the machine can deviate from the motion plan. By default this is set to 2.6 m which is an appropriate value for outdoor usage. When you use the `MoveOnMap()` method from the **CONTROL** tab, the default is overwritten to 0.5 m for testing.
+  - `linear_m_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Linear velocity this machine should target when moving.
+  - `angular_degs_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Angular velocity this machine should target when turning.
+- `obstacles` ([Iterable[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.Geometry)) (optional): Obstacles, specified in the SLAM frame coordinate system, to be considered when planning the motion of the component.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str))
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): ExecutionID of the `MoveOnMap` call.
 
 **Example:**
 
@@ -162,7 +187,19 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `req` [(MoveOnMapReq)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MoveOnMapReq): <!-- retain-formatting --> A `MoveOnMapReq` which contains the following values:   - `ComponentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the base to move.   - `Destination` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.   - `SlamName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the [SLAM service](/services/slam/) from which the SLAM map is requested.   - `MotionConfig` [(\*MotionConfiguration)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MotionConfiguration): The configuration you want to set across this machine for this motion service. This parameter and each of its fields are optional.     - `ObstacleDetectors` [([]ObstacleDetectorName)](https://pkg.go.dev/go.viam.com/rdk/services/motion#ObstacleDetectorName): The names of each [vision service](/services/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.     - `PositionPollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the position of the machine.     - `ObstaclePollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the vision service for new obstacles.     - `PlanDeviationM` [(float64)](https://pkg.go.dev/builtin#float64): The distance in meters that the machine can deviate from the motion plan. By default this is set to 2.6 m which is an appropriate value for outdoor usage. When you use the the **CONTROL** tab, the underlying calls to `MoveOnMap()` use 0.5 m instead.     - `LinearMPerSec` [(float64)](https://pkg.go.dev/builtin#float64): Linear velocity this machine should target when moving.     - `AngularDegsPerSec` [(float64)](https://pkg.go.dev/builtin#float64): Angular velocity this machine should target when turning.   - `Obstacles` [(\[\]spatialmath.Geometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry): Obstacles, specified in the SLAM frame coordinate system, to be considered when planning the motion of the component.   - `Extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `req` [(MoveOnMapReq)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MoveOnMapReq): A `MoveOnMapReq` which contains the following values:
+  - `ComponentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the base to move.
+  - `Destination` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
+  - `SlamName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the [SLAM service](/services/slam/) from which the SLAM map is requested.
+  - `MotionConfig` [(\*MotionConfiguration)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MotionConfiguration): The configuration you want to set across this machine for this motion service. This parameter and each of its fields are optional.
+    - `ObstacleDetectors` [([]ObstacleDetectorName)](https://pkg.go.dev/go.viam.com/rdk/services/motion#ObstacleDetectorName): The names of each [vision service](/services/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.
+    - `PositionPollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the position of the machine.
+    - `ObstaclePollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the vision service for new obstacles.
+    - `PlanDeviationM` [(float64)](https://pkg.go.dev/builtin#float64): The distance in meters that the machine can deviate from the motion plan. By default this is set to 2.6 m which is an appropriate value for outdoor usage. When you use the the **CONTROL** tab, the underlying calls to `MoveOnMap()` use 0.5 m instead.
+    - `LinearMPerSec` [(float64)](https://pkg.go.dev/builtin#float64): Linear velocity this machine should target when moving.
+    - `AngularDegsPerSec` [(float64)](https://pkg.go.dev/builtin#float64): Angular velocity this machine should target when turning.
+  - `Obstacles` [(\[\]spatialmath.Geometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry): Obstacles, specified in the SLAM frame coordinate system, to be considered when planning the motion of the component.
+  - `Extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -235,19 +272,25 @@ Translation in obstacles is not supported by the [navigation service](/services/
 
 **Parameters:**
 
-- `component_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.ResourceName)) (required)
-- `destination` ([viam.proto.common.GeoPoint](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.GeoPoint)) (required)
-- `movement_sensor_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.ResourceName)) (required)
-- `obstacles` ([Sequence[viam.proto.common.GeoGeometry]](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.GeoGeometry)) (optional)
-- `heading` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional)
-- `configuration` ([viam.proto.service.motion.MotionConfiguration](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.MotionConfiguration)) (optional)
-- `bounding_regions` ([Sequence[viam.proto.common.GeoGeometry]](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.GeoGeometry)) (optional)
-- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional)
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional)
+- `component_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.ResourceName)) (required): The `ResourceName` of the base to move.
+- `destination` ([viam.proto.common.GeoPoint](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.GeoPoint)) (required): The location of the component's destination, represented in geographic notation as a [GeoPoint](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.GeoPoint) _(lat, lng)_.
+- `movement_sensor_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.ResourceName)) (required): The `ResourceName` of the [movement sensor](/components/movement-sensor/) that you want to use to check the machine's location.
+- `obstacles` ([Sequence[viam.proto.common.GeoGeometry]](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.GeoGeometry)) (optional): Obstacles to consider when planning the motion of the component, with each represented as a `GeoGeometry`. <ul><li> Default: `None` </li></ul>.
+- `heading` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): The compass heading, in degrees, that the machine's movement sensor should report at the `destination` point. <ul><li> Range: `[0-360)` 0: North, 90: East, 180: South, 270: West </li><li>Default: `None`</li></ul>.
+- `configuration` ([viam.proto.service.motion.MotionConfiguration](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.MotionConfiguration)) (optional): The configuration you want to set across this machine for this motion service. This parameter and each of its fields are optional.
+  - `obstacle_detectors` [(Iterable[ObstacleDetector])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ObstacleDetector): The names of each [vision service](/services/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.
+  - `position_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the position of the machine.
+  - `obstacle_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the vision service for new obstacles.
+  - `plan_deviation_m` [(float)](https://docs.python.org/3/library/functions.html#float): The distance in meters that the machine can deviate from the motion plan.
+  - `linear_m_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Linear velocity this machine should target when moving.
+  - `angular_degs_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Angular velocity this machine should target when turning.
+- `bounding_regions` ([Sequence[viam.proto.common.GeoGeometry]](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.GeoGeometry)) (optional): Set of obstacles which the robot must remain within while navigating.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str))
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): ExecutionID of the `MoveOnGlobe` call.
 
 **Example:**
 
@@ -331,15 +374,25 @@ You can use the `supplemental_transforms` argument to augment the machine's exis
 
 **Parameters:**
 
-- `component_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)) (required)
-- `destination_frame` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required)
-- `supplemental_transforms` ([List[viam.proto.common.Transform]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)) (optional)
-- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional)
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional)
+- `component_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)) (required): The `ResourceName` of the piece of the machine whose pose is returned.
+- `destination_frame` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the frame with respect to which the component's pose is reported.
+- `supplemental_transforms` ([List[viam.proto.common.Transform]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)) (optional): A list of `Transform` objects.
+  A `Transform` represents an additional frame which is added to the machine's frame system.
+  It consists of the following fields:
+
+  - `pose_in_observer_frame`: Provides the relationship between the frame being added and another frame.
+  - `physical_object`: An optional `Geometry` can be added to the frame being added.
+  - `reference_frame`: Specifies the name of the frame which will be added to the frame system.
+
+  When `supplemental_transforms` are provided, a frame system is created within the context of the `GetPose` function.
+  This new frame system builds off the machine's frame system and incorporates the `Transform`s provided.
+  If the result of adding the `Transform`s results in a disconnected frame system, an error is thrown.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame))
+- ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)): Pose of the given component and the frame in which it was observed.
 
 **Example:**
 
@@ -357,7 +410,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the piece of the machine whose pose is returned.
 - `destinationFrame` [(string)](https://pkg.go.dev/builtin#string): The name of the frame with respect to which the component's pose is reported.
-- `supplementalTransforms` [([]*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): <!-- retain-formatting --> An optional list of `LinkInFrame`s.   A `LinkInFrame` represents an additional frame which is added to the machine's frame system.   It consists of:    - a `PoseInFrame`: Provides the relationship between the frame being added and another frame.   - `Geometry`: An optional `Geometry` can be added to the frame being added.     When `supplementalTransforms` are provided, a frame system is created within the context of the `GetPose` function.     This new frame system builds off the machine's frame system and incorporates the `LinkInFrame`s provided.     If the result of adding the `LinkInFrame`s results in a disconnected frame system, an error is thrown.
+- `supplementalTransforms` [([]*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): An optional list of `LinkInFrame`s.
+  A `LinkInFrame` represents an additional frame which is added to the machine's frame system.
+  It consists of:
+
+  - a `PoseInFrame`: Provides the relationship between the frame being added and another frame.
+  - `Geometry`: An optional `Geometry` can be added to the frame being added.
+    When `supplementalTransforms` are provided, a frame system is created within the context of the `GetPose` function.
+    This new frame system builds off the machine's frame system and incorporates the `LinkInFrame`s provided.
+    If the result of adding the `LinkInFrame`s results in a disconnected frame system, an error is thrown.
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -403,9 +464,9 @@ Stop a [base](/components/base/) component being moved by an in progress [`MoveO
 
 **Parameters:**
 
-- `component_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.ResourceName)) (required)
-- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional)
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional)
+- `component_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.ResourceName)) (required): The `ResourceName` of the piece of the robot that should arrive at the destination. Note that `move` moves the distal end of the component to the destination. For example, when moving a robotic arm, the piece that will arrive at the destination is the end effector attachment point, not the base of the arm.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
@@ -429,7 +490,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `req` [(StopPlanReq)](https://pkg.go.dev/go.viam.com/rdk/services/motion#StopPlanReq): <!-- retain-formatting --> - `req` [StopPlanReq](https://pkg.go.dev/go.viam.com/rdk/services/motion#StopPlanReq): A `StopPlanReq` which contains the following values:   - `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the base to stop.   - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `req` [(StopPlanReq)](https://pkg.go.dev/go.viam.com/rdk/services/motion#StopPlanReq): - `req` [StopPlanReq](https://pkg.go.dev/go.viam.com/rdk/services/motion#StopPlanReq): A `StopPlanReq` which contains the following values:
+  - `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the base to stop.
+  - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -476,13 +539,13 @@ All repeated fields are in chronological order.
 
 **Parameters:**
 
-- `only_active_plans` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required)
-- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional)
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional)
+- `only_active_plans` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): If supplied, the response will filter out any plans that are not executing.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- ([viam.proto.service.motion.ListPlanStatusesResponse](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ListPlanStatusesResponse))
+- ([viam.proto.service.motion.ListPlanStatusesResponse](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ListPlanStatusesResponse)): List of last known statuses with the associated IDs of all plans within the TTL ordered by timestamp in ascending order.
 
 **Example:**
 
@@ -538,15 +601,15 @@ All repeated fields are in chronological order.
 
 **Parameters:**
 
-- `component_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.ResourceName)) (required)
-- `last_plan_only` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required)
-- `execution_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional)
-- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional)
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional)
+- `component_name` ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.ResourceName)) (required): The component to stop.
+- `last_plan_only` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): If supplied, the response will only return the last plan for the component / execution.
+- `execution_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): If supplied, the response will only return plans with the provided execution_id.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- ([viam.proto.service.motion.GetPlanResponse](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.GetPlanResponse))
+- ([viam.proto.service.motion.GetPlanResponse](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.GetPlanResponse)): The current PlanWithStatus & replan history which matches the request.
 
 **Example:**
 
@@ -615,12 +678,12 @@ If you are implementing your own motion service and add features that have no bu
 
 **Parameters:**
 
-- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required)
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional)
+- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes])
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
 
 **Example:**
 
