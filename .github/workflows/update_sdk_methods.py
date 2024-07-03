@@ -1796,8 +1796,9 @@ def write_markdown(type, names, methods):
 
                                     if param_description:
 
-                                        ## Add a trailing period if it is missing, either from upstream or from override file:
-                                        if not param_description.endswith('.'):
+                                        ## Add a trailing period if it is missing, either from upstream or from override file,
+                                        ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                                        if not param_description.endswith('.') and not param_description.endswith('>'):
                                             param_description = param_description + '.'
 
                                         output_file.write(f": {param_description}")
@@ -1841,8 +1842,9 @@ def write_markdown(type, names, methods):
 
                                     if return_description:
 
-                                        ## Add a trailing period if it is missing, either from upstream or from override file:
-                                        if not return_description.endswith('.'):
+                                        ## Add a trailing period if it is missing, either from upstream or from override file,
+                                        ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                                        if not return_description.endswith('.') and not return_description.endswith('>'):
                                             return_description = return_description + '.'
 
                                         output_file.write(f": {return_description}\n")
@@ -1861,8 +1863,9 @@ def write_markdown(type, names, methods):
                                     output_file.write(f"- ({raises_type})")
                                     if "raises_description" in raises_object[raises_type]:
                                         raises_description= raises_object[raises_type]["raises_description"]
-                                        ## Add a trailing period if it is missing:
-                                        if not raises_description.endswith('.'):
+                                        ## Add a trailing period if it is missing, either from upstream or from override file,
+                                        ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                                        if not raises_description.endswith('.') and not raises_description.endswith('>'):
                                             raises_description = raises_description + '.'
 
                                         output_file.write(f": {raises_description}\n")
@@ -2042,8 +2045,9 @@ def write_markdown(type, names, methods):
 
                                     if param_description:
 
-                                        ## Add a trailing period if it is missing, either from upstream or from override file:
-                                        if not param_description.endswith('.'):
+                                        ## Add a trailing period if it is missing, either from upstream or from override file,
+                                        ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                                        if not param_description.endswith('.') and not param_description.endswith('>'):
                                             param_description = param_description + '.'
 
                                         output_file.write(f": {param_description}")
@@ -2095,8 +2099,9 @@ def write_markdown(type, names, methods):
 
                                         if return_description:
 
-                                            ## Add a trailing period if it is missing, either from upstream or from override file:
-                                            if not return_description.endswith('.'):
+                                            ## Add a trailing period if it is missing, either from upstream or from override file,
+                                            ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                                            if not return_description.endswith('.') and not return_description.endswith('>'):
                                                 return_description = return_description + '.'
 
                                             output_file.write(f": {return_description}\n")
