@@ -9,7 +9,7 @@ icon: true
 images: ["/services/icons/ml.svg"]
 ---
 
-Once you have [created the first version of your module](/registry/create/), you can use the procedure outlined on this page to iterate on your design, and test changes quickly.
+Once you have [created the first version of your module](/use-cases/create-module/), you can use the procedure outlined on this page to iterate on your design, and test changes quickly.
 
 Generally, when developing a module, you have two options for iterative development, depending on the specific [platform](/cli/#using-the---platform-argument) you want your module to support:
 

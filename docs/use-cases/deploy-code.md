@@ -29,7 +29,7 @@ Once you [have created a machine in the Viam app](/cloud/machines/#add-a-new-mac
 {{<imgproc src="/registry/create-module.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Create your own module">}}
 **2. Create your own module**
 
-Or, you can [create your own module](/registry/create/) to add support for new hardware, or to extend an existing software service.
+Or, you can [create your own module](/use-cases/create-module/) to add support for new hardware, or to extend an existing software service.
 
 {{% /tablestep %}}
 {{% tablestep %}}

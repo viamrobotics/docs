@@ -59,14 +59,12 @@ A module provides one or more {{< glossary_tooltip term_id="resource" text="modu
 
 Follow the instructions below depending on the type of modular resource you would like to add to your machine:
 
-- [Add a modular component](#add-a-modular-component-from-the-viam-registry)
-- [Add a modular service](#add-a-modular-service-from-the-viam-registry)
-
 {{< alert title="Note" color="note" >}}
 If you are using a [rented Viam rover](/get-started/try-viam/), adding modules is disabled for security purposes.
 {{< /alert >}}
 
-### Add a modular component from the Viam registry
+{{< tabs >}}
+{{% tab name="Add a modular component" %}}
 
 To add a modular [component](/components/) from the Viam registry to your machine:
 
@@ -80,7 +78,7 @@ To add a modular [component](/components/) from the Viam registry to your machin
 
    {{<imgproc src="registry/configure/add-component-by-name.png" resize="500x" style="max-width: 400px" declaredimensions=true alt="The add a component modal showing results for the intel realsense module when searching by the name 'realsense'">}}
 
-4. After selecting the modular component, enter a name or use the suggested name for your modular component and click **Create** to add it to your machine's component configuration.
+4. After selecting the modular component, enter a name or use the suggested name for your modular component and click **Create** to add it to your machine's configuration.
 
    {{<imgproc src="registry/configure/add-component-screen.png" resize="500x" style="max-width: 400px" declaredimensions=true alt="The add a component modal showing the intel realsense module pane, with the 'Add module' button shown">}}
 
@@ -96,7 +94,9 @@ To delete a modular component, navigate to the component's card on the **CONFIGU
 Click on the **...** icon and click **Delete**.
 Confirm your selection.
 
-### Add a modular service from the Viam registry
+{{% /tab %}}
+
+{{% tab name="Add a modular service" %}}
 
 To add a modular [service](/services/) from the Viam registry to your machine:
 
@@ -104,27 +104,30 @@ To add a modular [service](/services/) from the Viam registry to your machine:
 2. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 3. Browse the list of available service types and select the specific modular service you'd like to add.
 
-   {{<imgproc src="registry/configure/add-service-by-category.png" resize="500x" style="max-width: 400px" declaredimensions=true alt="The add a component modal showing results for the mlmodelservice triton module when searching by the category 'ML Model'">}}
+   {{<imgproc src="registry/configure/add-service-by-category.png" resize="500x" style="max-width: 400px" declaredimensions=true alt="The add a service modal showing results for the mlmodelservice triton module when searching by the category 'ML Model'">}}
 
    You can also start typing to search for a module by name or to narrow down your search results.
 
-   {{<imgproc src="registry/configure/add-service-by-name.png" resize="500x" style="max-width: 400px" declaredimensions=true alt="The add a component modal showing results for the mlmodelservice triton module when searching by the name 'triton'">}}
+   {{<imgproc src="registry/configure/add-service-by-name.png" resize="500x" style="max-width: 400px" declaredimensions=true alt="The add a service modal showing results for the mlmodelservice triton module when searching by the name 'triton'">}}
 
-4. After selecting the modular service, enter a name or use the suggested name for your modular service and click **Create** to add it to your machine's service configuration.
+4. After selecting the modular service, enter a name or use the suggested name for your modular service and click **Create** to add it to your machine's configuration.
 
-   {{<imgproc src="registry/configure/add-service-screen.png" resize="500x" style="max-width: 400px" declaredimensions=true alt="The add a component modal showing the mlmodelservice triton module pane, with the 'Add module' button shown">}}
+   {{<imgproc src="registry/configure/add-service-screen.png" resize="500x" style="max-width: 400px" declaredimensions=true alt="The add a service modal showing the mlmodelservice triton module pane, with the 'Add module' button shown">}}
 
    Be sure the modular service you select supports the [platform](/cli/#using-the---platform-argument) you intend to use it with, such as `linux arm64`.
    You can see which platforms the module supports at bottom of the module information screen before you add it.
 
 When you add a modular service from the registry, it appears on the **CONFIGURE** tab like any other service.
 
-If the component requires you to configure specific **Attributes**, navigate to the **CONFIGURE** tab and hover over the service in the machine {{< glossary_tooltip term_id="part" text="part" >}} tree in the upper left-hand corner.
+If the service requires you to configure specific **Attributes**, navigate to the **CONFIGURE** tab and hover over the service in the machine {{< glossary_tooltip term_id="part" text="part" >}} tree in the upper left-hand corner.
 Click on the **...** menu and select **Go to homepage** to view the specific attribute requirements on the module's GitHub page.
 
 To delete a modular service, navigate to the service's card on the **CONFIGURE** tab.
 Click on the **...** menu and click **Delete**.
 Confirm your selection.
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### Add additional modular resources from a registry module
 
@@ -137,16 +140,16 @@ You will be prompted to click **Add module** again while configuring the resourc
 
 ### Edit modular resources
 
-You can edit the configuration of the modular resource or resources you have added from your module at the card matching the `name` you gave the resource when adding on the **CONFIGURE** tab.
+You can edit the configuration of the modular resource or resources you have added from your module in the card matching the `name` you gave the resource when adding it on the **CONFIGURE** tab.
 
 If you prefer to use JSON, the following properties are available for all modular resources:
 
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
+| `name` | string | **Required** | What you want to name this instance of your modular resource. |
 | `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/#valid-apis-to-implement-in-your-model) |
 | `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/#valid-apis-to-implement-in-your-model). |
-| `name` | string | **Required** | What you want to name this instance of your modular resource. |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
 | `depends_on` | array | Optional | The `name` of components you want to confirm are available on your machine alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/internals/rdk/#dependency-management). |
 
@@ -219,16 +222,15 @@ The custom model is configured as a component with the name "my-realsense".
 
 You can also view and edit the configuration of a modular resource's underlying module from the **CONFIGURE** tab:
 
-1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
-2. Scroll to the card with the name of the module, as indicated by its page in the [registry](https://app.viam.com/registry).
+1.  Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+2.  Scroll to the card with the name of the module, as indicated by its page in the [registry](https://app.viam.com/registry).
 
-This is the **Registry module** card.
-This pane lists the deployed version of the module and the latest version available.
-Here, [configure how a module updates](#configure-version-update-management-for-a-registry-module).
+    This is the **Registry module** card, which lists the deployed version of the module and the latest version available.
+    Here you can [configure how a module updates](#configure-version-update-management-for-a-registry-module).
 
-{{<imgproc src="registry/configure/deployed-module-with-component.png" style="max-width: 400px" resize="500x" declaredimensions=true alt="The module card">}}
+    {{<imgproc src="registry/configure/deployed-module-with-component.png" style="max-width: 400px" resize="500x" declaredimensions=true alt="The module card">}}
 
-You can also use JSON mode to [configure environment variables](#use-environment-variables-with-a-registry-module) for your module.
+    You can also use JSON mode to [configure environment variables](#use-environment-variables-with-a-registry-module) for your module.
 
 ### Configure version update management for a registry module
 
@@ -391,37 +393,36 @@ See the instructions to [compile your module into an executable](/registry/creat
 To add a local module on your machine, first add its module, then the component or service it implements:
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
-2. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**, then **Local module**.
-3. Enter a **Name** for this instance of your module.
-4. Enter the module's **Executable path**.
+1. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**, then **Local module**.
+1. Enter a **Name** for this instance of your module.
+1. Enter the module's **Executable path**.
    This path must be the absolute path on your machine's filesystem to either:
    - the module's [executable file](/registry/create/#compile-or-package-your-module), such as `run.sh` or a compiled binary.
    - a [packaged tarball](https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_tar.html) of your module, ending in `.tar.gz` or `.tgz`.
      If you are providing a tarball file in this field, be sure that your packaged tarball contains your module's [`meta.json` file](/cli/#the-metajson-file) within it.
-5. Then, click the **Create** button, and click **Save** in the upper right corner to save your config.
+1. Then, click the **Create** button, and click **Save** in the upper right corner to save your config.
 
    {{<imgproc src="registry/configure/add-local-module-csi-cam.png" resize="300x" declaredimensions=true alt="The add a local module pane with name 'my-csi-cam' and executable path '/usr/local/bin/viam-csi'">}}
 
    This example shows the configuration for adding a [CSI camera](https://github.com/viamrobotics/csi-camera/) as a local module.
 
-6. Now, stay on the **CONFIGURE** tab of your machine's page on [the Viam app](https://app.viam.com).
+1. Still on your machine's **CONFIGURE** tab, click the **+** (Create) icon next to your machine part in the left-hand menu.
 
-   - Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**.
-   - Then, select **Local component** or **Local service**.
+1. Select **Local module**, then select **Local component** or **Local service**.
 
-7. On the **Create** menu for a **Local component** or **Local service**:
+1. Select the type of modular resource provided by your module, such as a [camera](/components/camera/), from the dropdown menu.
 
-   - Select the type of modular resource provided by your module, such as a [camera](/components/camera/), from the dropdown menu.
-   - Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
-     If you are adding a pre-built modular resource, the model triplet should be provided for you in the module's documentation.
-   - Enter a name for this instance of your modular resource.
-     This name must be different from the module name.
+1. Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
+   If you are adding a pre-built modular resource, the model triplet should be provided for you in the module's documentation.
 
-     {{<imgproc src="registry/configure/add-local-module-create.png" resize="250x" declaredimensions=true alt="The add a component model showing the create a module step for an intel realsense module">}}
+1. Enter a name for this instance of your modular resource.
+   This name must be different from the module name.
 
-8. Click **Create** to create the modular resource provided by the local module.
+   {{<imgproc src="registry/configure/add-local-module-create.png" resize="250x" declaredimensions=true alt="The add a component model showing the create a module step for an intel realsense module">}}
 
-Once you've added your local module using steps 1-5, you can repeat steps 6-8 to add as many additional instances of your modular resource as you need.
+1. Click **Create** to create the modular resource provided by the local module.
+
+Once you've added your local module using steps 1-5, you can repeat steps 6-11 to add as many additional instances of your modular resource as you need.
 
 ### Edit the configuration of a local module
 
@@ -440,8 +441,6 @@ The following properties are available for modules:
 | `executable_path` | string | **Required**| The absolute path to the executable on your machine's filesystem. |
 | `type` | string | **Required**| Either `registry` or `local`. |
 
-Edit these properties in your module's JSON configuration:
-
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
@@ -449,6 +448,8 @@ Edit these properties in your module's JSON configuration:
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
+
+To edit the raw JSON instead of using the config builder UI, click **{} JSON** in the upper left corner of the **CONFIGURE** tab.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -474,9 +475,9 @@ The following properties are available for modular resources:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
+| `name` | string | **Required** | A custom name for this instance of your modular resource. |
 | `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/#valid-apis-to-implement-in-your-model). |
 | `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/#valid-apis-to-implement-in-your-model). |
-| `name` | string | **Required** | A custom name for this instance of your modular resource. |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
 | `depends_on` | array | Optional | The `name` of components you want to confirm are available on your machine alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/internals/rdk/#dependency-management). |
 

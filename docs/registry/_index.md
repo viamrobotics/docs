@@ -55,6 +55,10 @@ Viam provides built-in support for a variety of {{< glossary_tooltip term_id="re
 
 If the model of component or service you want to use for your project is not built into `viam-server` and available for configuration by default, you can use a {{< glossary_tooltip term_id="model" text="model" >}} from a {{< glossary_tooltip term_id="module" text="module" >}}.
 
+A module provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, and is packaged in a manner that streamlines deployment to a Viam machine.
+Modules run alongside [`viam-server`](/get-started/installation/) as separate processes, communicating with `viam-server` over UNIX sockets.
+When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/appendix/apis/) with `viam-server`, making the new model available for use.
+
 To configure a modular resource on your robot, [add new models that others have created](/registry/configure/#add-a-modular-resource-from-the-viam-registry) from the [Viam registry](https://app.viam.com/registry) or [create your own](#create-your-own-modules).
 
 You can search the available modular resources from the Viam registry here:
@@ -112,6 +116,7 @@ If none of the existing modular resources in the Viam registry support your use 
 - **Implement a custom service**: Implement your own algorithm or {{< glossary_tooltip term_id="model" text="model" >}} against a corresponding service API or use custom algorithms or data models when working with services such as {{< glossary_tooltip term_id="slam" text="SLAM" >}}, vision, or motion planning.
 
 You can write modules in a variety of programming languages, such as, Go, Python, C++, Rust, while implementing the same [APIs](/appendix/apis/).
+
 To create a new module:
 
 1. [Create a module](/registry/create/) with one or more modular resources by implementing all methods for the component's or service's standardized API.
@@ -120,59 +125,11 @@ To create a new module:
 1. Once you have uploaded your module to the registry, [deploy and configure the module](/registry/configure/) from the Viam app.
    Then, you can test your added resource using the [**CONTROL** tab](/fleet/control/) and [program](/build/program/) it with Viam's Go or Python SDKs.
 
-## Naming your model: namespace:repo-name:name
+See the following how-to guide for full instructions:
 
-If you are [creating a custom module](/registry/create/) and want to [upload that module](/registry/upload/) to the Viam registry, ensure your model name meets the following requirements:
-
-- The namespace of your model **must** match the [namespace of your organization](/cloud/organizations/#create-a-namespace-for-your-organization).
-  For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:repo-name:mybase`.
-- Your model triplet must be all-lowercase.
-- Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
-
-For the middle segment of your model triplet `repo-name`, use the name of the Git repository where you store your module's code.
-Ideally, your `repo-name` should describe the common functionality provided across the model or models of that module.
-
-For example:
-
-- The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model use the repository name [yahboom](https://github.com/viam-labs/yahboom).
-  The models implement the `rdk:component:arm` and the `rdk:component:gripper` API to support the Yahboom DOFBOT arm and gripper, respectively:
-
-  ```json
-  {
-      "api": "rdk:component:arm",
-      "model": "rand:yahboom:arm"
-  },
-  {
-      "api": "rdk:component:gripper",
-      "model": "rand:yahboom:gripper"
-  }
-  ```
-
-- The `viam-labs:audioout:pygame` model uses the repository name [audioout](https://github.com/viam-labs/audioout).
-  It implements the custom API `viam-labs:service:audioout`:
-
-  ```json
-  {
-    "api": "viam-labs:service:audioout",
-    "model": "viam-labs:audioout:pygame"
-  }
-  ```
-
-The `viam` namespace is reserved for models provided by Viam.
-
-### Valid APIs to implement in your model
-
-When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing {{< glossary_tooltip term_id="component" text="component" >}}, valid [APIs](/appendix/apis/) always have the following parameters:
-
-- `namespace`: `rdk`
-- `type`: `component`
-- `subtype`: any one of [these component proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/component), for example `motor`
-
-When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing [service](/services/), valid [APIs](/appendix/apis/) always have the following parameters:
-
-- `namespace`: `rdk`
-- `type`: `service`
-- `subtype`: any one of [these service proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/service), for example `navigation`
+{{< cards >}}
+{{% card link="/use-cases/create-module/" class="fit-contain" %}}
+{{< /cards >}}
 
 ### Tutorials creating modules
 

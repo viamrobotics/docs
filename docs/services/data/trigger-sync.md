@@ -277,7 +277,7 @@ Then check again on the **CONTROL** and **Data** tab to confirm data is syncing.
 <!-- markdownlint-disable MD034 -->
 
 {{< cards >}}
-{{% card link="/registry/create" %}}
+{{% card link="/use-cases/create-module/" %}}
 {{% manualcard link="https://github.com/viam-labs/trigger-sync-examples-v2" %}}
 
 <h4>Sync Trigger Examples</h4>
