@@ -62,7 +62,7 @@ Once you have added the data capture service, you can specify the data you want 
 ### Supported components
 
 Only the following components types are currently supported with data capture:
-|Type  | Method |
+|Type | Method |
 |----- | ----------- |
 |Sensor | GetReadings |
 |Movement Sensor | AngularVelocity, LinearAcceleration, LinearVelocity |
@@ -107,9 +107,7 @@ Now your data will be captured at the configure frequency and synced to Viam clo
         "analog_reader": "temp",
         "num_readings": 15
       },
-      "depends_on": [
-        "board"
-      ],
+      "depends_on": [],
       "service_configs": [
         {
           "attributes": {
