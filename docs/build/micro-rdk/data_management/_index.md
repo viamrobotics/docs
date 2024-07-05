@@ -12,11 +12,13 @@ no_service: true64
 # SMEs: Gautham V.
 ---
 
-Micro-RDK's data management service captures data from one or more components in the ESP32's memory. The service periodically uploads data to Viam cloud. If the machine restarts all data that hasn't been synced will be lost.
+The Micro-RDK data management service captures data from one or more components in the ESP32's memory.
+The service periodically uploads data to Viam cloud.
+If the machine restarts all data that hasn't been synced will be lost.
 
 The service can capture data from multiple components at the same or different frequencies.
-Micro-RDK does not impose an upper limit on the frequency of data collection.
-However, in practice, high frequency (> 100Hz) requires special considerations on the ESP32.
+The Micro-RDK does not impose an upper limit on the frequency of data collection.
+However, in practice, high frequency data collection (> 100Hz) requires special considerations on the ESP32.
 
 ## Add the data management service
 
@@ -26,7 +28,7 @@ However, in practice, high frequency (> 100Hz) requires special considerations o
 4. Click **Create**.
 5. On the panel that appears, you can manage the capturing and syncing functions and specify the sync **Interval**
    {{< alert title="Info" color="info" >}}
-   With Micro-RDK the **Directory**, **Tags**, and **Additional paths** fields are ignored and should not be configured.
+   With micro-RDK, the `capture_dir`, `tags`, and `additional_sync_paths` attributes are ignored and should not be configured.
    {{< /alert >}}
 6. Click the **Save** button in the top right corner of the page.
 
@@ -153,15 +155,15 @@ Now your data will be captured at the configure frequency and synced to Viam clo
 {{% /expand%}}
 
 - To enable or disable data capture for a configured component or method, use the `on/off` toggle.
-- To change the frequency of data capture for a method, enter the number of measurements you wish to capture per second in the frequency field.
+- To change the frequency of data capture for a method, enter the number of measurements you wish to capture per second in the frequency field on the component's configuration pane in the Viam app.
 
-After adding configuration for the methods, click the **Save** button in the top right corner of the page.
+After adding the configuration for the methods, click the **Save** button in the top right corner of the page.
 
 If you want to remove a capture method from the configuration, click the `delete` icon.
 
 ## View captured data
 
-To view captured data for a machine, click on the data icon next to the **Save** button on the top right of the app.
+To view captured data for a machine, click on the data icon next to the **Save** button on the top right of the Viam app.
 
 {{<imgproc src="/services/data/data-icon.png" resize="300x" declaredimensions=true alt="Data icon">}}
 
@@ -169,7 +171,7 @@ To view captured data for a {{< glossary_tooltip term_id="part" text="machine pa
 
 {{<imgproc src="/services/data/part-menu.png" resize="300x" declaredimensions=true alt="Machine menu with the options Rename, Restart part, View captured data, View setup instructions, View history, View debug configuration, and Delete machine">}}
 
-To view captured data for a component or service, click on the menu in the top right of its card and select **View captured data**.
+To view captured data for a {{< glossary_tooltip term_id="part" text="machine part" >}}, click on the **...** menu in the top right of its card, or the menu in the machine resources list in the **Builder** menu, and select **View captured data**.
 
 ![Resource menu with the options Rename, Duplicate, View captured data, and Delete](/services/data/resource-menu.png)
 
