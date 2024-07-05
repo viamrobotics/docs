@@ -93,9 +93,6 @@ Enter the following information in the configuration UI for that plugin:
 
 {{<imgproc src="/tutorials/visualize-data-grafana/configure-grafana-mongodb-datasource.png" resize="800x" declaredimensions=true alt="The Grafana data source plugin configuration page, showing the connection string and username filled in with the configuration determined from the previous steps">}}
 
-{{% /tab %}}
-{{< /tabs >}}
-
 {{< /tablestep >}}
 {{< tablestep >}}
 **4. Use visualization tools for dashboards**
@@ -173,9 +170,6 @@ db-user-<YOUR-ORG-ID>
 
 Substitute your organization ID for `<YOUR-ORG-ID>`.
 
-{{% /tab %}}
-{{< /tabs >}}
-
 {{< /tablestep >}}
 {{< tablestep >}}
 **3. Use visualization tools for dashboards**
@@ -191,6 +185,7 @@ See the [guide on querying sensor data](/use-cases/sensor-data-query/) for more 
 {{< /tablestep >}}
 {{< /table >}}
 
+{{< /tabs >}}
 {{< /tabs >}}
 
 ## Next steps
