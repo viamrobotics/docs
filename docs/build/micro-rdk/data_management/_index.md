@@ -8,7 +8,7 @@ images: ["/services/icons/data-capture.svg"]
 icon: true
 tags: ["data management", "cloud", "sync"]
 no_list: true
-no_service: true
+no_service: true64
 # SMEs: Gautham V.
 ---
 
@@ -56,16 +56,16 @@ However, in practice, high frequency (> 100Hz) requires special considerations o
 {{% /expand%}}
 
 ## Configure data capture for individual components
+
 Once you have added the data capture service, you can specify the data you want to capture at a component level.
 
 ### Supported components
 
 Only the following components types are currently supported with data capture:
-Type  | Method |
------ | ----------- 
-Sensor | GetReadings |
-Movement Sensor | AngularVelocity, LinearAcceleration, LinearVelocity |
-
+|Type  | Method |
+|----- | ----------- |
+|Sensor | GetReadings |
+|Movement Sensor | AngularVelocity, LinearAcceleration, LinearVelocity |
 
 To add data capture for a component, navigate to the **CONFIGURE** tab of your machine's page in the Viam app.
 
