@@ -12,12 +12,12 @@ no_service: true64
 # SMEs: Gautham V.
 ---
 
-The Micro-RDK data management service captures data from one or more components in the ESP32's memory.
+The micro-RDK data management service captures data from one or more components in the ESP32's memory.
 The service periodically uploads data to Viam cloud.
 If the machine restarts all data that hasn't been synced will be lost.
 
 The service can capture data from multiple components at the same or different frequencies.
-The Micro-RDK does not impose an upper limit on the frequency of data collection.
+The micro-RDK does not impose an upper limit on the frequency of data collection.
 However, in practice, high frequency data collection (> 100Hz) requires special considerations on the ESP32.
 
 ## Add the data management service
