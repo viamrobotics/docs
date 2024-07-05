@@ -533,7 +533,7 @@ Get app-related information about the robot.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-metadata = machine.get_cloud_metadata()
+metadata = await machine.get_cloud_metadata()
 print(metadata.machine_id)
 print(metadata.machine_part_id)
 print(metadata.primary_org_id)
