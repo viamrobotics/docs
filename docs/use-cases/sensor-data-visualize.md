@@ -170,6 +170,8 @@ db-user-<YOUR-ORG-ID>
 
 Substitute your organization ID for `<YOUR-ORG-ID>`.
 
+
+{{% /tab %}}
 {{% /tabs %}}
 
 {{< /tablestep >}}
