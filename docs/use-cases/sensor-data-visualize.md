@@ -83,13 +83,13 @@ Enter the following information in the configuration UI for that plugin:
   mongodb://<MONGODB-ATLAS-DF-HOSTNAME>/<DATABASE-NAME>?directConnection=true&authSource=admin&tls=true
   ```
 
-- **Credentials: User**: Enter the following username, substituting your organization ID as determined earlier, for `<YOUR-ORG-ID>`:
+- **User**: Enter the following username, substituting your organization ID as determined earlier, for `<YOUR-ORG-ID>`:
 
   ```sh
   db-user-<YOUR-ORG-ID>
   ```
 
-- **Credentials: Password**: Enter the password you provided earlier.
+- **Password**: Enter the password you provided earlier.
 
 {{<imgproc src="/tutorials/visualize-data-grafana/configure-grafana-mongodb-datasource.png" resize="800x" declaredimensions=true alt="The Grafana data source plugin configuration page, showing the connection string and username filled in with the configuration determined from the previous steps">}}
 
@@ -169,7 +169,6 @@ db-user-<YOUR-ORG-ID>
 ```
 
 Substitute your organization ID for `<YOUR-ORG-ID>`.
-
 
 {{% /tab %}}
 {{% /tabs %}}
