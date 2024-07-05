@@ -170,6 +170,8 @@ db-user-<YOUR-ORG-ID>
 
 Substitute your organization ID for `<YOUR-ORG-ID>`.
 
+{{% /tabs %}}
+
 {{< /tablestep >}}
 {{< tablestep >}}
 **3. Use visualization tools for dashboards**
@@ -185,7 +187,7 @@ See the [guide on querying sensor data](/use-cases/sensor-data-query/) for more 
 {{< /tablestep >}}
 {{< /table >}}
 
-{{< /tabs >}}
+{{< /tab >}}
 {{< /tabs >}}
 
 ## Next steps
