@@ -184,13 +184,13 @@ The [generic service](/services/generic/) supports the following methods:
 
 The [ML model service](/services/ml/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/ml.md" >}}
+{{< readfile "/static/include/services/apis/generated/mlmodel-table.md" >}}
 
 ### Motion
 
 The [motion service](/services/motion/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/motion.md" >}}
+{{< readfile "/static/include/services/apis/generated/motion-table.md" >}}
 
 ### Navigation
 

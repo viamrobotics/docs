@@ -412,6 +412,8 @@ python_datatype_links = {
     "bool": "https://docs.python.org/3/library/stdtypes.html#boolean-type-bool",
     "datetime.datetime": "https://docs.python.org/3/library/datetime.html",
     "datetime.timedelta": "https://docs.python.org/3/library/datetime.html#timedelta-objects",
+    ## Third-party data types:
+    "numpy.typing.NDArray": "https://numpy.org/doc/stable/reference/typing.html#numpy.typing.NDArray",
     ## Viam-specific data types:
     "viam.proto.app.OrganizationMember": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationMember",
     "viam.proto.app.OrganizationInvite": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite",
@@ -1580,8 +1582,9 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
             ## If we have a param description override, use that. If not, skip:
             if param_or_return_description != '':
 
-                ## Add a trailing period if it is missing, either from upstream or from override file:
-                if not param_or_return_description.endswith('.'):
+                ## Add a trailing period if it is missing, either from upstream or from override file,
+                ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                if not param_or_return_description.endswith('.') and not param_or_return_description.endswith('>'):
                     param_or_return_description = param_or_return_description + '.'
 
                 ## Format returns:
@@ -1816,8 +1819,9 @@ def write_markdown(type, names, methods):
 
                                     if param_description:
 
-                                        ## Add a trailing period if it is missing, either from upstream or from override file:
-                                        if not param_description.endswith('.'):
+                                        ## Add a trailing period if it is missing, either from upstream or from override file,
+                                        ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                                        if not param_description.endswith('.') and not param_description.endswith('>'):
                                             param_description = param_description + '.'
 
                                         output_file.write(f": {param_description}")
@@ -1861,8 +1865,9 @@ def write_markdown(type, names, methods):
 
                                     if return_description:
 
-                                        ## Add a trailing period if it is missing, either from upstream or from override file:
-                                        if not return_description.endswith('.'):
+                                        ## Add a trailing period if it is missing, either from upstream or from override file,
+                                        ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                                        if not return_description.endswith('.') and not return_description.endswith('>'):
                                             return_description = return_description + '.'
 
                                         output_file.write(f": {return_description}\n")
@@ -1881,8 +1886,9 @@ def write_markdown(type, names, methods):
                                     output_file.write(f"- ({raises_type})")
                                     if "raises_description" in raises_object[raises_type]:
                                         raises_description= raises_object[raises_type]["raises_description"]
-                                        ## Add a trailing period if it is missing:
-                                        if not raises_description.endswith('.'):
+                                        ## Add a trailing period if it is missing, either from upstream or from override file,
+                                        ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                                        if not raises_description.endswith('.') and not raises_description.endswith('>'):
                                             raises_description = raises_description + '.'
 
                                         output_file.write(f": {raises_description}\n")
@@ -2062,8 +2068,9 @@ def write_markdown(type, names, methods):
 
                                     if param_description:
 
-                                        ## Add a trailing period if it is missing, either from upstream or from override file:
-                                        if not param_description.endswith('.'):
+                                        ## Add a trailing period if it is missing, either from upstream or from override file,
+                                        ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                                        if not param_description.endswith('.') and not param_description.endswith('>'):
                                             param_description = param_description + '.'
 
                                         output_file.write(f": {param_description}")
@@ -2115,8 +2122,9 @@ def write_markdown(type, names, methods):
 
                                         if return_description:
 
-                                            ## Add a trailing period if it is missing, either from upstream or from override file:
-                                            if not return_description.endswith('.'):
+                                            ## Add a trailing period if it is missing, either from upstream or from override file,
+                                            ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                                            if not return_description.endswith('.') and not return_description.endswith('>'):
                                                 return_description = return_description + '.'
 
                                             output_file.write(f": {return_description}\n")
