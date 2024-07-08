@@ -163,6 +163,7 @@ The following attributes are available for `Navigation` services:
 | `degs_per_sec` | float | Optional | The default angular velocity for the [base](/components/base/) in degrees per second. <br> Default: `20` |
 | `meters_per_sec` | float | Optional | The default linear velocity for the [base](/components/base/) in meters per second. <br> Default: `0.3` |
 | `obstacles` | obj | Optional | Any obstacles you wish to add to the machine's path. See the [motion service](/services/motion/) for more information. |
+| `bounding_regions` | obj | Optional | Set of bounds which the robot must remain within while navigating. See the [motion service](/services/motion/) for more information. |
 
 ### Configure and calibrate the frame system service for GPS navigation
 
