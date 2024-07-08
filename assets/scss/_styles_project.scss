@@ -1798,6 +1798,7 @@ div .filterable > p {
 .tablestep {
   clear: both;
   padding: 1rem;
+  overflow: auto;
 }
 
 .usecase-table .tablestep:nth-of-type(odd) {

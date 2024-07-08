@@ -36,9 +36,19 @@ The [fleet management API](/appendix/apis/fleet/) supports the following methods
 
 ### Data client API
 
-The [data client API](/appendix/apis/data-client/) supports the following methods to upload and retrieve data like images or sensor readings directly to the [Viam app](https://app.viam.com) (among [others](https://python.viam.dev/autoapi/viam/app/data_client/index.html)):
+The [data client API](/appendix/apis/data-client/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/data-client.md" >}}
+Methods to upload data like images or sensor readings directly to the [Viam app](https://app.viam.com):
+
+{{< readfile "/static/include/app/apis/generated/data_sync-table.md" >}}
+
+Methods to download, filter, tag, or perform other tasks on data like images or sensor readings:
+
+{{< readfile "/static/include/app/apis/generated/data-table.md" >}}
+
+Methods to work with datasets:
+
+{{< readfile "/static/include/app/apis/generated/dataset-table.md" >}}
 
 ### ML training API
 
@@ -98,7 +108,7 @@ The [gantry component](/components/gantry/) supports the following methods:
 
 The [generic component](/components/generic/) supports the following methods:
 
-{{< readfile "/static/include/components/apis/generic.md" >}}
+{{< readfile "/static/include/components/apis/generated/generic_component-table.md" >}}
 
 ### Gripper
 
@@ -156,19 +166,19 @@ Documentation on using these methods in your SDK code is found on [service pages
 
 The [base remote control service](/services/base-rc/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/base-rc.md" >}}
+{{< readfile "/static/include/services/apis/generated/base_remote_control-table.md" >}}
 
 ### Data Management
 
 The [data management service](/services/data/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/data.md" >}}
+{{< readfile "/static/include/services/apis/generated/data_manager-table.md" >}}
 
 ### Generic
 
 The [generic service](/services/generic/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/generic.md" >}}
+{{< readfile "/static/include/services/apis/generated/generic_service-table.md" >}}
 
 ### ML Model
 

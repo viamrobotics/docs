@@ -727,7 +727,10 @@ def parse(type, names):
                 pass
 
             ## Scrape each parent method tag and all contained child tags for Go by resource:
-            if sdk == "go" and type != "app":
+            ## Skip Go: App (Go has no App client) and the generic component and service, which
+            ## require explicit in-script workaround (DoCommand neither inherited (from resource.Resource)
+            ## nor explicitly defined in-interface (not in Go docs, only in un-doc'd code):
+            if sdk == "go" and type != "app" and resource != "generic_component" and resource != "generic_service":
 
                 soup = make_soup(url)
 
@@ -936,6 +939,20 @@ def parse(type, names):
 
                 ## We have finished looping through all scraped Go methods. Write the go_methods dictionary
                 ## in its entirety to the all_methods dictionary using "go" as the key:
+                all_methods["go"] = go_methods
+
+            ## Assemble workaround data object for DoCommand for Go generic component and service.
+            ## Using code sample and method_link from resource.Resource, because these cannot be found
+            ## in Go docs for these resources:
+            elif sdk == "go" and (resource == "generic_component" or resource == "generic_service"):
+
+                go_methods[type][resource]['DoCommand'] = {}
+                go_methods[type][resource]['DoCommand'] = {'proto': 'DoCommand', \
+                                    'description': 'DoCommand sends/receives arbitrary data.', \
+                                    'usage': 'DoCommand(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, cmd map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource', \
+                                    'code_sample': '// This example shows using DoCommand with an arm component.\nmyArm, err := arm.FromRobot(machine, "my_arm")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := myArm.DoCommand(context.Background(), command)\n'}
+
                 all_methods["go"] = go_methods
 
             elif sdk == "go" and type == "app":
@@ -1698,9 +1715,9 @@ def write_markdown(type, names, methods):
                             resource_adjusted = resource.replace('generic_component', 'generic').replace('_','-')
                             proto_anchor_link = '/' + type_filepath_name + '/' + resource_adjusted + '/#' + proto_link
                         elif type == 'service' and resource in ['base_remote_control', 'motion', 'navigation', 'slam', 'vision']:
-                            proto_anchor_link = '/services/' + resource.replace('base_remote_control', 'base_rc') + '/#' + proto_link
+                            proto_anchor_link = '/services/' + resource.replace('base_remote_control', 'base-rc') + '/#' + proto_link
                         elif type == 'service' and resource == 'data_manager':
-                            proto_anchor_link = 'services/data/#' + proto_link
+                            proto_anchor_link = '/services/data/#' + proto_link
                         elif type == 'service' and resource == 'generic_service':
                             proto_anchor_link = '/services/generic/#' + proto_link
                         elif type == 'service' and resource == 'mlmodel':
