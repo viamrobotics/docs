@@ -89,7 +89,7 @@ If you need to sync data conditionally, for example at a certain time, see [Trig
 To confirm data is being synced, go to the **DATA** tab and select the **Sensors** subtab.
 Confirm that you are seeing data appear.
 
-{{<imgproc src="/get-started/quickstarts/collect-data/data-page.png" alt="Sensor data tab.">}}
+![Sensor data tab](/get-started/quickstarts/collect-data/data-page.png)
 
 {{< /tablestep >}}
 {{< /table >}}
