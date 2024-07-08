@@ -435,7 +435,22 @@ You can use the `supplemental_transforms` argument to augment the machine's exis
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
+# Note that the example uses the ``Arm`` class, but any component class that inherits from ``ComponentBase`` will work
+# (``Base``, ``Gripper``, etc).
+
+# Create a `component_name`:
 component_name = Arm.get_resource_name("arm")
+
+from viam.components.gripper import Gripper
+from viam.services.motion import MotionClient
+
+# Assume that the connect function is written and will return a valid machine.
+robot = await connect()
+
+motion = MotionClient.from_robot(robot=robot, name="builtin")
+gripperName = Gripper.get_resource_name("my_gripper")
+gripperPoseInWorld = await motion.get_pose(component_name=gripperName,
+                                        destination_frame="world")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.MotionClient.get_pose).
