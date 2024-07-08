@@ -102,7 +102,7 @@ gantry,Close,close,Close,
 
 ## Generic Component
 ## NOTED:Generic Component in Go SDK doesn't appear to implement (inherit) these:
-generic_component,DoCommand,do_command,,doCommand
+generic_component,DoCommand,do_command,DoCommand,doCommand
 generic_component,GetGeometries,get_geometries,,
 ## HACK: No proto for close, manually mapping:
 ## NOTED: Go SDK also missing Close, but we have it in our docs?:
@@ -230,7 +230,7 @@ data_manager,Close,,Close,
 
 ## Generic Service
 ## NOTED:Generic Component in Go SDK doesn't appear to implement (inherit) these:
-generic_service,DoCommand,do_command,,
+generic_service,DoCommand,do_command,DoCommand,
 ## HACK: No proto for close, manually mapping:
 ## NOTED: Go SDK also missing Close, but we have it in our docs?:
 generic_service,Close,close,,

@@ -108,7 +108,7 @@ The [gantry component](/components/gantry/) supports the following methods:
 
 The [generic component](/components/generic/) supports the following methods:
 
-{{< readfile "/static/include/components/apis/generic.md" >}}
+{{< readfile "/static/include/components/apis/generated/generic_component-table.md" >}}
 
 ### Gripper
 
@@ -178,7 +178,7 @@ The [data management service](/services/data/) supports the following methods:
 
 The [generic service](/services/generic/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/generic.md" >}}
+{{< readfile "/static/include/services/apis/generated/generic_service-table.md" >}}
 
 ### ML Model
 
