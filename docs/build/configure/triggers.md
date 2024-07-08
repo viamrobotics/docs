@@ -11,7 +11,7 @@ aliases:
 
 Triggers allow you to execute actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
 For example, you can configure a trigger to send you a notification when your robot's sensor collects a new reading.
-Viam provides two trigger types depending on the event you want to trigger on:
+Viam provides three trigger types depending on the event you want to trigger on:
 
 - **Data has been synced to the cloud**: trigger when data from the machine is synced
 - **Part is online**: trigger continuously at a specified interval while the {{< glossary_tooltip term_id="part" text="machine part" >}} is online
@@ -192,7 +192,10 @@ If you prefer to configure your trigger with raw JSON instead of the config buil
        "Org-ID": request.headers['org-id'] if 'org-id' in request.headers else 'no value',
        "Location-ID": request.headers['location-id'] if 'location-id' in request.headers else 'no value',
        "Part-ID": request.headers['part-id'] if 'part-id' in request.headers else 'no value',
-       "Robot-ID": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value'
+       "Robot-ID": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value',
+       "Machine-Name": request.headers['machine-name'] if 'machine-name' in request.headers else 'no value',
+       "Location-Name": request.headers['location-name'] if 'location-name' in request.headers else 'no value',
+       "Organization-Name": request.headers['organization-name'] if 'organization-name' in request.headers else 'no value'
      }
 
      slack_url = "<paste in your own Slack URL>"
