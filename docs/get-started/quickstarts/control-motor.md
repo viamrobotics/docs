@@ -25,12 +25,12 @@ Go to the Viam app.
 Select a location and [add a new machine](/cloud/machines/#add-a-new-machine).
 
 {{< /expand >}}
-{{%expand "Step 2: Install viam-server" %}}
+{{< expand "Step 2: Install viam-server" >}}
 
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page to install `viam-server` on your computer and connect it to the Viam app.
 
-{{% /expand%}}
+{{< /expand >}}
 {{< expand "Step 3: Configure a board" >}}
 
 Then, [add a board component](/components/board/).
