@@ -728,6 +728,32 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 Start a stream of [`DigitalInterrupt`](/components/board/#digital_interrupts) ticks.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `interrupts` ([List[viam.components.board.board.Board.DigitalInterrupt]](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.DigitalInterrupt)) (required): list of digital interrupts to receive ticks from.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- (viam.components.board.board.TickStream): stream of ticks.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_board = Board.from_robot(robot=robot, name="my_board")
+di8 = await my_board.digital_interrupt_by_name(name="8"))
+di11 = await my_board.digital_interrupt_by_name(name="11"))
+
+# Iterate over stream of ticks from pins 8 and 11.
+async for tick in my_board.stream_ticks([di8, di11]):
+    print(f"Pin {tick.pin_name} changed to {'high' if tick.high else 'low'} at {tick.time}")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.stream_ticks).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
