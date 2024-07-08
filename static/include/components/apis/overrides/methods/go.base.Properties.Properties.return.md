@@ -1,0 +1,1 @@
+A structure with three fields, `WidthMeters`, `TurningRadiusMeters`, and `WheelCircumferenceMeters` representing the width, turning radius, and wheel circumference of the physical base in meters _(m)_.

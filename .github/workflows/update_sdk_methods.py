@@ -1106,7 +1106,7 @@ def parse(type, names):
                                             this_method_parameters_dict['param_usage'] = strong_tag.parent.text.replace("\n", " ")
 
                                             ## Some params provide data type links in Parameters section only, not initial usage.
-                                            ## Get that here if soL
+                                            ## Get that here if so:
                                             if strong_tag.parent.find('a', class_="reference internal"):
                                                 param_type_link_raw = strong_tag.parent.find('a', class_="reference internal").get("href")
                                                 ## Parameter type link is an anchor link:
@@ -1539,8 +1539,14 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
             param_or_return_description = ''
             ## Param override:
             if type_name != '':
+                # To handle 'ch chan' param name, similar. Use as 'ch' in override filename:
+                if ' ' in type_name:
+                    type_name_short = type_name.split(' ')[0]
+                else:
+                    type_name_short = type_name
+
                 ## .../overrides/methods/{sdk}.{resource}.{method_name}.{param_name}.md
-                param_desc_override_file = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.' + type_name + '.md'
+                param_desc_override_file = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.' + type_name_short + '.md'
             ## Return override:
             else:
                 if 'map[string]interface{}' in param_type:

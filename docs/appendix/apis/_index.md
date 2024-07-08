@@ -78,13 +78,13 @@ The [arm component](/components/arm/) supports the following methods:
 
 The [base component](/components/base/) supports the following methods:
 
-{{< readfile "/static/include/components/apis/base.md" >}}
+{{< readfile "/static/include/components/apis/generated/base-table.md" >}}
 
 ### Board
 
 The [board component](/components/board/) supports the following methods:
 
-{{< readfile "/static/include/components/apis/board.md" >}}
+{{< readfile "/static/include/components/apis/generated/board-table.md" >}}
 
 ### Camera
 
@@ -209,26 +209,6 @@ The [Simultaneous Localization And Mapping (SLAM) service](/services/slam/) supp
 Different [vision service](/services/vision/) models support different methods:
 
 {{< readfile "/static/include/services/apis/generated/vision-table.md" >}}
-
-## Signaling APIs
-
-### GPIO pins
-
-In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with GPIO pins on a board:
-
-{{< readfile "/static/include/components/apis/gpiopin.md" >}}
-
-### Analog-to-digital converters (ADCs)
-
-In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [ADCs](/components/board/#analogs) on a board:
-
-{{< readfile "/static/include/components/apis/analog.md" >}}
-
-### Digital interrupts
-
-In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [digital interrupts](/components/board/#digital_interrupts) on a board:
-
-{{< readfile "/static/include/components/apis/digitalinterrupt.md" >}}
 
 ## ResourceBase methods
 
