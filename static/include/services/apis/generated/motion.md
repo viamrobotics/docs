@@ -93,16 +93,33 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-motionService, err := motion.FromRobot(robot, "builtin")
+motionService, err := motion.FromRobot(machine, "builtin")
 
 // Assumes a gripper configured with name "my_gripper" on the machine
 gripperName := gripper.Named("my_gripper")
-myFrame := "my_gripper_offset"
 
-goalPose := referenceframe.PoseInFrame(0, 0, 300, 0, 0, 1, 0)
+// Define a destination Pose
+destination := referenceframe.NewPoseInFrame("world", spatialmath.NewPoseFromPoint(r3.Vector{X: 0.1, Y: 0.0, Z: 0.0}))
 
-// Move the gripper
-moved, err := motionService.Move(context.Background(), gripperName, goalPose, worldState, nil, nil)
+// Create obstacles
+boxPose := spatialmath.NewPoseFromPoint(r3.Vector{X: 0.0, Y: 0.0, Z: 0.0})
+boxDims := r3.Vector{X: 0.2, Y: 0.2, Z: 0.2} // 20cm x 20cm x 20cm box
+obstacle, _ := spatialmath.NewBox(boxPose, boxDims, "obstacle_1")
+
+geometryInFrame := referenceframe.NewGeometriesInFrame("base", []spatialmath.Geometry{obstacle})
+obstacles := []*referenceframe.GeometriesInFrame{geometryInFrame}
+
+// Create transforms
+transform := referenceframe.NewLinkInFrame("gripper",
+  spatialmath.NewPoseFromPoint(r3.Vector{X: 0.1, Y: 0.0, Z: 0.1}), "transform_1", nil
+)
+transforms := []*referenceframe.LinkInFrame{transform}
+
+// Create WorldState
+worldState, err := referenceframe.NewWorldState(obstacles, transforms)
+
+// Move gripper component
+moved, err := motionService.Move(context.Background(), gripperName, destination, worldState, nil, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
@@ -209,20 +226,30 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-motionService, err := motion.FromRobot(robot, "builtin")
-
-// Get the resource.Names of the base and of the SLAM service
-myBaseResourceName := base.Named("myBase")
+// Assumes a base with the name "my_base" is configured on the machine
+myBaseResourceName := base.Named("my_base")
 mySLAMServiceResourceName := slam.Named("my_slam_service")
-// Define a destination Pose with respect to the origin of the map from the SLAM service "my_slam_service"
+
+// Define a destination Pose
 myPose := spatialmath.NewPoseFromPoint(r3.Vector{Y: 10})
 
-// Move the base component to the destination pose of Y=10, a location of (0, 10, 0) in respect to the origin of the map
+// Move the base component to the destination pose
 executionID, err := motionService.MoveOnMap(context.Background(), motion.MoveOnMapReq{
-    ComponentName: myBaseResourceName,
-    Destination:   myPose,
-    SlamName:      mySLAMServiceResourceName,
+  ComponentName: myBaseResourceName,
+  Destination:   myPose,
+  SlamName:      mySLAMServiceResourceName,
 })
+
+// MoveOnMap is a non-blocking method and this line can optionally be added to block until the movement is done
+err = motion.PollHistoryUntilSuccessOrError(
+  context.Background(),
+  motionService,
+  time.Duration(time.Second),
+  motion.PlanHistoryReq{
+    ComponentName: myBaseResourceName,
+    ExecutionID:   executionID,
+  },
+)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
@@ -341,21 +368,32 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-motionService, err := motion.FromRobot(robot, "builtin")
-
-// Get the resource.Names of the base and movement sensor
+// Assumes a base with the name "myBase" is configured on the machine
+// Get the resource names of the base and movement sensor
 myBaseResourceName := base.Named("myBase")
-myMvmntSensorResourceName := movement_sensor.Named("my_movement_sensor")
+myMvmntSensorResourceName := movementsensor.Named("my_movement_sensor")
+
 // Define a destination Point at the GPS coordinates [0, 0]
 myDestination := geo.NewPoint(0, 0)
 
 // Move the base component to the designated geographic location, as reported by the movement sensor
-ctx := context.Background()
-executionID, err := motionService.MoveOnGlobe(ctx, motion.MoveOnGlobeReq{
-    ComponentName:      myBaseResourceName,
-    Destination:        myDestination,
-    MovementSensorName: myMvmntSensorResourceName,
+executionID, err := motionService.MoveOnGlobe(context.Background(), motion.MoveOnGlobeReq{
+  ComponentName:      myBaseResourceName,
+  Destination:        myDestination,
+  MovementSensorName: myMvmntSensorResourceName,
 })
+
+// Assumes there is an active MoveOnMap() or MoveonGlobe() in progress for myBase
+//  MoveOnGlobe is a non-blocking method and this line can optionally be added to block until the movement is done
+err = motion.PollHistoryUntilSuccessOrError(
+  context.Background(),
+  motionService,
+  time.Duration(time.Second),
+  motion.PlanHistoryReq{
+    ComponentName: myBaseResourceName,
+    ExecutionID:   executionID,
+  },
+)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
@@ -434,10 +472,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 // Assumes a gripper configured with name "my_gripper" on the machine
 gripperName := gripper.Named("my_gripper")
-myFrame := "my_gripper_offset"
 
 // Access the motion service
-motionService, err := motion.FromRobot(robot, "builtin")
+motionService, err := motion.FromRobot(machine, "builtin")
 if err != nil {
   logger.Fatal(err)
 }
@@ -501,19 +538,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-motionService, err := motion.FromRobot(robot, "builtin")
+motionService, err := motion.FromRobot(machine, "builtin")
 myBaseResourceName := base.Named("myBase")
-ctx := context.Background()
 
-// Assuming a move_on_globe started the execution
-// myMvmntSensorResourceName := movement_sensor.Named("my_movement_sensor")
-// myDestination := geo.NewPoint(0, 0)
-// executionID, err := motionService.MoveOnGlobe(ctx, motion.MoveOnGlobeReq{
-//     ComponentName:      myBaseResourceName,
-//     Destination:        myDestination,
-//     MovementSensorName: myMvmntSensorResourceName,
-// })
+myMvmntSensorResourceName := movement_sensor.Named("my_movement_sensor")
+myDestination := geo.NewPoint(0, 0)
 
+// Assuming a `MoveOnGlobe()`` started the execution
 // Stop the base component which was instructed to move by `MoveOnGlobe()` or `MoveOnMap()`
 err := motionService.StopPlan(context.Background(), motion.StopPlanReq{
     ComponentName: s.req.ComponentName,
@@ -571,6 +602,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [([]PlanStatusWithID)](https://pkg.go.dev/go.viam.com/rdk/services/motion#PlanStatusWithID): The state of a given plan at a point in time plus the `PlanId`, `ComponentName` and `ExecutionID` the status is associated with.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+motionService, err := motion.FromRobot(machine, "builtin")
+
+// Get the plan(s) of the base component's most recent execution i.e. `MoveOnGlobe()` or `MoveOnMap()` call.
+planStatuses, err := motionService.ListPlanStatuses(context.Background(), motion.ListPlanStatusesReq{})
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
@@ -638,6 +678,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [([]PlanWithStatus)](https://pkg.go.dev/go.viam.com/rdk/services/motion#PlanWithStatus): PlanWithStatus contains a plan, its current status, and all state changes that came prior sorted by ascending timestamp.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// Get the resource name of the base component
+myBaseResourceName := base.Named("myBase")
+
+// Get the plan history of the base component's most recent execution (e.g., MoveOnGlobe or MoveOnMap call)
+planHistory, err := motionService.PlanHistory(context.Background(), motion.PlanHistoryReq{
+  ComponentName: myBaseResourceName,
+})
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
