@@ -91,7 +91,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
 
   {{< /expand >}}
 
-- **How-to Guide (procedural)**: A task-oriented piece of content that directs a reader to perform actions step by step to complete a task, like a recipe.
+- **How-to Guide (procedural)**: A task-oriented piece of content that directs a reader to perform actions step by step to complete a task, like instructions to sauté onions.
   Generally starts with a description of the task and things to consider, and then provides a set of numbered steps to follow.
   For example, the [Installation page](/get-started/installation/) or the [Find module page](/registry/configure/).
 
@@ -116,7 +116,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   {{< /expand >}}
 
 - **Tutorial**: A learning-oriented piece of content that functions as a lesson for the reader.
-  A tutorial helps readers to learn and apply skills by doing something meaningful and attainable.
+  A tutorial helps readers to learn and apply skills by doing something meaningful and attainable, like a recipe to cook a full meal.
 
   {{< expand "Click to view template" >}}
 
