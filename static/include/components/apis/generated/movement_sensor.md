@@ -51,6 +51,25 @@ linVel, err := myMovementSensor.LinearVelocity(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Vector3](https://flutter.viam.dev/viam_sdk/Vector3-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var linVel = await myMovementSensor.linearVelocity();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MovementSensor/linearVelocity.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetAngularVelocity
@@ -112,6 +131,25 @@ yAngVel := angVel.Y
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Vector3](https://flutter.viam.dev/viam_sdk/Vector3-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var angVel = await myMovementSensor.angularVelocity();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MovementSensor/angularVelocity.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetCompassHeading
@@ -165,6 +203,25 @@ heading, err := myMovementSensor.CompassHeading(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var compassHeading = await myMovementSensor.compassHeading();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MovementSensor/compassHeading.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -231,6 +288,25 @@ logger.Info("The number of degrees that the movement sensor is rotated about the
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Orientation](https://flutter.viam.dev/viam_sdk/Orientation-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var orientation = await myMovementSensor.orientation();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MovementSensor/orientation.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetPosition
@@ -288,6 +364,25 @@ position, altitude, err := myMovementSensor.Position(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Position](https://flutter.viam.dev/viam_sdk/Position-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var position = await myMovementSensor.position();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MovementSensor/position.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetProperties
@@ -339,6 +434,25 @@ properties, err := myMovementSensor.Properties(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Properties](https://flutter.viam.dev/viam_sdk/Properties.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var props = await myMovementSensor.properties();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MovementSensor/properties.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -411,6 +525,25 @@ accuracy, err := myMovementSensor.Accuracy(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Accuracy](https://flutter.viam.dev/viam_sdk/Accuracy.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var accuracy = await myMovementSensor.accuracy();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MovementSensor/accuracy.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetLinearAcceleration
@@ -467,6 +600,25 @@ linVel, err := myMovementSensor.LinearVelocity(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Vector3](https://flutter.viam.dev/viam_sdk/Vector3-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var linAccel = await myMovementSensor.linearAcceleration();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MovementSensor/linearAcceleration.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -556,6 +708,25 @@ readings, err := mySensor.Readings(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Sensor).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var readings = await myMovementSensor.readings();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MovementSensor/readings.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### Reconfigure
@@ -598,6 +769,10 @@ If you are implementing your own movement sensor and add features that have no b
 
 - (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
 
+**Raises:**
+
+- (NotImplementedError): Raised if the Resource does not support arbitrary commands.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -631,6 +806,68 @@ result, err := myArm.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example using doCommand with an arm component
+const command = {'cmd': 'test', 'data1': 500};
+var result = myArm.doCommand(command);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Resource/doCommand.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### FromRobot
+
+Get the resource from the provided robot with the given name.
+
+{{< tabs >}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `robot` [RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html) (required)
+- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [MovementSensor](https://flutter.viam.dev/viam_sdk/MovementSensor-class.html)
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MovementSensor/fromRobot.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Name
+
+Get the `ResourceName` for this movement sensor with the given name.
+
+{{< tabs >}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [ResourceName](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MovementSensor/getResourceName.html).
 
 {{% /tab %}}
 {{< /tabs >}}
