@@ -55,10 +55,10 @@ However, in practice, high frequency data collection (> 100Hz) requires special 
 }
 ```
 
-   {{< alert title="Info" color="info" >}}
-   With micro-RDK, the `capture_dir`, `tags`, and `additional_sync_paths` attributes are ignored and should not be configured.
-   {{< /alert >}}
-   
+{{< alert title="Info" color="info" >}}
+With micro-RDK, the `capture_dir`, `tags`, and `additional_sync_paths` attributes are ignored and should not be configured.
+{{< /alert >}}
+
 {{% /expand%}}
 
 ## Configure data capture for individual components
