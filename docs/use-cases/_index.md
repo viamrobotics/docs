@@ -1,6 +1,6 @@
 ---
-title: "How-to guides"
-linkTitle: "How-to guides"
+title: "How-to Guides"
+linkTitle: "How-to Guides"
 weight: 200
 type: "docs"
 no_list: true
