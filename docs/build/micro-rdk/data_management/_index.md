@@ -3,20 +3,20 @@ title: "Configure Data capture and sync"
 linkTitle: "Data Capture"
 weight: 30
 type: "docs"
-description: "Configure data capture and sync to save data from components."
+description: "Configure data capture and sync in the micro-RDK to save data from components."
 images: ["/services/icons/data-capture.svg"]
 icon: true
 tags: ["data management", "cloud", "sync"]
 no_list: true
-no_service: true64
+no_service: true
 # SMEs: Gautham V.
 ---
 
-The micro-RDK data management service captures data from one or more components in the ESP32's memory.
+The micro-RDK data management service captures data from one or more components in the ESP32's flash memory.
 The service periodically uploads data to Viam cloud.
-If the machine restarts all data that hasn't been synced will be lost.
+If the machine restarts before all data is synced, all unsynced data captured since the last sync point is lost.
 
-The service can capture data from multiple components at the same or different frequencies.
+The micro-RDK data management service can capture data from multiple components at the same or different frequencies.
 The micro-RDK does not impose an upper limit on the frequency of data collection.
 However, in practice, high frequency data collection (> 100Hz) requires special considerations on the ESP32.
 
@@ -26,7 +26,7 @@ However, in practice, high frequency data collection (> 100Hz) requires special 
 2. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 3. Select the `data management` type, then either use the suggested name or specify a name for your data management service, for example `data-manager`.
 4. Click **Create**.
-5. On the panel that appears, you can manage the capturing and syncing functions and specify the sync **Interval**
+5. On the panel that appears, you can manage the capturing and syncing functions and specify the sync **Interval**.
    {{< alert title="Info" color="info" >}}
    With micro-RDK, the `capture_dir`, `tags`, and `additional_sync_paths` attributes are ignored and should not be configured.
    {{< /alert >}}
@@ -55,34 +55,38 @@ However, in practice, high frequency data collection (> 100Hz) requires special 
 }
 ```
 
+   {{< alert title="Info" color="info" >}}
+   With micro-RDK, the `capture_dir`, `tags`, and `additional_sync_paths` attributes are ignored and should not be configured.
+   {{< /alert >}}
+   
 {{% /expand%}}
 
 ## Configure data capture for individual components
 
-Once you have added the data capture service, you can specify the data you want to capture at a component level.
+Once you have added the data management service, you can specify the data you want to capture at a component level.
 
 ### Supported components
 
 Only the following components types are currently supported with data capture:
-|Type | Method |
-|----- | ----------- |
-|Sensor | GetReadings |
-|Movement Sensor | AngularVelocity, LinearAcceleration, LinearVelocity |
+| Type | Method |
+| ----- | ----------- |
+| [Sensor](/build/micro-rdk/sensor/) | [`GetReadings`](/components/sensor/#getreadings) |
+| [Movement Sensor](/build/micro-rdk/movement-sensor/) | [`AngularVelocity`](/components/movement-sensor/#getangularvelocity), [`LinearAcceleration`](/components/movement-sensor/#getlinearacceleration), [`LinearVelocity`](/components/movement-sensor/#getlinearvelocity) |
 
 To add data capture for a component, navigate to the **CONFIGURE** tab of your machine's page in the Viam app.
 
-For each component you can capture data for, there is a `Data capture` section in its panel.
+For each component you can capture data for, find the `Data capture` section in its panel.
 Click `Add Method` and then select the **Method** type and the capture **Frequency**.
 
 {{< alert title="Caution" color="caution" >}}
 
-Avoid configuring data capture to higher rates than your hardware can handle, as this leads to performance degradation.
+Avoid configuring data capture to higher rates than your hardware can handle, as this can lead to performance degradation.
 
 {{< /alert >}}
 
 Click the **Save** button in the top right corner of the page.
 
-Now your data will be captured at the configure frequency and synced to Viam cloud at the selected interval.
+Now your data will be captured at the configured capture frequency and synced to Viam app at the selected interval.
 
 {{%expand "Click to view an example JSON configuration capturing data from the GetReadings method of a temperature sensor and wifi signal sensor" %}}
 
@@ -154,7 +158,7 @@ Now your data will be captured at the configure frequency and synced to Viam clo
 
 {{% /expand%}}
 
-- To enable or disable data capture for a configured component or method, use the `on/off` toggle.
+- To enable or disable data capture for a configured component or method, use the `on/off` toggle on the component's configuration pane in the Viam app.
 - To change the frequency of data capture for a method, enter the number of measurements you wish to capture per second in the frequency field on the component's configuration pane in the Viam app.
 
 After adding the configuration for the methods, click the **Save** button in the top right corner of the page.
@@ -167,7 +171,7 @@ To view captured data for a machine, click on the data icon next to the **Save**
 
 {{<imgproc src="/services/data/data-icon.png" resize="300x" declaredimensions=true alt="Data icon">}}
 
-To view captured data for a {{< glossary_tooltip term_id="part" text="machine part" >}}, click on the menu in the top right of its card or the menu in the machine resources list in the **Builder** menu and select **View captured data**.
+To view captured data for a {{< glossary_tooltip term_id="part" text="machine part" >}}, click on the **...** menu in the top right of its card, or the menu in the machine resources list in the **Builder** menu, and select **View captured data**.
 
 {{<imgproc src="/services/data/part-menu.png" resize="300x" declaredimensions=true alt="Machine menu with the options Rename, Restart part, View captured data, View setup instructions, View history, View debug configuration, and Delete machine">}}
 
