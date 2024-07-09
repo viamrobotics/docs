@@ -15,7 +15,7 @@ Follow this guide to create, upload, and submit your Python script that loads a 
 ## Create a training script
 
 You must save your training script in the `tar.gz` format to run in the Viam ML training service.
-Follow this guide to prepare a Python source distribution `tar.gz` file that contains the training code for training your model.
+Follow this guide to prepare a Python source distribution `tar.gz` file with the code for training your model.
 
 ### Create entrypoint file <file>model/training.py</file>
 
@@ -31,9 +31,11 @@ Parse these arguments in your training script as follows:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="364"}
 # This parses the required args for running the training script.
-# You can use the data JSON to parse the images and their annotations for the specified dataset.
-# You can use the model directory for saving model artifacts associated with the model name and version.
-parse_args():
+# You can use the data JSON to parse the images and
+# their annotations for the specified dataset.
+# You can use the model directory for saving model artifacts
+# associated with the model name and version.
+def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset_file", dest="data_json", type=str)
     parser.add_argument("--model_output_directory", dest="model_dir", type=str)
@@ -71,11 +73,13 @@ In your training script, you must parse the dataset file for the classification 
 Use the following functions:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="364"}
-# This is used for parsing the dataset file produced and stored in Viam, specifically for getting the label annotations
+# This is used for parsing the dataset file produced and stored in Viam,
+# specifically for getting the label annotations
 def parse_filenames_and_labels_from_json(
     filename: str, all_labels: ty.List[str]
 ) -> ty.Tuple[ty.List[str], ty.List[str]]:
-    """Load and parse JSON file to return image filenames and corresponding labels.
+    """Load and parse JSON file to return image filenames and
+    corresponding labels.
     Args:
         filename: JSONLines file containing filenames and labels
         all_labels: list of all labels present in dataset
@@ -96,12 +100,15 @@ def parse_filenames_and_labels_from_json(
             image_labels.append(labels)
     return image_filenames, image_labels
 
-# This is used for parsing the dataset file produced and stored in Viam, specifically for getting the bounding box annotations
+
+# This is used for parsing the dataset file produced and stored in Viam
+# specifically for getting the bounding box annotations
 def parse_filenames_and_bboxes_from_json(
     filename: str,
     all_labels: ty.List[str],
 ) -> ty.Tuple[ty.List[str], ty.List[str], ty.List[ty.List[float]]]:
-    """Load and parse JSON file to return image filenames and corresponding labels with bboxes.
+    """Load and parse JSON file to return image filenames
+    and corresponding labels with bboxes.
     Args:
         filename: JSONLines file containing filenames and bboxes
     """
@@ -112,14 +119,15 @@ def parse_filenames_and_bboxes_from_json(
     with open(filename, "rb") as f:
         for line in f:
             json_line = json.loads(line)
-            image_filenames.append(json_line["image_path"]))
+            image_filenames.append(json_line["image_path"])
             annotations = json_line["bounding_box_annotations"]
             labels = []
             coords = []
             for annotation in annotations:
                 if annotation["annotation_label"] in all_labels:
                     labels.append(annotation["annotation_label"])
-                    # Store coordinates in rel_yxyx format so that we can use the keras_cv function
+                    # Store coordinates in rel_yxyx format so that
+                    # we can use the keras_cv function
                     coords.append(
                         [
                             annotation["y_min_normalized"],
@@ -146,14 +154,17 @@ You also need to include in your <file>training.py</file> logic to save the mode
 For example:
 
 ```python
-# This allows us to save the model artifact to Viam, which will be viewable as a registry item for the ML model name and version specified
+# This allows us to save the model artifact to Viam,
+# which will be viewable as a registry item for the ML model name
+# and version specified
 def save_tflite_classification(
     model: Model,
     model_dir: str,
     model_name: str,
     target_shape: ty.Tuple[int, int, int],
 ) -> None:
-    # Convert the model to tflite, with batch size 1 so the graph does not have dynamic-sized tensors.
+    # Convert the model to tflite, with batch size 1
+    # so the graph does not have dynamic-sized tensors.
     input = tf.keras.Input(target_shape, batch_size=1, dtype=tf.uint8)
     output = model(input, training=False)
     wrapped_model = tf.keras.Model(inputs=input, outputs=output)
