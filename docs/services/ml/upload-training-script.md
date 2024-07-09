@@ -9,7 +9,11 @@ no_service: true
 # SME: Tahiya S.
 ---
 
-You can upload a custom training script to the [Viam registry](https://app.viam.com/registry/) to train your ML model.
+You can train your classification and object detection models on the [Viam app](https://app.viam.com), where the trained model is output as a TFLite model.
+See [Train a Model](/services/ml/train-model/) for more information.
+However, you can now also upload a custom training script to the [Viam registry](https://app.viam.com/registry/) to train your ML model with an output type of PyTorch, Tensorflow, TFLite, ONNX, or any other model artifacts.
+A flexible training interface like this allows you to upload any machine learning training code for your use-case.
+
 Follow this guide to create, upload, and submit your Python script that loads a training dataset, trains an ML model, and produces a model artifact.
 
 ## Create a training script
