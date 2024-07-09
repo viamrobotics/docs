@@ -133,7 +133,7 @@ If you later wish to make your module public, you can use the [`viam module upda
 
     For example, the following represents the configuration of an example `my-module` public module in the `acme` namespace:
 
-    {{%expand "Click to view example meta.json with build object" %}}
+    {{< expand "Click to view example meta.json with build object" >}}
 
     ```json {class="line-numbers linkable-line-numbers"}
     {
@@ -156,9 +156,9 @@ If you later wish to make your module public, you can use the [`viam module upda
     }
     ```
 
-    {{% /expand%}}
+    {{< /expand >}}
 
-    {{%expand "Click to view example meta.json without build object" %}}
+    {{< expand "Click to view example meta.json without build object" >}}
 
     ```json {class="line-numbers linkable-line-numbers"}
     {
@@ -176,7 +176,7 @@ If you later wish to make your module public, you can use the [`viam module upda
     }
     ```
 
-    {{% /expand%}}
+    {{< /expand >}}
 
     {{% alert title="Important" color="note" %}}
 
@@ -197,18 +197,18 @@ For more information, see [Naming your model](/registry/#naming-your-model-names
    tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
    ```
 
-Where `<PATH-TO-EXECUTABLE>` is the [packaged executable](/registry/create/#compile-or-package-your-module) that runs the module at the [entry point](/registry/create/#write-an-entry-point-main-program-file).
-If using PyInstaller, by default this would be `dist/main`.
+   where `<PATH-TO-EXECUTABLE>` is the [packaged executable](/registry/create/#compile-or-package-your-module) that runs the module at the [entry point](/registry/create/#write-an-entry-point-main-program-file).
+   If using PyInstaller, by default this would be `dist/main`.
 
-For a Python module built using the `venv` approach, the command might look like this:
+   For a Python module built using the `venv` approach, the command might look like this:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
- tar -czf module.tar.gz run.sh requirements.txt src
-```
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   tar -czf module.tar.gz run.sh requirements.txt src
+   ```
 
-Where `run.sh` is your [entrypoint file](/registry/create/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/registry/create/#compile-or-package-your-module), and `src` is the directory that contains the source code of your module.
+   Where `run.sh` is your [entrypoint file](/registry/create/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/registry/create/#compile-or-package-your-module), and `src` is the directory that contains the source code of your module.
 
-Supply the path to the resulting archive file in the next step.
+   Supply the path to the resulting archive file in the next step.
 
 1. Run `viam module upload` to upload your custom module to the Viam registry.
    Specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code:
@@ -217,7 +217,7 @@ Supply the path to the resulting archive file in the next step.
    viam module upload --version <version> --platform <platform> <module-path>
    ```
 
-   Where:
+   where:
 
    - `version`: provide a version for your custom module, using [semantic versioning](https://semver.org/) (example: `1.0.0`).
      You can later increment this value with subsequent `viam module upload` commands.
@@ -254,9 +254,9 @@ Supply the path to the resulting archive file in the next step.
      viam module upload --version 1.0.0 --platform linux/amd64 packaged-module.tar.gz
      ```
 
-When you `upload` a module, the command performs basic [validation](/cli/#upload-validation) of your module to check for common errors.
+   When you `upload` a module, the command performs basic [validation](/cli/#upload-validation) of your module to check for common errors.
 
-For more information, see the [`viam module` command](/cli/#module)
+   For more information, see the [`viam module` command](/cli/#module).
 
 ## Update an existing module
 
@@ -311,7 +311,7 @@ If you intend to make frequent code changes to your module, want to support a va
 
    When you `upload` a module, the command performs basic [validation](/cli/#upload-validation) of your module to check for common errors.
 
-For more information, see the [`viam module` command](/cli/#module)
+For more information, see the [`viam module` command](/cli/#module).
 
 ### Update an existing module using a GitHub action
 
@@ -554,7 +554,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 {{% /tab %}}
 {{< /tabs >}}
 
-1. Create an [organization API key](/cli/#create-an-organization-api-key) with the [owner](/cloud/rbac/#permissions) role, which the GitHub action will use to authenticate to the Viam platform, using one of the following methods:
+4. Create an [organization API key](/cli/#create-an-organization-api-key) with the [owner](/cloud/rbac/#permissions) role, which the GitHub action will use to authenticate to the Viam platform, using one of the following methods:
 
    - Use the Viam CLI to create an organization API key, which includes the owner role by default:
 

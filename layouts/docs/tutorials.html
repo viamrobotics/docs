@@ -4,9 +4,9 @@
     {{ partial "head.html" . }}
   </head>
   <body class="td-{{ .Kind }}{{ with .Page.Params.body_class }} {{ . }}{{ end }}">
-    {{- if hugo.IsProduction -}}{{- if .Site.GoogleAnalytics -}}
+    {{- if hugo.IsProduction -}}{{- if .Site.Config.Services.GoogleAnalytics.ID -}}
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ .Site.GoogleAnalytics }}"
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ .Site.Config.Services.GoogleAnalytics.ID }}"
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     {{- end -}}{{- end -}}

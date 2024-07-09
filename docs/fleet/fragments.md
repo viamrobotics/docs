@@ -166,7 +166,7 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
 5. Add any update operators you'd like to apply to the fragment to the `mods` section.
    Click to view each example:
 
-   {{%expand "Change the name and attributes of a component" %}}
+   {{< expand "Change the name and attributes of a component" >}}
    This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to make the following changes to the attributes of a motor named `motor1`:
 
    - Sets the `max_rpm` to `1818`.
@@ -193,8 +193,8 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
    ],
    ```
 
-   {{% /expand%}}
-   {{%expand "Remove an attribute" %}}
+   {{< /expand >}}
+   {{< expand "Remove an attribute" >}}
    This example uses [`$unset`](https://www.mongodb.com/docs/manual/reference/operator/update/unset/#mongodb-update-up.-unset) to remove the pin number set for the `pwm` pin, so the motor no longer has a PWM pin set.
    In other words, it deletes the `pwm` pin field.
 
@@ -213,8 +213,8 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
    ],
    ```
 
-   {{% /expand%}}
-   {{%expand "Modify dependencies" %}}
+   {{< /expand >}}
+   {{< expand "Modify dependencies" >}}
    This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to assign a new list of dependencies to a component named `rover_base2`.
 
    ```json {class="line-numbers linkable-line-numbers"}
@@ -232,8 +232,8 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
    ],
    ```
 
-   {{% /expand%}}
-   {{%expand "Change motor pins from A and B to PWM and DIR" %}}
+   {{< /expand >}}
+   {{< expand "Change motor pins from A and B to PWM and DIR" >}}
    This example uses [`$rename`](https://www.mongodb.com/docs/manual/reference/operator/update/rename/) to make the following changes to the attributes of a motor named `motor1` in the fragment:
 
    - Retrieves the pin number for pin `a` and assigns that value to the PWM pin.
@@ -260,8 +260,8 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
    ],
    ```
 
-   {{% /expand%}}
-   {{%expand "Change a camera path" %}}
+   {{< /expand >}}
+   {{< expand "Change a camera path" >}}
    This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to change the video path for a camera named `camera-one` in the fragment:
 
    ```json {class="line-numbers linkable-line-numbers"}
@@ -279,8 +279,8 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
    ],
    ```
 
-   {{% /expand%}}
-   {{%expand "Modify data sync settings" %}}
+   {{< /expand >}}
+   {{< expand "Modify data sync settings" >}}
    This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to change the sync interval for a [data management service](/services/data/) named `data-management` in the fragment:
 
    ```json {class="line-numbers linkable-line-numbers"}
@@ -298,8 +298,8 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
    ],
    ```
 
-   {{% /expand%}}
-   {{%expand "Pin a module version" %}}
+   {{< /expand >}}
+   {{< expand "Pin a module version" >}}
    This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to set [version update settings for a module](/registry/configure/#edit-the-configuration-of-a-module-from-the-viam-registry) named `custom-sensor` in the fragment:
 
    ```json {class="line-numbers linkable-line-numbers"}
@@ -324,7 +324,7 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
    - To always update with the latest release, use `"latest"`
    - To pin to a specific release, use `"<version number>"`, for example `"1.8.3"`
 
-   {{% /expand%}}
+   {{< /expand >}}
 
 6. Click **Save** in the upper right corner of the page to save your new configuration.
 7. To check that your mods are working, view your machine's debug configuration.

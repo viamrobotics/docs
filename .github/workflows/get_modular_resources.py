@@ -117,10 +117,17 @@ async def main():
 
     # Deleting documents that didn't get updated (presumably deleted)
     try:
-        typesense_client.collections['resources'].documents.delete({'filter_by': 'last_updated: <' + time_now + ',module_id: !builtin' })
-        typesense_client.collections['mlmodels'].documents.delete({'filter_by': 'last_updated: <' + time_now})
-        typesense_client.collections['trainingscripts'].documents.delete({'filter_by': 'last_updated: <' + time_now})
+        res = typesense_client.collections['resources'].documents.delete({'filter_by': 'last_updated: <' + str(time_now)})
+        print("Resources deleted")
+        print(res)
+        res = typesense_client.collections['mlmodels'].documents.delete({'filter_by': 'last_updated: <' + str(time_now)})
+        print("ML models deleted")
+        print(res)
+        res = typesense_client.collections['trainingscripts'].documents.delete({'filter_by': 'last_updated: <' + time_now})
+        print("Training scripts deleted")
+        print(res)
     except Exception as e:
+        print(e)
         pass
 
 

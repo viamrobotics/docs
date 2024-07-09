@@ -613,7 +613,7 @@ Get the logs associated with a specific machine {{< glossary_tooltip term_id="pa
 - `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to get logs from.
 - `filter` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Only include logs with messages that contain the string filter. Defaults to empty string “” (that is, no filter).
 - `dest` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional filepath to write the log entries to.
-- `errors_only` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Boolean specifying whether or not to only include error logs. Defaults to True.
+- `log_levels` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): List of log levels for which entries should be returned. Defaults to empty list, which returns all logs.
 - `num_log_entries` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): Number of log entries to return. Passing 0 returns all logs. Defaults to 100. All logs or the first num_log_entries logs will be returned, whichever comes first.
 
 **Returns:**
@@ -1212,8 +1212,8 @@ Add a role under the organization you are currently authenticated to.
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the role in. You can obtain your organization ID from the Viam app’s organization settings page.
 - `identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the entity the role belongs to (for example, a user ID).
-- `role` (Literal[owner] | Literal[operator]) (required): The role to add (either `"owner"` or `"operator"`).
-- `resource_type` (Literal[organization] | Literal[location] | Literal[robot]) (required): The type of the resource to add the role to (either `"organization"`, `"location"`, or `"robot"`). Must match the type of the `resource_id`'s resource.
+- `role` (Literal['owner'] | Literal['operator']) (required): The role to add (either `"owner"` or `"operator"`).
+- `resource_type` (Literal['organization'] | Literal['location'] | Literal['robot']) (required): The type of the resource to add the role to (either `"organization"`, `"location"`, or `"robot"`). Must match the type of the `resource_id`'s resource.
 - `resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the resource the role applies to (the ID of either an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="machine" text="machine" >}}.).
 
 **Returns:**
@@ -1251,8 +1251,8 @@ Remove a role under the organization you are currently authenticated to.
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization the role exists in. You can obtain your organization ID from the Viam app’s organization settings page.
 - `identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the entity the role belongs to (for example, a user ID).
-- `role` (Literal[owner] | Literal[operator]) (required): The role to remove.
-- `resource_type` (Literal[organization] | Literal[location] | Literal[robot]) (required): Type of the resource the role is being removed from. Must match resource_id.
+- `role` (Literal['owner'] | Literal['operator']) (required): The role to remove.
+- `resource_type` (Literal['organization'] | Literal['location'] | Literal['robot']) (required): Type of the resource the role is being removed from. Must match resource_id.
 - `resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the resource the role applies to (that is, either an organization, location, or robot ID).
 
 **Returns:**

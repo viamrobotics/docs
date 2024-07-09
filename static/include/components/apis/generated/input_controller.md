@@ -351,6 +351,10 @@ If you are implementing your own input controller and add features that have no 
 
 - (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
 
+**Raises:**
+
+- (NotImplementedError): Raised if the Resource does not support arbitrary commands.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}

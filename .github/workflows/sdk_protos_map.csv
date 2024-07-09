@@ -40,12 +40,12 @@ board,GetPWM,get_pwm,PWM,pwm
 board,SetPWM,set_pwm,SetPWM,setPwm
 board,PWMFrequency,get_pwm_frequency,PWMFreq,pwmFrequency
 board,SetPWMFrequency,set_pwm_frequency,SetPWMFreq,setPwmFrequency
-board,AnalogReaderNames,analog_names,AnalogNames,
-board,ReadAnalogReader,analog_by_name,AnalogByName,analogReaderValue
+board,AnalogNames,analog_names,AnalogNames,
+board,AnalogByName,analog_by_name,AnalogByName,analogReaderValue
 ## HACK: Omitting PySDK: write_analog, currently borked: https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.write_analog
-board,WriteAnalog,,Write,writeAnalog
+board,Write,,Write,writeAnalog
 board,GetDigitalInterruptValue,digital_interrupt_by_name,DigitalInterruptByName,,
-board,StreamTicks,,StreamTicks,streamTicks
+board,StreamTicks,stream_ticks,StreamTicks,streamTicks
 board,SetPowerMode,set_power_mode,SetPowerMode,setPowerMode
 board,GetGeometries,get_geometries,,
 ## HACK: Board (python, go) provides additional helper functions, adding 5 pseudo-entries:
@@ -102,7 +102,7 @@ gantry,Close,close,Close,
 
 ## Generic Component
 ## NOTED:Generic Component in Go SDK doesn't appear to implement (inherit) these:
-generic_component,DoCommand,do_command,,doCommand
+generic_component,DoCommand,do_command,DoCommand,doCommand
 generic_component,GetGeometries,get_geometries,,
 ## HACK: No proto for close, manually mapping:
 ## NOTED: Go SDK also missing Close, but we have it in our docs?:
@@ -230,7 +230,7 @@ data_manager,Close,,Close,
 
 ## Generic Service
 ## NOTED:Generic Component in Go SDK doesn't appear to implement (inherit) these:
-generic_service,DoCommand,do_command,,
+generic_service,DoCommand,do_command,DoCommand,
 ## HACK: No proto for close, manually mapping:
 ## NOTED: Go SDK also missing Close, but we have it in our docs?:
 generic_service,Close,close,,
@@ -444,7 +444,7 @@ robot,StopAll,stop_all,StopAll,
 robot,StartSession,,,
 robot,SendSessionHeartbeat,,,
 robot,Log,log,,
-robot,GetCloudMetadata,get_cloud_metadata,GetCloudMetadata,getCloudMetadata
+robot,GetCloudMetadata,get_cloud_metadata,CloudMetadata,getCloudMetadata
 ## HACK: Robot (python) provides additional helper function, adding 4 pseudo-entries:
 robot,Options.with_api_key,with_api_key,,
 robot,AtAddress,at_address,,atAddress
