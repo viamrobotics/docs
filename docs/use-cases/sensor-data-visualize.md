@@ -53,7 +53,7 @@ Your chosen third-party visualization tool must be able to connect to a [MongoDB
 Select a tab below to learn how to configure your visualization tool for use with Viam:
 
 {{< tabs >}}
-{{% tab name="Grafana" %}}
+{{< tab name="Grafana" >}}
 
 {{< table >}}
 {{% tablestep %}}
@@ -91,9 +91,9 @@ Enter the following information in the configuration UI for that plugin:
 
 - **Password**: Enter the password you provided earlier.
 
-{{<imgproc src="/tutorials/visualize-data-grafana/configure-grafana-mongodb-datasource.png" resize="800x" declaredimensions=true alt="The Grafana data source plugin configuration page, showing the connection string and username filled in with the configuration determined from the previous steps">}}
+  {{<imgproc src="/tutorials/visualize-data-grafana/configure-grafana-mongodb-datasource.png" resize="800x" declaredimensions=true alt="The Grafana data source plugin configuration page, showing the connection string and username filled in with the configuration determined from the previous steps">}}
 
-{{% /tablestep %}}
+{{< /tablestep >}}
 {{% tablestep %}}
 
 **4. Use visualization tools for dashboards**
@@ -110,7 +110,7 @@ See the [guide on querying sensor data](/use-cases/sensor-data-query/) for more 
 {{< /table >}}
 
 {{% /tab %}}
-{{% tab name="Other visualization tools" %}}
+{{< tab name="Other visualization tools" >}}
 
 {{< table >}}
 {{% tablestep %}}
@@ -171,7 +171,7 @@ db-user-<YOUR-ORG-ID>
 
 Substitute your organization ID for `<YOUR-ORG-ID>`.
 
-{{% /tab %}}
+{{< /tab >}}
 {{% /tabs %}}
 
 {{% /tablestep %}}
