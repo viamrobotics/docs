@@ -50,6 +50,27 @@ voltage, isAC, err := myPowerSensor.Voltage(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Voltage](https://flutter.viam.dev/viam_sdk/Voltage.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var voltageObject = await myPowerSensor.readings();
+double voltageInVolts = voltageObject['volts'];
+bool isItAC = voltageObject['isAc'];
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/PowerSensor/voltage.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetCurrent
@@ -102,6 +123,27 @@ current, isAC, err := myPowerSensor.Current(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Current](https://flutter.viam.dev/viam_sdk/Current.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var currentObject = await myPowerSensor.readings();
+double amps = voltageObject['amperes'];
+bool isItAC = voltageObject['isAc'];
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/PowerSensor/current.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -157,6 +199,25 @@ power, err := myPowerSensor.Power(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var power = await myPowerSensor.power();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/PowerSensor/power.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetReadings
@@ -208,6 +269,25 @@ readings, err := mySensor.Readings(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Sensor).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var readings = await myPowerSensor.readings();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/PowerSensor/readings.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -284,6 +364,10 @@ If you are implementing your own power sensor and add features that have no buil
 
 - (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
 
+**Raises:**
+
+- (NotImplementedError): Raised if the Resource does not support arbitrary commands.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -317,6 +401,68 @@ result, err := myArm.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example using doCommand with an arm component
+const command = {'cmd': 'test', 'data1': 500};
+var result = myArm.doCommand(command);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Resource/doCommand.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### FromRobot
+
+Get the resource from the provided robot with the given name.
+
+{{< tabs >}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `robot` [RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html) (required)
+- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [PowerSensor](https://flutter.viam.dev/viam_sdk/PowerSensor-class.html)
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/PowerSensor/fromRobot.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Name
+
+Get the `ResourceName` for this power sensor with the given name.
+
+{{< tabs >}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [ResourceName](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/PowerSensor/getResourceName.html).
 
 {{% /tab %}}
 {{< /tabs >}}

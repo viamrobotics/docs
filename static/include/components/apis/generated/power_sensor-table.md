@@ -8,4 +8,6 @@
 | [`GetGeometries`](/components/power-sensor/#getgeometries) | Get all the geometries associated with the power sensor in its current configuration, in the frame of the power sensor. |
 | [`Reconfigure`](/components/power-sensor/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/components/power-sensor/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
+| [`FromRobot`](/components/power-sensor/#fromrobot) | Get the resource from the provided robot with the given name. |
+| [`Name`](/components/power-sensor/#name) | Get the `ResourceName` for this power sensor with the given name. |
 | [`Close`](/components/power-sensor/#close) | Safely shut down the resource and prevent further use. |

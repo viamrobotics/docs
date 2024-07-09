@@ -12,7 +12,7 @@ Get the current position of the arm as a [pose](/internals/orientation-vector/).
 
 **Returns:**
 
-- ([viam.components.arm.Pose](https://python.viam.dev/autoapi/viam/index.html#viam.components.arm.Pose)): A representation of the arm’s current position as a 6 DOF (six degrees of freedom) pose. The Pose is composed of values for location and orientation with respect to the origin. Location is expressed as distance, which is represented by x, y, and z coordinate values. Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
+- ([viam.components.arm.Pose](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose)): A representation of the arm’s current position as a 6 DOF (six degrees of freedom) pose. The Pose is composed of values for location and orientation with respect to the origin. Location is expressed as distance, which is represented by x, y, and z coordinate values. Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
 
 **Example:**
 
@@ -49,6 +49,26 @@ pos, err := myArm.EndPosition(context.Background(), nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Pose](https://flutter.viam.dev/viam_sdk/Pose-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Get the pose of an arm named "myArm"
+final currentPose = await myArm.endPosition();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/endPosition.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### MoveToPosition
@@ -60,7 +80,7 @@ Move the end of the arm to the desired [pose](/internals/orientation-vector/), r
 
 **Parameters:**
 
-- `pose` ([viam.components.arm.Pose](https://python.viam.dev/autoapi/viam/index.html#viam.components.arm.Pose)) (required): The destination Pose for the arm. The Pose is composed of values for location and orientation with respect to the origin. Location is expressed as distance, which is represented by x, y, and z coordinate values. Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
+- `pose` ([viam.components.arm.Pose](https://python.viam.dev/autoapi/viam/components/arm/arm/index.html#viam.components.arm.arm.Pose)) (required): The destination Pose for the arm. The Pose is composed of values for location and orientation with respect to the origin. Location is expressed as distance, which is represented by x, y, and z coordinate values. Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -112,6 +132,30 @@ err = myArm.MoveToPosition(context.Background(), examplePose, nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `pose` [Pose](https://flutter.viam.dev/viam_sdk/Pose-class.html) (required)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Create a pose for the arm to move to
+final targetPose = Pose.fromBuffer([12, 0, 400, 0, 0, 1, 90]);
+
+// Move the arm to the pose
+await myArm.moveToPosition(targetPose);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/moveToPosition.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### MoveToJointPositions
@@ -129,7 +173,7 @@ Collision checks are not enabled when doing direct joint control with MoveToJoin
 
 **Parameters:**
 
-- `positions` ([viam.proto.component.arm.JointPositions](https://python.viam.dev/autoapi/viam/index.html#viam.components.arm.JointPositions)) (required): The destination JointPositions for the arm.
+- `positions` ([viam.proto.component.arm.JointPositions](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.JointPositions)) (required): The destination JointPositions for the arm.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -188,6 +232,30 @@ err = myArm.MoveToJointPositions(context.Background(), jointPos, nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `positions` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)> (required)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Create a list of joint angles for each arm joint
+List<double> targetPositions = [180, 90, 15.75, 30, 90, 0];
+
+// Move the arm joints to those angles
+await myArm.moveToJointPositions(targetPositions);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/moveToJointPositions.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetJointPositions
@@ -233,20 +301,32 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Assumes you have imported "go.viam.com/api/component/arm/v1" as `componentpb`
-myArm, err := arm.FromRobot(machine, "my_arm")
+myArm , err := arm.FromRobot(machine, "my_arm")
 
-// Declare an array of values with your desired rotational value for each joint on the arm.
-degrees := []float64{4.0, 5.0, 6.0}
-
-// Declare a new JointPositions with these values.
-jointPos := &componentpb.JointPositions{Values: degrees}
-
-// Move each joint of the arm to the position these values specify.
-err = myArm.MoveToJointPositions(context.Background(), jointPos, nil)
+// Get the current position of each joint on the arm as JointPositions.
+pos, err := myArm.JointPositions(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)>>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+List<double> currentJointPositions = await myArm.moveToJointPosition();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/jointPositions.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -269,7 +349,7 @@ Get the kinematics information associated with the arm as the format and byte co
 
 **Returns:**
 
-- (Tuple[[KinematicsFileFormat.ValueType](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.KinematicsFileFormat), [bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): A tuple containing two values; the first [0] value represents the format of the file, either in URDF format or Viam’s kinematic parameter format (spatial vector algebra), and the second [1] value represents the byte contents of the file.
+- (Tuple[[KinematicsFileFormat.ValueType](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.KinematicsFileFormat), [bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): A tuple containing two values; the first [0] value represents the format of the file, either in URDF format (KinematicsFileFormat.KINEMATICS_FILE_FORMAT_URDF) or Viam’s kinematic parameter format (spatial vector algebra) (KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA), and the second [1] value represents the byte contents of the file.
 
 **Example:**
 
@@ -349,6 +429,25 @@ logger.Info(is_moving)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+bool isArmMoving = await myArm.isMoving();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/isMoving.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### Stop
@@ -401,6 +500,25 @@ err = myArm.Stop(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+await myArm.stop();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/stop.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -508,6 +626,10 @@ If you are implementing your own arm and add features that have no built-in API 
 
 - (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
 
+**Raises:**
+
+- (NotImplementedError): Raised if the Resource does not support arbitrary commands.
+
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -541,6 +663,68 @@ result, err := myArm.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example using doCommand with an arm component
+const command = {'cmd': 'test', 'data1': 500};
+var result = myArm.doCommand(command);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Resource/doCommand.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### FromRobot
+
+Get the resource from the provided robot with the given name.
+
+{{< tabs >}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `robot` [RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html) (required)
+- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [Arm](https://flutter.viam.dev/viam_sdk/Arm-class.html)
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/fromRobot.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Name
+
+Get the `ResourceName` for this arm with the given name.
+
+{{< tabs >}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [ResourceName](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/getResourceName.html).
 
 {{% /tab %}}
 {{< /tabs >}}

@@ -503,7 +503,7 @@ Create a LogEntry object from the log to send to the RDK over gRPC.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The logger’s name.
 - `level` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The level of the log.
 - `time` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (required): The log creation time.
-- `log` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The log message.
+- `message` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The log message.
 - `stack` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The stack information of the log.
 
 **Returns:**
@@ -533,7 +533,7 @@ Get app-related information about the robot.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-metadata = await machine.get_cloud_metadata()
+metadata = machine.get_cloud_metadata()
 print(metadata.machine_id)
 print(metadata.machine_part_id)
 print(metadata.primary_org_id)
@@ -557,7 +557,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-metadata, err := machine.CloudMetadata(ctx.Background())
+metadata, err := machine.CloudMetadata()
+machine_id = metadata.MachineID
 machine_part_id = metadata.MachinePartID
 primary_org_id = metadata.PrimaryOrgID
 location_id = metadata.LocationID
@@ -684,7 +685,7 @@ Any machines created using this method will NOT automatically close the channel 
 
 **Parameters:**
 
-- `channel` ([grpclib.client.Channel | viam.rpc.dial.ViamChannel](https://python.viam.dev/autoapi/viam/rpc/dial/index.html#viam.rpc.dial.ViamChannel)) (required): The channel that is connected to a robot, obtained by viam.rpc.dial.
+- `channel` ([grpclib.client.Channel | viam.rpc.dial.ViamChannel](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.ViamChannel)) (required): The channel that is connected to a robot, obtained by viam.rpc.dial.
 - `options` ([Options](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options)) (required): Options for refreshing. Any connection options will be ignored.
 
 **Returns:**
