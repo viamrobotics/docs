@@ -55,6 +55,7 @@ async def main():
                 }
                 insert_resp = typesense_client.collections['resources'].documents.upsert(
         json_m)
+                print(insert_resp)
 
     # Get built-in resources from typesense.json
     with open('typesense.json') as f:
