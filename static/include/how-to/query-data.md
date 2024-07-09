@@ -1,5 +1,5 @@
 {{< table >}}
-{{< tablestep link="/cli/#authenticate">}}
+{{% tablestep link="/cli/#authenticate"%}}
 **1. Authenticate with the CLI**
 
 Authenticate using a personal access token:
@@ -8,8 +8,8 @@ Authenticate using a personal access token:
 viam login
 ```
 
-{{< /tablestep >}}
-{{< tablestep link="/cli/#organizations">}}
+{{% /tablestep %}}
+{{% tablestep link="/cli/#organizations"%}}
 **2. Find your organization ID**
 
 To create a database user allowing you to access your data, find your organization ID:
@@ -18,17 +18,17 @@ To create a database user allowing you to access your data, find your organizati
 viam organizations list
 ```
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 **3. Configure a new database user**
 
 Configure a new database user for the Viam organization's MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance, which is where your machine's synced data is stored.
 
-{{< alert title="Warning" color="warning" >}}
+{{% alert title="Warning" color="warning" %}}
 The command will create a user with your organization ID as the username.
 If you or someone else in your organization have already created this user, the following steps update the password for that user instead.
 Dashboards or other integrations relying on this password will then need to be updated.
-{{< /alert >}}
+{{% /alert %}}
 
 Provide your organization's `org-id` from step 2, and a password for your database user.
 Your password must be at least 8 characters long, and include at least one uppercase, one number, and one special character (such as `$` or `%`):
@@ -40,8 +40,8 @@ viam data database configure --org-id=<YOUR-ORGANIZATION-ID> --password=<NEW-DBU
 This command configures a database user for your organization for use with data query, and sets the password.
 If you have run this command before, this command instead updates the password to the new value you set.
 
-{{< /tablestep >}}
-{{< tablestep link="/cli/#data" >}}
+{{% /tablestep %}}
+{{% tablestep link="/cli/#data" %}}
 **4. Determine the connection URI**
 
 Determine the connection URI (also known as a connection string) for your organization's MongoDB Atlas Data Federation instance by running the following command with the organization's `org-id` from step 2:
@@ -59,5 +59,5 @@ This command returns both the _connection URI_ to your organization's MongoDB At
 
 You will need this information to query your data in the next section.
 
-{{< /tablestep >}}
+{{% /tablestep %}}
 {{< /table >}}

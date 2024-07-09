@@ -17,22 +17,22 @@ Further, you can determine the accessibility of your module when you upload it -
 When you deploy a module, whether its one you've written yourself or added from the registry, you maintain complete control over how that module's code is deployed to your machine when new updates to the module are available.
 
 {{< table >}}
-{{< tablestep >}}
+{{% tablestep %}}
 {{<imgproc src="/registry/module-icon.svg" class="fill alignleft" style="max-width: 150px" alt="Search modules">}}
 **1. Search modules**
 
 Once you [have created a machine in the Viam app](/cloud/machines/#add-a-new-machine), [search for modules in the Viam registry](/registry/configure/) that fit your machine's requirements, and then [add a module](/registry/configure/#add-a-modular-resource-from-the-viam-registry) from your machine's configuration page in the Viam app.
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 
 {{<imgproc src="/registry/create-module.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Create your own module">}}
 **2. Create your own module**
 
 Or, you can [create your own module](/registry/create/) to add support for new hardware, or to extend an existing software service.
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 
 {{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Deploy your module">}}
 **3. Deploy your module**
@@ -44,8 +44,8 @@ Once you have created your new module, you can deploy it to your machine in one 
 
 If your machine is offline when you deploy a module, it will deploy once your machine comes back online.
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 {{<imgproc src="/registry/create-module.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Configure your module">}}
 **4. Configure your module**
 
@@ -53,8 +53,8 @@ Once you've deployed a module to your machine or fleet, [configure the module](/
 
 You can also configure [how a deployed module updates itself](/registry/configure/#configure-version-update-management-for-a-registry-module) when new versions of that module become available from the Viam registry. You can choose to always update to the latest version as soon as it becomes available, pin to a specific code revision and never update it, or upgrade only within a specified major or minor version.
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 {{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Update your module">}}
 **5. Update your module**
 
@@ -63,5 +63,5 @@ You can also use a [GitHub action to automate module releases](/registry/upload/
 
 These options make it easy to push changes to a fleet of machines.
 
-{{< /tablestep >}}
+{{% /tablestep %}}
 {{< /table >}}

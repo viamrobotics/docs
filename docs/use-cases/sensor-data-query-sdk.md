@@ -44,7 +44,7 @@ Follow the guide to [capture sensor data](/use-cases/collect-sensor-data/).
 ## Set up the Python SDK
 
 {{< table >}}
-{{< tablestep link="/build/program/#requirements">}}
+{{% tablestep link="/build/program/#requirements"%}}
 **1. Install the Python SDK**
 
 For macOS (both Intel x86_64 and Apple Silicon) or Linux (x86, aarch64, armv6l), run the following commands:
@@ -55,13 +55,13 @@ source .venv/bin/activate
 pip install viam-sdk
 ```
 
-{{< /tablestep >}}
+{{% /tablestep %}}
 {{< /table >}}
 
 ## Query data with the Python SDK
 
 {{< table >}}
-{{< tablestep link="/cli/#organizations">}}
+{{% tablestep link="/cli/#organizations"%}}
 **1. Create an API key**
 
 To access your machines using the Python SDK, you must use an API key:
@@ -70,8 +70,8 @@ To access your machines using the Python SDK, you must use an API key:
 viam organizations api-key create --org-id <org-id> --name my-api-key
 ```
 
-{{< /tablestep >}}
-{{< tablestep link="/appendix/apis/data-client/">}}
+{{% /tablestep %}}
+{{% tablestep link="/appendix/apis/data-client/"%}}
 **2. Use the API key with the `data_client`**
 
 Use the API key and [`TabularDataByFilter()`](/appendix/apis/data-client/#tabulardatabyfilter), [`TabularDataBySQL()`](/appendix/apis/data-client/#tabulardatabysql), [`TabularDataByMQL()`](/appendix/apis/data-client/#tabulardatabymql), and[`DeleteTabularData()`](/appendix/apis/data-client/#deletetabulardata) to query data:
@@ -134,7 +134,7 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
-{{< /tablestep >}}
+{{% /tablestep %}}
 {{< /table >}}
 
 Adjust the Python script to uery your data further.
