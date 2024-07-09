@@ -53,14 +53,14 @@ Once your data has synced, you can query your data from within the Viam app usin
 You must have the [owner role](/cloud/rbac/) in order to query data in the Viam app.
 
 {{< table >}}
-{{< tablestep >}}
+{{% tablestep %}}
 **1. Query with SQL or MQL**
 
 Navigate to the [**Query** page](https://app.viam.com/data/query).
 Then, select either **SQL** or **MQL** from the **Query mode** dropdown menu on the right-hand side.
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 **2. Run your query**
 
 This example query returns 5 readings from a component called `my-sensor`:
@@ -81,8 +81,8 @@ SELECT * FROM readings WHERE component_name = 'my-sensor' LIMIT 5
 
 {{% /tab %}}
 {{< /tabs >}}
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 **3. Review results**
 
 Click **Run query** when ready to perform your query and get matching results.
@@ -102,7 +102,7 @@ For more information on MQL syntax, see the [MQL (MongoDB Query Language)](https
 
 {{% /expand%}}
 
-{{< /tablestep >}}
+{{% /tablestep %}}
 {{< /table >}}
 
 ## Configure data query
@@ -116,7 +116,7 @@ If you want to query data from third party tools, you have to configure data que
 You can use third-party tools, such as the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/), [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), to query against captured sensor data.
 
 {{< table >}}
-{{< tablestep link="/use-cases/sensor-data-query/#configure-data-query">}}
+{{% tablestep link="/use-cases/sensor-data-query/#configure-data-query"%}}
 **1. Connect to your Viam organization's data**
 
 Run the following command to connect to your Viam organization's MongoDB Atlas instance from `mongosh` using the connection URI you obtained during query configuration:
@@ -125,8 +125,8 @@ Run the following command to connect to your Viam organization's MongoDB Atlas i
 mongosh "<YOUR-DB-CONNECTION-URI>"
 ```
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 **2. Query data from a compatible client**
 
 Once connected, you can run SQL or MQL statements to query captured data directly.
@@ -173,7 +173,7 @@ db.readings.aggregate(
 {{% /tab %}}
 {{< /tabs >}}
 
-{{< /tablestep >}}
+{{% /tablestep %}}
 {{< /table >}}
 
 {{< alert title="Tip" color="tip" >}}

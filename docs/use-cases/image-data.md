@@ -38,14 +38,14 @@ In the next how-to guide you can use the images you collect here to [train compu
 ## Collect image data and sync it to the cloud
 
 {{< table >}}
-{{< tablestep link="/components/camera/">}}
+{{% tablestep link="/components/camera/"%}}
 {{<imgproc src="/icons/components/camera.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="configure a camera component">}}
 **1. Configure a camera**
 
 Configure a camera component, such as a [webcam](/components/camera/webcam/), on your machine.
 
-{{< /tablestep >}}
-{{< tablestep link="/services/data/">}}
+{{% /tablestep %}}
+{{% tablestep link="/services/data/"%}}
 {{<imgproc src="/services/icons/data-management.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
 **2. Enable the data management service**
 
@@ -53,16 +53,16 @@ In your camera component configuration panel, find the **Data capture** section.
 Click **Add method** and follow the prompt to **Create a data management service**.
 You can leave the default data manager settings.
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 {{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
 **3. Capture data**
 
 With the data management service configured on your machine, you can continue configuring how the camera component itself captures data.
 In the **Data capture** panel of your camera's config, select **Read image** from the method selector, and set your desired capture frequency.
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 {{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **4. View data in the Viam app**
 
@@ -70,7 +70,7 @@ Once you have synced images, you can [view those images in the Viam app](/servic
 
 You can also [export your data from the Viam app](/services/data/export/) to a deployed machine, or to any computer.
 
-{{< /tablestep >}}
+{{% /tablestep %}}
 {{< /table >}}
 
 ## Use filtering to collect and sync only certain images
@@ -81,7 +81,7 @@ Contributors have written several filtering {{< glossary_tooltip term_id="module
 The following steps use the [`filtered_camera`](https://github.com/erh/filtered_camera) module:
 
 {{< table >}}
-{{< tablestep link="/services/ml/deploy/">}}
+{{% tablestep link="/services/ml/deploy/"%}}
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **1. Add an ML model to your machine**
 
@@ -89,8 +89,8 @@ Configure an ML model service on your machine that is compatible with the ML mod
 
 From the **Model** dropdown, select the preexisting model you want to use, or click **Add new model** to upload your own.
 
-{{< /tablestep >}}
-{{< tablestep link="/services/vision/">}}
+{{% /tablestep %}}
+{{% tablestep link="/services/vision/"%}}
 {{<imgproc src="/services/icons/vision.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **2. Add a vision service to use with the ML model**
 
@@ -99,8 +99,8 @@ You can think of the vision service as the bridge between the ML model service a
 Configure the `vision / ML model` service on your machine.
 From the **Select model** dropdown, select the name of your ML model service (for example, `mlmodel-1`).
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 {{<imgproc src="/services/icons/modular-registry.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **3. Configure the filtered camera**
 
@@ -108,8 +108,8 @@ The `filtered-camera` {{< glossary_tooltip term_id="modular-resource" text="modu
 
 Configure a `filtered-camera` component on your machine, following the [attribute guide in the README](https://github.com/erh/filtered_camera?tab=readme-ov-file#configure-your-filtered-camera) to specify the names of your webcam and vision service, and add classification and object detection filters.
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 {{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **4. Configure data capture and sync on the filtered camera**
 
@@ -118,15 +118,15 @@ The filtered camera will only capture image data that passes the filters you con
 
 Turn off data capture on your webcam if you haven't already, so that you don't capture duplicate or unfiltered images.
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 {{<imgproc src="/services/ml/configure.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **5. (Optional) Trigger sync with custom logic**
 
 By default, the captured data syncs at the regular interval you specified in the data capture config.
 If you need to trigger sync in a different way, see [Trigger cloud sync conditionally](/services/data/trigger-sync/) for a documented example of syncing data only at certain times of day.
 
-{{< /tablestep >}}
+{{% /tablestep %}}
 {{< /table >}}
 
 ## Next steps

@@ -56,21 +56,21 @@ Select a tab below to learn how to configure your visualization tool for use wit
 {{% tab name="Grafana" %}}
 
 {{< table >}}
-{{< tablestep >}}
+{{% tablestep %}}
 **1. Choose Grafana instance**
 
 Install or set up Grafana. You can use either a local instance of Grafana or Grafana Cloud, and can use the free trial version of Grafana if desired.
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 **2. Install connector to MongoDB data source**
 
 Navigate to your Grafana web UI, and add the [Grafana MongoDB data source](https://grafana.com/grafana/plugins/grafana-mongodb-datasource/) plugin to your Grafana instance.
 
 {{<imgproc src="/tutorials/visualize-data-grafana/search-grafana-plugins.png" resize="800x" declaredimensions=true alt="The Grafana plugin search interface showing the results for a search for mongodb">}}
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 **3. Configure a data connection**
 
 Navigate to the Grafana data source management page, and select the Grafana MongoDB data source that you just added.
@@ -93,8 +93,9 @@ Enter the following information in the configuration UI for that plugin:
 
 {{<imgproc src="/tutorials/visualize-data-grafana/configure-grafana-mongodb-datasource.png" resize="800x" declaredimensions=true alt="The Grafana data source plugin configuration page, showing the connection string and username filled in with the configuration determined from the previous steps">}}
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
+
 **4. Use visualization tools for dashboards**
 
 Some third-party visualization tools support the ability to directly query your data within their platform to generate more granular visualizations of specific data.
@@ -105,14 +106,14 @@ See the [guide on querying sensor data](/use-cases/sensor-data-query/) for more 
 
 <!-- markdownlint-disable-file MD034 -->
 
-{{< /tablestep >}}
+{{% /tablestep %}}
 {{< /table >}}
 
 {{% /tab %}}
 {{% tab name="Other visualization tools" %}}
 
 {{< table >}}
-{{< tablestep >}}
+{{% tablestep %}}
 **1. Install connector to MongoDB data source**
 
 Some visualization clients are able to connect to the Viam MongoDB Atlas Data Federation instance natively, while others require that you install and configure an additional plugin or connector.
@@ -120,8 +121,8 @@ For example, Tableau requires both the [Atlas SQL JDBC Driver](https://www.mongo
 
 Check with the documentation for your third-party visualization tool to be sure you have the required additional software installed to connect to a MongoDB Atlas Data Federation instance.
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 **2. Configure a data connection**
 
 Most third-party visualization tools require the _connection URI_ (also called the connection string) to that database server, and the _credentials_ to authenticate to that server in order to visualize your data.
@@ -173,8 +174,8 @@ Substitute your organization ID for `<YOUR-ORG-ID>`.
 {{% /tab %}}
 {{% /tabs %}}
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 **3. Use visualization tools for dashboards**
 
 Some third-party visualization tools support the ability to directly query your data within their platform to generate more granular visualizations of specific data.
@@ -185,7 +186,7 @@ See the [guide on querying sensor data](/use-cases/sensor-data-query/) for more 
 
 <!-- markdownlint-disable-file MD034 -->
 
-{{< /tablestep >}}
+{{% /tablestep %}}
 {{< /table >}}
 
 {{< /tab >}}
