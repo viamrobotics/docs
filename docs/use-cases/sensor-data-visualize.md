@@ -99,11 +99,11 @@ Enter the following information in the configuration UI for that plugin:
 
 With your data connection established, you can then build dashboards that provide insight into your data.
 
-You can query your captured data within a Grafana dashboard using either {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
-See the [guide on querying sensor data](/use-cases/sensor-data-query/) for more information.
-
 Grafana additionally supports the ability to directly [query and transform your data](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/) within a dashboard to generate more granular visualizations of specific data.
 You might use this functionality to visualize only a single day's metrics, limit the visualization to a select machine or component, or to isolate an outlier in your reported data, for example.
+
+You can query your captured data within a Grafana dashboard using either {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
+See the [guide on querying sensor data](/use-cases/sensor-data-query/) for more information.
 
 <!-- markdownlint-disable-file MD034 -->
 
