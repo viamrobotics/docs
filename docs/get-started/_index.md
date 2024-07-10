@@ -12,7 +12,7 @@ Learn about the Viam platform by reading our Viam in 3 minutes guide or try it o
 {{% card link="/get-started/viam/" %}}
 {{% card link="/get-started/try-viam/" %}}
 {{% card link="/get-started/quickstarts/control-motor/" %}}
-{{% card link="/get-started/quickstarts/control-data/" %}}
+{{% card link="/get-started/quickstarts/collect-data/" %}}
 {{% card link="/get-started/quickstarts/detect-people/" %}}
 {{< /cards >}}
 
