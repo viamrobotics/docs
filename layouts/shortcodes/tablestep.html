@@ -5,7 +5,7 @@
   {{ end }}
   {{ with $.Inner }}
       {{ if eq $.Page.File.Ext "md" }}
-        {{ $.Inner | markdownify }}
+        {{ $.Inner }}
       {{ else }}
         {{ $.Inner | htmlUnescape | safeHTML }}
       {{ end }}

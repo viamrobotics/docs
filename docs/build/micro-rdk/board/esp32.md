@@ -103,10 +103,10 @@ The following attributes are available for `esp32` boards:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `pins` | array | Optional | The GPIO numbers of any GPIO pins you wish to use as input/output with the [`GPIOPin` API](/appendix/apis/#gpio-pins). |
 | `analogs` | array | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](#analogs). |
 | `i2cs` | array | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](#i2cs). |
 | `digital_interrupts` | array | Optional | Any digital interrupts' GPIO number. See [configuration info](#digital_interrupts). |
+| `pins` | array | Optional | The GPIO number of any GPIO pins you wish to use as input/output with the [board API](/components/board/#api). |
 
 Any pin not specified in either `"pins"` or `"digital_interrupts"` cannot be interacted with through the [board API](/components/board/#api).
 Interaction with digital interrupts is only supported with the [board API](/components/board/#api); these digital interrupts cannot be used as software interrupts in driver implementations.

@@ -36,9 +36,19 @@ The [fleet management API](/appendix/apis/fleet/) supports the following methods
 
 ### Data client API
 
-The [data client API](/appendix/apis/data-client/) supports the following methods to upload and retrieve data like images or sensor readings directly to the [Viam app](https://app.viam.com) (among [others](https://python.viam.dev/autoapi/viam/app/data_client/index.html)):
+The [data client API](/appendix/apis/data-client/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/data-client.md" >}}
+Methods to upload data like images or sensor readings directly to the [Viam app](https://app.viam.com):
+
+{{< readfile "/static/include/app/apis/generated/data_sync-table.md" >}}
+
+Methods to download, filter, tag, or perform other tasks on data like images or sensor readings:
+
+{{< readfile "/static/include/app/apis/generated/data-table.md" >}}
+
+Methods to work with datasets:
+
+{{< readfile "/static/include/app/apis/generated/dataset-table.md" >}}
 
 ### ML training API
 
@@ -68,13 +78,13 @@ The [arm component](/components/arm/) supports the following methods:
 
 The [base component](/components/base/) supports the following methods:
 
-{{< readfile "/static/include/components/apis/base.md" >}}
+{{< readfile "/static/include/components/apis/generated/base-table.md" >}}
 
 ### Board
 
 The [board component](/components/board/) supports the following methods:
 
-{{< readfile "/static/include/components/apis/board.md" >}}
+{{< readfile "/static/include/components/apis/generated/board-table.md" >}}
 
 ### Camera
 
@@ -98,7 +108,7 @@ The [gantry component](/components/gantry/) supports the following methods:
 
 The [generic component](/components/generic/) supports the following methods:
 
-{{< readfile "/static/include/components/apis/generic.md" >}}
+{{< readfile "/static/include/components/apis/generated/generic_component-table.md" >}}
 
 ### Gripper
 
@@ -168,19 +178,19 @@ The [data management service](/services/data/) supports the following methods:
 
 The [generic service](/services/generic/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/generic.md" >}}
+{{< readfile "/static/include/services/apis/generated/generic_service-table.md" >}}
 
 ### ML Model
 
 The [ML model service](/services/ml/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/ml.md" >}}
+{{< readfile "/static/include/services/apis/generated/mlmodel-table.md" >}}
 
 ### Motion
 
 The [motion service](/services/motion/) supports the following methods:
 
-{{< readfile "/static/include/services/apis/motion.md" >}}
+{{< readfile "/static/include/services/apis/generated/motion-table.md" >}}
 
 ### Navigation
 
@@ -199,26 +209,6 @@ The [Simultaneous Localization And Mapping (SLAM) service](/services/slam/) supp
 Different [vision service](/services/vision/) models support different methods:
 
 {{< readfile "/static/include/services/apis/generated/vision-table.md" >}}
-
-## Signaling APIs
-
-### GPIO pins
-
-In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with GPIO pins on a board:
-
-{{< readfile "/static/include/components/apis/gpiopin.md" >}}
-
-### Analog-to-digital converters (ADCs)
-
-In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [ADCs](/components/board/#analogs) on a board:
-
-{{< readfile "/static/include/components/apis/analog.md" >}}
-
-### Digital interrupts
-
-In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [digital interrupts](/components/board/#digital_interrupts) on a board:
-
-{{< readfile "/static/include/components/apis/digitalinterrupt.md" >}}
 
 ## ResourceBase methods
 

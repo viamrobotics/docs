@@ -21,5 +21,8 @@
     "postcss": "^8.4.31",
     "postcss-cli": "^9.1.0",
     "prettier": "^3.2.5"
+  },
+  "dependencies": {
+    "hugo": "^0.0.3"
   }
 }

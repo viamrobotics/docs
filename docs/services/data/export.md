@@ -47,13 +47,8 @@ You can see more information about exporting data in the [Viam CLI documentation
 
 ## Manage data with the data client API
 
-A set of methods using the data client API for managing data, including export, batch delete, tag, and upload functions, are provided in the [Python SDK](https://python.viam.dev).
-
-The following methods are supported by the data client API:
-
-{{< readfile "/static/include/services/apis/data-client.md" >}}
-
-Click on the method name for more information.
+You can also use the [Data Client API](/appendix/apis/data-client/) to upload and export data to and from the Viam app.
+This API includes a set of methods for managing data, including export, batch delete, tag, upload, and many more.
 
 ## Next steps
 
