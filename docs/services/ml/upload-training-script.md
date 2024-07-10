@@ -305,6 +305,9 @@ def save_tflite_classification(
         f.write(tflite_model)
 ```
 
+When you submit a training job with this training script, this function saves the model outputs to the `model_output_directory` in the cloud.
+Once the training job is complete, Viam looks at that directory and creates a package with all of the contents of the directory, creating or updating a registry item for the ML model.
+
 {{% /expand%}}
 
 ### Package the training script as a <file>tar.gz</file> source distribution
