@@ -56,32 +56,94 @@ def parse_args():
 {{%expand "Step 2: Parse annotations from dataset file" %}}
 
 The `dataset_file` is a file that the Viam platform will pass to the training script when you train an ML model with it.
-The file will contain metadata from the dataset used for the training containing the file path for each data point and any annotations associated with the data.
-The following shows examples for image data sets with bounding box labels and classification labels:
-The annotations are formatted as follows:
+The file contains metadata from the dataset used for the training, including the file path for each data point and any annotations associated with the data.
+
+Dataset JSON files for image data sets with bounding box labels and classification labels are formatted as follows:
 
 ```json {class="line-numbers linkable-line-numbers"}
-{"image_path": "/path/to/data/data1.jpeg", "bounding_box_annotations":[{"annotation_label":"blue_star","x_min_normalized":0.38175675675675674,"x_max_normalized":0.5101351351351351,"y_min_normalized":0.35585585585585583,"y_max_normalized":0.527027027027027}], "classification_annotations": [{"annotation_label": "blue_star"}]}
-{"image_path": "/path/to/data/data2.jpeg", "bounding_box_annotations":[{"annotation_label":"blue_star","x_min_normalized":0.2939189189189189,"x_max_normalized":0.4594594594594595,"y_min_normalized":0.25225225225225223,"y_max_normalized":0.5495495495495496}], "classification_annotations": [{"annotation_label": "blue_star"}]}
-{"image_path": "/path/to/data/data3.jpeg", "bounding_box_annotations":[{"annotation_label":"blue_star","x_min_normalized":0.03557312252964427,"x_max_normalized":0.2015810276679842,"y_min_normalized":0.30526315789473685,"y_max_normalized":0.5368421052631579}, {"annotation_label":"blue_square","x_min_normalized":0.039525691699604744,"x_max_normalized":0.2015810276679842,"y_min_normalized":0.2578947368421053,"y_max_normalized":0.5473684210526316}], "classification_annotations": [{"annotation_label": "blue_star"}, {"annotation_label": "blue_square"}]}
+{
+    "image_path": "/path/to/data/data1.jpeg",
+    "bounding_box_annotations":[
+        {
+            "annotation_label":"blue_star",
+            "x_min_normalized":0.38175675675675674,
+            "x_max_normalized":0.5101351351351351,
+            "y_min_normalized":0.35585585585585583,
+            "y_max_normalized":0.527027027027027
+        }],
+    "classification_annotations":[
+        {"annotation_label": "blue_star"}]
+}
+{
+    "image_path": "/path/to/data/data2.jpeg",
+    "bounding_box_annotations":[
+        {
+            "annotation_label":"blue_star",
+            "x_min_normalized":0.2939189189189189,
+            "x_max_normalized":0.4594594594594595,
+            "y_min_normalized":0.25225225225225223,
+            "y_max_normalized":0.5495495495495496
+        }],
+    "classification_annotations": [
+        {
+            "annotation_label": "blue_star"
+        }]
+}
+
+{
+    "image_path": "/path/to/data/data3.jpeg",
+    "bounding_box_annotations":[
+        {
+            "annotation_label":"blue_star",
+            "x_min_normalized":0.03557312252964427,
+            "x_max_normalized":0.2015810276679842,
+            "y_min_normalized":0.30526315789473685,
+            "y_max_normalized":0.5368421052631579
+        },
+        {
+            "annotation_label":"blue_square",
+            "x_min_normalized":0.039525691699604744,
+            "x_max_normalized":0.2015810276679842,
+            "y_min_normalized":0.2578947368421053,"y_max_normalized":0.5473684210526316
+        }],
+    "classification_annotations": [
+        {
+            "annotation_label": "blue_star"
+        },
+        {
+            "annotation_label": "blue_square"
+        }]
+    }
 ```
 
 With classification annotations like this:
 
 ```json {class="line-numbers linkable-line-numbers"}
-"classification_annotations": [{"annotation_label": "blue_star"}, {"annotation_label": "blue_square"}]
+"classification_annotations":
+    [
+        {"annotation_label": "blue_star"},
+        {"annotation_label": "blue_square"}
+    ]
 ```
 
 And bounding box annotations looking like this:
 
 ```json {class="line-numbers linkable-line-numbers"}
-"bounding_box_annotations":[{"annotation_label":"blue_star","x_min_normalized":0.38175675675675674,"x_max_normalized":0.5101351351351351,"y_min_normalized":0.35585585585585583,"y_max_normalized":0.527027027027027}]
+"bounding_box_annotations":
+    [
+        {"annotation_label":"blue_star",
+        "x_min_normalized":0.38175675675675674,
+        "x_max_normalized":0.5101351351351351,
+        "y_min_normalized":0.35585585585585583,
+        "y_max_normalized":0.527027027027027
+        }
+    ]
 ```
 
 In your training script, you must parse the dataset file for the classification or bounding box annotations.
 Use the following functions:
 
-```python {class="line-numbers linkable-line-numbers" data-line="364"}
+```python {class="line-numbers linkable-line-numbers"}
 # This is used for parsing the dataset file (produced and stored in Viam),
 # parse it to get the label annotations
 def parse_filenames_and_labels_from_json(
@@ -259,21 +321,51 @@ Unzip the package and see <file>model/training.py</file> for an example entrypoi
 ## Upload a new training script or new version
 
 You must use the [Viam CLI](/cli/) to upload your training script to the Registry.
-You can use the [`viam training-script upload`](/cli/#training-script) command in the form `viam training-script upload --path=<path-to-tarball> --org-id=<your-org-id> --script-name=<name-for-script>` to upload a new script.
-You can also simultaneously upload a training script and submit a training job with the [`viam train submit custom from-upload` command](/cli/#position-arguments-submit-custom).
+Follow the instructions in the [CLI documentation](/cli/) to install the CLI.
 
-Follow the instructions in the [CLI documentation](/cli/) to install the CLI and formulate these commands.
+You can use the [`viam training-script upload`](/cli/#training-script) command in the form `viam training-script upload --path=<path-to-tar.gz> --org-id=<your-org-id> --script-name=<your-name-for-script>` to upload a new script.
+
+For example:
+
+```sh {class="line-numbers linkable-line-numbers"}
+viam training-script upload --path=<path-to-tar.gz> --org-id=<INSERT ORG ID> --script-name="MyCustomTrainingScript"
+```
+
+To find your organization's ID, navigate to your organization's **Settings** page in [the Viam app](https://app.viam.com/).
+Find **Organization ID** and click the copy icon.
 
 Once uploaded, you can view the script by navigating to the [registry's **Training Scripts** page](https://app.viam.com/registry?type=Training+Script).
 
-### Update the visibility of a training script
-
-To update the visibility of a training script, use the CLI's [`viam training-script update`](/cli/#training-script) command and set the `--visibility` flag to `public` or `private`.
+You can also simultaneously upload a training script and submit a training job with the [`viam train submit custom from-upload` command](/cli/#position-arguments-submit-custom).
 
 ## Submit a training job
 
 You can use the Viam CLI's [`viam train submit`](/cli/#positional-arguments-submit) command to submit a training job.
 
-Referencing the [CLI documentation](/cli/#positional-arguments-submit), use `viam train submit custom from-registry` to submit a training job from a training script already in the registry and `viam train submit custom from-upload` to upload a training script and submit a training job at the same time.
+Referencing the [CLI documentation](/cli/#positional-arguments-submit), use `viam train submit custom from-registry` to submit a training job from a training script already uploaded to the registry and `viam train submit custom from-upload` to upload a training script and submit a training job at the same time.
 
-Once successfully submitted, view your training job in the **Training** section of the Viam app's **DATA** page's [**MODELS** tab](https://app.viam.com/data/models).
+For example:
+
+```sh {class="line-numbers linkable-line-numbers"}
+viam submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-type="single_label_classification" --model-version="2" --version="1" --path=<path-to-tar.gz> --script-name="MyCustomTrainingScript"
+```
+
+This command uploads a script called `"MyCustomTrainingScript"` to the registry under the specified organization and also submits a training job to that script with the input dataset, which generates a new version of the single-classification ML model `"MyRegistryModel"` and publishes that to the registry.
+
+```sh {class="line-numbers linkable-line-numbers"}
+viam submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-version="2" --version="1" --path=<path-to-tar.gz> --script-name="MyCustomTrainingScript"
+```
+
+This command submits a training job to the previously uploaded `"MyCustomTrainingScript"` with another input dataset, which trains `"MyRegistryModel"` and publishes that to the registry.
+
+To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset.
+Click **...** in the left-hand menu and click **Copy dataset ID**.
+To find your organization's ID, navigate to your organization's **Settings** page in [the Viam app](https://app.viam.com/).
+Find **Organization ID** and click the copy icon.
+
+Once submitted, view your training job in the **Training** section of the Viam app's **DATA** page's [**MODELS** tab](https://app.viam.com/data/models).
+You can also view the uploaded ML models in the [**MODELS** tab](https://app.viam.com/data/models).
+
+## Update the visibility of a training script
+
+To update the visibility of a training script, use the CLI's [`viam training-script update`](/cli/#training-script) command and set the `--visibility` flag to `public` or `private`.

@@ -1135,10 +1135,9 @@ Use a training script to train an ML model on data.
 | `--model-type` | Type of model to train. can be one of `single_label_classification`, `multi_label_classification`, or `object_detection`. | `submit managed`, `submit custom with-upload` | **Required**, Optional |
 | `--model-labels` | Labels to train on. These will either be classification or object detection labels. | `submit managed` | **Required** |
 | `--model-version` | Set the version of the submitted model. Defaults to current timestamp if unspecified. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
-| `--script-name` | The registry name of the ML training script to use for training. | `submit custom from-registry` | **Required** |
+| `--script-name` | The registry name of the ML training script to use for training. If uploading, this sets the name. | `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--version` | The version of the ML training script to use for training. | `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--path` | The path to the ML training script to upload. | `submit custom with-upload` | **Required** |
-| `--script-name` | The script name of the ML training script to upload. | `submit custom with-upload` | **Required** |
 | `--framework` | Framework of the ML training script to upload, can be `tflite`, `tensorflow`, `pytorch`, or `onnx`. | `submit custom with-upload` | Optional |
 
 ### `version`
