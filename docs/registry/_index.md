@@ -41,7 +41,7 @@ The [Viam registry](https://app.viam.com/registry) is the central place where yo
 {{% /manualcard %}}
 {{% manualcard link="#ml-training-scripts" %}}
 
-**Training scripts**, Python source distributions to train and produce models in the Viam cloud for custom machine learning
+**Training scripts**, Python scripts to train and produce ML models in the Viam cloud for custom machine learning
 
 {{% /manualcard %}}
 {{< /cards >}}
@@ -214,7 +214,7 @@ To use an existing model from the registry, [deploy the ML model to your robot](
 
 ## ML training scripts
 
-The Viam registry hosts trained ML training scripts, which you can use to train custom machine learning models from Python source distributions.
+The Viam registry hosts custom Python ML training scripts, which you can use to train custom machine learning models.
 You can also upload your own training script by following the guide to [Train a Model with a Custom Python Training Script](/services/ml/upload-training-script/#upload-a-new-training-script-or-new-version).
 
 You can search the available ML training scripts from the Viam registry here:

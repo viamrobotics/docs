@@ -18,7 +18,7 @@ Follow this guide to create, upload, and submit a Python script that loads a tra
 
 ## Create a training script
 
-Follow this guide to prepare a Python source distribution `tar.gz` file with the code for training your model.
+Follow this guide to prepare a tarball with the Python code for training your model.
 
 ### Create entrypoint file <file>model/training.py</file>
 
@@ -330,7 +330,7 @@ Unzip the package and see <file>model/training.py</file> for an example entrypoi
 You must use the [Viam CLI](/cli/) to upload your training script to the Registry.
 Follow the instructions in the [CLI documentation](/cli/) to install the CLI.
 
-You can use the [`viam training-script upload`](/cli/#training-script) command in the form `viam training-script upload --path=<path-to-tar.gz> --org-id=<your-org-id> --script-name=<your-name-for-script>` to upload a new script.
+You can use the [`viam training-script upload`](/cli/#training-script) command to upload a new script.
 
 For example:
 
