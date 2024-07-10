@@ -977,9 +977,9 @@ def parse(type, names):
 
                     if not id.endswith(".from_robot") and not id.endswith(".get_resource_name") \
                     and not id.endswith(".get_operation") and not id.endswith(".from_proto") \
-                    and not id.endswith(".from_string") and not id.endswith("__") \
-                    and not id.endswith("HasField") and not id.endswith("WhichOneof") \
-                    and not id in python_ignore_apis:
+                    and not id.endswith(".to_proto") and not id.endswith(".from_string") \
+                    and not id.endswith("__") and not id.endswith("HasField") \
+                    and not id.endswith("WhichOneof") and not id in python_ignore_apis:
 
                         ## Determine method name, but don't save to dictionary as value; we use it as a key instead:
                         method_name = id.rsplit('.',1)[1]
@@ -992,8 +992,9 @@ def parse(type, names):
                                 and row.split(',')[2] == method_name:
                                     this_method_dict["proto"] = row.split(',')[1]
 
-                        ## Determine method description, stripping newlines:
-                        this_method_dict["description"] = tag.find('dd').p.text.replace("\n", " ")
+                        ## Determine method description, stripping newlines. If not present, skip:
+                        if tag.find('dd').p:
+                            this_method_dict["description"] = tag.find('dd').p.text.replace("\n", " ") 
 
                         ## Determine method direct link, no need to parse for it, it's inferrable.
                         ## If we are scraping from a local staging instance, replace host and port with upstream link target URL:

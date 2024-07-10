@@ -64,6 +64,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Set the power to  40% forwards.
+await myMotor.setPower(0.4);
+```
+
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Motor/setPower.html).
 
 {{% /tab %}}
@@ -84,6 +91,13 @@ Spin the motor indefinitely at the specified speed, in revolutions per minute. I
 **Returns:**
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Set the motor to turn backwards at 120.5 RPM.
+await myMotor.setRPM(-120.5);
+```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Motor/setRPM.html).
 
@@ -158,6 +172,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Turn the motor 7.2 revolutions forward at 60 RPM.
+await myMotor.goFor(60, 7.2);
+```
+
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Motor/goFor.html).
 
 {{% /tab %}}
@@ -230,6 +251,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Turn the motor to 8.3 revolutions from home at 75 RPM.
+await myMotor.goTo(75, 8.3);
+```
+
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Motor/goTo.html).
 
 {{% /tab %}}
@@ -296,6 +324,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Returns:**
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Set the current position as the new home position with no offset.
+await myMotor.resetZeroPosition(0.0);
+```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Motor/resetZeroPosition.html).
 
@@ -367,6 +402,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Returns:**
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Get the current position of an encoded motor.
+var position = await myMotor.position();
+```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Motor/position.html).
 
@@ -441,6 +483,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[MotorProperties](https://flutter.viam.dev/viam_sdk/MotorProperties.html)>
 
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Return whether the motor supports certain optional features
+var properties = await myMotor.properties();
+```
+
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Motor/properties.html).
 
 {{% /tab %}}
@@ -514,6 +563,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Returns:**
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[PowerState](https://flutter.viam.dev/viam_sdk/PowerState-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Check whether the motor is currently powered and
+// check the percentage of max power to the motor.
+var powerState = await myMotor.powerState();
+var powered = powerState.isOn;
+var pct = powerState.powerPct;
+```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Motor/powerState.html).
 
@@ -618,6 +677,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)>
 
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Check whether the motor is moving.
+var moving = await myMotor.isMoving();
+```
+
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Motor/isMoving.html).
 
 {{% /tab %}}
@@ -684,6 +750,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Returns:**
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Stop the motor.
+await myMotor.stop();
+```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Motor/stop.html).
 
@@ -828,6 +901,12 @@ Get the `ResourceName` for this motor with the given name.
 **Returns:**
 
 - [ResourceName](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var name = Motor.getResourceName('myMotor');
+```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Motor/getResourceName.html).
 
