@@ -353,17 +353,26 @@ Referencing the [CLI documentation](/cli/#positional-arguments-submit), use `via
 
 For example:
 
+{{< tabs >}}
+{{% tab name="from-registry" %}}
+
 ```sh {class="line-numbers linkable-line-numbers"}
-viam submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-type="single_label_classification" --model-version="2" --version="1" --path=<path-to-tar.gz> --script-name="MyCustomTrainingScript"
+viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-version="2" --version="1" --path=<path-to-tar.gz> --script-name="MyCustomTrainingScript"
+```
+
+This command submits a training job to the previously uploaded `"MyCustomTrainingScript"` with another input dataset, which trains `"MyRegistryModel"` and publishes that to the registry.
+
+{{% /tab %}}
+{{% tab name="with-upload" %}}
+
+```sh {class="line-numbers linkable-line-numbers"}
+viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-type="single_label_classification" --model-version="2" --version="1" --path=<path-to-tar.gz> --script-name="MyCustomTrainingScript"
 ```
 
 This command uploads a script called `"MyCustomTrainingScript"` to the registry under the specified organization and also submits a training job to that script with the input dataset, which generates a new version of the single-classification ML model `"MyRegistryModel"` and publishes that to the registry.
 
-```sh {class="line-numbers linkable-line-numbers"}
-viam submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-version="2" --version="1" --path=<path-to-tar.gz> --script-name="MyCustomTrainingScript"
-```
-
-This command submits a training job to the previously uploaded `"MyCustomTrainingScript"` with another input dataset, which trains `"MyRegistryModel"` and publishes that to the registry.
+{{% /tab %}}
+{{< /tabs >}}
 
 To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset.
 Click **...** in the left-hand menu and click **Copy dataset ID**.
@@ -371,7 +380,7 @@ To find your organization's ID, navigate to your organization's **Settings** pag
 Find **Organization ID** and click the copy icon.
 
 Once submitted, view your training job in the **Training** section of the Viam app's **DATA** page's [**MODELS** tab](https://app.viam.com/data/models).
-You can also view the uploaded ML models in the [**MODELS** tab](https://app.viam.com/data/models).
+You can also view the uploaded ML model in the [**MODELS** tab](https://app.viam.com/data/models).
 
 ## Update the visibility of a training script
 
