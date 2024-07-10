@@ -50,7 +50,9 @@ Configure a camera component, such as a [webcam](/components/camera/webcam/), on
 **2. Enable the data management service**
 
 In your camera component configuration panel, find the **Data capture** section.
-Click **Add method** and follow the prompt to **Create a data management service**.
+Click **Add method**.
+
+When the **Create a data management service** prompt appears, click it to add the service to your machine.
 You can leave the default data manager settings.
 
 {{% /tablestep %}}
@@ -59,7 +61,13 @@ You can leave the default data manager settings.
 **3. Capture data**
 
 With the data management service configured on your machine, you can continue configuring how the camera component itself captures data.
-In the **Data capture** panel of your camera's config, select **Read image** from the method selector, and set your desired capture frequency.
+
+In the **Data capture** panel of your camera's config, select **Read image** from the method selector.
+
+Set your desired capture frequency.
+For example, set it to `0.05` to capture an image every 20 seconds.
+
+Set the MIME type to your desired image format, for example `image/jpeg`.
 
 {{% /tablestep %}}
 {{% tablestep %}}
