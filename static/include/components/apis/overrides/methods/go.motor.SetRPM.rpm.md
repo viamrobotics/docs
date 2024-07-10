@@ -1,0 +1,1 @@
+The speed in RPM for the motor to move at.

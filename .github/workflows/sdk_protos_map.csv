@@ -139,7 +139,7 @@ input_controller,Close,close,Close,
 
 ## Motor
 motor,SetPower,set_power,SetPower,setPower
-motor,SetRPM,,,setRPM
+motor,SetRPM,set_rpm,SetRPM,setRPM
 motor,GoFor,go_for,GoFor,goFor
 motor,GoTo,go_to,GoTo,goTo
 motor,ResetZeroPosition,reset_zero_position,ResetZeroPosition,resetZeroPosition
