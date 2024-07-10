@@ -18,7 +18,6 @@ Follow this guide to create, upload, and submit your Python script that loads a 
 
 ## Create a training script
 
-You must save your training script in the `tar.gz` format to run in the Viam ML training service.
 Follow this guide to prepare a Python source distribution `tar.gz` file with the code for training your model.
 
 ### Create entrypoint file <file>model/training.py</file>
@@ -186,6 +185,7 @@ def save_tflite_classification(
 
 ### Package the training script as a <file>tar.gz</file> source distribution
 
+You must save your training script in the `tar.gz` format to run in the Viam ML training service.
 Follow the instructions to [create a <file>tar.gz</file> gzip'd tar file](https://docs.python.org/3.10/distutils/sourcedist) from your project.
 
 {{% alert title="Tip" color="tip" %}}
@@ -195,7 +195,7 @@ See <file>model/training.py</file> for an example entrypoint file.
 
 ## Upload a new training script or new version
 
-You must use the Viam CLI to upload your training script to the Registry.
+You must use the [Viam CLI](/cli/) to upload your training script to the Registry.
 You can use the [`viam training-script upload`](/cli/#training-script) command in the form `viam training-script upload --path=<path-to-tarball> --org-id=<your-org-id> --script-name=<name-for-script>` to upload a new script.
 You can also simultaneously upload a training script and submit a training job with the [`viam train submit custom from-upload` command](/cli/#position-arguments-submit-custom).
 
