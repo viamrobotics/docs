@@ -10,4 +10,5 @@
 | [`DoCommand`](/services/vision/#docommand) | Execute model-specific commands that are not otherwise defined by the service API. |
 | [`FromRobot`](/services/vision/#fromrobot) | Get the resource from the provided robot with the given name. |
 | [`Name`](/services/vision/#name) | Get the `ResourceName` for this instance of the Vision service with the given name. |
+| [`GetProperties`](/services/vision/#getproperties) | Get info about what vision methods the vision service provides. |
 | [`Close`](/services/vision/#close) | Safely shut down the resource and prevent further use. |

@@ -297,6 +297,7 @@ vision,Reconfigure,,Reconfigure,
 vision,DoCommand,do_command,DoCommand,doCommand
 vision,FromRobot,,,fromRobot
 vision,Name,,,getResourceName
+vision,GetProperties,get_properties,GetProperties,
 vision,Close,close,Close,
 
 ## App
