@@ -63,9 +63,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```dart {class="line-numbers linkable-line-numbers"}
-var voltageObject = await myPowerSensor.readings();
-double voltageInVolts = voltageObject['volts'];
-bool isItAC = voltageObject['isAc'];
+var voltageObject = await myPowerSensor.voltage();
+double voltageInVolts = voltageObject.volts;
+bool isItAC = voltageObject.isAc;
 ```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/PowerSensor/voltage.html).
@@ -138,9 +138,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```dart {class="line-numbers linkable-line-numbers"}
-var currentObject = await myPowerSensor.readings();
-double amps = voltageObject['amperes'];
-bool isItAC = voltageObject['isAc'];
+var currentObject = await myPowerSensor.current();
+double amps = currentObject.amperes;
+bool isItAC = currentObject.isAc;
 ```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/PowerSensor/current.html).

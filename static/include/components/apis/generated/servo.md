@@ -159,6 +159,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)>
 
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var angle = await myServo.position();
+```
+
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Servo/position.html).
 
 {{% /tab %}}
@@ -260,6 +266,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)>
 
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var isItMoving = await myServo.isMoving();
+```
+
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Servo/isMoving.html).
 
 {{% /tab %}}
@@ -329,6 +341,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Returns:**
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+await myServo.stop();
+```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Servo/stop.html).
 
@@ -473,6 +491,13 @@ Get the `ResourceName` for this servo with the given name.
 **Returns:**
 
 - [ResourceName](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+var name = Servo.getResourceName('myServo');
+```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Servo/getResourceName.html).
 
