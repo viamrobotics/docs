@@ -251,8 +251,8 @@ def build_and_compile_classification(
     global_pooling = tf.keras.layers.GlobalAveragePooling2D()
     # Output layer
     classification = tf.keras.layers.Dense(
-        units, 
-        activation=activation, 
+        units,
+        activation=activation,
         name="output"
     )
 
