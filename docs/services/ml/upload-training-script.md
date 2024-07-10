@@ -156,6 +156,64 @@ def parse_filenames_and_bboxes_from_json(
 After reading in the dataset and preparing the data for training, add logic to build and compile the model using the data passed in through the data file.
 The code in this part of your script depends on the type of ML training you are doing.
 
+For example, you can reference the logic from <file>model/training.py</file> from this [example classification training script](https://app.viam.com/packages/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb/custom-training-classification/ml_training/latest/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb) that trains a classification model using TensorFlow and Keras.
+
+Here, the logic to build and compile the classification model looks like this:
+
+```python {class="line-numbers linkable-line-numbers"}
+# Build the Keras model
+def build_and_compile_classification(
+    labels: ty.List[str], model_type: str, input_shape: ty.Tuple[int, int, int]
+) -> Model:
+    units, activation, loss_fnc, metrics = get_neural_network_params(
+        len(labels), model_type
+    )
+
+    x = tf.keras.Input(input_shape, dtype=tf.uint8)
+    # Data processing
+    preprocessing = preprocessing_layers_classification(input_shape[:-1])
+    data_augmentation = tf.keras.Sequential(
+        [
+            tf.keras.layers.RandomFlip(),
+            tf.keras.layers.RandomRotation(0.1),
+            tf.keras.layers.RandomZoom(0.1),
+        ]
+    )
+
+    # Get the pre-trained model
+    base_model = tf.keras.applications.EfficientNetB0(
+        input_shape=input_shape, include_top=False, weights="imagenet"
+    )
+    base_model.trainable = False
+    # Add custom layers
+    global_pooling = tf.keras.layers.GlobalAveragePooling2D()
+    # Output layer
+    classification = tf.keras.layers.Dense(units, activation=activation, name="output")
+
+    y = tf.keras.Sequential(
+        [
+            preprocessing,
+            data_augmentation,
+            base_model,
+            global_pooling,
+            classification,
+        ]
+    )(x)
+
+    model = tf.keras.Model(x, y)
+
+    model.compile(
+        loss=loss_fnc,
+        optimizer=tf.keras.optimizers.Adam(learning_rate=1e-3),
+        metrics=[metrics],
+    )
+    return model
+```
+
+{{% alert title="Tip" color="tip" %}}
+You must log in to the [Viam app](https://app.viam.com/) to download the package containing the classification training script from the registry.
+{{% /alert %}}
+
 {{% /expand%}}
 {{%expand "Step 4: Save the model artifact the script produces" %}}
 
@@ -194,7 +252,8 @@ Follow the instructions to [create a <file>tar.gz</file> gzip'd tar file](https:
 
 {{% alert title="Tip" color="tip" %}}
 You can reference the directory structure of this [example classification training script](https://app.viam.com/packages/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb/custom-training-classification/ml_training/latest/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb).
-See <file>model/training.py</file> for an example entrypoint file.
+You must log in to the Viam app to download the package.
+Unzip the package and see <file>model/training.py</file> for an example entrypoint file.
 {{% /alert %}}
 
 ## Upload a new training script or new version

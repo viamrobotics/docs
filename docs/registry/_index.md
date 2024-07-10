@@ -41,7 +41,7 @@ The [Viam registry](https://app.viam.com/registry) is the central place where yo
 {{% /manualcard %}}
 {{% manualcard link="#ml-training-scripts" %}}
 
-**Training scripts** to train machine learning models in the Viam cloud from custom Python scripts.
+**Training scripts**, Python source distributions to train and produce models in the Viam cloud for custom machine learning
 
 {{% /manualcard %}}
 {{< /cards >}}
