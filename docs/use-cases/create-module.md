@@ -1456,7 +1456,7 @@ For more information on building a module in C++, see the [C++ SDK Build Documen
 
 To provide usage instructions for any modular resources in your module, you should create a <file>README.md</file> file following this template:
 
-{{% expand "Click to view template" %}}
+{{< expand "Click to view template" >}}
 
 Strings of the form `<INSERT X>` indicate placeholders that you need to replace with your values.
 
@@ -1590,7 +1590,7 @@ To test: `make test`
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% /expand %}}
+{{< /expand >}}
 
 ## Test your module locally
 
