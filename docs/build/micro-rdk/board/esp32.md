@@ -103,10 +103,10 @@ The following attributes are available for `esp32` boards:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](#analogs). |
-| `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](#i2cs). |
-| `digital_interrupts` | object | Optional | Any digital interrupts' GPIO number. See [configuration info](#digital_interrupts). |
-| `pins` | object | Required | The GPIO number of any GPIO pins you wish to use as input/output with the [board API](/components/board/#api). |
+| `analogs` | array | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](#analogs). |
+| `i2cs` | array | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](#i2cs). |
+| `digital_interrupts` | array | Optional | Any digital interrupts' GPIO number. See [configuration info](#digital_interrupts). |
+| `pins` | array | Optional | The GPIO number of any GPIO pins you wish to use as input/output with the [board API](/components/board/#api). |
 
 Any pin not specified in either `"pins"` or `"digital_interrupts"` cannot be interacted with through the [board API](/components/board/#api).
 Interaction with digital interrupts is only supported with the [board API](/components/board/#api); these digital interrupts cannot be used as software interrupts in driver implementations.
@@ -130,8 +130,8 @@ The following properties are available for `i2cs`:
 | ---- | ---- | --------- | ----------- |
 |`name`| string| **Required** | `name` of the I<sup>2</sup>C bus. |
 |`bus`| string | **Required** | The index of the I<sup>2</sup>C bus. Must be either `i2c0` or `i2c1`. |
-|`data_pin`| integer | **Required** | The GPIO number of the data pin. |
-|`clock_pin`| integer | **Required** | The GPIO number of the clock pin. |
+|`data_pin`| integer | Optional | The GPIO number of the data pin. Default: `11`. |
+|`clock_pin`| integer | Optional | The GPIO number of the clock pin. Default: `6`. |
 |`baudrate_hz`| integer | Optional | The baudrate in HZ of this I<sup>2</sup>C bus. <br> Default: `1000000` |
 |`timeout_ns`| integer | Optional | Timeout period for this I<sup>2</sup>C bus in nanoseconds. <br> Default: `0` |
 
