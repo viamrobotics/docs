@@ -1351,7 +1351,7 @@ def parse(type, names):
 
                                 ## Parse for param name and usage string, convert to string (for markdownify):
                                 param_name = parameter_tag.find('span', class_ = 'parameter-name').text
-                                param_usage = str(parameter_tag.find('span', class_ = 'type-annotation'))
+                                param_usage = str(parameter_tag.find('span', class_ = 'type-annotation')).replace('>>', '>\\>')
 
                                 ## Markdownify parameter usage and replace relative links with absolute:
                                 formatted_param_usage = md(param_usage, strip=['wbr']).replace("../../", "https://flutter.viam.dev/")
@@ -1386,7 +1386,7 @@ def parse(type, names):
 
                                 ## Markdownify return usage and replace relative links with absolute:
                                 formatted_return_usage = md(return_usage, strip=['wbr']).replace("../../", "https://flutter.viam.dev/")
-                                this_method_return_dict["return_usage"] = formatted_return_usage
+                                this_method_return_dict["return_usage"] = formatted_return_usage.replace('>>', '>\\>')
 
                                 # Parse return type:
                                 if return_tag.find('span', class_ = 'type-parameter'):

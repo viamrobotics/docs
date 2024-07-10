@@ -125,7 +125,7 @@ This method is currently only supported for input controllers of model `webgamep
 
 **Parameters:**
 
-- `event` ([viam.components.input.input.Event](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.Event)) (required): The event to trigger.
+- `event` ([viam.components.input.input.Event](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Event)) (required): The event to trigger.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -216,8 +216,8 @@ Doing so registers the same callback to both `ButtonPress` and `ButtonRelease`, 
 
 **Parameters:**
 
-- `control` ([viam.components.input.input.Control](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.Control)) (required): The control to register the function for.
-- `triggers` ([List[viam.components.input.input.EventType]](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.EventType)) (required): The events that will trigger the function.
+- `control` ([viam.components.input.input.Control](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control)) (required): The control to register the function for.
+- `triggers` ([List[viam.components.input.input.EventType]](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.EventType)) (required): The events that will trigger the function.
 - `function` (viam.components.input.input.ControlFunction) (optional): The function to run on specific triggers.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 

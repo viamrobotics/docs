@@ -833,7 +833,7 @@ This is expected: the board has been successfully powered down and can no longer
 
 **Parameters:**
 
-- `mode` ([viam.proto.component.board.PowerMode.ValueType](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.PowerMode)) (required): The desired power mode.
+- `mode` ([viam.proto.component.board.PowerMode.ValueType](https://python.viam.dev/autoapi/viam/gen/component/board/v1/board_pb2/index.html#viam.gen.component.board.v1.board_pb2.PowerMode)) (required): The desired power mode.
 - `duration` ([datetime.timedelta](https://docs.python.org/3/library/datetime.html#timedelta-objects)) (optional): Requested duration to stay in power mode.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -1265,7 +1265,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
 
 **Example:**
 

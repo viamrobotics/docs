@@ -170,8 +170,8 @@ Set the linear and angular power of the base, represented as a percentage of max
 
 **Parameters:**
 
-- `linear` ([viam.components.base.Vector3](https://python.viam.dev/autoapi/viam/components/base/base/index.html#viam.components.base.base.Vector3)) (required): The linear component. Only the Y component is used for wheeled base. Positive implies forwards.
-- `angular` ([viam.components.base.Vector3](https://python.viam.dev/autoapi/viam/components/base/base/index.html#viam.components.base.base.Vector3)) (required): The angular component. Only the Z component is used for wheeled base. Positive turns left; negative turns right.
+- `linear` ([viam.components.base.Vector3](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Vector3)) (required): The linear component. Only the Y component is used for wheeled base. Positive implies forwards.
+- `angular` ([viam.components.base.Vector3](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Vector3)) (required): The angular component. Only the Z component is used for wheeled base. Positive turns left; negative turns right.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -292,8 +292,8 @@ Set the linear velocity (mm/sec) and angular velocity (degrees/sec) of the base.
 
 **Parameters:**
 
-- `linear` ([viam.components.base.Vector3](https://python.viam.dev/autoapi/viam/components/base/base/index.html#viam.components.base.base.Vector3)) (required): Velocity in mm/sec.
-- `angular` ([viam.components.base.Vector3](https://python.viam.dev/autoapi/viam/components/base/base/index.html#viam.components.base.base.Vector3)) (required): Velocity in deg/sec.
+- `linear` ([viam.components.base.Vector3](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Vector3)) (required): Velocity in mm/sec.
+- `angular` ([viam.components.base.Vector3](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Vector3)) (required): Velocity in deg/sec.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -380,7 +380,7 @@ Get the width and turning radius of the {{< glossary_tooltip term_id="model" tex
 
 **Returns:**
 
-- (viam.components.base.Base.Properties): The properties of the base.
+- ([viam.components.base.Base.Properties](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.Properties)): The properties of the base.
 
 **Example:**
 
@@ -741,7 +741,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
 
 **Example:**
 
