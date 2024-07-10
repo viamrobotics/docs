@@ -9,18 +9,17 @@ no_service: true
 # SME: Tahiya S.
 ---
 
-You can train your classification and object detection models on the [Viam app](https://app.viam.com), where the trained model is output as a TFLite model.
-See [Train a Model](/services/ml/train-model/) for more information.
-However, you can now also upload a custom training script to the [Viam registry](https://app.viam.com/registry/) to train your ML model with an output type of PyTorch, Tensorflow, TFLite, ONNX, or any other model artifacts.
-A flexible training interface like this allows you to upload any machine learning training code for your use-case.
+You can create your own custom Python training script that trains ML models to your specifications using the Machine Learning framework of your choice (PyTorch, Tensorflow, TFLite, ONNX, or any other framework).
+Once added to the [Viam registry](https://app.viam.com/registry/), you can use the training script to build models for your datasets.
+
+{{< alert title="Note" color="note" >}}
+For a lower-code approach, you can [train TFLite classification and object detection models]((/services/ml/train-model/)) on the [Viam app **DATA** page](https://app.viam.com).
+{{< /alert >}}
 
 Follow this guide to create, upload, and submit a Python script that loads a training dataset, trains an ML model, and produces a model artifact.
 
 ## Create a training script
 
-Follow this guide to prepare a tarball with the Python code for training your model.
-
-### Create entrypoint file <file>model/training.py</file>
 
 To start, create an entrypoint file that called <file>training.py</file> in a folder called <file>model</file>.
 This file will contain the main logic for your training script.
@@ -218,9 +217,9 @@ def parse_filenames_and_bboxes_from_json(
 After reading in the dataset and preparing the data for training, add logic to build and compile the model using the data passed in through the data file.
 The code in this part of your script depends on the type of ML training you are doing.
 
-For example, you can reference the logic from <file>model/training.py</file> from this [example classification training script](https://app.viam.com/packages/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb/custom-training-classification/ml_training/latest/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb) that trains a classification model using TensorFlow and Keras.
+For example, you can refer to the logic from <file>model/training.py</file> from this [example classification training script](https://app.viam.com/packages/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb/custom-training-classification/ml_training/latest/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb) that trains a classification model using TensorFlow and Keras.
 
-Here, the logic to build and compile the classification model looks like this:
+The logic to build and compile the classification model looks like this:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Build the Keras model
@@ -320,7 +319,7 @@ You must save your training script in the `tar.gz` format to run in the Viam ML 
 Follow the instructions to [create a <file>tar.gz</file> gzip'd tar file](https://docs.python.org/3.10/distutils/sourcedist) from your project.
 
 {{% alert title="Tip" color="tip" %}}
-You can reference the directory structure of this [example classification training script](https://app.viam.com/packages/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb/custom-training-classification/ml_training/latest/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb).
+You can refer to the directory structure of this [example classification training script](https://app.viam.com/packages/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb/custom-training-classification/ml_training/latest/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb).
 You must log in to the Viam app to download the package.
 Unzip the package and see <file>model/training.py</file> for an example entrypoint file.
 {{% /alert %}}
@@ -328,7 +327,6 @@ Unzip the package and see <file>model/training.py</file> for an example entrypoi
 ## Upload a new training script or new version
 
 You must use the [Viam CLI](/cli/) to upload your training script to the Registry.
-Follow the instructions in the [CLI documentation](/cli/) to install the CLI.
 
 You can use the [`viam training-script upload`](/cli/#training-script) command to upload a new script.
 
@@ -343,13 +341,13 @@ Find **Organization ID** and click the copy icon.
 
 Once uploaded, you can view the script by navigating to the [registry's **Training Scripts** page](https://app.viam.com/registry?type=Training+Script).
 
-You can also simultaneously upload a training script and submit a training job with the [`viam train submit custom from-upload` command](/cli/#position-arguments-submit-custom).
+You can also simultaneously upload a training script and submit a training job with the [`viam train submit custom with-upload` command](/cli/#position-arguments-submit-custom).
 
 ## Submit a training job
 
-You can use the Viam CLI's [`viam train submit`](/cli/#positional-arguments-submit) command to submit a training job.
+After uploading the training script, you can run it by submitting a training job.
 
-Referencing the [CLI documentation](/cli/#positional-arguments-submit), use `viam train submit custom from-registry` to submit a training job from a training script already uploaded to the registry and `viam train submit custom from-upload` to upload a training script and submit a training job at the same time.
+You can use [`viam train submit custom from-registry`](/cli/#positional-arguments-submit) to submit a training job from a training script already uploaded to the registry or `viam train submit custom from-upload` to upload a training script and submit a training job at the same time.
 
 For example:
 
