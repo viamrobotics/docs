@@ -710,7 +710,7 @@ Any machines created using this method will NOT automatically close the channel 
 
 **Parameters:**
 
-- `channel` ([grpclib.client.Channel | viam.rpc.dial.ViamChannel](https://python.viam.dev/autoapi/viam/rpc/dial/index.html#viam.rpc.dial.ViamChannel)) (required): The channel that is connected to a robot, obtained by viam.rpc.dial.
+- `channel` ([grpclib.client.Channel | viam.rpc.dial.ViamChannel](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.ViamChannel)) (required): The channel that is connected to a robot, obtained by viam.rpc.dial.
 - `options` ([Options](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options)) (required): Options for refreshing. Any connection options will be ignored.
 
 **Returns:**
