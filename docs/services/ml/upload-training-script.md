@@ -20,8 +20,7 @@ Follow this guide to create, upload, and submit a Python script that loads a tra
 
 ## Create a training script
 
-
-To start, create an entrypoint file that called <file>training.py</file> in a folder called <file>model</file>.
+To start, create an entrypoint file called <file>training.py</file> in a folder called <file>model</file>.
 This file will contain the main logic for your training script.
 
 Add the following logic to your code in <file>training.py</file>:
@@ -62,81 +61,93 @@ Dataset JSON files for image data sets with bounding box labels and classificati
 ```json {class="line-numbers linkable-line-numbers"}
 {
     "image_path": "/path/to/data/data1.jpeg",
-    "bounding_box_annotations":[
+    "bounding_box_annotations": [
         {
-            "annotation_label":"blue_star",
-            "x_min_normalized":0.38175675675675674,
-            "x_max_normalized":0.5101351351351351,
-            "y_min_normalized":0.35585585585585583,
-            "y_max_normalized":0.527027027027027
-        }],
-    "classification_annotations":[
-        {"annotation_label": "blue_star"}]
-}
-{
-    "image_path": "/path/to/data/data2.jpeg",
-    "bounding_box_annotations":[
-        {
-            "annotation_label":"blue_star",
-            "x_min_normalized":0.2939189189189189,
-            "x_max_normalized":0.4594594594594595,
-            "y_min_normalized":0.25225225225225223,
-            "y_max_normalized":0.5495495495495496
-        }],
+            "annotation_label": "blue_star",
+            "x_min_normalized": 0.38175675675675674,
+            "x_max_normalized": 0.5101351351351351,
+            "y_min_normalized": 0.35585585585585583,
+            "y_max_normalized": 0.527027027027027
+        }
+    ],
     "classification_annotations": [
         {
             "annotation_label": "blue_star"
-        }]
+        }
+    ]
+}
+{
+    "image_path": "/path/to/data/data2.jpeg",
+    "bounding_box_annotations": [
+        {
+            "annotation_label": "blue_star",
+            "x_min_normalized": 0.2939189189189189,
+            "x_max_normalized": 0.4594594594594595,
+            "y_min_normalized": 0.25225225225225223,
+            "y_max_normalized": 0.5495495495495496
+        }
+    ],
+    "classification_annotations": [
+        {
+            "annotation_label": "blue_star"
+        }
+    ]
 }
 
 {
     "image_path": "/path/to/data/data3.jpeg",
-    "bounding_box_annotations":[
+    "bounding_box_annotations": [
         {
-            "annotation_label":"blue_star",
-            "x_min_normalized":0.03557312252964427,
-            "x_max_normalized":0.2015810276679842,
-            "y_min_normalized":0.30526315789473685,
-            "y_max_normalized":0.5368421052631579
+            "annotation_label": "blue_star",
+            "x_min_normalized": 0.03557312252964427,
+            "x_max_normalized": 0.2015810276679842,
+            "y_min_normalized": 0.30526315789473685,
+            "y_max_normalized": 0.5368421052631579
         },
         {
-            "annotation_label":"blue_square",
-            "x_min_normalized":0.039525691699604744,
-            "x_max_normalized":0.2015810276679842,
-            "y_min_normalized":0.2578947368421053,"y_max_normalized":0.5473684210526316
-        }],
+            "annotation_label": "blue_square",
+            "x_min_normalized": 0.039525691699604744,
+            "x_max_normalized": 0.2015810276679842,
+            "y_min_normalized": 0.2578947368421053,
+            "y_max_normalized": 0.5473684210526316
+        }
+    ],
     "classification_annotations": [
         {
             "annotation_label": "blue_star"
         },
         {
             "annotation_label": "blue_square"
-        }]
-    }
+        }
+    ]
+}
 ```
 
 With classification annotations like this:
 
 ```json {class="line-numbers linkable-line-numbers"}
-"classification_annotations":
-    [
-        {"annotation_label": "blue_star"},
-        {"annotation_label": "blue_square"}
-    ]
+"classification_annotations": [
+    {
+        "annotation_label": "blue_star"
+    },
+    {
+        "annotation_label": "blue_square"
+    }
+]
 ```
 
 And bounding box annotations looking like this:
 
 ```json {class="line-numbers linkable-line-numbers"}
-"bounding_box_annotations":
-    [
-        {"annotation_label":"blue_star",
-        "x_min_normalized":0.38175675675675674,
-        "x_max_normalized":0.5101351351351351,
-        "y_min_normalized":0.35585585585585583,
-        "y_max_normalized":0.527027027027027
-        }
-    ]
+"bounding_box_annotations": [
+    {
+        "annotation_label": "blue_star",
+        "x_min_normalized": 0.38175675675675674,
+        "x_max_normalized": 0.5101351351351351,
+        "y_min_normalized": 0.35585585585585583,
+        "y_max_normalized": 0.527027027027027
+    }
+]
 ```
 
 In your training script, you must parse the dataset file for the classification or bounding box annotations.
@@ -383,3 +394,11 @@ You can also view the uploaded ML model in the [**MODELS** tab](https://app.viam
 ## Update the visibility of a training script
 
 To update the visibility of a training script, use the CLI's [`viam training-script update`](/cli/#training-script) command and set the `--visibility` flag to `public` or `private`.
+
+## Next steps
+
+{{< cards >}}
+{{% card link="/services/ml/deploy/" %}}
+{{% card link="/services/vision/mlmodel/" %}}
+{{% card link="/services/ml/edit/" %}}
+{{< /cards >}}
