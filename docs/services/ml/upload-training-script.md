@@ -37,11 +37,11 @@ The script you are creating must take the following command line inputs:
 Parse these arguments in your training script as follows:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="364"}
-# This parses the required args for running the training script.
-# You can use the data JSON to parse the images and
-# their annotations for the specified dataset.
-# You can use the model directory for saving model artifacts
-# associated with the model name and version.
+# This parses the required args for the training script.
+# The model_dir variable will contain the output directory where
+# the ML model that this scrips creates should be stored.
+# The data_json variable will contain the metadata for the dataset
+# that you should use to train the model.
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset_file", dest="data_json", type=str)
