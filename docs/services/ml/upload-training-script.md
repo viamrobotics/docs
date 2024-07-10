@@ -31,8 +31,8 @@ Add the following logic to your code in <file>training.py</file>:
 
 The script you are creating must take the following command line inputs:
 
- - `dataset_file`: a file containing the data and metadata for the training job
- - `model_output_directory`:  the location where the produced model artifacts are saved to
+- `dataset_file`: a file containing the data and metadata for the training job
+- `model_output_directory`: the location where the produced model artifacts are saved to
 
 Parse these arguments in your training script as follows:
 
@@ -163,7 +163,7 @@ You also need to include logic in your <file>training.py</file> to save the mode
 For example:
 
 ```python
-# Save the model artifact to the Viam registry using the provided 
+# Save the model artifact to the Viam registry using the provided
 # ML model name and version
 def save_tflite_classification(
     model: Model,
