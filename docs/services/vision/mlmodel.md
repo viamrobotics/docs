@@ -223,7 +223,9 @@ If the classifier's results exceed the confidence threshold, the **Run model** s
 
 ### Live camera footage
 
-If you intend to use the detector or classifier with a camera that is part of your machine, you can test your detector or classifier from the [**Control tab**](/fleet/control/) or with code:
+You can test your detector or classifier from the [**Control tab**](/fleet/control/) or with code using a camera that is part of your machine.
+
+#### Test with the CONTROL tab
 
 1. Configure a [camera component](/components/camera/).
    {{< alert title="Tip" color="tip" >}}
@@ -231,21 +233,74 @@ If you intend to use the detector or classifier with a camera that is part of yo
    {{< /alert >}}
 
 2. After adding the camera, click the **Save** button in the top right corner of the page.
-3. Navigate to the **CONTROL** tab, click on the vision service and select your camera and vision service and then click **Refresh**.
-   The panel will now show detections with bounding boxes around the colors or classifications on the image.
+3. Click on the test tab or navigate to the **CONTROL** tab, click on the vision service and select your camera and vision service and then click **Refresh**.
+   The panel will show detections with bounding boxes around detections on the image.
 
-   ![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/services/vision/chair-detector.png)
+![Blue boxes detected](/services/vision/detections.png)
 
-   ![Model recognizes a star on camera feed](/services/model-on-camera.png)
+{{% expand "Click to see how to configure a camera live feed that shows detections or classifications" %}}
 
-4. The following code gets the machine’s vision service and then runs a detector or classifier vision model on an image from the machine's camera `"cam1"`.
+Configure a [transform camera](/components/camera/transform/) with the following attributes:
 
-   {{% alert title="Tip" color="tip" %}}
+{{< tabs >}}
+{{% tab name="Detections" %}}
+
+```json
+{
+  "pipeline": [
+    {
+      "type": "detections",
+      "attributes": {
+        "confidence_threshold": 0.5,
+        "detector_name": "<vision-service-name>",
+        "valid_labels": ["<label>"]
+      }
+    }
+  ],
+  "source": "<camera-name>"
+}
+```
+
+{{% /tab %}}
+{{% tab name="Classifications" %}}
+
+```json
+{
+  "pipeline": [
+    {
+      "type": "classifications",
+      "attributes": {
+        "confidence_threshold": 0.5,
+        "classifier_name": "<vision-service-name>",
+        "max_classifications": <int>,
+        "valid_labels": [ "<label>" ]
+      }
+    }
+  ],
+  "source": "<camera-name>"
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Then save your configuration.
+Navigate to the **CONTROL** tab, click on your transform camera and toggle it on to see a live feed with detections or classifications.
+
+![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/services/vision/chair-detector.png)
+
+{{% /expand%}}
+
+#### Test with code
+
+The following code gets the machine’s vision service and then runs a detector or classifier vision model on an image from the machine's camera `"cam1"`.
+
+{{% alert title="Tip" color="tip" %}}
 
 Pass the name of the camera you configured in step 1.
 Do not pass a transform camera that already has the "detections" or "classifications" transform applied to it.
 
-    {{% /alert %}}
+{{% /alert %}}
 
 {{< tabs >}}
 {{% tab name="Detections" %}}
