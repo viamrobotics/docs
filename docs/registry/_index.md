@@ -214,9 +214,8 @@ To use an existing model from the registry, [deploy the ML model to your robot](
 
 ## ML training scripts
 
-The Viam registry hosts trained ML training scripts that users have made public, which you can use to train custom machine learning models from Python source distribution.
-You can also upload your own training script.
-Follow the guide to [Train a Model with a Custom Python Training Script](/services/ml/upload-training-script/#upload-a-new-training-script-or-new-version).
+The Viam registry hosts trained ML training scripts, which you can use to train custom machine learning models from Python source distributions.
+You can also upload your own training script by following the guide to [Train a Model with a Custom Python Training Script](/services/ml/upload-training-script/#upload-a-new-training-script-or-new-version).
 
 You can search the available ML training scripts from the Viam registry here:
 
