@@ -13,7 +13,7 @@ You can create your own custom Python training script that trains ML models to y
 Once added to the [Viam registry](https://app.viam.com/registry/), you can use the training script to build models for your datasets.
 
 {{< alert title="Note" color="note" >}}
-For a lower-code approach, you can [train TFLite classification and object detection models]((/services/ml/train-model/)) on the [Viam app **DATA** page](https://app.viam.com).
+For a lower-code approach, you can [train TFLite classification and object detection models](/services/ml/train-model/) on the [Viam app **DATA** page](https://app.viam.com).
 {{< /alert >}}
 
 Follow this guide to create, upload, and submit a Python script that loads a training dataset, trains an ML model, and produces a model artifact.
