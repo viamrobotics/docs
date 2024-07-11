@@ -20,7 +20,7 @@ Viam provides three trigger types depending on the event you want to trigger on:
 To configure a trigger:
 
 {{< tabs >}}
-{{% tab name="Config Builder" %}}
+{{% tab name="Builder mode" %}}
 
 1. Go to the **CONFIGURE** tab of your machine on the [Viam app](https://app.viam.com).
    Click the **+** (Create) button in the left side menu and select **Trigger**.
@@ -29,7 +29,7 @@ To configure a trigger:
 
 2. Name the trigger and click **Create**.
 
-3. Select the type of event to trigger on from the **Type** dropdown.
+3. Enter your preferred trigger type (for example, "**Data has been synced to the cloud**") into the field of the **Type** dropdown and select the type of event to trigger on.
 
 4. Follow the instructions depending on the type of trigger you want to implement:
 
@@ -60,14 +60,14 @@ Be aware that the component must return the type of data you configure in the tr
 {{% /tab %}}
 {{< /tabs >}}
 
-6. Replace the URL value with the URL of your cloud/lambda function.
+6. Replace the contents of the `value` field with the URL of your cloud function or lambda.
 
    ![The trigger configured with an example URL in the Viam app.](/build/configure/trigger-configured.png)
 
 {{% /tab %}}
-{{% tab name="Raw JSON" %}}
+{{% tab name="JSON mode" %}}
 
-If you prefer to configure your trigger with raw JSON instead of the config builder, you can paste one of the following JSON templates into your JSON config.
+To configure your trigger by using **JSON** mode instead of **Builder** mode, paste one of the following JSON templates into your JSON config.
 `"triggers"` is a top-level section like `"components"` or `"services"`.
 
 {{< tabs >}}
@@ -76,11 +76,25 @@ If you prefer to configure your trigger with raw JSON instead of the config buil
 ```json {class="line-numbers linkable-line-numbers"}
   "triggers": [
     {
-      "url": "<Insert your own cloud function or lambda URL for sending the event>",
+      "name": "<trigger name>",
       "event": {
         "type": "part_data_ingested",
-        "attributes": {
-          "data_types": ["binary", "tabular", "file"]
+         "data_ingested": {
+            "data_types": ["binary", "tabular", "file"]
+         },
+         "notifications": [
+          {
+            "type": "webhook",
+            "value": "<https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws>",
+            "seconds_between_notifications": <number of seconds>
+          }
+        ],
+        "headers": {
+          "Component-Type": "<Component type>",
+          "Component-Name": "<Component name>",
+          "Method-Name": "<Method name>",
+          "Min-Time-Received": "<Minimum time>",
+          "Max-Time-Received": "<Maximum time>"
         }
       }
     }
@@ -93,13 +107,24 @@ If you prefer to configure your trigger with raw JSON instead of the config buil
 ```json {class="line-numbers linkable-line-numbers"}
   "triggers": [
     {
-      "url": "<Insert your own cloud function or lambda URL for sending the event>",
+      "name": "<trigger name>",
       "event": {
-        "type": "part_online",
-        "attributes": {
+        "type": "part_online"
+      },
+      "notifications": [
+        {
+          "type": "webhook",
+          "value": "<https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws>",
           "seconds_between_notifications": <number of seconds>
         }
-      }
+      ],
+      "headers": {
+          "Component-Type": "<Component type>",
+          "Component-Name": "<Component name>",
+          "Method-Name": "<Method name>",
+          "Min-Time-Received": "<Minimum time>",
+          "Max-Time-Received": "<Maximum time>"
+        }
     }
   ]
 ```
@@ -110,13 +135,24 @@ If you prefer to configure your trigger with raw JSON instead of the config buil
 ```json {class="line-numbers linkable-line-numbers"}
   "triggers": [
     {
-      "url": "<Insert your own cloud function or lambda URL for sending the event>",
+      "name": "<trigger name>",
       "event": {
-        "type": "part_offline",
-        "attributes": {
+        "type": "part_offline"
+      },
+       "notifications": [
+        {
+          "type": "webhook",
+          "value": "<https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws>",
           "seconds_between_notifications": <number of seconds>
         }
-      }
+       ],
+       "headers": {
+          "Component-Type": "<your component type>",
+          "Component-Name": "<your component name>",
+          "Method-Name": "<Method name>",
+          "Min-Time-Received": "<Minimum time>",
+          "Max-Time-Received": "<Maximum time>"
+        }
     }
   ]
 ```
@@ -160,13 +196,20 @@ If you prefer to configure your trigger with raw JSON instead of the config buil
   ],
   "triggers": [
     {
-      "url": "https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws",
+      "name": "trigger-1",
       "event": {
         "type": "part_data_ingested",
-        "attributes": {
-          "data_types": ["binary", "tabular"]
+        "data_ingested": {
+          "data_types": ["binary", "tabular", "file"]
         }
-      }
+      },
+      "notifications": [
+        {
+          "type": "webhook",
+          "value": "<https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws>",
+          "seconds_between_notifications": 0
+        }
+      ]
     }
   ]
 }
@@ -178,8 +221,8 @@ If you prefer to configure your trigger with raw JSON instead of the config buil
 {{% /tab %}}
 {{< /tabs >}}
 
-7. Write your cloud/lambda function to process the request from `viam-server`.
-   The following example function sends a Slack message with a machine's details, such as robot and location IDs, when it receives a request:
+7. Write your cloud function or lambda to process the request from `viam-server`.
+   The following example function sends a message with a machine's details, such as robot and location IDs, when it receives a request:
 
    ```python {class="line-numbers linkable-line-numbers"}
    import functions_framework
@@ -193,22 +236,49 @@ If you prefer to configure your trigger with raw JSON instead of the config buil
        "Location-ID": request.headers['location-id'] if 'location-id' in request.headers else 'no value',
        "Part-ID": request.headers['part-id'] if 'part-id' in request.headers else 'no value',
        "Robot-ID": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value',
-       "Machine-Name": request.headers['machine-name'] if 'machine-name' in request.headers else 'no value',
-       "Location-Name": request.headers['location-name'] if 'location-name' in request.headers else 'no value',
-       "Organization-Name": request.headers['organization-name'] if 'organization-name' in request.headers else 'no value'
+       "Component-Type": request.headers['component-type'] if 'component-type' in request.headers else 'no value',
+       "Component-Name": request.headers['component-name'] if 'component-name' in request.headers else 'no value',
+       "Method-Name": request.headers['method-name'] if 'method-name' in request.headers else 'no value',
+       "Min-Time-Received": request.headers['min-time-received'] if 'min-time-received' in request.headers else 'no value',
+       "Max-Time-Received": request.headers['max-time-received'] if 'max-time-received' in request.headers else 'no value',
+
+      "Data-Type": request.args['data_type'] if 'data_type' in request.args else 'no value'
      }
 
-     slack_url = "<paste in your own Slack URL>"
+     trigger_url = "<paste in your own trigger URL>"
      headers = {}
 
-     response = requests.post(slack_url, json=payload, headers=headers)
+     response = requests.post(trigger_url, json=payload, headers=headers)
 
      request_json = request.get_json(silent=True)
      request_args = request.args
 
-     return 'Sent request to {}'.format(slack_url)
+     return 'Sent request to {}'.format(trigger_url)
 
    ```
+
+## `headers`
+
+You can populate the `headers` object in your JSON config to include additional context and data in your trigger configurations.
+By including specific headers, you can ensure that your machine will receive all the necessary information to perform precise and accurate actions.
+The `headers` object can include details such as the part of the machine involved, the type of component, the method being called, and the time range of the data.
+
+When you configure your cloud function or lambda, you can access the headers to get detailed information about the event.
+For example, the `Part-ID` header can be used to log which specific part triggered the action, and the `Method-Name` header can help identify which method was called.
+
+The headers available for use are outlined below:
+
+| Header Key          | Description                                               | Usage Example                                                      |
+| ------------------- | --------------------------------------------------------- | ------------------------------------------------------------------ |
+| `Part-ID`           | Identifies the specific part of the machine.              | Isolate actions to a specific part of the machine.                 |
+| `Robot-ID`          | Identifies the machine as a whole.                        | Useful for actions that pertain to the machine's entire system.    |
+| `Location-ID`       | Identifies the location of the machine.                   | Location-based triggers or actions.                                |
+| `Org-ID`            | Identifies the organization.                              | Organizational-level actions and tracking.                         |
+| `Component-Type`    | Indicates the type of component involved.                 | Necessary for actions that depend on the component type.           |
+| `Component-Name`    | Names the specific component.                             | Pinpoint the exact component for the action.                       |
+| `Method-Name`       | Identifies the method being called.                       | Useful for actions triggered by specific methods.                  |
+| `Min-Time-Received` | Indicates the earliest time a piece of data was received. | Useful for actions that depend on data timing.                     |
+| `Max-Time-Received` | Indicates the latest time a piece of data was received.   | Similar to `Min-Time-Received`, useful for time-dependent actions. |
 
 ## More examples
 
