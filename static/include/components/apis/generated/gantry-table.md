@@ -11,5 +11,5 @@
 | [`Reconfigure`](/components/gantry/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/components/gantry/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
 | [`FromRobot`](/components/gantry/#fromrobot) | Get the resource from the provided robot with the given name. |
-| [`Name`](/components/gantry/#name) | Get the `ResourceName` for this gantry with the given name. |
+| [`GetResourceName`](/components/gantry/#getresourcename) | Get the `ResourceName` for this gantry with the given name. |
 | [`Close`](/components/gantry/#close) | Safely shut down the resource and prevent further use. |

@@ -152,11 +152,31 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
-### Name
+### GetResourceName
 
 Get the `ResourceName` for this generic component with the given name.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the Resource.
+
+**Returns:**
+
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+# Can be used with any resource, using an arm as an example
+my_arm_name = my_arm.get_resource_name("my_arm")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/generic/client/index.html#viam.components.generic.client.GenericClient.get_resource_name).
+
+{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 **Parameters:**

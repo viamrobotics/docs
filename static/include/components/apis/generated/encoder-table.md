@@ -7,4 +7,5 @@
 | [`GetGeometries`](/components/encoder/#getgeometries) | Get all the geometries associated with the encoder in its current configuration, in the frame of the encoder. |
 | [`Reconfigure`](/components/encoder/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/components/encoder/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
+| [`GetResourceName`](/components/encoder/#getresourcename) | Get the `ResourceName` for this encoder with the given name. |
 | [`Close`](/components/encoder/#close) | Safely shut down the resource and prevent further use. |

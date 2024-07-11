@@ -5,4 +5,5 @@
 | [`Metadata`](/services/ml/deploy/#metadata) | Get the metadata: name, data type, expected tensor/array shape, inputs, and outputs associated with the ML model. |
 | [`Reconfigure`](/services/ml/deploy/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/services/ml/deploy/#docommand) | Execute model-specific commands that are not otherwise defined by the service API. |
+| [`GetResourceName`](/services/ml/deploy/#getresourcename) | Get the `ResourceName` for this instance of the ML model service with the given name. |
 | [`Close`](/services/ml/deploy/#close) | Safely shut down the resource and prevent further use. |

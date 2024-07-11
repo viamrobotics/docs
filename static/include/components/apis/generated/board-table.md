@@ -21,5 +21,6 @@
 | [`Reconfigure`](/components/board/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/components/board/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
 | [`FromRobot`](/components/board/#fromrobot) | Get the resource from the provided robot with the given name. |
-| [`Name`](/components/board/#name) | Get the `ResourceName` for this board with the given name. |
+| [`Name`](/components/board/#name) | Get the name of the digital interrupt. |
+| [`GetResourceName`](/components/board/#getresourcename) | Get the `ResourceName` for this board with the given name. |
 | [`Close`](/components/board/#close) | Safely shut down the resource and prevent further use. |

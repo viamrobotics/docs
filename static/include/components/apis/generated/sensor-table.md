@@ -6,5 +6,5 @@
 | [`Reconfigure`](/components/sensor/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/components/sensor/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
 | [`FromRobot`](/components/sensor/#fromrobot) | Get the resource from the provided robot with the given name. |
-| [`Name`](/components/sensor/#name) | Get the `ResourceName` for this sensor with the given name. |
+| [`GetResourceName`](/components/sensor/#getresourcename) | Get the `ResourceName` for this sensor with the given name. |
 | [`Close`](/components/sensor/#close) | Safely shut down the resource and prevent further use. |

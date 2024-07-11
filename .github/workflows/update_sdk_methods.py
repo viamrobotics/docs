@@ -976,11 +976,11 @@ def parse(type, names):
 
                     id = tag.find("dt", class_="sig sig-object py").get("id")
 
-                    if not id.endswith(".from_robot") and not id.endswith(".get_resource_name") \
-                    and not id.endswith(".get_operation") and not id.endswith(".from_proto") \
-                    and not id.endswith(".to_proto") and not id.endswith(".from_string") \
-                    and not id.endswith("__") and not id.endswith("HasField") \
-                    and not id.endswith("WhichOneof") and not id in python_ignore_apis:
+                    if not id.endswith(".from_robot") and not id.endswith(".get_operation") \
+                    and not id.endswith(".from_proto") and not id.endswith(".to_proto") \
+                    and not id.endswith(".from_string") and not id.endswith("__") \
+                    and not id.endswith("HasField") and not id.endswith("WhichOneof") \
+                    and not id in python_ignore_apis:
 
                         ## Determine method name, but don't save to dictionary as value; we use it as a key instead:
                         method_name = id.rsplit('.',1)[1]

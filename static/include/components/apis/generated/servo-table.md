@@ -9,5 +9,5 @@
 | [`Reconfigure`](/components/servo/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/components/servo/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
 | [`FromRobot`](/components/servo/#fromrobot) | Get the resource from the provided robot with the given name. |
-| [`Name`](/components/servo/#name) | Get the `ResourceName` for this servo with the given name. |
+| [`GetResourceName`](/components/servo/#getresourcename) | Get the `ResourceName` for this servo with the given name. |
 | [`Close`](/components/servo/#close) | Safely shut down the resource and prevent further use. |
