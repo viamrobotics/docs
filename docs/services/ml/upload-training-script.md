@@ -21,7 +21,7 @@ Follow this guide to create, upload, and submit a Python script that loads a tra
 ## Create a training script
 
 To start, create an entrypoint file called <file>training.py</file> in a folder called <file>model</file>.
-This file will contain the main logic for your training script.
+This file will contain the main logic of your training script.
 
 Add the following logic to your code in <file>training.py</file>:
 
@@ -32,7 +32,7 @@ The script you are creating must take the following command line inputs:
 - `dataset_file`: a file containing the data and metadata for the training job
 - `model_output_directory`: the location where the produced model artifacts are saved to
 
-Parse these arguments in your training script as follows:
+Parse these arguments in your training script with the following method:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="364"}
 # This parses the required args for the training script.
@@ -325,7 +325,8 @@ Once the training job is complete, Viam looks at that directory and creates a pa
 {{% /expand%}}
 {{%expand "Step 4: Write main function" %}}
 
-Write all the main logic for the training script using the previously defined helper functions into the top level code of <file>training.py</file>, which is executed when the file runs as a script.
+Now, write all the code that runs the training job invoking the previously defined helper functions.
+Write this into the top level code of <file>training.py</file>, which is executed when the file runs as a script.
 
 For example, for the [example classification training script](https://app.viam.com/packages/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb/custom-training-classification/ml_training/latest/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb) that trains a classification model using TensorFlow and Keras, `__main__` looks like this:
 
