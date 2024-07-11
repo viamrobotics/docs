@@ -617,7 +617,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetProperties
 
-Fetch information about what vision methods the vision service provides.
+Fetch information about which vision methods a given vision service supports.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
