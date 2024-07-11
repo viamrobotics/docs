@@ -56,7 +56,7 @@ def parse_args():
 The `dataset_file` is a file that the Viam platform will pass to the training script when you train an ML model with it.
 The file contains metadata from the dataset used for the training, including the file path for each data point and any annotations associated with the data.
 
-Dataset JSON files for image data sets with bounding box labels and classification labels are formatted as follows:
+Dataset JSON files for image datasets with bounding box labels and classification labels are formatted as follows:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -123,39 +123,13 @@ Dataset JSON files for image data sets with bounding box labels and classificati
 }
 ```
 
-With classification annotations like this:
-
-```json {class="line-numbers linkable-line-numbers"}
-"classification_annotations": [
-    {
-        "annotation_label": "blue_star"
-    },
-    {
-        "annotation_label": "blue_square"
-    }
-]
-```
-
-And bounding box annotations looking like this:
-
-```json {class="line-numbers linkable-line-numbers"}
-"bounding_box_annotations": [
-    {
-        "annotation_label": "blue_star",
-        "x_min_normalized": 0.38175675675675674,
-        "x_max_normalized": 0.5101351351351351,
-        "y_min_normalized": 0.35585585585585583,
-        "y_max_normalized": 0.527027027027027
-    }
-]
-```
-
-In your training script, you must parse the dataset file for the classification or bounding box annotations.
-Use the following functions:
+In your training script, you must parse the dataset file for the classification or bounding box annotations from the dataset metadata.
+Depending on if you are training a classification or detection model, use the following functions:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # This is used for parsing the dataset file (produced and stored in Viam),
 # parse it to get the label annotations
+# Used for training classifiction models
 def parse_filenames_and_labels_from_json(
     filename: str, all_labels: ty.List[str]
 ) -> ty.Tuple[ty.List[str], ty.List[str]]:
@@ -184,6 +158,7 @@ def parse_filenames_and_labels_from_json(
 
 # Parse the dataset file (produced and stored in Viam) to get
 # bounding box annotations
+# Used for training object detection models
 def parse_filenames_and_bboxes_from_json(
     filename: str,
     all_labels: ty.List[str],
