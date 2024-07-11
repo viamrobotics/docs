@@ -95,7 +95,7 @@ Get a list of detections from a given image using a configured [detector](#detec
 
 **Parameters:**
 
-- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/components/camera/service/index.html#viam.components.camera.service.Image)) (required): The image to get detections from.
+- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/gen/component/camera/v1/camera_pb2/index.html#viam.gen.component.camera.v1.camera_pb2.Image)) (required): The image to get detections from.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -283,7 +283,7 @@ Get a list of classifications from a given image using a configured [classifier]
 
 **Parameters:**
 
-- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/components/camera/service/index.html#viam.components.camera.service.Image)) (required): The image to get detections from.
+- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/gen/component/camera/v1/camera_pb2/index.html#viam.gen.component.camera.v1.camera_pb2.Image)) (required): The image to get detections from.
 - `count` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): The number of classifications desired.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
@@ -468,6 +468,66 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
+### CaptureAllFromCamera
+
+Get the next image, detections, classifications, and objects all together, given a camera name.
+Used for visualization.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `camera_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the camera to use for detection.
+- `return_image` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Ask the vision service to return the camera’s latest image.
+- `return_classifications` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Ask the vision service to return its latest classifications.
+- `return_detections` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Ask the vision service to return its latest detections.
+- `return_object_point_clouds` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Ask the vision service to return its latest 3D segmentations.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([viam.services.vision.vision.CaptureAllResult](https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.CaptureAllResult)): A class that stores all potential returns from the vision service. It can  return the image from the camera along with its associated detections, classifications, and objects, as well as any extra info the model may provide.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+camera_name = "cam1"
+
+# Grab the detector you configured on your machine
+my_detector = VisionClient.from_robot(robot, "my_detector")
+
+# capture all from the next image from the camera
+result = await my_detector.capture_all_from_camera(
+    camera_name,
+    return_image=True,
+    return_detections=True,
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.capture_all_from_camera).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cameraName` [(string)](https://pkg.go.dev/builtin#string): The name of the camera to use for detection.
+- `opts` [(viscapture.CaptureOptions)](https://pkg.go.dev/go.viam.com/rdk/vision/viscapture#CaptureOptions): Additional options to provide if desired.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(viscapture.VisCapture)](https://pkg.go.dev/go.viam.com/rdk/vision/viscapture#VisCapture): A class that stores all potential returns from the vision service. It can return the image from the camera along with its associated detections, classifications, and objects, as well as any extra info the model may provide.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### Reconfigure
 
 Reconfigure this resource.
@@ -512,7 +572,7 @@ If you are implementing your own vision service and add features that have no bu
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-motion = MotionClient.from_robot(robot, "builtin")
+service = SERVICE.from_robot(robot, "builtin")  # replace SERVICE with the appropriate class
 
 my_command = {
   "cmnd": "dosomething",
@@ -520,7 +580,7 @@ my_command = {
 }
 
 # Can be used with any resource, using the motion service as an example
-await motion.do_command(command=my_command)
+await service.do_command(command=my_command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.do_command).

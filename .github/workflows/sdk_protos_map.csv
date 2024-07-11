@@ -292,6 +292,7 @@ vision,GetDetections,get_detections,Detections,detections
 vision,GetClassificationsFromCamera,get_classifications_from_camera,ClassificationsFromCamera,classificationsFromCamera
 vision,GetClassifications,get_classifications,Classifications,classifications
 vision,GetObjectPointClouds,get_object_point_clouds,GetObjectPointClouds,objectPointClouds
+vision,CaptureAllFromCamera,capture_all_from_camera,CaptureAllFromCamera,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 vision,Reconfigure,,Reconfigure,
 vision,DoCommand,do_command,DoCommand,doCommand
