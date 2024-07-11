@@ -303,7 +303,7 @@ Once the training job is complete, Viam looks at that directory and creates a pa
 Now, write all the code that runs the training job invoking the previously defined helper functions.
 Write this into the top level code of <file>training.py</file>, which is executed when the file runs as a script.
 
-For example, for the [example classification training script](https://app.viam.com/packages/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb/custom-training-classification/ml_training/latest/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb) that trains a classification model using TensorFlow and Keras, `__main__` looks like this:
+For the [example classification training script](https://app.viam.com/packages/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb/custom-training-classification/ml_training/latest/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb) that trains a classification model using TensorFlow and Keras, `__main__` looks like this:
 
 ```python {class="line-numbers linkable-line-numbers"}
 if __name__ == "__main__":
