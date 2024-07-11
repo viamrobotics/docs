@@ -132,6 +132,15 @@ Alternatively, you can also click on the dataset and rename it from the three-do
 To delete a dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets), right click on the dataset and click on **Delete** in the menu that appears.
 Alternatively, you can also click on the dataset and delete it from the three-dot icon next to the dataset name.
 
+## API
+
+You can also use the Dataset API, which supports the following methods:
+
+{{< readfile "/static/include/app/apis/generated/dataset-table.md" >}}
+
+The data client API supports a separate set of methods that allow you to upload and export data to and from the Viam app.
+For information about that API, see [Data Client API](/appendix/apis/data-client/).
+
 ## Next steps
 
 {{< cards >}}

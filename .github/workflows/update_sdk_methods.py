@@ -412,6 +412,8 @@ python_datatype_links = {
     "bool": "https://docs.python.org/3/library/stdtypes.html#boolean-type-bool",
     "datetime.datetime": "https://docs.python.org/3/library/datetime.html",
     "datetime.timedelta": "https://docs.python.org/3/library/datetime.html#timedelta-objects",
+    ## Third-party data types:
+    "numpy.typing.NDArray": "https://numpy.org/doc/stable/reference/typing.html#numpy.typing.NDArray",
     ## Viam-specific data types:
     "viam.proto.app.OrganizationMember": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationMember",
     "viam.proto.app.OrganizationInvite": "https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite",
@@ -420,7 +422,8 @@ python_datatype_links = {
     "viam.proto.common.ResponseMetadata": "https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata",
     "viam.proto.component.encoder.PositionType.ValueType": "https://python.viam.dev/autoapi/viam/gen/component/encoder/v1/encoder_pb2/index.html#viam.gen.component.encoder.v1.encoder_pb2.PositionType",
     "typing_extensions.Self": "https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient",
-    "viam.components.movement_sensor.movement_sensor.MovementSensor.Accuracy": "https://python.viam.dev/autoapi/viam/components/movement_sensor/movement_sensor/index.html#viam.components.movement_sensor.movement_sensor.MovementSensor.Accuracy"
+    "viam.components.movement_sensor.movement_sensor.MovementSensor.Accuracy": "https://python.viam.dev/autoapi/viam/components/movement_sensor/movement_sensor/index.html#viam.components.movement_sensor.movement_sensor.MovementSensor.Accuracy",
+    "viam.services.vision.vision.Vision.Properties": "https://python.viam.dev/autoapi/viam/components/audio_input/audio_input/index.html#viam.components.audio_input.audio_input.AudioInput.Properties"
 }
 
 ## Inject these URLs, relative to 'docs', into param/return/raises descriptions that contain exact matching key text.
@@ -725,7 +728,10 @@ def parse(type, names):
                 pass
 
             ## Scrape each parent method tag and all contained child tags for Go by resource:
-            if sdk == "go" and type != "app":
+            ## Skip Go: App (Go has no App client) and the generic component and service, which
+            ## require explicit in-script workaround (DoCommand neither inherited (from resource.Resource)
+            ## nor explicitly defined in-interface (not in Go docs, only in un-doc'd code):
+            if sdk == "go" and type != "app" and resource != "generic_component" and resource != "generic_service":
 
                 soup = make_soup(url)
 
@@ -936,6 +942,20 @@ def parse(type, names):
                 ## in its entirety to the all_methods dictionary using "go" as the key:
                 all_methods["go"] = go_methods
 
+            ## Assemble workaround data object for DoCommand for Go generic component and service.
+            ## Using code sample and method_link from resource.Resource, because these cannot be found
+            ## in Go docs for these resources:
+            elif sdk == "go" and (resource == "generic_component" or resource == "generic_service"):
+
+                go_methods[type][resource]['DoCommand'] = {}
+                go_methods[type][resource]['DoCommand'] = {'proto': 'DoCommand', \
+                                    'description': 'DoCommand sends/receives arbitrary data.', \
+                                    'usage': 'DoCommand(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, cmd map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource', \
+                                    'code_sample': '// This example shows using DoCommand with an arm component.\nmyArm, err := arm.FromRobot(machine, "my_arm")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := myArm.DoCommand(context.Background(), command)\n'}
+
+                all_methods["go"] = go_methods
+
             elif sdk == "go" and type == "app":
                ##Go SDK has no APP API!
                pass
@@ -958,9 +978,9 @@ def parse(type, names):
 
                     if not id.endswith(".from_robot") and not id.endswith(".get_resource_name") \
                     and not id.endswith(".get_operation") and not id.endswith(".from_proto") \
-                    and not id.endswith(".from_string") and not id.endswith("__") \
-                    and not id.endswith("HasField") and not id.endswith("WhichOneof") \
-                    and not id in python_ignore_apis:
+                    and not id.endswith(".to_proto") and not id.endswith(".from_string") \
+                    and not id.endswith("__") and not id.endswith("HasField") \
+                    and not id.endswith("WhichOneof") and not id in python_ignore_apis:
 
                         ## Determine method name, but don't save to dictionary as value; we use it as a key instead:
                         method_name = id.rsplit('.',1)[1]
@@ -973,8 +993,9 @@ def parse(type, names):
                                 and row.split(',')[2] == method_name:
                                     this_method_dict["proto"] = row.split(',')[1]
 
-                        ## Determine method description, stripping newlines:
-                        this_method_dict["description"] = tag.find('dd').p.text.replace("\n", " ")
+                        ## Determine method description, stripping newlines. If not present, skip:
+                        if tag.find('dd').p:
+                            this_method_dict["description"] = tag.find('dd').p.text.replace("\n", " ") 
 
                         ## Determine method direct link, no need to parse for it, it's inferrable.
                         ## If we are scraping from a local staging instance, replace host and port with upstream link target URL:
@@ -1089,7 +1110,7 @@ def parse(type, names):
                                             this_method_parameters_dict['param_usage'] = strong_tag.parent.text.replace("\n", " ")
 
                                             ## Some params provide data type links in Parameters section only, not initial usage.
-                                            ## Get that here if soL
+                                            ## Get that here if so:
                                             if strong_tag.parent.find('a', class_="reference internal"):
                                                 param_type_link_raw = strong_tag.parent.find('a', class_="reference internal").get("href")
                                                 ## Parameter type link is an anchor link:
@@ -1331,7 +1352,7 @@ def parse(type, names):
 
                                 ## Parse for param name and usage string, convert to string (for markdownify):
                                 param_name = parameter_tag.find('span', class_ = 'parameter-name').text
-                                param_usage = str(parameter_tag.find('span', class_ = 'type-annotation'))
+                                param_usage = str(parameter_tag.find('span', class_ = 'type-annotation')).replace('>>', '>\\>')
 
                                 ## Markdownify parameter usage and replace relative links with absolute:
                                 formatted_param_usage = md(param_usage, strip=['wbr']).replace("../../", "https://flutter.viam.dev/")
@@ -1366,7 +1387,7 @@ def parse(type, names):
 
                                 ## Markdownify return usage and replace relative links with absolute:
                                 formatted_return_usage = md(return_usage, strip=['wbr']).replace("../../", "https://flutter.viam.dev/")
-                                this_method_return_dict["return_usage"] = formatted_return_usage
+                                this_method_return_dict["return_usage"] = formatted_return_usage.replace('>>', '>\\>')
 
                                 # Parse return type:
                                 if return_tag.find('span', class_ = 'type-parameter'):
@@ -1522,8 +1543,14 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
             param_or_return_description = ''
             ## Param override:
             if type_name != '':
+                # To handle 'ch chan' param name, similar. Use as 'ch' in override filename:
+                if ' ' in type_name:
+                    type_name_short = type_name.split(' ')[0]
+                else:
+                    type_name_short = type_name
+
                 ## .../overrides/methods/{sdk}.{resource}.{method_name}.{param_name}.md
-                param_desc_override_file = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.' + type_name + '.md'
+                param_desc_override_file = path_to_methods_override + '/go.' + resource + '.' + go_method_name + '.' + type_name_short + '.md'
             ## Return override:
             else:
                 if 'map[string]interface{}' in param_type:
@@ -1557,8 +1584,9 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
             ## If we have a param description override, use that. If not, skip:
             if param_or_return_description != '':
 
-                ## Add a trailing period if it is missing, either from upstream or from override file:
-                if not param_or_return_description.endswith('.'):
+                ## Add a trailing period if it is missing, either from upstream or from override file,
+                ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                if not param_or_return_description.endswith('.') and not param_or_return_description.endswith('>'):
                     param_or_return_description = param_or_return_description + '.'
 
                 ## Format returns:
@@ -1793,8 +1821,9 @@ def write_markdown(type, names, methods):
 
                                     if param_description:
 
-                                        ## Add a trailing period if it is missing, either from upstream or from override file:
-                                        if not param_description.endswith('.'):
+                                        ## Add a trailing period if it is missing, either from upstream or from override file,
+                                        ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                                        if not param_description.endswith('.') and not param_description.endswith('>'):
                                             param_description = param_description + '.'
 
                                         output_file.write(f": {param_description}")
@@ -1838,8 +1867,9 @@ def write_markdown(type, names, methods):
 
                                     if return_description:
 
-                                        ## Add a trailing period if it is missing, either from upstream or from override file:
-                                        if not return_description.endswith('.'):
+                                        ## Add a trailing period if it is missing, either from upstream or from override file,
+                                        ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                                        if not return_description.endswith('.') and not return_description.endswith('>'):
                                             return_description = return_description + '.'
 
                                         output_file.write(f": {return_description}\n")
@@ -1858,8 +1888,9 @@ def write_markdown(type, names, methods):
                                     output_file.write(f"- ({raises_type})")
                                     if "raises_description" in raises_object[raises_type]:
                                         raises_description= raises_object[raises_type]["raises_description"]
-                                        ## Add a trailing period if it is missing:
-                                        if not raises_description.endswith('.'):
+                                        ## Add a trailing period if it is missing, either from upstream or from override file,
+                                        ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                                        if not raises_description.endswith('.') and not raises_description.endswith('>'):
                                             raises_description = raises_description + '.'
 
                                         output_file.write(f": {raises_description}\n")
@@ -2039,8 +2070,9 @@ def write_markdown(type, names, methods):
 
                                     if param_description:
 
-                                        ## Add a trailing period if it is missing, either from upstream or from override file:
-                                        if not param_description.endswith('.'):
+                                        ## Add a trailing period if it is missing, either from upstream or from override file,
+                                        ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                                        if not param_description.endswith('.') and not param_description.endswith('>'):
                                             param_description = param_description + '.'
 
                                         output_file.write(f": {param_description}")
@@ -2092,8 +2124,9 @@ def write_markdown(type, names, methods):
 
                                         if return_description:
 
-                                            ## Add a trailing period if it is missing, either from upstream or from override file:
-                                            if not return_description.endswith('.'):
+                                            ## Add a trailing period if it is missing, either from upstream or from override file,
+                                            ## but skip doing so if the copy instead ends with an HTML tag (like a closing '</ul>' tag):
+                                            if not return_description.endswith('.') and not return_description.endswith('>'):
                                                 return_description = return_description + '.'
 
                                             output_file.write(f": {return_description}\n")

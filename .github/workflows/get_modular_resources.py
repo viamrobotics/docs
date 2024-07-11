@@ -77,9 +77,12 @@ async def main():
     response : ListRegistryItemsResponse = await cloud._app_client.ListRegistryItems(request)
 
     ml_models_list = []
+    training_scripts_list = []
     for item in response.items:
         if item.type == 2:
             ml_models_list.append(item)
+        if item.type == 5:
+            training_scripts_list.append(item)
 
     for model in ml_models_list:
         if model.visibility == 2:
@@ -96,13 +99,35 @@ async def main():
         json_m)
             print(insert_resp)
 
+    for script in training_scripts_list:
+        if script.visibility == 2:
+            json_m = {
+                "id": script.item_id,
+                "model_id": script.item_id,
+                "name": script.name,
+                "description": script.description,
+                "last_updated": time_now,
+                "url": "https://app.viam.com/ml-training/" + script.public_namespace + "/" + script.name + "/"
+            }
+            insert_resp = typesense_client.collections['trainingscripts'].documents.upsert(
+        json_m)
+            print(insert_resp)
+
     viam_client.close()
 
     # Deleting documents that didn't get updated (presumably deleted)
     try:
-        typesense_client.collections['resources'].documents.delete({'filter_by': 'last_updated: <' + time_now + ',module_id: !builtin' })
-        typesense_client.collections['mlmodels'].documents.delete({'filter_by': 'last_updated: <' + time_now})
+        res = typesense_client.collections['resources'].documents.delete({'filter_by': 'last_updated: <' + str(time_now)})
+        print("Resources deleted")
+        print(res)
+        res = typesense_client.collections['mlmodels'].documents.delete({'filter_by': 'last_updated: <' + str(time_now)})
+        print("ML models deleted")
+        print(res)
+        res = typesense_client.collections['trainingscripts'].documents.delete({'filter_by': 'last_updated: <' + time_now})
+        print("Training scripts deleted")
+        print(res)
     except Exception as e:
+        print(e)
         pass
 
 

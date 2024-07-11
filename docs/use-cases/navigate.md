@@ -13,7 +13,7 @@ If you have a rover base, you can use Viam to teleoperate it and to navigate aut
 Once you have configured your machine, you can remotely control your machine on the app's **CONTROL** tab, and set up autonomous navigation with the [navigation service](/services/navigation/).
 
 {{< table >}}
-{{< tablestep >}}
+{{% tablestep %}}
 {{<imgproc src="/use-cases/base-control.png" class="fill alignright" resize="200x" style="max-width: 200px" declaredimensions=true alt="Base control card">}}
 **1. Teleoperate**
 
@@ -22,16 +22,16 @@ Create an account and add a machine, [install `viam-server`](/get-started/instal
 Then, go to the **CONTROL** tab and access a remote control card for your base, with an interface for controlling speed, direction, and power.
 You can also view live feeds from any cameras you configure.
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 {{<imgproc src="/services/icons/base-rc.svg" class="fill alignleft" resize="200x" style="max-width: 200px" declaredimensions=true alt="Base remote control service icon.">}}
 **2. Program to move**
 
 Remotely control your rover base programmatically with a [Viam SDK](/sdks/) by making calls to the [base API](/components/base/#api).
 Or, [configure the base remote control service](/services/base-rc/) to teleoperate your base with an [input controller.](/components/input-controller/)
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 {{<imgproc src="/services/icons/navigation.svg" class="fill alignright" resize="200x" style="max-width: 200px" declaredimensions=true alt="Navigation icon.">}}
 **3. Prepare your base to navigate**
 
@@ -39,14 +39,14 @@ Or, [configure the base remote control service](/services/base-rc/) to teleopera
 Additionally, [configure and calibrate](/services/navigation/#configure-and-calibrate-the-frame-system-service-for-gps-navigation) the frame system for GPS navigation.
 Then, [configure the navigation service](/services/navigation/) on your machine.
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 {{<imgproc src="/use-cases/navigation-card.png" class="fill alignleft" resize="200x" style="max-width: 300px" declaredimensions=true alt="Navigation map card">}}
 **4. Navigate autonomously**
 
 Define a path for your rover to navigate with waypoints and obstacles. Then, start and stop your machine's motion along the path and view your machine's current location. You can use the map interface on the **CONTROL** tab or the [navigation API](/services/navigation/#api).
 
-{{< /tablestep >}}
+{{% /tablestep %}}
 {{< /table >}}
 
 ## Next steps

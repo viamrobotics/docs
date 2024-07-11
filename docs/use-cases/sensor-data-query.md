@@ -17,6 +17,11 @@ Then, you can follow the steps on this page to query it using {{< glossary_toolt
 For example, you can configure data capture for several sensors on one machine, or for several sensors across multiple machines, to report the ambient operating temperature.
 You can then run queries against that data to search for outliers or edge cases, to analyze how the ambient temperature affects your machines' operation.
 
+- **SQL:** For querying captured data, Viam supports the [MongoDB Atlas SQL dialect](https://www.mongodb.com/docs/atlas/data-federation/query/sql/query-with-asql-statements/), which supports standard SQL query syntax in addition to Atlas-specific capabilities such as `FLATTEN` and `UNWIND`.
+  For more information, see the [MongoDB Atlas SQL language reference](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/).
+
+- **MQL**: Viam also supports the [MongoDB Query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for querying captured data from MQL-compatible clients such as `mongosh` or MongoDB Compass.
+
 {{< alert title="In this page" color="tip" >}}
 
 1. [Query data in the Viam app](#query-data-in-the-viam-app).
@@ -53,14 +58,14 @@ Once your data has synced, you can query your data from within the Viam app usin
 You must have the [owner role](/cloud/rbac/) in order to query data in the Viam app.
 
 {{< table >}}
-{{< tablestep >}}
+{{% tablestep %}}
 **1. Query with SQL or MQL**
 
 Navigate to the [**Query** page](https://app.viam.com/data/query).
 Then, select either **SQL** or **MQL** from the **Query mode** dropdown menu on the right-hand side.
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 **2. Run your query**
 
 This example query returns 5 readings from a component called `my-sensor`:
@@ -81,8 +86,8 @@ SELECT * FROM readings WHERE component_name = 'my-sensor' LIMIT 5
 
 {{% /tab %}}
 {{< /tabs >}}
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 **3. Review results**
 
 Click **Run query** when ready to perform your query and get matching results.
@@ -102,7 +107,7 @@ For more information on MQL syntax, see the [MQL (MongoDB Query Language)](https
 
 {{% /expand%}}
 
-{{< /tablestep >}}
+{{% /tablestep %}}
 {{< /table >}}
 
 ## Configure data query
@@ -116,7 +121,7 @@ If you want to query data from third party tools, you have to configure data que
 You can use third-party tools, such as the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/), [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), to query against captured sensor data.
 
 {{< table >}}
-{{< tablestep link="/use-cases/sensor-data-query/#configure-data-query">}}
+{{% tablestep link="/use-cases/sensor-data-query/#configure-data-query"%}}
 **1. Connect to your Viam organization's data**
 
 Run the following command to connect to your Viam organization's MongoDB Atlas instance from `mongosh` using the connection URI you obtained during query configuration:
@@ -125,8 +130,8 @@ Run the following command to connect to your Viam organization's MongoDB Atlas i
 mongosh "<YOUR-DB-CONNECTION-URI>"
 ```
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 **2. Query data from a compatible client**
 
 Once connected, you can run SQL or MQL statements to query captured data directly.
@@ -173,7 +178,7 @@ db.readings.aggregate(
 {{% /tab %}}
 {{< /tabs >}}
 
-{{< /tablestep >}}
+{{% /tablestep %}}
 {{< /table >}}
 
 {{< alert title="Tip" color="tip" >}}

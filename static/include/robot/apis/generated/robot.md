@@ -503,7 +503,7 @@ Create a LogEntry object from the log to send to the RDK over gRPC.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The logger’s name.
 - `level` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The level of the log.
 - `time` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (required): The log creation time.
-- `log` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The log message.
+- `message` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The log message.
 - `stack` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The stack information of the log.
 
 **Returns:**
@@ -557,7 +557,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-metadata, err := machine.CloudMetadata(ctx.Background())
+metadata, err := machine.CloudMetadata()
+machine_id = metadata.MachineID
 machine_part_id = metadata.MachinePartID
 primary_org_id = metadata.PrimaryOrgID
 location_id = metadata.LocationID
@@ -575,6 +576,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Returns:**
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[CloudMetadata](https://flutter.viam.dev/viam_sdk/CloudMetadata.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var metadata = await machine.getCloudMetadata();
+```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/RobotClient/getCloudMetadata.html).
 
@@ -669,6 +676,25 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html)>
 
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example usage; see your machine's CONNECT tab for your machine's address and API key.
+
+Future<void> connectToViam() async {
+  const host = '<YOUR ROBOT ADDRESS>.viam.cloud';
+  // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+  const apiKeyID = '<API-KEY-ID>';
+  // Replace "<API-KEY>" (including brackets) with your machine's API key
+  const apiKey = '<API-KEY>';
+
+  final machine = await RobotClient.atAddress(
+    host,
+    RobotClientOptions.withApiKey(apiKeyID, apiKey),
+  );
+}
+```
+
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/RobotClient/atAddress.html).
 
 {{% /tab %}}
@@ -743,6 +769,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+await machine.refresh();
+```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/RobotClient/refresh.html).
 
@@ -846,6 +878,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Returns:**
 
 - [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+await machine.close();
+```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/RobotClient/close.html).
 

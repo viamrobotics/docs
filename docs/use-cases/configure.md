@@ -13,7 +13,7 @@ You can get a smart machine running with Viam in just a few steps.
 Viam's modular system of {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} means that you can start doing interesting things with your machine without writing much or any code.
 
 {{< table >}}
-{{< tablestep >}}
+{{% tablestep %}}
 
 {{<imgproc src="/use-cases/signup-narrow.png" class="fill alignleft" resize="500x" style="max-width: 200px" declaredimensions=true alt="Viam app login screen.">}}
 **1. Create a machine in the Viam app**
@@ -24,15 +24,15 @@ Then create a machine by typing in a name and clicking **Add machine**.
 
 {{<imgproc src="/use-cases/new-machine.png" class="fill aligncenter" resize="400x" style="max-width: 250px" declaredimensions=true alt="Viam app login screen.">}}
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 {{<imgproc src="/services/icons/data-capture.svg" class="fill alignright" style="max-width: 150px" declaredimensions=true alt="Installation icon">}}
 **2. Install Viam on your machine**
 
 All of the software that runs your smart machine is packaged into a binary called `viam-server`. Install it on the computer controlling your smart machine by following the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} in the [Viam app](https://app.viam.com/).
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 
 {{<imgproc src="/icons/components.png" class="fill alignleft" resize="400x" style="max-width: 220px" declaredimensions=true alt="An assortment of components.">}}
 **3. Configure your components**
@@ -43,8 +43,8 @@ You need to [_configure_](/build/configure/) your machine so that `viam-server` 
 Use the configuration builder tool in the Viam app to create a file that describes what hardware you are using and how it is connected.
 For example, if you have a DC motor, follow the [corresponding configuration instructions](/components/motor/gpio/) to tell the software which pins it is connected to.
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 {{<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="The Viam app Control tab with a control panel for each component. The panel for a DC motor is clicked, expanding to show power controls." max-width="400px" class="fill alignleft">}}
 
 <!-- markdownlint-disable MD036 -->
@@ -54,8 +54,8 @@ For example, if you have a DC motor, follow the [corresponding configuration ins
 When you configure a component, a remote control panel is generated for it in the **CONTROL** tab of the Viam app.
 With the panels, you can drive motors at different speeds, view your camera feeds, see sensor readings, and generally test the basic functionality of your machine before you've even written any code.
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 
 {{<imgproc src="/services/ml/collect.svg" class="fill alignright" style="max-width: 220px"  declaredimensions=true alt="Services">}}
 **5. Configure services**
@@ -64,8 +64,8 @@ Services are built-in Viam software packages that add high-level functionality t
 If you want to use any services, see their [documentation](/services/) for configuration and usage information.
 If you are making a simple machine that doesn't use services, you can skip this step!
 
-{{< /tablestep >}}
-{{< tablestep >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 
 {{<imgproc src="/services/ml/configure.svg" class="fill alignleft" style="max-width: 210px"  declaredimensions=true alt="Services">}}
 **6. Do more with code**
@@ -76,7 +76,7 @@ Viam has [SDKs](/sdks/) for Python, Golang, C++, TypeScript and Flutter.
 The easiest way to get started is to copy the auto-generated boilerplate code from the **Code sample** page of the **CONNECT** tab on your machine's page in the Viam app.
 You can run this code directly on the machine or from a separate computer; it then connects to the machine using API keys.
 
-{{< /tablestep >}}
+{{% /tablestep %}}
 {{< /table >}}
 
 ## Next steps

@@ -1096,7 +1096,7 @@ We recommend that you use a C++ logging library to assist with log message forma
 
 To provide usage instructions for any modular resources in your module, you should create a <file>README.md</file> file following this template:
 
-{{% expand "Click to view template" %}}
+{{< expand "Click to view template" >}}
 
 Strings of the form `<INSERT X>` indicate placeholders that you need to replace with your values.
 
@@ -1229,7 +1229,7 @@ To test: `make test`
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% /expand %}}
+{{< /expand >}}
 
 ## Compile or package your module
 

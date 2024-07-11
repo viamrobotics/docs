@@ -9,13 +9,13 @@ Absolute encoders return degrees.
 
 **Parameters:**
 
-- `position_type` ([PositionType.ValueType](https://python.viam.dev/autoapi/viam/gen/component/encoder/v1/encoder_pb2/index.html#viam.gen.component.encoder.v1.encoder_pb2.PositionType)) (optional): The desired output type of the position.
+- `position_type` ([viam.proto.component.encoder.PositionType.ValueType](https://python.viam.dev/autoapi/viam/gen/component/encoder/v1/encoder_pb2/index.html#viam.gen.component.encoder.v1.encoder_pb2.PositionType)) (optional): The desired output type of the position.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [PositionType.ValueType](https://python.viam.dev/autoapi/viam/gen/component/encoder/v1/encoder_pb2/index.html#viam.gen.component.encoder.v1.encoder_pb2.PositionType)]): A tuple containing two values; the first [0] the Position of the encoder which can either be ticks since last zeroing for a relative encoder or degrees for an absolute encoder, and the second [1] the type of position the encoder returns (ticks or degrees).
+- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [PositionType.ValueType](https://python.viam.dev/autoapi/viam/gen/component/encoder/v1/encoder_pb2/index.html#viam.gen.component.encoder.v1.encoder_pb2.PositionType)]): A tuple containing two values; the first [0] the position of the encoder which can either be ticks since last zeroing for a relative encoder or degrees for an absolute encoder, and the second [1] the type of position the encoder returns (ticks or degrees).
 
 **Example:**
 
@@ -23,7 +23,7 @@ Absolute encoders return degrees.
 my_encoder = Encoder.from_robot(robot=robot, name='my_encoder')
 
 # Get the position of the encoder in ticks
-position = await my_encoder.get_position(encoder.PositionTypeTicks)
+position = await my_encoder.get_position(PositionType.POSITION_TYPE_TICKS_COUNT)
 print("The encoder position is currently ", position[0], position[1])
 ```
 
@@ -241,6 +241,10 @@ If you are implementing your own encoder as a {{< glossary_tooltip term_id="modu
 **Returns:**
 
 - (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
+
+**Raises:**
+
+- (NotImplementedError): Raised if the Resource does not support arbitrary commands.
 
 **Example:**
 

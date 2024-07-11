@@ -392,10 +392,10 @@ For example, the following adds three images specified by their file ids to the 
 viam data dataset add ids --dataset-id=abc --location-id=123 --org-id=123 --file-ids=abc,123,def
 ```
 
-To find the dataset ID of a given dataset, go to the [**Datasets** subtab](https://app.viam.com/data/datasets) under the **Data** tab on the Viam app and select a dataset.
-The dataset ID can be found in the URL of the Viam app window when viewing a given dataset, following the `?id=` portion of the URL, resembling `abcdef1234567890abcdef12`.
+To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset.
+Click **...** in the left-hand menu and click **Copy dataset ID**.
 
-To find the file ID of a given image, navigate to the [**Data** tab in the Viam app](https://app.viam.com/data/view) and select your image.
+To find the file ID of a given image, navigate to the [**DATA** tab in the Viam app](https://app.viam.com/data/view) and select your image.
 Its **File ID** is shown under the **Details** subtab that appears on the right.
 
 You cannot use filter arguments, such as `--start` or `--end` when using `ids`.
@@ -411,11 +411,11 @@ For example, the following adds all images captured between January 1 and Octobe
 viam data dataset add filter --dataset-id=abc --org-ids=123 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
 ```
 
-To find the dataset ID of a given dataset, go to the [**Datasets** subtab](https://app.viam.com/data/datasets) under the **Data** tab on the Viam app and select a dataset.
-The dataset ID can be found in the URL of the Viam app window when viewing a given dataset, following the `?id=` portion of the URL, resembling `abcdef1234567890abcdef12`.
+To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) under the **DATA** tab on the Viam app and select a dataset.
+Click **...** in the left-hand menu and click **Copy dataset ID**.
 
-You can also have the filter parameters generated for you using the **Filters** pane of the **Data** tab.
-Navigate to the [**Data** tab in the Viam app](https://app.viam.com/data/view), make your selections from the search parameters under the **Filters** pane (such as robot name, start and end time, or tags), and click the **Copy export command** button.
+You can also have the filter parameters generated for you using the **Filters** pane of the **DATA** tab.
+Navigate to the [**DATA** tab in the Viam app](https://app.viam.com/data/view), make your selections from the search parameters under the **Filters** pane (such as robot name, start and end time, or tags), and click the **Copy export command** button.
 A `viam data export` command string will be copied to your clipboard that includes the search parameters you selected.
 You can use the same filter parameters (such as `--start`, `--end`, etc) with your `viam data database add filter` or `viam data database remove filter` commands, except you would exclude the `--data-type` and `--destination` flags, which are specific to `viam data export`.
 
@@ -1067,6 +1067,78 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 ```
 
 The `--stream` argument, when included in the CLI command prior to the `--data` command, will stream data back at the specified interval.
+
+### `training-script`
+
+Manage training scripts for custom ML training.
+For more information, see [Train a Model with a Custom Python Training Script](/services/ml/upload-training-script/).
+
+#### Command options
+
+<!-- prettier-ignore -->
+| Command option | Description | Positional arguments |
+| -------------- | ----------- | -------------------- |
+| `upload` | Upload ML training script to the registry | - |
+| `update` | Update visibility of ML training script in registry | - |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Applicable commands | Required? |
+| -------- | ----------- | ------------------- | --------- |
+| `--path` | The path to ML training scripts for upload. | `upload` | **Required** |
+| `--org-id` | The organization ID to host the scripts in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/). | `upload`, `update` | **Required** |
+| `--script-name` | Name of the ML training script to update or upload. | `upload`, `update` | **Required** |
+| `--version` | Version of the ML training script to upload. | `upload` | Optional |
+| `--framework` | Framework of the ML training script to upload, can be `tflite`, `tensorflow`, `pytorch`, or `onnx`. | `upload` | Optional |
+| `--type` | Task type of the ML training script to upload, can be `single_label_classification`, `multi_label_classification`, or `object_detection`. | `upload` | Optional |
+| `--draft` | Indicate draft mode, drafts are not viewable in the registry. | `upload` | Optional |
+| `--visibility` | Visibility of the registry item, can be `public` or `private`. | `update` | **Required** |
+| `--description` | Description of the ML training script. | `update` | Optional |
+
+### `train`
+
+Use a training script to train an ML model on data.
+
+#### Command options
+
+<!-- prettier-ignore -->
+| Command option | Description | Positional arguments |
+| -------------- | ----------- | -------------------- |
+| `submit` | Submits training job on data in the Viam cloud | `managed`, `custom` |
+
+##### Positional arguments: `submit`
+
+<!-- prettier-ignore -->
+| Argument | Description | Positional Arguments |
+| -------- | ----------- | -------------------- |
+| `managed` | Submits training job on data in the Viam cloud with a Viam-managed training script | - |
+| `custom` | Submits custom training job on data in the Viam cloud | `from-registry`, `with-upload` |
+
+##### Position arguments: `submit custom`
+
+<!-- prettier-ignore -->
+| Argument | Description |
+| -------- | ----------- |
+| `from-registry` | Submit custom training job with an existing training script in the registry on data in the Viam cloud |
+| `with-upload` | Upload a draft training script and submit a custom training job on data in the Viam cloud |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Applicable commands | Required? |
+| -------- | ----------- | ------------------- | --------- |
+| `--dataset-id` | The ID of the dataset to train on. To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset. Click **...** in the left-hand menu and click **Copy dataset ID**. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
+| `--model-org-id` | The organization ID to train and save the ML model in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/). | `submit managed`, `submit custom with-upload` | **Required** |
+| `--org-id` | The organization ID to train and save the ML model in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/). | `submit custom from-registry` | **Required** |
+| `--model-name` | The name of the ML model. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
+| `--model-type` | Type of model to train. Can be one of `single_label_classification`, `multi_label_classification`, `object_detection`, or `unspecified`. | `submit managed`, `submit custom with-upload` | **Required**, Optional |
+| `--model-labels` | Labels to train on. These will either be classification or object detection labels. | `submit managed` | **Required** |
+| `--model-version` | Set the version of the submitted model. Defaults to current timestamp if unspecified. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
+| `--script-name` | The registry name of the ML training script to use for training. If uploading, this sets the name. | `submit custom from-registry`, `submit custom with-upload` | **Required** |
+| `--version` | The version of the ML training script to use for training. | `submit custom from-registry`, `submit custom with-upload` | **Required** |
+| `--path` | The path to the ML training script to upload. | `submit custom with-upload` | **Required** |
+| `--framework` | Framework of the ML training script to upload, can be `tflite`, `tensorflow`, `pytorch`, or `onnx`. | `submit custom with-upload` | Optional |
 
 ### `version`
 

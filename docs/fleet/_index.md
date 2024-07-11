@@ -1,6 +1,6 @@
 ---
-title: "Deploy a large fleet"
-linkTitle: "Deploy a large fleet"
+title: "Deploy a Large Fleet"
+linkTitle: "Deploy a Large Fleet"
 weight: 430
 type: "docs"
 description: "Configure, control, debug, and manage your machines from the cloud at app.viam.com on your own or with a team."

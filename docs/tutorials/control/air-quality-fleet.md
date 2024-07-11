@@ -309,7 +309,7 @@ For each machine:
 
    If you do not see readings, check the **LOGS** tab for errors, double-check that serial communication is enabled on the singe board computer, and check that the `usb_interface` path is correctly specified (click below).
 
-   {{%expand "Click here for usb_interface troubleshooting help" %}}
+   {{< expand "Click here for usb_interface troubleshooting help" >}}
 
 If you only have one USB device plugged into each of your boards, the `usb_interface` value you configured in the sensor config is likely (conveniently) the same for all of your machines.
 If not, you can use [fragment mods](/fleet/fragments/#use-fragment_mods) to modify the value on any machine for which it is different:
@@ -340,7 +340,7 @@ If not, you can use [fragment mods](/fleet/fragments/#use-fragment_mods) to modi
    If you have lots of machines with one `usb_interface` value, and lots of machines with a second one, you might consider duplicating the fragment, editing that value, and using that second fragment instead of the first one for the applicable machines, rather than using a fragment mod for each of the machines.
    You have options.
 
-   {{% /expand%}}
+   {{< /expand >}}
 
 ## Test data sync
 
