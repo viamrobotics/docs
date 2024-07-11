@@ -1,1 +1,1 @@
-Fetch information about what vision methods the vision service provides.
+Fetch information about which vision methods a given vision service supports.
