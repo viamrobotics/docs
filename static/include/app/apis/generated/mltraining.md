@@ -36,6 +36,43 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### SubmitCustomTrainingJob
+
+Submit a training job from a custom training script.
+Follow the guide to [Use a Custom Training Script](/services/ml/upload-training-script/) to do so.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the id of the org to submit the training job to.
+- `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the id of the dataset.
+- `registry_item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the id of the registry item.
+- `model_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the model name.
+- `model_version` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the model version.
+
+**Returns:**
+
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): the id of the training job.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+job_id = await ml_training_client.submit_custom_training_job(
+    organization_id=organization_id,
+    dataset_id=dataset_id,
+    registry_item_id="your-registry-item-id",
+    model_name="your-model-name",
+    model_version="1"
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.submit_custom_training_job).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetTrainingJob
 
 Get training job metadata.
