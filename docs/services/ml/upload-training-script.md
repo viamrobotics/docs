@@ -352,9 +352,13 @@ if __name__ == "__main__":
     NUM_WORKERS = strategy.num_replicas_in_sync
     GLOBAL_BATCH_SIZE = BATCH_SIZE * NUM_WORKERS
 
-    # Read dataset file, labels should be changed according to the desired model output.
+    # Read dataset file, labels should be changed
+    # according to the desired model output.
     LABELS = ["orange_triangle", "blue_star"]
-    image_filenames, image_labels = parse_filenames_and_labels_from_json(DATA_JSON, LABELS)
+    image_filenames, image_labels = parse_filenames_and_labels_from_json(
+        DATA_JSON,
+        LABELS
+    )
     model_type = multi_label
     # Generate 80/20 split for train and test data
     train_dataset, test_dataset = create_dataset_classification(
