@@ -296,7 +296,7 @@ You must log in to the [Viam app](https://app.viam.com/) to download the package
 You also need to include logic in your <file>training.py</file> to save the model artifact your training job produces to the `model_output_directory`.
 For example:
 
-```python
+```python {class="line-numbers linkable-line-numbers"}
 # Save the model artifact to the Viam registry using the provided
 # ML model name and version
 def save_tflite_classification(
@@ -321,6 +321,72 @@ def save_tflite_classification(
 
 When you submit a training job with this training script, this function saves the model outputs to the `model_output_directory` in the cloud.
 Once the training job is complete, Viam looks at that directory and creates a package with all of the contents of the directory, creating or updating a registry item for the ML model.
+
+{{% /expand%}}
+{{%expand "Step 4: Write main function" %}}
+
+Write all the main logic for the training script using the previously defined helper functions into the top level code of <file>training.py</file>, which is executed when the file runs as a script.
+
+For example, for the [example classification training script](https://app.viam.com/packages/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb/custom-training-classification/ml_training/latest/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb) that trains a classification model using TensorFlow and Keras, `__main__` looks like this:
+
+```python {class="line-numbers linkable-line-numbers"}
+if __name__ == "__main__":
+    DATA_JSON, MODEL_DIR = parse_args()
+    # Set up compute device strategy. If GPUs are available, they will be used
+    if len(tf.config.list_physical_devices("GPU")) > 0:
+        strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
+    else:
+        strategy = tf.distribute.OneDeviceStrategy(device="/cpu:0")
+
+    IMG_SIZE = (256, 256)
+    # Epochs and batch size can be adjusted according to the training job.
+    EPOCHS = 2
+    BATCH_SIZE = 16
+    SHUFFLE_BUFFER_SIZE = 32
+    AUTOTUNE = (
+        tf.data.experimental.AUTOTUNE
+    )  # Adapt preprocessing and prefetching dynamically
+
+    # Model constants
+    NUM_WORKERS = strategy.num_replicas_in_sync
+    GLOBAL_BATCH_SIZE = BATCH_SIZE * NUM_WORKERS
+
+    # Read dataset file, labels should be changed according to the desired model output.
+    LABELS = ["orange_triangle", "blue_star"]
+    image_filenames, image_labels = parse_filenames_and_labels_from_json(DATA_JSON, LABELS)
+    model_type = multi_label
+    # Generate 80/20 split for train and test data
+    train_dataset, test_dataset = create_dataset_classification(
+        filenames=image_filenames,
+        labels=image_labels,
+        all_labels=LABELS,
+        model_type=model_type,
+        img_size=IMG_SIZE,
+        train_split=0.8,
+        batch_size=GLOBAL_BATCH_SIZE,
+        shuffle_buffer_size=SHUFFLE_BUFFER_SIZE,
+        num_parallel_calls=AUTOTUNE,
+        prefetch_buffer_size=AUTOTUNE,
+    )
+
+    # Build and compile model
+    with strategy.scope():
+        model = build_and_compile_classification(
+            LABELS, model_type, IMG_SIZE + (3,)
+        )
+
+    # Train model on data
+    loss_history = model.fit(
+            x=train_dataset, epochs=EPOCHS,
+    )
+
+    # Save labels.txt file
+    save_labels(LABELS, MODEL_DIR)
+    # Convert the model to tflite
+    save_tflite_classification(
+        model, MODEL_DIR, "classification_model", IMG_SIZE + (3,)
+    )
+```
 
 {{% /expand%}}
 
