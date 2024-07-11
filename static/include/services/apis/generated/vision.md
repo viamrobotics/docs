@@ -615,6 +615,52 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetProperties
+
+Fetch information about which vision methods a given vision service supports.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([Vision.Properties](https://python.viam.dev/autoapi/viam/components/audio_input/audio_input/index.html#viam.components.audio_input.audio_input.AudioInput.Properties)): The properties of the vision service.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+# Grab the detector you configured on your machine
+my_detector = VisionClient.from_robot(robot, "my_detector")
+properties = await my_detector.get_properties()
+properties.detections_supported      # returns True
+properties.classifications_supported # returns False
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_properties).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(*Properties)](https://pkg.go.dev/go.viam.com/rdk/services/vision#Properties)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### Close
 
 Safely shut down the resource and prevent further use.
