@@ -80,7 +80,7 @@ Move the end of the arm to the desired [pose](/internals/orientation-vector/), r
 
 **Parameters:**
 
-- `pose` ([viam.components.arm.Pose](https://python.viam.dev/autoapi/viam/components/arm/arm/index.html#viam.components.arm.arm.Pose)) (required): The destination Pose for the arm. The Pose is composed of values for location and orientation with respect to the origin. Location is expressed as distance, which is represented by x, y, and z coordinate values. Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
+- `pose` ([viam.components.arm.Pose](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose)) (required): The destination Pose for the arm. The Pose is composed of values for location and orientation with respect to the origin. Location is expressed as distance, which is represented by x, y, and z coordinate values. Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -173,7 +173,7 @@ Collision checks are not enabled when doing direct joint control with MoveToJoin
 
 **Parameters:**
 
-- `positions` ([viam.proto.component.arm.JointPositions](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.JointPositions)) (required): The destination JointPositions for the arm.
+- `positions` ([viam.proto.component.arm.JointPositions](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.JointPositions)) (required): The destination JointPositions for the arm.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -318,7 +318,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)>>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)>\>
 
 **Example:**
 
@@ -673,7 +673,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
 
 **Example:**
 

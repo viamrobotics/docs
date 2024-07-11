@@ -253,7 +253,7 @@ If you are implementing your own SLAM service and add features that have no buil
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-motion = MotionClient.from_robot(robot, "builtin")
+service = SERVICE.from_robot(robot, "builtin")  # replace SERVICE with the appropriate class
 
 my_command = {
   "cmnd": "dosomething",
@@ -261,7 +261,7 @@ my_command = {
 }
 
 # Can be used with any resource, using the motion service as an example
-await motion.do_command(command=my_command)
+await service.do_command(command=my_command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.do_command).

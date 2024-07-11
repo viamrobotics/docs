@@ -73,7 +73,7 @@ Get training job metadata for all jobs within an organization.
 **Parameters:**
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the id of the org to request training job data from.
-- `training_status` ([viam.proto.app.mltraining.TrainingStatus.ValueType](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.TrainingStatus)) (optional): status of training jobs to filter the list by. If unspecified, all training jobs will be returned.
+- `training_status` ([viam.proto.app.mltraining.TrainingStatus.ValueType](https://python.viam.dev/autoapi/viam/gen/app/mltraining/v1/ml_training_pb2/index.html#viam.gen.app.mltraining.v1.ml_training_pb2.TrainingStatus)) (optional): status of training jobs to filter the list by. If unspecified, all training jobs will be returned.
 
 **Returns:**
 

@@ -68,7 +68,7 @@ Get the metadata: name, data type, expected tensor/array shape, inputs, and outp
 
 **Returns:**
 
-- ([viam.services.mlmodel.mlmodel.Metadata](https://python.viam.dev/autoapi/viam/services/mlmodel/mlmodel/index.html#viam.services.mlmodel.mlmodel.Metadata)): The metadata.
+- (viam.services.mlmodel.mlmodel.Metadata): The metadata.
 
 **Example:**
 
@@ -147,7 +147,7 @@ If you are implementing your own ML model service and add features that have no 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-motion = MotionClient.from_robot(robot, "builtin")
+service = SERVICE.from_robot(robot, "builtin")  # replace SERVICE with the appropriate class
 
 my_command = {
   "cmnd": "dosomething",
@@ -155,7 +155,7 @@ my_command = {
 }
 
 # Can be used with any resource, using the motion service as an example
-await motion.do_command(command=my_command)
+await service.do_command(command=my_command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/mlmodel/client/index.html#viam.services.mlmodel.client.MLModelClient.do_command).

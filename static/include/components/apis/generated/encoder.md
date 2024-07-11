@@ -9,7 +9,7 @@ Absolute encoders return degrees.
 
 **Parameters:**
 
-- `position_type` ([viam.proto.component.encoder.PositionType.ValueType](https://python.viam.dev/autoapi/viam/components/encoder/client/index.html#viam.components.encoder.client.PositionType)) (optional): The desired output type of the position.
+- `position_type` ([viam.proto.component.encoder.PositionType.ValueType](https://python.viam.dev/autoapi/viam/gen/component/encoder/v1/encoder_pb2/index.html#viam.gen.component.encoder.v1.encoder_pb2.PositionType)) (optional): The desired output type of the position.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
