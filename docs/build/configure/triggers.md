@@ -60,7 +60,7 @@ Be aware that the component must return the type of data you configure in the tr
 {{% /tab %}}
 {{< /tabs >}}
 
-6. Replace the contents of the `value` field with the URL of your cloud function or lambda.
+6. Replace the **URL** value with the URL of your cloud function or lambda.
 
    ![The trigger configured with an example URL in the Viam app.](/build/configure/trigger-configured.png)
 
