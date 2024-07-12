@@ -23,6 +23,8 @@ aliases:
 The vision service enables your machine to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
 While the camera component lets you access what your machine's camera sees, the vision service allows you to interpret your image data.
 
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/UxQbUT4eYnw">}}
+
 Currently, the vision service supports the following kinds of operations:
 
 - [Detections](#detections)
