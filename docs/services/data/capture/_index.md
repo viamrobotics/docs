@@ -420,6 +420,7 @@ To view all the captured data you have access to, see [View Data](/services/data
 ### Images are dim on start up
 
 If you are capturing camera data, it can happen that the camera captures and syncs miscolored or dark images upon start up.
+Wait for a few seconds and you should see correctly colored images.
 
 ## Next steps
 
