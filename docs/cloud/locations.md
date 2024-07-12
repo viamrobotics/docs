@@ -32,14 +32,14 @@ If you need to create more locations, [contact support](mailto:support@viam.com)
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/eb7v6dabCGQ">}}
 
-### Add a location
+## Add a location
 
 When you create a new organization, Viam automatically creates a new location for you.
 You can create additional locations by typing a new location name in the **New Location** field in the left side navigation bar on the [**FLEET** page](https://app.viam.com/robots) and clicking **Add**.
 
 Click a location's name to display the list of machines associated with that location.
 
-### Create a sub-location
+## Create a sub-location
 
 To create a sub-location you must first create the sub-location as a location and then choose a parent location:
 
@@ -51,7 +51,7 @@ You can nest locations up to three levels deep.
 
 To move a sub-location to the top level of locations, select **Root** from the **New Parent Location** dropdown and then click **Change**.
 
-### Share a location
+## Share a location
 
 A location always belongs to the organization it was created in.
 Members of the organization have access to all locations in the organization by default.
@@ -60,7 +60,7 @@ For more information on the permissions the roles assign for each resource, see 
 
 You can share a location beyond its organization by sharing a location with an additional organization:
 
-#### Share a location with an additional organization
+### Share a location with an additional organization
 
 Share your location with another organization you belong to by selecting the organization from the **Add Organization** dropdown menu and clicking **Share**.
 
@@ -81,7 +81,7 @@ Once you share a _nested_ location (sub-location), its parent location cannot be
 
 {{% /alert %}}
 
-##### Remove an organization from a shared location
+#### Remove an organization from a shared location
 
 You can remove any organization except the primary owner from the shared list by clicking the **X** to the right of the location in the shared list.
 
@@ -100,21 +100,21 @@ Sharing this information could compromise your system security by allowing unaut
 {{< /alert >}}
 -->
 
-##### Rotate a secret key
+#### Rotate a secret key
 
 If you ever need to rotate this key, click on the **Generate Key** button to generate a new key.
 
 Viam supports flexible key rotation with up to two keys in use at one time.
 After generating a new secret key, update all references to the key in your code as soon as possible and then remove the old key.
 
-#### Share a location with Viam support
+### Share a location with Viam support
 
 If you request support, you must share your location with the Viam Support team.
 To do so, navigate to the location you need support with and click, **Add Viam support**.
 
 Once you have received support, you can remove Viam Support from your location by clicking **Remove Viam support**.
 
-### Delete a location
+## Delete a location
 
 You can delete a location that is _empty of machines_ by clicking the trash can icon next to the location name at the top of the page for that location.
 The icon will not appear if there are any machines in the location.
