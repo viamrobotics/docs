@@ -12,5 +12,5 @@
 | [`Reconfigure`](/components/base/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/components/base/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
 | [`FromRobot`](/components/base/#fromrobot) | Get the resource from the provided robot with the given name. |
-| [`Name`](/components/base/#name) | Get the `ResourceName` for this base with the given name. |
+| [`GetResourceName`](/components/base/#getresourcename) | Get the `ResourceName` for this base with the given name. |
 | [`Close`](/components/base/#close) | Safely shut down the resource and prevent further use. |

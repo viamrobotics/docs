@@ -10,4 +10,5 @@
 | [`GetPlan`](/services/motion/#getplan) | By default, returns the plan history of the most recent `MoveOnGlobe` or `MoveOnMap` call to move a base component. |
 | [`Reconfigure`](/services/motion/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/services/motion/#docommand) | Execute model-specific commands that are not otherwise defined by the service API. |
+| [`GetResourceName`](/services/motion/#getresourcename) | Get the `ResourceName` for this instance of the motion service with the given name. |
 | [`Close`](/services/motion/#close) | Safely shut down the resource and prevent further use. |

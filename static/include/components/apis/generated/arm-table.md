@@ -12,5 +12,5 @@
 | [`Reconfigure`](/components/arm/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/components/arm/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
 | [`FromRobot`](/components/arm/#fromrobot) | Get the resource from the provided robot with the given name. |
-| [`Name`](/components/arm/#name) | Get the `ResourceName` for this arm with the given name. |
+| [`GetResourceName`](/components/arm/#getresourcename) | Get the `ResourceName` for this arm with the given name. |
 | [`Close`](/components/arm/#close) | Safely shut down the resource and prevent further use. |

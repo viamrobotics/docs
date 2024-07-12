@@ -15,5 +15,5 @@
 | [`Reconfigure`](/components/motor/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/components/motor/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
 | [`FromRobot`](/components/motor/#fromrobot) | Get the resource from the provided robot with the given name. |
-| [`Name`](/components/motor/#name) | Get the `ResourceName` for this motor with the given name. |
+| [`GetResourceName`](/components/motor/#getresourcename) | Get the `ResourceName` for this motor with the given name. |
 | [`Close`](/components/motor/#close) | Safely shut down the resource and prevent further use. |

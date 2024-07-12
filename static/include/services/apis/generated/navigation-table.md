@@ -12,4 +12,5 @@
 | [`GetProperties`](/services/navigation/#getproperties) | Get information about the navigation service. |
 | [`Reconfigure`](/services/navigation/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/services/navigation/#docommand) | Execute model-specific commands that are not otherwise defined by the service API. |
+| [`GetResourceName`](/services/navigation/#getresourcename) | Get the `ResourceName` for this instance of the navigation service with the given name. |
 | [`Close`](/services/navigation/#close) | Safely shut down the resource and prevent further use. |
