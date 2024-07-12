@@ -56,14 +56,15 @@ a.footnote-ref::after {
 
 h1, .h1 {
   font-family: Space Mono, sans-serif;
-  font-size: 2.33rem;
+  font-size: 2.667rem; // 32pt
   margin-left: 0px;
 }
 
 h2, .h2 {
   font-family: space grotesk, sans-serif;
-  font-size: 1.5rem !important;
-  line-height: 2.625rem;
+  font-size: 2.0rem !important; // 24pt
+  line-height: 2.667rem;
+  font-weight: 400;
   clear: both;
 }
 
@@ -77,26 +78,27 @@ h2, .h2 {
 
 h3, .h3 {
   font-family: space grotesk, sans-serif;
-  font-size: 1.1667rem !important;
+  font-size: 1.6667rem !important; // 20pt
+  font-weight: 400;
   clear: both;
 }
 
 h4, .h4 {
   font-family: space grotesk, sans-serif;
-  font-size: 1.0625rem !important;
+  font-size: 1.3333rem !important; // 16pt
   line-height: 1.4375em;
   clear: both;
 }
 
 h5, .h5 {
   font-family: space grotesk, sans-serif;
-  font-size: 0.833 !important;
+  font-size: 1.1667rem !important; // 14pt
   clear: both;
 }
 
 h6, .h6 {
-  font-size: 0.833rem !important;
-  line-height: 1.0625rem;
+  font-size: 1.0rem !important;
+  line-height: 1.0625rem; // 12pt
   clear: both;
 }
 
