@@ -19,7 +19,7 @@ After following this guide, you can provide the mount point, username, password,
 
 To distribute the correction information from your reference station, you should reserve an RTK2GO casting service for your station.
 
-Follow the instructions on [New Base Station Reservation](http://rtk2go.com/sample-page/new-reservation/) to enter information about your reference station.
+Follow the instructions on [New Base Station Reservation](http://rtk2go.com/sample-page/new-reservation/) to enter information about your reference station. Choose Ntrip Rev1 for "NTRIP Protocol to Use" option.
 Wait for the confirmation email, to which you need to reply.
 Upon reply, if you didn't request a specific password you receive a randomized password for your mount point.
 Save the details of your mountpoint password, username (email), mountpoint name and caster URL, as you need it later in this set up process.
@@ -101,7 +101,7 @@ For each option, select the following:
 
 **Min SV Elevation:** 10.
 
-**Min C/N0**: Keep the default value here as appropriate to your model, **6dBHz** for ZED-F9P and **20dBHz** for ZED-F9R models.
+**Min C/N0**: Keep the default value here as appropriate to your model, **6dBHz** for ZED-F9P and **20dBHz** for ZED-F9R models. Double check which model is provided in your reference station.
 
 **Constellations:** Keep the default selections here: **GPS**, **SBAS**, **GLONASS**, **BeiDou**, and **Galileo**.
 
