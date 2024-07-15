@@ -304,7 +304,7 @@ Examples:
 
 ```sh {class="command-line" data-prompt="$"}
 # export tabular data to /home/robot/data for org abc, location 123
-viam data export --destination=/home/robot/data --data_type=tabular \
+viam data export --destination=/home/robot/data --data-type=tabular \
 --org-ids=abc --location-ids=123
 
 # export binary data from all orgs and locations, component name myComponent
