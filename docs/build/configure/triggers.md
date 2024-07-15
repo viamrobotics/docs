@@ -256,7 +256,7 @@ The attributes required to configure a trigger are outlined in the table below:
 | `data_types`                    | **Required** | `data_ingested` | The data types that trigger the event         | array of strings |               |
 | `type`                          | **Required** | `notifications` | The type of notification to send              | string           |               |
 | `value`                         | **Required** | `notifications` | The URL to send the notification to           | string           |               |
-| `seconds_between_notifications` | **Required** | `notifications` | The interval between notifications in seconds | integer          |               |
+| `seconds_between_notifications` | Optional     | `notifications` | The interval between notifications in seconds | integer          |               |
 
 ## `headers`
 
