@@ -102,7 +102,7 @@ For each option, select the following:
 
 **Min SV Elevation:** 10.
 
-**Min C/N0**: Keep the default value here as appropriate to your model, **6dBHz** for ZED-F9P and **20dBHz** for ZED-F9R models. Double check which model is provided in your reference station.
+**Min C/N0**: Keep the default value here, **6dBHz** for ZED-F9P.
 
 **Constellations:** Keep the default selections here: **GPS**, **SBAS**, **GLONASS**, **BeiDou**, and **Galileo**.
 
