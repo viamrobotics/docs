@@ -68,7 +68,7 @@ Be aware that the component must return the type of data you configure in the tr
 {{% tab name="JSON mode" %}}
 
 To configure your trigger by using **JSON** mode instead of **Builder** mode, paste one of the following JSON templates into your JSON config.
-`"triggers"` is a top-level section like `"components"` or `"services"`.
+`"triggers"` is a top-level section, similar to `"components"` or `"services"`.
 
 {{< tabs >}}
 {{% tab name="JSON Template: Data Synced" %}}
@@ -79,23 +79,23 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
       "name": "<trigger name>",
       "event": {
         "type": "part_data_ingested",
-         "data_ingested": {
-            "data_types": ["binary", "tabular", "file"]
-         },
-         "notifications": [
-          {
-            "type": "webhook",
-            "value": "<https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws>",
-            "seconds_between_notifications": <number of seconds>
-          }
-        ],
-        "headers": {
-          "Component-Type": "<Component type>",
-          "Component-Name": "<Component name>",
-          "Method-Name": "<Method name>",
-          "Min-Time-Received": "<Minimum time>",
-          "Max-Time-Received": "<Maximum time>"
+        "data_ingested": {
+          "data_types": ["binary", "tabular", "file"]
         }
+      },
+      "notifications": [
+        {
+          "type": "webhook",
+          "value": "<https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws>",
+          "seconds_between_notifications": <number of seconds>
+        }
+      ],
+      "headers": {
+        "Component-Type": "<Component type>",
+        "Component-Name": "<Component name>",
+        "Method-Name": "<Method name>",
+        "Min-Time-Received": "<Minimum time>",
+        "Max-Time-Received": "<Maximum time>"
       }
     }
   ]
@@ -117,14 +117,7 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
           "value": "<https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws>",
           "seconds_between_notifications": <number of seconds>
         }
-      ],
-      "headers": {
-          "Component-Type": "<Component type>",
-          "Component-Name": "<Component name>",
-          "Method-Name": "<Method name>",
-          "Min-Time-Received": "<Minimum time>",
-          "Max-Time-Received": "<Maximum time>"
-        }
+      ]
     }
   ]
 ```
@@ -145,14 +138,7 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
           "value": "<https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws>",
           "seconds_between_notifications": <number of seconds>
         }
-       ],
-       "headers": {
-          "Component-Type": "<your component type>",
-          "Component-Name": "<your component name>",
-          "Method-Name": "<Method name>",
-          "Min-Time-Received": "<Minimum time>",
-          "Max-Time-Received": "<Maximum time>"
-        }
+       ]
     }
   ]
 ```
@@ -257,28 +243,43 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
 
    ```
 
+## `attributes`
+
+To configure a trigger using JSON, you need to populate the `triggers` array with the appropriate attributes.
+
+The attributes required to configure a trigger are outlined in the table below:
+
+| Name                            | Required     | Parent Object   | Description                                   | Type             | Usage example |
+| ------------------------------- | ------------ | --------------- | --------------------------------------------- | ---------------- | ------------- |
+| `name`                          | **Required** | `triggers`      | The name of the trigger                       | string           |               |
+| `type`                          | **Required** | `event`         | The type of event to trigger on               | string           |               |
+| `data_types`                    | **Required** | `data_ingested` | The data types that trigger the event         | array of strings |               |
+| `type`                          | **Required** | `notifications` | The type of notification to send              | string           |               |
+| `value`                         | **Required** | `notifications` | The URL to send the notification to           | string           |               |
+| `seconds_between_notifications` | **Required** | `notifications` | The interval between notifications in seconds | integer          |               |
+
 ## `headers`
 
 You can populate the `headers` object in your JSON config to include additional context and data in your trigger configurations.
-By including specific headers, you can ensure that your machine will receive all the necessary information to perform precise and accurate actions.
+
 The `headers` object can include details such as the part of the machine involved, the type of component, the method being called, and the time range of the data.
 
 When you configure your cloud function or lambda, you can access the headers to get detailed information about the event.
-For example, the `Part-ID` header can be used to log which specific part triggered the action, and the `Method-Name` header can help identify which method was called.
+For example, the `Part-ID` header can be used to identify which specific part triggered the action, and the `Method-Name` header can identify which method was called.
 
 The headers available for use are outlined below:
 
-| Header Key          | Description                                               | Usage Example                                                      |
-| ------------------- | --------------------------------------------------------- | ------------------------------------------------------------------ |
-| `Part-ID`           | Identifies the specific part of the machine.              | Isolate actions to a specific part of the machine.                 |
-| `Robot-ID`          | Identifies the machine as a whole.                        | Useful for actions that pertain to the machine's entire system.    |
-| `Location-ID`       | Identifies the location of the machine.                   | Location-based triggers or actions.                                |
-| `Org-ID`            | Identifies the organization.                              | Organizational-level actions and tracking.                         |
-| `Component-Type`    | Indicates the type of component involved.                 | Necessary for actions that depend on the component type.           |
-| `Component-Name`    | Names the specific component.                             | Pinpoint the exact component for the action.                       |
-| `Method-Name`       | Identifies the method being called.                       | Useful for actions triggered by specific methods.                  |
-| `Min-Time-Received` | Indicates the earliest time a piece of data was received. | Useful for actions that depend on data timing.                     |
-| `Max-Time-Received` | Indicates the latest time a piece of data was received.   | Similar to `Min-Time-Received`, useful for time-dependent actions. |
+| Header Key          | Description                                               | Usage Example                                                      | Type   | Required |
+| ------------------- | --------------------------------------------------------- | ------------------------------------------------------------------ | ------ | -------- |
+| `Part-ID`           | Identifies the specific part of the machine.              | Isolate actions to a specific part of the machine.                 | string | Optional |
+| `Robot-ID`          | Identifies the machine as a whole.                        | Useful for actions that pertain to the machine's entire system.    | string | Optional |
+| `Location-ID`       | Identifies the location of the machine.                   | Location-based triggers or actions.                                | string | Optional |
+| `Org-ID`            | Identifies the organization.                              | Organizational-level actions and tracking.                         | string | Optional |
+| `Component-Type`    | Indicates the type of component involved.                 | Necessary for actions that depend on the component type.           | string | Optional |
+| `Component-Name`    | Names the specific component.                             | Target the exact component for the action.                         | string | Optional |
+| `Method-Name`       | Identifies the method being called.                       | Useful for actions triggered by specific methods.                  | string | Optional |
+| `Min-Time-Received` | Indicates the earliest time a piece of data was received. | Useful for actions that depend on data timing.                     | string | Optional |
+| `Max-Time-Received` | Indicates the latest time a piece of data was received.   | Similar to `Min-Time-Received`, useful for time-dependent actions. | string | Optional |
 
 ## More examples
 
