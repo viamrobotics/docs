@@ -899,7 +899,7 @@ import (
     "go.viam.com/rdk/components/base"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/module"
-    "go.viam.com/utils"
+    "go.viam.com/rdk/utils"
 
     // Import your local package "mybase"
     // NOTE: Update this path if your custom resource is in a different location,
