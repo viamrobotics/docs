@@ -65,6 +65,7 @@ privacy_policy = "https://www.viam.com/privacy"
 includes_dir = "_includes"
 archived_version = false
 url_latest_version = "https://docs.viam.com/"
+url_dotcom = "https://viam.com/"
 algolia_docsearch = true
 offlineSearch = false
 prism_syntax_highlighting = true
