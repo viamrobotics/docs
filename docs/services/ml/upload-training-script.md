@@ -372,8 +372,8 @@ if __name__ == "__main__":
 
 ### Package the training script as a <file>tar.gz</file> source distribution
 
-You must save your training script in the `tar.gz` format to run in the Viam ML training service.
-Follow the instructions to [create a <file>tar.gz</file> gzip'd tar file](https://docs.python.org/3.10/distutils/sourcedist) from your project.
+You need to save your training script as a gzip'd tarball to run it in the Viam ML training service.
+Follow the instructions to [create a <file>tar.gz</file>](https://docs.python.org/3.10/distutils/sourcedist) from your project folder.
 
 {{% alert title="Tip" color="tip" %}}
 You can refer to the directory structure of this [example classification training script](https://app.viam.com/packages/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb/custom-training-classification/ml_training/latest/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb).
