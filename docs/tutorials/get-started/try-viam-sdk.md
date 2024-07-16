@@ -969,7 +969,7 @@ import (
     "go.viam.com/rdk/components/base"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/utils/rpc"
+    "go.viam.com/rdk/utils"
 )
 
 func moveInSquare(ctx context.Context, base base.Base, logger logging.Logger) {
@@ -989,11 +989,11 @@ func main() {
       context.Background(),
       "ADDRESS FROM THE VIAM APP",
       logger,
-      client.WithDialOptions(rpc.WithEntityCredentials(
+      client.WithDialOptions(utils.WithEntityCredentials(
       // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
       "<API-KEY-ID>",
-      rpc.Credentials{
-          Type:    rpc.CredentialsTypeAPIKey,
+      utils.Credentials{
+          Type:    utils.CredentialsTypeAPIKey,
           // Replace "<API-KEY>" (including brackets) with your machine's API key
           Payload: "<API-KEY>",
       })),

@@ -401,12 +401,10 @@ import (
   armapi "go.viam.com/api/component/arm/v1"
   "go.viam.com/rdk/logging"
   "go.viam.com/rdk/robot/client"
-  "go.viam.com/utils/rpc"
   "go.viam.com/rdk/components/arm"
   "go.viam.com/rdk/referenceframe"
   "go.viam.com/rdk/spatialmath"
   "go.viam.com/rdk/utils"
-  "go.viam.com/utils/rpc"
 )
 
 func main() {
@@ -415,11 +413,11 @@ func main() {
       context.Background(),
       "ADDRESS FROM THE VIAM APP",
       logger,
-      client.WithDialOptions(rpc.WithEntityCredentials(
+      client.WithDialOptions(utils.WithEntityCredentials(
       // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
       "<API-KEY-ID>",
-      rpc.Credentials{
-          Type:    rpc.CredentialsTypeAPIKey,
+      utils.Credentials{
+          Type:    utils.CredentialsTypeAPIKey,
           // Replace "<API-KEY>" (including brackets) with your machine's API key
           Payload: "<API-KEY>",
       })),
