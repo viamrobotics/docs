@@ -109,7 +109,7 @@ Once you have added and configured the module you would like to use in the Viam 
 
 ## Create your own modules
 
-If none of the existing modular resources in the Viam registry support your use case, you can create your own modules with your own modular resources:
+If none of the existing modular resources in the Viam registry support your use case, you can create your own modules to provide your own modular resources:
 
 - **Implement a custom component**: Write a driver for an unsupported {{< glossary_tooltip term_id="component" text="component" >}} by implementing the corresponding component API.
 
@@ -120,7 +120,7 @@ You can write modules in a variety of programming languages, such as, Go, Python
 To create a new module:
 
 1. [Create a module](/registry/create/) with one or more modular resources by implementing all methods for the component's or service's standardized API.
-1. [Upload the module to the Viam registry](/registry/upload/) to make it available for deployment to machines or add it as a [local module](/registry/configure/#local-modules).
+1. [Upload the module to the Viam registry](/use-cases/create-module//#upload-your-module-to-the-modular-resource-registry) to make it available for deployment to machines or add it as a [local module](/registry/configure/#local-modules).
    You can upload _private_ modules for your {{< glossary_tooltip term_id="organization" text="organization" >}} or _public_ modules.
 1. Once you have uploaded your module to the registry, [deploy and configure the module](/registry/configure/) from the Viam app.
    Then, you can test your added resource using the [**CONTROL** tab](/fleet/control/) and [program](/build/program/) it with Viam's Go or Python SDKs.

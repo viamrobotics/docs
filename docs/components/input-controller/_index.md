@@ -301,7 +301,7 @@ AbsolutePedalBrake       Control = "AbsolutePedalBrake"
 AbsolutePedalClutch      Control = "AbsolutePedalClutch"
 ```
 
-See [Github](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the most current version of supported `Control` types.
+See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) for the most current version of supported `Control` types.
 
 {{% /tab %}}
 {{< /tabs >}}
