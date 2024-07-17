@@ -28,7 +28,7 @@ Follow the instructions below to learn how to write a new module using your pref
 1. [Test your module locally.](#test-your-module-locally)
 1. [Upload your module to the modular resource registry.](#upload-your-module-to-the-modular-resource-registry)
 1. [Deploy your module on more machines.](#deploy-your-module-to-more-machines)
-1. [Manage existing modules](#manage-existing-modules)
+1. [Manage your existing modules](#manage-your-existing-modules)
 
 {{% /alert %}}
 
@@ -58,8 +58,8 @@ Before you write the code for your module, you need to decide which API to write
 
 #### Choose an API to implement in your model
 
-Most modules extend an existing [component API](/appendix/apis/#component-apis) or [service API](/appendix/apis/#service-apis) to add support for a new type of that resource.
-For example, you could extend the [camera component API](/components/camera/#api) to support new image formats or a new type of camera, or extend the [ML model service API](/appendix/apis/#ml-model) to support a new machine learning (ML) model type beyond `tflite`.
+Most modules extend an existing [component API](/appendix/apis/#component-apis) or [service API](/appendix/apis/#service-apis) to add support for a new model of that resource.
+For example, you could extend the [camera component API](/components/camera/#api) to support new image formats or a new kind of camera, or extend the [ML model service API](/appendix/apis/#ml-model) to support a new kind of machine learning (ML) model other than the existing `tflite`.
 
 {{% alert title=Note color="note" %}}
 If you want to write a module to extend support to a new type of component or service that is relatively unique, consider using the generic API for your resource type to build your own API:
@@ -1884,9 +1884,9 @@ There are two ways to deploy a module:
 Often, developers first test their new module by deploying it as a local module to a test machine.
 With a local installation, you can test your module in a controlled environment to confirm that it functions as expected, and make changes to your module as needed.
 
-## Manage existing modules
+## Manage your existing modules
 
-After you create and deploy a module, you may need to manage it.
+After you create and deploy a module, you may need to update or delete it.
 In this section:
 
 - [Update an existing module](#update-an-existing-module)
