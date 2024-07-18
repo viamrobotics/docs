@@ -41,7 +41,7 @@ Before following this tutorial, ensure you have:
 
 - A machine with [connected to the Viam app](/cloud/machines/#add-a-new-machine).
 
-- A configured [sensor component](/components/sensor/), that reports data.
+- A configured [sensor component](/components/sensor/), such as the [`bme280`](https://docs.viam.com/components/sensor/bme280/) sensor, that reports data.
 
   - This tutorial uses a dataset of plant moisture measurements, originally captured for our [Plant watering tutorial](/tutorials/projects/make-a-plant-watering-robot/) using an analog resistive soil moisture sensor connected to an analog-to-digital-converter (ADC).
     The ADC functionality was provided by the [`mcp300x-adc-sensor` module](https://app.viam.com/module/hazalmestci/mcp300x-adc-sensor) from the [Viam registry](https://app.viam.com/registry).
