@@ -617,8 +617,7 @@ We configured ours as an [Intel RealSense Camera](https://www.intelrealsense.com
 
 {{< alert title="Tip" color="tip" >}}
 
-You can alternatively use an [`ultrasonic` sensor](/components/sensor/ultrasonic/) configured as a camera.
-Attribute information for an `ultrasonic` [camera](/components/camera/) is the same as [for a sensor](/components/sensor/ultrasonic/).
+You can alternatively use an [`viam:ultrasonic:camera`](https://github.com/viam-modules/viam-ultrasonic) from the official viam module.
 
 {{< /alert >}}
 
