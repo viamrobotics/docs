@@ -262,9 +262,9 @@ The request includes the following headers:
 | `Min-Time-Received` | Indicates the earliest time a piece of data was received. |
 | `Max-Time-Received` | Indicates the latest time a piece of data was received. |
 
-## More examples
+## Next steps
 
-The [Monitor Job Site Helmet Usage with Computer Vision tutorial](/tutorials/projects/helmet/#configure-a-trigger-on-your-machine) uses triggers to send email notifications.
+To see an example project that uses triggers to send email notification, see the [Monitor Job Site Helmet Usage with Computer Vision tutorial](/tutorials/projects/helmet/#configure-a-trigger-on-your-machine).
 
 {{< cards >}}
 {{% card link="/tutorials/projects/helmet/" %}}
