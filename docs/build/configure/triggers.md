@@ -293,20 +293,20 @@ When a trigger occurs, Viam sends a HTTP request to the URL you specified for th
 The request includes the following headers:
 
 <!-- prettier-ignore -->
-| Header Key | Description |
-| ---------- | ----------- |
-| `Org-Id` | The ID of the organization that triggered the request. |
-| `Organization-Name` | The name of the organization that triggered the request. |
-| `Location-Id` | The location of the machine that triggered the request. |
-| `Location-Name` | The location of the machine that triggered the request. |
-| `Part-Id` |  The part of the machine that triggered the request. |
-| `Machine-Name` | The name of the machine that triggered the request. |
-| `Robot-Id` | The ID of the machine that triggered the request. |
-| `Component-Type` | The type of component for which data was ingested. Only for `part_data_ingested` triggers. |
-| `Component-Name` | The name of the component for which data was ingested. Only for `part_data_ingested` triggers. |
-| `Method-Name` | The name of the method from which data was ingested. Only for `part_data_ingested` triggers. |
-| `Min-Time-Received` | Indicates the earliest time a piece of data was received. |
-| `Max-Time-Received` | Indicates the latest time a piece of data was received. |
+| Header Key | Description | Trigger types |
+| ---------- | ----------- | ------------- |
+| `Org-Id` | The ID of the organization that triggered the request. | `part_data_ingested` |
+| `Organization-Name` | The name of the organization that triggered the request. | `part_online`, `part_offline` |
+| `Location-Id` | The location of the machine that triggered the request. | all |
+| `Location-Name` | The location of the machine that triggered the request. | `part_online`, `part_offline` |
+| `Part-Id` |  The part of the machine that triggered the request. | all |
+| `Machine-Name` | The name of the machine that triggered the request. | `part_online`, `part_offline` |
+| `Robot-Id` | The ID of the machine that triggered the request. | all |
+| `Component-Type` | The type of component for which data was ingested. | `part_data_ingested` |
+| `Component-Name` | The name of the component for which data was ingested. | `part_data_ingested` |
+| `Method-Name` | The name of the method from which data was ingested. Only for `part_data_ingested` triggers. | `part_data_ingested` |
+| `Min-Time-Received` | Indicates the earliest time a piece of data was received. | `part_data_ingested` |
+| `Max-Time-Received` | Indicates the latest time a piece of data was received. | `part_data_ingested` |
 
 ## Next steps
 
