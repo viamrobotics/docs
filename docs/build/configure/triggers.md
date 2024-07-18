@@ -29,38 +29,35 @@ To configure a trigger:
 
 2. Name the trigger and click **Create**.
 
-3. Enter your preferred trigger type (for example, "**Data has been synced to the cloud**") into the field of the **Type** dropdown and select the type of event to trigger on.
-
-4. Follow the instructions depending on the type of trigger you want to implement:
+3. Select trigger **Type**.
+   For the respective type, configure the respective attributes:
 
 {{< tabs name="Types of Triggers" >}}
 {{% tab name="Data synced to cloud" %}}
 
-5. Select the types of data you want to trigger on from the dropdown.
-   Whenever any data of the type you select is synced from any component on your machine, the trigger will trigger.
+Select the data types for which the Trigger should send requests.
+Whenever data of the specified data types is ingested, a `POST` request will be sent.
 
 {{% alert title="Note" color="note" %}}
-Be sure to configure [data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/) for the relevant components.
+
+You must have [data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/) configured for the relevant components to use this trigger and the component must return the type of data you configure in the trigger's **Data Types**.
 For example, if you want to trigger a trigger on temperature readings, configure data capture and sync on your temperature sensor.
-Be aware that the component must return the type of data you configure in the trigger's **Data Types**.
 {{% /alert %}}
 
 {{% /tab %}}
 {{% tab name="Part is online" %}}
 
-5. While your part is online, the trigger action executes at a specified interval.
-   Edit the **Time between notifications** attribute to set this interval according to your preferences.
+Edit the **Time between notifications** attribute to set the interval at which this trigger will send `GET` requests when the part is online.
 
 {{% /tab %}}
 {{% tab name="Part is offline" %}}
 
-5. While your part is offline, the trigger action executes at a specified interval.
-   Edit the **Time between notifications** attribute to set this interval according to your preferences.
+Edit the **Time between notifications** attribute to set the interval at which this trigger will send `GET` requests when the part is offline.
 
 {{% /tab %}}
 {{< /tabs >}}
 
-6. Replace the **URL** value with the URL of your cloud function or lambda.
+4. Replace the **URL** value with the URL of your cloud function or lambda.
 
    ![The trigger configured with an example URL in the Viam app.](/build/configure/trigger-configured.png)
 
@@ -89,14 +86,7 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
           "value": "https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws",
           "seconds_between_notifications": <number of seconds>
         }
-      ],
-      "headers": {
-        "Component-Type": "<Component type>",
-        "Component-Name": "<Component name>",
-        "Method-Name": "<Method name>",
-        "Min-Time-Received": "<Minimum time>",
-        "Max-Time-Received": "<Maximum time>"
-      }
+      ]
     }
   ]
 ```
@@ -207,8 +197,17 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
 {{% /tab %}}
 {{< /tabs >}}
 
-7. Write your cloud function or lambda to process the request from `viam-server`.
-   The following example function sends a message with a machine's details, such as robot and location IDs, when it receives a request:
+The following attributes are available for triggers:
+
+<!-- prettier-ignore -->
+| Name | Type | Required? | Description |
+| ---- | ---- | --------- | ----------- |
+| `name` | string | **Required** | The name of the trigger |
+| `event` |  object | **Required** | The trigger event object: <ul><li>`type`: The type of the event to trigger on. Options: `"part_online"`, `"part_offline"`, `"part_data_ingested"`.</li><li>`data_types`: Required with `type` `"part_data_ingested"`. The data types that trigger the event. Options: `"binary"`, `"tabular"`, `"file"`, `"unspecified"`.</li></ul> |
+| `notifications` |  object | **Required** | The notifications object: <ul><li>`type`: The type of the notification. Options: `"webhook"`.</li><li>`value`: The URL to send the request to.</li><li>`seconds_between_notifications`: The interval between notifications in seconds.</li></ul> |
+
+5. Write your cloud function or lambda to process the request from `viam-server`.
+   The following example function prints the received headers:
 
    ```python {class="line-numbers linkable-line-numbers"}
    import functions_framework
@@ -231,55 +230,37 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
       "Data-Type": request.args['data_type'] if 'data_type' in request.args else 'no value'
      }
 
-     trigger_url = "<paste in your own trigger URL>"
-     headers = {}
+     print(payload)
 
-     response = requests.post(trigger_url, json=payload, headers=headers)
-
-     request_json = request.get_json(silent=True)
-     request_args = request.args
-
-     return 'Sent request to {}'.format(trigger_url)
+     return 'Received headers: {}'.format(payload)
 
    ```
 
-## `attributes`
+## Returned headers
 
-To configure a trigger using JSON, you need to populate the `triggers` array with the appropriate attributes.
+When a trigger occurs, Viam sends a HTTP request to the URL you specified for the trigger:
 
-The attributes required to configure a trigger are outlined in the table below:
+<!-- prettier-ignore -->
+| Trigger type | HTTP Method |
+| ------------ | ----------- |
+| `part_data_ingested` | POST |
+| `part_online` | GET |
+| `part_offline` | GET |
 
-| Name                            | Required     | Parent Object   | Description                                   | Type             | Usage example |
-| ------------------------------- | ------------ | --------------- | --------------------------------------------- | ---------------- | ------------- |
-| `name`                          | **Required** | `triggers`      | The name of the trigger                       | string           |               |
-| `type`                          | **Required** | `event`         | The type of event to trigger on               | string           |               |
-| `data_types`                    | **Required** | `data_ingested` | The data types that trigger the event         | array of strings |               |
-| `type`                          | **Required** | `notifications` | The type of notification to send              | string           |               |
-| `value`                         | **Required** | `notifications` | The URL to send the notification to           | string           |               |
-| `seconds_between_notifications` | Optional     | `notifications` | The interval between notifications in seconds | integer          |               |
+The request includes the following headers:
 
-## `headers`
-
-You can populate the `headers` object in your JSON config to include additional context and data in your trigger configurations.
-
-The `headers` object can include details such as the part of the machine involved, the type of component, the method being called, and the time range of the data.
-
-When you configure your cloud function or lambda, you can access the headers to get detailed information about the event.
-For example, the `Part-ID` header can be used to identify which specific part triggered the action, and the `Method-Name` header can identify which method was called.
-
-The headers available for use are outlined below:
-
-| Header Key          | Description                                               | Usage Example                                                      | Type   | Required |
-| ------------------- | --------------------------------------------------------- | ------------------------------------------------------------------ | ------ | -------- |
-| `Part-ID`           | Identifies the specific part of the machine.              | Isolate actions to a specific part of the machine.                 | string | Optional |
-| `Robot-ID`          | Identifies the machine as a whole.                        | Useful for actions that pertain to the machine's entire system.    | string | Optional |
-| `Location-ID`       | Identifies the location of the machine.                   | Location-based triggers or actions.                                | string | Optional |
-| `Org-ID`            | Identifies the organization.                              | Organizational-level actions and tracking.                         | string | Optional |
-| `Component-Type`    | Indicates the type of component involved.                 | Necessary for actions that depend on the component type.           | string | Optional |
-| `Component-Name`    | Names the specific component.                             | Target the exact component for the action.                         | string | Optional |
-| `Method-Name`       | Identifies the method being called.                       | Useful for actions triggered by specific methods.                  | string | Optional |
-| `Min-Time-Received` | Indicates the earliest time a piece of data was received. | Useful for actions that depend on data timing.                     | string | Optional |
-| `Max-Time-Received` | Indicates the latest time a piece of data was received.   | Similar to `Min-Time-Received`, useful for time-dependent actions. | string | Optional |
+<!-- prettier-ignore -->
+| Header Key | Description |
+| ---------- | ----------- |
+| `Part-ID` |  The part of the machine that triggered the request. |
+| `Robot-ID` | The machine that triggered the request. |
+| `Location-ID` | The location of the machine that triggered the request. |
+| `Org-ID` | The organization that triggered the request. |
+| `Component-Type` | The type of component for which data was ingested. Only for `part_data_ingested` triggers. |
+| `Component-Name` | The name of the component for which data was ingested. Only for `part_data_ingested` triggers. |
+| `Method-Name` | The name of the method from which data was ingested. Only for `part_data_ingested` triggers. |
+| `Min-Time-Received` | Indicates the earliest time a piece of data was received. |
+| `Max-Time-Received` | Indicates the latest time a piece of data was received. |
 
 ## More examples
 
