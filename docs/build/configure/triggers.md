@@ -86,7 +86,7 @@ To configure your trigger by using **JSON** mode instead of **Builder** mode, pa
       "notifications": [
         {
           "type": "webhook",
-          "value": "<https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws>",
+          "value": "https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws",
           "seconds_between_notifications": <number of seconds>
         }
       ],
