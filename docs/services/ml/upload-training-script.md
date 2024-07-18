@@ -292,7 +292,7 @@ def save_tflite_classification(
     filename = os.path.join(model_dir, f"{model_name}.tflite")
     with open(filename, "wb") as f:
         f.write(tflite_model)
-
+```
 
 When you submit a training job with this training script, this function saves the model outputs to the `model_output_directory` in the cloud.
 Once the training job is complete, Viam looks at that directory and creates a package with all of the contents of the directory, creating or updating a registry item for the ML model.
@@ -305,7 +305,7 @@ Write this into the top level code of <file>training.py</file>, which is execute
 
 For the [example classification training script](https://app.viam.com/packages/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb/custom-training-classification/ml_training/latest/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb) that trains a classification model using TensorFlow and Keras, `__main__` looks like this:
 
-python {class="line-numbers linkable-line-numbers"}
+```python {class="line-numbers linkable-line-numbers"}
 if __name__ == "__main__":
     DATA_JSON, MODEL_DIR = parse_args()
     # Set up compute device strategy. If GPUs are available, they will be used
