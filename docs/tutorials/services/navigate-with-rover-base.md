@@ -617,7 +617,7 @@ We configured ours as an [Intel RealSense Camera](https://www.intelrealsense.com
 
 {{< alert title="Tip" color="tip" >}}
 
-You can alternatively use an [`viam:ultrasonic:camera`](https://github.com/viam-modules/viam-ultrasonic) from the official viam module.
+You can alternatively use [`viam:ultrasonic:camera`](https://github.com/viam-modules/viam-ultrasonic) from the official viam module.
 
 {{< /alert >}}
 
