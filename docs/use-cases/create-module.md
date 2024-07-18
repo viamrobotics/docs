@@ -252,7 +252,7 @@ Your new resource model must either:
 Otherwise, your new class will not instantiate.
 
 Next, create a file that will define your new resource model.
-This file will inherit from the existing class for your resource type, implement - or raise a `NotImplementedError()` for - each built-in method for that class, and define any new functionality you want to include as part of your model.
+This file will inherit from the existing class for your resource type, implement each built-in method for that class (or raise a `NotImplementedError()` for it), and define any new functionality you want to include as part of your model.
 
 For example, the following file, `my_base.py`:
 
@@ -261,8 +261,7 @@ For example, the following file, `my_base.py`:
 - does not implement several built-in methods, including `get_properties()` and `set_velocity()`, but instead raises a `NotImplementedError` error in the body of those functions.
   This prevents these methods from being used by new base components that use this modular resource, but meets the requirement that all built-in methods either be defined or raise a `NotImplementedError()` error, to ensure that the new `MyBase` class successfully instantiates.
 
-<details>
-  <summary>Click to view sample code for <file>my_base.py</file></summary>
+{{< expand "Click to view sample code for my_base.py" >}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 from typing import ClassVar, Mapping, Sequence, Any, Dict, Optional, cast
@@ -429,8 +428,7 @@ class MyBase(Base, Reconfigurable):
             self.right.is_powered(extra=extra, timeout=timeout)[0]
 ```
 
-</details>
-<br>
+{{< /expand >}}
 
 When implementing built-in methods from the Viam Python SDK in your model, be sure your implementation of those methods returns any values designated in the built-in function's return signature, typed correctly.
 For example, the `is_moving()` implementation in the example code above returns a `bool` value, which matches the return value of the built-in `is_moving()` function as defined in the Viam Python SDK in the file [`base.py`](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/base/base.py).
@@ -477,8 +475,7 @@ For example, the following file, `mybase.go`:
 - does not implement several built-in methods, including `MoveStraight()` and `SetVelocity()`, but instead returns an `errUnimplemented` error in the body of those methods.
   This prevents these methods from being used by new base components that use this modular resource, but meets the requirement that all built-in methods either be defined or return an `errUnimplemented` error, to ensure that the new `mybase` package successfully instantiates.
 
-<details>
-  <summary>Click to view sample code for <file>mybase.go</file></summary>
+{{< expand "Click to view sample code for mybase.go" >}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Package mybase implements a base that only supports SetPower (basic forward/back/turn controls), IsMoving (check if in motion), and Stop (stop all motion).
@@ -668,8 +665,7 @@ func (b *myBase) Close(ctx context.Context) error {
 }
 ```
 
-</details>
-<br>
+{{< /expand >}}
 
 {{< alert title="Note" color="note" >}}
 For an example featuring a sensor, see [MCP3004-8](https://github.com/mestcihazal/mcp3004-8-go).
@@ -729,8 +725,7 @@ For example, the files below define the new `MyBase` class and its constituent f
 
 Note that the model triplet itself, `acme:my-custom-base-repo:mybase` in this example, is defined in the entry point (main program) file `main.cpp`, which is described in the next section.
 
-<details>
-  <summary>Click to view sample code for the <file>my_base.hpp</file> header file</summary>
+{{< expand "Click to view sample code for the my_base.hpp header file" >}}
 
 ```cpp {class="line-numbers linkable-line-numbers"}
 #pragma once
@@ -782,10 +777,9 @@ class MyBase : public Base {
 };
 ```
 
-</details>
-<br>
-<details>
-  <summary>Click to view sample code for the <file>my_base.cpp</file> source file</summary>
+{{< /expand >}}
+
+{{< expand "Click to view sample code for the my_base.cpp source file" >}}
 
 ```cpp {class="line-numbers linkable-line-numbers"}
 #include "my_base.hpp"
@@ -913,8 +907,7 @@ Base::properties MyBase::get_properties(const AttributeMap& extra) {
 }
 ```
 
-</details>
-<br>
+{{< /expand >}}
 
 When implementing built-in functions from the Viam C++ SDK in your model, be sure your implementation of those functions returns any values designated in the built-in function's return signature, typed correctly.
 For example, the `set_power()` implementation in the example code above returns three values of type `Vector3`, `Vector3`, `AttributeMap`, which matches the return values of the built-in `set_power()` function as defined in the Viam C++ SDK in the file [`base.hpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base.hpp).
@@ -947,8 +940,7 @@ Create a <file>main.py</file> file to serve as the module's entry point file, wh
 For example, the following `main.py` file serves as the entry point file for the `MyBase` custom model.
 It imports the `MyBase` model from the `my_base.py` file that provides it, and defines a `main()` function that registers it.
 
-<details>
-  <summary>Click to view sample code for <file>main.py</file></summary>
+{{< expand "Click to view sample code for main.py" >}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -978,7 +970,7 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-</details>
+{{< /expand >}}
 
 {{% /tab %}}
 {{% tab name="Go"%}}
@@ -992,8 +984,7 @@ Create a <file>main.go</file> file to serve as the module's entry point file, wh
 For example, the following `main.go` file serves as the entry point file for the `mybase` custom model.
 It imports the `mybase` model from the `my_base.go` file that provides it, and defines a `main()` function that registers it.
 
-<details>
-  <summary>Click to view sample code for <file>main.go</file></summary>
+{{< expand "Click to view sample code for main.go" >}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Package main is a module which serves the mybase custom model.
@@ -1042,7 +1033,7 @@ func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (er
 }
 ```
 
-</details>
+{{< /expand >}}
 
 {{% /tab %}}
 {{% tab name="C++" %}}
@@ -1056,8 +1047,7 @@ Create a <file>main.cpp</file> file to serve as the module's entry point file, w
 For example, the following `main.cpp` file serves as the entry point file for the `mybase` custom model.
 It imports the `mybase` model implementation from the `my_base.hpp` file that provides it, declares the model triplet `acme:my-custom-base-repo:mybase`, and defines a `main()` function that registers it.
 
-<details>
-  <summary>Click to view sample code for <file>main.cpp</file></summary>
+{{< expand "Click to view sample code for main.cpp" >}}
 
 ```cpp {class="line-numbers linkable-line-numbers"}
 #include <memory>
@@ -1103,12 +1093,12 @@ int main(int argc, char** argv) {
 };
 ```
 
-</details>
+{{< /expand >}}
 
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Configure logging
+#### (Optional) Configure logging
 
 If desired, you can configure your module to output log messages to the [Viam app](https://app.viam.com/).
 Log messages sent to the Viam app appear under the [**LOGS** tab](/cloud/machines/#logs) for your machine in an easily-parsable and searchable manner.

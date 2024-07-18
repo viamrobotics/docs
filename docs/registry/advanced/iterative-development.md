@@ -80,7 +80,7 @@ If you are developing a module for the same target architecture as your developm
 
 1. Repeat steps 6 - 10 to continue developing your module, as needed.
    Remember to check the **LOGS** tab each time to verify that the module registered successfully, and to troubleshoot any error or warning messages.
-   If you haven't already, you can [add custom log messages to your code](/use-cases/create-module/#configure-logging), which appear under the **LOGS** tab to assist with troubleshooting.
+   If you haven't already, you can [add custom log messages to your code](/use-cases/create-module/#optional-configure-logging), which appear under the **LOGS** tab to assist with troubleshooting.
 
 {{% /tab %}}
 {{% tab name="Sync Code and Test Remotely" %}}
@@ -205,7 +205,7 @@ If you are developing a module for a different target architecture than your dev
 
 1. Repeat steps 11 - 15 to continue developing your module, as needed.
    Remember to check the **LOGS** tab each time to verify that the module registered successfully, and to troubleshoot any error or warning messages.
-   If you haven't already, you can [add custom log messages to your code](/use-cases/create-module/#configure-logging), which appear under the **LOGS** tab to assist with troubleshooting.
+   If you haven't already, you can [add custom log messages to your code](/use-cases/create-module/#optional-configure-logging), which appear under the **LOGS** tab to assist with troubleshooting.
 
 {{% /tab %}}
 {{% /tabs %}}
