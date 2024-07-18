@@ -519,6 +519,10 @@ END MARKETING CSS
   margin-bottom: 0rem;
 }
 
+.hover-card.link-with-icon > a > div > p {
+  align-content: center;
+}
+
 // adjust for cards that only have a link and an icon
 
 .hover-card.link-with-icon > a {
