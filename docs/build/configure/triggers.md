@@ -209,32 +209,75 @@ The following attributes are available for triggers:
 5. Write your cloud function or lambda to process the request from `viam-server`.
    The following example function prints the received headers:
 
-   ```python {class="line-numbers linkable-line-numbers"}
-   import functions_framework
-   import requests
-   import time
+   {{< tabs >}}
+{{% tab name="Flask" %}}
 
-   @functions_framework.http
-   def hello_http(request):
-     payload = {
-       "Org-ID": request.headers['org-id'] if 'org-id' in request.headers else 'no value',
-       "Location-ID": request.headers['location-id'] if 'location-id' in request.headers else 'no value',
-       "Part-ID": request.headers['part-id'] if 'part-id' in request.headers else 'no value',
-       "Robot-ID": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value',
-       "Component-Type": request.headers['component-type'] if 'component-type' in request.headers else 'no value',
-       "Component-Name": request.headers['component-name'] if 'component-name' in request.headers else 'no value',
-       "Method-Name": request.headers['method-name'] if 'method-name' in request.headers else 'no value',
-       "Min-Time-Received": request.headers['min-time-received'] if 'min-time-received' in request.headers else 'no value',
-       "Max-Time-Received": request.headers['max-time-received'] if 'max-time-received' in request.headers else 'no value',
+```python {class="line-numbers linkable-line-numbers" }
+from flask import Flask, request
 
-      "Data-Type": request.args['data_type'] if 'data_type' in request.args else 'no value'
-     }
+app = Flask(__name__)
 
-     print(payload)
+@app.route("/", methods=['GET', 'POST'])
+def hello_http_get():
+    print(request.headers)
+    payload = {
+        "Org-Id": request.headers['org-id'] if 'org-id' in request.headers else 'no value',
+        "Organization-Name": request.headers['organization-name'] if 'organization-name' in request.headers else 'no value',
+        "Location-Id": request.headers['location-id'] if 'location-id' in request.headers else 'no value',
+        "Location-Name": request.headers['location-name'] if 'location-name' in request.headers else 'no value',
+        "Part-Id": request.headers['part-id'] if 'part-id' in request.headers else 'no value',
+        "Part-Name": request.headers['part-name'] if 'part-name' in request.headers else 'no value',
+        "Robot-Id": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value',
+        "Machine-Name": request.headers['machine-name'] if 'machine-name' in request.headers else 'no value',
+        "Component-Type": request.headers['component-type'] if 'component-type' in request.headers else 'no value',
+        "Component-Name": request.headers['component-name'] if 'component-name' in request.headers else 'no value',
+        "Method-Name": request.headers['method-name'] if 'method-name' in request.headers else 'no value',
+        "Min-Time-Received": request.headers['min-time-received'] if 'min-time-received' in request.headers else 'no value',
+        "Max-Time-Received": request.headers['max-time-received'] if 'max-time-received' in request.headers else 'no value',
+        "Data-Type": request.args['data_type'] if 'data_type' in request.args else 'no value'
+      }
+    print(payload)
 
-     return 'Received headers: {}'.format(payload)
+    return payload
 
-   ```
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080)
+```
+
+{{% /tab %}}
+{{% tab name="functions_framework" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+import functions_framework
+import requests
+import time
+
+@functions_framework.http
+def hello_http(request):
+    payload = {
+        "Org-Id": request.headers['org-id'] if 'org-id' in request.headers else 'no value',
+        "Organization-Name": request.headers['organization-name'] if 'organization-name' in request.headers else 'no value',
+        "Location-Id": request.headers['location-id'] if 'location-id' in request.headers else 'no value',
+        "Location-Name": request.headers['location-name'] if 'location-name' in request.headers else 'no value',
+        "Part-Id": request.headers['part-id'] if 'part-id' in request.headers else 'no value',
+        "Part-Name": request.headers['part-name'] if 'part-name' in request.headers else 'no value',
+        "Robot-Id": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value',
+        "Machine-Name": request.headers['machine-name'] if 'machine-name' in request.headers else 'no value',
+        "Component-Type": request.headers['component-type'] if 'component-type' in request.headers else 'no value',
+        "Component-Name": request.headers['component-name'] if 'component-name' in request.headers else 'no value',
+        "Method-Name": request.headers['method-name'] if 'method-name' in request.headers else 'no value',
+        "Min-Time-Received": request.headers['min-time-received'] if 'min-time-received' in request.headers else 'no value',
+        "Max-Time-Received": request.headers['max-time-received'] if 'max-time-received' in request.headers else 'no value',
+        "Data-Type": request.args['data_type'] if 'data_type' in request.args else 'no value'
+    }
+    print(payload)
+
+    return 'Received headers: {}'.format(payload)
+```
+
+{{% /tab %}}
+  {{< /tabs >}}
 
 ## Returned headers
 
@@ -252,10 +295,13 @@ The request includes the following headers:
 <!-- prettier-ignore -->
 | Header Key | Description |
 | ---------- | ----------- |
-| `Part-ID` |  The part of the machine that triggered the request. |
-| `Robot-ID` | The machine that triggered the request. |
-| `Location-ID` | The location of the machine that triggered the request. |
-| `Org-ID` | The organization that triggered the request. |
+| `Org-Id` | The ID of the organization that triggered the request. |
+| `Organization-Name` | The name of the organization that triggered the request. |
+| `Location-Id` | The location of the machine that triggered the request. |
+| `Location-Name` | The location of the machine that triggered the request. |
+| `Part-Id` |  The part of the machine that triggered the request. |
+| `Machine-Name` | The name of the machine that triggered the request. |
+| `Robot-Id` | The ID of the machine that triggered the request. |
 | `Component-Type` | The type of component for which data was ingested. Only for `part_data_ingested` triggers. |
 | `Component-Name` | The name of the component for which data was ingested. Only for `part_data_ingested` triggers. |
 | `Method-Name` | The name of the method from which data was ingested. Only for `part_data_ingested` triggers. |
