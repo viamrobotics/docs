@@ -144,7 +144,7 @@ import (
 
   "go.viam.com/rdk/logging"
   "go.viam.com/rdk/robot/client"
-  "go.viam.com/utils/rpc"
+  "go.viam.com/rdk/utils"
   "go.viam.com/rdk/components/motor")
 
 func main() {
@@ -154,11 +154,11 @@ func main() {
     // Replace "<YOUR MACHINE ADDRESS>" (including brackets) with your machine's address
     "<YOUR MACHINE ADDRESS>",
     logger,
-    client.WithDialOptions(rpc.WithEntityCredentials(
+    client.WithDialOptions(utils.WithEntityCredentials(
       // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
       "<API-KEY-ID>",
-      rpc.Credentials{
-        Type:    rpc.CredentialsTypeAPIKey,
+      utils.Credentials{
+        Type:    utils.CredentialsTypeAPIKey,
         // Replace "<API-KEY>" (including brackets) with your machine's API key
         Payload: "<API-KEY>",
       })),

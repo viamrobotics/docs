@@ -71,7 +71,6 @@ import (
   "go.viam.com/rdk/logging"
   "go.viam.com/rdk/robot/client"
   "go.viam.com/rdk/utils"
-  "go.viam.com/utils/rpc"
 )
 
 func main() {
@@ -80,12 +79,12 @@ func main() {
       context.Background(),
       "ADDRESS FROM THE VIAM APP",
       logger,
-      client.WithDialOptions(rpc.WithEntityCredentials(
+      client.WithDialOptions(utils.WithEntityCredentials(
       // Replace "<API-KEY-ID>" (including brackets) with your machine's
       // API Key ID
       "<API-KEY-ID>",
-      rpc.Credentials{
-          Type:    rpc.CredentialsTypeAPIKey,
+      utils.Credentials{
+          Type:    utils.CredentialsTypeAPIKey,
         // Replace "<API-KEY>" (including brackets) with your machine's API key
         Payload: "<API-KEY>",
     })),
