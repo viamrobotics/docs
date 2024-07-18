@@ -44,11 +44,11 @@ You can also watch this guide to creating a vision service module:
 
 ## Write a module
 
-Generally, to write a module, you:
+Generally, to write a module, you will complete the following steps:
 
-1. [Define a new resource model](#define-a-new-resource-model) to define all the capabilities of your model.
-1. [Write an entry point (main program) file](#write-an-entry-point-main-program-file) to serve as the central interface to those new capabilities.
-1. [Compile or package](#compile-or-package-your-module) the model definition file or files, main program file, and any supporting files into a single executable file (a module) that can be run by `viam-server`.
+1. Define a new resource model to define all the capabilities of your model.
+1. Write an entry point (main program) file to serve as the central interface to those new capabilities.
+1. Compile or package the model definition file or files, main program file, and any supporting files into a single executable file (a module) that can be run by `viam-server`.
 
 While you can certainly combine the resource model definition and the main program code into a single file if desired (for example, a single `main.py` program that includes both the model definition and the `main()` program that uses it), this guide will use separate files for each.
 
@@ -64,47 +64,53 @@ For example, you could extend the [camera component API](/components/camera/#api
 {{% alert title=Note color="note" %}}
 If you want to write a module to extend support to a new type of component or service that is relatively unique, consider using the generic API for your resource type to build your own API:
 
-- If you are working with a component that doesn't fit into any of the existing [component APIs](/appendix/apis/#component-apis), you can use the [generic component](/components/generic/) to build your own component API.
-- If you are designing a service that doesn't fit into any of the existing [service APIs](/appendix/apis/#service-apis), you can use the [generic service](/services/generic/) to build your own service API.
+- If you are working with a component that doesn't fit into any of the existing component APIs, you can use the [generic component](/components/generic/) to build your own component API.
+- If you are designing a service that doesn't fit into any of the existing service APIs, you can use the [generic service](/services/generic/) to build your own service API.
+- It is also possible to [define an entirely new API](/registry/advanced/create-subtype/), but this is even more advanced than using `generic`.
 
 Most module use cases, however, benefit from extending an existing API instead of `generic`.
 {{% /alert %}}
 
 ##### Valid API identifiers
 
-Each existing component or service [API](/appendix/apis/) has a unique identifier in the form of a colon-delimited triplet.
+Each existing component or service API has a unique identifier in the form of a colon-delimited triplet.
 You will use this {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}} when creating your new model, to indicate which API it extends.
+
+The API namespace triplet is the same for all built-in and modular models that implement a given API.
+For example, every model of motor built into Viam, as well as every custom model of motor provided by a module, all use the same API namespace triplet `rdk:component:motor` to indicate that they implement the [motor API](/components/motor/#api).
+
 The three pieces of the API namespace triplet are as follows:
 
 {{< tabs >}}
 {{% tab name="Component" %}}
 
 - `namespace`: `rdk`
+  - This indicates that the API you're implementing is one of the APIs defined in Viam's [Robot Development Kit (RDK) codebase](https://github.com/viamrobotics/rdk).
 - `type`: `component`
+  - This indicates that you're creating a module to support a hardware component, not an abstracted software service.
 - `subtype`: any one of [these component proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/component), for example `motor` if you are creating a new model of motor
 
 {{% /tab %}}
 {{% tab name="Service" %}}
 
 - `namespace`: `rdk`
+  - This indicates that the API you're implementing is one of the APIs defined in Viam's [Robot Development Kit (RDK) codebase](https://github.com/viamrobotics/rdk).
 - `type`: `service`
+  - This indicates that you're creating a module to support some sort of software service, not a hardware component.
 - `subtype`: any one of [these service proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/service), for example `vision` if you are creating a new model of vision service
 
 {{% /tab %}}
 {{< /tabs >}}
 
-The API namespace triplet is the same for all built-in and modular models that implement a given API.
-For example, every model of motor built into Viam, as well as every custom model of motor provided by a module, all use the same API namespace triplet.
-
 #### Name your new resource model
 
-In addition to figuring out which existing API namespace triplet to use when creating your module, you need to decide on a triplet unique to your model.
+In addition to determining which existing API namespace triplet to use when creating your module, you need to decide on a separate triplet unique to your model.
 
 A resource model is identified by a unique name, often called the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, using the format: `namespace:repo-name:model-name`, where:
 
 - `namespace` is the [namespace of your organization](/cloud/organizations/#create-a-namespace-for-your-organization).
   - For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:repo-name:mybase`.
-    If you do not intend to [upload your module](/registry/upload/) to the [Viam registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
+    If you do not intend to [upload your module](#upload-your-module-to-the-modular-resource-registry) to the [Viam registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
 - `repo-name` is the code repository (GitHub repo) that houses your module code.
   - Ideally, your `repo-name` should describe the common functionality provided across the model or models of that module.
 - `model-name` is the name of the new resource model that your module will provide.
@@ -1612,7 +1618,7 @@ To use a local module on your machine, first add its module to your machine's co
 1. Enter the module's **Executable path**.
    This path must be the absolute path on your machine's filesystem to either:
 
-   - the module's [executable file](/registry/create/#compile-or-package-your-module), such as `run.sh` or a compiled binary.
+   - the module's [executable file](/use-cases/create-module/#compile-or-package-your-module), such as `run.sh` or a compiled binary.
    - a [packaged tarball](https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_tar.html) of your module, ending in `.tar.gz` or `.tgz`.
      If you are providing a tarball file in this field, be sure that your packaged tarball contains your module's [`meta.json` file](/cli/#the-metajson-file) within it.
 
@@ -1748,46 +1754,46 @@ If you later wish to make your module public, you can use the [`viam module upda
 
     {{< expand "Click to view example meta.json with build object" >}}
 
-    ```json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "module_id": "acme:my-module",
+  "visibility": "public",
+  "url": "https://github.com/<my-repo-name>/my-module",
+  "description": "An example custom module.",
+  "models": [
     {
-      "module_id": "acme:my-module",
-      "visibility": "public",
-      "url": "https://github.com/<my-repo-name>/my-module",
-      "description": "An example custom module.",
-      "models": [
-        {
-          "api": "rdk:component:generic",
-          "model": "acme:demo:my-model"
-        }
-      ],
-      "build": {
-        "path": "dist/archive.tar.gz", // optional - path to your built module
-        "build": "./build.sh", // command that will build your module
-        "arch": ["linux/amd64", "linux/arm64"] // architecture(s) to build for
-      },
-      "entrypoint": "dist/main" // path to executable
+      "api": "rdk:component:generic",
+      "model": "acme:demo:my-model"
     }
-    ```
+  ],
+  "build": {
+    "path": "dist/archive.tar.gz", // optional - path to your built module
+    "build": "./build.sh", // command that will build your module
+    "arch": ["linux/amd64", "linux/arm64"] // architecture(s) to build for
+  },
+  "entrypoint": "dist/main" // path to executable
+}
+```
 
     {{< /expand >}}
 
     {{< expand "Click to view example meta.json without build object" >}}
 
-    ```json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "module_id": "acme:my-module",
+  "visibility": "public",
+  "url": "https://github.com/<my-repo-name>/my-module",
+  "description": "An example custom module.",
+  "models": [
     {
-      "module_id": "acme:my-module",
-      "visibility": "public",
-      "url": "https://github.com/<my-repo-name>/my-module",
-      "description": "An example custom module.",
-      "models": [
-        {
-          "api": "rdk:component:generic",
-          "model": "acme:demo:my-model"
-        }
-      ],
-      "entrypoint": "my-module.sh" // path to executable
+      "api": "rdk:component:generic",
+      "model": "acme:demo:my-model"
     }
-    ```
+  ],
+  "entrypoint": "my-module.sh" // path to executable
+}
+```
 
     {{< /expand >}}
 
@@ -1810,7 +1816,7 @@ For more information, see [Naming your model](/registry/#naming-your-model-names
    tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
    ```
 
-   where `<PATH-TO-EXECUTABLE>` is the [packaged executable](/registry/create/#compile-or-package-your-module) that runs the module at the [entry point](/registry/create/#write-an-entry-point-main-program-file).
+   where `<PATH-TO-EXECUTABLE>` is the [packaged executable](/use-cases/create-module/#compile-or-package-your-module) that runs the module at the [entry point](/use-cases/create-module/#write-an-entry-point-main-program-file).
    If using PyInstaller, by default this would be `dist/main`.
 
    For a Python module built using the `venv` approach, the command might look like this:
@@ -1819,7 +1825,7 @@ For more information, see [Naming your model](/registry/#naming-your-model-names
    tar -czf module.tar.gz run.sh requirements.txt src
    ```
 
-   Where `run.sh` is your [entrypoint file](/registry/create/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/registry/create/#compile-or-package-your-module), and `src` is the directory that contains the source code of your module.
+   Where `run.sh` is your [entrypoint file](/use-cases/create-module/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/use-cases/create-module/#compile-or-package-your-module), and `src` is the directory that contains the source code of your module.
 
    Supply the path to the resulting archive file in the next step.
 
@@ -1928,7 +1934,7 @@ If you intend to make frequent code changes to your module, want to support a va
    tar -czf module.tar.gz <PATH-TO-EXECUTABLE>
    ```
 
-   Where `<PATH-TO-EXECUTABLE>` is your [packaged executable](/registry/create/#compile-or-package-your-module).
+   Where `<PATH-TO-EXECUTABLE>` is your [packaged executable](/use-cases/create-module/#compile-or-package-your-module).
 
    Supply the path to the resulting archive file in the next step.
 

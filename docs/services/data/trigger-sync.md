@@ -14,7 +14,7 @@ no_service: true
 You can use a {{< glossary_tooltip term_id="module" text="module" >}} to sync data only when a certain logic condition is met, instead of at a regular time interval.
 For example, if you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
 Or, you may want to trigger sync only when your machine detects an object of a certain color.
-The code for both of these examples is provided by the [trigger-sync-examples module](https://github.com/viam-labs/trigger-sync-examples-v2), and you can [create your own module](/registry/create/) if you want to use different logic.
+The code for both of these examples is provided by the [trigger-sync-examples module](https://github.com/viam-labs/trigger-sync-examples-v2), and you can [create your own module](/use-cases/create-module/) if you want to use different logic.
 
 {{% alert title="Note: How sync is triggered" color="note" %}}
 

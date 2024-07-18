@@ -291,7 +291,7 @@ To make your module accessible to `viam-server`, you must [add it as a local mod
 1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 1. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**, then **Local module**.
 1. Enter a **Name** for this instance of your modular resource, for example `my-custom-base-module`.
-1. Enter the [module's executable path](/registry/create/#compile-or-package-your-module).
+1. Enter the [module's executable path](/use-cases/create-module/#compile-or-package-your-module).
    This path must be the absolute path to the executable on your machine's filesystem.
    Add the path to where you downloaded the [compiled binary](https://github.com/viam-labs/tutorial-intermode/blob/main/intermode-base/intermode-model).
 1. Then, click the **Create** button, and click **Save** in the upper right corner to save your config.

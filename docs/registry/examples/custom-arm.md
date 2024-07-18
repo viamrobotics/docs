@@ -84,7 +84,7 @@ To create a custom arm model, code a module in Python with the module support li
 {{% alert title="Info" color="info" %}}
 
 This guide uses Viam's Python SDK to implement a custom arm module, but if you want to use the Go Client SDK, you can.
-Follow [this guide](/registry/create/#define-a-new-resource-model) and select **Go** on the code samples to learn how to code a modular arm in Go.
+Follow [this guide](/use-cases/create-module/#define-a-new-resource-model) and select **Go** on the code samples to learn how to code a modular arm in Go.
 
 {{% /alert %}}
 

@@ -23,7 +23,7 @@ Common use cases include:
 - Object classification, which enables machines to separate people, animals, plants, or other objects into predefined categories based on their characteristics, and to perform different actions based on the classes of objects.
 - Speech recognition, natural language processing, and speech synthesis, which enable machines to verbally communicate with us.
 
-For other use cases, consider [creating custom functionality with a module](/registry/create/).
+For other use cases, consider [creating custom functionality with a module](/use-cases/create-module/).
 
 Viam provides two services that enable machine learning capabilities: the [ML model](/services/ml/deploy/) service and the [Computer Vision](/services/vision/) service.
 

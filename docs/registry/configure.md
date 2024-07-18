@@ -373,8 +373,8 @@ You can add your own custom modules as local modules, or you can add pre-built m
 
 First determine the module you wish to add as a local module:
 
-- If you are adding your own custom module, be sure that you have followed the steps to [create your own module](/registry/create/) to code and compile your module and generate an executable.
-- If you are using a pre-built module, make sure you have installed the module and determined the filename of [the module's executable](/registry/create/#compile-or-package-your-module).
+- If you are adding your own custom module, be sure that you have followed the steps to [create your own module](/use-cases/create-module/) to code and compile your module and generate an executable.
+- If you are using a pre-built module, make sure you have installed the module and determined the filename of [the module's executable](/use-cases/create-module/#compile-or-package-your-module).
 
 Then, ensure that `viam-server` is able to find and run the executable:
 
@@ -386,7 +386,7 @@ Then, ensure that `viam-server` is able to find and run the executable:
   sudo chmod a+rx <path-to-your-module-executable>
   ```
 
-See the instructions to [compile your module into an executable](/registry/create/#compile-or-package-your-module) for more information.
+See the instructions to [compile your module into an executable](/use-cases/create-module/#compile-or-package-your-module) for more information.
 
 ### Add a local module
 
@@ -397,7 +397,7 @@ To add a local module on your machine, first add its module, then the component 
 1. Enter a **Name** for this instance of your module.
 1. Enter the module's **Executable path**.
    This path must be the absolute path on your machine's filesystem to either:
-   - the module's [executable file](/registry/create/#compile-or-package-your-module), such as `run.sh` or a compiled binary.
+   - the module's [executable file](/use-cases/create-module/#compile-or-package-your-module), such as `run.sh` or a compiled binary.
    - a [packaged tarball](https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_tar.html) of your module, ending in `.tar.gz` or `.tgz`.
      If you are providing a tarball file in this field, be sure that your packaged tarball contains your module's [`meta.json` file](/cli/#the-metajson-file) within it.
 1. Then, click the **Create** button, and click **Save** in the upper right corner to save your config.
