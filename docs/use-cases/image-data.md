@@ -43,7 +43,7 @@ If you'd like to follow a more detailed tutorial, see [Selectively Capture Data 
 **1. Configure a camera**
 
 On your [machine's page](#prerequisites), configure any camera component.
-If you are nor sure what to use, start with a [webcam](/components/camera/webcam/).
+If you are not sure what to use, start with a [webcam](/components/camera/webcam/).
 
 {{% /tablestep %}}
 {{% tablestep link="/services/data/"%}}
@@ -70,7 +70,7 @@ For example, set it to `0.05` to capture an image every 20 seconds.
 
 Set the MIME type to your desired image format, for example `image/jpeg`.
 
-**Click save to start capturing data.**
+Click save to start capturing data.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -78,7 +78,7 @@ Set the MIME type to your desired image format, for example `image/jpeg`.
 **4. View data in the Viam app**
 
 {{< alert title="Wait until data appears" color="note" >}}
-Your data will sync at the specified sync interval, which may mean you have to wait for data to appear.
+Once you have saved your configuration changes, your data will sync at the specified sync interval, which may mean you have to wait and then refresh the page for data to appear.
 
 If no data appears after the sync interval, check the [**Logs**](/cloud/machines/#logs).
 {{< /alert >}}
