@@ -210,7 +210,7 @@ The following attributes are available for triggers:
    The following example function prints the received headers:
 
    {{< tabs >}}
-{{% tab name="Flask" %}}
+   {{% tab name="Flask" %}}
 
 ```python {class="line-numbers linkable-line-numbers" }
 from flask import Flask, request
@@ -277,7 +277,7 @@ def hello_http(request):
 ```
 
 {{% /tab %}}
-  {{< /tabs >}}
+{{< /tabs >}}
 
 ## Returned headers
 
