@@ -12,6 +12,8 @@ images: ["/icons/components/board.svg"]
 modulescript: true
 aliases:
   - "/components/board/"
+  - "/micro-rdk/board/"
+  - "/build/micro-rdk/board/"
 hide_children: true
 # SMEs: Gautham, Rand
 ---
@@ -42,13 +44,29 @@ If there is no board model for your board:
 
 {{< /alert >}}
 
-{{<resources api="rdk:component:board" type="board">}}
+To use your board component, check whether one of the following models supports it.
+
+For configuration information, click on the model name:
+
+{{< tabs >}}
+{{% tab name="RDK" %}}
+
+{{<resources api="rdk:component:board" type="board" no-intro="true">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
-### Micro-RDK
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
 
-If you are using the micro-RDK, navigate to [Micro-RDK Board](/build/micro-rdk/board/) for supported model information.
+<!-- prettier-ignore -->
+| Model | Description |
+| ----- | ----------- |
+| [`esp32`](esp32/) | An ESP32 microcontroller |
+
+{{% readfile "/static/include/micro-create-your-own.md" %}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Attribute configuration
 
@@ -100,6 +118,32 @@ import (
 The board component supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/board-table.md" >}}
+
+{{< alert title="micro-RDK Support" color="note" >}}
+The micro-RDK [board API](/components/board/#api) supports only the following client SDK API methods, which operate the same as in the full-featured RDK:
+
+- [`SetPWM()`](/components/board/#setpwm)
+- [`DoCommand()`](/components/board/#docommand)
+
+For `GPIOPin`s:
+
+- [`SetGPIO()`](/components/board/#setgpio)
+- [`GetGPIO()`](/components/board/#getgpio)
+- [`GetPWM()`](/components/board/#getpwm)
+- [`SetPWM()`](/components/board/#setpwm)
+- [`PWMFreq()`](/components/board/#pwmfrequency)
+- [`SetPWMFreq()`](/components/board/#setpwmfrequency)
+
+See [PWM signals on `esp32` pins](/build/micro-rdk/board/esp32/#pwm-signals-on-esp32-pins) for more information on setting PWM frequencies with `esp32` boards.
+
+For `Analog`s:
+
+- [`Read()`](/components/board/#read)
+
+For `DigitalInterrupt`s:
+
+- [`Value()`](/components/board/#value)
+{{< /alert >}}
 
 {{< readfile "/static/include/components/apis/generated/board.md" >}}
 

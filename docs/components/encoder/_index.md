@@ -12,6 +12,8 @@ no_list: true
 modulescript: true
 aliases:
   - "/components/encoder/"
+  - /micro-rdk/encoder/
+  - /build/micro-rdk/encoder/
 hide_children: true
 # SME: Rand
 ---
@@ -46,13 +48,30 @@ Most machines with an encoder need at least the following hardware:
 
 ## Supported models
 
-{{<resources api="rdk:component:encoder" type="encoder">}}
+To use your encoder component, check whether one of the following models supports it.
+
+For configuration information, click on the model name:
+
+{{< tabs >}}
+{{% tab name="RDK" %}}
+
+{{<resources api="rdk:component:encoder" type="encoder" no-intro="true">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
-### Micro-RDK
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
 
-If you are using the micro-RDK, navigate to [Micro-RDK Encoder](/build/micro-rdk/encoder/) for supported model information.
+<!-- prettier-ignore -->
+| Model | Description |
+| ----- | ----------- |
+| [`incremental`](incremental-micro-rdk/) | A two phase encoder, which can measure the speed and direction of rotation in relation to a given reference point |
+| [`single`](single-micro-rdk/) | A single pin "pulse output" encoder which returns its relative position but no direction |
+
+{{% readfile "/static/include/micro-create-your-own.md" %}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Control your encoder with Viam's client SDK libraries
 
@@ -92,6 +111,15 @@ import (
 The encoder component supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/encoder-table.md" >}}
+
+{{< alert title="micro-RDK Support" color="note" >}}
+The micro-RDK [encoder API](/components/encoder/#api) supports only the following supported client SDK API methods, which operate the same ways as those in the full-featured RDK:
+
+- [`ResetPosition()`](/components/encoder/#resetposition)
+- [`GetPosition()`](/components/encoder/#getposition)
+- [`GetProperties()`](/components/encoder/#getproperties)
+- [`DoCommand()`](/components/encoder/#docommand)
+{{< /alert >}}
 
 {{< readfile "/static/include/components/apis/generated/encoder.md" >}}
 

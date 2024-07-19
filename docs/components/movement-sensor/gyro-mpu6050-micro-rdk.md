@@ -7,6 +7,7 @@ description: "Configure an MPU-6050 movement sensor with a microcontroller."
 images: ["/icons/components/imu.svg"]
 aliases:
   - /micro-rdk/movement-sensor/gyro-mpu6050/
+micrordk_component: true
 # SMEs: Rand
 ---
 

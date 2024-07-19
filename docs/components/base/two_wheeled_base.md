@@ -9,6 +9,7 @@ tags: ["base", "components"]
 aliases:
   - /micro-rdk/base/esp32_wheeled_base/
   - /build/micro-rdk/base/esp32_wheeled_base/
+micrordk_component: true
 # SMEs: Gautham V.
 ---
 

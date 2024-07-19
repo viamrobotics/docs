@@ -7,6 +7,7 @@ description: "Configure brushed or brushless DC motors with a microcontroller."
 images: ["/icons/components/motor.svg"]
 aliases:
   - /micro-rdk/motor/gpio/
+micrordk_component: true
 # SMEs: Rand, James
 ---
 

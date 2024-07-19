@@ -12,6 +12,8 @@ no_list: true
 modulescript: true
 aliases:
   - /components/movement-sensor/
+  - /micro-rdk/movement-sensor/
+  - /build/micro-rdk/movement-sensor/
 # SME: Rand
 ---
 
@@ -34,13 +36,30 @@ Viam also supports generic [sensors](/components/sensor/) and [encoders](/compon
 
 ## Supported models
 
-{{<resources api="rdk:component:movement_sensor" type="movement_sensor">}}
+To use your movement sensor component, check whether one of the following models supports it.
+
+For configuration information, click on the model name:
+
+{{< tabs >}}
+{{% tab name="RDK" %}}
+
+{{<resources api="rdk:component:movement_sensor" type="movement_sensor" no-intro="true">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
-### Micro-RDK
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
 
-If you are using the micro-RDK, navigate to [Micro-RDK Movement Sensor](/build/micro-rdk/movement-sensor/) for supported model information.
+<!-- prettier-ignore -->
+| Model | Description |
+| ----- | ----------- |
+| [`accel-adxl345`](accel-adxl345-micro-rdk/) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer |
+| [`gyro-mpu6050`](gyro-mpu6050-micro-rdk/) | A gyroscope/accelerometer manufactured by TDK InvenSense |
+
+{{% readfile "/static/include/micro-create-your-own.md" %}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Control your movement sensor with Viam's client SDK libraries
 
@@ -87,6 +106,19 @@ You can run `GetProperties` on your sensor for a list of its supported methods.
 <!-- Please be sure to update this manual file if you are updating movement-sensor! -->
 
 {{< readfile "/static/include/components/apis/movement-sensor.md" >}}
+
+{{< alert title="micro-RDK Support" color="note" >}}
+The micro-RDK [movement sensor API](/components/movement-sensor/#api) supports only the following client SDK API methods, which operate the same as in the full-featured RDK:
+
+- [`GetReadings()`](/components/movement-sensor/#getreadings)
+- [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity)
+- [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity)
+- [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading)
+- [`GetPosition()`](/components/movement-sensor/#getposition)
+- [`GetProperties()`](/components/movement-sensor/#getproperties)
+- [`GetLinearAcceleration()`](/components/movement-sensor/#getlinearacceleration)
+- [`DoCommand()`](/components/movement-sensor/#docommand)
+{{< /alert >}}
 
 {{< readfile "/static/include/components/apis/generated/movement_sensor.md" >}}
 

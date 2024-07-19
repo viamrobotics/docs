@@ -12,6 +12,8 @@ no_list: true
 modulescript: true
 aliases:
   - "/components/servo/"
+  - /micro-rdk/servo/
+  - /build/micro-rdk/servo/
 hide_children: true
 # SME: #team-bucket
 ---
@@ -51,6 +53,30 @@ Check your device's data sheet and configure that type of servo as an [encoded m
 {{% /alert %}}
 
 ## Supported models
+
+To use your servo component, check whether one of the following models supports it.
+
+For configuration information, click on the model name:
+
+{{< tabs >}}
+{{% tab name="RDK" %}}
+
+{{<resources api="rdk:component:servo" type="servo" no-intro="true">}}
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
+
+<!-- prettier-ignore -->
+| Model | Description |
+| ----- | ----------- |
+| [`gpio`](gpio-micro-rdk/) | A hobby servo. |
+
+{{% readfile "/static/include/micro-create-your-own.md" %}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{<resources api="rdk:component:servo" type="servo">}}
 
@@ -94,6 +120,15 @@ import (
 The servo component supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/servo-table.md" >}}
+
+{{< alert title="micro-RDK Support" color="note" >}}
+The micro-RDK [servo API](/components/servo/#api) supports the following client SDK API methods, which operate the same as in the full-featured RDK:
+
+- [`Move()`](/components/servo/#move)
+- [`GetPosition()`](/components/servo/#getposition)
+- [`Stop()`](/components/servo/#stop)
+- [`DoCommand()`](/components/servo/#docommand)
+{{< /alert >}}
 
 {{< readfile "/static/include/components/apis/generated/servo.md" >}}
 

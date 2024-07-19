@@ -114,7 +114,7 @@
                   {{- end -}}
             {{- end -}}
             {{- if eq .Section "components" -}}
-                  {{- if and (and (ne .Parent.Title "Components") (not .Draft)) (not .Params.no_component) -}}
+                  {{- if and (and (and (ne .Parent.Title "Components") (not .Draft)) (not .Params.no_component)) (not .Params.micrordk_component) -}}
                   {{- if .Params.canonical -}}
                         {{- $.Scratch.Set "permalink" (printf "%s" .Params.canonical) -}}
                         {{- $.Scratch.Set "relpermalink" (printf "%s" .Params.canonical) -}}

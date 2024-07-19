@@ -12,6 +12,9 @@ no_list: true
 modulescript: true
 aliases:
   - "/components/generic/"
+  - /micro-rdk/generic/
+  - /build/micro-rdk/generic/
+
 hide_children: true
 # SMEs:
 ---
@@ -42,6 +45,16 @@ If you want to use most of an existing API but need just a few other functions, 
 {{<resources api="rdk:component:generic" type="generic">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### micro-RDK
+
+If your micro-RDK machine includes a resource that isn't a [base](/build/micro-rdk/base/), [board](/build/micro-rdk/board/),[encoder](/build/micro-rdk/encoder/), [movement sensor](/build/micro-rdk/movement-sensor/), [motor](/build/micro-rdk/motor/), or [servo](/build/micro-rdk/servo/), you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it as a custom model of the generic subtype.
+
+{{< alert title="Important" color="note" >}}
+The micro-RDK works differently from the RDK, so creating modular resources for it is different.
+Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) for information on how to create custom resources for your micro-RDK machine.
+You will need to [recompile and flash your ESP32 yourself](/get-started/installation/microcontrollers/development-setup/) instead of using Viam's prebuilt binary and installer.
+{{< /alert >}}
 
 ## Control your board with Viam's client SDK libraries
 
@@ -88,6 +101,12 @@ import (
 The generic component supports the following method:
 
 {{< readfile "/static/include/components/apis/generated/generic_component-table.md" >}}
+
+{{< alert title="micro-RDK Support" color="note" >}}
+The micro-RDK [generic API](/components/generic/#api) supports only the following client SDK API method, which operates the same as in the full-featured RDK:
+
+- [`DoCommand()`](/components/generic/#docommand)
+{{< /alert >}}
 
 {{< readfile "/static/include/components/apis/generated/generic_component.md" >}}
 

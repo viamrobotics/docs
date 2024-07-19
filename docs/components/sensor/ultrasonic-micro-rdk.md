@@ -7,6 +7,7 @@ description: "Configure an ultrasonic sensor."
 tags: ["sensor", "components", "ultrasonic"]
 icon: true
 images: ["/icons/components/sensor.svg"]
+micrordk_component: true
 # SME: Andrew Morrow
 ---
 
