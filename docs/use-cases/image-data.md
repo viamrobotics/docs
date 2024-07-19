@@ -77,11 +77,9 @@ Click save to start capturing data.
 {{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **4. View data in the Viam app**
 
-{{< alert title="Wait until data appears" color="note" >}}
 Once you have saved your configuration changes, your data will sync at the specified sync interval, which may mean you have to wait and then refresh the page for data to appear.
 
 If no data appears after the sync interval, check the [**Logs**](/cloud/machines/#logs).
-{{< /alert >}}
 
 Once you have synced images, you can [view those images in the Viam app](/services/data/view/) from the **DATA** tab in the top navigation bar.
 
