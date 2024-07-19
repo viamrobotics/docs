@@ -109,16 +109,16 @@ The following steps use the [`filtered_camera`](https://github.com/erh/filtered_
 {{< table >}}
 {{% tablestep link="/services/ml/deploy/"%}}
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
-**1. Add an ML model to your machine**
+**1. Add an ML model service to your machine**
 
-Configure an ML model service on your machine that is compatible with the ML model you want to use, for example [TFLite CPU](/services/ml/deploy/tflite_cpu/).
+Add an ML model service on your machine that is compatible with the ML model you want to use, for example [TFLite CPU](/services/ml/deploy/tflite_cpu/).
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/"%}}
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
-**2. Add an ML model to your machine**
+**2. Select a suitable ML model**
 
-From the **Model** dropdown, select an [existing model](https://app.viam.com/registry?type=ML+Model) you want to use, or click **Add new model** to upload your own.
+From the **Model** dropdown on the ML model service configuration panel, select an [existing model](https://app.viam.com/registry?type=ML+Model) you want to use, or click **Add new model** to upload your own.
 If you're not sure which model to add, you can add [`EfficientNet-ImageNet2012`](https://app.viam.com/ml-model/viam/EfficientNet-ImageNet2012) which can detect people and animals, among other things.
 
 {{% /tablestep %}}
