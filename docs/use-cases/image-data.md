@@ -147,7 +147,7 @@ Configure a `filtered-camera` component on your machine, following the [attribut
 {{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **5. Configure data capture and sync on the filtered camera**
 
-Configure data capture and sync just as you did before.
+Configure data capture and sync just as you did before for the physical camera.
 The filtered camera will only capture image data that passes the filters you configured in the previous step.
 
 Turn off data capture on your camera if you haven't already, so that you don't capture duplicate or unfiltered images.
