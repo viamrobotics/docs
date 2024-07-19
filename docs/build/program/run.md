@@ -83,9 +83,10 @@ Running everything on one machine is also convenient if you have a machine (for 
 
 {{<imgproc src="/build/program/on-robot.png" resize="900x" declaredimensions=true alt="A client running on a machine">}}
 
-The script you run on-machine is the same as the script you [run remotely](#run-code-remotely) or on a local network.
-When the connection code from the [**CONNECT** tab's **Code sample** page](/build/program/#hello-world-the-connect-tab) executes, it creates a [client session](/appendix/apis/sessions/) connected to your machine using the [most efficient route](/build/program/connectivity/).
-Because the code is running on the same machine as `viam-server`, the favored route for commands is automatically over localhost.
+To run SDK code on a local nework, you need to change the connection code, that you obtained from the [**CONNECT** tab's **Code sample** page](/build/program/#hello-world-the-connect-tab).
+The default machine address (URI) from the **CONNECT** tab is of the form `mymachine-main.0a1bcdefgi.viam.cloud`.
+To connect directly to the local machine, change the end of the URI from `.viam.cloud` to `.local.viam.cloud`.
+For the example that results in `mymachine-main.0a1bcdefgi.local.viam.cloud`
 
 Install the appropriate programming language and [Viam SDK](/sdks/) on your machine and run a command to execute the program in the terminal of that machine instead of from a separate computer:
 
