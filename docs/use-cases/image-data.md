@@ -118,7 +118,7 @@ Configure an ML model service on your machine that is compatible with the ML mod
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/"%}}
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
-**1. Add an ML model to your machine**
+**2. Add an ML model to your machine**
 
 From the **Model** dropdown, select an [existing model](https://app.viam.com/registry?type=ML+Model) you want to use, or click **Add new model** to upload your own.
 If you're not sure which model to add, you can add [`EfficientNet-ImageNet2012`](https://app.viam.com/ml-model/viam/EfficientNet-ImageNet2012) which can detect people and animals, among other things.
@@ -161,7 +161,7 @@ Turn off data capture on your camera if you haven't already, so that you don't c
 Once you save your configuration, your filtered images will sync and you can [view those images in the Viam app](/services/data/view/) from the **DATA** tab.
 
 {{< alert title="Wait until data appears" color="note" >}}
-Your data will sync at the specified sync interval, which may mean you have to wait for data to appear.
+Your data will sync at the specified sync interval, which may mean you have to wait and then refresh the page for data to appear.
 
 If no data appears after the sync interval, check the [**Logs**](/cloud/machines/#logs) and ensure that the condition for filtering is met.
 You can add a [`transform` camera](/components/camera/transform/) to see detections or classifications live from the [**CONTROL** tab](/cloud/machines/#control).
