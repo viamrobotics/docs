@@ -298,7 +298,7 @@ When you submit a training job with this training script, this function saves th
 Once the training job is complete, Viam looks at that directory and creates a package with all of the contents of the directory, creating or updating a registry item for the ML model.
 
 {{% /expand%}}
-{{%expand "Step 4: Write main function" %}}
+{{%expand "Step 5: Write main function" %}}
 
 Now, write all the code that runs the training job invoking the previously defined helper functions.
 Write this into the top level code of <file>training.py</file>, which is executed when the file runs as a script.
@@ -389,7 +389,7 @@ You can use the [`viam training-script upload`](/cli/#training-script) command t
 
 For example:
 
-```sh {class="line-numbers linkable-line-numbers"}
+```sh {class="command-line" data-prompt="$"}
 viam training-script upload --path=<path-to-tar.gz> --org-id=<INSERT ORG ID> --script-name="MyCustomTrainingScript"
 ```
 
@@ -411,7 +411,7 @@ For example:
 {{< tabs >}}
 {{% tab name="from-registry" %}}
 
-```sh {class="line-numbers linkable-line-numbers"}
+```sh {class="command-line" data-prompt="$"}
 viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-version="2" --version="1" --path=<path-to-tar.gz> --script-name="MyCustomTrainingScript"
 ```
 
@@ -420,7 +420,7 @@ This command submits a training job to the previously uploaded `"MyCustomTrainin
 {{% /tab %}}
 {{% tab name="with-upload" %}}
 
-```sh {class="line-numbers linkable-line-numbers"}
+```sh {class="command-line" data-prompt="$"}
 viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-type="single_label_classification" --model-version="2" --version="1" --path=<path-to-tar.gz> --script-name="MyCustomTrainingScript"
 ```
 
