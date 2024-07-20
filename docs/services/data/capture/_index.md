@@ -63,8 +63,8 @@ To capture data from one or more machines, you must first add the [data manageme
 4. Click **Create**.
 5. On the panel that appears, you can manage the capturing and syncing functions.
    {{< tabs >}}
-{{% tab name="RDK" %}}
-Specify the **Directory**, the sync **Interval** and any **Tags** to apply to captured data.
+   {{% tab name="RDK" %}}
+   Specify the **Directory**, the sync **Interval** and any **Tags** to apply to captured data.
 
 If the sync **Interval** or the **Directory** is not specified, the data management service captures data at the default frequency every 0.1 minutes (after every 6 second interval) in the default `~/.viam/capture` directory.
 
@@ -85,6 +85,7 @@ With micro-RDK, the `capture_dir`, `tags`, and `additional_sync_paths` attribute
 {{%expand "Click to view the JSON configuration for the data management service" %}}
 {{< tabs >}}
 {{% tab name="RDK" %}}
+
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [],
@@ -104,6 +105,7 @@ With micro-RDK, the `capture_dir`, `tags`, and `additional_sync_paths` attribute
   ]
 }
 ```
+
 {{% /tab %}}
 {{% tab name="micro-RDK" %}}
 
@@ -163,8 +165,9 @@ The following components support data capture:
 {{% /tab %}}
 {{% tab name="micro-RDK" %}}
 
+<!-- prettier-ignore -->
 | Type | Method |
-| ----- | ----------- |
+| ---- | ------ |
 | [Sensor](/build/micro-rdk/sensor/) | [`GetReadings`](/components/sensor/#getreadings) |
 | [Movement Sensor](/build/micro-rdk/movement-sensor/) | [`AngularVelocity`](/components/movement-sensor/#getangularvelocity), [`LinearAcceleration`](/components/movement-sensor/#getlinearacceleration), [`LinearVelocity`](/components/movement-sensor/#getlinearvelocity) |
 
