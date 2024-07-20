@@ -19,7 +19,7 @@ The only microcontroller the micro-RDK currently supports is the [ESP32](https:/
 {{% card link="/components/sensor/" %}}
 {{% card link="/components/servo/" %}}
 {{% card link="/components/generic/" %}}
-{{% card link="/components/data_management/" %}}
+{{% card link="/services/data/capture/" %}}
 {{< /cards >}}
 
 Click on each supported resource to see supported models, API methods, and configuration info.

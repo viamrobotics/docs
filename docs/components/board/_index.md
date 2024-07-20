@@ -119,32 +119,6 @@ The board component supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/board-table.md" >}}
 
-{{< alert title="micro-RDK Support" color="note" >}}
-The micro-RDK [board API](/components/board/#api) supports only the following client SDK API methods, which operate the same as in the full-featured RDK:
-
-- [`SetPWM()`](/components/board/#setpwm)
-- [`DoCommand()`](/components/board/#docommand)
-
-For `GPIOPin`s:
-
-- [`SetGPIO()`](/components/board/#setgpio)
-- [`GetGPIO()`](/components/board/#getgpio)
-- [`GetPWM()`](/components/board/#getpwm)
-- [`SetPWM()`](/components/board/#setpwm)
-- [`PWMFreq()`](/components/board/#pwmfrequency)
-- [`SetPWMFreq()`](/components/board/#setpwmfrequency)
-
-See [PWM signals on `esp32` pins](/build/micro-rdk/board/esp32/#pwm-signals-on-esp32-pins) for more information on setting PWM frequencies with `esp32` boards.
-
-For `Analog`s:
-
-- [`Read()`](/components/board/#read)
-
-For `DigitalInterrupt`s:
-
-- [`Value()`](/components/board/#value)
-{{< /alert >}}
-
 {{< readfile "/static/include/components/apis/generated/board.md" >}}
 
 ## Troubleshooting

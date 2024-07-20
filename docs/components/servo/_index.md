@@ -122,7 +122,7 @@ The servo component supports the following methods:
 {{< readfile "/static/include/components/apis/generated/servo-table.md" >}}
 
 {{< alert title="micro-RDK Support" color="note" >}}
-The micro-RDK [servo API](/components/servo/#api) supports the following client SDK API methods, which operate the same as in the full-featured RDK:
+The servo API is limited to the following supported client SDK API methods for microcontrollers:
 
 - [`Move()`](/components/servo/#move)
 - [`GetPosition()`](/components/servo/#getposition)

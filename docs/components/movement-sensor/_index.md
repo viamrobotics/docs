@@ -108,7 +108,7 @@ You can run `GetProperties` on your sensor for a list of its supported methods.
 {{< readfile "/static/include/components/apis/movement-sensor.md" >}}
 
 {{< alert title="micro-RDK Support" color="note" >}}
-The micro-RDK [movement sensor API](/components/movement-sensor/#api) supports only the following client SDK API methods, which operate the same as in the full-featured RDK:
+The movement sensor API is limited to the following supported client SDK API methods for microcontrollers:
 
 - [`GetReadings()`](/components/movement-sensor/#getreadings)
 - [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity)

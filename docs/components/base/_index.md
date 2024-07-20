@@ -106,7 +106,7 @@ The base component supports the following methods:
 {{< readfile "/static/include/components/apis/generated/base-table.md" >}}
 
 {{< alert title="micro-RDK Support" color="note" >}}
-The micro-RDK [base API](/components/base/#api) is limited to the following supported client SDK API methods:
+The base API is limited to the following supported client SDK API methods for microcontrollers:
 
 - [`Stop()`](/components/base/#stop)
 - [`SetPower()`](/components/base/#setpower)

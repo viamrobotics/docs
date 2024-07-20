@@ -11,6 +11,7 @@ aliases:
   - /installation/microcontrollers/
   - /installation/prepare/microcontrollers/
   - /get-started/installation/prepare/microcontrollers/
+  - /build/micro-rdk/
 # SMEs: Nicolas M., Gautham V., Andrew M.
 ---
 
