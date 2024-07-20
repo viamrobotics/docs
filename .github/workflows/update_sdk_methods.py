@@ -1768,7 +1768,11 @@ def write_markdown(type, names, methods):
                         ## Write out this proto's entry to this resource's table_file:
                         if resource != 'movement_sensor':
                             if micro_rdk_support != '':
-                                table_file.write('| [`' + proto + '`](' + proto_anchor_link + ') | ' + proto_description_first_sentence + ' | ' + micro_rdk_support +' |\n')
+                                if micro_rdk_support == 'Yes':
+                                    mark = '<p class="center-text"><i class="fas fa-check" title="yes"></i></p>'
+                                else:
+                                    mark = '<p class="center-text"><i class="fas fa-times" title="no"></i></p>'
+                                table_file.write('| [`' + proto + '`](' + proto_anchor_link + ') | ' + proto_description_first_sentence + ' | ' + mark +' |\n')
                             else:
                                 table_file.write('| [`' + proto + '`](' + proto_anchor_link + ') | ' + proto_description_first_sentence + ' |\n')
 
