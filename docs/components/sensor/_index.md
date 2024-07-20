@@ -109,12 +109,6 @@ The sensor component supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/sensor-table.md" >}}
 
-{{< alert title="micro-RDK Support" color="note" >}}
-The sensor API is limited to the following supported client SDK API methods for microcontrollers:
-
-- [`GetReadings()`](/components/sensor/#getreadings)
-{{< /alert >}}
-
 {{< readfile "/static/include/components/apis/generated/sensor.md" >}}
 
 ## Troubleshooting

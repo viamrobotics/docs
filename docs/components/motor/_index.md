@@ -107,16 +107,6 @@ The motor component supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/motor-table.md" >}}
 
-{{< alert title="micro-RDK Support" color="note" >}}
-The motor API is limited to the following supported client SDK API methods for microcontrollers:
-
-- [`SetPower()`](/components/motor/#setpower)
-- [`GetPosition()`](/components/motor/#getposition)
-- [`GetProperties()`](/components/motor/#getproperties)
-- [`Stop()`](/components/motor/#stop)
-- [`IsMoving()`](/components/motor/#ismoving)
-{{< /alert >}}
-
 {{< readfile "/static/include/components/apis/generated/motor.md" >}}
 
 ## Troubleshooting

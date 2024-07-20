@@ -102,12 +102,6 @@ The generic component supports the following method:
 
 {{< readfile "/static/include/components/apis/generated/generic_component-table.md" >}}
 
-{{< alert title="micro-RDK Support" color="note" >}}
-The generic API is limited to the following supported client SDK API methods for microcontrollers:
-
-- [`DoCommand()`](/components/generic/#docommand)
-{{< /alert >}}
-
 {{< readfile "/static/include/components/apis/generated/generic_component.md" >}}
 
 ## Troubleshooting

@@ -112,15 +112,6 @@ The encoder component supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/encoder-table.md" >}}
 
-{{< alert title="micro-RDK Support" color="note" >}}
-The encoder API is limited to the following supported client SDK API methods for microcontrollers:
-
-- [`ResetPosition()`](/components/encoder/#resetposition)
-- [`GetPosition()`](/components/encoder/#getposition)
-- [`GetProperties()`](/components/encoder/#getproperties)
-- [`DoCommand()`](/components/encoder/#docommand)
-{{< /alert >}}
-
 {{< readfile "/static/include/components/apis/generated/encoder.md" >}}
 
 ## Troubleshooting

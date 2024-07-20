@@ -3,6 +3,7 @@
 Get the current position of the encoder in ticks or degrees.
 Relative encoders return ticks since last zeroing.
 Absolute encoders return degrees.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -64,6 +65,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ### ResetPosition
 
 Set the current position of the encoder to be the new zero position.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -119,6 +121,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ### GetProperties
 
 Get a list of all the position types that are supported by a given encoder.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -229,6 +232,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 Execute model-specific commands that are not otherwise defined by the component API.
 If you are implementing your own encoder as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} and are adding features that have no built-in API method, you can access them with `DoCommand`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
