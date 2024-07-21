@@ -142,7 +142,7 @@ You can now [upload your own ML model](/services/ml/upload-model/) using any of 
 
 {{% changelog date="2024-03-01" color="added" title="Ultrasonic sensor for micro-RDK" %}}
 
-You can now use the [ultrasonic sensor component](/build/micro-rdk/sensor/ultrasonic/) with the [micro-RDK](/build/micro-rdk/) to integrate an [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running the micro-RDK.
+You can now use the [ultrasonic sensor component](/components/sensor/ultrasonic-micro-rdk/) with the [micro-RDK](/get-started/installation/microcontrollers/) to integrate an [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running the micro-RDK.
 
 {{% /changelog %}}
 

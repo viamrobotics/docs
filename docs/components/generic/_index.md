@@ -48,7 +48,7 @@ If you want to use most of an existing API but need just a few other functions, 
 
 ### micro-RDK
 
-If your micro-RDK machine includes a resource that isn't a [base](/build/micro-rdk/base/), [board](/build/micro-rdk/board/),[encoder](/build/micro-rdk/encoder/), [movement sensor](/build/micro-rdk/movement-sensor/), [motor](/build/micro-rdk/motor/), or [servo](/build/micro-rdk/servo/), you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it as a custom model of the generic subtype.
+If your micro-RDK machine includes a resource that isn't a [base](/components/base/), [board](/components/board/),[encoder](/components/encoder/), [movement sensor](/components/movement-sensor/), [motor](/components/motor/), or [servo](/components/servo/), you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it as a custom model of the generic subtype.
 
 {{< alert title="Important" color="note" >}}
 The micro-RDK works differently from the RDK, so creating modular resources for it is different.

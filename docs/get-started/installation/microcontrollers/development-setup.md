@@ -224,14 +224,14 @@ Then, navigate to the **CONFIGURE** tab.
 
 [Client API](/appendix/apis/) usage with the micro-RDK is currently limited to the following supported {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
-- [Base](/build/micro-rdk/base/)
-- [Board](/build/micro-rdk/board/)
-- [Encoder](/build/micro-rdk/encoder/)
-- [Movement Sensor](/build/micro-rdk/movement-sensor/)
-- [Motor](/build/micro-rdk/motor/)
+- [Base](/components/base/)
+- [Board](/components/board/)
+- [Encoder](/components/encoder/)
+- [Movement Sensor](/components/movement-sensor/)
+- [Motor](/components/motor/)
 
-See [micro-RDK](/build/micro-rdk/) to get a list of supported models and instructions on how to configure them.
-Follow [this guide](/build/micro-rdk/board/esp32/) to configure an `esp32` board on your machine.
+See [micro-RDK](/get-started/installation/microcontrollers/) to get a list of supported models and instructions on how to configure them.
+Follow [this guide](/get-started/installation/microcontrollers/) to configure an `esp32` board on your machine.
 
 ### Generate a new project from the micro-RDK template
 

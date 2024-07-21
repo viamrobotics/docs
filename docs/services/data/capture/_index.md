@@ -168,8 +168,8 @@ The following components support data capture:
 <!-- prettier-ignore -->
 | Type | Method |
 | ---- | ------ |
-| [Sensor](/build/micro-rdk/sensor/) | [`GetReadings`](/components/sensor/#getreadings) |
-| [Movement Sensor](/build/micro-rdk/movement-sensor/) | [`AngularVelocity`](/components/movement-sensor/#getangularvelocity), [`LinearAcceleration`](/components/movement-sensor/#getlinearacceleration), [`LinearVelocity`](/components/movement-sensor/#getlinearvelocity) |
+| [Sensor](/components/sensor/) | [`GetReadings`](/components/sensor/#getreadings) |
+| [Movement Sensor](/components/movement-sensor/) | [`AngularVelocity`](/components/movement-sensor/#getangularvelocity), [`LinearAcceleration`](/components/movement-sensor/#getlinearacceleration), [`LinearVelocity`](/components/movement-sensor/#getlinearvelocity) |
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -362,7 +362,7 @@ To add them to your JSON configuration you must explicitly add the remote compon
 
 {{%expand "Click to view example JSON configuration for an ESP32 board" %}}
 
-The following example shows the configuration of the remote part, in this case an [ESP32 board](/build/micro-rdk/board/esp32/).
+The following example shows the configuration of the remote part, in this case an [ESP32 board](/components/board/esp32/).
 This config is just like that of a non-remote part; the remote connection is established by the main part (in the next expandable example).
 
 ```json {class="line-numbers linkable-line-numbers"}

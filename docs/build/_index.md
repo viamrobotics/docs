@@ -19,7 +19,7 @@ This means you can test and change hardware without changing code.
 ## Step 1: Install
 
 To get started, first [install `viam-server`](/get-started/installation/) on your smart machine's computer.
-If you are using a microcontroller instead of a 64-bit computer, you can install a [lightweight version of `viam-server`](/build/micro-rdk/).
+If you are using a microcontroller instead of a 64-bit computer, you can install a [lightweight version of `viam-server`](/get-started/installation/microcontrollers/).
 You can install `viam-server` on your personal computer, or on a single-board computer (SBC) such as one of the following:
 <br><br>
 

@@ -46,12 +46,12 @@ For more `micro-rdk-installer` CLI usage options, see [GitHub](https://github.co
 ### Configure your machine
 
 The micro-RDK provides different component models than the fully featured RDK.
-See [Micro-RDK](/build/micro-rdk/) to get a list of supported models and instructions on how to configure them.
+See [Micro-RDK](/get-started/installation/microcontrollers/) to get a list of supported models and instructions on how to configure them.
 
 ## Next steps
 
 {{< cards >}}
-{{% manualcard link="/build/micro-rdk/board/esp32/" %}}
+{{% manualcard link="/components/board/esp32/" %}}
 
 <h4>Configure your board </h4>
 
