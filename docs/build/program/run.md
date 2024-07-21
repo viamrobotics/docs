@@ -86,7 +86,7 @@ Running everything on one machine is also convenient if you have a machine (for 
 To run SDK code on a local nework, you need to change the connection code, that you obtained from the [**CONNECT** tab's **Code sample** page](/build/program/#hello-world-the-connect-tab).
 The default machine address (URI) from the **CONNECT** tab is of the form `mymachine-main.0a1bcdefgi.viam.cloud`.
 To connect directly to the local machine, change the end of the URI from `.viam.cloud` to `.local.viam.cloud`.
-For the example that results in `mymachine-main.0a1bcdefgi.local.viam.cloud`
+For the example that results in `mymachine-main.0a1bcdefgi.local.viam.cloud`.
 
 Install the appropriate programming language and [Viam SDK](/sdks/) on your machine and run a command to execute the program in the terminal of that machine instead of from a separate computer:
 
