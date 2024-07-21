@@ -9,7 +9,7 @@ aliases:
   - /build/configure/webhooks/
 ---
 
-Triggers allow you to execute actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
+Triggers allow you to trigger webhooks when certain types of data are sent from your machine to the cloud, or when the your machine parts connect to Viam.
 For example, you can configure a trigger to send you a notification when your robot's sensor collects a new reading.
 Viam provides three trigger types depending on the event you want to trigger on:
 
@@ -207,6 +207,7 @@ The following attributes are available for triggers:
 | `notifications` |  object | **Required** | The notifications object: <ul><li>`type`: The type of the notification. Options: `"webhook"`.</li><li>`value`: The URL to send the request to.</li><li>`seconds_between_notifications`: The interval between notifications in seconds.</li></ul> |
 
 5. Write your cloud function or lambda to process the request from `viam-server`.
+   You can use your cloud function or lambda to interact with any external API such as, for example, Twilio, PagerDuty, or Zapier.
    The following example function prints the received headers:
 
    ```python {class="line-numbers linkable-line-numbers"}
