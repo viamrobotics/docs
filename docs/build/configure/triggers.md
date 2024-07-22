@@ -217,25 +217,27 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
+
 @app.route("/", methods=['GET', 'POST'])
 def hello_http_get():
-    print(request.headers)
+    headers = request.headers
+    print(headers)
     payload = {
-        "Org-Id": request.headers['org-id'] if 'org-id' in request.headers else 'no value',
-        "Organization-Name": request.headers['organization-name'] if 'organization-name' in request.headers else 'no value',
-        "Location-Id": request.headers['location-id'] if 'location-id' in request.headers else 'no value',
-        "Location-Name": request.headers['location-name'] if 'location-name' in request.headers else 'no value',
-        "Part-Id": request.headers['part-id'] if 'part-id' in request.headers else 'no value',
-        "Part-Name": request.headers['part-name'] if 'part-name' in request.headers else 'no value',
-        "Robot-Id": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value',
-        "Machine-Name": request.headers['machine-name'] if 'machine-name' in request.headers else 'no value',
-        "Component-Type": request.headers['component-type'] if 'component-type' in request.headers else 'no value',
-        "Component-Name": request.headers['component-name'] if 'component-name' in request.headers else 'no value',
-        "Method-Name": request.headers['method-name'] if 'method-name' in request.headers else 'no value',
-        "Min-Time-Received": request.headers['min-time-received'] if 'min-time-received' in request.headers else 'no value',
-        "Max-Time-Received": request.headers['max-time-received'] if 'max-time-received' in request.headers else 'no value',
-        "Data-Type": request.args['data_type'] if 'data_type' in request.args else 'no value'
-      }
+        "Org-Id": headers.get('org-id', 'no value'),
+        "Organization-Name": headers.get('organization-name', 'no value'),
+        "Location-Id": headers.get('location-id', 'no value'),
+        "Location-Name": headers.get('location-name', 'no value'),
+        "Part-Id": headers.get('part-id', 'no value'),
+        "Part-Name": headers.get('part-name', 'no value'),
+        "Robot-Id": headers.get('robot-id', 'no value'),
+        "Machine-Name": headers.get('machine-name', 'no value'),
+        "Component-Type": headers.get('component-type', 'no value'),
+        "Component-Name": headers.get('component-name', 'no value'),
+        "Method-Name": headers.get('method-name', 'no value'),
+        "Min-Time-Received": headers.get('min-time-received', 'no value'),
+        "Max-Time-Received": headers.get('max-time-received', 'no value'),
+        "Data-Type": request.args.get('data_type', 'no value')
+    }
     print(payload)
 
     return payload
@@ -253,23 +255,25 @@ import functions_framework
 import requests
 import time
 
+
 @functions_framework.http
 def hello_http(request):
+    headers = request.headers
     payload = {
-        "Org-Id": request.headers['org-id'] if 'org-id' in request.headers else 'no value',
-        "Organization-Name": request.headers['organization-name'] if 'organization-name' in request.headers else 'no value',
-        "Location-Id": request.headers['location-id'] if 'location-id' in request.headers else 'no value',
-        "Location-Name": request.headers['location-name'] if 'location-name' in request.headers else 'no value',
-        "Part-Id": request.headers['part-id'] if 'part-id' in request.headers else 'no value',
-        "Part-Name": request.headers['part-name'] if 'part-name' in request.headers else 'no value',
-        "Robot-Id": request.headers['robot-id'] if 'robot-id' in request.headers else 'no value',
-        "Machine-Name": request.headers['machine-name'] if 'machine-name' in request.headers else 'no value',
-        "Component-Type": request.headers['component-type'] if 'component-type' in request.headers else 'no value',
-        "Component-Name": request.headers['component-name'] if 'component-name' in request.headers else 'no value',
-        "Method-Name": request.headers['method-name'] if 'method-name' in request.headers else 'no value',
-        "Min-Time-Received": request.headers['min-time-received'] if 'min-time-received' in request.headers else 'no value',
-        "Max-Time-Received": request.headers['max-time-received'] if 'max-time-received' in request.headers else 'no value',
-        "Data-Type": request.args['data_type'] if 'data_type' in request.args else 'no value'
+        "Org-Id": headers.get('org-id', 'no value'),
+        "Organization-Name": headers.get('organization-name', 'no value'),
+        "Location-Id": headers.get('location-id', 'no value'),
+        "Location-Name": headers.get('location-name', 'no value'),
+        "Part-Id": headers.get('part-id', 'no value'),
+        "Part-Name": headers.get('part-name', 'no value'),
+        "Robot-Id": headers.get('robot-id', 'no value'),
+        "Machine-Name": headers.get('machine-name', 'no value'),
+        "Component-Type": headers.get('component-type', 'no value'),
+        "Component-Name": headers.get('component-name', 'no value'),
+        "Method-Name": headers.get('method-name', 'no value'),
+        "Min-Time-Received": headers.get('min-time-received', 'no value'),
+        "Max-Time-Received": headers.get('max-time-received', 'no value'),
+        "Data-Type": request.args.get('data_type', 'no value')
     }
     print(payload)
 
