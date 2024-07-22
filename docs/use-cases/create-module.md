@@ -46,32 +46,41 @@ You can also watch this guide to creating a vision service module:
 
 Generally, to write a module, you will complete the following steps:
 
-1. Define a new resource model to define all the capabilities of your model.
-1. Write an entry point (main program) file to serve as the central interface to those new capabilities.
+1. Choose a Viam API to implement in your model.
+1. Write your new model definition code to map all the capabilities of your model to the API.
+1. Write an entry point (main program) file that registers your model with the Viam SDK and starts it up.
 1. Compile or package the model definition file or files, main program file, and any supporting files into a single executable file (a module) that can be run by `viam-server`.
 
 While you can certainly combine the resource model definition and the main program code into a single file if desired (for example, a single `main.py` program that includes both the model definition and the `main()` program that uses it), this guide will use separate files for each.
 
-### Define a new resource model
+### Choose an API to implement in your model
 
-Before you write the code for your module, you need to decide which API to write it against, and you need to decide on a unique identifier for your module.
+Look through the [component API](/appendix/apis/#component-apis) and [service API](/appendix/apis/#service-apis) and find the API that fits your use case.
+Each API contains:
 
-#### Choose an API to implement in your model
+- One or more methods specific to that API, such as the servo component's `Move` and `GetPosition` methods.
+- Inherited [ResourceBase methods](/appendix/apis/#resourcebase-methods) such as `DoCommand` and `Close`, common to all Viam {{< glossary_tooltip term_id="resource" text="resource" >}} APIs.
+- (For some APIs) Other inherited methods, for example all actuator APIs such as the motor API and servo API inherit `IsMoving` and `Stop`.
 
-Most modules extend an existing [component API](/appendix/apis/#component-apis) or [service API](/appendix/apis/#service-apis) to add support for a new model of that resource.
-For example, you could extend the [camera component API](/components/camera/#api) to support new image formats or a new kind of camera, or extend the [ML model service API](/appendix/apis/#ml-model) to support a new kind of machine learning (ML) model other than the existing `tflite`.
+Think about what functionality you want your module to provide, what methods you need, and choose an API to implement.
+For example, the [sensor API](/appendix/apis/#sensor) has a `GetReadings` method, so if you create a module for a model of sensor, you'll need to write code to provide a response to the `GetReadings` method.
+If instead of just getting readings, you actually have an encoder and need to be able to reset the zero position, use the [encoder API](/appendix/apis/#encoder) so you can define functionality behind the `GetPosition` and `ResetPosition` methods.
+
+In addition to the list of methods, another reason to choose one API over another is how certain APIs fit into the Viam ecosystem.
+For example, though you could technically implement a GPS as a sensor with just the `GetReadings` method, if you implement it as a movement sensor then you have access to methods like `GetCompassHeading` which allow you to use your GPS module with the [navigation service](/services/navigation/).
+For this reason, it's generally best to choose the API that most closely matches your hardware or software.
 
 {{% alert title=Note color="note" %}}
-If you want to write a module to extend support to a new type of component or service that is relatively unique, consider using the generic API for your resource type to build your own API:
+If you want to write a module to add support to a new type of component or service that is relatively unique, consider using the generic API for your resource type to build your own API:
 
 - If you are working with a component that doesn't fit into any of the existing component APIs, you can use the [generic component](/components/generic/) to build your own component API.
 - If you are designing a service that doesn't fit into any of the existing service APIs, you can use the [generic service](/services/generic/) to build your own service API.
 - It is also possible to [define an entirely new API](/registry/advanced/create-subtype/), but this is even more advanced than using `generic`.
 
-Most module use cases, however, benefit from extending an existing API instead of `generic`.
+Most module use cases, however, benefit from implementing an existing API instead of `generic`.
 {{% /alert %}}
 
-##### Valid API identifiers
+#### Valid API identifiers
 
 Each existing component or service API has a unique identifier in the form of a colon-delimited triplet.
 You will use this {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}} when creating your new model, to indicate which API it extends.
@@ -152,7 +161,7 @@ Determine the model name you want to use based on these requirements, then proce
 
 The `viam` namespace is reserved for models provided by Viam.
 
-#### Write your new resource model definition
+### Write your new resource model definition
 
 This is the step where you code the logic that is unique to your module.
 
