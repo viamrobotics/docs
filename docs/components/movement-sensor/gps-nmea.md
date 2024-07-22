@@ -16,7 +16,7 @@ A global positioning system (GPS) receives signals from satellites in the earthâ
 All supported GPS models provide data for the [`Position`](/components/movement-sensor/#getposition), [`CompassHeading`](/components/movement-sensor/#getcompassheading), [`LinearVelocity`](/components/movement-sensor/#getlinearvelocity), and [`GetAccuracy`](/components/movement-sensor/#getaccuracy) methods.
 You can obtain fix and correction data by using the sensor [`GetReadings`](/components/sensor/#getreadings) method, which is available because GPSes wrap the [sensor component](/components/sensor/).
 
-The `gps-nmea` movement sensor model supports [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS units.
+The `gps-nmea` movement sensor model supports [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS units and RTCM version up to 3.3
 
 This GPS model uses communication standards set by the National Marine Electronics Association (NMEA).
 The `gps-nmea` model can be connected using USB and send data through a serial connection to any device, or employ an I<sup>2</sup>C connection to a board:
