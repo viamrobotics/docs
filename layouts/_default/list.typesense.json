@@ -156,7 +156,11 @@
                         {{- $.Scratch.Set "relpermalink" (printf "%s" .Params.canonical) -}}
                   {{- else -}}
                         {{- $.Scratch.Set "permalink" .Permalink -}}
-                        {{- $.Scratch.Set "relpermalink" (printf "../..%s" .RelPermalink) -}}
+                        {{- if eq .Parent.LinkTitle "Deploy Model" -}}
+                              {{- $.Scratch.Set "relpermalink" (printf "../../..%s" .RelPermalink) -}}
+                        {{- else -}}
+                              {{- $.Scratch.Set "relpermalink" (printf "../..%s" .RelPermalink) -}}
+                        {{- end -}}
                   {{- end -}}
 
                   {{- $.Scratch.Set "id" (printf "builtin:rdk:service:%s:%s" (strings.Replace (strings.ToLower .Parent.LinkTitle) " " "_" ) (strings.ToLower .LinkTitle) ) -}}
