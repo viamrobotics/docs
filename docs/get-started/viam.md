@@ -1,6 +1,6 @@
 ---
-title: "Viam in 3 minutes"
-linkTitle: "Viam in 3 minutes"
+title: "A tour of Viam"
+linkTitle: "Tour of Viam"
 description: "Viam is a complete software platform for smart machines which provides modular components and services for vision, motion, SLAM, ML, and data management."
 weight: 10
 no_list: true
@@ -15,143 +15,172 @@ imageAlt: "/general/understand.png"
 images: ["/general/understand.png"]
 ---
 
-Viam is a complete software platform that supports every step of your {{< glossary_tooltip term_id="smart-machine" text="smart machine">}} development lifecycle.
+Viam is a software platform that makes it easy to work with hardware and software.
+At the core of Viam is the open-source `viam-server` executable which:
 
-## Plan your machine
+- Creates, configures, and maintains any machine on which it is installed
+- Securely handles all communications.
+- Runs drivers, custom code, and any other software.
+- Accepts API requests.
+- Runs {{< glossary_tooltip term_id="service" text="services">}} like computer vision, motion planning, data management, machine learning, and more.
 
-When using Viam, this is what you'll need to know to plan your machine:
-
-<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/633d91b848050946efcf0690_viam-overview-illustrations-build.svg" alt="A diagram of machine parts and software" class="alignright" style="width:250px;"></img>
-
-- **Hardware**:
-  Many {{< glossary_tooltip term_id="component" text="components">}} are natively supported by the Viam platform.
-  You will not need to write a single line of code to integrate them, and swapping out component models will not require code changes.
-- **Functionality**:
-  You can use computer vision, motion planning, simultaneous localization and mapping (SLAM), data management, machine learning, and more by configuring Viam's built-in {{< glossary_tooltip term_id="service" text="services">}}.
-- **Architecture**:
-  You can build simple machines or multi-part machines that use secure communication channels across local networks and the cloud, all of which can be managed with a uniform API.
-- **Extensibility**: If you need additional functionality, you can leverage {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} from the Viam registry to extend support in Viam to new hardware components and software services.
-
-Join the [**Viam community**](https://discord.gg/viam) to collaborate during planning and beyond.
-
-## Get started
-
-A _smart machine_ in Viam consists of at least one computer, typically a [single-board computer](/get-started/installation/), running `viam-server` and communicating with any hardware connected to it by signaling through digital data pins.
-Viam supports devices running **any** 64-bit Linux OS or macOS.
-Here are some of the boards Viam supports:
+`viam-server` **runs on Linux and macOS** and supports a wide variety of popular systems, including:
 
 {{< board-carousel >}}
 <br>
 
-{{< imgproc src="/viam/board-viam-server.png" alt="A diagram of a single-board computer running viam-server." resize="270x" class="alignleft" style="max-width:270px" >}}
+## Creating a smart machine with real-time control, monitoring, and data management
 
-The Viam platform provides a user interface for connecting to and managing machines, the [Viam app](https://app.viam.com/).
+{{<imgproc src="/tutorials/pet-treat-dispenser/preview.png" resize="300x" declaredimensions=true alt="Image of a dog interacting with the smart pet feeder." class="alignleft">}}
 
-To use the Viam platform with your machine, log in to [the app](https://app.viam.com/), create a new machine, and [install](/get-started/installation/) the [`viam-server`](https://github.com/viamrobotics/rdk) binary which:
+Consider a pet feeder which is made up of a webcam and a motor as well as a board with the programming for the device.
 
-- Creates, configures, and maintains the machine.
-- Securely handles all communications.
-- Runs drivers, custom code, and any other software.
-- Accepts API requests.
-- Runs services like computer vision, data synchronization, and motion planning.
+TODO: Diagram
 
-{{% alert title="Info" color="info" %}}
-Everything Viam runs on your machine is [open-source](https://github.com/viamrobotics).
-{{% /alert %}}
+With the Viam app, you can configure the motor and webcam as {{< glossary_tooltip term_id="component" text="components" >}}.
 
-## Configure your machine
+### Benefits of the Viam platform
 
-Machines can be small and simple or very complex.
-A machine can be a single-board computer with a single sensor or LED wired to it, or a machine can consist of multiple computers with many physical components connected, acting as one unit.
+By configuring your machine with Viam, you can now:
 
-The term {{% glossary_tooltip term_id="component" text="_component_" %}} describes a piece of hardware that a computer controls, like an arm or a motor.
+{{< table >}}
+{{% tablestep link="/cloud/machines/#control"%}}
+<img src="/get-started/feed.gif" style="max-width:600px" class="fill alignleft">
 
-For each component that makes up your machine:
+**Remotely access and control the machine**
 
-<p>
-{{< imgproc src="/viam/test_components.png" alt="Multiple components being tested in the Viam app." resize="320x" style="max-width:320px" class="alignright" >}}
-</p>
+Using the Viam app or the Viam mobile app, you can view the camera feed and turn on the motor to feed your pet.
 
-1. Add it to your machine by [choosing the component type](/build/configure/#components) (example: `camera`) and model (example: `webcam`).
-2. Test it with the visual [control tab](/fleet/control/).
-3. See any problems with in-app [logs](/cloud/machines/#logs), review or roll back [configuration history](/cloud/machines/#configure).
+{{% /tablestep %}}
+{{% tablestep link="/services/data/"%}}
+{{<imgproc src="/get-started/bowl-images.png" class="fill alignleft" resize="800x" style="max-width: 600px" declaredimensions=true alt="Screenshot of food bowl pictures">}}
+**Collect and upload data to the cloud**
 
-After configuring your machine's hardware, you can configure [high level functionality](/services/) the same way:
+You can configure the camera to capture a photo of the food bowl periodically and automatically sync these photos to the cloud.
 
-- **Data Management** enables you to capture and sync data from one or more machines, and use that data for machine learning and beyond.
-- **Fleet management** enables you to configure, control, debug, and manage entire fleets of machines.
-- **Motion planning** enables your machine to plan and move itself.
-- **Vision** enables your machine to intelligently see and interpret the world around it.
-- **Simultaneous Localization And Mapping (SLAM)** enables your machine to map its surroundings and find its position on a map.
+{{% /tablestep %}}
+{{% tablestep link="/services/ml/"%}}
+{{<imgproc src="/get-started/bowl-label.jpg" class="fill alignright" resize="600x" style="max-width: 200px" declaredimensions=true alt="Screenshot of food bowl pictures with labels">}}
+**Use collected data to build data sets and train and Machine Learning models**
 
-<div>
-{{< imgproc src="/viam/machine-components.png" alt="Machine components" resize="600x" class="aligncenter" >}}
-</div>
+Having captured pictures of the food bowl, you can organize them into a dataset and label each as empty or full.
+Once you have the data labeled, you can train a machine learning model within Viam to recognize empty and full food bowls.
 
-## Control your machine
+{{% /tablestep %}}
+{{% tablestep link="/services/ml/deploy/"%}}
+{{<imgproc src="/services/deploy-model.png" class="fill alignright" resize="800x" style="max-width: 500px" declaredimensions=true alt="Screenshot of food bowl view with classifier">}}
+**Deploy machine learning models to make your machine even smarter**
 
-<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure machine control." class="alignleft" style="max-width:270px;"></img>
+`viam-server` not only supports components but also allows you to deploy services.
+We can use the ML model service to deploy the model that recognizes empty and full food bowls, and deploy a vision service to apply the model to a camera stream.
 
-The Viam platform provides a consistent programming interface for all machines, allowing you to [control your machines](/appendix/apis/) with code in the **language of your choice**.
-Viam currently has SDKs for [Go](https://pkg.go.dev/go.viam.com/rdk), [Python](https://python.viam.dev/), and [TypeScript](https://ts.viam.dev/).
-Additional SDKs are coming soon, including Rust, Java, C++, and Flutter.
+{{% /tablestep %}}
+{{% tablestep link="/build/program/"%}}
 
-TLS certificates provided by [app.viam.com](https://app.viam.com) ensure that all communication is authenticated and encrypted.
-Viam uses {{< glossary_tooltip term_id="webrtc" >}} to create secure peer-to-peer paths between machines and clients for fast, low-latency communication.
-The Viam cloud does not receive any command or control information regarding your machines, ensuring low latency, robustness, and privacy.
-With WebRTC established, Viam uses {{< glossary_tooltip term_id="grpc" text="gRPC" >}} so you can program your machines in many common programming languages.
+**Write code to control the machine using Python, Go, C++, or other programming languages**
 
-This provides flexibility and security whether you are building tight control loops for autonomous mobile machines, event-based triggers for IoT devices, or custom web-based machine management interfaces.
+You can now program your pet feeder to feed your pet at different times of the day and you can use the vision service to programmatically know if the food bowl is full or empty.
+If the food bowl is empty, use the Motor API to turn on the motor for 30 seconds, which will fill up the bowl:
 
-There are four categories of APIs:
+{{< expand "See the entire robot logic in 42 lines" >}}
 
-- [Robot](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) provides high level machine commands
-- [Components](/components/) like motors, arms, GPS
-- [Services](/services/) like computer vision, motion planning, Simultaneous Localization And Mapping (SLAM)
-- Cloud applications like [Fleet Management](/fleet/), [Data Management](/services/data/)
+```python {class="line-numbers linkable-line-numbers"}
+import asyncio
+import datetime
+import os
 
-You can see the Viam API specification on [GitHub](https://github.com/viamrobotics/api).
+from viam.robot.client import RobotClient
+from viam.components.motor import Motor
+from viam.services.vision import VisionClient
 
-### Network flexibility
 
-Your machine does not need to be connected to the cloud.
+async def connect():
+    opts = RobotClient.Options.with_api_key(
+        api_key=os.environ.get("FEEDER_API_KEY"),
+        api_key_id=os.environ.get("FEEDER_API_KEY_ID")
+    )
+    return await RobotClient.at_address(os.environ.get("FEEDER_URI"), opts)
 
-The `viam-server` software resides on your machine alongside your configurations, your code, and appropriate services.
-In scenarios without cloud connectivity, you can still connect your machine to a local area network (LAN), or to any relevant devices (such as a gamepad).
-It all depends on your use case and configuration.
 
-- All APIs work locally or in the cloud
-- Data is cached locally and synced when possible
-- Configuration is cached
+async def main():
+    now = datetime.datetime.now()
 
-When your machine is connected (to either LAN or WAN), `viam-server` can act as both a client and a server.
-In other words, each instance can request resources, as well as provide them.
-This allows for tremendous flexibility in terms of your architecture design.
+    if now.hour < 6:
+        print("No feeding")
+        return 0
 
-## Scale
+    feeder = Motor.from_robot(robot, "feeder")
 
-Viam provides [fleet management capabilities](/fleet/) to help you scale your machines in production.
-With it you can:
+    bowl = VisionClient.from_robot(robot, "bowl")
+    xStart = datetime.datetime.now()
+    classifications = await bowl.get_classifications_from_camera("cam", 1)
+    xTime = datetime.datetime.now() - xStart
+    print(f"bowl classifications return value: {classifications} in {xTime}")
 
-- Manage permissions within your organization and locations.
-- Manage software across your fleet, including deployment of code and machine learning models.
-- Keep your machine configuration and capabilities up-to-date.
+    if len(ret) == 1:
+        c = classifications[0]
+        if c.class_name == "empty" and c.confidence > 0.5:
+            print("Feeding time")
+            await feed(feeder)
 
-## Extensibility
+    await robot.close()
 
-You can also extend Viam to support additional hardware components or software services by deploying a module from the [Viam registry](https://app.viam.com/registry) to your machine.
+if __name__ == '__main__':
+    asyncio.run(main())
+```
+{{< /expand >}}
 
-The Viam registry allows hardware and software engineers to collaborate on their machine projects by writing and sharing custom modules with each other.
-You can add a module from the Viam registry directly from your machine's **Configuration** tab in [the Viam app](https://app.viam.com/), using the **+ Create component** button.
-You can also [upload your own module to the Viam registry](/registry/upload/).
+{{% /tablestep %}}
+{{< /table >}}
 
-See [Modular resources](/registry/) for more information.
+## Connect to networks of devices, providing comprehensive real-time and historical data
 
-## Next steps
+Consider another example where you want to get data from a network of boats.
 
-Start by borrowing one of our rovers.
-Use [Try Viam](/get-started/try-viam/).
+DIAGRAM
 
-If you already have your own machine, [set up `viam-server`](/get-started/installation/) and learn how Viam helps you prototype and scale.
+{{< table >}}
+{{% tablestep link="/appendix/apis/#component-apis"%}}
+{{<imgproc src="/get-started/boat-data.png" class="fill alignright" resize="800x" style="max-width: 600px" declaredimensions=true alt="Screenshot of food bowl pictures with labels">}}
 
-For more inspiration, check out our [tutorials](/tutorials/) or visit our community on [Discord](https://discord.gg/viam) to get help or workshop ideas with others!
+**Real-time camera and sensor data**
+
+Viam can work with existing hardware and, once configured, you have access to real time location, camera feeds, and sensor data.
+
+{{% /tablestep %}}
+{{% tablestep link="/appendix/apis/data-client/"%}}
+
+**Real-time and historical data through one API**
+
+Adding data management to that allows you to not just obtain real-time data but also historical data, which is queryable through one API.
+
+{{% expand "Click to view" %}}
+Code
+{{% /expand%}}
+
+{{% /tablestep %}}
+{{< /table >}}
+
+
+## Enable efficient fleet-wide software deployment, real-time tracking, and data analysis
+
+{{< table >}}
+{{% tablestep link="/appendix/apis/#component-apis"%}}
+{{<imgproc src="/get-started/boat-data.png" class="fill alignright" resize="800x" style="max-width: 600px" declaredimensions=true alt="Screenshot of food bowl pictures with labels">}}
+
+**Single user interface**
+
+
+{{% /tablestep %}}
+{{% tablestep link="/appendix/apis/data-client/"%}}
+
+**Debug individual machines**
+
+{{% /tablestep %}}
+{{% tablestep link="/appendix/apis/data-client/"%}}
+
+**Code deployment for an entire fleet**
+
+{{% /tablestep %}}
+
+{{< /table >}}
