@@ -1730,7 +1730,7 @@ If you later wish to make your module public, you can use the [`viam module upda
         <td><code>models</code></td>
         <td>object</td>
         <td><strong>Required</strong></td>
-        <td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p><p>For more information, see <a href="/registry/#naming-your-model-namespacerepo-namename">naming your model</a>.</p></td>
+        <td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p><p>For more information, see <a href="/create-module/#name-your-new-resource-model">naming your model</a>.</p></td>
       </tr>
       <tr>
         <td><code>entrypoint</code></td>
@@ -1799,7 +1799,7 @@ If you later wish to make your module public, you can use the [`viam module upda
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 
-For more information, see [Naming your model](/registry/#naming-your-model-namespacerepo-namename).
+For more information, see [Name your new resource model](/create-module/#name-your-new-resource-model).
 
     {{% /alert %}}
 

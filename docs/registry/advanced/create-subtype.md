@@ -74,7 +74,7 @@ The following steps guide you through this process in more detail:
 ## Next steps
 
 {{< cards >}}
-{{% manualcard link="/use-cases/create-module/#define-a-new-resource-model"%}}
+{{% manualcard link="/use-cases/create-module/#write-a-module"%}}
 
 <h4>Implement your API</h4>
 
