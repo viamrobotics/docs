@@ -5,7 +5,7 @@ type: "docs"
 weight: 26
 images: ["/registry/create-module.svg"]
 tags: ["modular resources", "components", "services", "registry"]
-description: "Update or delete your existing modules."
+description: "Update or delete your existing modules, or change their privacy settings."
 aliases:
   - /use-cases/deploy-code/
 ---

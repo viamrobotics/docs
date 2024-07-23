@@ -46,7 +46,7 @@ outputs:
       </a>
 </div>
 <div class="col hover-card link-with-icon">
-  <a href="use-cases/deploy-code/" class="noanchor"><div>
+  <a href="use-cases/create-module/" class="noanchor"><div>
     <picture><img src="icons/code-deployment.svg" alt="Code deployment" loading="lazy"></picture>
     <p>Manage and deploy code versions</p></div>
       </a>

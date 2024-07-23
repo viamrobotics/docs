@@ -13,7 +13,7 @@ tags:
     "services",
   ]
 description: "Add additional models of components and services or ML models from the Viam Registry, or extend Viam by creating new modular resources."
-images: ["/platform/registry.svg"]
+images: ["/platform/registry.png"]
 no_list: true
 modulescript: true
 aliases:
@@ -47,6 +47,8 @@ The [Viam registry](https://app.viam.com/registry) is the central place where yo
 {{< /cards >}}
 
 ## Modular resources
+
+{{<imgproc src="/platform/registry.png" class="alignright" resize="x900" declaredimensions=true alt="Representation of the Viam registry, some modules within it, and a rover they support." style="max-width:350px" >}}
 
 Viam provides built-in support for a variety of {{< glossary_tooltip term_id="resource" text="resources" >}}:
 

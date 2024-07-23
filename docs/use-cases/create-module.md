@@ -3,7 +3,7 @@ title: "How to create and deploy a new module"
 linkTitle: "Create a module"
 type: "docs"
 weight: 25
-images: ["/registry/create-module.svg"]
+images: ["/registry/module-puzzle-piece.svg"]
 tags: ["modular resources", "components", "services", "registry"]
 description: "Add a custom resource by creating and deploying a module to your machine."
 aliases:
@@ -13,7 +13,8 @@ aliases:
   - /modular-resources/upload/
 ---
 
-{{<imgproc src="/use-cases/registry.png" class="alignleft" resize="x900" declaredimensions=true alt="Representation of the Viam registry, some modules within it, and a rover they support." style="max-width:350px" >}}
+{{<imgproc src="/registry/module-diagram.png" resize="x900" declaredimensions=true alt="Representation of the Viam registry, some modules within it, and a rover they support." >}}
+<br>
 
 Viam provides built-in support for a variety of different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}, but you can add support for your own [custom {{< glossary_tooltip term_id="resource" text="resources" >}}](/registry/) by creating a {{< glossary_tooltip term_id="module" text="module" >}}.
 
