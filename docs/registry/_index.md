@@ -100,13 +100,6 @@ Once you have added and configured the module you would like to use in the Viam 
 
 `viam-server` manages the [dependencies](/internals/rdk/#dependency-management), [start-up](/internals/rdk/#start-up), [reconfiguration](/internals/rdk/#reconfiguration), [data management](/services/data/capture/#configure-data-capture-for-individual-components), and [shutdown](/internals/rdk/#shutdown) behavior of your modular resource.
 
-### Tutorials using modules
-
-{{< cards >}}
-{{% card link="/tutorials/projects/make-a-plant-watering-robot/" %}}
-{{% card link="/tutorials/projects/integrating-viam-with-openai/" %}}
-{{< /cards >}}
-
 ## Create your own modules
 
 If none of the existing modular resources in the Viam registry support your use case, you can create your own modules to provide your own modular resources:
@@ -125,15 +118,10 @@ To create a new module:
 1. Once you have uploaded your module to the registry, [deploy and configure the module](/registry/configure/) from the Viam app.
    Then, you can test your added resource using the [**CONTROL** tab](/fleet/control/) and [program](/build/program/) it with Viam's Go or Python SDKs.
 
-See the following how-to guide for full instructions:
+See the following how-to guide for full instructions, or one of our example tutorials:
 
 {{< cards >}}
 {{% card link="/use-cases/create-module/" class="fit-contain" %}}
-{{< /cards >}}
-
-### Tutorials creating modules
-
-{{< cards >}}
 {{% card link="/tutorials/custom/custom-base-dog/" %}}
 {{% card link="/registry/examples/custom-arm/" %}}
 {{< /cards >}}
