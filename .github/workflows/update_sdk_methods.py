@@ -444,10 +444,10 @@ override_description_links = {
     "organization settings page": "/cloud/organizations/",
     "image tags": "/services/data/dataset/#image-tags",
     "API key": "/fleet/cli/#authenticate",
-    "in configuration": "/components/board/#digital_interrupts",
+    "in configuration": "#digital_interrupts",
     "board model": "/components/board/#supported-models",
-    "AnalogReaders": "/components/board/#analogs",
-    "DigitalInterrupts": "/components/board/#digital_interrupts"
+    "AnalogReaders": "#analogs",
+    "DigitalInterrupts": "#digital_interrupts"
 }
 
 ## Language-specific resource name overrides:

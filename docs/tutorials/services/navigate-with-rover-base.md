@@ -104,10 +104,10 @@ We used a [`jetson` board](/components/board/jetson/), but you can use any model
 
 ![Configuration of a jetson board with digital interrupts in the Viam app config builder.](/tutorials/navigate-with-rover-base/board-config-builder.png)
 
-2. Configure [digital interrupts](/components/board/#digital_interrupts) on your board to signal precise GPIO state changes to the [encoders](/components/encoder/) on your rover base.
+2. Configure [digital interrupts](/components/board/jetson/#digital_interrupts) on your board to signal precise GPIO state changes to the [encoders](/components/encoder/) on your rover base.
    Find your board on the **CONFIGURE** tab in **Builder** mode.
    Click the **{}** (Switch to advanced) button on the right side of your board's card to switch to JSON attributes editing mode.
-   Copy and paste the following JSON into your board's attributes field to add [digital interrupts](/components/board/#digital_interrupts) on pins `31`, `29`, `23`, and `21`:
+   Copy and paste the following JSON into your board's attributes field to add [digital interrupts](/components/board/jetson/#digital_interrupts) on pins `31`, `29`, `23`, and `21`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -146,7 +146,7 @@ Start by configuring the [encoders](/components/encoder/) and [motors](/componen
 
    {{<imgproc src="/tutorials/navigate-with-rover-base/left-encoder-config-builder.png" resize="950x" declaredimensions=true alt="Configuration of a left incremental encoder in the Viam app config builder." class="aligncenter" style="min-height:550px; max-height:600px">}}
 
-   Assign the pins as the [digital interrupts](/components/board/#digital_interrupts) you configured for the board, and wire the encoders accordingly to pins {{< glossary_tooltip term_id="pin-number" text="numbered" >}} `31`, `29`, `23`, and `21` on your `local` board.
+   Assign the pins as the [digital interrupts](/components/board/jetson/#digital_interrupts) you configured for the board, and wire the encoders accordingly to pins {{< glossary_tooltip term_id="pin-number" text="numbered" >}} `31`, `29`, `23`, and `21` on your `local` board.
    Refer to the [`incremental` encoder documentation](/components/encoder/incremental/) for attribute information.
 
 2. Next, follow [these instructions](/components/motor/#supported-models) to configure the left and right [motors](/components/motor/) of the `wheeled` base.
