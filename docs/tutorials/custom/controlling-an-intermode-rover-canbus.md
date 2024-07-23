@@ -186,7 +186,7 @@ When registering it, the code also provides the API that the new model supports.
 That means in this case that the base should support the default [base API](/components/base/#api) with methods such as `MoveStraight` and `Spin`.
 
 The **API** of any Viam resource is also represented as colon-separated triplets where the first element is a namespace.
-Since you are using the default Viam API for a [base](/components/base/), the [API](/registry/#valid-apis-to-implement-in-your-model) you are using is:
+Since you are using the default Viam API for a [base](/components/base/), the [API](/use-cases/create-module/#valid-api-identifiers) you are using is:
 `rdk:component:base`.
 In the code this is specified on line 30 as `base.Subtype`.
 
