@@ -528,7 +528,7 @@ viam module update
 viam module upload --version "1.0.0" --platform "darwin/arm64" packaged-module.tar.gz
 ```
 
-See [Upload a custom module](/use-cases/create-module/#upload-a-custom-module-using-the-cli) and [Update an existing module](/use-cases/manage-modules/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+See [Upload a custom module](/use-cases/manage-modules/#upload-a-custom-module-using-the-cli) and [Update an existing module](/use-cases/manage-modules/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
 
 If you update and release your module as part of a continuous integration (CI) workflow, you can also
 [automatically upload new versions of your module on release](/use-cases/manage-modules/#update-an-existing-module-using-a-github-action) using a GitHub Action.
@@ -698,12 +698,12 @@ For example, the following represents the configuration of an example `my-module
 ```
 
 {{% alert title="Important" color="note" %}}
-If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/create-module/#name-your-new-resource-model) must match the [namespace of your organization](/cloud/organizations/#create-a-namespace-for-your-organization).
+If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/use-cases/create-module/#name-your-new-resource-model) must match the [namespace of your organization](/cloud/organizations/#create-a-namespace-for-your-organization).
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 {{% /alert %}}
 
-See [Upload a custom module](/use-cases/create-module/#upload-a-custom-module-using-the-cli) and [Update an existing module](/use-cases/manage-modules/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+See [Upload a custom module](/use-cases/manage-modules/#upload-a-custom-module-using-the-cli) and [Update an existing module](/use-cases/manage-modules/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
 
 See [Modular resources](/registry/) for a conceptual overview of modules and the modular resource system at Viam.
 

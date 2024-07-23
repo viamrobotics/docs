@@ -161,7 +161,7 @@ The `viam` namespace is reserved for models provided by Viam.
 
 ### Write your new resource model definition
 
-This is the step where you code the logic that is unique to your module.
+In this step, you will code the logic that is unique to your model.
 
 {{% alert title="Tip (optional)" color="tip" %}}
 
@@ -1799,7 +1799,7 @@ If you later wish to make your module public, you can use the [`viam module upda
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 
-For more information, see [Name your new resource model](/create-module/#name-your-new-resource-model).
+For more information, see [Name your new resource model](/use-cases/create-module/#name-your-new-resource-model).
 
     {{% /alert %}}
 

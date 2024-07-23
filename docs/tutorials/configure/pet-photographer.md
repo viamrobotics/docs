@@ -138,7 +138,7 @@ For example, the camera's <file>client.py</file> file is located at <file>[/comp
    - Exclude the `get_images` method, which you will customize to add filtering functionality in the upcoming section.
    - Include the other methods within the class corresponding to your resource type (in this case, the `CameraClient` class).
 
-For more information, refer to [Define a new resource model](/use-cases/create-module/#define-a-new-resource-model).
+For more information, refer to [Write your new resource model definition](/use-cases/create-module/#write-your-new-resource-model-definition).
 
 {{% /tab %}}
 {{% tab name="Go"%}}
@@ -150,7 +150,7 @@ For example, the camera's <file>client.go</file> file is located at <file>[/comp
    Exclude the `Read` method, which you will replace with a method, `Next`, to add filtering functionality in the upcoming section.
    - You can create your own code or copy the code from the [viam-labs `colorfilter` repository's <file>color_filter.go</file>](https://github.com/viam-labs/modular-filter-examples/blob/main/colorfilter/color_filter.go) file.
 
-For more information, refer to [Define a new resource model](/use-cases/create-module/#define-a-new-resource-model).
+For more information, refer to [Write your new resource model definition](/use-cases/create-module/#write-your-new-resource-model-definition).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -692,7 +692,7 @@ In this code:
 {{% /tab %}}
 {{< /tabs >}}
 
-For more information, see [Define a new resource model](/use-cases/create-module/#define-a-new-resource-model).
+For more information, see [Write your new resource model definition](/use-cases/create-module/#write-your-new-resource-model-definition).
 
 #### Code an entry point file
 
