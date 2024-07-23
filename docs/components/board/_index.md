@@ -68,18 +68,6 @@ For configuration information, click on the model name:
 {{% /tab %}}
 {{< /tabs >}}
 
-## Attribute configuration
-
-Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) and [digital interrupts](#digital_interrupts) into your machine.
-
-### `analogs`
-
-{{< readfile "/static/include/components/board/board-analogs.md" >}}
-
-### `digital_interrupts`
-
-{{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
-
 ## Control your board with Viam's client SDK libraries
 
 To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
