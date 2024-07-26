@@ -6,7 +6,7 @@
 | [`GetAngularVelocity`](/components/movement-sensor/#getangularvelocity) | Get the current angular velocity as a 3D vector. | IMU models, `gyro-mpu6050`, and `wheeled-odometry` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`GetLinearAcceleration`](/components/movement-sensor/#getlinearacceleration) | Get the current linear acceleration as a 3D vector. | IMU models,  `accel-adxl345`, and `gyro-mpu6050` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`GetCompassHeading`](/components/movement-sensor/#getcompassheading) | Get the current compass heading in degrees. | GPS models | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| [`GetOrientation`](/components/movement-sensor/#getorientation) | Get the current orientation. | IMU models, `wheeled-odometry` | |
+| [`GetOrientation`](/components/movement-sensor/#getorientation) | Get the current orientation. | IMU models, `wheeled-odometry` | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`GetProperties`](/components/movement-sensor/#getproperties) | Get the supported properties of this sensor. | all models | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`GetAccuracy`](/components/movement-sensor/#getaccuracy) | Get the accuracy of the various sensors. | GPS models | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`GetReadings`](/components/movement-sensor/#getreadings) | Obtain the measurements/data specific to this sensor. | all models | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |

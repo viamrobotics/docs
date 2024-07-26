@@ -218,15 +218,7 @@ Instead, save this command to run in any future terminal session where you need 
 Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
 
 Click on the name of the machine to go to the machine's page.
-Then, navigate to the **CONFIGURE** tab.
-
-[Client API](/appendix/apis/) usage with the micro-RDK is currently limited to the following supported {{< glossary_tooltip term_id="resource" text="resources" >}}:
-
-- [Base](/components/base/)
-- [Board](/components/board/)
-- [Encoder](/components/encoder/)
-- [Movement Sensor](/components/movement-sensor/)
-- [Motor](/components/motor/)
+Then, navigate to the **CONFIGURE** tab and [configure your machine](/build/configure/).
 
 ### Generate a new project from the micro-RDK template
 

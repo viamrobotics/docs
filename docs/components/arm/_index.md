@@ -64,7 +64,14 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 
 ## Supported models
 
-{{<resources api="rdk:component:arm" type="arm">}}
+To use your arm component, check whether one of the following models supports it.
+
+For configuration information, click on the model name:
+
+{{< tabs >}}
+{{% tab name="RDK" %}}
+
+{{<resources api="rdk:component:arm" type="arm" no-intro="true">}}
 
 {{< alert title="Add support for other models" color="tip" >}}
 
@@ -73,6 +80,18 @@ If none of the existing models fit your use case, you can [create a modular reso
 You can follow [this guide](/registry/examples/custom-arm/) to implement your custom arm as a [modular resource](/registry/).
 
 {{< /alert >}}
+
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
+
+{{< alert title="Support Notice" color="note" >}}
+
+There is currently no support for this component in the micro-RDK.
+
+{{< /alert >}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Control your arm with Viam's client SDK libraries
 
