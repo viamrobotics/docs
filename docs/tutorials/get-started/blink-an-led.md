@@ -43,7 +43,7 @@ You will use the following hardware for this tutorial:
 - [Raspberry Pi](https://a.co/d/5Tn67G3)
   - Refer to the [Viam Raspberry Pi Setup Guide](/get-started/prepare/rpi-setup/) to set up your Pi.
 - [A solderless breadboard](https://www.amazon.com/dp/B0135IQ0ZC)
-- [Jumper wires](https://amzn.to/2qVhd4y)
+- Jumper wires
 - [Resistor pack](https://amzn.to/2Dmainw)
   - You will use a 100 Ohm resistor, which is the resistor with brown-black-brown bands
 - [An LED](https://amzn.to/2Ex2v5q)
