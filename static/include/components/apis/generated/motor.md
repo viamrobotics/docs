@@ -4,6 +4,7 @@ Set the portion of max power to send to the motor (between `-1` and `1`).
 A value of `1` represents 100% power forwards, while a value of `-1` represents 100% power backwards.
 
 Power is expressed as a floating point between `-1` and `1` that scales between -100% and 100% power.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -58,11 +59,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Parameters:**
 
 - `powerPct` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -125,11 +126,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Parameters:**
 
 - `rpm` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -205,11 +206,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `rpm` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
 - `revolutions` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -284,11 +285,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `rpm` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
 - `positionRevolutions` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -358,11 +359,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Parameters:**
 
 - `offset` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -381,6 +382,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 Report the position of the motor based on its encoder.
 The value returned is the number of revolutions relative to its zero position.
 This method raises an exception if position reporting is not supported by the motor.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -436,11 +438,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)\>
 
 **Example:**
 
@@ -457,6 +459,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### GetProperties
 
 Report a dictionary mapping optional properties to whether it is supported by this motor.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -516,11 +519,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[MotorProperties](https://flutter.viam.dev/viam_sdk/MotorProperties.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[MotorProperties](https://flutter.viam.dev/viam_sdk/MotorProperties.html)\>
 
 **Example:**
 
@@ -597,11 +600,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[PowerState](https://flutter.viam.dev/viam_sdk/PowerState-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[PowerState](https://flutter.viam.dev/viam_sdk/PowerState-class.html)\>
 
 **Example:**
 
@@ -653,6 +656,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ### IsMoving
 
 Return whether the motor is actively moving (or attempting to move) under its own power.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -710,11 +714,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)\>
 
 **Example:**
 
@@ -731,6 +735,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### Stop
 
 Cut the power to the motor immediately, without any gradual step down.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -784,11 +789,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -886,11 +891,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
 
 **Example:**
 

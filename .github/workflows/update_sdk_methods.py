@@ -444,10 +444,7 @@ override_description_links = {
     "organization settings page": "/cloud/organizations/",
     "image tags": "/services/data/dataset/#image-tags",
     "API key": "/fleet/cli/#authenticate",
-    "in configuration": "/components/board/#digital_interrupts",
-    "board model": "/components/board/#supported-models",
-    "AnalogReaders": "/components/board/#analogs",
-    "DigitalInterrupts": "/components/board/#digital_interrupts"
+    "board model": "/components/board/#supported-models"
 }
 
 ## Language-specific resource name overrides:
@@ -771,7 +768,7 @@ def parse(type, names):
                                     for row in f:
                                         if not row.startswith('#') \
                                         and row.startswith(resource + ',') \
-                                        and row.split(',')[3] == method_name:
+                                        and row.split(',')[4] == method_name:
                                             this_method_dict["proto"] = row.split(',')[1]
 
                                 ## Extract the raw text from resource_interface matching method_name.
@@ -990,12 +987,12 @@ def parse(type, names):
                             for row in f:
                                 if not row.startswith('#') \
                                 and row.startswith(resource + ',') \
-                                and row.split(',')[2] == method_name:
+                                and row.split(',')[3] == method_name:
                                     this_method_dict["proto"] = row.split(',')[1]
 
                         ## Determine method description, stripping newlines. If not present, skip:
                         if tag.find('dd').p:
-                            this_method_dict["description"] = tag.find('dd').p.text.replace("\n", " ") 
+                            this_method_dict["description"] = tag.find('dd').p.text.replace("\n", " ")
 
                         ## Determine method direct link, no need to parse for it, it's inferrable.
                         ## If we are scraping from a local staging instance, replace host and port with upstream link target URL:
@@ -1313,14 +1310,14 @@ def parse(type, names):
 
                                 if not row.startswith('#') \
                                 and row.startswith(resource + ',') \
-                                and row.split(',')[4] == method_name:
+                                and row.split(',')[5] == method_name:
                                     this_method_dict["proto"] = row.split(',')[1]
 
                         ## Determine method link:
                         method_link = tag.find("span", class_="name").a['href'].replace("..", sdk_url)
                         this_method_dict["method_link"] = method_link
 
-                        ## While some method info is available to us on this current Flutter SDK page, the code sample is only found on the 
+                        ## While some method info is available to us on this current Flutter SDK page, the code sample is only found on the
                         ## method_link page. So we scrape that page for everything:
                         method_soup = make_soup(method_link)
 
@@ -1406,7 +1403,7 @@ def parse(type, names):
             elif sdk == "flutter" and type == "app":
                 ##Flutter SDK has no APP API!
                 pass
-            
+
             else:
                 ## Good code would never get here.
                 ## This code gets here when facing a resource with 0 implemented methods for
@@ -1672,9 +1669,10 @@ def write_markdown(type, names, methods):
                 if not row.startswith('#') \
                 and row.startswith(resource + ','):
                     proto = row.split(',')[1]
-                    py_method_name = row.split(',')[2]
-                    go_method_name = row.split(',')[3]
-                    flutter_method_name = row.split(',')[4].rstrip()
+                    micro_rdk_support = row.split(',')[2]
+                    py_method_name = row.split(',')[3]
+                    go_method_name = row.split(',')[4]
+                    flutter_method_name = row.split(',')[5].rstrip()
 
                     ## Allow setting protos with 0 sdk method maps, to allow us to disable writing MD
                     ## for specific protos as needed, if needed:
@@ -1704,6 +1702,9 @@ def write_markdown(type, names, methods):
                             for line in open(proto_override_file, 'r', encoding='utf-8'):
                                output_file.write(line)
 
+                            if micro_rdk_support == "Yes":
+                                output_file.write('Supported by the micro-RDK.\n')
+
                             output_file.write('\n')
 
                         ## We have at least one implemented method for this proto, so begin writing table list markdown for this resource.
@@ -1712,8 +1713,12 @@ def write_markdown(type, names, methods):
                         ## down the line, to avoid blank table_files:
                         if is_first_method_in_this_resource and resource != 'movement_sensor':
                             table_file.write('<!-- prettier-ignore -->\n')
-                            table_file.write('| Method Name | Description |\n')
-                            table_file.write('| ----------- | ----------- |\n')
+                            if micro_rdk_support != '':
+                                table_file.write('| Method Name | Description | micro-RDK Support |\n')
+                                table_file.write('| ----------- | ----------- | ----------------- |\n')
+                            else:
+                                table_file.write('| Method Name | Description |\n')
+                                table_file.write('| ----------- | ----------- |\n')
 
                         ## Determine what the anchor link structure should be for this resource. Each type has its own standard:
                         proto_link = proto.replace('.', '').lower()
@@ -1759,7 +1764,15 @@ def write_markdown(type, names, methods):
 
                         ## Write out this proto's entry to this resource's table_file:
                         if resource != 'movement_sensor':
-                            table_file.write('| [`' + proto + '`](' + proto_anchor_link + ') | ' + proto_description_first_sentence + ' |\n')
+                            if micro_rdk_support != '':
+                                if micro_rdk_support == 'Yes':
+                                    mark = '<p class="center-text"><i class="fas fa-check" title="yes"></i></p>'
+                                else:
+                                    mark = '<p class="center-text"><i class="fas fa-times" title="no"></i></p>'
+                                table_file.write('| [`' + proto + '`](' + proto_anchor_link + ') | ' + proto_description_first_sentence + ' | ' + mark +' |\n')
+                            else:
+                                table_file.write('| [`' + proto + '`](' + proto_anchor_link + ') | ' + proto_description_first_sentence + ' |\n')
+
 
                         ## Begin the per-language markdown writing to output_file with the opening tabset declaration:
                         output_file.write('{{< tabs >}}\n')
@@ -2044,7 +2057,7 @@ def write_markdown(type, names, methods):
 
                                     if args.overrides:
                                         print(param_desc_override_file)
- 
+
                                     ## Check if param description override file exists:
                                     if os.path.exists(param_desc_override_file):
                                         preserve_formatting = False

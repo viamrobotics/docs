@@ -27,9 +27,28 @@ Integrate this component to monitor your power levels.
 
 ## Supported models
 
-{{<resources api="rdk:component:power_sensor" type="power_sensor">}}
+To use your power sensor component, check whether one of the following models supports it.
+
+For configuration information, click on the model name:
+
+{{< tabs >}}
+{{% tab name="RDK" %}}
+
+{{<resources api="rdk:component:power_sensor" type="power_sensor" no-intro="true">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
+
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
+
+{{< alert title="Support Notice" color="note" >}}
+
+There is currently no support for this component in the micro-RDK.
+
+{{< /alert >}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Control your power sensor with Viam’s client SDK libraries
 

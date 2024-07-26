@@ -47,9 +47,28 @@ Most machines with a gantry need at least the following hardware:
 
 ## Supported models
 
-{{<resources api="rdk:component:gantry" type="gantry">}}
+To use your gantry component, check whether one of the following models supports it.
+
+For configuration information, click on the model name:
+
+{{< tabs >}}
+{{% tab name="RDK" %}}
+
+{{<resources api="rdk:component:gantry" type="gantry" no-intro="true">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
+
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
+
+{{< alert title="Support Notice" color="note" >}}
+
+There is currently no support for this component in the micro-RDK.
+
+{{< /alert >}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Control your gantry with Viam's client SDK libraries
 

@@ -39,9 +39,28 @@ Add services commonly used with the component.
 
 ## Supported models
 
-{{<resources api="rdk:component:component" type="component">}}
+To use your COMPONENT component, check whether one of the following models supports it.
+
+For configuration information, click on the model name:
+
+{{< tabs >}}
+{{% tab name="RDK" %}}
+
+{{<resources api="rdk:component:component" type="component" no-intro="true">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
+
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
+
+{{< alert title="Support Notice" color="note" >}}
+
+There is currently no support for this component in the micro-RDK.
+
+{{< /alert >}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Control your board with Viam's client SDK libraries
 

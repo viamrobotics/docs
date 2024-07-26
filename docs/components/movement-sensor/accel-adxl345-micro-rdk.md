@@ -1,26 +1,31 @@
 ---
-title: "Configure an MPU-6050 (Micro-RDK)"
-linkTitle: "gyro-mpu6050"
-weight: 40
+title: "Configure an ADXL345 Accelerometer (Micro-RDK)"
+linkTitle: "accel-adxl345"
+weight: 20
 type: "docs"
-description: "Configure an MPU-6050 movement sensor with a microcontroller."
+description: "Configure an ADXL345 digital accelerometer with a microcontroller."
 images: ["/icons/components/imu.svg"]
 aliases:
-  - /micro-rdk/movement-sensor/gyro-mpu6050/
-# SMEs: Rand
+  - /micro-rdk/movement-sensor/accel-adxl345/
+micrordk_component: true
+toc_hide: true
+# SMEs: Rand, Kim Mishra
 ---
 
-The `gyro-mpu6050` movement sensor model supports a combination [gyroscope and accelerometer manufactured by TDK InvenSense](https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/).
+The `accel-adxl345` movement sensor model supports the Analog Devices [ADXL345 digital accelerometer](https://www.analog.com/en/products/adxl345.html).
+This three axis accelerometer supplies linear acceleration data, supporting the `LinearAcceleration` method.
+
+If you are using a [Viam Rover](/get-started/try-viam/), this is the accelerometer on it.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
-Select the `movement-sensor` type, then select the `gyro-mpu6050` model.
+Select the `movement-sensor` type, then select the `accel-adxl345` model.
 Enter a name or use the suggested name for your movement sensor and click **Create**.
 
-{{< imgproc src="/components/movement-sensor/mpu6050-builder.png" alt="Creation of an `gyro-mpu6050` movement sensor in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/components/movement-sensor/adxl345-builder.png" alt="Creation of an `accel-adxl345` movement sensor in the Viam app config builder." resize="600x" >}}
 
 Copy and paste the following attribute template into your movement sensor's attributes field.
 Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
@@ -32,7 +37,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 {
   "board": "<your-board-name>",
   "i2c_bus": "<your-i2c-bus-name-on-board>",
-  "use_alt_i2c_address": <boolean>
+  "use_alt_i2c_address": <boolean>,
 }
 ```
 
@@ -57,15 +62,14 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
   "components": [
     {
       "name": "<your-sensor-name>",
-      "model": "gyro-mpu6050",
+      "model": "accel-adxl345",
       "type": "movement_sensor",
       "namespace": "rdk",
       "attributes": {
         "board": "<your-board-name>",
         "i2c_bus": "<your-i2c-bus-name-on-board>",
         "use_alt_i2c_address": <boolean>
-      },
-      "depends_on": []
+      }
     }
   ]
 }
@@ -95,13 +99,14 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
       }
     },
     {
-      "name": "my_accelgyro",
-      "model": "gyro-mpu6050",
+      "name": "my-adxl",
+      "model": "accel-adxl345",
       "type": "movement_sensor",
       "namespace": "rdk",
       "attributes": {
         "board": "local",
-        "i2c_bus": "default_i2c_bus"
+        "i2c_bus": "default_i2c_bus",
+        "use_alt_i2c_address": false
       }
     }
   ]
@@ -114,16 +119,15 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 ## Attributes
 
 <!-- prettier-ignore -->
-| Name                  | Type    | Required? | Description |
-| --------------------- | ------- | --------- | ----------- |
-| `board`               | string  | **Required** | The `name` of the [board](/build/micro-rdk/board/) to which the device is wired. |
-| `i2c_bus`             | string  | **Required** | The `name` of the I<sup>2</sup>C bus configured on your [board](/components/board/) wired to this device. |
-| `use_alt_i2c_address` | boolean | Optional     | Depends on whether you wire AD0 low (leaving the default address of 0x68) or high (making the address 0x69). If high, set `true`. If low, set `false`. <br> Default: `false` |
+| Name | Type   | Required? | Description |
+| ---- | ------ | --------- | ----------- |
+| `board` | string | **Required** | The `name` of the [board](/components/board/) to which the device is wired. |
+| `i2c_bus` | string | **Required** | The `name` of the I<sup>2</sup>C bus on the [board](/components/board/) wired to this device. |
+| `use_alt_i2c_address` | bool | Optional | Depends on whether you wire SDO low (leaving the default address of 0x53) or high (making the address 0x1D). If high, set true. If low, set false or omit the attribute. <br> Default: `false` |
 
 ## Test the movement sensor
 
 After you configure your movement sensor, navigate to the [Control tab](/fleet/control/) and select the dedicated movement sensor dropdown panel.
 This panel presents the data collected by the movement sensor.
-The sections in the panel include the angular velocity and linear acceleration.
 
-{{<imgproc src="/components/movement-sensor/movement-sensor-control-tab-mpu6050.png" resize="800x" declaredimensions=true alt="The movement sensor component in the control tab">}}
+{{<imgproc src="/components/movement-sensor/movement-sensor-control-tab-adxl345.png" resize="400x" declaredimensions=true alt="The movement sensor component in the control tab">}}

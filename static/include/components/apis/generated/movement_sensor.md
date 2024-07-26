@@ -3,6 +3,7 @@
 Report the current linear velocity in the x, y and z directions (as a 3D vector) in meters per second.
 
 Supported by GPS models.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -55,11 +56,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Vector3](https://flutter.viam.dev/viam_sdk/Vector3-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Vector3](https://flutter.viam.dev/viam_sdk/Vector3-class.html)\>
 
 **Example:**
 
@@ -77,6 +78,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 Report the current angular velocity about the x, y and z axes (as a 3D vector) in degrees per second.
 
 Supported by IMU models and by `gyro-mpu6050`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -135,11 +137,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Vector3](https://flutter.viam.dev/viam_sdk/Vector3-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Vector3](https://flutter.viam.dev/viam_sdk/Vector3-class.html)\>
 
 **Example:**
 
@@ -157,6 +159,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 Report the current [compass heading](https://en.wikipedia.org/wiki/Heading_(navigation)) in degrees.
 
 Supported by GPS models.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -209,11 +212,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)\>
 
 **Example:**
 
@@ -292,11 +295,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Orientation](https://flutter.viam.dev/viam_sdk/Orientation-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Orientation](https://flutter.viam.dev/viam_sdk/Orientation-class.html)\>
 
 **Example:**
 
@@ -314,6 +317,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 Report the current GeoPoint (latitude, longitude) and altitude (in meters).
 
 Supported by GPS models.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -368,11 +372,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Position](https://flutter.viam.dev/viam_sdk/Position-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Position](https://flutter.viam.dev/viam_sdk/Position-class.html)\>
 
 **Example:**
 
@@ -388,6 +392,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### GetProperties
 
 Get the supported properties of this sensor.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -440,11 +445,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Properties](https://flutter.viam.dev/viam_sdk/Properties.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Properties](https://flutter.viam.dev/viam_sdk/Properties.html)\>
 
 **Example:**
 
@@ -529,11 +534,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Accuracy](https://flutter.viam.dev/viam_sdk/Accuracy.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Accuracy](https://flutter.viam.dev/viam_sdk/Accuracy.html)\>
 
 **Example:**
 
@@ -551,6 +556,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 Report the current linear acceleration in the x, y and z directions (as a 3D vector) in meters per second per second.
 
 Supported by IMU models, `accel-adxl345`, and `gyro-mpu6050`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -606,11 +612,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Vector3](https://flutter.viam.dev/viam_sdk/Vector3-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Vector3](https://flutter.viam.dev/viam_sdk/Vector3-class.html)\>
 
 **Example:**
 
@@ -660,6 +666,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 Get all the measurements/data from the sensor.
 Results depend on the sensor model and can be of any type.
 If a sensor is not configured to take a certain measurement or fails to read a piece of data, that data will not appear in the readings dictionary.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -712,11 +719,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
 
 **Example:**
 
@@ -756,6 +763,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 Execute model-specific commands that are not otherwise defined by the component API.
 If you are implementing your own movement sensor and add features that have no built-in API method, you can access them with `DoCommand`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -812,11 +820,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
 
 **Example:**
 

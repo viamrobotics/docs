@@ -218,20 +218,7 @@ Instead, save this command to run in any future terminal session where you need 
 Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
 
 Click on the name of the machine to go to the machine's page.
-Then, navigate to the **CONFIGURE** tab.
-
-### Configure your machine with an ESP32
-
-[Client API](/appendix/apis/) usage with the micro-RDK is currently limited to the following supported {{< glossary_tooltip term_id="resource" text="resources" >}}:
-
-- [Base](/build/micro-rdk/base/)
-- [Board](/build/micro-rdk/board/)
-- [Encoder](/build/micro-rdk/encoder/)
-- [Movement Sensor](/build/micro-rdk/movement-sensor/)
-- [Motor](/build/micro-rdk/motor/)
-
-See [micro-RDK](/build/micro-rdk/) to get a list of supported models and instructions on how to configure them.
-Follow [this guide](/build/micro-rdk/board/esp32/) to configure an `esp32` board on your machine.
+Then, navigate to the **CONFIGURE** tab and [configure your machine](/build/configure/).
 
 ### Generate a new project from the micro-RDK template
 

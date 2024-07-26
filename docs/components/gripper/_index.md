@@ -28,9 +28,28 @@ A _gripper_ is a robotic grasping device that can open and close, often attached
 
 ## Supported models
 
-{{<resources api="rdk:component:gripper" type="gripper">}}
+To use your gripper component, check whether one of the following models supports it.
+
+For configuration information, click on the model name:
+
+{{< tabs >}}
+{{% tab name="RDK" %}}
+
+{{<resources api="rdk:component:gripper" type="gripper" no-intro="true">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
+
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
+
+{{< alert title="Support Notice" color="note" >}}
+
+There is currently no support for this component in the micro-RDK.
+
+{{< /alert >}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Control your gripper with Viam's client SDK libraries
 

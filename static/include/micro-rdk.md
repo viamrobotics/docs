@@ -11,15 +11,15 @@ The only microcontroller the micro-RDK currently supports is the [ESP32](https:/
 [Client API](/appendix/apis/) usage with the micro-RDK currently supports the following {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
 {{< cards >}}
-{{% card link="/build/micro-rdk/base/" %}}
-{{% card link="/build/micro-rdk/board/" %}}
-{{% card link="/build/micro-rdk/encoder/" %}}
-{{% card link="/build/micro-rdk/movement-sensor/" %}}
-{{% card link="/build/micro-rdk/motor/" %}}
-{{% card link="/build/micro-rdk/sensor/" %}}
-{{% card link="/build/micro-rdk/servo/" %}}
-{{% card link="/build/micro-rdk/generic/" %}}
-{{% card link="/build/micro-rdk/data_management/" %}}
+{{% card link="/components/base/" %}}
+{{% card link="/components/board/" %}}
+{{% card link="/components/encoder/" %}}
+{{% card link="/components/movement-sensor/" %}}
+{{% card link="/components/motor/" %}}
+{{% card link="/components/sensor/" %}}
+{{% card link="/components/servo/" %}}
+{{% card link="/components/generic/" %}}
+{{% card link="/services/data/capture/" %}}
 {{< /cards >}}
 
 Click on each supported resource to see supported models, API methods, and configuration info.

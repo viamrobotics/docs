@@ -9,6 +9,8 @@ icon: true
 images: ["/icons/components/servo.svg"]
 aliases:
   - /micro-rdk/servo/gpio/
+  - /build/micro-rdk/servo/gpio/
+micrordk_component: true
 # SME: Gautham
 ---
 
@@ -119,7 +121,7 @@ The following attributes are available for `gpio` servos:
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `pin` | string | **Required** | The GPIO number of the pin the servo's control wire is wired to on the board. |
-| `board` | string | **Required** | `name` of the [board](/build/micro-rdk/board/) the servo is wired to. |
+| `board` | string | **Required** | `name` of the [board](/components/board/) the servo is wired to. |
 | `frequency_hz` | int | Optional | The frequency of [PWM](https://docs.arduino.cc/learn/microcontrollers/analog-output) pulses sent to the servo, in Hertz (*Hz*). <br> Default = [`300`] <br> Range = [`0`, `450`] |
 | `min_angle_deg` | int | Optional | The minimum angle in degrees that the servo can reach. <br> Default = `0` <br> Range = [`0`, `180`] |
 | `max_angle_deg` | int | Optional | The maximum angle in degrees that the servo can reach. <br> Default = `180` <br> Range = [`0`, `180`] |
@@ -131,7 +133,7 @@ The following attributes are available for `gpio` servos:
 
 A `gpio` servo using a PWM pin leaves you with three remaining PWM frequencies for use on an `esp32`.
 If the frequency of another PWM signal is unimportant, it can also be set to the same frequency as your servo.
-See [PWM signals on `esp32` pins](/build/micro-rdk/board/esp32/#pwm-signals-on-esp32-pins) for more information.
+See [PWM signals on `esp32` pins](/components/board/esp32/#pwm-signals-on-esp32-pins) for more information.
 
 {{% alert title="Tip" color="tip" %}}
 

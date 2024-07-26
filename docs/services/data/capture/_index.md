@@ -11,18 +11,36 @@ no_list: true
 aliases:
   - "/services/data/capture/"
   - "/data/capture/"
+  - "/build/micro-rdk/data_management/"
 # SME: Alexa Greenberg
 no_service: true
 ---
 
-The data management service captures data from one or more components locally on the machine's storage.
-The process runs in the background and, by default, stores data in the `~/.viam/capture` directory.
+The data management service captures data from one or more components.
 
-If a machine restarts for any reason, capture automatically resumes.
+{{< tabs >}}
+{{% tab name="RDK" %}}
+
+The data is captured locally on the machine's storage and, by default, stored in the `~/.viam/capture` directory.
+
+If a machine restarts for any reason, capture automatically resumes and any data from already stored but not yet synced is synced.
 
 The service can capture data from multiple components at the same or different frequencies.
-Viam does not impose a lower or upper limit on the frequency of data collection.
+The service does not impose a lower or upper limit on the frequency of data collection.
 However, in practice, your hardware may impose limits on the frequency of data collection.
+
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
+The data is captured in the ESP32's flash memory and periodically uploaded to the Viam cloud.
+
+If the machine restarts before all data is synced, all unsynced data captured since the last sync point is lost.
+
+The service can capture data from multiple components at the same or different frequencies.
+The service does not impose a lower or upper limit on the frequency of data collection.
+However, in practice, high frequency data collection (> 100Hz) requires special considerations on the ESP32.
+
+{{% /tab %}}
+{{< /tabs >}}
 
 You can change the frequency of data capture at any time for individual components.
 If you use {{< glossary_tooltip term_id="fragment" text="fragments" >}}, you can change the frequency of data capture in real time for some or all machines in a fleet at the component or machine level.
@@ -43,20 +61,30 @@ To capture data from one or more machines, you must first add the [data manageme
 2. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 3. Select the `data management` type, then either use the suggested name or specify a name for your data management service, for example `data-manager`.
 4. Click **Create**.
-5. On the panel that appears, you can manage the capturing and syncing functions and specify the **Directory**, the sync **Interval** and any **Tags** to apply to captured data.
+5. On the panel that appears, you can manage the capturing and syncing functions.
+   {{< tabs >}}
+   {{% tab name="RDK" %}}
+   Specify the **Directory**, the sync **Interval** and any **Tags** to apply to captured data.
 
-   If the sync **Interval** or the **Directory** is not specified, the data management service captures data at the default frequency every 0.1 minutes (after every 6 second interval) in the default `~/.viam/capture` directory.
+If the sync **Interval** or the **Directory** is not specified, the data management service captures data at the default frequency every 0.1 minutes (after every 6 second interval) in the default `~/.viam/capture` directory.
 
-   {{< alert title="Info" color="info" >}}
-   If you change the directory for data capture only new data is stored in the new directory.
-   Existing data remains in the directory where it was stored.
-   {{< /alert >}}
+{{< alert title="Info" color="info" >}}
+If you change the directory for data capture only new data is stored in the new directory.
+Existing data remains in the directory where it was stored.
+{{< /alert >}}
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
+Specify the sync **Interval**.
 
-6. Click the **Save** button in the top right corner of the page.
-
-![data capture configuration](/tutorials/data-management/data-management-conf.png)
+{{< alert title="Info" color="info" >}}
+With micro-RDK, the `capture_dir`, `tags`, and `additional_sync_paths` attributes are ignored and should not be configured.
+{{< /alert >}}
+{{% /tab %}}
+{{< /tabs >}}
 
 {{%expand "Click to view the JSON configuration for the data management service" %}}
+{{< tabs >}}
+{{% tab name="RDK" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -78,12 +106,51 @@ To capture data from one or more machines, you must first add the [data manageme
 }
 ```
 
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [],
+  "services": [
+    {
+      "attributes": {
+        "capture_dir": "",
+        "tags": [],
+        "additional_sync_paths": [],
+        "sync_interval_mins": 3
+      },
+      "name": "my-data-manager",
+      "namespace": "rdk",
+      "type": "data_manager"
+    }
+  ]
+}
+```
+
+{{< alert title="Info" color="info" >}}
+With micro-RDK, the `capture_dir`, `tags`, and `additional_sync_paths` attributes are ignored and should not be configured.
+{{< /alert >}}
+
+{{% /tab %}}
+{{< /tabs >}}
+
 {{% /expand%}}
+
+6. Click the **Save** button in the top right corner of the page.
+
+![data capture configuration](/tutorials/data-management/data-management-conf.png)
 
 ## Configure data capture for individual components
 
 Once you have added the data capture service, you can specify the data you want to capture at a component level.
+
+### Supported components
+
 The following components support data capture:
+
+{{< tabs >}}
+{{% tab name="RDK" %}}
 
 - Arm
 - Board
@@ -94,6 +161,18 @@ The following components support data capture:
 - Movement Sensor (includes GPS)
 - Sensor
 - Servo
+
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
+
+<!-- prettier-ignore -->
+| Type | Method |
+| ---- | ------ |
+| [Sensor](/components/sensor/) | [`GetReadings`](/components/sensor/#getreadings) |
+| [Movement Sensor](/components/movement-sensor/) | [`AngularVelocity`](/components/movement-sensor/#getangularvelocity), [`LinearAcceleration`](/components/movement-sensor/#getlinearacceleration), [`LinearVelocity`](/components/movement-sensor/#getlinearvelocity) |
+
+{{% /tab %}}
+{{< /tabs >}}
 
 To add data capture for a component, navigate to the **CONFIGURE** tab of your machine's page in the Viam app.
 
@@ -108,13 +187,19 @@ Avoid configuring data capture to higher rates than your hardware can handle, as
 
 Click the **Save** button in the top right corner of the page.
 
-Now your data will be saved locally on your machine to the directory specified in the data management service.
+Now, using the RDK, your data will be saved locally on your machine to the directory specified in the data management service.
+If you are using the micro-RDK, data will be captured at the configured capture frequency and saved in flash memory and synced to Viam app at the selected interval.
 
 For example, a camera has the options `ReadImage` and `NextPointCloud` and a motor has the options `Position` and `IsPowered`.
 
 ![component config example](/services/data/data-service-component-config.png)
 
-{{%expand "Click to view an example JSON configuration capturing data from the ReadImage method of a camera" %}}
+{{%expand "Click to view an example JSON configuration" %}}
+
+{{< tabs >}}
+{{% tab name="RDK" %}}
+
+This example configuration captures data from the ReadImage method of a camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -174,12 +259,86 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
 }
 ```
 
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
+
+This example configuration captures data from the GetReadings method of a temperature sensor and wifi signal sensor:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "services": [
+    {
+      "attributes": {
+        "capture_dir": "",
+        "tags": [],
+        "additional_sync_paths": [],
+        "sync_interval_mins": 3
+      },
+      "name": "dm",
+      "namespace": "rdk",
+      "type": "data_manager"
+    }
+  ],
+  "components": [
+    {
+      "type": "sensor",
+      "model": "tmp36",
+      "attributes": {
+        "analog_reader": "temp",
+        "num_readings": 15
+      },
+      "depends_on": [],
+      "service_configs": [
+        {
+          "attributes": {
+            "capture_methods": [
+              {
+                "capture_frequency_hz": 0.2,
+                "additional_params": {},
+                "method": "Readings"
+              }
+            ]
+          },
+          "type": "data_manager"
+        }
+      ],
+      "name": "tmp36",
+      "namespace": "rdk"
+    },
+    {
+      "type": "sensor",
+      "model": "wifi-rssi",
+      "attributes": {},
+      "service_configs": [
+        {
+          "type": "data_manager",
+          "attributes": {
+            "capture_methods": [
+              {
+                "additional_params": {},
+                "method": "Readings",
+                "capture_frequency_hz": 0.1
+              }
+            ]
+          }
+        }
+      ],
+      "name": "my-wifi-sensor",
+      "namespace": "rdk"
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 {{% /expand%}}
 
 You may capture data from one or more component methods:
 
-- To enable or disable data capture for a configured component or method, use the `on/off` toggle.
-- To change the frequency of data capture for a method, enter the number of measurements you wish to capture per second in the frequency field.
+- To enable or disable data capture for a configured component or method, use the `on/off` toggle on the component's configuration pane in the Viam app.
+- To change the frequency of data capture for a method, enter the number of measurements you wish to capture per second in the frequency field on the component's configuration pane in the Viam app.
 
 After adding configuration for the methods, click the **Save** button in the top right corner of the page.
 
@@ -203,7 +362,7 @@ To add them to your JSON configuration you must explicitly add the remote compon
 
 {{%expand "Click to view example JSON configuration for an ESP32 board" %}}
 
-The following example shows the configuration of the remote part, in this case an [ESP32 board](/build/micro-rdk/board/esp32/).
+The following example shows the configuration of the remote part, in this case an [ESP32 board](/components/board/esp32/).
 This config is just like that of a non-remote part; the remote connection is established by the main part (in the next expandable example).
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -378,7 +537,7 @@ The following example captures data from the `ReadImage` method of a camera:
 
 If [cloud sync](/services/data/cloud-sync/) is enabled, the data management service deletes captured data once it has successfully synced to the cloud.
 
-The data management service will also automatically delete local data in the event your machine's local storage fills up.
+With the RDK, the data management service will also automatically delete local data in the event your machine's local storage fills up.
 Local data is automatically deleted when _all_ of the following conditions are met:
 
 - Data capture is enabled on the data manager service

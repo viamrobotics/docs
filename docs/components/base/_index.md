@@ -11,6 +11,8 @@ images: ["/icons/components/base.svg"]
 modulescript: true
 aliases:
   - "/components/base/"
+  - "/micro-rdk/base/"
+  - "/build/micro-rdk/base/"
 hide_children: true
 # SMEs: Steve B
 ---
@@ -40,13 +42,29 @@ Most mobile robots with a base need at least the following hardware:
 
 ## Supported models
 
-{{<resources api="rdk:component:base" type="base">}}
+To use your base component, check whether one of the following models supports it.
+
+For configuration information, click on the model name:
+
+{{< tabs >}}
+{{% tab name="RDK" %}}
+
+{{<resources api="rdk:component:base" type="base" no-intro="true">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
-### Micro-RDK
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
 
-If you are using the micro-RDK, navigate to [Micro-RDK Base](/build/micro-rdk/base/) for supported model information.
+<!-- prettier-ignore -->
+| Model | Description |
+| ----- | ----------- |
+| [`two_wheeled_base`](two_wheeled_base/) | Mobile robot with two wheels |
+
+{{% readfile "/static/include/micro-create-your-own.md" %}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Control your base with Viam's client SDK libraries
 

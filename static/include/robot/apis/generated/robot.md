@@ -575,7 +575,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[CloudMetadata](https://flutter.viam.dev/viam_sdk/CloudMetadata.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[CloudMetadata](https://flutter.viam.dev/viam_sdk/CloudMetadata.html)\>
 
 **Example:**
 
@@ -641,7 +641,7 @@ Create a RobotClient that is connected to the machine at the provided address.
 
 **Returns:**
 
-- ([typing_extensions.Self](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient)): the RobotClient.
+- ([typing_extensions.Self](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient))
 
 **Example:**
 
@@ -674,7 +674,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html)\>
 
 **Example:**
 
@@ -715,7 +715,7 @@ Any machines created using this method will NOT automatically close the channel 
 
 **Returns:**
 
-- ([typing_extensions.Self](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient)): the RobotClient.
+- ([typing_extensions.Self](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient))
 
 **Example:**
 
@@ -768,7 +768,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -877,7 +877,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 

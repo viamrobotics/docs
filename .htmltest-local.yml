@@ -30,6 +30,8 @@ IgnoreURLs:
   - "chrome.google.com"
   - "raspberrypi.com"
   - "grabcad.com"
+  - "orangepi.org"
+  - "rtk2go.com"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"

@@ -49,6 +49,7 @@ Follow the guide to [Use a Custom Training Script](/services/ml/upload-training-
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the id of the org to submit the training job to.
 - `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the id of the dataset.
 - `registry_item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the id of the registry item.
+- `registry_item_version` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the version of the registry item.
 - `model_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the model name.
 - `model_version` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the model version.
 
@@ -63,6 +64,7 @@ job_id = await ml_training_client.submit_custom_training_job(
     organization_id=organization_id,
     dataset_id=dataset_id,
     registry_item_id="your-registry-item-id",
+    registry_item_version="your-registry-item-version",
     model_name="your-model-name",
     model_version="1"
 )

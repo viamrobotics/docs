@@ -7,6 +7,8 @@ images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 aliases:
   - /micro-rdk/encoder/incremental/
+  - /build/micro-rdk/encoder/incremental/
+micrordk_component: true
 # SMEs: Rand
 ---
 
@@ -73,7 +75,7 @@ The following attributes are available for `incremental` encoders:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `board` | string | **Required** | The `name` of the [board](/build/micro-rdk/board/) to which the encoder is wired. |
+| `board` | string | **Required** | The `name` of the [board](/components/board/) to which the encoder is wired. |
 | `a` | string | **Required** | GPIO number of one of the pins to which the encoder is wired |
 | `b` | string | **Required** | GPIO number of the second board pin to which the encoder is wired |
 

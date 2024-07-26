@@ -12,6 +12,9 @@ no_list: true
 modulescript: true
 aliases:
   - "/components/generic/"
+  - /micro-rdk/generic/
+  - /build/micro-rdk/generic/
+
 hide_children: true
 # SMEs:
 ---
@@ -39,9 +42,30 @@ If you want to use most of an existing API but need just a few other functions, 
 
 ## Supported models
 
-{{<resources api="rdk:component:generic" type="generic">}}
+To use your generic component, check whether one of the following models supports it.
+
+For configuration information, click on the model name:
+
+{{< tabs >}}
+{{% tab name="RDK" %}}
+
+{{<resources api="rdk:component:generic" type="generic" no-intro="true">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
+
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
+
+If your micro-RDK machine includes a resource that isn't a [base](/components/base/), [board](/components/board/),[encoder](/components/encoder/), [movement sensor](/components/movement-sensor/), [motor](/components/motor/), or [servo](/components/servo/), you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it as a custom model of the generic subtype.
+
+{{< alert title="Important" color="note" >}}
+The micro-RDK works differently from the RDK, so creating modular resources for it is different.
+Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) for information on how to create custom resources for your micro-RDK machine.
+You will need to [recompile and flash your ESP32 yourself](/get-started/installation/microcontrollers/development-setup/) instead of using Viam's prebuilt binary and installer.
+{{< /alert >}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Control your board with Viam's client SDK libraries
 

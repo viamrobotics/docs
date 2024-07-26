@@ -12,6 +12,8 @@ images: ["/icons/components/sensor.svg"]
 modulescript: true
 aliases:
   - "/components/sensor/"
+  - /micro-rdk/sensor/
+  - /build/micro-rdk/sensor/
 hide_children: true
 # SME: #team-bucket
 ---
@@ -44,9 +46,29 @@ Most machines with a sensor need at least the following hardware:
 
 ## Supported models
 
-{{<resources api="rdk:component:sensor" type="sensor">}}
+To use your motor component, check whether one of the following models supports it.
+
+For configuration information, click on the model name:
+
+{{< tabs >}}
+{{% tab name="RDK" %}}
+
+{{<resources api="rdk:component:sensor" type="sensor" no-intro="true">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
+
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
+
+<!-- prettier-ignore -->
+| Model | Description |
+| ----- | ----------- |
+| [`ultrasonic`](ultrasonic-micro-rdk/) | [HC-SR04](https://www.sparkfun.com/products/15569) ultrasonic sensors |
+
+{{% readfile "/static/include/micro-create-your-own.md" %}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Control your sensor with Viam's client SDK libraries
 

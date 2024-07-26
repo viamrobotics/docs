@@ -12,6 +12,8 @@ images: ["/icons/components/board.svg"]
 modulescript: true
 aliases:
   - "/components/board/"
+  - "/micro-rdk/board/"
+  - "/build/micro-rdk/board/"
 hide_children: true
 # SMEs: Gautham, Rand
 ---
@@ -42,25 +44,29 @@ If there is no board model for your board:
 
 {{< /alert >}}
 
-{{<resources api="rdk:component:board" type="board">}}
+To use your board component, check whether one of the following models supports it.
+
+For configuration information, click on the model name:
+
+{{< tabs >}}
+{{% tab name="RDK" %}}
+
+{{<resources api="rdk:component:board" type="board" no-intro="true">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
-### Micro-RDK
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
 
-If you are using the micro-RDK, navigate to [Micro-RDK Board](/build/micro-rdk/board/) for supported model information.
+<!-- prettier-ignore -->
+| Model | Description |
+| ----- | ----------- |
+| [`esp32`](esp32/) | An ESP32 microcontroller |
 
-## Attribute configuration
+{{% readfile "/static/include/micro-create-your-own.md" %}}
 
-Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) and [digital interrupts](#digital_interrupts) into your machine.
-
-### `analogs`
-
-{{< readfile "/static/include/components/board/board-analogs.md" >}}
-
-### `digital_interrupts`
-
-{{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Control your board with Viam's client SDK libraries
 

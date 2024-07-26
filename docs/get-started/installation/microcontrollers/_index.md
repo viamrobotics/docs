@@ -11,6 +11,7 @@ aliases:
   - /installation/microcontrollers/
   - /installation/prepare/microcontrollers/
   - /get-started/installation/prepare/microcontrollers/
+  - /build/micro-rdk/
 # SMEs: Nicolas M., Gautham V., Andrew M.
 ---
 
@@ -45,12 +46,12 @@ For more `micro-rdk-installer` CLI usage options, see [GitHub](https://github.co
 ### Configure your machine
 
 The micro-RDK provides different component models than the fully featured RDK.
-See [Micro-RDK](/build/micro-rdk/) to get a list of supported models and instructions on how to configure them.
+See the micro-RDK tab in the **Supported Models** section of each component page.
 
 ## Next steps
 
 {{< cards >}}
-{{% manualcard link="/build/micro-rdk/board/esp32/" %}}
+{{% manualcard link="/components/board/esp32/" %}}
 
 <h4>Configure your board </h4>
 

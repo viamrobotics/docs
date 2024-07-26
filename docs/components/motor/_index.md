@@ -12,6 +12,8 @@ no_list: true
 modulescript: true
 aliases:
   - "/components/motor/"
+  - /micro-rdk/motor/
+  - /build/micro-rdk/motor/
 hide_children: true
 # SME: Rand
 ---
@@ -42,13 +44,29 @@ Most machines with a motor need at least the following hardware:
 
 ## Supported models
 
-{{<resources api="rdk:component:motor" type="motor">}}
+To use your motor component, check whether one of the following models supports it.
+
+For configuration information, click on the model name:
+
+{{< tabs >}}
+{{% tab name="RDK" %}}
+
+{{<resources api="rdk:component:motor" type="motor" no-intro="true">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
-### Micro-RDK
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
 
-If you are using the micro-RDK, navigate to [Micro-RDK Motor](/build/micro-rdk/motor/) for supported model information.
+<!-- prettier-ignore -->
+| Model | Description |
+| ----- | ----------- |
+| [`gpio`](./gpio-micro-rdk/) | [Standard brushed or brushless DC motor](https://en.wikipedia.org/wiki/DC_motor) |
+
+{{% readfile "/static/include/micro-create-your-own.md" %}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Control your motor with Viam's client SDK libraries
 

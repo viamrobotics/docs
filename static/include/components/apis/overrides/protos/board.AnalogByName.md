@@ -1,1 +1,1 @@
-Get an [`Analog`](#analogs) by `name`.
+Get a configured `Analog` by `name`.
