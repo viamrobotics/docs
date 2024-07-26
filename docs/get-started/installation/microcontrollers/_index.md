@@ -46,7 +46,7 @@ For more `micro-rdk-installer` CLI usage options, see [GitHub](https://github.co
 ### Configure your machine
 
 The micro-RDK provides different component models than the fully featured RDK.
-See the [Micro-RDK](/get-started/installation/microcontrollers/) tab in the Supported Models section of each component page.
+See the micro-RDK tab in the **Supported Models** section of each component page.
 
 ## Next steps
 

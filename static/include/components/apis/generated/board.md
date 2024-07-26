@@ -507,7 +507,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### AnalogNames
 
-Get the name of every `Analog` configured and residing on the board.
+Get the name of every configured `Analog` on the board.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -578,7 +578,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `name` [(string)](https://pkg.go.dev/builtin#string): Name of the analog pin you want to retrieve. Set as the `"name"` property in configuration.
+- `name` [(string)](https://pkg.go.dev/builtin#string): Name of the analog pin you want to retrieve. Set as the `"name"` property in board configuration.
 
 **Returns:**
 
@@ -709,7 +709,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `name` [(string)](https://pkg.go.dev/builtin#string): Name of the digital interrupt you want to retrieve. Set as the configured `"name"` property.
+- `name` [(string)](https://pkg.go.dev/builtin#string): Name of the digital interrupt you want to retrieve. Set as the `"name"` property in board configuration.
 
 **Returns:**
 

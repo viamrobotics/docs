@@ -7,6 +7,7 @@ images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 aliases:
   - /micro-rdk/encoder/single/
+  - /build/micro-rdk/encoder/single/
 micrordk_component: true
 # SMEs: Rand
 ---

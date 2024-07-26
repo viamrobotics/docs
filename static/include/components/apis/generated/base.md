@@ -381,7 +381,7 @@ Get the width and turning radius of the {{< glossary_tooltip term_id="model" tex
 
 **Returns:**
 
-- ([viam.components.base.Base.Properties](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.Properties)): The properties of the base.
+- (viam.components.base.Base.Properties): The properties of the base.
 
 **Example:**
 

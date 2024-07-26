@@ -1,1 +1,1 @@
-Get the name of every [`Analog`](#analogs) configured and residing on the board.
+Get the name of every configured `Analog` on the board.

@@ -9,6 +9,7 @@ icon: true
 images: ["/icons/components/servo.svg"]
 aliases:
   - /micro-rdk/servo/gpio/
+  - /build/micro-rdk/servo/gpio/
 micrordk_component: true
 # SME: Gautham
 ---
