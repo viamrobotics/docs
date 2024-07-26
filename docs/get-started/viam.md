@@ -16,6 +16,7 @@ images: ["/general/understand.png"]
 ---
 
 Viam is a software platform that makes it easy to work with hardware and software.
+
 At the core of Viam is the open-source `viam-server` executable which:
 
 - Creates, configures, and maintains any machine on which it is installed
