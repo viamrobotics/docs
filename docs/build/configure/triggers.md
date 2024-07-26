@@ -219,24 +219,29 @@ app = Flask(__name__)
 
 
 @app.route("/", methods=['GET', 'POST'])
-def hello_http_get():
+def trigger():
     headers = request.headers
-    print(headers)
+    data = {}
+    if request.data:
+        data = request.json
     payload = {
         "Org-Id": headers.get('org-id', 'no value'),
-        "Organization-Name": headers.get('organization-name', 'no value'),
+        "Organization-Name": headers.get('organization-name', '') or
+                             data.get('org_name', 'no value'),
         "Location-Id": headers.get('location-id', 'no value'),
-        "Location-Name": headers.get('location-name', 'no value'),
+        "Location-Name": headers.get('location-name', '') or
+                         data.get('location_name', 'no value'),
         "Part-Id": headers.get('part-id', 'no value'),
         "Part-Name": headers.get('part-name', 'no value'),
         "Robot-Id": headers.get('robot-id', 'no value'),
-        "Machine-Name": headers.get('machine-name', 'no value'),
-        "Component-Type": headers.get('component-type', 'no value'),
-        "Component-Name": headers.get('component-name', 'no value'),
-        "Method-Name": headers.get('method-name', 'no value'),
-        "Min-Time-Received": headers.get('min-time-received', 'no value'),
-        "Max-Time-Received": headers.get('max-time-received', 'no value'),
-        "Data-Type": request.args.get('data_type', 'no value')
+        "Machine-Name": headers.get('machine-name', '') or
+                        data.get('machine_name', 'no value'),
+        "Component-Type": data.get('component_type', 'no value'),
+        "Component-Name": data.get('component_name', 'no value'),
+        "Method-Name": data.get('method_name', 'no value'),
+        "Min-Time-Received": data.get('min_time_received', 'no value'),
+        "Max-Time-Received": data.get('max_time_received', 'no value'),
+        "Data-Type": data.get('data_type', 'no value')
     }
     print(payload)
 
@@ -259,21 +264,27 @@ import time
 @functions_framework.http
 def hello_http(request):
     headers = request.headers
+    data = {}
+    if request.data:
+        data = request.json
     payload = {
-        "Org-Id": headers.get('org-id', 'no value'),
-        "Organization-Name": headers.get('organization-name', 'no value'),
-        "Location-Id": headers.get('location-id', 'no value'),
-        "Location-Name": headers.get('location-name', 'no value'),
-        "Part-Id": headers.get('part-id', 'no value'),
-        "Part-Name": headers.get('part-name', 'no value'),
-        "Robot-Id": headers.get('robot-id', 'no value'),
-        "Machine-Name": headers.get('machine-name', 'no value'),
-        "Component-Type": headers.get('component-type', 'no value'),
-        "Component-Name": headers.get('component-name', 'no value'),
-        "Method-Name": headers.get('method-name', 'no value'),
-        "Min-Time-Received": headers.get('min-time-received', 'no value'),
-        "Max-Time-Received": headers.get('max-time-received', 'no value'),
-        "Data-Type": request.args.get('data_type', 'no value')
+        "Org-Id": headers.get("org-id", "no value"),
+        "Organization-Name": headers.get("organization-name", "")
+        or data.get("org_name", "no value"),
+        "Location-Id": headers.get("location-id", "no value"),
+        "Location-Name": headers.get("location-name", "")
+        or data.get("location_name", "no value"),
+        "Part-Id": headers.get("part-id", "no value"),
+        "Part-Name": headers.get("part-name", "no value"),
+        "Robot-Id": headers.get("robot-id", "no value"),
+        "Machine-Name": headers.get("machine-name", "")
+        or data.get("machine_name", "no value"),
+        "Component-Type": data.get("component_type", "no value"),
+        "Component-Name": data.get("component_name", "no value"),
+        "Method-Name": data.get("method_name", "no value"),
+        "Min-Time-Received": data.get("min_time_received", "no value"),
+        "Max-Time-Received": data.get("max_time_received", "no value"),
+        "Data-Type": data.get("data_type", "no value"),
     }
     print(payload)
 
@@ -299,18 +310,28 @@ The request includes the following headers:
 <!-- prettier-ignore -->
 | Header Key | Description | Trigger types |
 | ---------- | ----------- | ------------- |
-| `Org-Id` | The ID of the organization that triggered the request. | `part_data_ingested` |
+| `Org-Id` | The ID of the organization that triggered the request. | all |
 | `Organization-Name` | The name of the organization that triggered the request. | `part_online`, `part_offline` |
 | `Location-Id` | The location of the machine that triggered the request. | all |
 | `Location-Name` | The location of the machine that triggered the request. | `part_online`, `part_offline` |
 | `Part-Id` |  The part of the machine that triggered the request. | all |
 | `Machine-Name` | The name of the machine that triggered the request. | `part_online`, `part_offline` |
 | `Robot-Id` | The ID of the machine that triggered the request. | all |
-| `Component-Type` | The type of component for which data was ingested. | `part_data_ingested` |
-| `Component-Name` | The name of the component for which data was ingested. | `part_data_ingested` |
-| `Method-Name` | The name of the method from which data was ingested. Only for `part_data_ingested` triggers. | `part_data_ingested` |
-| `Min-Time-Received` | Indicates the earliest time a piece of data was received. | `part_data_ingested` |
-| `Max-Time-Received` | Indicates the latest time a piece of data was received. | `part_data_ingested` |
+
+The request body includes the following data:
+
+<!-- prettier-ignore -->
+| Data Key | Description | Trigger types |
+| -------- | ----------- | ------------- |
+| `component_name` | The name of the component for which data was ingested. | `part_data_ingested` |
+| `component_type` | The type of component for which data was ingested. | `part_data_ingested` |
+| `method_name` | The name of the method from which data was ingested. Only for `part_data_ingested` triggers. | `part_data_ingested` |
+| `min_time_received` | Indicates the earliest time a piece of data was received. | `part_data_ingested` |
+| `max_time_received` | Indicates the latest time a piece of data was received. | `part_data_ingested` |
+| `machine_name` | The name of the machine that triggered the request. | `part_data_ingested` |
+| `location_name` | The location of the machine that triggered the request. | `part_data_ingested` |
+| `org_name` | The name of the organization that triggered the request. | `part_data_ingested` |
+| `file_id` | The id of the file that was ingested. | `part_data_ingested` |
 
 ## Next steps
 
