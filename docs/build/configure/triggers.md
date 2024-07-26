@@ -227,15 +227,15 @@ def trigger():
     payload = {
         "Org-Id": headers.get('org-id', 'no value'),
         "Organization-Name": headers.get('organization-name', '') or
-         data.get('org_name', 'no value'),
+        data.get('org_name', 'no value'),
         "Location-Id": headers.get('location-id', 'no value'),
         "Location-Name": headers.get('location-name', '') or
-         data.get('location_name', 'no value'),
+        data.get('location_name', 'no value'),
         "Part-Id": headers.get('part-id', 'no value'),
         "Part-Name": headers.get('part-name', 'no value'),
         "Robot-Id": headers.get('robot-id', 'no value'),
         "Machine-Name": headers.get('machine-name', '') or
-         data.get('machine_name', 'no value'),
+        data.get('machine_name', 'no value'),
         "Component-Type": data.get('component_type', 'no value'),
         "Component-Name": data.get('component_name', 'no value'),
         "Method-Name": data.get('method_name', 'no value'),
