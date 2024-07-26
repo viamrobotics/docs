@@ -97,7 +97,7 @@ Use [`AnalogByName()`](/components/board/#analogbyname) followed by [`Write()`](
 {{% changelog date="2024-04-30" color="changed" title="Renamed AnalogReader to Analog" %}}
 
 `AnalogReader` has been renamed to `Analog`.
-The functionality remains the same, but code that uses [analogs](/components/board/#analogs) must be updated.
+The functionality remains the same, but code that uses analogs must be updated.
 `AnalogReaderByName()` and `AnalogReaderNames()` have become [`AnalogByName()`](/components/board/#analogbyname) and [`AnalogNames()`](/components/board/#analognames), respectively.
 
 {{% /changelog %}}

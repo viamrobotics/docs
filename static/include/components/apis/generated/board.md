@@ -507,7 +507,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### AnalogNames
 
-Get the name of every [`Analog`](#analogs) configured and residing on the board.
+Get the name of every `Analog` configured and residing on the board.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -549,7 +549,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### AnalogByName
 
-Get an [`Analog`](#analogs) by `name`.
+Get a configured `Analog` by `name`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -578,7 +578,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `name` [(string)](https://pkg.go.dev/builtin#string): Name of the analog pin you want to retrieve. Set as the `"name"` property [in configuration](/components/board/#digital_interrupts).
+- `name` [(string)](https://pkg.go.dev/builtin#string): Name of the analog pin you want to retrieve. Set as the `"name"` property in configuration.
 
 **Returns:**
 
@@ -679,7 +679,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetDigitalInterruptValue
 
-Get an [`DigitalInterrupt`](#digital_interrupts) by `name`.
+Get a configured `DigitalInterrupt` by `name`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -709,7 +709,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `name` [(string)](https://pkg.go.dev/builtin#string): Name of the digital interrupt you want to retrieve. Set as the `"name"` property [in configuration](/components/board/#digital_interrupts).
+- `name` [(string)](https://pkg.go.dev/builtin#string): Name of the digital interrupt you want to retrieve. Set as the configured `"name"` property.
 
 **Returns:**
 
@@ -732,7 +732,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 ### StreamTicks
 
-Start a stream of [`DigitalInterrupt`](/components/board/#digital_interrupts) ticks.
+Start a stream of `DigitalInterrupt` ticks.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -945,7 +945,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### Read
 
-Read the current integer value of the digital signal output by the [ADC](#analogs).
+Read the current integer value of the digital signal output by the ADC.
 Supported by the micro-RDK.
 
 {{< tabs >}}
@@ -1093,7 +1093,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### DigitalInterruptNames
 
-Get the name of every [`DigitalInterrupt`](#digital_interrupts) configured on the board.
+Get the name of every configured `DigitalInterrupt` on the board.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

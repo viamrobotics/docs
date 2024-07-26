@@ -1,1 +1,1 @@
-Get an [`DigitalInterrupt`](#digital_interrupts) by `name`.
+Get a configured `DigitalInterrupt` by `name`.
