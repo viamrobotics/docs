@@ -1,9 +1,9 @@
 ---
 title: "Navigation Service"
 linkTitle: "Navigation"
-description: "The navigation service uses GPS to autonomously navigate a rover to user-defined endpoints."
+description: "The navigation service uses GPS to autonomously navigate a rover to user-defined waypoints."
 type: docs
-weight: 40
+weight: 50
 no_list: true
 icon: true
 images: ["/services/icons/navigation.svg"]
@@ -16,7 +16,8 @@ no_service: true
 ---
 
 The navigation service is the stateful definition of Viam's [motion service](/services/motion/).
-It uses GPS to autonomously navigate a rover [base](/components/base/) to user-defined endpoints called waypoints.
+It uses GPS to autonomously navigate a rover [base](/components/base/) to user-defined waypoints.
+
 Configure your base with a navigation service, add waypoints, and set the mode of the service to [**Waypoint**](/services/navigation/#setmode) to move your rover along a defined path at your desired motion configuration.
 
 ## Used with

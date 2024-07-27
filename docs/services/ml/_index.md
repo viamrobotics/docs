@@ -1,7 +1,7 @@
 ---
 title: "Machine Learning"
 linkTitle: "Machine Learning"
-weight: 450
+weight: 30
 type: "docs"
 tags: ["data management", "data", "services"]
 no_list: true

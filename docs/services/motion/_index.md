@@ -1,7 +1,7 @@
 ---
 title: "Motion Service"
 linkTitle: "Motion"
-weight: 20
+weight: 40
 type: "docs"
 description: "The motion service enables your machine to plan and move its components relative to itself, other machines, and the world."
 tags: ["motion", "motion planning", "services"]

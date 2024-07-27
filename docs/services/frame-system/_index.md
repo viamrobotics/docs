@@ -3,7 +3,7 @@ title: "The Robot Frame System"
 linkTitle: "Frame System"
 description: "The frame system holds reference frame information for the relative position of components in space."
 type: docs
-weight: 10
+weight: 50
 no_list: true
 icon: true
 images: ["/services/icons/frame-system.svg"]
@@ -15,12 +15,12 @@ no_service: true
 # SMEs: Peter L, Gautham, Bijan
 ---
 
-Any machine configured in Viam comes with the frame system service: an internally managed and mostly static system for storing the "reference frame" of each component of a machine within a coordinate system configured by the user.
-
-![Visualization of a wheeled base configured with motors and a mounted camera in the frame system tab of the Viam app UI](/services/frame-system/frame_system_wheeled_base.png)
-
 The frame system is the basis for some of Viam's other services, like [motion](/services/motion/) and [vision](/services/vision/).
 It stores the required contextual information to use the position and orientation readings returned by some components.
+
+It is a mostly static system for storing the "reference frame" of each component of a machine within a coordinate system configured by the user.
+
+![Visualization of a wheeled base configured with motors and a mounted camera in the frame system tab of the Viam app UI](/services/frame-system/frame_system_wheeled_base.png)
 
 ## Used with
 
