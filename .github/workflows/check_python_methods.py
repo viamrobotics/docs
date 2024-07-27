@@ -251,7 +251,7 @@ def parse(type, names):
                 if service in services_page_mapping.keys():
                     soup2 = make_soup(f"https://docs.viam.com/{services_page_mapping[service]}/")
                 else:
-                    soup2 = make_soup(f"https://docs.viam.com/build/configure/{type}/{service}/")
+                    soup2 = make_soup(f"https://docs.viam.com/configure/{type}/{service}/")
 
         # Find all links on Docs site soup
         all_links = soup2.find_all('a')

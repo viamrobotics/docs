@@ -1214,7 +1214,7 @@ When packaged in this fashion, you can run the resulting executable on your desi
 
 To create a packaged executable:
 
-1. First, [create a Python virtual environment](/build/program/python-venv/) in your module's directory to ensure your module has access to any required libraries.
+1. First, [create a Python virtual environment](/sdks/python/python-venv/) in your module's directory to ensure your module has access to any required libraries.
    Be sure you are within your Python virtual environment for the rest of these steps: your terminal prompt should include the name of your virtual environment in parenthesis.
 
 1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
@@ -1324,7 +1324,7 @@ This is the recommended approach for modules written in Python:
 
 Using a virtual environment together with a `requirements.txt` file and a `run.sh` file that references it ensures that your module has access to any packages it requires during runtime.
 If you intend to share your module with other users, or to deploy it to a fleet of machines, this approach handles dependency resolution for each deployment automatically, meaning that there is no need to explicitly determine and install the Python packages your module requires to run on each machine that installs your module.
-See [prepare a Python virtual environment](/build/program/python-venv/) for more information.
+See [prepare a Python virtual environment](/sdks/python/python-venv/) for more information.
 
 {{% /tab %}}
 {{% tab name="Python: nuitka" %}}
@@ -1333,7 +1333,7 @@ Use the [`nuitka` Python compiler](https://pypi.org/project/Nuitka/) to compile 
 
 1. In order to use Nuitka, you must install a [supported C compiler](https://github.com/Nuitka/Nuitka#c-compiler) on your machine.
 
-1. Then, [create a Python virtual environment](/build/program/python-venv/) in your module's directory to ensure your module has access to any required libraries.
+1. Then, [create a Python virtual environment](/sdks/python/python-venv/) in your module's directory to ensure your module has access to any required libraries.
    Be sure you are within your Python virtual environment for the rest of these steps: your terminal prompt should include the name of your virtual environment in parenthesis.
 
 1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.

@@ -8,7 +8,7 @@ tags: ["fleet management", "control", "app"]
 images: ["/fleet/control.gif"]
 ---
 
-Once you have [configured components and services](/build/configure/) for your machine, you can test, monitor, and remotely operate them from the **CONTROL** tab in the [Viam app](https://app.viam.com) or the [Viam mobile app](/fleet/#the-viam-mobile-app).
+Once you have [configured components and services](/configure/) for your machine, you can test, monitor, and remotely operate them from the **CONTROL** tab in the [Viam app](https://app.viam.com) or the [Viam mobile app](/fleet/#the-viam-mobile-app).
 
 ## Control interface in the Viam app
 
@@ -19,7 +19,7 @@ For example, if you have configured a base with wheels, you can move your machin
 If you have configured a camera component, a window in the **CONTROL** tab displays the camera output.
 
 If you use remote control in the [Viam app](https://app.viam.com) UI, all communication to the machine uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
-For local communication between [parts](/build/configure/parts/#machine-parts) Viam uses gRPC or WebRTC.
+For local communication between [parts](/configure/parts/#machine-parts) Viam uses gRPC or WebRTC.
 
 {{<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="Using the control tab" max-width="800px">}}
 
@@ -27,7 +27,7 @@ You can also switch between different machine parts and control the selected mac
 
 {{< imgproc src="/fleet/app-usage/control-machine-part-dropdown.png" alt="The expanded Machine part dropdown menu with the main part selected on the Control tab." resize="650x" class="aligncenter" >}}
 
-For more information on configuring and controlling machine parts, see [Machine Architecture](/build/configure/parts/#machine-parts).
+For more information on configuring and controlling machine parts, see [Machine Architecture](/configure/parts/#machine-parts).
 
 ### Components
 

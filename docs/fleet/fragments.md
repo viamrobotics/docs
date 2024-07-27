@@ -10,7 +10,7 @@ aliases:
 ---
 
 If you have multiple machines with similar configurations, you can use a _fragment_ to configure all of the machines at the same time.
-Fragments are a way of sharing and managing [machine configurations](/build/configure/) across multiple machines.
+Fragments are a way of sharing and managing [machine configurations](/configure/) across multiple machines.
 
 If there are differences between your machines, you can use a fragment to quickly configure the {{< glossary_tooltip term_id="resource" text="resources" >}} that are the same between machines.
 You can then configure the differing resources separately, outside of the fragment.
@@ -38,7 +38,7 @@ You can add multiple fragments to a single machine, and you can add additional r
 ## Create a fragment
 
 Before you create a fragment, you'll need a JSON configuration file.
-The easiest way to create a config file is to [configure](/build/configure/) one of your machines on its **CONFIGURE** tab in the [Viam app](https://app.viam.com).
+The easiest way to create a config file is to [configure](/configure/) one of your machines on its **CONFIGURE** tab in the [Viam app](https://app.viam.com).
 Configure all resources that you want to have for all your machines.
 If there are any additional resources that you do not want to share with all machines, do not configure them until after you've created the fragment.
 When you've finished configuring the resources, select **JSON** mode and copy the entire JSON config.
@@ -102,7 +102,7 @@ Viam supports all update operators except for `$setOnInsert`, `$`, `$[]`, and `$
 
 {{% alert title="Support Notice" color="note" %}}
 
-`fragment_mods` are _not_ supported for the modification of [trigger](/build/configure/triggers/) configuration.
+`fragment_mods` are _not_ supported for the modification of [trigger](/configure/triggers/) configuration.
 You can create a trigger with a fragment but you cannot modify it with `fragment_mods`.
 
 {{% /alert %}}

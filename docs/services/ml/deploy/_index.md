@@ -71,7 +71,7 @@ You can search the machine learning models that are available to deploy on this 
 ## Versioning for deployed models
 
 If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the machine.
-If you do not want Viam to automatically deploy the `latest` version of the model, you can edit the `"packages"` array in the [JSON configuration](/build/configure/#the-configure-tab) of your machine.
+If you do not want Viam to automatically deploy the `latest` version of the model, you can edit the `"packages"` array in the [JSON configuration](/configure/#the-configure-tab) of your machine.
 This array is automatically created when you deploy the model and is not embedded in your service configuration.
 
 You can get the version number from a specific model version by navigating to the [models page](https://app.viam.com/data/models) finding the model's row, clicking on the right-side menu marked with **_..._** and selecting **Copy package JSON**. For example: `2024-02-28T13-36-51`.
@@ -115,7 +115,7 @@ You can also run this command on an existing Python SDK install to add support f
 
 See the [Python documentation](https://python.viam.dev/autoapi/viam/services/mlmodel/mlmodel/index.html#viam.services.mlmodel.mlmodel.MLModel) for more information about the `MLModel` service in Python.
 
-See [Program a machine](/build/program/) for more information about using an SDK to control your machine.
+See [Program a machine](/sdks/) for more information about using an SDK to control your machine.
 
 ## Next steps
 

@@ -28,7 +28,7 @@ Depending on your needs, you may wish to define a new API subtype, deploy a cust
 The [component APIs](/appendix/apis/#component-apis) and [service APIs](/appendix/apis/#service-apis) provide a standard interface for controlling common hardware components and higher level functionality.
 If your use case aligns closely with an existing API, you should use that API to program your new resource.
 
-If you want to use most of an existing API but need just a few other functions, you can use the [`DoCommand`](/appendix/apis/#docommand) endpoint together with [extra parameters](/build/program/use-extra-params/) to add custom functionality to an existing resource {{< glossary_tooltip term_id="subtype" text="subtype" >}}.
+If you want to use most of an existing API but need just a few other functions, you can use the [`DoCommand`](/appendix/apis/#docommand) endpoint together with [extra parameters](/sdks/use-extra-params/) to add custom functionality to an existing resource {{< glossary_tooltip term_id="subtype" text="subtype" >}}.
 
 Or, if your resource does not fit into an existing resource subtype, you can use one of the following:
 

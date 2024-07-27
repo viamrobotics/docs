@@ -1,7 +1,7 @@
 ---
 title: Fragment
 id: fragment
-full_link: /build/configure/#fragments
+full_link: /configure/#fragments
 short_description: A reusable configuration block that you can share across multiple machines.
 ---
 

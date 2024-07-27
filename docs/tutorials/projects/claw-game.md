@@ -139,7 +139,7 @@ Machines are organized into {{< glossary_tooltip term_id="part" text="parts" >}}
 Every machine has a main part which is automatically created when you create the machine.
 Since you just created a new machine, your machine's main part is already defined.
 Multi-part machines also have one or more sub-parts representing additional computers running `viam-server`.
-If you have two computers within the _same machine_, you can use one as the main part and [connect the other to it as a sub-part](/build/configure/parts/#configure-a-sub-part).
+If you have two computers within the _same machine_, you can use one as the main part and [connect the other to it as a sub-part](/configure/parts/#configure-a-sub-part).
 This is the approach this tutorial follows: you'll run the [motion planning service](/services/motion/) on a laptop and connect that laptop as a sub-part to your machine.
 
 {{< alert title="Tip" color="tip" >}}
@@ -154,7 +154,7 @@ Use the parts dropdown menu in the top banner of your machine’s page on [the V
 
 Follow the instructions on the **Setup** tab to install `viam-server` on your development machine and connect to your robot's sub-part.
 
-For more information about parts, see [Machine Architecture: Parts](/build/configure/parts/).
+For more information about parts, see [Machine Architecture: Parts](/configure/parts/).
 
 Now you are ready to configure the individual components in the [Viam app](https://app.viam.com).
 Navigate to the **Config** tab of your machine's page and select your main part from the parts dropdown.
@@ -181,7 +181,7 @@ Click **Save config** in the lower-left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your board:
+On the [`Raw JSON` tab](/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your board:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -230,7 +230,7 @@ Click **Save config** in the lower-left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your arm:
+On the [`Raw JSON` tab](/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your arm:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -295,7 +295,7 @@ Click **Save config** in the lower-left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your arm and gripper:
+On the [`Raw JSON` tab](/configure/#the-configure-tab), replace the configuration with the following JSON configuration for your arm and gripper:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

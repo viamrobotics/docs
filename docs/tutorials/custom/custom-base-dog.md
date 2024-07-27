@@ -407,7 +407,7 @@ Your local component configuration should look similar to the following:
 
 To operate the dog, you need to start the Freenove robot dog server (which you saved as <file>/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/main.py</file>).
 
-Configure a [_process_](/build/configure/processes/) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
+Configure a [_process_](/configure/processes/) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
 
 Click the **+** (Create) button next to your main part in the left-hand menu and select **Process**.
 

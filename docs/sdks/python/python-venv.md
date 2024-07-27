@@ -98,4 +98,4 @@ Your IDE will now recognize all packages installed in this environment.
 
 ## Start building
 
-You are now ready to [start using Viam's Python SDK](/build/program/)!
+You are now ready to [start using Viam's Python SDK](/sdks/)!

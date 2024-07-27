@@ -314,7 +314,7 @@ To add a transform camera to your machine:
 
 {{% alert title="Note" color="note" %}}
 The various states do not cause anything to happen on their own besides appearing as overlays on the transform cam.
-To trigger an audio alarm or otherwise have your machine take an action based on the reported state, you can write your own logic using one of the [Viam SDKs](/build/program/) to [poll the classifications](/services/vision/#getclassificationsfromcamera).
+To trigger an audio alarm or otherwise have your machine take an action based on the reported state, you can write your own logic using one of the [Viam SDKs](/sdks/) to [poll the classifications](/services/vision/#getclassificationsfromcamera).
 
 See [2D Image Classification](/services/vision/#classifications) for information about working with classifiers in Viam, and [Vision API](/services/vision/#api) for usage of the Computer Vision API this module implements.
 {{% /alert %}}

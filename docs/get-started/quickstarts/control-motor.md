@@ -1,6 +1,6 @@
 ---
 title: "Control a motor in 2 minutes"
-linkTitle: "Control a motor in 2 minutes"
+linkTitle: "Control a motor (2 min)"
 type: "docs"
 weight: 30
 cost: 75
@@ -8,7 +8,9 @@ images: ["/icons/components/motor.svg"]
 description: "Use Viam to control a motor's speed and direction in just a few steps."
 ---
 
-You can use Viam to control a motor's speed and direction directly from [the Viam app](https://app.viam.com/), [the mobile app](/fleet/#the-viam-mobile-app), or [programmatically](/build/program/).
+You can use Viam to control a motor's speed and direction directly from [the Viam app](https://app.viam.com/), [the mobile app](/fleet/#the-viam-mobile-app), or [programmatically](/sdks/).
+
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/cz-FPUWrG94">}}
 
 ## Requirements
 
@@ -16,6 +18,8 @@ You can use Viam to control a motor's speed and direction directly from [the Via
 - A motor and compatible motor driver connected to the board
 - A power supply for the board
 - A separate power supply for the motor
+
+## Instructions
 
 Follow these steps to control your motor:
 
@@ -63,7 +67,7 @@ You can control your motor directly from the Viam app, using the mobile app, or 
 
 ### Option 1: Control from the app
 
-Navigate to your machine's **CONTROL** tab in the Viam app and use the **Power %** slider to set the motor's speed.
+Save your configuration and navigate to your machine's **CONTROL** tab in the Viam app and use the **Power %** slider to set the motor's speed.
 Use the **Backwards** and **Forwards** buttons to change the direction.
 
 {{<gif webm_src="/get-started/quickstarts/motor-control.webm" mp4_src="/get-started/quickstarts/motor-control.mp4" alt="Using the slider, Backwards, and Forwards buttons on the Viam app to control the direction and speed of a configured motor" class="aligncenter"  min-height="750px">}}
@@ -84,6 +88,8 @@ Select the location that your machine is assigned to from the **Locations** tab.
 
 You can use the following code to control the motor's speed and direction using your preferred SDK.
 Find your machine's API key and address on your machine's **CONNECT** tab.
+
+For more information, see the [Motor API](/components/motor/#api).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

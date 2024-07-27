@@ -24,7 +24,7 @@ The navigation service can take the raw output from the GPS component output and
 Many built-in services run locally within `viam-server`, but you can think of them as discrete building blocks that you can mix and match however you want; you can run your machine using none, some, or all of them, depending on your use case.
 To use a given service, add it to your machine's configuration.
 
-[Configuring](/build/#step-2-configure) services on your machine indicates to `viam-server` which software packages you want to use with your machine, and how to integrate that software with your [components](/components/) and other services.
+[Configuring](/configure/#services) services on your machine indicates to `viam-server` which software packages you want to use with your machine, and how to integrate that software with your [components](/components/) and other services.
 Services take many forms, so their configuration and usage varies widely.
 For example, when you [configure data capture](/services/data/capture/), you indicate which types of data you want to capture, from which components.
 When you configure the [frame system](/services/frame-system/), you indicate how the components relate to each other spatially.

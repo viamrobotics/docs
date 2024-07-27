@@ -11,4 +11,4 @@ You can use processes to create a new local instance of `viam-server` to impleme
 They provide an OS-specific process managed by `viam-server` to either run once or indefinitely.
 For example, you could use a process to run a camera server.
 
-Find more information in [Configure a Process to Run on Your Machine](/build/configure/processes/).
+Find more information in [Configure a Process to Run on Your Machine](/configure/processes/).

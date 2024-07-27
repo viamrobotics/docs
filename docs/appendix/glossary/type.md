@@ -9,4 +9,4 @@ In the {{< glossary_tooltip term_id="rdk" text="RDK" >}} architecture's {{< glos
 
 However, the meaning of "type" can be context dependent across the Viam platform.
 
-For example, when [configuring a machine](/build/configure/) in the [Viam app](https://app.viam.com), `"type"` is used in the JSON to indicate a particular implementation of a component or service, which is formally designated as the {{< glossary_tooltip term_id="subtype" text="subtype" >}}.
+For example, when [configuring a machine](/configure/) in the [Viam app](https://app.viam.com), `"type"` is used in the JSON to indicate a particular implementation of a component or service, which is formally designated as the {{< glossary_tooltip term_id="subtype" text="subtype" >}}.

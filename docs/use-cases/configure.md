@@ -39,7 +39,7 @@ All of the software that runs your smart machine is packaged into a binary calle
 
 Each physical piece of your smart machine that is controlled by a computer is called a _component_. For example, if your smart machine includes a Raspberry Pi, a motor, and a camera, each of those is a component.
 
-You need to [_configure_](/build/configure/) your machine so that `viam-server` can interact with its hardware.
+You need to [_configure_](/configure/) your machine so that `viam-server` can interact with its hardware.
 Use the configuration builder tool in the Viam app to create a file that describes what hardware you are using and how it is connected.
 For example, if you have a DC motor, follow the [corresponding configuration instructions](/components/motor/gpio/) to tell the software which pins it is connected to.
 

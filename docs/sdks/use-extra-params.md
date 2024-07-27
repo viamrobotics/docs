@@ -11,9 +11,9 @@ aliases:
   - /program/use-extra-params/
 ---
 
-How to [utilize](#utilize) and [define](#define) the `extra` parameters that many {{< glossary_tooltip term_id="resource" text="resource" >}} [API methods](/appendix/apis/) offer in the Go and Python SDKs.
+How to [use](#use) and [define](#define) the `extra` parameters that many {{< glossary_tooltip term_id="resource" text="resource" >}} [API methods](/appendix/apis/) offer in the Go and Python SDKs.
 
-## Utilize
+## Use
 
 You can use `extra` parameters with modular {{< glossary_tooltip term_id="resource" text="resource" >}} implementations that are _models_ of built-in resource types.
 
@@ -89,7 +89,7 @@ If passing an object of type `nil`, you must specify `nil` in the method call or
 
 If `extra` information must be passed to a resource, it is handled within a new, _modular_ resource model's [custom API](/registry/) wrapper.
 
-{{%expand "Click for instructions on defining a custom model to utilize extra params" %}}
+{{%expand "Click for instructions on defining a custom model to use extra params" %}}
 
 To do this, define a custom implementation of the resource's API as a new _model_, and modify the resource's API methods to handle the `extra` information you send.
 Follow the steps in the [Modular Resources documentation](/use-cases/create-module/) to do so.

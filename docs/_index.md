@@ -11,6 +11,7 @@ sitemap:
   priority: 1.0
 outputs:
   - html
+carouselscript: true
 ---
 
 <div class="max-page">

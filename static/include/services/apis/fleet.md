@@ -22,7 +22,7 @@ Method Name | Description
 [`UpdateRobotPart`](/appendix/apis/fleet/#updaterobotpart ) | Update the name or configuration of a machine part.
 [`NewRobotPart`](/appendix/apis/fleet/#newrobotpart ) | Create a new machine part.
 [`DeleteRobotPart`](/appendix/apis/fleet/#deleterobotpart ) | Delete a machine part.
-[`MarkPartAsMain`](/appendix/apis/fleet/#markpartasmain ) | Mark a part as the [_main_ part](/build/configure/parts/#machine-parts) of a machine.
+[`MarkPartAsMain`](/appendix/apis/fleet/#markpartasmain ) | Mark a part as the [_main_ part](/configure/parts/#machine-parts) of a machine.
 [`MarkPartForRestart`](/appendix/apis/fleet/#markpartforrestart ) | Mark a machine part for restart.
 [`CreateRobotPartSecret`](/appendix/apis/fleet/#createrobotpartsecret ) | Create a machine part secret. *Deprecated*.
 [`DeleteRobotPartSecret`](/appendix/apis/fleet/#deleterobotpartsecret ) | Delete a machine part secret. *Deprecated*.

@@ -21,7 +21,7 @@ Viam groups categories of hardware together, with a [standardized API](/appendix
 For example, [`xarm7`](/components/arm/xarm7/) and [`ur5e`](/components/arm/ur5e/) are different arm models, which provide software support for xArm7 arms and UR5e arms, respectively.
 Though the hardware is different, you use the same Viam SDK commands to control both models, for example [`MoveToPosition`](/components/arm/#movetoposition).
 
-You need to [configure](/build/#step-2-configure) a component to represent each piece of hardware your machine controls.
+You need to [configure](/configure/#components) a component to represent each piece of hardware your machine controls.
 Configuration is the process of editing the file that indicates to `viam-server` what hardware is available to it, how to communicate with that hardware, and how the pieces of hardware relate to each other (for example, which board a motor is connected to).
 
 Viam provides built-in support for the following component types.

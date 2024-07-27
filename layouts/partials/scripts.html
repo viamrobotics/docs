@@ -1,7 +1,7 @@
 
 {{ $jsCarousel := resources.Get "js/carousel.js" }}
 {{ $jsCarousel := $jsCarousel | minify }}
-{{ if or (eq .Page.Title "Viam Documentation") (eq .Page.Title "Platform") (eq .Page.Title "Viam in 3 minutes") (eq .Page.Title "Build Your Machine with Flexible Building Blocks") (eq .Page.Title "Get Started") }}
+{{ if .Page.Params.carouselscript }}
 <script type="text/javascript" src="{{$jsCarousel.RelPermalink}}" crossorigin="anonymous"></script>
 {{ end }}
 

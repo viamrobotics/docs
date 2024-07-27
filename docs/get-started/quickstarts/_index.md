@@ -1,6 +1,6 @@
 ---
 linkTitle: "Quickstarts"
-title: "Quickstarts"
+title: "Quickstarts in <5 minutes"
 weight: 95
 type: "docs"
 ---

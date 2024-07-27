@@ -142,7 +142,7 @@ The following attributes are available for `wheeled` bases:
 | `right` | array | **Required** | Array with the `name` of any drive motors on the right side of the base. |
 | `wheel_circumference_mm` | int | **Required** | The outermost circumference of the drive wheels in millimeters. Used for odometry. Can be an approximation. |
 | `width_mm` | int | **Required** | Width of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels. Can be an approximation. |
-| `spin_slip_factor` | float | Optional | Can be used in steering calculations to correct for slippage between the wheels and the floor. If utilized, calibrated by the user. |
+| `spin_slip_factor` | float | Optional | Can be used in steering calculations to correct for slippage between the wheels and the floor. If used, calibrated by the user. |
 
 ## Wire a `wheeled` base
 
