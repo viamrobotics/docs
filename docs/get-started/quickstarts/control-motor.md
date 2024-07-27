@@ -207,7 +207,7 @@ Now that you have made a motor move, explore other components or related service
 {{< cards >}}
 {{% card link="/components/" %}}
 {{% card link="/services/navigation/" %}}
-{{% card link="/services/SLAM/" %}}
+{{% card link="/components/encoder/" %}}
 {{< /cards >}}
 
 To see motors in real-world projects, check out these tutorials:

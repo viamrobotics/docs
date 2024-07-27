@@ -8,7 +8,7 @@ images: ["/services/ml/collect.svg"]
 description: "Capture images from a camera on your machine and selectively sync images to the cloud with filtering."
 ---
 
-You can use Viam's built-in data management service to capture images from a camera on your machine and sync the images to the cloud.
+You can use Viam's built-in [data management service](/services/data/) to capture images from a camera on your machine and sync the images to the cloud.
 
 If you want to capture only certain images, such as those containing a person, you can use a "filtering camera" to selectively capture images based on a computer vision model.
 

@@ -203,4 +203,9 @@ Restart the Pi to complete the configuration.
 
 ## Next steps
 
-{{< readfile "/static/include/components/camera-model-next-steps.md" >}}
+Complete a quick mini-project using your webcam with computer vision:
+
+{{< cards >}}
+{{< card link="/get-started/quickstarts/detect-people/" >}}
+{{< card link="/tutorials/services/basic-color-detection/" >}}
+{{< /cards >}}

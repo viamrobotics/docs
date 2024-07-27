@@ -31,6 +31,12 @@ Currently, the vision service supports the following kinds of operations:
 - [Classifications](#classifications)
 - [Segmentations](#segmentations)
 
+To get started with a mini project, see this quickstart guide:
+
+{{< cards >}}
+{{< card link="/get-started/quickstarts/detect-people/" class="green">}}
+{{< /cards >}}
+
 ## Detections
 
 <div class="td-max-width-on-larger-screens">
