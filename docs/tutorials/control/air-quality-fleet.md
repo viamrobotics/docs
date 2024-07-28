@@ -416,6 +416,7 @@ If you don't know what the proceeding sentence means, don't worry about it; just
 
 Your TypeScript code requires an API key to establish a connection to your machines.
 You can set up credentials to access data from all the sensor machines in your organization, or from just one location.
+These API keys only need [**Operator** permissions](/cloud/rbac/).
 
 In our example you could create a dashboard for Antonia with an API key to see the data from her location, and create a separate dashboard for RobotsRUs with a different API key to access the data from their location.
 If RobotsRUs wanted to separate their dashboards by sub-locations, you could set up API keys for RobotsRUs to access data for each of their sub-locations separately, or you could modify the example code to filter data by location name.
