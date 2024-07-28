@@ -43,6 +43,11 @@
 | [`RemoveRole`](/appendix/apis/fleet/#removerole) | Remove a role under the organization you are currently authenticated to. |
 | [`ListAuthorizations`](/appendix/apis/fleet/#listauthorizations) | List all authorizations (owners and operators) of a specific resource (or resources) within the organization you are currently authenticated to. |
 | [`CheckPermissions`](/appendix/apis/fleet/#checkpermissions) | Check if the organization, location, or robot your `ViamClient` is authenticated to is permitted to perform some action or set of actions on the resource you pass to the method. |
+| [`GetRegistryItem`](/appendix/apis/fleet/#getregistryitem) | Get registry item by ID. |
+| [`CreateRegistryItem`](/appendix/apis/fleet/#createregistryitem) | Create a registry item. |
+| [`UpdateRegistryItem`](/appendix/apis/fleet/#updateregistryitem) | Update a registry item. |
+| [`ListRegistryItems`](/appendix/apis/fleet/#listregistryitems) | List the registry items in an organization. |
+| [`DeleteRegistryItem`](/appendix/apis/fleet/#deleteregistryitem) | Delete a registry item. |
 | [`CreateModule`](/appendix/apis/fleet/#createmodule) | Create a {{< glossary_tooltip term_id="module" text="module" >}} under the organization you are currently authenticated to. |
 | [`UpdateModule`](/appendix/apis/fleet/#updatemodule) | Update the documentation URL, description, models, entrypoint, and/or the visibility of a {{< glossary_tooltip term_id="module" text="module" >}}. |
 | [`UploadModuleFile`](/appendix/apis/fleet/#uploadmodulefile) | Upload a {{< glossary_tooltip term_id="module" text="module" >}} file. |
