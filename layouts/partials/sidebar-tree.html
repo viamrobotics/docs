@@ -68,7 +68,7 @@
         </a>
       {{- end }}
       {{- if (or (and (and $withChild (not $treeRoot) (ne  .section.File.Path "tutorials/_index.md" ) ) ) (not $hideChildren) ) }}
-      {{- if $hideChildren -}}
+      {{- if (or $hideChildren $treeRoot) -}}
       {{- else -}}
       <span class="menu-toggle">
         {{ if (or $activePath $active) }}
