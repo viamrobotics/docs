@@ -11,6 +11,7 @@
 | [`TransformPCD`](/appendix/apis/robot/#transformpcd) | Transforms the pointcloud to the desired frame in the robot's frame system. |
 | [`GetStatus`](/appendix/apis/robot/#getstatus) | Get the status of the resources on the machine. |
 | [`StopAll`](/appendix/apis/robot/#stopall) | Cancel all current and outstanding operations for the machine and stop all actuators and movement. |
+| [`RestartModule`](/appendix/apis/robot/#restartmodule) | Reload a module as if its config changed. |
 | [`Log`](/appendix/apis/robot/#log) | Create a LogEntry object from the log to send to the RDK over gRPC. |
 | [`GetCloudMetadata`](/appendix/apis/robot/#getcloudmetadata) | Get app-related information about the robot. |
 | [`Options.with_api_key`](/appendix/apis/robot/#optionswith_api_key) | Create a `RobotClient.Options` using an API key as credentials. |
