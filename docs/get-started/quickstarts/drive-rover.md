@@ -1,18 +1,20 @@
 ---
-title: "Drive a Rover with the Viam SDK"
-linkTitle: "Drive with the SDK"
-weight: 2
+title: "Drive a rover in a square in 2 minutes"
+linkTitle: "Drive a rover (2 min)"
 type: "docs"
+weight: 80
+cost: 75
+images: ["/general/code.png"]
 description: "Use a Viam SDK to program a rover to move in a square."
 videos:
   ["/tutorials/try-viam-sdk/image1.webm", "/tutorials/try-viam-sdk/image1.mp4"]
 videoAlt: "A Viam Rover driving in a square"
-images: ["/tutorials/try-viam-sdk/image1.gif"]
-tags: ["base", "viam rover", "try viam", "sdk", "python", "flutter"]
+images: ["/tutorials/get-started/image1.gif"]
 aliases:
   - /tutorials/get-started/try-viam-sdk
   - /tutorials/viam-rover/try-viam-sdk
-authors: []
+  - /tutorials/viam-rover/try-viam-sdk
+tags: ["base", "viam rover", "try viam", "sdk", "python", "flutter"]
 languages: ["python", "go", "typescript", "flutter", "c++"]
 viamresources: ["base"]
 level: "Beginner"
@@ -21,73 +23,126 @@ date: "2022-12-08"
 cost: "0"
 ---
 
-<!-- LEARNING GOALS:
-After following this tutorial, you will know about the Viam SDKs and the APIs for each component that you can use to control your machines. You will be able to run sample code to operate a machine.
-Notes:
-- Rewrite in a way that it teaches how to use SDKs and APIs and uses the rover merely as an example.
-- Improve TS and Flutter explanations to match level of explanation.
-- Explain what "initialize" means, and more about base vs motors.
--->
+Follow this guide to write code that makes a rover drive in a square.
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/daU5iNsSO0w">}}
 
-The Viam {{< glossary_tooltip term_id="sdk" text="SDKs" >}} allow you to write code in Python, Go, or TypeScript to control a Viam-connected machine.
-In this tutorial you will learn how to use the Viam SDKS as you write code to make a robot drive in a square.
-You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try), [your own Viam Rover](/get-started/try-viam/rover-resources/), or another [mobile robot](/components/base/).
+## Requirements
 
-<div class="td-max-width-on-larger-screens">
-{{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square." max-width="400px">}}
-</div>
+- You will need a computer that can run SDK code.
+- A [rented Viam Rover](https://app.viam.com/try), [your own Viam Rover](/get-started/try-viam/rover-resources/), or another [mobile robot](/components/base/).
+  You don't need to buy or own any hardware to complete this tutorial!
+  You can use [Try Viam](https://app.viam.com/try) to rent a rover online at no cost which is already configured with all the components you need.
+  If you have your own rover on hand, whether it's a [Viam rover](https://www.viam.com/resources/rover) or not, this tutorial works for any wheeled robot that can be configured as a [base component](/components/base/wheeled/).
+
+## Instructions
+
+Follow these steps to get your rover ready inside the Viam app and write code to control it:
+
+{{< tabs >}}
+{{% tab name="Rented Try Viam Rover" %}}
+{{< expand "Step 1: Rent a Viam Rover" >}}
+
+Go to [Try Viam](https://app.viam.com/try) and rent a rover.
+If a rover is available, the rover will take up 30 seconds to be configured for you.
 
 {{< alert title="Tip" color="tip" >}}
-You can also directly see the [complete code for the tutorial](#complete-code).
+If you are running out of time during your rental, you can [extend your rover rental](/get-started/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
 {{< /alert >}}
 
-## Hardware requirements
+{{< /expand >}}
 
-You don't need any hardware to complete this tutorial!
-You can rent a rover to drive remotely at no cost with [Try Viam](https://app.viam.com/try).
-
-If you have your own rover on hand, whether it's a [Viam rover](https://www.viam.com/resources/rover) or not, this tutorial works for any wheeled robot that can be configured as a [base component](/components/base/wheeled/).
+{{% /tab %}}
+{{% tab name="Owned Viam Rover" %}}
 
 {{% alert title="Important" color="note" %}}
 If you are using your own robot for this tutorial instead of [renting one](https://app.viam.com/try), be sure to [install `viam-server`](/get-started/installation/#install-viam-server) on it and [configure](/configure/) its hardware before proceeding with this tutorial.
 {{% /alert %}}
 
-## Install a Viam SDK
+{{% /tab %}}
+{{% tab name="Other Rover" %}}
 
-Install one of the following SDKs on your local computer:
+{{% alert title="Important" color="note" %}}
+If you are using your own robot for this tutorial instead of [renting one](https://app.viam.com/try), be sure to [install `viam-server`](/get-started/installation/#install-viam-server) on it and [configure](/build/configure/) its hardware before proceeding with this tutorial.
+{{% /alert %}}
 
-- the [Viam Python SDK](https://python.viam.dev/)
-- the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme)
-- the [Viam Flutter SDK](https://flutter.viam.dev/)
-- the [Viam TypeScript SDK](https://ts.viam.dev/)
-- the [Viam C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk/#readme)
+{{% /tab %}}
+{{< /tabs >}}
 
-{{< alert title="Tip" color="tip" >}}
-If you are [renting your rover](https://app.viam.com/try), we recommend that you get the Viam SDK set up before your reservation starts.
-This way, you can maximize the amount of time you have using the Viam Rover.
+{{< expand "Step 2: Install an SDK" >}}
 
-If you are running out of time during your rental, you can [extend your rover rental](/get-started/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
-{{< /alert >}}
+Navigate to your machine's **CONNECT** tab.
+Click on any of the listed languages and follow the instructions to install the SDK.
 
-## Connect to your rover
+To install your preferred Viam SDK on your Linux or macOS development machine or [single-board computer](/components/board/), run one of the following commands in your terminal:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to your [machine's page on the Viam app](https://app.viam.com/robots), select the **CONNECT** tab's **Code sample** page, then select **Python** and copy the boilerplate code.
+If you are using the Python SDK, [set up a virtual environment](/sdks/python/python-venv/) to package the SDK inside before running your code, avoiding conflicts with other projects or your system.
+
+For macOS (both Intel `x86_64` and Apple Silicon) or Linux (`x86`, `aarch64`, `armv6l`), run the following commands:
+
+```sh {class="command-line" data-prompt="$"}
+python3 -m venv .venv
+source .venv/bin/activate
+pip install viam-sdk
+```
+
+Windows is not supported.
+If you are using Windows, use the [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) and install the Python SDK using the preceding instructions for Linux.
+For other unsupported systems, see [Installing from source](https://python.viam.dev/#installing-from-source).
+
+If you intend to use the [ML (machine learning) model service](/services/ml/), use the following command instead, which installs additional required dependencies along with the Python SDK:
+
+```sh {class="command-line" data-prompt="$"}
+pip install 'viam-sdk[mlmodel]'
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```sh {class="command-line" data-prompt="$"}
+go get go.viam.com/rdk/robot/client
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+```sh {class="command-line" data-prompt="$"}
+npm install @viamrobotics/sdk
+```
+
+{{< alert title="Info" color="info" >}}
+The TypeScript SDK currently only supports building web browser apps.
+{{< /alert >}}
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+Follow the [instructions on the GitHub repository](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+```sh {class="command-line" data-prompt="$"}
+flutter pub add viam_sdk
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{< /expand >}}
+{{< expand "Step 3: Copy and run the sample code" >}}
+
+The sample code on the **CONNECT** tab, will show you how to authenticate and connect to a machine, as well as some of the methods you can use on your configured components and services.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 {{% snippet "show-secret.md" %}}
 
-This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
-
-Next, create a file named <file>square.py</file> and paste the boilerplate code from the **Code sample** page of the Viam app into your file.
-Then, save your file.
-
-Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
-
-You can run your code by typing the following into your terminal:
+Copy the code into a file called <FILE>square.py</FILE> and run the sample code to connect to your machine:
 
 ```sh {class="command-line" data-prompt="$"}
 python3 square.py
@@ -115,14 +170,9 @@ name: "cam"
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **CONNECT** tab's **Code sample** page, then select **Go** and copy the boilerplate code.
-
 {{% snippet "show-secret.md" %}}
 
-This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
-
-Next, create a file named <file>square.go</file> and paste the boilerplate code from the **Code sample** page of the Viam app into your file.
-Then, save your file.
+Copy the code into a file called <FILE>square.go</FILE> and run the sample code to connect to your machine:
 
 Initialize your project, and install the necessary libraries, and then run the program to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live:
 
@@ -144,20 +194,15 @@ go run square.go
 ```
 
 {{% /tab %}}
-{{% tab name="TypeScript" %}}
+{{< tab name="TypeScript" >}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **CONNECT** tab's **Code sample** page, then select **TypeScript** and copy the boilerplate code.
+{{% snippet "show-secret.md" %}}
+
+Copy the code into a file called <FILE>main.ts</FILE>.
 
 {{< alert title="Info" color="info" >}}
 The TypeScript SDK currently only supports building web browser apps.
 {{< /alert >}}
-
-{{% snippet "show-secret.md" %}}
-
-This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
-
-Next, create a file named <file>main.ts</file> and paste the boilerplate code from the **Code sample** page of the Viam app into your file.
-Then, save your file.
 
 Create another file named <file>package.json</file> with the following contents:
 
@@ -304,7 +349,7 @@ main().catch((error) => {
 Refresh the browser page.
 When the connection to the rover is established, the `Click me` button will become enabled.
 
-{{% /tab %}}
+{{< /tab >}}
 {{% tab name="Flutter" %}}
 
 Flutter code must be launched from inside a running Flutter application.
@@ -313,14 +358,9 @@ To get started programming your rover with Flutter, follow the instructions to [
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **CONNECT** tab's **Code sample** page, then select **C++** and copy the boilerplate code.
-
 {{% snippet "show-secret.md" %}}
 
-This code snippet imports all the necessary libraries and sets up a connection with the Viam app in the cloud.
-
-Next, create a file named <file>drive_in_square.cpp</file> and paste the boilerplate code from the **Code sample** page of the Viam app into your file.
-Then, save your file.
+Copy the code into a file called <FILE>drive_in_square.cpp</FILE> and run the sample code to connect to your machine:
 
 Compile your code, and then run the program to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live:
 
@@ -363,42 +403,22 @@ If you are [renting your rover](https://app.viam.com/try), and your reservation 
 
 {{% /alert %}}
 
-## Drive your rover in a square
+{{< /expand >}}
+{{< expand "Step 4: Drive a rover in a square" >}}
 
-Now that you have connected the rover to Viam with the SDK, you can start writing code to control the rover.
-The following code moves the rover in a square:
+Now that you have connected the rover to Viam with the SDK, you can write code to move the rover in a square:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-The first thing you need to do is import the [base component](https://python.viam.dev/autoapi/viam/components/base/index.html#module-viam.components.base).
 The base is responsible for controlling the motors attached to the base of the rover.
-Add the following line of code to your imports:
+Ensure that the `Base` class is being imported:
 
 ```python
 from viam.components.base import Base
 ```
 
-Next, you need to initialize your rover base.
-
-In the main function, after you connect, paste the code from line 5.
-On the Try Viam rental rovers, the default base name is `viam_base`.
-If you have a different base name, update the name in your code.
-
-Your main function should look like this:
-
-```python {class="line-numbers linkable-line-numbers" data-line="5"}
-async def main():
-    robot = await connect()
-
-    # Get the base component from the rover
-    roverBase = Base.from_robot(robot, 'viam_base')
-
-    await robot.close()
-```
-
-Now that your rover base is initialized, you can write code to drive it in a square.
-Paste this snippet above your `main()` function:
+Then paste this snippet above your `main()` function, it will move any base passed to it in a square:
 
 ```python
 async def moveInSquare(base):
@@ -411,11 +431,12 @@ async def moveInSquare(base):
         print("spin 90 degrees")
 ```
 
-Invoke the `moveInSquare()` function in your main function after initializing your base.
+Next, remove all the code in the `main()` function between where the machine connection is established and closed and instead initialize your `base` and invoke the `moveInSquare()` function.
 
-Your main function should now look like this:
+On the Try Viam rental rovers, the default base name is `viam_base`.
+If you have a different base name, update the name in your code.
 
-```python {class="line-numbers linkable-line-numbers" data-line="8"}
+```python {class="line-numbers linkable-line-numbers" data-line="4-8"}
 async def main():
     robot = await connect()
 
@@ -428,12 +449,17 @@ async def main():
     await robot.close()
 ```
 
+When you run your code, your robot moves in a square.
+
+<div class="td-max-width-on-larger-screens">
+{{<gif webm_src="/tutorials/try-viam-sdk/image2.webm" mp4_src="../../try-viam-sdk/image2.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square on the left, and on the right, a terminal window shows the output of running the square function as the rover moves in a square.">}}
+</div>
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The first thing you need to do is import the [base component](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 The base is responsible for controlling the motors attached to the base of the rover.
-Add the following line of code to your imports before:
+Ensure that the `Base` class is being imported:
 
 ```go {class="line-numbers linkable-line-numbers" data-line="3"}
 import (
@@ -442,15 +468,27 @@ import (
 )
 ```
 
-Next, you need to initialize your rover base.
+Then paste this snippet above your `main()` function, it will move any base passed to it in a square:
 
-In the main function, after you connect, paste the code from lines 22-26.
+```go
+func moveInSquare(ctx context.Context, base base.Base, logger logging.Logger) {
+    for i := 0; i < 4; i++ {
+        // moves the rover forward 600mm at 500mm/s
+        base.MoveStraight(ctx, 600, 500.0, nil)
+        logger.Info("move straight")
+        // spins the rover 90 degrees at 100 degrees per second
+        base.Spin(ctx, 90, 100.0, nil)
+        logger.Info("spin 90 degrees")
+  }
+}
+```
+
+Next, remove all the code in the `main()` function afterthe machine connection is established and instead initialize your `base` and invoke the `moveInSquare()` function.
+
 On the Try Viam rental rovers, the default base name is `viam_base`.
 If you have a different base name, update the name in your code.
 
-Your main function should look like this:
-
-```go {class="line-numbers linkable-line-numbers" data-line="22-26"}
+```go {class="line-numbers linkable-line-numbers" data-line="22-29"}
 func main() {
     logger := logging.NewLogger("client")
     robot, err := client.New(
@@ -477,52 +515,25 @@ func main() {
     if err != nil {
         logger.Fatalf("cannot get base: %v", err)
     }
-}
-```
-
-Now that your rover base has been initialized, you can write code to drive it in a square.
-Paste this snippet above your `main()` function:
-
-```go
-func moveInSquare(ctx context.Context, base base.Base, logger logging.Logger) {
-    for i := 0; i < 4; i++ {
-        // moves the rover forward 600mm at 500mm/s
-        base.MoveStraight(ctx, 600, 500.0, nil)
-        logger.Info("move straight")
-        // spins the rover 90 degrees at 100 degrees per second
-        base.Spin(ctx, 90, 100.0, nil)
-        logger.Info("spin 90 degrees")
-  }
-}
-```
-
-Invoke the `moveInSquare()` function in your main function after initializing your base.
-
-Your main function should now look like this:
-
-```go {class="line-numbers linkable-line-numbers" data-line="10"}
-func main() {
-    // Connect rover to Viam...
-    // Get the base from the rover
-    roverBase, err := base.FromRobot(robot, "viam_base")
-    if err != nil {
-        logger.Fatalf("cannot get base: %v", err)
-    }
 
     // Move the rover in a square
     moveInSquare(context.Background(), roverBase, logger)
 }
 ```
 
+When you run your code, your robot moves in a square.
+
+<div class="td-max-width-on-larger-screens">
+{{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square." max-width="400px">}}
+</div>
+
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-Underneath the `main` function, add the following function that initializes your rover base client and drives it in a square:
+Underneath the `main` function, add the following function that initializes your rover base client and drives it in a square.
 
-{{< alert title="Important" color="note" >}}
 On the Try Viam rental rovers, the default base name is `viam_base`.
 If you have a different base name, update the name in your code.
-{{< /alert >}}
 
 ```ts {class="line-numbers linkable-line-numbers"}
 // This function moves a base component in a square.
@@ -587,6 +598,12 @@ async function main() {
   button().disabled = false;
 }
 ```
+
+When you run your code, your robot moves in a square.
+
+<div class="td-max-width-on-larger-screens">
+{{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square." max-width="400px">}}
+</div>
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -762,7 +779,7 @@ Click on the button to move your robot in a square:
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-The first thing you need to do is import the [base component](https://cpp.viam.dev/classviam_1_1sdk_1_1Base.html). The base is responsible for controlling the motors attached to the base of the rover. Add the following line of code to your imports:
+The base is responsible for controlling the motors attached to the base of the rover. Ensure that the `Base` class is being imported:
 
 ```cpp {class="line-numbers linkable-line-numbers"}
 #include <viam/sdk/components/base.hpp>
@@ -777,56 +794,7 @@ using std::cout;
 using std::endl;
 ```
 
-Next, you need to initialize your rover base.
-
-In the main function, after you connect, paste the code from lines 21-30. On the Try Viam rental rovers, the default base name is `viam_base`. If you have a different base name, update the name in your code.
-
-Your main function should look like this:
-
-```cpp {class="line-numbers linkable-line-numbers" data-line="21,23-30"}
-int main() {
-    namespace vs = ::viam::sdk;
-    try {
-        std::string host("ADDRESS FROM THE VIAM APP");
-        DialOptions dial_opts;
-        // Replace "<API-KEY-ID>" with your machine's api key ID
-        dial_opts.set_entity(std::string("<API-KEY-ID>"));
-        // Replace "<API-KEY>" with your machine's api key
-        Credentials credentials("api-key", "<API-KEY>");
-        dial_opts.set_credentials(credentials);
-        boost::optional<DialOptions> opts(dial_opts);
-        Options options(0, opts);
-
-        auto robot = RobotClient::at_address(host, options);
-
-        std::cout << "Resources:\n";
-        for (const Name& resource: robot->resource_names()) {
-          std::cout << "\t" << resource << "\n" << std::endl;
-        }
-
-        std::string base_name("viam_base");
-
-        cout << "Getting base: " << base_name << endl;
-        std::shared_ptr<Base> base;
-        try {
-            base = robot->resource_by_name<Base>(base_name);
-        } catch (const std::exception& e) {
-            cerr << "Failed to find " << base_name << ". Exiting." << endl;
-            throw;
-        }
-
-    } catch (const std::exception& ex) {
-        cerr << "Program failed. Exception: " << std::string(ex.what()) << endl;
-        return EXIT_FAILURE;
-    } catch (...) {
-        cerr << "Program failed without exception message." << endl;
-        return EXIT_FAILURE;
-    }
-    return EXIT_SUCCESS;
-}
-```
-
-Now that your rover base has been initialized, you can write code to drive it in a square. Paste this snippet above your `main()` function:
+Then paste this snippet above your main() function, it will move any base passed to it in a square:
 
 ```cpp {class="line-numbers linkable-line-numbers"}
 void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
@@ -841,11 +809,11 @@ void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
 }
 ```
 
-Invoke the move_in_square() function in your main function after initializing your base.
+Next, remove all the code in the main() function after the machine connection is established and instead initialize your base and invoke the moveInSquare() function.
 
-Your main function should now look like this:
+On the Try Viam rental rovers, the default base name is viam_base. If you have a different base name, update the name in your code.
 
-```cpp {class="line-numbers linkable-line-numbers" data-line="21,23-33"}
+```cpp {class="line-numbers linkable-line-numbers" data-line="16,18-28"}
 int main() {
     namespace vs = ::viam::sdk;
     try {
@@ -860,11 +828,6 @@ int main() {
         Options options(0, opts);
 
         auto robot = RobotClient::at_address(host, options);
-
-        std::cout << "Resources:\n";
-        for (const Name& resource: robot->resource_names()) {
-          std::cout << "\t" << resource << "\n" << std::endl;
-        }
 
         std::string base_name("viam_base");
 
@@ -891,18 +854,22 @@ int main() {
 }
 ```
 
-{{% /tab %}}
-{{< /tabs >}}
-
-{{< alert title="Tip" color="tip" >}}
-If you are [renting your rover](https://app.viam.com/try), go to the **CONTROL** tab of the Viam app, and make sure you can monitor the camera feed from your rover.
-{{< /alert >}}
-
 When you run your code, your robot moves in a square.
 
 <div class="td-max-width-on-larger-screens">
-{{<gif webm_src="/tutorials/try-viam-sdk/image2.webm" mp4_src="../../try-viam-sdk/image2.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square on the left, and on the right, a terminal window shows the output of running the square function as the rover moves in a square.">}}
+{{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square." max-width="400px">}}
 </div>
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% alert title="Tip" color="tip" %}}
+
+If you are [renting your rover](https://app.viam.com/try), and your reservation ends before you have completed this tutorial, you can start a new session with the same rover configuration so you do not need to change the connection information (the robot address and the payload).
+
+{{% /alert %}}
+
+{{< /expand>}}
 
 ## Complete code
 
@@ -942,9 +909,6 @@ async def moveInSquare(base):
 
 async def main():
     robot = await connect()
-
-    print('Resources:')
-    print(robot.resource_names)
 
     roverBase = Base.from_robot(robot, 'viam_base')
 
@@ -1306,11 +1270,6 @@ int main() {
 
         auto robot = RobotClient::at_address(host, options);
 
-        std::cout << "Resources:\n";
-        for (const Name& resource: robot->resource_names()) {
-          std::cout << "\t" << resource << "\n" << std::endl;
-        }
-
         std::string base_name("viam_base");
 
         cout << "Getting base: " << base_name << endl;
@@ -1342,9 +1301,13 @@ int main() {
 
 ## Next steps
 
-If you're ready for more, try making your rover move in different ways.
-Can you make it move in a circle?
-A figure-eight?
-You could also write some code to control the other components on the robot, like the [camera](/components/camera/), or the rover's [motors](/components/motor/).
+Now that you have run code to control your machine, see the [Base API](/components/base/#api) for a full list of available API methods.
 
-You could also control Viam's services, by adding [data management](/services/data/) to collect data in real time or [vision services](/services/vision/) to [add color detection to your rover](/tutorials/services/basic-color-detection/).
+You can also write code to control any other components on the rover, like a [camera](/components/camera/), or the rover's individual [motors](/components/motor/).
+If your rover has a camera, you you can [add color detection to your rover](/tutorials/services/basic-color-detection/).
+
+{{< cards >}}
+{{% card link="/components/camera/" %}}
+{{% card link="/components/motor/" %}}
+{{% card link="/tutorials/services/basic-color-detection/" %}}
+{{< /cards >}}
