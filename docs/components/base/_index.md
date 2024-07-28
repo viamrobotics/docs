@@ -40,7 +40,7 @@ Most mobile robots with a base need at least the following hardware:
 {{< relatedcard link="/services/navigation/" >}}
 {{< /cards >}}
 
-## Supported models
+## Available models
 
 To use your base component, check whether one of the following models supports it.
 

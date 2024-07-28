@@ -44,7 +44,7 @@ Most machines with a sensor need at least the following hardware:
 {{< relatedcard link="/services/data/" >}}
 {{< /cards >}}
 
-## Supported models
+## Available models
 
 To use your motor component, check whether one of the following models supports it.
 

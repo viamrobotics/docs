@@ -34,7 +34,7 @@ Viam also supports generic [sensors](/components/sensor/) and [encoders](/compon
 {{< relatedcard link="/services/slam/" >}}
 {{< /cards >}}
 
-## Supported models
+## Available models
 
 To use your movement sensor component, check whether one of the following models supports it.
 

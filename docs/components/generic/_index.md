@@ -40,7 +40,7 @@ If you want to use most of an existing API but need just a few other functions, 
 
 {{% /alert %}}
 
-## Supported models
+## Available models
 
 To use your generic component, check whether one of the following models supports it.
 

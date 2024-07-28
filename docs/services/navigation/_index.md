@@ -277,7 +277,7 @@ heading, err := gps.CompassHeading(context.Background(), nil)
 
 Use compass heading readings to determine the _bearing_ of your machine, or, the [cardinal direction](https://en.wikipedia.org/wiki/Cardinal_direction) that your machine is facing.
 
-To read compass headings, [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your machine.
+To read compass headings, [configure a capable movement sensor](/components/movement-sensor/#available-models) on your machine.
 Then use the movement sensor API's [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading) method to get readings from the sensor.
 
 ### Orientation
@@ -300,7 +300,7 @@ An orientation vector indicates how it is rotated relative to an origin coordina
 You can choose the origin reference frame by configuring it using Viam's [frame system](/services/frame-system/).
 The `GetOrientation` readings will report orientations relative to that initial frame.
 
-To read orientation, first [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your machine.
+To read orientation, first [configure a capable movement sensor](/components/movement-sensor/#available-models) on your machine.
 Additionally, follow [these instructions](/services/frame-system/#configuration) to configure the geometries of each component of your machine within the [frame system](/services/frame-system/).
 Then use the movement sensor API's [`GetOrientation()`](/components/movement-sensor/#getorientation) method to get orientation readings.
 
@@ -322,7 +322,7 @@ angularVelocity, err := imu.AngularVelocity(context.Background(), nil)
 
 Use angular velocity readings to determine the speed and direction at which your machine is rotating.
 
-To get an angular velocity reading, first [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your machine.
+To get an angular velocity reading, first [configure a capable movement sensor](/components/movement-sensor/#available-models) on your machine.
 Then use the movement sensor API's [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity) method to get angular velocity readings from the sensor.
 
 ### Position
@@ -344,7 +344,7 @@ position, altitude, err := imu.Position(context.Background(), nil)
 Use position readings to determine the GPS coordinates of an object in 3D space or its position in the geographic coordinate system [(GCS)](https://en.wikipedia.org/wiki/Geographic_coordinate_system).
 These position readings reflect the _absolute_ position of components.
 
-To get a position, [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your machine.
+To get a position, [configure a capable movement sensor](/components/movement-sensor/#available-models) on your machine.
 Then use the movement sensor API's [`GetPosition()`](/components/movement-sensor/#getposition) method to get position readings from the sensor.
 
 ### Linear velocity
@@ -365,7 +365,7 @@ linearVelocity, err := imu.LinearVelocity(context.Background(), nil)
 
 Use linear velocity readings to determine the speed at which your machine is moving through space.
 
-To get linear velocity, [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your machine.
+To get linear velocity, [configure a capable movement sensor](/components/movement-sensor/#available-models) on your machine.
 Then use the movement sensor API's [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity) method to get linear velocity readings from the sensor.
 
 ### Linear acceleration
@@ -386,7 +386,7 @@ linearAcceleration, err := imu.LinearAcceleration(context.Background(), nil)
 
 You can use linear acceleration readings to determine the rate of change of the [linear velocity](/services/navigation/#linear-velocity) of your machine, or, the acceleration at which your machine is moving through space.
 
-To get linear acceleration, [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your machine.
+To get linear acceleration, [configure a capable movement sensor](/components/movement-sensor/#available-models) on your machine.
 Then use the movement sensor API's [`GetLinearAcceleration()`](/components/movement-sensor/#getlinearacceleration) method to get linear acceleration readings from the sensor.
 
 ## Next steps

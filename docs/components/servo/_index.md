@@ -52,7 +52,7 @@ Check your device's data sheet and configure that type of servo as an [encoded m
 
 {{% /alert %}}
 
-## Supported models
+## Available models
 
 To use your servo component, check whether one of the following models supports it.
 

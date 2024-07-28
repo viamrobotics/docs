@@ -37,7 +37,7 @@ If you want to use most of an existing API but need just a few other functions, 
 
 {{% /alert %}}
 
-## Supported models
+## Available models
 
 {{<resources_svc api="rdk:service:generic" type="generic">}}
 

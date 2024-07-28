@@ -42,7 +42,7 @@ Most machines with a motor need at least the following hardware:
 {{< relatedcard link="/services/slam/" >}}
 {{< /cards >}}
 
-## Supported models
+## Available models
 
 To use your motor component, check whether one of the following models supports it.
 

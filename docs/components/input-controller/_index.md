@@ -37,7 +37,7 @@ Most machines with an input controller need at least the following hardware:
 {{< relatedcard link="/services/base-rc/" >}}
 {{< /cards >}}
 
-## Supported models
+## Available models
 
 To use your input controller component, check whether one of the following models supports it.
 

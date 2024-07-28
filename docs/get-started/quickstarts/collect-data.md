@@ -128,7 +128,7 @@ For example, if you are using a Raspberry Pi, SSH to it and [enable serial commu
 
 {{< expand "Step 4: Configure a sensor" >}}
 
-1. Search the [supported sensor models](/components/sensor/#supported-models) for a model of sensor that is compatible with your sensor hardware.
+1. Search the [supported sensor models](/components/sensor/#available-models) for a model of sensor that is compatible with your sensor hardware.
    For example, if you have a Sensirion SHT3x-DIS temperature and humidity sensor, you should use the [`sensirion-sht3xd`](https://docs.viam.com/components/sensor/sensirion-sht3xd/) model of sensor.
 
    Once you determine which model to use, add it to your machine's configuration:
@@ -142,7 +142,7 @@ For example, if you are using a Raspberry Pi, SSH to it and [enable serial commu
 1. Enter a name or use the suggested name for your sensor and click **Create**.
 
 1. Add required attributes, such as information about how the sensor is connected to the board.
-   You can find information on these attributes by clicking the name of your sensor model in the [supported models list](/components/sensor/#supported-models).
+   You can find information on these attributes by clicking the name of your sensor model in the [available models list](/components/sensor/#available-models).
 
 1. Click the **Save** button in the upper right corner of the page to save your configuration.
 

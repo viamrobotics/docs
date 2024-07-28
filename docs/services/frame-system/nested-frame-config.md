@@ -30,7 +30,7 @@ Now, as the gantry moves its actuator, the Frame System will translate both the 
 To configure your machine following this example:
 
 - Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
-- Select **Builder** mode and [configure your gantry](/components/gantry/#supported-models), then [configure your arm](/components/arm/#supported-models).
+- Select **Builder** mode and [configure your gantry](/components/gantry/#available-models), then [configure your arm](/components/arm/#available-models).
   If you don't have a physical gantry or arm, you can use their `fake` models.
 - Select the **Frame** mode.
 - From the left-hand menu, select your gantry.

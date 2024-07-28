@@ -26,7 +26,7 @@ A _gripper_ is a robotic grasping device that can open and close, often attached
 {{< relatedcard link="/services/motion/" >}}
 {{< /cards >}}
 
-## Supported models
+## Available models
 
 To use your gripper component, check whether one of the following models supports it.
 

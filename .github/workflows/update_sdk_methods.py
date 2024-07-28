@@ -444,7 +444,7 @@ override_description_links = {
     "organization settings page": "/cloud/organizations/",
     "image tags": "/services/data/dataset/#image-tags",
     "API key": "/fleet/cli/#authenticate",
-    "board model": "/components/board/#supported-models"
+    "board model": "/components/board/#available-models"
 }
 
 ## Language-specific resource name overrides:

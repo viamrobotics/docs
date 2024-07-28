@@ -25,7 +25,7 @@ Integrate this component to monitor your power levels.
 {{< relatedcard link="/services/data/" >}}
 {{< /cards >}}
 
-## Supported models
+## Available models
 
 To use your power sensor component, check whether one of the following models supports it.
 
