@@ -275,8 +275,8 @@ The camera stream will show detections with bounding boxes around the detections
 
 {{< imgproc src="/tutorials/filtered-camera-module/transform-camera-overlay.png" alt="Detection of a viam figure with a confidence score of 0.97" resize="800x" >}}
 
-When satisfied that your ML model is working well, continue.
-Alternatively,if the vision service is not matching reliably, you will need to adjust your model.
+When satisfied that your ML model is working well, continue to the next step.
+If the vision service is not matching reliably, you will need to adjust your model.
 If you trained your model, consider adding and labelling more images in your dataset.
 Ideally, you want your ML model to be able to identify objects with a high level of confidence, which usually is dependent on a robust source dataset.
 
