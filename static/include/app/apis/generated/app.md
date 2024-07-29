@@ -1412,6 +1412,141 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetRegistryItem
+
+Get registry item by ID.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item.
+
+**Returns:**
+
+- ([viam.proto.app.RegistryItem](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.RegistryItem)): The registry item.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+item = await cloud.get_registry_item("item-id")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_registry_item).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### CreateRegistryItem
+
+Create a registry item
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The organization to create the registry item under.
+- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the registry item, which must be unique within your org.
+- `type` (viam.proto.app.packages.PackageType.ValueType) (required): The type of the item in the registry.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.create_registry_item("org-id", "name", PackageType.PACKAGE_TYPE_ML_MODEL)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_registry_item).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UpdateRegistryItem
+
+Update a registry item.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item.
+- `type` (viam.proto.app.packages.PackageType.ValueType) (required): The type of the item in the registry.
+- `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The description of the registry item.
+- `visibility` (viam.proto.app.Visibility.ValueType) (required): The visibility of the registry item.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.update_registry_item("item-id", PackageType.PACKAGE_TYPE_ML_TRAINING, "description", Visibility.VISIBILITY_PUBLIC)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_registry_item).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListRegistryItems
+
+List the registry items in an organization.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to return registry items for.
+- `types` (List[viam.proto.app.packages.PackageType.ValueType]) (required): The types of registry items.
+- `visibilities` (List[viam.proto.app.Visibility.ValueType]) (required): The visibilities of registry items.
+- `platforms` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): The platforms of registry items.
+- `statuses` (List[viam.proto.app.RegistryItemStatus.ValueType]) (required): The types of the items in the registry.
+- `search_term` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): The search term of the registry items.
+- `page_token` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): The page token of the registry items.
+
+**Returns:**
+
+- ([List[viam.proto.app.RegistryItem]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.RegistryItem)): The list of registry items.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_registry_items).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteRegistryItem
+
+Delete a registry item.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.delete_registry_item("item-id")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_registry_item).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### CreateModule
 
 Create a {{< glossary_tooltip term_id="module" text="module" >}} under the organization you are currently authenticated to.
