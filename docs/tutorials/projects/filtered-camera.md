@@ -4,7 +4,7 @@ linkTitle: "Filtered Camera"
 type: "docs"
 description: "Use the filtered-camera module to selectively capture images."
 images: ["/tutorials/filtered-camera-module/viam-figure-preview.png"]
-imageAlt: "The wooden Viam figure being detected on a camera stream"
+imageAlt: "A wooden Viam figure being detected on a camera stream"
 tags: ["camera", "vision", "detector", "mlmodel", "data"]
 viamresources: ["camera", "vision", "mlmodel", "data_manager"]
 languages: []
