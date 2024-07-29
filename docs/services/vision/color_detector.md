@@ -124,38 +124,44 @@ You can test your detector with [live camera footage](#live-camera-footage) or [
 
 ### Live camera footage
 
-If you intend to use the detector with a camera that is part of your machine, you can test your detector from the [**Control tab**](/fleet/control/) or with code:
-
 1. Configure a [camera component](/components/camera/).
    {{< alert title="Tip" color="tip" >}}
    This is the camera whose name you need to pass to vision service methods.
    {{< /alert >}}
+2. After adding the camera, click the **Save** button in the top right corner of the page.
+3. Click on the **Test** area on the vision service configuration panel, or navigate to the **CONTROL** tab, click on the vision service and select your camera and vision service and then click **Refresh**.
+   The panel will show detections with bounding boxes around detections on the image.
 
-2. (Optional) If you would like to see detections from the **Control tab**, configure a [transform camera](/components/camera/transform/) with the following attributes:
+   ![Blue boxes detected](/services/vision/detections.png)
 
-   ```json
-   {
-     "pipeline": [
-       {
-         "type": "detections",
-         "attributes": {
-           "confidence_threshold": 0.5,
-           "detector_name": "<vision-service-name>",
-           "valid_labels": ["<label>"]
-         }
-       }
-     ],
-     "source": "<camera-name>"
-   }
-   ```
+{{% expand "Click to see how to configure a camera live feed that shows detections or classifications" %}}
 
-3. After adding the components and their attributes, click the **Save** button in the top right corner of the page.
-4. Navigate to the **CONTROL** tab, click on your transform camera and toggle it on.
-   The transform camera will now show detections with bounding boxes around the object.
+Configure a [transform camera](/components/camera/transform/) with the following attributes:
 
-   ![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/services/vision/chair-detector.png)
+```json
+{
+  "pipeline": [
+    {
+      "type": "detections",
+      "attributes": {
+        "confidence_threshold": 0.5,
+        "detector_name": "<vision-service-name>",
+        "valid_labels": ["<label>"]
+      }
+    }
+  ],
+  "source": "<camera-name>"
+}
+```
 
-5. To access detections with code, use the Vision Service methods on the camera you configured in step 1.
+Then save your configuration.
+Navigate to the **CONTROL** tab, click on your transform camera and toggle it on to see a live feed with detections.
+
+![Detections on a transform camera](/services/vision/transform-detections.png)
+
+{{% /expand%}}
+
+4. To access detections with code, use the Vision Service methods on the camera you configured in step 1.
    The following code gets the machine’s vision service and then runs a color detector vision model on output from the machine's camera `"cam1"`:
 
    {{% alert title="Tip" color="tip" %}}

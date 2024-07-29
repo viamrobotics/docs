@@ -4,7 +4,7 @@ linkTitle: "Filtered Camera"
 type: "docs"
 description: "Use the filtered-camera module to selectively capture images."
 images: ["/tutorials/filtered-camera-module/viam-figure-preview.png"]
-imageAlt: "The wooden Viam figure being detected by a transform camera"
+imageAlt: "A wooden Viam figure being detected on a camera stream"
 tags: ["camera", "vision", "detector", "mlmodel", "data"]
 viamresources: ["camera", "vision", "mlmodel", "data_manager"]
 languages: []
@@ -265,63 +265,20 @@ Add the vision service to your machine to be able to use the deployed ML model w
 
 For more information, see [Configure an `mlmodel` detector](/services/vision/mlmodel/).
 
-## Test your ML model with a transform camera
+## Test your ML model
 
-Before filtering your data, you can create a [transform camera](/components/camera/transform/) to test that the ML model is working as expected with your camera.
-A transform camera will overlay a bounding box on your camera's live feed when it detects objects that match its ML model.
-This step is optional, you can skip this step if you want to get right to filtering your data with the `filtered-camera` module.
+Before filtering your data, test that your ML model is working as expected with your camera.
 
-### Add a transform camera
+You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/fleet/control/).
 
-To add a transform camera to your machine:
+The camera stream will show detections with bounding boxes around the detections, so try placing an object your ML model can recognize in front of the camera.
 
-1. Navigate to your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com).
-1. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**. Select **Camera**, then select the built-in `transform` model.
-1. Give the transform camera a name, like `my-transform-camera`, then click **Create**.
-1. Find the card of the component you created on the **CONFIGURE** tab. Click the **{}** (Switch to advanced) button on the upper right of the card.
-   On the panel that appears, copy and paste the following configuration:
+{{< imgproc src="/tutorials/filtered-camera-module/transform-camera-overlay.png" alt="Detection of a viam figure with a confidence score of 0.97" resize="800x" >}}
 
-   ```json {class="line-numbers linkable-line-numbers"}
-   {
-     "pipeline": [
-       {
-         "attributes": {
-           "detector_name": "my-vision-service",
-           "confidence_threshold": 0.5
-         },
-         "type": "detections"
-       }
-     ],
-     "source": "my-webcam"
-   }
-   ```
-
-   If you used different names for the vision service or the camera component, update this configuration with those names.
-   You can adjust the `confidence_threshold` to suit your needs.
-   A value of `0.5` is a relatively loose match, representing 50% confidence.
-   To require that your machine match with more confidence, you can raise this value to something like `0.8`, representing 80% confidence.
-
-   {{< imgproc src="/tutorials/filtered-camera-module/configure-transform-camera.png" alt="The transform camera component configuration pane with required attributes configured" resize="800x" >}}
-
-1. Click **Save** in the top right corner of the page to save your changes.
-
-### Test your ML model on a live camera feed
-
-Now that you've configured a transform camera, you can see your ML model in action from the **CONTROL** tab:
-
-1. On your machine's **CONTROL** tab in the [Viam app](https://app.viam.com), enable the toggle for both your camera component (`my-webcam`) and your transform camera (`my-transform-camera`).
-   You can find these toggles under their respective component: click a control pane to expand it if it is collapsed.
-   The screenshot below shows a machine with a configured `base` component, so the two toggles appear under the `base` control pane, but you can always find them under their own control pane as well.
-1. The camera component displays the raw camera feed, but the transform camera will additionally overlay a bounding box on the same feed if a matching object is detected.
-   Try placing an object your ML model can recognize in front of the camera.
-   The transform camera should draw a bounding box around that object in the live camera feed, and indicate a confidence threshold for the match.
-
-   {{< imgproc src="/tutorials/filtered-camera-module/transform-camera-overlay.png" alt="The control tab in the Viam app showing both a live camera feed and the live transform camera overlay, with the latter correctly detecting a viam figure with a confidence score of 0.97" resize="800x" >}}
-
-1. When satisfied that your ML model is working well, you can disable both cameras.
-   Alternatively, if the transform camera is not matching reliably, you will need to adjust your model.
-   If you trained your model, consider adding and labelling more images in your dataset, or lowering the `confidence_threshold` of the transform camera.
-   Ideally, you want your ML model to be able to identify objects with a high level of confidence, which usually is dependent on a robust source dataset.
+When satisfied that your ML model is working well, continue to the next step.
+If the vision service is not matching reliably, you will need to adjust your model.
+If you trained your model, consider adding and labelling more images in your dataset.
+Ideally, you want your ML model to be able to identify objects with a high level of confidence, which is usually dependent on a robust source dataset.
 
 ## Add and configure the `filtered-camera` module
 

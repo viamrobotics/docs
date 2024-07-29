@@ -117,47 +117,14 @@ If you want to train your own model instead, follow the instructions in [train a
 
    ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/send-security-photo/app-service-vision.png)
 
-### Configure the detection camera
-
-To be able to test that the vision service is working, add a [transform camera](/components/camera/transform/) which will add bounding boxes and labels around the objects the service detects.
-
-Click the **+** (Create) button next to your main part in the left-hand menu and select **Component**.
-Start typing "transform" and select **camera / transform**.
-Give your transform camera the name `detectionCam` and click **Create**.
-
-![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/send-security-photo/app-detection-before.png)
-
-In the new transform camera panel, click on **{}** to go to advanced mode and replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will use, and defines a pipeline that adds the defined `myPeopleDetector`:
-
-```json
-{
-  "source": "cam",
-  "pipeline": [
-    {
-      "type": "detections",
-      "attributes": {
-        "detector_name": "myPeopleDetector",
-        "confidence_threshold": 0.5
-      }
-    }
-  ]
-}
-```
-
-It is good practice to also add your camera `cam` as a dependency in the **Depends on** section, to ensure the components are loaded in the correct order.
-
 Click **Save** in the top right corner of the screen.
 
-![detectionCam component panel with type camera and model transform, Attributes section filled with source and pipeline information.](/tutorials/send-security-photo/app-detection-after.png)
+### Test the detection camera
 
-### Test the model
+To test that the vision service is working, click on the **Test** area of the vision service panel `myPeopleDetector` or click on the vision service panel on the **CONTROL** tab.
 
 {{<imgproc src="/tutorials/send-security-photo/control-view.png" class="alignright" resize="300x" declaredimensions=true alt="the control tab">}}
 
-At this point, you can test that the model is detecting people.
-Navigate to your [machine's CONTROL tab](/fleet/control/).
-
-Click on the `detectionCam` panel and toggle **View detectionCam** on.
 If the vision service detects a person on the configured camera, you will see a red box around the detection along with the confidence score of the detection.
 
 ## How to use yagmail
