@@ -16,10 +16,8 @@ aliases:
 {{<imgproc src="/registry/module-diagram.png" resize="x900" declaredimensions=true alt="Representation of the Viam registry, some modules within it, and a rover they support." >}}
 <br>
 
-Viam provides built-in support for a variety of different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}, but you can add support for your own [custom {{< glossary_tooltip term_id="resource" text="resources" >}}](/registry/) by creating a {{< glossary_tooltip term_id="module" text="module" >}}.
-
-You can search the [Viam Registry](https://app.viam.com/registry) and [deploy an existing module to your machine](/registry/configure/) in a few clicks if you find one that meets your needs.
-If no existing modules support your specific use case, you can write your own module, and either upload it to the Viam registry to share with others, or deploy it to your machine as a local module without uploading it to the registry.
+Viam provides built-in support for a variety of different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}, as well as a registry full of {{< glossary_tooltip term_id="module" text="modules" >}} created by other users.
+If no [existing modules](/registry/#modular-resources) support your specific use case, you can write your own [custom {{< glossary_tooltip term_id="resource" text="resources" >}}](/registry/) by creating a module, and either upload it to the [Viam registry](https://app.viam.com/registry) to share it publicly, or deploy it to your machine as a local module without uploading it to the registry.
 
 Follow the instructions below to learn how to write a new module using your preferred language and its corresponding [Viam SDK](/sdks/), and then deploy it to your machines.
 
