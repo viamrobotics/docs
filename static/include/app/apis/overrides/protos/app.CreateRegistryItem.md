@@ -1,1 +1,1 @@
-Create a registry item
+Create a registry item.
