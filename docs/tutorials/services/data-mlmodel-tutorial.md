@@ -238,7 +238,7 @@ To deploy a model to your machine:
 
 ## The vision service
 
-Now that you have deployed an ML model to your machine using the ML model service, you are ready to configure a _vision service_ which can detect the objects you've tagged in images from in a camera feed.
+Now that you have deployed an ML model to your machine using the ML model service, you are ready to configure a _vision service_ which can detect the objects you've tagged in images from a camera feed.
 
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 1. Select the `vision` type, then select the `ML model` model.
