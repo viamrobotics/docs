@@ -33,6 +33,13 @@ The vision service now supports two new methods: [`CaptureAllFromCamera`](/servi
 
 {{% /changelog %}}-->
 
+{{% changelog date="2024-07-19" color="changed" title="Operators can now view data" %}}
+
+The operator role now has view permissions for the data in the respective resource a user has access to.
+For more information, see [/cloud/rbac/#data-and-machine-learning].
+
+{{% /changelog %}}
+
 {{% changelog date="2024-05-28" color="changed" title="Return type of analog Read" %}}
 
 The board analog API [`Read()`](/components/board/#read) method now returns an `AnalogValue` struct instead of a single int.
