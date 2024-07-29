@@ -155,82 +155,13 @@ If you notice the color is not reliably detected, drag the **Hue Tolerance** sli
 Note that the detector does not detect black, perfect greys (greys where the red, green, and blue color component values are equal), or white.
 {{< /alert >}}
 
-## Configure a transform camera to use the color detector
+## Test your vision service
 
-Viam [camera](/components/camera/) components can be physical like the one already configured on the rover, or virtual.
-A virtual [_transform camera_](/components/camera/transform/) transforms the output from a physical camera.
+You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/fleet/control/).
 
-To view output from the color detector overlaid on images from a physical camera, configure a transform camera:
+The camera stream will show detections with bounding boxes around the detected colors.
 
-1. Navigate to the **CONFIGURE** tab in the Viam app.
-2. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.
-3. Select `camera` as the type.
-4. Select `transform` as the model.
-5. Enter a name, for example `detectionCam`, and click **Create**.
-
-On the detection camera's component panel, click **{}** (Switch to advanced) to switch to the advanced mode, where you can edit the attributes directly with JSON.
-Copy and paste the following JSON configuration into the attributes field:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "source": "cam",
-  "pipeline": [
-    {
-      "attributes": {
-        "detector_name": "my_color_detector",
-        "confidence_threshold": 0.3
-      },
-      "type": "detections"
-    }
-  ]
-}
-```
-
-Explanations of each attribute are as follows:
-
-- `source`: The name of the physical camera on the rover, which provides the visual feed to get detections from.
-  If you used a different name for your camera, edit this field.
-- `pipeline`: Contains the transformation objects to apply to the camera.
-- `attributes`: The attributes of this transform camera.
-  - `detector_name`: The name of the detector.
-  - `confidence_threshold`: The percentage of confidence needed by the detection service to identify a color.
-    Since we set it to `0.3`, this means that detections with less than 30% confidence won't be recognized.
-  - `type`: The type of transform camera.
-
-The filled-in transform camera configuration panel will look like this:
-
-![The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. On the upper right there is a trash bin icon.](/tutorials/try-viam-color-detection/transform-camera-attributes.png)
-
-After adding the component and its attributes, click **Save** in the top right corner of the page to save your config.
-
-## Test your transform camera in the CONTROL tab
-
-{{< tabs >}}
-{{% tab name="Use your own computer and webcam" %}}
-
-In the **CONTROL** tab, click the **detectionCam** card to expand it, and toggle **View detectionCam** to show the camera feed.
-
-Point the camera at a rose-colored object or hold one up in front of the camera.
-
-Each time the camera detects the color, you will see a red rectangle around the color labeled with the detection confidence level.
-
-![Camera component panel displaying an example color detection.](/tutorials/try-viam-color-detection/detected-example.png)
-
-{{% /tab %}}
-{{% tab name="Use a borrowed Viam rover" %}}
-
-In the **CONTROL** tab, click on your base component and enable **detectionCam** in the **Live Feeds** section.
-
-Next, enable the keyboard and move your rover around until your camera detects the specified color.
-
-Each time the camera detects the color, you will see a red rectangle around the color labeled with the detection confidence level.
-
-![Base component panel displaying an example color detection.](/tutorials/try-viam-color-detection/detected-try-viam-example.png)
-
-You can also find the dedicated **detectionCam** card in the **CONTROL** tab, displaying the same feed.
-
-{{% /tab %}}
-{{< /tabs >}}
+![Detection of the color rose](/services/vision/rose-detection.png)
 
 ## Next steps
 

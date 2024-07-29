@@ -19,7 +19,7 @@ level: "Beginner"
 date: "2023-02-08"
 cost: "0"
 no_list: true
-# SMEs: Alexa Greenberg, Natalia Jacobowitz
+# SMEs: Natalia Jacobowitz
 ---
 
 <!-- LEARNING GOALS
@@ -240,11 +240,6 @@ To deploy a model to your machine:
 
 Now that you have deployed an ML model to your machine using the ML model service, you are ready to configure a _vision service_ which can detect the objects you've tagged in images from in a camera feed.
 
-To create a camera that identifies the objects you've tagged and shows the identifications in its camera feed, first add the vision service, then add a transform camera.
-You can then see the tagged objects on the **Control** tab.
-
-### Add the vision service
-
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 1. Select the `vision` type, then select the `ML model` model.
 1. Enter a name, like `my-vision-service`, or use the suggested name for your service and click **Create**.
@@ -254,49 +249,18 @@ You can then see the tagged objects on the **Control** tab.
 
 1. Click **Save Config** at the bottom of the window to save your changes.
 
-### Add a transform camera
-
-1. On your machine's **CONFIGURE** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
-1. Click the **Create components** button at the bottom of the page, and select **Camera**, then select **Transform camera**.
-1. Give the camera a name, like `my-transform-cam`, then click **Create**.
-1. In the resulting camera components configuration pane, enter the following into the attributes field for the transform camera:
-
-   ```json {class="line-numbers linkable-line-numbers"}
-   {
-     "pipeline": [
-       {
-         "type": "classifications",
-         "attributes": {
-           "classifier_name": "my-vision-service",
-           "confidence_threshold": 0.5
-         }
-       }
-     ],
-     "source": "cam"
-   }
-   ```
-
-   If you are not using a Try Viam rover, replace `cam` with the name of the configured camera on your machine.
-   The `confidence_threshold` controls how confident the model must be in order to present a matching object tag, on a scale of `0.0` - `1.0`, with `1.0` representing a 100% match requirement.
-   The more and varied images you have captured and tagged, the more confidently your model can identify the objects you have tagged.
-
-   {{< imgproc src="/tutorials/data-management/transform-cam-conf.png" alt="The transform camera component configuration pane showing the required attributes entered" resize="500x" >}}
-
-1. Click **Save Config** at the bottom of the window to save your changes.
-
-## Test object detection
+### Test object detection
 
 Your machine is now ready to detect the objects you've tagged.
 
-1. On your machine's **Control** page in the [Viam app](https://app.viam.com), find your configured camera component.
-   If you are using a Viam Rover, use the `viam_base` panel instead, which presents both the camera and the transform camera together.
-1. Enable both the camera and the transform camera, to show both on the right-hand side.
-   On the Viam Rover, and using the transform camera name from earlier in this tutorial, these are `cam` and `my-transform-cam`.
-1. Move your machine to a position where your camera can see an object that you have tagged in your ML model, and watch your machine identify it!
+You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/fleet/control/).
 
-   {{< imgproc src="/tutorials/data-management/transform-blue-star.png" alt="The control tab for a rover showing a live camera feed with the transform camera overlay indicating an object match for the blue_star tag" resize="600x" >}}
+The camera stream will show detections with bounding boxes around the detections, so try moving an object your model should recognize in front of the camera.
+If you are using a Viam Rover, use the `viam_base` panel to move your rover, then click on the vision panel to check for detections.
 
-   {{< imgproc src="/tutorials/data-management/transform-red-star.png" alt="The control tab for a rover showing a live camera feed with the transform camera overlay indicating an object match for the red_star tag" resize="600x" >}}
+{{< imgproc src="/tutorials/data-management/blue-star.png" alt="Detected blue star" resize="600x" >}}
+
+{{< imgproc src="/tutorials/data-management/red-star.png" alt="Detected red star" resize="600x" >}}
 
 That's it! Your machine is now smarter and better able to understand the world around it.
 

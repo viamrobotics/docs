@@ -225,7 +225,7 @@ If the classifier's results exceed the confidence threshold, the **Run model** s
 
 You can test your detector or classifier from the [**Control tab**](/fleet/control/) or with code using a camera that is part of your machine.
 
-#### Test with the CONTROL tab
+#### Test your vision service
 
 1. Configure a [camera component](/components/camera/).
    {{< alert title="Tip" color="tip" >}}
@@ -233,7 +233,7 @@ You can test your detector or classifier from the [**Control tab**](/fleet/contr
    {{< /alert >}}
 
 2. After adding the camera, click the **Save** button in the top right corner of the page.
-3. Click on the test tab or navigate to the **CONTROL** tab, click on the vision service and select your camera and vision service and then click **Refresh**.
+3. Click on the **Test** area on the vision service configuration panel or navigate to the **CONTROL** tab, click on the vision service and select your camera and vision service and then click **Refresh**.
    The panel will show detections with bounding boxes around detections on the image.
 
 ![Blue boxes detected](/services/vision/detections.png)
@@ -287,7 +287,7 @@ Configure a [transform camera](/components/camera/transform/) with the following
 Then save your configuration.
 Navigate to the **CONTROL** tab, click on your transform camera and toggle it on to see a live feed with detections or classifications.
 
-![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/services/vision/chair-detector.png)
+![Detections on a transform camera](/services/vision/transform-detections.png)
 
 {{% /expand%}}
 

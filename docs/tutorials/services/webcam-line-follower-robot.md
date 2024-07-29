@@ -188,7 +188,7 @@ Click **Save** in the top right corner of the screen.
 Navigate to your [machine's **CONTROL** tab](/fleet/control/) to test your components.
 Verify that it’s connected by refreshing the page and ensuring that the part status dropdown (in the top banner) says, "Live."
 
-1. Go to the **CONTROL** tab, click on the base panel, and toggle the transform camera to on.
+1. Go to the **CONTROL** tab, click on the base panel, and toggle the camera to on.
    Ensure the camera works as expected.
 
 1. Enable the keyboard controls and move the base using your keyboard.
@@ -237,7 +237,7 @@ We used `rgb(25,255,217)` or `#19FFD9` to match the color of our green electrica
 
 3. (optional) **Add a `transform` camera as a visualizer**
 
-If you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform/).
+If you'd like to see the bounding boxes that the color detector identifies in a live stream, you'll need to configure a [transform camera](/components/camera/transform/).
 This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
 
 Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component**.

@@ -107,30 +107,9 @@ To determine the color value from the actual cam component image, you can use a 
 
 ### Test your color detector
 
-You can test your detector from the [**CONTROL** tab](/fleet/control/):
+You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/fleet/control/):
 
-1. Configure a [transform camera](/components/camera/transform/) with the following attributes:
-
-   ```json
-   {
-     "pipeline": [
-       {
-         "type": "detections",
-         "attributes": {
-           "confidence_threshold": 0.5,
-           "detector_name": "my_color_detector"
-         }
-       }
-     ],
-     "source": "<camera-name>"
-   }
-   ```
-
-   For `<camera-name>`, insert the name of your configured physical camera.
-
-2. Click **Save**.
-3. Navigate to the **CONTROL** tab, click on your transform camera and toggle it on.
-   The transform camera will now show detections with bounding boxes around the detected colors.
+The camera stream will show detections with bounding boxes around the detected colors.
 
 {{< alert title="Tip" color="tip" >}}
 If the color is not reliably detected, try increasing the `hue_tolerance_pct` or adjusting the lighting of the area to make the color being detected more visible.
