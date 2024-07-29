@@ -48,7 +48,9 @@ The [Viam registry](https://app.viam.com/registry) is the central place where yo
 
 ## Modular resources
 
+<p>
 {{<imgproc src="/platform/registry.svg" class="alignright" resize="x900" declaredimensions=true alt="Representation of the Viam registry, some modules within it, and a rover they support." style="max-width:350px" >}}
+</p>
 
 Viam provides built-in support for a variety of {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
@@ -57,7 +59,7 @@ Viam provides built-in support for a variety of {{< glossary_tooltip term_id="re
 
 If the model of component or service you want to use for your project is not built into `viam-server` and available for configuration by default, you can use a {{< glossary_tooltip term_id="model" text="model" >}} from a {{< glossary_tooltip term_id="module" text="module" >}}.
 
-A module provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, and is packaged in a manner that streamlines deployment to a Viam machine.
+A module provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, and is packaged to streamline deployment to a Viam machine.
 Modules run alongside [`viam-server`](/get-started/installation/) as separate processes, communicating with `viam-server` over UNIX sockets.
 When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/appendix/apis/) with `viam-server`, making the new model available for use.
 

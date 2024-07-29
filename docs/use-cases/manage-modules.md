@@ -396,3 +396,15 @@ To delete just one version of a module:
 
 Versions are immutable, meaning that you cannot upload a new file with the same version number as the deleted one.
 To upload another version, you must increment the version number to a later version number.
+
+## Next steps
+
+{{< cards >}}
+{{% manualcard link="/registry/configure/#configure-version-update-management-for-a-registry-module" img="/registry/create-module.svg" %}}
+
+### Pin a version
+
+Configure version update management for a registry module on your machine.
+
+{{% /manualcard %}}
+{{< /cards >}}
