@@ -2,7 +2,7 @@
 title: "Generic Service"
 linkTitle: "Generic Service"
 childTitleEndOverwrite: "Generic Service"
-weight: 55
+weight: 500
 type: "docs"
 description: "A service that does not fit any of the other APIs."
 tags: ["generic", "services"]

@@ -1,7 +1,7 @@
 ---
 title: "Vision Service"
 linkTitle: "Computer Vision"
-weight: 90
+weight: 20
 type: "docs"
 description: "The vision service enables your machine to use its on-board cameras to intelligently see and interpret the world around it."
 icon: true

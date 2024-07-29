@@ -1,7 +1,7 @@
 ---
 title: "Base Remote Control Service"
 linkTitle: "Base Remote Control"
-weight: 60
+weight: 70
 type: "docs"
 description: "The base remote control service allows you to remotely control a base with an input controller like a gamepad."
 tags: ["base", "services", "rover", "input controller", "remote control"]

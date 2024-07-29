@@ -35,12 +35,12 @@ You can also add support for additional service types using [{{< glossary_toolti
 
 {{< cards >}}
 {{% card link="/services/data/" %}}
+{{% card link="/services/vision/" %}}
+{{% card link="/services/ml/deploy/" customTitle="Machine Learning" %}}
 {{% card link="/services/motion/" %}}
 {{% card link="/services/frame-system/" %}}
-{{% card link="/services/base-rc/" %}}
-{{% card link="/services/ml/deploy/" customTitle="Machine Learning" %}}
 {{% card link="/services/navigation/" %}}
 {{% card link="/services/slam/" %}}
-{{% card link="/services/vision/" %}}
+{{% card link="/services/base-rc/" %}}
 {{% card link="/services/generic/" %}}
 {{< /cards >}}
