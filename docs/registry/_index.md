@@ -82,7 +82,7 @@ You can search the available modular resources from the Viam registry here:
 You can see details about each module in the [Viam registry](https://app.viam.com/registry) on its dedicated module page.
 You can integrate modules into any Viam-powered machine.
 
-Be aware that unlike natively supported models, modular resources are not documented on the Viam Documentation.
+Be aware that unlike natively available models, modular resources are not documented on the Viam Documentation.
 Documentation for each modular resource is available on its GitHub page, which is linked from the models' page on [the registry](https://app.viam.com/registry) or by clicking on the model name in the above search.
 
 ## Use modules

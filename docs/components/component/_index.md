@@ -37,7 +37,7 @@ Add services commonly used with the component.
 {{< relatedcard link="/services/frame-system/" >}}
 {{< /cards >}}
 
-## Supported models
+## Available models
 
 To use your COMPONENT component, check whether one of the following models supports it.
 

@@ -27,7 +27,7 @@ Measure from that point to the base of the arm to get the `translation` coordina
 To configure your machine following this example:
 
 - Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
-- Select **Builder** mode and [configure your arm](/components/arm/#supported-models).
+- Select **Builder** mode and [configure your arm](/components/arm/#available-models).
   If you don't have a physical arm, you can use a `fake` model.
 - Select the **Frame** mode.
 - From the left-hand menu, select your arm:

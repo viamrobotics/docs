@@ -32,7 +32,7 @@ Signaling is overseen by a computer running `viam-server` which allows you to co
 
 {{% figure src="/components/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
 
-## Supported models
+## Available models
 
 {{< alert title="Running viam-server" color="note" >}}
 

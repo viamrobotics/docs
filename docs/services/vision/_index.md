@@ -88,7 +88,7 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 - [GetObjectPointClouds()](/services/vision/#getobjectpointclouds)
 
-## Supported models
+## Available models
 
 {{<resources_svc api="rdk:service:vision" type="vision">}}
 

@@ -46,7 +46,7 @@ Most machines with an encoder need at least the following hardware:
 {{< relatedcard link="/services/frame-system/" >}}
 {{< /cards >}}
 
-## Supported models
+## Available models
 
 To use your encoder component, check whether one of the following models supports it.
 

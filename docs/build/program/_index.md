@@ -29,7 +29,7 @@ The SDKs provide idiomatic wrappers around Viam's robot [gRPC APIs](https://gith
 
 ## Requirements
 
-Before you get started with your program, ensure that you have [installed `viam-server`](/get-started/installation/) on the computer you want to use to control your machine (likely a [single-board computer](/components/board/#supported-models)), and [configured your machine](/build/configure/).
+Before you get started with your program, ensure that you have [installed `viam-server`](/get-started/installation/) on the computer you want to use to control your machine (likely a [single-board computer](/components/board/#available-models)), and [configured your machine](/build/configure/).
 
 Next, to install your preferred Viam SDK on your Linux or macOS development machine or [single-board computer](/components/board/), run one of the following commands in your terminal:
 

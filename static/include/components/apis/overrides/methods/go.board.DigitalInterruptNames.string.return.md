@@ -1,1 +1,1 @@
-A slice containing the `"name"` of every interrupt [configured](#supported-models) on the board.
+A slice containing the `"name"` of every interrupt [configured](#available-models) on the board.

@@ -45,7 +45,7 @@ You can use different models to:
 {{< relatedcard link="/services/ml/deploy/" alt_title="Machine Learning" >}}
 {{< /cards >}}
 
-## Supported models
+## Available models
 
 To use your camera component, check whether one of the following models supports it.
 

@@ -45,7 +45,7 @@ Most machines with a gantry need at least the following hardware:
 {{< relatedcard link="/services/motion/" >}}
 {{< /cards >}}
 
-## Supported models
+## Available models
 
 To use your gantry component, check whether one of the following models supports it.
 

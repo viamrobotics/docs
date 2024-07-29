@@ -35,7 +35,7 @@ Each of these models must also include a [kinematics file](/internals/kinematic-
 Each built-in driver in the RDK includes a corresponding kinematics file located in the same directory as the driver.
 For example, the `ur5e`'s kinematics file, [`ur5e.json`](https://github.com/viamrobotics/rdk/blob/main/components/arm/universalrobots/ur5e.json), is provided in the RDK in the same directory as its driver, `ur.go`.
 
-See [Arm Configuration](/components/arm/#supported-models) for the current list of built-in models the RDK provides.
+See [Arm Configuration](/components/arm/#available-models) for the current list of built-in models the RDK provides.
 
 {{% /alert %}}
 

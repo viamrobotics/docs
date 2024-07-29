@@ -37,7 +37,7 @@ Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} th
 
 Then, [add a board component](/components/board/).
 
-Look through the [**Supported Models**](/components/motor/#supported-models) to determine the model of component to configure.
+Look through the [**Supported Models**](/components/motor/#available-models) to determine the model of component to configure.
 For example, configure a [`pi` board](/components/board/pi/) for a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W:
 
 ![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/get-started/quickstarts/configure-pi.png)
@@ -48,7 +48,7 @@ Follow the instructions in the board model's documentation to configure any requ
 {{< expand "Step 4: Configure a motor" >}}
 
 [Add a motor component](/components/motor/) that supports the type of motor and motor driver you're using.
-Look through the [**Supported Models**](/components/motor/#supported-models) to determine the model of component to configure.
+Look through the [**Supported Models**](/components/motor/#available-models) to determine the model of component to configure.
 For example, if you are using a standard DC motor (brushed or brushless) wired to a typical GPIO pin-controlled motor driver, configure a [`gpio` motor](/components/motor/gpio/):
 
 ![The CONFIGURE tab of the Viam app populated with a configured gpio motor.](/get-started/quickstarts/configure-motor.png)

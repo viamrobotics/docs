@@ -62,7 +62,7 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 {{< relatedcard link="/services/data/" >}}
 {{< /cards >}}
 
-## Supported models
+## Available models
 
 To use your arm component, check whether one of the following models supports it.
 

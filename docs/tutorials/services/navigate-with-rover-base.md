@@ -97,7 +97,7 @@ If you are using different hardware, configure them according to the instruction
 ### Configure a board with `"digital_interrupts"`
 
 First, configure the [board](/components/board/) local to your rover.
-Follow [these instructions](/components/board/#supported-models) to configure your board model.
+Follow [these instructions](/components/board/#available-models) to configure your board model.
 We used a [`jetson` board](/components/board/jetson/), but you can use any model of board you have on hand, as the [resource's API](/components/board/#api) is hardware agnostic.
 
 1. Configure a board named `local` as shown below:
@@ -149,7 +149,7 @@ Start by configuring the [encoders](/components/encoder/) and [motors](/componen
    Assign the pins as the [digital interrupts](/components/board/jetson/#digital_interrupts) you configured for the board, and wire the encoders accordingly to pins {{< glossary_tooltip term_id="pin-number" text="numbered" >}} `31`, `29`, `23`, and `21` on your `local` board.
    Refer to the [`incremental` encoder documentation](/components/encoder/incremental/) for attribute information.
 
-2. Next, follow [these instructions](/components/motor/#supported-models) to configure the left and right [motors](/components/motor/) of the `wheeled` base.
+2. Next, follow [these instructions](/components/motor/#available-models) to configure the left and right [motors](/components/motor/) of the `wheeled` base.
    We [configured ours as `gpio` motors](/components/motor/gpio/), as shown below:
 
 {{<imgproc src="/tutorials/navigate-with-rover-base/right-motor-config-builder.png" resize="1500x" declaredimensions=true alt="Configuration of a right gpio motor in the Viam app config builder." style="min-height:550px; max-height:600px">}}

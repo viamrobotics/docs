@@ -1,1 +1,1 @@
-A slice containing the `"name"` of every analog pin [configured](#supported-models) on the board.
+A slice containing the `"name"` of every analog pin [configured](#available-models) on the board.

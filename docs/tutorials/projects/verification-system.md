@@ -62,7 +62,7 @@ Your machine must have a [camera](/components/camera/) component, such as a [web
 Navigate to the **CONFIGURE** tab of your machine's page on the [Viam app](https://app.viam.com).
 Configure the camera you want to use for your security system.
 We configured ours as a `webcam`, but you can use whatever model of camera you'd like.
-Reference [these supported models](/components/camera/#supported-models).
+Reference [these available models](/components/camera/#available-models).
 
 To configure a `webcam`:
 
