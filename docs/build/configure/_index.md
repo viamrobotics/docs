@@ -272,7 +272,7 @@ The Viam app keeps a record of each machine's configuration changes, allowing yo
 
 To see the configuration history for a machine part, click on the **History** link at the top right corner of the machine part's card in the Viam app.
 
-![Configuration history for a machine part](build/configure/history.png)
+{{<imgproc src="build/configure/history.png" resize="1000x" declaredimensions=true alt="Configuration history for a machine part">}}
 
 To restore to an earlier version of your configuration, click the **Restore version** button next to the desired configuration.
 
