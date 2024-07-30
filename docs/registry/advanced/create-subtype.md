@@ -16,12 +16,14 @@ You can define a new {{< glossary_tooltip term_id="resource" text="resource" >}}
 - You have a {{% glossary_tooltip term_id="resource" text="resource" %}} that does not fit into any of the existing {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} subtypes.
 - You have a resource that could fit into an existing subtype, but you want to define an API with different methods and messages than the ones in the existing [APIs](/appendix/apis/) for that subtype.
 
-  {{% alert title="Tip" color="tip" %}}
+{{% alert title="Tip" color="tip" %}}
 
-  If you want to use most of an existing API but need just a few other functions, try using the [`DoCommand`](/appendix/apis/#docommand) endpoint and [extra parameters](/build/program/use-extra-params/) to add custom functionality to an existing subtype.
-  For example, if you have a [sensor](/components/sensor/) and you want to define a `Calibrate` method, you can use `DoCommand`.
+If you want to use most of an existing API but need just a few other functions, try using the [`DoCommand`](/appendix/apis/#docommand) endpoint and [extra parameters](/build/program/use-extra-params/) to add custom functionality to an existing subtype.
+For example, if you have a [sensor](/components/sensor/) and you want to define a `Calibrate` method, you can use `DoCommand`.
 
-  {{% /alert %}}
+If your use case uses only `DoCommand` and no other API methods, you can define a new model of [generic component](/components/generic/) or [generic service](/services/generic/).
+
+{{% /alert %}}
 
 ## Define your new resource API
 
@@ -72,7 +74,7 @@ The following steps guide you through this process in more detail:
 ## Next steps
 
 {{< cards >}}
-{{% manualcard link="/registry/create/#define-a-new-resource-model"%}}
+{{% manualcard link="/use-cases/create-module/#write-a-module"%}}
 
 <h4>Implement your API</h4>
 

@@ -1,37 +1,34 @@
 ---
-title: "Create a new module"
+title: "How to create and deploy a new module"
 linkTitle: "Create a module"
-weight: 20
 type: "docs"
-tags:
-  [
-    "server",
-    "rdk",
-    "extending viam",
-    "modular resources",
-    "components",
-    "services",
-    "registry",
-  ]
-description: "Create a module to provide a new modular resource to your machine."
-icon: true
-images: ["/registry/create-module.svg"]
+weight: 25
+images: ["/registry/module-puzzle-piece.svg"]
+tags: ["modular resources", "components", "services", "registry"]
+description: "Add a custom resource by creating and deploying a module to your machine."
 aliases:
-  - "/extend/modular-resources/create/"
-  - "/modular-resources/create/"
-no_list: true
+  - /registry/create/
+  - /registry/upload/
+  - /extend/modular-resources/upload/
+  - /modular-resources/upload/
 ---
 
-Viam provides built-in support for a variety of different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}, but you can add support for your own custom {{< glossary_tooltip term_id="resource" text="resources" >}} by creating a {{< glossary_tooltip term_id="module" text="module" >}}.
+{{<imgproc src="/registry/module-diagram.png" resize="x900" declaredimensions=true alt="Representation of the Viam registry, some modules within it, and a rover they support." >}}
+<br>
 
-A module provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, and is packaged in a manner that streamlines deployment to a Viam machine.
-Modules run alongside [`viam-server`](/get-started/installation/) as separate processes, communicating with `viam-server` over UNIX sockets.
-When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/appendix/apis/) with `viam-server`, making the new model available for use.
+Viam provides built-in support for a variety of different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}, as well as a registry full of {{< glossary_tooltip term_id="module" text="modules" >}} created by other users.
+If no [existing modules](/registry/#modular-resources) support your specific use case, you can write your own [custom {{< glossary_tooltip term_id="resource" text="resources" >}}](/registry/) by creating a module, and either upload it to the [Viam registry](https://app.viam.com/registry) to share it publicly, or deploy it to your machine as a local module without uploading it to the registry.
 
-You can search the [Viam Registry](https://app.viam.com/registry) and [deploy an existing module to your machine](/registry/configure/) in a few clicks if you find one that meets your needs.
-Or you can write your own module to address your specific use case, and either upload it to the Viam registry to share with others, or deploy it to your machine as a local module without uploading to the registry.
+Follow the instructions below to learn how to write a new module using your preferred language and its corresponding [Viam SDK](/sdks/), and then deploy it to your machines.
 
-Follow the instructions below to learn how to write a new module using your preferred language and its corresponding [Viam SDK](/sdks/).
+{{% alert title="In this page" color="tip" %}}
+
+1. [Write a custom module to support a new resource.](#write-a-module)
+1. [Test your module locally.](#test-your-module-locally)
+1. [Upload your module to the modular resource registry.](#upload-your-module-to-the-modular-resource-registry)
+1. [Deploy your module on more machines.](#deploy-your-module-to-more-machines)
+
+{{% /alert %}}
 
 {{< alert title="Note: Micro-RDK modules" color="note" >}}
 The [micro-RDK](/get-started/installation/#install-micro-rdk) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
@@ -43,53 +40,187 @@ You can also watch this guide to creating a vision service module:
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/Yz6E07To9Mc">}}
 
-## Overview of a module
+## Write a module
 
-Generally, to write a module, you:
+Generally, to write a module, you will complete the following steps:
 
-1. [Define a new resource model](#define-a-new-resource-model) to define all the capabilities of your model.
-1. [Write an entry point (main program) file](#write-an-entry-point-main-program-file) to serve as the central interface to those new capabilities.
-1. [Compile or package](#compile-or-package-your-module) the model definition file or files, main program file, and any supporting files into a single executable file (a module) that can be run by `viam-server`.
+1. Choose a Viam API to implement in your model.
+1. Write your new model definition code to map all the capabilities of your model to the API.
+1. Write an entry point (main program) file that registers your model with the Viam SDK and starts it up.
+1. Compile or package the model definition file or files, main program file, and any supporting files into a single executable file (a module) that can be run by `viam-server`.
 
 While you can certainly combine the resource model definition and the main program code into a single file if desired (for example, a single `main.py` program that includes both the model definition and the `main()` program that uses it), this guide will use separate files for each.
 
-Most modules extend an existing [component API](/appendix/apis/#component-apis) or [service API](/appendix/apis/#service-apis) to add support for a new type of that resource.
-For example, you could extend the [camera component API](/components/camera/#api) to support new image formats or a new type of camera, or extend the [ML model service API](/appendix/apis/#ml-model) to support a new machine learning (ML) model type beyond `tflite`.
+### Choose an API to implement in your model
+
+Look through the [component API](/appendix/apis/#component-apis) and [service API](/appendix/apis/#service-apis) and find the API that best fits your use case.
+Each API contains various methods which you will need to define in your module:
+
+- One or more methods specific to that API, such as the servo component's `Move` and `GetPosition` methods.
+- Inherited [ResourceBase methods](/appendix/apis/#resourcebase-methods) such as `DoCommand` and `Close`, common to all Viam {{< glossary_tooltip term_id="resource" text="resource" >}} APIs.
+- (For some APIs) Other inherited methods, for example all actuator APIs such as the motor API and servo API inherit `IsMoving` and `Stop`.
+
+{{< expand "Click for more guidance" >}}
+Think about what functionality you want your module to provide, what methods you need, and choose an API to implement accordingly.
+For example, the [sensor API](/appendix/apis/#sensor) has a `GetReadings` method, so if you create a module for a model of sensor, you'll need to write code to provide a response to the `GetReadings` method.
+If instead of just getting readings, you actually have an encoder and need to be able to reset the zero position, use the [encoder API](/appendix/apis/#encoder) so you can define functionality behind the `GetPosition` and `ResetPosition` methods.
+
+In addition to the list of methods, another reason to choose one API over another is how certain APIs fit into the Viam ecosystem.
+For example, though you could technically implement a GPS as a sensor with just the `GetReadings` method, if you implement it as a movement sensor then you have access to methods like `GetCompassHeading` which allow you to use your GPS module with the [navigation service](/services/navigation/).
+For this reason, it's generally best to choose the API that most closely matches your hardware or software.
+{{< /expand >}}
 
 {{% alert title=Note color="note" %}}
-If you want to write a module to extend support to a new type of component or service that is relatively unique, consider using the generic API for your resource type to build your own API:
+If you want to write a module to add support to a new type of component or service that is relatively unique, consider using the generic API for your resource type to build your own API:
 
-- If you are working with a component that doesn't fit into any of the existing [component APIs](/appendix/apis/#component-apis), you can use the [generic component](/components/generic/) to build your own component API.
-- If you are designing a service that doesn't fit into any of the existing [service APIs](/appendix/apis/#service-apis), you can use the [generic service](/services/generic/) to build your own service API.
+- If you are working with a component that doesn't fit into any of the existing component APIs, you can use the [generic component](/components/generic/) to build your own component API.
+- If you are designing a service that doesn't fit into any of the existing service APIs, you can use the [generic service](/services/generic/) to build your own service API.
+- It is also possible to [define an entirely new API](/registry/advanced/create-subtype/), but this is even more advanced than using `generic`.
 
-Most module use cases, however, benefit from extending an existing API, as covered below.
+Most module use cases, however, benefit from implementing an existing API instead of `generic`.
 {{% /alert %}}
 
-### (Optional) Use a module template
+#### Valid API identifiers
+
+Each existing component or service API has a unique identifier in the form of a colon-delimited triplet.
+You will use this {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}} when creating your new model, to indicate which API it uses.
+
+The API namespace triplet is the same for all built-in and modular models that implement a given API.
+For example, every model of motor built into Viam, as well as every custom model of motor provided by a module, all use the same API namespace triplet `rdk:component:motor` to indicate that they implement the [motor API](/components/motor/#api).
+
+The three pieces of the API namespace triplet are as follows:
+
+{{< tabs >}}
+{{% tab name="Component" %}}
+
+- `namespace`: `rdk`
+- `type`: `component`
+- `subtype`: any one of [these component proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/component), for example `motor` if you are creating a new model of motor
+
+{{% /tab %}}
+{{% tab name="Service" %}}
+
+- `namespace`: `rdk`
+- `type`: `service`
+- `subtype`: any one of [these service proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/service), for example `vision` if you are creating a new model of vision service
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Name your new resource model
+
+In addition to determining which existing API namespace triplet to use when creating your module, you need to decide on a separate triplet unique to your model.
+
+{{< expand "API namespace triplet and model namespace triplet examples" >}}
+
+The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model use the repository name [yahboom](https://github.com/viam-labs/yahboom).
+The models implement the `rdk:component:arm` and the `rdk:component:gripper` API to support the Yahboom DOFBOT arm and gripper, respectively:
+
+```json
+{
+    "api": "rdk:component:arm",
+    "model": "rand:yahboom:arm"
+},
+{
+    "api": "rdk:component:gripper",
+    "model": "rand:yahboom:gripper"
+}
+```
+
+The `viam-labs:audioout:pygame` model uses the repository name [audioout](https://github.com/viam-labs/audioout).
+It implements the custom API `viam-labs:service:audioout`:
+
+```json
+{
+  "api": "viam-labs:service:audioout",
+  "model": "viam-labs:audioout:pygame"
+}
+```
+
+{{< /expand >}}
+
+A resource model is identified by a unique name, called the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, using the format: `namespace:repo-name:model-name`, where:
+
+- `namespace` is the [namespace of your organization](/cloud/organizations/#create-a-namespace-for-your-organization).
+  - For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:repo-name:mybase`.
+    If you do not intend to [upload your module](#upload-your-module-to-the-modular-resource-registry) to the [Viam registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
+  - The `viam` namespace is reserved for models provided by Viam.
+- `repo-name` is the code repository (GitHub repo) that houses your module code.
+  - Ideally, your `repo-name` should describe the common functionality provided across the model or models of that module.
+- `model-name` is the name of the new resource model that your module will provide.
+
+For example, if your organization namespace is `acme`, and you have written a new base implementation named `mybase` which you have pushed to a repository named `my-custom-base-repo`, you would use the namespace `acme:my-custom-base-repo:mybase` for your model.
+
+More requirements:
+
+- Your model triplet must be all-lowercase.
+- Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
+
+Determine the model name you want to use based on these requirements, then proceed to the next section.
+
+### Write your new resource model definition
+
+In this step, you will code the logic that is unique to your model.
+
+{{% alert title="Tip (optional)" color="tip" %}}
 
 If you are using Golang, use the [Golang Module templates](https://github.com/viam-labs/module-templates-golang) which contain detailed instructions for creating your module.
 
 If you are using Python, you can use the [Viam module generator](https://github.com/viam-labs/generator-viam-module/tree/main) to generate the scaffolding for a module with one resource model.
 
-## Define a new resource model
+{{% /alert %}}
 
-### Name your new resource model
+{{< expand "Additional example modules" >}}
 
-A resource model is identified by a unique name, often called the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, using the format: `namespace:repo-name:model-name`, where:
+Browse additional example modules by language:
 
-- `namespace` is the [namespace of your organization](/cloud/organizations/#create-a-namespace-for-your-organization).
-- `repo-name` is the code repository (GitHub repo) that houses your module code.
-- `model-name` is the name of the new resource model that your module will provide.
+{{< tabs >}}
+{{% tab name="Python" %}}
 
-For example, if your organization namespace is `acme`, and you have written a new base implementation named `mybase` which you have pushed to a repository named `my-custom-base-repo`, you would use the namespace `acme:my-custom-base-repo:mybase` for your model.
+<!-- prettier-ignore -->
+| Module | Repository | Description |
+| ------ | ---------- | ----------- |
+| [monocular-visual-odometry](https://app.viam.com/module/viam/monocular-visual-odometry) | [viamrobotics/viam-visual-odometry](https://github.com/viamrobotics/viam-visual-odometry) | Extends the built-in [movement sensor API](/components/movement-sensor/#api) to support using monocular visual odometry to enable any calibrated camera to function as a movement sensor. |
+| [oak](https://app.viam.com/module/viam/oak) | [viamrobotics/viam-camera-oak](https://github.com/viamrobotics/viam-camera-oak) | Extends the built-in [camera API](/components/camera/#api) to support OAK cameras. |
+| [odrive](https://app.viam.com/module/viam/odrive) | [viamrobotics/odrive](https://github.com/viamrobotics/odrive) | Extends the built-in [motor API](/components/motor/#api) to support the ODrive motor. This module provides two models, one for a `canbus`-connected ODrive motor, and one for a `serial`-connected ODrive motor. |
+| [yahboom](https://app.viam.com/module/rand/yahboom) | [viamlabs/yahboom](https://github.com/viam-labs/yahboom) | Extends the built-in [arm API](/components/arm/#api) and [gripper API](/components/gripper/#api) to support the Yahboom Dofbot robotic arm. |
 
-Determine the model name you want to use based on these requirements, then proceed to the next section.
+For more Python module examples:
 
-If you do not intend to [upload your module](/registry/upload/) to the [Viam registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
+- See the [Python SDK `examples` directory](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples) for sample module code of varying complexity.
+- For tutorials featuring modular resource creation, see the [Modular resource examples](/registry/examples/) page.
+- For an example featuring a sensor, see [MCP300x](https://github.com/viam-labs/mcp300x-adc-sensor).
+- For additional examples use the [modular resources search](/registry/#modular-resources) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
 
-See [Naming your model](/registry/#naming-your-model-namespacerepo-namename) for more information.
+{{% /tab %}}
+{{% tab name="Go" %}}
 
-### Write your new resource model definition
+<!-- prettier-ignore -->
+| Module | Repository | Description |
+| ------ | ---------- | ----------- |
+| [agilex-limo](https://app.viam.com/module/viam/agilex-limo) | [viamlabs/agilex](https://github.com/viam-labs/agilex/) | Extends the built-in [base API](/components/base/#api) to support the Agilex Limo base. |
+| [rplidar](https://app.viam.com/module/viam/rplidar) | [viamrobotics/rplidar](https://github.com/viamrobotics/rplidar) | Extends the built-in [camera API](/components/camera/#api) to support several models of the SLAMTEC RPlidar. |
+| [filtered-camera](https://app.viam.com/module/erh/filtered-camera) | [erh/filtered_camera](https://github.com/erh/filtered_camera) | Extends the built-in [camera API](/components/camera/#api) to enable filtering captured images by comparing to a defined ML model, and only syncing matching images to the Viam app. See the [filtered-camera tutorial](/tutorials/projects/filtered-camera/) for more information. |
+
+For more Go module examples:
+
+- See the [Go SDK `examples` directory](https://github.com/viamrobotics/rdk/blob/main/examples/) for sample module code of varying complexity.
+- For additional examples use the [modular resources search](/registry/#modular-resources) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+<!-- prettier-ignore -->
+| Module | Repository | Description |
+| ------ | ---------- | ----------- |
+| [csi-cam](https://app.viam.com/module/viam/csi-cam) | [viamrobotics/csi-camera](https://github.com/viamrobotics/csi-camera/) | Extends the built-in [camera API](/components/camera/#api) to support the Intel CSI camera. |
+<!-- | [module-example-cpp](https://app.viam.com/module/viam/module-example-cpp) | [viamrobotics/module-example-cpp](https://github.com/viamrobotics/module-example-cpp) | Extends the built-in [sensor API](/components/sensor/#api) to report wifi statistics. | -->
+
+{{% /tab %}}
+{{% /tabs %}}
+
+Explore the full list of available modules in the [Viam registry](https://app.viam.com/registry).
+{{< /expand >}}
 
 Follow the instructions below to define the capabilities provided by your model, for the language you are using to write your module code:
 
@@ -127,7 +258,7 @@ Your new resource model must either:
 Otherwise, your new class will not instantiate.
 
 Next, create a file that will define your new resource model.
-This file will inherit from the existing class for your resource type, implement - or raise a `NotImplementedError()` for - each built-in method for that class, and define any new functionality you want to include as part of your model.
+This file will inherit from the existing class for your resource type, implement each built-in method for that class (or raise a `NotImplementedError()` for it), and define any new functionality you want to include as part of your model.
 
 For example, the following file, `my_base.py`:
 
@@ -136,8 +267,7 @@ For example, the following file, `my_base.py`:
 - does not implement several built-in methods, including `get_properties()` and `set_velocity()`, but instead raises a `NotImplementedError` error in the body of those functions.
   This prevents these methods from being used by new base components that use this modular resource, but meets the requirement that all built-in methods either be defined or raise a `NotImplementedError()` error, to ensure that the new `MyBase` class successfully instantiates.
 
-<details>
-  <summary>Click to view sample code for <file>my_base.py</file></summary>
+{{< expand "Click to view sample code for my_base.py" >}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 from typing import ClassVar, Mapping, Sequence, Any, Dict, Optional, cast
@@ -304,14 +434,7 @@ class MyBase(Base, Reconfigurable):
             self.right.is_powered(extra=extra, timeout=timeout)[0]
 ```
 
-</details>
-<br>
-
-{{< alert title="Note" color="note" >}}
-For an example featuring a sensor, see [MCP300x](https://github.com/viam-labs/mcp300x-adc-sensor).
-
-For additional examples use the [modular resources search](/registry/#modular-resources) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
-{{< /alert >}}
+{{< /expand >}}
 
 When implementing built-in methods from the Viam Python SDK in your model, be sure your implementation of those methods returns any values designated in the built-in function's return signature, typed correctly.
 For example, the `is_moving()` implementation in the example code above returns a `bool` value, which matches the return value of the built-in `is_moving()` function as defined in the Viam Python SDK in the file [`base.py`](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/base/base.py).
@@ -320,11 +443,6 @@ For more information on the base component API methods used in this example, see
 
 - [Python SDK documentation for the `Base` class](https://python.viam.dev/autoapi/viam/components/base/index.html)
 - [Base API methods](/components/base/#api)
-
-For more Python module examples:
-
-- See the [Python SDK `examples` directory](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples) for sample module code of varying complexity.
-- See the [Additional example modules](#additional-example-modules) section below for a selection of published Python modules from the Viam registry.
 
 {{% /tab %}}
 {{% tab name="Go"%}}
@@ -363,8 +481,7 @@ For example, the following file, `mybase.go`:
 - does not implement several built-in methods, including `MoveStraight()` and `SetVelocity()`, but instead returns an `errUnimplemented` error in the body of those methods.
   This prevents these methods from being used by new base components that use this modular resource, but meets the requirement that all built-in methods either be defined or return an `errUnimplemented` error, to ensure that the new `mybase` package successfully instantiates.
 
-<details>
-  <summary>Click to view sample code for <file>mybase.go</file></summary>
+{{< expand "Click to view sample code for mybase.go" >}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Package mybase implements a base that only supports SetPower (basic forward/back/turn controls), IsMoving (check if in motion), and Stop (stop all motion).
@@ -554,8 +671,7 @@ func (b *myBase) Close(ctx context.Context) error {
 }
 ```
 
-</details>
-<br>
+{{< /expand >}}
 
 {{< alert title="Note" color="note" >}}
 For an example featuring a sensor, see [MCP3004-8](https://github.com/mestcihazal/mcp3004-8-go).
@@ -571,11 +687,6 @@ For more information on the base component API methods used in this example, see
 
 - [Go SDK documentation for the `base` package](https://pkg.go.dev/go.viam.com/rdk/components/base#pkg-functions)
 - [Base API methods](/components/base/#api)
-
-For more Go module examples:
-
-- See the [Go SDK `examples` directory](https://github.com/viamrobotics/rdk/blob/main/examples/) for sample module code of varying complexity.
-- See the [Additional example modules](#additional-example-modules) section below for a selection of published Go modules from the Viam registry.
 
 {{% /tab %}}
 {{% tab name="C++" %}}
@@ -620,8 +731,7 @@ For example, the files below define the new `MyBase` class and its constituent f
 
 Note that the model triplet itself, `acme:my-custom-base-repo:mybase` in this example, is defined in the entry point (main program) file `main.cpp`, which is described in the next section.
 
-<details>
-  <summary>Click to view sample code for the <file>my_base.hpp</file> header file</summary>
+{{< expand "Click to view sample code for the my_base.hpp header file" >}}
 
 ```cpp {class="line-numbers linkable-line-numbers"}
 #pragma once
@@ -673,10 +783,9 @@ class MyBase : public Base {
 };
 ```
 
-</details>
-<br>
-<details>
-  <summary>Click to view sample code for the <file>my_base.cpp</file> source file</summary>
+{{< /expand >}}
+
+{{< expand "Click to view sample code for the my_base.cpp source file" >}}
 
 ```cpp {class="line-numbers linkable-line-numbers"}
 #include "my_base.hpp"
@@ -804,8 +913,7 @@ Base::properties MyBase::get_properties(const AttributeMap& extra) {
 }
 ```
 
-</details>
-<br>
+{{< /expand >}}
 
 When implementing built-in functions from the Viam C++ SDK in your model, be sure your implementation of those functions returns any values designated in the built-in function's return signature, typed correctly.
 For example, the `set_power()` implementation in the example code above returns three values of type `Vector3`, `Vector3`, `AttributeMap`, which matches the return values of the built-in `set_power()` function as defined in the Viam C++ SDK in the file [`base.hpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base.hpp).
@@ -815,15 +923,12 @@ For more information on the base component API methods used in these examples, s
 - [C++ SDK documentation for the `Base` class](https://cpp.viam.dev/classviam_1_1sdk_1_1Base.html)
 - [Base API methods](/components/base/#api)
 
-For more C++ module examples:
-
-- See the [C++ SDK `examples` directory](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/modules/) for sample module code of varying complexity.
-- See the [Additional example modules](#additional-example-modules) section below for a selection of published C++ modules from the Viam registry.
+For more C++ module examples of varying complexity,see the [C++ SDK `examples` directory](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/modules/).
 
 {{% /tab %}}
 {{< /tabs >}}
 
-## Write an entry point (main program) file
+### Write an entry point (main program) file
 
 A main entry point file starts the module, and adds the resource model.
 
@@ -841,8 +946,7 @@ Create a <file>main.py</file> file to serve as the module's entry point file, wh
 For example, the following `main.py` file serves as the entry point file for the `MyBase` custom model.
 It imports the `MyBase` model from the `my_base.py` file that provides it, and defines a `main()` function that registers it.
 
-<details>
-  <summary>Click to view sample code for <file>main.py</file></summary>
+{{< expand "Click to view sample code for main.py" >}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -872,7 +976,7 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-</details>
+{{< /expand >}}
 
 {{% /tab %}}
 {{% tab name="Go"%}}
@@ -886,8 +990,7 @@ Create a <file>main.go</file> file to serve as the module's entry point file, wh
 For example, the following `main.go` file serves as the entry point file for the `mybase` custom model.
 It imports the `mybase` model from the `my_base.go` file that provides it, and defines a `main()` function that registers it.
 
-<details>
-  <summary>Click to view sample code for <file>main.go</file></summary>
+{{< expand "Click to view sample code for main.go" >}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Package main is a module which serves the mybase custom model.
@@ -936,7 +1039,7 @@ func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (er
 }
 ```
 
-</details>
+{{< /expand >}}
 
 {{% /tab %}}
 {{% tab name="C++" %}}
@@ -950,8 +1053,7 @@ Create a <file>main.cpp</file> file to serve as the module's entry point file, w
 For example, the following `main.cpp` file serves as the entry point file for the `mybase` custom model.
 It imports the `mybase` model implementation from the `my_base.hpp` file that provides it, declares the model triplet `acme:my-custom-base-repo:mybase`, and defines a `main()` function that registers it.
 
-<details>
-  <summary>Click to view sample code for <file>main.cpp</file></summary>
+{{< expand "Click to view sample code for main.cpp" >}}
 
 ```cpp {class="line-numbers linkable-line-numbers"}
 #include <memory>
@@ -997,12 +1099,12 @@ int main(int argc, char** argv) {
 };
 ```
 
-</details>
+{{< /expand >}}
 
 {{% /tab %}}
 {{< /tabs >}}
 
-### Configure logging
+#### (Optional) Configure logging
 
 If desired, you can configure your module to output log messages to the [Viam app](https://app.viam.com/).
 Log messages sent to the Viam app appear under the [**LOGS** tab](/cloud/machines/#logs) for your machine in an easily-parsable and searchable manner.
@@ -1012,7 +1114,7 @@ Log messages generated when your machine is offline are queued, and sent togethe
 Add the following code to your module code to enable logging to the Viam app, depending on the language you using to code your module. You can log in this fashion from the model definition file or files, the entry point (main program) file, or both, depending on your logging needs:
 
 {{% alert title="Tip" color="tip" %}}
-The example code shown above under [Define a new resource model](#define-a-new-resource-model) includes the requisite logging code already.
+The example code shown above under [Write your new resource model definition](#write-your-new-resource-model-definition) includes the requisite logging code already.
 {{% /alert %}}
 
 {{< tabs name="Configure logging">}}
@@ -1092,146 +1194,7 @@ We recommend that you use a C++ logging library to assist with log message forma
 {{% /tab %}}
 {{< /tabs >}}
 
-## (Optional) create a README
-
-To provide usage instructions for any modular resources in your module, you should create a <file>README.md</file> file following this template:
-
-{{< expand "Click to view template" >}}
-
-Strings of the form `<INSERT X>` indicate placeholders that you need to replace with your values.
-
-{{< tabs >}}
-{{% tab name="Template" %}}
-
-````md
-# [`<INSERT MODULE NAME>` module](<INSERT LINK TO MODULE REPO>)
-
-This [module](https://docs.viam.com/registry/#modular-resources) implements the [`<INSERT API TRIPLET>` API]<INSERT LINK TO DOCS (if applicable)> in an <INSERT MODEL> model.
-With this model, you can...
-
-## Requirements
-
-_Add instructions here for any requirements._
-
-```bash
-
-```
-
-## Configure your <INSERT MODEL NAME> <INSERT API NAME>
-
-Navigate to the [**CONFIGURE** tab](https://docs.viam.com/build/configure/) of your [machine](https://docs.viam.com/fleet/machines/) in [the Viam app](https://app.viam.com/).
-[Add <INSERT COMPONENT TYPE / INSERT RESOURCE NAME> to your machine](https://docs.viam.com/build/configure/#components).
-
-On the new component panel, copy and paste the following attribute template into your <INSERT API NAME>’s attributes field:
-
-```json
-{
-  <INSERT SAMPLE ATTRIBUTES>
-}
-```
-
-### Attributes
-
-The following attributes are available for `<INSERT MODEL TRIPLET>` <INSERT API NAME>s:
-
-| Name    | Type   | Required?    | Description |
-| ------- | ------ | ------------ | ----------- |
-| `todo1` | string | **Required** | TODO        |
-| `todo2` | string | Optional     | TODO        |
-
-### Example configuration
-
-```json
-{
-  <INSERT SAMPLE CONFIGURATION(S)>
-}
-```
-
-### Next steps
-
-_Add any additional information you want readers to know and direct them towards what to do next with this module._
-_For example:_
-
-- To test your...
-- To write code against your...
-
-## Troubleshooting
-
-_Add troubleshooting notes here._
-````
-
-{{% /tab %}}
-{{% tab name="Example" %}}
-
-````md
-# [`agilex-limo` module](https://app.viam.com/module/viam/agilex-limo)
-
-This module implements the [`rdk:component:base` API](/components/base/#api) in an `agilex` model for the [AgileX LIMO](https://global.agilex.ai/products/limo-pro) base to be used with [`viam-server`](/). This driver supports differential, ackermann, and omni directional steering modes over the serial port.
-
-## Configure your `agilex-limo` base
-
-> [!NOTE]
-> Before configuring your base, you must [create a machine](/cloud/machines/#add-a-new-machine).
-
-Navigate to the **CONFIGURE** tab of your machine’s page in [the Viam app](https://app.viam.com/).
-[Add `base` / `agilex-limo` to your machine](https://docs.viam.com/build/configure/#components).
-
-On the new component panel, copy and paste the following attribute template into your base’s attributes field:
-
-```json
-{
-  "drive_mode": "<ackermann|differential|omni>",
-  "serial_path": "<your-serial-path>"
-}
-```
-
-> [!NOTE]
-> For more information, see [Configure a Machine](/build/configure/).
-
-### Attributes
-
-The following attributes are available for `viam:base:agilex-limo` bases:
-
-| Name          | Type   | Required?    | Description                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| ------------- | ------ | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `drive_mode`  | string | **Required** | LIMO [steering mode](https://docs.trossenrobotics.com/agilex_limo_docs/operation/steering_modes.html#switching-steering-modes). Options: `differential`, `ackermann`, `omni` (mecanum).                                                                                                                                                                                                                                                 |
-| `serial_path` | string | Optional     | The full filesystem path to the serial device, starting with <file>/dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyTHS1`, to its device file, such as <file>/dev/ttyTHS1</file>. If you omit this attribute, Viam will attempt to automatically detect the path.<br>Default: `/dev/ttyTHS1` |
-
-### Example configurations:
-
-```json
-{
-  "drive_mode": "differential"
-}
-```
-
-```json
-{
-  "drive_mode": "omni",
-  "serial_path": "/dev/ttyTHS1"
-}
-```
-
-## Next steps
-
-- To test your base, go to the [**CONTROL** tab](/fleet/control/).
-- To write code against your base, use one of the [available SDKs](/build/program/).
-- To view examples using a base component, explore [these tutorials](/tutorials/).
-
-## Local development
-
-This module is written in Go.
-
-To build: `make limobase`<br>
-To test: `make test`
-````
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{< /expand >}}
-
-## Compile or package your module
+### Compile or package your module
 
 The final step to creating a new module is to create an executable file that `viam-server` can use to run your module on demand.
 
@@ -1287,7 +1250,7 @@ To create a packaged executable:
    By default, the output directory for the packaged executable is <file>dist</file>, and the name of the executable is derived from the name of the input script (in this case, main).
 
 We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86 and Arm Linux distributions, and MacOS.
-Follow the instructions to [Update an existing module using a GitHub action](/registry/upload/#update-an-existing-module-using-a-github-action) to add the build configuration to your machine.
+Follow the instructions to [Update an existing module using a GitHub action](/use-cases/manage-modules/#update-an-existing-module-using-a-github-action) to add the build configuration to your machine.
 
 With this approach, you can make a build script like the following to
 build your module, and configure the resulting executable (<file>dist/main</file>) as your module `"entrypoint"`:
@@ -1305,7 +1268,7 @@ tar -czvf dist/archive.tar.gz dist/main
 ```
 
 This script automates the process of setting up a Python virtual environment on a Linux arm64 machine, installing dependencies, packaging the Python module into a standalone executable using PyInstaller, and then compressing the resulting executable into a tarball.
-For more examples of build scripts see [Update an existing module using a GitHub action](/registry/upload/#update-an-existing-module-using-a-github-action).
+For more examples of build scripts see [Update an existing module using a GitHub action](/use-cases/manage-modules/#update-an-existing-module-using-a-github-action).
 
 {{% alert title="Note" color="note" %}}
 
@@ -1492,73 +1455,446 @@ For more information on building a module in C++, see the [C++ SDK Build Documen
 {{% /tab %}}
 {{% /tabs %}}
 
-## Deploy your module
+### (Optional) Create a README
 
-You have now created a module, and are ready to deploy it to a machine or a fleet of machines.
-There are two ways to deploy a module:
+To provide usage instructions for any modular resources in your module, you should create a <file>README.md</file> file following this template:
 
-- Through the Viam registry: [Upload your new module to the Viam registry](/registry/upload/), then [add the module to one or more machines in the Viam app](/registry/configure/).
-  You can also choose to configure [automated uploads for new module versions](/registry/upload/#update-an-existing-module-using-a-github-action) through a continuous integration (CI) workflow, using a GitHub Action if desired, greatly simplifying how you push changes to your module to the registry as you make them.
-- As a local module: [Deploy your module to a single machine as a local module](/registry/configure/#local-modules), without uploading to the Viam app.
+{{< expand "Click to view template" >}}
 
-Often, developers first test their new module by deploying it as a local module to a test machine.
-With a local installation, you can test your module in a controlled environment to confirm that it functions as expected, and make changes to your module as needed.
+Strings of the form `<INSERT X>` indicate placeholders that you need to replace with your values.
 
-Then, once you are satisfied with the state of your module, you can upload your module to the Viam registry to:
+{{< tabs >}}
+{{% tab name="Template" %}}
+
+````md
+# [`<INSERT MODULE NAME>` module](<INSERT LINK TO MODULE REPO>)
+
+This [module](https://docs.viam.com/registry/#modular-resources) implements the [`<INSERT API TRIPLET>` API]<INSERT LINK TO DOCS (if applicable)> in an <INSERT MODEL> model.
+With this model, you can...
+
+## Requirements
+
+_Add instructions here for any requirements._
+
+```bash
+
+```
+
+## Configure your <INSERT MODEL NAME> <INSERT API NAME>
+
+Navigate to the [**CONFIGURE** tab](https://docs.viam.com/build/configure/) of your [machine](https://docs.viam.com/fleet/machines/) in [the Viam app](https://app.viam.com/).
+[Add <INSERT COMPONENT TYPE / INSERT RESOURCE NAME> to your machine](https://docs.viam.com/build/configure/#components).
+
+On the new component panel, copy and paste the following attribute template into your <INSERT API NAME>’s attributes field:
+
+```json
+{
+  <INSERT SAMPLE ATTRIBUTES>
+}
+```
+
+### Attributes
+
+The following attributes are available for `<INSERT MODEL TRIPLET>` <INSERT API NAME>s:
+
+| Name    | Type   | Required?    | Description |
+| ------- | ------ | ------------ | ----------- |
+| `todo1` | string | **Required** | TODO        |
+| `todo2` | string | Optional     | TODO        |
+
+### Example configuration
+
+```json
+{
+  <INSERT SAMPLE CONFIGURATION(S)>
+}
+```
+
+### Next steps
+
+_Add any additional information you want readers to know and direct them towards what to do next with this module._
+_For example:_
+
+- To test your...
+- To write code against your...
+
+## Troubleshooting
+
+_Add troubleshooting notes here._
+````
+
+{{% /tab %}}
+{{% tab name="Example" %}}
+
+````md
+# [`agilex-limo` module](https://app.viam.com/module/viam/agilex-limo)
+
+This module implements the [`rdk:component:base` API](/components/base/#api) in an `agilex` model for the [AgileX LIMO](https://global.agilex.ai/products/limo-pro) base to be used with [`viam-server`](/). This driver supports differential, ackermann, and omni directional steering modes over the serial port.
+
+## Configure your `agilex-limo` base
+
+> [!NOTE]
+> Before configuring your base, you must [create a machine](/cloud/machines/#add-a-new-machine).
+
+Navigate to the **CONFIGURE** tab of your machine’s page in [the Viam app](https://app.viam.com/).
+[Add `base` / `agilex-limo` to your machine](https://docs.viam.com/build/configure/#components).
+
+On the new component panel, copy and paste the following attribute template into your base’s attributes field:
+
+```json
+{
+  "drive_mode": "<ackermann|differential|omni>",
+  "serial_path": "<your-serial-path>"
+}
+```
+
+> [!NOTE]
+> For more information, see [Configure a Machine](/build/configure/).
+
+### Attributes
+
+The following attributes are available for `viam:base:agilex-limo` bases:
+
+<!-- prettier-ignore -->
+| Name          | Type   | Required?    | Description |
+| ------------- | ------ | ------------ | ----------- |
+| `drive_mode`  | string | **Required** | LIMO [steering mode](https://docs.trossenrobotics.com/agilex_limo_docs/operation/steering_modes.html#switching-steering-modes). Options: `differential`, `ackermann`, `omni` (mecanum). |
+| `serial_path` | string | Optional     | The full filesystem path to the serial device, starting with <file>/dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyTHS1`, to its device file, such as <file>/dev/ttyTHS1</file>. If you omit this attribute, Viam will attempt to automatically detect the path.<br>Default: `/dev/ttyTHS1` |
+
+### Example configurations:
+
+```json
+{
+  "drive_mode": "differential"
+}
+```
+
+```json
+{
+  "drive_mode": "omni",
+  "serial_path": "/dev/ttyTHS1"
+}
+```
+
+## Next steps
+
+- To test your base, go to the [**CONTROL** tab](/fleet/control/).
+- To write code against your base, use one of the [available SDKs](/build/program/).
+- To view examples using a base component, explore [these tutorials](/tutorials/).
+
+## Local development
+
+This module is written in Go.
+
+To build: `make limobase`<br>
+To test: `make test`
+````
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{< /expand >}}
+
+## Test your module locally
+
+{{% alert title="Tip" color="tip" %}}
+
+If you would like to test your module locally against a target platform other than your development machine before uploading it, you can follow the steps for [Iterative module development](/registry/advanced/iterative-development/) to verify that any code changes you have made work as expected on your target platform.
+
+{{% /alert %}}
+
+To use a local module on your machine, first add its module to your machine's config, then add the component or service it implements:
+
+1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+
+1. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**, then **Local module**.
+
+1. Enter a **Name** for this instance of your module.
+
+1. Enter the module's **Executable path**.
+   This path must be the absolute path on your machine's filesystem to either:
+
+   - the module's [executable file](/use-cases/create-module/#compile-or-package-your-module), such as `run.sh` or a compiled binary.
+   - a [packaged tarball](https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_tar.html) of your module, ending in `.tar.gz` or `.tgz`.
+     If you are providing a tarball file in this field, be sure that your packaged tarball contains your module's [`meta.json` file](/cli/#the-metajson-file) within it.
+
+1. Then, click the **Create** button, and click **Save** in the upper right corner to save your config.
+
+1. Still on your machine's **CONFIGURE** tab, click the **+** (Create) icon next to your machine part in the left-hand menu.
+
+1. Select **Local module**, then select **Local component** or **Local service**.
+
+1. Select the type of modular resource provided by your module, such as a [camera](/components/camera/), from the dropdown menu.
+
+1. Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
+
+   {{<imgproc src="registry/configure/add-local-module-create.png" resize="250x" declaredimensions=true alt="The add a component model showing the create a module step for an intel realsense module">}}
+
+1. Enter a name for this instance of your modular resource.
+   This name must be different from the module name.
+
+1. Click **Create** to create the modular resource provided by the local module.
+
+Once you've added your local module using steps 1-5, you can repeat steps 6-11 to add as many additional instances of your modular resource as you need.
+
+## Upload your module to the modular resource registry
+
+Once you are satisfied with the state of your module, you can upload your module to the Viam registry to:
 
 - share your module with other Viam users
 - deploy your module to a fleet of machines from a central interface
 
-See [Using the Viam registry](/registry/) for a high-level overview of the modular resource ecosystem at Viam.
+You can choose to upload it to the Viam registry as a _public module_ that is shared with other Viam users, or as a _private module_ that is shared only within your [organization](/cloud/organizations/).
 
-{{% alert title="Tip" color="tip" %}}
+To upload your custom module to the [Viam registry](https://app.viam.com/registry), either as a public or private module, use the Viam CLI commands `create` and `upload` following these instructions:
 
-If you would like to test your module locally against its intended target platform before uploading it, you can follow the steps for [Iterative module development](/registry/advanced/iterative-development/) to verify that any code changes you have made work as expected on your target platform.
+1. First, [install the Viam CLI](/cli/#install) and [authenticate](/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
 
-{{% /alert %}}
+2. Next, run the `viam module create` command to choose a custom module name and generate the required metadata for your module.
+   By default, a new module is created as _private_, meaning that it is only accessible to members of your [organization](/cloud/organizations/), but you can choose to set the `visibility` of your module to _public_ to make it accessible to all Viam users.
 
-## Additional example modules
+   Select the private or public tab for instructions to upload your module with the respective `visibility` setting:
 
-Browse additional example modules by language:
+   {{< tabs >}}
+   {{% tab name="Private" %}}
 
-{{< tabs >}}
-{{% tab name="Python" %}}
+Get the `org-id` for your {{< glossary_tooltip term_id="organization" text="organization" >}} from your organization's **Settings** page in [the Viam App](https://app.viam.com/) and run the following command from the same directory as your custom module to generate metadata for your module:
 
-<!-- prettier-ignore -->
-| Module | Repository | Description |
-| ------ | ---------- | ----------- |
-| [monocular-visual-odometry](https://app.viam.com/module/viam/monocular-visual-odometry) | [viamrobotics/viam-visual-odometry](https://github.com/viamrobotics/viam-visual-odometry) | Extends the built-in [movement sensor API](/components/movement-sensor/#api) to support using monocular visual odometry to enable any calibrated camera to function as a movement sensor. |
-| [oak](https://app.viam.com/module/viam/oak) | [viamrobotics/viam-camera-oak](https://github.com/viamrobotics/viam-camera-oak) | Extends the built-in [camera API](/components/camera/#api) to support OAK cameras. |
-| [odrive](https://app.viam.com/module/viam/odrive) | [viamrobotics/odrive](https://github.com/viamrobotics/odrive) | Extends the built-in [motor API](/components/motor/#api) to support the ODrive motor. This module provides two models, one for a `canbus`-connected ODrive motor, and one for a `serial`-connected ODrive motor. |
-| [yahboom](https://app.viam.com/module/rand/yahboom) | [viamlabs/yahboom](https://github.com/viam-labs/yahboom) | Extends the built-in [arm API](/components/arm/#api) and [gripper API](/components/gripper/#api) to support the Yahboom Dofbot robotic arm. |
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module create --name <your-module-name> --org-id <your-org-id>
+```
 
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-<!-- prettier-ignore -->
-| Module | Repository | Description |
-| ------ | ---------- | ----------- |
-| [agilex-limo](https://app.viam.com/module/viam/agilex-limo) | [viamlabs/agilex](https://github.com/viam-labs/agilex/) | Extends the built-in [base API](/components/base/#api) to support the Agilex Limo base. |
-| [rplidar](https://app.viam.com/module/viam/rplidar) | [viamrobotics/rplidar](https://github.com/viamrobotics/rplidar) | Extends the built-in [camera API](/components/camera/#api) to support several models of the SLAMTEC RPlidar. |
-| [filtered-camera](https://app.viam.com/module/erh/filtered-camera) | [erh/filtered_camera](https://github.com/erh/filtered_camera) | Extends the built-in [camera API](/components/camera/#api) to enable filtering captured images by comparing to a defined ML model, and only syncing matching images to the Viam app. See the [filtered-camera tutorial](/tutorials/projects/filtered-camera/) for more information. |
+If you later wish to make your module public, you can use the [`viam module update` command](/cli/#module).
 
 {{% /tab %}}
-{{% tab name="C++" %}}
+{{% tab name="Public" %}}
 
-<!-- prettier-ignore -->
-| Module | Repository | Description |
-| ------ | ---------- | ----------- |
-| [csi-cam](https://app.viam.com/module/viam/csi-cam) | [viamrobotics/csi-camera](https://github.com/viamrobotics/csi-camera/) | Extends the built-in [camera API](/components/camera/#api) to support the Intel CSI camera. |
-<!-- | [module-example-cpp](https://app.viam.com/module/viam/module-example-cpp) | [viamrobotics/module-example-cpp](https://github.com/viamrobotics/module-example-cpp) | Extends the built-in [sensor API](/components/sensor/#api) to report wifi statistics. | -->
+1.  If you haven't already, [create a new namespace](/cloud/organizations/#create-a-namespace-for-your-organization) for your organization.
+    If you have already created a namespace, you can find it on your organization's **Settings** page in [the Viam App](https://app.viam.com/), or by running the [`viam organizations list`](/cli/#organizations) command.
 
-{{% /tab %}}
-{{% /tabs %}}
+2.  To generate metadata for your module using your public namespace, run the following command from the same directory as your custom module:
 
-Explore the full list of available modules in the [Viam registry](https://app.viam.com/registry).
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    viam module create --name <your-module-name> --public-namespace <your-unique-namespace>
+    ```
+
+    {{% /tab %}}
+    {{< /tabs >}}
+
+    This command creates a new `meta.json` metadata file in your current working directory, which serves as a template.
+
+3.  Edit the newly-created `meta.json` file, and provide the required configuration information for your custom module by filling in the following fields.
+
+    <table class="table table-striped">
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Inclusion</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><code>module_id</code></td>
+        <td>string</td>
+        <td><strong>Required</strong></td>
+        <td>The module ID, which includes either the module <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace</a> or <a href="/cloud/organizations/">organization-id</a>, followed by its name (pre-populated using the <code>--name</code> you provided in the <code>viam module create</code> command).
+        <div class="alert alert-caution" role="alert">
+      <h4 class="alert-heading">Caution</h4>
+
+      <p>The <code>module_id</code> uniquely identifies your module.
+      Do not change the <code>module_id</code>.</p>
+
+      </div>
+        </td>
+
+      </tr>
+      <tr>
+        <td><code>visibility</code></td>
+        <td>string</td>
+        <td><strong>Required</strong></td>
+        <td>Whether the module is accessible only to members of your <a href="/cloud/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can later make a private module public using the <code>viam module update</code> command. Once you make a module public, you can change it back to private if it is not configured on any machines outside of your organization.<br><br>Default: <code>private</code></td>
+      </tr>
+      <tr>
+        <td><code>url</code></td>
+        <td>string</td>
+        <td>Optional</td>
+        <td>The URL of the GitHub repository containing the source code of the module.</td>
+      </tr>
+      <tr>
+        <td><code>description</code></td>
+        <td>string</td>
+        <td><strong>Required</strong></td>
+        <td>A description of your module and what it provides.</td>
+      </tr>
+      <tr>
+        <td><code>models</code></td>
+        <td>object</td>
+        <td><strong>Required</strong></td>
+        <td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p><p>For more information, see <a href="/use-cases/create-module/#name-your-new-resource-model">naming your model</a>.</p></td>
+      </tr>
+      <tr>
+        <td><code>entrypoint</code></td>
+        <td>string</td>
+        <td><strong>Required</strong></td>
+        <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing your module as a single file to the <code>upload</code> command, provide the path to that single file. If you are providing a directory containing your module to the <code>upload</code> command, provide the path to the entry point file contained within that directory.</td>
+      </tr>
+      <tr>
+        <td><code>build</code></td>
+        <td>object</td>
+        <td><strong>Optional</strong></td>
+        <td>An object containing the command to run to build your module, as well as optional fields for the path to your dependency setup script, the target architectures to build for, and the path to your built module. Use this with the <a href="/cli/#using-the-build-subcommand">Viam CLI's build subcommand</a>. </td>
+      </tr>
+
+    </table>
+
+    For example, the following represents the configuration of an example `my-module` public module in the `acme` namespace:
+
+    {{< expand "Click to view example meta.json with build object" >}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "module_id": "acme:my-module",
+  "visibility": "public",
+  "url": "https://github.com/<my-repo-name>/my-module",
+  "description": "An example custom module.",
+  "models": [
+    {
+      "api": "rdk:component:generic",
+      "model": "acme:demo:my-model"
+    }
+  ],
+  "build": {
+    "path": "dist/archive.tar.gz", // optional - path to your built module
+    "build": "./build.sh", // command that will build your module
+    "arch": ["linux/amd64", "linux/arm64"] // architecture(s) to build for
+  },
+  "entrypoint": "dist/main" // path to executable
+}
+```
+
+    {{< /expand >}}
+
+    {{< expand "Click to view example meta.json without build object" >}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "module_id": "acme:my-module",
+  "visibility": "public",
+  "url": "https://github.com/<my-repo-name>/my-module",
+  "description": "An example custom module.",
+  "models": [
+    {
+      "api": "rdk:component:generic",
+      "model": "acme:demo:my-model"
+    }
+  ],
+  "entrypoint": "my-module.sh" // path to executable
+}
+```
+
+    {{< /expand >}}
+
+    {{% alert title="Important" color="note" %}}
+
+In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
+If the two namespaces do not match, the command will return an error.
+
+For more information, see [Name your new resource model](/use-cases/create-module/#name-your-new-resource-model).
+
+    {{% /alert %}}
+
+    See [`meta.json` file](/cli/#the-metajson-file) for more information.
+
+1. For modules written in Python, you should package your module files as an archive first, before uploading.
+   Other languages can proceed to the next step to upload their module directly.
+   To package a module written in Python, run the following command from the same directory as your `meta.json` file:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
+   ```
+
+   where `<PATH-TO-EXECUTABLE>` is the [packaged executable](/use-cases/create-module/#compile-or-package-your-module) that runs the module at the [entry point](/use-cases/create-module/#write-an-entry-point-main-program-file).
+   If using PyInstaller, by default this would be `dist/main`.
+
+   For a Python module built using the `venv` approach, the command might look like this:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   tar -czf module.tar.gz run.sh requirements.txt src
+   ```
+
+   Where `run.sh` is your [entrypoint file](/use-cases/create-module/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/use-cases/create-module/#compile-or-package-your-module), and `src` is the directory that contains the source code of your module.
+
+   Supply the path to the resulting archive file in the next step.
+
+1. Run `viam module upload` to upload your custom module to the Viam registry.
+   Specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   viam module upload --version <version> --platform <platform> <module-path>
+   ```
+
+   where:
+
+   - `version`: provide a version for your custom module, using [semantic versioning](https://semver.org/) (example: `1.0.0`).
+     You can later increment this value with subsequent `viam module upload` commands.
+     See [Using the `--version` argument](/cli/#using-the---version-argument) for more information.
+   - `platform`: provide the system architecture your custom module supports.
+     You can only provide one `platform` argument at a time to the `viam module upload` command.
+     See [Using the `--platform` argument](/cli/#using-the---platform-argument) for the full list of supported architectures.
+   - `module-path`: provide the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code.
+
+   {{% alert title="Important" color="note" %}}
+   The `viam module upload` command only supports one `platform` argument at a time.
+   If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
+   Use the _same version number_ when running multiple `upload` commands of the same module code if only the `platform` support differs.
+   The Viam registry page for your module displays the platforms your module supports for each version you have uploaded.
+   {{% /alert %}}
+
+   For example:
+
+   - To upload a custom module that is defined in a single file named `my-module-file` in a local `bin` directory:
+
+     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     viam module upload --version 1.0.0 --platform linux/amd64 ./bin/my-module-file
+     ```
+
+   - To upload a custom module that includes multiple files, as well as a separate entry point file, all contained with a local `bin` directory:
+
+     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     viam module upload --version 1.0.0 --platform linux/amd64 ./bin
+     ```
+
+   - To upload a custom module that has been compressed as an archive named `packaged-module.tar.gz`:
+
+     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     viam module upload --version 1.0.0 --platform linux/amd64 packaged-module.tar.gz
+     ```
+
+   When you `upload` a module, the command performs basic [validation](/cli/#upload-validation) of your module to check for common errors.
+
+   For more information, see the [`viam module` command](/cli/#module).
+
+## Deploy your module to more machines
+
+You have now created a module, and are ready to deploy it to a fleet of machines.
+There are two ways to deploy a module:
+
+- Through the Viam registry: Once you have uploaded your new module to the Viam registry, [add the module to one or more machines in the Viam app](/registry/configure/).
+  You can also choose to configure [automated uploads for new module versions](/use-cases/manage-modules/#update-an-existing-module-using-a-github-action) through a continuous integration (CI) workflow, using a GitHub Action if desired, greatly simplifying how you push changes to your module to the registry as you make them.
+- As a local module (without uploading it to the Viam app), as you did in the [Test your module locally step above](#test-your-module-locally).
+  This is a great way to test, but if you'd like to use the module on more machines it's easiest to add it to the registry either publicly or privately.
+
+Often, developers first test their new module by deploying it as a local module to a test machine.
+With a local installation, you can test your module in a controlled environment to confirm that it functions as expected, and make changes to your module as needed.
 
 ## Next steps
 
-If you'd like to read more about module development at Viam, check out these tutorials that create modules:
+For instructions on how to update or delete modules you've created, see the following how-to guide:
+
+{{< cards >}}
+{{% card link="/use-cases/manage-modules/" %}}
+{{< /cards >}}
+
+To read more about module development at Viam, check out these tutorials that create modules:
 
 {{< cards >}}
 {{% card link="/tutorials/custom/custom-base-dog/" %}}

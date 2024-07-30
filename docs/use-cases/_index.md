@@ -17,7 +17,8 @@ Click on one of the following guides that provide solutions for common tasks and
 {{% card link="/use-cases/sensor-data-query/" %}}
 {{% card link="/use-cases/sensor-data-query-sdk/" %}}
 {{% card link="/use-cases/sensor-data-visualize/" %}}
-{{% card link="/use-cases/deploy-code/" class="fit-contain" %}}
+{{% card link="/use-cases/create-module/" class="fit-contain" %}}
+{{% card link="/use-cases/manage-modules/" class="fit-contain" %}}
 {{% card link="/use-cases/navigate/" %}}
 {{% card link="/use-cases/manage-fleet/" class="fit-contain" %}}
 {{< /cards >}}

@@ -17,4 +17,4 @@ Resources are individual, addressable elements of a machine.
 Each part has local resources and can also have resources from another {{< glossary_tooltip term_id="remote-part" text="remote">}} machine part.
 The capabilities of each resource are exposed through the part’s API.
 
-Each resource on your machine implements either one of the [existing Viam APIs](/registry/#valid-apis-to-implement-in-your-model), or a [custom interface](/registry/advanced/#new-api-subtypes).
+Each resource on your machine implements either one of the [existing Viam APIs](/appendix/apis/), or a [custom interface](/registry/advanced/#new-api-subtypes).

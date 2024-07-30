@@ -43,7 +43,7 @@ You can complete this tutorial using any number of air quality sensing machines.
 For each machine, you will need the following hardware:
 
 - [SDS011 Nova PM sensor](https://www.amazon.com/SDS011-Quality-Detection-Conditioning-Monitor/dp/B07FSDMRR5)
-  - If you choose to use a different air quality sensor, you may need to [create your own module](/registry/create/) implementing the [sensor API](/components/sensor/#api) for your specific hardware.
+  - If you choose to use a different air quality sensor, you may need to [create your own module](/use-cases/create-module/) implementing the [sensor API](/components/sensor/#api) for your specific hardware.
 - A single-board computer (SBC) [capable of running `viam-server`](https://docs.viam.com/get-started/installation/)
 - An appropriate power supply
 

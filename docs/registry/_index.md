@@ -48,12 +48,20 @@ The [Viam registry](https://app.viam.com/registry) is the central place where yo
 
 ## Modular resources
 
+<p>
+{{<imgproc src="/platform/registry.svg" class="alignright" resize="x900" declaredimensions=true alt="Representation of the Viam registry, some modules within it, and a rover they support." style="max-width:350px" >}}
+</p>
+
 Viam provides built-in support for a variety of {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
 - Various types of hardware {{< glossary_tooltip term_id="component" text="components" >}}.
 - High-level functionality exposed as {{< glossary_tooltip term_id="service" text="services" >}}.
 
 If the model of component or service you want to use for your project is not built into `viam-server` and available for configuration by default, you can use a {{< glossary_tooltip term_id="model" text="model" >}} from a {{< glossary_tooltip term_id="module" text="module" >}}.
+
+A module provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, and is packaged to streamline deployment to a Viam machine.
+Modules run alongside [`viam-server`](/get-started/installation/) as separate processes, communicating with `viam-server` over UNIX sockets.
+When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and associated [APIs](/appendix/apis/) with `viam-server`, making the new model available for use.
 
 To configure a modular resource on your robot, [add new models that others have created](/registry/configure/#add-a-modular-resource-from-the-viam-registry) from the [Viam registry](https://app.viam.com/registry) or [create your own](#create-your-own-modules).
 
@@ -96,87 +104,28 @@ Once you have added and configured the module you would like to use in the Viam 
 
 `viam-server` manages the [dependencies](/internals/rdk/#dependency-management), [start-up](/internals/rdk/#start-up), [reconfiguration](/internals/rdk/#reconfiguration), [data management](/services/data/capture/#configure-data-capture-for-individual-components), and [shutdown](/internals/rdk/#shutdown) behavior of your modular resource.
 
-### Tutorials using modules
-
-{{< cards >}}
-{{% card link="/tutorials/projects/make-a-plant-watering-robot/" %}}
-{{% card link="/tutorials/projects/integrating-viam-with-openai/" %}}
-{{< /cards >}}
-
 ## Create your own modules
 
-If none of the existing modular resources in the Viam registry support your use case, you can create your own modules with your own modular resources:
+If none of the existing modular resources in the Viam registry support your use case, you can create your own modules to provide your own modular resources:
 
 - **Implement a custom component**: Write a driver for an unsupported {{< glossary_tooltip term_id="component" text="component" >}} by implementing the corresponding component API.
 
 - **Implement a custom service**: Implement your own algorithm or {{< glossary_tooltip term_id="model" text="model" >}} against a corresponding service API or use custom algorithms or data models when working with services such as {{< glossary_tooltip term_id="slam" text="SLAM" >}}, vision, or motion planning.
 
 You can write modules in a variety of programming languages, such as, Go, Python, C++, Rust, while implementing the same [APIs](/appendix/apis/).
+
 To create a new module:
 
-1. [Create a module](/registry/create/) with one or more modular resources by implementing all methods for the component's or service's standardized API.
-1. [Upload the module to the Viam registry](/registry/upload/) to make it available for deployment to machines or add it as a [local module](/registry/configure/#local-modules).
+1. [Create a module](/use-cases/create-module/) with one or more modular resources by implementing all methods for the component's or service's standardized API.
+1. [Upload the module to the Viam registry](/use-cases/create-module//#upload-your-module-to-the-modular-resource-registry) to make it available for deployment to machines or add it as a [local module](/registry/configure/#local-modules).
    You can upload _private_ modules for your {{< glossary_tooltip term_id="organization" text="organization" >}} or _public_ modules.
 1. Once you have uploaded your module to the registry, [deploy and configure the module](/registry/configure/) from the Viam app.
    Then, you can test your added resource using the [**CONTROL** tab](/fleet/control/) and [program](/build/program/) it with Viam's Go or Python SDKs.
 
-## Naming your model: namespace:repo-name:name
-
-If you are [creating a custom module](/registry/create/) and want to [upload that module](/registry/upload/) to the Viam registry, ensure your model name meets the following requirements:
-
-- The namespace of your model **must** match the [namespace of your organization](/cloud/organizations/#create-a-namespace-for-your-organization).
-  For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:repo-name:mybase`.
-- Your model triplet must be all-lowercase.
-- Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
-
-For the middle segment of your model triplet `repo-name`, use the name of the Git repository where you store your module's code.
-Ideally, your `repo-name` should describe the common functionality provided across the model or models of that module.
-
-For example:
-
-- The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model use the repository name [yahboom](https://github.com/viam-labs/yahboom).
-  The models implement the `rdk:component:arm` and the `rdk:component:gripper` API to support the Yahboom DOFBOT arm and gripper, respectively:
-
-  ```json
-  {
-      "api": "rdk:component:arm",
-      "model": "rand:yahboom:arm"
-  },
-  {
-      "api": "rdk:component:gripper",
-      "model": "rand:yahboom:gripper"
-  }
-  ```
-
-- The `viam-labs:audioout:pygame` model uses the repository name [audioout](https://github.com/viam-labs/audioout).
-  It implements the custom API `viam-labs:service:audioout`:
-
-  ```json
-  {
-    "api": "viam-labs:service:audioout",
-    "model": "viam-labs:audioout:pygame"
-  }
-  ```
-
-The `viam` namespace is reserved for models provided by Viam.
-
-### Valid APIs to implement in your model
-
-When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing {{< glossary_tooltip term_id="component" text="component" >}}, valid [APIs](/appendix/apis/) always have the following parameters:
-
-- `namespace`: `rdk`
-- `type`: `component`
-- `subtype`: any one of [these component proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/component), for example `motor`
-
-When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing [service](/services/), valid [APIs](/appendix/apis/) always have the following parameters:
-
-- `namespace`: `rdk`
-- `type`: `service`
-- `subtype`: any one of [these service proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/service), for example `navigation`
-
-### Tutorials creating modules
+See the following how-to guide for full instructions, or one of our example tutorials:
 
 {{< cards >}}
+{{% card link="/use-cases/create-module/" class="fit-contain" %}}
 {{% card link="/tutorials/custom/custom-base-dog/" %}}
 {{% card link="/registry/examples/custom-arm/" %}}
 {{< /cards >}}

@@ -9,7 +9,7 @@ icon: true
 images: ["/services/icons/ml.svg"]
 ---
 
-Once you have [created the first version of your module](/registry/create/), you can use the procedure outlined on this page to iterate on your design, and test changes quickly.
+Once you have [created the first version of your module](/use-cases/create-module/), you can use the procedure outlined on this page to iterate on your design, and test changes quickly.
 
 Generally, when developing a module, you have two options for iterative development, depending on the specific [platform](/cli/#using-the---platform-argument) you want your module to support:
 
@@ -21,7 +21,7 @@ Generally, when developing a module, you have two options for iterative developm
 Both of these options involve deploying your module to the target test system as a [local module](/registry/configure/#local-modules), without uploading it to the Viam registry.
 Even if you have already published a version of your module to the registry, you might still find it useful to follow the steps in this section to verify that changes you make as part of releasing a new version work as expected on your target platform.
 
-Then, once you have tested it, you can [upload your module](/registry/upload/) to the Viam registry.
+Then, once you have tested it, you can [upload your module](/use-cases/create-module/) to the Viam registry.
 You can use [prerelease versioning](#use-prerelease-versioning) to publish a version of your module to the registry without affecting machines that are using stable versions of your module.
 
 {{< tabs >}}
@@ -32,13 +32,13 @@ If you are developing a module for the same target architecture as your developm
 1. Navigate to the [Viam app](https://app.viam.com/robots) and [add a new machine](/cloud/machines/#add-a-new-machine) to serve as your development machine.
    Be sure to follow the steps shown in the Viam app to install `viam-server` on your local machine.
 
-1. If you are using a programming language that requires that you build your module, such as Go or C++, follow the instructions for your language to [compile or package](/registry/create/#compile-or-package-your-module) your module.
+1. If you are using a programming language that requires that you build your module, such as Go or C++, follow the instructions for your language to [compile or package](/use-cases/create-module/#compile-or-package-your-module) your module.
    If you are using a programming language that does not require compilation, such as Python, you can skip this step.
 
 1. Navigate to the Viam app, select your machine, and [add your module as a local module](/registry/configure/#local-modules) to your machine.
    For the **Executable path** field, enter the absolute path on your machine's filesystem to either:
 
-   - the module's [executable file](/registry/create/#compile-or-package-your-module), such as `run.sh` or a compiled binary.
+   - the module's [executable file](/use-cases/create-module/#compile-or-package-your-module), such as `run.sh` or a compiled binary.
    - a [packaged tarball](https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_tar.html) of your module, ending in `.tar.gz` or `.tgz`.
      If you are providing a tarball file in this field, be sure that your packaged tarball contains your module's [`meta.json` file](/cli/#the-metajson-file) within it.
 
@@ -56,7 +56,7 @@ If you are developing a module for the same target architecture as your developm
 1. Make your desired code changes to your module using your favorite editor.
    Save your changes.
 
-1. If applicable (for example, using Go or C++), [compile or package](/registry/create/#compile-or-package-your-module) your module again.
+1. If applicable (for example, using Go or C++), [compile or package](/use-cases/create-module/#compile-or-package-your-module) your module again.
    Otherwise (for example, using Python), skip this step.
 
 1. Restart `viam-server` on your machine in order for it to pick up the code changes to your module, using your system's service management command.
@@ -80,7 +80,7 @@ If you are developing a module for the same target architecture as your developm
 
 1. Repeat steps 6 - 10 to continue developing your module, as needed.
    Remember to check the **LOGS** tab each time to verify that the module registered successfully, and to troubleshoot any error or warning messages.
-   If you haven't already, you can [add custom log messages to your code](/registry/create/#configure-logging), which appear under the **LOGS** tab to assist with troubleshooting.
+   If you haven't already, you can [add custom log messages to your code](/use-cases/create-module/#optional-configure-logging), which appear under the **LOGS** tab to assist with troubleshooting.
 
 {{% /tab %}}
 {{% tab name="Sync Code and Test Remotely" %}}
@@ -168,7 +168,7 @@ If you are developing a module for a different target architecture than your dev
 
 1. Return to your local development system, and navigate back to your module directory.
 
-1. If you are using a programming language that requires that you build your module, such as Go or C++, follow the instructions for your language to [compile or package](/registry/create/#compile-or-package-your-module) your module.
+1. If you are using a programming language that requires that you build your module, such as Go or C++, follow the instructions for your language to [compile or package](/use-cases/create-module/#compile-or-package-your-module) your module.
    If you are using a programming language that does not require compilation, such as Python, you can skip this step.
 
 1. Navigate to the Viam app, select your machine, and [add your module as a local module](/registry/configure/#local-modules) to your machine.
@@ -189,7 +189,7 @@ If you are developing a module for a different target architecture than your dev
 1. Make your desired code changes to your module using your favorite editor.
    Save your changes.
 
-1. If applicable (for example, using Go or C++), [compile or package](/registry/create/#compile-or-package-your-module) your module again.
+1. If applicable (for example, using Go or C++), [compile or package](/use-cases/create-module/#compile-or-package-your-module) your module again.
    Otherwise (for example, using Python), skip this step.
 
 1. Restart `viam-server` on your remote system in order for it to pick up the code changes to your module, using your system's service management command.
@@ -205,12 +205,12 @@ If you are developing a module for a different target architecture than your dev
 
 1. Repeat steps 11 - 15 to continue developing your module, as needed.
    Remember to check the **LOGS** tab each time to verify that the module registered successfully, and to troubleshoot any error or warning messages.
-   If you haven't already, you can [add custom log messages to your code](/registry/create/#configure-logging), which appear under the **LOGS** tab to assist with troubleshooting.
+   If you haven't already, you can [add custom log messages to your code](/use-cases/create-module/#optional-configure-logging), which appear under the **LOGS** tab to assist with troubleshooting.
 
 {{% /tab %}}
 {{% /tabs %}}
 
-When you are satisfied that your module is ready for release, follow the steps to [upload your module](/registry/upload/) to the Viam registry, to facilitate streamlined deployment to other machines or to make it available to the Viam community.
+When you are satisfied that your module is ready for release, follow the steps to [upload your module](/use-cases/create-module/) to the Viam registry, to facilitate streamlined deployment to other machines or to make it available to the Viam community.
 
 ## Troubleshooting `ssh`
 
@@ -306,7 +306,7 @@ If your tag does not adhere to SemVer, cloud builds will fail.
 
 ### Update your GitHub action file
 
-If you are using Cloud Build, be sure to update your [GitHub action file](/registry/upload/#update-an-existing-module-using-a-github-action) tags to include the release candidate version.
+If you are using Cloud Build, be sure to update your [GitHub action file](/use-cases/manage-modules/#update-an-existing-module-using-a-github-action) tags to include the release candidate version.
 You can use `"*"` to trigger the build action on all tags regardless of correct syntax, or you can use the following regular expression to trigger the build action on all tags that have valid syntax:
 
 ```regex
