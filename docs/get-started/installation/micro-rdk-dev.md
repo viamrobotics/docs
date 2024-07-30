@@ -11,6 +11,7 @@ description: "Set up the Espressif ESP32 for development with the micro-RDK."
 aliases:
   - "/installation/prepare/microcontrollers/development-setup/"
   - /get-started/installation/prepare/microcontrollers/development-setup/
+  - /get-started/installation/microcontrollers/development-setup/
 ---
 
 Follow these steps to install and build the micro-RDK on your ESP32 for development:
@@ -18,6 +19,8 @@ Follow these steps to install and build the micro-RDK on your ESP32 for developm
 1. Install the [required software](#software-requirements)
 2. [Set up your development environment](#set-up-your-development-environment) manually or with Viam's Canon CLI utility _(recommended)_
 3. [Install the micro-RDK](#install-the-micro-rdk)
+
+### Hardware requirements
 
 {{% readfile "/static/include/micro-rdk-hardware.md" %}}
 

@@ -34,9 +34,9 @@ Or you can write your own module to address your specific use case, and either u
 Follow the instructions below to learn how to write a new module using your preferred language and its corresponding [Viam SDK](/sdks/).
 
 {{< alert title="Note: Micro-RDK modules" color="note" >}}
-The [micro-RDK](/get-started/installation/microcontrollers/) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
+The [micro-RDK](/get-started/installation/#install-micro-rdk) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
 Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) for information on how to create custom resources for your micro-RDK machine.
-You will need to [recompile and flash your ESP32 yourself](/get-started/installation/microcontrollers/development-setup/) instead of using Viam's prebuilt binary and installer.
+You will need to [recompile and flash your ESP32 yourself](/get-started/installation/#install-micro-rdk) instead of using Viam's prebuilt binary and installer.
 {{< /alert >}}
 
 You can also watch this guide to creating a vision service module:

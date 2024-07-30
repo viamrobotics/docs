@@ -1,5 +1,3 @@
-### Hardware requirements
-
 You need an Espressif ESP32 microcontroller to use the micro-RDK.
 Viam recommends purchasing the ESP32 with a [development board](https://www.espressif.com/en/products/devkits).
 The following ESP32 microcontrollers are supported:
@@ -15,5 +13,5 @@ Your microcontroller should have at least the following resources available to w
 The main difference between the WROOM and WROVER is that the WROVER has additional RAM with the SPIRAM chip.
 If you would like to allow more than one concurrent connection to your device we recommend using the WROVER.
 The WROVER allows a max of 3 incoming gRPC connections (whether over HTTP2 or WebRTC).
-You can change this max by [building your own version of micro-RDK](/get-started/installation/microcontrollers/development-setup/).
+You can change this max by [building your own version of micro-RDK](/get-started/installation/#install-micro-rdk).
 {{< /alert >}}
