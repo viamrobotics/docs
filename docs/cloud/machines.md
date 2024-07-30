@@ -45,7 +45,7 @@ Select your system's architecture and select the version of the {{< glossary_too
 Then, follow the instructions on the page to connect and set up your machine.
 
 {{% alert title="Tip" color="tip" %}}
-If your machine is controlled by a microcontroller, install the [**Micro-RDK**](/get-started/installation/microcontrollers/) instead of full `viam-server`.
+If your machine is controlled by a microcontroller, install the [**Micro-RDK**](/get-started/installation/#install-micro-rdk) instead of full `viam-server`.
 {{% /alert %}}
 
 More in-depth information on installing `viam-server` can be found in our [Installation Guide](/get-started/installation/#install-viam-server).
