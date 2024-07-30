@@ -111,11 +111,40 @@ The three pieces of the API namespace triplet are as follows:
 
 In addition to determining which existing API namespace triplet to use when creating your module, you need to decide on a separate triplet unique to your model.
 
-A resource model is identified by a unique name, often called the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, using the format: `namespace:repo-name:model-name`, where:
+{{< expand "API namespace triplet and model namespace triplet examples" >}}
+
+The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model use the repository name [yahboom](https://github.com/viam-labs/yahboom).
+The models implement the `rdk:component:arm` and the `rdk:component:gripper` API to support the Yahboom DOFBOT arm and gripper, respectively:
+
+```json
+{
+    "api": "rdk:component:arm",
+    "model": "rand:yahboom:arm"
+},
+{
+    "api": "rdk:component:gripper",
+    "model": "rand:yahboom:gripper"
+}
+```
+
+The `viam-labs:audioout:pygame` model uses the repository name [audioout](https://github.com/viam-labs/audioout).
+It implements the custom API `viam-labs:service:audioout`:
+
+```json
+{
+  "api": "viam-labs:service:audioout",
+  "model": "viam-labs:audioout:pygame"
+}
+```
+
+{{< /expand >}}
+
+A resource model is identified by a unique name, called the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, using the format: `namespace:repo-name:model-name`, where:
 
 - `namespace` is the [namespace of your organization](/cloud/organizations/#create-a-namespace-for-your-organization).
   - For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:repo-name:mybase`.
     If you do not intend to [upload your module](#upload-your-module-to-the-modular-resource-registry) to the [Viam registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
+  - The `viam` namespace is reserved for models provided by Viam.
 - `repo-name` is the code repository (GitHub repo) that houses your module code.
   - Ideally, your `repo-name` should describe the common functionality provided across the model or models of that module.
 - `model-name` is the name of the new resource model that your module will provide.
@@ -128,34 +157,6 @@ More requirements:
 - Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
 
 Determine the model name you want to use based on these requirements, then proceed to the next section.
-
-#### API namespace triplet and model namespace triplet examples
-
-- The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model use the repository name [yahboom](https://github.com/viam-labs/yahboom).
-  The models implement the `rdk:component:arm` and the `rdk:component:gripper` API to support the Yahboom DOFBOT arm and gripper, respectively:
-
-  ```json
-  {
-      "api": "rdk:component:arm",
-      "model": "rand:yahboom:arm"
-  },
-  {
-      "api": "rdk:component:gripper",
-      "model": "rand:yahboom:gripper"
-  }
-  ```
-
-- The `viam-labs:audioout:pygame` model uses the repository name [audioout](https://github.com/viam-labs/audioout).
-  It implements the custom API `viam-labs:service:audioout`:
-
-  ```json
-  {
-    "api": "viam-labs:service:audioout",
-    "model": "viam-labs:audioout:pygame"
-  }
-  ```
-
-The `viam` namespace is reserved for models provided by Viam.
 
 ### Write your new resource model definition
 
