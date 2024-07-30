@@ -1093,7 +1093,7 @@ For more information, see [Train a Model with a Custom Python Training Script](/
 | `--framework` | Framework of the ML training script to upload, can be `tflite`, `tensorflow`, `pytorch`, or `onnx`. | `upload` | Optional |
 | `--type` | Task type of the ML training script to upload, can be `single_label_classification`, `multi_label_classification`, or `object_detection`. | `upload` | Optional |
 | `--draft` | Indicate draft mode, drafts are not viewable in the registry. | `upload` | Optional |
-| `--visibility` | Visibility of the registry item, can be `public` or `private`. | `update` | **Required** |
+| `--visibility` | Visibility of the registry item, can be `public`, `private`, or `draft`. | `update` | **Required** |
 | `--description` | Description of the ML training script. | `update` | Optional |
 
 ### `train`

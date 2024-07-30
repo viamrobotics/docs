@@ -439,7 +439,7 @@ You can also view the uploaded ML model in the [**MODELS** tab](https://app.viam
 
 ## Update the visibility of a training script
 
-To update the visibility of a training script, use the CLI's [`viam training-script update`](/cli/#training-script) command and set the `--visibility` flag to `public` or `private`.
+To update the visibility of a training script, use the CLI's [`viam training-script update`](/cli/#training-script) command and set the `--visibility` flag to `public`, `private`, or `draft`.
 
 ## Next steps
 
