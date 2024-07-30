@@ -83,7 +83,7 @@ If you would like to, you can [extend your reservation](/get-started/try-viam/fa
 Yes! You can rent the rover as many times as you’d like.
 Here are some tutorials which you can follow:
 
-- [Drive with the Viam SDK](/tutorials/get-started/try-viam-sdk/)
+- [Drive with the Viam SDK](/get-started/quickstarts/drive-rover/)
 - [Detect a Color](/tutorials/services/basic-color-detection/)
 
 If you want to get your own Viam Rover, [you can](https://viam.com/resources/rover).

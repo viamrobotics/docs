@@ -9,7 +9,7 @@ description: "Use a Viam SDK to program a rover to move in a square."
 videos:
   ["/tutorials/try-viam-sdk/image1.webm", "/tutorials/try-viam-sdk/image1.mp4"]
 videoAlt: "A Viam Rover driving in a square"
-images: ["/tutorials/get-started/image1.gif"]
+images: ["/tutorials/try-viam-sdk/image1.gif"]
 aliases:
   - /tutorials/get-started/try-viam-sdk
   - /tutorials/viam-rover/try-viam-sdk
