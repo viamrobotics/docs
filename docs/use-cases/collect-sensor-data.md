@@ -9,7 +9,7 @@ modulescript: true
 # SME: Devin Hilly
 ---
 
-You can use the [data management service](/services/data/) to capture sensor data from any or all of your machines and sync that data to the cloud.
+You can use the data management service to capture sensor data from any or all of your machines and sync that data to the cloud.
 For example, you can configure data capture for several sensors across one or multiple machines to report the current memory usage or the ambient operating temperature.
 
 You can do all of this using the [Viam app](https://app.viam.com/) user interface.

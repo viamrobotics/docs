@@ -16,7 +16,7 @@ aliases:
 
 _Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#vision-service)_
 
-The `mlmodel` {{< glossary_tooltip term_id="model" text="model" >}} of the Viam vision service supports machine learning detectors and classifiers that draw bounding boxes or return class labels according to the specified TensorFlow Lite, TensorFlow, PyTorch, or ONNX model file available on the machine’s hard drive.
+The `mlmodel` {{< glossary_tooltip term_id="model" text="model" >}} of the Viam vision service supports machine learning detectors and classifiers that draw bounding boxes or return class labels based on a deployed TensorFlow Lite, TensorFlow, PyTorch, or ONNX ML model.
 
 ## Prerequisites
 
