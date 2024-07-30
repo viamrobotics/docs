@@ -32,6 +32,7 @@ IgnoreURLs:
   - "grabcad.com"
   - "orangepi.org"
   - "rtk2go.com"
+  - "researchgate.net"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"
