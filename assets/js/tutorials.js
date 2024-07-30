@@ -184,6 +184,7 @@ search.addWidgets([
     items: [
       { label: "blogpost" },
       { label: "tutorial" },
+      { label: "codelab" },
     ],
   }),
   instantsearch.widgets.pagination({
