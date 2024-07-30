@@ -400,7 +400,10 @@ To upload another version, you must increment the version number to a later vers
 ## Next steps
 
 {{< cards >}}
-{{% manualcard link="/registry/configure/#configure-version-update-management-for-a-registry-module" img="/registry/create-module.svg" alt="Gear icon" %}}
+{{% manualcard link="/registry/configure/#configure-version-update-management-for-a-registry-module" %}}
+{{<imgproc src="/registry/create-module.svg" declaredimensions=true alt="Gear icon" >}}
+
+<br>
 
 ### Pin a version
 
