@@ -133,16 +133,17 @@ For example, you can send the same commands to any kind of motor, using any of t
 
 #### Create a smart machine with real-time control, monitoring, and data management
 
-{{<imgproc src="/tutorials/pet-treat-dispenser/preview.png" resize="300x" declaredimensions=true alt="A dog interacting with the smart pet feeder." class="alignleft">}}
-
-Consider a pet feeder which is made up of a webcam and a motor as well as a board with the programming for the device.
-
 <p>
-{{<imgproc src="/get-started/camera-motor-board.png" resize="300x" declaredimensions=true alt="A camera, a motor, and a board.">}}</p>
+{{<imgproc src="/get-started/addition.png" resize="300x" class="alignleft" declaredimensions=true alt="A camera, a motor, and a board.">}}
+</p>
 
-With the Viam app, you can configure the motor and webcam as {{< glossary_tooltip term_id="component" text="components" >}}.
+Consider a pet feeder which is made up of a webcam and a motor as well as a board to control the device.
 
-By configuring your machine with Viam, you can now:
+You start by configuring the motor and webcam as {{< glossary_tooltip term_id="component" text="components" >}} in the Viam app UI.
+
+{{<imgproc src="/components/camera/configure-webcam.png" resize="600x" declaredimensions=true alt="A webcam configuration card in the Viam app.">}}
+
+By configuring your machine with Viam, you can immediately do the following, without writing any code:
 
 {{< table >}}
 {{% tablestep link="/cloud/machines/#control"%}}
@@ -154,7 +155,7 @@ Using the Viam app or the Viam mobile app, you can view the camera feed and turn
 
 {{% /tablestep %}}
 {{% tablestep link="/services/data/"%}}
-{{<imgproc src="/get-started/bowl-images.png" class="fill alignleft" resize="800x" style="max-width: 500px" declaredimensions=true alt="Screenshot of food bowl pictures">}}
+{{<imgproc src="/get-started/bowl-images.png" class="fill alignleft" resize="800x" style="max-width: 400px" declaredimensions=true alt="Screenshot of food bowl pictures">}}
 **Collect and upload data to the cloud**
 
 You can configure the camera to capture a photo of the food bowl periodically and automatically sync these photos to the cloud.
@@ -237,13 +238,17 @@ if __name__ == '__main__':
 
 #### Connect to networks of devices, providing comprehensive real-time and historical data
 
+<p>
+{{<imgproc src="/get-started/boat-fleet.png" class="alignright" resize="500x" style="max-width: 300px" declaredimensions=true alt="Fleet of boats sending data to one place.">}}
+</p>
+
 Consider another example where you want to get data from a network of boats.
 
-DIAGRAM
+You install `viam-server` on a compute board on each boat, connected to any cameras and sensors you want to collect data from.
 
 {{< table >}}
 {{% tablestep link="/appendix/apis/#component-apis"%}}
-{{<imgproc src="/get-started/boat-data.png" class="fill alignright" resize="800x" style="max-width: 600px" declaredimensions=true alt="Screenshot of food bowl pictures with labels">}}
+{{<imgproc src="/get-started/boat-data.png" class="fill alignright" resize="800x" style="max-width: 600px" declaredimensions=true alt="Screenshot of boat data dashboard.">}}
 
 **Real-time camera and sensor data**
 
