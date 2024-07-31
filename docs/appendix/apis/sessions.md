@@ -30,7 +30,7 @@ This is especially important for machines that physically move.
 For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#setpower) command as the last input from a client before the connection to the machine is interrupted.
 Without session management, the API request from the client would cause the rover's motors to move, causing the machine to continue driving forever and potentially colliding with objects and people.
 
-For more information, see [Client Sessions and Machine Network Connectivity](/build/program/connectivity/).
+For more information, see [Client Sessions and Machine Network Connectivity](/sdks/connectivity/).
 
 If you want to manage operations differently, you can manage your machine's client sessions yourself.
 The Session Management API provides functionality for:

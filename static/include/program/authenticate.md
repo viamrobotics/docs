@@ -101,21 +101,21 @@ Future<void> connectToViam() async {
 {{% /tab %}}
 {{< /tabs >}}
 
-{{< alert title="Caution" color="caution" >}}
+   {{< alert title="Caution" color="caution" >}}
 Do not share your machine part API key or machine address publicly.
 Sharing this information could compromise your system security by allowing unauthorized access to your machine, or to the computer running your machine.
-{{< /alert >}}
+   {{< /alert >}}
 
-{{< alert title="Location secret (deprecated)" color="note" >}}
+   {{< alert title="Location secret (deprecated)" color="note" >}}
 
 Prior to API keys, Viam used location secrets for authentication.
 Location secrets are now deprecated.
 To avoid connection issues, start using API keys.
 
-{{< /alert >}}
+   {{< /alert >}}
 
 2. The machine's remote address:
 
    Include the address, which resembles `12345.somemachine-main.viam.cloud`.
    The machine address is a public address to connect to your machine.
-   You can find this address at the top of the machine's **CONTROL** tab or on the **CONNECT** tab's **Code sample** page.
+   You can find this address at the top of the machine's **CONNECT** tab.

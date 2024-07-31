@@ -44,7 +44,7 @@ Follow the guide to [capture sensor data](/use-cases/collect-sensor-data/).
 ## Set up the Python SDK
 
 {{< table >}}
-{{% tablestep link="/build/program/#requirements"%}}
+{{% tablestep link="/sdks/#installation"%}}
 **1. Install the Python SDK**
 
 For macOS (both Intel x86_64 and Apple Silicon) or Linux (x86, aarch64, armv6l), run the following commands:

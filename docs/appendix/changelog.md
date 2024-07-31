@@ -111,7 +111,7 @@ The functionality remains the same, but code that uses analogs must be updated.
 
 {{% changelog date="2024-04-30" color="added" title="Part online and part offline triggers" %}}
 
-You can now configure [triggers](/build/configure/triggers/) to execute actions when a {{< glossary_tooltip term_id="part" text="machine part" >}} comes online or goes offline.
+You can now configure [triggers](/configure/triggers/) to execute actions when a {{< glossary_tooltip term_id="part" text="machine part" >}} comes online or goes offline.
 
 {{% /changelog %}}
 
@@ -205,7 +205,7 @@ See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) f
 
 {{% changelog date="2024-01-31" color="added" title="Use triggers to trigger actions" %}}
 
-You can now configure [triggers](/build/configure/triggers/) (previously called webhooks) to execute actions when certain types of data are sent from your machine to the cloud.
+You can now configure [triggers](/configure/triggers/) (previously called webhooks) to execute actions when certain types of data are sent from your machine to the cloud.
 
 {{% /changelog %}}
 
@@ -232,7 +232,7 @@ Users can now have [access to different fleet management capabilities](/cloud/rb
 
 {{% changelog date="2023-11-30" color="added" title="Authenticate with location API key" %}}
 
-You can now use [API keys for authentication](/build/program/#authenticate).
+You can now use [API keys for authentication](/sdks/#authentication).
 API keys allow you to assign the minimum required permissions for usage.
 Location secrets, the previous method of authentication, is deprecated and will be removed in a future release.
 
@@ -559,7 +559,7 @@ detections = await vision.get_detections(img, "find_objects")
 
 #### Color detector configurations
 
-You can replace existing color detectors by [configuring new ones in the UI](/services/vision/color_detector/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
+You can replace existing color detectors by [configuring new ones in the UI](/services/vision/color_detector/) or you can update the [JSON configuration of your machines](/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -634,7 +634,7 @@ You can replace existing color detectors by [configuring new ones in the UI](/se
 
 #### TFLite detector configurations
 
-You can replace existing TFLite detectors by [configuring new ones in the UI](/services/vision/mlmodel/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
+You can replace existing TFLite detectors by [configuring new ones in the UI](/services/vision/mlmodel/) or you can update the [JSON configuration of your machines](/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -694,7 +694,7 @@ You can replace existing TFLite detectors by [configuring new ones in the UI](/s
 
 #### TFLite Classifier configurations
 
-You can replace existing TFLite classifiers by [configuring new ones in the UI](/services/vision/mlmodel/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
+You can replace existing TFLite classifiers by [configuring new ones in the UI](/services/vision/mlmodel/) or you can update the [JSON configuration of your machines](/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -754,7 +754,7 @@ You can replace existing TFLite classifiers by [configuring new ones in the UI](
 
 #### Radius Clustering 3D segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/services/vision/obstacles_pointcloud/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/services/vision/obstacles_pointcloud/) or you can update the [JSON configuration of your machines](/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -808,7 +808,7 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
 
 #### Detector to 3D segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/services/vision/detector_3d_segmenter/) or you can update the [JSON configuration of your machines](/build/configure/#the-configure-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/services/vision/detector_3d_segmenter/) or you can update the [JSON configuration of your machines](/configure/#the-configure-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -863,7 +863,7 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
 
 #### Add and remove models using the machine config
 
-You must add and remove models using the [machine config](/build/configure/).
+You must add and remove models using the [machine config](/configure/).
 You will no longer be able to add or remove models using the SDKs.
 
 #### Add machine learning vision models to a vision service
@@ -894,7 +894,7 @@ You can now access {{< glossary_tooltip term_id="fragment" text="fragments" >}} 
 The configurations you added will now show up automatically in the **Components** or **Services** subtabs in the **Builder** view.
 This makes it easier to monitor what fragments you've added to your machine and how they're configured.
 
-For more information, see [Fragments](/build/configure/#fragments).
+For more information, see [Fragments](/configure/#fragments).
 
 {{% /changelog %}}
 

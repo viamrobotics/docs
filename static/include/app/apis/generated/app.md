@@ -794,7 +794,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### MarkPartAsMain
 
-Mark a machine part as the [_main_ part](/build/configure/parts/#machine-parts) of a machine.
+Mark a machine part as the [_main_ part](/configure/parts/#machine-parts) of a machine.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

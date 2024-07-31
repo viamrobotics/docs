@@ -20,7 +20,7 @@ While ORB-SLAM3 does support the use of monocular cameras, for best results it i
 
 ### Requirements
 
-Install the binary required to utilize `orbslamv3` on your machine and make it executable by running the following commands according to your machine's architecture:
+Install the binary required to use `orbslamv3` on your machine and make it executable by running the following commands according to your machine's architecture:
 
 {{< tabs >}}
 {{% tab name="Linux aarch64" %}}
@@ -306,7 +306,7 @@ These are generated at runtime, so there is no need to adjust this folder.
 | `data_rate_msec` | int | Optional | Data generation rate for collecting sensor data to feed to SLAM *(milliseconds)*. <ul>Default: `200`.</ul> |
 | `port` | string | Optional | Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is specified a random available port is assigned. |
 | `delete_processed_data` | bool | Optional | <p>Setting this to `true` helps to reduce the amount of memory required to run SLAM.</p> <ul> `true`: sensor data is deleted after the SLAM algorithm has processed it. </ul><ul> `false`: sensor data is not deleted after the SLAM algorithm has processed it. </ul> |
-| `config_params` |  map[string] string | Optional | Parameters to fine-tune the algorithm `orbslamv3` utilizes. |
+| `config_params` |  map[string] string | Optional | Parameters to fine-tune the algorithm `orbslamv3` uses. |
 
 {{% alert title="Caution" color="caution" %}}
 
@@ -319,7 +319,7 @@ Setting `delete_processed_data: true` and `use_live_data: false` is invalid and 
 {{% /tab %}}
 {{% tab name="config_params" %}}
 
-Adjust these parameters to fine-tune the algorithm `orbslamv3` utilizes:
+Adjust these parameters to fine-tune the algorithm `orbslamv3` uses:
 
 <!-- prettier-ignore -->
 | Parameter | Description | Required? | Default Value |

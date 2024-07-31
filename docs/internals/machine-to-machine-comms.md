@@ -111,5 +111,5 @@ That means if there are two arms in a machine configuration, there is only one A
 
 In addition to gRPC, the RDK uses [WebRTC](https://webrtcforthecurious.com/) video and audio streams and data channels to enable peer to peer (P2P) communication between machine parts as well as SDKs and the Remote Control interface.
 
-An outline of how WebRTC is utilized lives on [Go.dev](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection), but in short, an RDK is always waiting on the Viam app ([app.viam.com](https://app.viam.com)) to inform it of a connection requesting to be made to it whereby it sends details about itself and how to connect on a per connection basis.
+An outline of how WebRTC is used lives on [Go.dev](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection), but in short, an RDK is always waiting on the Viam app ([app.viam.com](https://app.viam.com)) to inform it of a connection requesting to be made to it whereby it sends details about itself and how to connect on a per connection basis.
 Once a connection is made, the Viam app is no longer involved in any packet transport and leaves it up to the two peers to communicate with each other.

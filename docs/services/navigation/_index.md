@@ -248,7 +248,7 @@ Here, you can toggle the mode of the service between **Manual** and **Waypoint**
 ## Navigation concepts
 
 The following concepts are important to understand when utilizing the navigation service.
-Each concept is a type of relative or absolute measurement, taken by a [movement sensor](/components/movement-sensor/), which can then be utilized by your machine to navigate across space.
+Each concept is a type of relative or absolute measurement, taken by a [movement sensor](/components/movement-sensor/), which can then be used by your machine to navigate across space.
 
 Here's how to use the following types of measurements:
 

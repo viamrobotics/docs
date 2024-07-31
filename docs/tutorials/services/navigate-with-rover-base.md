@@ -623,7 +623,7 @@ You can alternatively use [`viam:ultrasonic:camera`](https://github.com/viam-mod
 
 If you want the robot to be able to automatically detect obstacles in front of it, [configure a Vision service segmenter](/services/vision/#segmentations).
 For example, [configure](/services/vision/obstacles_depth/) the Vision service model [`obstacles_depth`](/services/vision/obstacles_depth/) to detect obstacles in front of the robot.
-Then, use one of [Viam's client SDKs](/build/program/) to automate obstacle avoidance with the navigation service like in the following Python program:
+Then, use one of [Viam's client SDKs](/sdks/) to automate obstacle avoidance with the navigation service like in the following Python program:
 
 {{%expand "Click to view full example of automated obstacle avoidance with the Python SDK" %}}
 

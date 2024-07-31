@@ -1,6 +1,6 @@
 extends: substitution
 message: "Use '%s' instead of '%s'."
-link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/terminology/general-term-guidelines/avoid-obscure-words.rst'
+link: "https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/terminology/general-term-guidelines/avoid-obscure-words.rst"
 level: error
 ignorecase: true
 action:
@@ -16,3 +16,5 @@ swap:
   '(?:vs\.)[\s]': versus
   ergo: therefore
   make use of: use
+  utilize: use
+  utilization: use

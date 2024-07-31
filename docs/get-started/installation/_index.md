@@ -156,9 +156,9 @@ To learn how to run, update, or uninstall `viam-server`, see [Manage `viam-serve
 ### Next steps
 
 {{< cards >}}
-{{% card link="/build/configure/" %}}
+{{% card link="/configure/" %}}
 {{% card link="/tutorials/" %}}
-{{% card link="/build/program/" %}}
+{{% card link="/sdks/" %}}
 {{< /cards >}}
 
 ## Install micro-RDK
@@ -223,9 +223,9 @@ See [GitHub](https://github.com/viamrobotics/micro-rdk) for code examples and mo
 
 Configure your `esp32` board for your machine.
 {{% /manualcard %}}
-{{% card link="/build/configure/" %}}
+{{% card link="/configure/" %}}
 {{% card link="/tutorials/" %}}
-{{% card link="/build/program/" %}}
+{{% card link="/sdks/" %}}
 {{< /cards >}}
 
 ### Recommendations when using an SDK

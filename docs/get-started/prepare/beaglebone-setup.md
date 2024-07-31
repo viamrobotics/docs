@@ -91,7 +91,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next steps
 
 {{< cards >}}
-{{% card link="/build/configure/" %}}
+{{% card link="/configure/" %}}
 {{% card link="/tutorials/" %}}
 {{% card link="/get-started/try-viam/" %}}
 {{< /cards >}}

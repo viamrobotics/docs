@@ -216,7 +216,7 @@ Adjust the [orientation vector](/internals/orientation-vector/) to 0.5 degrees i
 
 ![Camera oriented .5 degrees OX shown in the Frame System Editor](/services/frame-system/demo_camera_edited_2.png)
 
-Now that the frame system is accurately configured with the machine's spatial orientation, [motion service](/services/motion/) methods that take in reference frame information can be utilized.
+Now that the frame system is accurately configured with the machine's spatial orientation, [motion service](/services/motion/) methods that take in reference frame information can be used.
 
 ### Display options
 

@@ -18,7 +18,7 @@ You can define a new {{< glossary_tooltip term_id="resource" text="resource" >}}
 
 {{% alert title="Tip" color="tip" %}}
 
-If you want to use most of an existing API but need just a few other functions, try using the [`DoCommand`](/appendix/apis/#docommand) endpoint and [extra parameters](/build/program/use-extra-params/) to add custom functionality to an existing subtype.
+If you want to use most of an existing API but need just a few other functions, try using the [`DoCommand`](/appendix/apis/#docommand) endpoint and [extra parameters](/sdks/use-extra-params/) to add custom functionality to an existing subtype.
 For example, if you have a [sensor](/components/sensor/) and you want to define a `Calibrate` method, you can use `DoCommand`.
 
 If your use case uses only `DoCommand` and no other API methods, you can define a new model of [generic component](/components/generic/) or [generic service](/services/generic/).

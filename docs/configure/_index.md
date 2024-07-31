@@ -1,7 +1,7 @@
 ---
-title: "Configure a Smart Machine"
-linkTitle: "Configure a Machine"
-weight: 30
+title: "Machine Configuration"
+linkTitle: "Machine Configuration"
+weight: 429
 type: "docs"
 description: "Before you can program a machine, you must configure its components and services as well as any modules, remotes, processes and frames."
 imageAlt: "Configure a Machine"
@@ -9,6 +9,10 @@ images: ["/get-started/installation/thumbnails/configure.svg"]
 tags: ["manage", "components"]
 aliases:
   - /manage/configuration/
+  - /build/configure/
+  - /build/
+no_list: true
+menuindent: true
 ---
 
 Before you can program a smart machine, you must configure it.
@@ -16,16 +20,16 @@ Before you can program a smart machine, you must configure it.
 A machine's configuration defines the _{{< glossary_tooltip term_id="resource" text="resources" >}}_ (hardware and software services) it has access to, as well as any relevant parameters for those resources.
 You can configure the following resources:
 
-- [Components](/build/configure/#components): _{{< glossary_tooltip term_id="component" text="Components" >}}_ are the hardware of your machine.
-- [Services](/build/configure/#services): _{{< glossary_tooltip term_id="service" text="Services" >}}_ are the software that runs on your machine.
-- [Processes](/build/configure/#processes): Processes automatically run specified scripts when the machine boots.
-- [Modules](/build/configure/#modules): {{< glossary_tooltip term_id="module" text="Modules" >}} provide {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which are a way to add resource types or models that are not built into Viam.
-- [Remote parts](/build/configure/#remote-parts): Remotes are a way to connect two separate machines so one can access the resources of the other.
-- [Sub-parts](/build/configure/#sub-parts): Sub-parts are a way to connect two computers inside the same machine.
-- [Fragments](/build/configure/#fragments): Fragments are a way of sharing and managing identical configuration files (or parts of config files) across multiple machines.
+- [Components](/configure/#components): _{{< glossary_tooltip term_id="component" text="Components" >}}_ are the hardware of your machine.
+- [Services](/configure/#services): _{{< glossary_tooltip term_id="service" text="Services" >}}_ are the software that runs on your machine.
+- [Processes](/configure/#processes): Processes automatically run specified scripts when the machine boots.
+- [Modules](/configure/#modules): {{< glossary_tooltip term_id="module" text="Modules" >}} provide {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which are a way to add resource types or models that are not built into Viam.
+- [Remote parts](/configure/#remote-parts): Remotes are a way to connect two separate machines so one can access the resources of the other.
+- [Sub-parts](/configure/#sub-parts): Sub-parts are a way to connect two computers inside the same machine.
+- [Fragments](/configure/#fragments): Fragments are a way of sharing and managing identical configuration files (or parts of config files) across multiple machines.
 - [Frames](#frames): Frames hold reference frame information for the relative position of components in space.
-- [Triggers](/build/configure/#triggers): Triggers allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
-- [Network](/build/configure/#network): Networking options allow you to configure the bind address for accepting connections.
+- [Triggers](/configure/#triggers): Triggers allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
+- [Network](/configure/#network): Networking options allow you to configure the bind address for accepting connections.
 
 To start configuring, go to the [Viam app](https://app.viam.com) and create a new machine.
 Open the part status dropdown menu in the top left corner of the page, next to the machine's name.
@@ -210,7 +214,7 @@ To automatically run a specified command when the machine boots, configure a _{{
 You can configure any command, for example one that executes a binary or a script, to run as a process.
 
 To add a new process, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Process**.
-Find more information in the [processes documentation](/build/configure/processes/).
+Find more information in the [processes documentation](/configure/processes/).
 
 ### Modules
 
@@ -225,14 +229,14 @@ Follow the instructions in our [registry documentation](/registry/configure/#add
 Configuring a remote part is a way to connect two separate machines so one can access the resources of the other.
 
 To configure a remote part, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Remote part**.
-Find more information in our [machine parts documentation](/build/configure/parts/).
+Find more information in our [machine parts documentation](/configure/parts/).
 
 ### Sub-parts
 
 Configure a sub-part to connect two computers inside the same machine.
 
 To configure a sub-part, click the **+** icon next to your {{< glossary_tooltip term_id="part" text="machine part" >}} in the left-hand menu of the **CONFIGURE** tab and select **Sub-part**.
-Find more information in our [machine parts documentation](/build/configure/parts/).
+Find more information in our [machine parts documentation](/configure/parts/).
 
 ### Fragments
 
@@ -254,7 +258,7 @@ Find more information in the [frame system documentation](/services/frame-system
 Triggers allow you to trigger actions when certain types of data are sent from your machine to the cloud, or when the internet connectivity of your machine changes.
 For example, you can configure a trigger to send you a notification when your robot's sensor collects a new reading.
 
-See [Configure a Trigger](/build/configure/triggers/) for more information on triggers.
+See [Configure a Trigger](/configure/triggers/) for more information on triggers.
 
 ### Network
 

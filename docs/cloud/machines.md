@@ -69,7 +69,7 @@ After connecting your machine, go to the **CONFIGURE** tab, and start adding {{<
 The Viam app keeps a record of your configuration changes, allowing you to revert to earlier configurations if needed.
 To see the history of the configuration of a machine part, click on **History** on the right side of its card on the **CONFIGURE** tab.
 
-For more information, see the [configuration documentation](/build/configure/#the-configure-tab).
+For more information, see the [configuration documentation](/configure/#the-configure-tab).
 
 {{< alert title="Tip" color="tip" >}}
 If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your fleet](/fleet/fragments/).
@@ -117,7 +117,7 @@ For more information on the SDKs, see [Program your Machine with Viam's SDKs](/a
 #### Configure as remote part
 
 On the **CONNECT** tab, there is also a page called **Configure as remote part**.
-This page has instructions for how to configure a {{< glossary_tooltip term_id="part" text="part" >}} of your machine as a [remote part](/build/configure/parts/) of another machine.
+This page has instructions for how to configure a {{< glossary_tooltip term_id="part" text="part" >}} of your machine as a [remote part](/configure/parts/) of another machine.
 
 #### API keys
 

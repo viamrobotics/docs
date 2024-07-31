@@ -13,6 +13,7 @@ aliases:
   - "/viam/app.viam.com/"
 imageAlt: "/general/understand.png"
 images: ["/general/understand.png"]
+carouselscript: true
 ---
 
 Viam is a complete software platform that supports every step of your {{< glossary_tooltip term_id="smart-machine" text="smart machine">}} development lifecycle.
@@ -72,7 +73,7 @@ For each component that makes up your machine:
 {{< imgproc src="/viam/test_components.png" alt="Multiple components being tested in the Viam app." resize="320x" style="max-width:320px" class="alignright" >}}
 </p>
 
-1. Add it to your machine by [choosing the component type](/build/configure/#components) (example: `camera`) and model (example: `webcam`).
+1. Add it to your machine by [choosing the component type](/configure/#components) (example: `camera`) and model (example: `webcam`).
 2. Test it with the visual [control tab](/fleet/control/).
 3. See any problems with in-app [logs](/cloud/machines/#logs), review or roll back [configuration history](/cloud/machines/#configure).
 

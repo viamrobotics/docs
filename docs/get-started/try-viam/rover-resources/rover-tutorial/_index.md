@@ -97,7 +97,7 @@ For more information, see [Camera Component](/components/camera/).
 
 {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/motherboard.png" resize="400x" declaredimensions=true alt="Viam rover 2 motherboard" >}}
 
-The Viam Rover 2 utilizes a motherboard to which all ancillary components (buck converter, motor driver, IMU, INA219) are mounted.
+The Viam Rover 2 uses a motherboard to which all ancillary components (buck converter, motor driver, IMU, INA219) are mounted.
 This board includes an auxiliary Raspberry Pi 4 pinout that dupont connectors can be connected to, an auxiliary power input terminal, 5V, 3.3V and Ground pins.
 
 The motherboard also incorporates hole patterns for the following alternative single-board computers:
