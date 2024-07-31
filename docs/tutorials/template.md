@@ -16,7 +16,7 @@ tags: ["tutorial"]
 draft: true # Change this when you're ready
 authors: [] # Your Name
 weight: # A positive integer that determines the position of the tutorial on the tutorials page. New content is automatically featured. Only use this to highlight content that should permanently be near the top.
-languages: [] # Viam SDK programming languages used, if any
+languages: ["python", "go", "typescript", "flutter", "c++"] # Viam SDK programming languages used, if any
 viamresources: [
     "arm",
     "base",

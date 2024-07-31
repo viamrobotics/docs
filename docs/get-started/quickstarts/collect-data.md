@@ -2,10 +2,17 @@
 title: "Collect images or sensor data in 3 minutes"
 linkTitle: "Collect data (3 min)"
 type: "docs"
-weight: 20
-cost: 75
 images: ["/platform/data.svg"]
 description: "Use Viam to gather images or sensor data from your machine."
+imageAlt: "The data icon"
+authors: []
+weight: 20
+languages: []
+viamresources: ["data_manager", "sensor"]
+no_list: true
+level: "Beginner"
+date: "2024-07-31"
+cost: "0"
 ---
 
 Follow this guide to start collecting images or sensor data from your machine using the [data management service](/services/data/).

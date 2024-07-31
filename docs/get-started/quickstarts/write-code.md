@@ -3,9 +3,17 @@ title: "Control machines with code in 4 minutes"
 linkTitle: "Write code for machines (4 min)"
 type: "docs"
 weight: 80
-cost: 75
 images: ["/general/code.png"]
 description: "Write code to control your machine with Viam's SDKs in 4 minutes."
+imageAlt: "Code sample"
+authors: []
+weight: 80
+languages: ["python", "go", "typescript", "flutter", "c++"]
+viamresources: ["data_manager", "sensor"]
+no_list: true
+level: "Beginner"
+date: "2024-07-31"
+cost: "0"
 ---
 
 Follow this guide to start writing code to perform actions with the {{< glossary_tooltip term_id="component" text="components" >}} or {{< glossary_tooltip term_id="service" text="services" >}} of a {{< glossary_tooltip term_id="machine" text="machine" >}}.
