@@ -540,7 +540,9 @@ If you update and release your module as part of a continuous integration (CI) w
 | -------------- | ----------- | -------------------- |
 | `create` | Generate new metadata for a custom module on your local filesystem | - |
 | `update` | Update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file). Note that the `upload` command automatically runs `update` for you; you do not need to explicitly run `update` if you are also running `upload` | - |
+| `update-models` | Update the module's metadata file with the models it provides. | - |
 | `upload` | Validate and upload a new or existing custom module on your local filesystem to the Viam registry. See [Upload validation](#upload-validation) for more information | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code |
+| `reload` | Build a module locally and run it on a target device. Rebuild and restart if it is already running. | - |
 | `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](#the-metajson-file). See [Using the `build` subcommand](#using-the-build-subcommand) | - |
 | `build local` | Start a module build locally using the build step in your [`meta.json` file](#the-metajson-file). See [Using the `build` subcommand](#using-the-build-subcommand) | - |
 | `build list` | List the status of your cloud module builds. See [Using the `build` subcommand](#using-the-build-subcommand) | - |
@@ -552,6 +554,7 @@ If you update and release your module as part of a continuous integration (CI) w
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
+| `--binary` | The binary for the module to run. The binary has to work on the OS or processor of the device. | | **Required** |
 | `--count` | Number of cloud builds to list, defaults to displaying all builds | `build list` | Optional |
 | `--force` | Skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | Optional |
 | `--id` | The build ID to list or show logs for, as returned from `build start` | `build list`, `build logs` | Optional |
