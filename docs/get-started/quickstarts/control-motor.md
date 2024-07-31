@@ -10,7 +10,7 @@ description: "Use Viam to control a motor's speed and direction in just a few st
 
 You can use Viam to control a motor's speed and direction directly from [the Viam app](https://app.viam.com/), [the mobile app](/fleet/#the-viam-mobile-app), or [programmatically](/sdks/).
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/cz-FPUWrG94">}}
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/awLbMqaByrE">}}
 
 ## Requirements
 
