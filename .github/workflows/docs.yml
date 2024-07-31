@@ -44,14 +44,26 @@ jobs:
       - name: Upload tutorials search file
         uses: actions/upload-artifact@v3
         with:
-          name: tutorials-search-file
+          name: tutorials-file
           path: ./public/tutorials/typesense.json
+
+      - name: Upload quickstarts search file
+        uses: actions/upload-artifact@v3
+        with:
+          name: quickstarts-file
+          path: ./public/get-started/quickstarts/typesense.json
 
       - name: Upload components models file
         uses: actions/upload-artifact@v3
         with:
           name: components-models-file
           path: ./public/components/typesense.json
+
+      - name: Upload services models file
+        uses: actions/upload-artifact@v3
+        with:
+          name: services-models-file
+          path: ./public/services/typesense.json
 
   deploy:
     environment:
@@ -69,11 +81,28 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository_owner == 'viamrobotics'
     steps:
-      - name: Download the tutorials search file
+      - name: Download the tutorials metadata file
         uses: actions/download-artifact@v3
         with:
-          name: tutorials-search-file
+          name: tutorials-file
       - name: Upload tutorials documents
+        run: |
+          jq -c '.[]' typesense.json > documents.jsonl
+          curl -H "X-TYPESENSE-API-KEY: ${{secrets.TYPESENSE_TUTORIALS_API_KEY}}" \
+          -X POST \
+          -T documents.jsonl \
+          "https://cgnvrk0xwyj9576lp-1.a1.typesense.net/collections/tutorials/documents/import?action=upsert"
+
+  upload-quickstarts-page-entries:
+    needs: deploy
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'viamrobotics'
+    steps:
+      - name: Download the quickstarts metadata file
+        uses: actions/download-artifact@v3
+        with:
+          name: quickstarts-info-file
+      - name: Upload quickstarts documents
         run: |
           jq -c '.[]' typesense.json > documents.jsonl
           curl -H "X-TYPESENSE-API-KEY: ${{secrets.TYPESENSE_TUTORIALS_API_KEY}}" \
@@ -122,6 +151,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: components-models-file
+          path: "components.json"
+      - name: Download the services models file
+        uses: actions/download-artifact@v3
+        with:
+          name: services-models-file
+          path: "services.json"
       - run: pip install -r .github/workflows/requirements.txt
       - name: "Update modular resources"
         run: python3 .github/workflows/get_modular_resources.py
