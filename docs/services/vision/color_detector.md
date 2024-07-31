@@ -130,7 +130,7 @@ You can test your detector with [live camera footage](#live-camera-footage) or [
    {{< /alert >}}
 2. After adding the camera, click the **Save** button in the top right corner of the page.
 3. Click on the **Test** area on the vision service configuration panel, or navigate to the **CONTROL** tab, click on the vision service and select your camera and vision service and then click **Refresh**.
-   The panel will show detections with bounding boxes around detections on the image.
+   The panel will show detections with confidence above the `default_minimum_confidence` with bounding boxes on the image.
 
    ![Blue boxes detected](/services/vision/detections.png)
 
