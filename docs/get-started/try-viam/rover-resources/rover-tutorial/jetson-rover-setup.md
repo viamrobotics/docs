@@ -159,6 +159,6 @@ To configure your rover so you can start driving it, [add a Viam Rover 2 Fragmen
 After adding the appropriate fragment, follow one of these tutorials with your borrowed or owned rover:
 
 {{< cards >}}
-{{% card link="/tutorials/get-started/try-viam-sdk/" %}}
+{{% card link="/get-started/quickstarts/drive-rover/" %}}
 {{% card link="/tutorials/services/basic-color-detection/" %}}
 {{< /cards >}}

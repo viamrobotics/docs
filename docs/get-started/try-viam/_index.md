@@ -37,7 +37,7 @@ See <a href="/get-started/try-viam/reserve-a-rover/">detailed instructions</a>.<
   <tr>
     <td>{{<imgproc src="/get-started/try-viam/try-viam-3.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="ALT">}}
       <b>3. Get started with Viam</b>
-      <p>Try a Viam Rover in our robotics lab. <a href="/get-started/try-viam/try-viam-tutorial/">Control</a>, <a href="/get-started/try-viam/try-viam-tutorial/#base-control">drive</a>, or <a href="/tutorials/get-started/try-viam-sdk/">program</a> the rover to see how you can build a machine with Viam. You can also try services like <a href="/tutorials/services/basic-color-detection/">computer vision.</a></p>
+      <p>Try a Viam Rover in our robotics lab. <a href="/get-started/try-viam/try-viam-tutorial/">Control</a>, <a href="/get-started/try-viam/try-viam-tutorial/#base-control">drive</a>, or <a href="/get-started/quickstarts/drive-rover/">program</a> the rover to see how you can build a machine with Viam. You can also try services like <a href="/tutorials/services/basic-color-detection/">computer vision.</a></p>
     </td>
   </tr>
 </table>
@@ -45,7 +45,7 @@ See <a href="/get-started/try-viam/reserve-a-rover/">detailed instructions</a>.<
 ## Next steps
 
 {{< cards >}}
-{{% card link="/tutorials/get-started/try-viam-sdk/" %}}
+{{% card link="/get-started/quickstarts/drive-rover/" %}}
 {{% card link="/tutorials/services/basic-color-detection/" %}}
 {{% card link="/get-started/try-viam/rover-resources/" %}}
 {{< /cards >}}

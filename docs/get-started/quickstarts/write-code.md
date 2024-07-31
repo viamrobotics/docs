@@ -143,7 +143,7 @@ To see full sample projects, check out these tutorials:
 
 {{< cards >}}
 {{% card link="/tutorials/get-started/blink-an-led/" %}}
-{{% card link="/tutorials/get-started/try-viam-sdk/" %}}
+{{% card link="/get-started/quickstarts/drive-rover/" %}}
 {{< /cards >}}
 
 If you are looking to write code to support additional components or services or add custom functionality, see [how to create a module](/use-cases/create-module/).

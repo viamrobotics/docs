@@ -169,6 +169,6 @@ Try changing the detector config to detect other colors.
 
 To do more with the vision service and incorporate machine learning, try [our person detection security robot tutorial](/tutorials/projects/send-security-photo/).
 
-To learn about coding with Viam's SDKs, try [making a rover move in a square](/tutorials/get-started/try-viam-sdk/).
+To learn about coding with Viam's SDKs, try [making a rover move in a square](/get-started/quickstarts/drive-rover/).
 
 {{< snippet "social.md" >}}

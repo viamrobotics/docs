@@ -342,7 +342,7 @@ Now that you have integrated your rover or mobile base with Viam, you can use th
 If your rover has a [`camera`](/components/camera/) or a [`movement_sensor`](/components/movement-sensor/), you can try the following tutorials:
 
 {{< cards >}}
-{{% card link="/tutorials/get-started/try-viam-sdk/" %}}
+{{% card link="/get-started/quickstarts/drive-rover/" %}}
 {{% card link="/tutorials/services/color-detection-scuttle/" %}}
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}

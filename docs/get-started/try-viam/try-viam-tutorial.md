@@ -225,7 +225,7 @@ You can [copy this `JSON` config between rental rovers](/get-started/try-viam/fa
 If you have questions, check out our [FAQ](/get-started/try-viam/faq/) or join our [Discord Community](https://discord.gg/viam), where you can ask questions and meet other people working on robots.
 
 {{< cards >}}
-{{% card link="/tutorials/get-started/try-viam-sdk" %}}
-{{% card link="/tutorials/services/basic-color-detection" %}}
-{{% card link="/get-started/try-viam/rover-resources" %}}
+{{% card link="/get-started/quickstarts/drive-rover/" %}}
+{{% card link="/tutorials/services/basic-color-detection/" %}}
+{{% card link="/get-started/try-viam/rover-resources/" %}}
 {{< /cards >}}

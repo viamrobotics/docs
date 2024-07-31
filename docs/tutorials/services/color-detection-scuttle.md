@@ -299,7 +299,7 @@ Use something like a red sports ball or book cover as a target to follow to test
 ## Next steps
 
 Congratulations! If you're ready for more, try making your rover detect other colors.
-You could also write some code with a Viam SDK to [make your rover move in a square](/tutorials/get-started/try-viam-sdk/).
+You could also write some code with a Viam SDK to [make your rover move in a square](/get-started/quickstarts/drive-rover/).
 
 {{< snippet "social.md" >}}
 
