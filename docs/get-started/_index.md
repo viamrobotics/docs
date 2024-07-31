@@ -15,6 +15,7 @@ Learn about the Viam platform by reading our Viam in 3 minutes guide or try it o
 {{% card link="/get-started/quickstarts/collect-data/" %}}
 {{% card link="/get-started/quickstarts/detect-people/" %}}
 {{% card link="/get-started/quickstarts/write-code/" %}}
+{{% card link="/get-started/quickstarts/drive-rover/" %}}
 {{< /cards >}}
 
 If you're ready to try it on your own machine, start by installing `viam-server`.
