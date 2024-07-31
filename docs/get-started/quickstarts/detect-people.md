@@ -1,13 +1,20 @@
 ---
 title: "Detect People with a Webcam in 4 minutes"
 linkTitle: "Detect people (4 min)"
-weight: 50
 type: "docs"
 tags: ["vision", "data", "services", "quickstart", "ml", "camera", "webcam"]
 no_list: true
 description: "Use Viam's machine learning capabilities to deploy a person detector ML model to your machine."
 images: ["/icons/components/camera.svg"]
 imageAlt: "Machine Learning"
+authors: []
+weight: 50
+languages: ["python", "go", "typescript", "flutter", "c++"]
+viamresources: ["camera", "mlmodel", "vision"]
+no_list: true
+level: "Beginner"
+date: "2024-07-31"
+cost: "0"
 ---
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/-sXdxbBVrso">}}
