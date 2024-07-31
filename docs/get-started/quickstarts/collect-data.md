@@ -10,7 +10,7 @@ description: "Use Viam to gather images or sensor data from your machine."
 
 Follow this guide to start collecting images or sensor data from your machine using the [data management service](/services/data/).
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/9nIu4qkosSU">}}
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/zjoa8Mdx4zM">}}
 
 ## Requirements
 

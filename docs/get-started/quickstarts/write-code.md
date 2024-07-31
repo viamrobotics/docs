@@ -10,7 +10,7 @@ description: "Write code to control your machine with Viam's SDKs in 4 minutes."
 
 Follow this guide to start writing code to perform actions with the {{< glossary_tooltip term_id="component" text="components" >}} or {{< glossary_tooltip term_id="service" text="services" >}} of a {{< glossary_tooltip term_id="machine" text="machine" >}}.
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/T9NxL-GJA9E">}}
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/tzJf0XfUCmA">}}
 
 ## Requirements
 

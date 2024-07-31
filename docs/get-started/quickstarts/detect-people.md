@@ -10,7 +10,7 @@ images: ["/icons/components/camera.svg"]
 imageAlt: "Machine Learning"
 ---
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/wci21VRYyWY">}}
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/-sXdxbBVrso">}}
 
 Follow this guide to detect people with a webcam on the Viam platform, using a [pre-trained ML model from the registry](https://app.viam.com/ml-model/ml-models-scuttle/people):
 
