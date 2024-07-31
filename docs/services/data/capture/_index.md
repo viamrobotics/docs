@@ -141,6 +141,10 @@ With micro-RDK, the `capture_dir`, `tags`, and `additional_sync_paths` attribute
 
 ![data capture configuration](/tutorials/data-management/data-management-conf.png)
 
+When your machine is capturing data, there is a **Capturing** indication in your machine's status bar.
+
+![data capture indicator on the machine's page](/tutorials/data-management/capturing.png)
+
 ## Configure data capture for individual components
 
 Once you have added the data capture service, you can specify the data you want to capture at a component level.
