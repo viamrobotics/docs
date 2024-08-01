@@ -44,6 +44,22 @@ a.footnote-ref::after {
   }
 }
 
+.navbar-brand-links {
+  display: flex;
+  margin-top: 0.5rem;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.navbar-brand.navbar-brand-link {
+  margin: 0;
+  padding: 0;
+}
+
+.td-navbar .navbar-brand svg {
+  margin: 0;
+}
+
 .td-navbar .nav-link {
   font-family: Space Mono, sans-serif;
   font-weight: 400;
