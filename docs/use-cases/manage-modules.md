@@ -120,7 +120,7 @@ At the end of your <file>meta.json</file>, add the build configuration:
 <!-- { {< tabs >}}
 { {% tab name="Single Build File" %}} -->
 
-```json {class="line-numbers linkable-line-numbers" data-line="4-7"}
+```json {class="line-numbers linkable-line-numbers" data-line="5-8"}
 {
   "module_id": "example-module",
   ...
