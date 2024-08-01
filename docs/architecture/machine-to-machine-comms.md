@@ -1,11 +1,12 @@
 ---
 title: "Machine-to-Machine Communication: End-to-End Flow"
 linkTitle: "Machine-to-Machine Communication"
-weight: 10
+weight: 60
 type: "docs"
 description: "Explanation of how a machine and its parts interact at the communication layer."
 aliases:
   - "/internals/robot-to-robot-comms/"
+  - "/internals/machine-to-machine-comms/"
 ---
 
 When building a smart machine application in the [Viam app](https://app.viam.com), a user typically begins by configuring their machine which can consist of one or more {{< glossary_tooltip term_id="part" text="parts" >}}.

@@ -117,7 +117,7 @@ For more information on the SDKs, see [Program your Machine with Viam's SDKs](/a
 #### Configure as remote part
 
 On the **CONNECT** tab, there is also a page called **Configure as remote part**.
-This page has instructions for how to configure a {{< glossary_tooltip term_id="part" text="part" >}} of your machine as a [remote part](/configure/parts/) of another machine.
+This page has instructions for how to configure a {{< glossary_tooltip term_id="part" text="part" >}} of your machine as a [remote part](/architecture/parts/) of another machine.
 
 #### API keys
 
