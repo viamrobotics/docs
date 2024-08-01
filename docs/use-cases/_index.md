@@ -6,8 +6,17 @@ type: "docs"
 no_list: true
 ---
 
-The Viam platform supports a wide variety of IoT and robotics applications.
-Click on one of the following guides that provide solutions for common tasks and workflows:
+Get started in less than 5 minutes with one of these quickstarts:
+
+{{< cards >}}
+{{% card link="/get-started/quickstarts/control-motor/" %}}
+{{% card link="/get-started/quickstarts/collect-data/" %}}
+{{% card link="/get-started/quickstarts/detect-people/" %}}
+{{% card link="/get-started/quickstarts/write-code/" %}}
+{{% card link="/get-started/quickstarts/drive-rover/" %}}
+{{< /cards >}}
+
+or click on one of the following guides that provide solutions for common tasks and workflows:
 
 {{< cards >}}
 {{% card link="/use-cases/configure/" class="fit-contain" %}}
