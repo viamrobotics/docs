@@ -13,8 +13,8 @@ If you have a rover base, you can use Viam to teleoperate it and to navigate aut
 Once you have configured your machine, you can remotely control your machine on the app's **CONTROL** tab, and set up autonomous navigation with the [navigation service](/services/navigation/).
 
 {{< table >}}
-{{% tablestep %}}
-{{<imgproc src="/use-cases/base-control.png" class="fill alignright" resize="200x" style="max-width: 200px" declaredimensions=true alt="Base control card">}}
+{{% tablestep link="/get-started/try-viam/try-viam-tutorial/#control-tab" %}}
+{{<imgproc src="/use-cases/base-control.png" class="fill alignleft" resize="200x" style="max-width: 200px" declaredimensions=true alt="Base control card">}}
 **1. Teleoperate**
 
 You can remotely control your rover from anywhere through the [Viam app](https://app.viam.com).
@@ -23,7 +23,7 @@ Then, go to the **CONTROL** tab and access a remote control card for your base, 
 You can also view live feeds from any cameras you configure.
 
 {{% /tablestep %}}
-{{% tablestep %}}
+{{% tablestep link="/sdks/"%}}
 {{<imgproc src="/services/icons/base-rc.svg" class="fill alignleft" resize="200x" style="max-width: 200px" declaredimensions=true alt="Base remote control service icon.">}}
 **2. Program to move**
 
@@ -31,8 +31,8 @@ Remotely control your rover base programmatically with a [Viam SDK](/sdks/) by m
 Or, [configure the base remote control service](/services/base-rc/) to teleoperate your base with an [input controller.](/components/input-controller/)
 
 {{% /tablestep %}}
-{{% tablestep %}}
-{{<imgproc src="/services/icons/navigation.svg" class="fill alignright" resize="200x" style="max-width: 200px" declaredimensions=true alt="Navigation icon.">}}
+{{% tablestep link="/services/navigation/"%}}
+{{<imgproc src="/services/icons/navigation.svg" class="fill alignleft" resize="200x" style="max-width: 200px" declaredimensions=true alt="Navigation icon.">}}
 **3. Prepare your base to navigate**
 
 [Configure a movement sensor](/components/movement-sensor/) as part of your machine to use navigation.
@@ -40,7 +40,7 @@ Additionally, [configure and calibrate](/services/navigation/#configure-and-cali
 Then, [configure the navigation service](/services/navigation/) on your machine.
 
 {{% /tablestep %}}
-{{% tablestep %}}
+{{% tablestep link="/services/navigation/#api" %}}
 {{<imgproc src="/use-cases/navigation-card.png" class="fill alignleft" resize="200x" style="max-width: 300px" declaredimensions=true alt="Navigation map card">}}
 **4. Navigate autonomously**
 
