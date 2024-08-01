@@ -3,7 +3,7 @@ title: "Viam Architecture"
 linkTitle: "Architecture"
 weight: 409
 type: "docs"
-description: "How the Viam platform is structured."
+description: "Overview of how a machine running on Viam is structured."
 imageAlt: "Viam architecture"
 images: ["/get-started/installation/thumbnails/configure.svg"]
 tags: ["components", "services", "communication"]
