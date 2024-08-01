@@ -5,7 +5,7 @@
 
 <nav
   class="js-navbar-scroll navbar navbar-expand navbar-dark {{ if $cover }}td-navbar-cover{{ end }} flex-column flex-md-row td-navbar">
-  <span class="navbar-brand-links"><a class="navbar-brand" href="{{ .Site.Params.url_dotcom }}">
+  <span class="navbar-brand-links"><a class="navbar-brand navbar-brand-link" href="{{ .Site.Params.url_dotcom }}">
     {{- /**/ -}}
     <span class="navbar-logo">
       {{- if .Site.Params.ui.navbar_logo -}}
@@ -16,7 +16,7 @@
     </span>
     {{- /**/ -}}
   </a>
-  <a class="navbar-brand" href="{{ .Site.BaseURL }}">
+  <a class="navbar-brand navbar-brand-link" href="{{ .Site.BaseURL }}">
     <span>
       {{- .Site.Title -}}
     </span>
