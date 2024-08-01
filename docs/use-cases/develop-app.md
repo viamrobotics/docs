@@ -1,0 +1,134 @@
+---
+title: "Write code to control your machine"
+linkTitle: "Write code to control your machine"
+weight: 10
+type: "docs"
+description: "Write code to control machines and run it on the machine or remotely."
+images: ["/platform/build.svg", "/services/ml/configure.svg"]
+tags: ["components", "configuration"]
+---
+
+Once you have configured a machine, start writing code to perform actions with the {{< glossary_tooltip term_id="component" text="components" >}} or {{< glossary_tooltip term_id="service" text="services" >}} of a {{< glossary_tooltip term_id="machine" text="machine" >}}.
+
+{{< alert title="In this page" color="tip" >}}
+
+1. [Write code to control your machine](#write-code-to-control-your-machine)
+2. [Run your code](#run-your-code)
+
+{{< /alert >}}
+
+## Write code to control your machine
+
+{{< table >}}
+{{% tablestep link="/sdks/" %}}
+**1. Write code to control your machine**
+
+Write a program to control your smart machine using the programming language of your choice.
+Viam has [SDKs](/sdks/) for Python, Golang, C++, TypeScript, and Flutter.
+
+The easiest way to get started is to copy the auto-generated boilerplate code from the **Code sample** page of the **CONNECT** tab on your machine's page in the Viam app.
+You can run this code directly on the machine or from a separate computer; it then connects to the machine using API keys.
+
+Viam's APIs are standardized across all models of a given component or service.
+This means you can test and change hardware without changing code.
+
+After configuring your resource, navigate to your machine's **CONNECT** tab.
+Click on any of the listed languages and follow the instructions to install the SDK.
+
+To install your preferred Viam SDK on your Linux or macOS development machine or [single-board computer](/components/board/), run one of the following commands in your terminal:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+If you are using the Python SDK, [set up a virtual environment](/sdks/python/python-venv/) to package the SDK inside before running your code, avoiding conflicts with other projects or your system.
+
+For macOS (both Intel `x86_64` and Apple Silicon) or Linux (`x86`, `aarch64`, `armv6l`), run the following commands:
+
+```sh {class="command-line" data-prompt="$"}
+python3 -m venv .venv
+source .venv/bin/activate
+pip install viam-sdk
+```
+
+Windows is not supported.
+If you are using Windows, use the [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) and install the Python SDK using the preceding instructions for Linux.
+For other unsupported systems, see [Installing from source](https://python.viam.dev/#installing-from-source).
+
+If you intend to use the [ML (machine learning) model service](/services/ml/), use the following command instead, which installs additional required dependencies along with the Python SDK:
+
+```sh {class="command-line" data-prompt="$"}
+pip install 'viam-sdk[mlmodel]'
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```sh {class="command-line" data-prompt="$"}
+go get go.viam.com/rdk/robot/client
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+```sh {class="command-line" data-prompt="$"}
+npm install @viamrobotics/sdk
+```
+
+{{< alert title="Info" color="info" >}}
+The TypeScript SDK currently only supports building web browser apps.
+{{< /alert >}}
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+Follow the [instructions on the GitHub repository](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+```sh {class="command-line" data-prompt="$"}
+flutter pub add viam_sdk
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Then copy and run the sample code to connect to your machine.
+
+The sample code will show you how to authenticate and connect to a machine, as well as some of the methods you can use on your configured components and services.
+{{% /tablestep %}}
+{{% tablestep link="/appendix/apis/" %}}
+**2. Use component and service APIs**
+
+Now that you have run code to control your machine, see [component APIs](/appendix/apis/#component-apis) and [service APIs](/appendix/apis/#service-apis) for a full list of available API methods.
+
+{{% /tablestep %}}
+{{< /table >}}
+
+## Run your code
+
+{{< table >}}
+{{% tablestep link="/configure/processes/" %}}
+**1. Run code**
+
+You can run the code to control your machine on any computer where you have an SDK installed.
+If the computer that `viam-server` runs on has enough compute power, you can run your code as a process on your machine whenever it boots.
+See [Processes](/configure/processes/#configure-a-process) for more information.
+
+You can also write logic to control your machine by [creating a module](/use-cases/create-module/) that incorporates custom functionality.
+For an example of this, see the [Create a Facial Verification System](/tutorials/projects/verification-system/) tutorial which runs its logic from a module.
+Running your code from a module will allow you to deploy it to one or more machines and manage configuration and versioning using the registry.
+
+{{% /tablestep %}}
+
+{{< /table >}}
+
+## Next steps
+
+To see full sample projects, that configure and control machines, check out these tutorials:
+
+{{< cards >}}
+{{% card link="/get-started/quickstarts/drive-rover/" %}}
+{{% card link="/tutorials/get-started/blink-an-led/" %}}
+{{% card link="/tutorials/services/color-detection-scuttle/" %}}
+{{< /cards >}}
