@@ -73,3 +73,46 @@ Viam supports the following model frameworks:
 - [ONNX](https://onnx.ai/): with the [`onnx_cpu` ML model service](https://github.com/viam-labs/onnx-cpu)
 
 For more information, see [Model framework support](/services/ml/upload-model/#model-framework-support).
+
+## Use machine learning with your machine
+
+<table>
+  <tr>
+    <th>{{<imgproc src="/services/ml/collect.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Collect data">}}
+      <b>1. Collect</b>
+      <p>Start by collecting data from your cameras, sensors, or any other source on your machine with the <a href="/services/data/">data management service</a>. You can <a href="/services/data/view/">view the data</a> on the <b>Data tab</b>.</p>
+    </th>
+  </tr>
+  <tr>
+    <th>{{<imgproc src="/services/ml/label.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Label data">}}
+      <b>2. Create a dataset and label</b>
+      <p>Once you have collected data, <a href="/services/data/dataset/">label your data and create a dataset</a> in preparation for training machine learning models.</p>
+    </th>
+  </tr>
+  <tr>
+    <th>{{<imgproc src="/services/ml/train.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Train models">}}
+      <b>3. Train or upload an ML model</b>
+      <p>Use your labeled data to <a href="/services/ml/train-model/">train your own model</a> for object detection or classification</a>. If you don't want to train your own model, you can also <a href="/registry/">use an ML model from the registry</a> or <a href="/services/ml/upload-model/">upload an existing model</a>.</p>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <b>4. Deploy your ML model</b>
+      <p>To use ML models with your machine, you must first deploy the model using an <a href="/services/ml/deploy/">ML model service</a>. The ML model service will run the model and allow the vision service to use it.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>{{<imgproc src="/services/ml/configure.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Configure a service">}}
+      <b>5. Configure a vision service</b>
+      <p>For object detection and classification, use the <a href="/services/vision/mlmodel/"><code>mlmodel</code> detector or the <code>mlmodel</code> classifier</a> from the <a href="/services/vision/">vision service</a>. The <code>mlmodel</code> vision service uses the ML model that you deployed with the ML model service in step 4.</p>
+      <p>If you have another use case, you can use a <a href="/registry/">modular resource</a> to create a custom ML model service or a custom vision service for your machine.</p>
+</td>
+  </tr>
+  <tr>
+    <td>{{<imgproc src="/services/ml/deploy.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Deploy your model">}}
+      <b>6. Test your detector or classifier</b>
+      <p>Follow the <a href="/services/vision/mlmodel/#test-your-detector-or-classifier">instructions to test your <code>mlmodel</code> detector or classifier</a>.</p>
+    </td>
+  </tr>
+</table>
+
