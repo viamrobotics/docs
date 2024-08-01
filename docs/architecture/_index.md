@@ -43,6 +43,7 @@ In most cases, that file contains credentials that `viam-server` uses to fetch i
     <li>You can easily share configs across multiple identical machines and update them from one place</li>
     <li>etc....TODO</li>
   </ul>
+  If your machine usually runs offline but can connect online occasionally, it can pull a configuration from the Viam app and cache it locally to use until the next time it has an internet connection.
   </p>
 </details><br>
 
@@ -102,17 +103,6 @@ If you want to add some other high-level software functionality beyond the built
 
 {{< /expand >}}
 
-## Communication flow
-
-All Viam APIs are defined with the [Protocol Buffers (protobuf)](https://protobuf.dev/) framework.
-This enables Viam to provide SDKs in a variety of different programming languages.
-
-TODO: Add a few more details (which ones?)
-
-TODO: Communication flow diagram
-
-For more details, see [Machine-to-Machine Communication](/architecture/machine-to-machine-comms/).
-
 ## Complex machine with many sub-parts
 
 In Viam, a _{{< glossary_tooltip term_id="part" text="part" >}}_ is an organizational concept consisting of one instance of `viam-server` running on a SBC or other computer, and all the hardware and software that that `viam-server` instance controls.
@@ -137,6 +127,30 @@ You want to use the Viam motion service to control the arm, and you want to use 
 You can set up a second {{< glossary_tooltip term_id="part" text="part" >}} on a desktop or laptop computer, either as a sub-part of the same machine or as a separate machine connected as a remote, and offload the heavy compute to that part.
 
 {{< /expand >}}
+
+## Communication flow
+
+TODO: Figure out which details should be in this section
+
+On boot, `viam-server` establishes a {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}} connection with the Viam app.
+It pulls its configuration from the app over the internet, caches it locally, and initializes all components and services based on that configuration.
+
+If sub-parts or remote parts are configured, communications are established between the `viam-server` instances on each of them.
+
+If you have client code running on a separate computer, that code sends API requests to `viam-server` over wifi using gRPC.
+If a built-in service is communicating with a component, for example when the vision service requests an image from a camera, `viam-server` handles that request.
+
+{{% alert title="Info" color="info" %}}
+All Viam APIs are defined with the [Protocol Buffers (protobuf)](https://protobuf.dev/) framework.
+This is what enables Viam to provide SDKs in a variety of different programming languages.
+{{% /alert %}}
+
+When you control your machine or view its camera streams or sensor outputs from the Viam app **CONTROL** tab, those connections are happening over WebRTC.
+The Viam app hits the same API endpoints as your SDK client code, with `viam-server` handling requests.
+
+TODO: Communication flow diagram
+
+For more details, see [Machine-to-Machine Communication](/architecture/machine-to-machine-comms/).
 
 ## Data management flow
 
