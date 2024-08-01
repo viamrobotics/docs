@@ -33,6 +33,10 @@ Most machines with a motor need at least the following hardware:
 
 [^dmcboard]: The `DMC4000` model does not require a board.
 
+{{< cards >}}
+{{< card link="/get-started/quickstarts/control-motor/" class="green">}}
+{{< /cards >}}
+
 ## Related services
 
 {{< cards >}}

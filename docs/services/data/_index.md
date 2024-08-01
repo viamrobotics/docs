@@ -26,7 +26,15 @@ Once collected, you can configure which data to securely sync to the cloud, and 
 
 ![Data is captured on the machine, uploaded to the cloud, and then deleted off local storage.](/services/data/data_management.png)
 
-Viam's data management features can be broken down into on-device and cloud data capabilities:
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/J0NNiQD0ocQ">}}
+
+Get started now with a quickstart guide:
+
+{{< cards >}}
+{{< card link="/get-started/quickstarts/collect-data/" class="green">}}
+{{< /cards >}}
+
+Or learn more about Viam's data management features, which can be broken down into on-device and cloud data capabilities:
 
 ## On-device data management
 
@@ -86,14 +94,6 @@ Export data with the Viam CLI and download your data for offline access.
 {{% /manualcard %}}
 {{< /cards >}}
 
-## Get started
-
-### Collect your data and send to the Viam platform
-
-You must [configure data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/) with the data management service to be able to view, label, and export data.
-
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/J0NNiQD0ocQ">}}
-
 #### Used with
 
 You can configure the frequency of data capture individually for each supported component:
@@ -110,12 +110,12 @@ You can configure the frequency of data capture individually for each supported 
 {{< relatedcard link="/components/servo/">}}
 {{< /cards >}}
 
-### Query your data
+## Query your data
 
 Once you have [synced](/services/data/cloud-sync/), you can query the data you've collected in multiple ways, including through the [data client API](/appendix/apis/data-client/) or [inside the Viam app](/use-cases/sensor-data-query/).
-For _tabular_ sensor data, you can run {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries against your synced data from the [Query subtab](https://app.viam.com/data/query) of the **Data** tab in the Viam app.
+For _tabular_ sensor data, you can [run {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries](/use-cases/sensor-data-query-sdk/) against your synced data from the [Query subtab](https://app.viam.com/data/query) of the **Data** tab in the Viam app.
 
-### Permissions
+## Permissions
 
 Data management permissions vary between owners and operators.
 For more information about who can do what with data, see [Data Permissions](/cloud/rbac/#data-and-machine-learning).

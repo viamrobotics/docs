@@ -79,11 +79,11 @@ Click **Train model** and follow the prompts.
 **2. Deploy your ML model**
 
 On the **Configure** page add the built-in [ML model service](/services/ml/deploy/) and select your ML model.
-The service will to deploy and run the model.
+The service will deploy and run the model.
 Once you've added the ML model service to your machine, choose your newly-trained model from the dropdown menu in the ML model service's configuration card.
 
 {{% /tablestep %}}
-{{% tablestep link="/services/vision/" %}}
+{{% tablestep link="/services/vision/mlmodel/" %}}
 {{<imgproc src="/services/icons/vision.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Configure a service">}}
 **3. Configure an <code>mlmodel</code> vision service**
 

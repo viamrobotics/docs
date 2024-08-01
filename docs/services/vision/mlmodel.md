@@ -16,26 +16,30 @@ aliases:
 
 _Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#vision-service)_
 
-The `mlmodel` vision service model is a machine learning detector or classifier that draws bounding boxes or returns class labels according to the specified TensorFlow Lite, TensorFlow, PyTorch, or ONNX model file available on the machine’s hard drive.
-To create a `mlmodel` detector or classifier, you need an [ML model service with a suitable model](/services/ml/).
+The `mlmodel` {{< glossary_tooltip term_id="model" text="model" >}} of the Viam vision service supports machine learning detectors and classifiers that draw bounding boxes or return class labels based on a deployed TensorFlow Lite, TensorFlow, PyTorch, or ONNX ML model.
+
+## Prerequisites
+
 Before configuring your `mlmodel` detector or classifier, you need to:
 
 {{< cards >}}
 {{% manualcard %}}
 
-<h4>Train or upload an ML model</h4>
+<h4>1. Train or upload an ML model</h4>
 
 You can [add an existing model](/services/ml/upload-model/) or [train your own models](/services/ml/train-model/) for object detection and classification using data from the [data management service](/services/data/).
 
 {{% /manualcard %}}
 {{% manualcard %}}
 
-<h4>Deploy your model</h4>
+<h4>2. Deploy your ML model</h4>
 
-To use ML models with your machine, use a suitable [ML model service](/services/ml/) to deploy and run the model.
+To use ML models with your machine, use a suitable [ML model service](/services/ml/deploy/) to deploy and run the model.
 
 {{% /manualcard %}}
 {{< /cards >}}
+
+## Configure your detector or classifier
 
 Once you have deployed your ML model, configure your `mlmodel` detector or classifier:
 
@@ -128,7 +132,7 @@ The following attributes are available for an `mlmodel` detector or classifier:
 | `default_minimum_confidence` | number | Optional | Set this to apply a minimum confidence score filter on all outputs. If left blank, no confidence filter is applied. <br> Example: `0.81` |
 | `label_confidences` | object | Optional | A map that filters on label names, applying a specified minimum confidence to a specific label. `label_confidences` overwrites `default_minimum_confidence`. If you set `label_confidences`, then `default_minimum_confidence` does not apply (the service will only use `label_confidences`). If you leave this attribute blank, no filtering on labels is applied. <br> Example: `{"DOG": 0.8, "CARROT": 0.3}` |
 
-## Tensor names
+### Tensor names
 
 Both the `mlmodel` detector and classifier require that the input and output tensors defined by your ML model are named according to the following:
 
@@ -142,7 +146,7 @@ Both the `mlmodel` detector and classifier require that the input and output ten
 If you [trained your ML model using the Viam app](/services/ml/train-model/), your `mlmodel` tensors are already named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
 However, if you [uploaded your own ML model](/services/ml/upload-model/), or are using one from the [Viam registry](https://app.viam.com/registry), you may need to remap your tensor names to meet this requirement, and should follow the instructions to [remap tensor names](#remap-tensor-names).
 
-### Remap tensor names
+#### Remap tensor names
 
 If you need to remap the tensor names defined by your ML model to meet the tensor name requirements of the `mlmodel` detector or classifier, you can use the `remap_input_names` and `remap_output_names` attributes:
 

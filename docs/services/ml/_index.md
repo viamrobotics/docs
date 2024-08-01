@@ -25,16 +25,28 @@ Common use cases include:
 
 For other use cases, consider [creating custom functionality with a module](/use-cases/create-module/).
 
-Viam provides two services that enable machine learning capabilities: the [ML model](/services/ml/deploy/) service and the [Computer Vision](/services/vision/) service.
+Viam provides two services that together enable machine learning capabilities: the [ML model](/services/ml/deploy/) service and the [Computer Vision](/services/vision/) service.
 
 The ML model service deploys and runs a machine learning model, such as a TensorFlow or ONNX model, on your machine and makes its output accessible to other services.
 For example, the [Computer Vision](/services/vision/mlmodel/) `mlmodel` service, which can detect or classify objects, is built to work with the inferences from an ML model service.
 As a detector, the service uses these inferences to interpret image data from images on your computer or a [camera](/components/camera/), drawing bounding boxes around objects.
 As a classifier, the service returns class labels and confidence score based off the [inferences](/services/ml/deploy/#infer) the underlying ML model makes from image data.
 
-See [Use machine learning with your machine](#use-machine-learning-with-your-machine) for step by step instructions.
+## Use machine learning with your machine
 
-## Example tutorials
+### Use computer vision
+
+To collect images and train your own model:
+
+1. [Gather images from your machine.](/get-started/quickstarts/collect-data/)
+2. [Label a dataset.](/use-cases/deploy-ml/#create-a-dataset-and-label-data)
+3. [Train a model on your data and deploy the model on your machine.](/use-cases/deploy-ml/#train-and-test-a-machine-learning-ml-model)
+
+If you already have image data, start at step 2.
+
+To use an existing model, [deploy it to your machine with the ML model service](/services/ml/deploy/) and [use it with a detector or classifier](/services/vision/mlmodel/).
+
+### Example tutorials
 
 {{< cards >}}
 {{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}

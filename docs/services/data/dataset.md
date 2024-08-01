@@ -19,6 +19,10 @@ no_service: true
 
 To manage your data you can use labels and datasets.
 
+{{< cards >}}
+{{< card link="/use-cases/deploy-ml/" customDescription="Abbreviated guide to training a computer vision ML model with your image data">}}
+{{< /cards >}}
+
 ## Label data
 
 To label data, go to the [**DATA** tab](https://app.viam.com/data/view) in the Viam app.

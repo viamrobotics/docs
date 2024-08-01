@@ -18,6 +18,12 @@ no_service: true
 
 The data management service captures data from one or more components.
 
+Get started with a quickstart guide or keep reading for more details.
+
+{{< cards >}}
+{{< card link="/get-started/quickstarts/collect-data/" class="green">}}
+{{< /cards >}}
+
 {{< tabs >}}
 {{% tab name="RDK" %}}
 
@@ -536,6 +542,10 @@ The following example captures data from the `ReadImage` method of a camera:
 ```
 
 {{% /expand%}}
+
+## Capture data selectively with filtering
+
+See the [Use filtering to collect and sync only certain images](/use-cases/image-data/#use-filtering-to-collect-and-sync-only-certain-images) guide.
 
 ## Automatic data deletion
 
