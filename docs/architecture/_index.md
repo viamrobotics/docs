@@ -20,7 +20,7 @@ TODO: replace the above diagram with something similar but that more clearly sho
 {{<imgproc src="/architecture/simple-machine.png" class="alignright" resize="x1100" declaredimensions=true alt="" style="max-width:400px" >}}
 </p>
 
-Imagine you have a very simple device consisting of a temperature sensor connected to a single-board computer (SBC).
+Imagine you have a simple device consisting of a temperature sensor connected to a single-board computer (SBC).
 You want data from the sensor to be captured at regular intervals, and synced to the cloud.
 To set this up, you would do the following:
 
@@ -121,7 +121,7 @@ Many simple {{< glossary_tooltip term_id="machine" text="machines" >}} consist o
 If you have a more complex situation with multiple computers and associated hardware working together, you have two options for organization:
 
 - One complex {{< glossary_tooltip term_id="machine" text="machine" >}} consisting of multiple parts, working together.
-- Multiple individual machines, linked by a {{< glossary_tooltip term_id="remote part" text="remote" >}} connection.
+- Multiple individual machines, linked by a {{< glossary_tooltip term_id="remote-part" text="remote" >}} connection.
 
 These two options are very similar; in both cases, the parts communicate with each other securely using gRPC/{{< glossary_tooltip term_id="webrtc" text="WebRTC" >}}.
 See [Parts, Sub-parts and Remotes](/architecture/parts/) for more details.
