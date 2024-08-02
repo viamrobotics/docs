@@ -37,7 +37,7 @@ As you configure your machine, you can test each resource to confirm it is worki
 
 {{<gif webm_src="/test.webm" mp4_src="/test.mp4" alt="Test a camera stream" max-width="700px" class="aligncenter">}}
 
-Viam is built to be extensible, allowing you to create your own resources for custom hardware or software and deploy your code using modules through the Viam Registry.
+Viam is built to be extensible, allowing you to create your own resources for any hardware or software and deploy your code using modules through the Viam Registry.
 
 On top of configuration, the Viam app also provides several higher-level functionalities for your machine, such as:
 
