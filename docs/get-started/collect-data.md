@@ -21,7 +21,7 @@ aliases:
 This quickstart is the final part of a series.
 If you haven't read through [Learn Viam](/get-started/), [driven a rover](/get-started/drive-rover/), [controlled a motor](/get-started/control-motor/), and [detected people](/get-started/detect-people/) we recommend you do so before continuing.
 
-In this guide you'll use machine learning to detect people in a camera stream.
+In this guide you'll capture and sync sensor or image data from a machine.
 
 {{< alert title="You will learn" color="tip" >}}
 

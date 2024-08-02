@@ -27,10 +27,10 @@ Viam is a software platform that makes it easy to work with hardware and softwar
 </div>
 
 At the core of Viam is the open-source `viam-server` executable which runs on a device and manages hardware and software for a machine.
-To use Viam with a machine, you create a configuration that contains components and services and you can choosen from a wide variety of available models for different resources.
-For example, if you have a pet-feeding machine you might install `viam-server` on a Raspberry Pi and create a machine configuration using a camera model and a servo model for the hardware you are using.
+To use Viam with a machine, you create a configuration that contains components and services you choose from a wide variety of available models for different resources.
+For example, if you are building a pet-feeding machine you might install `viam-server` on a Raspberry Pi and create a machine configuration using a camera model and a servo model for the hardware you are using.
 
-The Viam App provides the user interface for configuring your machine.
+The Viam app provides the user interface for configuring your machine.
 It allows you to configure builtin drivers or drivers from the Viam Registry.
 `viam-server` then manages and runs the drivers for the configured resources.
 As you configure your machine, you can test each resource to confirm it is working as expected.
