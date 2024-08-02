@@ -5,7 +5,7 @@ type: "docs"
 images: ["/icons/components/motor.svg"]
 description: "Use Viam to control a motor's speed and direction in just a few steps."
 authors: []
-weight: 30
+weight: 20
 languages: ["python", "go", "typescript", "flutter", "c++"]
 viamresources: ["motor"]
 no_list: true
@@ -13,6 +13,8 @@ level: "Beginner"
 date: "2024-07-31"
 cost: "0"
 resource: "quickstart"
+aliases:
+  - /get-started/quickstarts/control-motor/
 ---
 
 You can use Viam to control a motor's speed and direction directly from [the Viam app](https://app.viam.com/), [the mobile app](/fleet/#the-viam-mobile-app), or [programmatically](/sdks/).

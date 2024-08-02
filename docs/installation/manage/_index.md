@@ -5,16 +5,17 @@ weight: 30
 no_list: true
 type: docs
 draft: false
-images: ["/get-started/installation/thumbnails/manage.png"]
+images: ["/installation/thumbnails/manage.png"]
 imageAlt: "Manage viam-server"
 description: "Control and troubleshoot viam-server."
 aliases:
   - /installation/update/
   - /installation/manage/
+  - /get-started/installation/manage/
 ---
 
-Once you've [installed `viam-server`](/get-started/installation/), you can chose to run it as a system service or directly on the command line.
-Running as a system service enables you to configure `viam-server` to start automatically when your system boots, and is the [default installation option](/get-started/installation/#install-viam-server) on Linux.
+Once you've [installed `viam-server`](/installation/), you can chose to run it as a system service or directly on the command line.
+Running as a system service enables you to configure `viam-server` to start automatically when your system boots, and is the [default installation option](/installation/#install-viam-server) on Linux.
 Running on the command line is suitable for local development.
 
 ## Run `viam-server`
@@ -26,7 +27,7 @@ Select the tab for your platform:
 
 ### Run as a system service
 
-After [installation](/get-started/installation/#install-viam-server), the `viam-server` [AppImage](https://appimage.org/) binary will be located at <file>/usr/local/bin/viam-server</file>, and a `systemd` service file will be placed at <file>/etc/systemd/system/viam-server.service</file>.
+After [installation](/installation/#install-viam-server), the `viam-server` [AppImage](https://appimage.org/) binary will be located at <file>/usr/local/bin/viam-server</file>, and a `systemd` service file will be placed at <file>/etc/systemd/system/viam-server.service</file>.
 By default, `viam-server` is configured to start when the machine boots.
 
 Running `viam-server` as a system service is the recommended method for Linux.
@@ -79,7 +80,7 @@ Run the following on the command line to start `viam-server`, providing the path
 sudo viam-server -config /path/to/my/config.json
 ```
 
-If you followed the [Installation Guide](/get-started/installation/#install-viam-server), your machine's configuration file is available at <file>/etc/viam.json</file>.
+If you followed the [Installation Guide](/installation/#install-viam-server), your machine's configuration file is available at <file>/etc/viam.json</file>.
 You can provide this path in the above command, or move the configuration file to a desired location and change the path in this command accordingly.
 If you don't yet have a configuration file, you can [build a new configuration file](/internals/local-configuration-file/).
 
@@ -96,7 +97,7 @@ Press **Ctrl + C** on your keyboard within the terminal session where you are ru
 
 ### Run from the command line
 
-After [installation](/get-started/installation/#install-viam-server), `viam-server` can be run directly on the command line.
+After [installation](/installation/#install-viam-server), `viam-server` can be run directly on the command line.
 
 Running `viam-server` on the command line is the recommended method for macOS.
 
@@ -110,7 +111,7 @@ Run the following on the command line to start `viam-server`, providing the path
 viam-server -config /path/to/my/config.json
 ```
 
-If you followed the [Installation Guide](/get-started/installation/#install-viam-server), your machine's configuration file is available in your <file>~/Downloads/</file> directory, named similarly to <file>viam-machinename-main.json</file>.
+If you followed the [Installation Guide](/installation/#install-viam-server), your machine's configuration file is available in your <file>~/Downloads/</file> directory, named similarly to <file>viam-machinename-main.json</file>.
 You can provide this path in the above command, or move the configuration file to a desired location and change the path in this command accordingly.
 If you don't yet have a configuration file, you can use the example configuration file provided at <file>/opt/homebrew/etc/viam.json</file> or you can [build a new configuration file](/internals/local-configuration-file/).
 
@@ -125,7 +126,7 @@ Type **Ctrl + C** on your keyboard within the terminal session where you are run
 Installing `viam-server` as a system service is not recommended for most use cases on macOS.
 However, if you are looking to create a machine that runs on macOS and you want it to run `viam-server` automatically when your macOS system boots, then you will need to run `viam-server` as a service.
 
-Once you have [installed `viam-server`](/get-started/installation/#install-viam-server) on your macOS computer, use the following commands to control the service.
+Once you have [installed `viam-server`](/installation/#install-viam-server) on your macOS computer, use the following commands to control the service.
 These commands require that you store your configuration file at <file>/opt/homebrew/etc/viam.json</file>.
 
 #### Start

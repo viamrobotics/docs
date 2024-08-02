@@ -14,7 +14,7 @@ draft: true
 
 {{% alert title="REQUIREMENTS" color="note" %}}
 
-Follow the [setup guide](/get-started/prepare/board1-setup) to prepare your <model-name> to run `viam-server` before you configure your <model-name> board.
+Follow the [setup guide](/installation/prepare/board1-setup) to prepare your <model-name> to run `viam-server` before you configure your <model-name> board.
 
 {{% /alert %}}
 

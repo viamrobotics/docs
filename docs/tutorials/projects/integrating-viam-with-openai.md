@@ -66,7 +66,7 @@ This tutorial will show you how to use the Viam platform to create an AI-integra
 
 ## Hardware list
 
-- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with [`viam-server` installed](/get-started/prepare/rpi-setup/).
+- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with [`viam-server` installed](/installation/prepare/rpi-setup/).
 - [Viam rover](https://www.viam.com/resources/rover) (note: this tutorial can also be adapted to work with any other configured rover that has a webcam and a microphone)
 - [270 degree servo](https://www.amazon.com/ANNIMOS-Digital-Waterproof-DS3218MG-Control/dp/B076CNKQX4/)
 - [USB powered speaker](https://www.amazon.com/Bluetooth-Portable-Wireless-Speakers-Playtime/dp/B07PLFCP3W/) (with included 3.5mm audio cable and USB power cable)
@@ -76,13 +76,13 @@ This tutorial will show you how to use the Viam platform to create an AI-integra
 ## Rover setup
 
 This tutorial assumes that you have already set up your Viam Rover.
-If not, first follow the Viam Rover [setup instructions](/get-started/try-viam/rover-resources/rover-tutorial/).
+If not, first follow the Viam Rover [setup instructions](/appendix/try-viam/rover-resources/rover-tutorial/).
 
 If you are not using a Viam Rover, [add a new machine](/cloud/machines/#add-a-new-machine) in the [Viam app](https://app.viam.com).
 Then follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on the computer you're using for your project and connect to the Viam app.
 Wait until your machine has successfully connected.
 Then configure your machine with the [appropriate components](/components/).
-If you are using a different rover, the [Viam Rover setup instructions](/get-started/try-viam/rover-resources/rover-tutorial-fragments/) may still help you configure your robot.
+If you are using a different rover, the [Viam Rover setup instructions](/appendix/try-viam/rover-resources/rover-tutorial-fragments/) may still help you configure your robot.
 
 ### 1. Connect the servo
 

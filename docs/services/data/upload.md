@@ -35,7 +35,7 @@ If you do not want the data deleted from your machine, copy the data to a new fo
 
 Typically, you configure the data service to sync data from your machine at regular intervals indefinitely.
 However, if you already have a cache of data you'd like to use with Viam, you can temporarily modify your configuration to sync a batch of data and then revert your config changes after the data is uploaded.
-The following steps assume you already have a machine with [`viam-server` installed and connected to the Viam app](/get-started/installation/):
+The following steps assume you already have a machine with [`viam-server` installed and connected to the Viam app](/installation/):
 
 1. Put the data you want to sync in a directory on your machine.
    All of the data in the folder will be synced, so be sure that you want to upload all of the contents of the folder.

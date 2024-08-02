@@ -4,18 +4,19 @@ linkTitle: "Orange Pi 3 LTS Setup"
 weight: 16
 type: "docs"
 description: "Image an Orange Pi 3 LTS to prepare it for viam-server installation."
-images: ["/get-started/installation/thumbnails/orange-pi-3-LTS.png"]
+images: ["/installation/thumbnails/orange-pi-3-LTS.png"]
 imageAlt: "Orange Pi 3 LTS"
 no_list: true
 aliases:
   - /get-started/installation/prepare/orange-pi-3-lts/
+  - /get-started/prepare/orange-pi-3-lts/
 # SME: Olivia Miller
 ---
 
 The [Orange Pi 3 LTS](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Zero-2.html) is a highly compact, open-source single-board computer equipped with dual-band WiFi and Bluetooth 5.0.
 It can run Ubuntu, Android10, or Debian distributions.
 
-{{<imgproc src="get-started/installation/thumbnails/orange-pi-3-LTS.png" alt="The Orange Pi 3 LTS single-board computer." resize="350x" declaredimensions=true >}}
+{{<imgproc src="installation/thumbnails/orange-pi-3-LTS.png" alt="The Orange Pi 3 LTS single-board computer." resize="350x" declaredimensions=true >}}
 
 Follow this guide to set up your Orange Pi 3 LTS to run `viam-server`.
 

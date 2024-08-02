@@ -15,7 +15,7 @@ This document explains how to establish secure connections between machines.
 
 ### Machine parts
 
-Machines are organized into _parts_, where each part represents a computer (a single-board computer, desktop, laptop, or other computer) running [`viam-server`](/get-started/installation/), the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
+Machines are organized into _parts_, where each part represents a computer (a single-board computer, desktop, laptop, or other computer) running [`viam-server`](/installation/), the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
 
 Every smart machine has a main part which is automatically created when you create the machine.
 Multi-part machines also have one or more _sub-parts_ representing additional computers running `viam-server`.

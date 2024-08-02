@@ -4,7 +4,7 @@ linkTitle: "Micro-RDK Development Setup"
 weight: 50
 no_list: true
 type: docs
-images: ["/get-started/installation/thumbnails/esp32-espressif.png"]
+images: ["/installation/thumbnails/esp32-espressif.png"]
 imageAlt: "E S P 32 - espressif"
 description: "Set up the Espressif ESP32 for development with the micro-RDK."
 # SMEs: Nicolas M., Gautham V., Andrew M.
@@ -12,6 +12,7 @@ aliases:
   - "/installation/prepare/microcontrollers/development-setup/"
   - /get-started/installation/prepare/microcontrollers/development-setup/
   - /get-started/installation/microcontrollers/development-setup/
+  - /get-started/installation/micro-rdk-dev/
 ---
 
 Follow these steps to install and build the micro-RDK on your ESP32 for development:

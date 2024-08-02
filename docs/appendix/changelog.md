@@ -149,7 +149,7 @@ You can now [upload your own ML model](/services/ml/upload-model/) using any of 
 
 {{% changelog date="2024-03-01" color="added" title="Ultrasonic sensor for micro-RDK" %}}
 
-You can now use the [ultrasonic sensor component](/components/sensor/ultrasonic-micro-rdk/) with the [micro-RDK](/get-started/installation/#install-micro-rdk) to integrate an [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running the micro-RDK.
+You can now use the [ultrasonic sensor component](/components/sensor/ultrasonic-micro-rdk/) with the [micro-RDK](/installation/#install-micro-rdk) to integrate an [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running the micro-RDK.
 
 {{% /changelog %}}
 
@@ -951,7 +951,7 @@ When adding [frames](/services/frame-system/) to your machine's config in the Vi
 {{% changelog date="2023-02-28" color="added" title="Support for microcontrollers" %}}
 
 Micro-RDK is a lightweight version of the RDK that can run on an ESP32.
-Find more information in the [micro-RDK documentation](/get-started/installation/#install-micro-rdk).
+Find more information in the [micro-RDK documentation](/installation/#install-micro-rdk).
 
 {{% /changelog %}}
 

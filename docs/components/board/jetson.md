@@ -15,7 +15,7 @@ usage: 999999
 
 {{% alert title="REQUIREMENTS" color="note" %}}
 
-Follow one of our Jetson [setup guides](/get-started/installation/) to prepare your board for running `viam-server` before configuring a `jetson` board.
+Follow one of our Jetson [setup guides](/installation/) to prepare your board for running `viam-server` before configuring a `jetson` board.
 
 If you have a CSI camera, follow [these instructions](https://github.com/viamrobotics/csi-camera) to configure it using the `viam:camera:csi` model.
 

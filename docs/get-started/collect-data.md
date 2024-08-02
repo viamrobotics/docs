@@ -6,7 +6,7 @@ images: ["/platform/data.svg"]
 description: "Use Viam to gather images or sensor data from your machine."
 imageAlt: "The data icon"
 authors: []
-weight: 20
+weight: 30
 languages: []
 viamresources: ["data_manager", "sensor"]
 no_list: true
@@ -14,6 +14,8 @@ level: "Beginner"
 date: "2024-07-31"
 cost: "0"
 resource: "quickstart"
+aliases:
+  - /get-started/quickstarts/collect-data/
 ---
 
 Follow this guide to start collecting images or sensor data from your machine using the [data management service](/services/data/).
@@ -140,7 +142,7 @@ Add a board component to your config:
 
 {{% alert title="Important" color="note" %}}
 If your sensor uses I<sup>2</sup>C, SPI, or serial port communication, you need to enable that type of communication in your board's settings.
-For example, if you are using a Raspberry Pi, SSH to it and [enable serial communication in `raspi-config`](/get-started/prepare/rpi-setup/#enable-communication-protocols).
+For example, if you are using a Raspberry Pi, SSH to it and [enable serial communication in `raspi-config`](/installation/prepare/rpi-setup/#enable-communication-protocols).
 {{% /alert %}}
 
 {{< /expand >}}
@@ -168,7 +170,7 @@ For example, if you are using a Raspberry Pi, SSH to it and [enable serial commu
 
 {{% alert title="Important" color="note" %}}
 If your sensor uses I<sup>2</sup>C, SPI, or serial port communication, you need to enable that type of communication in your board's settings.
-For example, if you are using a Raspberry Pi, SSH to it and [enable serial communication in `raspi-config`](/get-started/prepare/rpi-setup/#enable-communication-protocols).
+For example, if you are using a Raspberry Pi, SSH to it and [enable serial communication in `raspi-config`](/installation/prepare/rpi-setup/#enable-communication-protocols).
 {{% /alert %}}
 
 {{< /expand >}}

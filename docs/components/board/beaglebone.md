@@ -14,7 +14,7 @@ component_description: "BeagleBoard’s BeagleBone AI-64."
 
 {{% alert title="REQUIREMENTS" color="note" %}}
 
-Follow the [setup guide](/get-started/prepare/beaglebone-setup/) to prepare your BeagleBone for running `viam-server` before configuring a `beaglebone` board.
+Follow the [setup guide](/installation/prepare/beaglebone-setup/) to prepare your BeagleBone for running `viam-server` before configuring a `beaglebone` board.
 
 {{% /alert %}}
 

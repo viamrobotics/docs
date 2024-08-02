@@ -4,17 +4,18 @@ linkTitle: "Odroid-C4 Setup"
 weight: 16
 type: "docs"
 description: "Image a Odroid-C4 to prepare it for viam-server installation."
-images: ["/get-started/installation/thumbnails/odroid-c4.png"]
+images: ["/installation/thumbnails/odroid-c4.png"]
 imageAlt: "Odroid-C4"
 no_list: true
 aliases:
   - /get-started/installation/prepare/odroid-c4-setup/
+  - /get-started/prepare/odroid-c4-setup/
 # SME: Olivia Miller
 ---
 
 The [Odroid-C4](https://wiki.odroid.com/odroid-c4/odroid-c4#odroid-c4) is a single-board computer that features an Amlogic S905x3 CPU and runs a variety of Linux or Android distributions.
 
-{{<imgproc src="get-started/installation/thumbnails/odroid-c4.png" alt="The Odroid-C4 single-board computer." resize="350x" declaredimensions=true >}}
+{{<imgproc src="installation/thumbnails/odroid-c4.png" alt="The Odroid-C4 single-board computer." resize="350x" declaredimensions=true >}}
 
 Follow this guide to set up your Odroid-C4.
 

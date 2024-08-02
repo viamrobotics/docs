@@ -9,15 +9,18 @@ videos:
 videoAlt: "A Viam Rover driving in a square"
 images: ["/tutorials/try-viam-sdk/image1.gif"]
 aliases:
-  - /tutorials/get-started/try-viam-sdk
+  - /tutorials/appendix/try-viam-sdk
   - /tutorials/viam-rover/try-viam-sdk
   - /tutorials/viam-rover/try-viam-sdk
+  - "/try-viam/try-viam-tutorial/"
+  - "/get-started/try-viam/try-viam-tutorial/"
+  - "/get-started/quickstarts/drive-rover/"
 tags: ["base", "viam rover", "try viam", "sdk", "python", "flutter"]
 level: "Beginner"
 date: "2022-12-08"
 # updated: ""
 authors: []
-weight: 80
+weight: 10
 languages: ["python", "go", "typescript", "flutter", "c++"]
 viamresources: ["base"]
 no_list: true
@@ -37,7 +40,7 @@ You don't need to buy or own any hardware to complete this tutorial.
 You only need the following:
 
 - A computer that can run SDK code.
-- A [rented Viam Rover](https://app.viam.com/try), [your own Viam Rover](/get-started/try-viam/rover-resources/), or another [mobile robot](/components/base/).
+- A [rented Viam Rover](https://app.viam.com/try), [your own Viam Rover](/appendix/try-viam/rover-resources/), or another [mobile robot](/components/base/).
   You can use [Try Viam](https://app.viam.com/try) to rent a rover online at no cost which is already configured with all the components you need.
   If you have your own rover on hand, whether it's a [Viam rover](https://www.viam.com/resources/rover) or not, this tutorial works for any wheeled robot that can be configured as a [base component](/components/base/wheeled/).
 
@@ -53,7 +56,7 @@ Go to [Try Viam](https://app.viam.com/try) and rent a rover.
 If a rover is available, the rover will take up to 30 seconds to be configured for you.
 
 {{< alert title="Tip" color="tip" >}}
-If you are running out of time during your rental, you can [extend your rover rental](/get-started/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
+If you are running out of time during your rental, you can [extend your rover rental](/appendix/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
 {{< /alert >}}
 
 {{< /expand >}}
@@ -62,14 +65,14 @@ If you are running out of time during your rental, you can [extend your rover re
 {{% tab name="Owned Viam Rover" %}}
 
 {{% alert title="Important" color="note" %}}
-If you are using your own robot for this tutorial instead of [renting one](https://app.viam.com/try), be sure to [install `viam-server`](/get-started/installation/#install-viam-server) on it and [configure](/configure/) its hardware before proceeding with this tutorial.
+If you are using your own robot for this tutorial instead of [renting one](https://app.viam.com/try), be sure to [install `viam-server`](/installation/#install-viam-server) on it and [configure](/configure/) its hardware before proceeding with this tutorial.
 {{% /alert %}}
 
 {{% /tab %}}
 {{% tab name="Other Rover" %}}
 
 {{% alert title="Important" color="note" %}}
-If you are using your own robot for this tutorial instead of [renting one](https://app.viam.com/try), be sure to [install `viam-server`](/get-started/installation/#install-viam-server) on it and [configure](/configure/) its hardware before proceeding with this tutorial.
+If you are using your own robot for this tutorial instead of [renting one](https://app.viam.com/try), be sure to [install `viam-server`](/installation/#install-viam-server) on it and [configure](/configure/) its hardware before proceeding with this tutorial.
 {{% /alert %}}
 
 {{% /tab %}}

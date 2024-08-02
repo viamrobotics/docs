@@ -41,7 +41,7 @@ Then, you'll write code to control the LED using the Viam [software development 
 You will use the following hardware for this tutorial:
 
 - [Raspberry Pi](https://a.co/d/5Tn67G3)
-  - Refer to the [Viam Raspberry Pi Setup Guide](/get-started/prepare/rpi-setup/) to set up your Pi.
+  - Refer to the [Viam Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to set up your Pi.
 - [A solderless breadboard](https://www.amazon.com/dp/B0135IQ0ZC)
 - Jumper wires
 - [Resistor pack](https://amzn.to/2Dmainw)
@@ -52,7 +52,7 @@ You will use the following hardware for this tutorial:
 
 Before you build your circuit, you need to set up the operating system on your Raspberry Pi and install `viam-server` on the Pi:
 
-Follow the [Raspberry Pi Setup Guide](/get-started/prepare/rpi-setup/) to set up the operating system.
+Follow the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to set up the operating system.
 
 {{% snippet "setup.md" %}}
 
@@ -91,8 +91,8 @@ For example, "GPIO 22".
 For example, board pin 38 is the same pin as GPIO pin 20, but when configuring your machine with Viam, you should refer to it as pin `38`.
 
 {{< alert title="Tip" color="tip" >}}
-To make it easier for you to see which pin is which, you can print out [this Raspberry Pi Leaf](/get-started/try-viam/viam-raspberry-leaf-8.5x11.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
-If you use A4 paper, use this [this Raspberry Pi Leaf](/get-started/try-viam/viam-raspberry-leaf-A4.pdf) instead.
+To make it easier for you to see which pin is which, you can print out [this Raspberry Pi Leaf](/appendix/try-viam/viam-raspberry-leaf-8.5x11.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
+If you use A4 paper, use this [this Raspberry Pi Leaf](/appendix/try-viam/viam-raspberry-leaf-A4.pdf) instead.
 
 If you are having trouble punching the pins through, you can pre-punch the pin holes with a pen.
 Only attach the paper when the Pi is unplugged.

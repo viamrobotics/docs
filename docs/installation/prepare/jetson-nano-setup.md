@@ -3,13 +3,14 @@ title: "NVIDIA Jetson Nano and Orin Nano Setup Guide"
 linkTitle: "Jetson Nano and Orin Nano Setup"
 weight: 20
 type: "docs"
-images: ["/get-started/installation/thumbnails/jetson-nano-dev-kit.png"]
+images: ["/installation/thumbnails/jetson-nano-dev-kit.png"]
 imageAlt: "Jetson Nano"
 description: "Prepare your Jetson Nano or Jetson Orin Nano for viam-server installation."
 no_list: true
 aliases:
   - /installation/prepare/jetson-nano-setup/
   - /get-started/installation/prepare/jetson-nano-setup/
+  - /get-started/prepare/jetson-nano-setup/
 # SMEs: Pete Garafano
 ---
 
@@ -17,8 +18,8 @@ The [Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano) and [Jetson
 Follow this guide to set up the [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) or the [Jetson Orin Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-agx-orin-developer-kit) to prepare your NVIDIA Jetson Nano for `viam-server` installation.
 
 <div class="td-max-width-on-larger-screens text-center">
-{{<imgproc src="get-started/installation/thumbnails/jetson-nano-dev-kit.png" resize="200x" alt="The front of the NVIDIA Jetson Nano single-board computer development kit.">}}
-{{<imgproc src="get-started/installation/thumbnails/jetson-orin-nano.jpeg" resize="200x" alt="The front of the NVIDIA Jetson Orin Nano single-board computer development kit.">}}
+{{<imgproc src="installation/thumbnails/jetson-nano-dev-kit.png" resize="200x" alt="The front of the NVIDIA Jetson Nano single-board computer development kit.">}}
+{{<imgproc src="installation/thumbnails/jetson-orin-nano.jpeg" resize="200x" alt="The front of the NVIDIA Jetson Orin Nano single-board computer development kit.">}}
 </div>
 
 {{% alert title="Important" color="note" %}}

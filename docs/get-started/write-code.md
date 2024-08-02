@@ -7,13 +7,14 @@ images: ["/general/code.png"]
 description: "Write code to control your machine with Viam's SDKs in 4 minutes."
 imageAlt: "Code sample"
 authors: []
-weight: 80
 languages: ["python", "go", "typescript", "flutter", "c++"]
 viamresources: ["data_manager", "sensor"]
 no_list: true
 level: "Beginner"
 date: "2024-07-31"
 cost: "0"
+aliases:
+  - /get-started/quickstarts/write-code/
 ---
 
 Follow this guide to start writing code to perform actions with the {{< glossary_tooltip term_id="component" text="components" >}} or {{< glossary_tooltip term_id="service" text="services" >}} of a {{< glossary_tooltip term_id="machine" text="machine" >}}.
@@ -49,7 +50,7 @@ Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https
 Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page to install `viam-server` on your computer and connect it to the Viam app.
 
 You can install `viam-server` on your personal computer, or on a single-board computer (SBC).
-If you are using a microcontroller instead of a 64-bit computer, you can install a [lightweight version of `viam-server`](/get-started/installation/#install-micro-rdk).
+If you are using a microcontroller instead of a 64-bit computer, you can install a [lightweight version of `viam-server`](/installation/#install-micro-rdk).
 
 {{< /expand >}}
 {{< expand "Step 3: Configure a component or service">}}
@@ -155,7 +156,7 @@ To see full sample projects, check out these tutorials:
 
 {{< cards >}}
 {{% card link="/tutorials/get-started/blink-an-led/" %}}
-{{% card link="/get-started/quickstarts/drive-rover/" %}}
+{{% card link="/get-started/drive-rover/" %}}
 {{< /cards >}}
 
 If you are looking to write code to support additional components or services or add custom functionality, see [how to create a module](/use-cases/create-module/).

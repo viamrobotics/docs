@@ -7,6 +7,7 @@ tags: ["rover", "tutorial"]
 description: "Configure your rover by adding the Viam-provided configuration fragment to your rover."
 aliases:
   - "/try-viam/rover-resources/rover-tutorial-fragments/"
+  - "/get-started/try-viam/rover-resources/rover-tutorial-fragments/"
 ---
 
 To be able to drive your rover, you need to configure it.
@@ -17,7 +18,7 @@ Viam provides reusable {{% glossary_tooltip term_id="fragment" text="*fragments*
 - An assembled Viam Rover.
   For assembly instructions, see [Unbox and Set Up your Viam Rover](../rover-tutorial/)
 - The board is connected to [the Viam app](https://app.viam.com).
-  To add your Pi to the Viam app, refer to [the rover setup guide](/get-started/try-viam/rover-resources/rover-tutorial/#control-your-rover-on-the-viam-app).
+  To add your Pi to the Viam app, refer to [the rover setup guide](/appendix/try-viam/rover-resources/rover-tutorial/#control-your-rover-on-the-viam-app).
 
 ## Add the fragment
 
@@ -33,7 +34,7 @@ Select **Insert fragment**.
 Now, you can see the available fragments to add.
 Select `ViamRover2-2024-rpi4-a` and click **Insert fragment** again to add the fragment to your machine configuration:
 
-{{<imgproc src="get-started/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
+{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
 
 Click **Save** in the upper right corner of the page to save your new configuration.
 
@@ -61,11 +62,11 @@ Select **Insert fragment**.
 Now, you can see the available fragments to add.
 Select `ViamRover202210b` and click **Insert fragment** again to add the fragment to your machine configuration:
 
-{{<imgproc src="get-started/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
+{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
 
 Click **Save** in the upper right corner of the page to save your configuration.
 
-{{<imgproc src="get-started/try-viam/rover-resources/fragments/fragment_configuration.png" resize="400x" style="max-width: 500px" alt="Fragment configuration">}}
+{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragment_configuration.png" resize="400x" style="max-width: 500px" alt="Fragment configuration">}}
 
 The fragment adds the following components to your machine's JSON configuration:
 
@@ -101,7 +102,7 @@ Select **Insert fragment**.
 Now, you can see the available fragments to add.
 Select `ViamRover2-2024-jetson-nano-a` and click **Insert fragment** again to add the fragment to your machine configuration.
 
-{{<imgproc src="get-started/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
+{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
 
 Click **Save** in the upper right corner of the page to save your new configuration.
 
@@ -131,7 +132,7 @@ Find `ViamRover2-2024-nano-orin-a` and select **Insert fragment** again to add t
 
 Click **Save** in the upper right corner of the page to save your new configuration.
 
-{{<imgproc src="get-started/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
+{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
 
 The fragment adds the following components to your machine's JSON configuration:
 
@@ -155,7 +156,7 @@ To see the configured pin numbers and other values specific to this fragment, [v
 Adding a fragment to your machine adds the configuration to your machine.
 The components and services included in the fragment will now appear as cards on the **CONFIGURE** tab, along with a card for your fragment:
 
-{{<imgproc src="get-started/try-viam/rover-resources/fragments/fragments_cards.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
+{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_cards.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
 
 ## Modify the config
 
@@ -175,7 +176,7 @@ The fragment you added is read-only, but if you need to modify your rover's conf
 After you have configured your rover, follow one of these tutorials:
 
 {{< cards >}}
-{{% card link="/get-started/quickstarts/drive-rover/" %}}
+{{% card link="/get-started/drive-rover/" %}}
 {{% card link="/tutorials/services/basic-color-detection/" %}}
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}

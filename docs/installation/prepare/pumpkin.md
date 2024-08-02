@@ -3,14 +3,14 @@ title: "Pumpkin Board Setup Guide"
 linkTitle: "Pumpkin Board Setup"
 weight: 25
 type: "docs"
-images: ["/get-started/installation/thumbnails/pumpkin.png"]
+images: ["/installation/thumbnails/pumpkin.png"]
 imageAlt: "Pumpkin board"
 description: "Configure the pin mappings to use a pumpkin board."
 no_list: true
 aliases:
   - /installation/prepare/pumpkin/
-aliases:
   - /get-started/installation/prepare/pumpkin/
+  - /get-started/prepare/pumpkin/
 ---
 
 To use a [Mediatek Genio 500 Pumpkin single-board computer](https://ologicinc.com/portfolio/mediateki500/) with Viam:

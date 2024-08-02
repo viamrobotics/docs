@@ -61,5 +61,5 @@ During machine shutdown, the RDK handles modular resource instances similarly to
 {{< cards >}}
 {{% card link="/appendix/apis/" %}}
 {{% card link="/registry/" customTitle="Viam Registry" %}}
-{{% card link="/get-started/installation/" canonical="/get-started/installation/#install-micro-rdk" %}}
+{{% card link="/installation/" canonical="/installation/#install-micro-rdk" %}}
 {{< /cards >}}

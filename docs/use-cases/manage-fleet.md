@@ -47,7 +47,7 @@ Assign each user a role (owner or operator) to manage permissions.
 **4. Connect machines to the cloud**
 
 Users with access to a location can create and collaborate on the [machines](/cloud/machines/) within it.
-When you [install `viam-server`](/get-started/installation/) on each machine, unique keys are generated to securely connect it to the Viam app.
+When you [install `viam-server`](/installation/) on each machine, unique keys are generated to securely connect it to the Viam app.
 Use the config builder interface to configure {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} for new or existing smart machines.
 You can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} to streamline the process of configuring multiple similar machines.
 

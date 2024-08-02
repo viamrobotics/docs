@@ -107,7 +107,7 @@ Once you have configured your machine, continue to develop an application:
 To see full sample projects, that configure and control machines, check out these tutorials:
 
 {{< cards >}}
-{{% card link="/get-started/quickstarts/drive-rover/" %}}
+{{% card link="/tutorials/get-started/lazy-susan/" %}}
 {{% card link="/tutorials/get-started/blink-an-led/" %}}
 {{% card link="/tutorials/services/color-detection-scuttle/" %}}
 {{< /cards >}}

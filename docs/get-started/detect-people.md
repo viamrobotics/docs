@@ -8,7 +8,7 @@ description: "Use Viam's machine learning capabilities to deploy a person detect
 images: ["/icons/components/camera.svg"]
 imageAlt: "Machine Learning"
 authors: []
-weight: 50
+weight: 40
 languages: ["python", "go", "typescript", "flutter", "c++"]
 viamresources: ["camera", "mlmodel", "vision"]
 no_list: true
@@ -16,6 +16,8 @@ level: "Beginner"
 date: "2024-07-31"
 cost: "0"
 resource: "quickstart"
+aliases:
+  - /get-started/quickstarts/detect-people/
 ---
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/-sXdxbBVrso">}}

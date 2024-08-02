@@ -4,7 +4,7 @@ linkTitle: "<board-series-model> Setup"
 weight: 16
 type: "docs"
 description: "Flash an <storage-medium> for the <board-series-model> to prepare it for viam-server installation."
-images: ["/get-started/installation/thumbnails/prepare.png"]
+images: ["/installation/thumbnails/prepare.png"]
 imageAlt: "<board-series-model>"
 no_list: true
 draft: true
@@ -14,7 +14,7 @@ The [<board-series-model>](http://example.com) from <manufacturer/organization> 
 It supports <operating-systems-or-distributions> and is ideal for <use-cases-or-applications>.
 Follow this guide to set up your <board-series-model> and prepare it for `viam-server` installation.
 
-{{<imgproc src="get-started/installation/thumbnails/prepare.png" alt="The <board-series-model> single-board computer." resize="350x" declaredimensions=true >}}
+{{<imgproc src="installation/thumbnails/prepare.png" alt="The <board-series-model> single-board computer." resize="350x" declaredimensions=true >}}
 
 ## Hardware requirements
 
@@ -71,5 +71,5 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 {{< cards >}}
 {{% card link="/configure/" %}}
 {{% card link="/tutorials/" %}}
-{{% card link="/get-started/try-viam/" %}}
+{{% card link="/appendix/try-viam/" %}}
 {{< /cards >}}

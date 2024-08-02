@@ -44,7 +44,7 @@ For each machine, you will need the following hardware:
 
 - [SDS011 Nova PM sensor](https://www.amazon.com/SDS011-Quality-Detection-Conditioning-Monitor/dp/B07FSDMRR5)
   - If you choose to use a different air quality sensor, you may need to [create your own module](/use-cases/create-module/) implementing the [sensor API](/components/sensor/#api) for your specific hardware.
-- A single-board computer (SBC) [capable of running `viam-server`](https://docs.viam.com/get-started/installation/)
+- A single-board computer (SBC) [capable of running `viam-server`](https://docs.viam.com/installation/)
 - An appropriate power supply
 
 In addition to `viam-server`, this tutorial uses the following software:
@@ -125,11 +125,11 @@ With your organizational structure in place, let's add some machines:
 
 1. Connect your first single-board computer to power.
    For this tutorial, we'll treat this as the machine for our first customer, Antonia.
-   If the computer does not already have a Viam-compatible operating system installed, follow the [Prepare your board steps in the Installation Guide](/get-started/installation/#prepare-your-board) to install a compatible operating system.
+   If the computer does not already have a Viam-compatible operating system installed, follow the [Prepare your board steps in the Installation Guide](/installation/#prepare-your-board) to install a compatible operating system.
    You _do not_ need to follow the "Install `viam-server`" section; you will do that in the next step!
 
 1. Enable serial communication so that the SBC can communicate with the air quality sensor.
-   For example, if you are using a Raspberry Pi, SSH to it and [enable serial communication in `raspi-config`](/get-started/prepare/rpi-setup/#enable-communication-protocols).
+   For example, if you are using a Raspberry Pi, SSH to it and [enable serial communication in `raspi-config`](/installation/prepare/rpi-setup/#enable-communication-protocols).
 
 1. Click **Antonia's Home** in the left navigation menu to navigate to that location's page.
    In the **New machine** field near the top-right corner of the screen, type in a name for the machine, such as `Home Air Quality Sensor`, and click **Add machine**.

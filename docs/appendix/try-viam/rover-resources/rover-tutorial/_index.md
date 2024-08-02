@@ -4,7 +4,7 @@ linkTitle: "Unbox and Set Up your Viam Rover 2"
 weight: 10
 type: "docs"
 tags: ["rover", "tutorial"]
-images: ["/get-started/try-viam/rover-resources/viam-rover-2/box-contents.png"]
+images: ["/appendix/try-viam/rover-resources/viam-rover-2/box-contents.png"]
 imageAlt: "A Viam Rover 2 in a box"
 description: "A list of the contents of the Viam Rover 2 kit, instructions for wiring your rover, and links for additional hardware."
 no_list: true
@@ -12,7 +12,7 @@ no_list: true
 
 {{% alert title="Tip" color="tip" %}}
 Another version of the Viam Rover was sold until January 2024.
-If you have purchased a Viam Rover 1, follow [these instructions](/get-started/try-viam/rover-resources/rover-tutorial-1/) instead.
+If you have purchased a Viam Rover 1, follow [these instructions](/appendix/try-viam/rover-resources/rover-tutorial-1/) instead.
 {{% /alert %}}
 
 The [Viam Rover 2](https://www.viam.com/resources/rover) arrives preassembled with two encoded motors with suspension, a webcam with a microphone unit, a 6 axis IMU, power management and more.
@@ -38,38 +38,38 @@ Find the details on [GitHub](https://github.com/viamrobotics/Viam-Rover-2).
 
 1. One assembled Viam Rover.
 
-   {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/rover-side.png" resize="400x" declaredimensions=true alt="The side of the assembled Viam Rover">}}
+   {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/rover-side.png" resize="400x" declaredimensions=true alt="The side of the assembled Viam Rover">}}
 
 1. Four M2.5 screws for mounting your Raspberry Pi.
 
-   {{<imgproc src="get-started/try-viam/rover-resources/viam-rover/screws.jpg" resize="200x" declaredimensions=true alt="Four screws" >}}
+   {{<imgproc src="appendix/try-viam/rover-resources/viam-rover/screws.jpg" resize="200x" declaredimensions=true alt="Four screws" >}}
 
 1. Two spare stiffer suspension springs.
    You can swap them out with the springs that come with the rover if you need stiffer suspension for higher payload applications.
 
-   {{<imgproc src="get-started/try-viam/rover-resources/viam-rover/suspension-springs.jpg" resize="200x" declaredimensions=true alt="Two suspension springs" >}}
+   {{<imgproc src="appendix/try-viam/rover-resources/viam-rover/suspension-springs.jpg" resize="200x" declaredimensions=true alt="Two suspension springs" >}}
 
 1. Three different Allen wrenches (1.5 mm, 2 mm, and 2.5 mm) to unscrew the top and mount the Raspberry Pi.
 
-   {{<imgproc src="get-started/try-viam/rover-resources/viam-rover/allen-wrenches.png" resize="180x" alt="Three allen wrenches" >}}
+   {{<imgproc src="appendix/try-viam/rover-resources/viam-rover/allen-wrenches.png" resize="180x" alt="Three allen wrenches" >}}
 
 1. Four extenders to increase the height of the rover to house larger internal single-board computers (such as a Jetson Orin Nano).
 
-   {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/extenders.png" resize="400x" declaredimensions=true alt="Four extenders" >}}
+   {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/extenders.png" resize="400x" declaredimensions=true alt="Four extenders" >}}
 
 1. Ribbon cable for connecting the Raspberry Pi 4 to the Viam Rover 2 printed circuit board.
 
-   {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/ribbon-cable.png" resize="400x" declaredimensions=true alt="Ribbon cable" >}}
+   {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/ribbon-cable.png" resize="400x" declaredimensions=true alt="Ribbon cable" >}}
 
 All together, your kit looks like this:
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/box-contents.png" resize="400x" declaredimensions=true alt="A Viam Rover shipping box contents" >}}
+{{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/box-contents.png" resize="400x" declaredimensions=true alt="A Viam Rover shipping box contents" >}}
 
 ## Rover components
 
 ### Dual drive motors with suspension and integrated motor encoders
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover/encoder-motors.jpg" resize="400x" declaredimensions=true alt="two motors with encoders" >}}
+{{<imgproc src="appendix/try-viam/rover-resources/viam-rover/encoder-motors.jpg" resize="400x" declaredimensions=true alt="two motors with encoders" >}}
 
 The motors come with integrated encoders.
 For information on encoders, see [Encoder Component](/components/encoder/).
@@ -81,21 +81,21 @@ In contrast, a soft suspension allows the wheels to move up and down to absorb s
 
 ### Motor driver
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover/motor-driver.png" resize="400x" declaredimensions=true alt="A L298N motor driver" >}}
+{{<imgproc src="appendix/try-viam/rover-resources/viam-rover/motor-driver.png" resize="400x" declaredimensions=true alt="A L298N motor driver" >}}
 
 The kit comes with an L298N driver dual H-Bridge DC motor driver.
 L298 is a high voltage and high current motor drive chip, and H-Bridge is typically used to control the rotating direction and speed of DC motors.
 
 ### 720p webcam with integrated microphone
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover/webcam.jpg" resize="400x" declaredimensions=true alt="Webcam with cables" >}}
+{{<imgproc src="appendix/try-viam/rover-resources/viam-rover/webcam.jpg" resize="400x" declaredimensions=true alt="Webcam with cables" >}}
 
 The webcam that comes with the kit is a standard USB camera device and the rover has a custom camera mount for it.
 For more information, see [Camera Component](/components/camera/).
 
 ### Motherboard
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/motherboard.png" resize="400x" declaredimensions=true alt="Viam rover 2 motherboard" >}}
+{{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/motherboard.png" resize="400x" declaredimensions=true alt="Viam rover 2 motherboard" >}}
 
 The Viam Rover 2 uses a motherboard to which all ancillary components (buck converter, motor driver, IMU, INA219) are mounted.
 This board includes an auxiliary Raspberry Pi 4 pinout that dupont connectors can be connected to, an auxiliary power input terminal, 5V, 3.3V and Ground pins.
@@ -113,7 +113,7 @@ Note that these boards require additional parts to be purchased and will not wor
 
 ### 6DOF IMU
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/mpu6050.png" resize="400x" declaredimensions=true alt="An MPU6050 gyroscope" >}}
+{{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/mpu6050.png" resize="400x" declaredimensions=true alt="An MPU6050 gyroscope" >}}
 
 The MPU6050 sensor is a digital 6-axis accelerometer or gyroscope that can read acceleration and angular velocity.
 You can access it through the I2C digital interface.
@@ -121,7 +121,7 @@ You configure it with Viam on your machine as a [movement sensor](/components/mo
 
 ### INA219 power monitoring unit
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/ina219.png" resize="400x" declaredimensions=true alt="An INA219 unit" >}}
+{{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/ina219.png" resize="400x" declaredimensions=true alt="An INA219 unit" >}}
 
 The INA219 unit measures the voltage and current from the power supply.
 You can use it to measure battery life status and power consumption.
@@ -130,19 +130,19 @@ You configure it with Viam on your machine as a [power sensor](/components/power
 
 ### DC-DC 5V converter
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/buck-converter.png" resize="300x" declaredimensions=true alt="A OKY3502-4 buck converter" >}}
+{{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/buck-converter.png" resize="300x" declaredimensions=true alt="A OKY3502-4 buck converter" >}}
 
 The DC-to-DC power converter, or, buck converter, steps down voltage from its input to its output.
 The OKY3502-4 has a USB output that can provide an additional 5V supply to auxiliary components.
 
 ### Switch and low voltage cutoff circuit
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/slide-switch.png" resize="400x" declaredimensions=true alt="The switch mounted on the Viam rover 2" >}}
+{{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/slide-switch.png" resize="400x" declaredimensions=true alt="The switch mounted on the Viam rover 2" >}}
 
 A slide switch is connected to the rover.
 Use it to turn the power on and off.
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/circuit.png" resize="400x" declaredimensions=true alt="Low-voltage cutoff circuit" >}}
+{{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/circuit.png" resize="400x" declaredimensions=true alt="Low-voltage cutoff circuit" >}}
 
 Mounted above the switch is a low voltage cutoff circuit that can be set to turn off power to the rover when the input voltage drops below a pre-set threshold.
 This can be helpful for preventing batteries fully discharging which can damage lithium ion batteries.
@@ -158,7 +158,7 @@ With either battery option, you must purchase a charger separately.
 
 #### 18650 battery pack
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/battery-pack.png" resize="400x" declaredimensions=true alt="A battery pack" >}}
+{{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/battery-pack.png" resize="400x" declaredimensions=true alt="A battery pack" >}}
 
 18650 batteries are the nominal power supply recommended for use with the Viam Rover 2.
 An 18650 battery is a lithium-ion rechargeable battery.
@@ -167,7 +167,7 @@ Any brand is suitable as long as you comply with the battery safety requirements
 
 #### Mount for RC-type battery
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/RC-mount.png" resize="400x" declaredimensions=true alt="RC battery mount" >}}
+{{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/RC-mount.png" resize="400x" declaredimensions=true alt="RC battery mount" >}}
 
 You can mount a larger capacity RC-type battery into the rover.
 You must wire the appropriate connecter into the switch circuit.
@@ -213,8 +213,8 @@ If you wish to use a Jetson Nano or Jetson Orin Nano, follow [this guide](./jets
 If you are using another board, you can skip this step.
 {{% /alert %}}
 
-Install a 64-bit Raspberry Pi OS onto your Pi following our [Raspberry Pi installation guide](/get-started/prepare/rpi-setup/).
-Follow all steps as listed, including the final step, [Enable communication protocols](/get-started/prepare/rpi-setup/#enable-communication-protocols), which is required to enable [the accelerometer](#6dof-imu) on your rover.
+Install a 64-bit Raspberry Pi OS onto your Pi following our [Raspberry Pi installation guide](/installation/prepare/rpi-setup/).
+Follow all steps as listed, including the final step, [Enable communication protocols](/installation/prepare/rpi-setup/#enable-communication-protocols), which is required to enable [the accelerometer](#6dof-imu) on your rover.
 Once you have installed Raspberry Pi OS and `viam-server`, put your SD card in the slot on your Pi.
 
 ### Add the power supply
@@ -225,7 +225,7 @@ You can power the Viam Rover 2 using 18650 batteries or RC-type batteries.
 {{< tabs >}}
 {{% tab name="18650 Batteries" %}}
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/rover-underview.png" resize="400x" declaredimensions=true alt="Under view of rover with battery pack." >}}
+{{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/rover-underview.png" resize="400x" declaredimensions=true alt="Under view of rover with battery pack." >}}
 
 The Viam Rover 2 arrives with the 18650 battery pack wired into the power input terminal block.
 The battery pack works with batteries 67.5 mm in length, but the battery housing includes a spring to accommodate most batteries of that approximate length.
@@ -241,7 +241,7 @@ Some shorter batteries might need to be pushed along to ensure that contact is b
 {{% /tab %}}
 {{% tab name="RC-Type Battery" %}}
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/rcbattery-underneath.png" resize="400x" declaredimensions=true alt="Under view of rover with battery pack." >}}
+{{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/rcbattery-underneath.png" resize="400x" declaredimensions=true alt="Under view of rover with battery pack." >}}
 
 For users who prefer a higher capacity battery option, the Viam Rover 2 can house RC-type batteries that do not exceed the following dimensions:- 142mm x 47mm x 60mm (LxWxH).
 Using a RC-type battery requires some re-wiring of the Viam Rover 2 which should only be undertaken by users who are comfortable handling electrical assemblies.
@@ -262,7 +262,7 @@ To change the rover's power supply configuration for a RC-battery:
 5.  Ensure that there is no short between the terminals (for example, due to a stray strand of wire). Use a multimeter to check continuity across the terminal to verify this.
     Failure to do so may result in damage to the battery and may pose a fire hazard.
 6.  Place the battery in the receptacle between the two caster wheels:
-    {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/RC-mount.png" resize="400x" declaredimensions=true alt="RC battery mount" >}}
+    {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/RC-mount.png" resize="400x" declaredimensions=true alt="RC battery mount" >}}
     Connect the battery to the lead that is wired into the power input terminal.
     Although not necessary, slots in the bottom plate of the rover allow a velcro strap to be placed around the battery to secure it.
 
@@ -292,7 +292,7 @@ To set the low voltage cutoff and reconnect voltage:
 1.  Turn on the circuit using the switch.
     The LED indicater should indicate a current voltage level of 14.8-16V depending on the battery charge status:
 
-    {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/circuit-led.png" resize="300x" declaredimensions=true alt="LED with voltage level displayed on low voltage cutoff circuit" >}}
+    {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/circuit-led.png" resize="300x" declaredimensions=true alt="LED with voltage level displayed on low voltage cutoff circuit" >}}
 
 2.  Hold down the left button until the LED display starts flashing with the low cutoff value.
     The factory default low cutoff value is 12V.
@@ -319,9 +319,9 @@ The Raspberry Pi 4 should be mounted such that the USB ports are to the right, a
 Use the ribbon cable to connect the Raspberry Pi 4 to the motherboard.
 The ribbon cable comes connected to the motherboard out of the box, wrap it over the top of the Raspberry Pi 4 and connect with the GPIO pins as shown:
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/ribbon-cable1.png" resize="400x" declaredimensions=true alt="Ribbon cable attached to pi" >}}
+{{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/ribbon-cable1.png" resize="400x" declaredimensions=true alt="Ribbon cable attached to pi" >}}
 <br>
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/ribbon-cable2.png" resize="400x" declaredimensions=true alt="Ribbon cable attached to pi" >}}
+{{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/ribbon-cable2.png" resize="400x" declaredimensions=true alt="Ribbon cable attached to pi" >}}
 
 Also, connect the webcam's USB lead to any USB port on your Pi.
 
@@ -337,7 +337,7 @@ If you are using a Jetson board, you should be following [this guide](./jetson-r
 
 Reference the appropriate alternative hole pattern provided on the motherboard:
 
-{{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/hole-patterning.png" resize="400x" declaredimensions=true alt="Viam rover 2 motherboard hole patterns" >}}
+{{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/hole-patterning.png" resize="400x" declaredimensions=true alt="Viam rover 2 motherboard hole patterns" >}}
 
 Detach the motherboard, unscrew the standoffs, and move them to the correct holes.
 Then, use the smallest Allen key and the provided M2.5 screws to attach your board to your rover through these standoffs.
@@ -377,24 +377,24 @@ Enable the I<sup>2</sup>C protocol on your Pi to get readings from the power sen
 
 ### Control your rover on the Viam app
 
-If you followed the instructions in the [Pi installation guide](/get-started/prepare/rpi-setup/), you should have already made an account on the [Viam app](https://app.viam.com), installed `viam-server` on the board, and added a new machine.
+If you followed the instructions in the [Pi installation guide](/installation/prepare/rpi-setup/), you should have already made an account on the [Viam app](https://app.viam.com), installed `viam-server` on the board, and added a new machine.
 
-If not, make sure to [prepare your device and install `viam-server`](/get-started/installation/), and then [add a new machine](/cloud/machines/#add-a-new-machine).
+If not, make sure to [prepare your device and install `viam-server`](/installation/), and then [add a new machine](/cloud/machines/#add-a-new-machine).
 
-To configure your rover so you can start driving it, [add a Viam Rover 2 Fragment to your machine](/get-started/try-viam/rover-resources/rover-tutorial-fragments/).
+To configure your rover so you can start driving it, [add a Viam Rover 2 Fragment to your machine](/appendix/try-viam/rover-resources/rover-tutorial-fragments/).
 
 ## Next steps
 
 Before you can use your Viam rover with the Viam platform you need to configure your rover:
 
 {{< cards >}}
-{{% card link="/get-started/try-viam/rover-resources/rover-tutorial-fragments/" %}}
+{{% card link="/appendix/try-viam/rover-resources/rover-tutorial-fragments/" %}}
 {{< /cards >}}
 
 After you have configured your rover, follow one of these tutorials:
 
 {{< cards >}}
-{{% card link="/get-started/quickstarts/drive-rover/" %}}
+{{% card link="/get-started/drive-rover/" %}}
 {{% card link="/tutorials/services/basic-color-detection/" %}}
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}

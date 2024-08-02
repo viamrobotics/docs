@@ -4,18 +4,19 @@ linkTitle: "Orange Pi Zero2 Setup"
 weight: 16
 type: "docs"
 description: "Image an Orange Pi Zero2 to prepare it for viam-server installation."
-images: ["/get-started/installation/thumbnails/orange-pi-zero2.png"]
+images: ["/installation/thumbnails/orange-pi-zero2.png"]
 imageAlt: "Orange Pi Zero2"
 no_list: true
 aliases:
   - /get-started/installation/prepare/orange-pi-zero2/
+  - /get-started/prepare/orange-pi-zero2/
 # SME: Olivia Miller
 ---
 
 The [Orange Pi Zero2](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Zero-2.html) is a highly compact, open-source single-board computer equipped with dual-band WiFi and Bluetooth 5.0.
 It can run Ubuntu, Android10, or Debian distributions.
 
-{{<imgproc src="get-started/installation/thumbnails/orange-pi-zero2.png" alt="The Orange Pi Zero2 single-board computer." resize="350x" declaredimensions=true >}}
+{{<imgproc src="installation/thumbnails/orange-pi-zero2.png" alt="The Orange Pi Zero2 single-board computer." resize="350x" declaredimensions=true >}}
 
 Follow this guide to set up your Orange Pi Zero2 to run `viam-server`.
 

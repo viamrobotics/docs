@@ -4,7 +4,7 @@ linkTitle: "BeagleBone Setup"
 weight: 20
 type: "docs"
 description: "Flash a BeagleBone AI-64 to prepare it for viam-server installation."
-images: ["/get-started/installation/thumbnails/beaglebone.png"]
+images: ["/installation/thumbnails/beaglebone.png"]
 imageAlt: "BeagleBone A I-64"
 no_list: true
 aliases:
@@ -12,6 +12,7 @@ aliases:
   - "/installation/prepare/beaglebone-install/"
   - "/installation/prepare/beaglebone-setup/"
   - /get-started/installation/prepare/beaglebone-setup/
+  - /get-started/prepare/beaglebone-setup/
 # SMEs: Shawn, Matt Dannenberg, and Rand
 ---
 
@@ -19,7 +20,7 @@ The [BeagleBone AI-64](https://docs.beagleboard.org/latest/boards/beaglebone/ai-
 Follow this guide to set up your BeagleBone AI-64 and prepare it for `viam-server` installation.
 
 <div class="td-max-width-on-larger-screens text-center">
-{{< imgproc alt="The front of a BeagleBone AI-64 single-board computer at a 45° angle." src="/get-started/installation/beaglebone-setup/image4.png" resize="400x" declaredimensions=true >}}
+{{< imgproc alt="The front of a BeagleBone AI-64 single-board computer at a 45° angle." src="/installation/beaglebone-setup/image4.png" resize="400x" declaredimensions=true >}}
 </div>
 
 ## Hardware requirements
@@ -93,5 +94,5 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 {{< cards >}}
 {{% card link="/configure/" %}}
 {{% card link="/tutorials/" %}}
-{{% card link="/get-started/try-viam/" %}}
+{{% card link="/appendix/try-viam/" %}}
 {{< /cards >}}

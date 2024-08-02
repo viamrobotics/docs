@@ -5,7 +5,7 @@ childTitleEndOverwrite: "Try Viam"
 weight: 100
 no_list: true
 type: docs
-images: ["/get-started/installation/thumbnails/install.png"]
+images: ["/installation/thumbnails/install.png"]
 imageAlt: "Install Viam"
 description: "To use Viam software with your machine, install and run the viam-server binary on the computer that will run your machine and is connected to your hardware."
 aliases:
@@ -21,7 +21,7 @@ aliases:
   - /installation/
   - /installation/microcontrollers/
   - /installation/prepare/microcontrollers/
-  - /get-started/installation/prepare/microcontrollers/
+  - /installation/prepare/microcontrollers/
   - /build/micro-rdk/
   - /get-started/installation/microcontrollers/
 ---
@@ -62,29 +62,29 @@ The only microcontroller the micro-RDK currently supports is the [ESP32](https:/
 If you are using one of the following boards, click on the card to follow the guide for that board:
 
 {{< cards >}}
-{{% card link="/get-started/prepare/rpi-setup/" class="small" %}}
-{{% card link="/get-started/prepare/odroid-c4-setup/" class="small" %}}
-{{% card link="/get-started/prepare/orange-pi-3-lts/" class="small" %}}
-{{% card link="/get-started/prepare/orange-pi-zero2/" class="small" %}}
-{{% card link="/get-started/prepare/beaglebone-setup/" class="small" %}}
-{{% card link="/get-started/prepare/jetson-agx-orin-setup/" class="small" %}}
-{{% card link="/get-started/prepare/jetson-nano-setup/" class="small" %}}
-{{% card link="/get-started/prepare/pumpkin/" class="small" %}}
-{{% card link="/get-started/prepare/sk-tda4vm/" class="small" %}}
+{{% card link="/installation/prepare/rpi-setup/" class="small" %}}
+{{% card link="/installation/prepare/odroid-c4-setup/" class="small" %}}
+{{% card link="/installation/prepare/orange-pi-3-lts/" class="small" %}}
+{{% card link="/installation/prepare/orange-pi-zero2/" class="small" %}}
+{{% card link="/installation/prepare/beaglebone-setup/" class="small" %}}
+{{% card link="/installation/prepare/jetson-agx-orin-setup/" class="small" %}}
+{{% card link="/installation/prepare/jetson-nano-setup/" class="small" %}}
+{{% card link="/installation/prepare/pumpkin/" class="small" %}}
+{{% card link="/installation/prepare/sk-tda4vm/" class="small" %}}
 {{< /cards >}}
 
 Viam also provides a lightweight version of `viam-server` called the micro-RDK which can run on resource-limited embedded systems that cannot run the fully-featured Robot Development Kit (RDK).
 If you are using a microcontroller, prepare your board using the following guide:
 
 {{< cards >}}
-{{% card link="/get-started/installation/micro-rdk-dev/" canonical="/get-started/installation/#install-micro-rdk" class="small" customTitle="ESP32 Setup" %}}
+{{% card link="/installation/micro-rdk-dev/" canonical="/installation/#install-micro-rdk" class="small" customTitle="ESP32 Setup" %}}
 {{< /cards >}}
 
 Other SBCs such as the [RockPi S](https://wiki.radxa.com/RockpiS) and [Orange Pi Zero 2](https://orangepi.com/index.php?route=product/product&path=237&product_id=849) can run Viam with an experimental [periph.io](https://periph.io/) based [modular component](https://github.com/viam-labs/periph_board).
 
 ## Install `viam-server`
 
-If you have a [compatible operating system](/get-started/installation/), follow along with the steps outlined below or with the video beneath it to install `viam-server`:
+If you have a [compatible operating system](/installation/), follow along with the steps outlined below or with the video beneath it to install `viam-server`:
 
 {{< tabs name="Install on computer" >}}
 {{% tab name="Linux computer" %}}
@@ -108,7 +108,7 @@ To install `viam-server` on a macOS computer:
 1. Navigate to the **CONFIGURE** tab and find your machine's card.
    An alert will be present directing you to **Set up your machine part**:
 
-   ![Machine setup alert in a newly created machine](/get-started/installation/setup-part.png)
+   ![Machine setup alert in a newly created machine](/installation/setup-part.png)
 
    Click **View setup instructions** to open the setup instructions.
 
@@ -132,11 +132,11 @@ To install `viam-server` on a macOS computer:
 1. Navigate to the **CONFIGURE** tab and find your machine's card.
    An alert will be present directing you to **Set up your machine part**:
 
-   ![Machine setup alert in a newly-created machine](/get-started/installation/setup-part.png)
+   ![Machine setup alert in a newly-created machine](/installation/setup-part.png)
 
    Click **View setup instructions** to open the setup instructions:
 
-   ![Setup instructions](/get-started/installation/wsl-setup-instructions.png)
+   ![Setup instructions](/installation/wsl-setup-instructions.png)
 
 1. Select **Windows** as your system's OS and **RDK** as your RDK type.
 
@@ -152,7 +152,7 @@ To install `viam-server` on a macOS computer:
 
 ### Manage `viam-server`
 
-To learn how to run, update, or uninstall `viam-server`, see [Manage `viam-server`](/get-started/installation/manage/).
+To learn how to run, update, or uninstall `viam-server`, see [Manage `viam-server`](/installation/manage/).
 
 ### Next steps
 
@@ -173,7 +173,7 @@ Breaking changes are likely to occur, and occur often.
 The micro-RDK installer is a CLI that allows you to flash a build of micro-RDK, along with your machine's credentials and your wifi information, directly to your ESP32.
 
 With this installation, you can use your ESP32 with all supported resource APIs, but you cannot write your own code directly interacting with the chip.
-If you want to program the chip directly, follow the setup instructions in [the Micro-RDK Development Setup](/get-started/installation/#install-micro-rdk) instead.
+If you want to program the chip directly, follow the setup instructions in [the Micro-RDK Development Setup](/installation/#install-micro-rdk) instead.
 
 ### Flash your ESP32 with the micro-RDK installer
 

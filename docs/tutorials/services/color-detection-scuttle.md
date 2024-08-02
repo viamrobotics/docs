@@ -28,7 +28,7 @@ no_list: true
 After following this tutorial, you will understand how the ML model service and the Vision service work together and you will be able to use both alongside the base and camera components to make a machine respond to the world around it.  -->
 
 In this tutorial, you'll learn how to use the [vision service](/services/vision/) to make a rover follow a colored object.
-We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover, including the [Viam rover](/get-started/try-viam/rover-resources/).
+We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover, including the [Viam rover](/appendix/try-viam/rover-resources/).
 
 <div class="aligncenter">
 {{<video webm_src="/tutorials/videos/scuttledemos_colordetection.webm" mp4_src="/tutorials/videos/scuttledemos_colordetection.mp4" poster="/tutorials/scuttlebot/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
@@ -148,7 +148,7 @@ Next, create a file named <file>main.py</file> and paste the boilerplate code fr
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
-If you haven't yet installed `viam-server`, follow the [installation guide](/get-started/installation/#install-viam-server) to install `viam-server` on your robot before proceeding with this tutorial.
+If you haven't yet installed `viam-server`, follow the [installation guide](/installation/#install-viam-server) to install `viam-server` on your robot before proceeding with this tutorial.
 
 You can run your code by typing the following into your terminal from the same directory as your `main.py` file:
 
@@ -299,7 +299,7 @@ Use something like a red sports ball or book cover as a target to follow to test
 ## Next steps
 
 Congratulations! If you're ready for more, try making your rover detect other colors.
-You could also write some code with a Viam SDK to [make your rover move in a square](/get-started/quickstarts/drive-rover/).
+You could also write some code with a Viam SDK to [make your rover move in a square](/get-started/drive-rover/).
 
 {{< snippet "social.md" >}}
 

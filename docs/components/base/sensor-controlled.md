@@ -101,7 +101,7 @@ The following base control API methods are available on a `sensor-controlled` ba
 - [Spin()](/components/base/#spin): available if base is configured to receive orientation feedback.
 - [MoveStraight()](/components/base/#movestraight): available if base is configured to receive position feedback.
 
-For example, a [Viam Rover](/get-started/try-viam/rover-resources/) using `sensor-controlled` base following both an [angular](/components/base/#spin) and [linear](/components/base/#movestraight) velocity command:
+For example, a [Viam Rover](/appendix/try-viam/rover-resources/) using `sensor-controlled` base following both an [angular](/components/base/#spin) and [linear](/components/base/#movestraight) velocity command:
 
 {{<gif webm_src="/components/encoded-motor/base_moving.webm" mp4_src="/components/encoded-motor/base-moving.mp4" alt="A Viam rover turning in a half circle" max-width="400px" >}}
 

@@ -4,7 +4,7 @@ linkTitle: "Set Up your Rover 2 with a Jetson"
 weight: 10
 type: "docs"
 tags: ["rover", "tutorial"]
-images: ["/get-started/try-viam/rover-resources/viam-rover-2/box-contents.png"]
+images: ["/appendix/try-viam/rover-resources/viam-rover-2/box-contents.png"]
 imageAlt: "A Viam Rover 2 in a box"
 description: "Instructions for setting up a Viam Rover 2 with a Jetson Nano or Jetson Orin Nano."
 ---
@@ -64,16 +64,16 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 ## Setup
 
 1. Install the WiFi board/device on the Nano. Follow the manufacturer's instructions to do so.
-2. Power the Jetson Nano with a power supply and [prepare the device and install `viam-server`](/get-started/prepare/jetson-nano-setup/).
+2. Power the Jetson Nano with a power supply and [prepare the device and install `viam-server`](/installation/prepare/jetson-nano-setup/).
 3. Switch back to the main guide and complete these two steps:
-   [Add the power supply](/get-started/try-viam/rover-resources/rover-tutorial/#add-the-power-supply) and [Configure the low-voltage cutoff circuit](/get-started/try-viam/rover-resources/rover-tutorial/#configure-the-low-voltage-cutoff-circuit).
+   [Add the power supply](/appendix/try-viam/rover-resources/rover-tutorial/#add-the-power-supply) and [Configure the low-voltage cutoff circuit](/appendix/try-viam/rover-resources/rover-tutorial/#configure-the-low-voltage-cutoff-circuit).
 4. Unscrew the top of the rover with the biggest Allen key.
-5. Take the [height extenders](/get-started/try-viam/rover-resources/rover-tutorial/#whats-inside-the-kit) provided in your kit.
+5. Take the [height extenders](/appendix/try-viam/rover-resources/rover-tutorial/#whats-inside-the-kit) provided in your kit.
    Apply them to the rover chassis posts.
-6. Unscrew the standoffs in the motherboard and relocate them to the Jetson board hole pattern: {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/hole-patterning.png" resize="400x" declaredimensions=true alt="Viam rover 2 motherboard hole patterns" >}}
+6. Unscrew the standoffs in the motherboard and relocate them to the Jetson board hole pattern: {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/hole-patterning.png" resize="400x" declaredimensions=true alt="Viam rover 2 motherboard hole patterns" >}}
 7. Connect the ribbon cable to the motherboard and Jetson Nano.
-   The ribbon cable needs to be routed towards the front of the rover and flip back to the pins on the Jetson Nano, as pictured: {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/jetson-ribbon.png" resize="400x" declaredimensions=true alt="The Jetson ribbon cable" >}}
-8. Use the smallest Allen key and the provided M2.5 screws to attach your board to your rover through these standoffs. The USB ports should be facing the left-hand side of the rover, when viewed from above: {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/jetson-motherboard.png" resize="400x" declaredimensions=true alt="The underside of a rover with the Jetson mounted" >}}
+   The ribbon cable needs to be routed towards the front of the rover and flip back to the pins on the Jetson Nano, as pictured: {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/jetson-ribbon.png" resize="400x" declaredimensions=true alt="The Jetson ribbon cable" >}}
+8. Use the smallest Allen key and the provided M2.5 screws to attach your board to your rover through these standoffs. The USB ports should be facing the left-hand side of the rover, when viewed from above: {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/jetson-motherboard.png" resize="400x" declaredimensions=true alt="The underside of a rover with the Jetson mounted" >}}
 9. Connect the webcam's USB lead to any USB port on your board.
 10. Flip the power switch to turn your rover on.
 
@@ -127,20 +127,20 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 
 ## Setup
 
-1. Power the Jetson Orin Nano with a power supply and [prepare the device and install `viam-server`](/get-started/prepare/jetson-nano-setup/).
+1. Power the Jetson Orin Nano with a power supply and [prepare the device and install `viam-server`](/installation/prepare/jetson-nano-setup/).
 2. Switch back to the main guide and complete these two steps:
-   [Add the power supply](/get-started/try-viam/rover-resources/rover-tutorial/#add-the-power-supply) and [Configure the low-voltage cutoff circuit](/get-started/try-viam/rover-resources/rover-tutorial/#configure-the-low-voltage-cutoff-circuit).
+   [Add the power supply](/appendix/try-viam/rover-resources/rover-tutorial/#add-the-power-supply) and [Configure the low-voltage cutoff circuit](/appendix/try-viam/rover-resources/rover-tutorial/#configure-the-low-voltage-cutoff-circuit).
 3. Unscrew the top of the rover with the biggest Allen key.
-4. Take the [height extenders](/get-started/try-viam/rover-resources/rover-tutorial/#whats-inside-the-kit) provided in your kit.
+4. Take the [height extenders](/appendix/try-viam/rover-resources/rover-tutorial/#whats-inside-the-kit) provided in your kit.
    Apply them to the rover chassis posts.
-5. Unscrew the standoffs in the motherboard and relocate them to the Jetson board hole pattern: {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/hole-patterning.png" resize="400x" declaredimensions=true alt="Viam rover 2 motherboard hole patterns" >}}
+5. Unscrew the standoffs in the motherboard and relocate them to the Jetson board hole pattern: {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/hole-patterning.png" resize="400x" declaredimensions=true alt="Viam rover 2 motherboard hole patterns" >}}
 6. **IMPORTANT:** Disconnect the 5V buck converter. Unlike other boards, the Jetson Orin Nano requires a 7-20V input, which means that the board must be powered directly from the battery.
    **Before commencing, ensure that everything is powered off.**
    It is recommended that you clip the buck converter wires completely and place electrical tape over the exposed contacts, as pictured:
-   {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/clip-wires.png" resize="250x" declaredimensions=true alt="Clipping the buck converter wires" >}}
-   {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/tape.png" resize="250x" declaredimensions=true alt="Placing electrical tape over the exposed contacts" >}}
+   {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/clip-wires.png" resize="250x" declaredimensions=true alt="Clipping the buck converter wires" >}}
+   {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/tape.png" resize="250x" declaredimensions=true alt="Placing electrical tape over the exposed contacts" >}}
 7. Connect the ribbon cable to the motherboard and Jetson Orin Nano.
-8. Use the smallest Allen key and the provided M2.5 screws to attach your board to your rover through these standoffs. The USB ports should be facing the left-hand side of the rover, when viewed from above: {{<imgproc src="get-started/try-viam/rover-resources/viam-rover-2/jetson-orin-motherboard.png" resize="400x" declaredimensions=true alt="The underside of a rover with the Jetson Orin Nano mounted" >}}
+8. Use the smallest Allen key and the provided M2.5 screws to attach your board to your rover through these standoffs. The USB ports should be facing the left-hand side of the rover, when viewed from above: {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/jetson-orin-motherboard.png" resize="400x" declaredimensions=true alt="The underside of a rover with the Jetson Orin Nano mounted" >}}
 9. Connect a WiFi adapter or a board that directly interfaces to the underside of the Jetson Orin Nano.
 10. Connect the webcam's USB lead to any USB port on your board.
 11. Flip the power switch to turn your rover on.
@@ -150,15 +150,15 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 
 ### Control your rover on the Viam app
 
-If you followed the instructions in the [Jetson installation guide](/get-started/prepare/jetson-nano-setup/), you should have already made an account on the [Viam app](https://app.viam.com), installed `viam-server` on the board, and added a new machine.
+If you followed the instructions in the [Jetson installation guide](/installation/prepare/jetson-nano-setup/), you should have already made an account on the [Viam app](https://app.viam.com), installed `viam-server` on the board, and added a new machine.
 
-To configure your rover so you can start driving it, [add a Viam Rover 2 Fragment to your machine](/get-started/try-viam/rover-resources/rover-tutorial-fragments/).
+To configure your rover so you can start driving it, [add a Viam Rover 2 Fragment to your machine](/appendix/try-viam/rover-resources/rover-tutorial-fragments/).
 
 ## Next steps
 
 After adding the appropriate fragment, follow one of these tutorials with your borrowed or owned rover:
 
 {{< cards >}}
-{{% card link="/get-started/quickstarts/drive-rover/" %}}
+{{% card link="/get-started/drive-rover/" %}}
 {{% card link="/tutorials/services/basic-color-detection/" %}}
 {{< /cards >}}

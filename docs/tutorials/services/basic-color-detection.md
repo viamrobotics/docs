@@ -30,7 +30,7 @@ Without writing any code, you will be able to view your camera stream, with dete
 The [vision service](/services/vision/) enables a robot to use its cameras to see and interpret the world around it.
 The service also allows you to create different types of detectors with which the robot can recognize objects, scan QR codes, perform optical quality inspections, sort different colored objects, take measurements, and more.
 
-You can follow this tutorial with your own computer (laptop, desktop, or single-board computer) and webcam, or you can remotely borrow a [Viam rover](https://app.viam.com/try) if your computer is not compatible with [`viam-server`](/get-started/installation/).
+You can follow this tutorial with your own computer (laptop, desktop, or single-board computer) and webcam, or you can remotely borrow a [Viam rover](https://app.viam.com/try) if your computer is not compatible with [`viam-server`](/installation/).
 
 {{< tabs >}}
 {{% tab name="Use your own computer and webcam" %}}
@@ -65,7 +65,7 @@ Each [Try Viam rover](https://app.viam.com/try) already has `viam-server` instal
 {{< alert title="Tip" color="tip" >}}
 If you are renting a rover, we recommend that you skim through this tutorial before renting your rover to familiarize yourself with the steps so you do not run out of time on your rental.
 
-Be aware that if you are running out of time during your rental, you can [extend your rover rental](/get-started/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
+Be aware that if you are running out of time during your rental, you can [extend your rover rental](/appendix/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
 {{< /alert >}}
 
 ## Borrow a rover
@@ -79,12 +79,12 @@ Before configuring color detection, enable the rover's camera to get a better se
 - If you are running this tutorial with a [rented Viam Rover](https://app.viam.com/try), enable both provided cameras: the front-facing camera and the overhead cam.
   In the `viam_base` component panel under the **CONTROL** tab, enable both the `cam` for the front-facing camera and the `overhead-cam:overheadcam` for an overhead view of your rover.
 
-  ![The viam_base component panel showing both the 'cam' and 'overheadcam' camera feeds enabled.](get-started/try-viam/try-viam/enable-both-cameras.png)
+  ![The viam_base component panel showing both the 'cam' and 'overheadcam' camera feeds enabled.](appendix/try-viam/try-viam/enable-both-cameras.png)
 
-  You can also view and control the camera streams from the [individual camera component panels](/get-started/try-viam/try-viam-tutorial/#camera-control).
+  You can also view and control the camera streams from the individual camera component panels on the [**CONTROL** page](/cloud/machines/#control).
 
-- If you are running this tutorial on [your own Viam Rover](/get-started/try-viam/rover-resources/), enable the front facing camera.
-  If you are using the `ViamRover` [fragment](/get-started/try-viam/rover-resources/rover-tutorial-fragments/) with your rover, the front facing camera is named `cam` and can be enabled in the `viam_base` component panel under the **CONTROL** tab.
+- If you are running this tutorial on [your own Viam Rover](/appendix/try-viam/rover-resources/), enable the front facing camera.
+  If you are using the `ViamRover` [fragment](/appendix/try-viam/rover-resources/rover-tutorial-fragments/) with your rover, the front facing camera is named `cam` and can be enabled in the `viam_base` component panel under the **CONTROL** tab.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -109,7 +109,7 @@ Navigate to your machine's **CONFIGURE** tab on the [Viam app](https://app.viam.
 
 Your configuration should look like the following:
 
-![The vision service configuration panel showing the color set to a reddish color, the hue tolerance set to 0.06, and the segment size set to 100.](/get-started/try-viam/try-viam/vision-service-config.png)
+![The vision service configuration panel showing the color set to a reddish color, the hue tolerance set to 0.06, and the segment size set to 100.](/appendix/try-viam/try-viam/vision-service-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -169,6 +169,6 @@ Try changing the detector config to detect other colors.
 
 To do more with the vision service and incorporate machine learning, try [our person detection security robot tutorial](/tutorials/projects/send-security-photo/).
 
-To learn about coding with Viam's SDKs, try [making a rover move in a square](/get-started/quickstarts/drive-rover/).
+To learn about coding with Viam's SDKs, try [making a rover move in a square](/get-started/drive-rover/).
 
 {{< snippet "social.md" >}}

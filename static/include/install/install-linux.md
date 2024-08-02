@@ -12,7 +12,7 @@ To install `viam-server` on a Linux computer:
 1. Navigate to the **CONFIGURE** tab and find your machine's card.
    An alert will be present directing you to **Set up your machine part**:
 
-   ![Machine setup alert in a newly created machine](/get-started/installation/setup-part.png)
+   ![Machine setup alert in a newly created machine](/installation/setup-part.png)
 
    Click **View setup instructions** to open the setup instructions.
 
@@ -24,4 +24,4 @@ To install `viam-server` on a Linux computer:
 1. Once you have followed the steps on the setup instructions, `viam-server` is installed and running.
    Wait for confirmation that your computer has successfully connected.
 
-By default, `viam-server` will start automatically when your system boots, but you can [change this behavior](/get-started/installation/manage/) if desired.
+By default, `viam-server` will start automatically when your system boots, but you can [change this behavior](/installation/manage/) if desired.
