@@ -55,7 +55,7 @@ When using a rented Viam rover, adding [modules](/registry/) is disabled for sec
 ## FAQ
 
 Try Viam allows you to try the Viam platform without setting up any hardware yourself.
-No matter where you are in the world you can take over and play around with a Viam Rover in our robotics lab!
+You can take over and play around with a Viam Rover in our robotics lab from anywhere in the world!
 
 ### How do I make a reservation to take over a Viam Rover?
 
