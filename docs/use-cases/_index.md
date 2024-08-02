@@ -3,7 +3,6 @@ title: "How-to Guides"
 linkTitle: "How-to Guides"
 weight: 200
 type: "docs"
-no_list: true
 ---
 
 Get started in less than 5 minutes with one of these quickstarts:
@@ -20,6 +19,7 @@ or click on one of the following guides that provide solutions for common tasks 
 
 {{< cards >}}
 {{% card link="/use-cases/configure/" class="fit-contain" %}}
+{{% card link="/use-cases/develop-app/" class="fit-contain" %}}
 {{% card link="/use-cases/image-data/" class="fit-contain" %}}
 {{% card link="/use-cases/deploy-ml/" class="fit-contain" %}}
 {{% card link="/use-cases/collect-sensor-data/" %}}
