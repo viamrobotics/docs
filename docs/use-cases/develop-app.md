@@ -4,7 +4,8 @@ linkTitle: "Control code for your machine"
 weight: 10
 type: "docs"
 description: "Write code to control machines and run it on the machine or remotely."
-images: ["/platform/build.svg", "/services/ml/configure.svg"]
+images: ["/general/code.png"]
+imageAlt: "Code sample"
 tags: ["components", "configuration"]
 ---
 
@@ -103,7 +104,10 @@ The sample code will show you how to authenticate and connect to a machine, as w
 {{% tablestep link="/appendix/apis/" %}}
 **3. Use component and service APIs**
 
-Now that you have run code to control your machine, see [component APIs](/appendix/apis/#component-apis) and [service APIs](/appendix/apis/#service-apis) for a full list of available API methods.
+Each category of {{< glossary_tooltip term_id="resource" text="resource" >}} has a standardized API that you can access with an SDK (software development kit) in your preferred programming language.
+For example, you can send the same [`SetPower` command](/components/motor/#setpower) to any kind of motor, using any of the available SDKs.
+
+See [component APIs](/appendix/apis/#component-apis) and [service APIs](/appendix/apis/#service-apis) for a full list of available API methods.
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -117,7 +121,8 @@ There are three different ways you can run code to control your machine:
 **1. Run code remotely or on your machine**
 
 You can run the code to control your machine on any computer where you have an SDK installed.
-If the computer that `viam-server` runs on has enough compute power, you can also configure your machine to run your code as a process whenever it boots.
+
+If the computer that `viam-server` runs on has enough compute power, you can also configure your machine to run your code as a managed process whenever it boots.
 See [Processes](/configure/processes/#configure-a-process) for more information.
 
 {{% /tablestep %}}

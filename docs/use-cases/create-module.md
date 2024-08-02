@@ -1482,8 +1482,8 @@ _Add instructions here for any requirements._
 
 ## Configure your <INSERT MODEL NAME> <INSERT API NAME>
 
-Navigate to the [**CONFIGURE** tab](https://docs.viam.com/build/configure/) of your [machine](https://docs.viam.com/fleet/machines/) in [the Viam app](https://app.viam.com/).
-[Add <INSERT COMPONENT TYPE / INSERT RESOURCE NAME> to your machine](https://docs.viam.com/build/configure/#components).
+Navigate to the [**CONFIGURE** tab](https://docs.viam.com/configure/) of your [machine](https://docs.viam.com/fleet/machines/) in [the Viam app](https://app.viam.com/).
+[Add <INSERT COMPONENT TYPE / INSERT RESOURCE NAME> to your machine](https://docs.viam.com/configure/#components).
 
 On the new component panel, copy and paste the following attribute template into your <INSERT API NAME>’s attributes field:
 
@@ -1537,7 +1537,7 @@ This module implements the [`rdk:component:base` API](/components/base/#api) in 
 > Before configuring your base, you must [create a machine](/cloud/machines/#add-a-new-machine).
 
 Navigate to the **CONFIGURE** tab of your machine’s page in [the Viam app](https://app.viam.com/).
-[Add `base` / `agilex-limo` to your machine](https://docs.viam.com/build/configure/#components).
+[Add `base` / `agilex-limo` to your machine](https://docs.viam.com/configure/#components).
 
 On the new component panel, copy and paste the following attribute template into your base’s attributes field:
 

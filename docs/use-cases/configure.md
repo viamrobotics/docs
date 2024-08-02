@@ -31,7 +31,7 @@ Then create a machine by typing in a name and clicking **Add machine**.
 All of the software that runs your smart machine is packaged into a binary called `viam-server`.
 Install it on the computer controlling your smart machine by following the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} in the [Viam app](https://app.viam.com/).
 
-If you are using a microcontroller instead of a 64-bit computer, you can install a [lightweight version of `viam-server`](/get-started/installation/microcontrollers/).
+If you are using a microcontroller instead of a 64-bit computer, you can install a [lightweight version of `viam-server`](/get-started/installation/#install-micro-rdk).
 You can install `viam-server` on your personal computer, or on a single-board computer (SBC).
 
 {{% /tablestep %}}
@@ -54,11 +54,11 @@ Each physical piece of your smart machine that is controlled by a computer is ca
 For each component that makes up your machine:
 
 1. Find an appropriate model for your hardware. For example, you can scroll through available sensor models on the [sensor page](/components/sensor/#available-models).
-2. Add a suitable model to your machine on the **CONFIGURE** page by [choosing the component type](/build/configure/#components) (example: `camera`) and model (example: `webcam`).
+2. Add a suitable model to your machine on the **CONFIGURE** page by [choosing the component type](/configure/#components) (example: `camera`) and model (example: `webcam`).
 3. Click on the **Test** area of the configuration panel to test your component.
 4. If any problems occur check the [logs](/cloud/machines/#logs) or review or roll back the [configuration history](/cloud/machines/#configure).
 
-If a component you want to use for your project is not natively supported, you can [build your own modular resource](/use-cases/create-module).
+If a component you want to use for your project is not natively supported, you can [build your own modular resource](/use-cases/create-module/).
 
 You need to [_configure_](/configure/) your machine so that `viam-server` can interact with its hardware.
 Use the configuration builder tool in the Viam app to create a file that describes what hardware you are using and how it is connected.

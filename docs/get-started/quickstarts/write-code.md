@@ -145,7 +145,11 @@ The sample code will show you how to authenticate and connect to a machine, as w
 
 Now that you have run code to control your machine, see [Component APIs](/appendix/apis/#component-apis) and [Service APIs](/appendix/apis/#service-apis) for a full list of available API methods.
 
-To run your code as a process on your machine whenever it boots, see [Processes](/configure/processes/#configure-a-process).
+For more detailed information on writing and deploying code:
+
+{{< cards >}}
+{{% card link="/use-cases/develop-app/" %}}
+{{< /cards >}}
 
 To see full sample projects, check out these tutorials:
 
