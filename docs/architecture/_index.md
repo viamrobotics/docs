@@ -36,7 +36,7 @@ In most cases, that file contains credentials that `viam-server` uses to fetch i
 <details>
   <summary>Click for information on local configuration</summary>
   <p>
-  If you need to run your machine offline, you can manually create a local configuration and put that in the file instead of credentials, eliminating the need for `viam-server` to fetch its config.<br><br>
+  If you need to run your machine offline, you can manually create a local configuration and put that in the file instead of credentials, eliminating the need for <code>viam-server</code> to fetch its config.<br><br>
   The advantages of using the credentials and pulling the config from the Viam app are:
   <ul>
     <li>The config builder UI in the Viam app is more user-friendly than writing JSON manually</li>
@@ -58,7 +58,7 @@ Either way, you include a few lines of code at the top of your script that set u
 
 ![alt](/build/program/sdks/robot-client.png)
 
-### `viam-server`
+## `viam-server`
 
 `viam-server` is the open-source executable binary that runs on your machine's SBC or other computer.
 
@@ -114,7 +114,6 @@ If you have a more complex situation with multiple computers and associated hard
 - Multiple individual machines, linked by a {{< glossary_tooltip term_id="remote-part" text="remote" >}} connection.
 
 These two options are very similar; in both cases, the parts communicate with each other securely using gRPC/{{< glossary_tooltip term_id="webrtc" text="WebRTC" >}}.
-See [Parts, Sub-parts and Remotes](/architecture/parts/) for more details.
 
 Because the parts are interconnected, you can write SDK code that establishes a connection with one of them and controls them all in a coordinated way.
 
@@ -128,11 +127,11 @@ You can set up a second {{< glossary_tooltip term_id="part" text="part" >}} on a
 
 {{< /expand >}}
 
+See [Parts, Sub-parts and Remotes](/architecture/parts/) for more details.
+
 ## Communication flow
 
-TODO: Figure out which details should be in this section
-
-On boot, `viam-server` establishes a {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}} connection with the Viam app.
+On startup, `viam-server` establishes a {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}} connection with the Viam app.
 It pulls its configuration from the app over the internet, caches it locally, and initializes all components and services based on that configuration.
 
 If sub-parts or remote parts are configured, communications are established between the `viam-server` instances on each of them.
@@ -162,6 +161,8 @@ Here's how data flows in Viam:
 1. You can view your data from the Viam app or query it using Viam SDKs, MQL, or SQL.
 
 TODO: Data flow diagram
+
+For more information, see [Data Management](/services/data/).
 
 ## Next steps
 
