@@ -41,7 +41,7 @@ When using a rented Viam rover, adding [modules](/registry/) is disabled for sec
 
 {{< readfile "/static/include/try-viam/extend-a-reservation.md" >}}
 
-### Cancel my reservation/session
+### Cancel my reservation
 
 {{< readfile "/static/include/try-viam/cancel-a-reservation.md" >}}
 
