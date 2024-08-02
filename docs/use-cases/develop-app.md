@@ -1,6 +1,6 @@
 ---
-title: "Write code to control your machine"
-linkTitle: "Write code to control your machine"
+title: "Write and deploy code to control your machine"
+linkTitle: "Control code for your machine"
 weight: 10
 type: "docs"
 description: "Write code to control machines and run it on the machine or remotely."
@@ -21,7 +21,7 @@ Once you have configured a machine, start writing code to perform actions with t
 
 {{< table >}}
 {{% tablestep link="/sdks/" %}}
-**1. Write code to control your machine**
+**1. Install an SDK**
 
 Write a program to control your smart machine using the programming language of your choice.
 Viam has [SDKs](/sdks/) for Python, Golang, C++, TypeScript, and Flutter.
@@ -92,13 +92,16 @@ flutter pub add viam_sdk
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% /tablestep %}}
+{{% tablestep link="/appendix/apis/" %}}
+**2. Copy the connection code**
 
 Then copy and run the sample code to connect to your machine.
 
 The sample code will show you how to authenticate and connect to a machine, as well as some of the methods you can use on your configured components and services.
 {{% /tablestep %}}
 {{% tablestep link="/appendix/apis/" %}}
-**2. Use component and service APIs**
+**3. Use component and service APIs**
 
 Now that you have run code to control your machine, see [component APIs](/appendix/apis/#component-apis) and [service APIs](/appendix/apis/#service-apis) for a full list of available API methods.
 
@@ -107,20 +110,38 @@ Now that you have run code to control your machine, see [component APIs](/append
 
 ## Run your code
 
+There are three different ways you can run code to control your machine:
+
 {{< table >}}
-{{% tablestep link="/configure/processes/" %}}
-**1. Run code**
+{{% tablestep link="/sdks/#run-code" %}}
+**1. Run code remotely or on your machine**
 
 You can run the code to control your machine on any computer where you have an SDK installed.
-If the computer that `viam-server` runs on has enough compute power, you can run your code as a process on your machine whenever it boots.
+If the computer that `viam-server` runs on has enough compute power, you can also configure your machine to run your code as a process whenever it boots.
 See [Processes](/configure/processes/#configure-a-process) for more information.
 
-You can also write logic to control your machine by [creating a module](/use-cases/create-module/) that incorporates custom functionality.
-For an example of this, see the [Create a Facial Verification System](/tutorials/projects/verification-system/) tutorial which runs its logic from a module.
-Running your code from a module will allow you to deploy it to one or more machines and manage configuration and versioning using the registry.
+{{% /tablestep %}}
+{{% tablestep link="/use-cases/create-module/" %}}
+**2. (Recommended) Wrap your code in a module**
+
+Once you have written code to control your machine and tested it, you can then wrap your custom functionality by [creating a module](/use-cases/create-module/).
+In wrapping your code into a module, you will be able to:
+
+- deploy it across one or more machines
+- use it in {{< glossary_tooltip term_id="fragment" text="fragments" >}}
+- version it
+
+You can package any files, code, or executable into a module.
+When you add a module to your machine's configuration, the entrypoint defined for the module is run which can start your code.
+
+If the code you have written augments what a component does, such as, for example, adding an overlay to a camera stream, create your own camera model inside your module and amend the API methods to have your custom functionality.
+For an example of this, see the [facial-detection module](https://github.com/viam-labs/facial-detection) which wraps its logic into a custom vision service.
+
+If your functionality does not conform to existing API types such as the motor or camera API, you can [use a generic API to wrap your code](https://docs.viam.com/use-cases/create-module/#choose-an-api-to-implement-in-your-model).
+
+For more information, see [How to create and deploy a new module](/use-cases/create-module/).
 
 {{% /tablestep %}}
-
 {{< /table >}}
 
 ## Next steps
@@ -128,7 +149,7 @@ Running your code from a module will allow you to deploy it to one or more machi
 To see full sample projects, that configure and control machines, check out these tutorials:
 
 {{< cards >}}
-{{% card link="/get-started/quickstarts/drive-rover/" %}}
 {{% card link="/tutorials/get-started/blink-an-led/" %}}
 {{% card link="/tutorials/services/color-detection-scuttle/" %}}
+{{% card link="/tutorials/custom/custom-base-dog/" %}}
 {{< /cards >}}
