@@ -78,7 +78,7 @@ Here are some of the boards Viam supports:
 Your machine does not need to be connected to the cloud.
 Viam is designed to work whether your machine is connected to the internet continuously or intermittently.
 
-`viam-server` is installed resides on your machine and alongside your configurations, your code, and services.
+Once `viam-server` is installed, it resides on your machine and alongside your configurations, your code, and services.
 In scenarios without cloud connectivity, you can still connect your machine to a local area network (LAN), or to any relevant devices (such as a gamepad):
 
 - All APIs work locally or in the cloud
