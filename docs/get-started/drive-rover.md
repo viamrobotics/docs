@@ -38,8 +38,8 @@ In this guide you'll write code that makes a rover drive in a square.
 
 {{< alert title="You will learn" color="tip" >}}
 
-1. How to run SDK code
-2. How to use the base API to move a rover in a square
+- How to run SDK code
+- How to use the base API to move a rover in a square
 
 {{< /alert >}}
 
@@ -52,7 +52,7 @@ You only need the following:
 
 - A computer that can run SDK code.
 - A [rented Viam Rover](https://app.viam.com/try), [your own Viam Rover](/appendix/try-viam/rover-resources/), or another [mobile robot](/components/base/).
-  You can use [Try Viam](https://app.viam.com/try) to rent a rover online at no cost which is already configured with all the components you need.
+  You can use [Try Viam](https://app.viam.com/try) to borrow a rover online at no cost which is already configured with all the components you need.
   If you have your own rover on hand, whether it's a [Viam rover](https://www.viam.com/resources/rover) or not, this tutorial works for any wheeled robot that can be configured as a [base component](/components/base/wheeled/).
 
 ## Instructions
@@ -61,9 +61,9 @@ Follow these steps to get your rover ready inside the Viam app and write code to
 
 {{< tabs >}}
 {{% tab name="Rented Try Viam Rover" %}}
-{{< expand "Step 1: Rent a Viam Rover" >}}
+{{< expand "Step 1: Borrow a Viam Rover" >}}
 
-Go to [Try Viam](https://app.viam.com/try) and rent a rover.
+Go to [Try Viam](https://app.viam.com/try) and borrow a rover.
 If a rover is available, the rover will take up to 30 seconds to be configured for you.
 
 {{< alert title="Tip" color="tip" >}}

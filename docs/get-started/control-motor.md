@@ -24,9 +24,9 @@ In this guide you'll configure and control a motor.
 
 {{< alert title="You will learn" color="tip" >}}
 
-1. How to create a machine and install viam-server
-2. How to configure a board and a motor
-3. How to control your motor with UI and code
+- How to create a machine and install viam-server
+- How to configure a board and a motor
+- How to control your motor with UI and code
 
 {{< /alert >}}
 

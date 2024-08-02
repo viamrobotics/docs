@@ -22,13 +22,13 @@ Viam is a software platform that makes it easy to work with hardware and softwar
 {{< imgproc src="/viam/viam.png" alt="Viam overview" resize="800x" class="aligncenter" >}}
 </div>
 
+<div>
+{{< imgproc src="/viam/pet-feeder.png" alt="Machine components" resize="400x" class="alignright" >}}
+</div>
+
 At the core of Viam is the open-source `viam-server` executable which runs on a device and manages hardware and software for a machine.
 To use Viam with a machine, you create a configuration that contains components and services and you can choosen from a wide variety of available models for different resources.
 For example, if you have a pet-feeding machine you might install `viam-server` on a Raspberry Pi and create a machine configuration using a camera model and a servo model for the hardware you are using.
-
-<div>
-{{< imgproc src="/viam/pet-feeder.png" alt="Machine components" resize="400x" class="aligncenter" >}}
-</div>
 
 The Viam App provides the user interface for configuring your machine.
 It allows you to configure builtin drivers or drivers from the Viam Registry.
@@ -46,15 +46,15 @@ On top of configuration, the Viam App also provides several higher-level functio
 - **Motion planning**: Plan and move machine components.
 - **Simultaneous Localization And Mapping (SLAM)**: A machine can map its surroundings and find its position on a map.
 
-<div>
-{{< imgproc src="/viam/machine-components.png" alt="Machine components" resize="600x" class="aligncenter" >}}
-</div>
+## Standardized APIs
 
 Each category of {{< glossary_tooltip term_id="resource" text="resource" >}} has a standardized API that you can access with an [SDK (software development kit)](/sdks/) in your preferred programming language.
 For example, you can send the same [`SetPower` command](/components/motor/#setpower) to any kind of motor, using any of the available SDKs.
 
 The standardized nature of the resource APIs, means that when you build machines, you can swap out components such as motors without changing any code.
 The only change needed is to your machine configuration.
+
+The Viam [Registry](/registry/) provides a marketplace for adding and sharing modules, all using these standard APIs.
 
 ## Scale
 
@@ -76,6 +76,7 @@ Here are some of the boards Viam supports:
 ## Network flexibility
 
 Your machine does not need to be connected to the cloud.
+Viam is designed to work whether your machine is connected to the internet continuously or intermittently.
 
 `viam-server` is installed resides on your machine and alongside your configurations, your code, and services.
 In scenarios without cloud connectivity, you can still connect your machine to a local area network (LAN), or to any relevant devices (such as a gamepad):

@@ -4,6 +4,6 @@ title: "Prepare Devices"
 weight: 95
 empty_node: true
 layout: "empty"
-canonical: "get-started/installation/"
+canonical: "/installation/"
 type: "docs"
 ---

@@ -220,11 +220,11 @@ You can view the complete JSON for your rover by clicking on **Raw JSON** at the
 
 ![The CONFIG tab with the mode toggled to Raw JSON. A section of the full raw JSON config is displayed but one would have to scroll to see all of it.](appendix/try-viam/try-viam/raw-json.png)
 
-You can [copy this `JSON` config between rental rovers](/appendix/try-viam/faq/#how-can-i-reuse-my-rented-rover).
+You can [copy this `JSON` config between rental rovers](/appendix/try-viam/reserve-a-rover/#how-can-i-reuse-my-rented-rover).
 
 ## Next steps
 
-If you have questions, check out our [FAQ](/appendix/try-viam/faq/) or join our [Discord Community](https://discord.gg/viam), where you can ask questions and meet other people working on robots.
+If you have questions, check out our [FAQ](/appendix/try-viam/reserve-a-rover/) or join our [Discord Community](https://discord.gg/viam), where you can ask questions and meet other people working on robots.
 
 {{< cards >}}
 {{% card link="/get-started/drive-rover/" %}}

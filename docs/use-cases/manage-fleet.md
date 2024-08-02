@@ -43,7 +43,7 @@ Assign each user a role (owner or operator) to manage permissions.
 {{<imgproc src="/fleet/app-usage/limit-access.png" resize="1000x" style="max-width: 600px" class="aligncenter" declaredimensions=true alt="Limit user access">}}
 
 {{% /tablestep %}}
-{{% tablestep link="/get-started/installation/" %}}
+{{% tablestep link="/installation/" %}}
 **4. Connect machines to the cloud**
 
 Users with access to a location can create and collaborate on the [machines](/cloud/machines/) within it.

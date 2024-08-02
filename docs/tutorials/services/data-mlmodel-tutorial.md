@@ -38,8 +38,8 @@ With all three services working together, your machine will be able to analyze i
 When it detects a likely match, it will overlay a confidence score onto the camera feed alongside the name of the detected shape, indicating how closely the shape in the camera frame matches a shape it has seen before.
 
 {{< alert title="Tip" color="tip" >}}
-To get started without any hardware, you can rent a rover through [Try Viam](https://app.viam.com/try), which is pre-configured with everything you need to begin this tutorial.
-Rover rentals are 10 minutes in length, but you can [extend your session](/appendix/try-viam/faq/#can-i-extend-my-time) as needed, or [re-use a configuration from a previous session](/appendix/try-viam/faq/#how-can-i-reuse-my-rented-rover) if your time expires and you want to start a new session.
+To get started without any hardware, you can borrow a rover through [Try Viam](https://app.viam.com/try), which is pre-configured with everything you need to begin this tutorial.
+Rover rentals are 10 minutes in length, but you can [extend your session](/appendix/try-viam/reserve-a-rover/#can-i-extend-my-time) as needed, or [re-use a configuration from a previous session](/appendix/try-viam/reserve-a-rover/#how-can-i-reuse-my-rented-rover) if your time expires and you want to start a new session.
 
 You can also use your own Viam machine as long as you have followed the [prerequisite steps](#prerequisites).
 {{< /alert >}}
@@ -275,8 +275,8 @@ For an example see the following tutorial:
 
 ## Troubleshooting
 
-If you are using [Try Viam](https://app.viam.com/try) and your session expires, you can [re-use a configuration from a previous session](/appendix/try-viam/faq/#how-can-i-reuse-my-rented-rover) to keep your configuration changes.
-You can also [extend your existing session](/appendix/try-viam/faq/#can-i-extend-my-time) while it's still running, if it hasn't expired yet.
+If you are using [Try Viam](https://app.viam.com/try) and your session expires, you can [re-use a configuration from a previous session](/appendix/try-viam/reserve-a-rover/#how-can-i-reuse-my-rented-rover) to keep your configuration changes.
+You can also [extend your existing session](/appendix/try-viam/reserve-a-rover/#can-i-extend-my-time) while it's still running, if it hasn't expired yet.
 
 If your machine isn't capturing data and syncing it to the Viam app, ensure that both the data management service (named `viam-data-manager` in this tutorial) and the **Data capture** configuration for your camera (`cam` on the Try Viam rover) are enabled.
 

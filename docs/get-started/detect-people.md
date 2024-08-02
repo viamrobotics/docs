@@ -21,17 +21,18 @@ aliases:
 ---
 
 This quickstart is part of a series.
-If you haven't read through [Learn Viam](/get-started/), [driven a rover](/get-started/drive-rover/), and [controlled a motor](/get-started/control-motor), we recommend you do so before continuing.
+If you haven't read through [Learn Viam](/get-started/), [driven a rover](/get-started/drive-rover/), and [controlled a motor](/get-started/control-motor/), we recommend you do so before continuing.
 
 In this guide you'll use machine learning to detect people in a camera stream.
 
 {{< alert title="You will learn" color="tip" >}}
 
-1. How to configure a webcam
-1. How to deploy a machine learning model
-1. How to use the machine learning model with a vision service
+- How to configure a webcam
+- How to deploy a machine learning model
+- How to use the machine learning model with a vision service
 
 {{< /alert >}}
+
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/-sXdxbBVrso">}}
 
 ## Requirements

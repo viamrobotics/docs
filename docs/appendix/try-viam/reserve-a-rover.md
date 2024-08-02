@@ -15,7 +15,7 @@ aliases:
 _Try Viam_ is a way to try out the Viam platform without setting up any hardware yourself.
 You can take over a Viam Rover in our robotics lab to play around!
 
-Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](#using-the-reservation-system), [navigate the Viam platform](/fleet/), and [drive the rover](../try-viam-tutorial/#control-tab):
+Watch this tutorial video for a walkthrough of Try Viam, including [how to reserve a Viam Rover](#using-the-reservation-system), [navigate the Viam platform](/fleet/), and [drive the rover](/components/base/wheeled/#test-the-base):
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/YYpZ9CVDwMU" max-width="600px">}}
 
@@ -79,18 +79,18 @@ Yes.
 
 {{< readfile "/static/include/try-viam/cancel-a-reservation.md" >}}
 
-### How can I reuse my rented rover?
+### How can I reuse my borrowed rover?
 
 After using Try Viam, your machine config stays in your Viam account.
 You can access your machine page, write code to control it, and modify its config after your reservation time ends.
 
-When you next rent a rover you can choose to configure it with a previous rover configuration from your account or create a new rover with the standard starting config.
+When you next borrow a rover you can choose to configure it with a previous rover configuration from your account or create a new rover with the standard starting config.
 
 {{< alert title="Tip" color="tip" >}}
 You can also reuse your code for the rover for other machines that you configure with Viam in the future.
 {{< /alert >}}
 
-### What happens to my rented rover after the rental session?
+### What happens to my borrowed rover after the rental session?
 
 1. On session expiration, Viam removes the "live" status from the machine.
 2. Viam then removes your config from the physical machine in preparation for its next rental.
@@ -119,13 +119,13 @@ Another collaboration option is to use screen sharing in a Zoom or Webex session
 
 ### How many active rentals can I have?
 
-You can only rent one rover at a time.
+You can only borrow one rover at a time.
 You cannot join the queue for another reservation while you have an active rental session.
-If you would like to, you can [extend your reservation](/appendix/try-viam/faq/#can-i-extend-my-time).
+If you would like to, you can [extend your reservation](/appendix/try-viam/reserve-a-rover/#can-i-extend-my-time).
 
 ### I loved my experience - can I play around more?
 
-Yes! You can rent the rover as many times as you’d like.
+Yes! You can borrow the rover as many times as you’d like.
 Here are some tutorials which you can follow:
 
 - [Drive with the Viam SDK](/get-started/drive-rover/)

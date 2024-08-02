@@ -18,7 +18,17 @@ aliases:
   - /get-started/quickstarts/collect-data/
 ---
 
-Follow this guide to start collecting images or sensor data from your machine using the [data management service](/services/data/).
+This quickstart is the final part of a series.
+If you haven't read through [Learn Viam](/get-started/), [driven a rover](/get-started/drive-rover/), [controlled a motor](/get-started/control-motor/), and [detected people](/get-started/detect-people/) we recommend you do so before continuing.
+
+In this guide you'll use machine learning to detect people in a camera stream.
+
+{{< alert title="You will learn" color="tip" >}}
+
+- How to configure data capture and sync
+- How to view captured data
+
+{{< /alert >}}
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/zjoa8Mdx4zM">}}
 
@@ -35,7 +45,7 @@ Follow this guide to start collecting images or sensor data from your machine us
 
 {{% expand "No computer or camera at hand?" %}}
 No problem.
-Use [Try Viam](https://app.viam.com/try) to rent a rover online which is already configured with some components to test with.
+Use [Try Viam](https://app.viam.com/try) to borrow a rover online which is already configured with some components to test with.
 If you are using a Try Viam rover **start with Step 4** on the **Collect camera images** tab.
 {{% /expand%}}
 
