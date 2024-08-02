@@ -230,7 +230,7 @@ Now that you have captured data, you could use this data to train you own Machin
 
 This concludes our guided path for getting to know the Viam platform.
 
-To learn more about the viam platform, dive into the How-to Guides which provide instructions for common tasks and workflows, check out tutorials for projects, or learn more in the Platform Referecen documentation:
+To learn more about the viam platform, dive into the [How-to Guides](/use-cases/) which provide instructions for common tasks and workflows, check out [Tutorials](/tutorials/) for projects, or learn more in the [Platform Reference](/platform/) documentation:
 
 {{< cards >}}
 {{% card link="/use-cases/" %}}
