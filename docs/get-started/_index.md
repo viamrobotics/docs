@@ -39,7 +39,7 @@ As you configure your machine, you can test each resource to confirm it is worki
 
 Viam is built to be extensible, allowing you to create your own resources for custom hardware or software and deploy your code using modules through the Viam Registry.
 
-On top of configuration, the Viam App also provides several higher-level functionalities for your machine, such as:
+On top of configuration, the Viam app also provides several higher-level functionalities for your machine, such as:
 
 - **Data Management**: Any data on your machine can be synced to the cloud, from where you can query it using SQL, MQL, or with code.
 - **Machine Learning**: Train machine learning models on collected data and deploy ML models to machines to enable them to intelligently see and interpret the world around them.
