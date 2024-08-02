@@ -35,7 +35,7 @@ In this guide you'll configure and control a motor.
 ## Requirements
 
 You **do not** need to have a physical motor to follow this quickstart.
-If you have a motor and, if needed, motor driver to hand, you can use it.
+If you have a motor and compatible motor driver on hand, you can use them.
 If you do not have a motor, install `viam-server` on your laptop or computer and follow the instructions to use a _fake_ motor, which is a model that serves for testing.
 
 ## Instructions
