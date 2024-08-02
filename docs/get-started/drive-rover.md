@@ -30,7 +30,18 @@ cost: "0"
 resource: "quickstart"
 ---
 
-Follow this guide to write code that makes a rover drive in a square.
+Welcome to the Viam documentation.
+If you haven't read through [Learn Viam](/get-started/), we recommend you do so, as it will provide you with an overview of the Viam platform.
+
+The next few quickstarts, will guide you through the concepts you need to get started with Viam.
+In this guide you'll write code that makes a rover drive in a square.
+
+{{< alert title="You will learn" color="tip" >}}
+
+1. How to run SDK code
+2. How to use the base API to move a rover in a square
+
+{{< /alert >}}
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/daU5iNsSO0w">}}
 
@@ -62,17 +73,10 @@ If you are running out of time during your rental, you can [extend your rover re
 {{< /expand >}}
 
 {{% /tab %}}
-{{% tab name="Owned Viam Rover" %}}
-
-{{% alert title="Important" color="note" %}}
-If you are using your own robot for this tutorial instead of [renting one](https://app.viam.com/try), be sure to [install `viam-server`](/installation/#install-viam-server) on it and [configure](/configure/) its hardware before proceeding with this tutorial.
-{{% /alert %}}
-
-{{% /tab %}}
 {{% tab name="Other Rover" %}}
 
 {{% alert title="Important" color="note" %}}
-If you are using your own robot for this tutorial instead of [renting one](https://app.viam.com/try), be sure to [install `viam-server`](/installation/#install-viam-server) on it and [configure](/configure/) its hardware before proceeding with this tutorial.
+If you are using your own robot for this tutorial instead of [renting one](https://app.viam.com/try), be sure to [install `viam-server`](/installation/#install-viam-server) on it and [configure](/tutorials/configure/configure-rover/) its hardware before proceeding with this tutorial.
 {{% /alert %}}
 
 {{% /tab %}}
@@ -101,12 +105,6 @@ pip install viam-sdk
 Windows is not supported.
 If you are using Windows, use the [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) and install the Python SDK using the preceding instructions for Linux.
 For other unsupported systems, see [Installing from source](https://python.viam.dev/#installing-from-source).
-
-If you intend to use the [ML (machine learning) model service](/services/ml/), use the following command instead, which installs additional required dependencies along with the Python SDK:
-
-```sh {class="command-line" data-prompt="$"}
-pip install 'viam-sdk[mlmodel]'
-```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -408,12 +406,6 @@ Resources of the robot:
 {{% /tab %}}
 
 {{< /tabs >}}
-
-{{% alert title="Tip" color="tip" %}}
-
-If you are [renting your rover](https://app.viam.com/try), and your reservation ends before you have completed this tutorial, you can start a new session with the same rover configuration so you do not need to change the connection information (the robot address and the payload).
-
-{{% /alert %}}
 
 {{< /expand >}}
 {{< expand "Step 4: Drive a rover in a square" >}}
@@ -879,8 +871,7 @@ When you run your code, your robot moves in a square.
 
 {{% alert title="Tip" color="tip" %}}
 
-If you are [renting your rover](https://app.viam.com/try), and your reservation ends before you have completed this tutorial, you can start a new session with the same rover configuration so you do not need to change the connection information (the robot address and the payload).
-
+If you are interested to learn about what other commands you can give to a base, see the standardized [base API](/components/base/#api) for a full list of available API methods.
 {{% /alert %}}
 
 {{< /expand>}}
@@ -1315,13 +1306,8 @@ int main() {
 
 ## Next steps
 
-Now that you have run code to control your machine, see the [base API](/components/base/#api) for a full list of available API methods.
-
-You can also write code to control any other components on the rover, like a [camera](/components/camera/), or the rover's individual [motors](/components/motor/).
-If your rover has a camera, you you can [add color detection to your rover](/tutorials/services/basic-color-detection/).
+Now that you have run your first code to control a machine running Viam code to control your machine, move to the next quickstart to learn how to configure and control a motor:
 
 {{< cards >}}
-{{% card link="/components/camera/" %}}
-{{% card link="/components/motor/" %}}
-{{% card link="/tutorials/services/basic-color-detection/" %}}
+{{% card link="/get-started/control-motor/" %}}
 {{< /cards >}}

@@ -21,7 +21,7 @@ The data management service captures data from one or more components.
 Get started with a quickstart guide or keep reading for more details.
 
 {{< cards >}}
-{{< card link="/get-started/quickstarts/collect-data/" class="green">}}
+{{< card link="/get-started/collect-data/" class="green">}}
 {{< /cards >}}
 
 {{< tabs >}}

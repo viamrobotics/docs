@@ -34,7 +34,7 @@ Currently, the vision service supports the following kinds of operations:
 To get started with a mini project, see this quickstart guide:
 
 {{< cards >}}
-{{< card link="/get-started/quickstarts/detect-people/" class="green">}}
+{{< card link="/get-started/detect-people/" class="green">}}
 {{< /cards >}}
 
 ## Detections

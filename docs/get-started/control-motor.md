@@ -17,16 +17,26 @@ aliases:
   - /get-started/quickstarts/control-motor/
 ---
 
-You can use Viam to control a motor's speed and direction directly from [the Viam app](https://app.viam.com/), [the mobile app](/fleet/#the-viam-mobile-app), or [programmatically](/sdks/).
+This quickstart is part of a series.
+If you haven't read through [Learn Viam](/get-started/) and [driven a rover](/get-started/drive-rover/), we recommend you do so before continuing.
+
+In this guide you'll configure and control a motor.
+
+{{< alert title="You will learn" color="tip" >}}
+
+1. How to create a machine and install viam-server
+2. How to configure a board and a motor
+3. How to control your motor with UI and code
+
+{{< /alert >}}
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/awLbMqaByrE">}}
 
 ## Requirements
 
-- A single-board computer with a supported OS installed (such as Raspberry Pi)
-- A motor and compatible motor driver connected to the board
-- A power supply for the board
-- A separate power supply for the motor
+You **do not** need to have a physical motor to follow this quickstart.
+If you have a motor and, if needed, motor driver to hand, you can use it.
+If you do not have a motor, install `viam-server` on your laptop or computer and follow the instructions to use a _fake_ motor, which is a model that serves for testing.
 
 ## Instructions
 
@@ -48,14 +58,18 @@ Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} th
 {{< /expand >}}
 {{< expand "Step 3: Configure a board" >}}
 
-Then, [add a board component](/components/board/).
+On the **CONFIGURE** page you can add components and services to your machine.
+Click on the **+** icon to select a suitable board.
 
-Look through the [**Supported Models**](/components/motor/#available-models) to determine the model of component to configure.
+If you are using a physical board to follow along, look through the [**Supported Models**](/components/motor/#available-models) to determine the model of component to configure.
 For example, configure a [`pi` board](/components/board/pi/) for a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W:
 
 ![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/get-started/quickstarts/configure-pi.png)
 
+If you do not have a physical board, use the [`fake` board model](/components/board/fake/).
+
 Follow the instructions in the board model's documentation to configure any required attributes.
+For the `fake` model, there are no required attributes.
 
 {{< /expand >}}
 {{< expand "Step 4: Configure a motor" >}}
@@ -69,6 +83,10 @@ For example, if you are using a standard DC motor (brushed or brushless) wired t
 Follow the motor driver manufacturer's data sheet to properly wire your motor driver to your board and to your motor.
 Follow the [model's documentation](/components/motor/) to configure the attributes so that the computer can send signals to the motor.
 
+If you do not have a physical motor, use the [`fake` motor model](/components/motor/fake/).
+For the `fake` model, there are no required attributes.
+
+**Save your configuration.**
 {{< /expand >}}
 {{< expand "Step 5: Choose how you will control the motor" >}}
 
@@ -76,7 +94,7 @@ You can control your motor directly from the Viam app, using the mobile app, or 
 
 ### Option 1: Control from the app
 
-Save your configuration and navigate to your machine's **CONTROL** tab in the Viam app and use the **Power %** slider to set the motor's speed.
+Navigate to your machine's **CONTROL** tab in the Viam app and use the **Power %** slider to set the motor's speed.
 Use the **Backwards** and **Forwards** buttons to change the direction.
 
 {{<gif webm_src="/get-started/quickstarts/motor-control.webm" mp4_src="/get-started/quickstarts/motor-control.mp4" alt="Using the slider, Backwards, and Forwards buttons on the Viam app to control the direction and speed of a configured motor" class="aligncenter"  min-height="750px">}}
@@ -95,10 +113,11 @@ Select the location that your machine is assigned to from the **Locations** tab.
 
 ### Option 3: Control programmatically
 
-You can use the following code to control the motor's speed and direction using your preferred SDK.
-Find your machine's API key and address on your machine's **CONNECT** tab.
+If you have [driven a rover](/get-started/drive-rover/), you have already seen that a base has a standardized API.
+Each component has a standardized API.
+The following code shows you how to control the motor's speed and direction using the [Motor API](/components/motor/#api).
 
-For more information, see the [Motor API](/components/motor/#api).
+If you'd like to try it, find your machine's API key and address on your machine's **CONNECT** tab and run the code sample:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -217,18 +236,8 @@ func main() {
 
 ## Next steps
 
-Now that you have made a motor move, explore other components or related services:
+Now that you have configured and controlled a motor, the next quickstart will introduce you to your first service:
 
 {{< cards >}}
-{{% card link="/components/" %}}
-{{% card link="/services/navigation/" %}}
-{{% card link="/components/encoder/" %}}
-{{< /cards >}}
-
-To see motors in real-world projects, check out these tutorials:
-
-{{< cards >}}
-{{% card link="/tutorials/get-started/confetti-bot/" %}}
-{{% card link="/tutorials/get-started/lazy-susan/" %}}
-{{% card link="/tutorials/configure/configure-rover/" %}}
+{{% card link="/get-started/detect-people/" %}}
 {{< /cards >}}

@@ -1,6 +1,6 @@
 ---
-title: "Quick Start"
-linkTitle: "Quick Start"
+title: "Learn about Viam"
+linkTitle: "Learn about Viam"
 weight: 5
 description: "Viam is a complete software platform for smart machines which provides modular components and services for vision, motion, SLAM, ML, and data management."
 no_list: true
@@ -16,143 +16,81 @@ images: ["/general/understand.png"]
 carouselscript: true
 ---
 
-Viam is a complete software platform that supports every step of your {{< glossary_tooltip term_id="smart-machine" text="smart machine">}} development lifecycle.
+Viam is a software platform that makes it easy to work with hardware and software.
 
-## Plan your machine
+<div>
+{{< imgproc src="/viam/viam.png" alt="Viam overview" resize="800x" class="aligncenter" >}}
+</div>
 
-When using Viam, this is what you'll need to know to plan your machine:
+At the core of Viam is the open-source `viam-server` executable which runs on a device and manages hardware and software for a machine.
+To use Viam with a machine, you create a configuration that contains components and services and you can choosen from a wide variety of available models for different resources.
+For example, if you have a pet-feeding machine you might install `viam-server` on a Raspberry Pi and create a machine configuration using a camera model and a servo model for the hardware you are using.
 
-<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/633d91b848050946efcf0690_viam-overview-illustrations-build.svg" alt="A diagram of machine parts and software" class="alignright" style="width:250px;"></img>
+<div>
+{{< imgproc src="/viam/pet-feeder.png" alt="Machine components" resize="400x" class="aligncenter" >}}
+</div>
 
-- **Hardware**:
-  Many {{< glossary_tooltip term_id="component" text="components">}} are natively supported by the Viam platform.
-  You will not need to write a single line of code to integrate them, and swapping out component models will not require code changes.
-- **Functionality**:
-  You can use computer vision, motion planning, simultaneous localization and mapping (SLAM), data management, machine learning, and more by configuring Viam's built-in {{< glossary_tooltip term_id="service" text="services">}}.
-- **Architecture**:
-  You can build simple machines or multi-part machines that use secure communication channels across local networks and the cloud, all of which can be managed with a uniform API.
-- **Extensibility**: If you need additional functionality, you can leverage {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} from the Viam registry to extend support in Viam to new hardware components and software services.
+The Viam App provides the user interface for configuring your machine.
+It allows you to configure builtin drivers or drivers from the Viam Registry.
+`viam-server` then manages and runs the drivers for the configured resources.
+As you configure your machine, you can test each resource to confirm it is working as expected.
 
-Join the [**Viam community**](https://discord.gg/viam) to collaborate during planning and beyond.
+{{<gif webm_src="/test.webm" mp4_src="/test.mp4" alt="Test a camera stream" max-width="700px" class="aligncenter">}}
 
-## Get started
+Viam is built to be extensible, allowing you to create your own resources for custom hardware or software and deploy your code using modules through the Viam Registry.
 
-A _smart machine_ in Viam consists of at least one computer, typically a [single-board computer](/installation/), running `viam-server` and communicating with any hardware connected to it by signaling through digital data pins.
+On top of configuration, the Viam App also provides several higher-level functionalities for your machine, such as:
+
+- **Data Management**: Any data on your machine can be synced to the cloud, from where you can query it using SQL, MQL, or with code.
+- **Machine Learning**: Train machine learning models on collected data and deploy ML models to machines to enable them to intelligently see and interpret the world around it.
+- **Motion planning**: Plan and move machine components.
+- **Simultaneous Localization And Mapping (SLAM)**: A machine can map its surroundings and find its position on a map.
+
+<div>
+{{< imgproc src="/viam/machine-components.png" alt="Machine components" resize="600x" class="aligncenter" >}}
+</div>
+
+Each category of {{< glossary_tooltip term_id="resource" text="resource" >}} has a standardized API that you can access with an [SDK (software development kit)](/sdks/) in your preferred programming language.
+For example, you can send the same [`SetPower` command](/components/motor/#setpower) to any kind of motor, using any of the available SDKs.
+
+The standardized nature of the resource APIs, means that when you build machines, you can swap out components such as motors without changing any code.
+The only change needed is to your machine configuration.
+
+## Scale
+
+The Viam App does not limit you to managing just one machine.
+Viam's **fleet management** capabilities enable you to:
+
+- Manage permissions within your organization and locations.
+- Manage software across your fleet, including deployment of code and machine learning models.
+- Configure, control, debug, and manage groups of machines in one go.
+
+## Support
+
 Viam supports devices running **any** 64-bit Linux OS or macOS.
 Here are some of the boards Viam supports:
 
 {{< board-carousel >}}
 <br>
 
-{{< imgproc src="/viam/board-viam-server.png" alt="A diagram of a single-board computer running viam-server." resize="270x" class="alignleft" style="max-width:270px" >}}
-
-The Viam platform provides a user interface for connecting to and managing machines, the [Viam app](https://app.viam.com/).
-
-To use the Viam platform with your machine, log in to [the app](https://app.viam.com/), create a new machine, and [install](/installation/) the [`viam-server`](https://github.com/viamrobotics/rdk) binary which:
-
-- Creates, configures, and maintains the machine.
-- Securely handles all communications.
-- Runs drivers, custom code, and any other software.
-- Accepts API requests.
-- Runs services like computer vision, data synchronization, and motion planning.
-
-{{% alert title="Info" color="info" %}}
-Everything Viam runs on your machine is [open-source](https://github.com/viamrobotics).
-{{% /alert %}}
-
-## Configure your machine
-
-Machines can be small and simple or very complex.
-A machine can be a single-board computer with a single sensor or LED wired to it, or a machine can consist of multiple computers with many physical components connected, acting as one unit.
-
-The term {{% glossary_tooltip term_id="component" text="_component_" %}} describes a piece of hardware that a computer controls, like an arm or a motor.
-
-For each component that makes up your machine:
-
-<p>
-{{< imgproc src="/viam/test_components.png" alt="Multiple components being tested in the Viam app." resize="320x" style="max-width:320px" class="alignright" >}}
-</p>
-
-1. Add it to your machine by [choosing the component type](/configure/#components) (example: `camera`) and model (example: `webcam`).
-2. Test it with the visual [control tab](/fleet/control/).
-3. See any problems with in-app [logs](/cloud/machines/#logs), review or roll back [configuration history](/cloud/machines/#configure).
-
-After configuring your machine's hardware, you can configure [high level functionality](/services/) the same way:
-
-- **Data Management** enables you to capture and sync data from one or more machines, and use that data for machine learning and beyond.
-- **Fleet management** enables you to configure, control, debug, and manage entire fleets of machines.
-- **Motion planning** enables your machine to plan and move itself.
-- **Vision** enables your machine to intelligently see and interpret the world around it.
-- **Simultaneous Localization And Mapping (SLAM)** enables your machine to map its surroundings and find its position on a map.
-
-<div>
-{{< imgproc src="/viam/machine-components.png" alt="Machine components" resize="600x" class="aligncenter" >}}
-</div>
-
-## Control your machine
-
-<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure machine control." class="alignleft" style="max-width:270px;"></img>
-
-The Viam platform provides a consistent programming interface for all machines, allowing you to [control your machines](/appendix/apis/) with code in the **language of your choice**.
-Viam currently has SDKs for [Go](https://pkg.go.dev/go.viam.com/rdk), [Python](https://python.viam.dev/), and [TypeScript](https://ts.viam.dev/).
-Additional SDKs are coming soon, including Rust, Java, C++, and Flutter.
-
-TLS certificates provided by [app.viam.com](https://app.viam.com) ensure that all communication is authenticated and encrypted.
-Viam uses {{< glossary_tooltip term_id="webrtc" >}} to create secure peer-to-peer paths between machines and clients for fast, low-latency communication.
-The Viam cloud does not receive any command or control information regarding your machines, ensuring low latency, robustness, and privacy.
-With WebRTC established, Viam uses {{< glossary_tooltip term_id="grpc" text="gRPC" >}} so you can program your machines in many common programming languages.
-
-This provides flexibility and security whether you are building tight control loops for autonomous mobile machines, event-based triggers for IoT devices, or custom web-based machine management interfaces.
-
-There are four categories of APIs:
-
-- [Robot](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) provides high level machine commands
-- [Components](/components/) like motors, arms, GPS
-- [Services](/services/) like computer vision, motion planning, Simultaneous Localization And Mapping (SLAM)
-- Cloud applications like [Fleet Management](/fleet/), [Data Management](/services/data/)
-
-You can see the Viam API specification on [GitHub](https://github.com/viamrobotics/api).
-
-### Network flexibility
+## Network flexibility
 
 Your machine does not need to be connected to the cloud.
 
-The `viam-server` software resides on your machine alongside your configurations, your code, and appropriate services.
-In scenarios without cloud connectivity, you can still connect your machine to a local area network (LAN), or to any relevant devices (such as a gamepad).
-It all depends on your use case and configuration.
+`viam-server` is installed resides on your machine and alongside your configurations, your code, and services.
+In scenarios without cloud connectivity, you can still connect your machine to a local area network (LAN), or to any relevant devices (such as a gamepad):
 
 - All APIs work locally or in the cloud
 - Data is cached locally and synced when possible
 - Configuration is cached
 
-When your machine is connected (to either LAN or WAN), `viam-server` can act as both a client and a server.
-In other words, each instance can request resources, as well as provide them.
-This allows for tremendous flexibility in terms of your architecture design.
-
-## Scale
-
-Viam provides [fleet management capabilities](/fleet/) to help you scale your machines in production.
-With it you can:
-
-- Manage permissions within your organization and locations.
-- Manage software across your fleet, including deployment of code and machine learning models.
-- Keep your machine configuration and capabilities up-to-date.
-
-## Extensibility
-
-You can also extend Viam to support additional hardware components or software services by deploying a module from the [Viam registry](https://app.viam.com/registry) to your machine.
-
-The Viam registry allows hardware and software engineers to collaborate on their machine projects by writing and sharing custom modules with each other.
-You can add a module from the Viam registry directly from your machine's **Configuration** tab in [the Viam app](https://app.viam.com/), using the **+ Create component** button.
-You can also [upload your own module to the Viam registry](/use-cases/create-module/).
-
-See [Modular resources](/registry/) for more information.
-
 ## Next steps
 
-Start by borrowing one of our rovers.
-Use [Try Viam](/appendix/try-viam/).
+In the next few pages we will guide you through the platform.
+You don't need to buy or own any hardware to complete these quickstarts.
 
-If you already have your own machine, [set up `viam-server`](/installation/) and learn how Viam helps you prototype and scale.
+Continue to the [Drive a rover](/get-started/drive-rover/) quickstart:
 
-For more inspiration, check out our [tutorials](/tutorials/) or visit our community on [Discord](https://discord.gg/viam) to get help or workshop ideas with others!
+{{< cards >}}
+{{% card link="/get-started/drive-rover/" %}}
+{{< /cards >}}

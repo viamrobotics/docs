@@ -206,6 +206,6 @@ Restart the Pi to complete the configuration.
 Complete a quick mini-project using your webcam with computer vision:
 
 {{< cards >}}
-{{< card link="/get-started/quickstarts/detect-people/" >}}
+{{< card link="/get-started/detect-people/" >}}
 {{< card link="/tutorials/services/basic-color-detection/" >}}
 {{< /cards >}}

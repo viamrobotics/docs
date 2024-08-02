@@ -18,6 +18,8 @@ Once you have configured a machine, start writing code to perform actions with t
 
 {{< /alert >}}
 
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/tzJf0XfUCmA">}}
+
 ## Write code to control your machine
 
 {{< table >}}

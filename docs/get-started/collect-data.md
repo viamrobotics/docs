@@ -6,7 +6,7 @@ images: ["/platform/data.svg"]
 description: "Use Viam to gather images or sensor data from your machine."
 imageAlt: "The data icon"
 authors: []
-weight: 30
+weight: 40
 languages: []
 viamresources: ["data_manager", "sensor"]
 no_list: true
@@ -216,16 +216,14 @@ In the **Data capture** section of your sensor's configuration, toggle the switc
 
 ## Next steps
 
-Now that you have captured data, try training a computer vision model on your images, or query your sensor data:
+Now that you have captured data, you could use this data to train you own Machine Learning model with the Viam platform.
+
+This concludes our guided path for getting to know the Viam platform.
+
+To learn more about the viam platform, dive into the How-to Guides which provide instructions for common tasks and workflows, check out tutorials for projects, or learn more in the Platform Referecen documentation:
 
 {{< cards >}}
-{{% card link="/use-cases/deploy-ml/" %}}
-{{% card link="/use-cases/sensor-data-query/" %}}
-{{< /cards >}}
-
-To see data capture in real-world projects, check out these tutorials:
-
-{{< cards >}}
-{{% card link="/tutorials/projects/helmet/" %}}
-{{% card link="/tutorials/control/air-quality-fleet/" %}}
+{{% card link="/use-cases/" %}}
+{{% card link="/tutorials/" %}}
+{{% card link="/platform/" %}}
 {{< /cards >}}

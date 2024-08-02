@@ -5,10 +5,10 @@ type: "docs"
 tags: ["vision", "data", "services", "quickstart", "ml", "camera", "webcam"]
 no_list: true
 description: "Use Viam's machine learning capabilities to deploy a person detector ML model to your machine."
-images: ["/icons/components/camera.svg"]
-imageAlt: "Machine Learning"
+images: ["/get-started/quickstarts/vision-card.png"]
+imageAlt: "Person detected in camera stream"
 authors: []
-weight: 40
+weight: 30
 languages: ["python", "go", "typescript", "flutter", "c++"]
 viamresources: ["camera", "mlmodel", "vision"]
 no_list: true
@@ -20,21 +20,34 @@ aliases:
   - /get-started/quickstarts/detect-people/
 ---
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/-sXdxbBVrso">}}
+This quickstart is part of a series.
+If you haven't read through [Learn Viam](/get-started/), [driven a rover](/get-started/drive-rover/), and [controlled a motor](/get-started/control-motor), we recommend you do so before continuing.
 
-Follow this guide to detect people with a webcam on the Viam platform, using a [pre-trained ML model from the registry](https://app.viam.com/ml-model/ml-models-scuttle/people):
+In this guide you'll use machine learning to detect people in a camera stream.
+
+{{< alert title="You will learn" color="tip" >}}
+
+1. How to configure a webcam
+1. How to deploy a machine learning model
+1. How to use the machine learning model with a vision service
+
+{{< /alert >}}
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/-sXdxbBVrso">}}
 
 ## Requirements
 
 - A computer: a development machine such as your laptop and optionally a single-board computer such as the Raspberry Pi
 - A webcam: this could be the webcam on your laptop or any other webcam you can connect to your computer
-- An account on the [Viam app](https://app.viam.com)
 
 ## Instructions
 
 Follow these instructions to configure your machine and test detections:
 
 {{%expand "Step 1: Create a new machine" %}}
+
+{{< alert title="Tip" color="tip" >}}
+If you followed the [Control a motor](/get-started/control-motor/) quickstart and have installed `viam-server` already on a machine that has a webcam, you can use the same machine and skip to step 3.
+{{< /alert >}}
 
 Add a new machine in the [Viam app](https://app.viam.com) by providing a name in the **New machine** field and clicking **Add machine**.
 
@@ -129,17 +142,11 @@ Now if you view detections, you will only see detections with a confidence value
 
 ## Next steps
 
-You can continue to test your [`mlmodel` detector](/services/vision/mlmodel/#test-your-detector-or-classifier) with [existing images in the Viam app](/services/vision/mlmodel/#existing-images-in-the-cloud) or [existing images on a computer](/services/vision/mlmodel/#existing-images-on-your-machine).
+You can now detect people on a camera stream.
+Of course these detections are not just accessible from the Viam app, but you can also use the [vision service API](/services/vision/#api).
 
-You can use one of [Viam's SDKs](/sdks/) to write a script that captures detections and triggers an alarm when a person is detected, or even sends you photos of the person detected.
-See [A Person Detection Security Robot That Sends You Photos](/tutorials/projects/send-security-photo/#use-the-viam-python-sdk-to-control-your-security-robot) for an example of this.
-
-You can also use the Viam platform to [train your own detector or classifier](/use-cases/deploy-ml/).
-
-You can also explore our [tutorials](/tutorials/) for more machine learning ideas:
+Next, you'll learn how to collect data from sensors or cameras using the data management service:
 
 {{< cards >}}
-{{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
-{{% card link="/tutorials/projects/pet-treat-dispenser/" customTitle="Smart Pet Feeder" %}}
-{{% card link="/registry/examples/tflite-module/" %}}
+{{% card link="/get-started/collect-data/" %}}
 {{< /cards >}}

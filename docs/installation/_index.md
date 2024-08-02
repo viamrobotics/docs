@@ -24,15 +24,16 @@ aliases:
   - /installation/prepare/microcontrollers/
   - /build/micro-rdk/
   - /get-started/installation/microcontrollers/
+  - /get-started/installation/
 ---
 
 To use Viam, you need to install either the `viam-server` binary or the micro-RDK.
 
 `viam-server` is the binary built from [Robot Development Kit](https://github.com/viamrobotics/rdk) that contains and manages communications between all Viam's built-in hardware drivers ({{< glossary_tooltip term_id="component" text="components" >}}) and software {{< glossary_tooltip term_id="service" text="services" >}}, connects your machine to the cloud, manages machine configuration, and manages dependencies including {{< glossary_tooltip term_id="module" text="modules" >}}.
 
-The micro-RDK is a lightweight version of the {{% glossary_tooltip term_id="rdk" text="Robot Development Kit (RDK)"%}} which can run on resource-limited embedded systems that cannot run the fully-featured [`viam-server`](/get-started/viam/).
+The micro-RDK is a lightweight version of the {{% glossary_tooltip term_id="rdk" text="Robot Development Kit (RDK)"%}} which can run on resource-limited embedded systems that cannot run the fully-featured [`viam-server`](/get-started/).
 
-For an overview of the Viam software platform, see [Viam in 3 minutes](/get-started/viam/).
+For an overview of the Viam software platform, see [Viam in 3 minutes](/get-started/).
 
 ## Compatibility
 
