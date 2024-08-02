@@ -7,6 +7,7 @@ description: "Configure a trigger to trigger actions when data is sent from your
 tags: ["triggers"]
 aliases:
   - /build/configure/webhooks/
+  - /build/configure/triggers/
 ---
 
 Triggers allow you to trigger webhooks when certain types of data are sent from your machine to the cloud, or when the your machine parts connect to Viam.
