@@ -20,23 +20,22 @@ TODO: replace the above diagram with something similar but that more clearly sho
 {{<imgproc src="/architecture/simple-machine.png" class="alignright" resize="x1100" declaredimensions=true alt="viam-server running on a board connected to a sensor. Data is stored on a local folder and synced to a folder in the Viam app cloud." style="max-width:400px" >}}
 </p>
 
-Imagine you have a simple device consisting of a temperature sensor connected to a single-board computer (SBC).
+Imagine you have a simple device consisting of a temperature sensor connected to the GPIO pins of a single-board computer (SBC).
 You want data from the sensor to be captured at regular intervals, and synced to the cloud.
 To set this up, you would do the following:
 
 - Install `viam-server` on the SBC.
-- Configure the sensor {{< glossary_tooltip term_id="component" text="component" >}} so that `viam-server` can communicate with it:
-  - Go to the Viam app, create a {{< glossary_tooltip term_id="machine" text="machine" >}} to represent your whole setup, and use the configuration UI to create a JSON file specifying which pins of the board the sensor is connected to.
+- Create a configuration file in the Viam app indicating that you are using a sensor {{< glossary_tooltip term_id="component" text="component" >}}, and indicating which pins of the SBC it is connected to.
 - Configure data capture and sync:
   - Edit your configuration to indicate the interval at which to capture data, and the interval at which to sync it.
 
-When `viam-server` starts, it looks for a configuration in a specified JSON file.
-In most cases, that file contains credentials that `viam-server` uses to fetch its full configuration file, which in our example contains the sensor pin information, from the Viam app.
+When `viam-server` starts, it uses credentials stored locally to establish a connection with the Viam app over {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}}.
+It fetches its configuration, which in our example contains the sensor pin information, from the Viam app.
 
 <details>
   <summary>Click for information on local configuration</summary>
   <p>
-  If you need to run your machine offline, you can manually create a local configuration and put that in the file instead of credentials, eliminating the need for <code>viam-server</code> to fetch its config.<br><br>
+  If you need to run your machine offline, you can manually create a local configuration file, eliminating the need for <code>viam-server</code> to fetch its config.<br><br>
   The advantages of using the credentials and pulling the config from the Viam app are:
   <ul>
     <li>The config builder UI in the Viam app is more user-friendly than writing JSON manually</li>
@@ -51,12 +50,20 @@ In most cases, that file contains credentials that `viam-server` uses to fetch i
 
 You can use the tools in the Viam app to remotely view sensor data as well as to change your machine's configuration, to view logs, and more.
 
-Now imagine you want to run code to send you an email when the temperature sensor reads over 100 degrees Fahrenheit.
-You write code using any of the Viam [SDKs](/sdks/), for example the Viam Python SDK.
-You then run this code either locally on the SBC, or on a separate computer such as a laptop.
-Either way, you include a few lines of code at the top of your script that set up a connection to your machine's `viam-server` instance so you can access the sensor component and use the [sensor API](/components/sensor/#api) to get readings.
+Now imagine you want to run code to send you an email when the temperature sensor reads over 100 degrees Fahrenheit:
 
-![alt](/build/program/sdks/robot-client.png)
+- You write code using any of the Viam [SDKs](/sdks/), for example the Viam Python SDK.
+- You then run this code either locally on the SBC, or on a separate computer such as a laptop.
+  Either way, you include a few lines of code at the top of your script that set up a connection to your machine's `viam-server` instance so you can access the sensor component and use the [sensor API](/components/sensor/#api) to get readings.
+
+  ![alt](/build/program/sdks/robot-client.png)
+
+Now, imagine you want to change to a different model of temperature sensor from a different brand:
+
+- You power down your device, disconnect the old sensor from your SBC and connect the new one.
+- You update your configuration in the Viam app to indicate what model you are using, and how it's connected (imagine this one uses USB instead of GPIO pins).
+- You turn your device back on, and `viam-server` automatically fetches the config updates.
+- You do not need to change your SDK code, because the API is the same for all models of sensor.
 
 ## `viam-server`
 
@@ -77,9 +84,9 @@ A _component_ represents a physical piece of hardware in your {{< glossary_toolt
 
 A _service_ is a software package that makes it easier to add complex capabilities such as motion planning or object detection to your machine.
 
-Viam has many built-in components and services that run locally within `viam-server`.
+Viam has many built-in components and services that run within `viam-server`.
 
-A _modular resource_ is a custom component or service, not built into Viam but rather provided by a _module_ that you or another user have created.
+A _modular resource_ is a custom component or service, not built into `viam-server` but rather provided by a _module_ that you or another user have created.
 A module runs in parallel to `viam-server` on your machine, communicating over UNIX sockets, and `viam-server` manages its lifecycle.
 
 {{<imgproc src="/viam/machine-components.png" resize="x1100" declaredimensions=true alt="Machine structure" style="max-width:600px" >}}
@@ -131,36 +138,45 @@ See [Parts, Sub-parts and Remotes](/architecture/parts/) for more details.
 
 ## Communication flow
 
-On startup, `viam-server` establishes a {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}} connection with the Viam app.
-It pulls its configuration from the app over the internet, caches it locally, and initializes all components and services based on that configuration.
+TODO: Communication flow diagram
+
+On startup, `viam-server` establishes a {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}} connection with the [Viam app](https://app.viam.com).
+`viam-server` pulls its configuration from the app, caches it locally, and initializes all components and services based on that configuration.
 
 If sub-parts or remote parts are configured, communications are established between the `viam-server` instances on each of them.
 
 If you have client code running on a separate computer, that code sends API requests to `viam-server` over wifi using gRPC.
 If a built-in service is communicating with a component, for example when the vision service requests an image from a camera, `viam-server` handles that request.
 
-{{% alert title="Info" color="info" %}}
+{{% alert title="Protobuf APIs" color="info" %}}
 All Viam APIs are defined with the [Protocol Buffers (protobuf)](https://protobuf.dev/) framework.
 This is what enables Viam to provide SDKs in a variety of different programming languages.
 {{% /alert %}}
 
-When you control your machine or view its camera streams or sensor outputs from the Viam app **CONTROL** tab, those connections are happening over WebRTC.
+When you control your machine or view its camera streams or sensor outputs from the Viam app **CONTROL** tab, those connections happen over WebRTC.
 The Viam app hits the same API endpoints as your SDK client code, with `viam-server` handling requests.
 
-TODO: Communication flow diagram
+{{% alert title="Security" color="info" %}}
+TLS certificates certificates provided by the app ensure that all communication is authenticated and encrypted.
+{{% /alert %}}
 
 For more details, see [Machine-to-Machine Communication](/architecture/machine-to-machine-comms/).
 
 ## Data management flow
 
+TODO: Data flow diagram
+
 Here's how data flows in Viam:
 
 1. Data collected by your components, such as sensors and cameras, is first stored locally in a specified directory (defaults to <file>~/.viam/capture</file>).
    You control how often to capture data and where to store it using the configuration file.
-1. `viam-server` syncs data to a MongoDB database in the cloud at your specified interval, and deletes the data from the local directory.
-1. You can view your data from the Viam app or query it using Viam SDKs, MQL, or SQL.
 
-TODO: Data flow diagram
+   - You can also sync data from other sources by putting it into this folder.
+     <br><br>
+
+1. `viam-server` syncs data to a MongoDB database in the cloud at your specified interval, and deletes the data from the local directory.
+
+1. You can view your data from the Viam app or query it using Viam SDKs, MQL, or SQL.
 
 For more information, see [Data Management](/services/data/).
 
