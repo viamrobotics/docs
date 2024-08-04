@@ -30,7 +30,6 @@ cost: "0"
 resource: "quickstart"
 ---
 
-Welcome to the Viam documentation.
 If you haven't read through [Learn Viam](/get-started/), we recommend you do so, as it will provide you with an overview of the Viam platform.
 
 The next few quickstarts, will guide you through the concepts you need to get started with Viam.

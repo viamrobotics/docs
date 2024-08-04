@@ -220,7 +220,7 @@ You can view the complete JSON for your rover by clicking on **Raw JSON** at the
 
 ![The CONFIG tab with the mode toggled to Raw JSON. A section of the full raw JSON config is displayed but one would have to scroll to see all of it.](appendix/try-viam/try-viam/raw-json.png)
 
-You can [copy this `JSON` config between rental rovers](/appendix/try-viam/reserve-a-rover/#how-can-i-reuse-my-rented-rover).
+You can [copy this `JSON` config between rental rovers](/appendix/try-viam/reserve-a-rover/#how-can-i-reuse-my-borrowed-rover).
 
 ## Next steps
 

@@ -12,8 +12,8 @@ no_list: true
 aliases:
   - "/getting-started/try-viam/"
   - "/tutorials/viam-rover/"
-    - /get-started/try-viam/tutorials/
-    - "/appendix/try-viam/tutorials/"
+  - /get-started/try-viam/tutorials/
+  - "/appendix/try-viam/tutorials/"
   - "/try-viam/"
   - "/get-started/try-viam/"
   - "/appendix/try-viam-faq/"

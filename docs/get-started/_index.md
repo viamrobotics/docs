@@ -55,14 +55,31 @@ The only change needed is to your machine configuration.
 
 The Viam [Registry](/registry/) provides a marketplace for adding and sharing modules, all using these standard APIs.
 
+## Connect from anywhere
+
+If `viam-server` can connect to the internet, you can
+
+- control and monitor your machines securely from anywhere using the Viam app, the Viam mobile app, or Viam's SDKs
+- sync data from machines to the cloud
+
+In scenarios where machines are connected to a local area network (LAN) with intermittent or no cloud connectivity:
+
+- you can run code to control and monitor machines on a local network or on the machines themselves
+- data is cached locally and synced when possible
+
 ## Scale
 
-The [Viam App](https://app.viam.com) does not limit you to managing just one machine.
+The [Viam App](https://app.viam.com)'s does not limit you to managing just one machine.
 Viam's **fleet management** capabilities enable you to:
 
 - Manage permissions within your organization and locations.
 - Manage software across your fleet, including deployment of code and machine learning models.
 - Configure, control, debug, and manage groups of machines in one go.
+
+## Collaboration
+
+You can collaborate on your machines and manage permissions for your fleet using Role-Based Access Control (RBAC).
+Users can have access to different fleet management capabilities depending on whether they are an owner or an operator of a given organization, location, or machine.
 
 ## Support
 
@@ -71,18 +88,6 @@ Here are some of the boards Viam supports:
 
 {{< board-carousel >}}
 <br>
-
-## Network flexibility
-
-Your machine does not need to be connected to the cloud.
-Viam is designed to work whether your machine is connected to the internet continuously or intermittently.
-
-Once `viam-server` is installed, it resides on your machine and alongside your configurations, your code, and services.
-In scenarios without cloud connectivity, you can still connect your machine to a local area network (LAN), or to any relevant devices (such as a gamepad):
-
-- All APIs work locally or in the cloud
-- Data is cached locally and synced when possible
-- Configuration is cached
 
 ## Next steps
 
