@@ -30,7 +30,7 @@ At the core of Viam is the open-source `viam-server` executable which runs on a 
 To use Viam with a machine, you create a configuration that contains components and services you choose from a wide variety of available models for different resources.
 For example, if you are building a pet-feeding machine you might install `viam-server` on a Raspberry Pi and create a machine configuration using a camera model and a servo model for the hardware you are using.
 
-The Viam app provides the user interface for configuring your machine.
+The [Viam app](https://app.viam.com) provides the user interface for configuring your machine.
 It allows you to configure builtin drivers or drivers from the Viam Registry.
 `viam-server` then manages and runs the drivers for the configured resources.
 As you configure your machine, you can test each resource to confirm it is working as expected.
@@ -51,14 +51,14 @@ On top of configuration, the Viam app also provides several higher-level functio
 Each category of {{< glossary_tooltip term_id="resource" text="resource" >}} has a standardized API that you can access with an [SDK (software development kit)](/sdks/) in your preferred programming language.
 For example, you can send the same [`SetPower` command](/components/motor/#setpower) to any kind of motor, using any of the available SDKs.
 
-The standardized nature of the resource APIs, means that when you build machines, you can swap out components such as motors without changing any code.
+The standardized nature of Viam's resource APIs means that when you build machines, you can swap out components such as motors without changing any code.
 The only change needed is to your machine configuration.
 
 The Viam [Registry](/registry/) provides a marketplace for adding and sharing modules, all using these standard APIs.
 
 ## Scale
 
-The Viam App does not limit you to managing just one machine.
+The [Viam App](https://app.viam.com) does not limit you to managing just one machine.
 Viam's **fleet management** capabilities enable you to:
 
 - Manage permissions within your organization and locations.
