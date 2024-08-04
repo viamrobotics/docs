@@ -43,7 +43,6 @@ On top of configuration, the Viam app also provides several higher-level functio
 
 - **Data Management**: Any data on your machine can be synced to the cloud, from where you can query it using SQL, MQL, or with code.
 - **Machine Learning**: Train machine learning models on collected data and deploy ML models to machines to enable them to intelligently see and interpret the world around them.
-- **Motion Planning**: Plan and move machine components.
 - **Simultaneous Localization And Mapping (SLAM)**: A machine can map its surroundings and find its position on a map.
 
 ## Standardized APIs
