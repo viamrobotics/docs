@@ -16,14 +16,12 @@ images: ["/general/understand.png"]
 carouselscript: true
 ---
 
+Viam is a software platform that makes it easy to combine and integrate hardware and software to build machines, connect them with the cloud, and make them smarter with machine learning.
+
+## The Viam Platform
+
 <div>
 {{< imgproc src="/viam/viam.png" alt="Viam overview" resize="800x" class="aligncenter" >}}
-</div>
-
-Viam is a software platform that makes it easy to work with hardware and software.
-
-<div>
-{{< imgproc src="/viam/pet-feeder.png" alt="Machine components" resize="400x" class="alignright" >}}
 </div>
 
 At the core of Viam is the open-source `viam-server` executable which runs on a device and manages hardware and software for a machine.
@@ -35,7 +33,7 @@ It allows you to configure builtin drivers or drivers from the Viam Registry.
 `viam-server` then manages and runs the drivers for the configured resources.
 As you configure your machine, you can test each resource to confirm it is working as expected.
 
-{{<gif webm_src="/test.webm" mp4_src="/test.mp4" alt="Test a camera stream" max-width="700px" class="aligncenter">}}
+{{<gif webm_src="/test.webm" mp4_src="/test.mp4" alt="Test a camera stream" max-width="600px" class="aligncenter">}}
 
 Viam is built to be extensible, allowing you to create your own resources for any hardware or software and deploy your code using modules through the Viam Registry.
 
@@ -45,7 +43,7 @@ On top of configuration, the Viam app also provides several higher-level functio
 - **Machine Learning**: Train machine learning models on collected data and deploy ML models to machines to enable them to intelligently see and interpret the world around them.
 - **Simultaneous Localization And Mapping (SLAM)**: A machine can map its surroundings and find its position on a map.
 
-## Standardized APIs
+## Ready to use APIs
 
 Each category of {{< glossary_tooltip term_id="resource" text="resource" >}} has a standardized API that you can access with an [SDK (software development kit)](/sdks/) in your preferred programming language.
 For example, you can send the same [`SetPower` command](/components/motor/#setpower) to any kind of motor, using any of the available SDKs:
@@ -100,8 +98,10 @@ motor->set_power(0.4);
 
 The standardized nature of Viam's resource APIs means that when you build machines, you can swap out components such as motors without changing any code.
 The only change needed is to your machine configuration.
-
 The Viam [Registry](/registry/) provides a marketplace for adding and sharing modules, all using these standard APIs.
+
+However, if you need more custom behaviour, you can extend these APIs to suit your own needs.
+
 
 ## Connect from anywhere
 

@@ -7,16 +7,7 @@ images: ["/registry/module-puzzle-piece.svg"]
 description: "Follow instructions for common tasks and workflows."
 ---
 
-Get started in less than 5 minutes with one of these quickstarts:
-
-{{< cards >}}
-{{% card link="/get-started/control-motor/" %}}
-{{% card link="/get-started/collect-data/" %}}
-{{% card link="/get-started/detect-people/" %}}
-{{% card link="/get-started/drive-rover/" %}}
-{{< /cards >}}
-
-or click on one of the following guides that provide solutions for common tasks and workflows:
+Click on one of the following guides that provide solutions for common tasks and workflows:
 
 {{< cards >}}
 {{% card link="/use-cases/configure/" class="fit-contain" %}}
