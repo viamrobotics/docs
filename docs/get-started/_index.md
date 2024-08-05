@@ -18,34 +18,41 @@ carouselscript: true
 
 Viam is a software platform that makes it easy to combine and integrate hardware and software to build machines, connect them with the cloud, and make them smarter with machine learning.
 
-## The Viam Platform
+Machines are everywhere, from small machines like IOT sensors, to home automation systems, to robotic systems, cars and boats, and even more complex enterprise systems.
+All these machines start by combining hardware that senses or actuates through software.
 
 <div>
 {{< imgproc src="/viam/viam.png" alt="Viam overview" resize="800x" class="aligncenter" >}}
 </div>
 
-At the core of Viam is the open-source `viam-server` executable which runs on a device and manages hardware and software for a machine.
-To use Viam with a machine, you create a configuration that contains components and services you choose from a wide variety of available models for different resources.
-For example, if you are building a pet-feeding machine you might install `viam-server` on a Raspberry Pi and create a machine configuration using a camera model and a servo model for the hardware you are using.
+## `viam-server` and the Viam app
+
+At the core of Viam is the open-source `viam-server` executable which runs on a computer and manages hardware and software for a machine.
+To use Viam with a machine, you create a configuration specifying which hardware and software the machine consists of.
+`viam-server` then manages and runs the drivers for the configured hardware components and software services.
+
+If you are working with microcontrollers, the [micro-RDK](/installation/) is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
+
+For example, if you are building a pet-feeding machine you might install `viam-server` on a Raspberry Pi and create a machine configuration with a camera and a servo for the hardware you are using.
 
 The [Viam app](https://app.viam.com) provides the user interface for configuring your machine.
-It allows you to configure builtin drivers or drivers from the Viam Registry.
-`viam-server` then manages and runs the drivers for the configured resources.
+You can put together any of the available resources across microcontrollers and computers as configurable building blocks.
 As you configure your machine, you can test each resource to confirm it is working as expected.
 
 {{<gif webm_src="/test.webm" mp4_src="/test.mp4" alt="Test a camera stream" max-width="600px" class="aligncenter">}}
 
-Viam is built to be extensible, allowing you to create your own resources for any hardware or software and deploy your code using modules through the Viam Registry.
+Viam has many built-in {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} that run within `viam-server`.
 
-On top of configuration, the Viam app also provides several higher-level functionalities for your machine, such as:
+### Extensibility
 
-- **Data Management**: Any data on your machine can be synced to the cloud, from where you can query it using SQL, MQL, or with code.
-- **Machine Learning**: Train machine learning models on collected data and deploy ML models to machines to enable them to intelligently see and interpret the world around them.
-- **Simultaneous Localization And Mapping (SLAM)**: A machine can map its surroundings and find its position on a map.
+For everything that is not built-in, Viam has **modules**.
+Modules from the [**Viam Registry**](/registry/) provide custom components or services as _modular resources_ which are run alongside `viam-server`.
+When configuring your machine, you can choose choose and configure builtin components and services, as well as any available from the Viam Registry.
+You can also create your own resources for any hardware or software and add them to the Viam Registry.
 
-## Ready to use APIs
+### Standard APIs
 
-Each category of {{< glossary_tooltip term_id="resource" text="resource" >}} has a standardized API that you can access with an [SDK (software development kit)](/sdks/) in your preferred programming language.
+Each category of {{< glossary_tooltip term_id="resource" text="resource" >}}, whether a builtin component or service or a custom component or service from the registry, has a **standardized API** that you can access with an [SDK (software development kit)](/sdks/) in your preferred programming language.
 For example, you can send the same [`SetPower` command](/components/motor/#setpower) to any kind of motor, using any of the available SDKs:
 
 {{< tabs >}}
@@ -98,35 +105,37 @@ motor->set_power(0.4);
 
 The standardized nature of Viam's resource APIs means that when you build machines, you can swap out components such as motors without changing any code.
 The only change needed is to your machine configuration.
-The Viam [Registry](/registry/) provides a marketplace for adding and sharing modules, all using these standard APIs.
+The Viam Registry provides a marketplace for adding and sharing modules, all using these standard APIs.
 
 However, if you need more custom behaviour, you can extend these APIs to suit your own needs.
 
+### Connect from anywhere
 
-## Connect from anywhere
+You can use Viam's SDKs, as well as the Viam app, and the Viam mobile app, to control and monitor your machines securely.
+Viam uses WebRTC and gRPC for secure peer to peer communications across network boundaries.
 
-If `viam-server` can connect to the internet, you can
+If `viam-server` can connect to the internet, you can control and monitor your machines securely **from anywhere in the world**.
+In scenarios where machines are connected to a local area network (LAN) with intermittent or no cloud connectivity, you can control and monitor machines from the local network or with code on the machines themselves.
 
-- control and monitor your machines securely from anywhere using the Viam app, the Viam mobile app, or Viam's SDKs
-- sync data from machines to the cloud
+### Better and smarter machines
 
-In scenarios where machines are connected to a local area network (LAN) with intermittent or no cloud connectivity, you can
+With all this, you can configure a wide variety of machines.
+The Viam app does not just provide a useful configuration interface.
+It also provides several higher-level functionalities to make your machines smarter and better, such as:
 
-- control and monitor machines from the local network or with code on the machines themselves
-- cache data on the machines and sync it when possible
+- **Data Management**: Any data on your machine can be synced to the cloud, from where you can query it using SQL, MQL, or with code.
+- **Machine Learning**: Train machine learning models on collected data and deploy ML models to machines to enable them to intelligently see and interpret the world around them.
+- **Simultaneous Localization And Mapping (SLAM)**: A machine can map its surroundings and find its position on a map.
 
-## Scale
+### Managing many machines
 
-The [Viam App](https://app.viam.com)'s does not limit you to managing just one machine.
-Viam's **fleet management** capabilities enable you to:
+On a more structural level, the [Viam App](https://app.viam.com)'s **fleet management** capabilities enable you to:
 
-- Manage permissions within your organization and locations.
 - Manage software across your fleet, including deployment of code and machine learning models.
 - Configure, control, debug, and manage groups of machines in one go.
+- Manage permissions within your organization and locations.
 
-## Collaboration
-
-You can collaborate on your machines and manage permissions for your fleet using Role-Based Access Control (RBAC).
+You can collaborate on your machines and manage permissions for your fleet using **Role-Based Access Control** (RBAC).
 Users can have access to different fleet management capabilities depending on whether they are an owner or an operator of a given organization, location, or machine.
 
 ## Support
