@@ -10,10 +10,6 @@ tags: ["components", "services", "communication"]
 menuindent: true
 ---
 
-![Viam data, ML and registry in the cloud and Viam fleet and build on-premises. Viam core is the communication layer that connects the cloud to the on-device portion.](/architecture/cloud-premises.png)
-
-TODO: replace the above diagram with something similar but that more clearly shows viam-server etc.
-
 ## Basic structure of a simple machine
 
 <p>
@@ -32,6 +28,7 @@ To set this up, you would do the following:
 When `viam-server` starts, it uses credentials stored locally to establish a connection with the Viam app over {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}}.
 It fetches its configuration, which in our example contains the sensor pin information, from the Viam app.
 
+<!-- TODO: figure out what to highlight here or whether to delete this
 <details>
   <summary>Click for information on local configuration</summary>
   <p>
@@ -45,6 +42,7 @@ It fetches its configuration, which in our example contains the sensor pin infor
   If your machine usually runs offline but can connect online occasionally, it can pull a configuration from the Viam app and cache it locally to use until the next time it has an internet connection.
   </p>
 </details><br>
+-->
 
 `viam-server` runs your machine, securely managing all communications between hardware and to the cloud.
 
@@ -69,7 +67,7 @@ Now, imagine you want to change to a different model of temperature sensor from 
 
 `viam-server` is the open-source executable binary that runs on your machine's SBC or other computer.
 
-`viam-server` can run your machine without any connection to the internet; it contains all the drivers for your hardware, and it manages local connections between hardware drivers, runs motion planning and vision services locally, and captures and stores data locally.
+`viam-server` can run your machine without any connection to the internet; it contains drivers for your hardware, and it manages local connections between hardware drivers, runs motion planning and vision services locally, and captures and stores data locally.
 
 However, for most use cases you'll want `viam-server` to connect to the cloud so that it can:
 
@@ -80,13 +78,13 @@ However, for most use cases you'll want `viam-server` to connect to the cloud so
 
 ## Components, services, modules
 
-A _component_ represents a physical piece of hardware in your {{< glossary_tooltip term_id="machine" text="machine" >}}, and the software that directly supports that hardware.
+A [_component_](/components/) represents a physical piece of hardware in your {{< glossary_tooltip term_id="machine" text="machine" >}}, and the software that directly supports that hardware.
 
-A _service_ is a software package that makes it easier to add complex capabilities such as motion planning or object detection to your machine.
+A [_service_](/services/) is a software package that makes it easier to add complex capabilities such as motion planning or object detection to your machine.
 
 Viam has many built-in components and services that run within `viam-server`.
 
-A _modular resource_ is a custom component or service, not built into `viam-server` but rather provided by a _module_ that you or another user have created.
+A [_modular resource_](/registry/) is a custom component or service, not built into `viam-server` but rather provided by a _module_ that you or another user have created.
 A module runs in parallel to `viam-server` on your machine, communicating over UNIX sockets, and `viam-server` manages its lifecycle.
 
 {{<imgproc src="/viam/machine-components.png" resize="x1100" declaredimensions=true alt="Machine structure" style="max-width:600px" >}}
@@ -124,13 +122,14 @@ These two options are very similar; in both cases, the parts communicate with ea
 
 Because the parts are interconnected, you can write SDK code that establishes a connection with one of them and controls them all in a coordinated way.
 
-TODO: Find a good example, and explain why you'd want to use one multi-part machine versus many single-part machines
+{{< expand "Multi-part examples" >}}
 
-{{< expand "Multi-part example" >}}
+- **Compute power:** Imagine you have a robotic arm with a camera on it, connected to a SBC such as a Raspberry Pi.
+  You want to use the Viam motion service to control the arm, and you want to use the vision service on the output from the camera, but the SBC does not have the compute power to plan complex motion and also interpret camera output quickly.
+  You can set up a second {{< glossary_tooltip term_id="part" text="part" >}} on a desktop or laptop computer, either as a sub-part of the same machine or as a separate machine connected as a remote, and offload the heavy compute to that part.
 
-Imagine you have a robotic arm with a camera on it, connected to a SBC such as a Raspberry Pi.
-You want to use the Viam motion service to control the arm, and you want to use the vision service on the output from the camera, but the SBC does not have the compute power to plan complex motion and also interpret camera output quickly.
-You can set up a second {{< glossary_tooltip term_id="part" text="part" >}} on a desktop or laptop computer, either as a sub-part of the same machine or as a separate machine connected as a remote, and offload the heavy compute to that part.
+- **One-to-many:** Imagine you have one weather station collecting data, and multiple boats (perhaps some in different {{< glossary_tooltip term_id="organization" text="organizations" >}}) whose behavior depends on that weather data.
+  You can set up a remote connection from each of the `viam-server` instances running on the boats to the `viam-server` instance on the weather station and get that data more directly, without having to wait for the data to synced to the cloud.
 
 {{< /expand >}}
 
@@ -138,7 +137,7 @@ See [Parts, Sub-parts and Remotes](/architecture/parts/) for more details.
 
 ## Communication flow
 
-TODO: Communication flow diagram
+<img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure machine control." class="alignleft" style="max-width:270px;"></img>
 
 On startup, `viam-server` establishes a {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}} connection with the [Viam app](https://app.viam.com).
 `viam-server` pulls its configuration from the app, caches it locally, and initializes all components and services based on that configuration.
@@ -164,7 +163,8 @@ For more details, see [Machine-to-Machine Communication](/architecture/machine-t
 
 ## Data management flow
 
-TODO: Data flow diagram
+{{<imgproc src="/architecture/data-flow.svg" resize="x1100" declaredimensions=true alt="Data flowing from local disk to cloud to the Viam app, SDKs, and MQL and SQL queries." >}}
+<br>
 
 Here's how data flows in Viam:
 

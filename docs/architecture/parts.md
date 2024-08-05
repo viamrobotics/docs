@@ -9,6 +9,7 @@ aliases:
   - /manage/parts-and-remotes/
   - /build/configure/parts-and-remotes/
   - /configure/parts/
+  - /build/configure/parts/
 ---
 
 When {{< glossary_tooltip term_id="machine" text="smart machines" >}} communicate with each other, they can share resources and operate collaboratively.
