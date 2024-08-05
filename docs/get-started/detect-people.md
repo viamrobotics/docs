@@ -70,7 +70,10 @@ Click the name of a machine to go to that machine's page, where you'll find a va
 {{% /expand%}}
 {{%expand "Step 2: Install viam-server" %}}
 
-Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page to install `viam-server` on your computer and connect it to the Viam app.
+Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page to install `viam-server` on your computer, start running it and connect it to the Viam app.
+Select the OS that's appropriate for your computer.
+For example, **Mac** for a MacBook.
+Select **RDK** as the RDK type.
 
 {{% /expand%}}
 {{%expand "Step 3: Configure your webcam" %}}
@@ -89,25 +92,30 @@ For more detailed information, including optional attribute configuration, see t
 {{% /expand%}}
 {{%expand "Step 4: Deploy a person detection model" %}}
 
-Now add an `ML model` service:
+Now add an `ML model` service that can detect a person:
 Click **+**, click **Service** and select the `ML model` type, then select the `TFLite CPU` model.
+Create the service.
 
 In the resulting ML model service configuration pane, ensure that **Deploy model on machine** is selected for the **Deployment** field.
 
-Click on **Select models** and select the `ml-models-scuttle:people` model (the **people** model by **ml-models-scuttle**) to deploy an object detection TFLite model that has been trained to be able to detect a person.
+Click on **Select models**.
+Click on the **Registry** tab and search for "people".
+Select the **people** model by **ml-models-scuttle**.
 
-Click the **Save** button in the top right corner of the page to save your configuration.
+Click the **Save** button in the top right corner of the page to save your configuration and deploy an object detection TFLite model that has been trained to be able to detect a person.
 
 For more detailed information, including optional attribute configuration, see the [`tflite_cpu` docs](/services/ml/deploy/tflite_cpu/).
 
 {{% /expand%}}
 {{%expand "Step 5: Configure a vision service" %}}
 
-To use the deployed person detection model to detect people on a camera stream, you need another service that applies it to the camera stream.
+To use the deployed person detection model to detect people on a camera stream, you need to configure a vision service.
+This service applies the ML model to the camera input stream.
 
 Add a `vision` **Service** and select the `ML model` model.
 
 Select the ML model service your person detector model is deployed on (which you created in step 4) from the **ML Model** dropdown.
+Click the **Save** button in the top right corner of the page to save your vision service configuration.
 
 {{% /expand%}}
 {{%expand "Step 6: Test person detection" %}}
