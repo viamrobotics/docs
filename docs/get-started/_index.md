@@ -16,11 +16,11 @@ images: ["/general/understand.png"]
 carouselscript: true
 ---
 
-Viam is a software platform that makes it easy to work with hardware and software.
-
 <div>
 {{< imgproc src="/viam/viam.png" alt="Viam overview" resize="800x" class="aligncenter" >}}
 </div>
+
+Viam is a software platform that makes it easy to work with hardware and software.
 
 <div>
 {{< imgproc src="/viam/pet-feeder.png" alt="Machine components" resize="400x" class="alignright" >}}
@@ -48,7 +48,7 @@ On top of configuration, the Viam app also provides several higher-level functio
 ## Standardized APIs
 
 Each category of {{< glossary_tooltip term_id="resource" text="resource" >}} has a standardized API that you can access with an [SDK (software development kit)](/sdks/) in your preferred programming language.
-For example, you can send the same [`SetPower` command](/components/motor/#setpower) to any kind of motor, using any of the available SDKs.
+For example, you can send the same [`SetPower` command](/components/motor/#setpower) to any kind of motor, using any of the available SDKs:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -110,10 +110,10 @@ If `viam-server` can connect to the internet, you can
 - control and monitor your machines securely from anywhere using the Viam app, the Viam mobile app, or Viam's SDKs
 - sync data from machines to the cloud
 
-In scenarios where machines are connected to a local area network (LAN) with intermittent or no cloud connectivity:
+In scenarios where machines are connected to a local area network (LAN) with intermittent or no cloud connectivity, you can
 
-- you can run code to control and monitor machines on a local network or on the machines themselves
-- data is cached locally and synced when possible
+- control and monitor machines from the local network or with code on the machines themselves
+- cache data on the machines and sync it when possible
 
 ## Scale
 
@@ -137,10 +137,12 @@ Here are some of the boards Viam supports:
 {{< board-carousel >}}
 <br>
 
+Viam also supports microcontrollers with the [micro-RDK](/installation/#install-micro-rdk).
+
 ## Next steps
 
 In the next few pages we will guide you through the platform.
-You don't need to buy or own any hardware to complete these quickstarts.
+You don't need to buy or own any hardware to follow along.
 
 Continue to the [Drive a rover](/get-started/drive-rover/) quickstart:
 
