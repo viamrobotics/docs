@@ -50,6 +50,54 @@ On top of configuration, the Viam app also provides several higher-level functio
 Each category of {{< glossary_tooltip term_id="resource" text="resource" >}} has a standardized API that you can access with an [SDK (software development kit)](/sdks/) in your preferred programming language.
 For example, you can send the same [`SetPower` command](/components/motor/#setpower) to any kind of motor, using any of the available SDKs.
 
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+my_motor = Motor.from_robot(robot=robot, name="my_motor")
+# Set the power to 40% forwards.
+await my_motor.set_power(power=0.4)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+myMotorComponent, err := motor.FromRobot(machine, "my_motor")
+// Set the motor power to 40% forwards.
+myMotorComponent.SetPower(context.Background(), 0.4, nil)
+```
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+```dart {class="line-numbers linkable-line-numbers"}
+final base = Motor.fromRobot(client, "my_motor");
+// Set the power to  40% forwards.
+await myMotor.setPower(0.4);
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+```ts {class="line-numbers linkable-line-numbers"}
+const myMotor = new VIAM.MotorClient(client, "my_motor");
+// Set the power to  40% forwards.
+await myMotor.setPower(0.4);
+```
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+```cpp {class="line-numbers linkable-line-numbers"}
+std::shared_ptr<Motor> motor = robot->resource_by_name<Motor>("my_motor");
+// Set the power to  40% forwards.
+motor->set_power(0.4);
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 The standardized nature of Viam's resource APIs means that when you build machines, you can swap out components such as motors without changing any code.
 The only change needed is to your machine configuration.
 
