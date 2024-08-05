@@ -72,7 +72,6 @@ Click the name of a machine to go to that machine's page, where you'll find a va
 
 Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page to install `viam-server` on your computer, start running it and connect it to the Viam app.
 Select the OS that's appropriate for your computer.
-For example, **Mac** for a MacBook.
 Select **RDK** as the RDK type.
 
 {{% /expand%}}
@@ -98,9 +97,7 @@ Create the service.
 
 In the resulting ML model service configuration pane, ensure that **Deploy model on machine** is selected for the **Deployment** field.
 
-Click on **Select models**.
-Click on the **Registry** tab and search for "people".
-Select the **people** model by **ml-models-scuttle**.
+Click on **Select models** and select the `ml-models-scuttle:people` model from the registry (the **people** model by **ml-models-scuttle**) to deploy an object detection TFLite model that has been trained to be able to detect a person.
 
 Click the **Save** button in the top right corner of the page to save your configuration and deploy an object detection TFLite model that has been trained to be able to detect a person.
 
