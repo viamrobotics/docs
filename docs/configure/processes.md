@@ -5,6 +5,8 @@ weight: 50
 type: "docs"
 description: "Configure a process to automatically run a command such as a script automatically when your machine boots."
 tags: ["processes"]
+aliases:
+  - /build/configure/processes/
 ---
 
 To automatically run a specified command when your machine boots, configure a _{{< glossary_tooltip term_id="process" text="process" >}}_.
