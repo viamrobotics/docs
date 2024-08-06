@@ -21,7 +21,7 @@ Due to the way processes are designed for stability, if you are configuring a pr
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-1. [`ssh` into your board](/get-started/prepare/rpi-setup/#connect-with-ssh) and install `pip`:
+1. [`ssh` into your board](/installation/prepare/rpi-setup/#connect-with-ssh) and install `pip`:
 
    ```sh {class="command-line" data-prompt="$"}
    sudo apt install python3-pip

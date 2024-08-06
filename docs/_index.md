@@ -23,9 +23,9 @@ carouselscript: true
 <div class="cards max-page use-cases">
   <div class="row">
 <div class="col hover-card link-with-icon">
-  <a href="get-started/try-viam/" class="noanchor"><div>
+  <a href="get-started/" class="noanchor"><div>
     <picture><img src="icons/rover.svg" alt="Rover" loading="lazy"></picture>
-    <p>Try Viam</p></div>
+    <p>Learn about Viam</p></div>
   </a>
 </div>
 <div class="col hover-card link-with-icon">
@@ -87,7 +87,7 @@ carouselscript: true
 <div class="cards max-page use-cases">
   <div class="row">
 <div class="col hover-card link-with-icon">
-  <a href="get-started/viam/" class="noanchor"><div>
+  <a href="get-started/" class="noanchor"><div>
     <picture><img src="icons/viam.svg" alt="Viam" loading="lazy"></picture>
     <p>Viam in 3 minutes</p>
   </div>

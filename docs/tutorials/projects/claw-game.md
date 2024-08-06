@@ -35,7 +35,7 @@ In this tutorial, you will:
 
 To build your own claw game machine, you need the following hardware:
 
-- A [Raspberry Pi](https://a.co/d/bxEdcAT) with a microSD card, set up following the [Raspberry Pi Setup Guide](/get-started/prepare/rpi-setup/).
+- A [Raspberry Pi](https://a.co/d/bxEdcAT) with a microSD card, set up following the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/).
 - An [xarm6](https://www.robotshop.com/products/xarm-6-dof-robotic-arm) robotic arm
 - An [Arcade claw](https://www.ebay.com/itm/393988987705)
 - A [Relay](https://www.amazon.com/gp/product/B095YFJ69T)
@@ -56,7 +56,7 @@ To build your own claw game machine, you need the following hardware:
 
 To build your own claw game machine, you need the following software:
 
-- [`viam-server`](/get-started/installation/#install-viam-server)
+- [`viam-server`](/installation/#install-viam-server)
 - [Python 3](https://www.python.org/download/releases/3.0/)
 - [pip](https://pip.pypa.io/en/stable/#)
 - [Viam Python SDK](https://python.viam.dev/)
@@ -134,7 +134,7 @@ Next, configure your newly-built robot.
 
 {{% snippet "setup.md" %}}
 
-Machines are organized into {{< glossary_tooltip term_id="part" text="parts" >}}, where each part represents a computer (a [single-board computer](/get-started/installation/), desktop, laptop, or other computer) running `viam-server`, the hardware {{< glossary_tooltip term_id="component" text="components" >}} attached to it, and any {{< glossary_tooltip term_id="service" text="services" >}} or other resources running on it.
+Machines are organized into {{< glossary_tooltip term_id="part" text="parts" >}}, where each part represents a computer (a [single-board computer](/installation/), desktop, laptop, or other computer) running `viam-server`, the hardware {{< glossary_tooltip term_id="component" text="components" >}} attached to it, and any {{< glossary_tooltip term_id="service" text="services" >}} or other resources running on it.
 
 Every machine has a main part which is automatically created when you create the machine.
 Since you just created a new machine, your machine's main part is already defined.

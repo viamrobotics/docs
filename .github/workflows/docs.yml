@@ -51,7 +51,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: quickstarts-file
-          path: ./public/get-started/quickstarts/typesense.json
+          path: ./public/get-started/typesense.json
 
       - name: Upload components models file
         uses: actions/upload-artifact@v3

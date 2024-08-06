@@ -5,7 +5,7 @@ weight: 429
 type: "docs"
 description: "Before you can program a machine, you must configure its components and services as well as any modules, remotes, processes and frames."
 imageAlt: "Configure a Machine"
-images: ["/get-started/installation/thumbnails/configure.svg"]
+images: ["/installation/thumbnails/configure.svg"]
 tags: ["manage", "components"]
 aliases:
   - /manage/configuration/
@@ -46,7 +46,7 @@ All communication happens securely over HTTPS using secret tokens that are in a 
 On Linux, the configuration is stored at <FILE>/etc/viam.json</FILE> by default and `viam-server` uses this configuration if no configuration is specified on startup.
 
 You can store your config file in a custom location if desired.
-See [Run `viam-server`](/get-started/installation/manage/#run-viam-server) for more information.
+See [Run `viam-server`](/installation/manage/#run-viam-server) for more information.
 {{< /alert >}}
 
 After you have completed the setup steps and successfully connected to your machine, go to the **CONFIGURE** tab to start adding to the configuration.
@@ -304,7 +304,7 @@ To restore to an earlier version of your configuration, click the **Restore vers
 If you run into issues, here are some things to try:
 
 - Check the [**LOGS** tab](/cloud/machines/#logs) to view log messages and errors from `viam-server`.
-  You can also [access the local log file](/get-started/installation/manage/#view-viam-server-logs) on your machine if needed.
+  You can also [access the local log file](/installation/manage/#view-viam-server-logs) on your machine if needed.
 - Make sure all configured components are saved to your config.
   If they aren't, you will see an **Unsaved changes** note next to the **Save** button in the top right corner of the page.
 - Try restarting `viam-server` by navigating to the app's **CONFIGURE** tab in **Builder** mode, clicking the **...** menu on the right side of the machine part's card, and selecting **Restart part**.

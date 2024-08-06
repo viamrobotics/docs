@@ -60,7 +60,7 @@ A module provides one or more {{< glossary_tooltip term_id="resource" text="modu
 Follow the instructions below depending on the type of modular resource you would like to add to your machine:
 
 {{< alert title="Note" color="note" >}}
-If you are using a [rented Viam rover](/get-started/try-viam/), adding modules is disabled for security purposes.
+If you are using a [rented Viam rover](/appendix/try-viam/), adding modules is disabled for security purposes.
 {{< /alert >}}
 
 {{< tabs >}}

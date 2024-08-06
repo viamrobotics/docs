@@ -3,19 +3,11 @@ title: "How-to Guides"
 linkTitle: "How-to Guides"
 weight: 200
 type: "docs"
+images: ["/registry/module-puzzle-piece.svg"]
+description: "Follow instructions for common tasks and workflows."
 ---
 
-Get started in less than 5 minutes with one of these quickstarts:
-
-{{< cards >}}
-{{% card link="/get-started/quickstarts/control-motor/" %}}
-{{% card link="/get-started/quickstarts/collect-data/" %}}
-{{% card link="/get-started/quickstarts/detect-people/" %}}
-{{% card link="/get-started/quickstarts/write-code/" %}}
-{{% card link="/get-started/quickstarts/drive-rover/" %}}
-{{< /cards >}}
-
-or click on one of the following guides that provide solutions for common tasks and workflows:
+Click on one of the following guides that provide solutions for common tasks and workflows:
 
 {{< cards >}}
 {{% card link="/use-cases/configure/" class="fit-contain" %}}

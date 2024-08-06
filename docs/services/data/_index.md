@@ -31,7 +31,7 @@ Once collected, you can configure which data to securely sync to the cloud, and 
 Get started now with a quickstart guide:
 
 {{< cards >}}
-{{< card link="/get-started/quickstarts/collect-data/" class="green">}}
+{{< card link="/get-started/collect-data/" class="green">}}
 {{< /cards >}}
 
 Or learn more about Viam's data management features, which can be broken down into on-device and cloud data capabilities:

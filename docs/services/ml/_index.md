@@ -38,7 +38,7 @@ As a classifier, the service returns class labels and confidence score based off
 
 To collect images and train your own model:
 
-1. [Gather images from your machine.](/get-started/quickstarts/collect-data/)
+1. [Gather images from your machine.](/get-started/collect-data/)
 2. [Label a dataset.](/use-cases/deploy-ml/#create-a-dataset-and-label-data)
 3. [Train a model on your data and deploy the model on your machine.](/use-cases/deploy-ml/#train-and-test-a-machine-learning-ml-model)
 
