@@ -9,6 +9,10 @@ aliases:
   - /fleet/configure-a-fleet/
 ---
 
+{{< cards >}}
+{{% card link="/use-cases/one-to-many/" %}}
+{{< /cards >}}
+
 If you have multiple machines with similar configurations, you can use a _fragment_ to configure all of the machines at the same time.
 Fragments are a way of sharing and managing [machine configurations](/configure/) across multiple machines.
 
