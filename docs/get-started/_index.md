@@ -46,7 +46,7 @@ Viam has many built-in {{< glossary_tooltip term_id="component" text="components
 ### Extensibility
 
 For everything that is not built-in, you can deploy _{{< glossary_tooltip term_id="module" text="modules" >}}_ from the [**Viam Registry**](/registry/).
-Modules from the Viam registry provide custom components or services as _modular resources_ which are run and managed by `viam-server` as processes.
+Modules provide custom components or services as _modular resources_ which are run and managed by `viam-server` as processes.
 When configuring your machine, you can choose and configure built-in components and services, as well as any available from the Viam Registry.
 You can also create your own resources for any hardware or software and add them to the Viam Registry.
 
