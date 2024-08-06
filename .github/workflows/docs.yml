@@ -151,12 +151,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: components-models-file
-          path: "components.json"
+          path: "components"
       - name: Download the services models file
         uses: actions/download-artifact@v3
         with:
           name: services-models-file
-          path: "services.json"
+          path: "services"
       - run: pip install -r .github/workflows/requirements.txt
       - name: "Update modular resources"
         run: python3 .github/workflows/get_modular_resources.py
