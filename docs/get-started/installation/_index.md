@@ -23,6 +23,7 @@ aliases:
   - /installation/prepare/microcontrollers/
   - /get-started/installation/prepare/microcontrollers/
   - /build/micro-rdk/
+  - /get-started/installation/microcontrollers/
 ---
 
 To use Viam, you need to install either the `viam-server` binary or the micro-RDK.
@@ -319,3 +320,27 @@ However, if the correct port has been selected, try the following:
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
+
+#### Computer not recognizing the microcontroller
+
+If you’re trying to connect a microcontroller using serial port to an Ubuntu system and the computer doesn’t seem to be recognizing the microcontroller, check if the `brltty` service or its secondary service `brltty-udev` are active (`brltty` is a service installed by default that provides access to a braille display):
+
+```sh {class="command-line" data-prompt="$" data-output="2"}
+sudo systemctl status | grep brltty
+brltty-udev.service loaded active running Braille Device Support
+```
+
+It is a known issue that this service takes ownership of cp210x devices that are used in serial communication with microcontrollers.
+
+To disable the services, run the following:
+
+```sh {class="command-line" data-prompt="$"}
+sudo systemctl stop brltty-udev.service
+sudo systemctl mask brltty-udev.service
+sudo systemctl stop brltty.service
+sudo systemctl disable brltty.service
+```
+
+You may also need to reboot your system, and/or unplug the cable from the computer and re-plug it in.
+
+See this [blog post](https://koen.vervloesem.eu/blog/how-to-stop-brltty-from-claiming-your-usb-uart-interface-on-linux/) and [Ubuntu bug report](https://bugs.launchpad.net/ubuntu/+source/brltty/+bug/1958224) for more.
