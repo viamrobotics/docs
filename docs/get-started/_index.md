@@ -36,7 +36,7 @@ For example, if you are building a pet-feeding machine you might install `viam-s
 If you are working with microcontrollers, the [micro-RDK](/installation/) is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
 
 The [Viam app](https://app.viam.com) provides the user interface for configuring your machine.
-You can put together any of the available resources across microcontrollers and computers as configurable building blocks.
+You can put together any resources across microcontrollers and computers as configurable building blocks.
 As you configure your machine, you can test each resource to confirm it is working as expected in the same UI you use for configuration.
 
 {{<gif webm_src="/test.webm" mp4_src="/test.mp4" alt="Test a camera stream" max-width="600px" class="aligncenter">}}
