@@ -171,6 +171,7 @@ The following components support data capture:
 - Movement Sensor (includes GPS)
 - Sensor
 - Servo
+- Vision Service
 
 {{% /tab %}}
 {{% tab name="micro-RDK" %}}
