@@ -14,7 +14,7 @@ component_description: "Texas Instruments TDA4VM."
 
 {{% alert title="REQUIREMENTS" color="caution" %}}
 
-Follow the [setup guide](/get-started/prepare/sk-tda4vm/) to prepare your TDA4VM for running `viam-server` before configuring a `ti` board.
+Follow the [setup guide](/installation/prepare/sk-tda4vm/) to prepare your TDA4VM for running `viam-server` before configuring a `ti` board.
 
 {{% /alert %}}
 

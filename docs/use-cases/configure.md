@@ -25,13 +25,13 @@ Then create a machine by typing in a name and clicking **Add machine**.
 {{<imgproc src="/fleet/app-usage/create-machine.png" resize="600x" declaredimensions=true alt="The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.">}}
 
 {{% /tablestep %}}
-{{% tablestep link="/get-started/installation/" %}}
+{{% tablestep link="/installation/" %}}
 **2. Install Viam on your machine**
 
 All of the software that runs your smart machine is packaged into a binary called `viam-server`.
 Install it on the computer controlling your smart machine by following the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} in the [Viam app](https://app.viam.com/).
 
-If you are using a microcontroller instead of a 64-bit computer, you can install a [lightweight version of `viam-server`](/get-started/installation/#install-micro-rdk).
+If you are using a microcontroller instead of a 64-bit computer, you can install a [lightweight version of `viam-server`](/installation/#install-micro-rdk).
 You can install `viam-server` on your personal computer, or on a single-board computer (SBC).
 
 {{% /tablestep %}}
@@ -107,7 +107,7 @@ Once you have configured your machine, continue to develop an application:
 To see full sample projects, that configure and control machines, check out these tutorials:
 
 {{< cards >}}
-{{% card link="/get-started/quickstarts/drive-rover/" %}}
+{{% card link="/tutorials/get-started/lazy-susan/" %}}
 {{% card link="/tutorials/get-started/blink-an-led/" %}}
 {{% card link="/tutorials/services/color-detection-scuttle/" %}}
 {{< /cards >}}

@@ -79,7 +79,7 @@ If you are using different hardware, the navigation setup process will be mostly
 
 {{% /alert %}}
 
-Before you start, make sure to create a machine in [the Viam app](https://app.viam.com) and [install `viam-server`](/get-started/installation/) on your robot.
+Before you start, make sure to create a machine in [the Viam app](https://app.viam.com) and [install `viam-server`](/installation/) on your robot.
 
 ## Configure the components you need
 

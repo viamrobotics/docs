@@ -13,12 +13,12 @@ If you have a rover base, you can use Viam to teleoperate it and to navigate aut
 Once you have configured your machine, you can remotely control your machine on the app's **CONTROL** tab, and set up autonomous navigation with the [navigation service](/services/navigation/).
 
 {{< table >}}
-{{% tablestep link="/get-started/try-viam/try-viam-tutorial/#control-tab" %}}
+{{% tablestep link="/components/base/wheeled/#test-the-base" %}}
 {{<imgproc src="/use-cases/base-control.png" class="fill alignleft" resize="200x" style="max-width: 200px" declaredimensions=true alt="Base control card">}}
 **1. Teleoperate**
 
 You can remotely control your rover from anywhere through the [Viam app](https://app.viam.com).
-Create an account and add a machine, [install `viam-server`](/get-started/installation/), and [configure your rover base](/components/base/).
+Create an account and add a machine, [install `viam-server`](/installation/), and [configure your rover base](/components/base/).
 Then, go to the **CONTROL** tab and access a remote control card for your base, with an interface for controlling speed, direction, and power.
 You can also view live feeds from any cameras you configure.
 
