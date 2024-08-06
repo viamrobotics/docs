@@ -21,10 +21,6 @@ Viam is a software platform that makes it easy to combine and integrate hardware
 Machines are everywhere, from small machines like IoT sensors, to home automation systems, robotic systems, cars and boats, and even more complex enterprise systems.
 All these machines start by combining hardware and software.
 
-<div>
-{{< imgproc src="/viam/viam.png" alt="Viam overview" resize="800x" class="aligncenter" >}}
-</div>
-
 ## `viam-server` and the Viam app
 
 At the core of Viam is the open-source `viam-server` executable which runs on a computer and manages hardware, software, and data for a machine.
