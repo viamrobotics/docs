@@ -45,8 +45,8 @@ Viam has many built-in {{< glossary_tooltip term_id="component" text="components
 
 ### Extensibility
 
-For everything that is not built-in, you can deploy  _{{< glossary_tooltip term_id="module" text="modules" >}}_ from the [**Viam Registry**](/registry/).
-Modules from the Viam registry provide custom components or services as _modular resources_ which are run alongside `viam-server`.
+For everything that is not built-in, you can deploy _{{< glossary_tooltip term_id="module" text="modules" >}}_ from the [**Viam Registry**](/registry/).
+Modules from the Viam registry provide custom components or services as _modular resources_ which are run and managed by `viam-server` as processes.
 When configuring your machine, you can choose and configure builtin components and services, as well as any available from the Viam Registry.
 You can also create your own resources for any hardware or software and add them to the Viam Registry.
 
@@ -106,7 +106,7 @@ motor->set_power(0.4);
 The standardized nature of Viam's resource APIs means that when you build machines, you can swap out components such as motors without changing any code.
 The only change needed is to your machine configuration.
 
-However, if you need more custom behaviour, you can extend these APIs to suit your own needs.
+However, if you need more custom behaviour, you can [extend these APIs to suit your own needs](/registry/advanced/create-subtype/).
 
 ### Connect from anywhere
 
