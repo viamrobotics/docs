@@ -45,7 +45,7 @@ Viam has many built-in {{< glossary_tooltip term_id="component" text="components
 
 ### Extensibility
 
-For everything that is not built-in, Viam has {{< glossary_tooltip term_id="module" text="_modules_" >}}.
+For everything that is not built-in, Viam has _{{< glossary_tooltip term_id="module" text="modules" >}}_.
 Modules from the [**Viam Registry**](/registry/) provide custom components or services as _modular resources_ which are run alongside `viam-server`.
 When configuring your machine, you can choose and configure builtin components and services, as well as any available from the Viam Registry.
 You can also create your own resources for any hardware or software and add them to the Viam Registry.
@@ -117,6 +117,10 @@ If `viam-server` can connect to the internet, you can control and monitor your m
 In scenarios where machines are connected to a local area network (LAN) with intermittent or no cloud connectivity, you can control and monitor machines from the local network or with code on the machines themselves.
 
 ### Better and smarter machines
+
+<div>
+<img src="data-ml.svg" alt="A rover detecting a flower" class="alignright" width="400px" >
+</div>
 
 With all this, you can configure a wide variety of machines.
 The Viam app does not just provide a useful configuration interface.
