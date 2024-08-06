@@ -111,7 +111,7 @@ However, if you need more custom behaviour, you can [extend these APIs to suit y
 ### Connect from anywhere
 
 You can use Viam's SDKs, as well as the Viam app, and the Viam mobile app, to control and monitor your machines securely.
-Viam uses WebRTC and gRPC for secure peer to peer communications across network boundaries.
+Viam uses WebRTC and gRPC for secure peer-to-peer communications across network boundaries.
 
 If `viam-server` can connect to the internet, you can control and monitor your machines securely **from anywhere in the world**.
 In scenarios where machines are connected to a local area network (LAN) with intermittent or no cloud connectivity, you can control and monitor machines from the local network or with code on the machines themselves.
