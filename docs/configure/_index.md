@@ -216,6 +216,8 @@ See the [services documentation](/services/) for more information.
 Some resources have a **TEST** section on the bottom half of their configuration pane which you can expand and interact with to test out controlling the service.
 You must be running `viam-server` and connected to your machine to use this feature.
 
+{{<gif webm_src="/test.webm" mp4_src="/test.mp4" alt="Test a camera stream" max-width="600px" class="aligncenter">}}
+
 You can turn off a service while running `viam-server` by selecting the **...** menu in the upper right corner and selecting **Disable**.
 
 {{% alert title="Tip" color="tip" %}}
