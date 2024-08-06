@@ -1408,6 +1408,16 @@ ul.sectionlist > li:hover {
   background-color: #ffd400;
 }
 
+.ais-Hits-item > .quickstart .title:after {
+  content: "Quickstart";
+  background-color: #00E8E8;
+}
+
+.ais-Hits-item > .codelab .title:after {
+  content: "Codelab";
+  background-color: #FF7D80;
+}
+
 .ais-Hits-item .title:after {
   content: "Tutorial";
   padding: 0.1rem 0.2rem;
