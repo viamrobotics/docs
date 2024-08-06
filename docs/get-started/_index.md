@@ -126,7 +126,7 @@ With all this, you can configure a wide variety of machines.
 The Viam app does not just provide a useful configuration interface.
 It also provides several higher-level functionalities to make your machines smarter and better, such as:
 
-- **Data Management**: Any data on your machine can be synced to the cloud
+- **Data Management**: Any data on your machine can be synced to the cloud.
   From there you can query it using SQL, MQL, or with code.
 - **Machine Learning**: Train machine learning models on collected data and deploy ML models to machines to enable them to intelligently see and interpret the world around them.
 - **Simultaneous Localization And Mapping (SLAM)**: A machine can map its surroundings and find its position on a map.
