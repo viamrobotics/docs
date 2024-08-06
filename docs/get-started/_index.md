@@ -27,7 +27,7 @@ All these machines start by combining hardware and software.
 
 ## `viam-server` and the Viam app
 
-At the core of Viam is the open-source `viam-server` executable which runs on a computer and manages hardware and software for a machine.
+At the core of Viam is the open-source `viam-server` executable which runs on a computer and manages hardware, software, and data for a machine.
 To use Viam with a machine, you create a configuration specifying which hardware and software the machine consists of.
 `viam-server` then manages and runs the drivers for the configured hardware components and software services.
 
@@ -45,8 +45,8 @@ Viam has many built-in {{< glossary_tooltip term_id="component" text="components
 
 ### Extensibility
 
-For everything that is not built-in, Viam has _{{< glossary_tooltip term_id="module" text="modules" >}}_.
-Modules from the [**Viam Registry**](/registry/) provide custom components or services as _modular resources_ which are run alongside `viam-server`.
+For everything that is not built-in, you can deploy  _{{< glossary_tooltip term_id="module" text="modules" >}}_ from the [**Viam Registry**](/registry/).
+Modules from the Viam registry provide custom components or services as _modular resources_ which are run alongside `viam-server`.
 When configuring your machine, you can choose and configure builtin components and services, as well as any available from the Viam Registry.
 You can also create your own resources for any hardware or software and add them to the Viam Registry.
 
@@ -145,7 +145,7 @@ Users can have access to different fleet management capabilities depending on wh
 
 ## Support
 
-Viam supports devices running **any** 64-bit Linux OS or macOS.
+The `viam-server` executable runs on **any** 64-bit Linux OS or macOS Computer or Windows Subsystem for Linux.
 Here are some of the boards Viam supports:
 
 {{< board-carousel >}}
