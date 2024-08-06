@@ -185,6 +185,7 @@ search.addWidgets([
       { label: "blogpost" },
       { label: "tutorial" },
       { label: "codelab" },
+      { label: "quickstart" },
     ],
   }),
   instantsearch.widgets.pagination({
@@ -193,6 +194,13 @@ search.addWidgets([
 ]);
 
 search.start();
+// Only show tutorials and blogposts to begin with
+search.addWidgets([{
+  init: function(options) {
+    options.helper.toggleRefinement('resource', 'tutorial');
+    options.helper.toggleRefinement('resource', 'blogpost');
+  }
+}]);
 search.on("render", function () {
   if (
     search.helper.state.disjunctiveFacetsRefinements.languages &&
