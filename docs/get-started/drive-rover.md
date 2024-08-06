@@ -30,7 +30,7 @@ cost: "0"
 resource: "quickstart"
 ---
 
-If you haven't read through [Learn Viam](/get-started/), we recommend you do so, as it will provide you with an overview of the Viam platform.
+If you haven't read through [Learn Viam](/get-started/), we recommend you do so, to get an overview of the Viam platform.
 
 The next few quickstarts, will guide you through the concepts you need to get started with Viam.
 In this guide you'll write code that makes a rover drive in a square.
