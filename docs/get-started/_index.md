@@ -122,7 +122,6 @@ In scenarios where machines are connected to a local area network (LAN) with int
 <img src="data-ml.svg" alt="A rover detecting a flower" class="alignright" width="400px" >
 </div>
 
-With all this, you can configure a wide variety of machines.
 The Viam app does not just provide a useful configuration interface.
 It also provides several higher-level functionalities to make your machines smarter and better, such as:
 
