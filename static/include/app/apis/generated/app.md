@@ -1440,7 +1440,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### CreateRegistryItem
 
-Create a registry item
+Create a registry item.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
