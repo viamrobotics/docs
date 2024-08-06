@@ -175,6 +175,8 @@ You must configure each component with a type, a model, a name, attributes, and 
   Many built-in components have convenient implicit dependencies, in which case `depends_on` can be left blank.
   For example, a [`gpio` motor](/components/motor/gpio/) depends on the `board` to which it is wired, but it has a dedicated `board` attribute and `viam-server` will automatically initialize that board before it looks for the motor.
 
+Some resources have a **TEST** section on the bottom half of their configuration pane which you can expand and interact with to test out controlling the component or service.
+
 If you are configuring several similar components, you can click **...** in the upper-right of a component's configuration pane, then select the **Duplicate** button to create a new identical component beneath your existing one.
 Be sure to edit the duplicated component to change any parameters that are unique to the new component, such as its name and pins.
 
