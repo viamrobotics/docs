@@ -52,7 +52,7 @@ You can also create your own resources for any hardware or software and add them
 
 ### Standard APIs
 
-Each category of {{< glossary_tooltip term_id="resource" text="resource" >}}, whether a builtin component or service or a custom component or service from the registry, has a **standardized API** that you can access with an [SDK (software development kit)](/sdks/) in your preferred programming language.
+Each category of {{< glossary_tooltip term_id="resource" text="resource" >}}, whether a built-in component or service or a custom component or service from the registry, has a **standardized API** that you can access with an [SDK (software development kit)](/sdks/) in your preferred programming language.
 For example, you can send the same [`SetPower` command](/components/motor/#setpower) to any kind of motor, using any of the available SDKs:
 
 {{< tabs >}}
