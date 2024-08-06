@@ -1,8 +1,9 @@
 {{- $.Scratch.Add "index" slice -}}
 {{- $section := $.Site.GetPage "section" .Section -}}
       {{- range .Site.AllPages -}}
+      {{- if eq .Section $section.Section -}}
             {{- if or (and (.IsDescendant $section) (and (not .Draft) (and (not .Params.private) (not .Params.empty_node)))) $section.IsHome -}}
-                  {{- if eq .Section "tutorials" -}}
+                  {{- if or (eq .Section "tutorials") (and (eq .Section "get-started") (eq .Parent.LinkTitle "Quickstarts")) -}}
                         {{- $.Scratch.Set "latestDate" .Date.UTC.Unix -}}
                         {{- if .Params.updated -}}
                               {{- $.Scratch.Set "latestDate" ((time .Params.updated).UTC.Unix) -}}
@@ -196,5 +197,6 @@
                   )}}
                   {{- end -}}
             {{- end -}}
+      {{- end -}}
       {{- end -}}
 {{- $.Scratch.Get "index" | jsonify -}}
