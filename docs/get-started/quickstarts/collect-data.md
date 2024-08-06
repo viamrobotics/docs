@@ -13,6 +13,7 @@ no_list: true
 level: "Beginner"
 date: "2024-07-31"
 cost: "0"
+resource: "quickstart"
 ---
 
 Follow this guide to start collecting images or sensor data from your machine using the [data management service](/services/data/).

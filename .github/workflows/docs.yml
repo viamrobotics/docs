@@ -101,7 +101,7 @@ jobs:
       - name: Download the quickstarts metadata file
         uses: actions/download-artifact@v3
         with:
-          name: quickstarts-info-file
+          name: quickstarts-file
       - name: Upload quickstarts documents
         run: |
           jq -c '.[]' typesense.json > documents.jsonl

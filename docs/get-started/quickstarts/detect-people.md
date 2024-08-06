@@ -15,6 +15,7 @@ no_list: true
 level: "Beginner"
 date: "2024-07-31"
 cost: "0"
+resource: "quickstart"
 ---
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/-sXdxbBVrso">}}

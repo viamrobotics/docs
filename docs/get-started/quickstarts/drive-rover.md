@@ -24,6 +24,7 @@ no_list: true
 level: "Beginner"
 date: "2024-07-31"
 cost: "0"
+resource: "quickstart"
 ---
 
 Follow this guide to write code that makes a rover drive in a square.
