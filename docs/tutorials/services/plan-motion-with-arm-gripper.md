@@ -213,9 +213,7 @@ obstacles = append(obstacles, tableObj)
 
 // Create a WorldState that has the GeometriesInFrame included
 obstaclesInFrame := referenceframe.NewGeometriesInFrame(referenceframe.World, obstacles)
-worldState := &referenceframe.WorldState{
-  Obstacles: []*referenceframe.GeometriesInFrame{obstaclesInFrame},
-}
+worldState, err := referenceframe.NewWorldState([]*referenceframe.GeometriesInFrame{obstaclesInFrame}, nil)
 ```
 
 {{% /tab %}}
@@ -616,7 +614,7 @@ func main() {
   adjustedArmPoint.Z += 100.0
   cmdArmPose := spatialmath.NewPose(adjustedArmPoint, currentArmPose.Orientation())
 
-  err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, &referenceframe.WorldState{}, nil)
+  err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, 	referenceframe.NewEmptyWorldState(), nil)
   if err != nil {
     fmt.Println(err)
   }
@@ -648,8 +646,9 @@ func main() {
 
   // Create a WorldState that has the GeometriesInFrame included
   obstaclesInFrame := referenceframe.NewGeometriesInFrame(referenceframe.World, obstacles)
-  worldState := &referenceframe.WorldState{
-    Obstacles: []*referenceframe.GeometriesInFrame{obstaclesInFrame},
+	worldState, err := referenceframe.NewWorldState([]*referenceframe.GeometriesInFrame{obstaclesInFrame}, nil)
+  if err != nil {
+    logger.Fatal(err)
   }
 
   // Generate a sample "start" pose to demonstrate motion
