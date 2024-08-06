@@ -34,16 +34,13 @@ In this guide you'll capture and sync sensor or image data from a machine.
 
 ## Requirements
 
-- A Linux or macOS computer:
-  - A single-board computer (SBC) such as a Raspberry Pi, OR
-  - A laptop or desktop
-- A camera or a sensor.
-  Options:
-  - The webcam built into your computer
-  - A USB webcam connected to your computer or SBC
-  - A sensor (such as a temperature sensor) wired to your single-board computer's GPIO pins
+You don't need to buy or own any hardware to complete this tutorial.
+If you have the following components, you can follow along on your own hardware:
 
-{{% expand "No computer or camera at hand?" %}}
+- A Linux, maxOS or WSL computer that can run `viam-server`.
+- A sensor or a webcam: this could be the webcam on your laptop or any other webcam you can connect to your computer.
+
+{{% expand "No computer, camera, or sensor at hand?" %}}
 No problem.
 Use [Try Viam](https://app.viam.com/try) to borrow a rover online which is already configured with some components to test with.
 If you are using a Try Viam rover **start with Step 4** on the **Collect camera images** tab.

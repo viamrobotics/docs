@@ -37,8 +37,19 @@ In this guide you'll use machine learning to detect people in a camera stream.
 
 ## Requirements
 
-- A computer: a development machine such as your laptop and optionally a single-board computer such as the Raspberry Pi
-- A webcam: this could be the webcam on your laptop or any other webcam you can connect to your computer
+You don't need to buy or own any hardware to complete this tutorial.
+If you have the following components, you can follow along on your own hardware:
+
+- A Linux, maxOS or WSL computer that can run `viam-server`.
+- A webcam: this could be the webcam on your laptop or any other webcam you can connect to your computer.
+
+{{% expand "No computer or webcam?" %}}
+No problem.
+Use [Try Viam](https://app.viam.com/try) to borrow a rover online which is already configured with some components to test with.
+If you are using a Try Viam rover **start with Step 4**.
+You may not be able to test using the supplied ML model, as your borrowed rover will generally not be able to see people.
+If that is the case, use the [`color_detector`](/services/vision/color_detector/) vision service to test detecting colors.
+{{% /expand%}}
 
 ## Instructions
 
