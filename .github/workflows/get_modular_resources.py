@@ -57,8 +57,8 @@ async def main():
         json_m)
                 print(insert_resp)
 
-    # Get built-in resources from components.json
-    with open('components.json') as f:
+    # Get built-in resources from components/typesense.json
+    with open('components/typesense.json') as f:
         resources = json.load(f)
         for r in resources:
             print("RESOURCE")
@@ -71,8 +71,8 @@ async def main():
             print("INSERTED")
             print(insert_resp)
 
-    # Get built-in resources from services.json
-    with open('services.json') as f:
+    # Get built-in resources from services/typesense.json
+    with open('services/typesense.json') as f:
         resources = json.load(f)
         for r in resources:
             print("RESOURCE")
