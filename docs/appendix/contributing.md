@@ -93,7 +93,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
 
 - **How-to Guide (procedural)**: A task-oriented piece of content that directs a reader to perform actions step by step to complete a task, like instructions to sauté onions.
   Generally starts with a description of the task and things to consider, and then provides a set of numbered steps to follow.
-  For example, the [Installation page](/get-started/installation/) or the [Find module page](/registry/configure/).
+  For example, the [Installation page](/installation/) or the [Find module page](/registry/configure/).
 
   {{< expand "Click to view template" >}}
 
@@ -280,7 +280,7 @@ With this configuration in place, each commit you make will remove EXIF data fro
 If the image is supposed to take up the full width of the page use the regular markdown syntax: `![alt text](path)`.
 
 ```md
-![Raspberry Pi](/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png)
+![Raspberry Pi](/installation/thumbnails/raspberry-pi-4-b-2gb.png)
 ```
 
 If the image is smaller use the `imgproc` shortcode with an appropriate resize value.
@@ -290,16 +290,16 @@ If the image is smaller use the `imgproc` shortcode with an appropriate resize v
 
 { {<imgproc src="PATH/TO/IMAGE.png" resize="300x" declaredimensions=true alt="ALT">} }
 
-{ {<imgproc src="/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x60" declaredimensions=true alt="Raspberry Pi">} }
+{ {<imgproc src="/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x60" declaredimensions=true alt="Raspberry Pi">} }
 
-{ {<imgproc src="/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x200" declaredimensions=true alt="Raspberry Pi">} }
+{ {<imgproc src="/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x200" declaredimensions=true alt="Raspberry Pi">} }
 ```
 
-![Raspberry Pi](/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png)
+![Raspberry Pi](/installation/thumbnails/raspberry-pi-4-b-2gb.png)
 
-{{<imgproc src="/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x60" declaredimensions=true alt="Raspberry Pi">}}
+{{<imgproc src="/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x60" declaredimensions=true alt="Raspberry Pi">}}
 
-{{<imgproc src="/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x200" declaredimensions=true alt="Raspberry Pi">}}
+{{<imgproc src="/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x200" declaredimensions=true alt="Raspberry Pi">}}
 
 The `imgproc` shortcode will:
 

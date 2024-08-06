@@ -61,7 +61,7 @@ To add a fragment to a machine:
 - Select **Insert fragment**.
   Now, you can see the available fragments to add:
 
-  {{<imgproc src="get-started/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
+  {{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
 
 - Look through the list of available fragments.
   Click on a fragment to open its menu.
@@ -70,7 +70,7 @@ To add a fragment to a machine:
 
 The components and services included in the fragment will now appear as _read-only_ cards on the **CONFIGURE** tab, along with a card for your fragment:
 
-{{<imgproc src="get-started/try-viam/rover-resources/fragments/fragments_cards.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
+{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_cards.png" resize="400x" style="max-width: 500px" alt="List of available fragments">}}
 
 In the `JSON` configuration, you will see the fragment ID in the `fragments` section:
 
@@ -81,7 +81,7 @@ In the `JSON` configuration, you will see the fragment ID in the `fragments` sec
 }
 ```
 
-For an example of adding a fragment to a machine, see the [Add a Rover Fragment to your Machine](/get-started/try-viam/rover-resources/rover-tutorial-fragments/).
+For an example of adding a fragment to a machine, see the [Add a Rover Fragment to your Machine](/appendix/try-viam/rover-resources/rover-tutorial-fragments/).
 
 ## Modify the config of a machine that uses a fragment
 

@@ -11,7 +11,7 @@ aliases:
 ---
 
 {{< alert title="Tip" color="tip" >}}
-For an overview of the Viam platform, see [Viam in 3 minutes](/get-started/viam/).
+For an overview of the Viam platform, see [Get started](/get-started/).
 {{< /alert >}}
 
 Viam’s Robot Development Kit (RDK) is the [open-source](https://github.com/viamrobotics/rdk), on-machine portion of the Viam platform, that provides `viam-server` and the Go SDK.
@@ -61,5 +61,5 @@ During machine shutdown, the RDK handles modular resource instances similarly to
 {{< cards >}}
 {{% card link="/appendix/apis/" %}}
 {{% card link="/registry/" customTitle="Viam Registry" %}}
-{{% card link="/get-started/installation/" canonical="/get-started/installation/#install-micro-rdk" %}}
+{{% card link="/installation/" canonical="/installation/#install-micro-rdk" %}}
 {{< /cards >}}

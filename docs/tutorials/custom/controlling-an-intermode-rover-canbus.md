@@ -63,7 +63,7 @@ This tutorial shows you how to leverage this protocol and abstract it into the V
 
 The tutorial uses the following hardware:
 
-- <a href="https://a.co/d/bxEdcAT" target="_blank">Raspberry Pi with microSD card</a>, with `viam-server` installed per [our Raspberry Pi setup guide](/get-started/prepare/rpi-setup/).
+- <a href="https://a.co/d/bxEdcAT" target="_blank">Raspberry Pi with microSD card</a>, with `viam-server` installed per [our Raspberry Pi setup guide](/installation/prepare/rpi-setup/).
 - [An Intermode rover](https://www.intermode.io/)
 - [PiCAN 2 - Canbus interface for Raspberry Pi](https://copperhilltech.com/pican-2-can-bus-interface-for-raspberry-pi/)
 - [12V to 5V Buck Converter](https://www.amazon.com/dp/B01M03288J)
@@ -74,8 +74,8 @@ The tutorial uses the following hardware:
 ### Machine setup
 
 Before you can use Viam on your device, you must ensure it has a supported operating system.
-If you are using a Raspberry Pi, start by [setting up your Raspberry Pi](/get-started/prepare/rpi-setup/).
-For other single-board computers, see the [installation guide](/get-started/installation/#prepare-your-board).
+If you are using a Raspberry Pi, start by [setting up your Raspberry Pi](/installation/prepare/rpi-setup/).
+For other single-board computers, see the [installation guide](/installation/#prepare-your-board).
 
 {{% snippet "setup.md" %}}
 
@@ -317,7 +317,7 @@ For more information on modules and how they work, see the [modular resources do
 
 ### Control the rover
 
-After you configured the base, go to the [**CONTROL**](/fleet/control/) tab and expand the base component to view the controls to enable keyboard or [discrete](/get-started/try-viam/try-viam-tutorial/#discrete-movement-control) control over your machine's movement.
+After you configured the base, go to the [**CONTROL**](/fleet/control/) tab and expand the base component to view the controls to enable keyboard or discrete control over your machine's movement.
 
 {{< alert title="Caution" color="caution" >}}
 Be careful, the Intermode is a large and powerful rover - make sure you have the shutoff key in hand for emergencies and make sure your rover has sufficient space to drive around without hitting anyone or anything.
@@ -342,7 +342,7 @@ Now that you have integrated your rover or mobile base with Viam, you can use th
 If your rover has a [`camera`](/components/camera/) or a [`movement_sensor`](/components/movement-sensor/), you can try the following tutorials:
 
 {{< cards >}}
-{{% card link="/get-started/quickstarts/drive-rover/" %}}
+{{% card link="/get-started/drive-rover/" %}}
 {{% card link="/tutorials/services/color-detection-scuttle/" %}}
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}

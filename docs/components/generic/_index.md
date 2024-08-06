@@ -61,7 +61,7 @@ If your micro-RDK machine includes a resource that isn't a [base](/components/ba
 {{< alert title="Important" color="note" >}}
 The micro-RDK works differently from the RDK, so creating modular resources for it is different.
 Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) for information on how to create custom resources for your micro-RDK machine.
-You will need to [recompile and flash your ESP32 yourself](/get-started/installation/#install-micro-rdk) instead of using Viam's prebuilt binary and installer.
+You will need to [recompile and flash your ESP32 yourself](/installation/#install-micro-rdk) instead of using Viam's prebuilt binary and installer.
 {{< /alert >}}
 
 {{% /tab %}}

@@ -229,7 +229,7 @@ You can now drive your rover with a wireless controller.
 If you'd like to do more with your rover, check out one of these tutorials:
 
 {{< cards >}}
-{{% card link="/get-started/quickstarts/drive-rover/" %}}
+{{% card link="/get-started/drive-rover/" %}}
 {{% card link="/tutorials/services/basic-color-detection/" %}}
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}
