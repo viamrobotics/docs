@@ -646,7 +646,7 @@ func main() {
 
   // Create a WorldState that has the GeometriesInFrame included
   obstaclesInFrame := referenceframe.NewGeometriesInFrame(referenceframe.World, obstacles)
-	worldState, err := referenceframe.NewWorldState([]*referenceframe.GeometriesInFrame{obstaclesInFrame}, nil)
+  worldState, err := referenceframe.NewWorldState([]*referenceframe.GeometriesInFrame{obstaclesInFrame}, nil)
   if err != nil {
     logger.Fatal(err)
   }
