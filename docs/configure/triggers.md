@@ -243,7 +243,9 @@ def trigger():
         "Method-Name": data.get('method_name', 'no value'),
         "Min-Time-Received": data.get('min_time_received', 'no value'),
         "Max-Time-Received": data.get('max_time_received', 'no value'),
-        "Data-Type": data.get('data_type', 'no value')
+        "Data-Type": data.get('data_type', 'no value'),
+        "File-Id": data.get('file_id', 'no value'),
+        "Data": data.get('data', 'no value')
     }
     print(payload)
 
@@ -287,6 +289,8 @@ def hello_http(request):
         "Min-Time-Received": data.get("min_time_received", "no value"),
         "Max-Time-Received": data.get("max_time_received", "no value"),
         "Data-Type": data.get("data_type", "no value"),
+        "File-Id": data.get('file_id', 'no value'),
+        "Data": data.get('data', 'no value')
     }
     print(payload)
 
@@ -334,6 +338,7 @@ The request body includes the following data:
 | `location_name` | The location of the machine that triggered the request. | `part_data_ingested` |
 | `org_name` | The name of the organization that triggered the request. | `part_data_ingested` |
 | `file_id` | The id of the file that was ingested. | `part_data_ingested` |
+| `data` | The ingested sensor data. | `part_data_ingested` (sensor data) |
 
 ## Next steps
 
