@@ -22,6 +22,7 @@ Viam recommends purchasing the ESP32 with a development board. The following ESP
 
 - ESP32-WROOM Series (until v0.1.7)
 - ESP-32-WROVER Series
+- ESP32-S3
 
 Your microcontroller should have at least the following resources available to work with the micro-RDK:
 
