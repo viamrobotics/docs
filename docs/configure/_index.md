@@ -175,7 +175,10 @@ You must configure each component with a type, a model, a name, attributes, and 
   Many built-in components have convenient implicit dependencies, in which case `depends_on` can be left blank.
   For example, a [`gpio` motor](/components/motor/gpio/) depends on the `board` to which it is wired, but it has a dedicated `board` attribute and `viam-server` will automatically initialize that board before it looks for the motor.
 
-Some resources have a **TEST** section on the bottom half of their configuration pane which you can expand and interact with to test out controlling the component or service.
+Some resources have a **TEST** section on the bottom half of their configuration pane which you can expand and interact with to test out controlling the component.
+You must be running `viam-server` and connected to your machine to use this feature.
+
+You can turn off a component while running `viam-server` by selecting the **...** menu in the upper right corner and selecting **Disable**.
 
 If you are configuring several similar components, you can click **...** in the upper-right of a component's configuration pane, then select the **Duplicate** button to create a new identical component beneath your existing one.
 Be sure to edit the duplicated component to change any parameters that are unique to the new component, such as its name and pins.
@@ -209,6 +212,20 @@ You must configure a service with a `name` and a `type`:
 
 The other aspects of configuring a service are highly specific to the type of service.
 See the [services documentation](/services/) for more information.
+
+Some resources have a **TEST** section on the bottom half of their configuration pane which you can expand and interact with to test out controlling the service.
+You must be running `viam-server` and connected to your machine to use this feature.
+
+{{<gif webm_src="/test.webm" mp4_src="/test.mp4" alt="Test a camera stream" max-width="600px" class="aligncenter">}}
+
+You can turn off a service while running `viam-server` by selecting the **...** menu in the upper right corner and selecting **Disable**.
+
+{{% alert title="Tip" color="tip" %}}
+
+When you configure a service on the **CONFIGURE** tab, it will also appear on the **CONTROL** tab which gives you an interface to test and interact with it.
+The **Code sample** page on the **CONNECT** tab will also update to include code for some basic interaction with that service using the Viam [SDKs](/appendix/apis/).
+
+{{% /alert %}}
 
 ### Processes
 
