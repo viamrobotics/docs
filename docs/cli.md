@@ -336,8 +336,8 @@ done
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
 | `export` | Export data in a specified format to a specified location | - |
-| `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/use-cases/sensor-data-query/#configure-data-query) | - |
-| `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/use-cases/sensor-data-query/#configure-data-query) | - |
+| `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/use-cases/sensor-data-query-with-third-party-tools/#configure-data-query) | - |
+| `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/use-cases/sensor-data-query-with-third-party-tools/#configure-data-query) | - |
 | `dataset add` | Add a new image to an existing dataset by its file id, or add a group of images by specifying a filter | `filter` |
 | `dataset remove` | Remove an existing image from a dataset by its file id, or remove a group of images by specifying a filter | `filter` |
 | `delete binary` | Delete binary data | - |
