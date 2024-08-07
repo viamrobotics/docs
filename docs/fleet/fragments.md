@@ -89,11 +89,17 @@ The configuration cards of components and services included in the fragment are 
 
 Likewise, when you modify the fragment itself, those changes are pushed to all machines that use that fragment.
 
-If you need to modify the config of just one machine that uses a fragment, you have two options:
+If you need to modify the config of just one machine that uses a fragment, you have three options:
 
+- Revert changes made from the fragment overwrite
 - Use `fragment_mods` in your machine's config to overwrite certain fields of the fragment.
 - Copy and paste the contents of the fragment, remove the link to the fragment itself, then modify the config as needed.
   - If you use this method, future updates to the fragment _will not_ be automatically pushed to your machine.
+
+### Revert changes
+
+When a change is made to the fragment upstream, any machines using that fragment will also have that change applied to their configuration.
+To revert these changes, click the **...** menu on the upper right corner of the configuration pane and select **Revert changes**.
 
 ### Use `fragment_mods`
 
