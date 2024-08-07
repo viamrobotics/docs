@@ -78,6 +78,7 @@ Use the API key and [`TabularDataByFilter()`](/appendix/apis/data-client/#tabula
 
 ```python {class="line-numbers linkable-line-numbers" data-line="28-50"}
 import asyncio
+import bson
 
 from viam.rpc.dial import DialOptions, Credentials
 from viam.app.viam_client import ViamClient
@@ -110,8 +111,8 @@ async def main():
     # This query requests all stored data grouped by hour and calculates the
     # average, minimum, and maximum of the memory usage
     data = await data_client.tabular_data_by_mql(
-      organization_id=organization_id,
-      mql_query=[
+      organization_id='<organization-id>',
+      mql_binary=[
         bson.dumps({'$match': {'location_id': '<location-id>'}}),
         bson.dumps({
           "$group": {
@@ -127,6 +128,7 @@ async def main():
           }
         })
       ])
+    print(data)
 
     viam_client.close()
 
@@ -141,10 +143,10 @@ Adjust the Python script to uery your data further.
 
 ## Next steps
 
-On top of querying sensor data with the Python SDK, you can also [query](/use-cases/sensor-data-query/) or [visualize](/use-cases/sensor-data-visualize/) it with third-party tools.
+On top of querying sensor data with the Python SDK, you can also [query](/use-cases/sensor-data-query-with-third-party-tools/) or [visualize](/use-cases/sensor-data-visualize/) it with third-party tools.
 
 {{< cards >}}
-{{% card link="/use-cases/sensor-data-query/" %}}
+{{% card link="/use-cases/sensor-data-query-with-third-party-tools/" %}}
 {{% card link="/use-cases/sensor-data-visualize/" %}}
 {{< /cards >}}
 

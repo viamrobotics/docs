@@ -44,13 +44,22 @@ If there are any additional resources that you do not want to share with all mac
 When you've finished configuring the resources, select **JSON** mode and copy the entire JSON config.
 Now you're ready to share that config by creating a fragment.
 
-To create your own private fragment, go to [app.viam.com/fragments](https://app.viam.com/fragments) or click on **Fragments** in the left navigation bar on the [**FLEET** page](https://app.viam.com/robots).
+![Fragment creation view](/fleet/fragment-view.png)
+
+To create your own fragment like the above, go to [app.viam.com/fragments](https://app.viam.com/fragments) or click on **Fragments** in the left navigation bar on the [**FLEET** page](https://app.viam.com/robots).
 
 1. Enter a name or use the suggested name for your new fragment and click **Add fragment**.
 2. Paste the copied JSON configuration in the config field.
-3. Click **Save fragment**.
+3. Select the visibility of your fragment from the dropdown menu in the upper left corner:
+   ![Fragment privacy dropdown view](/fleet/fragment-privacy-view.png)
 
-![Fragment creation view](/fleet/fragment-view.png)
+   There are three options for this:
+
+   - **Public:** Any user inside or outside of your organization will be able to view and use this fragment.
+   - **Private:** No user outside of your organization will be able to view or use this fragment.
+   - **Unlisted:** Any user inside or outside of your organization, with a direct link, will be able to view and use this fragment.
+
+4. Click **Save** to save your fragment.
 
 ## Add a fragment to a machine
 

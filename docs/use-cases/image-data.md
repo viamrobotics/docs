@@ -180,7 +180,7 @@ Now that you have collected image data, you can [train new computer vision model
 
 {{< cards >}}
 {{% card link="/use-cases/deploy-ml/" %}}
-{{% card link="/use-cases/sensor-data-query/" %}}
+{{% card link="/use-cases/sensor-data-query-with-third-party-tools/" %}}
 {{< /cards >}}
 
 To see image data filtering in action, check out these tutorials:

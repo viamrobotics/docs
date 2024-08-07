@@ -122,7 +122,7 @@ If you want to query data from third party tools, you have to configure data que
 You can use third-party tools, such as the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/), [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), to query against captured sensor data.
 
 {{< table >}}
-{{% tablestep link="/use-cases/sensor-data-query/#configure-data-query"%}}
+{{% tablestep link="/use-cases/sensor-data-query-with-third-party-tools/#configure-data-query"%}}
 **1. Connect to your Viam organization's data**
 
 Run the following command to connect to your Viam organization's MongoDB Atlas instance from `mongosh` using the connection URI you obtained during query configuration:

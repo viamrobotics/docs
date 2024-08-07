@@ -19,7 +19,7 @@ You can capture and monitor the following metrics about the performance of indiv
 
 - **Wireless Signal Strength and Quality**: signal level, link quality, and noise level
 - **Memory Usage**: memory statistics, including total available memory, used percentage, and specifics on various types of memory (cached, free, slab, etc.)
-- **CPU Utilization**: CPU usage across different states (user, system, idle, etc.)
+- **CPU Usage**: CPU usage across different states (user, system, idle, etc.)
 - **Disk I/O**: metrics on read and write operations, including bytes transferred and operation times
 - **Network Traffic**: detailed network statistics, including bytes sent and received, packet information, and error counts, providing a deep dive into a device's network performance
 
@@ -87,6 +87,6 @@ The data you obtain about your machines is associated with metadata about the ma
 Once you have captured data about your machines, you can query your captured data with any tools that with SQL or MQL or visualize your data with tools like Grafana:
 
 {{< cards >}}
-{{% card link="/use-cases/sensor-data-query/" %}}
+{{% card link="/use-cases/sensor-data-query-with-third-party-tools/" %}}
 {{% card link="/use-cases/sensor-data-visualize/" %}}
 {{< /cards >}}
