@@ -43,14 +43,21 @@ In your machine's **CONFIGURE** tab, switch to **JSON** and copy the raw JSON.
 {{<imgproc src="/use-cases/one-to-many/raw-json.png" resize="700x" class="fill aligncenter" style="max-width: 400px" declaredimensions=true alt="JSON subtab of the CONFIGURE tab">}}
 
 {{% /tablestep %}}
-{{% tablestep link="/fleet/fragments/#create-a-fragment" %}}
+{{% tablestep link="/fleet/fragments/" %}}
 **3. Create a fragment**
 
 Go to [app.viam.com/fragments](https://app.viam.com/fragments).
 
 Add a fragment, and paste the copied JSON configuration into it.
 
-Set your privacy settings, then click **Save**.
+Set your privacy settings.
+There are three options for this:
+
+- **Public:** Any user inside or outside of your organization will be able to view and use this fragment.
+- **Private:** No user outside of your organization will be able to view or use this fragment.
+- **Unlisted:** Any user inside or outside of your organization, with a direct link, will be able to view and use this fragment.
+
+Click **Save**.
 
 If you want to edit the fragment later, do it from this screen.
 
@@ -72,8 +79,8 @@ In this way, you can keep all your machines up to date whenever you change the f
 Now that you have a fragment, you can add it to as many machines as you'd like:
 
 {{< table >}}
-{{% tablestep link="/fleet/fragments/#add-a-fragment-to-a-machine" %}}
-{{<imgproc src="/get-started/try-viam/rover-resources/fragments/fragments_list.png" resize="800x" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Add fragment">}}
+{{% tablestep %}}
+{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="800x" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Add fragment">}}
 **1. Add the fragment to one machine**
 
 On your machine's **CONFIGURE** tab, click the **+** button and select **Insert fragment**.
