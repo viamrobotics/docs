@@ -78,6 +78,7 @@ Use the API key and [`TabularDataByFilter()`](/appendix/apis/data-client/#tabula
 
 ```python {class="line-numbers linkable-line-numbers" data-line="28-50"}
 import asyncio
+import bson
 
 from viam.rpc.dial import DialOptions, Credentials
 from viam.app.viam_client import ViamClient
@@ -110,8 +111,8 @@ async def main():
     # This query requests all stored data grouped by hour and calculates the
     # average, minimum, and maximum of the memory usage
     data = await data_client.tabular_data_by_mql(
-      organization_id=organization_id,
-      mql_query=[
+      organization_id='<organization-id>',
+      mql_binary=[
         bson.dumps({'$match': {'location_id': '<location-id>'}}),
         bson.dumps({
           "$group": {
@@ -127,6 +128,7 @@ async def main():
           }
         })
       ])
+    print(data)
 
     viam_client.close()
 
