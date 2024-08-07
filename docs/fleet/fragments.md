@@ -91,7 +91,7 @@ Likewise, when you modify the fragment itself, those changes are pushed to all m
 
 If you need to modify the config of just one machine that uses a fragment, you have three options:
 
-- Revert changes made from the fragment overwrite
+- Revert changes made from the fragment overwrite.
 - Use `fragment_mods` in your machine's config to overwrite certain fields of the fragment.
 - Copy and paste the contents of the fragment, remove the link to the fragment itself, then modify the config as needed.
   - If you use this method, future updates to the fragment _will not_ be automatically pushed to your machine.
