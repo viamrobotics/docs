@@ -21,30 +21,17 @@ Viam is a software platform that makes it easy to combine and integrate hardware
 Machines are everywhere, from small machines like IoT sensors, to home automation systems, robotic systems, cars and boats, and even more complex enterprise systems.
 All these machines start by combining hardware and software.
 
-## `viam-server` and the Viam app
+## `viam-server`
 
 At the core of Viam is the open-source `viam-server` executable which runs on a computer and manages hardware, software, and data for a machine.
 If you are working with microcontrollers, the [micro-RDK](/installation/) is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
 
 To use Viam with a machine, you create a configuration specifying which hardware and software the machine consists of.
+Viam has many built-in {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} that run within `viam-server`.
+The components and services are configurable building blocks you can put together to make your machine.
 `viam-server` then manages and runs the drivers for the configured hardware components and software services.
 
-For example, if you are building a pet-feeding machine you might install `viam-server` on a Raspberry Pi and create a machine configuration with a camera and a servo for the hardware you are using.
-
-The [Viam app](https://app.viam.com) provides the user interface for configuring your machine.
-You can put together any resources across microcontrollers and computers as configurable building blocks.
-As you configure your machine, you can test each resource to confirm it is working as expected in the same UI you use for configuration.
-
-{{<gif webm_src="/test.webm" mp4_src="/test.mp4" alt="Test a camera stream" max-width="600px" class="aligncenter">}}
-
-Viam has many built-in {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} that run within `viam-server`.
-
-### Extensibility
-
-For everything that is not built-in, you can deploy _{{< glossary_tooltip term_id="module" text="modules" >}}_ from the [**Viam Registry**](/registry/).
-Modules provide custom components or services as _modular resources_ which are run and managed by `viam-server` as processes.
-When configuring your machine, you can choose and configure built-in components and services, as well as any available from the Viam Registry.
-You can also create your own resources for any hardware or software and add them to the Viam Registry.
+For example, if you are building a pet-feeding machine you might install the micro-RDK on a microcontroller and create a machine configuration with a camera and a servo for the hardware you are using.
 
 ### Standard APIs
 
@@ -112,14 +99,40 @@ Viam uses WebRTC and gRPC for secure peer-to-peer communications across network 
 If `viam-server` can connect to the internet, you can control and monitor your machines securely **from anywhere in the world**.
 In scenarios where machines are connected to a local area network (LAN) with intermittent or no cloud connectivity, you can control and monitor machines from the local network or with code on the machines themselves.
 
+### Support
+
+The `viam-server` executable runs on **any** computer that runs on 64-bit Linux OS, macOS Computer, or Windows Subsystem for Linux.
+Here are some of the boards Viam supports:
+
+{{< board-carousel >}}
+<br>
+
+Viam also supports microcontrollers with the [micro-RDK](/installation/#install-micro-rdk).
+
+## Viam Cloud
+
+The [Viam app](https://app.viam.com) provides the user interface for configuring your machine, a registry of resources for your machine, as well as capabilities to make your machines better and smarter.
+
+### Configuration
+
+As you configure your machine, you can test each resource to confirm it is working as expected in the same UI you use for configuration.
+
+{{<gif webm_src="/test.webm" mp4_src="/test.mp4" alt="Test a camera stream" max-width="600px" class="aligncenter">}}
+
+### Extensibility
+
+For everything that is not built-in, you can deploy _{{< glossary_tooltip term_id="module" text="modules" >}}_ from the [**Viam Registry**](/registry/).
+Modules provide custom components or services as _modular resources_ which are run and managed by `viam-server` as processes.
+When configuring your machine, you can choose and configure built-in components and services, as well as any available from the Viam Registry.
+You can also create your own resources for any hardware or software and add them to the Viam Registry.
+
 ### Better and smarter machines
 
 <div>
 <img src="data-ml.svg" alt="A rover detecting a flower" class="alignright" width="400px" >
 </div>
 
-The Viam app does not just provide a useful configuration interface.
-It also provides several higher-level functionalities to make your machines smarter and better, such as:
+The Viam app provides several higher-level functionalities to make your machines smarter and better, such as:
 
 - **Data Management**: Any data on your machine can be synced to the cloud.
   From there you can query it using SQL, MQL, or with code.
@@ -137,16 +150,6 @@ The [Viam app](https://app.viam.com)'s **fleet management** capabilities enable 
 
 You can collaborate on your machines and manage permissions for your fleet using **Role-Based Access Control** (RBAC).
 Users can have access to different fleet management capabilities depending on whether they are an owner or an operator of a given organization, location, or machine.
-
-## Support
-
-The `viam-server` executable runs on **any** computer that runs on 64-bit Linux OS, macOS Computer, or Windows Subsystem for Linux.
-Here are some of the boards Viam supports:
-
-{{< board-carousel >}}
-<br>
-
-Viam also supports microcontrollers with the [micro-RDK](/installation/#install-micro-rdk).
 
 ## Next steps
 
