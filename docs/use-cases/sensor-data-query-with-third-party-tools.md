@@ -9,6 +9,7 @@ modulescript: true
 aliases:
   - /manage/data/query/
   - /data/query/
+  - /use-cases/sensor-data-query/
 # SME: Devin Hilly
 ---
 
