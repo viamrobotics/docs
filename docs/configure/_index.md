@@ -178,7 +178,11 @@ You must configure each component with a type, a model, a name, attributes, and 
 Some resources have a **TEST** section on the bottom half of their configuration pane which you can expand and interact with to test out controlling the component.
 You must be running `viam-server` and connected to your machine to use this feature.
 
+{{<gif webm_src="/test.webm" mp4_src="/test.mp4" alt="Test a camera stream" max-width="600px" class="aligncenter">}}
+
 You can disable a component without removing it from the configuration by selecting the **...** menu in the upper right corner and selecting **Disable**.
+
+{{<imgproc src="/configure/component-menu.png" resize="600x" declaredimensions=true alt="menu on a component card" class="aligncenter imgzoom">}}
 
 If you are configuring several similar components, you can click **...** in the upper-right of a component's configuration pane, then select the **Duplicate** button to create a new identical component beneath your existing one.
 Be sure to edit the duplicated component to change any parameters that are unique to the new component, such as its name and pins.
@@ -192,8 +196,6 @@ For specific information on how to configure each supported component type, see 
 
 When you configure a component on the **CONFIGURE** tab, it will also appear on the **CONTROL** tab which gives you an interface to test and interact with it.
 The **Code sample** page on the **CONNECT** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/appendix/apis/).
-
-<!-- TODO: R2D2 need to update this section with updated control tab view { {<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="Using the control tab">} } -->
 
 {{% /alert %}}
 
@@ -215,8 +217,6 @@ See the [services documentation](/services/) for more information.
 
 Some resources have a **TEST** section on the bottom half of their configuration pane which you can expand and interact with to test out controlling the service.
 You must be running `viam-server` and connected to your machine to use this feature.
-
-{{<gif webm_src="/test.webm" mp4_src="/test.mp4" alt="Test a camera stream" max-width="600px" class="aligncenter">}}
 
 You can disable a service without removing it from the configuration by selecting the **...** menu in the upper right corner and selecting **Disable**.
 
