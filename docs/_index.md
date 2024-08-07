@@ -24,9 +24,10 @@ carouselscript: true
   <div class="row">
 <div class="col hover-card link-with-icon">
   <a href="get-started/" class="noanchor"><div>
-    <picture><img src="icons/rover.svg" alt="Rover" loading="lazy"></picture>
-    <p>Learn about Viam</p></div>
-  </a>
+    <picture><img src="icons/viam.svg" alt="Viam" loading="lazy"></picture>
+    <p>Learn about Viam</p>
+  </div>
+      </a>
 </div>
 <div class="col hover-card link-with-icon">
   <a href="use-cases/configure/" class="noanchor"><div>
@@ -36,7 +37,7 @@ carouselscript: true
 </div>
 <div class="col hover-card link-with-icon">
   <a href="use-cases/image-data/" class="noanchor"><div>
-    <picture><img src="services/icons/data-capture.svg" alt="Data Management" loading="lazy"></picture>
+    <picture><img src="icons/data.svg" alt="Data Management" loading="lazy"></picture>
     <p>Capture and sync image data</p></div>
       </a>
 </div>
@@ -87,16 +88,15 @@ carouselscript: true
 <div class="cards max-page use-cases">
   <div class="row">
 <div class="col hover-card link-with-icon">
-  <a href="get-started/" class="noanchor"><div>
-    <picture><img src="icons/viam.svg" alt="Viam" loading="lazy"></picture>
-    <p>Viam in 3 minutes</p>
-  </div>
-      </a>
+  <a href="use-cases/" class="noanchor"><div>
+    <picture><img src="icons/rover.svg" alt="Rover" loading="lazy"></picture>
+    <p>How-to Guides</p></div>
+  </a>
 </div>
 <div class="col hover-card link-with-icon">
   <a href="platform/" class="noanchor"><div>
     <picture><img src="icons/core.svg" alt="core" loading="lazy"></picture>
-    <p>Viam Platform</p></div>
+    <p>Platform Reference</p></div>
       </a>
 </div>
 <div class="col hover-card link-with-icon">
