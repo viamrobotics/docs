@@ -5,6 +5,7 @@ weight: 200
 type: "docs"
 images: ["/registry/module-puzzle-piece.svg"]
 description: "Follow instructions for common tasks and workflows."
+no_list: true
 ---
 
 Click on one of the following guides that provide solutions for common tasks and workflows:
