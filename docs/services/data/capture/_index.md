@@ -1,7 +1,7 @@
 ---
 title: "Configure Data Capture"
 linkTitle: "Data Capture"
-description: "Configure data capture to save data from components remote parts."
+description: "Configure data capture to save data from components, services, or remote parts."
 weight: 10
 type: "docs"
 tags: ["data management", "cloud", "sync"]
@@ -16,7 +16,7 @@ aliases:
 no_service: true
 ---
 
-The data management service captures data from one or more components.
+The data management service captures data from one or more resources.
 
 Get started with a quickstart guide or keep reading for more details.
 
@@ -31,7 +31,7 @@ The data is captured locally on the machine's storage and, by default, stored in
 
 If a machine restarts for any reason, capture automatically resumes and any data from already stored but not yet synced is synced.
 
-The service can capture data from multiple components at the same or different frequencies.
+The service can capture data from multiple resources at the same or different frequencies.
 The service does not impose a lower or upper limit on the frequency of data collection.
 However, in practice, your hardware may impose limits on the frequency of data collection.
 
@@ -41,15 +41,15 @@ The data is captured in the ESP32's flash memory and periodically uploaded to th
 
 If the machine restarts before all data is synced, all unsynced data captured since the last sync point is lost.
 
-The service can capture data from multiple components at the same or different frequencies.
+The service can capture data from multiple resources at the same or different frequencies.
 The service does not impose a lower or upper limit on the frequency of data collection.
 However, in practice, high frequency data collection (> 100Hz) requires special considerations on the ESP32.
 
 {{% /tab %}}
 {{< /tabs >}}
 
-You can change the frequency of data capture at any time for individual components.
-If you use {{< glossary_tooltip term_id="fragment" text="fragments" >}}, you can change the frequency of data capture in real time for some or all machines in a fleet at the component or machine level.
+You can change the frequency of data capture at any time for individual resources.
+If you use {{< glossary_tooltip term_id="fragment" text="fragments" >}}, you can change the frequency of data capture in real time for some or all machines in a fleet at the resource or machine level.
 
 For example, consider a tomato picking robot with a 3D camera and an arm.
 When you configure the robot, you may set the camera to capture point cloud data at a frequency of 30Hz.
@@ -151,9 +151,9 @@ When your machine is capturing data, there is a **Capturing** indication in your
 
 ![data capture indicator on the machine's page](/tutorials/data-management/capturing.png)
 
-## Configure data capture for individual components
+## Configure data capture for individual resources
 
-Once you have added the data capture service, you can specify the data you want to capture at a component level.
+Once you have added the data capture service, you can specify the data you want to capture at a resource level.
 
 ### Supported components and services
 
@@ -185,9 +185,9 @@ The following components and services support data capture:
 {{% /tab %}}
 {{< /tabs >}}
 
-To add data capture for a component, navigate to the **CONFIGURE** tab of your machine's page in the Viam app.
+To add data capture for a component or service, navigate to the **CONFIGURE** tab of your machine's page in the Viam app.
 
-For each component you can capture data for, there is a `Data capture` section in its panel.
+For each resource you can capture data for, there is a `Data capture` section in its panel.
 Click `Add Method` and then select the **Method** type and the capture **Frequency**.
 
 {{< alert title="Caution" color="caution" >}}
@@ -346,10 +346,10 @@ This example configuration captures data from the GetReadings method of a temper
 
 {{% /expand%}}
 
-You may capture data from one or more component methods:
+You may capture data from one or more resource methods:
 
-- To enable or disable data capture for a configured component or method, use the `on/off` toggle on the component's configuration pane in the Viam app.
-- To change the frequency of data capture for a method, enter the number of measurements you wish to capture per second in the frequency field on the component's configuration pane in the Viam app.
+- To enable or disable data capture for a configured resource or method, use the `on/off` toggle on the resource's configuration pane in the Viam app.
+- To change the frequency of data capture for a method, enter the number of measurements you wish to capture per second in the frequency field on the resource's configuration pane in the Viam app.
 
 After adding configuration for the methods, click the **Save** button in the top right corner of the page.
 
@@ -358,15 +358,15 @@ If you want to remove a capture method from the configuration, click the `delete
 ## Configure data capture for remote parts
 
 Viam supports data capture from {{< glossary_tooltip term_id="resource" text="resources" >}} on {{< glossary_tooltip term_id="remote-part" text="remote parts" >}}.
-For example, if you use a {{< glossary_tooltip term_id="part" text="part" >}} that does not have a Linux operating system or that does not have enough storage or processing power, you can still process and capture the data from that part's components by adding it as a remote part.
+For example, if you use a {{< glossary_tooltip term_id="part" text="part" >}} that does not have a Linux operating system or that does not have enough storage or processing power, you can still process and capture the data from that part's resources by adding it as a remote part.
 
-Currently, you can only configure data capture from remote components in your JSON configuration.
-To add them to your JSON configuration you must explicitly add the remote component's `type`, `model`, `name`, and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
+Currently, you can only configure data capture from remote resources in your JSON configuration.
+To add them to your JSON configuration you must explicitly add the remote resource's `type`, `model`, `name`, and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
 
 <!-- prettier-ignore -->
 | Key | Description |
 | --- | ----------- |
-| `type` | The type tells your machine what the component is. For example, a board. |
+| `type` | The type tells your machine what the resource is. For example, a board. |
 | `model` | The model is a {{< glossary_tooltip term_id="model-namespace-triplet" text="colon-delimited-triplet" >}} that specifies the namespace, the type of the part, and the part itself. |
 | `name` | The name specifies the fully qualified name of the part. |
 | `additional_params` | The additional parameters specify the data sources when you are using a board. |
