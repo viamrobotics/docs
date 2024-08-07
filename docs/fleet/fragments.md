@@ -50,6 +50,7 @@ To create your own private fragment, go to [app.viam.com/fragments](https://app.
 2. Paste the copied JSON configuration in the config field.
 3. Select the visibility of your fragment from the dropdown menu in the upper left corner:
    ![Fragment privacy dropdown view](/fleet/fragment-privacy-view.png)
+   
    There are three options for this:
 
    - **Public:** Any user inside or outside of your organization will be able to view and use this fragment.
