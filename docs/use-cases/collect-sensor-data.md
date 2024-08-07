@@ -96,10 +96,10 @@ Confirm that you are seeing data appear.
 
 ## Next steps
 
-Now that you have collected sensor data, you can [query it](/use-cases/sensor-data-query/), [access it programmatically](/use-cases/sensor-data-query-sdk/) or [visualize it](/use-cases/sensor-data-visualize/) with third-party tools.
+Now that you have collected sensor data, you can [query it](/use-cases/sensor-data-query-with-third-party-tools/), [access it programmatically](/use-cases/sensor-data-query-sdk/) or [visualize it](/use-cases/sensor-data-visualize/) with third-party tools.
 
 {{< cards >}}
-{{% card link="/use-cases/sensor-data-query/" %}}
+{{% card link="/use-cases/sensor-data-query-with-third-party-tools/" %}}
 {{% card link="/use-cases/sensor-data-query-sdk/" %}}
 {{% card link="/use-cases/sensor-data-visualize/" %}}
 {{< /cards >}}

@@ -141,10 +141,10 @@ Adjust the Python script to uery your data further.
 
 ## Next steps
 
-On top of querying sensor data with the Python SDK, you can also [query](/use-cases/sensor-data-query/) or [visualize](/use-cases/sensor-data-visualize/) it with third-party tools.
+On top of querying sensor data with the Python SDK, you can also [query](/use-cases/sensor-data-query-with-third-party-tools/) or [visualize](/use-cases/sensor-data-visualize/) it with third-party tools.
 
 {{< cards >}}
-{{% card link="/use-cases/sensor-data-query/" %}}
+{{% card link="/use-cases/sensor-data-query-with-third-party-tools/" %}}
 {{% card link="/use-cases/sensor-data-visualize/" %}}
 {{< /cards >}}
 

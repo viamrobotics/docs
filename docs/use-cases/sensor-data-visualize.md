@@ -103,7 +103,7 @@ Grafana additionally supports the ability to directly [query and transform your 
 You might use this functionality to visualize only a single day's metrics, limit the visualization to a select machine or component, or to isolate an outlier in your reported data, for example.
 
 You can query your captured data within a Grafana dashboard using either {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
-See the [guide on querying sensor data](/use-cases/sensor-data-query/) for more information.
+See the [guide on querying sensor data](/use-cases/sensor-data-query-with-third-party-tools/) for more information.
 
 <!-- markdownlint-disable-file MD034 -->
 
@@ -183,7 +183,7 @@ Some third-party visualization tools support the ability to directly query your 
 You might use this functionality to visualize only a single day's metrics, limit the visualization to a select machine or component, or to isolate an outlier in your reported data, for example.
 
 While every third-party tool is different, you would generally query your data using either {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
-See the [guide on querying sensor data](/use-cases/sensor-data-query/) for more information.
+See the [guide on querying sensor data](/use-cases/sensor-data-query-with-third-party-tools/) for more information.
 
 <!-- markdownlint-disable-file MD034 -->
 
@@ -197,11 +197,11 @@ See the [guide on querying sensor data](/use-cases/sensor-data-query/) for more 
 
 For more detailed instructions on using Grafana, including a full step-by-step configuration walkthrough, see [visualizing data with Grafana](/tutorials/services/visualize-data-grafana/).
 
-On top of visualizing sensor data with third-party tools, you can also [query it with the Python SDK](/use-cases/sensor-data-query-sdk/) or [query it with the Viam app](/use-cases/sensor-data-query/).
+On top of visualizing sensor data with third-party tools, you can also [query it with the Python SDK](/use-cases/sensor-data-query-sdk/) or [query it with the Viam app](/use-cases/sensor-data-query-with-third-party-tools/).
 
 {{< cards >}}
 {{% card link="/use-cases/sensor-data-query-sdk/" %}}
-{{% card link="/use-cases/sensor-data-query/" %}}
+{{% card link="/use-cases/sensor-data-query-with-third-party-tools/" %}}
 {{< /cards >}}
 
 To see full projects using visualization, check out these resources:
