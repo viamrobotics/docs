@@ -117,7 +117,7 @@ To enable image data capture for a camera component:
 
 1. Click **Save** at the top right of the window to save your changes.
 
-For more information see [Configure data capture](/services/data/capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/services/data/cloud-sync/).
+For more information see [Configure data capture](/services/data/capture/#configure-data-capture-for-individual-resources) and [Configure cloud sync](/services/data/cloud-sync/).
 
 ### View and filter captured data
 

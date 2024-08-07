@@ -104,7 +104,7 @@ Once you have added the data management service, enable image data capture for y
    If you see images appear here, proceed to the next step.
    If you do not see images appear after a short time, see the [troubleshooting](#troubleshooting) section for further guidance.
 
-For more information see [Configure data capture](/services/data/capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/services/data/cloud-sync/).
+For more information see [Configure data capture](/services/data/capture/#configure-data-capture-for-individual-resources) and [Configure cloud sync](/services/data/cloud-sync/).
 
 ## The machine learning (ML) model for filtering
 

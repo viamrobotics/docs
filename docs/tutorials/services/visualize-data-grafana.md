@@ -111,7 +111,7 @@ To enable data capture for a sensor component:
 After a short while, your sensor will begin capturing live readings, and syncing those readings to the Viam app.
 You can check that data is being captured and synced by clicking on the menu icon on the sensor configuration pane. and selecting **View captured data**.
 
-For more information see [Configure data capture](/services/data/capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/services/data/cloud-sync/).
+For more information see [Configure data capture](/services/data/capture/#configure-data-capture-for-individual-resources) and [Configure cloud sync](/services/data/cloud-sync/).
 
 ### Configure data query
 
