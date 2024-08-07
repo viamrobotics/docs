@@ -26,23 +26,24 @@ For information on provisioning many machines, see [Provisioning](/fleet/provisi
 
 {{< table >}}
 {{% tablestep link="/configure/" %}}
-{{<imgproc src="/use-cases/one-to-many/config.png" resize="700x" class="fill alignleft" style="max-width: 250px" declaredimensions=true alt="Configuration builder UI">}}
 **1. Configure one machine**
 
 Start by configuring one of your machines.
 
 In the [Viam app](https://app.viam.com), use the **CONFIGURE** tab to build a configuration for all components and services you want to use on all your machines.
 
+{{<imgproc src="/use-cases/one-to-many/config.png" resize="800x" class="fill aligncenter" style="max-width: 400px" declaredimensions=true alt="Configuration builder UI">}}
+
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/use-cases/one-to-many/raw-json.png" resize="700x" class="fill alignleft" style="max-width: 250px" declaredimensions=true alt="JSON subtab of the CONFIGURE tab">}}
 **2. Copy the raw JSON**
 
 In your machine's **CONFIGURE** tab, switch to **JSON** and copy the raw JSON.
 
+{{<imgproc src="/use-cases/one-to-many/raw-json.png" resize="700x" class="fill aligncenter" style="max-width: 400px" declaredimensions=true alt="JSON subtab of the CONFIGURE tab">}}
+
 {{% /tablestep %}}
 {{% tablestep link="/fleet/fragments/#create-a-fragment" %}}
-{{<imgproc src="/use-cases/one-to-many/new-fragment.png" resize="700x" class="fill alignleft" style="max-width: 250px" declaredimensions=true alt="app.viam.com/fragment interface">}}
 **3. Create a fragment**
 
 Go to [app.viam.com/fragments](https://app.viam.com/fragments).
@@ -53,9 +54,11 @@ Set your privacy settings, then click **Save**.
 
 If you want to edit the fragment later, do it from this screen.
 
+{{<imgproc src="/use-cases/one-to-many/new-fragment.png" resize="700x" class="fill aligncenter" style="max-width: 350px" declaredimensions=true alt="app.viam.com/fragment interface">}}
+
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/use-cases/one-to-many/noun-trash.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Delete">}}
+{{<imgproc src="/use-cases/one-to-many/trash-can.svg" class="fill alignleft" style="max-width: 50px" declaredimensions=true alt="Delete">}}
 **3. Delete the original configuration (optional)**
 
 Now that the configuration is saved as a fragment, you can delete the original config from your machine and _replace it with the fragment_.
@@ -70,7 +73,7 @@ Now that you have a fragment, you can add it to as many machines as you'd like:
 
 {{< table >}}
 {{% tablestep link="/fleet/fragments/#add-a-fragment-to-a-machine" %}}
-{{<imgproc src="/get-started/try-viam/rover-resources/fragments/fragments_list.png" resize="700x" class="fill alignleft" style="max-width: 250px" declaredimensions=true alt="Add fragment">}}
+{{<imgproc src="/get-started/try-viam/rover-resources/fragments/fragments_list.png" resize="800x" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Add fragment">}}
 **1. Add the fragment to one machine**
 
 On your machine's **CONFIGURE** tab, click the **+** button and select **Insert fragment**.
@@ -80,7 +83,7 @@ Click **Save** in the upper right corner of the screen.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/use-cases/one-to-many/noun-repeat.svg" class="fill alignleft" style="max-width: 100px"  declaredimensions=true alt="Repeat">}}
+{{<imgproc src="/use-cases/one-to-many/repeat.svg" class="fill alignleft" style="max-width: 120px"  declaredimensions=true alt="Repeat">}}
 **2. Repeat for each machine**
 
 Repeat step 1 for each of the machines that you want to configure in the same way.
@@ -101,7 +104,7 @@ If you later update the upstream fragment, the updates to the overwritten fields
 
 {{< table >}}
 {{% tablestep link="/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment" %}}
-{{<imgproc src="/use-cases/one-to-many/noun-edit.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Edit">}}
+{{<imgproc src="/use-cases/one-to-many/edit.svg" class="fill alignleft" style="max-width: 50px"  declaredimensions=true alt="Edit">}}
 **1. Edit your machine's config**
 
 Go to the **CONFIGURE** tab of the machine whose config you want to modify, and make your edits.
@@ -110,12 +113,10 @@ Don't forget to **Save**.
 
 {{% /tablestep %}}
 {{% tablestep link="/fleet/fragments/#use-fragment_mods" %}}
-{{<imgproc src="/use-cases/one-to-many/noun-reset.svg" class="fill alignleft" style="max-width: 100px"  declaredimensions=true alt="Reset to fragment">}}
+{{<imgproc src="/use-cases/one-to-many/reset.png" class="fill alignleft" resize="500x" style="max-width: 250px"  declaredimensions=true alt="Reset to fragment">}}
 **2. (Optional) Revert fragment modifications**
 
-When you make edits to fields in your machine's config, a top-level section called `"fragment_mods"` is added to your JSON config with [update operators](https://www.mongodb.com/docs/manual/reference/operator/update/positional/#---update-) that modify each field you edit.
-
-If you need to restore the original fragment, you can go to the **JSON** tab of your machine's **CONFIGURE** tab, and delete the entire `"fragment_mods"` section.
+If you need to restore the original fragment, click the **...** in the upper right corner of the card you modified, and click **Revert changes**.
 Now, the fragment will be identical to the upstream fragment.
 
 {{% /tablestep %}}
