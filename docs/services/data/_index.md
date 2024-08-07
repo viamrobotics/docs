@@ -64,7 +64,7 @@ Resilient to interruptions, and deletes local data post-sync for space managemen
 Experience streamlined data handling with advanced querying, viewing, and filtering capabilities, along with efficient data labeling and exporting tools.
 
 {{< cards >}}
-{{% manualcard link="/use-cases/sensor-data-query/" %}}
+{{% manualcard link="/use-cases/sensor-data-query-with-third-party-tools/" %}}
 
 ### Query data
 
@@ -112,7 +112,7 @@ You can configure the frequency of data capture individually for each supported 
 
 ## Query your data
 
-Once you have [synced](/services/data/cloud-sync/), you can query the data you've collected in multiple ways, including through the [data client API](/appendix/apis/data-client/) or [inside the Viam app](/use-cases/sensor-data-query/).
+Once you have [synced](/services/data/cloud-sync/), you can query the data you've collected in multiple ways, including through the [data client API](/appendix/apis/data-client/) or [inside the Viam app](/use-cases/sensor-data-query-with-third-party-tools/).
 For _tabular_ sensor data, you can [run {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries](/use-cases/sensor-data-query-sdk/) against your synced data from the [Query subtab](https://app.viam.com/data/query) of the **Data** tab in the Viam app.
 
 ## Permissions

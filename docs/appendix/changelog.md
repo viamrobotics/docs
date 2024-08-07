@@ -242,7 +242,7 @@ Location secrets, the previous method of authentication, is deprecated and will 
 
 Once you have added the data management service and synced data, such as sensor readings, to the Viam app, you can now run queries against both captured data as well as its metadata using either SQL or MQL.
 
-For more information, see [Query Data with SQL or MQL](/use-cases/sensor-data-query/).
+For more information, see [Query Data with SQL or MQL](/use-cases/sensor-data-query-with-third-party-tools/).
 
 {{% /changelog %}}
 
