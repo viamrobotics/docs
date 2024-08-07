@@ -155,9 +155,9 @@ When your machine is capturing data, there is a **Capturing** indication in your
 
 Once you have added the data capture service, you can specify the data you want to capture at a component level.
 
-### Supported components
+### Supported components and services
 
-The following components support data capture:
+The following components and services support data capture:
 
 {{< tabs >}}
 {{% tab name="RDK" %}}
