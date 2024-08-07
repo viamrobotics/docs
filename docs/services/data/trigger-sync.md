@@ -258,7 +258,7 @@ You have now configured sync to happen during a specific time slot.
 
 ### Test your sync configuration
 
-To test your setup, [configure a webcam](/components/camera/webcam/) or another component and [enable data capture on the component](/services/data/capture/#configure-data-capture-for-individual-components).
+To test your setup, [configure a webcam](/components/camera/webcam/) or another component and [enable data capture on the component](/services/data/capture/#configure-data-capture-for-individual-resources).
 For a camera component, use the `ReadImage` method.
 The data manager will now capture data.
 Go to the [**CONTROL** tab](/fleet/control/).
