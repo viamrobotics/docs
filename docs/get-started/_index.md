@@ -24,12 +24,12 @@ All these machines start by combining hardware and software.
 ## `viam-server` and the Viam app
 
 At the core of Viam is the open-source `viam-server` executable which runs on a computer and manages hardware, software, and data for a machine.
+If you are working with microcontrollers, the [micro-RDK](/installation/) is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
+
 To use Viam with a machine, you create a configuration specifying which hardware and software the machine consists of.
 `viam-server` then manages and runs the drivers for the configured hardware components and software services.
 
 For example, if you are building a pet-feeding machine you might install `viam-server` on a Raspberry Pi and create a machine configuration with a camera and a servo for the hardware you are using.
-
-If you are working with microcontrollers, the [micro-RDK](/installation/) is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
 
 The [Viam app](https://app.viam.com) provides the user interface for configuring your machine.
 You can put together any resources across microcontrollers and computers as configurable building blocks.
