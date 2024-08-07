@@ -122,7 +122,7 @@ Now, test your person detection on in the **Test** section of the computer visio
 You will see your camera stream and see detections as labeled boxes on the images along with position, dimension, class and confidence data.
 Detections in class `Person` with a high confidence score show positive person detections, but the ML model can also detect other objects:
 
-{{<imgproc src="/get-started/quickstarts/vision-card-more-detections.png" resize="x1100" declaredimensions=true alt="Positive person detection on the vision card with a lower default minimum confidence threshold." >}}
+{{<imgproc src="/get-started/quickstarts/vision-card-more-detections.png" resize="x1100" declaredimensions=true alt="Positive person detection on the vision card with a lower default minimum confidence threshold." class="imgzoom">}}
 
 {{% /expand%}}
 {{%expand "(Optional) Step 7: Limit the number of detections" %}}
