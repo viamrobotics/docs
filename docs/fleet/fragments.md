@@ -39,8 +39,10 @@ You can add multiple fragments to a single machine, and you can add additional r
 
 ## Modify the config of a machine that uses a fragment
 
-The configuration of components and services included in a fragment are _read-only_.
-Likewise, when you modify the fragment itself, any changes are pushed to all machines that use that fragment.
+When you add a fragment to a machine, the configuration of components and services included in a fragment are _read-only_.
+Any changes made by overwriting them do not change the fragment itself.
+
+If you need to make changes to all machines that use a fragment, you must modify the fragment itself.
 
 If you need to modify the config of just one machine that uses a fragment, you have two options:
 

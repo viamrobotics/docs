@@ -68,7 +68,7 @@ If you want to edit the fragment later, do it from this screen.
 {{<imgproc src="/use-cases/one-to-many/trash-can.svg" class="fill alignleft" style="max-width: 50px" declaredimensions=true alt="Delete">}}
 **3. Delete the original configuration (optional)**
 
-Now that the configuration is saved as a fragment, you can delete the original config from your machine and _replace it with the fragment_.
+Now that the configuration is saved as a fragment, you can delete the original config from your machine and _replace it with the fragment_ in the next step.
 In this way, you can keep all your machines up to date whenever you change the fragment.
 
 {{% /tablestep %}}
@@ -76,7 +76,7 @@ In this way, you can keep all your machines up to date whenever you change the f
 
 ## Add a fragment to multiple machines
 
-Now that you have a fragment, you can add it to as many machines as you'd like:
+With your fragment created, you can add it to as many machines as you'd like:
 
 {{< table >}}
 {{% tablestep %}}
@@ -131,7 +131,7 @@ Now, the fragment will be identical to the upstream fragment.
 
 ## Next steps
 
-To set up a larger fleet even more quickly with `viam-server` and configurations, you can use Viam's provisioning manager, Viam Agent:
+To set up a larger fleet without manually adding a fragment to each machine configuration, you can use Viam's provisioning manager, Viam Agent:
 
 {{< cards >}}
 {{% card link="/fleet/provision/" %}}
