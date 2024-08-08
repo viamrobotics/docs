@@ -1,6 +1,6 @@
 ---
-title: "Use Fragments to Configure a Fleet of Machines"
-linkTitle: "Configure a Fleet"
+title: "Configuration Fragments"
+linkTitle: "Fragments"
 weight: 40
 type: "docs"
 description: Use fragments to configure many machines at the same time.
@@ -8,10 +8,6 @@ tags: ["fleet management", "cloud", "app"]
 aliases:
   - /fleet/configure-a-fleet/
 ---
-
-{{< cards >}}
-{{% card link="/use-cases/one-to-many/" %}}
-{{< /cards >}}
 
 If you have multiple machines with similar configurations, you can use a _fragment_ to configure all of the machines at the same time.
 Fragments are a way of sharing and managing [machine configurations](/configure/) across multiple machines.
@@ -22,7 +18,7 @@ For example, if you have multiple similar rovers but one has an arm attached, yo
 
 When you or one of your collaborators edit a fragment that you've already deployed to one or more machines, the Viam app updates the configuration on each deployed machine that uses that fragment.
 
-{{< alert title="Alert" color="alert" >}}
+{{< alert title="Alert" color="caution" >}}
 Be cautious when making changes to fragments that have been deployed to production machines.
 We recommend that you create a duplicate fragment, make your desired change to that second fragment, and then deploy that fragment to a test machine that is configured identically to your production machines.
 
@@ -36,6 +32,14 @@ You must be an [organization owner](/cloud/rbac/#permissions) to create fragment
 
 A fragment can define one, several, or all resources on a machine.
 You can add multiple fragments to a single machine, and you can add additional resources to a machine that has already been configured with a fragment.
+
+## Create and use a fragment
+
+Get started with this how-to guide:
+
+{{< cards >}}
+{{% card link="/use-cases/one-to-many/" %}}
+{{< /cards >}}
 
 ## Modify the config of a machine that uses a fragment
 

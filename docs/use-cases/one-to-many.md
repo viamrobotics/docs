@@ -65,10 +65,10 @@ If you want to edit the fragment later, do it from this screen.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/use-cases/one-to-many/trash-can.svg" class="fill alignleft" style="max-width: 50px" declaredimensions=true alt="Delete">}}
+{{<imgproc src="/use-cases/one-to-many/delete.png" class="fill alignleft" resize="500x" style="max-width: 200px" declaredimensions=true alt="Delete">}}
 **3. Delete the original configuration (optional)**
 
-Now that the configuration is saved as a fragment, you can delete the original config from your machine and _replace it with the fragment_ in the next step.
+Now that the configuration is saved as a fragment, you can delete each resource in the original config from your machine and _replace the config with the fragment_ in the next step.
 In this way, you can keep all your machines up to date whenever you change the fragment.
 
 {{% /tablestep %}}
@@ -80,7 +80,7 @@ With your fragment created, you can add it to as many machines as you'd like:
 
 {{< table >}}
 {{% tablestep %}}
-{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="800x" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Add fragment">}}
+{{<imgproc src="appendix/try-viam/rover-resources/fragments/fragments_list.png" resize="800x" class="fill alignleft imgzoom" style="max-width: 250px" declaredimensions=true alt="Add fragment">}}
 **1. Add the fragment to one machine**
 
 On your machine's **CONFIGURE** tab, click the **+** button and select **Insert fragment**.
@@ -111,10 +111,13 @@ If you later update the upstream fragment, the updates to the overwritten fields
 
 {{< table >}}
 {{% tablestep link="/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment" %}}
-{{<imgproc src="/use-cases/one-to-many/edit.svg" class="fill alignleft" style="max-width: 50px"  declaredimensions=true alt="Edit">}}
+{{<gif webm_src="/how-tos/fragment-overwrite.webm" mp4_src="/how-tos/fragment-overwrite.mp4" alt="A robot drawing a heart" max-width="500px" class="aligncenter" >}}
+
 **1. Edit your machine's config**
 
-Go to the **CONFIGURE** tab of the machine whose config you want to modify, and make your edits.
+Go to the **CONFIGURE** tab of the machine whose config you want to modify, and make your edits just as you would edit a non-fragment resource.
+
+You can click the **{}** button to switch to advanced view and see the changes.
 
 Don't forget to **Save**.
 
