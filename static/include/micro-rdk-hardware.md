@@ -4,6 +4,7 @@ The following ESP32 microcontrollers are supported:
 
 - [ESP32-WROVER Series](https://www.espressif.com/en/products/modules/esp32)
 - [ESP32-WROOM Series](https://www.espressif.com/en/products/modules/esp32) (until v0.1.7)
+- [ESP32-S3](https://www.espressif.com/en/products/socs/esp32-s3)
 
 Your microcontroller should have at least the following resources available to work with the micro-RDK:
 
