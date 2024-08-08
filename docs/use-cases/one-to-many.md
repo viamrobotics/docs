@@ -113,6 +113,8 @@ If you later update the upstream fragment, the updates to the overwritten fields
 {{% tablestep link="/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment" %}}
 {{<gif webm_src="/how-tos/fragment-overwrite.webm" mp4_src="/how-tos/fragment-overwrite.mp4" alt="A robot drawing a heart" max-width="500px" class="aligncenter" >}}
 
+<!-- markdownlint-disable MD036 -->
+
 **1. Edit your machine's config**
 
 Go to the **CONFIGURE** tab of the machine whose config you want to modify, and make your edits just as you would edit a non-fragment resource.
