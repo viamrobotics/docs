@@ -139,7 +139,7 @@ if __name__ == '__main__':
 {{% /tablestep %}}
 {{< /table >}}
 
-Adjust the Python script to uery your data further.
+Adjust the Python script to query your data further.
 
 ## Next steps
 

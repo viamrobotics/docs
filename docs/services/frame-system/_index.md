@@ -224,7 +224,7 @@ Click and drag on the **Frame** visualization to view the display from different
 
 {{<gif webm_src="/services/frame-system/frame_system_demo.webm" mp4_src="/services/frame-system/frame_system_demo.mp4" alt="The frame system visualization zooming in and out around the example robot with a camera, board, and wheeled base.">}}
 
-Click the grid icons below and to the right of the **Frame** button or press the **C** key to switch beween the default **perspective** and the **orthographic** view:
+Click the grid icons below and to the right of the **Frame** button or press the **C** key to switch between the default **perspective** and the **orthographic** view:
 
 {{< tabs name="Toggle Camera Views" >}}
 {{% tab name="Perspective" %}}

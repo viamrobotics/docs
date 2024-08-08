@@ -18,7 +18,7 @@ To get started on the Viam app, you must log in as an authorized user.
 Viam support sign up using Google, GitHub, Apple, and email.
 
 Navigate to [the main page](https://app.viam.com/).
-If you haven't created an account yet, click **Sign Up** to create a new account using your prefered Single Sign On method or your email address and a password.
+If you haven't created an account yet, click **Sign Up** to create a new account using your preferred Single Sign On method or your email address and a password.
 If you already have an account, click **Log In** to log in using your Single Sign On credentials or your email address and password.
 
 If you forget your password to the app, click **Forgot password** and enter your email address to obtain instructions to reset your password.

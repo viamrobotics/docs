@@ -324,7 +324,7 @@ With everything configured, you are now ready to see your facial recognition mac
 To view your machine's transform camera overlay:
 
 1. On your machine's **CONTROL** page in the [Viam app](https://app.viam.com), select the transform camera pane, which is listed by the name you gave it in the previous session, such as `my-transform-camera`.
-2. Enable the view toggle to see a live camera feed from your camera, overlayed by the current state of the `verification-system` module, which should be `TRIGGER_1` if no people are present in-frame.
+2. Enable the view toggle to see a live camera feed from your camera, overlaid by the current state of the `verification-system` module, which should be `TRIGGER_1` if no people are present in-frame.
 3. Have one or more people walk in front of the camera and look directly into it.
    Watch the state change to `COUNTDOWN` and then `DISARMED` when an approved person is detected, or to `ALARM` if no approved person appears within 10 seconds!
 

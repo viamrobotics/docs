@@ -292,7 +292,7 @@ You can adjust this value if using a battery that has an alternative nominal vol
 To set the low voltage cutoff and reconnect voltage:
 
 1.  Turn on the circuit using the switch.
-    The LED indicater should indicate a current voltage level of 14.8-16V depending on the battery charge status:
+    The LED indicator should indicate a current voltage level of 14.8-16V depending on the battery charge status:
 
     {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/circuit-led.png" resize="300x" declaredimensions=true alt="LED with voltage level displayed on low voltage cutoff circuit" >}}
 

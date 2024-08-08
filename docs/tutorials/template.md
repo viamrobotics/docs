@@ -46,7 +46,7 @@ level: "" # Beginner, Intermediate, Advanced
 # Advanced means: intricate tutorial that may require the reader to have knowledge to adapt
 date: "2023-01-01" # When the tutorial was created or last entirely checked
 # updated: ""  # When the tutorial was last entirely checked
-cost: 0 # Aproximate cost in USD - Only specify number
+cost: 0 # Approximate cost in USD - Only specify number
 ---
 
 Outline the why.
