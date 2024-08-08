@@ -514,7 +514,7 @@ var (
 )
 
 const (
-    myBaseWidthMm        = 500.0 // Base has a wheel tread of 500 millimeters
+    myBaseWidthMm        = 500.0 // Base has a wheel thread of 500 millimeters
     myBaseTurningRadiusM = 0.3   // Base turns around a circle of radius .3 meters
 )
 

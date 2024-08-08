@@ -307,7 +307,7 @@ For each machine:
 
    ![The sensor readings on the control tab.](/tutorials/air-quality-fleet/get-readings.png)
 
-   If you do not see readings, check the **LOGS** tab for errors, double-check that serial communication is enabled on the singe board computer, and check that the `usb_interface` path is correctly specified (click below).
+   If you do not see readings, check the **LOGS** tab for errors, double-check that serial communication is enabled on the single board computer, and check that the `usb_interface` path is correctly specified (click below).
 
    {{< expand "Click here for usb_interface troubleshooting help" >}}
 
@@ -787,7 +787,7 @@ You can find all the code in the [GitHub repo for this tutorial](https://github.
    npm start
    ```
 
-   ![Terminal window with the command 'npm start' run inside the aqi-dashboard folder. The output says 'start' and then 'esbuild' followed by the esbuild string from the package.json file you configured. Then there's 'Local:' followed by a URL and 'Network:' follwed by a different URL.](/tutorials/air-quality-fleet/terminal-url.png)
+   ![Terminal window with the command 'npm start' run inside the aqi-dashboard folder. The output says 'start' and then 'esbuild' followed by the esbuild string from the package.json file you configured. Then there's 'Local:' followed by a URL and 'Network:' followed by a different URL.](/tutorials/air-quality-fleet/terminal-url.png)
 
 1. The terminal should output a line such as `Local:  http://127.0.0.1:8000/`.
    Copy the URL the terminal displays and paste it into the address bar in your web browser.

@@ -568,7 +568,7 @@ function button() {
 }
 ```
 
-Next, register a listener on the button you obtain from the `button` fuction and make it invoke the `moveInSquare` function.
+Next, register a listener on the button you obtain from the `button` function and make it invoke the `moveInSquare` function.
 Place this code after the rover connection code:
 
 ```ts {class="line-numbers linkable-line-numbers"}

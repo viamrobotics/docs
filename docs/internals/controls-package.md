@@ -194,7 +194,7 @@ err := control.UpdateTrapzBlock(context.Background(), "set_point", 10.0, []strin
 
 ### PIDLoop
 
-`PIDLoop` is a struct containting all the attributes for setting up a PID control loop. [`SetupPIDControlConfig`](/internals/controls-package/#setuppidcontrolconfig) will create this object for you.
+`PIDLoop` is a struct containing all the attributes for setting up a PID control loop. [`SetupPIDControlConfig`](/internals/controls-package/#setuppidcontrolconfig) will create this object for you.
 
 ```go
 type PIDLoop struct {
@@ -539,7 +539,7 @@ options := control.Options{
   LoopFrequency:             100.0,
 }
 
-// create the controlParams from the PID valules
+// create the controlParams from the PID values
 // in this example, all 0 PID values will result in auto-tuning
 controlParams := []control.PIDConfig{{
   Type: "",
@@ -554,7 +554,7 @@ if controlParams[0].NeedsAutoTuning() {
 }
 
 // use SetupPIDControlConfig to create the control config and tune the component if necessary
-pidLoop, err := control.SetupPIDControlConfig(convertedControlParams, "comopnent", options, component, component.logger)
+pidLoop, err := control.SetupPIDControlConfig(convertedControlParams, "component", options, component, component.logger)
 if err != nil {
   return err
 }

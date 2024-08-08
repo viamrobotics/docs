@@ -25,7 +25,7 @@ Viam supports two formats for supplying kinematic parameters to configure interm
 
 {{% alert title="Info" color="info" %}}
 
-Of the two methods, we prefer Spacial Vector Algebra over Denavit-Hartenberg because it allows you to specify link frames arbitrarily, which DH parameters are unable to guarantee.
+Of the two methods, we prefer Spatial Vector Algebra over Denavit-Hartenberg because it allows you to specify link frames arbitrarily, which DH parameters are unable to guarantee.
 Additionally, if you are making your own robot and defining new drivers, incorrect SVA parameters are easier to troubleshoot than incorrect DH parameters.
 
 {{% /alert %}}

@@ -135,7 +135,7 @@ See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https:/
     - Signing into online accounts: not necessary, you can skip.
 
 - NVIDIA Step 2 - Install JetPack Components
-  - After running `sudo apt dist-upgrade`, if you are prompted with "Package distributer has shipped an updated version" hit `y` to install the updated version.
+  - After running `sudo apt dist-upgrade`, if you are prompted with "Package distributor has shipped an updated version" hit `y` to install the updated version.
   - Do not run `sudo apt install nvidia-jetpack` in your terminal until after `sudo reboot` has completed.
   - If your board is powered off after `sudo reboot` has completed and refuses to turn on, disconnect and reconnect the power cable.
   - It is normal for JetPack installation to take a very long time, up to an hour or more.
