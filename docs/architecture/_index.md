@@ -67,7 +67,7 @@ If you want to add some other high-level software functionality beyond the built
 
 <img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure machine control." class="alignleft" style="max-width:270px;"></img>
 
-Viam uses peer-to-peer communication, where all machines running `viam-server` or [microRDK](/installation/micro-rdk-dev/) (the version of `viam-server` for microcontrollers) communicate directly with each other as well as with the cloud.
+Viam uses peer-to-peer communication, where all machines running `viam-server` or the [micro-RDK](/installation/micro-rdk-dev/) (the version of `viam-server` for microcontrollers) communicate directly with each other as well as with the cloud.
 This peer-to-peer connectivity is enabled by sending [gRPC commands over WebRTC connections](/architecture/machine-to-machine-comms/#low-level-inter-robotsdk-communication).
 
 On startup, `viam-server` establishes a {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}} connection with the [Viam app](https://app.viam.com).
@@ -100,7 +100,7 @@ Viam uses API keys with [role-based access control (RBAC)](/fleet/rbac/) to cont
 {{<imgproc src="/architecture/data-flow.svg" resize="x1100" declaredimensions=true alt="Data flowing from local disk to cloud to the Viam app, SDKs, and MQL and SQL queries." >}}
 <br>
 
-Here's how data flows in Viam:
+Data is captured and synced to the Viam cloud as follows:
 
 1. Data collected by your components, such as sensors and cameras, is first stored locally in a specified directory (defaults to <file>~/.viam/capture</file>).
    You control how often to capture data and where to store it using the configuration file.
@@ -112,7 +112,7 @@ Here's how data flows in Viam:
 
 1. You can view your data from the Viam app or query it using Viam SDKs, MQL, or SQL.
 
-If a device has intermittent internet connectivity, no data is lost because it is stored locally until the machine can reconnect to the cloud.
+If a device has intermittent internet connectivity, data is stored locally until the machine can reconnect to the cloud.
 
 For more information, see [Data Management](/services/data/).
 
@@ -133,15 +133,15 @@ Here is how this works in Viam:
     - Configure the intervals at which to capture and sync data.
 - `viam-server` runs on the SBC, managing all communications between hardware and the cloud using gRPC over {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}}.
   On startup, `viam-server` uses credentials stored locally to establish a connection with the Viam app and fetches its configuration.
-- Sensor data is cached in a local folder, then synced to the cloud.
+- Sensor data is cached in a local folder, then synced to the cloud at a configurable interval.
 - You can use the tools in the Viam app to remotely view sensor data as well as to change your machine's configuration, to view logs, and more.
 
 Now imagine you want to run code to turn on a fan when the temperature sensor reads over 100 degrees Fahrenheit:
 
 - Configure the fan motor as a motor component and wire the fan motor relay to the same board as the sensor.
 - Write your script using one of the Viam [SDKs](/sdks/), for example the Viam Python SDK, using the sensor API and motor API.
-- You then run this code either locally on the SBC, or on a separate computer such as a laptop.
-  Either way, you include a few lines of code at the top of your script that set up a connection to your machine's `viam-server` instance so you can access the sensor component and use the [sensor API](/components/sensor/#api) to get readings.
+- You then run this code either locally on the SBC, or on a separate server.
+  Your code connects to the machine, authenticating with API keys, and uses the [sensor API](/components/sensor/#api) to get readings and the [motor API](/components/motor/#api) to turn the motor on and off.
 
   ![alt](/build/program/sdks/robot-client.png)
 
@@ -162,7 +162,7 @@ If you have a more complex situation with multiple computers and associated hard
 - One complex {{< glossary_tooltip term_id="machine" text="machine" >}} consisting of multiple parts, working together.
 - Multiple individual machines, linked by a {{< glossary_tooltip term_id="remote-part" text="remote" >}} connection.
 
-These two options are very similar; in both cases, the parts communicate with each other securely and directly using gRPC/{{< glossary_tooltip term_id="webrtc" text="WebRTC" >}}.
+These two options are very similar: in both cases, the parts communicate with each other securely and directly using gRPC/{{< glossary_tooltip term_id="webrtc" text="WebRTC" >}}.
 
 Because the parts are interconnected, you can write SDK code that establishes a connection with one of them and controls them all in a coordinated way.
 
@@ -170,10 +170,10 @@ Because the parts are interconnected, you can write SDK code that establishes a 
 
 - **Compute power example:** Imagine you have a robotic arm with a camera on it, connected to a SBC such as a Raspberry Pi.
   You want to use the Viam motion service to control the arm, and you want to use the vision service on the output from the camera, but the SBC does not have the compute power to plan complex motion and also interpret camera output quickly.
-  You can set up a second {{< glossary_tooltip term_id="part" text="part" >}} on a desktop or laptop computer, as a sub-part of the same machine, and offload the heavy compute to that part.
+  You can set up a second {{< glossary_tooltip term_id="part" text="part" >}} on a server, as a sub-part of the same machine, and offload the heavy compute to that part.
 
 - **One weather station to many boats:** Imagine you have one weather station collecting data, and multiple boats (perhaps some in different {{< glossary_tooltip term_id="organization" text="organizations" >}}) whose behavior depends on that weather data.
-  You can set up a remote connection from each of the `viam-server` instances running on the boats to the `viam-server` instance on the weather station and get that data more directly, without having to wait for the data to synced to the cloud.
+  You can set up a remote connection from each of the `viam-server` instances running on the boats to the `viam-server` instance on the weather station and get that data more directly, without having to wait for the data to sync to the cloud.
 
 - **One camera to many rovers:** Imagine you have a fleet of rovers in a factory.
   One camera has an overhead view of the entire factory floor.
