@@ -154,22 +154,13 @@ python3 square.py
 ```
 
 The program prints an array of resources.
-These are the components and services that the robot is configured with in the Viam app.
+These are the components and services that the machine is configured with in the Viam app.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-75"}
 python3 square.py
-2023-05-12 11:33:21,045      INFO    viam.rpc.dial (dial.py:211)    Connecting to socket: /tmp/proxy-Dome34KJ.sock
+2024-08-09 13:21:52,423    INFO    viam.rpc.dial (dial.py:293)    Connecting to socket: /tmp/proxy-BzFWLZQ2.sock
 Resources:
-[namespace: "rdk"
-type: "component"
-subtype: "motor"
-name: "left"
-, namespace: "rdk"
-type: "component"
-subtype: "camera"
-name: "cam"
-, ...
-]
+[<viam.proto.common.ResourceName rdk:service:sensors/builtin at 0x105b12700>, <viam.proto.common.ResourceName rdk:component:motor/left at 0x105b122a0>, <viam.proto.common.ResourceName rdk:component:camera/cam at 0x105b12390>, <viam.proto.common.ResourceName rdk:component:board/local at 0x105b129d0>, <viam.proto.common.ResourceName rdk:component:base/viam_base at 0x105b12610>, <viam.proto.common.ResourceName rdk:service:motion/builtin at 0x105b12a20>, <viam.proto.common.ResourceName rdk:component:encoder/Lenc at 0x105b12a70>, <viam.proto.common.ResourceName rdk:component:motor/right at 0x105b12ac0>, <viam.proto.common.ResourceName rdk:component:encoder/Renc at 0x105b12b10>]
 ```
 
 {{% /tab %}}
@@ -181,7 +172,7 @@ Save your API key and API key ID as environment variables or include them in the
 {{% snippet "show-secret.md" %}}
 
 Copy the code into a file called <FILE>square.go</FILE>.
-Initialize your project, and install the necessary libraries, and then run the program to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live:
+Initialize your project, and install the necessary libraries, and then run the program to verify that the Viam SDK is properly installed and that the `viam-server` instance on your machine is live:
 
 ```sh {class="command-line" data-prompt="$"}
 go mod init square
@@ -190,14 +181,15 @@ go run square.go
 ```
 
 The program prints an array of resources.
-These are the components and services that the robot is configured with in the Viam app.
+These are the components and services that the machine is configured with in the Viam app.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
 go run square.go
-2023-05-12T11:28:00.383+0200 INFO    client    rover/square.go:40
-   Resources:
-2023-05-12T11:28:00.383+0200 INFO    client    rover/square.go:41
-   [rdk:component:camera/fakeCam rdk:service:data_manager/overhead-cam:dm rdk:component:motor/left rdk:component:camera/cam rdk:component:encoder/Lenc rdk:component:encoder/Renc rdk:service:base_remote_control/base_rc rdk:service:sensors/builtin rdk:component:motor/right rdk:service:sensors/overhead-cam:builtin rdk:service:motion/overhead-cam:builtin rdk:component:input_controller/WebGamepad rdk:component:camera/overhead-cam:overheadcam rdk:service:data_manager/builtin rdk:service:motion/builtin rdk:component:board/local rdk:component:base/viam_base]
+2024-08-09T11:27:05.034Z    DEBUG    client.webrtc    rpc/wrtc_client.go:111    connecting to signaling server    {"signaling_server":"app.viam.com:443","host":"muddy-snow-main.7kp7y4p393.viam.cloud"}
+2024-08-09T11:27:05.314Z    DEBUG    client.webrtc    rpc/wrtc_client.go:125    connected to signaling server    {"signaling_server":"app.viam.com:443"}
+...
+2024-08-09T11:27:08.916Z    INFO    client    test-rover/square.go:33    Resources:
+2024-08-09T11:27:08.916Z    INFO    client    test-rover/square.go:34    [rdk:component:board/local rdk:component:base/viam_base rdk:service:motion/builtin rdk:component:motor/right rdk:component:encoder/Renc rdk:component:encoder/Lenc rdk:service:sensors/builtin rdk:component:motor/left rdk:component:camera/cam]
 ```
 
 {{% /tab %}}
@@ -252,7 +244,7 @@ Add the following markup:
 </html>
 ```
 
-Run the following commands to install the necessary libraries, and then run the program to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live:
+Run the following commands to install the necessary libraries, and then run the program to verify that the Viam SDK is properly installed and that the `viam-server` instance on your machine is live:
 
 ```sh {class="command-line" data-prompt="$"}
 npm install
@@ -262,98 +254,8 @@ npm start
 Open a web browser and visit `localhost:8000`.
 You should see a disabled button that says `Click me`.
 Open the developer console to see the console output.
-If you successfully configured your robot and it is able to connect to the Viam app, you will see some output including the names of your rover's resources.
-These are the components and services that the robot is configured with in the Viam app.
-
-Your main function should look similar to this.
-Only the first few lines that connect to your rover, and the last few lines that call your main function, are necessary for this tutorial.
-Unless you want to keep printing resource names to the console each time you load the page, delete lines 16-43 to keep your code brief.
-
-```ts {class="line-numbers linkable-line-numbers" data-line="16-43"}
-async function main() {
-  const host = "ADDRESS_FROM_VIAM_APP";
-
-  const robot = await VIAM.createRobotClient({
-    host,
-    credential: {
-      type: "api-key",
-      // Replace "<API-KEY>" (including brackets) with your machine's API key
-      payload: "<API-KEY>",
-    },
-    // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
-    authEntity: "<API-KEY-ID>",
-    signalingAddress: "https://app.viam.com:443",
-  });
-
-  // Note that the pin supplied is a placeholder. Please change this to a valid pin you are using.
-  // local
-  const localClient = new VIAM.BoardClient(robot, "local");
-  const localReturnValue = await localClient.getGPIO("16");
-  console.log("local getGPIO return value:", localReturnValue);
-
-  // right
-  const rightClient = new VIAM.MotorClient(robot, "right");
-  const rightReturnValue = await rightClient.isMoving();
-  console.log("right isMoving return value:", rightReturnValue);
-
-  // left
-  const leftClient = new VIAM.MotorClient(robot, "left");
-  const leftReturnValue = await leftClient.isMoving();
-  console.log("left isMoving return value:", leftReturnValue);
-
-  // viam_base
-  const viamBaseClient = new VIAM.BaseClient(robot, "viam_base");
-  const viamBaseReturnValue = await viamBaseClient.isMoving();
-  console.log("viam_base isMoving return value:", viamBaseReturnValue);
-
-  // cam
-  const camClient = new VIAM.CameraClient(robot, "cam");
-  const camReturnValue = await camClient.getImage();
-  console.log("cam getImage return value:", camReturnValue);
-
-  console.log("Resources:");
-  console.log(await robot.resourceNames());
-}
-
-main().catch((error) => {
-  console.error("encountered an error:", error);
-});
-```
-
-Add the following line to your main function:
-
-```ts {class="line-numbers linkable-line-numbers"}
-button().disabled = false;
-```
-
-Your <file>main.ts</file> should now look like this:
-
-```ts {class="line-numbers linkable-line-numbers" data-line="16"}
-async function main() {
-  const host = "ADDRESS_FROM_VIAM_APP";
-
-  const robot = await VIAM.createRobotClient({
-    host,
-    credential: {
-      type: "api-key",
-      // Replace "<API-KEY>" (including brackets) with your machine's API key
-      payload: "<API-KEY>",
-    },
-    // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
-    authEntity: "<API-KEY-ID>",
-    signalingAddress: "https://app.viam.com:443",
-  });
-
-  button().disabled = false;
-}
-
-main().catch((error) => {
-  console.error("encountered an error:", error);
-});
-```
-
-Refresh the browser page.
-When the connection to the rover is established, the `Click me` button will become enabled.
+If you successfully configured your machine and it is able to connect to the Viam app, you will see some output including the names of your rover's resources.
+These are the components and services that the machine is configured with in the Viam app.
 
 {{< /tab >}}
 {{% tab name="Flutter" %}}
@@ -371,7 +273,7 @@ Save your API key and API key ID as environment variables or include them in the
 
 Copy the code into a file called <FILE>drive_in_square.cpp</FILE>.
 
-Compile your code, and then run the program to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live:
+Compile your code, and then run the program to verify that the Viam SDK is properly installed and that the `viam-server` instance on your machine is live:
 
 ```sh {class="command-line" data-prompt="$"}
 cmake . -G Ninja
@@ -380,25 +282,20 @@ ninja all
 ```
 
 The program prints an array of resources.
-These are the components and services that the robot is configured with in the Viam app.
+These are the components and services that the machine is configured with in the Viam app.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-20"}
 ./src/viam/examples/camera/example_camera
-Resources of the robot:
- - cam (camera)
- - Lenc (encoder)
- - overhead-cam:builtin (sensors)
- - overhead-cam:builtin (motion)
- - builtin (sensors)
- - right (motor)
- - Renc (encoder)
- - overhead-cam:overheadcam (camera)
- - builtin (motion)
- - builtin (data_manager)
- - viam_base (base)
- - local (board)
- - left (motor)
- - overhead-cam:builtin (data_manager)
+Resources:
+  rdk:component:motor/right
+  rdk:component:encoder/Renc
+  rdk:component:encoder/Lenc
+  rdk:service:sensors/builtin
+  rdk:component:motor/left
+  rdk:component:camera/cam
+  rdk:component:board/local
+  rdk:component:base/viam_base
+  rdk:service:motion/builtin
  ...
 ```
 
@@ -441,18 +338,18 @@ If you have a different base name, update the name in your code.
 
 ```python {class="line-numbers linkable-line-numbers" data-line="4-8"}
 async def main():
-    robot = await connect()
+    machine = await connect()
 
     # Get the base component from the rover
-    roverBase = Base.from_robot(robot, 'viam_base')
+    roverBase = Base.from_robot(machine, 'viam_base')
 
     # Move the rover in a square
     await moveInSquare(roverBase)
 
-    await robot.close()
+    await machine.close()
 ```
 
-When you run your code, your robot moves in a square.
+When you run your code, your machine moves in a square.
 
 <div class="td-max-width-on-larger-screens">
 {{<gif webm_src="/tutorials/try-viam-sdk/image2.webm" mp4_src="../../try-viam-sdk/image2.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square on the left, and on the right, a terminal window shows the output of running the square function as the rover moves in a square.">}}
@@ -486,7 +383,9 @@ func moveInSquare(ctx context.Context, base base.Base, logger logging.Logger) {
 }
 ```
 
-Next, remove all the code in the `main()` function afterthe machine connection is established and instead initialize your `base` and invoke the `moveInSquare()` function.
+Next, remove all the code in the `main()` function after the machine connection is established and instead initialize your `base` and invoke the `moveInSquare()` function.
+
+Also remove any unused imports.
 
 On the Try Viam rental rovers, the default base name is `viam_base`.
 If you have a different base name, update the name in your code.
@@ -494,27 +393,27 @@ If you have a different base name, update the name in your code.
 ```go {class="line-numbers linkable-line-numbers" data-line="22-29"}
 func main() {
     logger := logging.NewLogger("client")
-    robot, err := client.New(
-        context.Background(),
-        "ADDRESS FROM THE VIAM APP",
-        logger,
-        client.WithDialOptions(rpc.WithEntityCredentials(
-        // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+    machine, err := client.New(
+      context.Background(),
+      "ADDRESS FROM THE VIAM APP",
+      logger,
+      client.WithDialOptions(rpc.WithEntityCredentials(
+              /* Replace "<API-KEY-ID>" (including brackets) with your machine's api key id */
         "<API-KEY-ID>",
         rpc.Credentials{
-            Type:    rpc.CredentialsTypeAPIKey,
-            // Replace "<API-KEY>" (including brackets) with your machine's API key
-            Payload: "<API-KEY>",
+          Type:    rpc.CredentialsTypeAPIKey,
+              /* Replace "<API-KEY>" (including brackets) with your machine's api key */
+          Payload: "<API-KEY>",
         })),
     )
     if err != nil {
-        logger.Fatal(err)
+      logger.Fatal(err)
     }
 
-    defer robot.Close(context.Background())
+    defer machine.Close(context.Background())
 
     // Get the base from the rover
-    roverBase, err := base.FromRobot(robot, "viam_base")
+    roverBase, err := base.FromRobot(machine, "viam_base")
     if err != nil {
         logger.Fatalf("cannot get base: %v", err)
     }
@@ -524,7 +423,7 @@ func main() {
 }
 ```
 
-When you run your code, your robot moves in a square.
+When you run your code, your rover moves in a square.
 
 <div class="td-max-width-on-larger-screens">
 {{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square." max-width="400px">}}
@@ -533,7 +432,7 @@ When you run your code, your robot moves in a square.
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-Underneath the `main` function, add the following function that initializes your rover base client and drives it in a square.
+Above the `main` function, add the following function that initializes your rover base client and drives it in a square.
 
 On the Try Viam rental rovers, the default base name is `viam_base`.
 If you have a different base name, update the name in your code.
@@ -573,17 +472,18 @@ Place this code after the rover connection code:
 
 ```ts {class="line-numbers linkable-line-numbers"}
 button().onclick = async () => {
-  await moveInSquare(robot);
+  await moveInSquare(machine);
 };
+button().disabled = false;
 ```
 
 Your main function should now look like this:
 
-```ts {class="line-numbers linkable-line-numbers" data-line="16-17"}
+```ts {class="line-numbers linkable-line-numbers" data-line="16-19"}
 async function main() {
   const host = "ADDRESS_FROM_VIAM_APP";
 
-  const robot = await VIAM.createRobotClient({
+  const machine = await VIAM.createRobotClient({
     host,
     credential: {
       type: "api-key",
@@ -596,13 +496,16 @@ async function main() {
   });
 
   button().onclick = async () => {
-    await moveInSquare(robot);
+    await moveInSquare(machine);
   };
   button().disabled = false;
 }
 ```
 
-When you run your code, your robot moves in a square.
+Save your code and refresh the browser page.
+When the connection to the rover is established, the `Click me` button will become enabled.
+
+Click the button to move your rover in a square.
 
 <div class="td-max-width-on-larger-screens">
 {{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square." max-width="400px">}}
@@ -775,7 +678,7 @@ You may need to scroll to the bottom of the list of resources.
 
 {{<imgproc src="/tutorials/try-viam-sdk/button.png" resize="300x" declaredimensions=true alt="Button to drive a rover in a square in an example Flutter app">}}
 
-Click on the button to move your robot in a square:
+Click on the button to move your rover in a square:
 
 {{<video webm_src="/tutorials/try-viam-sdk/square-test-rover.webm" mp4_src="/tutorials/try-viam-sdk/square-test-rover.mp4" alt="An example flutter app moving a Try Viam rental rover in a square" poster="/tutorials/try-viam-sdk/square-test-rover.jpg">}}
 
@@ -818,48 +721,43 @@ Next, remove all the code in the `main()` function after the machine connection 
 On the Try Viam rental rovers, the default base name is `viam_base`.
 If you have a different base name, update the name in your code.
 
-```cpp {class="line-numbers linkable-line-numbers" data-line="16,18-28"}
+```cpp {class="line-numbers linkable-line-numbers" data-line="19-31"}
 int main() {
-    namespace vs = ::viam::sdk;
+    std::string host("ADDRESS FROM THE VIAM APP");
+    DialOptions dial_opts;
+    // Replace "<API-KEY-ID>" with your machine's api key ID
+    dial_opts.set_entity(std::string("<API-KEY-ID>"));
+    // Replace "<API-KEY>" with your machine's api key
+    Credentials credentials("api-key", "<API-KEY>");
+    dial_opts.set_credentials(credentials);
+    boost::optional<DialOptions> opts(dial_opts);
+    Options options(0, opts);
+
+    auto machine = RobotClient::at_address(host, options);
+
+    std::cout << "Resources:\n";
+    for (const Name& resource : machine->resource_names()) {
+      std::cout << "\t" << resource << "\n";
+    }
+
+    std::string base_name("viam_base");
+
+    cout << "Getting base: " << base_name << endl;
+    std::shared_ptr<Base> base;
     try {
-        std::string host("ADDRESS FROM THE VIAM APP");
-        DialOptions dial_opts;
-        // Replace "<API-KEY-ID>" with your machine's api key ID
-        dial_opts.set_entity(std::string("<API-KEY-ID>"));
-        // Replace "<API-KEY>" with your machine's api key
-        Credentials credentials("api-key", "<API-KEY>");
-        dial_opts.set_credentials(credentials);
-        boost::optional<DialOptions> opts(dial_opts);
-        Options options(0, opts);
+        base = machine->resource_by_name<Base>(base_name);
 
-        auto robot = RobotClient::at_address(host, options);
+        move_in_square(base);
 
-        std::string base_name("viam_base");
-
-        cout << "Getting base: " << base_name << endl;
-        std::shared_ptr<Base> base;
-        try {
-            base = robot->resource_by_name<Base>(base_name);
-
-            move_in_square(base);
-
-        } catch (const std::exception& e) {
-            cerr << "Failed to find " << base_name << ". Exiting." << endl;
-            throw;
-        }
-
-    } catch (const std::exception& ex) {
-        cerr << "Program failed. Exception: " << std::string(ex.what()) << endl;
-        return EXIT_FAILURE;
-    } catch (...) {
-        cerr << "Program failed without exception message." << endl;
-        return EXIT_FAILURE;
+    } catch (const std::exception& e) {
+        cerr << "Failed to find " << base_name << ". Exiting." << endl;
+        throw;
     }
     return EXIT_SUCCESS;
 }
 ```
 
-When you run your code, your robot moves in a square.
+When you run your code, your rover moves in a square.
 
 <div class="td-max-width-on-larger-screens">
 {{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square." max-width="400px">}}
@@ -912,14 +810,14 @@ async def moveInSquare(base):
 
 
 async def main():
-    robot = await connect()
+    machine = await connect()
 
-    roverBase = Base.from_robot(robot, 'viam_base')
+    roverBase = Base.from_robot(machine, 'viam_base')
 
     # Move the rover in a square
     await moveInSquare(roverBase)
 
-    await robot.close()
+    await machine.close()
 
 if __name__ == '__main__':
     asyncio.run(main())
@@ -937,8 +835,7 @@ import (
     "go.viam.com/rdk/components/base"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
-)
+    "go.viam.com/rdk/utils")
 
 func moveInSquare(ctx context.Context, base base.Base, logger logging.Logger) {
     for i := 0; i < 4; i++ {
@@ -953,7 +850,7 @@ func moveInSquare(ctx context.Context, base base.Base, logger logging.Logger) {
 
 func main() {
     logger := logging.NewLogger("client")
-    robot, err := client.New(
+    machine, err := client.New(
       context.Background(),
       "ADDRESS FROM THE VIAM APP",
       logger,
@@ -969,14 +866,15 @@ func main() {
     if err != nil {
         logger.Fatal(err)
     }
-    defer robot.Close(context.Background())
+    defer machine.Close(context.Background())
 
     // Get the base from the rover
-    roverBase, err := base.FromRobot(robot, "viam_base")
+    roverBase, err := base.FromRobot(machine, "viam_base")
     if err != nil {
         logger.Fatalf("cannot get base: %v", err)
     }
 
+    // Move the rover in a square
     moveInSquare(context.Background(), roverBase, logger)
 }
 ```
@@ -1032,27 +930,6 @@ func main() {
 
 import * as VIAM from "@viamrobotics/sdk";
 
-async function main() {
-  const host = "ADDRESS_FROM_VIAM_APP";
-
-  const robot = await VIAM.createRobotClient({
-    host,
-    credential: {
-      type: "api-key",
-      // Replace "<API-KEY>" (including brackets) with your machine's API key
-      payload: "<API-KEY>",
-    },
-    // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
-    authEntity: "<API-KEY-ID>",
-    signalingAddress: "https://app.viam.com:443",
-  });
-
-  button().onclick = async () => {
-    await moveInSquare(robot);
-  };
-  button().disabled = false;
-}
-
 // This function moves a base component in a square.
 async function moveInSquare(client: VIAM.RobotClient) {
   // Replace with the name of a motor on your machine.
@@ -1072,9 +949,31 @@ async function moveInSquare(client: VIAM.RobotClient) {
   }
 }
 
+// This function gets the button element
 function button() {
   return <HTMLButtonElement>document.getElementById("main-button");
 }
+
+const main = async () => {
+  const host = "ADDRESS_FROM_VIAM_APP";
+
+  const machine = await VIAM.createRobotClient({
+    host,
+    credential: {
+      type: "api-key",
+      // Replace "<API-KEY>" (including brackets) with your machine's API key
+      payload: "<API-KEY>",
+    },
+    // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+    authEntity: "<API-KEY-ID>",
+    signalingAddress: "https://app.viam.com:443",
+  });
+
+  button().onclick = async () => {
+    await moveInSquare(machine);
+  };
+  button().disabled = false;
+};
 
 main().catch((error) => {
   console.error("encountered an error:", error);
@@ -1235,65 +1134,62 @@ class _RobotScreenState extends State<RobotScreen> {
 {{% tab name="C++" %}}
 
 ```cpp {class="line-numbers linkable-line-numbers"}
+#include <boost/optional.hpp>
 #include <string>
 #include <vector>
-
-#include <boost/optional.hpp>
-
 #include <viam/sdk/robot/client.hpp>
+#include <viam/sdk/components/motor.hpp>
 #include <viam/sdk/components/base.hpp>
+#include <viam/sdk/components/camera.hpp>
+#include <viam/sdk/components/encoder.hpp>
 
+using namespace viam::sdk;
 using namespace viam::sdk;
 using std::cerr;
 using std::cout;
 using std::endl;
 
 void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
-    for (int i = 0; i < 4; ++i) {
-        cout << "Move straight" << endl;
-        // Move the base forward 600mm at 500mm/s
-        base->move_straight(500, 500);
-        cout << "Spin" << endl;
-        // Spin the base by 90 degree at 100 degrees per second
-        base->spin(90, 100);
-    }
+  for (int i = 0; i < 4; ++i) {
+    cout << "Move straight" << endl;
+    // Move the base forward 600mm at 500mm/s
+    base->move_straight(500, 500);
+    cout << "Spin" << endl;
+    // Spin the base by 90 degree at 100 degrees per second
+    base->spin(90, 100);
+  }
 }
 
 int main() {
-    namespace vs = ::viam::sdk;
+    std::string host("ADDRESS FROM THE VIAM APP");
+    DialOptions dial_opts;
+    // Replace "<API-KEY-ID>" with your machine's api key ID
+    dial_opts.set_entity(std::string("<API-KEY-ID>"));
+    // Replace "<API-KEY>" with your machine's api key
+    Credentials credentials("api-key", "<API-KEY>");
+    dial_opts.set_credentials(credentials);
+    boost::optional<DialOptions> opts(dial_opts);
+    Options options(0, opts);
+
+    auto machine = RobotClient::at_address(host, options);
+
+    std::cout << "Resources:\n";
+    for (const Name& resource : machine->resource_names()) {
+      std::cout << "\t" << resource << "\n";
+    }
+
+    std::string base_name("viam_base");
+
+    cout << "Getting base: " << base_name << endl;
+    std::shared_ptr<Base> base;
     try {
-        std::string host("ADDRESS FROM THE VIAM APP");
-        DialOptions dial_opts;
-        // Replace "<API-KEY-ID>" with your machine's api key ID
-        dial_opts.set_entity(std::string("<API-KEY-ID>"));
-        // Replace "<API-KEY>" with your machine's api key
-        Credentials credentials("api-key", "<API-KEY>");
-        dial_opts.set_credentials(credentials);
-        boost::optional<DialOptions> opts(dial_opts);
-        Options options(0, opts);
+        base = machine->resource_by_name<Base>(base_name);
 
-        auto robot = RobotClient::at_address(host, options);
+        move_in_square(base);
 
-        std::string base_name("viam_base");
-
-        cout << "Getting base: " << base_name << endl;
-        std::shared_ptr<Base> base;
-        try {
-            base = robot->resource_by_name<Base>(base_name);
-
-            move_in_square(base);
-
-        } catch (const std::exception& e) {
-            cerr << "Failed to find " << base_name << ". Exiting." << endl;
-            throw;
-        }
-
-    } catch (const std::exception& ex) {
-        cerr << "Program failed. Exception: " << std::string(ex.what()) << endl;
-        return EXIT_FAILURE;
-    } catch (...) {
-        cerr << "Program failed without exception message." << endl;
-        return EXIT_FAILURE;
+    } catch (const std::exception& e) {
+        cerr << "Failed to find " << base_name << ". Exiting." << endl;
+        throw;
     }
     return EXIT_SUCCESS;
 }
