@@ -93,7 +93,7 @@ For more details, see [Machine-to-Machine Communication](/architecture/machine-t
 
 TLS certificates certificates provided by the Viam app ensure that all communication is authenticated and encrypted.
 
-Viam uses API keys with [role-based access control (RBAC)](/fleet/rbac/) to control access to machines from client code.
+Viam uses API keys with [role-based access control (RBAC)](/cloud/rbac/) to control access to machines from client code.
 
 ## Data management flow
 
@@ -119,18 +119,14 @@ For more information, see [Data Management](/services/data/).
 ## Basic machine example
 
 <p>
-{{<imgproc src="/architecture/simple-machine.png" class="alignright" resize="x1100" declaredimensions=true alt="viam-server running on a board connected to a sensor. Data is stored on a local folder and synced to a folder in the Viam app cloud." style="max-width:400px" >}}
+{{<imgproc src="/architecture/simple-machine.svg" class="alignright" resize="x1100" declaredimensions=true alt="viam-server running on a board connected to a sensor. Data is stored on a local folder and synced to a folder in the Viam app cloud." style="max-width:400px" >}}
 </p>
 
 Imagine you have a simple device consisting of a temperature sensor connected to the GPIO pins of a single-board computer (SBC).
 You want to capture sensor data at regular intervals, and sync it to the cloud.
 Here is how this works in Viam:
 
-- You create a configuration file in the Viam app that includes:
-  - A sensor {{< glossary_tooltip term_id="component" text="component" >}}
-    - Configure which pins of the SBC the sensor is connected to.
-  - Data management {{< glossary_tooltip term_id="service" text="service" >}}
-    - Configure the intervals at which to capture and sync data.
+- You configure your machine in the Viam app with a sensor {{< glossary_tooltip term_id="component" text="component" >}} and the data management {{< glossary_tooltip term_id="service" text="service" >}}.
 - `viam-server` runs on the SBC, managing all communications between hardware and the cloud using gRPC over {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}}.
   On startup, `viam-server` uses credentials stored locally to establish a connection with the Viam app and fetches its configuration.
 - Sensor data is cached in a local folder, then synced to the cloud at a configurable interval.
@@ -143,7 +139,7 @@ Now imagine you want to run code to turn on a fan when the temperature sensor re
 - You then run this code either locally on the SBC, or on a separate server.
   Your code connects to the machine, authenticating with API keys, and uses the [sensor API](/components/sensor/#api) to get readings and the [motor API](/components/motor/#api) to turn the motor on and off.
 
-  ![alt](/build/program/sdks/robot-client.png)
+  ![A desktop computer (client in this case) sends commands to robot 1 (server) with gRPC over wifi.](/build/program/sdks/robot-client.png)
 
 Now, imagine you want to change to a different model of temperature sensor from a different brand:
 
