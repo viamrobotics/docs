@@ -73,7 +73,7 @@ This peer-to-peer connectivity is enabled by sending [gRPC commands over WebRTC 
 On startup, `viam-server` establishes a {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}} connection with the [Viam app](https://app.viam.com).
 `viam-server` pulls its configuration from the app, caches it locally, and initializes all components and services based on that configuration.
 
-If sub-parts or remote parts are configured, communications are established between the `viam-server` instances on each of them.
+If [sub-parts or remote parts](#complex-machines-with-multiple-parts) are configured, communications are established between the `viam-server` instances on each of them.
 
 If you have client code running on a separate computer, that code sends API requests to `viam-server` using gRPC over WebRTC.
 If a WebRTC connection cannot be established, the request is sent directly over gRPC.
