@@ -29,7 +29,7 @@ When `viam-server` can connect to the cloud, it also:
 - Uploads and syncs image and sensor data
 - Allows you to remotely control your machine from the Viam app
 
-`viam-server` can use the internet (WAN) or local networks (LAN) to establish peer-to-peer connections between two {{< glossary_tooltip term_id="machine" text="machines" >}}, or to a client application.
+`viam-server` can use the internet, wide area networks (WAN) or local networks (LAN) to establish peer-to-peer connections between two {{< glossary_tooltip term_id="machine" text="machines" >}}, or to a client application.
 
 ## Components, services, modules
 
@@ -40,7 +40,7 @@ A [_service_](/services/) is a software package that makes it easier to add comp
 Viam has many built-in components and services that run within `viam-server`.
 
 A [_modular resource_](/registry/) is a custom component or service, not built into `viam-server` but rather provided by a _module_ that you or another user have created.
-A module runs in parallel to `viam-server` on your machine, communicating over UNIX sockets, and `viam-server` manages its lifecycle.
+A module runs as a process managed by `viam-server` on your machine, communicating over UNIX sockets, and `viam-server` manages its lifecycle.
 
 {{<imgproc src="/viam/machine-components.png" resize="x1100" declaredimensions=true alt="Machine structure" style="max-width:600px" >}}
 
