@@ -1,6 +1,6 @@
 ---
 title: "Machine Architecture: Parts"
-linkTitle: "Machine Architecture"
+linkTitle: "Parts, Sub-parts, Remotes"
 weight: 40
 type: "docs"
 description: "Connect multiple machine parts to each other as sub-parts or remotes."
@@ -8,6 +8,8 @@ tags: ["server", "components", "services"]
 aliases:
   - /manage/parts-and-remotes/
   - /build/configure/parts-and-remotes/
+  - /configure/parts/
+  - /build/configure/parts/
 ---
 
 When {{< glossary_tooltip term_id="machine" text="smart machines" >}} communicate with each other, they can share resources and operate collaboratively.
