@@ -1,6 +1,6 @@
 ---
-title: "Control Machines"
-linkTitle: "Control Machines"
+title: "Machine Control Interface"
+linkTitle: "Control Interface"
 weight: 45
 type: "docs"
 description: "A machine is an organizational concept, consisting of either one or multiple parts working closely together to complete tasks."
