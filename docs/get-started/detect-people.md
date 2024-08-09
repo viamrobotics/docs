@@ -143,13 +143,13 @@ The full configuration for the attributes of the vision service should resemble:
 }
 ```
 
-This optional attribute reduces your detections output (which you'll view in step 7) by filtering out detections below the threshold of 82% confidence.
+This optional attribute reduces your detections output by filtering out detections below the threshold of 82% confidence.
 You can adjust this attribute as necessary.
 
-Click the **Save** button in the top right corner of the page to save your configuration.
-For more detailed information, including optional attribute configuration, see the [`mlmodel` docs](/services/vision/mlmodel/).
-
+Click the **Save** button in the top right corner of the page to save your configuration and close and reopen the **Test** panel of the vision service configuration panel.
 Now if you view detections, you will only see detections with a confidence value higher than the `"default_minimum_confidence"` attribute.
+
+For more detailed information, including optional attribute configuration, see the [`mlmodel` docs](/services/vision/mlmodel/).
 
 {{<imgproc src="/get-started/quickstarts/vision-card.png" resize="x1100" declaredimensions=true alt="Positive person detection on the vision card." >}}
 
