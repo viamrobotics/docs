@@ -111,7 +111,7 @@ If you later update the upstream fragment, the updates to the overwritten fields
 
 {{< table >}}
 {{% tablestep link="/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment" %}}
-{{<gif webm_src="/how-tos/fragment-overwrite.webm" mp4_src="/how-tos/fragment-overwrite.mp4" alt="A robot drawing a heart" max-width="500px" class="aligncenter" >}}
+{{<gif webm_src="/how-tos/fragment-overwrite.webm" mp4_src="/how-tos/fragment-overwrite.mp4" alt="A motor config panel from a fragment being edited with different direction and pwm pin values." max-width="500px" class="aligncenter" >}}
 
 <!-- markdownlint-disable MD036 -->
 
@@ -124,7 +124,7 @@ You can click the **{}** button to switch to advanced view and see the changes.
 Don't forget to **Save**.
 
 {{% /tablestep %}}
-{{% tablestep link="/fleet/fragments/#use-fragment_mods" %}}
+{{% tablestep %}}
 {{<imgproc src="/use-cases/one-to-many/reset.png" class="fill alignleft" resize="500x" style="max-width: 250px"  declaredimensions=true alt="Reset to fragment">}}
 **2. (Optional) Revert fragment modifications**
 

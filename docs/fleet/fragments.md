@@ -43,28 +43,24 @@ Get started with this how-to guide:
 
 ## Modify the config of a machine that uses a fragment
 
+If you need to modify the config of one or a few machines that use a fragment, you can overwrite fields of the fragment.
+
 When you add a fragment to a machine, the configuration of components and services included in a fragment are _read-only_.
 Any changes made by overwriting them do not change the fragment itself.
 
 If you need to make changes to all machines that use a fragment, you must modify the fragment itself.
 
-If you need to modify the config of just one machine that uses a fragment, you have two options:
-
-- Use `fragment_mods` in your machine's config to overwrite certain fields of the fragment.
-- Copy and paste the contents of the fragment, remove the link to the fragment itself, then modify the config as needed.
-  - If you use this method, future updates to the fragment _will not_ be automatically pushed to your machine.
-
 {{% alert title="Support Notice" color="note" %}}
 
-`fragment_mods` are _not_ supported for the modification of [trigger](/configure/triggers/) configuration.
+Fragment overwrites are _not_ supported for the modification of [trigger](/configure/triggers/) configuration.
 You can create a trigger with a fragment but you cannot modify it with `fragment_mods`.
 
 {{% /alert %}}
 
-### Use `fragment_mods`
-
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
+
+To overwrite fields of a fragment, make edits to the component or service configuration just as you would for a non-fragment {{< glossary_tooltip term_id="resource" text="resource" >}}.
 
 When you make edits to the configuration of component or service that was configured using a fragment, the Viam app builder automatically adds an overwrite to your config.
 If you have made edits, you will see an **edited from FRAGMENT NAME** indicator in the upper right corner of the edited component or service card.
@@ -303,20 +299,7 @@ Here are the version options:
 {{% /tab %}}
 {{< /tabs >}}
 
-### Revert fragment mods
-
 If you need to restore the original fragment, click the **...** in the upper right corner of the card you modified, and click **Revert changes**.
-
-### Copy and paste method
-
-1. Navigate to the card belonging to your fragment on the **CONFIGURE** tab.
-2. Click the **View JSON** button in the upper right corner of the card.
-   Copy all of the JSON.
-3. Return to the fragment card.
-   Click the **...** (Actions) button in the upper right corner of the card. Click **Delete** and confirm your choice.
-4. In the left-hand menu of the **CONFIGURE** tab, click **JSON** to switch to JSON mode.
-5. Paste the raw fragment contents into the editor and click **Save** in the upper-right corner of the screen to save your config.
-6. Now, you can edit the config in either **JSON** or **Builder** mode.
 
 ## Next steps
 
