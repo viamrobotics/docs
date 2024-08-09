@@ -205,7 +205,7 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
 
 ![component config example](/services/data/data-service-component-config.png)
 
-{{%expand "Click to view an example JSON configuration" %}}
+{{%expand "Click to view an example JSON configuration for data capture on a camera component" %}}
 
 {{< tabs >}}
 {{% tab name="RDK" %}}
@@ -336,6 +336,77 @@ This example configuration captures data from the GetReadings method of a temper
       ],
       "name": "my-wifi-sensor",
       "namespace": "rdk"
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /expand%}}
+
+{{%expand "Click to view an example JSON configuration for data capture on the vision service" %}}
+
+{{< tabs >}}
+{{% tab name="RDK" %}}
+
+This example configuration captures data from the `CaptureAllFromCamera` method of the vision service:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [
+    {
+      "name": "camera-1",
+      "namespace": "rdk",
+      "type": "camera",
+      "model": "webcam",
+      "attributes": {}
+    }
+  ],
+  "services": [
+    {
+      "name": "vision-1",
+      "namespace": "rdk",
+      "type": "vision",
+      "model": "mlmodel",
+      "attributes": {},
+      "service_configs": [
+        {
+          "type": "data_manager",
+          "attributes": {
+            "capture_methods": [
+              {
+                "method": "CaptureAllFromCamera",
+                "capture_frequency_hz": 1,
+                "additional_params": {
+                  "mime_type": "image/jpeg",
+                  "camera_name": "camera-1",
+                  "min_confidence_score": "0.7"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "data_manager-1",
+      "namespace": "rdk",
+      "type": "data_manager",
+      "attributes": {
+        "sync_interval_mins": 0.1,
+        "capture_dir": "",
+        "tags": [],
+        "additional_sync_paths": []
+      }
+    },
+    {
+      "name": "mlmodel-1",
+      "namespace": "rdk",
+      "type": "mlmodel",
+      "model": "tflite_cpu",
+      "attributes": {}
     }
   ]
 }
