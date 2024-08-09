@@ -1,6 +1,6 @@
 ---
 title: "Provision Machines Using the Viam Agent"
-linkTitle: "Provision Machines"
+linkTitle: "Provisioning Machines"
 weight: 70
 type: "docs"
 description: "Flexibly provision new machines using the Viam Agent."
