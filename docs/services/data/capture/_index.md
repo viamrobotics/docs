@@ -351,7 +351,7 @@ This example configuration captures data from the GetReadings method of a temper
 {{< tabs >}}
 {{% tab name="RDK" %}}
 
-This example configuration captures data from the CaptureAllFromCamera method of the vision service:
+This example configuration captures data from the `CaptureAllFromCamera` method of the vision service:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
