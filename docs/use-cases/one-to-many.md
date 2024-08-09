@@ -95,7 +95,7 @@ Click **Save** in the upper right corner of the screen.
 
 Repeat step 1 for each of the machines that you want to configure in the same way.
 
-If some of your machines have slight differences, you can still add the fragment and then add fragment mods in the next section.
+If some of your machines have slight differences, you can still add the fragment and then add fragment overwrites in the next section.
 
 {{% /tablestep %}}
 {{< /table >}}

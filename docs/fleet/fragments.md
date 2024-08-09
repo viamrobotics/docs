@@ -73,7 +73,7 @@ If you have made edits, you will see an **edited from FRAGMENT NAME** indicator 
 You can modify fragment fields in your machine's raw JSON config by using [update operators](https://www.mongodb.com/docs/manual/reference/operator/update/positional/#---update-).
 Viam supports all update operators except for `$setOnInsert`, `$`, `$[]`, and `$[<identifier>]`.
 
-To configure fragment mods manually instead of using the builder UI:
+To configure fragment overwrites manually instead of using the builder UI:
 
 1. Navigate to your machine's **CONFIGURE** tab.
 2. Switch to **JSON** mode.
