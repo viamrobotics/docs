@@ -67,11 +67,11 @@ There is also a _component_ for the board itself that allows Viam software to co
 
 If you configure a [base component](/components/base/), you can specify the size of the wheels attached to the motors, and how wide the rover base is, so `viam-server` can calculate how to coordinate the motion of the rover base.
 
-If your rover includes a piece of hardware (such as a particular sensor) that is not yet supported in Viam, write a {{< glossary_tooltip term_id="module" text="module" >}} to integrate it into your machine.
+If your rover includes a piece of hardware (such as a particular sensor) that is not yet supported as a built-in in by Viam, check the registry for a contributed {{< glossary_tooltip term_id="module" text="module" >}} or write your own module to integrate it into your machine.
 
 Say you want your machine to navigate intelligently between GPS coordinates.
-Instead of writing code from scratch, use Viam's built-in navigation service by adding it to your configuration, specifying how the GPS and any additional movement sensors are oriented with respect to your hardware.
-Since your configuration now includes information about the wheeled base of your rover as well as how that base is oriented in relation to your GPS and other sensors, `viam-server` can use the motion and navigation services to calculate how much power to send to each motor to get it to a point on the map.
+Instead of writing code from scratch, you can use Viam's built-in navigation service by adding it to your configuration, specifying how the GPS and any additional movement sensors are oriented with respect to your hardware.
+Since your configuration includes information about the wheeled base of your rover as well as how that base is oriented in relation to your GPS and other sensors, `viam-server` can use the motion and navigation services to calculate how much power to send to each motor to get it to a point on the map.
 
 If you want to add some other high-level software functionality beyond the built-in services (for example, your own flavor of navigation service), you can add your own service with a module.
 
@@ -94,7 +94,7 @@ If a WebRTC connection cannot be established, the request is sent directly over 
 When a built-in service communicates with a component, for example when the vision service requests an image from a camera, `viam-server` handles that request as well.
 
 When you control your machine or view its camera streams or sensor outputs from the Viam app **CONTROL** tab, those connections happen over WebRTC.
-The Viam app hits the same API endpoints as your SDK client code, with `viam-server` handling requests.
+The Viam app uses the same API endpoints as your SDK client code (in fact, it uses the Viam TypeScript SDK), with `viam-server` handling requests.
 
 {{% alert title="Protobuf APIs" color="info" %}}
 All Viam APIs are defined with the [Protocol Buffers (protobuf)](https://protobuf.dev/) framework.
@@ -121,7 +121,7 @@ Data is captured and synced to the Viam cloud as follows:
    - You can also sync data from other sources by putting it into folders you specify.
      <br><br>
 
-1. `viam-server` syncs data to a MongoDB database in the cloud at your specified interval, and deletes the data from the local directory.
+1. `viam-server` syncs data to the cloud at your specified interval, and deletes the data from the local directory.
 
 1. You can view your data from the Viam app or query it using Viam SDKs, MQL, or SQL.
 
@@ -165,7 +165,7 @@ Now, imagine you want to change to a different model of temperature sensor from 
 
 In Viam, a _{{< glossary_tooltip term_id="part" text="part" >}}_ is an organizational concept consisting of one instance of `viam-server` (or the micro-RDK) running on a SBC or other computer, and all the hardware and software that that `viam-server` instance controls.
 
-Many simple {{< glossary_tooltip term_id="machine" text="machines" >}} consist of only one part: just one computer running `viam-server`.
+Many simple {{< glossary_tooltip term_id="machine" text="machines" >}} consist of only one part: just one computer running `viam-server` with configured components and services.
 If you have a more complex situation with multiple computers and associated hardware working together, you have two options for organization:
 
 - One complex {{< glossary_tooltip term_id="machine" text="machine" >}} consisting of multiple parts, working together.
