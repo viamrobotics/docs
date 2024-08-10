@@ -221,7 +221,7 @@ This takes you to the data tab.
 If you do not see data from your sensor, try waiting a minute and refreshing the page to allow time for the readings to be captured and then synced to the app at the interval you configured.
 
 {{< /expand >}}
-{{< expand "Step 6: Stop data capture" >}}
+{{< expand "Step 7: Stop data capture" >}}
 
 If this is a test project, make sure you stop data capture to avoid charges for a large amount of unwanted data.
 
