@@ -20,178 +20,199 @@ Follow this guide to create, upload, and submit a Python script that loads a tra
 
 ## Create a training script
 
-Create a folder called <file>model</file> and create a file called <file>training.py</file> inside it.
-Copy this template into <file>training.py</file>:
+1. Create a folder for the training-script, for example <file>my-training</file>.
+1. Inside the top level folder (in this example <file>my-training</file>), create a file called `setup.py` with the following contents:
 
-```python {class="line-numbers linkable-line-numbers" }
-import argparse
-import json
-import os
-import typing as ty
+    ```python {class="line-numbers linkable-line-numbers" data-line="11"}
+    from setuptools import find_packages, setup
 
-single_label = "MODEL_TYPE_SINGLE_LABEL_CLASSIFICATION"
-multi_label = "MODEL_TYPE_MULTI_LABEL_CLASSIFICATION"
-labels_filename = "labels.txt"
-unknown_label = "UNKNOWN"
+    setup(
+        name="my-training",
+        version="0.1",
+        packages=find_packages(),
+        include_package_data=True,
+        install_requires=[
+            "google-cloud-aiplatform",
+            "google-cloud-storage",
+            # TODO: Add additional required packages
+        ],
+    )
+    ```
 
-# This parses the required args for the training script.
-# The model_dir variable will contain the output directory where
-# the ML model that this script creates should be stored.
-# The data_json variable will contain the metadata for the dataset
-# that you should use to train the model.
-def parse_args():
-    """Dataset file and model output directory are required parameters. These must be parsed as command line
-        arguments and then used as the model input and output, respectively.
-    """
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset_file", dest="data_json", type=str)
-    parser.add_argument("--model_output_directory", dest="model_dir", type=str)
-    args = parser.parse_args()
-    return args.data_json, args.model_dir
+    Ensure you add additional required packages on line 11.
 
-# This is used for parsing the dataset file (produced and stored in Viam),
-# parse it to get the label annotations
-# Used for training classifiction models
-def parse_filenames_and_labels_from_json(
-    filename: str, all_labels: ty.List[str], model_type: str
-) -> ty.Tuple[ty.List[str], ty.List[str]]:
-    """Load and parse JSON file to return image filenames and corresponding labels.
-    Args:
-        filename: JSONLines file containing filenames and labels
-        all_labels: list of all N_LABELS
-        model_type: string single_label or multi_label
-    """
-    image_filenames = []
-    image_labels = []
+1. Inside the top level folder (in this example <file>my-training</file>), create a folder called <file>model</file> and create an empty file called <file>\_\_init\_\_.py</file> inside it.
+1. Inside the <file>model</file> folder, create a file called <file>training.py</file>.
+   Copy this template into <file>training.py</file>:
 
-    with open(filename, "rb") as f:
-        for line in f:
-            json_line = json.loads(line)
-            image_filenames.append(json_line["image_path"])
+    ```python {class="line-numbers linkable-line-numbers" }
+    import argparse
+    import json
+    import os
+    import typing as ty
 
-            annotations = json_line["classification_annotations"]
-            labels = [unknown_label]
-            for annotation in annotations:
-                if model_type == multi_label:
+    single_label = "MODEL_TYPE_SINGLE_LABEL_CLASSIFICATION"
+    multi_label = "MODEL_TYPE_MULTI_LABEL_CLASSIFICATION"
+    labels_filename = "labels.txt"
+    unknown_label = "UNKNOWN"
+
+    # This parses the required args for the training script.
+    # The model_dir variable will contain the output directory where
+    # the ML model that this script creates should be stored.
+    # The data_json variable will contain the metadata for the dataset
+    # that you should use to train the model.
+    def parse_args():
+        """Dataset file and model output directory are required parameters. These must be parsed as command line
+            arguments and then used as the model input and output, respectively.
+        """
+        parser = argparse.ArgumentParser()
+        parser.add_argument("--dataset_file", dest="data_json", type=str)
+        parser.add_argument("--model_output_directory", dest="model_dir", type=str)
+        args = parser.parse_args()
+        return args.data_json, args.model_dir
+
+    # This is used for parsing the dataset file (produced and stored in Viam),
+    # parse it to get the label annotations
+    # Used for training classifiction models
+    def parse_filenames_and_labels_from_json(
+        filename: str, all_labels: ty.List[str], model_type: str
+    ) -> ty.Tuple[ty.List[str], ty.List[str]]:
+        """Load and parse JSON file to return image filenames and corresponding labels.
+        Args:
+            filename: JSONLines file containing filenames and labels
+            all_labels: list of all N_LABELS
+            model_type: string single_label or multi_label
+        """
+        image_filenames = []
+        image_labels = []
+
+        with open(filename, "rb") as f:
+            for line in f:
+                json_line = json.loads(line)
+                image_filenames.append(json_line["image_path"])
+
+                annotations = json_line["classification_annotations"]
+                labels = [unknown_label]
+                for annotation in annotations:
+                    if model_type == multi_label:
+                        if annotation["annotation_label"] in all_labels:
+                            labels.append(annotation["annotation_label"])
+                    if model_type == single_label:
+                        if annotation["annotation_label"] in all_labels:
+                            labels = [annotation["annotation_label"]]
+                image_labels.append(labels)
+        return image_filenames, image_labels
+
+
+    # Parse the dataset file (produced and stored in Viam) to get
+    # bounding box annotations
+    # Used for training object detection models
+    def parse_filenames_and_bboxes_from_json(
+        filename: str,
+        all_labels: ty.List[str],
+    ) -> ty.Tuple[ty.List[str], ty.List[str], ty.List[ty.List[float]]]:
+        """Load and parse JSON file to return image filenames
+        and corresponding labels with bboxes.
+        Args:
+            filename: JSONLines file containing filenames and bboxes
+        """
+        image_filenames = []
+        bbox_labels = []
+        bbox_coords = []
+
+        with open(filename, "rb") as f:
+            for line in f:
+                json_line = json.loads(line)
+                image_filenames.append(json_line["image_path"])
+                annotations = json_line["bounding_box_annotations"]
+                labels = []
+                coords = []
+                for annotation in annotations:
                     if annotation["annotation_label"] in all_labels:
                         labels.append(annotation["annotation_label"])
-                if model_type == single_label:
-                    if annotation["annotation_label"] in all_labels:
-                        labels = [annotation["annotation_label"]]
-            image_labels.append(labels)
-    return image_filenames, image_labels
+                        # Store coordinates in rel_yxyx format so that
+                        # we can use the keras_cv function
+                        coords.append(
+                            [
+                                annotation["y_min_normalized"],
+                                annotation["x_min_normalized"],
+                                annotation["y_max_normalized"],
+                                annotation["x_max_normalized"],
+                            ]
+                        )
+                bbox_labels.append(labels)
+                bbox_coords.append(coords)
+        return image_filenames, bbox_labels, bbox_coords
 
 
-# Parse the dataset file (produced and stored in Viam) to get
-# bounding box annotations
-# Used for training object detection models
-def parse_filenames_and_bboxes_from_json(
-    filename: str,
-    all_labels: ty.List[str],
-) -> ty.Tuple[ty.List[str], ty.List[str], ty.List[ty.List[float]]]:
-    """Load and parse JSON file to return image filenames
-    and corresponding labels with bboxes.
-    Args:
-        filename: JSONLines file containing filenames and bboxes
-    """
-    image_filenames = []
-    bbox_labels = []
-    bbox_coords = []
+    # Build the model
+    def build_and_compile_model(
+        labels: ty.List[str], model_type: str, input_shape: ty.Tuple[int, int, int]
+    ) -> Model:
+        """Builds and compiles a model
+        Args:
+            labels: list of string lists, where each string list contains up to N_LABEL labels associated with an image
+            model_type: string single_label or multi_label
+            input_shape: 3D shape of input
+        """
 
-    with open(filename, "rb") as f:
-        for line in f:
-            json_line = json.loads(line)
-            image_filenames.append(json_line["image_path"])
-            annotations = json_line["bounding_box_annotations"]
-            labels = []
-            coords = []
-            for annotation in annotations:
-                if annotation["annotation_label"] in all_labels:
-                    labels.append(annotation["annotation_label"])
-                    # Store coordinates in rel_yxyx format so that
-                    # we can use the keras_cv function
-                    coords.append(
-                        [
-                            annotation["y_min_normalized"],
-                            annotation["x_min_normalized"],
-                            annotation["y_max_normalized"],
-                            annotation["x_max_normalized"],
-                        ]
-                    )
-            bbox_labels.append(labels)
-            bbox_coords.append(coords)
-    return image_filenames, bbox_labels, bbox_coords
+        # TODO: Add logic to build and compile model
 
+        return model
 
-# Build the model
-def build_and_compile_model(
-    labels: ty.List[str], model_type: str, input_shape: ty.Tuple[int, int, int]
-) -> Model:
-    """Builds and compiles a model
-    Args:
-        labels: list of string lists, where each string list contains up to N_LABEL labels associated with an image
-        model_type: string single_label or multi_label
-        input_shape: 3D shape of input
-    """
+    def save_labels(labels: ty.List[str], model_dir: str) -> None:
+        """Saves a label.txt of output labels to the specified model directory.
+        Args:
+            labels: list of string lists, where each string list contains up to N_LABEL labels associated with an image
+            model_dir: output directory for model artifacts
+        """
+        filename = os.path.join(model_dir, labels_filename)
+        with open(filename, "w") as f:
+            for label in labels[:-1]:
+                f.write(label + "\n")
+            f.write(labels[-1])
 
-    # TODO: Add logic to build and compile model
+    def save_model(
+        model: Model,
+        model_dir: str,
+        model_name: str,
+    ) -> None:
+        """Save model as a TFLite model.
+        Args:
+            model: trained model
+            model_dir: output directory for model artifacts
+            model_name: name of saved model
+        """
+        file_type = ""
 
-    return model
+        # Save the model to the output directory.
+        filename = os.path.join(model_dir, f"{model_name}.{file_type}")
+        with open(filename, "wb") as f:
+            f.write(model)
 
-def save_labels(labels: ty.List[str], model_dir: str) -> None:
-    """Saves a label.txt of output labels to the specified model directory.
-    Args:
-        labels: list of string lists, where each string list contains up to N_LABEL labels associated with an image
-        model_dir: output directory for model artifacts
-    """
-    filename = os.path.join(model_dir, labels_filename)
-    with open(filename, "w") as f:
-        for label in labels[:-1]:
-            f.write(label + "\n")
-        f.write(labels[-1])
+    if __name__ == "__main__":
+        DATA_JSON, MODEL_DIR = parse_args()
 
-def save_model(
-    model: Model,
-    model_dir: str,
-    model_name: str,
-) -> None:
-    """Save model as a TFLite model.
-    Args:
-        model: trained model
-        model_dir: output directory for model artifacts
-        model_name: name of saved model
-    """
-    file_type = ""
+        IMG_SIZE = (256, 256)
 
-    # Save the model to the output directory.
-    filename = os.path.join(model_dir, f"{model_name}.{file_type}")
-    with open(filename, "wb") as f:
-        f.write(model)
+        # Read dataset file.
+        # TODO: change labels to the desired model output.
+        LABELS = ["orange_triangle", "blue_star"]
 
-if __name__ == "__main__":
-    DATA_JSON, MODEL_DIR = parse_args()
+        # The model type can be changed based on whether you want the model to output one label per image or multiple labels per image
+        model_type = multi_label
+        image_filenames, image_labels = parse_filenames_and_labels_from_json(DATA_JSON, LABELS, model_type)
 
-    IMG_SIZE = (256, 256)
+        # Build and compile model on data
+        model = build_and_compile_model()
 
-    # Read dataset file.
-    # TODO: change labels to the desired model output.
-    LABELS = ["orange_triangle", "blue_star"]
-
-    # The model type can be changed based on whether you want the model to output one label per image or multiple labels per image
-    model_type = multi_label
-    image_filenames, image_labels = parse_filenames_and_labels_from_json(DATA_JSON, LABELS, model_type)
-
-    # Build and compile model on data
-    model = build_and_compile_model()
-
-    # Save labels.txt file
-    save_labels(LABELS + [unknown_label], MODEL_DIR)
-    # Convert the model to tflite
-    save_model(
-        model, MODEL_DIR, "classification_model", IMG_SIZE + (3,)
-    )
-```
-
+        # Save labels.txt file
+        save_labels(LABELS + [unknown_label], MODEL_DIR)
+        # Convert the model to tflite
+        save_model(
+            model, MODEL_DIR, "classification_model", IMG_SIZE + (3,)
+        )
+    ```
 
 ### Template script explained
 
