@@ -10,6 +10,15 @@ tags: ["components", "services", "communication"]
 menuindent: true
 ---
 
+This page provides an overview of how a machine is structured, including on-device and cloud communications:
+
+- [`viam-server`](#viam-server)
+- [Components, services and modules](#components-services-modules)
+- [Communication flow and security](#communication)
+- [How data flows in Viam](#data-management-flow)
+- [Basic machine example](#basic-machine-example)
+- [Structure of more complex machines](#complex-machines-with-multiple-parts)
+
 ## `viam-server`
 
 `viam-server` is the open-source executable binary that runs on your machine's SBC or other computer.
@@ -27,15 +36,19 @@ When `viam-server` can connect to the cloud, it also:
 - Automatically pulls configuration updates you make in the Viam app
 - Gets new versions of software packages
 - Uploads and syncs image and sensor data
-- Allows you to remotely control your machine from the Viam app
+- Handles requests from client code you write with [SDKs](/sdks/)
+- Allows you to remotely monitor and control your machine from the Viam app
 
 `viam-server` can use the internet, wide area networks (WAN) or local networks (LAN) to establish peer-to-peer connections between two {{< glossary_tooltip term_id="machine" text="machines" >}}, or to a client application.
+
+The [micro-RDK](/installation/#install-micro-rdk) is the lightweight version of `viam-server` that you can run on ESP32 microcontrollers.
+The micro-RDK doesn't support as much functionality as `viam-server`, but `viam-server` can directly communicate with devices running micro-RDK.
 
 ## Components, services, modules
 
 A [_component_](/components/) represents a physical piece of hardware in your {{< glossary_tooltip term_id="machine" text="machine" >}}, and the software that directly supports that hardware.
 
-A [_service_](/services/) is a software package that makes it easier to add complex capabilities such as motion planning or object detection to your machine.
+A [_service_](/services/) is a software package that adds complex capabilities such as motion planning or object detection to your machine.
 
 Viam has many built-in components and services that run within `viam-server`.
 
@@ -51,6 +64,7 @@ Imagine you have a wheeled rover with two motors, a GPS unit, and a camera, cont
 The motors, GPS, and camera each require software drivers so that signals can be sent to or from them from your board.
 These drivers are called _{{< glossary_tooltip term_id="component" text="components" >}}_.
 There is also a _component_ for the board itself that allows Viam software to communicate with the pins on the board.
+
 If you configure a [base component](/components/base/), you can specify the size of the wheels attached to the motors, and how wide the rover base is, so `viam-server` can calculate how to coordinate the motion of the rover base.
 
 If your rover includes a piece of hardware (such as a particular sensor) that is not yet supported in Viam, write a {{< glossary_tooltip term_id="module" text="module" >}} to integrate it into your machine.
@@ -84,14 +98,13 @@ The Viam app hits the same API endpoints as your SDK client code, with `viam-ser
 
 {{% alert title="Protobuf APIs" color="info" %}}
 All Viam APIs are defined with the [Protocol Buffers (protobuf)](https://protobuf.dev/) framework.
-This is what enables Viam to provide SDKs in a variety of different programming languages.
 {{% /alert %}}
 
 For more details, see [Machine-to-Machine Communication](/architecture/machine-to-machine-comms/).
 
 ### Security
 
-TLS certificates certificates provided by the Viam app ensure that all communication is authenticated and encrypted.
+TLS certificates automatically provided by the Viam app ensure that all communication is authenticated and encrypted.
 
 Viam uses API keys with [role-based access control (RBAC)](/cloud/rbac/) to control access to machines from client code.
 
@@ -102,10 +115,10 @@ Viam uses API keys with [role-based access control (RBAC)](/cloud/rbac/) to cont
 
 Data is captured and synced to the Viam cloud as follows:
 
-1. Data collected by your components, such as sensors and cameras, is first stored locally in a specified directory (defaults to <file>~/.viam/capture</file>).
-   You control how often to capture data and where to store it using the configuration file.
+1. Data collected by your resources, such as sensors and cameras, is first stored locally in a specified directory (defaults to <file>~/.viam/capture</file>).
+   You control what data to capture, how often to capture it, and where to store it using the configuration in the Viam app.
 
-   - You can also sync data from other sources by putting it into this folder.
+   - You can also sync data from other sources by putting it into folders you specify.
      <br><br>
 
 1. `viam-server` syncs data to a MongoDB database in the cloud at your specified interval, and deletes the data from the local directory.
@@ -150,7 +163,7 @@ Now, imagine you want to change to a different model of temperature sensor from 
 
 ## Complex machines with multiple parts
 
-In Viam, a _{{< glossary_tooltip term_id="part" text="part" >}}_ is an organizational concept consisting of one instance of `viam-server` running on a SBC or other computer, and all the hardware and software that that `viam-server` instance controls.
+In Viam, a _{{< glossary_tooltip term_id="part" text="part" >}}_ is an organizational concept consisting of one instance of `viam-server` (or the micro-RDK) running on a SBC or other computer, and all the hardware and software that that `viam-server` instance controls.
 
 Many simple {{< glossary_tooltip term_id="machine" text="machines" >}} consist of only one part: just one computer running `viam-server`.
 If you have a more complex situation with multiple computers and associated hardware working together, you have two options for organization:
