@@ -412,7 +412,7 @@ For example:
 {{% tab name="from-registry" %}}
 
 ```sh {class="command-line" data-prompt="$"}
-viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-version="2" --version="1" --path=<path-to-tar.gz> --script-name="MyCustomTrainingScript"
+viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-version="2" --version="1" --script-name="MyCustomTrainingScript"
 ```
 
 This command submits a training job to the previously uploaded `"MyCustomTrainingScript"` with another input dataset, which trains `"MyRegistryModel"` and publishes that to the registry.
