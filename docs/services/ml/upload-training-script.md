@@ -412,7 +412,7 @@ You can use the [`viam training-script upload`](/cli/#training-script) command t
 For example:
 
 ```sh {class="command-line" data-prompt="$"}
-viam training-script upload --path=<path-to-tar.gz> --org-id=<INSERT ORG ID> --script-name="MyCustomTrainingScript"
+viam training-script upload --path=<path-to-tar.gz> --org-id=<INSERT ORG ID> --script-name=<org-id-or-namespace:training-script-name>
 ```
 
 To find your organization's ID, navigate to your organization's **Settings** page in [the Viam app](https://app.viam.com/).
@@ -434,7 +434,7 @@ For example:
 {{% tab name="from-registry" %}}
 
 ```sh {class="command-line" data-prompt="$"}
-viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-version="2" --version="1" --script-name="MyCustomTrainingScript"
+viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-version="2" --version="1" --script-name="mycompany:MyCustomTrainingScript"
 ```
 
 This command submits a training job to the previously uploaded `"MyCustomTrainingScript"` with another input dataset, which trains `"MyRegistryModel"` and publishes that to the registry.
@@ -443,7 +443,7 @@ This command submits a training job to the previously uploaded `"MyCustomTrainin
 {{% tab name="with-upload" %}}
 
 ```sh {class="command-line" data-prompt="$"}
-viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-type="single_label_classification" --model-version="2" --version="1" --path=<path-to-tar.gz> --script-name="MyCustomTrainingScript"
+viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-type="single_label_classification" --model-version="2" --version="1" --path=<path-to-tar.gz> --script-name="mycompany:MyCustomTrainingScript"
 ```
 
 This command uploads a script called `"MyCustomTrainingScript"` to the registry under the specified organization and also submits a training job to that script with the input dataset, which generates a new version of the single-classification ML model `"MyRegistryModel"` and publishes that to the registry.
