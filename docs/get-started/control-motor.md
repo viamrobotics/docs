@@ -80,13 +80,13 @@ For the `fake` model, there are no required attributes.
 {{< /expand >}}
 {{< expand "Step 4: Configure a motor" >}}
 
-[Add a motor component](/components/motor/) that supports the type of motor and motor driver you're using.
+Add a `motor` component that supports the type of motor and motor driver you're using.
 Look through the [**Supported Models**](/components/motor/#available-models) to determine the model of component to configure.
 For example, if you are using a standard DC motor (brushed or brushless) wired to a typical GPIO pin-controlled motor driver, configure a [`gpio` motor](/components/motor/gpio/):
 
 ![The CONFIGURE tab of the Viam app populated with a configured gpio motor.](/get-started/quickstarts/configure-motor.png)
 
-Follow the motor driver manufacturer's data sheet to properly wire your motor driver to your board and to your motor.
+Follow the motor driver manufacturer's data sheet to wire your motor driver to your board and to your motor.
 Follow the [model's documentation](/components/motor/) to configure the attributes so that the computer can send signals to the motor.
 
 If you do not have a physical motor, use the [`fake` motor model](/components/motor/fake/).
@@ -100,20 +100,20 @@ You can control your motor directly from the Viam app, using the mobile app, or 
 
 ### Option 1: Control from the app
 
-Navigate to your machine's **CONTROL** tab in the Viam app and use the **Power %** slider to set the motor's speed.
+Navigate to your machine's **CONTROL** tab in the Viam app and click on the motor panel.
+Then use the **Power %** slider to set the motor's speed.
 Use the **Backwards** and **Forwards** buttons to change the direction.
 
 {{<gif webm_src="/get-started/quickstarts/motor-control.webm" mp4_src="/get-started/quickstarts/motor-control.mp4" alt="Using the slider, Backwards, and Forwards buttons on the Viam app to control the direction and speed of a configured motor" class="aligncenter"  min-height="750px">}}
 
 ### Option 2: Control from the mobile app
 
-You can use [the Viam mobile app](/fleet/#the-viam-mobile-app) to control your motor's speed and direction directly from your smart device.
+You can use [the Viam mobile app](/fleet/#the-viam-mobile-app) to control your motor's speed and direction directly from your smart phone.
 
 Open the Viam mobile app and log in to your account.
-Select the location where your machine is assigned.
-Choose your machine from the list and use the mobile interface to adjust the motor settings.
+Select the location that your machine is in from the **Locations** tab.
 
-Select the location that your machine is assigned to from the **Locations** tab.
+Choose your machine from the list and use the mobile interface to adjust the motor settings.
 
 {{<gif webm_src="/get-started/quickstarts/mobile-app-motor-control.webm" mp4_src="/get-started/quickstarts/mobile-app-motor-control.mp4" alt="Using an example machine on the Viam mobile app to set the direction and speed of a configured motor using the slider on the user interface" max-height="50px" max-width="200px" class="HELLO aligncenter">}}
 
@@ -133,7 +133,6 @@ import asyncio
 import time
 
 from viam.robot.client import RobotClient
-from viam.rpc.dial import Credentials, DialOptions
 from viam.components.motor import Motor
 
 
@@ -183,8 +182,8 @@ import (
   "time"
 
   "go.viam.com/rdk/logging"
+  "go.viam.com/utils/rpc"
   "go.viam.com/rdk/robot/client"
-  "go.viam.com/rdk/utils"
   "go.viam.com/rdk/components/motor")
 
 func main() {
@@ -232,6 +231,151 @@ func main() {
     logger.Error(err)
     return
   }
+}
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+<file>package.json</file>:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "name": "test-rover",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "esbuild ./main.ts --bundle --outfile=static/main.js --servedir=static",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Viam Docs Team",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "*"
+  },
+  "dependencies": {
+    "@viamrobotics/sdk": "*"
+  }
+}
+```
+
+<file>static/index.html</file>:
+
+```html {class="line-numbers linkable-line-numbers"}
+<!doctype html>
+<html>
+  <head>
+    <title>Drive a Rover</title>
+    <link rel="icon" href="favicon.ico" />
+  </head>
+  <body>
+    <div id="main">
+      <button id="main-button" disabled="true">Click me</button>
+    </div>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
+```
+
+<file>main.ts</file>:
+
+```ts {class="line-numbers linkable-line-numbers"}
+// This code must be run in a browser environment.
+
+import * as VIAM from "@viamrobotics/sdk";
+
+// This function gets the button element
+function button() {
+  return <HTMLButtonElement>document.getElementById("main-button");
+}
+
+const main = async () => {
+  const host = "ADDRESS_FROM_VIAM_APP";
+
+  const machine = await VIAM.createRobotClient({
+    host,
+    credential: {
+      type: "api-key",
+      // Replace "<API-KEY>" (including brackets) with your machine's API key
+      payload: "<API-KEY>",
+    },
+    // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+    authEntity: "<API-KEY-ID>",
+    signalingAddress: "https://app.viam.com:443",
+  });
+
+  button().onclick = async () => {
+    // Instantiate the motor client
+    // Replace with the name of a motor on your machine.
+    const name = "motor-1";
+    const motorClient = new VIAM.MotorClient(machine, name);
+
+    // Turn the motor at 35% power forwards
+    await motorClient.setPower(0.35);
+    // Let the motor spin for 4 seconds, then stop the motor
+    const sleep = (ms: number) =>
+      new Promise((resolve) => setTimeout(resolve, ms));
+    await sleep(4000);
+    await motorClient.stop();
+  };
+  button().disabled = false;
+};
+
+main().catch((error) => {
+  console.error("encountered an error:", error);
+});
+```
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+```cpp
+#include <boost/optional.hpp>
+#include <string>
+#include <vector>
+#include <unistd.h>
+#include <viam/sdk/robot/client.hpp>
+#include <viam/sdk/components/motor.hpp>
+
+using namespace viam::sdk;
+
+int main() {
+    std::string host("muddy-snow-main.7kp7y4p393.viam.cloud");
+    DialOptions dial_opts;
+    dial_opts.set_entity(std::string("<API-KEY-ID>"));
+    /* Replace "<API-KEY-ID>" (including brackets) with your machine's api key id */
+    Credentials credentials("api-key", "<API-KEY>");
+    /* Replace "<API-KEY>" (including brackets) with your machine's api key */
+    dial_opts.set_credentials(credentials);
+    boost::optional<DialOptions> opts(dial_opts);
+    Options options(0, opts);
+
+    auto machine = RobotClient::at_address(host, options);
+
+    std::cout << "Resources:\n";
+    for (const Name& resource : machine->resource_names()) {
+        std::cout << "\t" << resource << "\n";
+    }
+
+    std::string motor_name("motor-1");
+
+    std::cout << "Getting motor: " << motor_name << std::endl;
+    std::shared_ptr<Motor> motor;
+    try {
+        // Get the motor client
+        motor = machine->resource_by_name<Motor>(motor_name);
+        // Turn the motor at 35% power forwards
+        motor->set_power(0.35);
+        // Let the motor spin for 4 seconds
+        sleep(3);
+        // Stop the motor
+        motor->stop();
+    } catch (const std::exception& e) {
+        std::cerr << "Failed to find " << motor_name << ". Exiting." << std::endl;
+        throw;
+    }
+    return EXIT_SUCCESS;
 }
 ```
 

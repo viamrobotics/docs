@@ -440,7 +440,7 @@ If you have a different base name, update the name in your code.
 ```ts {class="line-numbers linkable-line-numbers"}
 // This function moves a base component in a square.
 async function moveInSquare(client: VIAM.RobotClient) {
-  // Replace with the name of a motor on your machine.
+  // Replace with the name of the base on your machine.
   const name = "viam_base";
   const baseClient = new VIAM.BaseClient(client, name);
 
@@ -932,7 +932,7 @@ import * as VIAM from "@viamrobotics/sdk";
 
 // This function moves a base component in a square.
 async function moveInSquare(client: VIAM.RobotClient) {
-  // Replace with the name of a motor on your machine.
+  // Replace with the name of the base on your machine.
   const name = "viam_base";
   const baseClient = new VIAM.BaseClient(client, name);
 
