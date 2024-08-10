@@ -43,6 +43,13 @@ Follow this guide to create, upload, and submit a Python script that loads a tra
 
 1. Inside the top level folder (in this example <file>my-training</file>), create a folder called <file>model</file> and create an empty file called <file>\_\_init\_\_.py</file> inside it.
 1. Inside the <file>model</file> folder, create a file called <file>training.py</file>.
+
+    {{< alert title="Using Viam APIs in a training script" color="note" >}}
+
+If you need to access any of the [Viam APIs](/appendix/apis/) within a custom training script, you can use the environment variables `API_KEY` and `API_KEY_ID` to establish a connection.
+
+    {{< /alert >}}
+
    Copy this template into <file>training.py</file>:
 
     ```python {class="line-numbers linkable-line-numbers" }
@@ -55,6 +62,9 @@ Follow this guide to create, upload, and submit a Python script that loads a tra
     multi_label = "MODEL_TYPE_MULTI_LABEL_CLASSIFICATION"
     labels_filename = "labels.txt"
     unknown_label = "UNKNOWN"
+
+    API_KEY = os.environ['API_KEY']
+    API_KEY_ID = os.environ['API_KEY_ID']
 
     # This parses the required args for the training script.
     # The model_dir variable will contain the output directory where
