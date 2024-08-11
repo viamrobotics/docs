@@ -349,7 +349,11 @@ async def main():
     await machine.close()
 ```
 
-When you run your code, your machine moves in a square.
+Navigate to your machine's **CONTROL** tab, which allows you to interact with your machine's {{< glossary_tooltip term_id="resource" text="resources" >}}.
+
+Click on one of the camera panels and toggle the camera stream on.
+
+Then run your code and watch your rover move in a square.
 
 <div class="td-max-width-on-larger-screens">
 {{<gif webm_src="/tutorials/try-viam-sdk/image2.webm" mp4_src="../../try-viam-sdk/image2.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square on the left, and on the right, a terminal window shows the output of running the square function as the rover moves in a square.">}}
