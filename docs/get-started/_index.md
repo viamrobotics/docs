@@ -107,7 +107,7 @@ Here are some of the boards Viam supports:
 {{< board-carousel >}}
 <br>
 
-Viam also supports microcontrollers with the [micro-RDK](/installation/#install-micro-rdk).
+Viam also supports microcontrollers with the [micro-RDK](/installation/#install-the-micro-rdk).
 
 ## Viam Cloud
 

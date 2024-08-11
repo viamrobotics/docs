@@ -118,8 +118,6 @@ To install `viam-server` on a macOS computer:
 1. Once you have followed the steps on the setup instructions, `viam-server` is installed and running.
    Wait for confirmation that your computer has successfully connected.
 
-By default, `viam-server` will start automatically when your system boots, but you can [change this behavior](/installation/manage/) if desired.
-
 {{% /tab %}}
 {{% tab name="Windows" %}}
 
@@ -174,7 +172,7 @@ Breaking changes are likely to occur, and occur often.
 The micro-RDK installer is a CLI that allows you to flash a build of the micro-RDK, along with your machine's credentials and your wifi information, directly to your ESP32.
 
 With this installation, you can use your ESP32 with all supported resource APIs, but you cannot write your own code directly interacting with the chip.
-If you want to program the chip directly, follow the setup instructions in [the Micro-RDK Development Setup](/installation/#install-micro-rdk) instead.
+If you want to program the chip directly, follow the setup instructions in [the Micro-RDK Development Setup](/installation/#install-the-micro-rdk) instead.
 
 ### Flash your ESP32 with the micro-RDK installer
 
