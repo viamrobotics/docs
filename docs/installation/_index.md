@@ -4,7 +4,6 @@ linkTitle: "Installation Guide"
 childTitleEndOverwrite: "Try Viam"
 weight: 100
 no_list: true
-markup.tableOfContents.endLevel: 2
 type: docs
 images: ["/installation/thumbnails/install.png"]
 imageAlt: "Install Viam"
