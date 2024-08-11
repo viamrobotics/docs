@@ -24,7 +24,7 @@ In this guide you'll configure and control a motor.
 
 {{< alert title="You will learn" color="tip" >}}
 
-- How to create a machine and install viam-server
+- How to create a machine and install viam-server or the micro-RDK
 - How to configure a board and a motor
 - How to control your motor with UI and code
 
@@ -37,11 +37,12 @@ In this guide you'll configure and control a motor.
 You don't need to buy or own any hardware to complete this tutorial.
 If you have the following components, you can follow along on your own hardware:
 
+- A single-board computer or an ESP32.
 - A motor and compatible motor driver.
 
 {{% expand "No motor at hand?" %}}
 No problem.
-If you do not have a motor, install `viam-server` on your laptop or computer and follow the instructions to use a _fake_ motor, which is a model that serves for testing.
+If you do not have both a board and motor, install `viam-server` on your laptop or computer and follow the instructions to use a _fake_ motor, which is a model that serves for testing.
 {{% /expand%}}
 
 ## Instructions
@@ -56,10 +57,13 @@ Select a location and [add a new machine](/cloud/machines/#add-a-new-machine).
 ![The 'My Desk' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/get-started/quickstarts/add-machine.png)
 
 {{< /expand >}}
-{{< expand "Step 2: Install viam-server" >}}
+{{< expand "Step 2: Install viam-server or the micro-RDK" >}}
 
 Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
-Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page to install `viam-server` on your computer and connect it to the Viam app.
+Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page.
+If you are using a microcontroller, install the micro-RDK.
+Otherwise, install `viam-server`.
+Wait for your device to connect to the Viam app.
 
 {{< /expand >}}
 {{< expand "Step 3: Configure a board" >}}
