@@ -35,6 +35,10 @@ The micro-RDK is a lightweight version of the {{% glossary_tooltip term_id="rdk"
 
 For an overview of the Viam software platform, see [Viam in 3 minutes](/get-started/).
 
+{{< alert title="In this page" color="note" >}}
+{{% toc %}}
+{{< /alert >}}
+
 ## Compatibility
 
 {{< tabs >}}
@@ -48,19 +52,8 @@ For an overview of the Viam software platform, see [Viam in 3 minutes](/get-star
 
 {{< readfile "/static/include/install/windows-support.md" >}}
 
-{{% /tab %}}
-{{% tab name="micro-RDK" %}}
-
-The only microcontroller the micro-RDK currently supports is the [ESP32](https://www.espressif.com/en/products/socs/esp32).
-
-{{% readfile "/static/include/micro-rdk-hardware.md" %}}
-
-{{% /tab %}}
-{{< /tabs >}}
-
-## Prepare your board
-
-If you are using one of the following boards, click on the card to follow the guide for that board:
+If you are using one of the following boards, click on the card to follow the guide to install a supported operating system for that board.
+Otherwise proceed to [install `viam-server`](/installation/#install-viam-server).
 
 {{< cards >}}
 {{% card link="/installation/prepare/rpi-setup/" class="small" %}}
@@ -74,14 +67,19 @@ If you are using one of the following boards, click on the card to follow the gu
 {{% card link="/installation/prepare/sk-tda4vm/" class="small" %}}
 {{< /cards >}}
 
-Viam also provides a lightweight version of `viam-server` called the micro-RDK which can run on resource-limited embedded systems that cannot run the fully-featured Robot Development Kit (RDK).
-If you are using a microcontroller, prepare your board using the following guide:
-
-{{< cards >}}
-{{% card link="/installation/micro-rdk-dev/" canonical="/installation/#install-micro-rdk" class="small" customTitle="ESP32 Setup" %}}
-{{< /cards >}}
-
 Other SBCs such as the [RockPi S](https://wiki.radxa.com/RockpiS) and [Orange Pi Zero 2](https://orangepi.com/index.php?route=product/product&path=237&product_id=849) can run Viam with an experimental [periph.io](https://periph.io/) based [modular component](https://github.com/viam-labs/periph_board).
+
+{{% /tab %}}
+{{% tab name="micro-RDK" %}}
+
+The only microcontroller the micro-RDK currently supports is the [ESP32](https://www.espressif.com/en/products/socs/esp32).
+
+{{% readfile "/static/include/micro-rdk-hardware.md" %}}
+
+Proceed to [install the micro-RDK](/installation/#install-the-micro-rdk).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Install `viam-server`
 
@@ -158,12 +156,12 @@ To learn how to run, update, or uninstall `viam-server`, see [Manage `viam-serve
 ### Next steps
 
 {{< cards >}}
+{{% card link="/use-cases/configure/" %}}
+{{% card link="/use-cases/develop-app/" %}}
 {{% card link="/configure/" %}}
-{{% card link="/tutorials/" %}}
-{{% card link="/sdks/" %}}
 {{< /cards >}}
 
-## Install micro-RDK
+## Install the micro-RDK
 
 {{% alert title="BETA" color="note" %}}
 The micro-RDK is in beta mode and many features supported by the RDK are still being added to the micro-RDK.
@@ -171,10 +169,10 @@ Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
-The micro-RDK installer is a CLI that allows you to flash a build of micro-RDK, along with your machine's credentials and your wifi information, directly to your ESP32.
+The micro-RDK installer is a CLI that allows you to flash a build of the micro-RDK, along with your machine's credentials and your wifi information, directly to your ESP32.
 
 With this installation, you can use your ESP32 with all supported resource APIs, but you cannot write your own code directly interacting with the chip.
-If you want to program the chip directly, follow the setup instructions in [the Micro-RDK Development Setup](/installation/#install-micro-rdk) instead.
+If you want to program the chip directly, follow the setup instructions in [the Micro-RDK Development Setup](/installation/#install-the-micro-rdk) instead.
 
 ### Flash your ESP32 with the micro-RDK installer
 
@@ -190,49 +188,16 @@ Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/
 
 Go back to your new machine's page on [the Viam app](https://app.viam.com).
 If successful, your machine will show that it's **Live**.
+If something is not working, see [Troubleshooting](/installation/#troubleshooting).
 
 For more `micro-rdk-installer` CLI usage options, see [GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/micro-rdk-installer).
 
-### Supported resources
-
-The micro-RDK provides different component models than the fully featured RDK.
-See the micro-RDK tab in the **Available Models** section of each component page.
-
-[Client API](/appendix/apis/) usage with the micro-RDK currently supports the following {{< glossary_tooltip term_id="resource" text="resources" >}}:
-
-{{< cards >}}
-{{< relatedcard link="/components/base/" >}}
-{{< relatedcard link="/components/board/" >}}
-{{< relatedcard link="/components/encoder/" >}}
-{{< relatedcard link="/components/movement-sensor/" >}}
-{{< relatedcard link="/components/motor/" >}}
-{{< relatedcard link="/components/sensor/" >}}
-{{< relatedcard link="/components/servo/" >}}
-{{< relatedcard link="/components/generic/" >}}
-{{< relatedcard link="/services/data/capture/" >}}
-{{< /cards >}}
-
-Click on each supported resource to see available models, API methods, and configuration info.
-
 See [GitHub](https://github.com/viamrobotics/micro-rdk) for code examples and more information on the micro-RDK.
-
-### Next steps
-
-{{< cards >}}
-{{% manualcard link="/components/board/esp32/" %}}
-
-<h4>Configure your board </h4>
-
-Configure your `esp32` board for your machine.
-{{% /manualcard %}}
-{{% card link="/configure/" %}}
-{{% card link="/tutorials/" %}}
-{{% card link="/sdks/" %}}
-{{< /cards >}}
 
 ### Recommendations when using an SDK
 
-If the connection to the ESP32 with an SDK is unstable we recommend the following changes to the default settings in your SDK code when connecting to an ESP32.
+As you use the ESP32, if you write [SDK code](/sdks/), you may experience instability.
+If the connection to the ESP32 with an SDK is unstable, we recommend the following changes to the default settings in your SDK code when connecting to an ESP32.
 This will disable the SDK background task that monitors the connection to the micro-RDK, saving bandwidth.
 
 {{< tabs >}}
@@ -293,6 +258,14 @@ if err != nil {
 
 {{% /tab %}}
 {{% /tabs %}}
+
+### Next steps
+
+{{< cards >}}
+{{% card link="/use-cases/configure/" %}}
+{{% card link="/use-cases/develop-app/" %}}
+{{% card link="/configure/" %}}
+{{< /cards >}}
 
 ### Troubleshooting
 

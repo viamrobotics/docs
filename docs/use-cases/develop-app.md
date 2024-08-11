@@ -1,6 +1,6 @@
 ---
 title: "Write and deploy code to control your machine"
-linkTitle: "Control code for your machine"
+linkTitle: "Write control code for your machine"
 weight: 10
 type: "docs"
 description: "Write code to control machines and run it on the machine or remotely."

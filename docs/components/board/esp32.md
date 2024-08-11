@@ -16,7 +16,7 @@ micrordk_component: true
 
 {{% alert title="REQUIREMENTS" color="caution" %}}
 
-Follow the [setup guide](/installation/#install-micro-rdk) to prepare your ESP32 for running the micro-RDK before configuring an `esp32` board.
+Follow the [setup guide](/installation/#install-the-micro-rdk) to prepare your ESP32 for running the micro-RDK before configuring an `esp32` board.
 
 Viam recommends purchasing the ESP32 with a development board. The following ESP32 microcontrollers are supported:
 
