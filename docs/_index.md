@@ -25,7 +25,7 @@ carouselscript: true
 <div class="col hover-card link-with-icon">
   <a href="get-started/" class="noanchor"><div>
     <picture><img src="icons/viam.svg" alt="Viam" loading="lazy"></picture>
-    <p>Learn about Viam</p>
+    <p>Learn about the Viam platform</p>
   </div>
       </a>
 </div>
