@@ -41,20 +41,18 @@ You can choose to configure your service with an existing model on the machine o
 
 1. To configure your service and deploy a model onto your machine, select **Deploy model on machine** for the **Deployment** field in the resulting ML model service configuration pane.
 
-2. Click on **Select models** to open a dropdown with all of the ML models available to you privately, as well as all of the ML models available in [the registry](https://app.viam.com), which are shared by users.
-   Models that your organization has trained that are not uploaded to the registry will appear first in the dropdown.
-   You can select from any of these models to deploy on your robot.
-   Only TensorFlow Lite models are shown.
+2. Click **Select model**.
+   In the modal that appears, search for models from your organization or the [Registry](/registry/).
 
-{{<imgproc src="/services/deploy-model-menu.png" resize="700x" alt="Models dropdown menu with models from the registry.">}}
+{{<imgproc src="/tutorials/data-management/mlmodel-modal.png" alt="The ML model service configuration modal." resize="500x" >}}
 
-{{% alert title="Tip" color="tip" %}}
-To see more details about a model, open its page in [the registry](https://app.viam.com).
-{{% /alert %}}
+You can select a model to see more details about it, and then select the model to deploy it to your machine.
+
+{{<imgproc src="/tutorials/data-management/mlmodel-service-conf.png" alt="The ML model service configuration modal with a model suggested." resize="450x" >}}
 
 3. Also, optionally select the **Number of threads**.
 
-{{<imgproc src="/services/deploy-model.png" resize="700x" alt="Create a machine learning models service with a model to be deployed">}}
+4. Click **Save** at the top right of the window to save your changes.
 
 {{% /tab %}}
 {{% tab name="Path to Existing Model On Robot" %}}
