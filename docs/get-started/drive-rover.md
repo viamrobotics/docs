@@ -50,7 +50,7 @@ You don't need to buy or own any hardware to complete this tutorial.
 You only need the following:
 
 - A Linux, maxOS or Windows computer that can run SDK code.
-- A [rented Viam Rover](https://app.viam.com/try), [your own Viam Rover](/appendix/try-viam/rover-resources/), or another mobile robot.
+- A [borrowed Viam Rover](https://app.viam.com/try), [your own Viam Rover](/appendix/try-viam/rover-resources/), or another mobile robot.
   You can use [Try Viam](https://app.viam.com/try) to borrow a rover online at no cost which is already configured with all the components you need.
   If you have your own rover on hand, whether it's a [Viam rover](https://www.viam.com/resources/rover) or not, these instructions work for any wheeled robot that can be configured as a [base component](/components/base/wheeled/).
 
@@ -59,14 +59,14 @@ You only need the following:
 Follow these steps to get your rover ready inside the Viam app and write code to control it:
 
 {{< tabs >}}
-{{% tab name="Rented Try Viam Rover" %}}
+{{% tab name="Borrowed Try Viam Rover" %}}
 {{< expand "Step 1: Borrow a Viam Rover" >}}
 
 Go to [Try Viam](https://app.viam.com/try) and borrow a rover.
 If a rover is available, the rover will take up to 30 seconds to be configured for you.
 
 {{< alert title="Tip" color="tip" >}}
-If you are running out of time during your rental, you can [extend your rover rental](/appendix/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
+If you are running out of time during your session, you can [extend your rover session](/appendix/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
 {{< /alert >}}
 
 {{< /expand >}}
@@ -75,7 +75,7 @@ If you are running out of time during your rental, you can [extend your rover re
 {{% tab name="Other Rover" %}}
 
 {{% alert title="Important" color="note" %}}
-If you are using your own robot for this tutorial instead of [renting one](https://app.viam.com/try), be sure to [install `viam-server`](/installation/#install-viam-server) on it and [configure](/tutorials/configure/configure-rover/) its hardware before proceeding with this tutorial.
+If you are using your own robot for this tutorial instead of [borrowing one](https://app.viam.com/try), be sure to [install `viam-server`](/installation/#install-viam-server) on it and [configure](/tutorials/configure/configure-rover/) its hardware before proceeding with this tutorial.
 {{% /alert %}}
 
 {{% /tab %}}
@@ -333,7 +333,7 @@ async def moveInSquare(base):
 
 Next, remove all the code in the `main()` function between where the machine connection is established and closed and instead initialize your `base` and invoke the `moveInSquare()` function.
 
-On the Try Viam rental rovers, the default base name is `viam_base`.
+On the Try Viam rovers, the default base name is `viam_base`.
 If you have a different base name, update the name in your code.
 
 ```python {class="line-numbers linkable-line-numbers" data-line="4-8"}
@@ -349,9 +349,9 @@ async def main():
     await machine.close()
 ```
 
-Navigate to your machine's **CONTROL** tab, which allows you to interact with your machine's {{< glossary_tooltip term_id="resource" text="resources" >}}.
+If you have a borrowed Try Viam rover, navigate to your machine's **CONTROL** tab, which allows you to interact with your machine's {{< glossary_tooltip term_id="resource" text="resources" >}}.
 
-Click on one of the camera panels and toggle the camera stream on.
+Click on one of the camera panels and toggle the camera stream on so you can observe the rover's movements.
 
 Then run your code and watch your rover move in a square.
 
@@ -391,7 +391,7 @@ Next, remove all the code in the `main()` function after the machine connection 
 
 Also remove any unused imports.
 
-On the Try Viam rental rovers, the default base name is `viam_base`.
+On the Try Viam rovers, the default base name is `viam_base`.
 If you have a different base name, update the name in your code.
 
 ```go {class="line-numbers linkable-line-numbers" data-line="22-29"}
@@ -427,7 +427,11 @@ func main() {
 }
 ```
 
-When you run your code, your rover moves in a square.
+If you have a borrowed Try Viam rover, navigate to your machine's **CONTROL** tab, which allows you to interact with your machine's {{< glossary_tooltip term_id="resource" text="resources" >}}.
+
+Click on one of the camera panels and toggle the camera stream on so you can observe the rover's movements.
+
+Then run your code and watch your rover move in a square.
 
 <div class="td-max-width-on-larger-screens">
 {{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square." max-width="400px">}}
@@ -438,7 +442,7 @@ When you run your code, your rover moves in a square.
 
 Above the `main` function, add the following function that initializes your rover base client and drives it in a square.
 
-On the Try Viam rental rovers, the default base name is `viam_base`.
+On the Try Viam rovers, the default base name is `viam_base`.
 If you have a different base name, update the name in your code.
 
 ```ts {class="line-numbers linkable-line-numbers"}
@@ -509,7 +513,11 @@ async function main() {
 Save your code and refresh the browser page.
 When the connection to the rover is established, the `Click me` button will become enabled.
 
-Click the button to move your rover in a square.
+If you have a borrowed Try Viam rover, open a tab and navigate to your machine's **CONTROL** tab, which allows you to interact with your machine's {{< glossary_tooltip term_id="resource" text="resources" >}}.
+
+Click on one of the camera panels and toggle the camera stream on so you can observe the rover's movements.
+
+Go back to the `Click me` button and click the button to run your code and switch back to the the **CONTROL** tab to watch your rover move in a square.
 
 <div class="td-max-width-on-larger-screens">
 {{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square." max-width="400px">}}
@@ -684,7 +692,7 @@ You may need to scroll to the bottom of the list of resources.
 
 Click on the button to move your rover in a square:
 
-{{<video webm_src="/tutorials/try-viam-sdk/square-test-rover.webm" mp4_src="/tutorials/try-viam-sdk/square-test-rover.mp4" alt="An example flutter app moving a Try Viam rental rover in a square" poster="/tutorials/try-viam-sdk/square-test-rover.jpg">}}
+{{<video webm_src="/tutorials/try-viam-sdk/square-test-rover.webm" mp4_src="/tutorials/try-viam-sdk/square-test-rover.mp4" alt="An example flutter app moving a Try Viam rover in a square" poster="/tutorials/try-viam-sdk/square-test-rover.jpg">}}
 
 {{% /tab %}}
 {{% tab name="C++" %}}
@@ -722,7 +730,7 @@ void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
 
 Next, remove all the code in the `main()` function after the machine connection is established, and instead initialize your base and invoke the `moveInSquare()` function.
 
-On the Try Viam rental rovers, the default base name is `viam_base`.
+On the Try Viam rovers, the default base name is `viam_base`.
 If you have a different base name, update the name in your code.
 
 ```cpp {class="line-numbers linkable-line-numbers" data-line="19-31"}
@@ -761,7 +769,11 @@ int main() {
 }
 ```
 
-When you run your code, your rover moves in a square.
+If you have a borrowed Try Viam rover, navigate to your machine's **CONTROL** tab, which allows you to interact with your machine's {{< glossary_tooltip term_id="resource" text="resources" >}}.
+
+Click on one of the camera panels and toggle the camera stream on so you can observe the rover's movements.
+
+Then run your code and watch your rover move in a square.
 
 <div class="td-max-width-on-larger-screens">
 {{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square." max-width="400px">}}
