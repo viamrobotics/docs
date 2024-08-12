@@ -11,6 +11,11 @@ tags: ["components", "configuration"]
 
 Once you have configured a machine, start writing code to perform actions with the {{< glossary_tooltip term_id="component" text="components" >}} or {{< glossary_tooltip term_id="service" text="services" >}} of a {{< glossary_tooltip term_id="machine" text="machine" >}}.
 
+Viam has [SDKs](/sdks/) for Python, Golang, C++, TypeScript, and Flutter.
+
+After configuring your resource, navigate to your machine's **CONNECT** tab.
+Click on any of the listed languages and follow the instructions to install the SDK.
+
 {{< alert title="In this page" color="tip" >}}
 
 1. [Write code to control your machine](#write-code-to-control-your-machine)
@@ -20,25 +25,23 @@ Once you have configured a machine, start writing code to perform actions with t
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/tzJf0XfUCmA">}}
 
+## Prerequisites
+
+{{% expand "A running and configured machine. Click to see instructions." %}}
+
+Follow the instructions in [Build simple smart machines](/use-cases/configure/).
+
+{{% /expand%}}
+
 ## Write code to control your machine
 
 {{< table >}}
 {{% tablestep link="/sdks/" %}}
 **1. Install an SDK**
 
-Write a program to control your smart machine using the programming language of your choice.
-Viam has [SDKs](/sdks/) for Python, Golang, C++, TypeScript, and Flutter.
+The easiest way to get started is to go to the **Code sample** page of the **CONNECT** tab on your machine's page in the Viam app.
 
-The easiest way to get started is to copy the auto-generated boilerplate code from the **Code sample** page of the **CONNECT** tab on your machine's page in the Viam app.
-You can run this code directly on the machine or from a separate computer; it then connects to the machine using API keys.
-
-Viam's APIs are standardized across all models of a given component or service.
-This means you can test and change hardware without changing code.
-
-After configuring your resource, navigate to your machine's **CONNECT** tab.
-Click on any of the listed languages and follow the instructions to install the SDK.
-
-To install your preferred Viam SDK on your Linux or macOS development machine or [single-board computer](/components/board/), run one of the following commands in your terminal:
+Follow the instructions there to install your preferred Viam SDK on your Linux or macOS development machine or [single-board computer](/components/board/):
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -99,15 +102,68 @@ flutter pub add viam_sdk
 {{% tablestep link="/appendix/apis/" %}}
 **2. Copy the connection code**
 
-Then copy and run the sample code to connect to your machine.
+With the SDK installed, copy the code sample from the **Code sample** page of the **CONNECT** tab on your machine's page.
 
 The sample code will show you how to authenticate and connect to a machine, as well as some of the methods you can use on your configured components and services.
+
+You can run this code directly on the machine or from a separate computer.
+
 {{% /tablestep %}}
 {{% tablestep link="/appendix/apis/" %}}
 **3. Use component and service APIs**
 
-Each category of {{< glossary_tooltip term_id="resource" text="resource" >}} has a standardized API that you can access with an SDK (software development kit) in your preferred programming language.
-For example, you can send the same [`SetPower` command](/components/motor/#setpower) to any kind of motor, using any of the available SDKs.
+Viam's APIs are standardized across all models of a given component or service.
+This means that regardless of the configured hardware, you use the same APIs.
+
+For example, you can send the same [`SetPower` command](/components/motor/#setpower) to any kind of motor, using any of the available SDKs:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+my_motor = Motor.from_robot(robot=robot, name="my_motor")
+# Set the power to 40% forwards.
+await my_motor.set_power(power=0.4)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+myMotorComponent, err := motor.FromRobot(machine, "my_motor")
+// Set the motor power to 40% forwards.
+myMotorComponent.SetPower(context.Background(), 0.4, nil)
+```
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+```dart {class="line-numbers linkable-line-numbers"}
+final base = Motor.fromRobot(client, "my_motor");
+// Set the power to  40% forwards.
+await myMotor.setPower(0.4);
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+```ts {class="line-numbers linkable-line-numbers"}
+const myMotor = new VIAM.MotorClient(client, "my_motor");
+// Set the power to  40% forwards.
+await myMotor.setPower(0.4);
+```
+
+{{% /tab %}}
+{{% tab name="C++" %}}
+
+```cpp {class="line-numbers linkable-line-numbers"}
+std::shared_ptr<Motor> motor = robot->resource_by_name<Motor>("my_motor");
+// Set the power to  40% forwards.
+motor->set_power(0.4);
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 See [component APIs](/appendix/apis/#component-apis) and [service APIs](/appendix/apis/#service-apis) for a full list of available API methods.
 
@@ -116,7 +172,7 @@ See [component APIs](/appendix/apis/#component-apis) and [service APIs](/appendi
 
 ## Run your code
 
-There are three different ways you can run code to control your machine:
+There are two different ways you can run code to control your machine:
 
 {{< table >}}
 {{% tablestep link="/sdks/#run-code" %}}
@@ -141,7 +197,7 @@ In wrapping your code into a module, you will be able to:
 You can package any files, code, or executable into a module.
 When you add a module to your machine's configuration, the entrypoint defined for the module is run which can start your code.
 
-If the code you have written augments what a component does, such as, for example, adding an overlay to a camera stream, create your own camera model inside your module and amend the API methods to have your custom functionality.
+If the code you have written augments what a component does, such as, for example, adding an overlay to a camera stream, you can create your own camera model inside your module and amend the API methods to have your custom functionality.
 For an example of this, see the [facial-detection module](https://github.com/viam-labs/facial-detection) which wraps its logic into a custom vision service.
 
 If your functionality does not conform to existing API types such as the motor or camera API, you can [use a generic API to wrap your code](https://docs.viam.com/use-cases/create-module/#choose-an-api-to-implement-in-your-model).
@@ -152,6 +208,14 @@ For more information, see [How to create and deploy a new module](/use-cases/cre
 {{< /table >}}
 
 ## Next steps
+
+Now that you have a running machine that you can control, make your machine better and smarter:
+
+{{< cards >}}
+{{% card link="/use-cases/deploy-ml/" %}}
+{{% card link="/use-cases/navigate/" %}}
+{{% card link="/services/motion/" %}}
+{{< /cards >}}
 
 To see full sample projects, that configure and control machines, check out these tutorials:
 
