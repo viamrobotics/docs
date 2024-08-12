@@ -7,8 +7,7 @@ description: "Configure a camera connected to an esp32 board, initialized and co
 images: ["/icons/components/camera.svg"]
 tags: ["camera", "components", "micro-RDK"]
 component_description: "An `OV2640` or `OV3660` camera connected to an esp32 board."
-usage: 10
-toc_hide: true
+micrordk_component: true
 # SMEs: Matt Perez, micro-RDK team
 ---
 
@@ -45,33 +44,33 @@ Copy and paste the following JSON into your existing machine configuration in th
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "name": "<your-camera-name>",
-  "model": "esp32-camera",
-  "type": "camera",
-  "namespace": "rdk",
-  "attributes": {
-    "intrinsic_parameters": {
-      "width_px": <int>,
-      "height_px": <int>,
-      "fx": <float>,
-      "fy": <float>,
-      "ppx": <float>,
-      "ppy": <float>
-    },
-    "distortion_parameters": {
-      "rk1": <float>,
-      "rk2": <float>,
-      "rk3": <float>,
-      "tp1": <float>,
-      "tp2": <float>
-    },
-    "debug": <boolean>,
-    "format": <string>,
-    "video_path": "<your-video-path>",
-    "width_px": <int>,
-    "height_px": <int>,
-    "frame_rate": <float>
-  }
+    "name": "my-esp32camera",
+    "namespace": "rdk",
+    "type": "camera",
+    "model": "esp32-camera", 
+    "attributes": {
+        "pin_d4": <int>,
+        "jpeg_quality": <int>,
+        "frame_size": <int>, 
+        "pin_d5": <int>,
+        "pin_d3": <int>,
+        "pin_d6": <int>,
+        "pin_vsync": <int>,
+        "ledc_timer": <int>,
+        "pin_d7": <int>,
+        "pin_sccb_sda": <int>,
+        "pin_href": <int>,
+        "pin_sccb_scl": <int>,
+        "sccb_i2c_port": <int>,
+        "pin_d1": <int>,
+        "pin_d0": <int>,
+        "pin_xclk": <int>,
+        "pin_reset": <int>,
+        "pin_pclk": <int>,
+        "pin_d2": <int>,
+        "xclk_freq_hz": <int>,
+        "ledc_channel": <int>
+    }
 }
 ```
 
@@ -82,14 +81,35 @@ Edit and fill in the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "name": "my_cam",
-  "model": "esp32-camera",
-  "type": "camera",
-  "namespace": "rdk",
-  "attributes": {
-    "video_path": "video0"
-  }
+    "name": "my-esp32camera",
+    "namespace": "rdk",
+    "type": "camera",
+    "model": "esp32-camera",
+    "attributes": {
+        "pin_d4": 39,
+        "jpeg_quality": 32,
+        "frame_size": 5, 
+        "pin_d5": 18,
+        "pin_d3": 5,
+        "pin_d6": 36,
+        "pin_vsync": 22,
+        "ledc_timer": 1,
+        "pin_d7": 19,
+        "pin_sccb_sda": 25,
+        "pin_href": 26,
+        "pin_sccb_scl": 23,
+        "sccb_i2c_port": -1,
+        "pin_d1": 35,
+        "pin_d0": 32,
+        "pin_xclk": 27,
+        "pin_reset": 15,
+        "pin_pclk": 21,
+        "pin_d2": 34,
+        "xclk_freq_hz": 20000000,
+        "ledc_channel": 1
+    }
 }
+
 ```
 
 {{% /tab %}}
@@ -100,124 +120,35 @@ The following attributes are available for `esp32-camera` cameras:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `video_path` | string | Optional | The ID of or the path to the esp32-camera. If you don't provide a `video_path`, it defaults to the first valid video path it finds. Using the ID of a esp32-camera is more consistent than the path. See [Using `video_path`](#using-video_path). |
-| `format` | string | Optional | The camera image format, used with `video_path` to find the camera. See [Using `format`](#using-format). |
-| `width_px` | int | Optional | The camera image width in pixels, used with `video_path` to find a camera with this resolution. <br> Default: Closest possible value to `480` |
-| `height_px` | int | Optional | The camera image height in pixels, used with `video_path` to find a camera with this resolution. <br> Default: Closest possible value to `640` |
-| `frame_rate` | float | Optional | The camera capture frequency as frames per second, used with `video_path` to find a camera with this throughput. <br> Default: Closest possible value to `30.0` |
-| `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> `width_px`: The expected width of the aligned image in pixels. </li> <li> `height_px`: The expected height of the aligned image in pixels. </li> <li> `fx`: The image center x point. </li> <li> `fy`: The image center y point. </li> <li> `ppx`: The image focal x. </li> <li> `ppy`: The image focal y. </li> </ul> |
-| `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> `rk1`: The radial distortion x. </li> <li> `rk2`: The radial distortion y. </li> <li> `rk3`: The radial distortion z. </li> <li> `tp1`: The tangential distortion x. </li> <li> `tp2`: The tangential distortion y. </li> </ul> |
-| `debug` | boolean | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
+| `pin_pwdn` | int | Required | GPIO pin for camera power down line. <br> Default: -1 |
+| `pin_reset` | int | Required | GPIO pin for camera reset line. <br> Default: -1 |
+| `pin_xclk` | int | Required | GPIO pin for camera XCLK line. <br> Default: 21 |
+| `pin_sccb_sda` | int | Required | GPIO pin for camera SDA line. <br> Default: 26 |
+| `pin_sccb_scl` | int | Required | GPIO pin for camera SCL line. <br> Default: 27 |
+| `pin_d7` | int | Required | GPIO pin for camera D7 line. <br> Default: 35|
+| `pin_d6` | int | Required | GPIO pin for camera D6 line. <br> Default: 34 |
+| `pin_d5` | int | Required | GPIO pin for camera D5 line. <br> Default: 39 |
+| `pin_d4` | int | Required | GPIO pin for camera D4 line. <br> Default: 36 |
+| `pin_d3` | int | Required | GPIO pin for camera D3 line. <br> Default: 19 |
+| `pin_d2` | int | Required | GPIO pin for camera D2 line. <br> Default: 18 |
+| `pin_d1` | int | Required | GPIO pin for camera D1 line. <br> Default: 5 |
+| `pin_d0` | int | Required | GPIO pin for camera D0 line. <br> Default: 4 |
+| `pin_vsync` | int | Required | GPIO pin for camera VSYNC line. <br> Default: 25 |
+| `pin_href` | int | Required | GPIO pin for camera HREF line. <br> Default: 23 |
+| `pin_pclk` | int | Required | GPIO pin for camera PLCK line. <br> Default: 22 |
+| `xclk_freq_hz` | int | Required | Frequency of XCLK signal, in Hz. <br> Experimental: Set to 16MHz on ESP32-S2 or ESP32-S3 to enable EDMA mode. <br> Default: 20000000 |
+| `ledc_timer` | int | Required | LEDC timer to generate XCLK. <br> Default: 1 |
+| `ledc_channel` | int | Required | LEDC channel to generate XCLK. <br> Default: 1 |
+| `frame_size` | int | Optional | Size of the output image. <br> Default: 1 |
+| `jpeg_quality` | int | Optional | Quality of JPEG output. Lower means higher quality. <br> Range: 0-63 <br> Default: 32 |
 
-## Using `video_path`
-
-To list available `video_path`s use the following command:
-
-{{< tabs name="Find video devices" >}}
-{{% tab name="Linux" %}}
-
-```sh
-ls /dev/v4l/by-id/
-```
-
-To find the `path`s of all connected video devices, run the following command:
-
-```sh
-v4l2-ctl --list-devices
-```
-
-The `id` listed by `ls /dev/v4l/by-id/` is a more consistent way to refer to the esp32-camera.
-
-See [Camera troubleshooting](/appendix/troubleshooting/#error-failed-to-find-camera) for Linux-specific camera troubleshooting steps.
-
-{{% /tab %}}
-{{% tab name="Mac" %}}
-
-```sh
-system_profiler SPCameraDataType
-```
-
-The Unique ID displayed for each camera is the `video_path`.
-
-{{% /tab %}}
-{{< /tabs >}}
-
-## Using `format`
-
-Viam supports the following pixel formats:
-
-- I420
-- I444
-- MJPEG / MJPG
-- NV12
-- NV21
-- RGBA
-- UYVY / Y422
-- YUY2 / YUYV / V422
-- Z16
-
-If your machine is connected to the Viam app, the available pixel formats supported by your camera automatically appear in the **Format** dropdown menu, which is visible when you click the **Show more** button.
-
-On Linux, you can also manually determine which pixel formats your camera supports by running the following command on the machine your camera is connected to.
-Replace `/dev/video0` with the video path you [determined for your video device above](#using-video_path), if different:
-
-```sh {class="command-line" data-prompt="$"}
-v4l2-ctl --list-formats-ext --device /dev/video0
-```
+{{% alert title="Note" color="note" %}}
+While the above attributes marked as **Required** do have defaults, it is still recommended that you configure them to your datasheet and device's needs (which likely do not align with the defaults).
+That is why they are marked as required.
+{{% /alert %}}
 
 ## View the camera stream
 
+<!-- TODO: ask Matt Perez if this will work or test -->
+
 {{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
-
-## Troubleshooting
-
-### No visible live video feed
-
-If you're working on a Linux machine, `ssh` into it, then restart `viam-server` by running:
-
-```sh {class="command-line" data-prompt="$"}
-sudo systemctl restart viam-server
-```
-
-If this doesn't work, you can reboot your machine by running:
-
-```sh {class="command-line" data-prompt="$"}
-sudo reboot
-```
-
-### Images are dim on start up
-
-If you are capturing camera data, it can happen that the camera captures and syncs miscolored or dark images upon start up.
-
-### CSI Camera not working on a Raspberry Pi
-
-If you are using a CSI camera v1.3 or v2.0 on a Raspberry Pi, you need to [enable legacy mode](/installation/prepare/rpi-setup/#enable-communication-protocols).
-If you are using a CSI camera v3.0, you need to use the [`viam:camera:csi` module](https://github.com/viamrobotics/csi-camera/) instead.
-
-### High CPU usage
-
-Each camera stream you add uses CPU on the device it is connected to and there is therefore a practical limit to the numbeof camera streams your device can simultaneously support.
-You can limit the CPU usage by reducing the image resolution.
-
-### Timeout errors on a Raspberry Pi
-
-If you are getting "timeout" errors from GRPC when adding a `esp32-camera` model on a Raspberry Pi, make sure the esp32-camera port is enabled on the Pi (common if you are using a fresh Pi right out of the box).
-
-To enable the esp32-camera port on a Raspberry Pi, run the following command:
-
-```sh {class="command-line" data-prompt="$"}
-sudo raspi-config
-```
-
-Then, select: **Interface Options -> Camera -> Enable Camera**.
-
-Restart the Pi to complete the configuration.
-
-## Next steps
-
-Complete a quick mini-project using your esp32-camera with computer vision:
-
-{{< cards >}}
-{{< card link="/get-started/detect-people/" >}}
-{{< card link="/tutorials/services/basic-color-detection/" >}}
-{{< /cards >}}
