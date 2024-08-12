@@ -19,7 +19,7 @@ This page provides an overview of how a machine is structured, including on-devi
 - [Basic machine example](#basic-machine-example)
 - [Structure of more complex machines](#complex-machines-with-multiple-parts)
 
-## `viam-server`
+## `viam-server` and the micro-RDK
 
 `viam-server` is the open-source executable binary that runs on your machine's SBC or other computer.
 
@@ -61,7 +61,7 @@ A module runs as a process managed by `viam-server` on your machine, communicati
 
 Imagine you have a wheeled rover with two motors, a GPS unit, and a camera, controlled by a single-board computer (SBC) such as a Raspberry Pi.
 
-The motors, GPS, and camera each require software drivers so that signals can be sent to or from them from your board.
+The motors, GPS, and camera each require software drivers so that the board can send signals to them and receive signals from them.
 These drivers are called _{{< glossary_tooltip term_id="component" text="components" >}}_.
 There is also a _component_ for the board itself that allows Viam software to communicate with the pins on the board.
 
