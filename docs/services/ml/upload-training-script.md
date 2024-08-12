@@ -315,7 +315,10 @@ Depending on if you are training a classification or detection model, the templa
 The next part of the script depends on the type of ML training you are creating.
 In this part of the script, you use the data from the dataset and the annotations from the dataset file to build a Machine Learning model.
 
-As an example, you can refer to the logic from <file>model/training.py</file> from this [example classification training script](https://app.viam.com/packages/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb/custom-training-classification/ml_training/latest/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb) that trains a classification model using TensorFlow and Keras.
+As an example, you can refer to the logic from the <file>model/training.py</file> from one of these training scripts:
+
+- [detection-tflite](https://github.com/viam-modules/detection-tflite)
+- [classification-tflite](https://github.com/viam-modules/classification-tflite)
 
 {{% alert title="Tip" color="tip" %}}
 You must log in to the [Viam app](https://app.viam.com/) to download the package containing the classification training script from the registry.
