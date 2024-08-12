@@ -45,7 +45,22 @@ Follow this guide to create, upload, and submit a Python script that loads a tra
 1. Inside the <file>model</file> folder, create a file called <file>training.py</file>.
 
    {{< alert title="Using Viam APIs in a training script" color="note" >}}
-   If you need to access any of the [Viam APIs](/appendix/apis/) within a custom training script, you can use the environment variables `API_KEY` and `API_KEY_ID` to establish a connection.
+   If you need to access any of the [Viam APIs](/appendix/apis/) within a custom training script, you can use the environment variables `API_KEY` and `API_KEY_ID` to establish a connection:
+
+   ```python
+   async def connect() -> ViamClient:
+       """Returns a authenticated connection to the ViamClient for the requested
+       org associated with the submitted training job."""
+       # The API key and key ID can be accessed programmatically, using the
+       # environment variable API_KEY and API_KEY_ID. The user does not need to
+       # supply the API keys, they are provided automatically when the training
+       # job is submitted.
+       dial_options = DialOptions.with_api_key(
+           os.environ.get("API_KEY"), os.environ.get("API_KEY_ID")
+       )
+       return await ViamClient.create_from_dial_options(dial_options)
+   ```
+
    {{< /alert >}}
 
    Copy this template into <file>training.py</file>:
@@ -70,8 +85,9 @@ Follow this guide to create, upload, and submit a Python script that loads a tra
    # The data_json variable will contain the metadata for the dataset
    # that you should use to train the model.
    def parse_args():
-       """Dataset file and model output directory are required parameters. These must be parsed as command line
-           arguments and then used as the model input and output, respectively.
+       """Dataset file and model output directory are required parameters. These
+       must be parsed as command line arguments and then used as the model input
+       and output, respectively.
        """
        parser = argparse.ArgumentParser()
        parser.add_argument("--dataset_file", dest="data_json", type=str)
@@ -159,7 +175,8 @@ Follow this guide to create, upload, and submit a Python script that loads a tra
    ) -> Model:
        """Builds and compiles a model
        Args:
-           labels: list of string lists, where each string list contains up to N_LABEL labels associated with an image
+           labels: list of string lists, where each string list contains up to
+           N_LABEL labels associated with an image
            model_type: string single_label or multi_label
            input_shape: 3D shape of input
        """
@@ -171,7 +188,8 @@ Follow this guide to create, upload, and submit a Python script that loads a tra
    def save_labels(labels: ty.List[str], model_dir: str) -> None:
        """Saves a label.txt of output labels to the specified model directory.
        Args:
-           labels: list of string lists, where each string list contains up to N_LABEL labels associated with an image
+           labels: list of string lists, where each string list contains up to
+           N_LABEL labels associated with an image
            model_dir: output directory for model artifacts
        """
        filename = os.path.join(model_dir, labels_filename)
@@ -207,9 +225,11 @@ Follow this guide to create, upload, and submit a Python script that loads a tra
        # TODO: change labels to the desired model output.
        LABELS = ["orange_triangle", "blue_star"]
 
-       # The model type can be changed based on whether you want the model to output one label per image or multiple labels per image
+       # The model type can be changed based on whether you want the model to
+       # output one label per image or multiple labels per image
        model_type = multi_label
-       image_filenames, image_labels = parse_filenames_and_labels_from_json(DATA_JSON, LABELS, model_type)
+       image_filenames, image_labels = parse_filenames_and_labels_from_json(
+           DATA_JSON, LABELS, model_type)
 
        # Build and compile model on data
        model = build_and_compile_model()
@@ -315,10 +335,227 @@ Depending on if you are training a classification or detection model, the templa
 The next part of the script depends on the type of ML training you are creating.
 In this part of the script, you use the data from the dataset and the annotations from the dataset file to build a Machine Learning model.
 
-As an example, you can refer to the logic from the <file>model/training.py</file> from one of these training scripts:
+As an example, you can refer to the logic from <file>model/training.py</file> from this [example classification training script](https://github.com/viam-modules/classification-tflite) that trains a classification model using TensorFlow and Keras.
 
-- [detection-tflite](https://github.com/viam-modules/detection-tflite)
-- [classification-tflite](https://github.com/viam-modules/classification-tflite)
+```python {class="line-numbers linkable-line-numbers" }
+def get_neural_network_params(
+    num_classes: int, model_type: str
+) -> ty.Tuple[str, str, str, str]:
+    """Function that returns units and activation used for the last layer
+        and loss function for the model, based on number of classes and model type.
+    Args:
+        num_classes: number of classes to be predicted by the model
+        model_type: string single-label or multi-label for desired output
+    """
+    # Single-label Classification
+    if model_type == single_label:
+        units = num_classes
+        activation = "softmax"
+        loss = tf.keras.losses.categorical_crossentropy
+        metrics = (
+            tf.keras.metrics.CategoricalAccuracy(),
+            tf.keras.metrics.Precision(),
+            tf.keras.metrics.Recall(),
+        )
+    # Multi-label Classification
+    elif model_type == multi_label:
+        units = num_classes
+        activation = "sigmoid"
+        loss = tf.keras.losses.binary_crossentropy
+        metrics = (
+            tf.keras.metrics.BinaryAccuracy(),
+            tf.keras.metrics.Precision(),
+            tf.keras.metrics.Recall(),
+        )
+    return units, activation, loss, metrics
+
+def preprocessing_layers_classification(
+    img_size: ty.Tuple[int, int] = (256, 256)
+) -> ty.Tuple[tf.Tensor, tf.Tensor]:
+    """Preprocessing steps to apply to all images passed through the model.
+    Args:
+        img_size: optional 2D shape of image
+    """
+    preprocessing = tf.keras.Sequential(
+        [
+            tf.keras.layers.Resizing(
+                img_size[0], img_size[1], crop_to_aspect_ratio=False
+            ),
+        ]
+    )
+    return preprocessing
+
+def encoded_labels(
+    image_labels: ty.List[str], all_labels: ty.List[str], model_type: str
+) -> tf.Tensor:
+    """Returns a tuple of normalized image array and hot encoded labels array.
+    Args:
+        image_labels: labels present in image
+        all_labels: list of all N_LABELS
+        model_type: string single_label or multi_label
+    """
+    if model_type == single_label:
+        encoder = tf.keras.layers.StringLookup(
+            vocabulary=all_labels, num_oov_indices=0, output_mode="one_hot"
+        )
+    elif model_type == multi_label:
+        encoder = tf.keras.layers.StringLookup(
+            vocabulary=all_labels, num_oov_indices=0, output_mode="multi_hot"
+        )
+    return encoder(image_labels)
+
+def parse_image_and_encode_labels(
+    filename: str,
+    labels: ty.List[str],
+    all_labels: ty.List[str],
+    model_type: str,
+    img_size: ty.Tuple[int, int] = (256, 256),
+) -> ty.Tuple[tf.Tensor, tf.Tensor]:
+    """Returns a tuple of normalized image array and hot encoded labels array.
+    Args:
+        filename: string representing path to image
+        labels: list of up to N_LABELS associated with image
+        all_labels: list of all N_LABELS
+        model_type: string single_label or multi_label
+        img_size: optional 2D shape of image
+    """
+    image_string = tf.io.read_file(filename)
+    image_decoded = tf.image.decode_image(
+        image_string,
+        channels=3,
+        expand_animations=False,
+        dtype=tf.dtypes.uint8,
+    )
+
+    # Resize it to fixed shape
+    image_resized = tf.image.resize(image_decoded, [img_size[0], img_size[1]])
+    # Convert string labels to encoded labels
+    labels_encoded = encoded_labels(labels, all_labels, model_type)
+    return image_resized, labels_encoded
+
+
+def create_dataset_classification(
+    filenames: ty.List[str],
+    labels: ty.List[str],
+    all_labels: ty.List[str],
+    model_type: str,
+    img_size: ty.Tuple[int, int] = (256, 256),
+    train_split: float = 0.8,
+    batch_size: int = 64,
+    shuffle_buffer_size: int = 1024,
+    num_parallel_calls: int = tf.data.experimental.AUTOTUNE,
+    prefetch_buffer_size: int = tf.data.experimental.AUTOTUNE,
+) -> ty.Tuple[tf.data.Dataset, tf.data.Dataset]:
+    """Load and parse dataset from Tensorflow datasets.
+    Args:
+        filenames: string list of image paths
+        labels: list of string lists, where each string list contains up to N_LABEL labels associated with an image
+        all_labels: string list of all N_LABELS
+        model_type: string single_label or multi_label
+        img_size: optional 2D shape of image
+        train_split: optional float between 0.0 and 1.0 to specify proportion of images that will be used for training
+        batch_size: optional size for number of samples for each training iteration
+        shuffle_buffer_size: optional size for buffer that will be filled and randomly sampled from, with replacement
+        num_parallel_calls: optional integer representing the number of batches to compute asynchronously in parallel
+        prefetch_buffer_size: optional integer representing the number of batches that will be buffered when prefetching
+    """
+    # Create a first dataset of file paths and labels
+    if model_type == single_label:
+        dataset = tf.data.Dataset.from_tensor_slices((filenames, labels))
+    else:
+        dataset = tf.data.Dataset.from_tensor_slices(
+            (filenames, tf.ragged.constant(labels))
+        )
+
+    def mapping_fnc(x, y):
+        return parse_image_and_encode_labels(x, y, all_labels, model_type, img_size)
+
+    # Parse and preprocess observations in parallel
+    dataset = dataset.map(mapping_fnc, num_parallel_calls=num_parallel_calls)
+
+    # Shuffle the data for each buffer size
+    # Disabling reshuffling ensures items from the training and test set will not get shuffled into each other
+    dataset = dataset.shuffle(
+        buffer_size=shuffle_buffer_size, reshuffle_each_iteration=False
+    )
+
+    train_size = int(train_split * len(filenames))
+
+    train_dataset = dataset.take(train_size)
+    test_dataset = dataset.skip(train_size)
+
+    # Batch the data for multiple steps
+    # If the size of training data is smaller than the batch size,
+    # batch the data to expand the dimensions by a length 1 axis.
+    # This will ensure that the training data is valid model input
+    train_batch_size = batch_size if batch_size < train_size else train_size
+    if model_type == single_label:
+        train_dataset = train_dataset.batch(train_batch_size)
+    else:
+        train_dataset = train_dataset.apply(
+            tf.data.experimental.dense_to_ragged_batch(train_batch_size)
+        )
+
+    # Fetch batches in the background while the model is training.
+    train_dataset = train_dataset.prefetch(buffer_size=prefetch_buffer_size)
+
+    return train_dataset, test_dataset
+
+
+# Build the Keras model
+def build_and_compile_classification(
+    labels: ty.List[str], model_type: str, input_shape: ty.Tuple[int, int, int]
+) -> Model:
+    """Builds and compiles a classification model for fine-tuning using EfficientNetB0 and weights from ImageNet.
+    Args:
+        labels: list of string lists, where each string list contains up to N_LABEL labels associated with an image
+        model_type: string single_label or multi_label
+        input_shape: 3D shape of input
+    """
+    units, activation, loss_fnc, metrics = get_neural_network_params(
+        len(labels), model_type
+    )
+
+    x = tf.keras.Input(input_shape, dtype=tf.uint8)
+    # Data processing
+    preprocessing = preprocessing_layers_classification(input_shape[:-1])
+    data_augmentation = tf.keras.Sequential(
+        [
+            tf.keras.layers.RandomFlip(),
+            tf.keras.layers.RandomRotation(0.1),
+            tf.keras.layers.RandomZoom(0.1),
+        ]
+    )
+
+    # Get the pre-trained model
+    base_model = tf.keras.applications.EfficientNetB0(
+        input_shape=input_shape, include_top=False, weights="imagenet"
+    )
+    base_model.trainable = False
+    # Add custom layers
+    global_pooling = tf.keras.layers.GlobalAveragePooling2D()
+    # Output layer
+    classification = tf.keras.layers.Dense(units, activation=activation, name="output")
+
+    y = tf.keras.Sequential(
+        [
+            preprocessing,
+            data_augmentation,
+            base_model,
+            global_pooling,
+            classification,
+        ]
+    )(x)
+
+    model = tf.keras.Model(x, y)
+
+    model.compile(
+        loss=loss_fnc,
+        optimizer=tf.keras.optimizers.Adam(learning_rate=1e-3),
+        metrics=[metrics],
+    )
+    return model
+```
 
 {{% alert title="Tip" color="tip" %}}
 You must log in to the [Viam app](https://app.viam.com/) to download the package containing the classification training script from the registry.
@@ -327,7 +564,7 @@ You must log in to the [Viam app](https://app.viam.com/) to download the package
 {{% /expand%}}
 {{%expand "Saving the model artifact the script produces" %}}
 
-The `save_model()` and the `save_labels()` functions in the template before the `main` function save the model artifact your training job produces to the `model_output_directory` in the cloud.
+The `save_model()` and the `save_labels()` functions in the template before the `main` logic save the model artifact your training job produces to the `model_output_directory` in the cloud.
 
 Once a training job is complete, Viam checks the output directory and creates a package with all of the contents of the directory, creating or updating a registry item for the ML model.
 
@@ -380,18 +617,78 @@ def save_tflite_classification(
 ```
 
 {{% /expand%}}
-{{%expand "The main function" %}}
+{{%expand "The main logic" %}}
 
-The main function runs the training job by:
+The main logic runs the training job by:
 
 1. parsing command line inputs,
 2. parsing the dataset and annotations from the dataset file,
 3. producing the model artifact
 4. saving the model artifact.
 
-The `main()` function is executed when a training job runs.
+The main logic is executed when a training job runs.
 
-As an example, you can refer to the logic from <file>model/training.py</file> from this [example classification training script](https://app.viam.com/packages/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb/custom-training-classification/ml_training/latest/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb) that trains a classification model using TensorFlow and Keras.
+As an example, you can refer to the logic from <file>model/training.py</file> from this [example classification training script](https://github.com/viam-modules/classification-tflite) that trains a classification model using TensorFlow and Keras.
+
+```python {class="line-numbers linkable-line-numbers" }
+if __name__ == "__main__":
+    DATA_JSON, MODEL_DIR = parse_args()
+    # Set up compute device strategy. If GPUs are available, they will be used
+    if len(tf.config.list_physical_devices("GPU")) > 0:
+        strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
+    else:
+        strategy = tf.distribute.OneDeviceStrategy(device="/cpu:0")
+
+    IMG_SIZE = (256, 256)
+    # Epochs and batch size can be adjusted according to the training job.
+    EPOCHS = 2
+    BATCH_SIZE = 16
+    SHUFFLE_BUFFER_SIZE = 32
+    AUTOTUNE = (
+        tf.data.experimental.AUTOTUNE
+    )  # Adapt preprocessing and prefetching dynamically
+
+    # Model constants
+    NUM_WORKERS = strategy.num_replicas_in_sync
+    GLOBAL_BATCH_SIZE = BATCH_SIZE * NUM_WORKERS
+
+    # Read dataset file, labels should be changed according to the desired model output.
+    LABELS = ["orange_triangle", "blue_star"]
+    # The model type can be changed based on whether we want the model to output one label per image or multiple labels per image
+    model_type = multi_label
+    image_filenames, image_labels = parse_filenames_and_labels_from_json(DATA_JSON, LABELS, model_type)
+    # Generate 80/20 split for train and test data
+    train_dataset, test_dataset = create_dataset_classification(
+        filenames=image_filenames,
+        labels=image_labels,
+        all_labels=LABELS + [unknown_label],
+        model_type=model_type,
+        img_size=IMG_SIZE,
+        train_split=0.8,
+        batch_size=GLOBAL_BATCH_SIZE,
+        shuffle_buffer_size=SHUFFLE_BUFFER_SIZE,
+        num_parallel_calls=AUTOTUNE,
+        prefetch_buffer_size=AUTOTUNE,
+    )
+
+    # Build and compile model
+    with strategy.scope():
+        model = build_and_compile_classification(
+            LABELS + [unknown_label], model_type, IMG_SIZE + (3,)
+        )
+
+    # Train model on data
+    loss_history = model.fit(
+            x=train_dataset, epochs=EPOCHS,
+    )
+
+    # Save labels.txt file
+    save_labels(LABELS + [unknown_label], MODEL_DIR)
+    # Convert the model to tflite
+    save_tflite_classification(
+        model, MODEL_DIR, "classification_model", IMG_SIZE + (3,)
+    )
+```
 
 {{% /expand%}}
 
