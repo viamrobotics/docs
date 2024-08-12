@@ -139,6 +139,7 @@ Follow this guide to create, upload, and submit a Python script that loads a tra
        and corresponding labels with bboxes.
        Args:
            filename: JSONLines file containing filenames and bboxes
+           all_labels: list of all N_LABELS
        """
        image_filenames = []
        bbox_labels = []
@@ -341,8 +342,8 @@ As an example, you can refer to the logic from <file>model/training.py</file> fr
 def get_neural_network_params(
     num_classes: int, model_type: str
 ) -> ty.Tuple[str, str, str, str]:
-    """Function that returns units and activation used for the last layer
-        and loss function for the model, based on number of classes and model type.
+    """Function that returns units and activation used for the last layer and
+        loss function for the model, based on number of classes and model type.
     Args:
         num_classes: number of classes to be predicted by the model
         model_type: string single-label or multi-label for desired output
@@ -369,6 +370,7 @@ def get_neural_network_params(
         )
     return units, activation, loss, metrics
 
+
 def preprocessing_layers_classification(
     img_size: ty.Tuple[int, int] = (256, 256)
 ) -> ty.Tuple[tf.Tensor, tf.Tensor]:
@@ -384,6 +386,7 @@ def preprocessing_layers_classification(
         ]
     )
     return preprocessing
+
 
 def encoded_labels(
     image_labels: ty.List[str], all_labels: ty.List[str], model_type: str
@@ -403,6 +406,7 @@ def encoded_labels(
             vocabulary=all_labels, num_oov_indices=0, output_mode="multi_hot"
         )
     return encoder(image_labels)
+
 
 def parse_image_and_encode_labels(
     filename: str,
@@ -449,15 +453,21 @@ def create_dataset_classification(
     """Load and parse dataset from Tensorflow datasets.
     Args:
         filenames: string list of image paths
-        labels: list of string lists, where each string list contains up to N_LABEL labels associated with an image
+        labels: list of string lists, where each string list contains up to
+        N_LABEL labels associated with an image
         all_labels: string list of all N_LABELS
         model_type: string single_label or multi_label
         img_size: optional 2D shape of image
-        train_split: optional float between 0.0 and 1.0 to specify proportion of images that will be used for training
-        batch_size: optional size for number of samples for each training iteration
-        shuffle_buffer_size: optional size for buffer that will be filled and randomly sampled from, with replacement
-        num_parallel_calls: optional integer representing the number of batches to compute asynchronously in parallel
-        prefetch_buffer_size: optional integer representing the number of batches that will be buffered when prefetching
+        train_split: optional float between 0.0 and 1.0 to specify proportion
+        of images that will be used for training
+        batch_size: optional size for number of samples for each training
+        iteration
+        shuffle_buffer_size: optional size for buffer that will be filled and
+        randomly sampled from, with replacement
+        num_parallel_calls: optional integer representing the number of batches
+        to compute asynchronously in parallel
+        prefetch_buffer_size: optional integer representing the number of
+        batches that will be buffered when prefetching
     """
     # Create a first dataset of file paths and labels
     if model_type == single_label:
@@ -468,13 +478,15 @@ def create_dataset_classification(
         )
 
     def mapping_fnc(x, y):
-        return parse_image_and_encode_labels(x, y, all_labels, model_type, img_size)
+        return parse_image_and_encode_labels(
+            x, y, all_labels, model_type, img_size)
 
     # Parse and preprocess observations in parallel
     dataset = dataset.map(mapping_fnc, num_parallel_calls=num_parallel_calls)
 
     # Shuffle the data for each buffer size
-    # Disabling reshuffling ensures items from the training and test set will not get shuffled into each other
+    # Disabling reshuffling ensures items from the training and test set will
+    # not get shuffled into each other
     dataset = dataset.shuffle(
         buffer_size=shuffle_buffer_size, reshuffle_each_iteration=False
     )
@@ -506,9 +518,11 @@ def create_dataset_classification(
 def build_and_compile_classification(
     labels: ty.List[str], model_type: str, input_shape: ty.Tuple[int, int, int]
 ) -> Model:
-    """Builds and compiles a classification model for fine-tuning using EfficientNetB0 and weights from ImageNet.
+    """Builds and compiles a classification model for fine-tuning using
+    EfficientNetB0 and weights from ImageNet.
     Args:
-        labels: list of string lists, where each string list contains up to N_LABEL labels associated with an image
+        labels: list of string lists, where each string list contains up to
+        N_LABEL labels associated with an image
         model_type: string single_label or multi_label
         input_shape: 3D shape of input
     """
@@ -535,7 +549,8 @@ def build_and_compile_classification(
     # Add custom layers
     global_pooling = tf.keras.layers.GlobalAveragePooling2D()
     # Output layer
-    classification = tf.keras.layers.Dense(units, activation=activation, name="output")
+    classification = tf.keras.layers.Dense(
+        units, activation=activation, name="output")
 
     y = tf.keras.Sequential(
         [
@@ -652,11 +667,14 @@ if __name__ == "__main__":
     NUM_WORKERS = strategy.num_replicas_in_sync
     GLOBAL_BATCH_SIZE = BATCH_SIZE * NUM_WORKERS
 
-    # Read dataset file, labels should be changed according to the desired model output.
+    # Read dataset file, labels should be changed according to the desired
+    # model output.
     LABELS = ["orange_triangle", "blue_star"]
-    # The model type can be changed based on whether we want the model to output one label per image or multiple labels per image
+    # The model type can be changed based on whether we want the model to
+    # output one label per image or multiple labels per image
     model_type = multi_label
-    image_filenames, image_labels = parse_filenames_and_labels_from_json(DATA_JSON, LABELS, model_type)
+    image_filenames, image_labels = parse_filenames_and_labels_from_json(
+        DATA_JSON, LABELS, model_type)
     # Generate 80/20 split for train and test data
     train_dataset, test_dataset = create_dataset_classification(
         filenames=image_filenames,
