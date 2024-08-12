@@ -324,7 +324,7 @@ You must log in to the [Viam app](https://app.viam.com/) to download the package
 {{% /expand%}}
 {{%expand "Saving the model artifact the script produces" %}}
 
-The `save_model()` and the `save_labels()` functions in the template before the `main` function saves the model artifact your training job produces to the `model_output_directory` in the cloud.
+The `save_model()` and the `save_labels()` functions in the template before the `main` function save the model artifact your training job produces to the `model_output_directory` in the cloud.
 
 Once a training job is complete, Viam checks the output directory and creates a package with all of the contents of the directory, creating or updating a registry item for the ML model.
 
