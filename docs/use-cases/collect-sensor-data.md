@@ -40,18 +40,18 @@ If you're not sure which sensor model to choose, add the `viam:viam-sensor:teleg
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "disable_cpu": false,
-    "disable_disk": false,
-    "disable_disk_io": false,
-    "disable_kernel": false,
-    "disable_mem": false,
-    "disable_net": false,
-    "disable_netstat": false,
-    "disable_processes": false,
-    "disable_swap": false,
-    "disable_system": false,
-    "disable_temp": true,
-    "disable_wireless": true
+  "disable_cpu": false,
+  "disable_disk": false,
+  "disable_disk_io": false,
+  "disable_kernel": false,
+  "disable_mem": false,
+  "disable_net": false,
+  "disable_netstat": false,
+  "disable_processes": false,
+  "disable_swap": false,
+  "disable_system": false,
+  "disable_temp": true,
+  "disable_wireless": true
 }
 ```
 
