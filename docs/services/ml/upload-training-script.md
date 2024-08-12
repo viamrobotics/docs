@@ -331,7 +331,7 @@ The `save_model()` and the `save_labels()` functions in the template before the 
 
 Once a training job is complete, Viam checks the output directory and creates a package with all of the contents of the directory, creating or updating a registry item for the ML model.
 
-As an example, you can refer to the logic from <file>model/training.py</file> from this [example classification training script](https://app.viam.com/packages/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb/custom-training-classification/ml_training/latest/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb) that trains a classification model using TensorFlow and Keras.
+As an example, you can refer to the logic from <file>model/training.py</file> from this [example classification training script](https://github.com/viam-modules/classification-tflite) that trains a classification model using TensorFlow and Keras.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Save the labels file which is used in conjunctions with the ML model
