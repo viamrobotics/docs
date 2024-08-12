@@ -383,7 +383,7 @@ The main function runs the training job by:
 
 1. parsing command line inputs,
 2. parsing the dataset and annotations from the dataset file,
-3. producing the model artifact, and
+3. producing the model artifact
 4. saving the model artifact.
 
 The `main()` function is executed when a training job runs.
