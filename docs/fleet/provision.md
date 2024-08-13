@@ -162,10 +162,29 @@ This provisioning functionality is provided by the [Viam Agent provisioning subs
 
 ### Connect to an existing network
 
-If you specify a WiFi network to connect to in your configuration file, the Viam Agent will automatically connect to that network when in range.
+When you provision machines using the Viam app or the Viam mobile app, you provide network information that a machine will use to connect as the primary network.
 
-You can configure one or more WiFi networks to connect to in the `agent` configuration object in your `viam-server` configuration file.
-For example, to configure SSIDs and passwords for two WiFi networks named `primaryNet` and `fallbackNet`, you can use the following configuration:
+If you provide a primary network using the Viam app or the Viam mobile app, the Viam Agent will
+connect to that network, even if that network does not have internet access.
+The Viam agent **will not** consider other networks provided in the `agent` configuration in this case.
+
+Note that any features that require internet access will not function if the connected WiFi network is not connected to the internet.
+If you want the Viam Agent to require that a WiFi network be connected to the internet in order to connect to it, use [roaming mode](#use-roaming-mode).
+
+If the configured WiFi network could not be connected to, the Viam Agent will instead [create its own WiFi hotspot](#create-a-wifi-hotspot).
+
+You can configure how long the Agent waits for connections and the timeout before it creates a hotspot in the [provisioning configuration file](#use-a-provisioning-configuration-file).
+
+#### Use roaming mode
+
+Roaming mode allows you to specify multiple WiFi networks, each with their own priority, and the Viam Agent will try to connect to each specified network in order of priority from highest to lowest.
+
+**Note that if the primary network is available and the machine can connect to it, the Viam agent will always connect to that network, even if the network does not have internet access.
+**
+
+If the Viam Agent configuration enables roaming and no primary network is provided or a machine cannot connect to the primary network, the Viam Agent will attempt to connect to any additional WiFi networks specified in your Viam Agent configuration file in order of highest `priority`.
+
+For example, the following configuration defines the connection information and credentials for two WiFi networks named `fallbackNetOne` and `fallbackNetTwo`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 ...
@@ -177,13 +196,13 @@ For example, to configure SSIDs and passwords for two WiFi networks named `prima
       "networks": [
         {
           "type": "wifi",
-          "ssid": "primaryNet",
+          "ssid": "fallbackNetOne",
           "psk": "myFirstPassword",
           "priority": 30
         },
         {
           "type": "wifi",
-          "ssid": "fallbackNet",
+          "ssid": "fallbackNetTwo",
           "psk": "mySecondPassword",
           "priority": 10
         }
@@ -193,11 +212,16 @@ For example, to configure SSIDs and passwords for two WiFi networks named `prima
 }
 ```
 
-You can add this configuration to the <file>/etc/viam.json</file> configuration file you deploy to your machine, or from the **CONFIGURE** tab in the [Viam app](https://app.viam.com/) for your machine, using **Raw JSON** mode.
-The Viam Agent will attempt to connect to the `ssid` with the highest `priority` first.
-If the highest-priority network is not available, it will then attempt to connect to the next-highest `priority` network, and so on until all configured networks have been tried.
+| Name       | Type   | Description                                                                     |
+| ---------- | ------ | ------------------------------------------------------------------------------- |
+| `type`     | string | The type of the network. Options: `"wifi"`                                      |
+| `ssid`     | string | The network's SSID.                                                             |
+| `psk`      | string | The network pass key.                                                           |
+| `priority` | int    | Priority to choose the network with. Values between -999 and 100. Default: `0`. |
 
-If no configured WiFi network could be connected to, the Viam Agent will instead create its own WiFi hotspot, as described in the next section.
+If the highest-priority network is not available or the machine can connect but internet is not available, the Viam Agent will then attempt to connect to the next-highest `priority` network, and so on until all configured networks have been tried.
+
+You can add this configuration to the <file>/etc/viam.json</file> configuration file you deploy to your machine, or from the **CONFIGURE** tab in the [Viam app](https://app.viam.com/) for your machine, using **Raw JSON** mode.
 
 ### Create a WiFi hotspot
 
@@ -253,13 +277,20 @@ To provision your machine, create a <file>/etc/viam-provisioning.json</file> con
   "manufacturer": "Skywalker",
   "model": "C-3PO",
   "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
-  "disable_dns_redirect": true,
   "hotspot_prefix": "skywalker-setup",
-  "hotspot_password": "skywalker123"
+  "disable_dns_redirect": true,
+  "hotspot_password": "skywalker123",
+  "roaming_mode": false,
+  "offline_timeout": "3m30s",
+  "user_timeout": "2m30s",
+  "fallback_timeout": "15m"
 }
 ```
 
-This file configures some basic metadata, specifies a [fragment](/fleet/fragments/) to use to configure the machine, and provides the WiFi network name and password to allow your machine to connect automatically on startup.
+This file configures some basic metadata, specifies a [fragment](/fleet/fragments/) to use to configure the machine, and provides the WiFi hotspot network name and password to use on startup.
+It also configures timeouts to control how long the Agent waits for a valid local WiFi network to come online before creating its hotspot network, and how long to keep the hotspot active before terminating it.
+
+For more information about these configuration options, see [Provisioning configuration](https://github.com/viamrobotics/agent-provisioning#configuration).
 
 ## Use the Viam mobile app
 
