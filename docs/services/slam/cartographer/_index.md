@@ -47,6 +47,7 @@ For doing pure localization on an existing map, the `cartographer` modular resou
 
 Creating and updating SLAM maps with Cartographer is especially CPU-intensive.
 As an available option you can use the [cloudslam wrapper module](../cloudslam) to move computation to the cloud.
+
 Running `cartographer` in the cloud incurs cost for Data Management, Cloud Data Upload, and Cloud Data Egress. Currently, you incur no cost for compute.
 See Viam's [Pricing](https://www.viam.com/product/pricing) for more information.
 
@@ -91,11 +92,14 @@ If you choose to use movement sensor data for SLAM, you can:
 
 To create a new map, follow the instructions below.
 
+{{< tabs name="Create new map">}}
+{{% tab name="Config Builder" %}}
+
 1. Ensure any sensors you wish to use are configured on the machine:
 
-  Having a 2D LiDAR camera(such as the `rplidar`) is required for using cartographer
+   Having a 2D LiDAR camera(such as the `rplidar`) is required for using cartographer
 
-  Additionally, you can configure movement sensors on the machine. If you do, ensure the movement sensor supports the required readings described [above](#movement-sensors-optional).
+   Additionally, you can configure movement sensors on the machine. If you do, ensure the movement sensor supports the required readings described [above](#movement-sensors-optional).
 
 2. Set up the `cartographer` module on your machine:
 
@@ -110,10 +114,10 @@ To create a new map, follow the instructions below.
    In the resulting `SLAM` service configuration pane, choose `Create new map` as the **Mapping mode**, then configure the rest of the **Attributes** for that mapping mode:
 
    - **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your machine](https://github.com/viamrobotics/rplidar).
-     Example: "my-rplidar"
+     Example: "my-rplidar". Then set the `Data polling rate (Hz)` for retrieving pointclouds from the camera. For RPLidar A1 and A3 we recommend a frequency of 5 Hz.
    - **Movement Sensor (Optional)**: Select the `name` of the movement sensor component that you want to use for SLAM.
      If you are using both an IMU _and_ an odometer, select the `name` of the `merged` movement sensor, _not_ the `name` of either of the individual movement sensors.
-     Examples: "my-imu", "MyOdometer," or "merged-ms".
+     Examples: "my-imu", "MyOdometer," or "merged-ms". Then set the `Data polling rate (Hz)` for retrieving readings from the movement sensor. We recommend a frequency of 20 Hz.
    - **Minimum range (meters)**: Set the minimum range of your `rplidar`.
      See [config params](#config_params) for suggested values for RPLidar A1 and A3.
    - **Maximum range (meters)**: Set the maximum range of your `rplidar`.
@@ -128,9 +132,9 @@ To create a new map, follow the instructions below.
 
 3. (Optional) Configure cartographer to use cloudslam:
 
-  On the `SLAM` service configuration pane, switch the configuration to the Advanced view and set the `use_cloud_slam` field to **true**. This setting disables local mapping to limit cpu usage in favor of using cloudslam.
+    On the `SLAM` service configuration pane, switch the configuration to the Advanced view and set the `use_cloud_slam` field to **true**. This setting disables local mapping to limit cpu usage in favor of using cloudslam.
 
-  In addition, your configured LiDAR camera and movement sensor must have data capture enabled. See the [cloudslam](../cloudslam) documentation for more information on how to configure the feature on your machine and how to use cloudslam.
+    In addition, your configured LiDAR camera and movement sensor must have data capture enabled. See the [cloudslam](../cloudslam) documentation for more information on how to configure the feature on your machine and how to use cloudslam.
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
@@ -197,13 +201,13 @@ This example JSON configuration:
 
 For more information about the configuration attributes, see [Attributes](#attributes).
 
-After configuring cartographer the machine should begin mapping automatically. See our [tips](#slam-mapping-best-practices) for making a good map! If you want to save your locally built map, you can use the **GetInternalState API** or use the local map uploading feature of the [cloudslam wrapper module](../cloudslam)
+After configuring cartographer the machine should begin mapping automatically.  Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created. See our [tips](#slam-mapping-best-practices) for making a good map! If you want to save your locally built map, you can use the **GetInternalState API** or use the local map uploading feature of the [cloudslam wrapper module](../cloudslam)
 
 ### Update an existing map
 
 To update an existing map with new pointcloud data from a new SLAM session, follow the instructions below.
 
-1. Configure your `cartographer` SLAM service:
+1. Configure your `cartographer` SLAM service using a map from your location:
 
    {{< tabs name="Update existing map">}}
    {{% tab name="Config Builder" %}}
@@ -218,8 +222,8 @@ To update an existing map with new pointcloud data from a new SLAM session, foll
    This example JSON configuration:
 
    - adds the `viam:rplidar` and the `viam:cartographer` modules
-   - configures the `viam:slam:cartographer` service and the [data management service](/services/data/)
-   - adds an `viam:lidar:rplidar` camera with data capture configured
+   - configures the `viam:slam:cartographer` service
+   - adds an `viam:lidar:rplidar` camera
    - specifies the `slam_map` to be updated in the `packages`
 
    <br>
@@ -231,13 +235,13 @@ To update an existing map with new pointcloud data from a new SLAM session, foll
          "type": "registry",
          "name": "viam_rplidar",
          "module_id": "viam:rplidar",
-         "version": "0.1.14"
+         "version": "0.1.16"
        },
        {
          "type": "registry",
          "name": "viam_cartographer",
          "module_id": "viam:cartographer",
-         "version": "0.3.36"
+         "version": "0.3.45"
        }
      ],
      "services": [
@@ -253,23 +257,13 @@ To update an existing map with new pointcloud data from a new SLAM session, foll
              "data_frequency_hz": "5"
            },
            "enable_mapping": true,
-           "use_cloud_slam": true,
+           "use_cloud_slam": false,
            "existing_map": "${packages.slam_map.test-map-1}/internalState.pbstream"
          },
          "name": "slam",
          "type": "slam",
          "namespace": "rdk",
          "model": "viam:slam:cartographer"
-       },
-       {
-         "name": "data_manager-1",
-         "type": "data_manager",
-         "attributes": {
-           "tags": [],
-           "additional_sync_paths": [],
-           "sync_interval_mins": 0.1,
-           "capture_dir": ""
-         }
        }
      ],
      "components": [
@@ -277,20 +271,6 @@ To update an existing map with new pointcloud data from a new SLAM session, foll
          "namespace": "rdk",
          "attributes": {},
          "depends_on": [],
-         "service_configs": [
-           {
-             "attributes": {
-               "capture_methods": [
-                 {
-                   "disabled": false,
-                   "method": "NextPointCloud",
-                   "capture_frequency_hz": 5
-                 }
-               ]
-             },
-             "type": "data_manager"
-           }
-         ],
          "name": "rplidar",
          "model": "viam:lidar:rplidar",
          "type": "camera"
@@ -310,21 +290,11 @@ To update an existing map with new pointcloud data from a new SLAM session, foll
    {{% /tab %}}
    {{< /tabs >}}
 
-   For more information about the configuration attributes, see [Attributes](#attributes).
+   For more information about the configuration attributes, see [Attributes](#attributes). If you want to configure cartographer to use a locally saved map, see [Using locally built maps](#using-locally-built-maps).
 
-2. Start a mapping session:
-
-   Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
-   On the cartographer panel, you can start a mapping session.
-
-   When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
-
-   Once you click **End session**, the map is uploaded to the cloud and visible on your **Location** page under **SLAM library**.
-
-   Click **Start session**.
-   Wait for the slam session to finish starting up in the cloud, which **takes about 2 minutes**.
-
-   Once the slam session has started, you can follow the same steps as in [Create a new map](#create-a-new-map) to view your map.
+   After configuring cartographer the machine should begin mapping automatically. Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
+  
+   See our [tips](#slam-mapping-best-practices) for making a good map! If you want to save your locally built map, you can use the **GetInternalState API** or use the local map uploading feature of the [cloudslam wrapper module](../cloudslam)
 
 {{% alert title="Info" color="info" %}}
 
@@ -335,15 +305,14 @@ In the meantime, your machine will show up at the map's origin (with the `(x,y)`
 
 ### Localize only
 
-In this mode, the `cartographer` module on your machine executes the Cartographer algorithm itself locally to find its position on a map.
+In this mode, the `cartographer` module on your machine executes the Cartographer algorithm to find its position on a map. This mode is better when using motion planning because the map will no longer be modified.
 
 1.  Configure your `cartographer` SLAM service:
 
     {{< tabs name="Localize only">}}
     {{% tab name="Config Builder" %}}
 
-The configuration is similar to the configuration for [updating an existing map](#update-an-existing-map), except instead of adding a data management service and configuring data capture on the camera and movement sensor, set a `Data polling rate (Hz)` on both.
-The `cartographer` module on your machine polls the live LiDAR and IMU directly at these rates, whereas data capture is only used when data is being sent to the cloud.
+The configuration is similar to the configuration for [updating an existing map](#update-an-existing-map), where you want to select a `slam_map` for `cartographer` to localize on.
 
     {{% /tab %}}
     {{% tab name="JSON Example" %}}
@@ -352,7 +321,7 @@ This example JSON configuration:
 
 - adds the `viam:rplidar` and the `viam:cartographer` modules
 - configures the `viam:slam:cartographer` service
-- adds an `viam:lidar:rplidar` camera with a `Data polling rate (Hz)` of `5`
+- adds an `viam:lidar:rplidar`
 - specifies the `slam_map` for localization in the `packages`
 
 <br>
@@ -364,13 +333,13 @@ This example JSON configuration:
       "type": "registry",
       "name": "viam_rplidar",
       "module_id": "viam:rplidar",
-      "version": "0.1.14"
+      "version": "0.1.16"
     },
     {
       "type": "registry",
       "name": "viam_cartographer",
       "module_id": "viam:cartographer",
-      "version": "0.3.36"
+      "version": "0.3.45"
     }
   ],
   "services": [
@@ -419,16 +388,9 @@ This example JSON configuration:
     {{% /tab %}}
     {{< /tabs >}}
 
-    For more information about the configuration attributes, see [Attributes](#attributes).
+    For more information about the configuration attributes, see [Attributes](#attributes). If you want to configure cartographer to use a locally saved map, see [Using locally built maps](#using-locally-built-maps).
 
-1.  Start a mapping session:
-
-    Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
-
-    Unlike when creating or updating a map, you do not need to start and end a slam session.
-    The pointcloud for the existing map will appear **immediately** and Cartographer will try to find your machine's position on it.
-
-    Since the map will not change, nothing new will be added to this machine's location's **SLAM library**.
+    After configuring cartographer the machine should the map should appear automatically.  Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
 
     ![slam RC card localize only](/services/slam/slam-RC-card-localize-only.png)
 
@@ -446,58 +408,80 @@ If you move your machine, it will appear to be moving in a trajectory from the m
 <!-- prettier-ignore -->
 | Name | Data Type | Required? | Description |
 | ---- | --------- | --------- | ----------- |
-| `use_cloud_slam` | boolean | **Required** | If `true`, the Cartographer algorithm will execute in the cloud rather than locally on your machine. |
+| `use_cloud_slam` | boolean | **Required** | If `true`, the Cartographer algorithm will disable mapping on the machine. This feature should only be used when trying to use [cloudslam](../cloudslam). |
 | `camera` | obj | **Required** | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the LiDAR camera component to use as input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that camera component. |
 | `movement_sensor` | obj | Optional | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the IMU movement sensor (that is, a movement sensor that supports the `GetAngularVelocity` and `GetLinearAcceleration` API methods) to use as additional input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that movement sensor component. |
 | `enable_mapping` | boolean | Optional | If `true`, Cartographer will build the map in addition to doing localization. <ul> Default: `true` </ul> |
-| `existing_map` | string | Optional | The alias of the package containing the existing map to build on (in "Update existing map" mode) or localize on (in "Localize only" mode). |
+| `existing_map` | string | Optional | The alias of the package containing the existing map to build on (in "Update existing map" mode) or localize on (in "Localize only" mode). Can also point to a locally saved `.pbstream` file. |
 | `config_params` |  obj | Optional | Parameters available to fine-tune the `cartographer` algorithm: [read more below](#config_params). |
 
 #### `config_params`
 
 {{< readfile "/static/include/services/cartographer/configparams.md" >}}
 
-## Use previously captured data
+### Using locally built maps
 
-You can specify a range of **previously captured** LiDAR and optional IMU data to create a map or update an existing map in the cloud.
-You can browse your previously captured data from the **Data** page under the **Point clouds** tab (for LiDAR data) and **Sensors** tab (for IMU data).
+If you do not have any maps on your **Location** page's **SLAM library** tab, and you do not wish to use [cloudslam](../cloudslam), but you still want to use localizing and updating modes with cartographer, you can take the following steps.
 
-### Requirements
+1. save a `.pbstream` file by using the [GetInternalState or InternalStateFull APIs](../_index.md#api) by using one of the SDKs. Note, `InternalStateFull` is currently only implemented in Go.
+2. ensure the `.pbstream` file is located somewhere on the machine, and note the directory path to that file.
+3. In your cartographer's config, update the `existing_map` field with the path to the file that was noted in #2.
 
-To create a map, you must have already captured LiDAR data in the location in which you would like to create the map.
+your config should look something like the following:
 
-The following example shows the previously-captured LiDAR data under the **Point clouds** tab for a machine named `test`.
-Selecting a row opens a pane to the right that contains more information, such as the `Machine ID` of the machine the component belongs to:
+   ```json {class="line-numbers linkable-line-numbers"}
+   {
+     "modules": [
+       {
+         "type": "registry",
+         "name": "viam_rplidar",
+         "module_id": "viam:rplidar",
+         "version": "0.1.16"
+       },
+       {
+         "type": "registry",
+         "name": "viam_cartographer",
+         "module_id": "viam:cartographer",
+         "version": "0.3.45"
+       }
+     ],
+     "services": [
+       {
+         "attributes": {
+           "config_params": {
+             "max_range_meters": "25",
+             "mode": "2d",
+             "min_range_meters": "0.2"
+           },
+           "camera": {
+             "name": "rplidar",
+             "data_frequency_hz": "5"
+           },
+           "enable_mapping": true,
+           "use_cloud_slam": false,
+           "existing_map": "/PATH/TO/FILE/<INTERNAL-STATE-NAME>.pbstream"
+         },
+         "name": "slam",
+         "type": "slam",
+         "namespace": "rdk",
+         "model": "viam:slam:cartographer"
+       }
+     ],
+     "components": [
+       {
+         "namespace": "rdk",
+         "attributes": {},
+         "depends_on": [],
+         "name": "rplidar",
+         "model": "viam:lidar:rplidar",
+         "type": "camera"
+       }
+     ],
+     "packages": []
+   }
+   ```
 
-{{<imgproc src="/services/slam/offline-mapping-pointcloud-data.png" resize="1200x" declaredimensions=true alt="UI showing captured point clouds">}}
-
-Example of previously captured IMU data:
-
-{{<imgproc src="/services/slam/offline-mapping-imu-data.png" resize="1200x" declaredimensions=true alt="UI showing captured sensor data">}}
-
-### Create or update a map
-
-Navigate to the **SLAM library** tab on your location page, and click **Make new map** on the top right and specify a map name or click **Update map** next to an existing map.
-
-1. Enter the **Machine name**, **Camera name**, and optionally the **Movement Sensor name** of the components whose previously captured data you want to use to create or update a map.
-   If your machine has been deleted, you can alternatively specify the [**machine ID**](/appendix/apis/fleet/#find-machine-id).
-1. Adjust the configuration parameters as needed.
-   See [`config_params`](#config_params) for details.
-1. Select the timeframe of the data you'd like to use.
-1. At the bottom, you can see the total number of PCD files and movement sensor data points that will be processed.
-1. Click **Generate map**.
-
-{{<imgproc src="/services/slam/offline-mapping-generate-map.png" resize="1200x" declaredimensions=true alt="UI for creating a new map from captured data">}}
-
-### View the map
-
-Unlike in `Online` mode, you cannot see the map being created while the slam session is in progress, but similar to when creating or updating a map in `Online` mode, you can see that your cloud slam session is in progress from your **Location** page's **SLAM library** tab.
-When all the data has been processed (or 45 minutes have passed, whichever occurs first), the map will be saved to your **Location** page's **SLAM library** tab.
-
-### Delete the map
-
-To clear a SLAM map, go to your **Location** page's **SLAM library** tab.
-Click on the trash can icon in the upper right-hand corner of a map's card to delete the map.
+Now your `cartographer` service should be running using your locally saved map!
 
 ## SLAM mapping best practices
 
