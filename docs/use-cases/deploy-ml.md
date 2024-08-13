@@ -90,7 +90,7 @@ Once you've added the ML model service to your machine, choose your newly-traine
 The vision service takes the the ML model and applies it to the stream of images from your camera.
 
 Add the `vision / ML model` service to your machine.
-Then, from the **Select model** dropdown, select the name of the ML model service you configured in the last step (for example, `mlmodel-1`).
+Then, from the **Select model** modal, select the name of the ML model service you configured in the last step (for example, `mlmodel-1`).
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/mlmodel/#test-your-detector-or-classifier" %}}
