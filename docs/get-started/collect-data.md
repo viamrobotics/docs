@@ -30,7 +30,7 @@ In this guide you'll capture and sync sensor or image data from a machine.
 
 {{< /alert >}}
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/zjoa8Mdx4zM">}}
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/LWblhDYWoEw">}}
 
 ## Requirements
 
