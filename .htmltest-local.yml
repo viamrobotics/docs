@@ -33,6 +33,7 @@ IgnoreURLs:
   - "orangepi.org"
   - "rtk2go.com"
   - "researchgate.net"
+  - "trinamic.com"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"
