@@ -67,7 +67,7 @@ You will set up the robot to receive signals from the resistive soil moisture se
 
 Refer back to this diagram as you complete the steps to wire your hardware.
 
-i{{<imgproc src="/tutorials/plant-watering-pi/full-wiring.png" resize="300x" class="imgzoom" declaredimensions=true alt="The full wiring diagram for all the hardware for the Plant Watering Robot.">}
+{{<imgproc src="/tutorials/plant-watering-pi/full-wiring.png" resize="300x" class="imgzoom" declaredimensions=true alt="The full wiring diagram for all the hardware for the Plant Watering Robot.">}}
 
 ### Wire your ADC
 
