@@ -42,7 +42,7 @@ If you have the following components, you can follow along on your own hardware:
 
 {{% expand "No computer, camera, or sensor at hand?" %}}
 No problem.
-If you have no computer, use [Try Viam](https://app.viam.com/try) to borrow a rover online which is already configured with a camera to test with.
+If you don't have a development machine or other computer that can run `viam-server`, use [Try Viam](https://app.viam.com/try) to borrow a rover online which is already configured with a camera to test with.
 If you are using a Try Viam rover **start with Step 4** on the **Collect camera images** tab.
 
 If you have a computer that can run `viam-server` but no physical sensor, you can use the [`viam:viam-sensor:telegrafsensor`](https://app.viam.com/module/viam/viam-telegraf-sensor) model which measures computer performance metrics.
