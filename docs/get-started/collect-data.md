@@ -147,7 +147,7 @@ Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} th
 {{% /expand%}}
 {{< expand "Step 3: Configure a board" >}}
 
-Most sensors need to be wired to the pins of SBC such as a [Raspberry Pi](/components/board/pi/).
+Most sensors need to be wired to the pins of a SBC such as a [Raspberry Pi](/components/board/pi/).
 
 If you are not using a single-board computer (SBC), move on to step 4.
 
