@@ -13,15 +13,46 @@ Viam is a complete software platform for {{< glossary_tooltip term_id="smart-mac
 {{< board-carousel >}}
 <br>
 
+The executable binary that runs on a Viam-powered {{< glossary_tooltip term_id="machine" text="machine" >}} is called `viam-server`.
+`viam-server` runs and manages everything on your machine, including communications between hardware, software, and the cloud.
+
+## What a machine is in Viam
+
+A machine is any computer (SBC, server, or microcontroller) running [`viam-server`](/architecture/#viam-server-and-the-micro-rdk) (or the micro-RDK in the case of a microcontroller), plus any hardware attached to that computer.
+
+## How machines are structured, configured and organized
+
+Learn more about the structure and configuration of machines:
+
+|                        | Structure...                            | Configuration...                     |
+| ---------------------- | --------------------------------------- | ------------------------------------ |
+| ...of one machine ->   | [Architecture](/architecture/)          | [Machine Configuration](/configure/) |
+| ...of many machines -> | [Cloud Organization Hierarchy](/cloud/) | [Deploy a Large Fleet](/fleet/)      |
+
 {{< cards >}}
 {{% card link="/architecture/" %}}
 {{% card link="/configure/" %}}
-{{% card link="/fleet/" %}}
 {{% card link="/cloud/" %}}
+{{% card link="/fleet/" %}}
+{{< /cards >}}
+
+## The things that make up a machine
+
+{{< cards >}}
 {{% card link="/components/" %}}
 {{% card link="/services/" %}}
 {{% card link="/registry/" %}}
+{{< /cards >}}
+
+## Ways to control a machine
+
+{{< cards >}}
 {{% card link="/sdks/" %}}
 {{% card link="/cli/" %}}
+{{< /cards >}}
+
+## Deeper details
+
+{{< cards >}}
 {{% card link="/internals/" %}}
 {{< /cards >}}
