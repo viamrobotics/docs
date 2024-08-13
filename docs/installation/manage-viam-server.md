@@ -10,8 +10,8 @@ imageAlt: "Manage viam-server"
 description: "Control and troubleshoot viam-server."
 aliases:
   - /installation/update/
-  - /installation/manage/
-  - /get-started/installation/manage/
+  - /installation/manage-viam-server/
+  - /get-started/installation/manage-viam-server/
 ---
 
 Once you've [installed `viam-server`](/installation/), you can chose to run it as a system service or directly on the command line.

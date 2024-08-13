@@ -17,9 +17,9 @@
 	{{- range $i, $e := $tabs -}}
 	{{- $id := printf "%s-%d" $tab_set_id $i -}}
 	{{- if (eq $i 0) -}}
-<div id="{{ $id }}" class="tab-pane show active" role="tabpanel" aria-labelledby="{{ $id }}">
+<div id="{{ $id }}" class="tab-pane show active" role="tabpanel" aria-labelledby="{{ $id }}" style="min-height: {{ .height }}">
 	{{ else }}
-<div id="{{ $id }}" class="tab-pane" role="tabpanel" aria-labelledby="{{ $id }}">
+<div id="{{ $id }}" class="tab-pane" role="tabpanel" aria-labelledby="{{ $id }}" style="min-height: {{ .height }}">
 	{{ end }}
 		{{- with .content -}}
 			{{- . -}}
