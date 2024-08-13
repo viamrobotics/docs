@@ -12,7 +12,7 @@ menuindent: true
 
 This page provides an overview of how a machine is structured, including on-device and cloud communications:
 
-- [`viam-server`](#viam-server)
+- [`viam-server`](#viam-server-and-the-micro-rdk)
 - [Components, services and modules](#components-services-modules)
 - [Communication flow and security](#communication)
 - [How data flows in Viam](#data-management-flow)
@@ -41,8 +41,8 @@ When `viam-server` can connect to the cloud, it also:
 
 `viam-server` can use the internet, wide area networks (WAN) or local networks (LAN) to establish peer-to-peer connections between two {{< glossary_tooltip term_id="machine" text="machines" >}}, or to a client application.
 
-The [micro-RDK](/installation/#install-micro-rdk) is the lightweight version of `viam-server` that you can run on ESP32 microcontrollers.
-The micro-RDK doesn't support as much functionality as `viam-server`, but `viam-server` can directly communicate with devices running micro-RDK.
+The [micro-RDK](/installation/#install-the-micro-rdk) is the lightweight version of `viam-server` that you can run on ESP32 microcontrollers.
+It supports a limited set of {{< glossary_tooltip term_id="resource" text="resources" >}} and can connect with the cloud as well as with devices running `viam-server`.
 
 ## Components, services, modules
 
