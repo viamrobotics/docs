@@ -13,7 +13,7 @@ Viam is a complete software platform for {{< glossary_tooltip term_id="smart-mac
 {{< board-carousel >}}
 <br>
 
-The executable binary that runs on a Viam-powered {{< glossary_tooltip term_id="machine" text="machine" >}} is called `viam-server`.
+The open-source executable binary that runs on a Viam-powered {{< glossary_tooltip term_id="machine" text="machine" >}} is called `viam-server`.
 `viam-server` runs and manages everything on your machine, including communications between hardware, software, and the cloud.
 
 ## What a machine is in Viam
@@ -38,6 +38,12 @@ Learn more about the structure and configuration of machines:
 
 ## The things that make up a machine
 
+On your machine, you configure components and services.
+Some are built-in, and many more are available in the registry.
+You can also write your own and add them to the registry.
+
+In addition to modular components and services, the registry contains ML models.
+
 {{< cards >}}
 {{% card link="/components/" %}}
 {{% card link="/services/" %}}
@@ -45,6 +51,9 @@ Learn more about the structure and configuration of machines:
 {{< /cards >}}
 
 ## Ways to control a machine
+
+You can control your machine using the SDKs that call standardized API endpoints for each component and service.
+You can also use your machine's [Viam app](https://app.viam.com) **CONTROL** tab that uses those same endpoints, or you can use the CLI.
 
 {{< cards >}}
 {{% card link="/sdks/" %}}
