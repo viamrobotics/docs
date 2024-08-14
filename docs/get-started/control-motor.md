@@ -30,7 +30,7 @@ In this guide you'll configure and control a motor.
 
 {{< /alert >}}
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/awLbMqaByrE">}}
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/rWVh6C96Dic">}}
 
 ## Requirements
 

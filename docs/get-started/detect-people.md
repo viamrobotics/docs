@@ -33,7 +33,7 @@ In this guide you'll use machine learning to detect people in a camera stream.
 
 {{< /alert >}}
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/-sXdxbBVrso">}}
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/P6sZPIMnhBU">}}
 
 ## Requirements
 

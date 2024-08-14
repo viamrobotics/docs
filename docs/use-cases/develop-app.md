@@ -23,7 +23,7 @@ Click on any of the listed languages and follow the instructions to install the 
 
 {{< /alert >}}
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/tzJf0XfUCmA">}}
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/ulouuBqyNls">}}
 
 ## Prerequisites
 
