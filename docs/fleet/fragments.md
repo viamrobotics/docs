@@ -5,6 +5,7 @@ weight: 40
 type: "docs"
 description: Use fragments to configure many machines at the same time.
 tags: ["fleet management", "cloud", "app"]
+images: ["/use-cases/one-to-many/new-fragment.png"]
 aliases:
   - /fleet/configure-a-fleet/
 ---
