@@ -42,8 +42,10 @@ If you have the following components, you can follow along on your own hardware:
 
 {{% expand "No computer, camera, or sensor at hand?" %}}
 No problem.
-Use [Try Viam](https://app.viam.com/try) to borrow a rover online which is already configured with some components to test with.
+If you don't have a development machine or other computer that can run `viam-server`, use [Try Viam](https://app.viam.com/try) to borrow a rover online which is already configured with a camera to test with.
 If you are using a Try Viam rover **start with Step 4** on the **Collect camera images** tab.
+
+If you have a computer that can run `viam-server` but no physical sensor, you can use the [`viam:viam-sensor:telegrafsensor`](https://app.viam.com/module/viam/viam-telegraf-sensor) model which measures computer performance metrics.
 {{% /expand%}}
 
 ## Instructions
@@ -103,8 +105,9 @@ For more detailed information, including optional attribute configuration, see t
 
    - Set the MIME type to `image/jpeg`.
 
+1. Click the **Save** button in the top right corner of the page to save your config.
+
 For more detailed information on data capture, see [Configure Data Capture](/services/data/capture/).
-For more on the camera API, see [Camera Component](/components/camera/#getimage).
 
 {{< /expand >}}
 {{< expand "Step 5: View the captured image data" >}}
@@ -122,6 +125,8 @@ If you do not see images from your camera, try waiting a minute and refreshing t
 If this is a test project, make sure you stop data capture to avoid charges for a large amount of unwanted data.
 
 In the **Data capture** section of your camera's configuration, toggle the switch to **Off**.
+
+Click the **Save** button in the top right corner of the page to save your config.
 
 {{< /expand >}}
 
@@ -148,8 +153,12 @@ Wait for your device to connect to the Viam app.
 {{% /expand%}}
 {{< expand "Step 3: Configure a board" >}}
 
-Most sensors need to be wired to the pins of a single-board computer such as a [Raspberry Pi](/components/board/pi/).
-Add a board component to your config:
+Most sensors need to be wired to the pins of a SBC such as a [Raspberry Pi](/components/board/pi/).
+
+If you are not using a single-board computer (SBC), move on to step 4.
+
+If you are using a SBC, make sure you have installed `viam-server` on the SBC.
+Then add a board component to your config for your SBC.
 
 ![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/components/board/pi-ui-config.png)
 
@@ -162,10 +171,12 @@ For example, if you are using a Raspberry Pi, SSH to it and [enable serial commu
 
 {{< expand "Step 4: Configure a sensor" >}}
 
-1. Search the [supported sensor models](/components/sensor/#available-models) for a model of sensor that is compatible with your sensor hardware.
-   For example, if you have a Sensirion SHT3x-DIS temperature and humidity sensor, you should use the [`sensirion-sht3xd`](https://docs.viam.com/components/sensor/sensirion-sht3xd/) model of sensor.
+Search the [sensor models](/components/sensor/#available-models) for a model of sensor that is compatible with your sensor hardware.
+For example, if you have a Sensirion SHT3x-DIS temperature and humidity sensor, you should use the [`sensirion-sht3xd`](https://docs.viam.com/components/sensor/sensirion-sht3xd/) model of sensor.
 
-   Once you determine which model to use, add it to your machine's configuration:
+If you don't have a physical sensor that can be wired to the pins of a SBC, you can use the [`viam:viam-sensor:telegrafsensor`](https://app.viam.com/module/viam/viam-telegraf-sensor) model which measures computer performance metrics.
+
+Once you determine which model to use, add it to your machine's configuration:
 
 1. From the **CONFIGURE** tab on your machine's page in [the Viam app](https://app.viam.com/), click the **+** icon next to your machine part and select **Component**.
    Select the `sensor` type and add your sensor model.
@@ -177,8 +188,7 @@ For example, if you are using a Raspberry Pi, SSH to it and [enable serial commu
 
 1. Click the **Save** button in the upper right corner of the page to save your configuration.
 
-1. Click on the **Test** panel at the bottom of the configuration panel of the sensor.
-   Click **Get readings** to confirm you are getting readings.
+1. Click on the **Test** panel at the bottom of the configuration panel of the sensor to confirm you are getting readings.
    If you don't see the latest reading from the sensor, check that your sensor is properly wired to the board, and that the type of communication the sensor uses is enabled on the board (if applicable).
 
 {{% alert title="Important" color="note" %}}
@@ -202,13 +212,14 @@ For example, if you are using a Raspberry Pi, SSH to it and [enable serial commu
 
    - Set the frequency to `0.05` to capture a sensor reading once every 20 seconds.
 
+1. Click the **Save** button in the top right corner of the page to save your config.
+
 For more detailed information on data capture, see [Configure Data Capture](/services/data/capture/).
-For more on the sensor API, see [Sensor Component](/components/sensor/#getreadings).
 
 {{< /expand >}}
 {{< expand "Step 6: View the captured sensor data" >}}
 
-Click on the **...** menu of the camera component and click on **View captured data**.
+Click on the **...** menu of the sensor component and click on **View captured data**.
 This takes you to the data tab.
 
 ![View captured data option in the component menu](/get-started/quickstarts/collect-data/sensor-capt-data.png)
@@ -216,11 +227,13 @@ This takes you to the data tab.
 If you do not see data from your sensor, try waiting a minute and refreshing the page to allow time for the readings to be captured and then synced to the app at the interval you configured.
 
 {{< /expand >}}
-{{< expand "Step 6: Stop data capture" >}}
+{{< expand "Step 7: Stop data capture" >}}
 
 If this is a test project, make sure you stop data capture to avoid charges for a large amount of unwanted data.
 
 In the **Data capture** section of your sensor's configuration, toggle the switch to **Off**.
+
+Click the **Save** button in the top right corner of the page to save your config.
 
 {{< /expand >}}
 
