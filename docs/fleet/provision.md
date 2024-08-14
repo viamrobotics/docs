@@ -33,7 +33,7 @@ However, to then parse the readings and provide tailored guidance to a ship's ca
 Using the Viam Agent, this company could ship their machines directly to customers and have each machine provision `viam-server` as it comes online for each user, eliminating factory setup time and allowing for tailored configurations per customer as needed.
 
 {{% alert title="Note" color="note" %}}
-The example video above shows using the [Viam mobile application](/fleet/#the-viam-mobile-app) to connect to the Viam Agent on a newly-deployed machine and completing network setup.
+The example video above shows using the [Viam mobile application](/fleet/control/#control-interface-in-the-viam-mobile-app) to connect to the Viam Agent on a newly-deployed machine and completing network setup.
 {{% /alert %}}
 
 The Viam Agent is open source, and available on [GitHub](https://github.com/viamrobotics/agent).
@@ -263,7 +263,7 @@ This file configures some basic metadata, specifies a [fragment](/fleet/fragment
 
 ## Use the Viam mobile app
 
-You can use the [Viam mobile application](/fleet/#the-viam-mobile-app), available for download from the [Apple](https://apps.apple.com/us/app/viam-robotics/id6451424162) and [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US) app stores, to connect to the Viam Agent on deployed machines.
+You can use the [Viam mobile application](/fleet/control/#control-interface-in-the-viam-mobile-app), available for download from the [Apple](https://apps.apple.com/us/app/viam-robotics/id6451424162) and [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US) app stores, to connect to the Viam Agent on deployed machines.
 
 Once you are logged in using the Viam mobile app, select your organization, then location, then tap **Add new smart machine** and follow the instructions in the mobile app.
 

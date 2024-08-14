@@ -55,7 +55,7 @@ The organization structure enables you to:
 
 - configure groups of machines with reusable {{< glossary_tooltip term_id="fragment" text="fragments" >}} that [configure](/configure/) a set of resources for each machine that uses the fragment.
 - deploy [code packages](/registry/) or [machine learning models](/services/ml/), without manually copying files by uploading it to Viam's cloud and deploying it to your fleet
-- control a machine with code, the app's [**CONTROL** tab](/cloud/machines/#control), or the [Viam mobile app](#the-viam-mobile-app)
+- control a machine with code, the app's [**CONTROL** tab](/cloud/machines/#control), or the [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app)
 - obtain health metrics, such as status, uptime, version, or [logs](machines/#logs)
 - perform debugging
 
@@ -87,32 +87,11 @@ Before editing a config, we recommend you refresh the page to ensure you have al
 
 Machine [configuration](machines/#configure) and machine [code](/sdks/) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
 
-## The Viam mobile app
-
-{{<gif webm_src="/fleet/mobile-app-octagon.webm" mp4_src="/fleet/mobile-app-octagon.mp4" alt="GIF of red button being pressed and cannon of confetti bot spraying confetti" class="alignright" max-width="200px">}}
-
-<br>
-
-In addition to the [Viam app](https://app.viam.com), the fully featured web application where you can access all fleet management tools, there is a Viam mobile app.
-The Viam mobile app allows you to:
-
-- see if your machines are online
-- access the [control interface](/fleet/control/) for each machine
-- [invite people to collaborate with you and modify access](/cloud/rbac/#use-the-mobile-app)
-- check machine [logs](/cloud/machines/#logs)
-- [upload images from your phone to the cloud](/services/data/upload/#upload-images-with-the-viam-mobile-app)
-
-You can find the mobile app on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
-
-<a href="https://apps.apple.com/vn/app/viam-robotics/id6451424162" target="_blank">
-  <img src="https://github.com/viamrobotics/docs/assets/90707162/a470b65d-1b97-412f-9f97-daf902f2f053" width="200px" alt="apple store icon" class="center-if-small" >
-</a>
-
-<a href="https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US" target="_blank">
-  <img src="https://github.com/viamrobotics/docs/assets/90707162/6ebd6960-08c5-41d4-81f9-42293fbfdfd4" width="200px" alt="google play store icon" class="center-if-small" >
-</a>
-
 ## Next steps
+
+To learn about configuring and provisioning many machines, see [Deploy a Large Fleet](/fleet/).
+
+To learn about monitoring and remotely controlling the machines in your fleet, see [Control Interface](/fleet/control/).
 
 Check out the following tutorial for an example of organizing a fleet into locations, configuring multiple machines, and syncing data from all of them:
 
