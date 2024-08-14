@@ -365,7 +365,7 @@ done
 | `--component-name` | Filter by specified component name |`export`, `delete`| Optional |
 | `--component-type` | Filter by specified component type |`export`, `delete`| Optional |
 | `--component-model` | Filter by specified component model |`export`, `delete`| Optional |
-| `--dataset-id` | Dataset to add or remove images from | `dataset` | **Required** |
+| `--dataset-id` | Dataset to add or remove images from |`dataset`| **Required** |
 | `--delete-older-than-days` | Number of days, 0 means all data will be deleted | `delete` | Optional |
 | `--start` | ISO-8601 timestamp indicating the start of the interval |`export`, `delete`, `dataset`| Optional |
 | `--end` | ISO-8601 timestamp indicating the end of the interval |`export`, `delete`, `dataset`| Optional |
