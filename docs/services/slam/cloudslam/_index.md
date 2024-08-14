@@ -14,6 +14,24 @@ aliases:
 # SMEs: John N.
 ---
 
+## What is cloudslam
+SLAM Algorthims can have varying levels of resource requirements in order to run effectively. `Cartographer` in particular can require a significant amount of CPU resources to build and manage large maps. In order to better support running SLAM on resource limited machines, Viam provides a service to run SLAM algorithms on machines in the cloud.
+
+## how cloudslam works
+
+### supported algorithms
+
+## the maps page
+
+## Mapping with a live machine
+
+### Requirements
+### Configuration
+### Running cloudslam
+### Stopping cloudslam
+## use an offline machine
+## uploading a locally built map
+## Attributes
 [The Cartographer Project](https://github.com/cartographer-project) contains a C++ library that performs dense Simultaneous Localization And Mapping (SLAM).
 
 To use Cartographer with the Viam {{< glossary_tooltip term_id="slam" text="SLAM" >}} service, you can use the [`cartographer`](https://app.viam.com/module/viam/cartographer) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.

@@ -305,7 +305,7 @@ In the meantime, your machine will show up at the map's origin (with the `(x,y)`
 
 ### Localize only
 
-In this mode, the `cartographer` module on your machine executes the Cartographer algorithm to find its position on a map. This mode is better when using motion planning because the map will not be modified.
+In this mode, the `cartographer` module on your machine executes the Cartographer algorithm to find its position on a map. This mode is better when using [motion planning's MoveOnMap](/services/motion/#moveonmap) because the map will not be modified.
 
 1.  Configure your `cartographer` SLAM service:
 
@@ -390,7 +390,7 @@ This example JSON configuration:
 
     For more information about the configuration attributes, see [Attributes](#attributes). If you want to configure cartographer to use a locally saved map, see [Using locally built maps](#using-locally-built-maps).
 
-    After configuring cartographer on the machine, the map should appear automatically.  Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
+2. After configuring cartographer on the machine, the map should appear automatically.  Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
 
     ![slam RC card localize only](/services/slam/slam-RC-card-localize-only.png)
 
@@ -491,7 +491,7 @@ While in a slam session, you should:
 - turn gently and gradually, completely avoiding sudden quick turns
 - make frequent loop closures, arriving back at a previously mapped area so the machine can correct for errors in the map layout
 - stay relatively (but not extremely) close to walls
-- use a robot that can go smoothly over bumps and transitions between flooring areas
+- use a machine that can go smoothly over bumps and transitions between flooring areas
 - drive at a moderate speed
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
