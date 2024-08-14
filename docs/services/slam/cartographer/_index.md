@@ -46,7 +46,7 @@ For doing pure localization on an existing map, the `cartographer` modular resou
 {{% alert title="Running cartographer in the cloud" color="info" %}}
 
 Creating and updating SLAM maps with Cartographer is especially CPU-intensive.
-As an available option you can use the [cloudslam wrapper module](../cloudslam) to move computation to the cloud.
+If you do not have enough resources locally, you can use the [cloudslam wrapper module](../cloudslam) to move computation to the cloud.
 
 Running `cartographer` in the cloud incurs cost for Data Management, Cloud Data Upload, and Cloud Data Egress. Currently, you incur no cost for compute.
 See Viam's [Pricing](https://www.viam.com/product/pricing) for more information.
@@ -99,7 +99,7 @@ To create a new map, follow the instructions below.
 
    Having a 2D LiDAR camera(such as the `rplidar`) is required for using cartographer
 
-   Additionally, you can configure movement sensors on the machine. If you do, ensure the movement sensor supports the required readings described [above](#movement-sensors-optional).
+   Additionally, you can configure movement sensors on the machine. If you do, ensure the movement sensor supports the [required readings](#movement-sensors-optional).
 
 2. Set up the `cartographer` module on your machine:
 
@@ -132,7 +132,7 @@ To create a new map, follow the instructions below.
 
 3. (Optional) Configure cartographer to use cloudslam:
 
-    On the `SLAM` service configuration pane, switch the configuration to the Advanced view and set the `use_cloud_slam` field to **true**. This setting disables local mapping to limit cpu usage in favor of using cloudslam.
+    On the `SLAM` service configuration pane, click the **{}** button to switch to advanced views and set the `use_cloud_slam` field to **true**. This setting disables local mapping to limit cpu usage in favor of using cloudslam.
 
     In addition, your configured LiDAR camera and movement sensor must have data capture enabled. See the [cloudslam](../cloudslam) documentation for more information on how to configure the feature on your machine and how to use cloudslam.
 
@@ -292,7 +292,7 @@ To update an existing map with new pointcloud data from a new SLAM session, foll
 
    For more information about the configuration attributes, see [Attributes](#attributes). If you want to configure cartographer to use a locally saved map, see [Using locally built maps](#using-locally-built-maps).
 
-   After configuring cartographer the machine should begin mapping automatically. Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
+ 2. After configuring cartographer the machine should begin mapping automatically. Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
   
    See our [tips](#slam-mapping-best-practices) for making a good map! If you want to save your locally built map, you can use the **GetInternalState API** or use the local map uploading feature of the [cloudslam wrapper module](../cloudslam)
 
@@ -305,7 +305,7 @@ In the meantime, your machine will show up at the map's origin (with the `(x,y)`
 
 ### Localize only
 
-In this mode, the `cartographer` module on your machine executes the Cartographer algorithm to find its position on a map. This mode is better when using motion planning because the map will no longer be modified.
+In this mode, the `cartographer` module on your machine executes the Cartographer algorithm to find its position on a map. This mode is better when using motion planning because the map will not be modified.
 
 1.  Configure your `cartographer` SLAM service:
 
@@ -390,7 +390,7 @@ This example JSON configuration:
 
     For more information about the configuration attributes, see [Attributes](#attributes). If you want to configure cartographer to use a locally saved map, see [Using locally built maps](#using-locally-built-maps).
 
-    After configuring cartographer the machine should the map should appear automatically.  Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
+    After configuring cartographer on the machine, the map should appear automatically.  Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
 
     ![slam RC card localize only](/services/slam/slam-RC-card-localize-only.png)
 
