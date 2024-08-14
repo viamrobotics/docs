@@ -296,6 +296,7 @@ viam data export --destination=<output path> --data-type=<output data type> [...
 viam data delete [...named args]
 viam data dataset add --dataset-id=<dataset-id> --file-ids=<file-id-or-ids> --location-id=<location-id> --org-id=<org-id> [...named args]
 viam data dataset remove --dataset-id=<dataset-id> --file-ids=<file-id-or-ids> --location-id=<location-id> --org-id=<org-id> [...named args]
+viam data dataset export --dataFlagDestination=<output-directory> --datasetFlagDatasetID=<dataset-id>
 viam data database configure --org-id=<org-id> --password=<db-user-password>
 viam data database hostname --org-id=<org-id>
 ```
@@ -340,6 +341,7 @@ done
 | `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/use-cases/sensor-data-query-with-third-party-tools/#configure-data-query) | - |
 | `dataset add` | Add a new image to an existing dataset by its file id, or add a group of images by specifying a filter | `filter` |
 | `dataset remove` | Remove an existing image from a dataset by its file id, or remove a group of images by specifying a filter | `filter` |
+| `dataset export` | Download all the data from a dataset | `dataFlagDestination`: Output directory for downloaded data. <br> `datasetFlagDatasetID`: Dataset ID of the dataset to download. To retrieve these IDs, navigate to your dataset’s page in the [Viam app](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID**. <br> `datasetFlagIncludeJSONLines`: Set to `true` to include JSON Lines files for local testing. *(optional)* <br> `dataFlagParallelDownloads`: Number of download requests to make in parallel. *(optional)* Default: `100` |
 | `delete binary` | Delete binary data | - |
 | `delete tabular` | Delete tabular data | - |
 | `--help` | Return help | - |
