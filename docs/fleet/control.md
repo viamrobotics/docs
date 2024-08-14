@@ -8,7 +8,7 @@ tags: ["fleet management", "control", "app"]
 images: ["/fleet/control.gif"]
 ---
 
-Once you have [configured components and services](/configure/) for your machine, you can test, monitor, and remotely operate them from the **CONTROL** tab in the [Viam app](https://app.viam.com) or the [Viam mobile app](/fleet/#the-viam-mobile-app).
+Once you have [configured components and services](/configure/) for your machine, you can test, monitor, and remotely operate them from the **CONTROL** tab in the [Viam app](https://app.viam.com) or the [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app).
 
 ## Control interface in the Viam app
 
@@ -117,7 +117,7 @@ The following services also provide control interfaces:
 
 In addition to the [Viam app](https://app.viam.com), the fully featured web application where you can access all fleet management tools, there is a Viam mobile app.
 
-The [Viam mobile app](/fleet/#the-viam-mobile-app) allows you to test, monitor and remotely operate machines in your fleet.
+The [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app) allows you to test, monitor and remotely operate machines in your fleet.
 It provides a control interface for each component and service that you have configured for you machine.
 
 For example, you can view live camera feeds, adjust components' runtime parameters, and switch between controllable components.

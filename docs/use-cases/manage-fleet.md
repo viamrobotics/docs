@@ -37,7 +37,7 @@ Use [organizations](/cloud/organizations/), and [locations](/cloud/locations/) w
 {{% tablestep link="/cloud/rbac/" %}}
 **3. Invite other users and assign permissions**
 
-Invite other users to an organization or a location to [share access](/fleet/#use-viam-for-collaboration) to the machines within it.
+Invite other users to an organization or a location to [share access](/cloud/#use-viam-for-collaboration) to the machines within it.
 Assign each user a role (owner or operator) to manage permissions.
 
 {{<imgproc src="/fleet/app-usage/limit-access.png" resize="1000x" style="max-width: 600px" class="aligncenter" declaredimensions=true alt="Limit user access">}}
