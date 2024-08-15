@@ -88,7 +88,7 @@ carouselscript: true
 <div class="cards max-page use-cases">
   <div class="row">
 <div class="col hover-card link-with-icon">
-  <a href="use-cases/" class="noanchor"><div>
+  <a href="how-tos/" class="noanchor"><div>
     <picture><img src="icons/rover.svg" alt="Rover" loading="lazy"></picture>
     <p>How-to Guides</p></div>
   </a>
