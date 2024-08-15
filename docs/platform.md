@@ -15,7 +15,7 @@ Viam is a complete software platform for {{< glossary_tooltip term_id="smart-mac
 The open-source executable binary that runs on a Viam-powered {{< glossary_tooltip term_id="machine" text="machine" >}} is called `viam-server`.
 `viam-server` runs and manages everything on your machine, including communications between hardware, software, and the cloud.
 
-## What a machine is in Viam
+## What a machine is
 
 A {{< glossary_tooltip term_id="machine" text="machine" >}} is any computer (SBC, server) running [`viam-server`](/architecture/#viam-server-and-the-micro-rdk) or any microcontroller running `viam-micro-server`, plus any hardware attached to that computer.
 
@@ -59,10 +59,6 @@ And you can use the following platform capabilities and services to make your ma
 {{% relatedcard link="/services/navigation" %}}
 {{% relatedcard link="/services/slam" %}}
 {{% relatedcard link="/services/vision" %}}
-{{< /cards >}}
-
-{{< cards >}}
-{{% card link="/registry/" %}}
 {{< /cards >}}
 
 ## Ways to control a machine
