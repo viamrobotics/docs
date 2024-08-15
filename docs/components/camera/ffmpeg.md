@@ -10,12 +10,16 @@ aliases:
   - "/components/camera/ffmpeg/"
 component_description: "Uses a camera, a video file, or a stream as a camera."
 toc_hide: true
-# SMEs: Bijan, vision team
+# SMEs: Sean Yu, audio/video team
 ---
 
 The `ffmpeg` camera model uses a camera device, a video file, or a stream as a camera.
 
 When used with a streaming camera, the `ffmpeg` camera model supports any streaming camera format that is supported by the [`ffmpeg` program](https://ffmpeg.org/), including MJPEG, H264, and MP4.
+
+{{< alert title="Note" color="note" >}}
+The [`ffmpeg` program](https://ffmpeg.org/) program must be installed separately from `viam-server` on your system for this driver to work.
+{{< /alert >}}
 
 {{< tabs name="Configure a ffmpeg camera" >}}
 {{% tab name="Config Builder" %}}
