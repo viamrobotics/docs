@@ -8,6 +8,7 @@ images: ["/platform/build.svg", "/services/ml/configure.svg"]
 tags: ["components", "configuration"]
 aliases:
   - /use-cases/configure/
+  - use-cases/configure/
 ---
 
 You can get a smart machine running with Viam in just a few steps.
