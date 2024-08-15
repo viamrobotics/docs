@@ -30,11 +30,11 @@ Learn more about the structure and configuration of machines:
 
 ## The things that make up a machine
 
-On your machine, you configure components and services.
+On your machine, you configure [components](/components/) and [services](/services/).
 Some are built-in, and many more are available in the [registry](/registry/).
 You can also write your own and add them to the registry.
 
-On your machine, you can configure the following components:
+You can configure the following components:
 {{< cards >}}
 {{% relatedcard link="/components/arm" %}}
 {{% relatedcard link="/components/base" %}}
