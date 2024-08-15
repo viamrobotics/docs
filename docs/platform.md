@@ -18,7 +18,7 @@ The open-source executable binary that runs on a Viam-powered {{< glossary_toolt
 
 ## What a machine is in Viam
 
-A machine is any computer (SBC, server, or microcontroller) running [`viam-server`](/architecture/#viam-server-and-the-micro-rdk) (or the micro-RDK in the case of a microcontroller), plus any hardware attached to that computer.
+A {{< glossary_tooltip term_id="machine" text="machine" >}} is any computer (SBC, server) running [`viam-server`](/architecture/#viam-server-and-the-micro-rdk) or any microcontroller running `viam-micro-server`, plus any hardware attached to that computer.
 
 ## How machines are structured, configured and organized
 
@@ -41,8 +41,6 @@ Learn more about the structure and configuration of machines:
 On your machine, you configure components and services.
 Some are built-in, and many more are available in the registry.
 You can also write your own and add them to the registry.
-
-In addition to modular components and services, the registry contains ML models.
 
 {{< cards >}}
 {{% card link="/components/" %}}
