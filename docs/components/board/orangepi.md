@@ -7,7 +7,7 @@ description: "Configure an Orange Pi board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components", "orangepi"]
 component_description: "Orange Pi Zero2, Orange Pi Zero 2W or OrangePi 3 LTS."
-# SMEs: Olivia Miller
+# SMEs: Olivia Miller, Steve Briskin
 ---
 
 Configure an `orangepi` board to integrate the GPIO pins of an [Orange Pi Zero2](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Zero-2.html), [Orange Pi Zero 2W](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Zero-2W.html) or [OrangePi 3 LTS](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/orange-pi-3-LTS.html) into your machine.
