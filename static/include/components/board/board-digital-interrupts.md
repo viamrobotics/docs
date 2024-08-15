@@ -65,7 +65,6 @@ The following properties are available for `digital_interrupts`:
 | ---- | ---- | --------- | ----------- |
 |`name` | string | **Required** | Your name for the digital interrupt. |
 |`pin`| string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board's GPIO pin that you wish to configure the digital interrupt for. |
-|`type`| string | Optional | _Only applies to `pi` model boards._ <ul><li>`basic`: Recommended. Tracks interrupt count. </li> <li>`servo`: For interrupts configured for a pin controlling a [servo](/components/servo/). Tracks pulse width value. </li></ul> |
 
 #### Test `digital_interrupts`
 
