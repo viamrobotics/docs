@@ -10,6 +10,7 @@ aliases:
   - /manage/cli/
   - /fleet/cli/
 menuindent: true
+images: ["/platform/cli.png"]
 ---
 
 The Viam CLI (command line interface) tool enables you to manage your machines and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} across organizations and locations from the command line.
@@ -184,8 +185,7 @@ To use an location API key to authenticate your CLI session, you must first crea
 1. Then, run the following command to create a new location API key:
 
    ```sh {class="command-line" data-prompt="$"}
-   viam locations api-key create --location-id <location-id>
-    --org-id <org-id> --name <key-name>
+   viam locations api-key create --location-id <location-id> --org-id <org-id> --name <key-name>
    ```
 
    Where:

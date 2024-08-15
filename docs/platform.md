@@ -8,8 +8,7 @@ images: ["/platform/build.svg", "/services/ml/configure.svg"]
 carouselscript: true
 ---
 
-Viam is a complete software platform for {{< glossary_tooltip term_id="smart-machine" text="smart machines">}} that runs on Linux and macOS and supports a wide variety of popular systems, including:
-
+Viam is a complete software platform for {{< glossary_tooltip term_id="smart-machine" text="smart machines">}} that runs on **any 64bit Linux or macOS**, supporting a wide variety of popular systems, including:
 {{< board-carousel >}}
 <br>
 
@@ -29,22 +28,40 @@ Learn more about the structure and configuration of machines:
 | ...of one machine ->   | [Architecture](/architecture/)          | [Machine Configuration](/configure/) |
 | ...of many machines -> | [Cloud Organization Hierarchy](/cloud/) | [Deploy a Large Fleet](/fleet/)      |
 
-{{< cards >}}
-{{% card link="/architecture/" %}}
-{{% card link="/configure/" %}}
-{{% card link="/cloud/" %}}
-{{% card link="/fleet/" %}}
-{{< /cards >}}
-
 ## The things that make up a machine
 
 On your machine, you configure components and services.
-Some are built-in, and many more are available in the registry.
+Some are built-in, and many more are available in the [registry](/registry/).
 You can also write your own and add them to the registry.
 
+On your machine, you can configure the following components:
 {{< cards >}}
-{{% card link="/components/" %}}
-{{% card link="/services/" %}}
+{{% relatedcard link="/components/arm" %}}
+{{% relatedcard link="/components/base" %}}
+{{% relatedcard link="/components/board" %}}
+{{% relatedcard link="/components/camera" %}}
+{{% relatedcard link="/components/encoder" %}}
+{{% relatedcard link="/components/gantry" %}}
+{{% relatedcard link="/components/generic" %}}
+{{% relatedcard link="/components/gripper" %}}
+{{% relatedcard link="/components/input-controller" %}}
+{{% relatedcard link="/components/motor" %}}
+{{% relatedcard link="/components/movement-sensor" %}}
+{{% relatedcard link="/components/power-sensor" %}}
+{{% relatedcard link="/components/sensor" %}}
+{{% relatedcard link="/components/servo" %}}
+{{< /cards >}}
+And you can use the following platform capabilities and services to make your machines smarter and better:
+{{< cards >}}
+{{% relatedcard link="/services/data" %}}
+{{% relatedcard link="/services/ml/deploy" alt_title="Machine Learning" %}}
+{{% relatedcard link="/services/motion" %}}
+{{% relatedcard link="/services/navigation" %}}
+{{% relatedcard link="/services/slam" %}}
+{{% relatedcard link="/services/vision" %}}
+{{< /cards >}}
+
+{{< cards >}}
 {{% card link="/registry/" %}}
 {{< /cards >}}
 
@@ -56,6 +73,7 @@ You can also use your machine's [Viam app](https://app.viam.com) **CONTROL** tab
 {{< cards >}}
 {{% card link="/sdks/" %}}
 {{% card link="/cli/" %}}
+{{% card link="/fleet/control/" %}}
 {{< /cards >}}
 
 ## Deeper details
