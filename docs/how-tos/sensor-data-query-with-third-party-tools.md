@@ -10,10 +10,11 @@ aliases:
   - /manage/data/query/
   - /data/query/
   - /use-cases/sensor-data-query/
+  - /use-cases/sensor-data-query-with-third-party-tools/
 # SME: Devin Hilly
 ---
 
-You can use the data management service to [capture sensor data](/use-cases/collect-sensor-data/) from any machine and sync that data to the cloud.
+You can use the data management service to [capture sensor data](/how-tos/collect-sensor-data/) from any machine and sync that data to the cloud.
 Then, you can follow the steps on this page to query it using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
 For example, you can configure data capture for several sensors on one machine, or for several sensors across multiple machines, to report the ambient operating temperature.
 You can then run queries against that data to search for outliers or edge cases, to analyze how the ambient temperature affects your machines' operation.
@@ -35,7 +36,7 @@ You can then run queries against that data to search for outliers or edge cases,
 
 {{% expand "Captured sensor data. Click to see instructions." %}}
 
-Follow the guide to [capture sensor data](/use-cases/collect-sensor-data/).
+Follow the guide to [capture sensor data](/how-tos/collect-sensor-data/).
 
 {{% /expand%}}
 
@@ -122,7 +123,7 @@ If you want to query data from third party tools, you have to configure data que
 You can use third-party tools, such as the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/), [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), to query against captured sensor data.
 
 {{< table >}}
-{{% tablestep link="/use-cases/sensor-data-query-with-third-party-tools/#configure-data-query"%}}
+{{% tablestep link="/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query"%}}
 **1. Connect to your Viam organization's data**
 
 Run the following command to connect to your Viam organization's MongoDB Atlas instance from `mongosh` using the connection URI you obtained during query configuration:
@@ -229,11 +230,11 @@ db.readings.aggregate(
 
 ## Next steps
 
-On top of querying sensor data with third-party tools, you can also [query it with the Python SDK](/use-cases/sensor-data-query-sdk/) or [visualize it](/use-cases/sensor-data-visualize/).
+On top of querying sensor data with third-party tools, you can also [query it with the Python SDK](/how-tos/sensor-data-query-sdk/) or [visualize it](/how-tos/sensor-data-visualize/).
 
 {{< cards >}}
-{{% card link="/use-cases/sensor-data-query-sdk/" %}}
-{{% card link="/use-cases/sensor-data-visualize/" %}}
+{{% card link="/how-tos/sensor-data-query-sdk/" %}}
+{{% card link="/how-tos/sensor-data-visualize/" %}}
 {{< /cards >}}
 
 To see sensor data in action, check out this tutorial:

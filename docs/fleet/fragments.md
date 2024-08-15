@@ -5,7 +5,7 @@ weight: 40
 type: "docs"
 description: Use fragments to configure many machines at the same time.
 tags: ["fleet management", "cloud", "app"]
-images: ["/use-cases/one-to-many/new-fragment.png"]
+images: ["/how-tos/one-to-many/new-fragment.png"]
 aliases:
   - /fleet/configure-a-fleet/
 ---
@@ -39,7 +39,7 @@ You can add multiple fragments to a single machine, and you can add additional r
 Get started with this how-to guide:
 
 {{< cards >}}
-{{% card link="/use-cases/one-to-many/" %}}
+{{% card link="/how-tos/one-to-many/" %}}
 {{< /cards >}}
 
 ## Modify the config of a machine that uses a fragment

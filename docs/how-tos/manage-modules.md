@@ -8,9 +8,10 @@ tags: ["modular resources", "components", "services", "registry"]
 description: "Update or delete your existing modules, or change their privacy settings."
 aliases:
   - /use-cases/deploy-code/
+  - /use-cases/manage-modules/
 ---
 
-After you [create and deploy a module](/use-cases/create-module/), you may need to update or delete it.
+After you [create and deploy a module](/how-tos/create-module/), you may need to update or delete it.
 
 {{% alert title="In this page" color="tip" %}}
 
@@ -53,7 +54,7 @@ If you intend to make frequent code changes to your module, want to support a va
    tar -czf module.tar.gz <PATH-TO-EXECUTABLE>
    ```
 
-   Where `<PATH-TO-EXECUTABLE>` is your [packaged executable](/use-cases/create-module/#compile-or-package-your-module).
+   Where `<PATH-TO-EXECUTABLE>` is your [packaged executable](/how-tos/create-module/#compile-or-package-your-module).
 
    Supply the path to the resulting archive file in the next step.
 
@@ -114,7 +115,7 @@ jobs:
           key-value: ${{ secrets.viam_key_value }}
 ```
 
-The `build-action` GitHub action relies on a build command that you need to specify in the <file>meta.json</file> file that you created for your module when you first [uploaded it](/use-cases/create-module/#upload-your-module-to-the-modular-resource-registry).
+The `build-action` GitHub action relies on a build command that you need to specify in the <file>meta.json</file> file that you created for your module when you first [uploaded it](/how-tos/create-module/#upload-your-module-to-the-modular-resource-registry).
 At the end of your <file>meta.json</file>, add the build configuration:
 
 <!-- { {< tabs >}}

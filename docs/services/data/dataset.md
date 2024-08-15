@@ -20,7 +20,7 @@ no_service: true
 To manage your data you can use labels and datasets.
 
 {{< cards >}}
-{{< card link="/use-cases/deploy-ml/" customDescription="Abbreviated guide to training a computer vision ML model with your image data">}}
+{{< card link="/how-tos/deploy-ml/" customDescription="Abbreviated guide to training a computer vision ML model with your image data">}}
 {{< /cards >}}
 
 ## Label data

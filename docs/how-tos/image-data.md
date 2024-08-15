@@ -6,6 +6,8 @@ type: "docs"
 tags: ["data management", "data", "services"]
 images: ["/services/ml/collect.svg"]
 description: "Capture images from a camera on your machine and selectively sync images to the cloud with filtering."
+aliases:
+  - /use-cases/image-data/
 ---
 
 You can use Viam's built-in data management service to capture images from a camera on your machine and sync the images to the cloud.
@@ -13,9 +15,9 @@ You can use Viam's built-in data management service to capture images from a cam
 If you want to capture only certain images, such as those containing a person, you can use a "filtering camera" to selectively capture images based on a computer vision model.
 
 With your images synced to the cloud, you can view images from all your machines in one Viam app interface.
-From there, you can use your image data to do things like [train ML models](/use-cases/deploy-ml/).
+From there, you can use your image data to do things like [train ML models](/how-tos/deploy-ml/).
 
-{{<imgproc src="/use-cases/ml-cycle.svg" declaredimensions=true alt="Cyclical diagram of a plant watering machine capturing images of plants, syncing those images to the cloud, a machine learning model being trained, and that model being used to recognize yellow leaves on plants and water them." style="max-width:350px" class="aligncenter">}}
+{{<imgproc src="/how-tos/ml-cycle.svg" declaredimensions=true alt="Cyclical diagram of a plant watering machine capturing images of plants, syncing those images to the cloud, a machine learning model being trained, and that model being used to recognize yellow leaves on plants and water them." style="max-width:350px" class="aligncenter">}}
 <br>
 
 {{< alert title="In this page" color="tip" >}}
@@ -176,11 +178,11 @@ If you need to trigger sync in a different way, see [Trigger cloud sync conditio
 
 ## Next steps
 
-Now that you have collected image data, you can [train new computer vision models](/use-cases/deploy-ml/) or [programmatically access your data](/services/data/export/):
+Now that you have collected image data, you can [train new computer vision models](/how-tos/deploy-ml/) or [programmatically access your data](/services/data/export/):
 
 {{< cards >}}
-{{% card link="/use-cases/deploy-ml/" %}}
-{{% card link="/use-cases/sensor-data-query-with-third-party-tools/" %}}
+{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/sensor-data-query-with-third-party-tools/" %}}
 {{< /cards >}}
 
 To see image data filtering in action, check out these tutorials:

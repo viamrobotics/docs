@@ -7,6 +7,8 @@ description: "Write code to control machines and run it on the machine or remote
 images: ["/general/code.png"]
 imageAlt: "Code sample"
 tags: ["components", "configuration"]
+aliases:
+  - /use-cases/develop-app/
 ---
 
 Once you have configured a machine, start writing code to perform actions with the {{< glossary_tooltip term_id="component" text="components" >}} or {{< glossary_tooltip term_id="service" text="services" >}} of a {{< glossary_tooltip term_id="machine" text="machine" >}}.
@@ -29,7 +31,7 @@ Click on any of the listed languages and follow the instructions to install the 
 
 {{% expand "A running and configured machine. Click to see instructions." %}}
 
-Follow the instructions in [Build simple smart machines](/use-cases/configure/).
+Follow the instructions in [Build simple smart machines](/how-tos/configure/).
 
 {{% /expand%}}
 
@@ -184,10 +186,10 @@ If the computer that `viam-server` runs on has enough compute power, you can als
 See [Processes](/configure/processes/#configure-a-process) for more information.
 
 {{% /tablestep %}}
-{{% tablestep link="/use-cases/create-module/" %}}
+{{% tablestep link="/how-tos/create-module/" %}}
 **2. (Recommended) Wrap your code in a module**
 
-Once you have written code to control your machine and tested it, you can then wrap your custom functionality by [creating a module](/use-cases/create-module/).
+Once you have written code to control your machine and tested it, you can then wrap your custom functionality by [creating a module](/how-tos/create-module/).
 In wrapping your code into a module, you will be able to:
 
 - deploy it across one or more machines
@@ -200,9 +202,9 @@ When you add a module to your machine's configuration, the entrypoint defined fo
 If the code you have written augments what a component does, such as, for example, adding an overlay to a camera stream, you can create your own camera model inside your module and amend the API methods to have your custom functionality.
 For an example of this, see the [facial-detection module](https://github.com/viam-labs/facial-detection) which wraps its logic into a custom vision service.
 
-If your functionality does not conform to existing API types such as the motor or camera API, you can [use a generic API to wrap your code](https://docs.viam.com/use-cases/create-module/#choose-an-api-to-implement-in-your-model).
+If your functionality does not conform to existing API types such as the motor or camera API, you can [use a generic API to wrap your code](https://docs.viam.com/how-tos/create-module/#choose-an-api-to-implement-in-your-model).
 
-For more information, see [How to create and deploy a new module](/use-cases/create-module/).
+For more information, see [How to create and deploy a new module](/how-tos/create-module/).
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -212,8 +214,8 @@ For more information, see [How to create and deploy a new module](/use-cases/cre
 Now that you have a running machine that you can control, make your machine better and smarter:
 
 {{< cards >}}
-{{% card link="/use-cases/deploy-ml/" %}}
-{{% card link="/use-cases/navigate/" %}}
+{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/navigate/" %}}
 {{% card link="/services/motion/" %}}
 {{< /cards >}}
 

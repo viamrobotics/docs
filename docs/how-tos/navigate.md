@@ -6,7 +6,9 @@ type: "docs"
 tags: ["navigation", "motion", "services", "base", "base remote control"]
 no_list: true
 description: "Use Viam to teleoperate and navigate rover bases."
-images: ["/platform/mobility.svg", "/use-cases/base-control.png"]
+images: ["/platform/mobility.svg", "/how-tos/base-control.png"]
+aliases:
+  - /use-cases/navigate/
 ---
 
 If you have a rover base, you can use Viam to teleoperate it and to navigate autonomously.
@@ -14,7 +16,7 @@ Once you have configured your machine, you can remotely control your machine on 
 
 {{< table >}}
 {{% tablestep link="/components/base/wheeled/#test-the-base" %}}
-{{<imgproc src="/use-cases/base-control.png" class="fill alignleft" resize="200x" style="max-width: 200px" declaredimensions=true alt="Base control card">}}
+{{<imgproc src="/how-tos/base-control.png" class="fill alignleft" resize="200x" style="max-width: 200px" declaredimensions=true alt="Base control card">}}
 **1. Teleoperate**
 
 You can remotely control your rover from anywhere through the [Viam app](https://app.viam.com).
@@ -41,7 +43,7 @@ Then, [configure the navigation service](/services/navigation/) on your machine.
 
 {{% /tablestep %}}
 {{% tablestep link="/services/navigation/#api" %}}
-{{<imgproc src="/use-cases/navigation-card.png" class="fill alignleft" resize="200x" style="max-width: 300px" declaredimensions=true alt="Navigation map card">}}
+{{<imgproc src="/how-tos/navigation-card.png" class="fill alignleft" resize="200x" style="max-width: 300px" declaredimensions=true alt="Navigation map card">}}
 **4. Navigate autonomously**
 
 Define a path for your rover to navigate with waypoints and obstacles. Then, start and stop your machine's motion along the path and view your machine's current location. You can use the map interface on the **CONTROL** tab or the [navigation API](/services/navigation/#api).
