@@ -49,28 +49,60 @@ To add your branding, you can build your own mobile app and use the [Flutter SDK
 
 If you are not using Flutter or TypeScript and would like to use provisioning, please [contact us](mailto:support@viam.com).
 
-Regardless whether provisioning happens through the captive web portal or a mobile app, the process follows the same pattern:
+This is the general process for provisioning depending on whether you are using a captive web portal or a mobile app:
+
+{{< tabs >}}
+{{% tab name="Mobile app" min-height="703px" %}}
 
 {{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" class="alignright" max-width="400px" style="margin-left: 2rem">}}
 
-1. When a machine that has `viam-agent` installed and `agent-provisioning` configured comes online, `agent-provisioning` creates a WiFi hotspot.
+1. If the provisioning happens with a mobile app, open the app and follow any instructions there until the app directs you to turn on the machine.
+   - If you are using the Viam mobile app, create a new machine and then follow the instructions.
+
+1. When you power on the machine that has `viam-agent` installed and `agent-provisioning` configured, `agent-provisioning` creates a WiFi hotspot.
 
    - The [`agent-provisioning` configuration](#configuration) is at <file>/etc/viam-provisioning.json</file>.
-   - The [`viam-agent` configuration](/configure/agent/#configuration), if provided, is at <file>/etc/viam.json</file> alongside the rest of the machine configuration, including which fragments to use (if any).
+   - If a machine already exists, a machine credentials configuration file, if provided, is at <file>/etc/viam.json</file>.
 
-1. The end user uses their mobile device or computer and connects to the WiFi hotspot.
+1. You then use your mobile device or computer and connect to the WiFi hotspot.
 
    - By default, the hotspot network is named `viam-setup-HOSTNAME`, where `HOSTNAME` is replaced with the hostname of your machine.
      The WiFi password for this hotspot network is `viamsetup` by default.
-     You can customize these values in the machine's or fragment's [`viam-agent` configuration](/configure/agent/#configuration).
+     You can customize these values in the [`agent-provisioning` configuration](/configure/agent/#configuration).
 
-1. If the end user has a provisioning mobile app, they should now open that app to complete setup.
-   Alternatively, you will be redirected to a sign-in page.
+1. If you as the end user have a provisioning mobile app, go back to the app to complete setup.
+   In the mobile app, you will be prompted to provide the network information for the machine.
+
+1. The machine will then disable the hotspot network and attempt to connect using the provided network information.
+   If `viam-agent` cannot establish a connection using the provided network information, the machine will create the hotspot again and continue going through steps (2-5) until a connection is successfully established.
+1. If the connection is successful, `viam-agent` installs `viam-server`.
+
+   - `agent-provisioning` will use the provided network if it can connect, even if that network does not have internet access.
+     Note that any features that require internet access will not function if the connected WiFi network is not connected to the internet.
+     If you want `agent-provisioning` to require that a WiFi network be connected to the internet in order to connect to it, enable roaming mode.
+
+1. `viam-agent` then starts `viam-server` with the provided configuration and the machine becomes **live**.
+
+{{% /tab %}}
+{{% tab name="Captive web portal" %}}
+
+1. When you, as the end user, power on the machine that has `viam-agent` installed and `agent-provisioning` configured, `agent-provisioning` creates a WiFi hotspot.
+
+   - The [`agent-provisioning` configuration](#configuration) is at <file>/etc/viam-provisioning.json</file>.
+   - If a machine already exists, a machine credentials configuration file, if provided, is at <file>/etc/viam.json</file>.
+
+1. You as the end user then use your mobile device or computer and connect to the WiFi hotspot.
+
+   - By default, the hotspot network is named `viam-setup-HOSTNAME`, where `HOSTNAME` is replaced with the hostname of your machine.
+     The WiFi password for this hotspot network is `viamsetup` by default.
+     You can customize these values in the [`agent-provisioning` configuration](/configure/agent/#configuration).
+
+1. Once connected to the hotspot, you will be redirected to a sign-in page.
    If you are using a laptop or are not redirected, try opening [http://viam.setup/](http://viam.setup/) in a browser.
 
-1. In the captive web portal or mobile app, the user will be prompted to provide the network information for the machine.
+1. In the captive web portal, you will then be prompted to provide the network information for the machine.
 
-   - If there is no machine configuration at <file>/etc/viam.json</file>, the provisioning app or captive portal will also require the user to paste a machine credentials configuration file.
+   - If there is no machine credentials configuration file at <file>/etc/viam.json</file>, the captive portal will also require you to paste a machine credentials configuration file.
      This is the JSON object which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to the Viam app.
 
      To copy a machine credentials configuration file:
@@ -90,6 +122,9 @@ Regardless whether provisioning happens through the captive web portal or a mobi
      If you want `agent-provisioning` to require that a WiFi network be connected to the internet in order to connect to it, enable roaming mode.
 
 1. `viam-agent` then starts `viam-server` with the provided configuration and the machine becomes **live**.
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Configuration
 
