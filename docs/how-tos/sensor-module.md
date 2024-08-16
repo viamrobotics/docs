@@ -67,7 +67,6 @@ current_pm2_5 = current.Variables(1).Value()
 print(f"Current time {current.Time()}")
 print(f"Current pm10 {current_pm10}")
 print(f"Current pm2_5 {current_pm2_5}")
-
 ```
 
 {{< /expand >}}
@@ -81,7 +80,9 @@ Before creating the module, the following script could have been used to verify 
 from serial import Serial
 import time
 
+
 def main():
+
 
     port = Serial('/dev/ttyAMA0', baudrate=9600)
 
@@ -220,12 +221,15 @@ class meteo_PM(Sensor, Reconfigurable):
     MODEL: ClassVar[Model] = Model(ModelFamily("jessamy", "weather"), "meteo_PM")
 
     # Class parameters
-    latitude: float # Latitude at which to get data
-    longitude: float # Longitude at which to get data
+    latitude: float  # Latitude at which to get data
+    longitude: float  # Longitude at which to get data
 
     # Constructor
     @classmethod
-    def new(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
+    def new(
+      cls, config: ComponentConfig,
+      dependencies: Mapping[ResourceName, ResourceBase]
+      ) -> Self:
         my_class = cls(config.name)
         my_class.reconfigure(config, dependencies)
         return my_class
@@ -247,10 +251,13 @@ class meteo_PM(Sensor, Reconfigurable):
 
     # Handles attribute reconfiguration
     def reconfigure(
-      self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+      self, config: ComponentConfig,
+      dependencies: Mapping[ResourceName, ResourceBase]
       ):
-        self.latitude = float(config.attributes.fields["latitude"].number_value)
-        self.longitude = float(config.attributes.fields["longitude"].number_value)
+        self.latitude = float(
+          config.attributes.fields["latitude"].number_value)
+        self.longitude = float(
+          config.attributes.fields["longitude"].number_value)
         return
 
     async def get_readings(
@@ -259,7 +266,8 @@ class meteo_PM(Sensor, Reconfigurable):
     ) -> Mapping[str, SensorReading]:
 
         # Set up the Open-Meteo API client with cache and retry on error
-        cache_session = requests_cache.CachedSession('.cache', expire_after=3600)
+        cache_session = requests_cache.CachedSession(
+          '.cache', expire_after=3600)
         retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
         openmeteo = openmeteo_requests.Client(session=retry_session)
 
