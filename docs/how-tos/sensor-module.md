@@ -384,10 +384,10 @@ On the new component panel, copy and paste the following attribute template into
 
 The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM` sensors:
 
-| Name        | Type  | Inclusion    | Description                            |
-| ----------- | ----- | ------------ | -------------------------------------- |
-| `latitude`  | float | **Required** | Latitude at which to get the readings  |
-| `longitude` | float | Optional     | Longitude at which to get the readings |
+| Name        | Type  | Inclusion | Description                            |
+| ----------- | ----- | --------- | -------------------------------------- |
+| `latitude`  | float | Optional  | Latitude at which to get the readings  |
+| `longitude` | float | Optional  | Longitude at which to get the readings |
 
 ### Example Configuration
 
@@ -404,3 +404,11 @@ The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM`
 ## Upload your module to the registry
 
 To share your module with others in your organization or with the world, [follow these instructions to upload your module to the modular resource registry](/how-tos/create-module/#upload-your-module-to-the-modular-resource-registry).
+
+Once you've uploaded your module, you can [deploy it on your machines](/how-tos/create-module/#deploy-your-module-to-more-machines) by adding it just as you'd add any component instead of as a local module.
+
+## Next steps
+
+{{< cards >}}
+{{% card link="/how-tos/manage-modules/" %}}
+{{< /cards >}}
