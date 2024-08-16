@@ -16,6 +16,17 @@ Since a sensor can be so many different things, there's a good chance you're on 
 
 Making a module to support your sensor will allow you to use it with Viam's data capture and sync tools, as well as using the sensor API (using any of the different programming language [SDKs](/sdks/)) to get readings from it.
 
+{{% alert title="In this page" color="info" %}}
+
+1. [Start with a test script](#start-with-a-test-script)
+1. [Generate boilerplate module code](#generate-boilerplate-module-code)
+1. [Implement the sensor API](#implement-the-sensor-api)
+1. [Make the module executable](#make-the-module-executable)
+1. [Test your module locally](#test-your-module-locally)
+1. [Upload your module](#upload-your-module-to-the-registry)
+
+{{% /alert %}}
+
 ## Start with a test script
 
 Start by getting a test script working so you can check that the sensor code itself works before packaging it into a module.
@@ -80,6 +91,7 @@ Before creating the module, the following script could have been used to verify 
 from serial import Serial
 import time
 
+
 def main():
 
     port = Serial('/dev/ttyAMA0', baudrate=9600)
@@ -109,6 +121,7 @@ def main():
 
     data = port.read(port.in_waiting)
     print(parse_data(data))
+
 
 if __name__ == "__main__":
     main()
@@ -140,7 +153,7 @@ s.send(cmd.encode("utf-8"))
 
 {{< /expand >}}
 
-Run your test script from your command line and make sure you are able to get readings from the sensor before proceeding.
+Run your test script from your terminal and make sure you are able to get readings from the sensor before proceeding.
 
 ## Generate boilerplate module code
 
@@ -211,6 +224,7 @@ from retry_requests import retry
 
 LOGGER = getLogger(__name__)
 
+
 class meteo_PM(Sensor, Reconfigurable):
 
     """
@@ -259,6 +273,7 @@ class meteo_PM(Sensor, Reconfigurable):
         self.longitude = float(
           config.attributes.fields["longitude"].number_value)
         return
+
 
     async def get_readings(
         self, *, extra: Optional[Mapping[str, Any]] = None,
@@ -341,7 +356,7 @@ It's quite helpful to create a README to document what your module does and how 
 {{< expand "Example sensor module README" >}}
 
 ````md
-# meteo_PM modular component
+# `meteo_PM` modular component
 
 This module implements the [Viam sensor API](https://github.com/rdk/sensor-api) in a jessamy:weather:meteo_PM model.
 With this model, you can gather [Open-Meteo](https://open-meteo.com/en/docs/air-quality-api) PM2.5 and PM10 air quality data from anywhere in the world, at the coordinates you specify.
@@ -350,7 +365,7 @@ With this model, you can gather [Open-Meteo](https://open-meteo.com/en/docs/air-
 
 To use this module, follow these instructions to [add a module from the Viam Registry](https://docs.viam.com/registry/configure/#add-a-modular-resource-from-the-viam-registry) and select the `rdk:sensor:jessamy:weather:meteo_PM` model from the [`jessamy:weather:meteo_PM` module](https://app.viam.com/module/rdk/jessamy:weather:_PM).
 
-## Configure your meteo_PM sensor
+## Configure your `meteo_PM` sensor
 
 Navigate to the **CONFIGURE** tab of your robot’s page in [the Viam app](https://app.viam.com/).
 Add a component.
