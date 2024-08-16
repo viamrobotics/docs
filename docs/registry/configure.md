@@ -301,8 +301,8 @@ Or if you are using a module that requires access to an additional program or li
 
 This configures a module environment variable `PATH` that uses your system's `PATH` (which you can view by running `echo $PATH`) as a base, and adds one additional filesystem path: <file>/home/username/bin</file>.
 
-The notation `${environment.<ENV-VAR-NAME>}"` can be used to access any system environment variable that `viam-server` has access to, where `<ENV-VAR-NAME>` represents a system environment variable, like `PATH`, `USER`, or `PWD`.
-For example, you can use `${environment.HOME}"` to access the `HOME` environment variable for the user running `viam-server`.
+The notation `${environment.<ENV-VAR-NAME>}` can be used to access any system environment variable that `viam-server` has access to, where `<ENV-VAR-NAME>` represents a system environment variable, like `PATH`, `USER`, or `PWD`.
+For example, you can use `${environment.HOME}` to access the `HOME` environment variable for the user running `viam-server`.
 
 To configure a modular resource with an environment variable, navigate to the **CONFIGURE** tab on your machine's page in the Viam app, select **JSON** mode, and add the following `env` configuration to the `modules` section:
 
