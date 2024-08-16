@@ -63,7 +63,6 @@ This is the general process for provisioning depending on whether you are using 
 1. When you power on the machine that has `viam-agent` installed and `agent-provisioning` configured, `agent-provisioning` creates a WiFi hotspot.
 
    - The [`agent-provisioning` configuration](#configuration) is at <file>/etc/viam-provisioning.json</file>.
-   - If a machine already exists, a machine credentials configuration file, if provided, is at <file>/etc/viam.json</file>.
 
 1. You then use your mobile device or computer and connect to the WiFi hotspot.
 
