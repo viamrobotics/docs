@@ -56,7 +56,7 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 
 **Full Error:** `Something went wrong trying to read the squashfs image. Open dir error: No such file or directory`
 
-**Description:** The `viam-server` [installation](/installation/) or [update](/installation/manage/#update-viam-server) process may have been interrupted partway, with some files either partially-written or missing.
+**Description:** The `viam-server` [installation](/installation/) or [update](/installation/manage-viam-server/#update-viam-server) process may have been interrupted partway, with some files either partially-written or missing.
 
 **Solution:** Reinstall `viam-server` following the [installation instructions](/installation/).
 
@@ -186,7 +186,7 @@ In **JSON** mode, it will resemble the following:
 
       The video path for your camera device is the first path listed under that camera, in this case `/dev/video0`.
 
-  1.  Then, [stop `viam-server`](/installation/manage/#run-viam-server), and verify that your Linux OS is able to access that video device properly:
+  1.  Then, [stop `viam-server`](/installation/manage-viam-server/#run-viam-server), and verify that your Linux OS is able to access that video device properly:
 
       ```sh {class="command-line" data-prompt="$"}
       v4l2-ctl --stream-count 1 --device /dev/video0
@@ -196,7 +196,7 @@ In **JSON** mode, it will resemble the following:
 
       The command returns successfully (with no output) if Linux is able to successfully communicate with the camera, or errors with `Cannot open device` if there was a problem communicating.
       If this command errors, you should consult the documentation for your camera and Linux distribution to troubleshoot.
-      If you receive the error `Device or resource busy` instead, be sure you have [stopped `viam-server`](/installation/manage/#run-viam-server) first, then re-run the command above.
+      If you receive the error `Device or resource busy` instead, be sure you have [stopped `viam-server`](/installation/manage-viam-server/#run-viam-server) first, then re-run the command above.
 
 - Ensure that your camera uses a supported pixel format:
 
