@@ -17,7 +17,7 @@ The [`viam-agent`](https://github.com/viamrobotics/agent) is a self-updating ser
 
 Among other things, `viam-agent`:
 
-- Installs `viam-server` as a static binary, removing the need to perform any library linking or dependency installation during first-time setup.
+- Installs, runs, and monitors `viam-server`
   You can also use a custom build of `viam-server`, if needed.
 - Provides automatic updates for `viam-server`, the agent itself, and any configured subsystems (such as the `agent-provisioning` subsystem).
 - Allows control of deployed software versions through the Viam app.
@@ -199,7 +199,7 @@ Period update checks will continue to run afterwards.
 The fast start mode only affects the initial startup sequencing.
 {{< /alert >}}
 
-You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FASTSTART=1` in your environment.
+You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FAST_START=1` in your environment.
 
 ### `agent-provisioning`
 
