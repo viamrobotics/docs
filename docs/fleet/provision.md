@@ -55,7 +55,7 @@ Regardless whether provisioning happens through the captive web portal or a mobi
 
 1. When a machine that has `viam-agent` installed and `agent-provisioning` configured comes online, `agent-provisioning` creates a WiFi hotspot.
 
-   - The [`agent-provisioning` configuration](#configuration) is at <file>/etc/viam-provisioning.json</file.
+   - The [`agent-provisioning` configuration](#configuration) is at <file>/etc/viam-provisioning.json</file>.
    - The [`viam-agent` configuration](/configure/agent/#configuration), if provided, is at <file>/etc/viam.json</file> alongside the rest of the machine configuration, including which fragments to use (if any).
 
 1. The end user uses their mobile device or computer and connects to the WiFi hotspot.
@@ -81,7 +81,7 @@ Regardless whether provisioning happens through the captive web portal or a mobi
      - Click the copy icon next to **Viam server config** to copy the machine credentials configuration file.
      - Paste the `viam-server` app config when prompted.
 
-1. The machine will then disable the hotspot network and attempt to connected using the provided network information.
+1. The machine will then disable the hotspot network and attempt to connect using the provided network information.
    If `viam-agent` cannot establish a connection using the provided network information, the machine will create the hotspot again and continue going through steps (2-5) until a connection is successfully established.
 1. If the connection is successful, `viam-agent` installs `viam-server`.
 
@@ -101,7 +101,7 @@ When you [install `viam-agent`](/configure/agent/#installation), you may optiona
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "manufacturer": "<NAME>",
-  "model": "NAME",
+  "model": "<NAME>",
   "fragment_id": "<ID>",
   "hotspot_prefix": "<PREFIX>",
   "disable_dns_redirect": true,
@@ -145,14 +145,14 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 | `manufacturer` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"viam"`. |
 | `model` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"custom"`. |
 | `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
-| `hotspot_prefix` | string | Optional | Viam agent will prepend this to the hostname of the device append and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
+| `hotspot_prefix` | string | Optional | Viam agent will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
 | `disable_dns_redirect` | boolean | Optional | By default, ALL DNS lookups using the provisioning hotspot will redirect to the device. This causes most phones/mobile devices to automatically redirect the user to the captive portal as a "sign in" screen. When disabled, only domains ending in .setup (ex: viam.setup) will be redirected. This generally avoids displaying the portal to users and is mainly used in conjunction with a mobile provisioning application workflow. Default: `false`. |
 | `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
 | `roaming_mode` | boolean | Optional | By default, the device will only attempt to connect to a single wifi network (the one with the highest priority), provided during initial provisioning/setup using the provisioning mobile app or captive web portal. Wifi connection alone is enough to consider the device as "online" even if the global internet is not reachable. If the primary network configured during provisioning cannot be connected to and roaming mode is enabled, the device will attempt connections to all configured networks in `networks`, and only consider the device online if the internet is reachable. Default: `false`. |
 | `offline_timeout` | boolean | Optional | Will only enter provisioning mode (hotspot) after being disconnected longer than this time. Useful on flaky connections, or when part of a system where the device may start quickly, but the wifi/router may take longer to be available. Default: `"2m"` (2 minutes). |
 | `user_timeout` | boolean | Optional | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `"5m"` (5 minutes). |
 | `fallback_timeout` | boolean | Optional | Provisioning mode will exit after this time, to allow other unmanaged (for example wired) or manually configured connections to be tried. Provisioning mode will restart if the connection/online status doesn't change. Default: `"10m"` (10 minutes). |
-| `networks` | boolean | Optional | Add additional network the machine can connect to for provisioning. We recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager). See [Networks](/configure/agent/#networks). Default: `[]`. |
+| `networks` | boolean | Optional | Add additional networks the machine can connect to for provisioning. We recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager) rather than in this file, or in the corresponding machine config in the Viam app, if networks aren't needed until after initial provisioning. See [Networks](/configure/agent/#networks). Default: `[]`. |
 
 #### Networks
 
