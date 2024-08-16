@@ -36,12 +36,13 @@ import requests_cache
 from retry_requests import retry
 
 # Set up the Open-Meteo API client with cache and retry on error
-cache_session = requests_cache.CachedSession('.cache', expire_after = 3600)
-retry_session = retry(cache_session, retries = 5, backoff_factor = 0.2)
-openmeteo = openmeteo_requests.Client(session = retry_session)
+cache_session = requests_cache.CachedSession('.cache', expire_after=3600)
+retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
+openmeteo = openmeteo_requests.Client(session=retry_session)
 
 # Make sure all required weather variables are listed here
-# The order of variables in hourly or daily is important to assign them correctly below
+# The order of variables in hourly or daily is important
+# to assign them correctly below
 url = "https://air-quality-api.open-meteo.com/v1/air-quality"
 params = {
   "latitude": 44.0582,
@@ -51,7 +52,7 @@ params = {
 }
 responses = openmeteo.weather_api(url, params=params)
 
-# Process first location. Add a for-loop for multiple locations or weather models
+# Process first location.
 response = responses[0]
 print(f"Coordinates {response.Latitude()}°N {response.Longitude()}°E")
 print(f"Elevation {response.Elevation()} m asl")
@@ -81,6 +82,7 @@ from serial import Serial
 import time
 
 def main():
+
     port = Serial('/dev/ttyAMA0', baudrate=9600)
 
     def parse_data(data):
@@ -194,8 +196,6 @@ The following code puts the functionality of the [example test script](#start-wi
 from typing import ClassVar, Mapping, Any, Optional
 from typing_extensions import Self
 
-from typing import Any, Mapping, Optional
-
 from viam.utils import SensorReading
 from viam.module.types import Reconfigurable
 from viam.proto.app.robot import ComponentConfig
@@ -233,7 +233,8 @@ class meteo_PM(Sensor, Reconfigurable):
     # Validates JSON Configuration
     @classmethod
     def validate(cls, config: ComponentConfig):
-        # Allow users to configure different coordinates from which to get PM readings
+        # Allow users to configure different coordinates
+        # from which to get PM readings
         latitude = config.attributes.fields["latitude"].number_value
         if latitude == "":
             # Set a default
@@ -245,22 +246,25 @@ class meteo_PM(Sensor, Reconfigurable):
         return
 
     # Handles attribute reconfiguration
-    def reconfigure(self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]):
-        # here we initialize the resource instance, the following is just an example and should be updated as needed
+    def reconfigure(
+      self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+      ):
         self.latitude = float(config.attributes.fields["latitude"].number_value)
         self.longitude = float(config.attributes.fields["longitude"].number_value)
         return
 
     async def get_readings(
-        self, *, extra: Optional[Mapping[str, Any]] = None, timeout: Optional[float] = None, **kwargs
+        self, *, extra: Optional[Mapping[str, Any]] = None,
+        timeout: Optional[float] = None, **kwargs
     ) -> Mapping[str, SensorReading]:
 
         # Set up the Open-Meteo API client with cache and retry on error
-        cache_session = requests_cache.CachedSession('.cache', expire_after = 3600)
-        retry_session = retry(cache_session, retries = 5, backoff_factor = 0.2)
-        openmeteo = openmeteo_requests.Client(session = retry_session)
+        cache_session = requests_cache.CachedSession('.cache', expire_after=3600)
+        retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
+        openmeteo = openmeteo_requests.Client(session=retry_session)
 
-        # The order of variables in hourly or daily is important to assign them correctly below
+        # The order of variables in hourly or daily is
+        # important to assign them correctly below
         url = "https://air-quality-api.open-meteo.com/v1/air-quality"
         params = {
             "latitude": self.latitude,
@@ -273,7 +277,8 @@ class meteo_PM(Sensor, Reconfigurable):
         # Process location
         response = responses[0]
 
-        # Current values. The order of variables needs to be the same as requested.
+        # Current values. The order of variables needs
+        # to be the same as requested.
         current = response.Current()
         current_pm10 = current.Variables(0).Value()
         current_pm2_5 = current.Variables(1).Value()
@@ -285,7 +290,6 @@ class meteo_PM(Sensor, Reconfigurable):
             "pm2_5": current_pm2_5,
             "pm10": current_pm10
         }
-
 ```
 
 {{< /expand >}}
