@@ -104,7 +104,6 @@ If you have a [compatible operating system](/installation/#compatibility), follo
 
    - `manual`: installs only `viam-server` on your machine.
    - `viam-agent`: installs viam-agent, which will automatically install (or update) viam-server **and** provide additional functionality such as [provisioning](/fleet/provision/) and operating system update configuration.
-   - installs [`viam-agent`](/configure/agent/) which provisions a machine as it first comes online with a pre-defined configuration.
 
 1. Follow the steps shown on your machine.
 
