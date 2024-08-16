@@ -171,7 +171,7 @@ if err != nil {
 }
 
 // Get segments
-segments, err := mySegmenter.ObjectPointClouds(context.Background(), cameraName, nil)
+segments, err := mySegmenter.GetObjectPointClouds(context.Background(), cameraName, nil)
 if err != nil {
     logger.Fatalf("Could not get segments: %v", err)
 }
