@@ -1,6 +1,6 @@
 ---
 title: "How to manage modules you created"
-linkTitle: "Manage modules"
+linkTitle: "Update and manage modules"
 type: "docs"
 weight: 26
 images: ["/registry/create-module.svg"]
