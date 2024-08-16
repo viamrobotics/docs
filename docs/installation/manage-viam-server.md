@@ -14,9 +14,13 @@ aliases:
   - /get-started/installation/manage-viam-server/
 ---
 
-Once you've [installed `viam-server`](/installation/), you can chose to run it as a system service or directly on the command line.
+If you have manually [installed `viam-server`](/installation/), you can chose to run it as a system service or directly on the command line.
 Running as a system service enables you to configure `viam-server` to start automatically when your system boots, and is the [default installation option](/installation/#install-viam-server) on Linux.
 Running on the command line is suitable for local development.
+
+{{< alert title="Note" color="note" >}}
+If you have installed `viam-agent`, see [Manage `viam-agent`](/installation/manage-viam-agent/) instead.
+{{< /alert >}}
 
 ## Run `viam-server`
 

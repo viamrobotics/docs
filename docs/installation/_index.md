@@ -102,40 +102,26 @@ If you have a [compatible operating system](/installation/#compatibility), follo
 
 1. Select your preferred installation method:
 
-   - `manual`: installs `viam-server` directly on your machine.
-   - `viam-agent`: installs [`viam-agent`](/configure/agent/) which provisions a machine as it first comes online with a pre-defined configuration.
+   - `manual`: installs only `viam-server` on your machine.
+   - `viam-agent`: installs viam-agent, which will automatically install (or update) viam-server **and** provide additional functionality such as [provisioning](/fleet/provision/) and operating system update configuration.
+   - installs [`viam-agent`](/configure/agent/) which provisions a machine as it first comes online with a pre-defined configuration.
 
-{{< tabs >}}
-{{% tab name="Manual" %}}
+1. Follow the steps shown on your machine.
 
-6. Follow the steps shown to install `viam-server` on your machine.
-
-7. Once you have followed the steps on the setup instructions, `viam-server` is installed and running.
-   Wait for confirmation that your machine has successfully connected.
+1. Once you have followed the steps on the setup instructions, wait for confirmation that your machine has successfully connected.
 
    On your machine's page on [the Viam app](https://app.viam.com), your machine will show that it's **Live**.
-
-{{% /tab %}}
-{{% tab name="viam-agent" %}}
-
-6. Follow the steps shown to install `viam-agent` on your machine.
-
-7. When `viam-agent` starts, it will install `viam-server` and run it.
-
-   Wait for confirmation that your machine has successfully connected.
-
-   On your machine's page on [the Viam app](https://app.viam.com), your machine will show that it's **Live**.
-
-{{% /tab %}}
-{{< /tabs >}}
 
 {{< alert title="Linux: Automatic startup" color="note" >}}
-On Linux installs, `viam-server` will start automatically when your system boots by default, but you can [change this behavior](/installation/manage-viam-server/) if desired.
+On manual Linux installs, `viam-server` will start automatically when your system boots.
+You can [change this behavior](/installation/manage-viam-server/) if desired.
 {{< /alert >}}
 
-### Manage `viam-server`
+### Manage your installation
 
-To learn how to run, update, or uninstall `viam-server`, see [Manage `viam-server`](/installation/manage-viam-server/).
+To learn how to run, update, or uninstall `viam-agent`, see [Manage `viam-agent`](/installation/manage-viam-agent/).
+
+For manual installs of only `viam-server`, see [Manage `viam-server`](/installation/manage-viam-server/).
 
 ### Next steps
 
