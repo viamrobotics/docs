@@ -177,7 +177,7 @@ You need to implement this method to satisfy the sensor API:
    If you want to be able to configure something else, for example the location to get online data from, you can add attributes for that.
    If your sensor doesn't require any configuration, delete the `some_pin` lines but don't delete the `validate` and `reconfigure` functions entirely; they're needed for the module to function even if they don't do anything interesting.
 
-1. In the `get_readings` function definition, paste a version of your test script.
+1. In the `get_readings` function definition, paste your test script.
    Edit the script to return a dictionary of readings instead of printing them.
    Be sure to add any required imports to the top of the file.
 
@@ -194,7 +194,7 @@ The following code puts the functionality of the [example test script](#start-wi
 from typing import ClassVar, Mapping, Any, Optional
 from typing_extensions import Self
 
-from typing import Any, Final, Mapping, Optional
+from typing import Any, Mapping, Optional
 
 from viam.utils import SensorReading
 from viam.module.types import Reconfigurable
@@ -292,10 +292,15 @@ class meteo_PM(Sensor, Reconfigurable):
 
 For more examples, see the [existing sensor models](/components/sensor/#available-models).
 
+## Edit requirements.txt
+
+Update the generated <file>requirements.txt</file> file to include any packages that must be installed for the module to run.
+Depending on your use case, you may not need to add anything here beyond `viam-sdk` which is auto-populated.
+
 ## Make the module executable
 
 You need an executable file so that `viam-server` can run your module.
-The module generator already created the <file>requirements.txt</file> and the <file>run.sh</file> "entrypoint" file for you, so all you need to do is make the entrypoint file executable by running the following command with your correct file path:
+The module generator already created the <file>run.sh</file> "entrypoint" file for you, so all you need to do is make this file executable by running the following command with your correct file path:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo chmod +x <your-file-path-to>/run.sh
