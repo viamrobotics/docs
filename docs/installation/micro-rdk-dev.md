@@ -9,7 +9,7 @@ imageAlt: "E S P 32 - espressif"
 description: "Set up the Espressif ESP32 for development with the micro-RDK."
 # SMEs: Nicolas M., Gautham V., Andrew M.
 aliases:
-  - "/installation/prepare/microcontrollers/development-setup/"
+  - /installation/prepare/microcontrollers/development-setup/
   - /get-started/installation/prepare/microcontrollers/development-setup/
   - /get-started/installation/microcontrollers/development-setup/
   - /get-started/installation/micro-rdk-dev/

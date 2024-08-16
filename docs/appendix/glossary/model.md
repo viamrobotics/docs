@@ -16,4 +16,4 @@ Models are either included with [`viam-server`](/installation/), provided in {{<
 All models are uniquely namespaced as colon-delimited-triplets.
 Built-in model names have the form `rdk:builtin:name`.
 Modular resource model names have the form `namespace:repo-name:name`.
-See [Name your new resource model](/use-cases/create-module/#name-your-new-resource-model) for more information.
+See [Name your new resource model](/how-tos/create-module/#name-your-new-resource-model) for more information.

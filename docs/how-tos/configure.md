@@ -6,6 +6,9 @@ type: "docs"
 description: "Build a simple smart machine in a few steps using Viam's modular system of components and services without writing much or any code."
 images: ["/platform/build.svg", "/services/ml/configure.svg"]
 tags: ["components", "configuration"]
+aliases:
+  - /use-cases/configure/
+  - use-cases/configure/
 ---
 
 You can get a smart machine running with Viam in just a few steps.
@@ -58,7 +61,7 @@ For each component that makes up your machine:
 3. Click on the **Test** area of the configuration panel to test your component.
 4. If any problems occur check the [logs](/cloud/machines/#logs) or review or roll back the [configuration history](/cloud/machines/#configure).
 
-If a component you want to use for your project is not natively supported, you can [build your own modular resource](/use-cases/create-module/).
+If a component you want to use for your project is not natively supported, you can [build your own modular resource](/how-tos/create-module/).
 
 You need to [_configure_](/configure/) your machine so that `viam-server` can interact with its hardware.
 Use the configuration builder tool in the Viam app to create a file that describes what hardware you are using and how it is connected.
@@ -101,7 +104,7 @@ For more information, see the [configuration documentation](/configure/).
 Once you have configured your machine, continue to develop an application:
 
 {{< cards >}}
-{{% card link="/use-cases/develop-app/" %}}
+{{% card link="/how-tos/develop-app/" %}}
 {{< /cards >}}
 
 To see full sample projects, that configure and control machines, check out these tutorials:

@@ -6,10 +6,12 @@ type: "docs"
 images: ["/services/icons/data-query.svg"]
 description: "Retrieve and query sensor data that you have synced to the Viam app using Python SDK."
 modulescript: true
+aliases:
+  - /use-cases/sensor-data-query-sdk/
 # SME: Devin Hilly
 ---
 
-You can use the data management service to [capture sensor data](/use-cases/collect-sensor-data/) from any machine and sync that data to the cloud.
+You can use the data management service to [capture sensor data](/how-tos/collect-sensor-data/) from any machine and sync that data to the cloud.
 Then, you can use the Python SDK to retrieve and query that data.
 For example, you can configure data capture for several sensors on one machine, or for several sensors across multiple machines, to report the ambient operating temperature.
 You can then write a script to run queries against that data to search for outliers or edge cases, to analyze how the ambient temperature affects your machines' operation or to take action if the machines are overheating.
@@ -31,7 +33,7 @@ You can then write a script to run queries against that data to search for outli
 
 {{% expand "Captured sensor data. Click to see instructions." %}}
 
-Follow the guide to [capture sensor data](/use-cases/collect-sensor-data/).
+Follow the guide to [capture sensor data](/how-tos/collect-sensor-data/).
 
 {{% /expand%}}
 
@@ -143,11 +145,11 @@ Adjust the Python script to query your data further.
 
 ## Next steps
 
-On top of querying sensor data with the Python SDK, you can also [query](/use-cases/sensor-data-query-with-third-party-tools/) or [visualize](/use-cases/sensor-data-visualize/) it with third-party tools.
+On top of querying sensor data with the Python SDK, you can also [query](/how-tos/sensor-data-query-with-third-party-tools/) or [visualize](/how-tos/sensor-data-visualize/) it with third-party tools.
 
 {{< cards >}}
-{{% card link="/use-cases/sensor-data-query-with-third-party-tools/" %}}
-{{% card link="/use-cases/sensor-data-visualize/" %}}
+{{% card link="/how-tos/sensor-data-query-with-third-party-tools/" %}}
+{{% card link="/how-tos/sensor-data-visualize/" %}}
 {{< /cards >}}
 
 To see sensor data in action, check out this tutorial:

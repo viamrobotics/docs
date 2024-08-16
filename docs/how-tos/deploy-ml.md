@@ -6,14 +6,16 @@ type: "docs"
 tags: ["vision", "data", "services"]
 images: ["/services/ml/train.svg"]
 description: "Use your image data to train a computer vision ML model."
+aliases:
+  - /use-cases/deploy-ml/
 ---
 
 You can use Viam's built-in tools to train a machine learning (ML) model on your images and then deploy computer vision on your machines.
 
-![Diagram of the camera component to data management service to ML model service to vision service pipeline.](/use-cases/ml-vision-diagram.png)
+![Diagram of the camera component to data management service to ML model service to vision service pipeline.](/how-tos/ml-vision-diagram.png)
 
 For example, you can train a model to recognize your dog and detect whether they are sitting or standing.
-Then, you can configure your machine to [capture images](/use-cases/image-data/) only when your dog is in the camera frame so you don't capture hundreds of photos of an empty room.
+Then, you can configure your machine to [capture images](/how-tos/image-data/) only when your dog is in the camera frame so you don't capture hundreds of photos of an empty room.
 You can then get even more image data of your dog and improve your ML model by training it on the larger dataset.
 
 You can do all of this using the [Viam app](https://app.viam.com) user interface.
@@ -34,7 +36,7 @@ You will not need to write any code.
 **1. Collect images**
 
 Start by collecting images from your cameras and syncing it to the [Viam app](https://app.viam.com).
-See [Collect image data and sync it to the cloud](/use-cases/image-data/#collect-image-data-and-sync-it-to-the-cloud) for instructions.
+See [Collect image data and sync it to the cloud](/how-tos/image-data/#collect-image-data-and-sync-it-to-the-cloud) for instructions.
 
 {{% /tablestep %}}
 {{% tablestep link="/services/data/dataset/" %}}

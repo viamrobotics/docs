@@ -156,8 +156,8 @@ To learn how to run, update, or uninstall `viam-server`, see [Manage `viam-serve
 ### Next steps
 
 {{< cards >}}
-{{% card link="/use-cases/configure/" %}}
-{{% card link="/use-cases/develop-app/" %}}
+{{% card link="/how-tos/configure/" %}}
+{{% card link="/how-tos/develop-app/" %}}
 {{% card link="/configure/" %}}
 {{< /cards >}}
 
@@ -262,8 +262,8 @@ if err != nil {
 ### Next steps
 
 {{< cards >}}
-{{% card link="/use-cases/configure/" %}}
-{{% card link="/use-cases/develop-app/" %}}
+{{% card link="/how-tos/configure/" %}}
+{{% card link="/how-tos/develop-app/" %}}
 {{% card link="/configure/" %}}
 {{< /cards >}}
 

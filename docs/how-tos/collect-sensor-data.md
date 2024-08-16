@@ -6,6 +6,8 @@ type: "docs"
 images: ["/services/icons/data-capture.svg"]
 description: "Gather sensor data, sync it to the cloud, and view it in the Viam app."
 modulescript: true
+aliases:
+  - /use-cases/collect-sensor-data/
 # SME: Devin Hilly
 ---
 
@@ -113,12 +115,12 @@ Confirm that you are seeing data appear.
 
 ## Next steps
 
-Now that you have collected sensor data, you can [query it](/use-cases/sensor-data-query-with-third-party-tools/), [access it programmatically](/use-cases/sensor-data-query-sdk/) or [visualize it](/use-cases/sensor-data-visualize/) with third-party tools.
+Now that you have collected sensor data, you can [query it](/how-tos/sensor-data-query-with-third-party-tools/), [access it programmatically](/how-tos/sensor-data-query-sdk/) or [visualize it](/how-tos/sensor-data-visualize/) with third-party tools.
 
 {{< cards >}}
-{{% card link="/use-cases/sensor-data-query-with-third-party-tools/" %}}
-{{% card link="/use-cases/sensor-data-query-sdk/" %}}
-{{% card link="/use-cases/sensor-data-visualize/" %}}
+{{% card link="/how-tos/sensor-data-query-with-third-party-tools/" %}}
+{{% card link="/how-tos/sensor-data-query-sdk/" %}}
+{{% card link="/how-tos/sensor-data-visualize/" %}}
 {{< /cards >}}
 
 To see sensor data in action, check out this tutorial:

@@ -11,6 +11,7 @@ aliases:
   - /registry/upload/
   - /extend/modular-resources/upload/
   - /modular-resources/upload/
+  - /use-cases/create-module/
 ---
 
 {{<imgproc src="/registry/module-diagram.png" resize="x900" declaredimensions=true alt="Representation of the Viam registry, some modules within it, and a rover they support." >}}
@@ -1250,7 +1251,7 @@ To create a packaged executable:
    By default, the output directory for the packaged executable is <file>dist</file>, and the name of the executable is derived from the name of the input script (in this case, main).
 
 We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86 and Arm Linux distributions, and MacOS.
-Follow the instructions to [Update an existing module using a GitHub action](/use-cases/manage-modules/#update-an-existing-module-using-a-github-action) to add the build configuration to your machine.
+Follow the instructions to [Update an existing module using a GitHub action](/how-tos/manage-modules/#update-an-existing-module-using-a-github-action) to add the build configuration to your machine.
 
 With this approach, you can make a build script like the following to
 build your module, and configure the resulting executable (<file>dist/main</file>) as your module `"entrypoint"`:
@@ -1268,7 +1269,7 @@ tar -czvf dist/archive.tar.gz dist/main
 ```
 
 This script automates the process of setting up a Python virtual environment on a Linux arm64 machine, installing dependencies, packaging the Python module into a standalone executable using PyInstaller, and then compressing the resulting executable into a tarball.
-For more examples of build scripts see [Update an existing module using a GitHub action](/use-cases/manage-modules/#update-an-existing-module-using-a-github-action).
+For more examples of build scripts see [Update an existing module using a GitHub action](/how-tos/manage-modules/#update-an-existing-module-using-a-github-action).
 
 {{% alert title="Note" color="note" %}}
 
@@ -1614,7 +1615,7 @@ To use a local module on your machine, first add its module to your machine's co
 1. Enter the module's **Executable path**.
    This path must be the absolute path on your machine's filesystem to either:
 
-   - the module's [executable file](/use-cases/create-module/#compile-or-package-your-module), such as `run.sh` or a compiled binary.
+   - the module's [executable file](/how-tos/create-module/#compile-or-package-your-module), such as `run.sh` or a compiled binary.
    - a [packaged tarball](https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_tar.html) of your module, ending in `.tar.gz` or `.tgz`.
      If you are providing a tarball file in this field, be sure that your packaged tarball contains your module's [`meta.json` file](/cli/#the-metajson-file) within it.
 
@@ -1729,7 +1730,7 @@ If you later wish to make your module public, you can use the [`viam module upda
         <td><code>models</code></td>
         <td>object</td>
         <td><strong>Required</strong></td>
-        <td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p><p>For more information, see <a href="/use-cases/create-module/#name-your-new-resource-model">naming your model</a>.</p></td>
+        <td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/cloud/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p><p>For more information, see <a href="/how-tos/create-module/#name-your-new-resource-model">naming your model</a>.</p></td>
       </tr>
       <tr>
         <td><code>entrypoint</code></td>
@@ -1798,7 +1799,7 @@ If you later wish to make your module public, you can use the [`viam module upda
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 
-For more information, see [Name your new resource model](/use-cases/create-module/#name-your-new-resource-model).
+For more information, see [Name your new resource model](/how-tos/create-module/#name-your-new-resource-model).
 
     {{% /alert %}}
 
@@ -1812,7 +1813,7 @@ For more information, see [Name your new resource model](/use-cases/create-modul
    tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
    ```
 
-   where `<PATH-TO-EXECUTABLE>` is the [packaged executable](/use-cases/create-module/#compile-or-package-your-module) that runs the module at the [entry point](/use-cases/create-module/#write-an-entry-point-main-program-file).
+   where `<PATH-TO-EXECUTABLE>` is the [packaged executable](/how-tos/create-module/#compile-or-package-your-module) that runs the module at the [entry point](/how-tos/create-module/#write-an-entry-point-main-program-file).
    If using PyInstaller, by default this would be `dist/main`.
 
    For a Python module built using the `venv` approach, the command might look like this:
@@ -1821,7 +1822,7 @@ For more information, see [Name your new resource model](/use-cases/create-modul
    tar -czf module.tar.gz run.sh requirements.txt src
    ```
 
-   Where `run.sh` is your [entrypoint file](/use-cases/create-module/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/use-cases/create-module/#compile-or-package-your-module), and `src` is the directory that contains the source code of your module.
+   Where `run.sh` is your [entrypoint file](/how-tos/create-module/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/how-tos/create-module/#compile-or-package-your-module), and `src` is the directory that contains the source code of your module.
 
    Supply the path to the resulting archive file in the next step.
 
@@ -1879,7 +1880,7 @@ You have now created a module, and are ready to deploy it to a fleet of machines
 There are two ways to deploy a module:
 
 - Through the Viam registry: Once you have uploaded your new module to the Viam registry, [add the module to one or more machines in the Viam app](/registry/configure/).
-  You can also choose to configure [automated uploads for new module versions](/use-cases/manage-modules/#update-an-existing-module-using-a-github-action) through a continuous integration (CI) workflow, using a GitHub Action if desired, greatly simplifying how you push changes to your module to the registry as you make them.
+  You can also choose to configure [automated uploads for new module versions](/how-tos/manage-modules/#update-an-existing-module-using-a-github-action) through a continuous integration (CI) workflow, using a GitHub Action if desired, greatly simplifying how you push changes to your module to the registry as you make them.
 - As a local module (without uploading it to the Viam app), as you did in the [Test your module locally step above](#test-your-module-locally).
   This is a great way to test, but if you'd like to use the module on more machines it's easiest to add it to the registry either publicly or privately.
 
@@ -1891,7 +1892,7 @@ With a local installation, you can test your module in a controlled environment 
 For instructions on how to update or delete modules you've created, see the following how-to guide:
 
 {{< cards >}}
-{{% card link="/use-cases/manage-modules/" %}}
+{{% card link="/how-tos/manage-modules/" %}}
 {{< /cards >}}
 
 To read more about module development at Viam, check out these tutorials that create modules:
