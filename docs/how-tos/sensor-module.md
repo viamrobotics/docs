@@ -170,7 +170,7 @@ To make this easier, use the Viam module generator:
      Name it something related to what your module does.
    - Name your sensor based on what it supports, for example, if it supports a model of ultrasonic sensor called "XYZ Sensor 1234" you could call your model `XYZ_1234` or similar.
 
-   For more information, see [Name your new resource model](/use-cases/create-module/#name-your-new-resource-model).
+   For more information, see [Name your new resource model](/how-tos/create-module/#name-your-new-resource-model).
 
 1. For the API triplet, enter `rdk:component:sensor`.
    This means that you are implementing the standard Viam sensor API.
@@ -196,7 +196,7 @@ You need to implement this method to satisfy the sensor API:
    Edit the script to return a dictionary of readings instead of printing them.
    Be sure to add any required imports to the top of the file.
 
-1. [Add logging messages](/use-cases/create-module/#optional-configure-logging) as desired.
+1. [Add logging messages](/how-tos/create-module/#optional-configure-logging) as desired.
 
 <br>
 
@@ -274,7 +274,6 @@ class meteo_PM(Sensor, Reconfigurable):
           config.attributes.fields["longitude"].number_value)
         return
 
-
     async def get_readings(
         self, *, extra: Optional[Mapping[str, Any]] = None,
         timeout: Optional[float] = None, **kwargs
@@ -337,13 +336,13 @@ sudo chmod +x <your-file-path-to>/run.sh
 
 It's a good idea to test your module locally before uploading it to the [Viam registry](https://app.viam.com/registry):
 
-1. Follow [the local module testing instructions](/use-cases/create-module/#test-your-module-locally) to configure your local module and then the associated model on your machine.
+1. Follow [the local module testing instructions](/how-tos/create-module/#test-your-module-locally) to configure your local module and then the associated model on your machine.
 
-   ![Configuring a local model after the local module is configured.](/use-cases/sensor-module-config.png)
+   ![Configuring a local model after the local module is configured.](/how-tos/sensor-module-config.png)
 
 1. Click the **TEST** bar at the bottom of your sensor configuration, and check whether readings are being returned there.
 
-   ![The control tab with pm10 and pm2_5 readings displayed.](/use-cases/sensor-test.png)
+   ![The control tab with pm10 and pm2_5 readings displayed.](/how-tos/sensor-test.png)
 
 If it works, you're almost ready to share your module by uploading it to the registry.
 If not, you have some debugging to do.
@@ -404,4 +403,4 @@ The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM`
 
 ## Upload your module to the registry
 
-To share your module with others in your organization or with the world, [follow these instructions to upload your module to the modular resource registry](/use-cases/create-module/#upload-your-module-to-the-modular-resource-registry).
+To share your module with others in your organization or with the world, [follow these instructions to upload your module to the modular resource registry](/how-tos/create-module/#upload-your-module-to-the-modular-resource-registry).
