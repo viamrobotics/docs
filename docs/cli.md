@@ -1042,7 +1042,7 @@ viam machines part restart --machine e4713ae5-013a-43fe-800e-ff7999a8e3a0 --part
 | `--location` | Location name that the machine belongs to | `list`, `status`, `logs`, `part` | **Required** |
 | `--machine` | Machine ID for which the command is being issued | `status`, `logs`, `part`, `part restart` | **Required** |
 | `--errors` | Boolean, return only errors (default: false) | `logs` | Optional |
-| `--part` | Part name (`logs`) or ID (``part restart`) for which the command is being issued | `logs`, `part restart` | Optional |
+| `--part` | Part name (`logs`) or ID (``part restart`) for which the command is being issued | `logs`, `part` | Optional |
 | `--tail` | Tail (stream) logs, boolean(default false) | `part logs` | Optional |
 | `--stream` | If specified, the interval in which to stream the specified data, for example, 100ms or 1s | `part run` | Optional |
 | `--data` | Command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments)) | `part run` | **Required** |
