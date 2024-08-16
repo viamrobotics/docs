@@ -1741,7 +1741,7 @@ If you later wish to make your module public, you can use the [`viam module upda
       <tr>
         <td><code>build</code></td>
         <td>object</td>
-        <td><strong>Optional</strong></td>
+        <td>Optional</td>
         <td>An object containing the command to run to build your module, as well as optional fields for the path to your dependency setup script, the target architectures to build for, and the path to your built module. Use this with the <a href="/cli/#using-the-build-subcommand">Viam CLI's build subcommand</a>. </td>
       </tr>
 
