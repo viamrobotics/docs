@@ -80,13 +80,12 @@ Before creating the module, the following script could have been used to verify 
 from serial import Serial
 import time
 
-
 def main():
-
 
     port = Serial('/dev/ttyAMA0', baudrate=9600)
 
     def parse_data(data):
+
         if len(data) < 2:
             return {}
         if data[0] == 0x42 and data[1] == 0x4d:
@@ -218,7 +217,8 @@ class meteo_PM(Sensor, Reconfigurable):
     Sensor represents a sensing device that can provide measurement readings.
     """
 
-    MODEL: ClassVar[Model] = Model(ModelFamily("jessamy", "weather"), "meteo_PM")
+    MODEL: ClassVar[Model] = Model(
+      ModelFamily("jessamy", "weather"), "meteo_PM")
 
     # Class parameters
     latitude: float  # Latitude at which to get data
