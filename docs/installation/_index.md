@@ -114,8 +114,8 @@ If you have a [compatible operating system](/installation/#compatibility), follo
 {{< alert title="Linux: Automatic startup" color="note" >}}
 On Linux installs, by default `viam-server` or `viam-agent` and `viam-server` will start automatically when your system boots.
 You can change this behavior if desired.
-If you installed `viam-server` manually see [Manage `viam-server`](/installation/manage-viam-server/). 
-If you installed `viam-server` through `viam-agent` see [Manage `viam-agent`](/installation/manage-viam-agent/). 
+If you installed `viam-server` manually see [Manage `viam-server`](/installation/manage-viam-server/).
+If you installed `viam-server` through `viam-agent` see [Manage `viam-agent`](/installation/manage-viam-agent/).
 {{< /alert >}}
 
 ### Manage your installation

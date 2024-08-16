@@ -57,6 +57,7 @@ This is the general process for provisioning depending on whether you are using 
 {{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" class="alignright" max-width="400px" style="margin-left: 2rem">}}
 
 1. If the provisioning happens with a mobile app, open the app and follow any instructions there until the app directs you to turn on the machine.
+
    - If you are using the Viam mobile app, create a new machine and then follow the instructions.
 
 1. When you power on the machine that has `viam-agent` installed and `agent-provisioning` configured, `agent-provisioning` creates a WiFi hotspot.
