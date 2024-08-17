@@ -1,5 +1,5 @@
 <!-- prettier-ignore -->
-| Method Name | Description | `viam-micro-server` Support |
+| Method Name | Description | micro-RDK Support |
 | ----------- | ----------- | ----------------- |
 | [`MoveStraight`](/components/base/#movestraight) | Move the base in a straight line across the given distance (mm) at the given velocity (mm/sec). | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`Spin`](/components/base/#spin) | Turn the base in place, rotating it to the given angle (degrees) at the given angular velocity (degrees/sec). | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |

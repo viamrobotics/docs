@@ -164,7 +164,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### SetPower
 
 Set the linear and angular power of the base, represented as a percentage of max power for each direction in the range of [-1.0 to 1.0].
-Supported by `viam-micro-server`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -519,7 +519,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### Stop
 
 Stop the base from moving immediately.
-Supported by `viam-micro-server`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -683,7 +683,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 Execute model-specific commands that are not otherwise defined by the component API.
 For built-in models, model-specific commands are covered with each model's documentation.
 If you are implementing your own base and add features that have no built-in API method, you can access them with `DoCommand`.
-Supported by `viam-micro-server`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

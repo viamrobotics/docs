@@ -3,7 +3,7 @@
 Report the current linear velocity in the x, y and z directions (as a 3D vector) in meters per second.
 
 Supported by GPS models.
-Supported by `viam-micro-server`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -78,7 +78,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 Report the current angular velocity about the x, y and z axes (as a 3D vector) in degrees per second.
 
 Supported by IMU models and by `gyro-mpu6050`.
-Supported by `viam-micro-server`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -156,10 +156,10 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetCompassHeading
 
-Report the current [compass heading](<https://en.wikipedia.org/wiki/Heading_(navigation)>) in degrees.
+Report the current [compass heading](https://en.wikipedia.org/wiki/Heading_(navigation)) in degrees.
 
 Supported by GPS models.
-Supported by `viam-micro-server`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -317,7 +317,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 Report the current GeoPoint (latitude, longitude) and altitude (in meters).
 
 Supported by GPS models.
-Supported by `viam-micro-server`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -354,7 +354,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(\*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): Contains the current latitude and longitude as floats.
+- [(*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): Contains the current latitude and longitude as floats.
 - [(float64)](https://pkg.go.dev/builtin#float64): The altitude in meters.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
@@ -392,7 +392,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### GetProperties
 
 Get the supported properties of this sensor.
-Supported by `viam-micro-server`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -428,7 +428,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(\*Properties)](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#Properties): The supported properties of the movement sensor.
+- [(*Properties)](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#Properties): The supported properties of the movement sensor.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -502,7 +502,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(\*Accuracy)](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#Accuracy): The precision and reliability metrics of the movement sensor, which vary depending on model.
+- [(*Accuracy)](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#Accuracy): The precision and reliability metrics of the movement sensor, which vary depending on model.
   This type contains the following fields:
 
   - `AccuracyMap` [(map[string]float32)](https://pkg.go.dev/builtin#string): A mapping of specific measurement parameters to their accuracy values.
@@ -518,7 +518,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
   - `CompassDegreeError` [(float32)](https://pkg.go.dev/builtin#float32): The estimated error in compass readings, measured in degrees.
     This signifies the deviation or uncertainty in the sensor's compass measurements.
     A lower value implies a more accurate compass direction.
-
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -557,7 +556,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 Report the current linear acceleration in the x, y and z directions (as a 3D vector) in meters per second per second.
 
 Supported by IMU models, `accel-adxl345`, and `gyro-mpu6050`.
-Supported by `viam-micro-server`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -667,7 +666,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 Get all the measurements/data from the sensor.
 Results depend on the sensor model and can be of any type.
 If a sensor is not configured to take a certain measurement or fails to read a piece of data, that data will not appear in the readings dictionary.
-Supported by `viam-micro-server`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -764,7 +763,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 Execute model-specific commands that are not otherwise defined by the component API.
 If you are implementing your own movement sensor and add features that have no built-in API method, you can access them with `DoCommand`.
-Supported by `viam-micro-server`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

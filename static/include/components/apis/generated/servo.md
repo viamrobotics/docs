@@ -14,7 +14,7 @@ The speed will be related to the "angle" you pass in as a linear approximation.
 It is recommended that you test your servo to determine the desired speed.
 
 {{% /alert %}}
-Supported by `viam-micro-server`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -85,7 +85,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### GetPosition
 
 Get the current set angle of the servo in degrees.
-Supported by `viam-micro-server`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -282,7 +282,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### Stop
 
 Stop the servo from moving.
-Supported by `viam-micro-server`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -384,7 +384,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 Execute model-specific commands that are not otherwise defined by the component API.
 For built-in models, model-specific commands are covered with each model's documentation.
 If you are implementing your own servo and add features that have no built-in API method, you can access them with `DoCommand`.
-Supported by `viam-micro-server`.
+Supported by the micro-RDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
