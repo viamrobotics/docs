@@ -149,7 +149,7 @@ You can now [upload your own ML model](/services/ml/upload-model/) using any of 
 
 {{% changelog date="2024-03-01" color="added" title="Ultrasonic sensor for `viam-micro-server`" %}}
 
-You can now use the [ultrasonic sensor component](/components/sensor/ultrasonic-viam-micro-server/) with [`viam-micro-server`](/installation/#install-viam-micro-server) to integrate an [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running `viam-micro-server`.
+You can now use the [ultrasonic sensor component](/components/sensor/ultrasonic-micro-rdk/) with [`viam-micro-server`](/installation/#install-viam-micro-server) to integrate an [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running `viam-micro-server`.
 
 {{% /changelog %}}
 
