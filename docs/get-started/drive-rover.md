@@ -49,7 +49,7 @@ In this guide you'll write code that makes a rover drive in a square.
 You don't need to buy or own any hardware to complete this tutorial.
 You only need the following:
 
-- A Linux, maxOS or Windows computer that can run SDK code.
+- A Linux, macOS or Windows computer that can run SDK code.
 - A [borrowed Viam Rover](https://app.viam.com/try), [your own Viam Rover](/appendix/try-viam/rover-resources/), or another mobile robot.
   You can use [Try Viam](https://app.viam.com/try) to borrow a rover online at no cost which is already configured with all the components you need.
   If you have your own rover on hand, whether it's a [Viam rover](https://www.viam.com/resources/rover) or not, these instructions work for any wheeled robot that can be configured as a [base component](/components/base/wheeled/).
