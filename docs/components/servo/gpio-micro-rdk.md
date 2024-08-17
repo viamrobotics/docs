@@ -1,5 +1,5 @@
 ---
-title: "Configure a GPIO Servo (Micro-RDK)"
+title: "Configure a GPIO Servo (viam-micro-server)"
 linkTitle: "gpio"
 weight: 90
 type: "docs"

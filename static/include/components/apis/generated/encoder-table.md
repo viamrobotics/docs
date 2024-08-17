@@ -1,5 +1,5 @@
 <!-- prettier-ignore -->
-| Method Name | Description | micro-RDK Support |
+| Method Name | Description | `viam-micro-server` Support |
 | ----------- | ----------- | ----------------- |
 | [`GetPosition`](/components/encoder/#getposition) | Get the current position of the encoder in ticks or degrees. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`ResetPosition`](/components/encoder/#resetposition) | Set the current position of the encoder to be the new zero position. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |

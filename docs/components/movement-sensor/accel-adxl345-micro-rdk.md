@@ -1,5 +1,5 @@
 ---
-title: "Configure an ADXL345 Accelerometer (Micro-RDK)"
+title: "ADXL345 Accelerometer (viam-micro-server)"
 linkTitle: "accel-adxl345"
 weight: 20
 type: "docs"

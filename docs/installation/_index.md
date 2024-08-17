@@ -27,13 +27,14 @@ aliases:
   - /get-started/installation/
 ---
 
-To use Viam, you need to install either the `viam-server` binary or the micro-RDK.
+To use Viam, you need to install either the `viam-server` binary or `viam-micro-server`.
 
-`viam-server` is the binary built from the [Robot Development Kit](https://github.com/viamrobotics/rdk) that contains and manages communications between all Viam's built-in hardware drivers ({{< glossary_tooltip term_id="component" text="components" >}}) and software {{< glossary_tooltip term_id="service" text="services" >}}, connects your machine to the cloud, manages machine configuration, and manages dependencies including {{< glossary_tooltip term_id="module" text="modules" >}}.
+[`viam-server`](/get-started/#viam-server) is the binary built from the [Robot Development Kit](https://github.com/viamrobotics/rdk) that contains and manages communications between all Viam's built-in hardware drivers ({{< glossary_tooltip term_id="component" text="components" >}}) and software {{< glossary_tooltip term_id="service" text="services" >}}, connects your machine to the cloud, manages machine configuration, and manages dependencies including {{< glossary_tooltip term_id="module" text="modules" >}}.
 
-The micro-RDK is a lightweight version of the {{% glossary_tooltip term_id="rdk" text="Robot Development Kit (RDK)"%}} which can run on resource-limited embedded systems that cannot run the fully-featured [`viam-server`](/get-started/).
+`viam-micro-server` is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
+`viam-micro-server` is built from the [micro-RDK](https://github.com/viamrobotics/micro-rdk/tree/main).
 
-For an overview of the Viam software platform, see [Viam in 3 minutes](/get-started/).
+For an overview of the Viam software platform, see [Learn about Viam](/get-started/).
 
 {{< alert title="In this page" color="note" >}}
 {{% toc %}}
@@ -70,13 +71,13 @@ Otherwise proceed to [install `viam-server`](/installation/#install-viam-server)
 Other SBCs such as the [RockPi S](https://wiki.radxa.com/RockpiS) and [Orange Pi Zero 2](https://orangepi.com/index.php?route=product/product&path=237&product_id=849) can run Viam with an experimental [periph.io](https://periph.io/) based [modular component](https://github.com/viam-labs/periph_board).
 
 {{% /tab %}}
-{{% tab name="micro-RDK" %}}
+{{% tab name="viam-micro-server" %}}
 
-The only microcontroller the micro-RDK currently supports is the [ESP32](https://www.espressif.com/en/products/socs/esp32).
+The only microcontroller `viam-micro-server` currently supports is the [ESP32](https://www.espressif.com/en/products/socs/esp32).
 
-{{% readfile "/static/include/micro-rdk-hardware.md" %}}
+{{% readfile "/static/include/micro-hardware.md" %}}
 
-Proceed to [install the micro-RDK](/installation/#install-the-micro-rdk).
+Proceed to [install `viam-micro-server`](/installation/#install-viam-micro-server).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -132,20 +133,22 @@ For manual installs of only `viam-server`, see [Manage `viam-server`](/installat
 {{% card link="/configure/" %}}
 {{< /cards >}}
 
-## Install the micro-RDK
+## Install `viam-micro-server`
+
+`viam-micro-server` is the lightweight version of `viam-server` that you can run on ESP32 microcontrollers.
 
 {{% alert title="BETA" color="note" %}}
-The micro-RDK is in beta mode and many features supported by the RDK are still being added to the micro-RDK.
+`viam-micro-server` is in beta mode and many features supported by `viam-server` are still being added to `viam-micro-server`.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
-The micro-RDK installer is a CLI that allows you to flash a build of the micro-RDK, along with your machine's credentials and your wifi information, directly to your ESP32.
+The `viam-micro-server` installer is a CLI that allows you to flash a build of `viam-micro-server`, along with your machine's credentials and your wifi information, directly to your ESP32.
 
 With this installation, you can use your ESP32 with all supported resource APIs, but you cannot write your own code directly interacting with the chip.
-If you want to program the chip directly, follow the setup instructions in [the Micro-RDK Development Setup](/installation/#install-the-micro-rdk) instead.
+If you want to program the chip directly, follow the setup instructions in [`viam-micro-server` Development Setup](/installation/#install-viam-micro-server) instead.
 
-### Flash your ESP32 with the micro-RDK installer
+### Flash your ESP32 with the `viam-micro-server` installer
 
 If you have a [compatible microcontroller](/installation/#compatibility), follow along with the steps outlined below to install `viam-server`:
 
@@ -164,12 +167,12 @@ If you have a [compatible microcontroller](/installation/#compatibility), follow
 
 1. Select your system's operating system and **Micro-RDK** as your RDK type.
 
-1. Follow the instructions to flash the micro-RDK directly to an ESP32 connected to your computer through a data cable.
+1. Follow the instructions to flash `viam-micro-server` directly to an ESP32 connected to your computer through a data cable.
 
-   To see the micro-RDK server logs through the serial connection, add `--monitor` to the command in step 3.
+   To see the `viam-micro-server` logs through the serial connection, add `--monitor` to the command in step 3.
    If the program cannot auto-detect the serial port to which your ESP32 is connected, you may be prompted to select the correct one among a list.
 
-1. Once you have followed the steps on the setup instructions, the micro-RDK is installed and will run.
+1. Once you have followed the steps on the setup instructions, `viam-micro-server` is installed and will run.
    Wait for confirmation that your microcontroller has successfully connected.
 
    On your machine's page on [the Viam app](https://app.viam.com), your machine will show that it's **Live**.
@@ -177,13 +180,13 @@ If you have a [compatible microcontroller](/installation/#compatibility), follow
 
 For more `micro-rdk-installer` CLI usage options, see [GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/micro-rdk-installer).
 
-See [GitHub](https://github.com/viamrobotics/micro-rdk) for code examples and more information on the micro-RDK.
+See [GitHub](https://github.com/viamrobotics/micro-rdk) for code examples and more information on `viam-micro-server`.
 
 ### Recommendations when using an SDK
 
 As you use the ESP32, if you write [SDK code](/sdks/), you may experience instability.
 If the connection to the ESP32 with an SDK is unstable, we recommend the following changes to the default settings in your SDK code when connecting to an ESP32.
-This will disable the SDK background task that monitors the connection to the micro-RDK, saving bandwidth.
+This will disable the SDK background task that monitors the connection to `viam-micro-server`, saving bandwidth.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -192,7 +195,7 @@ This will disable the SDK background task that monitors the connection to the mi
 # Replace the connect function found in the CONNECT tab with the following
 async def connect():
     opts = RobotClient.Options(
-        # Micro-RDK configures once at boot,
+        # viam-micro-server configures once at boot,
         # so we don't need to check if the components have changed
         refresh_interval=0,
         # Checking the connection can safely be disabled
@@ -200,7 +203,7 @@ async def connect():
         # Same for Attempting to reconnect
         attempt_reconnect_interval=0,
         disable_sessions=True,
-        # Micro-RDK doesn't support sessions so it is safe to disable them
+        # viam-micro-server doesn't support sessions so it is safe to disable them
         dial_options=DialOptions.with_api_key(
             # Replace "<API-KEY-ID>" (including brackets)
             # with your machine's api key id
@@ -222,10 +225,10 @@ robot, err := client.New(
     context.Background(),
     "<ROBOT-URL>", // Replace "<ROBOT-URL>" (including brackets) with your machine's url
     logger,
-    client.WithDisableSessions(), // Micro-RDK doesn't support sessions so it is safe to disable them
+    client.WithDisableSessions(), // viam-micro-server doesn't support sessions so it is safe to disable them
     client.WithCheckConnectedEvery(0), // Checking the connection can safely be disabled
     client.WithReconnectEvery(0), // Same for Attempting to reconnect
-    client.WithRefreshEvery(0), // Micro-RDK configures once at boot, so we don't need to check if the components have changed
+    client.WithRefreshEvery(0), // viam-micro-server configures once at boot, so we don't need to check if the components have changed
     client.WithDialOptions(rpc.WithEntityCredentials(
         // Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
         "<API-KEY-ID>",

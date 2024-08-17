@@ -4,7 +4,7 @@ Set the portion of max power to send to the motor (between `-1` and `1`).
 A value of `1` represents 100% power forwards, while a value of `-1` represents 100% power backwards.
 
 Power is expressed as a floating point between `-1` and `1` that scales between -100% and 100% power.
-Supported by the micro-RDK.
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -382,7 +382,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 Report the position of the motor based on its encoder.
 The value returned is the number of revolutions relative to its zero position.
 This method raises an exception if position reporting is not supported by the motor.
-Supported by the micro-RDK.
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -459,7 +459,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### GetProperties
 
 Report a dictionary mapping optional properties to whether it is supported by this motor.
-Supported by the micro-RDK.
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -552,7 +552,7 @@ Stepper motors will report `true` if they are being powered while holding a posi
 
 **Returns:**
 
-- (Tuple[[bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool), [float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]):  A tuple containing two values; the first [0] value indicates whether the motor is currently powered, andthe second [1] value indicates the current power percentage of the motor.   .
+- (Tuple[[bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool), [float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]): A tuple containing two values; the first [0] value indicates whether the motor is currently powered, andthe second [1] value indicates the current power percentage of the motor. .
 
 **Example:**
 
@@ -656,7 +656,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ### IsMoving
 
 Return whether the motor is actively moving (or attempting to move) under its own power.
-Supported by the micro-RDK.
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -735,7 +735,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### Stop
 
 Cut the power to the motor immediately, without any gradual step down.
-Supported by the micro-RDK.
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

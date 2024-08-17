@@ -1,5 +1,5 @@
 <!-- prettier-ignore -->
-| Method Name | Description | Models That Support This Method | micro-RDK Support |
+| Method Name | Description | Models That Support This Method | `viam-micro-server` Support |
 | ----------- | ----------- | ------------------------------- | ----------------- |
 | [`GetPosition`](/components/movement-sensor/#getposition) | Get the current latitude, longitude and altitude. | GPS models, `wheeled-odometry` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`GetLinearVelocity`](/components/movement-sensor/#getlinearvelocity) | Get the current linear velocity as a 3D vector. | GPS models, `wheeled-odometry` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |

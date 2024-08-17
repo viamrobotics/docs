@@ -1,5 +1,5 @@
 <!-- prettier-ignore -->
-| Method Name | Description | micro-RDK Support |
+| Method Name | Description | `viam-micro-server` Support |
 | ----------- | ----------- | ----------------- |
 | [`SetGPIO`](/components/board/#setgpio) | Set the digital signal output of this pin to low (0V) or high (active, >0V). | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`GetGPIO`](/components/board/#getgpio) | Get if the digital signal output of this pin is high (active, >0V). | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |

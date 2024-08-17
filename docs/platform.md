@@ -17,7 +17,7 @@ The open-source executable binary that runs on a Viam-powered {{< glossary_toolt
 
 ## What a machine is
 
-A {{< glossary_tooltip term_id="machine" text="machine" >}} is any computer (SBC, server) running [`viam-server`](/architecture/#viam-server-and-the-micro-rdk) or any microcontroller running `viam-micro-server`, plus any hardware attached to that computer.
+A {{< glossary_tooltip term_id="machine" text="machine" >}} is any computer (SBC, server) running [`viam-server`](/architecture/#viam-server-and-viam-micro-server) or any microcontroller running `viam-micro-server`, plus any hardware attached to that computer.
 
 ## How machines are structured, configured and organized
 
