@@ -1,5 +1,5 @@
 ---
-title: "`viam-micro-server` Development Setup"
+title: "viam-micro-server Development Setup"
 linkTitle: "Micro-RDK Development Setup"
 weight: 50
 no_list: true
