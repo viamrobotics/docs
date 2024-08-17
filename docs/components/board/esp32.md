@@ -3,7 +3,7 @@ title: "Configure an ESP32 Board (viam-micro-server)"
 linkTitle: "esp32"
 weight: 20
 type: "docs"
-description: "Configure an esp32 board."
+description: "Configure an ESP32 board running viam-micro-server."
 images: ["/installation/thumbnails/esp32-espressif.png"]
 imageAlt: "E S P 32 - espressif"
 tags: ["board", "components"]

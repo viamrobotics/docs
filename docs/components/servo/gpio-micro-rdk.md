@@ -3,7 +3,7 @@ title: "Configure a GPIO Servo (viam-micro-server)"
 linkTitle: "gpio"
 weight: 90
 type: "docs"
-description: "Configure a gpio servo with a microcontroller."
+description: "Configure a gpio hobby servo with a microcontroller."
 tags: ["servo", "components"]
 icon: true
 images: ["/icons/components/servo.svg"]

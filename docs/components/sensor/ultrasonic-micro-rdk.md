@@ -3,7 +3,7 @@ title: "Configure an Ultrasonic Sensor (viam-micro-server)"
 linkTitle: "ultrasonic"
 weight: 60
 type: "docs"
-description: "Configure an ultrasonic sensor."
+description: "Configure an ultrasonic sensor with a microcontroller."
 tags: ["sensor", "components", "ultrasonic"]
 icon: true
 images: ["/icons/components/sensor.svg"]

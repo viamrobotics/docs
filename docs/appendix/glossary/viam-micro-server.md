@@ -2,7 +2,7 @@
 title: viam-micro-server
 id: viam-micro-server
 full_link: /architecture/#viam-server-and-viam-micro-server
-short_description: The lightweight verion of viam-server that can run on ESP32 devices.
+short_description: The lightweight version of viam-server that can run on ESP32 devices.
 ---
 
 The lightweight version of `viam-server`, built for microcontrollers.
