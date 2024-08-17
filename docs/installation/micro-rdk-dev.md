@@ -26,7 +26,7 @@ Follow these steps to install and build `viam-micro-server` on your ESP32 for de
 
 ### Hardware requirements
 
-{{% readfile "/static/include/micro-hardware.md" %}}
+{{% readfile "/static/include/micro-rdk-hardware.md" %}}
 
 ### Software requirements
 

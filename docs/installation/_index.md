@@ -75,7 +75,7 @@ Other SBCs such as the [RockPi S](https://wiki.radxa.com/RockpiS) and [Orange Pi
 
 The only microcontroller `viam-micro-server` currently supports is the [ESP32](https://www.espressif.com/en/products/socs/esp32).
 
-{{% readfile "/static/include/micro-hardware.md" %}}
+{{% readfile "/static/include/micro-rdk-hardware.md" %}}
 
 Proceed to [install `viam-micro-server`](/installation/#install-viam-micro-server).
 
