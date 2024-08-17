@@ -1,5 +1,5 @@
 ---
-title: "How to manage modules you created"
+title: "How to update and manage modules you created"
 linkTitle: "Update and manage modules"
 type: "docs"
 weight: 26
