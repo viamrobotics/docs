@@ -25,6 +25,8 @@ Click on one of the following guides that provide solutions for common tasks and
 {{% card link="/how-tos/manage-modules/" class="fit-contain" %}}
 {{% card link="/how-tos/navigate/" %}}
 {{% card link="/how-tos/one-to-many/" class="fit-contain" %}}
+{{% card link="/how-tos/provision/" class="fit-contain" %}}
+{{% card link="/how-tos/provision-setup/" %}}
 {{% card link="/how-tos/manage-fleet/" class="fit-contain" %}}
 {{< /cards >}}
 

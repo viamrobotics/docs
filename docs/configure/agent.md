@@ -33,7 +33,7 @@ To provision machines using `viam-agent`, see
 
 ## Installation
 
-You can install `viam-agent` using either an existing machine's part ID and API key, or using an existing <file>/etc/viam.json</file> configuration file.
+You can install `viam-agent` using either an existing machine's part ID and API key, or using an existing machine credentials configuration file at <file>/etc/viam.json</file>.
 
 {{< alert title="Important" color="note" >}}
 Your machine must have `curl` available in order to install `viam-agent`.

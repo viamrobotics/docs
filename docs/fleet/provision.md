@@ -38,6 +38,12 @@ For Bullseye, the installation of `viam-agent` changes the network configuration
 
 {{< /alert >}}
 
+For a guide on how to configure provisioning for your machine, see:
+
+{{< cards >}}
+{{% card link="/how-tos/provision/" %}}
+{{< /cards >}}
+
 ## End user experience
 
 End users receive a machine, and use either a captive web portal or mobile app to complete the machine setup.
@@ -49,6 +55,12 @@ To add your branding, you can build your own mobile app and use the [Flutter SDK
 
 If you are not using Flutter or TypeScript and would like to use provisioning, please [contact us](mailto:support@viam.com).
 
+For an end-user guide to setting up their machine, see:
+
+{{< cards >}}
+{{% card link="/how-tos/provision-setup/" %}}
+{{< /cards >}}
+
 This is the general process for provisioning depending on whether you are using a captive web portal or a mobile app:
 
 {{< tabs >}}
@@ -58,7 +70,7 @@ This is the general process for provisioning depending on whether you are using 
 
 1. If the provisioning happens with a mobile app, open the app and follow any instructions there until the app directs you to turn on the machine.
 
-   - If you are using the Viam mobile app, create a new machine and then follow the instructions.
+   - If you are using the Viam mobile app, create a new machine or click on an existing machine that has not yet been set up and follow the instructions.
 
 1. When you power on the machine that has `viam-agent` installed and `agent-provisioning` configured, `agent-provisioning` creates a WiFi hotspot.
 
