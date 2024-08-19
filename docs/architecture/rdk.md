@@ -1,22 +1,19 @@
 ---
-title: "Robot Development Kit"
-linkTitle: "Robot Development Kit"
-weight: 1
+title: "viam-server"
+linkTitle: "viam-server"
+weight: 80
 type: "docs"
-description: "The RDK is the open-source, on-machine portion of the Viam platform, that provides viam-server and the Go SDK."
+description: "viam-server is the open-source, on-machine portion of the Viam platform."
 tags: ["server", "rdk"]
 aliases:
   - "/product-overviews/rdk"
   - "/build/program/rdk"
+  - /internals/rdk/
 ---
 
 {{< alert title="Tip" color="tip" >}}
 For an overview of the Viam platform, see [Get started](/get-started/).
 {{< /alert >}}
-
-Viam’s Robot Development Kit (RDK) is the [open-source](https://github.com/viamrobotics/rdk), on-machine portion of the Viam platform, that provides `viam-server` and the Go SDK.
-
-## `viam-server`
 
 _viam-server_ manages the following:
 
@@ -54,7 +51,7 @@ Log messages written appear under the [**LOGS** tab](/cloud/machines/#logs) for 
 
 ### Shutdown
 
-During machine shutdown, the RDK handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
+During machine shutdown, `viam-server` handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
 
 ## Next steps
 
