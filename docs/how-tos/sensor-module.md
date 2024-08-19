@@ -129,7 +129,6 @@ if __name__ == "__main__":
 
 {{< /expand >}}
 
-
 Run your test script from your terminal and make sure you are able to get readings from the sensor before proceeding.
 
 ## Generate boilerplate module code
