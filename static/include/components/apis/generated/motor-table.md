@@ -1,6 +1,6 @@
 <!-- prettier-ignore -->
-| Method Name | Description | micro-RDK Support |
-| ----------- | ----------- | ----------------- |
+| Method Name | Description | `viam-micro-server` Support |
+| ----------- | ----------- | --------------------------- |
 | [`SetPower`](/components/motor/#setpower) | Set the portion of max power to send to the motor (between `-1` and `1`). | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`SetRPM`](/components/motor/#setrpm) | Spin the motor indefinitely at the specified speed, in revolutions per minute. If `rpm` is positive, the motor will spin forwards, and if `rpm` is negative, the motor will spin backwards. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`GoFor`](/components/motor/#gofor) | Spin the motor the specified number of revolutions at specified revolutions per minute. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |

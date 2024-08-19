@@ -1703,7 +1703,7 @@ def write_markdown(type, names, methods):
                                output_file.write(line)
 
                             if micro_rdk_support == "Yes":
-                                output_file.write('Supported by the micro-RDK.\n')
+                                output_file.write('Supported by `viam-micro-server`.\n')
 
                             output_file.write('\n')
 
@@ -1714,8 +1714,8 @@ def write_markdown(type, names, methods):
                         if is_first_method_in_this_resource and resource != 'movement_sensor':
                             table_file.write('<!-- prettier-ignore -->\n')
                             if micro_rdk_support != '':
-                                table_file.write('| Method Name | Description | micro-RDK Support |\n')
-                                table_file.write('| ----------- | ----------- | ----------------- |\n')
+                                table_file.write('| Method Name | Description | `viam-micro-server` Support |\n')
+                                table_file.write('| ----------- | ----------- | --------------------------- |\n')
                             else:
                                 table_file.write('| Method Name | Description |\n')
                                 table_file.write('| ----------- | ----------- |\n')

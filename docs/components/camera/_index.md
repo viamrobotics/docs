@@ -52,18 +52,18 @@ To use your camera component, check whether one of the following models supports
 For configuration information, click on the model name:
 
 {{< tabs >}}
-{{% tab name="RDK" %}}
+{{% tab name="viam-server" %}}
 
 {{<resources api="rdk:component:camera" type="camera" no-intro="true">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
 {{% /tab %}}
-{{% tab name="micro-RDK" %}}
+{{% tab name="viam-micro-server" %}}
 
 {{< alert title="Support Notice" color="note" >}}
 
-There is currently no support for this component in the micro-RDK.
+There is currently no support for this component in `viam-micro-server`.
 
 {{< /alert >}}
 

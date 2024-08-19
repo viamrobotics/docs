@@ -37,7 +37,7 @@ In this guide you'll capture and sync sensor or image data from a machine.
 You don't need to buy or own any hardware to complete this tutorial.
 If you have the following components, you can follow along on your own hardware:
 
-- A Linux, maxOS or WSL computer which can run `viam-server` or an ESP32 which can run the micro-RDK.
+- A Linux, maxOS or WSL computer which can run `viam-server` or an ESP32 which can run `viam-micro-server`.
 - A sensor or a webcam: this could be the webcam on your laptop or any other webcam you can connect to your computer.
 
 {{% expand "No computer, camera, or sensor at hand?" %}}
@@ -62,11 +62,11 @@ Go to the Viam app and [add a new machine](/cloud/machines/#add-a-new-machine).
 ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
 
 {{< /expand >}}
-{{% expand "Step 2: Install viam-server or the micro-RDK" %}}
+{{% expand "Step 2: Install viam-server or `viam-micro-server`" %}}
 
 Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page.
-If you are using a microcontroller, install the micro-RDK.
+If you are using a microcontroller, install `viam-micro-server`.
 Otherwise, install `viam-server`.
 Wait for your device to connect to the Viam app.
 
@@ -140,11 +140,11 @@ Go to the Viam app and [add a new machine](/cloud/machines/#add-a-new-machine).
 ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
 
 {{< /expand >}}
-{{% expand "Step 2: Install viam-server or the micro-RDK" %}}
+{{% expand "Step 2: Install viam-server or `viam-micro-server`" %}}
 
 Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page.
-If you are using a microcontroller, install the micro-RDK.
+If you are using a microcontroller, install `viam-micro-server`.
 Otherwise, install `viam-server`.
 Wait for your device to connect to the Viam app.
 

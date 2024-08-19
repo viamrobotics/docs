@@ -69,7 +69,7 @@ To use your arm component, check whether one of the following models supports it
 For configuration information, click on the model name:
 
 {{< tabs >}}
-{{% tab name="RDK" %}}
+{{% tab name="viam-server" %}}
 
 {{<resources api="rdk:component:arm" type="arm" no-intro="true">}}
 
@@ -82,11 +82,11 @@ You can follow [this guide](/registry/examples/custom-arm/) to implement your cu
 {{< /alert >}}
 
 {{% /tab %}}
-{{% tab name="micro-RDK" %}}
+{{% tab name="viam-micro-server" %}}
 
 {{< alert title="Support Notice" color="note" >}}
 
-There is currently no support for this component in the micro-RDK.
+There is currently no support for this component in `viam-micro-server`.
 
 {{< /alert >}}
 

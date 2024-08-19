@@ -1,6 +1,6 @@
 <!-- prettier-ignore -->
-| Method Name | Description | micro-RDK Support |
-| ----------- | ----------- | ----------------- |
+| Method Name | Description | `viam-micro-server` Support |
+| ----------- | ----------- | --------------------------- |
 | [`SetGPIO`](/components/board/#setgpio) | Set the digital signal output of this pin to low (0V) or high (active, >0V). | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`GetGPIO`](/components/board/#getgpio) | Get if the digital signal output of this pin is high (active, >0V). | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`GetPWM`](/components/board/#getpwm) | Get the pin's pulse-width modulation (PWM) duty cycle: a float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the high state (active, >0V) relative to the interval period of the PWM signal (interval period being the mathematical inverse of the PWM frequency). | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |

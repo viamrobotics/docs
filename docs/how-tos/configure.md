@@ -34,7 +34,7 @@ Then create a machine by typing in a name and clicking **Add machine**.
 All of the software that runs your smart machine is packaged into a binary called `viam-server`.
 Install it on the computer controlling your smart machine by following the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} in the [Viam app](https://app.viam.com/).
 
-If you are using a microcontroller instead of a 64-bit computer, you can install a [lightweight version of `viam-server`](/installation/#install-the-micro-rdk).
+If you are using a microcontroller instead of a 64-bit computer, you can install a [lightweight version of `viam-server`](/installation/#install-viam-micro-server).
 You can install `viam-server` on your personal computer, or on a single-board computer (SBC).
 
 {{% /tablestep %}}

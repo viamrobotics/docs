@@ -12,14 +12,14 @@ menuindent: true
 
 This page provides an overview of how a machine is structured, including on-device and cloud communications:
 
-- [`viam-server`](#viam-server-and-the-micro-rdk)
+- [`viam-server` and `viam-micro-server`](#viam-server-and-viam-micro-server)
 - [Components, services and modules](#components-services-modules)
 - [Communication flow and security](#communication)
 - [How data flows in Viam](#data-management-flow)
 - [Basic machine example](#basic-machine-example)
 - [Structure of more complex machines](#complex-machines-with-multiple-parts)
 
-## `viam-server` and the micro-RDK
+## `viam-server` and `viam-micro-server`
 
 `viam-server` is the open-source executable binary that runs on your machine's SBC or other computer.
 
@@ -41,7 +41,7 @@ When `viam-server` can connect to the cloud, it also:
 
 `viam-server` can use the internet, wide area networks (WAN) or local networks (LAN) to establish peer-to-peer connections between two {{< glossary_tooltip term_id="machine" text="machines" >}}, or to a client application.
 
-The [micro-RDK](/installation/#install-the-micro-rdk) is the lightweight version of `viam-server` that you can run on ESP32 microcontrollers.
+[`viam-micro-server`](/installation/#install-viam-micro-server) is the lightweight version of `viam-server` that you can run on ESP32 microcontrollers.
 It supports a limited set of {{< glossary_tooltip term_id="resource" text="resources" >}} and can connect with the cloud as well as with devices running `viam-server`.
 
 ## Components, services, modules
@@ -81,7 +81,7 @@ If you want to add some other high-level software functionality beyond the built
 
 <img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure machine control." class="alignleft" style="max-width:270px;"></img>
 
-Viam uses peer-to-peer communication, where all machines running `viam-server` or the [micro-RDK](/installation/micro-rdk-dev/) (the version of `viam-server` for microcontrollers) communicate directly with each other as well as with the cloud.
+Viam uses peer-to-peer communication, where all machines running `viam-server` or [`viam-micro-server`](/installation/micro-rdk-dev/) (the version of `viam-server` for microcontrollers) communicate directly with each other as well as with the cloud.
 This peer-to-peer connectivity is enabled by sending [gRPC commands over WebRTC connections](/architecture/machine-to-machine-comms/#low-level-inter-robotsdk-communication).
 
 On startup, `viam-server` establishes a {{< glossary_tooltip term_id="webrtc" text="WebRTC" >}} connection with the [Viam app](https://app.viam.com).
@@ -163,7 +163,7 @@ Now, imagine you want to change to a different model of temperature sensor from 
 
 ## Complex machines with multiple parts
 
-In Viam, a _{{< glossary_tooltip term_id="part" text="part" >}}_ is an organizational concept consisting of one instance of `viam-server` (or the micro-RDK) running on a SBC or other computer, and all the hardware and software that that `viam-server` instance controls.
+In Viam, a _{{< glossary_tooltip term_id="part" text="part" >}}_ is an organizational concept consisting of one instance of `viam-server` (or `viam-micro-server`) running on a SBC or other computer, and all the hardware and software that that `viam-server` instance controls.
 
 Many simple {{< glossary_tooltip term_id="machine" text="machines" >}} consist of only one part: just one computer running `viam-server` with configured components and services.
 If you have a more complex situation with multiple computers and associated hardware working together, you have two options for organization:

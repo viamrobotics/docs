@@ -523,6 +523,22 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(viscapture.VisCapture)](https://pkg.go.dev/go.viam.com/rdk/vision/viscapture#VisCapture): A class that stores all potential returns from the vision service. It can return the image from the camera along with its associated detections, classifications, and objects, as well as any extra info the model may provide.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// The data to capture and return from the camera
+captOpts := viscapture.CaptureOptions{}
+// Get the captured data for a camera
+capture, err := visService.CaptureAllFromCamera(context.Background(), "cam1", captOpts, nil)
+if err != nil {
+    logger.Fatalf("Could not get capture data from vision service: %v", err)
+}
+image := capture.Image
+detections := capture.Detections
+classifications := capture.Classifications
+objects := capture.Objects
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
 
 {{% /tab %}}

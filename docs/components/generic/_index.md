@@ -47,21 +47,21 @@ To use your generic component, check whether one of the following models support
 For configuration information, click on the model name:
 
 {{< tabs >}}
-{{% tab name="RDK" %}}
+{{% tab name="viam-server" %}}
 
 {{<resources api="rdk:component:generic" type="generic" no-intro="true">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
 {{% /tab %}}
-{{% tab name="micro-RDK" %}}
+{{% tab name="viam-micro-server" %}}
 
-If your micro-RDK machine includes a resource that isn't a [base](/components/base/), [board](/components/board/),[encoder](/components/encoder/), [movement sensor](/components/movement-sensor/), [motor](/components/motor/), or [servo](/components/servo/), you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it as a custom model of the generic subtype.
+If your `viam-micro-server` machine includes a resource that isn't a [base](/components/base/), [board](/components/board/),[encoder](/components/encoder/), [movement sensor](/components/movement-sensor/), [motor](/components/motor/), or [servo](/components/servo/), you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it as a custom model of the generic subtype.
 
 {{< alert title="Important" color="note" >}}
-The micro-RDK works differently from the RDK, so creating modular resources for it is different.
-Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) for information on how to create custom resources for your micro-RDK machine.
-You will need to [recompile and flash your ESP32 yourself](/installation/#install-the-micro-rdk) instead of using Viam's prebuilt binary and installer.
+`viam-micro-server` works differently from the RDK, so creating modular resources for it is different.
+Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) for information on how to create custom resources for your `viam-micro-server` machine.
+You will need to [recompile and flash your ESP32 yourself](/installation/#install-viam-micro-server) instead of using Viam's prebuilt binary and installer.
 {{< /alert >}}
 
 {{% /tab %}}

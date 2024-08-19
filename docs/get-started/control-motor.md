@@ -24,7 +24,7 @@ In this guide you'll configure and control a motor.
 
 {{< alert title="You will learn" color="tip" >}}
 
-- How to create a machine and install viam-server or the micro-RDK
+- How to create a machine and install `viam-server` or `viam-micro-server`
 - How to configure a board and a motor
 - How to control your motor with UI and code
 
@@ -57,11 +57,11 @@ Select a location and [add a new machine](/cloud/machines/#add-a-new-machine).
 ![The 'My Desk' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/get-started/quickstarts/add-machine.png)
 
 {{< /expand >}}
-{{< expand "Step 2: Install viam-server or the micro-RDK" >}}
+{{< expand "Step 2: Install viam-server or `viam-micro-server`" >}}
 
 Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page.
-If you are using a microcontroller, install the micro-RDK.
+If you are using a microcontroller, install `viam-micro-server`.
 Otherwise, install `viam-server`.
 Wait for your device to connect to the Viam app.
 

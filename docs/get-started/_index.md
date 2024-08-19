@@ -26,14 +26,14 @@ All these machines start by combining hardware and software.
 ## `viam-server`
 
 At the core of Viam is the open-source `viam-server` executable which runs on a computer and manages hardware, software, and data for a machine.
-If you are working with microcontrollers, the [micro-RDK](/installation/) is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
+If you are working with microcontrollers, [`viam-micro-server`](/installation/) is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
 
 To use Viam with a machine, you create a configuration specifying which hardware and software the machine consists of.
 Viam has many built-in {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} that run within `viam-server`.
 The components and services are configurable building blocks you can put together to make your machine.
 `viam-server` then manages and runs the drivers for the configured hardware components and software services.
 
-For example, if you are building a pet-feeding machine you might install the micro-RDK on a microcontroller and create a machine configuration with a camera and a servo for the hardware you are using.
+For example, if you are building a pet-feeding machine you might install `viam-micro-server` on a microcontroller and create a machine configuration with a camera and a servo for the hardware you are using.
 
 ### Standard APIs
 
@@ -109,7 +109,7 @@ Here are some of the boards Viam supports:
 {{< board-carousel >}}
 <br>
 
-Viam also supports microcontrollers with the [micro-RDK](/installation/#install-the-micro-rdk).
+Viam also supports microcontrollers with [`viam-micro-server`](/installation/#install-viam-micro-server).
 
 ## Viam Cloud
 

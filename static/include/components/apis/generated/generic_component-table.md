@@ -1,6 +1,6 @@
 <!-- prettier-ignore -->
-| Method Name | Description | micro-RDK Support |
-| ----------- | ----------- | ----------------- |
+| Method Name | Description | `viam-micro-server` Support |
+| ----------- | ----------- | --------------------------- |
 | [`DoCommand`](/components/generic/#docommand) | Execute model-specific commands. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`GetGeometries`](/components/generic/#getgeometries) | Get all the geometries associated with the generic component in its current configuration, in the frame of the generic component. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`FromRobot`](/components/generic/#fromrobot) | Get the resource from the provided robot with the given name. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
