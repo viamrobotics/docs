@@ -91,11 +91,7 @@ To create a new map, follow the instructions below.
 {{< tabs name="Create new map">}}
 {{% tab name="Config Builder" %}}
 
-1. Ensure any sensors you wish to use are configured on the machine:
-
-   Having a 2D LiDAR camera(such as the `rplidar`) is required for using cartographer
-
-   Additionally, you can configure movement sensors on the machine. If you do, ensure the movement sensor supports the [required readings](#movement-sensors-optional).
+1. Ensure any sensors you wish to use are configured on the machine. See the [Hardware Requirements](#hardware-requirements) above.
 
 2. Set up the `cartographer` module on your machine:
 
@@ -119,7 +115,7 @@ To create a new map, follow the instructions below.
    - **Maximum range (meters)**: Set the maximum range of your `rplidar`.
      See [config params](#config_params) for suggested values for RPLidar A1 and A3.
 
-   If you would like to tune additional Cartographer parameters, you can expand **Show additional parameters**.
+   If you would like to tune additional Cartographer parameters, you can the click **{}** button to switch to the advanced view, then edit the `config_params` from there.
    See the [`config_params`](#config_params) section for more information on the other parameters.
 
    To save your changes, click the **Save** button in the top right corner of the page.
@@ -197,7 +193,7 @@ This example JSON configuration:
 
 For more information about the configuration attributes, see [Attributes](#attributes).
 
-After configuring cartographer the machine should begin mapping automatically. Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created. See our [tips](../#slam-mapping-best-practices) for making a good map! If you want to save your locally built map, you can use the **GetInternalState API** or use the local map uploading feature of the [cloudslam wrapper module](../cloudslam/)
+After configuring cartographer the machine should begin mapping automatically. Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created. See our [tips](../#slam-mapping-best-practices) for making a good map! If you want to save your locally built map, you can use the **GetInternalState API** or use the local map uploading feature of the [cloudslam wrapper module](../cloudslam/).
 
 ### Update an existing map
 
@@ -208,9 +204,10 @@ To update an existing map with new pointcloud data from a new SLAM session, foll
    {{< tabs name="Update existing map">}}
    {{% tab name="Config Builder" %}}
 
-   Configure **Select map** and **Map version** with the name and version of the map you would like to update.
-   For the other attributes, review the information in [Create a new map](#create-a-new-map).
-   You can see more details about the available maps from your machine's **Location** page under the **SLAM library** tab.
+   1. Select the Mapping mode dropdown and choose the **Update existing map** option.
+   2. Configure **Select map** and **Map version** with the name and version of the map you would like to update.
+      For the other attributes, review the information in [Create a new map](#create-a-new-map).
+      You can see more details about the available maps from your machine's **Location** page under the **SLAM library** tab.
 
    {{% /tab %}}
    {{% tab name="JSON Example" %}}
@@ -308,7 +305,10 @@ In this mode, the `cartographer` module on your machine executes the Cartographe
     {{< tabs name="Localize only">}}
     {{% tab name="Config Builder" %}}
 
-The configuration is similar to the configuration for [updating an existing map](#update-an-existing-map), where you want to select a `slam_map` for `cartographer` to localize on.
+    1.  Select the Mapping mode dropdown and choose the **Update existing map** option.
+    2.  Configure **Select map** and **Map version** with the name and version of the map you would like to localize on.
+        For the other attributes, review the information in [Create a new map](#create-a-new-map).
+        You can see more details about the available maps from your machine's **Location** page under the **SLAM library** tab.
 
     {{% /tab %}}
     {{% tab name="JSON Example" %}}
@@ -388,7 +388,7 @@ This example JSON configuration:
 
 2. After configuring cartographer on the machine, the map should appear automatically. Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
 
-   ![slam RC card localize only](/services/slam/slam-RC-card-localize-only.png)
+   <!-- ![slam RC card localize only](/services/slam/slam-RC-card-localize-only.png) -->
 
    {{% alert title="Info" color="info" %}}
 
