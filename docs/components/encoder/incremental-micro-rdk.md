@@ -1,5 +1,5 @@
 ---
-title: "Incremental Encoder (viam-micro-server)"
+title: "Configure an Incremental Encoder (viam-micro-server)"
 linkTitle: "incremental"
 type: "docs"
 description: "Configure an incremental encoder with a microcontroller."
