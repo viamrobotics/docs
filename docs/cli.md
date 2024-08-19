@@ -296,6 +296,7 @@ viam data export --destination=<output path> --data-type=<output data type> [...
 viam data delete [...named args]
 viam data dataset add --dataset-id=<dataset-id> --file-ids=<file-id-or-ids> --location-id=<location-id> --org-id=<org-id> [...named args]
 viam data dataset remove --dataset-id=<dataset-id> --file-ids=<file-id-or-ids> --location-id=<location-id> --org-id=<org-id> [...named args]
+viam data dataset export --destination=<output-directory> --dataset-id=<dataset-id>
 viam data database configure --org-id=<org-id> --password=<db-user-password>
 viam data database hostname --org-id=<org-id>
 ```
@@ -340,6 +341,7 @@ done
 | `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query) | - |
 | `dataset add` | Add a new image to an existing dataset by its file id, or add a group of images by specifying a filter | `filter` |
 | `dataset remove` | Remove an existing image from a dataset by its file id, or remove a group of images by specifying a filter | `filter` |
+| `dataset export` | Download all the data from a dataset | - |
 | `delete binary` | Delete binary data | - |
 | `delete tabular` | Delete tabular data | - |
 | `--help` | Return help | - |
@@ -358,23 +360,24 @@ done
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--destination` | Output directory for downloaded data |`export`| **Required** |
+| `--destination` | Output directory for downloaded data |`export`, `dataset export` | **Required** |
 | `--data-type` | Data type to be downloaded: either binary or tabular |`export`| **Required** |
 | `--component-name` | Filter by specified component name |`export`, `delete`| Optional |
 | `--component-type` | Filter by specified component type |`export`, `delete`| Optional |
 | `--component-model` | Filter by specified component model |`export`, `delete`| Optional |
-| `--dataset-id` | Dataset to add or remove images from |`dataset`| **Required** |
+| `--dataset-id` | Dataset to add or remove images from or download. To retrieve these IDs, navigate to your dataset’s page in the [Viam app](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID**. | `dataset`, `dataset export` | **Required** |
 | `--delete-older-than-days` | Number of days, 0 means all data will be deleted | `delete` | Optional |
 | `--start` | ISO-8601 timestamp indicating the start of the interval |`export`, `delete`, `dataset`| Optional |
 | `--end` | ISO-8601 timestamp indicating the end of the interval |`export`, `delete`, `dataset`| Optional |
 | `--file-ids` | File-ids to add or remove from a dataset |`dataset`| **Required** |
+| `--include-jsonl` | Set to `true` to include JSON Lines files for local testing |`dataset export`| Optional |
 | `--location-id` | Location ID for the file ids being added or removed from the specified dataset (only accepts one location id) |`dataset`| **Required** |
 | `--location-ids` | Filter by specified location ID (accepts comma-separated list) |`export`, `delete`| Optional |
 | `--method` | Filter by specified method |`export`, `delete`| Optional |
 | `--mime-types` | Filter by specified MIME type (accepts comma-separated list) |`export`, `delete`|false |
 | `--org-id` | Org ID for the database user being configured (with `database`), or for the file ids being added or removed from the specified dataset (with `dataset`) | `database configure`, `database hostname`, `dataset` | **Required** |
 | `--org-ids` | Filter by specified organizations ID (accepts comma-separated list) |`export`, `delete`| Optional |
-| `--parallel` | Number of download requests to make in parallel, with a default value of 10 |`export`, `delete`|false |
+| `--parallel` | Number of download requests to make in parallel, with a default value of 10 for `export` and `delete` and 100 for `dataset export` |`export`, `delete`, `dataset export` | Optional |
 | `--part-id` | Filter by specified part ID |`export`, `delete`| Optional |
 | `--part-name` | Filter by specified part name |`export`, `delete`| Optional |
 | `--robot-id` | Filter by specified robot ID |`export`, `delete`| Optional |
