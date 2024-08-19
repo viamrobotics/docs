@@ -331,10 +331,10 @@ viam data tag ids add --tags=new_tag_1,new_tag_2,new_tag_3 --org-id=123 --locati
 viam data tag ids remove --tags=new_tag_1,new_tag_2,new_tag_3 --org-id=123 --location-id=123 --file-ids=123,456
 
 # add tags to all data that matches a given filter
-viam data tag filter add --tags=new_tag_1,new_tag_2 --location-ids=012 --robot-name=cool-machine --org-ids=84842  --mime-types=image/jpeg,image/png
+viam data tag filter add --tags=new_tag_1,new_tag_2 --location-ids=012 --machine-name=cool-machine --org-ids=84842  --mime-types=image/jpeg,image/png
 
 # remove tags from all data that matches a given filter
-viam data tag filter remove --tags=new_tag_1 --location-ids=012 --robot-name=cool-machine --org-ids=84842  --mime-types=image/jpeg,image/png
+viam data tag filter remove --tags=new_tag_1 --location-ids=012 --machine-name=cool-machine --org-ids=84842  --mime-types=image/jpeg,image/png
 ```
 
 Viam currently only supports deleting approximately 500 files at a time.
