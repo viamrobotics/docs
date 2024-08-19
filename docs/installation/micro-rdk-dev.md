@@ -1,6 +1,6 @@
 ---
 title: "viam-micro-server Development Setup"
-linkTitle: "Micro-RDK Development Setup"
+linkTitle: "viam-micro-server Dev Setup"
 weight: 50
 no_list: true
 type: docs
@@ -30,7 +30,7 @@ Follow these steps to install and build `viam-micro-server` on your ESP32 for de
 
 ### Software requirements
 
-The micro-RDK (from which `viam-micro-server` is built) is written in Rust.
+`viam-micro-server` is written in Rust.
 To be able to develop `viam-micro-server` on macOS and Linux systems, you must install the following software on your development machine:
 
 #### Install dependencies
