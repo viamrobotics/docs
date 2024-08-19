@@ -129,29 +129,6 @@ if __name__ == "__main__":
 
 {{< /expand >}}
 
-{{< expand "Another example (this one is for a base, not a sensor)" >}}
-
-An example from the [custom robot dog base tutorial](/tutorials/custom/custom-base-dog/).
-When you run this with the robot dog hardware, you can tell it works because the robot dog takes a few steps forward.
-
-```python {class="line-numbers linkable-line-numbers"}
-# dog_test.py is for testing the connection
-import socket
-import time
-
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(("PASTE DOG IP ADDRESS HERE", 5001))
-
-cmd = "CMD_MOVE_FORWARD#15"
-s.send(cmd.encode("utf-8"))
-time.sleep(7)
-cmd = "CMD_MOVE_STOP"
-s.send(cmd.encode("utf-8"))
-cmd = "CMD_RELAX"
-s.send(cmd.encode("utf-8"))
-```
-
-{{< /expand >}}
 
 Run your test script from your terminal and make sure you are able to get readings from the sensor before proceeding.
 
@@ -183,7 +160,7 @@ In the next section, you'll customize some of these files to support your sensor
 ## Implement the sensor API
 
 Other than the inherited methods, the [sensor API](/components/sensor/#api) only contains one method, `GetReadings()`.
-You need to implement this method to satisfy the sensor API:
+You need to implement this method so your sensor supports the sensor API:
 
 1. In the generated <file>/YOUR_MODULE_NAME/src/</file> directory, open the </file>MODEL_NAME.py</file> file.
 
