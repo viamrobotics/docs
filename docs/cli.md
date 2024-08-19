@@ -972,11 +972,12 @@ This includes:
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines list
-viam machines status --organization=<org name> --location=<location name> --robot=<machine id>
-viam machines logs --organization=<org name> --location=<location name> --robot=<machine id> [...named args]
-viam machines part status --organization=<org name> --location=<location name> --robot=<machine id>
-viam machines part run --organization=<org name> --location=<location name> --robot=<machine id> [--stream] --data <meth>
-viam machines part shell --organization=<org name> --location=<location name> --robot=<machine id>
+viam machines status --organization=<org name> --location=<location name> --machine=<machine id>
+viam machines logs --organization=<org name> --location=<location name> --machine=<machine id> [...named args]
+viam machines part status --organization=<org name> --location=<location name> --machine=<machine id>
+viam machines part run --organization=<org name> --location=<location name> --machine=<machine id> [--stream] --data <meth>
+viam machines part shell --organization=<org name> --location=<location name> --machine=<machine id>
+viam machines part restart --machine=<machine id> --part=<part id>
 ```
 
 Examples:
@@ -987,17 +988,20 @@ Examples:
 viam machines list
 
 # get machine status
-viam machines status  --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Robot's Org" --location myLoc
+viam machines status  --machine 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Robot's Org" --location myLoc
 
 # stream error level logs from a machine part
-viam machines part logs --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
+viam machines part logs --machine 82c608a-1be9-46a5-968d-bad3a8a6daa \
 --organization "Robot's Org" --location myLoc --part "myrover-main" --tail true
 
 # stream classifications from a machine part every 500 milliseconds from the Viam Vision Service with classifier "stuff_detector"
-viam machines part run --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
+viam machines part run --machine 82c608a-1be9-46a5-968d-bad3a8a6daa \
 --organization "Robot's Org" --location myLoc --part "myrover-main" --stream 500ms \
 --data '{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_detector", "n":1}' \
 viam.service.vision.v1.VisionService.GetClassificationsFromCamera
+
+# restart a part of a specified machine
+viam machines part restart --machine e4713ae5-013a-43fe-800e-ff7999a8e3a0 --part 804a4a26-3b28-4f1b-9a7c-5cccc948aa32
 ```
 
 #### Command options
@@ -1009,7 +1013,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 | `api-key` | Work with an api-key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status` | Retrieve machine status for a specified machine | - |
 | `logs` | Retrieve logs for a specified machine | - |
-| `part` | Manage a specified machine part | `status`, `run`, `logs`, `shell` (see [positional arguments: part](#positional-arguments-part)) |
+| `part` | Manage a specified machine part | `status`, `run`, `logs`, `shell`, `restart` (see [positional arguments: part](#positional-arguments-part)) |
 | `--help` | Return help | - |
 
 ##### Positional arguments: `api-key`
@@ -1029,6 +1033,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 | `run` | Run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. |
 | `logs` | Get logs for the specified machine part |
 | `shell` | Access a machine part securely using a secure shell. This feature must be enabled. |
+| `restart` | Restart a machine part. |
 | `--help` | Return help |
 
 ##### Named arguments
@@ -1038,9 +1043,9 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 | -------- | ----------- | ------------------- | --------- |
 | `--organization` | Organization name that the machine belongs to | `list`, `status`, `logs`, `part` | **Required** |
 | `--location` | Location name that the machine belongs to | `list`, `status`, `logs`, `part` | **Required** |
-| `--robot` | Machine ID for which the command is being issued | `status`, `logs`, `part` | **Required** |
+| `--machine` | Machine ID for which the command is being issued | `status`, `logs`, `part`, `part restart` | **Required** |
 | `--errors` | Boolean, return only errors (default: false) | `logs` | Optional |
-| `--part` | Part name for which the command is being issued | `logs` | Optional |
+| `--part` | Part name (`logs`) or ID (`part`) for which the command is being issued | `logs`, `part` | Optional |
 | `--tail` | Tail (stream) logs, boolean(default false) | `part logs` | Optional |
 | `--stream` | If specified, the interval in which to stream the specified data, for example, 100ms or 1s | `part run` | Optional |
 | `--data` | Command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments)) | `part run` | **Required** |
