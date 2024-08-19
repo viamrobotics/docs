@@ -85,7 +85,7 @@ If you choose to use movement sensor data for SLAM, you can:
   - Requires a movement sensor that collects [`Position`](/services/navigation/#position) and [`Orientation`](/services/navigation/#orientation) data (for example, [`wheeled-odometry`](/components/movement-sensor/wheeled-odometry/))
 - Add both IMU _and_ odometry data
   - Requires all four of the above kinds of data, merged together using the [`merged` movement sensor model](/components/movement-sensor/merged/)
-- If you choose this option, be sure to configure data capture on the `merged` sensor and not on the individual movement sensors when following the steps below.
+  - If you choose this option, be sure to configure data capture on the `merged` sensor and not on the individual movement sensors when following the steps below.
 
 ### Create a new map
 
