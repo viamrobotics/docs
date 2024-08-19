@@ -75,7 +75,7 @@ While in a slam session, you should:
 - stay relatively (but not extremely) close to walls
 - use a machine that can go smoothly over bumps and transitions between flooring areas
 - drive at a moderate speed
-- when using a wheeled base, try to include an [odometry movement sensor](/components/movement-sensor/wheeled-odometry). This helps the SLAM algorithm keep track of where the machine is moving.
-  - it is important to note that the [gyro-mpu6050](/components/movement-sensor/mpu6050) on the viam-rover **will not** satisfy the movement sensor requirement.
+- when using a wheeled base, try to include an [odometry movement sensor](/components/movement-sensor/wheeled-odometry/). This helps the SLAM algorithm keep track of where the machine is moving.
+  - it is important to note that the [gyro-mpu6050](/components/movement-sensor/mpu6050/) on the viam-rover **will not** satisfy the movement sensor requirement.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).

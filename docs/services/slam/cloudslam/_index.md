@@ -33,7 +33,7 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) for more information.
 
 ### supported algorithms
 
-Currently cloudslam only supports the [cartographer module](../cartographer) as a SLAM algorithm.
+Currently cloudslam only supports the [cartographer module](../cartographer/) as a SLAM algorithm.
 
 ## the SLAM Library page
 
@@ -60,7 +60,7 @@ You can configure the [cloudslam-wrapper](https://github.com/viam-modules/clouds
 
 To use cloudslam on a live machine, the following requirements must be met:
 
-1.  A cloudslam supported algorithm must be configured on the machine. Currently this is only the [cartographer module](../cartographer). Please configure a supported algorithm on the machine before continuing.
+1.  A cloudslam supported algorithm must be configured on the machine. Currently this is only the [cartographer module](../cartographer/). Please configure a supported algorithm on the machine before continuing.
 
 2.  A location owner API Key or higher. See [Add an API key](/cloud/rbac/#api-keys) to learn how to create a key!
 
