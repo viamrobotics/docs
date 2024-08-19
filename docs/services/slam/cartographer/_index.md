@@ -293,7 +293,7 @@ To update an existing map with new pointcloud data from a new SLAM session, foll
 
 2. After configuring cartographer the machine should begin mapping automatically. Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
 
-See our [tips](#slam-mapping-best-practices) for making a good map! If you want to save your locally built map, you can use the **GetInternalState API** or use the local map uploading feature of the [cloudslam wrapper module](../cloudslam/)
+See our [tips](../#slam-mapping-best-practices) for making a good map! If you want to save your locally built map, you can use the **GetInternalState API** or use the local map uploading feature of the [cloudslam wrapper module](../cloudslam/)
 
 {{% alert title="Info" color="info" %}}
 
