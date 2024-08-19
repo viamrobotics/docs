@@ -286,17 +286,85 @@ viam organizations --help
 
 ## Commands
 
+### `dataset`
+
+The `dataset` command allows you to manage machine data in datasets.
+With it, you can add or remove images from a dataset, export data from a dataset, or filter a dataset by tags.
+
+```sh {class="command-line" data-prompt="$"}
+viam dataset data add --dataset-id=<dataset-id> --file-ids=<file-id-or-ids> --location-id=<location-id> --org-id=<org-id> [...named args]
+viam dataset data remove --dataset-id=<dataset-id> --file-ids=<file-id-or-ids> --location-id=<location-id> --org-id=<org-id> [...named args]
+viam dataset export --destination=<output-directory> --dataset-id=<dataset-id>
+viam dataset list --org-id=<org-id>
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# add images tagged with the "example" tag between January and October of 2023 to dataset abc
+viam dataset data add filter --dataset-id=abc --location-id=123 --org-id=123 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
+
+# remove images tagged with the "example" tag between January and October of 2023 to dataset abc
+viam dataset data remove filter --dataset-id=abc --location-id=123 --org-id=123 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
+
+# export dataset abc to output directory ./dataset/example
+viam dataset export --destination=./dataset/example --dataset-id=abc
+
+# list dataset information from the specified org
+viam dataset list --org-id=123
+
+# list dataset information from the specified dataset ids
+viam dataset list --dataset-ids=123,456
+```
+
+#### Command options
+
+<!-- prettier-ignore -->
+| Command option | Description | Positional arguments |
+| -------------- | ----------- | -------------------- |
+| `create` | Create a new dataset. | - |
+| `rename` | Rename an existing dataset. | - |
+| `list` | List dataset information from specified IDs or for an org ID |
+| `data add` | Add a new image to an existing dataset by its file id, or add a group of images by specifying a filter | `filter` |
+| `data remove` | Remove an existing image from a dataset by its file id, or remove a group of images by specifying a filter | `filter` |
+| `export` | Download all the data from a dataset | - |
+| `--help` | Return help | - |
+
+##### Positional arguments
+
+<!-- prettier-ignore -->
+| Argument | Description |
+| -------- | ----------- |
+| `filter` | `add` or `delete` images from a dataset using a filter. See [Using the `filter` argument)](#using-the-filter-argument).|
+| `ids` | `add` or `delete` images from a dataset by specifying one or more file ids as a comma-separated list. See [Using the `ids` argument)](#using-the-ids-argument).|
+| `--help` | Return help |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Applicable commands | Required? |
+| -------- | ----------- | ------------------- | --------- |
+| `--destination` | Output directory for downloaded data | `export` | **Required** |
+| `--dataset-id` | Dataset to add or remove images from, download, or rename. To retrieve these IDs, navigate to your dataset’s page in the [Viam app](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID** | `rename`, `add`, `remove`, `export` | **Required** |
+| `--dataset-ids` | Dataset IDs of datasets to be listed. To retrieve these IDs, navigate to your dataset’s page in the [Viam app](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID** | `list` | Optional |
+| `--start` | ISO-8601 timestamp indicating the start of the interval | `add`, `remove`| Optional |
+| `--end` | ISO-8601 timestamp indicating the end of the interval | `add`, `remove` | Optional |
+| `--file-ids` | File-ids to add or remove from a dataset | `add`, `remove`, `export` | **Required** |
+| `--include-jsonl` | Set to `true` to include JSON Lines files for local testing |`export`| Optional |
+| `--location-id` | Location ID for the file ids being added or removed from the specified dataset (only accepts one location id) | `add`, `remove` | **Required** |
+| `--name` | The name of the dataset to create or rename | `create`, `rename` | **Required** |
+| `--org-id` | Organization ID in which to edit the dataset | `create`, `add`, `remove`, `list` | **Required** |
+| `--parallel` | Number of download requests to make in parallel, with a default value of 100 for `export` | `export` | Optional |
+| `--tags` | Filter by specified tag (accepts comma-separated list) | `add`, `remove` | Optional |
+
 ### `data`
 
 The `data` command allows you to manage machine data.
-With it, you can export data in a variety of formats, delete specified data, add or remove images from a dataset, export data from a dataset, filter a dataset by tags or add or remove tags from all data that matches a given filter, or configure a database user to enable querying synced data directly in the cloud.
+With it, you can export data in a variety of formats, delete specified data, add or remove tags from all data that matches a given filter, or configure a database user to enable querying synced data directly in the cloud.
 
 ```sh {class="command-line" data-prompt="$"}
 viam data export --destination=<output path> --data-type=<output data type> [...named args]
 viam data delete [...named args]
-viam data dataset add --dataset-id=<dataset-id> --file-ids=<file-id-or-ids> --location-id=<location-id> --org-id=<org-id> [...named args]
-viam data dataset remove --dataset-id=<dataset-id> --file-ids=<file-id-or-ids> --location-id=<location-id> --org-id=<org-id> [...named args]
-viam data dataset export --destination=<output-directory> --dataset-id=<dataset-id>
 viam data database configure --org-id=<org-id> --password=<db-user-password>
 viam data database hostname --org-id=<org-id>
 viam data tag ids add --tags=<tags> --org-id=<org_id> --location-id=<location_id> --file-ids=<file_ids>
@@ -315,9 +383,6 @@ viam data export --destination=/home/robot/data --data-type=tabular \
 # export binary data from all orgs and locations, component name myComponent
 viam data export --destination=/home/robot/data --data-type=binary \
 --component-name myComponent
-
-# add images tagged with the "example" tag between January and October of 2023 to dataset abc
-viam data dataset add filter --dataset-id=abc --location-id=123 --org-id=123 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
 
 # configure a database user for the Viam organization's MongoDB Atlas Data
 # Federation instance, in order to query tabular data
@@ -356,14 +421,11 @@ done
 | `tag` | Add or remove tags from data matching the ids or filter | `ids`, `filter` |
 | `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query) | - |
 | `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query) | - |
-| `dataset add` | Add a new image to an existing dataset by its file id, or add a group of images by specifying a filter | `filter` |
-| `dataset remove` | Remove an existing image from a dataset by its file id, or remove a group of images by specifying a filter | `filter` |
-| `dataset export` | Download all the data from a dataset | - |
 | `delete binary` | Delete binary data | - |
 | `delete tabular` | Delete tabular data | - |
 | `--help` | Return help | - |
 
-##### Positional arguments: `dataset`
+##### Positional arguments: `tag`
 
 <!-- prettier-ignore -->
 | Argument | Description |
@@ -377,29 +439,27 @@ done
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--destination` | Output directory for downloaded data |`export`, `dataset export` | **Required** |
+| `--destination` | Output directory for downloaded data |`export` | **Required** |
 | `--data-type` | Data type to be downloaded: either binary or tabular |`export`| **Required** |
 | `--component-name` | Filter by specified component name |`export`, `delete`| Optional |
 | `--component-type` | Filter by specified component type |`export`, `delete`| Optional |
 | `--component-model` | Filter by specified component model |`export`, `delete`| Optional |
-| `--dataset-id` | Dataset to add or remove images from or download. To retrieve these IDs, navigate to your dataset’s page in the [Viam app](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID**. | `dataset`, `dataset export` | **Required** |
 | `--delete-older-than-days` | Number of days, 0 means all data will be deleted | `delete` | Optional |
 | `--start` | ISO-8601 timestamp indicating the start of the interval |`export`, `delete`, `dataset`| Optional |
 | `--end` | ISO-8601 timestamp indicating the end of the interval |`export`, `delete`, `dataset`| Optional |
-| `--file-ids` | File-ids to add or remove from a dataset or add or remove tags from |`dataset`, `tag ids` | **Required** |
-| `--include-jsonl` | Set to `true` to include JSON Lines files for local testing |`dataset export`| Optional |
+| `--file-ids` | File-ids to add or remove tags from | `tag ids` | **Required** |
 | `--location-id` | Location ID for the file ids being added or removed from the specified dataset (only accepts one location id) |`dataset`, `tag ids` | **Required** |
 | `--location-ids` | Filter by specified location ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. |`export`, `delete`, `tag filter`| Optional |
 | `--method` | Filter by specified method |`export`, `delete`| Optional |
 | `--mime-types` | Filter by specified MIME type (accepts comma-separated list) |`export`, `delete`|false |
-| `--org-id` | Org ID for the database user being configured (with `database`), or for the file ids being added or removed from the specified dataset (with `dataset`) | `database configure`, `database hostname`, `dataset`, `tag ids` | **Required** |
+| `--org-id` | Org ID for the database user being configured (with `database`) or data being tagged (`tag ids`) | `database configure`, `database hostname`, `tag ids` | **Required** |
 | `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. |`export`, `delete`, `tag filter` | Optional |
-| `--parallel` | Number of download requests to make in parallel, with a default value of 10 for `export` and `delete` and 100 for `dataset export` |`export`, `delete`, `dataset export` | Optional |
+| `--parallel` | Number of download requests to make in parallel, with a default value of 10 |`export`, `delete`, `dataset export` | Optional |
 | `--part-id` | Filter by specified part ID |`export`, `delete`| Optional |
 | `--part-name` | Filter by specified part name |`export`, `delete`| Optional |
 | `--machine-id` | Filter by specified machine ID |`export`, `delete`, `tag filter` | Optional |
 | `--machine-name` | Filter by specified machine name |`export`, `delete`| Optional |
-| `--tags` | Filter by (`export`, `delete`, `dataset`) or add (`tag`) specified tag (accepts comma-separated list) |`export`, `delete`, `dataset`, `tag` | Optional |
+| `--tags` | Filter by (`export`, `delete`) or add (`tag`) specified tag (accepts comma-separated list) |`export`, `delete`, `tag` | Optional |
 | `--password` | Password for the database user being configured | `database configure` | **Required** |
 
 ##### Using the `ids` argument
@@ -409,7 +469,13 @@ To work with multiple images at once, you can specify multiple file ids as a com
 For example, the following adds three images specified by their file ids to the specified dataset:
 
 ```sh {class="command-line" data-prompt="$"}
-viam data dataset add ids --dataset-id=abc --location-id=123 --org-id=123 --file-ids=abc,123,def
+viam dataset data add ids --dataset-id=abc --location-id=123 --org-id=123 --file-ids=abc,123,def
+```
+
+The following tags two images specified by their file ids in the specified organization and location with three tags:
+
+```sh {class="command-line" data-prompt="$"}
+viam data tag ids add --tags=new_tag_1,new_tag_2,new_tag_3 --org-id=123 --location-id=123 --file-ids=123,456
 ```
 
 To find your organization's ID, navigate to your organization's **Settings** page in [the Viam app](https://app.viam.com/).
@@ -418,7 +484,7 @@ Find **Organization ID** and click the copy icon.
 To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset.
 Click **...** in the left-hand menu and click **Copy dataset ID**.
 
-Find your location ID by running `viam locations list` or by visiting your [fleet's page](https://app.viam.com/robots) in the Viam app and copying from **Location ID**.
+To find your location ID, run `viam locations list` or visit your [fleet's page](https://app.viam.com/robots) in the Viam app and copy from **Location ID**.
 
 To find the file ID of a given image, navigate to the [**DATA** tab in the Viam app](https://app.viam.com/data/view) and select your image.
 Its **File ID** is shown under the **DETAILS** subtab that appears on the right.
@@ -433,7 +499,7 @@ When you use the `viam dataset add` and `viam dataset remove` commands, you can 
 For example, the following adds all images captured between January 1 and October 1, 2023, that have the `example` tag applied, to the specified dataset:
 
 ```sh {class="command-line" data-prompt="$"}
-viam data dataset add filter --dataset-id=abc --org-ids=123 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
+viam dataset data add filter --dataset-id=abc --org-ids=123 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
 ```
 
 To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) under the **DATA** tab on the Viam app and select a dataset.
