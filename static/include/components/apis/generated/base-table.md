@@ -1,6 +1,6 @@
 <!-- prettier-ignore -->
-| Method Name | Description | micro-RDK Support |
-| ----------- | ----------- | ----------------- |
+| Method Name | Description | `viam-micro-server` Support |
+| ----------- | ----------- | --------------------------- |
 | [`MoveStraight`](/components/base/#movestraight) | Move the base in a straight line across the given distance (mm) at the given velocity (mm/sec). | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`Spin`](/components/base/#spin) | Turn the base in place, rotating it to the given angle (degrees) at the given angular velocity (degrees/sec). | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |
 | [`SetPower`](/components/base/#setpower) | Set the linear and angular power of the base, represented as a percentage of max power for each direction in the range of [-1.0 to 1.0]. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |

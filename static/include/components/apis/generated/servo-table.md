@@ -1,6 +1,6 @@
 <!-- prettier-ignore -->
-| Method Name | Description | micro-RDK Support |
-| ----------- | ----------- | ----------------- |
+| Method Name | Description | `viam-micro-server` Support |
+| ----------- | ----------- | --------------------------- |
 | [`Move`](/components/servo/#move) | Move the servo to the desired angle in degrees. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`GetPosition`](/components/servo/#getposition) | Get the current set angle of the servo in degrees. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`GetGeometries`](/components/servo/#getgeometries) | Get all the geometries associated with the servo in its current configuration, in the frame of the servo. | <p class="center-text"><i class="fas fa-times" title="no"></i></p> |

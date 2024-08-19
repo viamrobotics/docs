@@ -62,12 +62,12 @@ Uploaded tabular data can be found under the **Sensors** subtab of the app's [**
 
 - `tabular_data` (List[Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]]) (required): List of the data to be uploaded, represented tabularly as a collection of dictionaries.
 - `part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Part ID of the component used to capture the data.
-- `component_type` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Type of the component used to capture the data (for example, “movement_sensor”).
+- `component_type` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Type of the component used to capture the data (for example, “rdk:component:movement_sensor”).
 - `component_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Name of the component used to capture the data.
 - `method_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Name of the method used to capture the data.
+- `data_request_times` (List[Tuple[[datetime.datetime](https://docs.python.org/3/library/datetime.html), [datetime.datetime](https://docs.python.org/3/library/datetime.html)]]) (required): List of tuples, each containing datetime objects denoting the times this data was requested[0] by the robot and received[1] from the appropriate sensor. Passing a list of tabular data and Timestamps with length n > 1 will result in n datapoints being uploaded, all tied to the same metadata.
 - `method_parameters` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional dictionary of method parameters. No longer in active use.
 - `tags` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional): Optional list of tags to allow for tag-based data filtering when retrieving data.
-- `data_request_times` (List[Tuple[[datetime.datetime](https://docs.python.org/3/library/datetime.html), [datetime.datetime](https://docs.python.org/3/library/datetime.html)]]) (optional): Optional list of tuples, each containing datetime objects denoting the times this data was requested[0] by the robot and received[1] from the appropriate sensor. Passing a list of tabular data and Timestamps with length n > 1 will result in n datapoints being uploaded, all tied to the same metadata.
 
 **Returns:**
 
@@ -86,7 +86,7 @@ time_received = datetime(2023, 6, 5, 11, 0, 3)
 
 file_id = await data_client.tabular_data_capture_upload(
     part_id="INSERT YOUR PART ID",
-    component_type='motor',
+    component_type='rdk:component:motor',
     component_name='left_motor',
     method_name='IsPowered',
     tags=["tag_1", "tag_2"],
