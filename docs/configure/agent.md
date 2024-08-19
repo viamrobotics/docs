@@ -11,8 +11,8 @@ description: "The viam-agent is a self-updating service manager that maintains t
 The [`viam-agent`](https://github.com/viamrobotics/agent) is a self-updating service manager that maintains the lifecycle for itself and the following system services:
 
 - `viam-server`: the core of the machine
-- [`agent-provisioning`](/fleet/provision/): device provisioning subsystem that can set up machine configs and manage WiFi networks.
-- [`agent-syscfg`](https://github.com/viamrobotics/agent-syscfg): provides various operating system and system configuration tweaks
+- [`agent-provisioning`](#agent-provisioning): device provisioning subsystem that can set up machine configs and manage WiFi networks. For more information see [Provisioning](/fleet/provision/).
+- [`agent-syscfg`](#agent-syscfg): provides various operating system and system configuration tweaks
 
 Among other things, `viam-agent`:
 
@@ -259,14 +259,34 @@ The following configuration defines the connection information and credentials f
 
 ### `agent-syscfg`
 
+`agent-syscfg` is a subsystem (plugin) for `viam-agent` that provides a number of system and operating system configuration helpers.
+
 <!-- prettier-ignore -->
 | Option | Type | Required? | Description |
 | ------ | ---- | --------- | ----------- |
-| `attributes` | object | Optional | <ul><li>`logging`: parameters for logging<ul><li>`system_max_use`: sets the maximum disk space journald will user for persistent log storage. Numeric values are in bytes, with optional single letter suffix for larger units, for example. K, M, or G. Default: `512M`.</li><li>`runtime_max_use`: sets the runtime/temporary limit. Numeric values are in bytes, with optional single letter suffix for larger units, for example. K, M, or G. Default: `512M`.</li><li>`disable`: when set to `true`, the defaults for `512M` limits are ignored and the operating system defaults are used.</li></ul></li><li>`upgrades`: Using `upgrades` installs the `unattended-upgrades` package, and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE>, with the latter's Origins-Pattern list being generated automatically from configured repositories on the system, so custom repos (at the time the setting is enabled) will be included.<ul><li>`type`: Configured unattended upgrades for Debian bullseye and bookworm. Options: `""` (no effect), `"disable"` (disables automatic upgrades), `"security"` (only enables updates from sources with security in their codename, ex: bookworm-security), `"all"` (enable updates from all configured sources).</li></ul></li></ul> |
+| `attributes` | object | Optional | <ul><li>`logging`: parameters for logging<ul><li>`system_max_use`: sets the maximum disk space `journald` will user for persistent log storage. Numeric values are in bytes, with optional single letter suffix for larger units, for example. K, M, or G. Default: `512M`.</li><li>`runtime_max_use`: sets the runtime/temporary limit. Numeric values are in bytes, with optional single letter suffix for larger units, for example. K, M, or G. Default: `512M`.</li><li>`disable`: when set to `true`, the defaults for `512M` limits are ignored and the operating system defaults are used.</li></ul></li><li>`upgrades`: Using `upgrades` installs the `unattended-upgrades` package, and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE>, with the latter's Origins-Pattern list being generated automatically from configured repositories on the system, so custom repos (at the time the setting is enabled) will be included.<ul><li>`type`: Configured unattended upgrades for Debian bullseye and bookworm. Options: `""` (no effect), `"disable"` (disables automatic upgrades), `"security"` (only enables updates from sources with security in their codename, ex: bookworm-security), `"all"` (enable updates from all configured sources).</li></ul></li></ul> |
 | `release_channel` | string | Optional | `agent-syscfg` is semantically versioned and is tested before release. Releases happen infrequently. When set to `"stable"`, `viam-agent` will automatically upgrade when a new version is released. Options: `"stable"` (default), `"latest"`. |
 | `pin_version` | string | Optional | "Lock" the subsystem to a specific version (as provided by the release channel). If set, no automatic upgrades will be performed until the setting is updated to a new version (or removed to revert to the release channel). If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
 | `pin_url` | string | Optional | Ignore normal version selection and directly download from the specified URL. If set, no automatic upgrades will be performed until the setting is updated to a new URL (or removed to revert to the release channel). Typically this is only used for testing/troubleshooting. If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
 | `disable_subsystem` | boolean | Optional | When set to `true` it disables the `agent-syscfg` subsystem. |
+
+The following configuration allows all upgrades from configured sources and sets the maximum disk space `journald` will user for persistent log storage to 128MB and the runtime limit to 96MB:
+
+```json {class="line-numbers linkable-line-numbers"}
+"agent-syscfg": {
+  "release_channel": "stable",
+  "attributes": {
+    "logging": {
+      "disable": true,
+      "system_max_use": "128M",
+      "runtime_max_use": "96M"
+    },
+    "upgrades": {
+      "type": "all"
+    }
+  }
+}
+```
 
 ## Version management for `viam-agent` and `viam-server`
 
