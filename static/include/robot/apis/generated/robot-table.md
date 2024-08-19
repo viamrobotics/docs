@@ -14,6 +14,7 @@
 | [`RestartModule`](/appendix/apis/robot/#restartmodule) | Reload a module as if its config changed. |
 | [`Log`](/appendix/apis/robot/#log) | Create a LogEntry object from the log to send to the RDK over gRPC. |
 | [`GetCloudMetadata`](/appendix/apis/robot/#getcloudmetadata) | Get app-related information about the robot. |
+| [`GetVersion`](/appendix/apis/robot/#getversion) | Return version information about the machine. |
 | [`Options.with_api_key`](/appendix/apis/robot/#optionswith_api_key) | Create a `RobotClient.Options` using an API key as credentials. |
 | [`AtAddress`](/appendix/apis/robot/#ataddress) | Create a RobotClient that is connected to the machine at the provided address. |
 | [`WithChannel`](/appendix/apis/robot/#withchannel) | Create a RobotClient that is connected to a machine over the given channel. |
