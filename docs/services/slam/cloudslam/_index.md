@@ -68,6 +68,10 @@ To use cloudslam on a live machine, the following requirements must be met:
 
 1. Enable data capture and configure your `cloudslam-wrapper` SLAM service:
 
+{{< alert title="Tip - Managing Data Capture" color="tip" >}}
+Note that [Data Capture](/services/data/capture/) continuously monitors and captures your machine’s sensor data while the machine is running. To avoid incurring charges while not in use, [turn off data capture for your sensors](/services/data/capture/) once you have finished your SLAM session.
+{{< /alert >}}
+
 {{< tabs name="Create new map">}}
 {{% tab name="Config Builder" %}}
 
@@ -122,10 +126,6 @@ You _do not_ need to configure data capture on the individual IMU and odometer.
 
 {{% /tab %}}
 {{< /tabs >}}
-
-{{< alert title="Tip" color="tip" >}}
-Note that [Data Capture](/services/data/capture/) continuously monitors and captures your machine’s sensor data while the machine is running. To avoid incurring charges while not in use, [turn off data capture for your sensors](/services/data/capture/) once you have finished your SLAM session.
-{{< /alert >}}
 
 3. Set up the `cloudslam-wrapper` module on your machine:
 
@@ -282,8 +282,8 @@ For more information about the configuration attributes, see [Attributes](#attri
 Navigate to the **CONTROL** tab on your machine's page. A few things should be happening:
 
 - (optional) change the refresh frequency on the `cartographer` card to **Manual Refresh**. Since we want to use cloudslam, we do not need to refresh the underlying SLAM algorithm's map.
-- the `cloudslam-wrapper` card should be displaying its default map. this will look something like
-  ![default cloudslam wrapper map](/services/slam/cloudslam-module-live-default.png)
+- the `cloudslam-wrapper` card should be displaying its default map. <!--this will look something like
+  <!-- ![default cloudslam wrapper map](/services/slam/cloudslam-module-live-default.png) -->
 
 To start the mapping session, do the following:
 
