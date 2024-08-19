@@ -51,7 +51,7 @@ Log messages written appear under the [**LOGS** tab](/cloud/machines/#logs) for 
 
 ### Shutdown
 
-During machine shutdown, the RDK handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
+During machine shutdown, `viam-server` handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
 
 ## Next steps
 
