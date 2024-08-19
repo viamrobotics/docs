@@ -28,7 +28,7 @@ There are two ways to link machine parts:
 
 - **Remote part**: To connect two computers that are parts of _different machines_ in the same or different organizations, [add one machine part as a remote part of the other machine](#configure-a-remote-part).
 
-  - For example, if you have 1 camera connected to a computer in a warehouse that many machines should be able to share, you can configure the camera as a remote part and add it to all machines that need it.
+  - For example, if you have 1 camera connected to a computer in a warehouse that many machines should be able to share, you can configure the camera as a remote part of each machine that needs it.
 
 Connections between machines are established using the best network path available.
 
