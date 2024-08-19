@@ -16,7 +16,7 @@ aliases:
 
 ## What is cloudslam
 
-SLAM Algorthims can have varying levels of resource requirements in order to run effectively. `Cartographer` in particular can require a significant amount of CPU resources to build and manage large maps. In order to better support running SLAM on resource limited machines, Viam provides a service to run SLAM algorithms on machines in the cloud as well as management of the maps generated in their location.
+SLAM Algorithms can have varying levels of resource requirements in order to run effectively. `Cartographer` in particular can require a significant amount of CPU resources to build and manage large maps. In order to better support running SLAM on resource limited machines, Viam provides a service to run SLAM algorithms on machines in the cloud as well as management of the maps generated in their location.
 
 Cloudslam can be used with both a live machine or with previously captured data in your `location`. In [live mode](#mapping-with-a-live-machine-online-mode) using the [data management service](/services/data/) and the [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) module, Viam takes your LiDAR camera and movement sensor data from your local machine and sends it to the cloudslam server. The cloudslam server will then process that data and produce a map that can then be used on any machine in your `location`. When using an [offline machine](#using-previously-captured-data-offline-mode), users can select data from specific sensors in a period of time to build a map with.
 
@@ -296,7 +296,7 @@ To start the mapping session, do the following:
 ```
 
 where `<MAPPING-SESSION-NAME> is the name you want to give the map you wish to generate. 4. Click the **Execute** button.
-If everything is configured correctly, you should recieve a success message. The DoCommand card should look something like:
+If everything is configured correctly, you should receive a success message. The DoCommand card should look something like:
 ![cloudslam wrapper docommand start](/services/slam/cloudslam-module-docommand-start.png)
 
 5. After roughly 1 minute, your map should appear on the `cloudslam-wrapper` card. The displayed map will now update roughly every 5 seconds with the current progress of the mapping session. You can now build your map using cloudslam! Please review our [tips](../#slam-mapping-best-practices) in order to help make a good map!
@@ -317,10 +317,10 @@ To Stop a cloudslam mapping session, do the following:
 You do not need to specify the map name or job id here, as the module should already be aware of any active mapping sessions for the machine
 
 4. Click the **Execute** button.
-   If everything is configured correctly, you should recieve a success message. The DoCommand card should look something like:
+   If everything is configured correctly, you should receive a success message. The DoCommand card should look something like:
    ![cloudslam wrapper docommand start](/services/slam/cloudslam-module-docommand-stop.png)
 
-and thats all! You can view the final map in the `cloudslam-wrapper` card, or view the map in the [SLAM library](#the-slam-library-page)
+and that's all! You can view the final map in the `cloudslam-wrapper` card, or view the map in the [SLAM library](#the-slam-library-page)
 
 ## using previously captured data (Offline mode)
 
@@ -359,7 +359,7 @@ When all the data has been processed (or 45 minutes have passed, whichever occur
 
 ## uploading a locally built map
 
-If you want to skip using cloudslam and build the map on your local machine, the [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) module also allows you to upload that locally built map to your **Location**. This lets you share that map accross robots on within your fleet easily.
+If you want to skip using cloudslam and build the map on your local machine, the [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) module also allows you to upload that locally built map to your **Location**. This lets you share that map across robots on within your fleet easily.
 
 This feature can also be used with SLAM algorithms that cloudslam does not currently support. As long as the algorithm implements the SLAM API, you can upload your maps.
 
@@ -396,10 +396,10 @@ Navigate to the **CONTROL** tab on your machine's page.
 {"save-local-map": "<MAP-NAME>"}
 ````
 
-where `<MAP-NAME> is the name you want to give the map you wish to generate. 4. Click the **Execute** button. If everything is configured correctly, you should recieve a success message. The DoCommand card should look something like:
+where `<MAP-NAME> is the name you want to give the map you wish to generate. 4. Click the **Execute** button. If everything is configured correctly, you should receive a success message. The DoCommand card should look something like:
 ![cloudslam wrapper docommand local upload](/services/slam/cloudslam-module-docommand-local-upload.png)
 
-and thats all! You can view the map in the [SLAM library](#the-slam-library-page)!
+and that's all! You can view the map in the [SLAM library](#the-slam-library-page)!
 
 ## Attributes
 
