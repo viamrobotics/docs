@@ -70,3 +70,18 @@ Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and
 {{% /alert %}}
 
 {{< readfile "/static/include/services/apis/generated/slam.md" >}}
+
+## SLAM mapping best practices
+
+The best way to improve map quality is by taking extra care when creating the initial map.
+While in a slam session, you should:
+
+- turn gently and gradually, completely avoiding sudden quick turns
+- make frequent loop closures, arriving back at a previously mapped area so the machine can correct for errors in the map layout
+- stay relatively (but not extremely) close to walls
+- use a machine that can go smoothly over bumps and transitions between flooring areas
+- drive at a moderate speed
+- when using a wheeled base, try to include an [odometry movement sensor](/components/movement-sensor/wheeled-odometry). This helps the SLAM algorithm keep track of where the machine is moving.
+  - it is important to note that the [gyro-mpu6050](/components/movement-sensor/mpu6050) on the viam-rover **will not** satify the movement sensor requirement.
+
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).

@@ -201,7 +201,7 @@ This example JSON configuration:
 
 For more information about the configuration attributes, see [Attributes](#attributes).
 
-After configuring cartographer the machine should begin mapping automatically.  Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created. See our [tips](#slam-mapping-best-practices) for making a good map! If you want to save your locally built map, you can use the **GetInternalState API** or use the local map uploading feature of the [cloudslam wrapper module](../cloudslam)
+After configuring cartographer the machine should begin mapping automatically.  Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created. See our [tips](../#slam-mapping-best-practices) for making a good map! If you want to save your locally built map, you can use the **GetInternalState API** or use the local map uploading feature of the [cloudslam wrapper module](../cloudslam)
 
 ### Update an existing map
 
@@ -482,16 +482,3 @@ your config should look something like the following:
    ```
 
 Now your `cartographer` service should be running using your locally saved map!
-
-## SLAM mapping best practices
-
-The best way to improve map quality is by taking extra care when creating the initial map.
-While in a slam session, you should:
-
-- turn gently and gradually, completely avoiding sudden quick turns
-- make frequent loop closures, arriving back at a previously mapped area so the machine can correct for errors in the map layout
-- stay relatively (but not extremely) close to walls
-- use a machine that can go smoothly over bumps and transitions between flooring areas
-- drive at a moderate speed
-
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
