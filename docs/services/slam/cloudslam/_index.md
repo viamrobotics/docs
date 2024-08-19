@@ -15,9 +15,10 @@ aliases:
 ---
 
 ## What is cloudslam
+
 SLAM Algorthims can have varying levels of resource requirements in order to run effectively. `Cartographer` in particular can require a significant amount of CPU resources to build and manage large maps. In order to better support running SLAM on resource limited machines, Viam provides a service to run SLAM algorithms on machines in the cloud as well as management of the maps generated in their location.
 
-Cloudslam can be used with both a live machine or with previously captured data in your `location`. In [live mode](#mapping-with-a-live-machine) using the [data management service](/services/data/) and the [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) module, Viam takes your LiDAR camera and movement sensor data from your local machine and sends it to the cloudslam server. The cloudslam server will then process that data and produce a map that can then be used on any machine in your `location`. When using an [offline machine](#using previously captured data), users can select data from specific sensors in a period of time to build a map with.
+Cloudslam can be used with both a live machine or with previously captured data in your `location`. In [live mode](#mapping-with-a-live-machine-online-mode) using the [data management service](/services/data/) and the [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) module, Viam takes your LiDAR camera and movement sensor data from your local machine and sends it to the cloudslam server. The cloudslam server will then process that data and produce a map that can then be used on any machine in your `location`. When using an [offline machine](#using previously captured data), users can select data from specific sensors in a period of time to build a map with.
 
 Users can view and delete maps built in their `location` by going to the [SLAM library](#the-slam-library-page), which provides a summary of active jobs in their location as well as a list of all maps built in that location.
 
@@ -38,18 +39,18 @@ Currently cloudslam only supports the [cartographer module](../cartographer) as 
 
 On the robots page in the [Viam app](https://app.viam.com/robots), change the tab from **Machines** to **SLAM Library**. From here, you can find:
 
- 1. A list of all maps generated in that location. The list shows the name and version of the map, which machine was used for mapping, and when the map was created. You can also view previous versions of a map, if a map has been updated multiple times.
+1.  A list of all maps generated in that location. The list shows the name and version of the map, which machine was used for mapping, and when the map was created. You can also view previous versions of a map, if a map has been updated multiple times.
     ![offline mapping available maps](/services/slam/offline-mapping-available-maps.png)
 
- 2. You can create or update a map using a previously collected dataset by clicking the **Make new map** on the top right and specify a map name or click **Update map** next to an existing map. See [using previously captured data](#using-previously-captured-data) for more information on how to do this!
+2.  You can create or update a map using a previously collected dataset by clicking the **Make new map** on the top right and specify a map name or click **Update map** next to an existing map. See [using previously captured data](#using-previously-captured-dataoffline-mode) for more information on how to do this!
 
- 3. A table showing active and failed cloudslam sessions. The table highlights the name of the map, which robot is currently mapping, and whether the map is in progress or has failed. The table can also be used to stop active mapping sessions.
+3.  A table showing active and failed cloudslam sessions. The table highlights the name of the map, which robot is currently mapping, and whether the map is in progress or has failed. The table can also be used to stop active mapping sessions.
     ![offline mapping maps computing table](/services/slam/offline-mapping-maps-computing-table.png)
 
- 4. You can view maps in more detail in a dynamic pointcloud viewer by selecting the `View Map` button on one
+4.  You can view maps in more detail in a dynamic pointcloud viewer by selecting the `View Map` button on one
     ![slam library view map](/services/slam/slam-library-view-map.png)
 
- 5. You can delete maps by clicking on the trash can icon in the upper right-hand corner of a map's card.
+5.  You can delete maps by clicking on the trash can icon in the upper right-hand corner of a map's card.
 
 ## Mapping with a live machine (Online Mode)
 
@@ -59,9 +60,9 @@ You can configure the [cloudslam-wrapper](https://github.com/viam-modules/clouds
 
 To use cloudslam on a live machine, the following requirements must be met:
 
- 1. A cloudslam supported algorithm must be configured on the machine. Currently this is only the [cartographer module](../cartographer). Please configure a supported algorithm on the machine before continuing.
+1.  A cloudslam supported algorithm must be configured on the machine. Currently this is only the [cartographer module](../cartographer). Please configure a supported algorithm on the machine before continuing.
 
- 2. A location owner API Key or higher. See [Add an API key](/cloud/rbac/#api-keys) to learn how to create a key!
+2.  A location owner API Key or higher. See [Add an API key](/cloud/rbac/#api-keys) to learn how to create a key!
 
 ### Configuration
 
@@ -139,31 +140,33 @@ Note that [Data Capture](/services/data/capture/) continuously monitors and capt
    In the resulting `SLAM` service configuration pane, add the following **Attributes**:
 
    ```json
-    {
-    "slam_service": "<slam-service-name>",
-    "api_key": "<location-api-key>",
-    "api_key_id": "<location-api-key-id>",
-    "organization_id": "<organization_id>",
-    "location_id": "<location_id>",
-    "machine_id": "<machine_id>",
-    }
-    ```
+   {
+     "slam_service": "<slam-service-name>",
+     "api_key": "<location-api-key>",
+     "api_key_id": "<location-api-key-id>",
+     "organization_id": "<organization_id>",
+     "location_id": "<location_id>",
+     "machine_id": "<machine_id>"
+   }
+   ```
 
    where
+
    - `slam_service` is the name of the slam service that you want to run with cloudslam
    - `api_key` and `api_key_id` are for the location owner API key described in the [requirements](#requirements)
    - `organization_id`, `location_id`, and `machine_id` describe which location & organization you want to run cloudslam in. These are needed so we can fully tie the map you make to the machine running cloudslam.
+
 4. (Optional) configure the `cloudslam-wrapper` to use updating mode.
-    If you want cloudslam to update a `slam_map` rather than create a new map, do the following:
+   If you want cloudslam to update a `slam_map` rather than create a new map, do the following:
 
-    - configure the `slam_map` on your wrapped SLAM service
-    - add a `machine_part_id` to your `cloudslam-wrapper` config.
+   - configure the `slam_map` on your wrapped SLAM service
+   - add a `machine_part_id` to your `cloudslam-wrapper` config.
 
-    This informs the module to use the configured `slam_map` on your machine.
+   This informs the module to use the configured `slam_map` on your machine.
 
 5. Configure Cartographer to use cloudslam.
 
-    In your `cartographer` config card, click the **{}** button to switch to advanced views and set the `use_cloud_slam` field to **true**. This setting disables local mapping to limit cpu usage in favor of using cloudslam.
+   In your `cartographer` config card, click the **{}** button to switch to advanced views and set the `use_cloud_slam` field to **true**. This setting disables local mapping to limit cpu usage in favor of using cloudslam.
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
@@ -280,7 +283,7 @@ Navigate to the **CONTROL** tab on your machine's page. A few things should be h
 
 - (optional) change the refresh frequency on the `cartographer` card to **Manual Refresh**. Since we want to use cloudslam, we do not need to refresh the underlying SLAM algorithm's map.
 - the `cloudslam-wrapper` card should be displaying its default map. this will look something like
- ![default cloudslam wrapper map](/services/slam/cloudslam-module-live-default.png)
+  ![default cloudslam wrapper map](/services/slam/cloudslam-module-live-default.png)
 
 To start the mapping session, do the following:
 
@@ -288,34 +291,34 @@ To start the mapping session, do the following:
 2. Select your `cloudslam-wrapper` service name from the **Selected component** dropdown
 3. In the **Input** section, enter the following command:
 
- ```json
- {"start": "<MAPPING-SESSION-NAME>"}
- ```
+```json
+{ "start": "<MAPPING-SESSION-NAME>" }
+```
 
- where `<MAPPING-SESSION-NAME> is the name you want to give the map you wish to generate.
-4. Click the **Execute** button.
- If everything is configured correctly, you should recieve a success message. The DoCommand card should look something like:
- ![cloudslam wrapper docommand start](/services/slam/cloudslam-module-docommand-start.png)
+where `<MAPPING-SESSION-NAME> is the name you want to give the map you wish to generate. 4. Click the **Execute** button.
+If everything is configured correctly, you should recieve a success message. The DoCommand card should look something like:
+![cloudslam wrapper docommand start](/services/slam/cloudslam-module-docommand-start.png)
 
 5. After roughly 1 minute, your map should appear on the `cloudslam-wrapper` card. The displayed map will now update roughly every 5 seconds with the current progress of the mapping session. You can now build your map using cloudslam! Please review our [tips](../#slam-mapping-best-practices) in order to help make a good map!
- ![cloudslam wrapper map mapping](/services/slam/cloudslam-module-live-withmap.png)
+   ![cloudslam wrapper map mapping](/services/slam/cloudslam-module-live-withmap.png)
 
 ### Stopping cloudslam
 
 To Stop a cloudslam mapping session, do the following:
+
 1. Scroll down to the **DoCommand** card
 2. Select your `cloudslam-wrapper` service name from the **Selected component** dropdown
 3. In the **Input** section, enter the following command:
 
- ```json
- {"start": "<MAPPING-SESSION-NAME>"}
- ```
+```json
+{ "start": "<MAPPING-SESSION-NAME>" }
+```
 
- You do not need to specify the map name or job id here, as the module should already be aware of any active mapping sessions for the machine
+You do not need to specify the map name or job id here, as the module should already be aware of any active mapping sessions for the machine
 
 4. Click the **Execute** button.
- If everything is configured correctly, you should recieve a success message. The DoCommand card should look something like:
- ![cloudslam wrapper docommand start](/services/slam/cloudslam-module-docommand-stop.png)
+   If everything is configured correctly, you should recieve a success message. The DoCommand card should look something like:
+   ![cloudslam wrapper docommand start](/services/slam/cloudslam-module-docommand-stop.png)
 
 and thats all! You can view the final map in the `cloudslam-wrapper` card, or view the map in the [SLAM library](#the-slam-library-page)
 
@@ -362,25 +365,25 @@ This feature can also be used with SLAM algorithms that cloudslam does not curre
 
 ### Requirements
 
- 1. A SLAM algorithm must be configured on the machine. This algorithm does **not** need to be supported by cloudslam to work.
+1.  A SLAM algorithm must be configured on the machine. This algorithm does **not** need to be supported by cloudslam to work.
 
- 2. A location owner API Key or higher. See [Add an API key](/cloud/rbac/#api-keys) to learn how to create a key!
+2.  A location owner API Key or higher. See [Add an API key](/cloud/rbac/#api-keys) to learn how to create a key!
 
 ### Configuration
 
- 1. Add the `cloudslam-wrapper` module to your machine. You do not need data management configured on the machine. Configuring the module should not affect any currently running local SLAM maps. Add the following **Attributes**:
+1.  Add the `cloudslam-wrapper` module to your machine. You do not need data management configured on the machine. Configuring the module should not affect any currently running local SLAM maps. Add the following **Attributes**:
 
-   ```json
-    {
-    "slam_service": "<slam-service-name>",
-    "api_key": "<location-api-key>",
-    "api_key_id": "<location-api-key-id>",
-    "organization_id": "<organization_id>",
-    "location_id": "<location_id>",
-    "machine_id": "<machine_id>",
-    "machine_part_id": "<machine_part_id>",
-    }
-    ```
+````json
+ {
+ "slam_service": "<slam-service-name>",
+ "api_key": "<location-api-key>",
+ "api_key_id": "<location-api-key-id>",
+ "organization_id": "<organization_id>",
+ "location_id": "<location_id>",
+ "machine_id": "<machine_id>",
+ "machine_part_id": "<machine_part_id>",
+ }
+ ```
 ### Upload the map
 
 Navigate to the **CONTROL** tab on your machine's page.
@@ -389,13 +392,12 @@ Navigate to the **CONTROL** tab on your machine's page.
 2. Select your `cloudslam-wrapper` service name from the **Selected component** dropdown
 3. In the **Input** section, enter the following command:
 
- ```json
- {"save-local-map": "<MAP-NAME>"}
- ```
+```json
+{"save-local-map": "<MAP-NAME>"}
+````
 
- where `<MAP-NAME> is the name you want to give the map you wish to generate.
-4. Click the **Execute** button.  If everything is configured correctly, you should recieve a success message. The DoCommand card should look something like:
- ![cloudslam wrapper docommand local upload](/services/slam/cloudslam-module-docommand-local-upload.png)
+where `<MAP-NAME> is the name you want to give the map you wish to generate. 4. Click the **Execute** button. If everything is configured correctly, you should recieve a success message. The DoCommand card should look something like:
+![cloudslam wrapper docommand local upload](/services/slam/cloudslam-module-docommand-local-upload.png)
 
 and thats all! You can view the map in the [SLAM library](#the-slam-library-page)!
 

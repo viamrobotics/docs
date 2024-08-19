@@ -42,11 +42,10 @@ For doing pure localization on an existing map, the `cartographer` modular resou
 
 ### Hardware requirements
 
-
 {{% alert title="Running cartographer in the cloud" color="info" %}}
 
 Creating and updating SLAM maps with Cartographer is especially CPU-intensive.
-If you do not have enough resources locally, you can use the [cloudslam wrapper module](../cloudslam) to move computation to the cloud.
+If you do not have enough resources locally, you can use the [cloudslam wrapper module](../cloudslam/) to move computation to the cloud.
 
 Running `cartographer` in the cloud incurs cost for Data Management, Cloud Data Upload, and Cloud Data Egress. Currently, you incur no cost for compute.
 See Viam's [Pricing](https://www.viam.com/product/pricing) for more information.
@@ -132,9 +131,9 @@ To create a new map, follow the instructions below.
 
 3. (Optional) Configure cartographer to use cloudslam:
 
-    On the `SLAM` service configuration pane, click the **{}** button to switch to advanced views and set the `use_cloud_slam` field to **true**. This setting disables local mapping to limit cpu usage in favor of using cloudslam.
+   On the `SLAM` service configuration pane, click the **{}** button to switch to advanced views and set the `use_cloud_slam` field to **true**. This setting disables local mapping to limit cpu usage in favor of using cloudslam.
 
-    In addition, your configured LiDAR camera and movement sensor must have data capture enabled. See the [cloudslam](../cloudslam) documentation for more information on how to configure the feature on your machine and how to use cloudslam.
+   In addition, your configured LiDAR camera and movement sensor must have data capture enabled. See the [cloudslam](../cloudslam/) documentation for more information on how to configure the feature on your machine and how to use cloudslam.
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
@@ -201,7 +200,7 @@ This example JSON configuration:
 
 For more information about the configuration attributes, see [Attributes](#attributes).
 
-After configuring cartographer the machine should begin mapping automatically.  Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created. See our [tips](../#slam-mapping-best-practices) for making a good map! If you want to save your locally built map, you can use the **GetInternalState API** or use the local map uploading feature of the [cloudslam wrapper module](../cloudslam)
+After configuring cartographer the machine should begin mapping automatically. Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created. See our [tips](../#slam-mapping-best-practices) for making a good map! If you want to save your locally built map, you can use the **GetInternalState API** or use the local map uploading feature of the [cloudslam wrapper module](../cloudslam/)
 
 ### Update an existing map
 
@@ -292,9 +291,9 @@ To update an existing map with new pointcloud data from a new SLAM session, foll
 
    For more information about the configuration attributes, see [Attributes](#attributes). If you want to configure cartographer to use a locally saved map, see [Using locally built maps](#using-locally-built-maps).
 
- 2. After configuring cartographer the machine should begin mapping automatically. Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
-  
-   See our [tips](#slam-mapping-best-practices) for making a good map! If you want to save your locally built map, you can use the **GetInternalState API** or use the local map uploading feature of the [cloudslam wrapper module](../cloudslam)
+2. After configuring cartographer the machine should begin mapping automatically. Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
+
+See our [tips](#slam-mapping-best-practices) for making a good map! If you want to save your locally built map, you can use the **GetInternalState API** or use the local map uploading feature of the [cloudslam wrapper module](../cloudslam/)
 
 {{% alert title="Info" color="info" %}}
 
@@ -390,11 +389,11 @@ This example JSON configuration:
 
     For more information about the configuration attributes, see [Attributes](#attributes). If you want to configure cartographer to use a locally saved map, see [Using locally built maps](#using-locally-built-maps).
 
-2. After configuring cartographer on the machine, the map should appear automatically.  Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
+2. After configuring cartographer on the machine, the map should appear automatically. Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
 
-    ![slam RC card localize only](/services/slam/slam-RC-card-localize-only.png)
+   ![slam RC card localize only](/services/slam/slam-RC-card-localize-only.png)
 
-    {{% alert title="Info" color="info" %}}
+   {{% alert title="Info" color="info" %}}
 
 Cartographer may take several minutes to find your machine's position on the existing map.
 In the meantime, your machine will show up at the map's origin (with the `(x,y)` coordinates `(0,0)`).
@@ -408,7 +407,7 @@ If you move your machine, it will appear to be moving in a trajectory from the m
 <!-- prettier-ignore -->
 | Name | Data Type | Required? | Description |
 | ---- | --------- | --------- | ----------- |
-| `use_cloud_slam` | boolean | **Required** | If `true`, the Cartographer algorithm will disable mapping on the machine. This feature should only be used when trying to use [cloudslam](../cloudslam). |
+| `use_cloud_slam` | boolean | **Required** | If `true`, the Cartographer algorithm will disable mapping on the machine. This feature should only be used when trying to use [cloudslam](../cloudslam/). |
 | `camera` | obj | **Required** | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the LiDAR camera component to use as input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that camera component. |
 | `movement_sensor` | obj | Optional | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the IMU movement sensor (that is, a movement sensor that supports the `GetAngularVelocity` and `GetLinearAcceleration` API methods) to use as additional input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that movement sensor component. |
 | `enable_mapping` | boolean | Optional | If `true`, Cartographer will build the map in addition to doing localization. <ul> Default: `true` </ul> |
@@ -421,64 +420,64 @@ If you move your machine, it will appear to be moving in a trajectory from the m
 
 ### Using locally built maps
 
-If you do not have any maps on your **Location** page's **SLAM library** tab, and you do not wish to use [cloudslam](../cloudslam), but you still want to use localizing and updating modes with cartographer, you can take the following steps.
+If you do not have any maps on your **Location** page's **SLAM library** tab, and you do not wish to use [cloudslam](../cloudslam/), but you still want to use localizing and updating modes with cartographer, you can take the following steps.
 
-1. save a `.pbstream` file by using the [GetInternalState or InternalStateFull APIs](../_index.md#api) by using one of the SDKs. Note, `InternalStateFull` is currently only implemented in Go.
+1. save a `.pbstream` file by using the [GetInternalState or InternalStateFull APIs](../#api) by using one of the SDKs. Note, `InternalStateFull` is currently only implemented in Go.
 2. ensure the `.pbstream` file is located somewhere on the machine, and note the directory path to that file.
 3. In your cartographer's config, update the `existing_map` field with the path to the file that was noted in #2.
 
 your config should look something like the following:
 
-   ```json {class="line-numbers linkable-line-numbers"}
-   {
-     "modules": [
-       {
-         "type": "registry",
-         "name": "viam_rplidar",
-         "module_id": "viam:rplidar",
-         "version": "0.1.16"
-       },
-       {
-         "type": "registry",
-         "name": "viam_cartographer",
-         "module_id": "viam:cartographer",
-         "version": "0.3.45"
-       }
-     ],
-     "services": [
-       {
-         "attributes": {
-           "config_params": {
-             "max_range_meters": "25",
-             "mode": "2d",
-             "min_range_meters": "0.2"
-           },
-           "camera": {
-             "name": "rplidar",
-             "data_frequency_hz": "5"
-           },
-           "enable_mapping": true,
-           "use_cloud_slam": false,
-           "existing_map": "/PATH/TO/FILE/<INTERNAL-STATE-NAME>.pbstream"
-         },
-         "name": "slam",
-         "type": "slam",
-         "namespace": "rdk",
-         "model": "viam:slam:cartographer"
-       }
-     ],
-     "components": [
-       {
-         "namespace": "rdk",
-         "attributes": {},
-         "depends_on": [],
-         "name": "rplidar",
-         "model": "viam:lidar:rplidar",
-         "type": "camera"
-       }
-     ],
-     "packages": []
-   }
-   ```
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_rplidar",
+      "module_id": "viam:rplidar",
+      "version": "0.1.16"
+    },
+    {
+      "type": "registry",
+      "name": "viam_cartographer",
+      "module_id": "viam:cartographer",
+      "version": "0.3.45"
+    }
+  ],
+  "services": [
+    {
+      "attributes": {
+        "config_params": {
+          "max_range_meters": "25",
+          "mode": "2d",
+          "min_range_meters": "0.2"
+        },
+        "camera": {
+          "name": "rplidar",
+          "data_frequency_hz": "5"
+        },
+        "enable_mapping": true,
+        "use_cloud_slam": false,
+        "existing_map": "/PATH/TO/FILE/<INTERNAL-STATE-NAME>.pbstream"
+      },
+      "name": "slam",
+      "type": "slam",
+      "namespace": "rdk",
+      "model": "viam:slam:cartographer"
+    }
+  ],
+  "components": [
+    {
+      "namespace": "rdk",
+      "attributes": {},
+      "depends_on": [],
+      "name": "rplidar",
+      "model": "viam:lidar:rplidar",
+      "type": "camera"
+    }
+  ],
+  "packages": []
+}
+```
 
 Now your `cartographer` service should be running using your locally saved map!

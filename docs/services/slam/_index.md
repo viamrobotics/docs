@@ -20,13 +20,6 @@ Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
-{{% alert title="Cloud SLAM temporarily not available in live mode" color="caution" %}}
-
-Running models of the SLAM service in the cloud with live mode is temporarily disabled.
-[Collect a dataset and use offline mode](/services/slam/cartographer/#use-previously-captured-data) instead.
-
-{{% /alert %}}
-
 [Simultaneous Localization And Mapping (SLAM)](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping) allows your machine to create a map of its surroundings and find its location within that map.
 SLAM is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
 
@@ -55,6 +48,7 @@ Click the model name for configuration instructions.
 | Model | Description |
 | ----- | ----------- |
 | [`viam:slam:cartographer`](cartographer/) | [The Cartographer Project](https://github.com/cartographer-project) performs dense SLAM using LIDAR data. |
+| [`viam:cloudslam-wrapper:cloudslam`](cloudslam/) | [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) Allows users to run supported SLAM algorithms in the cloud. |
 
 ## API
 
