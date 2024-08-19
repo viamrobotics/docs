@@ -95,7 +95,7 @@ Get a list of detections from a given image using a configured [detector](#detec
 
 **Parameters:**
 
-- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/gen/component/camera/v1/camera_pb2/index.html#viam.gen.component.camera.v1.camera_pb2.Image)) (required): The image to get detections from.
+- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage)) (required): The image to get detections from.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -283,7 +283,7 @@ Get a list of classifications from a given image using a configured [classifier]
 
 **Parameters:**
 
-- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/gen/component/camera/v1/camera_pb2/index.html#viam.gen.component.camera.v1.camera_pb2.Image)) (required): The image to get detections from.
+- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage)) (required): The image to get detections from.
 - `count` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): The number of classifications desired.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.

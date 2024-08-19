@@ -1340,6 +1340,14 @@ def parse(type, names):
                             ## Create new empty dictionary for this_method_dict named "parameters":
                             this_method_dict["parameters"] = {}
 
+                            optional = False
+
+                            # If there is a curly brace before the parameter list all parameters are optional
+                            prev = parameter_tags[0].find_previous('section')
+                            if prev:
+                                if "{<ol" in str(prev):
+                                    optional = True
+
                             for parameter_tag in parameter_tags:
 
                                 ## Create new empty dictionary this_method_parameters_dict to house all parameter
@@ -1355,13 +1363,13 @@ def parse(type, names):
                                 formatted_param_usage = md(param_usage, strip=['wbr']).replace("../../", "https://flutter.viam.dev/")
                                 this_method_parameters_dict["param_usage"] = formatted_param_usage
 
-                                ## Parse if parameter is optional:
-                                if parameter_tag.find('span', class_ = 'type-annotation').find_previous('span').text.startswith('{'):
-                                    this_method_parameters_dict["optional"] = True
-                                else:
-                                    this_method_parameters_dict["optional"] = False
+                                # if a parameter is optional the previous parameter has a curly brace before it
+                                this_method_parameters_dict["optional"] = optional
 
                                 this_method_dict["parameters"][param_name] = this_method_parameters_dict
+
+                                if parameter_tag.text.endswith("{"):
+                                    optional = True
 
                         return_tags = method_soup.find_all(
                             lambda tag: tag.name == 'span'
@@ -1821,7 +1829,7 @@ def write_markdown(type, names, methods):
                                                 param_description = param_description + line.replace('\n', ' ')
                                         param_description = param_description.rstrip()
                                     else:
-                                        param_description = param_data.get("param_description")
+                                        param_description = param_data.get("param_description").strip()
 
                                     optional = param_data.get("optional")
 
