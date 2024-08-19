@@ -134,8 +134,8 @@ Run your test script from your terminal and make sure you are able to get readin
 
 ## Generate boilerplate module code
 
-You need some boilerplate files to make your module.
-To make this easier, use the Viam module generator:
+There are a few standardized files that must be part of any module.
+You can create these automatically using the Viam module generator:
 
 1. Follow the steps in the [readme](https://github.com/viam-labs/generator-viam-module/tree/main) to install the generator and run it.
 
@@ -167,7 +167,7 @@ You need to implement this method so your sensor supports the sensor API:
 1. Edit the config attributes to fit your sensor.
    For example, if your sensor requires two pins, copy the `some_pin` lines and add another pin with a different name.
    If you want to be able to configure something else, for example the location to get online data from, you can add attributes for that.
-   If your sensor doesn't require any configuration, delete the `some_pin` lines but don't delete the `validate` and `reconfigure` functions entirely; they're needed for the module to function even if they don't do anything interesting.
+   If your sensor doesn't require any configuration, delete the `some_pin` lines but don't delete the `validate` and `reconfigure` functions entirely; they're needed for the module to function even if they don't actually validate the input or reconfigure the resource.
 
 1. In the `get_readings` function definition, paste your test script.
    Edit the script to return a dictionary of readings instead of printing them.
