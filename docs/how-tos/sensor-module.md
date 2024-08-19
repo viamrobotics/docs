@@ -361,16 +361,31 @@ You can write a module without a machine, but to test your module you'll need a 
 It's a good idea to test your module locally before uploading it to the [Viam registry](https://app.viam.com/registry):
 
 {{< table >}}
-{{% tablestep %}}
+{{% tablestep link="/how-tos/create-module/#test-your-module-locally" %}}
 **1. Configure your local module on a machine**
 
-Follow [the local module testing instructions](/how-tos/create-module/#test-your-module-locally) to configure your local module and then the associated model on your machine.
+On your machine's **CONFIGURE** tab in the [Viam app](https://app.viam.com), click the **+** (create) icon in the left-hand menu.
+Select **Local module**, then **Local module**.
+
+Type in the _absolute_ path on your machine's filesystem to your module's executable file, for example <file>/Users/jessamy/my-sensor-module/run.sh</file>.
+Click **Create**.
+
+{{% /tablestep %}}
+{{% tablestep link="/how-tos/create-module/#test-your-module-locally" %}}
+**2. Configure the model provided by your module**
+
+Click the **+** button again, this time selecting **Local module** and then **Local component**.
+
+For **Type** choose **sensor**.
+
+Enter your {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} you specified in the [Name your model step](/how-tos/sensor-module/#generate-boilerplate-module-code), for example `jessamy:weather:meteo-PM`.
+Click **Create**.
 
 ![Configuring a local model after the local module is configured.](/how-tos/sensor-module-config.png)
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**2. Make sure readings are being returned**
+**3. Make sure readings are being returned**
 
 Click the **TEST** bar at the bottom of your sensor configuration, and check whether readings are being returned there.
 
