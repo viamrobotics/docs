@@ -34,6 +34,10 @@ Start by getting a test script working so you can check that the sensor code its
 Since this how-to uses Python, you need a Python test script so that you can more easily wrap it in a Python-based module.
 You'll still be able to use any of Viam's SDKs with the module.
 
+{{< table >}}
+{{% tablestep %}}
+**1. Write a test script**
+
 This step depends completely on your sensor hardware (or software)--just find or write some script that gets readings from the sensor and prints them out.
 
 {{< expand "An example of getting air quality data from an online source (Open-Meteo)" >}}
@@ -128,31 +132,52 @@ if __name__ == "__main__":
 ```
 
 {{< /expand >}}
-
+{{% /tablestep %}}
+{{% tablestep %}}
+**2. Run your test script**
 
 Run your test script from your terminal and make sure you are able to get readings from the sensor before proceeding.
+
+{{% /tablestep %}}
+{{< /table >}}
 
 ## Generate boilerplate module code
 
 There are a few standardized files that must be part of any module.
 You can create these automatically using the Viam module generator:
 
-1. Follow the steps in the [readme](https://github.com/viam-labs/generator-viam-module/tree/main) to install the generator and run it.
+{{< table >}}
+{{% tablestep %}}
+**1. Install and run the module generator**
 
-1. When prompted for a model triplet, use `<your organization public namespace>:<repo name>:<what you want to call your sensor model>`.
-   For example, `jessamy:weather:meteo_PM`.
+Follow the steps in the [readme](https://github.com/viam-labs/generator-viam-module/tree/main) to install the generator and run it.
 
-   - You can find your organization namespace by going to your organization settings in the [Viam app](https://app.viam.com).
-   - The repo name (family name) is the name of the GitHub repo where you will put your module code.
-     Name it something related to what your module does.
-   - Name your sensor based on what it supports, for example, if it supports a model of ultrasonic sensor called "XYZ Sensor 1234" you could call your model `XYZ_1234` or similar.
+{{% /tablestep %}}
+{{% tablestep %}}
+**2. Name your model**
 
-   For more information, see [Name your new resource model](/how-tos/create-module/#name-your-new-resource-model).
+When prompted for a model triplet, use `<your organization public namespace>:<repo name>:<what you want to call your sensor model>`.
+For example, `jessamy:weather:meteo_PM`.
 
-1. For the API triplet, enter `rdk:component:sensor`.
-   This means that you are implementing the standard Viam sensor API.
+- You can find your organization namespace by going to your organization settings in the [Viam app](https://app.viam.com).
+- The repo name (family name) is the name of the GitHub repo where you will put your module code.
+  Name it something related to what your module does.
+- Name your sensor based on what it supports, for example, if it supports a model of ultrasonic sensor called "XYZ Sensor 1234" you could call your model `XYZ_1234` or similar.
 
-1. When asked whether this is a Viam SDK built-in API, enter `yes`.
+For more information, see [Name your new resource model](/how-tos/create-module/#name-your-new-resource-model).
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**3. Specify the API**
+
+For the API triplet, enter `rdk:component:sensor`.
+This means that you are implementing the standard Viam sensor API.
+
+When asked whether this is a Viam SDK built-in API, enter `yes`.
+
+{{% /tablestep %}}
+{{< /table >}}
+<br>
 
 The generator creates a `run.sh` file, a `requirements.txt` file, a readme, and source code files.
 In the next section, you'll customize some of these files to support your sensor.
@@ -162,19 +187,33 @@ In the next section, you'll customize some of these files to support your sensor
 Other than the inherited methods, the [sensor API](/components/sensor/#api) only contains one method, `GetReadings()`.
 You need to implement this method so your sensor supports the sensor API:
 
-1. In the generated <file>/YOUR_MODULE_NAME/src/</file> directory, open the </file>MODEL_NAME.py</file> file.
+{{< table >}}
+{{% tablestep %}}
+**1. Edit configuration code**
 
-1. Edit the config attributes to fit your sensor.
-   For example, if your sensor requires two pins, copy the `some_pin` lines and add another pin with a different name.
-   If you want to be able to configure something else, for example the location to get online data from, you can add attributes for that.
-   If your sensor doesn't require any configuration, delete the `some_pin` lines but don't delete the `validate` and `reconfigure` functions entirely; they're needed for the module to function even if they don't actually validate the input or reconfigure the resource.
+In the generated <file>/YOUR_MODULE_NAME/src/</file> directory, open the </file>MODEL_NAME.py</file> file.
 
-1. In the `get_readings` function definition, paste your test script.
-   Edit the script to return a dictionary of readings instead of printing them.
-   Be sure to add any required imports to the top of the file.
+Edit the config attributes to fit your sensor.
+For example, if your sensor requires two pins, copy the `some_pin` lines and add another pin with a different name.
+If you want to be able to configure something else, for example the location to get online data from, you can add attributes for that.
+If your sensor doesn't require any configuration, delete the `some_pin` lines but don't delete the `validate` and `reconfigure` functions entirely; they're needed for the module to function even if they don't actually validate the input or reconfigure the resource.
 
-1. [Add logging messages](/how-tos/create-module/#optional-configure-logging) as desired.
+{{% /tablestep %}}
+{{% tablestep %}}
+**2. Define `get_readings`**
 
+In the `get_readings` function definition, paste your test script.
+Edit the script to return a dictionary of readings instead of printing them.
+Be sure to add any required imports to the top of the file.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**3. (Optional) Add logging**
+
+[Add logging messages](/how-tos/create-module/#optional-configure-logging) as desired.
+
+{{% /tablestep %}}
+{{< /table >}}
 <br>
 
 {{< expand "Example code for Open-Meteo data sensor" >}}
@@ -311,19 +350,38 @@ sudo chmod +x <your-file-path-to>/run.sh
 
 ## Test your module locally
 
+{{% expand "Prerequisite: A running machine connected to the Viam app." %}}
+
+You can write a module without a machine, but to test your module you'll need a machine.
+
+{{% snippet "setup.md" %}}
+
+{{% /expand%}}
+
 It's a good idea to test your module locally before uploading it to the [Viam registry](https://app.viam.com/registry):
 
-1. Follow [the local module testing instructions](/how-tos/create-module/#test-your-module-locally) to configure your local module and then the associated model on your machine.
+{{< table >}}
+{{% tablestep %}}
+**1. Configure your local module on a machine**
 
-   ![Configuring a local model after the local module is configured.](/how-tos/sensor-module-config.png)
+Follow [the local module testing instructions](/how-tos/create-module/#test-your-module-locally) to configure your local module and then the associated model on your machine.
 
-1. Click the **TEST** bar at the bottom of your sensor configuration, and check whether readings are being returned there.
+![Configuring a local model after the local module is configured.](/how-tos/sensor-module-config.png)
 
-   ![The control tab with pm10 and pm2_5 readings displayed.](/how-tos/sensor-test.png)
+{{% /tablestep %}}
+{{% tablestep %}}
+**2. Make sure readings are being returned**
+
+Click the **TEST** bar at the bottom of your sensor configuration, and check whether readings are being returned there.
+
+![The control tab with pm10 and pm2_5 readings displayed.](/how-tos/sensor-test.png)
 
 If it works, you're almost ready to share your module by uploading it to the registry.
 If not, you have some debugging to do.
 For help, don't hesitate to reach out on the [Community Discord](https://discord.gg/viam).
+
+{{% /tablestep %}}
+{{< /table >}}
 
 ## Create a README
 
