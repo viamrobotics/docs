@@ -418,7 +418,7 @@ Find **Organization ID** and click the copy icon.
 To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset.
 Click **...** in the left-hand menu and click **Copy dataset ID**.
 
-You can find your location ID by running `viam locations list` or by visiting your [fleet's page](https://app.viam.com/robots) in the Viam app and copying from **Location ID**.
+Find your location ID by running `viam locations list` or by visiting your [fleet's page](https://app.viam.com/robots) in the Viam app and copying from **Location ID**.
 
 To find the file ID of a given image, navigate to the [**DATA** tab in the Viam app](https://app.viam.com/data/view) and select your image.
 Its **File ID** is shown under the **DETAILS** subtab that appears on the right.
