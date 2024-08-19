@@ -223,12 +223,12 @@ To use a machine part API key to authenticate your CLI session, you must first c
 1. Then, run the following command to create a new machine part API key:
 
    ```sh {class="command-line" data-prompt="$"}
-   viam machines api-key create --robot-id <robot-id> --org-id <org-id> --name <key-name>
+   viam machines api-key create --machine-id <machine-id> --org-id <org-id> --name <key-name>
    ```
 
    Where:
 
-   - `robot-id` is your machine's ID.
+   - `machine-id` is your machine's ID.
      You can find your machine ID by running `viam machines list`, or by clicking the **...** button in the upper-right corner of your machine's page in the [Viam app](https://app.viam.com), and selecting **Copy machine ID**.
    - `org-id` is an optional organization ID to attach the key to.
      You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the Viam app.
@@ -289,7 +289,7 @@ viam organizations --help
 ### `data`
 
 The `data` command allows you to manage machine data.
-With it, you can export data in a variety of formats, delete specified data, add or remove images from a dataset and filter a dataset by tags, or configure a database user to enable querying synced data directly in the cloud.
+With it, you can export data in a variety of formats, delete specified data, add or remove images from a dataset, export data from a dataset, filter a dataset by tags or add or remove tags from all data that matches a given filter, or configure a database user to enable querying synced data directly in the cloud.
 
 ```sh {class="command-line" data-prompt="$"}
 viam data export --destination=<output path> --data-type=<output data type> [...named args]
@@ -299,6 +299,10 @@ viam data dataset remove --dataset-id=<dataset-id> --file-ids=<file-id-or-ids> -
 viam data dataset export --destination=<output-directory> --dataset-id=<dataset-id>
 viam data database configure --org-id=<org-id> --password=<db-user-password>
 viam data database hostname --org-id=<org-id>
+viam data tag ids add --tags=<tags> --org-id=<org_id> --location-id=<location_id> --file-ids=<file_ids>
+viam data tag ids remove --tags=<tags> --org-id=<org_id> --location-id=<location_id> --file-ids=<file_ids>
+viam data tag filter add --tags=<tags> [...named args from filter]
+viam data tag filter remove --tags=<tags> [...named args from filter]
 ```
 
 Examples:
@@ -319,6 +323,18 @@ viam data dataset add filter --dataset-id=abc --location-id=123 --org-id=123 --s
 # Federation instance, in order to query tabular data
 viam data database configure --org-id=abc --password=my_password123
 viam data database hostname --org-id=abc
+
+# add tags to all data that matches the given ids
+viam data tag ids add --tags=new_tag_1,new_tag_2,new_tag_3 --org-id=123 --location-id=123 --file-ids=123,456
+
+# remove tags from all data that matches the given ids
+viam data tag ids remove --tags=new_tag_1,new_tag_2,new_tag_3 --org-id=123 --location-id=123 --file-ids=123,456
+
+# add tags to all data that matches a given filter
+viam data tag filter add --tags=new_tag_1,new_tag_2 --location-ids=012 --machine-name=cool-machine --org-ids=84842  --mime-types=image/jpeg,image/png
+
+# remove tags from all data that matches a given filter
+viam data tag filter remove --tags=new_tag_1 --location-ids=012 --machine-name=cool-machine --org-ids=84842  --mime-types=image/jpeg,image/png
 ```
 
 Viam currently only supports deleting approximately 500 files at a time.
@@ -337,6 +353,7 @@ done
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
 | `export` | Export data in a specified format to a specified location | - |
+| `tag` | Add or remove tags from data matching the ids or filter | `ids`, `filter` |
 | `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query) | - |
 | `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query) | - |
 | `dataset add` | Add a new image to an existing dataset by its file id, or add a group of images by specifying a filter | `filter` |
@@ -351,8 +368,8 @@ done
 <!-- prettier-ignore -->
 | Argument | Description |
 | -------- | ----------- |
-| `filter` | `add` or `delete` images from a dataset using a filter. See [Using the `filter` argument)](#using-the-filter-argument).|
-| `ids` | `add` or `delete` images from a dataset by specifying one or more file ids as a comma-separated list. See [Using the `ids` argument)](#using-the-ids-argument).|
+| `filter` | `add` or `remove` images or tags from a dataset using a filter. See [Using the `filter` argument)](#using-the-filter-argument).|
+| `ids` | `add` or `remove` images or tags from a dataset by specifying one or more file ids as a comma-separated list. See [Using the `ids` argument](#using-the-ids-argument).|
 | `--help` | Return help |
 
 ##### Named arguments
@@ -369,20 +386,20 @@ done
 | `--delete-older-than-days` | Number of days, 0 means all data will be deleted | `delete` | Optional |
 | `--start` | ISO-8601 timestamp indicating the start of the interval |`export`, `delete`, `dataset`| Optional |
 | `--end` | ISO-8601 timestamp indicating the end of the interval |`export`, `delete`, `dataset`| Optional |
-| `--file-ids` | File-ids to add or remove from a dataset |`dataset`| **Required** |
+| `--file-ids` | File-ids to add or remove from a dataset or add or remove tags from |`dataset`, `tag ids` | **Required** |
 | `--include-jsonl` | Set to `true` to include JSON Lines files for local testing |`dataset export`| Optional |
-| `--location-id` | Location ID for the file ids being added or removed from the specified dataset (only accepts one location id) |`dataset`| **Required** |
-| `--location-ids` | Filter by specified location ID (accepts comma-separated list) |`export`, `delete`| Optional |
+| `--location-id` | Location ID for the file ids being added or removed from the specified dataset (only accepts one location id) |`dataset`, `tag ids` | **Required** |
+| `--location-ids` | Filter by specified location ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. |`export`, `delete`, `tag filter`| Optional |
 | `--method` | Filter by specified method |`export`, `delete`| Optional |
 | `--mime-types` | Filter by specified MIME type (accepts comma-separated list) |`export`, `delete`|false |
-| `--org-id` | Org ID for the database user being configured (with `database`), or for the file ids being added or removed from the specified dataset (with `dataset`) | `database configure`, `database hostname`, `dataset` | **Required** |
-| `--org-ids` | Filter by specified organizations ID (accepts comma-separated list) |`export`, `delete`| Optional |
+| `--org-id` | Org ID for the database user being configured (with `database`), or for the file ids being added or removed from the specified dataset (with `dataset`) | `database configure`, `database hostname`, `dataset`, `tag ids` | **Required** |
+| `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. |`export`, `delete`, `tag filter` | Optional |
 | `--parallel` | Number of download requests to make in parallel, with a default value of 10 for `export` and `delete` and 100 for `dataset export` |`export`, `delete`, `dataset export` | Optional |
 | `--part-id` | Filter by specified part ID |`export`, `delete`| Optional |
 | `--part-name` | Filter by specified part name |`export`, `delete`| Optional |
-| `--robot-id` | Filter by specified robot ID |`export`, `delete`| Optional |
-| `--robot-name` | Filter by specified robot name |`export`, `delete`| Optional |
-| `--tags` | Filter by specified tag (accepts comma-separated list) |`export`, `delete`, `dataset`| Optional |
+| `--machine-id` | Filter by specified machine ID |`export`, `delete`, `tag filter` | Optional |
+| `--machine-name` | Filter by specified machine name |`export`, `delete`| Optional |
+| `--tags` | Filter by (`export`, `delete`, `dataset`) or add (`tag`) specified tag (accepts comma-separated list) |`export`, `delete`, `dataset`, `tag` | Optional |
 | `--password` | Password for the database user being configured | `database configure` | **Required** |
 
 ##### Using the `ids` argument
@@ -395,11 +412,16 @@ For example, the following adds three images specified by their file ids to the 
 viam data dataset add ids --dataset-id=abc --location-id=123 --org-id=123 --file-ids=abc,123,def
 ```
 
+To find your organization's ID, navigate to your organization's **Settings** page in [the Viam app](https://app.viam.com/).
+Find **Organization ID** and click the copy icon.
+
 To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset.
 Click **...** in the left-hand menu and click **Copy dataset ID**.
 
+Find your location ID by running `viam locations list` or by visiting your [fleet's page](https://app.viam.com/robots) in the Viam app and copying from **Location ID**.
+
 To find the file ID of a given image, navigate to the [**DATA** tab in the Viam app](https://app.viam.com/data/view) and select your image.
-Its **File ID** is shown under the **Details** subtab that appears on the right.
+Its **File ID** is shown under the **DETAILS** subtab that appears on the right.
 
 You cannot use filter arguments, such as `--start` or `--end` when using `ids`.
 
@@ -420,7 +442,7 @@ Click **...** in the left-hand menu and click **Copy dataset ID**.
 You can also have the filter parameters generated for you using the **Filters** pane of the **DATA** tab.
 Navigate to the [**DATA** tab in the Viam app](https://app.viam.com/data/view), make your selections from the search parameters under the **Filters** pane (such as robot name, start and end time, or tags), and click the **Copy export command** button.
 A `viam data export` command string will be copied to your clipboard that includes the search parameters you selected.
-You can use the same filter parameters (such as `--start`, `--end`, etc) with your `viam data database add filter` or `viam data database remove filter` commands, except you would exclude the `--data-type` and `--destination` flags, which are specific to `viam data export`.
+Removing the `viam data export` string, you can use the same filter parameters (such as `--start`, `--end`, etc) with your `viam data database add filter`, `viam data database remove filter`, or `viam data tag filter` commands, except you _must_ exclude the `--data-type` and `--destination` flags, which are specific to `viam data export`.
 
 You cannot use the `--file-ids` argument when using `filter`.
 
@@ -1049,7 +1071,7 @@ viam machines part restart --machine e4713ae5-013a-43fe-800e-ff7999a8e3a0 --part
 | `--tail` | Tail (stream) logs, boolean(default false) | `part logs` | Optional |
 | `--stream` | If specified, the interval in which to stream the specified data, for example, 100ms or 1s | `part run` | Optional |
 | `--data` | Command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments)) | `part run` | **Required** |
-| `--robot-id` | The machine to create an API key for | `api-key` | **Required** |
+| `--machine-id` | The machine to create an API key for | `api-key` | **Required** |
 | `--name` | The optional name of the API key | `api-key` | Optional |
 | `--org-id` | The optional organization ID to attach the key to | `api-key` | Optional |
 
