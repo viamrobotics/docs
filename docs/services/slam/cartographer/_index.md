@@ -37,9 +37,6 @@ The `cartographer` module supports three modes of operation:
 - [Update an existing map](#update-an-existing-map)
 - [Pure localization](#localize-only)
 
-Creating and updating SLAM maps with Cartographer is especially CPU-intensive, so the `cartographer` modular resource runs in the cloud for these two tasks.
-For doing pure localization on an existing map, the `cartographer` modular resource runs locally on your machine.
-
 ### Hardware requirements
 
 {{% alert title="Running cartographer in the cloud" color="info" %}}
