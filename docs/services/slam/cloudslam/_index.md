@@ -18,7 +18,7 @@ aliases:
 
 SLAM Algorthims can have varying levels of resource requirements in order to run effectively. `Cartographer` in particular can require a significant amount of CPU resources to build and manage large maps. In order to better support running SLAM on resource limited machines, Viam provides a service to run SLAM algorithms on machines in the cloud as well as management of the maps generated in their location.
 
-Cloudslam can be used with both a live machine or with previously captured data in your `location`. In [live mode](#mapping-with-a-live-machine-online-mode) using the [data management service](/services/data/) and the [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) module, Viam takes your LiDAR camera and movement sensor data from your local machine and sends it to the cloudslam server. The cloudslam server will then process that data and produce a map that can then be used on any machine in your `location`. When using an [offline machine](#using previously captured data), users can select data from specific sensors in a period of time to build a map with.
+Cloudslam can be used with both a live machine or with previously captured data in your `location`. In [live mode](#mapping-with-a-live-machine-online-mode) using the [data management service](/services/data/) and the [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) module, Viam takes your LiDAR camera and movement sensor data from your local machine and sends it to the cloudslam server. The cloudslam server will then process that data and produce a map that can then be used on any machine in your `location`. When using an [offline machine](#using-previously-captured-data-offline-mode), users can select data from specific sensors in a period of time to build a map with.
 
 Users can view and delete maps built in their `location` by going to the [SLAM library](#the-slam-library-page), which provides a summary of active jobs in their location as well as a list of all maps built in that location.
 
@@ -42,7 +42,7 @@ On the robots page in the [Viam app](https://app.viam.com/robots), change the ta
 1.  A list of all maps generated in that location. The list shows the name and version of the map, which machine was used for mapping, and when the map was created. You can also view previous versions of a map, if a map has been updated multiple times.
     ![offline mapping available maps](/services/slam/offline-mapping-available-maps.png)
 
-2.  You can create or update a map using a previously collected dataset by clicking the **Make new map** on the top right and specify a map name or click **Update map** next to an existing map. See [using previously captured data](#using-previously-captured-dataoffline-mode) for more information on how to do this!
+2.  You can create or update a map using a previously collected dataset by clicking the **Make new map** on the top right and specify a map name or click **Update map** next to an existing map. See [using previously captured data](#using-previously-captured-data-offline-mode) for more information on how to do this!
 
 3.  A table showing active and failed cloudslam sessions. The table highlights the name of the map, which robot is currently mapping, and whether the map is in progress or has failed. The table can also be used to stop active mapping sessions.
     ![offline mapping maps computing table](/services/slam/offline-mapping-maps-computing-table.png)
@@ -322,7 +322,7 @@ You do not need to specify the map name or job id here, as the module should alr
 
 and thats all! You can view the final map in the `cloudslam-wrapper` card, or view the map in the [SLAM library](#the-slam-library-page)
 
-## using previously captured data(Offline mode)
+## using previously captured data (Offline mode)
 
 You can specify a range of **previously captured** LiDAR and optional IMU data to create a map or update an existing map in the cloud.
 You can browse your previously captured data from the **Data** page under the **Point clouds** tab (for LiDAR data) and **Sensors** tab (for IMU data).
