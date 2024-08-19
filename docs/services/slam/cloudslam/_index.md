@@ -373,17 +373,18 @@ This feature can also be used with SLAM algorithms that cloudslam does not curre
 
 1.  Add the `cloudslam-wrapper` module to your machine. You do not need data management configured on the machine. Configuring the module should not affect any currently running local SLAM maps. Add the following **Attributes**:
 
-````json
- {
- "slam_service": "<slam-service-name>",
- "api_key": "<location-api-key>",
- "api_key_id": "<location-api-key-id>",
- "organization_id": "<organization_id>",
- "location_id": "<location_id>",
- "machine_id": "<machine_id>",
- "machine_part_id": "<machine_part_id>",
- }
- ```
+```json
+{
+  "slam_service": "<slam-service-name>",
+  "api_key": "<location-api-key>",
+  "api_key_id": "<location-api-key-id>",
+  "organization_id": "<organization_id>",
+  "location_id": "<location_id>",
+  "machine_id": "<machine_id>",
+  "machine_part_id": "<machine_part_id>"
+}
+```
+
 ### Upload the map
 
 Navigate to the **CONTROL** tab on your machine's page.
@@ -393,8 +394,8 @@ Navigate to the **CONTROL** tab on your machine's page.
 3. In the **Input** section, enter the following command:
 
 ```json
-{"save-local-map": "<MAP-NAME>"}
-````
+{ "save-local-map": "<MAP-NAME>" }
+```
 
 where `<MAP-NAME> is the name you want to give the map you wish to generate. 4. Click the **Execute** button. If everything is configured correctly, you should receive a success message. The DoCommand card should look something like:
 ![cloudslam wrapper docommand local upload](/services/slam/cloudslam-module-docommand-local-upload.png)
