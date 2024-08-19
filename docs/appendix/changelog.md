@@ -951,7 +951,7 @@ When adding [frames](/services/frame-system/) to your machine's config in the Vi
 {{% changelog date="2023-02-28" color="added" title="Support for microcontrollers" %}}
 
 `viam-micro-server` is a lightweight version of `viam-server` that can run on an ESP32.
-Find more information in the [`viam-micro-server`](/installation/#install-viam-micro-server).
+Find more information in the [`viam-micro-server` installation docs](/installation/#install-viam-micro-server).
 
 {{% /changelog %}}
 
