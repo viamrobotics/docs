@@ -68,7 +68,7 @@ If you want to edit the fragment later, do it from this screen.
 {{% /tablestep %}}
 {{% tablestep %}}
 {{<imgproc src="/how-tos/one-to-many/delete.png" class="fill alignleft" resize="500x" style="max-width: 200px" declaredimensions=true alt="Delete">}}
-**3. Delete the original configuration (optional)**
+**4. Delete the original configuration (optional)**
 
 Now that the configuration is saved as a fragment, you can delete each resource in the original config from your machine and _replace the config with the fragment_ in the next step.
 In this way, you can keep all your machines up to date whenever you change the fragment.
