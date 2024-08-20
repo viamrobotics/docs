@@ -34,11 +34,7 @@ Start by getting a test script working so you can check that the sensor code its
 Since this how-to uses Python, you need a Python test script so that you can more easily wrap it in a Python-based module.
 You'll still be able to use any of Viam's SDKs to get readings from machines that use the module.
 
-{{< table >}}
-{{% tablestep %}}
-**1. Write a test script**
-
-This step depends completely on your sensor hardware (or software)--just find or write some script that gets readings from the sensor and prints them out.
+What you use as a test script depends completely on your sensor hardware (or software)--just find or write some script that gets readings from the sensor and prints them out.
 
 {{< expand "An example of getting air quality data from an online source (Open-Meteo)" >}}
 This example uses the Open-Meto API to get air quality data from [open-meteo.com](https://open-meteo.com/en/docs/air-quality-api#current=pm10,pm2_5&hourly=).
@@ -132,14 +128,8 @@ if __name__ == "__main__":
 ```
 
 {{< /expand >}}
-{{% /tablestep %}}
-{{% tablestep %}}
-**2. Run your test script**
 
 Run your test script from your terminal and make sure you are able to get readings from the sensor before proceeding.
-
-{{% /tablestep %}}
-{{< /table >}}
 
 ## Generate boilerplate module code
 
@@ -148,13 +138,43 @@ You can create these automatically using the Viam module generator:
 
 {{< table >}}
 {{% tablestep %}}
-**1. Install and run the module generator**
+**1. Install the module generator**
 
-Follow the steps in the [readme](https://github.com/viam-labs/generator-viam-module/tree/main) to install the generator and run it.
+Install the [module generator](https://github.com/viam-labs/generator-viam-module/tree/main):
+
+1. Install node (version 16 or later) and npm if you don't already have them:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+   nvm install 16
+   nvm use 16
+   ```
+
+1. Install Yeoman:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   npm install -g yo
+   ```
+
+1. Now install the module generator:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   npm install -g generator-viam-module
+   ```
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**2. Name your model**
+**2. Run the generator**
+
+Go to the directory where you want to create your module and run the generator:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+yo viam-module
+```
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**3. Name your model**
 
 When prompted for a model triplet, use `<your organization public namespace>:<repo name>:<what you want to call your sensor model>`.
 For example, `jessamy:weather:meteo_PM`.
@@ -168,7 +188,7 @@ For more information, see [Name your new resource model](/how-tos/create-module/
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**3. Specify the API**
+**4. Specify the API**
 
 For the API triplet, enter `rdk:component:sensor`.
 This means that you are implementing the standard Viam sensor API.
