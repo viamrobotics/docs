@@ -34,7 +34,7 @@ Start by getting a test script working so you can check that the sensor code its
 Since this how-to uses Python, you need a Python test script so that you can more easily wrap it in a Python-based module.
 You'll still be able to use any of Viam's SDKs to get readings from machines that use the module.
 
-What you use as a test script depends completely on your sensor hardware (or software)--just find or write some script that gets readings from the sensor and prints them out.
+What you use as a test script depends completely on your sensor hardware (or software)---just find or write some script that gets readings from the sensor and prints them out.
 
 {{< expand "An example of getting air quality data from an online source (Open-Meteo)" >}}
 This example uses the Open-Meto API to get air quality data from [open-meteo.com](https://open-meteo.com/en/docs/air-quality-api#current=pm10,pm2_5&hourly=).
