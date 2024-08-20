@@ -345,7 +345,7 @@ viam dataset data remove ids --dataset-id=123 --org-id=123 --location-id=123 --f
 | -------------- | ----------- | -------------------- |
 | `create` | Create a new dataset | - |
 | `rename` | Rename an existing dataset | - |
-| `list` | List dataset information from specified IDs or for an org ID |
+| `list` | List dataset information from specified IDs or for an org ID | - |
 | `delete` | Delete a dataset | - |
 | `data` | `add` or `remove` a new image to an existing dataset by its file id, or `add` or `remove` a group of images by specifying a filter | `ids`, `filter` |
 | `export` | Download all the data from a dataset | - |
