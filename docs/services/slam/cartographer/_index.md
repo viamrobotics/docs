@@ -283,7 +283,9 @@ To update an existing map with new pointcloud data from a new SLAM session, foll
    {{% /tab %}}
    {{< /tabs >}}
 
-   For more information about the configuration attributes, see [Attributes](#attributes). If you want to configure cartographer to use a locally saved map, see [Using locally built maps](#using-locally-built-maps).
+   For more information about the configuration attributes, see [Attributes](#attributes).
+
+   If you want to configure cartographer to use a locally saved map instead, see [Using locally built maps](#using-locally-built-maps).
 
 2. After configuring cartographer the machine should begin mapping automatically. Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
 
@@ -384,7 +386,9 @@ This example JSON configuration:
     {{% /tab %}}
     {{< /tabs >}}
 
-    For more information about the configuration attributes, see [Attributes](#attributes). If you want to configure cartographer to use a locally saved map, see [Using locally built maps](#using-locally-built-maps).
+    For more information about the configuration attributes, see [Attributes](#attributes).
+
+    If you want to configure cartographer to use a locally saved map instead, see [Using locally built maps](#using-locally-built-maps).
 
 2. After configuring cartographer on the machine, the map should appear automatically. Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
 
