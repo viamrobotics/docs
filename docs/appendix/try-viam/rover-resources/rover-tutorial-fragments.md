@@ -160,16 +160,7 @@ The components and services included in the fragment will now appear as cards on
 
 ## Modify the config
 
-The fragment you added is read-only, but if you need to modify your rover's config you can do the following:
-
-1. Navigate to the card belonging to your fragment on the **CONFIGURE** tab.
-2. Click the **View JSON** button in the upper right corner of the card.
-   Copy all the JSON.
-3. Return to the fragment card.
-   Click the **...** (Actions) button in the upper right corner of the card. Click **Delete** and confirm your choice.
-4. In the left-hand menu of the **CONFIGURE** tab, click **JSON** to switch to JSON mode.
-5. Paste the raw fragment contents into the editor and click **Save** in the upper-right corner of the screen to save your config.
-6. Now, you can edit the config in either **JSON** or **Builder** mode.
+The fragment you added is read-only, but if you need to modify your rover's config you [overwrite sections of the fragment](/how-tos/one-to-many/#modify-a-fragment).
 
 ## Next steps
 
