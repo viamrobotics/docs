@@ -32,7 +32,7 @@ Making a module to support your sensor will allow you to use it with Viam's data
 Start by getting a test script working so you can check that the sensor code itself works before packaging it into a module.
 
 Since this how-to uses Python, you need a Python test script so that you can more easily wrap it in a Python-based module.
-You'll still be able to use any of Viam's SDKs with the module.
+You'll still be able to use any of Viam's SDKs to get readings from machines that use the module.
 
 {{< table >}}
 {{% tablestep %}}
@@ -160,7 +160,7 @@ When prompted for a model triplet, use `<your organization public namespace>:<re
 For example, `jessamy:weather:meteo_PM`.
 
 - You can find your organization namespace by going to your organization settings in the [Viam app](https://app.viam.com).
-- The repo name (family name) is the name of the GitHub repo where you will put your module code.
+- The repo name (also called family name) is generally the name of the GitHub repo where you will put your module code.
   Name it something related to what your module does.
 - Name your sensor based on what it supports, for example, if it supports a model of ultrasonic sensor called "XYZ Sensor 1234" you could call your model `XYZ_1234` or similar.
 
@@ -333,6 +333,7 @@ class meteo_PM(Sensor, Reconfigurable):
 {{< /expand >}}
 
 For more examples, see the [existing sensor models](/components/sensor/#available-models).
+You can find the code in the repos linked from each module's page in the registry.
 
 ## Edit requirements.txt
 
