@@ -6,6 +6,7 @@ type: "docs"
 images: ["/registry/module-puzzle-piece.svg"]
 description: "Follow instructions for common tasks and workflows."
 no_list: true
+notoc: true
 aliases:
   - /use-cases/
 ---
