@@ -160,7 +160,7 @@ The components and services included in the fragment will now appear as cards on
 
 ## Modify the config
 
-The fragment you added is read-only, but if you need to modify your rover's config you [overwrite sections of the fragment](/how-tos/one-to-many/#modify-a-fragment).
+The fragment you added is read-only, but if you need to modify your rover's config you can [overwrite sections of the fragment](/how-tos/one-to-many/#modify-a-fragment).
 
 ## Next steps
 
