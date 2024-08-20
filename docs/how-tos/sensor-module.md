@@ -84,7 +84,6 @@ print(f"Current pm2_5 {current_pm2_5}")
 
 {{< expand "An example of getting PM2.5 and PM10 readings over serial from sensor hardware" >}}
 This script is based on the [pms7003 module](https://app.viam.com/module/joyce/pms7003).
-Before creating the module, the following script could have been used to verify the code that gets the readings from the sensor.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # my-sensor-test.py
@@ -352,8 +351,8 @@ class meteo_PM(Sensor, Reconfigurable):
 
 {{< /expand >}}
 
-For more examples, see the [existing sensor models](/components/sensor/#available-models).
-You can find the code in the repos linked from each module's page in the registry.
+For more examples, see other sensor modules in the [Viam Registry](https://app.viam.com/registry). 
+Most modules have their implementation code linked on their module page, so you can see how they work.
 
 ## Edit requirements.txt
 
