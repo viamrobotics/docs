@@ -1,10 +1,15 @@
 <!-- prettier-ignore -->
 | Method Name | Description |
 | ----------- | ----------- |
+| [`GetUserIDByEmail`](/appendix/apis/fleet/#getuseridbyemail) | Get the ID of a user by email. |
+| [`CreateOrganization`](/appendix/apis/fleet/#createorganization) | Create an organization. |
 | [`ListOrganizations`](/appendix/apis/fleet/#listorganizations) | List the {{< glossary_tooltip term_id="organization" text="organizations" >}} the user is an authorized user of. |
+| [`GetOrganizationsWithAccessToLocation`](/appendix/apis/fleet/#getorganizationswithaccesstolocation) | Get all organizations that have access to a location. |
+| [`ListOrganizationsByUser`](/appendix/apis/fleet/#listorganizationsbyuser) | List the organizations a user belongs to. |
 | [`GetOrganization`](/appendix/apis/fleet/#getorganization) | Return details about the requested organization. |
 | [`GetOrganizationNamespaceAvailability`](/appendix/apis/fleet/#getorganizationnamespaceavailability) | Check the availability of an {{< glossary_tooltip term_id="organization" text="organization" >}} namespace. |
 | [`UpdateOrganization`](/appendix/apis/fleet/#updateorganization) | Updates organization details. |
+| [`DeleteOrganization`](/appendix/apis/fleet/#deleteorganization) | Delete an organization. |
 | [`ListOrganizationMembers`](/appendix/apis/fleet/#listorganizationmembers) | List the members and invites of the {{< glossary_tooltip term_id="organization" text="organization" >}} that you are currently authenticated to. |
 | [`CreateOrganizationInvite`](/appendix/apis/fleet/#createorganizationinvite) | Create an {{< glossary_tooltip term_id="organization" text="organization" >}} invite and send it by email. |
 | [`UpdateOrganizationInviteAuthorizations`](/appendix/apis/fleet/#updateorganizationinviteauthorizations) | Update (add or remove) the authorizations attached to an organization invite that has already been created. |
@@ -16,8 +21,13 @@
 | [`UpdateLocation`](/appendix/apis/fleet/#updatelocation) | Change the name of a {{< glossary_tooltip term_id="location" text="parent location" >}} and/or assign it a new location. |
 | [`DeleteLocation`](/appendix/apis/fleet/#deletelocation) | Delete a {{< glossary_tooltip term_id="location" text="location" >}}. |
 | [`ListLocations`](/appendix/apis/fleet/#listlocations) | Get a list of all {{< glossary_tooltip term_id="location" text="locations" >}} under the organization you are currently authenticated to. |
+| [`ShareLocation`](/appendix/apis/fleet/#sharelocation) | Share a location with an organization. |
+| [`UnshareLocation`](/appendix/apis/fleet/#unsharelocation) | Stop sharing a location with an organization. |
 | [`LocationAuth`](/appendix/apis/fleet/#locationauth) | Get a location’s `LocationAuth` (location secret or secrets). |
+| [`CreateLocationSecret`](/appendix/apis/fleet/#createlocationsecret) | Create a new location secret. |
+| [`DeleteLocationSecret`](/appendix/apis/fleet/#deletelocationsecret) | Delete a location secret. |
 | [`GetRobot`](/appendix/apis/fleet/#getrobot) | Get a {{< glossary_tooltip term_id="machine" text="machine" >}} by its ID. |
+| [`GetRobotAPIKeys`](/appendix/apis/fleet/#getrobotapikeys) | Gets the API keys for the machine. |
 | [`GetRobotParts`](/appendix/apis/fleet/#getrobotparts) | Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under a specific {{< glossary_tooltip term_id="machine" text="machine" >}}. |
 | [`GetRobotPart`](/appendix/apis/fleet/#getrobotpart) | Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}}. |
 | [`GetRobotPartLogs`](/appendix/apis/fleet/#getrobotpartlogs) | Get the logs associated with a specific machine {{< glossary_tooltip term_id="part" text="part" >}}. |
@@ -41,6 +51,7 @@
 | [`DeleteFragment`](/appendix/apis/fleet/#deletefragment) | Delete a {{< glossary_tooltip term_id="fragment" text="fragment" >}}. |
 | [`AddRole`](/appendix/apis/fleet/#addrole) | Add a role under the organization you are currently authenticated to. |
 | [`RemoveRole`](/appendix/apis/fleet/#removerole) | Remove a role under the organization you are currently authenticated to. |
+| [`ChangeRole`](/appendix/apis/fleet/#changerole) | Changes an existing role to a new role. |
 | [`ListAuthorizations`](/appendix/apis/fleet/#listauthorizations) | List all authorizations (owners and operators) of a specific resource (or resources) within the organization you are currently authenticated to. |
 | [`CheckPermissions`](/appendix/apis/fleet/#checkpermissions) | Check if the organization, location, or robot your `ViamClient` is authenticated to is permitted to perform some action or set of actions on the resource you pass to the method. |
 | [`GetRegistryItem`](/appendix/apis/fleet/#getregistryitem) | Get registry item by ID. |
@@ -54,5 +65,7 @@
 | [`GetModule`](/appendix/apis/fleet/#getmodule) | Get a {{< glossary_tooltip term_id="module" text="module" >}} by its ID. |
 | [`ListModules`](/appendix/apis/fleet/#listmodules) | List the {{< glossary_tooltip term_id="module" text="modules" >}} under the organization you are currently authenticated to. |
 | [`CreateKey`](/appendix/apis/fleet/#createkey) | Create a new API key. |
+| [`DeleteKey`](/appendix/apis/fleet/#deletekey) | Delete an API key. |
+| [`RotateKey`](/appendix/apis/fleet/#rotatekey) | Rotate an API key. |
 | [`ListKeys`](/appendix/apis/fleet/#listkeys) | List all keys for the {{< glossary_tooltip term_id="organization" text="organization" >}} that you are currently authenticated to. |
 | [`CreateKeyFromExistingKeyAuthorizations`](/appendix/apis/fleet/#createkeyfromexistingkeyauthorizations) | Create a new API key with an existing key’s authorizations. |
