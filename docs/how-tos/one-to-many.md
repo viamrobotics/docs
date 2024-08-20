@@ -104,7 +104,7 @@ If some of your machines have slight differences, you can still add the fragment
 
 ## Modify a fragment
 
-If your machines are similar but not identical, you can use a fragment with all of them, and then [overwrite parts of it](/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment) to customize select fields of the configuration without modifying the upstream fragment.
+If your machines are similar but not identical, you can use a fragment with all of them, and then [overwrite parts of it](/fleet/fragments/#overwrite-the-config-of-a-machine-that-uses-a-fragment) to customize select fields of the configuration without modifying the upstream fragment.
 
 {{% alert title="Note" color="note" %}}
 If you modify fields within a fragment, your modifications will act as overwrites.
@@ -112,7 +112,7 @@ If you later update the upstream fragment, the updates to the overwritten fields
 {{% /alert %}}
 
 {{< table >}}
-{{% tablestep link="/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment" %}}
+{{% tablestep link="/fleet/fragments/#overwrite-the-config-of-a-machine-that-uses-a-fragment" %}}
 {{<gif webm_src="/how-tos/fragment-overwrite.webm" mp4_src="/how-tos/fragment-overwrite.mp4" alt="A motor config panel from a fragment being edited with different direction and pwm pin values." max-width="500px" class="aligncenter" >}}
 
 <!-- markdownlint-disable MD036 -->
@@ -127,8 +127,15 @@ Don't forget to **Save**.
 
 {{% /tablestep %}}
 {{% tablestep %}}
+**2. Check your machine's logs**
+
+After configuring overwrites, check your machine's [**LOGS** tab](/cloud/machines/#logs).
+If there are problems with overwrites to the fragment, the overwrites will not be partially applied and the configuration changes will not take effect until the configuration is fixed.
+
+{{% /tablestep %}}
+{{% tablestep %}}
 {{<imgproc src="/how-tos/one-to-many/reset.png" class="fill alignleft" resize="500x" style="max-width: 250px"  declaredimensions=true alt="Reset to fragment">}}
-**2. (Optional) Revert fragment modifications**
+**3. (Optional) Revert fragment modifications**
 
 If you need to restore the original fragment, click the **...** in the upper right corner of the card you modified, and click **Revert changes**.
 Now, the fragment will be identical to the upstream fragment.

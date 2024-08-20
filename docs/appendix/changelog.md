@@ -155,7 +155,7 @@ You can now use the [ultrasonic sensor component](/components/sensor/ultrasonic-
 
 {{% changelog date="2024-03-01" color="added" title="Edit a machine configuration that uses a fragment" %}}
 
-You can now edit the configuration of an existing machine that has been configured with a fragment by using [the `fragment_mods` object](/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment) in your configuration.
+You can now edit the configuration of an existing machine that has been configured with a fragment by using [the `fragment_mods` object](/fleet/fragments/#overwrite-the-config-of-a-machine-that-uses-a-fragment) in your configuration.
 You can use the `fragment_mods` objects to be able to deploy a fragment to a fleet of machines, but still be able to make additional per-machine edits as needed.
 
 {{% /changelog %}}
