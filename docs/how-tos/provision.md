@@ -22,7 +22,7 @@ Unless you have been told to use the captive portal, we recommend you use the Vi
 ## Prerequisites
 
 - Physical hardware constituting a machine
-- A WiFi-enabled laptop or mobile device if using the Viam mobile app
+- A WiFi-enabled computer, or mobile device (if using the Viam mobile app)
 
 ## Set up your machine using the Viam mobile app
 
