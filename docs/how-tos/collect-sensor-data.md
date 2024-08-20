@@ -15,20 +15,23 @@ You can use the data management service to capture sensor data from any or all o
 For example, you can configure data capture for several sensors across one or multiple machines to report the current memory usage or the ambient operating temperature.
 
 You can do all of this using the [Viam app](https://app.viam.com/) user interface.
-You will not need to write any code.
+You do not need to write any code to follow this guide.
 
 {{< alert title="In this page" color="tip" >}}
 
 1. [Gather data on any machine and syncing it to the cloud](#gather-and-sync-data).
 1. [View sensor data](#view-sensor-data).
+1. [Stop data capture](#stop-data-capture).
 
 {{< /alert >}}
 
 ## Prerequisites
 
+You don't need to buy or own any hardware to complete this tutorial.
+
 {{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
 
-{{% snippet "setup.md" %}}
+{{% snippet "setup-both.md" %}}
 
 {{% /expand%}}
 
@@ -38,7 +41,7 @@ Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
 Then [find and add a sensor model](/components/sensor/) that supports your sensor.
 
-If you're not sure which sensor model to choose, add the `viam:viam-sensor:telegrafsensor` which captures performance data (CPU, memory usage, and more) from your machine. After adding the component, use the following attribute configuration:
+If you do not have a physical sensor or if you're not sure which sensor model to choose, add the `viam:viam-sensor:telegrafsensor` which captures performance data (CPU, memory usage, and more) from your machine. After adding the component, use the following attribute configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -64,7 +67,7 @@ If you're not sure which sensor model to choose, add the `viam:viam-sensor:teleg
 Viam's [data management service](/services/data/) lets you capture data locally from sensors and then sync it to the cloud where you can access all data across different {{< glossary_tooltip term_id="machine" text="machines" >}} or {{< glossary_tooltip term_id="location" text="locations" >}}.
 
 {{< table >}}
-{{% tablestep link="/services/data/"%}}
+{{% tablestep link="/services/data/capture/"%}}
 {{<imgproc src="/services/icons/data-management.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Configure the data management service">}}
 **1. Add the data management service**
 
@@ -72,7 +75,7 @@ Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https
 Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 Then add the **data management** service.
 
-Enable **Syncing** to ensure captured data is synced to the cloud and set the sync interval, for example to `0.05` minutes to sync every 3 seconds.
+Enable **Syncing** to ensure captured data is synced to the cloud and set the sync interval, for example to `0.025` minutes to sync every 40 seconds.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -81,7 +84,9 @@ Enable **Syncing** to ensure captured data is synced to the cloud and set the sy
 
 On the **CONFIGURE** tab, go to the **sensor**'s card and find the **Data capture** section.
 Add a new method, `Readings`, to capture data for and set the frequency.
-For example, setting a frequency of `0.1` will capture data once every ten seconds.
+For example, setting a frequency of `0.05` will capture data once every 20 seconds.
+
+{{< gif webm_src="/how-tos/capture-sensor-readings.webm" mp4_src="/how-tos/capture-sensor-readings.mp4" alt="The process described below." max-width="600px" class="aligncenter" >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -100,18 +105,20 @@ If you need to sync data conditionally, for example at a certain time, see [Trig
 
 ## View sensor data
 
-{{< table >}}
-{{% tablestep link="/services/data/view/"%}}
-{{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Capture tabular data from a sensor">}}
-**1. View data in the Viam app**
+Click on the **...** menu of the sensor component and click on **View captured data**.
+This takes you to the data tab.
 
-To confirm data is being synced, go to the **DATA** tab and select the **Sensors** subtab.
-Confirm that you are seeing data appear.
+![View captured data option in the component menu](/get-started/quickstarts/collect-data/sensor-capt-data.png)
 
-![Sensor data tab](/get-started/quickstarts/collect-data/data-page.png)
+If you do not see data from your sensor, try waiting a minute and refreshing the page to allow time for the readings to be captured and then synced to the app at the interval you configured.
 
-{{% /tablestep %}}
-{{< /table >}}
+## Stop data capture
+
+If this is a test project, make sure you stop data capture to avoid charges for a large amount of unwanted data.
+
+In the **Data capture** section of your sensor's configuration, toggle the switch to **Off**.
+
+Click the **Save** button in the top right corner of the page to save your config.
 
 ## Next steps
 
