@@ -85,7 +85,7 @@ Wait for your device to connect to the Viam app.
 1. Click on the **Test** panel at the bottom of the camera configuration panel to test the camera stream.
    If you don't see an image stream, [configure the `video_path` attribute](/components/camera/webcam/#using-video_path).
    By default your camera stream refreshes once every second.
-   You can change the refresh frequency in the dropdown menu at the top of the **Test** panel.
+   You can change the refresh frequency to **Live** in the dropdown menu at the top of the **Test** panel.
    
 
 For more detailed information, including optional attribute configuration, see the [`webcam` docs](/components/camera/webcam/).
