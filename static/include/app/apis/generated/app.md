@@ -1,3 +1,55 @@
+### GetUserIDByEmail
+
+Get the ID of a user by email.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `email` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The email of the user.
+
+**Returns:**
+
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The ID of the user.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+id = await cloud.get_user_id_by_email("youremail@email.com")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_user_id_by_email).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### CreateOrganization
+
+Create an organization.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the organization.
+
+**Returns:**
+
+- ([viam.proto.app.Organization](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Organization)): The created organization.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+organization = await cloud.create_organization("name")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_organization).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### ListOrganizations
 
 List the {{< glossary_tooltip term_id="organization" text="organizations" >}} the user is an authorized user of.
@@ -20,6 +72,58 @@ org_list = await cloud.list_organizations()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_organizations).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetOrganizationsWithAccessToLocation
+
+Get all organizations that have access to a location.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the location.
+
+**Returns:**
+
+- ([List[viam.proto.app.OrganizationIdentity]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationIdentity)): The list of organizations.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+org_list = await cloud.get_organization_with_access_to_location("location-id")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_organizations_with_access_to_location).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListOrganizationsByUser
+
+List the organizations a user belongs to.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `user_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the user.
+
+**Returns:**
+
+- ([List[viam.proto.app.OrgDetails]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrgDetails)): The list of organizations.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+org_list = await cloud.list_organizations_by_user("user-id")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_organizations_by_user).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -103,6 +207,25 @@ Updates organization details.
 - (GRPCError): If the org’s namespace has already been set, or if the provided namespace is already taken.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_organization).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteOrganization
+
+Delete an organization.
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization. You can obtain your organization ID from the Viam app’s organization settings page.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_organization).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -477,6 +600,60 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### ShareLocation
+
+Share a location with an organization.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization.
+- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the location.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.share_location("organization-id", "location-id")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.share_location).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UnshareLocation
+
+Stop sharing a location with an organization.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization.
+- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the location.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.unshare_location("organization-id", "location-id")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.unshare_location).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### LocationAuth
 
 Get a location’s `LocationAuth` (location secret or secrets).
@@ -507,6 +684,68 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### CreateLocationSecret
+
+Create a new location secret.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): ID of the location to generate a new secret for. Defaults to the location ID provided at AppClient instantiation.
+
+**Returns:**
+
+- ([viam.proto.app.LocationAuth](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.LocationAuth)): The specified location’s LocationAuth containing the newly created secret.
+
+**Raises:**
+
+- (GRPCError): If an invalid location ID is passed or one isn’t passed and there was no location ID provided at AppClient instantiation.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+new_loc_auth = await cloud.create_location_secret()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_location_secret).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteLocationSecret
+
+Delete a location secret.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `secret_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the secret to delete.
+- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): ID of the location to delete secret from. Defaults to the location ID provided at AppClient instantiation.
+
+**Returns:**
+
+- None.
+
+**Raises:**
+
+- (GRPCError): If either an invalid location ID or secret ID is passed or a location ID isn’t passed and there was no location ID provided at AppClient instantiation.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.delete_location_secret(
+    secret_id="abcd123-456-7890ab-cxyz98-989898xyzxyz")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_location_secret).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetRobot
 
 Get a {{< glossary_tooltip term_id="machine" text="machine" >}} by its ID.
@@ -533,6 +772,32 @@ robot = await cloud.get_robot(robot_id="1a123456-x1yz-0ab0-a12xyzabc")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetRobotAPIKeys
+
+Gets the [API keys](/cloud/rbac/#api-keys) for the machine.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the robot.
+
+**Returns:**
+
+- ([List[viam.proto.app.APIKeyWithAuthorizations]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.APIKeyWithAuthorizations)): The list of API keys.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.get_robot_api_keys(robot_id="robot-id")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_api_keys).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1281,6 +1546,49 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### ChangeRole
+
+Changes an existing role to a new role.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the organization.
+- `old_identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the entity the role belongs to (for example, a user ID).
+- `old_role` (Literal['owner'] | Literal['operator']) (required): The role to be changed.
+- `old_resource_type` (Literal['organization'] | Literal['location'] | Literal['robot']) (required): Type of the resource the role is added to. Must match old_resource_id.
+- `old_resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the resource the role applies to (that is, either an organization, location, or robot ID).
+- `new_identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New ID of the entity the role blongs to (for example, a user ID).
+- `new_role` (Literal['owner'] | Literal['operator']) (required): The new role.
+- `new_resource_type` (Literal['organization'] | Literal['location'] | Literal['robot']) (required): Type of the resource to add role to. Must match new_resource_id.
+- `new_resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New ID of the resource the role applies to (that is, either an organization, location, or robot ID).
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.change_role(
+    organization_id="organization-id",
+    old_identity_id="abc01234-0123-4567-ab12-a11a00a2aa22",
+    old_role="operator",
+    old_resource_type="location",
+    old_resource_id="111ab12345",
+    new_identity_id="abc01234-0123-4567-ab12-a11a00a2aa22",
+    new_role="owner",s
+    new_resource_type="organization",
+    new_resource_id="abc12345")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.change_role).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### ListAuthorizations
 
 List all authorizations (owners and operators) of a specific resource (or resources) within the organization you are currently authenticated to.
@@ -1737,6 +2045,58 @@ api_key, api_key_id = cloud.create_key([auth], "my_key")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_key).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteKey
+
+Delete an [API key](/cloud/rbac/#api-keys).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the API key.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.delete_key("key-id")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_key).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### RotateKey
+
+Rotate an [API key](/cloud/rbac/#api-keys).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the key to be rotated.
+
+**Returns:**
+
+- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): The API key and API key id.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+id, key = await cloud.rotate_key("key-id")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.rotate_key).
 
 {{% /tab %}}
 {{< /tabs >}}
