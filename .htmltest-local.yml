@@ -34,6 +34,8 @@ IgnoreURLs:
   - "rtk2go.com"
   - "researchgate.net"
   - "trinamic.com"
+  - "viam.setup"
+  - "web.archive"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"
