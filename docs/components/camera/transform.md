@@ -118,7 +118,7 @@ The following attributes are available for `transform` views:
 | ---- | ---- | --------- | ----------- |
 | `source` | string | **Required** | `name` of the camera to transform. |
 | `pipeline` | array | **Required** | Specify an array of transformation objects. |
-| `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
+| `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. Value must be >= 0.</li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. Value must be >= 0.</li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
 | `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
 | `debug` | boolean | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
 
@@ -297,8 +297,8 @@ Useful to debug the alignment of the two images.
 **Attributes:**
 
 - `intrinsic_parameters`: The intrinsic parameters of the camera used to do 2D <-> 3D projections.
-  - `width_px`: The width of the image in pixels.
-  - `height_px`: The height of the image in pixels.
+  - `width_px`: The width of the image in pixels. Value must be >= 0.
+  - `height_px`: The height of the image in pixels. Value must be >= 0.
   - `ppx`: The image center x point.
   - `ppy`: The image center y point.
   - `fx`: The image focal x.
@@ -322,8 +322,8 @@ The Resize transform resizes the image to the specified height and width.
 
 **Attributes:**
 
-- `width_px`: Specify the expected width for the aligned image.
-- `height_px`: Specify the expected width for the aligned image.
+- `width_px`: Specify the expected width for the aligned image. Value must be >= 0.
+- `height_px`: Specify the expected width for the aligned image. Value must be >= 0.
 
 {{% /tab %}}
 
@@ -377,8 +377,8 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 **Attributes:**
 
 - `intrinsic_parameters`: The intrinsic parameters of the camera used to do 2D <-> 3D projections.
-  - `width_px`: The expected width of the aligned image in pixels.
-  - `height_px`: The expected height of the aligned image in pixels.
+  - `width_px`: The expected width of the aligned image in pixels. Value must be >= 0.
+  - `height_px`: The expected height of the aligned image in pixels. Value must be >= 0.
   - `ppx`: The image center x point.
   - `ppy`: The image center y point.
   - `fx`: The image focal x.
