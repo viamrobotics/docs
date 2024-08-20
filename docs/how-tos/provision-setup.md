@@ -43,7 +43,7 @@ If you choose to have a mobile app experience, you can use the [Viam mobile app]
 If you choose to use the Viam mobile app, you must provide a {{< glossary_tooltip term_id="fragment" text="fragment" >}} for provisioning.
 If you do not yet have a fragment, follow the steps to [Create a configuration fragment](/how-tos/one-to-many/) and make a note of the fragment ID.
 
-If you choose to use the captive web portal, you can optionally create a machine already and provide its credentials configuration file at <FILE>/etc/viam.json</FILE>.
+If you choose to use the captive web portal, you can optionally create a machine in advance and provide its credentials configuration file at <FILE>/etc/viam.json</FILE>.
 
 You can get the `viam-server` machine credentials by clicking the copy icon next to **Viam server config** in the part status dropdown to the right of your machine's name on the top of the page.
 
