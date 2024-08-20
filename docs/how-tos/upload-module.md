@@ -191,9 +191,6 @@ See [`meta.json` file](/cli/#the-metajson-file) for more information.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-
-{{% /tablestep %}}
-{{% tablestep %}}
 **4. (For Python) Package module as an archive**
 
 For modules written in Python, you should package your module files as an archive first, before uploading.

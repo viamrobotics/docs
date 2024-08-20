@@ -21,7 +21,7 @@ Generally, when developing a module, you have two options for iterative developm
 Both of these options involve deploying your module to the target test system as a [local module](/registry/configure/#local-modules), without uploading it to the Viam registry.
 Even if you have already published a version of your module to the registry, you might still find it useful to follow the steps in this section to verify that changes you make as part of releasing a new version work as expected on your target platform.
 
-Then, once you have tested it, you can [upload your module](/how-tos/create-module/) to the Viam registry.
+Then, once you have tested it, you can [upload your module](/how-tos/upload-module/) to the Viam registry.
 You can use [prerelease versioning](#use-prerelease-versioning) to publish a version of your module to the registry without affecting machines that are using stable versions of your module.
 
 {{< tabs >}}
@@ -210,7 +210,7 @@ If you are developing a module for a different target architecture than your dev
 {{% /tab %}}
 {{% /tabs %}}
 
-When you are satisfied that your module is ready for release, follow the steps to [upload your module](/how-tos/create-module/) to the Viam registry, to facilitate streamlined deployment to other machines or to make it available to the Viam community.
+When you are satisfied that your module is ready for release, follow the steps to [upload your module](/how-tos/upload-module/) to the Viam registry, to facilitate streamlined deployment to other machines or to make it available to the Viam community.
 
 ## Troubleshooting `ssh`
 
