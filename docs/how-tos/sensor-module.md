@@ -351,7 +351,7 @@ class meteo_PM(Sensor, Reconfigurable):
 
 {{< /expand >}}
 
-For more examples, see other sensor modules in the [Viam Registry](https://app.viam.com/registry). 
+For more examples, see other sensor modules in the [Viam Registry](https://app.viam.com/registry).
 Most modules have their implementation code linked on their module page, so you can see how they work.
 
 ## Edit requirements.txt
