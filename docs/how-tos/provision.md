@@ -1,310 +1,146 @@
 ---
-title: "Configure provisioning with viam-agent"
-linkTitle: "Prepare provisioning"
-weight: 68
+title: "Complete setup for a machine"
+linkTitle: "Set a machine up"
+weight: 69
 type: "docs"
-description: "Install and configure viam-agent for provisioning one or many machines."
-images: ["/installation/thumbnails/install.png"]
-imageAlt: "Install Viam"
+description: "If you have received a machine that uses Viam and have been pointed to this guide, this guide will show you how to set it up."
+images: ["/platform/provisioning-demo.gif"]
+videos: ["/platform/provisioning-demo.webm", "/platform/provisioning-demo.mp4"]
 ---
 
-The provisioning subsystem is a feature of `viam-agent`, which you can install as part of your manufacturing process. `agent-provisioning` will then perform the rest of the first-time setup for your machine once an end user sets up the machine.
+If you have received a machine with Viam pre-installed on it, this guide will show you how to complete your device setup using either the [Viam mobile app](#set-up-your-machine-using-the-viam-mobile-app) or the [captive portal](#set-up-your-machine-using-the-captive-portal).
 
-This is useful when deploying a fleet of machines directly from the factory to a customer, or when bundling proprietary software on your Viam machine.
-
-This guide will show you how to install and configure `viam-agent`.
+Unless you have been told to use the captive portal, we recommend you use the Viam mobile app.
 
 {{< alert title="In this page" color="tip" >}}
 
-1. [Configure `agent-provisioning`](#configure-agent-provisioning)
-1. [Decide on the provisioning method](#decide-on-the-provisioning-method)
-1. [Install `viam-agent`](#install-viam-agent)
+1. [Set up your machine using the Viam mobile app](#set-up-your-machine-using-the-viam-mobile-app).
+1. [Set up your machine using the captive portal](#set-up-your-machine-using-the-captive-portal).
 
 {{< /alert >}}
 
 ## Prerequisites
 
-{{% expand "One or more physical devices with supported operating system" %}}
+- Physical hardware constituting a machine
+- A WiFi-enabled laptop or mobile device if using the Viam mobile app
 
-To find out more about supported systems, see [Compatibility](/installation/#compatibility).
+## Set up your machine using the Viam mobile app
 
-{{% /expand%}}
-
-{{% expand "A machine fragment" %}}
-
-Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ for copying parts of a configuration file to multiple machines.
-
-Follow the steps to [Create a configuration fragment](/how-tos/one-to-many/) and make a note of the fragment ID.
-
-{{% /expand%}}
-
-## Decide on the provisioning method
-
-You can choose to let your end users complete machine setup by using a captive web portal or a mobile app.
-
-If you choose to have a mobile app experience, you can use the [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app) or create your own custom mobile app using the [Flutter SDK](https://flutter.viam.dev/viam_protos.provisioning.provisioning/ProvisioningServiceClient-class.html) or the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/src/app/provisioning-client.ts) to connect to `viam-agent` and provision your machines.
-
-If you choose to use the Viam mobile app, you must provide a fragment for provisioning.
-
-If you choose to use the captive web portal, you can optionally create a machine already and provide its credentials configuration file at <FILE>/etc/viam.json</FILE>.
-
-You can get the `viam-server` app JSON configuration by clicking the copy icon next to **Viam server config** in the part status dropdown to the right of your machine's name on the top of the page.
-
-{{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
-
-## Configure `agent-provisioning`
+{{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" max-width="400px" class="aligncenter imgzoom">}}
 
 {{< table >}}
+{{% tablestep %}}
+**1. Install the Viam mobile app**
 
-{{% tablestep link="/fleet/provision/#configuration" %}}
-**Configure provisioning**
+You can find the mobile app on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
 
-You may optionally provide a provisioning configuration file to customize the experience.
-Place the file at <file>/etc/viam-provisioning.json</file> with the following format:
+<a href="https://apps.apple.com/vn/app/viam-robotics/id6451424162" target="_blank">
+  <img src="https://github.com/viamrobotics/docs/assets/90707162/a470b65d-1b97-412f-9f97-daf902f2f053" width="200px" alt="apple store icon" class="center-if-small" >
+</a>
 
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "manufacturer": "<NAME>", # your company name
-  "model": "<NAME>", # the machine's model
-  "fragment_id": "<ID>", # the fragment id, required for mobile app
-  "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup
-  "disable_dns_redirect": true, # disable if using a mobile app
-  "hotspot_password": "<PASSWORD>", # password for the hotspot
-}
-```
+<a href="https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US" target="_blank">
+  <img src="https://github.com/viamrobotics/docs/assets/90707162/6ebd6960-08c5-41d4-81f9-42293fbfdfd4" width="200px" alt="google play store icon" class="center-if-small" >
+</a>
 
+{{% /tablestep %}}
+{{% tablestep %}}
+**2. Create a machine**
+
+Open the Viam mobile app and sign in.
+Then, select an organization and location for your machine.
+If you have already created a machine, select it.
+If you have not yet created a machine, click on **Add new smart machine** and give your machine a name.
+{{% /tablestep %}}
+{{% tablestep %}}
+**3. Follow the instructions in the app**
+
+Turn on the smart machine you are attempting to connect to.
+Then leave the app and navigate to your mobile device's WiFi settings and connect to the WiFi hotspot your machine has created.
+You may need to wait a short time for your machine to boot and create its WiFi hotspot.
+Your machine's WiFi hotspot name will begin with `viam-setup-`.
+Unless you have been given other instructions, the WiFi password for this hotspot network is `viamsetup`.
+
+Once you are connected to your machine's WiFi hotspot return to the Viam mobile app.
+{{% /tablestep %}}
+{{% tablestep %}}
+**4. Provide the network information for the machine**
+
+In the mobile app, you will be prompted to provide the network information for the machine.
+
+The machine will now disable the hotspot network and attempt to connect using the provided network information.
+If the machine cannot establish a connection using the provided network information, the machine will create the hotspot again and prompt you to re-enter the network information until a connection is successfully established.
+{{% /tablestep %}}
+{{% tablestep %}}
+**5. Wait for machine to complete setup**
+
+If the machine can successfully connect to the network it will now complete its setup and become **live**.
+
+Note that any features that require internet access will not function if the connected WiFi network is not connected to the internet.
 {{% /tablestep %}}
 {{< /table >}}
 
-## Install `viam-agent`
-
-`viam-agent` is a self-updating service manager that maintains the lifecycle for several Viam services and keeps them updated.
-If you intend to use `viam-agent` to keep your device's Viam software up-to-date or to use its provisioning plugin to let end users set up their own machines, you need to use `viam-agent` and install it on the machine before sending it to the user.
-
-You can [install `viam-agent` on live systems](/installation/) or preinstall it:
-
-{{< tabs >}}
-{{% tab name="Preinstall on an image" %}}
-
-Viam provides a preinstall script that works with images to add `viam-agent`.
-
-{{< alert title="Support notice" color="note" >}}
-Please note this script works only under POSIX (MacOS and Linux) at the moment.
-{{< /alert >}}
+## Set up your machine using the captive portal
 
 {{< table >}}
-{{< tablestep >}}
-**1. Download the preinstall script**
+{{% tablestep %}}
+**1. Turn on the smart machine**
 
-Run the following commands to download the preinstall script and make the script executable:
+Turn on the smart machine you are attempting to set up.
+{{% /tablestep %}}
+{{% tablestep %}}
+**2. Connect to your machine's WiFi hotspot**
 
-```sh {class="command-line" data-prompt="$"}
-wget https://storage.googleapis.com/packages.viam.com/apps/viam-agent/preinstall.sh
-chmod 755 preinstall.sh
-```
+On a laptop or mobile device, navigate to your WiFi settings and connect to the WiFi hotspot your machine has created.
+You may need to wait a short time for your machine to boot and create its WiFi hotspot.
+Your machine's WiFi hotspot name will begin with `viam-setup-`.
+Unless you have been given other instructions, the WiFi password for this hotspot network is `viamsetup`.
 
-{{< /tablestep >}}
-{{< tablestep >}}
-**2. Run the script**
+Once you are connected to your machine's WiFi hotspot you will be redirected to a sign-in page.
+If you are using a laptop or are not redirected, try opening [http://viam.setup/](http://viam.setup/) in a browser.
+{{% /tablestep %}}
+{{% tablestep %}}
+**3. Follow the captive portal's instructions to provide network information**
 
-Run the preinstall script without options and it will attempt to auto-detect a mounted root filesystem (or for Raspberry Pi, bootfs) and also automatically determine the architecture.
+In the captive web portal, you will then be prompted to provide the network information for the machine.
+{{% /tablestep %}}
+{{% tablestep %}}
+**4. If prompted, provide a machine credentials configuration**
 
-```sh {class="command-line" data-prompt="$"}
-sudo ./preinstall.sh
-```
+Depending on how the machine was set up so far, the captive portal may also require you to paste a machine credentials configuration file.
+This is the JSON object which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to the Viam app.
 
-If this succeeds, continue to step 5.
-Alternatively, go to step 3.
+Navigate to [the Viam app](https://app.viam.com) and create a new machine.
 
-{{< /tablestep >}}
-{{< tablestep >}}
-**3. Run the script for the target system's architecture**
+To copy a machine credentials configuration file:
 
-The following command creates a tarball you can extract on your own:
+- Navigate to your machine's page on [the Viam app](https://app.viam.com).
+- Select the part status dropdown to the right of your machine's name on the top of the page.
+  {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
+- Click the copy icon next to **Viam server config** to copy the machine credentials configuration file.
+- Paste the `viam-server` app config when prompted.
 
-{{< tabs >}}
-{{% tab name="arm64" %}}
+{{% /tablestep %}}
+{{% tablestep %}}
+**5. Wait for machine to complete setup**
 
-```sh {class="command-line" data-prompt="$"}
-sudo ./preinstall.sh --aarch64
-```
+The machine will now disable the hotspot network and attempt to connect using the provided network information.
+If the machine cannot establish a connection using the provided network information, the machine will create the hotspot again and prompt you to re-enter the network information until a connection is successfully established.
 
-{{% /tab %}}
-{{% tab name="x86_64" %}}
+If the machine can successfully connect to the network it will now complete its setup and become **live**.
 
-```sh {class="command-line" data-prompt="$"}
-sudo ./preinstall.sh --x86_64
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-If this command fails because the script cannot detect your mountpoint, you can specify it directly:
-
-```sh {class="command-line" data-prompt="$"}
-sudo ./preinstall.sh /path/to/rootfs
-```
-
-{{< /tablestep >}}
+Note that any features that require internet access will not function if the connected WiFi network is not connected to the internet.
+{{% /tablestep %}}
 {{< /table >}}
-
-{{% /tab %}}
-{{% tab name="Preinstall on an SD card" %}}
-
-{{< table >}}
-{{< tablestep >}}
-**1. Flash a 64-bit image to your SD card**
-
-Flash a 64-bit image to your SD card using the Raspberry Pi Imager, and customize at least the hostname when prompted.
-
-{{< /tablestep >}}
-{{< tablestep >}}
-**2. Run the preinstall script**
-
-Eject and reinsert the card to make sure it's mounted with the newly written contents. Then run the following script:
-
-```sh {class="command-line" data-prompt="$"}
-sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/preinstall.sh)"
-```
-
-Follow the instructions:
-
-```sh {class="command-line" data-prompt="$" data-output="2-40"}
-coding sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/preinstall.sh)"
-
-
-Found Raspberry Pi bootfs mounted at /Volumes/bootfs
-
-
-A Raspberry Pi boot partition has been found mounted at /Volumes/bootfs
-This script will modify firstrun.sh on that partition to install Viam agent.
-Continue pre-install? (y/n): y
-Path to custom viam-provisioning.json (leave empty to skip):
-Creating tarball for install.
-a opt
-a opt/viam
-a opt/viam/cache
-a opt/viam/bin
-a opt/viam/bin/viam-agent
-a opt/viam/bin/agent-provisioning
-a opt/viam/cache/viam-agent-provisioning-factory-aarch64
-a opt/viam/cache/viam-agent-factory-aarch64
-a etc
-a usr
-a usr/local
-a usr/local/lib
-a usr/local/lib/systemd
-a usr/local/lib/systemd/system
-a usr/local/lib/systemd/system/viam-agent.service
-a usr/local/lib/systemd/system/multi-user.target.wants
-a usr/local/lib/systemd/system/multi-user.target.wants/viam-agent.service
-
-
-Install complete! You can eject/unmount and boot the image now.
-```
-
-{{< /tablestep >}}
-{{< /table >}}
-
-{{% /tab %}}
-{{% tab name="Manual install" %}}
-
-{{< table >}}
-{{< tablestep >}}
-**1. Create and download files**
-
-Run the following commands to create directories for the provisioning binaries, then download the binaries and make them executable:
-
-{{< tabs >}}
-{{% tab name="x86_64" %}}
-
-```sh {class="command-line" data-prompt="$"}
-mkdir -p /opt/viam/bin/ /opt/viam/tmp/
-curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable-x86_64 -o /opt/viam/bin/viam-agent-stable-x86_64
-curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent-provisioning/viam-agent-provisioning-stable-x86_64 -o /opt/viam/bin/viam-agent-provisioning-stable-x86_64
-chmod 755 /opt/viam/tmp/viam-agent*
-```
-
-{{% /tab %}}
-{{% tab name="aarch64" %}}
-
-```sh {class="command-line" data-prompt="$"}
-mkdir -p /opt/viam/bin/ /opt/viam/tmp/
-curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable-aarch64 -o /opt/viam/bin/viam-agent-stable-aarch64
-curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent-provisioning/viam-agent-provisioning-stable-aarch64 -o /opt/viam/bin/viam-agent-provisioning-stable-aarch64
-chmod 755 /opt/viam/tmp/viam-agent*
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{< /tablestep >}}
-{{< tablestep >}}
-**2. Symlink the binaries**
-
-Symlink the agent binary to `bin/viam-agent` and the provisioning binary to `bin/agent-provisioning`:
-
-{{< tabs >}}
-{{% tab name="x86_64" %}}
-
-```sh {class="command-line" data-prompt="$"}
-ln -s /opt/viam/bin/viam-agent-stable-x86_64 bin/viam-agent
-ln -s /opt/viam/bin/viam-agent-provisioning-stable-x86_64 bin/agent-provisioning
-```
-
-{{% /tab %}}
-{{% tab name="aarch64" %}}
-
-```sh {class="command-line" data-prompt="$"}
-ln -s /opt/viam/bin/viam-agent-stable-aarch64 bin/viam-agent
-ln -s /opt/viam/bin/viam-agent-provisioning-stable-aarch64 bin/agent-provisioning
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{< alert title="Note" color="note" >}}
-Use relative symlinks, especially if working on a mounted image (that is not a booted system).
-{{< /alert >}}
-
-{{< /tablestep >}}
-{{< tablestep >}}
-**3. Create the systemd service file**
-
-Copy the systemd [service file](https://github.com/viamrobotics/agent/blob/main/subsystems/viamagent/viam-agent.service) from the agent repo to `/etc/systemd/system/viam-agent.service`.
-
-Then, symlink the service file to <FILE>/etc/systemd/system/multi-user.target.wants/viam-agent.service</FILE>
-
-```sh {class="command-line" data-prompt="$"}
-curl -fsSL https://github.com/viamrobotics/agent/raw/main/subsystems/viamagent/viam-agent.service -o /etc/systemd/system/viam-agent.service
-ln -s /etc/systemd/system/viam-agent.service /etc/systemd/system/multi-user.target.wants/viam-agent.service
-```
-
-{{< alert title="Note" color="note" >}}
-Use relative symlinks, especially if working on a mounted image (that is not a booted system).
-{{< /alert >}}
-
-{{< /tablestep >}}
-{{< tablestep >}}
-**4. Ensure NetworkManager is installed**
-
-Make sure NetworkManager is installed and enabled in `systemd`.
-
-{{< /tablestep >}}
-{{< /table >}}
-
-{{% /tab %}}
-{{< /tabs >}}
-
-## Troubleshooting
-
-If you need to test the GRPC components of the provisioning service, there is a CLI client available.
-Get the code from the [`agent-provisioning` repo](https://github.com/viamrobotics/agent-provisioning) and run `go run ./cmd/client/` for info.
 
 ## Next Steps
 
-With provisioning configured, you can now direct the end user to follow the setup steps:
+You can now use your machine.
+
+If your machine needs to be able to connect to more than one WiFi network, you can add additional networks in the [`viam-agent` network configuration](/configure/agent/#networks).
+You can also override other configuration details in the [`viam-agent` configuration](/configure/agent/#configuration).
+
+For information on how to use your machine's controls, see:
 
 {{< cards >}}
-{{% card link="/how-tos/provision-setup/" %}}
+{{% card link="/fleet/control/" %}}
 {{< /cards >}}

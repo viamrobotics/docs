@@ -41,7 +41,7 @@ For Bullseye, the installation of `viam-agent` changes the network configuration
 For a guide on how to configure provisioning for your machine, see:
 
 {{< cards >}}
-{{% card link="/how-tos/provision/" %}}
+{{% card link="/how-tos/provision-setup/" %}}
 {{< /cards >}}
 
 ## End user experience
@@ -58,7 +58,7 @@ If you are not using Flutter or TypeScript and would like to use provisioning, p
 For an end-user guide to setting up their machine, see:
 
 {{< cards >}}
-{{% card link="/how-tos/provision-setup/" %}}
+{{% card link="/how-tos/provision/" %}}
 {{< /cards >}}
 
 This is the general process for provisioning depending on whether you are using a captive web portal or a mobile app:
