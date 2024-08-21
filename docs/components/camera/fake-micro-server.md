@@ -20,7 +20,7 @@ The camera always returns the same image, which is an image of a circle inside a
 ## Software requirements
 
 To use this model, you must follow the [Micro-RDK Development Setup](/installation/micro-rdk-dev/), which enables you to install and activate the ESP-IDF.
-At the step [Generate a new project from the micro-RDK template](/installation/micro-rdk-dev/#generate-a-new-project-from-the-micro-RDK-template) where you create a new project with `cargo generate`, select the option to include camera module traits when prompted.
+At the step [Generate a new project from the micro-RDK template](/installation/micro-rdk-dev/#generate-a-new-project-from-the-micro-rdk-template) where you create a new project with `cargo generate`, select the option to include camera module traits when prompted.
 Finish the [Micro-RDK Development Setup](/installation/micro-rdk-dev/) and return to this guide.
 
 {{< tabs name="Configure a Fake Camera" >}}
