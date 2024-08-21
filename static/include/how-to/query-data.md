@@ -31,14 +31,13 @@ Dashboards or other integrations relying on this password will then need to be u
 {{% /alert %}}
 
 Provide your organization's `org-id` from step 2, and a password for your database user.
-Your password must be at least 8 characters long, and include at least one uppercase, one number, and one special character (such as `$` or `%`):
 
 ```sh {class="command-line" data-prompt="$"}
 viam data database configure --org-id=<YOUR-ORGANIZATION-ID> --password=<NEW-DBUSER-PASSWORD>
 ```
 
 This command configures a database user for your organization for use with data query, and sets the password.
-If you have run this command before, this command instead updates the password to the new value you set.
+If you have run this command before, this command instead **updates** the password to the new value you set.
 
 {{% /tablestep %}}
 {{% tablestep link="/cli/#data" %}}
@@ -52,12 +51,20 @@ MongoDB Atlas Data Federation instance hostname: data-federation-abcd1e2f-a1b2-3
 MongoDB Atlas Data Federation instance connection URI: mongodb://db-user-abcd1e2f-a1b2-3c45-de6f-ab123456c123:YOUR-PASSWORD-HERE@data-federation-abcd1e2f-a1b2-3c45-de6f-ab123456c123-0z9yx.a.query.mongodb.net/?ssl=true&authSource=admin
 ```
 
-This command returns both the _connection URI_ to your organization's MongoDB Atlas Data Federation instance, as well as its _hostname_ and _database name_:
+This command returns:
 
-- Most MQL-compatible database clients require the _connection URI_, along with your user credentials, to connect to this server.
-- Some MQL-compatible database client instead require a _hostname_ and _database name_, along with your user credentials, to connect to this server.
+- the MongoDB Atlas Data Federation instance hostname
+- the MongoDB Atlas Data Federation instance connection URI: this is the _connection URI_ to your organization's MongoDB Atlas Data Federation instance, which is of the form:
 
-You will need this information to query your data in the next section.
+  ```sh {class="command-line" data-prompt="$"}
+  mongodb://<USERNAME>:<YOUR-PASSWORD>@<HOSTNAME>/?ssl=true&authSource=admin
+  ```
+
+Most MQL-compatible database clients require the _connection URI_, along with your user credentials, to connect to this server.
+
+Some MQL-compatible database client instead require a _hostname_ and _database name_, along with your user credentials, to connect to this server.
+
+You will need the connection URI to query your data in the next section.
 
 {{% /tablestep %}}
 {{< /table >}}

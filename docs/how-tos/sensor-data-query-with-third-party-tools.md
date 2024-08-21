@@ -78,14 +78,18 @@ This example query returns 5 readings from a component called `my-sensor`:
 {{% tab name="SQL" %}}
 
 ```sql
-SELECT * FROM readings WHERE component_name = 'my-sensor' LIMIT 5
+SELECT * FROM readings
+WHERE component_name = 'my-sensor' LIMIT 5
 ```
 
 {{% /tab %}}
 {{% tab name="MQL" %}}
 
 ```mql
-[{ "$match": { "component_name": "my-sensor" } }, { "$limit": 5 }]
+[
+    { "$match": { "component_name": "my-sensor" } },
+    { "$limit": 5 }
+]
 ```
 
 {{% /tab %}}
@@ -101,11 +105,50 @@ Query results are displayed as a [JSON array](https://json-schema.org/understand
 
 - The following shows a SQL query that filters by component name and specific column names, and its returned results:
 
-  {{< imgproc src="/services/data/query-ui-results.png" alt="Viam App Data Query tab with a SQL query shown and results shown below including two matching records" resize="800x" >}}
+  ```sh {class="command-line" data-prompt="$" data-output="3-80"}
+  SELECT time_received, data, tags FROM readings
+  WHERE component_name = 'PM_sensor' LIMIT 2
+  [
+  {
+    "time_received": "2024-07-30 00:04:02.144 +0000 UTC",
+    "data": {
+      "readings": {
+        "units": "μg/m³",
+        "pm_10": 7.6,
+        "pm_2.5": 5.7
+      }
+    },
+    "tags": [
+      "air-quality"
+    ]
+  },
+  {
+    "time_received": "2024-07-30 00:37:22.192 +0000 UTC",
+    "data": {
+      "readings": {
+        "pm_2.5": 9.3,
+        "units": "μg/m³",
+        "pm_10": 11.5
+      }
+    },
+    "tags": [
+      "air-quality"
+    ]
+  }
+  ]
+  ```
 
 - The following shows a SQL query that returns a count of records matching the search criteria:
 
-  {{< imgproc src="/services/data/query-ui-numreadings.png" alt="Viam App Data Query tab with a SQL query shown with the resulting count of matching records displayed below" resize="800x" >}}
+  ```sh {class="command-line" data-prompt="$" data-output="3-80"}
+  SELECT count(*) FROM readings
+  WHERE component_name = 'PM_sensor'
+  [
+  {
+    "_1": 111550
+  }
+  ]
+  ```
 
 For more information on MQL syntax, see the [MQL (MongoDB Query Language)](https://www.mongodb.com/docs/manual/tutorial/query-documents/) documentation.
 
@@ -122,7 +165,7 @@ If you want to query data from third party tools, you have to configure data que
 
 ## Query data using third-party tools
 
-You can use third-party tools, such as the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/), [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), to query against captured sensor data.
+You can use third-party tools, such as the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/) or [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), to query captured sensor data.
 
 {{< table >}}
 {{% tablestep link="/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query"%}}
