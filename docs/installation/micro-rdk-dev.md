@@ -240,14 +240,14 @@ cargo generate --git https://github.com/viamrobotics/micro-rdk.git
 
 Select `templates/project` when prompted.
 
-You will be prompted to paste your machine's `viam-server` app JSON configuration into the terminal.
+You will be prompted to paste your machine cloud credentials into the terminal.
 To obtain this:
 
 - Navigate to [your new machine's](#create-a-new-machine) page on [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
 - Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="/build/micro-rdk/part-dropdown.png" resize="x600" style="max-width: 500px" declaredimensions=true alt="The part status dropdown of an offline machine.">}}
-- Click the copy icon underneath **Viam server configuration** to copy the `viam-server` app JSON configuration.
+- Click the copy icon underneath **Machine cloud credentials**.
   `viam-micro-server` needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
-- Paste the `viam-server` app config into your terminal when prompted.
+- Paste the machine cloud credentials into your terminal when prompted.
 
 {{% snippet "secret-share.md" %}}
 
