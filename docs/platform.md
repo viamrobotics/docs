@@ -23,10 +23,11 @@ A {{< glossary_tooltip term_id="machine" text="machine" >}} is any computer (SBC
 
 Learn more about the structure and configuration of machines:
 
-|                        | Structure...                            | Configuration...                     |
-| ---------------------- | --------------------------------------- | ------------------------------------ |
-| ...of one machine ->   | [Architecture](/architecture/)          | [Machine Configuration](/configure/) |
-| ...of many machines -> | [Cloud Organization Hierarchy](/cloud/) | [Deploy a Large Fleet](/fleet/)      |
+<!-- prettier-ignore -->
+|   | Structure... | Configuration... | Installation... |
+| - | ------------ | ---------------- | --------------- |
+| ...of one machine -> | [Architecture](/architecture/) | [Machine Configuration](/configure/) | [Installation](/installation/) |
+| ...of many machines -> | [Cloud Organization Hierarchy](/cloud/) | [Deploy a Large Fleet](/fleet/) | [Provisioning](/fleet/provision/) |
 
 ## The things that make up a machine
 
