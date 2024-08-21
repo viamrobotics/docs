@@ -301,7 +301,7 @@ Here are the version options:
 {{< /tabs >}}
 
 After configuring overwrites, check your machine's [**LOGS** tab](/cloud/machines/#logs).
-If there are problems with overwrites to the fragment, the overwrites will not be partially applied and the configuration changes will not take effect until the configuration is fixed.
+If there are problems with overwrites to the fragment, no overwrites will be applied and the configuration changes will not take effect until the configuration is fixed.
 
 If you need to restore the original fragment, click the **...** in the upper right corner of the card you modified, and click **Revert changes**.
 
