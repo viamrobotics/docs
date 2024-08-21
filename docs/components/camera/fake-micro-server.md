@@ -10,13 +10,18 @@ aliases:
   - "/components/camera/fake/"
 component_description: "A camera model for testing."
 micrordk_component: true
+toc_hide: true
 # SMEs: Matt Perez, micro-RDK team
 ---
 
 A `fake` camera in the micro-RDK is a camera model for testing.
-The camera always returns the same image, which is an image of a circle and a diamond.
+The camera always returns the same image, which is an image of a circle inside a diamond.
 
-You can optionally specify a height and width.
+## Software requirements
+
+To use this model, you must follow the [Micro-RDK Development Setup](/installation/micro-rdk-dev/), which enables you to install and activate the ESP-IDF.
+At the step [Generate a new project from the micro-RDK template](/installation/micro-rdk-dev/#generate-a-new-project-from-the-micro-RDK-template) where you create a new project with `cargo generate`, select the option to include camera module traits when prompted.
+Finish the [Micro-RDK Development Setup](/installation/micro-rdk-dev/) and return to this guide.
 
 {{< tabs name="Configure a Fake Camera" >}}
 {{% tab name="Config Builder" %}}
@@ -53,7 +58,7 @@ Then toggle the camera view to ON.
 You will see the live video feed from your camera.
 You can change the refresh frequency as needed to change bandwidth.
 
-{{< imgproc src="/components/camera/fake-view.png" alt="Fake Camera View" resize="600x" >}}
+{{< imgproc src="/components/camera/fake-micro-server-view.png" alt="Fake Camera Micro Server View" resize="400x" >}}
 
 ## Next steps
 

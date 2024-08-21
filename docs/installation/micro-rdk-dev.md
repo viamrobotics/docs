@@ -222,7 +222,8 @@ Instead, save this command to run in any future terminal session where you need 
 Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
 
 Click on the name of the machine to go to the machine's page.
-Then, navigate to the **CONFIGURE** tab and [configure your machine](/configure/).
+Then, navigate to the **CONFIGURE** tab and [configure your machine](/configure/) with an `esp32` board and any components you want.
+You can also do this later.
 
 ### Generate a new project from the micro-RDK template
 
@@ -236,17 +237,36 @@ cargo generate --git https://github.com/viamrobotics/micro-rdk.git
 ```
 
 Select `templates/project` when prompted.
+Give the project a name of your choice.
+Select `esp32` for **MCU**.
+If you wish to configure an `esp32-camera` or a `fake` camera as a component of your machine, select **true** for **include camera module and traits**.
 
-You will be prompted to paste your machine's `viam-server` app JSON configuration into the terminal.
+You will be prompted to paste your machine's `viam-server` robot JSON configuration into the terminal, which is the same thing as its machine cloud credentials.
 To obtain this:
 
 - Navigate to [your new machine's](#create-a-new-machine) page on [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
 - Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="/build/micro-rdk/part-dropdown.png" resize="x600" style="max-width: 500px" declaredimensions=true alt="The part status dropdown of an offline machine.">}}
-- Click the copy icon underneath **Viam server configuration** to copy the `viam-server` app JSON configuration.
+- Click the copy icon underneath **Viam server configuration** to copy the machine cloud credentials.
   The micro-RDK needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
-- Paste the `viam-server` app config into your terminal when prompted.
+- Paste the machine cloud credentials into your terminal when prompted.
 
 {{% snippet "secret-share.md" %}}
+
+### Add your machine cloud credentials as a file in your project
+
+Navigate to the directory of the project you just created.
+Create a new <file>viam.json</file> file and paste the same `viam-server` machine cloud credentials in.
+Save the file.
+
+You can do this on the command line like this:
+
+```sh { class="command-line" data-prompt="$"}
+cd <your-path-to/your-project-directory>
+touch viam.json
+vim viam.json
+```
+
+Replace `vim` with whatever text editor you prefer.
 
 ### Upload the micro-RDK to your ESP32
 
@@ -273,6 +293,8 @@ make upload
 {{% /tab %}}
 {{% /tabs %}}
 
+When prompted, select the serial port that your ESP32 is connected to through a data cable.
+
 If successful, you will retain a serial connection to the board until you press `Ctrl-C`.
 To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
 While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
@@ -282,7 +304,25 @@ If successful, **Live** should be displayed underneath **Last online**.
 
 ### Troubleshooting
 
-If you run into the error `Failed to open serial port` when flashing your ESP32 with Linux, make sure the user is added to the group `dialout` with `sudo gpasswd -a $USER dialout`
+If you run into the error `Failed to open serial port` when flashing your ESP32 with Linux, make sure the user is added to the group `dialout` with `sudo gpasswd -a $USER dialout`.
+
+If you get the following error while connecting to your esp32:
+
+```sh { class="command-line" data-prompt="$"}
+`Error: espflash::timeout
+
+  × Error while connecting to device
+  ╰─▶ Timeout while running command
+```
+
+Run the following command:
+
+```sh { class="command-line" data-prompt="$"}
+espflash flash --erase-parts nvs --partition-table partitions.csv  target/xtensa-esp32-espidf/release/esp32-camera --baud 115200 && sleep 2 && espflash monitor
+```
+
+Try the connection command again.
+The baud rate on your device may not have been fast enough to connect.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 

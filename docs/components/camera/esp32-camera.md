@@ -8,6 +8,7 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components", "micro-RDK"]
 component_description: "An `OV2640` or `OV3660` camera connected to an esp32 board."
 micrordk_component: true
+toc_hide: true
 # SMEs: Matt Perez, micro-RDK team
 ---
 
@@ -15,6 +16,7 @@ micrordk_component: true
 If the camera drivers are one of the following two, the camera will work with the `esp32-camera` model:
 
 - `OV2640`
+
   - [Datasheet](https://www.uctronics.com/download/OV2640_DS.pdf)
   - 1600 x 1200, Color, ¼” lens
   - You can use a cam ribbon adapter to connect to your `esp32` board
@@ -23,9 +25,13 @@ If the camera drivers are one of the following two, the camera will work with th
   - [Datasheet](https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/docs/datasheet/unit/OV3660_CSP3_DS_1.3_sida.pdf)
   - 2048 x 1536, Color, ⅕” lens
 
+For example, the `OV2640` with a ribbon cable connected to an ESP32:
+
+{{< imgproc src="/components/camera/esp32-camera-2640.png" alt="Fake Camera on the ESP32" resize="300x" >}}
+
 ## Software requirements
 
-To use this module, you must follow the [Micro-RDK Development Setup](/installation/micro-rdk-dev/), which enables you to install and activate the ESP-IDF.
+To use this model, you must follow the [Micro-RDK Development Setup](/installation/micro-rdk-dev/), which enables you to install and activate the ESP-IDF.
 At the step [Generate a new project from the micro-RDK template](/installation/micro-rdk-dev/#generate-a-new-project-from-the-micro-RDK-template) where you create a new project with `cargo generate`, select the option to include camera module traits when prompted.
 Finish the [Micro-RDK Development Setup](/installation/micro-rdk-dev/) and return to this guide.
 
@@ -47,11 +53,11 @@ Copy and paste the following JSON into your existing machine configuration in th
     "name": "my-esp32camera",
     "namespace": "rdk",
     "type": "camera",
-    "model": "esp32-camera", 
+    "model": "esp32-camera",
     "attributes": {
         "pin_d4": <int>,
         "jpeg_quality": <int>,
-        "frame_size": <int>, 
+        "frame_size": <int>,
         "pin_d5": <int>,
         "pin_d3": <int>,
         "pin_d6": <int>,
@@ -77,39 +83,71 @@ Copy and paste the following JSON into your existing machine configuration in th
 Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
-{{% tab name="JSON Example" %}}
+{{% tab name="JSON Example: OV2640" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "my-esp32camera",
-    "namespace": "rdk",
-    "type": "camera",
-    "model": "esp32-camera",
-    "attributes": {
-        "pin_d4": 39,
-        "jpeg_quality": 32,
-        "frame_size": 5, 
-        "pin_d5": 18,
-        "pin_d3": 5,
-        "pin_d6": 36,
-        "pin_vsync": 22,
-        "ledc_timer": 1,
-        "pin_d7": 19,
-        "pin_sccb_sda": 25,
-        "pin_href": 26,
-        "pin_sccb_scl": 23,
-        "sccb_i2c_port": -1,
-        "pin_d1": 35,
-        "pin_d0": 32,
-        "pin_xclk": 27,
-        "pin_reset": 15,
-        "pin_pclk": 21,
-        "pin_d2": 34,
-        "xclk_freq_hz": 20000000,
-        "ledc_channel": 1
-    }
+  "name": "my-esp32camera",
+  "namespace": "rdk",
+  "type": "camera",
+  "model": "esp32-camera",
+  "attributes": {
+    "pin_pwdn": -1,
+    "pin_reset": -1,
+    "pin_xclk": 21,
+    "pin_sccb_sda": 26,
+    "pin_sccb_scl": 27,
+    "pin_d7": 35,
+    "pin_d6": 34,
+    "pin_d5": 39,
+    "pin_d4": 36,
+    "pin_d3": 19,
+    "pin_d2": 18,
+    "pin_d1": 5,
+    "pin_d0": 4,
+    "pin_vsync": 25,
+    "pin_href": 23,
+    "pin_pclk": 22,
+    "xclk_freq_hz": 20000000,
+    "ledc_timer": 1,
+    "ledc_channel": 1
+  }
 }
+```
 
+{{% /tab %}}
+{{% tab name="JSON Example: OV3660" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "name": "my-esp32camera",
+  "namespace": "rdk",
+  "type": "camera",
+  "model": "esp32-camera",
+  "attributes": {
+    "pin_d4": 39,
+    "jpeg_quality": 32,
+    "frame_size": 5,
+    "pin_d5": 18,
+    "pin_d3": 5,
+    "pin_d6": 36,
+    "pin_vsync": 22,
+    "ledc_timer": 1,
+    "pin_d7": 19,
+    "pin_sccb_sda": 25,
+    "pin_href": 26,
+    "pin_sccb_scl": 23,
+    "sccb_i2c_port": -1,
+    "pin_d1": 35,
+    "pin_d0": 32,
+    "pin_xclk": 27,
+    "pin_reset": 15,
+    "pin_pclk": 21,
+    "pin_d2": 34,
+    "xclk_freq_hz": 20000000,
+    "ledc_channel": 1
+  }
+}
 ```
 
 {{% /tab %}}
@@ -148,7 +186,5 @@ That is why they are marked as required.
 {{% /alert %}}
 
 ## View the camera stream
-
-<!-- TODO: ask Matt Perez if this will work or test -->
 
 {{< readfile "/static/include/components/camera-view-camera-stream.md" >}}

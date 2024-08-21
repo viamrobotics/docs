@@ -61,11 +61,13 @@ For configuration information, click on the model name:
 {{% /tab %}}
 {{% tab name="micro-RDK" %}}
 
-{{< alert title="Support Notice" color="note" >}}
+<!-- prettier-ignore -->
+| Model | Description |
+| ----- | ----------- |
+| [`fake`](fake-micro-server/) | A fake camera |
+| [`esp32-camera`](esp32-camera/) | A camera on an ESP32 |
 
-There is currently no support for this component in the micro-RDK.
-
-{{< /alert >}}
+{{% readfile "/static/include/micro-create-your-own.md" %}}
 
 {{% /tab %}}
 {{< /tabs >}}
