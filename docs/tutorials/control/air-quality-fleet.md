@@ -312,7 +312,7 @@ For each machine:
    {{< expand "Click here for usb_interface troubleshooting help" >}}
 
 If you only have one USB device plugged into each of your boards, the `usb_interface` value you configured in the sensor config is likely (conveniently) the same for all of your machines.
-If not, you can use [fragment overwrite](/fleet/fragments/#overwrite-the-config-of-a-machine-that-uses-a-fragment) to modify the value on any machine for which it is different:
+If not, you can use [fragment overwrite](/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment) to modify the value on any machine for which it is different:
 
 1. If you're not getting sensor readings from a given machine, check the path of the USB port using the same [process by which you found the first USB path](#usb-path).
 2. If the path to your sensor on one machine is different from the one you configured in the fragment, add a fragment overwrite to the config of that machine to change the path without needing to remove the entire fragment.
