@@ -129,7 +129,7 @@ Don't forget to **Save**.
 {{% tablestep %}}
 **2. Check your machine's logs**
 
-After configuring fragment modifications, check your machine's [**LOGS** tab](/cloud/machines/#logs).
+After configuring fragment overwrites, check your machine's [**LOGS** tab](/cloud/machines/#logs).
 If there are problems with overwrites to the fragment, the overwrites will not be partially applied and the configuration changes will not take effect until the configuration is fixed.
 
 {{% /tablestep %}}
