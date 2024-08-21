@@ -36,6 +36,8 @@ Follow the guide to [capture sensor data](/how-tos/collect-sensor-data/).
 
 {{% expand "The Viam CLI to set up data query. Click to see instructions." %}}
 
+You must have the Viam CLI installed to configure querying with third-party tools.
+
 {{< readfile "/static/include/how-to/install-cli.md" >}}
 
 {{% /expand%}}
