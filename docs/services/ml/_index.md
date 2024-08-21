@@ -23,7 +23,7 @@ Common use cases include:
 - Object classification, which enables machines to separate people, animals, plants, or other objects into predefined categories based on their characteristics, and to perform different actions based on the classes of objects.
 - Speech recognition, natural language processing, and speech synthesis, which enable machines to verbally communicate with us.
 
-For other use cases, consider [creating custom functionality with a module](/use-cases/create-module/).
+For other use cases, consider [creating custom functionality with a module](/how-tos/create-module/).
 
 Viam provides two services that together enable machine learning capabilities: the [ML model](/services/ml/deploy/) service and the [Computer Vision](/services/vision/) service.
 
@@ -39,8 +39,8 @@ As a classifier, the service returns class labels and confidence score based off
 To collect images and train your own model:
 
 1. [Gather images from your machine.](/get-started/collect-data/)
-2. [Label a dataset.](/use-cases/deploy-ml/#create-a-dataset-and-label-data)
-3. [Train a model on your data and deploy the model on your machine.](/use-cases/deploy-ml/#train-and-test-a-machine-learning-ml-model)
+2. [Label a dataset.](/how-tos/deploy-ml/#create-a-dataset-and-label-data)
+3. [Train a model on your data and deploy the model on your machine.](/how-tos/deploy-ml/#train-and-test-a-machine-learning-ml-model)
 
 If you already have image data, start at step 2.
 

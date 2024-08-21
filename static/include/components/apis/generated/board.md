@@ -1,7 +1,7 @@
 ### SetGPIO
 
 Set the digital signal output of this pin to low (0V) or high (active, >0V).
-Supported by the micro-RDK.
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -85,7 +85,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### GetGPIO
 
 Get if the digital signal output of this pin is high (active, >0V).
-Supported by the micro-RDK.
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -175,7 +175,7 @@ This enables the board to communicate with these components.
 {{% /alert %}}
 
 Get the pin's [pulse-width modulation (PWM) duty cycle](https://learn.sparkfun.com/tutorials/pulse-width-modulation/duty-cycle): a float [`0.0`, `1.0`] representing the percentage of time the digital signal output by this pin is in the high state (active, >0V) relative to the interval period of the PWM signal [(interval period being the mathematical inverse of the PWM frequency)](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency).
-Supported by the micro-RDK.
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -257,7 +257,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### SetPWM
 
 Set the pin's [Pulse-width modulation (PWM) duty cycle](https://learn.sparkfun.com/tutorials/pulse-width-modulation/duty-cycle): a float [`0.0`, `1.0`] indicating the percentage of time the digital signal output of this pin is in the high state (active, >0V) relative to the interval period of the PWM signal [(interval period being the mathematical inverse of the PWM frequency)](https://learn.adafruit.com/improve-brushed-dc-motor-performance/pwm-frequency).
-Supported by the micro-RDK.
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -342,7 +342,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### PWMFrequency
 
 Get the PWM frequency of the GPIO pin.
-Supported by the micro-RDK.
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -424,7 +424,12 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### SetPWMFrequency
 
 Set the pin to the given PWM `frequency` (in Hz). When `frequency` is 0, it will use the board’s default PWM frequency.
-Supported by the micro-RDK.
+
+{{< alert title="Note" color="note" >}}
+If you attempt to set an unsupported PWM frequency on an `esp32`, the frequency will revert to the last valid frequency.
+This may restart the PWM signal.
+{{< /alert >}}
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -623,7 +628,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### Write
 
 Write an analog value to a pin on the board.
-Supported by the micro-RDK.
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -754,7 +759,7 @@ di8 = await my_board.digital_interrupt_by_name(name="8"))
 di11 = await my_board.digital_interrupt_by_name(name="11"))
 
 # Iterate over stream of ticks from pins 8 and 11.
-async for tick in my_board.stream_ticks([di8, di11]):
+async for tick in await my_board.stream_ticks([di8, di11]):
     print(f"Pin {tick.pin_name} changed to {'high' if tick.high else 'low'} at {tick.time}")
 ```
 
@@ -946,7 +951,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ### Read
 
 Read the current integer value of the digital signal output by the ADC.
-Supported by the micro-RDK.
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1213,7 +1218,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 Execute model-specific commands that are not otherwise defined by the component API.
 For built-in models, model-specific commands are covered with each model's documentation.
 If you are implementing your own board and add features that have no built-in API method, you can access them with `DoCommand`.
-Supported by the micro-RDK.
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -147,9 +147,9 @@ You can now [upload your own ML model](/services/ml/upload-model/) using any of 
 
 {{% /changelog %}}
 
-{{% changelog date="2024-03-01" color="added" title="Ultrasonic sensor for micro-RDK" %}}
+{{% changelog date="2024-03-01" color="added" title="Ultrasonic sensor for `viam-micro-server`" %}}
 
-You can now use the [ultrasonic sensor component](/components/sensor/ultrasonic-micro-rdk/) with the [micro-RDK](/installation/#install-micro-rdk) to integrate an [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running the micro-RDK.
+You can now use the [ultrasonic sensor component](/components/sensor/ultrasonic-micro-rdk/) with [`viam-micro-server`](/installation/#install-viam-micro-server) to integrate an [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into a machine running `viam-micro-server`.
 
 {{% /changelog %}}
 
@@ -196,7 +196,7 @@ Viam has added a [sensor-controlled base](/components/base/sensor-controlled/) c
 
 {{% changelog date="2024-01-31" color="added" title="Visualize captured data" %}}
 
-You can now [visualize your data](/use-cases/sensor-data-visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
+You can now [visualize your data](/how-tos/sensor-data-visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google’s Looker Studio, and more.
 You can visualize any data, such as sensor readings, that you have [synced](/services/data/cloud-sync/) to the Viam app from your machine.
 
 See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) for a full walkthrough focused on Grafana specifically.
@@ -242,7 +242,7 @@ Location secrets, the previous method of authentication, is deprecated and will 
 
 Once you have added the data management service and synced data, such as sensor readings, to the Viam app, you can now run queries against both captured data as well as its metadata using either SQL or MQL.
 
-For more information, see [Query Data with SQL or MQL](/use-cases/sensor-data-query-with-third-party-tools/).
+For more information, see [Query Data with SQL or MQL](/how-tos/sensor-data-query-with-third-party-tools/).
 
 {{% /changelog %}}
 
@@ -308,7 +308,7 @@ You can:
 
 {{% changelog date="2023-09-30" color="added" title="Mobile app" %}}
 
-You can use a [mobile application](/fleet/#the-viam-mobile-app), available for download now in the [Apple](https://apps.apple.com/us/app/viam-robotics/id6451424162) and [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US) app stores, to connect to and control your Viam-powered machines directly from your mobile device.
+You can use a [mobile application](/fleet/control/#control-interface-in-the-viam-mobile-app), available for download now in the [Apple](https://apps.apple.com/us/app/viam-robotics/id6451424162) and [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US) app stores, to connect to and control your Viam-powered machines directly from your mobile device.
 
 {{% /changelog %}}
 
@@ -950,8 +950,8 @@ When adding [frames](/services/frame-system/) to your machine's config in the Vi
 
 {{% changelog date="2023-02-28" color="added" title="Support for microcontrollers" %}}
 
-Micro-RDK is a lightweight version of the RDK that can run on an ESP32.
-Find more information in the [micro-RDK documentation](/installation/#install-micro-rdk).
+`viam-micro-server` is a lightweight version of `viam-server` that can run on an ESP32.
+Find more information in the [`viam-micro-server` installation docs](/installation/#install-viam-micro-server).
 
 {{% /changelog %}}
 

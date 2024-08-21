@@ -3,7 +3,7 @@ title: "Services"
 linkTitle: "Services"
 weight: 420
 type: docs
-description: "Services are built-in software packages that make it easier to add complex capabilities such as motion planning or object detection to your machine."
+description: "Services are software packages that add complex capabilities such as motion planning or object detection to your machine."
 images: ["/general/services.png"]
 aliases:
   - "/services/"

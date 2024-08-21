@@ -59,7 +59,7 @@ Obtain unified tabular data and metadata, queried with SQL.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-data = await data_client.tabular_data_by_sql(org_id="<your-org-id>", sql_query="SELECT * FROM readings LIMIT 5")
+data = await data_client.tabular_data_by_sql(organization_id="<your-org-id>", sql_query="SELECT * FROM readings LIMIT 5")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_sql).

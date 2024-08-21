@@ -3,7 +3,7 @@ title: "Components"
 linkTitle: "Components"
 weight: 410
 type: docs
-description: "In-depth information on the various components available within the Viam system."
+description: "Components are software packages that drive hardware such as sensors, motors, cameras, and robotic arms."
 images: ["/icons/components.png"]
 aliases:
   - "/components/"

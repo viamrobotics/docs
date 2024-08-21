@@ -1,14 +1,14 @@
 ---
-title: "Control Machines"
-linkTitle: "Control Machines"
-weight: 45
+title: "Machine Control Interface"
+linkTitle: "Control Interface"
+weight: 80
 type: "docs"
-description: "A machine is an organizational concept, consisting of either one or multiple parts working closely together to complete tasks."
+description: "Use the Viam app control tab or the Viam mobile app to monitor and remotely operate your machines."
 tags: ["fleet management", "control", "app"]
-images: ["/fleet/control.gif"]
+images: ["/components/base/cropped-control.png"]
 ---
 
-Once you have [configured components and services](/configure/) for your machine, you can test, monitor, and remotely operate them from the **CONTROL** tab in the [Viam app](https://app.viam.com) or the [Viam mobile app](/fleet/#the-viam-mobile-app).
+Once you have [configured components and services](/configure/) for your machine, you can test, monitor, and remotely operate them from the **CONTROL** tab in the [Viam app](https://app.viam.com) or the [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app).
 
 ## Control interface in the Viam app
 
@@ -19,7 +19,7 @@ For example, if you have configured a base with wheels, you can move your machin
 If you have configured a camera component, a window in the **CONTROL** tab displays the camera output.
 
 If you use remote control in the [Viam app](https://app.viam.com) UI, all communication to the machine uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
-For local communication between [parts](/configure/parts/#machine-parts) Viam uses gRPC or WebRTC.
+For local communication between [parts](/architecture/parts/#machine-parts) Viam uses gRPC or WebRTC.
 
 {{<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="Using the control tab" max-width="800px">}}
 
@@ -27,7 +27,7 @@ You can also switch between different machine parts and control the selected mac
 
 {{< imgproc src="/fleet/app-usage/control-machine-part-dropdown.png" alt="The expanded Machine part dropdown menu with the main part selected on the Control tab." resize="650x" class="aligncenter" >}}
 
-For more information on configuring and controlling machine parts, see [Machine Architecture](/configure/parts/#machine-parts).
+For more information on configuring and controlling machine parts, see [Machine Architecture](/architecture/parts/#machine-parts).
 
 ### Components
 
@@ -113,14 +113,30 @@ The following services also provide control interfaces:
 
 ## Control interface in the Viam mobile app
 
-The [Viam mobile app](/fleet/#the-viam-mobile-app) gives you the ability to test, monitor and remotely operate machines in your fleet.
-The mobile app provides a control interface for each component and service that you have configured for you machine.
+{{<gif webm_src="/fleet/mobile-app-control.webm" mp4_src="/fleet/mobile-app-control.mp4" alt="Using the control interface under the locations tab on the Viam mobile app" class="alignright" max-width="300px">}}
+
+In addition to the [Viam app](https://app.viam.com), the fully featured web application where you can access all fleet management tools, there is a Viam mobile app.
+
+The [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app) allows you to test, monitor and remotely operate machines in your fleet.
+It provides a control interface for each component and service that you have configured for you machine.
 
 For example, you can view live camera feeds, adjust components' runtime parameters, and switch between controllable components.
 
-{{<gif webm_src="/fleet/mobile-app-control.webm" mp4_src="/fleet/mobile-app-control.mp4" alt="Using the control interface under the locations tab on the Viam mobile app" max-width="300px">}}
+Additionally, the app allows you to:
 
-Additionally, the machine control interface provides a menu for:
+- see if your machines are online
+- [view a machine's logs](/cloud/machines/#logs)
+- [upload images from your phone to the cloud](/services/data/upload/#upload-images-with-the-viam-mobile-app)
+- [invite people to collaborate with you and modify access](/cloud/rbac/#use-the-mobile-app)
 
-- [viewing a machine's logs](/cloud/machines/#logs)
-- [uploading images from your phone to the cloud](/services/data/upload/#upload-images-with-the-viam-mobile-app)
+<br>
+
+You can find the mobile app on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
+
+<a href="https://apps.apple.com/vn/app/viam-robotics/id6451424162" target="_blank">
+  <img src="https://github.com/viamrobotics/docs/assets/90707162/a470b65d-1b97-412f-9f97-daf902f2f053" width="200px" alt="apple store icon" class="center-if-small" >
+</a>
+
+<a href="https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US" target="_blank">
+  <img src="https://github.com/viamrobotics/docs/assets/90707162/6ebd6960-08c5-41d4-81f9-42293fbfdfd4" width="200px" alt="google play store icon" class="center-if-small" >
+</a>

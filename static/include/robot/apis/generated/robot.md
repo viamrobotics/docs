@@ -609,6 +609,49 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetVersion
+
+Return version information about the machine.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- ([viam.proto.robot.GetVersionResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetVersionResponse)): Robot version related information.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+result = machine.get_version()
+print(result.platform)
+print(result.version)
+print(result.api_version)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_version).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(VersionResponse)](https://pkg.go.dev/go.viam.com/rdk/robot#VersionResponse)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### Options.with_api_key
 
 Create a `RobotClient.Options` using an API key as credentials.

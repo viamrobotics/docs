@@ -121,7 +121,7 @@ Navigate to your [machine's page on the Viam app](https://app.viam.com/robots), 
 
 {{% snippet "show-secret.md" %}}
 
-This code snippet imports all the necessary libraries, is pre-populated with your machine credentials, and sets up a connection with the Viam app in the cloud.
+This code snippet imports all the necessary libraries, is pre-populated with your machine cloud credentials, and sets up a connection with the Viam app in the cloud.
 Next, paste that boilerplate code into a file named <file>index.py</file> or <file>index.go</file> in your code editor, and save your file locally.
 
 You can now run the code.

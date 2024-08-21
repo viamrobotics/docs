@@ -33,7 +33,7 @@ In this guide you'll use machine learning to detect people in a camera stream.
 
 {{< /alert >}}
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/-sXdxbBVrso">}}
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/P6sZPIMnhBU">}}
 
 ## Requirements
 
@@ -97,9 +97,7 @@ Create the service.
 
 In the resulting ML model service configuration pane, ensure that **Deploy model on machine** is selected for the **Deployment** field.
 
-Click on **Select models** and select the `ml-models-scuttle:people` model from the registry (the **people** model by **ml-models-scuttle**) to deploy an object detection TFLite model that has been trained to be able to detect a person.
-
-Click the **Save** button in the top right corner of the page to save your configuration and deploy an object detection TFLite model that has been trained to be able to detect a person.
+Click on **Select model** and select the `ml-models-scuttle:people` model from the registry (the **people** model by **ml-models-scuttle**) to deploy an object detection TFLite model that has been trained to be able to detect a person.
 
 For more detailed information, including optional attribute configuration, see the [`tflite_cpu` docs](/services/ml/deploy/tflite_cpu/).
 
@@ -117,9 +115,9 @@ Click the **Save** button in the top right corner of the page to save your visio
 {{% /expand%}}
 {{%expand "Step 6: Test person detection" %}}
 
-Now, test your person detection on in the **Test** section of the computer vision service's configuration panel or on the **CONTROL** tab.
+Now, test your person detection in the **Test** section of the computer vision service's configuration panel or on the **CONTROL** tab.
 
-You will see your camera stream and see detections as labeled boxes on the images along with position, dimension, class and confidence data.
+You will see your camera stream and see detections as labeled boxes on the images along with labels and confidence data.
 Detections in class `Person` with a high confidence score show positive person detections, but the ML model can also detect other objects:
 
 {{<imgproc src="/get-started/quickstarts/vision-card-more-detections.png" resize="x1100" declaredimensions=true alt="Positive person detection on the vision card with a lower default minimum confidence threshold." class="imgzoom">}}
@@ -145,13 +143,13 @@ The full configuration for the attributes of the vision service should resemble:
 }
 ```
 
-This optional attribute reduces your detections output (which you'll view in step 7) by filtering out detections below the threshold of 82% confidence.
+This optional attribute reduces your detections output by filtering out detections below the threshold of 82% confidence.
 You can adjust this attribute as necessary.
 
-Click the **Save** button in the top right corner of the page to save your configuration.
-For more detailed information, including optional attribute configuration, see the [`mlmodel` docs](/services/vision/mlmodel/).
-
+Click the **Save** button in the top right corner of the page to save your configuration and close and reopen the **Test** panel of the vision service configuration panel.
 Now if you view detections, you will only see detections with a confidence value higher than the `"default_minimum_confidence"` attribute.
+
+For more detailed information, including optional attribute configuration, see the [`mlmodel` docs](/services/vision/mlmodel/).
 
 {{<imgproc src="/get-started/quickstarts/vision-card.png" resize="x1100" declaredimensions=true alt="Positive person detection on the vision card." >}}
 

@@ -56,7 +56,7 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 
 **Full Error:** `Something went wrong trying to read the squashfs image. Open dir error: No such file or directory`
 
-**Description:** The `viam-server` [installation](/installation/) or [update](/installation/manage/#update-viam-server) process may have been interrupted partway, with some files either partially-written or missing.
+**Description:** The `viam-server` [installation](/installation/) or [update](/installation/manage-viam-server/#update-viam-server) process may have been interrupted partway, with some files either partially-written or missing.
 
 **Solution:** Reinstall `viam-server` following the [installation instructions](/installation/).
 
@@ -126,7 +126,7 @@ When a machine is disconnected, it will continue to run with its locally-cached 
   It should be listed as `active (running)`.
 
   - If it is listed as `stopped` or `failed`, you can try restarting it with `sudo systemctl start viam-server`.
-  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](/installation/#prepare-your-board), and then followed the {{< glossary_tooltip term_id="setup" text="setup instructions" >}}.
+  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](/installation/#compatibility), and then followed the {{< glossary_tooltip term_id="setup" text="setup instructions" >}}.
   - If none of the above succeed in getting `viam-server` up and running, check the logs on your board for any pertinent error messages.
     Depending on your board's specific Linux OS, you might use a command similar to the following to show the 50 most recent log messages from `viam-server`. Run this command from within an `ssh` session to the board:
 
@@ -186,7 +186,7 @@ In **JSON** mode, it will resemble the following:
 
       The video path for your camera device is the first path listed under that camera, in this case `/dev/video0`.
 
-  1.  Then, [stop `viam-server`](/installation/manage/#run-viam-server), and verify that your Linux OS is able to access that video device properly:
+  1.  Then, [stop `viam-server`](/installation/manage-viam-server/#run-viam-server), and verify that your Linux OS is able to access that video device properly:
 
       ```sh {class="command-line" data-prompt="$"}
       v4l2-ctl --stream-count 1 --device /dev/video0
@@ -196,7 +196,7 @@ In **JSON** mode, it will resemble the following:
 
       The command returns successfully (with no output) if Linux is able to successfully communicate with the camera, or errors with `Cannot open device` if there was a problem communicating.
       If this command errors, you should consult the documentation for your camera and Linux distribution to troubleshoot.
-      If you receive the error `Device or resource busy` instead, be sure you have [stopped `viam-server`](/installation/manage/#run-viam-server) first, then re-run the command above.
+      If you receive the error `Device or resource busy` instead, be sure you have [stopped `viam-server`](/installation/manage-viam-server/#run-viam-server) first, then re-run the command above.
 
 - Ensure that your camera uses a supported pixel format:
 

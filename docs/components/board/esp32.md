@@ -1,9 +1,9 @@
 ---
-title: "Configure an ESP32 Board (Micro-RDK)"
+title: "Configure an ESP32 Board (viam-micro-server)"
 linkTitle: "esp32"
 weight: 20
 type: "docs"
-description: "Configure an esp32 board."
+description: "Configure an ESP32 board running viam-micro-server."
 images: ["/installation/thumbnails/esp32-espressif.png"]
 imageAlt: "E S P 32 - espressif"
 tags: ["board", "components"]
@@ -16,14 +16,14 @@ micrordk_component: true
 
 {{% alert title="REQUIREMENTS" color="caution" %}}
 
-Follow the [setup guide](/installation/#install-micro-rdk) to prepare your ESP32 for running the micro-RDK before configuring an `esp32` board.
+Follow the [setup guide](/installation/#install-viam-micro-server) to prepare your ESP32 for running `viam-micro-server` before configuring an `esp32` board.
 
 Viam recommends purchasing the ESP32 with a development board. The following ESP32 microcontrollers are supported:
 
 - ESP32-WROOM Series (until v0.1.7)
 - ESP-32-WROVER Series
 
-Your microcontroller should have at least the following resources available to work with the micro-RDK:
+Your microcontroller should have at least the following resources available to work with `viam-micro-server`:
 
 - 2 Cores + 384kB SRAM + 2MB PSRAM + 4MB Flash
 

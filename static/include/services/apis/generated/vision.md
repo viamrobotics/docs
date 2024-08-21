@@ -95,7 +95,7 @@ Get a list of detections from a given image using a configured [detector](#detec
 
 **Parameters:**
 
-- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/gen/component/camera/v1/camera_pb2/index.html#viam.gen.component.camera.v1.camera_pb2.Image)) (required): The image to get detections from.
+- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage)) (required): The image to get detections from.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -283,7 +283,7 @@ Get a list of classifications from a given image using a configured [classifier]
 
 **Parameters:**
 
-- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/gen/component/camera/v1/camera_pb2/index.html#viam.gen.component.camera.v1.camera_pb2.Image)) (required): The image to get detections from.
+- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage)) (required): The image to get detections from.
 - `count` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): The number of classifications desired.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
@@ -522,6 +522,22 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(viscapture.VisCapture)](https://pkg.go.dev/go.viam.com/rdk/vision/viscapture#VisCapture): A class that stores all potential returns from the vision service. It can return the image from the camera along with its associated detections, classifications, and objects, as well as any extra info the model may provide.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// The data to capture and return from the camera
+captOpts := viscapture.CaptureOptions{}
+// Get the captured data for a camera
+capture, err := visService.CaptureAllFromCamera(context.Background(), "cam1", captOpts, nil)
+if err != nil {
+    logger.Fatalf("Could not get capture data from vision service: %v", err)
+}
+image := capture.Image
+detections := capture.Detections
+classifications := capture.Classifications
+objects := capture.Objects
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
 

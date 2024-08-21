@@ -113,7 +113,7 @@ Also unlike data sync, this method _does not_ delete data from your device.
 
 ## Upload images with the Viam mobile app
 
-Upload images as machine data straight from your phone, skipping the normal data capture and cloud synchronization process, through the [Viam mobile app](/fleet/#the-viam-mobile-app).
+Upload images as machine data straight from your phone, skipping the normal data capture and cloud synchronization process, through the [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app).
 This is useful if you want to capture images for training machine learning models on the go.
 
 1. Select an organization by clicking on the menu icon in the top left corner and tapping an organization.

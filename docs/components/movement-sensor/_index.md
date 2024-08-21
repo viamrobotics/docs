@@ -41,14 +41,14 @@ To use your movement sensor component, check whether one of the following models
 For configuration information, click on the model name:
 
 {{< tabs >}}
-{{% tab name="RDK" %}}
+{{% tab name="viam-server" %}}
 
 {{<resources api="rdk:component:movement_sensor" type="movement_sensor" no-intro="true">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
 {{% /tab %}}
-{{% tab name="micro-RDK" %}}
+{{% tab name="viam-micro-server" %}}
 
 <!-- prettier-ignore -->
 | Model | Description |

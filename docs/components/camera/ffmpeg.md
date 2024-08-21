@@ -10,12 +10,16 @@ aliases:
   - "/components/camera/ffmpeg/"
 component_description: "Uses a camera, a video file, or a stream as a camera."
 toc_hide: true
-# SMEs: Bijan, vision team
+# SMEs: Sean Yu, audio/video team
 ---
 
 The `ffmpeg` camera model uses a camera device, a video file, or a stream as a camera.
 
 When used with a streaming camera, the `ffmpeg` camera model supports any streaming camera format that is supported by the [`ffmpeg` program](https://ffmpeg.org/), including MJPEG, H264, and MP4.
+
+{{< alert title="Note" color="note" >}}
+The [`ffmpeg` program](https://ffmpeg.org/) program must be installed separately from `viam-server` on your system for this driver to work.
+{{< /alert >}}
 
 {{< tabs name="Configure a ffmpeg camera" >}}
 {{% tab name="Config Builder" %}}
@@ -78,7 +82,7 @@ The following attributes are available for `ffmpeg` cameras:
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `video_path` | string | **Required** | The file path to the camera device, color image file, or streaming camera. If you are using a camera with an RTSP stream, provide the RTSP address to this attribute. |
-| `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
+| `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. Value must be positive. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. Value must be positive. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
 | `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
 | `debug` | boolean | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
 | `input_kw_args` | object | Optional | The input keyword arguments. |

@@ -1,6 +1,7 @@
 ---
-title: "Configure an Incremental Encoder (Micro-RDK)"
+title: "Configure an Incremental Encoder (viam-micro-server)"
 linkTitle: "incremental"
+titleMustBeLong: true
 type: "docs"
 description: "Configure an incremental encoder with a microcontroller."
 images: ["/icons/components/encoder.svg"]

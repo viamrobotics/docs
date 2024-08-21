@@ -1,5 +1,5 @@
 ---
-title: "Configure an MPU-6050 (Micro-RDK)"
+title: "Configure an MPU-6050 (viam-micro-server)"
 linkTitle: "gyro-mpu6050"
 weight: 40
 type: "docs"

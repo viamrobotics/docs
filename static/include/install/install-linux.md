@@ -19,9 +19,13 @@ To install `viam-server` on a Linux computer:
 1. Select the appropriate architecture for your machine: **Linux (Aarch64)**, **Linux (x86_64)**, or **Armv7l**.
    On most Linux operating systems, you can run `uname -m` to confirm your computer's architecture.
 
+1. Select **RDK** as your RDK type.
+
 1. Follow the steps shown to install `viam-server` on your Linux computer.
 
 1. Once you have followed the steps on the setup instructions, `viam-server` is installed and running.
-   Wait for confirmation that your computer has successfully connected.
+   Wait for confirmation that your machine has successfully connected.
 
-By default, `viam-server` will start automatically when your system boots, but you can [change this behavior](/installation/manage/) if desired.
+   On your machine's page on [the Viam app](https://app.viam.com), your machine will show that it's **Live**.
+
+By default, `viam-server` will start automatically when your system boots, but you can [change this behavior](/installation/manage-viam-server/) if desired.

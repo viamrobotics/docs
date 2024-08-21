@@ -45,7 +45,7 @@ Select your system's architecture and select the version of the {{< glossary_too
 Then, follow the instructions on the page to connect and set up your machine.
 
 {{% alert title="Tip" color="tip" %}}
-If your machine is controlled by a microcontroller, install the [**Micro-RDK**](/installation/#install-micro-rdk) instead of full `viam-server`.
+If your machine is controlled by a microcontroller, install the [**viam-micro-server**](/installation/#install-viam-micro-server) instead of full `viam-server`.
 {{% /alert %}}
 
 More in-depth information on installing `viam-server` can be found in our [Installation Guide](/installation/#install-viam-server).
@@ -77,7 +77,7 @@ If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fra
 
 ### CONTROL
 
-Once you have configured components and services for your machine, you can visually test and remotely operate them from the **CONTROL** tab in the [Viam app](https://app.viam.com) or the [Viam mobile app](/fleet/#the-viam-mobile-app).
+Once you have configured components and services for your machine, you can visually test and remotely operate them from the **CONTROL** tab in the [Viam app](https://app.viam.com) or the [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app).
 
 {{<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="Using the control tab" max-width="800px">}}
 
@@ -117,7 +117,7 @@ For more information on the SDKs, see [Program your Machine with Viam's SDKs](/a
 #### Configure as remote part
 
 On the **CONNECT** tab, there is also a page called **Configure as remote part**.
-This page has instructions for how to configure a {{< glossary_tooltip term_id="part" text="part" >}} of your machine as a [remote part](/configure/parts/) of another machine.
+This page has instructions for how to configure a {{< glossary_tooltip term_id="part" text="part" >}} of your machine as a [remote part](/architecture/parts/) of another machine.
 
 #### API keys
 

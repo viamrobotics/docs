@@ -1,5 +1,5 @@
 ---
-title: "Configure a Single Encoder (Micro-RDK)"
+title: "Configure a Single Encoder (viam-micro-server)"
 linkTitle: "single"
 type: "docs"
 description: "Configure a single encoder with a microcontroller."

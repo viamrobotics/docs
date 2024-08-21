@@ -1,278 +1,257 @@
 ---
-title: "Provision Machines Using the Viam Agent"
-linkTitle: "Provision Machines"
+title: "Provision machines using viam-agent"
+linkTitle: "Provisioning Machines"
 weight: 70
 type: "docs"
-description: "Flexibly provision new machines using the Viam Agent."
+description: "Flexibly provision new machines using viam-agent."
 images: ["/platform/provisioning-demo.gif"]
 videos: ["/platform/provisioning-demo.webm", "/platform/provisioning-demo.mp4"]
 tags: ["fleet management", "viam-server", "viam-agent"]
-# SME: James Otting
+# SMEs: James, Ale
 aliases:
   - "/build/provision/"
+  - "/fleet/provision/"
 ---
 
-{{<gif webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with the Viam Agent." class="alignright" max-width="400px">}}
-
-You can use Viam's software provisioning manager, the _Viam Agent_, to provision a machine as it first comes online with a pre-defined configuration.
+You can use Viam's software provisioning manager (`agent-provisioning`), to provision a machine as it first comes online with a pre-defined configuration.
 This is useful when deploying a fleet of machines directly from the factory to a customer, or when bundling proprietary software on your Viam machine.
-You can install the Viam Agent on your machines as part of your build process, and then have the Viam Agent perform the rest of the first-time setup for your machine once deployed to a customer, or to the field.
 
-The Viam Agent:
-
-- Automatically connects to a pre-configured WiFi network, or creates its own wireless hotspot if no pre-configured WiFi network is detected.
-- Installs `viam-server` as a static binary, removing the need to perform any library linking or dependency installation during first-time setup.
-  You can also use a custom build of `viam-server`, if needed.
-- Provides automatic updates for `viam-server`, the agent itself, and any configured subsystems (such as the Agent Provisioning subsystem).
-- Allows control of deployed software versions through the Viam app.
+The provisioning subsystem is a feature of [`viam-agent`](/configure/agent/), which you can install as part of your manufacturing process.
+`agent-provisioning` will then perform the rest of the first-time setup for your machine once an [end user sets up the machine](#end-user-experience).
 
 Consider a company that sells machines that monitor weather conditions on a maritime craft and provide navigation advice based on those readings.
-Such a machine might use Viam to interface between a [sensor component](/components/sensor/) that takes weather measurements, and the [data management service](/services/data/) to regularly upload a stream of readings, for example.
-However, to then parse the readings and provide tailored guidance to a ship's captain, the company has written their own proprietary application which includes live analytics and speech generation for conveying advice to the captain.
+Such a machine might use Viam to regularly capture and upload a stream of sensor readings, for example.
+To parse the readings and provide tailored guidance to a ship's captain, the company writes their own proprietary application which includes live analytics and speech generation for conveying advice to the captain.
 
-Using the Viam Agent, this company could ship their machines directly to customers and have each machine provision `viam-server` as it comes online for each user, eliminating factory setup time and allowing for tailored configurations per customer as needed.
+Using `agent-provisioning`, this company can ship their machines directly to customers with `viam-agent` installed.
+When a customer sets up their machine, the provisioning subsystem installs `viam-server`.
+By having the end customer set up the machine, the company:
 
-{{% alert title="Note" color="note" %}}
-The example video above shows using the [Viam mobile application](/fleet/#the-viam-mobile-app) to connect to the Viam Agent on a newly-deployed machine and completing network setup.
-{{% /alert %}}
+- eliminates per-device setup and individualization at the factory
+- allows for tailored configurations per customer as needed
+- allows customer to provide their own WiFi credentials
 
-The Viam Agent is open source, and available on [GitHub](https://github.com/viamrobotics/agent).
+{{< alert title="Support Notice" color="note" >}}
 
-## Install the Viam Agent
+Provisioning is supported and tested only on Debian 11 (Bullseye), and 12 (Bookworm) but should work on most distros using NetworkManager v1.42 (or newer) as well.
+For Bullseye, the installation of `viam-agent` changes the network configuration to use NetworkManager.
 
-You can install the Viam Agent using either an existing machine's part ID and API key, or using an existing <file>/etc/viam.json</file> configuration file.
-
-{{< alert title="Important" color="note" >}}
-The Viam Agent supports the Linux `x86_64` and `aarch64` architectures only.
-Your machine must have `curl` available in order to install the Viam Agent.
 {{< /alert >}}
 
+For a guide on how to configure provisioning for your machine, see:
+
+{{< cards >}}
+{{% card link="/how-tos/provision-setup/" %}}
+{{< /cards >}}
+
+## End user experience
+
+End users receive a machine, and use either a captive web portal or mobile app to complete the machine setup.
+
+One option is to use the [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app).
+The Viam mobile app allows end users to create a new machine in the app, and `agent-provisioning` will then install `viam-server` and run it with a provided configuration.
+
+To add your branding, you can build your own mobile app and use the [Flutter SDK](https://flutter.viam.dev/viam_protos.provisioning.provisioning/ProvisioningServiceClient-class.html) or the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/src/app/provisioning-client.ts) to connect to `viam-agent` and provision your machines.
+
+If you are not using Flutter or TypeScript and would like to use provisioning, please [contact us](mailto:support@viam.com).
+
+For an end-user guide to setting up their machine, see:
+
+{{< cards >}}
+{{% card link="/how-tos/provision/" %}}
+{{< /cards >}}
+
+This is the general process for provisioning depending on whether you are using a captive web portal or a mobile app:
+
 {{< tabs >}}
-{{% tab name="Install using a part ID" %}}
+{{% tab name="Mobile app" min-height="703px" %}}
 
-If you want to install the Viam Agent on a machine that you have already configured in the Viam app, follow these steps:
+{{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" class="alignright" max-width="400px" style="margin-left: 2rem">}}
 
-1. Determine your machine {{< glossary_tooltip term_id="part" text="part's" >}} ID.
-   To copy the ID of your machine part, select the part status dropdown to the right of your machine's location and name on the top of its page and click the copy icon next to **Part ID**.
-   For an example, see [Find part ID](/appendix/apis/data-client/#find-part-id)
-1. Determine your machine's [API key and API key ID](/sdks/#authentication).
-   If you haven't already, you can [use the CLI to create a new API key and API key ID](/cli/#create-an-organization-api-key).
-1. Run the following command, replacing `<KEYID>`, `<KEY>`, and `<PARTID>` with your machine's values as determined from the steps above:
+1. If the provisioning happens with a mobile app, open the app and follow any instructions there until the app directs you to turn on the machine.
 
-   ```sh {class="command-line" data-prompt="$"}
-   sudo /bin/sh -c "VIAM_API_KEY_ID=<KEYID> VIAM_API_KEY=<KEY> VIAM_PART_ID=<PARTID>; $(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
-   ```
+   - If you are using the Viam mobile app, create a new machine or click on an existing machine that has not yet been set up and follow the instructions.
+
+1. When you power on the machine that has `viam-agent` installed and `agent-provisioning` configured, `agent-provisioning` creates a WiFi hotspot.
+
+   - The [`agent-provisioning` configuration](#configuration) is at <file>/etc/viam-provisioning.json</file>.
+
+1. You then use your mobile device or computer and connect to the WiFi hotspot.
+
+   - By default, the hotspot network is named `viam-setup-HOSTNAME`, where `HOSTNAME` is replaced with the hostname of your machine.
+     The WiFi password for this hotspot network is `viamsetup` by default.
+     You can customize these values in the [`agent-provisioning` configuration](/configure/agent/#configuration).
+
+1. If you as the end user have a provisioning mobile app, go back to the app to complete setup.
+   In the mobile app, you will be prompted to provide the network information for the machine.
+
+1. The machine will then disable the hotspot network and attempt to connect using the provided network information.
+   If `viam-agent` cannot establish a connection using the provided network information, the machine will create the hotspot again and continue going through steps (2-5) until a connection is successfully established.
+1. If the connection is successful, `viam-agent` installs `viam-server`.
+
+   - `agent-provisioning` will use the provided network if it can connect, even if that network does not have internet access.
+     Note that any features that require internet access will not function if the connected WiFi network is not connected to the internet.
+     If you want `agent-provisioning` to require that a WiFi network be connected to the internet in order to connect to it, enable roaming mode.
+
+1. `viam-agent` then starts `viam-server` with the provided configuration and the machine becomes **live**.
 
 {{% /tab %}}
-{{% tab name="Install using a configuration file" %}}
+{{% tab name="Captive web portal" %}}
 
-If you want to install the Viam Agent on a machine that you have not yet created in the Viam app, follow these steps:
+1. When you, as the end user, power on the machine that has `viam-agent` installed and `agent-provisioning` configured, `agent-provisioning` creates a WiFi hotspot.
 
-1. Create a configuration file with the desired configuration for your machine. You can:
+   - The [`agent-provisioning` configuration](#configuration) is at <file>/etc/viam-provisioning.json</file>.
+   - If a machine already exists, a machine cloud credentials file, if provided, is at <file>/etc/viam.json</file>.
 
-   - You can [create a new machine in the Viam app](/cloud/machines/#add-a-new-machine) and configure it as desired, then switch to **Raw JSON** mode and copy the configuration shown into a new file on your machine.
-   - You can base your configuration on the [example configuration file](/internals/local-configuration-file/#example-json-configuration-file), and adjust as needed.
-   - You can use an existing configuration file from a deployed machine, or adapt such a file as needed to fit the specifications of your new machine.
+1. You as the end user then use your mobile device or computer and connect to the WiFi hotspot.
 
-1. Place this file in the following location on the machine you wish to install the Viam Agent to: <file>/etc/viam.json</file>
+   - By default, the hotspot network is named `viam-setup-HOSTNAME`, where `HOSTNAME` is replaced with the hostname of your machine.
+     The WiFi password for this hotspot network is `viamsetup` by default.
+     You can customize these values in the [`agent-provisioning` configuration](/configure/agent/#configuration).
 
-1. Run the following command to install the Viam Agent on your machine:
+1. Once connected to the hotspot, you will be redirected to a sign-in page.
+   If you are using a laptop or are not redirected, try opening [http://viam.setup/](http://viam.setup/) in a browser.
 
-   ```sh {class="command-line" data-prompt="$"}
-   sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
-   ```
+1. In the captive web portal, you will then be prompted to provide the network information for the machine.
+
+   - If there is no machine cloud credentials file at <file>/etc/viam.json</file>, the captive portal will also require you to paste a machine cloud credentials file.
+     This is the JSON object which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to the Viam app.
+
+     To copy a machine cloud credentials file:
+
+     - Navigate to your machine's page on [the Viam app](https://app.viam.com).
+     - Select the part status dropdown to the right of your machine's name on the top of the page.
+       {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="machine cloud credentials button on the machine part info dropdown">}}
+     - Click the copy icon next to **Machine cloud credentials**.
+     - Paste the machine cloud credentials when prompted.
+
+1. The machine will then disable the hotspot network and attempt to connect using the provided network information.
+   If `viam-agent` cannot establish a connection using the provided network information, the machine will create the hotspot again and continue going through steps (2-5) until a connection is successfully established.
+1. If the connection is successful, `viam-agent` installs `viam-server`.
+
+   - `agent-provisioning` will use the provided network if it can connect, even if that network does not have internet access.
+     Note that any features that require internet access will not function if the connected WiFi network is not connected to the internet.
+     If you want `agent-provisioning` to require that a WiFi network be connected to the internet in order to connect to it, enable roaming mode.
+
+1. `viam-agent` then starts `viam-server` with the provided configuration and the machine becomes **live**.
 
 {{% /tab %}}
 {{< /tabs >}}
 
-### Update the Viam Agent and `viam-server`
+## Configuration
 
-The Viam Agent automatically updates both itself and `viam-server` as new updates are released.
-You can also configure update behavior for the Agent and `viam-server` using the [Viam app](https://app.viam.com/).
+When you [install `viam-agent`](/configure/agent/#installation), you may optionally provide a provisioning configuration file to customize the experience at <file>/etc/viam-provisioning.json</file> with the following format:
 
-{{< alert title="Important" color="note" >}}
-When the Viam Agent updates either itself or `viam-server`, you must restart these services in order to use the new version.
-When you stop or restart the Viam Agent, the agent will stop or restart `viam-server` as well.
-{{< /alert >}}
-
-### Manage the Viam Agent
-
-The Viam Agent is installed as a `systemd` service named `viam-agent`.
-
-- To start the Viam Agent:
-
-  ```sh {class="command-line" data-prompt="$"}
-  sudo systemctl start viam-agent
-  ```
-
-- To stop the Viam Agent:
-
-  {{< alert title="Alert" color="note" >}}
-  When you stop the Viam Agent, the agent will stop `viam-server` as well.
-  {{< /alert >}}
-
-  ```sh {class="command-line" data-prompt="$"}
-  sudo systemctl stop viam-agent
-  ```
-
-- To restart the Viam Agent:
-
-  {{< alert title="Alert" color="note" >}}
-  When you restart the Viam Agent, the agent will restart `viam-server` as well.
-  {{< /alert >}}
-
-  ```sh {class="command-line" data-prompt="$"}
-  sudo systemctl restart viam-agent
-  ```
-
-- To completely uninstall the Viam Agent and `viam-server`, run the following command:
-
-  ```sh {class="command-line" data-prompt="$"}
-  sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/uninstall.sh)"
-  ```
-
-  This command uninstalls Viam Agent, `viam-server`, the machine configuration file (<file>/etc/viam.json</file>), and the provisioning configuration file (<file>/etc/viam-provisioning.json</file>).
-
-  For more information, see [Viam Agent management](https://github.com/viamrobotics/agent#management).
-
-### View Viam Agent logs
-
-The Viam Agent writes log messages to the [Viam app](https://app.viam.com/).
-You can find these messages on the [**LOGS** tab](/cloud/machines/#logs) of your machine's page.
-
-Viam Agent only sends messages when your machine is online and connected to the internet.
-If your machine is offline, log messages are queued, and are sent to the Viam app once your machine reconnects to the internet.
-
-These log messages include when `viam-server` is stopped and started, the status of agent subsystems, and any errors or warnings encountered during operation.
-
-## Provision a new machine
-
-With the Viam Agent installed, your machine will either connect to a local WiFi network or will create its own WiFi hotspot, depending on your configuration.
-
-- If you include a `viam-server` configuration file on your machine, located at <file>/etc/viam.json</file>, which includes a WiFi network and password to connect to, the Viam Agent will connect to the network automatically when in range.
-- If you did not include this file, or the configured WiFi network is not available when your machine comes online, the Viam Agent will create its own WiFi hotspot and request WiFi credentials:
-
-  ![Diagram of the flow of provisioning a new machine with the Viam agent.](/platform/provision/style-provisioning-diagram.png)
-
-  If there is an issue connecting to the WiFi hotspot with the input WiFi credentials, this flow will repeat until the device is online:
-
-  ![Diagram of the flow of provisioning a new machine with the Viam agent when there is an issue connecting to WiFi.](/platform/provision/style-provisioning-diagram-error.png)
-
-This provisioning functionality is provided by the [Viam Agent provisioning subsystem](https://github.com/viamrobotics/agent-provisioning).
-
-### Connect to an existing network
-
-If you specify a WiFi network to connect to in your configuration file, the Viam Agent will automatically connect to that network when in range.
-
-You can configure one or more WiFi networks to connect to in the `agent` configuration object in your `viam-server` configuration file.
-For example, to configure SSIDs and passwords for two WiFi networks named `primaryNet` and `fallbackNet`, you can use the following configuration:
+{{< tabs >}}
+{{% tab name="Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
-...
-"agent": {
-  "agent-provisioning": {
-    ...
-    "attributes": {
-      ...
-      "networks": [
-        {
-          "type": "wifi",
-          "ssid": "primaryNet",
-          "psk": "myFirstPassword",
-          "priority": 30
-        },
-        {
-          "type": "wifi",
-          "ssid": "fallbackNet",
-          "psk": "mySecondPassword",
-          "priority": 10
-        }
-      ]
-    }
-  }
+{
+  "manufacturer": "<NAME>",
+  "model": "<NAME>",
+  "fragment_id": "<ID>",
+  "hotspot_prefix": "<PREFIX>",
+  "disable_dns_redirect": true,
+  "hotspot_password": "<PASSWORD>",
+  "roaming_mode": false,
+  "offline_timeout": "0m00s",
+  "user_timeout": "0m00s",
+  "fallback_timeout": "0m00s"
 }
 ```
 
-You can add this configuration to the <file>/etc/viam.json</file> configuration file you deploy to your machine, or from the **CONFIGURE** tab in the [Viam app](https://app.viam.com/) for your machine, using **Raw JSON** mode.
-The Viam Agent will attempt to connect to the `ssid` with the highest `priority` first.
-If the highest-priority network is not available, it will then attempt to connect to the next-highest `priority` network, and so on until all configured networks have been tried.
-
-If no configured WiFi network could be connected to, the Viam Agent will instead create its own WiFi hotspot, as described in the next section.
-
-### Create a WiFi hotspot
-
-If you did not include a `viam-server` configuration file on your machine, or none of the configured WiFi networks are available when your machine comes online, the Viam Agent will create its own WiFi hotspot that you can connect to in order to complete provisioning.
-
-By default, the hotspot network is named `viam-setup-HOSTNAME`, where `HOSTNAME` is replaced with the hostname of your machine.
-The WiFi password for this network is `viamsetup` by default.
-
-You can customize these values in the `agent` configuration object in your `viam-server` configuration file.
-For example, to set the hotspot password to `acme123`, you can use the following configuration:
-
-```json {class="line-numbers linkable-line-numbers"}
-...
-"agent": {
-  "agent-provisioning": {
-    ...
-    "attributes": {
-      "hotspot_password": "acme123"
-      ...
-    }
-  }
-}
-```
-
-You can add this configuration to your machine's configuration in the **CONFIGURE** tab in the [Viam app](https://app.viam.com/), using **JSON** mode, or directly to the <file>/etc/viam.json</file> configuration file you deploy to your machine.
-
-If you did not initially provide a `viam-server` app configuration in either of these methods, you will be prompted to paste one in when you connect to the WiFi hotspot.
-This is the JSON which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to the Viam app.
-
-To copy a machine's `viam-server` app configuration:
-
-- Navigate to your machine's page on [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
-- Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="/build/micro-rdk/part-dropdown.png" resize="x600" style="max-width: 500px" declaredimensions=true alt="The part status dropdown of an offline machine.">}}
-- Click the copy icon underneath **Viam server configuration** to copy the `viam-server` app JSON configuration.
-- Paste the `viam-server` app config into your terminal when prompted.
-
-## Use a pre-install script
-
-When you install the Viam Agent, either manually using the commands above or automatically as part of your fleet's build and deploy process, you can choose to run a pre-install script to perform provisioning steps before deployment to the target machine.
-For example, you could use the pre-install script to configure and deploy to an SD card or other image file, which you can then use as part of your fleet deployment process.
-You can also use this method to generate a local tarball containing the configured deployment, which you could then deploy later, or through a different medium (such as automation, or as the basis for further customer-specific customization).
-
-For more information, see [Pre-installed provisioning](https://github.com/viamrobotics/agent-provisioning#pre-installed-provisioning).
-
-## Use a provisioning configuration file
-
-When you install the Viam Agent, either manually using the commands above or automatically as part of your fleet's build and deploy process, you can provide a provisioning configuration file to pre-configure how your machine behaves when it first comes online.
-
-To provision your machine, create a <file>/etc/viam-provisioning.json</file> configuration file, resembling the following:
+{{% /tab %}}
+{{% tab name="Example" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "manufacturer": "Skywalker",
   "model": "C-3PO",
   "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
-  "disable_dns_redirect": true,
   "hotspot_prefix": "skywalker-setup",
-  "hotspot_password": "skywalker123"
+  "disable_dns_redirect": true,
+  "hotspot_password": "skywalker123",
+  "roaming_mode": false,
+  "offline_timeout": "3m30s",
+  "user_timeout": "2m30s",
+  "fallback_timeout": "15m"
 }
 ```
 
-This file configures some basic metadata, specifies a [fragment](/fleet/fragments/) to use to configure the machine, and provides the WiFi network name and password to allow your machine to connect automatically on startup.
+This file configures some basic metadata, specifies a [fragment](/fleet/fragments/) to use to configure the machine, and provides the WiFi hotspot network name and password to use on startup.
+It also configures timeouts to control how long `viam-agent` waits for a valid local WiFi network to come online before creating its hotspot network, and how long to keep the hotspot active before terminating it.
 
-## Use the Viam mobile app
+{{% /tab %}}
+{{< /tabs >}}
 
-You can use the [Viam mobile application](/fleet/#the-viam-mobile-app), available for download from the [Apple](https://apps.apple.com/us/app/viam-robotics/id6451424162) and [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US) app stores, to connect to the Viam Agent on deployed machines.
+### Attributes
 
-Once you are logged in using the Viam mobile app, select your organization, then location, then tap **Add new smart machine** and follow the instructions in the mobile app.
+<!-- prettier-ignore -->
+| Name       | Type   | Required? | Description |
+| ---------- | ------ | --------- | ----------- |
+| `manufacturer` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"viam"`. |
+| `model` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"custom"`. |
+| `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
+| `hotspot_prefix` | string | Optional | Viam agent will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
+| `disable_dns_redirect` | boolean | Optional | By default, ALL DNS lookups using the provisioning hotspot will redirect to the device. This causes most phones/mobile devices to automatically redirect the user to the captive portal as a "sign in" screen. When disabled, only domains ending in .setup (ex: viam.setup) will be redirected. This generally avoids displaying the portal to users and is mainly used in conjunction with a mobile provisioning application workflow. Default: `false`. |
+| `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
+| `roaming_mode` | boolean | Optional | By default, the device will only attempt to connect to a single wifi network (the one with the highest priority), provided during initial provisioning/setup using the provisioning mobile app or captive web portal. Wifi connection alone is enough to consider the device as "online" even if the global internet is not reachable. If the primary network configured during provisioning cannot be connected to and roaming mode is enabled, the device will attempt connections to all configured networks in `networks`, and only consider the device online if the internet is reachable. Default: `false`. |
+| `offline_timeout` | boolean | Optional | Will only enter provisioning mode (hotspot) after being disconnected longer than this time. Useful on flaky connections, or when part of a system where the device may start quickly, but the wifi/router may take longer to be available. Default: `"2m"` (2 minutes). |
+| `user_timeout` | boolean | Optional | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `"5m"` (5 minutes). |
+| `fallback_timeout` | boolean | Optional | Provisioning mode will exit after this time, to allow other unmanaged (for example wired) or manually configured connections to be tried. Provisioning mode will restart if the connection/online status doesn't change. Default: `"10m"` (10 minutes). |
+| `networks` | boolean | Optional | Add additional networks the machine can connect to for provisioning. We recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager) rather than in this file, or in the corresponding machine config in the Viam app, if networks aren't needed until after initial provisioning. See [Networks](/configure/agent/#networks). Default: `[]`. |
 
-For more information, see [Mobile app provisioning](https://github.com/viamrobotics/agent-provisioning#mobile-app-provisioning).
+#### Networks
 
-## Add provisioning to your own mobile app
+During the provisioning process, a machine connects to a network to install `viam-server`.
+If an end user uses an app to provision the machine, they will generally provide network details through that app.
 
-You can write your own mobile application or add provisioning to your existing mobile application using our SDKs which allow you to connect to the Viam Agent and provision your machines.
-For example, you can fetch local networks available to your deployed machine with `getNetworkList()`, or assign network credentials for a specific network with `setNetworkCredentials()`.
+If you know in advance which other networks a machine should be able to connect to, we recomment that you add WiFi settings in the operating system (for example, directly in NetworkManager).
 
-Currently, provisioning is supported by the Viam [Flutter SDK](https://flutter.viam.dev/viam_protos.provisioning.provisioning/ProvisioningServiceClient-class.html) and the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/src/app/provisioning-client.ts).
-If you are not using Flutter or TypeScript and would like to use provisioning, please [contact us](mailto:support@viam.com).
+However, if you want to add additional networks to the provisioning configuration you can add them to the `networks` field value.
+
+{{< alert title="Important" color="note" >}}
+You must enable `roaming_mode` in the [`agent-provisioning` configuration](#configuration) to allow the machine to connect to the specified networks.
+{{< /alert >}}
+
+If `roaming_mode` is enabled, `agent-provisioning` will try to connect to each specified network in order of `priority` from highest to lowest.
+
+<!-- prettier-ignore -->
+| Name       | Type   | Description |
+| ---------- | ------ | ----------- |
+| `type`     | string | The type of the network. Options: `"wifi"`|
+| `ssid`     | string | The network's SSID. |
+| `psk`      | string | The network pass key. |
+| `priority` | int    | Priority to choose the network with. Values between -999 and 999. Default: `0`. |
+
+The following configuration defines the connection information and credentials for two WiFi networks named `fallbackNetOne` and `fallbackNetTwo`:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "manufacturer": "Skywalker",
+  "model": "C-3PO",
+  "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
+  "hotspot_prefix": "skywalker-setup",
+  "disable_dns_redirect": true,
+  "hotspot_password": "skywalker123",
+  "roaming_mode": false,
+  "offline_timeout": "3m30s",
+  "user_timeout": "2m30s",
+  "fallback_timeout": "15m",
+  "roaming_mode": true,
+  "networks": [
+    {
+      "type": "wifi",
+      "ssid": "otherNetworkOne",
+      "psk": "myFirstPassword",
+      "priority": 30
+    },
+    {
+      "type": "wifi",
+      "ssid": "otherNetworkTwo",
+      "psk": "mySecondPassword",
+      "priority": 10
+    }
+  ]
+}
+```

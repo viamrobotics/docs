@@ -1,5 +1,3 @@
-You must have the Viam CLI installed to configure querying with third-party tools.
-
 {{< tabs >}}
 {{% tab name="macOS" %}}
 

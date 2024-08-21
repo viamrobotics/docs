@@ -18,12 +18,12 @@ hugo.IsProduction (ne $outputFormat "print") -}}
 <title>
     {{- if .IsHome -}} {{ .Site.Title -}} {{ else -}} {{ with .Title }} {{ . }} {{ end -}}
     {{ if .Parent.Params.childTitleEndOverwrite }}
-        {{if gt (add (add (len .Title)  (len .Parent.Params.childTitleEndOverwrite)) 3) 70}} {{- errorf "Title too long for page: %q | %q at %q" .Title .Parent.Params.childTitleEndOverwrite .Path -}} {{ end }} | {{ .Parent.Params.childTitleEndOverwrite }}
+        {{if and (gt (add (add (len .Title) (len .Parent.Params.childTitleEndOverwrite)) 3) 70) (not .Params.titleMustBeLong)}} {{- errorf "Title too long for page (>70 char): %q | %q. Occurred at %q. If title cannot be shortened set titleMustBeLong to true in frontmatter." .Title .Parent.Params.childTitleEndOverwrite .Path -}} {{ end }} | {{ .Parent.Params.childTitleEndOverwrite }}
     {{ else }}
         {{ if gt (len .Ancestors) 2 }}
-            {{if gt (add (add (len .Title) (len .Parent.LinkTitle)) 3) 70}} {{- errorf "Title too long for page: %q | %q at %q" .Title .Parent.LinkTitle .Path -}} {{ end }} | {{ .Parent.LinkTitle }}
+            {{if and (gt (add (add (len .Title) (len .Parent.LinkTitle)) 3) 70) (not .Params.titleMustBeLong)}} {{- errorf "Title too long for page (>70 char): %q | %q. Occurred at %q. If title cannot be shortened set titleMustBeLong to true in frontmatter." .Title .Parent.LinkTitle .Path -}} {{ end }} | {{ .Parent.LinkTitle }}
         {{ else }}
-            {{if gt (add (add (len .Title) (len .Site.Title)) 3)  70}} {{- errorf "Title too long for page: %q | %q at %q" .Title .Site.Title .Path -}} {{ end }} | {{ .Site.Title }}
+            {{if and (gt (add (add (len .Title) (len .Site.Title)) 3)  70) (not .Params.titleMustBeLong)}} {{- errorf "Title too long for page (>70 char): %q | %q. Occurred at %q. If title cannot be shortened set titleMustBeLong to true in frontmatter." .Title .Site.Title .Path -}} {{ end }} | {{ .Site.Title }}
         {{ end }}
     {{ end }}
     {{ end -}}
@@ -63,7 +63,9 @@ hugo.IsProduction (ne $outputFormat "print") -}}
     crossorigin="anonymous"
 ></script>
 {{ end -}} {{ if .Site.Params.prism_syntax_highlighting -}} <link
-rel="stylesheet" href="{{ "css/prism.css" | relURL }}"/> {{ end -}} {{ partial
+rel="stylesheet" href="{{ "css/prism.css" | relURL }}"/> {{ end -}}
+<link
+rel="stylesheet" href="{{ "css/zoom.css" | relURL }}"/>{{ partial
 "hooks/head-end.html" . -}} {{/* To comply with GDPR, cookie consent scripts
 places in head-end must execute before Google Analytics is enabled */ -}} {{ if
 hugo.IsProduction -}}{{- if .Site.Config.Services.GoogleAnalytics.ID -}}

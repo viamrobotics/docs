@@ -23,7 +23,7 @@ You can run SDK code from anywhere; it does not necessarily have to be run on th
 
 ## Backend SDKs
 
-Use the backend SDK to build business logic to control [components](/appendix/apis/#component-apis) and [services](/appendix/apis/#service-apis), as well as manage your [fleet](/appendix/apis/#fleet-management-api) and [data](/appendix/apis/data-client/), and [billing information](/appendix/apis/billing-client/), or [provision](/fleet/provision/#provision-a-new-machine) machines.
+Use the backend SDK to build business logic to control [components](/appendix/apis/#component-apis) and [services](/appendix/apis/#service-apis), as well as manage your [fleet](/appendix/apis/#fleet-management-api) and [data](/appendix/apis/data-client/), and [billing information](/appendix/apis/billing-client/), or [provision](/fleet/provision/) machines.
 With the backend SDKs you can also create custom {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}.
 
 {{< sectionlist-custom >}}
@@ -34,7 +34,7 @@ With the backend SDKs you can also create custom {{< glossary_tooltip term_id="m
 
 ## Frontend SDKs
 
-Use the frontend SDK to control your machine's [components](/appendix/apis/#component-apis), as well as manage your [data](/appendix/apis/data-client/) or [provision](/fleet/provision/#provision-a-new-machine) machines.
+Use the frontend SDK to control your machine's [components](/appendix/apis/#component-apis), as well as manage your [data](/appendix/apis/data-client/) or [provision](/fleet/provision/) machines.
 
 {{< sectionlist-custom >}}
 {{% sectionlist-custom-item link="/sdks/typescript/" %}}
@@ -42,7 +42,7 @@ Use the frontend SDK to control your machine's [components](/appendix/apis/#comp
 
 ## Mobile SDK
 
-Use the mobile SDK to build iOS and Android apps to control your machine's [components](/appendix/apis/#component-apis), as well as manage your [fleet](/appendix/apis/#fleet-management-api) and [data](/appendix/apis/data-client/), or [provision](/fleet/provision/#provision-a-new-machine) machines.
+Use the mobile SDK to build iOS and Android apps to control your machine's [components](/appendix/apis/#component-apis), as well as manage your [fleet](/appendix/apis/#fleet-management-api) and [data](/appendix/apis/data-client/), or [provision](/fleet/provision/) machines.
 
 {{< sectionlist-custom >}}
 {{% sectionlist-custom-item link="/sdks/flutter/" %}}

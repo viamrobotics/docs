@@ -1,4 +1,4 @@
-You need an Espressif ESP32 microcontroller to use the micro-RDK.
+You need an Espressif ESP32 microcontroller to use `viam-micro-server`.
 Viam recommends purchasing the ESP32 with a [development board](https://www.espressif.com/en/products/devkits).
 The following ESP32 microcontrollers are supported:
 
@@ -7,7 +7,7 @@ The following ESP32 microcontrollers are supported:
 
 You will also need a data cable like [this USB-C to USB-C cable](https://www.amazon.com/Amazon-Basics-Charger-480Mbps-Certified/dp/B01GGKYZQM/) to connect the microcontroller to your development machine.
 
-Your microcontroller should have at least the following resources available to work with the micro-RDK:
+Your microcontroller should have at least the following resources available to work with `viam-micro-server`:
 
 - 2 Cores + 384kB SRAM + 2MB PSRAM + 4MB Flash
 
@@ -15,5 +15,5 @@ Your microcontroller should have at least the following resources available to w
 The main difference between the WROOM and WROVER is that the WROVER has additional RAM with the SPIRAM chip.
 If you would like to allow more than one concurrent connection to your device we recommend using the WROVER.
 The WROVER allows a max of 3 incoming gRPC connections (whether over HTTP2 or WebRTC).
-You can change this max by [building your own version of micro-RDK](/installation/#install-micro-rdk).
+You can change this max by [building your own version of `viam-micro-server`](/installation/micro-rdk-dev/).
 {{< /alert >}}

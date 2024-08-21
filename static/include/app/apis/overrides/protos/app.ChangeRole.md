@@ -1,1 +1,1 @@
-Changes and existing role to a new role.
+Changes an existing role to a new role.

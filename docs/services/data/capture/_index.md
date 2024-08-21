@@ -25,7 +25,7 @@ Get started with a quickstart guide or keep reading for more details.
 {{< /cards >}}
 
 {{< tabs >}}
-{{% tab name="RDK" %}}
+{{% tab name="viam-server" %}}
 
 The data is captured locally on the machine's storage and, by default, stored in the `~/.viam/capture` directory.
 
@@ -36,7 +36,7 @@ The service does not impose a lower or upper limit on the frequency of data coll
 However, in practice, your hardware may impose limits on the frequency of data collection.
 
 {{% /tab %}}
-{{% tab name="micro-RDK" %}}
+{{% tab name="viam-micro-server" %}}
 The data is captured in the ESP32's flash memory and periodically uploaded to the Viam cloud.
 
 If the machine restarts before all data is synced, all unsynced data captured since the last sync point is lost.
@@ -69,7 +69,7 @@ To capture data from one or more machines, you must first add the [data manageme
 4. Click **Create**.
 5. On the panel that appears, you can manage the capturing and syncing functions.
    {{< tabs >}}
-   {{% tab name="RDK" %}}
+   {{% tab name="viam-server" %}}
    Specify the **Directory**, the sync **Interval** and any **Tags** to apply to captured data.
 
 If the sync **Interval** or the **Directory** is not specified, the data management service captures data at the default frequency every 0.1 minutes (after every 6 second interval) in the default `~/.viam/capture` directory.
@@ -79,18 +79,18 @@ If you change the directory for data capture only new data is stored in the new 
 Existing data remains in the directory where it was stored.
 {{< /alert >}}
 {{% /tab %}}
-{{% tab name="micro-RDK" %}}
+{{% tab name="viam-micro-server" %}}
 Specify the sync **Interval**.
 
 {{< alert title="Info" color="info" >}}
-With micro-RDK, the `capture_dir`, `tags`, and `additional_sync_paths` attributes are ignored and should not be configured.
+With `viam-micro-server`, the `capture_dir`, `tags`, and `additional_sync_paths` attributes are ignored and should not be configured.
 {{< /alert >}}
 {{% /tab %}}
 {{< /tabs >}}
 
 {{%expand "Click to view the JSON configuration for the data management service" %}}
 {{< tabs >}}
-{{% tab name="RDK" %}}
+{{% tab name="viam-server" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -113,7 +113,7 @@ With micro-RDK, the `capture_dir`, `tags`, and `additional_sync_paths` attribute
 ```
 
 {{% /tab %}}
-{{% tab name="micro-RDK" %}}
+{{% tab name="viam-micro-server" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -135,7 +135,7 @@ With micro-RDK, the `capture_dir`, `tags`, and `additional_sync_paths` attribute
 ```
 
 {{< alert title="Info" color="info" >}}
-With micro-RDK, the `capture_dir`, `tags`, and `additional_sync_paths` attributes are ignored and should not be configured.
+With `viam-micro-server`, the `capture_dir`, `tags`, and `additional_sync_paths` attributes are ignored and should not be configured.
 {{< /alert >}}
 
 {{% /tab %}}
@@ -160,7 +160,7 @@ Once you have added the data capture service, you can specify the data you want 
 The following components and services support data capture:
 
 {{< tabs >}}
-{{% tab name="RDK" %}}
+{{% tab name="viam-server" %}}
 
 - Arm
 - Board
@@ -174,7 +174,7 @@ The following components and services support data capture:
 - Vision Service
 
 {{% /tab %}}
-{{% tab name="micro-RDK" %}}
+{{% tab name="viam-micro-server" %}}
 
 <!-- prettier-ignore -->
 | Type | Method |
@@ -198,17 +198,17 @@ Avoid configuring data capture to higher rates than your hardware can handle, as
 
 Click the **Save** button in the top right corner of the page.
 
-Now, using the RDK, your data will be saved locally on your machine to the directory specified in the data management service.
-If you are using the micro-RDK, data will be captured at the configured capture frequency and saved in flash memory and synced to Viam app at the selected interval.
+Now, using `viam-server`, your data will be saved locally on your machine to the directory specified in the data management service.
+If you are using `viam-micro-server`, data will be captured at the configured capture frequency and saved in flash memory and synced to Viam app at the selected interval.
 
 For example, a camera has the options `ReadImage` and `NextPointCloud` and a motor has the options `Position` and `IsPowered`.
 
 ![component config example](/services/data/data-service-component-config.png)
 
-{{%expand "Click to view an example JSON configuration" %}}
+{{%expand "Click to view an example JSON configuration for data capture on a camera component" %}}
 
 {{< tabs >}}
-{{% tab name="RDK" %}}
+{{% tab name="viam-server" %}}
 
 This example configuration captures data from the ReadImage method of a camera:
 
@@ -271,7 +271,7 @@ This example configuration captures data from the ReadImage method of a camera:
 ```
 
 {{% /tab %}}
-{{% tab name="micro-RDK" %}}
+{{% tab name="viam-micro-server" %}}
 
 This example configuration captures data from the GetReadings method of a temperature sensor and wifi signal sensor:
 
@@ -336,6 +336,77 @@ This example configuration captures data from the GetReadings method of a temper
       ],
       "name": "my-wifi-sensor",
       "namespace": "rdk"
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /expand%}}
+
+{{%expand "Click to view an example JSON configuration for data capture on the vision service" %}}
+
+{{< tabs >}}
+{{% tab name="viam-server" %}}
+
+This example configuration captures data from the `CaptureAllFromCamera` method of the vision service:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [
+    {
+      "name": "camera-1",
+      "namespace": "rdk",
+      "type": "camera",
+      "model": "webcam",
+      "attributes": {}
+    }
+  ],
+  "services": [
+    {
+      "name": "vision-1",
+      "namespace": "rdk",
+      "type": "vision",
+      "model": "mlmodel",
+      "attributes": {},
+      "service_configs": [
+        {
+          "type": "data_manager",
+          "attributes": {
+            "capture_methods": [
+              {
+                "method": "CaptureAllFromCamera",
+                "capture_frequency_hz": 1,
+                "additional_params": {
+                  "mime_type": "image/jpeg",
+                  "camera_name": "camera-1",
+                  "min_confidence_score": "0.7"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "data_manager-1",
+      "namespace": "rdk",
+      "type": "data_manager",
+      "attributes": {
+        "sync_interval_mins": 0.1,
+        "capture_dir": "",
+        "tags": [],
+        "additional_sync_paths": []
+      }
+    },
+    {
+      "name": "mlmodel-1",
+      "namespace": "rdk",
+      "type": "mlmodel",
+      "model": "tflite_cpu",
+      "attributes": {}
     }
   ]
 }
@@ -546,13 +617,13 @@ The following example captures data from the `ReadImage` method of a camera:
 
 ## Capture data selectively with filtering
 
-See the [Use filtering to collect and sync only certain images](/use-cases/image-data/#use-filtering-to-collect-and-sync-only-certain-images) guide.
+See the [Use filtering to collect and sync only certain images](/how-tos/image-data/#use-filtering-to-collect-and-sync-only-certain-images) guide.
 
 ## Automatic data deletion
 
 If [cloud sync](/services/data/cloud-sync/) is enabled, the data management service deletes captured data once it has successfully synced to the cloud.
 
-With the RDK, the data management service will also automatically delete local data in the event your machine's local storage fills up.
+With `viam-server`, the data management service will also automatically delete local data in the event your machine's local storage fills up.
 Local data is automatically deleted when _all_ of the following conditions are met:
 
 - Data capture is enabled on the data manager service
@@ -600,7 +671,7 @@ Wait for a few seconds and you should see correctly colored images.
 
 To sync your captured data with the cloud, [configure cloud sync](/services/data/cloud-sync/).
 
-If you have synced data, such as [sensor](/components/sensor/) readings, you can [query that data with SQL or MQL](/use-cases/sensor-data-query-with-third-party-tools/) from the Viam app or a MQL-compatible client.
+If you have synced data, such as [sensor](/components/sensor/) readings, you can [query that data with SQL or MQL](/how-tos/sensor-data-query-with-third-party-tools/) from the Viam app or a MQL-compatible client.
 If you have synced images, you can use those images to [train machine learning models](/services/ml/train-model/) within the Viam app.
 
 For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).

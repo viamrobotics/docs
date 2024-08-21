@@ -1,25 +1,28 @@
 ---
-title: "Micro-RDK Development Setup"
-linkTitle: "Micro-RDK Development Setup"
+title: "viam-micro-server Development Setup"
+linkTitle: "viam-micro-server Dev Setup"
 weight: 50
 no_list: true
 type: docs
 images: ["/installation/thumbnails/esp32-espressif.png"]
 imageAlt: "E S P 32 - espressif"
-description: "Set up the Espressif ESP32 for development with the micro-RDK."
+description: "Set up the Espressif ESP32 for development with `viam-micro-server`."
 # SMEs: Nicolas M., Gautham V., Andrew M.
 aliases:
-  - "/installation/prepare/microcontrollers/development-setup/"
+  - /installation/prepare/microcontrollers/development-setup/
   - /get-started/installation/prepare/microcontrollers/development-setup/
   - /get-started/installation/microcontrollers/development-setup/
   - /get-started/installation/micro-rdk-dev/
 ---
 
-Follow these steps to install and build the micro-RDK on your ESP32 for development:
+`viam-micro-server` is the lightweight version of [`viam-server`](/get-started/#viam-server) which can run on resource-limited embedded systems (ESP32) that cannot run the fully-featured `viam-server`.
+`viam-micro-server` is built from the [micro-RDK](https://github.com/viamrobotics/micro-rdk/tree/main).
+
+Follow these steps to install and build `viam-micro-server` on your ESP32 for development:
 
 1. Install the [required software](#software-requirements)
 2. [Set up your development environment](#set-up-your-development-environment) manually or with Viam's Canon CLI utility _(recommended)_
-3. [Install the micro-RDK](#install-the-micro-rdk)
+3. [Install `viam-micro-server`](#install-viam-micro-server)
 
 ### Hardware requirements
 
@@ -27,8 +30,8 @@ Follow these steps to install and build the micro-RDK on your ESP32 for developm
 
 ### Software requirements
 
-The micro-RDK is written in Rust.
-To be able to develop the micro-RDK on macOS and Linux systems, you must install the following software on your development machine:
+`viam-micro-server` is written in Rust.
+To be able to develop `viam-micro-server` on macOS and Linux systems, you must install the following software on your development machine:
 
 #### Install dependencies
 
@@ -122,9 +125,9 @@ brew install viamrobotics/brews/canon
 {{% tab name="Manual" %}}
 
 {{< alert title="Tip" color="tip" >}}
-You only need to follow these steps if you are not using Canon to build the micro-RDK.
+You only need to follow these steps if you are not using Canon to build `viam-micro-server`.
 
-If you have completed your set up with Canon, skip this section and continue to [install the Micro-RDK](#install-the-micro-rdk).
+If you have completed your set up with Canon, skip this section and continue to [install `viam-micro-server`](#install-viam-micro-server).
 
 {{< /alert >}}
 
@@ -215,7 +218,7 @@ Instead, save this command to run in any future terminal session where you need 
 {{% /tab %}}
 {{% /tabs %}}
 
-## Install the micro-RDK
+## Install `viam-micro-server`
 
 ### Create a new machine
 
@@ -242,12 +245,13 @@ Select `esp32` for **MCU**.
 If you wish to configure an `esp32-camera` or a `fake` camera as a component of your machine, select **true** for **include camera module and traits**.
 
 You will be prompted to paste your machine's `viam-server` robot JSON configuration into the terminal, which is the same thing as its machine cloud credentials.
+
 To obtain this:
 
 - Navigate to [your new machine's](#create-a-new-machine) page on [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
 - Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="/build/micro-rdk/part-dropdown.png" resize="x600" style="max-width: 500px" declaredimensions=true alt="The part status dropdown of an offline machine.">}}
-- Click the copy icon underneath **Viam server configuration** to copy the machine cloud credentials.
-  The micro-RDK needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+- Click the copy icon underneath **Machine cloud credentials**.
+  `viam-micro-server` needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 - Paste the machine cloud credentials into your terminal when prompted.
 
 {{% snippet "secret-share.md" %}}
@@ -268,7 +272,7 @@ vim viam.json
 
 Replace `vim` with whatever text editor you prefer.
 
-### Upload the micro-RDK to your ESP32
+### Upload `viam-micro-server` to your ESP32
 
 Now, upload the project to connect to your ESP32 and remotely control it live on [the Viam app](https://app.viam.com):
 

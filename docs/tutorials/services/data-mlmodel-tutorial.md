@@ -230,9 +230,10 @@ To deploy a model to your machine:
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 1. Select the `ML model` type, then select the `TFLite CPU` model.
 1. Enter a name or use the suggested name, like `my-mlmodel-service`, for your service and click **Create**.
-1. In the resulting ML Model service configuration pane, select **Deploy model on machine**, then select the model you just trained from the **Select model** dropdown menu.
+1. In the resulting ML Model service configuration pane, select **Deploy model on machine**, then click **Select model**.
+   In the modal that appears, search for and select a model from your organization or the [Registry](/registry/).
 
-   {{< imgproc src="/tutorials/data-management/mlmodel-service-conf.png" alt="The ML model service configuration pane showing the required settings to deploy the my-classifier-model." resize="600x" >}}
+   {{<imgproc src="/tutorials/data-management/mlmodel-service-conf.png" alt="The ML model service configuration pane showing the required settings to deploy the my-classifier-model." resize="400x">}}
 
 1. Click **Save** at the top right of the window to save your changes.
 

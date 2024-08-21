@@ -44,6 +44,10 @@ weight = 1
       unsafe = true
   [markup.highlight]
     codeFences = true
+  [markup.tableOfContents]
+    endLevel = 2
+    ordered = false
+    startLevel = 2
 
 [outputs]
 home = ["HTML"]

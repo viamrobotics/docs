@@ -43,7 +43,7 @@ You can complete this tutorial using any number of air quality sensing machines.
 For each machine, you will need the following hardware:
 
 - [SDS011 Nova PM sensor](https://www.amazon.com/SDS011-Quality-Detection-Conditioning-Monitor/dp/B07FSDMRR5)
-  - If you choose to use a different air quality sensor, you may need to [create your own module](/use-cases/create-module/) implementing the [sensor API](/components/sensor/#api) for your specific hardware.
+  - If you choose to use a different air quality sensor, you may need to [create your own module](/how-tos/create-module/) implementing the [sensor API](/components/sensor/#api) for your specific hardware.
 - A single-board computer (SBC) [capable of running `viam-server`](https://docs.viam.com/installation/)
 - An appropriate power supply
 
@@ -125,7 +125,7 @@ With your organizational structure in place, let's add some machines:
 
 1. Connect your first single-board computer to power.
    For this tutorial, we'll treat this as the machine for our first customer, Antonia.
-   If the computer does not already have a Viam-compatible operating system installed, follow the [Prepare your board steps in the Installation Guide](/installation/#prepare-your-board) to install a compatible operating system.
+   If the computer does not already have a Viam-compatible operating system installed, follow the [Prepare your board steps in the Installation Guide](/installation/#compatibility) to install a compatible operating system.
    You _do not_ need to follow the "Install `viam-server`" section; you will do that in the next step!
 
 1. Enable serial communication so that the SBC can communicate with the air quality sensor.
@@ -312,11 +312,11 @@ For each machine:
    {{< expand "Click here for usb_interface troubleshooting help" >}}
 
 If you only have one USB device plugged into each of your boards, the `usb_interface` value you configured in the sensor config is likely (conveniently) the same for all of your machines.
-If not, you can use [fragment mods](/fleet/fragments/#use-fragment_mods) to modify the value on any machine for which it is different:
+If not, you can use [fragment overwrite](/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment) to modify the value on any machine for which it is different:
 
 1. If you're not getting sensor readings from a given machine, check the path of the USB port using the same [process by which you found the first USB path](#usb-path).
-2. If the path to your sensor on one machine is different from the one you configured in the fragment, add a fragment mod to the config of that machine to change the path without needing to remove the entire fragment.
-   Follow the [instructions to add a fragment mod](/fleet/fragments/#use-fragment_mods) to your machine's config, using the following JSON template:
+2. If the path to your sensor on one machine is different from the one you configured in the fragment, add a fragment overwrite to the config of that machine to change the path without needing to remove the entire fragment.
+   Follow the [instructions to add a fragment overwrite](/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment) to your machine's config, using the following JSON template:
 
    ```json {class="line-numbers linkable-line-numbers"}
    "fragment_mods": [
@@ -337,7 +337,7 @@ If not, you can use [fragment mods](/fleet/fragments/#use-fragment_mods) to modi
    If you named your sensor something other than `PM_sensor`, change the sensor name in the template above.
 
 3. Repeat this process for each machine that needs a different `usb_interface` value.
-   If you have lots of machines with one `usb_interface` value, and lots of machines with a second one, you might consider duplicating the fragment, editing that value, and using that second fragment instead of the first one for the applicable machines, rather than using a fragment mod for each of the machines.
+   If you have lots of machines with one `usb_interface` value, and lots of machines with a second one, you might consider duplicating the fragment, editing that value, and using that second fragment instead of the first one for the applicable machines, rather than using a fragment overwrite for each of the machines.
    You have options.
 
    {{< /expand >}}

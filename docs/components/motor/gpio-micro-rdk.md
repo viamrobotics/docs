@@ -1,5 +1,5 @@
 ---
-title: "Configure a GPIO Motor (Micro-RDK)"
+title: "Configure a GPIO Motor (viam-micro-server)"
 linkTitle: "gpio"
 weight: 10
 type: "docs"

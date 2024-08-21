@@ -148,10 +148,10 @@ If you prefer to use JSON, the following properties are available for all modula
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `name` | string | **Required** | What you want to name this instance of your modular resource. |
-| `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid API identifiers](/use-cases/create-module/#valid-api-identifiers) |
-| `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid API identifiers](/use-cases/create-module/#valid-api-identifiers). |
+| `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid API identifiers](/how-tos/create-module/#valid-api-identifiers) |
+| `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid API identifiers](/how-tos/create-module/#valid-api-identifiers). |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
-| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your machine alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/internals/rdk/#dependency-management). |
+| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your machine alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/architecture/rdk/#dependency-management). |
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.
@@ -301,8 +301,8 @@ Or if you are using a module that requires access to an additional program or li
 
 This configures a module environment variable `PATH` that uses your system's `PATH` (which you can view by running `echo $PATH`) as a base, and adds one additional filesystem path: <file>/home/username/bin</file>.
 
-The notation `${environment.<ENV-VAR-NAME>}"` can be used to access any system environment variable that `viam-server` has access to, where `<ENV-VAR-NAME>` represents a system environment variable, like `PATH`, `USER`, or `PWD`.
-For example, you can use `${environment.HOME}"` to access the `HOME` environment variable for the user running `viam-server`.
+The notation `${environment.<ENV-VAR-NAME>}` can be used to access any system environment variable that `viam-server` has access to, where `<ENV-VAR-NAME>` represents a system environment variable, like `PATH`, `USER`, or `PWD`.
+For example, you can use `${environment.HOME}` to access the `HOME` environment variable for the user running `viam-server`.
 
 To configure a modular resource with an environment variable, navigate to the **CONFIGURE** tab on your machine's page in the Viam app, select **JSON** mode, and add the following `env` configuration to the `modules` section:
 
@@ -373,8 +373,8 @@ You can add your own custom modules as local modules, or you can add pre-built m
 
 First determine the module you wish to add as a local module:
 
-- If you are adding your own custom module, be sure that you have followed the steps to [create your own module](/use-cases/create-module/) to code and compile your module and generate an executable.
-- If you are using a pre-built module, make sure you have installed the module and determined the filename of [the module's executable](/use-cases/create-module/#compile-or-package-your-module).
+- If you are adding your own custom module, be sure that you have followed the steps to [create your own module](/how-tos/create-module/) to code and compile your module and generate an executable.
+- If you are using a pre-built module, make sure you have installed the module and determined the filename of [the module's executable](/how-tos/create-module/#compile-or-package-your-module).
 
 Then, ensure that `viam-server` is able to find and run the executable:
 
@@ -386,7 +386,7 @@ Then, ensure that `viam-server` is able to find and run the executable:
   sudo chmod a+rx <path-to-your-module-executable>
   ```
 
-See the instructions to [compile your module into an executable](/use-cases/create-module/#compile-or-package-your-module) for more information.
+See the instructions to [compile your module into an executable](/how-tos/create-module/#compile-or-package-your-module) for more information.
 
 ### Add a local module
 
@@ -397,7 +397,7 @@ To add a local module on your machine, first add its module, then the component 
 1. Enter a **Name** for this instance of your module.
 1. Enter the module's **Executable path**.
    This path must be the absolute path on your machine's filesystem to either:
-   - the module's [executable file](/use-cases/create-module/#compile-or-package-your-module), such as `run.sh` or a compiled binary.
+   - the module's [executable file](/how-tos/create-module/#compile-or-package-your-module), such as `run.sh` or a compiled binary.
    - a [packaged tarball](https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_tar.html) of your module, ending in `.tar.gz` or `.tgz`.
      If you are providing a tarball file in this field, be sure that your packaged tarball contains your module's [`meta.json` file](/cli/#the-metajson-file) within it.
 1. Then, click the **Create** button, and click **Save** in the upper right corner to save your config.
@@ -476,10 +476,10 @@ The following properties are available for modular resources:
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `name` | string | **Required** | A custom name for this instance of your modular resource. |
-| `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid API identifiers](/use-cases/create-module/#valid-api-identifiers). |
-| `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid API identifiers](/use-cases/create-module/#valid-api-identifiers). |
+| `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid API identifiers](/how-tos/create-module/#valid-api-identifiers). |
+| `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid API identifiers](/how-tos/create-module/#valid-api-identifiers). |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
-| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your machine alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/internals/rdk/#dependency-management). |
+| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your machine alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/architecture/rdk/#dependency-management). |
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.

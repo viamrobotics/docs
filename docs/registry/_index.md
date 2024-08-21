@@ -102,7 +102,7 @@ By default, newly added modules will remain at the version they were when you in
 
 Once you have added and configured the module you would like to use in the Viam app, you can test your added resource using the [**CONTROL** tab](/fleet/control/) and program it using [standardized APIs](/appendix/apis/).
 
-`viam-server` manages the [dependencies](/internals/rdk/#dependency-management), [start-up](/internals/rdk/#start-up), [reconfiguration](/internals/rdk/#reconfiguration), [data management](/services/data/capture/#configure-data-capture-for-individual-resources), and [shutdown](/internals/rdk/#shutdown) behavior of your modular resource.
+`viam-server` manages the [dependencies](/architecture/rdk/#dependency-management), [start-up](/architecture/rdk/#start-up), [reconfiguration](/architecture/rdk/#reconfiguration), [data management](/services/data/capture/#configure-data-capture-for-individual-resources), and [shutdown](/architecture/rdk/#shutdown) behavior of your modular resource.
 
 ## Create your own modules
 
@@ -116,8 +116,8 @@ You can write modules in a variety of programming languages, such as, Go, Python
 
 To create a new module:
 
-1. [Create a module](/use-cases/create-module/) with one or more modular resources by implementing all methods for the component's or service's standardized API.
-1. [Upload the module to the Viam registry](/use-cases/create-module//#upload-your-module-to-the-modular-resource-registry) to make it available for deployment to machines or add it as a [local module](/registry/configure/#local-modules).
+1. [Create a module](/how-tos/create-module/) with one or more modular resources by implementing all methods for the component's or service's standardized API.
+1. [Upload the module to the Viam registry](/how-tos/create-module//#upload-your-module-to-the-modular-resource-registry) to make it available for deployment to machines or add it as a [local module](/registry/configure/#local-modules).
    You can upload _private_ modules for your {{< glossary_tooltip term_id="organization" text="organization" >}} or _public_ modules.
 1. Once you have uploaded your module to the registry, [deploy and configure the module](/registry/configure/) from the Viam app.
    Then, you can test your added resource using the [**CONTROL** tab](/fleet/control/) and [program](/sdks/) it with Viam's Go or Python SDKs.
@@ -125,7 +125,7 @@ To create a new module:
 See the following how-to guide for full instructions, or one of our example tutorials:
 
 {{< cards >}}
-{{% card link="/use-cases/create-module/" class="fit-contain" %}}
+{{% card link="/how-tos/create-module/" class="fit-contain" %}}
 {{% card link="/tutorials/custom/custom-base-dog/" %}}
 {{% card link="/registry/examples/custom-arm/" %}}
 {{< /cards >}}

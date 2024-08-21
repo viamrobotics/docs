@@ -1,5 +1,5 @@
 ---
-title: "Configure a Two-Wheeled Base (Micro-RDK)"
+title: "Configure a Two-Wheeled Base (viam-micro-server)"
 linkTitle: "two_wheeled_base"
 weight: 30
 type: "docs"
@@ -15,7 +15,7 @@ micrordk_component: true
 ---
 
 A `two_wheeled_base` base supports mobile robotic bases with drive motors on both sides (differential steering).
-Only bases with two drive wheels are supported by this micro-RDK model.
+Only bases with two drive wheels are supported by this `viam-micro-server` model.
 
 {{< alert title="Info" color="info" >}}
 

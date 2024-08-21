@@ -93,7 +93,7 @@ The model can detect a variety of things which you can see in <file>[labels.txt]
 3. Select type `ML model`, then select model `TFLite CPU`.
 4. Enter `persondetect` as the name for your ML model service, then click **Create**.
 5. Select **Deploy model on machine** for the **Deployment** field.
-6. Then select the `viam-labs:EfficientDet-COCO` model from the **Select models** dropdown.
+6. Click **Select model**, then select the **EfficientDet-COCO** model by **viam-labs** from the **Registry** tab of the modal that appears.
 
 Finally, configure an `mlmodel` detector vision service to use your new `"persondetect"` ML model:
 
