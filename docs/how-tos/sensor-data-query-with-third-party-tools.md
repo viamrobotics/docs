@@ -174,7 +174,7 @@ You can use third-party tools, such as the [`mongosh` shell](https://www.mongodb
 Run the following command to connect to your Viam organization's MongoDB Atlas instance from `mongosh` using the connection URI you obtained during query configuration:
 
 ```sh {class="command-line" data-prompt=">"}
-mongosh "<YOUR-DB-CONNECTION-URI>"
+mongosh "mongodb://db-user-abcd1e2f-a1b2-3c45-de6f-ab123456c123:YOUR-PASSWORD-HERE@data-federation-abcd1e2f-a1b2-3c45-de6f-ab123456c123-0z9yx.a.query.mongodb.net/?ssl=true&authSource=admin"
 ```
 
 {{% /tablestep %}}
@@ -188,26 +188,7 @@ The following query searches the `sensorData` database and `readings` collection
 {{< tabs >}}
 {{% tab name="MQL" %}}
 
-The following MQL query performs the same search as the SQL query above, but uses the [MongoDB query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/):
-
-```mongodb {class="command-line" data-prompt=">" data-output="11"}
-use sensorData
-db.aggregate(
-    [
-        { $sql: {
-            statement: "select count(*) as numStanding from readings \
-                where robot_id = 'abcdef12-abcd-abcd-abcd-abcdef123456' and \
-                component_name = 'my-ultrasonic-sensor' and data.readings.distance > 0.2",
-            format: "jdbc"
-        }}
-    ] )
-[ { '': { numStanding: 215 } } ]
-```
-
-{{% /tab %}}
-{{% tab name="SQL" %}}
-
-The following query uses the MongoDB [`$sql` aggregation pipeline stage](https://www.mongodb.com/docs/atlas/data-federation/supported-unsupported/pipeline/sql/):
+The following MQL query performs counts the number of sensor readings where the `distance` value is above `0.2` using the [MongoDB query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/):
 
 ```mongodb {class="command-line" data-prompt=">" data-output="10"}
 use sensorData
@@ -223,10 +204,23 @@ db.readings.aggregate(
 ```
 
 {{% /tab %}}
-{{< /tabs >}}
+{{% tab name="SQL" %}}
 
-{{% /tablestep %}}
-{{< /table >}}
+The following query uses the MongoDB [`$sql` aggregation pipeline stage](https://www.mongodb.com/docs/atlas/data-federation/supported-unsupported/pipeline/sql/):
+
+```mongodb {class="command-line" data-prompt=">" data-output="11"}
+use sensorData
+db.aggregate(
+[
+    { $sql: {
+        statement: "select count(*) as numStanding from readings \
+            where robot_id = 'abcdef12-abcd-abcd-abcd-abcdef123456' and \
+            component_name = 'my-ultrasonic-sensor' and (CAST (data.readings.distance AS DOUBLE)) > 0.2",
+        format: "jdbc"
+    }}
+] )
+[ { '': { numStanding: 215 } } ]
+```
 
 {{< alert title="Tip" color="tip" >}}
 If you use a data field that is named the same as a [reserved SQL keyword](https://en.wikipedia.org/wiki/List_of_SQL_reserved_words), such as `value` or `position`, you must escape that field name in your query using backticks ( <file>\`</file> ).
@@ -240,11 +234,12 @@ See the [MongoDB Atlas Documentation](https://www.mongodb.com/docs/atlas/data-fe
 
 {{< /alert >}}
 
-For information on connecting to your Atlas instance from other MQL clients, see the MongoDB Atlas [Connect to your Cluster Tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
+{{% /tab %}}
+{{< /tabs >}}
 
 <!-- markdownlint-disable-file MD001 -->
 
-{{% expand "Need to query by date? Click here." %}}
+{{< expand "Need to query by date? Click here." >}}
 
 ##### Query by date
 
@@ -271,9 +266,14 @@ db.readings.aggregate(
     ] )
 ```
 
-{{% /expand%}}
+{{< /expand>}}
+
+{{% /tablestep %}}
+{{< /table >}}
 
 ## Next steps
+
+For information on connecting to your Atlas instance from other MQL clients, see the MongoDB Atlas [Connect to your Cluster Tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
 
 On top of querying sensor data with third-party tools, you can also [query it with the Python SDK](/how-tos/sensor-data-query-sdk/) or [visualize it](/how-tos/sensor-data-visualize/).
 
