@@ -326,7 +326,7 @@ viam dataset delete --dataset-id=123
 viam dataset export --destination=./dataset/example --dataset-id=abc
 
 # add images tagged with the "example" tag between January and October of 2023 to dataset abc
-viam dataset data add filter --dataset-id=abc --location-id=123 --org-id=123 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
+viam dataset data add filter --dataset-id=abc --location-id=123 --org-id=456 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
 
 # remove images tagged with the "example" tag between January and October of 2023 to dataset abc
 viam dataset data remove filter --dataset-id=abc --location-id=123 --org-id=456 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
