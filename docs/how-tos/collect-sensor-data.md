@@ -106,7 +106,7 @@ If you need to sync data conditionally, for example at a certain time, see [Trig
 ## View sensor data
 
 Click on the **...** menu of the sensor component and click on **View captured data**.
-This takes you to the data tab.
+This takes you to the **DATA** tab.
 
 ![View captured data option in the component menu](/get-started/quickstarts/collect-data/sensor-capt-data.png)
 
