@@ -87,7 +87,6 @@ On the **CONFIGURE** tab, go to the **sensor**'s card and find the **Data captur
 Add a new method, `Readings`, to capture data for and set the frequency.
 For example, setting a frequency of `0.05` will capture data once every 20 seconds.
 
-{{< gif webm_src="/how-tos/capture-sensor-readings.webm" mp4_src="/how-tos/capture-sensor-readings.mp4" alt="The process described below." max-width="600px" class="aligncenter" >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
