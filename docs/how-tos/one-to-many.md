@@ -112,7 +112,7 @@ If you later update the upstream fragment, the updates to the overwritten fields
 {{% /alert %}}
 
 {{< table >}}
-{{% tablestep link="/fleet/fragments/#overwrite-the-config-of-a-machine-that-uses-a-fragment" %}}
+{{% tablestep link="/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment" %}}
 {{<gif webm_src="/how-tos/fragment-overwrite.webm" mp4_src="/how-tos/fragment-overwrite.mp4" alt="A motor config panel from a fragment being edited with different direction and pwm pin values." max-width="500px" class="aligncenter" >}}
 
 <!-- markdownlint-disable MD036 -->
