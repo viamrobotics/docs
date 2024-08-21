@@ -42,11 +42,13 @@ Follow the guide to [capture sensor data](/how-tos/collect-sensor-data/).
 
 {{% expand "The Viam CLI to set up data query. Click to see instructions." %}}
 
+You must have the Viam CLI installed to configure querying with third-party tools.
+
 {{< readfile "/static/include/how-to/install-cli.md" >}}
 
 {{% /expand%}}
 
-{{% expand "`mongosh` or another third-party tool for querying data. Click to see instructions." %}}
+{{% expand "mongosh or another third-party tool for querying data. Click to see instructions." %}}
 
 [Download the `mongosh` shell](https://www.mongodb.com/try/download/shell) or another third-party tool that can connect to a MongoDB data source to follow along.
 See the [`mongosh` documentation](https://www.mongodb.com/docs/mongodb-shell/) for more information.

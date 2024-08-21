@@ -57,7 +57,7 @@ Select a location and [add a new machine](/cloud/machines/#add-a-new-machine).
 ![The 'My Desk' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/get-started/quickstarts/add-machine.png)
 
 {{< /expand >}}
-{{< expand "Step 2: Install viam-server or `viam-micro-server`" >}}
+{{< expand "Step 2: Install viam-server or viam-micro-server" >}}
 
 Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page.
