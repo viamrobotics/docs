@@ -89,7 +89,7 @@ This is the general process for provisioning depending on whether you are using 
 1. When you, as the end user, power on the machine that has `viam-agent` installed and `agent-provisioning` configured, `agent-provisioning` creates a WiFi hotspot.
 
    - The [`agent-provisioning` configuration](#configuration) is at <file>/etc/viam-provisioning.json</file>.
-   - If a machine already exists, a machine credentials configuration file, if provided, is at <file>/etc/viam.json</file>.
+   - If a machine already exists, a machine cloud credentials file, if provided, is at <file>/etc/viam.json</file>.
 
 1. You as the end user then use your mobile device or computer and connect to the WiFi hotspot.
 
@@ -102,16 +102,16 @@ This is the general process for provisioning depending on whether you are using 
 
 1. In the captive web portal, you will then be prompted to provide the network information for the machine.
 
-   - If there is no machine credentials configuration file at <file>/etc/viam.json</file>, the captive portal will also require you to paste a machine credentials configuration file.
+   - If there is no machine cloud credentials file at <file>/etc/viam.json</file>, the captive portal will also require you to paste a machine cloud credentials file.
      This is the JSON object which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to the Viam app.
 
-     To copy a machine credentials configuration file:
+     To copy a machine cloud credentials file:
 
      - Navigate to your machine's page on [the Viam app](https://app.viam.com).
      - Select the part status dropdown to the right of your machine's name on the top of the page.
-       {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
-     - Click the copy icon next to **Viam server config** to copy the machine credentials configuration file.
-     - Paste the `viam-server` app config when prompted.
+       {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="machine cloud credentials button on the machine part info dropdown">}}
+     - Click the copy icon next to **Machine cloud credentials**.
+     - Paste the machine cloud credentials when prompted.
 
 1. The machine will then disable the hotspot network and attempt to connect using the provided network information.
    If `viam-agent` cannot establish a connection using the provided network information, the machine will create the hotspot again and continue going through steps (2-5) until a connection is successfully established.
