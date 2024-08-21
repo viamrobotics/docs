@@ -10,7 +10,6 @@ images: ["/services/icons/slam.svg"]
 # SMEs: John N.
 ---
 
-
 SLAM Algorithms can have varying levels of resource requirements in order to run effectively. `Cartographer` in particular can require a significant amount of CPU resources to build and manage large maps. In order to better support running SLAM on resource limited machines, Viam provides a service to run SLAM algorithms for machines in the cloud as well as management of the maps generated in their location.
 
 CloudSLAM can be used with both a live machine or with previously captured data in your location. In [live mode](#mapping-with-a-live-machine-online-mode) using the [data management service](/services/data/) and the [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) module, Viam takes your LiDAR camera and movement sensor data from your local machine and sends it to the cloudslam server.
@@ -19,7 +18,7 @@ When using an [offline machine](#using-previously-captured-data-offline-mode), y
 
 You can view and delete maps built in a location by going to the [SLAM library](#the-slam-library-page), which provides a summary of active jobs in the location as well as a list of all maps built in that location.
 
-If you have your own SLAM algorithm that we do not currently support or if you built a map on your local machine already and want to skip running CloudSLAM, you can [upload a locally built map](#uploading-a-locally-built-map) to your location using the `cloudslam-wrapper` module.
+If you have your own SLAM algorithm that we do not currently support or if you built a map on your local machine already and want to skip running CloudSLAM, you can [upload a locally built map](#upload-a-locally-built-map) to your location using the `cloudslam-wrapper` module.
 
 {{% alert title="About Pricing" color="info" %}}
 
@@ -41,7 +40,7 @@ On one of your location pages in the [Viam app](https://app.viam.com/robots), ch
 
 2.  You can create or update a map using a previously collected dataset by clicking the **Make new map** on the top right and specify a map name or click **Update map** next to an existing map. See [using previously captured data](#using-previously-captured-data-offline-mode) for more information on how to do this.
 
-3. A table showing active and failed CloudSLAM sessions.
+3.  A table showing active and failed CloudSLAM sessions.
     The table highlights the name of the map, which machine is currently mapping, and whether the map is in progress or has failed.
     You can also use the table view to stop active mapping sessions.
     ![offline mapping maps computing table](/services/slam/offline-mapping-maps-computing-table.png)
@@ -284,7 +283,6 @@ Navigate to the **CONTROL** tab on your machine's page. Then check the following
 
 - (optional) change the refresh frequency on the `cartographer` card to **Manual Refresh**. Since you want to use CloudSLAM, you do not need to refresh the underlying SLAM algorithm's map.
 - the `cloudslam-wrapper` card should be displaying its default map.
-   ![default cloudslam wrapper map](/services/slam/cloudslam-module-live-default.png)
 
 To start the mapping session, do the following:
 
@@ -294,9 +292,10 @@ To start the mapping session, do the following:
 
    ```json
    { "start": "<MAPPING-SESSION-NAME>" }
-```
+   ```
 
    where `<MAPPING-SESSION-NAME>` is the name you want to give the map you wish to generate.
+
 4. Click the **Execute** button.
 
    If everything is configured correctly, you should receive a success message.
@@ -307,7 +306,7 @@ To start the mapping session, do the following:
 
 You have now successfully built your map using CloudSLAM.
 Please review the [tips](../#slam-mapping-best-practices) for making good maps.
-   ![cloudslam wrapper map mapping](/services/slam/cloudslam-module-live-withmap.png)
+![cloudslam wrapper map mapping](/services/slam/cloudslam-module-live-withmap.png)
 
 ### Stopping cloudslam
 
@@ -319,7 +318,7 @@ To stop a CloudSLAM mapping session, do the following:
 
    ```json
    { "start": "<MAPPING-SESSION-NAME>" }
-```
+   ```
 
    You do not need to specify the map name or job id here, as the module is already aware of any active mapping sessions for the machine.
 
@@ -380,7 +379,7 @@ This feature can also be used with SLAM algorithms that CloudSLAM does not curre
 
 ### Configuration
 
-1. Add the `cloudslam-wrapper` module to your machine. 
+1. Add the `cloudslam-wrapper` module to your machine.
    You do **not** need data management configured on the machine.
    Configuring the module will not affect any currently running local SLAM maps.
    Add the following **Attributes**:
@@ -409,12 +408,11 @@ Navigate to the **CONTROL** tab on your machine's page.
 { "save-local-map": "<MAP-NAME>" }
 ```
 
-   where `<MAP-NAME>` is the name you want to give the map you wish to generate.
-   4. Click the **Execute** button.
-      If everything is configured correctly, you should receive a success message.
-      The DoCommand card should look something like:
+where `<MAP-NAME>` is the name you want to give the map you wish to generate. 4. Click the **Execute** button.
+If everything is configured correctly, you should receive a success message.
+The DoCommand card should look something like:
 
-   ![cloudslam wrapper docommand local upload](/services/slam/cloudslam-module-docommand-local-upload.png)
+![cloudslam wrapper docommand local upload](/services/slam/cloudslam-module-docommand-local-upload.png)
 
 Once completed, you can view the final map in the [SLAM library](#the-slam-library-page).
 
