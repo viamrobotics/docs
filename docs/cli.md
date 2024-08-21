@@ -329,13 +329,13 @@ viam dataset export --destination=./dataset/example --dataset-id=abc
 viam dataset data add filter --dataset-id=abc --location-id=123 --org-id=123 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
 
 # remove images tagged with the "example" tag between January and October of 2023 to dataset abc
-viam dataset data remove filter --dataset-id=abc --location-id=123 --org-id=123 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
+viam dataset data remove filter --dataset-id=abc --location-id=123 --org-id=456 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
 
-# add images with file IDs 123,456 in the org 123 and location 123 to dataset 123
-viam dataset data add ids --dataset-id=123 --org-id=123 --location-id=123 --file-ids=123,456
+# add images with file IDs aaa and bbb in the org 123 and location 456 to dataset abc
+viam dataset data add ids --dataset-id=abc --org-id=123 --location-id=456 --file-ids=aaa,bbb
 
-# remove images with file IDs 123,456 in the org 123 and location 123 from dataset 123
-viam dataset data remove ids --dataset-id=123 --org-id=123 --location-id=123 --file-ids=123,456
+# remove images with file IDs aaa and bbb in the org 123 and location 456 from dataset abc
+viam dataset data remove ids --dataset-id= abc --org-id=123 --location-id= 456 --file-ids=aaa,bbb
 ```
 
 #### Command options
@@ -347,7 +347,8 @@ viam dataset data remove ids --dataset-id=123 --org-id=123 --location-id=123 --f
 | `rename` | Rename an existing dataset | - |
 | `list` | List dataset information from specified IDs or for an org ID | - |
 | `delete` | Delete a dataset | - |
-| `data` | `add` or `remove` a new image to an existing dataset by its file id, or `add` or `remove` a group of images by specifying a filter | `ids`, `filter` |
+| `data add` | Add a new image to an existing dataset by its file id, add a group of images by specifying a [filter](#using-the-filter-argument) | `ids`, `filter` |
+| `data remove` | Remove a new image to an existing dataset by its file id, or remove a group of images by specifying a [filter](#using-the-filter-argument) | `ids`, `filter` |
 | `export` | Download all the data from a dataset | - |
 | `--help` | Return help | - |
 
@@ -365,15 +366,15 @@ viam dataset data remove ids --dataset-id=123 --org-id=123 --location-id=123 --f
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--dataset-id` | Dataset to add or remove images from, download, or rename. To retrieve these IDs, navigate to your dataset’s page in the [Viam app](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID** | `rename`, `delete`, `data`, `export` | **Required** |
+| `--dataset-id` | Dataset to perform an operation on. To retrieve the ID, navigate to your dataset’s page in the [Viam app](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID** | `rename`, `delete`, `data add`, `data delete`, `export` | **Required** |
 | `--dataset-ids` | Dataset IDs of datasets to be listed. To retrieve these IDs, navigate to your dataset’s page in the [Viam app](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID** | `list` | Optional |
 | `--destination` | Output directory for downloaded data | `export` | **Required** |
-| `--end` | ISO-8601 timestamp indicating the end of the interval | `data` | Optional |
-| `--file-ids` | File-ids to add or remove from a dataset | `data`, `export` | **Required** |
+| `--end` | ISO-8601 timestamp indicating the end of the interval | `data add`, `data delete` | Optional |
+| `--file-ids` | The file-ids of the files to perform an operation on | `data add`, `data delete`, `export` | **Required** |
 | `--include-jsonl` | Set to `true` to include JSON Lines files for local testing |`export`| Optional |
-| `--location-id` | Location ID for the file ids being added or removed from the specified dataset (only accepts one location id) | `data` | **Required** |
+| `--location-id` | The location ID for the location in which to perform an operation (only accepts one location id) | `data add`, `data delete` | **Required** |
 | `--name` | The name of the dataset to create or rename | `create`, `rename` | **Required** |
-| `--org-id` | Organization ID in which to edit the dataset | `create`, `data`, `list` | **Required** |
+| `--org-id` | Organization ID of the organization the dataset belongs to | `create`, `data add`, `data delete`, `list` | **Required** |
 | `--parallel` | Number of download requests to make in parallel, with a default value of 100 | `export` | Optional |
 | `--start` | ISO-8601 timestamp indicating the start of the interval | `data`| Optional |
 | `--tags` | Filter by specified tag (accepts comma-separated list) | `data` | Optional |
