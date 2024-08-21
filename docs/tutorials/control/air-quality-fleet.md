@@ -316,7 +316,7 @@ If not, you can use [fragment overwrite](/fleet/fragments/#modify-the-config-of-
 
 1. If you're not getting sensor readings from a given machine, check the path of the USB port using the same [process by which you found the first USB path](#usb-path).
 2. If the path to your sensor on one machine is different from the one you configured in the fragment, add a fragment overwrite to the config of that machine to change the path without needing to remove the entire fragment.
-   Follow the [instructions to add a fragment overwrite](/fleet/fragments/#overwrite-the-config-of-a-machine-that-uses-a-fragment) to your machine's config, using the following JSON template:
+   Follow the [instructions to add a fragment overwrite](/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment) to your machine's config, using the following JSON template:
 
    ```json {class="line-numbers linkable-line-numbers"}
    "fragment_mods": [
