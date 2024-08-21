@@ -110,7 +110,7 @@ This is the general process for provisioning depending on whether you are using 
      - Navigate to your machine's page on [the Viam app](https://app.viam.com).
      - Select the part status dropdown to the right of your machine's name on the top of the page.
        {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="machine cloud credentials button on the machine part info dropdown">}}
-     - Click the copy icon next to **Machine cloud credentials** to copy the machine cloud credentials file.
+     - Click the copy icon next to **Machine cloud credentials**.
      - Paste the machine cloud credentials when prompted.
 
 1. The machine will then disable the hotspot network and attempt to connect using the provided network information.
