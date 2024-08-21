@@ -137,7 +137,7 @@ Add an ML model service on your machine that is compatible with the ML model you
 **2. Select a suitable ML model**
 
 From the **Select model** modal on the ML model service configuration panel, select an [existing model](https://app.viam.com/registry?type=ML+Model) you want to use, or click **Add new model** to upload your own.
-If you're not sure which model to add, you can add [`EfficientNet-ImageNet2012`](https://app.viam.com/ml-model/viam/EfficientNet-ImageNet2012) from the **Registry**, which can detect people and animals, among other things.
+If you're not sure which model to add, you can add [`face-detection`](https://app.viam.com/ml-model/bijan/face-detection) from the **Registry**, which can detect if a person's face appears in the image stream.
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/"%}}
@@ -156,18 +156,32 @@ From the **Select model** dropdown, select the name of your ML model service (fo
 
 The `filtered-camera` {{< glossary_tooltip term_id="modular-resource" text="modular component" >}} pulls the stream of images from the camera you configured earlier, and applies the vision service to it.
 
-Configure a `filtered-camera` component on your machine, following the [attribute guide in the README](https://github.com/erh/filtered_camera?tab=readme-ov-file#configure-your-filtered-camera) to specify the names of your camera and vision service, and add classification and object detection filters.
+Configure a `filtered-camera` component on your machine, following the [attribute guide in the README](https://github.com/erh/filtered_camera?tab=readme-ov-file#configure-your-filtered-camera).
 Use the name of the camera you configured in the first part of this guide as the `"camera"` to filter and the name of the vision service you just configured as your `"vision"` service.
+Then add all or some of the labels your ml model uses as classifications or detections in `"classifications"` or `"objects"`.
+
+For example, if you are using the `face-detection` model, you could use a configuration like the following to only capture images when a face is detected in your camera stream:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "window_seconds": 1,
+  "objects": {
+    "face": 0.8
+  },
+  "camera": "camera-1",
+  "vision": "vision-1"
+}
+```
 
 {{% /tablestep %}}
 {{% tablestep %}}
 {{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **5. Configure data capture and sync on the filtered camera**
 
-Configure data capture and sync just as you did before for the physical camera.
+Configure data capture and sync on the filtered camera just as you did before for the physical camera.
 The filtered camera will only capture image data that passes the filters you configured in the previous step.
 
-Turn off data capture on your camera if you haven't already, so that you don't capture duplicate or unfiltered images.
+Turn off data capture on your original camera if you haven't already, so that you don't capture duplicate or unfiltered images.
 
 {{% /tablestep %}}
 {{% tablestep %}}
