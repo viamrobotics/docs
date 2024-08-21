@@ -357,8 +357,8 @@ viam dataset data remove ids --dataset-id= abc --org-id=123 --location-id= 456 -
 <!-- prettier-ignore -->
 | Argument | Description |
 | -------- | ----------- |
-| `filter` | `add` or `delete` images from a dataset using a filter. See [Using the `filter` argument)](#using-the-filter-argument).|
-| `ids` | `add` or `delete` images from a dataset by specifying one or more file ids as a comma-separated list. See [Using the `ids` argument)](#using-the-ids-argument).|
+| `filter` | `add` or `remove` images from a dataset using a filter. See [Using the `filter` argument)](#using-the-filter-argument).|
+| `ids` | `add` or `remove` images from a dataset by specifying one or more file ids as a comma-separated list. See [Using the `ids` argument)](#using-the-ids-argument).|
 | `--help` | Return help |
 
 ##### Named arguments
@@ -366,18 +366,78 @@ viam dataset data remove ids --dataset-id= abc --org-id=123 --location-id= 456 -
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--dataset-id` | Dataset to perform an operation on. To retrieve the ID, navigate to your dataset’s page in the [Viam app](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID** | `rename`, `delete`, `data add`, `data delete`, `export` | **Required** |
+| `--dataset-id` | Dataset to perform an operation on. To retrieve the ID, navigate to your dataset’s page in the [Viam app](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID** | `rename`, `delete`, `data add`, `data remove`, `export` | **Required** |
 | `--dataset-ids` | Dataset IDs of datasets to be listed. To retrieve these IDs, navigate to your dataset’s page in the [Viam app](https://app.viam.com), click **…** in the left-hand menu, and click **Copy dataset ID** | `list` | Optional |
 | `--destination` | Output directory for downloaded data | `export` | **Required** |
-| `--end` | ISO-8601 timestamp indicating the end of the interval | `data add`, `data delete` | Optional |
-| `--file-ids` | The file-ids of the files to perform an operation on | `data add`, `data delete`, `export` | **Required** |
+| `--end` | ISO-8601 timestamp indicating the end of the interval | `data add`, `data remove` | Optional |
+| `--file-ids` | The file-ids of the files to perform an operation on | `data add`, `data remove`, `export` | **Required** |
 | `--include-jsonl` | Set to `true` to include JSON Lines files for local testing |`export`| Optional |
-| `--location-id` | The location ID for the location in which to perform an operation (only accepts one location id) | `data add`, `data delete` | **Required** |
+| `--location-id` | The location ID for the location in which to perform an operation (only accepts one location id) | `data add`, `data remove` | **Required** |
 | `--name` | The name of the dataset to create or rename | `create`, `rename` | **Required** |
-| `--org-id` | Organization ID of the organization the dataset belongs to | `create`, `data add`, `data delete`, `list` | **Required** |
+| `--org-id` | Organization ID of the organization the dataset belongs to | `create`, `data add`, `data remove`, `list` | **Required** |
 | `--parallel` | Number of download requests to make in parallel, with a default value of 100 | `export` | Optional |
-| `--start` | ISO-8601 timestamp indicating the start of the interval | `data`| Optional |
-| `--tags` | Filter by specified tag (accepts comma-separated list) | `data` | Optional |
+| `--start` | ISO-8601 timestamp indicating the start of the interval | `data add`, `data remove` | Optional |
+| `--tags` | Filter by specified tag (accepts comma-separated list) | `data add`, `data remove` | Optional |
+
+##### Using the `ids` argument
+
+When you use the `viam dataset data add` and `viam dataset data remove` commands, you can specify the image to add or remove using its file id.
+To work with multiple images at once, you can specify multiple file ids as a comma-separated list.
+For example, the following adds three images specified by their file ids to the specified dataset:
+
+```sh {class="command-line" data-prompt="$"}
+viam dataset data add ids --dataset-id=abc --location-id=123 --org-id=123 --file-ids=abc,123,def
+```
+
+The following tags two images specified by their file ids in the specified organization and location with three tags:
+
+```sh {class="command-line" data-prompt="$"}
+viam data tag ids add --tags=new_tag_1,new_tag_2,new_tag_3 --org-id=123 --location-id=123 --file-ids=123,456
+```
+
+To find your organization's ID, navigate to your organization's **Settings** page in [the Viam app](https://app.viam.com/).
+Find **Organization ID** and click the copy icon.
+
+To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset.
+Click **...** in the left-hand menu and click **Copy dataset ID**.
+
+To find a location ID, run `viam locations list` or visit your [fleet's page](https://app.viam.com/robots) in the Viam app and copy from **Location ID**.
+
+To find the file ID of a given image, navigate to the [**DATA** tab in the Viam app](https://app.viam.com/data/view) and select your image.
+Its **File ID** is shown under the **DETAILS** subtab that appears on the right.
+
+You cannot use filter arguments, such as `--start` or `--end` when using `ids`.
+
+See [Datasets](/services/data/dataset/#datasets) for more information.
+
+##### Using the `filter` argument
+
+When you use the `viam dataset data add`, `viam dataset data remove` or `viam data tag` commands, you can optionally `filter` by common search criteria to `add` or `remove` a specific subset of images based on a search filter.
+For example, the following adds all images captured between January 1 and October 1, 2023, that have the `example` tag applied, to the specified dataset:
+
+```sh {class="command-line" data-prompt="$"}
+viam dataset data add filter --dataset-id=abc --org-ids=123 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
+```
+
+The following adds `"new_tag_1"` and `"new_tag_2"` to all images of type `"image/jpeg"` or `"image/png"` captured by the machine named `"cool-machine"` in organization `8484` and location `012`:
+
+```sh {class="command-line" data-prompt="$"}
+viam data tag filter add --tags=new_tag_1,new_tag_2 --location-ids=012 --machine-name=cool-machine --org-ids=84842  --mime-types=image/jpeg,image/png
+```
+
+To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) under the **DATA** tab on the Viam app and select a dataset.
+Click **...** in the left-hand menu and click **Copy dataset ID**.
+
+To find a location ID, run `viam locations list` or visit your [fleet's page](https://app.viam.com/robots) in the Viam app and copy from **Location ID**.
+
+You can also have the filter parameters generated for you using the **Filters** pane of the **DATA** tab.
+Navigate to the [**DATA** tab in the Viam app](https://app.viam.com/data/view), make your selections from the search parameters under the **Filters** pane (such as robot name, start and end time, or tags), and click the **Copy export command** button.
+A `viam data export` command string will be copied to your clipboard that includes the search parameters you selected.
+Removing the `viam data export` string, you can use the same filter parameters (such as `--start`, `--end`, etc) with your `viam data database add filter`, `viam data database remove filter`, or `viam data tag filter` commands, except you _must_ exclude the `--data-type` and `--destination` flags, which are specific to `viam data export`.
+
+You cannot use the `--file-ids` argument when using `filter`.
+
+See [Datasets](/services/data/dataset/#datasets) for more information.
 
 ### `data`
 
@@ -483,66 +543,6 @@ done
 | `--machine-name` | Filter by specified machine name |`export`, `delete`| Optional |
 | `--tags` | Filter by (`export`, `delete`) or add (`tag`) specified tag (accepts comma-separated list) |`export`, `delete`, `tag` | Optional |
 | `--password` | Password for the database user being configured | `database configure` | **Required** |
-
-##### Using the `ids` argument
-
-When you use the `viam dataset data add` and `viam dataset data remove` commands, you can specify the image to add or remove using its file id.
-To work with multiple images at once, you can specify multiple file ids as a comma-separated list.
-For example, the following adds three images specified by their file ids to the specified dataset:
-
-```sh {class="command-line" data-prompt="$"}
-viam dataset data add ids --dataset-id=abc --location-id=123 --org-id=123 --file-ids=abc,123,def
-```
-
-The following tags two images specified by their file ids in the specified organization and location with three tags:
-
-```sh {class="command-line" data-prompt="$"}
-viam data tag ids add --tags=new_tag_1,new_tag_2,new_tag_3 --org-id=123 --location-id=123 --file-ids=123,456
-```
-
-To find your organization's ID, navigate to your organization's **Settings** page in [the Viam app](https://app.viam.com/).
-Find **Organization ID** and click the copy icon.
-
-To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset.
-Click **...** in the left-hand menu and click **Copy dataset ID**.
-
-To find a location ID, run `viam locations list` or visit your [fleet's page](https://app.viam.com/robots) in the Viam app and copy from **Location ID**.
-
-To find the file ID of a given image, navigate to the [**DATA** tab in the Viam app](https://app.viam.com/data/view) and select your image.
-Its **File ID** is shown under the **DETAILS** subtab that appears on the right.
-
-You cannot use filter arguments, such as `--start` or `--end` when using `ids`.
-
-See [Datasets](/services/data/dataset/#datasets) for more information.
-
-##### Using the `filter` argument
-
-When you use the `viam dataset data add`, `viam dataset data remove` or `viam data tag` commands, you can optionally `filter` by common search criteria to `add` or `remove` a specific subset of images based on a search filter.
-For example, the following adds all images captured between January 1 and October 1, 2023, that have the `example` tag applied, to the specified dataset:
-
-```sh {class="command-line" data-prompt="$"}
-viam dataset data add filter --dataset-id=abc --org-ids=123 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
-```
-
-The following adds `"new_tag_1"` and `"new_tag_2"` to all images of type `"image/jpeg"` or `"image/png"` captured by the machine named `"cool-machine"` in organization `8484` and location `012`:
-
-```sh {class="command-line" data-prompt="$"}
-viam data tag filter add --tags=new_tag_1,new_tag_2 --location-ids=012 --machine-name=cool-machine --org-ids=84842  --mime-types=image/jpeg,image/png
-```
-
-To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) under the **DATA** tab on the Viam app and select a dataset.
-Click **...** in the left-hand menu and click **Copy dataset ID**.
-
-To find a location ID, run `viam locations list` or visit your [fleet's page](https://app.viam.com/robots) in the Viam app and copy from **Location ID**.
-
-You can also have the filter parameters generated for you using the **Filters** pane of the **DATA** tab.
-Navigate to the [**DATA** tab in the Viam app](https://app.viam.com/data/view), make your selections from the search parameters under the **Filters** pane (such as robot name, start and end time, or tags), and click the **Copy export command** button.
-A `viam data export` command string will be copied to your clipboard that includes the search parameters you selected.
-Removing the `viam data export` string, you can use the same filter parameters (such as `--start`, `--end`, etc) with your `viam data database add filter`, `viam data database remove filter`, or `viam data tag filter` commands, except you _must_ exclude the `--data-type` and `--destination` flags, which are specific to `viam data export`.
-
-You cannot use the `--file-ids` argument when using `filter`.
-
-See [Datasets](/services/data/dataset/#datasets) for more information.
 
 ### `locations`
 
