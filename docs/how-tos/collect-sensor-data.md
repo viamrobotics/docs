@@ -28,6 +28,7 @@ You do not need to write any code to follow this guide.
 ## Prerequisites
 
 You don't need to buy or own any hardware to complete this tutorial.
+You do need:
 
 {{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
 
