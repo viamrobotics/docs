@@ -24,6 +24,7 @@ Click on one of the following guides that provide solutions for common tasks and
 {{% card link="/how-tos/sensor-data-visualize/" %}}
 {{% card link="/how-tos/create-module/" class="fit-contain" %}}
 {{% card link="/how-tos/sensor-module/" class="fit-contain" %}}
+{{% card link="/how-tos/upload-module/" class="fit-contain" %}}
 {{% card link="/how-tos/manage-modules/" class="fit-contain" %}}
 {{% card link="/how-tos/navigate/" %}}
 {{% card link="/how-tos/one-to-many/" class="fit-contain" %}}
