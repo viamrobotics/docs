@@ -53,7 +53,7 @@ Your machine must have `curl` available in order to install `viam-agent`.
     {{< alert title="Note" color="note" >}}
 
 As an alternative to specifying the `VIAM_API_KEY_ID`, the `VIAM_API_KEY`, and the `VIAM_PART_ID` when running the command, you can also copy the `viam-server` app JSON configuration from the Viam app into <file>/etc/viam.json</file>.
-You can get the `viam-server` app JSON configuration by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
+You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
 {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 
 Then run the following command to install `viam-agent`:
