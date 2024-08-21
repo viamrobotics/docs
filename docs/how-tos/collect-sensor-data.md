@@ -76,7 +76,7 @@ Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https
 Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 Then add the **data management** service.
 
-Enable **Syncing** to ensure captured data is synced to the cloud and set the sync interval, for example to `0.025` minutes to sync every 40 seconds.
+Enable **Syncing** to ensure captured data is synced to the cloud and set the sync interval, for example to `0.5` minutes to sync every 30 seconds.
 
 {{% /tablestep %}}
 {{% tablestep %}}
