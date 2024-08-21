@@ -115,6 +115,14 @@ sudo ./preinstall.sh
 Follow the instructions.
 If you created a <FILE>viam-provisioning.json</FILE>, specify its location when prompted.
 
+{{% expand "Using a Raspberry Pi?" %}}
+
+For Raspberry Pis, the script will automatically perform the required next steps, it will:
+
+- create a tarball
+- update `firstrun.sh`.
+- extract the tarball to the mounted root filesystem
+
 ```sh {class="command-line" data-prompt="$" data-output="2-40"}
 sudo ./preinstall.sh
 
@@ -149,7 +157,12 @@ a usr/local/lib/systemd/system/multi-user.target.wants/viam-agent.service
 Install complete! You can eject/unmount and boot the image now.
 ```
 
-If you get an error, run the script for the target system's architecture:
+{{% /expand%}}
+
+{{% expand "Error: no valid image found at mountpoints (or manually provided path)" %}}
+
+If you get this error, you can run the script for the target system's architecture.
+It will create a tarball for the system's architecture which you will then need to manually extract.
 
 {{< tabs >}}
 {{% tab name="arm64" %}}
@@ -168,11 +181,23 @@ sudo ./preinstall.sh --x86_64
 {{% /tab %}}
 {{< /tabs >}}
 
-If this command fails because the script cannot detect your mountpoint, you can specify it directly:
+To extract the tarball, run:
+
+```sh {class="command-line" data-prompt="$"}
+sudo tar -xJvpf $TARBALL -C <PATH_TO_ROOT_FS>
+```
+
+{{% /expand%}}
+
+{{% expand "Refusing to install to unknown/unset ROOTFS" %}}
+
+If your root file system cannot be detected, you can specify it directly:
 
 ```sh {class="command-line" data-prompt="$"}
 sudo ./preinstall.sh /path/to/rootfs
 ```
+
+{{% /expand%}}
 
 {{< /tablestep >}}
 {{< /table >}}
