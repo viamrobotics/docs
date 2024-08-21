@@ -104,7 +104,7 @@ If some of your machines have slight differences, you can still add the fragment
 
 ## Modify a fragment
 
-If your machines are similar but not identical, you can use a fragment with all of them, and then [overwrite parts of it](/fleet/fragments/#overwrite-the-config-of-a-machine-that-uses-a-fragment) to customize select fields of the configuration without modifying the upstream fragment.
+If your machines are similar but not identical, you can use a fragment with all of them, and then [overwrite parts of it](/fleet/fragments/#modify-the-config-of-a-machine-that-uses-a-fragment) to customize select fields of the configuration without modifying the upstream fragment.
 
 {{% alert title="Note" color="note" %}}
 If you modify fields within a fragment, your modifications will act as overwrites.
