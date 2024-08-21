@@ -62,7 +62,7 @@ Go to the Viam app and [add a new machine](/cloud/machines/#add-a-new-machine).
 ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
 
 {{< /expand >}}
-{{% expand "Step 2: Install viam-server or `viam-micro-server`" %}}
+{{% expand "Step 2: Install viam-server or viam-micro-server" %}}
 
 Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page.
@@ -84,6 +84,8 @@ Wait for your device to connect to the Viam app.
 
 1. Click on the **Test** panel at the bottom of the camera configuration panel to test the camera stream.
    If you don't see an image stream, [configure the `video_path` attribute](/components/camera/webcam/#using-video_path).
+   By default your camera stream refreshes once every second.
+   You can change the refresh frequency to **Live** in the dropdown menu at the top of the **Test** panel.
 
 For more detailed information, including optional attribute configuration, see the [`webcam` docs](/components/camera/webcam/).
 
@@ -140,7 +142,7 @@ Go to the Viam app and [add a new machine](/cloud/machines/#add-a-new-machine).
 ![The 'First Location' page on the Viam app with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/fleet/app-usage/create-machine.png)
 
 {{< /expand >}}
-{{% expand "Step 2: Install viam-server or `viam-micro-server`" %}}
+{{% expand "Step 2: Install viam-server or viam-micro-server" %}}
 
 Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page.
@@ -242,11 +244,11 @@ Click the **Save** button in the top right corner of the page to save your confi
 
 ## Next steps
 
-Now that you have captured data, you could use this data to train you own Machine Learning model with the Viam platform.
+Now that you have captured data, you could use this data to [train your own Machine Learning model](/services/ml/train-model/) with the Viam platform.
 
 This concludes our guided path for getting to know the Viam platform.
 
-To learn more about the viam platform, dive into the [How-to Guides](/how-tos/) which provide instructions for common tasks and workflows, check out [Tutorials](/tutorials/) for projects, or learn more in the [Platform Reference](/platform/) documentation:
+To learn more about the Viam platform, dive into the [How-to Guides](/how-tos/) which provide instructions for common tasks and workflows, check out [Tutorials](/tutorials/) for projects, or learn more in the [Platform Reference](/platform/) documentation:
 
 {{< cards >}}
 {{% card link="/how-tos/" %}}
