@@ -27,7 +27,7 @@ You can then write a script to run queries against that data to search for outli
 
 {{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
 
-{{% snippet "setup.md" %}}
+{{% snippet "setup-both.md" %}}
 
 {{% /expand%}}
 

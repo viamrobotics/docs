@@ -150,7 +150,7 @@ If you are using a microcontroller, install `viam-micro-server`.
 Otherwise, install `viam-server`.
 Wait for your device to connect to the Viam app.
 
-![The Viam app DATA page showing sensor data from an air quality sensor.](/get-started/quickstarts/collect-data/setup-button.png)
+![The Viam app with the setup button.](/get-started/quickstarts/collect-data/setup-button.png)
 
 {{% /expand%}}
 {{< expand "Step 3: Configure a board" >}}
