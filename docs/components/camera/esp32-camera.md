@@ -12,7 +12,7 @@ toc_hide: true
 # SMEs: Matt Perez, micro-RDK team
 ---
 
-`esp32-camera` is the camera model for cameras connected to an `esp32` board, which are initialized and configured using the [Micro-RDK Development Setup](/installation/micro-rdk-dev/) (ESP-IDF).
+`esp32-camera` is the camera model for cameras connected to an `esp32` board, which are initialized and configured using the [`viam-micro-server` Development Setup](/installation/micro-rdk-dev/) (ESP-IDF).
 If the camera drivers are one of the following two, the camera will work with the `esp32-camera` model:
 
 - `OV2640`
@@ -31,9 +31,9 @@ For example, the `OV2640` with a ribbon cable connected to an ESP32:
 
 ## Software requirements
 
-To use this model, you must follow the [Micro-RDK Development Setup](/installation/micro-rdk-dev/), which enables you to install and activate the ESP-IDF.
-At the step [Generate a new project from the micro-RDK template](/installation/micro-rdk-dev/#generate-a-new-project-from-the-micro-RDK-template) where you create a new project with `cargo generate`, select the option to include camera module traits when prompted.
-Finish the [Micro-RDK Development Setup](/installation/micro-rdk-dev/) and return to this guide.
+To use this model, you must follow the [`viam-micro-server` Development Setup](/installation/micro-rdk-dev/), which enables you to install and activate the ESP-IDF.
+At the step [Generate a new project from the `viam-micro-server` template](/installation/micro-rdk-dev/#generate-a-new-project-from-the-micro-RDK-template) where you create a new project with `cargo generate`, select the option to include camera module traits when prompted.
+Finish the [`viam-micro-server` Development Setup](/installation/micro-rdk-dev/) and return to this guide.
 
 {{< alert title="Info" color="info" >}}
 
