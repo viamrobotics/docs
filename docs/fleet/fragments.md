@@ -301,7 +301,7 @@ Here are the version options:
 {{< /tabs >}}
 
 After configuring fragment modifications, check your machine's [**LOGS** tab](/cloud/machines/#logs).
-If there are problems with fragment modifications, depending on the issue, your machine or some of its component may not work until the configuration is fixed.
+If there are problems with fragment modifications, depending on the issue, your machine or some of its components may not work until the configuration is fixed.
 
 If you need to restore the original fragment, click the **...** in the upper right corner of the card you modified, and click **Revert changes**.
 
