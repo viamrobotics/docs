@@ -80,7 +80,7 @@ Click **Train model** and follow the prompts.
 {{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Train models">}}
 **2. Deploy your ML model**
 
-If you haven't already, [create a machine](/manage/fleet/machines/#add-a-new-machine) and [set it up](/manage/fleet/machines/#set-up-a-new-machine).
+If you haven't already, [create a machine](/cloud/machines/#add-a-new-machine) and [set it up](/cloud/machines/#set-up-a-new-machine).
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Here, add the built-in [TFLite CPU ML model service](/services/ml/deploy/) and select the ML model you just trained as the **Model**.
 This service will deploy and run the model.
