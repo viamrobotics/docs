@@ -42,7 +42,7 @@ Get started with this how-to guide:
 {{% card link="/how-tos/one-to-many/" %}}
 {{< /cards >}}
 
-## Overwrite the config of a machine that uses a fragment
+## Modify the config of a machine that uses a fragment
 
 If you need to modify the config of one or a few machines that use a fragment, you can overwrite fields of the fragment.
 
