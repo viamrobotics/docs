@@ -1527,12 +1527,13 @@ _Add troubleshooting notes here._
 ````md
 # [`agilex-limo` module](https://app.viam.com/module/viam/agilex-limo)
 
-This module implements the [`rdk:component:base` API](/components/base/#api) in an `agilex` model for the [AgileX LIMO](https://global.agilex.ai/products/limo-pro) base to be used with [`viam-server`](/). This driver supports differential, ackermann, and omni directional steering modes over the serial port.
+This module implements the [`rdk:component:base` API](https://docs.viam.com/components/base/#api) in an `agilex` model for the [AgileX LIMO](https://global.agilex.ai/products/limo-pro) base to be used with `viam-server`.
+This driver supports differential, ackermann, and omni directional steering modes over the serial port.
 
 ## Configure your `agilex-limo` base
 
 > [!NOTE]
-> Before configuring your base, you must [create a machine](/cloud/machines/#add-a-new-machine).
+> Before configuring your base, you must [create a machine](https://docs.viam.com/cloud/machines/#add-a-new-machine).
 
 Navigate to the **CONFIGURE** tab of your machine’s page in [the Viam app](https://app.viam.com/).
 [Add `base` / `agilex-limo` to your machine](https://docs.viam.com/configure/#components).
@@ -1547,7 +1548,7 @@ On the new component panel, copy and paste the following attribute template into
 ```
 
 > [!NOTE]
-> For more information, see [Configure a Machine](/build/configure/).
+> For more information, see [Configure a Machine](https://docs.viam.com/configure/).
 
 ### Attributes
 
@@ -1576,9 +1577,9 @@ The following attributes are available for `viam:base:agilex-limo` bases:
 
 ## Next steps
 
-- To test your base, go to the [**CONTROL** tab](/fleet/control/).
-- To write code against your base, use one of the [available SDKs](/build/program/).
-- To view examples using a base component, explore [these tutorials](/tutorials/).
+- To test your base, go to the [**CONTROL** tab](https://docs.viam.com/fleet/control/).
+- To write code against your base, use one of the [available SDKs](https://docs.viam.com/sdks/).
+- To view examples using a base component, explore [these tutorials](https://docs.viam.com/tutorials/).
 
 ## Local development
 
