@@ -1,5 +1,5 @@
 ---
-title: "How to upload a module"
+title: "How to upload a module to the Viam Registry"
 linkTitle: "Upload a module"
 type: "docs"
 weight: 26
@@ -19,13 +19,31 @@ After [writing a module](/how-tos/create-module/), you can upload your module to
 
 You can choose to upload it to the Viam registry as a _public module_ that is shared with other Viam users, or as a _private module_ that is shared only within your [organization](/cloud/organizations/).
 
-To upload your custom module to the [Viam registry](https://app.viam.com/registry), either as a public or private module, use the Viam CLI commands `create` and `upload` following these instructions:
+To upload your custom module to the [Viam registry](https://app.viam.com/registry), either as a public or private module, use the Viam CLI commands `create` and `upload` following these instructions.
+
+{{% alert title="In this page" color="info" %}}
+
+- [Package and upload a module to the Viam registry](#upload-a-module)
+
+{{% /alert %}}
+
+## Prerequisites
+
+{{% expand "A local module you've written and tested" %}}
+
+See [Create a Module](/how-tos/create-module/) or [Create a Sensor Module with Python](/how-tos/sensor-module/) for instructions.
+
+{{% /expand%}}
+
+## Upload a module
 
 {{< table >}}
 {{% tablestep %}}
 **1. Install the CLI**
 
-First, [install the Viam CLI](/cli/#install) and [authenticate](/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
+First, install the Viam CLI and [authenticate](/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
+
+{{< readfile "/static/include/how-to/install-cli.md" >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
