@@ -335,7 +335,7 @@ viam dataset data remove filter --dataset-id=abc --location-id=123 --org-id=456 
 viam dataset data add ids --dataset-id=abc --org-id=123 --location-id=456 --file-ids=aaa,bbb
 
 # remove images with file IDs aaa and bbb in the org 123 and location 456 from dataset abc
-viam dataset data remove ids --dataset-id= abc --org-id=123 --location-id= 456 --file-ids=aaa,bbb
+viam dataset data remove ids --dataset-id= abc --org-id=123 --location-id=456 --file-ids=aaa,bbb
 ```
 
 #### Command options
