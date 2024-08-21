@@ -1,5 +1,5 @@
 ---
-title: "Configure a Fake Camera (Micro-RDK)"
+title: "Configure a Fake Camera (`viam-micro-server`)"
 linkTitle: "fake"
 weight: 20
 type: "docs"

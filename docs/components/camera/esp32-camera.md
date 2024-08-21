@@ -1,5 +1,5 @@
 ---
-title: "Configure an esp32-camera (Micro-RDK)"
+title: "Configure an esp32-camera (`viam-micro-server`)"
 linkTitle: "esp32-camera"
 weight: 33
 type: "docs"
