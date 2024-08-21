@@ -50,13 +50,17 @@ If you'd like to follow a more detailed tutorial, see [Selectively Capture Data 
 {{<imgproc src="/icons/components/camera.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="configure a camera component">}}
 **1. Configure a camera**
 
-On your [machine's page](#prerequisites), configure any camera component.
+{{< gif webm_src="/how-tos/configure-webcam.webm" mp4_src="/how-tos/configure-webcam.mp4" alt="The process described below." max-width="550px" class=aligncenter >}}
+
+On your [machine's page](#prerequisites), configure any [camera component](/components/camera/).
 If you are not sure what to use, start with a [webcam](/components/camera/webcam/).
 
 {{% /tablestep %}}
 {{% tablestep link="/services/data/"%}}
 {{<imgproc src="/services/icons/data-management.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
 **2. Enable the data management service**
+
+{{<gif webm_src="/how-tos/capture-images.webm" mp4_src="/how-tos/capture-images.mp4" alt="The process described below." max-width="600px" class="aligncenter" >}}
 
 In your camera component configuration panel, find the **Data capture** section.
 Click **Add method**.
@@ -69,27 +73,32 @@ You can leave the default data manager settings.
 {{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
 **3. Capture data**
 
+{{<gif webm_src="/how-tos/capture-images.webm" mp4_src="/how-tos/capture-images.mp4" alt="The process described below." max-width="600px" class="aligncenter" >}}
+
 With the data management service configured on your machine, you can continue configuring how the camera component itself captures data.
 
-In the **Data capture** panel of your camera's config, select **Read image** from the method selector.
+In the **Data capture** panel of your camera's configuration, select **Read image** from the method selector.
 
 Set your desired capture frequency.
 For example, set it to `0.05` to capture an image every 20 seconds.
 
 Set the MIME type to your desired image format, for example `image/jpeg`.
 
-Click save to start capturing data.
+Click **Save** in the top right corner of the screen to start capturing data.
 
 {{% /tablestep %}}
 {{% tablestep %}}
 {{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **4. View data in the Viam app**
 
-Once you have saved your configuration changes, your data will sync at the specified sync interval, which may mean you have to wait and then refresh the page for data to appear.
+Click on the **...** menu of the camera component and click on **View captured data**.
+This takes you to the data tab.
+
+![View captured data option in the component menu](/get-started/quickstarts/collect-data/cam-capt-data.png)
+
+If you do not see images from your camera, try waiting a minute and refreshing the page to allow time for the images to be captured and then synced to the app at the interval you configured.
 
 If no data appears after the sync interval, check the [**Logs**](/cloud/machines/#logs).
-
-Once you have synced images, you can [view those images in the Viam app](/services/data/view/) from the **DATA** tab in the top navigation bar.
 
 You can also [export your data from the Viam app](/services/data/export/) to a deployed machine, or to any computer.
 
@@ -99,7 +108,8 @@ You can also [export your data from the Viam app](/services/data/export/) to a d
 You now know how to capture and sync image data.
 
 {{< alert title="Avoid fees by disabling data capture" color="note" >}}
-If this is not a production machine and you have confirmed that your machine is capturing and syncing data, disable data capture in the camera configuration to avoid [incurring fees](https://www.viam.com/product/pricing) for capturing large amounts of test data.
+If this is not a production machine and you have confirmed that your machine is capturing and syncing data, you should now disable data capture in the camera configuration to avoid [incurring fees](https://www.viam.com/product/pricing) for capturing large amounts of test data.
+You can do this in the **Data capture** panel of your camera's configuration by switching the data capture toggle to **Off** and saving your changes.
 {{< /alert >}}
 
 For many use cases, you may not want to capture data unless it meets certain conditions.
@@ -126,8 +136,8 @@ Add an ML model service on your machine that is compatible with the ML model you
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **2. Select a suitable ML model**
 
-From the **Model** dropdown on the ML model service configuration panel, select an [existing model](https://app.viam.com/registry?type=ML+Model) you want to use, or click **Add new model** to upload your own.
-If you're not sure which model to add, you can add [`EfficientNet-ImageNet2012`](https://app.viam.com/ml-model/viam/EfficientNet-ImageNet2012) which can detect people and animals, among other things.
+From the **Select model** modal on the ML model service configuration panel, select an [existing model](https://app.viam.com/registry?type=ML+Model) you want to use, or click **Add new model** to upload your own.
+If you're not sure which model to add, you can add [`EfficientNet-ImageNet2012`](https://app.viam.com/ml-model/viam/EfficientNet-ImageNet2012) from the **Registry**, which can detect people and animals, among other things.
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/"%}}
@@ -147,6 +157,7 @@ From the **Select model** dropdown, select the name of your ML model service (fo
 The `filtered-camera` {{< glossary_tooltip term_id="modular-resource" text="modular component" >}} pulls the stream of images from the camera you configured earlier, and applies the vision service to it.
 
 Configure a `filtered-camera` component on your machine, following the [attribute guide in the README](https://github.com/erh/filtered_camera?tab=readme-ov-file#configure-your-filtered-camera) to specify the names of your camera and vision service, and add classification and object detection filters.
+Use the name of the camera you configured in the first part of this guide as the `"camera"` to filter and the name of the vision service you just configured as your `"vision"` service.
 
 {{% /tablestep %}}
 {{% tablestep %}}
