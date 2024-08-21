@@ -87,7 +87,6 @@ On the **CONFIGURE** tab, go to the **sensor**'s card and find the **Data captur
 Add a new method, `Readings`, to capture data for and set the frequency.
 For example, setting a frequency of `0.05` will capture data once every 20 seconds.
 
-
 {{% /tablestep %}}
 {{% tablestep %}}
 {{<imgproc src="/services/ml/configure.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
@@ -108,7 +107,7 @@ If you need to sync data conditionally, for example at a certain time, see [Trig
 Click on the **...** menu of the sensor component and click on **View captured data**.
 This takes you to the **DATA** tab.
 
-![View captured data option in the component menu](/get-started/quickstarts/collect-data/sensor-capt-data.png)
+![View captured data option in the component menu](/how-tos/sensor-capt-data.png)
 
 If you do not see data from your sensor, try waiting a minute and refreshing the page to allow time for the readings to be captured and then synced to the app at the interval you configured.
 
