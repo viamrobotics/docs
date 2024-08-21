@@ -12,6 +12,8 @@ component_description: "A model used for testing, with no physical hardware."
 # SMEs: Gautham, Rand
 ---
 
+The `fake` board returns incrementing values for digital interrupt ticks and analogs.
+
 Configure a `fake` board to test integrating a board into your machine without physical hardware:
 
 {{< tabs name="Configure an fake Board" >}}
