@@ -47,7 +47,6 @@ If you'd like to follow a more detailed tutorial, see [Selectively Capture Data 
 
 {{< table >}}
 {{% tablestep link="/components/camera/"%}}
-{{<imgproc src="/icons/components/camera.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="configure a camera component">}}
 **1. Configure a camera**
 
 {{< gif webm_src="/how-tos/configure-webcam.webm" mp4_src="/how-tos/configure-webcam.mp4" alt="The process described below." max-width="550px" class=aligncenter >}}
@@ -57,7 +56,6 @@ If you are not sure what to use, start with a [webcam](/components/camera/webcam
 
 {{% /tablestep %}}
 {{% tablestep link="/services/data/"%}}
-{{<imgproc src="/services/icons/data-management.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
 **2. Enable the data management service**
 
 {{<gif webm_src="/how-tos/capture-images.webm" mp4_src="/how-tos/capture-images.mp4" alt="The process described below." max-width="600px" class="aligncenter" >}}
@@ -70,7 +68,6 @@ You can leave the default data manager settings.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
 **3. Capture data**
 
 {{<gif webm_src="/how-tos/capture-images.webm" mp4_src="/how-tos/capture-images.mp4" alt="The process described below." max-width="600px" class="aligncenter" >}}
