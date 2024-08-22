@@ -138,7 +138,7 @@ pip3 install viam-sdk
 
 ### Connect
 
-Next, go to the **Code sample** page of the **CONNECT** tab on your [machine page](https://app.viam.com/robots) and select **Python**, then click the copy icon.
+Next, go to the **Code sample** page of the **CONNECT** tab on your [machine page](https://app.viam.com/robots) and select **Python**.
 
 {{% snippet "show-secret.md" %}}
 

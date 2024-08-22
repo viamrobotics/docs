@@ -105,7 +105,7 @@ pip install viam-sdk
 
 On the [Viam app](https://app.viam.com), select the **CONNECT** tab, then select **Python** as your language.
 
-![A screenshot of the word Language with four boxes below it with Python, Golang, Typescript (Web), and Remotes in each one. Python has a black background with white text and a checkmark, the other three have white backgrounds with black text.](/tutorials/single-component-tutorials-servo-mousemover/choose-python.png)
+![The word Language with four boxes below it with Python, Golang, Typescript (Web), and Remotes in each one. Python has a black background with white text and a checkmark, the other three have white backgrounds with black text.](/tutorials/single-component-tutorials-servo-mousemover/choose-python.png)
 
 Since you already installed the Python SDK, skip the first step.
 Copy the boilerplate Python code under step 2.
