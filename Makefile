@@ -39,6 +39,9 @@ flake8test:
 build-pr: clean setup
 	hugo $(PR_OPTIONS)
 
+build-pr-no-clean: setup
+	hugo $(PR_OPTIONS) -d dist
+
 serve-prod: setup
 	hugo server $(PROD_OPTIONS) $(SERVE_OPTIONS)
 
