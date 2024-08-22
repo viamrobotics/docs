@@ -56,7 +56,7 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v2'
 
       - name: 'Use gcloud CLI'
-        run: 'gsutil -m rsync -R -d public gs://docs-test.viam.dev/${{ github.event.number }}'
+        run: 'gsutil -m rsync -R -d public gs://docs-test.viam.dev/${{ github.event.number }}/'
 
       - name: Comment on PR with link to rendered site
         uses: marocchino/sticky-pull-request-comment@v2.2.0
