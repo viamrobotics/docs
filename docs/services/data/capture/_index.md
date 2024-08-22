@@ -676,11 +676,11 @@ If you have synced images, you can use those images to [train machine learning m
 
 For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).
 
-To learn how to capture Performance Metrics for machines, see [Performance Monitoring Data Capture](/services/data/capture/performance-metrics/).
+To learn how to capture Performance Metrics for machines, see [Performance Monitoring Data Capture](/how-tos/performance-metrics/).
 
 {{< cards >}}
 {{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
-{{% card link="/services/data/capture/performance-metrics/" %}}
+{{% card link="/how-tos/performance-metrics/" %}}
 {{% card link="/tutorials/projects/filtered-camera/" %}}
 {{% card link="/tutorials/control/air-quality-fleet/" %}}
 {{< /cards >}}
