@@ -22,6 +22,9 @@ build-prod: clean setup
 build-dist: clean setup
 	hugo $(LOCAL_OPTIONS) -d dist
 
+build-dist-pr: setup
+	hugo $(LOCAL_OPTIONS) -d dist
+
 htmltest: clean setup
 	hugo $(LOCAL_OPTIONS) -d dist
 	htmltest
