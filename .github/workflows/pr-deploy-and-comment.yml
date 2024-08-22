@@ -43,12 +43,12 @@ jobs:
         run: make build-pr-no-clean
 
       - name: Authenticate on GCS
-        uses: google-github-actions/auth@v0
+        uses: google-github-actions/auth@v2
         with:
           credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
 
       - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v0'
+        uses: 'google-github-actions/setup-gcloud@v2'
 
       - name: 'Use gcloud CLI'
         run: 'gsutil -m rsync -R -d public gs://docs-test.viam.dev/${{ github.event.number }}'
