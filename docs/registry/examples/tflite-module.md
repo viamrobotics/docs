@@ -250,7 +250,8 @@ This generated configuration features the minimum required configuration to supp
 
 With everything configured and running, you can now run the inference client that connects to `viam-server` and uses the `example_mlmodelservice_tflite` module.
 
-1. First, determine your machine address and API key and API key ID. To do so, navigate to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com), select the **Code sample** page, and toggle **Include API Key**.
+1. First, determine your machine address and API key and API key ID. To do so, navigate to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com), and copy the machine address from the **Code sample** page.
+   Go to the **API keys** page on the **CONNECT** tab to get an API key.
    The API key resembles `abcdef1g23hi45jklm6nopqrstu7vwx8`, the API key ID resembles `a1234b5c-678d-9012-3e45-67fabc8d9efa` and the machine address resembles `my-machine-main.abcdefg123.viam.cloud`.
 
    {{%  snippet "secret-share.md" %}}

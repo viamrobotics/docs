@@ -39,18 +39,23 @@ You can install `viam-agent` using either an existing machine's part ID and API 
 Your machine must have `curl` available in order to install `viam-agent`.
 {{< /alert >}}
 
-1.  The first step is to [create a new machine in the Viam app](/cloud/machines/#add-a-new-machine).
-2.  Then navigate to the machine part's **CONNECT** tab and follow the instructions to install `viam server` with `viam-agent`.
+1. The first step is to [create a new machine in the Viam app](/cloud/machines/#add-a-new-machine).
+2. Navigate to the **CONFIGURE** tab and find your machine's card.
+   An alert will be present directing you to **Set up your machine part**:
 
-    The command will be of the following form:
+![Machine setup alert in a newly created machine](/installation/setup-part.png)
 
-    ```sh {class="command-line" data-prompt="$" data-output="1-10"}
-    sudo /bin/sh -c "VIAM_API_KEY_ID=<KEYID> VIAM_API_KEY=<KEY> VIAM_PART_ID=<PARTID>; $(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
-    ```
+Click **View setup instructions** to open the setup instructions.Then navigate to the machine part's setup and follow the instructions to install `viam server` with `viam-agent`.
 
-    This command will obtain the machine config and store it in <FILE>/etc/viam.json</FILE> using the API key and part ID.
+The command will be of the following form:
 
-    {{< alert title="Note" color="note" >}}
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
+sudo /bin/sh -c "VIAM_API_KEY_ID=<KEYID> VIAM_API_KEY=<KEY> VIAM_PART_ID=<PARTID>; $(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
+```
+
+This command will obtain the machine config and store it in <FILE>/etc/viam.json</FILE> using the API key and part ID.
+
+{{< alert title="Note" color="note" >}}
 
 As an alternative to specifying the `VIAM_API_KEY_ID`, the `VIAM_API_KEY`, and the `VIAM_PART_ID` when running the command, you can also copy the `viam-server` app JSON configuration from the Viam app into <file>/etc/viam.json</file>.
 You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.

@@ -64,7 +64,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 ## Control your board with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
 
 {{% snippet "show-secret.md" %}}
 
