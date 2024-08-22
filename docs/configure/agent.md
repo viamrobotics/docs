@@ -54,7 +54,6 @@ The command will be of the following form:
 sudo /bin/sh -c "VIAM_API_KEY_ID=<KEYID> VIAM_API_KEY=<KEY> VIAM_PART_ID=<PARTID>; $(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
 ```
 
-This command will obtain the machine config and store it in <FILE>/etc/viam.json</FILE> using the API key and part ID.
 
 {{< alert title="Note" color="note" >}}
 
