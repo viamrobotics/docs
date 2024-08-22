@@ -36,6 +36,7 @@ IgnoreURLs:
   - "trinamic.com"
   - "viam.setup"
   - "web.archive"
+  - "elevenlabs.io"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"
