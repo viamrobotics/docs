@@ -169,7 +169,7 @@ If you have a [compatible microcontroller](/installation/#compatibility), follow
 
 1. Select the platform you want to use from which to flash the target system.
 
-1. Follow the instructions to flash `viam-micro-server` directly to an ESP32 connected to your computer through a data cable.
+1. Follow the instructions to flash `viam-micro-server` to an ESP32 connected to your computer through a data cable.
 
 1. Once you have followed the steps on the setup instructions, `viam-micro-server` is installed and will run.
    Wait for confirmation that your microcontroller has successfully connected.
