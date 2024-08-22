@@ -136,7 +136,7 @@ Add an ML model service on your machine that is compatible with the ML model you
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **2. Select a suitable ML model**
 
-From the **Select model** modal on the ML model service configuration panel, select an [existing model](https://app.viam.com/registry?type=ML+Model) you want to use, or click **Add new model** to upload your own.
+Click **Select model** on the ML model service configuration panel, then select an [existing model](https://app.viam.com/registry?type=ML+Model) you want to use, or click **Add new model** to upload your own.
 If you're not sure which model to add, you can add [`face-detection`](https://app.viam.com/ml-model/bijan/face-detection) from the **Registry**, which can detect if a person's face appears in the image stream.
 
 {{% /tablestep %}}
@@ -157,8 +157,8 @@ From the **Select model** dropdown, select the name of your ML model service (fo
 The `filtered-camera` {{< glossary_tooltip term_id="modular-resource" text="modular component" >}} pulls the stream of images from the camera you configured earlier, and applies the vision service to it.
 
 Configure a `filtered-camera` component on your machine, following the [attribute guide in the README](https://github.com/erh/filtered_camera?tab=readme-ov-file#configure-your-filtered-camera).
-Use the name of the camera you configured in the first part of this guide as the `"camera"` to filter and the name of the vision service you just configured as your `"vision"` service.
-Then add all or some of the labels your ml model uses as classifications or detections in `"classifications"` or `"objects"`.
+Use the name of the camera you configured in the first part of this guide as the `"camera"` to pull images from, and select the name of the vision service you just configured as your `"vision"` service.
+Then add all or some of the labels your ML model uses as classifications or detections in `"classifications"` or `"objects"`.
 
 For example, if you are using the `face-detection` model, you could use a configuration like the following to only capture images when a face is detected in your camera stream:
 
