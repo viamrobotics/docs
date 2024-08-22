@@ -65,7 +65,7 @@ To establish a connection between a part of one machine and a part of a second m
    This is the machine part whose resources will be accessible to the other machine part.
 2. Navigate to the **CONNECT** tab.
 3. Click **Configure as a remote part** in the left-hand menu.
-4. Toggle the **Include secret** switch on, then copy the entire JSON snippet including the name, address, and authentication credentials of the remote part.
+4. Toggle the **Include API key** switch on, then copy the entire JSON snippet including the name, address, and authentication credentials of the remote part.
 
    {{% snippet "show-secret.md" %}}
 
