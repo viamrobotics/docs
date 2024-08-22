@@ -45,7 +45,8 @@ Your machine must have `curl` available in order to install `viam-agent`.
 
 ![Machine setup alert in a newly created machine](/installation/setup-part.png)
 
-Click **View setup instructions** to open the setup instructions.Then navigate to the machine part's setup and follow the instructions to install `viam server` with `viam-agent`.
+Click **View setup instructions** to open the setup instructions.
+Then navigate to the machine part's setup and follow the instructions to install `viam server` with `viam-agent`.
 
 The command will be of the following form:
 
