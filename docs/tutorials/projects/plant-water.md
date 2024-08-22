@@ -7,7 +7,9 @@ canonical: "https://codelabs.viam.com/guide/environment-variables/index.html"
 tags: ["APIs", "python"]
 description: "Learn how to use Python variables with Viam projects so your code runs smoothly from development to deployment."
 images:
-  ["https://codelabs.viam.com/guide/environment-variables/img/d97c0b6eea8a399e.png"]
+  [
+    "https://codelabs.viam.com/guide/environment-variables/img/d97c0b6eea8a399e.png",
+  ]
 imageAlt: "Code and an environment variables file"
 authors: ["Joyce Lin"]
 languages: []
