@@ -38,6 +38,10 @@ For more detailed information on how to operate and test your resources, expand 
 {{% /expand%}}
 
 {{% expand "Base" %}}
+{{< readfile "/static/include/components/test-control/base-control.md" >}}
+{{% /expand%}}
+
+{{% expand "Board" %}}
 
 ## Test `analogs`
 
@@ -45,10 +49,6 @@ For more detailed information on how to operate and test your resources, expand 
 
 ## Test `digital_interrupts`
 
-{{< readfile "/static/include/components/test-control/base-control.md" >}}
-{{% /expand%}}
-
-{{% expand "Board" %}}
 {{< readfile "/static/include/components/board/test-board-digital-interrupts.md" >}}
 {{% /expand%}}
 
