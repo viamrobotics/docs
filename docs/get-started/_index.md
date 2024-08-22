@@ -16,7 +16,7 @@ images: ["/general/understand.png"]
 carouselscript: true
 ---
 
-Viam is a software platform that makes it easy to combine and integrate hardware and software to build machines, connect them with the cloud, and make them smarter with machine learning.
+Viam is a TEST software platform that makes it easy to combine and integrate hardware and software to build machines, connect them with the cloud, and make them smarter with machine learning.
 
 Machines are everywhere, from small machines like IoT sensors, to home automation systems, robotic systems, cars and boats, and even more complex enterprise systems.
 All these machines start by combining hardware and software.
