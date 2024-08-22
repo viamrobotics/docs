@@ -22,6 +22,9 @@ build-prod: clean setup
 build-dist: clean setup
 	hugo $(LOCAL_OPTIONS) -d dist
 
+build-dist-pr: setup
+	hugo $(LOCAL_OPTIONS) -d dist
+
 htmltest: clean setup
 	hugo $(LOCAL_OPTIONS) -d dist
 	htmltest
@@ -37,6 +40,9 @@ flake8test:
 	flake8-markdown docs/**/*.md
 
 build-pr: clean setup
+	hugo $(PR_OPTIONS)
+
+build-pr-no-clean: setup
 	hugo $(PR_OPTIONS)
 
 serve-prod: setup

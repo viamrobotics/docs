@@ -36,8 +36,9 @@ IgnoreURLs:
   - "trinamic.com"
   - "viam.setup"
   - "web.archive"
+  - "elevenlabs.io"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"
 # IgnoreDirs: - if we need to ever ignore files
-IgnoreExternalBrokenLinks: true
+CheckExternal: false

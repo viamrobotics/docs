@@ -28,11 +28,15 @@ Follow the instructions below to learn how to write a new module using your pref
 
 {{% /alert %}}
 
-{{< alert title="Note: `viam-micro-server` modules" color="note" >}}
+{{< alert title="Note: viam-micro-server modules" color="note" >}}
 [`viam-micro-server`](/installation/#install-viam-micro-server) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
 Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) for information on how to create custom resources for your `viam-micro-server` machine.
 You will need to [recompile and flash your ESP32 yourself](/installation/#install-viam-micro-server) instead of using Viam's prebuilt binary and installer.
 {{< /alert >}}
+
+{{% alert title="Tip" color="tip" %}}
+If you are writing a sensor module in Python, you can use this [more specific guide](/how-tos/sensor-module/).
+{{% /alert %}}
 
 You can also watch this guide to creating a vision service module:
 

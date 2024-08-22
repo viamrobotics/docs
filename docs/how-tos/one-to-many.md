@@ -4,8 +4,8 @@ linkTitle: "Configure many machines"
 weight: 40
 type: "docs"
 tags: ["data management", "data", "services"]
-images: ["/platform/fleet.svg"]
-description: "How to configure multiple similar or identical machines with fragments."
+images: ["/how-tos/one-to-many/new-fragment.png"]
+description: "Configuring fragments."
 aliases:
   - /use-cases/one-to-many/
 ---

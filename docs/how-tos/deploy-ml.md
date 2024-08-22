@@ -80,9 +80,10 @@ Click **Train model** and follow the prompts.
 {{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Train models">}}
 **2. Deploy your ML model**
 
-On the **Configure** page add the built-in [ML model service](/services/ml/deploy/) and select your ML model.
-The service will deploy and run the model.
-Once you've added the ML model service to your machine, choose your newly-trained model from the dropdown menu in the ML model service's configuration card.
+If you haven't already, [create a machine](/cloud/machines/#add-a-new-machine) and [set it up](/cloud/machines/#set-up-a-new-machine).
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Here, add the built-in [TFLite CPU ML model service](/services/ml/deploy/) and select the ML model you just trained as the **Model**.
+This service will deploy and run the model.
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/mlmodel/" %}}
@@ -92,7 +93,7 @@ Once you've added the ML model service to your machine, choose your newly-traine
 The vision service takes the the ML model and applies it to the stream of images from your camera.
 
 Add the `vision / ML model` service to your machine.
-Then, from the **Select model** modal, select the name of the ML model service you configured in the last step (for example, `mlmodel-1`).
+Then, from the **Select model** dropdown, select the name of the ML model service you configured in the last step (for example, `mlmodel-1`).
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/mlmodel/#test-your-detector-or-classifier" %}}

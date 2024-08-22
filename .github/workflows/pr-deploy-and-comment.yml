@@ -21,7 +21,6 @@ jobs:
         with:
             ref: ${{ github.event.pull_request.head.sha }}
             submodules: true  # fetch hugo themes
-            fetch-depth: 0
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
@@ -29,24 +28,35 @@ jobs:
           hugo-version: "0.128.2"
           extended: true
 
+      - name: Get Date
+        id: get-date
+        run: |
+          echo "date=$(/bin/date -u "+%Y%m%d")" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - uses: actions/cache@v4
+        with:
+          path: resources
+          key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-hugo-resources
+
       - name: Temp config
         run: |
           echo url_latest_version = \"https://docs-test.viam.dev/${{ github.event.number }}\" > config_pr.toml
           echo baseURL = \"https://docs-test.viam.dev/${{ github.event.number }}\" >> config_pr.toml
 
       - name: Build
-        run: make build-pr
+        run: make build-pr-no-clean
 
       - name: Authenticate on GCS
-        uses: google-github-actions/auth@v0
+        uses: google-github-actions/auth@v2
         with:
           credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
 
       - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v0'
+        uses: 'google-github-actions/setup-gcloud@v2'
 
       - name: 'Use gcloud CLI'
-        run: 'gsutil -m rsync -R -d public gs://docs-test.viam.dev/${{ github.event.number }}'
+        run: 'gsutil -m rsync -R -d public gs://docs-test.viam.dev/${{ github.event.number }}/'
 
       - name: Comment on PR with link to rendered site
         uses: marocchino/sticky-pull-request-comment@v2.2.0

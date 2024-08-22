@@ -94,7 +94,7 @@ Get all organizations that have access to a location.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-org_list = await cloud.get_organization_with_access_to_location("location-id")
+org_list = await cloud.get_organizations_with_access_to_location("location-id")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_organizations_with_access_to_location).
@@ -224,6 +224,12 @@ Delete an organization.
 **Returns:**
 
 - None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.delete_organization("org-id")
+```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_organization).
 
