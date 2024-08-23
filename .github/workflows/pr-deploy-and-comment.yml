@@ -39,6 +39,16 @@ jobs:
           path: resources
           key: ${{ steps.get-date.outputs.date }}-hugo-resources
 
+      - uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ steps.get-date.outputs.date }}-hugo-node_modules
+
+      - uses: actions/cache@v4
+        with:
+          path: themes
+          key: ${{ steps.get-date.outputs.date }}-hugo-themes
+
       - name: Temp config
         run: |
           echo url_latest_version = \"https://docs-test.viam.dev/${{ github.event.number }}\" > config_pr.toml
