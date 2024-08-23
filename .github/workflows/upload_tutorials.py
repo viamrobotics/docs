@@ -7,7 +7,7 @@ import json
 async def main():
 
     typesense_client = typesense.Client({
-        'api_key': os.environ['TYPESENSE_API_KEY_R'],
+        'api_key': os.environ['TYPESENSE_TUTORIALS_API_KEY'],
         'nodes': [{
             'host': 'cgnvrk0xwyj9576lp-1.a1.typesense.net',
             'port': '443',
