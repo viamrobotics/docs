@@ -81,13 +81,16 @@ Select **Component**, then search for and select the `sync-at-time:timesyncsenso
 Click **Add module**, then enter a name or use the suggested name for your sensor and click **Create**.
 
 {{% /tablestep %}}
-{{% tablestep %}}
+
+<!-- markdownlint-disable-file MD034 -->
+
+{{% tablestep link="https://github.com/viam-labs/sync-at-time" %}}
 **2. Configure your time frame**
 
 Go to the new component panel and copy and paste the following attribute template into your sensor’s attributes field:
 
 {{< tabs >}}
-{{% tab name="Config builder" %}}
+{{% tab name="Template" %}}
 
 ```json
 {
@@ -98,38 +101,13 @@ Go to the new component panel and copy and paste the following attribute templat
 ```
 
 {{% /tab %}}
-{{% tab name="JSON Template" %}}
+{{% tab name="Example" %}}
 
 ```json
 {
-  "name": "<SENSORNAME>",
-  "model": "naomi:sync-at-time:timesyncsensor",
-  "type": "sensor",
-  "namespace": "rdk",
-  "attributes": {
-    "start": "HH:MM:SS",
-    "end": "HH:MM:SS",
-    "zone": "<TIMEZONE>"
-  },
-  "depends_on": []
-}
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json
-{
-  "name": "timesensor",
-  "model": "naomi:sync-at-time:timesyncsensor",
-  "type": "sensor",
-  "namespace": "rdk",
-  "attributes": {
-    "start": "18:29:00",
-    "end": "18:30:00",
-    "zone": "CET"
-  },
-  "depends_on": []
+  "start": "18:29:00",
+  "end": "18:30:00",
+  "zone": "CET"
 }
 ```
 
@@ -155,7 +133,7 @@ The following attributes are available for the `naomi:sync-at-time:timesyncsenso
 
 In the next step you will configure the data manager to take the sensor into account when syncing.
 
-#### Configure the data manager to sync based on sensor
+### Configure the data manager to sync based on sensor
 
 On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selective_syncer_name` with the name for the sensor you configured and add the sensor to the `depends_on` field:
 
@@ -191,7 +169,7 @@ On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selectiv
   "attributes": {
     "additional_sync_paths": [],
     "selective_syncer_name": "timesensor",
-    "sync_interval_mins": 0.2,
+    "sync_interval_mins": 0.1,
     "capture_dir": "",
     "tags": []
   },
@@ -204,89 +182,51 @@ On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selectiv
 
 {{% expand "Click to view a full configuration example" %}}
 
-```json {class="line-numbers linkable-line-numbers" data-line="29-40,43-55,80-85"}
+```json {class="line-numbers linkable-line-numbers" data-line="12-22,25-37,40-45"}
 {
   "components": [
     {
-      "type": "camera",
+      "name": "camera-1",
       "namespace": "rdk",
+      "type": "camera",
+      "model": "webcam",
       "attributes": {
-        "video_path": "FDF90FEB-59E5-4FCF-AABD-DA03C4E19BFB"
-      },
-      "depends_on": [],
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-              {
-                "capture_frequency_hz": 0.2,
-                "method": "ReadImage",
-                "additional_params": {
-                  "mime_type": "image/jpeg"
-                }
-              }
-            ]
-          }
-        }
-      ],
-      "name": "webcam",
-      "model": "webcam"
+        "video_path": "0x114000005a39331"
+      }
     },
     {
-      "attributes": {
-        "start": "14:10:00",
-        "end": "15:35:00",
-        "zone": "CET"
-      },
-      "depends_on": [],
       "name": "timesensor",
-      "model": "naomi:sync-at-time:timesyncsensor",
+      "namespace": "rdk",
       "type": "sensor",
-      "namespace": "rdk"
+      "model": "naomi:sync-at-time:timesyncsensor",
+      "attributes": {
+        "start": "18:29:00",
+        "end": "18:30:00",
+        "zone": "CET"
+      }
     }
   ],
   "services": [
     {
+      "name": "data_manager-1",
       "namespace": "rdk",
-      "depends_on": ["timesensor"],
+      "type": "data_manager",
       "attributes": {
+        "capture_dir": "",
+        "tags": [],
         "additional_sync_paths": [],
         "selective_syncer_name": "timesensor",
-        "sync_interval_mins": 0.2,
-        "capture_dir": "",
-        "tags": []
+        "sync_interval_mins": 0.1
       },
-      "name": "datamanager",
-      "type": "data_manager"
+      "depends_on": ["timesensor"]
     }
   ],
-  "agent": {
-    "viam-server": {
-      "release_channel": "stable",
-      "pin_version": "",
-      "pin_url": "",
-      "disable_subsystem": false
-    },
-    "agent-provisioning": {
-      "release_channel": "stable",
-      "pin_version": "",
-      "pin_url": "",
-      "disable_subsystem": false
-    },
-    "viam-agent": {
-      "release_channel": "stable",
-      "pin_version": "",
-      "pin_url": "",
-      "disable_subsystem": false
-    }
-  },
   "modules": [
     {
-      "module_id": "naomi:sync-at-time",
-      "version": "0.0.2",
       "type": "registry",
-      "name": "naomi_sync-at-time"
+      "name": "naomi_sync-at-time",
+      "module_id": "naomi:sync-at-time",
+      "version": "2.0.0"
     }
   ]
 }
