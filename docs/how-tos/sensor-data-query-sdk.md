@@ -9,7 +9,7 @@ modulescript: true
 aliases:
   - /use-cases/sensor-data-query-sdk/
 languages: ["python"]
-viamresources: ["sensor"]
+viamresources: ["sensor", "data_manager"]
 level: "Beginner"
 date: "2024-08-16"
 # updated: ""  # When the tutorial was last entirely checked
