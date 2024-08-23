@@ -40,7 +40,7 @@ In this guide you'll use machine learning to detect people in a camera stream.
 You don't need to buy or own any hardware to complete this tutorial.
 If you have the following components, you can follow along on your own hardware:
 
-- A Linux, maxOS or WSL computer that can run `viam-server`.
+- A Linux, macOS or WSL computer that can run `viam-server`.
 - A webcam: this could be the webcam on your laptop or any other webcam you can connect to your computer.
 
 {{% expand "No computer or webcam?" %}}
