@@ -42,7 +42,7 @@ flake8test:
 build-pr: clean setup
 	hugo $(PR_OPTIONS)
 
-build-pr-no-clean: setup
+build-pr-no-clean:
 	hugo $(PR_OPTIONS)
 
 serve-prod: setup
