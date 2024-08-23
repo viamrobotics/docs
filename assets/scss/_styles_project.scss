@@ -1439,6 +1439,11 @@ ul.sectionlist > li:hover {
   background-color: #00E8E8;
 }
 
+.ais-Hits-item > .how-to .title:after {
+  content: "How-to";
+  background-color: #00E8E8;
+}
+
 .ais-Hits-item > .codelab .title:after {
   content: "Codelab";
   background-color: #FF7D80;

@@ -15,7 +15,11 @@
                         {{- end -}}
 
                         {{- if .Weight -}}
-                              {{- $.Scratch.Set "featured" .Weight -}}
+                              {{- if eq .Section "how-tos"  -}}
+                                    {{- $.Scratch.Set "featured" 9999 -}}
+                              {{- else -}}
+                                    {{- $.Scratch.Set "featured" .Weight -}}
+                              {{- end -}}
                         {{- else -}}
                               {{- $.Scratch.Set "featured" 9999 -}}
                         {{- end -}}
