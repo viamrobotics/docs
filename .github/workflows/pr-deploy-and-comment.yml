@@ -37,7 +37,7 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: resources
-          key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-hugo-resources
+          key: ${{ steps.get-date.outputs.date }}-hugo-resources
 
       - name: Temp config
         run: |
