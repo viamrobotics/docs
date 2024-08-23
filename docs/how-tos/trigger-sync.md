@@ -53,7 +53,7 @@ In this example, you will configure sync to only trigger during a specific time 
 If you need to trigger sync based on a different condition, you need to create your own module and adjust the module logic accordingly.
 Additional examples are available in this [GitHub repo](https://github.com/viam-labs/trigger-sync-examples-v2).
 
-### Prerequisites
+## Prerequisites
 
 {{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
 
@@ -73,7 +73,7 @@ Also leave both **Capturing** and **Syncing** toggles in the "on" position.
 
 {{< /expand >}}
 
-### Add sensor to determine when to sync
+## Add sensor to determine when to sync
 
 To use [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time):
 
@@ -139,7 +139,7 @@ The following attributes are available for the `naomi:sync-at-time:timesyncsenso
 
 In the next step you will configure the data manager to take the sensor into account when syncing.
 
-### Configure the data manager to sync based on sensor
+## Configure the data manager to sync based on sensor
 
 On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selective_syncer_name` with the name for the sensor you configured and add the sensor to the `depends_on` field:
 
@@ -242,7 +242,7 @@ On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selectiv
 
 You have now configured sync to happen during a specific time slot.
 
-### Test your sync configuration
+## Test your sync configuration
 
 To test your setup, [configure a webcam](/components/camera/webcam/) or another component and [enable data capture on the component](/services/data/capture/#configure-data-capture-for-individual-resources).
 For a camera component, use the `ReadImage` method.
