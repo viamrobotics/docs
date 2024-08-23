@@ -7,7 +7,8 @@ layout: "empty"
 canonical: "https://www.viam.com/post/build-an-outdoor-rover"
 tags: ["base", "outdoor", "solar", "rover"]
 description: "Build and control an affordable, functional outdoor rover (choose 3)."
-images: ["/tutorials/outdoor-rover-boxbot/completed-rover.jpg"]
+images:
+  ["https://docs.viam.com/tutorials/outdoor-rover-boxbot/completed-rover.jpg"]
 aliases: /tutorials/build-an-outdoor-rover/
 imageAlt: "Rover with mounted solar panel."
 authors: ["Matt Vella"]
