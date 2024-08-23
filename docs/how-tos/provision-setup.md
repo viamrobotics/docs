@@ -6,6 +6,12 @@ type: "docs"
 description: "Install and configure viam-agent for provisioning one or many machines."
 images: ["/installation/thumbnails/install.png"]
 imageAlt: "Install Viam"
+languages: []
+viamresources: []
+level: "Intermediate"
+date: "2024-08-21"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 The provisioning subsystem is a feature of `viam-agent`, which you can install as part of your manufacturing process. `agent-provisioning` will then perform the rest of the first-time setup for your machine once an end user sets up the machine.
@@ -43,9 +49,9 @@ If you choose to have a mobile app experience, you can use the [Viam mobile app]
 If you choose to use the Viam mobile app, you must provide a {{< glossary_tooltip term_id="fragment" text="fragment" >}} for provisioning.
 If you do not yet have a fragment, follow the steps to [Create a configuration fragment](/how-tos/one-to-many/) and make a note of the fragment ID.
 
-If you choose to use the captive web portal, you can optionally create a machine in advance and provide its credentials configuration file at <FILE>/etc/viam.json</FILE>.
+If you choose to use the captive web portal, you can optionally create a machine in advance and provide its machine cloud credentials file at <FILE>/etc/viam.json</FILE>.
 
-You can get the `viam-server` machine credentials by clicking the copy icon next to **Viam server config** in the part status dropdown to the right of your machine's name on the top of the page.
+You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
 
 {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 

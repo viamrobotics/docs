@@ -8,6 +8,12 @@ images: ["/services/ml/train.svg"]
 description: "Use your image data to train a computer vision ML model."
 aliases:
   - /use-cases/deploy-ml/
+languages: ["python", "go", "typescript", "flutter", "c++"] # Viam SDK programming languages used, if any
+viamresources: ["data_manager", "mlmodel", "vision"]
+level: "Beginner"
+date: "2024-06-21"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 You can use Viam's built-in tools to train a machine learning (ML) model on your images and then deploy computer vision on your machines.

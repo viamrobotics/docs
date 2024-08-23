@@ -66,7 +66,7 @@ There is currently no support for this component in `viam-micro-server`.
 
 Once you've configured your input controller according to model type, you can write code to define how your machine processes the input from the controller.
 
-To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **CONNECT** tab's **Code sample** page, select your preferred programming language, and copy the sample code.
 
 {{% snippet "show-secret.md" %}}
 
@@ -567,7 +567,7 @@ async def handleController(controller):
 async def main():
     # ADD YOUR MACHINE REMOTE ADDRESS and API KEY VALUES.
     # These can be found in app.viam.com's CONNECT tab's Code sample page.
-    # Toggle 'Include secret' to show the API key values.
+    # Toggle 'Include API key' to show the API key values.
     g920_robot = await connect_robot(
         "robot123example.locationxyzexample.viam.com", "API_KEY", "API_KEY_ID")
     modal_robot = await connect_robot(

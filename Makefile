@@ -4,6 +4,9 @@ git:
 setup: git package.json
 	npm install
 
+setupnpm:
+	npm install
+
 PROD_OPTIONS=-e production --config config.toml,config_prod.toml --minify
 DEV_OPTIONS=-e development --config config.toml,config_dev.toml
 LOCAL_OPTIONS=-e development --config config.toml,config_local.toml
@@ -22,6 +25,9 @@ build-prod: clean setup
 build-dist: clean setup
 	hugo $(LOCAL_OPTIONS) -d dist
 
+build-dist-pr: setupnpm
+	hugo $(LOCAL_OPTIONS) -d dist
+
 htmltest: clean setup
 	hugo $(LOCAL_OPTIONS) -d dist
 	htmltest
@@ -37,6 +43,9 @@ flake8test:
 	flake8-markdown docs/**/*.md
 
 build-pr: clean setup
+	hugo $(PR_OPTIONS)
+
+build-pr-no-clean: setupnpm
 	hugo $(PR_OPTIONS)
 
 serve-prod: setup

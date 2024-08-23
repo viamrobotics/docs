@@ -17,17 +17,18 @@ aliases:
   - "/get-started/quickstarts/drive-rover/"
 tags: ["base", "viam rover", "try viam", "sdk", "python", "flutter"]
 level: "Beginner"
-date: "2022-12-08"
-# updated: ""
 authors: []
 weight: 10
-languages: ["python", "go", "typescript", "flutter", "c++"]
-viamresources: ["base"]
 no_list: true
-level: "Beginner"
 date: "2024-07-31"
 cost: "0"
 resource: "quickstart"
+languages: ["python", "go", "typescript", "flutter", "c++"]
+viamresources: ["base"]
+level: "Beginner"
+date: "2022-12-08"
+# updated: ""
+cost: "0"
 ---
 
 If you haven't read through [Learn Viam](/get-started/), we recommend you do so, to get an overview of the Viam platform.

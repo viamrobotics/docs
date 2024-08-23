@@ -8,6 +8,12 @@ images: ["/services/ml/collect.svg"]
 description: "Capture images from a camera on your machine and selectively sync images to the cloud with filtering."
 aliases:
   - /use-cases/image-data/
+languages: []
+viamresources: ["camera", "data_manager", "mlmodel", "vision"]
+level: "Intermediate"
+date: "2024-06-21"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 You can use Viam's built-in data management service to capture images from a camera on your machine and sync the images to the cloud.

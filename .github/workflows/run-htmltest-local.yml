@@ -11,23 +11,40 @@ concurrency:
 on: pull_request
 jobs:
   htmltest:
-    runs-on: ubuntu-large
-    container:
-       image: ghcr.io/viamrobotics/canon:amd64
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
         with:
           submodules: true # Fetch Hugo themes
-          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
+          fetch-depth: 1 # Fetch all history for .GitInfo and .Lastmod
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '>=1.17.0'
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: "latest"
           extended: true
 
+      - name: Get Date
+        id: get-date
+        run: |
+          echo "date=$(/bin/date -u "+%Y%m%d")" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - uses: actions/cache@v4
+        with:
+          path: resources
+          key: ${{ steps.get-date.outputs.date }}-hugo-resources
+
+      - uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ steps.get-date.outputs.date }}-hugo-node_modules
+
       - name: Build
-        run: make build-dist
+        run: make build-dist-pr
 
       - name: Test HTML for local pages
         # https://github.com/wjdp/htmltest-action/

@@ -1056,12 +1056,6 @@ For information on configuring any camera model, see [Camera Component](/compone
 
 {{% /changelog %}}
 
-{{% changelog date="2022-11-28" color="changed" title="App code sample tab name update" %}}
-
-Changed the name of the **Connect** tab to **Code sample** based on user feedback.
-
-{{% /changelog %}}
-
 {{% changelog date="2022-11-15" color="added" title="New servo model" %}}
 
 A new [servo model called `gpio`](/components/servo/gpio/) supports servos connected to non-Raspberry Pi boards.

@@ -9,6 +9,13 @@ description: "Update or delete your existing modules, or change their privacy se
 aliases:
   - /use-cases/deploy-code/
   - /use-cases/manage-modules/
+languages: ["python", "go", "typescript", "flutter", "c++"] # Viam SDK programming languages used, if any
+languages: []
+viamresources: []
+level: "Beginner"
+date: "2024-06-30"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 After you [create and deploy a module](/how-tos/create-module/), you may need to update or delete it.
