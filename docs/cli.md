@@ -24,8 +24,8 @@ The CLI lets you:
 For example, this CLI command moves a servo to the 75 degree position:
 
 ```sh {class="command-line" data-prompt="$"}
-viam machines part run --robot 82c608a-1be9-46a5 --organization "Robot's Org" \
---location myLoc --part "myrobot-main" --data '{"name": "myServo", "angle_deg":75}' \
+viam machines part run --machine 82c608a-1be9-46a5 --organization "Artoo's Org" \
+--location myLoc --part "mymachine-main" --data '{"name": "myServo", "angle_deg":75}' \
 viam.component.servo.v1.ServoService.MoveRequest
 ```
 
@@ -262,8 +262,8 @@ viam [global options] command [command options] [arguments...]
 <!-- prettier-ignore -->
 | Parameter | Description |
 | --------- | ----------- |
-| [Global options](#global-options) | _optional_ - list of flags that apply for commands |
-| [Command](#commands) | _required_ - the specific CLI command to run |
+| [Global options](#global-options) | _optional_ - ist of flags that apply for commands. |
+| [Command](#commands) | _required_ - the specific CLI command to run. |
 | Command options | _required for some commands_  - the operation to run for the specified command. |
 | Arguments | _required for some commands_ - the arguments for the specified command operation. Some commands take positional arguments, some named arguments. |
 
@@ -455,6 +455,7 @@ With it, you can list available locations, filter locations by organization, or 
 
 ```sh {class="command-line" data-prompt="$"}
 viam locations list [<organization id>]
+viam locations api-key create --location-id=<location-id>
 ```
 
 #### Command options
@@ -462,7 +463,7 @@ viam locations list [<organization id>]
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `list` | List all locations (name and id) that the authenticated session has access to, grouped by organization | **organization id** : return results for specified organization only |
+| `list` | List all locations (name and id) that the authenticated session has access to, grouped by organization | **organization id** : (_optional_) return results for specified organization only |
 | `api-key` | Work with an api-key for your location | `create` |
 | `--help` | Return help | - |
 
@@ -489,7 +490,7 @@ The `login` command helps you authorize your device for CLI usage. See [Authenti
 
 ```sh {class="command-line" data-prompt="$"}
 viam login
-viam login api-key --key-id <api-key-uuid> --key <api-key-secret-value>
+viam login api-key --key-id=<api-key-uuid> --key=<api-key-secret-value>
 viam login print-access-token
 ```
 
@@ -532,25 +533,25 @@ This includes:
 - Updating an existing module in the Viam registry
 
 ```sh {class="command-line" data-prompt="$"}
-viam module create --name <module-id> [--org-id <org-id> | --public-namespace <namespace>]
-viam module update [--module <path to meta.json>]
-viam module upload --version <version> --platform <platform> [--org-id <org-id> | --public-namespace <namespace>] [--module <path to meta.json>] <module-path>
+viam module create --name=<module-id> [--org-id=<org-id> | --public-namespace=<namespace>]
+viam module update [--module=<path to meta.json>]
+viam module upload --version=<version> --platform=<platform> [--org-id=<org-id> | --public-namespace=<namespace>] [--module=<path to meta.json>] <module-path>
 ```
 
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
 # generate metadata for a module named 'my-module' using your organization's public namespace:
-viam module create --name 'my-module' --public-namespace 'my-namespace'
+viam module create --name=my-module --public-namespace=my-namespace
 
-# generate metadata for a module named 'my-module' using your organization's organization ID:
-viam module create --name 'my-module' --org-id 'abc'
+# generate metadata for a module named "my-module" using your organization's organization ID:
+viam module create --name=my-module --org-id=abc
 
 # update an existing module:
-viam module update
+viam module update --module=./meta.json
 
 # upload a new or updated custom module to the Viam registry:
-viam module upload --version "1.0.0" --platform "darwin/arm64" packaged-module.tar.gz
+viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.gz
 ```
 
 See [Upload a custom module](/how-tos/create-module/#upload-your-module-to-the-modular-resource-registry) and [Update an existing module](/how-tos/manage-modules/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
@@ -905,7 +906,7 @@ Provide that build ID to the `module build logs` command to show the relevant bu
 For example, use the following to initiate a build, and return the build logs as soon as it completes:
 
 ```sh {class="command-line" data-prompt="$"}
-viam module build logs --wait --id $(viam module build start --version "0.1.2")
+viam module build logs --wait --id=$(viam module build start --version "0.1.2")
 ```
 
 To list all in-progress builds and their build status, use the following command:
@@ -920,7 +921,7 @@ The `organizations` command allows you to list the organizations your authentica
 
 ```sh {class="command-line" data-prompt="$"}
 viam organizations list
-viam organizations api-key create --org-id <org-id> [--name <key-name>]
+viam organizations api-key create --org-id=<org-id> [--name <key-name>]
 ```
 
 See [create an organization API key](#create-an-organization-api-key) for more information.
@@ -955,9 +956,9 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 The `packages` command allows you to upload packages to the Viam cloud or export packages from the Viam cloud.
 
 ```sh {class="command-line" data-prompt="$"}
-viam packages upload --org-id=<org-id> --name=<package-name> --version=latest --type=ml_model --path=.
+viam packages upload --org-id=<org-id> --name=<package-name> --version=1.0.0 --type=ml_model --path=.
 
-viam packages export --org-id=<org-id> --name=<package-name> --version=latest --type=ml_model --destination=.
+viam packages export --org-id=<org-id> --name=<package-name> --version=1.0.0 --type=ml_model --destination=.
 ```
 
 #### Command options
@@ -975,7 +976,7 @@ viam packages export --org-id=<org-id> --name=<package-name> --version=latest --
 | -------- | ----------- | ------------------- | -------- |
 | `--org-id` | The organization ID of the package | `upload`, `export` | **Required** |
 | `--name` | The name of the package | `upload`, `export` | **Required** |
-| `--version` | The version of the package or `latest` | `upload`, `export` | **Required** |
+| `--version` | The version of the package | `upload`, `export` | **Required** |
 | `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | `upload`, `export` | **Required** |
 | `--path` | The output directory for downloaded package | `export` | **Required** |
 | `--destination` | The path to the package for upload | `upload` | **Required** |
@@ -1005,20 +1006,23 @@ viam machines part restart --machine=<machine id> --part=<part id>
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
-
 # list all machines you have access to
 viam machines list
 
 # get machine status
 viam machines status  --machine 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Robot's Org" --location myLoc
 
-# stream error level logs from a machine part
+# stream logs from a machine
 viam machines part logs --machine 82c608a-1be9-46a5-968d-bad3a8a6daa \
---organization "Robot's Org" --location myLoc --part "myrover-main" --tail true
+--organization "Robot's Org" --location myLoc
+
+# stream logs from a machine part
+viam machines part logs --machine 82c608a-1be9-46a5-968d-bad3a8a6daa \
+--organization "Robot's Org" --location myLoc --part myrover-main --tail true
 
 # stream classifications from a machine part every 500 milliseconds from the Viam Vision Service with classifier "stuff_detector"
 viam machines part run --machine 82c608a-1be9-46a5-968d-bad3a8a6daa \
---organization "Robot's Org" --location myLoc --part "myrover-main" --stream 500ms \
+--organization "Robot's Org" --location myLoc --part myrover-main --stream 500ms \
 --data '{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_detector", "n":1}' \
 viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 
@@ -1063,8 +1067,8 @@ viam machines part restart --machine e4713ae5-013a-43fe-800e-ff7999a8e3a0 --part
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--organization` | Organization name that the machine belongs to | `list`, `status`, `logs`, `part` | **Required** |
-| `--location` | Location name that the machine belongs to | `list`, `status`, `logs`, `part` | **Required** |
+| `--organization` | Organization name or ID that the machine belongs to | `list`, `status`, `logs`, `part` | **Required** |
+| `--location` | Location name that the machine belongs to or to list machines in | `list`, `status`, `logs`, `part` | **Required** |
 | `--machine` | Machine ID for which the command is being issued | `status`, `logs`, `part`, `part restart` | **Required** |
 | `--errors` | Boolean, return only errors (default: false) | `logs` | Optional |
 | `--part` | Part name (`logs`) or ID (`part`) for which the command is being issued | `logs`, `part` | Optional |
@@ -1090,7 +1094,7 @@ The format of what is passed to the `--data` argument is:
 '{"arg1": "val1"}' <protobuf path>
 ```
 
-You can find the protobuf path for the Viam package and method in the [Viam api package](https://github.com/viamrobotics/api/tree/main/proto/viam) by navigating to the component or service directory and then clicking on the resource file. The protobuf path is the package name.
+You can find the protobuf path for the Viam package and method in the [Viam API package](https://github.com/viamrobotics/api/tree/main/proto/viam) by navigating to the component or service directory and then clicking on the resource file. The protobuf path is the package name.
 
 For example:
 
@@ -1105,6 +1109,22 @@ The `--stream` argument, when included in the CLI command prior to the `--data` 
 
 Manage training scripts for custom ML training.
 For more information, see [Train a Model with a Custom Python Training Script](/services/ml/upload-training-script/).
+
+```sh {class="command-line" data-prompt="$"}
+viam training-script upload --framework=<framework> --org-id=<org-id> --path=<path-to-script> --script-name=<script-name> --type=<type>
+viam training-script update --org-id=<org-id> --script-name=<script-name> --visibility=<visibility>
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+
+# upload a single label classification script in the tflite framework to organization 123
+viam training-script upload --framework=tflite --org-id=123 --path=. --script-name=MyCustomTrainingScript --type=single_label_classification
+
+# update MyCustomTrainingScript with public visibility
+viam training-script update --org-id=123 --script-name=MyCustomTrainingScript --visibility=public
+```
 
 #### Command options
 
@@ -1122,39 +1142,46 @@ For more information, see [Train a Model with a Custom Python Training Script](/
 | `--path` | The path to ML training scripts for upload. | `upload` | **Required** |
 | `--org-id` | The organization ID to host the scripts in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/). | `upload`, `update` | **Required** |
 | `--script-name` | Name of the ML training script to update or upload. | `upload`, `update` | **Required** |
+| `--visibility` | Visibility of the registry item, can be `public`, `private`, or `draft`. | `update` | **Required** |
 | `--version` | Version of the ML training script to upload. | `upload` | Optional |
+| `--description` | Description of the ML training script. | `update` | Optional |
 | `--framework` | Framework of the ML training script to upload, can be `tflite`, `tensorflow`, `pytorch`, or `onnx`. | `upload` | Optional |
+| `--url` | URL of GitHub repository associated with the training script. | `upload` | Optional |
 | `--type` | Task type of the ML training script to upload, can be `single_label_classification`, `multi_label_classification`, or `object_detection`. | `upload` | Optional |
 | `--draft` | Indicate draft mode, drafts are not viewable in the registry. | `upload` | Optional |
-| `--visibility` | Visibility of the registry item, can be `public`, `private`, or `draft`. | `update` | **Required** |
-| `--description` | Description of the ML training script. | `update` | Optional |
 
 ### `train`
 
 Use a training script to train an ML model on data.
+
+```sh {class="command-line" data-prompt="$"}
+viam train submit managed --dataset-id=<dataset-id> --model-org-id=<model-org-id> --model-name=<model-name> --model-type=<model-type> --model-labels=<model-labels> [other options]
+viam train submit custom from-registry --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --script-name=<script-name> --version=<version> [other options]
+viam train submit custom with-upload --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --path=<path> --script-name=<script-name> [other options]
+```
 
 #### Command options
 
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `submit` | Submits training job on data in the Viam cloud | `managed`, `custom` |
+| `submit` | Submits training job on data in the Viam cloud. | `managed`, `custom` |
 
 ##### Positional arguments: `submit`
 
 <!-- prettier-ignore -->
 | Argument | Description | Positional Arguments |
 | -------- | ----------- | -------------------- |
-| `managed` | Submits training job on data in the Viam cloud with a Viam-managed training script | - |
-| `custom` | Submits custom training job on data in the Viam cloud | `from-registry`, `with-upload` |
+| `managed` | Submits training job on data in the Viam cloud with a Viam-managed training script. | - |
+| `custom` | Submits custom training job on data in the Viam cloud. | `from-registry`, `with-upload` |
 
 ##### Position arguments: `submit custom`
 
 <!-- prettier-ignore -->
 | Argument | Description |
 | -------- | ----------- |
-| `from-registry` | Submit custom training job with an existing training script in the registry on data in the Viam cloud |
-| `with-upload` | Upload a draft training script and submit a custom training job on data in the Viam cloud |
+| `from-registry` | Submit custom training job with an existing training script in the registry on data in the Viam cloud. |
+| `with-upload` | Upload a draft training script and submit a custom training job on data in the Viam cloud. |
 
 ##### Named arguments
 
@@ -1206,7 +1233,7 @@ Info: Successfully registered auth application
   "secret": "supersupersecretsecret"
 }
 
-viam auth-app update --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-id=1234a1z9-ab2c-1234-5678-bcd12345678a --redirect-uris="https://test.com","https://test2.com"
+viam auth-app update --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-name="julias app" --application-id=1234a1z9-ab2c-1234-5678-bcd12345678a --redirect-uris="https://test.com","https://test2.com"
 Info: Successfully updated auth application
 {
   "application_id": "1234a1z9-ab2c-1234-5678-bcd12345678a",
