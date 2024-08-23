@@ -43,11 +43,6 @@ jobs:
           path: node_modules
           key: ${{ steps.get-date.outputs.date }}-hugo-node_modules
 
-      - uses: actions/cache@v4
-        with:
-          path: themes
-          key: ${{ steps.get-date.outputs.date }}-hugo-themes
-
       - name: Build
         run: make build-dist-pr
 
