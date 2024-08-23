@@ -23,6 +23,7 @@ async def main():
         resources = json.load(f)
         for r in resources:
             print("RESOURCE")
+            r["date"] = int(r["date"])
             print(r)
             r["last_updated"] = time_now
             print(r)
@@ -35,6 +36,7 @@ async def main():
         resources = json.load(f)
         for r in resources:
             print("RESOURCE")
+            r["date"] = int(r["date"])
             print(r)
             r["last_updated"] = time_now
             print(r)
