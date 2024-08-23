@@ -9,6 +9,13 @@ description: "Use Viam to teleoperate and navigate rover bases."
 images: ["/platform/mobility.svg", "/how-tos/base-control.png"]
 aliases:
   - /use-cases/navigate/
+languages: []
+viamresources:
+  ["base", "movement_sensor", "motion", "frame_system", "navigation"]
+level: "Intermediate"
+date: "2024-01-04"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 If you have a rover base, you can use Viam to teleoperate it and to navigate autonomously.

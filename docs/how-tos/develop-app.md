@@ -9,6 +9,12 @@ imageAlt: "Code sample"
 tags: ["components", "configuration"]
 aliases:
   - /use-cases/develop-app/
+languages: ["python", "go", "typescript", "flutter", "c++"]
+viamresources: []
+level: "Beginner"
+date: "2024-08-02"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 Once you have configured a machine, start writing code to perform actions with the {{< glossary_tooltip term_id="component" text="components" >}} or {{< glossary_tooltip term_id="service" text="services" >}} of a {{< glossary_tooltip term_id="machine" text="machine" >}}.

@@ -9,6 +9,12 @@ description: "Add support for a new component or service model by writing a modu
 aliases:
   - /registry/create/
   - /use-cases/create-module/
+languages: ["python", "go", "c++"]
+viamresources: []
+level: "Intermediate"
+date: "2024-07-30"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 {{<imgproc src="/registry/module-diagram.png" resize="x900" declaredimensions=true alt="Representation of the Viam registry, some modules within it, and a rover they support." >}}

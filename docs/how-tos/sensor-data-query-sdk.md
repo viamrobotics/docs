@@ -8,6 +8,12 @@ description: "Retrieve and query sensor data that you have synced to the Viam ap
 modulescript: true
 aliases:
   - /use-cases/sensor-data-query-sdk/
+languages: ["python"]
+viamresources: ["sensor"]
+level: "Beginner"
+date: "2024-08-16"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 # SME: Devin Hilly
 ---
 

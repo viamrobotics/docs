@@ -8,6 +8,12 @@ images: ["/how-tos/one-to-many/new-fragment.png"]
 description: "Configuring fragments."
 aliases:
   - /use-cases/one-to-many/
+languages: []
+viamresources: []
+level: "Beginner"
+date: "2024-08-09"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ for copying parts of a configuration file to multiple machines, as well as for modifying just some sections of a config if your machines are similar but not identical.

@@ -6,6 +6,12 @@ type: "docs"
 description: "Install and configure viam-agent for provisioning one or many machines."
 images: ["/installation/thumbnails/install.png"]
 imageAlt: "Install Viam"
+languages: []
+viamresources: []
+level: "Intermediate"
+date: "2024-08-21"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 The provisioning subsystem is a feature of `viam-agent`, which you can install as part of your manufacturing process. `agent-provisioning` will then perform the rest of the first-time setup for your machine once an end user sets up the machine.

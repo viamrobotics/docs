@@ -6,6 +6,12 @@ type: "docs"
 description: "If you have received a machine that uses Viam and have been pointed to this guide, this guide will show you how to set it up."
 images: ["/platform/provisioning-demo.gif"]
 videos: ["/platform/provisioning-demo.webm", "/platform/provisioning-demo.mp4"]
+languages: []
+viamresources: []
+level: "Intermediate"
+date: "2024-08-21"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 If you have received a machine with Viam pre-installed on it, this guide will show you how to complete your device setup using either the [Viam mobile app](#set-up-your-machine-using-the-viam-mobile-app) or the [captive portal](#set-up-your-machine-using-the-captive-portal).

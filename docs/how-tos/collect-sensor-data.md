@@ -8,6 +8,12 @@ description: "Gather sensor data, sync it to the cloud, and view it in the Viam 
 modulescript: true
 aliases:
   - /use-cases/collect-sensor-data/
+languages: ["python", "go", "typescript", "flutter", "c++"] # Viam SDK programming languages used, if any
+viamresources: ["sensor"]
+level: "Beginner"
+date: "2024-08-23"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 # SME: Devin Hilly
 ---
 
