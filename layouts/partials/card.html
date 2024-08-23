@@ -45,7 +45,11 @@
                {{- partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "400x" "alt" (.Params.linkTitle) "style" "") -}}
              {{- end -}}
            {{- else -}}
-             {{- errorf "Couldn't get image %s" (index .Params.images 0) -}}
+              {{- if hasPrefix (index .Params.images 0) "http" -}}
+                <img src="{{ (index .Params.images 0) }}" width="400px" alt="{{ .Params.imageAlt }}" loading="lazy">
+              {{- else -}}
+                {{- errorf "Couldn't get image %s" (index .Params.images 0) -}}
+              {{- end -}}
            {{- end -}}
         </div>
        {{- end -}}

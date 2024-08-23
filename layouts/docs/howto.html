@@ -20,20 +20,16 @@
                 {{ partial "sidebar.html" . }}
             </aside>
             <main class="col-12 col-md-9 col-xl-10 pl-md-5" role="main">
-                <div id="rss-feed">
-                <a target="_blank" title="Open RSS feed" aria-label="Open RSS feed" href="{{ .Permalink }}feed.xml">
-                    <p><i class="fas fa-rss"></i> RSS Feed</p>
-                </a>
-                </div>
                 {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
                 <div class="td-content">
                     <h1>{{ .Title }}</h1>
                     <p>
-                        Tutorials provide instructions to build small projects while teaching you new skills. If you are looking to accomplish a specific task or workflow, check out the <a href="/how-tos/">how-to guides</a>.
+                        Click on one of the following guides that provide solutions for common tasks and workflows.
                     </p>
                     <p>
-                        Select a language, component, or service that you're interested in and browse relevant tutorials. If you don't know where to start, start by selecting the beginner level for introductory tutorials.
+                        You can filter these guides by language, component, or service that you're interested in.
                     </p>
+
                     {{ if not hugo.IsProduction }}
                     <div class="alert alert-caution" role="alert">
                         <h4 class="alert-heading">Missing the filtering UI?</h4>
@@ -41,16 +37,16 @@
                             (This message is only visible on staging.)
                         </p>
                     </div>
-                    {{ $pctx := .Site }}
-                    {{- $pages := (where (where $pctx.RegularPages ".Section" "tutorials") "Kind" "page")  -}}
+                    {{ $pages := union .Sections .Pages }}
                     <div id="archive" class="card-container">
                       <div class="row-no-margin">
                         {{ range sort $pages ".Weight"}}
-                            {{ partial "card.html" (dict "link" (.Page.File.Path) "class" "" "customTitle" "" "customDescription" "" "customCanonicalLink" (.Page.Params.canonical) ) }}
-                        {{ end }}
+                          {{ partial "card.html" (dict "link" (.Page.File.Path) "class" "" "customTitle" "" "customDescription" "" "customCanonicalLink" (.Page.Params.canonical) ) }}
+                      {{ end }}
                       </div>
                     </div>
                     {{ else }}
+
                         <div id="tutorial-menu" class="lozad">
                             <div id="tutorial-filters">
                                 <div class="filter" id="filter-languages" aria-expanded="false" data-toggle="collapse" data-target="#languages-list">Languages</div>
@@ -72,32 +68,37 @@
                         <div id="hits" class="row-no-margin"></div>
                         <div id="pagination"></div>
                     </div>
-                    {{ end }}
                     <!-- if no javscript show the tutorials -->
                     <noscript>
                         <div class="alert alert-caution" role="alert">
                             <h4 class="alert-heading">Javascript</h4>
-                            <p>Please enable javascript to see all tutorials.</p>
+                            <p>Please enable javascript to see all how-to guides.</p>
                         </div>
                         <div class="card-container">
                             <div class="row-no-margin">
-                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/get-started/blink-an-led/") }}
-                                {{ partial "tutorialcard-no-js.html" (dict "link" "/get-started/drive-rover/") }}
-                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/get-started/servo-mousemover/") }}
-                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/services/navigate-with-rover-base/") }}
-                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/get-started/lazy-susan/") }}
-                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/configure/build-a-mock-robot/") }}
-                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/services/accessing-and-moving-robot-arm/") }}
-                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/services/plan-motion-with-arm-gripper/") }}
-                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/services/constrain-motion/") }}
-                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/services/color-detection-scuttle/") }}
-                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/services/webcam-line-follower-robot/") }}
-                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/services/data-mlmodel-tutorial/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/configure/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/develop-app/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/image-data/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/deploy-ml/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/collect-sensor-data/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/sensor-data-query-with-third-party-tools/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/sensor-data-query-sdk/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/sensor-data-visualize/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/create-module/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/sensor-module/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/upload-module/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/manage-modules/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/navigate/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/one-to-many/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/provision-setup/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/provision/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/manage-fleet/") }}
                             </div>
                         </div>
                     </noscript>
+                    {{ end }}
                 </div>
-                <p>Find more examples of how Viam is being used in the world by reviewing <a href="https://www.viam.com/customers" target="_blank">Customer Stories</a>, <a href="/tutorials/">tutorials</a>, or <a href="https://www.viam.com/blog?categories=Tutorials" target="_blank">blog posts</a>.</p>
+                <p>If you're looking for examples of how Viam is being used in the world, have a look at <a href="https://www.viam.com/customers">customer stories</a>, follow our <a href="../tutorials/">step-by-step tutorials</a>, or browse our <a href="https://www.viam.com/blog?categories=Tutorials">blog posts</a>.</p>
             </main>
         </div>
         {{ $img := resources.GetMatch "/icons/learn-viam-robot-icon-ai.svg" }}
@@ -114,9 +115,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.46.0"></script>
 
-    {{ $jsTutorials := resources.Get "js/tutorials.js" }}
-    {{ $jsTutorials := $jsTutorials | minify }}
-    <script type="text/javascript" src="{{ $jsTutorials.RelPermalink }}" crossorigin="anonymous"></script>
+    {{ $jsHowtos := resources.Get "js/howtos.js" }}
+    {{ $jsHowtos := $jsHowtos | minify }}
+    <script type="text/javascript" src="{{ $jsHowtos.RelPermalink }}" crossorigin="anonymous"></script>
 
   </body>
 </html>

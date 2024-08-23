@@ -198,8 +198,8 @@ search.start();
 // Only show tutorials and blogposts to begin with
 search.addWidgets([{
   init: function(options) {
-    options.helper.toggleRefinement('resource', 'tutorial');
-    options.helper.toggleRefinement('resource', 'blogpost');
+    options.helper.toggleRefinement('resource', 'how-to');
+    options.helper.toggleRefinement('resource', 'quickstart');
   }
 }]);
 search.on("render", function () {
