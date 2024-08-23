@@ -9,7 +9,12 @@ images: ["/services/icons/data-cloud-sync.svg"]
 aliases:
   - /data/trigger-sync/
   - /services/data/trigger-sync/
-no_service: true
+languages: []
+viamresources: ["sensor", "data_manager"]
+level: "Intermediate"
+date: "2024-08-23"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 You may want to sync data only when a certain logic condition is met, instead of at a regular time interval.
