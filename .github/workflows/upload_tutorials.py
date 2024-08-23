@@ -44,6 +44,19 @@ async def main():
             print("INSERTED")
             print(insert_resp)
 
+    # Get how-tos from how-tos/typesense.json
+    with open('how-tos/typesense.json') as f:
+        resources = json.load(f)
+        for r in resources:
+            print("RESOURCE")
+            r["date"] = int(r["date"])
+            print(r)
+            r["last_updated"] = time_now
+            print(r)
+            insert_resp = typesense_client.collections['tutorials'].documents.upsert(r)
+            print("INSERTED")
+            print(insert_resp)
+
     # Deleting documents that didn't get updated (presumably deleted)
     try:
         res = typesense_client.collections['tutorials'].documents.delete({'filter_by': 'last_updated: <' + str(time_now)})
