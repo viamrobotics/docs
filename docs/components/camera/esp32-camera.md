@@ -1,5 +1,5 @@
 ---
-title: "Configure an esp32-camera (`viam-micro-server`)"
+title: "Configure an esp32-camera (viam-micro-server)"
 linkTitle: "esp32-camera"
 weight: 33
 type: "docs"
@@ -37,7 +37,7 @@ Finish the [`viam-micro-server` Development Setup](/installation/micro-rdk-dev/)
 
 {{< alert title="Info" color="info" >}}
 
-The`esp32-camera` camera model is not currently available as a built-in option in [the Viam app](https://app.viam.com), so you cannot use **Builder** mode to configure this board.
+The`esp32-camera` camera model is not currently available as a built-in option in [the Viam app](https://app.viam.com), so you cannot use **Builder** mode to configure this camera.
 
 {{< /alert >}}
 

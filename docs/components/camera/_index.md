@@ -64,8 +64,8 @@ For configuration information, click on the model name:
 <!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
-| [`fake`](fake-micro-server/) | A fake camera |
-| [`esp32-camera`](esp32-camera/) | A camera on an ESP32 |
+| [`fake`](fake-micro-server/) | A camera model for testing. |
+| [`esp32-camera`](esp32-camera/) | A camera on an ESP32. |
 
 {{% readfile "/static/include/micro-create-your-own.md" %}}
 

@@ -1,5 +1,5 @@
 ---
-title: "Configure a Fake Camera (`viam-micro-server`)"
+title: "Configure a Fake Camera (viam-micro-server)"
 linkTitle: "fake"
 weight: 20
 type: "docs"
@@ -14,14 +14,14 @@ toc_hide: true
 # SMEs: Matt Perez, micro-RDK team
 ---
 
-A `fake` camera in the micro-RDK is a camera model for testing.
+A `fake` camera is a camera model for testing.
 The camera always returns the same image, which is an image of a circle inside a diamond.
 
-## Software requirements
-
+{{< alert title="Software requirements" color="note" >}}
 To use this model, you must follow the [Micro-RDK Development Setup](/installation/micro-rdk-dev/), which enables you to install and activate the ESP-IDF.
 At the step [Generate a new project from the micro-RDK template](/installation/micro-rdk-dev/#generate-a-new-project-from-the-micro-rdk-template) where you create a new project with `cargo generate`, select the option to include camera module traits when prompted.
 Finish the [Micro-RDK Development Setup](/installation/micro-rdk-dev/) and return to this guide.
+{{< /alert >}}
 
 {{< tabs name="Configure a Fake Camera" >}}
 {{% tab name="Config Builder" %}}

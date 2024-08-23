@@ -225,8 +225,6 @@ Instead, save this command to run in any future terminal session where you need 
 Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
 
 Click on the name of the machine to go to the machine's page.
-Then, navigate to the **CONFIGURE** tab and [configure your machine](/configure/) with an `esp32` board and any components you want.
-You can also do this later.
 
 ### Generate a new project from the micro-RDK template
 
@@ -274,7 +272,7 @@ Replace `vim` with whatever text editor you prefer.
 
 ### Upload `viam-micro-server` to your ESP32
 
-Now, upload the project to connect to your ESP32 and remotely control it live on [the Viam app](https://app.viam.com):
+Now, flash the project to your ESP32 and it will connet to [the Viam app](https://app.viam.com) from which you can then remotely control it:
 
 {{< tabs >}}
 {{% tab name="Use Canon" %}}
