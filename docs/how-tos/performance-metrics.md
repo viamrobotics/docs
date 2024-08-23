@@ -62,7 +62,10 @@ Search for and add the `viam:viam-sensor:telegrafsensor` model provided by the [
 Save the configuration.
 
 {{% /tablestep %}}
-{{% tablestep  %}}
+
+<!-- markdownlint-disable-file MD034 -->
+
+{{% tablestep link="https://github.com/viamrobotics/viam-telegraf-sensor" %}}
 **2. (Optional) Customize the sensor configuration**
 
 To enable or disable specific metrics, add them to the attributes configuration.
@@ -128,7 +131,15 @@ If you do not immediately see data, wait a minute for the data to be captured an
 
 ![View of sensor data](/services/data/sensor-data.png)
 
-### Next steps
+## Stop data capture
+
+If this is a test project, make sure you stop data capture to avoid charges for a large amount of unwanted data.
+
+In the **Data capture** section of your sensor's configuration, toggle the switch to **Off**.
+
+Click the **Save** button in the top right corner of the page to save your config.
+
+## Next steps
 
 The data you obtain about your machines is associated with metadata about the machine and time of capture.
 Once you have captured data about your machines, you can query your captured data with any tools that with SQL or MQL or visualize your data with tools like Grafana:
