@@ -10,7 +10,7 @@ aliases:
   - /data/visualize/
   - /use-cases/sensor-data-visualize/
 languages: []
-viamresources: ["sensor"]
+viamresources: ["sensor", "data_manager"]
 level: "Beginner"
 date: "2024-08-16"
 # updated: ""  # When the tutorial was last entirely checked

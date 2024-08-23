@@ -9,7 +9,7 @@ modulescript: true
 aliases:
   - /use-cases/collect-sensor-data/
 languages: ["python", "go", "typescript", "flutter", "c++"] # Viam SDK programming languages used, if any
-viamresources: ["sensor"]
+viamresources: ["sensor", "data_manager"]
 level: "Beginner"
 date: "2024-08-23"
 # updated: ""  # When the tutorial was last entirely checked
