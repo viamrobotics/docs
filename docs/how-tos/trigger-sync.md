@@ -19,7 +19,7 @@ The code for both of these examples is provided by the [trigger-sync-examples mo
 
 To set up conditional syncing you need to:
 
-1. Create or use an existing module that implements a `sensor` component that uses your custom logic to determine when to enable and disable sync.
+1. Create or use an existing module that implements a `sensor` component that uses custom logic to determine when to enable and disable sync.
    While this sensor is not sensing the time it _senses_ whether the data manager should sync or not.
 2. Change the configuration of the data manager to enable selective sync.
 
@@ -35,7 +35,7 @@ You can use this as an example if you use or create a similar module.
 
 {{% alert title="In this page" color="tip" %}}
 
-1. [Add the `sync-at-time` "sensor"](#add-sensor-to-determine-when-to-sync)
+1. [Add the `sync-at-time` sensor](#add-sensor-to-determine-when-to-sync)
 2. [Configure the data manager to sync based on the sensor](#configure-the-data-manager-to-sync-based-on-sensor)
 3. [Test your sync configuration](#test-your-sync-configuration)
 
@@ -45,7 +45,7 @@ You can use this as an example if you use or create a similar module.
 
 In this example, you will configure sync to only trigger during a specific time frame of the day using an existing module [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time).
 If you need to trigger sync based on a different condition, you need to create your own module and adjust the module logic accordingly.
-Additional examples are available in this [GitHub Repo](https://github.com/viam-labs/trigger-sync-examples-v2).
+Additional examples are available in this [GitHub repo](https://github.com/viam-labs/trigger-sync-examples-v2).
 
 ### Prerequisites
 
