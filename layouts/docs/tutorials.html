@@ -102,7 +102,10 @@
         </div>
         {{ $img := resources.GetMatch "/icons/learn-viam-robot-icon-ai.svg" }}
         <button onclick="initAndClick()" class="docsbutton" id="chatButton" title="Chatbot and support">
-            <i style="font-size:x-large;" class="fas fa-comments"></i>
+            <span id="chatButtonContent">
+              <i style="font-size:x-large;" class="fas fa-comments"></i>
+              <span>Ask AI</span>
+            </span>
         </button>
     </div>
       {{ partial "footer.html" . }}
