@@ -1,20 +1,27 @@
 ---
-title: "Trigger Cloud Sync Conditionally"
-linkTitle: "Trigger Sync"
-description: "Trigger cloud sync to sync captured data conditionally."
-weight: 20
+title: "How to trigger cloud sync conditionally"
+linkTitle: "Trigger data sync conditionally"
+description: "Trigger cloud sync to sync captured data when custom conditions are met."
+weight: 44
 type: "docs"
 tags: ["data management", "cloud", "sync"]
+images: ["/services/icons/data-cloud-sync.svg"]
 aliases:
   - /data/trigger-sync/
+  - /services/data/trigger-sync/
 no_service: true
-# SME: Alexa Greenberg
 ---
 
-You can use a {{< glossary_tooltip term_id="module" text="module" >}} to sync data only when a certain logic condition is met, instead of at a regular time interval.
+You may want to sync data only when a certain logic condition is met, instead of at a regular time interval.
 For example, if you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
 Or, you may want to trigger sync only when your machine detects an object of a certain color.
 The code for both of these examples is provided by the [trigger-sync-examples module](https://github.com/viam-labs/trigger-sync-examples-v2), and you can [create your own module](/how-tos/create-module/) if you want to use different logic.
+
+To set up conditional syncing you need to:
+
+1. Create or use an existing module that implements a `sensor` component that uses your custom logic to determine when to enable and disable sync.
+   While this sensor is not sensing the time it _senses_ whether the data manager should sync or not.
+2. Change the configuration of the data manager to enable selective sync.
 
 {{% alert title="Note: How sync is triggered" color="note" %}}
 
@@ -23,39 +30,64 @@ See examples in the `Readings` function of the [time-interval-trigger code](http
 
 {{% /alert %}}
 
+This page covers how to use the `sync-at-time` module.
+You can use this as an example if you use or create a similar module.
+
+{{% alert title="In this page" color="tip" %}}
+
+1. [Add the `sync-at-time` "sensor"](#add-sensor-to-determine-when-to-sync)
+2. [Configure the data manager to sync based on the sensor](#configure-the-data-manager-to-sync-based-on-sensor)
+3. [Test your sync configuration](#test-your-sync-configuration)
+
+{{% /alert %}}
+
 ## Example: `sync-at-time`
-
-This module allows you to configure cloud sync to occur only at a specific time frame by implementing a sensor, `naomi:sync-at-time:timesyncsensor`, that enables sync within a specified time frame and disables sync outside that time frame.
-
-To set up conditional syncing you need to:
-
-1. Create or use an existing module that implements a `sensor` component that uses your custom logic to determine when to enable and disable sync.
-   While this sensor is not sensing the time it _senses_ whether the data manager should sync or not.
-2. Change the configuration of the data manager to enable selective sync.
-
-### Requirements
-
-Before configuring your sensor, you must [create a machine](/cloud/machines/#add-a-new-machine) and you also need to:
-
-1. Enable [data capture](/services/data/capture/).
-2. Enable [cloud sync](/services/data/cloud-sync/).
-
-### Add sensor to determine when to sync
 
 In this example, you will configure sync to only trigger during a specific time frame of the day using an existing module [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time).
 If you need to trigger sync based on a different condition, you need to create your own module and adjust the module logic accordingly.
 Additional examples are available in this [GitHub Repo](https://github.com/viam-labs/trigger-sync-examples-v2).
 
+### Prerequisites
+
+{{% expand "A running machine connected to the Viam app. Click to see instructions." %}}
+
+{{% snippet "setup-both.md" %}}
+
+{{% /expand%}}
+
+{{< expand "Enable data capture and sync on your machine." >}}
+
+Add the [data management](/services/data/) service:
+
+On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+
+Select the `data management / RDK` service and click **Create**.
+You can leave the default data sync interval of `0.1` minutes to sync every 6 seconds.
+Also leave both **Capturing** and **Syncing** toggles in the "on" position.
+
+{{< /expand >}}
+
+### Add sensor to determine when to sync
+
 To use [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time):
 
-1. Go to your machine's **CONFIGURE** page and click **Create component**.
-2. Then select the `sync-at-time:timesyncsensor` model from the [`sync-at-time` module](https://app.viam.com/module/naomi/sync-at-time).
-3. Click **Add module**, then enter a name or use the suggested name for your sensor and click **Create**.
-   The sensor will return true and enable sync when in a specified time frame.
-4. To configure your time frame, go to the new component panel and copy and paste the following attribute template into your sensor’s attributes field:
+{{< table >}}
+{{% tablestep %}}
+**1. Add the sensor to your machine**
 
-   {{< tabs >}}
-   {{% tab name="Config builder" %}}
+On your machine's **CONFIGURE** page, click the **+** button next to your machine part in the left menu.
+Select **Component**, then search for and select the `sync-at-time:timesyncsensor` model provided by the [`sync-at-time` module](https://app.viam.com/module/naomi/sync-at-time).
+
+Click **Add module**, then enter a name or use the suggested name for your sensor and click **Create**.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**2. Configure your time frame**
+
+Go to the new component panel and copy and paste the following attribute template into your sensor’s attributes field:
+
+{{< tabs >}}
+{{% tab name="Config builder" %}}
 
 ```json
 {
@@ -106,6 +138,8 @@ To use [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at
 
 The following attributes are available for the `naomi:sync-at-time:timesyncsensor` sensor:
 
+<div class="td-content">
+
 <!-- prettier-ignore -->
 | Name    | Type   | Required? | Description |
 | ------- | ------ | --------- | ----------- |
@@ -113,9 +147,15 @@ The following attributes are available for the `naomi:sync-at-time:timesyncsenso
 | `end`   | string | **Required** | The end of the sync time frame, for example: `"15:35:00"`. |
 | `zone`  | string | **Required** | The time zone for the `start` and `end` time, for example: `"CET"`. |
 
+{{< /tablestep >}}
+{{< /table >}}
+
+<div>
+<br>
+
 In the next step you will configure the data manager to take the sensor into account when syncing.
 
-#### Configure data manager to sync based on sensor
+#### Configure the data manager to sync based on sensor
 
 On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selective_syncer_name` with the name for the sensor you configured and add the sensor to the `depends_on` field:
 
