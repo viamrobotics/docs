@@ -38,6 +38,11 @@ jobs:
           path: resources
           key: ${{ steps.get-date.outputs.date }}-hugo-resources
 
+      - uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ steps.get-date.outputs.date }}-hugo-node_modules
+
       - name: Build
         run: make build-dist-pr
 
