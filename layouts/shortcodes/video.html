@@ -9,7 +9,6 @@
     {{ if gt $sizeInBytes 1000 }}
       {{ warnf "Size of video file %s was %d kB - please reduce file size or use youtube" $webmLink $sizeInBytes  }}
     {{ end }}
-  {{ $webmLink := relURL (substr (.Get "webm_src") 1) }}
   {{ else }}
     {{errorf "File not found - did you use the absolute file path? %s" $webmLink}}
   {{ end }}
@@ -22,26 +21,35 @@
     {{ if gt $sizeInBytes 30000 }}
       {{ warnf "Size of video file %s was %d kB - please reduce file size or use youtube" $mp4Link $sizeInBytes  }}
     {{ end }}
-    {{ $mp4Link := relURL (substr (.Get "mp4_src") 1) }}
   {{end}}
 {{ end }}
 
 {{ if (.Get "poster") }}
   {{ $img := resources.GetMatch (.Get "poster") }}
-  {{if $img }}
+  {{ if $img }}
 <video class="video-shortcode lozad {{ .Get "class" }}" preload="none" controls alt="{{ .Get "alt" }}" style="max-width: {{ .Get "max-width" }}; {{ .Get "style"}}" data-poster="{{ $img.RelPermalink }}">
+  {{ if not (hasPrefix $webmLink "http") }}
+  {{ $webmLink := relURL (substr (.Get "webm_src") 1) }}
   <source data-src="{{ $mp4Link }}" type="video/webm">
+  {{ end }}
+  {{ if not (hasPrefix $mp4Link "http") }}
+  {{ $mp4Link := relURL (substr (.Get "mp4_src") 1) }}
   <source data-src="{{ $webmLink }}" type="video/mp4">
+  {{ end }}
   There should have been a video here but your browser does not seem
   to support it.
 </video>
 <noscript>
   <video class="video-shortcode {{ .Get "class" }}" preload="none" controls alt="{{ .Get "alt" }}" style="max-width: {{ .Get "max-width" }}; {{ .Get "style"}}" poster="{{ $img.RelPermalink }}">
-    <source src="{{ $mp4Link }}" type="video/webm">
-    <source src="{{ $webmLink }}" type="video/mp4">
-    There should have been a video here but your browser does not seem
-    to support it.
-  </video>
+    {{ if not (hasPrefix $webmLink "http") }}
+    {{ $webmLink := relURL (substr (.Get "webm_src") 1) }}
+    <source data-src="{{ $mp4Link }}" type="video/webm">
+    {{ end }}
+    {{ if not (hasPrefix $mp4Link "http") }}
+    {{ $mp4Link := relURL (substr (.Get "mp4_src") 1) }}
+    <source data-src="{{ $webmLink }}" type="video/mp4">
+    {{ end }}
+    </video>
 </noscript>
   {{ else }}
     {{ errorf "Couldn't get image %s" (.Get "poster") }}

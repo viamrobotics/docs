@@ -16,7 +16,6 @@
   {{ else }}
     {{errorf "File not found - did you use the absolute file path? %s" $webmLink}}
   {{end}}
-  {{ $webmLink := relURL (substr (.webm_src) 1) }}
 {{end}}
 {{if not (hasPrefix $mp4Link "http") }}
   {{ $mp4Link := printf "/static%s" (path.Clean (.mp4_src)) }}
@@ -31,19 +30,31 @@
       {{ end }}
     {{ end }}
   {{ end }}
-  {{ $mp4Link := relURL (substr (.mp4_src) 1) }}
 {{ end }}
+
 
 <div class="gif">
   <video autoplay loop muted playsinline alt="{{ .alt }}" width="100%" style="max-width: {{ .maxWidth }}" class="{{- if .class -}}{{ .class}}{{- end }} lozad">
+    {{if not (hasPrefix $webmLink "http") }}
+    {{ $webmLink := relURL (substr (.webm_src) 1) }}
     <source data-src="{{ $webmLink }}" type="video/webm">
+    {{ end }}
+    {{ if not (hasPrefix $mp4Link "http") }}
+    {{ $mp4Link := relURL (substr (.mp4_src) 1) }}
     <source data-src="{{ $mp4Link }}" type="video/mp4">
+    {{ end }}
     There should have been a video here but your browser does not seem to support it.
   </video>
   <noscript>
     <video autoplay loop muted playsinline alt="{{ .alt }}" width="100%" style="max-width: {{ .maxWidth }}" class="{{- if .class -}}{{ .class}}{{- end }}">
+      {{if not (hasPrefix $webmLink "http") }}
+      {{ $webmLink := relURL (substr (.webm_src) 1) }}
       <source src="{{ $webmLink }}" type="video/webm">
+      {{ end }}
+      {{ if not (hasPrefix $mp4Link "http") }}
+      {{ $mp4Link := relURL (substr (.mp4_src) 1) }}
       <source src="{{ $mp4Link }}" type="video/mp4">
+      {{ end }}
       There should have been a video here but your browser does not seem to support it.
     </video>
   </noscript>
