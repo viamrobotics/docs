@@ -66,6 +66,8 @@ brew install dfu-util
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
+Once completed open a new tab on your terminal or run `. "$HOME/.cargo/env"`.
+
 See the [Rust Installation guide](https://www.rust-lang.org/tools/install) for more information and other installation methods.
 
 #### Install `cargo-generate` with `cargo`
