@@ -11,15 +11,16 @@ concurrency:
 on: pull_request
 jobs:
   htmltest:
-    runs-on: ubuntu-large
-    container:
-       image: ghcr.io/viamrobotics/canon:amd64
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
         with:
           submodules: true # Fetch Hugo themes
           fetch-depth: 1 # Fetch all history for .GitInfo and .Lastmod
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '>=1.17.0'
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v2
         with:
