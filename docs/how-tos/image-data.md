@@ -97,7 +97,6 @@ If you do not see images from your camera, try waiting a minute and refreshing t
 
 If no data appears after the sync interval, check the [**Logs**](/cloud/machines/#logs).
 
-You can also [export your data from the Viam app](/services/data/export/) to a deployed machine, or to any computer.
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -134,7 +133,7 @@ Add an ML model service on your machine that is compatible with the ML model you
 **2. Select a suitable ML model**
 
 Click **Select model** on the ML model service configuration panel, then select an [existing model](https://app.viam.com/registry?type=ML+Model) you want to use, or click **Add new model** to upload your own.
-If you're not sure which model to add, you can add [`face-detection`](https://app.viam.com/ml-model/bijan/face-detection) from the **Registry**, which can detect if a person's face appears in the image stream.
+If you're not sure which model to add, you can use [`face-detection`](https://app.viam.com/ml-model/bijan/face-detection) from the **Registry**, which can detect if a person's face appears in the image stream.
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/"%}}
