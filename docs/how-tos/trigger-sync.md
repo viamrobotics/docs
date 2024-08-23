@@ -25,7 +25,8 @@ The code for both of these examples is provided by the [trigger-sync-examples mo
 To set up conditional syncing you need to:
 
 1. Create or use an existing module that implements a `sensor` component that uses custom logic to determine when to enable and disable sync.
-   While this sensor is not sensing the time it _senses_ whether the data manager should sync or not.
+   This sensor does not sense time.
+   It _senses_ whether the data manager should sync or not.
 2. Change the configuration of the data manager to enable selective sync.
 
 {{% alert title="Note: How sync is triggered" color="note" %}}
