@@ -1,6 +1,6 @@
 ---
 title: "viam-micro-server Development Setup"
-linkTitle: "viam-micro-server Dev Setup"
+linkTitle: "viam-micro-server dev setup"
 weight: 50
 no_list: true
 type: docs
@@ -17,6 +17,9 @@ aliases:
 
 `viam-micro-server` is the lightweight version of [`viam-server`](/get-started/#viam-server) which can run on resource-limited embedded systems (ESP32) that cannot run the fully-featured `viam-server`.
 `viam-micro-server` is built from the [micro-RDK](https://github.com/viamrobotics/micro-rdk/tree/main).
+
+This page allows you to customize `viam-micro-server` and create modules.
+If you only want to install `viam-micro-server`, see [Install `viam-micro-serever`](/installation/#install-viam-micro-server).
 
 Follow these steps to install and build `viam-micro-server` on your ESP32 for development:
 
