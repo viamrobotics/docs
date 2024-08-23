@@ -76,40 +76,6 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
 
-  upload-tutorials-page-entries:
-    needs: deploy
-    runs-on: ubuntu-latest
-    if: github.repository_owner == 'viamrobotics'
-    steps:
-      - name: Download the tutorials metadata file
-        uses: actions/download-artifact@v3
-        with:
-          name: tutorials-file
-      - name: Upload tutorials documents
-        run: |
-          jq -c '.[]' typesense.json > documents.jsonl
-          curl -H "X-TYPESENSE-API-KEY: ${{secrets.TYPESENSE_TUTORIALS_API_KEY}}" \
-          -X POST \
-          -T documents.jsonl \
-          "https://cgnvrk0xwyj9576lp-1.a1.typesense.net/collections/tutorials/documents/import?action=upsert"
-
-  upload-quickstarts-page-entries:
-    needs: deploy
-    runs-on: ubuntu-latest
-    if: github.repository_owner == 'viamrobotics'
-    steps:
-      - name: Download the quickstarts metadata file
-        uses: actions/download-artifact@v3
-        with:
-          name: quickstarts-file
-      - name: Upload quickstarts documents
-        run: |
-          jq -c '.[]' typesense.json > documents.jsonl
-          curl -H "X-TYPESENSE-API-KEY: ${{secrets.TYPESENSE_TUTORIALS_API_KEY}}" \
-          -X POST \
-          -T documents.jsonl \
-          "https://cgnvrk0xwyj9576lp-1.a1.typesense.net/collections/tutorials/documents/import?action=upsert"
-
   generate-index:
     needs: deploy
     if: github.repository_owner == 'viamrobotics'
@@ -135,6 +101,33 @@ jobs:
 
       - name: Index
         run: docker run --env-file=typesense.env -e "CONFIG=$(cat docsearch.json)" typesense/docsearch-scraper
+
+  upsert-tutorials:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'viamrobotics'
+    steps:
+      - name: Checkout Push/Workflow Dispatch
+        uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+          cache: "pip" # caching pip dependencies
+      - name: Download the quickstarts file
+        uses: actions/download-artifact@v3
+        with:
+          name: quickstarts-file
+          path: "quickstarts"
+      - name: Download the tutorials file
+        uses: actions/download-artifact@v3
+        with:
+          name: tutorials-file
+          path: "tutorials"
+      - run: pip install -r .github/workflows/requirements.txt
+      - name: "Update tutorials resources"
+        run: python3 .github/workflows/upload_tutorials.py
+        env:
+          TYPESENSE_TUTORIALS_API_KEY: ${{ secrets.TYPESENSE_TUTORIALS_API_KEY }}
 
   upsert-modular-resources:
     needs: build
