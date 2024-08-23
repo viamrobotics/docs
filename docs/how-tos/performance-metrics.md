@@ -11,7 +11,12 @@ videos: ["/services/data/monitor.webm", "/services/data/monitor.mp4"]
 aliases:
   - "/data/capture/performance-metrics/"
   - "/services/data/capture/performance-metrics/"
-no_service: true
+languages: []
+viamresources: ["sensor", "data_manager"]
+level: "Beginner"
+date: "2024-08-23"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 You can use the [`viam-telegraf-sensor`](https://app.viam.com/module/viam/viam-telegraf-sensor) {{< glossary_tooltip term_id="module" text="module" >}} to capture and monitor the following metrics about the performance of individual machines or your entire fleet:
