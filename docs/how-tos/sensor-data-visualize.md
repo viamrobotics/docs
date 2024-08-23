@@ -9,6 +9,12 @@ modulescript: true
 aliases:
   - /data/visualize/
   - /use-cases/sensor-data-visualize/
+languages: []
+viamresources: ["sensor"]
+level: "Beginner"
+date: "2024-08-16"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 Once you have used the data management service to [capture data](/how-tos/collect-sensor-data/), you can visualize your data with a variety of third-party tools, including Grafana, Tableau, Google's Looker Studio, and more.

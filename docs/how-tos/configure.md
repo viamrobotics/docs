@@ -9,6 +9,12 @@ tags: ["components", "configuration"]
 aliases:
   - /use-cases/configure/
   - use-cases/configure/
+languages: []
+viamresources: []
+level: "Beginner"
+date: "2024-08-02"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 You can get a smart machine running with Viam in just a few steps.

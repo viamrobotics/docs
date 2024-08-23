@@ -9,15 +9,17 @@ images: ["/get-started/quickstarts/vision-card.png"]
 imageAlt: "Person detected in camera stream"
 authors: []
 weight: 30
-languages: ["python", "go", "typescript", "flutter", "c++"]
-viamresources: ["camera", "mlmodel", "vision"]
 no_list: true
-level: "Beginner"
-date: "2024-07-31"
 cost: "0"
 resource: "quickstart"
 aliases:
   - /get-started/quickstarts/detect-people/
+languages: []
+viamresources: ["camera", "mlmodel", "vision"]
+level: "Beginner"
+date: "2024-07-31"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 This quickstart is part of a series.

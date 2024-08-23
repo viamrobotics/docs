@@ -10,12 +10,20 @@ weight: 40
 languages: []
 viamresources: ["data_manager", "sensor"]
 no_list: true
-level: "Beginner"
-date: "2024-07-31"
 cost: "0"
 resource: "quickstart"
 aliases:
   - /get-started/quickstarts/collect-data/
+languages: []
+viamresources: [
+    "camera",
+    "sensor",
+    "data_manager",
+  ]
+level: "Beginner"
+date: "2024-07-31"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0" # Approximate cost in USD - Only specify number
 ---
 
 This quickstart is the final part of a series.

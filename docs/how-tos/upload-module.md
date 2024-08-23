@@ -10,6 +10,12 @@ aliases:
   - /registry/upload/
   - /extend/modular-resources/upload/
   - /modular-resources/upload/
+languages: []
+viamresources: []
+level: "Beginner"
+date: "2024-08-21"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 After [writing a module](/how-tos/create-module/), you can upload your module to the Viam registry to:

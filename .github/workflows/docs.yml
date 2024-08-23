@@ -53,6 +53,12 @@ jobs:
           name: quickstarts-file
           path: ./public/get-started/typesense.json
 
+      - name: Upload how-tos search file
+        uses: actions/upload-artifact@v3
+        with:
+          name: howtos-file
+          path: ./public/how-tos/typesense.json
+
       - name: Upload components models file
         uses: actions/upload-artifact@v3
         with:
@@ -118,6 +124,11 @@ jobs:
         with:
           name: quickstarts-file
           path: "quickstarts"
+      - name: Download the how-tos file
+        uses: actions/download-artifact@v3
+        with:
+          name: howtos-file
+          path: "how-tos"
       - name: Download the tutorials file
         uses: actions/download-artifact@v3
         with:
