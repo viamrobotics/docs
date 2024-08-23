@@ -105,7 +105,7 @@ With cloud sync enabled, captured data is automatically uploaded to the Viam app
 {{< /table >}}
 
 {{< alert title="Tip" color="tip" >}}
-If you need to sync data conditionally, for example at a certain time, see [Trigger Sync](/services/data/trigger-sync/#configure-data-manager-to-sync-based-on-sensor).
+If you need to sync data conditionally, for example at a certain time, see [Trigger Sync](/how-tos/trigger-sync/#configure-the-data-manager-to-sync-based-on-sensor).
 {{< /alert >}}
 
 ## View sensor data
