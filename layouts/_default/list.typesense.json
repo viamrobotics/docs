@@ -72,7 +72,11 @@
                         {{- if .Params.resource -}}
                               {{- $.Scratch.Set "resource" .Params.resource -}}
                         {{- else -}}
-                              {{- $.Scratch.Set "resource" "tutorial" -}}
+                              {{- if eq .Section "how-tos"  -}}
+                                    {{- $.Scratch.Set "resource" "how-to" -}}
+                              {{- else -}}
+                                    {{- $.Scratch.Set "resource" "tutorial" -}}
+                              {{- end -}}
                         {{- end -}}
 
                         {{- if .Params.canonical -}}
