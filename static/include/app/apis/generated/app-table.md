@@ -49,6 +49,7 @@
 | [`CreateFragment`](/appendix/apis/fleet/#createfragment) | Create a new private {{< glossary_tooltip term_id="fragment" text="fragment" >}}. |
 | [`UpdateFragment`](/appendix/apis/fleet/#updatefragment) | Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and its config and/or visibility. |
 | [`DeleteFragment`](/appendix/apis/fleet/#deletefragment) | Delete a {{< glossary_tooltip term_id="fragment" text="fragment" >}}. |
+| [`GetFragmentHistory`](/appendix/apis/fleet/#getfragmenthistory) | Get fragment history. |
 | [`AddRole`](/appendix/apis/fleet/#addrole) | Add a role under the organization you are currently authenticated to. |
 | [`RemoveRole`](/appendix/apis/fleet/#removerole) | Remove a role under the organization you are currently authenticated to. |
 | [`ChangeRole`](/appendix/apis/fleet/#changerole) | Changes an existing role to a new role. |
