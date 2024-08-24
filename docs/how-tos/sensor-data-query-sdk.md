@@ -5,7 +5,6 @@ weight: 31
 type: "docs"
 images: ["/services/icons/data-query.svg"]
 description: "Retrieve and query sensor data that you have synced to the Viam app using Python SDK."
-modulescript: true
 aliases:
   - /use-cases/sensor-data-query-sdk/
 languages: ["python"]

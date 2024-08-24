@@ -5,7 +5,6 @@ weight: 30
 type: "docs"
 images: ["/services/icons/data-query.svg"]
 description: "Query sensor data that you have synced to the Viam app using the Viam app with SQL or MQL."
-modulescript: true
 aliases:
   - /manage/data/query/
   - /data/query/

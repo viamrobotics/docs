@@ -5,7 +5,6 @@ weight: 32
 type: "docs"
 images: ["/services/icons/data-visualization.svg"]
 description: "Visualize sensor data from the Viam app using popular tools like Grafana."
-modulescript: true
 aliases:
   - /data/visualize/
   - /use-cases/sensor-data-visualize/
