@@ -5,7 +5,6 @@ weight: 29
 type: "docs"
 images: ["/services/icons/data-capture.svg"]
 description: "Gather sensor data, sync it to the cloud, and view it in the Viam app."
-modulescript: true
 aliases:
   - /use-cases/collect-sensor-data/
 languages: ["python", "go", "typescript", "flutter", "c++"] # Viam SDK programming languages used, if any
