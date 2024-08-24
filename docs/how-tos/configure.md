@@ -64,8 +64,10 @@ For each component that makes up your machine:
 
 1. Find an appropriate model for your hardware. For example, you can scroll through available sensor models on the [sensor page](/components/sensor/#available-models).
 2. Add a suitable model to your machine on the **CONFIGURE** page:
+
    - Click the + icon next to your machine part in the left-hand menu and select Component.
    - [Choosing any component type](/configure/#components) (example: `camera`) and model (example: `webcam`).
+
 4. Click on the **Test** area of the configuration panel to test your component.
 5. If any problems occur check the [logs](/cloud/machines/#logs) or review or roll back the [configuration history](/cloud/machines/#configure).
 
