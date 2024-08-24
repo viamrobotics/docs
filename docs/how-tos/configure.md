@@ -66,10 +66,10 @@ For each component that makes up your machine:
 2. Add a suitable model to your machine on the **CONFIGURE** page:
 
    - Click the + icon next to your machine part in the left-hand menu and select Component.
-   - [Choosing any component type](/configure/#components) (example: `camera`) and model (example: `webcam`).
+   - [Choose any component type](/configure/#components) (example: `camera`) and model (example: `webcam`).
 
-4. Click on the **Test** area of the configuration panel to test your component.
-5. If any problems occur check the [logs](/cloud/machines/#logs) or review or roll back the [configuration history](/cloud/machines/#configure).
+3. Click on the **Test** area of the configuration panel to test your component.
+4. If any problems occur check the [logs](/cloud/machines/#logs) or review or roll back the [configuration history](/cloud/machines/#configure).
 
 If a component you want to use for your project is not natively supported, you can [build your own modular resource](/how-tos/create-module/).
 
