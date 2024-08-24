@@ -243,8 +243,9 @@ While the Pi boots, go to the [Viam app](https://app.viam.com/robots) and [add a
 Navigate to the **CONFIGURE** tab and find your machine's card.
 An alert will be present directing you to **Set up your machine part**.
 Click **View setup instructions** to open the setup instructions.
+Follow the instructions to install `viam-server` on **Linux / Aarch64**.
 
-Select **Linux** as your system's OS, **Aarch64** as your Linux architecture, and **RDK** as your {{< glossary_tooltip term_id="RDK" text="RDK" >}} type.
+{{< glossary_tooltip term_id="RDK" text="RDK" >}} type.
 `ssh` into your Pi and follow the setup instructions to install and run `viam-server` on the machine.
 
 To configure your rover so you can start driving it, [add the Viam Fragment to your Machine](/appendix/try-viam/rover-resources/rover-tutorial-fragments/).
