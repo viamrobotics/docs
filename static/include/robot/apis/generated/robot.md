@@ -24,6 +24,32 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetMachineStatus
+
+Get status information about the machine.
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): current status of the resources (List[ResourceStatus]) of the robot.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+machine_status = await machine.get_machine_status()
+resource_statuses = machine_status.resources
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_machine_status).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### ResourceNames
 
 Get a list of all known resource names connected to this machine.
@@ -46,24 +72,6 @@ resource_names := machine.ResourceNames()
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
-
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-**Parameters:**
-
-- None
-
-**Returns:**
-
-- [(ResourceName.AsObject[])](https://ts.viam.dev/modules/commonApi.ResourceName-1.html): List of all known resource names.
-
-```typescript
-// Get a list of all resources on the machine.
-const resource_names = await machine.resourceNames();
-```
-
-For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/RobotClient.html).
 
 {{% /tab %}}
 {{< /tabs >}}

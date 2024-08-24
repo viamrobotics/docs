@@ -441,6 +441,7 @@ mltraining,DeleteCompletedTrainingJob,,delete_completed_training_job,,
 ## Omitting some Flutter methods from w until we can determine what they do
 ## ( counterpart description text in other SDKs, as  other SDKs implement these)
 robot,GetOperations,,get_operations,,
+robot,GetMachineStatus,,get_machine_status,,
 robot,GetSessions,,,,
 robot,ResourceNames,,,ResourceNames,
 robot,ResourceRPCSubtypes,,,,

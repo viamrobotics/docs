@@ -2,6 +2,7 @@
 | Method Name | Description |
 | ----------- | ----------- |
 | [`GetOperations`](/appendix/apis/robot/#getoperations) | Get the list of operations currently running on the machine. |
+| [`GetMachineStatus`](/appendix/apis/robot/#getmachinestatus) | Get status information about the machine. |
 | [`ResourceNames`](/appendix/apis/robot/#resourcenames) | Get a list of all known resource names connected to this machine. |
 | [`CancelOperation`](/appendix/apis/robot/#canceloperation) | Cancel the specified operation on the machine. |
 | [`BlockForOperation`](/appendix/apis/robot/#blockforoperation) | Blocks on the specified operation on the machine. |
