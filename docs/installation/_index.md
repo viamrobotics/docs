@@ -29,7 +29,7 @@ aliases:
 
 To use Viam, you need to install either the `viam-server` binary or `viam-micro-server`.
 
-[`viam-server`](/get-started/#viam-server) is the binary built from the [Robot Development Kit](https://github.com/viamrobotics/rdk) that contains and manages communications between all Viam's built-in hardware drivers ({{< glossary_tooltip term_id="component" text="components" >}}) and software {{< glossary_tooltip term_id="service" text="services" >}}, connects your machine to the cloud, manages machine configuration, and manages dependencies including {{< glossary_tooltip term_id="module" text="modules" >}}.
+[`viam-server`](/architecture/rdk/) is the binary built from the [Robot Development Kit](https://github.com/viamrobotics/rdk) that contains and manages communications between all Viam's built-in hardware drivers ({{< glossary_tooltip term_id="component" text="components" >}}) and software {{< glossary_tooltip term_id="service" text="services" >}}, connects your machine to the cloud, manages machine configuration, and manages dependencies including {{< glossary_tooltip term_id="module" text="modules" >}}.
 
 `viam-micro-server` is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
 `viam-micro-server` is built from the [micro-RDK](https://github.com/viamrobotics/micro-rdk/tree/main).
@@ -99,14 +99,14 @@ If you have a [compatible operating system](/installation/#compatibility), follo
 
    Click **View setup instructions** to open the setup instructions.
 
-1. Select your system's operating system and **RDK** as your RDK type.
+1. Select the platform you want to run on.
 
-1. Select your preferred installation method:
+1. If you selected **Linux / Aarch 64** or **Linux / x86** also select your installation method:
 
    - `manual`: installs only `viam-server` on your machine.
    - `viam-agent`: installs viam-agent, which will automatically install (or update) viam-server **and** provide additional functionality such as [provisioning](/fleet/provision/) and operating system update configuration.
 
-1. Follow the steps shown on your machine.
+1. Follow the steps shown on the setup page.
 
 1. Once you have followed the steps on the setup instructions, wait for confirmation that your machine has successfully connected.
 
@@ -165,12 +165,11 @@ If you have a [compatible microcontroller](/installation/#compatibility), follow
 
    Click **View setup instructions** to open the setup instructions.
 
-1. Select your system's operating system and **Micro-RDK** as your RDK type.
+1. Select **ESP32** as the platform you want to run on.
 
-1. Follow the instructions to flash `viam-micro-server` directly to an ESP32 connected to your computer through a data cable.
+1. Select the platform you want to use from which to flash the target system.
 
-   To see the `viam-micro-server` logs through the serial connection, add `--monitor` to the command in step 3.
-   If the program cannot auto-detect the serial port to which your ESP32 is connected, you may be prompted to select the correct one among a list.
+1. Follow the instructions to flash `viam-micro-server` to an ESP32 connected to your computer through a data cable.
 
 1. Once you have followed the steps on the setup instructions, `viam-micro-server` is installed and will run.
    Wait for confirmation that your microcontroller has successfully connected.
