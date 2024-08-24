@@ -350,11 +350,9 @@ If not, you will have to take off the ribbon cable and use [dupont connectors](h
 {{< /expand >}}
 
 {{< expand "Raspberry Pi 5" >}}
-If you are using a Raspberry Pi 5, you need to wire one pin differently.
-Pin 35 is a hardware PWM pin on this board, so it does not work as a regular GPIO pin with Viam.
-Use jumper wires or modify the ribbon cable such that left encoder pin A that would normally go to pin 35 goes to a different pin, for example pin 36 (GPIO 16).
-
-Then when you [configure your rover](/appendix/try-viam/rover-resources/rover-tutorial-fragments/), you'll need to modify the left encoder pin A config with an [overwrite](/how-tos/one-to-many/#modify-a-fragment), changing it from `35` to `36`.
+If you are using a Raspberry Pi 5, use the same screw placements as for the Raspberry Pi 4.
+The hardware setup is the same.
+The only difference is in the [configuration](/appendix/try-viam/rover-resources/rover-tutorial-fragments/).
 {{< /expand >}}
 
 Then connect the webcam's USB lead to any USB port on your board.
