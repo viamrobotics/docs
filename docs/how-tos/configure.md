@@ -1,9 +1,9 @@
 ---
-title: "Build a simple smart machine"
-linkTitle: "Build simple smart machines"
+title: "Build and configure smart machine"
+linkTitle: "Configure a smart machines"
 weight: 10
 type: "docs"
-description: "Build a simple smart machine in a few steps using Viam's modular system of components and services without writing much or any code."
+description: "Build a machine in a few steps using Viam's modular system of components and services without writing much or any code."
 images: ["/platform/build.svg", "/services/ml/configure.svg"]
 tags: ["components", "configuration"]
 aliases:
@@ -63,7 +63,11 @@ Each physical piece of your smart machine that is controlled by a computer is ca
 For each component that makes up your machine:
 
 1. Find an appropriate model for your hardware. For example, you can scroll through available sensor models on the [sensor page](/components/sensor/#available-models).
-2. Add a suitable model to your machine on the **CONFIGURE** page by [choosing the component type](/configure/#components) (example: `camera`) and model (example: `webcam`).
+2. Add a suitable model to your machine on the **CONFIGURE** page:
+
+   - Click the + icon next to your machine part in the left-hand menu and select Component.
+   - [Choose any component type](/configure/#components) (example: `camera`) and model (example: `webcam`).
+
 3. Click on the **Test** area of the configuration panel to test your component.
 4. If any problems occur check the [logs](/cloud/machines/#logs) or review or roll back the [configuration history](/cloud/machines/#configure).
 
