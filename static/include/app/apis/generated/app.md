@@ -1488,7 +1488,7 @@ Get fragment history.
 
 **Returns:**
 
-- ([List[FragmentHistoryEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.FragmentHistoryEntry)): The fragment history document(s).
+- ([List[FragmentHistoryEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.FragmentHistoryEntry)): A list of documents with the fragment history.
 
 **Raises:**
 
