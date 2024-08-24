@@ -49,7 +49,7 @@ If you need to modify the config of one or a few machines that use a fragment, y
 When you add a fragment to a machine, the configuration of components and services included in a fragment are _read-only_.
 Any changes made by overwriting them do not change the fragment itself.
 
-If you need to make changes to all machines that use a fragment, you must modify the fragment itself.
+If you need to make changes to all machines that use a fragment, modify the fragment itself instead.
 
 {{% alert title="Support Notice" color="note" %}}
 
@@ -299,6 +299,9 @@ Here are the version options:
 
 {{% /tab %}}
 {{< /tabs >}}
+
+After configuring fragment modifications, check your machine's [**LOGS** tab](/cloud/machines/#logs).
+If there are problems with fragment modifications, depending on the issue, your machine or some of its components may not work until the configuration is fixed.
 
 If you need to restore the original fragment, click the **...** in the upper right corner of the card you modified, and click **Revert changes**.
 
