@@ -73,8 +73,7 @@ Click the name of a machine to go to that machine's page, where you'll find a va
 {{%expand "Step 2: Install viam-server" %}}
 
 Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page to install `viam-server` on your computer, start running it and connect it to the Viam app.
-Select the OS that's appropriate for your computer.
-Select **RDK** as the RDK type.
+Select the Platform you want to install `viam-server` on.
 
 {{% /expand%}}
 {{%expand "Step 3: Configure your webcam" %}}

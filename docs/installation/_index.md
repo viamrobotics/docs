@@ -103,8 +103,8 @@ If you have a [compatible operating system](/installation/#compatibility), follo
 
 1. If you selected **Linux / Aarch 64** or **Linux / x86** also select your installation method:
 
+   - `viam-agent` (recommended): installs viam-agent, which will automatically install (and update) viam-server **and** provide additional functionality such as [provisioning](/fleet/provision/) and operating system update configuration.
    - `manual`: installs only `viam-server` on your machine.
-   - `viam-agent`: installs viam-agent, which will automatically install (or update) viam-server **and** provide additional functionality such as [provisioning](/fleet/provision/) and operating system update configuration.
 
 1. Follow the steps shown on the setup page.
 
