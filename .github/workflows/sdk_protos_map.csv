@@ -406,7 +406,6 @@ data,AddBoundingBoxToImageByID,,add_bounding_box_to_image_by_id,,
 data,RemoveBoundingBoxFromImageByID,,remove_bounding_box_from_image_by_id,,
 data,BoundingBoxLabelsByFilter,,bounding_box_labels_by_filter,,
 data,GetDatabaseConnection,,get_database_connection,,
-## TODO: Something wrong with parsing: configure_database_user in PySDK (??):
 data,ConfigureDatabaseUser,,configure_database_user,,
 data,AddBinaryDataToDatasetByIDs,,add_binary_data_to_dataset_by_ids,,
 data,RemoveBinaryDataFromDatasetByIDs,,remove_binary_data_from_dataset_by_ids,,
