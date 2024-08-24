@@ -6,6 +6,7 @@ weight: 44
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 images: ["/services/icons/data-cloud-sync.svg"]
+icon: true
 aliases:
   - /data/trigger-sync/
   - /services/data/trigger-sync/

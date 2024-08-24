@@ -5,7 +5,6 @@ description: "Capture and sync data about your machines' performance."
 weight: 100
 type: "docs"
 tags: ["data management", "cloud", "sync"]
-icon: true
 images: ["/services/data/monitor.gif"]
 videos: ["/services/data/monitor.webm", "/services/data/monitor.mp4"]
 aliases:
