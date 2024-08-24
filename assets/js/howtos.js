@@ -60,7 +60,7 @@ const customRefinementList = instantsearch.connectors.connectRefinementList(
               type="button"
               value="${staticLabel} (${count})"
               class="${isRefined ? "refined" : ""}"
-              ${count ? "" : "disabled"}
+              ${isRefined || count ? "" : "disabled"}
             />
           </label>
         </li>
