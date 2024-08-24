@@ -380,7 +380,6 @@ python_resource_overrides = {
 python_ignore_apis = [
     'viam.app.app_client.AppClient.get_rover_rental_robots', # internal use
     'viam.app.app_client.AppClient.get_rover_rental_parts', # internal use
-    'viam.app.data_client.DataClient.configure_database_user', # unimplemented
     'viam.app.data_client.DataClient.create_filter', # deprecated
     'viam.app.data_client.DataClient.delete_tabular_data_by_filter', # deprecated
     'viam.components.input.client.ControllerClient.reset_channel', # GUESS ?

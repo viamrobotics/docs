@@ -653,6 +653,36 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### ConfigureDatabaseUser
+
+Configure a database user for the Viam organization’s MongoDB Atlas Data Federation instance. It can also be used to reset the password of the existing database user.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization. You can obtain your organization ID from the Viam app’s organization settings page.
+- `password` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The password of the user.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await data_client.configure_database_user(
+    organization_id="<your-org-id>",
+    password="your_password"
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.configure_database_user).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### AddBinaryDataToDatasetByIDs
 
 Add the `BinaryData` to the provided dataset.
