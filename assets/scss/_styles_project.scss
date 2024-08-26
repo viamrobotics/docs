@@ -1403,6 +1403,15 @@ ul.sectionlist > li:hover {
   max-width: 800px;
 }
 
+.pill-explainer {
+  padding-left: 0.2rem !important;
+}
+
+.pill-explainer > li > p {
+  font-size: 0.833rem !important;
+  margin-bottom: 0 !important;
+}
+
 #tutorial-filters, #tutorial-filter-items {
   display: flex;
   flex-wrap: wrap;

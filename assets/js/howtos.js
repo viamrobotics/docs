@@ -67,11 +67,26 @@ const customRefinementList = instantsearch.connectors.connectRefinementList(
       `;
     });
 
-    container.innerHTML = `
+    if (widgetParams.container == "resource-list") {
+      container.innerHTML = `
       <ul>
         ${list.join("")}
       </ul>
-    `;
+      <ul class="pill-explainer">
+      <li><p><strong>tutorial</strong>: Projects that show you how to use different parts of Viam.</p></li>
+      <li><p><strong>how-to</strong>: Step-by-step guides to complete tasks.</p></li>
+      <li><p><strong>quickstart</strong>: <5 min step-by-step guide to complete tasks.</p></li>
+      <li><p><strong>blogpost</strong>: Sample projects you can build.</p></li>
+      <li><p><strong>codelab</strong>: Community projects and example project.</p></li>
+      </ul>
+      `;
+    } else {
+      container.innerHTML = `
+      <ul>
+        ${list.join("")}
+      </ul>
+      `;
+    }
   },
 );
 
@@ -182,11 +197,11 @@ search.addWidgets([
     operator: "or",
     sortBy: ["name:asc"],
     items: [
-      { label: "blogpost" },
       { label: "tutorial" },
       { label: "how-to" },
-      { label: "codelab" },
       { label: "quickstart" },
+      { label: "blogpost" },
+      { label: "codelab" },
     ],
   }),
   instantsearch.widgets.pagination({
