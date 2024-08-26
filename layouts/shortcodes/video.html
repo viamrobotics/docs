@@ -24,36 +24,36 @@
   {{end}}
 {{ end }}
 
-{{ if (.Get "poster") }}
-  {{ $img := resources.GetMatch (.Get "poster") }}
-  {{ if $img }}
+{{- if (.Get "poster") -}}
+  {{- $img := resources.GetMatch (.Get "poster") -}}
+  {{- if $img -}}
 <video class="video-shortcode lozad {{ .Get "class" }}" preload="none" controls alt="{{ .Get "alt" }}" style="max-width: {{ .Get "max-width" }}; {{ .Get "style"}}" data-poster="{{ $img.RelPermalink }}">
-  {{ if not (hasPrefix $webmLink "http") }}
-  {{ $webmLink := relURL (substr (.Get "webm_src") 1) }}
+  {{- if not (hasPrefix $webmLink "http") -}}
+  {{- $webmLink := relURL (substr (.Get "webm_src") 1) -}}
   <source data-src="{{ $mp4Link }}" type="video/webm">
-  {{ end }}
-  {{ if not (hasPrefix $mp4Link "http") }}
-  {{ $mp4Link := relURL (substr (.Get "mp4_src") 1) }}
+  {{- end -}}
+  {{- if not (hasPrefix $mp4Link "http") -}}
+  {{- $mp4Link := relURL (substr (.Get "mp4_src") 1) -}}
   <source data-src="{{ $webmLink }}" type="video/mp4">
-  {{ end }}
+  {{- end -}}
   There should have been a video here but your browser does not seem
   to support it.
 </video>
 <noscript>
   <video class="video-shortcode {{ .Get "class" }}" preload="none" controls alt="{{ .Get "alt" }}" style="max-width: {{ .Get "max-width" }}; {{ .Get "style"}}" poster="{{ $img.RelPermalink }}">
-    {{ if not (hasPrefix $webmLink "http") }}
-    {{ $webmLink := relURL (substr (.Get "webm_src") 1) }}
+    {{- if not (hasPrefix $webmLink "http") -}}
+    {{- $webmLink := relURL (substr (.Get "webm_src") 1) -}}
     <source data-src="{{ $mp4Link }}" type="video/webm">
-    {{ end }}
-    {{ if not (hasPrefix $mp4Link "http") }}
-    {{ $mp4Link := relURL (substr (.Get "mp4_src") 1) }}
+    {{- end -}}
+    {{- if not (hasPrefix $mp4Link "http") -}}
+    {{- $mp4Link := relURL (substr (.Get "mp4_src") 1) -}}
     <source data-src="{{ $webmLink }}" type="video/mp4">
-    {{ end }}
+    {{- end -}}
     </video>
 </noscript>
-  {{ else }}
-    {{ errorf "Couldn't get image %s" (.Get "poster") }}
-  {{ end }}
-{{ else }}
-  {{ errorf "Video should have poster %s" (.Get "webm_src") }}
-{{ end }}
+  {{- else -}}
+    {{- errorf "Couldn't get image %s" (.Get "poster") -}}
+  {{- end -}}
+{{- else -}}
+  {{- errorf "Video should have poster %s" (.Get "webm_src") -}}
+{{- end -}}
