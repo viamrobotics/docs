@@ -1,6 +1,6 @@
 ---
-title: "Build and configure smart machine"
-linkTitle: "Configure a smart machines"
+title: "Build and configure a smart machine"
+linkTitle: "Configure a smart machine"
 weight: 10
 type: "docs"
 description: "Build a machine in a few steps using Viam's modular system of components and services without writing much or any code."
@@ -13,7 +13,7 @@ languages: []
 viamresources: []
 level: "Beginner"
 date: "2024-08-02"
-# updated: ""  # When the tutorial was last entirely checked
+# updated: "2024-08-26"  # When the tutorial was last entirely checked
 cost: "0"
 ---
 
