@@ -170,7 +170,7 @@ You can also add a time window to capture data in right before a detection, so a
 {
   "window_seconds": 0,
   "objects": {
-    "Person": 0.5
+    "Person": 0.8
   },
   "camera": "camera-1",
   "vision": "vision-1"
