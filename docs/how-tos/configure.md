@@ -42,17 +42,20 @@ Install it on the computer controlling your smart machine by following the {{< g
 
 If you are using a microcontroller instead of a 64-bit computer, you can install a [lightweight version of `viam-server`](/installation/#install-viam-micro-server).
 You can install `viam-server` on your personal computer, or on a single-board computer (SBC).
+After following the setup instructions and starting `viam-server` on your machine, your machine should appear as **Live** on the Viam app.
 
 {{% /tablestep %}}
 {{% tablestep link="/configure/" %}}
-**3. Navigate to the CONFIGURE page of your machine**
+**3. Navigate to the CONFIGURE tab of your machine**
 
-Machines can be small and simple or very complex but they are all configured on the **CONFIGURE** tab.
+Machines can be small and simple or very complex but they are all configured on the **CONFIGURE** tab of the [Viam app](https://app.viam.com/).
 A machine can be a single-board computer with a single sensor or LED wired to it, or a machine can consist of multiple computers with many physical components connected, acting as one unit.
 
 <div>
 {{< imgproc src="/viam/machine-components.png" alt="Machine components" resize="600x" class="aligncenter" >}}
 </div>
+
+Click on the **CONFIGURE** tab of your machine's page in the Viam app to navigate to it.
 
 {{% /tablestep %}}
 {{% tablestep link="/components/" %}}
@@ -62,13 +65,15 @@ Each physical piece of your smart machine that is controlled by a computer is ca
 
 For each component that makes up your machine:
 
-1. Find an appropriate model for your hardware. For example, you can scroll through available sensor models on the [sensor page](/components/sensor/#available-models).
+1. Find an appropriate model for your hardware.
+   You can find the available models on the [component pages](/components/).
+   For example, you can scroll through available sensor models on the [sensor page](/components/sensor/#available-models).
 2. Add a suitable model to your machine on the **CONFIGURE** page:
 
    - Click the + icon next to your machine part in the left-hand menu and select Component.
    - [Choose any component type](/configure/#components) (example: `camera`) and model (example: `webcam`).
 
-3. Click on the **Test** area of the configuration panel to test your component.
+3. Click on the **Test** area of the configuration panel to test controlling your component.
 4. If any problems occur check the [logs](/cloud/machines/#logs) or review or roll back the [configuration history](/cloud/machines/#configure).
 
 If a component you want to use for your project is not natively supported, you can [build your own modular resource](/how-tos/create-module/).
@@ -82,7 +87,7 @@ For example, if you have a DC motor, follow the [corresponding configuration ins
 
 <!-- markdownlint-disable MD036 -->
 
-**5. Test your components**
+**5. Control your components**
 
 When you configure a component, a remote control panel is generated for it in the **CONTROL** tab of the Viam app.
 With the panels, you can drive motors at different speeds, view your camera feeds, see sensor readings, and generally test the basic functionality of your machine before you've even written any code.
@@ -117,7 +122,7 @@ Once you have configured your machine, continue to develop an application:
 {{% card link="/how-tos/develop-app/" %}}
 {{< /cards >}}
 
-To see full sample projects, that configure and control machines, check out these tutorials:
+To see full sample projects that configure and control machines, check out these tutorials:
 
 {{< cards >}}
 {{% card link="/tutorials/get-started/lazy-susan/" %}}
