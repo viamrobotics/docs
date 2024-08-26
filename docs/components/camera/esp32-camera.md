@@ -12,8 +12,7 @@ toc_hide: true
 # SMEs: Matt Perez, micro-RDK team
 ---
 
-`esp32-camera` is the camera model for cameras connected to an `esp32` board, which are initialized and configured using the [`viam-micro-server` Development Setup](/installation/micro-rdk-dev/) (ESP-IDF).
-If the camera drivers are one of the following two, the camera will work with the `esp32-camera` model:
+`esp32-camera` is the camera model that supports all cameras that work with Espressif's [esp32-camera drivers](https://github.com/espressif/esp32-camera) including:
 
 - `OV2640`
 
@@ -29,11 +28,11 @@ For example, the `OV2640` with a ribbon cable connected to an ESP32:
 
 {{< imgproc src="/components/camera/esp32-camera-2640.png" alt="Fake Camera on the ESP32" resize="300x" >}}
 
-## Software requirements
-
-To use this model, you must follow the [`viam-micro-server` Development Setup](/installation/micro-rdk-dev/), which enables you to install and activate the ESP-IDF.
-At the step [Generate a new project from the `viam-micro-server` template](/installation/micro-rdk-dev/#generate-a-new-project-from-the-micro-rdk-template) where you create a new project with `cargo generate`, select the option to include camera module traits when prompted.
-Finish the [`viam-micro-server` Development Setup](/installation/micro-rdk-dev/) and return to this guide.
+{{< alert title="Software requirements" color="note" >}}
+To use this model, you must follow the [Micro-RDK Development Setup](/installation/micro-rdk-dev/), which enables you to install and activate the ESP-IDF.
+At the step [Generate a new project from the micro-RDK template](/installation/micro-rdk-dev/#generate-a-new-project-from-the-micro-rdk-template) where you create a new project with `cargo generate`, select the option to include camera module traits when prompted.
+Finish the [Micro-RDK Development Setup](/installation/micro-rdk-dev/) and return to this guide.
+{{< /alert >}}
 
 {{< alert title="Info" color="info" >}}
 
@@ -153,38 +152,41 @@ Edit and fill in the attributes as applicable.
 {{% /tab %}}
 {{< /tabs >}}
 
+{{% alert title="Note" color="note" %}}
+While the following attributes marked as **Optional** do have defaults, it is still recommended that you configure them to your datasheet and device's needs (which likely do not align with the defaults) in order to get the camera stream.
+{{% /alert %}}
+
 The following attributes are available for `esp32-camera` cameras:
 
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `pin_pwdn` | int | Required | GPIO pin for camera power down line. <br> Default: -1 |
-| `pin_reset` | int | Required | GPIO pin for camera reset line. <br> Default: -1 |
-| `pin_xclk` | int | Required | GPIO pin for camera XCLK line. <br> Default: 21 |
-| `pin_sccb_sda` | int | Required | GPIO pin for camera SDA line. <br> Default: 26 |
-| `pin_sccb_scl` | int | Required | GPIO pin for camera SCL line. <br> Default: 27 |
-| `pin_d7` | int | Required | GPIO pin for camera D7 line. <br> Default: 35|
-| `pin_d6` | int | Required | GPIO pin for camera D6 line. <br> Default: 34 |
-| `pin_d5` | int | Required | GPIO pin for camera D5 line. <br> Default: 39 |
-| `pin_d4` | int | Required | GPIO pin for camera D4 line. <br> Default: 36 |
-| `pin_d3` | int | Required | GPIO pin for camera D3 line. <br> Default: 19 |
-| `pin_d2` | int | Required | GPIO pin for camera D2 line. <br> Default: 18 |
-| `pin_d1` | int | Required | GPIO pin for camera D1 line. <br> Default: 5 |
-| `pin_d0` | int | Required | GPIO pin for camera D0 line. <br> Default: 4 |
-| `pin_vsync` | int | Required | GPIO pin for camera VSYNC line. <br> Default: 25 |
-| `pin_href` | int | Required | GPIO pin for camera HREF line. <br> Default: 23 |
-| `pin_pclk` | int | Required | GPIO pin for camera PLCK line. <br> Default: 22 |
-| `xclk_freq_hz` | int | Required | Frequency of XCLK signal, in Hz. <br> Experimental: Set to 16MHz on ESP32-S2 or ESP32-S3 to enable EDMA mode. <br> Default: 20000000 |
-| `ledc_timer` | int | Required | LEDC timer to generate XCLK. <br> Default: 1 |
-| `ledc_channel` | int | Required | LEDC channel to generate XCLK. <br> Default: 1 |
+| `pin_pwdn` | int | Optional | GPIO pin for camera power down line. <br> Default: -1 |
+| `pin_reset` | int | Optional | GPIO pin for camera reset line. <br> Default: -1 |
+| `pin_xclk` | int | Optional | GPIO pin for camera XCLK line. <br> Default: 21 |
+| `pin_sccb_sda` | int | Optional | GPIO pin for camera SDA line. <br> Default: 26 |
+| `pin_sccb_scl` | int | Optional | GPIO pin for camera SCL line. <br> Default: 27 |
+| `pin_d7` | int | Optional | GPIO pin for camera D7 line. <br> Default: 35|
+| `pin_d6` | int | Optional | GPIO pin for camera D6 line. <br> Default: 34 |
+| `pin_d5` | int | Optional | GPIO pin for camera D5 line. <br> Default: 39 |
+| `pin_d4` | int | Optional | GPIO pin for camera D4 line. <br> Default: 36 |
+| `pin_d3` | int | Optional | GPIO pin for camera D3 line. <br> Default: 19 |
+| `pin_d2` | int | Optional | GPIO pin for camera D2 line. <br> Default: 18 |
+| `pin_d1` | int | Optional | GPIO pin for camera D1 line. <br> Default: 5 |
+| `pin_d0` | int | Optional | GPIO pin for camera D0 line. <br> Default: 4 |
+| `pin_vsync` | int | Optional | GPIO pin for camera VSYNC line. <br> Default: 25 |
+| `pin_href` | int | Optional | GPIO pin for camera HREF line. <br> Default: 23 |
+| `pin_pclk` | int | Optional | GPIO pin for camera PLCK line. <br> Default: 22 |
+| `xclk_freq_hz` | int | Optional | Frequency of XCLK signal, in Hz. <br> Experimental: Set to 16MHz on ESP32-S2 or ESP32-S3 to enable EDMA mode. <br> Default: 20000000 |
+| `ledc_timer` | int | Optional | LEDC timer to generate XCLK. <br> Default: 1 |
+| `ledc_channel` | int | Optional | LEDC channel to generate XCLK. <br> Default: 1 |
 | `frame_size` | int | Optional | Size of the output image. <br> Default: 1 |
 | `jpeg_quality` | int | Optional | Quality of JPEG output. Lower means higher quality. <br> Range: 0-63 <br> Default: 32 |
-
-{{% alert title="Note" color="note" %}}
-While the above attributes marked as **Required** do have defaults, it is still recommended that you configure them to your datasheet and device's needs (which likely do not align with the defaults).
-That is why they are marked as required.
-{{% /alert %}}
 
 ## View the camera stream
 
 {{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
+
+## Next steps
+
+Configure [data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/) for `viam-micro-server` to capture images from the camera stream and store them in the Viam cloud.

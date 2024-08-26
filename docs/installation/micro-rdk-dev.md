@@ -247,7 +247,7 @@ You will be prompted to paste your machine's `viam-server` robot JSON configurat
 To obtain this:
 
 - Navigate to [your new machine's](#create-a-new-machine) page on [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
-- Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="/build/micro-rdk/part-dropdown.png" resize="x600" style="max-width: 500px" declaredimensions=true alt="The part status dropdown of an offline machine.">}}
+- Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 - Click the copy icon underneath **Machine cloud credentials**.
   `viam-micro-server` needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 - Paste the machine cloud credentials into your terminal when prompted.
@@ -301,6 +301,8 @@ If you get the following error while connecting to your ESP32:
   ╰─▶ Timeout while running command
 ```
 
+If successful, the Viam app will show that your machine part's status is **Live**.
+
 Run the following command:
 
 ```sh { class="command-line" data-prompt="$"}
@@ -314,7 +316,7 @@ If successful, the Viam app will show that your machine part's status is **Live*
 If you get the error `viam.json not found` try the following to manually add your machine cloud credentials as a file in your project:
 
 1. Navigate to [your new machine's](#create-a-new-machine) page on [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
-1. Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="/build/micro-rdk/part-dropdown.png" resize="x600" style="max-width: 500px" declaredimensions=true alt="The part status dropdown of an offline machine.">}}
+1. Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 1. Click the copy icon underneath **Machine cloud credentials**.
    `viam-micro-server` needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 1. Navigate to the directory of the project you just created.

@@ -62,4 +62,4 @@ You can change the refresh frequency as needed to change bandwidth.
 
 ## Next steps
 
-{{< readfile "/static/include/components/camera-model-next-steps.md" >}}
+Configure [data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/) for `viam-micro-server` to capture images from the camera stream and store them in the Viam cloud.
