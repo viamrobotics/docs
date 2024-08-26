@@ -262,7 +262,7 @@ viam [global options] command [command options] [arguments...]
 <!-- prettier-ignore -->
 | Parameter | Description |
 | --------- | ----------- |
-| [Global options](#global-options) | _optional_ - ist of flags that apply for commands. |
+| [Global options](#global-options) | _optional_ - list of flags that apply for commands. |
 | [Command](#commands) | _required_ - the specific CLI command to run. |
 | Command options | _required for some commands_  - the operation to run for the specified command. |
 | Arguments | _required for some commands_ - the arguments for the specified command operation. Some commands take positional arguments, some named arguments. |
@@ -469,6 +469,8 @@ viam data export --destination=/home/robot/data --data-type=binary \
 # configure a database user for the Viam organization's MongoDB Atlas Data
 # Federation instance, in order to query tabular data
 viam data database configure --org-id=abc --password=my_password123
+
+# get the hostname to access a MongoDB Atlas Data Federation instance
 viam data database hostname --org-id=abc
 
 # add tags to all data that matches the given ids
@@ -512,7 +514,7 @@ done
 <!-- prettier-ignore -->
 | Argument | Description |
 | -------- | ----------- |
-| `filter` | `add` or `remove` images or tags from a dataset using a filter. See [Using the `filter` argument)](#using-the-filter-argument).|
+| `filter` | `add` or `remove` images or tags from a dataset using a filter. See [Using the `filter` argument](#using-the-filter-argument).|
 | `ids` | `add` or `remove` images or tags from a dataset by specifying one or more file ids as a comma-separated list. See [Using the `ids` argument](#using-the-ids-argument).|
 | `--help` | Return help |
 
@@ -523,25 +525,25 @@ done
 | -------- | ----------- | ------------------- | --------- |
 | `--destination` | Output directory for downloaded data |`export` | **Required** |
 | `--data-type` | Data type to be downloaded: either binary or tabular |`export`| **Required** |
-| `--component-name` | Filter by specified component name |`export`, `delete`| Optional |
-| `--component-type` | Filter by specified component type |`export`, `delete`| Optional |
+| `--component-name` | Filter by specified component name |`export`, `delete`, `tag filter`| Optional |
+| `--component-type` | Filter by specified component type |`export`, `delete`, `tag filter` | Optional |
 | `--component-model` | Filter by specified component model |`export`, `delete`| Optional |
 | `--delete-older-than-days` | Number of days, 0 means all data will be deleted | `delete` | Optional |
-| `--start` | ISO-8601 timestamp indicating the start of the interval |`export`, `delete`, `dataset`| Optional |
-| `--end` | ISO-8601 timestamp indicating the end of the interval |`export`, `delete`, `dataset`| Optional |
+| `--start` | ISO-8601 timestamp indicating the start of the interval |`export`, `delete`, `dataset`, `tag filter`| Optional |
+| `--end` | ISO-8601 timestamp indicating the end of the interval |`export`, `delete`, `dataset`, `tag filter`| Optional |
 | `--file-ids` | File-ids to add or remove tags from | `tag ids` | **Required** |
 | `--location-id` | Location ID for the file ids being added or removed from the specified dataset (only accepts one location id) |`dataset`, `tag ids` | **Required** |
 | `--location-ids` | Filter by specified location ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. |`export`, `delete`, `tag filter`| Optional |
-| `--method` | Filter by specified method |`export`, `delete`| Optional |
-| `--mime-types` | Filter by specified MIME type (accepts comma-separated list) |`export`, `delete`|false |
+| `--method` | Filter by specified method |`export`, `delete`, `tag filter`| Optional |
+| `--mime-types` | Filter by specified MIME type (accepts comma-separated list) |`export`, `delete`, `tag filter`|false |
 | `--org-id` | Org ID for the database user being configured (with `database`) or data being tagged (`tag ids`) | `database configure`, `database hostname`, `tag ids` | **Required** |
-| `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. |`export`, `delete`, `tag filter` | Optional |
+| `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. |`export`, `delete`, `tag filter`| Optional |
 | `--parallel` | Number of download requests to make in parallel, with a default value of 10 |`export`, `delete`, `dataset export` | Optional |
-| `--part-id` | Filter by specified part ID |`export`, `delete`| Optional |
-| `--part-name` | Filter by specified part name |`export`, `delete`| Optional |
+| `--part-id` | Filter by specified part ID |`export`, `delete`, `tag filter`| Optional |
+| `--part-name` | Filter by specified part name |`export`, `delete`, `tag filter`| Optional |
 | `--machine-id` | Filter by specified machine ID |`export`, `delete`, `tag filter` | Optional |
-| `--machine-name` | Filter by specified machine name |`export`, `delete`| Optional |
-| `--tags` | Filter by (`export`, `delete`) or add (`tag`) specified tag (accepts comma-separated list) |`export`, `delete`, `tag` | Optional |
+| `--machine-name` | Filter by specified machine name |`export`, `delete`, `tag filter`| Optional |
+| `--tags` | Filter by (`export`, `delete`) or add (`tag`) specified tag (accepts comma-separated list) |`export`, `delete`, `tag ids`, `tag filter` | Optional |
 | `--password` | Password for the database user being configured | `database configure` | **Required** |
 
 ### `locations`
@@ -1214,7 +1216,6 @@ viam training-script update --org-id=<org-id> --script-name=<script-name> --visi
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
-
 # upload a single label classification script in the tflite framework to organization 123
 viam training-script upload --framework=tflite --org-id=123 --path=. --script-name=MyCustomTrainingScript --type=single_label_classification
 
