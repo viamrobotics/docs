@@ -1,0 +1,1 @@
+Get status information about the machine.
