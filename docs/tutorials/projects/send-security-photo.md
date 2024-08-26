@@ -261,7 +261,7 @@ You need to tell the code how to access your specific machine (which in this cas
 
 Navigate to the **CONNECT** tab on the Viam app.
 Make sure Python is selected in the Language selector.
-Get the machine address and API key from the code sample and set them as environment variables or add them at the top of <FILE>chocolate_security.py</FILE>.
+Get the machine address from the top of the **Code Sample** page and an API key and API key ID from the **API keys** page and set them as environment variables or add them at the top of <FILE>chocolate_security.py</FILE>.
 
 {{% snippet "show-secret.md" %}}
 

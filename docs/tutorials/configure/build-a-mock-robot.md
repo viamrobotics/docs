@@ -371,8 +371,7 @@ This instance of `viam-server` will work with the main part's instance of `viam-
 
 Stay on the **CONFIGURE** tab.
 Click the **...** (Actions) icon on the right side of the sub-part's card and select **View setup instructions** to open the sub-part's setup instructions.
-Select your system's OS and keep the RDK type as **RDK**.
-Follow the instructions and wait for confirmation that your sub-part has connected.
+Select the platform you want to run `viam-server` on and follow the instructions until you receive confirmation that your sub-part has connected.
 
 Now that you have two instances of `viam-server` running on your local machine, you should be able to see both your main robot arm and your new mock sub motor listed on your main machine's **CONTROL** tab.
 

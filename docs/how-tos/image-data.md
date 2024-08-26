@@ -8,6 +8,12 @@ images: ["/services/ml/collect.svg"]
 description: "Capture images from a camera on your machine and selectively sync images to the cloud with filtering."
 aliases:
   - /use-cases/image-data/
+languages: []
+viamresources: ["camera", "data_manager", "mlmodel", "vision"]
+level: "Intermediate"
+date: "2024-06-21"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 You can use Viam's built-in data management service to capture images from a camera on your machine and sync the images to the cloud.
@@ -171,7 +177,7 @@ You can add a [`transform` camera](/components/camera/transform/) to see detecti
 **7. (Optional) Trigger sync with custom logic**
 
 By default, the captured data syncs at the regular interval you specified in the data capture config.
-If you need to trigger sync in a different way, see [Trigger cloud sync conditionally](/services/data/trigger-sync/) for a documented example of syncing data only at certain times of day.
+If you need to trigger sync in a different way, see [Trigger cloud sync conditionally](/how-tos/trigger-sync/) for a documented example of syncing data only at certain times of day.
 
 {{% /tablestep %}}
 {{< /table >}}

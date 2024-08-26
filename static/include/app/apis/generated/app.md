@@ -94,7 +94,7 @@ Get all organizations that have access to a location.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-org_list = await cloud.get_organization_with_access_to_location("location-id")
+org_list = await cloud.get_organizations_with_access_to_location("location-id")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_organizations_with_access_to_location).
@@ -224,6 +224,12 @@ Delete an organization.
 **Returns:**
 
 - None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.delete_organization("org-id")
+```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_organization).
 
@@ -1464,6 +1470,41 @@ await cloud.delete_fragment(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_fragment).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetFragmentHistory
+
+Get fragment history.
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the fragment to fetch history for.
+- `page_token` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): the page token for the fragment history collection.
+- `page_limit` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): the number of fragment history documents to return in the result. The default page limit is 10.
+
+**Returns:**
+
+- ([List[FragmentHistoryEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.FragmentHistoryEntry)): A list of documents with the fragment history.
+
+**Raises:**
+
+- (GRPCError): if an invalid fragment id, page token or page limit is passed.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+fragment_history = await cloud.get_fragment_history(
+    id = "12a12ab1-1234-5678-abcd-abcd01234567",
+    page_token = "pg-token",
+    page_limit = 10
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_fragment_history).
 
 {{% /tab %}}
 {{< /tabs >}}

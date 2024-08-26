@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}" class="no-js">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body class="td-{{ .Kind }}{{ with .Page.Params.body_class }} {{ . }}{{ end }}">
+    {{- if hugo.IsProduction -}}{{- if .Site.Config.Services.GoogleAnalytics.ID -}}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ .Site.Config.Services.GoogleAnalytics.ID }}"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {{- end -}}{{- end -}}
+    <header>
+      {{ partial "navbar.html" . }}
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+            <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+                {{ partial "sidebar.html" . }}
+            </aside>
+            <main class="col-12 col-md-9 col-xl-10 pl-md-5" role="main">
+                {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
+                <div class="td-content">
+                    <h1>{{ .Title }}</h1>
+                    <p>
+                        Click on one of the following guides that provide solutions for common tasks and workflows.
+                    </p>
+                    <p>
+                        You can filter these guides by language, component, or service that you're interested in.
+                    </p>
+
+                    {{ if not hugo.IsProduction }}
+                    <div class="alert alert-caution" role="alert">
+                        <h4 class="alert-heading">Missing the filtering UI?</h4>
+                        <p>The filtering UI relies on data from Typesense which is only generated on publish.
+                            (This message is only visible on staging.)
+                        </p>
+                    </div>
+                    {{ $pages := union .Sections .Pages }}
+                    <div id="archive" class="card-container">
+                      <div class="row-no-margin">
+                        {{ range sort $pages ".Weight"}}
+                          {{ partial "card.html" (dict "link" (.Page.File.Path) "class" "" "customTitle" "" "customDescription" "" "customCanonicalLink" (.Page.Params.canonical) ) }}
+                      {{ end }}
+                      </div>
+                    </div>
+                    {{ else }}
+
+                        <div id="tutorial-menu" class="lozad">
+                            <div id="tutorial-filters">
+                                <div class="filter" id="filter-languages" aria-expanded="false" data-toggle="collapse" data-target="#languages-list">Languages</div>
+                                <div class="filter" id="filter-components" aria-expanded="false" data-toggle="collapse" data-target="#components-list">Components</div>
+                                <div class="filter" id="filter-services" aria-expanded="false" data-toggle="collapse" data-target="#services-list">Services</div>
+                                <div class="filter" id="filter-level" aria-expanded="false" data-toggle="collapse" data-target="#level-list">Level</div>
+                                <div class="filter" id="filter-resources" aria-expanded="false" data-toggle="collapse" data-target="#resource-list">Content Type</div>
+                            </div>
+                            <div class="accordion-group search-panel__filters show-on-wide lozad" id="tutorial-filter-items">
+                                <div id="languages-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
+                                <div id="components-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
+                                <div id="services-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
+                                <div id="level-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
+                                <div id="resource-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
+                            </div>
+                        </div>
+
+                    <div class="search-panel__results card-container lozad">
+                        <div id="hits" class="row-no-margin"></div>
+                        <div id="pagination"></div>
+                    </div>
+                    <!-- if no javscript show the tutorials -->
+                    <noscript>
+                        <div class="alert alert-caution" role="alert">
+                            <h4 class="alert-heading">Javascript</h4>
+                            <p>Please enable javascript to see all how-to guides.</p>
+                        </div>
+                        <div class="card-container">
+                            <div class="row-no-margin">
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/configure/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/develop-app/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/image-data/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/deploy-ml/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/collect-sensor-data/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/sensor-data-query-with-third-party-tools/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/sensor-data-query-sdk/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/sensor-data-visualize/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/create-module/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/sensor-module/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/upload-module/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/manage-modules/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/navigate/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/one-to-many/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/provision-setup/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/provision/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/how-tos/manage-fleet/") }}
+                            </div>
+                        </div>
+                    </noscript>
+                    {{ end }}
+                </div>
+                <p>If you're looking for examples of how Viam is being used in the world, have a look at <a href="https://www.viam.com/customers">customer stories</a>, follow our <a href="../tutorials/">step-by-step tutorials</a>, or browse our <a href="https://www.viam.com/blog?categories=Tutorials">blog posts</a>.</p>
+            </main>
+        </div>
+        {{ $img := resources.GetMatch "/icons/learn-viam-robot-icon-ai.svg" }}
+        <button onclick="initAndClick()" class="docsbutton" id="chatButton" title="Chatbot and support">
+            <span id="chatButtonContent">
+              <i style="font-size:x-large;" class="fas fa-comments"></i>
+              <span>Ask AI</span>
+            </span>
+        </button>
+    </div>
+      {{ partial "footer.html" . }}
+    </div>
+
+    {{ partial "scripts.html" . }}
+
+    <script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.46.0"></script>
+
+    {{ $jsHowtos := resources.Get "js/howtos.js" }}
+    {{ $jsHowtos := $jsHowtos | minify }}
+    <script type="text/javascript" src="{{ $jsHowtos.RelPermalink }}" crossorigin="anonymous"></script>
+
+  </body>
+</html>

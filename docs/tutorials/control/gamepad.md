@@ -43,7 +43,7 @@ You will need the following hardware to complete this tutorial:
   This is the controller that comes with the SCUTTLE rover.
   You can also use an 8BitDo controller with additional setup.
 
-{{<video webm_src="/tutorials/videos/scuttledemos_gamepad.webm" mp4_src="/tutorials/videos/scuttledemos_gamepad.mp4" alt="Controlling a Scuttle robot using a Bluetooth gamepad" poster="/tutorials/scuttlebot/scuttledemos_gamepad.jpg">}}
+{{<video webm_src="https://storage.googleapis.com/docs-blog/tutorials/videos/scuttledemos_gamepad.webm" mp4_src="https://storage.googleapis.com/docs-blog/tutorials/videos/scuttledemos_gamepad.mp4" alt="Controlling a Scuttle robot using a Bluetooth gamepad" poster="/tutorials/scuttlebot/scuttledemos_gamepad.jpg">}}
 
 ## Set up the hardware
 

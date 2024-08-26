@@ -34,6 +34,23 @@
                     <p>
                         Select a language, component, or service that you're interested in and browse relevant tutorials. If you don't know where to start, start by selecting the beginner level for introductory tutorials.
                     </p>
+                    {{ if not hugo.IsProduction }}
+                    <div class="alert alert-caution" role="alert">
+                        <h4 class="alert-heading">Missing the filtering UI?</h4>
+                        <p>The filtering UI relies on data from Typesense which is only generated on publish.
+                            (This message is only visible on staging.)
+                        </p>
+                    </div>
+                    {{ $pctx := .Site }}
+                    {{- $pages := (where (where $pctx.RegularPages ".Section" "tutorials") "Kind" "page")  -}}
+                    <div id="archive" class="card-container">
+                      <div class="row-no-margin">
+                        {{ range sort $pages ".Weight"}}
+                            {{ partial "card.html" (dict "link" (.Page.File.Path) "class" "" "customTitle" "" "customDescription" "" "customCanonicalLink" (.Page.Params.canonical) ) }}
+                        {{ end }}
+                      </div>
+                    </div>
+                    {{ else }}
                         <div id="tutorial-menu" class="lozad">
                             <div id="tutorial-filters">
                                 <div class="filter" id="filter-languages" aria-expanded="false" data-toggle="collapse" data-target="#languages-list">Languages</div>
@@ -51,20 +68,11 @@
                             </div>
                         </div>
 
-                    {{ if not hugo.IsProduction }}
-                    <div class="alert alert-caution" role="alert">
-                        <h4 class="alert-heading">Missing a tutorial?</h4>
-                        <p>This page relies on data from Typesense which is only generated on publish.
-                            Access your tutorial with its URL.
-                            (This message is only visible on staging.)
-                        </p>
-                    </div>
-                    {{ end }}
-
                     <div class="search-panel__results card-container lozad">
                         <div id="hits" class="row-no-margin"></div>
                         <div id="pagination"></div>
                     </div>
+                    {{ end }}
                     <!-- if no javscript show the tutorials -->
                     <noscript>
                         <div class="alert alert-caution" role="alert">
@@ -94,7 +102,10 @@
         </div>
         {{ $img := resources.GetMatch "/icons/learn-viam-robot-icon-ai.svg" }}
         <button onclick="initAndClick()" class="docsbutton" id="chatButton" title="Chatbot and support">
-            <i style="font-size:x-large;" class="fas fa-comments"></i>
+            <span id="chatButtonContent">
+              <i style="font-size:x-large;" class="fas fa-comments"></i>
+              <span>Ask AI</span>
+            </span>
         </button>
     </div>
       {{ partial "footer.html" . }}

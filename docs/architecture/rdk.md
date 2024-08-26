@@ -15,18 +15,33 @@ aliases:
 For an overview of the Viam platform, see [Get started](/get-started/).
 {{< /alert >}}
 
-_viam-server_ manages the following:
+At the core of Viam is the open-source `viam-server` executable which runs on a computer and manages hardware, software, and data for a machine.
+If you are working with microcontrollers, [`viam-micro-server`](/installation/) is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
 
-### Communication
+To use Viam with a machine, you create a configuration specifying which hardware and software the machine consists of.
+Viam has many built-in {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} that run within `viam-server`.
+The components and services are configurable building blocks you can put together to make your machine.
+`viam-server` then manages and runs the drivers for the configured hardware components and software services.
+
+Overall, _viam-server_ manages:
+
+- [Communication](#communication)
+- [Dependency management](#dependency-management)
+- [Start-up](#start-up)
+- [Reconfiguration](#reconfiguration)
+- [Logging](#logging)
+- [Shutdown](#shutdown)
+
+## Communication
 
 `viam-server` handles all {{< glossary_tooltip term_id="grpc" text="gRPC" >}} and {{< glossary_tooltip term_id="webrtc" >}} communication for connecting machines to the cloud or for connecting to other parts of your machine.
 
-### Dependency management
+## Dependency management
 
 Modular resources may depend on other built-in resources or other modular resources, and vice versa.
 The Viam RDK handles dependency management.
 
-### Start-up
+## Start-up
 
 `viam-server` ensures that any configured {{< glossary_tooltip term_id="module" text="modules" >}}, {{< glossary_tooltip term_id="resource" text="built-in resources" >}} and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, and processes are loaded on startup.
 

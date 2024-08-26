@@ -1403,6 +1403,15 @@ ul.sectionlist > li:hover {
   max-width: 800px;
 }
 
+.pill-explainer {
+  padding-left: 0.2rem !important;
+}
+
+.pill-explainer > li > p {
+  font-size: 0.833rem !important;
+  margin-bottom: 0 !important;
+}
+
 #tutorial-filters, #tutorial-filter-items {
   display: flex;
   flex-wrap: wrap;
@@ -1436,6 +1445,11 @@ ul.sectionlist > li:hover {
 
 .ais-Hits-item > .quickstart .title:after {
   content: "Quickstart";
+  background-color: #00E8E8;
+}
+
+.ais-Hits-item > .how-to .title:after {
+  content: "How‑to";
   background-color: #00E8E8;
 }
 

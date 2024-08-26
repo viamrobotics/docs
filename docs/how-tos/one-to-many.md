@@ -4,10 +4,16 @@ linkTitle: "Configure many machines"
 weight: 40
 type: "docs"
 tags: ["data management", "data", "services"]
-images: ["/platform/fleet.svg"]
-description: "How to configure multiple similar or identical machines with fragments."
+images: ["/how-tos/one-to-many/new-fragment.png"]
+description: "Configuring fragments."
 aliases:
   - /use-cases/one-to-many/
+languages: []
+viamresources: []
+level: "Beginner"
+date: "2024-08-09"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ for copying parts of a configuration file to multiple machines, as well as for modifying just some sections of a config if your machines are similar but not identical.
@@ -127,8 +133,15 @@ Don't forget to **Save**.
 
 {{% /tablestep %}}
 {{% tablestep %}}
+**2. Check your machine's logs**
+
+After configuring fragment overwrites, check your machine's [**LOGS** tab](/cloud/machines/#logs).
+If there are problems with overwrites to the fragment, the overwrites will not be partially applied and the configuration changes will not take effect until the configuration is fixed.
+
+{{% /tablestep %}}
+{{% tablestep %}}
 {{<imgproc src="/how-tos/one-to-many/reset.png" class="fill alignleft" resize="500x" style="max-width: 250px"  declaredimensions=true alt="Reset to fragment">}}
-**2. (Optional) Revert fragment modifications**
+**3. (Optional) Revert fragment modifications**
 
 If you need to restore the original fragment, click the **...** in the upper right corner of the card you modified, and click **Revert changes**.
 Now, the fragment will be identical to the upstream fragment.

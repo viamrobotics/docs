@@ -31,7 +31,7 @@ In this tutorial, you'll learn how to use the [vision service](/services/vision/
 We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover, including the [Viam rover](/appendix/try-viam/rover-resources/).
 
 <div class="aligncenter">
-{{<video webm_src="/tutorials/videos/scuttledemos_colordetection.webm" mp4_src="/tutorials/videos/scuttledemos_colordetection.mp4" poster="/tutorials/scuttlebot/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
+{{<video webm_src="https://storage.googleapis.com/docs-blog/tutorials/videos/scuttledemos_colordetection.webm" mp4_src="https://storage.googleapis.com/docs-blog/tutorials/videos/scuttledemos_colordetection.mp4" poster="/tutorials/scuttlebot/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
 </div>
 
 You can see the [full code](#full-code) at the bottom of the page.
@@ -138,7 +138,7 @@ pip3 install viam-sdk
 
 ### Connect
 
-Next, go to the **Code sample** page of the **CONNECT** tab on your [machine page](https://app.viam.com/robots) and select **Python**, then click the copy icon.
+Next, go to the **Code sample** page of the **CONNECT** tab on your [machine page](https://app.viam.com/robots) and select **Python**.
 
 {{% snippet "show-secret.md" %}}
 
@@ -293,7 +293,7 @@ Your rover should detect and navigate towards any red objects that come into vie
 Use something like a red sports ball or book cover as a target to follow to test your rover:
 
 <div class="aligncenter">
-{{<video webm_src="/tutorials/videos/scuttledemos_colordetection.webm" mp4_src="/tutorials/videos/scuttledemos_colordetection.mp4" poster="/tutorials/scuttlebot/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
+{{<video webm_src="https://storage.googleapis.com/docs-blog/tutorials/videos/scuttledemos_colordetection.webm" mp4_src="https://storage.googleapis.com/docs-blog/tutorials/videos/scuttledemos_colordetection.mp4" poster="/tutorials/scuttlebot/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
 </div>
 
 ## Next steps

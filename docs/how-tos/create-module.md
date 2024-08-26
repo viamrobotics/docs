@@ -9,6 +9,12 @@ description: "Add support for a new component or service model by writing a modu
 aliases:
   - /registry/create/
   - /use-cases/create-module/
+languages: ["python", "go", "c++"]
+viamresources: []
+level: "Intermediate"
+date: "2024-07-30"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 {{<imgproc src="/registry/module-diagram.png" resize="x900" declaredimensions=true alt="Representation of the Viam registry, some modules within it, and a rover they support." >}}
@@ -28,11 +34,15 @@ Follow the instructions below to learn how to write a new module using your pref
 
 {{% /alert %}}
 
-{{< alert title="Note: `viam-micro-server` modules" color="note" >}}
+{{< alert title="Note: viam-micro-server modules" color="note" >}}
 [`viam-micro-server`](/installation/#install-viam-micro-server) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
 Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) for information on how to create custom resources for your `viam-micro-server` machine.
 You will need to [recompile and flash your ESP32 yourself](/installation/#install-viam-micro-server) instead of using Viam's prebuilt binary and installer.
 {{< /alert >}}
+
+{{% alert title="Tip" color="tip" %}}
+If you are writing a sensor module in Python, you can use this [more specific guide](/how-tos/sensor-module/).
+{{% /alert %}}
 
 You can also watch this guide to creating a vision service module:
 
@@ -178,7 +188,7 @@ Browse additional example modules by language:
 <!-- prettier-ignore -->
 | Module | Repository | Description |
 | ------ | ---------- | ----------- |
-| [monocular-visual-odometry](https://app.viam.com/module/viam/monocular-visual-odometry) | [viamrobotics/viam-visual-odometry](https://github.com/viamrobotics/viam-visual-odometry) | Extends the built-in [movement sensor API](/components/movement-sensor/#api) to support using monocular visual odometry to enable any calibrated camera to function as a movement sensor. |
+| [berryimu](https://app.viam.com/module/viam-labs/berryimu) | [viam-labs/berry-imu](https://github.com/viam-labs/berry-imu) | Extends the built-in [movement sensor API](/components/movement-sensor/#api) to support using the BerryIMU v3 accelerometer, gyroscope and magnetometer using an I2C connection on ARM64 systems. |
 | [oak](https://app.viam.com/module/viam/oak) | [viamrobotics/viam-camera-oak](https://github.com/viamrobotics/viam-camera-oak) | Extends the built-in [camera API](/components/camera/#api) to support OAK cameras. |
 | [odrive](https://app.viam.com/module/viam/odrive) | [viamrobotics/odrive](https://github.com/viamrobotics/odrive) | Extends the built-in [motor API](/components/motor/#api) to support the ODrive motor. This module provides two models, one for a `canbus`-connected ODrive motor, and one for a `serial`-connected ODrive motor. |
 | [yahboom](https://app.viam.com/module/rand/yahboom) | [viamlabs/yahboom](https://github.com/viam-labs/yahboom) | Extends the built-in [arm API](/components/arm/#api) and [gripper API](/components/gripper/#api) to support the Yahboom Dofbot robotic arm. |
@@ -1527,12 +1537,13 @@ _Add troubleshooting notes here._
 ````md
 # [`agilex-limo` module](https://app.viam.com/module/viam/agilex-limo)
 
-This module implements the [`rdk:component:base` API](/components/base/#api) in an `agilex` model for the [AgileX LIMO](https://global.agilex.ai/products/limo-pro) base to be used with [`viam-server`](/). This driver supports differential, ackermann, and omni directional steering modes over the serial port.
+This module implements the [`rdk:component:base` API](https://docs.viam.com/components/base/#api) in an `agilex` model for the [AgileX LIMO](https://global.agilex.ai/products/limo-pro) base to be used with `viam-server`.
+This driver supports differential, ackermann, and omni directional steering modes over the serial port.
 
 ## Configure your `agilex-limo` base
 
 > [!NOTE]
-> Before configuring your base, you must [create a machine](/cloud/machines/#add-a-new-machine).
+> Before configuring your base, you must [create a machine](https://docs.viam.com/cloud/machines/#add-a-new-machine).
 
 Navigate to the **CONFIGURE** tab of your machine’s page in [the Viam app](https://app.viam.com/).
 [Add `base` / `agilex-limo` to your machine](https://docs.viam.com/configure/#components).
@@ -1547,7 +1558,7 @@ On the new component panel, copy and paste the following attribute template into
 ```
 
 > [!NOTE]
-> For more information, see [Configure a Machine](/build/configure/).
+> For more information, see [Configure a Machine](https://docs.viam.com/configure/).
 
 ### Attributes
 
@@ -1576,9 +1587,9 @@ The following attributes are available for `viam:base:agilex-limo` bases:
 
 ## Next steps
 
-- To test your base, go to the [**CONTROL** tab](/fleet/control/).
-- To write code against your base, use one of the [available SDKs](/build/program/).
-- To view examples using a base component, explore [these tutorials](/tutorials/).
+- To test your base, go to the [**CONTROL** tab](https://docs.viam.com/fleet/control/).
+- To write code against your base, use one of the [available SDKs](https://docs.viam.com/sdks/).
+- To view examples using a base component, explore [these tutorials](https://docs.viam.com/tutorials/).
 
 ## Local development
 

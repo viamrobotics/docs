@@ -5,10 +5,15 @@ weight: 32
 type: "docs"
 images: ["/services/icons/data-visualization.svg"]
 description: "Visualize sensor data from the Viam app using popular tools like Grafana."
-modulescript: true
 aliases:
   - /data/visualize/
   - /use-cases/sensor-data-visualize/
+languages: []
+viamresources: ["sensor", "data_manager"]
+level: "Beginner"
+date: "2024-08-16"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 Once you have used the data management service to [capture data](/how-tos/collect-sensor-data/), you can visualize your data with a variety of third-party tools, including Grafana, Tableau, Google's Looker Studio, and more.

@@ -9,15 +9,17 @@ images: ["/get-started/quickstarts/vision-card.png"]
 imageAlt: "Person detected in camera stream"
 authors: []
 weight: 30
-languages: ["python", "go", "typescript", "flutter", "c++"]
-viamresources: ["camera", "mlmodel", "vision"]
 no_list: true
-level: "Beginner"
-date: "2024-07-31"
 cost: "0"
 resource: "quickstart"
 aliases:
   - /get-started/quickstarts/detect-people/
+languages: []
+viamresources: ["camera", "mlmodel", "vision"]
+level: "Beginner"
+date: "2024-07-31"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 ---
 
 This quickstart is part of a series.
@@ -40,7 +42,7 @@ In this guide you'll use machine learning to detect people in a camera stream.
 You don't need to buy or own any hardware to complete this tutorial.
 If you have the following components, you can follow along on your own hardware:
 
-- A Linux, maxOS or WSL computer that can run `viam-server`.
+- A Linux, macOS or WSL computer that can run `viam-server`.
 - A webcam: this could be the webcam on your laptop or any other webcam you can connect to your computer.
 
 {{% expand "No computer or webcam?" %}}
@@ -71,8 +73,7 @@ Click the name of a machine to go to that machine's page, where you'll find a va
 {{%expand "Step 2: Install viam-server" %}}
 
 Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page to install `viam-server` on your computer, start running it and connect it to the Viam app.
-Select the OS that's appropriate for your computer.
-Select **RDK** as the RDK type.
+Select the Platform you want to install `viam-server` on.
 
 {{% /expand%}}
 {{%expand "Step 3: Configure your webcam" %}}

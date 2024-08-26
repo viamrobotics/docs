@@ -5,12 +5,17 @@ weight: 30
 type: "docs"
 images: ["/services/icons/data-query.svg"]
 description: "Query sensor data that you have synced to the Viam app using the Viam app with SQL or MQL."
-modulescript: true
 aliases:
   - /manage/data/query/
   - /data/query/
   - /use-cases/sensor-data-query/
   - /use-cases/sensor-data-query-with-third-party-tools/
+languages: []
+viamresources: ["sensor", "data_manager"]
+level: "Beginner"
+date: "2024-08-16"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 # SME: Devin Hilly
 ---
 

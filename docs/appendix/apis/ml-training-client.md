@@ -23,9 +23,7 @@ ML training client API methods are only available in the Python SDK.
 To use the Viam ML training client API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`MLTrainingClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient.ml_training_client).
 See the following example for reference.
 
-<!-- After sveltekit migration we should also be able to get a key from the UI-->
-
-Select **Include secret** on the **Code sample** page of the **CONNECT** tab of the [Viam app](https://app.viam.com) to obtain your API key and API key ID values.
+You can create an [API key](/cloud/rbac/#api-keys) on your settings page.
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio

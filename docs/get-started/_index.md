@@ -88,18 +88,22 @@ motor->set_power(0.4);
 {{% /tab %}}
 {{< /tabs >}}
 
-The standardized nature of Viam's resource APIs means that when you build machines, you can swap out components such as motors without changing any code.
+The standardized nature of Viam's resource APIs means that when you build machines, **you can swap out components such as one motor for another motor of a different brand without changing any code**.
 The only change needed is to your machine configuration.
 
 However, if you need more custom behaviour, you can [extend these APIs to suit your own needs](/registry/advanced/create-subtype/).
 
 ### Connect from anywhere
 
-You can use Viam's SDKs, as well as the Viam app, and the Viam mobile app, to control and monitor your machines securely.
-Viam uses WebRTC and gRPC for secure peer-to-peer communications across network boundaries.
+Viam uses WebRTC and gRPC for **secure peer-to-peer communications across network boundaries**.
 
-If `viam-server` can connect to the internet, you can control and monitor your machines securely **from anywhere in the world**.
-In scenarios where machines are connected to a local area network (LAN) with intermittent or no cloud connectivity, you can control and monitor machines from the local network or with code on the machines themselves.
+In factory settings or remote environments, you can still operate and monitor your machines over a local area network (LAN).
+Any monitoring or control applications can **connect directly to `viam-server` without internet connection** or run on the machines themselves.
+
+If your machines are connected to the internet, you can operate and monitor them **from anywhere in the world**.
+
+You can use the Viam app and the Viam mobile app, to control and monitor your machines securely.
+Or you can use Viam's SDKs to build your own apps.
 
 ### Support
 
@@ -136,18 +140,30 @@ You can also create your own resources for any hardware or software and add them
 
 The Viam app provides several higher-level functionalities to make your machines smarter and better, such as:
 
-- **Data Management**: Any data on your machine can be synced to the cloud.
+- **Data Management**: You can collect data from any machine and automagically sync it to the cloud.
+  Intermittent connectivity is not a problem, data syncs when possible.
   From there you can query it using SQL, MQL, or with code.
-- **Machine Learning**: Train machine learning models on collected data and deploy ML models to machines to enable them to intelligently see and interpret the world around them.
-- **Simultaneous Localization And Mapping (SLAM)**: A machine can map its surroundings and find its position on a map.
+- **Machine Learning**: You can use collected data to train machine learning models within the platform.
+  Once trained, you can deploy ML models to all your machines to enable them to intelligently see and interpret the world around them.
+  The models run locally and do not require internet access at scoring time.
+- **Simultaneous Localization And Mapping (SLAM)**: You can use machines to map their surroundings and to find their own positions on a map.
+
+{{< alert title="Example Applications" color="note" >}}
+
+- Capture sensor data on 100s of boats and sync it to the cloud when machines have internet connectivity.
+
+- Use Machine Learning to detect wildlife and start data capture and send alerts.
+
+- Allow delivery robots to use their location and SLAM to navigate intelligently between GPS coordinates.
+  {{< /alert >}}
 
 ### Managing many machines
 
-Viam allows you to manage not just individual machines but entire fleets.
+Viam allows you to manage not just individual machines but entire fleets of thousands of machines.
 The [Viam app](https://app.viam.com)'s **fleet management** capabilities enable you to:
 
 - Manage software across your fleet, including deployment of code and machine learning models.
-- Configure, control, debug, and manage groups of machines in one go.
+- Update software, Configure, control, debug, and manage groups of machines in one go.
 - Manage permissions within your organization and locations.
 
 You can collaborate on your machines and manage permissions for your fleet using **Role-Based Access Control** (RBAC).

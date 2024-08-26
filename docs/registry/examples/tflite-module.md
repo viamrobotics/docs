@@ -193,10 +193,10 @@ Next, install `viam-server` on your machine, if you have not done so already:
    An alert will be present directing you to **Set up your machine part**.
    Click **View setup instructions** to open the setup instructions.
 
-1. Select your system's OS and architecture. Keep the RDK type as **RDK**. Follow the steps listed to install `viam-server` on your system.
+1. Select the platform you want to run `viam-server` on. Follow the steps listed until you receive confirmation that your machine is connected.
 
    {{< alert title="Important" color="note" >}}
-   If you are installing `viam-server` within the `bullseye` Docker container provided with the C++ SDK, you will need to run the following command _instead_ of the command listed in step 2 **Download and install viam-server** in the Viam app:
+   If you are installing `viam-server` within the `bullseye` Docker container provided with the C++ SDK, you will need to run the following command _instead_ to **Download and install viam-server**:
 
    ```sh { class="command-line" data-prompt="$"}
    curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server && chmod 755 viam-server && sudo ./viam-server --appimage-extract-and-run -config /etc/viam.json
@@ -250,7 +250,8 @@ This generated configuration features the minimum required configuration to supp
 
 With everything configured and running, you can now run the inference client that connects to `viam-server` and uses the `example_mlmodelservice_tflite` module.
 
-1. First, determine your machine address and API key and API key ID. To do so, navigate to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com), select the **Code sample** page, and toggle **Include API Key**.
+1. First, determine your machine address and API key and API key ID. To do so, navigate to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com), and copy the machine address from the **Code sample** page.
+   Go to the **API keys** page on the **CONNECT** tab to get an API key.
    The API key resembles `abcdef1g23hi45jklm6nopqrstu7vwx8`, the API key ID resembles `a1234b5c-678d-9012-3e45-67fabc8d9efa` and the machine address resembles `my-machine-main.abcdefg123.viam.cloud`.
 
    {{%  snippet "secret-share.md" %}}

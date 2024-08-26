@@ -5,9 +5,14 @@ weight: 29
 type: "docs"
 images: ["/services/icons/data-capture.svg"]
 description: "Gather sensor data, sync it to the cloud, and view it in the Viam app."
-modulescript: true
 aliases:
   - /use-cases/collect-sensor-data/
+languages: ["python", "go", "typescript", "flutter", "c++"] # Viam SDK programming languages used, if any
+viamresources: ["sensor", "data_manager"]
+level: "Beginner"
+date: "2024-08-23"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 # SME: Devin Hilly
 ---
 
@@ -99,7 +104,7 @@ With cloud sync enabled, captured data is automatically uploaded to the Viam app
 {{< /table >}}
 
 {{< alert title="Tip" color="tip" >}}
-If you need to sync data conditionally, for example at a certain time, see [Trigger Sync](/services/data/trigger-sync/#configure-data-manager-to-sync-based-on-sensor).
+If you need to sync data conditionally, for example at a certain time, see [Trigger Sync](/how-tos/trigger-sync/#configure-the-data-manager-to-sync-based-on-sensor).
 {{< /alert >}}
 
 ## View sensor data
