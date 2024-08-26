@@ -254,25 +254,9 @@ To obtain this:
 
 {{% snippet "secret-share.md" %}}
 
-### Add your machine cloud credentials as a file in your project
-
-Navigate to the directory of the project you just created.
-Create a new <file>viam.json</file> file and paste the same `viam-server` machine cloud credentials in.
-Save the file.
-
-You can do this on the command line like this:
-
-```sh { class="command-line" data-prompt="$"}
-cd <your-path-to/your-project-directory>
-touch viam.json
-vim viam.json
-```
-
-Replace `vim` with whatever text editor you prefer.
-
 ### Upload `viam-micro-server` to your ESP32
 
-Now, flash the project to your ESP32 and it will connet to [the Viam app](https://app.viam.com) from which you can then remotely control it:
+Now, flash the project to your ESP32 and it will connect to [the Viam app](https://app.viam.com) from which you can then remotely control it:
 
 {{< tabs >}}
 {{% tab name="Use Canon" %}}
@@ -325,6 +309,17 @@ espflash flash --erase-parts nvs --partition-table partitions.csv  target/xtensa
 
 Try the connection command again.
 The baud rate on your device may not have been fast enough to connect.
+If successful, the Viam app will show that your machine part's status is **Live**.
+
+If you get the error `viam.json not found` try the following to manually add your machine cloud credentials as a file in your project:
+
+1. Navigate to [your new machine's](#create-a-new-machine) page on [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
+1. Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="/build/micro-rdk/part-dropdown.png" resize="x600" style="max-width: 500px" declaredimensions=true alt="The part status dropdown of an offline machine.">}}
+1. Click the copy icon underneath **Machine cloud credentials**.
+   `viam-micro-server` needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+1. Navigate to the directory of the project you just created.
+1. Create a new <file>viam.json</file> file and paste the `viam-server` machine cloud credentials in.
+1. Save the file.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
