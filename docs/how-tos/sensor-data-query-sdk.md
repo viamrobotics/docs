@@ -76,8 +76,12 @@ pip install viam-sdk
 To access your machines using the Python SDK, you must use an API key:
 
 ```sh {class="command-line" data-prompt="$"}
-viam organizations api-key create --org-id <org-id> --name my-api-key
+viam organizations api-key create --org-id=<org-id> --name=my-api-key
 ```
+
+This command uses the Viam CLI.
+You can use `viam organizations list` to retrieve your organization's ID.
+For more information, go to the documentation on [installing the Viam CLI](/cli/#install) and [the `viam organizations` command](/cli/#organizations).
 
 {{% /tablestep %}}
 {{% tablestep link="/appendix/apis/data-client/"%}}
