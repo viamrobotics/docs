@@ -1019,7 +1019,7 @@ The `organizations` command allows you to list the organizations your authentica
 
 ```sh {class="command-line" data-prompt="$"}
 viam organizations list
-viam organizations api-key create --org-id=<org-id> [--name <key-name>]
+viam organizations api-key create --org-id=<org-id> [--name=<key-name>]
 ```
 
 See [create an organization API key](#create-an-organization-api-key) for more information.
