@@ -118,7 +118,7 @@ If you do not see data from your sensor, try waiting a minute and refreshing the
 
 ## Stop data capture
 
-If this is a test project, make sure you stop data capture to avoid charges for a large amount of unwanted data.
+If this is a test project, make sure you stop data capture to avoid [incurring fees](https://www.viam.com/product/pricing) for capturing large amounts of test data.
 
 In the **Data capture** section of your sensor's configuration, toggle the switch to **Off**.
 
