@@ -11,7 +11,7 @@ aliases:
 languages: []
 viamresources: ["camera", "data_manager", "mlmodel", "vision"]
 level: "Intermediate"
-date: "2024-06-21"
+date: "2024-08-26"
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0"
 ---
@@ -20,16 +20,17 @@ You can use Viam's built-in data management service to capture images from a cam
 
 If you want to capture only certain images, such as those containing a person, you can use a "filtering camera" to selectively capture images based on a computer vision model.
 
-With your images synced to the cloud, you can view images from all your machines in one Viam app interface.
+With your images synced to the cloud, you can view images from all your machines in the Viam app interface.
 From there, you can use your image data to do things like [train ML models](/how-tos/deploy-ml/).
 
-{{<imgproc src="/how-tos/ml-cycle.svg" declaredimensions=true alt="Cyclical diagram of a plant watering machine capturing images of plants, syncing those images to the cloud, a machine learning model being trained, and that model being used to recognize yellow leaves on plants and water them." style="max-width:350px" class="aligncenter">}}
+![Data view](/services/data/delete_all.png)
 <br>
 
 {{< alert title="In this page" color="tip" >}}
 
 1. [Collect image data and sync it to the cloud](#collect-image-data-and-sync-it-to-the-cloud)
-2. [Use filtering to collect and sync only certain images](#use-filtering-to-collect-and-sync-only-certain-images)
+1. [Stop data capture](#stop-data-capture).
+1. [Use filtering to collect and sync only certain images](#use-filtering-to-collect-and-sync-only-certain-images)
 
 {{< /alert >}}
 
@@ -43,20 +44,23 @@ If you'd like to follow a more detailed tutorial, see [Selectively Capture Data 
 
 {{% /expand%}}
 
+{{% expand "At least one configured sensor. Click to see instructions." %}}
+
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
+Then [find and add a camera model](/components/camera/) that supports your camera.
+
+If you are not sure what to use, start with a [webcam](/components/camera/webcam/) which supports most USB cameras and inbuilt laptop webcams.
+
+{{% /expand%}}
+
 ## Collect image data and sync it to the cloud
 
+{{< gif webm_src="/how-tos/capture-images.webm" mp4_src="/how-tos/capture-images.mp4" alt="Configuring data management for a camera in the viam app" max-width="600px" class="aligncenter" >}}
+
 {{< table >}}
-{{% tablestep link="/components/camera/"%}}
-{{<imgproc src="/icons/components/camera.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="configure a camera component">}}
-**1. Configure a camera**
-
-On your [machine's page](#prerequisites), configure any camera component.
-If you are not sure what to use, start with a [webcam](/components/camera/webcam/).
-
-{{% /tablestep %}}
-{{% tablestep link="/services/data/"%}}
-{{<imgproc src="/services/icons/data-management.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
-**2. Enable the data management service**
+{{% tablestep link="/services/data/" %}}
+**1. Enable the data management service**
 
 In your camera component configuration panel, find the **Data capture** section.
 Click **Add method**.
@@ -66,46 +70,55 @@ You can leave the default data manager settings.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
-**3. Capture data**
+**2. Capture data**
 
 With the data management service configured on your machine, you can continue configuring how the camera component itself captures data.
 
-In the **Data capture** panel of your camera's config, select **Read image** from the method selector.
+In the **Data capture** panel of your camera's configuration, select **Read image** from the method selector.
 
 Set your desired capture frequency.
 For example, set it to `0.05` to capture an image every 20 seconds.
 
 Set the MIME type to your desired image format, for example `image/jpeg`.
 
-Click save to start capturing data.
+{{% /tablestep %}}
+{{% tablestep %}}
+**3. Save to start capturing**
+
+Save the config.
+With cloud sync enabled, captured data is automatically uploaded to the Viam app after a short delay.
 
 {{% /tablestep %}}
 {{% tablestep %}}
 {{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **4. View data in the Viam app**
 
-Once you have saved your configuration changes, your data will sync at the specified sync interval, which may mean you have to wait and then refresh the page for data to appear.
+Click on the **...** menu of the camera component and click on **View captured data**.
+This takes you to the data tab.
+
+![View captured data option in the component menu](/get-started/quickstarts/collect-data/cam-capt-data.png)
+
+If you do not see images from your camera, try waiting a minute and refreshing the page to allow time for the images to be captured and then synced to the app at the interval you configured.
 
 If no data appears after the sync interval, check the [**Logs**](/cloud/machines/#logs).
-
-Once you have synced images, you can [view those images in the Viam app](/services/data/view/) from the **DATA** tab in the top navigation bar.
-
-You can also [export your data from the Viam app](/services/data/export/) to a deployed machine, or to any computer.
 
 {{% /tablestep %}}
 {{< /table >}}
 
 You now know how to capture and sync image data.
-
-{{< alert title="Avoid fees by disabling data capture" color="note" >}}
-If this is not a production machine and you have confirmed that your machine is capturing and syncing data, disable data capture in the camera configuration to avoid [incurring fees](https://www.viam.com/product/pricing) for capturing large amounts of test data.
-{{< /alert >}}
-
 For many use cases, you may not want to capture data unless it meets certain conditions.
 Consider the example of a security camera that captures data every 5 seconds.
 This setup would result in a large number of images, of which most wouldn't be interesting.
+
 In the next part of this guide, you will learn how to filter the data before capturing and syncing it.
+
+## Stop data capture
+
+If this is a test project or if you are continuing this how to to set up filtering, make sure you stop data capture to avoid [incurring fees](https://www.viam.com/product/pricing) for capturing large amounts of test data.
+
+In the **Data capture** section of your camera's configuration, toggle the switch to **Off**.
+
+Click the **Save** button in the top right corner of the page to save your config.
 
 ## Use filtering to collect and sync only certain images
 
@@ -123,11 +136,11 @@ Add an ML model service on your machine that is compatible with the ML model you
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/"%}}
-{{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
+{{<imgproc src="/services/icons/ml.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **2. Select a suitable ML model**
 
-From the **Model** dropdown on the ML model service configuration panel, select an [existing model](https://app.viam.com/registry?type=ML+Model) you want to use, or click **Add new model** to upload your own.
-If you're not sure which model to add, you can add [`EfficientNet-ImageNet2012`](https://app.viam.com/ml-model/viam/EfficientNet-ImageNet2012) which can detect people and animals, among other things.
+Click **Select model** on the ML model service configuration panel, then select an [existing model](https://app.viam.com/registry?type=ML+Model) you want to use, or click **Add new model** to upload your own.
+If you're not sure which model to use, you can use [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO) from the **Registry**, which can detect people and animals, among other things.
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/"%}}
@@ -136,7 +149,7 @@ If you're not sure which model to add, you can add [`EfficientNet-ImageNet2012`]
 
 You can think of the vision service as the bridge between the ML model service and the output from your camera.
 
-Configure the `vision / ML model` service on your machine.
+Add and configure the `vision / ML model` service on your machine.
 From the **Select model** dropdown, select the name of your ML model service (for example, `mlmodel-1`).
 
 {{% /tablestep %}}
@@ -146,30 +159,53 @@ From the **Select model** dropdown, select the name of your ML model service (fo
 
 The `filtered-camera` {{< glossary_tooltip term_id="modular-resource" text="modular component" >}} pulls the stream of images from the camera you configured earlier, and applies the vision service to it.
 
-Configure a `filtered-camera` component on your machine, following the [attribute guide in the README](https://github.com/erh/filtered_camera?tab=readme-ov-file#configure-your-filtered-camera) to specify the names of your camera and vision service, and add classification and object detection filters.
+Configure a `filtered-camera` component on your machine, following the [attribute guide in the README](https://github.com/erh/filtered_camera?tab=readme-ov-file#configure-your-filtered-camera).
+Use the name of the camera you configured in the first part of this guide as the `"camera"` to pull images from, and select the name of the vision service you just configured as your `"vision"` service.
+Then add all or some of the labels your ML model uses as classifications or detections in `"classifications"` or `"objects"`.
+
+For example, if you are using the `EfficientDet-COCO` model, you could use a configuration like the following to only capture images when a person is detected in your camera stream.
+You can also add a time window to capture data in right before a detection, so as to, for example, capture the 3 seconds before a person appeared in the stream.
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "window_seconds": 0,
+  "objects": {
+    "Person": 0.8
+  },
+  "camera": "camera-1",
+  "vision": "vision-1"
+}
+```
 
 {{% /tablestep %}}
 {{% tablestep %}}
 {{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **5. Configure data capture and sync on the filtered camera**
 
-Configure data capture and sync just as you did before for the physical camera.
+Configure data capture and sync on the filtered camera just as you did before for the physical camera.
 The filtered camera will only capture image data that passes the filters you configured in the previous step.
 
-Turn off data capture on your camera if you haven't already, so that you don't capture duplicate or unfiltered images.
+Turn off data capture on your original camera if you haven't already, so that you don't capture duplicate or unfiltered images.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**6. Save to start capturing**
+
+Save the config.
+With cloud sync enabled, captured data is automatically uploaded to the Viam app after a short delay.
 
 {{% /tablestep %}}
 {{% tablestep %}}
 
 {{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
-**6. View filtered data in the Viam app**
+**7. View filtered data in the Viam app**
 
-Once you save your configuration, your filtered images will sync and you can [view those images in the Viam app](/services/data/view/) from the **DATA** tab.
+Once you save your configuration, your filtered images will sync and you can view those images in the Viam app from the **DATA** tab.
 
 Your data will sync at the specified sync interval, which may mean you have to wait and then refresh the page for data to appear.
 
 If no data appears after the sync interval, check the [**Logs**](/cloud/machines/#logs) and ensure that the condition for filtering is met.
-You can add a [`transform` camera](/components/camera/transform/) to see detections or classifications live from the [**CONTROL** tab](/cloud/machines/#control).
+You can test the vision service from the [**CONTROL** tab](/cloud/machines/#control) to see its classifications and detections live.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -182,13 +218,21 @@ If you need to trigger sync in a different way, see [Trigger cloud sync conditio
 {{% /tablestep %}}
 {{< /table >}}
 
+## Stop data capture on the filtered camera
+
+If this is a test project, make sure you stop data capture to avoid [incurring fees](https://www.viam.com/product/pricing) for capturing large amounts of test data.
+
+In the **Data capture** section of your filtered camera's configuration, toggle the switch to **Off**.
+
+Click the **Save** button in the top right corner of the page to save your config.
+
 ## Next steps
 
 Now that you have collected image data, you can [train new computer vision models](/how-tos/deploy-ml/) or [programmatically access your data](/services/data/export/):
 
 {{< cards >}}
 {{% card link="/how-tos/deploy-ml/" %}}
-{{% card link="/how-tos/sensor-data-query-with-third-party-tools/" %}}
+{{% card link="/services/data/export/" %}}
 {{< /cards >}}
 
 To see image data filtering in action, check out these tutorials:
