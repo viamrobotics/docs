@@ -1074,7 +1074,7 @@ viam packages export --org-id=<org-id> --name=<package-name> --version=1.0.0 --t
 | -------- | ----------- | ------------------- | -------- |
 | `--org-id` | The organization ID of the package | `upload`, `export` | **Required** |
 | `--name` | The name of the package | `upload`, `export` | **Required** |
-| `--version` | The version of the package | `upload`, `export` | **Required** |
+| `--version` | The version of the package or `latest` | `upload`, `export` | **Required** |
 | `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | `upload`, `export` | **Required** |
 | `--path` | The output directory for downloaded package | `export` | **Required** |
 | `--destination` | The path to the package for upload | `upload` | **Required** |
