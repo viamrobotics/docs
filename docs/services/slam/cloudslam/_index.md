@@ -126,6 +126,7 @@ You _do not_ need to configure data capture on the individual IMU and odometer.
 
 {{% /tab %}}
 {{< /tabs >}}
+<br>
 
 3. Set up the `cloudslam-wrapper` module on your machine:
 
@@ -177,100 +178,98 @@ This example JSON configuration:
 - configures the `viam:slam:cartographer`, `viam:cloudslam-wrapper:cloudslam`, and the [data management](/services/data/) services
 - adds a `viam:lidar:rplidar` camera with data capture configured
 
-  <br>
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "components": [
-    {
-      "name": "rplidar",
-      "namespace": "rdk",
-      "type": "camera",
-      "model": "viam:lidar:rplidar",
-      "attributes": {},
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-              {
-                "method": "NextPointCloud",
-                "capture_frequency_hz": 5,
-                "additional_params": {}
-              }
-            ]
+  ```json {class="line-numbers linkable-line-numbers"}
+  {
+    "components": [
+      {
+        "name": "rplidar",
+        "namespace": "rdk",
+        "type": "camera",
+        "model": "viam:lidar:rplidar",
+        "attributes": {},
+        "service_configs": [
+          {
+            "type": "data_manager",
+            "attributes": {
+              "capture_methods": [
+                {
+                  "method": "NextPointCloud",
+                  "capture_frequency_hz": 5,
+                  "additional_params": {}
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "services": [
+      {
+        "name": "carto",
+        "namespace": "rdk",
+        "type": "slam",
+        "model": "viam:slam:cartographer",
+        "attributes": {
+          "enable_mapping": true,
+          "use_cloud_slam": true,
+          "existing_map": "",
+          "camera": {
+            "data_frequency_hz": "5",
+            "name": "rplidar"
           }
         }
-      ]
-    }
-  ],
-  "services": [
-    {
-      "name": "carto",
-      "namespace": "rdk",
-      "type": "slam",
-      "model": "viam:slam:cartographer",
-      "attributes": {
-        "enable_mapping": true,
-        "use_cloud_slam": true,
-        "existing_map": "",
-        "camera": {
-          "data_frequency_hz": "5",
-          "name": "rplidar"
+      },
+      {
+        "name": "data_manager-1",
+        "namespace": "rdk",
+        "type": "data_manager",
+        "attributes": {
+          "capture_dir": "",
+          "capture_disabled": false,
+          "sync_disabled": false,
+          "tags": [],
+          "additional_sync_paths": [],
+          "sync_interval_mins": 0.1
+        }
+      },
+      {
+        "name": "cloudslam",
+        "namespace": "rdk",
+        "type": "slam",
+        "model": "viam:cloudslam-wrapper:cloudslam",
+        "attributes": {
+          "slam_service": "carto",
+          "api_key": "<location-api-key>",
+          "api_key_id": "<location-api-key-id>",
+          "organization_id": "<organization_id>",
+          "location_id": "<location_id>",
+          "machine_id": "<machine_id>",
+          "machine_part_id": "<machine-part-id>"
         }
       }
-    },
-    {
-      "name": "data_manager-1",
-      "namespace": "rdk",
-      "type": "data_manager",
-      "attributes": {
-        "capture_dir": "",
-        "capture_disabled": false,
-        "sync_disabled": false,
-        "tags": [],
-        "additional_sync_paths": [],
-        "sync_interval_mins": 0.1
+    ],
+    "modules": [
+      {
+        "type": "registry",
+        "name": "viam_rplidar",
+        "module_id": "viam:rplidar",
+        "version": "0.1.16"
+      },
+      {
+        "type": "registry",
+        "name": "viam_cartographer",
+        "module_id": "viam:cartographer",
+        "version": "0.3.45"
+      },
+      {
+        "type": "registry",
+        "name": "viam_cloudslam-wrapper",
+        "module_id": "viam:cloudslam-wrapper",
+        "version": "0.0.3"
       }
-    },
-    {
-      "name": "cloudslam",
-      "namespace": "rdk",
-      "type": "slam",
-      "model": "viam:cloudslam-wrapper:cloudslam",
-      "attributes": {
-        "slam_service": "carto",
-        "api_key": "<location-api-key>",
-        "api_key_id": "<location-api-key-id>",
-        "organization_id": "<organization_id>",
-        "location_id": "<location_id>",
-        "machine_id": "<machine_id>",
-        "machine_part_id": "<machine-part-id>"
-      }
-    }
-  ],
-  "modules": [
-    {
-      "type": "registry",
-      "name": "viam_rplidar",
-      "module_id": "viam:rplidar",
-      "version": "0.1.16"
-    },
-    {
-      "type": "registry",
-      "name": "viam_cartographer",
-      "module_id": "viam:cartographer",
-      "version": "0.3.45"
-    },
-    {
-      "type": "registry",
-      "name": "viam_cloudslam-wrapper",
-      "module_id": "viam:cloudslam-wrapper",
-      "version": "0.0.3"
-    }
-  ]
-}
-```
+    ]
+  }
+  ```
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -288,6 +287,7 @@ To start the mapping session, do the following:
 
 1. Scroll down to the **DoCommand** card
 2. Select your `cloudslam-wrapper` service name from the **Selected component** dropdown
+
 3. In the **Input** section, enter the following command:
 
    ```json
@@ -373,16 +373,16 @@ This feature can also be used with SLAM algorithms that CloudSLAM does not curre
 
 ### Requirements
 
-1. A SLAM algorithm must be configured on the machine. This algorithm does **not** need to be supported by cloudslam to work.
+- A SLAM algorithm must be configured on the machine. This algorithm does **not** need to be supported by cloudslam to work.
 
-2. A location owner API Key or higher. See [Add an API key](/cloud/rbac/#api-keys) to learn how to create a key!
+- A location owner API Key or higher. See [Add an API key](/cloud/rbac/#api-keys) to learn how to create a key!
 
 ### Configuration
 
-1. Add the `cloudslam-wrapper` module to your machine.
-   You do **not** need data management configured on the machine.
-   Configuring the module will not affect any currently running local SLAM maps.
-   Add the following **Attributes**:
+Add the `cloudslam-wrapper` module to your machine.
+You do **not** need data management configured on the machine.
+Configuring the module will not affect any currently running local SLAM maps.
+Add the following **Attributes**:
 
 ```json
 {
@@ -404,17 +404,17 @@ Navigate to the **CONTROL** tab on your machine's page.
 2. Select your `cloudslam-wrapper` service name from the **Selected component** dropdown
 3. In the **Input** section, enter the following command:
 
-```json
-{ "save-local-map": "<MAP-NAME>" }
-```
+   ```json
+   { "save-local-map": "<MAP-NAME>" }
+   ```
 
-where `<MAP-NAME>` is the name you want to give the map you wish to generate. 4. Click the **Execute** button.
-If everything is configured correctly, you should receive a success message.
-The DoCommand card should look something like:
+   where `<MAP-NAME>` is the name you want to give the map you wish to generate. 4. Click the **Execute** button.
+   If everything is configured correctly, you should receive a success message.
+   The DoCommand card should look something like:
 
-![cloudslam wrapper docommand local upload](/services/slam/cloudslam-module-docommand-local-upload.png)
+   ![cloudslam wrapper docommand local upload](/services/slam/cloudslam-module-docommand-local-upload.png)
 
-Once completed, you can view the final map in the [SLAM library](#the-slam-library-page).
+   Once completed, you can view the final map in the [SLAM library](#the-slam-library-page).
 
 ## Attributes
 

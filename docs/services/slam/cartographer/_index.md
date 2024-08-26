@@ -122,11 +122,11 @@ To create a new map, follow the instructions below.
 
    Check the **LOGS** tab of your machine in the Viam app to make sure your RPlidar has connected and no errors are being raised.
 
-3. (Optional) Configure cartographer to use cloudslam:
+3. (Optional) Configure cartographer to use cloudSLAM:
 
-   On the `SLAM` service configuration pane, click the **{}** button to switch to advanced views and set the `use_cloud_slam` field to **true**. This setting disables local mapping to limit cpu usage in favor of using cloudslam.
+   On the `SLAM` service configuration pane, click the **{}** button to switch to advanced views and set the `use_cloud_slam` field to **true**. This setting disables local mapping to limit cpu usage in favor of using cloudSLAM.
 
-   In addition, your configured LiDAR camera and movement sensor must have data capture enabled. See the [cloudslam](../cloudslam/) documentation for more information on how to configure the feature on your machine and how to use cloudslam.
+   In addition, your configured LiDAR camera and movement sensor must have data capture enabled. See the [cloudSLAM](../cloudslam/) documentation for more information on how to configure the feature on your machine and how to use cloudSLAM.
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
@@ -135,8 +135,6 @@ This example JSON configuration:
 
 - adds the `viam:rplidar` and the `viam:cartographer` modules
 - configures the `viam:slam:cartographer` service
-
-  <br>
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -193,7 +191,7 @@ This example JSON configuration:
 
 For more information about the configuration attributes, see [Attributes](#attributes).
 
-After configuring cartographer the machine should begin mapping automatically. Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created. See our [tips](../#slam-mapping-best-practices) for making a good map! If you want to save your locally built map, you can use the **GetInternalState API** or use the local map uploading feature of the [cloudslam wrapper module](../cloudslam/).
+After configuring cartographer the machine should begin mapping automatically. Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created. See our [tips](../#slam-mapping-best-practices) for making good maps. If you want to save your locally built map, you can use the **GetInternalState API** or use the local map uploading feature of the [cloudslam wrapper module](../cloudslam/).
 
 ### Update an existing map
 
@@ -307,10 +305,10 @@ In this mode, the `cartographer` module on your machine executes the Cartographe
     {{< tabs name="Localize only">}}
     {{% tab name="Config Builder" %}}
 
-    1.  Select the Mapping mode dropdown and choose the **Update existing map** option.
-    2.  Configure **Select map** and **Map version** with the name and version of the map you would like to localize on.
-        For the other attributes, review the information in [Create a new map](#create-a-new-map).
-        You can see more details about the available maps from your machine's **Location** page under the **SLAM library** tab.
+1.  Select the Mapping mode dropdown and choose the **Update existing map** option.
+1.  Configure **Select map** and **Map version** with the name and version of the map you would like to localize on.
+    For the other attributes, review the information in [Create a new map](#create-a-new-map).
+    You can see more details about the available maps from your machine's **Location** page under the **SLAM library** tab.
 
     {{% /tab %}}
     {{% tab name="JSON Example" %}}
@@ -392,8 +390,6 @@ This example JSON configuration:
 
 2. After configuring cartographer on the machine, the map should appear automatically. Navigate to the **CONTROL** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
 
-   <!-- ![slam RC card localize only](/services/slam/slam-RC-card-localize-only.png) -->
-
    {{% alert title="Info" color="info" %}}
 
 Cartographer may take several minutes to find your machine's position on the existing map.
@@ -423,8 +419,8 @@ If you move your machine, it will appear to be moving in a trajectory from the m
 
 If you do not have any maps on your **Location** page's **SLAM library** tab, and you do not wish to use [cloudslam](../cloudslam/), but you still want to use localizing and updating modes with cartographer, you can take the following steps.
 
-1. save a `.pbstream` file by using the [GetInternalState or InternalStateFull APIs](../#api) by using one of the SDKs. Note, `InternalStateFull` is currently only implemented in Go.
-2. ensure the `.pbstream` file is located somewhere on the machine, and note the directory path to that file.
+1. Save a `.pbstream` file by using the [GetInternalState or InternalStateFull APIs](../#api) by using one of the SDKs. Note, `InternalStateFull` is currently only implemented in Go.
+2. Ensure the `.pbstream` file is located somewhere on the machine, and note the directory path to that file.
 3. In your cartographer's config, update the `existing_map` field with the path to the file that was noted in #2.
 
 your config should look something like the following:
@@ -481,4 +477,4 @@ your config should look something like the following:
 }
 ```
 
-Now your `cartographer` service should be running using your locally saved map!
+Now your `cartographer` service should be running using your locally saved map.

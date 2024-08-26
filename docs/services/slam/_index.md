@@ -48,7 +48,7 @@ Click the model name for configuration instructions.
 | Model | Description |
 | ----- | ----------- |
 | [`viam:slam:cartographer`](cartographer/) | [The Cartographer Project](https://github.com/cartographer-project) performs dense SLAM using LIDAR data. |
-| [`viam:cloudslam-wrapper:cloudslam`](cloudslam/) | [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) Allows users to run supported SLAM algorithms in the cloud. |
+| [`viam:cloudslam-wrapper:cloudslam`](cloudslam/) | [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) Allows you to run supported SLAM algorithms in the cloud. |
 
 ## API
 
