@@ -20,13 +20,6 @@ Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
-{{% alert title="Cloud SLAM temporarily not available in live mode" color="caution" %}}
-
-Running models of the SLAM service in the cloud with live mode is temporarily disabled.
-[Collect a dataset and use offline mode](/services/slam/cartographer/#use-previously-captured-data) instead.
-
-{{% /alert %}}
-
 [Simultaneous Localization And Mapping (SLAM)](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping) allows your machine to create a map of its surroundings and find its location within that map.
 SLAM is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
 
@@ -55,6 +48,7 @@ Click the model name for configuration instructions.
 | Model | Description |
 | ----- | ----------- |
 | [`viam:slam:cartographer`](cartographer/) | [The Cartographer Project](https://github.com/cartographer-project) performs dense SLAM using LIDAR data. |
+| [`viam:cloudslam-wrapper:cloudslam`](cloudslam/) | [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) Allows you to run supported SLAM algorithms in the cloud. |
 
 ## API
 
@@ -70,3 +64,18 @@ Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and
 {{% /alert %}}
 
 {{< readfile "/static/include/services/apis/generated/slam.md" >}}
+
+## SLAM mapping best practices
+
+The best way to improve map quality is by taking extra care when creating the initial map.
+While in a slam session, you should:
+
+- turn gently and gradually, completely avoiding sudden quick turns
+- make frequent loop closures, arriving back at a previously mapped area so the machine can correct for errors in the map layout
+- stay relatively (but not extremely) close to walls
+- use a machine that can go smoothly over bumps and transitions between flooring areas
+- drive at a moderate speed
+- when using a wheeled base, try to include an [odometry movement sensor](/components/movement-sensor/wheeled-odometry/). This helps the SLAM algorithm keep track of where the machine is moving.
+- it is important to note that the [adxl345 accelerometer](/components/movement-sensor/adxl345/) on the [Viam Rover 1](/appendix/try-viam/rover-resources/rover-tutorial-1/) **will not** satisfy the movement sensor requirement.
+
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
