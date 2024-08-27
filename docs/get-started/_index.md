@@ -107,7 +107,7 @@ Or you can use Viam's SDKs to build your own apps.
 
 ### Support
 
-The `viam-server` executable runs on **any** computer that runs on 64-bit Linux OS, macOS, or Windows Subsystem for Linux.
+The `viam-server` executable runs on **any computer that runs on 64-bit Linux OS, macOS, or Windows Subsystem for Linux**.
 Viam also supports microcontrollers with [`viam-micro-server`](/installation/#install-viam-micro-server).
 
 Here are some of the boards Viam supports:
