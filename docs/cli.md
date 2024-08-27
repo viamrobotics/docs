@@ -1272,7 +1272,7 @@ Examples:
 viam training-script upload --framework=tflite --org-id=123 --path=. --script-name=MyCustomTrainingScript --type=single_label_classification
 
 # update MyCustomTrainingScript with public visibility
-viam training-script update --org-id=123 --script-name=MyCustomTrainingScript --visibility=public
+viam training-script update --org-id=123 --script-name=MyCustomTrainingScript --visibility=public --description="A single label classification training script"
 ```
 
 #### Command options
