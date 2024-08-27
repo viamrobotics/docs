@@ -44,7 +44,7 @@ The`esp32-camera` camera model is not currently available as a built-in option i
 {{% tab name="JSON Template" %}}
 
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
-Select **Builder** mode.
+Select **JSON** mode.
 Copy and paste the following JSON into your existing machine configuration in the `"components"` level:
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -189,4 +189,8 @@ The following attributes are available for `esp32-camera` cameras:
 
 ## Next steps
 
-Configure [data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/) for `viam-micro-server` to capture images from the camera stream and store them in the Viam cloud.
+If you need to capture image data and sync it to the cloud, see:
+
+{{< cards >}}
+{{% card link="/how-tos/image-data/" %}}
+{{< /cards >}}

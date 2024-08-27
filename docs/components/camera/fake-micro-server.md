@@ -18,9 +18,9 @@ A `fake` camera is a camera model for testing.
 The camera always returns the same image, which is an image of a circle inside a diamond.
 
 {{< alert title="Software requirements" color="note" >}}
-To use this model, you must follow the [Micro-RDK Development Setup](/installation/micro-rdk-dev/), which enables you to install and activate the ESP-IDF.
+To use this model, you must follow the [`viam-micro-server` Development Setup](/installation/micro-rdk-dev/), which enables you to install and activate the ESP-IDF.
 At the step [Generate a new project from the micro-RDK template](/installation/micro-rdk-dev/#generate-a-new-project-from-the-micro-rdk-template) where you create a new project with `cargo generate`, select the option to include camera module traits when prompted.
-Finish the [Micro-RDK Development Setup](/installation/micro-rdk-dev/) and return to this guide.
+Finish the [`viam-micro-server` Development Setup](/installation/micro-rdk-dev/) and return to this guide.
 {{< /alert >}}
 
 {{< tabs name="Configure a Fake Camera" >}}
@@ -33,7 +33,6 @@ Enter a name or use the suggested name for your camera and click **Create**.
 
 ![Configuration of a fake camera in the Viam app config builder.](/components/camera/configure-fake.png)
 
-Edit the attributes as applicable to your camera, according to the table below.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -53,8 +52,7 @@ Edit the attributes as applicable to your camera, according to the table below.
 
 ## View the camera stream
 
-Once your camera is configured, go to the **CONTROL** tab, and click on the camera's dropdown menu.
-Then toggle the camera view to ON.
+Once your camera is configured, expand the **TEST** section on the configuration pane.
 You will see the live video feed from your camera.
 You can change the refresh frequency as needed to change bandwidth.
 
@@ -62,4 +60,8 @@ You can change the refresh frequency as needed to change bandwidth.
 
 ## Next steps
 
-Configure [data capture](/services/data/capture/) and [cloud sync](/services/data/cloud-sync/) for `viam-micro-server` to capture images from the camera stream and store them in the Viam cloud.
+If you need to capture image data and sync it to the cloud, see:
+
+{{< cards >}}
+{{% card link="/how-tos/image-data/" %}}
+{{< /cards >}}
