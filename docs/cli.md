@@ -631,11 +631,21 @@ This includes:
 
 - Creating a new custom {{< glossary_tooltip term_id="resource" text="modular resource" >}}
 - Uploading a new module to the [Viam registry](https://app.viam.com/registry)
+- Uploading a new version of your module to the [Viam registry](https://app.viam.com/registry)
 - Updating an existing module in the Viam registry
+- Updating a module's metadata file based on models it provides
+- Building your module for different architectures using cloud runners
+- Building a module locally and running it on a target device. Rebuilding & restarting if already running.
 
 ```sh {class="command-line" data-prompt="$"}
 viam module create --name=<module-name> [--org-id=<org-id> | --public-namespace=<namespace>]
 viam module update [--module=<path to meta.json>]
+viam module update-models --binary=<binary> [...named args]
+viam module build start --version=<version> [...named args]
+viam module build local --module=<path to meta.json> [arguments...]
+viam module build list [command options] [arguments...]
+viam module build logs --id=<id> [...named args]
+viam module reload [...named args]
 viam module upload --version=<version> --platform=<platform> [--org-id=<org-id> | --public-namespace=<namespace>] [--module=<path to meta.json>] <module-path>
 ```
 
@@ -648,8 +658,26 @@ viam module create --name=my-module --public-namespace=my-namespace
 # generate metadata for a module named "my-module" using your organization's organization ID:
 viam module create --name=my-module --org-id=abc
 
-# update an existing module:
+# update an existing module
 viam module update --module=./meta.json
+
+# updating a module's metadata file based on models it provides
+viam module update-models --binary=./packaged-module.tar.gz --module=./meta.json
+
+# initiate a cloud build
+viam module build start --version "0.1.2"
+
+# initiate a build locally without running a cloud build job
+viam module build local
+
+# list all in-progress builds and their build status
+viam module build list
+
+# initiate a build and return the build logs as soon as completed
+viam module build logs --wait --id=$(viam module build start --version "0.1.2")
+
+# restart a module running on your local viam-server, by name, without building or reconfiguring
+viam module reload --restart-only --id viam:python-example-module
 
 # upload a new or updated custom module to the Viam registry:
 viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.gz
@@ -1025,6 +1053,16 @@ viam organizations list
 viam organizations api-key create --org-id=<org-id> [--name=<key-name>]
 ```
 
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# list all the organizations that you are currently authenticated to
+viam organizations list
+
+# create a new organization api key in org 123
+viam organizations api-key create --org-id=123 --name=my-key
+```
+
 See [create an organization API key](#create-an-organization-api-key) for more information.
 
 #### Command options
@@ -1057,9 +1095,15 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 The `packages` command allows you to upload packages to the Viam cloud or export packages from the Viam cloud.
 
 ```sh {class="command-line" data-prompt="$"}
-viam packages upload --org-id=<org-id> --name=<package-name> --version=1.0.0 --type=ml_model --path=.
+viam packages upload --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --path=<path-to-package>
+viam packages export --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --destination=<path-to-export-destination>
+```
 
-viam packages export --org-id=<org-id> --name=<package-name> --version=1.0.0 --type=ml_model --destination=.
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+viam packages upload --org-id=123 --name=MyMLModel --version=1.0.0 --type=ml_model --path=.
+viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_model --destination=.
 ```
 
 #### Command options
@@ -1098,6 +1142,7 @@ This includes:
 viam machines list
 viam machines status --organization=<org name> --location=<location name> --machine=<machine id>
 viam machines logs --organization=<org name> --location=<location name> --machine=<machine id> [...named args]
+viam machines api-key create --machine-id=<machine-id> [...named args]
 viam machines part logs --machine=<machine> --part=<part> [...named args]
 viam machines part status --organization=<org name> --location=<location name> --machine=<machine id>
 viam machines part run --organization=<org name> --location=<location name> --machine=<machine id> [--stream] --data <meth>
@@ -1113,6 +1158,9 @@ viam machines list
 
 # get machine status
 viam machines status  --machine=123 --organization="Robot's Org" --location=myLoc
+
+# create an api key for a machine
+viam machines api-key create --machine-id=123 --name=MyKey
 
 # stream logs from a machine
 viam machines logs --machine=123 \
@@ -1256,9 +1304,22 @@ viam training-script update --org-id=123 --script-name=MyCustomTrainingScript --
 Use a training script to train an ML model on data.
 
 ```sh {class="command-line" data-prompt="$"}
-viam train submit managed --dataset-id=<dataset-id> --model-org-id=<model-org-id> --model-name=<model-name> --model-type=<model-type> --model-labels=<model-labels> [other options]
-viam train submit custom from-registry --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --script-name=<script-name> --version=<version> [other options]
-viam train submit custom with-upload --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --path=<path> --script-name=<script-name> [other options]
+viam train submit managed --dataset-id=<dataset-id> --model-org-id=<model-org-id> --model-name=<model-name> --model-type=<model-type> --model-labels=<model-labels> [...named args]
+viam train submit custom from-registry --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --script-name=<script-name> --version=<version> [...named args]
+viam train submit custom with-upload --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --path=<path> --script-name=<script-name> [...named args]
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# submit training job on data in Viam cloud with a Viam-managed training script
+viam train submit managed --dataset-id=456 --model-org-id=123 --model-name=MyCoolClassifier --model-type=single_label_classification --model-labels=1,2,3
+
+# submit custom training job with an existing training script in the Registry on data in Viam cloud
+viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-version="2" --version="1" --script-name="mycompany:MyCustomTrainingScript"
+
+# submit custom training job with an uploaded training script on data in Viam cloud
+viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-type="single_label_classification" --model-version="2" --version="1" --path=<path-to-tar.gz> --script-name="mycompany:MyCustomTrainingScript"
 ```
 
 #### Command options
