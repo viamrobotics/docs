@@ -446,7 +446,7 @@ With it, you can export data in a variety of formats, delete specified data, add
 
 ```sh {class="command-line" data-prompt="$"}
 viam data export --destination=<output path> --data-type=<output data type> [...named args]
-viam data delete [...named args]
+viam data delete --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
 viam data database configure --org-id=<org-id> --password=<db-user-password>
 viam data database hostname --org-id=<org-id>
 viam data tag ids add --tags=<tags> --org-id=<org_id> --location-id=<location_id> --file-ids=<file_ids>
@@ -465,6 +465,9 @@ viam data export --destination=/home/robot/data --data-type=tabular \
 # export binary data from all orgs and locations, component name myComponent
 viam data export --destination=/home/robot/data --data-type=binary \
 --component-name myComponent
+
+# delete binary data of mime type image/jpeg in an organization between a specified timestamp
+viam data delete binary --org-ids=123 --mime-types=image/jpeg --start 2024-08-20T14:10:34-04:00 --end 2024-08-20T14:16:34-04:00
 
 # configure a database user for the Viam organization's MongoDB Atlas Data
 # Federation instance, in order to query tabular data
@@ -631,7 +634,7 @@ This includes:
 - Updating an existing module in the Viam registry
 
 ```sh {class="command-line" data-prompt="$"}
-viam module create --name=<module-id> [--org-id=<org-id> | --public-namespace=<namespace>]
+viam module create --name=<module-name> [--org-id=<org-id> | --public-namespace=<namespace>]
 viam module update [--module=<path to meta.json>]
 viam module upload --version=<version> --platform=<platform> [--org-id=<org-id> | --public-namespace=<namespace>] [--module=<path to meta.json>] <module-path>
 ```
@@ -1095,6 +1098,7 @@ This includes:
 viam machines list
 viam machines status --organization=<org name> --location=<location name> --machine=<machine id>
 viam machines logs --organization=<org name> --location=<location name> --machine=<machine id> [...named args]
+viam machines part logs --machine=<machine> --part=<part> [...named args]
 viam machines part status --organization=<org name> --location=<location name> --machine=<machine id>
 viam machines part run --organization=<org name> --location=<location name> --machine=<machine id> [--stream] --data <meth>
 viam machines part shell --organization=<org name> --location=<location name> --machine=<machine id>
@@ -1108,24 +1112,24 @@ Examples:
 viam machines list
 
 # get machine status
-viam machines status  --machine 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Robot's Org" --location myLoc
+viam machines status  --machine=123 --organization="Robot's Org" --location=myLoc
 
 # stream logs from a machine
-viam machines part logs --machine 82c608a-1be9-46a5-968d-bad3a8a6daa \
---organization "Robot's Org" --location myLoc
+viam machines logs --machine=123 \
+--organization="Robot's Org" --location=myLoc
 
 # stream logs from a machine part
-viam machines part logs --machine 82c608a-1be9-46a5-968d-bad3a8a6daa \
---organization "Robot's Org" --location myLoc --part myrover-main --tail true
+viam machines part logs --machine=123 \
+--organization="Robot's Org" --location=myLoc --part=myrover-main --tail=true
 
 # stream classifications from a machine part every 500 milliseconds from the Viam Vision Service with classifier "stuff_detector"
-viam machines part run --machine 82c608a-1be9-46a5-968d-bad3a8a6daa \
---organization "Robot's Org" --location myLoc --part myrover-main --stream 500ms \
---data '{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_detector", "n":1}' \
+viam machines part run --machine=123 \
+--organization="Robot's Org" --location=myLoc --part=myrover-main --stream=500ms \
+--data='{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_classifier", "n":1}' \
 viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 
 # restart a part of a specified machine
-viam machines part restart --machine e4713ae5-013a-43fe-800e-ff7999a8e3a0 --part 804a4a26-3b28-4f1b-9a7c-5cccc948aa32
+viam machines part restart --machine=123 --part=456
 ```
 
 #### Command options
@@ -1166,10 +1170,10 @@ viam machines part restart --machine e4713ae5-013a-43fe-800e-ff7999a8e3a0 --part
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
 | `--organization` | Organization name or ID that the machine belongs to | `list`, `status`, `logs`, `part` | **Required** |
-| `--location` | Location name that the machine belongs to or to list machines in | `list`, `status`, `logs`, `part` | **Required** |
-| `--machine` | Machine ID for which the command is being issued | `status`, `logs`, `part`, `part restart` | **Required** |
+| `--location` | Location name or ID that the machine belongs to or to list machines in | `list`, `status`, `logs`, `part` | **Required** |
+| `--machine` | Machine name or ID for which the command is being issued | `status`, `logs`, `part`, `part restart` | **Required** |
 | `--errors` | Boolean, return only errors (default: false) | `logs` | Optional |
-| `--part` | Part name (`logs`) or ID (`part`) for which the command is being issued | `logs`, `part` | Optional |
+| `--part` | Part name or ID for which the command is being issued | `logs`, `part` | Optional |
 | `--tail` | Tail (stream) logs, boolean(default false) | `part logs` | Optional |
 | `--stream` | If specified, the interval in which to stream the specified data, for example, 100ms or 1s | `part run` | Optional |
 | `--data` | Command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments)) | `part run` | **Required** |
