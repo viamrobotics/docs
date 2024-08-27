@@ -120,7 +120,7 @@ Here are some of the boards Viam supports:
 The [Viam app](https://app.viam.com) is the ecosystem for configuring and managing machines which provides:
 
 - the user interface for configuring machines
-- a community registry of resources for machine
+- a community registry of resources for machines
 - capabilities to make your machines better and smarter
 
 ### Configuration
