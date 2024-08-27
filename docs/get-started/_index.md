@@ -16,10 +16,10 @@ images: ["/general/understand.png"]
 carouselscript: true
 ---
 
-Viam is a software platform that makes it easy to combine and integrate hardware and software to build machines, connect them with the cloud, and make them smarter with machine learning.
-
 Machines are everywhere, from small machines like IoT sensors, to home automation systems, robotic systems, cars and boats, and even more complex enterprise systems.
 All these machines start by combining hardware and software.
+
+Viam is a software platform that makes it easy to combine and integrate hardware and software to build machines, connect them with the cloud, and make them smarter with machine learning.
 
 <img src="../about-viam.png" width="800px" alt="Viam architecture on device where viam-server uses the machine configuration to manage drivers for different hardware and in the cloud where the platform offer data management, ML, and extended functionality.">
 
@@ -97,7 +97,7 @@ However, if you need more custom behaviour, you can [extend these APIs to suit y
 
 Viam uses WebRTC and gRPC for **secure peer-to-peer communications across network boundaries**.
 
-In factory settings or remote environments, you can still operate and monitor your machines over a local area network (LAN).
+In factory settings or remote environments, you can operate and monitor your machines over a local area network (LAN).
 Any monitoring or control applications can **connect directly to `viam-server` without internet connection** or run on the machines themselves.
 
 If your machines are connected to the internet, you can operate and monitor them **from anywhere in the world**.
@@ -107,17 +107,21 @@ Or you can use Viam's SDKs to build your own apps.
 
 ### Support
 
-The `viam-server` executable runs on **any computer that runs on 64-bit Linux OS, macOS Computer, or Windows Subsystem for Linux**.
+The `viam-server` executable runs on **any computer that runs on 64-bit Linux OS, macOS, or Windows Subsystem for Linux**.
+Viam also supports microcontrollers with [`viam-micro-server`](/installation/#install-viam-micro-server).
+
 Here are some of the boards Viam supports:
 
 {{< board-carousel >}}
 <br>
 
-Viam also supports microcontrollers with [`viam-micro-server`](/installation/#install-viam-micro-server).
-
 ## Viam Cloud
 
-The [Viam app](https://app.viam.com) provides the user interface for configuring your machine, a registry of resources for your machine, as well as capabilities to make your machines better and smarter.
+The [Viam app](https://app.viam.com) is the ecosystem for configuring and managing machines which provides:
+
+- the user interface for configuring machines
+- a community registry of resources for machines
+- capabilities to make your machines better and smarter
 
 ### Configuration
 
@@ -152,7 +156,7 @@ The Viam app provides several higher-level functionalities to make your machines
 
 - Capture sensor data on 100s of boats and sync it to the cloud when machines have internet connectivity.
 
-- Use Machine Learning to detect wildlife and start data capture and send alerts.
+- Use Machine Learning to detect wildlife and when detected start data capture and send alerts.
 
 - Allow delivery robots to use their location and SLAM to navigate intelligently between GPS coordinates.
   {{< /alert >}}
