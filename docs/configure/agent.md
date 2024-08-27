@@ -74,7 +74,17 @@ For information on managing the service, see [Manage `viam-agent`](/installation
 ## Configuration
 
 {{< tabs >}}
-{{% tab name="Default" %}}
+{{% tab name="Config Builder" %}}
+
+Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
+Click the **+** icon next to your machine part in the left-hand menu and select **Agent**.
+
+{{< imgproc src="/configure/agent.png" alt="Configuration of viam-agent" resize="1200x" style="width=600x" >}}
+
+Edit and fill in the attributes as applicable.
+
+{{% /tab %}}
+{{% tab name="JSON (Default)" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -111,7 +121,7 @@ For information on managing the service, see [Manage `viam-agent`](/installation
 ```
 
 {{% /tab %}}
-{{% tab name="Example" %}}
+{{% tab name="JSON Example" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -178,11 +188,11 @@ Each section primarily controls updates for that subsystem:
 <!-- prettier-ignore -->
 | Option | Type | Required? | Description |
 | ------ | ---- | --------- | ----------- |
-| `attributes` | object | Optional | <ul><li>`fast_start`: If set to `true`, `viam-agent` will not wait for a network connection nor check for updates before starting `viam-server`. See [Fast start mode](#fast-start-mode).</li></ul> |
 | `release_channel` | string | Optional | `viam-agent` is semantically versioned and is tested before release. Releases happen infrequently. When set to `"stable"`, `viam-agent` will automatically upgrade when a new version is released. Options: `"stable"` (default), `"latest"`. |
 | `pin_version` | string | Optional | "Lock" the subsystem to a specific version (as provided by the release channel). If set, no automatic upgrades will be performed until the setting is updated to a new version (or removed to revert to the release channel). If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
 | `pin_url` | string | Optional | Ignore normal version selection and directly download from the specified URL. If set, no automatic upgrades will be performed until the setting is updated to a new URL (or removed to revert to the release channel). Typically this is only used for testing/troubleshooting. If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
 | `disable_subsystem` | boolean | Optional | When set to `true` it disables the `viam-server` subsystem. |
+| `attributes` | object | Optional | <ul><li>`fast_start`: If set to `true`, `viam-agent` will not wait for a network connection nor check for updates before starting `viam-server`. See [Fast start mode](#fast-start-mode).</li></ul> |
 
 #### Fast start mode
 
@@ -203,11 +213,11 @@ You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FAST_S
 <!-- prettier-ignore -->
 | Option | Type | Required? | Description |
 | ------ | ---- | --------- | ----------- |
-| `attributes` | object | Optional | You can override all attributes from the [`viam-agent` configuration file](/fleet/provision/#configuration) here. The [`viam-agent` configuration file](/fleet/provision/#configuration) is generally customized by the manufacturer to provide "out of the box" settings. The attributes configured in the machine config in the Viam app can let you as the machine user override those if they wish. For security purposes, you should change the `hotspot_password`. You can also configure `roaming_mode` and add any additional networks you want to configure. <ul><li>`hotspot_password`: Overwrite the password set Set a password for the WiFi hotspot a machine creates during provisioning.</li><li>`networks`: Networks a machine can automatically connect to when roaming mode is enabled. See [Networks](#networks).</li><li>`roaming_mode`: If enabled, lets the machine connect to additional configured networks. See [Networks](#networks).</li></ul> |
 | `release_channel` | string | Optional | `agent-provisioning` is semantically versioned and is tested before release. Releases happen infrequently. When set to `"stable"`, `viam-agent` will automatically upgrade when a new version is released. Options: `"stable"` (default), `"latest"`. |
 | `pin_version` | string | Optional | Lock the subsystem to a specific version (as provided by the release channel). If set, no automatic upgrades will be performed until the setting is updated to a new version (or removed to revert to the release channel). If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
 | `pin_url` | string | Optional | Ignore normal version selection and directly download from the specified URL. If set, no automatic upgrades will be performed until the setting is updated to a new URL (or removed to revert to the release channel). Typically this is only used for testing/troubleshooting. If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
 | `disable_subsystem` | boolean | Optional | When set to `true` it disables the `agent-provisioning` subsystem. |
+| `attributes` | object | Optional | You can override all attributes from the [`viam-agent` configuration file](/fleet/provision/#configuration) here. The [`viam-agent` configuration file](/fleet/provision/#configuration) is generally customized by the manufacturer to provide "out of the box" settings. The attributes configured in the machine config in the Viam app can let you as the machine user override those if they wish. For security purposes, you should change the `hotspot_password`. You can also configure `roaming_mode` and add any additional networks you want to configure. <ul><li>`hotspot_password`: Overwrite the password set Set a password for the WiFi hotspot a machine creates during provisioning.</li><li>`networks`: Networks a machine can automatically connect to when roaming mode is enabled. See [Networks](#networks).</li><li>`roaming_mode`: If enabled, lets the machine connect to additional configured networks. See [Networks](#networks).</li></ul> |
 
 #### Networks
 
@@ -268,11 +278,11 @@ The following configuration defines the connection information and credentials f
 <!-- prettier-ignore -->
 | Option | Type | Required? | Description |
 | ------ | ---- | --------- | ----------- |
-| `attributes` | object | Optional | <ul><li>`logging`: parameters for logging<ul><li>`system_max_use`: sets the maximum disk space `journald` will user for persistent log storage. Numeric values are in bytes, with optional single letter suffix for larger units, for example. K, M, or G. Default: `512M`.</li><li>`runtime_max_use`: sets the runtime/temporary limit. Numeric values are in bytes, with optional single letter suffix for larger units, for example. K, M, or G. Default: `512M`.</li><li>`disable`: when set to `true`, the defaults for `512M` limits are ignored and the operating system defaults are used.</li></ul></li><li>`upgrades`: Using `upgrades` installs the `unattended-upgrades` package, and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE>, with the latter's Origins-Pattern list being generated automatically from configured repositories on the system, so custom repos (at the time the setting is enabled) will be included.<ul><li>`type`: Configured unattended upgrades for Debian bullseye and bookworm. Options: `""` (no effect), `"disable"` (disables automatic upgrades), `"security"` (only enables updates from sources with security in their codename, ex: bookworm-security), `"all"` (enable updates from all configured sources).</li></ul></li></ul> |
 | `release_channel` | string | Optional | `agent-syscfg` is semantically versioned and is tested before release. Releases happen infrequently. When set to `"stable"`, `viam-agent` will automatically upgrade when a new version is released. Options: `"stable"` (default), `"latest"`. |
 | `pin_version` | string | Optional | "Lock" the subsystem to a specific version (as provided by the release channel). If set, no automatic upgrades will be performed until the setting is updated to a new version (or removed to revert to the release channel). If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
 | `pin_url` | string | Optional | Ignore normal version selection and directly download from the specified URL. If set, no automatic upgrades will be performed until the setting is updated to a new URL (or removed to revert to the release channel). Typically this is only used for testing/troubleshooting. If both `pin_url` and `pin_version` is set, `pin_url` will be used. Default: `""`. |
 | `disable_subsystem` | boolean | Optional | When set to `true` it disables the `agent-syscfg` subsystem. |
+| `attributes` | object | Optional | <ul><li>`logging`: parameters for logging<ul><li>`system_max_use`: sets the maximum disk space `journald` will user for persistent log storage. Numeric values are in bytes, with optional single letter suffix for larger units, for example. K, M, or G. Default: `512M`.</li><li>`runtime_max_use`: sets the runtime/temporary limit. Numeric values are in bytes, with optional single letter suffix for larger units, for example. K, M, or G. Default: `512M`.</li><li>`disable`: when set to `true`, the defaults for `512M` limits are ignored and the operating system defaults are used.</li></ul></li><li>`upgrades`: Using `upgrades` installs the `unattended-upgrades` package, and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE>, with the latter's Origins-Pattern list being generated automatically from configured repositories on the system, so custom repos (at the time the setting is enabled) will be included.<ul><li>`type`: Configured unattended upgrades for Debian bullseye and bookworm. Options: `""` (no effect), `"disable"` (disables automatic upgrades), `"security"` (only enables updates from sources with security in their codename, ex: bookworm-security), `"all"` (enable updates from all configured sources).</li></ul></li></ul> |
 
 The following configuration allows all upgrades from configured sources and sets the maximum disk space `journald` will user for persistent log storage to 128MB and the runtime limit to 96MB:
 
