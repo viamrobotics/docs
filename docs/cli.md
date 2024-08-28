@@ -1307,6 +1307,9 @@ Use a training script to train an ML model on data.
 viam train submit managed --dataset-id=<dataset-id> --model-org-id=<model-org-id> --model-name=<model-name> --model-type=<model-type> --model-labels=<model-labels> [...named args]
 viam train submit custom from-registry --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --script-name=<script-name> --version=<version> [...named args]
 viam train submit custom with-upload --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --path=<path> --script-name=<script-name> [...named args]
+viam train get --job-id=<job-id>
+viam train cancel --job-id=<job-id>
+viam train list --org-id=<org-id> --job-status=<job-status>
 ```
 
 Examples:
@@ -1320,6 +1323,15 @@ viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id
 
 # submit custom training job with an uploaded training script on data in Viam cloud
 viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-type=single_label_classification --model-version=2 --version=1 --path=<path-to-tar.gz> --script-name=mycompany:MyCustomTrainingScript
+
+# get a training job from Viam cloud based on training job ID
+viam train get --job-id=123
+
+# cancel training job in Viam cloud based on training job ID
+viam train cancel --job-id=123
+
+# list training jobs in Viam cloud based on organization ID and job status
+viam train list --org-id=123 --job-status=completed
 ```
 
 #### Command options
@@ -1328,6 +1340,9 @@ viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-or
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
 | `submit` | Submits training job on data in the Viam cloud. | `managed`, `custom` |
+| `get` | Gets a training job from the Viam cloud based on training job ID. | - |
+| `cancel` | Cancels training job in the Viam cloud based on training job ID. | - |
+| `list` | Lists training jobs in Viam cloud based on organization ID and job status. | - |
 
 ##### Positional arguments: `submit`
 
@@ -1352,7 +1367,7 @@ viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-or
 | -------- | ----------- | ------------------- | --------- |
 | `--dataset-id` | The ID of the dataset to train on. To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset. Click **...** in the left-hand menu and click **Copy dataset ID**. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--model-org-id` | The organization ID to train and save the ML model in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/). | `submit managed`, `submit custom with-upload` | **Required** |
-| `--org-id` | The organization ID to train and save the ML model in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/). | `submit custom from-registry` | **Required** |
+| `--org-id` | The organization ID to train and save the ML model in or list training jobs from. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/). | `submit custom from-registry`, `list` | **Required** |
 | `--model-name` | The name of the ML model. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--model-type` | Type of model to train. Can be one of `single_label_classification`, `multi_label_classification`, `object_detection`, or `unspecified`. | `submit managed`, `submit custom with-upload` | **Required**, Optional |
 | `--model-labels` | Labels to train on. These will either be classification or object detection labels. | `submit managed` | **Required** |
@@ -1360,6 +1375,8 @@ viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-or
 | `--script-name` | The registry name of the ML training script to use for training. If uploading, this sets the name. | `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--version` | The version of the ML training script to use for training. | `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--path` | The path to the ML training script to upload. | `submit custom with-upload` | **Required** |
+| `--job-id` | The ID of the training job to get or cancel. You can retrieve this value with `train list`. | `get`, `cancel` | **Required** |
+| `--job-status` | Training status to filter for. Can be one of `canceled`, `canceling`, `completed`, `failed`, `in_progress`, `pending`, or `unspecified`. | `list` | **Required** |
 | `--framework` | Framework of the ML training script to upload, can be `tflite`, `tensorflow`, `pytorch`, or `onnx`. | `submit custom with-upload` | Optional |
 
 ### `version`
@@ -1384,9 +1401,16 @@ viam whoami
 The `auth-app` command allows you to register and update your web or mobile application (created with the Viam Flutter or TypeScript [SDKs](/sdks/)) with [FusionAuth](https://fusionauth.io/) (the tool Viam uses for authentication and authorization) so that you or other users can log into your app with the same credentials they use to log into the [Viam app](https://app.viam.com).
 The user's credentials allow them the same [permissions](/cloud/rbac/) to organizations, locations, and machines that they have in the Viam app.
 
+```sh {class="command-line" data-prompt="$"  data-output="2-8,10-14"}
+viam auth-app register --org-id=<org-id> --application-name=<application-name> --origin-uris=<origin-uris> --redirect-uris=<redirect-uris> --logout-uri=<logout-uri>
+viam auth-app update --org-id=<org-id> --application-id=<application-id> --application-name=<application-name> --origin-uris=<origin-uris> --redirect-uris=<redirect-uris> --logout-uri=<logout-uri>
+viam auth-app get --org-id=<org-id> --application-id=<application-id>
+```
+
 Examples:
 
 ```sh {class="command-line" data-prompt="$"  data-output="2-8,10-14"}
+# register a third party auth application
 viam auth-app register --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-name="julias app" --origin-uris="https://test.com","https://test2.com" --redirect-uris="https://redirect-url.com" --logout-uri="https://logout.com"
 Info: Successfully registered auth application
 {
@@ -1395,12 +1419,16 @@ Info: Successfully registered auth application
   "secret": "supersupersecretsecret"
 }
 
+# update a third party auth application
 viam auth-app update --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-name="julias app" --application-id=1234a1z9-ab2c-1234-5678-bcd12345678a --redirect-uris="https://test.com","https://test2.com"
 Info: Successfully updated auth application
 {
   "application_id": "1234a1z9-ab2c-1234-5678-bcd12345678a",
   "application_name": "julias app"
 }
+
+# get configuration for a third party auth application
+viam auth-app get --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-id=1234a1z9-ab2c-1234-5678-bcd12345678
 ```
 
 {{% alert title="Caution" color="caution" %}}
@@ -1415,31 +1443,21 @@ Sharing this information could compromise your system security by allowing unaut
 | -------------- | ----------- |
 | `register` | Register an [application](https://fusionauth.io/docs/get-started/core-concepts/applications) with FusionAuth |
 | `update` | Update your application |
+| `get` | Get the configuration for a third party auth application |
 
-##### Named arguments: `register`
+##### Named arguments:
 
-<!-- prettier-ignore -->
-| Argument | Description | Required? |
-| -------- | ----------- | --------- |
-| `--org-id` | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID with which to associate this app | **Required** |
-| `--application-name` | A display name (of your choice) for your application. | **Required** |
-| `--origin-uris` | All URIs from which valid logins to FusionAuth can originate from | **Required** |
-| `--redirect-uris` | URIs to which FusionAuth will redirect the user upon login | **Required** |
-| `--logout-uri` | URI of page to show user upon logout | **Required** |
-
-##### Named arguments: `update`
-
-The `org-id` and `application-id` are immutable; they cannot be updated after the application is registered.
+The `org-id` and `application-id` are immutable; they cannot be updated with `update` after the application is registered.
 
 <!-- prettier-ignore -->
-| Argument | Description | Required? |
-| -------- | ----------- | --------- |
-| `--org-id` | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID with which this app is associated | **Required** |
-| `--application-id` | The identifier of your application, returned when you registered the application | **Required** |
-| `--application-name` | A display name (of your choice) for your application. | Optional |
-| `--origin-uris` | All URIs from which valid logins to FusionAuth can originate | Optional |
-| `--redirect-uris` | URIs to which FusionAuth will redirect the user upon login | Optional |
-| `--logout-uri` | URI of page to show user upon logout | Optional |
+| Argument | Description | Applicable commands | Required? |
+| -------- | ----------- | ------------------- | --------- |
+| `--org-id` | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID with which to associate this app. | `register`, `update`, `get` | **Required** |
+| `--application-name` | A display name (of your choice) for your application. | `register`, `update` | **Required** |
+| `--application-id` | The ID of the application. | `update`, `get` | **Required** |
+| `--origin-uris` | All URIs from which valid logins to FusionAuth can originate from. | `register`, `update` | **Required** for `register` |
+| `--redirect-uris` | URIs to which FusionAuth will redirect the user upon login. | `register`, `update` | **Required** for `register` |
+| `--logout-uri` | URI of page to show user upon logout. | `register`, `update` | **Required** for `register` |
 
 ## Global options
 
