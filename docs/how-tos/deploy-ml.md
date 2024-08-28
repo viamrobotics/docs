@@ -5,10 +5,10 @@ weight: 20
 type: "docs"
 tags: ["vision", "data", "services"]
 images: ["/services/ml/train.svg"]
-description: "Use your image data to train a computer vision ML model."
+description: "Use your image data to create and label a dataset and train a computer vision ML model."
 aliases:
   - /use-cases/deploy-ml/
-languages: ["python", "go", "typescript", "flutter", "c++"] # Viam SDK programming languages used, if any
+languages: []
 viamresources: ["data_manager", "mlmodel", "vision"]
 level: "Beginner"
 date: "2024-06-21"
@@ -45,7 +45,7 @@ Start by collecting images from your cameras and syncing it to the [Viam app](ht
 See [Collect image data and sync it to the cloud](/how-tos/image-data/#collect-image-data-and-sync-it-to-the-cloud) for instructions.
 
 {{% /tablestep %}}
-{{% tablestep link="/services/data/dataset/" %}}
+{{% tablestep %}}
 {{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Label data">}}
 **2. Label your images**
 
@@ -53,12 +53,55 @@ Once you have enough images of the objects you'd like to classify, use the inter
 If you want to train an image classifier, use image tags.
 For an object detector, use bounding boxes.
 
+{{< expand "Create image tags (for an image classifier)" >}}
+
+You can use tags to [create classification models](/services/ml/train-model/#train-a-model) for images.
+For example, if you would like to create a model that identifies an image of a star in a set of images, tag each image containing a star with a `star` tag.
+The filter also needs to include images without the star tag or with another tag like `notstar`.
+If you add a `notstar` tag, you can filter the data in your dataset by selecting `star` and `notstar` from the **Tags** dropdown in the **Filtering** menu.
+Alternatively you can use date ranges to filter for relevant data.
+
+To tag an image, click on the image and select the **Image tags** mode in the menu that opens.
+
+{{<gif webm_src="/services/data/tag-star.webm" mp4_src="/services/data/tag-star.mp4" alt="Tag image with a star label">}}
+
+If you want to expand the image, click on the expand side menu arrow in the corner of the image.
+
+Repeat this with all images in your dataset.
+
+{{< /expand >}}
+
+{{< expand "Create bounding boxes (for an object detector)" >}}
+
+You can create one or more bounding boxes for objects in each image.
+If you annotate an entire dataset, you can use these bounding boxes to [create object detection models](/services/ml/train-model/#train-a-model).
+For example, if you would like to create a model that detects a dog in an image, add bounding boxes around the dog in each of your images and add or select the label `dog`.
+
+To add a bounding box, click on an image and select the **Bounding box** mode in the menu that opens.
+Choose an existing label or create a new label.
+Click on the image where you would like to add the bounding box and drag to where the bounding box should end.
+
+{{<gif webm_src="/services/data/label-dog.webm" mp4_src="/services/data/label-dog.mp4" alt="Add a bounding box around the dog in an image">}}
+
+To expand the image, click on the expand side menu arrow in the corner of the image:
+
+{{<gif webm_src="/services/data/label-dog-big.webm" mp4_src="/services/data/label-dog-big.mp4" alt="Add a bounding box around the dog in an image in a big menu">}}
+
+Repeat this with all images in your dataset.
+To see all the images that have bounding boxes, you can filter your dataset by selecting the label from the **Bounding box labels** dropdown in the **Filters** menu.
+
+{{< /expand >}}
+
 {{% /tablestep %}}
-{{% tablestep link="/services/data/dataset/"%}}
-{{<imgproc src="/services/ml/label.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Label data">}}
+{{% tablestep link="/services/data/dataset/" %}}
 **2. Create a dataset**
 
 Use the interface on the **DATA** tab (or the [`viam data dataset add` command](/cli/#data)) to add all images you want to train the model on to a dataset.
+
+{{<gif webm_src="/services/data/add-to-dataset.webm" mp4_src="/services/data/add-to-dataset.mp4" alt="Add image to dataset">}}
+
+To remove an image from a dataset click on the **x** button next to the dataset name.
+Alternatively, you can use the [`viam data dataset remove` command](/cli/#data) to remove an image or group of images matching a specific filter using the Viam CLI.
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -112,6 +155,12 @@ Test your ML model classifier with [existing images in the Viam app](/services/v
 {{< /table >}}
 
 ## Next steps
+
+To work with datasets programmatically, see the data API which includes several methods to work with datasets:
+
+{{< cards >}}
+{{% card link="/appendix/apis/data-client/" %}}
+{{< /cards >}}
 
 See the following tutorials for examples of how to use the tools described on this page:
 

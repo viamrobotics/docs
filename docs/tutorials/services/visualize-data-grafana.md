@@ -13,7 +13,7 @@ level: "Intermediate"
 date: "2024-01-19"
 cost: "0"
 no_list: true
-# SMEs: Alexa Greenberg, Natalia Jacobowitz
+# SMEs: Data team, Natalia Jacobowitz
 ---
 
 <!-- After following this tutorial, you will be able to use the data management service to capture and sync sensor data from your machine to the Viam app, from which you can then configure a visualization dashboard such as Grafana to view and optionally query your sensor readings. -->
@@ -26,7 +26,7 @@ You can choose to visualize data from a component on one machine, from multiple 
 
 Only components that capture [sensor](/components/sensor/) readings or other time-series data support data visualization.
 
-You can visualize both the captured data itself as well as its metadata, including machine ID, organization ID, and [tags](/services/data/dataset/#image-tags).
+You can visualize both the captured data itself as well as its metadata, including machine ID, organization ID, and tags.
 
 Follow the steps in this tutorial to learn how to collect data from your machine, sync that data to the Viam app, enable third-party access to that data, and present that data visually and flexibly in Grafana.
 
