@@ -4,6 +4,8 @@ linkTitle: "Data Client"
 weight: 10
 type: "docs"
 description: "Use the data client API to upload and retrieve data directly to the Viam app."
+icon: true
+images: ["/services/icons/sdk.svg"]
 tags:
   [
     "cloud",
