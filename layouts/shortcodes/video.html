@@ -29,12 +29,16 @@
   {{- if $img -}}
 <video class="video-shortcode lozad {{ .Get "class" }}" preload="none" controls alt="{{ .Get "alt" }}" style="max-width: {{ .Get "max-width" }}; {{ .Get "style"}}" data-poster="{{ $img.RelPermalink }}">
   {{- if not (hasPrefix $webmLink "http") -}}
-  {{- $webmLink := relURL (substr (.Get "webm_src") 1) -}}
-  <source data-src="{{ $mp4Link }}" type="video/webm">
+    {{- $webmLink := relURL (substr (.Get "webm_src") 1) -}}
+    <source data-src="{{ $webmLink }}" type="video/webm">
+  {{- else -}}
+    <source data-src="{{ (.Get "webm_src") }}" type="video/webm">
   {{- end -}}
   {{- if not (hasPrefix $mp4Link "http") -}}
-  {{- $mp4Link := relURL (substr (.Get "mp4_src") 1) -}}
-  <source data-src="{{ $webmLink }}" type="video/mp4">
+    {{- $mp4Link := relURL (substr (.Get "mp4_src") 1) -}}
+    <source data-src="{{ $mp4Link }}" type="video/mp4">
+    {{- else -}}
+    <source data-src="{{ (.Get "mp4_src") }}" type="video/webm">
   {{- end -}}
   There should have been a video here but your browser does not seem
   to support it.
@@ -43,12 +47,16 @@
   <video class="video-shortcode {{ .Get "class" }}" preload="none" controls alt="{{ .Get "alt" }}" style="max-width: {{ .Get "max-width" }}; {{ .Get "style"}}" poster="{{ $img.RelPermalink }}">
     {{- if not (hasPrefix $webmLink "http") -}}
     {{- $webmLink := relURL (substr (.Get "webm_src") 1) -}}
-    <source data-src="{{ $mp4Link }}" type="video/webm">
-    {{- end -}}
-    {{- if not (hasPrefix $mp4Link "http") -}}
+    <source data-src="{{ $webmLink }}" type="video/webm">
+  {{- else -}}
+    <source data-src="{{ (.Get "webm_src") }}" type="video/webm">
+  {{- end -}}
+  {{- if not (hasPrefix $mp4Link "http") -}}
     {{- $mp4Link := relURL (substr (.Get "mp4_src") 1) -}}
-    <source data-src="{{ $webmLink }}" type="video/mp4">
-    {{- end -}}
+    <source data-src="{{ $mp4Link }}" type="video/mp4">
+    {{- else -}}
+    <source data-src="{{ (.Get "mp4_src") }}" type="video/webm">
+  {{- end -}}
     </video>
 </noscript>
   {{- else -}}

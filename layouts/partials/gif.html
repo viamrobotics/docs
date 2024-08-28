@@ -38,10 +38,14 @@
     {{- if not (hasPrefix $webmLink "http") -}}
     {{- $webmLink := relURL (substr (.webm_src) 1) -}}
     <source data-src="{{ $webmLink }}" type="video/webm">
+    {{- else -}}
+    <source data-src="{{ (.webm_src) }}" type="video/webm">
     {{- end -}}
     {{- if not (hasPrefix $mp4Link "http") -}}
     {{- $mp4Link := relURL (substr (.mp4_src) 1) -}}
     <source data-src="{{ $mp4Link }}" type="video/mp4">
+    {{- else -}}
+    <source data-src="{{ (.mp4_src) }}" type="video/webm">
     {{- end -}}
     There should have been a video here but your browser does not seem to support it.
   </video>
@@ -49,11 +53,15 @@
     <video autoplay loop muted playsinline alt="{{ .alt }}" width="100%" style="max-width: {{ .maxWidth }}" class="{{- if .class -}}{{ .class}}{{- end }}">
       {{- if not (hasPrefix $webmLink "http") -}}
       {{- $webmLink := relURL (substr (.webm_src) 1) -}}
-      <source src="{{ $webmLink }}" type="video/webm">
+      <source data-src="{{ $webmLink }}" type="video/webm">
+      {{- else -}}
+      <source data-src="{{ (.webm_src) }}" type="video/webm">
       {{- end -}}
       {{- if not (hasPrefix $mp4Link "http") -}}
       {{- $mp4Link := relURL (substr (.mp4_src) 1) -}}
-      <source src="{{ $mp4Link }}" type="video/mp4">
+      <source data-src="{{ $mp4Link }}" type="video/mp4">
+      {{- else -}}
+      <source data-src="{{ (.mp4_src) }}" type="video/webm">
       {{- end -}}
       There should have been a video here but your browser does not seem to support it.
     </video>
