@@ -107,7 +107,7 @@ The motherboard also incorporates hole patterns for the following alternative si
 - Jetson Nano and Orin Nano
 - Rock Pi S
 - Raspberry Pi Zero 2W
-- Raspberry Pi 4
+- Raspberry Pi 5
 - Orange Pi Zero 2
 
 See [Alternative Board Configurations](#alternative-board-configurations) for a diagram of this.
@@ -344,8 +344,16 @@ Reference the appropriate alternative hole pattern provided on the motherboard:
 Detach the motherboard, unscrew the standoffs, and move them to the correct holes.
 Then, use the smallest Allen key and the provided M2.5 screws to attach your board to your rover through these standoffs.
 
+{{< expand "Raspberry Pi Zero 2W" >}}
 If you are using a Raspberry Pi Zero 2W, you should be able to connect your ribbon cable straight to the board.
 If not, you will have to take off the ribbon cable and use [dupont connectors](https://www.amazon.com/IWISS-1550PCS-Connector-Headers-Balancer/dp/B08X6C7PZM/) to wire a connection from the motherboard to the single-board computer's GPIO pins.
+{{< /expand >}}
+
+{{< expand "Raspberry Pi 5" >}}
+If you are using a Raspberry Pi 5, use the same screw placements as for the Raspberry Pi 4.
+The hardware setup is the same.
+The only difference is in the [configuration](/appendix/try-viam/rover-resources/rover-tutorial-fragments/).
+{{< /expand >}}
 
 Then connect the webcam's USB lead to any USB port on your board.
 

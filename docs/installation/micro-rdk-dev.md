@@ -232,12 +232,12 @@ Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/
 Click on the name of the machine to go to the machine's page.
 Then, navigate to the **CONFIGURE** tab and [configure your machine](/configure/).
 
-### Generate a new project from the micro-RDK template
+### Generate a new project from a template
 
 [Start Docker](https://docs.docker.com/config/daemon/start/) on your development machine.
 If you haven't already, complete Docker's [Linux post installation steps](https://docs.docker.com/engine/install/linux-postinstall/) to set up Docker to run whenever your system boots up.
 
-Use [the micro-RDK template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project) to create a new micro-RDK project to upload to your ESP32 by running:
+Use [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project) to create a new micro-RDK project to upload to your ESP32 by running:
 
 ```sh { class="command-line" data-prompt="$"}
 cargo generate --git https://github.com/viamrobotics/micro-rdk.git
