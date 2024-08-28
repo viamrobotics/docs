@@ -467,7 +467,7 @@ viam data export --destination=/home/robot/data --data-type=binary \
 --component-name myComponent
 
 # delete binary data of mime type image/jpeg in an organization between a specified timestamp
-viam data delete binary --org-ids=123 --mime-types=image/jpeg --start=2024-08-20T14:10:34-04:00 --end=2024-08-20T14:16:34-04:00
+viam data delete binary --org-ids=123 --mime-types=image/jpeg --start 2024-08-20T14:10:34-04:00 --end 2024-08-20T14:16:34-04:00
 
 # configure a database user for the Viam organization's MongoDB Atlas Data
 # Federation instance, in order to query tabular data
@@ -526,28 +526,30 @@ done
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--destination` | Output directory for downloaded data |`export` | **Required** |
-| `--data-type` | Data type to be downloaded: either binary or tabular |`export`| **Required** |
-| `--component-name` | Filter by specified component name |`export`, `delete`, `tag filter`| Optional |
-| `--component-type` | Filter by specified component type |`export`, `delete`, `tag filter` | Optional |
-| `--component-model` | Filter by specified component model |`export`, `delete`| Optional |
-| `--delete-older-than-days` | Number of days, 0 means all data will be deleted | `delete` | Optional |
-| `--start` | ISO-8601 timestamp indicating the start of the interval |`export`, `delete`, `dataset`, `tag filter`| Optional |
-| `--end` | ISO-8601 timestamp indicating the end of the interval |`export`, `delete`, `dataset`, `tag filter`| Optional |
-| `--file-ids` | File-ids to add or remove tags from | `tag ids` | **Required** |
-| `--location-id` | Location ID for the file ids being added or removed from the specified dataset (only accepts one location id) |`dataset`, `tag ids` | **Required** |
+| `--destination` | Output directory for downloaded data. |`export` | **Required** |
+| `--data-type` | Data type to be downloaded: either binary or tabular. |`export`| **Required** |
+| `--component-name` | Filter by specified component name. |`export`, `delete`, `tag filter`| Optional |
+| `--component-type` | Filter by specified component type. |`export`, `delete`, `tag filter` | Optional |
+| `--component-model` | Filter by specified component model. |`export`, `delete`| Optional |
+| `--delete-older-than-days` | Number of days, 0 means all data will be deleted. | `delete` | Optional |
+| `--start` | ISO-8601 timestamp indicating the start of the interval. |`export`, `delete`, `dataset`, `tag filter`| Optional |
+| `--end` | ISO-8601 timestamp indicating the end of the interval. |`export`, `delete`, `dataset`, `tag filter`| Optional |
+| `--file-ids` | File-ids to add or remove tags from. | `tag ids` | **Required** |
+| `--location-id` | Location ID for the file ids being added or removed from the specified dataset (only accepts one location id). |`dataset`, `tag ids` | **Required** |
 | `--location-ids` | Filter by specified location ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. |`export`, `delete`, `tag filter`| Optional |
-| `--method` | Filter by specified method |`export`, `delete`, `tag filter`| Optional |
-| `--mime-types` | Filter by specified MIME type (accepts comma-separated list) |`export`, `delete`, `tag filter`|false |
-| `--org-id` | Org ID for the database user being configured (with `database`) or data being tagged (`tag ids`) | `database configure`, `database hostname`, `tag ids` | **Required** |
+| `--method` | Filter by specified method. |`export`, `delete`, `tag filter`| Optional |
+| `--mime-types` | Filter by specified MIME type (accepts comma-separated list). |`export`, `delete`, `tag filter`|false |
+| `--org-id` | Org ID for the database user being configured (with `database`) or data being tagged. (`tag ids`) | `database configure`, `database hostname`, `tag ids` | **Required** |
 | `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. |`export`, `delete`, `tag filter`| Optional |
-| `--parallel` | Number of download requests to make in parallel, with a default value of 10 |`export`, `delete`, `dataset export` | Optional |
-| `--part-id` | Filter by specified part ID |`export`, `delete`, `tag filter`| Optional |
-| `--part-name` | Filter by specified part name |`export`, `delete`, `tag filter`| Optional |
-| `--machine-id` | Filter by specified machine ID |`export`, `delete`, `tag filter` | Optional |
-| `--machine-name` | Filter by specified machine name |`export`, `delete`, `tag filter`| Optional |
-| `--tags` | Filter by (`export`, `delete`) or add (`tag`) specified tag (accepts comma-separated list) |`export`, `delete`, `tag ids`, `tag filter` | Optional |
-| `--password` | Password for the database user being configured | `database configure` | **Required** |
+| `--parallel` | Number of download requests to make in parallel, with a default value of 10. |`export`, `delete`, `dataset export` | Optional |
+| `--part-id` | Filter by specified part ID. |`export`, `delete`, `tag filter`| Optional |
+| `--part-name` | Filter by specified part name. |`export`, `delete`, `tag filter`| Optional |
+| `--machine-id` | Filter by specified machine ID. |`export`, `delete`, `tag filter` | Optional |
+| `--machine-name` | Filter by specified machine name. |`export`, `delete`, `tag filter`| Optional |
+| `--tags` | Filter by (`export`, `delete`) or add (`tag`) specified tag (accepts comma-separated list). |`export`, `delete`, `tag ids`, `tag filter` | Optional |
+| `--bbox-labels` | String labels corresponding to bounding boxes within images. | `tag filter` | Optional |
+| `--chunk-limit` | Maximum number of results per download request (tabular data only). | `tag filter` | Optional |
+| `--password` | Password for the database user being configured. | `database configure` | **Required** |
 
 ### `locations`
 
@@ -1443,7 +1445,7 @@ Sharing this information could compromise your system security by allowing unaut
 | -------------- | ----------- |
 | `register` | Register an [application](https://fusionauth.io/docs/get-started/core-concepts/applications) with FusionAuth |
 | `update` | Update your application |
-| `get` | Get the configuration for the auth application |
+| `get` | Get the configuration of the auth application |
 
 ##### Named arguments:
 
