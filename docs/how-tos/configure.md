@@ -1,9 +1,9 @@
 ---
-title: "Build and configure a smart machine"
+title: "Create and configure a smart machine"
 linkTitle: "Configure a smart machine"
 weight: 10
 type: "docs"
-description: "Build a machine in a few steps using Viam's modular system of components and services without writing much or any code."
+description: "Create a machine in a few steps using Viam's modular system of components and services without writing much or any code."
 images: ["/platform/build.svg", "/services/ml/configure.svg"]
 tags: ["components", "configuration"]
 aliases:
@@ -40,9 +40,8 @@ Then create a machine by typing in a name and clicking **Add machine**.
 All of the software that runs your smart machine is packaged into a binary called `viam-server`.
 Install it on the computer controlling your smart machine by following the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} in the [Viam app](https://app.viam.com/).
 
-If you are using a microcontroller instead of a 64-bit computer, you can install a [lightweight version of `viam-server`](/installation/#install-viam-micro-server).
 You can install `viam-server` on your personal computer, or on a single-board computer (SBC).
-After following the setup instructions and starting `viam-server` on your machine, your machine should appear as **Live** on the Viam app.
+After following the setup instructions, your machine should connect and appear as **Live** on the Viam app.
 
 {{% /tablestep %}}
 {{% tablestep link="/configure/" %}}
@@ -71,10 +70,10 @@ For each component that makes up your machine:
 2. Add a suitable model to your machine on the **CONFIGURE** page:
 
    - Click the + icon next to your machine part in the left-hand menu and select Component.
-   - [Choose any component type](/configure/#components) (example: `camera`) and model (example: `webcam`).
+   - Choose any component type (example: `camera`) and model (example: `webcam`).
 
-3. Click on the **Test** area of the configuration panel to test controlling your component.
-4. If any problems occur check the [logs](/cloud/machines/#logs) or review or roll back the [configuration history](/cloud/machines/#configure).
+3. Click the **TEST** area of the configuration panel to test your component, for example to view a camera feed or turn a motor.
+4. If any problems occur check the [**LOGS** tab](/cloud/machines/#logs). You can also review the [configuration history](/cloud/machines/#configure) and roll back changes if needed.
 
 If a component you want to use for your project is not natively supported, you can [build your own modular resource](/how-tos/create-module/).
 
@@ -89,7 +88,8 @@ For example, if you have a DC motor, follow the [corresponding configuration ins
 
 **5. Control your components**
 
-When you configure a component, a remote control panel is generated for it in the **CONTROL** tab of the Viam app.
+When you configured each component, you saw the **TEST** panel on its configuration panel.
+You can also access the control interfaces for all your components in one place from the **CONTROL** tab.
 With the panels, you can drive motors at different speeds, view your camera feeds, see sensor readings, and generally test the basic functionality of your machine before you've even written any code.
 
 {{<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="The Viam app Control tab with a control panel for each component. The panel for a DC motor is clicked, expanding to show power controls." max-width="400px" class="fill alignleft">}}
