@@ -1447,7 +1447,7 @@ Sharing this information could compromise your system security by allowing unaut
 | `update` | Update your application |
 | `get` | Get the configuration of the auth application |
 
-##### Named arguments:
+##### Named arguments
 
 The `org-id` and `application-id` are immutable; they cannot be updated with `update` after the application is registered.
 
