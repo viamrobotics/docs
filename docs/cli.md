@@ -467,7 +467,7 @@ viam data export --destination=/home/robot/data --data-type=binary \
 --component-name myComponent
 
 # delete binary data of mime type image/jpeg in an organization between a specified timestamp
-viam data delete binary --org-ids=123 --mime-types=image/jpeg --start 2024-08-20T14:10:34-04:00 --end 2024-08-20T14:16:34-04:00
+viam data delete binary --org-ids=123 --mime-types=image/jpeg --start=2024-08-20T14:10:34-04:00 --end=2024-08-20T14:16:34-04:00
 
 # configure a database user for the Viam organization's MongoDB Atlas Data
 # Federation instance, in order to query tabular data
