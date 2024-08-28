@@ -45,7 +45,7 @@ The`esp32-camera` camera model is not currently available as a built-in option i
 
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Select **JSON** mode.
-Copy and paste the following JSON into your existing machine configuration in the `"components"` level:
+Copy and paste the following JSON into your existing machine configuration into the `"components"` array:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -153,7 +153,7 @@ Edit and fill in the attributes as applicable.
 {{< /tabs >}}
 
 {{% alert title="Note" color="note" %}}
-While the following attributes marked as **Optional** do have defaults, it is still recommended that you configure them to your datasheet and device's needs (which likely do not align with the defaults) in order to get the camera stream.
+While the following attributes marked as **Optional** do have defaults, it is recommended that you configure them according to your datasheet as your device may not align with the defaults which could cause damage to your board or camera.
 {{% /alert %}}
 
 The following attributes are available for `esp32-camera` cameras:
