@@ -1,7 +1,10 @@
+<div class="alert cookieconsent-optout-marketing" role="alert">
+  Please <a href="javascript:Cookiebot.renew()">accept marketing cookies</a> to watch the following <a href="{{ .Get "embed_url" }}">YouTube video.</a>
+</div>
+{{- partial "imgproc.html" (dict "src" "/error.svg" "alt" "Error" "style" "" "class" "embed-responsive embed-responsive-16by9 cookieconsent-optout-marketing") -}}
+<div class ="cookieconsent-optin-marketing">
 <div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" data-src="{{ .Get "embed_url" }}" data-cookieconsent="marketing" allowfullscreen>
+  <iframe class="embed-responsive-item cookieconsent-optin-marketing" data-src="{{ .Get "embed_url" }}" data-cookieconsent="marketing" allowfullscreen>
   </iframe>
-  <div class="cookieconsent-optout-marketing">
-    Please <a href="javascript:Cookiebot.renew()">accept marketing cookies</a> to watch this <a href="{{ .Get "embed_url" }}">YouTube video.</a>
-  </div>
+</div>
 </div>

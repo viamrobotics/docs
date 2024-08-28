@@ -965,15 +965,18 @@ td > ul, td > ol {
 
 
 /* START cookie consent message */
-.cookieconsent-optout-marketing {
-  border: 1px solid black;
-  padding: 1rem;
+.alert.cookieconsent-optout-marketing {
   box-shadow: 5px 5px 0 0 #a51aff;
-  margin: 1em;
+  display: block;
 }
 
 .embed-responsive.embed-responsive-16by9 {
   border: 1px solid black;
+}
+
+img.embed-responsive.embed-responsive-16by9 {
+  aspect-ratio: 16/9;
+  padding: 2rem;
 }
 /* END cookie consent message */
 
