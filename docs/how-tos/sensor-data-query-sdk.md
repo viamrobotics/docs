@@ -90,8 +90,7 @@ viam organizations api-key create --org-id=<org-id> --name=my-api-key
 ```
 
 This command uses the Viam CLI.
-You can use `viam organizations list` to retrieve your organization's ID.
-For more information, go to the documentation on [installing the Viam CLI](/cli/#install) and [the `viam organizations` command](/cli/#organizations).
+You can use [`viam organizations list`](/cli/#organizations) to retrieve your organization's ID.
 
 {{% /tablestep %}}
 {{% tablestep link="/appendix/apis/data-client/"%}}
