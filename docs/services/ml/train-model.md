@@ -25,7 +25,7 @@ The more varied the provided data set, the more accurate the resulting model bec
 
 ## Train a model
 
-After [creating a dataset](/services/data/dataset/), navigate to the **DATA** tab and the **DATASETS** subtab.
+After [creating a dataset](/how-tos/deploy-ml/#create-a-dataset-and-label-data), navigate to the **DATA** tab and the **DATASETS** subtab.
 Then click on the dataset you want to train a model from and click on the **Train model** button on your dataset's page.
 
 On the **Train a model** menu:

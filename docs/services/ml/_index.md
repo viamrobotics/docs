@@ -86,7 +86,7 @@ For more information, see [Model framework support](/services/ml/upload-model/#m
   <tr>
     <th>{{<imgproc src="/services/ml/label.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Label data">}}
       <b>2. Create a dataset and label</b>
-      <p>Once you have collected data, <a href="/services/data/dataset/">label your data and create a dataset</a> in preparation for training machine learning models.</p>
+      <p>Once you have collected data, <a href="/how-tos/deploy-ml/#create-a-dataset-and-label-data">label your data and create a dataset</a> in preparation for training machine learning models.</p>
     </th>
   </tr>
   <tr>

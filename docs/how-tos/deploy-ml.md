@@ -5,11 +5,10 @@ weight: 20
 type: "docs"
 tags: ["vision", "data", "services"]
 images: ["/services/ml/train.svg"]
-description: "Use your image data to train a computer vision ML model."
+description: "Use your image data to create and label a dataset and train a computer vision ML model."
 aliases:
   - /use-cases/deploy-ml/
-  - /services/data/dataset/
-languages: ["python", "go", "typescript", "flutter", "c++"] # Viam SDK programming languages used, if any
+languages: []
 viamresources: ["data_manager", "mlmodel", "vision"]
 level: "Beginner"
 date: "2024-06-21"
@@ -94,7 +93,7 @@ To see all the images that have bounding boxes, you can filter your dataset by s
 {{< /expand >}}
 
 {{% /tablestep %}}
-{{% tablestep %}}
+{{% tablestep link="/services/data/dataset/" %}}
 **2. Create a dataset**
 
 Use the interface on the **DATA** tab (or the [`viam data dataset add` command](/cli/#data)) to add all images you want to train the model on to a dataset.
@@ -157,7 +156,11 @@ Test your ML model classifier with [existing images in the Viam app](/services/v
 
 ## Next steps
 
-To work with datasets programmatically, see the [data API](/appendix/apis/data-client/#api) which includes several methods to work with datasets.
+To work with datasets programmatically, see the data API which includes several methods to work with datasets:
+
+{{< cards >}}
+{{% card link="/appendix/apis/data-client/" %}}
+{{< /cards >}}
 
 See the following tutorials for examples of how to use the tools described on this page:
 
