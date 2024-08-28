@@ -127,15 +127,15 @@ async def main():
     # Instantiate a DataClient to run data client API methods on
     data_client = viam_client.data_client
 
-    my_filter = Filter(component_name="my-sensor") # Replace with your component name
+    my_filter = Filter(component_name="my-sensor")
     data, count, id = await data_client.tabular_data_by_filter(
         filter=my_filter, limit=5)
     # This query requests all stored data grouped by hour and calculates the
     # average, minimum, and maximum of the memory usage
     data = await data_client.tabular_data_by_mql(
-      organization_id='<organization-id>', # Replace with your organization ID
+      organization_id='<organization-id>',
       mql_binary=[
-        bson.dumps({'$match': {'location_id': '<location-id>'}}), # Replace with your location ID
+        bson.dumps({'$match': {'location_id': '<location-id>'}}),
         bson.dumps({
           "$group": {
             "_id": {
@@ -158,7 +158,7 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
-Make sure to replace the value in line 29 with your correct sensor name, line 35 with your organization ID which you can get by running `viam organizations list`, and line 37 with your location ID which you can get by running ` viam locations list`.
+Make sure to replace the value in line 29 with your correct sensor name, line 35 with your organization ID which you can get by running `viam organizations list`, and line 37 with your location ID which you can get by running `viam locations list`.
 
 {{% /tablestep %}}
 {{< /table >}}
