@@ -257,6 +257,11 @@ if err != nil {
 
 ### Troubleshooting
 
+#### Error: IceTransportClosed
+
+If you are trying to connect to an ESP32 and the connection is unstable with the repeating error `E (412486) micro_rdk::common::webrtc::ice: closing ice agent with error IceTransportClosed`, you have opened too many connections to the ESP32, which has a maximum of 3 connections by default.
+Make sure you only have one tab with your machine's page open to limit the number of connections to your ESP32.
+
 #### Linux port permissions
 
 If a "Permission Denied" or similar port error occurs, first check the connection of the ESP32 to the machine's USB port.

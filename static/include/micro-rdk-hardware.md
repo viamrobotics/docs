@@ -5,6 +5,8 @@ The following ESP32 microcontrollers are supported:
 - [ESP32-WROVER Series](https://www.espressif.com/en/products/modules/esp32)
 - [ESP32-WROOM Series](https://www.espressif.com/en/products/modules/esp32) (until v0.1.7)
 
+You will also need a data cable to connect the microcontroller to your development machine.
+
 Your microcontroller should have at least the following resources available to work with `viam-micro-server`:
 
 - 2 Cores + 384kB SRAM + 2MB PSRAM + 4MB Flash

@@ -230,7 +230,6 @@ Instead, save this command to run in any future terminal session where you need 
 Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/cloud/machines/#add-a-new-machine) in your desired location.
 
 Click on the name of the machine to go to the machine's page.
-Then, navigate to the **CONFIGURE** tab and [configure your machine](/configure/).
 
 ### Generate a new project from a template
 
@@ -244,12 +243,16 @@ cargo generate --git https://github.com/viamrobotics/micro-rdk.git
 ```
 
 Select `templates/project` when prompted.
+Give the project a name of your choice.
+Select `esp32` for **MCU**.
+If you wish to configure an `esp32-camera` or a `fake` camera as a component of your machine, select **true** for **include camera module and traits**.
 
-You will be prompted to paste your machine cloud credentials into the terminal.
+You will be prompted to paste your machine's `viam-server` robot JSON configuration into the terminal, which is the same thing as its machine cloud credentials.
+
 To obtain this:
 
 - Navigate to [your new machine's](#create-a-new-machine) page on [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
-- Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="/build/micro-rdk/part-dropdown.png" resize="x600" style="max-width: 500px" declaredimensions=true alt="The part status dropdown of an offline machine.">}}
+- Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
 - Click the copy icon underneath **Machine cloud credentials**.
   `viam-micro-server` needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 - Paste the machine cloud credentials into your terminal when prompted.
@@ -258,7 +261,7 @@ To obtain this:
 
 ### Upload `viam-micro-server` to your ESP32
 
-Now, upload the project to connect to your ESP32 and remotely control it live on [the Viam app](https://app.viam.com):
+Now, flash the project to your ESP32 and it will connect to [the Viam app](https://app.viam.com) from which you can then remotely control it:
 
 {{< tabs >}}
 {{% tab name="Use Canon" %}}
@@ -281,6 +284,8 @@ make upload
 {{% /tab %}}
 {{% /tabs %}}
 
+When prompted, select the serial port that your ESP32 is connected to through a data cable.
+
 If successful, you will retain a serial connection to the board until you press `Ctrl-C`.
 To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
 While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
@@ -290,7 +295,38 @@ If successful, **Live** should be displayed underneath **Last online**.
 
 ### Troubleshooting
 
-If you run into the error `Failed to open serial port` when flashing your ESP32 with Linux, make sure the user is added to the group `dialout` with `sudo gpasswd -a $USER dialout`
+If you run into the error `Failed to open serial port` when flashing your ESP32 with Linux, make sure the user is added to the group `dialout` with `sudo gpasswd -a $USER dialout`.
+
+If you get the following error while connecting to your ESP32:
+
+```sh { class="command-line" data-prompt="$"}
+`Error: espflash::timeout
+
+  × Error while connecting to device
+  ╰─▶ Timeout while running command
+```
+
+If successful, the Viam app will show that your machine part's status is **Live**.
+
+Run the following command:
+
+```sh { class="command-line" data-prompt="$"}
+espflash flash --erase-parts nvs --partition-table partitions.csv  target/xtensa-esp32-espidf/release/esp32-camera --baud 115200 && sleep 2 && espflash monitor
+```
+
+Try the connection command again.
+The baud rate on your device may not have been fast enough to connect.
+If successful, the Viam app will show that your machine part's status is **Live**.
+
+If you get the error `viam.json not found` try the following to manually add your machine cloud credentials as a file in your project:
+
+1. Navigate to [your new machine's](#create-a-new-machine) page on [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
+1. Select the part status dropdown to the right of your machine's name on the top of the page: {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Restart button on the machine part info dropdown">}}
+1. Click the copy icon underneath **Machine cloud credentials**.
+   `viam-micro-server` needs this JSON, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+1. Navigate to the directory of the project you just created.
+1. Create a new <file>viam.json</file> file and paste the `viam-server` machine cloud credentials in.
+1. Save the file.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 

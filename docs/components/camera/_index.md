@@ -61,11 +61,13 @@ For configuration information, click on the model name:
 {{% /tab %}}
 {{% tab name="viam-micro-server" %}}
 
-{{< alert title="Support Notice" color="note" >}}
+<!-- prettier-ignore -->
+| Model | Description |
+| ----- | ----------- |
+| [`fake`](fake-micro-server/) | A camera model for testing. |
+| [`esp32-camera`](esp32-camera/) | A camera on an ESP32. |
 
-There is currently no support for this component in `viam-micro-server`.
-
-{{< /alert >}}
+{{% readfile "/static/include/micro-create-your-own.md" %}}
 
 {{% /tab %}}
 {{< /tabs >}}
