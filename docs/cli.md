@@ -1316,10 +1316,10 @@ Examples:
 viam train submit managed --dataset-id=456 --model-org-id=123 --model-name=MyCoolClassifier --model-type=single_label_classification --model-labels=1,2,3
 
 # submit custom training job with an existing training script in the Registry on data in Viam cloud
-viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-version="2" --version="1" --script-name="mycompany:MyCustomTrainingScript"
+viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-version=2 --version=1 --script-name=mycompany:MyCustomTrainingScript
 
 # submit custom training job with an uploaded training script on data in Viam cloud
-viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-type="single_label_classification" --model-version="2" --version="1" --path=<path-to-tar.gz> --script-name="mycompany:MyCustomTrainingScript"
+viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-type=single_label_classification --model-version=2 --version=1 --path=<path-to-tar.gz> --script-name=mycompany:MyCustomTrainingScript
 ```
 
 #### Command options
