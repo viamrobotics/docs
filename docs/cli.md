@@ -1398,7 +1398,7 @@ viam whoami
 
 ### `auth-app`
 
-The `auth-app` command allows you to register and update your web or mobile application (created with the Viam Flutter or TypeScript [SDKs](/sdks/)) with [FusionAuth](https://fusionauth.io/) (the tool Viam uses for authentication and authorization) so that you or other users can log into your app with the same credentials they use to log into the [Viam app](https://app.viam.com).
+The `auth-app` command allows you to register, update, and get your web or mobile application (created with the Viam Flutter or TypeScript [SDKs](/sdks/)) with [FusionAuth](https://fusionauth.io/) (the tool Viam uses for authentication and authorization) so that you or other users can log into your app with the same credentials they use to log into the [Viam app](https://app.viam.com).
 The user's credentials allow them the same [permissions](/cloud/rbac/) to organizations, locations, and machines that they have in the Viam app.
 
 ```sh {class="command-line" data-prompt="$"  data-output="2-8,10-14"}
@@ -1411,7 +1411,7 @@ Examples:
 
 ```sh {class="command-line" data-prompt="$"  data-output="2-8,10-14"}
 # register a third party auth application
-viam auth-app register --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-name="julias app" --origin-uris="https://test.com","https://test2.com" --redirect-uris="https://redirect-url.com" --logout-uri="https://logout.com"
+viam auth-app register --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-name="julias app" --origin-uris=https://test.com,https://test2.com --redirect-uris=https://redirect-url.com--logout-uri=https://logout.com
 Info: Successfully registered auth application
 {
   "application_id": "1234a1z9-ab2c-1234-5678-bcd12345678a",
@@ -1420,7 +1420,7 @@ Info: Successfully registered auth application
 }
 
 # update a third party auth application
-viam auth-app update --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-name="julias app" --application-id=1234a1z9-ab2c-1234-5678-bcd12345678a --redirect-uris="https://test.com","https://test2.com"
+viam auth-app update --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-name="julias app" --application-id=1234a1z9-ab2c-1234-5678-bcd12345678a --redirect-uris=https://test.com,https://test2.com
 Info: Successfully updated auth application
 {
   "application_id": "1234a1z9-ab2c-1234-5678-bcd12345678a",
@@ -1443,7 +1443,7 @@ Sharing this information could compromise your system security by allowing unaut
 | -------------- | ----------- |
 | `register` | Register an [application](https://fusionauth.io/docs/get-started/core-concepts/applications) with FusionAuth |
 | `update` | Update your application |
-| `get` | Get the configuration for a third party auth application |
+| `get` | Get the configuration for the auth application |
 
 ##### Named arguments:
 
