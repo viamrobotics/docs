@@ -126,7 +126,7 @@ Additionally, the app allows you to:
 
 - see if your machines are online
 - [view a machine's logs](/cloud/machines/#logs)
-- [upload images from your phone to the cloud](/services/data/upload/#upload-images-with-the-viam-mobile-app)
+- [upload images from your phone to the cloud](/how-tos/upload-data/#upload-images-with-the-viam-mobile-app)
 - [invite people to collaborate with you and modify access](/cloud/rbac/#use-the-mobile-app)
 
 <br>
