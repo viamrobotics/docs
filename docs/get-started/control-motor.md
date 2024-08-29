@@ -250,60 +250,84 @@ func main() {
 Flutter code must be launched from inside a running Flutter application.
 To get started programming your rover with Flutter, follow the instructions to [Build a Flutter App that Integrates with Viam](/tutorials/control/flutter-app/).
 
-Add a new file to your application in <file>/lib</file> called <file>base_screen.dart</file>.
+Add a new file to your application in <file>/lib</file> called <file>motor_screen.dart</file>.
 Paste this code into your file:
 
 ```dart {class="line-numbers linkable-line-numbers"}
-/// This is the BaseScreen, which allows us to control a Base.
+/// This is the MotorScreen, which allows us to control a [Motor].
+/// This particular example uses both the Viam-provided [ViamMotorWidget],
+/// while also providing an example of how you could create your own
+/// widgets to control a resource.
+library;
 
 import 'package:flutter/material.dart';
 import 'package:viam_sdk/viam_sdk.dart';
 import 'package:viam_sdk/widgets.dart';
 
-class BaseScreen extends StatelessWidget {
-  final Base base;
+class MotorScreen extends StatelessWidget {
+  final Motor motor;
 
-  const BaseScreen(this.base, {super.key});
-
-  Future<void> moveSquare() async {
-    for (var i=0; i<4; i++) {
-      await base.moveStraight(500, 500);
-      await base.spin(90, 100);
-    }
-  }
+  const MotorScreen(this.motor, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(base.name)),
-      body: Center(
-        child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+      appBar: AppBar(title: Text(motor.name)),
+      body: Column(children: [
+        // The first widget in our column will be the one provided
+        // by the Viam SDK.
+        ViamMotorWidget(motor: motor),
+        const SizedBox(height: 10), // Padding between widgets
+
+        // Here we have 2 buttons that control the [Motor]:
+        // Either go backward or forward for 10 revolutions.
+        // The [Motor] resource provides many control functions, but here
+        // we are using the [Motor.goFor] method.
+        //
+        // You can extrapolate this to other Viam resources.
+        // For example, you could make the onPressed function call
+        // [Gripper.open] on a gripper, or [Sensor.readings] on a Sensor.
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           ElevatedButton(
-              onPressed: moveSquare,
-              child: const Text('Move Base in Square'),
-            ),
-        ]))
-        ,);}}
+            onPressed: () => {motor.goFor(100, -10)},
+            style: ElevatedButton.styleFrom(
+            minimumSize: Size(80, 20), // Adjusts width and height of the button
+            padding: EdgeInsets.symmetric(horizontal: 4, vertical: 6), // Adjusts padding inside the button
+          ),
+            child: const Text('Go Backwards 10 Revolutions', textAlign: TextAlign.center),
+          ),
+          const SizedBox(width: 16), // Padding between widgets
+          ElevatedButton(
+            onPressed: () => {motor.goFor(100, 10)},
+            style: ElevatedButton.styleFrom(
+            minimumSize: Size(80, 20), // Adjusts width and height of the button
+            padding: EdgeInsets.symmetric(horizontal: 4, vertical: 6), // Adjusts padding inside the button
+          ),
+            child: const Text('Go Forwards 10 Revolutions', textAlign: TextAlign.center),
+          ),
+        ]),
+      ]),
+    );
+  }
+}
 ```
 
-This code creates a screen with a singular centered button that, when pressed, calls on the `moveSquare()` method to drive the base in a square.
+This code creates a screen with a power widget to adjust the power and two buttons that, when pressed, call on the `goFor()` method to make the motor either go forwards 10 revolutions or go backwards 10 revolutions.
 
 Then, replace the contents of <file>robot_screen.dart</file> with the following file, or add the highlighted lines of code to your program in the locations indicated:
 
-```dart {class="line-numbers linkable-line-numbers" data-line="11, 73-85, 101-102"}
+```dart {class="line-numbers linkable-line-numbers" data-line="9, 73-85, 99-102"}
 /// This is the screen that shows the resources available on a robot (or smart machine).
 /// It takes in a Viam app client instance, as well as a robot client.
 /// It then uses the Viam client instance to create a connection to that robot client.
 /// Once the connection is established, you can view the resources available
 /// and send commands to them.
+library;
 
 import 'package:flutter/material.dart';
+import 'motor_screen.dart';
 import 'package:viam_sdk/protos/app/app.dart';
 import 'package:viam_sdk/viam_sdk.dart';
-
-import 'base_screen.dart';
 
 class RobotScreen extends StatefulWidget {
   final Viam _viam;
@@ -366,16 +390,16 @@ class _RobotScreenState extends State<RobotScreen> {
   }
 
   bool _isNavigable(ResourceName rn) {
-    if (rn.subtype == Base.subtype.resourceSubtype) {
+    if (rn.subtype == Motor.subtype.resourceSubtype) {
       return true;
     }
     return false;
   }
 
   void _navigate(ResourceName rn) {
-    if (rn.subtype == Base.subtype.resourceSubtype) {
-      final base = Base.fromRobot(client, rn.name);
-      Navigator.of(context).push(MaterialPageRoute(builder: (_) => BaseScreen(base)));
+    if (rn.subtype == Motor.subtype.resourceSubtype) {
+      final motor = Motor.fromRobot(client, rn.name);
+      Navigator.of(context).push(MaterialPageRoute(builder: (_) => MotorScreen(motor)));
     }
   }
 
@@ -401,22 +425,15 @@ class _RobotScreenState extends State<RobotScreen> {
 }
 ```
 
-This imports the <file>base_screen.dart</file> file into the program and adds logic to check if a {{< glossary_tooltip term_id="resource" text="resource" >}} is "navigable", or, has a screen made for it.
+This imports the <file>motor_screen.dart</file> file into the program and adds logic to check if a {{< glossary_tooltip term_id="resource" text="resource" >}} is "navigable", or, has a screen made for it.
 Base is the only resource that is navigable.
 
-To navigate to the base screen, save your code and launch your simulator.
-Navigate to the robot screen of a (live) machine with a base resource configured, and see the resources displayed like the following:
+To navigate to the motor screen, save your code and launch your simulator.
+Navigate to the robot screen of your (live) machine with a motor resource configured, and see the resource displayed like the following:
 
-{{<imgproc src="/tutorials/try-viam-sdk/resource-menu.png" resize="300x" declaredimensions=true alt="Machine resources listed in an example Flutter app">}}
+{{<imgproc src="/get-started/quickstarts/motor-screen.png" resize="500x" declaredimensions=true alt="iOS simulator of a motor displayed">}}
 
-Then, click on the base to display the base screen.
-You may need to scroll to the bottom of the list of resources.
-
-{{<imgproc src="/tutorials/try-viam-sdk/button.png" resize="300x" declaredimensions=true alt="Button to drive a rover in a square in an example Flutter app">}}
-
-Click on the button to move your rover in a square:
-
-{{<video webm_src="/tutorials/try-viam-sdk/square-test-rover.webm" mp4_src="/tutorials/try-viam-sdk/square-test-rover.mp4" alt="An example flutter app moving a Try Viam rover in a square" poster="/tutorials/try-viam-sdk/square-test-rover.jpg">}}
+You can adjust the toggle to change the power of your motor or press the buttons to make it revolve forwards and backwards.
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
