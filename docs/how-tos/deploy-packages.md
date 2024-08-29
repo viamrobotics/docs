@@ -228,11 +228,11 @@ For example:
 
 Don't forget to **Save**.
 
-All machines configured with your fragment, will update when they next check for configuration updates.
+All machines configured with your fragment will update when they next check for configuration updates.
 
 ## Next steps
 
-If you are setting up a larger fleet, you can use fragments to configure many machines and you can use Viam's provisioning manager, Viam Agent to automate the process of setting up machines with your fragments:
+If you are setting up a larger fleet, you can use fragments to configure many machines and you can use Viam's provisioning manager, Viam Agent, to automate the process of setting up machines with your fragments:
 
 {{< cards >}}
 {{% card link="/how-tos/one-to-many/" %}}
