@@ -171,43 +171,6 @@ Now, select **Yes** to enable SPI:
 Finally, select **Finish**.
 Restart your Pi using `sudo reboot` to make these changes take effect.
 
-### Install the Python SDK
-
-Next, set up a virtual environment and install the SDK.
-(If you want to read more on virtual environments, check out [the documentation](https://docs.viam.com/build/program/python-venv/).)
-
-Make sure any packages on your Pi are up to date, while connected to your Pi with SSH run:
-
-```shell
-sudo apt update
-sudo apt upgrade
-```
-
-Then run the following command to create and activate the virtual environment:
-
-```sh {class="command-line" data-prompt="$"}
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-Make sure you have `pip` installed for Python 3:
-
-```shell
-pip --version
-```
-
-If not, run the following command:
-
-```shell
-sudo apt install python3-pip
-```
-
-Run the following command to install the SDK:
-
-```sh {class="command-line" data-prompt="$"}
-pip3 install viam-sdk
-```
-
 ### Configure the components of your robot in the Viam app
 
 {{% snippet "setup.md" %}}
@@ -285,6 +248,8 @@ Add the mcp300x-adc-sensor module to your robot in 3 steps:
 
 Save your config by clicking **Save** in the top right corner of the page.
 
+On the sensor configuration panel, click on the **TEST** area to confirm you can get readings from your sensor.
+
 This module allows you to get multiple readings at the same time from different channels of the ADC sensor.
 If you wire and configure another sensor, such as a temperature sensor on channel 1, you can add the sensor to the `"channel_map"` and get a reading from it.
 
@@ -293,6 +258,41 @@ If you would like to see how the module works, you can find its code on [GitHub]
 {{< /alert >}}
 
 Now that you have set up your robot, you can put the suction tube of your pump into the water cup, and the output tube into the plant!
+
+### Install the Python SDK
+
+Make sure any packages on your Pi are up to date, while connected to your Pi with SSH run:
+
+```shell {class="command-line" data-prompt="$"}
+sudo apt update
+sudo apt upgrade
+```
+
+Then run the following command to create and activate the virtual environment:
+If you want to read more on virtual environments, check out [the documentation](https://docs.viam.com/build/program/python-venv/).
+
+```sh {class="command-line" data-prompt="$"}
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Make sure you have `pip` installed for Python 3:
+
+```shell {class="command-line" data-prompt="$"}
+pip --version
+```
+
+If not, run the following command:
+
+```shell {class="command-line" data-prompt="$"}
+sudo apt install python3-pip
+```
+
+Run the following command to install the SDK:
+
+```sh {class="command-line" data-prompt="$"}
+pip3 install viam-sdk
+```
 
 ### Add Python control code
 
@@ -340,7 +340,7 @@ while True:
     soil_moisture = readings.get('moisture')
 
     # Calculate the average moisture reading from the list of readings
-    #  to account for outliers
+    # to account for outliers
     avg_moisture = sum(soil_moisture) / len(soil_moisture)
 
     # If the average moisture reading is greater than 60000, trigger pump
@@ -365,9 +365,6 @@ while True:
         # Stop the pump by setting the duty cycle to 0%
         await pwm_pin.set_pwm(duty=0.0)
 
-        # Run the water pump for 100 revs. at 1000 rpm
-        # await water_pump.go_for(rpm=1000, revolutions=100)
-
         # Wait 60 seconds so that the water can soak into the soil a bit before
         # trying to water again
         print('waiting a little bit for the water to soak in')
@@ -380,7 +377,7 @@ Make sure to import `time` at the beginning of your version of <file>plant-water
 
 Save your <file>plant-watering-robot.py</file> program with this logic added in, and then run it on your Pi like this:
 
-```shell
+```shell {class="command-line" data-prompt="$"}
 sudo python3 plant-watering-robot.py
 ```
 
