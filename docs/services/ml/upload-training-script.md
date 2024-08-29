@@ -261,7 +261,7 @@ The `parse_args()` function in the template parses your arguments.
 {{% /expand%}}
 {{%expand "Parsing annotations from dataset file" %}}
 
-The `dataset_file` is a file that the Viam platform will pass to the training script when you train an ML model with it.
+When you submit a training job to the Viam Cloud, Viam will pass a `dataset_file` to the training script when you train an ML model with it.
 The file contains metadata from the dataset used for the training, including the file path for each data point and any annotations associated with the data.
 
 Dataset JSON files for image datasets with bounding box labels and classification labels are formatted as follows:
@@ -589,160 +589,56 @@ Once a training job is complete, Viam checks the output directory and creates a 
 
 As an example, you can refer to the logic from <file>model/training.py</file> from this [example classification training script](https://github.com/viam-modules/classification-tflite) that trains a classification model using TensorFlow and Keras.
 
-```python {class="line-numbers linkable-line-numbers"}
-# Save the labels file which is used in conjunctions with the ML model
-def save_labels(labels: ty.List[str], model_dir: str) -> None:
-    """Saves a label.txt of output labels to the specified model directory.
-    Args:
-        labels: list of string lists, where each string list contains up to
-        N_LABEL labels associated with an image
-        model_dir: output directory for model artifacts
-    """
-    filename = os.path.join(model_dir, labels_filename)
-    with open(filename, "w") as f:
-        for label in labels[:-1]:
-            f.write(label + "\n")
-        f.write(labels[-1])
-
-
-# Save the model artifact to the Viam registry using the provided
-# ML model name and version
-def save_tflite_classification(
-    model: Model,
-    model_dir: str,
-    model_name: str,
-    target_shape: ty.Tuple[int, int, int],
-) -> None:
-    """Save model as a TFLite model.
-    Args:
-        model: trained model
-        model_dir: output directory for model artifacts
-        model_name: name of saved model
-        target_shape: desired output shape of predictions from model
-    """
-    # Convert the model to tflite, with batch size 1 so the graph does not have
-    # dynamic-sized tensors.
-    input = tf.keras.Input(target_shape, batch_size=1, dtype=tf.uint8)
-    output = model(input, training=False)
-    wrapped_model = tf.keras.Model(inputs=input, outputs=output)
-    converter = tf.lite.TFLiteConverter.from_keras_model(wrapped_model)
-    converter.target_spec.supported_ops = TFLITE_OPS
-    tflite_model = converter.convert()
-
-    # Save the model to the output directory.
-    filename = os.path.join(model_dir, f"{model_name}.tflite")
-    with open(filename, "wb") as f:
-        f.write(tflite_model)
-```
-
-{{% /expand%}}
-{{%expand "The main logic" %}}
-
-The main logic runs the training job by:
-
-1. parsing command line inputs,
-2. parsing the dataset and annotations from the dataset file,
-3. producing the model artifact
-4. saving the model artifact.
-
-The main logic is executed when a training job runs.
-
-As an example, you can refer to the logic from <file>model/training.py</file> from this [example classification training script](https://github.com/viam-modules/classification-tflite) that trains a classification model using TensorFlow and Keras.
-
-```python {class="line-numbers linkable-line-numbers" }
-if __name__ == "__main__":
-    DATA_JSON, MODEL_DIR = parse_args()
-    # Set up compute device strategy. If GPUs are available, they will be used
-    if len(tf.config.list_physical_devices("GPU")) > 0:
-        strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
-    else:
-        strategy = tf.distribute.OneDeviceStrategy(device="/cpu:0")
-
-    IMG_SIZE = (256, 256)
-    # Epochs and batch size can be adjusted according to the training job.
-    EPOCHS = 2
-    BATCH_SIZE = 16
-    SHUFFLE_BUFFER_SIZE = 32
-    AUTOTUNE = (
-        tf.data.experimental.AUTOTUNE
-    )  # Adapt preprocessing and prefetching dynamically
-
-    # Model constants
-    NUM_WORKERS = strategy.num_replicas_in_sync
-    GLOBAL_BATCH_SIZE = BATCH_SIZE * NUM_WORKERS
-
-    # Read dataset file, labels should be changed according to the desired
-    # model output.
-    LABELS = ["orange_triangle", "blue_star"]
-    # The model type can be changed based on whether we want the model to
-    # output one label per image or multiple labels per image
-    model_type = multi_label
-    image_filenames, image_labels = parse_filenames_and_labels_from_json(
-        DATA_JSON, LABELS, model_type)
-    # Generate 80/20 split for train and test data
-    train_dataset, test_dataset = create_dataset_classification(
-        filenames=image_filenames,
-        labels=image_labels,
-        all_labels=LABELS + [unknown_label],
-        model_type=model_type,
-        img_size=IMG_SIZE,
-        train_split=0.8,
-        batch_size=GLOBAL_BATCH_SIZE,
-        shuffle_buffer_size=SHUFFLE_BUFFER_SIZE,
-        num_parallel_calls=AUTOTUNE,
-        prefetch_buffer_size=AUTOTUNE,
-    )
-
-    # Build and compile model
-    with strategy.scope():
-        model = build_and_compile_classification(
-            LABELS + [unknown_label], model_type, IMG_SIZE + (3,)
-        )
-
-    # Train model on data
-    loss_history = model.fit(
-            x=train_dataset, epochs=EPOCHS,
-    )
-
-    # Save labels.txt file
-    save_labels(LABELS + [unknown_label], MODEL_DIR)
-    # Convert the model to tflite
-    save_tflite_classification(
-        model, MODEL_DIR, "classification_model", IMG_SIZE + (3,)
-    )
-```
-
 {{% /expand%}}
 
 ## Package the training script as a <file>tar.gz</file> source distribution
 
-You need to save your training script as a gzip'd tarball to run it in the Viam ML training service.
-Follow the instructions to [create a <file>tar.gz</file>](https://docs.python.org/3.10/distutils/sourcedist) from your project folder.
+To run your training script in the Viam ML training service, compress your project folder into a tar.gz file.
+You can run this command to create a .tar.gz archive from your project folder:
+
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
+tar -czvf my-training.tar.gz my-training/
+```
 
 {{% alert title="Tip" color="tip" %}}
-You can refer to the directory structure of this [example classification training script](https://app.viam.com/packages/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb/custom-training-classification/ml_training/latest/e76d1b3b-0468-4efd-bb7f-fb1d2b352fcb).
-You must log in to the Viam app to download the package.
-Unzip the package and see <file>model/training.py</file> for an example entrypoint file.
+You can refer to the directory structure of this [example classification training script](https://github.com/viam-modules/classification-tflite).
 {{% /alert %}}
 
 ## Upload a new training script or new version
 
+To upload a custom training script to the registry, use the [`viam training-script upload`](/cli/#training-script) command.
 You must use the [Viam CLI](/cli/) to upload your training script to the Registry.
-
-You can use the [`viam training-script upload`](/cli/#training-script) command to upload a new script.
 
 For example:
 
+{{< tabs >}}
+{{% tab name="Usage" %}}
+
 ```sh {class="command-line" data-prompt="$"}
-viam training-script upload --path=<path-to-tar.gz> --org-id=<INSERT ORG ID> --script-name=<org-id-or-namespace:training-script-name>
+viam training-script upload --path=<path-to-tar.gz> --org-id=<org-id> --script-name=<training-script-name>
 ```
+
+{{% /tab %}}
+{{% tab name="Examples" %}}
+
+```sh {class="command-line" data-prompt="$"}
+viam training-script upload --path=my-training.tar.gz --org-id=<ORG_ID> --script-name=my-training-script
+
+viam training-script upload --path=my-training.tar.gz --org-id=<ORG_ID> --script-name=my-training --framework=tensorflow --type=single_label_classification --description="Custom image classification model" --visibility=private
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+You can also [specify the version, framework, type, visibility, and description](/cli/#training-script) when uploading a custom training script.
 
 To find your organization's ID, navigate to your organization's **Settings** page in [the Viam app](https://app.viam.com/).
 Find **Organization ID** and click the copy icon.
 
+After a successful upload, you'll receive a confirmation message with a link to view your changes online in the CLI.
 Once uploaded, you can view the script by navigating to the [registry's **Training Scripts** page](https://app.viam.com/registry?type=Training+Script).
 
-You can also simultaneously upload a training script and submit a training job with the [`viam train submit custom with-upload` command](/cli/#position-arguments-submit-custom).
+For more information on managing training scripts and other available commands, refer to the [CLI documentation]((/cli/#training-script)).
 
 ## Submit a training job
 
