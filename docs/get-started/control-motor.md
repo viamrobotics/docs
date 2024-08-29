@@ -245,6 +245,180 @@ func main() {
 ```
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+Flutter code must be launched from inside a running Flutter application.
+To get started programming your rover with Flutter, follow the instructions to [Build a Flutter App that Integrates with Viam](/tutorials/control/flutter-app/).
+
+Add a new file to your application in <file>/lib</file> called <file>base_screen.dart</file>.
+Paste this code into your file:
+
+```dart {class="line-numbers linkable-line-numbers"}
+/// This is the BaseScreen, which allows us to control a Base.
+
+import 'package:flutter/material.dart';
+import 'package:viam_sdk/viam_sdk.dart';
+import 'package:viam_sdk/widgets.dart';
+
+class BaseScreen extends StatelessWidget {
+  final Base base;
+
+  const BaseScreen(this.base, {super.key});
+
+  Future<void> moveSquare() async {
+    for (var i=0; i<4; i++) {
+      await base.moveStraight(500, 500);
+      await base.spin(90, 100);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(base.name)),
+      body: Center(
+        child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+              onPressed: moveSquare,
+              child: const Text('Move Base in Square'),
+            ),
+        ]))
+        ,);}}
+```
+
+This code creates a screen with a singular centered button that, when pressed, calls on the `moveSquare()` method to drive the base in a square.
+
+Then, replace the contents of <file>robot_screen.dart</file> with the following file, or add the highlighted lines of code to your program in the locations indicated:
+
+```dart {class="line-numbers linkable-line-numbers" data-line="11, 73-85, 101-102"}
+/// This is the screen that shows the resources available on a robot (or smart machine).
+/// It takes in a Viam app client instance, as well as a robot client.
+/// It then uses the Viam client instance to create a connection to that robot client.
+/// Once the connection is established, you can view the resources available
+/// and send commands to them.
+
+import 'package:flutter/material.dart';
+import 'package:viam_sdk/protos/app/app.dart';
+import 'package:viam_sdk/viam_sdk.dart';
+
+import 'base_screen.dart';
+
+class RobotScreen extends StatefulWidget {
+  final Viam _viam;
+  final Robot robot;
+
+  const RobotScreen(this._viam, this.robot, {super.key});
+
+  @override
+  State<RobotScreen> createState() => _RobotScreenState();
+}
+
+class _RobotScreenState extends State<RobotScreen> {
+  /// Similar to previous screens, start with [_isLoading] to true.
+  bool _isLoading = true;
+
+  /// This is the [RobotClient], which allows you to access
+  /// all the resources of a Viam Smart Machine.
+  /// This differs from the [Robot] provided to us in the widget constructor
+  /// in that the [RobotClient] contains a direct connection to the Smart Machine
+  /// and its resources. The [Robot] object simply contains information about
+  /// the Smart Machine, but is not actually connected to the machine itself.
+  ///
+  /// This is initialized late because it requires an asynchronous
+  /// network call to establish the connection.
+  late RobotClient client;
+
+  @override
+  void initState() {
+    super.initState();
+    // Call our own _initState method to initialize our state.
+    _initState();
+  }
+
+  @override
+  void dispose() {
+    // You should always close the [RobotClient] to free up resources.
+    // Calling [RobotClient.close] will clean up any tasks and
+    // resources created by Viam.
+    client.close();
+    super.dispose();
+  }
+
+  /// This method will get called when the widget initializes its state.
+  /// It exists outside the overridden [initState] function since it's async.
+  Future<void> _initState() async {
+    // Using the authenticated [Viam] the received as a parameter,
+    // the app can obtain a connection to the Robot.
+    // There is a helpful convenience method on the [Viam] instance for this.
+    final robotClient = await widget._viam.getRobotClient(widget.robot);
+    setState(() {
+      client = robotClient;
+      _isLoading = false;
+    });
+  }
+
+  /// A computed variable that returns the available [ResourceName]s of
+  /// this robot in an alphabetically sorted list.
+  List<ResourceName> get _sortedResourceNames {
+    return client.resourceNames..sort((a, b) => a.name.compareTo(b.name));
+  }
+
+  bool _isNavigable(ResourceName rn) {
+    if (rn.subtype == Base.subtype.resourceSubtype) {
+      return true;
+    }
+    return false;
+  }
+
+  void _navigate(ResourceName rn) {
+    if (rn.subtype == Base.subtype.resourceSubtype) {
+      final base = Base.fromRobot(client, rn.name);
+      Navigator.of(context).push(MaterialPageRoute(builder: (_) => BaseScreen(base)));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(widget.robot.name)),
+        body: _isLoading
+            ? const Center(child: CircularProgressIndicator.adaptive())
+            : ListView.builder(
+                itemCount: client.resourceNames.length,
+                itemBuilder: (_, index) {
+                  final resourceName = _sortedResourceNames[index];
+                  return ListTile(
+                    title: Text(resourceName.name),
+                    subtitle: Text(
+                        '${resourceName.namespace}:${resourceName.type}:${resourceName.subtype}'),
+                    onTap: () => _navigate(resourceName),
+                    trailing: _isNavigable(resourceName) ? Icon(Icons.chevron_right) : SizedBox.shrink(),
+                  );
+                }));
+  }
+}
+```
+
+This imports the <file>base_screen.dart</file> file into the program and adds logic to check if a {{< glossary_tooltip term_id="resource" text="resource" >}} is "navigable", or, has a screen made for it.
+Base is the only resource that is navigable.
+
+To navigate to the base screen, save your code and launch your simulator.
+Navigate to the robot screen of a (live) machine with a base resource configured, and see the resources displayed like the following:
+
+{{<imgproc src="/tutorials/try-viam-sdk/resource-menu.png" resize="300x" declaredimensions=true alt="Machine resources listed in an example Flutter app">}}
+
+Then, click on the base to display the base screen.
+You may need to scroll to the bottom of the list of resources.
+
+{{<imgproc src="/tutorials/try-viam-sdk/button.png" resize="300x" declaredimensions=true alt="Button to drive a rover in a square in an example Flutter app">}}
+
+Click on the button to move your rover in a square:
+
+{{<video webm_src="/tutorials/try-viam-sdk/square-test-rover.webm" mp4_src="/tutorials/try-viam-sdk/square-test-rover.mp4" alt="An example flutter app moving a Try Viam rover in a square" poster="/tutorials/try-viam-sdk/square-test-rover.jpg">}}
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 <file>package.json</file>:
