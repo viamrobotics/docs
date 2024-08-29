@@ -163,8 +163,8 @@ await data_client.file_upload_from_path(
 To upload all the files in a directory, you can use the same [`file_upload_from_path`](/appendix/apis/data-client/#fileuploadfrompath) method inside a `for` loop, for example:
 
 ```python {class="line-numbers linkable-line-numbers"}
-import os # Add this package at the top of your program
-                 # with your other imports
+import os  # Add this package at the top of your program
+# with your other imports
 
 my_data_directory = "/Users/Artoo/my_cat_photos"
 
