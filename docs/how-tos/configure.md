@@ -94,7 +94,6 @@ For each component that makes up your machine:
 5. Click the **TEST** area of the configuration panel to test your component, for example to view a camera feed or turn a motor.
 6. If any problems occur check the [**LOGS** tab](/cloud/machines/#logs). You can also review the [configuration history](/cloud/machines/#configure) and roll back changes if needed.
 
-
 {{% /tablestep %}}
 {{% tablestep %}}
 
