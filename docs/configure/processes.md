@@ -41,7 +41,6 @@ Due to the way processes are designed for stability, if you are configuring a pr
 
 4. Add your code to the <file>robot</file> folder.
 
-
 {{% /tab %}}
 {{< /tabs >}}
 
