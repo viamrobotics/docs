@@ -39,7 +39,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ### SubmitCustomTrainingJob
 
 Submit a training job from a custom training script.
-Follow the guide to [Use a Custom Training Script](/services/ml/upload-training-script/) to do so.
+Follow the guide to [Train a Model with a Custom Python Training Script](/how-tos/create-custom-training-scripts/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

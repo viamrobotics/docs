@@ -1,6 +1,6 @@
 ---
-title: "Create Custom training scripts"
-linkTitle: "Create Custom training scripts"
+title: "Create custom training scripts"
+linkTitle: "Create custom training scripts"
 weight: 90
 type: "docs"
 tags: ["data management", "ml", "model training"]
@@ -19,7 +19,7 @@ cost: "0"
 ---
 
 You can create your own custom Python training script that trains ML models to your specifications using the Machine Learning framework of your choice (PyTorch, Tensorflow, TFLite, ONNX, or any other framework).
-Once added to the [Viam registry](https://app.viam.com/registry?type=Training+Script), you can use the training script to build ML models based on your datasets.
+Once added to the [Viam Registry](https://app.viam.com/registry?type=Training+Script), you can use the training script to build ML models based on your datasets.
 
 {{< alert title="In this page" color="tip" >}}
 
@@ -28,8 +28,6 @@ Once added to the [Viam registry](https://app.viam.com/registry?type=Training+Sc
 1. [Submit a training job](#submit-a-training-job) that uses the training script on a dataset to train a new ML model.
 
 {{< /alert >}}
-
-For a no-code approach, you can [train TFLite classification and object detection models](/services/ml/train-model/) on the [Viam app **DATA** page](https://app.viam.com) or use existing [training scripts](https://app.viam.com/registry?type=Training+Script) from the Viam Registry.
 
 ## Prerequisites
 
@@ -95,7 +93,7 @@ Inside the top level folder (in this example <file>my-training</file>), create a
 
 {{% expand "Click to see the template" %}}
 
-```python {class="line-numbers linkable-line-numbers" data-line="121,162" }
+```python {class="line-numbers linkable-line-numbers" data-line="126,170" }
 import argparse
 import json
 import os
@@ -289,9 +287,9 @@ if __name__ == "__main__":
 
 {{% /tablestep %}}
 {{< tablestep >}}
-<b>5. Template script explained</b>
+<b>5. Template script parsing functionality explained</b>
 
-<p></p>
+<p>You do not need to edit the scripts parsing functionality but if you want to understand the script fully, click on the following expanders:</p>
 
 {{% expand "Parsing command line inputs" %}}
 
@@ -380,33 +378,39 @@ Depending on if you are training a classification or detection model, the templa
 
 {{% /expand%}}
 
-{{%expand "Logic to produce model artifact" %}}
+{{% /tablestep %}}
+{{% tablestep %}}
+**6. Add logic to produce the model artifact**
 
-The next part of the script depends on the type of ML training you are creating.
+You must fill in the `build_and_compile_model` function.
 In this part of the script, you use the data from the dataset and the annotations from the dataset file to build a Machine Learning model.
 
 As an example, you can refer to the logic from <file>model/training.py</file> from this [example classification training script](https://github.com/viam-modules/classification-tflite) that trains a classification model using TensorFlow and Keras.
 
-{{% alert title="Tip" color="tip" %}}
-You must log in to the [Viam app](https://app.viam.com/) to download the package containing the classification training script from the registry.
-{{% /alert %}}
-
-{{% /expand%}}
-{{%expand "Saving the model artifact the script produces" %}}
+{{% /tablestep %}}
+{{% tablestep %}}
+**7. Save the model artifact**
 
 The `save_model()` and the `save_labels()` functions in the template before the `main` logic save the model artifact your training job produces to the `model_output_directory` in the cloud.
 
 Once a training job is complete, Viam checks the output directory and creates a package with all of the contents of the directory, creating or updating a registry item for the ML model.
 
-As an example, you can refer to the logic from <file>model/training.py</file> from this [example classification training script](https://github.com/viam-modules/classification-tflite) that trains a classification model using TensorFlow and Keras.
+You must fill in these functions.
 
-{{% /expand%}}
+As an example, you can refer to the logic from <file>model/training.py</file> from this [example classification training script](https://github.com/viam-modules/classification-tflite) that trains a classification model using TensorFlow and Keras.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**6. Using Viam APIs in a training script**
+**8. Update the main method**
 
-If you need to access any of the [Viam APIs](/appendix/apis/) within a custom training script, you can use the environment variables `API_KEY` and `API_KEY_ID` to establish a connection:
+Update the main to which calls the functions you have just created.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**9. Using Viam APIs in a training script**
+
+If you need to access any of the [Viam APIs](/appendix/apis/) within a custom training script, you can use the environment variables `API_KEY` and `API_KEY_ID` to establish a connection.
+These environment variables will be available to training scripts.
 
 ```python
 async def connect() -> ViamClient:
@@ -493,7 +497,19 @@ Once uploaded, you can view the script by navigating to the [registry's **Traini
 
 ## Submit a training job
 
-After uploading the training script, you can run it by submitting a training job.
+After uploading the training script, you can run it by submitting a training job through the Viam app or using the Viam CLI or [ML Training client API](/appendix/apis/ml-training-client/#submittrainingjob).
+
+{{< tabs >}}
+{{% tab name="Viam app" %}}
+
+{{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Train models">}}
+
+In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train on.
+
+Click **Train model** and select **Train on a custom training script**, then follow the prompts.
+
+{{% /tab %}}
+{{% tab name="CLI" %}}
 
 You can use [`viam train submit custom from-registry`](/cli/#positional-arguments-submit) to submit a training job from a training script already uploaded to the registry or `viam train submit custom from-upload` to upload a training script and submit a training job at the same time.
 
@@ -517,17 +533,21 @@ viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-or
 
 This command uploads a script called `"MyCustomTrainingScript"` to the registry under the specified organization and also submits a training job to that script with the input dataset, which generates a new version of the single-classification ML model `"MyRegistryModel"` and publishes that to the registry.
 
-{{% /tab %}}
-{{< /tabs >}}
-
 To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset.
 Click **...** in the left-hand menu and click **Copy dataset ID**.
 
 To find your organization's ID, navigate to your organization's **Settings** page in [the Viam app](https://app.viam.com/).
 Find **Organization ID** and click the copy icon.
 
-Once submitted, view your training job in the **Training** section of the Viam app's **DATA** page's [**MODELS** tab](https://app.viam.com/data/models).
-You can also view the uploaded ML model in the [**MODELS** tab](https://app.viam.com/data/models).
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Once submitted, you can view your training job on the **DATA** page's [**MODELS** tab](https://app.viam.com/data/models).
+
+You will receive an email when your training job completed.
 
 ## Next steps
 

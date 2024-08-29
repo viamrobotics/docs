@@ -1199,8 +1199,7 @@ The `--stream` argument, when included in the CLI command prior to the `--data` 
 
 ### `training-script`
 
-Manage training scripts for custom ML training.
-For more information, see [Train a Model with a Custom Python Training Script](/services/ml/upload-training-script/).
+Manage training scripts for [custom ML training](/registry/training-scripts/).
 
 #### Command options
 
