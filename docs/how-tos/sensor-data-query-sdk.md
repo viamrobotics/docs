@@ -68,7 +68,8 @@ pip install viam-sdk
 {{% tablestep%}}
 **2. Install requirements**
 
-To query data with the Python SDK, you will need `bson` from the `pymongo` package. To install `bson`, run the following command:
+To query data with the Python SDK, you will the `bson` package or the `pymongo` package.
+To install `bson`, run the following command:
 
 ```sh {class="command-line" data-prompt="$"}
 pip install bson
@@ -98,7 +99,7 @@ You can use [`viam organizations list`](/cli/#organizations) to retrieve your or
 
 Use the API key and [`TabularDataByFilter()`](/appendix/apis/data-client/#tabulardatabyfilter), [`TabularDataBySQL()`](/appendix/apis/data-client/#tabulardatabysql), [`TabularDataByMQL()`](/appendix/apis/data-client/#tabulardatabymql), and[`DeleteTabularData()`](/appendix/apis/data-client/#deletetabulardata) to query data by creating and running the following Python script:
 
-```python {class="line-numbers linkable-line-numbers" data-line="28-50"}
+```python {class="line-numbers linkable-line-numbers" data-line="29-51"}
 import asyncio
 import bson
 
