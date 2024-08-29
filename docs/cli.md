@@ -24,8 +24,8 @@ The CLI lets you:
 For example, this CLI command moves a servo to the 75 degree position:
 
 ```sh {class="command-line" data-prompt="$"}
-viam machines part run --robot 82c608a-1be9-46a5 --organization "Robot's Org" \
---location myLoc --part "myrobot-main" --data '{"name": "myServo", "angle_deg":75}' \
+viam machines part run --machine 82c608a-1be9-46a5 --organization "Artoo's Org" \
+--location myLoc --part "mymachine-main" --data '{"name": "myServo", "angle_deg":75}' \
 viam.component.servo.v1.ServoService.MoveRequest
 ```
 
@@ -262,8 +262,8 @@ viam [global options] command [command options] [arguments...]
 <!-- prettier-ignore -->
 | Parameter | Description |
 | --------- | ----------- |
-| [Global options](#global-options) | _optional_ - list of flags that apply for commands |
-| [Command](#commands) | _required_ - the specific CLI command to run |
+| [Global options](#global-options) | _optional_ - list of flags that apply for commands. |
+| [Command](#commands) | _required_ - the specific CLI command to run. |
 | Command options | _required for some commands_  - the operation to run for the specified command. |
 | Arguments | _required for some commands_ - the arguments for the specified command operation. Some commands take positional arguments, some named arguments. |
 
@@ -446,7 +446,7 @@ With it, you can export data in a variety of formats, delete specified data, add
 
 ```sh {class="command-line" data-prompt="$"}
 viam data export --destination=<output path> --data-type=<output data type> [...named args]
-viam data delete [...named args]
+viam data delete --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
 viam data database configure --org-id=<org-id> --password=<db-user-password>
 viam data database hostname --org-id=<org-id>
 viam data tag ids add --tags=<tags> --org-id=<org_id> --location-id=<location_id> --file-ids=<file_ids>
@@ -466,9 +466,14 @@ viam data export --destination=/home/robot/data --data-type=tabular \
 viam data export --destination=/home/robot/data --data-type=binary \
 --component-name myComponent
 
+# delete binary data of mime type image/jpeg in an organization between a specified timestamp
+viam data delete binary --org-ids=123 --mime-types=image/jpeg --start 2024-08-20T14:10:34-04:00 --end 2024-08-20T14:16:34-04:00
+
 # configure a database user for the Viam organization's MongoDB Atlas Data
 # Federation instance, in order to query tabular data
 viam data database configure --org-id=abc --password=my_password123
+
+# get the hostname to access a MongoDB Atlas Data Federation instance
 viam data database hostname --org-id=abc
 
 # add tags to all data that matches the given ids
@@ -512,7 +517,7 @@ done
 <!-- prettier-ignore -->
 | Argument | Description |
 | -------- | ----------- |
-| `filter` | `add` or `remove` images or tags from a dataset using a filter. See [Using the `filter` argument)](#using-the-filter-argument).|
+| `filter` | `add` or `remove` images or tags from a dataset using a filter. See [Using the `filter` argument](#using-the-filter-argument).|
 | `ids` | `add` or `remove` images or tags from a dataset by specifying one or more file ids as a comma-separated list. See [Using the `ids` argument](#using-the-ids-argument).|
 | `--help` | Return help |
 
@@ -521,28 +526,30 @@ done
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--destination` | Output directory for downloaded data |`export` | **Required** |
-| `--data-type` | Data type to be downloaded: either binary or tabular |`export`| **Required** |
-| `--component-name` | Filter by specified component name |`export`, `delete`| Optional |
-| `--component-type` | Filter by specified component type |`export`, `delete`| Optional |
-| `--component-model` | Filter by specified component model |`export`, `delete`| Optional |
-| `--delete-older-than-days` | Number of days, 0 means all data will be deleted | `delete` | Optional |
-| `--start` | ISO-8601 timestamp indicating the start of the interval |`export`, `delete`, `dataset`| Optional |
-| `--end` | ISO-8601 timestamp indicating the end of the interval |`export`, `delete`, `dataset`| Optional |
-| `--file-ids` | File-ids to add or remove tags from | `tag ids` | **Required** |
-| `--location-id` | Location ID for the file ids being added or removed from the specified dataset (only accepts one location id) |`dataset`, `tag ids` | **Required** |
+| `--destination` | Output directory for downloaded data. |`export` | **Required** |
+| `--data-type` | Data type to be downloaded: either binary or tabular. |`export`| **Required** |
+| `--component-name` | Filter by specified component name. |`export`, `delete`, `tag filter`| Optional |
+| `--component-type` | Filter by specified component type. |`export`, `delete`, `tag filter` | Optional |
+| `--component-model` | Filter by specified component model. |`export`, `delete`| Optional |
+| `--delete-older-than-days` | Number of days, 0 means all data will be deleted. | `delete` | Optional |
+| `--start` | ISO-8601 timestamp indicating the start of the interval. |`export`, `delete`, `dataset`, `tag filter`| Optional |
+| `--end` | ISO-8601 timestamp indicating the end of the interval. |`export`, `delete`, `dataset`, `tag filter`| Optional |
+| `--file-ids` | File-ids to add or remove tags from. | `tag ids` | **Required** |
+| `--location-id` | Location ID for the file ids being added or removed from the specified dataset (only accepts one location id). |`dataset`, `tag ids` | **Required** |
 | `--location-ids` | Filter by specified location ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. |`export`, `delete`, `tag filter`| Optional |
-| `--method` | Filter by specified method |`export`, `delete`| Optional |
-| `--mime-types` | Filter by specified MIME type (accepts comma-separated list) |`export`, `delete`|false |
-| `--org-id` | Org ID for the database user being configured (with `database`) or data being tagged (`tag ids`) | `database configure`, `database hostname`, `tag ids` | **Required** |
-| `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. |`export`, `delete`, `tag filter` | Optional |
-| `--parallel` | Number of download requests to make in parallel, with a default value of 10 |`export`, `delete`, `dataset export` | Optional |
-| `--part-id` | Filter by specified part ID |`export`, `delete`| Optional |
-| `--part-name` | Filter by specified part name |`export`, `delete`| Optional |
-| `--machine-id` | Filter by specified machine ID |`export`, `delete`, `tag filter` | Optional |
-| `--machine-name` | Filter by specified machine name |`export`, `delete`| Optional |
-| `--tags` | Filter by (`export`, `delete`) or add (`tag`) specified tag (accepts comma-separated list) |`export`, `delete`, `tag` | Optional |
-| `--password` | Password for the database user being configured | `database configure` | **Required** |
+| `--method` | Filter by specified method. |`export`, `delete`, `tag filter`| Optional |
+| `--mime-types` | Filter by specified MIME type (accepts comma-separated list). |`export`, `delete`, `tag filter`|false |
+| `--org-id` | Org ID for the database user being configured (with `database`) or data being tagged. (`tag ids`) | `database configure`, `database hostname`, `tag ids` | **Required** |
+| `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. |`export`, `delete`, `tag filter`| Optional |
+| `--parallel` | Number of download requests to make in parallel, with a default value of 10. |`export`, `delete`, `dataset export` | Optional |
+| `--part-id` | Filter by specified part ID. |`export`, `delete`, `tag filter`| Optional |
+| `--part-name` | Filter by specified part name. |`export`, `delete`, `tag filter`| Optional |
+| `--machine-id` | Filter by specified machine ID. |`export`, `delete`, `tag filter` | Optional |
+| `--machine-name` | Filter by specified machine name. |`export`, `delete`, `tag filter`| Optional |
+| `--tags` | Filter by (`export`, `delete`) or add (`tag`) specified tag (accepts comma-separated list). |`export`, `delete`, `tag ids`, `tag filter` | Optional |
+| `--bbox-labels` | String labels corresponding to bounding boxes within images. | `tag filter` | Optional |
+| `--chunk-limit` | Maximum number of results per download request (tabular data only). | `tag filter` | Optional |
+| `--password` | Password for the database user being configured. | `database configure` | **Required** |
 
 ### `locations`
 
@@ -551,6 +558,7 @@ With it, you can list available locations, filter locations by organization, or 
 
 ```sh {class="command-line" data-prompt="$"}
 viam locations list [<organization id>]
+viam locations api-key create --location-id=<location-id>
 ```
 
 #### Command options
@@ -558,7 +566,7 @@ viam locations list [<organization id>]
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `list` | List all locations (name and id) that the authenticated session has access to, grouped by organization | **organization id** : return results for specified organization only |
+| `list` | List all locations (name and id) that the authenticated session has access to, grouped by organization | **organization id** : (_optional_) return results for specified organization only |
 | `api-key` | Work with an api-key for your location | `create` |
 | `--help` | Return help | - |
 
@@ -585,7 +593,7 @@ The `login` command helps you authorize your device for CLI usage. See [Authenti
 
 ```sh {class="command-line" data-prompt="$"}
 viam login
-viam login api-key --key-id <api-key-uuid> --key <api-key-secret-value>
+viam login api-key --key-id=<api-key-uuid> --key=<api-key-secret-value>
 viam login print-access-token
 ```
 
@@ -625,28 +633,56 @@ This includes:
 
 - Creating a new custom {{< glossary_tooltip term_id="resource" text="modular resource" >}}
 - Uploading a new module to the [Viam registry](https://app.viam.com/registry)
+- Uploading a new version of your module to the [Viam registry](https://app.viam.com/registry)
 - Updating an existing module in the Viam registry
+- Updating a module's metadata file based on models it provides
+- Building your module for different architectures using cloud runners
+- Building a module locally and running it on a target device. Rebuilding & restarting if already running.
 
 ```sh {class="command-line" data-prompt="$"}
-viam module create --name <module-id> [--org-id <org-id> | --public-namespace <namespace>]
-viam module update [--module <path to meta.json>]
-viam module upload --version <version> --platform <platform> [--org-id <org-id> | --public-namespace <namespace>] [--module <path to meta.json>] <module-path>
+viam module create --name=<module-name> [--org-id=<org-id> | --public-namespace=<namespace>]
+viam module update [--module=<path to meta.json>]
+viam module update-models --binary=<binary> [...named args]
+viam module build start --version=<version> [...named args]
+viam module build local --module=<path to meta.json> [arguments...]
+viam module build list [command options] [arguments...]
+viam module build logs --id=<id> [...named args]
+viam module reload [...named args]
+viam module upload --version=<version> --platform=<platform> [--org-id=<org-id> | --public-namespace=<namespace>] [--module=<path to meta.json>] <module-path>
 ```
 
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
 # generate metadata for a module named 'my-module' using your organization's public namespace:
-viam module create --name 'my-module' --public-namespace 'my-namespace'
+viam module create --name=my-module --public-namespace=my-namespace
 
-# generate metadata for a module named 'my-module' using your organization's organization ID:
-viam module create --name 'my-module' --org-id 'abc'
+# generate metadata for a module named "my-module" using your organization's organization ID:
+viam module create --name=my-module --org-id=abc
 
-# update an existing module:
-viam module update
+# update an existing module
+viam module update --module=./meta.json
+
+# updating a module's metadata file based on models it provides
+viam module update-models --binary=./packaged-module.tar.gz --module=./meta.json
+
+# initiate a cloud build
+viam module build start --version "0.1.2"
+
+# initiate a build locally without running a cloud build job
+viam module build local
+
+# list all in-progress builds and their build status
+viam module build list
+
+# initiate a build and return the build logs as soon as completed
+viam module build logs --wait --id=$(viam module build start --version "0.1.2")
+
+# restart a module running on your local viam-server, by name, without building or reconfiguring
+viam module reload --restart-only --id viam:python-example-module
 
 # upload a new or updated custom module to the Viam registry:
-viam module upload --version "1.0.0" --platform "darwin/arm64" packaged-module.tar.gz
+viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.gz
 ```
 
 See [Upload a custom module](/how-tos/create-module/#upload-your-module-to-the-modular-resource-registry) and [Update an existing module](/how-tos/manage-modules/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
@@ -1001,7 +1037,7 @@ Provide that build ID to the `module build logs` command to show the relevant bu
 For example, use the following to initiate a build, and return the build logs as soon as it completes:
 
 ```sh {class="command-line" data-prompt="$"}
-viam module build logs --wait --id $(viam module build start --version "0.1.2")
+viam module build logs --wait --id=$(viam module build start --version "0.1.2")
 ```
 
 To list all in-progress builds and their build status, use the following command:
@@ -1016,7 +1052,17 @@ The `organizations` command allows you to list the organizations your authentica
 
 ```sh {class="command-line" data-prompt="$"}
 viam organizations list
-viam organizations api-key create --org-id <org-id> [--name <key-name>]
+viam organizations api-key create --org-id=<org-id> [--name=<key-name>]
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# list all the organizations that you are currently authenticated to
+viam organizations list
+
+# create a new organization api key in org 123
+viam organizations api-key create --org-id=123 --name=my-key
 ```
 
 See [create an organization API key](#create-an-organization-api-key) for more information.
@@ -1051,9 +1097,15 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 The `packages` command allows you to upload packages to the Viam cloud or export packages from the Viam cloud.
 
 ```sh {class="command-line" data-prompt="$"}
-viam packages upload --org-id=<org-id> --name=<package-name> --version=latest --type=ml_model --path=.
+viam packages upload --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --path=<path-to-package>
+viam packages export --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --destination=<path-to-export-destination>
+```
 
-viam packages export --org-id=<org-id> --name=<package-name> --version=latest --type=ml_model --destination=.
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+viam packages upload --org-id=123 --name=MyMLModel --version=1.0.0 --type=ml_model --path=.
+viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_model --destination=.
 ```
 
 #### Command options
@@ -1092,6 +1144,8 @@ This includes:
 viam machines list
 viam machines status --organization=<org name> --location=<location name> --machine=<machine id>
 viam machines logs --organization=<org name> --location=<location name> --machine=<machine id> [...named args]
+viam machines api-key create --machine-id=<machine-id> [...named args]
+viam machines part logs --machine=<machine> --part=<part> [...named args]
 viam machines part status --organization=<org name> --location=<location name> --machine=<machine id>
 viam machines part run --organization=<org name> --location=<location name> --machine=<machine id> [--stream] --data <meth>
 viam machines part shell --organization=<org name> --location=<location name> --machine=<machine id>
@@ -1101,25 +1155,31 @@ viam machines part restart --machine=<machine id> --part=<part id>
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
-
 # list all machines you have access to
 viam machines list
 
 # get machine status
-viam machines status  --machine 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Robot's Org" --location myLoc
+viam machines status  --machine=123 --organization="Robot's Org" --location=myLoc
 
-# stream error level logs from a machine part
-viam machines part logs --machine 82c608a-1be9-46a5-968d-bad3a8a6daa \
---organization "Robot's Org" --location myLoc --part "myrover-main" --tail true
+# create an api key for a machine
+viam machines api-key create --machine-id=123 --name=MyKey
+
+# stream logs from a machine
+viam machines logs --machine=123 \
+--organization="Robot's Org" --location=myLoc
+
+# stream logs from a machine part
+viam machines part logs --machine=123 \
+--organization="Robot's Org" --location=myLoc --part=myrover-main --tail=true
 
 # stream classifications from a machine part every 500 milliseconds from the Viam Vision Service with classifier "stuff_detector"
-viam machines part run --machine 82c608a-1be9-46a5-968d-bad3a8a6daa \
---organization "Robot's Org" --location myLoc --part "myrover-main" --stream 500ms \
---data '{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_detector", "n":1}' \
+viam machines part run --machine=123 \
+--organization="Robot's Org" --location=myLoc --part=myrover-main --stream=500ms \
+--data='{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_classifier", "n":1}' \
 viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 
 # restart a part of a specified machine
-viam machines part restart --machine e4713ae5-013a-43fe-800e-ff7999a8e3a0 --part 804a4a26-3b28-4f1b-9a7c-5cccc948aa32
+viam machines part restart --machine=123 --part=456
 ```
 
 #### Command options
@@ -1159,11 +1219,11 @@ viam machines part restart --machine e4713ae5-013a-43fe-800e-ff7999a8e3a0 --part
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--organization` | Organization name that the machine belongs to | `list`, `status`, `logs`, `part` | **Required** |
-| `--location` | Location name that the machine belongs to | `list`, `status`, `logs`, `part` | **Required** |
-| `--machine` | Machine ID for which the command is being issued | `status`, `logs`, `part`, `part restart` | **Required** |
+| `--organization` | Organization name or ID that the machine belongs to | `list`, `status`, `logs`, `part` | **Required** |
+| `--location` | Location name or ID that the machine belongs to or to list machines in | `list`, `status`, `logs`, `part` | **Required** |
+| `--machine` | Machine name or ID for which the command is being issued | `status`, `logs`, `part`, `part restart` | **Required** |
 | `--errors` | Boolean, return only errors (default: false) | `logs` | Optional |
-| `--part` | Part name (`logs`) or ID (`part`) for which the command is being issued | `logs`, `part` | Optional |
+| `--part` | Part name or ID for which the command is being issued | `logs`, `part` | Optional |
 | `--tail` | Tail (stream) logs, boolean(default false) | `part logs` | Optional |
 | `--stream` | If specified, the interval in which to stream the specified data, for example, 100ms or 1s | `part run` | Optional |
 | `--data` | Command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments)) | `part run` | **Required** |
@@ -1186,7 +1246,7 @@ The format of what is passed to the `--data` argument is:
 '{"arg1": "val1"}' <protobuf path>
 ```
 
-You can find the protobuf path for the Viam package and method in the [Viam api package](https://github.com/viamrobotics/api/tree/main/proto/viam) by navigating to the component or service directory and then clicking on the resource file. The protobuf path is the package name.
+You can find the protobuf path for the Viam package and method in the [Viam API package](https://github.com/viamrobotics/api/tree/main/proto/viam) by navigating to the component or service directory and then clicking on the resource file. The protobuf path is the package name.
 
 For example:
 
@@ -1201,6 +1261,21 @@ The `--stream` argument, when included in the CLI command prior to the `--data` 
 
 Manage training scripts for custom ML training.
 For more information, see [Train a Model with a Custom Python Training Script](/services/ml/upload-training-script/).
+
+```sh {class="command-line" data-prompt="$"}
+viam training-script upload --framework=<framework> --org-id=<org-id> --path=<path-to-script> --script-name=<script-name> --type=<type>
+viam training-script update --org-id=<org-id> --script-name=<script-name> --visibility=<visibility>
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# upload a single label classification script in the tflite framework to organization 123
+viam training-script upload --framework=tflite --org-id=123 --path=. --script-name=MyCustomTrainingScript --type=single_label_classification
+
+# update MyCustomTrainingScript with public visibility
+viam training-script update --org-id=123 --script-name=MyCustomTrainingScript --visibility=public --description="A single label classification training script"
+```
 
 #### Command options
 
@@ -1218,39 +1293,74 @@ For more information, see [Train a Model with a Custom Python Training Script](/
 | `--path` | The path to ML training scripts for upload. | `upload` | **Required** |
 | `--org-id` | The organization ID to host the scripts in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/). | `upload`, `update` | **Required** |
 | `--script-name` | Name of the ML training script to update or upload. | `upload`, `update` | **Required** |
+| `--visibility` | Visibility of the registry item, can be `public`, `private`, or `draft`. | `update` | **Required** |
 | `--version` | Version of the ML training script to upload. | `upload` | Optional |
+| `--description` | Description of the ML training script. | `update` | Optional |
 | `--framework` | Framework of the ML training script to upload, can be `tflite`, `tensorflow`, `pytorch`, or `onnx`. | `upload` | Optional |
+| `--url` | URL of GitHub repository associated with the training script. | `upload` | Optional |
 | `--type` | Task type of the ML training script to upload, can be `single_label_classification`, `multi_label_classification`, or `object_detection`. | `upload` | Optional |
 | `--draft` | Indicate draft mode, drafts are not viewable in the registry. | `upload` | Optional |
-| `--visibility` | Visibility of the registry item, can be `public`, `private`, or `draft`. | `update` | **Required** |
-| `--description` | Description of the ML training script. | `update` | Optional |
 
 ### `train`
 
 Use a training script to train an ML model on data.
+
+```sh {class="command-line" data-prompt="$"}
+viam train submit managed --dataset-id=<dataset-id> --model-org-id=<model-org-id> --model-name=<model-name> --model-type=<model-type> --model-labels=<model-labels> [...named args]
+viam train submit custom from-registry --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --script-name=<script-name> --version=<version> [...named args]
+viam train submit custom with-upload --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --path=<path> --script-name=<script-name> [...named args]
+viam train get --job-id=<job-id>
+viam train cancel --job-id=<job-id>
+viam train list --org-id=<org-id> --job-status=<job-status>
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# submit training job on data in Viam cloud with a Viam-managed training script
+viam train submit managed --dataset-id=456 --model-org-id=123 --model-name=MyCoolClassifier --model-type=single_label_classification --model-labels=1,2,3
+
+# submit custom training job with an existing training script in the Registry on data in Viam cloud
+viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-version=2 --version=1 --script-name=mycompany:MyCustomTrainingScript
+
+# submit custom training job with an uploaded training script on data in Viam cloud
+viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-type=single_label_classification --model-version=2 --version=1 --path=<path-to-tar.gz> --script-name=mycompany:MyCustomTrainingScript
+
+# get a training job from Viam cloud based on training job ID
+viam train get --job-id=123
+
+# cancel training job in Viam cloud based on training job ID
+viam train cancel --job-id=123
+
+# list training jobs in Viam cloud based on organization ID and job status
+viam train list --org-id=123 --job-status=completed
+```
 
 #### Command options
 
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `submit` | Submits training job on data in the Viam cloud | `managed`, `custom` |
+| `submit` | Submits training job on data in the Viam cloud. | `managed`, `custom` |
+| `get` | Gets a training job from the Viam cloud based on training job ID. | - |
+| `cancel` | Cancels training job in the Viam cloud based on training job ID. | - |
+| `list` | Lists training jobs in Viam cloud based on organization ID and job status. | - |
 
 ##### Positional arguments: `submit`
 
 <!-- prettier-ignore -->
 | Argument | Description | Positional Arguments |
 | -------- | ----------- | -------------------- |
-| `managed` | Submits training job on data in the Viam cloud with a Viam-managed training script | - |
-| `custom` | Submits custom training job on data in the Viam cloud | `from-registry`, `with-upload` |
+| `managed` | Submits training job on data in the Viam cloud with a Viam-managed training script. | - |
+| `custom` | Submits custom training job on data in the Viam cloud. | `from-registry`, `with-upload` |
 
 ##### Position arguments: `submit custom`
 
 <!-- prettier-ignore -->
 | Argument | Description |
 | -------- | ----------- |
-| `from-registry` | Submit custom training job with an existing training script in the registry on data in the Viam cloud |
-| `with-upload` | Upload a draft training script and submit a custom training job on data in the Viam cloud |
+| `from-registry` | Submit custom training job with an existing training script in the registry on data in the Viam cloud. |
+| `with-upload` | Upload a draft training script and submit a custom training job on data in the Viam cloud. |
 
 ##### Named arguments
 
@@ -1259,7 +1369,7 @@ Use a training script to train an ML model on data.
 | -------- | ----------- | ------------------- | --------- |
 | `--dataset-id` | The ID of the dataset to train on. To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset. Click **...** in the left-hand menu and click **Copy dataset ID**. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--model-org-id` | The organization ID to train and save the ML model in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/). | `submit managed`, `submit custom with-upload` | **Required** |
-| `--org-id` | The organization ID to train and save the ML model in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/). | `submit custom from-registry` | **Required** |
+| `--org-id` | The organization ID to train and save the ML model in or list training jobs from. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/). | `submit custom from-registry`, `list` | **Required** |
 | `--model-name` | The name of the ML model. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--model-type` | Type of model to train. Can be one of `single_label_classification`, `multi_label_classification`, `object_detection`, or `unspecified`. | `submit managed`, `submit custom with-upload` | **Required**, Optional |
 | `--model-labels` | Labels to train on. These will either be classification or object detection labels. | `submit managed` | **Required** |
@@ -1267,6 +1377,8 @@ Use a training script to train an ML model on data.
 | `--script-name` | The registry name of the ML training script to use for training. If uploading, this sets the name. | `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--version` | The version of the ML training script to use for training. | `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--path` | The path to the ML training script to upload. | `submit custom with-upload` | **Required** |
+| `--job-id` | The ID of the training job to get or cancel. You can retrieve this value with `train list`. | `get`, `cancel` | **Required** |
+| `--job-status` | Training status to filter for. Can be one of `canceled`, `canceling`, `completed`, `failed`, `in_progress`, `pending`, or `unspecified`. | `list` | **Required** |
 | `--framework` | Framework of the ML training script to upload, can be `tflite`, `tensorflow`, `pytorch`, or `onnx`. | `submit custom with-upload` | Optional |
 
 ### `version`
@@ -1288,13 +1400,20 @@ viam whoami
 
 ### `auth-app`
 
-The `auth-app` command allows you to register and update your web or mobile application (created with the Viam Flutter or TypeScript [SDKs](/sdks/)) with [FusionAuth](https://fusionauth.io/) (the tool Viam uses for authentication and authorization) so that you or other users can log into your app with the same credentials they use to log into the [Viam app](https://app.viam.com).
+The `auth-app` command allows you to register, update, and get your web or mobile application (created with the Viam Flutter or TypeScript [SDKs](/sdks/)) with [FusionAuth](https://fusionauth.io/) (the tool Viam uses for authentication and authorization) so that you or other users can log into your app with the same credentials they use to log into the [Viam app](https://app.viam.com).
 The user's credentials allow them the same [permissions](/cloud/rbac/) to organizations, locations, and machines that they have in the Viam app.
+
+```sh {class="command-line" data-prompt="$"  data-output="2-8,10-14"}
+viam auth-app register --org-id=<org-id> --application-name=<application-name> --origin-uris=<origin-uris> --redirect-uris=<redirect-uris> --logout-uri=<logout-uri>
+viam auth-app update --org-id=<org-id> --application-id=<application-id> --application-name=<application-name> --origin-uris=<origin-uris> --redirect-uris=<redirect-uris> --logout-uri=<logout-uri>
+viam auth-app get --org-id=<org-id> --application-id=<application-id>
+```
 
 Examples:
 
 ```sh {class="command-line" data-prompt="$"  data-output="2-8,10-14"}
-viam auth-app register --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-name="julias app" --origin-uris="https://test.com","https://test2.com" --redirect-uris="https://redirect-url.com" --logout-uri="https://logout.com"
+# register a third party auth application
+viam auth-app register --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-name="julias app" --origin-uris=https://test.com,https://test2.com --redirect-uris=https://redirect-url.com--logout-uri=https://logout.com
 Info: Successfully registered auth application
 {
   "application_id": "1234a1z9-ab2c-1234-5678-bcd12345678a",
@@ -1302,12 +1421,16 @@ Info: Successfully registered auth application
   "secret": "supersupersecretsecret"
 }
 
-viam auth-app update --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-id=1234a1z9-ab2c-1234-5678-bcd12345678a --redirect-uris="https://test.com","https://test2.com"
+# update a third party auth application
+viam auth-app update --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-name="julias app" --application-id=1234a1z9-ab2c-1234-5678-bcd12345678a --redirect-uris=https://test.com,https://test2.com
 Info: Successfully updated auth application
 {
   "application_id": "1234a1z9-ab2c-1234-5678-bcd12345678a",
   "application_name": "julias app"
 }
+
+# get configuration for a third party auth application
+viam auth-app get --org-id=z1234567-1a23-45a6-a11b-abcdefg1234 --application-id=1234a1z9-ab2c-1234-5678-bcd12345678
 ```
 
 {{% alert title="Caution" color="caution" %}}
@@ -1322,31 +1445,21 @@ Sharing this information could compromise your system security by allowing unaut
 | -------------- | ----------- |
 | `register` | Register an [application](https://fusionauth.io/docs/get-started/core-concepts/applications) with FusionAuth |
 | `update` | Update your application |
+| `get` | Get the configuration of the auth application |
 
-##### Named arguments: `register`
+##### Named arguments
 
-<!-- prettier-ignore -->
-| Argument | Description | Required? |
-| -------- | ----------- | --------- |
-| `--org-id` | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID with which to associate this app | **Required** |
-| `--application-name` | A display name (of your choice) for your application. | **Required** |
-| `--origin-uris` | All URIs from which valid logins to FusionAuth can originate from | **Required** |
-| `--redirect-uris` | URIs to which FusionAuth will redirect the user upon login | **Required** |
-| `--logout-uri` | URI of page to show user upon logout | **Required** |
-
-##### Named arguments: `update`
-
-The `org-id` and `application-id` are immutable; they cannot be updated after the application is registered.
+The `org-id` and `application-id` are immutable; they cannot be updated with `update` after the application is registered.
 
 <!-- prettier-ignore -->
-| Argument | Description | Required? |
-| -------- | ----------- | --------- |
-| `--org-id` | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID with which this app is associated | **Required** |
-| `--application-id` | The identifier of your application, returned when you registered the application | **Required** |
-| `--application-name` | A display name (of your choice) for your application. | Optional |
-| `--origin-uris` | All URIs from which valid logins to FusionAuth can originate | Optional |
-| `--redirect-uris` | URIs to which FusionAuth will redirect the user upon login | Optional |
-| `--logout-uri` | URI of page to show user upon logout | Optional |
+| Argument | Description | Applicable commands | Required? |
+| -------- | ----------- | ------------------- | --------- |
+| `--org-id` | The {{< glossary_tooltip term_id="organization" text="organization" >}} ID with which to associate this app. | `register`, `update`, `get` | **Required** |
+| `--application-name` | A display name (of your choice) for your application. | `register`, `update` | **Required** |
+| `--application-id` | The ID of the application. | `update`, `get` | **Required** |
+| `--origin-uris` | All URIs from which valid logins to FusionAuth can originate from. | `register`, `update` | **Required** for `register` |
+| `--redirect-uris` | URIs to which FusionAuth will redirect the user upon login. | `register`, `update` | **Required** for `register` |
+| `--logout-uri` | URI of page to show user upon logout. | `register`, `update` | **Required** for `register` |
 
 ## Global options
 
