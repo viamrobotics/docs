@@ -88,13 +88,12 @@ For each component that makes up your machine:
 3. Add a suitable model to your machine on the **CONFIGURE** page:
 
    - Click the + icon next to your machine part in the left-hand menu and select Component.
-   - Choose any component type (example: `camera`) and model (example: `webcam`).
+   - Choose any component type (example: `camera`) and model (example: `webcam`). If a component you want to use for your project is not natively supported, you can [build your own modular resource](/how-tos/create-module/).
 
 4. When you add a component model, it will create a panel in the configuration builder tool. Fill in any required attributes, following the documentation for the specific model.
 5. Click the **TEST** area of the configuration panel to test your component, for example to view a camera feed or turn a motor.
 6. If any problems occur check the [**LOGS** tab](/cloud/machines/#logs). You can also review the [configuration history](/cloud/machines/#configure) and roll back changes if needed.
 
-If a component you want to use for your project is not natively supported, you can [build your own modular resource](/how-tos/create-module/).
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -116,8 +115,7 @@ With the panels, you can drive motors at different speeds, view your camera feed
 
 Services are built-in Viam software packages that add high-level functionality to your smart machine such as:
 
-**Data Management**: Capture and sync data from one or more machines, and use that data for machine learning and beyond.
-
+- **Data Management**: Capture and sync data from one or more machines, and use that data for machine learning and beyond.
 - **Fleet Management**: Configure, control, debug, and manage entire fleets of machines.
 - **Motion Planning**: Make your machine plan its movement and move itself.
 - **Vision**: Enable your machine to intelligently see and interpret the world around it.
@@ -132,7 +130,8 @@ If you are making a simple machine that doesn't use services, you can skip this 
 ## Next steps
 
 For more information, see the [configuration documentation](/configure/).
-Once you have configured your machine, continue to develop an application or learn about _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ and configure multiple similar machines:
+Once you have configured your machine, continue to develop an application.
+Or, if you have many machines, learn about how you can use _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ to configure multiple similar machines in one go:
 
 {{< cards >}}
 {{% card link="/how-tos/develop-app/" %}}
