@@ -890,8 +890,8 @@ The constraint system also provides flexibility to specify that obstacles should
 
 {{% changelog date="2023-03-31" color="added" title="Fragments in machine configuration" %}}
 
-You can now access {{< glossary_tooltip term_id="fragment" text="fragments" >}} in your machine setup.
-The configurations you added will now show up automatically in the **Components** or **Services** subtabs in the **Builder** view.
+You can now access {{< glossary_tooltip term_id="fragment" text="fragments" >}} in your machine configuration.
+The configurations you added will now show up automatically in the **Builder** view on your machine's **CONFIGURE** tab.
 This makes it easier to monitor what fragments you've added to your machine and how they're configured.
 
 For more information, see [Fragments](/configure/#fragments).

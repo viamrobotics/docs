@@ -226,7 +226,7 @@ Feel free to change these dimensions, including thickness (the Z coordinate in t
 Additional obstacles can also be _appended_ as desired.
 
 {{< alert title="Tip" color="note" >}}
-Within the app, the **Frame System** subtab of your machine's **Config** tab gives you the ability to experiment with various geometry representations with better visual feedback.
+Within the app, the **Frame** subtab of your machine's **CONFIGURE** tab gives you the ability to experiment with various geometry representations with better visual feedback.
 {{< /alert >}}
 
 <div class="td-max-width-on-larger-screens">
