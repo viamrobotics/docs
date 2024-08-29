@@ -426,7 +426,7 @@ class _RobotScreenState extends State<RobotScreen> {
 ```
 
 This imports the <file>motor_screen.dart</file> file into the program and adds logic to check if a {{< glossary_tooltip term_id="resource" text="resource" >}} is "navigable", or, has a screen made for it.
-Base is the only resource that is navigable.
+Motor is currently the only resource that is navigable.
 
 To navigate to the motor screen, save your code and launch your simulator.
 Navigate to the robot screen of your (live) machine with a motor resource configured, and see the resource displayed like the following:
