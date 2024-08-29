@@ -141,7 +141,7 @@ To complete the steps, insert the ends of the jumper wires into the pin gates on
 
 {{% /alert %}}
 
-## Get ready to program your plant watering robot
+## Program your plant watering robot
 
 {{<gif webm_src="/tutorials/plant-watering-pi/plant-watering-video.webm" mp4_src="/tutorials/plant-watering-pi/plant-watering-video.mp4" alt="The plant watering robot on a white desk. Camera goes up to the watering tube and pulls it out, showing the drip.">}}
 
