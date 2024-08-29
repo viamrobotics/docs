@@ -129,13 +129,13 @@ pip install viam-sdk
 ### Instructions
 
 {{< table >}}
-{{% tablestep link="/appendix/apis/data-client" %}}
+{{% tablestep link="/appendix/apis/data-client/" %}}
 **1. Write connection code**
 
 Create a Python script file in a directory of your choice and [add code to establish a connection](/appendix/apis/data-client/#establish-a-connection) from your computer to your [Viam app](https://app.viam.com) {{< glossary_tooltip term_id="location" text="location" >}} or individual {{< glossary_tooltip term_id="part" text="machine part" >}}.
 
 {{% /tablestep %}}
-{{% tablestep link="/appendix/apis/data-client" %}}
+{{% tablestep link="/appendix/apis/data-client/" %}}
 **2. Add a `file_upload_from_path` API call**
 
 Use the `file_upload_from_path` method to upload your data, depending on whether you are uploading one or multiple files:
