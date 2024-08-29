@@ -24,23 +24,22 @@ Due to the way processes are designed for stability, if you are configuring a pr
 1. [`ssh` into your board](/installation/prepare/rpi-setup/#connect-with-ssh) and install `pip`:
 
    ```sh {class="command-line" data-prompt="$"}
-   sudo apt install python3-pip
+   sudo apt install -y python3-pip
    ```
 
-2. Create a folder inside your home directory to hold your code.
-   These example steps use the folder name `robot`:
-
-   ```sh {class="command-line" data-prompt="$"}
-   mkdir robot
-   ```
-
-3. Then install the Viam Python SDK (and other dependencies if required) **into that folder**:
+2. Install the Viam Python SDK (and other dependencies if required) into a new folder called `robot`:
 
    ```sh {class="command-line" data-prompt="$"}
    pip3 install --target=robot viam-sdk <other-required-dependencies>
    ```
 
-4. Add your code to your new folder:
+3. Display the full path of the current directory you are working in on your board. Make a note of this output for the next step.
+
+   ```sh {class="command-line" data-prompt="$"}
+   pwd
+   ```
+
+4. From your computer (not the ssh prompt to your board), add your code to your new folder. In the command, you will copy `main.py` over to your board, with the section following the colon `:` indicating where your file should be copied to on the board (the path of the directory you are working in on your board, along with the filename).
 
    ```sh {class="command-line" data-prompt="$"}
    scp main.py user@host.local:/home/myboard/robot/main.py
@@ -61,7 +60,7 @@ Then fill in the following fields:
 <!-- prettier-ignore -->
 | Attribute (Builder Mode) | Attribute (JSON) | Type    | Required? | Description |
 | ------------------------ | ---------------- | ------- | --------- | ----------- |
-| Executable               | `name`               | string  | **Required** | The command you want to execute when your machine connects to the server. |
+| Executable               | `name`               | string  | **Required** | The command you want to execute when your machine connects to the server. You can find the executable path of Python3 with `which Python3`. |
 | Arguments                | `args`               | string  | Optional     | Arguments to follow the command. |
 | Working directory        | `cwd`                | string  | Optional     | Where you want the process to execute. Defaults to the directory where `viam-server` executes. |
 | Logging                  | `log`                | boolean | Optional     | Toggle logging of errors and other messages on or off. Default: `false`. |
