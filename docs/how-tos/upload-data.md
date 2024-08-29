@@ -169,11 +169,11 @@ import os  # Add this package at the top of your program
 my_data_directory = "/Users/Artoo/my_cat_photos"
 
 for file_name in os.listdir(my_data_directory):
-  await data_client.file_upload_from_path(
-    part_id="abcdefg-1234-abcd-5678-987654321xyzabc",
-    tags=["cat", "animals", "brown"],
-    filepath=os.path.join(my_data_directory, file_name)
-  )
+    await data_client.file_upload_from_path(
+      part_id="abcdefg-1234-abcd-5678-987654321xyzabc",
+      tags=["cat", "animals", "brown"],
+      filepath=os.path.join(my_data_directory, file_name)
+    )
 ```
 
 {{% /tab %}}
