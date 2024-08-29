@@ -132,7 +132,7 @@ For more information, see [Data Management](/services/data/).
 ## Basic machine example
 
 <p>
-{{<imgproc src="/architecture/simple-machine.svg" class="alignright" resize="x1100" declaredimensions=true alt="viam-server running on a board connected to a sensor. Data is stored on a local folder and synced to a folder in the Viam app cloud." style="max-width:400px" >}}
+{{<imgproc src="/architecture/simple-machine.png" class="alignright" resize="x1000" declaredimensions=true alt="viam-server running on a board connected to a sensor. Data is stored on a local folder and synced to a folder in the Viam app cloud." style="max-width:400px" >}}
 </p>
 
 Imagine you have a simple device consisting of a temperature sensor connected to the GPIO pins of a single-board computer (SBC).
