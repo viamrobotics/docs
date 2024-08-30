@@ -293,14 +293,16 @@ class meteo_PM(Sensor, Reconfigurable):
     @classmethod
     def validate(cls, config: ComponentConfig):
         # Check that configured fields are floats
-        if "latitude" in config.attributes.fields:
+        if "latitude" in config.attributes.fields and
             if not config.attributes.fields["latitude"].HasField("number_value"):
                 raise Exception("Latitude must be a float.")
         else:
-            self.default_long = 45
+            self.default_lat = 45
         if "longitude" in config.attributes.fields:
             if not config.attributes.fields["latitude"].HasField("number_value"):
                 raise Exception("Latitude must be a float.")
+        else:
+            self.default_long = -121
         return
 
     # Handles attribute reconfiguration
@@ -310,10 +312,10 @@ class meteo_PM(Sensor, Reconfigurable):
       ):
         attrs = struct_to_dict(config.attributes)
 
-        self.latitude = float(attrs.get("latitude", 45))
+        self.latitude = float(attrs.get("latitude", self.default_lat))
         LOGGER.debug("Using latitude: " + self.latitude)
 
-        self.longitude = float(attrs.get("longitude", -121))
+        self.longitude = float(attrs.get("longitude", self.default_long))
         LOGGER.debug("Using longitude: " + self.longitude)
 
         return
