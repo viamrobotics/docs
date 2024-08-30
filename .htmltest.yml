@@ -37,6 +37,7 @@ IgnoreURLs:
   - "viam.setup"
   - "web.archive"
   - "elevenlabs.io"
+  - "docs.m5stack.com"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"
