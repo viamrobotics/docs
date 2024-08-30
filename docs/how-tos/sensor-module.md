@@ -295,7 +295,7 @@ class meteo_PM(Sensor, Reconfigurable):
     @classmethod
     def validate(cls, config: ComponentConfig):
         # Check that configured fields are floats
-        if "latitude" in config.attributes.fields and
+        if "latitude" in config.attributes.fields:
             if not config.attributes.fields["latitude"].HasField("number_value"):
                 raise Exception("Latitude must be a float.")
         else:
