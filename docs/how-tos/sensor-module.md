@@ -299,9 +299,10 @@ class meteo_PM(Sensor, Reconfigurable):
                 raise Exception("Latitude must be a float.")
         else:
             self.default_lat = 45
+
         if "longitude" in config.attributes.fields:
-            if not config.attributes.fields["latitude"].HasField("number_value"):
-                raise Exception("Latitude must be a float.")
+            if not config.attributes.fields["longitude"].HasField("number_value"):
+                raise Exception("Longitude must be a float.")
         else:
             self.default_long = -121
         return
