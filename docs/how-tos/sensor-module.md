@@ -258,6 +258,7 @@ from viam.resource.base import ResourceBase
 from viam.resource.types import Model, ModelFamily
 from viam.components.sensor import Sensor
 from viam.logging import getLogger
+from viam.utils import struct_to_dict
 
 import openmeteo_requests
 import requests_cache
