@@ -1,6 +1,6 @@
 ---
 title: "Query sensor data with the Python SDK"
-linkTitle: "Query sensor data with SDK"
+linkTitle: "Query sensor data with an SDK"
 weight: 31
 type: "docs"
 images: ["/services/icons/data-query.svg"]
@@ -65,6 +65,17 @@ pip install viam-sdk
 ```
 
 {{% /tablestep %}}
+{{% tablestep%}}
+**2. Install requirements**
+
+To query data with the Python SDK, you will the `bson` package or the `pymongo` package.
+To install `bson`, run the following command:
+
+```sh {class="command-line" data-prompt="$"}
+pip install bson
+```
+
+{{% /tablestep %}}
 {{< /table >}}
 
 ## Query data with the Python SDK
@@ -76,16 +87,23 @@ pip install viam-sdk
 To access your machines using the Python SDK, you must use an API key:
 
 ```sh {class="command-line" data-prompt="$"}
-viam organizations api-key create --org-id <org-id> --name my-api-key
+viam organizations api-key create --org-id=<org-id> --name=my-api-key
 ```
+
+This command uses the Viam CLI.
+You can use [`viam organizations list`](/cli/#organizations) to retrieve your organization's ID.
 
 {{% /tablestep %}}
 {{% tablestep link="/appendix/apis/data-client/"%}}
 **2. Use the API key with the `data_client`**
 
-Use the API key and [`TabularDataByFilter()`](/appendix/apis/data-client/#tabulardatabyfilter), [`TabularDataBySQL()`](/appendix/apis/data-client/#tabulardatabysql), [`TabularDataByMQL()`](/appendix/apis/data-client/#tabulardatabymql), and[`DeleteTabularData()`](/appendix/apis/data-client/#deletetabulardata) to query data:
+Use the API key and [`TabularDataByFilter()`](/appendix/apis/data-client/#tabulardatabyfilter), [`TabularDataBySQL()`](/appendix/apis/data-client/#tabulardatabysql), [`TabularDataByMQL()`](/appendix/apis/data-client/#tabulardatabymql), and[`DeleteTabularData()`](/appendix/apis/data-client/#deletetabulardata) to query data by creating and running the following Python script:
 
-```python {class="line-numbers linkable-line-numbers" data-line="28-50"}
+{{% alert title="Note" color="note" %}}
+Make sure to replace the value in line 30 with your correct sensor name, line 35 with your organization ID which you can get by running `viam organizations list`, and line 37 with your location ID which you can get by running `viam locations list`.
+{{% /alert %}}
+
+```python {class="line-numbers linkable-line-numbers" data-line="29-54, 30, 37, 40"}
 import asyncio
 import bson
 
@@ -114,15 +132,18 @@ async def main():
     # Instantiate a DataClient to run data client API methods on
     data_client = viam_client.data_client
 
+    # TODO: replace "my-sensor" with your correct sensor name
     my_filter = Filter(component_name="my-sensor")
     data, count, id = await data_client.tabular_data_by_filter(
         filter=my_filter, limit=5)
     # This query requests all stored data grouped by hour and calculates the
     # average, minimum, and maximum of the memory usage
     data = await data_client.tabular_data_by_mql(
-      organization_id='<organization-id>',
+      # TODO: Replace  <ORGANIZATION-ID> with your organization ID
+      organization_id='<ORGANIZATION-ID>',
       mql_binary=[
-        bson.dumps({'$match': {'location_id': '<location-id>'}}),
+        # TODO: Replace  <LOCATION-ID> with your location ID
+        bson.dumps({'$match': {'location_id': '<LOCATION-ID>'}}),
         bson.dumps({
           "$group": {
             "_id": {
@@ -148,7 +169,7 @@ if __name__ == '__main__':
 {{% /tablestep %}}
 {{< /table >}}
 
-Adjust the Python script to query your data further.
+Adjust the Python script to query your data further with the [`data_client` API](/appendix/apis/data-client/#api).
 
 ## Next steps
 
