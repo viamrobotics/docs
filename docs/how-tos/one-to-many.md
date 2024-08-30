@@ -5,7 +5,7 @@ weight: 40
 type: "docs"
 tags: ["data management", "data", "services"]
 images: ["/how-tos/one-to-many/new-fragment.png"]
-description: "Configuring fragments."
+description: "Viam has a built-in tool called fragments for using the same configuration on multiple machines."
 aliases:
   - /use-cases/one-to-many/
 languages: []
@@ -16,7 +16,9 @@ date: "2024-08-09"
 cost: "0"
 ---
 
-Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ for copying parts of a configuration file to multiple machines, as well as for modifying just some sections of a config if your machines are similar but not identical.
+Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ for using the same configuration on multiple machines.
+A fragment can configure just one resource a machine uses, or all the resources it uses.
+If most of your machines are similar but not identical, you can use fragments and then manually add modifications for individual machines.
 
 When you update a fragment, it updates the configurations of all machines that use that fragment.
 
@@ -114,7 +116,7 @@ If your machines are similar but not identical, you can use a fragment with all 
 
 {{% alert title="Note" color="note" %}}
 If you modify fields within a fragment, your modifications will act as overwrites.
-If you later update the upstream fragment, the updates to the overwritten fields will effectively not be updated.
+If you later update the upstream fragment, your modifications will still apply.
 {{% /alert %}}
 
 {{< table >}}
