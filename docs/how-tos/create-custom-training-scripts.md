@@ -11,7 +11,7 @@ images: ["/services/icons/ml.svg"]
 aliases:
   - /services/ml/upload-training-script/
 languages: ["python"]
-viamresources: ["ml_model", "data_manager"]
+viamresources: ["mlmodel", "data_manager"]
 level: "Advanced"
 date: "2024-08-29"
 # updated: ""  # When the tutorial was last entirely checked
