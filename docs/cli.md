@@ -1199,7 +1199,7 @@ The `--stream` argument, when included in the CLI command prior to the `--data` 
 
 ### `training-script`
 
-Manage training scripts for [custom ML training](/registry/training-scripts/).
+Manage training scripts for [custom ML training](/services/ml/training-scripts/).
 
 #### Command options
 
