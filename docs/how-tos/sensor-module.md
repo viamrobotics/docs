@@ -277,9 +277,9 @@ class meteo_PM(Sensor, Reconfigurable):
 
     # Class parameters
     latitude: float  # Latitude at which to get data
-    longitude: float # Longitude at which to get data
-    default_lat: float = 45 # Default latitude for configuration
-    default_long = -121 # Default longitude for configuration
+    longitude: float  # Longitude at which to get data
+    default_lat: float = 45  # Default latitude for configuration
+    default_long = -121  # Default longitude for configuration
 
     # Constructor
     @classmethod
@@ -294,15 +294,16 @@ class meteo_PM(Sensor, Reconfigurable):
     # Validates JSON Configuration
     @classmethod
     def validate(cls, config: ComponentConfig):
+        fields = config.attributes.fields
         # Check that configured fields are floats
-        if "latitude" in config.attributes.fields:
-            if not config.attributes.fields["latitude"].HasField("number_value"):
+        if "latitude" in fields:
+            if not fields["latitude"].HasField("number_value"):
                 raise Exception("Latitude must be a float.")
         else:
             self.default_lat = 45
 
-        if "longitude" in config.attributes.fields:
-            if not config.attributes.fields["longitude"].HasField("number_value"):
+        if "longitude" in fields:
+            if not fields["longitude"].HasField("number_value"):
                 raise Exception("Longitude must be a float.")
         else:
             self.default_long = -121
