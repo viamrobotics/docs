@@ -82,6 +82,10 @@ We only created this machine to easily generate the JSON config for the fragment
 
 With your fragment created, you can add it to as many machines as you'd like:
 
+{{< alert title="Tip" color="tip" >}}
+You can add multiple fragments to one machine.
+{{< /alert >}}
+
 {{< table >}}
 {{% tablestep %}}
 {{<imgproc src="/how-tos/deploy-packages/insert.png" resize="800x" class="fill alignleft imgzoom" style="max-width: 250px" declaredimensions=true alt="Add fragment">}}
