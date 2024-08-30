@@ -269,7 +269,7 @@ sudo apt upgrade
 ```
 
 Then run the following command to create and activate the virtual environment:
-If you want to read more on virtual environments, check out [the documentation](https://docs.viam.com/build/program/python-venv/).
+If you want to read more on virtual environments, check out [the documentation](/sdks/python/python-venv/).
 
 ```sh {class="command-line" data-prompt="$"}
 python3 -m venv .venv
