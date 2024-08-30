@@ -1,57 +1,63 @@
 const { TypesenseInstantSearchAdapter, instantsearch } = window;
 
-if (document.getElementsByClassName("mr-component").length) {
-  const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
-    server: {
-      apiKey: "JhUowFH6ERd20FTIIzpTZtfDWFUp6lIs", // Be sure to use an API key that only allows search operations
-      nodes: [
-        {
-          host: "cgnvrk0xwyj9576lp-1.a1.typesense.net",
-          port: "443",
-          protocol: "https",
-        },
-      ],
-      cacheSearchResultsForSeconds: 2 * 60, // Cache search results from server. Defaults to 2 minutes. Set to 0 to disable caching.
-    },
-    // The following parameters are directly passed to Typesense's search API endpoint.
-    //  So you can pass any parameters supported by the search endpoint below.
-    //  query_by is required.
-    additionalSearchParameters: {
-      query_by: "api,model,description",
-      sort_by: "total_organization_usage:desc,total_robot_usage:desc",
-      infix: "always",
-    },
-  });
-  const searchClient = typesenseInstantsearchAdapter.searchClient;
+let api = "";
+if (document.getElementsByClassName("mr-component").length){
+  api = document.getElementsByClassName("mr-component")[0].id;
+  console.log(api);
+}
 
-  const search = instantsearch({
-    indexName: "resources",
-    searchClient,
-  });
+const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
+  server: {
+    apiKey: "JhUowFH6ERd20FTIIzpTZtfDWFUp6lIs", // Be sure to use an API key that only allows search operations
+    nodes: [
+      {
+        host: "cgnvrk0xwyj9576lp-1.a1.typesense.net",
+        port: "443",
+        protocol: "https",
+      },
+    ],
+    cacheSearchResultsForSeconds: 2 * 60, // Cache search results from server. Defaults to 2 minutes. Set to 0 to disable caching.
+  },
+  // The following parameters are directly passed to Typesense's search API endpoint.
+  //  So you can pass any parameters supported by the search endpoint below.
+  //  query_by is required.
+  additionalSearchParameters: {
+    query_by: "api,model,description",
+    sort_by: "total_organization_usage:desc,total_robot_usage:desc",
+    infix: "always",
+  },
+});
+const searchClient = typesenseInstantsearchAdapter.searchClient;
 
-  let filters;
-  let itemtemplate;
+const search = instantsearch({
+  indexName: "resources",
+  searchClient,
+});
 
-  if (api == "") {
-    filters = {
-      hitsPerPage: 5,
-    };
-    itemtemplate = `
-    <div class="type"><p><code>{{#helpers.highlight}}{ "attribute": "api" }{{/helpers.highlight}}</code></p></div>
-    <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
-    <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
-    `;
-  } else {
-    filters = {
-      facetFilters: ["api: " + api],
-      hitsPerPage: 5,
-    };
-    itemtemplate = `
-    <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
-    <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
-    `;
-  }
+let filters;
+let itemtemplate;
 
+if (api == "") {
+  filters = {
+    hitsPerPage: 5,
+  };
+  itemtemplate = `
+  <div class="type"><p><code>{{#helpers.highlight}}{ "attribute": "api" }{{/helpers.highlight}}</code></p></div>
+  <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
+  <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
+  `;
+} else {
+  filters = {
+    facetFilters: ["api: " + api],
+    hitsPerPage: 5,
+  };
+  itemtemplate = `
+  <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
+  <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
+  `;
+}
+
+if (document.getElementById("hits")) {
   search.addWidgets([
     instantsearch.widgets.hits({
       container: "#hits",
@@ -95,6 +101,7 @@ if (document.getElementsByClassName("mr-component").length) {
 
   search.start();
 }
+
 const mlmodels = document.getElementsByClassName("mr-model");
 
 if (mlmodels.length !== 0) {
