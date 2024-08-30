@@ -292,16 +292,15 @@ class meteo_PM(Sensor, Reconfigurable):
     # Validates JSON Configuration
     @classmethod
     def validate(cls, config: ComponentConfig):
-        # Allow users to configure different coordinates
-        # from which to get PM readings
-        latitude = config.attributes.fields["latitude"].number_value
-        if latitude == "":
-            # Set a default
-            latitude = 45
-        longitude = config.attributes.fields["longitude"].number_value
-        if longitude == "":
-            # Set a default
-            longitude = -121
+        # Check that configured fields are floats
+        if "latitude" in config.attributes.fields:
+            if not config.attributes.fields["latitude"].HasField("number_value"):
+                raise Exception("Latitude must be a float.")
+        else:
+            self.default_long = 45
+        if "longitude" in config.attributes.fields:
+            if not config.attributes.fields["latitude"].HasField("number_value"):
+                raise Exception("Latitude must be a float.")
         return
 
     # Handles attribute reconfiguration
@@ -309,10 +308,17 @@ class meteo_PM(Sensor, Reconfigurable):
       self, config: ComponentConfig,
       dependencies: Mapping[ResourceName, ResourceBase]
       ):
-        self.latitude = float(
-          config.attributes.fields["latitude"].number_value)
-        self.longitude = float(
-          config.attributes.fields["longitude"].number_value)
+        if "latitude" in config.attributes.fields:
+            self.latitude = float(
+              config.attributes.fields["latitude"].number_value)
+        else:
+            self.latitude = 45
+
+        if "latitude" in config.attributes.fields:
+            self.longitude = float(
+              config.attributes.fields["longitude"].number_value)
+        else:
+            self.longitude = -121
         return
 
     async def get_readings(
