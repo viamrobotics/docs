@@ -103,7 +103,7 @@ You can also turn off **Syncing** unless you have other directories you'd like t
 
 ## Upload data with Python
 
-You can use the Viam Python SDK's data client API [`file_upload_from_path`](/appendix/apis/data-client/#fileuploadfrompath) method to upload one or more files from your computer to the Viam cloud.
+You can use the Python data client API [`file_upload_from_path`](/appendix/apis/data-client/#fileuploadfrompath) method to upload one or more files from your computer to the Viam cloud.
 
 {{% alert title="Note" color="note" %}}
 
@@ -160,7 +160,7 @@ await data_client.file_upload_from_path(
 {{% /tab %}}
 {{% tab name="Upload all files in a directory" %}}
 
-To upload all the files in a directory, you can use the same [`file_upload_from_path`](/appendix/apis/data-client/#fileuploadfrompath) method inside a `for` loop, for example:
+To upload all the files in a directory, you can use the [`file_upload_from_path`](/appendix/apis/data-client/#fileuploadfrompath) method inside a `for` loop, for example:
 
 ```python {class="line-numbers linkable-line-numbers"}
 import os  # Add this package at the top of your program
@@ -218,7 +218,7 @@ Install the mobile app from the [App Store](https://apps.apple.com/vn/app/viam-r
 {{% tablestep link="/services/data/" %}}
 **1. Navigate to your machine**
 
-Select an organization by clicking on the menu icon in the top left corner and tapping an organization.
+In the Viam mobile app, log in, then select an organization by clicking on the menu icon in the top left corner and tapping an organization.
 
 Tap the **Locations** tab and select a location, then select the machine you want your data to be associated with.
 
