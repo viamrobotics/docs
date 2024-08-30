@@ -40,7 +40,7 @@ To collect images and train your own model:
 
 1. [Gather images from your machine.](/get-started/collect-data/)
 2. [Label a dataset.](/how-tos/deploy-ml/#create-a-dataset-and-label-data)
-3. [Train a model on your data and deploy the model on your machine.](/how-tos/deploy-ml/#train-and-test-a-machine-learning-ml-model)
+3. [Train a model on your data and deploy the model on your machine.](/how-tos/deploy-ml/#train-a-machine-learning-ml-model)
 
 If you already have image data, start at step 2.
 
@@ -56,13 +56,13 @@ To use an existing model, [deploy it to your machine with the ML model service](
 
 ## Model support
 
-You have four options when choosing a model to deploy onto an [ML model](/services/ml/deploy/) deployment service.
+You have four options when choosing a model to [deploy onto an ML model](/services/ml/deploy/) deployment service.
 You can:
 
-- [train a model on the Viam app](/services/ml/train-model/) and deploy it
+- [train a model on the Viam app](/how-tos/deploy-ml/) and deploy it
 - deploy a pre-trained model another user has published from [the registry](https://app.viam.com/registry)
-- [upload](/services/ml/upload-model/) a model trained outside the Viam platform to the registry privately or publicly and deploy it
-- deploy a model trained outside the Viam platform that's already available on your machine
+- upload a [model](/services/ml/ml-models/) trained outside the Viam platform to the registry privately or publicly and deploy it
+- deploy a [model](/services/ml/ml-models/) trained outside the Viam platform that's already available on your machine
 
 The model you use must be supported on the Viam platform.
 Viam supports the following model frameworks:
@@ -72,7 +72,7 @@ Viam supports the following model frameworks:
 - [PyTorch](https://pytorch.org/): with the [`triton` ML model service](https://github.com/viamrobotics/viam-mlmodelservice-triton)
 - [ONNX](https://onnx.ai/): with the [`onnx_cpu` ML model service](https://github.com/viam-labs/onnx-cpu)
 
-For more information, see [Model framework support](/services/ml/upload-model/#model-framework-support).
+For more information, see [Model framework support](/services/ml/ml-models/#model-framework-support).
 
 ## Use machine learning with your machine
 
@@ -92,7 +92,7 @@ For more information, see [Model framework support](/services/ml/upload-model/#m
   <tr>
     <th>{{<imgproc src="/services/ml/train.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Train models">}}
       <b>3. Train or upload an ML model</b>
-      <p>Use your labeled data to <a href="/services/ml/train-model/">train your own model</a> for object detection or classification</a>. If you don't want to train your own model, you can also <a href="/registry/">use an ML model from the registry</a> or <a href="/services/ml/upload-model/">upload an existing model</a>.</p>
+      <p>Use your labeled data to <a href="/how-tos/deploy-ml/">train your own model</a> for object detection or classification</a>. If you don't want to train your own model, you can also <a href="/registry/">use an ML model from the registry</a> or upload an existing <a href="/services/ml/ml-models/">model</a>.</p>
     </th>
   </tr>
   <tr>

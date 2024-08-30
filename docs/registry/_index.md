@@ -132,11 +132,11 @@ See the following how-to guide for full instructions, or one of our example tuto
 
 ## ML models
 
-Viam provides the ability to train, upload, and deploy machine learning models within the platform.
+Viam provides the ability to train, upload, and deploy [machine learning models](/services/ml/ml-models/) within the platform.
 See [Machine Learning](/services/ml/) for more information.
 
 The Viam registry hosts trained ML models that users have made public, which you can use to deploy classifiers or detectors for your use case onto your robot instead of training your own.
-You can also [upload your own model to the registry](/services/ml/upload-model/).
+You can also upload your own model to the registry.
 
 You can search the available ML models from the Viam registry here:
 

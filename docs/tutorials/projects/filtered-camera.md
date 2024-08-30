@@ -183,7 +183,7 @@ Once your dataset is ready, train a new ML model on that dataset.
 
    {{< imgproc src="/tutorials/filtered-camera-module/train-model-complete.png" alt="The models subtab under the data tab in the Viam app, showing a model that has completed training and is ready for use" resize="1200x" >}}
 
-For more information, see [Train a model](/services/ml/train-model/).
+For more information, see [Train a model](/how-tos/deploy-ml/).
 
 ### Use an existing ML model
 
@@ -227,8 +227,6 @@ Your uploaded model is immediately available for use after upload.
 {{< imgproc src="/tutorials/filtered-camera-module/upload-model-complete.png" alt="The models subtab under the data tab in the Viam app, showing a model that has been uploaded and is ready for use" resize="1200x" >}}
 
 If you are designing your own TensorFlow Lite model, see [model requirements](/services/ml/deploy/tflite_cpu/#model-requirements) for guidance on structuring your own model.
-
-For more information, see [Upload an existing model](/services/ml/upload-model/).
 
 ## Configure the ML model and vision services
 
@@ -370,7 +368,7 @@ For example, you can:
 - Train an ML model on various common forms of delivery packaging, so that your machine can send you an image of a new delivery, but not clutter your inbox with images of other things, such as cars driving by.
 - Train an ML model on a variety of domestic farm animals, so that your machine can alert you if a different kind of animal is detected in the vicinity, without capturing images of every animal.
 
-You can also refine your existing ML model by adding and labelling new images that help the ML model better identify matching objects, and then [upload the new version of your model](/services/ml/upload-model/#upload-a-new-model-or-new-version) using the ML model service.
+You can also refine your existing ML model by adding and labelling new images that help the ML model better identify matching objects, and then upload the new version of your model using the ML model service.
 
 If you trained a new model as part of this tutorial, try using the provided [pre-trained model files](#upload-an-existing-ml-model) instead, and then aiming your machine's camera at objects listed in the <file>labels.txt</file> file to see how accurately it is able to detect those objects.
 

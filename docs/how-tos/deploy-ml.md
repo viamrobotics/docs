@@ -30,7 +30,8 @@ You will not need to write any code.
 {{< alert title="In this page" color="tip" >}}
 
 1. [Create a dataset and label data](#create-a-dataset-and-label-data)
-2. [Train and test a machine learning (ML) model](#train-and-test-a-machine-learning-ml-model)
+2. [Train a machine learning (ML) model](#train-a-machine-learning-ml-model)
+3. [Deploy a machine learning model](#deploy-an-ml-model)
 
 {{< /alert >}}
 
@@ -58,7 +59,7 @@ For an object detector, use bounding boxes.
 
 {{< expand "Create image tags (for an image classifier)" >}}
 
-You can use tags to [create classification models](/services/ml/train-model/#train-a-model) for images.
+You can use tags to create classification models for images.
 For example, if you would like to create a model that identifies an image of a star in a set of images, tag each image containing a star with a `star` tag.
 The filter also needs to include images without the star tag or with another tag like `notstar`.
 If you add a `notstar` tag, you can filter the data in your dataset by selecting `star` and `notstar` from the **Tags** dropdown in the **Filtering** menu.
@@ -77,7 +78,7 @@ Repeat this with all images in your dataset.
 {{< expand "Create bounding boxes (for an object detector)" >}}
 
 You can create one or more bounding boxes for objects in each image.
-If you annotate an entire dataset, you can use these bounding boxes to [create object detection models](/services/ml/train-model/#train-a-model).
+If you annotate an entire dataset, you can use these bounding boxes to create object detection models.
 For example, if you would like to create a model that detects a dog in an image, add bounding boxes around the dog in each of your images and add or select the label `dog`.
 
 To add a bounding box, click on an image and select the **Bounding box** mode in the menu that opens.
@@ -120,7 +121,7 @@ This is not required, since you can use other filters like time or machine ID in
 ## Train a machine learning (ML) model
 
 {{< table >}}
-{{% tablestep link="/services/ml/train-model/"%}}
+{{% tablestep %}}
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Train models">}}
 **1. Train an ML model**
 
@@ -131,7 +132,7 @@ Click **Train model** and follow the prompts.
 You can choose between
 
 - training a new model or updating a model
-- You can use a **Built-in training** script or a [custom training script](/services/ml/training-scripts).
+- You can use a **Built-in training** script or a [custom training script](/services/ml/training-scripts/).
 
 Click **Next steps**.
 

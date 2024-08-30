@@ -26,7 +26,7 @@ no_service: true
 
 Machine Learning (ML) models are mathematical models that can recognize patterns.
 The [ML model service](/services/ml/deploy/) runs ML models on your machines.
-Services like the [vision service](/services/vision/mlmodel) can then use the ML model services to provide your machine with information about its surroundings.
+Services like the [vision service](/services/vision/mlmodel/) can then use the ML model services to provide your machine with information about its surroundings.
 
 The ML model service works with models trained inside and outside the Viam app:
 
@@ -66,7 +66,7 @@ The model package config looks like this:
 You can get the version number from a specific model version by navigating to the [models page](https://app.viam.com/data/models) finding the model's row, clicking on the right-side menu marked with **_..._** and selecting **Copy package JSON**. For example: `2024-02-28T13-36-51`.
 
 {{< alert title="Note" color="note" >}}
-When you [train](/how-tos/deploy-ml) a new version of a model, the previous model remains unchanged and is not used as input.
+When you [train](/how-tos/deploy-ml/) a new version of a model, the previous model remains unchanged and is not used as input.
 {{< /alert >}}
 
 ## Next steps

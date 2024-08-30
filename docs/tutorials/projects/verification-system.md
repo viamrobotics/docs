@@ -165,7 +165,7 @@ Then, create a new dataset using your uploaded images and train a new model usin
    Remember that you must add at least 10 images that contain people, as well as a few (but no more than 20% of the total images) that _do not_ contain people.
 2. Label the images that contain people with bounding boxes, and add the label `person`.
    You only want this model to be able to distinguish between what is and isn't a person, so you can conduct this training step with anyone, not necessarily the specific people you intend to approve later.
-3. [Train a model on your dataset](/services/ml/train-model/).
+3. [Train a model on your dataset](/how-tos/deploy-ml/).
    Give it the name `"persondetect"`, and select **Object Detection** as the **Model Type**.
 4. [Deploy the model](/services/ml/deploy/) to your machine so it can be used by other services, such as the vision service.
 
