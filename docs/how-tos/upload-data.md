@@ -5,8 +5,7 @@ description: "Upload data to the Viam app from your local computer or mobile dev
 weight: 100
 type: "docs"
 tags: ["data management", "cloud", "sync"]
-image: "/services/icons/data-capture.svg"
-imageAlt: "Upload data to the Viam app"
+icon: true
 images: ["/services/icons/data-capture.svg"]
 aliases:
   - /data/upload/
@@ -14,19 +13,15 @@ aliases:
 ---
 
 If you configured [data capture](/services/data/capture/) on your machine, Viam automatically uploads data to the cloud from the directory you specified, at the interval you specified.
-However, if you want to upload a batch of data once from somewhere else, either from a different directory on your machine or from your personal computer or mobile device, you have several options:
-
-- Configure the path to your directory in the Viam app, wait for the files to sync, then delete the path.
-  This option requires that you have `viam-server` installed on the machine.
-- Run a Python script to upload files from a folder using the data client API `file_upload_from_path` method.
-  You can do this on a computer that doesn't have `viam-server` installed on it.
-- Upload images from your mobile device using the Viam mobile app.
+However, if you want to upload a batch of data once from somewhere else, either from a different directory on your machine or from your personal computer or mobile device, you have several options using the Viam app, the data client API, or the Viam mobile app.
 
 {{% alert title="In this page" color="tip" %}}
 
-- [Sync a batch of data from another directory](#sync-a-batch-of-data-from-another-directory)
-- [Upload data with the Python SDK](#upload-data-with-python)
-- [Upload images with the Viam mobile app](#upload-images-with-the-viam-mobile-app)
+- [Sync a batch of data from another directory](#sync-a-batch-of-data-from-another-directory) by configuring the path to the directory as an additional sync path in a machine's data management service.
+  This requires the data to be on a machine running `viam-server`.
+- [Upload data with the Python SDK](#upload-data-with-python) by running a Python script to upload files from a folder.
+  You can do this on a computer that doesn't have `viam-server` installed on it.
+- [Upload images with the Viam mobile app](#upload-images-with-the-viam-mobile-app) from your mobile device.
 
 {{% /alert %}}
 
@@ -66,7 +61,7 @@ If you do not want the data deleted from your machine, copy the data to a new fo
 
 {{< table >}}
 {{% tablestep %}}
-{{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 120px" declaredimensions=true alt="Folder" >}}
+{{<imgproc src="/services/icons/data-folder.svg" class="fill alignleft" style="max-width: 100px" declaredimensions=true alt="Folder" >}}
 **1. Organize your data**
 
 Put the data you want to sync in a directory on your machine.
@@ -218,7 +213,7 @@ Install the mobile app from the [App Store](https://apps.apple.com/vn/app/viam-r
 {{% tablestep link="/services/data/" %}}
 **1. Navigate to your machine**
 
-In the Viam mobile app, log in, then select an organization by clicking on the menu icon in the top left corner and tapping an organization.
+In the Viam mobile app, select an organization by clicking on the menu icon in the top left corner and tapping an organization.
 
 Tap the **Locations** tab and select a location, then select the machine you want your data to be associated with.
 
@@ -236,3 +231,13 @@ However, the uploaded images will not be associated with a component or method.
 
 {{% /tablestep %}}
 {{< /table >}}
+
+## Next steps
+
+Now that you have a batch of data uploaded, you can train an ML model on it.
+Or, if you want to collect and upload data _not_ in a batch, see Capture and Sync Image Data.
+
+{{< cards >}}
+{{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/image-data/" %}}
+{{< /cards >}}
