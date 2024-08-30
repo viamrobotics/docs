@@ -1,6 +1,6 @@
 ---
-title: "Train a Model"
-linkTitle: "Train Model"
+title: "ML Models"
+linkTitle: "ML Models"
 weight: 40
 type: "docs"
 tags: ["data management", "ml", "model training"]
@@ -13,9 +13,41 @@ description: "Train an image classification model on labeled image data."
 aliases:
   - /manage/ml/train-model/
   - /ml/train-model/
+  - /services/ml/train-model/
+  - /services/ml/upload-model/
+  - /services/ml/edit/
+  - /ml/edit/
+  - /manage/data/upload-model/
+  - /manage/ml/upload-model/
+  - /ml/upload-model/
 no_service: true
 # SME: Tahiya + Alexa Greenberg
 ---
+
+Machine Learning (ML) models are mathematical models that can recognize patterns.
+The [ML model service](/services/ml/deploy/) runs ML models on your machines.
+Services like the [vision service](/services/vision/mlmodel) can then use the ML model services to provide your machine with information about its surroundings.
+
+The ML model service works with models trained inside and outside the Viam app:
+
+- You can upload externally trained models on the [**MODELS** tab](https://app.viam.com/data/models) in the **DATA** section of the Viam app.
+- You can [train](/how-tos/deploy-ml/) models on data from your machines.
+- You can use [ML models](https://app.viam.com/registry?type=ML+Model) from the Viam Registry.
+
+## Model framework support
+
+Viam currently supports the following frameworks:
+
+<!-- prettier-ignore -->
+| Model Framework | ML Model Service | Hardware Support | System Architecture | Description |
+| --------------- | --------------- | ---------------- | ------------------- | ----------- |
+| [TensorFlow Lite](https://www.tensorflow.org/lite) | [`tflite_cpu`](/services/ml/deploy/) | Any CPU <br> Nvidia GPU | Linux, Raspbian, MacOS, Android | Quantized version of TensorFlow that has reduced compatibility for models but supports more hardware. Uploaded models must adhere to the [model requirements](/services/ml/deploy/tflite_cpu/#model-requirements). |
+| [ONNX](https://onnx.ai/) | [`onnx_cpu`](https://github.com/viam-labs/onnx-cpu) | Any CPU <br> Nvidia GPU | Android, MacOS, Linux arm-64 | Universal format that is not optimized for hardware inference but runs on a wide variety of machines. |
+| [TensorFlow](https://www.tensorflow.org/) | [`triton`](https://github.com/viamrobotics/viam-mlmodelservice-triton) | Nvidia GPU | Linux (Jetson) | A full framework that is made for more production-ready systems. |
+| [PyTorch](https://pytorch.org/) | [`triton`](https://github.com/viamrobotics/viam-mlmodelservice-triton) | Nvidia GPU | Linux (Jetson) | A full framework that was built primarily for research. Because of this, it is much faster to do iterative development with (model doesn’t have to be predefined) but it is not as “production ready” as TensorFlow. It is the most common framework for OSS models because it is the go-to framework for ML researchers. |
+
+
+
 
 You can add classification tags or bounding boxes to [images collected](/services/data/capture/) by machines, add them to a dataset, and use the annotated data to train a **Single Label Classification Model**, **Multi Label Classification Model** or **Object Detection Model** within Viam.
 
@@ -84,18 +116,6 @@ The model package config looks like this:
   "type": "ml_model"
 }
 ```
-
-## Delete a model
-
-You can delete a model from the [models page](https://app.viam.com/data/models) in the Viam app:
-
-- To delete a trained model, click the **_..._** icon to the right of the model name under the **Models** section of the page, and select **Delete**.
-
-  ![Delete a trained model](/services/ml/delete-trained-model.png)
-
-- To delete a model that has failed training, click the trash can icon to the right of the model name under the **Training** section of the page.
-
-  ![Delete a failed model](/services/ml/delete-failed-model.png)
 
 ## Next steps
 

@@ -554,5 +554,4 @@ You will receive an email when your training job completed.
 {{< cards >}}
 {{% card link="/services/ml/deploy/" %}}
 {{% card link="/services/vision/mlmodel/" %}}
-{{% card link="/services/ml/edit/" %}}
 {{< /cards >}}
