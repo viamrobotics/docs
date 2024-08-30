@@ -308,17 +308,14 @@ class meteo_PM(Sensor, Reconfigurable):
       self, config: ComponentConfig,
       dependencies: Mapping[ResourceName, ResourceBase]
       ):
-        if "latitude" in config.attributes.fields:
-            self.latitude = float(
-              config.attributes.fields["latitude"].number_value)
-        else:
-            self.latitude = 45
+        attrs = struct_to_dict(config.attributes)
 
-        if "latitude" in config.attributes.fields:
-            self.longitude = float(
-              config.attributes.fields["longitude"].number_value)
-        else:
-            self.longitude = -121
+        self.latitude = float(attrs.get("latitude", 45))
+        LOGGER.debug("Using latitude: " + self.latitude)
+
+        self.longitude = float(attrs.get("longitude", -121))
+        LOGGER.debug("Using longitude: " + self.longitude)
+
         return
 
     async def get_readings(
