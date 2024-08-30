@@ -1309,6 +1309,7 @@ viam train submit managed --dataset-id=<dataset-id> --model-org-id=<model-org-id
 viam train submit custom from-registry --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --script-name=<script-name> --version=<version> [...named args]
 viam train submit custom with-upload --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --path=<path> --script-name=<script-name> [...named args]
 viam train get --job-id=<job-id>
+viam train logs --job-id=<job-id>
 viam train cancel --job-id=<job-id>
 viam train list --org-id=<org-id> --job-status=<job-status>
 ```
@@ -1328,6 +1329,9 @@ viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-or
 # get a training job from Viam cloud based on training job ID
 viam train get --job-id=123
 
+# get training job logs from Viam cloud based on training job ID
+viam train logs --job-id=123
+
 # cancel training job in Viam cloud based on training job ID
 viam train cancel --job-id=123
 
@@ -1342,6 +1346,7 @@ viam train list --org-id=123 --job-status=completed
 | -------------- | ----------- | -------------------- |
 | `submit` | Submits training job on data in the Viam cloud. | `managed`, `custom` |
 | `get` | Gets a training job from the Viam cloud based on training job ID. | - |
+| `logs` | Gets the logs of a training job from the Viam cloud based on training job ID. | - |
 | `cancel` | Cancels training job in the Viam cloud based on training job ID. | - |
 | `list` | Lists training jobs in Viam cloud based on organization ID and job status. | - |
 
@@ -1376,7 +1381,7 @@ viam train list --org-id=123 --job-status=completed
 | `--script-name` | The registry name of the ML training script to use for training. If uploading, this sets the name. | `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--version` | The version of the ML training script to use for training. | `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--path` | The path to the ML training script to upload. | `submit custom with-upload` | **Required** |
-| `--job-id` | The ID of the training job to get or cancel. You can retrieve this value with `train list`. | `get`, `cancel` | **Required** |
+| `--job-id` | The ID of the training job to get or cancel. You can retrieve this value with `train list`. | `get`, `logs`, `cancel` | **Required** |
 | `--job-status` | Training status to filter for. Can be one of `canceled`, `canceling`, `completed`, `failed`, `in_progress`, `pending`, or `unspecified`. | `list` | **Required** |
 | `--framework` | Framework of the ML training script to upload, can be `tflite`, `tensorflow`, `pytorch`, or `onnx`. | `submit custom with-upload` | Optional |
 
