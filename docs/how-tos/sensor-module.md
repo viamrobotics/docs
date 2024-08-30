@@ -250,7 +250,7 @@ The following code puts the functionality of the [example test script](#start-wi
 from typing import ClassVar, Mapping, Any, Optional
 from typing_extensions import Self
 
-from viam.utils import SensorReading
+from viam.utils import SensorReading, struct_to_dict
 from viam.module.types import Reconfigurable
 from viam.proto.app.robot import ComponentConfig
 from viam.proto.common import ResourceName
@@ -278,6 +278,8 @@ class meteo_PM(Sensor, Reconfigurable):
     # Class parameters
     latitude: float  # Latitude at which to get data
     longitude: float  # Longitude at which to get data
+    default_lat: float = 45  # Default latitude for configuration
+    default_long = -121  # Default longitude for configuration
 
     # Constructor
     @classmethod
@@ -292,16 +294,19 @@ class meteo_PM(Sensor, Reconfigurable):
     # Validates JSON Configuration
     @classmethod
     def validate(cls, config: ComponentConfig):
-        # Allow users to configure different coordinates
-        # from which to get PM readings
-        latitude = config.attributes.fields["latitude"].number_value
-        if latitude == "":
-            # Set a default
-            latitude = 45
-        longitude = config.attributes.fields["longitude"].number_value
-        if longitude == "":
-            # Set a default
-            longitude = -121
+        fields = config.attributes.fields
+        # Check that configured fields are floats
+        if "latitude" in fields:
+            if not fields["latitude"].HasField("number_value"):
+                raise Exception("Latitude must be a float.")
+        else:
+            self.default_lat = 45
+
+        if "longitude" in fields:
+            if not fields["longitude"].HasField("number_value"):
+                raise Exception("Longitude must be a float.")
+        else:
+            self.default_long = -121
         return
 
     # Handles attribute reconfiguration
@@ -309,10 +314,14 @@ class meteo_PM(Sensor, Reconfigurable):
       self, config: ComponentConfig,
       dependencies: Mapping[ResourceName, ResourceBase]
       ):
-        self.latitude = float(
-          config.attributes.fields["latitude"].number_value)
-        self.longitude = float(
-          config.attributes.fields["longitude"].number_value)
+        attrs = struct_to_dict(config.attributes)
+
+        self.latitude = float(attrs.get("latitude", self.default_lat))
+        LOGGER.debug("Using latitude: " + self.latitude)
+
+        self.longitude = float(attrs.get("longitude", self.default_long))
+        LOGGER.debug("Using longitude: " + self.longitude)
+
         return
 
     async def get_readings(
