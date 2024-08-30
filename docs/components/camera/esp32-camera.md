@@ -29,9 +29,9 @@ For example, the `OV2640` with a ribbon cable connected to an ESP32:
 {{< imgproc src="/components/camera/esp32-camera-2640.png" alt="Fake Camera on the ESP32" resize="300x" >}}
 
 {{< alert title="Software requirements" color="note" >}}
-To use this model, you must follow the [Micro-RDK Development Setup](/installation/micro-rdk-dev/), which enables you to install and activate the ESP-IDF.
-At the step [Generate a new project from a template](/installation/micro-rdk-dev/#generate-a-new-project-from-a-template) where you create a new project with `cargo generate`, select the option to include camera module traits when prompted.
-Finish the [Micro-RDK Development Setup](/installation/micro-rdk-dev/) and return to this guide.
+To use this model, you must follow the [Micro-RDK Development Setup](/installation/viam-micro-server-dev/), which enables you to install and activate the ESP-IDF.
+At the step [Generate a new project from a template](/installation/viam-micro-server-dev/#install-viam-micro-server) where you create a new project with `cargo generate`, select the option to include camera module traits when prompted.
+Finish the [Micro-RDK Development Setup](/installation/viam-micro-server-dev/) and return to this guide.
 {{< /alert >}}
 
 {{< alert title="Info" color="info" >}}
