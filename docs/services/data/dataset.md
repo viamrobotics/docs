@@ -23,7 +23,8 @@ On the [**DATA** tab](https://app.viam.com/data/view) in the Viam app, you can c
 {{< alert title="Info" color="info" >}}
 Filtered datasets are views and not materialized.
 That means the data you are viewing may change as you label and train on the dataset.
-If the underlying data matching the filter changes because data is deleted or more data is added, the dataset will also change.
+
+Your dataset is also not versioned. If you train [ML models](/services/ml/ml-models/) on your dataset and the dataset changes existing models will not be affected but any new models you train will use the dataset with the data in it at the time of training.
 {{< /alert >}}
 
 ## Labels
