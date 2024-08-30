@@ -36,7 +36,7 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: resources
-          key: ${{ steps.get-date.outputs.date }}-hugo-resources
+          key: ${{ steps.get-date.outputs.date }}-hugo-resources-htmltest
 
       - uses: actions/cache@v4
         with:
