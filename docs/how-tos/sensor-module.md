@@ -250,7 +250,7 @@ The following code puts the functionality of the [example test script](#start-wi
 from typing import ClassVar, Mapping, Any, Optional
 from typing_extensions import Self
 
-from viam.utils import SensorReading
+from viam.utils import SensorReading, struct_to_dict
 from viam.module.types import Reconfigurable
 from viam.proto.app.robot import ComponentConfig
 from viam.proto.common import ResourceName
@@ -258,7 +258,6 @@ from viam.resource.base import ResourceBase
 from viam.resource.types import Model, ModelFamily
 from viam.components.sensor import Sensor
 from viam.logging import getLogger
-from viam.utils import struct_to_dict
 
 import openmeteo_requests
 import requests_cache
@@ -278,7 +277,9 @@ class meteo_PM(Sensor, Reconfigurable):
 
     # Class parameters
     latitude: float  # Latitude at which to get data
-    longitude: float  # Longitude at which to get data
+    longitude: float # Longitude at which to get data
+    default_lat: float = 45 # Default latitude for configuration
+    default_long = -121 # Default longitude for configuration
 
     # Constructor
     @classmethod
