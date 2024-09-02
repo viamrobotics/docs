@@ -105,7 +105,7 @@ When you configured each component, you saw the **TEST** panel on its configurat
 You can also access the control interfaces for all your components in one place from the **CONTROL** tab.
 With the panels, you can drive motors at different speeds, view your camera feeds, see sensor readings, and generally test the basic functionality of your machine before you've even written any code.
 
-{{<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="The Viam app Control tab with a control panel for each component. The panel for a DC motor is clicked, expanding to show power controls." max-width="400px" class="fill alignleft">}}
+{{<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="The Viam app Control tab with a control panel for each component. The panel for a DC motor is clicked, expanding to show power controls." max-width="600px" class="fill alignleft">}}
 
 {{% /tablestep %}}
 {{% tablestep link="/services/" %}}
