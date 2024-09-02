@@ -118,6 +118,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// Set the motor's RPM to 50
+myMotorComponent.SetRPM(context.Background(), 50)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
 
 {{% /tab %}}
