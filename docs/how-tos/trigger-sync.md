@@ -13,7 +13,7 @@ aliases:
 languages: []
 viamresources: ["sensor", "data_manager"]
 level: "Intermediate"
-date: "2024-08-23"
+date: "2024-09-02"
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0"
 ---
@@ -21,38 +21,19 @@ cost: "0"
 You may want to sync data only when a certain logic condition is met, instead of at a regular time interval.
 For example, if you rely on mobile data but have intermittent WiFi connection in certain locations or at certain times of the day, you may want to trigger sync to only occur when these conditions are met.
 Or, you may want to trigger sync only when your machine detects an object of a certain color.
-The code for both of these examples is provided by the [trigger-sync-examples module](https://github.com/viam-labs/trigger-sync-examples-v2), and you can [create your own module](/how-tos/create-module/) if you want to use different logic.
+You can use the [trigger-sync-examples module](https://github.com/viam-labs/trigger-sync-examples-v2) if one of these examples is what you are looking for.
 
-To set up conditional syncing you need to:
-
-1. Create or use an existing module that implements a `sensor` component that uses custom logic to determine when to enable and disable sync.
-   This sensor does not sense time.
-   It _senses_ whether the data manager should sync or not.
-2. Change the configuration of the data manager to enable selective sync.
-
-{{% alert title="Note: How sync is triggered" color="note" %}}
-
-Regardless of the specifics of your trigger sync logic, to trigger sync you need to pass `true` to the [CreateShouldSyncReading function](https://pkg.go.dev/go.viam.com/rdk/services/datamanager#CreateShouldSyncReading) within the definition of your modular sensor's `Readings` function.
-See examples in the `Readings` function of the [time-interval-trigger code](https://github.com/viam-labs/trigger-sync-examples-v2/blob/main/time-interval-trigger/selective_sync/selective_sync.go) and the [color-trigger code](https://github.com/viam-labs/trigger-sync-examples-v2/blob/main/color-trigger/selective_sync/selective_sync.go).
-
-{{% /alert %}}
-
-This page covers how to use the `sync-at-time` module.
-You can use this as an example if you use or create a similar module.
+If you need different logic, this guide will show you the implementation of the [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time) module which triggers cloud sync based on a defined time interval.
+You can use it as the basis of your own custom logic.
 
 {{% alert title="In this page" color="tip" %}}
 
-1. [Add the `sync-at-time` sensor](#add-sensor-to-determine-when-to-sync)
-2. [Configure the data manager to sync based on the sensor](#configure-the-data-manager-to-sync-based-on-sensor)
-3. [Test your sync configuration](#test-your-sync-configuration)
+1. [Use the `CreateShouldSyncReading` function to enable sync](#use-the-createshouldsyncreading-function-to-enable-sync)
+1. [Add and configure sensor to determine when to sync](#add-your-sensor-to-determine-when-to-sync)
+1. [Configure the data manager to sync based on the sensor](#configure-the-data-manager-to-sync-based-on-sensor)
+1. [Test your sync configuration](#test-your-sync-configuration)
 
 {{% /alert %}}
-
-## Example: `sync-at-time`
-
-In this example, you will configure sync to only trigger during a specific time frame of the day using an existing module [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time).
-If you need to trigger sync based on a different condition, you need to create your own module and adjust the module logic accordingly.
-Additional examples are available in this [GitHub repo](https://github.com/viam-labs/trigger-sync-examples-v2).
 
 ## Prerequisites
 
@@ -74,9 +55,67 @@ Also leave both **Capturing** and **Syncing** toggles in the "on" position.
 
 {{< /expand >}}
 
-## Add sensor to determine when to sync
+{{% expand "Create a sensor module. Click to see instructions." %}}
 
-To use [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time):
+Start by [creating a sensor module](/how-tos/sensor-module/). Your sensor should have access to the information you need to determine if your machine should sync or not.
+Based on that data, make the sensor return true when the machine should sync and false when it should not.
+For example, if your want your machine to return data only during a specific time interval, your sensor needs to be able to access the time as well as be configured with the time interval during which you would like to sync data.
+It can then return true during the specified sync time interval and false otherwise.
+
+{{% /expand%}}
+
+## Use the `CreateShouldSyncReading` function to enable sync
+
+Regardless of the specifics of your trigger sync logic, to trigger sync your sensor needs to pass `true` to the [CreateShouldSyncReading function](https://pkg.go.dev/go.viam.com/rdk/services/datamanager#CreateShouldSyncReading) within the definition of your modular sensor's `Readings` function.
+
+The `sync-at-time` sensor does not sense time despite being named a time sensor.
+It _senses_ whether the data manager should sync or not and determines this based on the time of day.
+During the configured time of the day, the code will pass `true` to the [CreateShouldSyncReading function](https://pkg.go.dev/go.viam.com/rdk/services/datamanager#CreateShouldSyncReading) which will enable syncing:
+
+```go {class="line-numbers linkable-line-numbers" data-line="7,12"}
+func (s *timeSyncer) Readings(context.Context, map[string]interface{}) (map[string]interface{}, error) {
+    currentTime := time.Now()
+    var hStart, mStart, sStart, hEnd, mEnd, sEnd int
+    n, err := fmt.Sscanf(s.start, "%d:%d:%d", &hStart, &mStart, &sStart)
+    if err != nil || n != 3 {
+        s.logger.Error("Start time is not in the format HH:MM:SS.")
+        return datamanager.CreateShouldSyncReading(false), err
+    }
+    m, err := fmt.Sscanf(s.end, "%d:%d:%d", &hEnd, &mEnd, &sEnd)
+    if err != nil || m != 3 {
+        s.logger.Error("End time is not in the format HH:MM:SS.")
+        return datamanager.CreateShouldSyncReading(false), err
+    }
+
+    zone, err := time.LoadLocation(s.zone)
+    if err != nil {
+        s.logger.Error("Time zone cannot be loaded: ", s.zone)
+    }
+
+    startTime := time.Date(currentTime.Year(), currentTime.Month(), currentTime.Day(),
+        hStart, mStart, sStart, 0, zone)
+    endTime := time.Date(currentTime.Year(), currentTime.Month(), currentTime.Day(),
+        hEnd, mEnd, sEnd, 0, zone)
+
+    // If it is between the start and end time, sync.
+    if currentTime.After(startTime) && currentTime.Before(endTime) {
+        s.logger.Info("Syncing")
+        return datamanager.CreateShouldSyncReading(true), nil
+    }
+
+    // Otherwise, do not sync.
+    return datamanager.CreateShouldSyncReading(false), nil
+}
+```
+
+If you wish to see more context, see the entire [implementation of the sensor on GitHub](https://github.com/viam-labs/sync-at-time/blob/main/timesyncsensor/timesyncsensor.go).
+
+For additional examples, see the `Readings` function of the [time-interval-trigger code](https://github.com/viam-labs/trigger-sync-examples-v2/blob/main/time-interval-trigger/selective_sync/selective_sync.go) and the [color-trigger code](https://github.com/viam-labs/trigger-sync-examples-v2/blob/main/color-trigger/selective_sync/selective_sync.go).
+
+## Add your sensor to determine when to sync
+
+Add your module to your machine and configure it. In this example we will continue to use [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time).
+You will need to follow the same steps with your module:
 
 {{< table >}}
 {{% tablestep %}}
@@ -135,7 +174,7 @@ The following attributes are available for the `naomi:sync-at-time:timesyncsenso
 {{< /tablestep >}}
 {{< /table >}}
 
-<div>
+</div>
 <br>
 
 In the next step you will configure the data manager to take the sensor into account when syncing.
@@ -255,15 +294,20 @@ Click on `GetReadings`.
 {{<imgproc src="/services/data/timesensor.png" resize="800x" declaredimensions=true alt="Control tab with sensor panel">}}
 
 If you are in the time frame for sync, the time sync sensor will return true.
-You can confirm that no data is currently syncing by going to the [**Data** tab](https://app.viam.com/data/view).
+
+You can confirm that if data is currently syncing by going to the [**Data** tab](https://app.viam.com/data/view).
 If you are not in the time frame for sync, adjust the configuration of your time sync sensor.
 Then check again on the **CONTROL** and **Data** tab to confirm data is syncing.
 
 ## Next steps
 
+You can now use custom logic to trigger sync conditionally.
+For more information, see:
+
 <!-- markdownlint-disable MD034 -->
 
 {{< cards >}}
+{{% card link="/how-tos/sensor-module/" %}}
 {{% card link="/how-tos/create-module/" %}}
 {{% manualcard link="https://github.com/viam-labs/trigger-sync-examples-v2" %}}
 

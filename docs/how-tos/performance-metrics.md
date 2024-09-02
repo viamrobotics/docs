@@ -42,10 +42,16 @@ You can use the [`viam-telegraf-sensor`](https://app.viam.com/module/viam/viam-t
 
 {{% /expand%}}
 
-{{< alert title="Note" color="note" >}}
-You must run `viam-server` with `sudo` to monitor machine performance metrics.
+{{% expand "Install telegraf. Click to see instructions." %}}
 
 On macOS, you must also install telegraf by running `brew install telegraf` in your terminal before using this module.
+
+If you are on another operating system, telegraf will be installed automatically for you.
+
+{{% /expand%}}
+
+{{< alert title="Note" color="note" >}}
+You must run `viam-server` with `sudo` to monitor machine performance metrics.
 {{< /alert >}}
 
 ## Add the telegraf-sensor
