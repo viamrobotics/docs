@@ -18,6 +18,6 @@
 | [`RemoveBoundingBoxFromImageByID`](/appendix/apis/data-client/#removeboundingboxfromimagebyid) | Removes a bounding box from an image specified by its BinaryID. |
 | [`BoundingBoxLabelsByFilter`](/appendix/apis/data-client/#boundingboxlabelsbyfilter) | Get a list of bounding box labels using a Filter. |
 | [`GetDatabaseConnection`](/appendix/apis/data-client/#getdatabaseconnection) | Get a connection to access a MongoDB Atlas Data federation instance. |
-| [`ConfigureDatabaseUser`](/appendix/apis/data-client/#configuredatabaseuser) | Configure a database user for the Viam organization’s MongoDB Atlas Data Federation instance. It can also be used to reset the password of the existing database user. |
+| [`ConfigureDatabaseUser`](/appendix/apis/data-client/#configuredatabaseuser) | Configure a database user for the Viam organization’s MongoDB Atlas Data Federation instance. |
 | [`AddBinaryDataToDatasetByIDs`](/appendix/apis/data-client/#addbinarydatatodatasetbyids) | Add the `BinaryData` to the provided dataset. |
 | [`RemoveBinaryDataFromDatasetByIDs`](/appendix/apis/data-client/#removebinarydatafromdatasetbyids) | Remove the BinaryData from the provided dataset. |

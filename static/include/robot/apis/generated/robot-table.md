@@ -20,5 +20,5 @@
 | [`AtAddress`](/appendix/apis/robot/#ataddress) | Create a RobotClient that is connected to the machine at the provided address. |
 | [`WithChannel`](/appendix/apis/robot/#withchannel) | Create a RobotClient that is connected to a machine over the given channel. |
 | [`Refresh`](/appendix/apis/robot/#refresh) | Manually refresh the underlying parts of this machine. |
-| [`Shutdown`](/appendix/apis/robot/#shutdown) | Shutdown shuts down the machine. |
+| [`Shutdown`](/appendix/apis/robot/#shutdown) | Shutdown shuts down the machine. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`Close`](/appendix/apis/robot/#close) | Close the underlying connections and stop any periodic tasks across all constituent parts of the machine. |

@@ -36,7 +36,7 @@ Get status information about the machine.
 
 **Returns:**
 
-- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): current status of the resources (List[ResourceStatus]) of the robot.
+- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): current status of the resources (List[ResourceStatus]) of the machine.
 
 **Example:**
 
@@ -451,7 +451,7 @@ Cancel all current and outstanding operations for the machine and stop all actua
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Cancel all current and outstanding operations for the robot and stop all actuators and movement.
+# Cancel all current and outstanding operations for the machine and stop all actuators and movement.
 await robot.stop_all()
 ```
 
@@ -708,7 +708,7 @@ Create a RobotClient that is connected to the machine at the provided address.
 
 **Parameters:**
 
-- `address` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Address of the robot (IP address, URL, etc.).
+- `address` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Address of the machine (IP address, URL, etc.).
 - `options` ([Options](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options)) (required): Options for connecting and refreshing.
 
 **Returns:**
@@ -856,6 +856,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### Shutdown
 
 Shutdown shuts down the machine.
+Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
