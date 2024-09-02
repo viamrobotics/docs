@@ -861,12 +861,11 @@ You can use the `module build start` or `module build local` commands to build y
 - Use `build start` to build or compile your module on a cloud build host that might offer more platform support than you have access to locally.
 - Use `build local` to quickly test that your module builds or compiles as expected on your local hardware.
 
-To configure your module's build steps, add a `build` object to your [`meta.json` file](#the-metajson-file) like the following:
+To configure your module's build steps, add a `build` object to your [`meta.json` file](#the-metajson-file) like the following.
+You can either have a single build file for all platforms, or platform specific files.
 
-<!-- Developers can either have a single build file for all platforms, or platform specific files: -->
-
-<!-- { {< tabs >}}
-{ {% tab name="Single Build File" %}} -->
+{{< tabs >}}
+{{% tab name="Single Build File" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 "build": {
@@ -877,6 +876,27 @@ To configure your module's build steps, add a `build` object to your [`meta.json
   "arch" : ["linux/amd64", "linux/arm64"] // architecture(s) to build for
 }
 ```
+
+{{% /tab %}}
+{{% tab name="Platform Specific" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+"build": {
+  "path" : "dist/archive.tar.gz",               // optional - path to your built module
+                                                // (passed to the 'viam module upload' command)
+  "arch": {
+        "linux/arm64": {
+          "build": "./build-linux-arm64.sh" // command that will build your module
+        },
+        "darwin/arm64": {
+          "build": "./build-darwin-arm64.sh" // command that will build your module
+        }
+      } // architecture(s) to build for
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% expand "Click to view example setup.sh" %}}
 
@@ -903,7 +923,7 @@ pip3 install -r requirements.txt
 
 {{% /expand %}}
 
-{{%expand "Click to view example build.sh (with setup.sh)" %}}
+{{% expand "Click to view example build.sh (with setup.sh)" %}}
 
 ```sh {class="line-numbers linkable-line-numbers"}
 #!/bin/bash
@@ -939,29 +959,11 @@ python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
-{{% /expand%}}
+{{% /expand %}}
 
-<!-- { {% /tab %}} -->
-<!-- { {% tab name="Platform Specific" %}}
+{{% expand "Click to view example build-linux-arm64.sh" %}}
 
-```json {class="line-numbers linkable-line-numbers"}
-"build": {
-  "path" : "dist/archive.tar.gz",               // optional - path to your built module
-                                                // (passed to the 'viam module upload' command)
-  "arch": {
-        "linux/arm64": {
-          "build": "./build-linux-arm64.sh" // command that will build your module
-        },
-        "darwin/arm64": {
-          "build": "./build-darwin-arm64.sh" // command that will build your module
-        }
-      } // architecture(s) to build for
-}
-```
-
-{ {%expand "Click to view example build-linux-arm64.sh" %}}
-
-```sh { class="command-line"}
+```sh {class="line-numbers linkable-line-numbers"}
 #!/bin/bash
 set -e
 
@@ -973,9 +975,9 @@ python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
-{ {% /expand%}}
+{{% /expand %}}
 
-{ {%expand "Click to view example build-darwin-arm64.sh" %}}
+{{% expand "Click to view example build-darwin-arm64.sh" %}}
 
 ```sh {class="line-numbers linkable-line-numbers"}
 #!/bin/bash
@@ -989,10 +991,7 @@ python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
-{ {% /expand%}}
-
-{{ % /tab %}}
-{ {< /tabs >}} -->
+{{% /expand %}}
 
 For example, the following extends the `my-module` <file>meta.json</file> file from the previous section using the single build file approach, adding a new `build` object to control its build parameters when used with `module build start` or `module build local`:
 
