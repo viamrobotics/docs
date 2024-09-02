@@ -31,7 +31,7 @@ viam.component.servo.v1.ServoService.MoveRequest
 
 ## Install
 
-You can download the Viam CLI executable using one of the options below.
+You can download the Viam CLI using one of the options below.
 Select the tab for your platform and architecture.
 If you are on Linux, you can use the `uname -m` command to determine your system architecture.
 
@@ -101,8 +101,6 @@ to later update the Viam CLI tool on macOS, run `brew upgrade viam`.
 Once you have [installed the Viam CLI](#install), you must authenticate your CLI session with Viam in order to run CLI commands.
 
 You can authenticate your CLI session using either a personal access token, or an organization, location, or machine part API key.
-To use an organization API key to authenticate, you must first [create an organization API key](#create-an-organization-api-key).
-Similarly, to authenticate using a location or machine part API key, you must first create a [location](#create-a-location-api-key) or [machine part API key](#create-a-machine-part-api-key).
 
 - To authenticate your CLI session using a personal access token:
 
@@ -114,29 +112,15 @@ Similarly, to authenticate using a location or machine part API key, you must fi
   If a browser window does not open, the CLI will present a URL for you to manually open in your browser.
   Follow the instructions to complete the authentication process.
 
-- To authenticate your CLI session using an organization API key:
+- To authenticate your CLI session using an organization, location, or machine part API key:
 
   ```sh {class="command-line" data-prompt="$"}
-  viam login api-key --key-id <organization-api-key-uuid> --key <organization-api-key-secret-value>
+  viam login api-key --key-id <api-key-id> --key <organization-api-key-secret>
   ```
 
-  If you haven't already, [create an organization API key](#create-an-organization-api-key) to use this authentication method.
-
-- To authenticate your CLI session using a location API key:
-
-  ```sh {class="command-line" data-prompt="$"}
-  viam login api-key --key-id <location-api-key-uuid> --key <location-api-key-secret-value>
-  ```
-
-  If you haven't already, [create a location API key](#create-a-location-api-key) to use this authentication method.
-
-- To authenticate your CLI session using a machine part API key:
-
-  ```sh {class="command-line" data-prompt="$"}
-  viam login api-key --key-id <machine-part-api-key-uuid> --key <machine-part-api-key-secret-value>
-  ```
-
-  If you haven't already, [create a machine part API key](#create-a-machine-part-api-key) to use this authentication method.
+  {{< alert title="Note" color="note" >}}
+  To use an organization, location, or machine part API key to authenticate, you can create one from the organization's settings page in the [Viam app](https://app.viam.com) or authenticate with a personal access token and then [create an organization API key](#create-an-organization-api-key, a [location](#create-a-location-api-key), or a [machine part API key](#create-a-machine-part-api-key).
+  {{< /alert >}}
 
 An authenticated session is valid for 24 hours, unless you explicitly [log out](#logout).
 
@@ -144,10 +128,10 @@ After the session expires or you log out, you must re-authenticate to use the CL
 
 ### Create an organization API key
 
-To use an organization API key to authenticate your CLI session, you must first create one:
+To use an API key to authenticate your CLI session, you must create one.
+You can do this from the organization's settings page in the [Viam app](https://app.viam.com) or with the CLI.
 
 1. First, [authenticate](#authenticate) your CLI session.
-   If your organization does not already have an organization API key created, authenticate using a personal access token or either a [location API key](#create-a-location-api-key) or [machine part API key](#create-a-machine-part-api-key).
 
 1. Then, run the following command to create a new organization API key:
 
@@ -170,7 +154,7 @@ By default, new organization API keys are created with **Owner** permissions, gi
 You can change an API key's permissions from the Viam app on the [organizations page](/cloud/organizations/) by clicking the **Show details** link next to your API key.
 {{% /alert %}}
 
-Once created, you can use the organization API key to authenticate future CLI sessions or to [connect to machines with the SDK](/sdks/#authentication).
+Once created, you can use the organization API key to authenticate future CLI sessions or to [use the SDKs](/sdks/#authentication).
 To switch to using an organization API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
 
 An organization can have multiple API keys.
@@ -178,6 +162,7 @@ An organization can have multiple API keys.
 ### Create a location API key
 
 To use an location API key to authenticate your CLI session, you must first create one:
+You can do this from the organization's settings page in the [Viam app](https://app.viam.com) or with the CLI.
 
 1. First, [authenticate](#authenticate) your CLI session.
    If you don't already have a location API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [machine part API key](#create-a-machine-part-api-key).
@@ -216,6 +201,7 @@ A location can have multiple API keys.
 ### Create a machine part API key
 
 To use a machine part API key to authenticate your CLI session, you must first create one:
+You can do this from the organization's settings page in the [Viam app](https://app.viam.com) or with the CLI.
 
 1. First, [authenticate](#authenticate) your CLI session.
    If you don't already have a machine part API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [location API key](#create-a-location-api-key).
@@ -381,21 +367,20 @@ viam dataset data remove ids --dataset-id= abc --org-id=123 --location-id=456 --
 
 ##### Using the `ids` argument
 
-When you use the `viam dataset data add` and `viam dataset data remove` commands, you can specify the image to add or remove using its file id.
-To work with multiple images at once, you can specify multiple file ids as a comma-separated list.
-For example, the following adds three images specified by their file ids to the specified dataset:
+When you use the `viam dataset data add` and `viam dataset data remove` commands, you can specify the images to add or remove using their file ids as a comma-separated list.
+For example, the following command adds three images specified by their file ids to the specified dataset:
 
 ```sh {class="command-line" data-prompt="$"}
 viam dataset data add ids --dataset-id=abc --location-id=123 --org-id=123 --file-ids=abc,123,def
 ```
 
-The following tags two images specified by their file ids in the specified organization and location with three tags:
+The following command tags two images specified by their file ids in the specified organization and location with three tags:
 
 ```sh {class="command-line" data-prompt="$"}
 viam data tag ids add --tags=new_tag_1,new_tag_2,new_tag_3 --org-id=123 --location-id=123 --file-ids=123,456
 ```
 
-To find your organization's ID, navigate to your organization's **Settings** page in [the Viam app](https://app.viam.com/).
+To find your organization's ID, run `viam organization list` or navigate to your organization's **Settings** page in [the Viam app](https://app.viam.com/).
 Find **Organization ID** and click the copy icon.
 
 To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset.
@@ -413,13 +398,13 @@ See [Datasets](/services/data/dataset/) for more information.
 ##### Using the `filter` argument
 
 When you use the `viam dataset data add`, `viam dataset data remove` or `viam data tag` commands, you can optionally `filter` by common search criteria to `add` or `remove` a specific subset of images based on a search filter.
-For example, the following adds all images captured between January 1 and October 1, 2023, that have the `example` tag applied, to the specified dataset:
+For example, the following command adds all images captured between January 1 and October 1, 2023, that have the `example` tag applied, to the specified dataset:
 
 ```sh {class="command-line" data-prompt="$"}
 viam dataset data add filter --dataset-id=abc --org-ids=123 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
 ```
 
-The following adds `"new_tag_1"` and `"new_tag_2"` to all images of type `"image/jpeg"` or `"image/png"` captured by the machine named `"cool-machine"` in organization `8484` and location `012`:
+The following command adds `"new_tag_1"` and `"new_tag_2"` to all images of type `"image/jpeg"` or `"image/png"` captured by the machine named `"cool-machine"` in organization `8484` and location `012`:
 
 ```sh {class="command-line" data-prompt="$"}
 viam data tag filter add --tags=new_tag_1,new_tag_2 --location-ids=012 --machine-name=cool-machine --org-ids=84842  --mime-types=image/jpeg,image/png
@@ -504,12 +489,12 @@ done
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `export` | Export data in a specified format to a specified location | - |
-| `tag` | Add or remove tags from data matching the ids or filter | `ids`, `filter` |
-| `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query) | - |
-| `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query) | - |
-| `delete binary` | Delete binary data | - |
-| `delete tabular` | Delete tabular data | - |
+| `export` | Export data in a specified format to a specified location. | - |
+| `tag` | Add or remove tags from data matching the ids or filter. | `ids`, `filter` |
+| `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query). | - |
+| `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/how-tos/sensor-data-query-with-third-party-tools/#configure-data-query). | - |
+| `delete binary` | Delete binary data from the Viam cloud. | - |
+| `delete tabular` | Delete tabular data from the Viam cloud. | - |
 | `--help` | Return help | - |
 
 ##### Positional arguments: `tag`
@@ -589,7 +574,7 @@ viam locations api-key create --location-id=<location-id>
 
 ### `login`
 
-The `login` command helps you authorize your device for CLI usage. See [Authenticate](#authenticate).
+The `login` command allows you to authorize your device for CLI usage.
 
 ```sh {class="command-line" data-prompt="$"}
 viam login
@@ -597,26 +582,26 @@ viam login api-key --key-id=<api-key-uuid> --key=<api-key-secret-value>
 viam login print-access-token
 ```
 
-Use `viam login` to authenticate using a personal access token, or `viam login api-key` to authenticate using an organization API key.
-If you haven't already, you must [create an organization API key](#create-an-organization-api-key) first in order to authenticate using one.
+Use `viam login` to authenticate using a personal access token, or `viam login api-key` to authenticate using an API key.
+See [Authenticate](#authenticate).
 
 #### Command options
 
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `api-key` | Authenticate to Viam using an organization, location, or machine part API key | Create |
-| `print-access-token` | Prints the access token used to authenticate the current CLI session | - |
-| `--help` | Return help | - |
-| `--disable-browser-open` | Authenticate in a headless environment by preventing the opening of the default browser during login (default: false) | - |
+| `api-key` | Authenticate to Viam using an organization, location, or machine part API key. | - |
+| `print-access-token` | Prints the access token used to authenticate the current CLI session. | - |
+| `--disable-browser-open` | Authenticate in a headless environment by preventing the opening of the default browser during login (default: `false`). | - |
+| `--help` | Return help. | - |
 
 ##### Named arguments
 
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--key-id` | The `key id` (UUID) of the API key | `api-key` | **Required** |
-| `--key` | The `key value` of the API key | `api-key` | **Required** |
+| `--key-id` | The `key id` (UUID) of the API key. | `api-key` | **Required** |
+| `--key` | The `key value` of the API key. | `api-key` | **Required** |
 
 ### `logout`
 
@@ -638,6 +623,11 @@ This includes:
 - Updating a module's metadata file based on models it provides
 - Building your module for different architectures using cloud runners
 - Building a module locally and running it on a target device. Rebuilding & restarting if already running.
+
+See [Upload a custom module](/how-tos/create-module/#upload-your-module-to-the-modular-resource-registry) and [Update an existing module](/how-tos/manage-modules/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+
+If you update and release your module as part of a continuous integration (CI) workflow, you can also
+[automatically upload new versions of your module on release](/how-tos/manage-modules/#update-an-existing-module-using-a-github-action) using a GitHub Action.
 
 ```sh {class="command-line" data-prompt="$"}
 viam module create --name=<module-name> [--org-id=<org-id> | --public-namespace=<namespace>]
@@ -685,37 +675,33 @@ viam module reload --restart-only --id viam:python-example-module
 viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.gz
 ```
 
-See [Upload a custom module](/how-tos/create-module/#upload-your-module-to-the-modular-resource-registry) and [Update an existing module](/how-tos/manage-modules/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
-
-If you update and release your module as part of a continuous integration (CI) workflow, you can also
-[automatically upload new versions of your module on release](/how-tos/manage-modules/#update-an-existing-module-using-a-github-action) using a GitHub Action.
-
 #### Command options
 
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `create` | Generate new metadata for a custom module on your local filesystem | - |
-| `update` | Update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file). Note that the `upload` command automatically runs `update` for you; you do not need to explicitly run `update` if you are also running `upload` | - |
+| `create` | Generate new metadata for a custom module on your local filesystem. | - |
+| `update` | Update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file). Note that the `upload` command automatically runs `update` for you; you do not need to explicitly run `update` if you are also running `upload`. | - |
 | `update-models` | Update the module's metadata file with the models it provides. | - |
-| `upload` | Validate and upload a new or existing custom module on your local filesystem to the Viam registry. See [Upload validation](#upload-validation) for more information | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code |
+| `upload` | Validate and upload a new or existing custom module on your local filesystem to the Viam registry. See [Upload validation](#upload-validation) for more information. | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code. |
 | `reload` | Build a module locally and run it on a target device. Rebuild and restart if it is already running. | - |
-| `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](#the-metajson-file). See [Using the `build` subcommand](#using-the-build-subcommand) | - |
-| `build local` | Start a module build locally using the build step in your [`meta.json` file](#the-metajson-file). See [Using the `build` subcommand](#using-the-build-subcommand) | - |
-| `build list` | List the status of your cloud module builds. See [Using the `build` subcommand](#using-the-build-subcommand) | - |
-| `build logs` | Show the logs from a specific cloud module build. See [Using the `build` subcommand](#using-the-build-subcommand) | - |
-| `--help` | Return help | - |
+| `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](#the-metajson-file). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
+| `build local` | Start a module build locally using the build step in your [`meta.json` file](#the-metajson-file). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
+| `build list` | List the status of your cloud module builds. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
+| `build logs` | Show the logs from a specific cloud module build. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
+| `--help` | Return help. | - |
 
 ##### Named arguments
 
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--binary` | The binary for the module to run. The binary has to work on the OS or processor of the device. | | **Required** |
+| `--binary` | The binary for the module to run. The binary has to work on the OS or processor of the device. | `update-models` | **Required** |
 | `--count` | Number of cloud builds to list, defaults to displaying all builds | `build list` | Optional |
 | `--force` | Skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | Optional |
 | `--id` | The build ID to list or show logs for, as returned from `build start` | `build list`, `build logs` | Optional |
 | `--module` | The path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload`, `build` | Optional |
+| `--local-only` |  Create a meta.json file for local use, but don't create the module on the backend (default: `false`). | `create` | Optional |
 | `--name` | The name of the custom module to be created | `create` | **Required** |
 | `--org-id` | The organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | **Required** |
 | `--public-namespace` | The [namespace](/cloud/organizations/#create-a-namespace-for-your-organization) to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | **Required** |
@@ -727,8 +713,8 @@ If you update and release your module as part of a continuous integration (CI) w
 
 All of the `module` commands accept either the `--org-id` or `--public-namespace` argument.
 
-- Use the `--public-namespace` argument to supply the [namespace](/cloud/organizations/#create-a-namespace-for-your-organization) of your organization, suitable for uploading your module to the Viam registry and sharing with other users.
-- Use the `--org-id` to provide your organization ID instead, suitable for sharing your module privately within your organization.
+- Use the `--public-namespace` argument to supply the [namespace](/cloud/organizations/#create-a-namespace-for-your-organization) of your organization. This will upload your module to the Viam registry and share it with other users.
+- Use the `--org-id` to provide your organization ID instead, This will upload your module privately within your organization.
 
 You may use either argument for the `viam module create` command, but must use `--public-namespace` for the `update` and `upload` commands when uploading as a public module (`"visibility": "public"`) to the Viam registry.
 
@@ -829,13 +815,14 @@ The `meta.json` file includes the following configuration options:
     <td><code>models</code></td>
     <td>object</td>
     <td><strong>Required</strong></td>
-    <td>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair.</td>
+    <td>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key-value pair.</td>
   </tr>
   <tr>
     <td><code>entrypoint</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
-    <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing your module as a single file to the <code>upload</code> command, provide the path to that single file. If you are providing a directory containing your module to the <code>upload</code> command, provide the path to the entry point file contained within that directory.</td>
+    <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing your module as a single file to the <code>upload</code> command, provide the path to that single file. If you are providing a directory containing your module to the <code>upload</code> command, provide the path to the entry point file contained within that directory. You can change the entrypoint file from version to version, if desired.
+</td>
   </tr>
 </table>
 
@@ -869,9 +856,9 @@ See [Modular resources](/registry/) for a conceptual overview of modules and the
 
 ##### Using the `build` subcommand
 
-You can use the `module build start` or `module build local` commands to build your custom module according to the build steps you specify in your <file>meta.json</file> file:
+You can use the `module build start` or `module build local` commands to build your custom module according to the build steps in your <file>meta.json</file> file:
 
-- Use `build start` to build or compile your module on a cloud build host that might offer additional platform support than you have access to locally.
+- Use `build start` to build or compile your module on a cloud build host that might offer more platform support than you have access to locally.
 - Use `build local` to quickly test that your module builds or compiles as expected on your local hardware.
 
 To configure your module's build steps, add a `build` object to your [`meta.json` file](#the-metajson-file) like the following:
@@ -891,9 +878,9 @@ To configure your module's build steps, add a `build` object to your [`meta.json
 }
 ```
 
-{{%expand "Click to view example setup.sh" %}}
+{{% expand "Click to view example setup.sh" %}}
 
-```sh { class="command-line"}
+```sh {class="line-numbers linkable-line-numbers"}
 #!/bin/bash
 set -e
 UNAME=$(uname -s)
@@ -914,22 +901,22 @@ python3 -m venv .venv
 pip3 install -r requirements.txt
 ```
 
-{{% /expand%}}
+{{% /expand %}}
 
 {{%expand "Click to view example build.sh (with setup.sh)" %}}
 
-```sh { class="command-line"}
+```sh {class="line-numbers linkable-line-numbers"}
 #!/bin/bash
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
-{{% /expand%}}
+{{% /expand %}}
 
-{{%expand "Click to view example build.sh (without setup.sh)" %}}
+{{% expand "Click to view example build.sh (without setup.sh)" %}}
 
-```sh { class="command-line"}
+```sh {class="line-numbers linkable-line-numbers"}
 #!/bin/bash
 set -e
 UNAME=$(uname -s)
@@ -990,7 +977,7 @@ tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 
 { {%expand "Click to view example build-darwin-arm64.sh" %}}
 
-```sh { class="command-line"}
+```sh {class="line-numbers linkable-line-numbers"}
 #!/bin/bash
 set -e
 
@@ -1048,7 +1035,7 @@ viam module build list
 
 ### `organizations`
 
-The `organizations` command allows you to list the organizations your authenticated session belongs to, and to create a new organization API key.
+The `organizations` command allows you to list the organizations your authenticated session has access to, and to create a new organization API key.
 
 ```sh {class="command-line" data-prompt="$"}
 viam organizations list
@@ -1072,7 +1059,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `list` | List all organizations (name, id, and [namespace](/cloud/organizations/#create-a-namespace-for-your-organization)) that the authenticated session belongs to | - |
+| `list` | List all organizations (name, id, and [namespace](/cloud/organizations/#create-a-namespace-for-your-organization)) that the authenticated session has access to. | - |
 | `api-key` | Create a new organization API key |`create` |
 | `--help` | Return help | - |
 
@@ -1210,7 +1197,7 @@ viam machines part restart --machine=123 --part=456
 | `status` | Retrieve machine status for a specified machine part |
 | `run` | Run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. |
 | `logs` | Get logs for the specified machine part |
-| `shell` | Access a machine part securely using a secure shell. This feature must be enabled. |
+| `shell` | Access a machine part securely using a secure shell. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine. |
 | `restart` | Restart a machine part. |
 | `--help` | Return help |
 
