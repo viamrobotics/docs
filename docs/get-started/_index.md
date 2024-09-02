@@ -95,6 +95,8 @@ However, if you need more custom behaviour, you can [extend these APIs to suit y
 
 ### Connect from anywhere
 
+{{<gif webm_src="/fleet/mobile-app-control.webm" mp4_src="/fleet/mobile-app-control.mp4" alt="Using the control interface under the locations tab on the Viam mobile app" class="alignright" max-width="300px">}}
+
 Viam uses WebRTC and gRPC for **secure peer-to-peer communications across network boundaries**.
 
 In factory settings or remote environments, you can operate and monitor your machines over a local area network (LAN).
