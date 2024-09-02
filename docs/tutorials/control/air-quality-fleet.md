@@ -56,9 +56,11 @@ In addition to `viam-server`, this tutorial uses the following software:
 
 Before you start connecting your devices to the Viam app, you'll need to decide how you want to group your devices.
 
-In the Viam app, {{< glossary_tooltip term_id="machine" text="machines" >}} are grouped into _locations_, and locations are grouped into _organizations_.
-Each location can represent either a physical location or some other conceptual grouping.
-An organization is the highest level grouping, and often contains all the locations (and machines) of an entire company.
+In the Viam app, {{< glossary_tooltip term_id="machine" text="machines" >}} are grouped into _locations_, and locations are grouped into _organizations_:
+
+- Each location can represent either a physical location or some other conceptual grouping.
+- An organization is the highest level grouping, and often contains all the locations (and machines) of an entire company.
+
 These groupings allow you to manage permissions; you can grant a user access to an individual machine, to all the machines in a location, or to everything in an entire organization.
 You choose how to group your machines.
 
