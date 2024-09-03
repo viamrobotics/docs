@@ -120,17 +120,17 @@ jobs:
           python-version: "3.9"
           cache: "pip" # caching pip dependencies
       - name: Download the quickstarts file
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: quickstarts-file
           path: "quickstarts"
       - name: Download the how-tos file
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: howtos-file
           path: "how-tos"
       - name: Download the tutorials file
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: tutorials-file
           path: "tutorials"
@@ -152,12 +152,12 @@ jobs:
           python-version: "3.9"
           cache: "pip" # caching pip dependencies
       - name: Download the components models file
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: components-models-file
           path: "components"
       - name: Download the services models file
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.1.7
         with:
           name: services-models-file
           path: "services"
