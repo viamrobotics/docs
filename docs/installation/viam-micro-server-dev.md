@@ -129,7 +129,7 @@ brew install dfu-util
 {{% /tab %}}
 {{% tab name="Manual" %}}
 
-To set up the Docker development environment for ESP manually, complete the following instructions:
+To set up the Docker development environment for ESP32 manually, complete the following instructions:
 
 {{< alert title="Tip" color="tip" >}}
 You only need to follow these steps if you are not using Canon to build `viam-micro-server`.
@@ -226,7 +226,7 @@ brew install cmake ninja dfu-util
 1. [Start Docker](https://docs.docker.com/config/daemon/start/) on your development machine.
    If you haven't already, complete Docker's [Linux post installation steps](https://docs.docker.com/engine/install/linux-postinstall/) to set up Docker to run whenever your system boots up.
 
-1. Generate a new project from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project) to create a new micro-RDK project to upload to your ESP32 by running:
+1. Generate a new project from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/project) to create a new `viam-micro-server` project to upload to your ESP32 by running:
 
    ```sh { class="command-line" data-prompt="$"}
    cargo generate --git https://github.com/viamrobotics/micro-rdk.git
