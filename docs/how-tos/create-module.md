@@ -189,7 +189,7 @@ Browse additional example modules by language:
 | Module | Repository | Description |
 | ------ | ---------- | ----------- |
 | [berryimu](https://app.viam.com/module/viam-labs/berryimu) | [viam-labs/berry-imu](https://github.com/viam-labs/berry-imu) | Extends the built-in [movement sensor API](/components/movement-sensor/#api) to support using the BerryIMU v3 accelerometer, gyroscope and magnetometer using an I2C connection on ARM64 systems. |
-| [oak](https://app.viam.com/module/viam/oak) | [viamrobotics/viam-camera-oak](https://github.com/viamrobotics/viam-camera-oak) | Extends the built-in [camera API](/components/camera/#api) to support OAK cameras. |
+| [oak](https://app.viam.com/module/viam/oak) | [viam-modules/viam-camera-oak](https://github.com/viam-modules/viam-camera-oak) | Extends the built-in [camera API](/components/camera/#api) to support OAK cameras. |
 | [odrive](https://app.viam.com/module/viam/odrive) | [viamrobotics/odrive](https://github.com/viamrobotics/odrive) | Extends the built-in [motor API](/components/motor/#api) to support the ODrive motor. This module provides two models, one for a `canbus`-connected ODrive motor, and one for a `serial`-connected ODrive motor. |
 | [yahboom](https://app.viam.com/module/rand/yahboom) | [viamlabs/yahboom](https://github.com/viam-labs/yahboom) | Extends the built-in [arm API](/components/arm/#api) and [gripper API](/components/gripper/#api) to support the Yahboom Dofbot robotic arm. |
 
