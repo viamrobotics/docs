@@ -216,7 +216,7 @@ To see full projects using visualization, check out these resources:
 
 {{< cards >}}
 {{% card link="/tutorials/control/air-quality-fleet/" %}}
-{{% manualcard link="https://www.viam.com/post/harnessing-the-power-of-tableau-to-visualize-sensor-data" img="services/data/tableau-preview.png" imageAlt="Tableau dashboard" %}}
+{{% manualcard link="https://www.viam.com/post/harnessing-the-power-of-tableau-to-visualize-sensor-data" img="services/data/tableau-preview.png" alt="Tableau dashboard" %}}
 
 ### Visualize data with Tableau
 

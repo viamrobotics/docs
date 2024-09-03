@@ -8,6 +8,9 @@ images: ["/services/ml/train.svg"]
 description: "Use your image data to create and label a dataset and train a computer vision ML model."
 aliases:
   - /use-cases/deploy-ml/
+  - /manage/ml/train-model/
+  - /ml/train-model/
+  - /services/ml/train-model/
 languages: []
 viamresources: ["data_manager", "mlmodel", "vision"]
 level: "Beginner"
@@ -39,7 +42,7 @@ You will not need to write any code.
 
 {{< table >}}
 {{% tablestep %}}
-{{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Collect data">}}
+{{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="max-width: 250px" declaredimensions=true alt="Collect data">}}
 **1. Collect images**
 
 Start by collecting images from your cameras and syncing it to the [Viam app](https://app.viam.com).
@@ -50,12 +53,15 @@ The more varied the provided data set, the more accurate the resulting model bec
 
 {{% /tablestep %}}
 {{% tablestep %}}
-{{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Label data">}}
+{{<imgproc src="/services/ml/label.svg" class="fill alignleft" style="max-width: 250px" declaredimensions=true alt="Label data">}}
 **2. Label your images**
 
 Once you have enough images of the objects you'd like to classify, use the interface on the **DATA** tab to label your data.
 If you want to train an image classifier, use image tags.
 For an object detector, use bounding boxes.
+
+<br style="clear: both;">
+<br>
 
 {{< expand "Create image tags (for an image classifier)" >}}
 
@@ -122,7 +128,7 @@ This is not required, since you can use other filters like time or machine ID in
 
 {{< table >}}
 {{% tablestep %}}
-{{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Train models">}}
+{{<imgproc src="/services/ml/train.svg" class="fill alignright" style="max-width: 250px" declaredimensions=true alt="Train models">}}
 **1. Train an ML model**
 
 In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train on.
@@ -165,6 +171,8 @@ You will receive an email when your model finishes training.
 
 ## Deploy an ML model
 
+To use ML models with your machine, you must first deploy the model using an ML model service. The ML model service will run the model and allow the vision service to use it:
+
 {{< table >}}
 {{% tablestep %}}
 {{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Train models">}}
@@ -195,6 +203,26 @@ Test your ML model classifier with [existing images in the Viam app](/services/v
 
 {{% /tablestep %}}
 {{< /table >}}
+
+## Versioning for deployed models
+
+If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the machine.
+If you do not want Viam to automatically deploy the `latest` version of the model, you can edit the `"packages"` array in the [JSON configuration](/configure/#the-configure-tab) of your machine.
+This array is automatically created when you deploy the model and is not embedded in your service configuration.
+
+You can get the version number from a specific model version by navigating to the [models page](https://app.viam.com/data/models) finding the model's row, clicking on the right-side menu marked with **_..._** and selecting **Copy package JSON**. For example: `2024-02-28T13-36-51`.
+The model package config looks like this:
+
+```json
+"packages": [
+  {
+    "package": "<model_id>/<model_name>",
+    "version": "YYYY-MM-DDThh-mm-ss",
+    "name": "<model_name>",
+    "type": "ml_model"
+  }
+]
+```
 
 ## Next steps
 

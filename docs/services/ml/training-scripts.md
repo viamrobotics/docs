@@ -1,5 +1,5 @@
 ---
-title: "Custom training scripts"
+title: "Training scripts"
 linkTitle: "Training scripts"
 weight: 10
 type: "docs"
@@ -45,6 +45,6 @@ To submit training jobs programmatically, use the [ML Training client API](/appe
 Follow one of these guides to write your own custom training script or to train models with training scripts:
 
 {{< cards >}}
-{{% card link="/how-tos/create-custom-training-scripts/" %}}
 {{% card link="/how-tos/deploy-ml/" %}}
+{{% card link="/how-tos/create-custom-training-scripts/" %}}
 {{< /cards >}}

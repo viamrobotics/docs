@@ -32,6 +32,10 @@ htmltest: clean setup
 	hugo $(LOCAL_OPTIONS) -d dist
 	htmltest
 
+htmltest-fast: setup
+	hugo $(LOCAL_OPTIONS) -d dist
+	htmltest
+
 coveragetest:
 	hugo $(LOCAL_OPTIONS) -d dist
 	python3 .github/workflows/check_python_methods.py --local

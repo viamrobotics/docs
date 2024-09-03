@@ -4,7 +4,7 @@ linkTitle: "Detect people (4 min)"
 type: "docs"
 tags: ["vision", "data", "services", "quickstart", "ml", "camera", "webcam"]
 no_list: true
-description: "Detect people using a webcam and the Viam vision service. Without writing any code, you will be able to view your camera stream, with detection bounding boxes around people."
+description: "Detect people using a webcam and the Viam vision service. Without writing code, view your camera stream with detection bounding boxes around people."
 images: ["/get-started/quickstarts/vision-card.png"]
 imageAlt: "Person detected in camera stream"
 authors: []

@@ -1,6 +1,6 @@
 ---
 title: "Deploy an ML Model with the ML Model Service"
-linkTitle: "Deploy Model"
+linkTitle: "ML Model Service"
 weight: 60
 type: "docs"
 tags: ["data management", "ml", "model training"]
@@ -18,17 +18,20 @@ images: ["/services/icons/ml.svg"]
 ---
 
 The Machine Learning (ML) model service allows you to deploy [machine learning models](/services/ml/ml-models/) to your machine.
-This can mean deploying:
+You can deploy:
 
 - a model you [trained](/how-tos/deploy-ml/)
 - a model from [the registry](https://app.viam.com/registry) that another user has shared publicly
-- a model trained outside the Viam platform that you have uploaded to the registry privately or publicly
+- a model trained outside the Viam platform that you have uploaded to the [**MODELS** tab](https://app.viam.com/data/models) in the **DATA** section of the Viam app
 - a model trained outside the Viam platform that's already available on your machine
 
 After deploying your model, you need to configure an additional service to use the deployed model.
-For example, you can configure an [`mlmodel` vision service](/services/vision/) and a [`transform` camera](/components/camera/transform/) to visualize the predictions your model makes.
+For example, you can configure an [`mlmodel` vision service](/services/vision/) to visualize the predictions your model makes.
 
-## Available models
+## Available ML model service models
+
+You must deploy an ML model service to use machine learning models on your machines.
+Once you have deployed the ML model service, you can select an [ML model](#machine-learning-models-from-registry).
 
 {{<resources_svc api="rdk:service:mlmodel" type="ML model">}}
 
@@ -51,7 +54,7 @@ For some models of the ML model service, like the [Triton ML model service](http
 {{< relatedcard link="/components/camera/">}}
 {{< /cards >}}
 
-## Models from registry
+## Machine learning models from registry
 
 You can search the machine learning models that are available to deploy on this service from the registry here:
 
@@ -68,27 +71,17 @@ You can search the machine learning models that are available to deploy on this 
 <div id="paginationML"></div>
 </div>
 
-## Versioning for deployed models
+## API
 
-If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the machine.
-If you do not want Viam to automatically deploy the `latest` version of the model, you can edit the `"packages"` array in the [JSON configuration](/configure/#the-configure-tab) of your machine.
-This array is automatically created when you deploy the model and is not embedded in your service configuration.
+{{< alert title="Viam Python SDK Support" color="note" >}}
 
-You can get the version number from a specific model version by navigating to the [models page](https://app.viam.com/data/models) finding the model's row, clicking on the right-side menu marked with **_..._** and selecting **Copy package JSON**. For example: `2024-02-28T13-36-51`.
-The model package config looks like this:
+To use the ML model service from the [Viam Python SDK](https://python.viam.dev/), install the Python SDK using the `mlmodel` extra:
 
-```json
-"packages": [
-  {
-    "package": "<model_id>/<model_name>",
-    "version": "YYYY-MM-DDThh-mm-ss",
-    "name": "<model_name>",
-    "type": "ml_model"
-  }
-]
+```sh {class="command-line" data-prompt="$"}
+pip install 'viam-sdk[mlmodel]'
 ```
 
-## API
+{{< /alert >}}
 
 The MLModel service supports the following methods:
 
@@ -103,38 +96,17 @@ Go to your machine's **CONNECT** tab's **Code sample** page on the [Viam app](ht
 
 {{< readfile "/static/include/services/apis/generated/mlmodel.md" >}}
 
-## Use the ML model service with the Viam Python SDK
-
-To use the ML model service from the [Viam Python SDK](https://python.viam.dev/), install the Python SDK using the `mlmodel` extra:
-
-```sh {class="command-line" data-prompt="$"}
-pip install 'viam-sdk[mlmodel]'
-```
-
-You can also run this command on an existing Python SDK install to add support for the ML model service.
-
-See the [Python documentation](https://python.viam.dev/autoapi/viam/services/mlmodel/mlmodel/index.html#viam.services.mlmodel.mlmodel.MLModel) for more information about the `MLModel` service in Python.
-
-See [Program a machine](/sdks/) for more information about using an SDK to control your machine.
-
 ## Next steps
 
-To use your model with your machine, add a [vision service](/services/vision/) or a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}:
+The ML model service only runs your model on the machine.
+To use the inferences from the model, you must use an additional service such as a [vision service](/services/vision/) or a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}:
 
 {{< cards >}}
 
-{{% manualcard link="/services/vision/mlmodel/"%}}
+{{% manualcard link="/services/vision/mlmodel/" img="/services/icons/ml.svg" alt="Machine Learning" %}}
+**Create a visual detector or classifier**
 
-<h4>Create a detector with your model</h4>
-
-Configure an `mlmodel detector`.
-
-{{% /manualcard %}}
-{{% manualcard link="/services/vision/mlmodel/"%}}
-
-<h4>Create a classifier with your model</h4>
-
-Configure your `mlmodel classifier`.
+Use your model deployed with the ML model service by adding a vision service that can provide detections or classifications depending on your ML model.
 
 {{% /manualcard %}}
 
