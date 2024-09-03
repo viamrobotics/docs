@@ -9,11 +9,8 @@ videos: ["/services/ml/train-model.webm","/services/ml/train-model.mp4"]
 videoAlt: "Add a bounding box around the dog in an image."
 aliases:
   - /data/train-model/
-description: "Train an image classification model on labeled image data."
+description: "Machine learning models are mathematical models that can recognize patterns. You can use them on your machines to interpret the machine's surroundings."
 aliases:
-  - /manage/ml/train-model/
-  - /ml/train-model/
-  - /services/ml/train-model/
   - /services/ml/upload-model/
   - /services/ml/edit/
   - /ml/edit/
@@ -21,18 +18,37 @@ aliases:
   - /manage/ml/upload-model/
   - /ml/upload-model/
 no_service: true
+modulescript: true
 # SME: Tahiya + Alexa Greenberg
 ---
 
 Machine Learning (ML) models are mathematical models that can recognize patterns.
+
 The [ML model service](/services/ml/deploy/) runs ML models on your machines.
 Services like the [vision service](/services/vision/mlmodel/) can then use the ML model services to provide your machine with information about its surroundings.
-
 The ML model service works with models trained inside and outside the Viam app:
 
 - You can upload externally trained models on the [**MODELS** tab](https://app.viam.com/data/models) in the **DATA** section of the Viam app.
 - You can [train](/how-tos/deploy-ml/) models on data from your machines.
 - You can use [ML models](https://app.viam.com/registry?type=ML+Model) from the Viam Registry.
+- You can use a [model](/services/ml/ml-models/) trained outside the Viam platform that's already available on your machine.
+
+## Available machine learning models in the registry
+
+You can search the machine learning models that are available to deploy on this service from the registry here:
+
+<div id="searchboxML"></div>
+<p>
+<div id="searchstatsML"></div></p>
+<div class="mr-model" id="">
+  <div class="modellistheader">
+    <div class="name">Model</div>
+    <div>Description</div>
+  </div>
+<div id="hitsML" class="modellist">
+</div>
+<div id="paginationML"></div>
+</div>
 
 ## Model framework support
 
@@ -73,27 +89,17 @@ If you need to make changes to a model, you can edit or delete it on its page wh
 
 ## Next steps
 
+Use the ML model service to deploy a machine learning model to your machine:
+
 {{< cards >}}
-{{% manualcard link="/services/ml/deploy/" %}}
+{{% card link="/services/ml/deploy/" %}}
+{{% card link="/how-tos/deploy-ml/" %}}
+{{< /cards >}}
 
-<h4>Deploy your model</h4>
+Follow one of these tutorials to see ML models in action:
 
-Create an ML model service to deploy your machine learning model to your machine.
-
-{{% /manualcard %}}
-{{% manualcard link="/services/vision/mlmodel/"%}}
-
-<h4>Create a detector with your model</h4>
-
-Configure an `mlmodel detector`.
-
-{{% /manualcard %}}
-{{% manualcard link="/services/vision/mlmodel/"%}}
-
-<h4>Create a classifier with your model</h4>
-
-Configure your `mlmodel classifier`.
-
-{{% /manualcard %}}
-
+{{< cards >}}
+{{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
+{{% card link="/tutorials/projects/helmet/" %}}
+{{% card link="/tutorials/projects/integrating-viam-with-openai/" customDescription="Add object detection, speech recognition, natural language processing, and speech synthesis capabilities to a machine." %}}
 {{< /cards >}}

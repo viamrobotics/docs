@@ -115,7 +115,7 @@ Add the `tflite_cpu` ML model object to the services array in your raw JSON conf
 ```
 
 The `"packages"` array shown above is automatically created when you deploy the model.
-You do not need to edit the configuration yourself, expect if you wish to change the [Versioning for deployed models](/services/ml/deploy/#versioning-for-deployed-models).
+You do not need to edit the configuration yourself, except if you wish to specify a specific [version for your deployed model](/services/ml/ml-models/#versions).
 
 {{% /tab %}}
 {{< /tabs >}}
