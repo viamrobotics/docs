@@ -248,7 +248,8 @@ func main() {
 {{% tab name="Flutter" %}}
 
 Flutter code must be launched from inside a running Flutter application.
-To get started programming your rover with Flutter, follow the instructions to [Build a Flutter App that Integrates with Viam](/tutorials/control/flutter-app/).
+To get started programming your machine with Flutter, follow the instructions to [Build a Flutter App that Integrates with Viam](/tutorials/control/flutter-app/).
+Then return to this page to add motor control to your app.
 
 Add a new file to your application in <file>/lib</file> called <file>motor_screen.dart</file>.
 Paste this code into your file:
@@ -429,7 +430,7 @@ This imports the <file>motor_screen.dart</file> file into the program and adds l
 Since you added a screen for motor, motor is a navigable resource.
 
 To navigate to the motor screen, save your code and launch your simulator.
-Navigate to the robot screen of your (live) machine with a motor resource configured, and see the resource displayed like the following:
+Navigate to the robot screen of your (live) machine with a motor resource configured, and see the resource control interface displayed:
 
 {{<imgproc src="/get-started/quickstarts/motor-screen.png" resize="500x" declaredimensions=true alt="iOS simulator of a motor displayed">}}
 
