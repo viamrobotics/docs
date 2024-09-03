@@ -25,7 +25,7 @@ Viam is a software platform that makes it easy to combine and integrate hardware
 
 ## `viam-server`
 
-At the core of Viam is the open-source `viam-server` executable which runs on a computer and provides drivers hardware and manages software and data for a machine.
+At the core of Viam is the open-source `viam-server` executable which runs on a computer and provides drivers for hardware and manages software and data for a machine.
 If you are working with microcontrollers, [`viam-micro-server`](/installation/) is a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured `viam-server`.
 
 To use Viam with a machine, you create a configuration specifying which hardware and software the machine consists of.
