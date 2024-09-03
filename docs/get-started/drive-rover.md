@@ -252,7 +252,20 @@ Add the following markup:
   </head>
   <body>
     <div id="main">
-      <button id="main-button" disabled="true">Click me</button>
+      <h1>Drive a rover in a square</h1>
+      <p>
+        We recommend you open the developer tools in your browser to see logs.
+      </p>
+      <p>
+        Also open a second window with the
+        <a href="https://app.viam.com">Viam app</a> and navigate to your rover's
+        <b>CONTROL</b> tab, which allows you to interact with your rover's
+        resources. Click on one of the camera panels and toggle the camera
+        stream on so you can observe the rover's movements.
+      </p>
+      <button id="main-button" disabled="true">
+        Click me to drive rover in square
+      </button>
     </div>
     <script type="module" src="main.js"></script>
   </body>
@@ -267,7 +280,7 @@ npm start
 ```
 
 Open a web browser and visit `localhost:8000`.
-You should see a disabled button that says `Click me`.
+You should see a disabled button that says `Click me to drive rover in square`.
 Open the developer console to see the console output.
 If you successfully configured your machine and it is able to connect to the Viam app, you will see some output including the names of your rover's resources.
 These are the components and services that the machine is configured with in the Viam app.
@@ -526,13 +539,13 @@ async function main() {
 ```
 
 Save your code and refresh the browser page.
-When the connection to the rover is established, the `Click me` button will become enabled.
+When the connection to the rover is established, the `Click me to drive rover in square` button will become enabled.
 
-If you have a borrowed Try Viam rover, open a tab and navigate to your machine's **CONTROL** tab, which allows you to interact with your machine's {{< glossary_tooltip term_id="resource" text="resources" >}}.
+If you have a borrowed Try Viam rover, open a tab and navigate to your machine's **CONTROL** tab, which allows you to interact with your rover's {{< glossary_tooltip term_id="resource" text="resources" >}}.
 
 Click on one of the camera panels and toggle the camera stream on so you can observe the rover's movements.
 
-Go back to the `Click me` button and click the button to run your code and switch back to the the **CONTROL** tab to watch your rover move in a square.
+Go back to the `Click me to drive rover in square` button and click the button to run your code and switch back to the the **CONTROL** tab to watch your rover move in a square.
 
 <div class="td-max-width-on-larger-screens">
 {{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square." max-width="400px">}}
@@ -947,7 +960,20 @@ func main() {
   </head>
   <body>
     <div id="main">
-      <button id="main-button" disabled="true">Click me</button>
+      <h1>Drive a rover in a square</h1>
+      <p>
+        We recommend you open the developer tools in your browser to see logs.
+      </p>
+      <p>
+        Also open a second window with the
+        <a href="https://app.viam.com">Viam app</a> and navigate to your rover's
+        <b>CONTROL</b> tab, which allows you to interact with your rover's
+        resources. Click on one of the camera panels and toggle the camera
+        stream on so you can observe the rover's movements.
+      </p>
+      <button id="main-button" disabled="true">
+        Click me to drive rover in square
+      </button>
     </div>
     <script type="module" src="main.js"></script>
   </body>
