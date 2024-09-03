@@ -121,11 +121,6 @@ npm install @viamrobotics/sdk
 ```
 
 {{% /tab %}}
-{{% tab name="C++" %}}
-
-Follow the [instructions on the GitHub repository](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
-
-{{% /tab %}}
 {{% tab name="Flutter" %}}
 
 ```sh {class="command-line" data-prompt="$"}
@@ -133,6 +128,12 @@ flutter pub add viam_sdk
 ```
 
 {{% /tab %}}
+{{% tab name="C++" %}}
+
+Follow the [instructions on the GitHub repository](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
+
+{{% /tab %}}
+
 {{< /tabs >}}
 
 {{< /expand >}}
@@ -195,6 +196,19 @@ go run square.go
 
 {{% /tab %}}
 {{< tab name="TypeScript" >}}
+
+{{< alert title="Fast track" color="note" >}}
+
+If you want to get the full sample code now, run the following command which will set up the files for you:
+
+```sh {class="command-line" data-prompt="$"}
+npm create robot-app
+```
+
+Then, copy and paste your API key and API key ID, and machine address into the <FILE>.env</FILE> file.
+If you have run this command and added your environment variables, skip ahead to running the program.
+
+{{< /alert >}}
 
 Go to the **CONNECT** tab and select **TypeScript**.
 Save your API key and API key ID as environment variables or include them in the code:
