@@ -28,7 +28,7 @@ Machine Learning (ML) models are mathematical models that can recognize patterns
 The [ML model service](/services/ml/deploy/) runs ML models on your machines.
 Services like the [vision service](/services/vision/mlmodel/) can then use the ML model services to provide your machine with information about its surroundings.
 
-The [ML model service](/ml/deploy/) works with models trained inside and outside the Viam app:
+The ML model service works with models trained inside and outside the Viam app:
 
 - You can upload externally trained models on the [**MODELS** tab](https://app.viam.com/data/models) in the **DATA** section of the Viam app.
 - You can [train](/how-tos/deploy-ml/) models on data from your machines.
