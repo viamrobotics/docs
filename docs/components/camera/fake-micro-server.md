@@ -18,9 +18,9 @@ A `fake` camera is a camera model for testing.
 The camera always returns the same image, which is an image of a circle inside a diamond.
 
 {{< alert title="Software requirements" color="note" >}}
-To use this model, you must follow the [`viam-micro-server` Development Setup](/installation/micro-rdk-dev/), which enables you to install and activate the ESP-IDF.
-At the step [Generate a new project from a template](/installation/micro-rdk-dev//#generate-a-new-project-from-a-template) where you create a new project with `cargo generate`, select the option to include camera module traits when prompted.
-Finish the [`viam-micro-server` Development Setup](/installation/micro-rdk-dev/) and return to this guide.
+To use this model, you must follow the [`viam-micro-server` Development Setup](/installation/viam-micro-server-dev/), which enables you to install and activate the ESP-IDF.
+At the step [Generate a new project from a template](/installation/viam-micro-server-dev/#install-viam-micro-server) where you create a new project with `cargo generate`, select the option to include camera module traits when prompted.
+Finish the [`viam-micro-server` Development Setup](/installation/viam-micro-server-dev/) and return to this guide.
 {{< /alert >}}
 
 {{< tabs name="Configure a Fake Camera" >}}

@@ -7,7 +7,7 @@ no_list: true
 type: docs
 images: ["/installation/thumbnails/install.png"]
 imageAlt: "Install Viam"
-description: "To use Viam software with your machine, install and run the viam-server binary on the computer that will run your machine and is connected to your hardware."
+description: "To use Viam, install and run viam-server or viam-micro-server on the computer or microcontroller that will run your machine and is connected to your hardware."
 aliases:
   - /installation/prepare/
   - /installation/macos-install/
