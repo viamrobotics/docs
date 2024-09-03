@@ -6,6 +6,7 @@ description: "Detect colors using a webcam and the Viam vision service. Without 
 imageAlt: "camera stream displaying a color detection"
 images: ["/tutorials/try-viam-color-detection/detected-example.png"]
 tags: ["vision", "detector", "camera", "services"]
+resource: "quickstart"
 aliases:
   - /tutorials/viam-rover/try-viam-color-detection/
   - /tutorials/try-viam-color-detection/
