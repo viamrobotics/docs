@@ -69,7 +69,7 @@ You can get the version number from a specific model version by navigating to th
 When you [train](/how-tos/deploy-ml/) a new version of a model, the previous model remains unchanged and is not used as input.
 {{< /alert >}}
 
-If you need to make changes to a model, you can edit or delete it on the [**MODELS** tab](https://app.viam.com/data/models) in the **DATA** section of the Viam app.
+If you need to make changes to a model, you can edit or delete it on its page which you can access from the [**MODELS** tab](https://app.viam.com/data/models).
 
 ## Next steps
 
