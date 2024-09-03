@@ -672,7 +672,7 @@ Wait for a few seconds and you should see correctly colored images.
 To sync your captured data with the cloud, [configure cloud sync](/services/data/cloud-sync/).
 
 If you have synced data, such as [sensor](/components/sensor/) readings, you can [query that data with SQL or MQL](/how-tos/sensor-data-query-with-third-party-tools/) from the Viam app or a MQL-compatible client.
-If you have synced images, you can use those images to [train machine learning models](/services/ml/train-model/) within the Viam app.
+If you have synced images, you can use those images to [train machine learning models](/how-tos/deploy-ml/) within the Viam app.
 
 For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).
 

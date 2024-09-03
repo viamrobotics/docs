@@ -218,7 +218,7 @@ Models that are still being trained appear under **Training**, while models that
 
 {{< imgproc src="/tutorials/data-management/trained-model.png" alt="The models tab on the data page showing a completed model named my-classifier-model ready for deployment" resize="800x" >}}
 
-For more information, see [Train a model](/services/ml/train-model/).
+For more information, see [Train a model](/how-tos/deploy-ml/).
 
 ### Deploy a model
 

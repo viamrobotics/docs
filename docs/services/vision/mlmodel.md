@@ -27,7 +27,7 @@ Before configuring your `mlmodel` detector or classifier, you need to:
 
 <h4>1. Train or upload an ML model</h4>
 
-You can [add an existing model](/services/ml/upload-model/) or [train your own models](/services/ml/train-model/) for object detection and classification using data from the [data management service](/services/data/).
+You can add an [existing model](/services/ml/ml-models/) or [train your own models](/how-tos/deploy-ml/) for object detection and classification using data from the [data management service](/services/data/).
 
 {{% /manualcard %}}
 {{% manualcard %}}
@@ -143,8 +143,8 @@ Both the `mlmodel` detector and classifier require that the input and output ten
   - The _input tensor_ must be named `image`
   - The _output tensor_ must be named `probability`
 
-If you [trained your ML model using the Viam app](/services/ml/train-model/), your `mlmodel` tensors are already named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
-However, if you [uploaded your own ML model](/services/ml/upload-model/), or are using one from the [Viam registry](https://app.viam.com/registry), you may need to remap your tensor names to meet this requirement, and should follow the instructions to [remap tensor names](#remap-tensor-names).
+If you [trained your ML model using the Viam app](/how-tos/deploy-ml/), your `mlmodel` tensors are already named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
+However, if you uploaded your own ML model, or are using one from the [Viam registry](https://app.viam.com/registry), you may need to remap your tensor names to meet this requirement, and should follow the instructions to [remap tensor names](#remap-tensor-names).
 
 #### Remap tensor names
 

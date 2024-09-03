@@ -30,7 +30,8 @@ You will not need to write any code.
 {{< alert title="In this page" color="tip" >}}
 
 1. [Create a dataset and label data](#create-a-dataset-and-label-data)
-2. [Train and test a machine learning (ML) model](#train-and-test-a-machine-learning-ml-model)
+2. [Train a machine learning (ML) model](#train-a-machine-learning-ml-model)
+3. [Deploy a machine learning model](#deploy-an-ml-model)
 
 {{< /alert >}}
 
@@ -44,6 +45,9 @@ You will not need to write any code.
 Start by collecting images from your cameras and syncing it to the [Viam app](https://app.viam.com).
 See [Collect image data and sync it to the cloud](/how-tos/image-data/#collect-image-data-and-sync-it-to-the-cloud) for instructions.
 
+When training machine learning models, it is important to supply a variety of different data about the subject in different situations, such as from different angles or in different lighting situations.
+The more varied the provided data set, the more accurate the resulting model becomes.
+
 {{% /tablestep %}}
 {{% tablestep %}}
 {{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Label data">}}
@@ -55,7 +59,7 @@ For an object detector, use bounding boxes.
 
 {{< expand "Create image tags (for an image classifier)" >}}
 
-You can use tags to [create classification models](/services/ml/train-model/#train-a-model) for images.
+You can use tags to create classification models for images.
 For example, if you would like to create a model that identifies an image of a star in a set of images, tag each image containing a star with a `star` tag.
 The filter also needs to include images without the star tag or with another tag like `notstar`.
 If you add a `notstar` tag, you can filter the data in your dataset by selecting `star` and `notstar` from the **Tags** dropdown in the **Filtering** menu.
@@ -74,7 +78,7 @@ Repeat this with all images in your dataset.
 {{< expand "Create bounding boxes (for an object detector)" >}}
 
 You can create one or more bounding boxes for objects in each image.
-If you annotate an entire dataset, you can use these bounding boxes to [create object detection models](/services/ml/train-model/#train-a-model).
+If you annotate an entire dataset, you can use these bounding boxes to create object detection models.
 For example, if you would like to create a model that detects a dog in an image, add bounding boxes around the dog in each of your images and add or select the label `dog`.
 
 To add a bounding box, click on an image and select the **Bounding box** mode in the menu that opens.
@@ -114,30 +118,68 @@ If you apply the same tag to all data gathered from all machines that you want t
 This is not required, since you can use other filters like time or machine ID in the **DATA** tab to isolate your data.
 {{% /alert %}}
 
-## Train and test a machine learning (ML) model
+## Train a machine learning (ML) model
 
 {{< table >}}
-{{% tablestep link="/services/ml/train-model/"%}}
+{{% tablestep %}}
 {{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Train models">}}
 **1. Train an ML model**
 
 In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train on.
+
 Click **Train model** and follow the prompts.
+
+You can choose between
+
+- training a new model or updating a model
+- You can use a **Built-in training** script or a [custom training script](/services/ml/training-scripts/).
+
+Click **Next steps**.
 
 {{% /tablestep %}}
 {{% tablestep %}}
+**Select the details for your ML model**
+
+1. Enter a name or use the suggested name for your new model.
+1. Select a **Model Type** and one or more labels to train on. Depending on the training script you've chose, you may have a number of these options:
+   - **Single Label Classification**: The resulting model predicts one of the selected labels or `UNKNOWN` per image.
+     If you are only using one label, ensure that the dataset you are training on also contains unlabeled images.
+   - **Multi Label Classification**: The resulting model predicts one or more of the selected labels per image.
+   - **Object Detection**: The resulting model predicts either no detected objects or any number of object labels alongside their locations per image.
+1. Click **Train model**
+
+{{<gif webm_src="/services/ml/train-model.webm" mp4_src="/services/ml/train-model.mp4" alt="Train a model UI">}}
+
+{{% /tablestep %}}
+{{% tablestep %}}
+
+The model now starts training and you can follow its process in the **Training** section of the **Models** page.
+
+Once the model has finished training, it becomes visible in the **Models** section of the page.
+You will receive an email when your model finishes training.
+
+![The trained model](/services/ml/petfeeder-model.png)
+
+{{% /tablestep %}}
+{{< /table >}}
+
+## Deploy an ML model
+
+{{< table >}}
+{{% tablestep %}}
 {{<imgproc src="/registry/upload-module.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Train models">}}
-**2. Deploy your ML model**
+**1. Deploy your ML model**
 
 If you haven't already, [create a machine](/cloud/machines/#add-a-new-machine) and [set it up](/cloud/machines/#set-up-a-new-machine).
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
-Here, add the built-in [TFLite CPU ML model service](/services/ml/deploy/) and select the ML model you just trained as the **Model**.
+Here, add an [ML model service](/services/ml/deploy/) that supports the ML model you just trained and add the model as the **Model**.
+For example use the `TFLite CPU` ML model service for TFlite ML models.
 This service will deploy and run the model.
 
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/mlmodel/" %}}
 {{<imgproc src="/services/icons/vision.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Configure a service">}}
-**3. Configure an <code>mlmodel</code> vision service**
+**2. Configure an <code>mlmodel</code> vision service**
 
 The vision service takes the the ML model and applies it to the stream of images from your camera.
 
@@ -147,7 +189,7 @@ Then, from the **Select model** dropdown, select the name of the ML model servic
 {{% /tablestep %}}
 {{% tablestep link="/services/vision/mlmodel/#test-your-detector-or-classifier" %}}
 {{<imgproc src="/services/ml/deploy.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Deploy your model">}}
-**4. Test your classifier**
+**3. Test your classifier**
 
 Test your ML model classifier with [existing images in the Viam app](/services/vision/mlmodel/#existing-images-in-the-cloud), [live camera footage,](/services/vision/mlmodel/#live-camera-footage) or [existing images on a computer](/services/vision/mlmodel/#existing-images-on-your-machine).
 
