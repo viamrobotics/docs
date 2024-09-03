@@ -67,25 +67,29 @@ Select a tab below to learn how to configure your visualization tool for use wit
 {{% tablestep %}}
 **1. Choose Grafana instance**
 
-Install or set up Grafana. You can use either a local instance of Grafana or Grafana Cloud, and can use the free trial version of Grafana if desired.
+[Install](https://grafana.com/docs/grafana/latest/setup-grafana/installation/) or set up Grafana. You can use either a local instance of Grafana or Grafana Cloud, and can use the free trial version of Grafana if desired.
 
 {{% /tablestep %}}
 {{% tablestep %}}
 **2. Install connector to MongoDB data source**
 
-Navigate to your Grafana web UI, and add the [Grafana MongoDB data source](https://grafana.com/grafana/plugins/grafana-mongodb-datasource/) plugin to your Grafana instance.
+Navigate to your Grafana web UI.
+Go to **Connections > Add new connection** and add the [Grafana MongoDB data source](https://grafana.com/grafana/plugins/grafana-mongodb-datasource/) plugin to your Grafana instance.
 
 {{<imgproc src="/tutorials/visualize-data-grafana/search-grafana-plugins.png" resize="800x" declaredimensions=true alt="The Grafana plugin search interface showing the results for a search for mongodb">}}
+
+Install the datasource plugin.
 
 {{% /tablestep %}}
 {{% tablestep %}}
 **3. Configure a data connection**
 
-Navigate to the Grafana data source management page, and select the Grafana MongoDB data source that you just added.
+Navigate to the Grafana MongoDB data source that you just installed.
+Select **Add new data source**.
 
-Enter the following information in the configuration UI for that plugin:
+Enter the following information in the configuration UI for the plugin:
 
-- **Connection string**: Enter the following connection string, and replace `<MONGODB-ATLAS-DF-HOSTNAME>` with your database hostname as configured with the `viam data database configure` command, and replace `<DATABASE-NAME>` with the desired database name to query:
+- **Connection string**: Enter the following connection string, and replace `<MONGODB-ATLAS-DF-HOSTNAME>` with your database hostname as configured with the `viam data database configure` command, and replace `<DATABASE-NAME>` with the desired database name to query. For most use cases with Viam, this database name will be `sensorData`:
 
   ```sh
   mongodb://<MONGODB-ATLAS-DF-HOSTNAME>/<DATABASE-NAME>?directConnection=true&authSource=admin&tls=true
@@ -111,6 +115,20 @@ Grafana additionally supports the ability to directly [query and transform your 
 You might use this functionality to visualize only a single day's metrics, limit the visualization to a select machine or component, or to isolate an outlier in your reported data, for example.
 
 You can query your captured data within a Grafana dashboard using either {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
+
+For example, try the following query to obtain readings from a sensor, replacing `sensor-1` with the name of your component:
+
+```mql
+sensorData.readings.aggregate([
+            {$match: {
+              component_name: "sensor-1",
+              time_received: {$gte: ISODate(${__from})}
+              }},
+            {$limit: 1000}
+            ]
+          )
+```
+
 See the [guide on querying sensor data](/how-tos/sensor-data-query-with-third-party-tools/) for more information.
 
 <!-- markdownlint-disable-file MD034 -->
@@ -148,7 +166,7 @@ mongodb://db-user-abcdef12-abcd-abcd-abcd-abcdef123456:YOUR-PASSWORD-HERE@data-f
 ```
 
 You can also specify a desired database name in your connection URI, if desired.
-For example, to use the `sensorData` database, the default name for uploaded data, your connection string would resemble:
+For example, to use the `sensorData` database, the default database name for uploaded sensor data, your connection string would resemble:
 
 ```sh {class="command-line" data-prompt="$"}
 mongodb://db-user-abcdef12-abcd-abcd-abcd-abcdef123456:YOUR-PASSWORD-HERE@data-federation-abcdef12-abcd-abcd-abcd-abcdef123456-e4irv.a.query.mongodb.net/sensorData?ssl=true&authSource=admin

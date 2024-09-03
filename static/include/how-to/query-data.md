@@ -46,15 +46,16 @@ If you have run this command before, this command instead **updates** the passwo
 Determine the connection URI (also known as a connection string) for your organization's MongoDB Atlas Data Federation instance by running the following command with the organization's `org-id` from step 2:
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
-viam data database hostname --org-id=abcd1e2f-a1b2-3c45-de6f-ab123456c123
+viam data database hostname --org-id=<YOUR-ORGANIZATION-ID>
+# Example output
 MongoDB Atlas Data Federation instance hostname: data-federation-abcd1e2f-a1b2-3c45-de6f-ab123456c123-0z9yx.a.query.mongodb.net
 MongoDB Atlas Data Federation instance connection URI: mongodb://db-user-abcd1e2f-a1b2-3c45-de6f-ab123456c123:YOUR-PASSWORD-HERE@data-federation-abcd1e2f-a1b2-3c45-de6f-ab123456c123-0z9yx.a.query.mongodb.net/?ssl=true&authSource=admin
 ```
 
 This command returns:
 
-- the MongoDB Atlas Data Federation instance hostname
-- the MongoDB Atlas Data Federation instance connection URI: this is the _connection URI_ to your organization's MongoDB Atlas Data Federation instance, which is of the form:
+- **hostname:** the MongoDB Atlas Data Federation instance hostname
+- **connection URI:** the MongoDB Atlas Data Federation instance connection uniform resource indicator. This is the _connection URI_ to your organization's MongoDB Atlas Data Federation instance, which is of the form:
 
   ```sh {class="command-line" data-prompt="$"}
   mongodb://<USERNAME>:<YOUR-PASSWORD>@<HOSTNAME>/?ssl=true&authSource=admin
