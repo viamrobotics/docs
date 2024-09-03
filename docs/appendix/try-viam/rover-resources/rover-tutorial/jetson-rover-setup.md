@@ -162,5 +162,5 @@ After adding the appropriate fragment, follow one of these tutorials with your b
 
 {{< cards >}}
 {{% card link="/get-started/drive-rover/" %}}
-{{% card link="/tutorials/services/basic-color-detection/" %}}
+{{% card link="/how-tos/detect-color/" %}}
 {{< /cards >}}

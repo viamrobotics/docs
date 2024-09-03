@@ -230,6 +230,6 @@ If you'd like to do more with your rover, check out one of these tutorials:
 
 {{< cards >}}
 {{% card link="/get-started/drive-rover/" %}}
-{{% card link="/tutorials/services/basic-color-detection/" %}}
+{{% card link="/how-tos/detect-color/" %}}
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}

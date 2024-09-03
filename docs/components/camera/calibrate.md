@@ -112,5 +112,5 @@ The following is a full example config:
 {{< cards >}}
 {{% card link="/components/camera/transform/" %}}
 {{% card link="/services/vision" %}}
-{{% card link="/tutorials/services/basic-color-detection" %}}
+{{% card link="/how-tos/detect-color/" %}}
 {{< /cards >}}
