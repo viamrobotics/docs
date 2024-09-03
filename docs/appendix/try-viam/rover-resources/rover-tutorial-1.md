@@ -262,7 +262,7 @@ After you have configured your rover, follow one of these tutorials:
 
 {{< cards >}}
 {{% card link="/get-started/drive-rover/" %}}
-{{% card link="/tutorials/services/basic-color-detection/" %}}
+{{% card link="/how-tos/detect-color/" %}}
 {{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}
 

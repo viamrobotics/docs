@@ -4,7 +4,7 @@ linkTitle: "Detect people (4 min)"
 type: "docs"
 tags: ["vision", "data", "services", "quickstart", "ml", "camera", "webcam"]
 no_list: true
-description: "Use Viam's machine learning capabilities to deploy a person detector ML model to your machine."
+description: "Detect people using a webcam and the Viam vision service. Without writing any code, you will be able to view your camera stream, with detection bounding boxes around people."
 images: ["/get-started/quickstarts/vision-card.png"]
 imageAlt: "Person detected in camera stream"
 authors: []
@@ -47,15 +47,37 @@ If you have the following components, you can follow along on your own hardware:
 
 {{% expand "No computer or webcam?" %}}
 No problem.
-Use [Try Viam](https://app.viam.com/try) to borrow a rover online which is already configured with some components to test with.
-If you are using a Try Viam rover **start with Step 4**.
+
+Use [Try Viam](https://app.viam.com/try) to borrow a rover free of cost online.
+The rover already has `viam-server` installed and is configured with some components to test with, including a webcam.
 You may not be able to test using the supplied ML model, as your borrowed rover will generally not be able to see people.
-If that is the case, use the [`color_detector`](/services/vision/color_detector/) vision service to test detecting colors.
+We recommend you follow the [Detect color with a Webcam](/how-tos/detect-color/) guide instead.
+
+Once you have borrowed a rover, go to the **CONFIGURE** tab of the machine, find the cameras and click on the **Test** panel at the bottom of each camera's configuration panel to test the camera stream.
+You should have a front-facing camera and an overhead view of your rover.
+Now you know what the rover can _perveive_.
+
+If your rover is facing a wall, find the base configuration panel and click on its **Test** panel.
+Use the controls to drive your rover to a different location.
+
+Now that you have seen that the cameras on your Try Viam rover work, **continue with Step 4**.
+
+{{< alert title="Tip" color="tip" >}}
+Be aware that if you are running out of time during your rental, you can [extend your rover rental](/appendix/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
+{{< /alert >}}
+
+{{% /expand%}}
+
+{{% expand "Have your own rover?" %}}
+
+If you are running this tutorial on [your own Viam Rover](/appendix/try-viam/rover-resources/), make sure you have [configured your rover](/appendix/try-viam/rover-resources/rover-tutorial-fragments/).
+Go to the **CONFIGURE** tab of the machine, find the camera and click on the **Test** panel at the bottom of the camera's configuration panel to test the camera stream.
+
 {{% /expand%}}
 
 ## Instructions
 
-Follow these instructions to configure your machine and test detections:
+Follow these instructions to configure your machine and test detecting people:
 
 {{%expand "Step 1: Create a new machine" %}}
 

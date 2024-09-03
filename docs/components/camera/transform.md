@@ -420,6 +420,6 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 
 {{< cards >}}
 {{% card link="/services/vision" %}}
-{{% card link="/tutorials/services/basic-color-detection" %}}
+{{% card link="/how-tos/detect-color/" %}}
 {{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}

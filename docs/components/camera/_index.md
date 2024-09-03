@@ -117,7 +117,7 @@ The camera component supports the following methods:
 
 {{< cards >}}
 {{% card link="/services/vision" %}}
-{{% card link="/tutorials/services/basic-color-detection" %}}
+{{% card link="/how-tos/detect-color/" %}}
 {{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}
 

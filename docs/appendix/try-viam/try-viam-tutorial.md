@@ -228,6 +228,6 @@ If you have questions, check out our [FAQ](/appendix/try-viam/reserve-a-rover/) 
 
 {{< cards >}}
 {{% card link="/get-started/drive-rover/" %}}
-{{% card link="/tutorials/services/basic-color-detection/" %}}
+{{% card link="/how-tos/detect-color/" %}}
 {{% card link="/appendix/try-viam/rover-resources/" %}}
 {{< /cards >}}
