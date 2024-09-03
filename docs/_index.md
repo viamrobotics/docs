@@ -48,7 +48,7 @@ carouselscript: true
       </a>
 </div>
 <div class="col hover-card link-with-icon">
-  <a href="how-tos/create-module/" class="noanchor"><div>
+  <a href="how-tos/deploy-packages/" class="noanchor"><div>
     <picture><img src="icons/code-deployment.svg" alt="Code deployment" loading="lazy"></picture>
     <p>Manage and deploy code versions</p></div>
       </a>
