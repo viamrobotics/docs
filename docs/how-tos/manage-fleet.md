@@ -154,7 +154,8 @@ You can also operate machine using the [`viam machines part run`](/cli/#machines
 {{% tablestep link="/configure/#configuration-history" %}}
 **3. Use configuration version history**
 
-The Viam app keeps a record of your configuration changes, allowing you to revert to earlier configurations if needed. To see the history of the configuration of a machine part, click on **History** on the component or machine menu on the CONFIGURE tab.
+The Viam app keeps a record of your configuration changes, allowing you to revert to earlier configurations if needed.
+To see the history of the configuration of a machine part, click on **History** on the **CONFIGURE** tab.
 
 {{<imgproc src="build/configure/history.png" resize="800x" declaredimensions=true alt="Configuration history for a machine part">}}
 
