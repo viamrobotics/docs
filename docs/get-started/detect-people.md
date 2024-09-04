@@ -55,7 +55,7 @@ We recommend you follow the [Detect color with a Webcam](/how-tos/detect-color/)
 
 Once you have borrowed a rover, go to the **CONFIGURE** tab of the machine, find the cameras and click on the **Test** panel at the bottom of each camera's configuration panel to test the camera stream.
 You should have a front-facing camera and an overhead view of your rover.
-Now you know what the rover can _perveive_.
+Now you know what the rover can _perceive_.
 
 If your rover is facing a wall, find the base configuration panel and click on its **Test** panel.
 Use the controls to drive your rover to a different location.

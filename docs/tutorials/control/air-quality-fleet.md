@@ -468,7 +468,7 @@ The following instructions describe how to set up an API key for one location.
 
     ![The location secret with a Copy button next to it.](/tutorials/air-quality-fleet/loc-secret-button.png)
 
-    Copy the **Location ID** and paste it into your code in place of `<LOCATION ID>`, so that that line resembles `const orgID: string = "abcde12345"`.
+    Copy the **Location ID** and paste it into your code in place of `<LOCATION ID>`, so that the line resembles `const orgID: string = "abcde12345"`.
 
 1.  Use the dropdown menu in the upper-right corner of the page to navigate to your organization settings page.
     Copy the **Organization ID** found under **Details** near the top of the page.

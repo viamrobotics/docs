@@ -44,7 +44,7 @@ If you'd like to follow a more detailed tutorial, see [Selectively Capture Data 
 
 {{% /expand%}}
 
-{{% expand "At least one configured sensor. Click to see instructions." %}}
+{{% expand "A configured camera. Click to see instructions." %}}
 
 Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
@@ -114,7 +114,7 @@ In the next part of this guide, you will learn how to filter the data before cap
 
 ## Stop data capture
 
-If this is a test project or if you are continuing this how to to set up filtering, make sure you stop data capture to avoid [incurring fees](https://www.viam.com/product/pricing) for capturing large amounts of test data.
+If this is a test project or if you are continuing this how to set up filtering, make sure you stop data capture to avoid [incurring fees](https://www.viam.com/product/pricing) for capturing large amounts of test data.
 
 In the **Data capture** section of your camera's configuration, toggle the switch to **Off**.
 

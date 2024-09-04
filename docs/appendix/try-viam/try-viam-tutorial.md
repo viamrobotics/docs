@@ -145,7 +145,7 @@ There you can view the configuration for each component in the machine: attribut
 
 ### Board configuration
 
-The [board component](/components/board/) component is the signal wire hub of a machine.
+The [board component](/components/board/) is the signal wire hub of a machine.
 Configuring a board component allows you to control the states of individual GPIO pins to command the electrical signals sent through and received by the board.
 For the Viam Rover, the board component is a Raspberry Pi with **Name** `local`, **Type** `board`, and **Model** `pi`.
 

@@ -569,7 +569,7 @@ Removes a bounding box from an image specified by its BinaryID.
 **Parameters:**
 
 - `bbox_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the bounding box to remove.
-- `binary_id` ([viam.proto.app.data.BinaryID](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): Binary ID of the image to to remove the bounding box from.
+- `binary_id` ([viam.proto.app.data.BinaryID](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): Binary ID of the image to remove the bounding box from.
 
 **Returns:**
 

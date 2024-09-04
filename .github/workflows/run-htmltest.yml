@@ -56,7 +56,7 @@ jobs:
           # For consistency, use the same config file as for local builds
           config: .htmltest.yml
       - name: Archive htmltest results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         # Note: Set ACTIONS_RUNTIME_TOKEN env variable to test with nektos/act
         with:
           name: htmltest-report

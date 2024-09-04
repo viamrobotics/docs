@@ -39,7 +39,7 @@ Add services commonly used with the component.
 
 ## Available models
 
-To use your COMPONENT component, check whether one of the following models supports it.
+To use your <COMPONENT> component, check whether one of the following models supports it.
 
 For configuration information, click on the model name:
 
@@ -97,7 +97,7 @@ import (
 
 ## API
 
-The COMPONENT component supports the following methods:
+The <COMPONENT> component supports the following methods:
 
 _Writing Instructions: Use the method names in the [protobuf](https://github.com/viamrobotics/api/blob/main/component/board/v1/board_grpc.pb.go), not the Python or Go-specific method names._
 _Use an included snippet so you can add it to <file>/program/apis/</file>._

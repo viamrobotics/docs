@@ -126,7 +126,7 @@ See the [guide on querying sensor data](/how-tos/sensor-data-query-with-third-pa
 **1. Install connector to MongoDB data source**
 
 Some visualization clients are able to connect to the Viam MongoDB Atlas Data Federation instance natively, while others require that you install and configure an additional plugin or connector.
-For example, Tableau requires both the [Atlas SQL JDBC Driver](https://www.mongodb.com/try/download/jdbc-driver) as well as the the [Tableau Connector](https://www.mongodb.com/try/download/tableau-connector) in order to successfully connect and access data.
+For example, Tableau requires both the [Atlas SQL JDBC Driver](https://www.mongodb.com/try/download/jdbc-driver) as well as the [Tableau Connector](https://www.mongodb.com/try/download/tableau-connector) in order to successfully connect and access data.
 
 Check with the documentation for your third-party visualization tool to be sure you have the required additional software installed to connect to a MongoDB Atlas Data Federation instance.
 
