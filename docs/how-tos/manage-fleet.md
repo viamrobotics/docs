@@ -52,6 +52,7 @@ In the Viam app, {{< glossary_tooltip term_id="machine" text="machines" >}} are 
 
 These groupings allow you to manage permissions; you can grant a user access to an individual machine, to all the machines in a location, or to everything in an entire organization.
 You choose how to group your machines.
+You cannot move machines to other locations once created.
 
 {{<imgproc src="/fleet/fleet.svg" class="fill aligncenter" resize="800x" style="max-width: 600px" declaredimensions=true alt="Two locations within an organization">}}
 
