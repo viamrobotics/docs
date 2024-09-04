@@ -175,7 +175,7 @@ Restart your Pi using `sudo reboot` to make these changes take effect.
 
 {{% snippet "setup.md" %}}
 
-Then, navigate to the the **CONFIGURE** tab of your new machine's page in the app.
+Then, navigate to the **CONFIGURE** tab of your new machine's page in the app.
 
 First, add your Pi as a [board component](/components/board/):
 

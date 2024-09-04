@@ -14,7 +14,7 @@ no_service: true
 
 Imagine a robotic [arm](/components/arm/) is attached to a table.
 
-Consider one corner of the table the arm is attached to to be the origin of the `world`, `(0, 0, 0)`.
+Consider one corner of the table the arm is attached to be the origin of the `world`, `(0, 0, 0)`.
 Measure from that point to the base of the arm to get the `translation` coordinates.
 
 - Suppose the arm is offset from the corner by 100mm in the positive X direction, and 250mm in the negative Y direction.

@@ -182,8 +182,8 @@ The rover's design allows you to reach the SD card slot at all times, so you can
 ### Connect the wires
 
 {{< alert title="Tip" color="tip" >}}
-To make it easier for you to see which pin is which, you can print out [this Raspberry Pi Leaf](/appendix/try-viam/viam-raspberry-leaf-8.5x11.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
-If you use A4 paper, use this [this Raspberry Pi Leaf](/appendix/try-viam/viam-raspberry-leaf-A4.pdf) instead.
+To make it easier for you to see which pin is which, you can print out this [Raspberry Pi Leaf](/appendix/try-viam/viam-raspberry-leaf-8.5x11.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
+If you use A4 paper, use this [Raspberry Pi Leaf](/appendix/try-viam/viam-raspberry-leaf-A4.pdf) instead.
 
 If you are having trouble punching the pins through, you can pre-punch the pin holes with a pen.
 Only attach the paper when the Pi is unplugged.

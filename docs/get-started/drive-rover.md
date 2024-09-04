@@ -545,7 +545,7 @@ If you have a borrowed Try Viam rover, open a tab and navigate to your machine's
 
 Click on one of the camera panels and toggle the camera stream on so you can observe the rover's movements.
 
-Go back to the `Click me to drive rover in square` button and click the button to run your code and switch back to the the **CONTROL** tab to watch your rover move in a square.
+Go back to the `Click me to drive rover in square` button and click the button to run your code and switch back to the **CONTROL** tab to watch your rover move in a square.
 
 <div class="td-max-width-on-larger-screens">
 {{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square." max-width="400px">}}

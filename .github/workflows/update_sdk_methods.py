@@ -1653,7 +1653,7 @@ def write_markdown(type, names, methods):
     for resource in names:
 
         ## Switch to identify the first method encountered for each resource, to help with
-        ## knowing when we are at the top of the include file, or whether to to double newline
+        ## knowing when we are at the top of the include file, or whether to double newline
         ## between protos:
         is_first_method_in_this_resource = True
 

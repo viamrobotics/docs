@@ -91,8 +91,8 @@ For example, "GPIO 22".
 For example, board pin 38 is the same pin as GPIO pin 20, but when configuring your machine with Viam, you should refer to it as pin `38`.
 
 {{< alert title="Tip" color="tip" >}}
-To make it easier for you to see which pin is which, you can print out [this Raspberry Pi Leaf](/appendix/try-viam/viam-raspberry-leaf-8.5x11.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
-If you use A4 paper, use this [this Raspberry Pi Leaf](/appendix/try-viam/viam-raspberry-leaf-A4.pdf) instead.
+To make it easier for you to see which pin is which, you can print out this [Raspberry Pi Leaf](/appendix/try-viam/viam-raspberry-leaf-8.5x11.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
+If you use A4 paper, use this [Raspberry Pi Leaf](/appendix/try-viam/viam-raspberry-leaf-A4.pdf) instead.
 
 If you are having trouble punching the pins through, you can pre-punch the pin holes with a pen.
 Only attach the paper when the Pi is unplugged.
@@ -308,7 +308,7 @@ The **Code sample** page automatically adds the board import for you, but it doe
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-At the top of your <file>blink.py</file> file, make sure the the following import is included:
+At the top of your <file>blink.py</file> file, make sure the following import is included:
 
 ```python
 from viam.components.board import Board

@@ -85,7 +85,7 @@ Once you share a _nested_ location (sub-location), its parent location cannot be
 
 You can remove any organization except the primary owner from the shared list by clicking the **X** to the right of the location in the shared list.
 
-<!-- location keys are going away and we haven't documented the CLI changes yet that allow you to to create a location level secret.
+<!-- location keys are going away and we haven't documented the CLI changes yet that allow you to create a location level secret.
 #### Share a location using location secret keys
 
 Grant programmatic access to your location by sharing a location secret key.

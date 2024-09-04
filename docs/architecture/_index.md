@@ -163,7 +163,7 @@ Now, imagine you want to change to a different model of temperature sensor from 
 
 ## Complex machines with multiple parts
 
-In Viam, a _{{< glossary_tooltip term_id="part" text="part" >}}_ is an organizational concept consisting of one instance of `viam-server` (or `viam-micro-server`) running on a SBC or other computer, and all the hardware and software that that `viam-server` instance controls.
+In Viam, a _{{< glossary_tooltip term_id="part" text="part" >}}_ is an organizational concept consisting of one instance of `viam-server` (or `viam-micro-server`) running on a SBC or other computer, and all the hardware and software that the `viam-server` instance controls.
 
 Many simple {{< glossary_tooltip term_id="machine" text="machines" >}} consist of only one part: just one computer running `viam-server` with configured components and services.
 If you have a more complex situation with multiple computers and associated hardware working together, you have two options for organization:
