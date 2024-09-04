@@ -318,7 +318,7 @@ class _HomeScreenState extends State<HomeScreen> {
     try {
       _viam = await Viam.withApiKey(dotenv.env['API_KEY_ID']?? '', dotenv.env['API_KEY']?? '');
       _organization = (await _viam.appClient.listOrganizations()).first;
-      _locations = await _viam.appClient.listLocations(_organization.id);
+      _locations = await _viam.appClient.listLocations(_organization);
 
       // in Flutter, setState tells the UI to rebuild the widgets whose state has changed,
       // this is how you change from showing a loading screen to a list of values
@@ -522,7 +522,7 @@ class _LocationScreenState extends State<LocationScreen> {
   Future<void> _initState() async {
     // Using the authenticated [Viam] client received as a parameter,
     // you can obtain a list of smart machines (robots) within this location.
-    final robots = await widget._viam.appClient.listRobots(widget.location.id);
+    final robots = await widget._viam.appClient.listRobots(widget.location);
     setState(() {
       // Once you have the list of robots, you can set the state.
       this.robots = robots;
@@ -613,8 +613,10 @@ class _RobotScreenState extends State<RobotScreen> {
   void dispose() {
     // You should always close the [RobotClient] to free up resources.
     // Calling [RobotClient.close] will clean up any tasks and
-    // resources created by Viam.
-    client.close();
+    // resources created by Viam
+    if (_isLoading == false) {
+      client.close();
+    }
     super.dispose();
   }
 
@@ -712,7 +714,7 @@ class _HomeScreenState extends State<HomeScreen> {
     try {
       _viam = await Viam.withApiKey(dotenv.env['API_KEY_ID']?? '', dotenv.env['API_KEY']?? '');
       _organization = (await _viam.appClient.listOrganizations()).first;
-      _locations = await _viam.appClient.listLocations(_organization.id);
+      _locations = await _viam.appClient.listLocations(_organization);
 
       // In Flutter, setState tells the UI to rebuild the widgets whose state has changed,
       // this is how you change from showing a loading screen to a list of values

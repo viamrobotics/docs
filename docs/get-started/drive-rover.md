@@ -646,7 +646,9 @@ class _RobotScreenState extends State<RobotScreen> {
     // You should always close the [RobotClient] to free up resources.
     // Calling [RobotClient.close] will clean up any tasks and
     // resources created by Viam.
-    client.close();
+    if (_isLoading == false) {
+      client.close();
+    }
     super.dispose();
   }
 
