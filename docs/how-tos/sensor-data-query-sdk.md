@@ -42,14 +42,6 @@ Follow the guide to [capture sensor data](/how-tos/collect-sensor-data/).
 
 {{% /expand%}}
 
-{{% expand "The Viam CLI to set up data query. Click to see instructions." %}}
-
-You must have the Viam CLI installed to configure querying with third-party tools.
-
-{{< readfile "/static/include/how-to/install-cli.md" >}}
-
-{{% /expand%}}
-
 ## Set up the Python SDK
 
 {{< table >}}
@@ -81,17 +73,11 @@ pip install bson
 ## Query data with the Python SDK
 
 {{< table >}}
-{{% tablestep link="/cli/#organizations"%}}
-**1. Create an API key**
+{{% tablestep link="/cloud/organizations/" %}}
+**1. Get an API key**
 
-To access your machines using the Python SDK, you must use an API key:
-
-```sh {class="command-line" data-prompt="$"}
-viam organizations api-key create --org-id=<org-id> --name=my-api-key
-```
-
-This command uses the Viam CLI.
-You can use [`viam organizations list`](/cli/#organizations) to retrieve your organization's ID.
+To access your machines using the Python SDK, you must use an API key.
+You can get an organization API key from the organization's **Settings** accessible in the top right of the navigation bar in the [Viam app](https://app.viam.com).
 
 {{% /tablestep %}}
 {{% tablestep link="/appendix/apis/data-client/"%}}

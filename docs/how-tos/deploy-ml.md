@@ -60,7 +60,6 @@ Once you have enough images of the objects you'd like to classify, use the inter
 If you want to train an image classifier, use image tags.
 For an object detector, use bounding boxes.
 
-<br style="clear: both;">
 <br>
 
 {{< expand "Create image tags (for an image classifier)" >}}
@@ -144,7 +143,7 @@ Click **Next steps**.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**Select the details for your ML model**
+**2. Select the details for your ML model**
 
 1. Enter a name or use the suggested name for your new model.
 1. Select a **Model Type** and one or more labels to train on. Depending on the training script you've chose, you may have a number of these options:
@@ -158,6 +157,7 @@ Click **Next steps**.
 
 {{% /tablestep %}}
 {{% tablestep %}}
+**3. Wait for your model to train**
 
 The model now starts training and you can follow its process in the **Training** section of the **Models** page.
 
@@ -165,6 +165,24 @@ Once the model has finished training, it becomes visible in the **Models** secti
 You will receive an email when your model finishes training.
 
 ![The trained model](/services/ml/petfeeder-model.png)
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**4. Debug your training job**
+
+If your training job failed you can check your job's logs with the [CLI](/cli/).
+
+You can obtain the job's id by listing the jobs:
+
+```sh {class="command-line" data-prompt="$"}
+viam train list --org-id=<INSERT ORG ID> --job-status=unspecified
+```
+
+Then use the job id to get your training job's logs:
+
+```sh {class="command-line" data-prompt="$"}
+viam train logs --job-id=<JOB ID>
+```
 
 {{% /tablestep %}}
 {{< /table >}}
