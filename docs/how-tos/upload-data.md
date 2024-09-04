@@ -139,37 +139,103 @@ Use the `file_upload_from_path` method to upload your data, depending on whether
 {{% tab name="Upload a single file" %}}
 
 To upload just one file, make a call to `file_upload_from_path` according to [the data client API documentation](/appendix/apis/data-client/#fileuploadfrompath).
-The following example code could be placed inside the `main()` function, or inside a function called from `main()`:
+
+{{< expand "Click this to see example code" >}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-await data_client.file_upload_from_path(
-  # The ID of the machine part the file should be associated with
-  part_id="abcdefg-1234-abcd-5678-987654321xyzabc",
-  # Any tags you want to apply to this file
-  tags=["cat", "animals", "brown"],
-  # Path to the file
-  filepath="/Users/Artoo/my_cat_photos/brown-cat-on-a-couch.png"
-)
+import asyncio
+
+from viam.rpc.dial import DialOptions, Credentials
+from viam.app.viam_client import ViamClient
+
+
+async def connect() -> ViamClient:
+    dial_options = DialOptions(
+      credentials=Credentials(
+        type="api-key",
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
+        payload='<API-KEY>',
+      ),
+      # Replace "<API-KEY-ID>" (including brackets) with your machine's
+      # API key ID
+      auth_entity='<API-KEY-ID>'
+    )
+    return await ViamClient.create_from_dial_options(dial_options)
+
+
+async def main():
+    # Make a ViamClient
+    viam_client = await connect()
+    # Instantiate a DataClient to run data client API methods on
+    data_client = viam_client.data_client
+    await data_client.file_upload_from_path(
+      # The ID of the machine part the file should be associated with
+      part_id="abcdefg-1234-abcd-5678-987654321xyzabc",
+      # Any tags you want to apply to this file
+      tags=["cat", "animals", "brown"],
+      # Path to the file
+      filepath="/Users/Artoo/my_cat_photos/brown-cat-on-a-couch.png"
+    )
+
+    viam_client.close()
+
+if __name__ == "__main__":
+    asyncio.run(main())
 ```
+
+{{< /expand >}}
 
 {{% /tab %}}
 {{% tab name="Upload all files in a directory" %}}
 
-To upload all the files in a directory, you can use the [`file_upload_from_path`](/appendix/apis/data-client/#fileuploadfrompath) method inside a `for` loop, for example:
+To upload all the files in a directory, you can use the [`file_upload_from_path`](/appendix/apis/data-client/#fileuploadfrompath) method inside a `for` loop.
+
+{{< expand "Click this to see example code" >}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-import os  # Add this package at the top of your program
-# with your other imports
+import asyncio
+import os
 
-my_data_directory = "/Users/Artoo/my_cat_photos"
+from viam.rpc.dial import DialOptions, Credentials
+from viam.app.viam_client import ViamClient
 
-for file_name in os.listdir(my_data_directory):
-    await data_client.file_upload_from_path(
-      part_id="abcdefg-1234-abcd-5678-987654321xyzabc",
-      tags=["cat", "animals", "brown"],
-      filepath=os.path.join(my_data_directory, file_name)
+
+async def connect() -> ViamClient:
+    dial_options = DialOptions(
+      credentials=Credentials(
+        type="api-key",
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
+        payload='<API-KEY>',
+      ),
+      # Replace "<API-KEY-ID>" (including brackets) with your machine's
+      # API key ID
+      auth_entity='<API-KEY-ID>'
     )
+    return await ViamClient.create_from_dial_options(dial_options)
+
+
+async def main():
+    # Make a ViamClient
+    viam_client = await connect()
+    # Instantiate a DataClient to run data client API methods on
+    data_client = viam_client.data_client
+    # Specify directory from which to upload data
+    my_data_directory = "/Users/Artoo/my_cat_photos"
+
+    for file_name in os.listdir(my_data_directory):
+        await data_client.file_upload_from_path(
+          part_id="abcdefg-1234-abcd-5678-987654321xyzabc",
+          tags=["cat", "animals", "brown"],
+          filepath=os.path.join(my_data_directory, file_name)
+        )
+
+    viam_client.close()
+
+if __name__ == "__main__":
+    asyncio.run(main())
 ```
+
+{{< /expand >}}
 
 {{% /tab %}}
 {{< /tabs >}}
