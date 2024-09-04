@@ -88,7 +88,7 @@ To add a sub-location:
 
 1. Add a new location using the same **New location** interface.
 
-1. At the bottom of the location’s page, use the New Parent Location dropdown to choose a parent location.
+1. At the bottom of the location’s page, use the **New parent location** dropdown to choose a parent location.
    Click **Change**.
 
    {{<imgproc class="aligncenter" src="/tutorials/air-quality-fleet/locations-done.png" resize="x900" declaredimensions=true alt="The New York Office fleet page. The left Locations navigation panel lists Antonia's Home and RobotsRUs, with New York Office and Oregon Office nested inside RobotsRUs." >}}
