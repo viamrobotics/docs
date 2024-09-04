@@ -674,12 +674,16 @@ To sync your captured data with the cloud, [configure cloud sync](/services/data
 If you have synced data, such as [sensor](/components/sensor/) readings, you can [query that data with SQL or MQL](/how-tos/sensor-data-query-with-third-party-tools/) from the Viam app or a MQL-compatible client.
 If you have synced images, you can use those images to [train machine learning models](/how-tos/deploy-ml/) within the Viam app.
 
-For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).
-
-To capture performance metric data for machines, see [How to monitor machine performance metrics](/how-tos/performance-metrics/).
+For comprehensive guides on using data capture and synchronization together with the ML model service, see:
 
 {{< cards >}}
-{{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
+{{% card link="/how-tos/image-data/" %}}
+{{% card link="/how-tos/deploy-ml/" %}}
+{{< /cards >}}
+
+To capture performance metric data for machines, filter, or visualize data, see:
+
+{{< cards >}}
 {{% card link="/how-tos/performance-metrics/" %}}
 {{% card link="/tutorials/projects/filtered-camera/" %}}
 {{% card link="/tutorials/control/air-quality-fleet/" %}}

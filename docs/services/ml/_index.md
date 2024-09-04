@@ -52,12 +52,19 @@ For example, the [Computer Vision](/services/vision/mlmodel/) `mlmodel` service,
 As a detector, the service uses these inferences to interpret image data from images on your computer or a [camera](/components/camera/), drawing bounding boxes around objects.
 As a classifier, the service returns class labels and confidence score based off the [inferences](/services/ml/deploy/#infer) the underlying ML model makes from image data.
 
-## Tutorials
+## Next steps
 
-Follow one of these tutorials to see ML models in action:
+For comprehensive guides on using data capture and synchronization together with the ML model service, see:
 
 {{< cards >}}
-{{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
+{{% card link="/how-tos/image-data/" %}}
+{{% card link="/how-tos/deploy-ml/" %}}
+{{< /cards >}}
+
+You can also follow one of these tutorials to see ML models in action:
+
+{{< cards >}}
 {{% card link="/tutorials/projects/helmet/" %}}
+{{% card link="/tutorials/services/color-detection-scuttle/" %}}
 {{% card link="/tutorials/projects/integrating-viam-with-openai/" customDescription="Add object detection, speech recognition, natural language processing, and speech synthesis capabilities to a machine." %}}
 {{< /cards >}}

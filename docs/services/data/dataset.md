@@ -33,6 +33,7 @@ You label the images in your dataset with bounding boxes or image tags, dependin
 
 - **Bounding boxes** are used to train [object detection models](/services/vision/#detections).
 - **Image tags** are used to train [image classification models](/services/vision/#classifications).
+  Tag names support alphanumeric characters, underscores, and hyphens.
 
 ## API
 

@@ -99,7 +99,7 @@ Use the ML model service to deploy a machine learning model to your machine:
 Follow one of these tutorials to see ML models in action:
 
 {{< cards >}}
-{{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
 {{% card link="/tutorials/projects/helmet/" %}}
+{{% card link="/tutorials/services/color-detection-scuttle/" %}}
 {{% card link="/tutorials/projects/integrating-viam-with-openai/" customDescription="Add object detection, speech recognition, natural language processing, and speech synthesis capabilities to a machine." %}}
 {{< /cards >}}

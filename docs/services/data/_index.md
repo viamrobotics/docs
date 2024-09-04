@@ -157,8 +157,9 @@ Go to your machine's **CONNECT** tab on the [Viam app](https://app.viam.com) and
 
 You can use data synced to the cloud to [train machine learning models and deploy them to your machines](/how-tos/deploy-ml/) from the Viam app.
 
-For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see:
+For comprehensive guides on using data capture and synchronization together with the ML model service, see:
 
 {{< cards >}}
-{{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
+{{% card link="/how-tos/image-data/" %}}
+{{% card link="/how-tos/deploy-ml/" %}}
 {{< /cards >}}
