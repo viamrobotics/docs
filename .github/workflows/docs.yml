@@ -42,31 +42,31 @@ jobs:
           path: ./public
 
       - name: Upload tutorials search file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: tutorials-file
           path: ./public/tutorials/typesense.json
 
       - name: Upload quickstarts search file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: quickstarts-file
           path: ./public/get-started/typesense.json
 
       - name: Upload how-tos search file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: howtos-file
           path: ./public/how-tos/typesense.json
 
       - name: Upload components models file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: components-models-file
           path: ./public/components/typesense.json
 
       - name: Upload services models file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: services-models-file
           path: ./public/services/typesense.json
@@ -120,17 +120,17 @@ jobs:
           python-version: "3.9"
           cache: "pip" # caching pip dependencies
       - name: Download the quickstarts file
-        uses: actions/download-artifact@v4.1.7
+        uses: actions/download-artifact@v4
         with:
           name: quickstarts-file
           path: "quickstarts"
       - name: Download the how-tos file
-        uses: actions/download-artifact@v4.1.7
+        uses: actions/download-artifact@v4
         with:
           name: howtos-file
           path: "how-tos"
       - name: Download the tutorials file
-        uses: actions/download-artifact@v4.1.7
+        uses: actions/download-artifact@v4
         with:
           name: tutorials-file
           path: "tutorials"
@@ -152,12 +152,12 @@ jobs:
           python-version: "3.9"
           cache: "pip" # caching pip dependencies
       - name: Download the components models file
-        uses: actions/download-artifact@v4.1.7
+        uses: actions/download-artifact@v4
         with:
           name: components-models-file
           path: "components"
       - name: Download the services models file
-        uses: actions/download-artifact@v4.1.7
+        uses: actions/download-artifact@v4
         with:
           name: services-models-file
           path: "services"
