@@ -28,8 +28,8 @@ You can grant users different levels of access to individual machines or to grou
 {{% alert title="In this page" color="info" %}}
 
 1. [Organize your machines](#organize-your-machines): Learn about organizations and locations
-1. [Manage Access with Role-Based Access Control](#manage-access-with-role-based-access-control)
-1. [Monitoring and Debugging](/how-tos/manage-fleet/#monitoring-and-debugging)
+1. [Manage access with role-based access control](#manage-access-with-role-based-access-control)
+1. [Monitoring and debugging](/how-tos/manage-fleet/#monitoring-and-debugging)
 
 {{% /alert %}}
 
@@ -117,7 +117,7 @@ Users with owner access to a location or organization, can collaborate on the [m
 {{% tablestep link="/installation/" %}}
 **2. Use API keys**
 
-You and anyone with owner access, can also create API keys for programmatic access to machines, locations, or organizations.
+You (and anyone with owner access) can create API keys for programmatic access to machines, locations, or organizations.
 
 Click on the organization dropdown in the top navigation bar and click on **Settings** to create and manage API keys.
 
@@ -126,9 +126,9 @@ Click on the organization dropdown in the top navigation bar and click on **Sett
 {{% /tablestep %}}
 {{< /table >}}
 
-## Monitoring and Debugging
+## Monitoring and debugging
 
-Viam provides you with the ability to access each machine, check its logs, check recent changes, and roll back changes if needed.
+Viam allows you to access each machine, check its logs, check recent changes, and roll back changes if needed.
 
 {{< table >}}
 {{% tablestep link="/cloud/machines/#logs" %}}
@@ -148,7 +148,7 @@ Using the [Viam app](https://app.viam.com), you can remotely operate machines fr
 
 {{<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="Using the control tab" max-width="800px">}}
 
-You can also operate machine using the [`viam machines part run`](/cli/#machines-alias-robots) or [Viam's APIs](/appendix/apis/), or the [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app).
+You can also operate machine using the [`viam machines part run`](/cli/#machines-alias-robots) CLI command or [Viam's APIs](/appendix/apis/), or the [Viam mobile app](/fleet/control/#control-interface-in-the-viam-mobile-app).
 
 {{% /tablestep %}}
 {{% tablestep link="/configure/#configuration-history" %}}
@@ -170,7 +170,7 @@ If you haven't configured your machines yet, start there and explore provisionin
 {{% card link="/how-tos/provision-setup/" %}}
 {{< /cards >}}
 
-With your machines set up on Viam, you can then dive into how you can manage data across all your machines, as well as use Machine Learning, SLAM, and other platform capabilities:
+With your machines set up on Viam, you can now manage data across all your machines, as well as use machine learning, SLAM, and other platform capabilities:
 
 {{< cards >}}
 {{% card link="/how-tos/collect-sensor-data/" %}}
