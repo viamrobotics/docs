@@ -37,9 +37,9 @@ Follow the instructions to [Create a dataset and label data](/how-tos/deploy-ml/
 
 {{% /expand%}}
 
-{{% expand "The Viam CLI to set up data query. Click to see instructions." %}}
+{{% expand "The Viam CLI. Click to see instructions." %}}
 
-You must have the Viam CLI installed to configure querying with third-party tools.
+You must have the Viam CLI installed to upload training scripts to the registry.
 
 {{< readfile "/static/include/how-to/install-cli.md" >}}
 
@@ -499,10 +499,14 @@ Once uploaded, you can view the script by navigating to the [registry's **Traini
 
 After uploading the training script, you can run it by submitting a training job through the Viam app or using the Viam CLI or [ML Training client API](/appendix/apis/ml-training-client/#submittrainingjob).
 
-{{< tabs >}}
-{{% tab name="Viam app" %}}
+{{< table >}}
+{{% tablestep %}}
+**1. Create the training job**
 
-{{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Train models">}}
+{{< tabs >}}
+{{% tab name="Viam app" min-height="150px" %}}
+
+{{<imgproc src="/services/ml/train.svg" class="fill alignleft" style="max-width: 200px" declaredimensions=true alt="Train models">}}
 
 In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train on.
 
@@ -519,19 +523,26 @@ For example:
 {{% tab name="from-registry" %}}
 
 ```sh {class="command-line" data-prompt="$"}
-viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-version="2" --version="1" --script-name="mycompany:MyCustomTrainingScript"
+viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> \
+  --org-id=<INSERT ORG ID> --model-name=MyRegistryModel \
+  --model-version=2 --version=1 \
+  --script-name=mycompany:MyCustomTrainingScript
 ```
 
-This command submits a training job to the previously uploaded `"MyCustomTrainingScript"` with another input dataset, which trains `"MyRegistryModel"` and publishes that to the registry.
+This command submits a training job to the previously uploaded `MyCustomTrainingScript` with another input dataset, which trains `MyRegistryModel` and publishes that to the registry.
 
 {{% /tab %}}
 {{% tab name="with-upload" %}}
 
 ```sh {class="command-line" data-prompt="$"}
-viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name="MyRegistryModel" --model-type="single_label_classification" --model-version="2" --version="1" --path=<path-to-tar.gz> --script-name="mycompany:MyCustomTrainingScript"
+viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> \
+  --model-org-id=<INSERT ORG ID> --model-name=MyRegistryModel \
+  --model-type=single_label_classification --model-version=2 \
+  --version=1 --path=<path-to-tar.gz> \
+  --script-name=mycompany:MyCustomTrainingScript
 ```
 
-This command uploads a script called `"MyCustomTrainingScript"` to the registry under the specified organization and also submits a training job to that script with the input dataset, which generates a new version of the single-classification ML model `"MyRegistryModel"` and publishes that to the registry.
+This command uploads a script called `MyCustomTrainingScript` to the registry under the specified organization and also submits a training job to that script with the input dataset, which generates a new version of the single-classification ML model `MyRegistryModel` and publishes that to the registry.
 
 To find the dataset ID of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) of the **DATA** tab on the Viam app and select a dataset.
 Click **...** in the left-hand menu and click **Copy dataset ID**.
@@ -545,9 +556,34 @@ Find **Organization ID** and click the copy icon.
 {{% /tab %}}
 {{< /tabs >}}
 
+{{% /tablestep %}}
+{{% tablestep %}}
+**2. Check on training job process**
+
 Once submitted, you can view your training job on the **DATA** page's [**MODELS** tab](https://app.viam.com/data/models).
 
 You will receive an email when your training job completed.
+
+You can also list your training jobs and their status from the CLI:
+
+```sh {class="command-line" data-prompt="$"}
+viam train list --org-id=<INSERT ORG ID> --job-status=unspecified
+```
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**3. Debug your training job**
+
+If your training job failed you can check your job's logs with the CLI:
+
+```sh {class="command-line" data-prompt="$"}
+viam train logs --job-id=<JOB ID>
+```
+
+You can obtain the job's id by listing the jobs as in step 2.
+
+{{% /tablestep %}}
+{{< /table >}}
 
 ## Next steps
 
