@@ -245,6 +245,198 @@ func main() {
 ```
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+Flutter code must be launched from inside a running Flutter application.
+To get started programming your machine with Flutter, follow the instructions to [Build a Flutter App that Integrates with Viam](/tutorials/control/flutter-app/).
+Then return to this page to add motor control to your app.
+
+Add a new file to your application in <file>/lib</file> called <file>motor_screen.dart</file>.
+Paste this code into your file:
+
+```dart {class="line-numbers linkable-line-numbers"}
+/// This is the MotorScreen, which allows us to control a [Motor].
+/// This particular example uses both the Viam-provided [ViamMotorWidget],
+/// while also providing an example of how you could create your own
+/// widgets to control a resource.
+library;
+
+import 'package:flutter/material.dart';
+import 'package:viam_sdk/viam_sdk.dart';
+import 'package:viam_sdk/widgets.dart';
+
+class MotorScreen extends StatelessWidget {
+  final Motor motor;
+
+  const MotorScreen(this.motor, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(motor.name)),
+      body: Column(children: [
+        // The first widget in our column will be the one provided
+        // by the Viam SDK.
+        ViamMotorWidget(motor: motor),
+        const SizedBox(height: 10), // Padding between widgets
+
+        // Here we have 2 buttons that control the [Motor]:
+        // Either go backward or forward for 10 revolutions.
+        // The [Motor] resource provides many control functions, but here
+        // we are using the [Motor.goFor] method.
+        //
+        // You can extrapolate this to other Viam resources.
+        // For example, you could make the onPressed function call
+        // [Gripper.open] on a gripper, or [Sensor.readings] on a Sensor.
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          ElevatedButton(
+            onPressed: () => {motor.goFor(100, -10)},
+            style: ElevatedButton.styleFrom(
+            minimumSize: Size(80, 20), // Adjusts width and height of the button
+            padding: EdgeInsets.symmetric(horizontal: 4, vertical: 6), // Adjusts padding inside the button
+          ),
+            child: const Text('Go Backwards 10 Revolutions', textAlign: TextAlign.center),
+          ),
+          const SizedBox(width: 16), // Padding between widgets
+          ElevatedButton(
+            onPressed: () => {motor.goFor(100, 10)},
+            style: ElevatedButton.styleFrom(
+            minimumSize: Size(80, 20), // Adjusts width and height of the button
+            padding: EdgeInsets.symmetric(horizontal: 4, vertical: 6), // Adjusts padding inside the button
+          ),
+            child: const Text('Go Forwards 10 Revolutions', textAlign: TextAlign.center),
+          ),
+        ]),
+      ]),
+    );
+  }
+}
+```
+
+This code creates a screen with a power widget to adjust the power and two buttons that, when pressed, call on the `goFor()` method to make the motor either go forwards 10 revolutions or go backwards 10 revolutions.
+
+Then, replace the contents of <file>robot_screen.dart</file> with the following file, or add the highlighted lines of code to your program in the locations indicated:
+
+```dart {class="line-numbers linkable-line-numbers" data-line="9, 73-85, 99-102"}
+/// This is the screen that shows the resources available on a robot (or smart machine).
+/// It takes in a Viam app client instance, as well as a robot client.
+/// It then uses the Viam client instance to create a connection to that robot client.
+/// Once the connection is established, you can view the resources available
+/// and send commands to them.
+library;
+
+import 'package:flutter/material.dart';
+import 'motor_screen.dart';
+import 'package:viam_sdk/protos/app/app.dart';
+import 'package:viam_sdk/viam_sdk.dart';
+
+class RobotScreen extends StatefulWidget {
+  final Viam _viam;
+  final Robot robot;
+
+  const RobotScreen(this._viam, this.robot, {super.key});
+
+  @override
+  State<RobotScreen> createState() => _RobotScreenState();
+}
+
+class _RobotScreenState extends State<RobotScreen> {
+  /// Similar to previous screens, start with [_isLoading] to true.
+  bool _isLoading = true;
+
+  /// This is the [RobotClient], which allows you to access
+  /// all the resources of a Viam Smart Machine.
+  /// This differs from the [Robot] provided to us in the widget constructor
+  /// in that the [RobotClient] contains a direct connection to the Smart Machine
+  /// and its resources. The [Robot] object simply contains information about
+  /// the Smart Machine, but is not actually connected to the machine itself.
+  ///
+  /// This is initialized late because it requires an asynchronous
+  /// network call to establish the connection.
+  late RobotClient client;
+
+  @override
+  void initState() {
+    super.initState();
+    // Call our own _initState method to initialize our state.
+    _initState();
+  }
+
+  @override
+  void dispose() {
+    // You should always close the [RobotClient] to free up resources.
+    // Calling [RobotClient.close] will clean up any tasks and
+    // resources created by Viam.
+    client.close();
+    super.dispose();
+  }
+
+  /// This method will get called when the widget initializes its state.
+  /// It exists outside the overridden [initState] function since it's async.
+  Future<void> _initState() async {
+    // Using the authenticated [Viam] the received as a parameter,
+    // the app can obtain a connection to the Robot.
+    // There is a helpful convenience method on the [Viam] instance for this.
+    final robotClient = await widget._viam.getRobotClient(widget.robot);
+    setState(() {
+      client = robotClient;
+      _isLoading = false;
+    });
+  }
+
+  /// A computed variable that returns the available [ResourceName]s of
+  /// this robot in an alphabetically sorted list.
+  List<ResourceName> get _sortedResourceNames {
+    return client.resourceNames..sort((a, b) => a.name.compareTo(b.name));
+  }
+
+  bool _isNavigable(ResourceName rn) {
+    if (rn.subtype == Motor.subtype.resourceSubtype) {
+      return true;
+    }
+    return false;
+  }
+
+  void _navigate(ResourceName rn) {
+    if (rn.subtype == Motor.subtype.resourceSubtype) {
+      final motor = Motor.fromRobot(client, rn.name);
+      Navigator.of(context).push(MaterialPageRoute(builder: (_) => MotorScreen(motor)));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(widget.robot.name)),
+        body: _isLoading
+            ? const Center(child: CircularProgressIndicator.adaptive())
+            : ListView.builder(
+                itemCount: client.resourceNames.length,
+                itemBuilder: (_, index) {
+                  final resourceName = _sortedResourceNames[index];
+                  return ListTile(
+                    title: Text(resourceName.name),
+                    subtitle: Text(
+                        '${resourceName.namespace}:${resourceName.type}:${resourceName.subtype}'),
+                    onTap: () => _navigate(resourceName),
+                    trailing: _isNavigable(resourceName) ? Icon(Icons.chevron_right) : SizedBox.shrink(),
+                  );
+                }));
+  }
+}
+```
+
+This imports the <file>motor_screen.dart</file> file into the program and adds logic to check if a {{< glossary_tooltip term_id="resource" text="resource" >}} is "navigable", or, has a screen made for it.
+Since you added a screen for motor, motor is a navigable resource.
+
+To navigate to the motor screen, save your code and launch your simulator.
+Navigate to the robot screen of your (live) machine with a motor resource configured, and see the resource control interface displayed:
+
+{{<imgproc src="/get-started/quickstarts/motor-screen.png" resize="500x" declaredimensions=true alt="iOS simulator of a motor displayed">}}
+
+You can adjust the toggle to change the power of your motor or press the buttons to make it revolve forwards and backwards.
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 <file>package.json</file>:
