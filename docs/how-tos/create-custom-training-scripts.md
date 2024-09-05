@@ -588,6 +588,5 @@ You can obtain the job's id by listing the jobs as in step 2.
 ## Next steps
 
 {{< cards >}}
-{{% card link="/services/ml/deploy/" %}}
-{{% card link="/services/vision/mlmodel/" %}}
+{{% card link="/how-tos/deploy-ml/" %}}
 {{< /cards >}}
