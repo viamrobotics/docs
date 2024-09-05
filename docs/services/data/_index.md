@@ -76,6 +76,8 @@ Experience streamlined data handling with advanced querying, viewing, and filter
 
 Make SQL or MQL queries on synced sensor data, accessible through the Viam app and MQL-compatible clients.
 
+<!-- markdownlint-disable-file MD034 -->
+
 {{% /manualcard %}}
 {{% manualcard link="https://app.viam.com/data/view" %}}
 

@@ -232,7 +232,7 @@ Now that you have collected image data, you can [train new computer vision model
 
 {{< cards >}}
 {{% card link="/how-tos/deploy-ml/" %}}
-{{% card link="https://docs.viam.com/appendix/apis/data-client/" %}}
+{{% card link="/appendix/apis/data-client/" %}}
 {{< /cards >}}
 
 To see image data filtering in action, check out these tutorials:

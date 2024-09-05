@@ -139,7 +139,7 @@ For best results:
 Once you have enough images captured and synced to the Viam app, add those images to a new dataset.
 A [dataset](/services/data/dataset/) allows you to conveniently view, work with, and train an ML model on a collection of images.
 
-1. In the [Viam app](https://app.viam.com), navigate to the [**DATA**](/services/data/view/) tab to view your captured images.
+1. In the [Viam app](https://app.viam.com), navigate to the [**DATA**]([/services/data/view/](https://app.viam.com/data/view)) tab to view your captured images.
 1. Select an image you want to use in your ML model.
 1. In the **Actions** pane on the right-hand side, enter a new dataset name under **Datasets**, then press return.
 1. Repeat the steps above to add more images to your dataset, until you have enough to train an ML model on.
