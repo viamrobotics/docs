@@ -6,6 +6,7 @@ weight: 100
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 icon: true
+level: "Beginner"
 images: ["/services/icons/data-folder.svg"]
 aliases:
   - /data/upload/
