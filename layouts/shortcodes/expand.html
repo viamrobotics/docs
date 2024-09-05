@@ -11,6 +11,6 @@
     </span>
   </summary>
   <div class="expand-content">
-    {{.Inner | markdownify}}
+    {{ $.Inner | markdownify | safeHTML }}
   </div>
 </details>

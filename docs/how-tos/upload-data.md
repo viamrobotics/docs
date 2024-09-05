@@ -124,21 +124,21 @@ pip install viam-sdk
 ### Instructions
 
 {{< table >}}
-{{% tablestep link="/appendix/apis/data-client/" %}}
-**1. Write connection code**
+{{% tablestep link="/appendix/apis/data-client/#establish-a-connection" %}}
+**1. Get API key**
 
-Create a Python script file in a directory of your choice and [add code to establish a connection](/appendix/apis/data-client/#establish-a-connection) from your computer to your [Viam app](https://app.viam.com) {{< glossary_tooltip term_id="location" text="location" >}} or individual {{< glossary_tooltip term_id="part" text="machine part" >}}.
+Go to your organization's setting page and create an API key for your individual {{< glossary_tooltip term_id="part" text="machine part" >}}, {{< glossary_tooltip term_id="part" text="machine" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="organization" text="organization" >}}.
 
 {{% /tablestep %}}
 {{% tablestep link="/appendix/apis/data-client/" %}}
 **2. Add a `file_upload_from_path` API call**
 
-Use the `file_upload_from_path` method to upload your data, depending on whether you are uploading one or multiple files:
+Create a Python script and use the `file_upload_from_path` method to upload your data, depending on whether you are uploading one or multiple files:
 
 {{< tabs >}}
-{{% tab name="Upload a single file" %}}
+{{< tab name="Upload a single file" >}}
 
-To upload just one file, make a call to `file_upload_from_path` according to [the data client API documentation](/appendix/apis/data-client/#fileuploadfrompath).
+To upload just one file, make a call to [`file_upload_from_path`](/appendix/apis/data-client/#fileuploadfrompath).
 
 {{< expand "Click this to see example code" >}}
 
@@ -186,7 +186,7 @@ if __name__ == "__main__":
 {{< /expand >}}
 
 {{% /tab %}}
-{{% tab name="Upload all files in a directory" %}}
+{{< tab name="Upload all files in a directory" >}}
 
 To upload all the files in a directory, you can use the [`file_upload_from_path`](/appendix/apis/data-client/#fileuploadfrompath) method inside a `for` loop.
 
