@@ -21,8 +21,8 @@
 	{{ else }}
 <div id="{{ $id }}" class="tab-pane" role="tabpanel" aria-labelledby="{{ $id }}" style="min-height: {{ .height }}">
 	{{ end }}
-		{{- with .content -}}
-			{{- . -}}
+		{{ with .content }}
+{{ . }}
 		{{- else -}}
 			{{- if eq $.Page.BundleType "leaf" -}}
 				{{- /* find the file somewhere inside the bundle. Note the use of double asterisk */ -}}

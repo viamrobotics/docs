@@ -92,6 +92,13 @@ Label data for management and machine learning, with dynamic datasets that chang
 Export data with the Viam CLI and download your data for offline access.
 
 {{% /manualcard %}}
+{{% manualcard link="/how-tos/upload-data/" %}}
+
+### Upload a batch of data
+
+Upload data to the Viam app from your local computer or mobile device using the data client API, Viam CLI, or Viam mobile app.
+
+{{% /manualcard %}}
 {{< /cards >}}
 
 #### Used with
