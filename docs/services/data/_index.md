@@ -14,6 +14,12 @@ aliases:
   - "/data-management/"
   - "/services/data/"
   - "/data/"
+  - /manage/data/export/
+  - /data/export/
+  - /services/data/export/
+  - /manage/data/view/
+  - /data/view/
+  - /services/data/view/
 icon: true
 images: ["/services/icons/data-management.svg"]
 no_service: true
@@ -71,7 +77,7 @@ Experience streamlined data handling with advanced querying, viewing, and filter
 Make SQL or MQL queries on synced sensor data, accessible through the Viam app and MQL-compatible clients.
 
 {{% /manualcard %}}
-{{% manualcard link="/services/data/view/" %}}
+{{% manualcard link="https://app.viam.com/data/view" %}}
 
 ### View and filter data
 
@@ -85,7 +91,7 @@ View and filter different data types in the cloud, with the option to delete dat
 Label data for management and machine learning, with dynamic datasets that change with underlying data modifications.
 
 {{% /manualcard %}}
-{{% manualcard link="/services/data/export/" %}}
+{{% manualcard link="/cli/#data" %}}
 
 ### Export data
 

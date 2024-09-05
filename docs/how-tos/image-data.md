@@ -228,11 +228,11 @@ Click the **Save** button in the top right corner of the page to save your confi
 
 ## Next steps
 
-Now that you have collected image data, you can [train new computer vision models](/how-tos/deploy-ml/) or [programmatically access your data](/services/data/export/):
+Now that you have collected image data, you can [train new computer vision models](/how-tos/deploy-ml/) or [programmatically access your data](https://docs.viam.com/appendix/apis/data-client/):
 
 {{< cards >}}
 {{% card link="/how-tos/deploy-ml/" %}}
-{{% card link="/services/data/export/" %}}
+{{% card link="https://docs.viam.com/appendix/apis/data-client/" %}}
 {{< /cards >}}
 
 To see image data filtering in action, check out these tutorials:

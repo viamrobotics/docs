@@ -136,8 +136,6 @@ If you have a lot of images, filter them by limiting the displayed images to a s
 
 {{< imgproc src="/tutorials/data-management/filter-date-range.png" alt="The data tab displaying images filtered by date and time range" resize="1200x" >}}
 
-For more information see [View and filter data](/services/data/view/).
-
 ## The ML model service
 
 Once your machine is capturing and syncing images to the Viam app, you are ready to train a machine learning (ML) model using those images.

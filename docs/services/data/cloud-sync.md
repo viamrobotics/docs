@@ -183,9 +183,7 @@ In the example pictured here, the data management service syncs the configured c
 
 ## Next steps
 
-To view your captured data in the cloud, see [View Data](/services/data/view/).
-
-To export your captured data from the cloud, see [Export Data](/services/data/export/).
+To view or export your captured data in the cloud, go to the **DATA** tab.
 
 If you have synced data, such as [sensor](/components/sensor/) readings, you can [query that data with SQL or MQL](/how-tos/sensor-data-query-with-third-party-tools/) from the Viam app or a MQL-compatible client.
 If you have synced images, you can use those images to [train machine learning models](/how-tos/deploy-ml/) within the Viam app.
