@@ -269,7 +269,7 @@ See [Use Fragments to Configure a Fleet](/fleet/fragments/) for more information
 
 The frame system holds reference frame information for the relative position of components in space.
 
-Clicking on the **Frame** mode to visualize and configure the relative positions of components.
+Click on the **Frame** mode to visualize and configure the relative positions of components.
 Find more information in the [frame system documentation](/services/frame-system/).
 
 ### Triggers
