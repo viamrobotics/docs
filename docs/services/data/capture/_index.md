@@ -658,7 +658,7 @@ To view captured data for a component or service, click on the menu in the top r
 
 ![Resource menu with the options Rename, Duplicate, View captured data, and Delete](/services/data/resource-menu.png)
 
-To view all the captured data you have access to, see [View Data](/services/data/view/).
+To view all the captured data you have access to, go to the [**DATA** tab](https://app.viam.com/data/view).
 
 ## Troubleshooting
 

@@ -11,6 +11,7 @@ aliases:
   - /manage/data/view/
   - /data/view/
 no_service: true
+draft: true
 # SME: Alexa Greenberg
 ---
 
