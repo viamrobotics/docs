@@ -41,6 +41,21 @@ To interact with datasets programmatically, use the [data client API](/appendix/
 
 {{< readfile "/static/include/app/apis/generated/dataset-table.md" >}}
 
+## Sample dataset
+
+If you are testing, you can use a provided sample dataset:
+
+1. [Download our shapes dataset](https://storage.googleapis.com/docs-blog/dataset-shapes.zip).
+1. Unzip the download.
+1. Open a terminal and go to the dataset folder.
+1. In it you will find a Python script to upload the data to the Viam app.
+1. Open the script and fill in the constants at the top of the file.
+1. Run the script to upload the data into a dataset in Viam app:
+
+   ```sh {class="command-line" data-prompt="$" }
+   python3 upload_data.py
+   ```
+
 ## Next steps
 
 The following how-to guide contains instructions on creating datasets as well as on how to train a model on a dataset:
