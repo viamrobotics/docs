@@ -107,7 +107,7 @@ We have two datasets you can use for testing, one with shapes and the other wise
    python3 upload_data.py
    ```
 
-7. Continue to [Train a machine learning model](#train-a-machine-learning-ml-model).
+1. Continue to [Train a machine learning model](#train-a-machine-learning-ml-model).
 
 {{% /expand%}}
 
