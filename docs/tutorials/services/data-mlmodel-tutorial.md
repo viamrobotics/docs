@@ -7,10 +7,6 @@ description: "Configure data capture and cloud sync, filter and tag captured dat
 imageAlt: "The data page of the Viam app showing a gallery of the images captured from the Viam Rover."
 images: ["/services/ml/training.png"]
 aliases:
-  - "/tutorials/data-management-tutorial/"
-  - "/tutorials/data-management/"
-  - "/data-management/data-management-tutorial/"
-  - "/tutorials/services/data-management-tutorial/"
 tags: ["data management", "data", "mlmodel", "vision", "services", "try viam"]
 authors: []
 languages: []
@@ -19,14 +15,8 @@ level: "Beginner"
 date: "2023-02-08"
 cost: "0"
 no_list: true
-# SMEs: Natalia Jacobowitz
+draft: true
 ---
-
-<!-- LEARNING GOALS
-After following this tutorial, you will understand how to use the data management service to capture and sync image data from your machine to the Viam app, and how to train a machine learning model on that data. You will be able to use the mlmodel service together with the vision service to be able to overlay successful matches directly over your camera feed in the Viam app.
-
-Notes:
-- Consider whether we should add/replace some of this content in this with some of Selectively Capture Data using filtered-camera  that capture captrue & train as well. -->
 
 In this tutorial, you will use three Viam services together to enable your machine to recognize specific objects in the world around it:
 
@@ -41,23 +31,8 @@ When it detects a likely match, it will overlay a confidence score onto the came
 To get started without any hardware, you can borrow a rover through [Try Viam](https://app.viam.com/try), which is pre-configured with everything you need to begin this tutorial.
 Rover rentals are 10 minutes in length, but you can [extend your session](/appendix/try-viam/reserve-a-rover/#can-i-extend-my-time) as needed, or [reuse a configuration from a previous session](/appendix/try-viam/reserve-a-rover/#how-can-i-reuse-my-borrowed-rover) if your time expires and you want to start a new session.
 
-You can also use your own Viam machine as long as you have followed the [prerequisite steps](#prerequisites).
+You can also use your own Viam machine as long as you have followed the prerequisite steps.
 {{< /alert >}}
-
-## Prerequisites
-
-Before following this tutorial, ensure you have:
-
-- A machine running `viam-server`, the software that runs your machine and connects it to the Viam app.
-
-  - If you are using your own machine:
-    {{% snippet "setup.md" %}}
-  - If you are using a Viam Rover through [Try Viam](https://app.viam.com/try), no further action is needed.
-
-- A configured camera component.
-
-  - If you are using your own machine, add a [camera component](/components/camera/), such as a [webcam](/components/camera/webcam/), to your machine.
-  - If you are using a Viam Rover through [Try Viam](https://app.viam.com/try), a camera is already configured for you.
 
 ## The data management service
 
@@ -103,7 +78,7 @@ To enable image data capture for a camera component:
 
 1. Navigate to your machine's **CONFIGURE** page in the [Viam app](https://app.viam.com).
 
-1. In the configuration pane for your [configured camera component](#prerequisites), find the **Data capture** section, and click the **Add method** button to configure data capture for this camera.
+1. In the configuration pane for your configured camera component, find the **Data capture** section, and click the **Add method** button to configure data capture for this camera.
 
    - Set the **Method** to `ReadImage` and the **Frequency** to `0.333`.
      This will capture an image from the camera roughly once every 3 seconds.
@@ -147,38 +122,6 @@ With a model deployed to your machine, you can use the [ML model](/services/ml/)
 To train a model from your captured data, first tag your images with appropriate labels and add them to a dataset.
 Then train a model based on your dataset and labels and deploy the model to your machine.
 
-### Tag images and create a dataset
-
-1. From the [**DATA** page](https://app.viam.com/data/view) in the Viam app, select an image captured from your machine that you would like to tag and add to your dataset.
-1. In the **Tags** field on the right-hand side, enter a new tag describing the object in the image that you want your machine to be able to identify, then click **Add as new tag**.
-   Tag names support alphanumeric characters, underscores, and hyphens.
-
-   For this tutorial, you will use the objects shown in the [Try Viam](https://app.viam.com/try) test octagon, which include shapes like a red star and an orange triangle.
-   The image below shows the `red_star` tag being added to an image:
-
-   {{< imgproc src="/tutorials/data-management/add-tag-red-star.png" alt="The tags and labels configuration pane of a selected image, with the text red_star entered as the tag" resize="350x" >}}
-
-   If you are not using a Try Viam rover, you can choose objects in your machine's surroundings instead.
-
-   Then use the Datasets dropdown to create a new dataset and assign the image to it.
-   We called our dataset `shapes`.
-
-   {{<gif webm_src="/tutorials/data-mlmodel/add-to-dataset.webm" mp4_src="/tutorials/data-mlmodel/add-to-dataset.mp4" alt="Add image to dataset" max-width="600px">}}
-
-1. Repeat this process for other images that contain objects you want your model to be able to identify.
-   Once you have added a tag to an image and created a dataset, you can select the tag from the **Tags** dropdown menu and the dataset from the **Datasets** dropdown for other images.
-
-   {{< alert title="Tip" color="tip" >}}
-
-   For best results:
-
-   - Provide at least 10 images of the same object, taken from different angles, and repeat this approach for each object you want your machine to be able to identify.
-   - Include some images that do not contain any of the objects you wish to identify, but do not tag these images.
-   - If your machine operates in various lighting conditions, such as changing sunlight, include images of each object from varying lighting conditions.
-   - You can tag a single image with multiple tags if needed, but be sure to use `Multi label classification` when training your model later in this tutorial.
-
-   {{< /alert >}}
-
 Feel free to return to your machine's **Control** tab to position your camera (and rover) to capture additional images from a variety of different angles, or with different lighting or background compositions.
 Generally, the more different perspectives of a given object you tag, the more likely your model will be able to identify it, even under differing conditions.
 The following is an example of a good selection of images containing the `blue_star` tag, taken from a variety of angles:
@@ -187,95 +130,7 @@ The following is an example of a good selection of images containing the `blue_s
 
 If you want to remove a tag, click the **X** icon to the right of the tag name below the **Tags** field.
 
-### View your dataset
-
-Upon completion of tagging your data set, you can view the data in your dataset by clicking on your dataset's name on the image sidebar or on the [**DATASETS** subtab](https://app.viam.com/data/datasets).
-
-![The shapes dataset.](/tutorials/data-management/shapes-dataset.png)
-
-### Train a model on a dataset
-
-To train a model:
-
-1. From the dataset view, click on **Train model**.
-1. Give your model a name, like `my-classifier-model`, and select the **Model type**:
-   - Use `Single label classification` if you only added one tag per image.
-   - Use `Multi label classification` if you added more than one tag for some images.
-1. Select the tags you want to train your model on from the **Labels for training** dropdown, then click **Train model**.
-   Unselected tags will be ignored, and will not be part of the resulting model.
-   If you do not see a tag you expected to see in the **Labels for training** dropdown, ensure your filtered images contain images with the tag.
-
-   {{< imgproc src="/tutorials/data-management/train-model.png" alt="The data tab showing the train a model pane with five tags filtered" resize="1200x" >}}
-
-Your model will begin training on the images you have tagged, and should be ready after a short time.
-You can view your model's training progress from the **Models** subtab under the [**DATA** page](https://app.viam.com/data/view).
-
-{{< imgproc src="/tutorials/data-management/model-training-progress.png" alt="The models tab on the data page showing a model named my-classifier-model being trained" resize="600x" >}}
-
-Models that are still being trained appear under **Training**, while models that have completed training and are ready for use appear under **Models**.
-
-{{< imgproc src="/tutorials/data-management/trained-model.png" alt="The models tab on the data page showing a completed model named my-classifier-model ready for deployment" resize="800x" >}}
-
-For more information, see [Train a model](/how-tos/deploy-ml/).
-
-### Deploy a model
-
-Once your model has finished training, add the [ML model](/services/ml/) service and deploy your model to your machine to be able to use it to classify newly-captured images.
-
-To deploy a model to your machine:
-
-1. Navigate to the **CONFIGURE** tab of your machine's page in [the Viam app](https://app.viam.com).
-1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
-1. Select the `ML model` type, then select the `TFLite CPU` model.
-1. Enter a name or use the suggested name, like `my-mlmodel-service`, for your service and click **Create**.
-1. In the resulting ML Model service configuration pane, select **Deploy model on machine**, then click **Select model**.
-   In the modal that appears, search for and select a model from your organization or the [Registry](/registry/).
-
-   {{<imgproc src="/tutorials/data-management/mlmodel-service-conf.png" alt="The ML model service configuration pane showing the required settings to deploy the my-classifier-model." resize="400x">}}
-
-1. Click **Save** at the top right of the window to save your changes.
-
-## The vision service
-
-Now that you have deployed an ML model to your machine using the ML model service, you are ready to configure a _vision service_ which can detect the objects you've tagged in images from a camera feed.
-
-1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
-1. Select the `vision` type, then select the `ML model` model.
-1. Enter a name, like `my-vision-service`, or use the suggested name for your service and click **Create**.
-1. In the resulting vision service configuration pane, select the ML model service you just added from the **ML Model** dropdown menu.
-
-   {{< imgproc src="/tutorials/data-management/vision-service-conf.png" alt="The vision service configuration pane showing the ML model service my-mlmodel-service added" resize="500x" >}}
-
-1. Click **Save Config** at the bottom of the window to save your changes.
-
-### Test object detection
-
-Your machine is now ready to detect the objects you've tagged.
-
-You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/fleet/control/).
-
-The camera stream will show detections with bounding boxes around the detections, so try moving an object your model should recognize in front of the camera.
-If you are using a Viam Rover, use the `viam_base` panel to move your rover, then click on the vision panel to check for detections.
-
-{{< imgproc src="/tutorials/data-management/blue-star.png" alt="Detected blue star" resize="600x" >}}
-
-{{< imgproc src="/tutorials/data-management/red-star.png" alt="Detected red star" resize="600x" >}}
-
-That's it! Your machine is now smarter and better able to understand the world around it.
-
-## Use your model with code
-
-Once you know your model is working, you can write code to change your machine's behavior based on what it detects.
-For an example see the following tutorial:
-
-{{< cards >}}
-{{% card link="/tutorials/services/color-detection-scuttle/" %}}
-{{< /cards >}}
-
 ## Troubleshooting
-
-If you are using [Try Viam](https://app.viam.com/try) and your session expires, you can [reuse a configuration from a previous session](/appendix/try-viam/reserve-a-rover/#how-can-i-reuse-my-borrowed-rover) to keep your configuration changes.
-You can also [extend your existing session](/appendix/try-viam/reserve-a-rover/#can-i-extend-my-time) while it's still running, if it hasn't expired yet.
 
 If your machine isn't capturing data and syncing it to the Viam app, ensure that both the data management service (named `viam-data-manager` in this tutorial) and the **Data capture** configuration for your camera (`cam` on the Try Viam rover) are enabled.
 
@@ -287,17 +142,3 @@ In this tutorial, you learned:
 
 - how to use the [data management](/services/data/) service to capture images from your machine's camera and sync them to the Viam app
 - how to filter and tag your synced images according to the objects you wanted to detect
-- how to use the [ML model](/services/ml/) service to train an ML model based on those images and deploy that model to your machine
-- how to use the [vision service](/services/vision/) to detect objects defined in an ML model from a live camera feed
-
-From here, you could do anything! Try one of the following:
-
-- Capture images of your hand making specific gestures, and train a model on that data to teach your machine to recognize certain hand gestures, and respond accordingly.
-  For example, you might train it to stop or start based on your hand gesture, to turn in a specific direction, or adjust its speed.
-- Teach your machine to [recognize specific pets](/tutorials/projects/pet-treat-dispenser/), and dispense treats appropriately.
-- Teach your machine to [recognize specific toys](/tutorials/projects/bedtime-songs-bot/), and to sing a specific song about each.
-- Try creating an [object detection model](/services/vision/#detections) to be able to identify parts of an image specifically with a bounding box.
-
-For more ideas, check out our other [tutorials](/tutorials/).
-
-{{< snippet "social.md" >}}

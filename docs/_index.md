@@ -56,7 +56,7 @@ carouselscript: true
 <div class="col hover-card link-with-icon">
   <a href="how-tos/deploy-ml/" class="noanchor"><div>
     <picture><img src="icons/ml.svg" alt="Machine Learning" loading="lazy"></picture>
-    <p>Train and deploy classification models</p></div>
+    <p>Train machine learning models</p></div>
       </a>
 </div>
 <div class="col hover-card link-with-icon">
@@ -76,7 +76,7 @@ carouselscript: true
 
 <div class="cards max-page">
   <div class="row">
-    {{< card link="/tutorials/services/data-mlmodel-tutorial/" class="green">}}
+    {{< card link="/tutorials/projects/helmet/" class="green">}}
     {{< card link="/tutorials/services/plan-motion-with-arm-gripper/" class="pink">}}
     {{< card link="/tutorials/services/navigate-with-rover-base/" class="purple">}}
     {{< card link="/tutorials/projects/integrating-viam-with-openai/" class="yellow">}}

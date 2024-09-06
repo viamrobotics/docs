@@ -53,4 +53,9 @@ This API includes a set of methods for managing data, including export, batch de
 
 ## Next steps
 
-For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).
+For comprehensive guides on using data capture and synchronization together with the ML model service, see:
+
+{{< cards >}}
+{{% card link="/how-tos/image-data/" %}}
+{{% card link="/how-tos/deploy-ml/" %}}
+{{< /cards >}}
