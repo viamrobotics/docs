@@ -6,7 +6,12 @@ weight: 100
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 icon: true
+languages: ["python"]
+viamresources: ["data_manager"]
 level: "Beginner"
+date: "2024-09-05"
+# updated: ""  # When the tutorial was last entirely checked
+cost: "0"
 images: ["/services/icons/data-folder.svg"]
 aliases:
   - /data/upload/
