@@ -66,7 +66,7 @@ The rover already has `viam-server` installed and is configured with some compon
 
 Once you have borrowed a rover, go to its **CONTROL** tab where you can view camera streams and also drive the rover.
 You should have a front-facing camera and an overhead view of your rover.
-Now you know what the rover can _perceive_.
+Now you know what the rover can perceive.
 
 To change what the front-facing camera is pointed at, find the **cam** camera panel on the **CONTROL** tab and click **Toggle picture-in-picture** so you can continue to view the camera stream.
 Then, find the **viam_base** panel and drive the rover around.
