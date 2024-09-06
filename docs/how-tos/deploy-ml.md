@@ -62,16 +62,17 @@ No problem.
 You don't need to buy or own any hardware to complete this guide.
 
 Use [Try Viam](https://app.viam.com/try) to borrow a rover free of cost online.
-The rover already has `viam-server` installed and is configured with some components to test with, including a webcam.
+The rover already has `viam-server` installed and is configured with some components, including a webcam.
 
 Once you have borrowed a rover, go to the **CONFIGURE** tab of the machine, find the cameras and click on the **Test** panel at the bottom of each camera's configuration panel to test the camera stream.
 You should have a front-facing camera and an overhead view of your rover.
 Now you know what the rover can _perceive_.
 
-If your rover is facing a wall, find the base configuration panel and click on its **Test** panel.
-Use the controls to drive your rover to a different location.
+To change what the front-facing camera is pointed at, find the **cam** camera panel on the **CONTROL** tab and click **Toggle picture-in-picture** so you can continue to view the camera stream.
+Then, find the **viam_base** panel and drive the rover around.
 
 Now that you have seen that the cameras on your Try Viam rover work, begin by [Creating a dataset and labeling data](#create-a-dataset-and-label-data).
+You can drive the rover around as you capture data to get a variety of images from different angles.
 
 {{< alert title="Tip" color="tip" >}}
 Be aware that if you are running out of time during your rental, you can [extend your rover rental](/appendix/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
@@ -85,11 +86,11 @@ Start by assembling the dataset to train your machine learning model on.
 
 {{% expand "Just testing and want a dataset to get started with? Click here." %}}
 
-1. Download our [shapes dataset](https://storage.googleapis.com/docs-blog/dataset-shapes.zip).
+1. [Download our shapes dataset](https://storage.googleapis.com/docs-blog/dataset-shapes.zip).
 1. Unzip the download.
 1. Open a terminal and go to the dataset folder.
-1. In it you will find a python script to upload the data to the Viam app.
-1. Open the script and fill in the environment variables at the top of the file.
+1. In it you will find a Python script to upload the data to the Viam app.
+1. Open the script and fill in the constants at the top of the file.
 1. Run the script to upload the data into a dataset in Viam app:
 
    ```sh {class="command-line" data-prompt="$" }
@@ -105,7 +106,7 @@ For best results when training machine learning models:
 
 - Provide at least 10 images of the same object, taken from different angles, and repeat this approach for each object you want your machine to be able to identify.
 - Include some images that do not contain any of the objects you wish to identify, but do not tag these images.
-- If your machine operates in various lighting conditions, such as changing sunlight, include images of each object from varying lighting conditions.
+- If you want your machine to operate successfully in various lighting conditions, such as changing sunlight, include images of each object from varying lighting conditions.
   {{< /alert >}}
 
 {{< table >}}
@@ -286,10 +287,8 @@ In the Viam app, navigate to your list of [**DATASETS**](https://app.viam.com/da
 
 Click **Train model** and follow the prompts.
 
-You can choose between
-
-- training a new model or updating a model
-- You can use a **Built-in training** script or a [training script](/services/ml/training-scripts/).
+Select to train a new model or update an existing model.
+You can train or update using **Built-in training** or using a [training script](/services/ml/training-scripts/) from the Viam Registry.
 
 Click **Next steps**.
 
@@ -300,13 +299,14 @@ Click **Next steps**.
 **2. Select the details for your ML model**
 
 1. Enter a name or use the suggested name for your new model.
-1. For built-in training scripts, select a **Model Type**. Depending on the training script you've chose, you may have a number of these options:
+1. For built-in training scripts, select a **Model Type**.
+   Depending on the training script you've chose, you may have a number of these options:
    - **Single Label Classification**: The resulting model predicts one of the selected labels or `UNKNOWN` per image.
      Select this if you only have one label on each image. Ensure that the dataset you are training on also contains unlabeled images.
    - **Multi Label Classification**: The resulting model predicts one or more of the selected labels per image.
    - **Object Detection**: The resulting model predicts either no detected objects or any number of object labels alongside their locations per image.
 1. For built-in classification training, select the tags you want to train your model on from the **Labels** section. Unselected tags will be ignored, and will not be part of the resulting model.
-1. Click **Train model**
+1. Click **Train model**.
 
 {{< imgproc src="/tutorials/data-management/train-model.png" alt="The data tab showing the train a model pane" style="max-width:500px" resize="1200x" class="imgzoom fill aligncenter" >}}
 
@@ -348,7 +348,7 @@ viam train logs --job-id=<JOB ID>
 
 {{<gif webm_src="/services/vision/mug-classifier.webm" mp4_src="/services/vision/mug-classifier.mp4" alt="A classification model run against an image containing a mug." max-width="250px" class="alignright">}}
 
-Once your model has finished training, you can test it with images in the cloud Viam cloud:
+Once your model has finished training, you can test it with images in the Viam app:
 
 1. Navigate to the [**DATA** tab](/services/data/view/) and click on the **Images** subtab.
 2. Click on an image to open the side menu, and select the **Actions** tab.
@@ -392,7 +392,7 @@ Click **Save** to save your changes.
 You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/fleet/control/).
 
 The camera stream will show classification or detections when it identifies something, depending on your model.
-If you are using a Viam Rover, use the `viam_base` panel to move your rover, then click on the vision panel to check for detections.
+If you are using a Viam rover, use the `viam_base` panel to move your rover, then click on the vision panel to check for classifications or detections.
 
 {{< imgproc src="/tutorials/data-management/blue-star.png" alt="Detected blue star" resize="300x" >}}
 {{< imgproc src="/tutorials/data-management/red-star.png" alt="Detected red star" resize="300x" >}}
@@ -430,7 +430,7 @@ To work with datasets programmatically, see the data API which includes several 
 {{% card link="/appendix/apis/data-client/" %}}
 {{< /cards >}}
 
-See the following tutorials for examples of using machine learning models to mache your machine interact intelligently based on what it detects:
+See the following tutorials for examples of using machine learning models to make your machine interact intelligently based on what it detects:
 
 {{< cards >}}
 {{% card link="/tutorials/projects/helmet/" %}}
