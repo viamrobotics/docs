@@ -89,7 +89,8 @@ Select **Add new data source**.
 
 Enter the following information in the configuration UI for the plugin:
 
-- **Connection string**: Enter the following connection string, and replace `<MONGODB-ATLAS-DF-HOSTNAME>` with your database hostname as configured with the `viam data database configure` command, and replace `<DATABASE-NAME>` with the desired database name to query. For most use cases with Viam, this database name will be `sensorData`:
+- **Connection string**: Enter the following connection string, and replace `<MONGODB-ATLAS-DF-HOSTNAME>` with your database hostname as configured with the `viam data database configure` command, and replace `<DATABASE-NAME>` with the desired database name to query.
+   For most use cases with Viam, this database name will be `sensorData`:
 
   ```sh
   mongodb://<MONGODB-ATLAS-DF-HOSTNAME>/<DATABASE-NAME>?directConnection=true&authSource=admin&tls=true
