@@ -285,7 +285,11 @@ make upload
 
 ## Troubleshooting
 
+### Error: Failed to open serial port
+
 If you run into the error `Failed to open serial port` when flashing your ESP32 with Linux, make sure the user is added to the group `dialout` with `sudo gpasswd -a $USER dialout`.
+
+### Error: `espflash::timeout`
 
 If you get the following error while connecting to your ESP32:
 
@@ -295,8 +299,6 @@ If you get the following error while connecting to your ESP32:
   × Error while connecting to device
   ╰─▶ Timeout while running command
 ```
-
-If successful, the Viam app will show that your machine part's status is **Live**.
 
 Run the following command:
 
@@ -308,6 +310,8 @@ Try the connection command again.
 The baud rate on your device may not have been fast enough to connect.
 If successful, the Viam app will show that your machine part's status is **Live**.
 
+### Error: `viam.json` not found
+
 If you get the error `viam.json not found` try the following to manually add your machine cloud credentials as a file in your project:
 
 1. Navigate to your machine's page on [the Viam app](https://app.viam.com) and select the **CONFIGURE** tab.
@@ -317,6 +321,20 @@ If you get the error `viam.json not found` try the following to manually add you
 1. Navigate to the directory of the project you just created.
 1. Create a new <file>viam.json</file> file and paste the `viam-server` machine cloud credentials in.
 1. Save the file.
+
+### Error: failed to run custom build command for `esp32-explorer (/host)`
+
+This may occur for various reasons such as your machine cloud credentials, WiFi SSID, or password not being populated.
+Check that your machine cloud credentials are provided in your project directory as <file>viam.json</file> and ensure that your WiFi credentials are provided.
+
+### Error: invalid value `460800` for `--before <BEFORE>`
+
+Change `"-b"` to `"-B` in the <file>Makefile</file>, as `"-B"` is the Baudrate config.
+Run the following commands to flash <file>esp32-server.bin</file> to your ESP32 microcontroller at a high baud rate, wait for 2 seconds, and observe the device's output:
+
+```sh {class="command-line" data-prompt="$"}
+espflash write-bin 0x0 target/esp32-server.bin -B 460800  && sleep 2 && espflash monitor
+```
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 

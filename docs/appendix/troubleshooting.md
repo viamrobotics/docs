@@ -110,22 +110,6 @@ sudo apt install jackd qjackctl libpulse-dev pulseaudio
 
 This error can be safely ignored if you do not intend to use audio on your machine.
 
-## Common ESP32 viam-micro-server errors
-
-### Error: failed to run custom build command for esp32-explorer (/host)
-
-This may occur for various reasons such as your machine cloud credentials, WiFi SSID, or password not being populated.
-Check that your machine cloud credentials are provided in your project directory as <file>viam.json</file> and ensure that your WiFi credentials are provided.
-
-### Error: invalid value '460800' for '--before <BEFORE>'
-
-Change `"-b"` to `"-B` in the <file>Makefile</file>, as `"-B"` is the Baudrate config.
-Run the following commands to flash <file>esp32-server.bin</file> to your ESP32 microcontroller at a high baud rate, wait for 2 seconds, and observe the device's output:
-
-```sh {class="command-line" data-prompt="$"}
-espflash write-bin 0x0 target/esp32-server.bin -B 460800  && sleep 2 && espflash monitor
-```
-
 ## Common Viam App Errors
 
 ### Failed to connect; retrying
