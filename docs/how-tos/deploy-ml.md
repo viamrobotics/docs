@@ -136,7 +136,6 @@ For an object detector, use bounding boxes.
 You can use tags to create classification models for images.
 For example, if you would like to create a model that identifies an image of a star in a set of images, tag each image containing a star with a `star` tag.
 You also need images without the star tag or with another tag like `notstar`.
-If you add a `notstar` tag.
 
 To tag an image, click on the image and select the **Image tags** mode in the menu that opens.
 
