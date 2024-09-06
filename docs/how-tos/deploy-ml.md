@@ -64,7 +64,7 @@ You don't need to buy or own any hardware to complete this guide.
 Use [Try Viam](https://app.viam.com/try) to borrow a rover free of cost online.
 The rover already has `viam-server` installed and is configured with some components, including a webcam.
 
-Once you have borrowed a rover, go to the **CONFIGURE** tab of the machine, find the cameras and click on the **Test** panel at the bottom of each camera's configuration panel to test the camera stream.
+Once you have borrowed a rover, go to its **CONTROL** tab where you can view camera streams and also drive the rover.
 You should have a front-facing camera and an overhead view of your rover.
 Now you know what the rover can _perceive_.
 
