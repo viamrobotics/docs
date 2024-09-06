@@ -16,6 +16,7 @@ aliases:
   - "/data-management/data-management-tutorial/"
   - "/tutorials/services/data-management-tutorial/"
   - /tutorials/services/data-mlmodel-tutorial/
+  - /tutorials/projects/filtered-camera/
 languages: []
 viamresources: ["data_manager", "mlmodel", "vision"]
 level: "Beginner"
@@ -89,18 +90,24 @@ Start by assembling the dataset to train your machine learning model on.
 
 {{% expand "Just testing and want a dataset to get started with? Click here." %}}
 
-1. [Download our shapes dataset](https://storage.googleapis.com/docs-blog/dataset-shapes.zip).
-1. Unzip the download.
-1. Open a terminal and go to the dataset folder.
-1. In it you will find a Python script to upload the data to the Viam app.
-1. Open the script and fill in the constants at the top of the file.
-1. Run the script to upload the data into a dataset in Viam app:
+We have two datasets you can use for testing, one with shapes and the other wise a wooden figure:
+
+{{<imgproc src="/tutorials/data-management/shapes-dataset.png" resize="1200x" declaredimensions=true style="max-width:400px" alt="The shapes dataset." class="imgzoom fill aligncenter">}}
+
+{{< imgproc src="/tutorials/filtered-camera-module/viam-figure-dataset.png" style="max-width:400px" alt="The datasets subtab of the data tab in the Viam app, showing a custom 'viam-figure' dataset of 25 images, most containing the wooden Viam figure" class="imgzoom fill aligncenter" resize="1400x" >}}
+
+1. [Download the shapes dataset](https://storage.googleapis.com/docs-blog/dataset-shapes.zip) or [download the wooden figure dataset](https://storage.googleapis.com/docs-blog/dataset-figure.zip).
+2. Unzip the download.
+3. Open a terminal and go to the dataset folder.
+4. In it you will find a Python script to upload the data to the Viam app.
+5. Open the script and fill in the constants at the top of the file.
+6. Run the script to upload the data into a dataset in Viam app:
 
    ```sh {class="command-line" data-prompt="$" }
    python3 upload_data.py
    ```
 
-1. Continue to [Train a machine learning model](#train-a-machine-learning-ml-model).
+7. Continue to [Train a machine learning model](#train-a-machine-learning-ml-model).
 
 {{% /expand%}}
 
@@ -109,9 +116,11 @@ For best results when training machine learning models:
 
 - Provide at least 10 images of the same object, taken from different angles, and repeat this approach for each object you want your machine to be able to identify.
   Generally, the more different perspectives of a given object you tag, the more likely it is that your model will be able to identify it, even under differing conditions.
-- Include some images that do not contain any of the objects you wish to identify, but do not tag these images.
+- Include some images that do not contain any of the objects you wish to identify, but do not add labels to these images.
+  Unlabelled images must not comprise more than 20% of your dataset, so if you have 25 images in your dataset, at least 20 of those must be labelled.
 - If you want your machine to operate successfully in various lighting conditions, such as changing sunlight, include images of each object from varying lighting conditions.
-  {{< /alert >}}
+
+{{< /alert >}}
 
 {{< table >}}
 {{% tablestep %}}
@@ -129,9 +138,16 @@ The more varied the provided data set, the more accurate the resulting model bec
 {{<imgproc src="/services/ml/label.svg" class="fill alignleft" style="max-width: 250px" declaredimensions=true alt="Label data">}}
 **2. Label your images**
 
-Once you have enough images of the objects you'd like to classify, use the interface on the **DATA** tab to label your data.
+Once you have enough images of the objects you'd like to identify captured and synced to the Viam app, use the interface on the [**DATA** tab](https://app.viam.com/data/view) to label your data.
+
+You can lable your images to create:
 If you want to train an image classifier, use image tags.
 For an object detector, use bounding boxes.
+
+- [Detection models](/services/vision/#detections): Draw **bounding boxes** around distinct objects within captured images.
+  The trained model will enable your machine to be able to detect those objects on its own.
+- [Classification models](/services/vision/#classifications): Add **tags** to your images with class labels that describes it.
+  The trained model will enable your machine to classify similar images on its own.
 
 <br>
 
@@ -141,13 +157,14 @@ You can use tags to create classification models for images.
 For example, if you would like to create a model that identifies an image of a star in a set of images, tag each image containing a star with a `star` tag.
 You also need images without the star tag or with another tag like `notstar`.
 
-To tag an image, click on the image and select the **Image tags** mode in the menu that opens.
+To tag an image, click on an image and select the **Image tags** mode in the menu that opens.
+Add one or more tags to your image.
 
 {{<gif webm_src="/services/data/tag-star.webm" mp4_src="/services/data/tag-star.mp4" alt="Tag image with a star label">}}
 
 If you want to expand the image, click on the expand side menu arrow in the corner of the image.
 
-Repeat this with all images in your dataset.
+Repeat this with all images.
 
 {{< /expand >}}
 
@@ -166,8 +183,10 @@ To expand the image, click on the expand side menu arrow in the corner of the im
 
 {{<gif webm_src="/services/data/label-dog-big.webm" mp4_src="/services/data/label-dog-big.mp4" alt="Add a bounding box around the dog in an image in a big menu">}}
 
-Repeat this with all images in your dataset.
+Repeat this with all images.
 To see all the images that have bounding boxes, you can filter your dataset by selecting the label from the **Bounding box labels** dropdown in the **Filters** menu.
+
+{{< imgproc src="/tutorials/filtered-camera-module/draw-bounding-box.png" alt="A selected image from the data tab, where the 'viam-figure' label has been added and a bounding box has been drawn around just the matching portion of the image " resize="400x" >}}
 
 {{< /expand >}}
 
@@ -175,7 +194,13 @@ To see all the images that have bounding boxes, you can filter your dataset by s
 {{% tablestep link="/services/data/dataset/" %}}
 **3. Create a dataset**
 
+A [dataset](/services/data/dataset/) allows you to conveniently view, work with, and train an ML model on a collection of images.
+
 Use the interface on the **DATA** tab (or the [`viam data dataset add` command](/cli/#data)) to add all images you want to train the model on to a dataset.
+
+Click on an image you want to train your ML model.
+In the **Actions** pane on the right-hand side, enter a dataset name under **Datasets**, then press return.
+Repeat this with all images you want to add to your dataset.
 
 {{<gif webm_src="/tutorials/data-mlmodel/add-to-dataset.webm" mp4_src="/tutorials/data-mlmodel/add-to-dataset.mp4" alt="Add image to dataset" max-width="600px">}}
 
@@ -360,6 +385,11 @@ Once your model has finished training, you can test it with images in the Viam a
 
 If the results exceed the confidence threshold, the **Run model** section shows a label and the responding confidence threshold.
 
+When satisfied that your ML model is working well, continue to [deploy an ML model](#deploy-an-ml-model).
+If the vision service is not matching reliably, you will need to adjust your ML model by consider adding and labelling more images in your dataset.
+
+Ideally, you want your ML model to be able to identify objects with a high level of confidence, which is dependent on a robust source dataset.
+
 ## Deploy an ML model
 
 To use an ML model on your machine, you need to deploy it to your machine using a compatible ML model service.
@@ -395,10 +425,13 @@ Click **Save** to save your changes.
 You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/fleet/control/).
 
 The camera stream will show classification or detections when it identifies something, depending on your model.
+Try placing an object your ML model can recognize in front of the camera.
 If you are using a Viam rover, use the `viam_base` panel to move your rover, then click on the vision panel to check for classifications or detections.
 
 {{< imgproc src="/tutorials/data-management/blue-star.png" alt="Detected blue star" resize="300x" >}}
 {{< imgproc src="/tutorials/data-management/red-star.png" alt="Detected red star" resize="300x" >}}
+
+{{< imgproc src="/tutorials/filtered-camera-module/viam-figure-preview.png" alt="Detection of a viam figure with a confidence score of 0.97" resize="250x" class="aligncenter" >}}
 
 {{% expand "Want to limit the number of shown classifications or detections? Click here." %}}
 

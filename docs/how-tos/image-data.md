@@ -18,7 +18,8 @@ cost: "0"
 
 You can use Viam's built-in data management service to capture images from a camera on your machine and sync the images to the cloud.
 
-If you want to capture only certain images, such as those containing a person, you can use a "filtering camera" to selectively capture images based on a computer vision model.
+If you want to control the volume of data your machine writes and syncs, you can use a "filtering camera" and only capture images that contain a person or object detected by an ML model.
+The filtering camera uses a computer vision model to detect objects in your camera feed and selectively stores and uploads only those images that are matched by your model.
 
 With your images synced to the cloud, you can view images from all your machines in the Viam app interface.
 From there, you can use your image data to do things like [train ML models](/how-tos/deploy-ml/).
@@ -33,8 +34,6 @@ From there, you can use your image data to do things like [train ML models](/how
 1. [Use filtering to collect and sync only certain images](#use-filtering-to-collect-and-sync-only-certain-images)
 
 {{< /alert >}}
-
-If you'd like to follow a more detailed tutorial, see [Selectively Capture Data Using filtered-camera](/tutorials/projects/filtered-camera/).
 
 ## Prerequisites
 
@@ -132,7 +131,7 @@ Click the **Save** button in the top right corner of the page to save your confi
 
 ## Use filtering to collect and sync only certain images
 
-You can use filtering to selectively capture images using a machine learning (ML) model, for example to only capture images with people in them.
+You can use filtering to selectively capture images using a machine learning (ML) model, for example to only capture images with people or specific objects in them.
 
 Contributors have written several filtering {{< glossary_tooltip term_id="module" text="modules" >}} that you can use to filter image capture.
 The following steps use the [`filtered_camera`](https://github.com/erh/filtered_camera) module:
@@ -173,8 +172,7 @@ Configure a `filtered-camera` component on your machine, following the [attribut
 Use the name of the camera you configured in the first part of this guide as the `"camera"` to pull images from, and select the name of the vision service you just configured as your `"vision"` service.
 Then add all or some of the labels your ML model uses as classifications or detections in `"classifications"` or `"objects"`.
 
-For example, if you are using the `EfficientDet-COCO` model, you could use a configuration like the following to only capture images when a person is detected in your camera stream.
-You can also add a time window to capture data in right before a detection, so as to, for example, capture the 3 seconds before a person appeared in the stream.
+For example, if you are using the `EfficientDet-COCO` model, you could use a configuration like the following to only capture images when a person is detected with more than 60% confidence in your camera stream.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -186,6 +184,9 @@ You can also add a time window to capture data in right before a detection, so a
   "vision": "vision-1"
 }
 ```
+
+Additionally, you can also add a buffer window with `window_seconds` which controls the duration of a buffer of images captured prior to a successful match.
+If you were to set `window_seconds` to `3`, the camera would also capture and sync images from the 3 seconds before a person appeared in the camera stream.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -210,9 +211,10 @@ With cloud sync enabled, captured data is automatically uploaded to the Viam app
 {{<imgproc src="/services/ml/collect.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
 **7. View filtered data in the Viam app**
 
-Once you save your configuration, your filtered images will sync and you can view those images in the Viam app from the **DATA** tab.
+Once you save your configuration, place something that is part of your trained ML model within view of your camera.
 
-Your data will sync at the specified sync interval, which may mean you have to wait and then refresh the page for data to appear.
+Images that pass your filter will be captured and will sync at the specified sync interval, which may mean you have to wait and then refresh the page for data to appear.
+Your images will begin to appear under the **DATA** tab.
 
 If no data appears after the sync interval, check the [**Logs**](/cloud/machines/#logs) and ensure that the condition for filtering is met.
 You can test the vision service from the [**CONTROL** tab](/cloud/machines/#control) to see its classifications and detections live.
@@ -248,6 +250,5 @@ Now that you have collected image data, you can [train new computer vision model
 To see image data filtering in action, check out these tutorials:
 
 {{< cards >}}
-{{% card link="/tutorials/projects/filtered-camera/" %}}
 {{% card link="/tutorials/configure/pet-photographer.md" %}}
 {{< /cards >}}
