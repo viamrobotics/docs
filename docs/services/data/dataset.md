@@ -43,9 +43,13 @@ To interact with datasets programmatically, use the [data client API](/appendix/
 
 ## Sample dataset
 
-If you are testing, you can use a provided sample dataset:
+If you are testing, you can use one of two provided sample dataset, one of shapes and the other of a wooden figure:
 
-1. [Download our shapes dataset](https://storage.googleapis.com/docs-blog/dataset-shapes.zip).
+{{<imgproc src="/tutorials/data-management/shapes-dataset.png" resize="1200x" declaredimensions=true style="max-width:400px" alt="The shapes dataset." class="imgzoom fill aligncenter">}}
+
+{{< imgproc src="/tutorials/filtered-camera-module/viam-figure-dataset.png" style="max-width:400px" alt="The datasets subtab of the data tab in the Viam app, showing a custom 'viam-figure' dataset of 25 images, most containing the wooden Viam figure" class="imgzoom fill aligncenter" resize="1400x" >}}
+
+1. [Download the shapes dataset](https://storage.googleapis.com/docs-blog/dataset-shapes.zip) or [download the wooden figure dataset](https://storage.googleapis.com/docs-blog/dataset-figure.zip).
 1. Unzip the download.
 1. Open a terminal and go to the dataset folder.
 1. In it you will find a Python script to upload the data to the Viam app.
