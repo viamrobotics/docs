@@ -349,7 +349,7 @@ viam train logs --job-id=<JOB ID>
 
 Once your model has finished training, you can test it with images in the Viam app:
 
-1. Navigate to the [**DATA** tab](/services/data/view/) and click on the **Images** subtab.
+1. Navigate to the [**DATA** tab](https://app.viam.com/data/view) and click on the **Images** subtab.
 2. Click on an image to open the side menu, and select the **Actions** tab.
 3. In the **Run model** section, select your model and specify a confidence threshold.
 4. Click **Run model**
