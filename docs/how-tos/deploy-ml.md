@@ -106,7 +106,8 @@ Start by assembling the dataset to train your machine learning model on.
 {{< alert title="Tip" color="tip" >}}
 For best results when training machine learning models:
 
-- Provide at least 10 images of the same object, taken from different angles, and repeat this approach for each object you want your machine to be able to identify. Generally, the more different perspectives of a given object you tag, the more likely your model will be able to identify it, even under differing conditions.
+- Provide at least 10 images of the same object, taken from different angles, and repeat this approach for each object you want your machine to be able to identify.
+  Generally, the more different perspectives of a given object you tag, the more likely it is that your model will be able to identify it, even under differing conditions.
 - Include some images that do not contain any of the objects you wish to identify, but do not tag these images.
 - If you want your machine to operate successfully in various lighting conditions, such as changing sunlight, include images of each object from varying lighting conditions.
   {{< /alert >}}
@@ -400,7 +401,7 @@ If you are using a Viam rover, use the `viam_base` panel to move your rover, the
 
 {{% expand "Want to limit the number of shown classifications or detections? Click here." %}}
 
-If you are seeing a lot of classifications or detection, you can set a minimum confidence threshold.
+If you are seeing a lot of classifications or detections, you can set a minimum confidence threshold.
 
 On the configuration page of the vision service in the top right corner, click **{}** (Switch to advanced).
 Add the following JSON to the JSON configuration to set the `default_minimum_confidence` of the detector:
@@ -421,8 +422,8 @@ The full configuration for the attributes of the vision service should resemble:
 This optional attribute reduces your output by filtering out classifications or detections below the threshold of 82% confidence.
 You can adjust this attribute as necessary.
 
-Click the **Save** button in the top right corner of the page to save your configuration and close and reopen the **Test** panel of the vision service configuration panel.
-Now if you reopen the panel, you will only see classificationr or detections with a confidence value higher than the `"default_minimum_confidence"` attribute.
+Click the **Save** button in the top right corner of the page to save your configuration, then close and reopen the **Test** panel of the vision service configuration panel.
+Now if you reopen the panel, you will only see classifications or detections with a confidence value higher than the `default_minimum_confidence` attribute.
 
 For more detailed information, including optional attribute configuration, see the [`mlmodel` docs](/services/vision/mlmodel/).
 
