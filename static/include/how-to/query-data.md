@@ -56,7 +56,7 @@ This command returns:
 
 - **hostname:** the MongoDB Atlas Data Federation instance hostname
 - **connection URI:** the MongoDB Atlas Data Federation instance connection uniform resource indicator.
-   This is the _connection URI_ to your organization's MongoDB Atlas Data Federation instance, which is of the form:
+  This is the _connection URI_ to your organization's MongoDB Atlas Data Federation instance, which is of the form:
 
   ```sh {class="command-line" data-prompt="$"}
   mongodb://<USERNAME>:<YOUR-PASSWORD>@<HOSTNAME>/?ssl=true&authSource=admin
