@@ -101,13 +101,14 @@ You can nest locations up to three levels deep.
 
 ## Manage Access with Role-Based Access Control
 
-To collaborate with others on your machines, you need to invite them to your organizations, locations, or machines:
+To collaborate with others on your machines, you need to invite them to your organizations, locations, or machines.
+You can do this on the organization settings page, which you can navigate to by clicking on the organization dropdown in the top navigation bar and clicking on **Settings**:
 
 {{< table >}}
 {{% tablestep link="/cloud/rbac/" %}}
 **1. Invite users and assign permissions**
 
-If you have the **Owner** role, you can invite new users to an organization or a location to [share access](/cloud/#use-viam-for-collaboration) to the machines within it.
+If you have the **Owner** role, in the **Members** section of the organization settings page you can click on **Grant access** to invite new users to an organization or a location to [share access](/cloud/#use-viam-for-collaboration) to the machines within it.
 Assign each user a role (owner or operator) to manage permissions.
 
 {{<imgproc src="/fleet/app-usage/limit-access.png" resize="1000x" style="max-width: 600px" class="aligncenter" declaredimensions=true alt="Limit user access">}}
@@ -119,8 +120,7 @@ Users with owner access to a location or organization, can collaborate on the [m
 **2. Use API keys**
 
 You (and anyone with owner access) can create API keys for programmatic access to machines, locations, or organizations.
-
-Click on the organization dropdown in the top navigation bar and click on **Settings** to create and manage API keys.
+You can manage this in the **API Keys** section of the organization settings page.
 
 {{<imgproc src="/cloud/rbac.png" resize="700x" declaredimensions=true alt="Organization page" class="aligncenter">}}
 
@@ -139,13 +139,13 @@ Using the [Viam app](https://app.viam.com), you can monitor the status of each m
 
 {{<gif webm_src="/fleet/log-filtering.webm" mp4_src="/fleet/log-filtering.mp4" alt="Filter logs by term of log level in the UI" max-width="800px">}}
 
-You can also access machine logs using [`viam machines logs`](/cli/#machines-alias-robots), the [Machines API](/appendix/apis/robot/), or the [Viam mobile app](/cloud/machines/#logs).
+You can also access machine logs using [`viam machines logs`](/cli/#machines-alias-robots) on the command line, the [Machines API](/appendix/apis/robot/), or the [Viam mobile app](/cloud/machines/#logs).
 
 {{% /tablestep %}}
 {{% tablestep link="/fleet/control/" %}}
 **2. Test your machines remotely**
 
-Using the [Viam app](https://app.viam.com), you can remotely operate machines from the [**CONTROL** tab](/fleet/control/).
+Using the [Viam app](https://app.viam.com), you can remotely operate machines from the **TEST** pane on the **CONFIGURE** tab or from the [**CONTROL** tab](/fleet/control/).
 
 {{<gif webm_src="/fleet/control.webm" mp4_src="/fleet/control.mp4" alt="Using the control tab" max-width="800px">}}
 
