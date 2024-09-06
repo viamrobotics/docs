@@ -97,11 +97,11 @@ We have two datasets you can use for testing, one with shapes and the other wise
 {{< imgproc src="/tutorials/filtered-camera-module/viam-figure-dataset.png" style="max-width:400px" alt="The datasets subtab of the data tab in the Viam app, showing a custom 'viam-figure' dataset of 25 images, most containing the wooden Viam figure" class="imgzoom fill aligncenter" resize="1400x" >}}
 
 1. [Download the shapes dataset](https://storage.googleapis.com/docs-blog/dataset-shapes.zip) or [download the wooden figure dataset](https://storage.googleapis.com/docs-blog/dataset-figure.zip).
-2. Unzip the download.
-3. Open a terminal and go to the dataset folder.
-4. In it you will find a Python script to upload the data to the Viam app.
-5. Open the script and fill in the constants at the top of the file.
-6. Run the script to upload the data into a dataset in Viam app:
+1. Unzip the download.
+1. Open a terminal and go to the dataset folder.
+1. In it you will find a Python script to upload the data to the Viam app.
+1. Open the script and fill in the constants at the top of the file.
+1. Run the script to upload the data into a dataset in Viam app:
 
    ```sh {class="command-line" data-prompt="$" }
    python3 upload_data.py
