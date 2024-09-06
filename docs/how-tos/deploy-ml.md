@@ -358,7 +358,7 @@ If the results exceed the confidence threshold, the **Run model** section shows 
 
 ## Deploy an ML model
 
-Add the [ML model](/services/ml/) service and deploy your model to your machine to be able to use it to understand your machine's surroundings.
+To use an ML model on your machine, you need to deploy it to your machine using a compatible ML model service.
 The ML model service will run the model and allow a vision service to use it:
 
 {{< table >}}
