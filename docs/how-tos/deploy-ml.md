@@ -140,13 +140,11 @@ The more varied the provided data set, the more accurate the resulting model bec
 
 Once you have enough images of the objects you'd like to identify captured and synced to the Viam app, use the interface on the [**DATA** tab](https://app.viam.com/data/view) to label your data.
 
-You can lable your images to create:
-If you want to train an image classifier, use image tags.
-For an object detector, use bounding boxes.
+You can label your images to create:
 
-- [Detection models](/services/vision/#detections): Draw **bounding boxes** around distinct objects within captured images.
+- **Detection models**: Draw **bounding boxes** around distinct objects within captured images.
   The trained model will enable your machine to be able to detect those objects on its own.
-- [Classification models](/services/vision/#classifications): Add **tags** to your images with class labels that describes it.
+- **Classification models**: Add **tags** to your images with class labels that describes it.
   The trained model will enable your machine to classify similar images on its own.
 
 <br>
@@ -185,8 +183,6 @@ To expand the image, click on the expand side menu arrow in the corner of the im
 
 Repeat this with all images.
 To see all the images that have bounding boxes, you can filter your dataset by selecting the label from the **Bounding box labels** dropdown in the **Filters** menu.
-
-{{< imgproc src="/tutorials/filtered-camera-module/draw-bounding-box.png" alt="A selected image from the data tab, where the 'viam-figure' label has been added and a bounding box has been drawn around just the matching portion of the image " resize="400x" >}}
 
 {{< /expand >}}
 
@@ -428,10 +424,8 @@ The camera stream will show classification or detections when it identifies some
 Try placing an object your ML model can recognize in front of the camera.
 If you are using a Viam rover, use the `viam_base` panel to move your rover, then click on the vision panel to check for classifications or detections.
 
-{{< imgproc src="/tutorials/data-management/blue-star.png" alt="Detected blue star" resize="300x" >}}
-{{< imgproc src="/tutorials/data-management/red-star.png" alt="Detected red star" resize="300x" >}}
-
-{{< imgproc src="/tutorials/filtered-camera-module/viam-figure-preview.png" alt="Detection of a viam figure with a confidence score of 0.97" resize="250x" class="aligncenter" >}}
+{{< imgproc src="/tutorials/data-management/blue-star.png" alt="Detected blue star" resize="x200" >}}
+{{< imgproc src="/tutorials/filtered-camera-module/viam-figure-preview.png" alt="Detection of a viam figure with a confidence score of 0.97" resize="x200" >}}
 
 {{% expand "Want to limit the number of shown classifications or detections? Click here." %}}
 
