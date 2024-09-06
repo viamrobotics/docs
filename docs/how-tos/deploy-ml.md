@@ -299,11 +299,11 @@ Click **Next steps**.
 
 - Enter a name or use the suggested name for your new model.
 - For built-in training scripts, select a **Model Type**.
-   Depending on the training script you've chose, you may have a number of these options:
-   - **Single Label Classification**: The resulting model predicts one of the selected labels or `UNKNOWN` per image.
-     Select this if you only have one label on each image. Ensure that the dataset you are training on also contains unlabeled images.
-   - **Multi Label Classification**: The resulting model predicts one or more of the selected labels per image.
-   - **Object Detection**: The resulting model predicts either no detected objects or any number of object labels alongside their locations per image.
+  Depending on the training script you've chose, you may have a number of these options:
+  - **Single Label Classification**: The resulting model predicts one of the selected labels or `UNKNOWN` per image.
+    Select this if you only have one label on each image. Ensure that the dataset you are training on also contains unlabeled images.
+  - **Multi Label Classification**: The resulting model predicts one or more of the selected labels per image.
+  - **Object Detection**: The resulting model predicts either no detected objects or any number of object labels alongside their locations per image.
 - For built-in classification training, select the tags you want to train your model on from the **Labels** section. Unselected tags will be ignored, and will not be part of the resulting model.
 - Click **Train model**.
 
