@@ -160,7 +160,7 @@
                   {{- end -}}
             {{- end -}}
             {{- if eq .Section "services" -}}
-                  {{ $services_with_resources := slice "Generic Service" "Deploy Model" "Computer Vision" }}
+                  {{ $services_with_resources := slice "Generic Service" "ML Model Service" "Computer Vision" }}
                   {{- if and (in $services_with_resources .Parent.LinkTitle) (and (not .Draft) (not .Params.no_service)) -}}
                   {{- if .Params.canonical -}}
                         {{- $.Scratch.Set "permalink" (printf "%s" .Params.canonical) -}}
