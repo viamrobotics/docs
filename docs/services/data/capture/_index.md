@@ -34,6 +34,7 @@ If a machine restarts for any reason, capture automatically resumes and any data
 The service can capture data from multiple resources at the same or different frequencies.
 The service does not impose a lower or upper limit on the frequency of data collection.
 However, in practice, your hardware may impose limits on the frequency of data collection.
+Avoid configuring data capture to higher rates than your hardware can handle, as this could lead to performance degradation.
 
 {{% /tab %}}
 {{% tab name="viam-micro-server" %}}
