@@ -56,13 +56,15 @@ If you are not sure what to use, start with a [webcam](/components/camera/webcam
 
 ## Collect image data and sync it to the cloud
 
+Adding the data management service to your machine allows you to be able capture and sync data:
+
 {{< gif webm_src="/how-tos/capture-images.webm" mp4_src="/how-tos/capture-images.mp4" alt="Configuring data management for a camera in the viam app" max-width="600px" class="aligncenter" >}}
 
 {{< table >}}
 {{% tablestep link="/services/data/" %}}
 **1. Enable the data management service**
 
-In your camera component configuration panel, find the **Data capture** section.
+In the configuration pane for your configured camera component, find the **Data capture** section.
 Click **Add method**.
 
 When the **Create a data management service** prompt appears, click it to add the service to your machine.
@@ -72,9 +74,9 @@ You can leave the default data manager settings.
 {{% tablestep %}}
 **2. Capture data**
 
-With the data management service configured on your machine, you can continue configuring how the camera component itself captures data.
+With the data management service configured on your machine, continue configuring how the camera component itself captures data.
 
-In the **Data capture** panel of your camera's configuration, select **Read image** from the method selector.
+In the **Data capture** panel of your camera's configuration, select `ReadImage` from the method selector.
 
 Set your desired capture frequency.
 For example, set it to `0.05` to capture an image every 20 seconds.

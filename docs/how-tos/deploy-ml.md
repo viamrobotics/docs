@@ -27,6 +27,8 @@ You can use Viam's built-in tools to train a machine learning (ML) model on your
 
 ![Diagram of the camera component to data management service to ML model service to vision service pipeline.](/how-tos/ml-vision-diagram.png)
 
+You can use ML models to help your machines adapt their behavior to the world around them.
+
 For example, you can train a model to recognize your dog and detect whether they are sitting or standing.
 You could then use that knowledge to [give your dog treats](https://www.viam.com/post/smart-pet-feeder) or [capture images](/tutorials/configure/pet-photographer/) only when your dog is in the camera frame so you don't capture hundreds of photos of an empty room.
 
@@ -104,7 +106,7 @@ Start by assembling the dataset to train your machine learning model on.
 {{< alert title="Tip" color="tip" >}}
 For best results when training machine learning models:
 
-- Provide at least 10 images of the same object, taken from different angles, and repeat this approach for each object you want your machine to be able to identify.
+- Provide at least 10 images of the same object, taken from different angles, and repeat this approach for each object you want your machine to be able to identify. Generally, the more different perspectives of a given object you tag, the more likely your model will be able to identify it, even under differing conditions.
 - Include some images that do not contain any of the objects you wish to identify, but do not tag these images.
 - If you want your machine to operate successfully in various lighting conditions, such as changing sunlight, include images of each object from varying lighting conditions.
   {{< /alert >}}
@@ -396,9 +398,40 @@ If you are using a Viam rover, use the `viam_base` panel to move your rover, the
 {{< imgproc src="/tutorials/data-management/blue-star.png" alt="Detected blue star" resize="300x" >}}
 {{< imgproc src="/tutorials/data-management/red-star.png" alt="Detected red star" resize="300x" >}}
 
+{{% expand "Want to limit the number of shown classifications or detections? Click here." %}}
+
+If you are seeing a lot of classifications or detection, you can set a minimum confidence threshold.
+
+On the configuration page of the vision service in the top right corner, click **{}** (Switch to advanced).
+Add the following JSON to the JSON configuration to set the `default_minimum_confidence` of the detector:
+
+```json
+"default_minimum_confidence": 0.82
+```
+
+The full configuration for the attributes of the vision service should resemble:
+
+```json {class="line-numbers linkable-line-numbers" data-line="3"}
+{
+  "mlmodel_name": "mlmodel-1",
+  "default_minimum_confidence": 0.82
+}
+```
+
+This optional attribute reduces your output by filtering out classifications or detections below the threshold of 82% confidence.
+You can adjust this attribute as necessary.
+
+Click the **Save** button in the top right corner of the page to save your configuration and close and reopen the **Test** panel of the vision service configuration panel.
+Now if you reopen the panel, you will only see classificationr or detections with a confidence value higher than the `"default_minimum_confidence"` attribute.
+
+For more detailed information, including optional attribute configuration, see the [`mlmodel` docs](/services/vision/mlmodel/).
+
+{{% /expand%}}
+
 You can also test your detector or classifier [with code](/services/vision/mlmodel/#existing-images-on-your-machine).
 
 {{% /tablestep %}}
+
 {{< /table >}}
 
 ## Versioning for deployed models
