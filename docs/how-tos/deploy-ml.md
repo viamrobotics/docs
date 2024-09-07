@@ -90,7 +90,7 @@ Start by assembling the dataset to train your machine learning model on.
 
 {{% expand "Just testing and want a dataset to get started with? Click here." %}}
 
-We have two datasets you can use for testing, one with shapes and the other wise a wooden figure:
+We have two datasets you can use for testing, one with shapes and the other with a wooden figure:
 
 {{<imgproc src="/tutorials/data-management/shapes-dataset.png" resize="1200x" declaredimensions=true style="max-width:400px" alt="The shapes dataset." class="imgzoom fill aligncenter">}}
 
