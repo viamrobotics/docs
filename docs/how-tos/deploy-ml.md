@@ -384,7 +384,7 @@ If the results exceed the confidence threshold, the **Run model** section shows 
 When satisfied that your ML model is working well, continue to [deploy an ML model](#deploy-an-ml-model).
 If the vision service is not detecting or classifying reliably, you will need to adjust your ML model by consider adding and labelling more images in your dataset.
 
-Ideally, you want your ML model to be able to identify objects with a high level of confidence, which is dependent on a robust source dataset.
+Ideally, you want your ML model to be able to identify objects with a high level of confidence, which is dependent on a robust training dataset.
 
 ## Deploy an ML model
 
