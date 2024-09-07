@@ -144,7 +144,7 @@ You can label your images to create:
 
 - **Detection models**: Draw **bounding boxes** around distinct objects within captured images.
   The trained model will enable your machine to be able to detect those objects on its own.
-- **Classification models**: Add **tags** to your images with class labels that describes it.
+- **Classification models**: Add **tags** to each of your images with class labels that describe it.
   The trained model will enable your machine to classify similar images on its own.
 
 <br>
