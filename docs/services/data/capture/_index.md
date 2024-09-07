@@ -686,6 +686,6 @@ To capture performance metric data for machines, filter, or visualize data, see:
 
 {{< cards >}}
 {{% card link="/how-tos/performance-metrics/" %}}
-{{% card link="/tutorials/projects/filtered-camera/" %}}
+{{% card link="/how-tos/image-data/" %}}
 {{% card link="/tutorials/control/air-quality-fleet/" %}}
 {{< /cards >}}

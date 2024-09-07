@@ -214,7 +214,7 @@ You can now configure [triggers](/configure/triggers/) (previously called webhoo
 Viam has added a [`filtered-camera` module](https://app.viam.com/module/erh/filtered-camera) that selectively captures and syncs only the images that match the detections of an ML model.
 For example, you could train an ML model that is focused on sports cars, and only capture images from the camera feed when a sports car is detected in the frame.
 
-Check out [this tutorial](/tutorials/projects/filtered-camera/) for more information.
+Check out [this guide](/how-tos/image-data/) for more information.
 
 {{% /changelog %}}
 
