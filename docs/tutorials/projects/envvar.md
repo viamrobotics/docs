@@ -14,7 +14,7 @@ imageAlt: "Code and an environment variables file"
 authors: ["Joyce Lin"]
 languages: []
 viamresources: []
-platform_area: []
+platformarea: []
 level: "Intermediate"
 date: "2024-08-21"
 updated: "2024-08-21"

@@ -10,7 +10,7 @@ aliases:
   - /use-cases/image-data/
 languages: []
 viamresources: ["camera", "data_manager", "mlmodel", "vision"]
-platform_area: ["machine learning", "data"]
+platformarea: ["machine learning", "data"]
 level: "Intermediate"
 date: "2024-08-26"
 # updated: ""  # When the tutorial was last entirely checked

@@ -14,7 +14,7 @@ imageAlt: "Rover with mounted solar panel."
 authors: ["Matt Vella"]
 languages: []
 viamresources: ["board", "motor", "base", "camera"]
-platform_area: ["core"]
+platformarea: ["core"]
 level: "Intermediate"
 date: "2023-03-29"
 updated: "2024-04-15"

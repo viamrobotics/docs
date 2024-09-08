@@ -11,7 +11,7 @@ aliases:
   - /use-cases/create-module/
 languages: ["python", "go", "c++"]
 viamresources: []
-platform_area: ["registry"]
+platformarea: ["registry"]
 level: "Intermediate"
 date: "2024-07-30"
 # updated: ""  # When the tutorial was last entirely checked

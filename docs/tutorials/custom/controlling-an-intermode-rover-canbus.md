@@ -18,7 +18,7 @@ images: ["/tutorials/intermode/rover_outside.png"]
 authors: ["Matt Vella"]
 languages: ["go"]
 viamresources: ["base", "custom"]
-platform_area: ["registry"]
+platformarea: ["registry"]
 level: "Intermediate"
 date: "2023-01-22"
 updated: "2024-04-18"

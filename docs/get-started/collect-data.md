@@ -9,7 +9,7 @@ authors: []
 weight: 40
 languages: []
 viamresources: ["data_manager", "sensor"]
-platform_area: ["data"]
+platformarea: ["data"]
 no_list: true
 cost: "0"
 resource: "quickstart"

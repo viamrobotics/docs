@@ -16,7 +16,7 @@ images: ["/tutorials/confetti-bot/confetti-bot-explodes.gif"]
 authors: ["Hazal Mestci"]
 languages: ["python"]
 viamresources: ["board", "motor"]
-platform_area: ["core"]
+platformarea: ["core"]
 level: "Beginner"
 date: "2023-05-29"
 updated: "2024-04-16"

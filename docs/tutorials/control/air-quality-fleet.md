@@ -9,7 +9,7 @@ tags: ["tutorial"]
 authors: ["Jessamy Taylor"]
 languages: ["typescript"]
 viamresources: ["sensor", "data_manager"]
-platform_area: ["data", "fleet"]
+platformarea: ["data", "fleet"]
 level: "Intermediate"
 date: "2024-05-07"
 # updated: ""  # When the tutorial was last entirely checked

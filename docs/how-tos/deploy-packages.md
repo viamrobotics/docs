@@ -7,7 +7,7 @@ images: ["/registry/module-puzzle-piece.svg"]
 description: "You can use a fragment to deploy software packages to many machines, as well as to keep those software packages versioned."
 languages: []
 viamresources: []
-platform_area: ["registry", "fleet"]
+platformarea: ["registry", "fleet"]
 level: "Intermediate"
 date: "2024-08-28"
 # updated: ""  # When the tutorial was last entirely checked
