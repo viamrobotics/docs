@@ -14,7 +14,7 @@ imageAlt: "wiring diagram"
 authors: ["Hazal Mestci"]
 languages: ["python"]
 viamresources: ["sensor", "board"]
-platform_area: ["core"]
+platformarea: ["core"]
 level: "Intermediate"
 date: "2024-08-21"
 updated: "2024-08-21"

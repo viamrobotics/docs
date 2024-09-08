@@ -12,7 +12,7 @@ aliases:
   - "/services/data/capture/performance-metrics/"
 languages: []
 viamresources: ["sensor", "data_manager"]
-platform_area: ["data", "registry"]
+platformarea: ["data", "registry"]
 level: "Beginner"
 date: "2024-08-23"
 # updated: ""  # When the tutorial was last entirely checked

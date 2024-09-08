@@ -9,7 +9,7 @@ tags: ["data management", "data", "services", "visualize"]
 authors: []
 languages: []
 viamresources: ["data_manager"]
-platform_area: ["data"]
+platformarea: ["data"]
 level: "Intermediate"
 date: "2024-01-19"
 cost: "0"

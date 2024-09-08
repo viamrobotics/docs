@@ -8,7 +8,7 @@ tags: ["data management", "cloud", "sync"]
 icon: true
 languages: ["python"]
 viamresources: ["data_manager"]
-platform_area: ["data"]
+platformarea: ["data"]
 level: "Beginner"
 date: "2024-09-05"
 # updated: ""  # When the tutorial was last entirely checked

@@ -9,7 +9,7 @@ aliases:
   - /use-cases/sensor-data-query-sdk/
 languages: ["python"]
 viamresources: ["sensor", "data_manager"]
-platform_area: ["data", "core"]
+platformarea: ["data", "core"]
 level: "Beginner"
 date: "2024-08-16"
 # updated: ""  # When the tutorial was last entirely checked

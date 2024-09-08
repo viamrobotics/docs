@@ -10,7 +10,7 @@ aliases:
   - /use-cases/sensor-data-visualize/
 languages: []
 viamresources: ["sensor", "data_manager"]
-platform_area: ["data", "fleet"]
+platformarea: ["data", "fleet"]
 level: "Beginner"
 date: "2024-08-16"
 # updated: ""  # When the tutorial was last entirely checked

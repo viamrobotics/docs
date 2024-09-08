@@ -25,7 +25,7 @@ cost: "0"
 resource: "quickstart"
 languages: ["python", "go", "typescript", "flutter", "c++"]
 viamresources: ["base"]
-platform_area: ["core"]
+platformarea: ["core"]
 level: "Beginner"
 date: "2022-12-08"
 # updated: ""

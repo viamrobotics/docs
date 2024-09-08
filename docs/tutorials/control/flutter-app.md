@@ -9,7 +9,7 @@ tags: ["sdk", "flutter"]
 authors: ["Clint Purser"]
 languages: ["flutter"]
 viamresources: []
-platform_area: ["core"]
+platformarea: ["core"]
 images: ["/tutorials/flutter-app/preview.gif"]
 level: "Intermediate"
 date: "2024-01-17"

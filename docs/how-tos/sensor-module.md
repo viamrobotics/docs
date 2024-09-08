@@ -8,7 +8,7 @@ tags: ["modular resources", "components", "services", "registry"]
 description: "Add a custom resource by creating and deploying a module to your machine."
 languages: ["python"]
 viamresources: ["sensor"]
-platform_area: ["registry"]
+platformarea: ["registry"]
 level: "Beginner"
 date: "2024-08-21"
 # updated: ""  # When the tutorial was last entirely checked

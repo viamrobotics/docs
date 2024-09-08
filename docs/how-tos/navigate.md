@@ -12,7 +12,7 @@ aliases:
 languages: []
 viamresources:
   ["base", "movement_sensor", "motion", "frame_system", "navigation"]
-platform_area: ["mobility"]
+platformarea: ["mobility"]
 level: "Intermediate"
 date: "2024-01-04"
 # updated: ""  # When the tutorial was last entirely checked

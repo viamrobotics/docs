@@ -117,7 +117,7 @@
                               "languages" .Params.languages
                               "viamservices" (intersect (.Params.viamresources) (slice "data_manager" "motion" "frame_system" "mlmodel" "navigation" "base_remote_control" "sensors" "slam" "vision"))
                               "viamcomponents" (intersect (.Params.viamresources) (slice "arm" "base" "board" "camera" "encoder" "generic" "encoder" "gantry" "gripper" "input_controller" "motor" "movement_sensor" "power_sensor" "sensor" "servo"))
-                              "platform_area" (intersect (.Params.platform_area) (slice "machine learning" "data" "registry" "fleet" "mobility" "core") )
+                              "platformarea" (intersect (.Params.platformarea) (slice "machine learning" "data" "registry" "fleet" "mobility" "core") )
                               "level" .Params.level
                               "cost" (int ($.Scratch.Get "cost"))
                               "featured" ($.Scratch.Get "featured")

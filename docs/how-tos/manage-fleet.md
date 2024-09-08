@@ -12,7 +12,7 @@ aliases:
   - /use-cases/manage-fleet/
 languages: []
 viamresources: []
-platform_area: ["fleet"]
+platformarea: ["fleet"]
 level: "Beginner"
 date: "2024-02-27"
 updated: "2024-09-02"

@@ -15,7 +15,7 @@ aliases:
 authors: ["Hazal Mestci"]
 languages: []
 viamresources: ["vision", "camera"]
-platform_area: ["machine learning"]
+platformarea: ["machine learning"]
 level: "Beginner"
 date: "2022-12-16"
 updated: "2024-09-03"

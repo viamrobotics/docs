@@ -11,7 +11,7 @@ aliases:
   - /use-cases/develop-app/
 languages: ["python", "go", "typescript", "flutter", "c++"]
 viamresources: []
-platform_area: ["registry", "core"]
+platformarea: ["registry", "core"]
 level: "Beginner"
 date: "2024-08-02"
 # updated: ""  # When the tutorial was last entirely checked
