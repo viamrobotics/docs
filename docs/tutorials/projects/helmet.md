@@ -10,7 +10,7 @@ tags: ["tutorial"]
 authors: [Jessamy Taylor]
 languages: []
 viamresources: ["camera", "data_manager", "mlmodel", "vision"]
-platformarea: ["machine learning", "data"]
+platformarea: ["ml", "data"]
 level: "Intermediate"
 date: "2024-03-05"
 cost: 120
