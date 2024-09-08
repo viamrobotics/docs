@@ -27,6 +27,7 @@ tags:
 authors: ["Sierra Guequierre"]
 languages: ["python", "go"]
 viamresources: ["navigation", "base", "movement_sensor", "encoder"]
+platform_area: ["mobility"]
 level: "Intermediate"
 date: "2023-02-08"
 # updated: ""

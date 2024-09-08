@@ -11,6 +11,7 @@ aliases:
   - use-cases/configure/
 languages: []
 viamresources: []
+platform_area: ["fleet", "core"]
 level: "Beginner"
 date: "2024-08-02"
 # updated: "2024-08-26"  # When the tutorial was last entirely checked

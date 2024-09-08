@@ -12,6 +12,7 @@ aliases:
 languages: ["python", "go", "typescript", "flutter", "c++"] # Viam SDK programming languages used, if any
 languages: []
 viamresources: []
+platform_area: ["registry"]
 level: "Beginner"
 date: "2024-06-30"
 # updated: ""  # When the tutorial was last entirely checked

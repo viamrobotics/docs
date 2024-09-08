@@ -15,6 +15,7 @@ aliases:
 authors: ["Jessamy Taylor"]
 languages: ["python"]
 viamresources: ["vision", "camera", "base"]
+platform_area: ["machine learning"]
 level: "Intermediate"
 date: "2022-08-26"
 updated: "2024-05-01"

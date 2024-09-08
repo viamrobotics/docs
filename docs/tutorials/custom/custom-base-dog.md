@@ -17,6 +17,7 @@ aliases:
 authors: ["Jessamy Taylor"]
 languages: ["python"]
 viamresources: ["base", "camera", "custom"]
+platform_area: ["registry"]
 level: "Intermediate"
 date: "2023-05-15"
 updated: "2024-05-07"

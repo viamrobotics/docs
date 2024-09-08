@@ -8,6 +8,7 @@ images: ["/installation/thumbnails/install.png"]
 imageAlt: "Install Viam"
 languages: []
 viamresources: []
+platform_area: ["fleet"]
 level: "Intermediate"
 date: "2024-08-21"
 # updated: ""  # When the tutorial was last entirely checked

@@ -12,6 +12,7 @@ aliases:
   - /modular-resources/upload/
 languages: []
 viamresources: []
+platform_area: ["registry"]
 level: "Beginner"
 date: "2024-08-21"
 # updated: ""  # When the tutorial was last entirely checked

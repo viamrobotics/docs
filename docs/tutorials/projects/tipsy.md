@@ -14,6 +14,7 @@ authors: ["Hazal Mestci"]
 languages: ["python"]
 viamresources:
   ["board", "motor", "base", "camera", "sensor", "mlmodel", "vision"]
+platform_area: ["machine learning"]
 level: "Intermediate"
 date: "2023-05-29"
 updated: "2024-04-16"

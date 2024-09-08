@@ -14,6 +14,7 @@ tags: ["arm", "gripper", "motion", "services"]
 authors: ["Jessamy Taylor"]
 languages: ["python"]
 viamresources: ["arm", "gripper", "motion", "frame_system"]
+platform_area: ["mobility"]
 level: "Intermediate"
 date: "2023-07-03"
 # updated: ""

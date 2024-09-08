@@ -9,6 +9,7 @@ images: ["/tutorials/pet-photographer/data-capture.png"]
 authors: ["Sky Leilani"]
 languages: ["go", "python"]
 viamresources: ["vision", "camera", "data_manager"]
+platform_area: ["data", "registry"]
 level: "Intermediate"
 date: "2023-09-17"
 # updated: "2024-04-19"

@@ -14,6 +14,7 @@ tags: ["servo", "single component tutorial", "raspberry pi", "sdk", "python"]
 authors: ["Kacey Meier-Smith"]
 languages: ["python"]
 viamresources: ["board", "servo"]
+platform_area: ["core"]
 level: "Beginner"
 date: "2023-03-30"
 # updated: ""

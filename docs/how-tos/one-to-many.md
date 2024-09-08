@@ -10,6 +10,7 @@ aliases:
   - /use-cases/one-to-many/
 languages: []
 viamresources: []
+platform_area: ["fleet"]
 level: "Beginner"
 date: "2024-08-09"
 # updated: ""  # When the tutorial was last entirely checked

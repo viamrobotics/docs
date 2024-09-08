@@ -12,6 +12,7 @@ aliases:
   - /services/ml/upload-training-script/
 languages: ["python"]
 viamresources: ["mlmodel", "data_manager"]
+platform_area: ["machine learning", "data", "registry"]
 level: "Advanced"
 date: "2024-08-29"
 # updated: ""  # When the tutorial was last entirely checked
