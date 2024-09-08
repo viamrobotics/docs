@@ -1419,7 +1419,7 @@ ul.sectionlist > li:hover {
 #tutorial-menu {
   display: flex;
   flex-direction: column;
-  max-width: 800px;
+  max-width: 850px;
 }
 
 .pill-explainer {
@@ -1436,12 +1436,29 @@ ul.sectionlist > li:hover {
   flex-wrap: wrap;
 }
 
-#tutorial-filters > .filter {
+#tutorial-filters > .filter, #platformarea-list .filterbutton {
   text-decoration: none;
   color: black;
   padding: 0.2rem 1rem;
   margin: 0.2rem;
   border: 1px solid black;
+}
+
+#platformarea-list .filterbutton {
+  background-color: white;
+}
+
+#platformarea-list .filterbutton.refined {
+  background-color: black;
+  color: white;
+}
+
+#platformarea-list ul {
+  display: flex;
+  list-style-type: none;
+  padding-inline-start: 0;
+  flex-wrap: wrap;
+  margin-bottom: 0;
 }
 
 #tutorial-filters > .filter:hover {
