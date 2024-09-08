@@ -13,7 +13,7 @@ tags: ["camera", "vision", "detector", "python"]
 authors: ["Hazal Mestci"]
 languages: ["python"]
 viamresources: ["camera", "mlmodel", "vision"]
-platformarea: ["machine learning"]
+platformarea: ["ml"]
 level: "Intermediate"
 date: "2023-03-30"
 updated: "2024-04-18"

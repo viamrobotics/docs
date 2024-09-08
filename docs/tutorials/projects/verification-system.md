@@ -14,7 +14,7 @@ tags: ["mlmodel", "vision", "services", "security", "camera", "data management"]
 authors: ["Sierra G."]
 languages: []
 viamresources: ["mlmodel", "vision", "camera"]
-platformarea: ["machine learning"]
+platformarea: ["ml"]
 level: "Intermediate"
 date: "2024-01-17"
 cost: "0"

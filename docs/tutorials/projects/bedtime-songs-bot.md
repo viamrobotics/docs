@@ -26,7 +26,7 @@ videoAlt: "A demonstration of the bedtime songs bot is taking place in an office
 authors: ["Tess Avitabile", "Sierra Guequierre"]
 languages: ["python"]
 viamresources: ["camera", "sensor", "mlmodel", "vision"]
-platformarea: ["machine learning", "data"]
+platformarea: ["ml", "data"]
 level: "Intermediate"
 date: "2023-08-18"
 updated: "2024-04-18"

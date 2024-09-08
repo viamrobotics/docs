@@ -7,7 +7,7 @@ images: ["/tutorials/filtered-camera-module/viam-figure-preview.png"]
 imageAlt: "A wooden Viam figure being detected on a camera stream"
 tags: ["camera", "vision", "detector", "mlmodel", "data"]
 viamresources: ["camera", "vision", "mlmodel", "data_manager"]
-platformarea: ["machine learning", "data"]
+platformarea: ["ml", "data"]
 languages: []
 level: "Intermediate"
 date: "2023-12-20"

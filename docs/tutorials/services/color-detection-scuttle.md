@@ -17,7 +17,7 @@ tags: ["vision", "detector", "base", "scuttle", "services"]
 authors: ["Hazal Mestci"]
 languages: ["python"]
 viamresources: ["base", "vision", "camera"]
-platformarea: ["machine learning", "core"]
+platformarea: ["ml", "core"]
 level: "Intermediate"
 date: "2022-08-18"
 updated: "2024-05-01"
