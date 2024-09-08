@@ -12,6 +12,7 @@ aliases:
 authors: []
 languages: ["python", "go"]
 viamresources: ["arm"]
+platform_area: ["mobility"]
 level: "Intermediate"
 date: "2023-03-07"
 # updated: ""

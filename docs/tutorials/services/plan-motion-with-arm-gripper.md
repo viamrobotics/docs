@@ -13,6 +13,7 @@ tags: ["arm", "gripper", "motion", "services"]
 authors: []
 languages: ["python", "go"]
 viamresources: ["arm", "gripper", "motion", "frame_system"]
+platform_area: ["mobility"]
 level: "Intermediate"
 date: "2023-03-07"
 # updated: ""

@@ -18,6 +18,7 @@ tags: ["base", "scuttle", "gamepad"]
 authors: []
 languages: []
 viamresources: ["base", "input_controller", "base_remote_control"]
+platform_area: ["core"]
 level: "Intermediate"
 date: "2022-08-10"
 updated: "2024-04-17"

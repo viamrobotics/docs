@@ -14,6 +14,7 @@ no_list: true
 authors: ["Arielle Mella"]
 languages: ["python"]
 viamresources: ["board", "motor"]
+platform_area: ["core"]
 level: "Beginner"
 date: "2023-05-29"
 # updated: ""

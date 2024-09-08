@@ -12,6 +12,7 @@ aliases:
   - /services/data/trigger-sync/
 languages: []
 viamresources: ["sensor", "data_manager"]
+platform_area: ["data", "registry"]
 level: "Intermediate"
 date: "2024-09-02"
 # updated: ""  # When the tutorial was last entirely checked

@@ -9,6 +9,7 @@ images: ["/tutorials/plant-watering-pi/preview.png"]
 authors: ["Sierra Guequierre"]
 languages: ["python"]
 viamresources: ["board", "motor", "sensor", "module"]
+platform_area: ["core"]
 level: "Intermediate"
 date: "2023-03-29"
 # updated: "2024-04-19"

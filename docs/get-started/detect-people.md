@@ -16,6 +16,7 @@ aliases:
   - /get-started/quickstarts/detect-people/
 languages: []
 viamresources: ["camera", "mlmodel", "vision"]
+platform_area: ["machine learning"]
 level: "Beginner"
 date: "2024-07-31"
 # updated: ""  # When the tutorial was last entirely checked

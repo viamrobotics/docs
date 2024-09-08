@@ -12,6 +12,7 @@ imageAlt: "Viam API collection on Postman"
 authors: ["Joyce Lin"]
 languages: []
 viamresources: ["base"]
+platform_area: ["core"]
 level: "Intermediate"
 date: "2024-07-25"
 updated: "2024-07-25"

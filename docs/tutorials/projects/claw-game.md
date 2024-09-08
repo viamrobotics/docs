@@ -11,6 +11,7 @@ images: ["/tutorials/claw-game/preview.gif"]
 authors: ["Arielle Mella", "Hazal Mestci", "Matt Vella"]
 languages: ["python", "typescript"]
 viamresources: ["board", "arm", "gripper", "motion", "frame_system"]
+platform_area: ["mobility", "core"]
 level: "Advanced"
 date: "2023-05-29"
 # updated: ""

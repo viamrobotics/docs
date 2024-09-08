@@ -16,6 +16,7 @@ tags: ["board", "raspberry pi", "app", "sdk"]
 authors: []
 languages: ["python", "go"]
 viamresources: ["board"]
+platform_area: ["core"]
 level: "Beginner"
 date: "2022-10-04"
 # updated: ""

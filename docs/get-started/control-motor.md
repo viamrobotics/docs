@@ -8,6 +8,7 @@ authors: []
 weight: 20
 languages: ["python", "go", "typescript", "flutter", "c++"]
 viamresources: ["motor"]
+platform_area: ["core"]
 no_list: true
 cost: "0"
 resource: "quickstart"

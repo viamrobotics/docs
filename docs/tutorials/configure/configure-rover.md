@@ -14,6 +14,7 @@ aliases:
 authors: ["Hazal Mestci"]
 languages: ["python", "go"]
 viamresources: ["board", "motor", "camera", "base", "encoder"]
+platform_area: ["core"]
 level: "Beginner"
 date: "2022-08-02"
 updated: "2024-04-17"

@@ -15,6 +15,7 @@ tags: ["base", "motor", "camera", "raspberry pi"]
 authors: ["Hazal Mestci"]
 languages: ["python"]
 viamresources: ["base", "camera", "motor", "board"]
+platform_area: ["core"]
 level: "Intermediate"
 date: "2022-11-29"
 updated: "2024-04-17"

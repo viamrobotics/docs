@@ -1,19 +1,20 @@
 ---
-title: "Working with Python environment variables"
-linkTitle: "Working with Python environment variables"
+title: "Plant Watering Device Workshop"
+linkTitle: "Plant Watering Device Workshop"
 type: "docs"
 layout: "empty"
-canonical: "https://codelabs.viam.com/guide/environment-variables/index.html"
+canonical: "https://codelabs.viam.com/guide/plant-watering-device-workshop/index.html"
 tags: ["APIs", "python"]
-description: "Learn how to use Python variables with Viam projects so your code runs smoothly from development to deployment."
+description: "Learn how to physically assemble a functional plant watering device by connecting and wire the components and code the machine."
 images:
   [
-    "https://codelabs.viam.com/guide/environment-variables/img/d97c0b6eea8a399e.png",
+    "https://codelabs.viam.com/guide/plant-watering-device-workshop/img/8a9dd22a936e4ba4.png",
   ]
-imageAlt: "Code and an environment variables file"
-authors: ["Joyce Lin"]
-languages: []
-viamresources: []
+imageAlt: "wiring diagram"
+authors: ["Hazal Mestci"]
+languages: ["python"]
+viamresources: ["sensor", "board"]
+platform_area: ["core"]
 level: "Intermediate"
 date: "2024-08-21"
 updated: "2024-08-21"

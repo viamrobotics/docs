@@ -11,6 +11,7 @@ imageAlt: "Homemade air quality sensors"
 authors: ["Joyce Lin"]
 languages: []
 viamresources: ["board", "sensor", "generic"]
+platform_area: ["core"]
 level: "Intermediate"
 date: "2024-08-31"
 updated: "2024-08-31"

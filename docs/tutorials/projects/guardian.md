@@ -13,6 +13,7 @@ no_list: true
 authors: ["Naomi Pentrel"]
 languages: ["python"]
 viamresources: ["camera", "vision", "servo", "mlmodel"]
+platform_area: ["machine learning"]
 level: "Intermediate"
 date: "2023-05-15"
 updated: "2024-04-18"

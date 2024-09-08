@@ -12,6 +12,7 @@ imageAlt: "An overhead view of a rover next to a UI to move it"
 authors: ["Joyce Lin"]
 languages: []
 viamresources: ["base"]
+platform_area: ["core"]
 level: "Beginner"
 date: "2024-08-31"
 updated: "2024-08-31"

@@ -13,6 +13,7 @@ imageAlt: "The front of the Ombibot 2000 robot"
 authors: ["Matt Vella"]
 languages: []
 viamresources: ["board", "motor", "base", "camera"]
+platform_area: []
 level: "Intermediate"
 date: "2023-05-04"
 updated: "2024-04-16"
