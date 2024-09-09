@@ -279,8 +279,6 @@ class meteo_PM(Sensor, Reconfigurable):
     # Class parameters
     latitude: float  # Latitude at which to get data
     longitude: float  # Longitude at which to get data
-    default_lat: float = 45  # Default latitude for configuration
-    default_long = -121  # Default longitude for configuration
 
     # Constructor
     @classmethod
@@ -300,14 +298,10 @@ class meteo_PM(Sensor, Reconfigurable):
         if "latitude" in fields:
             if not fields["latitude"].HasField("number_value"):
                 raise Exception("Latitude must be a float.")
-        else:
-            self.default_lat = 45
 
         if "longitude" in fields:
             if not fields["longitude"].HasField("number_value"):
                 raise Exception("Longitude must be a float.")
-        else:
-            self.default_long = -121
         return
 
     # Handles attribute reconfiguration
@@ -317,10 +311,10 @@ class meteo_PM(Sensor, Reconfigurable):
       ):
         attrs = struct_to_dict(config.attributes)
 
-        self.latitude = float(attrs.get("latitude", self.default_lat))
+        self.latitude = float(attrs.get("latitude", 45))
         LOGGER.debug("Using latitude: " + self.latitude)
 
-        self.longitude = float(attrs.get("longitude", self.default_long))
+        self.longitude = float(attrs.get("longitude", -121))
         LOGGER.debug("Using longitude: " + self.longitude)
 
         return
