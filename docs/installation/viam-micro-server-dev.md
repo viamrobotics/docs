@@ -157,60 +157,62 @@ brew install cmake ninja dfu-util
 {{% /tab %}}
 {{% /tabs %}}
 
-2.  Install and activate the ESP-IDF
+2. Install and activate the ESP-IDF
 
-    Clone Viam's fork of the ESP-IDF, the development framework for Espressif SoCs (System-on-Chips) supported on Windows, Linux and macOS:
+   Clone Viam's fork of the ESP-IDF, the development framework for Espressif SoCs (System-on-Chips) supported on Windows, Linux and macOS:
 
-    ```sh { class="command-line" data-prompt="$"}
-    mkdir -p ~/esp
-    cd ~/esp
-    git clone --depth 1 -b v4.4.4 --single-branch --recurse-submodules --shallow-submodules https://github.com/viamrobotics/esp-idf
-    ```
+   ```sh { class="command-line" data-prompt="$"}
+   mkdir -p ~/esp
+   cd ~/esp
+   git clone --depth 1 -b v4.4.4 --single-branch --recurse-submodules --shallow-submodules https://github.com/viamrobotics/esp-idf
+   ```
 
-3.  Then, install the required tools for ESP-IDF:
+3. Then, install the required tools for ESP-IDF:
 
-    ```sh { class="command-line" data-prompt="$"}
-    cd ~/esp/esp-idf
-    ./install.sh esp32
-    ```
+   ```sh { class="command-line" data-prompt="$"}
+   cd ~/esp/esp-idf
+   ./install.sh esp32
+   ```
 
-4.  To activate ESP-IDF, run the following command to source (`.`) the activation script `export.sh`:
+4. To activate ESP-IDF, run the following command to source (`.`) the activation script `export.sh`:
 
-        ```sh { class="command-line" data-prompt="$"}
-        . $HOME/esp/esp-idf/export.sh
-        ```
+   ```sh { class="command-line" data-prompt="$"}
+   . $HOME/esp/esp-idf/export.sh
+   ```
 
-        {{< alert title="Tip" color="tip" >}}
+   {{< alert title="Tip" color="tip" >}}
 
-    To avoid conflicts with other toolchains, adding this command to your `.bashrc` or `.zshrc` is not recommended.
-    Instead, save this command to run in any future terminal session where you need to activate the ESP-IDF development framework.
-    {{< /alert >}}
+To avoid conflicts with other toolchains, adding this command to your `.bashrc` or `.zshrc` is not recommended.
+Instead, save this command to run in any future terminal session where you need to activate the ESP-IDF development framework.
 
-5.  Install the following tools with `cargo`:
+{{< /alert >}}
 
-    ```sh { class="command-line" data-prompt="$"}
-    cargo install espup
-    cargo install cargo-espflash
-    cargo install ldproxy
-    ```
+5. Install the following tools with `cargo`:
 
-6.  Download and install the ESP-RS toolchain:
+   ```sh { class="command-line" data-prompt="$"}
+   cargo install espup
+   cargo install cargo-espflash
+   cargo install ldproxy
+   ```
 
-    ```sh { class="command-line" data-prompt="$"}
-    espup install -s -f ~/esp/export-rs.sh -v 1.67.0
-    ```
+6. Download and install the ESP-RS toolchain:
 
-7.  Activate the ESP Rust toolchain, run the following command to source (`.`) the activation script `export-rs.sh`:
+   ```sh { class="command-line" data-prompt="$"}
+   espup install -s -f ~/esp/export-rs.sh -v 1.67.0
+   ```
 
-        ```sh { class="command-line" data-prompt="$"}
-        . $HOME/esp/export-rs.sh
-        ```
+7. Activate the ESP Rust toolchain, run the following command to source (`.`) the activation script `export-rs.sh`:
 
-        {{< alert title="Tip" color="tip" >}}
+   ```sh { class="command-line" data-prompt="$"}
+   . $HOME/esp/export-rs.sh
+   ```
 
-    To avoid conflicts with other toolchains, adding this command to your .bashrc or .zshrc is not recommended.
-    Instead, save this command to run in any future terminal session where you need to activate the ESP-IDF development framework.
-    {{< /alert >}}
+   {{< alert title="Tip" color="tip" >}}
+
+To avoid conflicts with other toolchains, adding this command to your .bashrc or .zshrc is not recommended.
+Instead, save this command to run in any future terminal session where you need to activate the ESP-IDF development framework.
+
+{{< /alert >}}
 
 {{% /tab %}}
 {{% /tabs %}}
