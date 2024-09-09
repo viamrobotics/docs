@@ -298,4 +298,4 @@ For more information, see the [`viam module` command](/cli/#module).
 
 Now that your module is available in the registry, you can configure the components or services it supports just as you would configure other resources: Go to the **CONFIGURE** tab of a machine, add a component or service (as applicable), and search for the name of your model.
 
-To delete or change the privacy settings of a module you deployed, see [Manage Modules](/how-tos/manage-modules/).
+To update, delete, or change the privacy settings of a module you deployed, see [Manage Modules](/how-tos/manage-modules/).
