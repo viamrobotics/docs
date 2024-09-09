@@ -1,4 +1,4 @@
-Once you have configured your analogs, navigate to the [**CONTROL** tab](/fleet/control/) to monitor analog values.
+Once you have configured your analogs, open the board's **TEST** panel on the [**CONFIGURE** tab](/configure/) to monitor analogs.
 The numbers displayed next to each analog name represent the digital signal received from the analog inputs.
 
-![Analogs in the control tab.](/components/board/analogs-control-tab.png)
+![Analogs in the test panel.](/components/board/analogs-control-tab.png)
