@@ -8,6 +8,7 @@ images: ["/services/ml/collect.svg"]
 description: "Capture images from a camera on your machine and selectively sync images to the cloud with filtering."
 aliases:
   - /use-cases/image-data/
+  - /tutorials/projects/filtered-camera
 languages: []
 viamresources: ["camera", "data_manager", "mlmodel", "vision"]
 platformarea: ["ml", "data"]
