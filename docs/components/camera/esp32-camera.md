@@ -34,9 +34,9 @@ At the step [Generate a new project from a template](/installation/viam-micro-se
 Finish the [`viam-micro-server` Development Setup](/installation/viam-micro-server-dev/) and return to this guide.
 {{< /alert >}}
 
-{{< alert title="Info" color="info" >}}
+{{< alert title="Data management not supported" color="caution" >}}
 
-The`esp32-camera` camera model is not currently available as a built-in option in [the Viam app](https://app.viam.com), so you cannot use **Builder** mode to configure this camera.
+The `esp32-camera` camera model does not currently support the [data management service](/services/data/).
 
 {{< /alert >}}
 
