@@ -176,9 +176,9 @@ brew install cmake ninja dfu-util
 
 4.  To activate ESP-IDF, run the following command to source (`.`) the activation script `export.sh`:
 
-        ```sh { class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
         . $HOME/esp/esp-idf/export.sh
-        ```
+   ```
 
         {{< alert title="Tip" color="tip" >}}
 
@@ -202,9 +202,9 @@ brew install cmake ninja dfu-util
 
 7.  Activate the ESP Rust toolchain, run the following command to source (`.`) the activation script `export-rs.sh`:
 
-        ```sh { class="command-line" data-prompt="$"}
-        . $HOME/esp/export-rs.sh
-        ```
+   ```sh { class="command-line" data-prompt="$"}
+   . $HOME/esp/export-rs.sh
+   ```
 
         {{< alert title="Tip" color="tip" >}}
 
