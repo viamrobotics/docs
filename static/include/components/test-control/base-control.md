@@ -1,4 +1,4 @@
-After you configure the base, open the base's **TEST** panel on the [**CONFIGURE** tab](/configure/) to view the controls to enable keyboard or discrete control over your machine's movement.
+After you configure the base, open the base's **TEST** panel on the [**CONFIGURE**](/configure/) or [**CONTROL**](/fleet/control/) tabs to view the controls to enable keyboard or discrete control over your machine's movement.
 
 {{< imgproc src="/components/base/base-control-tab.png" alt="The base component in control tab" resize="350x" >}}
 

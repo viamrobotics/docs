@@ -1,6 +1,6 @@
 ## Test the arm
 
-Once your arm is configured and connected, open the arm's **TEST** panel on the [**CONFIGURE** tab](/configure/).
+Once your arm is configured and connected, open the arm's **TEST** panel on the [**CONFIGURE**](/configure/) or [**CONTROL**](/fleet/control/) tabs.
 
 Use the buttons to move the end position or the joints and check whether it moves as expected.
 
