@@ -11,6 +11,6 @@ Try driving your base around using the WASD keyboard controls.
 Ensure that your robot has sufficient space to drive around without hitting anyone or anything.
 {{% /alert %}}
 
-You can execute movement modes such as `Straight` and `Spin` and different movement types such as `Continuous` and `Discrete` and directions such as `Forwards` and `Backwards`.
+You can also move straight or spin from the base panel.
 
 If you do not see the base card in the **TEST** panel, check the **LOGS** tab for possible setup or configuration errors.
