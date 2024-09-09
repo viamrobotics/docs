@@ -6,7 +6,6 @@ images: ["/icons/components/motor.svg"]
 description: "Use Viam to control a motor's speed and direction in just a few steps."
 authors: []
 weight: 20
-languages: ["python", "go", "typescript", "flutter", "c++"]
 viamresources: ["motor"]
 platformarea: ["core"]
 no_list: true
@@ -14,7 +13,7 @@ cost: "0"
 resource: "quickstart"
 aliases:
   - /get-started/quickstarts/control-motor/
-languages: ["python", "go", "typescript", "c++"]
+languages: ["python", "go", "typescript", "flutter", "c++"]
 viamresources: [
     "motor",
   ]
