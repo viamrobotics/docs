@@ -501,9 +501,11 @@ END MARKETING CSS
 .hover-card:hover {
   box-shadow: 8px 8px 0 0 #000;
 
-  -webkit-transform: translate(-3px,-3px);
-  -ms-transform: translate(-3px,-3px);
-  transform: translate(-3px,-3px);
+  // Not using transform to avoids jittering because the element areas move
+  margin-left: 13px;
+  margin-top: 13px;
+  margin-right: 19px;
+  margin-bottom: 19px;
 }
 
 .hover-card.yellow:hover {
