@@ -14,8 +14,7 @@ async def connect() -> ViamClient:
         auth_entity='fc5301b4-af27-4421-88fb-31352510bac1',
         credentials=Credentials(
             type='api-key',
-            # payload=os.environ['VIAM_API_KEY']
-            payload='x77v2hpog1gwkdsuxmxnxyh046mzu5mt'
+            payload=os.environ['VIAM_API_KEY']
         )
     )
     return await ViamClient.create_from_dial_options(dial_options)
