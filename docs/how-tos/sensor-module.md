@@ -312,10 +312,10 @@ class meteo_PM(Sensor, Reconfigurable):
         attrs = struct_to_dict(config.attributes)
 
         self.latitude = float(attrs.get("latitude", 45))
-        LOGGER.debug("Using latitude: " + self.latitude)
+        LOGGER.debug("Using latitude: " + str(self.latitude))
 
         self.longitude = float(attrs.get("longitude", -121))
-        LOGGER.debug("Using longitude: " + self.longitude)
+        LOGGER.debug("Using longitude: " + str(self.longitude))
 
         return
 
