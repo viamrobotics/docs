@@ -14,10 +14,44 @@ async def connect() -> ViamClient:
         auth_entity='fc5301b4-af27-4421-88fb-31352510bac1',
         credentials=Credentials(
             type='api-key',
-            payload=os.environ['VIAM_API_KEY']
+            # payload=os.environ['VIAM_API_KEY']
+            payload='x77v2hpog1gwkdsuxmxnxyh046mzu5mt'
         )
     )
     return await ViamClient.create_from_dial_options(dial_options)
+
+# ModelType is an enum and defined to render as int, convert back to string through this
+# as an alternative to this we could change in the python SDK like the below
+#   def __str__(self):
+#        return self.name
+# but then it wouldn't look pretty 
+def model_type_to_str(model_type: int) -> str:
+    model_type_map = {
+        0: "Unspecified",
+        1: "Single Label Classification",
+        2: "Multi Label Classification",
+        3: "Object Detection",
+    }
+    
+    try:
+        return model_type_map[model_type]
+    except KeyError:
+        raise ValueError(f"NEW UNKNOWN MODEL TYPE {model_type} must add to model type map")
+    
+def model_framework_to_str(model_framework: int) -> str:
+    model_framework_map = {
+        0: "Unspecified",
+        1: "TFLite",
+        2: "Tensorflow",
+        3: "Pytorch",
+        4: "ONNX"
+    }
+    
+    try:
+        return model_framework_map[model_framework]
+    except KeyError:
+        raise ValueError(f"NEW UNKNOWN MODEL FRAMEWORK {model_framework} must add to model framework map")
+
 
 async def main():
 
@@ -99,15 +133,54 @@ async def main():
 
     for model in ml_models_list:
         if model.visibility == 2:
-            json_m = {
-                "id": model.item_id,
-                "model_id": model.item_id,
-                "total_organization_usage": int(model.total_organization_usage),
-                "total_robot_usage": int(model.total_robot_usage),
-                "description": model.description,
-                "last_updated": time_now,
-                "url": "https://app.viam.com/ml-model/" + model.public_namespace + "/" + model.name + "/"
-            }
+            if model.ml_model_metadata.model_type & model.ml_model_metadata.model_framework:
+                json_m = {
+                    "id": model.item_id,
+                    "model_id": model.item_id,
+                    "total_organization_usage": int(model.total_organization_usage),
+                    "total_robot_usage": int(model.total_robot_usage),
+                    "description": model.description,
+                    "type": model_type_to_str(model.ml_model_metadata.model_type),
+                    "framework": model_framework_to_str(model.ml_model_metadata.model_framework),
+                    "last_updated": time_now,
+                    "url": "https://app.viam.com/ml-model/" + model.public_namespace + "/" + model.name + "/"
+                }
+            elif model.ml_model_metadata.model_type:
+                json_m = {
+                    "id": model.item_id,
+                    "model_id": model.item_id,
+                    "total_organization_usage": int(model.total_organization_usage),
+                    "total_robot_usage": int(model.total_robot_usage),
+                    "description": model.description,
+                    "type": model_type_to_str(model.ml_model_metadata.model_type),
+                    "framework": "",
+                    "last_updated": time_now,
+                    "url": "https://app.viam.com/ml-model/" + model.public_namespace + "/" + model.name + "/"
+                }
+            elif model.ml_model_metadata.model_framework:
+                json_m = {
+                    "id": model.item_id,
+                    "model_id": model.item_id,
+                    "total_organization_usage": int(model.total_organization_usage),
+                    "total_robot_usage": int(model.total_robot_usage),
+                    "description": model.description,
+                    "type": "",
+                    "framework": model_framework_to_str(model.ml_model_metadata.model_framework),
+                    "last_updated": time_now,
+                    "url": "https://app.viam.com/ml-model/" + model.public_namespace + "/" + model.name + "/"
+                }
+            else:
+                json_m = {
+                    "id": model.item_id,
+                    "model_id": model.item_id,
+                    "total_organization_usage": int(model.total_organization_usage),
+                    "total_robot_usage": int(model.total_robot_usage),
+                    "description": model.description,
+                    "type": "",
+                    "framework": "",
+                    "last_updated": time_now,
+                    "url": "https://app.viam.com/ml-model/" + model.public_namespace + "/" + model.name + "/"
+                }
             insert_resp = typesense_client.collections['mlmodels'].documents.upsert(
         json_m)
             print(insert_resp)
