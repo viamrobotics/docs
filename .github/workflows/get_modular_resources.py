@@ -132,54 +132,26 @@ async def main():
 
     for model in ml_models_list:
         if model.visibility == 2:
-            if model.ml_model_metadata.model_type & model.ml_model_metadata.model_framework:
-                json_m = {
-                    "id": model.item_id,
-                    "model_id": model.item_id,
-                    "total_organization_usage": int(model.total_organization_usage),
-                    "total_robot_usage": int(model.total_robot_usage),
-                    "description": model.description,
-                    "type": model_type_to_str(model.ml_model_metadata.model_type),
-                    "framework": model_framework_to_str(model.ml_model_metadata.model_framework),
-                    "last_updated": time_now,
-                    "url": "https://app.viam.com/ml-model/" + model.public_namespace + "/" + model.name + "/"
-                }
-            elif model.ml_model_metadata.model_type:
-                json_m = {
-                    "id": model.item_id,
-                    "model_id": model.item_id,
-                    "total_organization_usage": int(model.total_organization_usage),
-                    "total_robot_usage": int(model.total_robot_usage),
-                    "description": model.description,
-                    "type": model_type_to_str(model.ml_model_metadata.model_type),
-                    "framework": "",
-                    "last_updated": time_now,
-                    "url": "https://app.viam.com/ml-model/" + model.public_namespace + "/" + model.name + "/"
-                }
-            elif model.ml_model_metadata.model_framework:
-                json_m = {
-                    "id": model.item_id,
-                    "model_id": model.item_id,
-                    "total_organization_usage": int(model.total_organization_usage),
-                    "total_robot_usage": int(model.total_robot_usage),
-                    "description": model.description,
-                    "type": "",
-                    "framework": model_framework_to_str(model.ml_model_metadata.model_framework),
-                    "last_updated": time_now,
-                    "url": "https://app.viam.com/ml-model/" + model.public_namespace + "/" + model.name + "/"
-                }
+            if model.ml_model_metadata.model_framework:
+                framework = model_framework_to_str(model.ml_model_metadata.model_framework)
             else:
-                json_m = {
-                    "id": model.item_id,
-                    "model_id": model.item_id,
-                    "total_organization_usage": int(model.total_organization_usage),
-                    "total_robot_usage": int(model.total_robot_usage),
-                    "description": model.description,
-                    "type": "",
-                    "framework": "",
-                    "last_updated": time_now,
-                    "url": "https://app.viam.com/ml-model/" + model.public_namespace + "/" + model.name + "/"
-                }
+                framework = ""
+            if model.ml_model_metadata.model_type:
+                model = model_type_to_str(model.ml_model_metadata.model_type)
+            else:
+                model = ""
+
+            json_m = {
+                "id": model.item_id,
+                "model_id": model.item_id,
+                "total_organization_usage": int(model.total_organization_usage),
+                "total_robot_usage": int(model.total_robot_usage),
+                "description": model.description,
+                "type": model_type_to_str(model.ml_model_metadata.model_type),
+                "framework": model_framework_to_str(model.ml_model_metadata.model_framework),
+                "last_updated": time_now,
+                "url": "https://app.viam.com/ml-model/" + model.public_namespace + "/" + model.name + "/"
+            }
             insert_resp = typesense_client.collections['mlmodels'].documents.upsert(
         json_m)
             print(insert_resp)
