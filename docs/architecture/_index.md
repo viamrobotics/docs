@@ -150,6 +150,7 @@ Now imagine you want to run code to turn on a fan when the temperature sensor re
 - Configure the fan motor as a motor component and wire the fan motor relay to the same board as the sensor.
 - Write your script using one of the Viam [SDKs](/sdks/), for example the Viam Python SDK, using the sensor API and motor API.
 - You then run this code either locally on the SBC, or on a separate server.
+  See [Run code](/sdks/#run-code) for more options.
   Your code connects to the machine, authenticating with API keys, and uses the [sensor API](/components/sensor/#api) to get readings and the [motor API](/components/motor/#api) to turn the motor on and off.
 
   ![A desktop computer (client in this case) sends commands to robot 1 (server) with gRPC over wifi.](/build/program/sdks/robot-client.png)
@@ -169,11 +170,14 @@ Many simple {{< glossary_tooltip term_id="machine" text="machines" >}} consist o
 If you have a more complex situation with multiple computers and associated hardware working together, you have two options for organization:
 
 - One complex {{< glossary_tooltip term_id="machine" text="machine" >}} consisting of multiple parts, working together.
-- Multiple individual machines, linked by a {{< glossary_tooltip term_id="remote-part" text="remote" >}} connection.
+- Multiple individual machines (each made up of one or more parts), linked by a {{< glossary_tooltip term_id="remote-part" text="remote" >}} connection.
 
 These two options are very similar: in both cases, the parts communicate with each other securely and directly using gRPC/{{< glossary_tooltip term_id="webrtc" text="WebRTC" >}}.
+Any given part can be a remote part of multiple machines, whereas a part can only be a sub-part of one machine.
+In other words, remote connections allow sharing of resources across multiple machines, whereas main parts and sub-parts are a way to hierarchically organize one machine.
 
 Because the parts are interconnected, you can write SDK code that establishes a connection with one of them and controls them all in a coordinated way.
+This streamlines authentication because you do not need to provide multiple sets of API keys as you would if you were using separate API clients.
 
 {{< expand "Multi-part and remote examples" >}}
 

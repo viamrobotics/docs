@@ -15,9 +15,9 @@ aliases:
 When {{< glossary_tooltip term_id="machine" text="smart machines" >}} communicate with each other, they can share resources and operate collaboratively.
 This document explains how to establish secure connections between machines.
 
-### Machine parts
+## Machine parts
 
-Machines are organized into _parts_, where each part represents a computer (a single-board computer, desktop, laptop, or other computer) running [`viam-server`](/installation/), the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
+Machines are organized into _parts_, where each part represents a computer (a single-board computer, desktop, laptop, or other computer) running [`viam-server`](/installation/), the hardware [components](/components/) attached to it, and any [services](/services/) or other {{< glossary_tooltip term_id="resource" text="resources" >}} running on it.
 
 Every smart machine has a main part which is automatically created when you create the machine.
 Multi-part machines also have one or more _sub-parts_ representing additional computers running `viam-server`.
@@ -34,6 +34,10 @@ Connections between machines are established using the best network path availab
 
 When you configure a remote part or a sub-part, the main machine part can access all the components and services configured on the remote machine part as though they were entities of the main machine part.
 This is a one-way connection: the main machine part can access the resources of the remote machine part, but the remote machine cannot access the resources of the machine part remoting into it.
+
+When a part starts up, it attempts to connect to any remotes and sub-parts.
+If it cannot connect to them, it will still successfully start up.
+However, if a _resource_ on one part depends on a _resource_ of another part and the connection fails to establish, the part will not successfully start up.
 
 ![Example of a remote and a two part machine where the main (and only) part of machine 1 remotes into the main part of machine 2, and thus has access to all resources of machine 2.](/build/configure/parts/remotes-diagram.png)
 
