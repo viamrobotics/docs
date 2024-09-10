@@ -8,7 +8,6 @@ from viam.rpc.dial import DialOptions, Credentials
 from viam.app.viam_client import ViamClient
 from viam.proto.app import ListRegistryItemsRequest, ListRegistryItemsResponse
 
-
 async def connect() -> ViamClient:
     dial_options = DialOptions(
         auth_entity='fc5301b4-af27-4421-88fb-31352510bac1',
@@ -137,9 +136,9 @@ async def main():
             else:
                 framework = ""
             if model.ml_model_metadata.model_type:
-                model = model_type_to_str(model.ml_model_metadata.model_type)
+                type = model_type_to_str(model.ml_model_metadata.model_type)
             else:
-                model = ""
+                type = ""
 
             json_m = {
                 "id": model.item_id,
@@ -147,8 +146,8 @@ async def main():
                 "total_organization_usage": int(model.total_organization_usage),
                 "total_robot_usage": int(model.total_robot_usage),
                 "description": model.description,
-                "type": model_type_to_str(model.ml_model_metadata.model_type),
-                "framework": model_framework_to_str(model.ml_model_metadata.model_framework),
+                "type": type,
+                "framework": framework,
                 "last_updated": time_now,
                 "url": "https://app.viam.com/ml-model/" + model.public_namespace + "/" + model.name + "/"
             }
