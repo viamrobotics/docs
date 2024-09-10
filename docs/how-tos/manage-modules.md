@@ -62,7 +62,15 @@ If you intend to make frequent code changes to your module, want to support a va
    tar -czf module.tar.gz <PATH-TO-EXECUTABLE>
    ```
 
-   Where `<PATH-TO-EXECUTABLE>` is your [packaged executable](/how-tos/create-module/#compile-or-package-your-module).
+   where `<PATH-TO-EXECUTABLE>` is the [packaged executable](/how-tos/create-module/#compile-or-package-your-module).
+
+   For a Python module built using the `venv` approach, the command might look like this:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   tar -czf module.tar.gz run.sh requirements.txt src
+   ```
+
+   Where `run.sh` is your [entrypoint file](/how-tos/create-module/#compile-or-package-your-module), `requirements.txt` is your [pip dependency list file](/how-tos/create-module/#compile-or-package-your-module), and `src` is the directory that contains the source code of your module.
 
    Supply the path to the resulting archive file in the next step.
 
