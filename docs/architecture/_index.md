@@ -176,8 +176,9 @@ These two options are very similar: in both cases, the parts communicate with ea
 Any given part can be a remote part of multiple machines, whereas a part can only be a sub-part of one machine.
 In other words, remote connections allow sharing of resources across multiple machines, whereas main parts and sub-parts are a way to hierarchically organize one machine.
 
-Because the parts are interconnected, you can write SDK code that establishes a connection with one of them and controls them all in a coordinated way.
+Connecting parts (either as main part and sub-part, or as part and remote part) means that you can write SDK code that establishes a connection with one part and controls them all in a coordinated way.
 This streamlines authentication because you do not need to provide multiple sets of API keys as you would if you were using separate API clients.
+However, in some high-bandwidth cases it is better to establish a direct connection from an API client to a part, because connections to remotes and to sub-parts use the main part's bandwidth.
 
 {{< expand "Multi-part and remote examples" >}}
 
