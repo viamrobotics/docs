@@ -9,6 +9,7 @@
   {{- $baseurl := (substr .Site.BaseURL 0 -1) -}}
 {{- end -}}
 <div class="col hover-card {{ if $class }}{{ $class }}{{ end }}">
+<div class="hovercardcontainer">
 {{- if site.GetPage ($link | string) -}}
   {{- with site.GetPage ($link | string) -}}
     {{- if $customCanonicalLink -}}
@@ -97,4 +98,5 @@
     {{- errorf "Card has a bad link: %s" $link -}}
   {{- end -}}
  {{- end -}}
+</div>
 </div>
