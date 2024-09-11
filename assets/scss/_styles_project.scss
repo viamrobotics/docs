@@ -480,16 +480,9 @@ END MARKETING CSS
 /* START card styling */
 
 .hover-card {
-  border: 1px solid #000;
-  box-shadow: 5px 5px 0 0 #000;
   display: flex;
-  padding: 1rem;
   margin: 1rem;
-}
-
-.use-cases * .hover-card {
-  padding: 0.5rem 1rem;
-  margin: 0.5rem 1rem;
+  padding: 0;
 }
 
 .card-container {
@@ -498,38 +491,52 @@ END MARKETING CSS
 
 // Hover animations and colors
 
-.hover-card:hover {
-  box-shadow: 8px 8px 0 0 #000;
+.hover-card a {
+  border: 1px solid #000;
+  box-shadow: 5px 5px 0 0 #000;
+  padding: 1rem;
+  margin: 0px
+}
 
+.hover-card.link-with-icon {
+  margin: 0.5rem 1rem;
+}
+
+.hover-card.link-with-icon a {
+  padding: 0.5rem 1rem;
+}
+
+.hover-card:hover a {
   -webkit-transform: translate(-3px,-3px);
   -ms-transform: translate(-3px,-3px);
   transform: translate(-3px,-3px);
+  box-shadow: 8px 8px 0 0 #000;
 }
 
-.hover-card.yellow:hover {
+.hover-card.yellow:hover a {
   box-shadow: 8px 8px 0 0 #FFD400;
 }
-.hover-card.green:hover {
+.hover-card.green:hover  a {
   box-shadow: 8px 8px 0 0 #00ef83;
 }
-.hover-card.purple:hover {
+.hover-card.purple:hover a {
   box-shadow: 8px 8px 0 0 #a51aff;
 }
-.hover-card.teal:hover {
+.hover-card.teal:hover a {
   box-shadow: 8px 8px 0 0 #00e8e8;
 }
-.hover-card.pink:hover {
+.hover-card.pink:hover a {
   box-shadow: 8px 8px 0 0 #ff79ff;
 }
 
 // images in hover cards at the top have a margin before text
-.hover-card > a > .hover-card-img, .hover-card > a > .hover-card-icon {
+.hover-card a > .hover-card-img, .hover-card a > .hover-card-icon {
   margin-bottom: 1rem;
 }
 
 // Adjust font size
 
-.hover-card > a div > div, .hover-card > div > div {
+.hover-card a div > div, .hover-card div > div {
   font-family: space grotesk, sans-serif;
   font-size: 1.0625rem!important;
   font-weight: 600;
@@ -537,29 +544,29 @@ END MARKETING CSS
   color: black;
 }
 
-.hover-card > a > div {
+.hover-card a > div {
   color: black;
 }
 
-.hover-card > div > div {
+.hover-card div > div {
   margin-bottom: 0.5rem;
 }
 
-.hover-card > a > div > p {
+.hover-card a > div > p {
   margin-bottom: 0rem;
 }
 
-.hover-card.link-with-icon > a > div > p {
+.hover-card.link-with-icon a > div > p {
   align-content: center;
 }
 
 // adjust for cards that only have a link and an icon
 
-.hover-card.link-with-icon > a {
+.hover-card.link-with-icon a {
   width: 100%;
 }
 
-.hover-card.link-with-icon > a > div {
+.hover-card.link-with-icon a > div {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -587,7 +594,7 @@ END MARKETING CSS
   margin-bottom: 0.5rem;
 }
 
-.hover-card.landing > .hover-card-img {
+.hover-card.landing .hover-card-img {
   padding-bottom: 7px;
 }
 
@@ -635,12 +642,12 @@ END MARKETING CSS
   max-width: 150px;
 }
 
-.hover-card.small > a {
+.hover-card.small a {
   flex-direction: column;
   padding-right: 0;
 }
 
-.hover-card.small > a > .hover-card-img {
+.hover-card.small a > .hover-card-img {
   padding-right: 0;
   max-width: 100%;
 }
@@ -649,7 +656,7 @@ END MARKETING CSS
   object-fit: contain;
 }
 
-.hover-card.small > a div.small-hover-card-div {
+.hover-card.small a div.small-hover-card-div {
   margin-top: 0.5rem;
   width: 100%;
   text-align: center;
@@ -696,12 +703,12 @@ END MARKETING CSS
   color: black;
 }
 
-.hover-card.tutorial > a * img {
+.hover-card.tutorial a * img {
   margin-bottom: 0;
 }
 
 @media (max-width: 650px) { // at least two cards fit next to one another
-  .hover-card.tutorial > a > video {
+  .hover-card.tutorial a > video {
     margin-bottom: 0;
   }
 
@@ -787,13 +794,13 @@ END MARKETING CSS
 
 // label styling in tutorials END
 
-.hover-card.tutorial > a {
+.hover-card.tutorial a {
   display: flex;
   flex-direction: column;
 }
 
 @media (max-width: 650px) {
-  .hover-card.tutorial > a {
+  .hover-card.tutorial a {
     display: flex;
     flex-direction: row;
   }
