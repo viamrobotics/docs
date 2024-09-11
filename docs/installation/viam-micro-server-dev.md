@@ -159,12 +159,12 @@ brew install cmake ninja dfu-util
 
 2. Install and activate the ESP-IDF
 
-   Clone Viam's fork of the ESP-IDF, the development framework for Espressif SoCs (System-on-Chips) supported on Windows, Linux and macOS:
+   Clone the ESP-IDF, the development framework for Espressif SoCs (System-on-Chips) supported on Windows, Linux and macOS:
 
    ```sh { class="command-line" data-prompt="$"}
    mkdir -p ~/esp
    cd ~/esp
-   git clone --depth 1 -b v4.4.4 --single-branch --recurse-submodules --shallow-submodules https://github.com/viamrobotics/esp-idf
+   git clone --depth 1 -b v4.4.8 --single-branch --recurse-submodules --shallow-submodules https://github.com/espressif/esp-idf
    ```
 
 3. Then, install the required tools for ESP-IDF:
@@ -198,7 +198,7 @@ Instead, save this command to run in any future terminal session where you need 
 6. Download and install the ESP-RS toolchain:
 
    ```sh { class="command-line" data-prompt="$"}
-   espup install -s -f ~/esp/export-rs.sh -v 1.67.0
+   espup install -s -f ~/esp/export-rs.sh -v 1.75.0
    ```
 
 7. Activate the ESP Rust toolchain, run the following command to source (`.`) the activation script `export-rs.sh`:
