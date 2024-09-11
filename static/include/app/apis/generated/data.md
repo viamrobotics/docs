@@ -177,7 +177,7 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 from viam.proto.app.data import BinaryID
 
 binary_metadata = await data_client.binary_data_by_filter(
-    include_binary_data=False
+    include_file_data=False
 )
 
 my_ids = []
@@ -285,7 +285,7 @@ Filter and delete binary data by ids.
 from viam.proto.app.data import BinaryID
 
 binary_metadata = await data_client.binary_data_by_filter(
-    include_binary_data=False
+    include_file_data=False
 )
 
 my_ids = []
@@ -335,7 +335,7 @@ from viam.proto.app.data import BinaryID
 tags = ["tag1", "tag2"]
 
 binary_metadata = await data_client.binary_data_by_filter(
-    include_binary_data=False
+    include_file_data=False
 )
 
 my_ids = []
@@ -420,7 +420,7 @@ from viam.proto.app.data import BinaryID
 tags = ["tag1", "tag2"]
 
 binary_metadata = await data_client.binary_data_by_filter(
-    include_binary_data=False
+    include_file_data=False
 )
 
 my_ids = []
@@ -707,7 +707,7 @@ This BinaryData will be tagged with the VIAM_DATASET\_{id} label.
 from viam.proto.app.data import BinaryID
 
 binary_metadata = await data_client.binary_data_by_filter(
-    include_binary_data=False
+    include_file_data=False
 )
 
 my_binary_ids = []
@@ -755,7 +755,7 @@ This BinaryData will lose the VIAM_DATASET\_{id} tag.
 from viam.proto.app.data import BinaryID
 
 binary_metadata = await data_client.binary_data_by_filter(
-    include_binary_data=False
+    include_file_data=False
 )
 
 my_binary_ids = []
