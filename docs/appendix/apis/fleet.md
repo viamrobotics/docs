@@ -68,7 +68,7 @@ async def main():
     viam_client = await connect()
     # Instantiate an AppClient called "fleet"
     # to run fleet management API methods on
-    fleet = viam_client.app_client
+    cloud = viam_client.app_client
 
     viam_client.close()
 
