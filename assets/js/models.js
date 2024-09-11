@@ -53,7 +53,7 @@ if (api == "") {
   };
   itemtemplate = `
   <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
-  <div class="description">{{#helpers.highlight}}{ "attribute": "" }{{/helpers.highlight}}</div>
+  <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
   `;
 }
 
